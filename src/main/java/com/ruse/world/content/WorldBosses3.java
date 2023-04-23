@@ -52,7 +52,9 @@ public class WorldBosses3 {
                 continue;
             }
 
-            killers.put(player, entry.getValue().getDamage());
+            if(!killers.containsKey(player)) {
+                killers.put(player, entry.getValue().getDamage());
+            }
         }
 
         npc.getCombatBuilder().getDamageMap().clear();

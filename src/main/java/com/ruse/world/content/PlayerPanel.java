@@ -29,7 +29,7 @@ public class PlayerPanel {
                                 ServerPerks.getInstance().getActivePerk().getName() :
                                 "N/A"),
                 (WellOfGoodwill.isActive() ? "@whi@Well of Goodwill: @yel@On" : "@whi@Well of Goodwill: @yel@Off"),
-                "@whi@Bonus Xp: @yel@" + (Misc.format(player.getMinutesBonusExp()) == null ? "00:00" : Misc.format(player.getMinutesBonusExp())) + " minutes left",
+                "@whi@Bonus Xp: @yel@" + (Misc.format(player.getMinutesBonusExp()) == null ? "0" : Misc.format(player.getMinutesBonusExp())) + " minutes left",
                 "@whi@Global",
                 (VoteBossDrop.currentSpawn == null
                         ? "@whi@Vote Boss: @yel@" + doMotivote.getVoteCount() + "/50"

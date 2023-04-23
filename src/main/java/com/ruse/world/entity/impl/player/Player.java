@@ -1854,12 +1854,12 @@ public class Player extends Character {
         for (int i = 0; i < Skill.values().length; i++) {
             playerXP[i] = this.getSkillManager().getExperience(Skill.forId(i));
         }
-        if (this.getGameMode() == GameMode.VETERAN_MODE) {
-            com.everythingrs.hiscores.Hiscores.update("szUziRZAX4r853p8wSF7icsTKkqLS8VgtLLJ2TQinhWRHIXqT5nyWvMQON924RSg5iOos4u4",
-                    "Normal Mode", this.getUsername(),
-                    this.getRights().ordinal(), playerXP, debugMessage);
-            this.getGameMode();
-        }
+//        if (this.getGameMode() == GameMode.VETERAN_MODE) {
+//            com.everythingrs.hiscores.Hiscores.update("szUziRZAX4r853p8wSF7icsTKkqLS8VgtLLJ2TQinhWRHIXqT5nyWvMQON924RSg5iOos4u4",
+//                    "Normal Mode", this.getUsername(),
+//                    this.getRights().ordinal(), playerXP, debugMessage);
+//            this.getGameMode();
+//        }
 
         if (getCombatBuilder().isBeingAttacked()) {
             getPacketSender().sendMessage("You must wait a few seconds after being out of combat before doing this.");

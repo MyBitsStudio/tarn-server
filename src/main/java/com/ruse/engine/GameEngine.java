@@ -21,7 +21,7 @@ import java.util.concurrent.ThreadPoolExecutor.CallerRunsPolicy;
  */
 public final class GameEngine implements Runnable {
 
-    private static final ScheduledExecutorService logicService = GameEngine.createLogicService();
+    //private static final ScheduledExecutorService logicService = GameEngine.createLogicService();
     private static final ThreadFactory THREAD_FACTORY_BUILDER = new ThreadFactoryBuilder().setNameFormat("GameThread").build();
 
     // private static final int PROCESS_GAME_TICK = 2;
@@ -135,10 +135,4 @@ public final class GameEngine implements Runnable {
         });
     }
 
-    public static void submitIO(Runnable runnable) {
-        logicService.submit(() -> {
-            runnable.run();
-            return null;
-        });
-    }
 }

@@ -82,6 +82,7 @@ class LoginWorker(val boss: LoginService) : Runnable {
         return when {
             GameServer.isUpdating() -> LoginResponses.LOGIN_GAME_UPDATE
             World.getPlayers().isFull -> LoginResponses.LOGIN_WORLD_FULL
+            GameServer.starting -> LoginResponses.LOGIN_WORLD_UPDATE
             else -> {
 
                 for(player in World.getLoginQueue()){

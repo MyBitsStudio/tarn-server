@@ -62,23 +62,24 @@ public final class GameLoader {
 	public void init() {
 		Preconditions.checkState(!serviceLoader.isShutdown(), "The bootstrap has been bound already!");
 
+		ServiceManager.INSTANCE.init();
+
 		executeServiceLoad();
 		serviceLoader.shutdown();
-		World.LOGIN_SERVICE.postLoad();
 
-		ServiceManager.INSTANCE.init();
+		World.LOGIN_SERVICE.postLoad();
 
 	}
 
 	public void finish() throws IOException, InterruptedException {
 		if (!serviceLoader.awaitTermination(15, TimeUnit.MINUTES))
 			throw new IllegalStateException("The background service load took too long!");
-		engine.init();
-		TaskManager.submit(new ServerTimeUpdateTask());
 		final ExecutorService networkExecutor = Executors.newCachedThreadPool();
 		final ServerBootstrap serverBootstrap = new ServerBootstrap (new NioServerSocketChannelFactory(networkExecutor, networkExecutor));
 		serverBootstrap.setPipelineFactory(new PipelineFactory(new HashedWheelTimer()));
 		serverBootstrap.bind(new InetSocketAddress(port));
+		engine.init();
+		TaskManager.submit(new ServerTimeUpdateTask());
 
 	}
 
