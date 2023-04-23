@@ -759,7 +759,7 @@ public class NPCDeathTask extends Task {
         setEventRunning(false);
 
         npc.setDying(false);
-        PlayerPanel.refreshPanel(killer);
+
         // respawn
         if (npc.getDefinition().getRespawnTime() > 0 && npc.getLocation() != Location.GRAVEYARD && npc.getLocation() != Location.KEEPERS_OF_LIGHT_GAME
                 && npc.getLocation() != Location.DUNGEONEERING && npc.getLocation() != Location.CUSTOM_RAIDS && !npc.isEventBoss()) {
@@ -961,5 +961,7 @@ public class NPCDeathTask extends Task {
         if (Nex.nexMob(npc.getId())) {
             Nex.death(npc.getId());
         }
+
+        //PlayerPanel.refreshPanel(killer);
     }
 }
