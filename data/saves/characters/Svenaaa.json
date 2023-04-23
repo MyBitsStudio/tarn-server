@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 42484685,
+  "total-play-time-ms": 43641177,
   "username": "Svenaaa",
   "password": "rachelxx1",
   "email": "null",
@@ -8,8 +8,8 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2139,
-    "y": 5018,
+    "x": 2213,
+    "y": 3766,
     "z": 0
   },
   "online-status": "ON",
@@ -47,7 +47,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682244755109,
+  "lastlogin": 1682246868003,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -61,7 +61,7 @@
   "minutes-bonus-exp": -1,
   "minutes-voting-dr": -1,
   "minutes-voting-dmg": 0,
-  "total-gained-exp": -2041356467,
+  "total-gained-exp": -2039025679,
   "barrows-points": 0,
   "donator-points": 34,
   "Skilling-points": 0,
@@ -140,7 +140,7 @@
   ],
   "total-prestiges": 0,
   "slayer-spree": 17,
-  "npc-killcount": 21515,
+  "npc-killcount": 22395,
   "spawn-killcount": 0,
   "lord-killcount": 0,
   "demon-killcount": 576,
@@ -175,7 +175,7 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 154340901,
+  "last-veng": 155735331,
   "fight-type": "STAFF_POUND",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -209,7 +209,7 @@
     0
   ],
   "effigy": 0,
-  "summon-npc": -1,
+  "summon-npc": 3031,
   "summon-death": -1,
   "process-farming": false,
   "clanchat": "Help",
@@ -446,12 +446,12 @@
     {
       "npcId": 9904,
       "item": 995,
-      "amount": 2121109
+      "amount": 2121110
     },
     {
       "npcId": 9904,
       "item": 2023,
-      "amount": 56
+      "amount": 57
     },
     {
       "npcId": 9907,
@@ -1206,7 +1206,12 @@
     {
       "npcId": 9017,
       "item": 995,
-      "amount": 48190
+      "amount": 48349
+    },
+    {
+      "npcId": 9839,
+      "item": 995,
+      "amount": 50060
     }
   ],
   "holy-prayers-unlocked": [
@@ -1259,7 +1264,7 @@
       100,
       1200,
       120,
-      950,
+      555,
       120,
       1,
       1,
@@ -1320,7 +1325,7 @@
       0,
       0,
       0,
-      194763437,
+      197094225,
       0,
       0,
       0,
@@ -1352,8 +1357,8 @@
       "slot": 0
     },
     {
-      "id": 10946,
-      "amount": 3,
+      "id": -1,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1364,7 +1369,12 @@
     {
       "id": -1,
       "amount": 0,
-      "slot": 0
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
     },
     {
       "id": -1,
@@ -1578,7 +1588,7 @@
     },
     {
       "id": 2023,
-      "amount": 12662,
+      "amount": 12702,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1588,7 +1598,7 @@
     },
     {
       "id": 995,
-      "amount": 20318555,
+      "amount": 39644749,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1598,7 +1608,7 @@
     },
     {
       "id": 10835,
-      "amount": 323463,
+      "amount": 108795,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1699,7 +1709,7 @@
       }
     },
     {
-      "id": 14055,
+      "id": 22139,
       "amount": 1,
       "slot": 0,
       "bonus": {
@@ -2379,11 +2389,18 @@
       "boss": false
     },
     {
-      "runningTotal": 534,
+      "runningTotal": 1011,
       "npcId": 9017,
       "npcName": "Sanctum Golem",
-      "amount": 534,
+      "amount": 1011,
       "boss": true
+    },
+    {
+      "runningTotal": 183,
+      "npcId": 9839,
+      "npcName": "Mutant Hydra",
+      "amount": 183,
+      "boss": false
     }
   ],
   "drops": [
@@ -3287,7 +3304,7 @@
       335,
       438,
       148,
-      8082,
+      8302,
       0,
       0,
       0,
@@ -3375,8 +3392,8 @@
     [
       0,
       9,
-      178,
-      0,
+      337,
+      61,
       0,
       0,
       0,
@@ -3390,7 +3407,7 @@
       0,
       0,
       148,
-      8082,
+      8302,
       0,
       0,
       0,
@@ -4123,6 +4140,10 @@
       "canClaim": false,
       "hasClaimed": false
     },
+    "9839": {
+      "canClaim": false,
+      "hasClaimed": false
+    },
     "9904": {
       "canClaim": false,
       "hasClaimed": false
@@ -4197,7 +4218,9 @@
     -1
   ],
   "favorite-teleports": [],
-  "obtained-pets": [],
+  "obtained-pets": [
+    "GROUDON_PET"
+  ],
   "battlepass-xp": 0,
   "battlepass-premium": false,
   "mini-me-equipment": [
@@ -4242,6 +4265,7 @@
     "9836": 19,
     "9837": 11,
     "9838": 5,
+    "9839": 61,
     "9904": 0,
     "3313": 1,
     "1906": 119,
@@ -4252,7 +4276,7 @@
     "9910": 4,
     "3831": 46,
     "9911": 13,
-    "9017": 178,
+    "9017": 337,
     "9914": 138,
     "9915": 72,
     "9916": 65,

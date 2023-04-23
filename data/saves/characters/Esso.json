@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 53546193,
+  "total-play-time-ms": 54517099,
   "username": "Esso",
   "password": "kombare45",
   "email": "null",
@@ -8,8 +8,8 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2146,
-    "y": 5017,
+    "x": 2179,
+    "y": 3755,
     "z": 0
   },
   "online-status": "ON",
@@ -47,7 +47,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682193684736,
+  "lastlogin": 1682279043365,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -58,10 +58,10 @@
   "day5claimed": false,
   "day6claimed": false,
   "day7claimed": false,
-  "minutes-bonus-exp": 1091,
+  "minutes-bonus-exp": 1073,
   "minutes-voting-dr": -1,
   "minutes-voting-dmg": 0,
-  "total-gained-exp": 46296198,
+  "total-gained-exp": 48704784,
   "barrows-points": 0,
   "donator-points": 1,
   "Skilling-points": 0,
@@ -139,8 +139,8 @@
     0
   ],
   "total-prestiges": 0,
-  "slayer-spree": 29,
-  "npc-killcount": 9992,
+  "slayer-spree": 30,
+  "npc-killcount": 10568,
   "spawn-killcount": 0,
   "lord-killcount": 0,
   "demon-killcount": 350,
@@ -175,7 +175,7 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 1682010811612,
+  "last-veng": 265492614,
   "fight-type": "LONGBOW_RAPID",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -218,10 +218,10 @@
   "dfs-charges": 0,
   "coins-gambled": 0,
   "slayer-master": "BOSS_SLAYER",
-  "slayer-task": "ZEIDAN_GRIMM",
-  "prev-slayer-task": "ONYX_GRIFFIN",
-  "task-amount": 49,
-  "task-streak": 26,
+  "slayer-task": "LILINRYSS",
+  "prev-slayer-task": "ZEIDAN_GRIMM",
+  "task-amount": 81,
+  "task-streak": 27,
   "duo-partner": "null",
   "double-slay-xp": false,
   "recoil-deg": 0,
@@ -1011,7 +1011,7 @@
     {
       "npcId": 3010,
       "item": 995,
-      "amount": 31040
+      "amount": 31091
     },
     {
       "npcId": 9817,
@@ -1041,12 +1041,17 @@
     {
       "npcId": 9025,
       "item": 995,
-      "amount": 20112
+      "amount": 20206
     },
     {
       "npcId": 9025,
       "item": 2023,
-      "amount": 116
+      "amount": 211
+    },
+    {
+      "npcId": 9025,
+      "item": 8818,
+      "amount": 1
     }
   ],
   "holy-prayers-unlocked": [
@@ -1112,7 +1117,7 @@
       1,
       1,
       1,
-      94,
+      95,
       1,
       1,
       1,
@@ -1139,7 +1144,7 @@
       1,
       1,
       1,
-      94,
+      95,
       1,
       1,
       1,
@@ -1160,13 +1165,13 @@
       0,
       0,
       0,
-      36177908,
+      38018654,
       0,
       1405560,
       0,
       0,
       0,
-      8378120,
+      8945960,
       0,
       0,
       0,
@@ -1197,14 +1202,24 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
-      "slot": 0
+      "id": 8274,
+      "amount": 1,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
     },
     {
-      "id": -1,
-      "amount": 0,
-      "slot": 0
+      "id": 5023,
+      "amount": 164,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
     },
     {
       "id": -1,
@@ -1363,7 +1378,7 @@
     },
     {
       "id": 995,
-      "amount": 926,
+      "amount": 1714926,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1373,7 +1388,7 @@
     },
     {
       "id": 10835,
-      "amount": 6788266,
+      "amount": 3802640,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1393,7 +1408,7 @@
     },
     {
       "id": 2023,
-      "amount": 4439,
+      "amount": 4534,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1504,7 +1519,7 @@
       }
     },
     {
-      "id": 8274,
+      "id": 4083,
       "amount": 1,
       "slot": 0,
       "bonus": {
@@ -2727,10 +2742,10 @@
       "boss": false
     },
     {
-      "runningTotal": 55,
+      "runningTotal": 208,
       "npcId": 3010,
       "npcName": "Zeidan Grimm",
-      "amount": 55,
+      "amount": 208,
       "boss": false
     },
     {
@@ -2741,10 +2756,10 @@
       "boss": false
     },
     {
-      "runningTotal": 234,
+      "runningTotal": 513,
       "npcId": 9025,
       "npcName": "Avalon",
-      "amount": 234,
+      "amount": 513,
       "boss": false
     }
   ],
@@ -2761,12 +2776,12 @@
     },
     {
       "item": 995,
-      "amount": 152172825,
+      "amount": 152212825,
       "rareDrop": false
     },
     {
       "item": 2023,
-      "amount": 7136,
+      "amount": 7140,
       "rareDrop": false
     },
     {
@@ -3525,9 +3540,9 @@
       165,
       104,
       123,
-      78,
+      171,
       100,
-      4894,
+      5000,
       45,
       0,
       0,
@@ -3622,14 +3637,14 @@
       88,
       0,
       74,
-      29,
+      30,
       0,
       172,
       90,
       0,
       248,
       101,
-      4894,
+      5038,
       0,
       0,
       0,
@@ -3724,15 +3739,15 @@
       0,
       0,
       88,
-      29,
-      31,
+      30,
+      82,
       0,
       0,
       0,
       0,
       0,
       101,
-      4894,
+      5038,
       0,
       0,
       0,
@@ -4329,7 +4344,7 @@
       false
     ]
   ],
-  "achievements-daily": 322,
+  "achievements-daily": 323,
   "progression-zones": [
     12,
     23,
@@ -4564,8 +4579,8 @@
   ],
   "drystreak": {
     "9920": 21,
-    "9025": 78,
-    "3010": 31,
+    "9025": 41,
+    "3010": 82,
     "9922": 52,
     "8003": 32,
     "9027": 3,

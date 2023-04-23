@@ -1,47 +1,7 @@
 {
   "shop": [
     {
-      "id": 15647,
-      "amount": 2,
-      "maxAmount": 3,
-      "price": 900000,
-      "effect": "TRIPLE_KILLS",
-      "bonus": 2
-    },
-    {
-      "id": 19886,
-      "amount": 3,
-      "maxAmount": 4,
-      "price": 500000,
-      "effect": "NOTHING",
-      "bonus": 0
-    },
-    {
-      "id": 5730,
-      "amount": 1,
-      "maxAmount": 3,
-      "price": 3000000,
-      "effect": "NOTHING",
-      "bonus": 0
-    },
-    {
       "id": 23067,
-      "amount": 2,
-      "maxAmount": 2,
-      "price": 1500000,
-      "effect": "NOTHING",
-      "bonus": 0
-    },
-    {
-      "id": 15100,
-      "amount": 2,
-      "maxAmount": 4,
-      "price": 3000000,
-      "effect": "NOTHING",
-      "bonus": 0
-    },
-    {
-      "id": 20260,
       "amount": 2,
       "maxAmount": 2,
       "price": 100000,
@@ -49,37 +9,49 @@
       "bonus": 0
     },
     {
+      "id": 5730,
+      "amount": 1,
+      "maxAmount": 2,
+      "price": 3000000,
+      "effect": "NOTHING",
+      "bonus": 0
+    },
+    {
       "id": 19483,
-      "amount": 5,
-      "maxAmount": 6,
-      "price": 150000,
+      "amount": 3,
+      "maxAmount": 5,
+      "price": 200000,
       "effect": "NOTHING",
       "bonus": 0
     },
     {
       "id": 17616,
       "amount": 1,
-      "maxAmount": 2,
-      "price": 70000,
+      "maxAmount": 1,
+      "price": 50000,
       "effect": "MAGIC_DAMAGE",
       "bonus": 1
     },
     {
-      "id": 17614,
-      "amount": 2,
+      "id": 20260,
+      "amount": 1,
       "maxAmount": 2,
-      "price": 75000,
+      "price": 100000,
       "effect": "NOTHING",
       "bonus": 0
     },
     {
-      "id": 17616,
-      "amount": 2,
-      "maxAmount": 2,
-      "price": 75000,
+      "id": 23126,
+      "amount": 1,
+      "maxAmount": 1,
+      "price": 1000000,
       "effect": "NOTHING",
       "bonus": 0
     },
+    null,
+    null,
+    null,
+    null,
     null,
     null,
     null,
@@ -103,5 +75,5 @@
     null,
     null
   ],
-  "earnings": 14420000
+  "earnings": 0
 }

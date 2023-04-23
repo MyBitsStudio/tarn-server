@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 224807178,
+  "total-play-time-ms": 245074843,
   "username": "V1",
   "password": "jameelmneh",
   "email": "null",
@@ -8,8 +8,8 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2222,
-    "y": 3747,
+    "x": 2236,
+    "y": 3746,
     "z": 0
   },
   "online-status": "ON",
@@ -47,7 +47,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682208955784,
+  "lastlogin": 1682278272091,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -58,10 +58,10 @@
   "day5claimed": false,
   "day6claimed": false,
   "day7claimed": false,
-  "minutes-bonus-exp": 2424,
+  "minutes-bonus-exp": 2074,
   "minutes-voting-dr": -1,
   "minutes-voting-dmg": 0,
-  "total-gained-exp": -259969172,
+  "total-gained-exp": 520951228,
   "barrows-points": 0,
   "donator-points": 0,
   "Skilling-points": 0,
@@ -175,7 +175,7 @@
   "auto-retaliate": false,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 1682080605062,
+  "last-veng": 1682089240603,
   "fight-type": "STAFF_BASH",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -209,7 +209,7 @@
     0
   ],
   "effigy": 0,
-  "summon-npc": 3023,
+  "summon-npc": -1,
   "summon-death": -1,
   "process-farming": false,
   "clanchat": "Help",
@@ -336,52 +336,52 @@
     {
       "npcId": 8013,
       "item": 10946,
-      "amount": 40
+      "amount": 46
     },
     {
       "npcId": 8013,
       "item": 23020,
-      "amount": 42
+      "amount": 48
     },
     {
       "npcId": 9906,
       "item": 995,
-      "amount": 1769363
+      "amount": 1769365
     },
     {
       "npcId": 9906,
       "item": 2023,
-      "amount": 84
+      "amount": 86
     },
     {
       "npcId": 9904,
       "item": 995,
-      "amount": 2896702
+      "amount": 2896705
     },
     {
       "npcId": 9904,
       "item": 2023,
-      "amount": 79
+      "amount": 82
     },
     {
       "npcId": 9907,
       "item": 10946,
-      "amount": 27
+      "amount": 31
     },
     {
       "npcId": 9907,
       "item": 2023,
-      "amount": 130
+      "amount": 134
     },
     {
       "npcId": 9908,
       "item": 10946,
-      "amount": 19
+      "amount": 21
     },
     {
       "npcId": 9908,
       "item": 2023,
-      "amount": 318
+      "amount": 320
     },
     {
       "npcId": 9907,
@@ -466,7 +466,7 @@
       1,
       1200,
       1,
-      10,
+      1200,
       120,
       1,
       1,
@@ -493,7 +493,7 @@
       0,
       2000000000,
       0,
-      0,
+      780920400,
       2000000000,
       0,
       0,
@@ -558,7 +558,7 @@
     },
     {
       "id": 2023,
-      "amount": 8540,
+      "amount": 9867,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -617,8 +617,8 @@
       }
     },
     {
-      "id": 10946,
-      "amount": 5,
+      "id": 19481,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -657,8 +657,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 995,
+      "amount": 5500217,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -667,8 +667,8 @@
       }
     },
     {
-      "id": 995,
-      "amount": 13328508,
+      "id": 10946,
+      "amount": 3,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -2021,7 +2021,7 @@
       0,
       0,
       0,
-      0,
+      100,
       0,
       45,
       0,
@@ -2123,7 +2123,7 @@
       0,
       0,
       0,
-      0,
+      443,
       0,
       0,
       0,
@@ -2226,7 +2226,7 @@
       0,
       0,
       0,
-      0,
+      443,
       0,
       0,
       0,

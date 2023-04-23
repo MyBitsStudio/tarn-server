@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 11499864,
+  "total-play-time-ms": 30185350,
   "username": "Neonrook",
   "password": "killer500",
   "email": "null",
@@ -8,9 +8,9 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2705,
-    "y": 4752,
-    "z": 32
+    "x": 2207,
+    "y": 3746,
+    "z": 0
   },
   "online-status": "ON",
   "given-starter": true,
@@ -47,7 +47,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682232497853,
+  "lastlogin": 1682268154840,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -58,10 +58,10 @@
   "day5claimed": false,
   "day6claimed": false,
   "day7claimed": false,
-  "minutes-bonus-exp": 30,
-  "minutes-voting-dr": 10,
+  "minutes-bonus-exp": -1,
+  "minutes-voting-dr": -1,
   "minutes-voting-dmg": 0,
-  "total-gained-exp": 128590779,
+  "total-gained-exp": 131432289,
   "barrows-points": 0,
   "donator-points": 7,
   "Skilling-points": 0,
@@ -82,7 +82,7 @@
     false
   ],
   "tasks-progress": [
-    820,
+    880,
     0,
     0,
     0,
@@ -140,7 +140,7 @@
   ],
   "total-prestiges": 0,
   "slayer-spree": 0,
-  "npc-killcount": 1640,
+  "npc-killcount": 1760,
   "spawn-killcount": 0,
   "lord-killcount": 0,
   "demon-killcount": 0,
@@ -175,8 +175,8 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 1682242656737,
-  "fight-type": "WHIP_DEFLECT",
+  "last-veng": 1682243845090,
+  "fight-type": "BATTLEAXE_BLOCK",
   "sol-effect": 0,
   "skull-timer": 0,
   "fuse-combination-timer": 0,
@@ -646,12 +646,22 @@
     {
       "npcId": 9028,
       "item": 995,
-      "amount": 1514
+      "amount": 1574
     },
     {
       "npcId": 9028,
       "item": 2023,
-      "amount": 15
+      "amount": 76
+    },
+    {
+      "npcId": 9028,
+      "item": 23023,
+      "amount": 1
+    },
+    {
+      "npcId": 9028,
+      "item": 23025,
+      "amount": 1
     }
   ],
   "holy-prayers-unlocked": [
@@ -700,9 +710,9 @@
   "skills": {
     "level": [
       99,
-      73,
+      75,
       89,
-      600,
+      1130,
       91,
       490,
       111,
@@ -713,7 +723,7 @@
       1,
       6,
       1,
-      1,
+      56,
       1,
       1,
       1,
@@ -727,7 +737,7 @@
     ],
     "maxLevel": [
       99,
-      73,
+      75,
       89,
       1130,
       91,
@@ -740,7 +750,7 @@
       1,
       6,
       1,
-      1,
+      56,
       1,
       1,
       1,
@@ -754,12 +764,12 @@
     ],
     "experience": [
       13925304,
-      1063997,
+      1259306,
       5052543,
-      56105253,
+      57265718,
       6279874,
       426010,
-      45738432,
+      47035396,
       0,
       0,
       0,
@@ -767,7 +777,7 @@
       0,
       550,
       0,
-      0,
+      188772,
       0,
       0,
       0,
@@ -793,7 +803,7 @@
     },
     {
       "id": 2023,
-      "amount": 1308,
+      "amount": 1340,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -802,7 +812,7 @@
       }
     },
     {
-      "id": 17817,
+      "id": 18009,
       "amount": 1,
       "slot": 0,
       "bonus": {
@@ -833,17 +843,7 @@
     },
     {
       "id": 995,
-      "amount": 518000,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
-      "id": 17817,
-      "amount": 1,
+      "amount": 604999,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -862,6 +862,16 @@
       }
     },
     {
+      "id": 18011,
+      "amount": 1,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
+    },
+    {
       "id": 17817,
       "amount": 1,
       "slot": 0,
@@ -872,8 +882,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 18003,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -882,8 +892,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 17634,
+      "amount": 44280,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1094,7 +1104,7 @@
       }
     },
     {
-      "id": 18011,
+      "id": 1265,
       "amount": 1,
       "slot": 0,
       "bonus": {
@@ -1134,13 +1144,13 @@
       }
     },
     {
-      "id": 18003,
+      "id": 23023,
       "amount": 1,
       "slot": 0,
       "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
+        "effect": "DOUBLE_DROP",
+        "rarity": "RARE",
+        "bonus": 10
       }
     },
     {
@@ -1164,7 +1174,7 @@
       }
     },
     {
-      "id": 18009,
+      "id": 23025,
       "amount": 1,
       "slot": 0,
       "bonus": {
@@ -2090,22 +2100,22 @@
       "boss": false
     },
     {
-      "runningTotal": 10,
+      "runningTotal": 70,
       "npcId": 9028,
       "npcName": "Mystic",
-      "amount": 10,
+      "amount": 70,
       "boss": false
     }
   ],
   "drops": [
     {
       "item": 995,
-      "amount": 11567241,
+      "amount": 11657241,
       "rareDrop": false
     },
     {
       "item": 2023,
-      "amount": 1740,
+      "amount": 1801,
       "rareDrop": false
     },
     {
@@ -2161,6 +2171,11 @@
     {
       "item": 18005,
       "amount": 2,
+      "rareDrop": false
+    },
+    {
+      "item": 23023,
+      "amount": 1,
       "rareDrop": false
     }
   ],
@@ -2842,7 +2857,7 @@
     [
       0,
       2,
-      10,
+      70,
       0,
       0,
       0,
@@ -2856,7 +2871,7 @@
       0,
       0,
       73,
-      820,
+      880,
       4,
       0,
       0,
@@ -2958,7 +2973,7 @@
       0,
       0,
       73,
-      820,
+      880,
       0,
       0,
       0,
@@ -3061,7 +3076,7 @@
       0,
       0,
       73,
-      820,
+      880,
       0,
       0,
       0,
@@ -3786,7 +3801,7 @@
   "drystreak": {
     "9922": 52,
     "9027": 21,
-    "9028": 10,
+    "9028": 18,
     "6692": 0,
     "9835": 30,
     "8013": 0,

@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 334765420,
+  "total-play-time-ms": 337337125,
   "username": "Weed",
   "password": "locfam",
   "email": "null",
@@ -8,16 +8,16 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2587,
-    "y": 2584,
-    "z": 84
+    "x": 2229,
+    "y": 3725,
+    "z": 0
   },
   "online-status": "ON",
   "given-starter": true,
   "has-pin2": true,
   "saved-pin2": "1994",
   "saved-ip": "74.131.192.58",
-  "donated": 370,
+  "donated": 390,
   "current-boss-task": 0,
   "current-boss-amount": 0,
   "global-rate": 0,
@@ -40,14 +40,14 @@
   "timeUntilNextReward": 0,
   "current-voting-streak": 0,
   "entriesCurrency": 0.0,
-  "amount-donated-today": 370,
+  "amount-donated-today": 390,
   "claimed-first": false,
   "claimed-second": false,
   "claimed-third": false,
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682226361124,
+  "lastlogin": 1682276403940,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -58,12 +58,12 @@
   "day5claimed": false,
   "day6claimed": false,
   "day7claimed": false,
-  "minutes-bonus-exp": 558,
+  "minutes-bonus-exp": 786,
   "minutes-voting-dr": -1,
   "minutes-voting-dmg": 0,
   "total-gained-exp": 1568444645,
   "barrows-points": 0,
-  "donator-points": 4,
+  "donator-points": 10,
   "Skilling-points": 0,
   "prestige-points": 0,
   "achievement-points": 0,
@@ -72,7 +72,7 @@
   "loyalty-points": 0,
   "total-loyalty-points": 0.0,
   "godmodetime": 0,
-  "voting-points": 7,
+  "voting-points": 16,
   "tasks-completion": [
     false,
     false,
@@ -140,7 +140,7 @@
   ],
   "total-prestiges": 0,
   "slayer-spree": 0,
-  "npc-killcount": 66436,
+  "npc-killcount": 67284,
   "spawn-killcount": 0,
   "lord-killcount": 0,
   "demon-killcount": 632,
@@ -175,7 +175,7 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 1681963627481,
+  "last-veng": 1681965574298,
   "fight-type": "STAFF_POUND",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -521,12 +521,12 @@
     {
       "npcId": 9907,
       "item": 10946,
-      "amount": 15
+      "amount": 16
     },
     {
       "npcId": 9907,
       "item": 2023,
-      "amount": 115
+      "amount": 116
     },
     {
       "npcId": 9907,
@@ -681,12 +681,12 @@
     {
       "npcId": 8013,
       "item": 10946,
-      "amount": 32
+      "amount": 35
     },
     {
       "npcId": 8013,
       "item": 23020,
-      "amount": 32
+      "amount": 35
     },
     {
       "npcId": 8014,
@@ -1191,7 +1191,7 @@
     {
       "npcId": 9017,
       "item": 995,
-      "amount": 50339
+      "amount": 50465
     },
     {
       "npcId": 9839,
@@ -1376,7 +1376,7 @@
     {
       "npcId": 3013,
       "item": 995,
-      "amount": 128775
+      "amount": 128863
     }
   ],
   "holy-prayers-unlocked": [
@@ -1424,13 +1424,13 @@
   ],
   "skills": {
     "level": [
-      120,
-      120,
-      120,
+      146,
+      146,
+      146,
       1200,
-      120,
-      0,
-      120,
+      146,
+      205,
+      146,
       1,
       1,
       1,
@@ -1508,7 +1508,7 @@
   "inventory": [
     {
       "id": 10835,
-      "amount": 232500,
+      "amount": 53404,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1523,7 +1523,7 @@
     },
     {
       "id": 2023,
-      "amount": 12272,
+      "amount": 12372,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1543,7 +1543,7 @@
     },
     {
       "id": 995,
-      "amount": 7040148,
+      "amount": 138,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1753,7 +1753,7 @@
     },
     {
       "id": 21816,
-      "amount": 4,
+      "amount": 6,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -3211,10 +3211,10 @@
       "boss": false
     },
     {
-      "runningTotal": 4587,
+      "runningTotal": 4962,
       "npcId": 9017,
       "npcName": "Sanctum Golem",
-      "amount": 4587,
+      "amount": 4962,
       "boss": true
     },
     {
@@ -3267,17 +3267,17 @@
       "boss": false
     },
     {
-      "runningTotal": 1443,
+      "runningTotal": 1704,
       "npcId": 3013,
       "npcName": "Ag\u0027thomoth",
-      "amount": 1443,
+      "amount": 1704,
       "boss": false
     }
   ],
   "drops": [
     {
       "item": 995,
-      "amount": 1301395823,
+      "amount": 1301843823,
       "rareDrop": false
     },
     {
@@ -4377,8 +4377,8 @@
     ],
     [
       0,
-      89,
-      1529,
+      98,
+      1654,
       1006,
       373,
       668,
@@ -4387,13 +4387,13 @@
       725,
       0,
       760,
-      481,
+      568,
       0,
       0,
       0,
       0,
       3903,
-      20839,
+      21051,
       0,
       0,
       0,
@@ -4990,7 +4990,7 @@
       false
     ]
   ],
-  "achievements-daily": 322,
+  "achievements-daily": 323,
   "progression-zones": [
     12,
     21,
@@ -5023,7 +5023,7 @@
   },
   "lastTGloveIndex": -1,
   "group-ironman-locked": false,
-  "lastInstanceNpc": 3013,
+  "lastInstanceNpc": 9017,
   "daily-task": {},
   "collectionlog-rewards": {
     "6692": {
@@ -5265,7 +5265,7 @@
     "9908": 0,
     "9910": 4,
     "9911": 23,
-    "9017": 29,
+    "9017": 154,
     "9914": 91,
     "9915": 4,
     "9916": 75,
@@ -5281,7 +5281,7 @@
     "8003": 18,
     "9027": 21,
     "9028": 11,
-    "3013": 481,
+    "3013": 568,
     "9029": 8,
     "9030": 7,
     "8008": 4,

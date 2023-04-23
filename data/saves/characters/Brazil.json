@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 21766041,
+  "total-play-time-ms": 21878833,
   "username": "Brazil",
   "password": "22031997",
   "email": "null",
@@ -8,8 +8,8 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2216,
-    "y": 3762,
+    "x": 2222,
+    "y": 3747,
     "z": 0
   },
   "online-status": "ON",
@@ -47,7 +47,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682211422966,
+  "lastlogin": 1682253243620,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -58,8 +58,8 @@
   "day5claimed": false,
   "day6claimed": false,
   "day7claimed": false,
-  "minutes-bonus-exp": 3000,
-  "minutes-voting-dr": 300,
+  "minutes-bonus-exp": 2999,
+  "minutes-voting-dr": 299,
   "minutes-voting-dmg": 0,
   "total-gained-exp": -90322673,
   "barrows-points": 0,
@@ -175,8 +175,8 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 1682115924419,
-  "fight-type": "UNARMED_KICK",
+  "last-veng": 137432001,
+  "fight-type": "STAFF_POUND",
   "sol-effect": 0,
   "skull-timer": 0,
   "fuse-combination-timer": 0,
@@ -214,7 +214,7 @@
   "process-farming": false,
   "clanchat": "Help",
   "autocast": false,
-  "autocast-spell": -1,
+  "autocast-spell": 71,
   "dfs-charges": 0,
   "coins-gambled": 0,
   "slayer-master": "BOSS_SLAYER",
@@ -346,12 +346,12 @@
     {
       "npcId": 9906,
       "item": 995,
-      "amount": 2292785
+      "amount": 2292786
     },
     {
       "npcId": 9906,
       "item": 2023,
-      "amount": 35
+      "amount": 36
     },
     {
       "npcId": 9904,
@@ -793,7 +793,7 @@
   "inventory": [
     {
       "id": 995,
-      "amount": 50000000,
+      "amount": 51138216,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -814,12 +814,7 @@
     {
       "id": -1,
       "amount": 0,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
+      "slot": 0
     },
     {
       "id": -1,
@@ -1089,9 +1084,14 @@
       "slot": 0
     },
     {
-      "id": -1,
-      "amount": 0,
-      "slot": 0
+      "id": 18629,
+      "amount": 1,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
     },
     {
       "id": -1,
@@ -1512,7 +1512,7 @@
     },
     {
       "id": 18629,
-      "amount": 1,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1870,12 +1870,12 @@
   "drops": [
     {
       "item": 995,
-      "amount": 38724795,
+      "amount": 39863011,
       "rareDrop": false
     },
     {
       "item": 2023,
-      "amount": 2490,
+      "amount": 2515,
       "rareDrop": false
     },
     {
@@ -2587,7 +2587,7 @@
       53,
       65,
       2350,
-      24,
+      25,
       0,
       0,
       0,
@@ -3388,7 +3388,7 @@
       false
     ]
   ],
-  "achievements-daily": 322,
+  "achievements-daily": 323,
   "progression-zones": [
     12,
     0,

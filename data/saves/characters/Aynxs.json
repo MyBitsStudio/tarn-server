@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 7949919,
+  "total-play-time-ms": 10132119,
   "username": "Aynxs",
   "password": "Tuckerbo02",
   "email": "null",
@@ -8,9 +8,9 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2235,
-    "y": 3745,
-    "z": 0
+    "x": 3038,
+    "y": 10270,
+    "z": 16
   },
   "online-status": "ON",
   "given-starter": true,
@@ -47,7 +47,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682230907894,
+  "lastlogin": 1682269127742,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -61,7 +61,7 @@
   "minutes-bonus-exp": 0,
   "minutes-voting-dr": 0,
   "minutes-voting-dmg": 0,
-  "total-gained-exp": 371774277,
+  "total-gained-exp": 376978403,
   "barrows-points": 0,
   "donator-points": 0,
   "Skilling-points": 0,
@@ -82,7 +82,7 @@
     false
   ],
   "tasks-progress": [
-    215,
+    223,
     0,
     0,
     0,
@@ -140,7 +140,7 @@
   ],
   "total-prestiges": 0,
   "slayer-spree": 0,
-  "npc-killcount": 430,
+  "npc-killcount": 446,
   "spawn-killcount": 0,
   "lord-killcount": 0,
   "demon-killcount": 0,
@@ -175,7 +175,7 @@
   "auto-retaliate": false,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 1682238857836,
+  "last-veng": 32452136,
   "fight-type": "LONGSWORD_CHOP",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -381,22 +381,22 @@
     {
       "npcId": 9922,
       "item": 995,
-      "amount": 573
+      "amount": 581
     },
     {
       "npcId": 9922,
       "item": 2023,
-      "amount": 74
+      "amount": 82
     },
     {
       "npcId": 9906,
       "item": 995,
-      "amount": 1586354
+      "amount": 1586355
     },
     {
       "npcId": 9906,
       "item": 2023,
-      "amount": 51
+      "amount": 52
     }
   ],
   "holy-prayers-unlocked": [
@@ -498,10 +498,10 @@
       1
     ],
     "experience": [
-      35713669,
+      38641027,
       0,
       170970346,
-      160755030,
+      163031798,
       0,
       4336416,
       0,
@@ -537,8 +537,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 2023,
+      "amount": 27,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -547,8 +547,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 19986,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -557,8 +557,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 15355,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -879,13 +879,13 @@
       }
     },
     {
-      "id": 19986,
+      "id": 21064,
       "amount": 1,
       "slot": 0,
       "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
+        "effect": "DOUBLE_DROP",
+        "rarity": "RARE",
+        "bonus": 11
       }
     },
     {
@@ -1467,7 +1467,7 @@
     },
     {
       "id": 15355,
-      "amount": 1,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1477,7 +1477,17 @@
     },
     {
       "id": 995,
-      "amount": 10828717,
+      "amount": 1540875,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
+    },
+    {
+      "id": 10835,
+      "amount": 929,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1564,22 +1574,22 @@
       "boss": false
     },
     {
-      "runningTotal": 52,
+      "runningTotal": 60,
       "npcId": 9922,
       "npcName": "Blurite Centaur",
-      "amount": 52,
+      "amount": 60,
       "boss": false
     }
   ],
   "drops": [
     {
       "item": 995,
-      "amount": 3278706,
+      "amount": 4822864,
       "rareDrop": false
     },
     {
       "item": 2023,
-      "amount": 557,
+      "amount": 590,
       "rareDrop": false
     },
     {
@@ -2280,8 +2290,8 @@
       0,
       0,
       100,
-      215,
-      1,
+      223,
+      2,
       0,
       0,
       0,
@@ -2382,7 +2392,7 @@
       0,
       0,
       368,
-      215,
+      223,
       0,
       0,
       0,
@@ -2485,7 +2495,7 @@
       0,
       0,
       368,
-      215,
+      223,
       0,
       0,
       0,
@@ -2689,7 +2699,7 @@
       false,
       false,
       false,
-      false,
+      true,
       false,
       false,
       false,
@@ -3088,7 +3098,7 @@
     42,
     66,
     41,
-    52
+    60
   ],
   "zones-complete": [
     true,
@@ -3115,7 +3125,7 @@
   },
   "lastTGloveIndex": -1,
   "group-ironman-locked": false,
-  "lastInstanceNpc": -1,
+  "lastInstanceNpc": 187,
   "daily-task": {
     "BOSSES": {
       "index": 0,
@@ -3187,7 +3197,7 @@
   ],
   "drystreak": {
     "9906": 0,
-    "9922": 52,
+    "9922": 60,
     "9027": 42,
     "9911": 8,
     "9835": 66,

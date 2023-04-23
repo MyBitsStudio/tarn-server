@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 134482558,
+  "total-play-time-ms": 137878538,
   "username": "Djnj",
   "password": "851767ch",
   "email": "null",
@@ -8,14 +8,14 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 1647,
-    "y": 5606,
+    "x": 1641,
+    "y": 5609,
     "z": 28
   },
   "online-status": "ON",
   "given-starter": true,
   "has-pin2": false,
-  "donated": 338,
+  "donated": 343,
   "current-boss-task": 0,
   "current-boss-amount": 0,
   "global-rate": 0,
@@ -38,14 +38,14 @@
   "timeUntilNextReward": 0,
   "current-voting-streak": 0,
   "entriesCurrency": 0.0,
-  "amount-donated-today": 338,
+  "amount-donated-today": 343,
   "claimed-first": false,
   "claimed-second": false,
   "claimed-third": false,
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682169227651,
+  "lastlogin": 1682274464716,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -56,12 +56,12 @@
   "day5claimed": false,
   "day6claimed": false,
   "day7claimed": false,
-  "minutes-bonus-exp": 196,
+  "minutes-bonus-exp": 231,
   "minutes-voting-dr": -1,
   "minutes-voting-dmg": 0,
-  "total-gained-exp": -1944202379,
+  "total-gained-exp": -1944180255,
   "barrows-points": 0,
-  "donator-points": 16,
+  "donator-points": 21,
   "Skilling-points": 0,
   "prestige-points": 0,
   "achievement-points": 0,
@@ -70,7 +70,7 @@
   "loyalty-points": 0,
   "total-loyalty-points": 0.0,
   "godmodetime": 0,
-  "voting-points": 58,
+  "voting-points": 61,
   "tasks-completion": [
     false,
     false,
@@ -138,7 +138,7 @@
   ],
   "total-prestiges": 0,
   "slayer-spree": 1,
-  "npc-killcount": 9925,
+  "npc-killcount": 10299,
   "spawn-killcount": 0,
   "lord-killcount": 0,
   "demon-killcount": 253,
@@ -173,7 +173,7 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 297274724,
+  "last-veng": 1681965142895,
   "fight-type": "LONGBOW_RAPID",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -454,12 +454,12 @@
     {
       "npcId": 8013,
       "item": 10946,
-      "amount": 26
+      "amount": 27
     },
     {
       "npcId": 8013,
       "item": 23020,
-      "amount": 21
+      "amount": 22
     },
     {
       "npcId": 9906,
@@ -984,12 +984,12 @@
     {
       "npcId": 9836,
       "item": 995,
-      "amount": 24712
+      "amount": 24902
     },
     {
       "npcId": 9836,
       "item": 2023,
-      "amount": 708
+      "amount": 898
     },
     {
       "npcId": 9836,
@@ -999,6 +999,11 @@
     {
       "npcId": 9836,
       "item": 15922,
+      "amount": 1
+    },
+    {
+      "npcId": 9836,
+      "item": 16021,
       "amount": 1
     }
   ],
@@ -1113,7 +1118,7 @@
       0,
       0,
       0,
-      1105934,
+      1128058,
       0,
       0,
       5752,
@@ -1131,7 +1136,7 @@
   "inventory": [
     {
       "id": 10835,
-      "amount": 49271,
+      "amount": 53187,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1141,7 +1146,7 @@
     },
     {
       "id": 995,
-      "amount": 792920,
+      "amount": 4041352,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1151,7 +1156,7 @@
     },
     {
       "id": 2023,
-      "amount": 11971,
+      "amount": 12161,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1170,8 +1175,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 11137,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -2344,22 +2349,22 @@
       "boss": false
     },
     {
-      "runningTotal": 402,
+      "runningTotal": 589,
       "npcId": 9836,
       "npcName": "Doomwatcher",
-      "amount": 402,
+      "amount": 589,
       "boss": false
     }
   ],
   "drops": [
     {
       "item": 995,
-      "amount": 240402490,
+      "amount": 240546490,
       "rareDrop": false
     },
     {
       "item": 2023,
-      "amount": 9694,
+      "amount": 9700,
       "rareDrop": false
     },
     {
@@ -3218,7 +3223,7 @@
     [
       0,
       55,
-      402,
+      589,
       0,
       0,
       0,
@@ -3232,7 +3237,7 @@
       0,
       0,
       693,
-      5366,
+      5553,
       0,
       0,
       0,
@@ -3319,7 +3324,7 @@
     ],
     [
       0,
-      58,
+      61,
       0,
       0,
       0,
@@ -3335,7 +3340,7 @@
       0,
       0,
       693,
-      5366,
+      5553,
       0,
       0,
       0,
@@ -3932,7 +3937,7 @@
       false
     ]
   ],
-  "achievements-daily": 322,
+  "achievements-daily": 323,
   "progression-zones": [
     10,
     20,
@@ -4134,7 +4139,7 @@
     "6692": 2,
     "811": 32,
     "9835": 3,
-    "9836": 36,
+    "9836": 73,
     "9837": 10,
     "9838": 3,
     "9904": 0,

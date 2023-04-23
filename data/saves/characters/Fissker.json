@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 35134536,
+  "total-play-time-ms": 36163535,
   "username": "Fissker",
   "password": "Portable-68",
   "email": "null",
@@ -8,15 +8,15 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2222,
-    "y": 3747,
-    "z": 0
+    "x": 2139,
+    "y": 5018,
+    "z": 8
   },
   "online-status": "ON",
   "given-starter": true,
   "has-pin2": true,
   "saved-pin2": "1980",
-  "saved-ip": "85.190.88.219",
+  "saved-ip": "185.161.170.215",
   "donated": 60,
   "current-boss-task": 0,
   "current-boss-amount": 0,
@@ -47,7 +47,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682066644418,
+  "lastlogin": 1682263849164,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -58,10 +58,10 @@
   "day5claimed": false,
   "day6claimed": false,
   "day7claimed": false,
-  "minutes-bonus-exp": 463,
-  "minutes-voting-dr": 9,
+  "minutes-bonus-exp": 447,
+  "minutes-voting-dr": 0,
   "minutes-voting-dmg": 0,
-  "total-gained-exp": 1673213387,
+  "total-gained-exp": 1678520507,
   "barrows-points": 0,
   "donator-points": 50,
   "Skilling-points": 0,
@@ -139,8 +139,8 @@
     0
   ],
   "total-prestiges": 0,
-  "slayer-spree": 49,
-  "npc-killcount": 13631,
+  "slayer-spree": 50,
+  "npc-killcount": 13873,
   "spawn-killcount": 0,
   "lord-killcount": 0,
   "demon-killcount": 588,
@@ -175,7 +175,7 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 1682006477037,
+  "last-veng": 1682006926426,
   "fight-type": "STAFF_POUND",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -218,10 +218,10 @@
   "dfs-charges": 0,
   "coins-gambled": 0,
   "slayer-master": "BOSS_SLAYER",
-  "slayer-task": "NO_TASK",
-  "prev-slayer-task": "MUTANT_HYDRA",
-  "task-amount": 0,
-  "task-streak": 49,
+  "slayer-task": "GORVEK",
+  "prev-slayer-task": "ONYX_GRIFFIN",
+  "task-amount": 69,
+  "task-streak": 50,
   "duo-partner": "null",
   "double-slay-xp": false,
   "recoil-deg": 0,
@@ -411,12 +411,12 @@
     {
       "npcId": 9906,
       "item": 995,
-      "amount": 1452911
+      "amount": 1452912
     },
     {
       "npcId": 9906,
       "item": 2023,
-      "amount": 43
+      "amount": 44
     },
     {
       "npcId": 8014,
@@ -1061,7 +1061,7 @@
     {
       "npcId": 9806,
       "item": 995,
-      "amount": 26219
+      "amount": 26249
     },
     {
       "npcId": 9903,
@@ -1106,7 +1106,7 @@
     {
       "npcId": 1746,
       "item": 995,
-      "amount": 30101
+      "amount": 30193
     },
     {
       "npcId": 202,
@@ -1199,7 +1199,7 @@
       120,
       1200,
       120,
-      755,
+      868,
       120,
       1,
       1,
@@ -1212,7 +1212,7 @@
       1,
       1,
       1,
-      99,
+      102,
       1,
       1,
       70,
@@ -1239,7 +1239,7 @@
       1,
       1,
       1,
-      99,
+      102,
       1,
       1,
       70,
@@ -1266,7 +1266,7 @@
       0,
       0,
       0,
-      13519955,
+      18827075,
       0,
       0,
       780007,
@@ -1278,7 +1278,7 @@
   "inventory": [
     {
       "id": 995,
-      "amount": 12964142,
+      "amount": 988,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1318,7 +1318,7 @@
     },
     {
       "id": 2023,
-      "amount": 4947,
+      "amount": 4972,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1357,8 +1357,8 @@
       }
     },
     {
-      "id": 11137,
-      "amount": 14,
+      "id": -1,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1398,7 +1398,7 @@
     },
     {
       "id": 10835,
-      "amount": 236661,
+      "amount": 678745,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1493,7 +1493,7 @@
     },
     {
       "id": 5023,
-      "amount": 1344,
+      "amount": 1644,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1502,8 +1502,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 8212,
+      "amount": 5,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -2916,10 +2916,10 @@
       "boss": false
     },
     {
-      "runningTotal": 178,
+      "runningTotal": 208,
       "npcId": 9806,
       "npcName": "Gorvek",
-      "amount": 178,
+      "amount": 208,
       "boss": false
     },
     {
@@ -3000,10 +3000,10 @@
       "boss": false
     },
     {
-      "runningTotal": 86,
+      "runningTotal": 177,
       "npcId": 1746,
       "npcName": "Onyx Griffin",
-      "amount": 86,
+      "amount": 177,
       "boss": false
     },
     {
@@ -3115,7 +3115,7 @@
   "drops": [
     {
       "item": 995,
-      "amount": 62101515,
+      "amount": 62161515,
       "rareDrop": false
     },
     {
@@ -3917,7 +3917,7 @@
       240,
       100,
       5000,
-      33,
+      34,
       0,
       0,
       0,
@@ -4011,14 +4011,14 @@
       96,
       168,
       166,
-      49,
+      50,
       0,
       165,
       80,
       0,
       302,
       1000,
-      6941,
+      7062,
       0,
       0,
       0,
@@ -4108,12 +4108,12 @@
       40,
       179,
       79,
-      178,
+      208,
       177,
       98,
       80,
-      86,
-      49,
+      177,
+      50,
       252,
       178,
       0,
@@ -4121,7 +4121,7 @@
       0,
       0,
       2595,
-      6941,
+      7062,
       0,
       0,
       0,
@@ -4421,7 +4421,7 @@
       false,
       false,
       false,
-      false,
+      true,
       false,
       false,
       false,
@@ -4718,7 +4718,7 @@
       false
     ]
   ],
-  "achievements-daily": 321,
+  "achievements-daily": 323,
   "progression-zones": [
     17,
     22,
@@ -4991,10 +4991,10 @@
     "8010": 87,
     "202": 36,
     "8013": 0,
-    "9806": 68,
+    "9806": 98,
     "8014": 8,
     "9807": 9,
-    "1746": 86,
+    "1746": 177,
     "9815": 74,
     "9816": 177,
     "92": 64,

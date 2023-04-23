@@ -1,34 +1,42 @@
 {
   "shop": [
     {
+      "id": 15647,
+      "amount": 1,
+      "maxAmount": 1,
+      "price": 700000,
+      "effect": "TRIPLE_KILLS",
+      "bonus": 2
+    },
+    {
+      "id": 19482,
+      "amount": 1,
+      "maxAmount": 1,
+      "price": 400000,
+      "effect": "NOTHING",
+      "bonus": 0
+    },
+    {
       "id": 19481,
       "amount": 1,
       "maxAmount": 1,
-      "price": 2000000,
+      "price": 15000,
       "effect": "NOTHING",
       "bonus": 0
     },
     {
-      "id": 2023,
+      "id": 23118,
       "amount": 1,
       "maxAmount": 1,
-      "price": 1,
+      "price": 15000,
       "effect": "NOTHING",
       "bonus": 0
     },
     {
-      "id": 8814,
-      "amount": 1,
-      "maxAmount": 1,
-      "price": 200000,
-      "effect": "RANGE_DAMAGE",
-      "bonus": 1
-    },
-    {
-      "id": 17644,
-      "amount": 1,
-      "maxAmount": 1,
-      "price": 950000,
+      "id": 23120,
+      "amount": 2,
+      "maxAmount": 3,
+      "price": 40000,
       "effect": "NOTHING",
       "bonus": 0
     },
@@ -36,87 +44,31 @@
       "id": 14190,
       "amount": 1,
       "maxAmount": 1,
-      "price": 1750000,
+      "price": 1000000,
       "effect": "TRIPLE_KILLS",
       "bonus": 2
     },
     {
-      "id": 23118,
+      "id": 17644,
       "amount": 1,
       "maxAmount": 1,
-      "price": 18000,
+      "price": 900000,
       "effect": "NOTHING",
       "bonus": 0
     },
     {
-      "id": 10946,
-      "amount": 143,
-      "maxAmount": 183,
-      "price": 70000,
-      "effect": "NOTHING",
-      "bonus": 0
-    },
-    {
-      "id": 19482,
+      "id": 8804,
       "amount": 1,
       "maxAmount": 1,
-      "price": 500000,
-      "effect": "NOTHING",
-      "bonus": 0
-    },
-    {
-      "id": 4075,
-      "amount": 1,
-      "maxAmount": 1,
-      "price": 9500000,
-      "effect": "NOTHING",
-      "bonus": 0
-    },
-    {
-      "id": 15646,
-      "amount": 1,
-      "maxAmount": 1,
-      "price": 500000,
-      "effect": "ALL_DAMAGE_HIGH",
-      "bonus": 3
-    },
-    {
-      "id": 20582,
-      "amount": 1,
-      "maxAmount": 1,
-      "price": 1500000,
-      "effect": "NOTHING",
-      "bonus": 0
-    },
-    {
-      "id": 22135,
-      "amount": 1,
-      "maxAmount": 1,
-      "price": 700000,
-      "effect": "TRIPLE_KILLS",
-      "bonus": 2
-    },
-    {
-      "id": 15647,
-      "amount": 2,
-      "maxAmount": 2,
-      "price": 700000,
-      "effect": "TRIPLE_KILLS",
-      "bonus": 2
+      "price": 750000,
+      "effect": "DOUBLE_DROP",
+      "bonus": 20
     },
     {
       "id": 15359,
-      "amount": 4,
-      "maxAmount": 4,
-      "price": 149000,
-      "effect": "NOTHING",
-      "bonus": 0
-    },
-    {
-      "id": 23120,
-      "amount": 3,
-      "maxAmount": 3,
-      "price": 39000,
+      "amount": 1,
+      "maxAmount": 2,
+      "price": 299000,
       "effect": "NOTHING",
       "bonus": 0
     },
@@ -124,26 +76,39 @@
       "id": 4066,
       "amount": 1,
       "maxAmount": 1,
-      "price": 7000000,
+      "price": 7500000,
       "effect": "ALL_DAMAGE_HIGH",
       "bonus": 3
     },
     {
-      "id": 14331,
-      "amount": 1,
-      "maxAmount": 1,
-      "price": 5000000,
-      "effect": "DROP_RATE_HIGH",
-      "bonus": 45
+      "id": 10946,
+      "amount": 309,
+      "maxAmount": 309,
+      "price": 100000,
+      "effect": "NOTHING",
+      "bonus": 0
     },
     {
-      "id": 22135,
-      "amount": 1,
-      "maxAmount": 1,
-      "price": 22000000,
-      "effect": "AOE_EFFECT",
-      "bonus": 1
+      "id": 23058,
+      "amount": 3,
+      "maxAmount": 3,
+      "price": 2500000,
+      "effect": "NOTHING",
+      "bonus": 0
     },
+    {
+      "id": 23057,
+      "amount": 6,
+      "maxAmount": 7,
+      "price": 1000000,
+      "effect": "NOTHING",
+      "bonus": 0
+    },
+    null,
+    null,
+    null,
+    null,
+    null,
     null,
     null,
     null,
@@ -159,5 +124,5 @@
     null,
     null
   ],
-  "earnings": 6000000
+  "earnings": 0
 }

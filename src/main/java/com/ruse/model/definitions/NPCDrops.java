@@ -258,7 +258,8 @@ public class NPCDrops {
         for (double dropRate : dropRates.keySet()) {
             double roll_chance = new SecureRandom().nextDouble() / divider;
 
-            double divide = (CustomDropUtils.drBonus(player, npc.getId()) > 0 ? (CustomDropUtils.drBonus(player, npc.getId()) / 500.0) + 1 : 1);
+            boolean hasAoe = player.getEquipment().get(Equipment.WEAPON_SLOT).getEffect() == ItemEffect.AOE_EFFECT;
+            double divide = (CustomDropUtils.drBonus(player, npc.getId()) > 0 ? (CustomDropUtils.drBonus(player, npc.getId()) / (hasAoe ? 250 : 500)) + 1 : 1);
 
             double required = 1 / dropRate;
             if (roll_chance / divide <= required) {

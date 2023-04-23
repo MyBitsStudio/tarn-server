@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 8292327,
+  "total-play-time-ms": 8962522,
   "username": "Dragonking",
   "password": "unitedpk6",
   "email": "null",
@@ -8,8 +8,8 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2225,
-    "y": 3755,
+    "x": 2224,
+    "y": 3762,
     "z": 0
   },
   "online-status": "ON",
@@ -47,7 +47,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682204611258,
+  "lastlogin": 1682278864553,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -58,10 +58,10 @@
   "day5claimed": false,
   "day6claimed": false,
   "day7claimed": false,
-  "minutes-bonus-exp": 214,
-  "minutes-voting-dr": 9,
+  "minutes-bonus-exp": 248,
+  "minutes-voting-dr": 13,
   "minutes-voting-dmg": 0,
-  "total-gained-exp": 1959631895,
+  "total-gained-exp": 1960387619,
   "barrows-points": 0,
   "donator-points": 15,
   "Skilling-points": 0,
@@ -72,7 +72,7 @@
   "loyalty-points": 0,
   "total-loyalty-points": 0.0,
   "godmodetime": 0,
-  "voting-points": 14,
+  "voting-points": 17,
   "tasks-completion": [
     false,
     false,
@@ -82,7 +82,7 @@
     false
   ],
   "tasks-progress": [
-    594,
+    645,
     0,
     0,
     0,
@@ -140,10 +140,10 @@
   ],
   "total-prestiges": 0,
   "slayer-spree": 6,
-  "npc-killcount": 1188,
+  "npc-killcount": 1290,
   "spawn-killcount": 0,
   "lord-killcount": 0,
-  "demon-killcount": 0,
+  "demon-killcount": 51,
   "dragon-killcount": 0,
   "beast-killcount": 0,
   "king-killcount": 0,
@@ -175,7 +175,7 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 1682195827464,
+  "last-veng": 83707300,
   "fight-type": "STAFF_POUND",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -627,6 +627,21 @@
       "npcId": 9028,
       "item": 23025,
       "amount": 1
+    },
+    {
+      "npcId": 8014,
+      "item": 995,
+      "amount": 2050
+    },
+    {
+      "npcId": 8014,
+      "item": 2023,
+      "amount": 53
+    },
+    {
+      "npcId": 8014,
+      "item": 23050,
+      "amount": 1
     }
   ],
   "holy-prayers-unlocked": [
@@ -677,16 +692,16 @@
       100,
       99,
       101,
-      940,
+      1190,
       120,
-      0,
+      1200,
       120,
       1,
       1,
       1,
       1,
       1,
-      88,
+      90,
       1,
       1,
       1,
@@ -713,7 +728,7 @@
       1,
       1,
       1,
-      88,
+      90,
       1,
       1,
       1,
@@ -740,7 +755,7 @@
       0,
       0,
       0,
-      4740457,
+      5496181,
       0,
       0,
       0,
@@ -758,7 +773,7 @@
   "inventory": [
     {
       "id": 995,
-      "amount": 42375915,
+      "amount": 43977915,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -777,8 +792,8 @@
       }
     },
     {
-      "id": 19914,
-      "amount": 1,
+      "id": -1,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -867,8 +882,8 @@
       }
     },
     {
-      "id": 18009,
-      "amount": 1,
+      "id": -1,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1039,7 +1054,7 @@
   ],
   "equipment": [
     {
-      "id": 20086,
+      "id": 23050,
       "amount": 1,
       "slot": 0,
       "bonus": {
@@ -1089,9 +1104,14 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
-      "slot": 0
+      "id": 19914,
+      "amount": 1,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
     },
     {
       "id": -1,
@@ -1492,7 +1512,7 @@
   "bank-0": [
     {
       "id": 17817,
-      "amount": 100,
+      "amount": 97,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1875,17 +1895,24 @@
       "npcName": "Mystic",
       "amount": 107,
       "boss": false
+    },
+    {
+      "runningTotal": 51,
+      "npcId": 8014,
+      "npcName": "Zinqrux",
+      "amount": 51,
+      "boss": false
     }
   ],
   "drops": [
     {
       "item": 995,
-      "amount": 12835751,
+      "amount": 12937751,
       "rareDrop": false
     },
     {
       "item": 2023,
-      "amount": 1511,
+      "amount": 1564,
       "rareDrop": false
     },
     {
@@ -2615,7 +2642,7 @@
       100,
       0,
       0,
-      0,
+      51,
       0,
       0,
       0,
@@ -2626,7 +2653,7 @@
       0,
       0,
       100,
-      594,
+      645,
       9,
       0,
       0,
@@ -2713,7 +2740,7 @@
     ],
     [
       0,
-      14,
+      17,
       0,
       0,
       0,
@@ -2728,7 +2755,7 @@
       0,
       0,
       102,
-      594,
+      645,
       0,
       0,
       0,
@@ -2815,7 +2842,7 @@
     ],
     [
       0,
-      14,
+      17,
       0,
       0,
       0,
@@ -2831,7 +2858,7 @@
       0,
       0,
       102,
-      594,
+      645,
       0,
       0,
       0,
@@ -3428,7 +3455,7 @@
       false
     ]
   ],
-  "achievements-daily": 322,
+  "achievements-daily": 323,
   "progression-zones": [
     10,
     20,
@@ -3498,6 +3525,10 @@
       "hasClaimed": false
     },
     "9837": {
+      "canClaim": false,
+      "hasClaimed": false
+    },
+    "8014": {
       "canClaim": false,
       "hasClaimed": false
     },
@@ -3574,6 +3605,7 @@
     "6692": 2,
     "9835": 31,
     "9837": 10,
+    "8014": 1,
     "9838": 2,
     "9807": 5,
     "9904": 0,

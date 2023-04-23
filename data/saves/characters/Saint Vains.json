@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 20189845,
+  "total-play-time-ms": 20960205,
   "username": "Saint Vains",
   "password": "noob",
   "email": "null",
@@ -8,14 +8,14 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2236,
-    "y": 3745,
+    "x": 2225,
+    "y": 3730,
     "z": 0
   },
   "online-status": "ON",
   "given-starter": true,
   "has-pin2": false,
-  "donated": 149,
+  "donated": 151,
   "current-boss-task": 0,
   "current-boss-amount": 0,
   "global-rate": 0,
@@ -38,14 +38,14 @@
   "timeUntilNextReward": 0,
   "current-voting-streak": 0,
   "entriesCurrency": 0.0,
-  "amount-donated-today": 149,
+  "amount-donated-today": 151,
   "claimed-first": false,
   "claimed-second": false,
   "claimed-third": false,
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682189802734,
+  "lastlogin": 1682278442783,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -56,12 +56,12 @@
   "day5claimed": false,
   "day6claimed": false,
   "day7claimed": false,
-  "minutes-bonus-exp": 1385,
-  "minutes-voting-dr": 21,
+  "minutes-bonus-exp": 1373,
+  "minutes-voting-dr": 9,
   "minutes-voting-dmg": 0,
   "total-gained-exp": 591744549,
   "barrows-points": 0,
-  "donator-points": 99,
+  "donator-points": 101,
   "Skilling-points": 0,
   "prestige-points": 0,
   "achievement-points": 0,
@@ -138,7 +138,7 @@
   ],
   "total-prestiges": 0,
   "slayer-spree": 22,
-  "npc-killcount": 60382,
+  "npc-killcount": 64337,
   "spawn-killcount": 0,
   "lord-killcount": 0,
   "demon-killcount": 82,
@@ -173,7 +173,7 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 1681846743164,
+  "last-veng": 432470005,
   "fight-type": "STAFF_POUND",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -614,12 +614,12 @@
     {
       "npcId": 9908,
       "item": 10946,
-      "amount": 7
+      "amount": 8
     },
     {
       "npcId": 9908,
       "item": 2023,
-      "amount": 304
+      "amount": 305
     },
     {
       "npcId": 8002,
@@ -654,12 +654,12 @@
     {
       "npcId": 8010,
       "item": 995,
-      "amount": 143668
+      "amount": 144326
     },
     {
       "npcId": 3016,
       "item": 995,
-      "amount": 140546
+      "amount": 140793
     }
   ],
   "holy-prayers-unlocked": [
@@ -712,7 +712,7 @@
       120,
       1200,
       120,
-      1200,
+      374,
       120,
       1,
       1,
@@ -791,7 +791,7 @@
   "inventory": [
     {
       "id": 995,
-      "amount": 689,
+      "amount": 100540689,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -801,7 +801,7 @@
     },
     {
       "id": 2023,
-      "amount": 4279,
+      "amount": 4579,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -851,7 +851,7 @@
     },
     {
       "id": 10835,
-      "amount": 1115452,
+      "amount": 1068980,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1868,24 +1868,24 @@
       "boss": false
     },
     {
-      "runningTotal": 17888,
+      "runningTotal": 20488,
       "npcId": 8010,
       "npcName": "Groudon",
-      "amount": 17888,
+      "amount": 20488,
       "boss": true
     },
     {
-      "runningTotal": 1280,
+      "runningTotal": 2240,
       "npcId": 3016,
       "npcName": "Varthramoth",
-      "amount": 1280,
+      "amount": 2240,
       "boss": false
     }
   ],
   "drops": [
     {
       "item": 995,
-      "amount": 1913114838,
+      "amount": 1917250838,
       "rareDrop": false
     },
     {
@@ -2622,7 +2622,7 @@
       58,
       100,
       5000,
-      18,
+      19,
       0,
       0,
       0,
@@ -2723,7 +2723,7 @@
       0,
       501,
       133,
-      9925,
+      10000,
       0,
       0,
       0,
@@ -2822,11 +2822,11 @@
       555,
       879,
       811,
-      2236,
-      320,
+      2561,
+      560,
       0,
       133,
-      9925,
+      10490,
       0,
       0,
       0,
@@ -3423,7 +3423,7 @@
       false
     ]
   ],
-  "achievements-daily": 322,
+  "achievements-daily": 323,
   "progression-zones": [
     0,
     0,
@@ -3456,7 +3456,7 @@
   },
   "lastTGloveIndex": -1,
   "group-ironman-locked": false,
-  "lastInstanceNpc": 8010,
+  "lastInstanceNpc": 3016,
   "daily-task": {},
   "collectionlog-rewards": {
     "9025": {
@@ -3619,8 +3619,8 @@
     "8003": 13,
     "3013": 879,
     "3014": 811,
-    "3016": 320,
-    "8010": 2236,
+    "3016": 560,
+    "8010": 2561,
     "202": 54,
     "8013": 0,
     "9806": 269,

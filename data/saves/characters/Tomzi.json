@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 69075370,
+  "total-play-time-ms": 70851043,
   "username": "Tomzi",
   "password": "Chesneyy12!",
   "email": "null",
@@ -17,7 +17,7 @@
   "has-pin2": true,
   "saved-pin2": "1090",
   "saved-ip": "92.30.171.32",
-  "donated": 250,
+  "donated": 288,
   "current-boss-task": 0,
   "current-boss-amount": 0,
   "global-rate": 0,
@@ -40,14 +40,14 @@
   "timeUntilNextReward": 0,
   "current-voting-streak": 0,
   "entriesCurrency": 0.0,
-  "amount-donated-today": 240,
+  "amount-donated-today": 278,
   "claimed-first": false,
   "claimed-second": false,
   "claimed-third": false,
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682220866935,
+  "lastlogin": 1682278307159,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -58,12 +58,12 @@
   "day5claimed": false,
   "day6claimed": false,
   "day7claimed": false,
-  "minutes-bonus-exp": 3504,
+  "minutes-bonus-exp": 3461,
   "minutes-voting-dr": -1,
   "minutes-voting-dmg": 0,
-  "total-gained-exp": 1075187844,
+  "total-gained-exp": 1077821444,
   "barrows-points": 0,
-  "donator-points": 112,
+  "donator-points": 0,
   "Skilling-points": 0,
   "prestige-points": 0,
   "achievement-points": 0,
@@ -139,8 +139,8 @@
     0
   ],
   "total-prestiges": 0,
-  "slayer-spree": 79,
-  "npc-killcount": 40546,
+  "slayer-spree": 82,
+  "npc-killcount": 42835,
   "spawn-killcount": 0,
   "lord-killcount": 0,
   "demon-killcount": 455,
@@ -175,7 +175,7 @@
   "auto-retaliate": false,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 1682073522436,
+  "last-veng": 1682074573054,
   "fight-type": "STAFF_POUND",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -194,7 +194,7 @@
   "dmg-timer": 0,
   "double-dr-timer": 0,
   "double-ddr-timer": 0,
-  "double-dmg-timer": 0,
+  "double-dmg-timer": 1,
   "fire-immunity": 0,
   "fire-damage-mod": 0,
   "prayer-renewal-timer": 0,
@@ -219,9 +219,9 @@
   "coins-gambled": 0,
   "slayer-master": "BOSS_SLAYER",
   "slayer-task": "AG_THOMOTH",
-  "prev-slayer-task": "DRAGONITE",
-  "task-amount": 81,
-  "task-streak": 79,
+  "prev-slayer-task": "GORVEK",
+  "task-amount": 91,
+  "task-streak": 82,
   "duo-partner": "null",
   "double-slay-xp": false,
   "recoil-deg": 0,
@@ -426,22 +426,22 @@
     {
       "npcId": 9907,
       "item": 10946,
-      "amount": 19
+      "amount": 22
     },
     {
       "npcId": 9907,
       "item": 2023,
-      "amount": 117
+      "amount": 120
     },
     {
       "npcId": 9908,
       "item": 10946,
-      "amount": 15
+      "amount": 16
     },
     {
       "npcId": 9908,
       "item": 2023,
-      "amount": 314
+      "amount": 315
     },
     {
       "npcId": 9908,
@@ -886,12 +886,12 @@
     {
       "npcId": 8013,
       "item": 10946,
-      "amount": 29
+      "amount": 33
     },
     {
       "npcId": 8013,
       "item": 23020,
-      "amount": 27
+      "amount": 30
     },
     {
       "npcId": 811,
@@ -1061,7 +1061,7 @@
     {
       "npcId": 9839,
       "item": 995,
-      "amount": 25665
+      "amount": 25812
     },
     {
       "npcId": 1746,
@@ -1076,7 +1076,7 @@
     {
       "npcId": 3013,
       "item": 995,
-      "amount": 32537
+      "amount": 32622
     },
     {
       "npcId": 8010,
@@ -1091,7 +1091,7 @@
     {
       "npcId": 9806,
       "item": 995,
-      "amount": 26712
+      "amount": 26812
     },
     {
       "npcId": 9029,
@@ -1234,7 +1234,7 @@
     false,
     false,
     false,
-    false,
+    true,
     true
   ],
   "rune-ess": 0,
@@ -1279,7 +1279,7 @@
       120,
       1200,
       120,
-      1000,
+      1099,
       120,
       1,
       1,
@@ -1292,7 +1292,7 @@
       103,
       1,
       1,
-      110,
+      111,
       1,
       1,
       1,
@@ -1319,7 +1319,7 @@
       103,
       1,
       1,
-      110,
+      111,
       1,
       1,
       1,
@@ -1346,7 +1346,7 @@
       20848495,
       0,
       0,
-      41276845,
+      43910445,
       0,
       0,
       0,
@@ -1377,18 +1377,18 @@
       }
     },
     {
-      "id": 3028,
+      "id": 3024,
       "amount": 1,
-      "slot": 0
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
     },
     {
-      "id": 229,
+      "id": 3024,
       "amount": 1,
-      "slot": 0
-    },
-    {
-      "id": 10946,
-      "amount": 6,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1397,8 +1397,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 3024,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1407,8 +1407,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 3024,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1417,8 +1417,18 @@
       }
     },
     {
-      "id": 11137,
-      "amount": 5,
+      "id": 3024,
+      "amount": 1,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
+    },
+    {
+      "id": 3024,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1567,8 +1577,8 @@
       }
     },
     {
-      "id": 1857,
-      "amount": 1,
+      "id": -1,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1578,7 +1588,7 @@
     },
     {
       "id": 2023,
-      "amount": 6827,
+      "amount": 7427,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1598,7 +1608,7 @@
     },
     {
       "id": 5023,
-      "amount": 8523,
+      "amount": 8894,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1608,7 +1618,7 @@
     },
     {
       "id": 10835,
-      "amount": 83043,
+      "amount": 171872,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1618,7 +1628,7 @@
     },
     {
       "id": 995,
-      "amount": 17829372,
+      "amount": 17964529,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -2097,7 +2107,7 @@
     },
     {
       "id": 3024,
-      "amount": 73,
+      "amount": 65,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -2197,7 +2207,7 @@
     },
     {
       "id": 229,
-      "amount": 17,
+      "amount": 21,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -2589,7 +2599,7 @@
     },
     {
       "id": 922,
-      "amount": 2,
+      "amount": 3,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -2629,7 +2639,7 @@
     },
     {
       "id": 11137,
-      "amount": 38,
+      "amount": 44,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -2954,17 +2964,17 @@
       "boss": false
     },
     {
-      "runningTotal": 798,
+      "runningTotal": 1194,
       "npcId": 9806,
       "npcName": "Gorvek",
-      "amount": 798,
+      "amount": 1194,
       "boss": false
     },
     {
-      "runningTotal": 566,
+      "runningTotal": 894,
       "npcId": 3013,
       "npcName": "Ag\u0027thomoth",
-      "amount": 566,
+      "amount": 894,
       "boss": false
     },
     {
@@ -2989,10 +2999,10 @@
       "boss": false
     },
     {
-      "runningTotal": 608,
+      "runningTotal": 1192,
       "npcId": 9839,
       "npcName": "Mutant Hydra",
-      "amount": 608,
+      "amount": 1192,
       "boss": false
     },
     {
@@ -3251,7 +3261,7 @@
   "drops": [
     {
       "item": 995,
-      "amount": 749030021,
+      "amount": 749618021,
       "rareDrop": false
     },
     {
@@ -3271,7 +3281,7 @@
     },
     {
       "item": 10946,
-      "amount": 165,
+      "amount": 175,
       "rareDrop": false
     },
     {
@@ -4288,21 +4298,21 @@
       0,
       100,
       549,
-      344,
-      361,
+      490,
+      460,
       882,
       578,
       210,
       427,
-      79,
+      82,
       280,
-      275,
+      357,
       182,
       353,
       0,
       0,
       1310,
-      12806,
+      13133,
       0,
       0,
       0,
@@ -4899,7 +4909,7 @@
       false
     ]
   ],
-  "achievements-daily": 322,
+  "achievements-daily": 323,
   "progression-zones": [
     10,
     20,
@@ -5194,14 +5204,14 @@
     "8003": 2,
     "9027": 20,
     "9028": 2,
-    "3013": 275,
+    "3013": 357,
     "9029": 24,
     "3014": 182,
     "9030": 12,
     "8010": 353,
     "202": 3,
     "8013": 0,
-    "9806": 361,
+    "9806": 460,
     "8014": 5,
     "9807": 2,
     "1746": 427,
@@ -5213,7 +5223,7 @@
     "9836": 1,
     "9837": 10,
     "9838": 2,
-    "9839": 344,
+    "9839": 490,
     "3313": 50,
     "1906": 85,
     "9845": 9,

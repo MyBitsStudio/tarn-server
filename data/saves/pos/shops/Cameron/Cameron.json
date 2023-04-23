@@ -1,30 +1,6 @@
 {
   "shop": [
     {
-      "id": 22125,
-      "amount": 1,
-      "maxAmount": 1,
-      "price": 30000,
-      "effect": "NOTHING",
-      "bonus": 0
-    },
-    {
-      "id": 17596,
-      "amount": 1,
-      "maxAmount": 1,
-      "price": 25000,
-      "effect": "NOTHING",
-      "bonus": 0
-    },
-    {
-      "id": 22135,
-      "amount": 2,
-      "maxAmount": 2,
-      "price": 50000,
-      "effect": "NOTHING",
-      "bonus": 0
-    },
-    {
       "id": 15646,
       "amount": 1,
       "maxAmount": 2,
@@ -41,14 +17,6 @@
       "bonus": 0
     },
     {
-      "id": 15647,
-      "amount": 1,
-      "maxAmount": 2,
-      "price": 30000,
-      "effect": "RANGE_DAMAGE",
-      "bonus": 1
-    },
-    {
       "id": 4686,
       "amount": 2,
       "maxAmount": 2,
@@ -58,27 +26,11 @@
     },
     {
       "id": 8273,
-      "amount": 2,
+      "amount": 1,
       "maxAmount": 2,
       "price": 45000,
       "effect": "NOTHING",
       "bonus": 0
-    },
-    {
-      "id": 15645,
-      "amount": 5,
-      "maxAmount": 5,
-      "price": 40000,
-      "effect": "NOTHING",
-      "bonus": 0
-    },
-    {
-      "id": 15646,
-      "amount": 1,
-      "maxAmount": 1,
-      "price": 40000,
-      "effect": "RANGE_DAMAGE",
-      "bonus": 1
     },
     {
       "id": 8274,
@@ -98,15 +50,7 @@
     },
     {
       "id": 4684,
-      "amount": 12,
-      "maxAmount": 12,
-      "price": 40000,
-      "effect": "NOTHING",
-      "bonus": 0
-    },
-    {
-      "id": 4684,
-      "amount": 2,
+      "amount": 1,
       "maxAmount": 2,
       "price": 750000,
       "effect": "DOUBLE_CASH",
@@ -114,7 +58,7 @@
     },
     {
       "id": 4686,
-      "amount": 9,
+      "amount": 8,
       "maxAmount": 9,
       "price": 40000,
       "effect": "NOTHING",
@@ -136,9 +80,86 @@
       "effect": "MAGIC_DAMAGE",
       "bonus": 1
     },
-    null,
-    null,
-    null,
+    {
+      "id": 11195,
+      "amount": 1,
+      "maxAmount": 1,
+      "price": 750000,
+      "effect": "DOUBLE_CASH",
+      "bonus": 2
+    },
+    {
+      "id": 11195,
+      "amount": 2,
+      "maxAmount": 3,
+      "price": 50000,
+      "effect": "NOTHING",
+      "bonus": 0
+    },
+    {
+      "id": 22135,
+      "amount": 2,
+      "maxAmount": 2,
+      "price": 40000,
+      "effect": "NOTHING",
+      "bonus": 0
+    },
+    {
+      "id": 15645,
+      "amount": 5,
+      "maxAmount": 5,
+      "price": 35000,
+      "effect": "NOTHING",
+      "bonus": 0
+    },
+    {
+      "id": 17700,
+      "amount": 1,
+      "maxAmount": 2,
+      "price": 50000,
+      "effect": "NOTHING",
+      "bonus": 0
+    },
+    {
+      "id": 23168,
+      "amount": 1,
+      "maxAmount": 1,
+      "price": 1000000,
+      "effect": "NOTHING",
+      "bonus": 0
+    },
+    {
+      "id": 9939,
+      "amount": 2,
+      "maxAmount": 4,
+      "price": 40000,
+      "effect": "NOTHING",
+      "bonus": 0
+    },
+    {
+      "id": 17618,
+      "amount": 3,
+      "maxAmount": 4,
+      "price": 50000,
+      "effect": "NOTHING",
+      "bonus": 0
+    },
+    {
+      "id": 4684,
+      "amount": 12,
+      "maxAmount": 12,
+      "price": 38000,
+      "effect": "NOTHING",
+      "bonus": 0
+    },
+    {
+      "id": 4686,
+      "amount": 1,
+      "maxAmount": 1,
+      "price": 250000,
+      "effect": "DOUBLE_KILLS",
+      "bonus": 2
+    },
     null,
     null,
     null,
@@ -152,5 +173,5 @@
     null,
     null
   ],
-  "earnings": 910000
+  "earnings": 0
 }

@@ -768,13 +768,13 @@ public final class CombatFactory {
                         maxHit *= item.getBonus() / 2;
                         break;*/
                     case ALL_DAMAGE_LOW:
-                        maxHit *= 1.1;
+                        maxHit *= 1.05;
                         break;
                     case ALL_DAMAGE_MEDIUM:
-                        maxHit *= 1.3;
+                        maxHit *= 1.07;
                         break;
                     case ALL_DAMAGE_HIGH:
-                        maxHit *= 1.5;
+                        maxHit *= 1.09;
                         break;
                 }
             }
@@ -1092,13 +1092,13 @@ public final class CombatFactory {
                         maxHit *= item.getBonus() / 2;
                         break;*/
                     case ALL_DAMAGE_LOW:
-                        maxHit *= 1.1;
+                        maxHit *= 1.05;
                         break;
                     case ALL_DAMAGE_MEDIUM:
-                        maxHit *= 1.3;
+                        maxHit *= 1.07;
                         break;
                     case ALL_DAMAGE_HIGH:
-                        maxHit *= 1.5;
+                        maxHit *= 1.09;
                         break;
                 }
             }

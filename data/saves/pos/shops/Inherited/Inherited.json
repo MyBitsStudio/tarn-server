@@ -9,14 +9,6 @@
       "bonus": 0
     },
     {
-      "id": 19484,
-      "amount": 1,
-      "maxAmount": 1,
-      "price": 100000,
-      "effect": "NOTHING",
-      "bonus": 0
-    },
-    {
       "id": 19483,
       "amount": 2,
       "maxAmount": 2,
@@ -42,19 +34,76 @@
     },
     {
       "id": 14180,
-      "amount": 2,
+      "amount": 1,
       "maxAmount": 2,
       "price": 120000,
       "effect": "MAGIC_DAMAGE",
       "bonus": 1
     },
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
+    {
+      "id": 21022,
+      "amount": 1,
+      "maxAmount": 1,
+      "price": 50000,
+      "effect": "NOTHING",
+      "bonus": 0
+    },
+    {
+      "id": 23124,
+      "amount": 1,
+      "maxAmount": 1,
+      "price": 500000,
+      "effect": "NOTHING",
+      "bonus": 0
+    },
+    {
+      "id": 19481,
+      "amount": 2,
+      "maxAmount": 2,
+      "price": 40000,
+      "effect": "NOTHING",
+      "bonus": 0
+    },
+    {
+      "id": 15645,
+      "amount": 1,
+      "maxAmount": 3,
+      "price": 10000,
+      "effect": "NOTHING",
+      "bonus": 0
+    },
+    {
+      "id": 15647,
+      "amount": 1,
+      "maxAmount": 1,
+      "price": 480000,
+      "effect": "TRIPLE_KILLS",
+      "bonus": 2
+    },
+    {
+      "id": 22135,
+      "amount": 1,
+      "maxAmount": 1,
+      "price": 50000,
+      "effect": "MAGIC_DAMAGE",
+      "bonus": 1
+    },
+    {
+      "id": 15647,
+      "amount": 1,
+      "maxAmount": 1,
+      "price": 30000,
+      "effect": "RANGE_DAMAGE",
+      "bonus": 1
+    },
+    {
+      "id": 15646,
+      "amount": 1,
+      "maxAmount": 1,
+      "price": 40000,
+      "effect": "DROP_RATE_LOW",
+      "bonus": 8
+    },
     null,
     null,
     null,
@@ -75,5 +124,5 @@
     null,
     null
   ],
-  "earnings": 0
+  "earnings": 30000
 }

@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 22046345,
+  "total-play-time-ms": 22539555,
   "username": "Al Faed",
   "password": "123qwe123",
   "email": "null",
@@ -8,9 +8,9 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2711,
-    "y": 4752,
-    "z": 48
+    "x": 2706,
+    "y": 4759,
+    "z": 52
   },
   "online-status": "ON",
   "given-starter": true,
@@ -45,7 +45,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682181049960,
+  "lastlogin": 1682251788034,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -59,7 +59,7 @@
   "minutes-bonus-exp": -1,
   "minutes-voting-dr": -1,
   "minutes-voting-dmg": 0,
-  "total-gained-exp": -223817230,
+  "total-gained-exp": -223809461,
   "barrows-points": 0,
   "donator-points": 15,
   "Skilling-points": 0,
@@ -138,14 +138,14 @@
   ],
   "total-prestiges": 0,
   "slayer-spree": 0,
-  "npc-killcount": 17819,
+  "npc-killcount": 18523,
   "spawn-killcount": 0,
   "lord-killcount": 0,
   "demon-killcount": 816,
   "dragon-killcount": 0,
   "beast-killcount": 0,
   "king-killcount": 0,
-  "avatar-killcount": 12,
+  "avatar-killcount": 182,
   "angel-killcount": 0,
   "lucien-killcount": 0,
   "hercules-killcount": 0,
@@ -173,7 +173,7 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 241984948,
+  "last-veng": 1682010296303,
   "fight-type": "STAFF_BASH",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -1079,12 +1079,27 @@
     {
       "npcId": 8008,
       "item": 995,
-      "amount": 15019
+      "amount": 15191
     },
     {
       "npcId": 8008,
       "item": 2023,
-      "amount": 21
+      "amount": 192
+    },
+    {
+      "npcId": 8008,
+      "item": 8804,
+      "amount": 1
+    },
+    {
+      "npcId": 1906,
+      "item": 995,
+      "amount": 16005
+    },
+    {
+      "npcId": 1906,
+      "item": 2023,
+      "amount": 6
     }
   ],
   "holy-prayers-unlocked": [
@@ -1135,9 +1150,9 @@
       105,
       100,
       100,
-      890,
+      1040,
       1,
-      905,
+      891,
       120,
       1,
       1,
@@ -1198,7 +1213,7 @@
       0,
       0,
       0,
-      591850,
+      599619,
       0,
       0,
       0,
@@ -1216,7 +1231,7 @@
   "inventory": [
     {
       "id": 2023,
-      "amount": 8261,
+      "amount": 8438,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1226,7 +1241,7 @@
     },
     {
       "id": 995,
-      "amount": 7478131,
+      "amount": 12165225,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1236,7 +1251,7 @@
     },
     {
       "id": 10835,
-      "amount": 569678,
+      "amount": 570002,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1245,8 +1260,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 11137,
+      "amount": 3,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -2469,22 +2484,29 @@
       "boss": false
     },
     {
-      "runningTotal": 36,
+      "runningTotal": 546,
       "npcId": 8008,
       "npcName": "Avatar titan",
-      "amount": 36,
+      "amount": 546,
+      "boss": false
+    },
+    {
+      "runningTotal": 18,
+      "npcId": 1906,
+      "npcName": "Zorbak",
+      "amount": 18,
       "boss": false
     }
   ],
   "drops": [
     {
       "item": 995,
-      "amount": 68591327,
+      "amount": 68651327,
       "rareDrop": false
     },
     {
       "item": 2023,
-      "amount": 9708,
+      "amount": 9710,
       "rareDrop": false
     },
     {
@@ -3411,8 +3433,8 @@
       199,
       171,
       179,
-      12,
-      0,
+      182,
+      6,
       0,
       0,
       0,
@@ -3422,7 +3444,7 @@
       0,
       0,
       1000,
-      7360,
+      7536,
       0,
       0,
       0,
@@ -3525,7 +3547,7 @@
       0,
       0,
       2276,
-      7360,
+      7536,
       0,
       0,
       0,
@@ -4122,7 +4144,7 @@
       false
     ]
   ],
-  "achievements-daily": 322,
+  "achievements-daily": 323,
   "progression-zones": [
     10,
     20,
@@ -4271,6 +4293,10 @@
       "canClaim": false,
       "hasClaimed": false
     },
+    "1906": {
+      "canClaim": false,
+      "hasClaimed": false
+    },
     "9906": {
       "canClaim": false,
       "hasClaimed": false
@@ -4339,7 +4365,7 @@
     "9028": 15,
     "9029": 12,
     "9030": 3,
-    "8008": 12,
+    "8008": 2,
     "202": 7,
     "8013": 0,
     "8014": 29,
@@ -4355,6 +4381,7 @@
     "9838": 2,
     "9904": 0,
     "3313": 9,
+    "1906": 6,
     "9906": 0,
     "9907": 0,
     "9908": 0,

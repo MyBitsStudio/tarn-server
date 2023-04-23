@@ -10,16 +10,16 @@
     },
     {
       "id": 15646,
-      "amount": 22,
-      "maxAmount": 22,
+      "amount": 24,
+      "maxAmount": 24,
       "price": 50000,
       "effect": "NOTHING",
       "bonus": 0
     },
     {
       "id": 22135,
-      "amount": 5,
-      "maxAmount": 5,
+      "amount": 8,
+      "maxAmount": 8,
       "price": 50000,
       "effect": "NOTHING",
       "bonus": 0
@@ -37,14 +37,6 @@
       "amount": 1,
       "maxAmount": 1,
       "price": 125000,
-      "effect": "NOTHING",
-      "bonus": 0
-    },
-    {
-      "id": 23049,
-      "amount": 1,
-      "maxAmount": 1,
-      "price": 2500000,
       "effect": "NOTHING",
       "bonus": 0
     },
@@ -74,24 +66,24 @@
     },
     {
       "id": 19481,
-      "amount": 24,
-      "maxAmount": 25,
+      "amount": 30,
+      "maxAmount": 31,
       "price": 10000,
       "effect": "NOTHING",
       "bonus": 0
     },
     {
       "id": 15645,
-      "amount": 14,
-      "maxAmount": 14,
+      "amount": 16,
+      "maxAmount": 16,
       "price": 40000,
       "effect": "NOTHING",
       "bonus": 0
     },
     {
       "id": 15647,
-      "amount": 21,
-      "maxAmount": 21,
+      "amount": 22,
+      "maxAmount": 22,
       "price": 40000,
       "effect": "NOTHING",
       "bonus": 0
@@ -169,21 +161,22 @@
       "bonus": 0
     },
     {
-      "id": 22134,
-      "amount": 1,
-      "maxAmount": 1,
-      "price": 35000000,
-      "effect": "AOE_EFFECT",
-      "bonus": 1
-    },
-    {
       "id": 15355,
-      "amount": 3,
-      "maxAmount": 3,
-      "price": 500000,
+      "amount": 4,
+      "maxAmount": 5,
+      "price": 800000,
       "effect": "NOTHING",
       "bonus": 0
     },
+    {
+      "id": 22135,
+      "amount": 1,
+      "maxAmount": 1,
+      "price": 40000,
+      "effect": "MAGIC_DAMAGE",
+      "bonus": 1
+    },
+    null,
     null,
     null,
     null,
@@ -194,5 +187,5 @@
     null,
     null
   ],
-  "earnings": 2475000
+  "earnings": 0
 }

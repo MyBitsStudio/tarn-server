@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 151923816,
+  "total-play-time-ms": 154829601,
   "username": "Cd Black",
   "password": "4481474",
   "email": "null",
@@ -8,15 +8,15 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2221,
-    "y": 3754,
-    "z": 0
+    "x": 2139,
+    "y": 5018,
+    "z": 12
   },
   "online-status": "ON",
   "given-starter": true,
   "has-pin2": true,
   "saved-pin2": "4573",
-  "saved-ip": "166.199.165.177",
+  "saved-ip": "50.25.109.8",
   "donated": 325,
   "current-boss-task": 0,
   "current-boss-amount": 0,
@@ -47,7 +47,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682144129163,
+  "lastlogin": 1682269647955,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -58,10 +58,10 @@
   "day5claimed": false,
   "day6claimed": false,
   "day7claimed": false,
-  "minutes-bonus-exp": 167,
-  "minutes-voting-dr": 3,
+  "minutes-bonus-exp": 164,
+  "minutes-voting-dr": -1,
   "minutes-voting-dmg": 0,
-  "total-gained-exp": 352519495,
+  "total-gained-exp": 353802569,
   "barrows-points": 0,
   "donator-points": 325,
   "Skilling-points": 0,
@@ -72,7 +72,7 @@
   "loyalty-points": 0,
   "total-loyalty-points": 0.0,
   "godmodetime": 0,
-  "voting-points": 105,
+  "voting-points": 108,
   "tasks-completion": [
     false,
     false,
@@ -140,7 +140,7 @@
   ],
   "total-prestiges": 0,
   "slayer-spree": 63,
-  "npc-killcount": 12913,
+  "npc-killcount": 13037,
   "spawn-killcount": 0,
   "lord-killcount": 0,
   "demon-killcount": 252,
@@ -172,10 +172,10 @@
   "run-energy": 100,
   "music": false,
   "sounds": false,
-  "auto-retaliate": false,
+  "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 1681912240462,
+  "last-veng": 360313314,
   "fight-type": "SWORD_LUNGE",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -220,7 +220,7 @@
   "slayer-master": "BOSS_SLAYER",
   "slayer-task": "AG_THOMOTH",
   "prev-slayer-task": "MUTANT_HYDRA",
-  "task-amount": 89,
+  "task-amount": 58,
   "task-streak": 25,
   "duo-partner": "null",
   "double-slay-xp": false,
@@ -391,12 +391,12 @@
     {
       "npcId": 9906,
       "item": 995,
-      "amount": 1126576
+      "amount": 1126578
     },
     {
       "npcId": 9906,
       "item": 2023,
-      "amount": 107
+      "amount": 109
     },
     {
       "npcId": 9922,
@@ -1106,7 +1106,7 @@
     {
       "npcId": 3013,
       "item": 995,
-      "amount": 128010
+      "amount": 128041
     }
   ],
   "holy-prayers-unlocked": [
@@ -1159,7 +1159,7 @@
       120,
       1200,
       120,
-      1200,
+      0,
       120,
       1,
       1,
@@ -1220,13 +1220,13 @@
       0,
       0,
       0,
-      79620394,
+      79999818,
       0,
       367601115,
       17181710,
       0,
       0,
-      27066145,
+      27969795,
       0,
       0,
       0,
@@ -1248,7 +1248,7 @@
     },
     {
       "id": 11137,
-      "amount": 24,
+      "amount": 27,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1278,7 +1278,7 @@
     },
     {
       "id": 5023,
-      "amount": 5189,
+      "amount": 5204,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1308,7 +1308,7 @@
     },
     {
       "id": 2023,
-      "amount": 10081,
+      "amount": 10131,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1328,7 +1328,7 @@
     },
     {
       "id": 10835,
-      "amount": 2091099,
+      "amount": 5123889,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1357,7 +1357,7 @@
       }
     },
     {
-      "id": 20089,
+      "id": 795,
       "amount": 1,
       "slot": 0,
       "bonus": {
@@ -1378,7 +1378,7 @@
     },
     {
       "id": 995,
-      "amount": 588,
+      "amount": 7071132,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -2377,7 +2377,7 @@
     },
     {
       "id": 2734,
-      "amount": 1,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -2387,7 +2387,7 @@
     },
     {
       "id": 2736,
-      "amount": 1,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -2777,10 +2777,10 @@
       "boss": false
     },
     {
-      "runningTotal": 24,
+      "runningTotal": 117,
       "npcId": 3013,
       "npcName": "Ag\u0027thomoth",
-      "amount": 24,
+      "amount": 117,
       "boss": false
     }
   ],
@@ -3650,7 +3650,7 @@
       0,
       403,
       1000,
-      6013,
+      6044,
       0,
       0,
       0,
@@ -3747,13 +3747,13 @@
       0,
       63,
       0,
-      8,
+      39,
       6,
       0,
       0,
       0,
       6288,
-      6013,
+      6044,
       0,
       0,
       0,
@@ -4350,7 +4350,7 @@
       false
     ]
   ],
-  "achievements-daily": 321,
+  "achievements-daily": 323,
   "progression-zones": [
     10,
     20,
@@ -4608,7 +4608,7 @@
     "8003": 29,
     "9027": 20,
     "9028": 17,
-    "3013": 8,
+    "3013": 39,
     "9029": 16,
     "9030": 5,
     "3014": 6,

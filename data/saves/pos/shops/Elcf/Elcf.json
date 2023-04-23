@@ -1,35 +1,11 @@
 {
   "shop": [
     {
-      "id": 21036,
-      "amount": 1,
-      "maxAmount": 1,
-      "price": 4000,
-      "effect": "MAGIC_DAMAGE",
-      "bonus": 1
-    },
-    {
       "id": 8808,
       "amount": 1,
       "maxAmount": 1,
       "price": 20000,
       "effect": "MAGIC_DAMAGE",
-      "bonus": 1
-    },
-    {
-      "id": 22127,
-      "amount": 1,
-      "maxAmount": 1,
-      "price": 100000,
-      "effect": "DOUBLE_DROP",
-      "bonus": 19
-    },
-    {
-      "id": 8819,
-      "amount": 1,
-      "maxAmount": 1,
-      "price": 10000,
-      "effect": "ALL_DAMAGE_LOW",
       "bonus": 1
     },
     {
@@ -65,50 +41,10 @@
       "bonus": 0
     },
     {
-      "id": 10865,
-      "amount": 1,
-      "maxAmount": 1,
-      "price": 5000,
-      "effect": "NOTHING",
-      "bonus": 0
-    },
-    {
       "id": 17686,
       "amount": 1,
       "maxAmount": 1,
       "price": 250000,
-      "effect": "NOTHING",
-      "bonus": 0
-    },
-    {
-      "id": 13306,
-      "amount": 1,
-      "maxAmount": 1,
-      "price": 1000,
-      "effect": "NOTHING",
-      "bonus": 0
-    },
-    {
-      "id": 21044,
-      "amount": 1,
-      "maxAmount": 1,
-      "price": 7500,
-      "effect": "NOTHING",
-      "bonus": 0
-    },
-    {
-      "id": 17684,
-      "amount": 1,
-      "maxAmount": 1,
-      "price": 12000,
-      "effect": "NOTHING",
-      "bonus": 0
-    },
-    {
-      "id": 14055,
-      "amount": 1,
-      "maxAmount": 1,
-      "price": 65000,
       "effect": "NOTHING",
       "bonus": 0
     },
@@ -136,7 +72,15 @@
     null,
     null,
     null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
     null
   ],
-  "earnings": 121000
+  "earnings": 27500
 }

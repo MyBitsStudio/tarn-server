@@ -16,8 +16,22 @@
       "effect": "NOTHING",
       "bonus": 0
     },
-    null,
-    null,
+    {
+      "id": 23124,
+      "amount": 1,
+      "maxAmount": 1,
+      "price": 200000,
+      "effect": "NOTHING",
+      "bonus": 0
+    },
+    {
+      "id": 22135,
+      "amount": 1,
+      "maxAmount": 1,
+      "price": 400000,
+      "effect": "TRIPLE_KILLS",
+      "bonus": 1
+    },
     null,
     null,
     null,
@@ -47,5 +61,5 @@
     null,
     null
   ],
-  "earnings": 3900000
+  "earnings": 0
 }

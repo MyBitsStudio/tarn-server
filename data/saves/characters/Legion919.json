@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 56763033,
+  "total-play-time-ms": 57129029,
   "username": "Legion919",
   "password": "begedis7",
   "email": "null",
@@ -8,9 +8,9 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2236,
-    "y": 3746,
-    "z": 0
+    "x": 1631,
+    "y": 5611,
+    "z": 32
   },
   "online-status": "ON",
   "given-starter": true,
@@ -47,7 +47,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682189209344,
+  "lastlogin": 1682246376606,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -61,7 +61,7 @@
   "minutes-bonus-exp": 0,
   "minutes-voting-dr": 0,
   "minutes-voting-dmg": 0,
-  "total-gained-exp": 1938668154,
+  "total-gained-exp": 1963022895,
   "barrows-points": 0,
   "donator-points": 0,
   "Skilling-points": 0,
@@ -139,8 +139,8 @@
     0
   ],
   "total-prestiges": 0,
-  "slayer-spree": 27,
-  "npc-killcount": 4735,
+  "slayer-spree": 28,
+  "npc-killcount": 4797,
   "spawn-killcount": 0,
   "lord-killcount": 0,
   "demon-killcount": 329,
@@ -167,7 +167,7 @@
   "bh-rank": -1,
   "gender": "MALE",
   "spell-book": "NORMAL",
-  "prayer-book": "NORMAL",
+  "prayer-book": "CURSES",
   "running": true,
   "run-energy": 100,
   "music": false,
@@ -175,8 +175,8 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 135503061,
-  "fight-type": "STAFF_POUND",
+  "last-veng": 1682111239553,
+  "fight-type": "STAFF_FOCUS",
   "sol-effect": 0,
   "skull-timer": 0,
   "fuse-combination-timer": 0,
@@ -218,10 +218,10 @@
   "dfs-charges": 0,
   "coins-gambled": 0,
   "slayer-master": "MEDIUM_SLAYER",
-  "slayer-task": "NAGENDRA",
-  "prev-slayer-task": "KOL_GAL",
-  "task-amount": 10,
-  "task-streak": 27,
+  "slayer-task": "MAZE_GUARDIAN",
+  "prev-slayer-task": "NAGENDRA",
+  "task-amount": 41,
+  "task-streak": 28,
   "duo-partner": "null",
   "double-slay-xp": false,
   "recoil-deg": 0,
@@ -741,12 +741,22 @@
     {
       "npcId": 811,
       "item": 995,
-      "amount": 10070
+      "amount": 10082
     },
     {
       "npcId": 811,
       "item": 2023,
-      "amount": 66
+      "amount": 78
+    },
+    {
+      "npcId": 92,
+      "item": 995,
+      "amount": 26018
+    },
+    {
+      "npcId": 92,
+      "item": 2023,
+      "amount": 19
     }
   ],
   "holy-prayers-unlocked": [
@@ -795,11 +805,11 @@
   "skills": {
     "level": [
       33,
-      1,
+      31,
       1,
       1200,
       77,
-      730,
+      444,
       120,
       1,
       1,
@@ -812,7 +822,7 @@
       31,
       1,
       1,
-      61,
+      62,
       1,
       1,
       1,
@@ -822,7 +832,7 @@
     ],
     "maxLevel": [
       33,
-      1,
+      31,
       1,
       1200,
       77,
@@ -839,7 +849,7 @@
       31,
       1,
       1,
-      61,
+      62,
       1,
       1,
       1,
@@ -849,12 +859,12 @@
     ],
     "experience": [
       20146,
+      16272,
       0,
-      0,
-      842798196,
+      853434207,
       1615826,
       11919853,
-      1081963208,
+      1095622033,
       0,
       0,
       0,
@@ -866,7 +876,7 @@
       16275,
       0,
       0,
-      320433,
+      364066,
       0,
       0,
       0,
@@ -878,7 +888,7 @@
   "inventory": [
     {
       "id": 10835,
-      "amount": 133473,
+      "amount": 689594,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -888,7 +898,7 @@
     },
     {
       "id": 995,
-      "amount": 12881755,
+      "amount": 14538555,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -912,8 +922,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 2023,
+      "amount": 31,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -923,7 +933,7 @@
     },
     {
       "id": 5023,
-      "amount": 1239,
+      "amount": 1441,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -932,17 +942,7 @@
       }
     },
     {
-      "id": 2734,
-      "amount": 3,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
-      "id": 2736,
+      "id": 919,
       "amount": 1,
       "slot": 0,
       "bonus": {
@@ -952,8 +952,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 11137,
+      "amount": 11,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -962,9 +962,24 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
-      "slot": 0
+      "id": 1015,
+      "amount": 1,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
+    },
+    {
+      "id": 1017,
+      "amount": 1,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
     },
     {
       "id": 14487,
@@ -987,9 +1002,14 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
-      "slot": 0
+      "id": 937,
+      "amount": 1,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
     },
     {
       "id": -1,
@@ -2250,11 +2270,18 @@
       "boss": false
     },
     {
-      "runningTotal": 52,
+      "runningTotal": 64,
       "npcId": 811,
       "npcName": "Nagendra",
-      "amount": 52,
+      "amount": 64,
       "boss": true
+    },
+    {
+      "runningTotal": 19,
+      "npcId": 92,
+      "npcName": "Maze Guardian",
+      "amount": 19,
+      "boss": false
     }
   ],
   "drops": [
@@ -3023,7 +3050,7 @@
       250,
       0,
       0,
-      52,
+      64,
       20,
       67,
       0,
@@ -3031,7 +3058,7 @@
       0,
       0,
       100,
-      2401,
+      2432,
       7,
       0,
       0,
@@ -3120,20 +3147,20 @@
       0,
       0,
       0,
+      19,
       0,
       0,
       0,
       0,
       0,
-      0,
-      27,
+      28,
       0,
       0,
       0,
       0,
       0,
       1000,
-      2401,
+      2432,
       0,
       0,
       0,
@@ -3228,7 +3255,7 @@
       0,
       0,
       0,
-      27,
+      28,
       0,
       0,
       0,
@@ -3236,7 +3263,7 @@
       0,
       0,
       2028,
-      2401,
+      2432,
       0,
       0,
       0,
@@ -3940,6 +3967,10 @@
     "9911": {
       "canClaim": false,
       "hasClaimed": false
+    },
+    "92": {
+      "canClaim": false,
+      "hasClaimed": false
     }
   },
   "daily-skips": 3,
@@ -3975,7 +4006,7 @@
     "9027": 5,
     "9028": 14,
     "6692": 7,
-    "811": 52,
+    "811": 64,
     "9835": 36,
     "8013": 0,
     "9837": 10,
@@ -3988,7 +4019,8 @@
     "9845": 5,
     "9910": 0,
     "9815": 52,
-    "9911": 37
+    "9911": 37,
+    "92": 19
   },
   "boost": 0,
   "slot-level": 0

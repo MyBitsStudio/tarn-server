@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 180661661,
+  "total-play-time-ms": 183141945,
   "username": "Iron Froob",
   "password": "idontgiveasip7",
   "email": "null",
@@ -8,16 +8,16 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2222,
-    "y": 3747,
-    "z": 0
+    "x": 2978,
+    "y": 9487,
+    "z": 72
   },
   "online-status": "ON",
   "given-starter": true,
   "has-pin2": true,
   "saved-pin2": "1212",
   "saved-ip": "108.174.168.187",
-  "donated": 110,
+  "donated": 117,
   "current-boss-task": 0,
   "current-boss-amount": 0,
   "global-rate": 0,
@@ -40,14 +40,14 @@
   "timeUntilNextReward": 0,
   "current-voting-streak": 0,
   "entriesCurrency": 0.0,
-  "amount-donated-today": 110,
+  "amount-donated-today": 117,
   "claimed-first": false,
   "claimed-second": false,
   "claimed-third": false,
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682209989584,
+  "lastlogin": 1682278548933,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -58,12 +58,12 @@
   "day5claimed": false,
   "day6claimed": false,
   "day7claimed": false,
-  "minutes-bonus-exp": 761,
+  "minutes-bonus-exp": 801,
   "minutes-voting-dr": -1,
   "minutes-voting-dmg": 0,
-  "total-gained-exp": -995047900,
+  "total-gained-exp": -994543240,
   "barrows-points": 0,
-  "donator-points": 110,
+  "donator-points": 2,
   "Skilling-points": 0,
   "prestige-points": 0,
   "achievement-points": 0,
@@ -72,7 +72,7 @@
   "loyalty-points": 0,
   "total-loyalty-points": 0.0,
   "godmodetime": 0,
-  "voting-points": 44,
+  "voting-points": 47,
   "tasks-completion": [
     false,
     false,
@@ -140,7 +140,7 @@
   ],
   "total-prestiges": 0,
   "slayer-spree": 4,
-  "npc-killcount": 6392,
+  "npc-killcount": 6470,
   "spawn-killcount": 0,
   "lord-killcount": 0,
   "demon-killcount": 355,
@@ -175,8 +175,8 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 35730065,
-  "fight-type": "STAFF_POUND",
+  "last-veng": 37271324,
+  "fight-type": "LONGBOW_RAPID",
   "sol-effect": 0,
   "skull-timer": 0,
   "fuse-combination-timer": 0,
@@ -214,13 +214,13 @@
   "process-farming": false,
   "clanchat": "Help",
   "autocast": false,
-  "autocast-spell": 71,
+  "autocast-spell": -1,
   "dfs-charges": 0,
   "coins-gambled": 0,
   "slayer-master": "HARD_SLAYER",
   "slayer-task": "SASUKE",
   "prev-slayer-task": "BOWSER",
-  "task-amount": 75,
+  "task-amount": 36,
   "task-streak": 0,
   "duo-partner": "null",
   "double-slay-xp": false,
@@ -661,12 +661,12 @@
     {
       "npcId": 8013,
       "item": 10946,
-      "amount": 15
+      "amount": 16
     },
     {
       "npcId": 8013,
       "item": 23020,
-      "amount": 14
+      "amount": 15
     },
     {
       "npcId": 8003,
@@ -711,12 +711,12 @@
     {
       "npcId": 9907,
       "item": 10946,
-      "amount": 8
+      "amount": 10
     },
     {
       "npcId": 9907,
       "item": 2023,
-      "amount": 107
+      "amount": 109
     },
     {
       "npcId": 202,
@@ -886,12 +886,12 @@
     {
       "npcId": 9914,
       "item": 995,
-      "amount": 23097
+      "amount": 23136
     },
     {
       "npcId": 9914,
       "item": 2023,
-      "amount": 104
+      "amount": 143
     }
   ],
   "holy-prayers-unlocked": [
@@ -944,7 +944,7 @@
       120,
       1200,
       120,
-      1200,
+      955,
       120,
       1,
       1,
@@ -957,7 +957,7 @@
       1,
       1,
       1,
-      84,
+      86,
       1,
       1,
       1,
@@ -984,7 +984,7 @@
       1,
       1,
       1,
-      84,
+      86,
       1,
       1,
       1,
@@ -1011,7 +1011,7 @@
       0,
       0,
       0,
-      3181500,
+      3686160,
       0,
       0,
       0,
@@ -1032,8 +1032,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 14377,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1043,7 +1043,7 @@
     },
     {
       "id": 2023,
-      "amount": 6808,
+      "amount": 7047,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1052,7 +1052,12 @@
       }
     },
     {
-      "id": 3030,
+      "id": 229,
+      "amount": 1,
+      "slot": 0
+    },
+    {
+      "id": 229,
       "amount": 1,
       "slot": 0
     },
@@ -1067,34 +1072,14 @@
       "slot": 0
     },
     {
-      "id": 3024,
+      "id": 229,
       "amount": 1,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
+      "slot": 0
     },
     {
-      "id": 3024,
+      "id": 229,
       "amount": 1,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
-      "id": 3024,
-      "amount": 1,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
+      "slot": 0
     },
     {
       "id": 3024,
@@ -1118,13 +1103,18 @@
     },
     {
       "id": 995,
-      "amount": 160076059,
+      "amount": 163482024,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
         "rarity": "COMMON",
         "bonus": 0
       }
+    },
+    {
+      "id": 3026,
+      "amount": 1,
+      "slot": 0
     },
     {
       "id": 3024,
@@ -1167,18 +1157,8 @@
       }
     },
     {
-      "id": 3024,
+      "id": 15355,
       "amount": 1,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
-      "id": -1,
-      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1319,7 +1299,7 @@
       }
     },
     {
-      "id": 14377,
+      "id": 5012,
       "amount": 1,
       "slot": 0,
       "bonus": {
@@ -2374,10 +2354,10 @@
       "boss": false
     },
     {
-      "runningTotal": 85,
+      "runningTotal": 124,
       "npcId": 9914,
       "npcName": "Sasuke",
-      "amount": 85,
+      "amount": 124,
       "boss": false
     }
   ],
@@ -3135,7 +3115,7 @@
       303,
       76,
       62,
-      3593,
+      3632,
       45,
       0,
       0,
@@ -3222,7 +3202,7 @@
     ],
     [
       0,
-      44,
+      47,
       0,
       0,
       0,
@@ -3235,9 +3215,9 @@
       0,
       0,
       0,
-      85,
+      124,
       62,
-      3593,
+      3632,
       0,
       0,
       0,
@@ -3324,7 +3304,7 @@
     ],
     [
       0,
-      44,
+      47,
       0,
       0,
       0,
@@ -3340,7 +3320,7 @@
       0,
       0,
       62,
-      3593,
+      3632,
       0,
       0,
       0,
@@ -4146,7 +4126,7 @@
     "9910": 8,
     "3831": 27,
     "9911": 40,
-    "9914": 85
+    "9914": 124
   },
   "boost": 0,
   "slot-level": 0

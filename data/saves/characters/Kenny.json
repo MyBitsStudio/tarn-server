@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 15265769,
+  "total-play-time-ms": 18672538,
   "username": "Kenny",
   "password": "briken2004",
   "email": "null",
@@ -8,8 +8,8 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2219,
-    "y": 3759,
+    "x": 2216,
+    "y": 3761,
     "z": 0
   },
   "online-status": "ON",
@@ -47,7 +47,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682189731337,
+  "lastlogin": 1682260093795,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -61,7 +61,7 @@
   "minutes-bonus-exp": 0,
   "minutes-voting-dr": 0,
   "minutes-voting-dmg": 0,
-  "total-gained-exp": 102300,
+  "total-gained-exp": 2252730,
   "barrows-points": 0,
   "donator-points": 0,
   "Skilling-points": 0,
@@ -139,8 +139,8 @@
     0
   ],
   "total-prestiges": 0,
-  "slayer-spree": 16,
-  "npc-killcount": 4416,
+  "slayer-spree": 19,
+  "npc-killcount": 5220,
   "spawn-killcount": 0,
   "lord-killcount": 0,
   "demon-killcount": 791,
@@ -175,7 +175,7 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 1682136506031,
+  "last-veng": 115514179,
   "fight-type": "LONGSWORD_CHOP",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -218,10 +218,10 @@
   "dfs-charges": 0,
   "coins-gambled": 0,
   "slayer-master": "BOSS_SLAYER",
-  "slayer-task": "ONYX_GRIFFIN",
-  "prev-slayer-task": "SANCTUM_GOLEM",
-  "task-amount": 34,
-  "task-streak": 16,
+  "slayer-task": "NO_TASK",
+  "prev-slayer-task": "ONYX_GRIFFIN",
+  "task-amount": 0,
+  "task-streak": 19,
   "duo-partner": "null",
   "double-slay-xp": false,
   "recoil-deg": 0,
@@ -336,32 +336,32 @@
     {
       "npcId": 9906,
       "item": 995,
-      "amount": 2176921
+      "amount": 2176923
     },
     {
       "npcId": 9906,
       "item": 2023,
-      "amount": 35
+      "amount": 37
     },
     {
       "npcId": 9904,
       "item": 995,
-      "amount": 3865938
+      "amount": 3865940
     },
     {
       "npcId": 9904,
       "item": 2023,
-      "amount": 46
+      "amount": 48
     },
     {
       "npcId": 9908,
       "item": 10946,
-      "amount": 6
+      "amount": 7
     },
     {
       "npcId": 9908,
       "item": 2023,
-      "amount": 303
+      "amount": 304
     },
     {
       "npcId": 9837,
@@ -666,7 +666,7 @@
     {
       "npcId": 1746,
       "item": 995,
-      "amount": 30051
+      "amount": 30178
     },
     {
       "npcId": 8013,
@@ -677,6 +677,11 @@
       "npcId": 8013,
       "item": 23020,
       "amount": 3
+    },
+    {
+      "npcId": 8002,
+      "item": 995,
+      "amount": 29073
     }
   ],
   "holy-prayers-unlocked": [
@@ -727,9 +732,9 @@
       120,
       120,
       120,
-      1200,
+      790,
       120,
-      1200,
+      1181,
       120,
       1,
       1,
@@ -742,7 +747,7 @@
       1,
       1,
       1,
-      91,
+      94,
       1,
       1,
       1,
@@ -769,7 +774,7 @@
       1,
       1,
       1,
-      91,
+      94,
       1,
       1,
       1,
@@ -796,7 +801,7 @@
       0,
       0,
       0,
-      6468500,
+      8618930,
       0,
       0,
       0,
@@ -808,7 +813,7 @@
   "inventory": [
     {
       "id": 10835,
-      "amount": 79713,
+      "amount": 90803,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -818,7 +823,7 @@
     },
     {
       "id": 995,
-      "amount": 979,
+      "amount": 780701,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -848,7 +853,7 @@
     },
     {
       "id": 2023,
-      "amount": 2062,
+      "amount": 2492,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -867,8 +872,18 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 5023,
+      "amount": 277,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
+    },
+    {
+      "id": 705,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -879,22 +894,7 @@
     {
       "id": -1,
       "amount": 0,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
-      "id": -1,
-      "amount": 0,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
+      "slot": 0
     },
     {
       "id": -1,
@@ -1154,13 +1154,13 @@
       }
     },
     {
-      "id": 705,
+      "id": 15647,
       "amount": 1,
       "slot": 0,
       "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
+        "effect": "ALL_DAMAGE_HIGH",
+        "rarity": "MYTHIC",
+        "bonus": 3
       }
     },
     {
@@ -1774,10 +1774,17 @@
       "boss": true
     },
     {
-      "runningTotal": 153,
+      "runningTotal": 534,
       "npcId": 1746,
       "npcName": "Onyx Griffin",
-      "amount": 153,
+      "amount": 534,
+      "boss": false
+    },
+    {
+      "runningTotal": 222,
+      "npcId": 8002,
+      "npcName": "Malvek",
+      "amount": 222,
       "boss": false
     }
   ],
@@ -2523,15 +2530,15 @@
       0,
       0,
       0,
-      16,
+      19,
       71,
       69,
       64,
       0,
       0,
       100,
-      1405,
-      26,
+      1606,
+      31,
       0,
       0,
       0,
@@ -2625,14 +2632,14 @@
       67,
       0,
       95,
-      16,
+      19,
       0,
       0,
       0,
       0,
       69,
       101,
-      1405,
+      1606,
       0,
       0,
       0,
@@ -2725,9 +2732,9 @@
       0,
       0,
       0,
-      0,
-      51,
-      16,
+      74,
+      178,
+      19,
       0,
       0,
       0,
@@ -2735,7 +2742,7 @@
       0,
       0,
       101,
-      1405,
+      1606,
       0,
       0,
       0,
@@ -3332,7 +3339,7 @@
       false
     ]
   ],
-  "achievements-daily": 322,
+  "achievements-daily": 323,
   "progression-zones": [
     17,
     23,
@@ -3369,6 +3376,10 @@
   "daily-task": {},
   "collectionlog-rewards": {
     "9920": {
+      "canClaim": false,
+      "hasClaimed": false
+    },
+    "8002": {
       "canClaim": false,
       "hasClaimed": false
     },
@@ -3487,6 +3498,7 @@
   ],
   "drystreak": {
     "9920": 64,
+    "8002": 74,
     "9027": 23,
     "6692": 5,
     "2342": 95,
@@ -3497,7 +3509,7 @@
     "9838": 5,
     "9807": 9,
     "9904": 0,
-    "1746": 51,
+    "1746": 178,
     "1906": 67,
     "9906": 0,
     "9907": 0,

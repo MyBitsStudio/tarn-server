@@ -335,13 +335,13 @@ public class DesolaceFormulas {
                     rangeLevel *= item.getBonus() / 2;
                     break;*/
                 case ALL_DAMAGE_LOW:
-                    rangeLevel *= 1.1;
+                    rangeLevel *= 1.05;
                     break;
                 case ALL_DAMAGE_MEDIUM:
-                    rangeLevel *= 1.3;
+                    rangeLevel *= 1.07;
                     break;
                 case ALL_DAMAGE_HIGH:
-                    rangeLevel *= 1.5;
+                    rangeLevel *= 1.09;
                     break;
             }
         }
@@ -462,13 +462,13 @@ public class DesolaceFormulas {
                     magicLevel *= item.getBonus() / 2;
                     break;*/
                 case ALL_DAMAGE_LOW:
-                    magicLevel *= 1.1;
+                    magicLevel *= 1.05;
                     break;
                 case ALL_DAMAGE_MEDIUM:
-                    magicLevel *= 1.3;
+                    magicLevel *= 1.07;
                     break;
                 case ALL_DAMAGE_HIGH:
-                    magicLevel *= 1.5;
+                    magicLevel *= 1.09;
                     break;
             }
         }
@@ -648,13 +648,13 @@ public class DesolaceFormulas {
                     damage *= item.getBonus() / 2;
                     break;*/
                 case ALL_DAMAGE_LOW:
-                    damage *= 1.1;
+                    damage *= 1.05;
                     break;
                 case ALL_DAMAGE_MEDIUM:
-                    damage *= 1.3;
+                    damage *= 1.07;
                     break;
                 case ALL_DAMAGE_HIGH:
-                    damage *= 1.5;
+                    damage *= 1.09;
                     break;
             }
         }

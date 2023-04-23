@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 247513181,
+  "total-play-time-ms": 277841452,
   "username": "Asoich",
   "password": "imbest0099",
   "email": "null",
@@ -8,16 +8,16 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2139,
-    "y": 5018,
-    "z": 0
+    "x": 2786,
+    "y": 4775,
+    "z": 412
   },
   "online-status": "ON",
   "given-starter": true,
   "has-pin2": true,
   "saved-pin2": "1999",
   "saved-ip": "79.179.5.47",
-  "donated": 601,
+  "donated": 640,
   "current-boss-task": 0,
   "current-boss-amount": 0,
   "global-rate": 0,
@@ -40,14 +40,14 @@
   "timeUntilNextReward": 0,
   "current-voting-streak": 0,
   "entriesCurrency": 0.0,
-  "amount-donated-today": 601,
+  "amount-donated-today": 640,
   "claimed-first": false,
   "claimed-second": false,
   "claimed-third": false,
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682244832615,
+  "lastlogin": 1682278472771,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -58,12 +58,12 @@
   "day5claimed": false,
   "day6claimed": false,
   "day7claimed": false,
-  "minutes-bonus-exp": 340,
-  "minutes-voting-dr": -1,
+  "minutes-bonus-exp": 154,
+  "minutes-voting-dr": 29,
   "minutes-voting-dmg": 0,
   "total-gained-exp": -334774333,
   "barrows-points": 0,
-  "donator-points": 1,
+  "donator-points": 40,
   "Skilling-points": 0,
   "prestige-points": 0,
   "achievement-points": 0,
@@ -72,7 +72,7 @@
   "loyalty-points": 0,
   "total-loyalty-points": 0.0,
   "godmodetime": 0,
-  "voting-points": 11,
+  "voting-points": 26,
   "tasks-completion": [
     false,
     false,
@@ -140,7 +140,7 @@
   ],
   "total-prestiges": 0,
   "slayer-spree": 1,
-  "npc-killcount": 196830,
+  "npc-killcount": 284393,
   "spawn-killcount": 0,
   "lord-killcount": 0,
   "demon-killcount": 250,
@@ -175,7 +175,7 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 405312735,
+  "last-veng": 433718347,
   "fight-type": "LONGBOW_RAPID",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -209,7 +209,7 @@
     0
   ],
   "effigy": 0,
-  "summon-npc": 3035,
+  "summon-npc": 3042,
   "summon-death": -1,
   "process-farming": false,
   "clanchat": "Help",
@@ -361,22 +361,22 @@
     {
       "npcId": 9907,
       "item": 10946,
-      "amount": 75
+      "amount": 76
     },
     {
       "npcId": 9907,
       "item": 2023,
-      "amount": 180
+      "amount": 181
     },
     {
       "npcId": 8013,
       "item": 10946,
-      "amount": 82
+      "amount": 88
     },
     {
       "npcId": 8013,
       "item": 23020,
-      "amount": 75
+      "amount": 81
     },
     {
       "npcId": 9027,
@@ -686,12 +686,12 @@
     {
       "npcId": 9904,
       "item": 995,
-      "amount": 2226794
+      "amount": 2226795
     },
     {
       "npcId": 9904,
       "item": 2023,
-      "amount": 121
+      "amount": 122
     },
     {
       "npcId": 8014,
@@ -1481,7 +1481,7 @@
     {
       "npcId": 3112,
       "item": 995,
-      "amount": 196135
+      "amount": 197411
     },
     {
       "npcId": 3112,
@@ -1491,7 +1491,7 @@
     {
       "npcId": 3011,
       "item": 995,
-      "amount": 198899
+      "amount": 198948
     },
     {
       "npcId": 9908,
@@ -1511,7 +1511,27 @@
     {
       "npcId": 449,
       "item": 995,
-      "amount": 205875
+      "amount": 206374
+    },
+    {
+      "npcId": 452,
+      "item": 995,
+      "amount": 209390
+    },
+    {
+      "npcId": 187,
+      "item": 995,
+      "amount": 214606
+    },
+    {
+      "npcId": 188,
+      "item": 995,
+      "amount": 111934
+    },
+    {
+      "npcId": 1311,
+      "item": 995,
+      "amount": 243716
     }
   ],
   "holy-prayers-unlocked": [
@@ -1643,7 +1663,7 @@
   "inventory": [
     {
       "id": 10835,
-      "amount": 11934028,
+      "amount": 3122513,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1653,7 +1673,7 @@
     },
     {
       "id": 995,
-      "amount": 417170329,
+      "amount": 137020665,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1663,7 +1683,7 @@
     },
     {
       "id": 2023,
-      "amount": 27708,
+      "amount": 27848,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1691,9 +1711,9 @@
       "amount": 1,
       "slot": 0,
       "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
+        "effect": "DOUBLE_CASH",
+        "rarity": "LEGENDARY",
+        "bonus": 2
       }
     },
     {
@@ -1728,7 +1748,7 @@
     },
     {
       "id": 23020,
-      "amount": 19,
+      "amount": 17,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1737,8 +1757,8 @@
       }
     },
     {
-      "id": 10946,
-      "amount": 8,
+      "id": -1,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1748,7 +1768,7 @@
     },
     {
       "id": 2736,
-      "amount": 33,
+      "amount": 56,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -2687,7 +2707,7 @@
     },
     {
       "id": 2736,
-      "amount": 4,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -4074,6 +4094,16 @@
         "rarity": "COMMON",
         "bonus": 0
       }
+    },
+    {
+      "id": 19495,
+      "amount": 1,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
     }
   ],
   "bank-1": [],
@@ -4552,17 +4582,17 @@
       "boss": true
     },
     {
-      "runningTotal": 8272,
+      "runningTotal": 13224,
       "npcId": 3112,
       "npcName": "Ezkel-Nojad",
-      "amount": 8272,
+      "amount": 13224,
       "boss": false
     },
     {
-      "runningTotal": 5800,
+      "runningTotal": 5992,
       "npcId": 3011,
       "npcName": "Janemba",
-      "amount": 5800,
+      "amount": 5992,
       "boss": false
     },
     {
@@ -4573,17 +4603,45 @@
       "boss": true
     },
     {
-      "runningTotal": 3752,
+      "runningTotal": 5692,
       "npcId": 449,
       "npcName": "Perfect Cell",
-      "amount": 3752,
+      "amount": 5692,
       "boss": true
+    },
+    {
+      "runningTotal": 5424,
+      "npcId": 452,
+      "npcName": "Super buu",
+      "amount": 5424,
+      "boss": true
+    },
+    {
+      "runningTotal": 10168,
+      "npcId": 187,
+      "npcName": "Goku",
+      "amount": 10168,
+      "boss": true
+    },
+    {
+      "runningTotal": 15360,
+      "npcId": 188,
+      "npcName": "Byakuya",
+      "amount": 15360,
+      "boss": false
+    },
+    {
+      "runningTotal": 14476,
+      "npcId": 1311,
+      "npcName": "Queen Fazula",
+      "amount": 14476,
+      "boss": false
     }
   ],
   "drops": [
     {
       "item": 995,
-      "amount": 2141889933,
+      "amount": -2014159363,
       "rareDrop": false
     },
     {
@@ -6414,9 +6472,13 @@
   },
   "lastTGloveIndex": -1,
   "group-ironman-locked": false,
-  "lastInstanceNpc": 449,
+  "lastInstanceNpc": 1311,
   "daily-task": {},
   "collectionlog-rewards": {
+    "1311": {
+      "canClaim": false,
+      "hasClaimed": false
+    },
     "6692": {
       "canClaim": true,
       "hasClaimed": true
@@ -6489,7 +6551,15 @@
       "canClaim": false,
       "hasClaimed": false
     },
+    "187": {
+      "canClaim": false,
+      "hasClaimed": false
+    },
     "9915": {
+      "canClaim": false,
+      "hasClaimed": false
+    },
+    "188": {
       "canClaim": false,
       "hasClaimed": false
     },
@@ -6546,6 +6616,10 @@
       "hasClaimed": false
     },
     "9027": {
+      "canClaim": false,
+      "hasClaimed": false
+    },
+    "452": {
       "canClaim": false,
       "hasClaimed": false
     },
@@ -6703,7 +6777,8 @@
     "SANCTUM_GOLEM_PET",
     "ZEIDAN_GRIMM_PET",
     "GROUDON_PET",
-    "AGUMON_PET"
+    "AGUMON_PET",
+    "SCYLLA_PET"
   ],
   "battlepass-xp": 0,
   "battlepass-premium": false,
@@ -6724,9 +6799,10 @@
     null
   ],
   "drystreak": {
+    "1311": 3619,
     "6692": 1,
     "2342": 54,
-    "3112": 690,
+    "3112": 1309,
     "3115": 1293,
     "811": 45,
     "3117": 1254,
@@ -6742,21 +6818,24 @@
     "9913": 1592,
     "9017": 31,
     "9914": 88,
+    "187": 2542,
     "9915": 11,
+    "188": 3840,
     "9916": 29,
     "9918": 11,
     "9919": 69,
     "9024": 177,
     "9920": 20,
-    "449": 938,
+    "449": 1423,
     "9025": 63,
     "3010": 822,
     "8002": 832,
     "9026": 2,
     "9922": 23,
-    "3011": 871,
+    "3011": 919,
     "8003": 26,
     "9027": 2,
+    "452": 1356,
     "9028": 3,
     "3013": 37,
     "9029": 11,

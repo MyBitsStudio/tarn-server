@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 230506392,
+  "total-play-time-ms": 250876137,
   "username": "Shit",
   "password": "jameelmneh",
   "email": "null",
@@ -8,8 +8,8 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2207,
-    "y": 3746,
+    "x": 2222,
+    "y": 3747,
     "z": 0
   },
   "online-status": "ON",
@@ -47,7 +47,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682057738643,
+  "lastlogin": 1682278271481,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -58,10 +58,10 @@
   "day5claimed": false,
   "day6claimed": false,
   "day7claimed": false,
-  "minutes-bonus-exp": 165,
-  "minutes-voting-dr": 20,
+  "minutes-bonus-exp": -1,
+  "minutes-voting-dr": -1,
   "minutes-voting-dmg": 0,
-  "total-gained-exp": 7997353422,
+  "total-gained-exp": -587106490,
   "barrows-points": 0,
   "donator-points": 0,
   "Skilling-points": 0,
@@ -175,7 +175,7 @@
   "auto-retaliate": false,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 195795511,
+  "last-veng": 1682080241928,
   "fight-type": "LONGSWORD_SLASH",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -209,7 +209,7 @@
     0
   ],
   "effigy": 0,
-  "summon-npc": 3040,
+  "summon-npc": -1,
   "summon-death": -1,
   "process-farming": false,
   "clanchat": "Help",
@@ -336,52 +336,52 @@
     {
       "npcId": 8013,
       "item": 10946,
-      "amount": 36
+      "amount": 42
     },
     {
       "npcId": 8013,
       "item": 23020,
-      "amount": 35
+      "amount": 41
     },
     {
       "npcId": 9906,
       "item": 995,
-      "amount": 2398457
+      "amount": 2398459
     },
     {
       "npcId": 9906,
       "item": 2023,
-      "amount": 81
+      "amount": 83
     },
     {
       "npcId": 9904,
       "item": 995,
-      "amount": 2581881
+      "amount": 2581882
     },
     {
       "npcId": 9904,
       "item": 2023,
-      "amount": 76
+      "amount": 77
     },
     {
       "npcId": 9907,
       "item": 10946,
-      "amount": 26
+      "amount": 29
     },
     {
       "npcId": 9907,
       "item": 2023,
-      "amount": 125
+      "amount": 128
     },
     {
       "npcId": 9908,
       "item": 10946,
-      "amount": 19
+      "amount": 21
     },
     {
       "npcId": 9908,
       "item": 2023,
-      "amount": 317
+      "amount": 319
     }
   ],
   "holy-prayers-unlocked": [
@@ -497,7 +497,7 @@
       0,
       0,
       0,
-      1994531375,
+      2000000000,
       0,
       0,
       0,
@@ -523,7 +523,7 @@
     },
     {
       "id": 17634,
-      "amount": 351790,
+      "amount": 463210,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -542,8 +542,8 @@
       }
     },
     {
-      "id": 23020,
-      "amount": 99,
+      "id": 20586,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -553,7 +553,7 @@
     },
     {
       "id": 2023,
-      "amount": 5820,
+      "amount": 6510,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -612,8 +612,8 @@
       }
     },
     {
-      "id": 10946,
-      "amount": 6,
+      "id": 995,
+      "amount": 5208440,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -652,8 +652,8 @@
       }
     },
     {
-      "id": 995,
-      "amount": 16636632,
+      "id": 10946,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1303,22 +1303,22 @@
   "drops": [
     {
       "item": 10946,
-      "amount": 264,
+      "amount": 301,
       "rareDrop": false
     },
     {
       "item": 23020,
-      "amount": 117,
+      "amount": 135,
       "rareDrop": false
     },
     {
       "item": 995,
-      "amount": 215635721,
+      "amount": 222794776,
       "rareDrop": false
     },
     {
       "item": 2023,
-      "amount": 14475,
+      "amount": 15465,
       "rareDrop": false
     }
   ],

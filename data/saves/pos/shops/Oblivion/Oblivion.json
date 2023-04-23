@@ -32,16 +32,86 @@
       "effect": "NOTHING",
       "bonus": 0
     },
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
+    {
+      "id": 22072,
+      "amount": 1,
+      "maxAmount": 1,
+      "price": 1000000,
+      "effect": "NOTHING",
+      "bonus": 0
+    },
+    {
+      "id": 19913,
+      "amount": 2,
+      "maxAmount": 3,
+      "price": 200000,
+      "effect": "NOTHING",
+      "bonus": 0
+    },
+    {
+      "id": 20588,
+      "amount": 1,
+      "maxAmount": 2,
+      "price": 1000000,
+      "effect": "NOTHING",
+      "bonus": 0
+    },
+    {
+      "id": 20587,
+      "amount": 2,
+      "maxAmount": 2,
+      "price": 1000000,
+      "effect": "NOTHING",
+      "bonus": 0
+    },
+    {
+      "id": 19918,
+      "amount": 8,
+      "maxAmount": 9,
+      "price": 200000,
+      "effect": "NOTHING",
+      "bonus": 0
+    },
+    {
+      "id": 19490,
+      "amount": 1,
+      "maxAmount": 2,
+      "price": 100000,
+      "effect": "NOTHING",
+      "bonus": 0
+    },
+    {
+      "id": 22135,
+      "amount": 2,
+      "maxAmount": 2,
+      "price": 450000,
+      "effect": "DOUBLE_DROP",
+      "bonus": 17
+    },
+    {
+      "id": 19913,
+      "amount": 1,
+      "maxAmount": 2,
+      "price": 200000,
+      "effect": "MAGIC_DAMAGE",
+      "bonus": 1
+    },
+    {
+      "id": 21934,
+      "amount": 2,
+      "maxAmount": 4,
+      "price": 200000,
+      "effect": "NOTHING",
+      "bonus": 0
+    },
+    {
+      "id": 3090,
+      "amount": 2,
+      "maxAmount": 2,
+      "price": 3000000,
+      "effect": "NOTHING",
+      "bonus": 0
+    },
     null,
     null,
     null,
@@ -61,5 +131,5 @@
     null,
     null
   ],
-  "earnings": 0
+  "earnings": 4500000
 }

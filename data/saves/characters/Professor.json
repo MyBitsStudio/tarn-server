@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 69472835,
+  "total-play-time-ms": 70105251,
   "username": "Professor",
   "password": "Arsenal4Ever",
   "email": "null",
@@ -8,8 +8,8 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2224,
-    "y": 3762,
+    "x": 2225,
+    "y": 3750,
     "z": 0
   },
   "online-status": "ON",
@@ -47,7 +47,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682112588553,
+  "lastlogin": 1682273980529,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -58,10 +58,10 @@
   "day5claimed": false,
   "day6claimed": false,
   "day7claimed": false,
-  "minutes-bonus-exp": 2546,
-  "minutes-voting-dr": 52,
+  "minutes-bonus-exp": 2537,
+  "minutes-voting-dr": 43,
   "minutes-voting-dmg": 0,
-  "total-gained-exp": -666321996,
+  "total-gained-exp": -665395576,
   "barrows-points": 0,
   "donator-points": 10,
   "Skilling-points": 0,
@@ -139,8 +139,8 @@
     0
   ],
   "total-prestiges": 0,
-  "slayer-spree": 82,
-  "npc-killcount": 16421,
+  "slayer-spree": 83,
+  "npc-killcount": 16598,
   "spawn-killcount": 0,
   "lord-killcount": 0,
   "demon-killcount": 269,
@@ -175,7 +175,7 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 380442232,
+  "last-veng": 382140241,
   "fight-type": "STAFF_POUND",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -218,10 +218,10 @@
   "dfs-charges": 0,
   "coins-gambled": 0,
   "slayer-master": "BOSS_SLAYER",
-  "slayer-task": "ZEIDAN_GRIMM",
-  "prev-slayer-task": "GORVEK",
-  "task-amount": 34,
-  "task-streak": 82,
+  "slayer-task": "DRAGONITE",
+  "prev-slayer-task": "ZEIDAN_GRIMM",
+  "task-amount": 87,
+  "task-streak": 83,
   "duo-partner": "null",
   "double-slay-xp": false,
   "recoil-deg": 0,
@@ -956,7 +956,7 @@
     {
       "npcId": 3010,
       "item": 995,
-      "amount": 31303
+      "amount": 31339
     },
     {
       "npcId": 9839,
@@ -991,7 +991,7 @@
     {
       "npcId": 9816,
       "item": 995,
-      "amount": 27281
+      "amount": 27293
     },
     {
       "npcId": 9918,
@@ -1069,7 +1069,7 @@
       120,
       1200,
       120,
-      763,
+      0,
       120,
       1,
       1,
@@ -1136,7 +1136,7 @@
       0,
       0,
       630360,
-      26539415,
+      27465835,
       0,
       0,
       7565340,
@@ -1148,7 +1148,7 @@
   "inventory": [
     {
       "id": 995,
-      "amount": 62435118,
+      "amount": 63875118,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1158,7 +1158,7 @@
     },
     {
       "id": 5023,
-      "amount": 1444,
+      "amount": 1598,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1302,8 +1302,8 @@
       }
     },
     {
-      "id": 10946,
-      "amount": 8,
+      "id": -1,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1322,8 +1322,8 @@
       }
     },
     {
-      "id": 23058,
-      "amount": 1,
+      "id": -1,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -2981,10 +2981,10 @@
       "boss": true
     },
     {
-      "runningTotal": 651,
+      "runningTotal": 759,
       "npcId": 3010,
       "npcName": "Zeidan Grimm",
-      "amount": 651,
+      "amount": 759,
       "boss": false
     },
     {
@@ -3030,10 +3030,10 @@
       "boss": true
     },
     {
-      "runningTotal": 564,
+      "runningTotal": 597,
       "npcId": 9816,
       "npcName": "Dragonite",
-      "amount": 564,
+      "amount": 597,
       "boss": false
     },
     {
@@ -3047,7 +3047,7 @@
   "drops": [
     {
       "item": 995,
-      "amount": 172984817,
+      "amount": 173038817,
       "rareDrop": false
     },
     {
@@ -3930,7 +3930,7 @@
       0,
       136,
       197,
-      5998,
+      6045,
       0,
       0,
       0,
@@ -4021,19 +4021,19 @@
       78,
       178,
       350,
-      188,
+      199,
       283,
       84,
       258,
-      82,
-      217,
+      83,
+      253,
       88,
       292,
       87,
       0,
       0,
       197,
-      5998,
+      6045,
       0,
       0,
       0,
@@ -4630,7 +4630,7 @@
       false
     ]
   ],
-  "achievements-daily": 321,
+  "achievements-daily": 323,
   "progression-zones": [
     11,
     20,
@@ -4898,7 +4898,7 @@
   "drystreak": {
     "9920": 52,
     "9025": 67,
-    "3010": 217,
+    "3010": 253,
     "8002": 84,
     "9026": 64,
     "9922": 45,
@@ -4915,7 +4915,7 @@
     "9807": 3,
     "1746": 86,
     "9815": 39,
-    "9816": 188,
+    "9816": 199,
     "9817": 34,
     "92": 58,
     "6692": 5,
