@@ -35,7 +35,7 @@ public class VaultOfWar {
     private static final int MERCENARY_GLOVE = 23095;
     public static final int AVATAR_ID = 9839;
     public static final int GLOVES_NPC = 1208;
-    public static final int TOKEN_NPC = 9838;
+    public static final int TOKEN_NPC = 13650;
 
     public static final Position TELEPORT_AREA = new Position(1776,5335,0);
 

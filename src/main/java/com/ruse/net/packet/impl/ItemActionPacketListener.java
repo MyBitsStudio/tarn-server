@@ -3152,7 +3152,7 @@ public class ItemActionPacketListener implements PacketListener {
             case 2390:
             case 2392:
             case 2394:
-            case 2396:
+            case 2397:
             case 2398:
             case 2400:
             case 2402:
@@ -3308,6 +3308,29 @@ public class ItemActionPacketListener implements PacketListener {
                     player.performAnimation(new Animation(712));
                     player.getSkillManager().addExperience(Skill.CRAFTING, 1000);
                     player.getPacketSender().sendMessage("@or2@You have dissolved @red@" + ItemDefinition.forId(itemId).getName() + "@or2@ for@red@ " + amountcoins39 + " @or2@token.");
+                }
+                break;
+            case 22229:
+            case 22230:
+            case 22231:
+            case 22232:
+            case 22233:
+            case 22234:
+            case 22235:
+            case 22236:
+            case 22237:
+            case 22238:
+            case 22239:
+            case 22240:
+                int amountcoins44 = 1;
+                int dissolvereward44 = 6640;
+                Item toDissolveItem44 = player.getInventory().get(slot);
+                if (player.getInventory().contains(toDissolveItem44.getId(), toDissolveItem44.getEffect(), toDissolveItem44.getBonus())) {
+                    player.getInventory().delete(toDissolveItem44)
+                            .add(dissolvereward44, amountcoins44);
+                    player.performAnimation(new Animation(712));
+                    player.getSkillManager().addExperience(Skill.CRAFTING, 1000000);
+                    player.getPacketSender().sendMessage("@or2@You have dissolved @red@" + ItemDefinition.forId(itemId).getName() + "@or2@ for@red@ " + amountcoins44 + " @or2@Owner's Gemstone.");
                 }
                 break;
 

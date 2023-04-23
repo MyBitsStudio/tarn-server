@@ -149,6 +149,7 @@ public final class WeaponAnimations {
 		case 18356:
 		case 19331:
 		case 13640:
+			case 2397:
 		case 20555:
 		
 			playerStandIndex = 809;
@@ -315,6 +316,8 @@ public final class WeaponAnimations {
 		if (weaponId == 9941 || weaponId == 20553)
 			return 5061;
 		if (weaponId == 5012)
+			return 1074;
+		if (weaponId == 12843)
 			return 1074;
 		if (weaponId == 2296)
 			return 1074;

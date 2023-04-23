@@ -469,7 +469,7 @@ public class NPCDrops {
             }
 
             if (CustomDropUtils.getDoubleDropChance(player, npc.getId()) > 0) {
-                int chance = RandomUtility.exclusiveRandom(0, 100);
+                int chance = RandomUtility.exclusiveRandom(0, 5000);
                 if (chance <= CustomDropUtils.getDoubleDropChance(player, npc.getId())) {
                     player.performGraphic(new Graphic(436));
                     if (player.getGameMode() == GameMode.ULTIMATE_IRONMAN) {
