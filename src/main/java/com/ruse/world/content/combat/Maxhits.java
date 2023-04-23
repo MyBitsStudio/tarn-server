@@ -454,9 +454,6 @@ public class Maxhits {
             if (player.getEquipment().contains(22111)) { //Tier 6 Aura
                 maxHit *= 1.10D;
             }
-            if (player.getEquipment().contains(22109)) { //Tier 6 Aura
-                maxHit *= 1.5;
-            }
             if (player.getDmgPotionTimer() > 0) {
                 maxHit *= 1.5;
             }
