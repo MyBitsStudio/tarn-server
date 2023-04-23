@@ -171,7 +171,7 @@ public enum CombatSpecial {
 			return new CombatContainer(player, target, 3, CombatType.RANGED, true);
 		}
 	},
-	MINIGUN(new int[] { 4017, 19135, 19136, 19137, 20173, 671, 20553, 19843,18636,8088,8411,22148,5012,5010,5011,22113,21606,8001,22089,9929,14056,15785,8253, 22083 }, 33, 1.01, 2.01, CombatType.RANGED,
+	MINIGUN(new int[] { 4017, 19135, 19136, 19137, 20173, 671, 20553, 19843,18636,8088,8411,22148,5012,12843,5010,5011,22113,21606,8001,22089,9929,14056,15785,8253, 22083 }, 33, 1.01, 2.01, CombatType.RANGED,
 			WeaponInterface.BSOAT) { // arma spec
 		@Override
 		public CombatContainer container(Player player, Character target) {
@@ -605,7 +605,7 @@ public enum CombatSpecial {
 			return new CombatContainer(player, target, 2, CombatType.RANGED, true);
 		}
 	},
-	HAND_CANNON(new int[] { 4017, 15241, 19843,18636,8088,8411,22148,5012,5011,22113,5010,22089,8001,21606,9929,14056,8253, 13956, 19135 }, 45, 1.45, 1.15, CombatType.RANGED, WeaponInterface.SHORTBOW) {
+	HAND_CANNON(new int[] { 4017, 15241, 19843,18636,8088,8411,22148,5012,12843,5011,22113,5010,22089,8001,21606,9929,14056,8253, 13956, 19135 }, 45, 1.45, 1.15, CombatType.RANGED, WeaponInterface.SHORTBOW) {
 
 		@Override
 		public CombatContainer container(Player player, Character target) {

@@ -73,6 +73,7 @@ public enum TeleInterfaceLocation {
     LOCATION66(new Position(2964, 9478, 148), "Tier Ranking: 55 \\n \\n Multi: True \\n \\n KC Req: 10K Gokus \\n \\n Recommended ELO: 4705+"), //byakuya
     LOCATION71(new Position(2472, 10163, 0), "Tier Ranking: 56 \\n \\n Multi: True \\n \\n KC Req: 15K Byakuya \\n \\n Recommended ELO: 4705+"), //fazula
     LOCATION72(new Position(2472, 10163, 4), "Tier Ranking: 57 \\n \\n Multi: True \\n \\n KC Req: 15K Fazula \\n \\n Recommended ELO: 4705+"), //yasuda
+    LOCATION73(new Position(2472, 10163, 8), "Tier Ranking: 58 \\n \\n Multi: True \\n \\n KC Req: 25K Yasuda \\n \\n Recommended ELO: 4705+"), //yasuda
 
 
     LOCATION67(new Position(2137, 5016, 8), "Tier Ranking: ? \\n \\n Multi: True \\n \\n KC Req: None\\n \\n Recommended ELO: 10+"), //veigar

@@ -198,7 +198,7 @@ public enum UpgradeInterfaceData {
     ARMOUR1055("Lili Boots", new Item(22141, 1), new Item(2390, 1), UpgradeInterfaceCategory.ARMOUR, new Item(10835, 75000), new Item(15250, 1)),
     ARMOUR1056("Lili Gloves", new Item(22139, 1), new Item(2392, 1), UpgradeInterfaceCategory.ARMOUR, new Item(10835, 75000), new Item(15250, 1)),
     ARMOUR1057("Lili Aura", new Item(22142, 1), new Item(2394, 1), UpgradeInterfaceCategory.ACCESSORIES, new Item(10835, 75000), new Item(15252, 1)),
-    ARMOUR1058("Groudon-Flame Staff", new Item(13640, 1), new Item(2396, 1), UpgradeInterfaceCategory.WEAPONS, new Item(10835, 100000), new Item(15251, 1)),
+    ARMOUR1058("Groudon-Flame Staff", new Item(13640, 1), new Item(2397, 1), UpgradeInterfaceCategory.WEAPONS, new Item(10835, 100000), new Item(15251, 1)),
     ARMOUR1059("Groudon-Flame Shield", new Item(13964, 1), new Item(2398, 1), UpgradeInterfaceCategory.WEAPONS, new Item(10835, 100000), new Item(15251, 1)),
     ARMOUR1061("Groudon-Flame Helm", new Item(21934, 1), new Item(2400, 1), UpgradeInterfaceCategory.ARMOUR, new Item(10835, 100000), new Item(15250, 1)),
     ARMOUR1062("Groudon-Flame Body", new Item(19918, 1), new Item(2402, 1), UpgradeInterfaceCategory.ARMOUR, new Item(10835, 100000), new Item(15250, 1)),

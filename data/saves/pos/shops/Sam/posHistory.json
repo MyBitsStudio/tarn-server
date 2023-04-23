@@ -1,0 +1,44 @@
+{
+  "shop-history": [
+    {
+      "id": 23051,
+      "amount": 1,
+      "buyer": "Daryl Dixon",
+      "price": 1500,
+      "effect": "NOTHING",
+      "bonus": 0
+    },
+    {
+      "id": 23054,
+      "amount": 1,
+      "buyer": "Daryl Dixon",
+      "price": 1500,
+      "effect": "DOUBLE_DROP",
+      "bonus": 8
+    },
+    {
+      "id": 23055,
+      "amount": 1,
+      "buyer": "Cheech",
+      "price": 1500,
+      "effect": "MAGIC_DAMAGE",
+      "bonus": 1
+    },
+    {
+      "id": 23055,
+      "amount": 1,
+      "buyer": "Cheech",
+      "price": 1000,
+      "effect": "ALL_DAMAGE_LOW",
+      "bonus": 1
+    },
+    {
+      "id": 23051,
+      "amount": 1,
+      "buyer": "Time",
+      "price": 1500,
+      "effect": "DOUBLE_DROP",
+      "bonus": 17
+    }
+  ]
+}

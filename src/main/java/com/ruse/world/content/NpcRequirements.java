@@ -81,6 +81,7 @@ public enum NpcRequirements {
     BYAKUYA(188, 187, 10000), //10k gokus
     FAZULA(1311, 188, 15000), //10k gokus
     YASUDA(1313, 1311, 15000), //10k gokus
+    BGOKU(1318, 1311, 25000), //10k gokus
 
     ;
 
