@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 219274691,
+  "total-play-time-ms": 219457285,
   "username": "Im A Potato",
   "password": "asdfg12345",
   "email": "null",
@@ -8,9 +8,9 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2139,
-    "y": 5018,
-    "z": 8
+    "x": 2222,
+    "y": 3747,
+    "z": 0
   },
   "online-status": "ON",
   "given-starter": true,
@@ -47,7 +47,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682243801481,
+  "lastlogin": 1682244755123,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -58,7 +58,7 @@
   "day5claimed": false,
   "day6claimed": false,
   "day7claimed": false,
-  "minutes-bonus-exp": 870,
+  "minutes-bonus-exp": 867,
   "minutes-voting-dr": -1,
   "minutes-voting-dmg": 0,
   "total-gained-exp": 1640229484,
@@ -175,7 +175,7 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 1682088813147,
+  "last-veng": 156124572,
   "fight-type": "STAFF_FOCUS",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -401,22 +401,22 @@
     {
       "npcId": 9904,
       "item": 995,
-      "amount": 3812898
+      "amount": 3812899
     },
     {
       "npcId": 9904,
       "item": 2023,
-      "amount": 126
+      "amount": 127
     },
     {
       "npcId": 9907,
       "item": 10946,
-      "amount": 66
+      "amount": 67
     },
     {
       "npcId": 9907,
       "item": 2023,
-      "amount": 165
+      "amount": 166
     },
     {
       "npcId": 9838,
@@ -616,12 +616,12 @@
     {
       "npcId": 9906,
       "item": 995,
-      "amount": 2070373
+      "amount": 2070374
     },
     {
       "npcId": 9906,
       "item": 2023,
-      "amount": 171
+      "amount": 172
     },
     {
       "npcId": 8014,
@@ -651,12 +651,12 @@
     {
       "npcId": 9908,
       "item": 10946,
-      "amount": 42
+      "amount": 43
     },
     {
       "npcId": 9908,
       "item": 2023,
-      "amount": 340
+      "amount": 341
     },
     {
       "npcId": 8014,
@@ -1423,7 +1423,7 @@
     },
     {
       "id": 10835,
-      "amount": 10453807,
+      "amount": 10443807,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1443,7 +1443,7 @@
     },
     {
       "id": 2023,
-      "amount": 38171,
+      "amount": 38636,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1473,7 +1473,7 @@
     },
     {
       "id": 995,
-      "amount": 171143323,
+      "amount": 187489007,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1613,7 +1613,7 @@
     },
     {
       "id": 10946,
-      "amount": 10,
+      "amount": 13,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -5697,7 +5697,7 @@
   },
   "lastTGloveIndex": -1,
   "group-ironman-locked": false,
-  "lastInstanceNpc": 1318,
+  "lastInstanceNpc": 1313,
   "daily-task": {
     "MEDIUM_SLAYER_TASKS": {
       "index": 0,

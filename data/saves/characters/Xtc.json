@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 41545676,
+  "total-play-time-ms": 41725565,
   "username": "Xtc",
   "password": "jayjay",
   "email": "null",
@@ -10,7 +10,7 @@
   "position": {
     "x": 2142,
     "y": 5016,
-    "z": 8
+    "z": 0
   },
   "online-status": "ON",
   "given-starter": true,
@@ -47,7 +47,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682243884601,
+  "lastlogin": 1682244757853,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -58,8 +58,8 @@
   "day5claimed": false,
   "day6claimed": false,
   "day7claimed": false,
-  "minutes-bonus-exp": 1168,
-  "minutes-voting-dr": 115,
+  "minutes-bonus-exp": 1166,
+  "minutes-voting-dr": 113,
   "minutes-voting-dmg": 0,
   "total-gained-exp": -1018494130,
   "barrows-points": 0,
@@ -175,7 +175,7 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 47604571,
+  "last-veng": 1682197333170,
   "fight-type": "UNARMED_KICK",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -192,9 +192,9 @@
   "dr-timer": 0,
   "ddr-timer": 0,
   "dmg-timer": 0,
-  "double-dr-timer": 2055,
+  "double-dr-timer": 1755,
   "double-ddr-timer": 0,
-  "double-dmg-timer": 1,
+  "double-dmg-timer": 0,
   "fire-immunity": 0,
   "fire-damage-mod": 0,
   "prayer-renewal-timer": 0,
@@ -209,7 +209,7 @@
     0
   ],
   "effigy": 0,
-  "summon-npc": 3045,
+  "summon-npc": -1,
   "summon-death": -1,
   "process-farming": false,
   "clanchat": "Help",
@@ -411,12 +411,12 @@
     {
       "npcId": 9906,
       "item": 995,
-      "amount": 1082582
+      "amount": 1082583
     },
     {
       "npcId": 9906,
       "item": 2023,
-      "amount": 69
+      "amount": 70
     },
     {
       "npcId": 9922,
@@ -1036,12 +1036,12 @@
     {
       "npcId": 9908,
       "item": 10946,
-      "amount": 9
+      "amount": 10
     },
     {
       "npcId": 9908,
       "item": 2023,
-      "amount": 306
+      "amount": 307
     },
     {
       "npcId": 9806,
@@ -1332,7 +1332,7 @@
       1,
       120,
       120,
-      733,
+      950,
       120,
       1200,
       120,
@@ -1457,7 +1457,7 @@
       }
     },
     {
-      "id": 7543,
+      "id": 20602,
       "amount": 1,
       "slot": 0,
       "bonus": {
@@ -1478,7 +1478,7 @@
     },
     {
       "id": 2023,
-      "amount": 11133,
+      "amount": 11458,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1557,8 +1557,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 7543,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1567,8 +1567,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 7543,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1598,7 +1598,7 @@
     },
     {
       "id": 10946,
-      "amount": 22,
+      "amount": 24,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1618,7 +1618,7 @@
     },
     {
       "id": 995,
-      "amount": 562074465,
+      "amount": 567522273,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1628,7 +1628,7 @@
     },
     {
       "id": 10835,
-      "amount": 15094206,
+      "amount": 30344206,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1714,14 +1714,9 @@
       }
     },
     {
-      "id": 7543,
+      "id": -1,
       "amount": 0,
-      "slot": 0,
-      "bonus": {
-        "effect": "AOE_EFFECT",
-        "rarity": "MYTHIC",
-        "bonus": 2
-      }
+      "slot": 0
     },
     {
       "id": 22233,

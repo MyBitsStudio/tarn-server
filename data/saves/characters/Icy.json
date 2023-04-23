@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 160747623,
+  "total-play-time-ms": 160923927,
   "username": "Icy",
   "password": "airass123",
   "email": "null",
@@ -10,7 +10,7 @@
   "position": {
     "x": 2139,
     "y": 5018,
-    "z": 8
+    "z": 0
   },
   "online-status": "ON",
   "given-starter": true,
@@ -47,7 +47,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682243818654,
+  "lastlogin": 1682244761471,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -58,7 +58,7 @@
   "day5claimed": false,
   "day6claimed": false,
   "day7claimed": false,
-  "minutes-bonus-exp": 1901,
+  "minutes-bonus-exp": 1899,
   "minutes-voting-dr": -1,
   "minutes-voting-dmg": 0,
   "total-gained-exp": 18401354,
@@ -175,7 +175,7 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 1682078530434,
+  "last-veng": 166407331,
   "fight-type": "LONGBOW_RAPID",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -194,7 +194,7 @@
   "dmg-timer": 0,
   "double-dr-timer": 0,
   "double-ddr-timer": 0,
-  "double-dmg-timer": 0,
+  "double-dmg-timer": 1,
   "fire-immunity": 0,
   "fire-damage-mod": 0,
   "prayer-renewal-timer": 0,
@@ -366,12 +366,12 @@
     {
       "npcId": 9906,
       "item": 995,
-      "amount": 1274522
+      "amount": 1274523
     },
     {
       "npcId": 9906,
       "item": 2023,
-      "amount": 146
+      "amount": 147
     },
     {
       "npcId": 9835,
@@ -706,32 +706,32 @@
     {
       "npcId": 9904,
       "item": 995,
-      "amount": 4292819
+      "amount": 4292820
     },
     {
       "npcId": 9904,
       "item": 2023,
-      "amount": 94
+      "amount": 95
     },
     {
       "npcId": 9907,
       "item": 10946,
-      "amount": 38
+      "amount": 39
     },
     {
       "npcId": 9907,
       "item": 2023,
-      "amount": 138
+      "amount": 139
     },
     {
       "npcId": 9908,
       "item": 10946,
-      "amount": 25
+      "amount": 26
     },
     {
       "npcId": 9908,
       "item": 2023,
-      "amount": 322
+      "amount": 323
     },
     {
       "npcId": 811,
@@ -1347,7 +1347,7 @@
       120,
       120,
       120,
-      657,
+      1200,
       120,
       1200,
       120,
@@ -1433,7 +1433,7 @@
     },
     {
       "id": 2023,
-      "amount": 790,
+      "amount": 1255,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1443,7 +1443,7 @@
     },
     {
       "id": 995,
-      "amount": 57014641,
+      "amount": 80220525,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1462,8 +1462,8 @@
       }
     },
     {
-      "id": 10946,
-      "amount": 15,
+      "id": -1,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1472,8 +1472,8 @@
       }
     },
     {
-      "id": 23058,
-      "amount": 3,
+      "id": -1,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1592,8 +1592,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 23058,
+      "amount": 3,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1602,8 +1602,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 10946,
+      "amount": 18,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",

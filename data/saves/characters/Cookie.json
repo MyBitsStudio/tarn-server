@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 178463773,
+  "total-play-time-ms": 178648598,
   "username": "Cookie",
   "password": "123654as",
   "email": "null",
@@ -8,9 +8,9 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2138,
-    "y": 5021,
-    "z": 8
+    "x": 2222,
+    "y": 3747,
+    "z": 0
   },
   "online-status": "ON",
   "given-starter": true,
@@ -45,7 +45,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682243801461,
+  "lastlogin": 1682244752879,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -56,7 +56,7 @@
   "day5claimed": false,
   "day6claimed": false,
   "day7claimed": false,
-  "minutes-bonus-exp": 922,
+  "minutes-bonus-exp": 919,
   "minutes-voting-dr": -1,
   "minutes-voting-dmg": 0,
   "total-gained-exp": 1577279798,
@@ -173,7 +173,7 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 254927175,
+  "last-veng": 1681990010383,
   "fight-type": "STAFF_FOCUS",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -399,22 +399,22 @@
     {
       "npcId": 9906,
       "item": 995,
-      "amount": 1758766
+      "amount": 1758767
     },
     {
       "npcId": 9906,
       "item": 2023,
-      "amount": 187
+      "amount": 188
     },
     {
       "npcId": 9904,
       "item": 995,
-      "amount": 3873979
+      "amount": 3873980
     },
     {
       "npcId": 9904,
       "item": 2023,
-      "amount": 140
+      "amount": 141
     },
     {
       "npcId": 9907,
@@ -429,12 +429,12 @@
     {
       "npcId": 9908,
       "item": 10946,
-      "amount": 47
+      "amount": 48
     },
     {
       "npcId": 9908,
       "item": 2023,
-      "amount": 351
+      "amount": 352
     },
     {
       "npcId": 9838,
@@ -1462,13 +1462,13 @@
   ],
   "skills": {
     "level": [
-      144,
-      144,
-      144,
+      70,
+      120,
+      120,
       1200,
-      144,
+      120,
       1090,
-      144,
+      120,
       1,
       1,
       1,
@@ -1551,7 +1551,7 @@
     },
     {
       "id": 995,
-      "amount": 345495012,
+      "amount": 356401158,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1590,13 +1590,13 @@
       }
     },
     {
-      "id": 15645,
-      "amount": 1,
+      "id": -1,
+      "amount": 0,
       "slot": 0,
       "bonus": {
-        "effect": "DROP_RATE_LOW",
-        "rarity": "RARE",
-        "bonus": 18
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
       }
     },
     {
@@ -1620,8 +1620,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 10946,
+      "amount": 2,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1695,13 +1695,13 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 15645,
+      "amount": 1,
       "slot": 0,
       "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
+        "effect": "DROP_RATE_LOW",
+        "rarity": "RARE",
+        "bonus": 18
       }
     },
     {
@@ -1746,7 +1746,7 @@
     },
     {
       "id": 2023,
-      "amount": 48981,
+      "amount": 49346,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",

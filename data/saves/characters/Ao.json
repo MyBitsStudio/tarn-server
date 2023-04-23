@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 364447957,
+  "total-play-time-ms": 364574100,
   "username": "Ao",
   "password": "cheese12",
   "email": "null",
@@ -8,8 +8,8 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2221,
-    "y": 3757,
+    "x": 2139,
+    "y": 5018,
     "z": 0
   },
   "online-status": "ON",
@@ -47,7 +47,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682234224044,
+  "lastlogin": 1682244811846,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -58,7 +58,7 @@
   "day5claimed": false,
   "day6claimed": false,
   "day7claimed": false,
-  "minutes-bonus-exp": 2177,
+  "minutes-bonus-exp": 2175,
   "minutes-voting-dr": -1,
   "minutes-voting-dmg": 0,
   "total-gained-exp": -243512959,
@@ -175,7 +175,7 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 355341189,
+  "last-veng": 1681889596798,
   "fight-type": "STAFF_POUND",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -556,12 +556,12 @@
     {
       "npcId": 9907,
       "item": 10946,
-      "amount": 117
+      "amount": 118
     },
     {
       "npcId": 9907,
       "item": 2023,
-      "amount": 309
+      "amount": 310
     },
     {
       "npcId": 8013,
@@ -666,22 +666,22 @@
     {
       "npcId": 9904,
       "item": 995,
-      "amount": 2591825
+      "amount": 2591826
     },
     {
       "npcId": 9904,
       "item": 2023,
-      "amount": 200
+      "amount": 201
     },
     {
       "npcId": 9908,
       "item": 10946,
-      "amount": 79
+      "amount": 80
     },
     {
       "npcId": 9908,
       "item": 2023,
-      "amount": 371
+      "amount": 372
     },
     {
       "npcId": 9838,
@@ -1963,7 +1963,7 @@
     },
     {
       "id": 995,
-      "amount": 34359192,
+      "amount": 43706688,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1973,7 +1973,7 @@
     },
     {
       "id": 2023,
-      "amount": 330,
+      "amount": 770,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1983,7 +1983,7 @@
     },
     {
       "id": 10946,
-      "amount": 2,
+      "amount": 5,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1993,7 +1993,7 @@
     },
     {
       "id": 10835,
-      "amount": 40000,
+      "amount": 21166805,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -2002,8 +2002,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 21814,
+      "amount": 7,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -2012,8 +2012,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 21815,
+      "amount": 22,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -2022,8 +2022,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 4442,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -3367,7 +3367,7 @@
     },
     {
       "id": 10835,
-      "amount": 21126805,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -3527,7 +3527,7 @@
     },
     {
       "id": 21814,
-      "amount": 7,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -3537,7 +3537,7 @@
     },
     {
       "id": 21815,
-      "amount": 22,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -3547,7 +3547,7 @@
     },
     {
       "id": 4442,
-      "amount": 1,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",

@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 7584534,
+  "total-play-time-ms": 7760241,
   "username": "Life",
   "password": "TarN-11!",
   "email": "null",
@@ -8,9 +8,9 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2181,
-    "y": 3736,
-    "z": 0
+    "x": 2706,
+    "y": 4756,
+    "z": 28
   },
   "online-status": "ON",
   "given-starter": true,
@@ -47,7 +47,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682243831191,
+  "lastlogin": 1682244762066,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -61,7 +61,7 @@
   "minutes-bonus-exp": -1,
   "minutes-voting-dr": -1,
   "minutes-voting-dmg": 0,
-  "total-gained-exp": 883335162,
+  "total-gained-exp": 885087756,
   "barrows-points": 0,
   "donator-points": 0,
   "Skilling-points": 0,
@@ -139,8 +139,8 @@
     0
   ],
   "total-prestiges": 0,
-  "slayer-spree": 1,
-  "npc-killcount": 5118,
+  "slayer-spree": 2,
+  "npc-killcount": 5302,
   "spawn-killcount": 0,
   "lord-killcount": 0,
   "demon-killcount": 1042,
@@ -175,7 +175,7 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 1682243168270,
+  "last-veng": 1769503,
   "fight-type": "STAFF_BASH",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -218,10 +218,10 @@
   "dfs-charges": 0,
   "coins-gambled": 0,
   "slayer-master": "EASY_SLAYER",
-  "slayer-task": "IMPERIAL_HOUND",
-  "prev-slayer-task": "ZINQRUX",
-  "task-amount": 44,
-  "task-streak": 1,
+  "slayer-task": "REVENANT_WYVERN",
+  "prev-slayer-task": "IMPERIAL_HOUND",
+  "task-amount": 12,
+  "task-streak": 2,
   "duo-partner": "null",
   "double-slay-xp": false,
   "recoil-deg": 0,
@@ -421,17 +421,17 @@
     {
       "npcId": 9838,
       "item": 995,
-      "amount": 749
+      "amount": 805
     },
     {
       "npcId": 9838,
       "item": 2023,
-      "amount": 150
+      "amount": 206
     },
     {
       "npcId": 9838,
       "item": 20089,
-      "amount": 3
+      "amount": 4
     },
     {
       "npcId": 9838,
@@ -451,7 +451,7 @@
     {
       "npcId": 9838,
       "item": 20093,
-      "amount": 2
+      "amount": 6
     },
     {
       "npcId": 9838,
@@ -586,17 +586,17 @@
     {
       "npcId": 6692,
       "item": 995,
-      "amount": 1162
+      "amount": 1198
     },
     {
       "npcId": 6692,
       "item": 2023,
-      "amount": 163
+      "amount": 199
     },
     {
       "npcId": 6692,
       "item": 18001,
-      "amount": 5
+      "amount": 6
     },
     {
       "npcId": 6692,
@@ -611,7 +611,7 @@
     {
       "npcId": 6692,
       "item": 18005,
-      "amount": 1
+      "amount": 2
     },
     {
       "npcId": 6692,
@@ -761,7 +761,7 @@
     {
       "npcId": 6692,
       "item": 18003,
-      "amount": 2
+      "amount": 3
     },
     {
       "npcId": 202,
@@ -837,7 +837,7 @@
       1,
       1,
       1,
-      58,
+      62,
       1,
       1,
       81,
@@ -864,7 +864,7 @@
       1,
       1,
       1,
-      58,
+      62,
       1,
       1,
       81,
@@ -885,13 +885,13 @@
       0,
       0,
       0,
-      75466894,
+      77114378,
       0,
       0,
       0,
       0,
       0,
-      233650,
+      338760,
       0,
       0,
       2400024,
@@ -903,7 +903,7 @@
   "inventory": [
     {
       "id": 995,
-      "amount": 107125,
+      "amount": 176725,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -913,7 +913,7 @@
     },
     {
       "id": 10835,
-      "amount": 13164,
+      "amount": 13294,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -933,7 +933,7 @@
     },
     {
       "id": 2023,
-      "amount": 680,
+      "amount": 772,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -997,18 +997,18 @@
       }
     },
     {
-      "id": 23056,
+      "id": 21049,
       "amount": 1,
       "slot": 0,
       "bonus": {
-        "effect": "DROP_RATE_LOW",
-        "rarity": "RARE",
-        "bonus": 20
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
       }
     },
     {
       "id": 5023,
-      "amount": 73,
+      "amount": 105,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1027,8 +1027,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 18003,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1037,8 +1037,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 18005,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1229,13 +1229,13 @@
       }
     },
     {
-      "id": 21049,
+      "id": 23056,
       "amount": 1,
       "slot": 0,
       "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
+        "effect": "DROP_RATE_LOW",
+        "rarity": "RARE",
+        "bonus": 20
       }
     },
     {
@@ -1989,10 +1989,10 @@
       "boss": false
     },
     {
-      "runningTotal": 150,
+      "runningTotal": 206,
       "npcId": 9838,
       "npcName": "Imperial Hound",
-      "amount": 150,
+      "amount": 206,
       "boss": false
     },
     {
@@ -2017,10 +2017,10 @@
       "boss": false
     },
     {
-      "runningTotal": 163,
+      "runningTotal": 199,
       "npcId": 6692,
       "npcName": "Revenant Wyvern",
-      "amount": 163,
+      "amount": 199,
       "boss": false
     },
     {
@@ -2823,14 +2823,14 @@
       250,
       54,
       0,
-      1,
+      2,
       0,
       0,
       0,
       0,
       0,
       100,
-      2559,
+      2651,
       4,
       0,
       0,
@@ -2925,14 +2925,14 @@
       0,
       0,
       0,
-      1,
+      2,
       0,
       0,
       0,
       0,
       0,
       102,
-      2559,
+      2651,
       0,
       0,
       0,
@@ -3027,7 +3027,7 @@
       0,
       0,
       0,
-      1,
+      2,
       0,
       0,
       0,
@@ -3035,7 +3035,7 @@
       0,
       0,
       102,
-      2559,
+      2651,
       0,
       0,
       0,
@@ -3774,7 +3774,7 @@
     "8003": 13,
     "9027": 27,
     "9028": 1,
-    "6692": 3,
+    "6692": 9,
     "9029": 1,
     "9030": 18,
     "202": 54,
@@ -3782,7 +3782,7 @@
     "8013": 0,
     "9837": 10,
     "8014": 1,
-    "9838": 0,
+    "9838": 6,
     "9807": 5,
     "9906": 0,
     "9845": 8,

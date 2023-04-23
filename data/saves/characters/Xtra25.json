@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 53302704,
+  "total-play-time-ms": 53487357,
   "username": "Xtra25",
   "password": "Paint225",
   "email": "null",
@@ -8,8 +8,8 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2978,
-    "y": 2771,
+    "x": 2139,
+    "y": 5018,
     "z": 0
   },
   "online-status": "ON",
@@ -45,7 +45,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682243811999,
+  "lastlogin": 1682244752934,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -56,7 +56,7 @@
   "day5claimed": false,
   "day6claimed": false,
   "day7claimed": false,
-  "minutes-bonus-exp": 118,
+  "minutes-bonus-exp": 115,
   "minutes-voting-dr": 0,
   "minutes-voting-dmg": 0,
   "total-gained-exp": -502210804,
@@ -173,7 +173,7 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 1681941374182,
+  "last-veng": 303563406,
   "fight-type": "STAFF_BASH",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -384,32 +384,32 @@
     {
       "npcId": 9906,
       "item": 995,
-      "amount": 1585725
+      "amount": 1585726
     },
     {
       "npcId": 9906,
       "item": 2023,
-      "amount": 63
+      "amount": 64
     },
     {
       "npcId": 9907,
       "item": 10946,
-      "amount": 15
+      "amount": 16
     },
     {
       "npcId": 9907,
       "item": 2023,
-      "amount": 118
+      "amount": 119
     },
     {
       "npcId": 9908,
       "item": 10946,
-      "amount": 17
+      "amount": 18
     },
     {
       "npcId": 9908,
       "item": 2023,
-      "amount": 315
+      "amount": 316
     },
     {
       "npcId": 9911,
@@ -469,12 +469,12 @@
     {
       "npcId": 9904,
       "item": 995,
-      "amount": 2260267
+      "amount": 2260268
     },
     {
       "npcId": 9904,
       "item": 2023,
-      "amount": 60
+      "amount": 61
     },
     {
       "npcId": 8013,
@@ -1195,9 +1195,9 @@
       120,
       120,
       120,
-      1010,
+      1200,
       120,
-      292,
+      905,
       120,
       1,
       1,
@@ -1301,7 +1301,7 @@
     },
     {
       "id": 995,
-      "amount": 794,
+      "amount": 24525346,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1311,7 +1311,7 @@
     },
     {
       "id": 2023,
-      "amount": 1583,
+      "amount": 2048,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1330,8 +1330,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 10946,
+      "amount": 3,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",

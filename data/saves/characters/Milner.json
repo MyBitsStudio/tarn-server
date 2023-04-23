@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 108950805,
+  "total-play-time-ms": 109119979,
   "username": "Milner",
   "password": "homo",
   "email": "null",
@@ -8,8 +8,8 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2139,
-    "y": 5018,
+    "x": 2228,
+    "y": 3725,
     "z": 0
   },
   "online-status": "ON",
@@ -47,7 +47,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682240099796,
+  "lastlogin": 1682244768654,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -58,7 +58,7 @@
   "day5claimed": false,
   "day6claimed": false,
   "day7claimed": false,
-  "minutes-bonus-exp": 3876,
+  "minutes-bonus-exp": 3874,
   "minutes-voting-dr": -1,
   "minutes-voting-dmg": 0,
   "total-gained-exp": 1398037041,
@@ -175,7 +175,7 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 248501716,
+  "last-veng": 1681996436110,
   "fight-type": "LONGBOW_RAPID",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -192,9 +192,9 @@
   "dr-timer": 0,
   "ddr-timer": 0,
   "dmg-timer": 0,
-  "double-dr-timer": 0,
+  "double-dr-timer": 2993,
   "double-ddr-timer": 0,
-  "double-dmg-timer": 5,
+  "double-dmg-timer": 0,
   "fire-immunity": 0,
   "fire-damage-mod": 0,
   "prayer-renewal-timer": 0,
@@ -401,12 +401,12 @@
     {
       "npcId": 9906,
       "item": 995,
-      "amount": 1638960
+      "amount": 1638961
     },
     {
       "npcId": 9906,
       "item": 2023,
-      "amount": 74
+      "amount": 75
     },
     {
       "npcId": 9838,
@@ -611,12 +611,12 @@
     {
       "npcId": 9907,
       "item": 10946,
-      "amount": 28
+      "amount": 29
     },
     {
       "npcId": 9907,
       "item": 2023,
-      "amount": 131
+      "amount": 132
     },
     {
       "npcId": 9028,
@@ -636,22 +636,22 @@
     {
       "npcId": 9904,
       "item": 995,
-      "amount": 2677386
+      "amount": 2677387
     },
     {
       "npcId": 9904,
       "item": 2023,
-      "amount": 113
+      "amount": 114
     },
     {
       "npcId": 9908,
       "item": 10946,
-      "amount": 28
+      "amount": 29
     },
     {
       "npcId": 9908,
       "item": 2023,
-      "amount": 326
+      "amount": 327
     },
     {
       "npcId": 8014,
@@ -1423,7 +1423,7 @@
     },
     {
       "id": 995,
-      "amount": 31,
+      "amount": 119,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1433,7 +1433,7 @@
     },
     {
       "id": 10946,
-      "amount": 6,
+      "amount": 9,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1443,7 +1443,7 @@
     },
     {
       "id": 10835,
-      "amount": 219900,
+      "amount": 247268,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1482,8 +1482,8 @@
       }
     },
     {
-      "id": 15358,
-      "amount": 1,
+      "id": -1,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1628,7 +1628,7 @@
     },
     {
       "id": 2023,
-      "amount": 24583,
+      "amount": 25048,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",

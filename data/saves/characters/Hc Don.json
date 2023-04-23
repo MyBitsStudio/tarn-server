@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 219969660,
+  "total-play-time-ms": 220123238,
   "username": "Hc Don",
   "password": "lantranetas",
   "email": "null",
@@ -8,9 +8,9 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2141,
-    "y": 5016,
-    "z": 8
+    "x": 2139,
+    "y": 5018,
+    "z": 0
   },
   "online-status": "ON",
   "given-starter": true,
@@ -47,7 +47,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682243869614,
+  "lastlogin": 1682244784351,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -58,7 +58,7 @@
   "day5claimed": false,
   "day6claimed": false,
   "day7claimed": false,
-  "minutes-bonus-exp": 1396,
+  "minutes-bonus-exp": 1394,
   "minutes-voting-dr": -1,
   "minutes-voting-dmg": 0,
   "total-gained-exp": -465172084,
@@ -175,7 +175,7 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 293912175,
+  "last-veng": 1681951025753,
   "fight-type": "LONGBOW_RAPID",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -336,12 +336,12 @@
     {
       "npcId": 9906,
       "item": 995,
-      "amount": 1738184
+      "amount": 1738185
     },
     {
       "npcId": 9906,
       "item": 2023,
-      "amount": 197
+      "amount": 198
     },
     {
       "npcId": 9837,
@@ -376,22 +376,22 @@
     {
       "npcId": 9904,
       "item": 995,
-      "amount": 3020060
+      "amount": 3020061
     },
     {
       "npcId": 9904,
       "item": 2023,
-      "amount": 131
+      "amount": 132
     },
     {
       "npcId": 9907,
       "item": 10946,
-      "amount": 64
+      "amount": 65
     },
     {
       "npcId": 9907,
       "item": 2023,
-      "amount": 264
+      "amount": 265
     },
     {
       "npcId": 9911,
@@ -406,12 +406,12 @@
     {
       "npcId": 9908,
       "item": 10946,
-      "amount": 39
+      "amount": 40
     },
     {
       "npcId": 9908,
       "item": 2023,
-      "amount": 335
+      "amount": 336
     },
     {
       "npcId": 9922,
@@ -1254,10 +1254,10 @@
   ],
   "skills": {
     "level": [
-      108,
+      107,
       120,
       120,
-      721,
+      1200,
       120,
       1000,
       120,
@@ -1338,7 +1338,7 @@
   "inventory": [
     {
       "id": 10835,
-      "amount": 17477078,
+      "amount": 17507532,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1348,7 +1348,7 @@
     },
     {
       "id": 995,
-      "amount": 30454010,
+      "amount": 24682678,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1357,9 +1357,14 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
-      "slot": 0
+      "id": 10946,
+      "amount": 9,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
     },
     {
       "id": 11137,
@@ -1382,8 +1387,8 @@
       }
     },
     {
-      "id": 10946,
-      "amount": 6,
+      "id": 10887,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1412,14 +1417,9 @@
       }
     },
     {
-      "id": 10887,
-      "amount": 1,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
+      "id": -1,
+      "amount": 0,
+      "slot": 0
     },
     {
       "id": -1,
@@ -1603,7 +1603,7 @@
     },
     {
       "id": 2023,
-      "amount": 19878,
+      "amount": 20343,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",

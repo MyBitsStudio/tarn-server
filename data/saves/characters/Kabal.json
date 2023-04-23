@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 212456831,
+  "total-play-time-ms": 212639202,
   "username": "Kabal",
   "password": "tarnkabal",
   "email": "null",
@@ -8,9 +8,9 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2141,
+    "x": 2139,
     "y": 5018,
-    "z": 8
+    "z": 0
   },
   "online-status": "ON",
   "given-starter": true,
@@ -45,7 +45,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682243889406,
+  "lastlogin": 1682244755360,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -173,7 +173,7 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 167473226,
+  "last-veng": 1682077464504,
   "fight-type": "LONGBOW_LONGRANGE",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -192,7 +192,7 @@
   "dmg-timer": 0,
   "double-dr-timer": 0,
   "double-ddr-timer": 0,
-  "double-dmg-timer": 0,
+  "double-dmg-timer": 1,
   "fire-immunity": 0,
   "fire-damage-mod": 0,
   "prayer-renewal-timer": 0,
@@ -589,32 +589,32 @@
     {
       "npcId": 9906,
       "item": 995,
-      "amount": 1456612
+      "amount": 1456613
     },
     {
       "npcId": 9906,
       "item": 2023,
-      "amount": 160
+      "amount": 161
     },
     {
       "npcId": 9904,
       "item": 995,
-      "amount": 2854726
+      "amount": 2854727
     },
     {
       "npcId": 9904,
       "item": 2023,
-      "amount": 107
+      "amount": 108
     },
     {
       "npcId": 9907,
       "item": 10946,
-      "amount": 40
+      "amount": 41
     },
     {
       "npcId": 9907,
       "item": 2023,
-      "amount": 139
+      "amount": 140
     },
     {
       "npcId": 9910,
@@ -839,12 +839,12 @@
     {
       "npcId": 9908,
       "item": 10946,
-      "amount": 29
+      "amount": 30
     },
     {
       "npcId": 9908,
       "item": 2023,
-      "amount": 328
+      "amount": 329
     },
     {
       "npcId": 9918,
@@ -1287,13 +1287,13 @@
   ],
   "skills": {
     "level": [
-      173,
-      173,
-      173,
-      775,
-      173,
+      171,
+      171,
+      171,
       1200,
-      173,
+      171,
+      1200,
+      171,
       1,
       1,
       1,
@@ -1536,7 +1536,7 @@
     },
     {
       "id": 10946,
-      "amount": 20,
+      "amount": 23,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1566,7 +1566,7 @@
     },
     {
       "id": 995,
-      "amount": 166,
+      "amount": 23712286,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1576,7 +1576,7 @@
     },
     {
       "id": 2023,
-      "amount": 34830,
+      "amount": 35295,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",

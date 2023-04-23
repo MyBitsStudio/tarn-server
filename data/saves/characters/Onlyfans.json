@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 470294417,
+  "total-play-time-ms": 470473123,
   "username": "Onlyfans",
   "password": "lolpml789",
   "email": "null",
@@ -8,7 +8,7 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2222,
+    "x": 2220,
     "y": 3747,
     "z": 0
   },
@@ -47,7 +47,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682243874397,
+  "lastlogin": 1682244759050,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -58,8 +58,8 @@
   "day5claimed": false,
   "day6claimed": false,
   "day7claimed": false,
-  "minutes-bonus-exp": 21884,
-  "minutes-voting-dr": 101,
+  "minutes-bonus-exp": 22062,
+  "minutes-voting-dr": 117,
   "minutes-voting-dmg": 0,
   "total-gained-exp": 326663402,
   "barrows-points": 0,
@@ -72,7 +72,7 @@
   "loyalty-points": 0,
   "total-loyalty-points": 0.0,
   "godmodetime": 0,
-  "voting-points": 248,
+  "voting-points": 254,
   "tasks-completion": [
     false,
     false,
@@ -140,7 +140,7 @@
   ],
   "total-prestiges": 0,
   "slayer-spree": 0,
-  "npc-killcount": 907800,
+  "npc-killcount": 907816,
   "spawn-killcount": 0,
   "lord-killcount": 0,
   "demon-killcount": 377,
@@ -175,7 +175,7 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 1681937767395,
+  "last-veng": 307170357,
   "fight-type": "LONGBOW_RAPID",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -191,7 +191,7 @@
   "exp-timer": 0,
   "dr-timer": 0,
   "ddr-timer": 0,
-  "dmg-timer": 0,
+  "dmg-timer": 810,
   "double-dr-timer": 0,
   "double-ddr-timer": 0,
   "double-dmg-timer": 0,
@@ -511,32 +511,32 @@
     {
       "npcId": 9906,
       "item": 995,
-      "amount": 2172409
+      "amount": 2172411
     },
     {
       "npcId": 9906,
       "item": 2023,
-      "amount": 434
+      "amount": 436
     },
     {
       "npcId": 9904,
       "item": 995,
-      "amount": 2778354
+      "amount": 2778356
     },
     {
       "npcId": 9904,
       "item": 2023,
-      "amount": 290
+      "amount": 293
     },
     {
       "npcId": 9908,
       "item": 10946,
-      "amount": 128
+      "amount": 130
     },
     {
       "npcId": 9908,
       "item": 2023,
-      "amount": 424
+      "amount": 426
     },
     {
       "npcId": 9910,
@@ -691,12 +691,12 @@
     {
       "npcId": 9907,
       "item": 10946,
-      "amount": 189
+      "amount": 191
     },
     {
       "npcId": 9907,
       "item": 2023,
-      "amount": 284
+      "amount": 286
     },
     {
       "npcId": 9029,
@@ -1231,7 +1231,7 @@
     {
       "npcId": 9907,
       "item": 3578,
-      "amount": 8
+      "amount": 9
     },
     {
       "npcId": 9839,
@@ -2134,13 +2134,13 @@
   ],
   "skills": {
     "level": [
-      167,
-      167,
-      167,
+      165,
+      165,
+      165,
       1200,
-      167,
+      165,
       1190,
-      167,
+      165,
       1,
       1,
       1,
@@ -2237,8 +2237,8 @@
       }
     },
     {
-      "id": 23020,
-      "amount": 6,
+      "id": 3578,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -2257,8 +2257,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 3090,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -2267,8 +2267,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 3090,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -2277,13 +2277,18 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
-      "slot": 0
+      "id": 3090,
+      "amount": 1,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
     },
     {
       "id": 2023,
-      "amount": 1240,
+      "amount": 2210,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -2297,8 +2302,8 @@
       "slot": 0
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 3090,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -2307,8 +2312,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 3090,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -2337,8 +2342,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 15355,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -2398,7 +2403,7 @@
     },
     {
       "id": 10946,
-      "amount": 36,
+      "amount": 42,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -2438,7 +2443,7 @@
     },
     {
       "id": 10835,
-      "amount": 30506957,
+      "amount": 29303957,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -2478,7 +2483,7 @@
     },
     {
       "id": 995,
-      "amount": 365,
+      "amount": 36495193,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -5473,31 +5478,31 @@
       "boss": true
     },
     {
-      "runningTotal": 63,
+      "runningTotal": 66,
       "npcId": 9906,
       "npcName": "Final Boss Veigar",
-      "amount": 63,
+      "amount": 66,
       "boss": true
     },
     {
-      "runningTotal": 34,
+      "runningTotal": 37,
       "npcId": 9904,
       "npcName": "Nine Tails",
-      "amount": 34,
+      "amount": 37,
       "boss": true
     },
     {
-      "runningTotal": 22,
+      "runningTotal": 25,
       "npcId": 9907,
       "npcName": "Meruem The King",
-      "amount": 22,
+      "amount": 25,
       "boss": true
     },
     {
-      "runningTotal": 16,
+      "runningTotal": 19,
       "npcId": 9908,
       "npcName": "Golden Great Ape",
-      "amount": 16,
+      "amount": 19,
       "boss": true
     },
     {
@@ -5950,7 +5955,7 @@
     },
     {
       "item": 2023,
-      "amount": 112230,
+      "amount": 112310,
       "rareDrop": false
     },
     {
@@ -8324,11 +8329,11 @@
     "811": 6,
     "3117": 756,
     "9903": 31,
-    "9904": 1,
-    "9906": 8,
-    "9907": 2,
+    "9904": 2,
+    "9906": 9,
+    "9907": 0,
     "9012": 63,
-    "9908": 0,
+    "9908": 1,
     "9910": 8,
     "9911": 14,
     "9912": 9,

@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 164253501,
+  "total-play-time-ms": 164423872,
   "username": "Akuna",
   "password": "kahuripauk543",
   "email": "null",
@@ -8,9 +8,9 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2139,
-    "y": 5018,
-    "z": 8
+    "x": 2222,
+    "y": 3747,
+    "z": 0
   },
   "online-status": "ON",
   "given-starter": true,
@@ -47,7 +47,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682243861203,
+  "lastlogin": 1682244767451,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -58,10 +58,10 @@
   "day5claimed": false,
   "day6claimed": false,
   "day7claimed": false,
-  "minutes-bonus-exp": 3889,
+  "minutes-bonus-exp": 3887,
   "minutes-voting-dr": -1,
   "minutes-voting-dmg": 0,
-  "total-gained-exp": 1015801058,
+  "total-gained-exp": 1015812600,
   "barrows-points": 0,
   "donator-points": 2,
   "Skilling-points": 0,
@@ -175,7 +175,7 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 258290606,
+  "last-veng": 1681986647214,
   "fight-type": "STAFF_FOCUS",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -194,7 +194,7 @@
   "dmg-timer": 0,
   "double-dr-timer": 0,
   "double-ddr-timer": 0,
-  "double-dmg-timer": 0,
+  "double-dmg-timer": 1,
   "fire-immunity": 0,
   "fire-damage-mod": 0,
   "prayer-renewal-timer": 0,
@@ -336,22 +336,22 @@
     {
       "npcId": 9906,
       "item": 995,
-      "amount": 1911958
+      "amount": 1911959
     },
     {
       "npcId": 9906,
       "item": 2023,
-      "amount": 156
+      "amount": 157
     },
     {
       "npcId": 9907,
       "item": 10946,
-      "amount": 49
+      "amount": 50
     },
     {
       "npcId": 9907,
       "item": 2023,
-      "amount": 250
+      "amount": 251
     },
     {
       "npcId": 9907,
@@ -361,22 +361,22 @@
     {
       "npcId": 9904,
       "item": 995,
-      "amount": 2518635
+      "amount": 2518636
     },
     {
       "npcId": 9904,
       "item": 2023,
-      "amount": 109
+      "amount": 110
     },
     {
       "npcId": 9908,
       "item": 10946,
-      "amount": 32
+      "amount": 33
     },
     {
       "npcId": 9908,
       "item": 2023,
-      "amount": 631
+      "amount": 632
     },
     {
       "npcId": 8013,
@@ -1302,6 +1302,11 @@
       "npcId": 2342,
       "item": 11001,
       "amount": 1
+    },
+    {
+      "npcId": 9908,
+      "item": 3578,
+      "amount": 1
     }
   ],
   "holy-prayers-unlocked": [
@@ -1352,7 +1357,7 @@
       120,
       120,
       120,
-      685,
+      1200,
       120,
       1140,
       120,
@@ -1415,7 +1420,7 @@
       0,
       0,
       0,
-      1252196,
+      1263738,
       0,
       0,
       296557,
@@ -1437,8 +1442,8 @@
       "slot": 0
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 10946,
+      "amount": 3,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1448,7 +1453,7 @@
     },
     {
       "id": 2023,
-      "amount": 74473,
+      "amount": 74938,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1458,7 +1463,7 @@
     },
     {
       "id": 10835,
-      "amount": 993020,
+      "amount": 993120,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1498,7 +1503,7 @@
     },
     {
       "id": 995,
-      "amount": 177305159,
+      "amount": 202750627,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -2237,7 +2242,7 @@
     },
     {
       "id": 23058,
-      "amount": 1,
+      "amount": 2,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -2671,7 +2676,7 @@
     },
     {
       "id": 8088,
-      "amount": 2,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "DOUBLE_DROP",

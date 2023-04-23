@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 49909069,
+  "total-play-time-ms": 50093750,
   "username": "Bonk",
   "password": "wesley55",
   "email": "null",
@@ -8,9 +8,9 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2139,
-    "y": 5018,
-    "z": 8
+    "x": 2222,
+    "y": 3747,
+    "z": 0
   },
   "online-status": "ON",
   "given-starter": true,
@@ -47,7 +47,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682243810201,
+  "lastlogin": 1682244752972,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -58,8 +58,8 @@
   "day5claimed": false,
   "day6claimed": false,
   "day7claimed": false,
-  "minutes-bonus-exp": 312,
-  "minutes-voting-dr": 39,
+  "minutes-bonus-exp": 309,
+  "minutes-voting-dr": 36,
   "minutes-voting-dmg": 0,
   "total-gained-exp": 10480770,
   "barrows-points": 0,
@@ -175,7 +175,7 @@
   "auto-retaliate": false,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 1682194332319,
+  "last-veng": 50605332,
   "fight-type": "STAFF_BASH",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -361,12 +361,12 @@
     {
       "npcId": 9906,
       "item": 995,
-      "amount": 1444383
+      "amount": 1444384
     },
     {
       "npcId": 9906,
       "item": 2023,
-      "amount": 72
+      "amount": 73
     },
     {
       "npcId": 9835,
@@ -556,22 +556,22 @@
     {
       "npcId": 9907,
       "item": 10946,
-      "amount": 7
+      "amount": 8
     },
     {
       "npcId": 9907,
       "item": 2023,
-      "amount": 102
+      "amount": 103
     },
     {
       "npcId": 9908,
       "item": 10946,
-      "amount": 5
+      "amount": 6
     },
     {
       "npcId": 9908,
       "item": 2023,
-      "amount": 304
+      "amount": 305
     },
     {
       "npcId": 9815,
@@ -681,12 +681,12 @@
     {
       "npcId": 9904,
       "item": 995,
-      "amount": 2511071
+      "amount": 2511072
     },
     {
       "npcId": 9904,
       "item": 2023,
-      "amount": 44
+      "amount": 45
     },
     {
       "npcId": 2342,
@@ -824,7 +824,7 @@
       120,
       1200,
       120,
-      659,
+      647,
       120,
       15,
       1,
@@ -943,7 +943,7 @@
     },
     {
       "id": 995,
-      "amount": 120688,
+      "amount": 4206943,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -983,7 +983,7 @@
     },
     {
       "id": 2023,
-      "amount": 3721,
+      "amount": 4186,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1062,18 +1062,13 @@
       }
     },
     {
-      "id": 3026,
+      "id": 3028,
       "amount": 1,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
+      "slot": 0
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 10946,
+      "amount": 3,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -2870,7 +2865,7 @@
       128,
       100,
       2095,
-      26,
+      30,
       0,
       0,
       0,

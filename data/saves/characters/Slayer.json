@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 381532892,
+  "total-play-time-ms": 381704169,
   "username": "Slayer",
   "password": "blooded1",
   "email": "null",
@@ -8,14 +8,14 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2139,
+    "x": 2138,
     "y": 5018,
-    "z": 8
+    "z": 0
   },
   "online-status": "ON",
   "given-starter": true,
   "has-pin2": false,
-  "donated": 967,
+  "donated": 970,
   "current-boss-task": 0,
   "current-boss-amount": 0,
   "global-rate": 0,
@@ -38,14 +38,14 @@
   "timeUntilNextReward": 0,
   "current-voting-streak": 0,
   "entriesCurrency": 0.0,
-  "amount-donated-today": 957,
+  "amount-donated-today": 960,
   "claimed-first": false,
   "claimed-second": false,
   "claimed-third": false,
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682243841993,
+  "lastlogin": 1682244766537,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -56,12 +56,12 @@
   "day5claimed": false,
   "day6claimed": false,
   "day7claimed": false,
-  "minutes-bonus-exp": 1193,
+  "minutes-bonus-exp": 1191,
   "minutes-voting-dr": -1,
   "minutes-voting-dmg": 0,
   "total-gained-exp": 34305710,
   "barrows-points": 0,
-  "donator-points": 9,
+  "donator-points": 12,
   "Skilling-points": 0,
   "prestige-points": 0,
   "achievement-points": 0,
@@ -173,7 +173,7 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 1681862147402,
+  "last-veng": 382790409,
   "fight-type": "LONGBOW_RAPID",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -207,7 +207,7 @@
     0
   ],
   "effigy": 0,
-  "summon-npc": 1312,
+  "summon-npc": -1,
   "summon-death": -1,
   "process-farming": false,
   "clanchat": "Help",
@@ -679,12 +679,12 @@
     {
       "npcId": 9907,
       "item": 10946,
-      "amount": 68
+      "amount": 69
     },
     {
       "npcId": 9907,
       "item": 2023,
-      "amount": 167
+      "amount": 168
     },
     {
       "npcId": 8013,
@@ -704,12 +704,12 @@
     {
       "npcId": 9906,
       "item": 995,
-      "amount": 1189799
+      "amount": 1189800
     },
     {
       "npcId": 9906,
       "item": 2023,
-      "amount": 254
+      "amount": 255
     },
     {
       "npcId": 8014,
@@ -749,22 +749,22 @@
     {
       "npcId": 9904,
       "item": 995,
-      "amount": 3395495
+      "amount": 3395496
     },
     {
       "npcId": 9904,
       "item": 2023,
-      "amount": 142
+      "amount": 143
     },
     {
       "npcId": 9908,
       "item": 10946,
-      "amount": 35
+      "amount": 36
     },
     {
       "npcId": 9908,
       "item": 2023,
-      "amount": 334
+      "amount": 335
     },
     {
       "npcId": 9029,
@@ -1575,6 +1575,11 @@
       "npcId": 8008,
       "item": 8804,
       "amount": 2
+    },
+    {
+      "npcId": 9908,
+      "item": 4442,
+      "amount": 1
     }
   ],
   "holy-prayers-unlocked": [
@@ -1731,7 +1736,7 @@
     },
     {
       "id": 995,
-      "amount": 352777929,
+      "amount": 368511001,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1791,7 +1796,7 @@
     },
     {
       "id": 2023,
-      "amount": 30450,
+      "amount": 30915,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1860,9 +1865,14 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
-      "slot": 0
+      "id": 4073,
+      "amount": 1,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
     },
     {
       "id": -1,
@@ -1875,9 +1885,14 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
-      "slot": 0
+      "id": 4442,
+      "amount": 1,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
     },
     {
       "id": 13775,

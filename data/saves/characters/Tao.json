@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 268525107,
+  "total-play-time-ms": 268594881,
   "username": "Tao",
   "password": "w1ll0wtr33",
   "email": "null",
@@ -8,9 +8,9 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2137,
-    "y": 5016,
-    "z": 8
+    "x": 2139,
+    "y": 5020,
+    "z": 0
   },
   "online-status": "ON",
   "given-starter": true,
@@ -45,7 +45,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682243828193,
+  "lastlogin": 1682244868263,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -173,7 +173,7 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 1681975625338,
+  "last-veng": 269312698,
   "fight-type": "STAFF_BASH",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -192,7 +192,7 @@
   "dmg-timer": 0,
   "double-dr-timer": 0,
   "double-ddr-timer": 0,
-  "double-dmg-timer": 1,
+  "double-dmg-timer": 0,
   "fire-immunity": 0,
   "fire-damage-mod": 0,
   "prayer-renewal-timer": 0,
@@ -414,12 +414,12 @@
     {
       "npcId": 9908,
       "item": 10946,
-      "amount": 37
+      "amount": 38
     },
     {
       "npcId": 9908,
       "item": 2023,
-      "amount": 337
+      "amount": 338
     },
     {
       "npcId": 9838,
@@ -1631,7 +1631,7 @@
     },
     {
       "id": 2023,
-      "amount": 31638,
+      "amount": 31938,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1735,23 +1735,23 @@
       }
     },
     {
-      "id": 15647,
-      "amount": 1,
+      "id": -1,
+      "amount": 0,
       "slot": 0,
       "bonus": {
-        "effect": "MAGIC_DAMAGE",
-        "rarity": "UNCOMMON",
-        "bonus": 1
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
       }
     },
     {
-      "id": 15647,
-      "amount": 1,
+      "id": -1,
+      "amount": 0,
       "slot": 0,
       "bonus": {
-        "effect": "MAGIC_DAMAGE",
-        "rarity": "UNCOMMON",
-        "bonus": 1
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
       }
     },
     {
@@ -1786,7 +1786,7 @@
     },
     {
       "id": 10946,
-      "amount": 6,
+      "amount": 8,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",

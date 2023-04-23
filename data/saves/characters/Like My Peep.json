@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 507346277,
+  "total-play-time-ms": 507528865,
   "username": "Like My Peep",
   "password": "junk123",
   "email": "null",
@@ -8,9 +8,9 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2137,
-    "y": 5016,
-    "z": 8
+    "x": 2228,
+    "y": 3725,
+    "z": 0
   },
   "online-status": "ON",
   "given-starter": true,
@@ -47,7 +47,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682243867794,
+  "lastlogin": 1682244755115,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -58,7 +58,7 @@
   "day5claimed": false,
   "day6claimed": false,
   "day7claimed": false,
-  "minutes-bonus-exp": 14664,
+  "minutes-bonus-exp": 14661,
   "minutes-voting-dr": -1,
   "minutes-voting-dmg": 0,
   "total-gained-exp": -249821603,
@@ -175,8 +175,8 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 1681872603229,
-  "fight-type": "STAFF_BASH",
+  "last-veng": 372334475,
+  "fight-type": "STAFF_POUND",
   "sol-effect": 0,
   "skull-timer": 0,
   "fuse-combination-timer": 0,
@@ -481,12 +481,12 @@
     {
       "npcId": 9906,
       "item": 995,
-      "amount": 1619901
+      "amount": 1619903
     },
     {
       "npcId": 9906,
       "item": 2023,
-      "amount": 527
+      "amount": 528
     },
     {
       "npcId": 9910,
@@ -731,22 +731,22 @@
     {
       "npcId": 9904,
       "item": 995,
-      "amount": 4121802
+      "amount": 4121803
     },
     {
       "npcId": 9904,
       "item": 2023,
-      "amount": 360
+      "amount": 361
     },
     {
       "npcId": 9908,
       "item": 10946,
-      "amount": 142
+      "amount": 143
     },
     {
       "npcId": 9908,
       "item": 2023,
-      "amount": 440
+      "amount": 441
     },
     {
       "npcId": 8003,
@@ -791,12 +791,12 @@
     {
       "npcId": 9907,
       "item": 10946,
-      "amount": 234
+      "amount": 235
     },
     {
       "npcId": 9907,
       "item": 2023,
-      "amount": 333
+      "amount": 334
     },
     {
       "npcId": 9838,
@@ -2323,7 +2323,7 @@
   "inventory": [
     {
       "id": 995,
-      "amount": 566062824,
+      "amount": 590573924,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -2363,7 +2363,7 @@
     },
     {
       "id": 2023,
-      "amount": 1146,
+      "amount": 1611,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -2472,8 +2472,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 10946,
+      "amount": 3,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -6763,7 +6763,7 @@
   "drops": [
     {
       "item": 995,
-      "amount": 1842602170,
+      "amount": 1855785034,
       "rareDrop": false
     },
     {

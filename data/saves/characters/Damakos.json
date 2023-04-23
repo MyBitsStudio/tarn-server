@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 9309253,
+  "total-play-time-ms": 9481920,
   "username": "Damakos",
   "password": "djhidef101",
   "email": "null",
@@ -8,9 +8,9 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2978,
-    "y": 9492,
-    "z": 8
+    "x": 2973,
+    "y": 9485,
+    "z": 12
   },
   "online-status": "ON",
   "given-starter": true,
@@ -47,7 +47,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682243860598,
+  "lastlogin": 1682244765144,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -58,10 +58,10 @@
   "day5claimed": false,
   "day6claimed": false,
   "day7claimed": false,
-  "minutes-bonus-exp": 130,
+  "minutes-bonus-exp": 128,
   "minutes-voting-dr": -1,
   "minutes-voting-dmg": 0,
-  "total-gained-exp": -283453367,
+  "total-gained-exp": -283364960,
   "barrows-points": 0,
   "donator-points": 1,
   "Skilling-points": 0,
@@ -139,8 +139,8 @@
     0
   ],
   "total-prestiges": 0,
-  "slayer-spree": 15,
-  "npc-killcount": 3484,
+  "slayer-spree": 16,
+  "npc-killcount": 3598,
   "spawn-killcount": 0,
   "lord-killcount": 0,
   "demon-killcount": 264,
@@ -175,7 +175,7 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 1682202491717,
+  "last-veng": 42446081,
   "fight-type": "STAFF_FOCUS",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -218,10 +218,10 @@
   "dfs-charges": 0,
   "coins-gambled": 0,
   "slayer-master": "MEDIUM_SLAYER",
-  "slayer-task": "KOL_GAL",
-  "prev-slayer-task": "DR_ABERRANT",
-  "task-amount": 38,
-  "task-streak": 15,
+  "slayer-task": "YISDAR",
+  "prev-slayer-task": "KOL_GAL",
+  "task-amount": 51,
+  "task-streak": 16,
   "duo-partner": "null",
   "double-slay-xp": false,
   "recoil-deg": 0,
@@ -511,12 +511,12 @@
     {
       "npcId": 9815,
       "item": 995,
-      "amount": 6118
+      "amount": 6156
     },
     {
       "npcId": 9815,
       "item": 2023,
-      "amount": 121
+      "amount": 160
     },
     {
       "npcId": 92,
@@ -637,7 +637,7 @@
       1,
       66,
       1,
-      1080,
+      1000,
       91,
       770,
       120,
@@ -706,7 +706,7 @@
       14068,
       0,
       0,
-      1494957,
+      1583364,
       0,
       0,
       0,
@@ -738,7 +738,7 @@
     },
     {
       "id": 995,
-      "amount": 537138,
+      "amount": 765138,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -748,7 +748,7 @@
     },
     {
       "id": 2023,
-      "amount": 1324,
+      "amount": 1363,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -758,7 +758,7 @@
     },
     {
       "id": 5023,
-      "amount": 862,
+      "amount": 914,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -807,8 +807,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 2734,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1754,10 +1754,10 @@
       "boss": false
     },
     {
-      "runningTotal": 273,
+      "runningTotal": 387,
       "npcId": 9815,
       "npcName": "Kol\u0027gal",
-      "amount": 273,
+      "amount": 387,
       "boss": false
     },
     {
@@ -1804,7 +1804,7 @@
     },
     {
       "item": 2023,
-      "amount": 1214,
+      "amount": 1216,
       "rareDrop": false
     },
     {
@@ -2513,14 +2513,14 @@
       148,
       0,
       145,
-      15,
-      91,
+      16,
+      129,
       75,
       0,
       63,
       0,
       100,
-      1012,
+      1050,
       4,
       0,
       0,
@@ -2615,14 +2615,14 @@
       0,
       0,
       0,
-      15,
+      16,
       0,
       0,
       0,
       0,
       0,
       260,
-      1012,
+      1050,
       0,
       0,
       0,
@@ -2717,7 +2717,7 @@
       0,
       0,
       0,
-      15,
+      16,
       0,
       0,
       0,
@@ -2725,7 +2725,7 @@
       0,
       0,
       260,
-      1012,
+      1050,
       0,
       0,
       0,
@@ -3464,7 +3464,7 @@
     "9845": 7,
     "9910": 7,
     "3831": 63,
-    "9815": 1,
+    "9815": 39,
     "9911": 41,
     "9817": 75,
     "92": 72

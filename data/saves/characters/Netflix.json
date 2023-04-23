@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 115502458,
+  "total-play-time-ms": 115687141,
   "username": "Netflix",
   "password": "iamlucas123",
   "email": "null",
@@ -8,9 +8,9 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2141,
-    "y": 5018,
-    "z": 8
+    "x": 2222,
+    "y": 3747,
+    "z": 0
   },
   "online-status": "ON",
   "given-starter": true,
@@ -47,7 +47,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682243863604,
+  "lastlogin": 1682244753001,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -58,7 +58,7 @@
   "day5claimed": false,
   "day6claimed": false,
   "day7claimed": false,
-  "minutes-bonus-exp": 1799,
+  "minutes-bonus-exp": 1796,
   "minutes-voting-dr": -1,
   "minutes-voting-dmg": 0,
   "total-gained-exp": -217322646,
@@ -175,7 +175,7 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 372869036,
+  "last-veng": 1681872068648,
   "fight-type": "STAFF_BASH",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -192,7 +192,7 @@
   "dr-timer": 0,
   "ddr-timer": 0,
   "dmg-timer": 0,
-  "double-dr-timer": 5145,
+  "double-dr-timer": 4828,
   "double-ddr-timer": 0,
   "double-dmg-timer": 1,
   "fire-immunity": 0,
@@ -209,7 +209,7 @@
     0
   ],
   "effigy": 0,
-  "summon-npc": 3038,
+  "summon-npc": -1,
   "summon-death": -1,
   "process-farming": false,
   "clanchat": "Help",
@@ -511,22 +511,22 @@
     {
       "npcId": 9906,
       "item": 995,
-      "amount": 2163799
+      "amount": 2163800
     },
     {
       "npcId": 9906,
       "item": 2023,
-      "amount": 79
+      "amount": 80
     },
     {
       "npcId": 9904,
       "item": 995,
-      "amount": 2775196
+      "amount": 2775197
     },
     {
       "npcId": 9904,
       "item": 2023,
-      "amount": 75
+      "amount": 76
     },
     {
       "npcId": 9026,
@@ -581,12 +581,12 @@
     {
       "npcId": 9908,
       "item": 10946,
-      "amount": 22
+      "amount": 23
     },
     {
       "npcId": 9908,
       "item": 2023,
-      "amount": 320
+      "amount": 321
     },
     {
       "npcId": 9028,
@@ -1508,7 +1508,7 @@
     },
     {
       "id": 995,
-      "amount": 1438285851,
+      "amount": 1455869851,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1527,13 +1527,13 @@
       }
     },
     {
-      "id": 5730,
+      "id": 2060,
       "amount": 1,
       "slot": 0,
       "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
+        "effect": "MAGIC_DAMAGE",
+        "rarity": "UNCOMMON",
+        "bonus": 1
       }
     },
     {
@@ -1568,7 +1568,7 @@
     },
     {
       "id": 10946,
-      "amount": 16,
+      "amount": 18,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1587,13 +1587,18 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
-      "slot": 0
+      "id": 5730,
+      "amount": 1,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 20584,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1693,7 +1698,7 @@
     },
     {
       "id": 2023,
-      "amount": 26154,
+      "amount": 26519,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1824,14 +1829,9 @@
       }
     },
     {
-      "id": 2060,
-      "amount": 1,
-      "slot": 0,
-      "bonus": {
-        "effect": "MAGIC_DAMAGE",
-        "rarity": "UNCOMMON",
-        "bonus": 1
-      }
+      "id": -1,
+      "amount": 0,
+      "slot": 0
     },
     {
       "id": 15450,

@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 116804247,
+  "total-play-time-ms": 116976918,
   "username": "Elven",
   "password": "blooddemon5919",
   "email": "null",
@@ -8,9 +8,9 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2138,
-    "y": 5016,
-    "z": 8
+    "x": 2980,
+    "y": 2771,
+    "z": 0
   },
   "online-status": "ON",
   "given-starter": true,
@@ -47,7 +47,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682243845591,
+  "lastlogin": 1682244765126,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -175,7 +175,7 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 202440250,
+  "last-veng": 1682042497541,
   "fight-type": "STAFF_POUND",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -194,7 +194,7 @@
   "dmg-timer": 0,
   "double-dr-timer": 0,
   "double-ddr-timer": 0,
-  "double-dmg-timer": 0,
+  "double-dmg-timer": 1,
   "fire-immunity": 0,
   "fire-damage-mod": 0,
   "prayer-renewal-timer": 0,
@@ -376,12 +376,12 @@
     {
       "npcId": 9906,
       "item": 995,
-      "amount": 1217491
+      "amount": 1217492
     },
     {
       "npcId": 9906,
       "item": 2023,
-      "amount": 131
+      "amount": 132
     },
     {
       "npcId": 8013,
@@ -406,22 +406,22 @@
     {
       "npcId": 9907,
       "item": 10946,
-      "amount": 40
+      "amount": 41
     },
     {
       "npcId": 9907,
       "item": 2023,
-      "amount": 237
+      "amount": 238
     },
     {
       "npcId": 9908,
       "item": 10946,
-      "amount": 28
+      "amount": 29
     },
     {
       "npcId": 9908,
       "item": 2023,
-      "amount": 627
+      "amount": 628
     },
     {
       "npcId": 9922,
@@ -831,12 +831,12 @@
     {
       "npcId": 9904,
       "item": 995,
-      "amount": 4037950
+      "amount": 4037951
     },
     {
       "npcId": 9904,
       "item": 2023,
-      "amount": 92
+      "amount": 93
     },
     {
       "npcId": 8003,
@@ -1442,9 +1442,9 @@
       90,
       90,
       90,
-      736,
+      1200,
       120,
-      1123,
+      874,
       120,
       1,
       1,
@@ -1573,7 +1573,7 @@
     },
     {
       "id": 995,
-      "amount": 238052789,
+      "amount": 257213681,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1593,7 +1593,7 @@
     },
     {
       "id": 10946,
-      "amount": 14,
+      "amount": 17,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1793,7 +1793,7 @@
     },
     {
       "id": 2023,
-      "amount": 2465,
+      "amount": 2930,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",

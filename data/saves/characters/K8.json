@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 64877710,
+  "total-play-time-ms": 65035544,
   "username": "K8",
   "password": "Beginner1488",
   "email": "null",
@@ -10,12 +10,12 @@
   "position": {
     "x": 2139,
     "y": 5018,
-    "z": 8
+    "z": 0
   },
   "online-status": "ON",
   "given-starter": true,
   "has-pin2": false,
-  "donated": 59,
+  "donated": 62,
   "current-boss-task": 0,
   "current-boss-amount": 0,
   "global-rate": 0,
@@ -38,14 +38,14 @@
   "timeUntilNextReward": 0,
   "current-voting-streak": 0,
   "entriesCurrency": 0.0,
-  "amount-donated-today": 49,
+  "amount-donated-today": 52,
   "claimed-first": false,
   "claimed-second": false,
   "claimed-third": false,
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682243870216,
+  "lastlogin": 1682244780066,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -61,7 +61,7 @@
   "minutes-voting-dmg": 0,
   "total-gained-exp": -86867056,
   "barrows-points": 0,
-  "donator-points": 49,
+  "donator-points": 52,
   "Skilling-points": 0,
   "prestige-points": 0,
   "achievement-points": 0,
@@ -173,7 +173,7 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 178734502,
+  "last-veng": 1682066203398,
   "fight-type": "STAFF_FOCUS",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -369,42 +369,42 @@
     {
       "npcId": 9906,
       "item": 995,
-      "amount": 2200346
+      "amount": 2200347
     },
     {
       "npcId": 9906,
       "item": 2023,
-      "amount": 60
+      "amount": 61
     },
     {
       "npcId": 9904,
       "item": 995,
-      "amount": 2290714
+      "amount": 2290715
     },
     {
       "npcId": 9904,
       "item": 2023,
-      "amount": 58
+      "amount": 59
     },
     {
       "npcId": 9907,
-      "item": 10946,
-      "amount": 9
-    },
-    {
-      "npcId": 9907,
-      "item": 2023,
-      "amount": 108
-    },
-    {
-      "npcId": 9908,
       "item": 10946,
       "amount": 10
     },
     {
+      "npcId": 9907,
+      "item": 2023,
+      "amount": 109
+    },
+    {
+      "npcId": 9908,
+      "item": 10946,
+      "amount": 11
+    },
+    {
       "npcId": 9908,
       "item": 2023,
-      "amount": 307
+      "amount": 308
     },
     {
       "npcId": 8013,
@@ -667,7 +667,7 @@
       1,
       1200,
       120,
-      1075,
+      821,
       120,
       1,
       1,
@@ -746,7 +746,7 @@
   "inventory": [
     {
       "id": 995,
-      "amount": 340,
+      "amount": 703,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -756,7 +756,7 @@
     },
     {
       "id": 10835,
-      "amount": 18442,
+      "amount": 24591,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -786,7 +786,7 @@
     },
     {
       "id": 2023,
-      "amount": 1551,
+      "amount": 2016,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",

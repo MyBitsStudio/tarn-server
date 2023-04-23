@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 558434644,
+  "total-play-time-ms": 558594845,
   "username": "Alex",
   "password": "velvet",
   "email": "null",
@@ -8,9 +8,9 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2222,
-    "y": 3747,
-    "z": 0
+    "x": 2965,
+    "y": 9480,
+    "z": 8
   },
   "online-status": "FRIENDS_ONLY",
   "given-starter": true,
@@ -47,7 +47,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682243815003,
+  "lastlogin": 1682244777685,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -61,7 +61,7 @@
   "minutes-bonus-exp": -1,
   "minutes-voting-dr": -1,
   "minutes-voting-dmg": 0,
-  "total-gained-exp": -899616749,
+  "total-gained-exp": 2059012047,
   "barrows-points": 0,
   "donator-points": 500,
   "Skilling-points": 0,
@@ -175,7 +175,7 @@
   "auto-retaliate": false,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 454724873,
+  "last-veng": 1681790213011,
   "fight-type": "UNARMED_KICK",
   "sol-effect": -1,
   "skull-timer": 0,
@@ -546,8 +546,8 @@
       104273167,
       104273167,
       109553883,
-      17137913,
-      104273167,
+      774667071,
+      -1989594491,
       13034431,
       104273167,
       104273167,
@@ -654,12 +654,7 @@
     {
       "id": -1,
       "amount": 0,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
+      "slot": 0
     },
     {
       "id": -1,
@@ -869,9 +864,14 @@
       "slot": 0
     },
     {
-      "id": -1,
+      "id": 7543,
       "amount": 0,
-      "slot": 0
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
     },
     {
       "id": -1,

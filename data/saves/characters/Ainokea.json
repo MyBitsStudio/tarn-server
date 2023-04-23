@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 394795700,
+  "total-play-time-ms": 394967723,
   "username": "Ainokea",
   "password": "a7e824",
   "email": "null",
@@ -8,9 +8,9 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2142,
-    "y": 5017,
-    "z": 8
+    "x": 2223,
+    "y": 3753,
+    "z": 0
   },
   "online-status": "ON",
   "given-starter": true,
@@ -47,7 +47,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682243819216,
+  "lastlogin": 1682244765810,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -175,7 +175,7 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 1682058103812,
+  "last-veng": 186833991,
   "fight-type": "STAFF_POUND",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -431,12 +431,12 @@
     {
       "npcId": 9904,
       "item": 995,
-      "amount": 2113928
+      "amount": 2113929
     },
     {
       "npcId": 9904,
       "item": 2023,
-      "amount": 68
+      "amount": 69
     },
     {
       "npcId": 9845,
@@ -716,12 +716,12 @@
     {
       "npcId": 9908,
       "item": 10946,
-      "amount": 12
+      "amount": 14
     },
     {
       "npcId": 9908,
       "item": 2023,
-      "amount": 309
+      "amount": 310
     },
     {
       "npcId": 202,
@@ -1287,9 +1287,9 @@
       120,
       120,
       120,
-      955,
+      1200,
       120,
-      0,
+      865,
       120,
       1,
       1,
@@ -1412,14 +1412,9 @@
       }
     },
     {
-      "id": 3024,
+      "id": 3030,
       "amount": 1,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
+      "slot": 0
     },
     {
       "id": 3024,
@@ -1437,14 +1432,9 @@
       "slot": 0
     },
     {
-      "id": 15646,
-      "amount": 1,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
+      "id": -1,
+      "amount": 0,
+      "slot": 0
     },
     {
       "id": -1,
@@ -1527,9 +1517,14 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
-      "slot": 0
+      "id": 15646,
+      "amount": 1,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
     },
     {
       "id": -1,
@@ -1573,7 +1568,7 @@
     },
     {
       "id": 10946,
-      "amount": 18,
+      "amount": 22,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1593,7 +1588,7 @@
     },
     {
       "id": 2023,
-      "amount": 2557,
+      "amount": 2897,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1623,7 +1618,7 @@
     },
     {
       "id": 995,
-      "amount": 651784196,
+      "amount": 662617024,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -4155,7 +4150,7 @@
     },
     {
       "item": 10946,
-      "amount": 100,
+      "amount": 104,
       "rareDrop": false
     },
     {
