@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 174750729,
+  "total-play-time-ms": 176522265,
   "username": "Dio",
   "password": "1q2w3e4r5t",
   "email": "null",
@@ -8,16 +8,16 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "0",
   "position": {
-    "x": 2215,
-    "y": 3747,
-    "z": 0
+    "x": 2784,
+    "y": 4777,
+    "z": 24
   },
   "online-status": "ON",
   "given-starter": true,
   "has-pin2": true,
   "saved-pin2": "2205",
   "saved-ip": "77.173.111.173",
-  "donated": 823,
+  "donated": 846,
   "current-boss-task": 0,
   "current-boss-amount": 0,
   "global-rate": 0,
@@ -40,14 +40,14 @@
   "timeUntilNextReward": 0,
   "current-voting-streak": 0,
   "entriesCurrency": 0.0,
-  "amount-donated-today": 813,
+  "amount-donated-today": 836,
   "claimed-first": false,
   "claimed-second": false,
   "claimed-third": false,
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682268920755,
+  "lastlogin": 1682278269736,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -58,12 +58,12 @@
   "day5claimed": false,
   "day6claimed": false,
   "day7claimed": false,
-  "minutes-bonus-exp": 1933,
+  "minutes-bonus-exp": 2159,
   "minutes-voting-dr": -1,
   "minutes-voting-dmg": 0,
   "total-gained-exp": 2081513804,
   "barrows-points": 0,
-  "donator-points": 62,
+  "donator-points": 85,
   "Skilling-points": 0,
   "prestige-points": 0,
   "achievement-points": 0,
@@ -72,7 +72,7 @@
   "loyalty-points": 0,
   "total-loyalty-points": 0.0,
   "godmodetime": 0,
-  "voting-points": 24,
+  "voting-points": 33,
   "tasks-completion": [
     false,
     false,
@@ -140,7 +140,7 @@
   ],
   "total-prestiges": 0,
   "slayer-spree": 31,
-  "npc-killcount": 250557,
+  "npc-killcount": 259353,
   "spawn-killcount": 0,
   "lord-killcount": 0,
   "demon-killcount": 207,
@@ -175,7 +175,7 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 1682023841514,
+  "last-veng": 1682024892457,
   "fight-type": "STAFF_FOCUS",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -186,15 +186,15 @@
   "accept-aid": false,
   "poison-damage": 0,
   "poison-immunity": 0,
-  "overload-timer": 0,
+  "overload-timer": 16,
   "aggro-timer": 0,
   "exp-timer": 0,
   "dr-timer": 0,
   "ddr-timer": 0,
   "dmg-timer": 0,
-  "double-dr-timer": 2620,
+  "double-dr-timer": 1358,
   "double-ddr-timer": 0,
-  "double-dmg-timer": 2620,
+  "double-dmg-timer": 0,
   "fire-immunity": 0,
   "fire-damage-mod": 0,
   "prayer-renewal-timer": 0,
@@ -401,22 +401,22 @@
     {
       "npcId": 9906,
       "item": 995,
-      "amount": 1739073
+      "amount": 1739075
     },
     {
       "npcId": 9906,
       "item": 2023,
-      "amount": 152
+      "amount": 155
     },
     {
       "npcId": 9904,
       "item": 995,
-      "amount": 3679008
+      "amount": 3679010
     },
     {
       "npcId": 9904,
       "item": 2023,
-      "amount": 110
+      "amount": 112
     },
     {
       "npcId": 9838,
@@ -651,12 +651,12 @@
     {
       "npcId": 9907,
       "item": 10946,
-      "amount": 48
+      "amount": 52
     },
     {
       "npcId": 9907,
       "item": 2023,
-      "amount": 145
+      "amount": 149
     },
     {
       "npcId": 9030,
@@ -676,12 +676,12 @@
     {
       "npcId": 9908,
       "item": 10946,
-      "amount": 33
+      "amount": 35
     },
     {
       "npcId": 9908,
       "item": 2023,
-      "amount": 333
+      "amount": 335
     },
     {
       "npcId": 8014,
@@ -756,12 +756,12 @@
     {
       "npcId": 8013,
       "item": 10946,
-      "amount": 48
+      "amount": 51
     },
     {
       "npcId": 8013,
       "item": 23020,
-      "amount": 45
+      "amount": 48
     },
     {
       "npcId": 811,
@@ -916,7 +916,7 @@
     {
       "npcId": 8002,
       "item": 995,
-      "amount": 30000
+      "amount": 30001
     },
     {
       "npcId": 9915,
@@ -1076,7 +1076,7 @@
     {
       "npcId": 9017,
       "item": 995,
-      "amount": 101261
+      "amount": 101347
     },
     {
       "npcId": 9816,
@@ -1341,7 +1341,7 @@
     {
       "npcId": 3010,
       "item": 995,
-      "amount": 136102
+      "amount": 138298
     },
     {
       "npcId": 3014,
@@ -1416,11 +1416,21 @@
     {
       "npcId": 3010,
       "item": 17283,
-      "amount": 2
+      "amount": 3
     },
     {
       "npcId": 3010,
       "item": 19487,
+      "amount": 2
+    },
+    {
+      "npcId": 8013,
+      "item": 2736,
+      "amount": 5
+    },
+    {
+      "npcId": 3010,
+      "item": 8815,
       "amount": 1
     }
   ],
@@ -1469,13 +1479,13 @@
   ],
   "skills": {
     "level": [
-      120,
-      120,
-      120,
+      165,
+      165,
+      165,
       1200,
-      120,
+      165,
       1200,
-      120,
+      165,
       1,
       1,
       1,
@@ -1553,7 +1563,7 @@
   "inventory": [
     {
       "id": 2023,
-      "amount": 42230,
+      "amount": 43385,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1563,7 +1573,7 @@
     },
     {
       "id": 995,
-      "amount": 550494686,
+      "amount": 874185129,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1583,7 +1593,7 @@
     },
     {
       "id": 10835,
-      "amount": 2543569,
+      "amount": 2403744,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1592,8 +1602,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 2736,
+      "amount": 3,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1623,7 +1633,7 @@
     },
     {
       "id": 11137,
-      "amount": 6,
+      "amount": 15,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1707,38 +1717,38 @@
       "slot": 0
     },
     {
-      "id": 15358,
+      "id": -1,
+      "amount": 0,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
+    },
+    {
+      "id": -1,
+      "amount": 0,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
+    },
+    {
+      "id": -1,
+      "amount": 0,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
+    },
+    {
+      "id": 8788,
       "amount": 1,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
-      "id": -1,
-      "amount": 0,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
-      "id": -1,
-      "amount": 0,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
-      "id": -1,
-      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -3171,7 +3181,7 @@
     },
     {
       "id": 19487,
-      "amount": 1,
+      "amount": 2,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -3187,6 +3197,26 @@
         "effect": "RANGE_DAMAGE",
         "rarity": "UNCOMMON",
         "bonus": 1
+      }
+    },
+    {
+      "id": 8815,
+      "amount": 1,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
+    },
+    {
+      "id": 17283,
+      "amount": 1,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
       }
     }
   ],
@@ -3311,10 +3341,10 @@
   ],
   "kills": [
     {
-      "runningTotal": 46646,
+      "runningTotal": 46889,
       "npcId": 9017,
       "npcName": "Sanctum Golem",
-      "amount": 46646,
+      "amount": 46889,
       "boss": true
     },
     {
@@ -3500,10 +3530,10 @@
       "boss": false
     },
     {
-      "runningTotal": 2095,
+      "runningTotal": 2098,
       "npcId": 8002,
       "npcName": "Malvek",
-      "amount": 2095,
+      "amount": 2098,
       "boss": false
     },
     {
@@ -3626,10 +3656,10 @@
       "boss": true
     },
     {
-      "runningTotal": 35100,
+      "runningTotal": 41448,
       "npcId": 3010,
       "npcName": "Zeidan Grimm",
-      "amount": 35100,
+      "amount": 41448,
       "boss": false
     },
     {
@@ -3687,17 +3717,24 @@
       "npcName": "Panther",
       "amount": 5367,
       "boss": false
+    },
+    {
+      "runningTotal": 3,
+      "npcId": 9906,
+      "npcName": "Final Boss Veigar",
+      "amount": 3,
+      "boss": true
     }
   ],
   "drops": [
     {
       "item": 995,
-      "amount": 743037545,
+      "amount": 763837545,
       "rareDrop": false
     },
     {
       "item": 2023,
-      "amount": 34399,
+      "amount": 34449,
       "rareDrop": false
     },
     {
@@ -4713,7 +4750,7 @@
       2000,
       1847,
       708,
-      863,
+      864,
       797,
       31,
       4000,
@@ -5638,13 +5675,13 @@
     "811": 59,
     "9903": 708,
     "9904": 0,
-    "9906": 0,
+    "9906": 1,
     "9907": 0,
     "9012": 1038,
     "9908": 0,
     "9910": 1,
     "9911": 27,
-    "9017": 2,
+    "9017": 83,
     "9914": 1,
     "9915": 194,
     "9916": 164,
@@ -5653,8 +5690,8 @@
     "9024": 90,
     "9920": 1,
     "9025": 0,
-    "3010": 2611,
-    "8002": 863,
+    "3010": 1498,
+    "8002": 864,
     "9026": 81,
     "9922": 10,
     "8003": 24,

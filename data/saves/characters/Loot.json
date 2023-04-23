@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 119501997,
+  "total-play-time-ms": 120397773,
   "username": "Loot",
   "password": "millwall",
   "email": "null",
@@ -8,16 +8,16 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2139,
-    "y": 5018,
-    "z": 4
+    "x": 2222,
+    "y": 3762,
+    "z": 0
   },
   "online-status": "ON",
   "given-starter": true,
   "has-pin2": true,
   "saved-pin2": "2468",
   "saved-ip": "86.185.134.208",
-  "donated": 533,
+  "donated": 535,
   "current-boss-task": 0,
   "current-boss-amount": 0,
   "global-rate": 0,
@@ -40,14 +40,14 @@
   "timeUntilNextReward": 0,
   "current-voting-streak": 0,
   "entriesCurrency": 0.0,
-  "amount-donated-today": 533,
+  "amount-donated-today": 535,
   "claimed-first": false,
   "claimed-second": false,
   "claimed-third": false,
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682268999349,
+  "lastlogin": 1682276333794,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -58,12 +58,12 @@
   "day5claimed": false,
   "day6claimed": false,
   "day7claimed": false,
-  "minutes-bonus-exp": 1500,
+  "minutes-bonus-exp": 1485,
   "minutes-voting-dr": -1,
   "minutes-voting-dmg": 0,
   "total-gained-exp": -98602261,
   "barrows-points": 0,
-  "donator-points": 3,
+  "donator-points": 0,
   "Skilling-points": 0,
   "prestige-points": 0,
   "achievement-points": 0,
@@ -175,7 +175,7 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 146825130,
+  "last-veng": 1682130404489,
   "fight-type": "LONGBOW_RAPID",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -336,22 +336,22 @@
     {
       "npcId": 9906,
       "item": 995,
-      "amount": 2196676
+      "amount": 2196677
     },
     {
       "npcId": 9906,
       "item": 2023,
-      "amount": 86
+      "amount": 87
     },
     {
       "npcId": 8013,
       "item": 10946,
-      "amount": 38
+      "amount": 41
     },
     {
       "npcId": 8013,
       "item": 23020,
-      "amount": 36
+      "amount": 39
     },
     {
       "npcId": 9837,
@@ -721,12 +721,12 @@
     {
       "npcId": 9907,
       "item": 10946,
-      "amount": 24
+      "amount": 26
     },
     {
       "npcId": 9907,
       "item": 2023,
-      "amount": 128
+      "amount": 130
     },
     {
       "npcId": 811,
@@ -1151,12 +1151,12 @@
     {
       "npcId": 9908,
       "item": 10946,
-      "amount": 13
+      "amount": 14
     },
     {
       "npcId": 9908,
       "item": 2023,
-      "amount": 310
+      "amount": 311
     },
     {
       "npcId": 9919,
@@ -1574,7 +1574,7 @@
       120,
       1200,
       120,
-      1159,
+      1200,
       120,
       1,
       88,
@@ -1652,13 +1652,8 @@
   },
   "inventory": [
     {
-      "id": -1,
-      "amount": 0,
-      "slot": 0
-    },
-    {
-      "id": -1,
-      "amount": 0,
+      "id": 15355,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1679,7 +1674,22 @@
     {
       "id": -1,
       "amount": 0,
-      "slot": 0
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
+    },
+    {
+      "id": -1,
+      "amount": 0,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
     },
     {
       "id": -1,
@@ -1837,8 +1847,8 @@
       }
     },
     {
-      "id": 23079,
-      "amount": 1,
+      "id": -1,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1848,7 +1858,7 @@
     },
     {
       "id": 2023,
-      "amount": 3188,
+      "amount": 3713,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1868,7 +1878,7 @@
     },
     {
       "id": 995,
-      "amount": 280,
+      "amount": 924,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1878,7 +1888,7 @@
     },
     {
       "id": 10835,
-      "amount": 441030,
+      "amount": 2658767,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -2892,7 +2902,7 @@
     },
     {
       "id": 23120,
-      "amount": 4,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -3072,7 +3082,7 @@
     },
     {
       "id": 928,
-      "amount": 1,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "ALL_DAMAGE_LOW",
@@ -3497,7 +3507,8 @@
     1844832509742,
     8772014558,
     8772014595,
-    1729926298317
+    1729926298317,
+    418707088514
   ],
   "ignores": [],
   "loyalty-titles": [

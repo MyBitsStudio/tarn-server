@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 56482983,
+  "total-play-time-ms": 57026582,
   "username": "Shinigami",
   "password": "Braves101593",
   "email": "null",
@@ -8,8 +8,8 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2520,
-    "y": 2538,
+    "x": 2517,
+    "y": 2524,
     "z": 16
   },
   "online-status": "ON",
@@ -47,7 +47,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682268906357,
+  "lastlogin": 1682276334942,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -140,7 +140,7 @@
   ],
   "total-prestiges": 0,
   "slayer-spree": 17,
-  "npc-killcount": 8618,
+  "npc-killcount": 8682,
   "spawn-killcount": 0,
   "lord-killcount": 0,
   "demon-killcount": 1259,
@@ -175,7 +175,7 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 33685561,
+  "last-veng": 1682243193016,
   "fight-type": "STAFF_POUND",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -346,22 +346,22 @@
     {
       "npcId": 8013,
       "item": 10946,
-      "amount": 14
+      "amount": 17
     },
     {
       "npcId": 8013,
       "item": 23020,
-      "amount": 17
+      "amount": 20
     },
     {
       "npcId": 9906,
       "item": 995,
-      "amount": 1296593
+      "amount": 1296594
     },
     {
       "npcId": 9906,
       "item": 2023,
-      "amount": 47
+      "amount": 48
     },
     {
       "npcId": 9904,
@@ -466,12 +466,12 @@
     {
       "npcId": 9907,
       "item": 10946,
-      "amount": 5
+      "amount": 7
     },
     {
       "npcId": 9907,
       "item": 2023,
-      "amount": 203
+      "amount": 205
     },
     {
       "npcId": 9845,
@@ -856,12 +856,12 @@
     {
       "npcId": 811,
       "item": 995,
-      "amount": 20250
+      "amount": 20281
     },
     {
       "npcId": 811,
       "item": 2023,
-      "amount": 251
+      "amount": 282
     },
     {
       "npcId": 811,
@@ -929,7 +929,7 @@
       57,
       1200,
       104,
-      950,
+      396,
       120,
       1,
       1,
@@ -1107,8 +1107,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 10946,
+      "amount": 17,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1117,8 +1117,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 23020,
+      "amount": 9,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1198,7 +1198,7 @@
     },
     {
       "id": 2023,
-      "amount": 1913,
+      "amount": 2169,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1278,7 +1278,7 @@
     },
     {
       "id": 995,
-      "amount": 100182,
+      "amount": 6677754,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -2903,11 +2903,18 @@
       "boss": true
     },
     {
-      "runningTotal": 249,
+      "runningTotal": 280,
       "npcId": 811,
       "npcName": "Nagendra",
-      "amount": 249,
+      "amount": 280,
       "boss": true
+    },
+    {
+      "runningTotal": 1,
+      "npcId": 8013,
+      "npcName": "Vote Boss",
+      "amount": 1,
+      "boss": false
     }
   ],
   "drops": [
@@ -3676,7 +3683,7 @@
       250,
       250,
       250,
-      249,
+      280,
       17,
       0,
       68,
@@ -3684,8 +3691,8 @@
       0,
       0,
       100,
-      4343,
-      30,
+      4375,
+      33,
       0,
       0,
       0,
@@ -3786,7 +3793,7 @@
       0,
       0,
       1000,
-      4343,
+      4375,
       0,
       0,
       0,
@@ -3889,7 +3896,7 @@
       0,
       0,
       1651,
-      4343,
+      4375,
       0,
       0,
       0,
@@ -4651,14 +4658,14 @@
     "9027": 20,
     "9028": 1,
     "202": 21,
-    "8013": 0,
+    "8013": 1,
     "8014": 8,
     "9807": 3,
     "9817": 68,
     "92": 62,
     "6692": 5,
     "1703": 1,
-    "811": 9,
+    "811": 40,
     "9835": 30,
     "9836": 60,
     "9837": 11,

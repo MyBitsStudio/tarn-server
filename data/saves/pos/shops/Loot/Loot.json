@@ -49,22 +49,6 @@
       "bonus": 1
     },
     {
-      "id": 23178,
-      "amount": 1,
-      "maxAmount": 1,
-      "price": 10000000,
-      "effect": "NOTHING",
-      "bonus": 0
-    },
-    {
-      "id": 1485,
-      "amount": 1,
-      "maxAmount": 1,
-      "price": 7000000,
-      "effect": "DROP_RATE_HIGH",
-      "bonus": 69
-    },
-    {
       "id": 19488,
       "amount": 1,
       "maxAmount": 1,
@@ -80,9 +64,46 @@
       "effect": "NOTHING",
       "bonus": 0
     },
-    null,
-    null,
-    null,
+    {
+      "id": 23020,
+      "amount": 14,
+      "maxAmount": 15,
+      "price": 65000,
+      "effect": "NOTHING",
+      "bonus": 0
+    },
+    {
+      "id": 928,
+      "amount": 1,
+      "maxAmount": 1,
+      "price": 1000000,
+      "effect": "ALL_DAMAGE_LOW",
+      "bonus": 1
+    },
+    {
+      "id": 23178,
+      "amount": 1,
+      "maxAmount": 1,
+      "price": 9500000,
+      "effect": "NOTHING",
+      "bonus": 0
+    },
+    {
+      "id": 23079,
+      "amount": 1,
+      "maxAmount": 1,
+      "price": 1000000,
+      "effect": "NOTHING",
+      "bonus": 0
+    },
+    {
+      "id": 23120,
+      "amount": 4,
+      "maxAmount": 4,
+      "price": 1000000,
+      "effect": "NOTHING",
+      "bonus": 0
+    },
     null,
     null,
     null,
@@ -103,5 +124,5 @@
     null,
     null
   ],
-  "earnings": 0
+  "earnings": 6565000
 }

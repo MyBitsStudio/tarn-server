@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 30132517,
+  "total-play-time-ms": 32628094,
   "username": "Powers",
   "password": "Asassin321",
   "email": "null",
@@ -8,16 +8,16 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2219,
-    "y": 3748,
-    "z": 0
+    "x": 2965,
+    "y": 9488,
+    "z": 100
   },
   "online-status": "ON",
   "given-starter": true,
   "has-pin2": true,
   "saved-pin2": "1226",
   "saved-ip": "24.4.239.53",
-  "donated": 53,
+  "donated": 60,
   "current-boss-task": 0,
   "current-boss-amount": 0,
   "global-rate": 0,
@@ -40,14 +40,14 @@
   "timeUntilNextReward": 0,
   "current-voting-streak": 0,
   "entriesCurrency": 0.0,
-  "amount-donated-today": 53,
+  "amount-donated-today": 60,
   "claimed-first": false,
   "claimed-second": false,
   "claimed-third": false,
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682270709346,
+  "lastlogin": 1682278272083,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -58,12 +58,12 @@
   "day5claimed": false,
   "day6claimed": false,
   "day7claimed": false,
-  "minutes-bonus-exp": 164,
+  "minutes-bonus-exp": 124,
   "minutes-voting-dr": -1,
   "minutes-voting-dmg": 0,
-  "total-gained-exp": 630128866,
+  "total-gained-exp": 643314986,
   "barrows-points": 0,
-  "donator-points": 53,
+  "donator-points": 60,
   "Skilling-points": 0,
   "prestige-points": 0,
   "achievement-points": 0,
@@ -140,7 +140,7 @@
   ],
   "total-prestiges": 0,
   "slayer-spree": 36,
-  "npc-killcount": 41161,
+  "npc-killcount": 44612,
   "spawn-killcount": 0,
   "lord-killcount": 0,
   "demon-killcount": 70,
@@ -175,7 +175,7 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 14951650,
+  "last-veng": 15813354,
   "fight-type": "LONGBOW_RAPID",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -396,12 +396,12 @@
     {
       "npcId": 9906,
       "item": 995,
-      "amount": 2401434
+      "amount": 2401436
     },
     {
       "npcId": 9906,
       "item": 2023,
-      "amount": 66
+      "amount": 68
     },
     {
       "npcId": 8014,
@@ -586,22 +586,22 @@
     {
       "npcId": 9904,
       "item": 995,
-      "amount": 3593584
+      "amount": 3593586
     },
     {
       "npcId": 9904,
       "item": 2023,
-      "amount": 46
+      "amount": 48
     },
     {
       "npcId": 8013,
       "item": 10946,
-      "amount": 9
+      "amount": 10
     },
     {
       "npcId": 8013,
       "item": 23020,
-      "amount": 7
+      "amount": 8
     },
     {
       "npcId": 3313,
@@ -656,12 +656,12 @@
     {
       "npcId": 9908,
       "item": 10946,
-      "amount": 4
+      "amount": 5
     },
     {
       "npcId": 9908,
       "item": 2023,
-      "amount": 302
+      "amount": 303
     },
     {
       "npcId": 3014,
@@ -681,7 +681,7 @@
     {
       "npcId": 8010,
       "item": 995,
-      "amount": 136912
+      "amount": 136970
     },
     {
       "npcId": 3016,
@@ -691,7 +691,7 @@
     {
       "npcId": 9017,
       "item": 995,
-      "amount": 96396
+      "amount": 96593
     },
     {
       "npcId": 9907,
@@ -726,7 +726,12 @@
     {
       "npcId": 3019,
       "item": 995,
-      "amount": 152284
+      "amount": 152561
+    },
+    {
+      "npcId": 9017,
+      "item": 15646,
+      "amount": 1
     }
   ],
   "holy-prayers-unlocked": [
@@ -777,9 +782,9 @@
       120,
       120,
       120,
-      1200,
+      820,
       120,
-      866,
+      1200,
       118,
       1,
       1,
@@ -840,7 +845,7 @@
       0,
       0,
       0,
-      165575834,
+      178761954,
       0,
       0,
       0,
@@ -938,7 +943,7 @@
     },
     {
       "id": 995,
-      "amount": 5472815,
+      "amount": 6080604,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -968,7 +973,7 @@
     },
     {
       "id": 23020,
-      "amount": 9,
+      "amount": 12,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1008,7 +1013,7 @@
     },
     {
       "id": 2023,
-      "amount": 3337,
+      "amount": 3767,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1123,7 +1128,7 @@
     },
     {
       "id": 10835,
-      "amount": 104251,
+      "amount": 170571,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1937,10 +1942,10 @@
   ],
   "kills": [
     {
-      "runningTotal": 3192,
+      "runningTotal": 3424,
       "npcId": 8010,
       "npcName": "Groudon",
-      "amount": 3192,
+      "amount": 3424,
       "boss": true
     },
     {
@@ -1951,10 +1956,10 @@
       "boss": true
     },
     {
-      "runningTotal": 1564,
+      "runningTotal": 2340,
       "npcId": 9017,
       "npcName": "Sanctum Golem",
-      "amount": 1564,
+      "amount": 2340,
       "boss": true
     },
     {
@@ -2000,6 +2005,13 @@
       "boss": false
     },
     {
+      "runningTotal": 2204,
+      "npcId": 3019,
+      "npcName": "Virtuoso",
+      "amount": 2204,
+      "boss": false
+    },
+    {
       "runningTotal": 1144,
       "npcId": 9914,
       "npcName": "Sasuke",
@@ -2011,13 +2023,6 @@
       "npcId": 8008,
       "npcName": "Avatar titan",
       "amount": 736,
-      "boss": false
-    },
-    {
-      "runningTotal": 1124,
-      "npcId": 3019,
-      "npcName": "Virtuoso",
-      "amount": 1124,
       "boss": false
     },
     {
@@ -2129,7 +2134,7 @@
   "drops": [
     {
       "item": 995,
-      "amount": 510250512,
+      "amount": 512954512,
       "rareDrop": false
     },
     {
@@ -2876,7 +2881,7 @@
       0,
       100,
       5000,
-      20,
+      25,
       0,
       0,
       0,
@@ -2977,7 +2982,7 @@
       0,
       286,
       111,
-      6190,
+      6683,
       0,
       0,
       0,
@@ -3065,7 +3070,7 @@
     [
       0,
       17,
-      391,
+      585,
       0,
       0,
       0,
@@ -3076,11 +3081,11 @@
       15,
       0,
       767,
-      399,
+      428,
       779,
       770,
       111,
-      6190,
+      6683,
       0,
       0,
       0,
@@ -3710,7 +3715,7 @@
   },
   "lastTGloveIndex": -1,
   "group-ironman-locked": false,
-  "lastInstanceNpc": 9017,
+  "lastInstanceNpc": 3019,
   "daily-task": {},
   "collectionlog-rewards": {
     "3010": {
@@ -3876,9 +3881,9 @@
     "3014": 767,
     "3016": 779,
     "8008": 4,
-    "8010": 399,
+    "8010": 428,
     "202": 11,
-    "3019": 281,
+    "3019": 551,
     "8013": 0,
     "8014": 0,
     "1746": 534,
@@ -3897,7 +3902,7 @@
     "9910": 9,
     "3831": 89,
     "9911": 40,
-    "9017": 391,
+    "9017": 85,
     "9914": 286,
     "9918": 34
   },

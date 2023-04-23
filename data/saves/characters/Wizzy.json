@@ -1,15 +1,15 @@
 {
-  "total-play-time-ms": 149800712,
+  "total-play-time-ms": 151583760,
   "username": "Wizzy",
   "password": "bsmitt94",
   "email": "null",
-  "staff-rights": "CLERIC_DONATOR",
+  "staff-rights": "TORMENTED_DONATOR",
   "game-mode": "VETERAN_MODE",
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2222,
-    "y": 3747,
+    "x": 2207,
+    "y": 3746,
     "z": 0
   },
   "online-status": "ON",
@@ -17,7 +17,7 @@
   "has-pin2": true,
   "saved-pin2": "8762",
   "saved-ip": "47.55.124.150",
-  "donated": 241,
+  "donated": 250,
   "current-boss-task": 0,
   "current-boss-amount": 0,
   "global-rate": 0,
@@ -40,14 +40,14 @@
   "timeUntilNextReward": 0,
   "current-voting-streak": 0,
   "entriesCurrency": 0.0,
-  "amount-donated-today": 231,
+  "amount-donated-today": 240,
   "claimed-first": false,
   "claimed-second": false,
   "claimed-third": false,
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682268884884,
+  "lastlogin": 1682276337925,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -61,9 +61,9 @@
   "minutes-bonus-exp": -1,
   "minutes-voting-dr": -1,
   "minutes-voting-dmg": 0,
-  "total-gained-exp": -10458573,
+  "total-gained-exp": 82792109,
   "barrows-points": 0,
-  "donator-points": 41,
+  "donator-points": 50,
   "Skilling-points": 0,
   "prestige-points": 0,
   "achievement-points": 0,
@@ -140,7 +140,7 @@
   ],
   "total-prestiges": 0,
   "slayer-spree": 6,
-  "npc-killcount": 143696,
+  "npc-killcount": 147196,
   "spawn-killcount": 0,
   "lord-killcount": 0,
   "demon-killcount": 739,
@@ -149,7 +149,7 @@
   "king-killcount": 0,
   "avatar-killcount": 186,
   "angel-killcount": 0,
-  "lucien-killcount": 1151,
+  "lucien-killcount": 1252,
   "hercules-killcount": 0,
   "satan-killcount": 263,
   "zeus-killcount": 0,
@@ -175,7 +175,7 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 1681909695790,
+  "last-veng": 368425183,
   "fight-type": "STAFF_FOCUS",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -386,12 +386,12 @@
     {
       "npcId": 9906,
       "item": 995,
-      "amount": 2264849
+      "amount": 2264850
     },
     {
       "npcId": 9906,
       "item": 2023,
-      "amount": 84
+      "amount": 85
     },
     {
       "npcId": 9911,
@@ -626,12 +626,12 @@
     {
       "npcId": 8013,
       "item": 10946,
-      "amount": 20
+      "amount": 23
     },
     {
       "npcId": 8013,
       "item": 23020,
-      "amount": 16
+      "amount": 19
     },
     {
       "npcId": 8014,
@@ -886,12 +886,12 @@
     {
       "npcId": 9907,
       "item": 10946,
-      "amount": 10
+      "amount": 14
     },
     {
       "npcId": 9907,
       "item": 2023,
-      "amount": 107
+      "amount": 111
     },
     {
       "npcId": 8008,
@@ -921,22 +921,22 @@
     {
       "npcId": 9904,
       "item": 995,
-      "amount": 4186020
+      "amount": 4186021
     },
     {
       "npcId": 9904,
       "item": 2023,
-      "amount": 52
+      "amount": 53
     },
     {
       "npcId": 9908,
       "item": 10946,
-      "amount": 8
+      "amount": 9
     },
     {
       "npcId": 9908,
       "item": 2023,
-      "amount": 306
+      "amount": 307
     },
     {
       "npcId": 9915,
@@ -1036,7 +1036,7 @@
     {
       "npcId": 9017,
       "item": 995,
-      "amount": 24447
+      "amount": 24448
     },
     {
       "npcId": 9839,
@@ -1241,7 +1241,17 @@
     {
       "npcId": 3117,
       "item": 995,
-      "amount": 181173
+      "amount": 181276
+    },
+    {
+      "npcId": 9907,
+      "item": 4446,
+      "amount": 1
+    },
+    {
+      "npcId": 3115,
+      "item": 995,
+      "amount": 184408
     }
   ],
   "holy-prayers-unlocked": [
@@ -1294,7 +1304,7 @@
       120,
       1200,
       120,
-      103,
+      252,
       120,
       1,
       1,
@@ -1349,7 +1359,7 @@
       2000000000,
       2000000000,
       63660086,
-      1080205013,
+      1173455695,
       0,
       0,
       0,
@@ -1373,7 +1383,7 @@
   "inventory": [
     {
       "id": 10835,
-      "amount": 415393,
+      "amount": 1481205,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1383,7 +1393,7 @@
     },
     {
       "id": 995,
-      "amount": 145727181,
+      "amount": 78363195,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1393,7 +1403,7 @@
     },
     {
       "id": 2023,
-      "amount": 4010,
+      "amount": 4775,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1422,16 +1432,6 @@
       }
     },
     {
-      "id": 11137,
-      "amount": 6,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
       "id": -1,
       "amount": 0,
       "slot": 0,
@@ -1444,6 +1444,16 @@
     {
       "id": -1,
       "amount": 0,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
+    },
+    {
+      "id": 4446,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1598,7 +1608,7 @@
     },
     {
       "id": 23020,
-      "amount": 17,
+      "amount": 26,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -2406,10 +2416,10 @@
       "boss": true
     },
     {
-      "runningTotal": 1008,
+      "runningTotal": 1012,
       "npcId": 9017,
       "npcName": "Sanctum Golem",
-      "amount": 1008,
+      "amount": 1012,
       "boss": true
     },
     {
@@ -2777,17 +2787,31 @@
       "boss": false
     },
     {
-      "runningTotal": 4604,
+      "runningTotal": 5008,
       "npcId": 3117,
       "npcName": "Charybdis",
-      "amount": 4604,
+      "amount": 5008,
+      "boss": false
+    },
+    {
+      "runningTotal": 4,
+      "npcId": 9907,
+      "npcName": "Meruem The King",
+      "amount": 4,
+      "boss": true
+    },
+    {
+      "runningTotal": 1588,
+      "npcId": 3115,
+      "npcName": "Scylla",
+      "amount": 1588,
       "boss": false
     }
   ],
   "drops": [
     {
       "item": 995,
-      "amount": -1985600048,
+      "amount": -1980464048,
       "rareDrop": false
     },
     {
@@ -3589,7 +3613,7 @@
       172,
       100,
       5000,
-      40,
+      45,
       0,
       0,
       0,
@@ -3778,7 +3802,7 @@
     [
       0,
       30,
-      252,
+      253,
       252,
       270,
       560,
@@ -3793,7 +3817,7 @@
       804,
       799,
       8840,
-      24815,
+      25000,
       0,
       0,
       0,
@@ -4423,7 +4447,7 @@
   },
   "lastTGloveIndex": -1,
   "group-ironman-locked": false,
-  "lastInstanceNpc": 3117,
+  "lastInstanceNpc": 3115,
   "daily-task": {
     "HARD_SLAYER_TASKS": {
       "index": 0,
@@ -4444,6 +4468,10 @@
       "hasClaimed": true
     },
     "2342": {
+      "canClaim": false,
+      "hasClaimed": false
+    },
+    "3115": {
       "canClaim": false,
       "hasClaimed": false
     },
@@ -4719,8 +4747,9 @@
   "drystreak": {
     "6692": 4,
     "2342": 179,
+    "3115": 397,
     "811": 18,
-    "3117": 1151,
+    "3117": 1252,
     "9903": 553,
     "9904": 0,
     "9906": 0,
@@ -4731,7 +4760,7 @@
     "9911": 43,
     "9912": 1264,
     "9913": 1256,
-    "9017": 252,
+    "9017": 253,
     "9914": 21,
     "9915": 169,
     "9916": 21,

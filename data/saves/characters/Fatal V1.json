@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 575830165,
+  "total-play-time-ms": 577509832,
   "username": "Fatal V1",
   "password": "pt85205",
   "email": "null",
@@ -8,8 +8,8 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2207,
-    "y": 3746,
+    "x": 3033,
+    "y": 4069,
     "z": 0
   },
   "online-status": "ON",
@@ -47,7 +47,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682269626951,
+  "lastlogin": 1682278734379,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -61,7 +61,7 @@
   "minutes-bonus-exp": 0,
   "minutes-voting-dr": 0,
   "minutes-voting-dmg": 0,
-  "total-gained-exp": 2000009965,
+  "total-gained-exp": 2058384861,
   "barrows-points": 0,
   "donator-points": 0,
   "Skilling-points": 0,
@@ -175,7 +175,7 @@
   "auto-retaliate": false,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 1681980795099,
+  "last-veng": 1681981846830,
   "fight-type": "BATTLEAXE_CHOP",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -332,7 +332,28 @@
     0,
     0
   ],
-  "collection-data": [],
+  "collection-data": [
+    {
+      "npcId": 8013,
+      "item": 10946,
+      "amount": 7
+    },
+    {
+      "npcId": 8013,
+      "item": 23020,
+      "amount": 5
+    },
+    {
+      "npcId": 9907,
+      "item": 10946,
+      "amount": 2
+    },
+    {
+      "npcId": 9907,
+      "item": 2023,
+      "amount": 101
+    }
+  ],
   "holy-prayers-unlocked": [
     false,
     false,
@@ -378,10 +399,10 @@
   ],
   "skills": {
     "level": [
+      108,
       1,
       1,
-      1,
-      100,
+      440,
       1,
       10,
       1,
@@ -405,10 +426,10 @@
       1
     ],
     "maxLevel": [
+      108,
       1,
       1,
-      1,
-      100,
+      1050,
       1,
       10,
       1,
@@ -432,10 +453,10 @@
       1
     ],
     "experience": [
+      32849552,
       0,
       0,
-      0,
-      1184,
+      25526528,
       0,
       0,
       0,
@@ -462,7 +483,7 @@
   "inventory": [
     {
       "id": 5020,
-      "amount": 239940,
+      "amount": 1757640,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -472,7 +493,7 @@
     },
     {
       "id": 17634,
-      "amount": 8516500,
+      "amount": 122500,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -501,8 +522,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 2023,
+      "amount": 200,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1388,7 +1409,23 @@
       "boss": false
     }
   ],
-  "drops": [],
+  "drops": [
+    {
+      "item": 10946,
+      "amount": 17,
+      "rareDrop": false
+    },
+    {
+      "item": 23020,
+      "amount": 9,
+      "rareDrop": false
+    },
+    {
+      "item": 2023,
+      "amount": 200,
+      "rareDrop": false
+    }
+  ],
   "achievements-completion": [],
   "achievements-progress": [
     0,
@@ -2082,7 +2119,7 @@
       0,
       0,
       0,
-      0,
+      2,
       0,
       0,
       0,
@@ -2918,7 +2955,16 @@
   "group-ironman-locked": false,
   "lastInstanceNpc": -1,
   "daily-task": {},
-  "collectionlog-rewards": {},
+  "collectionlog-rewards": {
+    "9907": {
+      "canClaim": false,
+      "hasClaimed": false
+    },
+    "8013": {
+      "canClaim": false,
+      "hasClaimed": false
+    }
+  },
   "daily-skips": 3,
   "dailies-done": 0,
   "level-notifications": true,
@@ -2949,7 +2995,10 @@
     null,
     null
   ],
-  "drystreak": {},
+  "drystreak": {
+    "9907": 0,
+    "8013": 0
+  },
   "boost": 0,
   "slot-level": 0
 }

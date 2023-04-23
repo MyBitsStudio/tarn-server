@@ -40,7 +40,14 @@
       "effect": "TRIPLE_KILLS",
       "bonus": 1
     },
-    null,
+    {
+      "id": 15647,
+      "amount": 1,
+      "maxAmount": 1,
+      "price": 600000,
+      "effect": "ALL_DAMAGE_HIGH",
+      "bonus": 3
+    },
     null,
     null,
     null,
@@ -68,5 +75,5 @@
     null,
     null
   ],
-  "earnings": 250000
+  "earnings": 90000
 }

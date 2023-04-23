@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 46239741,
+  "total-play-time-ms": 47866733,
   "username": "Phavi",
   "password": "brewerton",
   "email": "null",
@@ -8,8 +8,8 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2182,
-    "y": 3735,
+    "x": 2224,
+    "y": 3762,
     "z": 0
   },
   "online-status": "ON",
@@ -45,7 +45,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682275154710,
+  "lastlogin": 1682276493324,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -56,7 +56,7 @@
   "day5claimed": false,
   "day6claimed": false,
   "day7claimed": false,
-  "minutes-bonus-exp": 238,
+  "minutes-bonus-exp": 211,
   "minutes-voting-dr": 0,
   "minutes-voting-dmg": 0,
   "total-gained-exp": 97334704,
@@ -173,7 +173,7 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 17343385,
+  "last-veng": 1682260776934,
   "fight-type": "STAFF_BASH",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -1080,8 +1080,8 @@
       }
     },
     {
-      "id": 925,
-      "amount": 1,
+      "id": -1,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -2306,6 +2306,16 @@
         "effect": "DROP_RATE_LOW",
         "rarity": "RARE",
         "bonus": 19
+      }
+    },
+    {
+      "id": 925,
+      "amount": 1,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
       }
     }
   ],

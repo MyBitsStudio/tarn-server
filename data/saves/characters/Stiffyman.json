@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 81908378,
+  "total-play-time-ms": 82969776,
   "username": "Stiffyman",
   "password": "douhave",
   "email": "null",
@@ -8,9 +8,9 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2144,
-    "y": 5026,
-    "z": 4
+    "x": 2225,
+    "y": 3732,
+    "z": 0
   },
   "online-status": "ON",
   "given-starter": true,
@@ -45,7 +45,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682271552927,
+  "lastlogin": 1682276456131,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -56,8 +56,8 @@
   "day5claimed": false,
   "day6claimed": false,
   "day7claimed": false,
-  "minutes-bonus-exp": 960,
-  "minutes-voting-dr": 37,
+  "minutes-bonus-exp": 958,
+  "minutes-voting-dr": 25,
   "minutes-voting-dmg": 0,
   "total-gained-exp": -650916266,
   "barrows-points": 0,
@@ -70,7 +70,7 @@
   "loyalty-points": 0,
   "total-loyalty-points": 0.0,
   "godmodetime": 0,
-  "voting-points": 49,
+  "voting-points": 50,
   "tasks-completion": [
     false,
     false,
@@ -138,7 +138,7 @@
   ],
   "total-prestiges": 0,
   "slayer-spree": 19,
-  "npc-killcount": 26909,
+  "npc-killcount": 27280,
   "spawn-killcount": 0,
   "lord-killcount": 0,
   "demon-killcount": 309,
@@ -173,7 +173,7 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 491382561,
+  "last-veng": 1681786134993,
   "fight-type": "LONGBOW_RAPID",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -190,7 +190,7 @@
   "dr-timer": 0,
   "ddr-timer": 0,
   "dmg-timer": 0,
-  "double-dr-timer": 341,
+  "double-dr-timer": 0,
   "double-ddr-timer": 0,
   "double-dmg-timer": 0,
   "fire-immunity": 0,
@@ -364,12 +364,12 @@
     {
       "npcId": 9907,
       "item": 10946,
-      "amount": 14
+      "amount": 16
     },
     {
       "npcId": 9907,
       "item": 2023,
-      "amount": 110
+      "amount": 112
     },
     {
       "npcId": 9027,
@@ -384,12 +384,12 @@
     {
       "npcId": 8013,
       "item": 10946,
-      "amount": 25
+      "amount": 28
     },
     {
       "npcId": 8013,
       "item": 23020,
-      "amount": 23
+      "amount": 26
     },
     {
       "npcId": 9027,
@@ -1064,7 +1064,7 @@
     {
       "npcId": 9017,
       "item": 995,
-      "amount": 24542
+      "amount": 24595
     },
     {
       "npcId": 9017,
@@ -1122,7 +1122,7 @@
       120,
       1200,
       120,
-      0,
+      243,
       120,
       1,
       1,
@@ -1206,7 +1206,7 @@
     },
     {
       "id": 10835,
-      "amount": 5072736,
+      "amount": 5064508,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1216,7 +1216,7 @@
     },
     {
       "id": 2023,
-      "amount": 2202,
+      "amount": 2402,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1246,7 +1246,7 @@
     },
     {
       "id": 10946,
-      "amount": 5,
+      "amount": 22,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1376,7 +1376,7 @@
     },
     {
       "id": 23020,
-      "amount": 3,
+      "amount": 11,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -3420,10 +3420,10 @@
       "boss": false
     },
     {
-      "runningTotal": 2144,
+      "runningTotal": 2356,
       "npcId": 9017,
       "npcName": "Sanctum Golem",
-      "amount": 2144,
+      "amount": 2356,
       "boss": true
     }
   ],
@@ -4298,7 +4298,7 @@
       254,
       251,
       45,
-      5631,
+      5684,
       0,
       0,
       0,
@@ -4385,8 +4385,8 @@
     ],
     [
       0,
-      53,
-      536,
+      54,
+      589,
       0,
       94,
       95,
@@ -4401,7 +4401,7 @@
       0,
       0,
       45,
-      5631,
+      5684,
       0,
       0,
       0,
@@ -5288,7 +5288,7 @@
     "9910": 2,
     "3831": 82,
     "9911": 36,
-    "9017": 36,
+    "9017": 89,
     "9914": 75,
     "9915": 13,
     "9916": 9,

@@ -7,6 +7,8 @@ import lombok.Getter;
 public enum YoutuberLinks {
 
     CASA("https://www.youtube.com/channel/UClMvGtkUxyxU--uIM8SSRkQ", "casa", "casalusio"),
+    FEWB("https://www.youtube.com/@Fewb/videos", "fewb"),
+    PEACH("https://www.youtube.com/@princespeachrsps362", "peach"),
     WALKCHAOS("https://www.youtube.com/channel/UCfSUF-7-QehS6ALll4nl3OA", "walkchaos", "walk"),
     NOOBSOWN("https://www.youtube.com/channel/UCfnBh-xkfCnjg4Gw6GyiHlA", "noobsown"),
     CERAXY("https://www.youtube.com/channel/UCe9NqnfPfqwWLv09Z3iXPgA", "ceraxy"),

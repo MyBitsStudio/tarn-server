@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 1682075889366,
+  "total-play-time-ms": 1682076360354,
   "username": "Ascaris",
   "password": "Sweetits",
   "email": "null",
@@ -8,8 +8,8 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2139,
-    "y": 5018,
+    "x": 2211,
+    "y": 3767,
     "z": 0
   },
   "online-status": "ON",
@@ -47,7 +47,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682274491739,
+  "lastlogin": 1682276338530,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -175,7 +175,7 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 103114363,
+  "last-veng": 1682173695192,
   "fight-type": "STAFF_FOCUS",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -209,7 +209,7 @@
     0
   ],
   "effigy": 0,
-  "summon-npc": 3023,
+  "summon-npc": 3026,
   "summon-death": -1,
   "process-farming": false,
   "clanchat": "Help",
@@ -356,12 +356,12 @@
     {
       "npcId": 9906,
       "item": 995,
-      "amount": 2017189
+      "amount": 2017190
     },
     {
       "npcId": 9906,
       "item": 2023,
-      "amount": 43
+      "amount": 44
     },
     {
       "npcId": 9835,
@@ -701,12 +701,12 @@
     {
       "npcId": 9907,
       "item": 10946,
-      "amount": 6
+      "amount": 7
     },
     {
       "npcId": 9907,
       "item": 2023,
-      "amount": 106
+      "amount": 107
     },
     {
       "npcId": 8003,
@@ -801,12 +801,12 @@
     {
       "npcId": 9908,
       "item": 10946,
-      "amount": 5
+      "amount": 6
     },
     {
       "npcId": 9908,
       "item": 2023,
-      "amount": 303
+      "amount": 304
     },
     {
       "npcId": 9815,
@@ -871,12 +871,12 @@
     {
       "npcId": 8013,
       "item": 10946,
-      "amount": 7
+      "amount": 10
     },
     {
       "npcId": 8013,
       "item": 23020,
-      "amount": 5
+      "amount": 8
     },
     {
       "npcId": 3831,
@@ -989,13 +989,13 @@
   ],
   "skills": {
     "level": [
-      132,
-      132,
-      132,
+      120,
+      120,
+      120,
       1200,
-      132,
-      0,
-      132,
+      82,
+      860,
+      120,
       1,
       1,
       1,
@@ -1073,7 +1073,7 @@
   "inventory": [
     {
       "id": 10835,
-      "amount": 573364,
+      "amount": 13364,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1093,7 +1093,7 @@
     },
     {
       "id": 995,
-      "amount": 1094634,
+      "amount": 2906044,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1122,8 +1122,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 19481,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1152,8 +1152,8 @@
       }
     },
     {
-      "id": 19485,
-      "amount": 1,
+      "id": 23020,
+      "amount": 12,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1343,7 +1343,7 @@
     },
     {
       "id": 2023,
-      "amount": 14936,
+      "amount": 15361,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -3137,7 +3137,7 @@
       222,
       100,
       3843,
-      24,
+      27,
       0,
       0,
       0,
@@ -4111,7 +4111,8 @@
   ],
   "favorite-teleports": [],
   "obtained-pets": [
-    "SANCTUM_GOLEM_PET"
+    "SANCTUM_GOLEM_PET",
+    "MALVEK_PET"
   ],
   "battlepass-xp": 0,
   "battlepass-premium": false,

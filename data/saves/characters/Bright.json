@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 200240547,
+  "total-play-time-ms": 202336154,
   "username": "Bright",
   "password": "lmao1337xd",
   "email": "null",
@@ -8,8 +8,8 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2613,
-    "y": 2610,
+    "x": 2583,
+    "y": 2598,
     "z": 8
   },
   "online-status": "ON",
@@ -17,7 +17,7 @@
   "has-pin2": true,
   "saved-pin2": "1337",
   "saved-ip": "147.235.217.217",
-  "donated": 524,
+  "donated": 539,
   "current-boss-task": 0,
   "current-boss-amount": 0,
   "global-rate": 0,
@@ -40,14 +40,14 @@
   "timeUntilNextReward": 0,
   "current-voting-streak": 0,
   "entriesCurrency": 0.0,
-  "amount-donated-today": 524,
+  "amount-donated-today": 539,
   "claimed-first": false,
   "claimed-second": false,
   "claimed-third": false,
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682250788417,
+  "lastlogin": 1682278914351,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -58,12 +58,12 @@
   "day5claimed": false,
   "day6claimed": false,
   "day7claimed": false,
-  "minutes-bonus-exp": -1,
-  "minutes-voting-dr": -1,
+  "minutes-bonus-exp": 107,
+  "minutes-voting-dr": 17,
   "minutes-voting-dmg": 0,
   "total-gained-exp": 546964607,
   "barrows-points": 0,
-  "donator-points": 124,
+  "donator-points": 119,
   "Skilling-points": 0,
   "prestige-points": 0,
   "achievement-points": 0,
@@ -72,7 +72,7 @@
   "loyalty-points": 0,
   "total-loyalty-points": 0.0,
   "godmodetime": 0,
-  "voting-points": 137,
+  "voting-points": 131,
   "tasks-completion": [
     false,
     false,
@@ -140,7 +140,7 @@
   ],
   "total-prestiges": 0,
   "slayer-spree": 20,
-  "npc-killcount": 101788,
+  "npc-killcount": 107073,
   "spawn-killcount": 0,
   "lord-killcount": 0,
   "demon-killcount": 338,
@@ -175,7 +175,7 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 124844330,
+  "last-veng": 125727365,
   "fight-type": "STAFF_POUND",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -192,7 +192,7 @@
   "dr-timer": 0,
   "ddr-timer": 0,
   "dmg-timer": 0,
-  "double-dr-timer": 0,
+  "double-dr-timer": 1745,
   "double-ddr-timer": 0,
   "double-dmg-timer": 1,
   "fire-immunity": 0,
@@ -461,22 +461,22 @@
     {
       "npcId": 8013,
       "item": 10946,
-      "amount": 54
+      "amount": 55
     },
     {
       "npcId": 8013,
       "item": 23020,
-      "amount": 49
+      "amount": 50
     },
     {
       "npcId": 9907,
       "item": 10946,
-      "amount": 25
+      "amount": 27
     },
     {
       "npcId": 9907,
       "item": 2023,
-      "amount": 123
+      "amount": 125
     },
     {
       "npcId": 9807,
@@ -886,12 +886,12 @@
     {
       "npcId": 9017,
       "item": 995,
-      "amount": 29691
+      "amount": 30459
     },
     {
       "npcId": 9017,
       "item": 15645,
-      "amount": 1
+      "amount": 2
     },
     {
       "npcId": 9839,
@@ -1173,22 +1173,12 @@
     },
     {
       "id": 23020,
-      "amount": 25,
+      "amount": 19,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
         "rarity": "COMMON",
         "bonus": 0
-      }
-    },
-    {
-      "id": 22135,
-      "amount": 1,
-      "slot": 0,
-      "bonus": {
-        "effect": "DROP_RATE_HIGH",
-        "rarity": "MYTHIC",
-        "bonus": 48
       }
     },
     {
@@ -1202,18 +1192,28 @@
       }
     },
     {
-      "id": 22135,
+      "id": 15645,
       "amount": 1,
       "slot": 0,
       "bonus": {
-        "effect": "ALL_DAMAGE_MEDIUM",
-        "rarity": "LEGENDARY",
-        "bonus": 2
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
       }
     },
     {
-      "id": 2736,
-      "amount": 3,
+      "id": 8788,
+      "amount": 1,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
+    },
+    {
+      "id": 10946,
+      "amount": 2,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1232,8 +1232,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 11137,
+      "amount": 3,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1398,7 +1398,7 @@
     },
     {
       "id": 2023,
-      "amount": 3758,
+      "amount": 3958,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1408,7 +1408,7 @@
     },
     {
       "id": 995,
-      "amount": 196904336,
+      "amount": 47998820,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1418,7 +1418,7 @@
     },
     {
       "id": 10835,
-      "amount": 5080303,
+      "amount": 5314228,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1463,9 +1463,9 @@
       "amount": 1,
       "slot": 0,
       "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
+        "effect": "ALL_DAMAGE_MEDIUM",
+        "rarity": "LEGENDARY",
+        "bonus": 2
       }
     },
     {
@@ -1528,9 +1528,9 @@
       "amount": 1,
       "slot": 0,
       "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
+        "effect": "DROP_RATE_HIGH",
+        "rarity": "MYTHIC",
+        "bonus": 48
       }
     },
     {
@@ -2557,10 +2557,10 @@
       "boss": false
     },
     {
-      "runningTotal": 15895,
+      "runningTotal": 18915,
       "npcId": 9017,
       "npcName": "Sanctum Golem",
-      "amount": 15895,
+      "amount": 18915,
       "boss": true
     },
     {
@@ -2623,7 +2623,7 @@
   "drops": [
     {
       "item": 995,
-      "amount": 1511361937,
+      "amount": 1513857937,
       "rareDrop": false
     },
     {
@@ -3654,7 +3654,7 @@
       0,
       0,
       10000,
-      16928,
+      17683,
       0,
       0,
       0,
@@ -4502,7 +4502,7 @@
     "9845": 3,
     "9910": 5,
     "9911": 42,
-    "9017": 101,
+    "9017": 356,
     "9914": 2,
     "9916": 7
   },

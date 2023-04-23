@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 233918507,
+  "total-play-time-ms": 235304461,
   "username": "Winter",
   "password": "shiinozaki12",
   "email": "null",
@@ -8,9 +8,9 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2606,
-    "y": 2575,
-    "z": 8
+    "x": 2226,
+    "y": 3728,
+    "z": 0
   },
   "online-status": "ON",
   "given-starter": true,
@@ -47,7 +47,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682260821599,
+  "lastlogin": 1682278423573,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -58,7 +58,7 @@
   "day5claimed": false,
   "day6claimed": false,
   "day7claimed": false,
-  "minutes-bonus-exp": 6,
+  "minutes-bonus-exp": -1,
   "minutes-voting-dr": -1,
   "minutes-voting-dmg": 0,
   "total-gained-exp": 2086374846,
@@ -140,7 +140,7 @@
   ],
   "total-prestiges": 0,
   "slayer-spree": 33,
-  "npc-killcount": 186818,
+  "npc-killcount": 187890,
   "spawn-killcount": 0,
   "lord-killcount": 0,
   "demon-killcount": 384,
@@ -175,7 +175,7 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 1682097571036,
+  "last-veng": 181114113,
   "fight-type": "LONGBOW_RAPID",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -1411,7 +1411,7 @@
     {
       "npcId": 9017,
       "item": 995,
-      "amount": 78625
+      "amount": 79172
     },
     {
       "npcId": 9017,
@@ -1451,7 +1451,7 @@
     {
       "npcId": 9017,
       "item": 15647,
-      "amount": 28
+      "amount": 29
     },
     {
       "npcId": 9839,
@@ -1567,7 +1567,7 @@
       120,
       120,
       120,
-      730,
+      330,
       120,
       0,
       120,
@@ -1708,7 +1708,7 @@
     },
     {
       "id": 995,
-      "amount": 204527149,
+      "amount": 258047609,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1757,8 +1757,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 15357,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1799,12 +1799,7 @@
     {
       "id": -1,
       "amount": 0,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
+      "slot": 0
     },
     {
       "id": 11137,
@@ -1839,7 +1834,12 @@
     {
       "id": -1,
       "amount": 0,
-      "slot": 0
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
     },
     {
       "id": -1,
@@ -1873,7 +1873,7 @@
     },
     {
       "id": 10835,
-      "amount": 48322,
+      "amount": 8322,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1983,9 +1983,9 @@
       "amount": 1,
       "slot": 0,
       "bonus": {
-        "effect": "DROP_RATE_LOW",
-        "rarity": "RARE",
-        "bonus": 19
+        "effect": "DROP_RATE_HIGH",
+        "rarity": "MYTHIC",
+        "bonus": 69
       }
     },
     {
@@ -2977,7 +2977,7 @@
     },
     {
       "id": 8788,
-      "amount": 4,
+      "amount": 3,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -3744,7 +3744,8 @@
     1460777614054,
     1341115567,
     2611405,
-    19834795
+    19834795,
+    526355090756
   ],
   "ignores": [],
   "loyalty-titles": [
@@ -4029,10 +4030,10 @@
       "boss": false
     },
     {
-      "runningTotal": 75368,
+      "runningTotal": 75904,
       "npcId": 9017,
       "npcName": "Sanctum Golem",
-      "amount": 75368,
+      "amount": 75904,
       "boss": true
     },
     {
@@ -4053,7 +4054,7 @@
   "drops": [
     {
       "item": 995,
-      "amount": 666967236,
+      "amount": 669079236,
       "rareDrop": false
     },
     {
@@ -6103,7 +6104,7 @@
     "9910": 5,
     "3831": 3,
     "9911": 33,
-    "9017": 11,
+    "9017": 47,
     "9914": 85,
     "9915": 7,
     "9916": 182,

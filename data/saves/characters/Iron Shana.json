@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 6346538,
+  "total-play-time-ms": 7062876,
   "username": "Iron Shana",
   "password": "karate",
   "email": "null",
@@ -8,16 +8,16 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2138,
-    "y": 5014,
-    "z": 8
+    "x": 2524,
+    "y": 2533,
+    "z": 16
   },
   "online-status": "ON",
   "given-starter": true,
   "has-pin2": true,
   "saved-pin2": "1982",
   "saved-ip": "92.22.189.43",
-  "donated": 10,
+  "donated": 40,
   "current-boss-task": 0,
   "current-boss-amount": 0,
   "global-rate": 0,
@@ -40,14 +40,14 @@
   "timeUntilNextReward": 0,
   "current-voting-streak": 0,
   "entriesCurrency": 0.0,
-  "amount-donated-today": 10,
+  "amount-donated-today": 40,
   "claimed-first": false,
   "claimed-second": false,
   "claimed-third": false,
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682269828546,
+  "lastlogin": 1682276333803,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -58,12 +58,12 @@
   "day5claimed": false,
   "day6claimed": false,
   "day7claimed": false,
-  "minutes-bonus-exp": 270,
-  "minutes-voting-dr": 27,
+  "minutes-bonus-exp": 528,
+  "minutes-voting-dr": 42,
   "minutes-voting-dmg": 0,
-  "total-gained-exp": 4176664194,
+  "total-gained-exp": -118303102,
   "barrows-points": 0,
-  "donator-points": 10,
+  "donator-points": 40,
   "Skilling-points": 0,
   "prestige-points": 0,
   "achievement-points": 0,
@@ -72,7 +72,7 @@
   "loyalty-points": 0,
   "total-loyalty-points": 0.0,
   "godmodetime": 0,
-  "voting-points": 9,
+  "voting-points": 18,
   "tasks-completion": [
     false,
     false,
@@ -140,7 +140,7 @@
   ],
   "total-prestiges": 0,
   "slayer-spree": 2,
-  "npc-killcount": 2898,
+  "npc-killcount": 2912,
   "spawn-killcount": 0,
   "lord-killcount": 0,
   "demon-killcount": 499,
@@ -175,7 +175,7 @@
   "auto-retaliate": false,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 1682276175084,
+  "last-veng": 875094,
   "fight-type": "BSOAT_RAPID",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -199,7 +199,7 @@
   "fire-damage-mod": 0,
   "prayer-renewal-timer": 0,
   "teleblock-timer": 0,
-  "special-amount": 97,
+  "special-amount": 100,
   "entered-gwd-room": false,
   "gwd-altar-delay": 0,
   "gwd-killcount": [
@@ -466,12 +466,12 @@
     {
       "npcId": 9906,
       "item": 995,
-      "amount": 2334589
+      "amount": 2334590
     },
     {
       "npcId": 9906,
       "item": 2023,
-      "amount": 27
+      "amount": 28
     },
     {
       "npcId": 9838,
@@ -561,22 +561,22 @@
     {
       "npcId": 8013,
       "item": 10946,
-      "amount": 6
+      "amount": 9
     },
     {
       "npcId": 8013,
       "item": 23020,
-      "amount": 4
+      "amount": 7
     },
     {
       "npcId": 9904,
       "item": 995,
-      "amount": 2719365
+      "amount": 2719366
     },
     {
       "npcId": 9904,
       "item": 2023,
-      "amount": 40
+      "amount": 41
     },
     {
       "npcId": 8014,
@@ -646,16 +646,41 @@
     {
       "npcId": 811,
       "item": 995,
-      "amount": 5092
+      "amount": 5099
     },
     {
       "npcId": 811,
       "item": 2023,
-      "amount": 93
+      "amount": 100
     },
     {
       "npcId": 811,
       "item": 21066,
+      "amount": 1
+    },
+    {
+      "npcId": 9907,
+      "item": 10946,
+      "amount": 3
+    },
+    {
+      "npcId": 9907,
+      "item": 2023,
+      "amount": 102
+    },
+    {
+      "npcId": 9908,
+      "item": 10946,
+      "amount": 2
+    },
+    {
+      "npcId": 9908,
+      "item": 2023,
+      "amount": 300
+    },
+    {
+      "npcId": 811,
+      "item": 21069,
       "amount": 1
     }
   ],
@@ -704,13 +729,13 @@
   ],
   "skills": {
     "level": [
-      109,
-      120,
-      109,
-      860,
-      120,
-      406,
-      109,
+      129,
+      129,
+      129,
+      490,
+      129,
+      993,
+      129,
       1,
       1,
       1,
@@ -788,7 +813,7 @@
   "inventory": [
     {
       "id": 10835,
-      "amount": 29194,
+      "amount": 42406,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -798,7 +823,7 @@
     },
     {
       "id": 995,
-      "amount": 3455294,
+      "amount": 1535612,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -848,7 +873,7 @@
     },
     {
       "id": 2023,
-      "amount": 697,
+      "amount": 1369,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -877,8 +902,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 8335,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1164,7 +1189,7 @@
       }
     },
     {
-      "id": 8335,
+      "id": 21069,
       "amount": 1,
       "slot": 0,
       "bonus": {
@@ -1640,10 +1665,10 @@
       "boss": true
     },
     {
-      "runningTotal": 93,
+      "runningTotal": 100,
       "npcId": 811,
       "npcName": "Nagendra",
-      "amount": 93,
+      "amount": 100,
       "boss": true
     }
   ],
@@ -2376,14 +2401,14 @@
   "achievements-amount": [
     [
       0,
-      9,
+      12,
       0,
       0,
       0,
       250,
       200,
       203,
-      93,
+      100,
       2,
       0,
       0,
@@ -2391,8 +2416,8 @@
       0,
       0,
       17,
-      1449,
-      4,
+      1456,
+      10,
       0,
       0,
       0,
@@ -2478,7 +2503,7 @@
     ],
     [
       0,
-      9,
+      18,
       0,
       0,
       0,
@@ -2493,7 +2518,7 @@
       0,
       0,
       17,
-      1449,
+      1456,
       0,
       0,
       0,
@@ -2580,7 +2605,7 @@
     ],
     [
       0,
-      9,
+      18,
       0,
       0,
       0,
@@ -2596,7 +2621,7 @@
       0,
       0,
       17,
-      1449,
+      1456,
       0,
       0,
       0,
@@ -2786,7 +2811,7 @@
   "achievements-completed": [
     [
       false,
-      false,
+      true,
       false,
       false,
       false,
@@ -3281,6 +3306,14 @@
       "canClaim": false,
       "hasClaimed": false
     },
+    "9907": {
+      "canClaim": false,
+      "hasClaimed": false
+    },
+    "9908": {
+      "canClaim": false,
+      "hasClaimed": false
+    },
     "9845": {
       "canClaim": false,
       "hasClaimed": false
@@ -3327,7 +3360,7 @@
     "8003": 0,
     "9027": 22,
     "202": 10,
-    "811": 77,
+    "811": 4,
     "9835": 34,
     "8013": 0,
     "9837": 12,
@@ -3336,6 +3369,8 @@
     "9807": 2,
     "9904": 0,
     "9906": 0,
+    "9907": 0,
+    "9908": 0,
     "9845": 3,
     "9910": 3,
     "9911": 25

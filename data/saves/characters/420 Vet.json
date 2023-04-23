@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 157997913,
+  "total-play-time-ms": 159687600,
   "username": "420 Vet",
   "password": "idontgiveasip7",
   "email": "null",
@@ -8,16 +8,16 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2984,
-    "y": 2777,
-    "z": 0
+    "x": 2700,
+    "y": 4753,
+    "z": 52
   },
   "online-status": "ON",
   "given-starter": true,
   "has-pin2": true,
   "saved-pin2": "1212",
   "saved-ip": "108.174.168.187",
-  "donated": 221,
+  "donated": 228,
   "current-boss-task": 0,
   "current-boss-amount": 0,
   "global-rate": 0,
@@ -40,14 +40,14 @@
   "timeUntilNextReward": 0,
   "current-voting-streak": 0,
   "entriesCurrency": 0.0,
-  "amount-donated-today": 221,
+  "amount-donated-today": 228,
   "claimed-first": false,
   "claimed-second": false,
   "claimed-third": false,
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682274678922,
+  "lastlogin": 1682278524402,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -58,12 +58,12 @@
   "day5claimed": false,
   "day6claimed": false,
   "day7claimed": false,
-  "minutes-bonus-exp": 331,
+  "minutes-bonus-exp": 368,
   "minutes-voting-dr": -1,
   "minutes-voting-dmg": 0,
-  "total-gained-exp": -822094987,
+  "total-gained-exp": -821836327,
   "barrows-points": 0,
-  "donator-points": 16,
+  "donator-points": 23,
   "Skilling-points": 0,
   "prestige-points": 0,
   "achievement-points": 0,
@@ -72,7 +72,7 @@
   "loyalty-points": 0,
   "total-loyalty-points": 0.0,
   "godmodetime": 0,
-  "voting-points": 63,
+  "voting-points": 66,
   "tasks-completion": [
     false,
     false,
@@ -140,7 +140,7 @@
   ],
   "total-prestiges": 0,
   "slayer-spree": 16,
-  "npc-killcount": 5993,
+  "npc-killcount": 6065,
   "spawn-killcount": 0,
   "lord-killcount": 0,
   "demon-killcount": 341,
@@ -175,7 +175,7 @@
   "auto-retaliate": false,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 63459703,
+  "last-veng": 64510817,
   "fight-type": "LONGBOW_RAPID",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -220,7 +220,7 @@
   "slayer-master": "HARD_SLAYER",
   "slayer-task": "ZORBAK",
   "prev-slayer-task": "ERAGON",
-  "task-amount": 41,
+  "task-amount": 5,
   "task-streak": 4,
   "duo-partner": "null",
   "double-slay-xp": false,
@@ -406,12 +406,12 @@
     {
       "npcId": 8013,
       "item": 10946,
-      "amount": 23
+      "amount": 24
     },
     {
       "npcId": 8013,
       "item": 23020,
-      "amount": 17
+      "amount": 18
     },
     {
       "npcId": 9838,
@@ -496,12 +496,12 @@
     {
       "npcId": 9907,
       "item": 10946,
-      "amount": 9
+      "amount": 11
     },
     {
       "npcId": 9907,
       "item": 2023,
-      "amount": 209
+      "amount": 211
     },
     {
       "npcId": 9845,
@@ -941,12 +941,12 @@
     {
       "npcId": 1906,
       "item": 995,
-      "amount": 16037
+      "amount": 16075
     },
     {
       "npcId": 1906,
       "item": 2023,
-      "amount": 38
+      "amount": 74
     }
   ],
   "holy-prayers-unlocked": [
@@ -999,7 +999,7 @@
       120,
       1200,
       120,
-      0,
+      839,
       120,
       1,
       1,
@@ -1012,7 +1012,7 @@
       1,
       1,
       1,
-      80,
+      82,
       1,
       1,
       1,
@@ -1039,7 +1039,7 @@
       1,
       1,
       1,
-      80,
+      82,
       1,
       1,
       1,
@@ -1066,7 +1066,7 @@
       0,
       0,
       0,
-      2169475,
+      2428135,
       0,
       0,
       0,
@@ -1083,7 +1083,7 @@
     },
     {
       "id": 10835,
-      "amount": 184,
+      "amount": 36416,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1123,7 +1123,7 @@
     },
     {
       "id": 2023,
-      "amount": 7922,
+      "amount": 8158,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1152,14 +1152,9 @@
       "slot": 0
     },
     {
-      "id": 3024,
+      "id": 229,
       "amount": 1,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
+      "slot": 0
     },
     {
       "id": 229,
@@ -1167,29 +1162,19 @@
       "slot": 0
     },
     {
-      "id": 3026,
+      "id": 229,
       "amount": 1,
       "slot": 0
     },
     {
-      "id": 3024,
+      "id": 229,
       "amount": 1,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
+      "slot": 0
     },
     {
-      "id": 3024,
+      "id": 3028,
       "amount": 1,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
+      "slot": 0
     },
     {
       "id": -1,
@@ -1243,7 +1228,7 @@
     },
     {
       "id": 995,
-      "amount": 34604230,
+      "amount": 480230,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -2307,17 +2292,17 @@
       "boss": false
     },
     {
-      "runningTotal": 20,
+      "runningTotal": 56,
       "npcId": 1906,
       "npcName": "Zorbak",
-      "amount": 20,
+      "amount": 56,
       "boss": false
     }
   ],
   "drops": [
     {
       "item": 995,
-      "amount": 118745382,
+      "amount": 118809382,
       "rareDrop": false
     },
     {
@@ -3108,7 +3093,7 @@
       0,
       0,
       100,
-      3282,
+      3318,
       45,
       0,
       0,
@@ -3200,7 +3185,7 @@
       140,
       123,
       0,
-      20,
+      56,
       0,
       0,
       16,
@@ -3210,7 +3195,7 @@
       0,
       0,
       1000,
-      3282,
+      3318,
       0,
       0,
       0,
@@ -3297,7 +3282,7 @@
     ],
     [
       0,
-      66,
+      69,
       0,
       0,
       0,
@@ -3313,7 +3298,7 @@
       0,
       0,
       1143,
-      3282,
+      3318,
       0,
       0,
       0,
@@ -4113,7 +4098,7 @@
     "9838": 2,
     "9904": 0,
     "3313": 119,
-    "1906": 20,
+    "1906": 56,
     "9906": 0,
     "9907": 0,
     "9908": 0,

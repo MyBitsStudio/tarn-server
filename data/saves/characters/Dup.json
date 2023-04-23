@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 114705938,
+  "total-play-time-ms": 117008924,
   "username": "Dup",
   "password": "momdad1234",
   "email": "null",
@@ -8,9 +8,9 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2225,
-    "y": 3749,
-    "z": 0
+    "x": 2786,
+    "y": 4775,
+    "z": 480
   },
   "online-status": "ON",
   "given-starter": true,
@@ -47,7 +47,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682273774141,
+  "lastlogin": 1682278992409,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -61,7 +61,7 @@
   "minutes-bonus-exp": 0,
   "minutes-voting-dr": 0,
   "minutes-voting-dmg": 0,
-  "total-gained-exp": -8510025808,
+  "total-gained-exp": 79908784,
   "barrows-points": 0,
   "donator-points": 400,
   "Skilling-points": 0,
@@ -140,7 +140,7 @@
   ],
   "total-prestiges": 0,
   "slayer-spree": 0,
-  "npc-killcount": 141671,
+  "npc-killcount": 148031,
   "spawn-killcount": 0,
   "lord-killcount": 0,
   "demon-killcount": 253,
@@ -175,8 +175,8 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 1681955752792,
-  "fight-type": "LONGBOW_ACCURATE",
+  "last-veng": 322435800,
+  "fight-type": "STAFF_BASH",
   "sol-effect": 0,
   "skull-timer": 0,
   "fuse-combination-timer": 0,
@@ -214,7 +214,7 @@
   "process-farming": false,
   "clanchat": "Help",
   "autocast": false,
-  "autocast-spell": -1,
+  "autocast-spell": 1154,
   "dfs-charges": 0,
   "coins-gambled": 0,
   "slayer-master": "EASY_SLAYER",
@@ -776,12 +776,12 @@
     {
       "npcId": 8013,
       "item": 10946,
-      "amount": 26
+      "amount": 29
     },
     {
       "npcId": 8013,
       "item": 23020,
-      "amount": 24
+      "amount": 27
     },
     {
       "npcId": 9026,
@@ -1201,12 +1201,17 @@
     {
       "npcId": 9818,
       "item": 995,
-      "amount": 169507
+      "amount": 169743
     },
     {
       "npcId": 9818,
       "item": 14319,
       "amount": 1
+    },
+    {
+      "npcId": 9912,
+      "item": 995,
+      "amount": 173462
     }
   ],
   "holy-prayers-unlocked": [
@@ -1338,7 +1343,7 @@
   "inventory": [
     {
       "id": 10835,
-      "amount": 415535,
+      "amount": 464681,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1347,18 +1352,18 @@
       }
     },
     {
-      "id": 22230,
+      "id": 8411,
       "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "AOE_EFFECT",
         "rarity": "MYTHIC",
-        "bonus": 2
+        "bonus": 1
       }
     },
     {
       "id": 995,
-      "amount": 108024839,
+      "amount": 253645577,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1367,8 +1372,8 @@
       }
     },
     {
-      "id": 11137,
-      "amount": 3,
+      "id": -1,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1377,8 +1382,8 @@
       }
     },
     {
-      "id": 10946,
-      "amount": 5,
+      "id": -1,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1387,8 +1392,8 @@
       }
     },
     {
-      "id": 23020,
-      "amount": 3,
+      "id": -1,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1649,13 +1654,13 @@
       }
     },
     {
-      "id": 8411,
+      "id": 22230,
       "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "AOE_EFFECT",
         "rarity": "MYTHIC",
-        "bonus": 1
+        "bonus": 2
       }
     },
     {
@@ -2112,7 +2117,7 @@
     },
     {
       "id": 11137,
-      "amount": 11,
+      "amount": 14,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -2404,7 +2409,7 @@
     },
     {
       "id": 23020,
-      "amount": 12,
+      "amount": 24,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -2454,7 +2459,7 @@
     },
     {
       "id": 10946,
-      "amount": 0,
+      "amount": 20,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -2764,7 +2769,8 @@
     75334,
     13837863569,
     8772014595,
-    22285
+    22285,
+    46935133
   ],
   "ignores": [],
   "loyalty-titles": [
@@ -3154,17 +3160,24 @@
       "boss": false
     },
     {
-      "runningTotal": 4383,
+      "runningTotal": 5103,
       "npcId": 9818,
       "npcName": "Leviathan",
-      "amount": 4383,
+      "amount": 5103,
+      "boss": false
+    },
+    {
+      "runningTotal": 4230,
+      "npcId": 9912,
+      "npcName": "Calamity",
+      "amount": 4230,
       "boss": false
     }
   ],
   "drops": [
     {
       "item": 995,
-      "amount": 1533406166,
+      "amount": 1554326166,
       "rareDrop": false
     },
     {
@@ -4795,7 +4808,7 @@
   },
   "lastTGloveIndex": -1,
   "group-ironman-locked": false,
-  "lastInstanceNpc": 9818,
+  "lastInstanceNpc": 9912,
   "daily-task": {},
   "collectionlog-rewards": {
     "2342": {
@@ -4831,6 +4844,10 @@
       "hasClaimed": false
     },
     "9911": {
+      "canClaim": false,
+      "hasClaimed": false
+    },
+    "9912": {
       "canClaim": false,
       "hasClaimed": false
     },
@@ -5055,6 +5072,7 @@
     "9012": 1513,
     "9908": 1,
     "9911": 10,
+    "9912": 1410,
     "9017": 3,
     "9914": 42,
     "9915": 61,
@@ -5087,7 +5105,7 @@
     "9815": 1,
     "9816": 795,
     "9817": 18,
-    "9818": 398,
+    "9818": 638,
     "92": 74,
     "3305": 1696,
     "9835": 7,

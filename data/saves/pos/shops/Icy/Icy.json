@@ -60,16 +60,16 @@
       "id": 22135,
       "amount": 1,
       "maxAmount": 1,
-      "price": 23000000,
-      "effect": "AOE_EFFECT",
+      "price": 250000,
+      "effect": "DOUBLE_KILLS",
       "bonus": 1
     },
     {
-      "id": 22135,
+      "id": 15645,
       "amount": 1,
       "maxAmount": 1,
-      "price": 250000,
-      "effect": "DOUBLE_KILLS",
+      "price": 500000,
+      "effect": "TRIPLE_KILLS",
       "bonus": 1
     },
     null,
@@ -96,5 +96,5 @@
     null,
     null
   ],
-  "earnings": 0
+  "earnings": 23000000
 }

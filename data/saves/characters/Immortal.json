@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 180381971,
+  "total-play-time-ms": 182039528,
   "username": "Immortal",
   "password": "lol",
   "email": "null",
@@ -8,8 +8,8 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2466,
-    "y": 10148,
+    "x": 2469,
+    "y": 10152,
     "z": 4
   },
   "online-status": "ON",
@@ -47,7 +47,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682273458519,
+  "lastlogin": 1682276462726,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -58,10 +58,10 @@
   "day5claimed": false,
   "day6claimed": false,
   "day7claimed": false,
-  "minutes-bonus-exp": 3862,
+  "minutes-bonus-exp": 3835,
   "minutes-voting-dr": -1,
   "minutes-voting-dmg": 0,
-  "total-gained-exp": -1642090139,
+  "total-gained-exp": -802516513,
   "barrows-points": 0,
   "donator-points": 55,
   "Skilling-points": 0,
@@ -140,7 +140,7 @@
   ],
   "total-prestiges": 0,
   "slayer-spree": 0,
-  "npc-killcount": 8332,
+  "npc-killcount": 9823,
   "spawn-killcount": 0,
   "lord-killcount": 0,
   "demon-killcount": 0,
@@ -175,7 +175,7 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 282451446,
+  "last-veng": 1681995668840,
   "fight-type": "LONGBOW_LONGRANGE",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -184,7 +184,7 @@
   "claimed-fuse-item": true,
   "fuse-in-progress": false,
   "accept-aid": false,
-  "poison-damage": 0,
+  "poison-damage": 5,
   "poison-immunity": 0,
   "overload-timer": 0,
   "aggro-timer": 0,
@@ -194,7 +194,7 @@
   "dmg-timer": 0,
   "double-dr-timer": 0,
   "double-ddr-timer": 0,
-  "double-dmg-timer": 0,
+  "double-dmg-timer": 1,
   "fire-immunity": 0,
   "fire-damage-mod": 0,
   "prayer-renewal-timer": 0,
@@ -391,12 +391,12 @@
     {
       "npcId": 8013,
       "item": 10946,
-      "amount": 39
+      "amount": 41
     },
     {
       "npcId": 8013,
       "item": 23020,
-      "amount": 36
+      "amount": 38
     },
     {
       "npcId": 3117,
@@ -466,7 +466,7 @@
     {
       "npcId": 1313,
       "item": 995,
-      "amount": 260721
+      "amount": 260938
     }
   ],
   "holy-prayers-unlocked": [
@@ -517,7 +517,7 @@
       120,
       120,
       120,
-      1050,
+      1200,
       120,
       900,
       1,
@@ -569,10 +569,10 @@
     ],
     "experience": [
       24199717,
-      313861548,
+      608599296,
       -468236,
-      143302775,
-      316311531,
+      393400905,
+      611049279,
       13047658,
       0,
       0,
@@ -602,8 +602,8 @@
       "slot": 0
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 10946,
+      "amount": 10,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -612,8 +612,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 23020,
+      "amount": 6,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -622,8 +622,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 2736,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -803,7 +803,7 @@
     },
     {
       "id": 995,
-      "amount": 65020841,
+      "amount": 121440841,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -822,8 +822,8 @@
       }
     },
     {
-      "id": 15357,
-      "amount": 1,
+      "id": -1,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1848,17 +1848,17 @@
       "boss": false
     },
     {
-      "runningTotal": 2127,
+      "runningTotal": 2979,
       "npcId": 1313,
       "npcName": "Lord Yasuda",
-      "amount": 2127,
+      "amount": 2979,
       "boss": false
     }
   ],
   "drops": [
     {
       "item": 995,
-      "amount": 865101710,
+      "amount": 867181710,
       "rareDrop": false
     },
     {
@@ -3522,7 +3522,7 @@
     null
   ],
   "drystreak": {
-    "1313": 533,
+    "1313": 746,
     "449": 1894,
     "3011": 1721,
     "452": 1348,

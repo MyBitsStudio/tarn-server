@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 270539800,
+  "total-play-time-ms": 272165575,
   "username": "Mana",
   "password": "adoption",
   "email": "null",
@@ -8,8 +8,8 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2222,
-    "y": 3747,
+    "x": 2220,
+    "y": 3735,
     "z": 0
   },
   "online-status": "ON",
@@ -47,7 +47,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682269638353,
+  "lastlogin": 1682276494522,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -140,7 +140,7 @@
   ],
   "total-prestiges": 0,
   "slayer-spree": 71,
-  "npc-killcount": 298855,
+  "npc-killcount": 301487,
   "spawn-killcount": 0,
   "lord-killcount": 0,
   "demon-killcount": 852,
@@ -175,7 +175,7 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 258533682,
+  "last-veng": 1682019586618,
   "fight-type": "LONGBOW_LONGRANGE",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -1371,7 +1371,17 @@
     {
       "npcId": 3115,
       "item": 995,
-      "amount": 184239
+      "amount": 184914
+    },
+    {
+      "npcId": 3115,
+      "item": 14375,
+      "amount": 1
+    },
+    {
+      "npcId": 3115,
+      "item": 20588,
+      "amount": 1
     }
   ],
   "holy-prayers-unlocked": [
@@ -1503,7 +1513,7 @@
   "inventory": [
     {
       "id": 10835,
-      "amount": 20296635,
+      "amount": 20266635,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1513,7 +1523,7 @@
     },
     {
       "id": 995,
-      "amount": 970905899,
+      "amount": 1095105899,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1548,7 +1558,7 @@
     },
     {
       "id": 2736,
-      "amount": 2,
+      "amount": 4,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1557,18 +1567,18 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 22166,
+      "amount": 1,
       "slot": 0,
       "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
+        "effect": "DROP_RATE_HIGH",
+        "rarity": "MYTHIC",
+        "bonus": 76
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 20588,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1789,13 +1799,13 @@
       }
     },
     {
-      "id": 22166,
+      "id": 14375,
       "amount": 1,
       "slot": 0,
       "bonus": {
-        "effect": "DROP_RATE_HIGH",
-        "rarity": "MYTHIC",
-        "bonus": 76
+        "effect": "ALL_DAMAGE_LOW",
+        "rarity": "RARE",
+        "bonus": 1
       }
     },
     {
@@ -3199,17 +3209,17 @@
       "boss": false
     },
     {
-      "runningTotal": 702,
+      "runningTotal": 2676,
       "npcId": 3115,
       "npcName": "Scylla",
-      "amount": 702,
+      "amount": 2676,
       "boss": false
     }
   ],
   "drops": [
     {
       "item": 995,
-      "amount": -2010348573,
+      "amount": -2004092573,
       "rareDrop": false
     },
     {
@@ -5269,7 +5279,7 @@
   "drystreak": {
     "6692": 8,
     "2342": 56,
-    "3115": 234,
+    "3115": 133,
     "811": 51,
     "3117": 1672,
     "9903": 674,

@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 356899884,
+  "total-play-time-ms": 358642809,
   "username": "Jroc",
   "password": "Password!@#!@#",
   "email": "null",
@@ -8,9 +8,9 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2143,
-    "y": 5024,
-    "z": 0
+    "x": 2462,
+    "y": 10141,
+    "z": 8
   },
   "online-status": "ON",
   "given-starter": true,
@@ -47,7 +47,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682268890162,
+  "lastlogin": 1682278833369,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -58,8 +58,8 @@
   "day5claimed": false,
   "day6claimed": false,
   "day7claimed": false,
-  "minutes-bonus-exp": 235,
-  "minutes-voting-dr": -1,
+  "minutes-bonus-exp": 246,
+  "minutes-voting-dr": 0,
   "minutes-voting-dmg": 0,
   "total-gained-exp": 23737375,
   "barrows-points": 0,
@@ -72,7 +72,7 @@
   "loyalty-points": 0,
   "total-loyalty-points": 0.0,
   "godmodetime": 0,
-  "voting-points": 98,
+  "voting-points": 101,
   "tasks-completion": [
     false,
     false,
@@ -140,7 +140,7 @@
   ],
   "total-prestiges": 0,
   "slayer-spree": 12,
-  "npc-killcount": 704448,
+  "npc-killcount": 707564,
   "spawn-killcount": 0,
   "lord-killcount": 0,
   "demon-killcount": 702,
@@ -175,7 +175,7 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 1681913071650,
+  "last-veng": 1681914123394,
   "fight-type": "BSOAT_RAPID",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -636,12 +636,12 @@
     {
       "npcId": 9907,
       "item": 10946,
-      "amount": 52
+      "amount": 54
     },
     {
       "npcId": 9907,
       "item": 2023,
-      "amount": 153
+      "amount": 155
     },
     {
       "npcId": 9906,
@@ -661,22 +661,22 @@
     {
       "npcId": 9908,
       "item": 10946,
-      "amount": 37
+      "amount": 38
     },
     {
       "npcId": 9908,
       "item": 2023,
-      "amount": 338
+      "amount": 339
     },
     {
       "npcId": 8013,
       "item": 10946,
-      "amount": 71
+      "amount": 74
     },
     {
       "npcId": 8013,
       "item": 23020,
-      "amount": 66
+      "amount": 69
     },
     {
       "npcId": 202,
@@ -1266,7 +1266,7 @@
     {
       "npcId": 9913,
       "item": 995,
-      "amount": 183473
+      "amount": 183902
     },
     {
       "npcId": 9913,
@@ -1411,7 +1411,7 @@
     {
       "npcId": 1318,
       "item": 995,
-      "amount": 321583
+      "amount": 321959
     },
     {
       "npcId": 1318,
@@ -1477,7 +1477,7 @@
       120,
       120,
       120,
-      210,
+      1200,
       120,
       1200,
       120,
@@ -1572,8 +1572,8 @@
       }
     },
     {
-      "id": 10946,
-      "amount": 2,
+      "id": -1,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1583,7 +1583,7 @@
     },
     {
       "id": 10835,
-      "amount": 61391274,
+      "amount": 50327031,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1623,7 +1623,7 @@
     },
     {
       "id": 995,
-      "amount": 142,
+      "amount": 116480142,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1673,7 +1673,7 @@
     },
     {
       "id": 23020,
-      "amount": 18,
+      "amount": 27,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1732,8 +1732,8 @@
       }
     },
     {
-      "id": 15358,
-      "amount": 1,
+      "id": -1,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1743,7 +1743,7 @@
     },
     {
       "id": 2023,
-      "amount": 356,
+      "amount": 856,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -3021,10 +3021,10 @@
       "boss": false
     },
     {
-      "runningTotal": 16028,
+      "runningTotal": 17276,
       "npcId": 9913,
       "npcName": "Slender Man",
-      "amount": 16028,
+      "amount": 17276,
       "boss": false
     },
     {
@@ -3140,17 +3140,17 @@
       "boss": true
     },
     {
-      "runningTotal": 4678,
+      "runningTotal": 5767,
       "npcId": 1318,
       "npcName": "Black Goku",
-      "amount": 4678,
+      "amount": 5767,
       "boss": false
     }
   ],
   "drops": [
     {
       "item": 995,
-      "amount": -113103168,
+      "amount": -100207168,
       "rareDrop": false
     },
     {
@@ -5294,7 +5294,7 @@
     "1311": 406,
     "1313": 4431,
     "6692": 0,
-    "1318": 811,
+    "1318": 1174,
     "2342": 19,
     "3112": 854,
     "3115": 1699,
@@ -5309,7 +5309,7 @@
     "9910": 0,
     "9911": 45,
     "9912": 20,
-    "9913": 671,
+    "9913": 1087,
     "9017": 98,
     "9914": 3,
     "187": 2664,

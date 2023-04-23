@@ -8,8 +8,8 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2965,
-    "y": 9488,
+    "x": 2985,
+    "y": 9494,
     "z": 136
   },
   "online-status": "ON",
@@ -17,7 +17,7 @@
   "has-pin2": true,
   "saved-pin2": "3162",
   "saved-ip": "174.87.75.28",
-  "donated": 1274,
+  "donated": 1302,
   "current-boss-task": 0,
   "current-boss-amount": 0,
   "global-rate": 0,
@@ -40,14 +40,14 @@
   "timeUntilNextReward": 0,
   "current-voting-streak": 0,
   "entriesCurrency": 0.0,
-  "amount-donated-today": 1274,
+  "amount-donated-today": 1302,
   "claimed-first": false,
   "claimed-second": false,
   "claimed-third": false,
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682268891966,
+  "lastlogin": 1682278269798,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -58,12 +58,12 @@
   "day5claimed": false,
   "day6claimed": false,
   "day7claimed": false,
-  "minutes-bonus-exp": 4651,
-  "minutes-voting-dr": 18,
+  "minutes-bonus-exp": 4636,
+  "minutes-voting-dr": 3,
   "minutes-voting-dmg": 0,
   "total-gained-exp": 407223689,
   "barrows-points": 0,
-  "donator-points": 26,
+  "donator-points": 54,
   "Skilling-points": 0,
   "prestige-points": 0,
   "achievement-points": 0,
@@ -140,7 +140,7 @@
   ],
   "total-prestiges": 0,
   "slayer-spree": 105,
-  "npc-killcount": 381351,
+  "npc-killcount": 384858,
   "spawn-killcount": 0,
   "lord-killcount": 0,
   "demon-killcount": 602,
@@ -175,7 +175,7 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 1681875187261,
+  "last-veng": 403984575,
   "fight-type": "STAFF_FOCUS",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -356,12 +356,12 @@
     {
       "npcId": 9906,
       "item": 995,
-      "amount": 1152757
+      "amount": 1152759
     },
     {
       "npcId": 9906,
       "item": 2023,
-      "amount": 179
+      "amount": 180
     },
     {
       "npcId": 9027,
@@ -601,22 +601,22 @@
     {
       "npcId": 9904,
       "item": 995,
-      "amount": 2564151
+      "amount": 2564152
     },
     {
       "npcId": 9904,
       "item": 2023,
-      "amount": 118
+      "amount": 119
     },
     {
       "npcId": 9908,
       "item": 10946,
-      "amount": 45
+      "amount": 46
     },
     {
       "npcId": 9908,
       "item": 2023,
-      "amount": 342
+      "amount": 343
     },
     {
       "npcId": 9028,
@@ -676,12 +676,12 @@
     {
       "npcId": 9907,
       "item": 10946,
-      "amount": 57
+      "amount": 58
     },
     {
       "npcId": 9907,
       "item": 2023,
-      "amount": 153
+      "amount": 155
     },
     {
       "npcId": 9029,
@@ -1681,7 +1681,12 @@
     {
       "npcId": 252,
       "item": 995,
-      "amount": 200691
+      "amount": 201215
+    },
+    {
+      "npcId": 9907,
+      "item": 23058,
+      "amount": 1
     }
   ],
   "holy-prayers-unlocked": [
@@ -1732,7 +1737,7 @@
       120,
       120,
       120,
-      1200,
+      900,
       120,
       1200,
       120,
@@ -2018,7 +2023,7 @@
     },
     {
       "id": 2023,
-      "amount": 19474,
+      "amount": 20039,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -2028,7 +2033,7 @@
     },
     {
       "id": 995,
-      "amount": 236089051,
+      "amount": 365175015,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -2038,7 +2043,7 @@
     },
     {
       "id": 10835,
-      "amount": 4384613,
+      "amount": 4684613,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -3678,22 +3683,22 @@
       "boss": false
     },
     {
-      "runningTotal": 2620,
+      "runningTotal": 4624,
       "npcId": 252,
       "npcName": "Frieza",
-      "amount": 2620,
+      "amount": 4624,
       "boss": true
     }
   ],
   "drops": [
     {
       "item": 995,
-      "amount": 1796394370,
+      "amount": 1816709370,
       "rareDrop": false
     },
     {
       "item": 2023,
-      "amount": 47955,
+      "amount": 48155,
       "rareDrop": false
     },
     {
@@ -5997,7 +6002,7 @@
     "1906": 3,
     "9845": 1,
     "3831": 50,
-    "252": 655
+    "252": 1156
   },
   "boost": 0,
   "slot-level": 0

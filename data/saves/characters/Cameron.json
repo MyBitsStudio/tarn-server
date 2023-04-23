@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 420893777,
+  "total-play-time-ms": 421174291,
   "username": "Cameron",
   "password": "camcam",
   "email": "null",
@@ -8,9 +8,9 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2222,
-    "y": 3747,
-    "z": 0
+    "x": 2788,
+    "y": 4776,
+    "z": 452
   },
   "online-status": "ON",
   "given-starter": true,
@@ -47,7 +47,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682268886596,
+  "lastlogin": 1682279122548,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -140,7 +140,7 @@
   ],
   "total-prestiges": 0,
   "slayer-spree": 228,
-  "npc-killcount": 563355,
+  "npc-killcount": 564859,
   "spawn-killcount": 0,
   "lord-killcount": 0,
   "demon-killcount": 1161,
@@ -175,7 +175,7 @@
   "auto-retaliate": false,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 428895797,
+  "last-veng": 429947731,
   "fight-type": "STAFF_FOCUS",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -194,7 +194,7 @@
   "dmg-timer": 0,
   "double-dr-timer": 0,
   "double-ddr-timer": 0,
-  "double-dmg-timer": 1,
+  "double-dmg-timer": 0,
   "fire-immunity": 0,
   "fire-damage-mod": 0,
   "prayer-renewal-timer": 0,
@@ -1611,7 +1611,7 @@
     {
       "npcId": 9806,
       "item": 995,
-      "amount": 189471
+      "amount": 189540
     },
     {
       "npcId": 9839,
@@ -1746,7 +1746,7 @@
     {
       "npcId": 9816,
       "item": 995,
-      "amount": 120551
+      "amount": 120978
     },
     {
       "npcId": 9806,
@@ -1771,7 +1771,7 @@
     {
       "npcId": 9816,
       "item": 11195,
-      "amount": 3
+      "amount": 4
     },
     {
       "npcId": 9816,
@@ -1791,7 +1791,7 @@
     {
       "npcId": 9816,
       "item": 17618,
-      "amount": 3
+      "amount": 4
     },
     {
       "npcId": 8013,
@@ -1938,7 +1938,7 @@
   "inventory": [
     {
       "id": 10835,
-      "amount": 946142,
+      "amount": 973017,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1948,7 +1948,7 @@
     },
     {
       "id": 995,
-      "amount": 56875793,
+      "amount": 26646793,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -2052,8 +2052,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 2736,
+      "amount": 3,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -2062,8 +2062,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 11195,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -2072,8 +2072,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 17618,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -3795,10 +3795,10 @@
       "boss": false
     },
     {
-      "runningTotal": 135632,
+      "runningTotal": 135824,
       "npcId": 9806,
       "npcName": "Gorvek",
-      "amount": 135632,
+      "amount": 135824,
       "boss": false
     },
     {
@@ -3809,17 +3809,17 @@
       "boss": false
     },
     {
-      "runningTotal": 35805,
+      "runningTotal": 37053,
       "npcId": 9816,
       "npcName": "Dragonite",
-      "amount": 35805,
+      "amount": 37053,
       "boss": false
     }
   ],
   "drops": [
     {
       "item": 995,
-      "amount": -895003213,
+      "amount": -893295213,
       "rareDrop": false
     },
     {
@@ -5825,7 +5825,7 @@
   },
   "lastTGloveIndex": -1,
   "group-ironman-locked": false,
-  "lastInstanceNpc": 9816,
+  "lastInstanceNpc": 9806,
   "daily-task": {
     "HARD_SLAYER_TASKS": {
       "index": 0,
@@ -6102,11 +6102,11 @@
     "8008": 69,
     "202": 66,
     "8013": 0,
-    "9806": 922,
+    "9806": 986,
     "8014": 41,
     "9807": 1,
     "9815": 76,
-    "9816": 246,
+    "9816": 252,
     "9817": 99,
     "92": 121,
     "9835": 31,

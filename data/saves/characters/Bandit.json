@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 114072097,
+  "total-play-time-ms": 115318489,
   "username": "Bandit",
   "password": "7801768tarn",
   "email": "null",
@@ -8,9 +8,9 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2610,
-    "y": 2595,
-    "z": 8
+    "x": 2580,
+    "y": 2571,
+    "z": 12
   },
   "online-status": "ON",
   "given-starter": true,
@@ -47,7 +47,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682272058723,
+  "lastlogin": 1682278272073,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -58,10 +58,10 @@
   "day5claimed": false,
   "day6claimed": false,
   "day7claimed": false,
-  "minutes-bonus-exp": 1742,
-  "minutes-voting-dr": 1,
+  "minutes-bonus-exp": 1722,
+  "minutes-voting-dr": -1,
   "minutes-voting-dmg": 0,
-  "total-gained-exp": 1720261327,
+  "total-gained-exp": 1722346767,
   "barrows-points": 0,
   "donator-points": 131,
   "Skilling-points": 0,
@@ -139,8 +139,8 @@
     0
   ],
   "total-prestiges": 0,
-  "slayer-spree": 60,
-  "npc-killcount": 33910,
+  "slayer-spree": 61,
+  "npc-killcount": 34378,
   "spawn-killcount": 0,
   "lord-killcount": 0,
   "demon-killcount": 254,
@@ -175,7 +175,7 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 287701727,
+  "last-veng": 287866267,
   "fight-type": "LONGBOW_LONGRANGE",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -218,10 +218,10 @@
   "dfs-charges": 0,
   "coins-gambled": 0,
   "slayer-master": "BOSS_SLAYER",
-  "slayer-task": "LILINRYSS",
-  "prev-slayer-task": "MUTANT_HYDRA",
-  "task-amount": 33,
-  "task-streak": 60,
+  "slayer-task": "MUTANT_HYDRA",
+  "prev-slayer-task": "LILINRYSS",
+  "task-amount": 30,
+  "task-streak": 61,
   "duo-partner": "null",
   "double-slay-xp": false,
   "recoil-deg": 0,
@@ -1041,7 +1041,7 @@
     {
       "npcId": 9017,
       "item": 995,
-      "amount": 51114
+      "amount": 51133
     },
     {
       "npcId": 9836,
@@ -1181,12 +1181,12 @@
     {
       "npcId": 9839,
       "item": 995,
-      "amount": 50175
+      "amount": 50240
     },
     {
       "npcId": 3014,
       "item": 995,
-      "amount": 66053
+      "amount": 66087
     },
     {
       "npcId": 9017,
@@ -1244,7 +1244,7 @@
       120,
       1200,
       120,
-      676,
+      724,
       120,
       1,
       1,
@@ -1257,7 +1257,7 @@
       101,
       1,
       1,
-      106,
+      107,
       1,
       71,
       1,
@@ -1284,7 +1284,7 @@
       101,
       1,
       1,
-      106,
+      107,
       1,
       71,
       1,
@@ -1311,7 +1311,7 @@
       17181710,
       0,
       0,
-      27580490,
+      29665930,
       0,
       858468,
       0,
@@ -1333,7 +1333,7 @@
     },
     {
       "id": 995,
-      "amount": 11389388,
+      "amount": 17795388,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1352,19 +1352,14 @@
       }
     },
     {
-      "id": 3026,
+      "id": 229,
       "amount": 1,
       "slot": 0
     },
     {
-      "id": 3024,
+      "id": 3030,
       "amount": 1,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
+      "slot": 0
     },
     {
       "id": 3024,
@@ -1467,8 +1462,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 5023,
+      "amount": 85,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -3056,10 +3051,10 @@
       "boss": true
     },
     {
-      "runningTotal": 7512,
+      "runningTotal": 7569,
       "npcId": 9017,
       "npcName": "Sanctum Golem",
-      "amount": 7512,
+      "amount": 7569,
       "boss": true
     },
     {
@@ -3119,24 +3114,24 @@
       "boss": false
     },
     {
-      "runningTotal": 432,
+      "runningTotal": 624,
       "npcId": 9839,
       "npcName": "Mutant Hydra",
-      "amount": 432,
+      "amount": 624,
       "boss": false
     },
     {
-      "runningTotal": 147,
+      "runningTotal": 249,
       "npcId": 3014,
       "npcName": "Lilinryss",
-      "amount": 147,
+      "amount": 249,
       "boss": false
     }
   ],
   "drops": [
     {
       "item": 995,
-      "amount": 301028385,
+      "amount": 301128385,
       "rareDrop": false
     },
     {
@@ -4118,21 +4113,21 @@
       0,
       101,
       2000,
-      144,
+      208,
       0,
       191,
       82,
       93,
       91,
-      60,
+      61,
       91,
       278,
-      49,
+      83,
       167,
       0,
       0,
       4046,
-      10841,
+      10958,
       0,
       0,
       0,
@@ -5013,7 +5008,7 @@
     "8003": 16,
     "9027": 6,
     "3013": 278,
-    "3014": 49,
+    "3014": 83,
     "9030": 8,
     "8008": 27,
     "8010": 167,
@@ -5033,7 +5028,7 @@
     "9836": 4,
     "9837": 10,
     "9838": 2,
-    "9839": 144,
+    "9839": 208,
     "9903": 82,
     "9904": 0,
     "3313": 75,
@@ -5045,7 +5040,7 @@
     "9910": 2,
     "3831": 77,
     "9911": 41,
-    "9017": 4,
+    "9017": 23,
     "9914": 97,
     "9915": 34,
     "9916": 26,

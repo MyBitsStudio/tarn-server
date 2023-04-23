@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 115068960,
+  "total-play-time-ms": 116547305,
   "username": "Blade",
   "password": "lmao1337xd",
   "email": "null",
@@ -8,8 +8,8 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2181,
-    "y": 3735,
+    "x": 2222,
+    "y": 3747,
     "z": 0
   },
   "online-status": "ON",
@@ -45,7 +45,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682152954537,
+  "lastlogin": 1682278386367,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -56,8 +56,8 @@
   "day5claimed": false,
   "day6claimed": false,
   "day7claimed": false,
-  "minutes-bonus-exp": 15,
-  "minutes-voting-dr": 5,
+  "minutes-bonus-exp": -1,
+  "minutes-voting-dr": -1,
   "minutes-voting-dmg": 0,
   "total-gained-exp": -339288836,
   "barrows-points": 0,
@@ -173,7 +173,7 @@
   "auto-retaliate": false,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 1682223497222,
+  "last-veng": 1682224548236,
   "fight-type": "CROSSBOW_ACCURATE",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -344,12 +344,12 @@
     {
       "npcId": 8013,
       "item": 10946,
-      "amount": 25
+      "amount": 26
     },
     {
       "npcId": 8013,
       "item": 23020,
-      "amount": 24
+      "amount": 25
     },
     {
       "npcId": 9906,
@@ -364,12 +364,12 @@
     {
       "npcId": 9907,
       "item": 10946,
-      "amount": 13
+      "amount": 15
     },
     {
       "npcId": 9907,
       "item": 2023,
-      "amount": 110
+      "amount": 112
     },
     {
       "npcId": 9027,
@@ -710,8 +710,8 @@
       }
     },
     {
-      "id": 10946,
-      "amount": 10,
+      "id": 995,
+      "amount": 18904612,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -721,7 +721,7 @@
     },
     {
       "id": 2023,
-      "amount": 4960,
+      "amount": 5160,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -780,38 +780,38 @@
       }
     },
     {
+      "id": -1,
+      "amount": 0,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
+    },
+    {
+      "id": -1,
+      "amount": 0,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
+    },
+    {
+      "id": 10946,
+      "amount": 17,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
+    },
+    {
       "id": 23020,
-      "amount": 2,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
-      "id": 995,
-      "amount": 18904612,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
-      "id": -1,
-      "amount": 0,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
-      "id": -1,
-      "amount": 0,
+      "amount": 5,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",

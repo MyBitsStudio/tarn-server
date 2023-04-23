@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 143623001,
+  "total-play-time-ms": 145385338,
   "username": "Classic Irl",
   "password": "Chicagopolice2",
   "email": "null",
@@ -8,8 +8,8 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2961,
-    "y": 9501,
+    "x": 2991,
+    "y": 9494,
     "z": 72
   },
   "online-status": "ON",
@@ -47,7 +47,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682272735533,
+  "lastlogin": 1682278299382,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -61,7 +61,7 @@
   "minutes-bonus-exp": -1,
   "minutes-voting-dr": -1,
   "minutes-voting-dmg": 0,
-  "total-gained-exp": -1236809118,
+  "total-gained-exp": -1233106326,
   "barrows-points": 0,
   "donator-points": 49,
   "Skilling-points": 0,
@@ -140,7 +140,7 @@
   ],
   "total-prestiges": 0,
   "slayer-spree": 13,
-  "npc-killcount": 27171,
+  "npc-killcount": 28217,
   "spawn-killcount": 0,
   "lord-killcount": 0,
   "demon-killcount": 672,
@@ -175,7 +175,7 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 1682059990958,
+  "last-veng": 1682061042290,
   "fight-type": "STAFF_POUND",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -1241,12 +1241,17 @@
     {
       "npcId": 9914,
       "item": 995,
-      "amount": 46058
+      "amount": 46587
     },
     {
       "npcId": 9914,
       "item": 2023,
-      "amount": 59
+      "amount": 585
+    },
+    {
+      "npcId": 9914,
+      "item": 12610,
+      "amount": 1
     }
   ],
   "holy-prayers-unlocked": [
@@ -1297,9 +1302,9 @@
       120,
       120,
       120,
-      1180,
+      1200,
       120,
-      1132,
+      103,
       120,
       1,
       1,
@@ -1360,7 +1365,7 @@
       0,
       0,
       0,
-      158898781,
+      162601573,
       0,
       0,
       0,
@@ -1387,8 +1392,8 @@
       }
     },
     {
-      "id": 10835,
-      "amount": 175,
+      "id": -1,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1397,19 +1402,14 @@
       }
     },
     {
-      "id": 3028,
+      "id": 229,
       "amount": 1,
       "slot": 0
     },
     {
-      "id": 3024,
+      "id": 229,
       "amount": 1,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
+      "slot": 0
     },
     {
       "id": -1,
@@ -1532,8 +1532,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 23020,
+      "amount": 12,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1543,7 +1543,7 @@
     },
     {
       "id": 2023,
-      "amount": 11327,
+      "amount": 11853,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1572,26 +1572,6 @@
       }
     },
     {
-      "id": 23020,
-      "amount": 12,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
-      "id": 995,
-      "amount": 317998154,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
       "id": 8788,
       "amount": 1,
       "slot": 0,
@@ -1602,8 +1582,28 @@
       }
     },
     {
+      "id": 995,
+      "amount": 343660214,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
+    },
+    {
       "id": 5023,
       "amount": 853,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
+    },
+    {
+      "id": 21814,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -3313,22 +3313,22 @@
       "boss": false
     },
     {
-      "runningTotal": 59,
+      "runningTotal": 582,
       "npcId": 9914,
       "npcName": "Sasuke",
-      "amount": 59,
+      "amount": 582,
       "boss": false
     }
   ],
   "drops": [
     {
       "item": 995,
-      "amount": 93634242,
+      "amount": 94186242,
       "rareDrop": false
     },
     {
       "item": 2023,
-      "amount": 7446,
+      "amount": 7452,
       "rareDrop": false
     },
     {
@@ -4219,7 +4219,7 @@
       955,
       765,
       1066,
-      59,
+      582,
       71,
       10000,
       0,
@@ -4324,7 +4324,7 @@
       0,
       0,
       71,
-      13893,
+      14416,
       0,
       0,
       0,
@@ -5187,7 +5187,7 @@
     "9910": 1,
     "3831": 52,
     "9911": 44,
-    "9914": 59,
+    "9914": 282,
     "9915": 2,
     "9916": 35,
     "9918": 37,

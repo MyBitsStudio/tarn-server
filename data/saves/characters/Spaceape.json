@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 67823187,
+  "total-play-time-ms": 69477702,
   "username": "Spaceape",
   "password": "Goirle123",
   "email": "null",
@@ -8,16 +8,16 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2140,
-    "y": 5013,
-    "z": 8
+    "x": 2224,
+    "y": 3754,
+    "z": 0
   },
   "online-status": "ON",
   "given-starter": true,
   "has-pin2": true,
   "saved-pin2": "8793",
   "saved-ip": "213.10.63.150",
-  "donated": 128,
+  "donated": 145,
   "current-boss-task": 0,
   "current-boss-amount": 0,
   "global-rate": 0,
@@ -40,14 +40,14 @@
   "timeUntilNextReward": 0,
   "current-voting-streak": 0,
   "entriesCurrency": 0.0,
-  "amount-donated-today": 128,
+  "amount-donated-today": 145,
   "claimed-first": false,
   "claimed-second": false,
   "claimed-third": false,
   "last-donation": 0,
   "last-time-reset": 0,
-  "is-secondary-equipment": false,
-  "lastlogin": 1682274327333,
+  "is-secondary-equipment": true,
+  "lastlogin": 1682276477119,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -58,12 +58,12 @@
   "day5claimed": false,
   "day6claimed": false,
   "day7claimed": false,
-  "minutes-bonus-exp": 113,
-  "minutes-voting-dr": -1,
+  "minutes-bonus-exp": 356,
+  "minutes-voting-dr": 4,
   "minutes-voting-dmg": 0,
-  "total-gained-exp": -1616542791,
+  "total-gained-exp": -1595660711,
   "barrows-points": 0,
-  "donator-points": 53,
+  "donator-points": 10,
   "Skilling-points": 0,
   "prestige-points": 0,
   "achievement-points": 0,
@@ -72,7 +72,7 @@
   "loyalty-points": 0,
   "total-loyalty-points": 0.0,
   "godmodetime": 0,
-  "voting-points": 30,
+  "voting-points": 39,
   "tasks-completion": [
     false,
     false,
@@ -139,8 +139,8 @@
     0
   ],
   "total-prestiges": 0,
-  "slayer-spree": 35,
-  "npc-killcount": 11741,
+  "slayer-spree": 36,
+  "npc-killcount": 12097,
   "spawn-killcount": 0,
   "lord-killcount": 0,
   "demon-killcount": 636,
@@ -175,7 +175,7 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 1682056793042,
+  "last-veng": 1682058471375,
   "fight-type": "LONGSWORD_SLASH",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -219,9 +219,9 @@
   "coins-gambled": 0,
   "slayer-master": "BOSS_SLAYER",
   "slayer-task": "NO_TASK",
-  "prev-slayer-task": "AG_THOMOTH",
+  "prev-slayer-task": "MUTANT_HYDRA",
   "task-amount": 0,
-  "task-streak": 35,
+  "task-streak": 36,
   "duo-partner": "null",
   "double-slay-xp": false,
   "recoil-deg": 0,
@@ -596,12 +596,12 @@
     {
       "npcId": 8013,
       "item": 10946,
-      "amount": 11
+      "amount": 14
     },
     {
       "npcId": 8013,
       "item": 23020,
-      "amount": 9
+      "amount": 12
     },
     {
       "npcId": 9920,
@@ -726,12 +726,12 @@
     {
       "npcId": 9907,
       "item": 10946,
-      "amount": 6
+      "amount": 8
     },
     {
       "npcId": 9907,
       "item": 2023,
-      "amount": 103
+      "amount": 105
     },
     {
       "npcId": 811,
@@ -816,7 +816,7 @@
     {
       "npcId": 9839,
       "item": 995,
-      "amount": 50186
+      "amount": 50275
     },
     {
       "npcId": 8013,
@@ -889,23 +889,23 @@
   ],
   "skills": {
     "level": [
-      120,
-      120,
-      120,
-      1010,
-      120,
+      121,
+      121,
+      121,
+      1200,
+      121,
       0,
+      121,
+      1,
+      71,
+      71,
+      1,
+      1,
+      111,
+      71,
       120,
       1,
-      71,
-      71,
-      1,
-      1,
-      105,
-      71,
-      120,
-      1,
-      71,
+      82,
       71,
       100,
       1,
@@ -928,11 +928,11 @@
       71,
       1,
       1,
-      105,
+      111,
       71,
       120,
       1,
-      71,
+      82,
       71,
       100,
       1,
@@ -955,13 +955,13 @@
       857844,
       0,
       0,
-      25327972,
+      43735432,
       858330,
       572474915,
       0,
-      858300,
+      2669400,
       858228,
-      14686060,
+      15349580,
       0,
       0,
       3433350,
@@ -973,7 +973,7 @@
   "inventory": [
     {
       "id": 995,
-      "amount": 2752764,
+      "amount": 4459195,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -983,7 +983,7 @@
     },
     {
       "id": 10835,
-      "amount": 44774,
+      "amount": 52776,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1003,7 +1003,7 @@
     },
     {
       "id": 5023,
-      "amount": 510,
+      "amount": 615,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1013,7 +1013,7 @@
     },
     {
       "id": 11137,
-      "amount": 2,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1053,7 +1053,7 @@
     },
     {
       "id": 2023,
-      "amount": 3478,
+      "amount": 3678,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1092,8 +1092,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 922,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1114,12 +1114,22 @@
     {
       "id": -1,
       "amount": 0,
-      "slot": 0
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
     },
     {
       "id": -1,
       "amount": 0,
-      "slot": 0
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
     },
     {
       "id": -1,
@@ -1889,10 +1899,10 @@
       "boss": false
     },
     {
-      "runningTotal": 492,
+      "runningTotal": 759,
       "npcId": 9839,
       "npcName": "Mutant Hydra",
-      "amount": 492,
+      "amount": 759,
       "boss": false
     },
     {
@@ -2755,8 +2765,8 @@
       107,
       79,
       100,
-      3052,
-      20,
+      3141,
+      22,
       0,
       0,
       0,
@@ -2842,7 +2852,7 @@
     ],
     [
       0,
-      30,
+      39,
       0,
       0,
       0,
@@ -2850,14 +2860,14 @@
       0,
       99,
       101,
-      35,
+      36,
       0,
       105,
       0,
       0,
       180,
       142,
-      3052,
+      3141,
       0,
       0,
       0,
@@ -2944,15 +2954,15 @@
     ],
     [
       0,
-      30,
+      39,
       78,
-      164,
+      253,
       176,
       0,
       0,
       158,
       100,
-      35,
+      36,
       0,
       93,
       83,
@@ -2960,7 +2970,7 @@
       0,
       0,
       142,
-      3052,
+      3141,
       0,
       0,
       0,
@@ -3753,7 +3763,7 @@
   },
   "daily-skips": 3,
   "dailies-done": 2,
-  "daily-task-info": "Your daily task is: @red@Kill 2 global bosses. @bla@Progress: @red@0/2@bla@.",
+  "daily-task-info": "Your daily task is: @red@Kill 2 global bosses. @bla@Progress: @red@2/2@bla@.",
   "level-notifications": true,
   "dailies-received-times": [
     1682019586229,
@@ -3806,7 +3816,7 @@
     "9835": 31,
     "9837": 11,
     "9838": 2,
-    "9839": 164,
+    "9839": 253,
     "9904": 0,
     "9906": 0,
     "9907": 0,

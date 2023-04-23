@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 6589474,
+  "total-play-time-ms": 6656683,
   "username": "Roy",
   "password": "mge66ttb",
   "email": "null",
@@ -8,9 +8,9 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2576,
-    "y": 2573,
-    "z": 80
+    "x": 2589,
+    "y": 2580,
+    "z": 20
   },
   "online-status": "ON",
   "given-starter": true,
@@ -47,7 +47,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682275464907,
+  "lastlogin": 1682278917958,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -61,7 +61,7 @@
   "minutes-bonus-exp": 0,
   "minutes-voting-dr": 0,
   "minutes-voting-dmg": 0,
-  "total-gained-exp": 7975512,
+  "total-gained-exp": 10275232,
   "barrows-points": 0,
   "donator-points": 6,
   "Skilling-points": 0,
@@ -139,8 +139,8 @@
     0
   ],
   "total-prestiges": 0,
-  "slayer-spree": 12,
-  "npc-killcount": 2042,
+  "slayer-spree": 13,
+  "npc-killcount": 2242,
   "spawn-killcount": 0,
   "lord-killcount": 0,
   "demon-killcount": 66,
@@ -175,7 +175,7 @@
   "auto-retaliate": false,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 43268521,
+  "last-veng": 46019375,
   "fight-type": "STAFF_POUND",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -192,9 +192,9 @@
   "dr-timer": 0,
   "ddr-timer": 0,
   "dmg-timer": 0,
-  "double-dr-timer": 2414,
+  "double-dr-timer": 1877,
   "double-ddr-timer": 0,
-  "double-dmg-timer": 2414,
+  "double-dmg-timer": 1877,
   "fire-immunity": 0,
   "fire-damage-mod": 0,
   "prayer-renewal-timer": 0,
@@ -218,10 +218,10 @@
   "dfs-charges": 0,
   "coins-gambled": 0,
   "slayer-master": "BOSS_SLAYER",
-  "slayer-task": "ZEIDAN_GRIMM",
-  "prev-slayer-task": "LILINRYSS",
-  "task-amount": 70,
-  "task-streak": 2,
+  "slayer-task": "DRAGONITE",
+  "prev-slayer-task": "ZEIDAN_GRIMM",
+  "task-amount": 36,
+  "task-streak": 3,
   "duo-partner": "null",
   "double-slay-xp": false,
   "recoil-deg": 0,
@@ -571,7 +571,7 @@
     {
       "npcId": 9816,
       "item": 995,
-      "amount": 27015
+      "amount": 27068
     },
     {
       "npcId": 9839,
@@ -601,7 +601,7 @@
     {
       "npcId": 3010,
       "item": 995,
-      "amount": 31023
+      "amount": 31097
     }
   ],
   "holy-prayers-unlocked": [
@@ -652,7 +652,7 @@
       50,
       1,
       120,
-      520,
+      390,
       120,
       950,
       120,
@@ -667,7 +667,7 @@
       1,
       1,
       1,
-      96,
+      98,
       1,
       1,
       1,
@@ -694,7 +694,7 @@
       1,
       1,
       1,
-      96,
+      98,
       1,
       1,
       1,
@@ -721,7 +721,7 @@
       0,
       0,
       0,
-      10144660,
+      12444380,
       0,
       0,
       0,
@@ -733,7 +733,7 @@
   "inventory": [
     {
       "id": 995,
-      "amount": 744460,
+      "amount": 594982,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -753,7 +753,7 @@
     },
     {
       "id": 5023,
-      "amount": 534,
+      "amount": 801,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -763,7 +763,7 @@
     },
     {
       "id": 10835,
-      "amount": 4026,
+      "amount": 9174,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -782,8 +782,8 @@
       }
     },
     {
-      "id": 2734,
-      "amount": 1,
+      "id": 11137,
+      "amount": 7,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -794,22 +794,12 @@
     {
       "id": -1,
       "amount": 0,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
+      "slot": 0
     },
     {
       "id": -1,
       "amount": 0,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
+      "slot": 0
     },
     {
       "id": -1,
@@ -1862,10 +1852,10 @@
       "boss": false
     },
     {
-      "runningTotal": 16,
+      "runningTotal": 68,
       "npcId": 9816,
       "npcName": "Dragonite",
-      "amount": 16,
+      "amount": 68,
       "boss": false
     },
     {
@@ -1890,17 +1880,17 @@
       "boss": false
     },
     {
-      "runningTotal": 24,
+      "runningTotal": 98,
       "npcId": 3010,
       "npcName": "Zeidan Grimm",
-      "amount": 24,
+      "amount": 98,
       "boss": false
     }
   ],
   "drops": [
     {
       "item": 995,
-      "amount": 13115850,
+      "amount": 13169850,
       "rareDrop": false
     },
     {
@@ -2614,14 +2604,14 @@
       68,
       0,
       220,
-      12,
+      13,
       0,
       0,
       65,
       0,
       55,
       7,
-      1029,
+      1155,
       6,
       0,
       0,
@@ -2716,14 +2706,14 @@
       0,
       0,
       0,
-      12,
+      13,
       0,
       0,
       0,
       0,
       83,
       7,
-      1029,
+      1155,
       0,
       0,
       0,
@@ -2814,19 +2804,19 @@
       0,
       79,
       0,
-      16,
+      68,
       0,
       0,
       0,
-      12,
-      24,
+      13,
+      98,
       0,
       99,
       0,
       0,
       0,
       7,
-      1029,
+      1155,
       0,
       0,
       0,
@@ -3581,7 +3571,7 @@
   "drystreak": {
     "9920": 65,
     "9025": 55,
-    "3010": 24,
+    "3010": 98,
     "8003": 8,
     "9027": 13,
     "3014": 99,
@@ -3599,7 +3589,7 @@
     "9907": 0,
     "9908": 0,
     "9911": 14,
-    "9816": 16,
+    "9816": 68,
     "9914": 83
   },
   "boost": 0,

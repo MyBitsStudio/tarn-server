@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 1682319676490,
+  "total-play-time-ms": 1682321436692,
   "username": "Happy",
   "password": "Qwer123",
   "email": "null",
@@ -8,16 +8,16 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2141,
-    "y": 5017,
-    "z": 8
+    "x": 2783,
+    "y": 4780,
+    "z": 204
   },
   "online-status": "ON",
   "given-starter": true,
   "has-pin2": true,
   "saved-pin2": "4566",
   "saved-ip": "24.61.250.59",
-  "donated": 616,
+  "donated": 647,
   "current-boss-task": 0,
   "current-boss-amount": 0,
   "global-rate": 0,
@@ -40,14 +40,14 @@
   "timeUntilNextReward": 0,
   "current-voting-streak": 0,
   "entriesCurrency": 0.0,
-  "amount-donated-today": 616,
+  "amount-donated-today": 647,
   "claimed-first": false,
   "claimed-second": false,
   "claimed-third": false,
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682268905160,
+  "lastlogin": 1682278287955,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -58,12 +58,12 @@
   "day5claimed": false,
   "day6claimed": false,
   "day7claimed": false,
-  "minutes-bonus-exp": 2752,
+  "minutes-bonus-exp": 2979,
   "minutes-voting-dr": -1,
   "minutes-voting-dmg": 0,
   "total-gained-exp": -117795328,
   "barrows-points": 0,
-  "donator-points": 141,
+  "donator-points": 172,
   "Skilling-points": 0,
   "prestige-points": 0,
   "achievement-points": 0,
@@ -72,7 +72,7 @@
   "loyalty-points": 0,
   "total-loyalty-points": 0.0,
   "godmodetime": 0,
-  "voting-points": 111,
+  "voting-points": 120,
   "tasks-completion": [
     false,
     false,
@@ -140,7 +140,7 @@
   ],
   "total-prestiges": 0,
   "slayer-spree": 23,
-  "npc-killcount": 472913,
+  "npc-killcount": 486038,
   "spawn-killcount": 0,
   "lord-killcount": 0,
   "demon-killcount": 202,
@@ -175,7 +175,7 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 321496853,
+  "last-veng": 322548441,
   "fight-type": "STAFF_POUND",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -336,12 +336,12 @@
     {
       "npcId": 9906,
       "item": 995,
-      "amount": 1575728
+      "amount": 1575729
     },
     {
       "npcId": 9906,
       "item": 2023,
-      "amount": 191
+      "amount": 192
     },
     {
       "npcId": 9837,
@@ -396,12 +396,12 @@
     {
       "npcId": 8013,
       "item": 10946,
-      "amount": 84
+      "amount": 87
     },
     {
       "npcId": 8013,
       "item": 23020,
-      "amount": 84
+      "amount": 87
     },
     {
       "npcId": 9922,
@@ -431,12 +431,12 @@
     {
       "npcId": 9907,
       "item": 10946,
-      "amount": 64
+      "amount": 66
     },
     {
       "npcId": 9907,
       "item": 2023,
-      "amount": 164
+      "amount": 166
     },
     {
       "npcId": 9838,
@@ -476,12 +476,12 @@
     {
       "npcId": 9904,
       "item": 995,
-      "amount": 2402284
+      "amount": 2402286
     },
     {
       "npcId": 9904,
       "item": 2023,
-      "amount": 141
+      "amount": 143
     },
     {
       "npcId": 9904,
@@ -491,12 +491,12 @@
     {
       "npcId": 9908,
       "item": 10946,
-      "amount": 61
+      "amount": 63
     },
     {
       "npcId": 9908,
       "item": 2023,
-      "amount": 359
+      "amount": 361
     },
     {
       "npcId": 9904,
@@ -1376,7 +1376,7 @@
     {
       "npcId": 9908,
       "item": 23057,
-      "amount": 2
+      "amount": 3
     },
     {
       "npcId": 12239,
@@ -1441,7 +1441,7 @@
     {
       "npcId": 1311,
       "item": 995,
-      "amount": 250708
+      "amount": 252656
     },
     {
       "npcId": 1311,
@@ -1481,6 +1481,16 @@
     {
       "npcId": 1313,
       "item": 3472,
+      "amount": 1
+    },
+    {
+      "npcId": 8013,
+      "item": 2734,
+      "amount": 3
+    },
+    {
+      "npcId": 1311,
+      "item": 4066,
       "amount": 1
     }
   ],
@@ -1613,7 +1623,7 @@
   "inventory": [
     {
       "id": 2736,
-      "amount": 34,
+      "amount": 38,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1623,7 +1633,7 @@
     },
     {
       "id": 2023,
-      "amount": 10355,
+      "amount": 11260,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1633,7 +1643,7 @@
     },
     {
       "id": 995,
-      "amount": 869120554,
+      "amount": 334834140,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1643,7 +1653,7 @@
     },
     {
       "id": 10835,
-      "amount": 10179622,
+      "amount": 11122189,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1662,8 +1672,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 5023,
+      "amount": 86,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1672,8 +1682,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 4066,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1823,7 +1833,7 @@
     },
     {
       "id": 11137,
-      "amount": 44,
+      "amount": 51,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -2971,7 +2981,7 @@
   "bank-2": [
     {
       "id": 943,
-      "amount": 1,
+      "amount": 2,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -3001,6 +3011,16 @@
     },
     {
       "id": 815,
+      "amount": 2,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
+    },
+    {
+      "id": 783,
       "amount": 1,
       "slot": 0,
       "bonus": {
@@ -3769,10 +3789,10 @@
       "boss": false
     },
     {
-      "runningTotal": 17719,
+      "runningTotal": 25219,
       "npcId": 1311,
       "npcName": "Queen Fazula",
-      "amount": 17719,
+      "amount": 25219,
       "boss": false
     },
     {
@@ -3807,7 +3827,7 @@
   "drops": [
     {
       "item": 995,
-      "amount": -1818267896,
+      "amount": -1783227896,
       "rareDrop": false
     },
     {
@@ -5904,7 +5924,7 @@
   ],
   "drystreak": {
     "1310": 1,
-    "1311": 5237,
+    "1311": 14,
     "1313": 2218,
     "6692": 1,
     "2342": 41,
@@ -5917,7 +5937,7 @@
     "9906": 1,
     "9907": 0,
     "9012": 856,
-    "9908": 2,
+    "9908": 0,
     "9910": 5,
     "9911": 44,
     "9912": 1291,

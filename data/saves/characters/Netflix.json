@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 130408410,
+  "total-play-time-ms": 131502810,
   "username": "Netflix",
   "password": "iamlucas123",
   "email": "null",
@@ -8,8 +8,8 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2979,
-    "y": 2772,
+    "x": 2221,
+    "y": 3744,
     "z": 0
   },
   "online-status": "ON",
@@ -47,7 +47,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682273807182,
+  "lastlogin": 1682276370349,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -58,10 +58,10 @@
   "day5claimed": false,
   "day6claimed": false,
   "day7claimed": false,
-  "minutes-bonus-exp": 1553,
+  "minutes-bonus-exp": 1535,
   "minutes-voting-dr": -1,
   "minutes-voting-dmg": 0,
-  "total-gained-exp": 6193914250,
+  "total-gained-exp": 1898946954,
   "barrows-points": 0,
   "donator-points": 3,
   "Skilling-points": 0,
@@ -140,7 +140,7 @@
   ],
   "total-prestiges": 0,
   "slayer-spree": 50,
-  "npc-killcount": 194912,
+  "npc-killcount": 195616,
   "spawn-killcount": 0,
   "lord-killcount": 0,
   "demon-killcount": 2874,
@@ -175,8 +175,8 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 1681889687064,
-  "fight-type": "LONGBOW_ACCURATE",
+  "last-veng": 387777711,
+  "fight-type": "LONGBOW_RAPID",
   "sol-effect": 0,
   "skull-timer": 0,
   "fuse-combination-timer": 0,
@@ -521,12 +521,12 @@
     {
       "npcId": 9904,
       "item": 995,
-      "amount": 2775199
+      "amount": 2775200
     },
     {
       "npcId": 9904,
       "item": 2023,
-      "amount": 79
+      "amount": 80
     },
     {
       "npcId": 9026,
@@ -561,32 +561,32 @@
     {
       "npcId": 8013,
       "item": 10946,
-      "amount": 41
+      "amount": 44
     },
     {
       "npcId": 8013,
       "item": 23020,
-      "amount": 39
+      "amount": 42
     },
     {
       "npcId": 9907,
       "item": 10946,
-      "amount": 27
+      "amount": 29
     },
     {
       "npcId": 9907,
       "item": 2023,
-      "amount": 126
+      "amount": 129
     },
     {
       "npcId": 9908,
       "item": 10946,
-      "amount": 25
+      "amount": 26
     },
     {
       "npcId": 9908,
       "item": 2023,
-      "amount": 323
+      "amount": 324
     },
     {
       "npcId": 9028,
@@ -1006,7 +1006,7 @@
     {
       "npcId": 9017,
       "item": 995,
-      "amount": 64131
+      "amount": 64492
     },
     {
       "npcId": 811,
@@ -1201,7 +1201,7 @@
     {
       "npcId": 9017,
       "item": 22135,
-      "amount": 10
+      "amount": 11
     },
     {
       "npcId": 9017,
@@ -1211,7 +1211,7 @@
     {
       "npcId": 9017,
       "item": 19481,
-      "amount": 19
+      "amount": 20
     },
     {
       "npcId": 9806,
@@ -1367,6 +1367,11 @@
       "npcId": 9818,
       "item": 20584,
       "amount": 2
+    },
+    {
+      "npcId": 9908,
+      "item": 23057,
+      "amount": 1
     }
   ],
   "holy-prayers-unlocked": [
@@ -1498,7 +1503,7 @@
   "inventory": [
     {
       "id": 10835,
-      "amount": 1436145,
+      "amount": 1616518,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1508,7 +1513,7 @@
     },
     {
       "id": 995,
-      "amount": 3528836,
+      "amount": 17328888,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1653,7 +1658,7 @@
     },
     {
       "id": 23020,
-      "amount": 6,
+      "amount": 83,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1672,8 +1677,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 22135,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1682,8 +1687,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 19481,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1693,7 +1698,7 @@
     },
     {
       "id": 2023,
-      "amount": 27464,
+      "amount": 28104,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -3328,7 +3333,7 @@
     },
     {
       "id": 23020,
-      "amount": 10,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -3586,10 +3591,10 @@
   ],
   "kills": [
     {
-      "runningTotal": 66446,
+      "runningTotal": 66798,
       "npcId": 9017,
       "npcName": "Sanctum Golem",
-      "amount": 66446,
+      "amount": 66798,
       "boss": true
     },
     {
@@ -4016,12 +4021,12 @@
   "drops": [
     {
       "item": 995,
-      "amount": 514418658,
+      "amount": 515282658,
       "rareDrop": false
     },
     {
       "item": 2023,
-      "amount": 20883,
+      "amount": 21083,
       "rareDrop": false
     },
     {
@@ -5792,7 +5797,7 @@
   },
   "lastTGloveIndex": -1,
   "group-ironman-locked": false,
-  "lastInstanceNpc": 9818,
+  "lastInstanceNpc": 9017,
   "daily-task": {
     "GLOBAL_BOSSES": {
       "index": 0,
@@ -6099,7 +6104,7 @@
     "9910": 8,
     "9911": 7,
     "1721": 1,
-    "9017": 44,
+    "9017": 122,
     "9914": 132,
     "9915": 6,
     "9916": 9,

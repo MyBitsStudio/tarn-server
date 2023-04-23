@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 50771220,
+  "total-play-time-ms": 51694606,
   "username": "Odin",
   "password": "Boom2828",
   "email": "null",
@@ -8,8 +8,8 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2210,
-    "y": 3766,
+    "x": 2216,
+    "y": 3765,
     "z": 0
   },
   "online-status": "ON",
@@ -45,7 +45,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682269911353,
+  "lastlogin": 1682276361943,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -56,8 +56,8 @@
   "day5claimed": false,
   "day6claimed": false,
   "day7claimed": false,
-  "minutes-bonus-exp": 847,
-  "minutes-voting-dr": 67,
+  "minutes-bonus-exp": 1012,
+  "minutes-voting-dr": 70,
   "minutes-voting-dmg": 0,
   "total-gained-exp": 1442861562,
   "barrows-points": 0,
@@ -70,7 +70,7 @@
   "loyalty-points": 0,
   "total-loyalty-points": 0.0,
   "godmodetime": 0,
-  "voting-points": 50,
+  "voting-points": 56,
   "tasks-completion": [
     false,
     false,
@@ -173,7 +173,7 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 183675682,
+  "last-veng": 1682093609680,
   "fight-type": "STAFF_BASH",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -354,12 +354,12 @@
     {
       "npcId": 8013,
       "item": 10946,
-      "amount": 7
+      "amount": 9
     },
     {
       "npcId": 8013,
       "item": 23020,
-      "amount": 5
+      "amount": 7
     },
     {
       "npcId": 9835,
@@ -784,22 +784,22 @@
     {
       "npcId": 9907,
       "item": 10946,
-      "amount": 4
+      "amount": 5
     },
     {
       "npcId": 9907,
       "item": 2023,
-      "amount": 102
+      "amount": 103
     },
     {
       "npcId": 9908,
       "item": 10946,
-      "amount": 3
+      "amount": 4
     },
     {
       "npcId": 9908,
       "item": 2023,
-      "amount": 301
+      "amount": 302
     },
     {
       "npcId": 811,
@@ -957,7 +957,7 @@
       120,
       1200,
       120,
-      807,
+      804,
       120,
       1,
       1,
@@ -1036,7 +1036,7 @@
   "inventory": [
     {
       "id": 2023,
-      "amount": 7181,
+      "amount": 7581,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1065,8 +1065,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 1033,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1076,7 +1076,7 @@
     },
     {
       "id": 10835,
-      "amount": 2738718,
+      "amount": 3456718,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1995,7 +1995,7 @@
     },
     {
       "id": 1033,
-      "amount": 1,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -3128,7 +3128,7 @@
       500,
       100,
       5000,
-      15,
+      17,
       0,
       0,
       0,
@@ -3316,7 +3316,7 @@
     ],
     [
       0,
-      50,
+      56,
       0,
       0,
       0,

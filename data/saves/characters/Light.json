@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 274997114,
+  "total-play-time-ms": 275258533,
   "username": "Light",
   "password": "Tacomonkey2",
   "email": "null",
@@ -8,9 +8,9 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2222,
-    "y": 3747,
-    "z": 0
+    "x": 2786,
+    "y": 4775,
+    "z": 416
   },
   "online-status": "ON",
   "given-starter": true,
@@ -47,7 +47,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682269083959,
+  "lastlogin": 1682278512414,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -58,8 +58,8 @@
   "day5claimed": false,
   "day6claimed": false,
   "day7claimed": false,
-  "minutes-bonus-exp": 1980,
-  "minutes-voting-dr": 10,
+  "minutes-bonus-exp": 1966,
+  "minutes-voting-dr": -1,
   "minutes-voting-dmg": 0,
   "total-gained-exp": 1943707572,
   "barrows-points": 0,
@@ -140,7 +140,7 @@
   ],
   "total-prestiges": 0,
   "slayer-spree": 0,
-  "npc-killcount": 356702,
+  "npc-killcount": 363870,
   "spawn-killcount": 0,
   "lord-killcount": 0,
   "demon-killcount": 596,
@@ -175,7 +175,7 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 356131755,
+  "last-veng": 357182940,
   "fight-type": "LONGBOW_RAPID",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -1391,7 +1391,7 @@
     {
       "npcId": 9913,
       "item": 995,
-      "amount": 184891
+      "amount": 185970
     },
     {
       "npcId": 9913,
@@ -1543,7 +1543,7 @@
     },
     {
       "id": 995,
-      "amount": 32912968,
+      "amount": 146320325,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1553,7 +1553,7 @@
     },
     {
       "id": 10835,
-      "amount": 8703022,
+      "amount": 8729643,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1564,7 +1564,12 @@
     {
       "id": -1,
       "amount": 0,
-      "slot": 0
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
     },
     {
       "id": -1,
@@ -1713,7 +1718,7 @@
     },
     {
       "id": 2736,
-      "amount": 8,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1753,7 +1758,7 @@
     },
     {
       "id": 11137,
-      "amount": 87,
+      "amount": 93,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -2552,7 +2557,7 @@
     },
     {
       "id": 23120,
-      "amount": 2,
+      "amount": 3,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -3076,10 +3081,10 @@
       "boss": false
     },
     {
-      "runningTotal": 33944,
+      "runningTotal": 38040,
       "npcId": 9913,
       "npcName": "Slender Man",
-      "amount": 33944,
+      "amount": 38040,
       "boss": false
     },
     {
@@ -3093,7 +3098,7 @@
   "drops": [
     {
       "item": 995,
-      "amount": 1838424901,
+      "amount": 1857784901,
       "rareDrop": false
     },
     {
@@ -5168,7 +5173,7 @@
     "9910": 0,
     "9911": 14,
     "9912": 1252,
-    "9913": 1415,
+    "9913": 2439,
     "9017": 36,
     "9914": 3,
     "9915": 56,

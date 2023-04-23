@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 22233955,
+  "total-play-time-ms": 23477632,
   "username": "Damakos",
   "password": "djhidef101",
   "email": "null",
@@ -8,8 +8,8 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2697,
-    "y": 4753,
+    "x": 2708,
+    "y": 4749,
     "z": 52
   },
   "online-status": "ON",
@@ -17,7 +17,7 @@
   "has-pin2": true,
   "saved-pin2": "7960",
   "saved-ip": "109.147.45.55",
-  "donated": 1,
+  "donated": 6,
   "current-boss-task": 0,
   "current-boss-amount": 0,
   "global-rate": 0,
@@ -40,14 +40,14 @@
   "timeUntilNextReward": 0,
   "current-voting-streak": 0,
   "entriesCurrency": 0.0,
-  "amount-donated-today": 1,
+  "amount-donated-today": 6,
   "claimed-first": false,
   "claimed-second": false,
   "claimed-third": false,
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682271116134,
+  "lastlogin": 1682276584050,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -58,12 +58,12 @@
   "day5claimed": false,
   "day6claimed": false,
   "day7claimed": false,
-  "minutes-bonus-exp": 13,
+  "minutes-bonus-exp": -1,
   "minutes-voting-dr": -1,
   "minutes-voting-dmg": 0,
-  "total-gained-exp": -257413752,
+  "total-gained-exp": -257312254,
   "barrows-points": 0,
-  "donator-points": 1,
+  "donator-points": 6,
   "Skilling-points": 0,
   "prestige-points": 0,
   "achievement-points": 0,
@@ -140,7 +140,7 @@
   ],
   "total-prestiges": 0,
   "slayer-spree": 25,
-  "npc-killcount": 5973,
+  "npc-killcount": 6037,
   "spawn-killcount": 0,
   "lord-killcount": 0,
   "demon-killcount": 264,
@@ -175,7 +175,7 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 1682222354256,
+  "last-veng": 55473488,
   "fight-type": "STAFF_FOCUS",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -220,7 +220,7 @@
   "slayer-master": "HARD_SLAYER",
   "slayer-task": "ZORBAK",
   "prev-slayer-task": "AVATAR_TITAN",
-  "task-amount": 47,
+  "task-amount": 31,
   "task-streak": 25,
   "duo-partner": "null",
   "double-slay-xp": false,
@@ -626,12 +626,12 @@
     {
       "npcId": 1906,
       "item": 995,
-      "amount": 16087
+      "amount": 16103
     },
     {
       "npcId": 1906,
       "item": 2023,
-      "amount": 89
+      "amount": 107
     },
     {
       "npcId": 8008,
@@ -647,6 +647,16 @@
       "npcId": 8008,
       "item": 8805,
       "amount": 1
+    },
+    {
+      "npcId": 8013,
+      "item": 10946,
+      "amount": 5
+    },
+    {
+      "npcId": 8013,
+      "item": 23020,
+      "amount": 3
     }
   ],
   "holy-prayers-unlocked": [
@@ -697,7 +707,7 @@
       1,
       66,
       1,
-      970,
+      700,
       91,
       770,
       120,
@@ -766,7 +776,7 @@
       105356,
       0,
       0,
-      5053368,
+      5154866,
       0,
       0,
       0,
@@ -798,7 +808,7 @@
     },
     {
       "id": 995,
-      "amount": 447095,
+      "amount": 703095,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -808,7 +818,7 @@
     },
     {
       "id": 2023,
-      "amount": 168,
+      "amount": 186,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -957,8 +967,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 23020,
+      "amount": 3,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1875,10 +1885,10 @@
       "boss": false
     },
     {
-      "runningTotal": 264,
+      "runningTotal": 312,
       "npcId": 1906,
       "npcName": "Zorbak",
-      "amount": 264,
+      "amount": 312,
       "boss": false
     },
     {
@@ -1897,7 +1907,7 @@
     },
     {
       "item": 2023,
-      "amount": 1228,
+      "amount": 1232,
       "rareDrop": false
     },
     {
@@ -2613,7 +2623,7 @@
       63,
       0,
       100,
-      1690,
+      1706,
       8,
       0,
       0,
@@ -2705,7 +2715,7 @@
       72,
       0,
       79,
-      88,
+      104,
       0,
       0,
       25,
@@ -2715,7 +2725,7 @@
       0,
       234,
       1000,
-      1690,
+      1706,
       0,
       0,
       0,
@@ -2818,7 +2828,7 @@
       0,
       0,
       2201,
-      1690,
+      1706,
       0,
       0,
       0,
@@ -3483,6 +3493,10 @@
       "canClaim": false,
       "hasClaimed": false
     },
+    "8013": {
+      "canClaim": false,
+      "hasClaimed": false
+    },
     "9837": {
       "canClaim": false,
       "hasClaimed": false
@@ -3569,9 +3583,10 @@
     "811": 52,
     "9835": 4,
     "9836": 54,
+    "8013": 0,
     "9837": 10,
     "8014": 38,
-    "1906": 88,
+    "1906": 104,
     "9906": 0,
     "9845": 7,
     "9910": 7,

@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 5786033,
+  "total-play-time-ms": 7565283,
   "username": "Gimp Sweat",
   "password": "tarnkabal",
   "email": "null",
@@ -9,8 +9,8 @@
   "yellhexcolor": "ffffff",
   "position": {
     "x": 2142,
-    "y": 5016,
-    "z": 8
+    "y": 5018,
+    "z": 4
   },
   "online-status": "ON",
   "given-starter": true,
@@ -45,7 +45,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682270388941,
+  "lastlogin": 1682278704349,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -59,7 +59,7 @@
   "minutes-bonus-exp": 0,
   "minutes-voting-dr": 0,
   "minutes-voting-dmg": 0,
-  "total-gained-exp": 1811528398,
+  "total-gained-exp": -1904837558,
   "barrows-points": 0,
   "donator-points": 0,
   "Skilling-points": 0,
@@ -173,7 +173,7 @@
   "auto-retaliate": false,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 1682276174975,
+  "last-veng": 1682277225772,
   "fight-type": "BSOAT_RAPID",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -354,12 +354,12 @@
     {
       "npcId": 9906,
       "item": 995,
-      "amount": 1303538
+      "amount": 1303539
     },
     {
       "npcId": 9906,
       "item": 2023,
-      "amount": 26
+      "amount": 27
     },
     {
       "npcId": 9835,
@@ -420,6 +420,46 @@
       "npcId": 9922,
       "item": 19989,
       "amount": 1
+    },
+    {
+      "npcId": 9904,
+      "item": 995,
+      "amount": 3221142
+    },
+    {
+      "npcId": 9904,
+      "item": 2023,
+      "amount": 40
+    },
+    {
+      "npcId": 9908,
+      "item": 10946,
+      "amount": 2
+    },
+    {
+      "npcId": 9908,
+      "item": 2023,
+      "amount": 300
+    },
+    {
+      "npcId": 8013,
+      "item": 10946,
+      "amount": 7
+    },
+    {
+      "npcId": 8013,
+      "item": 23020,
+      "amount": 5
+    },
+    {
+      "npcId": 9907,
+      "item": 10946,
+      "amount": 1
+    },
+    {
+      "npcId": 9907,
+      "item": 2023,
+      "amount": 100
     }
   ],
   "holy-prayers-unlocked": [
@@ -467,8 +507,8 @@
   ],
   "skills": {
     "level": [
-      101,
-      101,
+      68,
+      1,
       108,
       1200,
       120,
@@ -479,7 +519,7 @@
       1,
       1,
       1,
-      58,
+      63,
       1,
       1,
       1,
@@ -506,7 +546,7 @@
       1,
       1,
       1,
-      58,
+      63,
       1,
       1,
       1,
@@ -524,8 +564,8 @@
       618110,
       0,
       34886038,
-      763090636,
-      824515800,
+      1016145322,
+      1149905402,
       66986400,
       121197020,
       0,
@@ -533,7 +573,7 @@
       0,
       0,
       0,
-      235578,
+      392630,
       0,
       0,
       0,
@@ -646,7 +686,27 @@
     },
     {
       "id": 10835,
-      "amount": 15,
+      "amount": 25,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
+    },
+    {
+      "id": 2023,
+      "amount": 325,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
+    },
+    {
+      "id": 23020,
+      "amount": 6,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -657,26 +717,6 @@
     {
       "id": -1,
       "amount": 0,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
-      "id": 19985,
-      "amount": 1,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
-      "id": 19988,
-      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -695,8 +735,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 10946,
+      "amount": 17,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -796,7 +836,7 @@
     },
     {
       "id": 995,
-      "amount": 1825774,
+      "amount": 3384127,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1500,12 +1540,12 @@
   "drops": [
     {
       "item": 995,
-      "amount": 3187411,
+      "amount": 7966906,
       "rareDrop": false
     },
     {
       "item": 2023,
-      "amount": 213,
+      "amount": 678,
       "rareDrop": false
     },
     {
@@ -1536,6 +1576,16 @@
     {
       "item": 19989,
       "amount": 1,
+      "rareDrop": false
+    },
+    {
+      "item": 10946,
+      "amount": 18,
+      "rareDrop": false
+    },
+    {
+      "item": 23020,
+      "amount": 9,
       "rareDrop": false
     }
   ],
@@ -2232,7 +2282,7 @@
       0,
       38,
       160,
-      2,
+      6,
       0,
       0,
       0,
@@ -3069,6 +3119,10 @@
   "lastInstanceNpc": -1,
   "daily-task": {},
   "collectionlog-rewards": {
+    "9904": {
+      "canClaim": false,
+      "hasClaimed": false
+    },
     "9922": {
       "canClaim": false,
       "hasClaimed": false
@@ -3077,7 +3131,15 @@
       "canClaim": false,
       "hasClaimed": false
     },
+    "9907": {
+      "canClaim": false,
+      "hasClaimed": false
+    },
     "9027": {
+      "canClaim": false,
+      "hasClaimed": false
+    },
+    "9908": {
       "canClaim": false,
       "hasClaimed": false
     },
@@ -3086,6 +3148,10 @@
       "hasClaimed": false
     },
     "9835": {
+      "canClaim": false,
+      "hasClaimed": false
+    },
+    "8013": {
       "canClaim": false,
       "hasClaimed": false
     },
@@ -3123,11 +3189,15 @@
     null
   ],
   "drystreak": {
+    "9904": 0,
     "9922": 1,
     "9906": 0,
+    "9907": 0,
     "9027": 21,
+    "9908": 0,
     "9911": 42,
     "9835": 32,
+    "8013": 0,
     "9837": 10
   },
   "boost": 0,

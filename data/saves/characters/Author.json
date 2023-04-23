@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 84636167,
+  "total-play-time-ms": 86425536,
   "username": "Author",
   "password": "Lol112112",
   "email": "null",
@@ -8,9 +8,9 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2221,
-    "y": 3742,
-    "z": 0
+    "x": 2786,
+    "y": 4775,
+    "z": 44
   },
   "online-status": "ON",
   "given-starter": true,
@@ -47,7 +47,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682272555521,
+  "lastlogin": 1682278269788,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -61,7 +61,7 @@
   "minutes-bonus-exp": -1,
   "minutes-voting-dr": -1,
   "minutes-voting-dmg": 0,
-  "total-gained-exp": -904517171,
+  "total-gained-exp": 15279777,
   "barrows-points": 0,
   "donator-points": 36,
   "Skilling-points": 0,
@@ -140,7 +140,7 @@
   ],
   "total-prestiges": 0,
   "slayer-spree": 4,
-  "npc-killcount": 214670,
+  "npc-killcount": 220110,
   "spawn-killcount": 0,
   "lord-killcount": 0,
   "demon-killcount": 2847,
@@ -175,8 +175,8 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 1681958044221,
-  "fight-type": "STAFF_POUND",
+  "last-veng": 1681959094592,
+  "fight-type": "STAFF_BASH",
   "sol-effect": 0,
   "skull-timer": 0,
   "fuse-combination-timer": 0,
@@ -346,22 +346,22 @@
     {
       "npcId": 9906,
       "item": 995,
-      "amount": 1626087
+      "amount": 1626088
     },
     {
       "npcId": 9906,
       "item": 2023,
-      "amount": 94
+      "amount": 95
     },
     {
       "npcId": 9904,
       "item": 995,
-      "amount": 3843528
+      "amount": 3843529
     },
     {
       "npcId": 9904,
       "item": 2023,
-      "amount": 81
+      "amount": 82
     },
     {
       "npcId": 9027,
@@ -576,12 +576,12 @@
     {
       "npcId": 9907,
       "item": 10946,
-      "amount": 26
+      "amount": 32
     },
     {
       "npcId": 9907,
       "item": 2023,
-      "amount": 124
+      "amount": 128
     },
     {
       "npcId": 6692,
@@ -731,12 +731,12 @@
     {
       "npcId": 8013,
       "item": 10946,
-      "amount": 49
+      "amount": 52
     },
     {
       "npcId": 8013,
       "item": 23020,
-      "amount": 45
+      "amount": 48
     },
     {
       "npcId": 9815,
@@ -1031,12 +1031,12 @@
     {
       "npcId": 9908,
       "item": 10946,
-      "amount": 22
+      "amount": 24
     },
     {
       "npcId": 9908,
       "item": 2023,
-      "amount": 320
+      "amount": 322
     },
     {
       "npcId": 2342,
@@ -1126,7 +1126,7 @@
     {
       "npcId": 9017,
       "item": 995,
-      "amount": 64665
+      "amount": 64730
     },
     {
       "npcId": 9839,
@@ -1561,11 +1561,16 @@
     {
       "npcId": 9913,
       "item": 995,
-      "amount": 176666
+      "amount": 178014
     },
     {
       "npcId": 9913,
       "item": 20586,
+      "amount": 1
+    },
+    {
+      "npcId": 9907,
+      "item": 3578,
       "amount": 1
     }
   ],
@@ -1617,7 +1622,7 @@
       120,
       120,
       120,
-      710,
+      1200,
       120,
       1200,
       120,
@@ -1668,7 +1673,7 @@
       1
     ],
     "experience": [
-      -889523051,
+      30273897,
       -233789324,
       2000000000,
       2000000000,
@@ -1698,7 +1703,7 @@
   "inventory": [
     {
       "id": 10835,
-      "amount": 192036758,
+      "amount": 191987794,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1708,7 +1713,7 @@
     },
     {
       "id": 10946,
-      "amount": 144,
+      "amount": 169,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1718,7 +1723,7 @@
     },
     {
       "id": 23058,
-      "amount": 5,
+      "amount": 6,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1768,7 +1773,7 @@
     },
     {
       "id": 23020,
-      "amount": 138,
+      "amount": 147,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1798,7 +1803,7 @@
     },
     {
       "id": 2023,
-      "amount": 2537,
+      "amount": 3602,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1807,8 +1812,8 @@
       }
     },
     {
-      "id": 2736,
-      "amount": 7,
+      "id": 23057,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1847,8 +1852,28 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 11137,
+      "amount": 2,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
+    },
+    {
+      "id": 15358,
+      "amount": 1,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
+    },
+    {
+      "id": 15355,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1867,28 +1892,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
-      "id": -1,
-      "amount": 0,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
-      "id": -1,
-      "amount": 0,
+      "id": 15358,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1938,7 +1943,7 @@
     },
     {
       "id": 995,
-      "amount": 429916735,
+      "amount": 704317145,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -5032,10 +5037,10 @@
       "boss": false
     },
     {
-      "runningTotal": 14256,
+      "runningTotal": 14448,
       "npcId": 9017,
       "npcName": "Sanctum Golem",
-      "amount": 14256,
+      "amount": 14448,
       "boss": true
     },
     {
@@ -5207,17 +5212,17 @@
       "boss": false
     },
     {
-      "runningTotal": 1920,
+      "runningTotal": 5808,
       "npcId": 9913,
       "npcName": "Slender Man",
-      "amount": 1920,
+      "amount": 5808,
       "boss": false
     }
   ],
   "drops": [
     {
       "item": 995,
-      "amount": 1737538866,
+      "amount": 1756034866,
       "rareDrop": false
     },
     {
@@ -5267,7 +5272,7 @@
     },
     {
       "item": 10946,
-      "amount": 267,
+      "amount": 271,
       "rareDrop": false
     },
     {
@@ -7508,14 +7513,14 @@
     "9903": 671,
     "9904": 0,
     "9906": 5,
-    "9907": 1,
+    "9907": 0,
     "9012": 1408,
     "9908": 1,
     "9910": 2,
     "9911": 42,
     "9912": 1760,
-    "9913": 638,
-    "9017": 33,
+    "9913": 1934,
+    "9017": 97,
     "9914": 95,
     "9915": 3,
     "4540": 2,

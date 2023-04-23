@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 276113044,
+  "total-play-time-ms": 277841452,
   "username": "Asoich",
   "password": "imbest0099",
   "email": "null",
@@ -8,16 +8,16 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2980,
-    "y": 2773,
-    "z": 0
+    "x": 2786,
+    "y": 4775,
+    "z": 412
   },
   "online-status": "ON",
   "given-starter": true,
   "has-pin2": true,
   "saved-pin2": "1999",
   "saved-ip": "79.179.5.47",
-  "donated": 601,
+  "donated": 640,
   "current-boss-task": 0,
   "current-boss-amount": 0,
   "global-rate": 0,
@@ -40,14 +40,14 @@
   "timeUntilNextReward": 0,
   "current-voting-streak": 0,
   "entriesCurrency": 0.0,
-  "amount-donated-today": 601,
+  "amount-donated-today": 640,
   "claimed-first": false,
   "claimed-second": false,
   "claimed-third": false,
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682268964564,
+  "lastlogin": 1682278472771,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -58,12 +58,12 @@
   "day5claimed": false,
   "day6claimed": false,
   "day7claimed": false,
-  "minutes-bonus-exp": 0,
-  "minutes-voting-dr": -1,
+  "minutes-bonus-exp": 154,
+  "minutes-voting-dr": 29,
   "minutes-voting-dmg": 0,
   "total-gained-exp": -334774333,
   "barrows-points": 0,
-  "donator-points": 1,
+  "donator-points": 40,
   "Skilling-points": 0,
   "prestige-points": 0,
   "achievement-points": 0,
@@ -72,7 +72,7 @@
   "loyalty-points": 0,
   "total-loyalty-points": 0.0,
   "godmodetime": 0,
-  "voting-points": 15,
+  "voting-points": 26,
   "tasks-completion": [
     false,
     false,
@@ -140,7 +140,7 @@
   ],
   "total-prestiges": 0,
   "slayer-spree": 1,
-  "npc-killcount": 280655,
+  "npc-killcount": 284393,
   "spawn-killcount": 0,
   "lord-killcount": 0,
   "demon-killcount": 250,
@@ -175,7 +175,7 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 432667157,
+  "last-veng": 433718347,
   "fight-type": "LONGBOW_RAPID",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -371,12 +371,12 @@
     {
       "npcId": 8013,
       "item": 10946,
-      "amount": 85
+      "amount": 88
     },
     {
       "npcId": 8013,
       "item": 23020,
-      "amount": 78
+      "amount": 81
     },
     {
       "npcId": 9027,
@@ -1531,7 +1531,7 @@
     {
       "npcId": 1311,
       "item": 995,
-      "amount": 243168
+      "amount": 243716
     }
   ],
   "holy-prayers-unlocked": [
@@ -1663,7 +1663,7 @@
   "inventory": [
     {
       "id": 10835,
-      "amount": 3000,
+      "amount": 3122513,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1673,7 +1673,7 @@
     },
     {
       "id": 995,
-      "amount": 615332665,
+      "amount": 137020665,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1748,27 +1748,7 @@
     },
     {
       "id": 23020,
-      "amount": 19,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
-      "id": 10946,
-      "amount": 24,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
-      "id": 2736,
-      "amount": 51,
+      "amount": 17,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1787,8 +1767,28 @@
       }
     },
     {
-      "id": 19495,
-      "amount": 1,
+      "id": 2736,
+      "amount": 56,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
+    },
+    {
+      "id": -1,
+      "amount": 0,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
+    },
+    {
+      "id": -1,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -2417,7 +2417,7 @@
     },
     {
       "id": 10835,
-      "amount": 2554181,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -2707,7 +2707,7 @@
     },
     {
       "id": 2736,
-      "amount": 4,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -4094,6 +4094,16 @@
         "rarity": "COMMON",
         "bonus": 0
       }
+    },
+    {
+      "id": 19495,
+      "amount": 1,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
     }
   ],
   "bank-1": [],
@@ -4621,17 +4631,17 @@
       "boss": false
     },
     {
-      "runningTotal": 12340,
+      "runningTotal": 14476,
       "npcId": 1311,
       "npcName": "Queen Fazula",
-      "amount": 12340,
+      "amount": 14476,
       "boss": false
     }
   ],
   "drops": [
     {
       "item": 995,
-      "amount": -2020879363,
+      "amount": -2014159363,
       "rareDrop": false
     },
     {
@@ -6789,7 +6799,7 @@
     null
   ],
   "drystreak": {
-    "1311": 3085,
+    "1311": 3619,
     "6692": 1,
     "2342": 54,
     "3112": 1309,
