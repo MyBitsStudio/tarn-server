@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 156404625,
+  "total-play-time-ms": 159684555,
   "username": "Duke",
   "password": "Piehead1",
   "email": "null",
@@ -8,9 +8,9 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2207,
-    "y": 3746,
-    "z": 0
+    "x": 2144,
+    "y": 5008,
+    "z": 4
   },
   "online-status": "ON",
   "given-starter": true,
@@ -47,7 +47,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682187975147,
+  "lastlogin": 1682272895124,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -58,7 +58,7 @@
   "day5claimed": false,
   "day6claimed": false,
   "day7claimed": false,
-  "minutes-bonus-exp": 1282,
+  "minutes-bonus-exp": 1228,
   "minutes-voting-dr": -1,
   "minutes-voting-dmg": 0,
   "total-gained-exp": 968778574,
@@ -140,7 +140,7 @@
   ],
   "total-prestiges": 0,
   "slayer-spree": 65,
-  "npc-killcount": 556204,
+  "npc-killcount": 584813,
   "spawn-killcount": 0,
   "lord-killcount": 0,
   "demon-killcount": 363,
@@ -175,7 +175,7 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 1682007642743,
+  "last-veng": 268532310,
   "fight-type": "LONGBOW_RAPID",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -209,7 +209,7 @@
     0
   ],
   "effigy": 0,
-  "summon-npc": 3037,
+  "summon-npc": 3045,
   "summon-death": -1,
   "process-farming": false,
   "clanchat": "Help",
@@ -401,12 +401,12 @@
     {
       "npcId": 8013,
       "item": 10946,
-      "amount": 75
+      "amount": 77
     },
     {
       "npcId": 8013,
       "item": 23020,
-      "amount": 72
+      "amount": 74
     },
     {
       "npcId": 9922,
@@ -1766,7 +1766,32 @@
     {
       "npcId": 3115,
       "item": 995,
-      "amount": 184415
+      "amount": 185904
+    },
+    {
+      "npcId": 12239,
+      "item": 995,
+      "amount": 189724
+    },
+    {
+      "npcId": 12239,
+      "item": 6937,
+      "amount": 1
+    },
+    {
+      "npcId": 3112,
+      "item": 995,
+      "amount": 193530
+    },
+    {
+      "npcId": 3011,
+      "item": 995,
+      "amount": 197073
+    },
+    {
+      "npcId": 3011,
+      "item": 20602,
+      "amount": 1
     }
   ],
   "holy-prayers-unlocked": [
@@ -1817,7 +1842,7 @@
       120,
       120,
       120,
-      1200,
+      920,
       120,
       1200,
       120,
@@ -1898,7 +1923,7 @@
   "inventory": [
     {
       "id": 10835,
-      "amount": 54705,
+      "amount": 334705,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1908,7 +1933,7 @@
     },
     {
       "id": 995,
-      "amount": 76544476,
+      "amount": 1179276476,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -2003,7 +2028,7 @@
     },
     {
       "id": 23020,
-      "amount": 15,
+      "amount": 24,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -2023,7 +2048,7 @@
     },
     {
       "id": 2736,
-      "amount": 3,
+      "amount": 11,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -2033,7 +2058,7 @@
     },
     {
       "id": 10946,
-      "amount": 11,
+      "amount": 21,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -2064,12 +2089,7 @@
     {
       "id": 23124,
       "amount": 1,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
+      "slot": 0
     },
     {
       "id": -1,
@@ -2762,7 +2782,7 @@
     },
     {
       "id": 15359,
-      "amount": 2,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -3698,17 +3718,38 @@
       "boss": false
     },
     {
-      "runningTotal": 832,
+      "runningTotal": 6648,
       "npcId": 3115,
       "npcName": "Scylla",
-      "amount": 832,
+      "amount": 6648,
+      "boss": false
+    },
+    {
+      "runningTotal": 6704,
+      "npcId": 12239,
+      "npcName": "Exoden",
+      "amount": 6704,
+      "boss": true
+    },
+    {
+      "runningTotal": 5948,
+      "npcId": 3112,
+      "npcName": "Ezkel-Nojad",
+      "amount": 5948,
+      "boss": false
+    },
+    {
+      "runningTotal": 4156,
+      "npcId": 3011,
+      "npcName": "Janemba",
+      "amount": 4156,
       "boss": false
     }
   ],
   "drops": [
     {
       "item": 995,
-      "amount": 1714497077,
+      "amount": 1776417077,
       "rareDrop": false
     },
     {
@@ -5691,7 +5732,7 @@
       false
     ]
   ],
-  "achievements-daily": 322,
+  "achievements-daily": 323,
   "progression-zones": [
     11,
     22,
@@ -5724,7 +5765,7 @@
   },
   "lastTGloveIndex": -1,
   "group-ironman-locked": false,
-  "lastInstanceNpc": 3115,
+  "lastInstanceNpc": 3011,
   "daily-task": {
     "EASY_SLAYER_TASKS": {
       "index": 0,
@@ -5747,6 +5788,10 @@
     "2342": {
       "canClaim": true,
       "hasClaimed": true
+    },
+    "3112": {
+      "canClaim": false,
+      "hasClaimed": false
     },
     "3115": {
       "canClaim": false,
@@ -5852,6 +5897,10 @@
       "canClaim": false,
       "hasClaimed": false
     },
+    "3011": {
+      "canClaim": false,
+      "hasClaimed": false
+    },
     "8003": {
       "canClaim": true,
       "hasClaimed": true
@@ -5919,6 +5968,10 @@
     "8014": {
       "canClaim": true,
       "hasClaimed": true
+    },
+    "12239": {
+      "canClaim": false,
+      "hasClaimed": false
     },
     "9807": {
       "canClaim": false,
@@ -6005,7 +6058,8 @@
   "favorite-teleports": [],
   "obtained-pets": [
     "SANCTUM_GOLEM_PET",
-    "PANTHER_PET"
+    "PANTHER_PET",
+    "JANEMBA_PET"
   ],
   "battlepass-xp": 0,
   "battlepass-premium": false,
@@ -6028,7 +6082,8 @@
   "drystreak": {
     "6692": 3,
     "2342": 76,
-    "3115": 208,
+    "3112": 756,
+    "3115": 1662,
     "811": 34,
     "3117": 1375,
     "9903": 696,
@@ -6054,6 +6109,7 @@
     "8002": 71,
     "9026": 12,
     "9922": 1,
+    "3011": 132,
     "8003": 9,
     "9027": 22,
     "9028": 2,
@@ -6071,6 +6127,7 @@
     "8013": 0,
     "9806": 67,
     "8014": 1,
+    "12239": 631,
     "9807": 4,
     "1746": 739,
     "9815": 75,

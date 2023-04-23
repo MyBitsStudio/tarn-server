@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 23977068,
+  "total-play-time-ms": 28105610,
   "username": "13lackdrag",
   "password": "Jelly5man12",
   "email": "null",
@@ -8,16 +8,16 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2139,
-    "y": 5016,
-    "z": 8
+    "x": 2224,
+    "y": 3762,
+    "z": 0
   },
   "online-status": "ON",
   "given-starter": true,
   "has-pin2": true,
   "saved-pin2": "1209",
   "saved-ip": "209.44.179.5",
-  "donated": 38,
+  "donated": 39,
   "current-boss-task": 0,
   "current-boss-amount": 0,
   "global-rate": 0,
@@ -40,14 +40,14 @@
   "timeUntilNextReward": 0,
   "current-voting-streak": 0,
   "entriesCurrency": 0.0,
-  "amount-donated-today": 28,
+  "amount-donated-today": 29,
   "claimed-first": false,
   "claimed-second": false,
   "claimed-third": false,
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682128217300,
+  "lastlogin": 1682260770012,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -58,12 +58,12 @@
   "day5claimed": false,
   "day6claimed": false,
   "day7claimed": false,
-  "minutes-bonus-exp": 20,
+  "minutes-bonus-exp": -1,
   "minutes-voting-dr": -1,
   "minutes-voting-dmg": 0,
-  "total-gained-exp": -175324246,
+  "total-gained-exp": -173567138,
   "barrows-points": 0,
-  "donator-points": 28,
+  "donator-points": 29,
   "Skilling-points": 0,
   "prestige-points": 0,
   "achievement-points": 0,
@@ -140,7 +140,7 @@
   ],
   "total-prestiges": 0,
   "slayer-spree": 1,
-  "npc-killcount": 5261,
+  "npc-killcount": 5412,
   "spawn-killcount": 0,
   "lord-killcount": 0,
   "demon-killcount": 359,
@@ -175,7 +175,7 @@
   "auto-retaliate": false,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 1682126566691,
+  "last-veng": 138331876,
   "fight-type": "STAFF_FOCUS",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -411,12 +411,12 @@
     {
       "npcId": 9906,
       "item": 995,
-      "amount": 1535263
+      "amount": 1535264
     },
     {
       "npcId": 9906,
       "item": 2023,
-      "amount": 32
+      "amount": 33
     },
     {
       "npcId": 9838,
@@ -606,12 +606,12 @@
     {
       "npcId": 9907,
       "item": 10946,
-      "amount": 2
+      "amount": 3
     },
     {
       "npcId": 9907,
       "item": 2023,
-      "amount": 101
+      "amount": 102
     },
     {
       "npcId": 9908,
@@ -876,12 +876,17 @@
     {
       "npcId": 9817,
       "item": 995,
-      "amount": 7016
+      "amount": 7167
     },
     {
       "npcId": 9817,
       "item": 2023,
-      "amount": 14
+      "amount": 165
+    },
+    {
+      "npcId": 9817,
+      "item": 23134,
+      "amount": 1
     }
   ],
   "holy-prayers-unlocked": [
@@ -941,7 +946,7 @@
       1,
       1,
       1,
-      110,
+      111,
       1,
       1,
       1,
@@ -968,7 +973,7 @@
       1,
       1,
       1,
-      110,
+      111,
       1,
       1,
       1,
@@ -995,7 +1000,7 @@
       0,
       0,
       0,
-      41655771,
+      43412879,
       0,
       0,
       0,
@@ -1013,7 +1018,7 @@
   "inventory": [
     {
       "id": 995,
-      "amount": 1674553,
+      "amount": 227,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1022,8 +1027,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 11137,
+      "amount": 2,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1042,12 +1047,7 @@
       }
     },
     {
-      "id": 229,
-      "amount": 1,
-      "slot": 0
-    },
-    {
-      "id": 17817,
+      "id": 23134,
       "amount": 1,
       "slot": 0,
       "bonus": {
@@ -1077,9 +1077,24 @@
       }
     },
     {
-      "id": 229,
+      "id": 17817,
       "amount": 1,
-      "slot": 0
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
+    },
+    {
+      "id": -1,
+      "amount": 0,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
     },
     {
       "id": 3026,
@@ -1087,13 +1102,13 @@
       "slot": 0
     },
     {
-      "id": 229,
-      "amount": 1,
+      "id": -1,
+      "amount": 0,
       "slot": 0
     },
     {
       "id": 10835,
-      "amount": 4838,
+      "amount": 10695,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1102,8 +1117,8 @@
       }
     },
     {
-      "id": 21048,
-      "amount": 1,
+      "id": -1,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1113,7 +1128,7 @@
     },
     {
       "id": 2023,
-      "amount": 2636,
+      "amount": 2912,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -2066,10 +2081,10 @@
       "boss": false
     },
     {
-      "runningTotal": 14,
+      "runningTotal": 165,
       "npcId": 9817,
       "npcName": "Yisdar",
-      "amount": 14,
+      "amount": 165,
       "boss": false
     },
     {
@@ -2882,13 +2897,13 @@
       320,
       1,
       400,
-      14,
+      165,
       0,
       0,
       0,
       100,
-      2839,
-      15,
+      2990,
+      17,
       0,
       0,
       0,
@@ -2989,7 +3004,7 @@
       0,
       0,
       141,
-      2839,
+      2990,
       0,
       0,
       0,
@@ -3092,7 +3107,7 @@
       0,
       0,
       141,
-      2839,
+      2990,
       0,
       0,
       0,
@@ -3689,7 +3704,7 @@
       false
     ]
   ],
-  "achievements-daily": 321,
+  "achievements-daily": 323,
   "progression-zones": [
     10,
     20,
@@ -3873,7 +3888,7 @@
     "8014": 8,
     "9807": 3,
     "9815": 40,
-    "9817": 14,
+    "9817": 65,
     "1307": 1,
     "1308": 4,
     "1309": 4,

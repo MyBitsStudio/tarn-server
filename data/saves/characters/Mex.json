@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 41390764,
+  "total-play-time-ms": 46512068,
   "username": "Mex",
   "password": "soccer10",
   "email": "null",
@@ -10,14 +10,14 @@
   "position": {
     "x": 2139,
     "y": 5018,
-    "z": 12
+    "z": 0
   },
   "online-status": "FRIENDS_ONLY",
   "given-starter": true,
   "has-pin2": true,
   "saved-pin2": "2121",
   "saved-ip": "73.215.11.75",
-  "donated": 70,
+  "donated": 75,
   "current-boss-task": 0,
   "current-boss-amount": 0,
   "global-rate": 0,
@@ -40,14 +40,14 @@
   "timeUntilNextReward": 0,
   "current-voting-streak": 0,
   "entriesCurrency": 0.0,
-  "amount-donated-today": 70,
+  "amount-donated-today": 75,
   "claimed-first": false,
   "claimed-second": false,
   "claimed-third": false,
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682107260564,
+  "lastlogin": 1682271053131,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -61,9 +61,9 @@
   "minutes-bonus-exp": -1,
   "minutes-voting-dr": -1,
   "minutes-voting-dmg": 0,
-  "total-gained-exp": -862562479,
+  "total-gained-exp": -862249579,
   "barrows-points": 0,
-  "donator-points": 70,
+  "donator-points": 75,
   "Skilling-points": 0,
   "prestige-points": 0,
   "achievement-points": 0,
@@ -140,7 +140,7 @@
   ],
   "total-prestiges": 0,
   "slayer-spree": 31,
-  "npc-killcount": 3573,
+  "npc-killcount": 3657,
   "spawn-killcount": 0,
   "lord-killcount": 0,
   "demon-killcount": 91,
@@ -175,7 +175,7 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 1682079017734,
+  "last-veng": 197156706,
   "fight-type": "CROSSBOW_ACCURATE",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -184,7 +184,7 @@
   "claimed-fuse-item": true,
   "fuse-in-progress": false,
   "accept-aid": false,
-  "poison-damage": 0,
+  "poison-damage": 25,
   "poison-immunity": 0,
   "overload-timer": 0,
   "aggro-timer": 0,
@@ -220,7 +220,7 @@
   "slayer-master": "HARD_SLAYER",
   "slayer-task": "MALVEK",
   "prev-slayer-task": "YISDAR",
-  "task-amount": 49,
+  "task-amount": 7,
   "task-streak": 31,
   "duo-partner": "null",
   "double-slay-xp": false,
@@ -391,22 +391,22 @@
     {
       "npcId": 9906,
       "item": 995,
-      "amount": 1068778
+      "amount": 1068779
     },
     {
       "npcId": 9906,
       "item": 2023,
-      "amount": 46
+      "amount": 47
     },
     {
       "npcId": 8013,
       "item": 10946,
-      "amount": 14
+      "amount": 15
     },
     {
       "npcId": 8013,
       "item": 23020,
-      "amount": 10
+      "amount": 11
     },
     {
       "npcId": 9904,
@@ -806,7 +806,7 @@
     {
       "npcId": 8002,
       "item": 995,
-      "amount": 29056
+      "amount": 29099
     }
   ],
   "holy-prayers-unlocked": [
@@ -857,9 +857,9 @@
       120,
       120,
       120,
-      1200,
+      1090,
       120,
-      839,
+      569,
       120,
       1,
       1,
@@ -872,7 +872,7 @@
       1,
       1,
       1,
-      87,
+      88,
       1,
       1,
       1,
@@ -899,7 +899,7 @@
       1,
       1,
       1,
-      87,
+      88,
       1,
       1,
       1,
@@ -926,7 +926,7 @@
       0,
       0,
       0,
-      4358575,
+      4671475,
       0,
       0,
       0,
@@ -938,7 +938,7 @@
   "inventory": [
     {
       "id": 995,
-      "amount": 29257077,
+      "amount": 33311818,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -948,7 +948,7 @@
     },
     {
       "id": 2023,
-      "amount": 5432,
+      "amount": 5457,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -958,7 +958,7 @@
     },
     {
       "id": 5023,
-      "amount": 924,
+      "amount": 954,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -968,7 +968,7 @@
     },
     {
       "id": 11137,
-      "amount": 3,
+      "amount": 6,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1007,8 +1007,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 777,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1677,7 +1677,7 @@
   "bank-0": [
     {
       "id": 23020,
-      "amount": 26,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -2324,10 +2324,10 @@
       "boss": false
     },
     {
-      "runningTotal": 48,
+      "runningTotal": 90,
       "npcId": 8002,
       "npcName": "Malvek",
-      "amount": 48,
+      "amount": 90,
       "boss": false
     }
   ],
@@ -2344,7 +2344,7 @@
     },
     {
       "item": 995,
-      "amount": 43951549,
+      "amount": 44009549,
       "rareDrop": false
     },
     {
@@ -3095,8 +3095,8 @@
       59,
       64,
       100,
-      1934,
-      39,
+      1976,
+      40,
       0,
       0,
       0,
@@ -3197,7 +3197,7 @@
       0,
       0,
       126,
-      1934,
+      1976,
       0,
       0,
       0,
@@ -3290,7 +3290,7 @@
       0,
       0,
       0,
-      48,
+      90,
       0,
       31,
       0,
@@ -3300,7 +3300,7 @@
       0,
       0,
       126,
-      1934,
+      1976,
       0,
       0,
       0,
@@ -3897,7 +3897,7 @@
       false
     ]
   ],
-  "achievements-daily": 321,
+  "achievements-daily": 323,
   "progression-zones": [
     10,
     22,
@@ -4085,7 +4085,7 @@
   "drystreak": {
     "9920": 24,
     "9025": 64,
-    "8002": 48,
+    "8002": 90,
     "9922": 51,
     "8003": 25,
     "9027": 22,

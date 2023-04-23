@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 65976175,
+  "total-play-time-ms": 67823187,
   "username": "Spaceape",
   "password": "Goirle123",
   "email": "null",
@@ -8,9 +8,9 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2572,
-    "y": 2571,
-    "z": 12
+    "x": 2140,
+    "y": 5013,
+    "z": 8
   },
   "online-status": "ON",
   "given-starter": true,
@@ -47,7 +47,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682168964248,
+  "lastlogin": 1682274327333,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -58,10 +58,10 @@
   "day5claimed": false,
   "day6claimed": false,
   "day7claimed": false,
-  "minutes-bonus-exp": 53,
+  "minutes-bonus-exp": 113,
   "minutes-voting-dr": -1,
   "minutes-voting-dmg": 0,
-  "total-gained-exp": -5913109477,
+  "total-gained-exp": -1616542791,
   "barrows-points": 0,
   "donator-points": 53,
   "Skilling-points": 0,
@@ -72,7 +72,7 @@
   "loyalty-points": 0,
   "total-loyalty-points": 0.0,
   "godmodetime": 0,
-  "voting-points": 27,
+  "voting-points": 30,
   "tasks-completion": [
     false,
     false,
@@ -139,8 +139,8 @@
     0
   ],
   "total-prestiges": 0,
-  "slayer-spree": 33,
-  "npc-killcount": 11185,
+  "slayer-spree": 35,
+  "npc-killcount": 11741,
   "spawn-killcount": 0,
   "lord-killcount": 0,
   "demon-killcount": 636,
@@ -175,7 +175,7 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 219381305,
+  "last-veng": 1682056793042,
   "fight-type": "LONGSWORD_SLASH",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -218,10 +218,10 @@
   "dfs-charges": 0,
   "coins-gambled": 0,
   "slayer-master": "BOSS_SLAYER",
-  "slayer-task": "MUTANT_HYDRA",
-  "prev-slayer-task": "GORVEK",
-  "task-amount": 45,
-  "task-streak": 33,
+  "slayer-task": "NO_TASK",
+  "prev-slayer-task": "AG_THOMOTH",
+  "task-amount": 0,
+  "task-streak": 35,
   "duo-partner": "null",
   "double-slay-xp": false,
   "recoil-deg": 0,
@@ -816,7 +816,7 @@
     {
       "npcId": 9839,
       "item": 995,
-      "amount": 50140
+      "amount": 50186
     },
     {
       "npcId": 8013,
@@ -837,6 +837,11 @@
       "npcId": 9017,
       "item": 995,
       "amount": 48094
+    },
+    {
+      "npcId": 3013,
+      "item": 995,
+      "amount": 64092
     }
   ],
   "holy-prayers-unlocked": [
@@ -887,7 +892,7 @@
       120,
       120,
       120,
-      1200,
+      1010,
       120,
       0,
       120,
@@ -902,7 +907,7 @@
       1,
       71,
       71,
-      99,
+      100,
       1,
       1,
       85,
@@ -929,7 +934,7 @@
       1,
       71,
       71,
-      99,
+      100,
       1,
       1,
       85,
@@ -956,7 +961,7 @@
       0,
       858300,
       858228,
-      13086670,
+      14686060,
       0,
       0,
       3433350,
@@ -968,7 +973,7 @@
   "inventory": [
     {
       "id": 995,
-      "amount": 300764,
+      "amount": 2752764,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -978,7 +983,7 @@
     },
     {
       "id": 10835,
-      "amount": 37474,
+      "amount": 44774,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -998,7 +1003,7 @@
     },
     {
       "id": 5023,
-      "amount": 296,
+      "amount": 510,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1077,7 +1082,7 @@
       }
     },
     {
-      "id": 14184,
+      "id": 23071,
       "amount": 1,
       "slot": 0,
       "bonus": {
@@ -1239,7 +1244,7 @@
   ],
   "equipment": [
     {
-      "id": 23071,
+      "id": 14184,
       "amount": 1,
       "slot": 0,
       "bonus": {
@@ -1884,10 +1889,10 @@
       "boss": false
     },
     {
-      "runningTotal": 354,
+      "runningTotal": 492,
       "npcId": 9839,
       "npcName": "Mutant Hydra",
-      "amount": 354,
+      "amount": 492,
       "boss": false
     },
     {
@@ -2021,6 +2026,13 @@
       "npcId": 1265,
       "npcName": "Oracle Lion",
       "amount": 0,
+      "boss": false
+    },
+    {
+      "runningTotal": 279,
+      "npcId": 3013,
+      "npcName": "Ag\u0027thomoth",
+      "amount": 279,
       "boss": false
     }
   ],
@@ -2743,7 +2755,7 @@
       107,
       79,
       100,
-      2913,
+      3052,
       20,
       0,
       0,
@@ -2830,7 +2842,7 @@
     ],
     [
       0,
-      27,
+      30,
       0,
       0,
       0,
@@ -2838,14 +2850,14 @@
       0,
       99,
       101,
-      33,
+      35,
       0,
       105,
       0,
       0,
       180,
       142,
-      2913,
+      3052,
       0,
       0,
       0,
@@ -2932,23 +2944,23 @@
     ],
     [
       0,
-      27,
+      30,
       78,
-      118,
+      164,
       176,
       0,
       0,
       158,
       100,
-      33,
+      35,
       0,
-      0,
+      93,
       83,
       0,
       0,
       0,
       142,
-      2913,
+      3052,
       0,
       0,
       0,
@@ -3545,7 +3557,7 @@
       false
     ]
   ],
-  "achievements-daily": 322,
+  "achievements-daily": 323,
   "progression-zones": [
     11,
     20,
@@ -3615,6 +3627,10 @@
       "hasClaimed": false
     },
     "9027": {
+      "canClaim": false,
+      "hasClaimed": false
+    },
+    "3013": {
       "canClaim": false,
       "hasClaimed": false
     },
@@ -3773,6 +3789,7 @@
     "9922": 2,
     "8003": 26,
     "9027": 7,
+    "3013": 93,
     "3014": 83,
     "8008": 78,
     "202": 47,
@@ -3789,7 +3806,7 @@
     "9835": 31,
     "9837": 11,
     "9838": 2,
-    "9839": 118,
+    "9839": 164,
     "9904": 0,
     "9906": 0,
     "9907": 0,

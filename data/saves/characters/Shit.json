@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 230506392,
+  "total-play-time-ms": 249092441,
   "username": "Shit",
   "password": "jameelmneh",
   "email": "null",
@@ -8,9 +8,9 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2207,
-    "y": 3746,
-    "z": 0
+    "x": 2139,
+    "y": 5018,
+    "z": 8
   },
   "online-status": "ON",
   "given-starter": true,
@@ -47,7 +47,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682057738643,
+  "lastlogin": 1682269767943,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -58,10 +58,10 @@
   "day5claimed": false,
   "day6claimed": false,
   "day7claimed": false,
-  "minutes-bonus-exp": 165,
-  "minutes-voting-dr": 20,
+  "minutes-bonus-exp": -1,
+  "minutes-voting-dr": -1,
   "minutes-voting-dmg": 0,
-  "total-gained-exp": 7997353422,
+  "total-gained-exp": -587106490,
   "barrows-points": 0,
   "donator-points": 0,
   "Skilling-points": 0,
@@ -175,7 +175,7 @@
   "auto-retaliate": false,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 195795511,
+  "last-veng": 1682079191090,
   "fight-type": "LONGSWORD_SLASH",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -336,12 +336,12 @@
     {
       "npcId": 8013,
       "item": 10946,
-      "amount": 36
+      "amount": 39
     },
     {
       "npcId": 8013,
       "item": 23020,
-      "amount": 35
+      "amount": 38
     },
     {
       "npcId": 9906,
@@ -497,7 +497,7 @@
       0,
       0,
       0,
-      1994531375,
+      2000000000,
       0,
       0,
       0,
@@ -523,7 +523,7 @@
     },
     {
       "id": 17634,
-      "amount": 351790,
+      "amount": 459970,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -543,7 +543,7 @@
     },
     {
       "id": 23020,
-      "amount": 99,
+      "amount": 108,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -613,7 +613,7 @@
     },
     {
       "id": 10946,
-      "amount": 6,
+      "amount": 21,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1303,12 +1303,12 @@
   "drops": [
     {
       "item": 10946,
-      "amount": 264,
+      "amount": 279,
       "rareDrop": false
     },
     {
       "item": 23020,
-      "amount": 117,
+      "amount": 126,
       "rareDrop": false
     },
     {

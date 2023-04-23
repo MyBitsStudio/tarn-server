@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 52315564,
+  "total-play-time-ms": 52828583,
   "username": "Kau",
   "password": "99minerisme",
   "email": "null",
@@ -8,9 +8,9 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2224,
-    "y": 3759,
-    "z": 0
+    "x": 2520,
+    "y": 2538,
+    "z": 64
   },
   "online-status": "ON",
   "given-starter": true,
@@ -47,7 +47,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682212063780,
+  "lastlogin": 1682254174204,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -58,10 +58,10 @@
   "day5claimed": false,
   "day6claimed": false,
   "day7claimed": false,
-  "minutes-bonus-exp": 738,
+  "minutes-bonus-exp": 730,
   "minutes-voting-dr": 0,
   "minutes-voting-dmg": 0,
-  "total-gained-exp": 1181095972,
+  "total-gained-exp": 1549756808,
   "barrows-points": 0,
   "donator-points": 65,
   "Skilling-points": 0,
@@ -140,7 +140,7 @@
   ],
   "total-prestiges": 0,
   "slayer-spree": 0,
-  "npc-killcount": 16308,
+  "npc-killcount": 16480,
   "spawn-killcount": 0,
   "lord-killcount": 0,
   "demon-killcount": 213,
@@ -175,7 +175,7 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 250278048,
+  "last-veng": 1682004409182,
   "fight-type": "LONGBOW_RAPID",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -1111,12 +1111,12 @@
     {
       "npcId": 9916,
       "item": 995,
-      "amount": 20474
+      "amount": 20562
     },
     {
       "npcId": 9916,
       "item": 2023,
-      "amount": 474
+      "amount": 560
     },
     {
       "npcId": 9916,
@@ -1172,9 +1172,9 @@
       68,
       120,
       91,
-      1200,
+      690,
       120,
-      537,
+      1020,
       120,
       1,
       1,
@@ -1227,7 +1227,7 @@
       123470767,
       6022243,
       2000000000,
-      1075251664,
+      1443912500,
       17625080,
       2000000000,
       0,
@@ -1253,7 +1253,7 @@
   "inventory": [
     {
       "id": 10835,
-      "amount": 88376,
+      "amount": 1189976,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1263,7 +1263,7 @@
     },
     {
       "id": 2023,
-      "amount": 3818,
+      "amount": 3904,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1273,7 +1273,7 @@
     },
     {
       "id": 995,
-      "amount": 287,
+      "amount": 160287,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -2616,17 +2616,17 @@
       "boss": false
     },
     {
-      "runningTotal": 279,
+      "runningTotal": 365,
       "npcId": 9916,
       "npcName": "Luffy",
-      "amount": 279,
+      "amount": 365,
       "boss": false
     }
   ],
   "drops": [
     {
       "item": 995,
-      "amount": 202037613,
+      "amount": 202117613,
       "rareDrop": false
     },
     {
@@ -3574,12 +3574,12 @@
       503,
       0,
       756,
-      279,
+      365,
       0,
       0,
       0,
       1000,
-      8485,
+      8571,
       0,
       0,
       0,
@@ -3682,7 +3682,7 @@
       0,
       0,
       3821,
-      8485,
+      8571,
       0,
       0,
       0,
@@ -4279,7 +4279,7 @@
       false
     ]
   ],
-  "achievements-daily": 322,
+  "achievements-daily": 323,
   "progression-zones": [
     10,
     20,
@@ -4540,7 +4540,7 @@
     "3831": 0,
     "9911": 40,
     "9915": 108,
-    "9916": 5
+    "9916": 91
   },
   "boost": 0,
   "slot-level": 0

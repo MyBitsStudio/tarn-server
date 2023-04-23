@@ -114,19 +114,11 @@
     },
     {
       "id": 3107,
-      "amount": 6,
+      "amount": 5,
       "maxAmount": 6,
       "price": 300000,
       "effect": "NOTHING",
       "bonus": 0
-    },
-    {
-      "id": 15647,
-      "amount": 1,
-      "maxAmount": 3,
-      "price": 550000,
-      "effect": "TRIPLE_KILLS",
-      "bonus": 2
     },
     {
       "id": 20590,
@@ -169,16 +161,8 @@
       "bonus": 0
     },
     {
-      "id": 15100,
-      "amount": 1,
-      "maxAmount": 2,
-      "price": 5500000,
-      "effect": "TRIPLE_KILLS",
-      "bonus": 2
-    },
-    {
       "id": 15005,
-      "amount": 2,
+      "amount": 1,
       "maxAmount": 4,
       "price": 4500000,
       "effect": "NOTHING",
@@ -216,6 +200,8 @@
       "effect": "DOUBLE_KILLS",
       "bonus": 1
     },
+    null,
+    null,
     null,
     null,
     null,

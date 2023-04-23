@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 140168849,
+  "total-play-time-ms": 143623001,
   "username": "Classic Irl",
   "password": "Chicagopolice2",
   "email": "null",
@@ -8,9 +8,9 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2963,
-    "y": 9500,
-    "z": 68
+    "x": 2961,
+    "y": 9501,
+    "z": 72
   },
   "online-status": "ON",
   "given-starter": true,
@@ -47,7 +47,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682134585028,
+  "lastlogin": 1682272735533,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -61,7 +61,7 @@
   "minutes-bonus-exp": -1,
   "minutes-voting-dr": -1,
   "minutes-voting-dmg": 0,
-  "total-gained-exp": -1240666974,
+  "total-gained-exp": -1236809118,
   "barrows-points": 0,
   "donator-points": 49,
   "Skilling-points": 0,
@@ -140,7 +140,7 @@
   ],
   "total-prestiges": 0,
   "slayer-spree": 13,
-  "npc-killcount": 25983,
+  "npc-killcount": 27171,
   "spawn-killcount": 0,
   "lord-killcount": 0,
   "demon-killcount": 672,
@@ -175,7 +175,7 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 1682056351957,
+  "last-veng": 1682059990958,
   "fight-type": "STAFF_POUND",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -1211,12 +1211,12 @@
     {
       "npcId": 9919,
       "item": 995,
-      "amount": 44725
+      "amount": 45264
     },
     {
       "npcId": 9919,
       "item": 2023,
-      "amount": 727
+      "amount": 1267
     },
     {
       "npcId": 9919,
@@ -1227,6 +1227,26 @@
       "npcId": 9919,
       "item": 15935,
       "amount": 1
+    },
+    {
+      "npcId": 9919,
+      "item": 16272,
+      "amount": 1
+    },
+    {
+      "npcId": 9919,
+      "item": 12994,
+      "amount": 1
+    },
+    {
+      "npcId": 9914,
+      "item": 995,
+      "amount": 46058
+    },
+    {
+      "npcId": 9914,
+      "item": 2023,
+      "amount": 59
     }
   ],
   "holy-prayers-unlocked": [
@@ -1277,9 +1297,9 @@
       120,
       120,
       120,
-      1200,
+      1180,
       120,
-      894,
+      1132,
       120,
       1,
       1,
@@ -1340,7 +1360,7 @@
       0,
       0,
       0,
-      155040925,
+      158898781,
       0,
       0,
       0,
@@ -1357,16 +1377,6 @@
   },
   "inventory": [
     {
-      "id": 10835,
-      "amount": 322,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
       "id": -1,
       "amount": 0,
       "slot": 0,
@@ -1377,7 +1387,17 @@
       }
     },
     {
-      "id": 3026,
+      "id": 10835,
+      "amount": 175,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
+    },
+    {
+      "id": 3028,
       "amount": 1,
       "slot": 0
     },
@@ -1523,7 +1543,7 @@
     },
     {
       "id": 2023,
-      "amount": 10728,
+      "amount": 11327,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1563,7 +1583,7 @@
     },
     {
       "id": 995,
-      "amount": 290030678,
+      "amount": 317998154,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1694,7 +1714,7 @@
       }
     },
     {
-      "id": 12864,
+      "id": 12994,
       "amount": 1,
       "slot": 0,
       "bonus": {
@@ -1704,12 +1724,12 @@
       }
     },
     {
-      "id": 11182,
+      "id": 16272,
       "amount": 1,
       "slot": 0,
       "bonus": {
-        "effect": "RANGE_DAMAGE",
-        "rarity": "UNCOMMON",
+        "effect": "ALL_DAMAGE_LOW",
+        "rarity": "RARE",
         "bonus": 1
       }
     },
@@ -3286,22 +3306,29 @@
       "boss": false
     },
     {
-      "runningTotal": 531,
+      "runningTotal": 1066,
       "npcId": 9919,
       "npcName": "Bowser",
-      "amount": 531,
+      "amount": 1066,
+      "boss": false
+    },
+    {
+      "runningTotal": 59,
+      "npcId": 9914,
+      "npcName": "Sasuke",
+      "amount": 59,
       "boss": false
     }
   ],
   "drops": [
     {
       "item": 995,
-      "amount": 93282242,
+      "amount": 93634242,
       "rareDrop": false
     },
     {
       "item": 2023,
-      "amount": 7436,
+      "amount": 7446,
       "rareDrop": false
     },
     {
@@ -4191,8 +4218,8 @@
       801,
       955,
       765,
-      531,
-      0,
+      1066,
+      59,
       71,
       10000,
       0,
@@ -4297,7 +4324,7 @@
       0,
       0,
       71,
-      13299,
+      13893,
       0,
       0,
       0,
@@ -4894,7 +4921,7 @@
       false
     ]
   ],
-  "achievements-daily": 322,
+  "achievements-daily": 323,
   "progression-zones": [
     11,
     21,
@@ -5074,6 +5101,10 @@
       "canClaim": false,
       "hasClaimed": false
     },
+    "9914": {
+      "canClaim": false,
+      "hasClaimed": false
+    },
     "9915": {
       "canClaim": false,
       "hasClaimed": false
@@ -5156,10 +5187,11 @@
     "9910": 1,
     "3831": 52,
     "9911": 44,
+    "9914": 59,
     "9915": 2,
     "9916": 35,
     "9918": 37,
-    "9919": 31
+    "9919": 66
   },
   "boost": 0,
   "slot-level": 0

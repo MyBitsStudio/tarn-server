@@ -1,3 +1,44 @@
 {
-  "shop-history": []
+  "shop-history": [
+    {
+      "id": 14325,
+      "amount": 1,
+      "buyer": "Milner",
+      "price": 1000000,
+      "effect": "MAGIC_DAMAGE",
+      "bonus": 1
+    },
+    {
+      "id": 11766,
+      "amount": 1,
+      "buyer": "Wooxy",
+      "price": 1000000,
+      "effect": "NOTHING",
+      "bonus": 0
+    },
+    {
+      "id": 11763,
+      "amount": 1,
+      "buyer": "Slayer",
+      "price": 2500000,
+      "effect": "NOTHING",
+      "bonus": 0
+    },
+    {
+      "id": 4083,
+      "amount": 1,
+      "buyer": "Bulba",
+      "price": 8000000,
+      "effect": "MAGIC_DAMAGE",
+      "bonus": 1
+    },
+    {
+      "id": 23167,
+      "amount": 1,
+      "buyer": "Netflix",
+      "price": 750000,
+      "effect": "NOTHING",
+      "bonus": 0
+    }
+  ]
 }

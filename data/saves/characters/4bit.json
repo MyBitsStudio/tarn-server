@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 49521294,
+  "total-play-time-ms": 50541261,
   "username": "4bit",
   "password": "021104t",
   "email": "null",
@@ -8,9 +8,9 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2578,
-    "y": 2570,
-    "z": 12
+    "x": 2232,
+    "y": 3745,
+    "z": 0
   },
   "online-status": "ON",
   "given-starter": true,
@@ -47,7 +47,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682231413720,
+  "lastlogin": 1682267820628,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -58,10 +58,10 @@
   "day5claimed": false,
   "day6claimed": false,
   "day7claimed": false,
-  "minutes-bonus-exp": 327,
-  "minutes-voting-dr": 7,
+  "minutes-bonus-exp": 311,
+  "minutes-voting-dr": -1,
   "minutes-voting-dmg": 0,
-  "total-gained-exp": -2083546870,
+  "total-gained-exp": -2083432360,
   "barrows-points": 0,
   "donator-points": 50,
   "Skilling-points": 0,
@@ -140,7 +140,7 @@
   ],
   "total-prestiges": 0,
   "slayer-spree": 9,
-  "npc-killcount": 26983,
+  "npc-killcount": 27095,
   "spawn-killcount": 0,
   "lord-killcount": 0,
   "demon-killcount": 638,
@@ -175,7 +175,7 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 1682149373623,
+  "last-veng": 119466977,
   "fight-type": "STAFF_POUND",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -218,10 +218,10 @@
   "dfs-charges": 0,
   "coins-gambled": 0,
   "slayer-master": "BOSS_SLAYER",
-  "slayer-task": "MUTANT_HYDRA",
+  "slayer-task": "GROUDON",
   "prev-slayer-task": "SANCTUM_GOLEM",
-  "task-amount": 51,
-  "task-streak": 9,
+  "task-amount": 78,
+  "task-streak": 0,
   "duo-partner": "null",
   "double-slay-xp": false,
   "recoil-deg": 0,
@@ -446,12 +446,12 @@
     {
       "npcId": 8013,
       "item": 10946,
-      "amount": 19
+      "amount": 22
     },
     {
       "npcId": 8013,
       "item": 23020,
-      "amount": 23
+      "amount": 26
     },
     {
       "npcId": 8013,
@@ -1111,7 +1111,7 @@
     {
       "npcId": 9017,
       "item": 995,
-      "amount": 25052
+      "amount": 25053
     },
     {
       "npcId": 2342,
@@ -1121,7 +1121,7 @@
     {
       "npcId": 9839,
       "item": 995,
-      "amount": 25149
+      "amount": 25161
     },
     {
       "npcId": 9017,
@@ -1152,6 +1152,11 @@
       "npcId": 9816,
       "item": 995,
       "amount": 27166
+    },
+    {
+      "npcId": 8010,
+      "item": 995,
+      "amount": 34003
     }
   ],
   "holy-prayers-unlocked": [
@@ -1202,9 +1207,9 @@
       120,
       120,
       120,
-      160,
+      1200,
       104,
-      476,
+      1200,
       120,
       1,
       1,
@@ -1217,7 +1222,7 @@
       1,
       1,
       1,
-      92,
+      93,
       1,
       1,
       1,
@@ -1244,7 +1249,7 @@
       1,
       1,
       1,
-      92,
+      93,
       1,
       1,
       1,
@@ -1271,7 +1276,7 @@
       0,
       0,
       0,
-      7109290,
+      7223800,
       0,
       0,
       0,
@@ -1283,7 +1288,7 @@
   "inventory": [
     {
       "id": 5023,
-      "amount": 779,
+      "amount": 679,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1303,7 +1308,7 @@
     },
     {
       "id": 995,
-      "amount": 2481018,
+      "amount": 2941018,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1352,8 +1357,18 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 10946,
+      "amount": 15,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
+    },
+    {
+      "id": 23020,
+      "amount": 12,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1372,8 +1387,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 9719,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1382,8 +1397,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 9719,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1392,8 +1407,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 9719,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1402,8 +1417,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 9719,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1412,8 +1427,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 9719,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1422,8 +1437,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 9719,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1432,8 +1447,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 9719,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1442,8 +1457,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 9719,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1452,18 +1467,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
-      "id": -1,
-      "amount": 0,
+      "id": 9719,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -3259,17 +3264,17 @@
       "boss": false
     },
     {
-      "runningTotal": 2057,
+      "runningTotal": 2061,
       "npcId": 9017,
       "npcName": "Sanctum Golem",
-      "amount": 2057,
+      "amount": 2061,
       "boss": true
     },
     {
-      "runningTotal": 298,
+      "runningTotal": 346,
       "npcId": 9839,
       "npcName": "Mutant Hydra",
-      "amount": 298,
+      "amount": 346,
       "boss": false
     },
     {
@@ -3278,6 +3283,13 @@
       "npcName": "Dragonite",
       "amount": 344,
       "boss": false
+    },
+    {
+      "runningTotal": 16,
+      "npcId": 8010,
+      "npcName": "Groudon",
+      "amount": 16,
+      "boss": true
     }
   ],
   "drops": [
@@ -4196,7 +4208,7 @@
       347,
       487,
       63,
-      7799,
+      7815,
       0,
       0,
       0,
@@ -4284,8 +4296,8 @@
     [
       0,
       25,
-      656,
-      86,
+      657,
+      98,
       0,
       86,
       0,
@@ -4295,11 +4307,11 @@
       0,
       0,
       0,
-      0,
+      3,
       0,
       0,
       63,
-      7799,
+      7815,
       0,
       0,
       0,
@@ -4976,6 +4988,10 @@
       "canClaim": false,
       "hasClaimed": false
     },
+    "8010": {
+      "canClaim": false,
+      "hasClaimed": false
+    },
     "202": {
       "canClaim": false,
       "hasClaimed": false
@@ -5149,6 +5165,7 @@
     "9029": 4,
     "9030": 5,
     "8008": 65,
+    "8010": 3,
     "202": 62,
     "8013": 0,
     "8014": 5,
@@ -5164,7 +5181,7 @@
     "9836": 18,
     "9837": 11,
     "9838": 5,
-    "9839": 86,
+    "9839": 98,
     "9904": 0,
     "3313": 12,
     "1906": 172,
@@ -5175,7 +5192,7 @@
     "9910": 3,
     "3831": 58,
     "9911": 57,
-    "9017": 156,
+    "9017": 157,
     "9914": 147,
     "9915": 183,
     "9916": 40,

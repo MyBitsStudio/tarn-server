@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 176030854,
+  "total-play-time-ms": 189899588,
   "username": "Smurfit",
   "password": "lolly",
   "email": "null",
@@ -8,16 +8,16 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2207,
-    "y": 3746,
-    "z": 0
+    "x": 2528,
+    "y": 2531,
+    "z": 72
   },
   "online-status": "ON",
   "given-starter": true,
   "has-pin2": true,
   "saved-pin2": "1212",
   "saved-ip": "84.192.9.100",
-  "donated": 199,
+  "donated": 204,
   "current-boss-task": 0,
   "current-boss-amount": 0,
   "global-rate": 0,
@@ -40,14 +40,14 @@
   "timeUntilNextReward": 0,
   "current-voting-streak": 0,
   "entriesCurrency": 0.0,
-  "amount-donated-today": 189,
+  "amount-donated-today": 194,
   "claimed-first": false,
   "claimed-second": false,
   "claimed-third": false,
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682240416586,
+  "lastlogin": 1682273922372,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -58,12 +58,12 @@
   "day5claimed": false,
   "day6claimed": false,
   "day7claimed": false,
-  "minutes-bonus-exp": -1,
-  "minutes-voting-dr": -1,
+  "minutes-bonus-exp": 148,
+  "minutes-voting-dr": 0,
   "minutes-voting-dmg": 0,
-  "total-gained-exp": 394707294,
+  "total-gained-exp": 395997496,
   "barrows-points": 0,
-  "donator-points": 189,
+  "donator-points": 194,
   "Skilling-points": 0,
   "prestige-points": 0,
   "achievement-points": 0,
@@ -72,7 +72,7 @@
   "loyalty-points": 0,
   "total-loyalty-points": 0.0,
   "godmodetime": 0,
-  "voting-points": 28,
+  "voting-points": 34,
   "tasks-completion": [
     false,
     false,
@@ -139,8 +139,8 @@
     0
   ],
   "total-prestiges": 0,
-  "slayer-spree": 73,
-  "npc-killcount": 12405,
+  "slayer-spree": 75,
+  "npc-killcount": 12591,
   "spawn-killcount": 0,
   "lord-killcount": 0,
   "demon-killcount": 660,
@@ -175,7 +175,7 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 128609253,
+  "last-veng": 137131190,
   "fight-type": "CROSSBOW_RAPID",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -184,7 +184,7 @@
   "claimed-fuse-item": true,
   "fuse-in-progress": false,
   "accept-aid": false,
-  "poison-damage": 0,
+  "poison-damage": 10,
   "poison-immunity": 0,
   "overload-timer": 0,
   "aggro-timer": 0,
@@ -217,11 +217,11 @@
   "autocast-spell": -1,
   "dfs-charges": 0,
   "coins-gambled": 0,
-  "slayer-master": "BOSS_SLAYER",
-  "slayer-task": "ZEIDAN_GRIMM",
-  "prev-slayer-task": "AVALON",
-  "task-amount": 24,
-  "task-streak": 73,
+  "slayer-master": "HARD_SLAYER",
+  "slayer-task": "MALVEK",
+  "prev-slayer-task": "DEATH_GOD",
+  "task-amount": 75,
+  "task-streak": 75,
   "duo-partner": "null",
   "double-slay-xp": false,
   "recoil-deg": 0,
@@ -716,12 +716,12 @@
     {
       "npcId": 8013,
       "item": 10946,
-      "amount": 14
+      "amount": 15
     },
     {
       "npcId": 8013,
       "item": 23020,
-      "amount": 14
+      "amount": 15
     },
     {
       "npcId": 9028,
@@ -936,12 +936,12 @@
     {
       "npcId": 9915,
       "item": 995,
-      "amount": 17544
+      "amount": 17607
     },
     {
       "npcId": 9915,
       "item": 2023,
-      "amount": 558
+      "amount": 621
     },
     {
       "npcId": 202,
@@ -981,7 +981,7 @@
     {
       "npcId": 8002,
       "item": 995,
-      "amount": 29407
+      "amount": 29414
     },
     {
       "npcId": 9915,
@@ -1111,7 +1111,7 @@
     {
       "npcId": 3010,
       "item": 995,
-      "amount": 31129
+      "amount": 31153
     }
   ],
   "holy-prayers-unlocked": [
@@ -1162,9 +1162,9 @@
       120,
       120,
       120,
-      1200,
+      1165,
       120,
-      379,
+      0,
       120,
       1,
       1,
@@ -1173,11 +1173,11 @@
       1,
       66,
       1,
-      81,
+      83,
       23,
       39,
       1,
-      98,
+      99,
       1,
       1,
       50,
@@ -1200,11 +1200,11 @@
       1,
       66,
       1,
-      81,
+      83,
       23,
       39,
       1,
-      98,
+      99,
       1,
       1,
       50,
@@ -1227,11 +1227,11 @@
       0,
       514952,
       0,
-      2311419,
+      2714047,
       6993,
       34972,
       0,
-      12425021,
+      13312595,
       0,
       0,
       102995,
@@ -1242,8 +1242,8 @@
   },
   "inventory": [
     {
-      "id": 17634,
-      "amount": 58040,
+      "id": -1,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1438,7 +1438,7 @@
     },
     {
       "id": 5020,
-      "amount": 245750,
+      "amount": 347130,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1468,7 +1468,7 @@
     },
     {
       "id": 5023,
-      "amount": 5454,
+      "amount": 5826,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1488,7 +1488,7 @@
     },
     {
       "id": 2023,
-      "amount": 4116,
+      "amount": 4179,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1498,7 +1498,7 @@
     },
     {
       "id": 995,
-      "amount": 4030944,
+      "amount": 9048944,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -2275,10 +2275,10 @@
       "boss": false
     },
     {
-      "runningTotal": 335,
+      "runningTotal": 397,
       "npcId": 9915,
       "npcName": "Death God",
-      "amount": 335,
+      "amount": 397,
       "boss": false
     },
     {
@@ -2317,10 +2317,10 @@
       "boss": false
     },
     {
-      "runningTotal": 237,
+      "runningTotal": 244,
       "npcId": 8002,
       "npcName": "Malvek",
-      "amount": 237,
+      "amount": 244,
       "boss": false
     },
     {
@@ -2485,22 +2485,22 @@
       "boss": false
     },
     {
-      "runningTotal": 65,
+      "runningTotal": 89,
       "npcId": 3010,
       "npcName": "Zeidan Grimm",
-      "amount": 65,
+      "amount": 89,
       "boss": false
     }
   ],
   "drops": [
     {
       "item": 995,
-      "amount": 164807732,
+      "amount": 164841732,
       "rareDrop": false
     },
     {
       "item": 2023,
-      "amount": 13931,
+      "amount": 13933,
       "rareDrop": false
     },
     {
@@ -3449,7 +3449,7 @@
       66,
       74,
       284,
-      335,
+      397,
       254,
       50,
       0,
@@ -3458,7 +3458,7 @@
       0,
       146,
       1000,
-      6626,
+      6719,
       0,
       0,
       0,
@@ -3545,23 +3545,23 @@
     ],
     [
       0,
-      53,
+      59,
       0,
       0,
       0,
       0,
       0,
-      237,
+      244,
       0,
-      73,
-      65,
+      75,
+      89,
       0,
       0,
       0,
       0,
       0,
       10000,
-      6626,
+      6719,
       0,
       0,
       0,
@@ -4192,7 +4192,20 @@
   "lastTGloveIndex": -1,
   "group-ironman-locked": false,
   "lastInstanceNpc": -1,
-  "daily-task": {},
+  "daily-task": {
+    "HARD_SLAYER_TASKS": {
+      "index": 0,
+      "deadlineTimestamp": 1682360600722,
+      "completedAmount": 1,
+      "assignedAmount": 4,
+      "title": "Hard Slayer Tasks",
+      "itemId": 0,
+      "description": "Complete 4 Hard slayer tasks.",
+      "key": "HARD_SLAYER_TASKS",
+      "timespan": "DAILY",
+      "claimedReward": false
+    }
+  },
   "collectionlog-rewards": {
     "9920": {
       "canClaim": false,
@@ -4352,11 +4365,11 @@
     }
   },
   "daily-skips": 3,
-  "dailies-done": 3,
-  "daily-task-info": "Your daily task is: @red@Complete 4 Medium slayer tasks. @bla@Progress: @red@3/4@bla@.",
+  "dailies-done": 2,
+  "daily-task-info": "Your daily task is: @red@Complete 4 Hard slayer tasks. @bla@Progress: @red@0/4@bla@.",
   "level-notifications": false,
   "dailies-received-times": [
-    1682165412899,
+    1682274200722,
     1682100677444,
     1682166282881
   ],
@@ -4385,8 +4398,8 @@
   "drystreak": {
     "9920": 75,
     "9025": 79,
-    "3010": 65,
-    "8002": 237,
+    "3010": 89,
+    "8002": 244,
     "9026": 69,
     "9922": 0,
     "8003": 51,
@@ -4422,7 +4435,7 @@
     "9911": 40,
     "1721": 106,
     "9914": 146,
-    "9915": 11,
+    "9915": 73,
     "9918": 66
   },
   "boost": 0,

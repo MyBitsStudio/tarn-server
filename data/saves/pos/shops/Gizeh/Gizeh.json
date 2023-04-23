@@ -1,24 +1,45 @@
 {
   "shop": [
     {
-      "id": 23057,
-      "amount": 5,
-      "maxAmount": 5,
-      "price": 650000,
+      "id": 3090,
+      "amount": 3,
+      "maxAmount": 3,
+      "price": 1000000,
       "effect": "NOTHING",
       "bonus": 0
     },
     {
-      "id": 10946,
-      "amount": 43,
-      "maxAmount": 43,
-      "price": 55000,
+      "id": 1033,
+      "amount": 3,
+      "maxAmount": 3,
+      "price": 1000000,
       "effect": "NOTHING",
       "bonus": 0
     },
-    null,
-    null,
-    null,
+    {
+      "id": 3086,
+      "amount": 1,
+      "maxAmount": 2,
+      "price": 2000000,
+      "effect": "NOTHING",
+      "bonus": 0
+    },
+    {
+      "id": 15359,
+      "amount": 5,
+      "maxAmount": 5,
+      "price": 250000,
+      "effect": "NOTHING",
+      "bonus": 0
+    },
+    {
+      "id": 15358,
+      "amount": 3,
+      "maxAmount": 4,
+      "price": 250000,
+      "effect": "NOTHING",
+      "bonus": 0
+    },
     null,
     null,
     null,
@@ -47,5 +68,5 @@
     null,
     null
   ],
-  "earnings": 905000
+  "earnings": 4580000
 }

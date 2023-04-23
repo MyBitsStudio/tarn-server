@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 183376187,
+  "total-play-time-ms": 200240547,
   "username": "Bright",
   "password": "lmao1337xd",
   "email": "null",
@@ -47,7 +47,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682111168344,
+  "lastlogin": 1682250788417,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -58,7 +58,7 @@
   "day5claimed": false,
   "day6claimed": false,
   "day7claimed": false,
-  "minutes-bonus-exp": 12,
+  "minutes-bonus-exp": -1,
   "minutes-voting-dr": -1,
   "minutes-voting-dmg": 0,
   "total-gained-exp": 546964607,
@@ -140,7 +140,7 @@
   ],
   "total-prestiges": 0,
   "slayer-spree": 20,
-  "npc-killcount": 90364,
+  "npc-killcount": 101788,
   "spawn-killcount": 0,
   "lord-killcount": 0,
   "demon-killcount": 338,
@@ -175,7 +175,7 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 1682142808448,
+  "last-veng": 124844330,
   "fight-type": "STAFF_POUND",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -886,7 +886,7 @@
     {
       "npcId": 9017,
       "item": 995,
-      "amount": 28036
+      "amount": 29691
     },
     {
       "npcId": 9017,
@@ -976,7 +976,7 @@
     {
       "npcId": 9017,
       "item": 22135,
-      "amount": 1
+      "amount": 5
     },
     {
       "npcId": 1313,
@@ -1182,13 +1182,18 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
-      "slot": 0
+      "id": 22135,
+      "amount": 1,
+      "slot": 0,
+      "bonus": {
+        "effect": "DROP_RATE_HIGH",
+        "rarity": "MYTHIC",
+        "bonus": 48
+      }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 22135,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1197,8 +1202,18 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 22135,
+      "amount": 1,
+      "slot": 0,
+      "bonus": {
+        "effect": "ALL_DAMAGE_MEDIUM",
+        "rarity": "LEGENDARY",
+        "bonus": 2
+      }
+    },
+    {
+      "id": 2736,
+      "amount": 3,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1207,23 +1222,13 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 22135,
+      "amount": 1,
       "slot": 0,
       "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
-      "id": -1,
-      "amount": 0,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
+        "effect": "MAGIC_DAMAGE",
+        "rarity": "UNCOMMON",
+        "bonus": 1
       }
     },
     {
@@ -1403,7 +1408,7 @@
     },
     {
       "id": 995,
-      "amount": 38024336,
+      "amount": 196904336,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -2552,10 +2557,10 @@
       "boss": false
     },
     {
-      "runningTotal": 9367,
+      "runningTotal": 15895,
       "npcId": 9017,
       "npcName": "Sanctum Golem",
-      "amount": 9367,
+      "amount": 15895,
       "boss": true
     },
     {
@@ -2618,7 +2623,7 @@
   "drops": [
     {
       "item": 995,
-      "amount": 1506945937,
+      "amount": 1511361937,
       "rareDrop": false
     },
     {
@@ -3649,7 +3654,7 @@
       0,
       0,
       10000,
-      15296,
+      16928,
       0,
       0,
       0,
@@ -4497,7 +4502,7 @@
     "9845": 3,
     "9910": 5,
     "9911": 42,
-    "9017": 139,
+    "9017": 101,
     "9914": 2,
     "9916": 7
   },

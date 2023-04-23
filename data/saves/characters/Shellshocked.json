@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 111781159,
+  "total-play-time-ms": 113328555,
   "username": "Shellshocked",
   "password": "Logout25!",
   "email": "null",
@@ -8,16 +8,16 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2988,
-    "y": 9486,
-    "z": 16
+    "x": 2700,
+    "y": 4760,
+    "z": 52
   },
   "online-status": "ON",
   "given-starter": true,
   "has-pin2": true,
   "saved-pin2": "3559",
   "saved-ip": "98.144.232.178",
-  "donated": 189,
+  "donated": 194,
   "current-boss-task": 0,
   "current-boss-amount": 0,
   "global-rate": 0,
@@ -40,14 +40,14 @@
   "timeUntilNextReward": 0,
   "current-voting-streak": 0,
   "entriesCurrency": 0.0,
-  "amount-donated-today": 189,
+  "amount-donated-today": 194,
   "claimed-first": false,
   "claimed-second": false,
   "claimed-third": false,
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682241614773,
+  "lastlogin": 1682262297588,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -58,12 +58,12 @@
   "day5claimed": false,
   "day6claimed": false,
   "day7claimed": false,
-  "minutes-bonus-exp": 369,
+  "minutes-bonus-exp": 434,
   "minutes-voting-dr": -1,
   "minutes-voting-dmg": 0,
-  "total-gained-exp": -2073660021,
+  "total-gained-exp": -2071544285,
   "barrows-points": 0,
-  "donator-points": 189,
+  "donator-points": 194,
   "Skilling-points": 0,
   "prestige-points": 0,
   "achievement-points": 0,
@@ -72,7 +72,7 @@
   "loyalty-points": 0,
   "total-loyalty-points": 0.0,
   "godmodetime": 0,
-  "voting-points": 69,
+  "voting-points": 72,
   "tasks-completion": [
     false,
     false,
@@ -139,8 +139,8 @@
     0
   ],
   "total-prestiges": 0,
-  "slayer-spree": 40,
-  "npc-killcount": 10638,
+  "slayer-spree": 41,
+  "npc-killcount": 10786,
   "spawn-killcount": 0,
   "lord-killcount": 0,
   "demon-killcount": 501,
@@ -175,7 +175,7 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 1681914883352,
+  "last-veng": 348961647,
   "fight-type": "STAFF_POUND",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -217,11 +217,11 @@
   "autocast-spell": 71,
   "dfs-charges": 0,
   "coins-gambled": 0,
-  "slayer-master": "MEDIUM_SLAYER",
-  "slayer-task": "NO_TASK",
-  "prev-slayer-task": "IG_THAUR",
-  "task-amount": 0,
-  "task-streak": 40,
+  "slayer-master": "HARD_SLAYER",
+  "slayer-task": "ZORBAK",
+  "prev-slayer-task": "MAZE_GUARDIAN",
+  "task-amount": 49,
+  "task-streak": 41,
   "duo-partner": "null",
   "double-slay-xp": false,
   "recoil-deg": 0,
@@ -616,12 +616,12 @@
     {
       "npcId": 8013,
       "item": 10946,
-      "amount": 25
+      "amount": 26
     },
     {
       "npcId": 8013,
       "item": 23020,
-      "amount": 19
+      "amount": 20
     },
     {
       "npcId": 8014,
@@ -1026,12 +1026,12 @@
     {
       "npcId": 92,
       "item": 995,
-      "amount": 13072
+      "amount": 13127
     },
     {
       "npcId": 92,
       "item": 2023,
-      "amount": 80
+      "amount": 135
     },
     {
       "npcId": 2342,
@@ -1057,6 +1057,16 @@
       "npcId": 202,
       "item": 20542,
       "amount": 1
+    },
+    {
+      "npcId": 1906,
+      "item": 995,
+      "amount": 16018
+    },
+    {
+      "npcId": 1906,
+      "item": 2023,
+      "amount": 19
     }
   ],
   "holy-prayers-unlocked": [
@@ -1107,7 +1117,7 @@
       120,
       120,
       120,
-      1200,
+      1130,
       120,
       0,
       120,
@@ -1122,7 +1132,7 @@
       1,
       91,
       1,
-      89,
+      90,
       1,
       1,
       1,
@@ -1149,7 +1159,7 @@
       1,
       91,
       1,
-      89,
+      90,
       1,
       1,
       1,
@@ -1170,13 +1180,13 @@
       0,
       0,
       0,
-      77976389,
+      79817135,
       0,
       0,
       0,
       6102900,
       0,
-      5219050,
+      5494040,
       0,
       0,
       0,
@@ -1188,7 +1198,7 @@
   "inventory": [
     {
       "id": 10835,
-      "amount": 129512,
+      "amount": 268177,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1198,7 +1208,7 @@
     },
     {
       "id": 995,
-      "amount": 28483628,
+      "amount": 304000,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1208,7 +1218,7 @@
     },
     {
       "id": 2023,
-      "amount": 748,
+      "amount": 19,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1217,8 +1227,8 @@
       }
     },
     {
-      "id": 5023,
-      "amount": 377,
+      "id": -1,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1227,8 +1237,8 @@
       }
     },
     {
-      "id": 17817,
-      "amount": 1,
+      "id": -1,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1237,8 +1247,8 @@
       }
     },
     {
-      "id": 17817,
-      "amount": 1,
+      "id": -1,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1247,8 +1257,8 @@
       }
     },
     {
-      "id": 17817,
-      "amount": 1,
+      "id": -1,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1257,8 +1267,8 @@
       }
     },
     {
-      "id": 17817,
-      "amount": 1,
+      "id": -1,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1267,8 +1277,8 @@
       }
     },
     {
-      "id": 17817,
-      "amount": 1,
+      "id": -1,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1277,8 +1287,8 @@
       }
     },
     {
-      "id": 17817,
-      "amount": 1,
+      "id": -1,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1287,8 +1297,8 @@
       }
     },
     {
-      "id": 17817,
-      "amount": 1,
+      "id": -1,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1297,8 +1307,8 @@
       }
     },
     {
-      "id": 17817,
-      "amount": 1,
+      "id": -1,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1307,8 +1317,8 @@
       }
     },
     {
-      "id": 17817,
-      "amount": 1,
+      "id": -1,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1317,8 +1327,8 @@
       }
     },
     {
-      "id": 17817,
-      "amount": 1,
+      "id": -1,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1327,8 +1337,8 @@
       }
     },
     {
-      "id": 17817,
-      "amount": 1,
+      "id": -1,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1337,8 +1347,8 @@
       }
     },
     {
-      "id": 17817,
-      "amount": 1,
+      "id": -1,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1347,8 +1357,8 @@
       }
     },
     {
-      "id": 17817,
-      "amount": 1,
+      "id": -1,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1357,8 +1367,8 @@
       }
     },
     {
-      "id": 17817,
-      "amount": 1,
+      "id": -1,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1367,8 +1377,8 @@
       }
     },
     {
-      "id": 17817,
-      "amount": 1,
+      "id": -1,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1499,13 +1509,13 @@
       }
     },
     {
-      "id": 14377,
+      "id": 16249,
       "amount": 1,
       "slot": 0,
       "bonus": {
-        "effect": "ALL_DAMAGE_LOW",
-        "rarity": "RARE",
-        "bonus": 1
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
       }
     },
     {
@@ -1927,7 +1937,7 @@
   "bank-0": [
     {
       "id": 995,
-      "amount": 0,
+      "amount": 265,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1947,7 +1957,7 @@
     },
     {
       "id": 5023,
-      "amount": 2398,
+      "amount": 2831,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -2017,7 +2027,7 @@
     },
     {
       "id": 17817,
-      "amount": 0,
+      "amount": 15,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -2027,7 +2037,7 @@
     },
     {
       "id": 2023,
-      "amount": 922,
+      "amount": 1725,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -2530,10 +2540,10 @@
       "boss": false
     },
     {
-      "runningTotal": 71,
+      "runningTotal": 126,
       "npcId": 92,
       "npcName": "Maze Guardian",
-      "amount": 71,
+      "amount": 126,
       "boss": false
     },
     {
@@ -2548,6 +2558,13 @@
       "npcId": 9915,
       "npcName": "Death God",
       "amount": 93,
+      "boss": false
+    },
+    {
+      "runningTotal": 19,
+      "npcId": 1906,
+      "npcName": "Zorbak",
+      "amount": 19,
       "boss": false
     }
   ],
@@ -3469,20 +3486,20 @@
       0,
       51,
       56,
-      71,
+      126,
       66,
       0,
-      0,
+      19,
       93,
       146,
-      40,
+      41,
       0,
       0,
       0,
       0,
       0,
       1000,
-      5782,
+      5856,
       0,
       0,
       0,
@@ -3569,7 +3586,7 @@
     ],
     [
       0,
-      69,
+      72,
       0,
       0,
       0,
@@ -3577,7 +3594,7 @@
       0,
       0,
       0,
-      40,
+      41,
       0,
       0,
       0,
@@ -3585,7 +3602,7 @@
       0,
       0,
       10000,
-      5782,
+      5856,
       0,
       0,
       0,
@@ -4217,15 +4234,15 @@
   "group-ironman-locked": false,
   "lastInstanceNpc": -1,
   "daily-task": {
-    "MEDIUM_SLAYER_TASKS": {
+    "GLOBAL_BOSSES": {
       "index": 0,
-      "deadlineTimestamp": 1682318549876,
-      "completedAmount": 2,
-      "assignedAmount": 3,
-      "title": "Medium Slayer Tasks",
+      "deadlineTimestamp": 1682349617437,
+      "completedAmount": 0,
+      "assignedAmount": 2,
+      "title": "Global Bosses",
       "itemId": 0,
-      "description": "Complete 3 Medium slayer tasks.",
-      "key": "MEDIUM_SLAYER_TASKS",
+      "description": "Kill 2 global bosses.",
+      "key": "GLOBAL_BOSSES",
       "timespan": "DAILY",
       "claimedReward": false
     }
@@ -4331,6 +4348,10 @@
       "canClaim": false,
       "hasClaimed": false
     },
+    "1906": {
+      "canClaim": false,
+      "hasClaimed": false
+    },
     "9906": {
       "canClaim": false,
       "hasClaimed": false
@@ -4366,11 +4387,11 @@
   },
   "daily-skips": 3,
   "dailies-done": 2,
-  "daily-task-info": "Your daily task is: @red@Complete 3 Medium slayer tasks. @bla@Progress: @red@0/3@bla@.",
+  "daily-task-info": "Your daily task is: @red@Kill 2 global bosses. @bla@Progress: @red@0/2@bla@.",
   "level-notifications": true,
   "dailies-received-times": [
     1682232149876,
-    1681832689459,
+    1682263217437,
     1682230975692
   ],
   "favorite-teleports": [],
@@ -4409,7 +4430,7 @@
     "9807": 7,
     "9815": 82,
     "9817": 9,
-    "92": 71,
+    "92": 126,
     "6692": 8,
     "2342": 146,
     "811": 2,
@@ -4419,6 +4440,7 @@
     "9838": 2,
     "9904": 0,
     "3313": 66,
+    "1906": 19,
     "9906": 0,
     "9907": 0,
     "9908": 0,

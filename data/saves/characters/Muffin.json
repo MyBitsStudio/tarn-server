@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 262700518,
+  "total-play-time-ms": 290707696,
   "username": "Muffin",
   "password": "123654as",
   "email": "null",
@@ -47,7 +47,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682244854783,
+  "lastlogin": 1682269102555,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -61,7 +61,7 @@
   "minutes-bonus-exp": -1,
   "minutes-voting-dr": -1,
   "minutes-voting-dmg": 0,
-  "total-gained-exp": 1767979521,
+  "total-gained-exp": 1797967521,
   "barrows-points": 0,
   "donator-points": 0,
   "Skilling-points": 0,
@@ -175,7 +175,7 @@
   "auto-retaliate": false,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 213113877,
+  "last-veng": 240458410,
   "fight-type": "BATTLEAXE_CHOP",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -209,7 +209,7 @@
     0
   ],
   "effigy": 0,
-  "summon-npc": -1,
+  "summon-npc": 4444,
   "summon-death": -1,
   "process-farming": false,
   "clanchat": "Help",
@@ -336,42 +336,42 @@
     {
       "npcId": 9906,
       "item": 995,
-      "amount": 2025646
+      "amount": 2025648
     },
     {
       "npcId": 9906,
       "item": 2023,
-      "amount": 76
+      "amount": 78
     },
     {
       "npcId": 8013,
       "item": 10946,
-      "amount": 29
+      "amount": 37
     },
     {
       "npcId": 8013,
       "item": 23020,
-      "amount": 25
+      "amount": 33
     },
     {
       "npcId": 9904,
       "item": 995,
-      "amount": 2001149
+      "amount": 2001152
     },
     {
       "npcId": 9904,
       "item": 2023,
-      "amount": 71
+      "amount": 74
     },
     {
       "npcId": 9907,
       "item": 10946,
-      "amount": 22
+      "amount": 23
     },
     {
       "npcId": 9907,
       "item": 2023,
-      "amount": 122
+      "amount": 123
     },
     {
       "npcId": 9908,
@@ -392,6 +392,11 @@
       "npcId": 9837,
       "item": 2023,
       "amount": 11
+    },
+    {
+      "npcId": 8013,
+      "item": 23167,
+      "amount": 1
     }
   ],
   "holy-prayers-unlocked": [
@@ -507,7 +512,7 @@
       0,
       0,
       0,
-      1970018565,
+      2000000000,
       0,
       0,
       0,
@@ -523,7 +528,7 @@
   "inventory": [
     {
       "id": 995,
-      "amount": 42637156,
+      "amount": 51015645,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -543,7 +548,7 @@
     },
     {
       "id": 5020,
-      "amount": 411230,
+      "amount": 417180,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -552,13 +557,13 @@
       }
     },
     {
-      "id": 20594,
-      "amount": 1,
+      "id": -1,
+      "amount": 0,
       "slot": 0,
       "bonus": {
-        "effect": "DOUBLE_DROP",
-        "rarity": "RARE",
-        "bonus": 13
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
       }
     },
     {
@@ -623,7 +628,7 @@
     },
     {
       "id": 2023,
-      "amount": 8220,
+      "amount": 8425,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -632,8 +637,8 @@
       }
     },
     {
-      "id": 10946,
-      "amount": 5,
+      "id": 23020,
+      "amount": 3,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -682,8 +687,8 @@
       }
     },
     {
-      "id": 20511,
-      "amount": 1,
+      "id": 17634,
+      "amount": 1855190,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -692,8 +697,8 @@
       }
     },
     {
-      "id": 23020,
-      "amount": 3,
+      "id": -1,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -762,13 +767,13 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 20594,
+      "amount": 1,
       "slot": 0,
       "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
+        "effect": "DOUBLE_DROP",
+        "rarity": "RARE",
+        "bonus": 13
       }
     },
     {
@@ -783,7 +788,7 @@
     },
     {
       "id": 10835,
-      "amount": 474560,
+      "amount": 373560,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1461,12 +1466,12 @@
   "drops": [
     {
       "item": 995,
-      "amount": 191271732,
+      "amount": 196128907,
       "rareDrop": false
     },
     {
       "item": 2023,
-      "amount": 8906,
+      "amount": 8971,
       "rareDrop": false
     },
     {

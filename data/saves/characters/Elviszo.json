@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 9414544,
+  "total-play-time-ms": 13905544,
   "username": "Elviszo",
   "password": "elle1010",
   "email": "null",
@@ -8,16 +8,16 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2519,
-    "y": 2531,
-    "z": 8
+    "x": 2523,
+    "y": 2527,
+    "z": 16
   },
   "online-status": "ON",
   "given-starter": true,
   "has-pin2": true,
   "saved-pin2": "1410",
   "saved-ip": "176.23.193.86",
-  "donated": 15,
+  "donated": 25,
   "current-boss-task": 0,
   "current-boss-amount": 0,
   "global-rate": 0,
@@ -40,14 +40,14 @@
   "timeUntilNextReward": 0,
   "current-voting-streak": 0,
   "entriesCurrency": 0.0,
-  "amount-donated-today": 5,
+  "amount-donated-today": 15,
   "claimed-first": false,
   "claimed-second": false,
   "claimed-third": false,
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682235587825,
+  "lastlogin": 1682259731394,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -58,12 +58,12 @@
   "day5claimed": false,
   "day6claimed": false,
   "day7claimed": false,
-  "minutes-bonus-exp": 0,
-  "minutes-voting-dr": 0,
+  "minutes-bonus-exp": -1,
+  "minutes-voting-dr": -1,
   "minutes-voting-dmg": 0,
-  "total-gained-exp": 1011833616,
+  "total-gained-exp": 1018530020,
   "barrows-points": 0,
-  "donator-points": 5,
+  "donator-points": 15,
   "Skilling-points": 0,
   "prestige-points": 0,
   "achievement-points": 0,
@@ -72,17 +72,17 @@
   "loyalty-points": 0,
   "total-loyalty-points": 0.0,
   "godmodetime": 0,
-  "voting-points": 0,
+  "voting-points": 1,
   "tasks-completion": [
     false,
     false,
     false,
-    false,
-    false,
+    true,
+    true,
     false
   ],
   "tasks-progress": [
-    874,
+    999,
     0,
     0,
     0,
@@ -139,11 +139,11 @@
     0
   ],
   "total-prestiges": 0,
-  "slayer-spree": 0,
-  "npc-killcount": 1748,
+  "slayer-spree": 1,
+  "npc-killcount": 3422,
   "spawn-killcount": 0,
   "lord-killcount": 0,
-  "demon-killcount": 201,
+  "demon-killcount": 469,
   "dragon-killcount": 0,
   "beast-killcount": 0,
   "king-killcount": 0,
@@ -151,7 +151,7 @@
   "angel-killcount": 0,
   "lucien-killcount": 0,
   "hercules-killcount": 0,
-  "satan-killcount": 0,
+  "satan-killcount": 200,
   "zeus-killcount": 0,
   "mini-lucifer-killcount": 0,
   "lucifer-killcount": 0,
@@ -175,7 +175,7 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 1682233890493,
+  "last-veng": 1682241852500,
   "fight-type": "LONGBOW_RAPID",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -219,9 +219,9 @@
   "coins-gambled": 0,
   "slayer-master": "EASY_SLAYER",
   "slayer-task": "NO_TASK",
-  "prev-slayer-task": "NO_TASK",
+  "prev-slayer-task": "REVENANT_WYVERN",
   "task-amount": 0,
-  "task-streak": 0,
+  "task-streak": 1,
   "duo-partner": "null",
   "double-slay-xp": false,
   "recoil-deg": 0,
@@ -546,12 +546,12 @@
     {
       "npcId": 6692,
       "item": 995,
-      "amount": 1171
+      "amount": 1207
     },
     {
       "npcId": 6692,
       "item": 2023,
-      "amount": 172
+      "amount": 208
     },
     {
       "npcId": 6692,
@@ -561,17 +561,17 @@
     {
       "npcId": 6692,
       "item": 17999,
-      "amount": 3
+      "amount": 4
     },
     {
       "npcId": 6692,
       "item": 18009,
-      "amount": 2
+      "amount": 3
     },
     {
       "npcId": 6692,
       "item": 18005,
-      "amount": 6
+      "amount": 7
     },
     {
       "npcId": 6692,
@@ -586,12 +586,12 @@
     {
       "npcId": 8014,
       "item": 995,
-      "amount": 2213
+      "amount": 2483
     },
     {
       "npcId": 8014,
       "item": 2023,
-      "amount": 220
+      "amount": 488
     },
     {
       "npcId": 8014,
@@ -601,27 +601,27 @@
     {
       "npcId": 8013,
       "item": 10946,
-      "amount": 5
+      "amount": 7
     },
     {
       "npcId": 8013,
       "item": 23020,
-      "amount": 3
+      "amount": 5
     },
     {
       "npcId": 8014,
       "item": 23055,
-      "amount": 2
+      "amount": 6
     },
     {
       "npcId": 9906,
       "item": 995,
-      "amount": 1408184
+      "amount": 1408186
     },
     {
       "npcId": 9906,
       "item": 2023,
-      "amount": 25
+      "amount": 27
     },
     {
       "npcId": 8014,
@@ -631,12 +631,77 @@
     {
       "npcId": 8003,
       "item": 995,
-      "amount": 3039
+      "amount": 3205
     },
     {
       "npcId": 8003,
       "item": 2023,
-      "amount": 39
+      "amount": 205
+    },
+    {
+      "npcId": 8003,
+      "item": 8334,
+      "amount": 2
+    },
+    {
+      "npcId": 8003,
+      "item": 20593,
+      "amount": 1
+    },
+    {
+      "npcId": 202,
+      "item": 995,
+      "amount": 4199
+    },
+    {
+      "npcId": 202,
+      "item": 2023,
+      "amount": 200
+    },
+    {
+      "npcId": 8014,
+      "item": 23051,
+      "amount": 1
+    },
+    {
+      "npcId": 8014,
+      "item": 23054,
+      "amount": 1
+    },
+    {
+      "npcId": 8014,
+      "item": 23052,
+      "amount": 1
+    },
+    {
+      "npcId": 202,
+      "item": 18683,
+      "amount": 1
+    },
+    {
+      "npcId": 202,
+      "item": 13305,
+      "amount": 1
+    },
+    {
+      "npcId": 811,
+      "item": 995,
+      "amount": 5166
+    },
+    {
+      "npcId": 811,
+      "item": 2023,
+      "amount": 168
+    },
+    {
+      "npcId": 811,
+      "item": 21069,
+      "amount": 1
+    },
+    {
+      "npcId": 811,
+      "item": 21071,
+      "amount": 1
     }
   ],
   "holy-prayers-unlocked": [
@@ -687,22 +752,22 @@
       120,
       120,
       120,
-      1200,
+      340,
       120,
-      0,
+      282,
       120,
       1,
       1,
       1,
       1,
       1,
-      75,
+      93,
       1,
       1,
       1,
       1,
       1,
-      1,
+      36,
       1,
       1,
       1,
@@ -723,13 +788,13 @@
       1,
       1,
       1,
-      75,
+      93,
       1,
       1,
       1,
       1,
       1,
-      1,
+      36,
       1,
       1,
       1,
@@ -750,13 +815,13 @@
       0,
       0,
       0,
-      1255422,
+      7926866,
       0,
       0,
       0,
       0,
       0,
-      0,
+      24960,
       0,
       0,
       0,
@@ -768,7 +833,7 @@
   "inventory": [
     {
       "id": 10835,
-      "amount": 6610,
+      "amount": 34587,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -777,7 +842,7 @@
       }
     },
     {
-      "id": 18011,
+      "id": 18009,
       "amount": 1,
       "slot": 0,
       "bonus": {
@@ -787,7 +852,7 @@
       }
     },
     {
-      "id": 18005,
+      "id": 18001,
       "amount": 1,
       "slot": 0,
       "bonus": {
@@ -797,7 +862,7 @@
       }
     },
     {
-      "id": 18005,
+      "id": 23144,
       "amount": 1,
       "slot": 0,
       "bonus": {
@@ -807,7 +872,7 @@
       }
     },
     {
-      "id": 18005,
+      "id": 8334,
       "amount": 1,
       "slot": 0,
       "bonus": {
@@ -817,7 +882,7 @@
       }
     },
     {
-      "id": 18005,
+      "id": 8334,
       "amount": 1,
       "slot": 0,
       "bonus": {
@@ -827,18 +892,158 @@
       }
     },
     {
-      "id": 20088,
+      "id": 23055,
       "amount": 1,
       "slot": 0,
       "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
+        "effect": "ALL_DAMAGE_LOW",
+        "rarity": "RARE",
+        "bonus": 1
       }
     },
     {
       "id": 995,
-      "amount": 184,
+      "amount": 4098269,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
+    },
+    {
+      "id": 23055,
+      "amount": 1,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
+    },
+    {
+      "id": 23020,
+      "amount": 11,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
+    },
+    {
+      "id": 23051,
+      "amount": 1,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
+    },
+    {
+      "id": 2023,
+      "amount": 480,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
+    },
+    {
+      "id": 23055,
+      "amount": 1,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
+    },
+    {
+      "id": 23055,
+      "amount": 1,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
+    },
+    {
+      "id": 23054,
+      "amount": 1,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
+    },
+    {
+      "id": 23052,
+      "amount": 1,
+      "slot": 0,
+      "bonus": {
+        "effect": "ALL_DAMAGE_LOW",
+        "rarity": "RARE",
+        "bonus": 1
+      }
+    },
+    {
+      "id": 21068,
+      "amount": 1,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
+    },
+    {
+      "id": 18005,
+      "amount": 1,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
+    },
+    {
+      "id": 13305,
+      "amount": 1,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
+    },
+    {
+      "id": 20093,
+      "amount": 1,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
+    },
+    {
+      "id": 18683,
+      "amount": 1,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
+    },
+    {
+      "id": 18009,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -857,17 +1062,7 @@
       }
     },
     {
-      "id": 23020,
-      "amount": 6,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
-      "id": 23055,
+      "id": 18005,
       "amount": 1,
       "slot": 0,
       "bonus": {
@@ -877,138 +1072,8 @@
       }
     },
     {
-      "id": 2023,
-      "amount": 23,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
-      "id": 23056,
-      "amount": 1,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
-      "id": 23055,
-      "amount": 1,
-      "slot": 0,
-      "bonus": {
-        "effect": "DROP_RATE_LOW",
-        "rarity": "RARE",
-        "bonus": 12
-      }
-    },
-    {
-      "id": -1,
-      "amount": 0,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
-      "id": -1,
-      "amount": 0,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
-      "id": -1,
-      "amount": 0,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
-      "id": -1,
-      "amount": 0,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
-      "id": -1,
-      "amount": 0,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
-      "id": -1,
-      "amount": 0,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
-      "id": -1,
-      "amount": 0,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
-      "id": -1,
-      "amount": 0,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
-      "id": -1,
-      "amount": 0,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
-      "id": -1,
-      "amount": 0,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
-      "id": -1,
-      "amount": 0,
+      "id": 5023,
+      "amount": 29,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1059,7 +1124,7 @@
       }
     },
     {
-      "id": 18005,
+      "id": 21071,
       "amount": 1,
       "slot": 0,
       "bonus": {
@@ -1069,7 +1134,7 @@
       }
     },
     {
-      "id": 21068,
+      "id": 19886,
       "amount": 1,
       "slot": 0,
       "bonus": {
@@ -1079,7 +1144,7 @@
       }
     },
     {
-      "id": 23144,
+      "id": 21018,
       "amount": 1,
       "slot": 0,
       "bonus": {
@@ -1089,13 +1154,13 @@
       }
     },
     {
-      "id": 18001,
+      "id": 20593,
       "amount": 1,
       "slot": 0,
       "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
+        "effect": "DOUBLE_DROP",
+        "rarity": "RARE",
+        "bonus": 9
       }
     },
     {
@@ -1144,7 +1209,7 @@
       }
     },
     {
-      "id": 18009,
+      "id": 14053,
       "amount": 1,
       "slot": 0,
       "bonus": {
@@ -1164,7 +1229,7 @@
       }
     },
     {
-      "id": 20093,
+      "id": 21069,
       "amount": 1,
       "slot": 0,
       "bonus": {
@@ -1702,7 +1767,7 @@
     },
     {
       "id": 995,
-      "amount": 11955062,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -2025,7 +2090,8 @@
     0
   ],
   "friends": [
-    30
+    30,
+    1340110196
   ],
   "ignores": [],
   "loyalty-titles": [
@@ -2044,66 +2110,38 @@
   ],
   "kills": [
     {
-      "runningTotal": 0,
-      "npcId": 1265,
-      "npcName": "Oracle Lion",
-      "amount": 0,
+      "runningTotal": 200,
+      "npcId": 202,
+      "npcName": "Inferno",
+      "amount": 200,
+      "boss": true
+    },
+    {
+      "runningTotal": 167,
+      "npcId": 811,
+      "npcName": "Nagendra",
+      "amount": 167,
+      "boss": true
+    },
+    {
+      "runningTotal": 469,
+      "npcId": 8014,
+      "npcName": "Zinqrux",
+      "amount": 469,
       "boss": false
     },
     {
-      "runningTotal": 11,
-      "npcId": 9837,
-      "npcName": "Blurite Goblin",
-      "amount": 11,
+      "runningTotal": 202,
+      "npcId": 8003,
+      "npcName": "Dr. Aberrant",
+      "amount": 202,
       "boss": false
     },
     {
-      "runningTotal": 20,
-      "npcId": 9027,
-      "npcName": "Blurite Orc",
-      "amount": 20,
-      "boss": false
-    },
-    {
-      "runningTotal": 32,
-      "npcId": 9835,
-      "npcName": "Blurite Demon",
-      "amount": 32,
-      "boss": false
-    },
-    {
-      "runningTotal": 40,
-      "npcId": 9911,
-      "npcName": "Blurite Werewolf",
-      "amount": 40,
-      "boss": false
-    },
-    {
-      "runningTotal": 50,
-      "npcId": 9922,
-      "npcName": "Blurite Centaur",
-      "amount": 50,
-      "boss": false
-    },
-    {
-      "runningTotal": 61,
-      "npcId": 9838,
-      "npcName": "Imperial Hound",
-      "amount": 61,
-      "boss": false
-    },
-    {
-      "runningTotal": 74,
-      "npcId": 9845,
-      "npcName": "Imperial Scorpion",
-      "amount": 74,
-      "boss": false
-    },
-    {
-      "runningTotal": 82,
-      "npcId": 9910,
-      "npcName": "Imperial Ranger",
-      "amount": 82,
+      "runningTotal": 208,
+      "npcId": 6692,
+      "npcName": "Revenant Wyvern",
+      "amount": 208,
       "boss": false
     },
     {
@@ -2114,36 +2152,78 @@
       "boss": false
     },
     {
-      "runningTotal": 172,
-      "npcId": 6692,
-      "npcName": "Revenant Wyvern",
-      "amount": 172,
+      "runningTotal": 82,
+      "npcId": 9910,
+      "npcName": "Imperial Ranger",
+      "amount": 82,
       "boss": false
     },
     {
-      "runningTotal": 201,
-      "npcId": 8014,
-      "npcName": "Zinqrux",
-      "amount": 201,
+      "runningTotal": 74,
+      "npcId": 9845,
+      "npcName": "Imperial Scorpion",
+      "amount": 74,
       "boss": false
     },
     {
-      "runningTotal": 36,
-      "npcId": 8003,
-      "npcName": "Dr. Aberrant",
-      "amount": 36,
+      "runningTotal": 61,
+      "npcId": 9838,
+      "npcName": "Imperial Hound",
+      "amount": 61,
+      "boss": false
+    },
+    {
+      "runningTotal": 50,
+      "npcId": 9922,
+      "npcName": "Blurite Centaur",
+      "amount": 50,
+      "boss": false
+    },
+    {
+      "runningTotal": 40,
+      "npcId": 9911,
+      "npcName": "Blurite Werewolf",
+      "amount": 40,
+      "boss": false
+    },
+    {
+      "runningTotal": 32,
+      "npcId": 9835,
+      "npcName": "Blurite Demon",
+      "amount": 32,
+      "boss": false
+    },
+    {
+      "runningTotal": 20,
+      "npcId": 9027,
+      "npcName": "Blurite Orc",
+      "amount": 20,
+      "boss": false
+    },
+    {
+      "runningTotal": 11,
+      "npcId": 9837,
+      "npcName": "Blurite Goblin",
+      "amount": 11,
+      "boss": false
+    },
+    {
+      "runningTotal": 0,
+      "npcId": 1265,
+      "npcName": "Oracle Lion",
+      "amount": 0,
       "boss": false
     }
   ],
   "drops": [
     {
       "item": 995,
-      "amount": 2423384,
+      "amount": 4985378,
       "rareDrop": false
     },
     {
       "item": 2023,
-      "amount": 951,
+      "amount": 1409,
       "rareDrop": false
     },
     {
@@ -2193,12 +2273,22 @@
     },
     {
       "item": 10946,
-      "amount": 5,
+      "amount": 15,
       "rareDrop": false
     },
     {
       "item": 23020,
-      "amount": 3,
+      "amount": 9,
+      "rareDrop": false
+    },
+    {
+      "item": 23055,
+      "amount": 2,
+      "rareDrop": false
+    },
+    {
+      "item": 23052,
+      "amount": 1,
       "rareDrop": false
     }
   ],
@@ -2879,22 +2969,108 @@
   "achievements-amount": [
     [
       0,
+      1,
       0,
       0,
       0,
-      0,
-      201,
-      36,
-      0,
-      0,
-      0,
+      250,
+      202,
+      200,
+      167,
+      1,
       0,
       0,
       0,
       0,
       0,
       4,
-      874,
+      1711,
+      3,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
       1,
       0,
       0,
@@ -2903,100 +3079,14 @@
       0,
       0,
       0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ],
-    [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
+      1,
       0,
       0,
       0,
       0,
       0,
       4,
-      874,
+      1711,
       0,
       0,
       0,
@@ -3083,6 +3173,7 @@
     ],
     [
       0,
+      1,
       0,
       0,
       0,
@@ -3090,8 +3181,7 @@
       0,
       0,
       0,
-      0,
-      0,
+      1,
       0,
       0,
       0,
@@ -3099,7 +3189,7 @@
       0,
       0,
       4,
-      874,
+      1711,
       0,
       0,
       0,
@@ -3748,6 +3838,14 @@
       "canClaim": true,
       "hasClaimed": true
     },
+    "202": {
+      "canClaim": false,
+      "hasClaimed": false
+    },
+    "811": {
+      "canClaim": false,
+      "hasClaimed": false
+    },
     "9835": {
       "canClaim": false,
       "hasClaimed": false
@@ -3761,8 +3859,8 @@
       "hasClaimed": false
     },
     "8014": {
-      "canClaim": false,
-      "hasClaimed": false
+      "canClaim": true,
+      "hasClaimed": true
     },
     "9838": {
       "canClaim": false,
@@ -3819,13 +3917,15 @@
   ],
   "drystreak": {
     "9922": 3,
-    "8003": 36,
+    "8003": 22,
     "9027": 15,
-    "6692": 2,
+    "6692": 8,
+    "202": 60,
+    "811": 7,
     "9835": 11,
     "8013": 0,
     "9837": 11,
-    "8014": 1,
+    "8014": 22,
     "9838": 0,
     "9807": 9,
     "9906": 0,

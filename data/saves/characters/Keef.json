@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 19430437,
+  "total-play-time-ms": 19612234,
   "username": "Keef",
   "password": "bloodybowl",
   "email": "null",
@@ -8,8 +8,8 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2523,
-    "y": 2518,
+    "x": 2539,
+    "y": 2524,
     "z": 16
   },
   "online-status": "ON",
@@ -47,7 +47,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682236806410,
+  "lastlogin": 1682266171724,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -58,10 +58,10 @@
   "day5claimed": false,
   "day6claimed": false,
   "day7claimed": false,
-  "minutes-bonus-exp": 74,
+  "minutes-bonus-exp": 71,
   "minutes-voting-dr": -1,
   "minutes-voting-dmg": 0,
-  "total-gained-exp": -308253369,
+  "total-gained-exp": -285959350,
   "barrows-points": 0,
   "donator-points": 0,
   "Skilling-points": 0,
@@ -140,7 +140,7 @@
   ],
   "total-prestiges": 0,
   "slayer-spree": 11,
-  "npc-killcount": 4188,
+  "npc-killcount": 4256,
   "spawn-killcount": 0,
   "lord-killcount": 0,
   "demon-killcount": 256,
@@ -175,7 +175,7 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 391105853,
+  "last-veng": 1681875247678,
   "fight-type": "STAFF_BASH",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -831,12 +831,12 @@
     {
       "npcId": 811,
       "item": 995,
-      "amount": 5366
+      "amount": 5400
     },
     {
       "npcId": 811,
       "item": 2023,
-      "amount": 363
+      "amount": 397
     },
     {
       "npcId": 811,
@@ -851,6 +851,11 @@
     {
       "npcId": 811,
       "item": 21067,
+      "amount": 2
+    },
+    {
+      "npcId": 811,
+      "item": 21069,
       "amount": 1
     }
   ],
@@ -902,7 +907,7 @@
       100,
       68,
       100,
-      1110,
+      1140,
       101,
       820,
       120,
@@ -956,7 +961,7 @@
       14409244,
       632837,
       15560037,
-      1935720428,
+      1958014447,
       17344834,
       2634483,
       2000000000,
@@ -1042,8 +1047,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 8335,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1052,8 +1057,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 21067,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1384,7 +1389,7 @@
       }
     },
     {
-      "id": 8335,
+      "id": 21069,
       "amount": 1,
       "slot": 0,
       "bonus": {
@@ -2251,22 +2256,22 @@
       "boss": true
     },
     {
-      "runningTotal": 265,
+      "runningTotal": 299,
       "npcId": 811,
       "npcName": "Nagendra",
-      "amount": 265,
+      "amount": 299,
       "boss": true
     }
   ],
   "drops": [
     {
       "item": 995,
-      "amount": 39684870,
+      "amount": 39854870,
       "rareDrop": false
     },
     {
       "item": 2023,
-      "amount": 4238,
+      "amount": 4272,
       "rareDrop": false
     },
     {
@@ -2371,6 +2376,16 @@
     },
     {
       "item": 20542,
+      "amount": 1,
+      "rareDrop": false
+    },
+    {
+      "item": 21069,
+      "amount": 1,
+      "rareDrop": false
+    },
+    {
+      "item": 21067,
       "amount": 1,
       "rareDrop": false
     }
@@ -3059,7 +3074,7 @@
       250,
       250,
       250,
-      265,
+      299,
       11,
       0,
       0,
@@ -3067,7 +3082,7 @@
       0,
       0,
       100,
-      2094,
+      2128,
       12,
       0,
       0,
@@ -3169,7 +3184,7 @@
       0,
       0,
       972,
-      2094,
+      2128,
       0,
       0,
       0,
@@ -3272,7 +3287,7 @@
       0,
       0,
       972,
-      2094,
+      2128,
       0,
       0,
       0,
@@ -4033,7 +4048,7 @@
     "9029": 2,
     "9030": 2,
     "202": 22,
-    "811": 25,
+    "811": 13,
     "9835": 33,
     "9837": 10,
     "8014": 0,

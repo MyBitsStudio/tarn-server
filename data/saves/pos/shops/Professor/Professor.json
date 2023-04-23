@@ -8,7 +8,14 @@
       "effect": "DOUBLE_DROP",
       "bonus": 14
     },
-    null,
+    {
+      "id": 10946,
+      "amount": 8,
+      "maxAmount": 8,
+      "price": 95000,
+      "effect": "NOTHING",
+      "bonus": 0
+    },
     null,
     null,
     null,
@@ -40,5 +47,5 @@
     null,
     null
   ],
-  "earnings": 0
+  "earnings": 2450000
 }

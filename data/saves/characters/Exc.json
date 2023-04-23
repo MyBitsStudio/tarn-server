@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 18123556,
+  "total-play-time-ms": 18427161,
   "username": "Exc",
   "password": "tredwin",
   "email": "null",
@@ -8,9 +8,9 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2139,
-    "y": 5018,
-    "z": 12
+    "x": 2520,
+    "y": 2521,
+    "z": 16
   },
   "online-status": "ON",
   "given-starter": true,
@@ -47,7 +47,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682169263632,
+  "lastlogin": 1682248048227,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -58,10 +58,10 @@
   "day5claimed": false,
   "day6claimed": false,
   "day7claimed": false,
-  "minutes-bonus-exp": 47,
+  "minutes-bonus-exp": 42,
   "minutes-voting-dr": -1,
   "minutes-voting-dmg": 0,
-  "total-gained-exp": 1029506285,
+  "total-gained-exp": 1018202494,
   "barrows-points": 0,
   "donator-points": 10,
   "Skilling-points": 0,
@@ -140,7 +140,7 @@
   ],
   "total-prestiges": 0,
   "slayer-spree": 3,
-  "npc-killcount": 3186,
+  "npc-killcount": 3424,
   "spawn-killcount": 0,
   "lord-killcount": 0,
   "demon-killcount": 231,
@@ -151,7 +151,7 @@
   "angel-killcount": 0,
   "lucien-killcount": 0,
   "hercules-killcount": 0,
-  "satan-killcount": 228,
+  "satan-killcount": 230,
   "zeus-killcount": 0,
   "mini-lucifer-killcount": 0,
   "lucifer-killcount": 0,
@@ -175,7 +175,7 @@
   "auto-retaliate": false,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 1682060189778,
+  "last-veng": 188162060,
   "fight-type": "STAFF_POUND",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -691,12 +691,12 @@
     {
       "npcId": 202,
       "item": 995,
-      "amount": 4346
+      "amount": 4348
     },
     {
       "npcId": 202,
       "item": 2023,
-      "amount": 330
+      "amount": 332
     },
     {
       "npcId": 202,
@@ -716,12 +716,12 @@
     {
       "npcId": 811,
       "item": 995,
-      "amount": 5196
+      "amount": 5315
     },
     {
       "npcId": 811,
       "item": 2023,
-      "amount": 196
+      "amount": 313
     },
     {
       "npcId": 811,
@@ -731,6 +731,11 @@
     {
       "npcId": 811,
       "item": 21068,
+      "amount": 1
+    },
+    {
+      "npcId": 811,
+      "item": 21066,
       "amount": 1
     }
   ],
@@ -836,10 +841,10 @@
       106049267,
       255869914,
       155617536,
-      485008183,
+      464851200,
       105693133,
       9003181,
-      -88069139,
+      -79215947,
       0,
       0,
       0,
@@ -943,7 +948,7 @@
     },
     {
       "id": 2023,
-      "amount": 569,
+      "amount": 688,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -952,8 +957,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 23120,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -962,13 +967,13 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 21066,
+      "amount": 1,
       "slot": 0,
       "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
+        "effect": "DOUBLE_DROP",
+        "rarity": "RARE",
+        "bonus": 8
       }
     },
     {
@@ -1123,7 +1128,7 @@
     },
     {
       "id": 995,
-      "amount": 7555720,
+      "amount": 9161291,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1900,24 +1905,24 @@
       "boss": false
     },
     {
-      "runningTotal": 228,
+      "runningTotal": 230,
       "npcId": 202,
       "npcName": "Inferno",
-      "amount": 228,
+      "amount": 230,
       "boss": true
     },
     {
-      "runningTotal": 133,
+      "runningTotal": 250,
       "npcId": 811,
       "npcName": "Nagendra",
-      "amount": 133,
+      "amount": 250,
       "boss": true
     }
   ],
   "drops": [
     {
       "item": 995,
-      "amount": 21393676,
+      "amount": 21413676,
       "rareDrop": false
     },
     {
@@ -2679,8 +2684,8 @@
       0,
       231,
       241,
-      228,
-      133,
+      230,
+      250,
       3,
       0,
       0,
@@ -2688,7 +2693,7 @@
       0,
       0,
       100,
-      1593,
+      1712,
       14,
       0,
       0,
@@ -2790,7 +2795,7 @@
       0,
       0,
       647,
-      1593,
+      1712,
       0,
       0,
       0,
@@ -2893,7 +2898,7 @@
       0,
       0,
       647,
-      1593,
+      1712,
       0,
       0,
       0,
@@ -3490,7 +3495,7 @@
       false
     ]
   ],
-  "achievements-daily": 322,
+  "achievements-daily": 323,
   "progression-zones": [
     10,
     20,
@@ -3653,8 +3658,8 @@
     "9027": 20,
     "9028": 1,
     "6692": 4,
-    "202": 9,
-    "811": 11,
+    "202": 11,
+    "811": 48,
     "9835": 11,
     "8013": 0,
     "9837": 10,

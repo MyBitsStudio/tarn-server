@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 1126195,
+  "total-play-time-ms": 1262359,
   "username": "Loop",
   "password": "airass123",
   "email": "null",
@@ -8,8 +8,8 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2221,
-    "y": 3762,
+    "x": 2225,
+    "y": 3755,
     "z": 0
   },
   "online-status": "ON",
@@ -47,7 +47,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682235974828,
+  "lastlogin": 1682272853756,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -58,8 +58,8 @@
   "day5claimed": false,
   "day6claimed": false,
   "day7claimed": false,
-  "minutes-bonus-exp": 3000,
-  "minutes-voting-dr": 300,
+  "minutes-bonus-exp": 2999,
+  "minutes-voting-dr": 299,
   "minutes-voting-dmg": 0,
   "total-gained-exp": 58703048,
   "barrows-points": 0,
@@ -72,7 +72,7 @@
   "loyalty-points": 0,
   "total-loyalty-points": 0.0,
   "godmodetime": 0,
-  "voting-points": 100,
+  "voting-points": 5,
   "tasks-completion": [
     false,
     false,
@@ -175,7 +175,7 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 13576086,
+  "last-veng": 23335430,
   "fight-type": "LONGSWORD_BLOCK",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -392,7 +392,7 @@
       92,
       95,
       97,
-      890,
+      900,
       90,
       10,
       1,
@@ -544,12 +544,22 @@
     {
       "id": -1,
       "amount": 0,
-      "slot": 0
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
     },
     {
       "id": -1,
       "amount": 0,
-      "slot": 0
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
     },
     {
       "id": 22083,
@@ -574,7 +584,12 @@
     {
       "id": -1,
       "amount": 0,
-      "slot": 0
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
     },
     {
       "id": 3025,

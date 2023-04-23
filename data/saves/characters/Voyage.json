@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 37539343,
+  "total-play-time-ms": 39051976,
   "username": "Voyage",
   "password": "slowatt",
   "email": "null",
@@ -8,16 +8,16 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2139,
-    "y": 5018,
-    "z": 8
+    "x": 2222,
+    "y": 3747,
+    "z": 0
   },
   "online-status": "ON",
   "given-starter": true,
   "has-pin2": true,
   "saved-pin2": "1999",
   "saved-ip": "86.58.78.117",
-  "donated": 108,
+  "donated": 118,
   "current-boss-task": 0,
   "current-boss-amount": 0,
   "global-rate": 0,
@@ -40,14 +40,14 @@
   "timeUntilNextReward": 0,
   "current-voting-streak": 0,
   "entriesCurrency": 0.0,
-  "amount-donated-today": 108,
+  "amount-donated-today": 118,
   "claimed-first": false,
   "claimed-second": false,
   "claimed-third": false,
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682243886396,
+  "lastlogin": 1682248158021,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -58,12 +58,12 @@
   "day5claimed": false,
   "day6claimed": false,
   "day7claimed": false,
-  "minutes-bonus-exp": 941,
+  "minutes-bonus-exp": 917,
   "minutes-voting-dr": -1,
   "minutes-voting-dmg": 0,
-  "total-gained-exp": 678578318,
+  "total-gained-exp": 680419064,
   "barrows-points": 0,
-  "donator-points": 108,
+  "donator-points": 118,
   "Skilling-points": 0,
   "prestige-points": 0,
   "achievement-points": 0,
@@ -140,7 +140,7 @@
   ],
   "total-prestiges": 0,
   "slayer-spree": 0,
-  "npc-killcount": 9066,
+  "npc-killcount": 9450,
   "spawn-killcount": 0,
   "lord-killcount": 0,
   "demon-killcount": 1070,
@@ -175,7 +175,7 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 1682073671953,
+  "last-veng": 175005092,
   "fight-type": "STAFF_BASH",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -896,16 +896,21 @@
     {
       "npcId": 9025,
       "item": 995,
-      "amount": 10223
+      "amount": 10415
     },
     {
       "npcId": 9025,
       "item": 2023,
-      "amount": 231
+      "amount": 425
     },
     {
       "npcId": 9025,
       "item": 8817,
+      "amount": 1
+    },
+    {
+      "npcId": 9025,
+      "item": 8818,
       "amount": 1
     }
   ],
@@ -957,9 +962,9 @@
       120,
       120,
       120,
-      727,
+      1200,
       120,
-      858,
+      856,
       120,
       1,
       1,
@@ -1020,7 +1025,7 @@
       0,
       0,
       0,
-      52872564,
+      54713310,
       0,
       0,
       0,
@@ -1038,7 +1043,7 @@
   "inventory": [
     {
       "id": 995,
-      "amount": 249,
+      "amount": 900249,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1048,7 +1053,7 @@
     },
     {
       "id": 10835,
-      "amount": 162966,
+      "amount": 154061,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1077,8 +1082,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 19886,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1108,7 +1113,7 @@
     },
     {
       "id": 2023,
-      "amount": 8678,
+      "amount": 8872,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1389,13 +1394,13 @@
       }
     },
     {
-      "id": 14734,
+      "id": 8818,
       "amount": 1,
       "slot": 0,
       "bonus": {
-        "effect": "MAGIC_DAMAGE",
-        "rarity": "UNCOMMON",
-        "bonus": 1
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
       }
     },
     {
@@ -2184,10 +2189,10 @@
       "boss": false
     },
     {
-      "runningTotal": 193,
+      "runningTotal": 385,
       "npcId": 9025,
       "npcName": "Avalon",
-      "amount": 193,
+      "amount": 385,
       "boss": false
     }
   ],
@@ -2199,7 +2204,7 @@
     },
     {
       "item": 2023,
-      "amount": 9506,
+      "amount": 9510,
       "rareDrop": false
     },
     {
@@ -3018,9 +3023,9 @@
       325,
       303,
       302,
-      193,
+      385,
       86,
-      4850,
+      5000,
       45,
       0,
       0,
@@ -3122,7 +3127,7 @@
       0,
       0,
       86,
-      4850,
+      5042,
       0,
       0,
       0,
@@ -3225,7 +3230,7 @@
       0,
       0,
       86,
-      4850,
+      5042,
       0,
       0,
       0,
@@ -3430,8 +3435,8 @@
       false,
       false,
       false,
-      false,
-      false,
+      true,
+      true,
       false,
       false,
       false,
@@ -3855,7 +3860,7 @@
   },
   "lastTGloveIndex": -1,
   "group-ironman-locked": false,
-  "lastInstanceNpc": -1,
+  "lastInstanceNpc": 9025,
   "daily-task": {},
   "collectionlog-rewards": {
     "9920": {
@@ -3993,7 +3998,7 @@
   ],
   "drystreak": {
     "9920": 20,
-    "9025": 63,
+    "9025": 125,
     "9922": 50,
     "8003": 0,
     "9027": 20,

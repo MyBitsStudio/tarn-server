@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 65035544,
+  "total-play-time-ms": 70047739,
   "username": "K8",
   "password": "Beginner1488",
   "email": "null",
@@ -10,12 +10,12 @@
   "position": {
     "x": 2139,
     "y": 5018,
-    "z": 0
+    "z": 8
   },
   "online-status": "ON",
   "given-starter": true,
   "has-pin2": false,
-  "donated": 62,
+  "donated": 72,
   "current-boss-task": 0,
   "current-boss-amount": 0,
   "global-rate": 0,
@@ -38,14 +38,14 @@
   "timeUntilNextReward": 0,
   "current-voting-streak": 0,
   "entriesCurrency": 0.0,
-  "amount-donated-today": 52,
+  "amount-donated-today": 62,
   "claimed-first": false,
   "claimed-second": false,
   "claimed-third": false,
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682244780066,
+  "lastlogin": 1682259149996,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -61,7 +61,7 @@
   "minutes-voting-dmg": 0,
   "total-gained-exp": -86867056,
   "barrows-points": 0,
-  "donator-points": 52,
+  "donator-points": 62,
   "Skilling-points": 0,
   "prestige-points": 0,
   "achievement-points": 0,
@@ -138,7 +138,7 @@
   ],
   "total-prestiges": 0,
   "slayer-spree": 0,
-  "npc-killcount": 15395,
+  "npc-killcount": 15443,
   "spawn-killcount": 0,
   "lord-killcount": 0,
   "demon-killcount": 0,
@@ -173,7 +173,7 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 1682066203398,
+  "last-veng": 193241583,
   "fight-type": "STAFF_FOCUS",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -369,22 +369,22 @@
     {
       "npcId": 9906,
       "item": 995,
-      "amount": 2200347
+      "amount": 2200349
     },
     {
       "npcId": 9906,
       "item": 2023,
-      "amount": 61
+      "amount": 63
     },
     {
       "npcId": 9904,
       "item": 995,
-      "amount": 2290715
+      "amount": 2290716
     },
     {
       "npcId": 9904,
       "item": 2023,
-      "amount": 59
+      "amount": 60
     },
     {
       "npcId": 9907,
@@ -409,12 +409,12 @@
     {
       "npcId": 8013,
       "item": 10946,
-      "amount": 12
+      "amount": 14
     },
     {
       "npcId": 8013,
       "item": 23020,
-      "amount": 12
+      "amount": 14
     },
     {
       "npcId": 9911,
@@ -614,7 +614,7 @@
     {
       "npcId": 9816,
       "item": 995,
-      "amount": 27015
+      "amount": 27023
     }
   ],
   "holy-prayers-unlocked": [
@@ -667,7 +667,7 @@
       1,
       1200,
       120,
-      821,
+      1200,
       120,
       1,
       1,
@@ -746,7 +746,7 @@
   "inventory": [
     {
       "id": 995,
-      "amount": 703,
+      "amount": 2469731,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -756,7 +756,7 @@
     },
     {
       "id": 10835,
-      "amount": 24591,
+      "amount": 30542,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -786,7 +786,17 @@
     },
     {
       "id": 2023,
-      "amount": 2016,
+      "amount": 25,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
+    },
+    {
+      "id": 23120,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -803,11 +813,6 @@
         "rarity": "COMMON",
         "bonus": 0
       }
-    },
-    {
-      "id": -1,
-      "amount": 0,
-      "slot": 0
     },
     {
       "id": -1,
@@ -1545,7 +1550,7 @@
     },
     {
       "id": 2023,
-      "amount": 7136,
+      "amount": 9217,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1575,7 +1580,17 @@
     },
     {
       "id": 23120,
-      "amount": 1,
+      "amount": 0,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
+    },
+    {
+      "id": 23020,
+      "amount": 6,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1795,10 +1810,10 @@
       "boss": false
     },
     {
-      "runningTotal": 48,
+      "runningTotal": 80,
       "npcId": 9816,
       "npcName": "Dragonite",
-      "amount": 48,
+      "amount": 80,
       "boss": false
     }
   ],
@@ -2526,7 +2541,7 @@
       0,
       0,
       100,
-      3724,
+      3732,
       45,
       0,
       0,
@@ -2628,7 +2643,7 @@
       351,
       336,
       140,
-      3724,
+      3732,
       0,
       0,
       0,
@@ -2719,7 +2734,7 @@
       343,
       339,
       252,
-      12,
+      20,
       0,
       0,
       0,
@@ -2731,7 +2746,7 @@
       0,
       0,
       140,
-      3724,
+      3732,
       0,
       0,
       0,
@@ -3507,7 +3522,7 @@
     "8008": 175,
     "8013": 0,
     "9806": 252,
-    "9816": 12,
+    "9816": 20,
     "92": 14,
     "2342": 171,
     "9835": 31,

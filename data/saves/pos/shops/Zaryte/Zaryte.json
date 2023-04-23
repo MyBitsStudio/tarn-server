@@ -81,30 +81,6 @@
       "bonus": 3
     },
     {
-      "id": 13329,
-      "amount": 2,
-      "maxAmount": 2,
-      "price": 10000000,
-      "effect": "DOUBLE_KILLS",
-      "bonus": 1
-    },
-    {
-      "id": 13324,
-      "amount": 2,
-      "maxAmount": 2,
-      "price": 8000000,
-      "effect": "NOTHING",
-      "bonus": 0
-    },
-    {
-      "id": 22141,
-      "amount": 1,
-      "maxAmount": 1,
-      "price": 500000,
-      "effect": "NOTHING",
-      "bonus": 0
-    },
-    {
       "id": 15200,
       "amount": 1,
       "maxAmount": 2,
@@ -121,16 +97,8 @@
       "bonus": 0
     },
     {
-      "id": 4083,
-      "amount": 1,
-      "maxAmount": 1,
-      "price": 12000000,
-      "effect": "NOTHING",
-      "bonus": 0
-    },
-    {
       "id": 23123,
-      "amount": 2,
+      "amount": 1,
       "maxAmount": 2,
       "price": 1200000,
       "effect": "NOTHING",
@@ -161,36 +129,12 @@
       "bonus": 7
     },
     {
-      "id": 8412,
-      "amount": 2,
-      "maxAmount": 2,
-      "price": 10000000,
-      "effect": "NOTHING",
-      "bonus": 0
-    },
-    {
-      "id": 22134,
-      "amount": 1,
-      "maxAmount": 1,
-      "price": 5000000,
-      "effect": "NOTHING",
-      "bonus": 0
-    },
-    {
       "id": 23165,
       "amount": 1,
       "maxAmount": 1,
       "price": 1900000,
       "effect": "NOTHING",
       "bonus": 0
-    },
-    {
-      "id": 22135,
-      "amount": 1,
-      "maxAmount": 1,
-      "price": 48000000,
-      "effect": "AOE_EFFECT",
-      "bonus": 2
     },
     {
       "id": 15647,
@@ -210,7 +154,7 @@
     },
     {
       "id": 15646,
-      "amount": 2,
+      "amount": 1,
       "maxAmount": 2,
       "price": 2500000,
       "effect": "DROP_RATE_HIGH",
@@ -225,14 +169,6 @@
       "bonus": 1
     },
     {
-      "id": 15645,
-      "amount": 1,
-      "maxAmount": 2,
-      "price": 2000000,
-      "effect": "DROP_RATE_HIGH",
-      "bonus": 34
-    },
-    {
       "id": 15646,
       "amount": 2,
       "maxAmount": 2,
@@ -241,7 +177,15 @@
       "bonus": 1
     },
     null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
     null
   ],
-  "earnings": 350000
+  "earnings": 2500000
 }

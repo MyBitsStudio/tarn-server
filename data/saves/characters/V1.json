@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 224807178,
+  "total-play-time-ms": 243292413,
   "username": "V1",
   "password": "jameelmneh",
   "email": "null",
@@ -8,9 +8,9 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2222,
-    "y": 3747,
-    "z": 0
+    "x": 2139,
+    "y": 5018,
+    "z": 8
   },
   "online-status": "ON",
   "given-starter": true,
@@ -47,7 +47,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682208955784,
+  "lastlogin": 1682269880772,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -58,7 +58,7 @@
   "day5claimed": false,
   "day6claimed": false,
   "day7claimed": false,
-  "minutes-bonus-exp": 2424,
+  "minutes-bonus-exp": 2118,
   "minutes-voting-dr": -1,
   "minutes-voting-dmg": 0,
   "total-gained-exp": -259969172,
@@ -175,7 +175,7 @@
   "auto-retaliate": false,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 1682080605062,
+  "last-veng": 1682088189679,
   "fight-type": "STAFF_BASH",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -336,12 +336,12 @@
     {
       "npcId": 8013,
       "item": 10946,
-      "amount": 40
+      "amount": 43
     },
     {
       "npcId": 8013,
       "item": 23020,
-      "amount": 42
+      "amount": 45
     },
     {
       "npcId": 9906,
@@ -356,12 +356,12 @@
     {
       "npcId": 9904,
       "item": 995,
-      "amount": 2896702
+      "amount": 2896703
     },
     {
       "npcId": 9904,
       "item": 2023,
-      "amount": 79
+      "amount": 80
     },
     {
       "npcId": 9907,
@@ -558,7 +558,7 @@
     },
     {
       "id": 2023,
-      "amount": 8540,
+      "amount": 8580,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -618,7 +618,7 @@
     },
     {
       "id": 10946,
-      "amount": 5,
+      "amount": 20,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -657,8 +657,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 23020,
+      "amount": 9,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -668,7 +668,7 @@
     },
     {
       "id": 995,
-      "amount": 13328508,
+      "amount": 17222055,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",

@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 105283456,
+  "total-play-time-ms": 107650037,
   "username": "Ashwsonov",
   "password": "1001341101Th",
   "email": "null",
@@ -8,9 +8,9 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2236,
-    "y": 3746,
-    "z": 0
+    "x": 2137,
+    "y": 5016,
+    "z": 4
   },
   "online-status": "ON",
   "given-starter": true,
@@ -47,7 +47,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682194243931,
+  "lastlogin": 1682273807145,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -58,7 +58,7 @@
   "day5claimed": false,
   "day6claimed": false,
   "day7claimed": false,
-  "minutes-bonus-exp": 561,
+  "minutes-bonus-exp": 522,
   "minutes-voting-dr": -1,
   "minutes-voting-dmg": 0,
   "total-gained-exp": 742577116,
@@ -140,7 +140,7 @@
   ],
   "total-prestiges": 0,
   "slayer-spree": 4,
-  "npc-killcount": 23691,
+  "npc-killcount": 24603,
   "spawn-killcount": 0,
   "lord-killcount": 0,
   "demon-killcount": 672,
@@ -175,7 +175,7 @@
   "auto-retaliate": false,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 1682106949140,
+  "last-veng": 169224592,
   "fight-type": "STAFF_BASH",
   "sol-effect": -1,
   "skull-timer": 0,
@@ -214,7 +214,7 @@
   "process-farming": false,
   "clanchat": "Help",
   "autocast": false,
-  "autocast-spell": 71,
+  "autocast-spell": 1154,
   "dfs-charges": 0,
   "coins-gambled": 0,
   "slayer-master": "EASY_SLAYER",
@@ -506,12 +506,12 @@
     {
       "npcId": 9906,
       "item": 995,
-      "amount": 1581119
+      "amount": 1581120
     },
     {
       "npcId": 9906,
       "item": 2023,
-      "amount": 73
+      "amount": 75
     },
     {
       "npcId": 9904,
@@ -546,12 +546,12 @@
     {
       "npcId": 8013,
       "item": 10946,
-      "amount": 25
+      "amount": 27
     },
     {
       "npcId": 8013,
       "item": 23020,
-      "amount": 17
+      "amount": 19
     },
     {
       "npcId": 9028,
@@ -1076,7 +1076,7 @@
     {
       "npcId": 9839,
       "item": 995,
-      "amount": 50088
+      "amount": 50317
     }
   ],
   "holy-prayers-unlocked": [
@@ -1127,9 +1127,9 @@
       120,
       120,
       120,
-      690,
+      1200,
       120,
-      1190,
+      0,
       120,
       1,
       1,
@@ -1218,7 +1218,7 @@
     },
     {
       "id": 995,
-      "amount": 4553562,
+      "amount": 20424410,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1227,8 +1227,8 @@
       }
     },
     {
-      "id": 15358,
-      "amount": 1,
+      "id": 23020,
+      "amount": 8,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1242,12 +1242,12 @@
       "slot": 0
     },
     {
-      "id": 3028,
+      "id": 3030,
       "amount": 1,
       "slot": 0
     },
     {
-      "id": 3030,
+      "id": 229,
       "amount": 1,
       "slot": 0
     },
@@ -1333,7 +1333,7 @@
     },
     {
       "id": 2023,
-      "amount": 955,
+      "amount": 1005,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1342,8 +1342,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 5730,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1352,8 +1352,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 13640,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1363,7 +1363,7 @@
     },
     {
       "id": 10835,
-      "amount": 627393,
+      "amount": 452393,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1372,8 +1372,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 10946,
+      "amount": 10,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1504,7 +1504,7 @@
       }
     },
     {
-      "id": 13640,
+      "id": 22143,
       "amount": 1,
       "slot": 0,
       "bonus": {
@@ -3302,7 +3302,7 @@
     },
     {
       "id": 5730,
-      "amount": 1,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -3599,22 +3599,22 @@
       "boss": true
     },
     {
-      "runningTotal": 147,
+      "runningTotal": 831,
       "npcId": 9839,
       "npcName": "Mutant Hydra",
-      "amount": 147,
+      "amount": 831,
       "boss": false
     }
   ],
   "drops": [
     {
       "item": 995,
-      "amount": 178525720,
+      "amount": 178625720,
       "rareDrop": false
     },
     {
       "item": 2023,
-      "amount": 10631,
+      "amount": 10681,
       "rareDrop": false
     },
     {
@@ -4401,7 +4401,7 @@
       265,
       100,
       5000,
-      33,
+      34,
       0,
       0,
       0,
@@ -4502,7 +4502,7 @@
       337,
       344,
       1000,
-      6940,
+      7168,
       0,
       0,
       0,
@@ -4591,7 +4591,7 @@
       0,
       50,
       388,
-      49,
+      277,
       0,
       0,
       0,
@@ -4605,7 +4605,7 @@
       0,
       0,
       10000,
-      6940,
+      7168,
       0,
       0,
       0,
@@ -5202,7 +5202,7 @@
       false
     ]
   ],
-  "achievements-daily": 322,
+  "achievements-daily": 323,
   "progression-zones": [
     10,
     22,
@@ -5467,7 +5467,7 @@
     "9836": 3,
     "9837": 10,
     "9838": 0,
-    "9839": 49,
+    "9839": 277,
     "9904": 0,
     "3313": 2,
     "1906": 130,

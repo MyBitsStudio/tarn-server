@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 134648319,
+  "total-play-time-ms": 135460130,
   "username": "Hc Pvm",
   "password": "Ale123456789",
   "email": "null",
@@ -47,7 +47,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682209336192,
+  "lastlogin": 1682246123997,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -58,7 +58,7 @@
   "day5claimed": false,
   "day6claimed": false,
   "day7claimed": false,
-  "minutes-bonus-exp": 3513,
+  "minutes-bonus-exp": 3500,
   "minutes-voting-dr": -1,
   "minutes-voting-dmg": 0,
   "total-gained-exp": -2091470760,
@@ -175,7 +175,7 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 114327625,
+  "last-veng": 1682132608196,
   "fight-type": "UNARMED_KICK",
   "sol-effect": -1,
   "skull-timer": 0,
@@ -2771,16 +2771,6 @@
       }
     },
     {
-      "id": 2396,
-      "amount": 1,
-      "slot": 0,
-      "bonus": {
-        "effect": "DOUBLE_CASH",
-        "rarity": "LEGENDARY",
-        "bonus": 2
-      }
-    },
-    {
       "id": 15253,
       "amount": 1,
       "slot": 0,
@@ -2828,6 +2818,16 @@
         "effect": "DOUBLE_DROP",
         "rarity": "RARE",
         "bonus": 20
+      }
+    },
+    {
+      "id": 2396,
+      "amount": 1,
+      "slot": 0,
+      "bonus": {
+        "effect": "DOUBLE_CASH",
+        "rarity": "LEGENDARY",
+        "bonus": 2
       }
     }
   ],
@@ -4959,7 +4959,7 @@
       false
     ]
   ],
-  "achievements-daily": 322,
+  "achievements-daily": 323,
   "progression-zones": [
     14,
     23,

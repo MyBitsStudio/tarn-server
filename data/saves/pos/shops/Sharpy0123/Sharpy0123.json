@@ -1,18 +1,10 @@
 {
   "shop": [
     {
-      "id": 20586,
-      "amount": 1,
-      "maxAmount": 1,
-      "price": 2000000,
-      "effect": "NOTHING",
-      "bonus": 0
-    },
-    {
       "id": 19485,
       "amount": 1,
       "maxAmount": 1,
-      "price": 500000,
+      "price": 200000,
       "effect": "NOTHING",
       "bonus": 0
     },
@@ -20,7 +12,7 @@
       "id": 17696,
       "amount": 1,
       "maxAmount": 2,
-      "price": 1000000,
+      "price": 500000,
       "effect": "MAGIC_DAMAGE",
       "bonus": 1
     },
@@ -28,7 +20,7 @@
       "id": 4369,
       "amount": 1,
       "maxAmount": 2,
-      "price": 6500000,
+      "price": 6300000,
       "effect": "NOTHING",
       "bonus": 0
     },
@@ -36,10 +28,11 @@
       "id": 4070,
       "amount": 2,
       "maxAmount": 2,
-      "price": 7800000,
+      "price": 7000000,
       "effect": "NOTHING",
       "bonus": 0
     },
+    null,
     null,
     null,
     null,
@@ -68,5 +61,5 @@
     null,
     null
   ],
-  "earnings": 7500000
+  "earnings": 0
 }

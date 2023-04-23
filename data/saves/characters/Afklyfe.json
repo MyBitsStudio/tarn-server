@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 288662665,
+  "total-play-time-ms": 289765993,
   "username": "Afklyfe",
   "password": "chimengvang",
   "email": "null",
@@ -45,7 +45,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682222532521,
+  "lastlogin": 1682275083316,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -173,7 +173,7 @@
   "auto-retaliate": false,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 177186279,
+  "last-veng": 179926989,
   "fight-type": "BATTLEAXE_CHOP",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -471,7 +471,7 @@
   "inventory": [
     {
       "id": 5020,
-      "amount": 29960,
+      "amount": 1700,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -491,7 +491,7 @@
     },
     {
       "id": 17634,
-      "amount": 721500,
+      "amount": 69740,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -807,9 +807,14 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
-      "slot": 0
+      "id": 14070,
+      "amount": 1,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
     },
     {
       "id": -1,

@@ -41,14 +41,6 @@
       "bonus": 0
     },
     {
-      "id": 23049,
-      "amount": 1,
-      "maxAmount": 1,
-      "price": 2500000,
-      "effect": "NOTHING",
-      "bonus": 0
-    },
-    {
       "id": 4685,
       "amount": 3,
       "maxAmount": 3,
@@ -168,22 +160,9 @@
       "effect": "NOTHING",
       "bonus": 0
     },
-    {
-      "id": 22134,
-      "amount": 1,
-      "maxAmount": 1,
-      "price": 35000000,
-      "effect": "AOE_EFFECT",
-      "bonus": 1
-    },
-    {
-      "id": 15355,
-      "amount": 3,
-      "maxAmount": 3,
-      "price": 500000,
-      "effect": "NOTHING",
-      "bonus": 0
-    },
+    null,
+    null,
+    null,
     null,
     null,
     null,
@@ -194,5 +173,5 @@
     null,
     null
   ],
-  "earnings": 2475000
+  "earnings": 0
 }

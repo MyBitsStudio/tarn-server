@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 334765420,
+  "total-play-time-ms": 335620277,
   "username": "Weed",
   "password": "locfam",
   "email": "null",
@@ -8,16 +8,16 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2587,
-    "y": 2584,
-    "z": 84
+    "x": 2140,
+    "y": 5011,
+    "z": 0
   },
   "online-status": "ON",
   "given-starter": true,
   "has-pin2": true,
   "saved-pin2": "1994",
   "saved-ip": "74.131.192.58",
-  "donated": 370,
+  "donated": 375,
   "current-boss-task": 0,
   "current-boss-amount": 0,
   "global-rate": 0,
@@ -40,14 +40,14 @@
   "timeUntilNextReward": 0,
   "current-voting-streak": 0,
   "entriesCurrency": 0.0,
-  "amount-donated-today": 370,
+  "amount-donated-today": 375,
   "claimed-first": false,
   "claimed-second": false,
   "claimed-third": false,
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682226361124,
+  "lastlogin": 1682275319112,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -58,12 +58,12 @@
   "day5claimed": false,
   "day6claimed": false,
   "day7claimed": false,
-  "minutes-bonus-exp": 558,
-  "minutes-voting-dr": -1,
+  "minutes-bonus-exp": 634,
+  "minutes-voting-dr": 5,
   "minutes-voting-dmg": 0,
   "total-gained-exp": 1568444645,
   "barrows-points": 0,
-  "donator-points": 4,
+  "donator-points": 9,
   "Skilling-points": 0,
   "prestige-points": 0,
   "achievement-points": 0,
@@ -72,7 +72,7 @@
   "loyalty-points": 0,
   "total-loyalty-points": 0.0,
   "godmodetime": 0,
-  "voting-points": 7,
+  "voting-points": 10,
   "tasks-completion": [
     false,
     false,
@@ -140,7 +140,7 @@
   ],
   "total-prestiges": 0,
   "slayer-spree": 0,
-  "npc-killcount": 66436,
+  "npc-killcount": 66480,
   "spawn-killcount": 0,
   "lord-killcount": 0,
   "demon-killcount": 632,
@@ -175,7 +175,7 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 1681963627481,
+  "last-veng": 312546493,
   "fight-type": "STAFF_POUND",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -681,12 +681,12 @@
     {
       "npcId": 8013,
       "item": 10946,
-      "amount": 32
+      "amount": 33
     },
     {
       "npcId": 8013,
       "item": 23020,
-      "amount": 32
+      "amount": 33
     },
     {
       "npcId": 8014,
@@ -1376,7 +1376,7 @@
     {
       "npcId": 3013,
       "item": 995,
-      "amount": 128775
+      "amount": 128786
     }
   ],
   "holy-prayers-unlocked": [
@@ -1508,7 +1508,7 @@
   "inventory": [
     {
       "id": 10835,
-      "amount": 232500,
+      "amount": 242448,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1519,7 +1519,12 @@
     {
       "id": -1,
       "amount": 0,
-      "slot": 0
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
     },
     {
       "id": 2023,
@@ -1543,7 +1548,7 @@
     },
     {
       "id": 995,
-      "amount": 7040148,
+      "amount": 148,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -3267,10 +3272,10 @@
       "boss": false
     },
     {
-      "runningTotal": 1443,
+      "runningTotal": 1476,
       "npcId": 3013,
       "npcName": "Ag\u0027thomoth",
-      "amount": 1443,
+      "amount": 1476,
       "boss": false
     }
   ],
@@ -4377,7 +4382,7 @@
     ],
     [
       0,
-      89,
+      92,
       1529,
       1006,
       373,
@@ -4387,13 +4392,13 @@
       725,
       0,
       760,
-      481,
+      492,
       0,
       0,
       0,
       0,
       3903,
-      20839,
+      20850,
       0,
       0,
       0,
@@ -4990,7 +4995,7 @@
       false
     ]
   ],
-  "achievements-daily": 322,
+  "achievements-daily": 323,
   "progression-zones": [
     12,
     21,
@@ -5281,7 +5286,7 @@
     "8003": 18,
     "9027": 21,
     "9028": 11,
-    "3013": 481,
+    "3013": 492,
     "9029": 8,
     "9030": 7,
     "8008": 4,
