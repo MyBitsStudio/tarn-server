@@ -1250,6 +1250,14 @@ public class DialogueOptions {
             }
         } else if (id == FIRST_OPTION_OF_TWO) {
             switch (player.getDialogueActionId()) {
+                case 6666://RAIDS invite
+                    player.getPacketSender().sendInterfaceRemoval();
+                    if(player.getInviteParty() == null){
+                        return;
+                    }
+                    player.getInviteParty().add(player);
+                    player.setInviteParty(null);
+                    break;
                 case 901:
                     player.getRarityTransfer().transfer();
                     break;
@@ -1781,6 +1789,7 @@ public class DialogueOptions {
                 case 81:
                 case 102:
                 case 7:
+                case 6666:
                     player.getPacketSender().sendInterfaceRemoval();
                     break;
                 case 8:

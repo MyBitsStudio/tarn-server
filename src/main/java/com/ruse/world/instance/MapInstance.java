@@ -184,12 +184,17 @@ public abstract class MapInstance {
      */
     public abstract DynamicMap getMap();
 
+    public boolean customAdd(Player player){ return false;}
+
     /**
      * Adds a new player to the boss instance.
      *
      * @param player the player to add to the boss instance.
      */
     public boolean add(Player player) {
+        if(customAdd(player))
+            return true;
+
         if (mode == DestroyMode.GROUP && owner == null && players.size() == 0) {
             owner = player.getUsername();
         }
@@ -208,6 +213,8 @@ public abstract class MapInstance {
         onEnter(player);
         return true;
     }
+
+
 
     /**
      * Removes the specified {@link Player} from the map instance.

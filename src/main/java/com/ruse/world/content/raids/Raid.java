@@ -4,6 +4,9 @@ import com.ruse.model.GameObject;
 import com.ruse.model.RegionInstance;
 import com.ruse.world.content.instanceMananger.InstanceManager;
 import com.ruse.world.entity.impl.player.Player;
+import com.ruse.world.instance.DestroyMode;
+import com.ruse.world.instance.MapInstance;
+import lombok.NonNull;
 
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -19,7 +22,7 @@ import static com.ruse.model.RegionInstance.RegionInstanceType.RAIDS;
  * Raids abstract class
  * Overlaps each raid and holds viable information and functions to conducting each raid
  */
-public abstract class Raid extends RegionInstance {
+public abstract class Raid {
 
     protected RaidParty party;
     protected RaidRoom current;
@@ -30,8 +33,8 @@ public abstract class Raid extends RegionInstance {
     protected AtomicBoolean started = new AtomicBoolean(false);
     protected AtomicBoolean finished = new AtomicBoolean(false);
 
-    public Raid(Player p) {
-        super(p, RAIDS);
+
+    public Raid() {
     }
 
     public abstract void start(RaidParty party);
@@ -72,10 +75,6 @@ public abstract class Raid extends RegionInstance {
 
     public RaidRewards getRewards(){
         return rewards;
-    }
-
-    public void setCurrentRoom(RaidRoom room){
-        this.current = room;
     }
 
     public RaidRoom getCurrentRoom(){

@@ -16,7 +16,7 @@ public class AuraParty {
 
     private Player owner;
     private CopyOnWriteArrayList<Player> player_members;
-    private CopyOnWriteArrayList<NPC> npc_members = new CopyOnWriteArrayList<NPC>();
+    private CopyOnWriteArrayList<NPC> npc_members = new CopyOnWriteArrayList<>();
     private boolean hasEnteredDungeon;
     private int entered;
     private int kills;
@@ -27,7 +27,7 @@ public class AuraParty {
 
     public AuraParty(Player owner) {
         this.owner = owner;
-        player_members = new CopyOnWriteArrayList<Player>();
+        player_members = new CopyOnWriteArrayList<>();
         player_members.add(owner);
     }
 
@@ -180,8 +180,10 @@ public class AuraParty {
         boolean destruct = true;
         if (hasEnteredRaids()) {
             for (Player player : getPlayers()) {
-                if (player.getLocation() == Locations.Location.AURA)
+                if (player.getLocation() == Locations.Location.AURA) {
                     destruct = false;
+                    break;
+                }
             }
         } else {
             destruct = false;

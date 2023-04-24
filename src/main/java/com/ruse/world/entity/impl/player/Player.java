@@ -74,6 +74,8 @@ import com.ruse.world.content.minigames.impl.dungeoneering.Dungeoneering;
 import com.ruse.world.content.newspinner.MysteryBoxManager;
 import com.ruse.world.content.pos.PlayerOwnedShopManager;
 import com.ruse.world.content.properscratchcard.Scratchcard;
+import com.ruse.world.content.raids.Raid;
+import com.ruse.world.content.raids.RaidParty;
 import com.ruse.world.content.scratchcards.ScratchCard;
 import com.ruse.world.content.seasonpass.SeasonPass;
 import com.ruse.world.content.skill.SkillManager;
@@ -771,6 +773,13 @@ public class Player extends Character {
 
     private boolean chargingAttack;
     private AchievementHandler achievementHandler;
+
+    /**
+     * Raids
+     */
+
+    @Getter @Setter private RaidParty raidParty, inviteParty;
+    @Getter @Setter private Raid raid;
 
     public Player(PlayerSession playerIO) {
         super(GameSettings.DEFAULT_POSITION.copy());

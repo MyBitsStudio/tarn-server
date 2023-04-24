@@ -1,9 +1,11 @@
 package com.ruse.world.content;
 
 import com.ruse.model.Item;
+import com.ruse.model.container.impl.Equipment;
 import com.ruse.model.definitions.NPCDrops;
 import com.ruse.model.definitions.NpcDefinition;
 import com.ruse.model.input.impl.EnterSyntaxToSearchDropsFor;
+import com.ruse.model.projectile.ItemEffect;
 import com.ruse.util.Misc;
 import com.ruse.world.entity.impl.player.Player;
 
@@ -75,7 +77,10 @@ public class DropsInterface {
 				player.getPacketSender().sendString(ITEM_NAME + i, item.getDefinition().getName()); // remove all item
 				// names
 				player.getPacketSender().sendString(ITEM_AMOUNT + i, (min == amount ? Misc.formatNumber(amount) : ( Misc.formatNumber(min) + "-" + Misc.formatNumber(amount))));
-				player.getPacketSender().sendString(ITEM_CHANCE + i, "1/" + (chance == 0 ? "1" : chance));
+//				boolean hasAoe = player.getEquipment().get(Equipment.WEAPON_SLOT).getEffect() == ItemEffect.AOE_EFFECT;
+//				double divide = ((double) CustomDropUtils.drBonus(player, npcId) / (hasAoe ? 250 : 500));
+//				int chances = divide > 1.0 ? (int) (chance / divide) : (int) (chance - (chance * divide));
+				player.getPacketSender().sendString(ITEM_CHANCE + i, "1/" + chance);
 				player.getPacketSender().sendString(ITEM_VALUE + i,
 						Misc.format(amount * item.getDefinition().getValue()) + "");
 				scrollAmount++;
@@ -181,10 +186,10 @@ public class DropsInterface {
 		// resetInterface(player);
 		resetRight(player);
 		resetSearchInterface(player);
-		if (player.getLootList() != null) {
-			populateNpcOptions(player);
-		} else {
+		if (player.getLootList() == null) {
 			resetLeft(player);
+		} else {
+			populateNpcOptions(player);
 		}
 		player.getPacketSender().sendInterface(INTERFACE_ID);
 		// List<Integer> list = getList(search);
