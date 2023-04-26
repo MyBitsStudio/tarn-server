@@ -158,8 +158,6 @@ public class SeasonPass {
     }
 
     public void showInterface() {
-        System.out.println("length: " + levels.length);
-        System.out.println("My level: " + level);
         page = 0;
         int level = getLevel();
         int expNeeded = getSpLevel(level).getExpNeeded();
