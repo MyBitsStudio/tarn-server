@@ -90,6 +90,8 @@ public enum ItemRarity {
 				continue;
 			if(effect == ItemEffect.AOE_EFFECT && item.getDefinition().getEquipmentSlot() != Equipment.WEAPON_SLOT)
 				continue;
+			if(effect == ItemEffect.AOE_EFFECT_2x2 && item.getDefinition().getId() != 20504)
+				continue;
 			list.add(effect);
 		}
 		return list.get(Misc.random(list.size() - 1));

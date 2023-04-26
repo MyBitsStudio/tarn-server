@@ -1186,6 +1186,14 @@ public class Shop extends ItemContainer {
                         return new Object[]{25, "Vote points"};
                     case 23171:
                         return new Object[]{50, "Vote points"};
+                    case 2380://vod weps
+                        return new Object[]{7, "Vote points"};
+                    case 2381://vod weps
+                        return new Object[]{15, "Vote points"};
+                    case 2382://vod weps
+                        return new Object[]{30, "Vote points"};
+                    case 2383://vod weps
+                        return new Object[]{50, "Vote points"};
                     default:
                         return new Object[]{1000, "Vote points"};
                 }
@@ -2007,6 +2015,8 @@ public class Shop extends ItemContainer {
                         return new Object[]{5000, "Slayer tickets"};
                     case 23125:
                         return new Object[]{5000, "Slayer tickets"};
+                    case 13727:
+                        return new Object[]{1, "Slayer ticket"};
                 }
             } else if (shop == SLAYER_STORE_ELITE) {
                 switch (item) {

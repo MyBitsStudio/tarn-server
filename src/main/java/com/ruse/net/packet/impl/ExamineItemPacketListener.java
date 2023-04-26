@@ -52,6 +52,9 @@ public class ExamineItemPacketListener implements PacketListener {
 				} else if (effect == ItemEffect.MAGIC_DAMAGE) {
 					player.sendMessage("Item Effect: @red@ Double Experience.");
 				}
+				else if (effect == ItemEffect.AOE_EFFECT_2x2) {
+					player.sendMessage("Item Effect: @red@ AOE Effect - Radius 2x2.");
+				}
 				else if (effect == ItemEffect.AOE_EFFECT) {
 						if (bonus == 1) {
 							player.sendMessage("Item Effect: @red@ AOE Effect - Radius 3x3.");

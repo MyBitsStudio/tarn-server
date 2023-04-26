@@ -2,14 +2,14 @@ package com.ruse.world.content.aura;
 
 import com.ruse.engine.task.Task;
 import com.ruse.engine.task.TaskManager;
-import com.ruse.model.Item;
-import com.ruse.model.Locations;
-import com.ruse.model.Position;
-import com.ruse.model.Skill;
+import com.ruse.model.*;
 import com.ruse.model.definitions.ItemDefinition;
+import com.ruse.model.projectile.ItemEffect;
 import com.ruse.util.Misc;
 import com.ruse.world.World;
 import com.ruse.world.content.BonusManager;
+import com.ruse.world.content.KillsTracker;
+import com.ruse.world.content.NpcRequirements;
 import com.ruse.world.content.boxes.AuraRaidLoot;
 import com.ruse.world.content.boxes.ZombieRaidLoot;
 import com.ruse.world.content.casketopening.Box;
@@ -35,6 +35,7 @@ public class AuraRaids {
             new Box(922, 1,2, 1D, false),
             new Box(925, 1,2, 1D, false),
             new Box(928, 1,2, 1D, false),
+            new Box(20509, 1, 1D, false),
             new Box(931, 1, 0.7D, false),
             new Box(942, 1, 0.7D, false),
             new Box(943, 1, 0.7D, false),
@@ -86,12 +87,20 @@ public class AuraRaids {
                 }
             }
             if (member != null) {
-                if (member.getBonusManager().getExtraBonus()[BonusManager.DEFENCE_SUMMONING] > 1600) {
-                    member.sendMessage("@red@This raid is restricted to players with an ELO of 1.6K or less. [Use ::elo]");
+                if (member.getBonusManager().getExtraBonus()[BonusManager.DEFENCE_SUMMONING] > 500) {
+                    member.sendMessage("@red@This raid is restricted to players with an ELO of 500 or less. [Use ::elo]");
                     p.getPacketSender().sendMessage(
-                            "@red@ " + member.getUsername() + "'s ELO is higher than 1.6K.");
+                            "@red@ " + member.getUsername() + "'s ELO is higher than 145.");
                     return;
                 }
+            }
+            if (member != null) {
+                if (KillsTracker.getTotalKillsForNpc(9914, member) < 1000) {
+                        member.sendMessage("@red@Your Sasuke KC is too low to participate. " + NpcRequirements.SASUKE.getKillCount() + "/1000");
+                        p.getPacketSender().sendMessage(
+                                "@red@ " + member.getUsername() + "'s Sasuke KC is lower than 1000. ");
+                        return;
+                    }
             }
         }
         party.enteredDungeon(true);
@@ -377,7 +386,7 @@ public class AuraRaids {
                 for (Player player : party.getPlayers()) {
                     Box[] loot = AuraRaidLoot.LOOT;
 
-                    player.setAuraRaidsKC(player.getAuraRaidsKC() + 1);
+                    player.getPointsHandler().incrementANGELKILLCount(1);
 
                     Box drop = getLoot(loot, party.getPlayers().size());
 
@@ -390,6 +399,15 @@ public class AuraRaids {
                     double amt = drop.getMin() + Misc.getRandom(drop.getMax() - drop.getMin());
 
                     player.getInventory().add(new Item(drop.getId(), (int) amt));
+                    if (drop.getId() == 20509) {
+                        player.getInventory().delete(20509, 1);
+                        Item item1 = new Item(20504);
+                        item1.setEffect(ItemEffect.AOE_EFFECT_2x2);
+                        item1.setRarity(ItemRarity.LEGENDARY);
+                        item1.setBonus(1);
+                        player.getInventory().add(item1);
+                    }
+                    player.getInventory().add(10835, Misc.getRandom(712, 9764));
                     player.sendMessage("<shad=1>@yel@You have receieved " + (int) amt + " "+ ItemDefinition.forId(drop.getId()).getName() + " from this raid!" );
                 }
                 party.moveTo(new Position(2697, 2646 , 0));

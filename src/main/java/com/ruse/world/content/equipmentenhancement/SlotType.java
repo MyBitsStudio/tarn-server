@@ -10,7 +10,7 @@ public enum SlotType {
     AMULET(-16124,0, 3314, "Amulet"),
     WEAPON(-16119, 1, 3316, "Weapon"),
     GLOVES(-16116, 2, 3320, "Gloves"),
-    CROWN(-16117, 3, 3302, "Crown"),
+    CROWN(-16117, 3, 3302, "Halo"),
     HEAD(-16126, 4, 3312, "Headpiece"),
     BODY(-16123, 5, 3317, "Torso"),
     LEGS(-16122, 6, 3319, "Legs"),
@@ -19,9 +19,9 @@ public enum SlotType {
     SHIELD(-16120, 9, 3318, "Shield"),
     RING(-16115, 10, 3322, "Ring"),
     QUIVER(-16118, 11, 3315, "Quiver"),
-    STAR(-16114, 12, 3300, "Star"),
-    STAR_2(-16113, 13, 3300, "Star 2"),
-    BREAD(-16112, 14, 3301, "Bread")
+    STAR(-16114, 12, 3300, "Enhancement"),
+    STAR_2(-16113, 13, 3300, "Aura"),
+    BREAD(-16112, 14, 3301, "Gemstone")
     ;
 
     private final int btn;

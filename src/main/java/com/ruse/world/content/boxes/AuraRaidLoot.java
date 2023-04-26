@@ -8,7 +8,7 @@ public class AuraRaidLoot {
 
 	public static Box[] LOOT = {
 
-			new Box(ItemDefinition.TOKEN_ID, 100, 250,100), // ORBS
+			//new Box(ItemDefinition.TOKEN_ID, 100, 250,100), // ORBS
 			new Box(777, 1,2, 10, false),
 			new Box(783, 1,2, 10, false),
 			new Box(789, 1,2, 10, false),
@@ -42,6 +42,7 @@ public class AuraRaidLoot {
 			new Box(4034, 1, 2, true),
 			new Box(22215, 1, 1, true),
 			new Box(22228, 1, 1, true),
+			new Box(20509, 1,2, true), // AOE
 
 	};
 

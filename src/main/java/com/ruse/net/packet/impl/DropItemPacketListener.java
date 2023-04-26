@@ -50,6 +50,10 @@ public class DropItemPacketListener implements PacketListener {
 			player.getPacketSender().sendMessage("You cannot drop items here");
 			return;
 		}
+		if (item.getId() == 229) {
+			player.getInventory().delete(229, 1);
+			player.sendMessage("Your vial vanishes as it touches the ground.");
+		}
 		switch (item.getId()) {
 			case 6769:
 			case 10942:
@@ -62,7 +66,7 @@ public class DropItemPacketListener implements PacketListener {
 		}
 		if (item.getId() != -1 && item.getAmount() >= 1) {
 			if (item.tradeable() && !ItemBinding.isBoundItem(item.getId())) {
-				player.getInventory().setItem(itemSlot, new Item(-1, 0)).refreshItems();
+				//player.getInventory().setItem(itemSlot, new Item(-1, 0)).refreshItems();
 				if (item.getId() == 4045) {
 					player.dealDamage(new Hit((player.getConstitution() - 1) == 0 ? 1 : player.getConstitution() - 1,
 							Hitmask.CRITICAL, CombatIcon.BLUE_SHIELD));
@@ -71,10 +75,7 @@ public class DropItemPacketListener implements PacketListener {
 				}
 				else {
 					boolean goGlobal = player.getPosition().getZ() >= 0 && player.getPosition().getZ() < 4 ? true : false;
-					GroundItemManager.spawnGroundItem(player, new GroundItem(item, player.getPosition().copy(),
-							player.getUsername(), player.getHostAddress(), false, 80,
-							goGlobal
-							, 80));
+					player.sendMessage("You currently cannot drop items.");
 					PlayerLogs.log(player.getUsername(),
 							"Player dropping item: " + (ItemDefinition.forId(item.getId()) != null
 									&& ItemDefinition.forId(item.getId()).getName() != null

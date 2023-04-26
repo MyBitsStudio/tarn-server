@@ -761,40 +761,40 @@ public class NPCOptionPacketListener implements PacketListener {
         }
 
         if(interact.getId() == 810) {
-                if (player.getBonusManager().getExtraBonus()[BonusManager.DEFENCE_SUMMONING] > 1600) {
-                    player.sendMessage("@red@This raid is restricted to players with an ELO of 1.6K or less. [Use ::elo]");
+                if (player.getBonusManager().getExtraBonus()[BonusManager.DEFENCE_SUMMONING] > 500) {
+                    player.sendMessage("@red@This raid is restricted to players with an ELO of 500 or less. [Use ::elo]");
                     player.getCombatBuilder().setDidAutoRetaliate(false);
                     player.getMovementQueue().reset();
                     return;
             }
         }
         if(interact.getId() == 1307) {
-            if (player.getBonusManager().getExtraBonus()[BonusManager.DEFENCE_SUMMONING] > 1600) {
-                player.sendMessage("@red@This raid is restricted to players with an ELO of 1.6K or less. [Use ::elo]");
+            if (player.getBonusManager().getExtraBonus()[BonusManager.DEFENCE_SUMMONING] > 500) {
+                player.sendMessage("@red@This raid is restricted to players with an ELO of 500 or less. [Use ::elo]");
                 player.getCombatBuilder().setDidAutoRetaliate(false);
                 player.getMovementQueue().reset();
                 return;
             }
         }
         if(interact.getId() == 1308) {
-            if (player.getBonusManager().getExtraBonus()[BonusManager.DEFENCE_SUMMONING] > 1600) {
-                player.sendMessage("@red@This raid is restricted to players with an ELO of 1.6K or less. [Use ::elo]");
+            if (player.getBonusManager().getExtraBonus()[BonusManager.DEFENCE_SUMMONING] > 500) {
+                player.sendMessage("@red@This raid is restricted to players with an ELO of 500 or less. [Use ::elo]");
                 player.getCombatBuilder().setDidAutoRetaliate(false);
                 player.getMovementQueue().reset();
                 return;
             }
         }
         if(interact.getId() == 1309) {
-            if (player.getBonusManager().getExtraBonus()[BonusManager.DEFENCE_SUMMONING] > 1600) {
-                player.sendMessage("@red@This raid is restricted to players with an ELO of 1.6K or less. [Use ::elo]");
+            if (player.getBonusManager().getExtraBonus()[BonusManager.DEFENCE_SUMMONING] > 500) {
+                player.sendMessage("@red@This raid is restricted to players with an ELO of 500 or less. [Use ::elo]");
                 player.getCombatBuilder().setDidAutoRetaliate(false);
                 player.getMovementQueue().reset();
                 return;
             }
         }
         if(interact.getId() == 1310) {
-            if (player.getBonusManager().getExtraBonus()[BonusManager.DEFENCE_SUMMONING] > 1600) {
-                player.sendMessage("@red@This raid is restricted to players with an ELO of 1.6K or less. [Use ::elo]");
+            if (player.getBonusManager().getExtraBonus()[BonusManager.DEFENCE_SUMMONING] > 500) {
+                player.sendMessage("@red@This raid is restricted to players with an ELO of 500 or less. [Use ::elo]");
                 player.getCombatBuilder().setDidAutoRetaliate(false);
                 player.getMovementQueue().reset();
                 return;
@@ -1046,7 +1046,13 @@ public class NPCOptionPacketListener implements PacketListener {
             }
         }
 
-
+        if (interact.getId() == 9017) {
+            if (player.getPointsHandler().getANGELKILLCount() < 50) {
+                player.sendMessage("@blu@You need to complete at least 50 Champion Raids to attack this NPC @bla@| @red@" + player.getPointsHandler().getANGELKILLCount() + "/50");
+                return;
+            }
+            player.getCombatBuilder().attack(interact);
+        }
 
         if (!player.isMini()) {
             if(player.getRights() != PlayerRights.DEVELOPER) {

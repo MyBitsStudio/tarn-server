@@ -125,11 +125,13 @@ public class DonatorShop {
             case 15450://vod weps
                 return new Object[]{500, "Donator points"};
             case 2380://vod weps
+                return new Object[]{7, "Donator points"};
             case 2381://vod weps
+                return new Object[]{15, "Donator points"};
             case 2382://vod weps
+                return new Object[]{30, "Donator points"};
             case 2383://vod weps
-            case 2384://vod weps
-                return new Object[]{1, "Donator points"};
+                return new Object[]{50, "Donator points"};
             case 8788://vod weps
                 return new Object[]{10, "Donator points"};
             case 15250://vod weps

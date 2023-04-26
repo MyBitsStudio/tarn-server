@@ -145,6 +145,9 @@ public class HitQueue {
 								else if (item.getBonus() == 2) {
 									AOEHandler.handleAttack(p, victim, 1000, 5000, 6, container.getHits()[0].getHit().getCombatIcon());}
 							}
+							if (p.getEquipment().get(Equipment.WEAPON_SLOT).getEffect() == ItemEffect.AOE_EFFECT_2x2) {
+								AOEHandler.handleAttack(p, victim, 1000, 5000, 2, container.getHits()[0].getHit().getCombatIcon());
+							}
 						}
 
 

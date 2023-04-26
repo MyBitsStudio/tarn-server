@@ -392,11 +392,11 @@ public class CustomDropUtils {
             percentBoost += 20;
         }
 
-        percentBoost += player.getEquipmentEnhancement().getBoost(BoostType.DR);
-
         if(percentBoost >= 2500) {
             percentBoost = 2500;
         }
+
+        percentBoost += player.getEquipmentEnhancement().getBoost(BoostType.DR);
 
         return percentBoost;
     }

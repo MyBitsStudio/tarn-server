@@ -86,7 +86,8 @@ public class Bank extends ItemContainer {
 				&& getPlayer().getEquipment().getItems()[Equipment.RING_SLOT].getId() == 18818
 				|| getPlayer().getGameMode() == GameMode.ULTIMATE_IRONMAN
 				&& getPlayer().getEquipment().getItems()[Equipment.RING_SLOT].getId() == 18823) {
-			getPlayer().getUimBank().open();
+			//getPlayer().getUimBank().open();
+			player.sendMessage("UIM Bank is currently disabled");
 			return this;
 		}
 		if (getPlayer().getGameMode() == GameMode.ULTIMATE_IRONMAN) {

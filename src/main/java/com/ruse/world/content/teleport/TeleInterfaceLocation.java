@@ -40,7 +40,7 @@ public enum TeleInterfaceLocation {
     LOCATION34(new Position(2964, 9478, 68), "Tier Ranking: 24 \\n \\n Multi: True \\n \\n KC Req: 750 Brolys \\n \\n Recommended ELO: 220+"), //Bowser
     LOCATION35(new Position(2964, 9478, 72), "Tier Ranking: 25 \\n \\n Multi: True \\n \\n KC Req: 1K Bowsers \\n \\n Recommended ELO: 280+"), //Sasuke
     //BOSSES
-    LOCATION36(new Position(2565, 2564, 8), "Tier Ranking: 26 \\n \\n Multi: True \\n \\n KC Req: 1K Sasukes \\n \\n Recommended ELO: 330+"), //Sanctum
+    LOCATION36(new Position(2565, 2564, 8), "Tier Ranking: 26 \\n \\n Multi: True \\n \\n Req: 50 Champ Raids \\n \\n Recommended ELO: 330+"), //Sanctum
     LOCATION37(new Position(2565, 2564, 12), "Tier Ranking: 27 \\n \\n Multi: True \\n \\n KC Req: 1K Sanctum Golems \\n \\n Recommended ELO: 390+"), //Hydra
     LOCATION38(new Position(2565, 2564, 16), "Tier Ranking: 28 \\n \\n Multi: True \\n \\n KC Req: 1K Mutant Hydras \\n \\n Recommended ELO: 430+"), //Gorvek
     LOCATION39(new Position(2565, 2564, 20), "Tier Ranking: 29 \\n \\n Multi: True \\n \\n KC Req: 1K Gorveks \\n \\n Recommended ELO: 480+"), //Dragonite

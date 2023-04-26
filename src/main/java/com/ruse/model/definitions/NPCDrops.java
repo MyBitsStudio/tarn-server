@@ -440,6 +440,8 @@ public class NPCDrops {
                         .parallel()
                         .filter(npcDropItem -> npcDropItem.getItem().getId() != 995) // filter out the coins
                         .filter(npcDropItem -> npcDropItem.getItem().getId() != 2023) // filter out the bones
+                        .filter(npcDropItem -> npcDropItem.getItem().getId() != 13650) // filter out the bones
+                        .filter(npcDropItem -> npcDropItem.getItem().getId() != 13727) // filter out the bones
                         .collect(Collectors.toList());
                 NpcDropItem random = Misc.random(allDrops);
                 Item randomItem = random.getItem();

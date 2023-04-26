@@ -27,10 +27,11 @@ public enum ItemEffect {
     DOUBLE_KILLS(ItemRarity.LEGENDARY, 1, 2),
     DOUBLE_CASH(ItemRarity.LEGENDARY, 1, 2),
     ALL_DAMAGE_MEDIUM(ItemRarity.LEGENDARY, 2, 2),
+    AOE_EFFECT_2x2(ItemRarity.LEGENDARY, 1, 2),
 
     /* Mythic Rarity Bonuses */
     TRIPLE_KILLS(ItemRarity.MYTHIC, 1, 2),
-    AOE_EFFECT(ItemRarity.MYTHIC, 1, 2),
+    AOE_EFFECT(ItemRarity.MYTHIC, 1, 3),
     DROP_RATE_HIGH(ItemRarity.MYTHIC, 25, 99),
     ALL_DAMAGE_HIGH(ItemRarity.MYTHIC, 3, 3);
 

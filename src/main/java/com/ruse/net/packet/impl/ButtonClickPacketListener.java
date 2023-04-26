@@ -134,6 +134,9 @@ public class ButtonClickPacketListener implements PacketListener {
         if (player.getAchievements().handleButtonClick(id)) {
             return;
         }
+        if (player.getSeasonPass().handleButtonClick(id)) {
+            return;
+        }
         if (checkHandlers(player, id))
             return;
 
@@ -1480,13 +1483,7 @@ public class ButtonClickPacketListener implements PacketListener {
                     player.getPacketSender().sendMessage("Please close the interface you have open before doing this.");
                 break;
             case 15003:
-                if (player.getInterfaceId() > 0) {
-                    player.getPacketSender()
-                            .sendMessage("Please close the interface you have open before opening another one.");
-                    return;
-                }
-                player.getSkillManager().stopSkilling();
-                ItemsKeptOnDeath.sendInterface(player);
+                player.getEquipmentEnhancement().openInterface();
                 break;
             case 2458: // Logout
                 if (player.logout()) {

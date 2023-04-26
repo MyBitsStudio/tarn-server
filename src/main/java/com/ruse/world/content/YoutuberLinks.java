@@ -26,6 +26,7 @@ public enum YoutuberLinks {
     NUB("https://www.youtube.com/channel/UCoCca4ERC7jDWWIbE6Eg8Tg",  "nub"),
     ENTS("https://www.youtube.com/@EntsRSPS",  "ents"),
     NOBLE("https://www.youtube.com/@NobleDefeat",  "noble"),
+    KABAL("https://www.youtube.com/@kabal9900",  "kabal"),
     SIPSICK("https://www.youtube.com/@sipsick5494/videos",  "sipsick"),
     PERP("https://www.youtube.com/channel/UCtb_rEautI4iFM0ZVIB0lkw",  "perp"),
     LANO("https://www.youtube.com/channel/UCIz0u4h_J2e_c5MNJBN0uiw/videos?view_as=subscriber",  "lano", "lanos"),

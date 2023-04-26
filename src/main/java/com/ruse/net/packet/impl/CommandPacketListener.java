@@ -29,6 +29,8 @@ import com.ruse.world.World;
 import com.ruse.world.clip.region.RegionClipping;
 import com.ruse.world.content.*;
 import com.ruse.world.content.PlayerPunishment.Jail;
+import com.ruse.world.content.aura.AuraParty;
+import com.ruse.world.content.aura.AuraRaids;
 import com.ruse.world.content.clan.ClanChat;
 import com.ruse.world.content.clan.ClanChatManager;
 import com.ruse.world.content.cluescrolls.OLD_ClueScrolls;
@@ -58,6 +60,9 @@ import com.ruse.world.content.pos.PlayerOwnedShopManager;
 import com.ruse.world.content.progressionzone.ProgressionZone;
 import com.ruse.world.content.randomevents.EvilTree;
 import com.ruse.world.content.randomevents.ShootingStar;
+import com.ruse.world.content.seasonpass.SeasonPass;
+import com.ruse.world.content.seasonpass.SeasonPassLoader;
+import com.ruse.world.content.seasonpass.SeasonPassManager;
 import com.ruse.world.content.serverperks.ServerPerks;
 import com.ruse.world.content.skeletalhorror.SkeletalHorror;
 import com.ruse.world.content.skill.SkillManager;
@@ -2719,10 +2724,10 @@ public class CommandPacketListener implements PacketListener {
     private static void developerCommands(Player player, String[] command, String wholeCommand) {
 
         if (command[0].equalsIgnoreCase("random")) {
-                Item item1 = new Item(20435);
-                item1.setEffect(ItemEffect.AOE_EFFECT);
-                item1.setRarity(ItemRarity.MYTHIC);
-            item1.setBonus(2);
+                Item item1 = new Item(20504);
+                item1.setEffect(ItemEffect.AOE_EFFECT_2x2);
+                item1.setRarity(ItemRarity.LEGENDARY);
+            item1.setBonus(1);
 
                 Item item2 = new Item(22240);
                 item2.setEffect(ItemEffect.DROP_RATE_HIGH);
@@ -2743,7 +2748,8 @@ public class CommandPacketListener implements PacketListener {
                 player.getInventory().add(item1).add(item2).add(item4).add(item5);
         }
 
-        if (command[0].equalsIgnoreCase("aoetoken")) {
+
+            if (command[0].equalsIgnoreCase("aoetoken")) {
             Item item1 = new Item(20435);
             item1.setEffect(ItemEffect.AOE_EFFECT);
             item1.setRarity(ItemRarity.MYTHIC);
@@ -2754,6 +2760,20 @@ public class CommandPacketListener implements PacketListener {
             player.getInventory().add(item1).add(item2);
         }
 
+        if (command[0].equalsIgnoreCase("sp")) {
+            player.getSeasonPass().showInterface();
+        }
+        if (command[0].equalsIgnoreCase("sp")) {
+            player.getSeasonPass().showInterface();
+        }
+
+        if (command[0].equalsIgnoreCase("spe")) {
+            player.getSeasonPass().incrementExp(Integer.parseInt(command[1]));
+        }
+
+        if (command[0].equalsIgnoreCase("spp")) {
+            player.getSeasonPass().setPremium(true);
+        }
         if (command[0].equalsIgnoreCase("ex")) {
             player.getBattlePass().incrementXP(10);
         }

@@ -20,8 +20,8 @@ public class GameSettings {
     /*
      * Bunch of variables for the Global Events
      */
-    public static boolean DOUBLE_BOXES_DONO = true;
-    public static boolean DOUBLE_BONDS_DONO = true;
+    public static boolean DOUBLE_BOXES_DONO = false;
+    public static boolean DOUBLE_BONDS_DONO = false;
     public static boolean DOUBLE_VOTE = false;
     public static boolean DOUBLE_DROP = false;
     public static boolean DOUBLE_SKILL_EXP = false;

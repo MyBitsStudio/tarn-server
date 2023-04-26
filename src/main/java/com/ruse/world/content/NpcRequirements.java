@@ -44,7 +44,7 @@ public enum NpcRequirements {
 
     SASUKE(9914, 9919, 1000), //1k bowsers
     //bosses
-    SANCTUM(9017, 9914, 1000),
+   // SANCTUM(9017, 9914, 1000),
     HYDRA(9839, 9017, 1000),
     GORVEK(9806, 9839, 1000),
     DRAGONITE(9816, 9806, 1000),
@@ -81,7 +81,7 @@ public enum NpcRequirements {
     BYAKUYA(188, 187, 10000), //10k gokus
     FAZULA(1311, 188, 15000), //10k gokus
     YASUDA(1313, 1311, 15000), //10k gokus
-    BGOKU(1318, 1311, 25000), //10k gokus
+    BGOKU(1318, 1313, 25000), //10k gokus
 
     ;
 

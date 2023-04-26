@@ -89,7 +89,7 @@ public enum TeleInterfaceData {
     //BOSS29(TeleInterfaceCategory.BOSSES, "Boss", 1898, 1500, TeleInterfaceLocation.LOCATION1, new Item[] {new Item(4151, 10), new Item(995, 2000000)}),
 
     /* Minigames */
-    BARROWS(TeleInterfaceCategory.MINIGAMES, "Champion Raid", 1307, 1500, TeleInterfaceLocation.LOCATION100, new Item[] {new Item(22215,1), new Item(22228,1),new Item(4022,1),new Item(4024,1),new Item(4034,1),new Item(4032,1),new Item(4030,1),new Item(4026,1),new Item(4028,1), }),
+    BARROWS(TeleInterfaceCategory.MINIGAMES, "Champion Raid", 1307, 1500, TeleInterfaceLocation.LOCATION100, new Item[] {new Item(20504,1), new Item(22215,1), new Item(22228,1),new Item(4022,1),new Item(4024,1),new Item(4034,1),new Item(4032,1),new Item(4030,1),new Item(4026,1),new Item(4028,1), }),
 
     /* Misc */
     VEIGAR(TeleInterfaceCategory.MISC, "Final Boss Veigar", 9906, 2000, TeleInterfaceLocation.LOCATION67, null),
