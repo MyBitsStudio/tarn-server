@@ -61,10 +61,13 @@ public class EquipmentEnhancement {
     private int getBoostBySlot(BoostType boost, int slot) {
         var level = getSlotLevel(slot);
         int amount = 0;
-        switch (boost) {
-            //case DR -> amount = level * DROP_RATE_BOOST_ADD;
-           // case CASH -> amount = level * CASH_BOOST_ADD;
-            //case STATS -> amount = level * STATS_BOOST_ADD;
+        switch(boost) {
+            case DR:
+                return level * DROP_RATE_BOOST_ADD;
+            case CASH:
+                return level * CASH_BOOST_ADD;
+            case STATS:
+                return level * STATS_BOOST_ADD;
         }
         return amount;
     }

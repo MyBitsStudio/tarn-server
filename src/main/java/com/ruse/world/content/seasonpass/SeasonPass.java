@@ -2,87 +2,92 @@ package com.ruse.world.content.seasonpass;
 
 import com.ruse.model.Item;
 import com.ruse.world.entity.impl.player.Player;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 
-import java.util.BitSet;
-import java.util.HashMap;
+import java.util.Arrays;
 
 @RequiredArgsConstructor
+@Getter
+@Setter
 public class SeasonPass {
 
+    private static final int INTERFACE_ID = 49450;
     private static final int REWARD_AMOUNT = 100;
-    private static final byte MAX_REWARDS = 50;
+    private static final byte MAX_LEVEL = 50;
     private static final byte PREMIUM_OFFSET = 50;
-    public static final HashMap<String, Integer> EXP_MAP = new HashMap<>();
-    public static SPLevel[] levels;
+    public static SeasonPassLevel[] levels;
 
-    private int passState;
-    private final BitSet rewardsClaimed = new BitSet(REWARD_AMOUNT);
+    private int season = SeasonPassConfig.getInstance().getSeason();
+    private boolean premium;
+    private int page;
+    private int level;
+    private int exp;
+    private int totalExperience;
+    private boolean[] rewardsClaimed = new boolean[REWARD_AMOUNT];
     private final Player player;
 
     private boolean hasPremium() {
-        return (passState & 0x1) != 0;
-    }
-
-    private void enablePremium() {
-        passState |= 0x1;
-    }
-
-    private void disablePremium() {
-        passState &= ~0x1;
-    }
-
-    private int getLevel() {
-        return (passState >> 1) & 0xff;
-    }
-
-    private void setLevel(int level) {
-        passState = (passState & 0xFFFFFF01) | ((level << 1) & 0xFE);
-    }
-
-    private int getExp() {
-        return (passState & 0xFFFFFE00) >>> 1;
-    }
-
-    private void setExp(int exp) {
-        passState = (passState & 0x1) | ((getLevel() << 9) & 0x1FE) | ((exp << 1) & 0xFFFFFE00);
+        return premium;
     }
 
     private int getMaxPassLevel() {
-        return levels.length;
+        return levels.length-1;
     }
 
     private void levelUp(int overflow) {
-        int currLevel = getLevel();
-        if(currLevel == getMaxPassLevel()) {
+        if(level == getMaxPassLevel()) {
             return;
         }
-        setLevel(getLevel() + 1);
-        setExp(overflow);
+        level++;
+        incrementExp(overflow);
     }
 
-    private SPLevel getSpLevel(int level) {
+    private SeasonPassLevel getSpLevel(int level) {
         return levels[level];
     }
 
     private void selectClaimReward() {
-        for(int i = 0; i < MAX_REWARDS; i++) {
-            if(getLevel() < i) {
-                return;
-            }
-            if(!rewardsClaimed.get(i) || (hasPremium() && !rewardsClaimed.get(i + PREMIUM_OFFSET))) {
+        boolean hasClaim = false;
+        for(int i = 0; i < MAX_LEVEL; i++) {
+            if(canClaimFree(i) || canClaimPremium(i)) {
                 claimReward(i);
+                hasClaim = true;
+            }
+        }
+        if(!hasClaim) {
+            player.getPacketSender().sendMessage("@red@You have no items to claim");
+            if(!isPremium()) {
+                player.getPacketSender().sendMessage("@red@Buy premium to unlock more rewards!");
             }
         }
     }
 
+    private boolean canClaimFree(int tier) {
+        return (level > tier || exp == getSpLevel(level).getExpNeeded()) && !rewardsClaimed[tier];
+    }
+
+    private boolean canClaimPremium(int tier) {
+        return (level > tier || exp == getSpLevel(level).getExpNeeded()) && !rewardsClaimed[tier + PREMIUM_OFFSET] && isPremium();
+    }
+
+    private boolean hasClaimable() {
+        for(int i = 0; i < MAX_LEVEL; i++) {
+            if(canClaimFree(i) || canClaimPremium(i)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     private void claimReward(int tier) {
         Item[] items = new Item[2];
-        SPLevel spLevel = levels[tier];
-        if(!rewardsClaimed.get(tier)) {
+        SeasonPassLevel spLevel = getSpLevel(tier);
+        if(!rewardsClaimed[tier]) {
             items[0] = new Item(spLevel.getFreeItemId(), spLevel.getFreeAmount());
         }
-        if(hasPremium() && !rewardsClaimed.get(tier + PREMIUM_OFFSET)) {
+        if(hasPremium() && !rewardsClaimed[tier + PREMIUM_OFFSET]) {
             items[1] = new Item(spLevel.getPremiumItemId(), spLevel.getPremiumAmount());
         }
         for(int i = 0; i < items.length; i++) {
@@ -94,30 +99,93 @@ public class SeasonPass {
                 continue;
             }
             if(i == 0) {
-                rewardsClaimed.set(tier);
+                rewardsClaimed[tier] = true;
             } else {
-                rewardsClaimed.set(tier + PREMIUM_OFFSET);
+                rewardsClaimed[tier + PREMIUM_OFFSET] = true;
             }
             player.getInventory().add(item);
         }
+        changeRewardPage();
     }
 
     public boolean handleButtonClick(int buttonId) {
-
+        if(buttonId == -16080 && page != 6) {
+            page++;
+            changeRewardPage();
+            return true;
+        } else if(buttonId == -16077 && page > 0) {
+            page--;
+            changeRewardPage();
+            return true;
+        } else if(buttonId == -16071) {
+            selectClaimReward();
+        } else if(buttonId == -16074) {
+            // purchase premium button
+        }
         return false;
     }
 
     public void incrementExp(int amount) {
-        int exp = getExp() + amount;
-        int expToNextLevel = getSpLevel(getLevel()).getExpNeeded();
-        if(exp < expToNextLevel) {
-            setExp(exp);
-            return;
-        } else if(exp == expToNextLevel) {
-            levelUp(0);
-            return;
+        if(totalExperience == 0) {
+            calculateTotalExperience();
         }
-        int overflow = exp - expToNextLevel;
-        levelUp(overflow);
+        totalExperience += amount;
+        exp += amount;
+        int expToNextLevel = getSpLevel(getLevel()).getExpNeeded();
+        if(exp == expToNextLevel) {
+            levelUp(0);
+        } else if(exp > expToNextLevel) {
+            int overflow = exp - expToNextLevel;
+            levelUp(overflow);
+        }
+    }
+
+    public void calculateTotalExperience() {
+        totalExperience += exp;
+        for(int i = 0; i < level; i++) {
+            totalExperience += getSpLevel(i).getExpNeeded();
+        }
+    }
+
+    public void showInterface() {
+        page = 0;
+        int level = getLevel();
+        int expNeeded = getSpLevel(level).getExpNeeded();
+        if(totalExperience == 0) {
+            calculateTotalExperience();
+        }
+        changeRewardPage();
+        player.getPacketSender()
+                .sendString(49486, hasPremium() ? "Premium" : "Free")
+                .sendString(49487, player.getUsername())
+                .sendString(49488, String.valueOf(level+1))
+                .sendString(49489, String.valueOf(Math.min(MAX_LEVEL, level)))
+                .sendString(49490, String.valueOf(totalExperience))
+                .sendString(49479, exp + "/" + expNeeded)
+                .sendString(49500, "Resets: " + SeasonPassConfig.getInstance().getEndDate())
+                .sendSpriteChange(49470, hasPremium() ? 65535 : 3338)
+                .updateProgressBar(49471, (int) (((double) (expNeeded - exp) / (double) expNeeded) * 100));
+
+        if(hasClaimable()) {
+            player.getPacketSender().sendMessage("@red@You have some items ready to claim");
+        }
+
+        player.getPacketSender().sendInterface(INTERFACE_ID);
+    }
+
+    private void changeRewardPage() {
+        SeasonPassLevel[] spLevels = Arrays.copyOfRange(levels, page * 7, page * 7 + 7);
+        Item[] items = new Item[14];
+        for(int i = 0; i < items.length/2; i++) {
+            if(rewardsClaimed[i+(page*7)]) {
+                player.getPacketSender().sendSpriteChange(49472+i, 3341);
+            } else {
+                player.getPacketSender().sendSpriteChange(49472+i, 65535);
+            }
+            player.getPacketSender().sendString(49493+i, "Level " + (i+(page*7)+1));
+            items[i] = new Item(spLevels[i].getFreeItemId(), spLevels[i].getFreeAmount());
+            items[i+7] = new Item(spLevels[i].getPremiumItemId(), spLevels[i].getPremiumAmount());
+        }
+        player.getPacketSender().sendItemContainer(items, 49469);
     }
 }

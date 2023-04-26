@@ -1191,6 +1191,22 @@ public class PlayerLoading {
                 player.getEquipmentEnhancement().setSlotLevel(reader.get("slot-level").getAsLong());
             }
 
+            if(reader.has("sp-season")) {
+                player.getSeasonPass().setSeason(reader.get("sp-season").getAsInt());
+            }
+            if(reader.has("sp-premium")) {
+                player.getSeasonPass().setPremium(reader.get("sp-premium").getAsBoolean());
+            }
+            if(reader.has("sp-level")) {
+                player.getSeasonPass().setLevel(reader.get("sp-level").getAsInt());
+            }
+            if(reader.has("sp-exp")) {
+                player.getSeasonPass().setExp(reader.get("sp-exp").getAsInt());
+            }
+            if(reader.has("sp-rewards")) {
+                player.getSeasonPass().setRewardsClaimed(builder.fromJson(reader.get("sp-rewards").getAsJsonArray(), boolean[].class));
+            }
+
             /*
              * File rooms = new File("./data/saves/housing/rooms/" + player.getUsername() +
              * ".ser"); if (rooms.exists()) { FileInputStream fileIn = new

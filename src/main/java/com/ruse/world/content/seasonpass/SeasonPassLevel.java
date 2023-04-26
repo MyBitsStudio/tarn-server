@@ -1,13 +1,13 @@
 package com.ruse.world.content.seasonpass;
 
-public class SPLevel {
+public class SeasonPassLevel {
     private int freeItemId;
     private int freeAmount;
     private int premiumItemId;
     private int premiumAmount;
     private int expNeeded;
 
-    public SPLevel(int freeItemId, int freeAmount, int premiumItemId, int premiumAmount, int expNeeded) {
+    public SeasonPassLevel(int freeItemId, int freeAmount, int premiumItemId, int premiumAmount, int expNeeded) {
         this.freeItemId = freeItemId;
         this.freeAmount = freeAmount;
         this.premiumItemId = premiumItemId;
@@ -15,7 +15,7 @@ public class SPLevel {
         this.expNeeded = expNeeded;
     }
 
-    public SPLevel() {
+    public SeasonPassLevel() {
     }
 
     public int getFreeItemId() {

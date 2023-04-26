@@ -374,6 +374,12 @@ public class PlayerSaving {
 			object.addProperty("boost", player.getEquipmentEnhancement().getBoost());
 			object.addProperty("slot-level", player.getEquipmentEnhancement().getSlotLevel());
 
+			object.addProperty("sp-season", player.getSeasonPass().getSeason());
+			object.addProperty("sp-premium", player.getSeasonPass().isPremium());
+			object.addProperty("sp-level", player.getSeasonPass().getLevel());
+			object.addProperty("sp-exp", player.getSeasonPass().getExp());
+			object.add("sp-rewards", builder.toJsonTree(player.getSeasonPass().getRewardsClaimed()));
+
 			writer.write(builder.toJson(object));
 			writer.close();
 
