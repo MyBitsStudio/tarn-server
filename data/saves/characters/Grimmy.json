@@ -1,21 +1,21 @@
 {
-  "total-play-time-ms": 57817449,
+  "total-play-time-ms": 59529823,
   "username": "Grimmy",
   "password": "diftho",
   "email": "null",
-  "staff-rights": "GRACEFUL_DONATOR",
+  "staff-rights": "CLERIC_DONATOR",
   "game-mode": "NORMAL",
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 1640,
-    "y": 5604,
-    "z": 28
+    "x": 2223,
+    "y": 3759,
+    "z": 0
   },
   "online-status": "ON",
   "given-starter": true,
   "has-pin2": false,
-  "donated": 16,
+  "donated": 91,
   "current-boss-task": 0,
   "current-boss-amount": 0,
   "global-rate": 0,
@@ -38,14 +38,14 @@
   "timeUntilNextReward": 0,
   "current-voting-streak": 0,
   "entriesCurrency": 0.0,
-  "amount-donated-today": 6,
+  "amount-donated-today": 81,
   "claimed-first": false,
   "claimed-second": false,
   "claimed-third": false,
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682210569174,
+  "lastlogin": 1682295675279,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -56,12 +56,12 @@
   "day5claimed": false,
   "day6claimed": false,
   "day7claimed": false,
-  "minutes-bonus-exp": -1,
+  "minutes-bonus-exp": 21,
   "minutes-voting-dr": -1,
   "minutes-voting-dmg": 0,
   "total-gained-exp": -260586069,
   "barrows-points": 0,
-  "donator-points": 6,
+  "donator-points": 71,
   "Skilling-points": 0,
   "prestige-points": 0,
   "achievement-points": 0,
@@ -70,7 +70,7 @@
   "loyalty-points": 0,
   "total-loyalty-points": 0.0,
   "godmodetime": 0,
-  "voting-points": 5,
+  "voting-points": 8,
   "tasks-completion": [
     false,
     false,
@@ -138,7 +138,7 @@
   ],
   "total-prestiges": 0,
   "slayer-spree": 1,
-  "npc-killcount": 9104,
+  "npc-killcount": 9196,
   "spawn-killcount": 0,
   "lord-killcount": 0,
   "demon-killcount": 737,
@@ -173,8 +173,8 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 417560362,
-  "fight-type": "STAFF_POUND",
+  "last-veng": 1681879827307,
+  "fight-type": "SCYTHE_CHOP",
   "sol-effect": 0,
   "skull-timer": 0,
   "fuse-combination-timer": 0,
@@ -974,12 +974,22 @@
     {
       "npcId": 9836,
       "item": 995,
-      "amount": 12053
+      "amount": 12076
     },
     {
       "npcId": 9836,
       "item": 2023,
-      "amount": 54
+      "amount": 77
+    },
+    {
+      "npcId": 8013,
+      "item": 10946,
+      "amount": 5
+    },
+    {
+      "npcId": 8013,
+      "item": 23020,
+      "amount": 3
     }
   ],
   "holy-prayers-unlocked": [
@@ -1030,7 +1040,7 @@
       120,
       120,
       120,
-      1080,
+      1200,
       120,
       542,
       120,
@@ -1121,7 +1131,7 @@
     },
     {
       "id": 2023,
-      "amount": 1743,
+      "amount": 1883,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1191,7 +1201,7 @@
     },
     {
       "id": 995,
-      "amount": 1913031,
+      "amount": 3689031,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1210,8 +1220,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 1033,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1220,14 +1230,9 @@
       }
     },
     {
-      "id": 17664,
-      "amount": 1,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
+      "id": -1,
+      "amount": 0,
+      "slot": 0
     },
     {
       "id": 5023,
@@ -1242,12 +1247,7 @@
     {
       "id": -1,
       "amount": 0,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
+      "slot": 0
     },
     {
       "id": -1,
@@ -1367,13 +1367,13 @@
       }
     },
     {
-      "id": 22135,
+      "id": 17664,
       "amount": 1,
       "slot": 0,
       "bonus": {
-        "effect": "TRIPLE_KILLS",
-        "rarity": "MYTHIC",
-        "bonus": 1
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
       }
     },
     {
@@ -1381,9 +1381,9 @@
       "amount": 1,
       "slot": 0,
       "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
+        "effect": "TRIPLE_KILLS",
+        "rarity": "MYTHIC",
+        "bonus": 1
       }
     },
     {
@@ -1855,7 +1855,7 @@
     },
     {
       "id": 2023,
-      "amount": 117,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1915,7 +1915,7 @@
     },
     {
       "id": 1033,
-      "amount": 1,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1991,7 +1991,8 @@
     67290,
     7752026,
     1838959053,
-    75334
+    75334,
+    13837863569
   ],
   "ignores": [],
   "loyalty-titles": [
@@ -2171,10 +2172,10 @@
       "boss": false
     },
     {
-      "runningTotal": 150,
+      "runningTotal": 219,
       "npcId": 9836,
       "npcName": "Doomwatcher",
-      "amount": 150,
+      "amount": 219,
       "boss": false
     }
   ],
@@ -3017,7 +3018,7 @@
   "achievements-amount": [
     [
       0,
-      5,
+      8,
       100,
       0,
       100,
@@ -3032,7 +3033,7 @@
       161,
       172,
       100,
-      4413,
+      4436,
       13,
       0,
       0,
@@ -3119,8 +3120,8 @@
     ],
     [
       0,
-      5,
-      50,
+      8,
+      73,
       0,
       0,
       0,
@@ -3134,7 +3135,7 @@
       0,
       0,
       1000,
-      4413,
+      4436,
       0,
       0,
       0,
@@ -3221,7 +3222,7 @@
     ],
     [
       0,
-      5,
+      8,
       0,
       0,
       0,
@@ -3237,7 +3238,7 @@
       0,
       0,
       1060,
-      4413,
+      4436,
       0,
       0,
       0,
@@ -3834,7 +3835,7 @@
       false
     ]
   ],
-  "achievements-daily": 322,
+  "achievements-daily": 323,
   "progression-zones": [
     12,
     21,
@@ -3903,6 +3904,10 @@
       "hasClaimed": false
     },
     "202": {
+      "canClaim": false,
+      "hasClaimed": false
+    },
+    "8013": {
       "canClaim": false,
       "hasClaimed": false
     },
@@ -4017,6 +4022,7 @@
     "9028": 3,
     "9030": 1,
     "202": 4,
+    "8013": 0,
     "8014": 35,
     "9807": 1,
     "9815": 57,
@@ -4024,7 +4030,7 @@
     "6692": 6,
     "811": 7,
     "9835": 33,
-    "9836": 50,
+    "9836": 73,
     "9837": 12,
     "9838": 0,
     "9904": 0,

@@ -1,5 +1,9 @@
 {
+<<<<<<< Updated upstream
   "total-play-time-ms": 22105019,
+=======
+  "total-play-time-ms": 24760594,
+>>>>>>> Stashed changes
   "username": "Grimwhore",
   "password": "Dannat12",
   "email": "null",
@@ -8,15 +12,21 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
+<<<<<<< Updated upstream
     "x": 2222,
     "y": 3747,
     "z": 0
+=======
+    "x": 1641,
+    "y": 5606,
+    "z": 28
+>>>>>>> Stashed changes
   },
   "online-status": "ON",
   "given-starter": true,
   "has-pin2": true,
   "saved-pin2": "1212",
-  "saved-ip": "203.211.110.236",
+  "saved-ip": "122.56.209.244",
   "donated": 25,
   "current-boss-task": 0,
   "current-boss-amount": 0,
@@ -47,7 +57,11 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
+<<<<<<< Updated upstream
   "lastlogin": 1682500176002,
+=======
+  "lastlogin": 1682483819109,
+>>>>>>> Stashed changes
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -58,10 +72,17 @@
   "day5claimed": false,
   "day6claimed": false,
   "day7claimed": false,
+<<<<<<< Updated upstream
   "minutes-bonus-exp": 100,
   "minutes-voting-dr": -1,
   "minutes-voting-dmg": 0,
   "total-gained-exp": -1385488395,
+=======
+  "minutes-bonus-exp": 57,
+  "minutes-voting-dr": -1,
+  "minutes-voting-dmg": 0,
+  "total-gained-exp": -1365884830,
+>>>>>>> Stashed changes
   "barrows-points": 0,
   "donator-points": 15,
   "Skilling-points": 0,
@@ -139,8 +160,8 @@
     0
   ],
   "total-prestiges": 0,
-  "slayer-spree": 1,
-  "npc-killcount": 4807,
+  "slayer-spree": 4,
+  "npc-killcount": 6116,
   "spawn-killcount": 0,
   "lord-killcount": 0,
   "demon-killcount": 654,
@@ -175,7 +196,11 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
+<<<<<<< Updated upstream
   "last-veng": 1682177108273,
+=======
+  "last-veng": 344985584,
+>>>>>>> Stashed changes
   "fight-type": "STAFF_POUND",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -217,11 +242,11 @@
   "autocast-spell": 71,
   "dfs-charges": 0,
   "coins-gambled": 0,
-  "slayer-master": "EASY_SLAYER",
-  "slayer-task": "NO_TASK",
-  "prev-slayer-task": "IMPERIAL_PALADIN",
-  "task-amount": 0,
-  "task-streak": 1,
+  "slayer-master": "MEDIUM_SLAYER",
+  "slayer-task": "DOOMWATCHER",
+  "prev-slayer-task": "IG_THAUR",
+  "task-amount": 39,
+  "task-streak": 4,
   "duo-partner": "null",
   "double-slay-xp": false,
   "recoil-deg": 0,
@@ -421,17 +446,17 @@
     {
       "npcId": 9838,
       "item": 995,
-      "amount": 676
+      "amount": 718
     },
     {
       "npcId": 9838,
       "item": 2023,
-      "amount": 77
+      "amount": 119
     },
     {
       "npcId": 9838,
       "item": 20092,
-      "amount": 2
+      "amount": 3
     },
     {
       "npcId": 9838,
@@ -446,7 +471,7 @@
     {
       "npcId": 9838,
       "item": 20086,
-      "amount": 2
+      "amount": 4
     },
     {
       "npcId": 9838,
@@ -461,12 +486,12 @@
     {
       "npcId": 9845,
       "item": 995,
-      "amount": 775
+      "amount": 824
     },
     {
       "npcId": 9845,
       "item": 2023,
-      "amount": 76
+      "amount": 125
     },
     {
       "npcId": 9845,
@@ -476,12 +501,12 @@
     {
       "npcId": 9845,
       "item": 20088,
-      "amount": 2
+      "amount": 3
     },
     {
       "npcId": 9845,
       "item": 20089,
-      "amount": 1
+      "amount": 3
     },
     {
       "npcId": 9845,
@@ -496,7 +521,7 @@
     {
       "npcId": 9845,
       "item": 20092,
-      "amount": 1
+      "amount": 3
     },
     {
       "npcId": 9910,
@@ -836,12 +861,12 @@
     {
       "npcId": 9815,
       "item": 995,
-      "amount": 6342
+      "amount": 6359
     },
     {
       "npcId": 9815,
       "item": 2023,
-      "amount": 336
+      "amount": 353
     },
     {
       "npcId": 9815,
@@ -856,6 +881,96 @@
     {
       "npcId": 9815,
       "item": 21049,
+      "amount": 1
+    },
+    {
+      "npcId": 9817,
+      "item": 995,
+      "amount": 7314
+    },
+    {
+      "npcId": 9817,
+      "item": 2023,
+      "amount": 314
+    },
+    {
+      "npcId": 9817,
+      "item": 17664,
+      "amount": 2
+    },
+    {
+      "npcId": 9817,
+      "item": 23138,
+      "amount": 1
+    },
+    {
+      "npcId": 9817,
+      "item": 23137,
+      "amount": 1
+    },
+    {
+      "npcId": 9817,
+      "item": 23134,
+      "amount": 1
+    },
+    {
+      "npcId": 9920,
+      "item": 995,
+      "amount": 8369
+    },
+    {
+      "npcId": 9920,
+      "item": 2023,
+      "amount": 370
+    },
+    {
+      "npcId": 9920,
+      "item": 14915,
+      "amount": 2
+    },
+    {
+      "npcId": 9920,
+      "item": 14913,
+      "amount": 1
+    },
+    {
+      "npcId": 9920,
+      "item": 14910,
+      "amount": 2
+    },
+    {
+      "npcId": 9845,
+      "item": 20086,
+      "amount": 1
+    },
+    {
+      "npcId": 9845,
+      "item": 14487,
+      "amount": 1
+    },
+    {
+      "npcId": 9838,
+      "item": 20093,
+      "amount": 1
+    },
+    {
+      "npcId": 9838,
+      "item": 20089,
+      "amount": 1
+    },
+    {
+      "npcId": 9836,
+      "item": 995,
+      "amount": 12027
+    },
+    {
+      "npcId": 9836,
+      "item": 2023,
+      "amount": 28
+    },
+    {
+      "npcId": 9836,
+      "item": 15933,
       "amount": 1
     }
   ],
@@ -907,7 +1022,11 @@
       120,
       120,
       120,
+<<<<<<< Updated upstream
       1200,
+=======
+      990,
+>>>>>>> Stashed changes
       120,
       0,
       120,
@@ -916,13 +1035,13 @@
       1,
       1,
       1,
-      110,
+      114,
       1,
       1,
       1,
       1,
       1,
-      41,
+      76,
       1,
       1,
       1,
@@ -943,13 +1062,13 @@
       1,
       1,
       1,
-      110,
+      114,
       1,
       1,
       1,
       1,
       1,
-      41,
+      76,
       1,
       1,
       1,
@@ -970,13 +1089,13 @@
       0,
       0,
       0,
-      41880060,
+      60185990,
       0,
       0,
       0,
       0,
       0,
-      41830,
+      1339465,
       0,
       0,
       0,
@@ -988,7 +1107,11 @@
   "inventory": [
     {
       "id": 995,
+<<<<<<< Updated upstream
       "amount": 269,
+=======
+      "amount": 7338924,
+>>>>>>> Stashed changes
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1008,7 +1131,11 @@
     },
     {
       "id": 10835,
+<<<<<<< Updated upstream
       "amount": 37479,
+=======
+      "amount": 173045,
+>>>>>>> Stashed changes
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1018,7 +1145,11 @@
     },
     {
       "id": 2023,
+<<<<<<< Updated upstream
       "amount": 1840,
+=======
+      "amount": 2620,
+>>>>>>> Stashed changes
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1037,7 +1168,11 @@
       }
     },
     {
+<<<<<<< Updated upstream
       "id": 21049,
+=======
+      "id": 1033,
+>>>>>>> Stashed changes
       "amount": 1,
       "slot": 0,
       "bonus": {
@@ -1048,7 +1183,7 @@
     },
     {
       "id": 5023,
-      "amount": 29,
+      "amount": 259,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1067,8 +1202,23 @@
       }
     },
     {
+<<<<<<< Updated upstream
       "id": -1,
       "amount": 0,
+=======
+      "id": 14915,
+      "amount": 1,
+>>>>>>> Stashed changes
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
+    },
+    {
+      "id": 15933,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1087,18 +1237,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
-      "id": -1,
-      "amount": 0,
+      "id": 14487,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1309,7 +1449,7 @@
       }
     },
     {
-      "id": 15646,
+      "id": 19918,
       "amount": 1,
       "slot": 0,
       "bonus": {
@@ -1319,13 +1459,13 @@
       }
     },
     {
-      "id": 23056,
+      "id": 21049,
       "amount": 1,
       "slot": 0,
       "bonus": {
-        "effect": "DOUBLE_DROP",
-        "rarity": "RARE",
-        "bonus": 12
+        "effect": "MAGIC_DAMAGE",
+        "rarity": "UNCOMMON",
+        "bonus": 1
       }
     },
     {
@@ -1339,7 +1479,7 @@
       }
     },
     {
-      "id": 15647,
+      "id": 19913,
       "amount": 1,
       "slot": 0,
       "bonus": {
@@ -1369,7 +1509,7 @@
       }
     },
     {
-      "id": 13305,
+      "id": 23138,
       "amount": 1,
       "slot": 0,
       "bonus": {
@@ -1867,7 +2007,7 @@
     },
     {
       "id": 11137,
-      "amount": 5,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1887,7 +2027,7 @@
     },
     {
       "id": 1033,
-      "amount": 1,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1963,6 +2103,26 @@
         "effect": "ALL_DAMAGE_LOW",
         "rarity": "RARE",
         "bonus": 1
+      }
+    },
+    {
+      "id": 15647,
+      "amount": 1,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
+    },
+    {
+      "id": 15646,
+      "amount": 1,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
       }
     }
   ],
@@ -2072,17 +2232,17 @@
       "boss": false
     },
     {
-      "runningTotal": 77,
+      "runningTotal": 119,
       "npcId": 9838,
       "npcName": "Imperial Hound",
-      "amount": 77,
+      "amount": 119,
       "boss": false
     },
     {
-      "runningTotal": 76,
+      "runningTotal": 125,
       "npcId": 9845,
       "npcName": "Imperial Scorpion",
-      "amount": 76,
+      "amount": 125,
       "boss": false
     },
     {
@@ -2133,12 +2293,50 @@
       "npcName": "Oracle Lion",
       "amount": 0,
       "boss": false
+<<<<<<< Updated upstream
+=======
+    },
+    {
+      "runningTotal": 305,
+      "npcId": 811,
+      "npcName": "Nagendra",
+      "amount": 305,
+      "boss": true
+    },
+    {
+      "runningTotal": 304,
+      "npcId": 9815,
+      "npcName": "Kol\u0027gal",
+      "amount": 304,
+      "boss": false
+    },
+    {
+      "runningTotal": 314,
+      "npcId": 9817,
+      "npcName": "Yisdar",
+      "amount": 314,
+      "boss": false
+    },
+    {
+      "runningTotal": 370,
+      "npcId": 9920,
+      "npcName": "Ig\u0027thaur",
+      "amount": 370,
+      "boss": false
+    },
+    {
+      "runningTotal": 28,
+      "npcId": 9836,
+      "npcName": "Doomwatcher",
+      "amount": 28,
+      "boss": false
+>>>>>>> Stashed changes
     }
   ],
   "drops": [
     {
       "item": 995,
-      "amount": 14659442,
+      "amount": 14673442,
       "rareDrop": false
     },
     {
@@ -2942,15 +3140,122 @@
       228,
       206,
       305,
-      1,
-      287,
-      0,
-      0,
+      4,
+      304,
+      314,
+      370,
       0,
       0,
       100,
+<<<<<<< Updated upstream
       2547,
       14,
+=======
+      3367,
+      13,
+>>>>>>> Stashed changes
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      6,
+      28,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      4,
+      0,
+      0,
+      0,
+      0,
+      0,
+      592,
+      3367,
+      0,
       0,
       0,
       0,
@@ -3044,109 +3349,7 @@
       0,
       0,
       0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      592,
-      2547,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ],
-    [
-      0,
-      6,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
+      4,
       0,
       0,
       0,
@@ -3154,7 +3357,7 @@
       0,
       0,
       592,
-      2547,
+      3367,
       0,
       0,
       0,
@@ -3751,7 +3954,11 @@
       false
     ]
   ],
+<<<<<<< Updated upstream
   "achievements-daily": 326,
+=======
+  "achievements-daily": 325,
+>>>>>>> Stashed changes
   "progression-zones": [
     11,
     23,
@@ -3787,6 +3994,10 @@
   "lastInstanceNpc": -1,
   "daily-task": {},
   "collectionlog-rewards": {
+    "9920": {
+      "canClaim": false,
+      "hasClaimed": false
+    },
     "9922": {
       "canClaim": false,
       "hasClaimed": false
@@ -3803,10 +4014,6 @@
       "canClaim": false,
       "hasClaimed": false
     },
-    "6692": {
-      "canClaim": true,
-      "hasClaimed": true
-    },
     "9030": {
       "canClaim": true,
       "hasClaimed": true
@@ -3814,6 +4021,30 @@
     "202": {
       "canClaim": false,
       "hasClaimed": false
+    },
+    "8013": {
+      "canClaim": false,
+      "hasClaimed": false
+    },
+    "8014": {
+      "canClaim": true,
+      "hasClaimed": true
+    },
+    "9807": {
+      "canClaim": false,
+      "hasClaimed": false
+    },
+    "9815": {
+      "canClaim": false,
+      "hasClaimed": false
+    },
+    "9817": {
+      "canClaim": false,
+      "hasClaimed": false
+    },
+    "6692": {
+      "canClaim": true,
+      "hasClaimed": true
     },
     "811": {
       "canClaim": false,
@@ -3823,7 +4054,7 @@
       "canClaim": false,
       "hasClaimed": false
     },
-    "8013": {
+    "9836": {
       "canClaim": false,
       "hasClaimed": false
     },
@@ -3831,16 +4062,8 @@
       "canClaim": false,
       "hasClaimed": false
     },
-    "8014": {
-      "canClaim": true,
-      "hasClaimed": true
-    },
     "9838": {
-      "canClaim": false,
-      "hasClaimed": false
-    },
-    "9807": {
-      "canClaim": false,
+      "canClaim": true,
       "hasClaimed": false
     },
     "9904": {
@@ -3860,14 +4083,10 @@
       "hasClaimed": false
     },
     "9845": {
-      "canClaim": false,
+      "canClaim": true,
       "hasClaimed": false
     },
     "9910": {
-      "canClaim": false,
-      "hasClaimed": false
-    },
-    "9815": {
       "canClaim": false,
       "hasClaimed": false
     },
@@ -3905,27 +4124,30 @@
     null
   ],
   "drystreak": {
+    "9920": 37,
     "9922": 27,
     "8003": 4,
     "9027": 7,
     "9028": 5,
-    "6692": 2,
     "9030": 9,
     "202": 32,
+    "8013": 0,
+    "8014": 1,
+    "9807": 0,
+    "9815": 34,
+    "9817": 51,
+    "6692": 2,
     "811": 56,
     "9835": 33,
-    "8013": 0,
+    "9836": 0,
     "9837": 1,
-    "8014": 1,
-    "9838": 3,
-    "9807": 0,
+    "9838": 2,
     "9904": 0,
     "9906": 0,
     "9907": 0,
     "9908": 0,
-    "9845": 2,
+    "9845": 1,
     "9910": 0,
-    "9815": 17,
     "9911": 35
   },
   "boost": 0,

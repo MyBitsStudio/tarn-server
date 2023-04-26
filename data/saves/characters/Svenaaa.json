@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 43641177,
+  "total-play-time-ms": 44131372,
   "username": "Svenaaa",
   "password": "rachelxx1",
   "email": "null",
@@ -8,15 +8,15 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2213,
-    "y": 3766,
-    "z": 0
+    "x": 2610,
+    "y": 2576,
+    "z": 12
   },
   "online-status": "ON",
   "given-starter": true,
   "has-pin2": true,
   "saved-pin2": "1969",
-  "saved-ip": "87.119.179.190",
+  "saved-ip": "87.119.179.156",
   "donated": 34,
   "current-boss-task": 0,
   "current-boss-amount": 0,
@@ -47,7 +47,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682246868003,
+  "lastlogin": 1682347438736,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -140,7 +140,7 @@
   ],
   "total-prestiges": 0,
   "slayer-spree": 17,
-  "npc-killcount": 22395,
+  "npc-killcount": 22527,
   "spawn-killcount": 0,
   "lord-killcount": 0,
   "demon-killcount": 576,
@@ -175,7 +175,7 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 155735331,
+  "last-veng": 1682192193616,
   "fight-type": "STAFF_POUND",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -1211,7 +1211,7 @@
     {
       "npcId": 9839,
       "item": 995,
-      "amount": 50060
+      "amount": 50093
     }
   ],
   "holy-prayers-unlocked": [
@@ -1264,7 +1264,7 @@
       100,
       1200,
       120,
-      555,
+      619,
       120,
       1,
       1,
@@ -1357,8 +1357,8 @@
       "slot": 0
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 23020,
+      "amount": 3,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1598,7 +1598,7 @@
     },
     {
       "id": 995,
-      "amount": 39644749,
+      "amount": 1450749,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1608,7 +1608,7 @@
     },
     {
       "id": 10835,
-      "amount": 108795,
+      "amount": 698639,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -2396,10 +2396,10 @@
       "boss": true
     },
     {
-      "runningTotal": 183,
+      "runningTotal": 282,
       "npcId": 9839,
       "npcName": "Mutant Hydra",
-      "amount": 183,
+      "amount": 282,
       "boss": false
     }
   ],
@@ -3304,7 +3304,7 @@
       335,
       438,
       148,
-      8302,
+      8335,
       0,
       0,
       0,
@@ -3393,7 +3393,7 @@
       0,
       9,
       337,
-      61,
+      94,
       0,
       0,
       0,
@@ -3407,7 +3407,7 @@
       0,
       0,
       148,
-      8302,
+      8335,
       0,
       0,
       0,
@@ -4004,7 +4004,7 @@
       false
     ]
   ],
-  "achievements-daily": 323,
+  "achievements-daily": 324,
   "progression-zones": [
     11,
     20,
@@ -4265,7 +4265,7 @@
     "9836": 19,
     "9837": 11,
     "9838": 5,
-    "9839": 61,
+    "9839": 94,
     "9904": 0,
     "3313": 1,
     "1906": 119,

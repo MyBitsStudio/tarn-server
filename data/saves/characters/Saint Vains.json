@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 20960205,
+  "total-play-time-ms": 21040599,
   "username": "Saint Vains",
   "password": "noob",
   "email": "null",
@@ -8,8 +8,8 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2225,
-    "y": 3730,
+    "x": 2222,
+    "y": 3744,
     "z": 0
   },
   "online-status": "ON",
@@ -45,7 +45,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682278442783,
+  "lastlogin": 1682279937349,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -56,8 +56,8 @@
   "day5claimed": false,
   "day6claimed": false,
   "day7claimed": false,
-  "minutes-bonus-exp": 1373,
-  "minutes-voting-dr": 9,
+  "minutes-bonus-exp": 1372,
+  "minutes-voting-dr": 8,
   "minutes-voting-dmg": 0,
   "total-gained-exp": 591744549,
   "barrows-points": 0,
@@ -173,8 +173,8 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 432470005,
-  "fight-type": "STAFF_POUND",
+  "last-veng": 1681847547751,
+  "fight-type": "UNARMED_KICK",
   "sol-effect": 0,
   "skull-timer": 0,
   "fuse-combination-timer": 0,
@@ -212,7 +212,7 @@
   "process-farming": false,
   "clanchat": "Help",
   "autocast": false,
-  "autocast-spell": 1154,
+  "autocast-spell": -1,
   "dfs-charges": 0,
   "coins-gambled": 0,
   "slayer-master": "HARD_SLAYER",
@@ -791,7 +791,7 @@
   "inventory": [
     {
       "id": 995,
-      "amount": 100540689,
+      "amount": 689,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -851,7 +851,7 @@
     },
     {
       "id": 10835,
-      "amount": 1068980,
+      "amount": 1169520,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1067,14 +1067,9 @@
       }
     },
     {
-      "id": 4071,
-      "amount": 1,
-      "slot": 0,
-      "bonus": {
-        "effect": "AOE_EFFECT",
-        "rarity": "MYTHIC",
-        "bonus": 2
-      }
+      "id": -1,
+      "amount": 0,
+      "slot": 0
     },
     {
       "id": 15646,

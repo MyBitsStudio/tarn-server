@@ -15,10 +15,38 @@
       "price": 300000,
       "effect": "NOTHING",
       "bonus": 0
+<<<<<<< Updated upstream
     },
     null,
     null,
     null,
+=======
+    },
+    {
+      "id": 13964,
+      "amount": 2,
+      "maxAmount": 2,
+      "price": 300000,
+      "effect": "MAGIC_DAMAGE",
+      "bonus": 1
+    },
+    {
+      "id": 19913,
+      "amount": 1,
+      "maxAmount": 1,
+      "price": 700000,
+      "effect": "TRIPLE_KILLS",
+      "bonus": 1
+    },
+    {
+      "id": 19913,
+      "amount": 1,
+      "maxAmount": 1,
+      "price": 300000,
+      "effect": "DOUBLE_DROP",
+      "bonus": 11
+    },
+>>>>>>> Stashed changes
     null,
     null,
     null,
@@ -47,5 +75,9 @@
     null,
     null
   ],
+<<<<<<< Updated upstream
   "earnings": 300000
+=======
+  "earnings": 940000
+>>>>>>> Stashed changes
 }

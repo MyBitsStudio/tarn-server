@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 3567015,
+  "total-play-time-ms": 3815404,
   "username": "Catdog",
   "password": "Asduhas12",
   "email": "null",
@@ -8,8 +8,8 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2222,
-    "y": 3747,
+    "x": 2213,
+    "y": 3765,
     "z": 0
   },
   "online-status": "ON",
@@ -47,7 +47,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682249965223,
+  "lastlogin": 1682441572136,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -58,10 +58,10 @@
   "day5claimed": false,
   "day6claimed": false,
   "day7claimed": false,
-  "minutes-bonus-exp": 437,
-  "minutes-voting-dr": 29,
+  "minutes-bonus-exp": 433,
+  "minutes-voting-dr": 25,
   "minutes-voting-dmg": 0,
-  "total-gained-exp": 300142440,
+  "total-gained-exp": 303171664,
   "barrows-points": 0,
   "donator-points": 30,
   "Skilling-points": 0,
@@ -82,7 +82,7 @@
     false
   ],
   "tasks-progress": [
-    893,
+    914,
     0,
     0,
     0,
@@ -140,10 +140,10 @@
   ],
   "total-prestiges": 0,
   "slayer-spree": 4,
-  "npc-killcount": 1786,
+  "npc-killcount": 1828,
   "spawn-killcount": 0,
   "lord-killcount": 0,
-  "demon-killcount": 15,
+  "demon-killcount": 36,
   "dragon-killcount": 0,
   "beast-killcount": 0,
   "king-killcount": 0,
@@ -175,7 +175,7 @@
   "auto-retaliate": false,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 1682197478549,
+  "last-veng": 244341987,
   "fight-type": "BSOAT_RAPID",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -192,9 +192,9 @@
   "dr-timer": 0,
   "ddr-timer": 0,
   "dmg-timer": 0,
-  "double-dr-timer": 364,
+  "double-dr-timer": 0,
   "double-ddr-timer": 0,
-  "double-dmg-timer": 363,
+  "double-dmg-timer": 0,
   "fire-immunity": 0,
   "fire-damage-mod": 0,
   "prayer-renewal-timer": 0,
@@ -661,16 +661,21 @@
     {
       "npcId": 8014,
       "item": 995,
-      "amount": 2015
+      "amount": 2036
     },
     {
       "npcId": 8014,
       "item": 2023,
-      "amount": 15
+      "amount": 36
     },
     {
       "npcId": 9838,
       "item": 20092,
+      "amount": 1
+    },
+    {
+      "npcId": 8014,
+      "item": 23055,
       "amount": 1
     }
   ],
@@ -719,19 +724,19 @@
   ],
   "skills": {
     "level": [
-      7,
-      90,
-      17,
+      134,
+      134,
+      134,
       1200,
-      120,
-      750,
-      93,
+      134,
+      376,
+      134,
       1,
       1,
       1,
       1,
       1,
-      47,
+      48,
       1,
       1,
       1,
@@ -758,7 +763,7 @@
       1,
       1,
       1,
-      47,
+      48,
       1,
       1,
       1,
@@ -776,8 +781,8 @@
       655,
       5610734,
       3444,
-      130634665,
-      154439953,
+      131957110,
+      156140298,
       1312946,
       7905990,
       0,
@@ -785,7 +790,7 @@
       0,
       0,
       0,
-      78042,
+      84476,
       0,
       0,
       0,
@@ -823,7 +828,7 @@
     },
     {
       "id": 10835,
-      "amount": 15837,
+      "amount": 15936,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -882,8 +887,8 @@
       }
     },
     {
-      "id": 20086,
-      "amount": 1,
+      "id": -1,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -943,7 +948,7 @@
     },
     {
       "id": 995,
-      "amount": 4854,
+      "amount": 854,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1671,22 +1676,22 @@
       "boss": false
     },
     {
-      "runningTotal": 15,
+      "runningTotal": 36,
       "npcId": 8014,
       "npcName": "Zinqrux",
-      "amount": 15,
+      "amount": 36,
       "boss": false
     }
   ],
   "drops": [
     {
       "item": 995,
-      "amount": 8175504,
+      "amount": 8217504,
       "rareDrop": false
     },
     {
       "item": 2023,
-      "amount": 1526,
+      "amount": 1547,
       "rareDrop": false
     },
     {
@@ -1756,6 +1761,11 @@
     },
     {
       "item": 20091,
+      "amount": 1,
+      "rareDrop": false
+    },
+    {
+      "item": 23055,
       "amount": 1,
       "rareDrop": false
     }
@@ -2441,7 +2451,7 @@
       33,
       0,
       0,
-      15,
+      36,
       0,
       0,
       0,
@@ -2452,7 +2462,7 @@
       0,
       0,
       100,
-      893,
+      914,
       3,
       0,
       0,
@@ -2554,7 +2564,7 @@
       0,
       0,
       112,
-      893,
+      914,
       0,
       0,
       0,
@@ -2657,7 +2667,7 @@
       0,
       0,
       112,
-      893,
+      914,
       0,
       0,
       0,
@@ -3254,7 +3264,7 @@
       false
     ]
   ],
-  "achievements-daily": 323,
+  "achievements-daily": 325,
   "progression-zones": [
     18,
     24,
@@ -3387,7 +3397,7 @@
     "9835": 8,
     "8013": 0,
     "9837": 1,
-    "8014": 15,
+    "8014": 20,
     "9838": 7,
     "9807": 7,
     "9904": 0,

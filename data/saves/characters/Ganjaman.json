@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 83185902,
+  "total-play-time-ms": 84624676,
   "username": "Ganjaman",
   "password": "asdasd112",
   "email": "null",
@@ -8,16 +8,16 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2139,
-    "y": 5018,
-    "z": 12
+    "x": 2235,
+    "y": 3745,
+    "z": 0
   },
   "online-status": "ON",
   "given-starter": true,
   "has-pin2": true,
   "saved-pin2": "1992",
   "saved-ip": "80.197.100.123",
-  "donated": 22,
+  "donated": 27,
   "current-boss-task": 0,
   "current-boss-amount": 0,
   "global-rate": 0,
@@ -40,14 +40,14 @@
   "timeUntilNextReward": 0,
   "current-voting-streak": 0,
   "entriesCurrency": 0.0,
-  "amount-donated-today": 22,
+  "amount-donated-today": 27,
   "claimed-first": false,
   "claimed-second": false,
   "claimed-third": false,
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682251395653,
+  "lastlogin": 1682428290644,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -58,12 +58,12 @@
   "day5claimed": false,
   "day6claimed": false,
   "day7claimed": false,
-  "minutes-bonus-exp": -1,
+  "minutes-bonus-exp": 68,
   "minutes-voting-dr": -1,
   "minutes-voting-dmg": 0,
   "total-gained-exp": -1360081031,
   "barrows-points": 0,
-  "donator-points": 22,
+  "donator-points": 27,
   "Skilling-points": 0,
   "prestige-points": 0,
   "achievement-points": 0,
@@ -72,7 +72,7 @@
   "loyalty-points": 0,
   "total-loyalty-points": 0.0,
   "godmodetime": 0,
-  "voting-points": 11,
+  "voting-points": 14,
   "tasks-completion": [
     false,
     false,
@@ -175,7 +175,7 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 182084645,
+  "last-veng": 1682247644786,
   "fight-type": "STAFF_BASH",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -356,12 +356,12 @@
     {
       "npcId": 8013,
       "item": 10946,
-      "amount": 7
+      "amount": 8
     },
     {
       "npcId": 8013,
       "item": 23020,
-      "amount": 5
+      "amount": 6
     },
     {
       "npcId": 9907,
@@ -566,7 +566,7 @@
   ],
   "holy-prayers-unlocked": [
     false,
-    false,
+    true,
     false,
     false,
     false,
@@ -723,7 +723,7 @@
     },
     {
       "id": 995,
-      "amount": 44769977,
+      "amount": 46269977,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -2670,7 +2670,7 @@
     ],
     [
       0,
-      11,
+      14,
       60,
       0,
       74,
@@ -2772,7 +2772,7 @@
     ],
     [
       0,
-      11,
+      14,
       0,
       0,
       0,
@@ -3385,7 +3385,7 @@
       false
     ]
   ],
-  "achievements-daily": 323,
+  "achievements-daily": 325,
   "progression-zones": [
     11,
     21,

@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 22539555,
+  "total-play-time-ms": 23419158,
   "username": "Al Faed",
   "password": "123qwe123",
   "email": "null",
@@ -8,7 +8,7 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2706,
+    "x": 2708,
     "y": 4759,
     "z": 52
   },
@@ -45,7 +45,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682251788034,
+  "lastlogin": 1682413075308,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -138,7 +138,7 @@
   ],
   "total-prestiges": 0,
   "slayer-spree": 0,
-  "npc-killcount": 18523,
+  "npc-killcount": 18695,
   "spawn-killcount": 0,
   "lord-killcount": 0,
   "demon-killcount": 816,
@@ -173,7 +173,7 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 1682010296303,
+  "last-veng": 403658614,
   "fight-type": "STAFF_BASH",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -464,12 +464,12 @@
     {
       "npcId": 9906,
       "item": 995,
-      "amount": 1095863
+      "amount": 1095864
     },
     {
       "npcId": 9906,
       "item": 2023,
-      "amount": 38
+      "amount": 39
     },
     {
       "npcId": 9845,
@@ -1094,12 +1094,12 @@
     {
       "npcId": 1906,
       "item": 995,
-      "amount": 16005
+      "amount": 16049
     },
     {
       "npcId": 1906,
       "item": 2023,
-      "amount": 6
+      "amount": 49
     }
   ],
   "holy-prayers-unlocked": [
@@ -1150,9 +1150,9 @@
       105,
       100,
       100,
-      1040,
+      1110,
       1,
-      891,
+      809,
       120,
       1,
       1,
@@ -1231,7 +1231,7 @@
   "inventory": [
     {
       "id": 2023,
-      "amount": 8438,
+      "amount": 8506,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1241,7 +1241,7 @@
     },
     {
       "id": 995,
-      "amount": 12165225,
+      "amount": 464538,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1251,7 +1251,7 @@
     },
     {
       "id": 10835,
-      "amount": 570002,
+      "amount": 884669,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1260,8 +1260,8 @@
       }
     },
     {
-      "id": 11137,
-      "amount": 3,
+      "id": -1,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -2145,7 +2145,7 @@
     },
     {
       "id": 11137,
-      "amount": 6,
+      "amount": 9,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -2491,17 +2491,17 @@
       "boss": false
     },
     {
-      "runningTotal": 18,
+      "runningTotal": 147,
       "npcId": 1906,
       "npcName": "Zorbak",
-      "amount": 18,
+      "amount": 147,
       "boss": false
     }
   ],
   "drops": [
     {
       "item": 995,
-      "amount": 68651327,
+      "amount": 68683327,
       "rareDrop": false
     },
     {
@@ -3343,7 +3343,7 @@
       180,
       100,
       5000,
-      14,
+      15,
       0,
       0,
       0,
@@ -3434,7 +3434,7 @@
       171,
       179,
       182,
-      6,
+      49,
       0,
       0,
       0,
@@ -3444,7 +3444,7 @@
       0,
       0,
       1000,
-      7536,
+      7579,
       0,
       0,
       0,
@@ -3547,7 +3547,7 @@
       0,
       0,
       2276,
-      7536,
+      7579,
       0,
       0,
       0,
@@ -4144,7 +4144,7 @@
       false
     ]
   ],
-  "achievements-daily": 323,
+  "achievements-daily": 325,
   "progression-zones": [
     10,
     20,
@@ -4381,7 +4381,7 @@
     "9838": 2,
     "9904": 0,
     "3313": 9,
-    "1906": 6,
+    "1906": 49,
     "9906": 0,
     "9907": 0,
     "9908": 0,

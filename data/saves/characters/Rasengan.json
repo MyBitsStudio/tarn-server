@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 42068704,
+  "total-play-time-ms": 45051889,
   "username": "Rasengan",
   "password": "ilikeppk88",
   "email": "null",
@@ -8,9 +8,9 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2580,
-    "y": 2574,
-    "z": 16
+    "x": 2222,
+    "y": 3747,
+    "z": 0
   },
   "online-status": "ON",
   "given-starter": true,
@@ -47,7 +47,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682028829804,
+  "lastlogin": 1682342373554,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -140,7 +140,7 @@
   ],
   "total-prestiges": 0,
   "slayer-spree": 3,
-  "npc-killcount": 26895,
+  "npc-killcount": 29424,
   "spawn-killcount": 0,
   "lord-killcount": 0,
   "demon-killcount": 536,
@@ -175,7 +175,7 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 268797927,
+  "last-veng": 327040171,
   "fight-type": "LONGBOW_RAPID",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -601,22 +601,22 @@
     {
       "npcId": 8013,
       "item": 10946,
-      "amount": 18
+      "amount": 20
     },
     {
       "npcId": 8013,
       "item": 23020,
-      "amount": 16
+      "amount": 18
     },
     {
       "npcId": 9906,
       "item": 995,
-      "amount": 2290925
+      "amount": 2290927
     },
     {
       "npcId": 9906,
       "item": 2023,
-      "amount": 49
+      "amount": 51
     },
     {
       "npcId": 9028,
@@ -816,12 +816,12 @@
     {
       "npcId": 9908,
       "item": 10946,
-      "amount": 7
+      "amount": 8
     },
     {
       "npcId": 9908,
       "item": 2023,
-      "amount": 304
+      "amount": 305
     },
     {
       "npcId": 811,
@@ -856,12 +856,12 @@
     {
       "npcId": 9907,
       "item": 10946,
-      "amount": 9
+      "amount": 10
     },
     {
       "npcId": 9907,
       "item": 2023,
-      "amount": 109
+      "amount": 110
     },
     {
       "npcId": 9817,
@@ -1176,7 +1176,12 @@
     {
       "npcId": 9806,
       "item": 995,
-      "amount": 52155
+      "amount": 52346
+    },
+    {
+      "npcId": 9816,
+      "item": 995,
+      "amount": 54200
     }
   ],
   "holy-prayers-unlocked": [
@@ -1227,9 +1232,9 @@
       120,
       120,
       120,
-      1200,
+      720,
       120,
-      751,
+      941,
       120,
       1,
       1,
@@ -1312,8 +1317,8 @@
       "slot": 0
     },
     {
-      "id": 3026,
-      "amount": 1,
+      "id": -1,
+      "amount": 0,
       "slot": 0
     },
     {
@@ -1337,18 +1342,13 @@
       }
     },
     {
-      "id": 3024,
+      "id": 3026,
       "amount": 1,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
+      "slot": 0
     },
     {
-      "id": 3024,
-      "amount": 1,
+      "id": -1,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1468,7 +1468,7 @@
     },
     {
       "id": 995,
-      "amount": 6916782,
+      "amount": 108126,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1508,7 +1508,7 @@
     },
     {
       "id": 10835,
-      "amount": 15743,
+      "amount": 1401198,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1518,7 +1518,7 @@
     },
     {
       "id": 2023,
-      "amount": 6557,
+      "amount": 7007,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1549,7 +1549,7 @@
   ],
   "equipment": [
     {
-      "id": 8828,
+      "id": 4684,
       "amount": 1,
       "slot": 0,
       "bonus": {
@@ -1619,7 +1619,7 @@
       }
     },
     {
-      "id": 15647,
+      "id": 4686,
       "amount": 1,
       "slot": 0,
       "bonus": {
@@ -2234,16 +2234,6 @@
         "rarity": "COMMON",
         "bonus": 0
       }
-    },
-    {
-      "id": 4686,
-      "amount": 1,
-      "slot": 0,
-      "bonus": {
-        "effect": "ALL_DAMAGE_LOW",
-        "rarity": "RARE",
-        "bonus": 1
-      }
     }
   ],
   "bank-1": [],
@@ -2294,7 +2284,8 @@
     610,
     75334,
     19834795,
-    18328715979
+    18328715979,
+    77800694409511
   ],
   "ignores": [],
   "loyalty-titles": [
@@ -2579,17 +2570,24 @@
       "boss": false
     },
     {
-      "runningTotal": 488,
+      "runningTotal": 1244,
       "npcId": 9806,
       "npcName": "Gorvek",
-      "amount": 488,
+      "amount": 1244,
+      "boss": false
+    },
+    {
+      "runningTotal": 804,
+      "npcId": 9816,
+      "npcName": "Dragonite",
+      "amount": 804,
       "boss": false
     }
   ],
   "drops": [
     {
       "item": 995,
-      "amount": 133866374,
+      "amount": 134074374,
       "rareDrop": false
     },
     {
@@ -3396,7 +3394,7 @@
       500,
       56,
       5000,
-      40,
+      44,
       0,
       0,
       0,
@@ -3497,7 +3495,7 @@
       339,
       350,
       56,
-      9374,
+      9764,
       0,
       0,
       0,
@@ -3587,8 +3585,8 @@
       5,
       430,
       326,
-      122,
-      0,
+      311,
+      201,
       0,
       0,
       0,
@@ -3600,7 +3598,7 @@
       0,
       0,
       56,
-      9374,
+      9764,
       0,
       0,
       0,
@@ -4197,7 +4195,7 @@
       false
     ]
   ],
-  "achievements-daily": 320,
+  "achievements-daily": 324,
   "progression-zones": [
     12,
     23,
@@ -4298,6 +4296,10 @@
       "hasClaimed": false
     },
     "9815": {
+      "canClaim": false,
+      "hasClaimed": false
+    },
+    "9816": {
       "canClaim": false,
       "hasClaimed": false
     },
@@ -4451,10 +4453,11 @@
     "8008": 54,
     "202": 64,
     "8013": 0,
-    "9806": 122,
+    "9806": 311,
     "8014": 3,
     "9807": 8,
     "9815": 34,
+    "9816": 201,
     "9817": 8,
     "92": 92,
     "6692": 3,

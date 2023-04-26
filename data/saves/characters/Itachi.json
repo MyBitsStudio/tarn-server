@@ -1,5 +1,9 @@
 {
+<<<<<<< Updated upstream
   "total-play-time-ms": 185247769,
+=======
+  "total-play-time-ms": 266293980,
+>>>>>>> Stashed changes
   "username": "Itachi",
   "password": "haroon",
   "email": "null",
@@ -16,7 +20,7 @@
   "given-starter": true,
   "has-pin2": true,
   "saved-pin2": "2726",
-  "saved-ip": "2.49.71.252",
+  "saved-ip": "2.49.93.220",
   "donated": 0,
   "current-boss-task": 0,
   "current-boss-amount": 0,
@@ -47,7 +51,11 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
+<<<<<<< Updated upstream
   "lastlogin": 1682499839403,
+=======
+  "lastlogin": 1682495361239,
+>>>>>>> Stashed changes
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -61,7 +69,7 @@
   "minutes-bonus-exp": 0,
   "minutes-voting-dr": 0,
   "minutes-voting-dmg": 0,
-  "total-gained-exp": 1535974310,
+  "total-gained-exp": 2000002315,
   "barrows-points": 0,
   "donator-points": 0,
   "Skilling-points": 0,
@@ -175,7 +183,11 @@
   "auto-retaliate": false,
   "xp-locked": false,
   "veng-cast": false,
+<<<<<<< Updated upstream
   "last-veng": 151424576,
+=======
+  "last-veng": 249795707,
+>>>>>>> Stashed changes
   "fight-type": "BATTLEAXE_CHOP",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -446,7 +458,7 @@
       0,
       0,
       0,
-      1535974310,
+      2000000000,
       0,
       0,
       0,
@@ -462,7 +474,7 @@
   "inventory": [
     {
       "id": 5020,
-      "amount": 1557400,
+      "amount": 22600,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -532,7 +544,7 @@
     },
     {
       "id": 17634,
-      "amount": 65500,
+      "amount": 471900,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -543,7 +555,12 @@
     {
       "id": -1,
       "amount": 0,
-      "slot": 0
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
     },
     {
       "id": 22084,
@@ -618,7 +635,12 @@
     {
       "id": -1,
       "amount": 0,
-      "slot": 0
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
     },
     {
       "id": -1,
@@ -1212,7 +1234,10 @@
     0,
     0
   ],
-  "friends": [],
+  "friends": [
+    1950025,
+    1429959732002
+  ],
   "ignores": [],
   "loyalty-titles": [
     false,

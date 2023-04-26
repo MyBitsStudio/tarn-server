@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 56648040,
+  "total-play-time-ms": 58696432,
   "username": "Veraces",
   "password": "ayknuzmep1832",
   "email": "null",
@@ -8,7 +8,7 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2227,
+    "x": 2221,
     "y": 3762,
     "z": 0
   },
@@ -47,7 +47,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682236178805,
+  "lastlogin": 1682431037403,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -61,7 +61,7 @@
   "minutes-bonus-exp": 0,
   "minutes-voting-dr": 0,
   "minutes-voting-dmg": 0,
-  "total-gained-exp": 1317966789,
+  "total-gained-exp": 1357558761,
   "barrows-points": 0,
   "donator-points": 0,
   "Skilling-points": 0,
@@ -82,7 +82,7 @@
     false
   ],
   "tasks-progress": [
-    891,
+    896,
     0,
     0,
     0,
@@ -140,10 +140,10 @@
   ],
   "total-prestiges": 0,
   "slayer-spree": 18,
-  "npc-killcount": 1721,
+  "npc-killcount": 1731,
   "spawn-killcount": 0,
   "lord-killcount": 0,
-  "demon-killcount": 237,
+  "demon-killcount": 239,
   "dragon-killcount": 0,
   "beast-killcount": 0,
   "king-killcount": 0,
@@ -175,7 +175,7 @@
   "auto-retaliate": false,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 368591065,
+  "last-veng": 1681985875971,
   "fight-type": "WARHAMMER_PUMMEL",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -218,9 +218,9 @@
   "dfs-charges": 0,
   "coins-gambled": 0,
   "slayer-master": "MEDIUM_SLAYER",
-  "slayer-task": "NO_TASK",
+  "slayer-task": "ERAGON",
   "prev-slayer-task": "KOL_GAL",
-  "task-amount": 0,
+  "task-amount": 61,
   "task-streak": 18,
   "duo-partner": "null",
   "double-slay-xp": false,
@@ -386,12 +386,12 @@
     {
       "npcId": 9906,
       "item": 995,
-      "amount": 1398669
+      "amount": 1398670
     },
     {
       "npcId": 9906,
       "item": 2023,
-      "amount": 34
+      "amount": 35
     },
     {
       "npcId": 9904,
@@ -476,12 +476,12 @@
     {
       "npcId": 8014,
       "item": 995,
-      "amount": 2299
+      "amount": 2301
     },
     {
       "npcId": 8014,
       "item": 2023,
-      "amount": 314
+      "amount": 316
     },
     {
       "npcId": 9845,
@@ -652,6 +652,16 @@
       "npcId": 8013,
       "item": 23020,
       "amount": 6
+    },
+    {
+      "npcId": 9026,
+      "item": 995,
+      "amount": 11002
+    },
+    {
+      "npcId": 9026,
+      "item": 2023,
+      "amount": 3
     }
   ],
   "holy-prayers-unlocked": [
@@ -699,13 +709,13 @@
   ],
   "skills": {
     "level": [
-      132,
-      132,
-      132,
+      120,
+      120,
+      120,
       1200,
-      132,
-      526,
-      132,
+      120,
+      53,
+      1,
       1,
       1,
       1,
@@ -755,8 +765,8 @@
     "experience": [
       111775086,
       107471404,
-      192981600,
-      702142237,
+      215250473,
+      719462399,
       202160769,
       1112512,
       0,
@@ -771,7 +781,7 @@
       0,
       0,
       0,
-      322391,
+      325328,
       0,
       0,
       0,
@@ -1003,7 +1013,7 @@
     },
     {
       "id": 2023,
-      "amount": 1947,
+      "amount": 1977,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1033,7 +1043,7 @@
     },
     {
       "id": 10835,
-      "amount": 583818,
+      "amount": 784818,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1043,7 +1053,7 @@
     },
     {
       "id": 995,
-      "amount": 4453079,
+      "amount": 6266782,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1149,7 +1159,7 @@
       }
     },
     {
-      "id": 23054,
+      "id": 15201,
       "amount": 1,
       "slot": 0,
       "bonus": {
@@ -1777,7 +1787,7 @@
     },
     {
       "id": 23054,
-      "amount": 1,
+      "amount": 2,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -2091,10 +2101,10 @@
       "boss": false
     },
     {
-      "runningTotal": 237,
+      "runningTotal": 239,
       "npcId": 8014,
       "npcName": "Zinqrux",
-      "amount": 237,
+      "amount": 239,
       "boss": false
     },
     {
@@ -2123,6 +2133,13 @@
       "npcId": 9815,
       "npcName": "Kol\u0027gal",
       "amount": 61,
+      "boss": false
+    },
+    {
+      "runningTotal": 3,
+      "npcId": 9026,
+      "npcName": "Eragon",
+      "amount": 3,
       "boss": false
     }
   ],
@@ -2879,7 +2896,7 @@
       0,
       0,
       0,
-      237,
+      239,
       0,
       0,
       0,
@@ -2890,8 +2907,8 @@
       0,
       0,
       100,
-      891,
-      13,
+      896,
+      14,
       0,
       0,
       0,
@@ -2992,7 +3009,7 @@
       0,
       0,
       200,
-      891,
+      896,
       0,
       0,
       0,
@@ -3095,7 +3112,7 @@
       0,
       0,
       200,
-      891,
+      896,
       0,
       0,
       0,
@@ -3692,7 +3709,7 @@
       false
     ]
   ],
-  "achievements-daily": 323,
+  "achievements-daily": 325,
   "progression-zones": [
     10,
     20,
@@ -3741,6 +3758,10 @@
     }
   },
   "collectionlog-rewards": {
+    "9026": {
+      "canClaim": false,
+      "hasClaimed": false
+    },
     "9027": {
       "canClaim": false,
       "hasClaimed": false
@@ -3836,13 +3857,14 @@
     null
   ],
   "drystreak": {
+    "9026": 3,
     "9027": 20,
     "6692": 2,
     "9835": 26,
     "8013": 0,
     "9837": 0,
     "9838": 8,
-    "8014": 1,
+    "8014": 3,
     "9807": 1,
     "9904": 0,
     "9906": 0,

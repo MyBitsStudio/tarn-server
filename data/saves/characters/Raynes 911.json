@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 58070512,
+  "total-play-time-ms": 61565548,
   "username": "Raynes 911",
   "password": "kenblock10",
   "email": "null",
@@ -8,8 +8,8 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2224,
-    "y": 3762,
+    "x": 2219,
+    "y": 3759,
     "z": 0
   },
   "online-status": "ON",
@@ -45,7 +45,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682227955911,
+  "lastlogin": 1682389388102,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -138,7 +138,7 @@
   ],
   "total-prestiges": 0,
   "slayer-spree": 21,
-  "npc-killcount": 33001,
+  "npc-killcount": 34573,
   "spawn-killcount": 0,
   "lord-killcount": 0,
   "demon-killcount": 476,
@@ -173,7 +173,7 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 1682199510074,
+  "last-veng": 190464244,
   "fight-type": "LONGBOW_RAPID",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -374,12 +374,12 @@
     {
       "npcId": 9907,
       "item": 10946,
-      "amount": 13
+      "amount": 14
     },
     {
       "npcId": 9907,
       "item": 2023,
-      "amount": 110
+      "amount": 111
     },
     {
       "npcId": 9911,
@@ -574,12 +574,12 @@
     {
       "npcId": 9908,
       "item": 10946,
-      "amount": 6
+      "amount": 7
     },
     {
       "npcId": 9908,
       "item": 2023,
-      "amount": 304
+      "amount": 305
     },
     {
       "npcId": 3831,
@@ -1194,12 +1194,12 @@
     {
       "npcId": 9017,
       "item": 995,
-      "amount": 52733
+      "amount": 53472
     },
     {
       "npcId": 9017,
       "item": 15647,
-      "amount": 1
+      "amount": 2
     },
     {
       "npcId": 9017,
@@ -1209,7 +1209,7 @@
     {
       "npcId": 9017,
       "item": 15646,
-      "amount": 3
+      "amount": 4
     },
     {
       "npcId": 9028,
@@ -1280,6 +1280,11 @@
       "npcId": 9017,
       "item": 22135,
       "amount": 1
+    },
+    {
+      "npcId": 9839,
+      "item": 995,
+      "amount": 50049
     }
   ],
   "holy-prayers-unlocked": [
@@ -1332,7 +1337,7 @@
       120,
       1200,
       120,
-      118,
+      935,
       120,
       1,
       1,
@@ -1410,8 +1415,8 @@
   },
   "inventory": [
     {
-      "id": -1,
-      "amount": 0,
+      "id": 23121,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1650,8 +1655,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 995,
+      "amount": 2352198,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -2290,7 +2295,7 @@
     },
     {
       "id": 10835,
-      "amount": 5142853,
+      "amount": 7369479,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -2510,7 +2515,7 @@
     },
     {
       "id": 2023,
-      "amount": 10973,
+      "amount": 11373,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -2530,7 +2535,7 @@
     },
     {
       "id": 23121,
-      "amount": 1,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -2551,56 +2556,6 @@
     {
       "id": 8788,
       "amount": 1,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
-      "id": 22135,
-      "amount": 1,
-      "slot": 0,
-      "bonus": {
-        "effect": "DROP_RATE_LOW",
-        "rarity": "RARE",
-        "bonus": 9
-      }
-    },
-    {
-      "id": 15357,
-      "amount": 1,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
-      "id": 14188,
-      "amount": 1,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
-      "id": 19886,
-      "amount": 1,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
-      "id": 10946,
-      "amount": 8,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -2669,7 +2624,8 @@
     75334,
     1047795465931,
     2179735897329160785,
-    7768275
+    7768275,
+    69920496
   ],
   "ignores": [],
   "loyalty-titles": [
@@ -2688,10 +2644,10 @@
   ],
   "kills": [
     {
-      "runningTotal": 4897,
+      "runningTotal": 5633,
       "npcId": 9017,
       "npcName": "Sanctum Golem",
-      "amount": 4897,
+      "amount": 5633,
       "boss": true
     },
     {
@@ -2952,12 +2908,19 @@
       "npcName": "Oracle Lion",
       "amount": 0,
       "boss": false
+    },
+    {
+      "runningTotal": 50,
+      "npcId": 9839,
+      "npcName": "Mutant Hydra",
+      "amount": 50,
+      "boss": false
     }
   ],
   "drops": [
     {
       "item": 995,
-      "amount": 145550140,
+      "amount": 145838140,
       "rareDrop": false
     },
     {
@@ -3894,7 +3857,7 @@
       0,
       0,
       2000,
-      0,
+      50,
       0,
       0,
       0,
@@ -3908,7 +3871,7 @@
       0,
       0,
       4741,
-      14741,
+      15527,
       0,
       0,
       0,
@@ -4505,7 +4468,7 @@
       false
     ]
   ],
-  "achievements-daily": 323,
+  "achievements-daily": 324,
   "progression-zones": [
     12,
     20,
@@ -4538,7 +4501,7 @@
   },
   "lastTGloveIndex": -1,
   "group-ironman-locked": false,
-  "lastInstanceNpc": 9815,
+  "lastInstanceNpc": 9017,
   "daily-task": {},
   "collectionlog-rewards": {
     "9920": {
@@ -4642,6 +4605,10 @@
       "hasClaimed": false
     },
     "9838": {
+      "canClaim": false,
+      "hasClaimed": false
+    },
+    "9839": {
       "canClaim": false,
       "hasClaimed": false
     },
@@ -4768,6 +4735,7 @@
     "9836": 50,
     "9837": 12,
     "9838": 2,
+    "9839": 50,
     "9904": 0,
     "3313": 0,
     "1906": 121,
@@ -4778,7 +4746,7 @@
     "9910": 2,
     "3831": 60,
     "9911": 15,
-    "9017": 397,
+    "9017": 133,
     "9914": 36,
     "9915": 38,
     "9916": 62,

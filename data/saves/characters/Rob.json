@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 29807112,
+  "total-play-time-ms": 30790502,
   "username": "Rob",
   "password": "Robert1012",
   "email": "null",
@@ -8,15 +8,15 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 1618,
-    "y": 5606,
-    "z": 20
+    "x": 1642,
+    "y": 5607,
+    "z": 24
   },
   "online-status": "ON",
   "given-starter": true,
   "has-pin2": true,
   "saved-pin2": "1012",
-  "saved-ip": "81.77.0.150",
+  "saved-ip": "81.77.43.12",
   "donated": 12,
   "current-boss-task": 0,
   "current-boss-amount": 0,
@@ -47,7 +47,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682199657069,
+  "lastlogin": 1682449972708,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -61,7 +61,7 @@
   "minutes-bonus-exp": -1,
   "minutes-voting-dr": -1,
   "minutes-voting-dmg": 0,
-  "total-gained-exp": 833495102,
+  "total-gained-exp": 1031128935,
   "barrows-points": 0,
   "donator-points": 2,
   "Skilling-points": 0,
@@ -140,7 +140,7 @@
   ],
   "total-prestiges": 0,
   "slayer-spree": 0,
-  "npc-killcount": 7632,
+  "npc-killcount": 8236,
   "spawn-killcount": 0,
   "lord-killcount": 0,
   "demon-killcount": 658,
@@ -175,8 +175,8 @@
   "auto-retaliate": false,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 1682121826009,
-  "fight-type": "CROSSBOW_RAPID",
+  "last-veng": 329130106,
+  "fight-type": "SCYTHE_CHOP",
   "sol-effect": 0,
   "skull-timer": 0,
   "fuse-combination-timer": 0,
@@ -214,7 +214,7 @@
   "process-farming": false,
   "clanchat": "Help",
   "autocast": false,
-  "autocast-spell": -1,
+  "autocast-spell": 71,
   "dfs-charges": 0,
   "coins-gambled": 0,
   "slayer-master": "EASY_SLAYER",
@@ -881,17 +881,37 @@
     {
       "npcId": 9025,
       "item": 995,
-      "amount": 10350
+      "amount": 10629
     },
     {
       "npcId": 9025,
       "item": 2023,
-      "amount": 353
+      "amount": 627
     },
     {
       "npcId": 9025,
       "item": 8817,
       "amount": 1
+    },
+    {
+      "npcId": 9025,
+      "item": 8820,
+      "amount": 1
+    },
+    {
+      "npcId": 9025,
+      "item": 8816,
+      "amount": 1
+    },
+    {
+      "npcId": 9026,
+      "item": 995,
+      "amount": 11027
+    },
+    {
+      "npcId": 9026,
+      "item": 2023,
+      "amount": 28
     }
   ],
   "holy-prayers-unlocked": [
@@ -996,16 +1016,16 @@
       -18767900,
       877446,
       7033827,
-      15931076,
-      655469786,
+      102391836,
+      756055401,
       25161397,
-      147409921,
+      157988369,
       0,
       0,
       0,
       0,
       0,
-      380733,
+      389743,
       0,
       0,
       0,
@@ -1063,7 +1083,7 @@
     },
     {
       "id": 10835,
-      "amount": 82169,
+      "amount": 82319,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1132,13 +1152,13 @@
       }
     },
     {
-      "id": 17664,
+      "id": 21055,
       "amount": 1,
       "slot": 0,
       "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
+        "effect": "RANGE_DAMAGE",
+        "rarity": "UNCOMMON",
+        "bonus": 1
       }
     },
     {
@@ -1163,7 +1183,7 @@
     },
     {
       "id": 2023,
-      "amount": 2332,
+      "amount": 2634,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1173,7 +1193,7 @@
     },
     {
       "id": 2736,
-      "amount": 1,
+      "amount": 2,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1293,7 +1313,7 @@
     },
     {
       "id": 995,
-      "amount": 22492419,
+      "amount": 25590419,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1334,13 +1354,13 @@
       }
     },
     {
-      "id": 21055,
+      "id": 17664,
       "amount": 1,
       "slot": 0,
       "bonus": {
-        "effect": "RANGE_DAMAGE",
-        "rarity": "UNCOMMON",
-        "bonus": 1
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
       }
     },
     {
@@ -2187,17 +2207,24 @@
       "boss": true
     },
     {
-      "runningTotal": 231,
+      "runningTotal": 505,
       "npcId": 9025,
       "npcName": "Avalon",
-      "amount": 231,
+      "amount": 505,
+      "boss": false
+    },
+    {
+      "runningTotal": 28,
+      "npcId": 9026,
+      "npcName": "Eragon",
+      "amount": 28,
       "boss": false
     }
   ],
   "drops": [
     {
       "item": 995,
-      "amount": 45650623,
+      "amount": 45750623,
       "rareDrop": false
     },
     {
@@ -2996,9 +3023,9 @@
       400,
       400,
       400,
-      231,
+      500,
       100,
-      4216,
+      4518,
       16,
       0,
       0,
@@ -3100,7 +3127,7 @@
       0,
       0,
       1000,
-      4216,
+      4518,
       0,
       0,
       0,
@@ -3203,7 +3230,7 @@
       0,
       0,
       2862,
-      4216,
+      4518,
       0,
       0,
       0,
@@ -3800,7 +3827,7 @@
       false
     ]
   ],
-  "achievements-daily": 322,
+  "achievements-daily": 325,
   "progression-zones": [
     10,
     20,
@@ -3841,6 +3868,10 @@
       "hasClaimed": false
     },
     "9025": {
+      "canClaim": false,
+      "hasClaimed": false
+    },
+    "9026": {
       "canClaim": false,
       "hasClaimed": false
     },
@@ -3955,7 +3986,8 @@
   ],
   "drystreak": {
     "9920": 2,
-    "9025": 101,
+    "9025": 115,
+    "9026": 28,
     "9922": 25,
     "8003": 2,
     "9027": 15,

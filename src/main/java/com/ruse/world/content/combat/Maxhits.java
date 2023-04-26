@@ -224,7 +224,11 @@ public class Maxhits {
                 prayerMod = 1.15 + +(player.getLeechedBonuses()[2] * 0.01);
                 if (Misc.getRandom(100) <= 1) {
                     player.setDoubleDMGTimer(1);
+<<<<<<< Updated upstream
                    // player.getPacketSender().sendMessage("Coup de grace activated");
+=======
+                   //player.getPacketSender().sendMessage("Coup de grace activated");
+>>>>>>> Stashed changes
                 }
             }
 
@@ -401,7 +405,11 @@ public class Maxhits {
                 prayerMod = 1.25 + +(player.getLeechedBonuses()[2] * 0.01);
                 if (Misc.getRandom(100) <= 1) {
                     player.setDoubleDMGTimer(1);
+<<<<<<< Updated upstream
                    // player.getPacketSender().sendMessage("Coup de grace activated");
+=======
+                    //player.getPacketSender().sendMessage("Coup de grace activated");
+>>>>>>> Stashed changes
                 }
             }
             double otherBonuses = 1;

@@ -1,6 +1,13 @@
 {
   "shop": [
-    null,
+    {
+      "id": 2023,
+      "amount": 556,
+      "maxAmount": 5125,
+      "price": 1,
+      "effect": "NOTHING",
+      "bonus": 0
+    },
     null,
     null,
     null,
@@ -33,5 +40,9 @@
     null,
     null
   ],
+<<<<<<< Updated upstream
   "earnings": 556
+=======
+  "earnings": 4569
+>>>>>>> Stashed changes
 }

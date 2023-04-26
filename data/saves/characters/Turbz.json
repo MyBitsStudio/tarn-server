@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 6781833,
+  "total-play-time-ms": 14350204,
   "username": "Turbz",
   "password": "kombare45",
   "email": "null",
@@ -8,9 +8,9 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2142,
-    "y": 5015,
-    "z": 8
+    "x": 2140,
+    "y": 5020,
+    "z": 0
   },
   "online-status": "ON",
   "given-starter": true,
@@ -47,7 +47,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682278602941,
+  "lastlogin": 1682453204910,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -175,7 +175,7 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 284033703,
+  "last-veng": 1682085159790,
   "fight-type": "STAFF_FOCUS",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -346,52 +346,52 @@
     {
       "npcId": 9907,
       "item": 10946,
-      "amount": 4
+      "amount": 5
     },
     {
       "npcId": 9907,
       "item": 2023,
-      "amount": 103
+      "amount": 104
     },
     {
       "npcId": 9906,
       "item": 995,
-      "amount": 2188321
+      "amount": 2188325
     },
     {
       "npcId": 9906,
       "item": 2023,
-      "amount": 33
+      "amount": 37
     },
     {
       "npcId": 9904,
       "item": 995,
-      "amount": 4450458
+      "amount": 4450460
     },
     {
       "npcId": 9904,
       "item": 2023,
-      "amount": 44
+      "amount": 46
     },
     {
       "npcId": 9908,
       "item": 10946,
-      "amount": 5
+      "amount": 6
     },
     {
       "npcId": 9908,
       "item": 2023,
-      "amount": 302
+      "amount": 303
     },
     {
       "npcId": 8013,
       "item": 10946,
-      "amount": 12
+      "amount": 17
     },
     {
       "npcId": 8013,
       "item": 23020,
-      "amount": 10
+      "amount": 15
     },
     {
       "npcId": 9027,
@@ -773,7 +773,7 @@
     },
     {
       "id": 995,
-      "amount": 13958858,
+      "amount": 6815738,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -783,7 +783,7 @@
     },
     {
       "id": 10835,
-      "amount": 11,
+      "amount": 23215,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -803,7 +803,7 @@
     },
     {
       "id": 2023,
-      "amount": 1601,
+      "amount": 2156,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1425,7 +1425,9 @@
     0
   ],
   "friends": [
-    2002204709453174422
+    2002204709453174422,
+    75864,
+    1950025
   ],
   "ignores": [],
   "loyalty-titles": [
@@ -1482,22 +1484,22 @@
   "drops": [
     {
       "item": 995,
-      "amount": 35602062,
+      "amount": 51656942,
       "rareDrop": false
     },
     {
       "item": 2023,
-      "amount": 1839,
+      "amount": 2419,
       "rareDrop": false
     },
     {
       "item": 10946,
-      "amount": 66,
+      "amount": 94,
       "rareDrop": false
     },
     {
       "item": 23020,
-      "amount": 30,
+      "amount": 45,
       "rareDrop": false
     },
     {
@@ -2199,7 +2201,7 @@
       0,
       0,
       89,
-      21,
+      29,
       0,
       0,
       0,
@@ -3000,7 +3002,7 @@
       false
     ]
   ],
-  "achievements-daily": 323,
+  "achievements-daily": 325,
   "progression-zones": [
     12,
     20,

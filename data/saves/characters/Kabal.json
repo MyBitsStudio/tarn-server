@@ -1,5 +1,9 @@
 {
+<<<<<<< Updated upstream
   "total-play-time-ms": 364745332,
+=======
+  "total-play-time-ms": 327385211,
+>>>>>>> Stashed changes
   "username": "Kabal",
   "password": "tarnkabal",
   "email": "null",
@@ -8,8 +12,13 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
+<<<<<<< Updated upstream
     "x": 2225,
     "y": 3746,
+=======
+    "x": 2985,
+    "y": 2771,
+>>>>>>> Stashed changes
     "z": 0
   },
   "online-status": "ON",
@@ -45,7 +54,11 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
+<<<<<<< Updated upstream
   "lastlogin": 1682499833408,
+=======
+  "lastlogin": 1682460920251,
+>>>>>>> Stashed changes
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -138,7 +151,11 @@
   ],
   "total-prestiges": 0,
   "slayer-spree": 128,
+<<<<<<< Updated upstream
   "npc-killcount": 713433,
+=======
+  "npc-killcount": 713431,
+>>>>>>> Stashed changes
   "spawn-killcount": 0,
   "lord-killcount": 0,
   "demon-killcount": 82,
@@ -173,7 +190,11 @@
   "auto-retaliate": false,
   "xp-locked": false,
   "veng-cast": false,
+<<<<<<< Updated upstream
   "last-veng": 258120799,
+=======
+  "last-veng": 1682240136786,
+>>>>>>> Stashed changes
   "fight-type": "LONGBOW_ACCURATE",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -1407,6 +1428,7 @@
     {
       "id": 15003,
       "amount": 12,
+<<<<<<< Updated upstream
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1417,6 +1439,8 @@
     {
       "id": 5012,
       "amount": 1,
+=======
+>>>>>>> Stashed changes
       "slot": 0,
       "bonus": {
         "effect": "ALL_DAMAGE_LOW",
@@ -1425,17 +1449,139 @@
       }
     },
     {
+<<<<<<< Updated upstream
+=======
+      "id": 5012,
+      "amount": 1,
+      "slot": 0,
+      "bonus": {
+        "effect": "ALL_DAMAGE_LOW",
+        "rarity": "RARE",
+        "bonus": 1
+      }
+    },
+    {
+>>>>>>> Stashed changes
       "id": 22167,
       "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "AOE_EFFECT",
+<<<<<<< Updated upstream
         "rarity": "MYTHIC",
         "bonus": 1
       }
     },
     {
       "id": 13775,
+=======
+        "rarity": "MYTHIC",
+        "bonus": 1
+      }
+    },
+    {
+      "id": 22135,
+      "amount": 1,
+      "slot": 0,
+      "bonus": {
+        "effect": "TRIPLE_KILLS",
+        "rarity": "MYTHIC",
+        "bonus": 1
+      }
+    },
+    {
+      "id": 15647,
+      "amount": 1,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
+    },
+    {
+      "id": 2736,
+      "amount": 9,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
+    },
+    {
+      "id": 22135,
+      "amount": 1,
+      "slot": 0,
+      "bonus": {
+        "effect": "DROP_RATE_HIGH",
+        "rarity": "MYTHIC",
+        "bonus": 47
+      }
+    },
+    {
+      "id": 15646,
+      "amount": 1,
+      "slot": 0,
+      "bonus": {
+        "effect": "DROP_RATE_HIGH",
+        "rarity": "MYTHIC",
+        "bonus": 74
+      }
+    },
+    {
+      "id": 15646,
+      "amount": 1,
+      "slot": 0,
+      "bonus": {
+        "effect": "RANGE_DAMAGE",
+        "rarity": "UNCOMMON",
+        "bonus": 1
+      }
+    },
+    {
+      "id": 10946,
+      "amount": 18,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
+    },
+    {
+      "id": 5730,
+      "amount": 1,
+      "slot": 0,
+      "bonus": {
+        "effect": "MAGIC_DAMAGE",
+        "rarity": "UNCOMMON",
+        "bonus": 1
+      }
+    },
+    {
+      "id": 15645,
+      "amount": 1,
+      "slot": 0,
+      "bonus": {
+        "effect": "DROP_RATE_HIGH",
+        "rarity": "MYTHIC",
+        "bonus": 31
+      }
+    },
+    {
+      "id": 15646,
+      "amount": 1,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
+    },
+    {
+      "id": 22135,
+>>>>>>> Stashed changes
       "amount": 1,
       "slot": 0,
       "bonus": {
@@ -1452,6 +1598,7 @@
         "effect": "NOTHING",
         "rarity": "COMMON",
         "bonus": 0
+<<<<<<< Updated upstream
       }
     },
     {
@@ -1552,6 +1699,8 @@
         "effect": "NOTHING",
         "rarity": "COMMON",
         "bonus": 0
+=======
+>>>>>>> Stashed changes
       }
     },
     {
@@ -1585,6 +1734,7 @@
       }
     },
     {
+<<<<<<< Updated upstream
       "id": 10946,
       "amount": 18,
       "slot": 0,
@@ -1607,6 +1757,32 @@
     {
       "id": 995,
       "amount": 384812,
+=======
+      "id": 14440,
+      "amount": 1,
+>>>>>>> Stashed changes
+      "slot": 0,
+      "bonus": {
+        "effect": "ALL_DAMAGE_HIGH",
+        "rarity": "MYTHIC",
+        "bonus": 3
+      }
+    },
+    {
+      "id": 13650,
+      "amount": 810,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
+    },
+    {
+<<<<<<< Updated upstream
+=======
+      "id": 995,
+      "amount": 812,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1625,6 +1801,7 @@
       }
     },
     {
+>>>>>>> Stashed changes
       "id": 21816,
       "amount": 67,
       "slot": 0,
@@ -1646,7 +1823,11 @@
     },
     {
       "id": 10835,
+<<<<<<< Updated upstream
       "amount": 55361018,
+=======
+      "amount": 55381018,
+>>>>>>> Stashed changes
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1687,13 +1868,17 @@
   ],
   "equipment": [
     {
+<<<<<<< Updated upstream
       "id": 14440,
+=======
+      "id": 15645,
+>>>>>>> Stashed changes
       "amount": 1,
       "slot": 0,
       "bonus": {
-        "effect": "ALL_DAMAGE_HIGH",
+        "effect": "DROP_RATE_HIGH",
         "rarity": "MYTHIC",
-        "bonus": 3
+        "bonus": 55
       }
     },
     {
@@ -2617,7 +2802,11 @@
     },
     {
       "id": 22135,
+<<<<<<< Updated upstream
       "amount": 58,
+=======
+      "amount": 57,
+>>>>>>> Stashed changes
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -2637,7 +2826,11 @@
     },
     {
       "id": 15646,
+<<<<<<< Updated upstream
       "amount": 30,
+=======
+      "amount": 29,
+>>>>>>> Stashed changes
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -3227,7 +3420,11 @@
     },
     {
       "id": 15647,
+<<<<<<< Updated upstream
       "amount": 34,
+=======
+      "amount": 33,
+>>>>>>> Stashed changes
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -3257,7 +3454,11 @@
     },
     {
       "id": 22135,
+<<<<<<< Updated upstream
       "amount": 1,
+=======
+      "amount": 0,
+>>>>>>> Stashed changes
       "slot": 0,
       "bonus": {
         "effect": "TRIPLE_KILLS",
@@ -3717,7 +3918,11 @@
     },
     {
       "id": 22135,
+<<<<<<< Updated upstream
       "amount": 1,
+=======
+      "amount": 0,
+>>>>>>> Stashed changes
       "slot": 0,
       "bonus": {
         "effect": "DROP_RATE_HIGH",
@@ -3904,6 +4109,7 @@
         "rarity": "RARE",
         "bonus": 8
       }
+<<<<<<< Updated upstream
     },
     {
       "id": 15645,
@@ -3934,6 +4140,8 @@
         "rarity": "UNCOMMON",
         "bonus": 1
       }
+=======
+>>>>>>> Stashed changes
     }
   ],
   "bank-2": [
@@ -4233,7 +4441,11 @@
     },
     {
       "id": 4028,
+<<<<<<< Updated upstream
       "amount": 0,
+=======
+      "amount": 1,
+>>>>>>> Stashed changes
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -6573,7 +6785,11 @@
   },
   "lastTGloveIndex": -1,
   "group-ironman-locked": false,
+<<<<<<< Updated upstream
   "lastInstanceNpc": 3112,
+=======
+  "lastInstanceNpc": 9017,
+>>>>>>> Stashed changes
   "daily-task": {},
   "collectionlog-rewards": {
     "1311": {
@@ -6879,7 +7095,11 @@
     "6692": 3,
     "1318": 249,
     "2342": 78,
+<<<<<<< Updated upstream
     "3112": 1623,
+=======
+    "3112": 1622,
+>>>>>>> Stashed changes
     "810": 79,
     "3115": 1258,
     "811": 8,

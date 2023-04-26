@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 4543827,
+  "total-play-time-ms": 5348412,
   "username": "Erikenzo",
   "password": "010203aS!!!",
   "email": "null",
@@ -8,8 +8,8 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2223,
-    "y": 3761,
+    "x": 2179,
+    "y": 3741,
     "z": 0
   },
   "online-status": "ON",
@@ -45,7 +45,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682274825312,
+  "lastlogin": 1682451168514,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -59,7 +59,7 @@
   "minutes-bonus-exp": 0,
   "minutes-voting-dr": 0,
   "minutes-voting-dmg": 0,
-  "total-gained-exp": 4023310,
+  "total-gained-exp": 4769324,
   "barrows-points": 0,
   "donator-points": 0,
   "Skilling-points": 0,
@@ -80,7 +80,7 @@
     false
   ],
   "tasks-progress": [
-    85,
+    111,
     0,
     0,
     0,
@@ -137,8 +137,8 @@
     0
   ],
   "total-prestiges": 0,
-  "slayer-spree": 0,
-  "npc-killcount": 170,
+  "slayer-spree": 1,
+  "npc-killcount": 222,
   "spawn-killcount": 0,
   "lord-killcount": 0,
   "demon-killcount": 0,
@@ -173,8 +173,8 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 272163511,
-  "fight-type": "WARHAMMER_BLOCK",
+  "last-veng": 399770724,
+  "fight-type": "SWORD_BLOCK",
   "sol-effect": 0,
   "skull-timer": 0,
   "fuse-combination-timer": 0,
@@ -217,9 +217,9 @@
   "coins-gambled": 0,
   "slayer-master": "EASY_SLAYER",
   "slayer-task": "NO_TASK",
-  "prev-slayer-task": "NO_TASK",
+  "prev-slayer-task": "REVENANT_WYVERN",
   "task-amount": 0,
-  "task-streak": 0,
+  "task-streak": 1,
   "duo-partner": "null",
   "double-slay-xp": false,
   "recoil-deg": 0,
@@ -420,6 +420,26 @@
       "npcId": 9904,
       "item": 2023,
       "amount": 40
+    },
+    {
+      "npcId": 6692,
+      "item": 995,
+      "amount": 1025
+    },
+    {
+      "npcId": 6692,
+      "item": 2023,
+      "amount": 26
+    },
+    {
+      "npcId": 6692,
+      "item": 17999,
+      "amount": 1
+    },
+    {
+      "npcId": 6692,
+      "item": 18009,
+      "amount": 1
     }
   ],
   "holy-prayers-unlocked": [
@@ -470,10 +490,10 @@
       55,
       77,
       66,
-      560,
+      700,
       42,
-      10,
-      41,
+      670,
+      43,
       1,
       1,
       1,
@@ -485,7 +505,7 @@
       1,
       1,
       1,
-      1,
+      24,
       1,
       1,
       1,
@@ -497,10 +517,10 @@
       55,
       77,
       66,
-      780,
+      790,
       42,
-      10,
-      41,
+      670,
+      43,
       1,
       1,
       1,
@@ -512,7 +532,7 @@
       1,
       1,
       1,
-      1,
+      24,
       1,
       1,
       1,
@@ -522,24 +542,24 @@
     ],
     "experience": [
       173764,
-      1484471,
-      504221,
-      1756101,
+      1554462,
+      513000,
+      1821943,
       48607,
-      0,
-      44869,
-      0,
-      0,
-      0,
-      0,
-      0,
-      12461,
+      587600,
+      50785,
       0,
       0,
       0,
       0,
       0,
+      13111,
       0,
+      0,
+      0,
+      0,
+      0,
+      7236,
       0,
       0,
       0,
@@ -551,7 +571,7 @@
   "inventory": [
     {
       "id": 10835,
-      "amount": 14182,
+      "amount": 14207,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -561,7 +581,7 @@
     },
     {
       "id": 2023,
-      "amount": 590,
+      "amount": 490,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -570,18 +590,18 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 23033,
+      "amount": 1,
       "slot": 0,
       "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
+        "effect": "MAGIC_DAMAGE",
+        "rarity": "UNCOMMON",
+        "bonus": 1
       }
     },
     {
       "id": 995,
-      "amount": 913,
+      "amount": 101913,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -710,8 +730,8 @@
       }
     },
     {
-      "id": 14484,
-      "amount": 1,
+      "id": -1,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -720,8 +740,8 @@
       }
     },
     {
-      "id": 22174,
-      "amount": 1,
+      "id": -1,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -730,8 +750,8 @@
       }
     },
     {
-      "id": 22174,
-      "amount": 1,
+      "id": -1,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -780,8 +800,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 5023,
+      "amount": 27,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -832,7 +852,7 @@
   ],
   "equipment": [
     {
-      "id": 19984,
+      "id": 17999,
       "amount": 1,
       "slot": 0,
       "bonus": {
@@ -862,13 +882,13 @@
       }
     },
     {
-      "id": 23033,
+      "id": 14915,
       "amount": 1,
       "slot": 0,
       "bonus": {
-        "effect": "MAGIC_DAMAGE",
-        "rarity": "UNCOMMON",
-        "bonus": 1
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
       }
     },
     {
@@ -932,7 +952,7 @@
       }
     },
     {
-      "id": 19989,
+      "id": 18009,
       "amount": 1,
       "slot": 0,
       "bonus": {
@@ -1364,6 +1384,13 @@
       "npcName": "Blurite Werewolf",
       "amount": 19,
       "boss": false
+    },
+    {
+      "runningTotal": 26,
+      "npcId": 6692,
+      "npcName": "Revenant Wyvern",
+      "amount": 26,
+      "boss": false
     }
   ],
   "drops": [
@@ -1374,12 +1401,12 @@
     },
     {
       "item": 2023,
-      "amount": 942,
+      "amount": 968,
       "rareDrop": false
     },
     {
       "item": 995,
-      "amount": 12822613,
+      "amount": 12848613,
       "rareDrop": false
     },
     {
@@ -2073,14 +2100,14 @@
       0,
       0,
       0,
+      1,
       0,
       0,
       0,
       0,
       0,
-      0,
-      0,
-      85,
+      100,
+      111,
       5,
       0,
       0,
@@ -2175,14 +2202,14 @@
       0,
       0,
       0,
+      1,
       0,
       0,
       0,
       0,
       0,
-      0,
-      0,
-      85,
+      100,
+      111,
       0,
       0,
       0,
@@ -2277,15 +2304,15 @@
       0,
       0,
       0,
+      1,
       0,
       0,
       0,
       0,
       0,
       0,
-      0,
-      0,
-      85,
+      100,
+      111,
       0,
       0,
       0,
@@ -2489,7 +2516,7 @@
       false,
       false,
       false,
-      false,
+      true,
       false,
       false,
       false,
@@ -2882,7 +2909,7 @@
       false
     ]
   ],
-  "achievements-daily": 323,
+  "achievements-daily": 325,
   "progression-zones": [
     11,
     21,
@@ -2931,6 +2958,10 @@
       "hasClaimed": false
     },
     "9907": {
+      "canClaim": false,
+      "hasClaimed": false
+    },
+    "6692": {
       "canClaim": false,
       "hasClaimed": false
     },
@@ -2988,6 +3019,7 @@
     "9906": 0,
     "9027": 21,
     "9907": 0,
+    "6692": 6,
     "9908": 0,
     "9911": 19,
     "9835": 34,

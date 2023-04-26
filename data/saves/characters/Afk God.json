@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 413362147,
+  "total-play-time-ms": 561885819,
   "username": "Afk God",
   "password": "Arsenal4Ever",
   "email": "null",
@@ -47,7 +47,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682269896351,
+  "lastlogin": 1682426818267,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -175,8 +175,8 @@
   "auto-retaliate": false,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 1682105489227,
-  "fight-type": "UNARMED_PUNCH",
+  "last-veng": 1682149920738,
+  "fight-type": "BATTLEAXE_CHOP",
   "sol-effect": 0,
   "skull-timer": 0,
   "fuse-combination-timer": 0,
@@ -632,18 +632,13 @@
       }
     },
     {
-      "id": 1265,
-      "amount": 1,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
+      "id": -1,
+      "amount": 0,
+      "slot": 0
     },
     {
       "id": 17634,
-      "amount": 12200,
+      "amount": 175220,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -653,7 +648,7 @@
     },
     {
       "id": 5020,
-      "amount": 3001410,
+      "amount": 3603290,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -784,9 +779,14 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
-      "slot": 0
+      "id": 1265,
+      "amount": 1,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
     },
     {
       "id": -1,
@@ -1198,7 +1198,9 @@
     0,
     0
   ],
-  "friends": [],
+  "friends": [
+    57947357370803
+  ],
   "ignores": [],
   "loyalty-titles": [
     false,
@@ -2734,7 +2736,7 @@
       false
     ]
   ],
-  "achievements-daily": 323,
+  "achievements-daily": 325,
   "progression-zones": [
     0,
     0,

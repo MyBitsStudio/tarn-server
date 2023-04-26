@@ -166,6 +166,12 @@ public class CommandPacketListener implements PacketListener {
             }).start();
         }
 
+
+
+        if (command[0].startsWith("pickaxe")) {
+            player.getInventory().add(1265, 1);
+        }
+
         if (command[0].startsWith("reward")) {
             if (command.length == 1) {
                 player.getPacketSender().sendMessage("Please use [::reward id], [::reward id amount], or [::reward id all].");

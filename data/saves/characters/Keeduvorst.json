@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 27265122,
+  "total-play-time-ms": 28855702,
   "username": "Keeduvorst",
   "password": "saladus123",
   "email": "null",
@@ -8,8 +8,8 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2964,
-    "y": 9503,
+    "x": 2961,
+    "y": 9500,
     "z": 12
   },
   "online-status": "ON",
@@ -47,7 +47,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1681850255469,
+  "lastlogin": 1682418913310,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -140,7 +140,7 @@
   ],
   "total-prestiges": 0,
   "slayer-spree": 5,
-  "npc-killcount": 5272,
+  "npc-killcount": 5391,
   "spawn-killcount": 0,
   "lord-killcount": 0,
   "demon-killcount": 517,
@@ -175,7 +175,7 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 51071920,
+  "last-veng": 1682369431978,
   "fight-type": "STAFF_BASH",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -611,12 +611,12 @@
     {
       "npcId": 9817,
       "item": 995,
-      "amount": 7121
+      "amount": 7240
     },
     {
       "npcId": 9817,
       "item": 2023,
-      "amount": 119
+      "amount": 238
     },
     {
       "npcId": 8014,
@@ -771,7 +771,7 @@
     {
       "npcId": 9817,
       "item": 23137,
-      "amount": 1
+      "amount": 2
     }
   ],
   "holy-prayers-unlocked": [
@@ -822,9 +822,9 @@
       120,
       120,
       120,
-      1200,
+      920,
       120,
-      1164,
+      1200,
       120,
       1,
       1,
@@ -1022,19 +1022,14 @@
       }
     },
     {
-      "id": 3030,
+      "id": 229,
       "amount": 1,
       "slot": 0
     },
     {
-      "id": 3024,
+      "id": 229,
       "amount": 1,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
+      "slot": 0
     },
     {
       "id": 3024,
@@ -1067,8 +1062,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 23137,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1133,7 +1128,7 @@
     },
     {
       "id": 995,
-      "amount": 120973148,
+      "amount": 121806148,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1143,7 +1138,7 @@
     },
     {
       "id": 2023,
-      "amount": 5328,
+      "amount": 5447,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -2032,10 +2027,10 @@
       "boss": false
     },
     {
-      "runningTotal": 105,
+      "runningTotal": 224,
       "npcId": 9817,
       "npcName": "Yisdar",
-      "amount": 105,
+      "amount": 224,
       "boss": false
     },
     {
@@ -2856,12 +2851,12 @@
       350,
       5,
       400,
-      105,
+      224,
       0,
       0,
       0,
       100,
-      2889,
+      3008,
       42,
       0,
       0,
@@ -2963,7 +2958,7 @@
       0,
       0,
       100,
-      2889,
+      3008,
       0,
       0,
       0,
@@ -3066,7 +3061,7 @@
       0,
       0,
       100,
-      2889,
+      3008,
       0,
       0,
       0,
@@ -3663,7 +3658,7 @@
       false
     ]
   ],
-  "achievements-daily": 318,
+  "achievements-daily": 325,
   "progression-zones": [
     10,
     33,
@@ -3823,6 +3818,8 @@
     "9910": 7,
     "9815": 18,
     "9911": 5,
-    "9817": 5
-  }
+    "9817": 67
+  },
+  "boost": 0,
+  "slot-level": 0
 }

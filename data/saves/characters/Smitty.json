@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 15569833,
+  "total-play-time-ms": 16391224,
   "username": "Smitty",
   "password": "redfoxruns9!",
   "email": "null",
@@ -8,9 +8,9 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2222,
-    "y": 3762,
-    "z": 0
+    "x": 2963,
+    "y": 9490,
+    "z": 12
   },
   "online-status": "ON",
   "given-starter": true,
@@ -47,7 +47,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682248289452,
+  "lastlogin": 1682323945892,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -140,7 +140,7 @@
   ],
   "total-prestiges": 0,
   "slayer-spree": 0,
-  "npc-killcount": 4707,
+  "npc-killcount": 4718,
   "spawn-killcount": 0,
   "lord-killcount": 0,
   "demon-killcount": 387,
@@ -175,7 +175,7 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 11774966,
+  "last-veng": 12623968,
   "fight-type": "STAFF_POUND",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -846,12 +846,12 @@
     {
       "npcId": 9817,
       "item": 995,
-      "amount": 7072
+      "amount": 7083
     },
     {
       "npcId": 9817,
       "item": 2023,
-      "amount": 73
+      "amount": 84
     }
   ],
   "holy-prayers-unlocked": [
@@ -982,8 +982,8 @@
   },
   "inventory": [
     {
-      "id": -1,
-      "amount": 0,
+      "id": 995,
+      "amount": 77000,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -992,8 +992,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 2023,
+      "amount": 11,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -2066,6 +2066,13 @@
       "boss": true
     },
     {
+      "runningTotal": 402,
+      "npcId": 9815,
+      "npcName": "Kol\u0027gal",
+      "amount": 402,
+      "boss": false
+    },
+    {
       "runningTotal": 387,
       "npcId": 8014,
       "npcName": "Zinqrux",
@@ -2122,6 +2129,13 @@
       "boss": false
     },
     {
+      "runningTotal": 84,
+      "npcId": 9817,
+      "npcName": "Yisdar",
+      "amount": 84,
+      "boss": false
+    },
+    {
       "runningTotal": 68,
       "npcId": 6692,
       "npcName": "Revenant Wyvern",
@@ -2175,20 +2189,6 @@
       "npcId": 1265,
       "npcName": "Oracle Lion",
       "amount": 0,
-      "boss": false
-    },
-    {
-      "runningTotal": 402,
-      "npcId": 9815,
-      "npcName": "Kol\u0027gal",
-      "amount": 402,
-      "boss": false
-    },
-    {
-      "runningTotal": 73,
-      "npcId": 9817,
-      "npcName": "Yisdar",
-      "amount": 73,
       "boss": false
     }
   ],
@@ -2981,12 +2981,12 @@
       350,
       0,
       400,
-      73,
+      84,
       0,
       0,
       0,
       100,
-      2591,
+      2602,
       12,
       0,
       0,
@@ -3088,7 +3088,7 @@
       0,
       0,
       113,
-      2591,
+      2602,
       0,
       0,
       0,
@@ -3191,7 +3191,7 @@
       0,
       0,
       113,
-      2591,
+      2602,
       0,
       0,
       0,
@@ -3788,7 +3788,7 @@
       false
     ]
   ],
-  "achievements-daily": 323,
+  "achievements-daily": 324,
   "progression-zones": [
     10,
     20,
@@ -3968,7 +3968,7 @@
     "9910": 8,
     "9815": 67,
     "9911": 41,
-    "9817": 73
+    "9817": 84
   },
   "boost": 0,
   "slot-level": 0

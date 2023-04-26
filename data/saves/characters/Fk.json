@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 10713656,
+  "total-play-time-ms": 90729804,
   "username": "Fk",
   "password": "a7e824",
   "email": "null",
@@ -47,7 +47,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682205625251,
+  "lastlogin": 1682423203891,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -61,7 +61,7 @@
   "minutes-bonus-exp": 0,
   "minutes-voting-dr": 0,
   "minutes-voting-dmg": 0,
-  "total-gained-exp": 127981088,
+  "total-gained-exp": 219198417,
   "barrows-points": 0,
   "donator-points": 0,
   "Skilling-points": 0,
@@ -175,7 +175,7 @@
   "auto-retaliate": false,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 1682108975679,
+  "last-veng": 1682145977429,
   "fight-type": "BSOAT_ACCURATE",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -336,42 +336,52 @@
     {
       "npcId": 8013,
       "item": 10946,
-      "amount": 7
+      "amount": 8
     },
     {
       "npcId": 8013,
       "item": 23020,
-      "amount": 5
+      "amount": 6
     },
     {
       "npcId": 9906,
       "item": 995,
-      "amount": 2134163
+      "amount": 2134168
     },
     {
       "npcId": 9906,
       "item": 2023,
-      "amount": 26
+      "amount": 31
     },
     {
       "npcId": 9904,
       "item": 995,
-      "amount": 4113755
+      "amount": 4113760
     },
     {
       "npcId": 9904,
       "item": 2023,
-      "amount": 41
+      "amount": 46
     },
     {
       "npcId": 9907,
       "item": 10946,
-      "amount": 2
+      "amount": 6
     },
     {
       "npcId": 9907,
       "item": 2023,
-      "amount": 101
+      "amount": 105
+    },
+    {
+      "npcId": 9908,
+      "item": 10946,
+      "amount": 3
+    },
+    {
+      "npcId": 9908,
+      "item": 2023,
+      "amount": 301
     }
   ],
   "holy-prayers-unlocked": [
@@ -422,8 +432,8 @@
       1,
       1,
       1,
-      1130,
-      116,
+      1190,
+      120,
       10,
       1,
       1,
@@ -449,8 +459,8 @@
       1,
       1,
       1,
-      1130,
-      116,
+      1190,
+      120,
       10,
       1,
       1,
@@ -476,8 +486,8 @@
       0,
       0,
       0,
-      55963078,
-      72019194,
+      95846428,
+      123353173,
       0,
       0,
       0,
@@ -502,8 +512,8 @@
   },
   "inventory": [
     {
-      "id": 995,
-      "amount": 12999447,
+      "id": -1,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -513,7 +523,7 @@
     },
     {
       "id": 2023,
-      "amount": 330,
+      "amount": 1290,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -522,8 +532,8 @@
       }
     },
     {
-      "id": 10946,
-      "amount": 1,
+      "id": -1,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1266,22 +1276,22 @@
   "drops": [
     {
       "item": 10946,
-      "amount": 17,
+      "amount": 30,
       "rareDrop": false
     },
     {
       "item": 23020,
-      "amount": 9,
+      "amount": 12,
       "rareDrop": false
     },
     {
       "item": 995,
-      "amount": 12999447,
+      "amount": 38110649,
       "rareDrop": false
     },
     {
       "item": 2023,
-      "amount": 330,
+      "amount": 1655,
       "rareDrop": false
     }
   ],
@@ -1978,7 +1988,7 @@
       0,
       0,
       0,
-      6,
+      22,
       0,
       0,
       0,
@@ -2779,7 +2789,7 @@
       false
     ]
   ],
-  "achievements-daily": 322,
+  "achievements-daily": 325,
   "progression-zones": [
     0,
     0,
@@ -2827,6 +2837,10 @@
       "canClaim": false,
       "hasClaimed": false
     },
+    "9908": {
+      "canClaim": false,
+      "hasClaimed": false
+    },
     "8013": {
       "canClaim": false,
       "hasClaimed": false
@@ -2864,6 +2878,7 @@
     "9904": 0,
     "9906": 0,
     "9907": 0,
+    "9908": 0,
     "8013": 0
   },
   "boost": 0,

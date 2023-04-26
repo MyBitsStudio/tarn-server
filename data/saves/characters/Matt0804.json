@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 245590865,
+  "total-play-time-ms": 247311653,
   "username": "Matt0804",
   "password": "dragonforce9",
   "email": "null",
@@ -47,7 +47,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682257409397,
+  "lastlogin": 1682414666511,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -58,10 +58,10 @@
   "day5claimed": false,
   "day6claimed": false,
   "day7claimed": false,
-  "minutes-bonus-exp": 2457,
-  "minutes-voting-dr": 17,
+  "minutes-bonus-exp": 2429,
+  "minutes-voting-dr": -1,
   "minutes-voting-dmg": 0,
-  "total-gained-exp": -137239034,
+  "total-gained-exp": -119624289,
   "barrows-points": 0,
   "donator-points": 58,
   "Skilling-points": 0,
@@ -140,7 +140,7 @@
   ],
   "total-prestiges": 0,
   "slayer-spree": 80,
-  "npc-killcount": 460904,
+  "npc-killcount": 474127,
   "spawn-killcount": 0,
   "lord-killcount": 0,
   "demon-killcount": 320,
@@ -175,7 +175,7 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 1681867330999,
+  "last-veng": 549056304,
   "fight-type": "LONGBOW_RAPID",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -192,9 +192,9 @@
   "dr-timer": 0,
   "ddr-timer": 0,
   "dmg-timer": 0,
-  "double-dr-timer": 3714,
+  "double-dr-timer": 845,
   "double-ddr-timer": 0,
-  "double-dmg-timer": 3722,
+  "double-dmg-timer": 853,
   "fire-immunity": 0,
   "fire-damage-mod": 0,
   "prayer-renewal-timer": 0,
@@ -1326,7 +1326,7 @@
     {
       "npcId": 3010,
       "item": 995,
-      "amount": 131008
+      "amount": 132683
     },
     {
       "npcId": 3013,
@@ -1411,7 +1411,7 @@
     {
       "npcId": 3020,
       "item": 995,
-      "amount": 165296
+      "amount": 165513
     },
     {
       "npcId": 3021,
@@ -1456,7 +1456,7 @@
     {
       "npcId": 3010,
       "item": 8814,
-      "amount": 2
+      "amount": 3
     },
     {
       "npcId": 3010,
@@ -1481,7 +1481,7 @@
     {
       "npcId": 3112,
       "item": 995,
-      "amount": 194406
+      "amount": 194465
     },
     {
       "npcId": 3011,
@@ -1615,7 +1615,7 @@
       0,
       0,
       0,
-      446809177,
+      464423922,
       0,
       0,
       30490998,
@@ -1633,7 +1633,7 @@
   "inventory": [
     {
       "id": 10835,
-      "amount": 39851,
+      "amount": 220677,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1643,7 +1643,7 @@
     },
     {
       "id": 995,
-      "amount": 9636423,
+      "amount": 4800911,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -3122,7 +3122,7 @@
     },
     {
       "id": 23124,
-      "amount": 3,
+      "amount": 4,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -3577,10 +3577,10 @@
       "boss": false
     },
     {
-      "runningTotal": 16636,
+      "runningTotal": 23224,
       "npcId": 3010,
       "npcName": "Zeidan Grimm",
-      "amount": 16636,
+      "amount": 23224,
       "boss": false
     },
     {
@@ -3647,10 +3647,10 @@
       "boss": false
     },
     {
-      "runningTotal": 23612,
+      "runningTotal": 24464,
       "npcId": 3020,
       "npcName": "Agumon",
-      "amount": 23612,
+      "amount": 24464,
       "boss": false
     },
     {
@@ -3710,10 +3710,10 @@
       "boss": true
     },
     {
-      "runningTotal": 5516,
+      "runningTotal": 5748,
       "npcId": 3112,
       "npcName": "Ezkel-Nojad",
-      "amount": 5516,
+      "amount": 5748,
       "boss": false
     },
     {
@@ -3734,7 +3734,7 @@
   "drops": [
     {
       "item": 995,
-      "amount": -195109456,
+      "amount": -186533456,
       "rareDrop": false
     },
     {
@@ -5397,7 +5397,7 @@
       false
     ]
   ],
-  "achievements-daily": 323,
+  "achievements-daily": 325,
   "progression-zones": [
     10,
     20,
@@ -5756,7 +5756,7 @@
     "1310": 52,
     "6692": 2,
     "2342": 15,
-    "3112": 692,
+    "3112": 721,
     "810": 60,
     "3115": 1287,
     "811": 36,
@@ -5780,7 +5780,7 @@
     "9024": 157,
     "9920": 38,
     "9025": 112,
-    "3010": 1107,
+    "3010": 4,
     "8002": 1607,
     "9026": 2,
     "9922": 51,
@@ -5797,7 +5797,7 @@
     "8010": 23,
     "202": 51,
     "3019": 791,
-    "3020": 1153,
+    "3020": 1366,
     "3021": 1514,
     "8013": 0,
     "9806": 287,

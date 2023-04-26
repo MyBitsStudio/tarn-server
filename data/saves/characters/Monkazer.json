@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 21407122,
+  "total-play-time-ms": 37110162,
   "username": "Monkazer",
   "password": "P0rtB4K",
   "email": "null",
@@ -8,8 +8,8 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2234,
-    "y": 3746,
+    "x": 2222,
+    "y": 3747,
     "z": 0
   },
   "online-status": "FRIENDS_ONLY",
@@ -45,7 +45,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682278411574,
+  "lastlogin": 1682352632338,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -59,7 +59,7 @@
   "minutes-bonus-exp": 0,
   "minutes-voting-dr": 0,
   "minutes-voting-dmg": 0,
-  "total-gained-exp": 5103908,
+  "total-gained-exp": 2012495,
   "barrows-points": 0,
   "donator-points": 7,
   "Skilling-points": 0,
@@ -137,8 +137,8 @@
     0
   ],
   "total-prestiges": 0,
-  "slayer-spree": 10,
-  "npc-killcount": 2264,
+  "slayer-spree": 12,
+  "npc-killcount": 2734,
   "spawn-killcount": 0,
   "lord-killcount": 0,
   "demon-killcount": 50,
@@ -173,7 +173,7 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 1682259176738,
+  "last-veng": 102601697,
   "fight-type": "STAFF_POUND",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -207,7 +207,7 @@
     0
   ],
   "effigy": 0,
-  "summon-npc": -1,
+  "summon-npc": 3037,
   "summon-death": -1,
   "process-farming": false,
   "clanchat": "Help",
@@ -217,9 +217,9 @@
   "coins-gambled": 0,
   "slayer-master": "HARD_SLAYER",
   "slayer-task": "SASUKE",
-  "prev-slayer-task": "DR_ABERRANT",
-  "task-amount": 89,
-  "task-streak": 10,
+  "prev-slayer-task": "EMERALD_SLAYER",
+  "task-amount": 17,
+  "task-streak": 12,
   "duo-partner": "null",
   "double-slay-xp": false,
   "recoil-deg": 0,
@@ -344,12 +344,12 @@
     {
       "npcId": 9908,
       "item": 10946,
-      "amount": 3
+      "amount": 5
     },
     {
       "npcId": 9908,
       "item": 2023,
-      "amount": 301
+      "amount": 303
     },
     {
       "npcId": 9027,
@@ -529,22 +529,22 @@
     {
       "npcId": 8013,
       "item": 10946,
-      "amount": 5
+      "amount": 8
     },
     {
       "npcId": 8013,
       "item": 23020,
-      "amount": 3
+      "amount": 6
     },
     {
       "npcId": 9906,
       "item": 995,
-      "amount": 1860307
+      "amount": 1860314
     },
     {
       "npcId": 9906,
       "item": 2023,
-      "amount": 28
+      "amount": 35
     },
     {
       "npcId": 9807,
@@ -624,22 +624,22 @@
     {
       "npcId": 9904,
       "item": 995,
-      "amount": 4223193
+      "amount": 4223198
     },
     {
       "npcId": 9904,
       "item": 2023,
-      "amount": 40
+      "amount": 45
     },
     {
       "npcId": 9907,
       "item": 10946,
-      "amount": 1
+      "amount": 3
     },
     {
       "npcId": 9907,
       "item": 2023,
-      "amount": 100
+      "amount": 102
     },
     {
       "npcId": 9807,
@@ -700,6 +700,31 @@
       "npcId": 8003,
       "item": 20593,
       "amount": 1
+    },
+    {
+      "npcId": 9914,
+      "item": 995,
+      "amount": 23149
+    },
+    {
+      "npcId": 9914,
+      "item": 2023,
+      "amount": 150
+    },
+    {
+      "npcId": 2342,
+      "item": 995,
+      "amount": 18086
+    },
+    {
+      "npcId": 2342,
+      "item": 2023,
+      "amount": 87
+    },
+    {
+      "npcId": 9908,
+      "item": 23057,
+      "amount": 1
     }
   ],
   "holy-prayers-unlocked": [
@@ -750,9 +775,9 @@
       120,
       120,
       120,
-      1160,
+      1200,
       120,
-      302,
+      707,
       120,
       1,
       1,
@@ -765,7 +790,7 @@
       1,
       77,
       1,
-      81,
+      89,
       1,
       1,
       1,
@@ -792,7 +817,7 @@
       1,
       77,
       1,
-      81,
+      89,
       1,
       1,
       1,
@@ -819,7 +844,7 @@
       0,
       1560750,
       0,
-      2349880,
+      4844025,
       0,
       0,
       0,
@@ -850,8 +875,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 10946,
+      "amount": 21,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -860,18 +885,18 @@
       }
     },
     {
-      "id": 783,
+      "id": 23020,
+      "amount": 9,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
+    },
+    {
+      "id": 23057,
       "amount": 1,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
-      "id": -1,
-      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1001,7 +1026,7 @@
     },
     {
       "id": 5023,
-      "amount": 383,
+      "amount": 750,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1031,7 +1056,7 @@
     },
     {
       "id": 995,
-      "amount": 1738565,
+      "amount": 15992372,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1041,7 +1066,7 @@
     },
     {
       "id": 10835,
-      "amount": 40632,
+      "amount": 109238,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1051,7 +1076,7 @@
     },
     {
       "id": 2023,
-      "amount": 953,
+      "amount": 2365,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1595,7 +1620,17 @@
     },
     {
       "id": 5023,
-      "amount": 50,
+      "amount": 0,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
+    },
+    {
+      "id": 783,
+      "amount": 2,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1739,7 +1774,9 @@
     0
   ],
   "friends": [],
-  "ignores": [],
+  "ignores": [
+    60316290670
+  ],
   "loyalty-titles": [
     false,
     false,
@@ -1866,17 +1903,31 @@
       "npcName": "Dr. Aberrant",
       "amount": 59,
       "boss": false
+    },
+    {
+      "runningTotal": 150,
+      "npcId": 9914,
+      "npcName": "Sasuke",
+      "amount": 150,
+      "boss": false
+    },
+    {
+      "runningTotal": 85,
+      "npcId": 2342,
+      "npcName": "Emerald Slayer",
+      "amount": 85,
+      "boss": false
     }
   ],
   "drops": [
     {
       "item": 995,
-      "amount": 2092204,
+      "amount": 2164204,
       "rareDrop": false
     },
     {
       "item": 2023,
-      "amount": 1022,
+      "amount": 1026,
       "rareDrop": false
     },
     {
@@ -2595,15 +2646,15 @@
       59,
       0,
       0,
-      10,
+      12,
       0,
       0,
       73,
       0,
       0,
       66,
-      1132,
-      8,
+      1367,
+      24,
       0,
       0,
       0,
@@ -2696,15 +2747,15 @@
       0,
       0,
       0,
-      0,
-      10,
-      0,
-      0,
+      85,
+      12,
       0,
       0,
       0,
+      0,
+      150,
       66,
-      1132,
+      1367,
       0,
       0,
       0,
@@ -2799,7 +2850,7 @@
       0,
       0,
       0,
-      10,
+      12,
       0,
       0,
       0,
@@ -2807,7 +2858,7 @@
       0,
       0,
       66,
-      1132,
+      1367,
       0,
       0,
       0,
@@ -3404,7 +3455,7 @@
       false
     ]
   ],
-  "achievements-daily": 323,
+  "achievements-daily": 324,
   "progression-zones": [
     10,
     20,
@@ -3464,6 +3515,10 @@
       "canClaim": true,
       "hasClaimed": true
     },
+    "2342": {
+      "canClaim": false,
+      "hasClaimed": false
+    },
     "9835": {
       "canClaim": false,
       "hasClaimed": false
@@ -3519,6 +3574,10 @@
     "9911": {
       "canClaim": false,
       "hasClaimed": false
+    },
+    "9914": {
+      "canClaim": false,
+      "hasClaimed": false
     }
   },
   "daily-skips": 3,
@@ -3530,7 +3589,9 @@
     -1
   ],
   "favorite-teleports": [],
-  "obtained-pets": [],
+  "obtained-pets": [
+    "PANTHER_PET"
+  ],
   "battlepass-xp": 0,
   "battlepass-premium": false,
   "mini-me-equipment": [
@@ -3556,6 +3617,7 @@
     "8003": 47,
     "9027": 20,
     "6692": 6,
+    "2342": 85,
     "9835": 30,
     "9836": 70,
     "8013": 0,
@@ -3569,7 +3631,8 @@
     "9908": 0,
     "9845": 8,
     "9910": 4,
-    "9911": 42
+    "9911": 42,
+    "9914": 150
   },
   "boost": 0,
   "slot-level": 0

@@ -82,8 +82,13 @@
     },
     {
       "id": 15646,
+<<<<<<< Updated upstream
       "amount": 5,
       "maxAmount": 5,
+=======
+      "amount": 4,
+      "maxAmount": 4,
+>>>>>>> Stashed changes
       "price": 30000,
       "effect": "RANGE_DAMAGE",
       "bonus": 1
@@ -193,6 +198,17 @@
       "bonus": 8
     },
     {
+<<<<<<< Updated upstream
+=======
+      "id": 23058,
+      "amount": 1,
+      "maxAmount": 1,
+      "price": 3125000,
+      "effect": "NOTHING",
+      "bonus": 0
+    },
+    {
+>>>>>>> Stashed changes
       "id": 15647,
       "amount": 1,
       "maxAmount": 1,
@@ -216,11 +232,14 @@
       "effect": "NOTHING",
       "bonus": 0
     },
+<<<<<<< Updated upstream
     null,
+=======
+>>>>>>> Stashed changes
     null,
     null,
     null,
     null
   ],
-  "earnings": 0
+  "earnings": 250000
 }

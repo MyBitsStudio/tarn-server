@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 117008924,
+  "total-play-time-ms": 119743053,
   "username": "Dup",
   "password": "momdad1234",
   "email": "null",
@@ -8,9 +8,9 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2786,
-    "y": 4775,
-    "z": 480
+    "x": 2207,
+    "y": 3746,
+    "z": 0
   },
   "online-status": "ON",
   "given-starter": true,
@@ -47,7 +47,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682278992409,
+  "lastlogin": 1682280584740,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -63,7 +63,7 @@
   "minutes-voting-dmg": 0,
   "total-gained-exp": 79908784,
   "barrows-points": 0,
-  "donator-points": 400,
+  "donator-points": 390,
   "Skilling-points": 0,
   "prestige-points": 0,
   "achievement-points": 0,
@@ -140,7 +140,7 @@
   ],
   "total-prestiges": 0,
   "slayer-spree": 0,
-  "npc-killcount": 148031,
+  "npc-killcount": 160127,
   "spawn-killcount": 0,
   "lord-killcount": 0,
   "demon-killcount": 253,
@@ -149,7 +149,7 @@
   "king-killcount": 0,
   "avatar-killcount": 543,
   "angel-killcount": 0,
-  "lucien-killcount": 0,
+  "lucien-killcount": 1008,
   "hercules-killcount": 0,
   "satan-killcount": 206,
   "zeus-killcount": 0,
@@ -175,7 +175,7 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 322435800,
+  "last-veng": 324287548,
   "fight-type": "STAFF_BASH",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -441,12 +441,12 @@
     {
       "npcId": 9906,
       "item": 995,
-      "amount": 1013341
+      "amount": 1013342
     },
     {
       "npcId": 9906,
       "item": 2023,
-      "amount": 73
+      "amount": 74
     },
     {
       "npcId": 9904,
@@ -1211,7 +1211,17 @@
     {
       "npcId": 9912,
       "item": 995,
-      "amount": 173462
+      "amount": 173741
+    },
+    {
+      "npcId": 9913,
+      "item": 995,
+      "amount": 177795
+    },
+    {
+      "npcId": 3117,
+      "item": 995,
+      "amount": 181028
     }
   ],
   "holy-prayers-unlocked": [
@@ -1343,27 +1353,17 @@
   "inventory": [
     {
       "id": 10835,
-      "amount": 464681,
+      "amount": 910161,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
         "rarity": "COMMON",
         "bonus": 0
-      }
-    },
-    {
-      "id": 8411,
-      "amount": 1,
-      "slot": 0,
-      "bonus": {
-        "effect": "AOE_EFFECT",
-        "rarity": "MYTHIC",
-        "bonus": 1
       }
     },
     {
       "id": 995,
-      "amount": 253645577,
+      "amount": 187229201,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1372,8 +1372,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 2023,
+      "amount": 25,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1382,27 +1382,7 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
-      "id": -1,
-      "amount": 0,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
-      "id": 14319,
+      "id": 17817,
       "amount": 1,
       "slot": 0,
       "bonus": {
@@ -1412,8 +1392,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 17817,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1422,8 +1402,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 17817,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1432,8 +1412,38 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 17817,
+      "amount": 1,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
+    },
+    {
+      "id": 17817,
+      "amount": 1,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
+    },
+    {
+      "id": 17817,
+      "amount": 1,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
+    },
+    {
+      "id": 17817,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1648,9 +1658,9 @@
       "amount": 1,
       "slot": 0,
       "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
+        "effect": "DOUBLE_CASH",
+        "rarity": "LEGENDARY",
+        "bonus": 2
       }
     },
     {
@@ -2107,7 +2117,7 @@
     },
     {
       "id": 17817,
-      "amount": 100,
+      "amount": 78,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -2389,7 +2399,7 @@
   "bank-1": [
     {
       "id": 995,
-      "amount": 202,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -2609,7 +2619,7 @@
     },
     {
       "id": 14052,
-      "amount": 1,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "DOUBLE_CASH",
@@ -2625,6 +2635,26 @@
         "effect": "TRIPLE_KILLS",
         "rarity": "MYTHIC",
         "bonus": 2
+      }
+    },
+    {
+      "id": 8411,
+      "amount": 1,
+      "slot": 0,
+      "bonus": {
+        "effect": "AOE_EFFECT",
+        "rarity": "MYTHIC",
+        "bonus": 1
+      }
+    },
+    {
+      "id": 14319,
+      "amount": 1,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
       }
     }
   ],
@@ -2768,9 +2798,7 @@
     109725923,
     75334,
     13837863569,
-    8772014595,
-    22285,
-    46935133
+    8772014595
   ],
   "ignores": [],
   "loyalty-titles": [
@@ -3167,17 +3195,31 @@
       "boss": false
     },
     {
-      "runningTotal": 4230,
+      "runningTotal": 5046,
       "npcId": 9912,
       "npcName": "Calamity",
-      "amount": 4230,
+      "amount": 5046,
+      "boss": false
+    },
+    {
+      "runningTotal": 5232,
+      "npcId": 9913,
+      "npcName": "Slender Man",
+      "amount": 5232,
+      "boss": false
+    },
+    {
+      "runningTotal": 3024,
+      "npcId": 3117,
+      "npcName": "Charybdis",
+      "amount": 3024,
       "boss": false
     }
   ],
   "drops": [
     {
       "item": 995,
-      "amount": 1554326166,
+      "amount": 1582598166,
       "rareDrop": false
     },
     {
@@ -4808,7 +4850,7 @@
   },
   "lastTGloveIndex": -1,
   "group-ironman-locked": false,
-  "lastInstanceNpc": 9912,
+  "lastInstanceNpc": 3117,
   "daily-task": {},
   "collectionlog-rewards": {
     "2342": {
@@ -4816,6 +4858,10 @@
       "hasClaimed": false
     },
     "811": {
+      "canClaim": false,
+      "hasClaimed": false
+    },
+    "3117": {
       "canClaim": false,
       "hasClaimed": false
     },
@@ -4848,6 +4894,10 @@
       "hasClaimed": false
     },
     "9912": {
+      "canClaim": false,
+      "hasClaimed": false
+    },
+    "9913": {
       "canClaim": false,
       "hasClaimed": false
     },
@@ -5065,6 +5115,7 @@
   "drystreak": {
     "2342": 4,
     "811": 2,
+    "3117": 1008,
     "9903": 704,
     "9904": 1,
     "9906": 5,
@@ -5072,7 +5123,8 @@
     "9012": 1513,
     "9908": 1,
     "9911": 10,
-    "9912": 1410,
+    "9912": 1682,
+    "9913": 1744,
     "9017": 3,
     "9914": 42,
     "9915": 61,

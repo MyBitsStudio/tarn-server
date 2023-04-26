@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 24709035,
+  "total-play-time-ms": 25459628,
   "username": "1",
   "password": "Kappa123!",
   "email": "null",
@@ -8,8 +8,8 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2211,
-    "y": 3767,
+    "x": 2212,
+    "y": 3768,
     "z": 0
   },
   "online-status": "ON",
@@ -47,7 +47,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682265091158,
+  "lastlogin": 1682298889416,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -58,7 +58,7 @@
   "day5claimed": false,
   "day6claimed": false,
   "day7claimed": false,
-  "minutes-bonus-exp": 363,
+  "minutes-bonus-exp": 441,
   "minutes-voting-dr": -1,
   "minutes-voting-dmg": 0,
   "total-gained-exp": 1204869789,
@@ -72,7 +72,7 @@
   "loyalty-points": 0,
   "total-loyalty-points": 0.0,
   "godmodetime": 0,
-  "voting-points": 25,
+  "voting-points": 28,
   "tasks-completion": [
     false,
     false,
@@ -175,7 +175,7 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 38793939,
+  "last-veng": 1682260846080,
   "fight-type": "STAFF_POUND",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -814,10 +814,10 @@
   ],
   "skills": {
     "level": [
-      101,
+      92,
       120,
-      101,
-      1010,
+      92,
+      1130,
       120,
       0,
       118,
@@ -898,7 +898,7 @@
   "inventory": [
     {
       "id": 995,
-      "amount": 1791133,
+      "amount": 133,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -938,7 +938,7 @@
     },
     {
       "id": 10835,
-      "amount": 77172,
+      "amount": 3760463,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -952,8 +952,8 @@
       "slot": 0
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 15358,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -962,7 +962,7 @@
       }
     },
     {
-      "id": 1017,
+      "id": 15358,
       "amount": 1,
       "slot": 0,
       "bonus": {
@@ -1741,16 +1741,6 @@
       }
     },
     {
-      "id": 15358,
-      "amount": 2,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
       "id": 15359,
       "amount": 2,
       "slot": 0,
@@ -1823,26 +1813,6 @@
     {
       "id": 23089,
       "amount": 1,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
-      "id": 3086,
-      "amount": 0,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
-      "id": 3090,
-      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1951,16 +1921,6 @@
       }
     },
     {
-      "id": 8788,
-      "amount": 0,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
       "id": 19914,
       "amount": 1,
       "slot": 0,
@@ -1988,6 +1948,16 @@
         "effect": "DROP_RATE_LOW",
         "rarity": "RARE",
         "bonus": 18
+      }
+    },
+    {
+      "id": 1017,
+      "amount": 1,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
       }
     }
   ],
@@ -3008,7 +2978,7 @@
     ],
     [
       0,
-      25,
+      28,
       61,
       65,
       0,
@@ -3110,7 +3080,7 @@
     ],
     [
       0,
-      25,
+      28,
       0,
       0,
       0,

@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 3515990,
+  "total-play-time-ms": 4303775,
   "username": "Rks",
   "password": "master1",
   "email": "null",
@@ -8,8 +8,8 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2222,
-    "y": 3750,
+    "x": 2463,
+    "y": 5038,
     "z": 0
   },
   "online-status": "ON",
@@ -47,7 +47,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1681925242467,
+  "lastlogin": 1682356435124,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -175,7 +175,7 @@
   "auto-retaliate": false,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 1681928758469,
+  "last-veng": 428464459,
   "fight-type": "UNARMED_PUNCH",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -422,7 +422,7 @@
       54,
       1,
       1,
-      220,
+      350,
       1,
       10,
       1,
@@ -1306,16 +1306,6 @@
       }
     },
     {
-      "id": 23091,
-      "amount": 1,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
       "id": 22084,
       "amount": 1,
       "slot": 0,
@@ -1377,7 +1367,7 @@
     },
     {
       "id": 995,
-      "amount": 6975396,
+      "amount": 396,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1414,9 +1404,30 @@
         "rarity": "COMMON",
         "bonus": 0
       }
+    },
+    {
+      "id": 10835,
+      "amount": 6975,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
     }
   ],
-  "bank-1": [],
+  "bank-1": [
+    {
+      "id": 23091,
+      "amount": 1,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
+    }
+  ],
   "bank-2": [],
   "bank-3": [],
   "bank-4": [],
@@ -2983,7 +2994,7 @@
       false
     ]
   ],
-  "achievements-daily": 319,
+  "achievements-daily": 324,
   "progression-zones": [
     0,
     0,

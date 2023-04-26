@@ -1,5 +1,9 @@
 {
+<<<<<<< Updated upstream
   "total-play-time-ms": 375721949,
+=======
+  "total-play-time-ms": 417206179,
+>>>>>>> Stashed changes
   "username": "Ao",
   "password": "cheese12",
   "email": "null",
@@ -8,7 +12,11 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
+<<<<<<< Updated upstream
     "x": 2144,
+=======
+    "x": 2139,
+>>>>>>> Stashed changes
     "y": 5018,
     "z": 12
   },
@@ -47,7 +55,11 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
+<<<<<<< Updated upstream
   "lastlogin": 1682498427013,
+=======
+  "lastlogin": 1682414604107,
+>>>>>>> Stashed changes
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -58,7 +70,11 @@
   "day5claimed": false,
   "day6claimed": false,
   "day7claimed": false,
+<<<<<<< Updated upstream
   "minutes-bonus-exp": 1991,
+=======
+  "minutes-bonus-exp": 1301,
+>>>>>>> Stashed changes
   "minutes-voting-dr": -1,
   "minutes-voting-dmg": 0,
   "total-gained-exp": -243512959,
@@ -140,7 +156,7 @@
   ],
   "total-prestiges": 0,
   "slayer-spree": 57,
-  "npc-killcount": 566453,
+  "npc-killcount": 584156,
   "spawn-killcount": 0,
   "lord-killcount": 0,
   "demon-killcount": 491,
@@ -175,7 +191,11 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
+<<<<<<< Updated upstream
   "last-veng": 597464811,
+=======
+  "last-veng": 481749655,
+>>>>>>> Stashed changes
   "fight-type": "STAFF_POUND",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -556,22 +576,22 @@
     {
       "npcId": 9907,
       "item": 10946,
-      "amount": 119
+      "amount": 121
     },
     {
       "npcId": 9907,
       "item": 2023,
-      "amount": 311
+      "amount": 314
     },
     {
       "npcId": 8013,
       "item": 10946,
-      "amount": 93
+      "amount": 96
     },
     {
       "npcId": 8013,
       "item": 23020,
-      "amount": 90
+      "amount": 93
     },
     {
       "npcId": 8014,
@@ -656,32 +676,32 @@
     {
       "npcId": 9906,
       "item": 995,
-      "amount": 1617214
+      "amount": 1617218
     },
     {
       "npcId": 9906,
       "item": 2023,
-      "amount": 303
+      "amount": 307
     },
     {
       "npcId": 9904,
       "item": 995,
-      "amount": 2591828
+      "amount": 2591834
     },
     {
       "npcId": 9904,
       "item": 2023,
-      "amount": 203
+      "amount": 209
     },
     {
       "npcId": 9908,
       "item": 10946,
-      "amount": 81
+      "amount": 83
     },
     {
       "npcId": 9908,
       "item": 2023,
-      "amount": 373
+      "amount": 375
     },
     {
       "npcId": 9838,
@@ -1236,12 +1256,12 @@
     {
       "npcId": 9017,
       "item": 995,
-      "amount": 122049
+      "amount": 122219
     },
     {
       "npcId": 9017,
       "item": 22135,
-      "amount": 21
+      "amount": 22
     },
     {
       "npcId": 9017,
@@ -1431,7 +1451,7 @@
     {
       "npcId": 9913,
       "item": 995,
-      "amount": 185543
+      "amount": 185778
     },
     {
       "npcId": 3117,
@@ -1466,7 +1486,7 @@
     {
       "npcId": 9913,
       "item": 14490,
-      "amount": 2
+      "amount": 3
     },
     {
       "npcId": 3117,
@@ -1691,7 +1711,7 @@
     {
       "npcId": 188,
       "item": 995,
-      "amount": 220139
+      "amount": 221707
     },
     {
       "npcId": 9025,
@@ -1827,6 +1847,11 @@
       "npcId": 188,
       "item": 13329,
       "amount": 1
+    },
+    {
+      "npcId": 1311,
+      "item": 995,
+      "amount": 240754
     }
   ],
   "holy-prayers-unlocked": [
@@ -1968,7 +1993,7 @@
     },
     {
       "id": 995,
-      "amount": 153,
+      "amount": 133602845,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1978,7 +2003,7 @@
     },
     {
       "id": 2023,
-      "amount": 1300,
+      "amount": 2540,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1998,7 +2023,11 @@
     },
     {
       "id": 10835,
+<<<<<<< Updated upstream
       "amount": 29511245,
+=======
+      "amount": 22832523,
+>>>>>>> Stashed changes
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -2008,7 +2037,7 @@
     },
     {
       "id": 21814,
-      "amount": 7,
+      "amount": 8,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -2063,7 +2092,7 @@
     },
     {
       "id": 23020,
-      "amount": 9,
+      "amount": 24,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -2082,17 +2111,17 @@
       }
     },
     {
-      "id": 15588,
+      "id": 15584,
       "amount": 1,
       "slot": 0,
       "bonus": {
-        "effect": "ALL_DAMAGE_HIGH",
-        "rarity": "MYTHIC",
-        "bonus": 3
+        "effect": "DOUBLE_KILLS",
+        "rarity": "LEGENDARY",
+        "bonus": 2
       }
     },
     {
-      "id": 13329,
+      "id": 22135,
       "amount": 1,
       "slot": 0,
       "bonus": {
@@ -2229,7 +2258,7 @@
   ],
   "equipment": [
     {
-      "id": 9481,
+      "id": 14440,
       "amount": 1,
       "slot": 0,
       "bonus": {
@@ -2329,7 +2358,7 @@
       }
     },
     {
-      "id": 14317,
+      "id": 14444,
       "amount": 1,
       "slot": 0,
       "bonus": {
@@ -2369,13 +2398,13 @@
       }
     },
     {
-      "id": 15584,
+      "id": 15588,
       "amount": 1,
       "slot": 0,
       "bonus": {
-        "effect": "DOUBLE_KILLS",
-        "rarity": "LEGENDARY",
-        "bonus": 2
+        "effect": "ALL_DAMAGE_HIGH",
+        "rarity": "MYTHIC",
+        "bonus": 3
       }
     }
   ],
@@ -2787,7 +2816,7 @@
     },
     {
       "id": 10946,
-      "amount": 156,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -3577,7 +3606,7 @@
     },
     {
       "id": 8788,
-      "amount": 10,
+      "amount": 8,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -3898,6 +3927,16 @@
     {
       "id": 23178,
       "amount": 0,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
+    },
+    {
+      "id": 13329,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -4473,10 +4512,10 @@
       "boss": false
     },
     {
-      "runningTotal": 43584,
+      "runningTotal": 44064,
       "npcId": 9017,
       "npcName": "Sanctum Golem",
-      "amount": 43584,
+      "amount": 44064,
       "boss": true
     },
     {
@@ -4564,17 +4603,17 @@
       "boss": false
     },
     {
-      "runningTotal": 15669,
+      "runningTotal": 16501,
       "npcId": 9913,
       "npcName": "Slender Man",
-      "amount": 15669,
+      "amount": 16501,
       "boss": false
     },
     {
-      "runningTotal": 44,
+      "runningTotal": 47,
       "npcId": 9906,
       "npcName": "Final Boss Veigar",
-      "amount": 44,
+      "amount": 47,
       "boss": true
     },
     {
@@ -4655,22 +4694,29 @@
       "boss": true
     },
     {
-      "runningTotal": 12704,
+      "runningTotal": 18772,
       "npcId": 188,
       "npcName": "Byakuya",
-      "amount": 12704,
+      "amount": 18772,
+      "boss": false
+    },
+    {
+      "runningTotal": 2848,
+      "npcId": 1311,
+      "npcName": "Queen Fazula",
+      "amount": 2848,
       "boss": false
     }
   ],
   "drops": [
     {
       "item": 995,
-      "amount": -703190094,
+      "amount": -649958094,
       "rareDrop": false
     },
     {
       "item": 2023,
-      "amount": 82589,
+      "amount": 82789,
       "rareDrop": false
     },
     {
@@ -6648,7 +6694,11 @@
       false
     ]
   ],
+<<<<<<< Updated upstream
   "achievements-daily": 326,
+=======
+  "achievements-daily": 325,
+>>>>>>> Stashed changes
   "progression-zones": [
     10,
     20,
@@ -6681,7 +6731,7 @@
   },
   "lastTGloveIndex": -1,
   "group-ironman-locked": false,
-  "lastInstanceNpc": 188,
+  "lastInstanceNpc": 9017,
   "daily-task": {
     "EASY_SLAYER_TASKS": {
       "index": 0,
@@ -6697,6 +6747,10 @@
     }
   },
   "collectionlog-rewards": {
+    "1311": {
+      "canClaim": false,
+      "hasClaimed": false
+    },
     "6692": {
       "canClaim": true,
       "hasClaimed": true
@@ -7022,6 +7076,7 @@
   ],
   "drystreak": {
     "144": 1,
+    "1311": 712,
     "6692": 6,
     "2342": 13,
     "1703": 16,
@@ -7035,7 +7090,7 @@
     "1709": 1,
     "9903": 155,
     "9904": 4,
-    "9906": 0,
+    "9906": 1,
     "1715": 1,
     "9907": 1,
     "9012": 1022,
@@ -7045,13 +7100,13 @@
     "1719": 1,
     "9911": 42,
     "9912": 624,
-    "9913": 145,
-    "9017": 369,
+    "9913": 36,
+    "9017": 29,
     "9914": 80,
     "187": 1296,
     "9915": 16,
     "1723": 1,
-    "188": 1748,
+    "188": 3265,
     "9916": 36,
     "4540": 1,
     "1725": 1,

@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 78302500,
+  "total-play-time-ms": 90330647,
   "username": "Silver",
   "password": "blooddemon5919",
   "email": "null",
@@ -8,8 +8,8 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 3036,
-    "y": 4060,
+    "x": 2207,
+    "y": 3746,
     "z": 0
   },
   "online-status": "ON",
@@ -56,10 +56,10 @@
   "day5claimed": false,
   "day6claimed": false,
   "day7claimed": false,
-  "minutes-bonus-exp": 1049,
-  "minutes-voting-dr": 211,
+  "minutes-bonus-exp": 863,
+  "minutes-voting-dr": 25,
   "minutes-voting-dmg": 0,
-  "total-gained-exp": 810284146,
+  "total-gained-exp": 938899516,
   "barrows-points": 0,
   "donator-points": 0,
   "Skilling-points": 0,
@@ -70,7 +70,7 @@
   "loyalty-points": 0,
   "total-loyalty-points": 0.0,
   "godmodetime": 0,
-  "voting-points": 50,
+  "voting-points": 0,
   "tasks-completion": [
     false,
     false,
@@ -173,7 +173,7 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 1682260985462,
+  "last-veng": 1682272142789,
   "fight-type": "LONGBOW_RAPID",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -354,12 +354,12 @@
     {
       "npcId": 8013,
       "item": 10946,
-      "amount": 16
+      "amount": 19
     },
     {
       "npcId": 8013,
       "item": 23020,
-      "amount": 14
+      "amount": 17
     },
     {
       "npcId": 9904,
@@ -374,12 +374,12 @@
     {
       "npcId": 9907,
       "item": 10946,
-      "amount": 6
+      "amount": 7
     },
     {
       "npcId": 9907,
       "item": 2023,
-      "amount": 105
+      "amount": 106
     },
     {
       "npcId": 9908,
@@ -442,7 +442,7 @@
       1,
       1200,
       120,
-      322,
+      132,
       1,
       1,
       1,
@@ -505,7 +505,7 @@
       0,
       0,
       0,
-      865883100,
+      994498470,
       0,
       0,
       0,
@@ -541,7 +541,7 @@
     },
     {
       "id": 2023,
-      "amount": 2995,
+      "amount": 3095,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -551,7 +551,7 @@
     },
     {
       "id": 5020,
-      "amount": 318230,
+      "amount": 125110,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -561,7 +561,7 @@
     },
     {
       "id": 17634,
-      "amount": 60270,
+      "amount": 31520,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -662,32 +662,62 @@
     {
       "id": -1,
       "amount": 0,
-      "slot": 0
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
     },
     {
       "id": -1,
       "amount": 0,
-      "slot": 0
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
     },
     {
       "id": -1,
       "amount": 0,
-      "slot": 0
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
     },
     {
       "id": -1,
       "amount": 0,
-      "slot": 0
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
     },
     {
       "id": -1,
       "amount": 0,
-      "slot": 0
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
     },
     {
       "id": -1,
       "amount": 0,
-      "slot": 0
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
     },
     {
       "id": -1,
@@ -1291,17 +1321,17 @@
     },
     {
       "item": 2023,
-      "amount": 3133,
+      "amount": 3233,
       "rareDrop": false
     },
     {
       "item": 10946,
-      "amount": 76,
+      "amount": 92,
       "rareDrop": false
     },
     {
       "item": 23020,
-      "amount": 36,
+      "amount": 45,
       "rareDrop": false
     }
   ],

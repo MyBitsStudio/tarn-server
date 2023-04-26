@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 9410276,
+  "total-play-time-ms": 10485467,
   "username": "Dank Magic",
   "password": "521989",
   "email": "null",
@@ -8,9 +8,9 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2527,
-    "y": 2527,
-    "z": 16
+    "x": 2181,
+    "y": 3736,
+    "z": 0
   },
   "online-status": "ON",
   "given-starter": true,
@@ -47,7 +47,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682078084531,
+  "lastlogin": 1682422979488,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -58,10 +58,10 @@
   "day5claimed": false,
   "day6claimed": false,
   "day7claimed": false,
-  "minutes-bonus-exp": 161,
-  "minutes-voting-dr": 51,
+  "minutes-bonus-exp": 144,
+  "minutes-voting-dr": 34,
   "minutes-voting-dmg": 0,
-  "total-gained-exp": 1833198419,
+  "total-gained-exp": 1833229019,
   "barrows-points": 0,
   "donator-points": 23,
   "Skilling-points": 0,
@@ -139,8 +139,8 @@
     0
   ],
   "total-prestiges": 0,
-  "slayer-spree": 0,
-  "npc-killcount": 3478,
+  "slayer-spree": 1,
+  "npc-killcount": 4010,
   "spawn-killcount": 0,
   "lord-killcount": 0,
   "demon-killcount": 748,
@@ -151,7 +151,7 @@
   "angel-killcount": 0,
   "lucien-killcount": 0,
   "hercules-killcount": 0,
-  "satan-killcount": 1,
+  "satan-killcount": 203,
   "zeus-killcount": 0,
   "mini-lucifer-killcount": 0,
   "lucifer-killcount": 0,
@@ -172,10 +172,10 @@
   "run-energy": 100,
   "music": false,
   "sounds": false,
-  "auto-retaliate": false,
+  "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 1682033748459,
+  "last-veng": 1682036240246,
   "fight-type": "STAFF_FOCUS",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -218,10 +218,10 @@
   "dfs-charges": 0,
   "coins-gambled": 0,
   "slayer-master": "EASY_SLAYER",
-  "slayer-task": "NO_TASK",
-  "prev-slayer-task": "NO_TASK",
-  "task-amount": 0,
-  "task-streak": 0,
+  "slayer-task": "IMPERIAL_SCORPION",
+  "prev-slayer-task": "REVENANT_WYVERN",
+  "task-amount": 41,
+  "task-streak": 1,
   "duo-partner": "null",
   "double-slay-xp": false,
   "recoil-deg": 0,
@@ -591,12 +591,12 @@
     {
       "npcId": 6692,
       "item": 995,
-      "amount": 1203
+      "amount": 1235
     },
     {
       "npcId": 6692,
       "item": 2023,
-      "amount": 206
+      "amount": 238
     },
     {
       "npcId": 6692,
@@ -621,12 +621,12 @@
     {
       "npcId": 6692,
       "item": 18005,
-      "amount": 3
+      "amount": 5
     },
     {
       "npcId": 6692,
       "item": 18011,
-      "amount": 1
+      "amount": 2
     },
     {
       "npcId": 9028,
@@ -731,12 +731,37 @@
     {
       "npcId": 202,
       "item": 995,
-      "amount": 4000
+      "amount": 4202
     },
     {
       "npcId": 202,
       "item": 2023,
+      "amount": 204
+    },
+    {
+      "npcId": 202,
+      "item": 13306,
       "amount": 1
+    },
+    {
+      "npcId": 202,
+      "item": 13302,
+      "amount": 1
+    },
+    {
+      "npcId": 202,
+      "item": 20542,
+      "amount": 1
+    },
+    {
+      "npcId": 811,
+      "item": 995,
+      "amount": 5031
+    },
+    {
+      "npcId": 811,
+      "item": 2023,
+      "amount": 32
     }
   ],
   "holy-prayers-unlocked": [
@@ -787,9 +812,9 @@
       120,
       120,
       120,
-      1200,
+      1090,
       112,
-      902,
+      465,
       120,
       1,
       1,
@@ -802,7 +827,7 @@
       1,
       1,
       1,
-      1,
+      38,
       1,
       1,
       1,
@@ -829,7 +854,7 @@
       1,
       1,
       1,
-      1,
+      38,
       1,
       1,
       1,
@@ -856,7 +881,7 @@
       0,
       0,
       0,
-      0,
+      30600,
       0,
       0,
       0,
@@ -888,7 +913,7 @@
     },
     {
       "id": 995,
-      "amount": 2364759,
+      "amount": 3363759,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -898,7 +923,7 @@
     },
     {
       "id": 2023,
-      "amount": 1016,
+      "amount": 1283,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -937,9 +962,14 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
-      "slot": 0
+      "id": 23056,
+      "amount": 1,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
     },
     {
       "id": 23055,
@@ -952,23 +982,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
-      "slot": 0
-    },
-    {
-      "id": -1,
-      "amount": 0,
-      "slot": 0
-    },
-    {
-      "id": -1,
-      "amount": 0,
-      "slot": 0
-    },
-    {
-      "id": -1,
-      "amount": 0,
+      "id": 13302,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -977,8 +992,18 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 20542,
+      "amount": 1,
+      "slot": 0,
+      "bonus": {
+        "effect": "DROP_RATE_LOW",
+        "rarity": "RARE",
+        "bonus": 10
+      }
+    },
+    {
+      "id": 4155,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -987,8 +1012,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 18005,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -997,8 +1022,28 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 18011,
+      "amount": 1,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
+    },
+    {
+      "id": 18005,
+      "amount": 1,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
+    },
+    {
+      "id": 5023,
+      "amount": 28,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1174,13 +1219,13 @@
       }
     },
     {
-      "id": 23056,
+      "id": 13306,
       "amount": 1,
       "slot": 0,
       "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
+        "effect": "DROP_RATE_LOW",
+        "rarity": "RARE",
+        "bonus": 8
       }
     },
     {
@@ -1784,6 +1829,13 @@
   ],
   "kills": [
     {
+      "runningTotal": 203,
+      "npcId": 202,
+      "npcName": "Inferno",
+      "amount": 203,
+      "boss": true
+    },
+    {
       "runningTotal": 748,
       "npcId": 8014,
       "npcName": "Zinqrux",
@@ -1798,10 +1850,10 @@
       "boss": false
     },
     {
-      "runningTotal": 194,
+      "runningTotal": 226,
       "npcId": 6692,
       "npcName": "Revenant Wyvern",
-      "amount": 194,
+      "amount": 226,
       "boss": false
     },
     {
@@ -1896,10 +1948,10 @@
       "boss": false
     },
     {
-      "runningTotal": 1,
-      "npcId": 202,
-      "npcName": "Inferno",
-      "amount": 1,
+      "runningTotal": 32,
+      "npcId": 811,
+      "npcName": "Nagendra",
+      "amount": 32,
       "boss": true
     }
   ],
@@ -1911,7 +1963,7 @@
     },
     {
       "item": 2023,
-      "amount": 2320,
+      "amount": 2322,
       "rareDrop": false
     },
     {
@@ -2668,16 +2720,16 @@
       0,
       250,
       219,
+      203,
+      32,
       1,
       0,
       0,
       0,
       0,
       0,
-      0,
-      0,
       31,
-      1739,
+      2005,
       8,
       0,
       0,
@@ -2772,14 +2824,14 @@
       0,
       0,
       0,
-      0,
+      1,
       0,
       0,
       0,
       0,
       0,
       31,
-      1739,
+      2005,
       0,
       0,
       0,
@@ -2874,7 +2926,7 @@
       0,
       0,
       0,
-      0,
+      1,
       0,
       0,
       0,
@@ -2882,7 +2934,7 @@
       0,
       0,
       31,
-      1739,
+      2005,
       0,
       0,
       0,
@@ -3479,7 +3531,7 @@
       false
     ]
   ],
-  "achievements-daily": 321,
+  "achievements-daily": 325,
   "progression-zones": [
     11,
     21,
@@ -3540,6 +3592,10 @@
       "hasClaimed": false
     },
     "202": {
+      "canClaim": false,
+      "hasClaimed": false
+    },
+    "811": {
       "canClaim": false,
       "hasClaimed": false
     },
@@ -3630,10 +3686,11 @@
     "8003": 39,
     "9027": 21,
     "9028": 10,
-    "6692": 2,
+    "6692": 4,
     "9029": 1,
-    "202": 1,
+    "202": 63,
     "810": 1,
+    "811": 32,
     "9835": 20,
     "8013": 0,
     "9837": 11,

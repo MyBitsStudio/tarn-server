@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 133396206,
+  "total-play-time-ms": 133936806,
   "username": "Amura",
   "password": "87648212aA",
   "email": "null",
@@ -8,9 +8,9 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2139,
-    "y": 5018,
-    "z": 8
+    "x": 2527,
+    "y": 2519,
+    "z": 72
   },
   "online-status": "ON",
   "given-starter": true,
@@ -47,7 +47,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682222179141,
+  "lastlogin": 1682338748966,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -140,7 +140,7 @@
   ],
   "total-prestiges": 0,
   "slayer-spree": 10,
-  "npc-killcount": 30558,
+  "npc-killcount": 31580,
   "spawn-killcount": 0,
   "lord-killcount": 0,
   "demon-killcount": 395,
@@ -175,7 +175,7 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 1681962979460,
+  "last-veng": 376310115,
   "fight-type": "LONGBOW_LONGRANGE",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -861,7 +861,7 @@
     {
       "npcId": 9903,
       "item": 995,
-      "amount": 28902
+      "amount": 28993
     },
     {
       "npcId": 9026,
@@ -1122,6 +1122,11 @@
       "npcId": 9806,
       "item": 995,
       "amount": 26745
+    },
+    {
+      "npcId": 8002,
+      "item": 995,
+      "amount": 29057
     }
   ],
   "holy-prayers-unlocked": [
@@ -1174,7 +1179,7 @@
       120,
       1200,
       120,
-      672,
+      841,
       120,
       1,
       1,
@@ -1253,7 +1258,7 @@
   "inventory": [
     {
       "id": 10835,
-      "amount": 3010319,
+      "amount": 3023934,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1263,7 +1268,7 @@
     },
     {
       "id": 995,
-      "amount": 13559872,
+      "amount": 3950872,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1289,12 +1294,7 @@
     {
       "id": -1,
       "amount": 0,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
+      "slot": 0
     },
     {
       "id": 229,
@@ -1302,14 +1302,9 @@
       "slot": 0
     },
     {
-      "id": 3024,
+      "id": 3030,
       "amount": 1,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
+      "slot": 0
     },
     {
       "id": 3024,
@@ -1539,9 +1534,14 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
-      "slot": 0
+      "id": 19886,
+      "amount": 1,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
     },
     {
       "id": 23144,
@@ -2662,7 +2662,7 @@
     },
     {
       "id": 19886,
-      "amount": 1,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -2788,10 +2788,10 @@
   ],
   "kills": [
     {
-      "runningTotal": 1652,
+      "runningTotal": 2008,
       "npcId": 9903,
       "npcName": "Asmodeus",
-      "amount": 1652,
+      "amount": 2008,
       "boss": true
     },
     {
@@ -3080,12 +3080,19 @@
       "npcName": "Oracle Lion",
       "amount": 0,
       "boss": false
+    },
+    {
+      "runningTotal": 228,
+      "npcId": 8002,
+      "npcName": "Malvek",
+      "amount": 228,
+      "boss": false
     }
   ],
   "drops": [
     {
       "item": 995,
-      "amount": 395263202,
+      "amount": 395657202,
       "rareDrop": false
     },
     {
@@ -4085,8 +4092,8 @@
       503,
       375,
       560,
-      453,
-      0,
+      542,
+      57,
       0,
       10,
       80,
@@ -4096,7 +4103,7 @@
       0,
       0,
       1641,
-      10540,
+      10686,
       0,
       0,
       0,
@@ -4693,7 +4700,7 @@
       false
     ]
   ],
-  "achievements-daily": 322,
+  "achievements-daily": 324,
   "progression-zones": [
     11,
     20,
@@ -4738,6 +4745,10 @@
       "hasClaimed": false
     },
     "9025": {
+      "canClaim": false,
+      "hasClaimed": false
+    },
+    "8002": {
       "canClaim": false,
       "hasClaimed": false
     },
@@ -4949,6 +4960,7 @@
     "9024": 160,
     "9920": 82,
     "9025": 57,
+    "8002": 57,
     "3010": 80,
     "9026": 105,
     "9922": 5,
@@ -4975,7 +4987,7 @@
     "9837": 11,
     "9838": 7,
     "9839": 503,
-    "9903": 453,
+    "9903": 542,
     "9904": 0,
     "3313": 54,
     "1906": 65,

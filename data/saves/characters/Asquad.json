@@ -1,5 +1,9 @@
 {
+<<<<<<< Updated upstream
   "total-play-time-ms": 630526941,
+=======
+  "total-play-time-ms": 598125563,
+>>>>>>> Stashed changes
   "username": "Asquad",
   "password": "ikbenahmad1871",
   "email": "null",
@@ -8,9 +12,15 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
+<<<<<<< Updated upstream
     "x": 2465,
     "y": 10146,
     "z": 8
+=======
+    "x": 2786,
+    "y": 4775,
+    "z": 512
+>>>>>>> Stashed changes
   },
   "online-status": "ON",
   "given-starter": true,
@@ -47,7 +57,11 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
+<<<<<<< Updated upstream
   "lastlogin": 1682496753030,
+=======
+  "lastlogin": 1682468106365,
+>>>>>>> Stashed changes
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -61,7 +75,11 @@
   "minutes-bonus-exp": -1,
   "minutes-voting-dr": -1,
   "minutes-voting-dmg": 0,
+<<<<<<< Updated upstream
   "total-gained-exp": 161935660,
+=======
+  "total-gained-exp": 160744965,
+>>>>>>> Stashed changes
   "barrows-points": 0,
   "donator-points": 12,
   "Skilling-points": 0,
@@ -139,8 +157,13 @@
     0
   ],
   "total-prestiges": 0,
+<<<<<<< Updated upstream
   "slayer-spree": 9,
   "npc-killcount": 1039699,
+=======
+  "slayer-spree": 5,
+  "npc-killcount": 1019679,
+>>>>>>> Stashed changes
   "spawn-killcount": 0,
   "lord-killcount": 0,
   "demon-killcount": 338,
@@ -175,8 +198,13 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
+<<<<<<< Updated upstream
   "last-veng": 390399017,
   "fight-type": "LONGBOW_RAPID",
+=======
+  "last-veng": 384620870,
+  "fight-type": "LONGBOW_ACCURATE",
+>>>>>>> Stashed changes
   "sol-effect": 0,
   "skull-timer": 0,
   "fuse-combination-timer": 0,
@@ -192,7 +220,7 @@
   "dr-timer": 0,
   "ddr-timer": 0,
   "dmg-timer": 0,
-  "double-dr-timer": 0,
+  "double-dr-timer": 571,
   "double-ddr-timer": 0,
   "double-dmg-timer": 1,
   "fire-immunity": 0,
@@ -1561,7 +1589,11 @@
     {
       "npcId": 1313,
       "item": 995,
+<<<<<<< Updated upstream
       "amount": 77415
+=======
+      "amount": 76415
+>>>>>>> Stashed changes
     },
     {
       "npcId": 8013,
@@ -1606,12 +1638,20 @@
     {
       "npcId": 1318,
       "item": 995,
+<<<<<<< Updated upstream
       "amount": 216262
+=======
+      "amount": 214685
+>>>>>>> Stashed changes
     },
     {
       "npcId": 1318,
       "item": 13650,
+<<<<<<< Updated upstream
       "amount": 110
+=======
+      "amount": 106
+>>>>>>> Stashed changes
     },
     {
       "npcId": 1318,
@@ -1621,6 +1661,7 @@
     {
       "npcId": 1311,
       "item": 4071,
+<<<<<<< Updated upstream
       "amount": 1
     },
     {
@@ -1661,7 +1702,39 @@
     {
       "npcId": 9024,
       "item": 7014,
+=======
+>>>>>>> Stashed changes
       "amount": 1
+    },
+    {
+      "npcId": 1318,
+      "item": 14444,
+      "amount": 2
+    },
+    {
+      "npcId": 1318,
+      "item": 14440,
+      "amount": 1
+    },
+    {
+      "npcId": 1318,
+      "item": 12843,
+      "amount": 1
+    },
+    {
+      "npcId": 9904,
+      "item": 15003,
+      "amount": 1
+    },
+    {
+      "npcId": 1746,
+      "item": 19486,
+      "amount": 1
+    },
+    {
+      "npcId": 1746,
+      "item": 20427,
+      "amount": 2
     }
   ],
   "holy-prayers-unlocked": [
@@ -1709,6 +1782,7 @@
   ],
   "skills": {
     "level": [
+<<<<<<< Updated upstream
       198,
       198,
       198,
@@ -1716,6 +1790,15 @@
       198,
       1200,
       198,
+=======
+      183,
+      183,
+      183,
+      1200,
+      183,
+      1200,
+      183,
+>>>>>>> Stashed changes
       1,
       1,
       1,
@@ -1727,7 +1810,11 @@
       91,
       1,
       1,
+<<<<<<< Updated upstream
       102,
+=======
+      101,
+>>>>>>> Stashed changes
       1,
       1,
       1,
@@ -1754,7 +1841,11 @@
       91,
       1,
       1,
+<<<<<<< Updated upstream
       102,
+=======
+      101,
+>>>>>>> Stashed changes
       1,
       1,
       1,
@@ -1781,7 +1872,11 @@
       6416933,
       0,
       0,
+<<<<<<< Updated upstream
       18126210,
+=======
+      16935515,
+>>>>>>> Stashed changes
       0,
       0,
       0,
@@ -1792,9 +1887,20 @@
   },
   "inventory": [
     {
+<<<<<<< Updated upstream
       "id": -1,
       "amount": 0,
       "slot": 0
+=======
+      "id": 13650,
+      "amount": 20,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
+>>>>>>> Stashed changes
     },
     {
       "id": 5730,
@@ -1809,12 +1915,16 @@
     {
       "id": -1,
       "amount": 0,
+<<<<<<< Updated upstream
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
         "rarity": "COMMON",
         "bonus": 0
       }
+=======
+      "slot": 0
+>>>>>>> Stashed changes
     },
     {
       "id": -1,
@@ -1908,7 +2018,11 @@
     },
     {
       "id": 10835,
+<<<<<<< Updated upstream
       "amount": 1533475,
+=======
+      "amount": 1400715,
+>>>>>>> Stashed changes
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1948,7 +2062,11 @@
     },
     {
       "id": 995,
+<<<<<<< Updated upstream
       "amount": 294324725,
+=======
+      "amount": 131980318,
+>>>>>>> Stashed changes
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -3027,7 +3145,11 @@
     },
     {
       "id": 11137,
+<<<<<<< Updated upstream
       "amount": 59,
+=======
+      "amount": 58,
+>>>>>>> Stashed changes
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -4224,6 +4346,7 @@
         "rarity": "COMMON",
         "bonus": 0
       }
+<<<<<<< Updated upstream
     },
     {
       "id": 7014,
@@ -4244,6 +4367,8 @@
         "rarity": "COMMON",
         "bonus": 0
       }
+=======
+>>>>>>> Stashed changes
     }
   ],
   "bank-1": [
@@ -4352,6 +4477,7 @@
     {
       "id": 14488,
       "amount": 3,
+<<<<<<< Updated upstream
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -4372,6 +4498,8 @@
     {
       "id": 15357,
       "amount": 1,
+=======
+>>>>>>> Stashed changes
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -4380,6 +4508,7 @@
       }
     },
     {
+<<<<<<< Updated upstream
       "id": 15359,
       "amount": 7,
       "slot": 0,
@@ -4402,6 +4531,58 @@
     {
       "id": 995,
       "amount": 0,
+=======
+      "id": 2736,
+      "amount": 29,
+>>>>>>> Stashed changes
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
+    },
+    {
+<<<<<<< Updated upstream
+      "id": 19119,
+=======
+      "id": 15357,
+>>>>>>> Stashed changes
+      "amount": 1,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
+    },
+    {
+<<<<<<< Updated upstream
+      "id": 13727,
+      "amount": 1199,
+=======
+      "id": 15359,
+      "amount": 7,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
+    },
+    {
+      "id": 5023,
+      "amount": 583,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
+    },
+    {
+      "id": 995,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -4412,16 +4593,7 @@
     {
       "id": 19119,
       "amount": 1,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
-      "id": 13727,
-      "amount": 1199,
+>>>>>>> Stashed changes
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -5097,7 +5269,11 @@
     },
     {
       "id": 13650,
+<<<<<<< Updated upstream
       "amount": 1460,
+=======
+      "amount": 1370,
+>>>>>>> Stashed changes
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -5209,7 +5385,11 @@
   "bank-6": [
     {
       "id": 2023,
+<<<<<<< Updated upstream
       "amount": 40051,
+=======
+      "amount": 39749,
+>>>>>>> Stashed changes
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -5827,6 +6007,7 @@
       "boss": false
     },
     {
+<<<<<<< Updated upstream
       "runningTotal": 25929,
       "npcId": 1313,
       "npcName": "Lord Yasuda",
@@ -5838,18 +6019,39 @@
       "npcId": 1318,
       "npcName": "Black Goku",
       "amount": 168689,
+=======
+      "runningTotal": 22169,
+      "npcId": 1313,
+      "npcName": "Lord Yasuda",
+      "amount": 22169,
+      "boss": false
+    },
+    {
+      "runningTotal": 162737,
+      "npcId": 1318,
+      "npcName": "Black Goku",
+      "amount": 162737,
+>>>>>>> Stashed changes
       "boss": false
     }
   ],
   "drops": [
     {
       "item": 995,
+<<<<<<< Updated upstream
       "amount": 298286421,
+=======
+      "amount": 251934421,
+>>>>>>> Stashed changes
       "rareDrop": false
     },
     {
       "item": 2023,
+<<<<<<< Updated upstream
       "amount": 44302,
+=======
+      "amount": 44274,
+>>>>>>> Stashed changes
       "rareDrop": false
     },
     {
@@ -7222,7 +7424,11 @@
       894,
       1281,
       3384,
+<<<<<<< Updated upstream
       9,
+=======
+      5,
+>>>>>>> Stashed changes
       897,
       1150,
       1758,
@@ -8192,9 +8398,15 @@
     "1309": 3,
     "1310": 1,
     "1311": 1760,
+<<<<<<< Updated upstream
     "1313": 6663,
     "6692": 2,
     "1318": 266,
+=======
+    "1313": 5723,
+    "6692": 2,
+    "1318": 184,
+>>>>>>> Stashed changes
     "2342": 116,
     "3112": 176,
     "810": 2,

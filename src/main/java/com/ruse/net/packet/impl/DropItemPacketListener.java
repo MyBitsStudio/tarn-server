@@ -15,7 +15,7 @@ import com.ruse.world.entity.impl.player.Player;
 /**
  * This packet listener is called when a player drops an item they have placed
  * in their inventory.
- * 
+ *
  * @author relex lawl
  */
 
@@ -75,12 +75,19 @@ public class DropItemPacketListener implements PacketListener {
 				}
 				else {
 					boolean goGlobal = player.getPosition().getZ() >= 0 && player.getPosition().getZ() < 4 ? true : false;
+<<<<<<< Updated upstream
+=======
+					/*GroundItemManager.spawnGroundItem(player, new GroundItem(item, player.getPosition().copy(),
+							player.getUsername(), player.getHostAddress(), false, 80,
+							goGlobal
+							, 80));*/
+>>>>>>> Stashed changes
 					player.sendMessage("You currently cannot drop items.");
 					PlayerLogs.log(player.getUsername(),
 							"Player dropping item: " + (ItemDefinition.forId(item.getId()) != null
 									&& ItemDefinition.forId(item.getId()).getName() != null
-											? ItemDefinition.forId(item.getId()).getName()
-											: item.getId())
+									? ItemDefinition.forId(item.getId()).getName()
+									: item.getId())
 									+ ", amount: " + item.getAmount());
 				}
 
