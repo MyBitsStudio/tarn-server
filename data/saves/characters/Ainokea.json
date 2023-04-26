@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 596239043,
+  "total-play-time-ms": 600821330,
   "username": "Ainokea",
   "password": "a7e824",
   "email": "null",
@@ -8,9 +8,9 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2222,
-    "y": 3747,
-    "z": 0
+    "x": 2465,
+    "y": 10154,
+    "z": 4
   },
   "online-status": "ON",
   "given-starter": true,
@@ -47,7 +47,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682465295390,
+  "lastlogin": 1682496703834,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -140,7 +140,7 @@
   ],
   "total-prestiges": 0,
   "slayer-spree": 0,
-  "npc-killcount": 397652,
+  "npc-killcount": 400508,
   "spawn-killcount": 0,
   "lord-killcount": 0,
   "demon-killcount": 749,
@@ -175,7 +175,7 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 1682259707413,
+  "last-veng": 241578710,
   "fight-type": "STAFF_POUND",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -184,7 +184,7 @@
   "claimed-fuse-item": true,
   "fuse-in-progress": false,
   "accept-aid": false,
-  "poison-damage": 0,
+  "poison-damage": 20,
   "poison-immunity": 0,
   "overload-timer": 0,
   "aggro-timer": 0,
@@ -421,22 +421,22 @@
     {
       "npcId": 9906,
       "item": 995,
-      "amount": 1405114
+      "amount": 1405115
     },
     {
       "npcId": 9906,
       "item": 2023,
-      "amount": 125
+      "amount": 126
     },
     {
       "npcId": 9904,
       "item": 995,
-      "amount": 2113951
+      "amount": 2113952
     },
     {
       "npcId": 9904,
       "item": 2023,
-      "amount": 92
+      "amount": 93
     },
     {
       "npcId": 9845,
@@ -706,22 +706,22 @@
     {
       "npcId": 9907,
       "item": 10946,
-      "amount": 36
+      "amount": 37
     },
     {
       "npcId": 9907,
       "item": 2023,
-      "amount": 131
+      "amount": 132
     },
     {
       "npcId": 9908,
       "item": 10946,
-      "amount": 23
+      "amount": 24
     },
     {
       "npcId": 9908,
       "item": 2023,
-      "amount": 318
+      "amount": 319
     },
     {
       "npcId": 202,
@@ -1416,7 +1416,7 @@
     {
       "npcId": 1313,
       "item": 995,
-      "amount": 132084
+      "amount": 132502
     }
   ],
   "holy-prayers-unlocked": [
@@ -1467,9 +1467,9 @@
       120,
       120,
       120,
-      1200,
+      1180,
       120,
-      885,
+      295,
       120,
       1,
       1,
@@ -1612,7 +1612,7 @@
       }
     },
     {
-      "id": 3026,
+      "id": 3028,
       "amount": 1,
       "slot": 0
     },
@@ -1688,7 +1688,7 @@
     },
     {
       "id": 10946,
-      "amount": 182,
+      "amount": 191,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1738,7 +1738,7 @@
     },
     {
       "id": 2023,
-      "amount": 3000,
+      "amount": 3465,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1808,7 +1808,7 @@
     },
     {
       "id": 995,
-      "amount": 407446947,
+      "amount": 488822232,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -4629,17 +4629,17 @@
       "boss": false
     },
     {
-      "runningTotal": 8124,
+      "runningTotal": 9756,
       "npcId": 1313,
       "npcName": "Lord Yasuda",
-      "amount": 8124,
+      "amount": 9756,
       "boss": false
     }
   ],
   "drops": [
     {
       "item": 995,
-      "amount": 1313176098,
+      "amount": 1315776098,
       "rareDrop": false
     },
     {
@@ -6604,7 +6604,7 @@
   ],
   "drystreak": {
     "1311": 3050,
-    "1313": 2031,
+    "1313": 2439,
     "6692": 7,
     "2342": 42,
     "3112": 732,
@@ -6676,5 +6676,109 @@
     "252": 1568
   },
   "boost": 0,
-  "slot-level": 0
+  "slot-level": 0,
+  "sp-season": 1,
+  "sp-premium": false,
+  "sp-level": 0,
+  "sp-exp": 0,
+  "sp-rewards": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+  ]
 }

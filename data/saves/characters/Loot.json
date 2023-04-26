@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 202957493,
+  "total-play-time-ms": 204056672,
   "username": "Loot",
   "password": "millwall",
   "email": "null",
@@ -16,7 +16,7 @@
   "given-starter": true,
   "has-pin2": true,
   "saved-pin2": "2468",
-  "saved-ip": "86.185.134.208",
+  "saved-ip": "92.40.219.69",
   "donated": 656,
   "current-boss-task": 0,
   "current-boss-amount": 0,
@@ -47,7 +47,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682494682041,
+  "lastlogin": 1682500384200,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -58,8 +58,8 @@
   "day5claimed": false,
   "day6claimed": false,
   "day7claimed": false,
-  "minutes-bonus-exp": 1100,
-  "minutes-voting-dr": -1,
+  "minutes-bonus-exp": 1128,
+  "minutes-voting-dr": 8,
   "minutes-voting-dmg": 0,
   "total-gained-exp": 3596150,
   "barrows-points": 0,
@@ -72,7 +72,7 @@
   "loyalty-points": 0,
   "total-loyalty-points": 0.0,
   "godmodetime": 0,
-  "voting-points": 14,
+  "voting-points": 17,
   "tasks-completion": [
     false,
     false,
@@ -140,7 +140,7 @@
   ],
   "total-prestiges": 0,
   "slayer-spree": 25,
-  "npc-killcount": 403480,
+  "npc-killcount": 406343,
   "spawn-killcount": 0,
   "lord-killcount": 0,
   "demon-killcount": 715,
@@ -175,7 +175,7 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 1682268691734,
+  "last-veng": 1682272289911,
   "fight-type": "STAFF_POUND",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -192,9 +192,9 @@
   "dr-timer": 0,
   "ddr-timer": 0,
   "dmg-timer": 0,
-  "double-dr-timer": 3853,
+  "double-dr-timer": 2019,
   "double-ddr-timer": 0,
-  "double-dmg-timer": 4209,
+  "double-dmg-timer": 2375,
   "fire-immunity": 0,
   "fire-damage-mod": 0,
   "prayer-renewal-timer": 0,
@@ -1431,7 +1431,7 @@
     {
       "npcId": 9913,
       "item": 995,
-      "amount": 179452
+      "amount": 179873
     },
     {
       "npcId": 187,
@@ -1937,8 +1937,8 @@
       }
     },
     {
-      "id": 10835,
-      "amount": 298564,
+      "id": -1,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1947,8 +1947,8 @@
       }
     },
     {
-      "id": 2736,
-      "amount": 1,
+      "id": -1,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1978,7 +1978,7 @@
     },
     {
       "id": 995,
-      "amount": 78272273,
+      "amount": 33792273,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1987,8 +1987,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 2736,
+      "amount": 2,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -2017,8 +2017,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 10835,
+      "amount": 418640,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -2099,13 +2099,13 @@
       }
     },
     {
-      "id": 2418,
+      "id": 15647,
       "amount": 1,
       "slot": 0,
       "bonus": {
-        "effect": "ALL_DAMAGE_HIGH",
+        "effect": "DROP_RATE_HIGH",
         "rarity": "MYTHIC",
-        "bonus": 3
+        "bonus": 51
       }
     },
     {
@@ -3642,7 +3642,7 @@
     },
     {
       "id": 2418,
-      "amount": 0,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "ALL_DAMAGE_HIGH",
@@ -3652,7 +3652,7 @@
     },
     {
       "id": 23020,
-      "amount": 3,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -3672,7 +3672,7 @@
     },
     {
       "id": 15647,
-      "amount": 1,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "DROP_RATE_HIGH",
@@ -4143,10 +4143,10 @@
       "boss": true
     },
     {
-      "runningTotal": 13496,
+      "runningTotal": 15132,
       "npcId": 9913,
       "npcName": "Slender Man",
-      "amount": 13496,
+      "amount": 15132,
       "boss": false
     },
     {
@@ -4223,7 +4223,7 @@
   "drops": [
     {
       "item": 995,
-      "amount": 1896502039,
+      "amount": 1900726039,
       "rareDrop": false
     },
     {
@@ -6204,7 +6204,7 @@
     "9910": 4,
     "9911": 5,
     "9912": 1758,
-    "9913": 2170,
+    "9913": 2579,
     "9017": 197,
     "9914": 38,
     "187": 1,
@@ -6251,5 +6251,109 @@
     "3831": 12
   },
   "boost": 0,
-  "slot-level": 0
+  "slot-level": 0,
+  "sp-season": 1,
+  "sp-premium": false,
+  "sp-level": 0,
+  "sp-exp": 0,
+  "sp-rewards": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+  ]
 }

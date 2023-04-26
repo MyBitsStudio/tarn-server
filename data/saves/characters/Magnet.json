@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 57310842,
+  "total-play-time-ms": 61236798,
   "username": "Magnet",
   "password": "niemeijer",
   "email": "null",
@@ -8,8 +8,8 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2986,
-    "y": 9488,
+    "x": 2985,
+    "y": 9490,
     "z": 8
   },
   "online-status": "ON",
@@ -47,7 +47,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682494686247,
+  "lastlogin": 1682497360220,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -58,10 +58,10 @@
   "day5claimed": false,
   "day6claimed": false,
   "day7claimed": false,
-  "minutes-bonus-exp": 62,
+  "minutes-bonus-exp": -1,
   "minutes-voting-dr": -1,
   "minutes-voting-dmg": 0,
-  "total-gained-exp": 193948496,
+  "total-gained-exp": 195703803,
   "barrows-points": 0,
   "donator-points": 120,
   "Skilling-points": 0,
@@ -140,7 +140,7 @@
   ],
   "total-prestiges": 0,
   "slayer-spree": 0,
-  "npc-killcount": 10723,
+  "npc-killcount": 10930,
   "spawn-killcount": 0,
   "lord-killcount": 0,
   "demon-killcount": 536,
@@ -175,7 +175,7 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 265537140,
+  "last-veng": 1682235749037,
   "fight-type": "STAFF_BASH",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -656,12 +656,12 @@
     {
       "npcId": 9906,
       "item": 995,
-      "amount": 1706769
+      "amount": 1706770
     },
     {
       "npcId": 9906,
       "item": 2023,
-      "amount": 41
+      "amount": 42
     },
     {
       "npcId": 9028,
@@ -941,12 +941,12 @@
     {
       "npcId": 9815,
       "item": 995,
-      "amount": 6461
+      "amount": 6670
     },
     {
       "npcId": 9815,
       "item": 2023,
-      "amount": 461
+      "amount": 670
     },
     {
       "npcId": 9815,
@@ -976,6 +976,11 @@
     {
       "npcId": 9815,
       "item": 21036,
+      "amount": 2
+    },
+    {
+      "npcId": 9815,
+      "item": 21049,
       "amount": 1
     }
   ],
@@ -1078,7 +1083,7 @@
       1
     ],
     "experience": [
-      513566300,
+      515321607,
       315742104,
       315742104,
       2000000000,
@@ -1118,7 +1123,7 @@
     },
     {
       "id": 995,
-      "amount": 882770,
+      "amount": 6064771,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1128,7 +1133,7 @@
     },
     {
       "id": 2023,
-      "amount": 556,
+      "amount": 790,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1148,7 +1153,7 @@
     },
     {
       "id": 10835,
-      "amount": 9688,
+      "amount": 9852,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1177,8 +1182,18 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 21036,
+      "amount": 1,
+      "slot": 0,
+      "bonus": {
+        "effect": "ALL_DAMAGE_LOW",
+        "rarity": "RARE",
+        "bonus": 1
+      }
+    },
+    {
+      "id": 21049,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1187,18 +1202,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
-      "id": -1,
-      "amount": 0,
+      "id": 2380,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -2770,10 +2775,10 @@
       "boss": true
     },
     {
-      "runningTotal": 455,
+      "runningTotal": 662,
       "npcId": 9815,
       "npcName": "Kol\u0027gal",
-      "amount": 455,
+      "amount": 662,
       "boss": false
     },
     {
@@ -2787,12 +2792,12 @@
   "drops": [
     {
       "item": 995,
-      "amount": 13333682,
+      "amount": 13357682,
       "rareDrop": false
     },
     {
       "item": 2023,
-      "amount": 4084,
+      "amount": 4088,
       "rareDrop": false
     },
     {
@@ -3559,7 +3564,7 @@
       0,
       100,
       5000,
-      23,
+      24,
       0,
       0,
       0,
@@ -3660,7 +3665,7 @@
       0,
       0,
       1000,
-      5596,
+      5803,
       0,
       0,
       0,
@@ -3763,7 +3768,7 @@
       0,
       0,
       1666,
-      5596,
+      5803,
       0,
       0,
       0,
@@ -4545,10 +4550,114 @@
     "9908": 0,
     "9845": 0,
     "9910": 0,
-    "9815": 30,
+    "9815": 74,
     "9911": 40,
     "9817": 14
   },
   "boost": 0,
-  "slot-level": 0
+  "slot-level": 0,
+  "sp-season": 1,
+  "sp-premium": false,
+  "sp-level": 0,
+  "sp-exp": 0,
+  "sp-rewards": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+  ]
 }

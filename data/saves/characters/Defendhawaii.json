@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 277141362,
+  "total-play-time-ms": 281619859,
   "username": "Defendhawaii",
   "password": "a7e824",
   "email": "null",
@@ -47,7 +47,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682465326599,
+  "lastlogin": 1682496807636,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -61,7 +61,7 @@
   "minutes-bonus-exp": 0,
   "minutes-voting-dr": 0,
   "minutes-voting-dmg": 0,
-  "total-gained-exp": 1907440906,
+  "total-gained-exp": 1931194496,
   "barrows-points": 0,
   "donator-points": 0,
   "Skilling-points": 0,
@@ -175,7 +175,7 @@
   "auto-retaliate": false,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 1682321076496,
+  "last-veng": 180209638,
   "fight-type": "BSOAT_ACCURATE",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -336,32 +336,32 @@
     {
       "npcId": 9906,
       "item": 995,
-      "amount": 1144909
+      "amount": 1144910
     },
     {
       "npcId": 9906,
       "item": 2023,
-      "amount": 59
+      "amount": 60
     },
     {
       "npcId": 9904,
       "item": 995,
-      "amount": 3053021
+      "amount": 3053022
     },
     {
       "npcId": 9904,
       "item": 2023,
-      "amount": 73
+      "amount": 74
     },
     {
       "npcId": 9907,
       "item": 10946,
-      "amount": 22
+      "amount": 23
     },
     {
       "npcId": 9907,
       "item": 2023,
-      "amount": 122
+      "amount": 123
     },
     {
       "npcId": 9907,
@@ -371,12 +371,12 @@
     {
       "npcId": 9908,
       "item": 10946,
-      "amount": 15
+      "amount": 16
     },
     {
       "npcId": 9908,
       "item": 2023,
-      "amount": 312
+      "amount": 313
     },
     {
       "npcId": 8013,
@@ -454,7 +454,7 @@
       1,
       1200,
       120,
-      1200,
+      0,
       1,
       1,
       1,
@@ -517,7 +517,7 @@
       0,
       0,
       0,
-      1789110260,
+      1812863850,
       0,
       0,
       0,
@@ -532,8 +532,8 @@
   },
   "inventory": [
     {
-      "id": 995,
-      "amount": 8910670,
+      "id": -1,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -553,7 +553,7 @@
     },
     {
       "id": 17634,
-      "amount": 525280,
+      "amount": 583020,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -593,7 +593,7 @@
     },
     {
       "id": 2023,
-      "amount": 8265,
+      "amount": 8730,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -2937,5 +2937,109 @@
     "8013": 0
   },
   "boost": 0,
-  "slot-level": 0
+  "slot-level": 0,
+  "sp-season": 1,
+  "sp-premium": false,
+  "sp-level": 0,
+  "sp-exp": 0,
+  "sp-rewards": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+  ]
 }

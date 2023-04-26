@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 21308224,
+  "total-play-time-ms": 22105019,
   "username": "Grimwhore",
   "password": "Dannat12",
   "email": "null",
@@ -8,9 +8,9 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2964,
-    "y": 9498,
-    "z": 12
+    "x": 2222,
+    "y": 3747,
+    "z": 0
   },
   "online-status": "ON",
   "given-starter": true,
@@ -47,7 +47,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682201737852,
+  "lastlogin": 1682500176002,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -58,10 +58,10 @@
   "day5claimed": false,
   "day6claimed": false,
   "day7claimed": false,
-  "minutes-bonus-exp": 113,
+  "minutes-bonus-exp": 100,
   "minutes-voting-dr": -1,
   "minutes-voting-dmg": 0,
-  "total-gained-exp": 2909478901,
+  "total-gained-exp": -1385488395,
   "barrows-points": 0,
   "donator-points": 15,
   "Skilling-points": 0,
@@ -175,7 +175,7 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 323864530,
+  "last-veng": 1682177108273,
   "fight-type": "STAFF_POUND",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -361,12 +361,12 @@
     {
       "npcId": 9906,
       "item": 995,
-      "amount": 1142609
+      "amount": 1142610
     },
     {
       "npcId": 9906,
       "item": 2023,
-      "amount": 32
+      "amount": 33
     },
     {
       "npcId": 9027,
@@ -576,12 +576,12 @@
     {
       "npcId": 9904,
       "item": 995,
-      "amount": 3826145
+      "amount": 3826146
     },
     {
       "npcId": 9904,
       "item": 2023,
-      "amount": 41
+      "amount": 42
     },
     {
       "npcId": 9907,
@@ -907,9 +907,9 @@
       120,
       120,
       120,
-      1130,
+      1200,
       120,
-      915,
+      0,
       120,
       1,
       1,
@@ -988,7 +988,7 @@
   "inventory": [
     {
       "id": 995,
-      "amount": 11881850,
+      "amount": 269,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1008,7 +1008,7 @@
     },
     {
       "id": 10835,
-      "amount": 18765,
+      "amount": 37479,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1018,7 +1018,7 @@
     },
     {
       "id": 2023,
-      "amount": 1775,
+      "amount": 1840,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1037,13 +1037,13 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 21049,
+      "amount": 1,
       "slot": 0,
       "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
+        "effect": "MAGIC_DAMAGE",
+        "rarity": "UNCOMMON",
+        "bonus": 1
       }
     },
     {
@@ -1067,13 +1067,13 @@
       }
     },
     {
-      "id": 21049,
-      "amount": 1,
+      "id": -1,
+      "amount": 0,
       "slot": 0,
       "bonus": {
-        "effect": "MAGIC_DAMAGE",
-        "rarity": "UNCOMMON",
-        "bonus": 1
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
       }
     },
     {
@@ -1989,7 +1989,9 @@
     0,
     0
   ],
-  "friends": [],
+  "friends": [
+    26052
+  ],
   "ignores": [],
   "loyalty-titles": [
     false,
@@ -2007,6 +2009,13 @@
   ],
   "kills": [
     {
+      "runningTotal": 305,
+      "npcId": 811,
+      "npcName": "Nagendra",
+      "amount": 305,
+      "boss": true
+    },
+    {
       "runningTotal": 206,
       "npcId": 202,
       "npcName": "Inferno",
@@ -2018,6 +2027,13 @@
       "npcId": 8014,
       "npcName": "Zinqrux",
       "amount": 654,
+      "boss": false
+    },
+    {
+      "runningTotal": 287,
+      "npcId": 9815,
+      "npcName": "Kol\u0027gal",
+      "amount": 287,
       "boss": false
     },
     {
@@ -2035,17 +2051,17 @@
       "boss": false
     },
     {
-      "runningTotal": 113,
-      "npcId": 9910,
-      "npcName": "Imperial Ranger",
-      "amount": 113,
-      "boss": false
-    },
-    {
       "runningTotal": 154,
       "npcId": 9807,
       "npcName": "Imperial Paladin",
       "amount": 154,
+      "boss": false
+    },
+    {
+      "runningTotal": 113,
+      "npcId": 9910,
+      "npcName": "Imperial Ranger",
+      "amount": 113,
       "boss": false
     },
     {
@@ -2116,20 +2132,6 @@
       "npcId": 1265,
       "npcName": "Oracle Lion",
       "amount": 0,
-      "boss": false
-    },
-    {
-      "runningTotal": 305,
-      "npcId": 811,
-      "npcName": "Nagendra",
-      "amount": 305,
-      "boss": true
-    },
-    {
-      "runningTotal": 287,
-      "npcId": 9815,
-      "npcName": "Kol\u0027gal",
-      "amount": 287,
       "boss": false
     }
   ],
@@ -2948,7 +2950,7 @@
       0,
       100,
       2547,
-      12,
+      14,
       0,
       0,
       0,
@@ -3749,7 +3751,7 @@
       false
     ]
   ],
-  "achievements-daily": 322,
+  "achievements-daily": 326,
   "progression-zones": [
     11,
     23,
@@ -3927,5 +3929,109 @@
     "9911": 35
   },
   "boost": 0,
-  "slot-level": 0
+  "slot-level": 0,
+  "sp-season": 1,
+  "sp-premium": false,
+  "sp-level": 0,
+  "sp-exp": 0,
+  "sp-rewards": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+  ]
 }

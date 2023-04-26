@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 362453350,
+  "total-play-time-ms": 364745332,
   "username": "Kabal",
   "password": "tarnkabal",
   "email": "null",
@@ -8,8 +8,8 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2986,
-    "y": 2773,
+    "x": 2225,
+    "y": 3746,
     "z": 0
   },
   "online-status": "ON",
@@ -45,7 +45,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682460920251,
+  "lastlogin": 1682499833408,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -138,7 +138,7 @@
   ],
   "total-prestiges": 0,
   "slayer-spree": 128,
-  "npc-killcount": 713431,
+  "npc-killcount": 713433,
   "spawn-killcount": 0,
   "lord-killcount": 0,
   "demon-killcount": 82,
@@ -173,7 +173,7 @@
   "auto-retaliate": false,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 1682240896652,
+  "last-veng": 258120799,
   "fight-type": "LONGBOW_ACCURATE",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -192,7 +192,7 @@
   "dmg-timer": 0,
   "double-dr-timer": 0,
   "double-ddr-timer": 0,
-  "double-dmg-timer": 1,
+  "double-dmg-timer": 0,
   "fire-immunity": 0,
   "fire-damage-mod": 0,
   "prayer-renewal-timer": 0,
@@ -207,7 +207,7 @@
     0
   ],
   "effigy": 0,
-  "summon-npc": 3048,
+  "summon-npc": -1,
   "summon-death": -1,
   "process-farming": false,
   "clanchat": "Help",
@@ -1099,7 +1099,7 @@
     {
       "npcId": 3112,
       "item": 995,
-      "amount": 366320
+      "amount": 366322
     },
     {
       "npcId": 3112,
@@ -1435,17 +1435,7 @@
       }
     },
     {
-      "id": 22135,
-      "amount": 1,
-      "slot": 0,
-      "bonus": {
-        "effect": "TRIPLE_KILLS",
-        "rarity": "MYTHIC",
-        "bonus": 1
-      }
-    },
-    {
-      "id": 15647,
+      "id": 13775,
       "amount": 1,
       "slot": 0,
       "bonus": {
@@ -1455,48 +1445,8 @@
       }
     },
     {
-      "id": 2736,
-      "amount": 9,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
-      "id": 22135,
-      "amount": 1,
-      "slot": 0,
-      "bonus": {
-        "effect": "DROP_RATE_HIGH",
-        "rarity": "MYTHIC",
-        "bonus": 47
-      }
-    },
-    {
-      "id": 15646,
-      "amount": 1,
-      "slot": 0,
-      "bonus": {
-        "effect": "DROP_RATE_HIGH",
-        "rarity": "MYTHIC",
-        "bonus": 74
-      }
-    },
-    {
-      "id": 15646,
-      "amount": 1,
-      "slot": 0,
-      "bonus": {
-        "effect": "RANGE_DAMAGE",
-        "rarity": "UNCOMMON",
-        "bonus": 1
-      }
-    },
-    {
-      "id": 10946,
-      "amount": 18,
+      "id": -1,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1515,17 +1465,67 @@
       }
     },
     {
+      "id": -1,
+      "amount": 0,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
+    },
+    {
       "id": 15645,
       "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "DROP_RATE_HIGH",
         "rarity": "MYTHIC",
-        "bonus": 31
+        "bonus": 55
       }
     },
     {
-      "id": 15646,
+      "id": -1,
+      "amount": 0,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
+    },
+    {
+      "id": -1,
+      "amount": 0,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
+    },
+    {
+      "id": -1,
+      "amount": 0,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
+    },
+    {
+      "id": -1,
+      "amount": 0,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
+    },
+    {
+      "id": 4028,
       "amount": 1,
       "slot": 0,
       "bonus": {
@@ -1535,8 +1535,8 @@
       }
     },
     {
-      "id": 22135,
-      "amount": 1,
+      "id": -1,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1585,18 +1585,18 @@
       }
     },
     {
-      "id": 14440,
-      "amount": 1,
+      "id": 10946,
+      "amount": 18,
       "slot": 0,
       "bonus": {
-        "effect": "ALL_DAMAGE_HIGH",
-        "rarity": "MYTHIC",
-        "bonus": 3
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 2736,
+      "amount": 9,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1606,7 +1606,7 @@
     },
     {
       "id": 995,
-      "amount": 812,
+      "amount": 384812,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1646,7 +1646,7 @@
     },
     {
       "id": 10835,
-      "amount": 55381018,
+      "amount": 55361018,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1687,13 +1687,13 @@
   ],
   "equipment": [
     {
-      "id": 15645,
+      "id": 14440,
       "amount": 1,
       "slot": 0,
       "bonus": {
-        "effect": "DROP_RATE_HIGH",
+        "effect": "ALL_DAMAGE_HIGH",
         "rarity": "MYTHIC",
-        "bonus": 55
+        "bonus": 3
       }
     },
     {
@@ -2617,7 +2617,7 @@
     },
     {
       "id": 22135,
-      "amount": 57,
+      "amount": 58,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -2637,7 +2637,7 @@
     },
     {
       "id": 15646,
-      "amount": 29,
+      "amount": 30,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -3227,7 +3227,7 @@
     },
     {
       "id": 15647,
-      "amount": 33,
+      "amount": 34,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -3257,7 +3257,7 @@
     },
     {
       "id": 22135,
-      "amount": 0,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "TRIPLE_KILLS",
@@ -3717,7 +3717,7 @@
     },
     {
       "id": 22135,
-      "amount": 0,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "DROP_RATE_HIGH",
@@ -3903,6 +3903,36 @@
         "effect": "DOUBLE_DROP",
         "rarity": "RARE",
         "bonus": 8
+      }
+    },
+    {
+      "id": 15645,
+      "amount": 1,
+      "slot": 0,
+      "bonus": {
+        "effect": "DROP_RATE_HIGH",
+        "rarity": "MYTHIC",
+        "bonus": 31
+      }
+    },
+    {
+      "id": 15646,
+      "amount": 1,
+      "slot": 0,
+      "bonus": {
+        "effect": "DROP_RATE_HIGH",
+        "rarity": "MYTHIC",
+        "bonus": 74
+      }
+    },
+    {
+      "id": 15646,
+      "amount": 1,
+      "slot": 0,
+      "bonus": {
+        "effect": "RANGE_DAMAGE",
+        "rarity": "UNCOMMON",
+        "bonus": 1
       }
     }
   ],
@@ -4203,7 +4233,7 @@
     },
     {
       "id": 4028,
-      "amount": 1,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -4371,10 +4401,10 @@
       "boss": true
     },
     {
-      "runningTotal": 126599,
+      "runningTotal": 126601,
       "npcId": 3112,
       "npcName": "Ezkel-Nojad",
-      "amount": 126599,
+      "amount": 126601,
       "boss": false
     },
     {
@@ -6543,7 +6573,7 @@
   },
   "lastTGloveIndex": -1,
   "group-ironman-locked": false,
-  "lastInstanceNpc": 9017,
+  "lastInstanceNpc": 3112,
   "daily-task": {},
   "collectionlog-rewards": {
     "1311": {
@@ -6849,7 +6879,7 @@
     "6692": 3,
     "1318": 249,
     "2342": 78,
-    "3112": 1622,
+    "3112": 1623,
     "810": 79,
     "3115": 1258,
     "811": 8,
@@ -6911,5 +6941,109 @@
     "252": 1308
   },
   "boost": 0,
-  "slot-level": 0
+  "slot-level": 0,
+  "sp-season": 1,
+  "sp-premium": false,
+  "sp-level": 0,
+  "sp-exp": 0,
+  "sp-rewards": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+  ]
 }

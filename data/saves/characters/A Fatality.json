@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 478412714,
+  "total-play-time-ms": 482849086,
   "username": "A Fatality",
   "password": "pt85205",
   "email": "null",
@@ -8,8 +8,8 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2223,
-    "y": 3733,
+    "x": 2227,
+    "y": 3748,
     "z": 0
   },
   "online-status": "ON",
@@ -47,7 +47,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682495767446,
+  "lastlogin": 1682496849639,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -58,7 +58,7 @@
   "day5claimed": false,
   "day6claimed": false,
   "day7claimed": false,
-  "minutes-bonus-exp": 5435,
+  "minutes-bonus-exp": 5362,
   "minutes-voting-dr": -1,
   "minutes-voting-dmg": 0,
   "total-gained-exp": -1209722093,
@@ -175,7 +175,7 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 570333638,
+  "last-veng": 1681930952373,
   "fight-type": "LONGBOW_ACCURATE",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -194,7 +194,7 @@
   "dmg-timer": 0,
   "double-dr-timer": 0,
   "double-ddr-timer": 0,
-  "double-dmg-timer": 0,
+  "double-dmg-timer": 1,
   "fire-immunity": 0,
   "fire-damage-mod": 0,
   "prayer-renewal-timer": 0,
@@ -656,22 +656,22 @@
     {
       "npcId": 9904,
       "item": 995,
-      "amount": 2332144
+      "amount": 2332145
     },
     {
       "npcId": 9904,
       "item": 2023,
-      "amount": 241
+      "amount": 242
     },
     {
       "npcId": 9908,
       "item": 10946,
-      "amount": 96
+      "amount": 97
     },
     {
       "npcId": 9908,
       "item": 2023,
-      "amount": 403
+      "amount": 404
     },
     {
       "npcId": 9028,
@@ -706,12 +706,12 @@
     {
       "npcId": 9907,
       "item": 10946,
-      "amount": 148
+      "amount": 149
     },
     {
       "npcId": 9907,
       "item": 2023,
-      "amount": 244
+      "amount": 245
     },
     {
       "npcId": 9029,
@@ -1786,7 +1786,7 @@
     {
       "npcId": 9908,
       "item": 23057,
-      "amount": 6
+      "amount": 7
     },
     {
       "npcId": 9017,
@@ -2433,7 +2433,7 @@
     },
     {
       "id": 995,
-      "amount": 138341904,
+      "amount": 404,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -2443,7 +2443,7 @@
     },
     {
       "id": 10835,
-      "amount": 71775365,
+      "amount": 71931330,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -2452,8 +2452,8 @@
       }
     },
     {
-      "id": 23020,
-      "amount": 37,
+      "id": -1,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -2463,7 +2463,7 @@
     },
     {
       "id": 2023,
-      "amount": 31962,
+      "amount": 32402,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -6335,5 +6335,109 @@
     "3831": 5
   },
   "boost": 0,
-  "slot-level": 0
+  "slot-level": 0,
+  "sp-season": 1,
+  "sp-premium": false,
+  "sp-level": 0,
+  "sp-exp": 0,
+  "sp-rewards": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+  ]
 }

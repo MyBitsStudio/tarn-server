@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 245074843,
+  "total-play-time-ms": 249653682,
   "username": "V1",
   "password": "jameelmneh",
   "email": "null",
@@ -8,9 +8,9 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2236,
-    "y": 3746,
-    "z": 0
+    "x": 2139,
+    "y": 5018,
+    "z": 8
   },
   "online-status": "ON",
   "given-starter": true,
@@ -47,7 +47,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682278272091,
+  "lastlogin": 1682496707426,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -58,7 +58,7 @@
   "day5claimed": false,
   "day6claimed": false,
   "day7claimed": false,
-  "minutes-bonus-exp": 2074,
+  "minutes-bonus-exp": 1998,
   "minutes-voting-dr": -1,
   "minutes-voting-dmg": 0,
   "total-gained-exp": 520951228,
@@ -167,7 +167,7 @@
   "bh-rank": -1,
   "gender": "MALE",
   "spell-book": "NORMAL",
-  "prayer-book": "NORMAL",
+  "prayer-book": "CURSES",
   "running": true,
   "run-energy": 100,
   "music": false,
@@ -175,7 +175,7 @@
   "auto-retaliate": false,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 1682089240603,
+  "last-veng": 412045662,
   "fight-type": "STAFF_BASH",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -209,7 +209,7 @@
     0
   ],
   "effigy": 0,
-  "summon-npc": -1,
+  "summon-npc": 3023,
   "summon-death": -1,
   "process-farming": false,
   "clanchat": "Help",
@@ -346,47 +346,52 @@
     {
       "npcId": 9906,
       "item": 995,
-      "amount": 1769365
+      "amount": 1769368
     },
     {
       "npcId": 9906,
       "item": 2023,
-      "amount": 86
+      "amount": 89
     },
     {
       "npcId": 9904,
       "item": 995,
-      "amount": 2896705
+      "amount": 2896706
     },
     {
       "npcId": 9904,
       "item": 2023,
-      "amount": 82
+      "amount": 83
     },
     {
       "npcId": 9907,
       "item": 10946,
-      "amount": 31
+      "amount": 32
     },
     {
       "npcId": 9907,
       "item": 2023,
-      "amount": 134
+      "amount": 135
     },
     {
       "npcId": 9908,
       "item": 10946,
-      "amount": 21
+      "amount": 22
     },
     {
       "npcId": 9908,
       "item": 2023,
-      "amount": 320
+      "amount": 321
     },
     {
       "npcId": 9907,
       "item": 15002,
       "amount": 2
+    },
+    {
+      "npcId": 9908,
+      "item": 23057,
+      "amount": 1
     }
   ],
   "holy-prayers-unlocked": [
@@ -439,7 +444,7 @@
       1,
       1200,
       1,
-      10,
+      0,
       120,
       1,
       1,
@@ -558,7 +563,7 @@
     },
     {
       "id": 2023,
-      "amount": 9867,
+      "amount": 10382,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -617,8 +622,8 @@
       }
     },
     {
-      "id": 19481,
-      "amount": 1,
+      "id": 995,
+      "amount": 3714523,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -657,8 +662,8 @@
       }
     },
     {
-      "id": 995,
-      "amount": 5500217,
+      "id": -1,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -667,8 +672,8 @@
       }
     },
     {
-      "id": 10946,
-      "amount": 3,
+      "id": -1,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -2824,7 +2829,7 @@
       false
     ]
   ],
-  "achievements-daily": 323,
+  "achievements-daily": 326,
   "progression-zones": [
     0,
     0,
@@ -2933,5 +2938,109 @@
     "8013": 0
   },
   "boost": 0,
-  "slot-level": 0
+  "slot-level": 0,
+  "sp-season": 1,
+  "sp-premium": false,
+  "sp-level": 0,
+  "sp-exp": 0,
+  "sp-rewards": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+  ]
 }

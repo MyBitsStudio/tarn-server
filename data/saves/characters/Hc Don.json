@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 310163507,
+  "total-play-time-ms": 310791099,
   "username": "Hc Don",
   "password": "lantranetas",
   "email": "null",
@@ -8,8 +8,8 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2227,
-    "y": 3727,
+    "x": 2660,
+    "y": 3043,
     "z": 0
   },
   "online-status": "ON",
@@ -47,7 +47,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682483222108,
+  "lastlogin": 1682496729628,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -175,7 +175,7 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 1682101052148,
+  "last-veng": 396305079,
   "fight-type": "LONGBOW_RAPID",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -209,7 +209,7 @@
     0
   ],
   "effigy": 0,
-  "summon-npc": 3023,
+  "summon-npc": -1,
   "summon-death": -1,
   "process-farming": false,
   "clanchat": "Help",
@@ -336,12 +336,12 @@
     {
       "npcId": 9906,
       "item": 995,
-      "amount": 1738190
+      "amount": 1738191
     },
     {
       "npcId": 9906,
       "item": 2023,
-      "amount": 203
+      "amount": 204
     },
     {
       "npcId": 9837,
@@ -376,22 +376,22 @@
     {
       "npcId": 9904,
       "item": 995,
-      "amount": 3020065
+      "amount": 3020066
     },
     {
       "npcId": 9904,
       "item": 2023,
-      "amount": 136
+      "amount": 137
     },
     {
       "npcId": 9907,
       "item": 10946,
-      "amount": 67
+      "amount": 68
     },
     {
       "npcId": 9907,
       "item": 2023,
-      "amount": 267
+      "amount": 268
     },
     {
       "npcId": 9911,
@@ -406,12 +406,12 @@
     {
       "npcId": 9908,
       "item": 10946,
-      "amount": 41
+      "amount": 42
     },
     {
       "npcId": 9908,
       "item": 2023,
-      "amount": 337
+      "amount": 338
     },
     {
       "npcId": 9922,
@@ -1343,7 +1343,7 @@
   "inventory": [
     {
       "id": 10835,
-      "amount": 23000367,
+      "amount": 23238414,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1353,7 +1353,7 @@
     },
     {
       "id": 995,
-      "amount": 214224278,
+      "amount": 616,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1373,7 +1373,7 @@
     },
     {
       "id": 11137,
-      "amount": 44,
+      "amount": 45,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1392,8 +1392,8 @@
       }
     },
     {
-      "id": 2736,
-      "amount": 4,
+      "id": 19481,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1422,8 +1422,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 10946,
+      "amount": 3,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1613,7 +1613,7 @@
     },
     {
       "id": 2023,
-      "amount": 21128,
+      "amount": 21593,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -5512,5 +5512,109 @@
     "3831": 8
   },
   "boost": 0,
-  "slot-level": 0
+  "slot-level": 0,
+  "sp-season": 1,
+  "sp-premium": false,
+  "sp-level": 0,
+  "sp-exp": 0,
+  "sp-rewards": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+  ]
 }

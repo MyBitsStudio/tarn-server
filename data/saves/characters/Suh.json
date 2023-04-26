@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 449135695,
+  "total-play-time-ms": 453683835,
   "username": "Suh",
   "password": "tarn2023rsps",
   "email": "null",
@@ -8,9 +8,9 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2785,
-    "y": 4779,
-    "z": 80
+    "x": 2144,
+    "y": 5020,
+    "z": 12
   },
   "online-status": "ON",
   "given-starter": true,
@@ -45,7 +45,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682278278337,
+  "lastlogin": 1682496738030,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -56,7 +56,7 @@
   "day5claimed": false,
   "day6claimed": false,
   "day7claimed": false,
-  "minutes-bonus-exp": 955,
+  "minutes-bonus-exp": 880,
   "minutes-voting-dr": -1,
   "minutes-voting-dmg": 0,
   "total-gained-exp": 1938399824,
@@ -173,7 +173,7 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 1681880706953,
+  "last-veng": 620579217,
   "fight-type": "STAFF_BASH",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -654,12 +654,12 @@
     {
       "npcId": 9906,
       "item": 995,
-      "amount": 1111326
+      "amount": 1111327
     },
     {
       "npcId": 9906,
       "item": 2023,
-      "amount": 406
+      "amount": 408
     },
     {
       "npcId": 9904,
@@ -2104,9 +2104,9 @@
       "amount": 1,
       "slot": 0,
       "bonus": {
-        "effect": "DROP_RATE_HIGH",
+        "effect": "ALL_DAMAGE_HIGH",
         "rarity": "MYTHIC",
-        "bonus": 85
+        "bonus": 3
       }
     },
     {
@@ -2114,14 +2114,14 @@
       "amount": 1,
       "slot": 0,
       "bonus": {
-        "effect": "DROP_RATE_HIGH",
+        "effect": "ALL_DAMAGE_HIGH",
         "rarity": "MYTHIC",
-        "bonus": 75
+        "bonus": 3
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 20552,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -2321,7 +2321,7 @@
     },
     {
       "id": 2023,
-      "amount": 114701,
+      "amount": 114751,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -2361,7 +2361,7 @@
     },
     {
       "id": 995,
-      "amount": 386668057,
+      "amount": 393610225,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -2456,9 +2456,9 @@
       "amount": 1,
       "slot": 0,
       "bonus": {
-        "effect": "ALL_DAMAGE_HIGH",
+        "effect": "DROP_RATE_HIGH",
         "rarity": "MYTHIC",
-        "bonus": 3
+        "bonus": 85
       }
     },
     {
@@ -2506,9 +2506,9 @@
       "amount": 1,
       "slot": 0,
       "bonus": {
-        "effect": "ALL_DAMAGE_HIGH",
+        "effect": "DROP_RATE_HIGH",
         "rarity": "MYTHIC",
-        "bonus": 3
+        "bonus": 75
       }
     },
     {
@@ -3050,7 +3050,7 @@
     },
     {
       "id": 20552,
-      "amount": 6,
+      "amount": 4,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -3923,7 +3923,7 @@
     },
     {
       "item": 2023,
-      "amount": 124958,
+      "amount": 125008,
       "rareDrop": false
     },
     {
@@ -5901,7 +5901,7 @@
       false
     ]
   ],
-  "achievements-daily": 323,
+  "achievements-daily": 326,
   "progression-zones": [
     10,
     21,
@@ -6397,5 +6397,109 @@
     "252": 667
   },
   "boost": 0,
-  "slot-level": 0
+  "slot-level": 0,
+  "sp-season": 1,
+  "sp-premium": false,
+  "sp-level": 0,
+  "sp-exp": 0,
+  "sp-rewards": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+  ]
 }
