@@ -17,22 +17,6 @@
       "bonus": 0
     },
     {
-      "id": 15357,
-      "amount": 1,
-      "maxAmount": 1,
-      "price": 500000,
-      "effect": "NOTHING",
-      "bonus": 0
-    },
-    {
-      "id": 4367,
-      "amount": 1,
-      "maxAmount": 1,
-      "price": 3000,
-      "effect": "MAGIC_DAMAGE",
-      "bonus": 1
-    },
-    {
       "id": 20594,
       "amount": 1,
       "maxAmount": 1,
@@ -48,14 +32,9 @@
       "effect": "DOUBLE_DROP",
       "bonus": 6
     },
-    {
-      "id": 23020,
-      "amount": 39,
-      "maxAmount": 41,
-      "price": 85000,
-      "effect": "NOTHING",
-      "bonus": 0
-    },
+    null,
+    null,
+    null,
     null,
     null,
     null,
@@ -82,5 +61,5 @@
     null,
     null
   ],
-  "earnings": 3807000
+  "earnings": 3000
 }

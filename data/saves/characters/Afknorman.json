@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 114328341,
+  "total-play-time-ms": 226557518,
   "username": "Afknorman",
   "password": "popeye25",
   "email": "null",
@@ -45,7 +45,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682268896753,
+  "lastlogin": 1682412246129,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -59,7 +59,7 @@
   "minutes-bonus-exp": 0,
   "minutes-voting-dr": 0,
   "minutes-voting-dmg": 0,
-  "total-gained-exp": 1362016030,
+  "total-gained-exp": 2000007330,
   "barrows-points": 0,
   "donator-points": 0,
   "Skilling-points": 0,
@@ -173,7 +173,7 @@
   "auto-retaliate": false,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 21679870,
+  "last-veng": 1682473473598,
   "fight-type": "BATTLEAXE_CHOP",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -444,7 +444,7 @@
       0,
       0,
       0,
-      1362016030,
+      2000000000,
       0,
       0,
       0,
@@ -460,7 +460,7 @@
   "inventory": [
     {
       "id": 5020,
-      "amount": 207130,
+      "amount": 340130,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -470,7 +470,7 @@
     },
     {
       "id": 17634,
-      "amount": 427420,
+      "amount": 170200,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -479,9 +479,14 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
-      "slot": 0
+      "id": 10946,
+      "amount": 12,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
     },
     {
       "id": -1,
@@ -1366,7 +1371,9 @@
     0,
     0
   ],
-  "friends": [],
+  "friends": [
+    30071977
+  ],
   "ignores": [],
   "loyalty-titles": [
     false,
@@ -2886,7 +2893,7 @@
       false
     ]
   ],
-  "achievements-daily": 323,
+  "achievements-daily": 326,
   "progression-zones": [
     0,
     0,

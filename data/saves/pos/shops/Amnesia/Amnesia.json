@@ -32,14 +32,7 @@
       "effect": "DROP_RATE_LOW",
       "bonus": 8
     },
-    {
-      "id": 1033,
-      "amount": 1,
-      "maxAmount": 1,
-      "price": 40000,
-      "effect": "NOTHING",
-      "bonus": 0
-    },
+    null,
     null,
     null,
     null,
@@ -68,5 +61,5 @@
     null,
     null
   ],
-  "earnings": 0
+  "earnings": 40000
 }

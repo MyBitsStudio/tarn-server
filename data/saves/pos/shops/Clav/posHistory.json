@@ -31,6 +31,30 @@
       "price": 60000,
       "effect": "NOTHING",
       "bonus": 0
+    },
+    {
+      "id": 22153,
+      "amount": 1,
+      "buyer": "Yavid",
+      "price": 700000,
+      "effect": "NOTHING",
+      "bonus": 0
+    },
+    {
+      "id": 14307,
+      "amount": 1,
+      "buyer": "Final Hour",
+      "price": 700000,
+      "effect": "RANGE_DAMAGE",
+      "bonus": 1
+    },
+    {
+      "id": 22135,
+      "amount": 1,
+      "buyer": "Neff",
+      "price": 20000000,
+      "effect": "AOE_EFFECT",
+      "bonus": 1
     }
   ]
 }

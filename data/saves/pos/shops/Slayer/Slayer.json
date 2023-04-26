@@ -2,45 +2,52 @@
   "shop": [
     {
       "id": 15646,
-      "amount": 6,
-      "maxAmount": 6,
+      "amount": 7,
+      "maxAmount": 7,
       "price": 80000,
       "effect": "NOTHING",
       "bonus": 0
     },
     {
       "id": 19481,
+      "amount": 9,
+      "maxAmount": 22,
+      "price": 50000,
+      "effect": "NOTHING",
+      "bonus": 0
+    },
+    {
+      "id": 22135,
       "amount": 10,
       "maxAmount": 10,
-      "price": 50000,
+      "price": 30000,
       "effect": "NOTHING",
       "bonus": 0
     },
     {
-      "id": 15645,
+      "id": 22135,
       "amount": 2,
-      "maxAmount": 3,
-      "price": 50000,
+      "maxAmount": 2,
+      "price": 30000,
+      "effect": "MAGIC_DAMAGE",
+      "bonus": 1
+    },
+    {
+      "id": 15646,
+      "amount": 1,
+      "maxAmount": 1,
+      "price": 30000,
+      "effect": "MAGIC_DAMAGE",
+      "bonus": 1
+    },
+    {
+      "id": 19482,
+      "amount": 2,
+      "maxAmount": 2,
+      "price": 150000,
       "effect": "NOTHING",
       "bonus": 0
     },
-    {
-      "id": 15645,
-      "amount": 1,
-      "maxAmount": 1,
-      "price": 500000,
-      "effect": "ALL_DAMAGE_HIGH",
-      "bonus": 3
-    },
-    {
-      "id": 13640,
-      "amount": 1,
-      "maxAmount": 1,
-      "price": 450000,
-      "effect": "NOTHING",
-      "bonus": 0
-    },
-    null,
     null,
     null,
     null,
@@ -68,5 +75,5 @@
     null,
     null
   ],
-  "earnings": 2650000
+  "earnings": 20000
 }

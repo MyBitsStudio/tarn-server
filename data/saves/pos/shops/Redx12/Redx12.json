@@ -1,19 +1,117 @@
 {
   "shop": [
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
+    {
+      "id": 22135,
+      "amount": 2,
+      "maxAmount": 3,
+      "price": 2000000,
+      "effect": "ALL_DAMAGE_MEDIUM",
+      "bonus": 2
+    },
+    {
+      "id": 22135,
+      "amount": 3,
+      "maxAmount": 4,
+      "price": 1000000,
+      "effect": "DOUBLE_DROP",
+      "bonus": 12
+    },
+    {
+      "id": 22135,
+      "amount": 1,
+      "maxAmount": 1,
+      "price": 2000000,
+      "effect": "DOUBLE_DROP",
+      "bonus": 18
+    },
+    {
+      "id": 22135,
+      "amount": 1,
+      "maxAmount": 1,
+      "price": 2000000,
+      "effect": "DOUBLE_DROP",
+      "bonus": 14
+    },
+    {
+      "id": 22135,
+      "amount": 1,
+      "maxAmount": 1,
+      "price": 500000,
+      "effect": "DROP_RATE_LOW",
+      "bonus": 5
+    },
+    {
+      "id": 22135,
+      "amount": 1,
+      "maxAmount": 1,
+      "price": 500000,
+      "effect": "DROP_RATE_LOW",
+      "bonus": 13
+    },
+    {
+      "id": 15645,
+      "amount": 1,
+      "maxAmount": 1,
+      "price": 4000000,
+      "effect": "ALL_DAMAGE_HIGH",
+      "bonus": 3
+    },
+    {
+      "id": 15647,
+      "amount": 3,
+      "maxAmount": 4,
+      "price": 4000000,
+      "effect": "ALL_DAMAGE_HIGH",
+      "bonus": 3
+    },
+    {
+      "id": 22135,
+      "amount": 1,
+      "maxAmount": 1,
+      "price": 1000000,
+      "effect": "DOUBLE_KILLS",
+      "bonus": 1
+    },
+    {
+      "id": 15646,
+      "amount": 3,
+      "maxAmount": 3,
+      "price": 1000000,
+      "effect": "ALL_DAMAGE_LOW",
+      "bonus": 1
+    },
+    {
+      "id": 22135,
+      "amount": 1,
+      "maxAmount": 1,
+      "price": 200000,
+      "effect": "DROP_RATE_LOW",
+      "bonus": 15
+    },
+    {
+      "id": 22135,
+      "amount": 1,
+      "maxAmount": 1,
+      "price": 1000000,
+      "effect": "TRIPLE_KILLS",
+      "bonus": 2
+    },
+    {
+      "id": 22135,
+      "amount": 1,
+      "maxAmount": 1,
+      "price": 500000,
+      "effect": "DOUBLE_DROP",
+      "bonus": 11
+    },
+    {
+      "id": 15646,
+      "amount": 1,
+      "maxAmount": 1,
+      "price": 1000000,
+      "effect": "ALL_DAMAGE_MEDIUM",
+      "bonus": 2
+    },
     null,
     null,
     null,
@@ -33,5 +131,5 @@
     null,
     null
   ],
-  "earnings": 0
+  "earnings": 1500000
 }

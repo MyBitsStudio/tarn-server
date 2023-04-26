@@ -1,7 +1,21 @@
 {
   "shop": [
-    null,
-    null,
+    {
+      "id": 23020,
+      "amount": 3,
+      "maxAmount": 3,
+      "price": 92000,
+      "effect": "NOTHING",
+      "bonus": 0
+    },
+    {
+      "id": 22135,
+      "amount": 1,
+      "maxAmount": 1,
+      "price": 420000,
+      "effect": "TRIPLE_KILLS",
+      "bonus": 1
+    },
     null,
     null,
     null,

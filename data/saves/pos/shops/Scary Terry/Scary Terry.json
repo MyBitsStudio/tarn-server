@@ -1,8 +1,29 @@
 {
   "shop": [
-    null,
-    null,
-    null,
+    {
+      "id": 23057,
+      "amount": 1,
+      "maxAmount": 1,
+      "price": 1699000,
+      "effect": "NOTHING",
+      "bonus": 0
+    },
+    {
+      "id": 10946,
+      "amount": 6,
+      "maxAmount": 6,
+      "price": 120000,
+      "effect": "NOTHING",
+      "bonus": 0
+    },
+    {
+      "id": 23020,
+      "amount": 3,
+      "maxAmount": 3,
+      "price": 72000,
+      "effect": "NOTHING",
+      "bonus": 0
+    },
     null,
     null,
     null,
@@ -33,5 +54,5 @@
     null,
     null
   ],
-  "earnings": 330000
+  "earnings": 0
 }

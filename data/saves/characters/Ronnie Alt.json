@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 169724644,
+  "total-play-time-ms": 238916391,
   "username": "Ronnie Alt",
   "password": "x343265236k",
   "email": "null",
@@ -45,7 +45,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682248078227,
+  "lastlogin": 1682495262242,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -173,7 +173,7 @@
   "auto-retaliate": false,
   "xp-locked": true,
   "veng-cast": false,
-  "last-veng": 1681925722179,
+  "last-veng": 1682013835381,
   "fight-type": "BATTLEAXE_CHOP",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -459,18 +459,8 @@
   },
   "inventory": [
     {
-      "id": 995,
-      "amount": 999999,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
       "id": 5020,
-      "amount": 442240,
+      "amount": 680940,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -480,7 +470,7 @@
     },
     {
       "id": 17634,
-      "amount": 80,
+      "amount": 38850,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -497,6 +487,11 @@
         "rarity": "COMMON",
         "bonus": 0
       }
+    },
+    {
+      "id": -1,
+      "amount": 0,
+      "slot": 0
     },
     {
       "id": -1,
@@ -781,8 +776,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 14069,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -811,8 +806,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 14070,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -831,8 +826,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 14071,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -2891,7 +2886,7 @@
       false
     ]
   ],
-  "achievements-daily": 323,
+  "achievements-daily": 326,
   "progression-zones": [
     0,
     0,

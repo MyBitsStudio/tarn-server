@@ -1,22 +1,6 @@
 {
   "shop": [
     {
-      "id": 15922,
-      "amount": 1,
-      "maxAmount": 1,
-      "price": 15000,
-      "effect": "DOUBLE_DROP",
-      "bonus": 13
-    },
-    {
-      "id": 18636,
-      "amount": 1,
-      "maxAmount": 1,
-      "price": 15000,
-      "effect": "ALL_DAMAGE_LOW",
-      "bonus": 1
-    },
-    {
       "id": 23055,
       "amount": 1,
       "maxAmount": 1,
@@ -52,7 +36,9 @@
     null,
     null,
     null,
+    null,
+    null,
     null
   ],
-  "earnings": 0
+  "earnings": 30000
 }

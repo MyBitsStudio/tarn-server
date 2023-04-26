@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 272418470,
+  "total-play-time-ms": 470260451,
   "username": "Hc Pvm Afk",
   "password": "Ale123456789",
   "email": "null",
@@ -47,7 +47,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682276726719,
+  "lastlogin": 1682443064936,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -172,11 +172,11 @@
   "run-energy": 100,
   "music": false,
   "sounds": false,
-  "auto-retaliate": false,
+  "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 131090716,
-  "fight-type": "BATTLEAXE_CHOP",
+  "last-veng": 1682315597513,
+  "fight-type": "BATTLEAXE_HACK",
   "sol-effect": 0,
   "skull-timer": 0,
   "fuse-combination-timer": 0,
@@ -209,7 +209,7 @@
     0
   ],
   "effigy": 0,
-  "summon-npc": -1,
+  "summon-npc": 4444,
   "summon-death": -1,
   "process-farming": false,
   "clanchat": "Help",
@@ -462,7 +462,7 @@
   "inventory": [
     {
       "id": 17634,
-      "amount": 72220,
+      "amount": 469000,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -472,27 +472,7 @@
     },
     {
       "id": 5020,
-      "amount": 1573890,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
-      "id": 1265,
-      "amount": 1,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
-      "id": 10946,
-      "amount": 2,
+      "amount": 610250,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -519,6 +499,16 @@
         "rarity": "COMMON",
         "bonus": 0
       }
+    },
+    {
+      "id": -1,
+      "amount": 0,
+      "slot": 0
+    },
+    {
+      "id": -1,
+      "amount": 0,
+      "slot": 0
     },
     {
       "id": -1,
@@ -738,8 +728,8 @@
   ],
   "equipment": [
     {
-      "id": -1,
-      "amount": 0,
+      "id": 14068,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -758,8 +748,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 14073,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -769,6 +759,16 @@
     },
     {
       "id": 19812,
+      "amount": 1,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
+    },
+    {
+      "id": 14069,
       "amount": 1,
       "slot": 0,
       "bonus": {
@@ -798,8 +798,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 14070,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -818,8 +818,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 14071,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -828,18 +828,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
-      "id": -1,
-      "amount": 0,
+      "id": 14072,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1359,7 +1349,10 @@
     0
   ],
   "friends": [
-    52738543827078
+    52738543827078,
+    1340110196,
+    67290,
+    1542867443
   ],
   "ignores": [],
   "loyalty-titles": [
@@ -2880,7 +2873,7 @@
       false
     ]
   ],
-  "achievements-daily": 323,
+  "achievements-daily": 326,
   "progression-zones": [
     0,
     0,
@@ -2925,7 +2918,9 @@
     -1
   ],
   "favorite-teleports": [],
-  "obtained-pets": [],
+  "obtained-pets": [
+    "HOOKER"
+  ],
   "battlepass-xp": 0,
   "battlepass-premium": false,
   "mini-me-equipment": [

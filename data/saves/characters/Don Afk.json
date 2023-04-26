@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 224732609,
+  "total-play-time-ms": 298093457,
   "username": "Don Afk",
   "password": "lantranetas",
   "email": "null",
@@ -45,7 +45,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682268580251,
+  "lastlogin": 1682483262894,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -59,7 +59,7 @@
   "minutes-bonus-exp": 0,
   "minutes-voting-dr": 0,
   "minutes-voting-dmg": 0,
-  "total-gained-exp": 1563509125,
+  "total-gained-exp": 2000002740,
   "barrows-points": 0,
   "donator-points": 0,
   "Skilling-points": 0,
@@ -173,7 +173,7 @@
   "auto-retaliate": false,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 1681923080587,
+  "last-veng": 1682017558896,
   "fight-type": "BATTLEAXE_CHOP",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -207,7 +207,7 @@
     0
   ],
   "effigy": 0,
-  "summon-npc": -1,
+  "summon-npc": 4444,
   "summon-death": -1,
   "process-farming": false,
   "clanchat": "Help",
@@ -444,7 +444,7 @@
       0,
       0,
       0,
-      1563509125,
+      2000000000,
       0,
       0,
       0,
@@ -459,8 +459,8 @@
   },
   "inventory": [
     {
-      "id": 17634,
-      "amount": 7280,
+      "id": 705,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -470,7 +470,7 @@
     },
     {
       "id": 5020,
-      "amount": 74920,
+      "amount": 329000,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -479,8 +479,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 17634,
+      "amount": 216120,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -489,8 +489,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 19946,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -811,7 +811,7 @@
       }
     },
     {
-      "id": 705,
+      "id": 14070,
       "amount": 1,
       "slot": 0,
       "bonus": {
@@ -831,7 +831,7 @@
       }
     },
     {
-      "id": 19946,
+      "id": 14071,
       "amount": 1,
       "slot": 0,
       "bonus": {
@@ -2742,7 +2742,7 @@
       false
     ]
   ],
-  "achievements-daily": 323,
+  "achievements-daily": 326,
   "progression-zones": [
     0,
     0,
@@ -2787,7 +2787,9 @@
     -1
   ],
   "favorite-teleports": [],
-  "obtained-pets": [],
+  "obtained-pets": [
+    "HOOKER"
+  ],
   "battlepass-xp": 0,
   "battlepass-premium": false,
   "mini-me-equipment": [

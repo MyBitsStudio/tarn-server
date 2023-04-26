@@ -1,18 +1,18 @@
 {
   "shop": [
     {
-      "id": 12614,
-      "amount": 2,
-      "maxAmount": 2,
+      "id": 17596,
+      "amount": 1,
+      "maxAmount": 1,
       "price": 70000,
-      "effect": "MAGIC_DAMAGE",
+      "effect": "ALL_DAMAGE_LOW",
       "bonus": 1
     },
     {
-      "id": 12614,
+      "id": 15922,
       "amount": 1,
       "maxAmount": 1,
-      "price": 65000,
+      "price": 70000,
       "effect": "NOTHING",
       "bonus": 0
     },
@@ -47,5 +47,5 @@
     null,
     null
   ],
-  "earnings": 1000
+  "earnings": 0
 }

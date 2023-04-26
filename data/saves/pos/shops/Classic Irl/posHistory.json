@@ -1,3 +1,44 @@
 {
-  "shop-history": []
+  "shop-history": [
+    {
+      "id": 23093,
+      "amount": 1,
+      "buyer": "Ruthie",
+      "price": 10000,
+      "effect": "NOTHING",
+      "bonus": 0
+    },
+    {
+      "id": 8788,
+      "amount": 1,
+      "buyer": "Fiddle Stix",
+      "price": 277000,
+      "effect": "NOTHING",
+      "bonus": 0
+    },
+    {
+      "id": 23093,
+      "amount": 1,
+      "buyer": "Final Hour",
+      "price": 75000,
+      "effect": "RANGE_DAMAGE",
+      "bonus": 1
+    },
+    {
+      "id": 23020,
+      "amount": 10,
+      "buyer": "Arab",
+      "price": 75000,
+      "effect": "NOTHING",
+      "bonus": 0
+    },
+    {
+      "id": 23020,
+      "amount": 5,
+      "buyer": "Arab",
+      "price": 75000,
+      "effect": "NOTHING",
+      "bonus": 0
+    }
+  ]
 }

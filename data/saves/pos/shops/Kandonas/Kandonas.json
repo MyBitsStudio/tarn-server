@@ -1,21 +1,14 @@
 {
   "shop": [
     {
-      "id": 21043,
+      "id": 22135,
       "amount": 1,
       "maxAmount": 1,
-      "price": 50000,
-      "effect": "MAGIC_DAMAGE",
-      "bonus": 1
+      "price": 500000,
+      "effect": "ALL_DAMAGE_MEDIUM",
+      "bonus": 2
     },
-    {
-      "id": 21043,
-      "amount": 1,
-      "maxAmount": 1,
-      "price": 45000,
-      "effect": "NOTHING",
-      "bonus": 0
-    },
+    null,
     null,
     null,
     null,

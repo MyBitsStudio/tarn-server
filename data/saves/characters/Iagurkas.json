@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 70216972,
+  "total-play-time-ms": 160608972,
   "username": "Iagurkas",
   "password": "mantelis09",
   "email": "null",
@@ -45,7 +45,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682144208974,
+  "lastlogin": 1682490244477,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -59,7 +59,7 @@
   "minutes-bonus-exp": 0,
   "minutes-voting-dr": 0,
   "minutes-voting-dmg": 0,
-  "total-gained-exp": 828268900,
+  "total-gained-exp": 1405990246,
   "barrows-points": 0,
   "donator-points": 0,
   "Skilling-points": 0,
@@ -170,10 +170,10 @@
   "run-energy": 100,
   "music": false,
   "sounds": false,
-  "auto-retaliate": false,
+  "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 68057608,
+  "last-veng": 166694652,
   "fight-type": "BATTLEAXE_HACK",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -207,7 +207,7 @@
     0
   ],
   "effigy": 0,
-  "summon-npc": -1,
+  "summon-npc": 4444,
   "summon-death": -1,
   "process-farming": false,
   "clanchat": "Help",
@@ -330,7 +330,18 @@
     0,
     0
   ],
-  "collection-data": [],
+  "collection-data": [
+    {
+      "npcId": 8013,
+      "item": 10946,
+      "amount": 15
+    },
+    {
+      "npcId": 8013,
+      "item": 23020,
+      "amount": 13
+    }
+  ],
   "holy-prayers-unlocked": [
     false,
     false,
@@ -376,10 +387,10 @@
   ],
   "skills": {
     "level": [
-      1,
-      1,
-      1,
+      83,
+      55,
       100,
+      990,
       1,
       10,
       1,
@@ -403,10 +414,10 @@
       1
     ],
     "maxLevel": [
-      1,
-      1,
-      1,
+      83,
+      55,
       100,
+      990,
       1,
       10,
       1,
@@ -430,21 +441,21 @@
       1
     ],
     "experience": [
-      0,
-      0,
-      0,
-      1184,
-      0,
-      0,
-      0,
-      0,
+      2887263,
+      174359,
+      15103806,
+      14097482,
       0,
       0,
       0,
       0,
       0,
       0,
-      828268900,
+      0,
+      0,
+      0,
+      0,
+      1373728520,
       0,
       0,
       0,
@@ -459,8 +470,8 @@
   },
   "inventory": [
     {
-      "id": 1265,
-      "amount": 1,
+      "id": 17634,
+      "amount": 370990,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -470,7 +481,7 @@
     },
     {
       "id": 5020,
-      "amount": 1270,
+      "amount": 324060,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -479,8 +490,28 @@
       }
     },
     {
-      "id": 17634,
-      "amount": 6360,
+      "id": 10946,
+      "amount": 5,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
+    },
+    {
+      "id": 23020,
+      "amount": 3,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
+    },
+    {
+      "id": 23089,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -491,22 +522,12 @@
     {
       "id": -1,
       "amount": 0,
-      "slot": 0
-    },
-    {
-      "id": 995,
-      "amount": 999999,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
         "rarity": "COMMON",
         "bonus": 0
       }
-    },
-    {
-      "id": -1,
-      "amount": 0,
-      "slot": 0
     },
     {
       "id": -1,
@@ -706,7 +727,7 @@
       }
     },
     {
-      "id": 23089,
+      "id": 14073,
       "amount": 1,
       "slot": 0,
       "bonus": {
@@ -1190,7 +1211,18 @@
       "boss": false
     }
   ],
-  "drops": [],
+  "drops": [
+    {
+      "item": 10946,
+      "amount": 55,
+      "rareDrop": false
+    },
+    {
+      "item": 23020,
+      "amount": 33,
+      "rareDrop": false
+    }
+  ],
   "achievements-completion": [],
   "achievements-progress": [
     0,
@@ -2685,7 +2717,7 @@
       false
     ]
   ],
-  "achievements-daily": 322,
+  "achievements-daily": 326,
   "progression-zones": [
     0,
     0,
@@ -2720,7 +2752,12 @@
   "group-ironman-locked": false,
   "lastInstanceNpc": -1,
   "daily-task": {},
-  "collectionlog-rewards": {},
+  "collectionlog-rewards": {
+    "8013": {
+      "canClaim": false,
+      "hasClaimed": false
+    }
+  },
   "daily-skips": 3,
   "dailies-done": 0,
   "level-notifications": true,
@@ -2730,7 +2767,9 @@
     -1
   ],
   "favorite-teleports": [],
-  "obtained-pets": [],
+  "obtained-pets": [
+    "HOOKER"
+  ],
   "battlepass-xp": 0,
   "battlepass-premium": false,
   "mini-me-equipment": [
@@ -2749,7 +2788,9 @@
     null,
     null
   ],
-  "drystreak": {},
+  "drystreak": {
+    "8013": 0
+  },
   "boost": 0,
   "slot-level": 0
 }

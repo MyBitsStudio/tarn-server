@@ -40,7 +40,14 @@
       "effect": "NOTHING",
       "bonus": 0
     },
-    null,
+    {
+      "id": 22135,
+      "amount": 2,
+      "maxAmount": 2,
+      "price": 40000000,
+      "effect": "AOE_EFFECT",
+      "bonus": 2
+    },
     null,
     null,
     null,

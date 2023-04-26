@@ -32,8 +32,22 @@
       "effect": "TRIPLE_KILLS",
       "bonus": 1
     },
-    null,
-    null,
+    {
+      "id": 23057,
+      "amount": 3,
+      "maxAmount": 3,
+      "price": 1700000,
+      "effect": "NOTHING",
+      "bonus": 0
+    },
+    {
+      "id": 23058,
+      "amount": 3,
+      "maxAmount": 3,
+      "price": 4000000,
+      "effect": "NOTHING",
+      "bonus": 0
+    },
     null,
     null,
     null,

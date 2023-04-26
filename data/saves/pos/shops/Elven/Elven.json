@@ -17,14 +17,6 @@
       "bonus": 0
     },
     {
-      "id": 2023,
-      "amount": 19721,
-      "maxAmount": 24722,
-      "price": 1,
-      "effect": "NOTHING",
-      "bonus": 0
-    },
-    {
       "id": 14052,
       "amount": 1,
       "maxAmount": 1,
@@ -32,22 +24,9 @@
       "effect": "DOUBLE_KILLS",
       "bonus": 1
     },
-    {
-      "id": 15645,
-      "amount": 1,
-      "maxAmount": 1,
-      "price": 300000,
-      "effect": "TRIPLE_KILLS",
-      "bonus": 1
-    },
-    {
-      "id": 15647,
-      "amount": 1,
-      "maxAmount": 1,
-      "price": 600000,
-      "effect": "ALL_DAMAGE_HIGH",
-      "bonus": 3
-    },
+    null,
+    null,
+    null,
     null,
     null,
     null,
@@ -75,5 +54,5 @@
     null,
     null
   ],
-  "earnings": 90000
+  "earnings": 2024113
 }

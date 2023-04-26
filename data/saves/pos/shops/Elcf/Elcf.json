@@ -1,67 +1,109 @@
 {
   "shop": [
     {
-      "id": 8808,
-      "amount": 1,
-      "maxAmount": 1,
-      "price": 20000,
-      "effect": "MAGIC_DAMAGE",
-      "bonus": 1
-    },
-    {
-      "id": 23146,
-      "amount": 1,
-      "maxAmount": 1,
-      "price": 20000,
-      "effect": "ALL_DAMAGE_LOW",
-      "bonus": 1
-    },
-    {
-      "id": 18629,
+      "id": 23051,
       "amount": 1,
       "maxAmount": 1,
       "price": 5000,
       "effect": "DOUBLE_DROP",
-      "bonus": 10
+      "bonus": 9
     },
     {
-      "id": 18750,
+      "id": 8808,
       "amount": 1,
       "maxAmount": 1,
-      "price": 2000,
-      "effect": "NOTHING",
-      "bonus": 0
+      "price": 5000,
+      "effect": "MAGIC_DAMAGE",
+      "bonus": 1
     },
     {
-      "id": 20091,
-      "amount": 1,
-      "maxAmount": 1,
-      "price": 11000,
-      "effect": "NOTHING",
-      "bonus": 0
-    },
-    {
-      "id": 17686,
-      "amount": 1,
-      "maxAmount": 1,
-      "price": 250000,
-      "effect": "NOTHING",
-      "bonus": 0
-    },
-    {
-      "id": 21055,
+      "id": 23023,
       "amount": 1,
       "maxAmount": 1,
       "price": 3000,
-      "effect": "NOTHING",
-      "bonus": 0
+      "effect": "RANGE_DAMAGE",
+      "bonus": 1
     },
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
+    {
+      "id": 23021,
+      "amount": 1,
+      "maxAmount": 1,
+      "price": 3000,
+      "effect": "RANGE_DAMAGE",
+      "bonus": 1
+    },
+    {
+      "id": 23030,
+      "amount": 1,
+      "maxAmount": 1,
+      "price": 3000,
+      "effect": "RANGE_DAMAGE",
+      "bonus": 1
+    },
+    {
+      "id": 23037,
+      "amount": 1,
+      "maxAmount": 1,
+      "price": 5000,
+      "effect": "ALL_DAMAGE_LOW",
+      "bonus": 1
+    },
+    {
+      "id": 23036,
+      "amount": 1,
+      "maxAmount": 1,
+      "price": 5000,
+      "effect": "DOUBLE_DROP",
+      "bonus": 11
+    },
+    {
+      "id": 21066,
+      "amount": 1,
+      "maxAmount": 1,
+      "price": 5000,
+      "effect": "ALL_DAMAGE_LOW",
+      "bonus": 1
+    },
+    {
+      "id": 23032,
+      "amount": 1,
+      "maxAmount": 1,
+      "price": 5000,
+      "effect": "ALL_DAMAGE_LOW",
+      "bonus": 1
+    },
+    {
+      "id": 23031,
+      "amount": 1,
+      "maxAmount": 1,
+      "price": 3000,
+      "effect": "RANGE_DAMAGE",
+      "bonus": 1
+    },
+    {
+      "id": 23052,
+      "amount": 1,
+      "maxAmount": 1,
+      "price": 3000,
+      "effect": "DROP_RATE_LOW",
+      "bonus": 5
+    },
+    {
+      "id": 23035,
+      "amount": 1,
+      "maxAmount": 1,
+      "price": 3000,
+      "effect": "RANGE_DAMAGE",
+      "bonus": 1
+    },
+    {
+      "id": 23039,
+      "amount": 1,
+      "maxAmount": 1,
+      "price": 3000,
+      "effect": "RANGE_DAMAGE",
+      "bonus": 1
+    },
     null,
     null,
     null,
@@ -82,5 +124,5 @@
     null,
     null
   ],
-  "earnings": 27500
+  "earnings": 2008000
 }

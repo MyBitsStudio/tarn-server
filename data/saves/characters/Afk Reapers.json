@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 1193554,
+  "total-play-time-ms": 97420451,
   "username": "Afk Reapers",
   "password": "Braves101593",
   "email": "null",
@@ -8,8 +8,8 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 3034,
-    "y": 4064,
+    "x": 2207,
+    "y": 3746,
     "z": 0
   },
   "online-status": "ON",
@@ -45,7 +45,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682278656968,
+  "lastlogin": 1682450293728,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -59,7 +59,7 @@
   "minutes-bonus-exp": 0,
   "minutes-voting-dr": 0,
   "minutes-voting-dmg": 0,
-  "total-gained-exp": 9910490,
+  "total-gained-exp": 786184380,
   "barrows-points": 0,
   "donator-points": 0,
   "Skilling-points": 0,
@@ -173,7 +173,7 @@
   "auto-retaliate": false,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 1052097,
+  "last-veng": 1682444917929,
   "fight-type": "BATTLEAXE_CHOP",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -390,7 +390,7 @@
       1,
       1,
       1,
-      96,
+      120,
       1,
       1,
       1,
@@ -417,7 +417,7 @@
       1,
       1,
       1,
-      96,
+      120,
       1,
       1,
       1,
@@ -444,7 +444,7 @@
       0,
       0,
       0,
-      9910490,
+      786184380,
       0,
       0,
       0,
@@ -459,8 +459,8 @@
   },
   "inventory": [
     {
-      "id": 17634,
-      "amount": 6010,
+      "id": 5020,
+      "amount": 55630,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -499,8 +499,8 @@
       }
     },
     {
-      "id": 11137,
-      "amount": 5,
+      "id": 17634,
+      "amount": 343140,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -509,8 +509,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 10835,
+      "amount": 355,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -589,16 +589,6 @@
       }
     },
     {
-      "id": 10835,
-      "amount": 355,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
       "id": 8788,
       "amount": 1,
       "slot": 0,
@@ -609,9 +599,24 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
-      "slot": 0
+      "id": 11137,
+      "amount": 5,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
+    },
+    {
+      "id": 1265,
+      "amount": 1,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
     },
     {
       "id": -1,
@@ -766,7 +771,7 @@
       }
     },
     {
-      "id": 1265,
+      "id": 19812,
       "amount": 1,
       "slot": 0,
       "bonus": {
@@ -2886,7 +2891,7 @@
       false
     ]
   ],
-  "achievements-daily": 323,
+  "achievements-daily": 326,
   "progression-zones": [
     0,
     0,

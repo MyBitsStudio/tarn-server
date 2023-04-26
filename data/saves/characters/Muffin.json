@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 292345241,
+  "total-play-time-ms": 351504701,
   "username": "Muffin",
   "password": "123654as",
   "email": "null",
@@ -8,15 +8,15 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 3033,
-    "y": 4061,
+    "x": 2207,
+    "y": 3746,
     "z": 0
   },
   "online-status": "ON",
   "given-starter": true,
   "has-pin2": true,
   "saved-pin2": "123",
-  "saved-ip": "146.200.46.67",
+  "saved-ip": "46.208.35.111",
   "donated": 0,
   "current-boss-task": 0,
   "current-boss-amount": 0,
@@ -47,7 +47,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682279122560,
+  "lastlogin": 1682494631656,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -175,7 +175,7 @@
   "auto-retaliate": false,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 241509978,
+  "last-veng": 1682134883081,
   "fight-type": "BATTLEAXE_CHOP",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -336,52 +336,52 @@
     {
       "npcId": 9906,
       "item": 995,
-      "amount": 2025648
+      "amount": 2025652
     },
     {
       "npcId": 9906,
       "item": 2023,
-      "amount": 78
+      "amount": 82
     },
     {
       "npcId": 8013,
       "item": 10946,
-      "amount": 40
+      "amount": 44
     },
     {
       "npcId": 8013,
       "item": 23020,
-      "amount": 36
+      "amount": 40
     },
     {
       "npcId": 9904,
       "item": 995,
-      "amount": 2001152
+      "amount": 2001156
     },
     {
       "npcId": 9904,
       "item": 2023,
-      "amount": 74
+      "amount": 78
     },
     {
       "npcId": 9907,
       "item": 10946,
-      "amount": 23
+      "amount": 25
     },
     {
       "npcId": 9907,
       "item": 2023,
-      "amount": 123
+      "amount": 125
     },
     {
       "npcId": 9908,
       "item": 10946,
-      "amount": 15
+      "amount": 17
     },
     {
       "npcId": 9908,
       "item": 2023,
-      "amount": 313
+      "amount": 315
     },
     {
       "npcId": 9837,
@@ -528,7 +528,7 @@
   "inventory": [
     {
       "id": 995,
-      "amount": 51015645,
+      "amount": 72293229,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -557,8 +557,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 10946,
+      "amount": 3,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -628,7 +628,7 @@
     },
     {
       "id": 2023,
-      "amount": 8425,
+      "amount": 9500,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -637,8 +637,8 @@
       }
     },
     {
-      "id": 23020,
-      "amount": 12,
+      "id": -1,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -688,7 +688,7 @@
     },
     {
       "id": 17634,
-      "amount": 1942070,
+      "amount": 6123020,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -697,8 +697,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 23020,
+      "amount": 3,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -767,28 +767,28 @@
       }
     },
     {
-      "id": 14070,
+      "id": 20594,
       "amount": 1,
       "slot": 0,
       "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
+        "effect": "DOUBLE_DROP",
+        "rarity": "RARE",
+        "bonus": 13
       }
     },
     {
-      "id": 14073,
+      "id": 19886,
       "amount": 1,
       "slot": 0,
       "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
+        "effect": "DOUBLE_KILLS",
+        "rarity": "LEGENDARY",
+        "bonus": 1
       }
     },
     {
       "id": 10835,
-      "amount": 798560,
+      "amount": 379560,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -819,13 +819,13 @@
       }
     },
     {
-      "id": 19886,
+      "id": 14073,
       "amount": 1,
       "slot": 0,
       "bonus": {
-        "effect": "DOUBLE_KILLS",
-        "rarity": "LEGENDARY",
-        "bonus": 1
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
       }
     },
     {
@@ -869,13 +869,13 @@
       }
     },
     {
-      "id": 20594,
+      "id": 14070,
       "amount": 1,
       "slot": 0,
       "bonus": {
-        "effect": "DOUBLE_DROP",
-        "rarity": "RARE",
-        "bonus": 13
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
       }
     },
     {
@@ -1466,12 +1466,12 @@
   "drops": [
     {
       "item": 995,
-      "amount": 196128907,
+      "amount": 197394487,
       "rareDrop": false
     },
     {
       "item": 2023,
-      "amount": 8971,
+      "amount": 8996,
       "rareDrop": false
     },
     {
@@ -2979,7 +2979,7 @@
       false
     ]
   ],
-  "achievements-daily": 323,
+  "achievements-daily": 326,
   "progression-zones": [
     11,
     0,

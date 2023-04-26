@@ -2,16 +2,44 @@
   "shop": [
     {
       "id": 20095,
-      "amount": 5,
+      "amount": 3,
       "maxAmount": 6,
       "price": 75000,
       "effect": "NOTHING",
       "bonus": 0
     },
-    null,
-    null,
-    null,
-    null,
+    {
+      "id": 3905,
+      "amount": 1,
+      "maxAmount": 1,
+      "price": 2500000,
+      "effect": "NOTHING",
+      "bonus": 0
+    },
+    {
+      "id": 22151,
+      "amount": 2,
+      "maxAmount": 2,
+      "price": 800000,
+      "effect": "NOTHING",
+      "bonus": 0
+    },
+    {
+      "id": 11001,
+      "amount": 1,
+      "maxAmount": 1,
+      "price": 8000000,
+      "effect": "DROP_RATE_HIGH",
+      "bonus": 50
+    },
+    {
+      "id": 8088,
+      "amount": 1,
+      "maxAmount": 1,
+      "price": 8000000,
+      "effect": "DROP_RATE_HIGH",
+      "bonus": 53
+    },
     null,
     null,
     null,

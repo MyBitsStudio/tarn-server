@@ -1,14 +1,6 @@
 {
   "shop": [
     {
-      "id": 22158,
-      "amount": 1,
-      "maxAmount": 2,
-      "price": 2000000,
-      "effect": "NOTHING",
-      "bonus": 0
-    },
-    {
       "id": 23120,
       "amount": 1,
       "maxAmount": 1,
@@ -17,13 +9,14 @@
       "bonus": 0
     },
     {
-      "id": 23169,
+      "id": 14440,
       "amount": 1,
       "maxAmount": 1,
-      "price": 5000000,
-      "effect": "NOTHING",
-      "bonus": 0
+      "price": 15000000,
+      "effect": "TRIPLE_KILLS",
+      "bonus": 2
     },
+    null,
     null,
     null,
     null,
@@ -54,5 +47,5 @@
     null,
     null
   ],
-  "earnings": 800000
+  "earnings": 0
 }

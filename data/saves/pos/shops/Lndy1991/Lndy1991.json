@@ -16,9 +16,30 @@
       "effect": "MAGIC_DAMAGE",
       "bonus": 1
     },
-    null,
-    null,
-    null,
+    {
+      "id": 15355,
+      "amount": 1,
+      "maxAmount": 1,
+      "price": 750000,
+      "effect": "NOTHING",
+      "bonus": 0
+    },
+    {
+      "id": 15358,
+      "amount": 1,
+      "maxAmount": 1,
+      "price": 400000,
+      "effect": "NOTHING",
+      "bonus": 0
+    },
+    {
+      "id": 23020,
+      "amount": 24,
+      "maxAmount": 24,
+      "price": 72000,
+      "effect": "NOTHING",
+      "bonus": 0
+    },
     null,
     null,
     null,
@@ -47,5 +68,5 @@
     null,
     null
   ],
-  "earnings": 350000
+  "earnings": 4800000
 }

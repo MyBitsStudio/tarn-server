@@ -1,14 +1,21 @@
 {
   "shop": [
     {
-      "id": 20585,
-      "amount": 1,
-      "maxAmount": 1,
-      "price": 1000000,
+      "id": 2023,
+      "amount": 30000,
+      "maxAmount": 30000,
+      "price": 100,
       "effect": "NOTHING",
       "bonus": 0
     },
-    null,
+    {
+      "id": 3472,
+      "amount": 1,
+      "maxAmount": 1,
+      "price": 59000000,
+      "effect": "AOE_EFFECT",
+      "bonus": 2
+    },
     null,
     null,
     null,
@@ -40,5 +47,5 @@
     null,
     null
   ],
-  "earnings": 0
+  "earnings": 594000
 }

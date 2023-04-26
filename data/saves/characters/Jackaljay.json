@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 293459019,
+  "total-play-time-ms": 483706514,
   "username": "Jackaljay",
   "password": "Jsc62268",
   "email": "null",
@@ -47,7 +47,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682125561095,
+  "lastlogin": 1682429377823,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -175,7 +175,7 @@
   "auto-retaliate": false,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 132195298,
+  "last-veng": 216829605,
   "fight-type": "BATTLEAXE_CHOP",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -472,7 +472,7 @@
     },
     {
       "id": 5020,
-      "amount": 250390,
+      "amount": 86750,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -501,8 +501,8 @@
       }
     },
     {
-      "id": 17634,
-      "amount": 586360,
+      "id": 19945,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -551,9 +551,14 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
-      "slot": 0
+      "id": 17634,
+      "amount": 14217300,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
     },
     {
       "id": 22084,
@@ -606,8 +611,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 19944,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -748,14 +753,9 @@
       }
     },
     {
-      "id": 19944,
-      "amount": 1,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
+      "id": -1,
+      "amount": 0,
+      "slot": 0
     },
     {
       "id": 14073,
@@ -838,7 +838,7 @@
       }
     },
     {
-      "id": 19945,
+      "id": 14072,
       "amount": 1,
       "slot": 0,
       "bonus": {
@@ -1217,7 +1217,9 @@
     0,
     0
   ],
-  "friends": [],
+  "friends": [
+    1340110196
+  ],
   "ignores": [],
   "loyalty-titles": [
     false,
@@ -2737,7 +2739,7 @@
       false
     ]
   ],
-  "achievements-daily": 323,
+  "achievements-daily": 326,
   "progression-zones": [
     0,
     0,

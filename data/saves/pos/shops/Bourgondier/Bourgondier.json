@@ -1,8 +1,29 @@
 {
   "shop": [
-    null,
-    null,
-    null,
+    {
+      "id": 15646,
+      "amount": 1,
+      "maxAmount": 1,
+      "price": 2999000,
+      "effect": "DROP_RATE_HIGH",
+      "bonus": 32
+    },
+    {
+      "id": 22135,
+      "amount": 1,
+      "maxAmount": 1,
+      "price": 27999000,
+      "effect": "AOE_EFFECT",
+      "bonus": 2
+    },
+    {
+      "id": 15646,
+      "amount": 1,
+      "maxAmount": 1,
+      "price": 399000,
+      "effect": "TRIPLE_KILLS",
+      "bonus": 2
+    },
     null,
     null,
     null,
@@ -33,5 +54,5 @@
     null,
     null
   ],
-  "earnings": 1035000
+  "earnings": 0
 }
