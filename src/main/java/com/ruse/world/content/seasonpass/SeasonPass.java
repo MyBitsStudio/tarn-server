@@ -91,11 +91,11 @@ public class SeasonPass {
         int spacesNeeded = 0;
         if(!rewardsClaimed[tier]) {
             items[0] = new Item(spLevel.getFreeItemId(), spLevel.getFreeAmount());
-            spacesNeeded += items[0].getAmount();
+            spacesNeeded += items[0].getDefinition().isStackable() ? 1 : items[0].getAmount();
         }
         if(hasPremium() && !rewardsClaimed[tier + PREMIUM_OFFSET]) {
             items[1] = new Item(spLevel.getPremiumItemId(), spLevel.getPremiumAmount());
-            spacesNeeded += items[1].getAmount();
+            spacesNeeded += items[1].getDefinition().isStackable() ? 1 : items[1].getAmount();
         }
         for(int i = 0; i < items.length; i++) {
             Item item = items[i];
