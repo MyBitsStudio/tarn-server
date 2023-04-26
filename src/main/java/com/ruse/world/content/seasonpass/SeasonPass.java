@@ -14,9 +14,9 @@ import java.util.Arrays;
 public class SeasonPass {
 
     private static final int INTERFACE_ID = 49450;
-    private static final int REWARD_AMOUNT = 100;
-    private static final byte MAX_LEVEL = 50;
-    private static final byte PREMIUM_OFFSET = 50;
+    private static final int REWARD_AMOUNT = 98;
+    private static final byte MAX_LEVEL = 49;
+    private static final byte PREMIUM_OFFSET = 49;
     public static SeasonPassLevel[] levels;
 
     private int season = SeasonPassConfig.getInstance().getSeason();
@@ -38,6 +38,7 @@ public class SeasonPass {
 
     private void levelUp(int overflow) {
         if(level == getMaxPassLevel()) {
+            exp = getSpLevel(level).getExpNeeded();
             return;
         }
         level++;
@@ -52,7 +53,9 @@ public class SeasonPass {
         boolean hasClaim = false;
         for(int i = 0; i < MAX_LEVEL; i++) {
             if(canClaimFree(i) || canClaimPremium(i)) {
-                claimReward(i);
+                if(!claimReward(i)) {
+                    break;
+                }
                 hasClaim = true;
             }
         }
@@ -65,11 +68,11 @@ public class SeasonPass {
     }
 
     private boolean canClaimFree(int tier) {
-        return (level > tier || exp == getSpLevel(level).getExpNeeded()) && !rewardsClaimed[tier];
+        return (level > tier || exp >= getSpLevel(level).getExpNeeded()) && !rewardsClaimed[tier];
     }
 
     private boolean canClaimPremium(int tier) {
-        return (level > tier || exp == getSpLevel(level).getExpNeeded()) && !rewardsClaimed[tier + PREMIUM_OFFSET] && isPremium();
+        return (level > tier || exp >= getSpLevel(level).getExpNeeded()) && !rewardsClaimed[tier + PREMIUM_OFFSET] && isPremium();
     }
 
     private boolean hasClaimable() {
@@ -81,22 +84,26 @@ public class SeasonPass {
         return false;
     }
 
-    private void claimReward(int tier) {
+    private boolean claimReward(int tier) {
         Item[] items = new Item[2];
         SeasonPassLevel spLevel = getSpLevel(tier);
+        int spacesNeeded = 0;
         if(!rewardsClaimed[tier]) {
             items[0] = new Item(spLevel.getFreeItemId(), spLevel.getFreeAmount());
+            spacesNeeded += items[0].getAmount();
         }
         if(hasPremium() && !rewardsClaimed[tier + PREMIUM_OFFSET]) {
             items[1] = new Item(spLevel.getPremiumItemId(), spLevel.getPremiumAmount());
+            spacesNeeded += items[1].getAmount();
         }
         for(int i = 0; i < items.length; i++) {
             Item item = items[i];
             if(item == null) {
                 continue;
             }
-            if(!player.getInventory().canHold(item)) {
-                continue;
+            if(player.getInventory().getFreeSlots() < spacesNeeded) {
+                player.getPacketSender().sendMessage("@red@You need " + spacesNeeded + " inventory spaces to claim.");
+                return false;
             }
             if(i == 0) {
                 rewardsClaimed[tier] = true;
@@ -106,6 +113,7 @@ public class SeasonPass {
             player.getInventory().add(item);
         }
         changeRewardPage();
+        return true;
     }
 
     public boolean handleButtonClick(int buttonId) {
@@ -150,6 +158,8 @@ public class SeasonPass {
     }
 
     public void showInterface() {
+        System.out.println("length: " + levels.length);
+        System.out.println("My level: " + level);
         page = 0;
         int level = getLevel();
         int expNeeded = getSpLevel(level).getExpNeeded();
@@ -161,9 +171,9 @@ public class SeasonPass {
                 .sendString(49486, hasPremium() ? "Premium" : "Free")
                 .sendString(49487, player.getUsername())
                 .sendString(49488, String.valueOf(level+1))
-                .sendString(49489, String.valueOf(Math.min(MAX_LEVEL, level)))
+                .sendString(49489, String.valueOf(Math.min(MAX_LEVEL, level+1)))
                 .sendString(49490, String.valueOf(totalExperience))
-                .sendString(49479, exp + "/" + expNeeded)
+                .sendString(49479, (level == getMaxPassLevel() ? String.valueOf(Math.min(expNeeded, exp)) : exp) + "/" + expNeeded)
                 .sendString(49500, "Resets: " + SeasonPassConfig.getInstance().getEndDate())
                 .sendSpriteChange(49470, hasPremium() ? 65535 : 3338)
                 .updateProgressBar(49471, (int) (((double) (expNeeded - exp) / (double) expNeeded) * 100));
