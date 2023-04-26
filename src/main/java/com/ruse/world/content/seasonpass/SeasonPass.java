@@ -54,7 +54,8 @@ public class SeasonPass {
         for(int i = 0; i < MAX_LEVEL; i++) {
             if(canClaimFree(i) || canClaimPremium(i)) {
                 if(!claimReward(i)) {
-                    break;
+                    player.getPacketSender().sendMessage("@red@You need inventory spaces to claim.");
+                    return;
                 }
                 hasClaim = true;
             }
@@ -102,7 +103,6 @@ public class SeasonPass {
                 continue;
             }
             if(player.getInventory().getFreeSlots() < spacesNeeded) {
-                player.getPacketSender().sendMessage("@red@You need " + spacesNeeded + " inventory spaces to claim.");
                 return false;
             }
             if(i == 0) {
@@ -111,8 +111,8 @@ public class SeasonPass {
                 rewardsClaimed[tier + PREMIUM_OFFSET] = true;
             }
             player.getInventory().add(item);
+            changeRewardPage();
         }
-        changeRewardPage();
         return true;
     }
 
@@ -186,15 +186,23 @@ public class SeasonPass {
     private void changeRewardPage() {
         SeasonPassLevel[] spLevels = Arrays.copyOfRange(levels, page * 7, page * 7 + 7);
         Item[] items = new Item[14];
-        for(int i = 0; i < items.length/2; i++) {
-            if(rewardsClaimed[i+(page*7)]) {
-                player.getPacketSender().sendSpriteChange(49472+i, 3341);
+        for(int i = 0; i < items.length; i++) {
+            if(i < items.length / 2) {
+                if (rewardsClaimed[i + (page * 7)]) {
+                    player.getPacketSender().sendSpriteChange(49472 + i, 3341);
+                } else {
+                    player.getPacketSender().sendSpriteChange(49472 + i, 65535);
+                }
+                items[i] = new Item(spLevels[i].getFreeItemId(), spLevels[i].getFreeAmount());
             } else {
-                player.getPacketSender().sendSpriteChange(49472+i, 65535);
+                if (rewardsClaimed[i + (page * 7) + PREMIUM_OFFSET - 7]) {
+                    player.getPacketSender().sendSpriteChange(49501 + i - 7, 3341);
+                } else {
+                    player.getPacketSender().sendSpriteChange(49501 + i - 7, 65535);
+                }
+                items[i] = new Item(spLevels[i-7].getPremiumItemId(), spLevels[i-7].getPremiumAmount());
             }
             player.getPacketSender().sendString(49493+i, "Level " + (i+(page*7)+1));
-            items[i] = new Item(spLevels[i].getFreeItemId(), spLevels[i].getFreeAmount());
-            items[i+7] = new Item(spLevels[i].getPremiumItemId(), spLevels[i].getPremiumAmount());
         }
         player.getPacketSender().sendItemContainer(items, 49469);
     }
