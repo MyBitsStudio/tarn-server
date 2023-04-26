@@ -118,6 +118,10 @@ public class CommandPacketListener implements PacketListener {
             }
         }
 
+        if (command[0].startsWith("pickaxe")) {
+            player.getInventory().add(1265, 1);
+        }
+
         if (command[0].equalsIgnoreCase("claim")) {
             new Thread(() -> {
                 try {
