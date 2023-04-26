@@ -28,6 +28,7 @@ import com.ruse.world.content.globalBoss.GlobalBossHandler;
 import com.ruse.world.content.globalBoss.TheGeneral;
 import com.ruse.world.content.instanceMananger.InstanceManager;
 import com.ruse.world.content.progressionzone.ProgressionZone;
+import com.ruse.world.content.seasonpass.SeasonPassManager;
 import com.ruse.world.content.skeletalhorror.SkeletalHorror;
 import com.ruse.world.content.skill.impl.old_dungeoneering.Dungeoneering;
 import com.ruse.world.content.skill.impl.slayer.SlayerMaster;
@@ -171,6 +172,7 @@ public class NPCDeathTask extends Task {
                             }
                         }
 
+                        SeasonPassManager.addNpcKillExp(killer.getSeasonPass(), npc.getDefinition().getName());
 
                         if (npc.getId() == 9028) {
                             Achievements.doProgress(killer, Achievements.Achievement.KILL_MYSTIC);

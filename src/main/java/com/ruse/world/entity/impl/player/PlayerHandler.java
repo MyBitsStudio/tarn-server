@@ -32,6 +32,8 @@ import com.ruse.world.content.combat.weapon.CombatSpecial;
 import com.ruse.world.content.grandLottery.GrandLottery;
 import com.ruse.world.content.minigames.impl.Barrows;
 import com.ruse.world.content.minigames.impl.VoidOfDarkness;
+import com.ruse.world.content.seasonpass.SeasonPassConfig;
+import com.ruse.world.content.seasonpass.SeasonPassManager;
 import com.ruse.world.content.serverperks.ServerPerks;
 import com.ruse.world.content.skeletalhorror.SkeletalHorror;
 import com.ruse.world.content.skill.impl.hunter.Hunter;
@@ -102,6 +104,9 @@ public class PlayerHandler {
 
         if (player.getHasPin() == true && !player.getSavedIp().equalsIgnoreCase(player.getHostAddress())) {
             player.setPlayerLocked(true);
+        }
+        if(player.getSeasonPass().getSeason() != SeasonPassConfig.getInstance().getSeason()) {
+            SeasonPassManager.resetSeasonPass(player.getSeasonPass());
         }
         // Weapons and equipment..
         WeaponAnimations.update(player);
