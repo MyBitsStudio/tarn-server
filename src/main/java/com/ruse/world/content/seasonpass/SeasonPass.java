@@ -41,7 +41,7 @@ public class SeasonPass {
             return;
         }
         level++;
-        incrementExp(overflow);
+        exp = overflow;
     }
 
     private SeasonPassLevel getSpLevel(int level) {
@@ -119,8 +119,10 @@ public class SeasonPass {
             return true;
         } else if(buttonId == -16071) {
             selectClaimReward();
+            return true;
         } else if(buttonId == -16074) {
             // purchase premium button
+            return true;
         }
         return false;
     }
