@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 53615795,
+  "total-play-time-ms": 52828583,
   "username": "Kau",
   "password": "99minerisme",
   "email": "null",
@@ -8,9 +8,9 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2222,
-    "y": 3747,
-    "z": 0
+    "x": 2520,
+    "y": 2538,
+    "z": 64
   },
   "online-status": "ON",
   "given-starter": true,
@@ -47,7 +47,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682293331697,
+  "lastlogin": 1682254174204,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -58,10 +58,10 @@
   "day5claimed": false,
   "day6claimed": false,
   "day7claimed": false,
-  "minutes-bonus-exp": 717,
+  "minutes-bonus-exp": 730,
   "minutes-voting-dr": 0,
   "minutes-voting-dmg": 0,
-  "total-gained-exp": 49389,
+  "total-gained-exp": 1549756808,
   "barrows-points": 0,
   "donator-points": 65,
   "Skilling-points": 0,
@@ -139,8 +139,8 @@
     0
   ],
   "total-prestiges": 0,
-  "slayer-spree": 3,
-  "npc-killcount": 16964,
+  "slayer-spree": 0,
+  "npc-killcount": 16480,
   "spawn-killcount": 0,
   "lord-killcount": 0,
   "demon-killcount": 213,
@@ -175,7 +175,7 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 289709751,
+  "last-veng": 1682004409182,
   "fight-type": "LONGBOW_RAPID",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -219,9 +219,9 @@
   "coins-gambled": 0,
   "slayer-master": "EASY_SLAYER",
   "slayer-task": "NO_TASK",
-  "prev-slayer-task": "REVENANT_WYVERN",
+  "prev-slayer-task": "NO_TASK",
   "task-amount": 0,
-  "task-streak": 3,
+  "task-streak": 0,
   "duo-partner": "null",
   "double-slay-xp": false,
   "recoil-deg": 0,
@@ -416,17 +416,17 @@
     {
       "npcId": 9838,
       "item": 995,
-      "amount": 736
+      "amount": 688
     },
     {
       "npcId": 9838,
       "item": 2023,
-      "amount": 138
+      "amount": 89
     },
     {
       "npcId": 9838,
       "item": 20088,
-      "amount": 3
+      "amount": 2
     },
     {
       "npcId": 9838,
@@ -436,17 +436,17 @@
     {
       "npcId": 9838,
       "item": 20092,
-      "amount": 3
+      "amount": 2
     },
     {
       "npcId": 9838,
       "item": 20086,
-      "amount": 2
+      "amount": 1
     },
     {
       "npcId": 9838,
       "item": 14487,
-      "amount": 2
+      "amount": 1
     },
     {
       "npcId": 9845,
@@ -541,17 +541,17 @@
     {
       "npcId": 9807,
       "item": 995,
-      "amount": 1069
+      "amount": 1023
     },
     {
       "npcId": 9807,
       "item": 2023,
-      "amount": 171
+      "amount": 123
     },
     {
       "npcId": 9807,
       "item": 20088,
-      "amount": 7
+      "amount": 5
     },
     {
       "npcId": 9807,
@@ -571,7 +571,7 @@
     {
       "npcId": 9807,
       "item": 20087,
-      "amount": 2
+      "amount": 1
     },
     {
       "npcId": 9807,
@@ -596,17 +596,17 @@
     {
       "npcId": 6692,
       "item": 995,
-      "amount": 1098
+      "amount": 1061
     },
     {
       "npcId": 6692,
       "item": 2023,
-      "amount": 103
+      "amount": 66
     },
     {
       "npcId": 6692,
       "item": 18009,
-      "amount": 3
+      "amount": 1
     },
     {
       "npcId": 6692,
@@ -616,12 +616,12 @@
     {
       "npcId": 6692,
       "item": 18001,
-      "amount": 2
+      "amount": 1
     },
     {
       "npcId": 6692,
       "item": 17999,
-      "amount": 2
+      "amount": 1
     },
     {
       "npcId": 6692,
@@ -1111,31 +1111,16 @@
     {
       "npcId": 9916,
       "item": 995,
-      "amount": 20677
+      "amount": 20562
     },
     {
       "npcId": 9916,
       "item": 2023,
-      "amount": 675
+      "amount": 560
     },
     {
       "npcId": 9916,
       "item": 23092,
-      "amount": 3
-    },
-    {
-      "npcId": 9838,
-      "item": 20093,
-      "amount": 1
-    },
-    {
-      "npcId": 9838,
-      "item": 20091,
-      "amount": 1
-    },
-    {
-      "npcId": 9807,
-      "item": 20092,
       "amount": 3
     }
   ],
@@ -1187,9 +1172,9 @@
       68,
       120,
       91,
-      1200,
+      690,
       120,
-      471,
+      1020,
       120,
       1,
       1,
@@ -1202,7 +1187,7 @@
       1,
       1,
       1,
-      47,
+      1,
       1,
       16,
       1,
@@ -1229,7 +1214,7 @@
       1,
       1,
       1,
-      47,
+      1,
       1,
       16,
       1,
@@ -1242,7 +1227,7 @@
       123470767,
       6022243,
       2000000000,
-      2000000000,
+      1443912500,
       17625080,
       2000000000,
       0,
@@ -1250,13 +1235,13 @@
       0,
       0,
       0,
-      587271,
+      577335,
       0,
       0,
       0,
       0,
       0,
-      79303,
+      0,
       0,
       2991,
       0,
@@ -1268,7 +1253,7 @@
   "inventory": [
     {
       "id": 10835,
-      "amount": 1280176,
+      "amount": 1189976,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1278,7 +1263,7 @@
     },
     {
       "id": 2023,
-      "amount": 4153,
+      "amount": 3904,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1288,7 +1273,7 @@
     },
     {
       "id": 995,
-      "amount": 707487,
+      "amount": 160287,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1319,11 +1304,16 @@
     {
       "id": -1,
       "amount": 0,
-      "slot": 0
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
     },
     {
-      "id": 5023,
-      "amount": 107,
+      "id": -1,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -2451,10 +2441,10 @@
       "boss": false
     },
     {
-      "runningTotal": 118,
+      "runningTotal": 71,
       "npcId": 9838,
       "npcName": "Imperial Hound",
-      "amount": 118,
+      "amount": 71,
       "boss": false
     },
     {
@@ -2472,10 +2462,10 @@
       "boss": false
     },
     {
-      "runningTotal": 136,
+      "runningTotal": 91,
       "npcId": 9807,
       "npcName": "Imperial Paladin",
-      "amount": 136,
+      "amount": 91,
       "boss": false
     },
     {
@@ -2486,10 +2476,10 @@
       "boss": false
     },
     {
-      "runningTotal": 87,
+      "runningTotal": 50,
       "npcId": 6692,
       "npcName": "Revenant Wyvern",
-      "amount": 87,
+      "amount": 50,
       "boss": false
     },
     {
@@ -2626,22 +2616,22 @@
       "boss": false
     },
     {
-      "runningTotal": 478,
+      "runningTotal": 365,
       "npcId": 9916,
       "npcName": "Luffy",
-      "amount": 478,
+      "amount": 365,
       "boss": false
     }
   ],
   "drops": [
     {
       "item": 995,
-      "amount": 202200613,
+      "amount": 202117613,
       "rareDrop": false
     },
     {
       "item": 2023,
-      "amount": 14729,
+      "amount": 14715,
       "rareDrop": false
     },
     {
@@ -3480,7 +3470,7 @@
       201,
       212,
       302,
-      3,
+      0,
       339,
       323,
       321,
@@ -3582,14 +3572,14 @@
       501,
       513,
       503,
-      3,
+      0,
       756,
-      478,
+      365,
       0,
       0,
       0,
       1000,
-      8813,
+      8571,
       0,
       0,
       0,
@@ -3684,7 +3674,7 @@
       0,
       0,
       0,
-      3,
+      0,
       0,
       0,
       0,
@@ -3692,7 +3682,7 @@
       0,
       0,
       3821,
-      8813,
+      8571,
       0,
       0,
       0,
@@ -4532,13 +4522,13 @@
     "9815": 69,
     "9817": 58,
     "92": 139,
-    "6692": 8,
+    "6692": 0,
     "2342": 83,
     "811": 51,
     "9835": 30,
     "9836": 96,
     "9837": 10,
-    "9838": 0,
+    "9838": 3,
     "9904": 0,
     "3313": 18,
     "1906": 121,
@@ -4550,7 +4540,7 @@
     "3831": 0,
     "9911": 40,
     "9915": 108,
-    "9916": 204
+    "9916": 91
   },
   "boost": 0,
   "slot-level": 0

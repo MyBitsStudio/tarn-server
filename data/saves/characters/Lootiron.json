@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 4203564,
+  "total-play-time-ms": 3857397,
   "username": "Lootiron",
   "password": "millwall",
   "email": "null",
@@ -15,7 +15,7 @@
   "online-status": "ON",
   "given-starter": true,
   "has-pin2": false,
-  "donated": 81,
+  "donated": 62,
   "current-boss-task": 0,
   "current-boss-amount": 0,
   "global-rate": 0,
@@ -38,14 +38,14 @@
   "timeUntilNextReward": 0,
   "current-voting-streak": 0,
   "entriesCurrency": 0.0,
-  "amount-donated-today": 81,
+  "amount-donated-today": 62,
   "claimed-first": false,
   "claimed-second": false,
   "claimed-third": false,
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682353451342,
+  "lastlogin": 1682264510360,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -56,12 +56,12 @@
   "day5claimed": false,
   "day6claimed": false,
   "day7claimed": false,
-  "minutes-bonus-exp": 691,
-  "minutes-voting-dr": 58,
+  "minutes-bonus-exp": 471,
+  "minutes-voting-dr": 30,
   "minutes-voting-dmg": 0,
   "total-gained-exp": 2052441306,
   "barrows-points": 0,
-  "donator-points": 61,
+  "donator-points": 42,
   "Skilling-points": 0,
   "prestige-points": 0,
   "achievement-points": 0,
@@ -70,7 +70,7 @@
   "loyalty-points": 0,
   "total-loyalty-points": 0.0,
   "godmodetime": 0,
-  "voting-points": 29,
+  "voting-points": 20,
   "tasks-completion": [
     false,
     false,
@@ -173,8 +173,8 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 603256880,
-  "fight-type": "STAFF_POUND",
+  "last-veng": 1681750540657,
+  "fight-type": "STAFF_BASH",
   "sol-effect": 0,
   "skull-timer": 0,
   "fuse-combination-timer": 0,
@@ -190,7 +190,7 @@
   "dr-timer": 0,
   "ddr-timer": 0,
   "dmg-timer": 0,
-  "double-dr-timer": 0,
+  "double-dr-timer": 139,
   "double-ddr-timer": 0,
   "double-dmg-timer": 0,
   "fire-immunity": 0,
@@ -384,12 +384,12 @@
     {
       "npcId": 9907,
       "item": 10946,
-      "amount": 9
+      "amount": 7
     },
     {
       "npcId": 9907,
       "item": 2023,
-      "amount": 109
+      "amount": 107
     },
     {
       "npcId": 9907,
@@ -419,22 +419,22 @@
     {
       "npcId": 9908,
       "item": 10946,
-      "amount": 7
+      "amount": 6
     },
     {
       "npcId": 9908,
       "item": 2023,
-      "amount": 305
+      "amount": 304
     },
     {
       "npcId": 8013,
       "item": 10946,
-      "amount": 14
+      "amount": 11
     },
     {
       "npcId": 8013,
       "item": 23020,
-      "amount": 11
+      "amount": 8
     },
     {
       "npcId": 9922,
@@ -505,7 +505,7 @@
       120,
       86,
       120,
-      660,
+      610,
       120,
       0,
       120,
@@ -596,7 +596,7 @@
     },
     {
       "id": 2023,
-      "amount": 1875,
+      "amount": 1375,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -606,7 +606,7 @@
     },
     {
       "id": 995,
-      "amount": 1500891,
+      "amount": 891,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -626,7 +626,7 @@
     },
     {
       "id": 10835,
-      "amount": 28114,
+      "amount": 25114,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1510,7 +1510,7 @@
     },
     {
       "item": 2023,
-      "amount": 3809,
+      "amount": 3309,
       "rareDrop": false
     },
     {
@@ -1525,7 +1525,7 @@
     },
     {
       "item": 10946,
-      "amount": 81,
+      "amount": 62,
       "rareDrop": false
     },
     {
@@ -1535,7 +1535,7 @@
     },
     {
       "item": 23020,
-      "amount": 27,
+      "amount": 18,
       "rareDrop": false
     },
     {
@@ -2237,7 +2237,7 @@
       0,
       6,
       181,
-      31,
+      28,
       0,
       0,
       0,
@@ -2323,7 +2323,7 @@
     ],
     [
       0,
-      29,
+      20,
       0,
       0,
       0,
@@ -2425,7 +2425,7 @@
     ],
     [
       0,
-      29,
+      20,
       0,
       0,
       0,
@@ -3038,7 +3038,7 @@
       false
     ]
   ],
-  "achievements-daily": 324,
+  "achievements-daily": 323,
   "progression-zones": [
     11,
     21,

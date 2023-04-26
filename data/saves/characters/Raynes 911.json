@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 61565548,
+  "total-play-time-ms": 58070512,
   "username": "Raynes 911",
   "password": "kenblock10",
   "email": "null",
@@ -8,8 +8,8 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2219,
-    "y": 3759,
+    "x": 2224,
+    "y": 3762,
     "z": 0
   },
   "online-status": "ON",
@@ -45,7 +45,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682389388102,
+  "lastlogin": 1682227955911,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -138,7 +138,7 @@
   ],
   "total-prestiges": 0,
   "slayer-spree": 21,
-  "npc-killcount": 34573,
+  "npc-killcount": 33001,
   "spawn-killcount": 0,
   "lord-killcount": 0,
   "demon-killcount": 476,
@@ -173,7 +173,7 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 190464244,
+  "last-veng": 1682199510074,
   "fight-type": "LONGBOW_RAPID",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -374,12 +374,12 @@
     {
       "npcId": 9907,
       "item": 10946,
-      "amount": 14
+      "amount": 13
     },
     {
       "npcId": 9907,
       "item": 2023,
-      "amount": 111
+      "amount": 110
     },
     {
       "npcId": 9911,
@@ -574,12 +574,12 @@
     {
       "npcId": 9908,
       "item": 10946,
-      "amount": 7
+      "amount": 6
     },
     {
       "npcId": 9908,
       "item": 2023,
-      "amount": 305
+      "amount": 304
     },
     {
       "npcId": 3831,
@@ -1194,12 +1194,12 @@
     {
       "npcId": 9017,
       "item": 995,
-      "amount": 53472
+      "amount": 52733
     },
     {
       "npcId": 9017,
       "item": 15647,
-      "amount": 2
+      "amount": 1
     },
     {
       "npcId": 9017,
@@ -1209,7 +1209,7 @@
     {
       "npcId": 9017,
       "item": 15646,
-      "amount": 4
+      "amount": 3
     },
     {
       "npcId": 9028,
@@ -1280,11 +1280,6 @@
       "npcId": 9017,
       "item": 22135,
       "amount": 1
-    },
-    {
-      "npcId": 9839,
-      "item": 995,
-      "amount": 50049
     }
   ],
   "holy-prayers-unlocked": [
@@ -1337,7 +1332,7 @@
       120,
       1200,
       120,
-      935,
+      118,
       120,
       1,
       1,
@@ -1415,16 +1410,6 @@
   },
   "inventory": [
     {
-      "id": 23121,
-      "amount": 1,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
       "id": -1,
       "amount": 0,
       "slot": 0,
@@ -1655,8 +1640,18 @@
       }
     },
     {
-      "id": 995,
-      "amount": 2352198,
+      "id": -1,
+      "amount": 0,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
+    },
+    {
+      "id": -1,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -2295,7 +2290,7 @@
     },
     {
       "id": 10835,
-      "amount": 7369479,
+      "amount": 5142853,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -2515,7 +2510,7 @@
     },
     {
       "id": 2023,
-      "amount": 11373,
+      "amount": 10973,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -2535,7 +2530,7 @@
     },
     {
       "id": 23121,
-      "amount": 0,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -2556,6 +2551,56 @@
     {
       "id": 8788,
       "amount": 1,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
+    },
+    {
+      "id": 22135,
+      "amount": 1,
+      "slot": 0,
+      "bonus": {
+        "effect": "DROP_RATE_LOW",
+        "rarity": "RARE",
+        "bonus": 9
+      }
+    },
+    {
+      "id": 15357,
+      "amount": 1,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
+    },
+    {
+      "id": 14188,
+      "amount": 1,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
+    },
+    {
+      "id": 19886,
+      "amount": 1,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
+    },
+    {
+      "id": 10946,
+      "amount": 8,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -2624,8 +2669,7 @@
     75334,
     1047795465931,
     2179735897329160785,
-    7768275,
-    69920496
+    7768275
   ],
   "ignores": [],
   "loyalty-titles": [
@@ -2644,10 +2688,10 @@
   ],
   "kills": [
     {
-      "runningTotal": 5633,
+      "runningTotal": 4897,
       "npcId": 9017,
       "npcName": "Sanctum Golem",
-      "amount": 5633,
+      "amount": 4897,
       "boss": true
     },
     {
@@ -2908,19 +2952,12 @@
       "npcName": "Oracle Lion",
       "amount": 0,
       "boss": false
-    },
-    {
-      "runningTotal": 50,
-      "npcId": 9839,
-      "npcName": "Mutant Hydra",
-      "amount": 50,
-      "boss": false
     }
   ],
   "drops": [
     {
       "item": 995,
-      "amount": 145838140,
+      "amount": 145550140,
       "rareDrop": false
     },
     {
@@ -3857,7 +3894,7 @@
       0,
       0,
       2000,
-      50,
+      0,
       0,
       0,
       0,
@@ -3871,7 +3908,7 @@
       0,
       0,
       4741,
-      15527,
+      14741,
       0,
       0,
       0,
@@ -4468,7 +4505,7 @@
       false
     ]
   ],
-  "achievements-daily": 324,
+  "achievements-daily": 323,
   "progression-zones": [
     12,
     20,
@@ -4501,7 +4538,7 @@
   },
   "lastTGloveIndex": -1,
   "group-ironman-locked": false,
-  "lastInstanceNpc": 9017,
+  "lastInstanceNpc": 9815,
   "daily-task": {},
   "collectionlog-rewards": {
     "9920": {
@@ -4605,10 +4642,6 @@
       "hasClaimed": false
     },
     "9838": {
-      "canClaim": false,
-      "hasClaimed": false
-    },
-    "9839": {
       "canClaim": false,
       "hasClaimed": false
     },
@@ -4735,7 +4768,6 @@
     "9836": 50,
     "9837": 12,
     "9838": 2,
-    "9839": 50,
     "9904": 0,
     "3313": 0,
     "1906": 121,
@@ -4746,7 +4778,7 @@
     "9910": 2,
     "3831": 60,
     "9911": 15,
-    "9017": 133,
+    "9017": 397,
     "9914": 36,
     "9915": 38,
     "9916": 62,

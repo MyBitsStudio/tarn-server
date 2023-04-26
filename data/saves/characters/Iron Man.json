@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 1774200,
+  "total-play-time-ms": 1495200,
   "username": "Iron Man",
   "password": "Arsenal4Ever",
   "email": "null",
@@ -8,8 +8,8 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2980,
-    "y": 2774,
+    "x": 2236,
+    "y": 3745,
     "z": 0
   },
   "online-status": "ON",
@@ -47,7 +47,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682286629106,
+  "lastlogin": 1681724006392,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -61,7 +61,7 @@
   "minutes-bonus-exp": 0,
   "minutes-voting-dr": 0,
   "minutes-voting-dmg": 0,
-  "total-gained-exp": 670127516,
+  "total-gained-exp": 330715970,
   "barrows-points": 0,
   "donator-points": 0,
   "Skilling-points": 0,
@@ -82,7 +82,7 @@
     false
   ],
   "tasks-progress": [
-    176,
+    156,
     0,
     0,
     0,
@@ -140,7 +140,7 @@
   ],
   "total-prestiges": 0,
   "slayer-spree": 0,
-  "npc-killcount": 352,
+  "npc-killcount": 312,
   "spawn-killcount": 0,
   "lord-killcount": 0,
   "demon-killcount": 0,
@@ -167,7 +167,7 @@
   "bh-rank": -1,
   "gender": "MALE",
   "spell-book": "NORMAL",
-  "prayer-book": "CURSES",
+  "prayer-book": "NORMAL",
   "running": true,
   "run-energy": 100,
   "music": false,
@@ -175,7 +175,7 @@
   "auto-retaliate": false,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 561406525,
+  "last-veng": 1681725501594,
   "fight-type": "LONGSWORD_SLASH",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -376,37 +376,12 @@
     {
       "npcId": 9922,
       "item": 995,
-      "amount": 559
+      "amount": 553
     },
     {
       "npcId": 9922,
       "item": 2023,
-      "amount": 60
-    },
-    {
-      "npcId": 9838,
-      "item": 995,
-      "amount": 613
-    },
-    {
-      "npcId": 9838,
-      "item": 2023,
-      "amount": 14
-    },
-    {
-      "npcId": 9838,
-      "item": 20092,
-      "amount": 1
-    },
-    {
-      "npcId": 8013,
-      "item": 10946,
-      "amount": 5
-    },
-    {
-      "npcId": 8013,
-      "item": 23020,
-      "amount": 3
+      "amount": 54
     }
   ],
   "holy-prayers-unlocked": [
@@ -457,9 +432,9 @@
       107,
       100,
       120,
-      840,
+      800,
       1,
-      523,
+      530,
       93,
       1,
       1,
@@ -510,8 +485,8 @@
     "experience": [
       29966470,
       14402980,
-      311706884,
-      283077258,
+      120783666,
+      134588930,
       0,
       23063300,
       7911808,
@@ -537,8 +512,8 @@
   },
   "inventory": [
     {
-      "id": 10946,
-      "amount": 5,
+      "id": -1,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -547,8 +522,8 @@
       }
     },
     {
-      "id": 23020,
-      "amount": 3,
+      "id": -1,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1556,44 +1531,22 @@
       "boss": false
     },
     {
-      "runningTotal": 57,
+      "runningTotal": 51,
       "npcId": 9922,
       "npcName": "Blurite Centaur",
-      "amount": 57,
-      "boss": false
-    },
-    {
-      "runningTotal": 14,
-      "npcId": 9838,
-      "npcName": "Imperial Hound",
-      "amount": 14,
+      "amount": 51,
       "boss": false
     }
   ],
   "drops": [
     {
       "item": 995,
-      "amount": 71400,
+      "amount": 60000,
       "rareDrop": false
     },
     {
       "item": 2023,
-      "amount": 216,
-      "rareDrop": false
-    },
-    {
-      "item": 20092,
-      "amount": 1,
-      "rareDrop": false
-    },
-    {
-      "item": 10946,
-      "amount": 5,
-      "rareDrop": false
-    },
-    {
-      "item": 23020,
-      "amount": 3,
+      "amount": 196,
       "rareDrop": false
     }
   ],
@@ -2289,7 +2242,7 @@
       0,
       0,
       79,
-      176,
+      156,
       0,
       0,
       0,
@@ -2391,7 +2344,7 @@
       0,
       0,
       79,
-      176,
+      156,
       0,
       0,
       0,
@@ -2494,7 +2447,7 @@
       0,
       0,
       79,
-      176,
+      156,
       0,
       0,
       0,
@@ -3091,13 +3044,13 @@
       false
     ]
   ],
-  "achievements-daily": 323,
+  "achievements-daily": 317,
   "progression-zones": [
     10,
     21,
     33,
     41,
-    57
+    51
   ],
   "zones-complete": [
     true,
@@ -3143,15 +3096,7 @@
       "canClaim": false,
       "hasClaimed": false
     },
-    "8013": {
-      "canClaim": false,
-      "hasClaimed": false
-    },
     "9837": {
-      "canClaim": false,
-      "hasClaimed": false
-    },
-    "9838": {
       "canClaim": false,
       "hasClaimed": false
     }
@@ -3185,14 +3130,10 @@
     null
   ],
   "drystreak": {
-    "9922": 57,
+    "9922": 51,
     "9027": 21,
     "9911": 41,
     "9835": 33,
-    "8013": 0,
-    "9837": 10,
-    "9838": 6
-  },
-  "boost": 0,
-  "slot-level": 0
+    "9837": 10
+  }
 }

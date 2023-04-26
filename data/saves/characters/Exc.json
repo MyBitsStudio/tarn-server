@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 24644920,
+  "total-play-time-ms": 18427161,
   "username": "Exc",
   "password": "tredwin",
   "email": "null",
@@ -8,9 +8,9 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2212,
-    "y": 3768,
-    "z": 0
+    "x": 2520,
+    "y": 2521,
+    "z": 16
   },
   "online-status": "ON",
   "given-starter": true,
@@ -47,7 +47,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682343224379,
+  "lastlogin": 1682248048227,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -58,10 +58,10 @@
   "day5claimed": false,
   "day6claimed": false,
   "day7claimed": false,
-  "minutes-bonus-exp": -1,
+  "minutes-bonus-exp": 42,
   "minutes-voting-dr": -1,
   "minutes-voting-dmg": 0,
-  "total-gained-exp": 2807794712,
+  "total-gained-exp": 1018202494,
   "barrows-points": 0,
   "donator-points": 10,
   "Skilling-points": 0,
@@ -140,7 +140,7 @@
   ],
   "total-prestiges": 0,
   "slayer-spree": 3,
-  "npc-killcount": 3618,
+  "npc-killcount": 3424,
   "spawn-killcount": 0,
   "lord-killcount": 0,
   "demon-killcount": 231,
@@ -175,7 +175,7 @@
   "auto-retaliate": false,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 1682161280106,
+  "last-veng": 188162060,
   "fight-type": "STAFF_POUND",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -426,12 +426,12 @@
     {
       "npcId": 9906,
       "item": 995,
-      "amount": 1088160
+      "amount": 1088156
     },
     {
       "npcId": 9906,
       "item": 2023,
-      "amount": 64
+      "amount": 61
     },
     {
       "npcId": 9838,
@@ -486,12 +486,12 @@
     {
       "npcId": 9904,
       "item": 995,
-      "amount": 3648695
+      "amount": 3648694
     },
     {
       "npcId": 9904,
       "item": 2023,
-      "amount": 45
+      "amount": 44
     },
     {
       "npcId": 9907,
@@ -716,12 +716,12 @@
     {
       "npcId": 811,
       "item": 995,
-      "amount": 5366
+      "amount": 5315
     },
     {
       "npcId": 811,
       "item": 2023,
-      "amount": 364
+      "amount": 313
     },
     {
       "npcId": 811,
@@ -731,26 +731,11 @@
     {
       "npcId": 811,
       "item": 21068,
-      "amount": 2
+      "amount": 1
     },
     {
       "npcId": 811,
       "item": 21066,
-      "amount": 1
-    },
-    {
-      "npcId": 9815,
-      "item": 995,
-      "amount": 6092
-    },
-    {
-      "npcId": 9815,
-      "item": 2023,
-      "amount": 92
-    },
-    {
-      "npcId": 9815,
-      "item": 21048,
       "amount": 1
     }
   ],
@@ -811,7 +796,7 @@
       1,
       1,
       1,
-      57,
+      56,
       1,
       1,
       1,
@@ -838,7 +823,7 @@
       1,
       1,
       1,
-      57,
+      56,
       1,
       1,
       1,
@@ -856,16 +841,16 @@
       106049267,
       255869914,
       155617536,
-      1254056909,
+      464851200,
       105693133,
       9003181,
-      921161108,
+      -79215947,
       0,
       0,
       0,
       0,
       0,
-      204586,
+      195132,
       0,
       0,
       0,
@@ -932,6 +917,46 @@
       }
     },
     {
+      "id": 20087,
+      "amount": 1,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
+    },
+    {
+      "id": 19914,
+      "amount": 1,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
+    },
+    {
+      "id": 19892,
+      "amount": 1,
+      "slot": 0,
+      "bonus": {
+        "effect": "RANGE_DAMAGE",
+        "rarity": "UNCOMMON",
+        "bonus": 1
+      }
+    },
+    {
+      "id": 2023,
+      "amount": 688,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
+    },
+    {
       "id": 23120,
       "amount": 1,
       "slot": 0,
@@ -950,41 +975,6 @@
         "rarity": "RARE",
         "bonus": 8
       }
-    },
-    {
-      "id": 21068,
-      "amount": 1,
-      "slot": 0,
-      "bonus": {
-        "effect": "DROP_RATE_LOW",
-        "rarity": "RARE",
-        "bonus": 19
-      }
-    },
-    {
-      "id": 2023,
-      "amount": 946,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
-      "id": -1,
-      "amount": 0,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
-      "id": -1,
-      "amount": 0,
-      "slot": 0
     },
     {
       "id": -1,
@@ -1138,7 +1128,7 @@
     },
     {
       "id": 995,
-      "amount": 10981640,
+      "amount": 9161291,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1148,7 +1138,7 @@
     },
     {
       "id": 10835,
-      "amount": 112130,
+      "amount": 102544,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1922,24 +1912,17 @@
       "boss": true
     },
     {
-      "runningTotal": 301,
+      "runningTotal": 250,
       "npcId": 811,
       "npcName": "Nagendra",
-      "amount": 301,
+      "amount": 250,
       "boss": true
-    },
-    {
-      "runningTotal": 92,
-      "npcId": 9815,
-      "npcName": "Kol\u0027gal",
-      "amount": 92,
-      "boss": false
     }
   ],
   "drops": [
     {
       "item": 995,
-      "amount": 24095184,
+      "amount": 21413676,
       "rareDrop": false
     },
     {
@@ -2702,16 +2685,16 @@
       231,
       241,
       230,
-      301,
+      250,
       3,
-      92,
+      0,
       0,
       0,
       0,
       0,
       100,
-      1855,
-      18,
+      1712,
+      14,
       0,
       0,
       0,
@@ -2812,7 +2795,7 @@
       0,
       0,
       647,
-      1855,
+      1712,
       0,
       0,
       0,
@@ -2915,7 +2898,7 @@
       0,
       0,
       647,
-      1855,
+      1712,
       0,
       0,
       0,
@@ -3512,7 +3495,7 @@
       false
     ]
   ],
-  "achievements-daily": 324,
+  "achievements-daily": 323,
   "progression-zones": [
     10,
     20,
@@ -3633,10 +3616,6 @@
       "canClaim": false,
       "hasClaimed": false
     },
-    "9815": {
-      "canClaim": false,
-      "hasClaimed": false
-    },
     "9911": {
       "canClaim": false,
       "hasClaimed": false
@@ -3680,7 +3659,7 @@
     "9028": 1,
     "6692": 4,
     "202": 11,
-    "811": 19,
+    "811": 48,
     "9835": 11,
     "8013": 0,
     "9837": 10,
@@ -3692,7 +3671,6 @@
     "9907": 0,
     "9845": 4,
     "9910": 1,
-    "9815": 2,
     "9911": 40
   },
   "boost": 0,

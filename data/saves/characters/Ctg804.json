@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 125975748,
+  "total-play-time-ms": 122156771,
   "username": "Ctg804",
   "password": "redbull101",
   "email": "null",
@@ -8,8 +8,8 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2222,
-    "y": 3739,
+    "x": 2223,
+    "y": 3749,
     "z": 0
   },
   "online-status": "ON",
@@ -45,7 +45,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682380355131,
+  "lastlogin": 1682261141412,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -56,7 +56,7 @@
   "day5claimed": false,
   "day6claimed": false,
   "day7claimed": false,
-  "minutes-bonus-exp": 3222,
+  "minutes-bonus-exp": 3014,
   "minutes-voting-dr": -1,
   "minutes-voting-dmg": 0,
   "total-gained-exp": 1651131112,
@@ -70,7 +70,7 @@
   "loyalty-points": 0,
   "total-loyalty-points": 0.0,
   "godmodetime": 0,
-  "voting-points": 11,
+  "voting-points": 2,
   "tasks-completion": [
     false,
     false,
@@ -138,7 +138,7 @@
   ],
   "total-prestiges": 0,
   "slayer-spree": 0,
-  "npc-killcount": 45663,
+  "npc-killcount": 43615,
   "spawn-killcount": 0,
   "lord-killcount": 0,
   "demon-killcount": 258,
@@ -173,7 +173,7 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 529060033,
+  "last-veng": 1681811848990,
   "fight-type": "STAFF_POUND",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -212,7 +212,7 @@
   "process-farming": false,
   "clanchat": "Help",
   "autocast": false,
-  "autocast-spell": 1154,
+  "autocast-spell": 71,
   "dfs-charges": 0,
   "coins-gambled": 0,
   "slayer-master": "EASY_SLAYER",
@@ -354,12 +354,12 @@
     {
       "npcId": 8013,
       "item": 10946,
-      "amount": 50
+      "amount": 47
     },
     {
       "npcId": 8013,
       "item": 23020,
-      "amount": 50
+      "amount": 47
     },
     {
       "npcId": 9027,
@@ -379,12 +379,12 @@
     {
       "npcId": 9906,
       "item": 995,
-      "amount": 1489804
+      "amount": 1489802
     },
     {
       "npcId": 9906,
       "item": 2023,
-      "amount": 142
+      "amount": 140
     },
     {
       "npcId": 9911,
@@ -479,12 +479,12 @@
     {
       "npcId": 9904,
       "item": 995,
-      "amount": 3140877
+      "amount": 3140876
     },
     {
       "npcId": 9904,
       "item": 2023,
-      "amount": 109
+      "amount": 107
     },
     {
       "npcId": 9908,
@@ -1199,7 +1199,7 @@
     {
       "npcId": 3010,
       "item": 995,
-      "amount": 125283
+      "amount": 125154
     },
     {
       "npcId": 3010,
@@ -1210,11 +1210,6 @@
       "npcId": 9908,
       "item": 23057,
       "amount": 2
-    },
-    {
-      "npcId": 3013,
-      "item": 995,
-      "amount": 128394
     }
   ],
   "holy-prayers-unlocked": [
@@ -1267,7 +1262,7 @@
       120,
       1200,
       120,
-      953,
+      1050,
       120,
       1,
       1,
@@ -1346,7 +1341,7 @@
   "inventory": [
     {
       "id": 10835,
-      "amount": 2535047,
+      "amount": 16779529,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1356,7 +1351,7 @@
     },
     {
       "id": 995,
-      "amount": 259,
+      "amount": 8452211,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1366,7 +1361,7 @@
     },
     {
       "id": 2023,
-      "amount": 34719,
+      "amount": 34589,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1392,22 +1387,12 @@
     {
       "id": -1,
       "amount": 0,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
+      "slot": 0
     },
     {
       "id": -1,
       "amount": 0,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
+      "slot": 0
     },
     {
       "id": -1,
@@ -1622,7 +1607,7 @@
       }
     },
     {
-      "id": 4071,
+      "id": 8412,
       "amount": 1,
       "slot": 0,
       "bonus": {
@@ -2880,7 +2865,7 @@
     },
     {
       "id": 10946,
-      "amount": 25,
+      "amount": 10,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -2950,7 +2935,7 @@
     },
     {
       "id": 8788,
-      "amount": 4,
+      "amount": 5,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -3454,29 +3439,22 @@
       "boss": false
     },
     {
-      "runningTotal": 2304,
+      "runningTotal": 1920,
       "npcId": 3010,
       "npcName": "Zeidan Grimm",
-      "amount": 2304,
-      "boss": false
-    },
-    {
-      "runningTotal": 1152,
-      "npcId": 3013,
-      "npcName": "Ag\u0027thomoth",
-      "amount": 1152,
+      "amount": 1920,
       "boss": false
     }
   ],
   "drops": [
     {
       "item": 995,
-      "amount": 1982758801,
+      "amount": 1979694801,
       "rareDrop": false
     },
     {
       "item": 2023,
-      "amount": 35299,
+      "amount": 35219,
       "rareDrop": false
     },
     {
@@ -4545,14 +4523,14 @@
       896,
       768,
       0,
-      768,
-      384,
+      640,
+      0,
       0,
       0,
       0,
       0,
       29,
-      17628,
+      17116,
       0,
       0,
       0,
@@ -5149,7 +5127,7 @@
       false
     ]
   ],
-  "achievements-daily": 324,
+  "achievements-daily": 323,
   "progression-zones": [
     10,
     20,
@@ -5182,7 +5160,7 @@
   },
   "lastTGloveIndex": -1,
   "group-ironman-locked": false,
-  "lastInstanceNpc": 3013,
+  "lastInstanceNpc": 3010,
   "daily-task": {
     "EASY_SLAYER_TASKS": {
       "index": 0,
@@ -5231,10 +5209,6 @@
       "hasClaimed": false
     },
     "9027": {
-      "canClaim": false,
-      "hasClaimed": false
-    },
-    "3013": {
       "canClaim": false,
       "hasClaimed": false
     },
@@ -5419,13 +5393,12 @@
     "9024": 38,
     "9920": 19,
     "9025": 4,
-    "3010": 181,
+    "3010": 53,
     "8002": 70,
     "9026": 3,
     "9922": 15,
     "8003": 3,
     "9027": 11,
-    "3013": 384,
     "8008": 25,
     "202": 43,
     "8013": 1,

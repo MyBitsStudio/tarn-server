@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 176101575,
+  "total-play-time-ms": 121402902,
   "username": "Munk",
   "password": "kahur543",
   "email": "null",
@@ -47,7 +47,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682431030206,
+  "lastlogin": 1682261599813,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -61,7 +61,7 @@
   "minutes-bonus-exp": 0,
   "minutes-voting-dr": 0,
   "minutes-voting-dmg": 0,
-  "total-gained-exp": 1360644640,
+  "total-gained-exp": 1038496170,
   "barrows-points": 0,
   "donator-points": 0,
   "Skilling-points": 0,
@@ -175,7 +175,7 @@
   "auto-retaliate": false,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 233991682,
+  "last-veng": 1682112213408,
   "fight-type": "BATTLEAXE_CHOP",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -209,7 +209,7 @@
     0
   ],
   "effigy": 0,
-  "summon-npc": 4444,
+  "summon-npc": -1,
   "summon-death": -1,
   "process-farming": false,
   "clanchat": "Help",
@@ -446,7 +446,7 @@
       0,
       0,
       0,
-      1360644640,
+      1038496170,
       0,
       0,
       0,
@@ -461,8 +461,8 @@
   },
   "inventory": [
     {
-      "id": 995,
-      "amount": 999999,
+      "id": 22084,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -472,22 +472,17 @@
     },
     {
       "id": 5020,
-      "amount": 254470,
+      "amount": 3670,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
         "rarity": "COMMON",
         "bonus": 0
       }
-    },
-    {
-      "id": -1,
-      "amount": 0,
-      "slot": 0
     },
     {
       "id": 17634,
-      "amount": 151500,
+      "amount": 774320,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -531,24 +526,54 @@
       "slot": 0
     },
     {
-      "id": -1,
-      "amount": 0,
-      "slot": 0
+      "id": 22092,
+      "amount": 1,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
     },
     {
-      "id": -1,
-      "amount": 0,
-      "slot": 0
+      "id": 22083,
+      "amount": 1,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
     },
     {
-      "id": -1,
-      "amount": 0,
-      "slot": 0
+      "id": 3025,
+      "amount": 100,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
     },
     {
-      "id": -1,
-      "amount": 0,
-      "slot": 0
+      "id": 17818,
+      "amount": 100,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
+    },
+    {
+      "id": 995,
+      "amount": 999999,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
     },
     {
       "id": -1,
@@ -778,7 +803,7 @@
       }
     },
     {
-      "id": 14072,
+      "id": 19945,
       "amount": 1,
       "slot": 0,
       "bonus": {
@@ -2677,7 +2702,7 @@
       false
     ]
   ],
-  "achievements-daily": 325,
+  "achievements-daily": 323,
   "progression-zones": [
     0,
     0,
@@ -2722,9 +2747,7 @@
     -1
   ],
   "favorite-teleports": [],
-  "obtained-pets": [
-    "HOOKER"
-  ],
+  "obtained-pets": [],
   "battlepass-xp": 0,
   "battlepass-premium": false,
   "mini-me-equipment": [

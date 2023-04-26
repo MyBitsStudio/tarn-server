@@ -1,9 +1,5 @@
 {
-<<<<<<< Updated upstream
   "total-play-time-ms": 249653682,
-=======
-  "total-play-time-ms": 462296882,
->>>>>>> Stashed changes
   "username": "V1",
   "password": "jameelmneh",
   "email": "null",
@@ -12,15 +8,9 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-<<<<<<< Updated upstream
     "x": 2139,
     "y": 5018,
     "z": 8
-=======
-    "x": 2222,
-    "y": 3747,
-    "z": 0
->>>>>>> Stashed changes
   },
   "online-status": "ON",
   "given-starter": true,
@@ -57,11 +47,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-<<<<<<< Updated upstream
   "lastlogin": 1682496707426,
-=======
-  "lastlogin": 1682411471510,
->>>>>>> Stashed changes
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -72,14 +58,10 @@
   "day5claimed": false,
   "day6claimed": false,
   "day7claimed": false,
-<<<<<<< Updated upstream
   "minutes-bonus-exp": 1998,
-=======
-  "minutes-bonus-exp": -1,
->>>>>>> Stashed changes
   "minutes-voting-dr": -1,
   "minutes-voting-dmg": 0,
-  "total-gained-exp": 1740808828,
+  "total-gained-exp": 520951228,
   "barrows-points": 0,
   "donator-points": 0,
   "Skilling-points": 0,
@@ -100,7 +82,7 @@
     false
   ],
   "tasks-progress": [
-    1,
+    0,
     0,
     0,
     0,
@@ -158,7 +140,7 @@
   ],
   "total-prestiges": 0,
   "slayer-spree": 0,
-  "npc-killcount": 2,
+  "npc-killcount": 0,
   "spawn-killcount": 0,
   "lord-killcount": 0,
   "demon-killcount": 0,
@@ -193,11 +175,7 @@
   "auto-retaliate": false,
   "xp-locked": false,
   "veng-cast": false,
-<<<<<<< Updated upstream
   "last-veng": 412045662,
-=======
-  "last-veng": 274188592,
->>>>>>> Stashed changes
   "fight-type": "STAFF_BASH",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -231,11 +209,7 @@
     0
   ],
   "effigy": 0,
-<<<<<<< Updated upstream
   "summon-npc": 3023,
-=======
-  "summon-npc": 3028,
->>>>>>> Stashed changes
   "summon-death": -1,
   "process-farming": false,
   "clanchat": "Help",
@@ -362,84 +336,52 @@
     {
       "npcId": 8013,
       "item": 10946,
-      "amount": 52
+      "amount": 46
     },
     {
       "npcId": 8013,
       "item": 23020,
-      "amount": 54
+      "amount": 48
     },
     {
       "npcId": 9906,
       "item": 995,
-<<<<<<< Updated upstream
       "amount": 1769368
-=======
-      "amount": 1769381
->>>>>>> Stashed changes
     },
     {
       "npcId": 9906,
       "item": 2023,
-<<<<<<< Updated upstream
       "amount": 89
-=======
-      "amount": 102
->>>>>>> Stashed changes
     },
     {
       "npcId": 9904,
       "item": 995,
-<<<<<<< Updated upstream
       "amount": 2896706
-=======
-      "amount": 2896714
->>>>>>> Stashed changes
     },
     {
       "npcId": 9904,
       "item": 2023,
-<<<<<<< Updated upstream
       "amount": 83
-=======
-      "amount": 91
->>>>>>> Stashed changes
     },
     {
       "npcId": 9907,
       "item": 10946,
-<<<<<<< Updated upstream
       "amount": 32
-=======
-      "amount": 42
->>>>>>> Stashed changes
     },
     {
       "npcId": 9907,
       "item": 2023,
-<<<<<<< Updated upstream
       "amount": 135
-=======
-      "amount": 144
->>>>>>> Stashed changes
     },
     {
       "npcId": 9908,
       "item": 10946,
-<<<<<<< Updated upstream
       "amount": 22
-=======
-      "amount": 28
->>>>>>> Stashed changes
     },
     {
       "npcId": 9908,
       "item": 2023,
-<<<<<<< Updated upstream
       "amount": 321
-=======
-      "amount": 327
->>>>>>> Stashed changes
     },
     {
       "npcId": 9907,
@@ -502,11 +444,7 @@
       1,
       1200,
       1,
-<<<<<<< Updated upstream
       0,
-=======
-      1200,
->>>>>>> Stashed changes
       120,
       1,
       1,
@@ -560,7 +498,7 @@
       0,
       2000000000,
       0,
-      2000000000,
+      780920400,
       2000000000,
       0,
       0,
@@ -584,8 +522,38 @@
   },
   "inventory": [
     {
-      "id": 995,
-      "amount": 9617964,
+      "id": 22084,
+      "amount": 1,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
+    },
+    {
+      "id": 705,
+      "amount": 1,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
+    },
+    {
+      "id": 703,
+      "amount": 1,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
+    },
+    {
+      "id": 19945,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -595,7 +563,6 @@
     },
     {
       "id": 2023,
-<<<<<<< Updated upstream
       "amount": 10382,
       "slot": 0,
       "bonus": {
@@ -687,144 +654,6 @@
     {
       "id": 17818,
       "amount": 100,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
-      "id": -1,
-      "amount": 0,
-=======
-      "amount": 3695,
->>>>>>> Stashed changes
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
-<<<<<<< Updated upstream
-      "id": -1,
-      "amount": 0,
-=======
-      "id": 10946,
-      "amount": 10,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
-      "id": 23020,
-      "amount": 3,
->>>>>>> Stashed changes
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
-      "id": -1,
-      "amount": 0,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
-      "id": -1,
-      "amount": 0,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
-      "id": -1,
-      "amount": 0,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
-      "id": -1,
-      "amount": 0,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
-      "id": -1,
-      "amount": 0,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
-      "id": -1,
-      "amount": 0,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
-      "id": -1,
-      "amount": 0,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
-      "id": -1,
-      "amount": 0,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
-      "id": -1,
-      "amount": 0,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
-      "id": -1,
-      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1430,148 +1259,7 @@
     }
   ],
   "offences": [],
-  "bank-0": [
-    {
-      "id": 22084,
-      "amount": 1,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
-      "id": 705,
-      "amount": 1,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
-      "id": 703,
-      "amount": 1,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
-      "id": 19945,
-      "amount": 1,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
-      "id": 2023,
-      "amount": 8408,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
-      "id": 704,
-      "amount": 1,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
-      "id": 19946,
-      "amount": 1,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
-      "id": 22092,
-      "amount": 1,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
-      "id": 18001,
-      "amount": 1,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
-      "id": 23089,
-      "amount": 1,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
-      "id": 19481,
-      "amount": 1,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
-      "id": 22083,
-      "amount": 1,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
-      "id": 3024,
-      "amount": 100,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
-      "id": 17817,
-      "amount": 100,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    }
-  ],
+  "bank-0": [],
   "bank-1": [],
   "bank-2": [],
   "bank-3": [],
@@ -1618,19 +1306,12 @@
       "npcName": "Oracle Lion",
       "amount": 0,
       "boss": false
-    },
-    {
-      "runningTotal": 1,
-      "npcId": 9907,
-      "npcName": "Meruem The King",
-      "amount": 1,
-      "boss": true
     }
   ],
   "drops": [
     {
       "item": 10946,
-      "amount": 230,
+      "amount": 228,
       "rareDrop": false
     },
     {
@@ -2346,7 +2027,7 @@
       0,
       0,
       100,
-      1,
+      0,
       45,
       0,
       0,
@@ -2447,8 +2128,8 @@
       0,
       0,
       0,
-      1000,
-      1,
+      443,
+      0,
       0,
       0,
       0,
@@ -2550,8 +2231,8 @@
       0,
       0,
       0,
-      2067,
-      1,
+      443,
+      0,
       0,
       0,
       0,
@@ -3229,8 +2910,7 @@
   ],
   "favorite-teleports": [],
   "obtained-pets": [
-    "SANCTUM_GOLEM_PET",
-    "ZEIDAN_GRIMM_PET"
+    "SANCTUM_GOLEM_PET"
   ],
   "battlepass-xp": 0,
   "battlepass-premium": false,
@@ -3253,7 +2933,7 @@
   "drystreak": {
     "9904": 0,
     "9906": 0,
-    "9907": 1,
+    "9907": 0,
     "9908": 0,
     "8013": 0
   },

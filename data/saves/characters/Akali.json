@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 2909979,
+  "total-play-time-ms": 2599193,
   "username": "Akali",
   "password": "kappa",
   "email": "null",
@@ -8,9 +8,9 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2531,
-    "y": 2528,
-    "z": 8
+    "x": 2219,
+    "y": 3747,
+    "z": 0
   },
   "online-status": "ON",
   "given-starter": true,
@@ -47,7 +47,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682491652693,
+  "lastlogin": 1682082435123,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -175,8 +175,8 @@
   "auto-retaliate": false,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 1682085039730,
-  "fight-type": "STAFF_BASH",
+  "last-veng": 1682085034334,
+  "fight-type": "LONGBOW_ACCURATE",
   "sol-effect": 0,
   "skull-timer": 0,
   "fuse-combination-timer": 0,
@@ -214,7 +214,7 @@
   "process-farming": false,
   "clanchat": "Help",
   "autocast": false,
-  "autocast-spell": 71,
+  "autocast-spell": -1,
   "dfs-charges": 0,
   "coins-gambled": 0,
   "slayer-master": "EASY_SLAYER",
@@ -493,22 +493,22 @@
     {
       "id": -1,
       "amount": 0,
+      "slot": 0
+    },
+    {
+      "id": -1,
+      "amount": 0,
+      "slot": 0
+    },
+    {
+      "id": 19914,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
         "rarity": "COMMON",
         "bonus": 0
       }
-    },
-    {
-      "id": -1,
-      "amount": 0,
-      "slot": 0
-    },
-    {
-      "id": -1,
-      "amount": 0,
-      "slot": 0
     },
     {
       "id": -1,
@@ -546,9 +546,14 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
-      "slot": 0
+      "id": 22092,
+      "amount": 1,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
     },
     {
       "id": 22083,
@@ -581,8 +586,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 995,
+      "amount": 1000000,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -591,13 +596,13 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 14733,
+      "amount": 1,
       "slot": 0,
       "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
+        "effect": "MAGIC_DAMAGE",
+        "rarity": "UNCOMMON",
+        "bonus": 1
       }
     },
     {
@@ -748,7 +753,7 @@
       }
     },
     {
-      "id": 22092,
+      "id": 5012,
       "amount": 1,
       "slot": 0,
       "bonus": {
@@ -768,8 +773,8 @@
       }
     },
     {
-      "id": 19914,
-      "amount": 1,
+      "id": -1,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -2717,7 +2722,7 @@
       false
     ]
   ],
-  "achievements-daily": 325,
+  "achievements-daily": 321,
   "progression-zones": [
     0,
     0,

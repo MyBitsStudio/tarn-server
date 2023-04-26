@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 24882471,
+  "total-play-time-ms": 24620877,
   "username": "Ragnar",
   "password": "team44",
   "email": "null",
@@ -8,8 +8,8 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2224,
-    "y": 3762,
+    "x": 2207,
+    "y": 3746,
     "z": 0
   },
   "online-status": "ON",
@@ -47,7 +47,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682333002212,
+  "lastlogin": 1682170641821,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -58,10 +58,10 @@
   "day5claimed": false,
   "day6claimed": false,
   "day7claimed": false,
-  "minutes-bonus-exp": 56,
-  "minutes-voting-dr": 2,
+  "minutes-bonus-exp": 60,
+  "minutes-voting-dr": 6,
   "minutes-voting-dmg": 0,
-  "total-gained-exp": 15924634,
+  "total-gained-exp": 15663354,
   "barrows-points": 0,
   "donator-points": -1,
   "Skilling-points": 0,
@@ -140,7 +140,7 @@
   ],
   "total-prestiges": 0,
   "slayer-spree": 6,
-  "npc-killcount": 2588,
+  "npc-killcount": 2440,
   "spawn-killcount": 0,
   "lord-killcount": 0,
   "demon-killcount": 201,
@@ -175,7 +175,7 @@
   "auto-retaliate": false,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 1682310363673,
+  "last-veng": 22900142,
   "fight-type": "LONGBOW_RAPID",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -586,22 +586,22 @@
     {
       "npcId": 9028,
       "item": 995,
-      "amount": 1570
+      "amount": 1528
     },
     {
       "npcId": 9028,
       "item": 2023,
-      "amount": 71
+      "amount": 29
     },
     {
       "npcId": 9029,
       "item": 995,
-      "amount": 1569
+      "amount": 1537
     },
     {
       "npcId": 9029,
       "item": 2023,
-      "amount": 70
+      "amount": 38
     },
     {
       "npcId": 9029,
@@ -742,26 +742,6 @@
       "npcId": 9025,
       "item": 2023,
       "amount": 8
-    },
-    {
-      "npcId": 9028,
-      "item": 23026,
-      "amount": 1
-    },
-    {
-      "npcId": 9028,
-      "item": 23027,
-      "amount": 1
-    },
-    {
-      "npcId": 9028,
-      "item": 23023,
-      "amount": 1
-    },
-    {
-      "npcId": 9029,
-      "item": 23033,
-      "amount": 1
     }
   ],
   "holy-prayers-unlocked": [
@@ -812,7 +792,7 @@
       89,
       120,
       120,
-      870,
+      1200,
       120,
       240,
       120,
@@ -875,7 +855,7 @@
       0,
       780300,
       0,
-      9345730,
+      9084450,
       0,
       76364510,
       0,
@@ -892,7 +872,7 @@
   },
   "inventory": [
     {
-      "id": 23033,
+      "id": 12864,
       "amount": 1,
       "slot": 0,
       "bonus": {
@@ -902,8 +882,28 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 10835,
+      "amount": 6076,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
+    },
+    {
+      "id": 995,
+      "amount": 33728,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
+    },
+    {
+      "id": 5023,
+      "amount": 247,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -922,28 +922,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
-      "id": -1,
-      "amount": 0,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
-      "id": -1,
-      "amount": 0,
+      "id": 1007,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1637,7 +1617,7 @@
     },
     {
       "id": 10835,
-      "amount": 6176,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1757,7 +1737,7 @@
     },
     {
       "id": 995,
-      "amount": 136823,
+      "amount": 98595,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1937,7 +1917,7 @@
     },
     {
       "id": 5023,
-      "amount": 421,
+      "amount": 174,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -2047,26 +2027,6 @@
     },
     {
       "id": 732,
-      "amount": 1,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
-      "id": 12864,
-      "amount": 1,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
-      "id": 1007,
       "amount": 1,
       "slot": 0,
       "bonus": {
@@ -2194,17 +2154,17 @@
       "boss": false
     },
     {
-      "runningTotal": 71,
+      "runningTotal": 29,
       "npcId": 9028,
       "npcName": "Mystic",
-      "amount": 71,
+      "amount": 29,
       "boss": false
     },
     {
-      "runningTotal": 70,
+      "runningTotal": 38,
       "npcId": 9029,
       "npcName": "Nightmare",
-      "amount": 70,
+      "amount": 38,
       "boss": false
     },
     {
@@ -2267,12 +2227,12 @@
   "drops": [
     {
       "item": 995,
-      "amount": 7876456,
+      "amount": 7765456,
       "rareDrop": false
     },
     {
       "item": 2023,
-      "amount": 1369,
+      "amount": 1295,
       "rareDrop": false
     },
     {
@@ -2337,16 +2297,6 @@
     },
     {
       "item": 18683,
-      "amount": 1,
-      "rareDrop": false
-    },
-    {
-      "item": 23027,
-      "amount": 1,
-      "rareDrop": false
-    },
-    {
-      "item": 23023,
       "amount": 1,
       "rareDrop": false
     }
@@ -3029,8 +2979,8 @@
     [
       0,
       2,
-      71,
-      70,
+      29,
+      38,
       63,
       201,
       61,
@@ -3043,7 +2993,7 @@
       68,
       8,
       49,
-      1294,
+      1220,
       3,
       0,
       0,
@@ -3145,7 +3095,7 @@
       0,
       0,
       49,
-      1294,
+      1220,
       0,
       0,
       0,
@@ -3248,7 +3198,7 @@
       0,
       0,
       49,
-      1294,
+      1220,
       0,
       0,
       0,
@@ -3845,7 +3795,7 @@
       false
     ]
   ],
-  "achievements-daily": 324,
+  "achievements-daily": 322,
   "progression-zones": [
     10,
     20,
@@ -4014,9 +3964,9 @@
     "9922": 42,
     "8003": 1,
     "9027": 20,
-    "9028": 18,
+    "9028": 29,
     "6692": 3,
-    "9029": 12,
+    "9029": 10,
     "9030": 1,
     "202": 58,
     "9835": 30,

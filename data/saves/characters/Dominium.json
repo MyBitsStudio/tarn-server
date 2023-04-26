@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 10147737,
+  "total-play-time-ms": 2795421,
   "username": "Dominium",
   "password": "assoo",
   "email": "null",
@@ -8,9 +8,9 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2981,
-    "y": 2779,
-    "z": 0
+    "x": 2140,
+    "y": 5016,
+    "z": 8
   },
   "online-status": "ON",
   "given-starter": true,
@@ -45,7 +45,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682395631072,
+  "lastlogin": 1682275526700,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -56,10 +56,10 @@
   "day5claimed": false,
   "day6claimed": false,
   "day7claimed": false,
-  "minutes-bonus-exp": 112,
-  "minutes-voting-dr": -1,
+  "minutes-bonus-exp": 140,
+  "minutes-voting-dr": 5,
   "minutes-voting-dmg": 0,
-  "total-gained-exp": 5760013,
+  "total-gained-exp": 1455237,
   "barrows-points": 0,
   "donator-points": 0,
   "Skilling-points": 0,
@@ -70,7 +70,7 @@
   "loyalty-points": 0,
   "total-loyalty-points": 0.0,
   "godmodetime": 0,
-  "voting-points": 8,
+  "voting-points": 5,
   "tasks-completion": [
     false,
     false,
@@ -80,7 +80,7 @@
     false
   ],
   "tasks-progress": [
-    249,
+    153,
     0,
     0,
     0,
@@ -137,8 +137,8 @@
     0
   ],
   "total-prestiges": 0,
-  "slayer-spree": 2,
-  "npc-killcount": 498,
+  "slayer-spree": 0,
+  "npc-killcount": 306,
   "spawn-killcount": 0,
   "lord-killcount": 0,
   "demon-killcount": 0,
@@ -173,8 +173,8 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 1682326404601,
-  "fight-type": "WHIP_LASH",
+  "last-veng": 52472136,
+  "fight-type": "LONGSWORD_LUNGE",
   "sol-effect": 0,
   "skull-timer": 0,
   "fuse-combination-timer": 0,
@@ -216,10 +216,10 @@
   "dfs-charges": 0,
   "coins-gambled": 0,
   "slayer-master": "EASY_SLAYER",
-  "slayer-task": "IMPERIAL_PALADIN",
-  "prev-slayer-task": "IMPERIAL_SCORPION",
-  "task-amount": 19,
-  "task-streak": 2,
+  "slayer-task": "NO_TASK",
+  "prev-slayer-task": "NO_TASK",
+  "task-amount": 0,
+  "task-streak": 0,
   "duo-partner": "null",
   "double-slay-xp": false,
   "recoil-deg": 0,
@@ -364,12 +364,12 @@
     {
       "npcId": 9906,
       "item": 995,
-      "amount": 1703152
+      "amount": 1703151
     },
     {
       "npcId": 9906,
       "item": 2023,
-      "amount": 26
+      "amount": 25
     },
     {
       "npcId": 9911,
@@ -430,81 +430,6 @@
       "npcId": 9838,
       "item": 2023,
       "amount": 1
-    },
-    {
-      "npcId": 9910,
-      "item": 995,
-      "amount": 826
-    },
-    {
-      "npcId": 9910,
-      "item": 2023,
-      "amount": 27
-    },
-    {
-      "npcId": 9910,
-      "item": 14487,
-      "amount": 1
-    },
-    {
-      "npcId": 9910,
-      "item": 20092,
-      "amount": 1
-    },
-    {
-      "npcId": 9845,
-      "item": 995,
-      "amount": 744
-    },
-    {
-      "npcId": 9845,
-      "item": 2023,
-      "amount": 45
-    },
-    {
-      "npcId": 9845,
-      "item": 20086,
-      "amount": 1
-    },
-    {
-      "npcId": 9845,
-      "item": 20093,
-      "amount": 1
-    },
-    {
-      "npcId": 9845,
-      "item": 14487,
-      "amount": 2
-    },
-    {
-      "npcId": 9845,
-      "item": 20091,
-      "amount": 1
-    },
-    {
-      "npcId": 9807,
-      "item": 995,
-      "amount": 924
-    },
-    {
-      "npcId": 9807,
-      "item": 2023,
-      "amount": 24
-    },
-    {
-      "npcId": 9807,
-      "item": 20091,
-      "amount": 1
-    },
-    {
-      "npcId": 9807,
-      "item": 20086,
-      "amount": 1
-    },
-    {
-      "npcId": 9807,
-      "item": 20092,
-      "amount": 1
     }
   ],
   "holy-prayers-unlocked": [
@@ -552,25 +477,25 @@
   ],
   "skills": {
     "level": [
-      77,
-      75,
-      75,
-      680,
-      62,
+      74,
+      74,
+      74,
+      840,
+      1,
       10,
-      79,
+      71,
       1,
       1,
       1,
       1,
       1,
-      23,
+      17,
       1,
       1,
       1,
       1,
       1,
-      48,
+      1,
       1,
       1,
       1,
@@ -579,25 +504,25 @@
       1
     ],
     "maxLevel": [
-      77,
-      75,
-      75,
-      890,
-      62,
+      74,
+      74,
+      74,
+      840,
+      1,
       720,
-      79,
+      71,
       1,
       1,
       1,
       1,
       1,
-      23,
+      17,
       1,
       1,
       1,
       1,
       1,
-      48,
+      1,
       1,
       1,
       1,
@@ -606,25 +531,25 @@
       1
     ],
     "experience": [
-      1530908,
-      1333424,
-      1330746,
-      5069217,
-      340813,
+      1098751,
+      1101429,
+      1098751,
+      3224508,
+      0,
       967116,
-      1975028,
+      840818,
       0,
       0,
       0,
       0,
       0,
-      6860,
+      3393,
       0,
       0,
       0,
       0,
       0,
-      85430,
+      0,
       0,
       0,
       0,
@@ -636,7 +561,7 @@
   "inventory": [
     {
       "id": 10835,
-      "amount": 8708,
+      "amount": 346,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -655,8 +580,8 @@
       }
     },
     {
-      "id": 4155,
-      "amount": 1,
+      "id": -1,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -676,7 +601,7 @@
     },
     {
       "id": 995,
-      "amount": 102690,
+      "amount": 5775971,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -715,8 +640,8 @@
       }
     },
     {
-      "id": 5023,
-      "amount": 54,
+      "id": -1,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -805,18 +730,8 @@
       }
     },
     {
-      "id": 18629,
-      "amount": 1,
-      "slot": 0,
-      "bonus": {
-        "effect": "DROP_RATE_LOW",
-        "rarity": "RARE",
-        "bonus": 5
-      }
-    },
-    {
-      "id": 18636,
-      "amount": 1,
+      "id": -1,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -825,8 +740,18 @@
       }
     },
     {
-      "id": 11137,
-      "amount": 3,
+      "id": -1,
+      "amount": 0,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
+    },
+    {
+      "id": -1,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -855,17 +780,17 @@
       }
     },
     {
-      "id": 18629,
-      "amount": 1,
+      "id": -1,
+      "amount": 0,
       "slot": 0,
       "bonus": {
-        "effect": "MAGIC_DAMAGE",
-        "rarity": "UNCOMMON",
-        "bonus": 1
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
       }
     },
     {
-      "id": 22084,
+      "id": 22175,
       "amount": 1,
       "slot": 0,
       "bonus": {
@@ -905,19 +830,19 @@
       }
     },
     {
-      "id": 22175,
+      "id": 18629,
       "amount": 1,
       "slot": 0,
       "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
+        "effect": "MAGIC_DAMAGE",
+        "rarity": "UNCOMMON",
+        "bonus": 1
       }
     }
   ],
   "equipment": [
     {
-      "id": 20086,
+      "id": 19984,
       "amount": 1,
       "slot": 0,
       "bonus": {
@@ -937,17 +862,17 @@
       }
     },
     {
-      "id": 19892,
+      "id": 19991,
       "amount": 1,
       "slot": 0,
       "bonus": {
-        "effect": "ALL_DAMAGE_LOW",
-        "rarity": "RARE",
-        "bonus": 1
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
       }
     },
     {
-      "id": 18750,
+      "id": 22084,
       "amount": 1,
       "slot": 0,
       "bonus": {
@@ -1007,7 +932,7 @@
       }
     },
     {
-      "id": 20091,
+      "id": 19988,
       "amount": 1,
       "slot": 0,
       "bonus": {
@@ -1037,7 +962,7 @@
       }
     },
     {
-      "id": 20093,
+      "id": 19992,
       "amount": 1,
       "slot": 0,
       "bonus": {
@@ -1595,52 +1520,10 @@
   ],
   "kills": [
     {
-      "runningTotal": 50,
-      "npcId": 9922,
-      "npcName": "Blurite Centaur",
-      "amount": 50,
-      "boss": false
-    },
-    {
-      "runningTotal": 45,
-      "npcId": 9845,
-      "npcName": "Imperial Scorpion",
-      "amount": 45,
-      "boss": false
-    },
-    {
-      "runningTotal": 41,
-      "npcId": 9911,
-      "npcName": "Blurite Werewolf",
-      "amount": 41,
-      "boss": false
-    },
-    {
-      "runningTotal": 31,
-      "npcId": 9835,
-      "npcName": "Blurite Demon",
-      "amount": 31,
-      "boss": false
-    },
-    {
-      "runningTotal": 27,
-      "npcId": 9910,
-      "npcName": "Imperial Ranger",
-      "amount": 27,
-      "boss": false
-    },
-    {
-      "runningTotal": 20,
-      "npcId": 9027,
-      "npcName": "Blurite Orc",
-      "amount": 20,
-      "boss": false
-    },
-    {
-      "runningTotal": 24,
-      "npcId": 9807,
-      "npcName": "Imperial Paladin",
-      "amount": 24,
+      "runningTotal": 0,
+      "npcId": 1265,
+      "npcName": "Oracle Lion",
+      "amount": 0,
       "boss": false
     },
     {
@@ -1651,29 +1534,50 @@
       "boss": false
     },
     {
+      "runningTotal": 20,
+      "npcId": 9027,
+      "npcName": "Blurite Orc",
+      "amount": 20,
+      "boss": false
+    },
+    {
+      "runningTotal": 31,
+      "npcId": 9835,
+      "npcName": "Blurite Demon",
+      "amount": 31,
+      "boss": false
+    },
+    {
+      "runningTotal": 41,
+      "npcId": 9911,
+      "npcName": "Blurite Werewolf",
+      "amount": 41,
+      "boss": false
+    },
+    {
+      "runningTotal": 50,
+      "npcId": 9922,
+      "npcName": "Blurite Centaur",
+      "amount": 50,
+      "boss": false
+    },
+    {
       "runningTotal": 1,
       "npcId": 9838,
       "npcName": "Imperial Hound",
       "amount": 1,
-      "boss": false
-    },
-    {
-      "runningTotal": 0,
-      "npcId": 1265,
-      "npcName": "Oracle Lion",
-      "amount": 0,
       "boss": false
     }
   ],
   "drops": [
     {
       "item": 995,
-      "amount": 3805069,
+      "amount": 1778951,
       "rareDrop": false
     },
     {
       "item": 2023,
-      "amount": 380,
+      "amount": 259,
       "rareDrop": false
     },
     {
@@ -1698,16 +1602,6 @@
     },
     {
       "item": 19988,
-      "amount": 1,
-      "rareDrop": false
-    },
-    {
-      "item": 20091,
-      "amount": 1,
-      "rareDrop": false
-    },
-    {
-      "item": 20086,
       "amount": 1,
       "rareDrop": false
     }
@@ -2389,7 +2283,7 @@
   "achievements-amount": [
     [
       0,
-      8,
+      5,
       0,
       0,
       0,
@@ -2397,15 +2291,15 @@
       0,
       0,
       0,
-      2,
+      0,
       0,
       0,
       0,
       0,
       0,
       100,
-      249,
-      2,
+      153,
+      1,
       0,
       0,
       0,
@@ -2491,7 +2385,7 @@
     ],
     [
       0,
-      8,
+      5,
       0,
       0,
       0,
@@ -2499,14 +2393,14 @@
       0,
       0,
       0,
-      2,
+      0,
       0,
       0,
       0,
       0,
       0,
       163,
-      249,
+      153,
       0,
       0,
       0,
@@ -2593,7 +2487,7 @@
     ],
     [
       0,
-      8,
+      5,
       0,
       0,
       0,
@@ -2601,7 +2495,7 @@
       0,
       0,
       0,
-      2,
+      0,
       0,
       0,
       0,
@@ -2609,7 +2503,7 @@
       0,
       0,
       163,
-      249,
+      153,
       0,
       0,
       0,
@@ -2813,7 +2707,7 @@
       false,
       false,
       false,
-      true,
+      false,
       false,
       false,
       false,
@@ -3206,7 +3100,7 @@
       false
     ]
   ],
-  "achievements-daily": 324,
+  "achievements-daily": 323,
   "progression-zones": [
     10,
     20,
@@ -3240,20 +3134,7 @@
   "lastTGloveIndex": -1,
   "group-ironman-locked": false,
   "lastInstanceNpc": -1,
-  "daily-task": {
-    "CUT_DRAGONSTONES": {
-      "index": 0,
-      "deadlineTimestamp": 1682389754023,
-      "completedAmount": 0,
-      "assignedAmount": 149,
-      "title": "Cut Dragonstones",
-      "itemId": 0,
-      "description": "Cut 149 dragonstones.",
-      "key": "CUT_DRAGONSTONES",
-      "timespan": "DAILY",
-      "claimedReward": false
-    }
-  },
+  "daily-task": {},
   "collectionlog-rewards": {
     "9922": {
       "canClaim": false,
@@ -3264,18 +3145,6 @@
       "hasClaimed": false
     },
     "9027": {
-      "canClaim": false,
-      "hasClaimed": false
-    },
-    "6692": {
-      "canClaim": false,
-      "hasClaimed": false
-    },
-    "9845": {
-      "canClaim": false,
-      "hasClaimed": false
-    },
-    "9910": {
       "canClaim": false,
       "hasClaimed": false
     },
@@ -3294,18 +3163,13 @@
     "9838": {
       "canClaim": false,
       "hasClaimed": false
-    },
-    "9807": {
-      "canClaim": false,
-      "hasClaimed": false
     }
   },
   "daily-skips": 3,
   "dailies-done": 0,
-  "daily-task-info": "Your daily task is: @red@Cut 149 dragonstones. @bla@Progress: @red@0/149@bla@.",
   "level-notifications": true,
   "dailies-received-times": [
-    1682303354023,
+    -1,
     -1,
     -1
   ],
@@ -3333,13 +3197,10 @@
     "9922": 1,
     "9906": 0,
     "9027": 20,
-    "9845": 4,
-    "9910": 7,
     "9911": 13,
     "9835": 31,
     "9837": 10,
-    "9838": 1,
-    "9807": 2
+    "9838": 1
   },
   "boost": 0,
   "slot-level": 0

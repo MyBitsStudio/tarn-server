@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 43303490,
+  "total-play-time-ms": 42664487,
   "username": "Rxse",
   "password": "Borderlands2",
   "email": "null",
@@ -8,9 +8,9 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2531,
-    "y": 2520,
-    "z": 16
+    "x": 2179,
+    "y": 3741,
+    "z": 0
   },
   "online-status": "ON",
   "given-starter": true,
@@ -47,7 +47,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682282195735,
+  "lastlogin": 1682276535997,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -61,7 +61,7 @@
   "minutes-bonus-exp": -1,
   "minutes-voting-dr": -1,
   "minutes-voting-dmg": 0,
-  "total-gained-exp": -162251067,
+  "total-gained-exp": -162366537,
   "barrows-points": 0,
   "donator-points": 23,
   "Skilling-points": 0,
@@ -139,8 +139,8 @@
     0
   ],
   "total-prestiges": 0,
-  "slayer-spree": 26,
-  "npc-killcount": 7995,
+  "slayer-spree": 25,
+  "npc-killcount": 7916,
   "spawn-killcount": 0,
   "lord-killcount": 0,
   "demon-killcount": 856,
@@ -175,8 +175,8 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 316363995,
-  "fight-type": "STAFF_BASH",
+  "last-veng": 1681966470759,
+  "fight-type": "CROSSBOW_ACCURATE",
   "sol-effect": 0,
   "skull-timer": 0,
   "fuse-combination-timer": 0,
@@ -214,14 +214,14 @@
   "process-farming": false,
   "clanchat": "Help",
   "autocast": false,
-  "autocast-spell": 71,
+  "autocast-spell": -1,
   "dfs-charges": 0,
   "coins-gambled": 0,
   "slayer-master": "MEDIUM_SLAYER",
-  "slayer-task": "NAGENDRA",
-  "prev-slayer-task": "YISDAR",
-  "task-amount": 68,
-  "task-streak": 26,
+  "slayer-task": "NO_TASK",
+  "prev-slayer-task": "DOOMWATCHER",
+  "task-amount": 0,
+  "task-streak": 25,
   "duo-partner": "null",
   "double-slay-xp": false,
   "recoil-deg": 0,
@@ -761,12 +761,12 @@
     {
       "npcId": 811,
       "item": 995,
-      "amount": 5557
+      "amount": 5554
     },
     {
       "npcId": 811,
       "item": 2023,
-      "amount": 573
+      "amount": 570
     },
     {
       "npcId": 8014,
@@ -816,12 +816,12 @@
     {
       "npcId": 9817,
       "item": 995,
-      "amount": 7215
+      "amount": 7140
     },
     {
       "npcId": 9817,
       "item": 2023,
-      "amount": 222
+      "amount": 147
     },
     {
       "npcId": 9817,
@@ -1002,7 +1002,7 @@
       120,
       120,
       120,
-      1060,
+      1200,
       120,
       654,
       120,
@@ -1071,7 +1071,7 @@
       5841971,
       0,
       0,
-      2863290,
+      2747820,
       0,
       130026,
       0,
@@ -1083,7 +1083,7 @@
   "inventory": [
     {
       "id": 5023,
-      "amount": 560,
+      "amount": 503,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1093,7 +1093,7 @@
     },
     {
       "id": 995,
-      "amount": 35126186,
+      "amount": 34586186,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1103,7 +1103,7 @@
     },
     {
       "id": 2023,
-      "amount": 1306,
+      "amount": 1228,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1142,7 +1142,7 @@
       }
     },
     {
-      "id": 21055,
+      "id": 22092,
       "amount": 1,
       "slot": 0,
       "bonus": {
@@ -1212,8 +1212,8 @@
       }
     },
     {
-      "id": 2734,
-      "amount": 2,
+      "id": -1,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1394,7 +1394,7 @@
       }
     },
     {
-      "id": 22092,
+      "id": 21055,
       "amount": 1,
       "slot": 0,
       "bonus": {
@@ -2189,10 +2189,10 @@
       "boss": true
     },
     {
-      "runningTotal": 432,
+      "runningTotal": 429,
       "npcId": 811,
       "npcName": "Nagendra",
-      "amount": 432,
+      "amount": 429,
       "boss": true
     },
     {
@@ -2315,10 +2315,10 @@
       "boss": false
     },
     {
-      "runningTotal": 175,
+      "runningTotal": 102,
       "npcId": 9817,
       "npcName": "Yisdar",
-      "amount": 175,
+      "amount": 102,
       "boss": false
     },
     {
@@ -3184,12 +3184,12 @@
       350,
       20,
       362,
-      175,
+      102,
       0,
       52,
       144,
       81,
-      4266,
+      4190,
       11,
       0,
       0,
@@ -3284,14 +3284,14 @@
       0,
       0,
       0,
-      26,
+      25,
       0,
       0,
       0,
       0,
       0,
       81,
-      4266,
+      4190,
       0,
       0,
       0,
@@ -3386,7 +3386,7 @@
       0,
       0,
       0,
-      26,
+      25,
       0,
       0,
       0,
@@ -3394,7 +3394,7 @@
       0,
       0,
       81,
-      4266,
+      4190,
       0,
       0,
       0,
@@ -4180,10 +4180,10 @@
     "8014": 1,
     "9807": 9,
     "9815": 2,
-    "9817": 75,
+    "9817": 2,
     "92": 96,
     "6692": 4,
-    "811": 11,
+    "811": 8,
     "9835": 30,
     "9836": 75,
     "9837": 12,

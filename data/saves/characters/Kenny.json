@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 22952918,
+  "total-play-time-ms": 18672538,
   "username": "Kenny",
   "password": "briken2004",
   "email": "null",
@@ -8,8 +8,8 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2211,
-    "y": 3767,
+    "x": 2216,
+    "y": 3761,
     "z": 0
   },
   "online-status": "ON",
@@ -47,7 +47,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682434109378,
+  "lastlogin": 1682260093795,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -61,7 +61,7 @@
   "minutes-bonus-exp": 0,
   "minutes-voting-dr": 0,
   "minutes-voting-dmg": 0,
-  "total-gained-exp": 3289195,
+  "total-gained-exp": 2252730,
   "barrows-points": 0,
   "donator-points": 0,
   "Skilling-points": 0,
@@ -139,8 +139,8 @@
     0
   ],
   "total-prestiges": 0,
-  "slayer-spree": 20,
-  "npc-killcount": 5556,
+  "slayer-spree": 19,
+  "npc-killcount": 5220,
   "spawn-killcount": 0,
   "lord-killcount": 0,
   "demon-killcount": 791,
@@ -175,7 +175,7 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 1682208878752,
+  "last-veng": 115514179,
   "fight-type": "LONGSWORD_CHOP",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -217,11 +217,11 @@
   "autocast-spell": -1,
   "dfs-charges": 0,
   "coins-gambled": 0,
-  "slayer-master": "HARD_SLAYER",
+  "slayer-master": "BOSS_SLAYER",
   "slayer-task": "NO_TASK",
-  "prev-slayer-task": "GOLDEN_GOLEM",
+  "prev-slayer-task": "ONYX_GRIFFIN",
   "task-amount": 0,
-  "task-streak": 20,
+  "task-streak": 19,
   "duo-partner": "null",
   "double-slay-xp": false,
   "recoil-deg": 0,
@@ -336,32 +336,32 @@
     {
       "npcId": 9906,
       "item": 995,
-      "amount": 2176925
+      "amount": 2176923
     },
     {
       "npcId": 9906,
       "item": 2023,
-      "amount": 39
+      "amount": 37
     },
     {
       "npcId": 9904,
       "item": 995,
-      "amount": 3865941
+      "amount": 3865940
     },
     {
       "npcId": 9904,
       "item": 2023,
-      "amount": 49
+      "amount": 48
     },
     {
       "npcId": 9908,
       "item": 10946,
-      "amount": 9
+      "amount": 7
     },
     {
       "npcId": 9908,
       "item": 2023,
-      "amount": 306
+      "amount": 304
     },
     {
       "npcId": 9837,
@@ -531,12 +531,12 @@
     {
       "npcId": 9907,
       "item": 10946,
-      "amount": 6
+      "amount": 5
     },
     {
       "npcId": 9907,
       "item": 2023,
-      "amount": 105
+      "amount": 104
     },
     {
       "npcId": 9815,
@@ -671,32 +671,17 @@
     {
       "npcId": 8013,
       "item": 10946,
-      "amount": 6
+      "amount": 5
     },
     {
       "npcId": 8013,
       "item": 23020,
-      "amount": 4
+      "amount": 3
     },
     {
       "npcId": 8002,
       "item": 995,
       "amount": 29073
-    },
-    {
-      "npcId": 9024,
-      "item": 995,
-      "amount": 19083
-    },
-    {
-      "npcId": 9024,
-      "item": 2023,
-      "amount": 84
-    },
-    {
-      "npcId": 9024,
-      "item": 11179,
-      "amount": 1
     }
   ],
   "holy-prayers-unlocked": [
@@ -747,9 +732,9 @@
       120,
       120,
       120,
-      1200,
+      790,
       120,
-      212,
+      1181,
       120,
       1,
       1,
@@ -762,7 +747,7 @@
       1,
       1,
       1,
-      95,
+      94,
       1,
       1,
       1,
@@ -789,7 +774,7 @@
       1,
       1,
       1,
-      95,
+      94,
       1,
       1,
       1,
@@ -816,7 +801,7 @@
       0,
       0,
       0,
-      9655395,
+      8618930,
       0,
       0,
       0,
@@ -828,7 +813,7 @@
   "inventory": [
     {
       "id": 10835,
-      "amount": 989954,
+      "amount": 90803,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -838,7 +823,7 @@
     },
     {
       "id": 995,
-      "amount": 477,
+      "amount": 780701,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -868,7 +853,7 @@
     },
     {
       "id": 2023,
-      "amount": 3366,
+      "amount": 2492,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -888,7 +873,7 @@
     },
     {
       "id": 5023,
-      "amount": 454,
+      "amount": 277,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -907,14 +892,9 @@
       }
     },
     {
-      "id": 11179,
-      "amount": 1,
-      "slot": 0,
-      "bonus": {
-        "effect": "DROP_RATE_LOW",
-        "rarity": "RARE",
-        "bonus": 5
-      }
+      "id": -1,
+      "amount": 0,
+      "slot": 0
     },
     {
       "id": -1,
@@ -1806,13 +1786,6 @@
       "npcName": "Malvek",
       "amount": 222,
       "boss": false
-    },
-    {
-      "runningTotal": 252,
-      "npcId": 9024,
-      "npcName": "Golden Golem",
-      "amount": 252,
-      "boss": false
     }
   ],
   "drops": [
@@ -2557,15 +2530,15 @@
       0,
       0,
       0,
-      20,
+      19,
       71,
       69,
       64,
       0,
       0,
       100,
-      1690,
-      37,
+      1606,
+      31,
       0,
       0,
       0,
@@ -2659,14 +2632,14 @@
       67,
       0,
       95,
-      20,
-      84,
+      19,
+      0,
       0,
       0,
       0,
       69,
       101,
-      1690,
+      1606,
       0,
       0,
       0,
@@ -2761,7 +2734,7 @@
       0,
       74,
       178,
-      20,
+      19,
       0,
       0,
       0,
@@ -2769,7 +2742,7 @@
       0,
       0,
       101,
-      1690,
+      1606,
       0,
       0,
       0,
@@ -2967,7 +2940,7 @@
       false,
       false,
       false,
-      true,
+      false,
       false,
       false,
       false,
@@ -3366,7 +3339,7 @@
       false
     ]
   ],
-  "achievements-daily": 325,
+  "achievements-daily": 323,
   "progression-zones": [
     17,
     23,
@@ -3402,10 +3375,6 @@
   "lastInstanceNpc": -1,
   "daily-task": {},
   "collectionlog-rewards": {
-    "9024": {
-      "canClaim": false,
-      "hasClaimed": false
-    },
     "9920": {
       "canClaim": false,
       "hasClaimed": false
@@ -3528,7 +3497,6 @@
     null
   ],
   "drystreak": {
-    "9024": 38,
     "9920": 64,
     "8002": 74,
     "9027": 23,

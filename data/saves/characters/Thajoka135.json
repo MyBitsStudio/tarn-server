@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 16175472,
+  "total-play-time-ms": 13858902,
   "username": "Thajoka135",
   "password": "124563",
   "email": "null",
@@ -8,9 +8,9 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2219,
-    "y": 3744,
-    "z": 0
+    "x": 2139,
+    "y": 5018,
+    "z": 8
   },
   "online-status": "ON",
   "given-starter": true,
@@ -45,7 +45,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682369191595,
+  "lastlogin": 1682268892570,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -138,7 +138,7 @@
   ],
   "total-prestiges": 0,
   "slayer-spree": 0,
-  "npc-killcount": 2792,
+  "npc-killcount": 2444,
   "spawn-killcount": 0,
   "lord-killcount": 0,
   "demon-killcount": 294,
@@ -173,7 +173,7 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 166132748,
+  "last-veng": 1682205375445,
   "fight-type": "LONGBOW_ACCURATE",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -464,12 +464,12 @@
     {
       "npcId": 9906,
       "item": 995,
-      "amount": 2144014
+      "amount": 2144013
     },
     {
       "npcId": 9906,
       "item": 2023,
-      "amount": 29
+      "amount": 28
     },
     {
       "npcId": 9910,
@@ -665,26 +665,6 @@
       "npcId": 8014,
       "item": 23050,
       "amount": 2
-    },
-    {
-      "npcId": 8003,
-      "item": 995,
-      "amount": 3173
-    },
-    {
-      "npcId": 8003,
-      "item": 2023,
-      "amount": 174
-    },
-    {
-      "npcId": 8003,
-      "item": 19135,
-      "amount": 1
-    },
-    {
-      "npcId": 8003,
-      "item": 19892,
-      "amount": 1
     }
   ],
   "holy-prayers-unlocked": [
@@ -735,9 +715,9 @@
       120,
       120,
       120,
-      548,
+      1040,
       120,
-      127,
+      202,
       120,
       1,
       1,
@@ -826,7 +806,7 @@
     },
     {
       "id": 995,
-      "amount": 1386764,
+      "amount": 8818,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -835,19 +815,24 @@
       }
     },
     {
-      "id": 229,
+      "id": 3024,
       "amount": 1,
-      "slot": 0
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
     },
     {
-      "id": 229,
+      "id": 3024,
       "amount": 1,
-      "slot": 0
-    },
-    {
-      "id": 3030,
-      "amount": 1,
-      "slot": 0
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
     },
     {
       "id": 3024,
@@ -880,8 +865,8 @@
       }
     },
     {
-      "id": 2023,
-      "amount": 25,
+      "id": 3024,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -890,18 +875,28 @@
       }
     },
     {
-      "id": 19135,
-      "amount": 1,
+      "id": -1,
+      "amount": 0,
       "slot": 0,
       "bonus": {
-        "effect": "DROP_RATE_LOW",
-        "rarity": "RARE",
-        "bonus": 5
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
       }
     },
     {
-      "id": 20092,
-      "amount": 1,
+      "id": -1,
+      "amount": 0,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
+    },
+    {
+      "id": -1,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1102,7 +1097,7 @@
       }
     },
     {
-      "id": 19892,
+      "id": 20092,
       "amount": 1,
       "slot": 0,
       "bonus": {
@@ -2146,24 +2141,17 @@
       "npcName": "Oracle Lion",
       "amount": 0,
       "boss": false
-    },
-    {
-      "runningTotal": 174,
-      "npcId": 8003,
-      "npcName": "Dr. Aberrant",
-      "amount": 174,
-      "boss": false
     }
   ],
   "drops": [
     {
       "item": 995,
-      "amount": 10705908,
+      "amount": 8826962,
       "rareDrop": false
     },
     {
       "item": 2023,
-      "amount": 1521,
+      "amount": 1322,
       "rareDrop": false
     },
     {
@@ -2894,7 +2882,7 @@
       0,
       100,
       250,
-      174,
+      0,
       0,
       0,
       0,
@@ -2904,8 +2892,8 @@
       0,
       0,
       84,
-      1396,
-      5,
+      1222,
+      4,
       0,
       0,
       0,
@@ -3006,7 +2994,7 @@
       0,
       0,
       84,
-      1396,
+      1222,
       0,
       0,
       0,
@@ -3109,7 +3097,7 @@
       0,
       0,
       84,
-      1396,
+      1222,
       0,
       0,
       0,
@@ -3706,7 +3694,7 @@
       false
     ]
   ],
-  "achievements-daily": 324,
+  "achievements-daily": 323,
   "progression-zones": [
     10,
     21,
@@ -3743,10 +3731,6 @@
   "daily-task": {},
   "collectionlog-rewards": {
     "9922": {
-      "canClaim": false,
-      "hasClaimed": false
-    },
-    "8003": {
       "canClaim": false,
       "hasClaimed": false
     },
@@ -3833,7 +3817,6 @@
   ],
   "drystreak": {
     "9922": 32,
-    "8003": 54,
     "9027": 1,
     "9028": 24,
     "6692": 3,

@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 321144174,
+  "total-play-time-ms": 156110110,
   "username": "Afk Army",
   "password": "armykiller420",
   "email": "null",
@@ -16,7 +16,7 @@
   "given-starter": true,
   "has-pin2": true,
   "saved-pin2": "1995",
-  "saved-ip": "70.92.110.47",
+  "saved-ip": "98.30.57.1",
   "donated": 0,
   "current-boss-task": 0,
   "current-boss-amount": 0,
@@ -47,7 +47,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682451556700,
+  "lastlogin": 1682195331134,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -61,7 +61,7 @@
   "minutes-bonus-exp": 0,
   "minutes-voting-dr": 0,
   "minutes-voting-dmg": 0,
-  "total-gained-exp": 2000002060,
+  "total-gained-exp": 1870947835,
   "barrows-points": 0,
   "donator-points": 0,
   "Skilling-points": 0,
@@ -175,8 +175,8 @@
   "auto-retaliate": false,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 1682317549586,
-  "fight-type": "BATTLEAXE_CHOP",
+  "last-veng": 56907883,
+  "fight-type": "UNARMED_PUNCH",
   "sol-effect": 0,
   "skull-timer": 0,
   "fuse-combination-timer": 0,
@@ -209,7 +209,7 @@
     0
   ],
   "effigy": 0,
-  "summon-npc": 4444,
+  "summon-npc": 3023,
   "summon-death": -1,
   "process-farming": false,
   "clanchat": "Help",
@@ -446,7 +446,7 @@
       0,
       0,
       0,
-      2000000000,
+      1870947835,
       0,
       0,
       0,
@@ -461,8 +461,18 @@
   },
   "inventory": [
     {
+      "id": 19812,
+      "amount": 1,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
+    },
+    {
       "id": 17634,
-      "amount": 1402980,
+      "amount": 191490,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -473,11 +483,6 @@
     {
       "id": -1,
       "amount": 0,
-      "slot": 0
-    },
-    {
-      "id": 19481,
-      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -727,7 +732,7 @@
     },
     {
       "id": 5020,
-      "amount": 320,
+      "amount": 280420,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -738,16 +743,6 @@
   ],
   "equipment": [
     {
-      "id": 14068,
-      "amount": 1,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
       "id": -1,
       "amount": 0,
       "slot": 0,
@@ -758,28 +753,8 @@
       }
     },
     {
-      "id": 14073,
-      "amount": 1,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
-      "id": 19812,
-      "amount": 1,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
-      "id": 14069,
-      "amount": 1,
+      "id": -1,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -808,8 +783,8 @@
       }
     },
     {
-      "id": 14070,
-      "amount": 1,
+      "id": -1,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -828,8 +803,8 @@
       }
     },
     {
-      "id": 14071,
-      "amount": 1,
+      "id": -1,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -838,8 +813,38 @@
       }
     },
     {
-      "id": 14072,
-      "amount": 1,
+      "id": -1,
+      "amount": 0,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
+    },
+    {
+      "id": -1,
+      "amount": 0,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
+    },
+    {
+      "id": -1,
+      "amount": 0,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
+    },
+    {
+      "id": -1,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -2888,7 +2893,7 @@
       false
     ]
   ],
-  "achievements-daily": 325,
+  "achievements-daily": 323,
   "progression-zones": [
     0,
     0,
@@ -2934,8 +2939,7 @@
   ],
   "favorite-teleports": [],
   "obtained-pets": [
-    "SANCTUM_GOLEM_PET",
-    "HOOKER"
+    "SANCTUM_GOLEM_PET"
   ],
   "battlepass-xp": 0,
   "battlepass-premium": false,

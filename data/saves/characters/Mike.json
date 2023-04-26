@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 58175578,
+  "total-play-time-ms": 56086390,
   "username": "Mike",
   "password": "htasbbno20",
   "email": "null",
@@ -8,9 +8,9 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2711,
-    "y": 4752,
-    "z": 48
+    "x": 2226,
+    "y": 3758,
+    "z": 0
   },
   "online-status": "ON",
   "given-starter": true,
@@ -47,7 +47,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682291379908,
+  "lastlogin": 1682268912953,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -58,10 +58,10 @@
   "day5claimed": false,
   "day6claimed": false,
   "day7claimed": false,
-  "minutes-bonus-exp": 825,
+  "minutes-bonus-exp": 859,
   "minutes-voting-dr": -1,
   "minutes-voting-dmg": 0,
-  "total-gained-exp": -629159324,
+  "total-gained-exp": -630973064,
   "barrows-points": 0,
   "donator-points": 58,
   "Skilling-points": 0,
@@ -72,7 +72,7 @@
   "loyalty-points": 0,
   "total-loyalty-points": 0.0,
   "godmodetime": 0,
-  "voting-points": 24,
+  "voting-points": 54,
   "tasks-completion": [
     false,
     false,
@@ -139,15 +139,15 @@
     0
   ],
   "total-prestiges": 0,
-  "slayer-spree": 26,
-  "npc-killcount": 7276,
+  "slayer-spree": 25,
+  "npc-killcount": 7008,
   "spawn-killcount": 0,
   "lord-killcount": 0,
   "demon-killcount": 411,
   "dragon-killcount": 0,
   "beast-killcount": 0,
   "king-killcount": 0,
-  "avatar-killcount": 37,
+  "avatar-killcount": 0,
   "angel-killcount": 0,
   "lucien-killcount": 0,
   "hercules-killcount": 0,
@@ -172,10 +172,10 @@
   "run-energy": 100,
   "music": false,
   "sounds": false,
-  "auto-retaliate": true,
+  "auto-retaliate": false,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 642721966,
+  "last-veng": 1681650747154,
   "fight-type": "LONGBOW_RAPID",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -209,7 +209,7 @@
     0
   ],
   "effigy": 0,
-  "summon-npc": 3023,
+  "summon-npc": -1,
   "summon-death": -1,
   "process-farming": false,
   "clanchat": "Help",
@@ -217,11 +217,11 @@
   "autocast-spell": -1,
   "dfs-charges": 0,
   "coins-gambled": 0,
-  "slayer-master": "HARD_SLAYER",
-  "slayer-task": "AVATAR_TITAN",
-  "prev-slayer-task": "EMERALD_SLAYER",
-  "task-amount": 34,
-  "task-streak": 1,
+  "slayer-master": "MEDIUM_SLAYER",
+  "slayer-task": "NO_TASK",
+  "prev-slayer-task": "INFERNO",
+  "task-amount": 0,
+  "task-streak": 25,
   "duo-partner": "null",
   "double-slay-xp": false,
   "recoil-deg": 0,
@@ -511,12 +511,12 @@
     {
       "npcId": 9906,
       "item": 995,
-      "amount": 1055399
+      "amount": 1055398
     },
     {
       "npcId": 9906,
       "item": 2023,
-      "amount": 54
+      "amount": 53
     },
     {
       "npcId": 9910,
@@ -646,12 +646,12 @@
     {
       "npcId": 8003,
       "item": 995,
-      "amount": 3484
+      "amount": 3448
     },
     {
       "npcId": 8003,
       "item": 2023,
-      "amount": 510
+      "amount": 473
     },
     {
       "npcId": 9838,
@@ -726,12 +726,12 @@
     {
       "npcId": 9904,
       "item": 995,
-      "amount": 2577551
+      "amount": 2577550
     },
     {
       "npcId": 9904,
       "item": 2023,
-      "amount": 64
+      "amount": 63
     },
     {
       "npcId": 9907,
@@ -967,26 +967,6 @@
       "npcId": 202,
       "item": 13305,
       "amount": 1
-    },
-    {
-      "npcId": 2342,
-      "item": 995,
-      "amount": 18060
-    },
-    {
-      "npcId": 2342,
-      "item": 2023,
-      "amount": 63
-    },
-    {
-      "npcId": 8008,
-      "item": 995,
-      "amount": 15036
-    },
-    {
-      "npcId": 8008,
-      "item": 2023,
-      "amount": 37
     }
   ],
   "holy-prayers-unlocked": [
@@ -1039,7 +1019,7 @@
       120,
       1200,
       120,
-      0,
+      46,
       120,
       1,
       1,
@@ -1052,7 +1032,7 @@
       1,
       1,
       1,
-      83,
+      71,
       1,
       1,
       1,
@@ -1079,7 +1059,7 @@
       1,
       1,
       1,
-      83,
+      71,
       1,
       1,
       1,
@@ -1106,7 +1086,7 @@
       0,
       0,
       0,
-      2680360,
+      866620,
       0,
       0,
       0,
@@ -1128,7 +1108,7 @@
     },
     {
       "id": 10835,
-      "amount": 182219,
+      "amount": 164537,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1138,7 +1118,7 @@
     },
     {
       "id": 995,
-      "amount": 105169,
+      "amount": 52692,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1158,7 +1138,7 @@
     },
     {
       "id": 5023,
-      "amount": 386,
+      "amount": 313,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1188,7 +1168,7 @@
     },
     {
       "id": 2023,
-      "amount": 6561,
+      "amount": 6359,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -2649,10 +2629,10 @@
       "boss": false
     },
     {
-      "runningTotal": 354,
+      "runningTotal": 318,
       "npcId": 8003,
       "npcName": "Dr. Aberrant",
-      "amount": 354,
+      "amount": 318,
       "boss": false
     },
     {
@@ -2766,20 +2746,6 @@
       "npcName": "Zernath",
       "amount": 56,
       "boss": true
-    },
-    {
-      "runningTotal": 61,
-      "npcId": 2342,
-      "npcName": "Emerald Slayer",
-      "amount": 61,
-      "boss": false
-    },
-    {
-      "runningTotal": 37,
-      "npcId": 8008,
-      "npcName": "Avatar titan",
-      "amount": 37,
-      "boss": false
     }
   ],
   "drops": [
@@ -2790,7 +2756,7 @@
     },
     {
       "item": 2023,
-      "amount": 7571,
+      "amount": 7565,
       "rareDrop": false
     },
     {
@@ -3561,7 +3527,7 @@
       56,
       61,
       100,
-      4039,
+      3905,
       45,
       0,
       0,
@@ -3652,18 +3618,18 @@
       0,
       0,
       0,
-      37,
       0,
       0,
-      61,
-      26,
+      0,
+      0,
+      25,
       0,
       0,
       0,
       0,
       0,
       1000,
-      4039,
+      3905,
       0,
       0,
       0,
@@ -3758,7 +3724,7 @@
       0,
       0,
       0,
-      26,
+      25,
       0,
       0,
       0,
@@ -3766,7 +3732,7 @@
       0,
       0,
       1002,
-      4039,
+      3905,
       0,
       0,
       0,
@@ -4398,15 +4364,15 @@
   "group-ironman-locked": false,
   "lastInstanceNpc": -1,
   "daily-task": {
-    "HARD_SLAYER_TASKS": {
+    "GLOBAL_BOSSES": {
       "index": 0,
-      "deadlineTimestamp": 1682379300901,
+      "deadlineTimestamp": 1682355214241,
       "completedAmount": 0,
-      "assignedAmount": 5,
-      "title": "Hard Slayer Tasks",
+      "assignedAmount": 2,
+      "title": "Global Bosses",
       "itemId": 0,
-      "description": "Complete 5 Hard slayer tasks.",
-      "key": "HARD_SLAYER_TASKS",
+      "description": "Kill 2 global bosses.",
+      "key": "GLOBAL_BOSSES",
       "timespan": "DAILY",
       "claimedReward": false
     }
@@ -4444,10 +4410,6 @@
       "canClaim": false,
       "hasClaimed": false
     },
-    "8008": {
-      "canClaim": false,
-      "hasClaimed": false
-    },
     "202": {
       "canClaim": false,
       "hasClaimed": false
@@ -4475,10 +4437,6 @@
     "6692": {
       "canClaim": true,
       "hasClaimed": true
-    },
-    "2342": {
-      "canClaim": false,
-      "hasClaimed": false
     },
     "811": {
       "canClaim": false,
@@ -4531,17 +4489,15 @@
   },
   "daily-skips": 3,
   "dailies-done": 2,
-  "daily-task-info": "Your daily task is: @red@Complete 5 Hard slayer tasks. @bla@Progress: @red@0/5@bla@.",
+  "daily-task-info": "Your daily task is: @red@Kill 2 global bosses. @bla@Progress: @red@0/2@bla@.",
   "level-notifications": true,
   "dailies-received-times": [
-    1682292900901,
+    1681610719402,
     1681667873833,
     1682268814243
   ],
   "favorite-teleports": [],
-  "obtained-pets": [
-    "SANCTUM_GOLEM_PET"
-  ],
+  "obtained-pets": [],
   "battlepass-xp": 0,
   "battlepass-premium": false,
   "mini-me-equipment": [
@@ -4564,12 +4520,11 @@
     "9920": 3,
     "9025": 61,
     "9922": 7,
-    "8003": 55,
+    "8003": 19,
     "9027": 25,
     "9028": 13,
     "9029": 0,
     "9030": 0,
-    "8008": 37,
     "202": 15,
     "8013": 0,
     "8014": 22,
@@ -4577,7 +4532,6 @@
     "9815": 43,
     "9817": 1,
     "6692": 1,
-    "2342": 61,
     "811": 30,
     "9835": 3,
     "9837": 11,

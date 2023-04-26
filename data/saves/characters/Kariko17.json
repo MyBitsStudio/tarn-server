@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 139104682,
+  "total-play-time-ms": 138892286,
   "username": "Kariko17",
   "password": "labelle17",
   "email": "null",
@@ -8,9 +8,9 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2139,
-    "y": 5018,
-    "z": 12
+    "x": 2702,
+    "y": 4754,
+    "z": 44
   },
   "online-status": "ON",
   "given-starter": true,
@@ -47,7 +47,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682334038397,
+  "lastlogin": 1682258655603,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -61,7 +61,7 @@
   "minutes-bonus-exp": -1,
   "minutes-voting-dr": -1,
   "minutes-voting-dmg": 0,
-  "total-gained-exp": -239105274,
+  "total-gained-exp": -239121552,
   "barrows-points": 0,
   "donator-points": 91,
   "Skilling-points": 0,
@@ -140,7 +140,7 @@
   ],
   "total-prestiges": 0,
   "slayer-spree": 52,
-  "npc-killcount": 17315,
+  "npc-killcount": 17305,
   "spawn-killcount": 0,
   "lord-killcount": 0,
   "demon-killcount": 703,
@@ -175,7 +175,7 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 296328878,
+  "last-veng": 1682037921924,
   "fight-type": "STAFF_POUND",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -381,12 +381,12 @@
     {
       "npcId": 9906,
       "item": 995,
-      "amount": 1212617
+      "amount": 1212616
     },
     {
       "npcId": 9906,
       "item": 2023,
-      "amount": 81
+      "amount": 80
     },
     {
       "npcId": 9906,
@@ -956,12 +956,12 @@
     {
       "npcId": 3313,
       "item": 995,
-      "amount": 14333
+      "amount": 14328
     },
     {
       "npcId": 3313,
       "item": 2023,
-      "amount": 340
+      "amount": 334
     },
     {
       "npcId": 811,
@@ -1224,7 +1224,7 @@
       120,
       1200,
       120,
-      1060,
+      0,
       120,
       1,
       1,
@@ -1285,7 +1285,7 @@
       0,
       0,
       0,
-      626693,
+      610415,
       0,
       0,
       0,
@@ -1303,7 +1303,7 @@
   "inventory": [
     {
       "id": 995,
-      "amount": 328384321,
+      "amount": 226784908,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1323,7 +1323,7 @@
     },
     {
       "id": 2023,
-      "amount": 10763,
+      "amount": 10732,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1387,18 +1387,18 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 21044,
+      "amount": 1,
       "slot": 0,
       "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
+        "effect": "RANGE_DAMAGE",
+        "rarity": "UNCOMMON",
+        "bonus": 1
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 21042,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -2611,10 +2611,10 @@
       "boss": false
     },
     {
-      "runningTotal": 302,
+      "runningTotal": 297,
       "npcId": 3313,
       "npcName": "Miscreation",
-      "amount": 302,
+      "amount": 297,
       "boss": false
     },
     {
@@ -2661,7 +2661,7 @@
     },
     {
       "item": 2023,
-      "amount": 13314,
+      "amount": 13312,
       "rareDrop": false
     },
     {
@@ -3503,7 +3503,7 @@
       500,
       100,
       5000,
-      38,
+      37,
       0,
       0,
       0,
@@ -3592,7 +3592,7 @@
       13,
       1000,
       533,
-      302,
+      297,
       0,
       0,
       0,
@@ -3604,7 +3604,7 @@
       0,
       0,
       1000,
-      8958,
+      8953,
       0,
       0,
       0,
@@ -3707,7 +3707,7 @@
       0,
       0,
       5623,
-      8958,
+      8953,
       0,
       0,
       0,
@@ -4304,7 +4304,7 @@
       false
     ]
   ],
-  "achievements-daily": 324,
+  "achievements-daily": 323,
   "progression-zones": [
     11,
     20,
@@ -4521,7 +4521,7 @@
     "9837": 11,
     "9838": 6,
     "9904": 0,
-    "3313": 39,
+    "3313": 34,
     "9906": 0,
     "9907": 0,
     "9908": 0,

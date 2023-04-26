@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 201864077,
+  "total-play-time-ms": 199566109,
   "username": "Zennit",
   "password": "valencia123",
   "email": "null",
@@ -8,15 +8,15 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2565,
-    "y": 2564,
-    "z": 16
+    "x": 2207,
+    "y": 3746,
+    "z": 0
   },
   "online-status": "ON",
   "given-starter": true,
   "has-pin2": true,
   "saved-pin2": "4578",
-  "saved-ip": "120.23.49.169",
+  "saved-ip": "120.23.157.51",
   "donated": 222,
   "current-boss-task": 0,
   "current-boss-amount": 0,
@@ -47,7 +47,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682332908619,
+  "lastlogin": 1682066090032,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -58,10 +58,10 @@
   "day5claimed": false,
   "day6claimed": false,
   "day7claimed": false,
-  "minutes-bonus-exp": 45,
-  "minutes-voting-dr": 1,
+  "minutes-bonus-exp": 0,
+  "minutes-voting-dr": -1,
   "minutes-voting-dmg": 0,
-  "total-gained-exp": -1333757997,
+  "total-gained-exp": 15846111187,
   "barrows-points": 0,
   "donator-points": 47,
   "Skilling-points": 0,
@@ -72,7 +72,7 @@
   "loyalty-points": 0,
   "total-loyalty-points": 0.0,
   "godmodetime": 0,
-  "voting-points": 57,
+  "voting-points": 54,
   "tasks-completion": [
     false,
     false,
@@ -140,7 +140,7 @@
   ],
   "total-prestiges": 0,
   "slayer-spree": 51,
-  "npc-killcount": 34500,
+  "npc-killcount": 33652,
   "spawn-killcount": 0,
   "lord-killcount": 0,
   "demon-killcount": 473,
@@ -175,7 +175,7 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 381109984,
+  "last-veng": 1681954096613,
   "fight-type": "LONGBOW_RAPID",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -1316,7 +1316,7 @@
     {
       "npcId": 9017,
       "item": 995,
-      "amount": 24232
+      "amount": 24017
     },
     {
       "npcId": 202,
@@ -1432,9 +1432,9 @@
       120,
       120,
       120,
-      820,
+      730,
       120,
-      426,
+      0,
       120,
       1,
       1,
@@ -1513,7 +1513,7 @@
   "inventory": [
     {
       "id": 995,
-      "amount": 8986978,
+      "amount": 2326978,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1588,7 +1588,7 @@
     },
     {
       "id": 23020,
-      "amount": 2,
+      "amount": 5,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1597,8 +1597,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 17634,
+      "amount": 5630,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1773,7 +1773,7 @@
     },
     {
       "id": 5020,
-      "amount": 359670,
+      "amount": 354040,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -2996,17 +2996,17 @@
       "boss": false
     },
     {
-      "runningTotal": 687,
+      "runningTotal": 51,
       "npcId": 9017,
       "npcName": "Sanctum Golem",
-      "amount": 687,
+      "amount": 51,
       "boss": true
     }
   ],
   "drops": [
     {
       "item": 995,
-      "amount": 115407162,
+      "amount": 115263162,
       "rareDrop": false
     },
     {
@@ -4041,8 +4041,8 @@
     ],
     [
       0,
-      65,
-      229,
+      62,
+      17,
       0,
       0,
       0,
@@ -4057,7 +4057,7 @@
       0,
       0,
       258,
-      14747,
+      14535,
       0,
       0,
       0,
@@ -4654,7 +4654,7 @@
       false
     ]
   ],
-  "achievements-daily": 324,
+  "achievements-daily": 322,
   "progression-zones": [
     11,
     22,
@@ -4920,7 +4920,7 @@
     "9910": 6,
     "3831": 18,
     "9911": 28,
-    "9017": 229,
+    "9017": 17,
     "9914": 36,
     "9915": 2,
     "9916": 5,

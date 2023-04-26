@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 153527663,
+  "total-play-time-ms": 129190598,
   "username": "X",
   "password": "momdad2",
   "email": "null",
@@ -8,8 +8,8 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2219,
-    "y": 3734,
+    "x": 2222,
+    "y": 3747,
     "z": 0
   },
   "online-status": "ON",
@@ -47,7 +47,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682442662333,
+  "lastlogin": 1682208395426,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -58,10 +58,10 @@
   "day5claimed": false,
   "day6claimed": false,
   "day7claimed": false,
-  "minutes-bonus-exp": -1,
+  "minutes-bonus-exp": 254,
   "minutes-voting-dr": -1,
   "minutes-voting-dmg": 0,
-  "total-gained-exp": 342912284,
+  "total-gained-exp": 106978342,
   "barrows-points": 0,
   "donator-points": 0,
   "Skilling-points": 0,
@@ -140,7 +140,7 @@
   ],
   "total-prestiges": 0,
   "slayer-spree": 10,
-  "npc-killcount": 128474,
+  "npc-killcount": 127504,
   "spawn-killcount": 0,
   "lord-killcount": 0,
   "demon-killcount": 471,
@@ -175,8 +175,8 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 441107787,
-  "fight-type": "STAFF_POUND",
+  "last-veng": 1681972003496,
+  "fight-type": "CROSSBOW_RAPID",
   "sol-effect": 0,
   "skull-timer": 0,
   "fuse-combination-timer": 0,
@@ -214,7 +214,7 @@
   "process-farming": false,
   "clanchat": "Help",
   "autocast": false,
-  "autocast-spell": 1154,
+  "autocast-spell": -1,
   "dfs-charges": 0,
   "coins-gambled": 0,
   "slayer-master": "EASY_SLAYER",
@@ -1386,7 +1386,7 @@
     {
       "npcId": 3021,
       "item": 995,
-      "amount": 82740
+      "amount": 82601
     },
     {
       "npcId": 9025,
@@ -1484,7 +1484,7 @@
       120,
       1200,
       120,
-      854,
+      729,
       120,
       1,
       1,
@@ -1537,7 +1537,7 @@
       106397555,
       2000000000,
       2000000000,
-      410888508,
+      174954566,
       12077860,
       2000000000,
       0,
@@ -1578,7 +1578,7 @@
     },
     {
       "id": 995,
-      "amount": 11120870,
+      "amount": 7224870,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1588,7 +1588,7 @@
     },
     {
       "id": 10835,
-      "amount": 1490897,
+      "amount": 1563673,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1598,7 +1598,7 @@
     },
     {
       "id": 2736,
-      "amount": 6,
+      "amount": 5,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1697,7 +1697,7 @@
       }
     },
     {
-      "id": 8088,
+      "id": 14305,
       "amount": 1,
       "slot": 0,
       "bonus": {
@@ -1849,7 +1849,7 @@
       }
     },
     {
-      "id": 14305,
+      "id": 8088,
       "amount": 1,
       "slot": 0,
       "bonus": {
@@ -3785,10 +3785,10 @@
       "boss": false
     },
     {
-      "runningTotal": 5748,
+      "runningTotal": 5204,
       "npcId": 3021,
       "npcName": "White Beard",
-      "amount": 5748,
+      "amount": 5204,
       "boss": false
     },
     {
@@ -3799,10 +3799,10 @@
       "boss": false
     },
     {
-      "runningTotal": 4232,
+      "runningTotal": 4220,
       "npcId": 9818,
       "npcName": "Leviathan",
-      "amount": 4232,
+      "amount": 4220,
       "boss": false
     },
     {
@@ -4096,7 +4096,7 @@
   "drops": [
     {
       "item": 995,
-      "amount": -1328947063,
+      "amount": -1329427063,
       "rareDrop": false
     },
     {
@@ -5939,7 +5939,7 @@
       false
     ]
   ],
-  "achievements-daily": 325,
+  "achievements-daily": 322,
   "progression-zones": [
     11,
     20,
@@ -5972,7 +5972,7 @@
   },
   "lastTGloveIndex": -1,
   "group-ironman-locked": false,
-  "lastInstanceNpc": 3021,
+  "lastInstanceNpc": 9818,
   "daily-task": {},
   "collectionlog-rewards": {
     "6692": {
@@ -6271,7 +6271,7 @@
     "202": 65,
     "3019": 715,
     "3020": 1336,
-    "3021": 1437,
+    "3021": 1301,
     "8013": 0,
     "9806": 385,
     "8014": 45,
@@ -6280,7 +6280,7 @@
     "9815": 30,
     "9816": 429,
     "9817": 1,
-    "9818": 1058,
+    "9818": 1055,
     "92": 28,
     "3305": 1307,
     "9835": 8,

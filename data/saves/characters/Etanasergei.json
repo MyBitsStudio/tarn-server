@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 18888790,
+  "total-play-time-ms": 13338811,
   "username": "Etanasergei",
   "password": "hikinakki12",
   "email": "null",
@@ -8,9 +8,9 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2211,
-    "y": 3767,
-    "z": 0
+    "x": 2527,
+    "y": 2527,
+    "z": 4
   },
   "online-status": "ON",
   "given-starter": true,
@@ -45,7 +45,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682437147757,
+  "lastlogin": 1682254314003,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -59,7 +59,7 @@
   "minutes-bonus-exp": 0,
   "minutes-voting-dr": 0,
   "minutes-voting-dmg": 0,
-  "total-gained-exp": 1902637563,
+  "total-gained-exp": 1373603485,
   "barrows-points": 0,
   "donator-points": 0,
   "Skilling-points": 0,
@@ -138,10 +138,10 @@
   ],
   "total-prestiges": 0,
   "slayer-spree": 0,
-  "npc-killcount": 5224,
+  "npc-killcount": 3314,
   "spawn-killcount": 0,
   "lord-killcount": 0,
-  "demon-killcount": 710,
+  "demon-killcount": 0,
   "dragon-killcount": 0,
   "beast-killcount": 0,
   "king-killcount": 0,
@@ -165,7 +165,7 @@
   "bh-rank": -1,
   "gender": "MALE",
   "spell-book": "NORMAL",
-  "prayer-book": "CURSES",
+  "prayer-book": "NORMAL",
   "running": true,
   "run-energy": 100,
   "music": false,
@@ -173,7 +173,7 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 175044942,
+  "last-veng": 1682267652815,
   "fight-type": "BSOAT_RAPID",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -384,12 +384,12 @@
     {
       "npcId": 9906,
       "item": 995,
-      "amount": 2134146
+      "amount": 2134145
     },
     {
       "npcId": 9906,
       "item": 2023,
-      "amount": 26
+      "amount": 25
     },
     {
       "npcId": 9922,
@@ -745,76 +745,6 @@
       "npcId": 9030,
       "item": 23035,
       "amount": 1
-    },
-    {
-      "npcId": 8014,
-      "item": 995,
-      "amount": 2714
-    },
-    {
-      "npcId": 8014,
-      "item": 2023,
-      "amount": 719
-    },
-    {
-      "npcId": 8014,
-      "item": 23051,
-      "amount": 5
-    },
-    {
-      "npcId": 8014,
-      "item": 23050,
-      "amount": 3
-    },
-    {
-      "npcId": 8014,
-      "item": 23052,
-      "amount": 2
-    },
-    {
-      "npcId": 8014,
-      "item": 23056,
-      "amount": 3
-    },
-    {
-      "npcId": 8014,
-      "item": 23054,
-      "amount": 1
-    },
-    {
-      "npcId": 8014,
-      "item": 23055,
-      "amount": 1
-    },
-    {
-      "npcId": 8003,
-      "item": 995,
-      "amount": 3245
-    },
-    {
-      "npcId": 8003,
-      "item": 2023,
-      "amount": 249
-    },
-    {
-      "npcId": 8003,
-      "item": 4367,
-      "amount": 1
-    },
-    {
-      "npcId": 8003,
-      "item": 20592,
-      "amount": 1
-    },
-    {
-      "npcId": 8003,
-      "item": 19892,
-      "amount": 2
-    },
-    {
-      "npcId": 8003,
-      "item": 8334,
-      "amount": 1
     }
   ],
   "holy-prayers-unlocked": [
@@ -862,19 +792,19 @@
   ],
   "skills": {
     "level": [
-      1,
+      11,
       120,
-      1,
-      1050,
+      11,
+      1200,
       120,
-      970,
+      0,
+      11,
       1,
       1,
       1,
       1,
       1,
-      1,
-      57,
+      52,
       1,
       1,
       1,
@@ -894,14 +824,14 @@
       1,
       1200,
       120,
-      970,
+      780,
       1,
       1,
       1,
       1,
       1,
       1,
-      57,
+      52,
       1,
       1,
       1,
@@ -919,16 +849,16 @@
       0,
       107741784,
       0,
-      827585318,
-      956299062,
-      10792081,
+      600117778,
+      663839368,
+      1780376,
       0,
       0,
       0,
       0,
       0,
       0,
-      219202,
+      124063,
       0,
       0,
       0,
@@ -947,7 +877,12 @@
     {
       "id": -1,
       "amount": 0,
-      "slot": 0
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
     },
     {
       "id": -1,
@@ -1186,7 +1121,7 @@
     },
     {
       "id": 995,
-      "amount": 210,
+      "amount": 850,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1196,7 +1131,7 @@
     },
     {
       "id": 10835,
-      "amount": 448413,
+      "amount": 51772,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1205,8 +1140,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 2023,
+      "amount": 67,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1227,7 +1162,7 @@
       }
     },
     {
-      "id": 4367,
+      "id": 18005,
       "amount": 1,
       "slot": 0,
       "bonus": {
@@ -1237,7 +1172,7 @@
       }
     },
     {
-      "id": 19886,
+      "id": 21068,
       "amount": 1,
       "slot": 0,
       "bonus": {
@@ -1272,8 +1207,8 @@
       "slot": 0
     },
     {
-      "id": 12614,
-      "amount": 1,
+      "id": -1,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1302,7 +1237,7 @@
       }
     },
     {
-      "id": 22123,
+      "id": 20091,
       "amount": 1,
       "slot": 0,
       "bonus": {
@@ -1312,13 +1247,13 @@
       }
     },
     {
-      "id": 14053,
+      "id": 23025,
       "amount": 1,
       "slot": 0,
       "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
+        "effect": "MAGIC_DAMAGE",
+        "rarity": "UNCOMMON",
+        "bonus": 1
       }
     },
     {
@@ -1916,31 +1851,17 @@
       "npcName": "Patience",
       "amount": 289,
       "boss": false
-    },
-    {
-      "runningTotal": 710,
-      "npcId": 8014,
-      "npcName": "Zinqrux",
-      "amount": 710,
-      "boss": false
-    },
-    {
-      "runningTotal": 245,
-      "npcId": 8003,
-      "npcName": "Dr. Aberrant",
-      "amount": 245,
-      "boss": false
     }
   ],
   "drops": [
     {
       "item": 995,
-      "amount": 8185788,
+      "amount": 6749788,
       "rareDrop": false
     },
     {
       "item": 2023,
-      "amount": 2775,
+      "amount": 2044,
       "rareDrop": false
     },
     {
@@ -2010,26 +1931,6 @@
     },
     {
       "item": 23038,
-      "amount": 1,
-      "rareDrop": false
-    },
-    {
-      "item": 23050,
-      "amount": 1,
-      "rareDrop": false
-    },
-    {
-      "item": 23056,
-      "amount": 1,
-      "rareDrop": false
-    },
-    {
-      "item": 23054,
-      "amount": 1,
-      "rareDrop": false
-    },
-    {
-      "item": 23055,
       "amount": 1,
       "rareDrop": false
     }
@@ -2715,8 +2616,8 @@
       100,
       100,
       100,
-      250,
-      245,
+      0,
+      0,
       0,
       0,
       0,
@@ -2726,8 +2627,8 @@
       0,
       0,
       100,
-      2612,
-      4,
+      1657,
+      3,
       0,
       0,
       0,
@@ -2827,8 +2728,8 @@
       0,
       0,
       0,
-      1000,
-      2612,
+      149,
+      1657,
       0,
       0,
       0,
@@ -2930,8 +2831,8 @@
       0,
       0,
       0,
-      2514,
-      2612,
+      149,
+      1657,
       0,
       0,
       0,
@@ -3528,7 +3429,7 @@
       false
     ]
   ],
-  "achievements-daily": 325,
+  "achievements-daily": 323,
   "progression-zones": [
     10,
     20,
@@ -3562,26 +3463,9 @@
   "lastTGloveIndex": -1,
   "group-ironman-locked": false,
   "lastInstanceNpc": -1,
-  "daily-task": {
-    "MEDIUM_SLAYER_TASKS": {
-      "index": 0,
-      "deadlineTimestamp": 1682525623749,
-      "completedAmount": 0,
-      "assignedAmount": 1,
-      "title": "Medium Slayer Tasks",
-      "itemId": 0,
-      "description": "Complete 1 Medium slayer tasks.",
-      "key": "MEDIUM_SLAYER_TASKS",
-      "timespan": "DAILY",
-      "claimedReward": false
-    }
-  },
+  "daily-task": {},
   "collectionlog-rewards": {
     "9922": {
-      "canClaim": false,
-      "hasClaimed": false
-    },
-    "8003": {
       "canClaim": false,
       "hasClaimed": false
     },
@@ -3612,10 +3496,6 @@
     "9837": {
       "canClaim": false,
       "hasClaimed": false
-    },
-    "8014": {
-      "canClaim": true,
-      "hasClaimed": true
     },
     "9838": {
       "canClaim": false,
@@ -3652,10 +3532,9 @@
   },
   "daily-skips": 3,
   "dailies-done": 0,
-  "daily-task-info": "Your daily task is: @red@Complete 1 Medium slayer tasks. @bla@Progress: @red@0/1@bla@.",
   "level-notifications": true,
   "dailies-received-times": [
-    1682439223749,
+    -1,
     -1,
     -1
   ],
@@ -3681,7 +3560,6 @@
   ],
   "drystreak": {
     "9922": 47,
-    "8003": 3,
     "9027": 20,
     "9028": 9,
     "6692": 1,
@@ -3689,7 +3567,6 @@
     "9030": 7,
     "9835": 31,
     "9837": 10,
-    "8014": 15,
     "9838": 8,
     "9807": 9,
     "9904": 0,

@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 56335451,
+  "total-play-time-ms": 28105610,
   "username": "13lackdrag",
   "password": "Jelly5man12",
   "email": "null",
@@ -8,9 +8,9 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2140,
-    "y": 5016,
-    "z": 8
+    "x": 2224,
+    "y": 3762,
+    "z": 0
   },
   "online-status": "ON",
   "given-starter": true,
@@ -47,7 +47,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682319254499,
+  "lastlogin": 1682260770012,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -61,7 +61,7 @@
   "minutes-bonus-exp": -1,
   "minutes-voting-dr": -1,
   "minutes-voting-dmg": 0,
-  "total-gained-exp": -170078908,
+  "total-gained-exp": -173567138,
   "barrows-points": 0,
   "donator-points": 29,
   "Skilling-points": 0,
@@ -140,7 +140,7 @@
   ],
   "total-prestiges": 0,
   "slayer-spree": 1,
-  "npc-killcount": 5480,
+  "npc-killcount": 5412,
   "spawn-killcount": 0,
   "lord-killcount": 0,
   "demon-killcount": 359,
@@ -175,7 +175,7 @@
   "auto-retaliate": false,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 1682209152506,
+  "last-veng": 138331876,
   "fight-type": "STAFF_FOCUS",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -411,12 +411,12 @@
     {
       "npcId": 9906,
       "item": 995,
-      "amount": 1535265
+      "amount": 1535264
     },
     {
       "npcId": 9906,
       "item": 2023,
-      "amount": 34
+      "amount": 33
     },
     {
       "npcId": 9838,
@@ -876,21 +876,16 @@
     {
       "npcId": 9817,
       "item": 995,
-      "amount": 7236
+      "amount": 7167
     },
     {
       "npcId": 9817,
       "item": 2023,
-      "amount": 234
+      "amount": 165
     },
     {
       "npcId": 9817,
       "item": 23134,
-      "amount": 2
-    },
-    {
-      "npcId": 9817,
-      "item": 23135,
       "amount": 1
     }
   ],
@@ -944,7 +939,7 @@
       66,
       1200,
       103,
-      0,
+      1110,
       120,
       1,
       1,
@@ -1005,7 +1000,7 @@
       0,
       0,
       0,
-      46901109,
+      43412879,
       0,
       0,
       0,
@@ -1023,7 +1018,7 @@
   "inventory": [
     {
       "id": 995,
-      "amount": 530,
+      "amount": 227,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1032,8 +1027,8 @@
       }
     },
     {
-      "id": 10835,
-      "amount": 3672,
+      "id": 11137,
+      "amount": 2,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1052,8 +1047,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 23134,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1112,8 +1107,8 @@
       "slot": 0
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 10835,
+      "amount": 10695,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1133,7 +1128,7 @@
     },
     {
       "id": 2023,
-      "amount": 3006,
+      "amount": 2912,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1237,13 +1232,13 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 14733,
+      "amount": 1,
       "slot": 0,
       "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
+        "effect": "ALL_DAMAGE_LOW",
+        "rarity": "RARE",
+        "bonus": 1
       }
     },
     {
@@ -1319,13 +1314,13 @@
       }
     },
     {
-      "id": 22135,
+      "id": 23026,
       "amount": 1,
       "slot": 0,
       "bonus": {
-        "effect": "ALL_DAMAGE_LOW",
+        "effect": "DROP_RATE_LOW",
         "rarity": "RARE",
-        "bonus": 1
+        "bonus": 18
       }
     },
     {
@@ -2086,10 +2081,10 @@
       "boss": false
     },
     {
-      "runningTotal": 233,
+      "runningTotal": 165,
       "npcId": 9817,
       "npcName": "Yisdar",
-      "amount": 233,
+      "amount": 165,
       "boss": false
     },
     {
@@ -2902,13 +2897,13 @@
       320,
       1,
       400,
-      233,
+      165,
       0,
       0,
       0,
       100,
-      3058,
-      18,
+      2990,
+      17,
       0,
       0,
       0,
@@ -3009,7 +3004,7 @@
       0,
       0,
       141,
-      3058,
+      2990,
       0,
       0,
       0,
@@ -3112,7 +3107,7 @@
       0,
       0,
       141,
-      3058,
+      2990,
       0,
       0,
       0,
@@ -3709,7 +3704,7 @@
       false
     ]
   ],
-  "achievements-daily": 324,
+  "achievements-daily": 323,
   "progression-zones": [
     10,
     20,
@@ -3893,7 +3888,7 @@
     "8014": 8,
     "9807": 3,
     "9815": 40,
-    "9817": 7,
+    "9817": 65,
     "1307": 1,
     "1308": 4,
     "1309": 4,

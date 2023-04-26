@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 610475680,
+  "total-play-time-ms": 436481434,
   "username": "Nelly",
   "password": "blooded1",
   "email": "null",
@@ -16,7 +16,7 @@
   "given-starter": true,
   "has-pin2": true,
   "saved-pin2": "0414",
-  "saved-ip": "172.56.73.101",
+  "saved-ip": "172.58.175.11",
   "donated": 0,
   "current-boss-task": 0,
   "current-boss-amount": 0,
@@ -47,7 +47,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682489203507,
+  "lastlogin": 1682271282943,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -61,7 +61,7 @@
   "minutes-bonus-exp": -1,
   "minutes-voting-dr": -1,
   "minutes-voting-dmg": 0,
-  "total-gained-exp": 537718672,
+  "total-gained-exp": 327336967,
   "barrows-points": 0,
   "donator-points": 0,
   "Skilling-points": 0,
@@ -175,7 +175,7 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 581261801,
+  "last-veng": 1681799759360,
   "fight-type": "BATTLEAXE_HACK",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -697,16 +697,6 @@
       "npcId": 9908,
       "item": 2023,
       "amount": 301
-    },
-    {
-      "npcId": 8013,
-      "item": 10946,
-      "amount": 6
-    },
-    {
-      "npcId": 8013,
-      "item": 23020,
-      "amount": 4
     }
   ],
   "holy-prayers-unlocked": [
@@ -810,7 +800,7 @@
     "experience": [
       489495095,
       455115071,
-      774227410,
+      563845705,
       2000000000,
       1343456096,
       58760000,
@@ -877,8 +867,8 @@
       }
     },
     {
-      "id": 23020,
-      "amount": 6,
+      "id": 5020,
+      "amount": 359550,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -888,7 +878,7 @@
     },
     {
       "id": 10946,
-      "amount": 11,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -917,8 +907,8 @@
       }
     },
     {
-      "id": 5020,
-      "amount": 74950,
+      "id": 10835,
+      "amount": 90000,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -957,8 +947,8 @@
       }
     },
     {
-      "id": 10835,
-      "amount": 90000,
+      "id": -1,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -998,7 +988,7 @@
     },
     {
       "id": 17634,
-      "amount": 1484700,
+      "amount": 3376100,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -2359,11 +2349,6 @@
     },
     {
       "item": 10946,
-      "amount": 16,
-      "rareDrop": false
-    },
-    {
-      "item": 23020,
       "amount": 6,
       "rareDrop": false
     }
@@ -3862,7 +3847,7 @@
       false
     ]
   ],
-  "achievements-daily": 326,
+  "achievements-daily": 323,
   "progression-zones": [
     10,
     21,
@@ -3928,10 +3913,6 @@
       "hasClaimed": false
     },
     "9835": {
-      "canClaim": false,
-      "hasClaimed": false
-    },
-    "8013": {
       "canClaim": false,
       "hasClaimed": false
     },
@@ -4017,7 +3998,6 @@
     "9028": 11,
     "6692": 3,
     "9835": 10,
-    "8013": 0,
     "9837": 10,
     "8014": 1,
     "9838": 8,

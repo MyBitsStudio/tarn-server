@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 174753776,
+  "total-play-time-ms": 154829601,
   "username": "Cd Black",
   "password": "4481474",
   "email": "null",
@@ -8,15 +8,15 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2224,
-    "y": 3749,
-    "z": 0
+    "x": 2139,
+    "y": 5018,
+    "z": 12
   },
   "online-status": "ON",
   "given-starter": true,
   "has-pin2": true,
   "saved-pin2": "4573",
-  "saved-ip": "166.199.165.1",
+  "saved-ip": "50.25.109.8",
   "donated": 325,
   "current-boss-task": 0,
   "current-boss-amount": 0,
@@ -47,7 +47,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682454673091,
+  "lastlogin": 1682269647955,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -58,10 +58,10 @@
   "day5claimed": false,
   "day6claimed": false,
   "day7claimed": false,
-  "minutes-bonus-exp": 20,
-  "minutes-voting-dr": 0,
+  "minutes-bonus-exp": 164,
+  "minutes-voting-dr": -1,
   "minutes-voting-dmg": 0,
-  "total-gained-exp": 545870014,
+  "total-gained-exp": 353802569,
   "barrows-points": 0,
   "donator-points": 325,
   "Skilling-points": 0,
@@ -72,7 +72,7 @@
   "loyalty-points": 0,
   "total-loyalty-points": 0.0,
   "godmodetime": 0,
-  "voting-points": 114,
+  "voting-points": 108,
   "tasks-completion": [
     false,
     false,
@@ -140,7 +140,7 @@
   ],
   "total-prestiges": 0,
   "slayer-spree": 63,
-  "npc-killcount": 13041,
+  "npc-killcount": 13037,
   "spawn-killcount": 0,
   "lord-killcount": 0,
   "demon-killcount": 252,
@@ -175,7 +175,7 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 1681995598706,
+  "last-veng": 360313314,
   "fight-type": "SWORD_LUNGE",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -391,12 +391,12 @@
     {
       "npcId": 9906,
       "item": 995,
-      "amount": 1126582
+      "amount": 1126578
     },
     {
       "npcId": 9906,
       "item": 2023,
-      "amount": 113
+      "amount": 109
     },
     {
       "npcId": 9922,
@@ -426,22 +426,22 @@
     {
       "npcId": 9904,
       "item": 995,
-      "amount": 4056755
+      "amount": 4056748
     },
     {
       "npcId": 9904,
       "item": 2023,
-      "amount": 86
+      "amount": 78
     },
     {
       "npcId": 9908,
       "item": 10946,
-      "amount": 15
+      "amount": 12
     },
     {
       "npcId": 9908,
       "item": 2023,
-      "amount": 316
+      "amount": 313
     },
     {
       "npcId": 9838,
@@ -696,22 +696,22 @@
     {
       "npcId": 8013,
       "item": 10946,
-      "amount": 46
+      "amount": 40
     },
     {
       "npcId": 8013,
       "item": 23020,
-      "amount": 42
+      "amount": 36
     },
     {
       "npcId": 9907,
       "item": 10946,
-      "amount": 28
+      "amount": 24
     },
     {
       "npcId": 9907,
       "item": 2023,
-      "amount": 124
+      "amount": 120
     },
     {
       "npcId": 9920,
@@ -1157,9 +1157,9 @@
       120,
       120,
       120,
-      520,
-      120,
       1200,
+      120,
+      0,
       120,
       1,
       1,
@@ -1222,7 +1222,7 @@
       0,
       79999818,
       0,
-      559668560,
+      367601115,
       17181710,
       0,
       0,
@@ -1258,7 +1258,7 @@
     },
     {
       "id": 23020,
-      "amount": 34,
+      "amount": 16,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1308,7 +1308,7 @@
     },
     {
       "id": 2023,
-      "amount": 11851,
+      "amount": 10131,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1328,7 +1328,7 @@
     },
     {
       "id": 10835,
-      "amount": 7422346,
+      "amount": 5123889,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1378,7 +1378,7 @@
     },
     {
       "id": 995,
-      "amount": 136,
+      "amount": 7071132,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1387,8 +1387,8 @@
       }
     },
     {
-      "id": 17634,
-      "amount": 108980,
+      "id": -1,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1397,8 +1397,8 @@
       }
     },
     {
-      "id": 23124,
-      "amount": 1,
+      "id": -1,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -2782,13 +2782,6 @@
       "npcName": "Ag\u0027thomoth",
       "amount": 117,
       "boss": false
-    },
-    {
-      "runningTotal": 3,
-      "npcId": 8013,
-      "npcName": "Vote Boss",
-      "amount": 3,
-      "boss": false
     }
   ],
   "drops": [
@@ -2799,7 +2792,7 @@
     },
     {
       "item": 2023,
-      "amount": 8494,
+      "amount": 8414,
       "rareDrop": false
     },
     {
@@ -3657,7 +3650,7 @@
       0,
       403,
       1000,
-      6045,
+      6044,
       0,
       0,
       0,
@@ -3760,7 +3753,7 @@
       0,
       0,
       6288,
-      6045,
+      6044,
       0,
       0,
       0,
@@ -4357,7 +4350,7 @@
       false
     ]
   ],
-  "achievements-daily": 325,
+  "achievements-daily": 323,
   "progression-zones": [
     10,
     20,
@@ -4577,7 +4570,7 @@
   },
   "daily-skips": 3,
   "dailies-done": 2,
-  "daily-task-info": "Your daily task is: @red@Complete 5 Easy slayer tasks. @bla@Progress: @red@1/5@bla@.",
+  "daily-task-info": "Your daily task is: @red@Complete 5 Easy slayer tasks. @bla@Progress: @red@0/5@bla@.",
   "level-notifications": true,
   "dailies-received-times": [
     1682092795896,
@@ -4621,7 +4614,7 @@
     "3014": 6,
     "8008": 5,
     "202": 2,
-    "8013": 1,
+    "8013": 0,
     "9806": 2,
     "8014": 12,
     "9807": 8,
