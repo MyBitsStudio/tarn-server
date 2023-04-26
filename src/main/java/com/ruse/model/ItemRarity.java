@@ -13,11 +13,11 @@ import java.util.List;
 
 public enum ItemRarity {
 
-	COMMON(46),
-	UNCOMMON(68),
-	RARE(79),
-	LEGENDARY(88),
-	MYTHIC(92);
+	COMMON(39),
+	UNCOMMON(61),
+	RARE(73),
+	LEGENDARY(82),
+	MYTHIC(88);
 
 	private final double percentage;
 
