@@ -77,10 +77,11 @@ public class DropsInterface {
 				player.getPacketSender().sendString(ITEM_NAME + i, item.getDefinition().getName()); // remove all item
 				// names
 				player.getPacketSender().sendString(ITEM_AMOUNT + i, (min == amount ? Misc.formatNumber(amount) : ( Misc.formatNumber(min) + "-" + Misc.formatNumber(amount))));
-//				boolean hasAoe = player.getEquipment().get(Equipment.WEAPON_SLOT).getEffect() == ItemEffect.AOE_EFFECT;
-//				double divide = ((double) CustomDropUtils.drBonus(player, npcId) / (hasAoe ? 250 : 500));
-//				int chances = divide > 1.0 ? (int) (chance / divide) : (int) (chance - (chance * divide));
-				player.getPacketSender().sendString(ITEM_CHANCE + i, "1/" + chance);
+				boolean hasAoe = player.getEquipment().get(Equipment.WEAPON_SLOT).getEffect() == ItemEffect.AOE_EFFECT;
+				double divide = ((double) CustomDropUtils.drBonus(player, npcId) / (hasAoe ? 1000 : 500)) + 1;
+				int chances = (int) (chance / divide);
+
+				player.getPacketSender().sendString(ITEM_CHANCE + i, "1/" +(chance == 1 ? 1 : chances));
 				player.getPacketSender().sendString(ITEM_VALUE + i,
 						Misc.format(amount * item.getDefinition().getValue()) + "");
 				scrollAmount++;
