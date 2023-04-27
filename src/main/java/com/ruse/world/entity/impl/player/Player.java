@@ -780,6 +780,7 @@ public class Player extends Character {
 
     @Getter @Setter private RaidParty raidParty, inviteParty;
     @Getter @Setter private Raid raid;
+    @Getter @Setter private PlayerAttributes playerAttributes = new PlayerAttributes(this);
 
     public Player(PlayerSession playerIO) {
         super(GameSettings.DEFAULT_POSITION.copy());
@@ -1255,6 +1256,9 @@ public class Player extends Character {
             isDying = true;
             if (!controllerManager.appendDeath())
                 return;
+            if(raid != null)
+                if(raid.handleDeath(this))
+                    return;
             TaskManager.submit(new PlayerDeathTask(this));
         }
     }

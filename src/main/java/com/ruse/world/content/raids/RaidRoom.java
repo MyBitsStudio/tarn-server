@@ -30,17 +30,20 @@ public abstract class RaidRoom extends MapInstance {
     @Setter
     private DynamicMap map;
 
-    public RaidRoom(Raid raid, RaidBoss boss, @NonNull DestroyMode mode, int chunkX, int chunkY, int width, int height) {
+    public RaidRoom(Raid raid,  @NonNull DestroyMode mode, int chunkX, int chunkY, int width, int height) {
         super(mode);
 
         this.raid = raid;
-        this.boss = boss;
         this.chunkX = chunkX;
         this.chunkY = chunkY;
         this.width = width;
         this.height = height;
 
         initialise();
+    }
+
+    public void setRaidBoss(RaidBoss boss){
+    	this.boss = boss;
     }
 
 
@@ -65,6 +68,7 @@ public abstract class RaidRoom extends MapInstance {
     public boolean isStarted(){ return started.get();}
     public void setStarted(boolean started){ this.started.set(started);}
     public void setFinished(boolean finished){ this.finished.set(finished);}
+    public Raid getRaid(){ return raid;}
 
     @Override
     public void process() {

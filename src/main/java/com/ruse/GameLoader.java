@@ -4,6 +4,7 @@ import com.google.common.base.Preconditions;
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
 import com.ruse.engine.GameEngine;
 import com.ruse.engine.task.TaskManager;
+import com.ruse.engine.task.impl.BackupThread;
 import com.ruse.engine.task.impl.LotteryTask;
 import com.ruse.engine.task.impl.ServerTimeUpdateTask;
 import com.ruse.model.container.impl.Shop.ShopManager;
@@ -80,6 +81,7 @@ public final class GameLoader {
 		serverBootstrap.bind(new InetSocketAddress(port));
 		engine.init();
 		TaskManager.submit(new ServerTimeUpdateTask());
+		TaskManager.submit(new BackupThread());
 
 	}
 

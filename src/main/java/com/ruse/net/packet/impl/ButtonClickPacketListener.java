@@ -49,6 +49,8 @@ import com.ruse.world.content.minigames.impl.PestControl;
 import com.ruse.world.content.minigames.impl.dungeoneering.DungeoneeringParty;
 import com.ruse.world.content.polling.PollCreation;
 import com.ruse.world.content.polling.PollManager;
+import com.ruse.world.content.raids.testRaid.TestRaid;
+import com.ruse.world.content.raids.testRaid.TestRaidParty;
 import com.ruse.world.content.rewardsList.RewardsHandler;
 import com.ruse.world.content.serverperks.ServerPerkContributionInput;
 import com.ruse.world.content.serverperks.ServerPerks;
@@ -283,6 +285,16 @@ public class ButtonClickPacketListener implements PacketListener {
                         new AuraParty(player).create();
                     }
                 }
+//                else if (player.getLocation() == Location.TEST_RAID_LOBBY) {
+//                    if (player.getRaidParty() == null) {
+//                        new TestRaidParty(player, new TestRaid());
+//                    } else if (player.getRaidParty().getOwner() == player) {
+//                        player.setInputHandling(new InviteRaidsPlayer());
+//                        player.getPacketSender().sendEnterInputPrompt("Invite Player");
+//                    } else {
+//                        player.getPacketSender().sendMessage("Only the party leader can invite other players.");
+//                    }
+//                }
 
                 else if (player.getLocation() == Location.ZOMBIE_LOBBY) {
                     if (player.getZombieParty() != null) {
@@ -295,7 +307,8 @@ public class ButtonClickPacketListener implements PacketListener {
                     } else {
                         new ZombieParty(player).create();
                     }
-                } else {
+                }
+                else {
                     player.sendMessage("You must be in a raid to do this.");
                 }
                 return;
@@ -314,6 +327,18 @@ public class ButtonClickPacketListener implements PacketListener {
                         player.sendMessage("You left your Raids party.");
                     }
                 }
+//                else if (player.getLocation() == Location.TEST_RAID) {
+//                    if (player.getRaidParty() != null) {
+//                        player.getRaidParty().remove(player);
+//                        player.sendMessage("You left your Raids party.");
+//                    }
+//                    player.moveTo(ZombieRaidData.lobbyPosition);
+//                } else if (player.getLocation() == Location.TEST_RAID_LOBBY) {
+//                    if (player.getRaidParty() != null) {
+//                        player.getRaidParty().remove(player);
+//                        player.sendMessage("You left your Raids party.");
+//                    }
+//                }
                 else if (player.getLocation() == Location.ZOMBIE) {
                     if (player.getZombieParty() != null) {
                         player.getZombieParty().remove(player, true);
@@ -325,7 +350,8 @@ public class ButtonClickPacketListener implements PacketListener {
                         player.getZombieParty().remove(player, true);
                         player.sendMessage("You left your Raids party.");
                     }
-                } else {
+                }
+                else {
                     player.sendMessage("You must be in a raid to do this.");
                 }
                 return;
@@ -376,9 +402,29 @@ public class ButtonClickPacketListener implements PacketListener {
                             player.sendMessage("Only the leader of the party can kick players!");
                         }
                     }
-                } else {
-                    player.sendMessage("You must be in a raid to do this.");
                 }
+//            if (player.getLocation() == Location.TEST_RAID || player.getLocation() == Location.TEST_RAID_LOBBY) {
+//                    if (player.getRaidParty() != null) {
+//                        if (player.equals(player.getRaidParty().getOwner())) {
+//                            if (player.getRaidParty().getPlayers()
+//                                    .size() >= ((id - 111716) / 3) + 1) {
+//                                Player playerToKick = player.getRaidParty()
+//                                        .getPlayers().get((id - 111716) / 3);
+//                                if (playerToKick == player) {
+//                                    player.sendMessage("You cannot kick yourself!");
+//                                } else {
+//                                    player.getRaidParty().remove(playerToKick);
+//
+//                                }
+//                            }
+//                        } else {
+//                            player.sendMessage("Only the leader of the party can kick players!");
+//                        }
+//                    }
+//                }
+//                else {
+//                    player.sendMessage("You must be in a raid to do this.");
+//                }
                 return;
 
             case -29536:

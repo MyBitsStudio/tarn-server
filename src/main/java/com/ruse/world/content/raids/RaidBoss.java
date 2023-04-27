@@ -21,6 +21,12 @@ public class RaidBoss extends NPC {
 
     }
 
+    @Override
+    public void appendDeath() {
+        raid.getCurrentRoom().setFinished(true);
+        super.appendDeath();
+    }
+
     public void takeDamage(){
 
     }

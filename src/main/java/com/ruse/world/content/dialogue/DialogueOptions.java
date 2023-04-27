@@ -1362,7 +1362,15 @@ public class DialogueOptions {
                         }
                         player.getMinigameAttributes().getZombieAttributes().setPartyInvitation(null);
                     }
-                   else if (player.getLocation() == Location.AURA_LOBBY
+//                    if (player.getLocation() == Location.TEST_RAID_LOBBY
+//                            && player.getRaidParty() == null) {
+//                        if (player.getMinigameAttributes().getZombieAttributes().getPartyInvitation() != null) {
+//                            player.getMinigameAttributes().getZombieAttributes().getPartyInvitation().add(player);
+//                        }
+//                        player.getMinigameAttributes().getZombieAttributes().setPartyInvitation(null);
+//                    }
+                   else
+                       if (player.getLocation() == Location.AURA_LOBBY
                             && player.getAuraParty() == null) {
                         if (player.getMinigameAttributes().getAuraAttributes().getPartyInvitation() != null) {
                             player.getMinigameAttributes().getAuraAttributes().getPartyInvitation().add(player);

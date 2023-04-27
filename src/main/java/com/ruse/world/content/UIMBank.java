@@ -21,6 +21,20 @@ public class UIMBank {
 		update();
 	}
 
+	public void deposit(Item item){
+		if(player.getInterfaceId() == 48700) {
+			if (!player.getInventory().contains(item.getId())) {
+				return;
+			}
+
+			player.getInventory().delete(item);
+
+			player.getUIMBank().add(item);
+
+			update();
+		}
+	}
+
 	public void deposit(int id, int amount) {
 		if(player.getInterfaceId() == 48700) {
 //			if (player.getUimBankItems().size() >= 70) {
@@ -34,12 +48,34 @@ public class UIMBank {
 
 			Item item = player.getInventory().getById(id).copy();
 
-			player.getInventory().delete(item.getId(), amount, item.getRarity(), item.getBonus(), item.getEffect());
+			player.getInventory().delete(item);
 
 			//player.getUimBankItems().merge(id, amount, Integer::sum);
 			player.getUIMBank().add(item);
 
 			update();
+		}
+	}
+
+	public void withdraw(Item item){
+		if(player.getInterfaceId() == 48700) {
+			if (player.getInventory().getFreeSlots() < item.getAmount()) {
+				if (item.getDefinition().isStackable()) {
+
+					if (player.getInventory().getFreeSlots() == 0) {
+						player.sendMessage("Get some more free inventory space");
+						return;
+					}
+				} else {
+					player.sendMessage("Get some more free inventory space");
+					return;
+				}
+
+				player.getUIMBank().delete(item);
+				player.getInventory().add(item);
+			}
+			update();
+
 		}
 	}
 

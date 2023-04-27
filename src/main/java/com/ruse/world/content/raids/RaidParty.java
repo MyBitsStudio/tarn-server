@@ -35,9 +35,17 @@ public abstract class RaidParty {
     public Player getOwner(){
         return owner;
     }
+    public List<Player> getPlayers(){
+        return players;
+    }
 
-    public abstract void start();
     public abstract String key();
+    public abstract boolean canJoin(Player player);
+    public abstract void onJoin(Player player);
+
+    public abstract void onLeave(Player player);
+
+    public abstract void startRaid();
 
     public boolean handleStartObject(Player player, GameObject object){ return false;}
 
@@ -119,7 +127,6 @@ public abstract class RaidParty {
     public void remove(Player player){
         if(players.contains(player)){
 
-
             player.getPacketSender().sendCameraNeutrality();
             player.getPacketSender().sendInterfaceRemoval();
             player.getPacketSender().sendString(111709, "Create");
@@ -150,9 +157,6 @@ public abstract class RaidParty {
     }
 
     private void dispose(){
-        for(Player player : players){
-            player.setRaidParty(null);
-        }
         raid.dispose();
     }
 

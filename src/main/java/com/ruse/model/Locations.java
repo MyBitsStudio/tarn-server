@@ -499,6 +499,155 @@ public class Locations {
 
 			}
 		},
+
+//		TEST_RAID_LOBBY(new int[]{2691, 2706}, new int[]{2639, 2655}, true, false, true, false, true, true) {
+//			@Override
+//			public void leave(Player player) {
+//				player.getPacketSender().sendCameraNeutrality();
+//
+//				if (player.getRaidParty() != null)
+//					player.getRaidParty().remove(player);
+//
+//				if (player.getRaidParty() != null)
+//					player.getRaidParty().getPlayers()
+//							.remove(player);
+//
+//				player.getMovementQueue().setLockMovement(false);
+//			}
+//
+//			@Override
+//			public void enter(Player player) {
+//				if (player.getPlayerInteractingOption() != PlayerInteractingOption.INVITE)
+//					player.getPacketSender().sendInteractionOption("Invite", 2, false);
+//
+//				player.getPacketSender().sendTab(GameSettings.STAFF_TAB);
+//			}
+//
+//			@Override
+//			public void login(Player player) {
+//				if (player.getPlayerInteractingOption() != PlayerInteractingOption.INVITE)
+//					player.getPacketSender().sendInteractionOption("Invite", 2, false);
+//
+//				player.getPacketSender().sendTab(GameSettings.STAFF_TAB);
+//
+//			}
+//
+//			@Override
+//			public void process(Player player) {
+//				if (player.getRaidParty() != null)
+//					player.getRaidParty().refreshInterface();
+//
+//			}
+//		},
+//
+//		TEST_RAID(new int[]{2712, 2740}, new int[]{2633, 2661}, true, false, true, false, true, true) {
+//			@Override
+//			public void logout(Player player) {
+//
+//				if (player.getRegionInstance() != null
+//						&& player.getRegionInstance().getType().equals(RegionInstanceType.RAIDS)) {
+//					player.getRegionInstance().destruct();
+//					World.getNpcs().forEach(n -> n.removeInstancedNpcs(Location.TEST_RAID, player.getPosition().getZ(), player));
+//
+//				}
+//
+//				if (player.getRaidParty() != null) {
+//					player.getRaidParty().remove(player);
+//				}
+//
+//				player.moveTo(new Position(3832, 2821, 0));
+//
+//				if (player.getRaidParty() != null)
+//					player.getRaidParty().getPlayers()
+//							.remove(player);
+//
+//				player.getMovementQueue().setLockMovement(false);
+//				player.getPacketSender().sendCameraNeutrality();
+//
+//			}
+//
+//			@Override
+//			public void leave(Player player) {
+//
+//				player.getPacketSender().sendCameraNeutrality();
+//				if (player.getRegionInstance() != null
+//						&& player.getRegionInstance().getType().equals(RegionInstance.RegionInstanceType.ZOMBIE)) {
+//					player.getRegionInstance().destruct();
+//					World.getNpcs().forEach(n -> n.removeInstancedNpcs(Location.TEST_RAID, player.getPosition().getZ(), player));
+//				}
+//
+//				if (player.getRaidParty() != null) {
+//					if (player.getRaidParty().getOwner().equals(player)) {
+//						World.getNpcs().forEach(n -> n.removeInstancedNpcs(Location.TEST_RAID, player.getIndex() * 4, player));
+//					}
+//				}
+//
+//				/*if (player.getZombieParty() != null)
+//					player.getZombieParty().remove(player, true);
+//
+//				if (player.getZombieParty() != null)
+//					player.getZombieParty().getPlayers()
+//							.remove(player);*/
+//
+//				player.moveTo(new Position(2697, 2646, 0));
+//
+//				player.getMovementQueue().setLockMovement(false);
+//
+//			}
+//
+//			@Override
+//			public void login(Player player) {
+//				player.getPacketSender().sendCameraNeutrality();
+//				if (player.getRegionInstance() != null
+//						&& player.getRegionInstance().getType().equals(RegionInstance.RegionInstanceType.ZOMBIE)) {
+//					player.getRegionInstance().destruct();
+//					World.getNpcs().forEach(n -> n.removeInstancedNpcs(Location.TEST_RAID, player.getPosition().getZ(), player));
+//				}
+//
+//				if (player.getRaidParty() != null) {
+//					if (player.getRaidParty().getOwner().equals(player)) {
+//						World.getNpcs().forEach(n -> n.removeInstancedNpcs(Location.TEST_RAID, player.getIndex() * 4, player));
+//					}
+//				}
+//
+//				if (player.getRaidParty() != null)
+//					player.getRaidParty().remove(player);
+//
+//				if (player.getRaidParty() != null)
+//					player.getRaidParty().getPlayers()
+//							.remove(player);
+//
+//				player.moveTo(new Position(2697, 2646, 0));
+//
+//				player.getMovementQueue().setLockMovement(false);
+//			}
+//
+//			@Override
+//			public boolean canTeleport(Player player) {
+//				player.sendMessage("You cannot teleport while in a raid");
+//				return false;
+//			}
+//
+//			@Override
+//			public void enter(Player player) {
+//				player.setRegionInstance(new RegionInstance(player, RegionInstance.RegionInstanceType.RAIDS));
+//				player.getPacketSender().sendInteractionOption("null", 2, true);
+//			}
+//
+//			@Override
+//			public void onDeath(Player player) {
+//				player.getPacketSender().sendCameraNeutrality();
+//				player.setInsideRaids(false);
+//				player.getMovementQueue().setLockMovement(false);
+//			}
+//
+//			@Override
+//			public void process(Player player) {
+//				//if (player.getZombieParty() != null)
+//				player.getRaidParty().refreshInterface();
+//			}
+//
+//		},
 		// Location(int[] x, int[] y, boolean multi, boolean summonAllowed, boolean
 		// followingAllowed, boolean cannonAllowed, boolean firemakingAllowed, boolean
 		// aidingAllowed) {
@@ -2186,10 +2335,14 @@ for (Item item : player.getInventory().getItems()) {
 			}
 			gc.setLocation(newLocation);
 			if (gc.isPlayer()) {
-				if ((prev == Location.ZOMBIE_LOBBY && newLocation == Location.ZOMBIE)
+				if (
+						(prev == Location.ZOMBIE_LOBBY && newLocation == Location.ZOMBIE)
 						|| (prev == Location.ZOMBIE && newLocation == Location.ZOMBIE_LOBBY)
 						|| (prev == Location.AURA_LOBBY && newLocation == Location.AURA)
-						|| (prev == Location.AURA && newLocation == Location.AURA_LOBBY)) {
+						|| (prev == Location.AURA && newLocation == Location.AURA_LOBBY)
+//						|| (prev == Location.TEST_RAID_LOBBY && newLocation == Location.TEST_RAID)
+//						|| (prev == Location.TEST_RAID && newLocation == Location.TEST_RAID_LOBBY)
+				) {
 				} else {
 					prev.leave(((Player) gc));
 				}
