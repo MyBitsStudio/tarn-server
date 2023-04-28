@@ -656,10 +656,11 @@ public abstract class ItemContainer {
         }
 
         if (item.getId() == ItemDefinition.COIN_ID && this instanceof Inventory) {
-            var currentAmount = item.getAmount();
-            var multiplier = player.getEquipmentEnhancement().getBoost(BoostType.CASH);
-            var newAmount = Math.max(currentAmount, (currentAmount * (1 + (multiplier/100.0))));
-            item.setAmount((int) newAmount);
+//            var currentAmount = item.getAmount();
+//            var multiplier = player.getEquipmentEnhancement().getBoost(BoostType.CASH);
+            //var newAmount = Math.max(currentAmount, (currentAmount * (1 + ((multiplier/100.0)))));
+//            var newAmount = Math.max(currentAmount, currentAmount);
+//            item.setAmount(newAmount);
             if (getAmount(item.getId()) + item.getAmount() >= Integer.MAX_VALUE
                     || getAmount(item.getId()) + item.getAmount() <= -1) {
                 if (item.getAmount() >= 1_000) {
