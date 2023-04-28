@@ -1,14 +1,21 @@
 {
   "shop": [
     {
-      "id": 14446,
+      "id": 23118,
       "amount": 1,
-      "maxAmount": 2,
-      "price": 10000000,
-      "effect": "RANGE_DAMAGE",
-      "bonus": 1
+      "maxAmount": 1,
+      "price": 20000,
+      "effect": "NOTHING",
+      "bonus": 0
     },
-    null,
+    {
+      "id": 4369,
+      "amount": 1,
+      "maxAmount": 1,
+      "price": 6666000,
+      "effect": "NOTHING",
+      "bonus": 0
+    },
     null,
     null,
     null,

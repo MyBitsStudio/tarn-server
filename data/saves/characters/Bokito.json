@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 40201167,
+  "total-play-time-ms": 41635764,
   "username": "Bokito",
   "password": "lolhalolp",
   "email": "null",
@@ -8,9 +8,9 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2964,
-    "y": 9492,
-    "z": 8
+    "x": 2222,
+    "y": 3747,
+    "z": 0
   },
   "online-status": "ON",
   "given-starter": true,
@@ -47,7 +47,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682496709221,
+  "lastlogin": 1682507787039,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -58,8 +58,8 @@
   "day5claimed": false,
   "day6claimed": false,
   "day7claimed": false,
-  "minutes-bonus-exp": 3941,
-  "minutes-voting-dr": 288,
+  "minutes-bonus-exp": 3918,
+  "minutes-voting-dr": 265,
   "minutes-voting-dmg": 0,
   "total-gained-exp": -538123607,
   "barrows-points": 0,
@@ -72,7 +72,7 @@
   "loyalty-points": 0,
   "total-loyalty-points": 0.0,
   "godmodetime": 0,
-  "voting-points": 64,
+  "voting-points": 14,
   "tasks-completion": [
     false,
     false,
@@ -140,7 +140,7 @@
   ],
   "total-prestiges": 0,
   "slayer-spree": 42,
-  "npc-killcount": 8034,
+  "npc-killcount": 8064,
   "spawn-killcount": 0,
   "lord-killcount": 0,
   "demon-killcount": 301,
@@ -175,7 +175,7 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 564454935,
+  "last-veng": 1681944766710,
   "fight-type": "LONGBOW_LONGRANGE",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -386,12 +386,12 @@
     {
       "npcId": 9906,
       "item": 995,
-      "amount": 1263676
+      "amount": 1263677
     },
     {
       "npcId": 9906,
       "item": 2023,
-      "amount": 44
+      "amount": 45
     },
     {
       "npcId": 9922,
@@ -1153,7 +1153,7 @@
   "inventory": [
     {
       "id": 995,
-      "amount": 1500019,
+      "amount": 2431556,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1163,7 +1163,7 @@
     },
     {
       "id": 10835,
-      "amount": 31810,
+      "amount": 2678310,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1173,7 +1173,7 @@
     },
     {
       "id": 2023,
-      "amount": 1432,
+      "amount": 1457,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1468,9 +1468,9 @@
       "amount": 1,
       "slot": 0,
       "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
+        "effect": "ALL_DAMAGE_HIGH",
+        "rarity": "MYTHIC",
+        "bonus": 3
       }
     },
     {
@@ -2602,7 +2602,7 @@
     },
     {
       "id": 8788,
-      "amount": 5,
+      "amount": 4,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -2901,6 +2901,34 @@
       "npcId": 9815,
       "npcName": "Kol\u0027gal",
       "amount": 9,
+      "boss": false
+    },
+    {
+      "runningTotal": 5,
+      "npcId": 6430,
+      "npcName": "Crystal queen",
+      "amount": 5,
+      "boss": true
+    },
+    {
+      "runningTotal": 2,
+      "npcId": 4540,
+      "npcName": "Mega Avatar",
+      "amount": 2,
+      "boss": false
+    },
+    {
+      "runningTotal": 5,
+      "npcId": 1706,
+      "npcName": "Baby Bronze dragon",
+      "amount": 5,
+      "boss": false
+    },
+    {
+      "runningTotal": 3,
+      "npcId": 1719,
+      "npcName": "Armoured Minotaur",
+      "amount": 3,
       "boss": false
     }
   ],
@@ -3693,8 +3721,8 @@
       0,
       73,
       100,
-      4102,
-      38,
+      4117,
+      39,
       0,
       0,
       0,
@@ -3795,7 +3823,7 @@
       0,
       192,
       1000,
-      4102,
+      4117,
       0,
       0,
       0,
@@ -3898,7 +3926,7 @@
       0,
       0,
       6000,
-      4102,
+      4117,
       0,
       0,
       0,
@@ -4725,9 +4753,11 @@
     "1307": 1,
     "1308": 6,
     "1309": 4,
+    "6430": 5,
     "1310": 4,
     "6692": 7,
     "2342": 72,
+    "1706": 5,
     "810": 8,
     "811": 0,
     "9835": 30,
@@ -4741,8 +4771,10 @@
     "9908": 0,
     "9845": 8,
     "9910": 7,
+    "1719": 3,
     "9911": 35,
     "9914": 192,
+    "4540": 2,
     "9916": 68
   },
   "boost": 0,

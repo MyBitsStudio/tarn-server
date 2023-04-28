@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 444924524,
+  "total-play-time-ms": 574712291,
   "username": "Bedroombully",
   "password": "sanny123",
   "email": "null",
@@ -47,7 +47,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682421865885,
+  "lastlogin": 1682594262743,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -175,7 +175,7 @@
   "auto-retaliate": false,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 1682168526745,
+  "last-veng": 1682253140368,
   "fight-type": "BATTLEAXE_CHOP",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -346,52 +346,52 @@
     {
       "npcId": 9906,
       "item": 995,
-      "amount": 2379854
+      "amount": 2379879
     },
     {
       "npcId": 9906,
       "item": 2023,
-      "amount": 131
+      "amount": 155
     },
     {
       "npcId": 9904,
       "item": 995,
-      "amount": 2148172
+      "amount": 2148206
     },
     {
       "npcId": 9904,
       "item": 2023,
-      "amount": 116
+      "amount": 148
     },
     {
       "npcId": 8013,
       "item": 10946,
-      "amount": 69
+      "amount": 98
     },
     {
       "npcId": 8013,
       "item": 23020,
-      "amount": 69
+      "amount": 98
     },
     {
       "npcId": 9907,
       "item": 10946,
-      "amount": 51
+      "amount": 70
     },
     {
       "npcId": 9907,
       "item": 2023,
-      "amount": 146
+      "amount": 165
     },
     {
       "npcId": 9908,
       "item": 10946,
-      "amount": 41
+      "amount": 56
     },
     {
       "npcId": 9908,
       "item": 2023,
-      "amount": 338
+      "amount": 353
     },
     {
       "npcId": 9904,
@@ -400,6 +400,26 @@
     },
     {
       "npcId": 9908,
+      "item": 3578,
+      "amount": 2
+    },
+    {
+      "npcId": 9908,
+      "item": 23057,
+      "amount": 2
+    },
+    {
+      "npcId": 9907,
+      "item": 15002,
+      "amount": 1
+    },
+    {
+      "npcId": 9906,
+      "item": 23167,
+      "amount": 1
+    },
+    {
+      "npcId": 9904,
       "item": 3578,
       "amount": 1
     }
@@ -563,7 +583,7 @@
     },
     {
       "id": 10946,
-      "amount": 19,
+      "amount": 5,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -603,7 +623,7 @@
     },
     {
       "id": 23020,
-      "amount": 9,
+      "amount": 3,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -644,7 +664,12 @@
     {
       "id": -1,
       "amount": 0,
-      "slot": 0
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
     },
     {
       "id": -1,
@@ -708,7 +733,7 @@
     },
     {
       "id": 5020,
-      "amount": 3450640,
+      "amount": 13027570,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -738,7 +763,7 @@
     },
     {
       "id": 995,
-      "amount": 15214316,
+      "amount": 178244566,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -748,7 +773,7 @@
     },
     {
       "id": 17634,
-      "amount": 2112760,
+      "amount": 644070,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -758,7 +783,7 @@
     },
     {
       "id": 2023,
-      "amount": 7745,
+      "amount": 16025,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1443,7 +1468,7 @@
   "drops": [
     {
       "item": 995,
-      "amount": 300891707,
+      "amount": 316129775,
       "rareDrop": false
     },
     {
@@ -1453,12 +1478,12 @@
     },
     {
       "item": 10946,
-      "amount": 334,
+      "amount": 339,
       "rareDrop": false
     },
     {
       "item": 23020,
-      "amount": 162,
+      "amount": 165,
       "rareDrop": false
     },
     {
@@ -2966,7 +2991,7 @@
       false
     ]
   ],
-  "achievements-daily": 326,
+  "achievements-daily": 327,
   "progression-zones": [
     12,
     0,
@@ -3068,5 +3093,109 @@
     "9837": 12
   },
   "boost": 0,
-  "slot-level": 0
+  "slot-level": 0,
+  "sp-season": 1,
+  "sp-premium": false,
+  "sp-level": 0,
+  "sp-exp": 0,
+  "sp-rewards": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+  ]
 }

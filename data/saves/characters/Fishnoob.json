@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 43599378,
+  "total-play-time-ms": 44589355,
   "username": "Fishnoob",
   "password": "jimjim123",
   "email": "null",
@@ -8,8 +8,8 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2222,
-    "y": 3747,
+    "x": 2228,
+    "y": 3759,
     "z": 0
   },
   "online-status": "ON",
@@ -45,7 +45,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682154185143,
+  "lastlogin": 1682517038422,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -56,8 +56,8 @@
   "day5claimed": false,
   "day6claimed": false,
   "day7claimed": false,
-  "minutes-bonus-exp": 866,
-  "minutes-voting-dr": 224,
+  "minutes-bonus-exp": 852,
+  "minutes-voting-dr": 210,
   "minutes-voting-dmg": 0,
   "total-gained-exp": -426922234,
   "barrows-points": 0,
@@ -173,7 +173,7 @@
   "auto-retaliate": false,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 357227999,
+  "last-veng": 358099186,
   "fight-type": "UNARMED_PUNCH",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -404,12 +404,12 @@
     {
       "npcId": 8013,
       "item": 10946,
-      "amount": 19
+      "amount": 20
     },
     {
       "npcId": 8013,
       "item": 23020,
-      "amount": 17
+      "amount": 18
     },
     {
       "npcId": 9911,
@@ -1710,7 +1710,7 @@
   "bank-0": [
     {
       "id": 14484,
-      "amount": 1,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "DOUBLE_DROP",
@@ -1990,7 +1990,7 @@
     },
     {
       "id": 13301,
-      "amount": 2,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "MAGIC_DAMAGE",
@@ -2030,7 +2030,7 @@
     },
     {
       "id": 1857,
-      "amount": 1,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "DOUBLE_KILLS",
@@ -2065,7 +2065,8 @@
   "friends": [
     3022064797200672,
     919311,
-    1429959732002
+    1429959732002,
+    1729926298317
   ],
   "ignores": [],
   "loyalty-titles": [
@@ -2279,12 +2280,12 @@
     },
     {
       "item": 10946,
-      "amount": 102,
+      "amount": 107,
       "rareDrop": false
     },
     {
       "item": 23020,
-      "amount": 45,
+      "amount": 48,
       "rareDrop": false
     },
     {
@@ -3822,7 +3823,7 @@
       false
     ]
   ],
-  "achievements-daily": 322,
+  "achievements-daily": 326,
   "progression-zones": [
     12,
     20,
@@ -4037,5 +4038,109 @@
     "9915": 89
   },
   "boost": 0,
-  "slot-level": 0
+  "slot-level": 0,
+  "sp-season": 1,
+  "sp-premium": false,
+  "sp-level": 0,
+  "sp-exp": 0,
+  "sp-rewards": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+  ]
 }

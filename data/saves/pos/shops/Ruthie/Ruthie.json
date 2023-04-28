@@ -1,237 +1,188 @@
 {
   "shop": [
     {
-      "id": 5012,
-      "amount": 2,
-      "maxAmount": 2,
-      "price": 5000000,
-      "effect": "NOTHING",
-      "bonus": 0
-    },
-    {
-      "id": 22153,
-      "amount": 2,
-      "maxAmount": 2,
-      "price": 2940000,
-      "effect": "DOUBLE_KILLS",
+      "id": 15645,
+      "amount": 7,
+      "maxAmount": 7,
+      "price": 670000,
+      "effect": "RANGE_DAMAGE",
       "bonus": 1
-    },
-    {
-      "id": 15007,
-      "amount": 1,
-      "maxAmount": 1,
-      "price": 5190000,
-      "effect": "ALL_DAMAGE_HIGH",
-      "bonus": 3
     },
     {
       "id": 15645,
       "amount": 9,
-      "maxAmount": 9,
-      "price": 915000,
+      "maxAmount": 10,
+      "price": 970000,
       "effect": "TRIPLE_KILLS",
       "bonus": 1
     },
     {
       "id": 15645,
-      "amount": 3,
+      "amount": 8,
+      "maxAmount": 10,
+      "price": 970000,
+      "effect": "TRIPLE_KILLS",
+      "bonus": 2
+    },
+    {
+      "id": 15645,
+      "amount": 2,
       "maxAmount": 3,
-      "price": 919000,
-      "effect": "TRIPLE_KILLS",
-      "bonus": 2
-    },
-    {
-      "id": 23120,
-      "amount": 2,
-      "maxAmount": 2,
-      "price": 740000,
-      "effect": "NOTHING",
-      "bonus": 0
-    },
-    {
-      "id": 15924,
-      "amount": 1,
-      "maxAmount": 1,
-      "price": 325000,
-      "effect": "MAGIC_DAMAGE",
-      "bonus": 1
-    },
-    {
-      "id": 15005,
-      "amount": 2,
-      "maxAmount": 2,
-      "price": 999000,
-      "effect": "NOTHING",
-      "bonus": 0
-    },
-    {
-      "id": 15645,
-      "amount": 1,
-      "maxAmount": 1,
-      "price": 2000000,
-      "effect": "DOUBLE_CASH",
-      "bonus": 1
-    },
-    {
-      "id": 15647,
-      "amount": 2,
-      "maxAmount": 2,
-      "price": 950000,
-      "effect": "TRIPLE_KILLS",
-      "bonus": 1
-    },
-    {
-      "id": 15647,
-      "amount": 2,
-      "maxAmount": 2,
-      "price": 950000,
-      "effect": "TRIPLE_KILLS",
-      "bonus": 2
-    },
-    {
-      "id": 20582,
-      "amount": 2,
-      "maxAmount": 2,
-      "price": 3750000,
-      "effect": "NOTHING",
-      "bonus": 0
-    },
-    {
-      "id": 20586,
-      "amount": 2,
-      "maxAmount": 2,
-      "price": 4000000,
-      "effect": "NOTHING",
-      "bonus": 0
-    },
-    {
-      "id": 8806,
-      "amount": 1,
-      "maxAmount": 1,
-      "price": 250000,
-      "effect": "RANGE_DAMAGE",
-      "bonus": 1
-    },
-    {
-      "id": 22135,
-      "amount": 1,
-      "maxAmount": 1,
-      "price": 450000,
-      "effect": "RANGE_DAMAGE",
-      "bonus": 1
-    },
-    {
-      "id": 22135,
-      "amount": 2,
-      "maxAmount": 2,
-      "price": 900000,
+      "price": 970000,
       "effect": "ALL_DAMAGE_HIGH",
       "bonus": 3
     },
     {
       "id": 22135,
       "amount": 3,
+      "maxAmount": 4,
+      "price": 970000,
+      "effect": "DOUBLE_CASH",
+      "bonus": 1
+    },
+    {
+      "id": 22135,
+      "amount": 3,
+      "maxAmount": 4,
+      "price": 970000,
+      "effect": "TRIPLE_KILLS",
+      "bonus": 2
+    },
+    {
+      "id": 22135,
+      "amount": 5,
+      "maxAmount": 8,
+      "price": 985000,
+      "effect": "DOUBLE_CASH",
+      "bonus": 2
+    },
+    {
+      "id": 22135,
+      "amount": 3,
+      "maxAmount": 4,
+      "price": 970000,
+      "effect": "ALL_DAMAGE_HIGH",
+      "bonus": 3
+    },
+    {
+      "id": 22135,
+      "amount": 5,
+      "maxAmount": 5,
+      "price": 970000,
+      "effect": "TRIPLE_KILLS",
+      "bonus": 1
+    },
+    {
+      "id": 17700,
+      "amount": 1,
+      "maxAmount": 1,
+      "price": 970000,
+      "effect": "ALL_DAMAGE_HIGH",
+      "bonus": 3
+    },
+    {
+      "id": 15646,
+      "amount": 4,
+      "maxAmount": 4,
+      "price": 970000,
+      "effect": "TRIPLE_KILLS",
+      "bonus": 1
+    },
+    {
+      "id": 15646,
+      "amount": 3,
       "maxAmount": 3,
-      "price": 1250000,
-      "effect": "DOUBLE_CASH",
-      "bonus": 1
-    },
-    {
-      "id": 22135,
-      "amount": 1,
-      "maxAmount": 1,
-      "price": 1250000,
-      "effect": "TRIPLE_KILLS",
-      "bonus": 2
-    },
-    {
-      "id": 22135,
-      "amount": 2,
-      "maxAmount": 2,
-      "price": 1250000,
-      "effect": "DOUBLE_CASH",
-      "bonus": 2
-    },
-    {
-      "id": 22135,
-      "amount": 2,
-      "maxAmount": 2,
-      "price": 1250000,
-      "effect": "TRIPLE_KILLS",
-      "bonus": 1
-    },
-    {
-      "id": 5428,
-      "amount": 1,
-      "maxAmount": 1,
-      "price": 1250000,
-      "effect": "DOUBLE_DROP",
-      "bonus": 20
-    },
-    {
-      "id": 8804,
-      "amount": 1,
-      "maxAmount": 1,
-      "price": 1150000,
-      "effect": "DOUBLE_DROP",
-      "bonus": 17
-    },
-    {
-      "id": 23067,
-      "amount": 6,
-      "maxAmount": 6,
-      "price": 200000,
-      "effect": "NOTHING",
-      "bonus": 0
-    },
-    {
-      "id": 22122,
-      "amount": 1,
-      "maxAmount": 1,
       "price": 970000,
       "effect": "TRIPLE_KILLS",
       "bonus": 2
     },
     {
       "id": 15646,
-      "amount": 2,
-      "maxAmount": 2,
-      "price": 950000,
-      "effect": "TRIPLE_KILLS",
+      "amount": 1,
+      "maxAmount": 1,
+      "price": 970000,
+      "effect": "DOUBLE_CASH",
       "bonus": 1
     },
     {
       "id": 15646,
-      "amount": 1,
+      "amount": 2,
       "maxAmount": 2,
-      "price": 950000,
+      "price": 970000,
+      "effect": "ALL_DAMAGE_HIGH",
+      "bonus": 3
+    },
+    {
+      "id": 15647,
+      "amount": 4,
+      "maxAmount": 5,
+      "price": 970000,
       "effect": "TRIPLE_KILLS",
       "bonus": 2
     },
     {
-      "id": 15646,
-      "amount": 1,
-      "maxAmount": 1,
-      "price": 490000,
-      "effect": "RANGE_DAMAGE",
+      "id": 15647,
+      "amount": 4,
+      "maxAmount": 4,
+      "price": 970000,
+      "effect": "TRIPLE_KILLS",
       "bonus": 1
     },
     {
-      "id": 23020,
-      "amount": 9,
-      "maxAmount": 9,
-      "price": 140000,
+      "id": 22135,
+      "amount": 12,
+      "maxAmount": 12,
+      "price": 975000,
+      "effect": "MAGIC_DAMAGE",
+      "bonus": 1
+    },
+    {
+      "id": 20586,
+      "amount": 1,
+      "maxAmount": 2,
+      "price": 4000000,
       "effect": "NOTHING",
       "bonus": 0
     },
     {
-      "id": 23057,
+      "id": 14913,
       "amount": 1,
       "maxAmount": 1,
-      "price": 1390000,
-      "effect": "NOTHING",
-      "bonus": 0
+      "price": 1800000,
+      "effect": "DROP_RATE_LOW",
+      "bonus": 18
     },
+    {
+      "id": 15645,
+      "amount": 1,
+      "maxAmount": 1,
+      "price": 2600000,
+      "effect": "DROP_RATE_HIGH",
+      "bonus": 26
+    },
+    {
+      "id": 15007,
+      "amount": 1,
+      "maxAmount": 1,
+      "price": 3900000,
+      "effect": "ALL_DAMAGE_HIGH",
+      "bonus": 3
+    },
+    {
+      "id": 3473,
+      "amount": 1,
+      "maxAmount": 1,
+      "price": 14000000,
+      "effect": "ALL_DAMAGE_HIGH",
+      "bonus": 3
+    },
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
     null,
     null,
     null
