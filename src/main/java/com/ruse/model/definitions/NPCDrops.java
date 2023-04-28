@@ -22,6 +22,7 @@ import com.ruse.world.content.collectionlog.CollectionEntry;
 import com.ruse.world.content.combat.CombatBuilder.CombatDamageCache;
 import com.ruse.world.content.combat.CombatFactory;
 import com.ruse.world.content.discordbot.JavaCord;
+import com.ruse.world.content.equipmentenhancement.BoostType;
 import com.ruse.world.content.minigames.impl.TreasureHunter;
 import com.ruse.world.content.minigames.impl.VaultOfWar;
 import com.ruse.world.content.skill.impl.prayer.BonesData;
@@ -32,6 +33,7 @@ import com.ruse.world.entity.impl.npc.NPC;
 import com.ruse.world.entity.impl.player.Player;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.var;
 
 import java.security.SecureRandom;
 import java.util.*;
@@ -350,6 +352,13 @@ public class NPCDrops {
             }
             if (player.getEquipment().get(Equipment.ENCHANTMENT_SLOT).getId() == 17391 && item.getId() == 995) {
                 item.setAmount(item.getAmount() * 2);
+            }
+
+            if(item.getId() == 995) {
+                var currentAmount = item.getAmount();
+                var multiplier = player.getEquipmentEnhancement().getBoost(BoostType.CASH);
+                var newAmount = Math.max(currentAmount, (currentAmount * (1 + ((multiplier / 100.0)))));
+                item.setAmount((int) newAmount);
             }
 
             if (npc.getId() == 2007 || npc.getId() == 2042 || npc.getId() == 2043 || npc.getId() == 2044
