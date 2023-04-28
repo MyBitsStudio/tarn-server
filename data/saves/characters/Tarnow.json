@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 185343051,
+  "total-play-time-ms": 183874834,
   "username": "Tarnow",
   "password": "bossik",
   "email": "null",
@@ -8,8 +8,8 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2229,
-    "y": 3734,
+    "x": 2207,
+    "y": 3746,
     "z": 0
   },
   "online-status": "ON",
@@ -17,7 +17,7 @@
   "has-pin2": true,
   "saved-pin2": "1245",
   "saved-ip": "178.159.142.229",
-  "donated": 422,
+  "donated": 420,
   "current-boss-task": 0,
   "current-boss-amount": 0,
   "global-rate": 0,
@@ -40,14 +40,14 @@
   "timeUntilNextReward": 0,
   "current-voting-streak": 0,
   "entriesCurrency": 0.0,
-  "amount-donated-today": 422,
+  "amount-donated-today": 420,
   "claimed-first": false,
   "claimed-second": false,
   "claimed-third": false,
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682513345425,
+  "lastlogin": 1682251900820,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -58,12 +58,12 @@
   "day5claimed": false,
   "day6claimed": false,
   "day7claimed": false,
-  "minutes-bonus-exp": 597,
+  "minutes-bonus-exp": 621,
   "minutes-voting-dr": -1,
   "minutes-voting-dmg": 0,
   "total-gained-exp": -108042060,
   "barrows-points": 0,
-  "donator-points": 52,
+  "donator-points": 50,
   "Skilling-points": 0,
   "prestige-points": 0,
   "achievement-points": 0,
@@ -140,7 +140,7 @@
   ],
   "total-prestiges": 0,
   "slayer-spree": 38,
-  "npc-killcount": 52335,
+  "npc-killcount": 50745,
   "spawn-killcount": 0,
   "lord-killcount": 0,
   "demon-killcount": 250,
@@ -175,7 +175,7 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 1682195066899,
+  "last-veng": 319746753,
   "fight-type": "LONGSWORD_SLASH",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -411,12 +411,12 @@
     {
       "npcId": 9906,
       "item": 995,
-      "amount": 1244950
+      "amount": 1244949
     },
     {
       "npcId": 9906,
       "item": 2023,
-      "amount": 133
+      "amount": 132
     },
     {
       "npcId": 9838,
@@ -431,12 +431,12 @@
     {
       "npcId": 9904,
       "item": 995,
-      "amount": 2362022
+      "amount": 2362021
     },
     {
       "npcId": 9904,
       "item": 2023,
-      "amount": 99
+      "amount": 98
     },
     {
       "npcId": 9838,
@@ -446,12 +446,12 @@
     {
       "npcId": 9908,
       "item": 10946,
-      "amount": 33
+      "amount": 32
     },
     {
       "npcId": 9908,
       "item": 2023,
-      "amount": 336
+      "amount": 335
     },
     {
       "npcId": 9838,
@@ -1321,7 +1321,7 @@
     {
       "npcId": 3013,
       "item": 995,
-      "amount": 129064
+      "amount": 128530
     }
   ],
   "holy-prayers-unlocked": [
@@ -1372,9 +1372,9 @@
       120,
       120,
       120,
-      605,
+      1200,
       120,
-      872,
+      1200,
       120,
       1,
       1,
@@ -1468,7 +1468,7 @@
     },
     {
       "id": 995,
-      "amount": 258,
+      "amount": 402,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1478,7 +1478,7 @@
     },
     {
       "id": 10835,
-      "amount": 554097,
+      "amount": 501663,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1488,7 +1488,7 @@
     },
     {
       "id": 2023,
-      "amount": 1195,
+      "amount": 830,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -3983,13 +3983,6 @@
       "boss": false
     },
     {
-      "runningTotal": 2108,
-      "npcId": 3013,
-      "npcName": "Ag\u0027thomoth",
-      "amount": 2108,
-      "boss": false
-    },
-    {
       "runningTotal": 2042,
       "npcId": 3010,
       "npcName": "Zeidan Grimm",
@@ -4282,12 +4275,19 @@
       "npcName": "Oracle Lion",
       "amount": 0,
       "boss": false
+    },
+    {
+      "runningTotal": 1048,
+      "npcId": 3013,
+      "npcName": "Ag\u0027thomoth",
+      "amount": 1048,
+      "boss": false
     }
   ],
   "drops": [
     {
       "item": 995,
-      "amount": 1413536195,
+      "amount": 1412512195,
       "rareDrop": false
     },
     {
@@ -5327,13 +5327,13 @@
       1136,
       38,
       1021,
-      1054,
+      524,
       101,
       0,
       0,
       0,
       176,
-      23430,
+      22900,
       0,
       0,
       0,
@@ -5930,7 +5930,7 @@
       false
     ]
   ],
-  "achievements-daily": 326,
+  "achievements-daily": 323,
   "progression-zones": [
     10,
     20,
@@ -6231,7 +6231,7 @@
     "8003": 16,
     "9027": 20,
     "9028": 0,
-    "3013": 1054,
+    "3013": 524,
     "9029": 9,
     "3014": 101,
     "9030": 14,
@@ -6257,109 +6257,5 @@
     "3831": 11
   },
   "boost": 0,
-  "slot-level": 0,
-  "sp-season": 1,
-  "sp-premium": false,
-  "sp-level": 0,
-  "sp-exp": 0,
-  "sp-rewards": [
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false
-  ]
+  "slot-level": 0
 }

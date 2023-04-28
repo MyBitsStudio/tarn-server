@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 13759687,
+  "total-play-time-ms": 3515990,
   "username": "Rks",
   "password": "master1",
   "email": "null",
@@ -8,8 +8,8 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2462,
-    "y": 5029,
+    "x": 2222,
+    "y": 3750,
     "z": 0
   },
   "online-status": "ON",
@@ -47,7 +47,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682526469774,
+  "lastlogin": 1681925242467,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -61,7 +61,7 @@
   "minutes-bonus-exp": 0,
   "minutes-voting-dr": 0,
   "minutes-voting-dmg": 0,
-  "total-gained-exp": 8058595,
+  "total-gained-exp": 277528,
   "barrows-points": 0,
   "donator-points": 0,
   "Skilling-points": 0,
@@ -175,8 +175,8 @@
   "auto-retaliate": false,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 607955035,
-  "fight-type": "UNARMED_KICK",
+  "last-veng": 1681928758469,
+  "fight-type": "UNARMED_PUNCH",
   "sol-effect": 0,
   "skull-timer": 0,
   "fuse-combination-timer": 0,
@@ -336,32 +336,32 @@
     {
       "npcId": 9906,
       "item": 995,
-      "amount": 2061931
+      "amount": 2061930
     },
     {
       "npcId": 9906,
       "item": 2023,
-      "amount": 26
+      "amount": 25
     },
     {
       "npcId": 9904,
       "item": 995,
-      "amount": 3913511
+      "amount": 3913510
     },
     {
       "npcId": 9904,
       "item": 2023,
-      "amount": 41
+      "amount": 40
     },
     {
       "npcId": 9907,
       "item": 10946,
-      "amount": 2
+      "amount": 1
     },
     {
       "npcId": 9907,
       "item": 2023,
-      "amount": 101
+      "amount": 100
     },
     {
       "npcId": 8013,
@@ -372,16 +372,6 @@
       "npcId": 8013,
       "item": 23020,
       "amount": 3
-    },
-    {
-      "npcId": 9908,
-      "item": 10946,
-      "amount": 2
-    },
-    {
-      "npcId": 9908,
-      "item": 2023,
-      "amount": 300
     }
   ],
   "holy-prayers-unlocked": [
@@ -429,10 +419,10 @@
   ],
   "skills": {
     "level": [
-      55,
+      54,
       1,
-      87,
-      850,
+      1,
+      220,
       1,
       10,
       1,
@@ -456,10 +446,10 @@
       1
     ],
     "maxLevel": [
-      55,
+      54,
       1,
-      87,
-      850,
+      1,
+      510,
       1,
       10,
       1,
@@ -483,10 +473,10 @@
       1
     ],
     "experience": [
-      168370,
+      156505,
       0,
-      4368015,
-      3523394,
+      0,
+      122207,
       0,
       0,
       0,
@@ -514,17 +504,32 @@
     {
       "id": -1,
       "amount": 0,
-      "slot": 0
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
     },
     {
       "id": -1,
       "amount": 0,
-      "slot": 0
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
     },
     {
       "id": -1,
       "amount": 0,
-      "slot": 0
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
     },
     {
       "id": -1,
@@ -779,13 +784,13 @@
   ],
   "equipment": [
     {
-      "id": 22126,
-      "amount": 1,
+      "id": -1,
+      "amount": 0,
       "slot": 0,
       "bonus": {
-        "effect": "MAGIC_DAMAGE",
-        "rarity": "UNCOMMON",
-        "bonus": 1
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
       }
     },
     {
@@ -824,23 +829,23 @@
       }
     },
     {
-      "id": 13306,
-      "amount": 1,
+      "id": -1,
+      "amount": 0,
       "slot": 0,
       "bonus": {
-        "effect": "DROP_RATE_LOW",
-        "rarity": "RARE",
-        "bonus": 5
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
       }
     },
     {
-      "id": 12614,
-      "amount": 1,
+      "id": -1,
+      "amount": 0,
       "slot": 0,
       "bonus": {
-        "effect": "ALL_DAMAGE_LOW",
-        "rarity": "RARE",
-        "bonus": 1
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
       }
     },
     {
@@ -1371,8 +1376,18 @@
       }
     },
     {
+      "id": 995,
+      "amount": 6975396,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
+    },
+    {
       "id": 2023,
-      "amount": 630,
+      "amount": 165,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1382,7 +1397,7 @@
     },
     {
       "id": 10946,
-      "amount": 9,
+      "amount": 6,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1393,16 +1408,6 @@
     {
       "id": 23020,
       "amount": 3,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
-      "id": 995,
-      "amount": 12250354,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1436,11 +1441,7 @@
   ],
   "friends": [
     26796,
-    67290,
-    609738,
-    232422760,
-    13837863569,
-    45252864
+    67290
   ],
   "ignores": [],
   "loyalty-titles": [
@@ -1469,17 +1470,17 @@
   "drops": [
     {
       "item": 995,
-      "amount": 11250398,
+      "amount": 5975440,
       "rareDrop": false
     },
     {
       "item": 2023,
-      "amount": 630,
+      "amount": 165,
       "rareDrop": false
     },
     {
       "item": 10946,
-      "amount": 9,
+      "amount": 6,
       "rareDrop": false
     },
     {
@@ -2181,7 +2182,7 @@
       0,
       0,
       0,
-      7,
+      3,
       0,
       0,
       0,
@@ -2982,7 +2983,7 @@
       false
     ]
   ],
-  "achievements-daily": 326,
+  "achievements-daily": 319,
   "progression-zones": [
     0,
     0,
@@ -3030,10 +3031,6 @@
       "canClaim": false,
       "hasClaimed": false
     },
-    "9908": {
-      "canClaim": false,
-      "hasClaimed": false
-    },
     "8013": {
       "canClaim": false,
       "hasClaimed": false
@@ -3071,113 +3068,8 @@
     "9904": 0,
     "9906": 0,
     "9907": 0,
-    "9908": 0,
     "8013": 0
   },
   "boost": 0,
-  "slot-level": 0,
-  "sp-season": 1,
-  "sp-premium": false,
-  "sp-level": 0,
-  "sp-exp": 0,
-  "sp-rewards": [
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false
-  ]
+  "slot-level": 0
 }

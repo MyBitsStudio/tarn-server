@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 34481430,
+  "total-play-time-ms": 33516081,
   "username": "Bookie",
   "password": "dookie",
   "email": "null",
@@ -8,14 +8,14 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2210,
-    "y": 3766,
-    "z": 0
+    "x": 2702,
+    "y": 4749,
+    "z": 40
   },
   "online-status": "ON",
   "given-starter": true,
   "has-pin2": false,
-  "donated": 87,
+  "donated": 61,
   "current-boss-task": 0,
   "current-boss-amount": 0,
   "global-rate": 0,
@@ -38,14 +38,14 @@
   "timeUntilNextReward": 0,
   "current-voting-streak": 0,
   "entriesCurrency": 0.0,
-  "amount-donated-today": 87,
+  "amount-donated-today": 61,
   "claimed-first": false,
   "claimed-second": false,
   "claimed-third": false,
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682585742234,
+  "lastlogin": 1682278751739,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -56,12 +56,12 @@
   "day5claimed": false,
   "day6claimed": false,
   "day7claimed": false,
-  "minutes-bonus-exp": 2741,
-  "minutes-voting-dr": 10,
+  "minutes-bonus-exp": 2666,
+  "minutes-voting-dr": 16,
   "minutes-voting-dmg": 0,
-  "total-gained-exp": 2049286307,
+  "total-gained-exp": 2046094076,
   "barrows-points": 0,
-  "donator-points": 32,
+  "donator-points": 6,
   "Skilling-points": 0,
   "prestige-points": 0,
   "achievement-points": 0,
@@ -70,7 +70,7 @@
   "loyalty-points": 0,
   "total-loyalty-points": 0.0,
   "godmodetime": 0,
-  "voting-points": 5,
+  "voting-points": 2,
   "tasks-completion": [
     false,
     false,
@@ -138,7 +138,7 @@
   ],
   "total-prestiges": 0,
   "slayer-spree": 39,
-  "npc-killcount": 15608,
+  "npc-killcount": 15220,
   "spawn-killcount": 0,
   "lord-killcount": 0,
   "demon-killcount": 791,
@@ -173,7 +173,7 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 1681917112333,
+  "last-veng": 654428512,
   "fight-type": "LONGBOW_RAPID",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -704,12 +704,12 @@
     {
       "npcId": 8003,
       "item": 995,
-      "amount": 3354
+      "amount": 3328
     },
     {
       "npcId": 8003,
       "item": 2023,
-      "amount": 361
+      "amount": 334
     },
     {
       "npcId": 8003,
@@ -729,12 +729,12 @@
     {
       "npcId": 8013,
       "item": 10946,
-      "amount": 20
+      "amount": 19
     },
     {
       "npcId": 8013,
       "item": 23020,
-      "amount": 20
+      "amount": 19
     },
     {
       "npcId": 9906,
@@ -944,22 +944,22 @@
     {
       "npcId": 9030,
       "item": 995,
-      "amount": 3351
+      "amount": 3279
     },
     {
       "npcId": 9030,
       "item": 2023,
-      "amount": 353
+      "amount": 282
     },
     {
       "npcId": 9030,
       "item": 23039,
-      "amount": 5
+      "amount": 4
     },
     {
       "npcId": 9030,
       "item": 23035,
-      "amount": 2
+      "amount": 1
     },
     {
       "npcId": 9030,
@@ -974,11 +974,6 @@
     {
       "npcId": 9030,
       "item": 23034,
-      "amount": 1
-    },
-    {
-      "npcId": 9030,
-      "item": 23036,
       "amount": 1
     }
   ],
@@ -1039,7 +1034,7 @@
       1,
       1,
       1,
-      114,
+      113,
       1,
       1,
       89,
@@ -1066,7 +1061,7 @@
       1,
       1,
       1,
-      114,
+      113,
       1,
       1,
       89,
@@ -1093,7 +1088,7 @@
       0,
       0,
       0,
-      57873591,
+      54681360,
       0,
       0,
       4978264,
@@ -1270,8 +1265,8 @@
       }
     },
     {
-      "id": 15359,
-      "amount": 1,
+      "id": -1,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1280,8 +1275,8 @@
       }
     },
     {
-      "id": 15359,
-      "amount": 1,
+      "id": -1,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1290,8 +1285,8 @@
       }
     },
     {
-      "id": 13727,
-      "amount": 112,
+      "id": -1,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1330,8 +1325,8 @@
       }
     },
     {
-      "id": 15357,
-      "amount": 1,
+      "id": 2736,
+      "amount": 7,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1341,7 +1336,7 @@
     },
     {
       "id": 995,
-      "amount": 739,
+      "amount": 25176637,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1371,7 +1366,7 @@
     },
     {
       "id": 2023,
-      "amount": 7364,
+      "amount": 7266,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1381,7 +1376,7 @@
     },
     {
       "id": 10835,
-      "amount": 1873834,
+      "amount": 2150630,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -2480,10 +2475,10 @@
       "boss": false
     },
     {
-      "runningTotal": 319,
+      "runningTotal": 241,
       "npcId": 8003,
       "npcName": "Dr. Aberrant",
-      "amount": 319,
+      "amount": 241,
       "boss": false
     },
     {
@@ -2690,22 +2685,22 @@
       "boss": false
     },
     {
-      "runningTotal": 1026,
+      "runningTotal": 813,
       "npcId": 9030,
       "npcName": "Patience",
-      "amount": 1026,
+      "amount": 813,
       "boss": false
     }
   ],
   "drops": [
     {
       "item": 995,
-      "amount": 117866046,
+      "amount": 117860046,
       "rareDrop": false
     },
     {
       "item": 2023,
-      "amount": 5857,
+      "amount": 5855,
       "rareDrop": false
     },
     {
@@ -3511,7 +3506,7 @@
       100,
       100,
       250,
-      250,
+      241,
       0,
       74,
       20,
@@ -3623,7 +3618,7 @@
       0,
       0,
       88,
-      5329,
+      5232,
       0,
       0,
       0,
@@ -3726,7 +3721,7 @@
       0,
       0,
       88,
-      5329,
+      5232,
       0,
       0,
       0,
@@ -3916,11 +3911,7 @@
   "achievements-completed": [
     [
       false,
-      true,
-      true,
-      true,
-      true,
-      true,
+      false,
       true,
       false,
       false,
@@ -3928,10 +3919,14 @@
       false,
       false,
       false,
-      false,
-      false,
-      false,
       true,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
       true,
       false,
       false,
@@ -4323,7 +4318,7 @@
       false
     ]
   ],
-  "achievements-daily": 327,
+  "achievements-daily": 323,
   "progression-zones": [
     10,
     23,
@@ -4409,8 +4404,8 @@
       "hasClaimed": false
     },
     "9030": {
-      "canClaim": true,
-      "hasClaimed": true
+      "canClaim": false,
+      "hasClaimed": false
     },
     "3014": {
       "canClaim": false,
@@ -4558,12 +4553,12 @@
     "9025": 71,
     "3010": 98,
     "9922": 0,
-    "8003": 27,
+    "8003": 1,
     "9027": 23,
     "9028": 6,
     "9029": 12,
     "3013": 92,
-    "9030": 7,
+    "9030": 20,
     "3014": 171,
     "8008": 86,
     "8010": 82,
@@ -4593,109 +4588,5 @@
     "9918": 172
   },
   "boost": 0,
-  "slot-level": 0,
-  "sp-season": 1,
-  "sp-premium": false,
-  "sp-level": 0,
-  "sp-exp": 0,
-  "sp-rewards": [
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false
-  ]
+  "slot-level": 0
 }

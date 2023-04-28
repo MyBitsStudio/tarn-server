@@ -8,9 +8,30 @@
       "effect": "RANGE_DAMAGE",
       "bonus": 1
     },
-    null,
-    null,
-    null,
+    {
+      "id": 10946,
+      "amount": 21,
+      "maxAmount": 21,
+      "price": 140000,
+      "effect": "NOTHING",
+      "bonus": 0
+    },
+    {
+      "id": 23020,
+      "amount": 3,
+      "maxAmount": 3,
+      "price": 95000,
+      "effect": "NOTHING",
+      "bonus": 0
+    },
+    {
+      "id": 8788,
+      "amount": 10,
+      "maxAmount": 10,
+      "price": 275000,
+      "effect": "NOTHING",
+      "bonus": 0
+    },
     null,
     null,
     null,
@@ -40,5 +61,5 @@
     null,
     null
   ],
-  "earnings": 8020000
+  "earnings": 2750000
 }

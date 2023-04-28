@@ -1,23 +1,23 @@
 {
-  "total-play-time-ms": 20466627,
+  "total-play-time-ms": 19612234,
   "username": "Keef",
   "password": "bloodybowl",
   "email": "null",
-  "staff-rights": "GRACEFUL_DONATOR",
+  "staff-rights": "PLAYER",
   "game-mode": "VETERAN_MODE",
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2137,
-    "y": 5016,
-    "z": 12
+    "x": 2539,
+    "y": 2524,
+    "z": 16
   },
   "online-status": "ON",
   "given-starter": true,
   "has-pin2": true,
   "saved-pin2": "6542",
   "saved-ip": "38.70.255.156",
-  "donated": 10,
+  "donated": 0,
   "current-boss-task": 0,
   "current-boss-amount": 0,
   "global-rate": 0,
@@ -40,14 +40,14 @@
   "timeUntilNextReward": 0,
   "current-voting-streak": 0,
   "entriesCurrency": 0.0,
-  "amount-donated-today": 10,
+  "amount-donated-today": 0,
   "claimed-first": false,
   "claimed-second": false,
   "claimed-third": false,
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682506577444,
+  "lastlogin": 1682266171724,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -58,12 +58,12 @@
   "day5claimed": false,
   "day6claimed": false,
   "day7claimed": false,
-  "minutes-bonus-exp": 147,
-  "minutes-voting-dr": 3,
+  "minutes-bonus-exp": 71,
+  "minutes-voting-dr": -1,
   "minutes-voting-dmg": 0,
-  "total-gained-exp": -263079053,
+  "total-gained-exp": -285959350,
   "barrows-points": 0,
-  "donator-points": 10,
+  "donator-points": 0,
   "Skilling-points": 0,
   "prestige-points": 0,
   "achievement-points": 0,
@@ -72,7 +72,7 @@
   "loyalty-points": 0,
   "total-loyalty-points": 0.0,
   "godmodetime": 0,
-  "voting-points": 12,
+  "voting-points": 9,
   "tasks-completion": [
     false,
     false,
@@ -140,7 +140,7 @@
   ],
   "total-prestiges": 0,
   "slayer-spree": 11,
-  "npc-killcount": 4364,
+  "npc-killcount": 4256,
   "spawn-killcount": 0,
   "lord-killcount": 0,
   "demon-killcount": 256,
@@ -175,7 +175,7 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 632184165,
+  "last-veng": 1681875247678,
   "fight-type": "STAFF_BASH",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -361,12 +361,12 @@
     {
       "npcId": 9906,
       "item": 995,
-      "amount": 1756994
+      "amount": 1756992
     },
     {
       "npcId": 9906,
       "item": 2023,
-      "amount": 68
+      "amount": 66
     },
     {
       "npcId": 9835,
@@ -821,22 +821,22 @@
     {
       "npcId": 9904,
       "item": 995,
-      "amount": 3304531
+      "amount": 3304530
     },
     {
       "npcId": 9904,
       "item": 2023,
-      "amount": 82
+      "amount": 81
     },
     {
       "npcId": 811,
       "item": 995,
-      "amount": 5453
+      "amount": 5400
     },
     {
       "npcId": 811,
       "item": 2023,
-      "amount": 450
+      "amount": 397
     },
     {
       "npcId": 811,
@@ -856,11 +856,6 @@
     {
       "npcId": 811,
       "item": 21069,
-      "amount": 1
-    },
-    {
-      "npcId": 811,
-      "item": 21063,
       "amount": 1
     }
   ],
@@ -912,7 +907,7 @@
       100,
       68,
       100,
-      1090,
+      1140,
       101,
       820,
       120,
@@ -921,7 +916,7 @@
       1,
       1,
       1,
-      43,
+      42,
       1,
       1,
       1,
@@ -948,7 +943,7 @@
       1,
       1,
       1,
-      43,
+      42,
       1,
       1,
       1,
@@ -966,7 +961,7 @@
       14409244,
       632837,
       15560037,
-      1980889166,
+      1958014447,
       17344834,
       2634483,
       2000000000,
@@ -975,7 +970,7 @@
       0,
       0,
       0,
-      53737,
+      48159,
       0,
       0,
       0,
@@ -993,7 +988,7 @@
   "inventory": [
     {
       "id": 10835,
-      "amount": 11589,
+      "amount": 2218,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1003,7 +998,7 @@
     },
     {
       "id": 995,
-      "amount": 660,
+      "amount": 380131,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1023,7 +1018,7 @@
     },
     {
       "id": 2023,
-      "amount": 162,
+      "amount": 25,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1072,8 +1067,8 @@
       }
     },
     {
-      "id": 21067,
-      "amount": 1,
+      "id": -1,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -2261,29 +2256,22 @@
       "boss": true
     },
     {
-      "runningTotal": 352,
+      "runningTotal": 299,
       "npcId": 811,
       "npcName": "Nagendra",
-      "amount": 352,
-      "boss": true
-    },
-    {
-      "runningTotal": 1,
-      "npcId": 9906,
-      "npcName": "Final Boss Veigar",
-      "amount": 1,
+      "amount": 299,
       "boss": true
     }
   ],
   "drops": [
     {
       "item": 995,
-      "amount": 47436399,
+      "amount": 39854870,
       "rareDrop": false
     },
     {
       "item": 2023,
-      "amount": 4415,
+      "amount": 4272,
       "rareDrop": false
     },
     {
@@ -2398,11 +2386,6 @@
     },
     {
       "item": 21067,
-      "amount": 1,
-      "rareDrop": false
-    },
-    {
-      "item": 21063,
       "amount": 1,
       "rareDrop": false
     }
@@ -3084,14 +3067,14 @@
   "achievements-amount": [
     [
       0,
-      12,
+      9,
       100,
       100,
       100,
       250,
       250,
       250,
-      350,
+      299,
       11,
       0,
       0,
@@ -3099,8 +3082,8 @@
       0,
       0,
       100,
-      2182,
-      14,
+      2128,
+      12,
       0,
       0,
       0,
@@ -3186,7 +3169,7 @@
     ],
     [
       0,
-      12,
+      9,
       0,
       0,
       0,
@@ -3201,7 +3184,7 @@
       0,
       0,
       972,
-      2182,
+      2128,
       0,
       0,
       0,
@@ -3288,7 +3271,7 @@
     ],
     [
       0,
-      12,
+      9,
       0,
       0,
       0,
@@ -3304,7 +3287,7 @@
       0,
       0,
       972,
-      2182,
+      2128,
       0,
       0,
       0,
@@ -3494,14 +3477,14 @@
   "achievements-completed": [
     [
       false,
+      false,
       true,
       true,
       true,
       true,
       true,
       true,
-      true,
-      true,
+      false,
       false,
       false,
       false,
@@ -3901,7 +3884,7 @@
       false
     ]
   ],
-  "achievements-daily": 326,
+  "achievements-daily": 323,
   "progression-zones": [
     11,
     20,
@@ -4065,122 +4048,18 @@
     "9029": 2,
     "9030": 2,
     "202": 22,
-    "811": 21,
+    "811": 13,
     "9835": 33,
     "9837": 10,
     "8014": 0,
     "9838": 0,
     "9807": 5,
     "9904": 0,
-    "9906": 1,
+    "9906": 0,
     "9845": 0,
     "9910": 0,
     "9911": 16
   },
   "boost": 0,
-  "slot-level": 0,
-  "sp-season": 1,
-  "sp-premium": false,
-  "sp-level": 0,
-  "sp-exp": 0,
-  "sp-rewards": [
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false
-  ]
+  "slot-level": 0
 }

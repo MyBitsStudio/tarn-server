@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 509683486,
+  "total-play-time-ms": 379129017,
   "username": "Wowzers",
   "password": "airass123",
   "email": "null",
@@ -47,7 +47,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682637182903,
+  "lastlogin": 1682500705203,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -61,7 +61,7 @@
   "minutes-bonus-exp": -1,
   "minutes-voting-dr": -1,
   "minutes-voting-dmg": 0,
-  "total-gained-exp": -1579501923,
+  "total-gained-exp": 2032817344,
   "barrows-points": 0,
   "donator-points": 0,
   "Skilling-points": 0,
@@ -175,7 +175,7 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 1682362105667,
+  "last-veng": 246925352,
   "fight-type": "BATTLEAXE_HACK",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -366,22 +366,22 @@
     {
       "npcId": 9906,
       "item": 995,
-      "amount": 1376548
+      "amount": 1376547
     },
     {
       "npcId": 9906,
       "item": 2023,
-      "amount": 37
+      "amount": 36
     },
     {
       "npcId": 9904,
       "item": 995,
-      "amount": 2819972
+      "amount": 2819971
     },
     {
       "npcId": 9904,
       "item": 2023,
-      "amount": 53
+      "amount": 52
     },
     {
       "npcId": 9907,
@@ -396,22 +396,22 @@
     {
       "npcId": 9908,
       "item": 10946,
-      "amount": 11
+      "amount": 10
     },
     {
       "npcId": 9908,
       "item": 2023,
-      "amount": 309
+      "amount": 308
     },
     {
       "npcId": 8013,
       "item": 10946,
-      "amount": 59
+      "amount": 37
     },
     {
       "npcId": 8013,
       "item": 23020,
-      "amount": 57
+      "amount": 35
     }
   ],
   "holy-prayers-unlocked": [
@@ -516,8 +516,8 @@
       12258692,
       17049892,
       85032048,
-      2000000000,
-      941242653,
+      1898828324,
+      360094275,
       0,
       1954239402,
       0,
@@ -543,7 +543,7 @@
   "inventory": [
     {
       "id": 17634,
-      "amount": 2566180,
+      "amount": 914600,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -553,7 +553,7 @@
     },
     {
       "id": 5020,
-      "amount": 145700,
+      "amount": 5231150,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -763,7 +763,7 @@
     },
     {
       "id": 995,
-      "amount": 37661674,
+      "amount": 32804818,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -803,7 +803,7 @@
     },
     {
       "id": 2023,
-      "amount": 4315,
+      "amount": 3950,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -2864,7 +2864,7 @@
       false
     ]
   ],
-  "achievements-daily": 327,
+  "achievements-daily": 326,
   "progression-zones": [
     12,
     21,

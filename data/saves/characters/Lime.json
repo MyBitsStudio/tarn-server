@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 821404,
+  "total-play-time-ms": 527999,
   "username": "Lime",
   "password": "Admtctb77!",
   "email": "null",
@@ -8,9 +8,9 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 3483,
-    "y": 3618,
-    "z": 28
+    "x": 2210,
+    "y": 3766,
+    "z": 0
   },
   "online-status": "ON",
   "given-starter": true,
@@ -47,7 +47,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682620948237,
+  "lastlogin": 1682232541061,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -175,8 +175,8 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 388172587,
-  "fight-type": "STAFF_POUND",
+  "last-veng": 1682233069074,
+  "fight-type": "LONGSWORD_SLASH",
   "sol-effect": 0,
   "skull-timer": 0,
   "fuse-combination-timer": 0,
@@ -194,7 +194,7 @@
   "dmg-timer": 0,
   "double-dr-timer": 0,
   "double-ddr-timer": 0,
-  "double-dmg-timer": 2196,
+  "double-dmg-timer": 2686,
   "fire-immunity": 0,
   "fire-damage-mod": 0,
   "prayer-renewal-timer": 0,
@@ -214,13 +214,13 @@
   "process-farming": false,
   "clanchat": "Help",
   "autocast": false,
-  "autocast-spell": 71,
+  "autocast-spell": -1,
   "dfs-charges": 0,
   "coins-gambled": 0,
   "slayer-master": "EASY_SLAYER",
-  "slayer-task": "IMPERIAL_PALADIN",
+  "slayer-task": "NO_TASK",
   "prev-slayer-task": "NO_TASK",
-  "task-amount": 48,
+  "task-amount": 0,
   "task-streak": 0,
   "duo-partner": "null",
   "double-slay-xp": false,
@@ -407,7 +407,7 @@
       101,
       64,
       95,
-      1200,
+      150,
       1,
       10,
       120,
@@ -517,8 +517,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 703,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -537,8 +537,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 18750,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -547,8 +547,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 22092,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -557,8 +557,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 18750,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -567,8 +567,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 19985,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -587,7 +587,7 @@
       }
     },
     {
-      "id": 22084,
+      "id": 14377,
       "amount": 1,
       "slot": 0,
       "bonus": {
@@ -597,8 +597,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 22083,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -617,8 +617,8 @@
       }
     },
     {
-      "id": 3090,
-      "amount": 1,
+      "id": 17818,
+      "amount": 100,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -647,8 +647,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 3090,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -667,8 +667,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 705,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -799,7 +799,7 @@
       }
     },
     {
-      "id": 14377,
+      "id": 22084,
       "amount": 1,
       "slot": 0,
       "bonus": {
@@ -1224,78 +1224,7 @@
     }
   ],
   "offences": [],
-  "bank-0": [
-    {
-      "id": 17817,
-      "amount": 97,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
-      "id": 703,
-      "amount": 1,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
-      "id": 22083,
-      "amount": 1,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
-      "id": 705,
-      "amount": 1,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
-      "id": 22092,
-      "amount": 1,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
-      "id": 18750,
-      "amount": 2,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
-      "id": 19985,
-      "amount": 1,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    }
-  ],
+  "bank-0": [],
   "bank-1": [],
   "bank-2": [],
   "bank-3": [],
@@ -2869,7 +2798,7 @@
       false
     ]
   ],
-  "achievements-daily": 327,
+  "achievements-daily": 322,
   "progression-zones": [
     12,
     6,
@@ -2947,109 +2876,5 @@
     "9837": 0
   },
   "boost": 0,
-  "slot-level": 0,
-  "sp-season": 1,
-  "sp-premium": false,
-  "sp-level": 0,
-  "sp-exp": 0,
-  "sp-rewards": [
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false
-  ]
+  "slot-level": 0
 }

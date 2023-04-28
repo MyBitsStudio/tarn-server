@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 253117255,
+  "total-play-time-ms": 252940255,
   "username": "Resi",
   "password": "8990290",
   "email": "null",
@@ -8,9 +8,9 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2571,
-    "y": 2569,
-    "z": 144
+    "x": 2221,
+    "y": 3748,
+    "z": 0
   },
   "online-status": "ON",
   "given-starter": true,
@@ -47,7 +47,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682504997049,
+  "lastlogin": 1682176019012,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -58,7 +58,7 @@
   "day5claimed": false,
   "day6claimed": false,
   "day7claimed": false,
-  "minutes-bonus-exp": 747,
+  "minutes-bonus-exp": 749,
   "minutes-voting-dr": -1,
   "minutes-voting-dmg": 0,
   "total-gained-exp": 22936904,
@@ -175,7 +175,7 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 1682241517226,
+  "last-veng": 263656829,
   "fight-type": "SCYTHE_JAB",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -194,7 +194,7 @@
   "dmg-timer": 0,
   "double-dr-timer": 0,
   "double-ddr-timer": 0,
-  "double-dmg-timer": 0,
+  "double-dmg-timer": 1,
   "fire-immunity": 0,
   "fire-damage-mod": 0,
   "prayer-renewal-timer": 0,
@@ -1449,13 +1449,13 @@
   ],
   "skills": {
     "level": [
-      185,
-      185,
-      185,
-      705,
-      185,
+      187,
+      187,
+      187,
+      685,
+      187,
       1130,
-      185,
+      187,
       1,
       1,
       1,
@@ -1543,7 +1543,7 @@
     },
     {
       "id": 10835,
-      "amount": 3135509,
+      "amount": 3145509,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -2750,24 +2750,10 @@
       "boss": true
     },
     {
-      "runningTotal": 6624,
-      "npcId": 12239,
-      "npcName": "Exoden",
-      "amount": 6624,
-      "boss": true
-    },
-    {
       "runningTotal": 5682,
       "npcId": 8010,
       "npcName": "Groudon",
       "amount": 5682,
-      "boss": true
-    },
-    {
-      "runningTotal": 5440,
-      "npcId": 252,
-      "npcName": "Frieza",
-      "amount": 5440,
       "boss": true
     },
     {
@@ -2782,13 +2768,6 @@
       "npcId": 9903,
       "npcName": "Asmodeus",
       "amount": 2382,
-      "boss": true
-    },
-    {
-      "runningTotal": 832,
-      "npcId": 449,
-      "npcName": "Perfect Cell",
-      "amount": 832,
       "boss": true
     },
     {
@@ -2827,17 +2806,17 @@
       "boss": true
     },
     {
-      "runningTotal": 11,
-      "npcId": 9908,
-      "npcName": "Golden Great Ape",
-      "amount": 11,
-      "boss": true
-    },
-    {
       "runningTotal": 8,
       "npcId": 9907,
       "npcName": "Meruem The King",
       "amount": 8,
+      "boss": true
+    },
+    {
+      "runningTotal": 11,
+      "npcId": 9908,
+      "npcName": "Golden Great Ape",
+      "amount": 11,
       "boss": true
     },
     {
@@ -2855,13 +2834,6 @@
       "boss": false
     },
     {
-      "runningTotal": 9944,
-      "npcId": 3011,
-      "npcName": "Janemba",
-      "amount": 9944,
-      "boss": false
-    },
-    {
       "runningTotal": 8382,
       "npcId": 2342,
       "npcName": "Emerald Slayer",
@@ -2869,24 +2841,10 @@
       "boss": false
     },
     {
-      "runningTotal": 8232,
-      "npcId": 3112,
-      "npcName": "Ezkel-Nojad",
-      "amount": 8232,
-      "boss": false
-    },
-    {
       "runningTotal": 7062,
       "npcId": 9818,
       "npcName": "Leviathan",
       "amount": 7062,
-      "boss": false
-    },
-    {
-      "runningTotal": 6608,
-      "npcId": 3115,
-      "npcName": "Scylla",
-      "amount": 6608,
       "boss": false
     },
     {
@@ -2911,13 +2869,6 @@
       "boss": false
     },
     {
-      "runningTotal": 5924,
-      "npcId": 3117,
-      "npcName": "Charybdis",
-      "amount": 5924,
-      "boss": false
-    },
-    {
       "runningTotal": 5820,
       "npcId": 9912,
       "npcName": "Calamity",
@@ -2929,6 +2880,13 @@
       "npcId": 3020,
       "npcName": "Agumon",
       "amount": 5361,
+      "boss": false
+    },
+    {
+      "runningTotal": 5924,
+      "npcId": 3117,
+      "npcName": "Charybdis",
+      "amount": 5924,
       "boss": false
     },
     {
@@ -3210,6 +3168,48 @@
       "npcName": "Oracle Lion",
       "amount": 0,
       "boss": false
+    },
+    {
+      "runningTotal": 6608,
+      "npcId": 3115,
+      "npcName": "Scylla",
+      "amount": 6608,
+      "boss": false
+    },
+    {
+      "runningTotal": 6624,
+      "npcId": 12239,
+      "npcName": "Exoden",
+      "amount": 6624,
+      "boss": true
+    },
+    {
+      "runningTotal": 8232,
+      "npcId": 3112,
+      "npcName": "Ezkel-Nojad",
+      "amount": 8232,
+      "boss": false
+    },
+    {
+      "runningTotal": 9944,
+      "npcId": 3011,
+      "npcName": "Janemba",
+      "amount": 9944,
+      "boss": false
+    },
+    {
+      "runningTotal": 5440,
+      "npcId": 252,
+      "npcName": "Frieza",
+      "amount": 5440,
+      "boss": true
+    },
+    {
+      "runningTotal": 832,
+      "npcId": 449,
+      "npcName": "Perfect Cell",
+      "amount": 832,
+      "boss": true
     }
   ],
   "drops": [
@@ -5018,7 +5018,7 @@
       false
     ]
   ],
-  "achievements-daily": 326,
+  "achievements-daily": 322,
   "progression-zones": [
     11,
     26,
@@ -5051,7 +5051,7 @@
   },
   "lastTGloveIndex": -1,
   "group-ironman-locked": false,
-  "lastInstanceNpc": 188,
+  "lastInstanceNpc": 9017,
   "daily-task": {
     "HARD_SLAYER_TASKS": {
       "index": 0,
@@ -5439,109 +5439,5 @@
     "252": 1360
   },
   "boost": 0,
-  "slot-level": 0,
-  "sp-season": 1,
-  "sp-premium": false,
-  "sp-level": 0,
-  "sp-exp": 0,
-  "sp-rewards": [
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false
-  ]
+  "slot-level": 0
 }

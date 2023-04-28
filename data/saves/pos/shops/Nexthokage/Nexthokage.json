@@ -9,8 +9,16 @@
       "bonus": 1
     },
     {
-      "id": 22152,
+      "id": 17616,
       "amount": 1,
+      "maxAmount": 1,
+      "price": 120000,
+      "effect": "NOTHING",
+      "bonus": 0
+    },
+    {
+      "id": 22152,
+      "amount": 2,
       "maxAmount": 2,
       "price": 900000,
       "effect": "NOTHING",
@@ -58,8 +66,7 @@
     null,
     null,
     null,
-    null,
     null
   ],
-  "earnings": 1020000
+  "earnings": 0
 }

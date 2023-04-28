@@ -9,6 +9,14 @@
       "bonus": 0
     },
     {
+      "id": 15647,
+      "amount": 1,
+      "maxAmount": 3,
+      "price": 30000,
+      "effect": "RANGE_DAMAGE",
+      "bonus": 1
+    },
+    {
       "id": 15646,
       "amount": 11,
       "maxAmount": 13,
@@ -26,7 +34,7 @@
     },
     {
       "id": 19481,
-      "amount": 27,
+      "amount": 28,
       "maxAmount": 30,
       "price": 20000,
       "effect": "NOTHING",
@@ -50,7 +58,7 @@
     },
     {
       "id": 14375,
-      "amount": 1,
+      "amount": 2,
       "maxAmount": 2,
       "price": 3000000,
       "effect": "MAGIC_DAMAGE",
@@ -79,8 +87,7 @@
     null,
     null,
     null,
-    null,
     null
   ],
-  "earnings": 3050000
+  "earnings": 0
 }

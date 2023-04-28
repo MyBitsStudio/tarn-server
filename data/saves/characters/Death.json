@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 494088942,
+  "total-play-time-ms": 493532765,
   "username": "Death",
   "password": "am130180",
   "email": "null",
@@ -8,8 +8,8 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2207,
-    "y": 3746,
+    "x": 2210,
+    "y": 3766,
     "z": 0
   },
   "online-status": "ON",
@@ -45,7 +45,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682543221061,
+  "lastlogin": 1682465188605,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -138,7 +138,7 @@
   ],
   "total-prestiges": 0,
   "slayer-spree": 0,
-  "npc-killcount": 31926,
+  "npc-killcount": 31590,
   "spawn-killcount": 0,
   "lord-killcount": 0,
   "demon-killcount": 662,
@@ -170,10 +170,10 @@
   "run-energy": 100,
   "music": false,
   "sounds": false,
-  "auto-retaliate": false,
+  "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 1682067944538,
+  "last-veng": 475832747,
   "fight-type": "STAFF_FOCUS",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -207,7 +207,7 @@
     0
   ],
   "effigy": 0,
-  "summon-npc": -1,
+  "summon-npc": 3040,
   "summon-death": -1,
   "process-farming": false,
   "clanchat": "Help",
@@ -1054,7 +1054,7 @@
     {
       "npcId": 9816,
       "item": 995,
-      "amount": 108499
+      "amount": 108386
     }
   ],
   "holy-prayers-unlocked": [
@@ -1107,7 +1107,7 @@
       100,
       1200,
       120,
-      681,
+      0,
       120,
       1,
       1,
@@ -1195,8 +1195,8 @@
       }
     },
     {
-      "id": 20586,
-      "amount": 1,
+      "id": -1,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1207,12 +1207,22 @@
     {
       "id": -1,
       "amount": 0,
-      "slot": 0
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
     },
     {
       "id": -1,
       "amount": 0,
-      "slot": 0
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
     },
     {
       "id": 10946,
@@ -1227,22 +1237,42 @@
     {
       "id": -1,
       "amount": 0,
-      "slot": 0
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
     },
     {
       "id": -1,
       "amount": 0,
-      "slot": 0
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
     },
     {
       "id": -1,
       "amount": 0,
-      "slot": 0
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
     },
     {
       "id": -1,
       "amount": 0,
-      "slot": 0
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
     },
     {
       "id": -1,
@@ -1356,7 +1386,7 @@
     },
     {
       "id": 995,
-      "amount": 88057787,
+      "amount": 75853787,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1396,7 +1426,7 @@
     },
     {
       "id": 10835,
-      "amount": 5261699,
+      "amount": 5291699,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -2760,10 +2790,10 @@
       "boss": false
     },
     {
-      "runningTotal": 1476,
+      "runningTotal": 1140,
       "npcId": 9816,
       "npcName": "Dragonite",
-      "amount": 1476,
+      "amount": 1140,
       "boss": false
     },
     {
@@ -2784,7 +2814,7 @@
   "drops": [
     {
       "item": 995,
-      "amount": 363655926,
+      "amount": 363439926,
       "rareDrop": false
     },
     {
@@ -3788,7 +3818,7 @@
       2000,
       376,
       508,
-      492,
+      380,
       0,
       0,
       0,
@@ -3800,7 +3830,7 @@
       0,
       0,
       9484,
-      10160,
+      10048,
       0,
       0,
       0,
@@ -4430,7 +4460,7 @@
   },
   "lastTGloveIndex": -1,
   "group-ironman-locked": false,
-  "lastInstanceNpc": 9816,
+  "lastInstanceNpc": 9017,
   "daily-task": {
     "MEDIUM_SLAYER_TASKS": {
       "index": 0,
@@ -4658,7 +4688,7 @@
     "8014": 18,
     "9807": 6,
     "9815": 9,
-    "9816": 492,
+    "9816": 380,
     "9817": 50,
     "92": 138,
     "6692": 8,
@@ -4687,109 +4717,5 @@
     "9919": 85
   },
   "boost": 0,
-  "slot-level": 0,
-  "sp-season": 1,
-  "sp-premium": false,
-  "sp-level": 0,
-  "sp-exp": 0,
-  "sp-rewards": [
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false
-  ]
+  "slot-level": 0
 }

@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 38350070,
+  "total-play-time-ms": 37876014,
   "username": "Mts Aurexk",
   "password": "1111",
   "email": "null",
@@ -8,9 +8,9 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2524,
-    "y": 2523,
-    "z": 84
+    "x": 2139,
+    "y": 5018,
+    "z": 4
   },
   "online-status": "ON",
   "given-starter": true,
@@ -47,7 +47,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682617413653,
+  "lastlogin": 1682021645415,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -58,10 +58,10 @@
   "day5claimed": false,
   "day6claimed": false,
   "day7claimed": false,
-  "minutes-bonus-exp": 237,
+  "minutes-bonus-exp": 244,
   "minutes-voting-dr": -1,
   "minutes-voting-dmg": 0,
-  "total-gained-exp": -704403882,
+  "total-gained-exp": -704436042,
   "barrows-points": 0,
   "donator-points": 12,
   "Skilling-points": 0,
@@ -140,7 +140,7 @@
   ],
   "total-prestiges": 0,
   "slayer-spree": 58,
-  "npc-killcount": 8954,
+  "npc-killcount": 8946,
   "spawn-killcount": 0,
   "lord-killcount": 0,
   "demon-killcount": 375,
@@ -175,7 +175,7 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 1682327244352,
+  "last-veng": 290643377,
   "fight-type": "STAFF_BASH",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -192,9 +192,9 @@
   "dr-timer": 0,
   "ddr-timer": 0,
   "dmg-timer": 0,
-  "double-dr-timer": 3717,
+  "double-dr-timer": 4508,
   "double-ddr-timer": 0,
-  "double-dmg-timer": 3748,
+  "double-dmg-timer": 4539,
   "fire-immunity": 0,
   "fire-damage-mod": 0,
   "prayer-renewal-timer": 0,
@@ -220,7 +220,7 @@
   "slayer-master": "BOSS_SLAYER",
   "slayer-task": "LILINRYSS",
   "prev-slayer-task": "MAZE_GUARDIAN",
-  "task-amount": 58,
+  "task-amount": 62,
   "task-streak": 58,
   "duo-partner": "null",
   "double-slay-xp": false,
@@ -1046,7 +1046,7 @@
     {
       "npcId": 3014,
       "item": 995,
-      "amount": 33027
+      "amount": 33023
     }
   ],
   "holy-prayers-unlocked": [
@@ -1099,7 +1099,7 @@
       120,
       1200,
       120,
-      1029,
+      355,
       120,
       1,
       1,
@@ -1166,7 +1166,7 @@
       0,
       819300,
       260100,
-      7362800,
+      7330640,
       780054,
       0,
       0,
@@ -1232,8 +1232,18 @@
       }
     },
     {
+      "id": 8788,
+      "amount": 1,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
+    },
+    {
       "id": 995,
-      "amount": 132000,
+      "amount": 826,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1242,8 +1252,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 11137,
+      "amount": 12,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1252,8 +1262,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 913,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1262,8 +1272,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 1009,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1272,8 +1282,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 789,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1282,18 +1292,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
-      "id": -1,
-      "amount": 0,
+      "id": 10835,
+      "amount": 8624,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1459,13 +1459,13 @@
       }
     },
     {
-      "id": 17684,
+      "id": 21039,
       "amount": 1,
       "slot": 0,
       "bonus": {
-        "effect": "RANGE_DAMAGE",
-        "rarity": "UNCOMMON",
-        "bonus": 1
+        "effect": "DROP_RATE_LOW",
+        "rarity": "RARE",
+        "bonus": 10
       }
     },
     {
@@ -1942,7 +1942,7 @@
     },
     {
       "id": 995,
-      "amount": 826,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -2022,7 +2022,7 @@
     },
     {
       "id": 10835,
-      "amount": 43624,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -2163,26 +2163,6 @@
     {
       "id": 3030,
       "amount": 2,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
-      "id": 21039,
-      "amount": 1,
-      "slot": 0,
-      "bonus": {
-        "effect": "DROP_RATE_LOW",
-        "rarity": "RARE",
-        "bonus": 10
-      }
-    },
-    {
-      "id": 8788,
-      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -2380,7 +2360,7 @@
     },
     {
       "id": 11137,
-      "amount": 12,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -2432,7 +2412,7 @@
     },
     {
       "id": 913,
-      "amount": 3,
+      "amount": 2,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -2512,26 +2492,6 @@
     },
     {
       "id": 928,
-      "amount": 1,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
-      "id": 1009,
-      "amount": 1,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
-      "id": 789,
       "amount": 1,
       "slot": 0,
       "bonus": {
@@ -2782,10 +2742,10 @@
       "boss": false
     },
     {
-      "runningTotal": 23,
+      "runningTotal": 19,
       "npcId": 3014,
       "npcName": "Lilinryss",
-      "amount": 23,
+      "amount": 19,
       "boss": false
     }
   ],
@@ -3618,7 +3578,7 @@
       192,
       254,
       100,
-      4717,
+      4713,
       45,
       0,
       0,
@@ -3720,7 +3680,7 @@
       0,
       93,
       149,
-      4717,
+      4713,
       0,
       0,
       0,
@@ -3818,12 +3778,12 @@
       58,
       0,
       0,
-      23,
+      19,
       0,
       0,
       0,
       149,
-      4717,
+      4713,
       0,
       0,
       0,
@@ -4420,7 +4380,7 @@
       false
     ]
   ],
-  "achievements-daily": 327,
+  "achievements-daily": 320,
   "progression-zones": [
     10,
     21,
@@ -4630,7 +4590,7 @@
     "9027": 21,
     "9028": 3,
     "9029": 7,
-    "3014": 23,
+    "3014": 19,
     "9030": 2,
     "202": 2,
     "8013": 0,
@@ -4658,109 +4618,5 @@
     "9914": 2
   },
   "boost": 0,
-  "slot-level": 0,
-  "sp-season": 1,
-  "sp-premium": false,
-  "sp-level": 0,
-  "sp-exp": 0,
-  "sp-rewards": [
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false
-  ]
+  "slot-level": 0
 }

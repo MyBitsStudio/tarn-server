@@ -17,6 +17,14 @@
       "bonus": 0
     },
     {
+      "id": 17618,
+      "amount": 1,
+      "maxAmount": 1,
+      "price": 150000,
+      "effect": "NOTHING",
+      "bonus": 0
+    },
+    {
       "id": 15646,
       "amount": 1,
       "maxAmount": 1,
@@ -40,8 +48,14 @@
       "effect": "ALL_DAMAGE_LOW",
       "bonus": 1
     },
-    null,
-    null,
+    {
+      "id": 15646,
+      "amount": 1,
+      "maxAmount": 1,
+      "price": 700000,
+      "effect": "ALL_DAMAGE_HIGH",
+      "bonus": 3
+    },
     null,
     null,
     null,
@@ -68,5 +82,5 @@
     null,
     null
   ],
-  "earnings": 1850000
+  "earnings": 1000000
 }

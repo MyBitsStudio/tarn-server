@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 27214574,
+  "total-play-time-ms": 27021373,
   "username": "Retch",
   "password": "l0l0l0l0l",
   "email": "null",
@@ -8,8 +8,8 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2963,
-    "y": 9494,
+    "x": 2964,
+    "y": 9486,
     "z": 16
   },
   "online-status": "ON",
@@ -47,7 +47,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682520780606,
+  "lastlogin": 1681941363753,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -58,7 +58,7 @@
   "day5claimed": false,
   "day6claimed": false,
   "day7claimed": false,
-  "minutes-bonus-exp": 399,
+  "minutes-bonus-exp": 402,
   "minutes-voting-dr": -1,
   "minutes-voting-dmg": 0,
   "total-gained-exp": -2081909949,
@@ -140,7 +140,7 @@
   ],
   "total-prestiges": 0,
   "slayer-spree": 22,
-  "npc-killcount": 7947,
+  "npc-killcount": 7845,
   "spawn-killcount": 0,
   "lord-killcount": 0,
   "demon-killcount": 376,
@@ -175,7 +175,7 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 685050178,
+  "last-veng": 1681835923648,
   "fight-type": "STAFF_POUND",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -916,12 +916,12 @@
     {
       "npcId": 9920,
       "item": 995,
-      "amount": 8148
+      "amount": 8097
     },
     {
       "npcId": 9920,
       "item": 2023,
-      "amount": 146
+      "amount": 95
     },
     {
       "npcId": 811,
@@ -1022,11 +1022,6 @@
       "npcId": 9817,
       "item": 23138,
       "amount": 2
-    },
-    {
-      "npcId": 9920,
-      "item": 14912,
-      "amount": 1
     }
   ],
   "holy-prayers-unlocked": [
@@ -1079,7 +1074,7 @@
       120,
       1200,
       105,
-      470,
+      785,
       120,
       1,
       1,
@@ -1158,7 +1153,7 @@
   "inventory": [
     {
       "id": 2023,
-      "amount": 7545,
+      "amount": 7494,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1238,7 +1233,7 @@
     },
     {
       "id": 995,
-      "amount": 504341,
+      "amount": 96341,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1267,14 +1262,9 @@
       }
     },
     {
-      "id": 23136,
-      "amount": 1,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
+      "id": -1,
+      "amount": 0,
+      "slot": 0
     },
     {
       "id": -1,
@@ -1489,13 +1479,13 @@
       }
     },
     {
-      "id": 14912,
+      "id": 23136,
       "amount": 1,
       "slot": 0,
       "bonus": {
-        "effect": "DROP_RATE_LOW",
-        "rarity": "RARE",
-        "bonus": 10
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
       }
     },
     {
@@ -2344,10 +2334,10 @@
       "boss": false
     },
     {
-      "runningTotal": 132,
+      "runningTotal": 81,
       "npcId": 9920,
       "npcName": "Ig\u0027thaur",
-      "amount": 132,
+      "amount": 81,
       "boss": false
     },
     {
@@ -3198,11 +3188,11 @@
       20,
       400,
       400,
-      132,
+      81,
       0,
       122,
       100,
-      4375,
+      4324,
       45,
       0,
       0,
@@ -3304,7 +3294,7 @@
       0,
       0,
       111,
-      4375,
+      4324,
       0,
       0,
       0,
@@ -3407,7 +3397,7 @@
       0,
       0,
       111,
-      4375,
+      4324,
       0,
       0,
       0,
@@ -4004,7 +3994,7 @@
       false
     ]
   ],
-  "achievements-daily": 326,
+  "achievements-daily": 319,
   "progression-zones": [
     10,
     21,
@@ -4179,7 +4169,7 @@
     null
   ],
   "drystreak": {
-    "9920": 22,
+    "9920": 81,
     "9025": 122,
     "9026": 20,
     "9922": 30,
@@ -4208,109 +4198,5 @@
     "9911": 6
   },
   "boost": 0,
-  "slot-level": 0,
-  "sp-season": 1,
-  "sp-premium": false,
-  "sp-level": 0,
-  "sp-exp": 0,
-  "sp-rewards": [
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false
-  ]
+  "slot-level": 0
 }

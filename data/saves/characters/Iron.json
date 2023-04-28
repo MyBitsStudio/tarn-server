@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 2814582,
+  "total-play-time-ms": 2526583,
   "username": "Iron",
   "password": "blooded1",
   "email": "null",
@@ -8,15 +8,15 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 3495,
-    "y": 3620,
-    "z": 28
+    "x": 3488,
+    "y": 3608,
+    "z": 20
   },
   "online-status": "ON",
   "given-starter": true,
   "has-pin2": true,
   "saved-pin2": "0414",
-  "saved-ip": "172.56.73.101",
+  "saved-ip": "172.58.172.65",
   "donated": 0,
   "current-boss-task": 0,
   "current-boss-amount": 0,
@@ -47,7 +47,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682505808250,
+  "lastlogin": 1681685600669,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -61,7 +61,7 @@
   "minutes-bonus-exp": 0,
   "minutes-voting-dr": 0,
   "minutes-voting-dmg": 0,
-  "total-gained-exp": 1031722465,
+  "total-gained-exp": 5316733134,
   "barrows-points": 0,
   "donator-points": 0,
   "Skilling-points": 0,
@@ -82,7 +82,7 @@
     false
   ],
   "tasks-progress": [
-    300,
+    275,
     0,
     0,
     0,
@@ -140,7 +140,7 @@
   ],
   "total-prestiges": 0,
   "slayer-spree": 0,
-  "npc-killcount": 600,
+  "npc-killcount": 550,
   "spawn-killcount": 0,
   "lord-killcount": 0,
   "demon-killcount": 0,
@@ -172,10 +172,10 @@
   "run-energy": 100,
   "music": false,
   "sounds": false,
-  "auto-retaliate": true,
+  "auto-retaliate": false,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 817968990,
+  "last-veng": 1681688127261,
   "fight-type": "LONGSWORD_SLASH",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -218,9 +218,9 @@
   "dfs-charges": 0,
   "coins-gambled": 0,
   "slayer-master": "EASY_SLAYER",
-  "slayer-task": "IMPERIAL_PALADIN",
+  "slayer-task": "NO_TASK",
   "prev-slayer-task": "NO_TASK",
-  "task-amount": 25,
+  "task-amount": 0,
   "task-streak": 0,
   "duo-partner": "null",
   "double-slay-xp": false,
@@ -431,12 +431,12 @@
     {
       "npcId": 9845,
       "item": 995,
-      "amount": 738
+      "amount": 735
     },
     {
       "npcId": 9845,
       "item": 2023,
-      "amount": 35
+      "amount": 32
     },
     {
       "npcId": 9845,
@@ -447,26 +447,6 @@
       "npcId": 9845,
       "item": 20092,
       "amount": 2
-    },
-    {
-      "npcId": 9807,
-      "item": 995,
-      "amount": 922
-    },
-    {
-      "npcId": 9807,
-      "item": 2023,
-      "amount": 22
-    },
-    {
-      "npcId": 9807,
-      "item": 20089,
-      "amount": 1
-    },
-    {
-      "npcId": 9807,
-      "item": 20093,
-      "amount": 1
     }
   ],
   "holy-prayers-unlocked": [
@@ -517,7 +497,7 @@
       120,
       120,
       120,
-      490,
+      590,
       120,
       1140,
       120,
@@ -532,7 +512,7 @@
       1,
       1,
       1,
-      26,
+      1,
       1,
       1,
       1,
@@ -559,7 +539,7 @@
       1,
       1,
       1,
-      26,
+      1,
       1,
       1,
       1,
@@ -570,7 +550,7 @@
     "experience": [
       139721336,
       313188088,
-      2000000000,
+      1991485558,
       2000000000,
       341042136,
       290862000,
@@ -586,7 +566,7 @@
       0,
       0,
       0,
-      9350,
+      0,
       0,
       0,
       0,
@@ -631,9 +611,9 @@
       "amount": 1,
       "slot": 0,
       "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
+        "effect": "DOUBLE_DROP",
+        "rarity": "RARE",
+        "bonus": 7
       }
     },
     {
@@ -647,8 +627,8 @@
       }
     },
     {
-      "id": 20089,
-      "amount": 1,
+      "id": -1,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -657,8 +637,8 @@
       }
     },
     {
-      "id": 20093,
-      "amount": 1,
+      "id": -1,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -678,7 +658,7 @@
     },
     {
       "id": 995,
-      "amount": 6072836,
+      "amount": 6071036,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -893,9 +873,9 @@
       "amount": 1,
       "slot": 0,
       "bonus": {
-        "effect": "DOUBLE_DROP",
-        "rarity": "RARE",
-        "bonus": 7
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
       }
     },
     {
@@ -1405,29 +1385,22 @@
       "boss": false
     },
     {
-      "runningTotal": 35,
+      "runningTotal": 32,
       "npcId": 9845,
       "npcName": "Imperial Scorpion",
-      "amount": 35,
-      "boss": false
-    },
-    {
-      "runningTotal": 22,
-      "npcId": 9807,
-      "npcName": "Imperial Paladin",
-      "amount": 22,
+      "amount": 32,
       "boss": false
     }
   ],
   "drops": [
     {
       "item": 995,
-      "amount": 2684792,
+      "amount": 2661992,
       "rareDrop": false
     },
     {
       "item": 2023,
-      "amount": 349,
+      "amount": 324,
       "rareDrop": false
     },
     {
@@ -2128,7 +2101,7 @@
       0,
       0,
       100,
-      300,
+      275,
       1,
       0,
       0,
@@ -2230,7 +2203,7 @@
       0,
       0,
       166,
-      300,
+      275,
       0,
       0,
       0,
@@ -2333,7 +2306,7 @@
       0,
       0,
       166,
-      300,
+      275,
       0,
       0,
       0,
@@ -2930,7 +2903,7 @@
       false
     ]
   ],
-  "achievements-daily": 326,
+  "achievements-daily": 316,
   "progression-zones": [
     13,
     21,
@@ -2962,6 +2935,7 @@
     "blueCharms": 0
   },
   "lastTGloveIndex": -1,
+  "group-ironman-id": 8,
   "group-ironman-locked": false,
   "lastInstanceNpc": -1,
   "daily-task": {},
@@ -2995,10 +2969,6 @@
       "hasClaimed": false
     },
     "9838": {
-      "canClaim": false,
-      "hasClaimed": false
-    },
-    "9807": {
       "canClaim": false,
       "hasClaimed": false
     }
@@ -3035,117 +3005,10 @@
     "9904": 0,
     "9922": 52,
     "9027": 21,
-    "9845": 5,
+    "9845": 2,
     "9911": 41,
     "9835": 1,
     "9837": 13,
-    "9838": 5,
-    "9807": 2
-  },
-  "boost": 0,
-  "slot-level": 0,
-  "sp-season": 1,
-  "sp-premium": false,
-  "sp-level": 0,
-  "sp-exp": 0,
-  "sp-rewards": [
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false
-  ]
+    "9838": 5
+  }
 }

@@ -10,7 +10,7 @@
     },
     {
       "id": 19489,
-      "amount": 1,
+      "amount": 2,
       "maxAmount": 2,
       "price": 210000,
       "effect": "NOTHING",
@@ -18,7 +18,7 @@
     },
     {
       "id": 19490,
-      "amount": 2,
+      "amount": 3,
       "maxAmount": 4,
       "price": 100000,
       "effect": "NOTHING",
@@ -33,8 +33,16 @@
       "bonus": 0
     },
     {
-      "id": 22072,
+      "id": 13328,
       "amount": 1,
+      "maxAmount": 1,
+      "price": 3250000,
+      "effect": "ALL_DAMAGE_HIGH",
+      "bonus": 3
+    },
+    {
+      "id": 22072,
+      "amount": 2,
       "maxAmount": 2,
       "price": 800000,
       "effect": "NOTHING",
@@ -65,8 +73,7 @@
     null,
     null,
     null,
-    null,
     null
   ],
-  "earnings": 0
+  "earnings": 500
 }

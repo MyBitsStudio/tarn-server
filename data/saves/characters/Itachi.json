@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 249612083,
+  "total-play-time-ms": 185247769,
   "username": "Itachi",
   "password": "haroon",
   "email": "null",
@@ -16,7 +16,7 @@
   "given-starter": true,
   "has-pin2": true,
   "saved-pin2": "2726",
-  "saved-ip": "2.49.93.220",
+  "saved-ip": "2.49.71.252",
   "donated": 0,
   "current-boss-task": 0,
   "current-boss-amount": 0,
@@ -47,7 +47,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682644183060,
+  "lastlogin": 1682499839403,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -61,7 +61,7 @@
   "minutes-bonus-exp": 0,
   "minutes-voting-dr": 0,
   "minutes-voting-dmg": 0,
-  "total-gained-exp": 1914393041,
+  "total-gained-exp": 1535974310,
   "barrows-points": 0,
   "donator-points": 0,
   "Skilling-points": 0,
@@ -175,7 +175,7 @@
   "auto-retaliate": false,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 221643761,
+  "last-veng": 151424576,
   "fight-type": "BATTLEAXE_CHOP",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -378,10 +378,10 @@
   ],
   "skills": {
     "level": [
-      70,
       1,
       1,
-      670,
+      1,
+      100,
       1,
       10,
       1,
@@ -405,10 +405,10 @@
       1
     ],
     "maxLevel": [
-      70,
       1,
       1,
-      670,
+      1,
+      100,
       1,
       10,
       1,
@@ -432,13 +432,10 @@
       1
     ],
     "experience": [
-      744896,
-      0,
-      0,
-      579744,
       0,
       0,
       0,
+      1184,
       0,
       0,
       0,
@@ -446,7 +443,10 @@
       0,
       0,
       0,
-      1913069585,
+      0,
+      0,
+      0,
+      1535974310,
       0,
       0,
       0,
@@ -462,17 +462,7 @@
   "inventory": [
     {
       "id": 5020,
-      "amount": 201900,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
-      "id": 705,
-      "amount": 1,
+      "amount": 1557400,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -482,6 +472,16 @@
     },
     {
       "id": 704,
+      "amount": 1,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
+    },
+    {
+      "id": 705,
       "amount": 1,
       "slot": 0,
       "bonus": {
@@ -501,8 +501,8 @@
       }
     },
     {
-      "id": 17634,
-      "amount": 124700,
+      "id": 703,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -531,8 +531,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 17634,
+      "amount": 65500,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -541,7 +541,12 @@
       }
     },
     {
-      "id": 703,
+      "id": -1,
+      "amount": 0,
+      "slot": 0
+    },
+    {
+      "id": 22084,
       "amount": 1,
       "slot": 0,
       "bonus": {
@@ -552,16 +557,6 @@
     },
     {
       "id": 22092,
-      "amount": 1,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
-      "id": 22084,
       "amount": 1,
       "slot": 0,
       "bonus": {
@@ -1217,12 +1212,7 @@
     0,
     0
   ],
-  "friends": [
-    7768275,
-    1257798564,
-    314338471884971,
-    11642084710780196
-  ],
+  "friends": [],
   "ignores": [],
   "loyalty-titles": [
     false,
@@ -2742,7 +2732,7 @@
       false
     ]
   ],
-  "achievements-daily": 327,
+  "achievements-daily": 326,
   "progression-zones": [
     0,
     0,

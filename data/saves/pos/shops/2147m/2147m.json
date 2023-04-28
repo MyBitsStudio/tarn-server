@@ -8,7 +8,14 @@
       "effect": "NOTHING",
       "bonus": 0
     },
-    null,
+    {
+      "id": 3472,
+      "amount": 1,
+      "maxAmount": 1,
+      "price": 7500000,
+      "effect": "ALL_DAMAGE_HIGH",
+      "bonus": 3
+    },
     null,
     null,
     null,
@@ -40,5 +47,5 @@
     null,
     null
   ],
-  "earnings": 600000
+  "earnings": 360000
 }

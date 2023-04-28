@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 173604255,
+  "total-play-time-ms": 168660936,
   "username": "Jackal",
   "password": "Jsc62268",
   "email": "null",
@@ -8,8 +8,8 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2980,
-    "y": 2771,
+    "x": 2222,
+    "y": 3747,
     "z": 0
   },
   "online-status": "ON",
@@ -47,7 +47,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682558576186,
+  "lastlogin": 1682087623950,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -140,7 +140,7 @@
   ],
   "total-prestiges": 0,
   "slayer-spree": 13,
-  "npc-killcount": 34300,
+  "npc-killcount": 34090,
   "spawn-killcount": 0,
   "lord-killcount": 0,
   "demon-killcount": 461,
@@ -175,7 +175,7 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 1682432622631,
+  "last-veng": 130896893,
   "fight-type": "LONGBOW_RAPID",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -491,12 +491,12 @@
     {
       "npcId": 9906,
       "item": 995,
-      "amount": 2390330
+      "amount": 2390329
     },
     {
       "npcId": 9906,
       "item": 2023,
-      "amount": 73
+      "amount": 72
     },
     {
       "npcId": 9845,
@@ -741,12 +741,12 @@
     {
       "npcId": 8013,
       "item": 10946,
-      "amount": 18
+      "amount": 17
     },
     {
       "npcId": 8013,
       "item": 23020,
-      "amount": 15
+      "amount": 14
     },
     {
       "npcId": 8003,
@@ -1296,7 +1296,7 @@
     {
       "npcId": 9903,
       "item": 995,
-      "amount": 112301
+      "amount": 112270
     }
   ],
   "holy-prayers-unlocked": [
@@ -1428,7 +1428,7 @@
   "inventory": [
     {
       "id": 995,
-      "amount": 9289228,
+      "amount": 296,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1438,7 +1438,7 @@
     },
     {
       "id": 2023,
-      "amount": 2475,
+      "amount": 2450,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1457,9 +1457,14 @@
       }
     },
     {
-      "id": 3028,
+      "id": 3024,
       "amount": 1,
-      "slot": 0
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
     },
     {
       "id": 229,
@@ -1508,7 +1513,7 @@
     },
     {
       "id": 10946,
-      "amount": 14,
+      "amount": 9,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1518,7 +1523,7 @@
     },
     {
       "id": 23020,
-      "amount": 21,
+      "amount": 15,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -3009,16 +3014,6 @@
         "rarity": "COMMON",
         "bonus": 0
       }
-    },
-    {
-      "id": 23020,
-      "amount": 0,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
     }
   ],
   "bank-1": [],
@@ -3374,17 +3369,17 @@
       "boss": false
     },
     {
-      "runningTotal": 788,
+      "runningTotal": 668,
       "npcId": 9903,
       "npcName": "Asmodeus",
-      "amount": 788,
+      "amount": 668,
       "boss": true
     }
   ],
   "drops": [
     {
       "item": 995,
-      "amount": 528148669,
+      "amount": 527924669,
       "rareDrop": false
     },
     {
@@ -4404,7 +4399,7 @@
       303,
       254,
       522,
-      197,
+      167,
       0,
       0,
       13,
@@ -4415,7 +4410,7 @@
       0,
       0,
       1213,
-      13378,
+      13348,
       0,
       0,
       0,
@@ -5012,7 +5007,7 @@
       false
     ]
   ],
-  "achievements-daily": 326,
+  "achievements-daily": 321,
   "progression-zones": [
     10,
     21,
@@ -5286,7 +5281,7 @@
     "9836": 102,
     "9837": 0,
     "9838": 3,
-    "9903": 197,
+    "9903": 167,
     "9839": 303,
     "9904": 0,
     "3313": 55,
@@ -5306,109 +5301,5 @@
     "9919": 176
   },
   "boost": 0,
-  "slot-level": 0,
-  "sp-season": 1,
-  "sp-premium": false,
-  "sp-level": 0,
-  "sp-exp": 0,
-  "sp-rewards": [
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false
-  ]
+  "slot-level": 0
 }

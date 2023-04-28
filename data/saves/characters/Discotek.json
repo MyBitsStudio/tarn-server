@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 40099908,
+  "total-play-time-ms": 10005253,
   "username": "Discotek",
   "password": "ramzz",
   "email": "null",
@@ -47,7 +47,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682632580943,
+  "lastlogin": 1682497401619,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -61,7 +61,7 @@
   "minutes-bonus-exp": 0,
   "minutes-voting-dr": 0,
   "minutes-voting-dmg": 0,
-  "total-gained-exp": 293419981,
+  "total-gained-exp": 22009914,
   "barrows-points": 0,
   "donator-points": 0,
   "Skilling-points": 0,
@@ -175,7 +175,7 @@
   "auto-retaliate": false,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 1682550415944,
+  "last-veng": 1682470507085,
   "fight-type": "STAFF_BASH",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -336,52 +336,52 @@
     {
       "npcId": 9908,
       "item": 10946,
-      "amount": 12
+      "amount": 6
     },
     {
       "npcId": 9908,
       "item": 2023,
-      "amount": 310
+      "amount": 304
     },
     {
       "npcId": 9906,
       "item": 995,
-      "amount": 1715840
+      "amount": 1715828
     },
     {
       "npcId": 9906,
       "item": 2023,
-      "amount": 39
+      "amount": 27
     },
     {
       "npcId": 9904,
       "item": 995,
-      "amount": 2837970
+      "amount": 2837959
     },
     {
       "npcId": 9904,
       "item": 2023,
-      "amount": 54
+      "amount": 43
     },
     {
       "npcId": 9907,
       "item": 10946,
-      "amount": 10
+      "amount": 1
     },
     {
       "npcId": 9907,
       "item": 2023,
-      "amount": 109
+      "amount": 100
     },
     {
       "npcId": 8013,
       "item": 10946,
-      "amount": 14
+      "amount": 8
     },
     {
       "npcId": 8013,
       "item": 23020,
-      "amount": 12
+      "amount": 6
     }
   ],
   "holy-prayers-unlocked": [
@@ -432,10 +432,10 @@
       1,
       1,
       1,
-      1200,
+      715,
       1,
       10,
-      120,
+      98,
       1,
       1,
       1,
@@ -459,10 +459,10 @@
       1,
       1,
       1,
-      1200,
+      960,
       1,
       10,
-      120,
+      98,
       1,
       1,
       1,
@@ -486,10 +486,10 @@
       0,
       0,
       0,
-      129334430,
+      9917612,
       0,
       0,
-      164086735,
+      12093486,
       0,
       0,
       0,
@@ -513,13 +513,63 @@
   "inventory": [
     {
       "id": 2023,
-      "amount": 4630,
+      "amount": 1835,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
         "rarity": "COMMON",
         "bonus": 0
       }
+    },
+    {
+      "id": -1,
+      "amount": 0,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
+    },
+    {
+      "id": -1,
+      "amount": 0,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
+    },
+    {
+      "id": 995,
+      "amount": 8995974,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
+    },
+    {
+      "id": -1,
+      "amount": 0,
+      "slot": 0
+    },
+    {
+      "id": -1,
+      "amount": 0,
+      "slot": 0
+    },
+    {
+      "id": -1,
+      "amount": 0,
+      "slot": 0
+    },
+    {
+      "id": -1,
+      "amount": 0,
+      "slot": 0
     },
     {
       "id": 23091,
@@ -532,68 +582,8 @@
       }
     },
     {
-      "id": 995,
-      "amount": 51435107,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
-      "id": 10946,
-      "amount": 8,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
-      "id": 23020,
-      "amount": 3,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
-      "id": -1,
-      "amount": 0,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
-      "id": -1,
-      "amount": 0,
-      "slot": 0
-    },
-    {
-      "id": -1,
-      "amount": 0,
-      "slot": 0
-    },
-    {
-      "id": -1,
-      "amount": 0,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
-      "id": -1,
-      "amount": 0,
+      "id": 22084,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -628,7 +618,7 @@
     },
     {
       "id": 17818,
-      "amount": 99,
+      "amount": 100,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1234,18 +1224,7 @@
     }
   ],
   "offences": [],
-  "bank-0": [
-    {
-      "id": 22084,
-      "amount": 1,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    }
-  ],
+  "bank-0": [],
   "bank-1": [],
   "bank-2": [],
   "bank-3": [],
@@ -1269,10 +1248,7 @@
     0,
     0
   ],
-  "friends": [
-    558998,
-    67290
-  ],
+  "friends": [],
   "ignores": [],
   "loyalty-titles": [
     false,
@@ -1300,22 +1276,22 @@
   "drops": [
     {
       "item": 10946,
-      "amount": 82,
+      "amount": 31,
       "rareDrop": false
     },
     {
       "item": 2023,
-      "amount": 5275,
+      "amount": 1835,
       "rareDrop": false
     },
     {
       "item": 995,
-      "amount": 77467863,
+      "amount": 18073410,
       "rareDrop": false
     },
     {
       "item": 23020,
-      "amount": 30,
+      "amount": 12,
       "rareDrop": false
     }
   ],
@@ -2012,7 +1988,7 @@
       0,
       0,
       0,
-      45,
+      13,
       0,
       0,
       0,
@@ -2422,7 +2398,7 @@
       false,
       false,
       false,
-      true,
+      false,
       false,
       false,
       false,
@@ -2813,7 +2789,7 @@
       false
     ]
   ],
-  "achievements-daily": 327,
+  "achievements-daily": 326,
   "progression-zones": [
     0,
     0,

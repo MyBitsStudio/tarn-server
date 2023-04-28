@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 185281913,
+  "total-play-time-ms": 181489906,
   "username": "Pjk",
   "password": "15102022",
   "email": "null",
@@ -8,14 +8,14 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2207,
-    "y": 3746,
+    "x": 2222,
+    "y": 3745,
     "z": 0
   },
   "online-status": "ON",
   "given-starter": true,
   "has-pin2": false,
-  "donated": 667,
+  "donated": 660,
   "current-boss-task": 0,
   "current-boss-amount": 0,
   "global-rate": 0,
@@ -38,14 +38,14 @@
   "timeUntilNextReward": 0,
   "current-voting-streak": 0,
   "entriesCurrency": 0.0,
-  "amount-donated-today": 667,
+  "amount-donated-today": 660,
   "claimed-first": false,
   "claimed-second": false,
   "claimed-third": false,
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682525599196,
+  "lastlogin": 1682499653406,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -59,9 +59,9 @@
   "minutes-bonus-exp": -1,
   "minutes-voting-dr": -1,
   "minutes-voting-dmg": 0,
-  "total-gained-exp": 523884013,
+  "total-gained-exp": 519797750,
   "barrows-points": 0,
-  "donator-points": 62,
+  "donator-points": 65,
   "Skilling-points": 0,
   "prestige-points": 0,
   "achievement-points": 0,
@@ -70,7 +70,7 @@
   "loyalty-points": 0,
   "total-loyalty-points": 0.0,
   "godmodetime": 0,
-  "voting-points": 3,
+  "voting-points": 1,
   "tasks-completion": [
     false,
     false,
@@ -138,7 +138,7 @@
   ],
   "total-prestiges": 0,
   "slayer-spree": 0,
-  "npc-killcount": 456652,
+  "npc-killcount": 439859,
   "spawn-killcount": 0,
   "lord-killcount": 0,
   "demon-killcount": 201,
@@ -170,10 +170,10 @@
   "run-energy": 100,
   "music": false,
   "sounds": false,
-  "auto-retaliate": true,
+  "auto-retaliate": false,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 1682305625793,
+  "last-veng": 208559066,
   "fight-type": "LONGBOW_RAPID",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -604,12 +604,12 @@
     {
       "npcId": 9906,
       "item": 995,
-      "amount": 2244573
+      "amount": 2244571
     },
     {
       "npcId": 9906,
       "item": 2023,
-      "amount": 97
+      "amount": 95
     },
     {
       "npcId": 9904,
@@ -624,12 +624,12 @@
     {
       "npcId": 9908,
       "item": 10946,
-      "amount": 20
+      "amount": 19
     },
     {
       "npcId": 9908,
       "item": 2023,
-      "amount": 616
+      "amount": 615
     },
     {
       "npcId": 6692,
@@ -969,12 +969,12 @@
     {
       "npcId": 8013,
       "item": 10946,
-      "amount": 23
+      "amount": 22
     },
     {
       "npcId": 8013,
       "item": 23020,
-      "amount": 21
+      "amount": 20
     },
     {
       "npcId": 9025,
@@ -1329,12 +1329,12 @@
     {
       "npcId": 9839,
       "item": 995,
-      "amount": 59240
+      "amount": 56904
     },
     {
       "npcId": 9839,
       "item": 21023,
-      "amount": 2
+      "amount": 1
     },
     {
       "npcId": 9839,
@@ -1599,7 +1599,7 @@
     {
       "npcId": 1313,
       "item": 995,
-      "amount": 66105
+      "amount": 65977
     },
     {
       "npcId": 202,
@@ -1629,16 +1629,6 @@
     {
       "npcId": 202,
       "item": 20542,
-      "amount": 1
-    },
-    {
-      "npcId": 9839,
-      "item": 21020,
-      "amount": 1
-    },
-    {
-      "npcId": 8013,
-      "item": 23170,
       "amount": 1
     }
   ],
@@ -1753,7 +1743,7 @@
       0,
       0,
       0,
-      912700101,
+      908613838,
       0,
       0,
       1879173,
@@ -1771,7 +1761,7 @@
   "inventory": [
     {
       "id": 2023,
-      "amount": 35325,
+      "amount": 34975,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1791,7 +1781,7 @@
     },
     {
       "id": 10835,
-      "amount": 10292736,
+      "amount": 10294431,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1826,7 +1816,7 @@
     },
     {
       "id": 995,
-      "amount": 11590947,
+      "amount": 49296803,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1845,34 +1835,9 @@
       }
     },
     {
-      "id": 13727,
-      "amount": 68,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
-      "id": 11137,
-      "amount": 2,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
-      "id": 23020,
-      "amount": 1,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
+      "id": -1,
+      "amount": 0,
+      "slot": 0
     },
     {
       "id": -1,
@@ -1887,12 +1852,7 @@
     {
       "id": -1,
       "amount": 0,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
+      "slot": 0
     },
     {
       "id": -1,
@@ -1903,6 +1863,16 @@
         "rarity": "COMMON",
         "bonus": 0
       }
+    },
+    {
+      "id": -1,
+      "amount": 0,
+      "slot": 0
+    },
+    {
+      "id": -1,
+      "amount": 0,
+      "slot": 0
     },
     {
       "id": -1,
@@ -2136,9 +2106,9 @@
       "amount": 1,
       "slot": 0,
       "bonus": {
-        "effect": "DROP_RATE_HIGH",
-        "rarity": "MYTHIC",
-        "bonus": 30
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
       }
     }
   ],
@@ -3213,8 +3183,7 @@
     33599,
     6269,
     5824,
-    1135317,
-    302963818450669
+    1135317
   ],
   "ignores": [],
   "loyalty-titles": [
@@ -3296,13 +3265,6 @@
       "boss": true
     },
     {
-      "runningTotal": 2002,
-      "npcId": 202,
-      "npcName": "Inferno",
-      "amount": 2002,
-      "boss": true
-    },
-    {
       "runningTotal": 578,
       "npcId": 3831,
       "npcName": "Zernath",
@@ -3317,18 +3279,11 @@
       "boss": true
     },
     {
-      "runningTotal": 4,
-      "npcId": 9906,
-      "npcName": "Final Boss Veigar",
-      "amount": 4,
+      "runningTotal": 2002,
+      "npcId": 202,
+      "npcName": "Inferno",
+      "amount": 2002,
       "boss": true
-    },
-    {
-      "runningTotal": 21101,
-      "npcId": 9839,
-      "npcName": "Mutant Hydra",
-      "amount": 21101,
-      "boss": false
     },
     {
       "runningTotal": 18108,
@@ -3370,6 +3325,13 @@
       "npcId": 3010,
       "npcName": "Zeidan Grimm",
       "amount": 10346,
+      "boss": false
+    },
+    {
+      "runningTotal": 12013,
+      "npcId": 9839,
+      "npcName": "Mutant Hydra",
+      "amount": 12013,
       "boss": false
     },
     {
@@ -3436,20 +3398,6 @@
       "boss": false
     },
     {
-      "runningTotal": 4526,
-      "npcId": 1746,
-      "npcName": "Onyx Griffin",
-      "amount": 4526,
-      "boss": false
-    },
-    {
-      "runningTotal": 4352,
-      "npcId": 1313,
-      "npcName": "Lord Yasuda",
-      "amount": 4352,
-      "boss": false
-    },
-    {
       "runningTotal": 3806,
       "npcId": 9816,
       "npcName": "Dragonite",
@@ -3482,6 +3430,13 @@
       "npcId": 3014,
       "npcName": "Lilinryss",
       "amount": 3210,
+      "boss": false
+    },
+    {
+      "runningTotal": 4526,
+      "npcId": 1746,
+      "npcName": "Onyx Griffin",
+      "amount": 4526,
       "boss": false
     },
     {
@@ -3594,6 +3549,13 @@
       "npcId": 3313,
       "npcName": "Miscreation",
       "amount": 503,
+      "boss": false
+    },
+    {
+      "runningTotal": 3848,
+      "npcId": 1313,
+      "npcName": "Lord Yasuda",
+      "amount": 3848,
       "boss": false
     },
     {
@@ -3733,7 +3695,7 @@
   "drops": [
     {
       "item": 995,
-      "amount": -879398182,
+      "amount": -882858182,
       "rareDrop": false
     },
     {
@@ -4873,7 +4835,7 @@
     ],
     [
       0,
-      56,
+      54,
       2000,
       2000,
       613,
@@ -5853,7 +5815,7 @@
   "drystreak": {
     "1310": 1,
     "1311": 4241,
-    "1313": 1088,
+    "1313": 962,
     "6692": 4,
     "2342": 147,
     "3112": 1167,
@@ -5862,7 +5824,7 @@
     "3117": 1368,
     "9903": 642,
     "9904": 0,
-    "9906": 1,
+    "9906": 0,
     "9907": 0,
     "9012": 1560,
     "9908": 0,
@@ -5919,7 +5881,7 @@
     "9836": 95,
     "9837": 2,
     "9838": 9,
-    "9839": 929,
+    "9839": 657,
     "3313": 163,
     "1906": 6,
     "9845": 2,

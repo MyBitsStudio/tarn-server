@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 101131725,
+  "total-play-time-ms": 16682255,
   "username": "Thor",
   "password": "Boom2828",
   "email": "null",
@@ -16,7 +16,7 @@
   "given-starter": true,
   "has-pin2": true,
   "saved-pin2": "0728",
-  "saved-ip": "46.199.92.101",
+  "saved-ip": "185.230.113.76",
   "donated": 0,
   "current-boss-task": 0,
   "current-boss-amount": 0,
@@ -47,7 +47,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682620874443,
+  "lastlogin": 1682276335529,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -61,7 +61,7 @@
   "minutes-bonus-exp": 0,
   "minutes-voting-dr": 0,
   "minutes-voting-dmg": 0,
-  "total-gained-exp": 688716863,
+  "total-gained-exp": 186775940,
   "barrows-points": 0,
   "donator-points": 0,
   "Skilling-points": 0,
@@ -82,7 +82,7 @@
     false
   ],
   "tasks-progress": [
-    1,
+    0,
     0,
     0,
     0,
@@ -140,7 +140,7 @@
   ],
   "total-prestiges": 0,
   "slayer-spree": 0,
-  "npc-killcount": 2,
+  "npc-killcount": 0,
   "spawn-killcount": 0,
   "lord-killcount": 0,
   "demon-killcount": 0,
@@ -175,8 +175,8 @@
   "auto-retaliate": false,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 1682510799006,
-  "fight-type": "BATTLEAXE_HACK",
+  "last-veng": 7714795,
+  "fight-type": "BATTLEAXE_CHOP",
   "sol-effect": -1,
   "skull-timer": 0,
   "fuse-combination-timer": 0,
@@ -332,18 +332,7 @@
     0,
     0
   ],
-  "collection-data": [
-    {
-      "npcId": 9837,
-      "item": 995,
-      "amount": 100
-    },
-    {
-      "npcId": 9837,
-      "item": 2023,
-      "amount": 1
-    }
-  ],
+  "collection-data": [],
   "holy-prayers-unlocked": [
     false,
     false,
@@ -391,8 +380,8 @@
     "level": [
       1,
       1,
-      50,
-      420,
+      1,
+      100,
       1,
       10,
       1,
@@ -418,8 +407,8 @@
     "maxLevel": [
       1,
       1,
-      50,
-      470,
+      1,
+      100,
       1,
       10,
       1,
@@ -445,8 +434,8 @@
     "experience": [
       0,
       0,
-      102830,
-      80962,
+      0,
+      1184,
       0,
       0,
       0,
@@ -457,7 +446,7 @@
       0,
       0,
       0,
-      688534255,
+      186775940,
       0,
       0,
       0,
@@ -473,17 +462,7 @@
   "inventory": [
     {
       "id": 5020,
-      "amount": 65850,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
-      "id": 22084,
-      "amount": 1,
+      "amount": 340,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -493,17 +472,7 @@
     },
     {
       "id": 17634,
-      "amount": 356680,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
-      "id": 1265,
-      "amount": 1,
+      "amount": 113360,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -554,7 +523,32 @@
     {
       "id": -1,
       "amount": 0,
-      "slot": 0
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
+    },
+    {
+      "id": -1,
+      "amount": 0,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
+    },
+    {
+      "id": -1,
+      "amount": 0,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
     },
     {
       "id": -1,
@@ -749,7 +743,37 @@
   ],
   "equipment": [
     {
-      "id": 703,
+      "id": -1,
+      "amount": 0,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
+    },
+    {
+      "id": -1,
+      "amount": 0,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
+    },
+    {
+      "id": -1,
+      "amount": 0,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
+    },
+    {
+      "id": 1265,
       "amount": 1,
       "slot": 0,
       "bonus": {
@@ -779,36 +803,6 @@
       }
     },
     {
-      "id": 19812,
-      "amount": 1,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
-      "id": 704,
-      "amount": 1,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
-      "id": 19914,
-      "amount": 1,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
       "id": -1,
       "amount": 0,
       "slot": 0,
@@ -819,8 +813,8 @@
       }
     },
     {
-      "id": 705,
-      "amount": 1,
+      "id": -1,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -849,8 +843,8 @@
       }
     },
     {
-      "id": 19945,
-      "amount": 1,
+      "id": -1,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1207,7 +1201,7 @@
   "bank-0": [
     {
       "id": 703,
-      "amount": 0,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1217,7 +1211,7 @@
     },
     {
       "id": 704,
-      "amount": 0,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1227,7 +1221,7 @@
     },
     {
       "id": 705,
-      "amount": 0,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1247,7 +1241,7 @@
     },
     {
       "id": 19945,
-      "amount": 0,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1257,7 +1251,7 @@
     },
     {
       "id": 19914,
-      "amount": 0,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1297,7 +1291,7 @@
     },
     {
       "id": 22084,
-      "amount": 0,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1379,10 +1373,7 @@
     0,
     0
   ],
-  "friends": [
-    4828538,
-    1902477700151
-  ],
+  "friends": [],
   "ignores": [],
   "loyalty-titles": [
     false,
@@ -1405,27 +1396,9 @@
       "npcName": "Oracle Lion",
       "amount": 0,
       "boss": false
-    },
-    {
-      "runningTotal": 1,
-      "npcId": 9837,
-      "npcName": "Blurite Goblin",
-      "amount": 1,
-      "boss": false
     }
   ],
-  "drops": [
-    {
-      "item": 995,
-      "amount": 100,
-      "rareDrop": false
-    },
-    {
-      "item": 2023,
-      "amount": 1,
-      "rareDrop": false
-    }
-  ],
+  "drops": [],
   "achievements-completion": [],
   "achievements-progress": [
     0,
@@ -2118,109 +2091,7 @@
       0,
       0,
       0,
-      1,
       0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ],
-    [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
       0,
       0,
       0,
@@ -2323,7 +2194,109 @@
       0,
       0,
       0,
-      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
       0,
       0,
       0,
@@ -2920,9 +2893,9 @@
       false
     ]
   ],
-  "achievements-daily": 327,
+  "achievements-daily": 323,
   "progression-zones": [
-    1,
+    0,
     0,
     0,
     0,
@@ -2955,12 +2928,7 @@
   "group-ironman-locked": false,
   "lastInstanceNpc": -1,
   "daily-task": {},
-  "collectionlog-rewards": {
-    "9837": {
-      "canClaim": false,
-      "hasClaimed": false
-    }
-  },
+  "collectionlog-rewards": {},
   "daily-skips": 3,
   "dailies-done": 0,
   "level-notifications": true,
@@ -2970,9 +2938,7 @@
     -1
   ],
   "favorite-teleports": [],
-  "obtained-pets": [
-    "GOKU_PET"
-  ],
+  "obtained-pets": [],
   "battlepass-xp": 0,
   "battlepass-premium": false,
   "mini-me-equipment": [
@@ -2991,113 +2957,7 @@
     null,
     null
   ],
-  "drystreak": {
-    "9837": 1
-  },
+  "drystreak": {},
   "boost": 0,
-  "slot-level": 0,
-  "sp-season": 1,
-  "sp-premium": false,
-  "sp-level": 0,
-  "sp-exp": 0,
-  "sp-rewards": [
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false
-  ]
+  "slot-level": 0
 }
