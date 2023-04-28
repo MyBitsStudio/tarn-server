@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 164688001,
+  "total-play-time-ms": 247180353,
   "username": "Iagurkas",
   "password": "mantelis09",
   "email": "null",
@@ -45,7 +45,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682497207225,
+  "lastlogin": 1682590734179,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -59,7 +59,7 @@
   "minutes-bonus-exp": 0,
   "minutes-voting-dr": 0,
   "minutes-voting-dmg": 0,
-  "total-gained-exp": 1430895416,
+  "total-gained-exp": 64243126,
   "barrows-points": 0,
   "donator-points": 0,
   "Skilling-points": 0,
@@ -173,7 +173,7 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 1682334591603,
+  "last-veng": 242161531,
   "fight-type": "BATTLEAXE_HACK",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -334,12 +334,12 @@
     {
       "npcId": 8013,
       "item": 10946,
-      "amount": 15
+      "amount": 28
     },
     {
       "npcId": 8013,
       "item": 23020,
-      "amount": 13
+      "amount": 26
     }
   ],
   "holy-prayers-unlocked": [
@@ -387,10 +387,10 @@
   ],
   "skills": {
     "level": [
-      83,
-      55,
-      100,
-      990,
+      117,
+      96,
+      120,
+      1200,
       1,
       10,
       1,
@@ -414,10 +414,10 @@
       1
     ],
     "maxLevel": [
-      83,
-      55,
-      100,
-      990,
+      117,
+      96,
+      120,
+      1200,
       1,
       10,
       1,
@@ -441,10 +441,10 @@
       1
     ],
     "experience": [
-      2887263,
-      174359,
-      15103806,
-      14097482,
+      81359887,
+      10029428,
+      1299888042,
+      1081949064,
       0,
       0,
       0,
@@ -455,7 +455,7 @@
       0,
       0,
       0,
-      1398633690,
+      1885985185,
       0,
       0,
       0,
@@ -471,7 +471,7 @@
   "inventory": [
     {
       "id": 17634,
-      "amount": 90940,
+      "amount": 197500,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -481,7 +481,7 @@
     },
     {
       "id": 5020,
-      "amount": 20550,
+      "amount": 33823,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -490,8 +490,8 @@
       }
     },
     {
-      "id": 10946,
-      "amount": 5,
+      "id": -1,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -500,8 +500,8 @@
       }
     },
     {
-      "id": 23020,
-      "amount": 3,
+      "id": 704,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -530,19 +530,34 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
-      "slot": 0
+      "id": 19946,
+      "amount": 1,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
+    },
+    {
+      "id": 705,
+      "amount": 1,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
     },
     {
       "id": -1,
       "amount": 0,
-      "slot": 0
-    },
-    {
-      "id": -1,
-      "amount": 0,
-      "slot": 0
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
     },
     {
       "id": -1,
@@ -747,7 +762,7 @@
       }
     },
     {
-      "id": 704,
+      "id": 14069,
       "amount": 1,
       "slot": 0,
       "bonus": {
@@ -777,7 +792,7 @@
       }
     },
     {
-      "id": 705,
+      "id": 14070,
       "amount": 1,
       "slot": 0,
       "bonus": {
@@ -797,7 +812,7 @@
       }
     },
     {
-      "id": 19946,
+      "id": 14071,
       "amount": 1,
       "slot": 0,
       "bonus": {
@@ -807,8 +822,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 14072,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1214,12 +1229,12 @@
   "drops": [
     {
       "item": 10946,
-      "amount": 55,
+      "amount": 120,
       "rareDrop": false
     },
     {
       "item": 23020,
-      "amount": 33,
+      "amount": 72,
       "rareDrop": false
     }
   ],
@@ -2717,7 +2732,7 @@
       false
     ]
   ],
-  "achievements-daily": 326,
+  "achievements-daily": 327,
   "progression-zones": [
     0,
     0,

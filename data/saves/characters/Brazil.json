@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 21878833,
+  "total-play-time-ms": 27926839,
   "username": "Brazil",
   "password": "22031997",
   "email": "null",
@@ -8,15 +8,15 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2222,
-    "y": 3747,
+    "x": 2661,
+    "y": 3044,
     "z": 0
   },
   "online-status": "ON",
   "given-starter": true,
   "has-pin2": true,
   "saved-pin2": "3259",
-  "saved-ip": "189.82.153.111",
+  "saved-ip": "189.24.214.62",
   "donated": 10,
   "current-boss-task": 0,
   "current-boss-amount": 0,
@@ -47,7 +47,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682253243620,
+  "lastlogin": 1682513902822,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -58,8 +58,8 @@
   "day5claimed": false,
   "day6claimed": false,
   "day7claimed": false,
-  "minutes-bonus-exp": 2999,
-  "minutes-voting-dr": 299,
+  "minutes-bonus-exp": 2900,
+  "minutes-voting-dr": 200,
   "minutes-voting-dmg": 0,
   "total-gained-exp": -90322673,
   "barrows-points": 0,
@@ -175,7 +175,7 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 137432001,
+  "last-veng": 1682368911482,
   "fight-type": "STAFF_POUND",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -346,32 +346,32 @@
     {
       "npcId": 9906,
       "item": 995,
-      "amount": 2292786
+      "amount": 2292788
     },
     {
       "npcId": 9906,
       "item": 2023,
-      "amount": 36
+      "amount": 38
     },
     {
       "npcId": 9904,
       "item": 995,
-      "amount": 3431366
+      "amount": 3431368
     },
     {
       "npcId": 9904,
       "item": 2023,
-      "amount": 48
+      "amount": 50
     },
     {
       "npcId": 9907,
       "item": 10946,
-      "amount": 3
+      "amount": 4
     },
     {
       "npcId": 9907,
       "item": 2023,
-      "amount": 102
+      "amount": 103
     },
     {
       "npcId": 8014,
@@ -406,12 +406,12 @@
     {
       "npcId": 8013,
       "item": 10946,
-      "amount": 8
+      "amount": 9
     },
     {
       "npcId": 8013,
       "item": 23020,
-      "amount": 6
+      "amount": 7
     },
     {
       "npcId": 9815,
@@ -793,7 +793,7 @@
   "inventory": [
     {
       "id": 995,
-      "amount": 51138216,
+      "amount": 216,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -814,7 +814,12 @@
     {
       "id": -1,
       "amount": 0,
-      "slot": 0
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
     },
     {
       "id": -1,
@@ -1729,7 +1734,8 @@
     229183815018,
     583175697200344,
     19834795,
-    1429959732002
+    1429959732002,
+    77800694409511
   ],
   "ignores": [],
   "loyalty-titles": [
@@ -1870,22 +1876,22 @@
   "drops": [
     {
       "item": 995,
-      "amount": 39863011,
+      "amount": 48970431,
       "rareDrop": false
     },
     {
       "item": 2023,
-      "amount": 2515,
+      "amount": 2745,
       "rareDrop": false
     },
     {
       "item": 10946,
-      "amount": 13,
+      "amount": 19,
       "rareDrop": false
     },
     {
       "item": 23020,
-      "amount": 6,
+      "amount": 9,
       "rareDrop": false
     },
     {
@@ -2587,7 +2593,7 @@
       53,
       65,
       2350,
-      25,
+      30,
       0,
       0,
       0,
@@ -3388,7 +3394,7 @@
       false
     ]
   ],
-  "achievements-daily": 323,
+  "achievements-daily": 326,
   "progression-zones": [
     12,
     0,
@@ -3563,5 +3569,109 @@
     "9916": 162
   },
   "boost": 0,
-  "slot-level": 0
+  "slot-level": 0,
+  "sp-season": 1,
+  "sp-premium": false,
+  "sp-level": 0,
+  "sp-exp": 0,
+  "sp-rewards": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+  ]
 }

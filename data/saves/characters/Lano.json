@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 11346596,
+  "total-play-time-ms": 28646870,
   "username": "Lano",
   "password": "tarn2023youtu07",
   "email": "null",
@@ -8,7 +8,7 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2224,
+    "x": 2221,
     "y": 3762,
     "z": 0
   },
@@ -45,7 +45,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682020207252,
+  "lastlogin": 1682514072032,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -173,7 +173,7 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 79972883,
+  "last-veng": 1682451399496,
   "fight-type": "STAFF_BASH",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -397,11 +397,11 @@
   ],
   "skills": {
     "level": [
-      34,
-      34,
-      34,
+      1,
+      1,
+      1,
       144100,
-      34,
+      1,
       15000,
       120,
       1,
@@ -480,8 +480,18 @@
   },
   "inventory": [
     {
+      "id": 15003,
+      "amount": 7,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
+    },
+    {
       "id": 15002,
-      "amount": 1,
+      "amount": 2,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -490,18 +500,8 @@
       }
     },
     {
-      "id": 15004,
-      "amount": 1,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
-      "id": 20489,
-      "amount": 1,
+      "id": -1,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1230,7 +1230,7 @@
     },
     {
       "id": 15003,
-      "amount": 49,
+      "amount": 39,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1240,7 +1240,7 @@
     },
     {
       "id": 15002,
-      "amount": 48,
+      "amount": 44,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1250,7 +1250,7 @@
     },
     {
       "id": 15004,
-      "amount": 48,
+      "amount": 49,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1260,7 +1260,7 @@
     },
     {
       "id": 20489,
-      "amount": 48,
+      "amount": 49,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -2936,7 +2936,7 @@
       false
     ]
   ],
-  "achievements-daily": 320,
+  "achievements-daily": 326,
   "progression-zones": [
     0,
     0,
@@ -3019,5 +3019,109 @@
     "188": 9
   },
   "boost": 0,
-  "slot-level": 0
+  "slot-level": 0,
+  "sp-season": 1,
+  "sp-premium": false,
+  "sp-level": 0,
+  "sp-exp": 0,
+  "sp-rewards": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+  ]
 }

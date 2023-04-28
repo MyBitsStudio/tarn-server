@@ -8,7 +8,14 @@
       "effect": "NOTHING",
       "bonus": 0
     },
-    null,
+    {
+      "id": 23080,
+      "amount": 1,
+      "maxAmount": 1,
+      "price": 800000,
+      "effect": "MAGIC_DAMAGE",
+      "bonus": 1
+    },
     null,
     null,
     null,
@@ -40,5 +47,5 @@
     null,
     null
   ],
-  "earnings": 0
+  "earnings": 2250000
 }

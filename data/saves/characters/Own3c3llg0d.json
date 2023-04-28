@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 15560379,
+  "total-play-time-ms": 16813736,
   "username": "Own3c3llg0d",
   "password": "jacmel2",
   "email": "null",
@@ -8,9 +8,9 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2178,
-    "y": 3743,
-    "z": 0
+    "x": 2529,
+    "y": 2522,
+    "z": 4
   },
   "online-status": "ON",
   "given-starter": true,
@@ -47,7 +47,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1681932975852,
+  "lastlogin": 1682536947507,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -58,10 +58,10 @@
   "day5claimed": false,
   "day6claimed": false,
   "day7claimed": false,
-  "minutes-bonus-exp": 202,
+  "minutes-bonus-exp": 182,
   "minutes-voting-dr": -1,
   "minutes-voting-dmg": 0,
-  "total-gained-exp": 137796046,
+  "total-gained-exp": 138839132,
   "barrows-points": 0,
   "donator-points": 2,
   "Skilling-points": 0,
@@ -82,7 +82,7 @@
     false
   ],
   "tasks-progress": [
-    516,
+    541,
     0,
     0,
     0,
@@ -140,10 +140,10 @@
   ],
   "total-prestiges": 0,
   "slayer-spree": 0,
-  "npc-killcount": 1032,
+  "npc-killcount": 1082,
   "spawn-killcount": 0,
   "lord-killcount": 0,
-  "demon-killcount": 0,
+  "demon-killcount": 25,
   "dragon-killcount": 0,
   "beast-killcount": 0,
   "king-killcount": 0,
@@ -175,8 +175,8 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 45791602,
-  "fight-type": "SWORD_LUNGE",
+  "last-veng": 1682492409279,
+  "fight-type": "BSOAT_RAPID",
   "sol-effect": 0,
   "skull-timer": 0,
   "fuse-combination-timer": 0,
@@ -218,9 +218,9 @@
   "dfs-charges": 0,
   "coins-gambled": 0,
   "slayer-master": "EASY_SLAYER",
-  "slayer-task": "NO_TASK",
+  "slayer-task": "ZINQRUX",
   "prev-slayer-task": "NO_TASK",
-  "task-amount": 0,
+  "task-amount": 14,
   "task-streak": 0,
   "duo-partner": "null",
   "double-slay-xp": false,
@@ -592,6 +592,21 @@
       "npcId": 9807,
       "item": 14487,
       "amount": 1
+    },
+    {
+      "npcId": 8014,
+      "item": 995,
+      "amount": 2025
+    },
+    {
+      "npcId": 8014,
+      "item": 2023,
+      "amount": 25
+    },
+    {
+      "npcId": 8014,
+      "item": 23054,
+      "amount": 1
     }
   ],
   "holy-prayers-unlocked": [
@@ -642,8 +657,8 @@
       111,
       92,
       105,
-      1140,
-      84,
+      920,
+      85,
       300,
       45,
       1,
@@ -657,7 +672,7 @@
       1,
       1,
       1,
-      1,
+      25,
       1,
       1,
       1,
@@ -670,7 +685,7 @@
       92,
       105,
       1140,
-      84,
+      85,
       330,
       45,
       1,
@@ -684,7 +699,7 @@
       1,
       1,
       1,
-      1,
+      25,
       1,
       1,
       1,
@@ -695,9 +710,9 @@
     "experience": [
       43403575,
       7031601,
-      23790136,
-      60272327,
-      3197431,
+      24021545,
+      60724829,
+      3547881,
       19549,
       66665,
       0,
@@ -711,7 +726,7 @@
       0,
       0,
       0,
-      0,
+      8725,
       0,
       0,
       0,
@@ -722,7 +737,7 @@
   },
   "inventory": [
     {
-      "id": 18636,
+      "id": 23146,
       "amount": 1,
       "slot": 0,
       "bonus": {
@@ -773,7 +788,7 @@
     },
     {
       "id": 10835,
-      "amount": 6262,
+      "amount": 6271,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -858,7 +873,7 @@
     },
     {
       "id": 995,
-      "amount": 5443,
+      "amount": 443,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1019,7 +1034,7 @@
       }
     },
     {
-      "id": 23146,
+      "id": 18636,
       "amount": 1,
       "slot": 0,
       "bonus": {
@@ -1570,17 +1585,24 @@
       "npcName": "Imperial Paladin",
       "amount": 83,
       "boss": false
+    },
+    {
+      "runningTotal": 25,
+      "npcId": 8014,
+      "npcName": "Zinqrux",
+      "amount": 25,
+      "boss": false
     }
   ],
   "drops": [
     {
       "item": 995,
-      "amount": 10645780,
+      "amount": 10697780,
       "rareDrop": false
     },
     {
       "item": 2023,
-      "amount": 1273,
+      "amount": 1298,
       "rareDrop": false
     },
     {
@@ -1651,6 +1673,11 @@
     {
       "item": 23020,
       "amount": 12,
+      "rareDrop": false
+    },
+    {
+      "item": 23054,
+      "amount": 1,
       "rareDrop": false
     }
   ],
@@ -2335,7 +2362,7 @@
       0,
       0,
       0,
-      0,
+      25,
       0,
       0,
       0,
@@ -2346,7 +2373,7 @@
       0,
       0,
       14,
-      516,
+      541,
       5,
       0,
       0,
@@ -2448,7 +2475,7 @@
       0,
       0,
       14,
-      516,
+      541,
       0,
       0,
       0,
@@ -2551,7 +2578,7 @@
       0,
       0,
       14,
-      516,
+      541,
       0,
       0,
       0,
@@ -3148,7 +3175,7 @@
       false
     ]
   ],
-  "achievements-daily": 319,
+  "achievements-daily": 326,
   "progression-zones": [
     13,
     20,
@@ -3201,6 +3228,10 @@
       "hasClaimed": false
     },
     "9837": {
+      "canClaim": false,
+      "hasClaimed": false
+    },
+    "8014": {
       "canClaim": false,
       "hasClaimed": false
     },
@@ -3271,6 +3302,7 @@
     "9835": 5,
     "8013": 0,
     "9837": 9,
+    "8014": 18,
     "9838": 2,
     "9807": 3,
     "9904": 0,
@@ -3281,5 +3313,109 @@
     "9911": 2
   },
   "boost": 0,
-  "slot-level": 0
+  "slot-level": 0,
+  "sp-season": 1,
+  "sp-premium": false,
+  "sp-level": 0,
+  "sp-exp": 0,
+  "sp-rewards": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+  ]
 }

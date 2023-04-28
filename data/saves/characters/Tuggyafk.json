@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 226560806,
+  "total-play-time-ms": 334068735,
   "username": "Tuggyafk",
   "password": "Toshiba78",
   "email": "null",
@@ -47,7 +47,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682411566917,
+  "lastlogin": 1682640349115,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -61,7 +61,7 @@
   "minutes-bonus-exp": 0,
   "minutes-voting-dr": 0,
   "minutes-voting-dmg": 0,
-  "total-gained-exp": 1027236931,
+  "total-gained-exp": 1998538453,
   "barrows-points": 0,
   "donator-points": 0,
   "Skilling-points": 0,
@@ -175,8 +175,8 @@
   "auto-retaliate": false,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 178194214,
-  "fight-type": "BSOAT_RAPID",
+  "last-veng": 233293038,
+  "fight-type": "LONGSWORD_BLOCK",
   "sol-effect": 0,
   "skull-timer": 0,
   "fuse-combination-timer": 0,
@@ -336,22 +336,22 @@
     {
       "npcId": 9906,
       "item": 995,
-      "amount": 2299062
+      "amount": 2299064
     },
     {
       "npcId": 9906,
       "item": 2023,
-      "amount": 30
+      "amount": 32
     },
     {
       "npcId": 9904,
       "item": 995,
-      "amount": 4468141
+      "amount": 4468143
     },
     {
       "npcId": 9904,
       "item": 2023,
-      "amount": 43
+      "amount": 45
     },
     {
       "npcId": 9907,
@@ -366,22 +366,22 @@
     {
       "npcId": 8013,
       "item": 10946,
-      "amount": 9
+      "amount": 11
     },
     {
       "npcId": 8013,
       "item": 23020,
-      "amount": 7
+      "amount": 9
     },
     {
       "npcId": 9908,
       "item": 10946,
-      "amount": 2
+      "amount": 4
     },
     {
       "npcId": 9908,
       "item": 2023,
-      "amount": 300
+      "amount": 302
     }
   ],
   "holy-prayers-unlocked": [
@@ -430,12 +430,12 @@
   "skills": {
     "level": [
       61,
-      21,
-      81,
-      1110,
+      95,
+      114,
+      1200,
       112,
       10,
-      90,
+      119,
       1,
       1,
       1,
@@ -457,12 +457,12 @@
     ],
     "maxLevel": [
       61,
-      21,
-      81,
-      1110,
+      95,
+      114,
+      1200,
       112,
       10,
-      90,
+      119,
       1,
       1,
       1,
@@ -484,20 +484,20 @@
     ],
     "experience": [
       329508,
-      5198,
-      2231750,
-      43073168,
-      47455028,
+      9003840,
+      58063581,
+      166327692,
+      51239737,
       0,
-      5433718,
-      0,
-      0,
+      95334484,
       0,
       0,
       0,
       0,
       0,
-      928709745,
+      0,
+      0,
+      1618240795,
       0,
       0,
       0,
@@ -513,7 +513,7 @@
   "inventory": [
     {
       "id": 2023,
-      "amount": 910,
+      "amount": 1640,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -523,7 +523,7 @@
     },
     {
       "id": 17634,
-      "amount": 568560,
+      "amount": 173860,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -532,7 +532,7 @@
       }
     },
     {
-      "id": 22092,
+      "id": 22083,
       "amount": 1,
       "slot": 0,
       "bonus": {
@@ -542,8 +542,8 @@
       }
     },
     {
-      "id": 995,
-      "amount": 3885815,
+      "id": 5020,
+      "amount": 120620,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -552,8 +552,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 23089,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -592,7 +592,7 @@
       "slot": 0
     },
     {
-      "id": 22084,
+      "id": 22092,
       "amount": 1,
       "slot": 0,
       "bonus": {
@@ -799,7 +799,7 @@
       }
     },
     {
-      "id": 23089,
+      "id": 19886,
       "amount": 1,
       "slot": 0,
       "bonus": {
@@ -809,7 +809,7 @@
       }
     },
     {
-      "id": 22083,
+      "id": 22084,
       "amount": 1,
       "slot": 0,
       "bonus": {
@@ -1286,22 +1286,22 @@
   "drops": [
     {
       "item": 995,
-      "amount": 25811856,
+      "amount": 28080283,
       "rareDrop": false
     },
     {
       "item": 2023,
-      "amount": 910,
+      "amount": 935,
       "rareDrop": false
     },
     {
       "item": 10946,
-      "amount": 30,
+      "amount": 35,
       "rareDrop": false
     },
     {
       "item": 23020,
-      "amount": 15,
+      "amount": 18,
       "rareDrop": false
     }
   ],
@@ -1998,7 +1998,7 @@
       0,
       0,
       0,
-      14,
+      20,
       0,
       0,
       0,
@@ -2799,7 +2799,7 @@
       false
     ]
   ],
-  "achievements-daily": 326,
+  "achievements-daily": 327,
   "progression-zones": [
     0,
     0,
@@ -2892,5 +2892,109 @@
     "8013": 0
   },
   "boost": 0,
-  "slot-level": 0
+  "slot-level": 0,
+  "sp-season": 1,
+  "sp-premium": false,
+  "sp-level": 0,
+  "sp-exp": 0,
+  "sp-rewards": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+  ]
 }
