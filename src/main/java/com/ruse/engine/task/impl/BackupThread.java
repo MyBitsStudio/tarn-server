@@ -15,9 +15,9 @@ import java.util.zip.ZipOutputStream;
 
 public class BackupThread extends Task {
 
-    private static String BACKUP_DIR = "data/backups/";
-    private static String SAVE_DIR = "data/saves/characters/";
-    private static String SHOP_DIR = "data/saves/pos/";
+    private static String BACKUP_DIR = "./data/backups/";
+    private static String SAVE_DIR = "./data/saves/characters/";
+    private static String SHOP_DIR = "./data/saves/pos/";
 
     public List<String> filesList= new ArrayList<>();
 
