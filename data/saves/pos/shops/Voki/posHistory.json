@@ -471,6 +471,46 @@
       "price": 25000,
       "effect": "NOTHING",
       "bonus": 0
+    },
+    {
+      "id": 11184,
+      "amount": 1,
+      "buyer": "Tom",
+      "price": 25000,
+      "effect": "MAGIC_DAMAGE",
+      "bonus": 1
+    },
+    {
+      "id": 15646,
+      "amount": 1,
+      "buyer": "Tokin Joker",
+      "price": 200000,
+      "effect": "DOUBLE_KILLS",
+      "bonus": 2
+    },
+    {
+      "id": 15645,
+      "amount": 1,
+      "buyer": "Toguro",
+      "price": 300000,
+      "effect": "TRIPLE_KILLS",
+      "bonus": 2
+    },
+    {
+      "id": 15647,
+      "amount": 1,
+      "buyer": "Smelt",
+      "price": 400000,
+      "effect": "DOUBLE_CASH",
+      "bonus": 1
+    },
+    {
+      "id": 15647,
+      "amount": 1,
+      "buyer": "Zetta",
+      "price": 100000,
+      "effect": "ALL_DAMAGE_LOW",
+      "bonus": 1
     }
   ]
 }

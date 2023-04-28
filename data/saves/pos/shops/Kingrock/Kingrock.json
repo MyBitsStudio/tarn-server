@@ -26,9 +26,17 @@
     },
     {
       "id": 13650,
-      "amount": 250,
-      "maxAmount": 250,
+      "amount": 410,
+      "maxAmount": 410,
       "price": 50000,
+      "effect": "NOTHING",
+      "bonus": 0
+    },
+    {
+      "id": 17694,
+      "amount": 1,
+      "maxAmount": 1,
+      "price": 700000,
       "effect": "NOTHING",
       "bonus": 0
     },
@@ -58,8 +66,7 @@
     null,
     null,
     null,
-    null,
     null
   ],
-  "earnings": 100000
+  "earnings": 13500000
 }
