@@ -1207,6 +1207,10 @@ public class PlayerLoading {
                 player.getSeasonPass().setRewardsClaimed(builder.fromJson(reader.get("sp-rewards").getAsJsonArray(), boolean[].class));
             }
 
+            if(reader.has("dropMessage")) {
+                player.dropMessageToggle = reader.get("dropMessage").getAsBoolean();
+            }
+
             /*
              * File rooms = new File("./data/saves/housing/rooms/" + player.getUsername() +
              * ".ser"); if (rooms.exists()) { FileInputStream fileIn = new

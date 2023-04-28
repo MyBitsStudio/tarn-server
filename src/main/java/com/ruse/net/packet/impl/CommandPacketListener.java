@@ -111,6 +111,10 @@ public class CommandPacketListener implements PacketListener {
             new Thread(new Donation(player)).start();
         }
 
+        if(command[0].equalsIgnoreCase("hide")){
+            player.setHiddenPlayers(!player.isHiddenPlayers());
+        }
+
         if (command[0].equalsIgnoreCase("resetduo")) {
             player.getPacketSender().sendInterfaceRemoval();
             if (player.getSlayer().getDuoPartner() != null) {

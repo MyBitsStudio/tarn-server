@@ -3,6 +3,7 @@ package com.ruse.world.content.skill.impl.slayer;
 import com.ruse.model.Position;
 import com.ruse.model.definitions.NpcDefinition;
 import com.ruse.util.Misc;
+import com.ruse.world.entity.impl.player.Player;
 
 import java.util.*;
 
@@ -182,11 +183,17 @@ public enum SlayerTasks {
 	}
 
 
-	public static SlayerTaskData getNewTaskData(SlayerMaster master) {
+	public static SlayerTaskData getNewTaskData(SlayerMaster master, Player player) {
 		int slayerTaskAmount = 20;
 		ArrayList<SlayerTasks> possibleTasks = tasks.get(master);
 		SlayerTasks task = possibleTasks.get(Misc.getRandom(possibleTasks.size() - 1));
 
+		if(task == SlayerTasks.SANCTUM_GOLEM){
+			if(player.getPointsHandler().getANGELKILLCount() < 50){
+				possibleTasks.remove(SlayerTasks.SANCTUM_GOLEM);
+				task = possibleTasks.get(Misc.getRandom(possibleTasks.size() - 1));
+			}
+		}
 		/*
 		 * Getting a task
 		 */

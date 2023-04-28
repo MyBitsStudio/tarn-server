@@ -781,6 +781,7 @@ public class Player extends Character {
     @Getter @Setter private RaidParty raidParty, inviteParty;
     @Getter @Setter private Raid raid;
     @Getter @Setter private PlayerAttributes playerAttributes = new PlayerAttributes(this);
+    @Getter @Setter private boolean hiddenPlayers = false;
 
     public Player(PlayerSession playerIO) {
         super(GameSettings.DEFAULT_POSITION.copy());

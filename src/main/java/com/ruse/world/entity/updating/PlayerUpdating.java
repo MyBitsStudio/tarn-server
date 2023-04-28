@@ -51,9 +51,13 @@ public class PlayerUpdating {
 		updateMovement(player, packet);
 		appendUpdates(player, update, player, false, true);
 		packet.putBits(8, player.getLocalPlayers().size());
-		for (Iterator<Player> playerIterator = player.getLocalPlayers().iterator(); playerIterator.hasNext();) {
+		for (Iterator<Player> playerIterator = player.getLocalPlayers().iterator(); playerIterator.hasNext(); ) {
 			Player otherPlayer = playerIterator.next();
-			if (World.getPlayers().get(otherPlayer.getIndex()) != null
+			if(player.isHiddenPlayers()){
+				playerIterator.remove();
+				packet.putBits(1, 1);
+				packet.putBits(2, 3);
+			} else if (World.getPlayers().get(otherPlayer.getIndex()) != null
 					&& otherPlayer.isVisible()
 					&& otherPlayer.getPosition().isWithinDistance(player.getPosition())
 					&& !otherPlayer.isNeedsPlacement()) {
@@ -69,17 +73,20 @@ public class PlayerUpdating {
 		}
 		int playersAdded = 0;
 
-		for (Player otherPlayer : World.getPlayers()) {
-			if (player.getLocalPlayers().size() >= 79 || playersAdded > MAX_NEW_PLAYERS_PER_CYCLE)
-				break;
-			if (otherPlayer == null || !otherPlayer.isVisible() || otherPlayer == player || player.getLocalPlayers().contains(otherPlayer)
-					|| !otherPlayer.getPosition().isWithinDistance(player.getPosition()))
-				continue;
-			player.getLocalPlayers().add(otherPlayer);
-			addPlayer(player, otherPlayer, packet);
-			appendUpdates(player, update, otherPlayer, true, false);
-			playersAdded++;
+		if(!player.isHiddenPlayers()) {
+			for (Player otherPlayer : World.getPlayers()) {
+				if (player.getLocalPlayers().size() >= 79 || playersAdded > MAX_NEW_PLAYERS_PER_CYCLE)
+					break;
+				if (otherPlayer == null || !otherPlayer.isVisible() || otherPlayer == player || player.getLocalPlayers().contains(otherPlayer)
+						|| !otherPlayer.getPosition().isWithinDistance(player.getPosition()))
+					continue;
+				player.getLocalPlayers().add(otherPlayer);
+				addPlayer(player, otherPlayer, packet);
+				appendUpdates(player, update, otherPlayer, true, false);
+				playersAdded++;
+			}
 		}
+
 
 		if (update.buffer().writerIndex() > 0) {
 			packet.putBits(11, 2047);

@@ -380,6 +380,8 @@ public class PlayerSaving {
 			object.addProperty("sp-exp", player.getSeasonPass().getExp());
 			object.add("sp-rewards", builder.toJsonTree(player.getSeasonPass().getRewardsClaimed()));
 
+			object.addProperty("dropMessage", player.dropMessageToggle);
+
 			writer.write(builder.toJson(object));
 			writer.close();
 

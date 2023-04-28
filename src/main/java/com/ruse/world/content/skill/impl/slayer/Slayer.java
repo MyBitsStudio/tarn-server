@@ -41,7 +41,7 @@ public class Slayer {
             player.getPacketSender().sendInterfaceRemoval();
             return;
         }
-        SlayerTaskData taskData = SlayerTasks.getNewTaskData(slayerMaster);
+        SlayerTaskData taskData = SlayerTasks.getNewTaskData(slayerMaster, player);
         int slayerTaskAmount = taskData.getSlayerTaskAmount();
         SlayerTasks taskToSet = taskData.getTask();
         if(duoSlayer) {
