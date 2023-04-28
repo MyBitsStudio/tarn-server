@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 8504353,
+  "total-play-time-ms": 12406749,
   "username": "Masterking1",
   "password": "felix11",
   "email": "null",
@@ -8,9 +8,9 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2221,
-    "y": 3762,
-    "z": 0
+    "x": 2521,
+    "y": 2522,
+    "z": 8
   },
   "online-status": "ON",
   "given-starter": true,
@@ -47,7 +47,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682257232414,
+  "lastlogin": 1682602653095,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -58,10 +58,10 @@
   "day5claimed": false,
   "day6claimed": false,
   "day7claimed": false,
-  "minutes-bonus-exp": 21,
+  "minutes-bonus-exp": -1,
   "minutes-voting-dr": -1,
   "minutes-voting-dmg": 0,
-  "total-gained-exp": 1822455140,
+  "total-gained-exp": 1822473080,
   "barrows-points": 0,
   "donator-points": 10,
   "Skilling-points": 0,
@@ -140,10 +140,10 @@
   ],
   "total-prestiges": 0,
   "slayer-spree": 2,
-  "npc-killcount": 8104,
+  "npc-killcount": 8428,
   "spawn-killcount": 0,
   "lord-killcount": 0,
-  "demon-killcount": 3504,
+  "demon-killcount": 3576,
   "dragon-killcount": 0,
   "beast-killcount": 0,
   "king-killcount": 0,
@@ -175,8 +175,8 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 69384425,
-  "fight-type": "BSOAT_RAPID",
+  "last-veng": 147772098,
+  "fight-type": "STAFF_POUND",
   "sol-effect": 0,
   "skull-timer": 0,
   "fuse-combination-timer": 0,
@@ -214,13 +214,13 @@
   "process-farming": false,
   "clanchat": "Help",
   "autocast": false,
-  "autocast-spell": -1,
+  "autocast-spell": 71,
   "dfs-charges": 0,
   "coins-gambled": 0,
-  "slayer-master": "EASY_SLAYER",
-  "slayer-task": "NO_TASK",
+  "slayer-master": "MEDIUM_SLAYER",
+  "slayer-task": "DR_ABERRANT",
   "prev-slayer-task": "IMPERIAL_RANGER",
-  "task-amount": 0,
+  "task-amount": 24,
   "task-streak": 2,
   "duo-partner": "null",
   "double-slay-xp": false,
@@ -346,12 +346,12 @@
     {
       "npcId": 9906,
       "item": 995,
-      "amount": 1262434
+      "amount": 1262435
     },
     {
       "npcId": 9906,
       "item": 2023,
-      "amount": 29
+      "amount": 30
     },
     {
       "npcId": 9027,
@@ -676,12 +676,12 @@
     {
       "npcId": 8014,
       "item": 995,
-      "amount": 3473
+      "amount": 3497
     },
     {
       "npcId": 8014,
       "item": 2023,
-      "amount": 1497
+      "amount": 1521
     },
     {
       "npcId": 8014,
@@ -691,12 +691,12 @@
     {
       "npcId": 8003,
       "item": 995,
-      "amount": 3107
+      "amount": 3164
     },
     {
       "npcId": 8003,
       "item": 2023,
-      "amount": 106
+      "amount": 164
     },
     {
       "npcId": 9030,
@@ -736,6 +736,11 @@
     {
       "npcId": 8003,
       "item": 19892,
+      "amount": 1
+    },
+    {
+      "npcId": 8003,
+      "item": 8334,
       "amount": 1
     }
   ],
@@ -787,7 +792,7 @@
       59,
       120,
       120,
-      450,
+      1180,
       120,
       1200,
       120,
@@ -856,7 +861,7 @@
       0,
       0,
       0,
-      453500,
+      471440,
       0,
       0,
       0,
@@ -867,8 +872,38 @@
   },
   "inventory": [
     {
-      "id": -1,
-      "amount": 0,
+      "id": 19119,
+      "amount": 1,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
+    },
+    {
+      "id": 995,
+      "amount": 13641070,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
+    },
+    {
+      "id": 18636,
+      "amount": 1,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
+    },
+    {
+      "id": 8334,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -887,8 +922,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 17817,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -897,8 +932,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 17817,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -907,8 +942,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 17817,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -917,8 +952,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 3024,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -927,38 +962,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
-      "id": -1,
-      "amount": 0,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
-      "id": -1,
-      "amount": 0,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
-      "id": -1,
-      "amount": 0,
+      "id": 3024,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1179,7 +1184,7 @@
       }
     },
     {
-      "id": 18636,
+      "id": 22092,
       "amount": 1,
       "slot": 0,
       "bonus": {
@@ -1692,7 +1697,7 @@
     },
     {
       "id": 22092,
-      "amount": 1,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1712,7 +1717,7 @@
     },
     {
       "id": 3024,
-      "amount": 96,
+      "amount": 94,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1722,7 +1727,7 @@
     },
     {
       "id": 17817,
-      "amount": 97,
+      "amount": 92,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1732,7 +1737,7 @@
     },
     {
       "id": 995,
-      "amount": 6213189,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1942,7 +1947,7 @@
     },
     {
       "id": 19119,
-      "amount": 1,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -2172,29 +2177,29 @@
       "boss": false
     },
     {
-      "runningTotal": 3504,
+      "runningTotal": 3576,
       "npcId": 8014,
       "npcName": "Zinqrux",
-      "amount": 3504,
+      "amount": 3576,
       "boss": false
     },
     {
-      "runningTotal": 213,
+      "runningTotal": 384,
       "npcId": 8003,
       "npcName": "Dr. Aberrant",
-      "amount": 213,
+      "amount": 384,
       "boss": false
     }
   ],
   "drops": [
     {
       "item": 995,
-      "amount": 12174021,
+      "amount": 13424386,
       "rareDrop": false
     },
     {
       "item": 2023,
-      "amount": 3538,
+      "amount": 3645,
       "rareDrop": false
     },
     {
@@ -2955,7 +2960,7 @@
       100,
       100,
       250,
-      71,
+      128,
       0,
       0,
       2,
@@ -2965,8 +2970,8 @@
       0,
       0,
       96,
-      2279,
-      4,
+      2360,
+      5,
       0,
       0,
       0,
@@ -3067,7 +3072,7 @@
       0,
       0,
       96,
-      2279,
+      2360,
       0,
       0,
       0,
@@ -3170,7 +3175,7 @@
       0,
       0,
       96,
-      2279,
+      2360,
       0,
       0,
       0,
@@ -3767,7 +3772,7 @@
       false
     ]
   ],
-  "achievements-daily": 323,
+  "achievements-daily": 327,
   "progression-zones": [
     16,
     24,
@@ -3804,12 +3809,12 @@
   "daily-task": {
     "BOSSES": {
       "index": 0,
-      "deadlineTimestamp": 1682304429553,
-      "completedAmount": 29,
-      "assignedAmount": 29,
+      "deadlineTimestamp": 1682609656812,
+      "completedAmount": 24,
+      "assignedAmount": 24,
       "title": "Bosses",
       "itemId": 0,
-      "description": "Kill 29 bosses.",
+      "description": "Kill 24 bosses.",
       "key": "BOSSES",
       "timespan": "DAILY",
       "claimedReward": false
@@ -3886,12 +3891,12 @@
     }
   },
   "daily-skips": 3,
-  "dailies-done": 0,
-  "daily-task-info": "Your daily task is: @red@Kill 29 bosses. @bla@Progress: @red@0/29@bla@.",
+  "dailies-done": 1,
+  "daily-task-info": "Your daily task is: @red@Kill 24 bosses. @bla@Progress: @red@0/24@bla@.",
   "level-notifications": true,
   "dailies-received-times": [
     1682218029553,
-    -1,
+    1682523256812,
     -1
   ],
   "favorite-teleports": [],
@@ -3919,7 +3924,7 @@
   ],
   "drystreak": {
     "9922": 24,
-    "8003": 11,
+    "8003": 8,
     "9027": 24,
     "9028": 13,
     "6692": 9,
@@ -3928,7 +3933,7 @@
     "9835": 37,
     "8013": 0,
     "9837": 16,
-    "8014": 13,
+    "8014": 37,
     "9838": 0,
     "9807": 2,
     "9906": 0,
@@ -3937,5 +3942,109 @@
     "9911": 43
   },
   "boost": 0,
-  "slot-level": 0
+  "slot-level": 0,
+  "sp-season": 1,
+  "sp-premium": false,
+  "sp-level": 0,
+  "sp-exp": 0,
+  "sp-rewards": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+  ]
 }

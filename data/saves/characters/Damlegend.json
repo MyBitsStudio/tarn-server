@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 12262102,
+  "total-play-time-ms": 42510898,
   "username": "Damlegend",
   "password": "Lolled101",
   "email": "null",
@@ -8,9 +8,9 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2519,
-    "y": 2539,
-    "z": 16
+    "x": 2212,
+    "y": 3768,
+    "z": 0
   },
   "online-status": "ON",
   "given-starter": true,
@@ -47,7 +47,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682017894839,
+  "lastlogin": 1682629884539,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -61,7 +61,7 @@
   "minutes-bonus-exp": -1,
   "minutes-voting-dr": -1,
   "minutes-voting-dmg": 0,
-  "total-gained-exp": 1984219,
+  "total-gained-exp": 2006359,
   "barrows-points": 0,
   "donator-points": 10,
   "Skilling-points": 0,
@@ -82,7 +82,7 @@
     false
   ],
   "tasks-progress": [
-    515,
+    625,
     0,
     0,
     0,
@@ -139,11 +139,11 @@
     0
   ],
   "total-prestiges": 0,
-  "slayer-spree": 6,
-  "npc-killcount": 1177,
+  "slayer-spree": 7,
+  "npc-killcount": 1507,
   "spawn-killcount": 0,
   "lord-killcount": 0,
-  "demon-killcount": 0,
+  "demon-killcount": 106,
   "dragon-killcount": 0,
   "beast-killcount": 0,
   "king-killcount": 0,
@@ -175,7 +175,7 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 1681908786693,
+  "last-veng": 751346643,
   "fight-type": "SWORD_LUNGE",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -218,10 +218,10 @@
   "dfs-charges": 0,
   "coins-gambled": 0,
   "slayer-master": "MEDIUM_SLAYER",
-  "slayer-task": "NAGENDRA",
-  "prev-slayer-task": "YISDAR",
-  "task-amount": 57,
-  "task-streak": 6,
+  "slayer-task": "NO_TASK",
+  "prev-slayer-task": "NAGENDRA",
+  "task-amount": 0,
+  "task-streak": 7,
   "duo-partner": "null",
   "double-slay-xp": false,
   "recoil-deg": 0,
@@ -531,12 +531,27 @@
     {
       "npcId": 811,
       "item": 995,
-      "amount": 5009
+      "amount": 5066
     },
     {
       "npcId": 811,
       "item": 2023,
-      "amount": 10
+      "amount": 67
+    },
+    {
+      "npcId": 8014,
+      "item": 995,
+      "amount": 2052
+    },
+    {
+      "npcId": 8014,
+      "item": 2023,
+      "amount": 53
+    },
+    {
+      "npcId": 8014,
+      "item": 23055,
+      "amount": 1
     }
   ],
   "holy-prayers-unlocked": [
@@ -589,7 +604,7 @@
       120,
       1200,
       120,
-      532,
+      290,
       120,
       1,
       1,
@@ -656,7 +671,7 @@
       0,
       0,
       0,
-      1295420,
+      1317560,
       0,
       0,
       0,
@@ -668,7 +683,7 @@
   "inventory": [
     {
       "id": 5023,
-      "amount": 549,
+      "amount": 657,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -687,18 +702,18 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 23055,
+      "amount": 1,
       "slot": 0,
       "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
+        "effect": "ALL_DAMAGE_LOW",
+        "rarity": "RARE",
+        "bonus": 1
       }
     },
     {
       "id": 995,
-      "amount": 20856,
+      "amount": 98856,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -728,7 +743,7 @@
     },
     {
       "id": 10835,
-      "amount": 413490,
+      "amount": 613510,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -737,13 +752,13 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 18636,
+      "amount": 1,
       "slot": 0,
       "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
+        "effect": "DROP_RATE_LOW",
+        "rarity": "RARE",
+        "bonus": 17
       }
     },
     {
@@ -767,7 +782,7 @@
       }
     },
     {
-      "id": 3026,
+      "id": 3028,
       "amount": 1,
       "slot": 0
     },
@@ -1607,7 +1622,7 @@
     },
     {
       "id": 18636,
-      "amount": 1,
+      "amount": 0,
       "slot": 0,
       "bonus": {
         "effect": "DROP_RATE_LOW",
@@ -1928,16 +1943,30 @@
   "kills": [
     {
       "runningTotal": 130,
-      "npcId": 9026,
-      "npcName": "Eragon",
+      "npcId": 811,
+      "npcName": "Nagendra",
       "amount": 130,
-      "boss": false
+      "boss": true
     },
     {
       "runningTotal": 205,
       "npcId": 3313,
       "npcName": "Miscreation",
       "amount": 205,
+      "boss": false
+    },
+    {
+      "runningTotal": 130,
+      "npcId": 9026,
+      "npcName": "Eragon",
+      "amount": 130,
+      "boss": false
+    },
+    {
+      "runningTotal": 112,
+      "npcId": 9817,
+      "npcName": "Yisdar",
+      "amount": 112,
       "boss": false
     },
     {
@@ -1997,29 +2026,22 @@
       "boss": false
     },
     {
-      "runningTotal": 112,
-      "npcId": 9817,
-      "npcName": "Yisdar",
-      "amount": 112,
+      "runningTotal": 106,
+      "npcId": 8014,
+      "npcName": "Zinqrux",
+      "amount": 106,
       "boss": false
-    },
-    {
-      "runningTotal": 16,
-      "npcId": 811,
-      "npcName": "Nagendra",
-      "amount": 16,
-      "boss": true
     }
   ],
   "drops": [
     {
       "item": 995,
-      "amount": 18759015,
+      "amount": 19150015,
       "rareDrop": false
     },
     {
       "item": 2023,
-      "amount": 1163,
+      "amount": 1273,
       "rareDrop": false
     },
     {
@@ -2729,18 +2751,18 @@
       0,
       0,
       0,
+      53,
       0,
       0,
-      0,
-      8,
-      6,
+      65,
+      7,
       0,
       56,
       0,
       0,
       0,
       52,
-      515,
+      625,
       8,
       0,
       0,
@@ -2835,14 +2857,14 @@
       0,
       0,
       0,
-      6,
+      7,
       0,
       0,
       0,
       0,
       0,
       52,
-      515,
+      625,
       0,
       0,
       0,
@@ -2937,7 +2959,7 @@
       0,
       0,
       0,
-      6,
+      7,
       0,
       0,
       0,
@@ -2945,7 +2967,7 @@
       0,
       0,
       52,
-      515,
+      625,
       0,
       0,
       0,
@@ -3542,7 +3564,7 @@
       false
     ]
   ],
-  "achievements-daily": 320,
+  "achievements-daily": 327,
   "progression-zones": [
     10,
     20,
@@ -3677,10 +3699,11 @@
     "9026": 67,
     "9922": 7,
     "9027": 20,
-    "811": 8,
+    "811": 65,
     "9835": 30,
     "8013": 0,
     "9837": 10,
+    "8014": 3,
     "9838": 0,
     "9807": 6,
     "9904": 0,
@@ -3691,5 +3714,109 @@
     "9817": 56
   },
   "boost": 0,
-  "slot-level": 0
+  "slot-level": 0,
+  "sp-season": 1,
+  "sp-premium": false,
+  "sp-level": 0,
+  "sp-exp": 0,
+  "sp-rewards": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+  ]
 }

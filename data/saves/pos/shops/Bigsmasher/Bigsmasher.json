@@ -1,6 +1,13 @@
 {
   "shop": [
-    null,
+    {
+      "id": 15645,
+      "amount": 2,
+      "maxAmount": 2,
+      "price": 700000,
+      "effect": "ALL_DAMAGE_HIGH",
+      "bonus": 3
+    },
     null,
     null,
     null,
@@ -33,5 +40,5 @@
     null,
     null
   ],
-  "earnings": 10000
+  "earnings": 0
 }

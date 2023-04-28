@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 42349207,
+  "total-play-time-ms": 182246755,
   "username": "Geidi Primes",
   "password": "isnotarobot",
   "email": "null",
@@ -45,7 +45,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682272923920,
+  "lastlogin": 1682535732504,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -59,7 +59,7 @@
   "minutes-bonus-exp": 0,
   "minutes-voting-dr": 0,
   "minutes-voting-dmg": 0,
-  "total-gained-exp": 220025050,
+  "total-gained-exp": 997445080,
   "barrows-points": 0,
   "donator-points": 0,
   "Skilling-points": 0,
@@ -173,7 +173,7 @@
   "auto-retaliate": false,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 1682211481772,
+  "last-veng": 1682403853833,
   "fight-type": "BATTLEAXE_CHOP",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -207,7 +207,7 @@
     0
   ],
   "effigy": 0,
-  "summon-npc": -1,
+  "summon-npc": 4444,
   "summon-death": -1,
   "process-farming": false,
   "clanchat": "Help",
@@ -444,7 +444,7 @@
       0,
       0,
       0,
-      220025050,
+      997445080,
       0,
       0,
       0,
@@ -610,7 +610,7 @@
     },
     {
       "id": 5020,
-      "amount": 2660,
+      "amount": 28109,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -620,7 +620,17 @@
     },
     {
       "id": 17634,
-      "amount": 262550,
+      "amount": 3650480,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
+    },
+    {
+      "id": 1265,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -631,72 +641,32 @@
     {
       "id": -1,
       "amount": 0,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
+      "slot": 0
     },
     {
       "id": -1,
       "amount": 0,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
+      "slot": 0
     },
     {
       "id": -1,
       "amount": 0,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
+      "slot": 0
     },
     {
       "id": -1,
       "amount": 0,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
+      "slot": 0
     },
     {
       "id": -1,
       "amount": 0,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
+      "slot": 0
     },
     {
       "id": -1,
       "amount": 0,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
-      "id": -1,
-      "amount": 0,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
+      "slot": 0
     },
     {
       "id": -1,
@@ -741,8 +711,8 @@
   ],
   "equipment": [
     {
-      "id": -1,
-      "amount": 0,
+      "id": 14068,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -761,8 +731,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 14073,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -771,7 +741,17 @@
       }
     },
     {
-      "id": 1265,
+      "id": 19812,
+      "amount": 1,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
+    },
+    {
+      "id": 14069,
       "amount": 1,
       "slot": 0,
       "bonus": {
@@ -801,8 +781,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 14070,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -821,8 +801,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 14071,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -831,18 +811,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
-      "id": -1,
-      "amount": 0,
+      "id": 14072,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -2740,7 +2710,7 @@
       false
     ]
   ],
-  "achievements-daily": 323,
+  "achievements-daily": 327,
   "progression-zones": [
     0,
     0,
@@ -2785,7 +2755,9 @@
     -1
   ],
   "favorite-teleports": [],
-  "obtained-pets": [],
+  "obtained-pets": [
+    "HOOKER"
+  ],
   "battlepass-xp": 0,
   "battlepass-premium": false,
   "mini-me-equipment": [
@@ -2806,5 +2778,109 @@
   ],
   "drystreak": {},
   "boost": 0,
-  "slot-level": 0
+  "slot-level": 0,
+  "sp-season": 1,
+  "sp-premium": false,
+  "sp-level": 0,
+  "sp-exp": 0,
+  "sp-rewards": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+  ]
 }

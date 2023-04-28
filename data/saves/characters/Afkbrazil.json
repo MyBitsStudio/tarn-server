@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 256582413,
+  "total-play-time-ms": 395994928,
   "username": "Afkbrazil",
   "password": "22031997",
   "email": "null",
@@ -47,7 +47,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682497485021,
+  "lastlogin": 1682621213468,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -175,7 +175,7 @@
   "auto-retaliate": false,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 185198358,
+  "last-veng": 256018581,
   "fight-type": "BATTLEAXE_CHOP",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -472,7 +472,7 @@
     },
     {
       "id": 5020,
-      "amount": 130650,
+      "amount": 14200,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -482,7 +482,7 @@
     },
     {
       "id": 17634,
-      "amount": 252540,
+      "amount": 3858700,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -503,7 +503,12 @@
     {
       "id": -1,
       "amount": 0,
-      "slot": 0
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
     },
     {
       "id": -1,
@@ -758,8 +763,8 @@
       }
     },
     {
-      "id": -1,
-      "amount": 0,
+      "id": 14073,
+      "amount": 1,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -1378,7 +1383,10 @@
     0,
     0
   ],
-  "friends": [],
+  "friends": [
+    1340110196,
+    1729926298317
+  ],
   "ignores": [],
   "loyalty-titles": [
     false,
@@ -2898,7 +2906,7 @@
       false
     ]
   ],
-  "achievements-daily": 326,
+  "achievements-daily": 327,
   "progression-zones": [
     0,
     0,

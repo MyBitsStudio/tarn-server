@@ -1,5 +1,5 @@
 {
-  "total-play-time-ms": 126305836,
+  "total-play-time-ms": 232338768,
   "username": "Shortbus",
   "password": "paintball",
   "email": "null",
@@ -8,8 +8,8 @@
   "loyalty-title": "NONE",
   "yellhexcolor": "ffffff",
   "position": {
-    "x": 2210,
-    "y": 3744,
+    "x": 2207,
+    "y": 3746,
     "z": 0
   },
   "online-status": "ON",
@@ -47,7 +47,7 @@
   "last-donation": 0,
   "last-time-reset": 0,
   "is-secondary-equipment": false,
-  "lastlogin": 1682495694240,
+  "lastlogin": 1682621158841,
   "lastdailyclaim": 0,
   "lastvotetime": 0,
   "hasvotedtoday": false,
@@ -61,7 +61,7 @@
   "minutes-bonus-exp": 0,
   "minutes-voting-dr": 0,
   "minutes-voting-dmg": 0,
-  "total-gained-exp": -173981082,
+  "total-gained-exp": 514597869,
   "barrows-points": 0,
   "donator-points": 0,
   "Skilling-points": 0,
@@ -175,7 +175,7 @@
   "auto-retaliate": true,
   "xp-locked": false,
   "veng-cast": false,
-  "last-veng": 1682311528744,
+  "last-veng": 1682396874457,
   "fight-type": "BATTLEAXE_CHOP",
   "sol-effect": 0,
   "skull-timer": 0,
@@ -209,7 +209,7 @@
     0
   ],
   "effigy": 0,
-  "summon-npc": -1,
+  "summon-npc": 4444,
   "summon-death": -1,
   "process-farming": false,
   "clanchat": "Help",
@@ -520,9 +520,9 @@
       0,
       0,
       0,
-      1099932,
+      1178458,
       0,
-      950232170,
+      1638732595,
       0,
       0,
       0,
@@ -538,7 +538,7 @@
   "inventory": [
     {
       "id": 5020,
-      "amount": 105990,
+      "amount": 57020,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -557,38 +557,38 @@
       }
     },
     {
+      "id": 19984,
+      "amount": 1,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
+    },
+    {
+      "id": 10835,
+      "amount": 10,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
+    },
+    {
+      "id": 19991,
+      "amount": 1,
+      "slot": 0,
+      "bonus": {
+        "effect": "NOTHING",
+        "rarity": "COMMON",
+        "bonus": 0
+      }
+    },
+    {
       "id": 17634,
-      "amount": 628920,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
-      "id": -1,
-      "amount": 0,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
-      "id": -1,
-      "amount": 0,
-      "slot": 0,
-      "bonus": {
-        "effect": "NOTHING",
-        "rarity": "COMMON",
-        "bonus": 0
-      }
-    },
-    {
-      "id": -1,
-      "amount": 0,
+      "amount": 64720,
       "slot": 0,
       "bonus": {
         "effect": "NOTHING",
@@ -819,7 +819,7 @@
   ],
   "equipment": [
     {
-      "id": 19984,
+      "id": 14068,
       "amount": 1,
       "slot": 0,
       "bonus": {
@@ -839,7 +839,7 @@
       }
     },
     {
-      "id": 19991,
+      "id": 14073,
       "amount": 1,
       "slot": 0,
       "bonus": {
@@ -859,7 +859,7 @@
       }
     },
     {
-      "id": 19985,
+      "id": 14069,
       "amount": 1,
       "slot": 0,
       "bonus": {
@@ -884,7 +884,7 @@
       }
     },
     {
-      "id": 19986,
+      "id": 14070,
       "amount": 1,
       "slot": 0,
       "bonus": {
@@ -3090,7 +3090,7 @@
       false
     ]
   ],
-  "achievements-daily": 326,
+  "achievements-daily": 327,
   "progression-zones": [
     20,
     21,
@@ -3156,7 +3156,9 @@
     -1
   ],
   "favorite-teleports": [],
-  "obtained-pets": [],
+  "obtained-pets": [
+    "HOOKER"
+  ],
   "battlepass-xp": 0,
   "battlepass-premium": false,
   "mini-me-equipment": [
@@ -3183,5 +3185,109 @@
     "9837": 20
   },
   "boost": 0,
-  "slot-level": 0
+  "slot-level": 0,
+  "sp-season": 1,
+  "sp-premium": false,
+  "sp-level": 0,
+  "sp-exp": 0,
+  "sp-rewards": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+  ]
 }
