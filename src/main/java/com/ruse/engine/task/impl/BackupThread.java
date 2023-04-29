@@ -40,9 +40,9 @@ public class BackupThread extends Task {
             ZipOutputStream zos = new ZipOutputStream(fos);
 
             for(String filePath : filesList){
-                ZipEntry ze = new ZipEntry(filePath.substring(dir.getAbsolutePath().length()-1));
+                ZipEntry ze = new ZipEntry(filePath.substring(dir.getAbsolutePath().length()-1).replace("_", " "));
                 zos.putNextEntry(ze);
-                FileInputStream fis = new FileInputStream(filePath);
+                FileInputStream fis = new FileInputStream(filePath.replace("_", " "));
                 byte[] buffer = new byte[1024];
                 int len;
                 while ((len = fis.read(buffer)) > 0) {

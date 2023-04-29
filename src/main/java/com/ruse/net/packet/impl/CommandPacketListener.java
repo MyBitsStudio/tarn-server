@@ -47,6 +47,7 @@ import com.ruse.world.content.dailyTask.DailyTaskHandler;
 import com.ruse.world.content.dailytasks_new.DailyTasks;
 import com.ruse.world.content.dialogue.DialogueManager;
 import com.ruse.world.content.discordbot.JavaCord;
+import com.ruse.world.content.donation.DonationManager;
 import com.ruse.world.content.grandexchange.GrandExchangeOffers;
 import com.ruse.world.content.groupironman.GroupManager;
 import com.ruse.world.content.holidayevents.easter2017;
@@ -149,6 +150,7 @@ public class CommandPacketListener implements PacketListener {
                                 || donate.product_id == 15004 || donate.product_id == 20489 || donate.product_id == 20491 || donate.product_id == 20490 || donate.product_id == 23002 || donate.product_id == 13019) {
                             player.getInventory().add(new Item(donate.product_id, donate.product_amount));
                         }
+                        DonationManager.getInstance().addToTotalDonation(donate.product_id, donate.product_amount);
                     }
                     player.getPacketSender().sendMessage("Thank you for donating!");
                     World.sendMessage("<img=857><col=FF0000><shad=1>[" + player.getUsername() + "] Just Donated For " + donations[0].product_name + " x" + donations[0].product_amount + ". Thank You For The Support!");
@@ -163,6 +165,7 @@ public class CommandPacketListener implements PacketListener {
                         World.sendMessage("<img=857><col=FF0000><shad=1>[" + player.getUsername() + "] Got His " + donations[0].product_name + " Donation Doubled !");
                         JavaCord.sendMessage("\uD83E\uDD16│\uD835\uDDEE\uD835\uDDF0\uD835\uDE01\uD835\uDDF6\uD835\uDE03\uD835\uDDF6\uD835\uDE01\uD835\uDE06", "**[" + player.getUsername() + "] Got His " + donations[0].product_name + " Donation Doubled !** :tada: ");
                     }
+
                 } catch (Exception e) {
                     player.getPacketSender().sendMessage("Api Services are currently offline. Please check back shortly");
                     e.printStackTrace();
@@ -179,31 +182,27 @@ public class CommandPacketListener implements PacketListener {
             final String id = command[1];
             final String amount = command.length == 3 ? command[2] : "1";
 
-            com.everythingrs.vote.Vote.service.execute(new Runnable() {
-                @Override
-                public void run() {
-                    try {
-                        com.everythingrs.vote.Vote[] reward = com.everythingrs.vote.Vote.reward("szUziRZAX4r853p8wSF7icsTKkqLS8VgtLLJ2TQinhWRHIXqT5nyWvMQON924RSg5iOos4u4",
-                                playerName, id, amount);
-                        if (reward[0].message != null) {
-                            player.getPacketSender().sendMessage(reward[0].message);
-                            return;
-                        }
-                        player.getInventory().add(reward[0].reward_id, reward[0].give_amount);
-                        player.getPacketSender().sendMessage("Thank you for voting! You now have " + reward[0].vote_points + " vote points.");
-                        JavaCord.sendMessage("\uD83E\uDD16│\uD835\uDDEE\uD835\uDDF0\uD835\uDE01\uD835\uDDF6\uD835\uDE03\uD835\uDDF6\uD835\uDE01\uD835\uDE06", "**[" + player.getUsername() + "] Just voted for the server, thank you!**");
-                        doMotivote.setVoteCount(doMotivote.getVoteCount() + reward[0].give_amount);
-
-                        if (doMotivote.getVoteCount() >= 50) {
-                            VoteBossDrop.handleSpawn();
-                        }
-                        voteCount++;
-                    } catch (Exception e) {
-                        player.getPacketSender().sendMessage("Api Services are currently offline. Please check back shortly");
-                        e.printStackTrace();
+            com.everythingrs.vote.Vote.service.execute(() -> {
+                try {
+                    com.everythingrs.vote.Vote[] reward = com.everythingrs.vote.Vote.reward("szUziRZAX4r853p8wSF7icsTKkqLS8VgtLLJ2TQinhWRHIXqT5nyWvMQON924RSg5iOos4u4",
+                            playerName, id, amount);
+                    if (reward[0].message != null) {
+                        player.getPacketSender().sendMessage(reward[0].message);
+                        return;
                     }
-                }
+                    player.getInventory().add(reward[0].reward_id, reward[0].give_amount);
+                    player.getPacketSender().sendMessage("Thank you for voting! You now have " + reward[0].vote_points + " vote points.");
+                    JavaCord.sendMessage("\uD83E\uDD16│\uD835\uDDEE\uD835\uDDF0\uD835\uDE01\uD835\uDDF6\uD835\uDE03\uD835\uDDF6\uD835\uDE01\uD835\uDE06", "**[" + player.getUsername() + "] Just voted for the server, thank you!**");
+                    doMotivote.setVoteCount(doMotivote.getVoteCount() + reward[0].give_amount);
 
+                    if (doMotivote.getVoteCount() >= 50) {
+                        VoteBossDrop.handleSpawn();
+                    }
+                    voteCount++;
+                } catch (Exception e) {
+                    player.getPacketSender().sendMessage("Api Services are currently offline. Please check back shortly");
+                    e.printStackTrace();
+                }
             });
         }
 
@@ -914,6 +913,16 @@ public class CommandPacketListener implements PacketListener {
             Position position = new Position(2980, 2771, 0);
             TeleportHandler.teleportPlayer(player, position, TeleportType.NORMAL);
 
+        }
+
+        if(command[0].equalsIgnoreCase("donboss")){
+            if (player.getLocation() != null && player.getLocation() == Location.WILDERNESS
+                    || player.getLocation() != null && player.getLocation() == Location.CUSTOM_RAIDS) {
+                player.getPacketSender().sendMessage("You cannot do this at the moment.");
+                return;
+            }
+            Position position = new Position(2529, 2646, 4);
+            TeleportHandler.teleportPlayer(player, position, TeleportType.NORMAL);
         }
 
         if (command[0].equalsIgnoreCase("afk")) {
@@ -1640,6 +1649,11 @@ public class CommandPacketListener implements PacketListener {
             }
         }
 
+        if (command[0].equalsIgnoreCase("spawndonation")) {
+            DonationManager.getInstance().forceSpawn();
+            player.getPacketSender().sendMessage("Spawning donation boss.");
+
+        }
         if (command[0].equalsIgnoreCase("spawnvote")) {
             VoteBossDrop.handleForcedSpawn();
             player.getPacketSender().sendMessage("Spawning vote boss.");
@@ -3763,6 +3777,18 @@ public class CommandPacketListener implements PacketListener {
             int id = Integer.parseInt(command[1]);
             player.performGraphic(new Graphic(id));
             player.getPacketSender().sendMessage("Sending graphic: " + id);
+        }
+        if (command[0].equalsIgnoreCase("gfxl")) {
+            int id = Integer.parseInt(command[1]);
+            for(int bb = id; bb < (id + 100); bb++){
+                player.getPacketSender().sendMessage("Sending graphic: " + bb);
+                player.performGraphic(new Graphic(bb));
+                try{
+                    Thread.sleep(2000);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+            }
         }
         if (command[0].equalsIgnoreCase("playnpc") || command[0].equalsIgnoreCase("pnpc")) {
             int npcID = Integer.parseInt(command[1]);
