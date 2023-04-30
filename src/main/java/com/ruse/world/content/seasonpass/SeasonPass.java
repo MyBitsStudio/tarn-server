@@ -209,8 +209,8 @@ public class SeasonPass {
                 }
                 items[i] = new Item(spLevels[i-7].getPremiumItemId(), spLevels[i-7].getPremiumAmount());
             }
-            player.getPacketSender().sendString(49493+i, "Level " + (i+(page*7)+1));
         }
+        player.getPacketSender().sendItemContainer(items, 49469);
     }
 
     public void checkExpAndFix() {
