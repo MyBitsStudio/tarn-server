@@ -24,7 +24,7 @@ public class DonationManager {
     private DonationBoss boss;
     private final List<DonationMinion> minions = new CopyOnWriteArrayList<>();
     private int totalDonated;
-    private static int totalNeeded = 200;
+    private static int totalNeeded = 350;
 
     public void nullBoss(){
         if(boss != null){
