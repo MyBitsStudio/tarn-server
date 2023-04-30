@@ -11,6 +11,7 @@ public class SeasonPassManager {
     public static void resetSeasonPass(SeasonPass seasonPass) {
         seasonPass.setExp(0);
         seasonPass.setLevel(0);
+        seasonPass.setTotalExperience(0);
         seasonPass.setPremium(false);
         resetRewards(seasonPass);
         seasonPass.setSeason(SeasonPassConfig.getInstance().getSeason());

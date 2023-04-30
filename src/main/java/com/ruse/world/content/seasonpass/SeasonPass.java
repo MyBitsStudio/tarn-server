@@ -47,6 +47,7 @@ public class SeasonPass {
         }
         level++;
         exp = 0;
+        incrementExp(overflow);
     }
 
     private SeasonPassLevel getSpLevel(int level) {
