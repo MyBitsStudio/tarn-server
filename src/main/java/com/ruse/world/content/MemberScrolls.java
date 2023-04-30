@@ -595,6 +595,7 @@ public class MemberScrolls {
 			player.incrementAmountDonated(funds);
 			player.incrementAmountDonatedToday(funds);
 			player.getPointsHandler().setDonatorPoints(funds, true);
+			player.getSeasonPass().incrementExp(250 * funds);
 			player.getPacketSender().sendMessage("Your account has gained funds worth $" + (funds)
 					+ ". Your total is now at $" + player.getAmountDonated() + ".");
 			checkForRankUpdate(player);

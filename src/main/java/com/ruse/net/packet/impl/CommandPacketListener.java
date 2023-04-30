@@ -194,7 +194,7 @@ public class CommandPacketListener implements PacketListener {
                     player.getPacketSender().sendMessage("Thank you for voting! You now have " + reward[0].vote_points + " vote points.");
                     JavaCord.sendMessage("\uD83E\uDD16│\uD835\uDDEE\uD835\uDDF0\uD835\uDE01\uD835\uDDF6\uD835\uDE03\uD835\uDDF6\uD835\uDE01\uD835\uDE06", "**[" + player.getUsername() + "] Just voted for the server, thank you!**");
                     doMotivote.setVoteCount(doMotivote.getVoteCount() + reward[0].give_amount);
-
+                    player.getSeasonPass().incrementExp(250 * reward[0].give_amount);
                     if (doMotivote.getVoteCount() >= 50) {
                         VoteBossDrop.handleSpawn();
                     }

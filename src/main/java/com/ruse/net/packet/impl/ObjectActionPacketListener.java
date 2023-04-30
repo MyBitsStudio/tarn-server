@@ -212,6 +212,7 @@ public class ObjectActionPacketListener implements PacketListener {
                         player.getSkillManager().setCurrentLevel(Skill.MAGIC, 135);
                             player.performAnimation(new Animation(725));
                             player.performGraphic(new Graphic(1555));
+                            player.getSeasonPass().incrementExp(300);
                         break;
                         case 13291:
                         case 20040:
