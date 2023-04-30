@@ -212,4 +212,20 @@ public class SeasonPass {
         }
         player.getPacketSender().sendItemContainer(items, 49469);
     }
+
+    public void checkExpAndFix() {
+        int level = getLevel();
+        totalExperience = 0;
+        if(level == getMaxPassLevel()) return;
+        for(int i = level+1; i < MAX_LEVEL; i++) {
+            int expNeeded = getSpLevel(i).getExpNeeded();
+            if(exp > expNeeded) {
+                exp -= expNeeded;
+                levelUp(exp);
+                totalExperience += expNeeded;
+            } else {
+                totalExperience += exp;
+            }
+        }
+    }
 }
