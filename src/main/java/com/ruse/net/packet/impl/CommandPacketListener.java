@@ -108,8 +108,12 @@ public class CommandPacketListener implements PacketListener {
 
     private static void playerCommands(final Player player, String[] command, String wholeCommand) {
 
-        if (command[0].equalsIgnoreCase("donated")) {
-            new Thread(new Donation(player)).start();
+//        if (command[0].equalsIgnoreCase("donated")) {
+//            new Thread(new Donation(player)).start();
+//        }
+
+        if (command[0].equalsIgnoreCase("sp") || command[0].equalsIgnoreCase("bp")) {
+            player.getSeasonPass().showInterface();
         }
 
         if(command[0].equalsIgnoreCase("hide")){
@@ -2780,13 +2784,6 @@ public class CommandPacketListener implements PacketListener {
             Item item2 = new Item(8788);
 
             player.getInventory().add(item1).add(item2);
-        }
-
-        if (command[0].equalsIgnoreCase("sp")) {
-            player.getSeasonPass().showInterface();
-        }
-        if (command[0].equalsIgnoreCase("sp")) {
-            player.getSeasonPass().showInterface();
         }
 
         if (command[0].equalsIgnoreCase("spe")) {

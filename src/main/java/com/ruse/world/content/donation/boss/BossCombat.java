@@ -41,15 +41,13 @@ public class BossCombat implements CombatStrategy {
         int x = Misc.random(5);
 
         if(x == 0){
-            if(Misc.random(2) == 0 || DonationManager.getInstance().getMinions().size() >= 5){
+
                 Position base = DonationBoss.base;
                 Position pos = new Position(base.getX() + 1, base.getY() + 1, 4);
                 boss.performAnimation(new Animation(boss.getDefinition().getAttackAnimation()));
                 DonationManager.getInstance().spawnMinion(pos);
                 boss.forceChat("Minion, rise and attack!");
-            } else {
-                meleeAttack(boss, player);
-            }
+
         } else if (Locations.goodDistance(boss.copy(), victim.copy(), 1)) {
             if(x == 1){
                 earthquake(boss);

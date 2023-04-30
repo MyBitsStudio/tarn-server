@@ -455,7 +455,8 @@ public class Locations {
 			@Override
 			public void process(Player player) {
 				//if (player.getZombieParty() != null)
-				player.getAuraParty().refreshInterface();
+				if (player.getAuraParty() != null)
+					player.getAuraParty().refreshInterface();
 			}
 
 		},

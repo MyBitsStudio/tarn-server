@@ -31,7 +31,7 @@ public enum ItemEffect {
 
     /* Mythic Rarity Bonuses */
     TRIPLE_KILLS(ItemRarity.MYTHIC, 1, 2),
-    AOE_EFFECT(ItemRarity.MYTHIC, 1, 3),
+    AOE_EFFECT(ItemRarity.MYTHIC, 1, 2),
     DROP_RATE_HIGH(ItemRarity.MYTHIC, 25, 99),
     ALL_DAMAGE_HIGH(ItemRarity.MYTHIC, 3, 3);
 
@@ -76,6 +76,11 @@ public enum ItemEffect {
     }
 
     public static boolean hasTripleKills(Player player) {
+        if(player.getEquipment() == null){
+            System.out.println("Player "+player.getUsername()+" equipment is null");
+        } else if( player.getEquipment().getItems() == null){
+            System.out.println("Player "+player.getUsername()+" equipment items is null");
+        }
         for (Item item : player.getEquipment().getItems()) {
             if(item == null)
                 continue;

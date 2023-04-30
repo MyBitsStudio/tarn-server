@@ -4166,9 +4166,9 @@ public class Player extends Character {
         doMotivote.setVoteCount(voteCount);
     }
 
-    public void claimDonation(Player player, boolean fromLogin) {
-        new Thread(new Donation(player)).start();
-    }
+//    public void claimDonation(Player player, boolean fromLogin) {
+//        new Thread(new Donation(player)).start();
+//    }
 
 
     public void depositItemBank(Item item) {

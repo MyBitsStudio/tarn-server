@@ -432,7 +432,7 @@ public enum CombatSpecial {
 			return new CombatContainer(player, target, 1, CombatType.MELEE, true);
 		}
 	},
-	BARRELSCHEST_ANCHOR(new int[] { 10887 }, 100, 1, 1, CombatType.MELEE, WeaponInterface.WARHAMMER) {
+	BARRELSCHEST_ANCHOR(new int[] { 20545 }, 100, 1, 1, CombatType.MELEE, WeaponInterface.WARHAMMER) {
 			@Override
 			public void onActivation(Player player, Character target) {
 				player.forceChat("Feel the power!");
@@ -451,7 +451,7 @@ public enum CombatSpecial {
 				throw new UnsupportedOperationException("Anchor does not have a special attack!");
 			}
 		},
-	SOLDIER_LANCE(new int[] { 5730 }, 100, 1, 1, CombatType.MELEE, WeaponInterface.SPEAR) {
+	SOLDIER_LANCE(new int[] { 20544 }, 100, 1, 1, CombatType.MELEE, WeaponInterface.SPEAR) {
 		@Override
 		public void onActivation(Player player, Character target) {
 			player.forceChat("I come alive again!");

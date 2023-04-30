@@ -204,6 +204,16 @@ public class ItemActionPacketListener implements PacketListener {
                 player.sendMessage("You must bring this to your slayer master to cancel your task.");
                 break;
 
+            case 3686:
+                if (player.getSeasonPass().isPremium() != false) {
+                    player.sendMessage("You're already a premium member of the Battle Pass.");
+                    return;
+                }
+                player.sendMessage("You've claimed the Premium Battle Pass.");
+                player.getSeasonPass().setPremium(true);
+                player.getInventory().delete(3686, 1);
+                break;
+
             case 23177:
                 player.getInventory().delete(23177, 1);
                 player.getInventory().add(23139, 1);
@@ -1884,6 +1894,16 @@ public class ItemActionPacketListener implements PacketListener {
 
         switch (itemId) {
 
+            case 3686:
+                if (player.getSeasonPass().isPremium() != false) {
+                    player.sendMessage("You're already a premium member of the Battle Pass.");
+                    return;
+                }
+                player.sendMessage("You've claimed the Premium Battle Pass.");
+                player.getSeasonPass().setPremium(true);
+                player.getInventory().delete(3686, 1);
+                break;
+
             case 3253:
                 //	player.getInventory().delete(itemId, 1);
                 player.getMinimeSystem().despawn();
@@ -2159,6 +2179,16 @@ public class ItemActionPacketListener implements PacketListener {
             return;
 
         switch (itemId) {
+
+            case 3686:
+                if (player.getSeasonPass().isPremium() != false) {
+                    player.sendMessage("You're already a premium member of the Battle Pass.");
+                    return;
+                }
+                player.sendMessage("You've claimed the Premium Battle Pass.");
+                player.getSeasonPass().setPremium(true);
+                player.getInventory().delete(3686, 1);
+                break;
 
             case 19984:
             case 19985:

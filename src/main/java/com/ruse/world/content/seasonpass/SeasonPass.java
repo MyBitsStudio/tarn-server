@@ -32,6 +32,10 @@ public class SeasonPass {
         return premium;
     }
 
+    public void setPremium(boolean set){
+        this.premium = set;
+    }
+
     private int getMaxPassLevel() {
         return levels.length-1;
     }
@@ -51,21 +55,22 @@ public class SeasonPass {
 
     private void selectClaimReward() {
         boolean hasClaim = false;
-        for(int i = 0; i < MAX_LEVEL; i++) {
-            if(canClaimFree(i) || canClaimPremium(i)) {
-                if(!claimReward(i)) {
-                    player.getPacketSender().sendMessage("@red@You need inventory spaces to claim.");
-                    return;
-                }
-                hasClaim = true;
-            }
-        }
-        if(!hasClaim) {
-            player.getPacketSender().sendMessage("@red@You have no items to claim");
-            if(!isPremium()) {
-                player.getPacketSender().sendMessage("@red@Buy premium to unlock more rewards!");
-            }
-        }
+        player.sendMessage("Claiming is temporarily disabled");
+//        for(int i = 0; i < MAX_LEVEL; i++) {
+//            if(canClaimFree(i) || canClaimPremium(i)) {
+//                if(!claimReward(i)) {
+//                    player.getPacketSender().sendMessage("@red@You need inventory spaces to claim.");
+//                    return;
+//                }
+//                hasClaim = true;
+//            }
+//        }
+//        if(!hasClaim) {
+//            player.getPacketSender().sendMessage("@red@You have no items to claim");
+//            if(!isPremium()) {
+//                player.getPacketSender().sendMessage("@red@Buy premium to unlock more rewards!");
+//            }
+//        }
     }
 
     private boolean canClaimFree(int tier) {
