@@ -41,12 +41,15 @@ public class BossCombat implements CombatStrategy {
         int x = Misc.random(5);
 
         if(x == 0){
-            Position base = DonationBoss.base;
-            Position pos = new Position(base.getX() + 1, base.getY() + 1, 4);
-            boss.performAnimation(new Animation(boss.getDefinition().getAttackAnimation()));
-            DonationManager.getInstance().spawnMinion(pos);
-            boss.forceChat("Minion, rise and attack!");
-
+            if(Misc.random(2) == 0 || DonationManager.getInstance().getMinions().size() >= 5){
+                Position base = DonationBoss.base;
+                Position pos = new Position(base.getX() + 1, base.getY() + 1, 4);
+                boss.performAnimation(new Animation(boss.getDefinition().getAttackAnimation()));
+                DonationManager.getInstance().spawnMinion(pos);
+                boss.forceChat("Minion, rise and attack!");
+            } else {
+                meleeAttack(boss, player);
+            }
         } else if (Locations.goodDistance(boss.copy(), victim.copy(), 1)) {
             if(x == 1){
                 earthquake(boss);
@@ -178,7 +181,7 @@ public class BossCombat implements CombatStrategy {
                     for(Player player : players2){
                         if(!player.getPosition().equals(boss.getPosition())) {
                             boss.getCombatBuilder().setContainer(new CombatContainer(boss, player, 1, 0, CombatType.MAGIC, false));
-                            player.getPacketSender().sendGlobalGraphic(new Graphic(912), player.getPosition()); // find graphic here
+                            player.getPacketSender().sendGlobalGraphic(new Graphic(912), player.getPosition());
 
                         }
                     }
@@ -242,7 +245,7 @@ public class BossCombat implements CombatStrategy {
                 if(tick == 4 || tick == 6){
                     for(Player player : boss.getClosePlayers(10)){
                         boss.getCombatBuilder().setContainer(new CombatContainer(boss, player, 1, 0, CombatType.MAGIC, false));
-                        player.getPacketSender().sendCameraShake(6, 4, 6, 4);
+                        //player.getPacketSender().sendCameraShake(6, 4, 6, 4);
                     }
                 }
 

@@ -8,6 +8,7 @@ import com.ruse.world.content.combat.HitQueue.CombatHit;
 import com.ruse.world.content.combat.range.CombatRangedAmmo.RangedWeaponData;
 import com.ruse.world.content.combat.strategy.impl.DefaultRangedCombatStrategy;
 import com.ruse.world.content.combat.weapon.CombatSpecial;
+import com.ruse.world.content.donation.boss.DonationBoss;
 import com.ruse.world.entity.impl.npc.NPC;
 import com.ruse.world.entity.impl.player.Player;
 
@@ -70,6 +71,10 @@ public class CombatSession {
 
 			if(builder.getVictim().isNpc()){
 				if(!builder.getVictim().toNpc().isAttackable()){
+					if(builder.getVictim().toNpc() instanceof DonationBoss){
+						if(builder.getCharacter().isPlayer())
+							builder.getCharacter().asPlayer().sendMessage("You must donate to attack the minions first");
+					}
 					builder.getCharacter().getCombatBuilder().reset(builder.getCharacter().isNpc());
 					return;
 				}
