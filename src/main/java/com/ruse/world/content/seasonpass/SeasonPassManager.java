@@ -35,6 +35,6 @@ public class SeasonPassManager {
         if(amount == null) {
             return;
         }
-        seasonPass.incrementExp(amount);
+        seasonPass.incrementExp(amount, false);
     }
 }

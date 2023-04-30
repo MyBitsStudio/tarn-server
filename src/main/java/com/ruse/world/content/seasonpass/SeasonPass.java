@@ -47,7 +47,7 @@ public class SeasonPass {
         }
         level++;
         exp = 0;
-        incrementExp(overflow);
+        incrementExp(overflow, true);
     }
 
     private SeasonPassLevel getSpLevel(int level) {
@@ -140,11 +140,13 @@ public class SeasonPass {
         return false;
     }
 
-    public void incrementExp(int amount) {
+    public void incrementExp(int amount, boolean isOverflow) {
         if(totalExperience == 0) {
             calculateTotalExperience();
         }
-        totalExperience += amount;
+        if(!isOverflow) {
+            totalExperience += amount;
+        }
         exp += amount;
         int expToNextLevel = getSpLevel(getLevel()).getExpNeeded();
         if(exp == expToNextLevel) {
@@ -156,7 +158,6 @@ public class SeasonPass {
     }
 
     public void calculateTotalExperience() {
-        totalExperience += exp;
         for(int i = 0; i < level; i++) {
             totalExperience += getSpLevel(i).getExpNeeded();
         }
