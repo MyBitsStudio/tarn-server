@@ -21,6 +21,16 @@ public class DonationBoss extends NPC {
         this.getDefinition().setRespawnTime(-1);
     }
 
+    @Override
+    public boolean isAttackable() {
+        for(DonationMinion minion : DonationManager.getInstance().getMinions()){
+            if(minion != null && minion.getConstitution() > 0){
+                return false;
+            }
+        }
+        return true;
+    }
+
     public void handleDrops(){
         if (getCombatBuilder().getDamageMap().size() == 0) {
             return;
