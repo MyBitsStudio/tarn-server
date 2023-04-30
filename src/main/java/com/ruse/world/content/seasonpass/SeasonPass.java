@@ -14,7 +14,7 @@ import java.util.Arrays;
 public class SeasonPass {
 
     private static final int INTERFACE_ID = 49450;
-    private static final int REWARD_AMOUNT = 98;
+    public static final int REWARD_AMOUNT = 98;
     private static final byte MAX_LEVEL = 49;
     private static final byte PREMIUM_OFFSET = 49;
     public static SeasonPassLevel[] levels;
@@ -46,7 +46,7 @@ public class SeasonPass {
             return;
         }
         level++;
-        exp = overflow;
+        exp = 0;
     }
 
     private SeasonPassLevel getSpLevel(int level) {
@@ -55,22 +55,21 @@ public class SeasonPass {
 
     private void selectClaimReward() {
         boolean hasClaim = false;
-        player.sendMessage("Claiming is temporarily disabled");
-//        for(int i = 0; i < MAX_LEVEL; i++) {
-//            if(canClaimFree(i) || canClaimPremium(i)) {
-//                if(!claimReward(i)) {
-//                    player.getPacketSender().sendMessage("@red@You need inventory spaces to claim.");
-//                    return;
-//                }
-//                hasClaim = true;
-//            }
-//        }
-//        if(!hasClaim) {
-//            player.getPacketSender().sendMessage("@red@You have no items to claim");
-//            if(!isPremium()) {
-//                player.getPacketSender().sendMessage("@red@Buy premium to unlock more rewards!");
-//            }
-//        }
+       for(int i = 0; i < MAX_LEVEL; i++) {
+            if(canClaimFree(i) || canClaimPremium(i)) {
+                if(!claimReward(i)) {
+                    player.getPacketSender().sendMessage("@red@You need inventory spaces to claim.");
+                    return;
+                }
+                hasClaim = true;
+            }
+        }
+        if(!hasClaim) {
+            player.getPacketSender().sendMessage("@red@You have no items to claim");
+            if(!isPremium()) {
+                player.getPacketSender().sendMessage("@red@Buy premium to unlock more rewards!");
+            }
+        }
     }
 
     private boolean canClaimFree(int tier) {
