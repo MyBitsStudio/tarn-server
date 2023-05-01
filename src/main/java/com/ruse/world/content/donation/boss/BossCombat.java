@@ -38,7 +38,7 @@ public class BossCombat implements CombatStrategy {
         }
         Player player = (Player) victim;
 
-        int x = Misc.random(5);
+        int x = Misc.random(4);
 
         if(x == 0){
 
@@ -48,19 +48,20 @@ public class BossCombat implements CombatStrategy {
                 DonationManager.getInstance().spawnMinion(pos);
                 boss.forceChat("Minion, rise and attack!");
 
-        } else if (Locations.goodDistance(boss.copy(), victim.copy(), 1)) {
-            if(x == 1){
-                earthquake(boss);
-            } else if(x == 2){
-                enhancedHits(boss);
-            } else{
-                meleeAttack(boss, player);
+        }  else if (x == 1) {
+            if (Locations.goodDistance(boss.copy(), victim.copy(), 1)) {
+                int b = Misc.random(2);
+                if(b == 0){
+                    earthquake(boss);
+                } else if(b == 2){
+                    enhancedHits(boss);
+                } else{
+                    meleeAttack(boss, player);
+                }
             }
-        } else if (x == 1) {
-            burnAll(boss);
         } else if (x == 3) {
             smackThem(boss);
-        } else if (x == 5) {
+        } else if (x == 4) {
             int y = Misc.random(2);
             if (y == 0) {
                 runForYourLife(boss);

@@ -20,10 +20,10 @@ public class NpcMaxHitLimit {
                 maxLimit = 10000;
                 break;
             case 587:
-                maxLimit = 1500000;
+                maxLimit = 1000000;
                 break;
             case 586:
-                maxLimit = 1200000;
+                maxLimit = 200000;
                 break;
             default:
                 return damage;

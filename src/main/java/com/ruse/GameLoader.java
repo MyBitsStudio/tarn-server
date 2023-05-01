@@ -24,6 +24,7 @@ import com.ruse.world.content.combat.strategy.CombatStrategies;
 import com.ruse.world.content.dialogue.DialogueManager;
 import com.ruse.world.content.discordbot.Bot;
 import com.ruse.world.content.discordbot.JavaCord;
+import com.ruse.world.content.donation.DonationManager;
 import com.ruse.world.content.grandLottery.GrandLottery;
 import com.ruse.world.content.grandexchange.GrandExchangeOffers;
 import com.ruse.world.content.groupironman.GroupManager;
@@ -127,9 +128,11 @@ public final class GameLoader {
 		//serviceLoader.execute(AOESystem.getSingleton()::parseData);
 		serviceLoader.execute(ServerPerks.getInstance()::load);
 		//if (!GameSettings.LOCALHOST)
-			serviceLoader.execute(Bot::init);
+		serviceLoader.execute(Bot::init);
 		serviceLoader.execute(JavaCord::init);
 		serviceLoader.execute(SeasonPassLoader::load);
+		serviceLoader.execute(() -> DonationManager.getInstance().load());
+		serviceLoader.execute(VoteBossDrop::load);
 		//serviceLoader.execute(RSAKeyGenerator::start);
 		TaskManager.submit(new LotteryTask());
 	}

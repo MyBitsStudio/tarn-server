@@ -1,12 +1,21 @@
 package com.ruse.world.content.donation;
 
 import com.google.common.base.Preconditions;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.ruse.engine.GameEngine;
 import com.ruse.model.Position;
 import com.ruse.world.World;
 import com.ruse.world.content.discordbot.JavaCord;
 import com.ruse.world.content.donation.boss.DonationBoss;
 import com.ruse.world.content.donation.boss.DonationMinion;
+import lombok.Getter;
 
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
@@ -23,8 +32,9 @@ public class DonationManager {
 
     private DonationBoss boss;
     private final List<DonationMinion> minions = new CopyOnWriteArrayList<>();
+    @Getter
     private int totalDonated;
-    private static int totalNeeded = 350;
+   @Getter private static int totalNeeded = 350;
 
     public void nullBoss(){
         if(boss != null){
@@ -63,6 +73,14 @@ public class DonationManager {
         return minions;
     }
 
+    public void addToTotalDonation(int amount){
+        totalDonated += amount;
+
+        World.sendMessage("<img=857><col=FF0000><shad=1>[DBOSS] +"+ amount+"$ towards donation boss - "+totalDonated+"$ / "+totalNeeded+"$");
+        save();
+        check();
+    }
+
     public void addToTotalDonation(int itemId, int amount){
         double price = StorePacks.getPriceForItem(itemId);
         Preconditions.checkArgument(price > 0, "Price for item " + itemId + " is not set.");
@@ -71,12 +89,42 @@ public class DonationManager {
 
         World.sendMessage("<img=857><col=FF0000><shad=1>[DBOSS] +"+(price * amount)+"$ towards donation boss - "+totalDonated+"$ / "+totalNeeded+"$");
 
+        save();
+        check();
+    }
+
+    private void save(){
+        GameEngine.submit(() -> {
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+            JsonObject jsonObject = new JsonObject();
+            jsonObject.addProperty("amount", totalDonated);
+            jsonObject.addProperty("lastSaved", System.currentTimeMillis());
+            try (FileWriter writer = new FileWriter("./data/saves/donations.json")){
+                gson.toJson(jsonObject, writer);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+    }
+
+    public void load(){
+        Gson gson = new Gson();
+
+// Read the JSON file into a JsonObject
+        try (FileReader reader = new FileReader("./data/saves/donations.json")) {
+            JsonParser parser = new JsonParser();
+            JsonObject jsonObject = parser.parse(reader).getAsJsonObject();
+            totalDonated = jsonObject.get("amount").getAsInt();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         check();
     }
 
     private void check(){
         if(totalDonated >= totalNeeded){
             totalDonated -= totalNeeded;
+            save();
             spawnBoss();
         }
     }

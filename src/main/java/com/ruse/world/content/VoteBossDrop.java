@@ -1,5 +1,10 @@
 package com.ruse.world.content;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.ruse.engine.GameEngine;
 import com.ruse.model.Position;
 import com.ruse.model.definitions.NPCDrops;
 import com.ruse.motivote3.doMotivote;
@@ -10,6 +15,9 @@ import com.ruse.world.content.discordbot.JavaCord;
 import com.ruse.world.entity.impl.npc.NPC;
 import com.ruse.world.entity.impl.player.Player;
 
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.*;
 import java.util.Map.Entry;
 
@@ -25,12 +33,37 @@ public class VoteBossDrop {
 		}
 		
 		doMotivote.setVoteCount(doMotivote.getVoteCount() - 50);
+		save();
 		currentSpawn = new NPC(8013, new Position(2980, 2778, 0));
 
 		World.register(currentSpawn);
 		World.sendMessage(
 				"<img=28><shad=f9f6f6>Vote boss has spawned at ::voteboss kill it now for amazing rewards!<shad=-1>");
 		JavaCord.sendMessage("\uD83E\uDD16│\uD835\uDDEE\uD835\uDDF0\uD835\uDE01\uD835\uDDF6\uD835\uDE03\uD835\uDDF6\uD835\uDE01\uD835\uDE06", "**Vote boss has spawned at ::voteboss kill it now for amazing rewards!**");
+	}
+
+	public static void save(){
+		GameEngine.submit(() -> {
+			Gson gson = new GsonBuilder().setPrettyPrinting().create();
+			JsonObject jsonObject = new JsonObject();
+			jsonObject.addProperty("amount", doMotivote.getVoteCount());
+			jsonObject.addProperty("lastSaved", System.currentTimeMillis());
+			try (FileWriter writer = new FileWriter("./data/saves/votes.json")){
+				gson.toJson(jsonObject, writer);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		});
+	}
+
+	public static void load(){
+		try (FileReader reader = new FileReader("./data/saves/votes.json")) {
+			JsonParser parser = new JsonParser();
+			JsonObject jsonObject = parser.parse(reader).getAsJsonObject();
+			doMotivote.setVoteCount(jsonObject.get("amount").getAsInt());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public static void handleForcedSpawn() {

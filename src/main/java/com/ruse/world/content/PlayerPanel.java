@@ -4,6 +4,7 @@ import com.ruse.GameSettings;
 import com.ruse.motivote3.doMotivote;
 import com.ruse.util.Misc;
 import com.ruse.world.World;
+import com.ruse.world.content.donation.DonationManager;
 import com.ruse.world.content.serverperks.ServerPerks;
 import com.ruse.world.content.skill.impl.slayer.SlayerTasks;
 import com.ruse.world.entity.impl.player.Player;
@@ -34,6 +35,9 @@ public class PlayerPanel {
                 (VoteBossDrop.currentSpawn == null
                         ? "@whi@Vote Boss: @yel@" + doMotivote.getVoteCount() + "/50"
                         : "@whi@Vote Boss: @yel@::Vboss"),
+                (DonationManager.getInstance().getBoss() == null
+                ? "@whi@Donation Boss: @yel@" + DonationManager.getInstance().getTotalDonated() + "/" + DonationManager.getTotalNeeded()
+                        : "@whi@Donation Boss: @yel@::Donboss"),
                 "@whi@Final Boss Veigar: @yel@" + WorldBosses4.timeLeft(),
                 "@whi@Nine Tails Jinchuriki: @yel@" + WorldBosses2.timeLeft(),
                 "@whi@Meruem The King: @yel@" + WorldBosses3.timeLeft(),
