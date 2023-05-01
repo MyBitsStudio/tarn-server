@@ -200,6 +200,7 @@ public class SeasonPass {
                     player.getPacketSender().sendSpriteChange(49472 + i, 65535);
                 }
                 items[i] = new Item(spLevels[i].getFreeItemId(), spLevels[i].getFreeAmount());
+                player.getPacketSender().sendString(49493+i, "Level " + (i+(page*7)+1));
             } else {
                 if (rewardsClaimed[i + (page * 7) + PREMIUM_OFFSET - 7]) {
                     player.getPacketSender().sendSpriteChange(49501 + i - 7, 3341);
@@ -208,7 +209,6 @@ public class SeasonPass {
                 }
                 items[i] = new Item(spLevels[i-7].getPremiumItemId(), spLevels[i-7].getPremiumAmount());
             }
-            player.getPacketSender().sendString(49493+i, "Level " + (i+(page*7)+1));
         }
         player.getPacketSender().sendItemContainer(items, 49469);
     }
