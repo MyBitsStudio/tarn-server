@@ -176,9 +176,6 @@ public class CommandPacketListener implements PacketListener {
                 }
             }).start();
         }
-        if (command[0].startsWith("spx")) {
-            player.getSeasonPass().incrementExp(1000 * 3, false);
-        }
 
         if (command[0].startsWith("reward")) {
             if (command.length == 1) {

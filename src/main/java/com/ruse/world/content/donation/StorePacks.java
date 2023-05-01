@@ -16,17 +16,18 @@ public enum StorePacks {
 
     OWNER_CAPE(7995, 60.00),
     MAJESTIC_BOX(15004, 75.00),
-    DR_ENHANCE(99999, 75.00), // need id
+    DR_ENHANCE(23178, 75.00), // need id
     OWNER_ATTACHMENT(22110, 85.00),
     INFAMOUS_BOX(20489, 100.00),
     $100_BOND(23059, 100.00),
     OWNER_GOODY(13019, 100.00),
     DAMNATION_BOX(20491, 150.00),
-    DR_BOOSTER(99999, 150.00), // need id
+    DR_BOOSTER(4440, 150.00), // need id
     SACRED_BOX(20490, 200.00),
     $250_BOND(23060, 250.00),
     COLLECTORS_AURA(15450, 250.00),
-    OWNER_CHEST(99999, 300.00), // need id
+    OWNER_CHEST(23002, 300.00), // need id
+    PREMIUM_PASS(3686, 40.00), // need id
 
     ;
 

@@ -41,6 +41,20 @@ public class DonationManager {
         check();
     }
 
+    public void forceNull(){
+        if(boss != null){
+            boss.setDying(true);
+            World.deregister(boss);
+            boss = null;
+        }
+
+        for(DonationMinion minion : minions){
+            minion.setDying(true);
+            World.deregister(minion);
+        }
+        minions.clear();
+    }
+
     public DonationBoss getBoss() {
         return boss;
     }
@@ -55,7 +69,7 @@ public class DonationManager {
 
         totalDonated += (price * amount);
 
-        World.sendMessage("<img=857><col=FF0000><shad=1>[DONATION MANAGER] +"+(price * amount)+"$ has been donated towards the donation boss! Total donated: "+totalDonated+"$ / "+totalNeeded+"$");
+        World.sendMessage("<img=857><col=FF0000><shad=1>[DBOSS] +"+(price * amount)+"$ towards donation boss - "+totalDonated+"$ / "+totalNeeded+"$");
 
         check();
     }
@@ -69,7 +83,7 @@ public class DonationManager {
 
     public void forceSpawn(){
         if(boss != null){
-            return;
+            forceNull();
         }
 
         spawnBoss();

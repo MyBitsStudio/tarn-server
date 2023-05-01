@@ -34,8 +34,8 @@ public class BackupThread extends Task {
         if(!dir.exists()) dir.mkdirs();
 
         try{
-            populateFilesList(new File(SAVE_DIR));
-            populateFilesList(new File(SHOP_DIR));
+            populateFilesList(new File(SAVE_DIR), "char");
+            populateFilesList(new File(SHOP_DIR), "pos");
             FileOutputStream fos = new FileOutputStream(BACKUP_DIR + date(System.currentTimeMillis()) + ".zip");
             ZipOutputStream zos = new ZipOutputStream(fos);
 
@@ -58,11 +58,11 @@ public class BackupThread extends Task {
         }
     }
 
-    private void populateFilesList(File dir) {
+    private void populateFilesList(File dir, String name) {
         File[] files = dir.listFiles();
         for(File file : Objects.requireNonNull(files)){
             if(file.isFile()) filesList.add(file.getAbsolutePath().replace(" ", "_"));
-            else populateFilesList(file);
+            else populateFilesList(file, name);
         }
     }
 

@@ -18,6 +18,10 @@ public class ServerTimeUpdateTask extends Task {
 	protected void execute() {
 		World.updateServerTime();
 
+		if(tick % 300 == 0){
+			System.gc();
+		}
+
 		/*if (tick >= 6 && (Locations.PLAYERS_IN_WILD >= 3 || Locations.PLAYERS_IN_DUEL_ARENA >= 3
 				|| PestControl.TOTAL_PLAYERS >= 3)) {
 			if (Locations.PLAYERS_IN_WILD > Locations.PLAYERS_IN_DUEL_ARENA
