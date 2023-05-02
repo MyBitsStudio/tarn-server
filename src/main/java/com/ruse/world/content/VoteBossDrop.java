@@ -15,9 +15,7 @@ import com.ruse.world.content.discordbot.JavaCord;
 import com.ruse.world.entity.impl.npc.NPC;
 import com.ruse.world.entity.impl.player.Player;
 
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.*;
 import java.util.Map.Entry;
 
@@ -42,29 +40,55 @@ public class VoteBossDrop {
 		JavaCord.sendMessage("\uD83E\uDD16│\uD835\uDDEE\uD835\uDDF0\uD835\uDE01\uD835\uDDF6\uD835\uDE03\uD835\uDDF6\uD835\uDE01\uD835\uDE06", "**Vote boss has spawned at ::voteboss kill it now for amazing rewards!**");
 	}
 
-	public static void save(){
+	private static final Gson gson = new GsonBuilder().setPrettyPrinting().create();
+	private static final File SAVE_FILE = new File("./data/saves/votes.json");
+
+	public static void save() {
 		GameEngine.submit(() -> {
-			Gson gson = new GsonBuilder().setPrettyPrinting().create();
 			JsonObject jsonObject = new JsonObject();
 			jsonObject.addProperty("amount", doMotivote.getVoteCount());
 			jsonObject.addProperty("lastSaved", System.currentTimeMillis());
-			try (FileWriter writer = new FileWriter("./data/saves/votes.json")){
+			try (FileWriter writer = new FileWriter(SAVE_FILE)) {
 				gson.toJson(jsonObject, writer);
+				writer.flush();
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 		});
 	}
 
-	public static void load(){
-		try (FileReader reader = new FileReader("./data/saves/votes.json")) {
-			JsonParser parser = new JsonParser();
-			JsonObject jsonObject = parser.parse(reader).getAsJsonObject();
+//	public static void save(){
+//		GameEngine.submit(() -> {
+//			Gson gson = new GsonBuilder().setPrettyPrinting().create();
+//			JsonObject jsonObject = new JsonObject();
+//			jsonObject.addProperty("amount", doMotivote.getVoteCount());
+//			jsonObject.addProperty("lastSaved", System.currentTimeMillis());
+//			try (FileWriter writer = new FileWriter("./data/saves/votes.json")){
+//				gson.toJson(jsonObject, writer);
+//			} catch (IOException e) {
+//				e.printStackTrace();
+//			}
+//		});
+//	}
+
+	public static void load() {
+		try (Reader reader = new FileReader("./data/saves/votes.json")) {
+			JsonObject jsonObject = JsonParser.parseReader(reader).getAsJsonObject();
 			doMotivote.setVoteCount(jsonObject.get("amount").getAsInt());
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
+
+//	public static void load(){
+//		try (FileReader reader = new FileReader("./data/saves/votes.json")) {
+//			JsonParser parser = new JsonParser();
+//			JsonObject jsonObject = parser.parse(reader).getAsJsonObject();
+//			doMotivote.setVoteCount(jsonObject.get("amount").getAsInt());
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
+//	}
 
 	public static void handleForcedSpawn() {
 		if (currentSpawn != null){
