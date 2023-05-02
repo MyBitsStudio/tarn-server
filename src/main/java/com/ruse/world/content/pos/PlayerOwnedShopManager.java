@@ -156,7 +156,7 @@ public class PlayerOwnedShopManager {
                     if (filez.getName().contains(".json") && !filez.getName().contains("posHistory")) {
                         shop.setUsername(filez.getName().replaceAll(".json", ""));
                         shop.setItems(POSSaving.loadShop(path.toString()));
-                        shop.setEarnings(POSSaving.loadEarnings(path.toString()));
+                        shop.setEarnings(POSSaving.loadEarnings(path));
                     }
 
                     if (filez.getName().contains(".json") && filez.getName().contains("posHistory")) {

@@ -1,10 +1,7 @@
 package com.ruse.world.content.donation;
 
 import com.google.common.base.Preconditions;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
+import com.google.gson.*;
 import com.ruse.engine.GameEngine;
 import com.ruse.model.Position;
 import com.ruse.world.World;
@@ -93,31 +90,33 @@ public class DonationManager {
         check();
     }
 
-    private void save(){
+    private static final Gson gson = new GsonBuilder().setPrettyPrinting().create();
+    private static final JsonObject jsonObject = new JsonObject();
+
+    private void save() {
         GameEngine.submit(() -> {
-            Gson gson = new GsonBuilder().setPrettyPrinting().create();
-            JsonObject jsonObject = new JsonObject();
-            jsonObject.addProperty("amount", totalDonated);
-            jsonObject.addProperty("lastSaved", System.currentTimeMillis());
-            try (FileWriter writer = new FileWriter("./data/saves/donations.json")){
-                gson.toJson(jsonObject, writer);
-            } catch (IOException e) {
-                e.printStackTrace();
+            synchronized(jsonObject) { // synchronize access to jsonObject to avoid race conditions
+                jsonObject.addProperty("amount", totalDonated);
+                jsonObject.addProperty("lastSaved", System.currentTimeMillis());
+                try (FileWriter writer = new FileWriter("./data/saves/donations.json")) {
+                    gson.toJson(jsonObject, writer);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         });
     }
 
-    public void load(){
-        Gson gson = new Gson();
-
-// Read the JSON file into a JsonObject
+    public void load() {
         try (FileReader reader = new FileReader("./data/saves/donations.json")) {
-            JsonParser parser = new JsonParser();
-            JsonObject jsonObject = parser.parse(reader).getAsJsonObject();
-            totalDonated = jsonObject.get("amount").getAsInt();
-        } catch (IOException e) {
+            JsonObject jsonObject = JsonParser.parseReader(reader).getAsJsonObject();
+            if (jsonObject != null) {
+                totalDonated = jsonObject.get("amount").getAsInt();
+            }
+        } catch (IOException | JsonParseException e) {
             e.printStackTrace();
         }
+
         check();
     }
 

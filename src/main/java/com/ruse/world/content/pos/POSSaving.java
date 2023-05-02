@@ -6,13 +6,11 @@ import com.ruse.model.projectile.ItemEffect;
 
 import java.io.*;
 import java.lang.reflect.Type;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 public class POSSaving {
@@ -40,19 +38,22 @@ public class POSSaving {
     public static String historyDir = "./data/saves/pos/posHistory.json";
     public static String coreDir = "./data/saves/pos/coreHistory.json";
 
+    private static final Gson gson = new GsonBuilder().setPrettyPrinting().create();
+
     public static List<PlayerOwnedShop.HistoryItem> loadHistory() {
-        Gson gson = new GsonBuilder() .setPrettyPrinting() .serializeNulls() .create();
         List<PlayerOwnedShop.HistoryItem> history = new ArrayList<>();
-        if(!Files.exists(Paths.get(historyDir))){
-            return new CopyOnWriteArrayList<>();
+        if (!Files.exists(Paths.get(historyDir))) {
+            return Collections.emptyList();
         }
         try (BufferedReader reader = new BufferedReader(new FileReader(historyDir))) {
             JsonObject object = gson.fromJson(reader, JsonObject.class);
-            if(object == null)
-                return new CopyOnWriteArrayList<>();
+            if (object == null) {
+                return Collections.emptyList();
+            }
             JsonArray jsonArray = object.getAsJsonArray("history");
-            if(jsonArray == null)
-                return new CopyOnWriteArrayList<>();
+            if (jsonArray == null) {
+                return Collections.emptyList();
+            }
             for (JsonElement jsonElement : jsonArray) {
                 history.add(gson.fromJson(jsonElement, PlayerOwnedShop.HistoryItem.class));
             }
@@ -63,23 +64,16 @@ public class POSSaving {
     }
 
     public static List<PlayerOwnedShop.HistoryLog> loadHCore() {
-        Gson gson = new GsonBuilder()
-                .setPrettyPrinting()
-                .serializeNulls()
-                .create();
         List<PlayerOwnedShop.HistoryLog> history = new ArrayList<>();
         if(!Files.exists(Paths.get(coreDir))){
             return new CopyOnWriteArrayList<>();
         }
         try (BufferedReader reader = new BufferedReader(new FileReader(coreDir))) {
             JsonObject object = gson.fromJson(reader, JsonObject.class);
-            if(object == null)
+            if(object == null || object.getAsJsonArray("core") == null){
                 return new CopyOnWriteArrayList<>();
-            JsonArray jsonArray = object.getAsJsonArray("core");
-            if(jsonArray == null)
-                return new CopyOnWriteArrayList<>();
-
-            for (JsonElement jsonElement : jsonArray) {
+            }
+            for (JsonElement jsonElement : object.getAsJsonArray("core")) {
                 history.add(gson.fromJson(jsonElement, PlayerOwnedShop.HistoryLog.class));
             }
         } catch (IOException e) {
@@ -88,34 +82,18 @@ public class POSSaving {
         return history;
     }
 
-    public static void saveCore(List<PlayerOwnedShop.HistoryLog> history){
-        Gson gson = new GsonBuilder()
-                .setPrettyPrinting()
-                .serializeNulls()
-                .create();
-
-        JsonObject object = new JsonObject();
-
-        object.add("core", gson.toJsonTree(history));
-
-        try(BufferedWriter writer = new BufferedWriter(new FileWriter(coreDir))){
-            gson.toJson(object, writer);
+    public static void saveCore(List<?> core){
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(coreDir))) {
+            gson.toJson(gson.toJsonTree(core).getAsJsonObject(), writer);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     public static void saveShop(PlayerOwnedShop history, String path){
-        Gson gson = new GsonBuilder()
-                .setPrettyPrinting()
-                .serializeNulls()
-                .create();
-
         JsonObject object = new JsonObject();
-
         object.add("shop", gson.toJsonTree(history.getItems()));
         object.addProperty("earnings", history.getEarnings());
-
         try(BufferedWriter writer = new BufferedWriter(new FileWriter(path))){
             gson.toJson(object, writer);
         } catch (IOException e) {
@@ -124,16 +102,9 @@ public class POSSaving {
     }
 
     public static void saveShopHistory(List<PlayerOwnedShop.HistoryItem> history, String path){
-        Gson gson = new GsonBuilder()
-                .setPrettyPrinting()
-                .serializeNulls()
-                .create();
-
         JsonObject object = new JsonObject();
-
-        object.add("shop-history", gson.toJsonTree(history));
-
-        try(BufferedWriter writer = new BufferedWriter(new FileWriter(path))){
+        try (BufferedWriter writer = Files.newBufferedWriter(Paths.get(path), StandardCharsets.UTF_8)) {
+            gson.toJsonTree(history, List.class).getAsJsonArray();
             gson.toJson(object, writer);
         } catch (IOException e) {
             e.printStackTrace();
@@ -141,61 +112,54 @@ public class POSSaving {
     }
 
     public static List<PlayerOwnedShop.HistoryItem> loadShopHistory(String path) {
-        Gson gson = new Gson();
-        List<PlayerOwnedShop.HistoryItem> history = null;
-        if(!Files.exists(Paths.get(path))){
-            return new ArrayList<>();
-        }
-        try (BufferedReader reader = new BufferedReader(new FileReader(path))) {
-            JsonObject object = gson.fromJson(reader, JsonObject.class);
-            if(object == null){
-                return new ArrayList<>();
-            }
-            JsonElement element = object.get("shop-history");
-            if(element == null){
-                return new ArrayList<>();
-            }
-            Type type = new TypeToken<List<PlayerOwnedShop.HistoryItem>>() {}.getType();
-            history = gson.fromJson(element, type);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return history; }
+        List<PlayerOwnedShop.HistoryItem> history = new ArrayList<>();
 
-    public static PlayerOwnedShop.ShopItem[] loadShop(String path) {
-        Gson gson = new GsonBuilder()
-                .create();
-        if(!Files.exists(Paths.get(path))){
-            return new PlayerOwnedShop.ShopItem[]{};
+        if (!Files.exists(Paths.get(path))) {
+            return history;
         }
+
         try (BufferedReader reader = new BufferedReader(new FileReader(path))) {
             JsonObject object = gson.fromJson(reader, JsonObject.class);
-            if(object == null){
-                return new PlayerOwnedShop.ShopItem[]{};
+            if (object != null) {
+                JsonElement element = object.get("shop-history");
+                if (element != null) {
+                    Type type = new TypeToken<List<PlayerOwnedShop.HistoryItem>>() {}.getType();
+                    history = gson.fromJson(element, type);
+                }
             }
-            return gson.fromJson(object.getAsJsonArray("shop"), PlayerOwnedShop.ShopItem[].class);
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return null;
+
+        return history;
     }
 
-    public static long loadEarnings(String path) {
-        Gson gson = new GsonBuilder()
-                .create();
-        if(!Files.exists(Paths.get(path))){
+    public static PlayerOwnedShop.ShopItem[] loadShop(String path) {
+        try(BufferedReader reader = Files.newBufferedReader(Paths.get(path))) {
+            JsonObject object = gson.fromJson(reader, JsonObject.class);
+            if(object != null && object.get("shop") != null) {
+                return gson.fromJson(object.get("shop").getAsJsonArray(), PlayerOwnedShop.ShopItem[].class);
+            }
+        } catch(IOException e) {
+            e.printStackTrace();
+        }
+        return new PlayerOwnedShop.ShopItem[]{};
+    }
+
+    public static long loadEarnings(Path path)  {
+        if (!Files.exists(path)) {
             return 0L;
         }
-        try (BufferedReader reader = new BufferedReader(new FileReader(path))) {
+        try (BufferedReader reader = Files.newBufferedReader(path)) {
             JsonObject object = gson.fromJson(reader, JsonObject.class);
-            if(object == null){
+            if (object == null) {
                 return 0L;
             }
             return object.get("earnings").getAsLong();
-        } catch (IOException e) {
+        } catch(IOException e) {
             e.printStackTrace();
+            return 0L;
         }
-        return 0L;
     }
 
     public static void main(String[] args) throws IOException {

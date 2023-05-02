@@ -29,30 +29,30 @@ public class BackupThread extends Task {
         GameEngine.submit(this::backup);
     }
 
-    private void backup(){
+    private void backup() {
         File dir = new File(BACKUP_DIR);
-        if(!dir.exists()) dir.mkdirs();
-
-        try{
+        if (!dir.exists()) {
+            dir.mkdirs();
+        }
+        try (FileOutputStream fos = new FileOutputStream(BACKUP_DIR + date(System.currentTimeMillis()) + ".zip");
+             ZipOutputStream zos = new ZipOutputStream(fos)) {
             populateFilesList(new File(SAVE_DIR), "char");
             populateFilesList(new File(SHOP_DIR), "pos");
-            FileOutputStream fos = new FileOutputStream(BACKUP_DIR + date(System.currentTimeMillis()) + ".zip");
-            ZipOutputStream zos = new ZipOutputStream(fos);
 
-            for(String filePath : filesList){
-                ZipEntry ze = new ZipEntry(filePath.substring(dir.getAbsolutePath().length()-1).replace("_", " "));
+            for (String filePath : filesList) {
+                ZipEntry ze = new ZipEntry(filePath.substring(dir.getAbsolutePath().length() - 1)
+                        .replace('_', ' '));
                 zos.putNextEntry(ze);
-                FileInputStream fis = new FileInputStream(filePath.replace("_", " "));
-                byte[] buffer = new byte[1024];
-                int len;
-                while ((len = fis.read(buffer)) > 0) {
-                    zos.write(buffer, 0, len);
+
+                try (FileInputStream fis = new FileInputStream(filePath.replace('_', ' '))) {
+                    byte[] buffer = new byte[1024];
+                    int len;
+                    while ((len = fis.read(buffer)) > 0) {
+                        zos.write(buffer, 0, len);
+                    }
                 }
                 zos.closeEntry();
-                fis.close();
             }
-            zos.close();
-            fos.close();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
