@@ -24,7 +24,7 @@ import com.ruse.world.entity.impl.player.Player;
 public abstract class CombatAncientSpell extends CombatSpell {
 
 	@Override
-	public void finishCast(Character cast, Character castOn, boolean accurate, int damage) {
+	public void finishCast(Character cast, Character castOn, boolean accurate, long damage) {
 
 		// The spell wasn't accurate, so do nothing.
 		if (!accurate || damage <= 0) {
@@ -97,7 +97,7 @@ public abstract class CombatAncientSpell extends CombatSpell {
 	 * @param castOn the person being hit by this spell.
 	 * @param damage the damage inflicted.
 	 */
-	public abstract void spellEffect(Character cast, Character castOn, int damage);
+	public abstract void spellEffect(Character cast, Character castOn, long damage);
 
 	/**
 	 * The radius of this spell, only comes in effect when the victim is hit in a

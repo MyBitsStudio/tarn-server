@@ -62,7 +62,7 @@ public class CombatBuilder {
 
 	public void attack(Character target) {
 		if (character.equals(target)) {
-			World.sendStaffMessage("[BUG TRACKER] Error 959.7 has occured. PLEASE REPORT TO CRIMSON!");
+			World.sendStaffMessage("[BUG TRACKER] Error 959.7 has occured. PLEASE REPORT TO CORRUPT!");
 			Player player = (Player) character;
 			PlayerLogs.log("1 - PVP BUGS", "Error 959.7 PVP bug occured with " + player.getUsername() + " attacking ");
 			// System.out.println("Bug Found [959.7]: Attacker: " + player.getUsername() + " Player Attacked: ");

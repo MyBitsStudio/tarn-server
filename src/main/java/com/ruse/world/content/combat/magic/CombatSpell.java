@@ -37,12 +37,12 @@ public abstract class CombatSpell extends Spell {
 		}
 
 		// Then send the starting graphic.
-		if (npc != null) {
+		if (npc == null) {
+			startGraphic().ifPresent(cast::performGraphic);
+		} else {
 			if (npc.getId() != 2000 && npc.getId() != 109 && npc.getId() != 3580 && npc.getId() != 2007) {
 				startGraphic().ifPresent(cast::performGraphic);
 			}
-		} else {
-			startGraphic().ifPresent(cast::performGraphic);
 		}
 
 		// Finally send the projectile after two ticks.
@@ -110,5 +110,5 @@ public abstract class CombatSpell extends Spell {
 	 * @param accurate if the spell was accurate.
 	 * @param damage   the amount of damage inflicted by this spell.
 	 */
-	public abstract void finishCast(Character cast, Character castOn, boolean accurate, int damage);
+	public abstract void finishCast(Character cast, Character castOn, boolean accurate, long damage);
 }

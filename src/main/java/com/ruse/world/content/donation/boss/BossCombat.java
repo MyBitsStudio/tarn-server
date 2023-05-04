@@ -42,11 +42,11 @@ public class BossCombat implements CombatStrategy {
 
         if(x == 0){
 
-                Position base = DonationBoss.base;
-                Position pos = new Position(base.getX() + 1, base.getY() + 1, 4);
-                boss.performAnimation(new Animation(boss.getDefinition().getAttackAnimation()));
-                DonationManager.getInstance().spawnMinion(pos);
-                boss.forceChat("Minion, rise and attack!");
+            Position base = DonationBoss.base;
+            Position pos = new Position(base.getX() + 1, base.getY() + 1, 4);
+            boss.performAnimation(new Animation(boss.getDefinition().getAttackAnimation()));
+            DonationManager.getInstance().spawnMinion(pos);
+            boss.forceChat("Minion, rise and attack!");
 
         }  else if (x == 1) {
             if (Locations.goodDistance(boss.copy(), victim.copy(), 1)) {
@@ -121,31 +121,6 @@ public class BossCombat implements CombatStrategy {
         });
     }
 
-    private void burnAll(@NotNull DonationBoss boss){
-        boss.setChargingAttack(true);
-        boss.performAnimation(new Animation(boss.getDefinition().getAttackAnimation()));
-        boss.forceChat("It's starting to get hot in here");
-        TaskManager.submit(new Task(1, boss, false) {
-            int tick = 0;
-
-            @Override
-            public void execute() {
-                if(tick == 1){
-                    for(Player player : boss.getClosePlayers(10)){
-                        boss.getCombatBuilder().setContainer(new CombatContainer(boss, player, 1, 0, CombatType.MAGIC, true));
-                        player.getPacketSender().sendGlobalGraphic(new Graphic(78), player.getPosition());
-
-                    }
-                }
-                if (tick == 4) {
-                    boss.setChargingAttack(false);
-                    stop();
-                }
-                tick++;
-            }
-        });
-    }
-
     private void smackThem(@NotNull DonationBoss boss){
         boss.setChargingAttack(true);
         boss.forceChat("You won't see this one coming");
@@ -156,10 +131,7 @@ public class BossCombat implements CombatStrategy {
 
             @Override
             public void execute() {
-                if(tick == 1){
-                    boss.setVisible(false);
-                }
-                if(tick == 3 || tick == 4 || tick == 5 || tick == 6){
+                if(tick == 1 || tick == 3 || tick == 4 || tick == 5 || tick == 6){
                     if(players.size() == 1){
                         if(!players2.contains(players.get(0))){
                             players2.add(players.get(0));
@@ -186,7 +158,6 @@ public class BossCombat implements CombatStrategy {
                     }
                 }
                 if (tick == 10) {
-                    boss.setVisible(true);
                     boss.setChargingAttack(false);
                     stop();
                 }
@@ -212,7 +183,7 @@ public class BossCombat implements CombatStrategy {
 
         }
 
-        TaskManager.submit(new Task(1, boss, false) {
+        TaskManager.submit(new Task(1, boss, true) {
             int tick = 0;
 
             @Override
@@ -244,13 +215,11 @@ public class BossCombat implements CombatStrategy {
                 if(tick == 4 || tick == 6){
                     for(Player player : boss.getClosePlayers(10)){
                         boss.getCombatBuilder().setContainer(new CombatContainer(boss, player, 1, 0, CombatType.MAGIC, false));
-                        //player.getPacketSender().sendCameraShake(6, 4, 6, 4);
                     }
                 }
 
                 if(tick == 8){
                     for(Player player : boss.getClosePlayers(10)){
-                        player.getPacketSender().sendCameraNeutrality();
                         player.getPacketSender().sendInterfaceRemoval();
                     }
                     boss.setChargingAttack(false);

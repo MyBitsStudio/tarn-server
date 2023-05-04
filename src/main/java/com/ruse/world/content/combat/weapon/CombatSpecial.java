@@ -56,7 +56,7 @@ public enum CombatSpecial {
 
 			return new CombatContainer(player, target, 1, 1, CombatType.MAGIC, true) {
 				@Override
-				public void onHit(int damage, boolean accurate) {
+				public void onHit(long damage, boolean accurate) {
 					target.performGraphic(new Graphic(1730));
 				}
 			};
@@ -70,7 +70,7 @@ public enum CombatSpecial {
 
 			return new CombatContainer(player, target, 3, CombatType.MELEE, true) {
 				@Override
-				public void onHit(int damage, boolean accurate) {
+				public void onHit(long damage, boolean accurate) {
 					if (target.isPlayer()) {
 						int moveX = target.getPosition().getX() - player.getPosition().getX();
 						int moveY = target.getPosition().getY() - player.getPosition().getY();
@@ -109,7 +109,7 @@ public enum CombatSpecial {
 
 			return new CombatContainer(player, target, 2, CombatType.MAGIC, true) {
 				@Override
-				public void onHit(int damage, boolean accurate) {
+				public void onHit(long damage, boolean accurate) {
 					target.performGraphic(new Graphic(1388));
 				}
 			};
@@ -228,7 +228,7 @@ public enum CombatSpecial {
 
 			return new CombatContainer(player, target, 3, CombatType.MELEE, true) {
 				@Override
-				public void onHit(int damage, boolean accurate) {
+				public void onHit(long damage, boolean accurate) {
 					if (target != null && target.isPlayer() && accurate) {
 						Player p = (Player) target;
 						double dmgDrain = (damage * 0.75);
@@ -276,7 +276,7 @@ public enum CombatSpecial {
 			target.performGraphic(new Graphic(1521));
 			return new CombatContainer(player, target, 3, CombatType.MELEE, false) {
 				@Override
-				public void onHit(int dmg, boolean accurate) {
+				public void onHit(long dmg, boolean accurate) {
 					if (accurate) {
 						int damageHeal = (int) (dmg * 10.5);
 						int damagePrayerHeal = (int) (dmg * 10.25);
@@ -302,7 +302,7 @@ public enum CombatSpecial {
 			target.performGraphic(new Graphic(2232));
 			return new CombatContainer(player, target, 3, CombatType.MELEE, false) {
 				@Override
-				public void onHit(int damage, boolean accurate) {
+				public void onHit(long damage, boolean accurate) {
 					if (target != null && target.isPlayer() && accurate) {
 						int skillDrain = 1;
 						int damageDrain = (int) (damage * 0.1);
@@ -479,7 +479,7 @@ public enum CombatSpecial {
 
 			return new CombatContainer(player, target, 2, CombatType.MAGIC, true) {
 				@Override
-				public void onHit(int damage, boolean accurate) {
+				public void onHit(long damage, boolean accurate) {
 					target.performGraphic(new Graphic(1194));
 				}
 			};
@@ -509,7 +509,7 @@ public enum CombatSpecial {
 			player.performGraphic(new Graphic(1840));
 			return new CombatContainer(player, target, 1, CombatType.MELEE, true) {
 				@Override
-				public void onHit(int damage, boolean accurate) {
+				public void onHit(long damage, boolean accurate) {
 					if (target.isPlayer() && accurate) {
 						Player t = (Player) target;
 						int currentDef = t.getSkillManager().getCurrentLevel(Skill.DEFENCE);
@@ -532,7 +532,7 @@ public enum CombatSpecial {
 			player.performGraphic(new Graphic(1840));
 			return new CombatContainer(player, target, 1, CombatType.MELEE, true) {
 				@Override
-				public void onHit(int damage, boolean accurate) {
+				public void onHit(long damage, boolean accurate) {
 					if (target.isPlayer()) {
 						Player t = (Player) target;
 						int currentHelth = t.getSkillManager().getCurrentLevel(Skill.CONSTITUTION) / 2;
@@ -670,7 +670,7 @@ public enum CombatSpecial {
 
 			return new CombatContainer(player, target, 1, CombatType.MELEE, true) {
 				@Override
-				public void onHit(int damage, boolean accurate) {
+				public void onHit(long damage, boolean accurate) {
 					if (target.isPlayer()) {
 						int moveX = target.getPosition().getX() - player.getPosition().getX();
 						int moveY = target.getPosition().getY() - player.getPosition().getY();
@@ -726,7 +726,7 @@ public enum CombatSpecial {
 
 			return new CombatContainer(player, target, 1, CombatType.MELEE, false) {
 				@Override
-				public void onHit(int damage, boolean accurate) {
+				public void onHit(long damage, boolean accurate) {
 					/*
 					 * if (Location.inMulti(player)) { List<GameCharacter> localEntities;
 					 * 
@@ -771,7 +771,7 @@ public enum CombatSpecial {
 
 			return new CombatContainer(player, target, 1, CombatType.MELEE, true) {
 				@Override
-				public void onHit(int damage, boolean accurate) {
+				public void onHit(long damage, boolean accurate) {
 					if (target != null && target.isPlayer() && accurate) {
 						Player p = (Player) target;
 						double dmgDrain = (damage * 0.75);
@@ -819,7 +819,7 @@ public enum CombatSpecial {
 
 			return new CombatContainer(player, target, 1, CombatType.MELEE, false) {
 				@Override
-				public void onHit(int damage, boolean accurate) {
+				public void onHit(long damage, boolean accurate) {
 					if (target != null && target.isPlayer() && accurate) {
 						int skillDrain = 1;
 						int damageDrain = (int) (damage * 0.1);
@@ -849,7 +849,7 @@ public enum CombatSpecial {
 
 			return new CombatContainer(player, target, 1, CombatType.MELEE, false) {
 				@Override
-				public void onHit(int dmg, boolean accurate) {
+				public void onHit(long dmg, boolean accurate) {
 					if (accurate) {
 						int damageHeal = (int) (dmg * 0.5);
 						int damagePrayerHeal = (int) (dmg * 0.25);
@@ -917,7 +917,7 @@ public enum CombatSpecial {
 	 *                      attack.
 	 * @param weaponType    the weapon interface used by the identifiers.
 	 */
-	private CombatSpecial(int[] identifiers, int drainAmount, double strengthBonus, double accuracyBonus,
+	CombatSpecial(int[] identifiers, int drainAmount, double strengthBonus, double accuracyBonus,
 			CombatType combatType, WeaponInterface weaponType) {
 		this.identifiers = identifiers;
 		this.drainAmount = drainAmount;

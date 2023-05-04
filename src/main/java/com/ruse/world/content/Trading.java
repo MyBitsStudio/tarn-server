@@ -380,6 +380,16 @@ public class Trading {
 			player.getPacketSender().sendMessage("An error has occured. Please try re-trading the player.");
 			return;
 		}
+		if(player.getInventory().getFreeSlots() <= 0){
+			player.getPacketSender().sendMessage("You do not have enough free inventory space to continue this trade.");
+			player2.getPacketSender().sendMessage("The other player does not have enough inventory space to continue this trade.");
+			return;
+		}
+		if(player2.getInventory().getFreeSlots() <= 0){
+			player.getPacketSender().sendMessage("The other player does not have enough inventory space to continue this trade.");
+			player2.getPacketSender().sendMessage("You do not have enough free inventory space to continue this trade.");
+			return;
+		}
 		if (stage == 2) {
 			if (!inTrade() || !player2.getTrading().inTrade() || !player2.getTrading().tradeConfirmed) {
 				declineTrade(true);

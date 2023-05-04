@@ -30,6 +30,7 @@ import java.time.ZonedDateTime;
 import java.util.List;
 import java.util.*;
 import java.util.Map.Entry;
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.TimeUnit;
 import java.util.zip.GZIPInputStream;
 
@@ -796,6 +797,13 @@ public class Misc {
             max = min + 1;
         }
         return exclusiveRandom((max - min) + 1) + min;
+    }
+
+    public static long inclusiveRandom(long min, long max) {
+        if (max < min) {
+            max = min + 1;
+        }
+        return ThreadLocalRandom.current().nextLong(min, max);
     }
 
     /**

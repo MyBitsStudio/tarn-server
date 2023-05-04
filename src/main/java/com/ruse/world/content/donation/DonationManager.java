@@ -89,8 +89,8 @@ public class DonationManager {
         save();
         check();
     }
-
     private static final Gson gson = new GsonBuilder().setPrettyPrinting().create();
+
     private static final JsonObject jsonObject = new JsonObject();
 
     private void save() {

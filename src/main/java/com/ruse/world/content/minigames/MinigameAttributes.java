@@ -201,9 +201,9 @@ public class MinigameAttributes {
 
 		}
 
-		private int damageDealt;
+		private long damageDealt;
 
-		public int getDamageDealt() {
+		public long getDamageDealt() {
 			return damageDealt;
 		}
 
@@ -211,20 +211,20 @@ public class MinigameAttributes {
 			this.damageDealt = damageDealt;
 		}
 
-		public void incrementDamageDealt(int damageDealt) {
+		public void incrementDamageDealt(long damageDealt) {
 			this.damageDealt += damageDealt;
 		}
 	}
 
 	public class ZulrahAttributes {
 
-		private int redFormDamage;
+		private long redFormDamage;
 
-		public int getRedFormDamage() {
+		public long getRedFormDamage() {
 			return redFormDamage;
 		}
 
-		public void setRedFormDamage(int value, boolean add) {
+		public void setRedFormDamage(long value, boolean add) {
 			if (add) {
 				redFormDamage += value;
 			} else {
@@ -466,7 +466,7 @@ public class MinigameAttributes {
 		private DungeoneeringParty invitation;
 		private long lastInvitation;
 		private int[] boundItems = new int[5];
-		private int damageDealt;
+		private long damageDealt;
 		private int deaths;
 
 		public DungeoneeringParty getParty() {
@@ -501,15 +501,15 @@ public class MinigameAttributes {
 			this.invitation = partyInvitation;
 		}
 
-		public void incrementDamageDealt(int damage) {
+		public void incrementDamageDealt(long damage) {
 			this.damageDealt += damage;
 		}
 
-		public void setDamageDealt(int damage) {
+		public void setDamageDealt(long damage) {
 			this.damageDealt = damage;
 		}
 
-		public int getDamageDealt() {
+		public long getDamageDealt() {
 			return this.damageDealt;
 		}
 

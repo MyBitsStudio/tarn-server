@@ -30,7 +30,7 @@ public abstract class CombatEffectSpell extends CombatSpell {
 	}
 
 	@Override
-	public void finishCast(Character cast, Character castOn, boolean accurate, int damage) {
+	public void finishCast(Character cast, Character castOn, boolean accurate, long damage) {
 		if (accurate) {
 			spellEffect(cast, castOn);
 		}

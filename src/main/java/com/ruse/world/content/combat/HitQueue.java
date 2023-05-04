@@ -69,7 +69,7 @@ public class HitQueue {
 		private CombatContainer container;
 
 		/** The total damage dealt during this hit. */
-		private int damage;
+		private long damage;
 
 		private int initialDelay;
 		private int delay;
@@ -153,26 +153,24 @@ public class HitQueue {
 
 					}
 					p.getControllerManager().processOutgoingHit(container);
-				} else {
-					if (victim.isPlayer() && container.getCombatType() == CombatType.DRAGON_FIRE) {
-						Player p = (Player) victim;
-						if (Misc.getRandom(4) <= 3
-								&& p.getEquipment().getItems()[Equipment.SHIELD_SLOT].getId() == 11283) {
-							p.setPositionToFace(attacker.getPosition().copy());
-							CombatFactory.chargeDragonFireShield(p);
-						}
-						if (p.getEquipment().getItems()[Equipment.SHIELD_SLOT].getId() == 1540
-								|| p.getEquipment().getItems()[Equipment.SHIELD_SLOT].getId() == 13655) {
-							p.setPositionToFace(attacker.getPosition().copy());
-							CombatFactory.sendFireMessage(p);
-						}
-						//damage *=10;
-						if (damage >= 160) {
-							((Player) victim).getPacketSender()
-									.sendMessage("You are badly burnt by the dragon's fire!");
-						}
-						p.getControllerManager().processOutgoingHit(container);
+				} else if (victim.isPlayer() && container.getCombatType() == CombatType.DRAGON_FIRE) {
+					Player p = (Player) victim;
+					if (Misc.getRandom(4) <= 3
+							&& p.getEquipment().getItems()[Equipment.SHIELD_SLOT].getId() == 11283) {
+						p.setPositionToFace(attacker.getPosition().copy());
+						CombatFactory.chargeDragonFireShield(p);
 					}
+					if (p.getEquipment().getItems()[Equipment.SHIELD_SLOT].getId() == 1540
+							|| p.getEquipment().getItems()[Equipment.SHIELD_SLOT].getId() == 13655) {
+						p.setPositionToFace(attacker.getPosition().copy());
+						CombatFactory.sendFireMessage(p);
+					}
+					//damage *=10;
+					if (damage >= 160) {
+						((Player) victim).getPacketSender()
+								.sendMessage("You are badly burnt by the dragon's fire!");
+					}
+					p.getControllerManager().processOutgoingHit(container);
 				}
 			}
 
@@ -196,12 +194,10 @@ public class HitQueue {
 				if (attacker.isPlayer() && AutoCastSpell.getAutoCastSpell((Player) attacker) != null
 						&& attacker.getCurrentlyCasting() != null) {
 					attacker.getCurrentlyCasting().endGraphic().ifPresent(victim::performGraphic);
-				} else {
-					if (container.getCombatType() == CombatType.MAGIC && attacker.getCurrentlyCasting() != null) {
-						attacker.getCurrentlyCasting().endGraphic().ifPresent(victim::performGraphic);
-						attacker.getCurrentlyCasting().finishCast(attacker, victim, true, damage);
-						attacker.setCurrentlyCasting(null);
-					}
+				} else if (container.getCombatType() == CombatType.MAGIC && attacker.getCurrentlyCasting() != null) {
+					attacker.getCurrentlyCasting().endGraphic().ifPresent(victim::performGraphic);
+					attacker.getCurrentlyCasting().finishCast(attacker, victim, true, damage);
+					attacker.setCurrentlyCasting(null);
 				}
 			}
 

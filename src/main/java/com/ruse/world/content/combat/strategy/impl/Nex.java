@@ -427,7 +427,7 @@ public class Nex implements CombatStrategy {
 
 	/** MISC **/
 
-	public static void dealtDamage(final Player p, final int damage) {
+	public static void dealtDamage(final Player p, final long damage) {
 		if (phase == 4) {
 			if (prayerType == 0 && damage != 0) {
 				new Projectile(NEX, p, 2263, 44, 3, 43, 43, 0).sendProjectile();
@@ -436,7 +436,7 @@ public class Nex implements CombatStrategy {
 					public void execute() {
 						NEX.setConstitution(NEX.getConstitution() + (damage / 5));
 						p.getSkillManager().setCurrentLevel(Skill.PRAYER,
-								p.getSkillManager().getCurrentLevel(Skill.PRAYER) - (damage / 85));
+								(int) (p.getSkillManager().getCurrentLevel(Skill.PRAYER) - (damage / 85)));
 						if (p.getSkillManager().getCurrentLevel(Skill.PRAYER) < 0)
 							p.getSkillManager().setCurrentLevel(Skill.PRAYER, 0);
 						p.performGraphic(new Graphic(2264));
@@ -448,7 +448,7 @@ public class Nex implements CombatStrategy {
 		}
 	}
 
-	public static void takeDamage(Player from, int damage) {
+	public static void takeDamage(Player from, long damage) {
 		if (phase == 4 && damage > 0) {
 			if (prayerType == 0) {
 				NEX.setConstitution(NEX.getConstitution() + (damage / 2));

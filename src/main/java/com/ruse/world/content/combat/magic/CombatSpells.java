@@ -1493,6 +1493,11 @@ ICEYBLAST(new CombatNormalSpell() {
 		}
 
 		@Override
+		public void finishCast(Character cast, Character castOn, boolean accurate, long damage) {
+
+		}
+
+		@Override
 		public Optional<Graphic> startGraphic() {
 			return Optional.of(new Graphic(102, GraphicHeight.HIGH));
 		}
@@ -1664,6 +1669,11 @@ ICEYBLAST(new CombatNormalSpell() {
 		@Override
 		public Optional<Graphic> endGraphic() {
 			return Optional.of(new Graphic(107));
+		}
+
+		@Override
+		public void finishCast(Character cast, Character castOn, boolean accurate, long damage) {
+
 		}
 
 		@Override
@@ -1842,6 +1852,11 @@ ICEYBLAST(new CombatNormalSpell() {
 		}
 
 		@Override
+		public void finishCast(Character cast, Character castOn, boolean accurate, long damage) {
+
+		}
+
+		@Override
 		public Optional<Graphic> startGraphic() {
 			return Optional.of(new Graphic(108, GraphicHeight.HIGH));
 		}
@@ -1892,6 +1907,11 @@ ICEYBLAST(new CombatNormalSpell() {
 		@Override
 		public Optional<Graphic> endGraphic() {
 			return Optional.of(new Graphic(181, GraphicHeight.HIGH));
+		}
+
+		@Override
+		public void finishCast(Character cast, Character castOn, boolean accurate, long damage) {
+
 		}
 
 		@Override
@@ -2295,6 +2315,11 @@ ICEYBLAST(new CombatNormalSpell() {
 		@Override
 		public Optional<Graphic> endGraphic() {
 			return Optional.of(new Graphic(180, GraphicHeight.HIGH));
+		}
+
+		@Override
+		public void finishCast(Character cast, Character castOn, boolean accurate, long damage) {
+
 		}
 
 		@Override
@@ -2772,6 +2797,11 @@ ICEYBLAST(new CombatNormalSpell() {
 		}
 
 		@Override
+		public void finishCast(Character cast, Character castOn, boolean accurate, long damage) {
+
+		}
+
+		@Override
 		public Optional<Graphic> startGraphic() {
 			return Optional.of(new Graphic(167, GraphicHeight.HIGH));
 		}
@@ -2897,6 +2927,11 @@ ICEYBLAST(new CombatNormalSpell() {
 		}
 
 		@Override
+		public void finishCast(Character cast, Character castOn, boolean accurate, long damage) {
+
+		}
+
+		@Override
 		public Optional<Graphic> startGraphic() {
 			return Optional.of(new Graphic(170, GraphicHeight.HIGH));
 		}
@@ -3000,6 +3035,11 @@ ICEYBLAST(new CombatNormalSpell() {
 		}
 
 		@Override
+		public void finishCast(Character cast, Character castOn, boolean accurate, long damage) {
+
+		}
+
+		@Override
 		public Optional<Graphic> startGraphic() {
 			return Optional.of(new Graphic(177, GraphicHeight.HIGH));
 		}
@@ -3074,6 +3114,11 @@ ICEYBLAST(new CombatNormalSpell() {
 		}
 
 		@Override
+		public void finishCast(Character cast, Character castOn, boolean accurate, long damage) {
+
+		}
+
+		@Override
 		public Optional<Graphic> startGraphic() {
 			return Optional.of(new Graphic(173, GraphicHeight.HIGH));
 		}
@@ -3135,6 +3180,11 @@ ICEYBLAST(new CombatNormalSpell() {
 		@Override
 		public Optional<Graphic> endGraphic() {
 			return Optional.of(new Graphic(1843));
+		}
+
+		@Override
+		public void finishCast(Character cast, Character castOn, boolean accurate, long damage) {
+
 		}
 
 		@Override
@@ -3206,6 +3256,11 @@ ICEYBLAST(new CombatNormalSpell() {
 		}
 
 		@Override
+		public void finishCast(Character cast, Character castOn, boolean accurate, long damage) {
+
+		}
+
+		@Override
 		public Optional<Graphic> startGraphic() {
 			return Optional.empty();
 		}
@@ -3234,7 +3289,7 @@ ICEYBLAST(new CombatNormalSpell() {
 	/** Ancient spellbook spells. */
 	SMOKE_RUSH(new CombatAncientSpell() {
 		@Override
-		public void spellEffect(Character cast, Character castOn, int damage) {
+		public void spellEffect(Character cast, Character castOn, long damage) {
 			CombatFactory.poisonEntity(castOn, PoisonType.MILD);
 		}
 
@@ -3289,7 +3344,7 @@ ICEYBLAST(new CombatNormalSpell() {
 		}
 	}), SHADOW_RUSH(new CombatAncientSpell() {
 		@Override
-		public void spellEffect(Character cast, Character castOn, int damage) {
+		public void spellEffect(Character cast, Character castOn, long damage) {
 			if (castOn.isPlayer()) {
 				Player player = (Player) castOn;
 
@@ -3356,7 +3411,7 @@ ICEYBLAST(new CombatNormalSpell() {
 		}
 	}), BLOOD_RUSH(new CombatAncientSpell() {
 		@Override
-		public void spellEffect(Character cast, Character castOn, int damage) {
+		public void spellEffect(Character cast, Character castOn, long damage) {
 			if (damage < 1) {
 				return;
 			}
@@ -3414,7 +3469,7 @@ ICEYBLAST(new CombatNormalSpell() {
 		}
 	}), ICE_RUSH(new CombatAncientSpell() {
 		@Override
-		public void spellEffect(Character cast, Character castOn, int damage) {
+		public void spellEffect(Character cast, Character castOn, long damage) {
 			castOn.getMovementQueue().freeze(7);
 		}
 
@@ -3469,7 +3524,7 @@ ICEYBLAST(new CombatNormalSpell() {
 		}
 	}), SMOKE_BURST(new CombatAncientSpell() {
 		@Override
-		public void spellEffect(Character cast, Character castOn, int damage) {
+		public void spellEffect(Character cast, Character castOn, long damage) {
 			CombatFactory.poisonEntity(castOn, PoisonType.MILD);
 		}
 
@@ -3524,7 +3579,7 @@ ICEYBLAST(new CombatNormalSpell() {
 		}
 	}), SHADOW_BURST(new CombatAncientSpell() {
 		@Override
-		public void spellEffect(Character cast, Character castOn, int damage) {
+		public void spellEffect(Character cast, Character castOn, long damage) {
 			if (castOn.isPlayer()) {
 				Player player = (Player) castOn;
 
@@ -3591,7 +3646,7 @@ ICEYBLAST(new CombatNormalSpell() {
 		}
 	}), BLOOD_BURST(new CombatAncientSpell() {
 		@Override
-		public void spellEffect(Character cast, Character castOn, int damage) {
+		public void spellEffect(Character cast, Character castOn, long damage) {
 			if (damage < 1) {
 				return;
 			}
@@ -3649,7 +3704,7 @@ ICEYBLAST(new CombatNormalSpell() {
 		}
 	}), ICE_BURST(new CombatAncientSpell() {
 		@Override
-		public void spellEffect(Character cast, Character castOn, int damage) {
+		public void spellEffect(Character cast, Character castOn, long damage) {
 			castOn.getMovementQueue().freeze(9);
 		}
 
@@ -3704,7 +3759,7 @@ ICEYBLAST(new CombatNormalSpell() {
 		}
 	}), SMOKE_BLITZ(new CombatAncientSpell() {
 		@Override
-		public void spellEffect(Character cast, Character castOn, int damage) {
+		public void spellEffect(Character cast, Character castOn, long damage) {
 			CombatFactory.poisonEntity(castOn, PoisonType.EXTRA);
 		}
 
@@ -3759,7 +3814,7 @@ ICEYBLAST(new CombatNormalSpell() {
 		}
 	}), SHADOW_BLITZ(new CombatAncientSpell() {
 		@Override
-		public void spellEffect(Character cast, Character castOn, int damage) {
+		public void spellEffect(Character cast, Character castOn, long damage) {
 			if (castOn.isPlayer()) {
 				Player player = (Player) castOn;
 
@@ -3826,7 +3881,7 @@ ICEYBLAST(new CombatNormalSpell() {
 		}
 	}), BLOOD_BLITZ(new CombatAncientSpell() {
 		@Override
-		public void spellEffect(Character cast, Character castOn, int damage) {
+		public void spellEffect(Character cast, Character castOn, long damage) {
 			if (damage < 1) {
 				return;
 			}
@@ -3884,7 +3939,7 @@ ICEYBLAST(new CombatNormalSpell() {
 		}
 	}), ICE_BLITZ(new CombatAncientSpell() {
 		@Override
-		public void spellEffect(Character cast, Character castOn, int damage) {
+		public void spellEffect(Character cast, Character castOn, long damage) {
 			castOn.getMovementQueue().freeze(10);
 		}
 
@@ -3939,7 +3994,7 @@ ICEYBLAST(new CombatNormalSpell() {
 		}
 	}), SMOKE_BARRAGE(new CombatAncientSpell() {
 		@Override
-		public void spellEffect(Character cast, Character castOn, int damage) {
+		public void spellEffect(Character cast, Character castOn, long damage) {
 			CombatFactory.poisonEntity(castOn, PoisonType.SUPER);
 		}
 
@@ -3994,7 +4049,7 @@ ICEYBLAST(new CombatNormalSpell() {
 		}
 	}), SHADOW_BARRAGE(new CombatAncientSpell() {
 		@Override
-		public void spellEffect(Character cast, Character castOn, int damage) {
+		public void spellEffect(Character cast, Character castOn, long damage) {
 			if (castOn.isPlayer()) {
 				Player player = (Player) castOn;
 
@@ -4061,7 +4116,7 @@ ICEYBLAST(new CombatNormalSpell() {
 		}
 	}), BLOOD_BARRAGE(new CombatAncientSpell() {
 		@Override
-		public void spellEffect(Character cast, Character castOn, int damage) {
+		public void spellEffect(Character cast, Character castOn, long damage) {
 			if (damage < 1) {
 				return;
 			}
@@ -4119,7 +4174,7 @@ ICEYBLAST(new CombatNormalSpell() {
 		}
 	}), ICE_BARRAGE(new CombatAncientSpell() {
 		@Override
-		public void spellEffect(Character cast, Character castOn, int damage) {
+		public void spellEffect(Character cast, Character castOn, long damage) {
 			castOn.getMovementQueue().freeze(15);
 		}
 

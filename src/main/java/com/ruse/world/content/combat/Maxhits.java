@@ -19,7 +19,7 @@ import com.ruse.world.entity.impl.player.Player;
 
 public class Maxhits {
 
-    public static int melee(Character entity, Character victim) {
+    public static long melee(Character entity, Character victim) {
         double maxHit = 0;
         if (entity.isNpc()) {
             NPC npc = (NPC) entity;
@@ -189,14 +189,14 @@ public class Maxhits {
             }
         }
 
-        if (victim != null && victim.isNpc()) {
+        if (victim != null && victim.isNpc() && (entity.isPlayer() && !entity.asPlayer().getRights().isDeveloperOnly())) {
             maxHit = NpcMaxHitLimit.limit((NPC) victim, maxHit, CombatType.MELEE);
         }
 
-        return (int) Math.floor(maxHit);
+        return (long) Math.floor(maxHit);
     }
 
-    public static int ranged(Character entity, Character victim) {
+    public static long ranged(Character entity, Character victim) {
         double maxHit = 0;
 
         if (entity.isNpc()) {
@@ -367,13 +367,13 @@ public class Maxhits {
 
         maxHit *= 10;
 
-        if (victim != null && victim.isNpc()) {
+        if (victim != null && victim.isNpc() && (entity.isPlayer() && !entity.asPlayer().getRights().isDeveloperOnly())) {
             maxHit = (int) NpcMaxHitLimit.limit((NPC) victim, maxHit, CombatType.RANGED);
         }
-        return (int) Math.floor(maxHit);
+        return (long) Math.floor(maxHit);
     }
 
-    public static int magic(Character entity, Character victim) {
+    public static long magic(Character entity, Character victim) {
         double maxHit = 0;
 
         if (entity.isNpc()) {
@@ -536,10 +536,10 @@ public class Maxhits {
         maxHit *= 10;
 
 
-        if (victim != null && victim.isNpc()) {
+        if (victim != null && victim.isNpc() && (entity.isPlayer() && !entity.asPlayer().getRights().isDeveloperOnly())) {
             maxHit = (int) NpcMaxHitLimit.limit((NPC) victim, maxHit, CombatType.RANGED);
         }
-        return (int) Math.floor(maxHit);
+        return (long) Math.floor(maxHit);
     }
 
     public static double getEffectiveStr(Player player) {

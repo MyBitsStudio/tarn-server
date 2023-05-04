@@ -99,7 +99,7 @@ public class CombatContainer {
 	 * @param hitAmount the amount of hits to deal, maximum 4 and minimum 0.
 	 * @return the hits that will be dealt this combat hook.
 	 */
-	private final ContainerHit[] prepareHits(int hitAmount) {
+	private ContainerHit[] prepareHits(int hitAmount) {
 
 		// Check the hit amounts.
 		if (hitAmount > 4) {	
@@ -181,8 +181,8 @@ public class CombatContainer {
 		Arrays.stream(hits).filter(Objects::nonNull).forEach(c);
 	}
 
-	public final int getDamage() {
-		int damage = 0;
+	public final long getDamage() {
+		long damage = 0;
 		for (ContainerHit hit : hits) {
 			if (hit == null)
 				continue;
@@ -215,7 +215,7 @@ public class CombatContainer {
 	 * 
 	 * @return an array of skills that this attack will train.
 	 */
-	private final int[] getSkills(CombatType type) {
+	private int[] getSkills(CombatType type) {
 		if (attacker.isNpc()) {
 			return new int[] {};
 		}
@@ -239,7 +239,7 @@ public class CombatContainer {
 	 *                 isn't accurate.
 	 * @param accurate if the attack is accurate.
 	 */
-	public void onHit(int damage, boolean accurate) {
+	public void onHit(long damage, boolean accurate) {
 	}
 
 	/**

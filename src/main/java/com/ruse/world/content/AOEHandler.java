@@ -77,7 +77,7 @@ public class AOEHandler {
 					//if (next.getConstitution() <= 0 && !((NPC)next).isDying()){
 					//	next.setConstitution(((NPC)next).getDefinition().getHitpoints());
 					//}
-					int maxhit = maximumDamage;
+					long maxhit = maximumDamage;
 					switch (((Player) attacker).getLastCombatType()) {
 						case MELEE:
 							maxhit = Maxhits.melee(attacker, victim) / 10;
@@ -90,14 +90,14 @@ public class AOEHandler {
 							break;
 					}
 
-					long calc = RandomUtility.inclusiveRandom(minimumDamage, maxhit * 5);
+					long calc = Misc.inclusiveRandom(minimumDamage, maxhit * 5);
 					Player player = (Player) attacker;
 					if (player.getEquipment().contains(22006) && player.getLastCombatType() == RANGED){
 						NPC npc = (NPC) victim;
-						if (!npcsDeathDartDontWork(npc)) {
-							calc = victim.getConstitution();
-						} else {
+						if (npcsDeathDartDontWork(npc)) {
 							player.sendMessage("The Death-touch dart didn't work on this.");
+						} else {
+							calc = victim.getConstitution();
 						}
 					}
 					next.dealDamage(new Hit(calc, Hitmask.RED, combatIcon));

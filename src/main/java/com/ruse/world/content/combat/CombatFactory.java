@@ -343,11 +343,11 @@ public final class CombatFactory {
      * @return the melee hit.
      */
     public static Hit getHit(Character entity, Character victim, CombatType type) {
-        int maxhit = 0;
+        long maxhit = 0;
         switch (type) {
             case MELEE:
                 maxhit = Maxhits.melee(entity, victim) / 10;
-                int damage = Misc.inclusiveRandom(0, maxhit) * 10;
+                long damage = Misc.inclusiveRandom(0, maxhit) * 10;
                 if (entity.isPlayer() && victim.isNpc()) {
                     Player player = (Player) entity;
                     if (player.getEquipment().getItems()[Equipment.HEAD_SLOT].getId() == 21025) {
@@ -362,10 +362,10 @@ public final class CombatFactory {
                     Player player = (Player) entity;
                     if (player.getEquipment().contains(22006) && player.getLastCombatType() == RANGED) {
                         NPC npc = (NPC) victim;
-                        if (!npcsDeathDartDontWork(npc)) {
-                            calc = victim.getConstitution();
-                        } else {
+                        if (npcsDeathDartDontWork(npc)) {
                             player.sendMessage("The Death-touch dart didn't work on this.");
+                        } else {
+                            calc = victim.getConstitution();
                         }
                     }
                 }
@@ -1120,7 +1120,7 @@ public final class CombatFactory {
             }
         }
         maxHit *= 10;
-        if (victim != null && victim.isNpc()) {
+        if (victim != null && victim.isNpc() && !player.getRights().isDeveloperOnly()) {
             maxHit = (int) NpcMaxHitLimit.limit((NPC) victim, maxHit, CombatType.RANGED);
         }
         if (player.getInventory().contains(4442)) {
@@ -1882,7 +1882,7 @@ public final class CombatFactory {
      * @param container the attacker's combat container.
      * @param damage    the total amount of damage dealt.
      */
-    protected static void giveExperience(CombatBuilder builder, CombatContainer container, int damage) {
+    protected static void giveExperience(CombatBuilder builder, CombatContainer container, long damage) {
 
         // This attack does not give any experience.
         if (container.getExperience().length == 0 && container.getCombatType() != CombatType.MAGIC) {
@@ -2082,7 +2082,7 @@ public final class CombatFactory {
      *
      * @param damage    the total amount of damage dealt.
      */
-    protected static void handlePrayerEffects(Character attacker, Character target, int damage, CombatType combatType) {
+    protected static void handlePrayerEffects(Character attacker, Character target, long damage, CombatType combatType) {
         if (attacker == null || target == null)
             return;
         // Prayer effects can only be done with victims that are players.
@@ -2126,7 +2126,7 @@ public final class CombatFactory {
 
                 if (PrayerHandler.isActivated((Player) attacker, PrayerHandler.SMITE)) {
                     victim.getSkillManager().setCurrentLevel(Skill.PRAYER,
-                            victim.getSkillManager().getCurrentLevel(Skill.PRAYER) - damage / 4);
+                            (int) (victim.getSkillManager().getCurrentLevel(Skill.PRAYER) - damage / 4));
                     if (victim.getSkillManager().getCurrentLevel(Skill.PRAYER) < 0)
                         victim.getSkillManager().setCurrentLevel(Skill.PRAYER, 0);
                     victim.getSkillManager().updateSkill(Skill.PRAYER);
@@ -2149,7 +2149,7 @@ public final class CombatFactory {
 
             if (PrayerHandler.isActivated(p, PrayerHandler.SOUL_LEECH) && damage > 0) {
                 //p.getPacketSender().sendMessage("Soul leech drain test");
-                final int form = damage / 2;
+                final int form = (int) (damage / 2);
                 new Projectile(attacker, target, 2263, 44, 3, 43, 31, 0).sendProjectile();
                 TaskManager.submit(new Task(1, p, false) {
                     @Override
@@ -2174,7 +2174,7 @@ public final class CombatFactory {
                 });
             }
                 if (CurseHandler.isActivated(p, CurseHandler.SOUL_SPLIT) && damage > 0 || p.getEquipment().getItems()[Equipment.ENCHANTMENT_SLOT].getId() == 1857 && damage > 0) {
-                final int form = damage / 4;
+                final int form = (int) (damage / 4);
                 new Projectile(attacker, target, 2263, 44, 3, 43, 31, 0).sendProjectile();
                 TaskManager.submit(new Task(1, p, false) {
                     @Override
@@ -2352,7 +2352,7 @@ public final class CombatFactory {
 
     }
 
-    protected static void handleSpellEffects(Character attacker, Character target, int damage, CombatType combatType) {
+    static void handleSpellEffects(Character attacker, Character target, long damage, CombatType combatType) {
         if (damage <= 0)
             return;
         if (target.isPlayer()) {
