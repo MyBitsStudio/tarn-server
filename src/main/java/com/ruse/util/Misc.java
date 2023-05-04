@@ -800,10 +800,8 @@ public class Misc {
     }
 
     public static long inclusiveRandom(long min, long max) {
-        if (max < min) {
-            max = min + 1;
-        }
-        return ThreadLocalRandom.current().nextLong(min, max);
+        Random r = new Random();
+        return min+((long)(r.nextDouble()*(max-min)));
     }
 
     /**
