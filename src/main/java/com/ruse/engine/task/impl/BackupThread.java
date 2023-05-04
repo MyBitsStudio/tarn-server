@@ -36,7 +36,7 @@ public class BackupThread extends Task {
         }
         try (FileOutputStream fos = new FileOutputStream(BACKUP_DIR + date(System.currentTimeMillis()) + "-char.zip");
              ZipOutputStream zos = new ZipOutputStream(fos)) {
-            populateFilesList(new File(SAVE_DIR), "char");
+            populateFilesList(new File(SAVE_DIR));
 
 
             for (String filePath : filesList) {
@@ -61,7 +61,7 @@ public class BackupThread extends Task {
 
         try (FileOutputStream fos = new FileOutputStream(BACKUP_DIR + date(System.currentTimeMillis()) + "-shop.zip");
              ZipOutputStream zos = new ZipOutputStream(fos)) {
-            populateFilesList(new File(SAVE_DIR), "pos");
+            populateFilesList(new File(SHOP_DIR));
 
 
             for (String filePath : filesList) {
@@ -84,11 +84,11 @@ public class BackupThread extends Task {
 
     }
 
-    private void populateFilesList(File dir, String name) {
+    private void populateFilesList(File dir) {
         File[] files = dir.listFiles();
         for(File file : Objects.requireNonNull(files)){
             if(file.isFile()) filesList.add(file.getAbsolutePath().replace(" ", "_"));
-            else populateFilesList(file, name);
+            else populateFilesList(file);
         }
     }
 
