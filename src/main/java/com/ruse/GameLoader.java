@@ -56,7 +56,7 @@ public final class GameLoader {
 	private final GameEngine engine;
 	private final int port;
 
-	protected GameLoader(int port) {
+	GameLoader(int port) {
 		this.port = port;
 		this.engine = new GameEngine();
 	}

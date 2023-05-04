@@ -495,6 +495,7 @@ public class NPCDrops {
                         } else {
                             if (player.getEquipment().getItems()[Equipment.AMULET_SLOT].getId() == 19888
                                     || player.getEquipment().getItems()[Equipment.AMULET_SLOT].getId() == 19886
+                                    || player.getEquipment().getItems()[Equipment.AMULET_SLOT].getId() == 4489
                                     || player.getEquipment().getItems()[Equipment.RING_SLOT].getId() == 4446
                                     || player.getEquipment().getItems()[Equipment.RING_SLOT].getId() == 18823
                                     || player.getEquipment().getItems()[Equipment.RING_SLOT].getId() == 18818
@@ -535,6 +536,7 @@ public class NPCDrops {
             if (!player.isMini()) {
                 if ((player.getEquipment().getItems()[Equipment.AMULET_SLOT].getId() == 19888
                         || player.getEquipment().getItems()[Equipment.AMULET_SLOT].getId() == 19886
+                        || player.getEquipment().getItems()[Equipment.AMULET_SLOT].getId() == 4489
                         || player.getEquipment().getItems()[Equipment.RING_SLOT].getId() == 4446
                         || player.getEquipment().getItems()[Equipment.RING_SLOT].getId() == 18823
                         || player.getEquipment().getItems()[Equipment.RING_SLOT].getId() == 18818

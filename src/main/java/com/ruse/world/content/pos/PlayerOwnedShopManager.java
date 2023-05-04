@@ -179,7 +179,8 @@ public class PlayerOwnedShopManager {
             e.printStackTrace();
         }
         // Thread
-        GameEngine.submit(() -> POSSaving.saveCore(CORE_LOGS));
+       // GameEngine.submit(() -> POSSaving.saveCore(CORE_LOGS));
+
 //        new Condition(
 //                new Thread(() -> POSSaving.saveCore(CORE_LOGS)),
 //                () -> POSSaving.saveCore(CORE_LOGS),
@@ -693,7 +694,7 @@ public class PlayerOwnedShopManager {
             if (definiton != null) {
                 String formatPrice = Misc.sendCashToString(item.getPrice());
                 player.sendMessage("<col=FF0000>" + definiton.getName() + "</col> costs " + formatPrice
-                        + " Billions each in <col=FF0000>" + current.username + "</col>'s shop.");
+                        + " Tokens each in <col=FF0000>" + current.username + "</col>'s shop.");
             }
             return;
         }
@@ -752,7 +753,7 @@ public class PlayerOwnedShopManager {
                     }
                 }
                 if (amount == 0) {
-                    player.sendMessage("You do not have enough Billions in your pouch.");
+                    player.sendMessage("You do not have enough Tokens in your pouch.");
                 } else {
                     if (amount >= item.getAmount()) {
                         amount = item.getAmount();
@@ -790,7 +791,7 @@ public class PlayerOwnedShopManager {
                     }
                 }
             } else
-                player.sendMessage("You do not have enough Billions in your inventory.");
+                player.sendMessage("You do not have enough Tokens in your inventory.");
         } else {
 
             if (amount >= item.getAmount()) {
@@ -832,14 +833,14 @@ public class PlayerOwnedShopManager {
                 saveCore();
 
                 PlayerLogs.log(player.getUsername(), "Player bought " + item.getId() + " x " + removed + " from "
-                        + current.username + "'s pos shop for " + cashAmount + " Billions");
+                        + current.username + "'s pos shop for " + cashAmount + " Tokens");
                 PlayerLogs.log(current.username, "Player sold " + item.getId() + " x " + removed + " to "
-                        + player.getUsername() + " for " + cashAmount + " Billions in their pos shop");
+                        + player.getUsername() + " for " + cashAmount + " Tokens in their pos shop");
                 if (current.getOwner() != null) {
                     current.getOwner().getPacketSender()
                             .sendMessage(player.getUsername() + " bought " + item.getAmount() + "x "
                                     + ItemDefinition.getDefinitions()[item.getId()].getName() + " for " + cashAmount
-                                    + " Billions from your shop");
+                                    + " Tokens from your shop");
                 }
             }
 
@@ -873,7 +874,7 @@ public class PlayerOwnedShopManager {
             if (definiton != null) {
                 String formatPrice = Misc.sendCashToString(item.getPrice());
                 player.sendMessage("<col=FF0000>" + definiton.getName() + "</col> is set to cost " + formatPrice
-                        + " Billions in your shop.");
+                        + " Tokens in your shop.");
             }
             return;
         }
@@ -946,11 +947,11 @@ public class PlayerOwnedShopManager {
         if (itemId == id) {
 
             if (id == ItemDefinition.COIN_ID) {
-                player.sendMessage("You cannot store Millions in your shop.");
+                player.sendMessage("You cannot store Coins in your shop.");
                 return;
             }
             if (id == ItemDefinition.TOKEN_ID) {
-                player.sendMessage("You cannot store Billions in your shop.");
+                player.sendMessage("You cannot store Tokens in your shop.");
                 return;
             }
 
@@ -1001,7 +1002,7 @@ public class PlayerOwnedShopManager {
                     }
 
                 });
-                player.getPacketSender().sendEnterLongAmountPrompt("Enter the price you want to sell this for: (currency: Billions)");
+                player.getPacketSender().sendEnterLongAmountPrompt("Enter the price you want to sell this for: (currency: Tokens)");
 
                 return;
 
@@ -1057,7 +1058,7 @@ public class PlayerOwnedShopManager {
             item.setPrice(price);
             String formatPrice = Misc.sendCashToString(price);
             player.sendMessage("You have set <col=FF0000>" + definiton.getName() + "</col> to cost <col=FF0000>"
-                    + formatPrice + "</col> Billions in your shop.");
+                    + formatPrice + "</col> Tokens in your shop.");
             myShop.save();
 
             for (int i = 0; i < ITEMS.size(); i++) {
@@ -1174,8 +1175,8 @@ public class PlayerOwnedShopManager {
         //player.getPacketSender().sendString(8135, "" + player.getMoneyInPouch());
         myShop.setEarnings(0);
         player.getPlayerOwnedShopManager().getMyShop().setEarnings(0);
-        player.sendMessage("@red@You have claimed " + formatPrice + " Billions into your inventory.");
-        PlayerLogs.log(player.getUsername(), "Played claimed " + formatPrice + " Billions from pos");
+        player.sendMessage("@red@You have claimed " + formatPrice + " Tokens into your inventory.");
+        PlayerLogs.log(player.getUsername(), "Played claimed " + formatPrice + " Tokens from pos");
     }
 
     public PlayerOwnedShop getCurrent() {

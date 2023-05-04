@@ -27,7 +27,7 @@ public class AuraRaidLoot {
 			new Box(934, 1, 7, false),
 			new Box(937, 1, 7, false),
 			new Box(940, 1, 7, false),
-			new Box(6953, 1, 7, false),
+			new Box(6953, 1, 10, false),
 			new Box(588, 1,8, 7, false),
 			new Box(13754, 1, 3, false),
 			new Box(731, 1, 3, false),

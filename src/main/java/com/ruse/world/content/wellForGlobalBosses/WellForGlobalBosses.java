@@ -32,7 +32,7 @@ public class WellForGlobalBosses {
 			amount = getMissingAmount();
 		}
 		if (player.getInventory().getAmount(ItemDefinition.TOKEN_ID) < amount) {
-			DialogueManager.sendStatement(player, "You Don't have that many Billions in your inventory.");
+			DialogueManager.sendStatement(player, "You Don't have that many Tokens in your inventory.");
 			return;
 		}
 

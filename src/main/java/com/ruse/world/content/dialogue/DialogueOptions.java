@@ -78,7 +78,7 @@ public class DialogueOptions {
                     break;
                 case 9924:
                     player.setInputHandling(new WithdrawCurrencyFromCurrencyPouch(0));
-                    player.getPacketSender().sendEnterAmountPrompt("How many Billions would you like to withdraw?");
+                    player.getPacketSender().sendEnterAmountPrompt("How many Tokens would you like to withdraw?");
                     break;
                 case 9925:
                     player.setInputHandling(new WithdrawCurrencyFromCurrencyPouch(4));

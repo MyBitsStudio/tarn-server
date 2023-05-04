@@ -19,6 +19,7 @@ public class EliteSlayerCasket {
             new Box(10946, 1,1, 2D),
             new Box(23118, 1,1, 2D),
             new Box(23120, 1,1, 2D),
+            new Box(6953, 1,1, 2D),
             new Box(23057, 1,1, 1D),
             new Box(2382, 1,1, 1D),
             new Box(10835, 102,256, 100D),

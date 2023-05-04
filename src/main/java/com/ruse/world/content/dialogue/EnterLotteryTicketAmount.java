@@ -35,7 +35,7 @@ public class EnterLotteryTicketAmount extends Input {
 		player.getInventory().delete(ItemDefinition.TOKEN_ID, amount);
 		LotterySystem.addUser(player, amount);
 		if (lotteryNPC != null) {
-			lotteryNPC.forceChat("Total pot is now: " + Misc.formatNumber(LotterySystem.getTotalPrizepool()) + " Billions!");
+			lotteryNPC.forceChat("Total pot is now: " + Misc.formatNumber(LotterySystem.getTotalPrizepool()) + " Tokens!");
 		}
 
 	}

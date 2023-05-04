@@ -1101,7 +1101,7 @@ public class ItemActionPacketListener implements PacketListener {
                 player.getInventory().add(ItemDefinition.COIN_ID, 500_000 * amt);
                 player.getPacketSender()
                         .sendMessage("@blu@You are rewarded " + (amt * 1) + " vote "
-                                + (amt > 1 ? "points, " : "point, ") + (500_000 * amt) + " Millions");
+                                + (amt > 1 ? "points, " : "point, ") + (500_000 * amt) + " Coins");
                 player.getPacketSender()
                         .sendMessage("@blu@You received " + minutesEXP + " minutes of Bonus Xp, " + minutesDR + " minutes of x2 DR");
                 player.getPointsHandler().incrementVotingPoints(amt * 1);
@@ -1109,10 +1109,6 @@ public class ItemActionPacketListener implements PacketListener {
                 VotingDRBoostTask.addBonusDR(player, minutesDR);
                 //VotingDMGBoostTask.addBonusDMG(player, minutesDMG);
                 StarterTasks.finishTask(player, StarterTaskData.REDEEM_A_VOTE_SCROLL);
-
-                Achievements.doProgress(player, Achievements.Achievement.VOTE_10_TIMES, amt);
-                Achievements.doProgress(player, Achievements.Achievement.VOTE_50_TIMES, amt);
-                Achievements.doProgress(player, Achievements.Achievement.VOTE_100_TIMES, amt);
 
                 player.getClickDelay().reset();
                 break;
@@ -3000,6 +2996,64 @@ public class ItemActionPacketListener implements PacketListener {
                 }
                 break;
 
+            case 4071:
+            case 4072:
+            case 4066:
+            case 4067:
+            case 4068:
+            case 4069:
+            case 4070:
+                int amountcoins40 = 2000000;
+                int dissolvereward40 = 10835;
+                Item toDissolveItem40 = player.getInventory().get(slot);
+                if (player.getInventory().contains(toDissolveItem40.getId(), toDissolveItem40.getEffect(), toDissolveItem40.getBonus())) {
+                    player.getInventory().delete(toDissolveItem40)
+                            .add(dissolvereward40, amountcoins40);
+                    player.performAnimation(new Animation(712));
+                    player.getSkillManager().addExperience(Skill.CRAFTING, 365772);
+                    player.getSeasonPass().incrementExp(2000, false);
+                    player.getPacketSender().sendMessage("@or2@You have dissolved @red@" + ItemDefinition.forId(itemId).getName() + "@or2@ for@red@ " + amountcoins40 + " @or2@tokens.");
+                }
+                break;
+
+            case 3472:
+            case 4075:
+            case 4077:
+            case 3473:
+            case 3470:
+            case 4085:
+            case 4083:
+                int amountcoins41 = 3000000;
+                int dissolvereward41 = 10835;
+                Item toDissolveItem41 = player.getInventory().get(slot);
+                if (player.getInventory().contains(toDissolveItem41.getId(), toDissolveItem41.getEffect(), toDissolveItem41.getBonus())) {
+                    player.getInventory().delete(toDissolveItem41)
+                            .add(dissolvereward41, amountcoins41);
+                    player.performAnimation(new Animation(712));
+                    player.getSkillManager().addExperience(Skill.CRAFTING, 365772);
+                    player.getSeasonPass().incrementExp(2750, false);
+                    player.getPacketSender().sendMessage("@or2@You have dissolved @red@" + ItemDefinition.forId(itemId).getName() + "@or2@ for@red@ " + amountcoins41 + " @or2@tokens.");
+                }
+                break;
+
+            case 12843:
+            case 14440:
+            case 14446:
+            case 14438:
+            case 14444:
+                int amountcoins39 = 5000000;
+                int dissolvereward39 = 10835;
+                Item toDissolveItem39 = player.getInventory().get(slot);
+                if (player.getInventory().contains(toDissolveItem39.getId(), toDissolveItem39.getEffect(), toDissolveItem39.getBonus())) {
+                    player.getInventory().delete(toDissolveItem39)
+                            .add(dissolvereward39, amountcoins39);
+                    player.performAnimation(new Animation(712));
+                    player.getSkillManager().addExperience(Skill.CRAFTING, 573182);
+                    player.getSeasonPass().incrementExp(3500, false);
+                    player.getPacketSender().sendMessage("@or2@You have dissolved @red@" + ItemDefinition.forId(itemId).getName() + "@or2@ for@red@ " + amountcoins39 + " @or2@tokens.");
+                }
+                break;
+
             case 2028:
             case 2030:
             case 2032:
@@ -3329,15 +3383,16 @@ public class ItemActionPacketListener implements PacketListener {
             case 2682:
             case 2684:
             case 2686:
-                int amountcoins39 = 1;
-                int dissolvereward39 = 20503;
-                Item toDissolveItem39 = player.getInventory().get(slot);
-                if (player.getInventory().contains(toDissolveItem39.getId(), toDissolveItem39.getEffect(), toDissolveItem39.getBonus())) {
-                    player.getInventory().delete(toDissolveItem39)
-                            .add(dissolvereward39, amountcoins39);
+                int amountcoins44 = 1;
+                int dissolvereward44 = 20503;
+                Item toDissolveItem44 = player.getInventory().get(slot);
+                if (player.getInventory().contains(toDissolveItem44.getId(), toDissolveItem44.getEffect(), toDissolveItem44.getBonus())) {
+                    player.getInventory().delete(toDissolveItem44)
+                            .add(dissolvereward44, amountcoins44);
                     player.performAnimation(new Animation(712));
                     player.getSkillManager().addExperience(Skill.CRAFTING, 1000);
-                    player.getPacketSender().sendMessage("@or2@You have dissolved @red@" + ItemDefinition.forId(itemId).getName() + "@or2@ for@red@ " + amountcoins39 + " @or2@token.");
+                    player.getSeasonPass().incrementExp(250, false);
+                    player.getPacketSender().sendMessage("@or2@You have dissolved @red@" + ItemDefinition.forId(itemId).getName() + "@or2@ for@red@ " + amountcoins44 + " @or2@token.");
                 }
                 break;
             case 22229:
@@ -3352,15 +3407,16 @@ public class ItemActionPacketListener implements PacketListener {
             case 22238:
             case 22239:
             case 22240:
-                int amountcoins44 = 1;
-                int dissolvereward44 = 6640;
-                Item toDissolveItem44 = player.getInventory().get(slot);
-                if (player.getInventory().contains(toDissolveItem44.getId(), toDissolveItem44.getEffect(), toDissolveItem44.getBonus())) {
-                    player.getInventory().delete(toDissolveItem44)
-                            .add(dissolvereward44, amountcoins44);
+                int amountcoins45 = 1;
+                int dissolvereward45 = 6640;
+                Item toDissolveItem45 = player.getInventory().get(slot);
+                if (player.getInventory().contains(toDissolveItem45.getId(), toDissolveItem45.getEffect(), toDissolveItem45.getBonus())) {
+                    player.getInventory().delete(toDissolveItem45)
+                            .add(dissolvereward45, amountcoins45);
                     player.performAnimation(new Animation(712));
                     player.getSkillManager().addExperience(Skill.CRAFTING, 1000000);
-                    player.getPacketSender().sendMessage("@or2@You have dissolved @red@" + ItemDefinition.forId(itemId).getName() + "@or2@ for@red@ " + amountcoins44 + " @or2@Owner's Gemstone.");
+                    player.getSeasonPass().incrementExp(50000, false);
+                    player.getPacketSender().sendMessage("@or2@You have dissolved @red@" + ItemDefinition.forId(itemId).getName() + "@or2@ for@red@ " + amountcoins45 + " @or2@Owner's Gemstone.");
                 }
                 break;
 
@@ -3634,7 +3690,7 @@ public class ItemActionPacketListener implements PacketListener {
                 player.getInventory().add(ItemDefinition.COIN_ID, 500000  * amt);
                 player.getPacketSender()
                         .sendMessage("@blu@You are rewarded " + (amt * 1) + " vote "
-                                + (amt > 1 ? "points, " : "point, ") + (1000 * amt) + " Millions, and " + (1000 * amt) + " PVM Tickets!");
+                                + (amt > 1 ? "points, " : "point, ") + (1000 * amt) + " Coins, and " + (1000 * amt) + " PVM Tickets!");
                 player.getPacketSender()
                         .sendMessage("@blu@You received " + minutesEXP + " minutes of Bonus Xp, " + minutesDR + " minutes of x2 DR");
                 player.getPointsHandler().incrementVotingPoints(amt * 1);
@@ -3642,10 +3698,6 @@ public class ItemActionPacketListener implements PacketListener {
                 VotingDRBoostTask.addBonusDR(player, minutesDR);
                 // VotingDMGBoostTask.addBonusDMG(player, minutesDMG);
                 StarterTasks.finishTask(player, StarterTaskData.REDEEM_A_VOTE_SCROLL);
-
-                Achievements.doProgress(player, Achievements.Achievement.VOTE_10_TIMES, amt);
-                Achievements.doProgress(player, Achievements.Achievement.VOTE_50_TIMES, amt);
-                Achievements.doProgress(player, Achievements.Achievement.VOTE_100_TIMES, amt);
 
                 player.getClickDelay().reset();
                 break;

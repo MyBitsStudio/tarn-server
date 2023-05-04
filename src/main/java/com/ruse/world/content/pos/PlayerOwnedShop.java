@@ -140,7 +140,7 @@ public class PlayerOwnedShop {
                 String itemName = item.getDefinition().getName();
                 owner.sendMessage("You have set <col=FF0000>" + (itemName == null ? "the merchandise" : itemName)
                         + "</col> to cost <col=FF0000>" + Misc.sendCashToString(item.price)
-                        + "</col> Billions in your shop.");
+                        + "</col> Tokens in your shop.");
 
                 PlayerOwnedShopManager.addItem(item, owner.getUsername());
             }

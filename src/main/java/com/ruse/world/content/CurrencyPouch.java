@@ -26,7 +26,7 @@ public class CurrencyPouch {
         String currency;
 
         amount = player.getCurrencyPouch().upgradeTokens;
-        currency = "Billions";
+        currency = "Tokens";
         player.sendMessage("Your pouch contains @red@" + Misc.formatNumber(amount) + " @bla@" + currency);
 
         amount = player.getCurrencyPouch().pvmTickets;

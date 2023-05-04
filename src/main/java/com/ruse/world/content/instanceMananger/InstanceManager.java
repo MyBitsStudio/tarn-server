@@ -32,7 +32,7 @@ public class InstanceManager {
 		if (player.getInventory().contains(ItemDefinition.TOKEN_ID, 10000)) {
 			player.getInventory().delete(ItemDefinition.TOKEN_ID, 10000);
 		} else {
-			player.getPA().sendMessage("You need at least 10,000 Billions to start an instance.");
+			player.getPA().sendMessage("You need at least 10,000 Tokens to start an instance.");
 			return;
 		}
 		//if (player.getLocation() != Locations.Location.HOME_BANK) {

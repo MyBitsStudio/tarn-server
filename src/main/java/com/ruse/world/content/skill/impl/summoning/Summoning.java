@@ -178,13 +178,14 @@ public class Summoning {
 		if (getFamiliar() != null && getFamiliar().getSummonNpc() != null) {
 			final int spawnId = getFamiliar().getSummonNpc().getId();
 			World.deregister(getFamiliar().getSummonNpc());
-			if (full) {
-				if (BossPet.forSpawnId(spawnId) != null) {
+			BossPet pet = BossPet.forSpawnId(spawnId);
+			if(pet != null){
+				if (full) {
 					if (player.getInventory().getFreeSlots() < 1) {
 						player.getPacketSender().sendMessage("Your familiar has been sent to your bank.");
-						player.getBank(player.getCurrentBankTab()).add(BossPet.forSpawnId(spawnId).itemId, 1);
+						player.getBank(player.getCurrentBankTab()).add(pet.itemId, 1);
 					} else {
-						player.getInventory().add(BossPet.forSpawnId(spawnId).itemId, 1);
+						player.getInventory().add(pet.itemId, 1);
 					}
 				}
 			}

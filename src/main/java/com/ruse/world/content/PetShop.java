@@ -23,28 +23,28 @@ public class PetShop {
             case 23041://damage
             case 23042:
             case 23043:
-                return new Object[]{350000, "Billions"};
+                return new Object[]{350000, "Tokens"};
             case 23114://kil
-                return new Object[]{500000, "Billions"};
+                return new Object[]{500000, "Tokens"};
             case 23115:
-                return new Object[]{250000, "Billions"};
+                return new Object[]{250000, "Tokens"};
             case 23116:
-                return new Object[]{500000, "Billions"};
+                return new Object[]{500000, "Tokens"};
             case 23117:
-                return new Object[]{700000, "Billions"};
+                return new Object[]{700000, "Tokens"};
             case 23164:
-                return new Object[]{1000000, "Billions"};
+                return new Object[]{1000000, "Tokens"};
             case 23108:
             case 23109:
-                return new Object[]{400000, "Billions"};
+                return new Object[]{400000, "Tokens"};
             case 23110:
-                return new Object[]{500000, "Billions"};
+                return new Object[]{500000, "Tokens"};
             case 23112:
-                return new Object[]{1500000, "Billions"};
+                return new Object[]{1500000, "Tokens"};
             case 23111:
-                return new Object[]{5000000, "Billions"};
+                return new Object[]{5000000, "Tokens"};
         }
-        return new Object[]{100000000, "Billions"};
+        return new Object[]{100000000, "Tokens"};
     }
 
     public boolean handleButton(int buttonId) {

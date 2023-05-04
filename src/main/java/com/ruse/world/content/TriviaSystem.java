@@ -12,7 +12,7 @@ public class TriviaSystem {
 		QUESTION_3("In what location can you find Swoodowoodo", "Ezonenpc"), 
 		QUESTION_5("In what minigame do you get a boss room key", "Key minigame"), 
 		QUESTION_9("What is the highest zone availble", "groudon"), 
-		QUESTION_11("What is the main currency on Tarn", "Millions"),
+		QUESTION_11("What is the main currency on Tarn", "Coins"),
 		QUESTION_12("Re-arrange these letters to make a npc.  'xytraniC'", "Cyantrix"), 
 		QUESTION_13("Re-arrange these letters to make a npc.  'stvaneneR'", "Revenants"), 
 		QUESTION_14("Re-arrange these letters to make a city.  'rorckVa'", "Varrock"), 

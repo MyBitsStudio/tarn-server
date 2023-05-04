@@ -178,6 +178,7 @@ public class EquipPacketListener implements PacketListener {
             case 19886:
             case 4446:
             case 19888:
+            case 4489:
             case 18823:
             case 18888:
             case 15450:

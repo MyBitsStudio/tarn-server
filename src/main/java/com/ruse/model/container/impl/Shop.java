@@ -1544,7 +1544,7 @@ public class Shop extends ItemContainer {
             } else if (shop == EASTER_STORE_2) {
                 switch (item) {
                     case 23003:
-                        return new Object[]{118, "Billions"};
+                        return new Object[]{118, "Tokens"};
                 }
             } else if (shop == DUNGEONEERING_STORE_NEW) {
                 switch (item) {

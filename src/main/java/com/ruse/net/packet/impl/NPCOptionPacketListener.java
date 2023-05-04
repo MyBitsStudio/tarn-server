@@ -1510,7 +1510,7 @@ public class NPCOptionPacketListener implements PacketListener {
                     case 788:
                         player.sendMessage("@bla@There are currently @red@" + LotterySystem.getCurrentTicketAmount()
                                 + " @bla@Lottery tickets- Winner pot is@red@: " + LotterySystem.getTotalPrizepool()
-                                + "@bla@ Billions");
+                                + "@bla@ Tokens");
                         break;
                     case 5382:
                         if (player.getGameMode().equals(GameMode.ULTIMATE_IRONMAN)) {

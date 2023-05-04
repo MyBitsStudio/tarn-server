@@ -15,9 +15,9 @@ public class ConvertCoins {
 			int amount = player.getInventory().getAmount(ItemDefinition.COIN_ID) / 1_000;
 			player.getInventory().delete(new Item(ItemDefinition.COIN_ID, amount * 1_000));
 			player.getInventory().add(new Item(ItemDefinition.TOKEN_ID, amount));
-			player.sendMessage("You have successfully converted coins to Billions");
+			player.sendMessage("You have successfully converted coins to Tokens");
 		} else {
-			player.sendMessage("You don't have enough coins to convert to Billions");
+			player.sendMessage("You don't have enough coins to convert to Tokens");
 		}
 	}
 	/*

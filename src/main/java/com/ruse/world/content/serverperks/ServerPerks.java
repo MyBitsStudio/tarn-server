@@ -188,7 +188,7 @@ public class ServerPerks {
             lines.forEach(line -> {
                 String[] split = line.split(", ");
                 if(split.length == 2)
-                contributions.put(Perk.valueOf(split[0]), Integer.parseInt(split[1]));
+                    contributions.put(Perk.valueOf(split[0]), Integer.parseInt(split[1]));
             });
         } catch (IOException e) {
             e.printStackTrace();
@@ -204,7 +204,7 @@ public class ServerPerks {
         GameEngine.submit(() -> {
             try {
                 BufferedReader r = new BufferedReader(new FileReader(FILE_PATH.toString()));
-                ArrayList<String> contents = new ArrayList<String>();
+                ArrayList<String> contents = new ArrayList<>();
                 while (true) {
                     String line = r.readLine();
                     String lineUser = line;

@@ -29,6 +29,7 @@ import com.ruse.world.World;
 import com.ruse.world.clip.region.RegionClipping;
 import com.ruse.world.content.*;
 import com.ruse.world.content.PlayerPunishment.Jail;
+import com.ruse.world.content.achievement.Achievements;
 import com.ruse.world.content.aura.AuraParty;
 import com.ruse.world.content.aura.AuraRaids;
 import com.ruse.world.content.clan.ClanChat;
@@ -146,14 +147,14 @@ public class CommandPacketListener implements PacketListener {
                     }
                     for (com.everythingrs.donate.Donation donate: donations) {
                         player.getInventory().add(new Item(donate.product_id, donate.product_amount));
-                        if (GameSettings.DOUBLE_BONDS_DONO = true && donate.product_id == 23060 || donate.product_id == 23057
-                                || donate.product_id == 23058 || donate.product_id == 23059) {
-                            player.getInventory().add(new Item(donate.product_id, donate.product_amount));
-                        }
-                        if (GameSettings.DOUBLE_BOXES_DONO = true && donate.product_id == 15003 || donate.product_id == 15002
-                                || donate.product_id == 15004 || donate.product_id == 20489 || donate.product_id == 20491 || donate.product_id == 20490 || donate.product_id == 23002 || donate.product_id == 13019) {
-                            player.getInventory().add(new Item(donate.product_id, donate.product_amount));
-                        }
+                       // if (GameSettings.DOUBLE_BONDS_DONO = true && donate.product_id == 23060 || donate.product_id == 23057
+                            //    || donate.product_id == 23058 || donate.product_id == 23059) {
+                           // player.getInventory().add(new Item(donate.product_id, donate.product_amount));
+                       // }
+                       // if (GameSettings.DOUBLE_BOXES_DONO = true && donate.product_id == 15003 || donate.product_id == 15002
+                            //    || donate.product_id == 15004 || donate.product_id == 20489 || donate.product_id == 20491 || donate.product_id == 20490 || donate.product_id == 23002 || donate.product_id == 13019) {
+                           // player.getInventory().add(new Item(donate.product_id, donate.product_amount));
+                       // }
                         DonationManager.getInstance().addToTotalDonation(donate.product_id, donate.product_amount);
                     }
                     player.getPacketSender().sendMessage("Thank you for donating!");
@@ -199,7 +200,10 @@ public class CommandPacketListener implements PacketListener {
                     JavaCord.sendMessage("\uD83E\uDD16│\uD835\uDDEE\uD835\uDDF0\uD835\uDE01\uD835\uDDF6\uD835\uDE03\uD835\uDDF6\uD835\uDE01\uD835\uDE06", "**[" + player.getUsername() + "] Just voted for the server, thank you!**");
                     doMotivote.setVoteCount(doMotivote.getVoteCount() + reward[0].give_amount);
                     VoteBossDrop.save();
-                    player.getSeasonPass().incrementExp(250 * reward[0].give_amount, false);
+                    player.getSeasonPass().incrementExp(500 * reward[0].give_amount, false);
+                    Achievements.doProgress(player, Achievements.Achievement.VOTE_10_TIMES, reward[0].give_amount);
+                    Achievements.doProgress(player, Achievements.Achievement.VOTE_50_TIMES, reward[0].give_amount);
+                    Achievements.doProgress(player, Achievements.Achievement.VOTE_100_TIMES, reward[0].give_amount);
                     if (doMotivote.getVoteCount() >= 50) {
                         VoteBossDrop.handleSpawn();
                     }

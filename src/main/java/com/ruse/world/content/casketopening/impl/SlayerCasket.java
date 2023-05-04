@@ -22,7 +22,7 @@ public class SlayerCasket {
             new Box(934, 1,1, 30D),
             new Box(937, 1,1, 20D),
             new Box(940, 1,1, 10D),
-            new Box(6953, 1,1, 5D),
+            new Box(6953, 1,1, 10D),
             new Box(13754, 1,1, 1D),
             new Box(732, 1,1, 100D),
             new Box(942, 1,1, 90D),
