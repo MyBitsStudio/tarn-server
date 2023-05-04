@@ -34,10 +34,10 @@ public class BackupThread extends Task {
         if (!dir.exists()) {
             dir.mkdirs();
         }
-        try (FileOutputStream fos = new FileOutputStream(BACKUP_DIR + date(System.currentTimeMillis()) + ".zip");
+        try (FileOutputStream fos = new FileOutputStream(BACKUP_DIR + date(System.currentTimeMillis()) + "-char.zip");
              ZipOutputStream zos = new ZipOutputStream(fos)) {
             populateFilesList(new File(SAVE_DIR), "char");
-            populateFilesList(new File(SHOP_DIR), "pos");
+
 
             for (String filePath : filesList) {
                 ZipEntry ze = new ZipEntry(filePath.substring(dir.getAbsolutePath().length() - 1)
@@ -56,6 +56,32 @@ public class BackupThread extends Task {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+
+        filesList.clear();
+
+        try (FileOutputStream fos = new FileOutputStream(BACKUP_DIR + date(System.currentTimeMillis()) + "-shop.zip");
+             ZipOutputStream zos = new ZipOutputStream(fos)) {
+            populateFilesList(new File(SAVE_DIR), "pos");
+
+
+            for (String filePath : filesList) {
+                ZipEntry ze = new ZipEntry(filePath.substring(dir.getAbsolutePath().length() - 1)
+                        .replace('_', ' '));
+                zos.putNextEntry(ze);
+
+                try (FileInputStream fis = new FileInputStream(filePath.replace('_', ' '))) {
+                    byte[] buffer = new byte[1024];
+                    int len;
+                    while ((len = fis.read(buffer)) > 0) {
+                        zos.write(buffer, 0, len);
+                    }
+                }
+                zos.closeEntry();
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 
     private void populateFilesList(File dir, String name) {
@@ -67,6 +93,6 @@ public class BackupThread extends Task {
     }
 
     private String date(long milli){
-        return new java.text.SimpleDateFormat("MM/dd/yyyy HH").format(new java.util.Date (milli)).replace(" ", "_").replace("/", "-");
+        return new java.text.SimpleDateFormat("MM/dd/yyyy HH mm").format(new java.util.Date (milli)).replace(" ", "_").replace("/", "-");
     }
 }
