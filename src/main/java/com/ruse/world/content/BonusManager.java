@@ -81,9 +81,9 @@ public class BonusManager {
 		player.getPacketSender().sendString(66106, "Drop Rate Bonus: " + CustomDropUtils.drBonus(player, player.getSlayer().getSlayerTask().getNpcId()));
 		player.getPacketSender().sendString(66107, "Double Drop Bonus: " + CustomDropUtils.getDoubleDropChance(player, player.getSlayer().getSlayerTask().getNpcId()));
 
-		player.getPacketSender().sendString(66108, "Melee Maxhit: " +  formatNumber(Maxhits.melee(player, player) / 10));
-		player.getPacketSender().sendString(66109, "Ranged Maxhit: " +  formatNumber(Maxhits.ranged(player, player) / 10));
-		player.getPacketSender().sendString(66110, "Magic Maxhit: " +  formatNumber(Maxhits.magic(player, player) / 10));
+		player.getPacketSender().sendString(66108, "Melee Maxhit: " +  formatNumber(Maxhits.melee(player, player)));
+		player.getPacketSender().sendString(66109, "Ranged Maxhit: " +  formatNumber(Maxhits.ranged(player, player)));
+		player.getPacketSender().sendString(66110, "Magic Maxhit: " +  formatNumber(Maxhits.magic(player, player)));
 
 	}
 
@@ -154,61 +154,88 @@ public class BonusManager {
 		}
 	}
 
+//	public static String formatNumber(long num) {
+////		boolean negative = false;
+////		if (num < 0) {
+////			num = -num;
+////			negative = true;
+////		}
+////		int length = String.valueOf(num).length();
+////		String number = Long.toString(num);
+////		String numberString = number;
+////		String end = "";
+////		if (length == 4) {
+////			numberString = number.substring(0, 1) + "K";
+////			double doubleVersion = 0.0;
+////			doubleVersion = num / 1000.0;
+////			if (doubleVersion != (int)doubleVersion) {
+////				if (num - (1000 * Math.ceil(doubleVersion)) > 100) {
+////					numberString = number.substring(0, 1) + "." + number.substring(1, 2) + "K";
+////				}
+////			}
+////		} else if (length == 5) {
+////			numberString = number.substring(0, 2) + "K";
+////		} else if (length == 6) {
+////			numberString = number.substring(0, 3) + "K";
+////		} else if (length == 7) {
+////			String sub = number.substring(1, 2);
+////			if (sub.equals("0")) {
+////				numberString = number.substring(0, 1) + "M";
+////			} else {
+////				numberString = number.substring(0, 1) + "." + number.substring(1, 2) + "M";
+////			}
+////		} else if (length == 8) {
+////			end = "." + number.substring(2, 3);
+////			if (end.equals(".0")) {
+////				end = "";
+////			}
+////			numberString = number.substring(0, 2) + end + "M";
+////		} else if (length == 9) {
+////			end = "." + number.substring(3, 4);
+////			if (end.equals(".0")) {
+////				end = "";
+////			}
+////			numberString = number.substring(0, 3) + end + "M";
+////		} else if (length == 10) {
+////			numberString = number.substring(0, 4) + "M";
+////		} else if (length == 11) {
+////			numberString = number.substring(0, 2) + "." + number.substring(2, 5) + "B";
+////		} else if (length == 12) {
+////			numberString = number.substring(0, 3) + "." + number.substring(3, 6) + "B";
+////		} else if (length == 13) {
+////			numberString = number.substring(0, 4) + "." + number.substring(4, 7) + "B";
+////		}
+////		if (negative) {
+////			numberString = "-" + numberString;
+////		}
+////		return numberString;
+////	}
+
 	public static String formatNumber(long num) {
 		boolean negative = false;
-		if (num < 0) {
-			num = -num;
-			negative = true;
-		}
-		int length = String.valueOf(num).length();
-		String number = Long.toString(num);
-		String numberString = number;
-		String end = "";
-		if (length == 4) {
-			numberString = number.substring(0, 1) + "K";
-			double doubleVersion = 0.0;
-			doubleVersion = num / 1000.0;
-			if (doubleVersion != (int)doubleVersion) {
-				if (num - (1000 * Math.ceil(doubleVersion)) > 100) {
-					numberString = number.substring(0, 1) + "." + number.substring(1, 2) + "K";
-				}
-			}
-		} else if (length == 5) {
-			numberString = number.substring(0, 2) + "K";
-		} else if (length == 6) {
-			numberString = number.substring(0, 3) + "K";
-		} else if (length == 7) {
-			String sub = number.substring(1, 2);
-			if (sub.equals("0")) {
-				numberString = number.substring(0, 1) + "M";
-			} else {
-				numberString = number.substring(0, 1) + "." + number.substring(1, 2) + "M";
-			}
-		} else if (length == 8) {
-			end = "." + number.substring(2, 3);
-			if (end.equals(".0")) {
-				end = "";
-			}
-			numberString = number.substring(0, 2) + end + "M";
-		} else if (length == 9) {
-			end = "." + number.substring(3, 4);
-			if (end.equals(".0")) {
-				end = "";
-			}
-			numberString = number.substring(0, 3) + end + "M";
-		} else if (length == 10) {
-			numberString = number.substring(0, 4) + "M";
-		} else if (length == 11) {
-			numberString = number.substring(0, 2) + "." + number.substring(2, 5) + "B";
-		} else if (length == 12) {
-			numberString = number.substring(0, 3) + "." + number.substring(3, 6) + "B";
-		} else if (length == 13) {
-			numberString = number.substring(0, 4) + "." + number.substring(4, 7) + "B";
-		}
-		if (negative) {
-			numberString = "-" + numberString;
-		}
-		return numberString;
+		if (num < 0) { num = -num; negative = true; }
+		int length = (int) Math.log10(num) + 1; // compute length more efficiently
+		 String numberString; if (length <= 6) {// handle cases up to 999,999
+			numberString = Long.toString(num);
+		 } else if (length <= 9) { // handle cases up to 999,999,999
+			 double doubleVersion = num / 1_000_000.0;
+			 if (doubleVersion == Math.floor(doubleVersion) && doubleVersion < 1000) {
+				 numberString = String.format("%.0fM", doubleVersion); // no decimal places if pure integer
+			 } else {
+				 numberString = String.format("%.1fM", doubleVersion); // 1 decimal place if not pure integer
+			 }
+		 } else { // handle cases greater than 999,999,999
+			  double doubleVersion = num / 1_000_000_000.0;
+			  if (doubleVersion == Math.floor(doubleVersion)) {
+				  numberString = String.format("%.0fB", doubleVersion);
+			  } else {
+				  numberString = String.format("%.1fB", doubleVersion);
+			  }
+		 }
+		 if (negative) {
+			 numberString = "-" + numberString;
+		 }
+		 return numberString;
 	}
 
 	public static void sendAttackBonus(Player p) {
