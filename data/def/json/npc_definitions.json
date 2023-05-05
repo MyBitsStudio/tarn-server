@@ -12930,9 +12930,9 @@
     "retreats": false,
     "poisonous": false,
     "respawn": -1,
-    "maxHit": 750,
+    "maxHit": 500,
     "hitpoints": 100000000,
-    "attackSpeed": 1,
+    "attackSpeed": 9,
     "attackAnim": 1341,
     "defenceAnim": 1340,
     "deathAnim": 1342,
@@ -12952,16 +12952,16 @@
     "retreats": false,
     "poisonous": false,
     "respawn": -1,
-    "maxHit": 250,
+    "maxHit": 70,
     "hitpoints": 60000000,
-    "attackSpeed": 1,
+    "attackSpeed": 9,
     "attackAnim": 1341,
     "defenceAnim": 1340,
     "deathAnim": 1342,
-    "attackBonus": 300,
-    "defenceMelee": 50,
-    "defenceRange": 50,
-    "defenceMage": 50
+    "attackBonus": 900,
+    "defenceMelee": 500,
+    "defenceRange": 500,
+    "defenceMage": 500
   },
   {
     "id": 587,
@@ -12983,7 +12983,7 @@
     "attackBonus": 3200,
     "defenceMelee": 600,
     "defenceRange": 600,
-    "defenceMage": 600
+    "defenceMage": 999999
   },
   {
     "id": 588,

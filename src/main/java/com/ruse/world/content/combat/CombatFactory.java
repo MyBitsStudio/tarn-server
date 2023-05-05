@@ -343,7 +343,7 @@ public final class CombatFactory {
      * @return the melee hit.
      */
     public static Hit getHit(Character entity, Character victim, CombatType type) {
-        long maxhit = 0;
+        long maxhit;
         switch (type) {
             case MELEE:
                 maxhit = Maxhits.melee(entity, victim) / 10;

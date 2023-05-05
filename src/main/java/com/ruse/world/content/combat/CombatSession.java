@@ -73,7 +73,7 @@ public class CombatSession {
 				if(!builder.getVictim().toNpc().isAttackable()){
 					if(builder.getVictim().toNpc() instanceof DonationBoss){
 						if(builder.getCharacter().isPlayer())
-							builder.getCharacter().asPlayer().sendMessage("You must donate to attack the minions first");
+							builder.getCharacter().asPlayer().sendMessage("You must kill the minions before attacking the boss!");
 					}
 					builder.getCharacter().getCombatBuilder().reset(builder.getCharacter().isNpc());
 					return;

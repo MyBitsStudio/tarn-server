@@ -250,8 +250,8 @@ public class CombatBuilder {
 	 * @param amount the amount of damage to add for the argued entity.
 	 */
 	public void addDamage(Character entity, long amount) {
-		// // System.out.println("adding damage " + amount + " " + (entity.isPlayer() ?
-		// ((Player) entity).getUsername() : ""));
+		 System.out.println("adding damage " + amount + " " + (entity.isPlayer() ?
+		 ((Player) entity).getUsername() : entity.toNpc().getDefinition().getName()));
 		if (amount < 1 || entity.isNpc()) {
 			return;
 		}

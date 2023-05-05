@@ -177,13 +177,7 @@ public class HitQueue {
 			// Give experience based on the hits.
 			CombatFactory.giveExperience(builder, container, damage);
 
-			if (!container.isAccurate()) {
-				if (container.getCombatType() == CombatType.MAGIC && attacker.getCurrentlyCasting() != null) {
-					victim.performGraphic(new Graphic(85, GraphicHeight.MIDDLE));
-					attacker.getCurrentlyCasting().finishCast(attacker, victim, false, 0);
-					attacker.setCurrentlyCasting(null);
-				}
-			} else if (container.isAccurate()) {
+			if (container.isAccurate()) {
 				CombatFactory.handleArmorEffects(attacker, victim, damage, container.getCombatType());
 				CombatFactory.handlePrayerEffects(attacker, victim, damage, container.getCombatType());
 				CombatFactory.handleSpellEffects(attacker, victim, damage, container.getCombatType());
@@ -199,6 +193,10 @@ public class HitQueue {
 					attacker.getCurrentlyCasting().finishCast(attacker, victim, true, damage);
 					attacker.setCurrentlyCasting(null);
 				}
+			} else if (container.getCombatType() == CombatType.MAGIC && attacker.getCurrentlyCasting() != null) {
+				victim.performGraphic(new Graphic(85, GraphicHeight.MIDDLE));
+				attacker.getCurrentlyCasting().finishCast(attacker, victim, false, 0);
+				attacker.setCurrentlyCasting(null);
 			}
 
 			// Degrade items that need to be degraded
@@ -248,12 +246,10 @@ public class HitQueue {
 				if (npc.switchesVictim() && Misc.getRandom(6) <= 1) {
 					if (npc.getDefinition().isAggressive()) {
 						npc.setFindNewTarget(true);
-					} else {
-						if (p.getLocalPlayers().size() >= 1) {
-							List<Player> list = p.getLocalPlayers();
-							Player c = list.get(Misc.getRandom(list.size() - 1));
-							npc.getCombatBuilder().attack(c);
-						}
+					} else if (p.getLocalPlayers().size() >= 1) {
+						List<Player> list = p.getLocalPlayers();
+						Player c = list.get(Misc.getRandom(list.size() - 1));
+						npc.getCombatBuilder().attack(c);
 					}
 				}
 
