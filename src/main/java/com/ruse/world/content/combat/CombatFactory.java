@@ -2149,18 +2149,19 @@ public final class CombatFactory {
 
             if (PrayerHandler.isActivated(p, PrayerHandler.SOUL_LEECH) && damage > 0) {
                 //p.getPacketSender().sendMessage("Soul leech drain test");
-                final int form = (int) (damage / 2);
+                final long form = damage / 2;
                 new Projectile(attacker, target, 2263, 44, 3, 43, 31, 0).sendProjectile();
                 TaskManager.submit(new Task(1, p, false) {
                     @Override
                     public void execute() {
                         if (!(attacker == null || target == null || attacker.getConstitution() <= 0)) {
                             target.performGraphic(new Graphic(2264, GraphicHeight.LOW));
+                            new Projectile(target, attacker, 2263, 44, 3, 43, 31, 0).sendProjectile();
                             p.heal(form);
                             if (target.isPlayer()) {
                                 Player victim = (Player) target;
                                 victim.getSkillManager().setCurrentLevel(Skill.PRAYER,
-                                        victim.getSkillManager().getCurrentLevel(Skill.PRAYER) - form);
+                                        (int) (victim.getSkillManager().getCurrentLevel(Skill.PRAYER) - form));
                                 if (victim.getSkillManager().getCurrentLevel(Skill.PRAYER) < 0) {
                                     victim.getSkillManager().setCurrentLevel(Skill.PRAYER, 0);
                                     CurseHandler.deactivateCurses(victim);

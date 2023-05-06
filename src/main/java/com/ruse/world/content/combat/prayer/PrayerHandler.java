@@ -84,7 +84,7 @@ public class PrayerHandler {
 		SOUL_LEECH(94, 14, -23025, 694, 9),
 		FURY_SWIPE(99, 16, -23023, 695);
 
-		private PrayerData(int requirement, double drainRate, int buttonId, int configId, int... hint) {
+		PrayerData(int requirement, double drainRate, int buttonId, int configId, int... hint) {
 			this.requirement = requirement;
 			this.drainRate = drainRate;
 			this.buttonId = buttonId;
