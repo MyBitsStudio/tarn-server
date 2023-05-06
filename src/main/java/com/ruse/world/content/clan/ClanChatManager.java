@@ -25,6 +25,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Comparator;
 import java.util.Map.Entry;
+import java.util.Objects;
 
 /**
  * 100% Runescape clanchat system.
@@ -63,7 +64,7 @@ public class ClanChatManager {
 				// System.out.println("Missing Ethereal.json in ClanChat directory. Exiting.");
 				//System.exit(0);
 			}
-			for (File file : (new File(FILE_DIRECTORY)).listFiles()) {
+			for (File file : Objects.requireNonNull((new File(FILE_DIRECTORY)).listFiles())) {
 				if (!file.exists())
 					continue;
 
