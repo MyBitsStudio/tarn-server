@@ -190,7 +190,7 @@ public class Maxhits {
         }
 
         if (victim != null && victim.isNpc() && (entity.isPlayer() && !entity.asPlayer().getRights().isDeveloperOnly())) {
-            maxHit = NpcMaxHitLimit.limit((NPC) victim, maxHit, CombatType.MELEE);
+            maxHit = (long) NpcMaxHitLimit.limit((NPC) victim, maxHit, CombatType.MELEE);
         }
 
         return (long) Math.floor(maxHit);
@@ -368,7 +368,7 @@ public class Maxhits {
         maxHit *= 10;
 
         if (victim != null && victim.isNpc() && (entity.isPlayer() && !entity.asPlayer().getRights().isDeveloperOnly())) {
-            maxHit = (int) NpcMaxHitLimit.limit((NPC) victim, maxHit, CombatType.RANGED);
+            maxHit = (long) NpcMaxHitLimit.limit((NPC) victim, maxHit, CombatType.RANGED);
         }
         return (long) Math.floor(maxHit);
     }
@@ -384,6 +384,8 @@ public class Maxhits {
 
             double magicStrength = player.getBonusManager().getOtherBonus()[3];
             double magicLevel = player.getSkillManager().getCurrentLevel(Skill.MAGIC);
+
+
 
             // Prayers
             double prayerMod = 1.0;
@@ -419,7 +421,9 @@ public class Maxhits {
                 specialBonus = player.getCombatSpecial().getStrengthBonus();
             }
 
-            maxHit = (int) baseDamage * specialBonus;
+
+
+            maxHit = (long) baseDamage * specialBonus;
 
             if (victim.isNpc()) {
                 if (((NPC) victim).getId() == player.getSlayer().getSlayerTask().getNpcId()) {
@@ -460,7 +464,6 @@ public class Maxhits {
             if(ServerPerks.getInstance().getActivePerk() == ServerPerks.Perk.DAMAGE || ServerPerks.getInstance().getActivePerk() == ServerPerks.Perk.ALL_PERKS) {
                 maxHit *= 1.5;
             }
-
             for (Item item : player.getEquipment().getItems()) {
                 ItemEffect effect = item.getEffect();
                 if (effect == ItemEffect.NOTHING)
@@ -537,7 +540,7 @@ public class Maxhits {
 
 
         if (victim != null && victim.isNpc() && (entity.isPlayer() && !entity.asPlayer().getRights().isDeveloperOnly())) {
-            maxHit = (int) NpcMaxHitLimit.limit((NPC) victim, maxHit, CombatType.RANGED);
+            maxHit = (long) NpcMaxHitLimit.limit((NPC) victim, maxHit, CombatType.RANGED);
         }
         return (long) Math.floor(maxHit);
     }

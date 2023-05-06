@@ -14,6 +14,12 @@ import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import org.jetbrains.annotations.NotNull;
 
 public class BossCombat implements CombatStrategy {
+
+    public static Position[] minionPos = {
+            new Position(2537, 2639, 4), new Position(2539, 2628, 4),
+            new Position(2520, 2628, 4), new Position(2518, 2636, 4),
+    };
+
     @Override
     public boolean canAttack(Character entity, @NotNull Character victim) {
         return victim.isPlayer();
@@ -43,7 +49,7 @@ public class BossCombat implements CombatStrategy {
         if(x == 0){
 
             Position base = DonationBoss.base;
-            Position pos = new Position(base.getX() + 1, base.getY() + 1, 4);
+            Position pos = minionPos[Misc.random(minionPos.length - 1)];
             boss.performAnimation(new Animation(boss.getDefinition().getAttackAnimation()));
             DonationManager.getInstance().spawnMinion(pos);
             boss.forceChat("Minion, rise and attack!");
@@ -131,13 +137,10 @@ public class BossCombat implements CombatStrategy {
 
             @Override
             public void execute() {
-                if(tick == 1 || tick == 3 || tick == 4 || tick == 5 || tick == 6){
+                if(tick == 1 || tick == 3 ||  tick == 5 ){
                     if(players.size() == 1){
-                        if(!players2.contains(players.get(0))){
-                            players2.add(players.get(0));
-                        }
-                        players.get(0).getPacketSender().sendGlobalGraphic(new Graphic(912), players.get(0).getPosition());
-                        tick = 7;
+                        boss.setChargingAttack(false);
+                        stop();
                     } else {
                         Player player = players.get(Misc.random(players.size() - 1));
                         if (players2.contains(player)) {
@@ -148,12 +151,11 @@ public class BossCombat implements CombatStrategy {
                         player.getPacketSender().sendGlobalGraphic(new Graphic(912), player.getPosition());
                     }
                 }
-                if(tick == 8){
+                if(tick == 8 || tick == 6){
                     for(Player player : players2){
                         if(!player.getPosition().equals(boss.getPosition())) {
                             boss.getCombatBuilder().setContainer(new CombatContainer(boss, player, 1, 0, CombatType.MAGIC, false));
                             player.getPacketSender().sendGlobalGraphic(new Graphic(912), player.getPosition());
-
                         }
                     }
                 }
