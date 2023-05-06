@@ -76,11 +76,6 @@ public enum ItemEffect {
     }
 
     public static boolean hasTripleKills(Player player) {
-        if(player.getEquipment() == null){
-            System.out.println("Player "+player.getUsername()+" equipment is null");
-        } else if( player.getEquipment().getItems() == null){
-            System.out.println("Player "+player.getUsername()+" equipment items is null");
-        }
         for (Item item : player.getEquipment().getItems()) {
             if(item == null)
                 continue;
@@ -96,7 +91,7 @@ public enum ItemEffect {
             if(item == null)
                 continue;
             ItemEffect effect = item.getEffect();
-            if(effect == ItemEffect.TRIPLE_KILLS && effect == ItemEffect.DOUBLE_KILLS)
+            if(effect == ItemEffect.TRIPLE_KILLS || effect == ItemEffect.DOUBLE_KILLS)
                 return true;
         }
         return false;

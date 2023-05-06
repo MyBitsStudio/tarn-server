@@ -360,7 +360,10 @@ public class NPCDeathTask extends Task {
     }
 
     private void summoning(Player killer, int npcId){
-
+        if(killer == null){
+            System.out.println("killer is null");
+            return;
+        }
         boolean tripleKills = ItemEffect.hasTripleKills(killer);
         boolean doubleKills = ItemEffect.hasDoubleKills(killer);
         boolean hasPet = killer.getSummoning() != null && killer.getSummoning().getFamiliar() != null && killer.getSummoning().getFamiliar().getSummonNpc().getId() == 302;

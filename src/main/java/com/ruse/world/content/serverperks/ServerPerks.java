@@ -62,6 +62,10 @@ public class ServerPerks {
         }
         int index = player.getPerkIndex();
         Perk perk = PERKS[index];
+        if(perk != Perk.ALL_PERKS){
+            player.sendMessage("@red@You can only contribute to the All Perks perk at the moment.");
+            return;
+        }
         int current = contributions.getOrDefault(perk, 0);
         int necessary = perk.getAmount();
         amount = Math.min(amount, necessary - current);
@@ -236,7 +240,7 @@ public class ServerPerks {
         DAMAGE("x1.5 Damage", 0, 100000, 1522),// DONE
         DR("x1.5 Drop Rate Boost", 1, 100000, 1521),// DONE
         XP("x3 EXP Boost", 2, 100000, 1524),// DONE
-        ALL_PERKS("All Perks", 3, 300000, 1525),// DONE
+        ALL_PERKS("All Perks", 3, 1500000, 1525),// DONE
        // UPGRADE("x1.2 Upgrade Chance", 3, 500000000, 1525),// DONE
 
         ;
