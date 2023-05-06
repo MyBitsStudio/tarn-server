@@ -124,8 +124,7 @@ public class NPCDeathTask extends Task {
                         killer = killer.getMiniPlayerOwner();
                     }
 
-                    if (killer instanceof MiniPlayer) {
-                    } else {
+                    if(!(killer instanceof MiniPlayer)){
                         killer.getControllerManager().processNPCDeath(npc);
                     }
 
