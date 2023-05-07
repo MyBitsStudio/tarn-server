@@ -74,8 +74,8 @@ public class WheelOfFortune {
         player.getPacketSender().updateInterfaceVisibility(21362, true);
         player.getInventory().add(game.getReward());
 
-        String message = "@red@" + player.getUsername() + " <col=ff812f>has just received @red@" + game.getReward().getDefinition().getName() + " <col=ff812f>from an @red@Owner's Chest";
-        World.sendNewsMessage(message);
+        String message = "<img=5> @blu@News: @or2@" + "@red@" + player.getUsername() + " <col=ff812f>has just received @red@" + game.getReward().getDefinition().getName() + " <col=ff812f>from an @red@Owner's Chest";
+        World.sendFilterMessage(message);
 
         game = null;
     }

@@ -263,7 +263,7 @@ public class Barrows {
 				if (coffin == 1 || (player.getRights().isMember() && coffin == 2)
 						|| player.getUsername().equalsIgnoreCase("debug")) {
 					player.getInventory().add(7587, 1);
-					World.sendMessage("<img=5><shad=0><col=009966> " + player.getUsername()
+					World.sendFilterMessage("<img=5><shad=0><col=009966> " + player.getUsername()
 							+ " has just recieved a Coffin of the Damned from the Barrows minigame!");
 				}
 				player.getPacketSender().sendCameraShake(3, 2, 3, 2);

@@ -41,6 +41,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ConcurrentMap;
 
 public class PlayerLoading {
 
@@ -1210,6 +1211,15 @@ public class PlayerLoading {
             if(reader.has("dropMessage")) {
                 player.dropMessageToggle = reader.get("dropMessage").getAsBoolean();
             }
+
+            if(reader.has("p-settings")) {
+                ConcurrentMap<String, Object> playerSettings = builder.fromJson(reader.get("p-settings"),
+                        new TypeToken<ConcurrentMap<String, Object>>() {
+                        }.getType());
+                player.getPSettings().setSettings(playerSettings);
+            }
+
+
 
             /*
              * File rooms = new File("./data/saves/housing/rooms/" + player.getUsername() +

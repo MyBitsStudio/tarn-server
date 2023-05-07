@@ -240,11 +240,11 @@ public class CasketOpening {
                 "@red@You won x" + amount + " " + name);
 
         if (announce) {
-            String message = "@red@" + player.getUsername() + " <col=ff812f>has just received @red@"
+            String message = "<img=5> @blu@News: @or2@" +"@red@" + player.getUsername() + " <col=ff812f>has just received @red@"
                     + (amount > 1 ? "x" + amount : "") + " "
                     + name + "<col=ff812f> from a @red@" +
                     ItemDefinition.forId(currentCasket.getItemID()).getName() + "!";
-            World.sendNewsMessage(message);
+            World.sendFilterMessage(message);
         }
 
         canCasketOpening = true;

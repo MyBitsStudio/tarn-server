@@ -334,9 +334,9 @@ public class ZombieRaids {
                     Box drop = getLoot(loot, party.getPlayers().size());
 
                     if (drop.isAnnounce()) {
-                        String message = "@blu@News: @red@" + player.getUsername() + " @blu@has just received @red@"
+                        String message = "<img=5> " +"@blu@News: @red@" + player.getUsername() + " @blu@has just received @red@"
                                 + ItemDefinition.forId(drop.getId()).getName() + "@blu@ from @red@Raids [1]";
-                        World.sendMessage1(message);
+                        World.sendFilterMessage(message);
                         JavaCord.sendMessage("\uD83E\uDD16│\uD835\uDDEE\uD835\uDDF0\uD835\uDE01\uD835\uDDF6\uD835\uDE03\uD835\uDDF6\uD835\uDE01\uD835\uDE06", "[" + player.getUsername() + "] has just received " + ItemDefinition.forId(drop.getId()).getName() + " from Raids [1].");
                     }
 

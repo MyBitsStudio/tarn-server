@@ -235,6 +235,8 @@ public class Player extends Character {
     private TeleportInterface.Teleport previousTeleport;
 
 
+    @Getter @Setter private PlayerSettings pSettings = new PlayerSettings(this);
+
     public NPC findSpawnedFor() {
         return findSpawnedFor(position.getRegionId());
     }

@@ -450,7 +450,7 @@ public class SkillManager {
                 player.getPacketSender()
                         .sendMessage("Well done! You've achieved the highest possible level in this skill!");
 
-                World.sendMessage("<shad=15536940><img=5> " + player.getUsername()
+                World.sendFilterMessage("<shad=15536940><img=5> " + player.getUsername()
                         + " has just achieved the highest possible level in " + skillName + "!");
 
                 //if (maxed()) {

@@ -129,6 +129,10 @@ public class World {
         players.forEach(p -> p.getPacketSender().sendMessage(message));
     }
 
+    public static void sendFilterMessage(String message){
+        players.stream().filter(p -> p.getPSettings().getBooleanValue("drop-messages")).forEach(p -> p.getPacketSender().sendMessage(message));
+    }
+
 
     public static void sendYellMessage(String message) {
         for (Player p : players) {

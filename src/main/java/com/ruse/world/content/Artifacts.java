@@ -74,7 +74,7 @@ public class Artifacts {
 			String itemName = Misc.formatText(ItemDefinition.forId(rareDrop).getName());
 			GroundItemManager.spawnGroundItem(killer, new GroundItem(new Item(rareDrop), death.getPosition().copy(),
 					killer.getUsername(), false, 110, true, 100));
-			World.sendMessage("<img=5><col=009966><shad=0> " + killer.getUsername() + " has just received "
+			World.sendFilterMessage("<img=5><col=009966><shad=0> " + killer.getUsername() + " has just received "
 					+ Misc.anOrA(itemName) + " " + itemName + " from Bounty Hunter!");
 		}
 	}

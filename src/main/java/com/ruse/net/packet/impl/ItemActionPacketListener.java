@@ -205,7 +205,7 @@ public class ItemActionPacketListener implements PacketListener {
                 break;
 
             case 3686:
-                if (player.getSeasonPass().isPremium() != false) {
+                if (player.getSeasonPass().isPremium()) {
                     player.sendMessage("You're already a premium member of the Battle Pass.");
                     return;
                 }
@@ -221,6 +221,15 @@ public class ItemActionPacketListener implements PacketListener {
                 player.getInventory().add(23141, 1);
                 player.getInventory().add(23142, 1);
                 player.getInventory().add(23143, 1);
+                break;
+
+                //Raid keys
+            case 23200:
+            case 23201:
+            case 23202:
+                player.getPacketSender().sendMessage("You rub the enchanted key to teleport to chest area.");
+                Position positionR = new Position(2706, 2737, 0);
+                TeleportHandler.teleportPlayer(player, positionR, TeleportType.NORMAL);
                 break;
 
             case PrayerHandler.HOLY_SCROLL_DESTRUCTION_ITEM:
@@ -1237,12 +1246,13 @@ public class ItemActionPacketListener implements PacketListener {
              * player.getPacketSender().sendMessage("holds the next piece."); break;
              */
             case 4155:
-                if (player.getSlayer().getSlayerTask() == SlayerTasks.NO_TASK) {
-                    player.getPacketSender().sendInterfaceRemoval();
-                    player.getPacketSender().sendMessage("You do not have a Slayer task.");
-                    return;
-                }
-                DialogueManager.start(player, SlayerDialogues.dialogue(player));
+                player.sendMessage("This is temporarily disabled");
+//                if (player.getSlayer().getSlayerTask() == SlayerTasks.NO_TASK) {
+//                    player.getPacketSender().sendInterfaceRemoval();
+//                    player.getPacketSender().sendMessage("You do not have a Slayer task.");
+//                    return;
+//                }
+//                DialogueManager.start(player, SlayerDialogues.dialogue(player));
                 break;
             case 18719: // potion of flight
                 if (player.canFly()) {

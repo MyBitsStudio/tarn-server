@@ -392,9 +392,9 @@ public class AuraRaids {
                     Box drop = getLoot(loot, party.getPlayers().size());
 
                     if (drop.isAnnounce()) {
-                        String message = "@blu@News: @red@" + player.getUsername() + " @blu@has just received @red@"
+                        String message = "<img=5> @blu@News: @red@" + player.getUsername() + " @blu@has just received @red@"
                                 + ItemDefinition.forId(drop.getId()).getName() + "@blu@ from @red@Champion Raids";
-                        World.sendMessage1(message);
+                        World.sendFilterMessage(message);
                     }
 
                     double amt = drop.getMin() + Misc.getRandom(drop.getMax() - drop.getMin());

@@ -117,8 +117,15 @@ public class CommandPacketListener implements PacketListener {
             player.getSeasonPass().showInterface();
         }
 
-        if(command[0].equalsIgnoreCase("hide")){
-            player.setHiddenPlayers(!player.isHiddenPlayers());
+        if(command[0].equalsIgnoreCase("settings")){
+            switch(command[1]){
+                case "drop":
+                    player.getPSettings().setSetting("drop-messages", !player.getPSettings().getBooleanValue("drop-messages"));
+                    break;
+                case "hide":
+                    player.getPSettings().setSetting("hidden-players", !player.getPSettings().getBooleanValue("hidden-players"));
+                    break;
+            }
         }
 
         if (command[0].equalsIgnoreCase("resetduo")) {

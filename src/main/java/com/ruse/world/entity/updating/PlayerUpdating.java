@@ -53,7 +53,7 @@ public class PlayerUpdating {
 		packet.putBits(8, player.getLocalPlayers().size());
 		for (Iterator<Player> playerIterator = player.getLocalPlayers().iterator(); playerIterator.hasNext(); ) {
 			Player otherPlayer = playerIterator.next();
-			if(player.isHiddenPlayers()){
+			if(player.getPSettings().getBooleanValue("hidden-players")){
 				playerIterator.remove();
 				packet.putBits(1, 1);
 				packet.putBits(2, 3);
@@ -73,7 +73,7 @@ public class PlayerUpdating {
 		}
 		int playersAdded = 0;
 
-		if(!player.isHiddenPlayers()) {
+		if(!player.getPSettings().getBooleanValue("hidden-players")) {
 			for (Player otherPlayer : World.getPlayers()) {
 				if (player.getLocalPlayers().size() >= 79 || playersAdded > MAX_NEW_PLAYERS_PER_CYCLE)
 					break;

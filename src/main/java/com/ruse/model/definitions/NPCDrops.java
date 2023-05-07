@@ -421,7 +421,7 @@ public class NPCDrops {
                         String message = "<img=15><shad><col=CB0101> [" + player.getUsername()
                                 + "]<col=680000> has received <col=CB0101>" + itemMessage + "<col=680000> from <col=CB0101>" + npcName + "";
                         JavaCord.sendMessage("\uD83E\uDD16│\uD835\uDDEE\uD835\uDDF0\uD835\uDE01\uD835\uDDF6\uD835\uDE03\uD835\uDDF6\uD835\uDE01\uD835\uDE06", "[" + player.getUsername() + "] has received " + itemMessage + " from " + npcName + ".");
-                        World.sendMessage(message);
+                        World.sendFilterMessage(message);
 
                         if (ccAnnounce) {
                             ClanChatManager.sendMessage(player.getCurrentClanChat(),
@@ -464,7 +464,7 @@ public class NPCDrops {
                        + "]<col=680000> has received <col=CB0101>" + itemMessage + "<col=680000> from <col=CB0101>" + npcName + "<col=680000> as a DryStreak Protection";
               // JavaCord.sendMessage("\uD83E\uDD16│\uD835\uDDEE\uD835\uDDF0\uD835\uDE01\uD835\uDDF6\uD835\uDE03\uD835\uDDF6\uD835\uDE01\uD835\uDE06", "[" + player.getUsername() + "] has received " + itemMessage + " from " + npcName + ".");
                 if (drop.isAnnounce() || drop.getChance() >= 601) {
-                    World.sendMessage(message);
+                    World.sendFilterMessage(message);
                 }
                 new CollectionEntry(npc.getId(), randomItem.getId(), randomItem.getAmount()).submit(player);
                 if (player.getInventory().canHold(randomItem)) {

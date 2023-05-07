@@ -382,6 +382,8 @@ public class PlayerSaving {
 
 			object.addProperty("dropMessage", player.dropMessageToggle);
 
+			object.add("p-settings", builder.toJsonTree(player.getPSettings().getSettings()));
+
 			writer.write(builder.toJson(object));
 			writer.close();
 
