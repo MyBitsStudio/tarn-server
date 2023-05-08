@@ -60,7 +60,7 @@ public class BonusManager {
 
 		var extraBonus = player.getEquipmentEnhancement().getBoost(BoostType.STATS);
 		for (int i = 0; i < STRING_ID.length; i++) {
-			double bonus = bonuses[i] * (1 + (double)(extraBonus / 100));
+			double bonus = bonuses[i] * (1 + (extraBonus / 100.0));
 			if (i <= 4) {
 				player.getBonusManager().attackBonus[i] = bonus;
 			} else if (i <= 9) {
