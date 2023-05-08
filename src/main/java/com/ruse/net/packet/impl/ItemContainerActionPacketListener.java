@@ -53,6 +53,12 @@ public class ItemContainerActionPacketListener implements PacketListener {
 			player.getPacketSender().sendMessage("firstAction itemContainer. IF: " + interfaceId + " slot: " + slot + ", id: " + id);
 		}
 		switch (interfaceId) {
+			case -15995:
+				player.getForge().addItem(player.getInventory().forSlot(slot));
+				break;
+			case -15997:
+				player.getForge().removeItem(id);
+				break;
 			case 19420:
 				player.loadUpgradeInterface().setData(player.loadUpgradeInterface().getCategory()[slot]);
 				break;

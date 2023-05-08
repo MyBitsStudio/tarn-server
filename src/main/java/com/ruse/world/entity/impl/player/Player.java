@@ -59,6 +59,8 @@ import com.ruse.world.content.dailytasks_new.TaskChallenge;
 import com.ruse.world.content.dialogue.Dialogue;
 import com.ruse.world.content.equipmentenhancement.EquipmentEnhancement;
 import com.ruse.world.content.eventboss.EventBossManager;
+import com.ruse.world.content.forge.Forge;
+import com.ruse.world.content.forge.ForgeShopType;
 import com.ruse.world.content.gamblinginterface.GamblingInterface;
 import com.ruse.world.content.grandexchange.GrandExchangeSlot;
 import com.ruse.world.content.groupironman.IronmanGroup;
@@ -203,6 +205,8 @@ public class Player extends Character {
     @Getter
     private final ArrayList<TeleportInterface.Teleport> favoriteTeleports = new ArrayList<>();
 
+    @Getter @Setter private PlayerSettings pSettings = new PlayerSettings(this);
+
     public boolean canMysteryBox;
     public boolean switchedPrayerBooks;
 
@@ -217,6 +221,23 @@ public class Player extends Character {
             -1, -1, -1, -1, -1, -1};
 
     public boolean levelNotifications = true;
+
+    @Getter
+    private final Forge forge = new Forge(this);
+
+    @Getter
+    @Setter
+    /**
+     * The type of shop player is viewing in forge shop
+     */
+    private ForgeShopType forgeShopType;
+
+    @Getter
+    @Setter
+    /**
+     * The current tier of shop player is viewing in forge shop
+     */
+    private int forgeShopTier;
 
     @Getter
     private final EquipmentEnhancement equipmentEnhancement = new EquipmentEnhancement(this);
@@ -234,8 +255,6 @@ public class Player extends Character {
     @Setter
     private TeleportInterface.Teleport previousTeleport;
 
-
-    @Getter @Setter private PlayerSettings pSettings = new PlayerSettings(this);
 
     public NPC findSpawnedFor() {
         return findSpawnedFor(position.getRegionId());

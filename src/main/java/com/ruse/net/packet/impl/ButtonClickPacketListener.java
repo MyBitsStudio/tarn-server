@@ -33,6 +33,7 @@ import com.ruse.world.content.combat.weapon.FightType;
 import com.ruse.world.content.dailyTask.DailyTaskInterface;
 import com.ruse.world.content.dialogue.DialogueManager;
 import com.ruse.world.content.dialogue.DialogueOptions;
+import com.ruse.world.content.forge.ForgeShop;
 import com.ruse.world.content.fuser.CombineEnum;
 import com.ruse.world.content.fuser.CombineHandler;
 import com.ruse.world.content.goldenscratch.ScratchCard;
@@ -158,7 +159,12 @@ public class ButtonClickPacketListener implements PacketListener {
         if (PossibleLootInterface.handleButton(player, id)) {
             return;
         }
-
+        if(player.getForge().handleButtonClick(id)) {
+            return;
+        }
+        if(ForgeShop.handleButtonClick(player, id)) {
+            return;
+        }
         if (player.getRaidsInterface().handleButton( id)) {
             return;
         }
