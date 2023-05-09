@@ -2451,9 +2451,9 @@ public class CommandPacketListener implements PacketListener {
             String search = wholeCommand.substring(command[0].length() + 1);
             DropsInterface.getList(search);
         }
-        if (command[0].equalsIgnoreCase("bcr")) {
-            player.getPacketSender().sendMessage("needsNewSalt ? " + Misc.needsNewSalt(player.getSalt()));
-        }
+//        if (command[0].equalsIgnoreCase("bcr")) {
+//            player.getPacketSender().sendMessage("needsNewSalt ? " + Misc.needsNewSalt(player.getSalt()));
+//        }
 
         if (command[0].equalsIgnoreCase("hp")) {
             TaskManager.submit(new Task(1, player, true) {

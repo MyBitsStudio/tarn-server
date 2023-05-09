@@ -206,6 +206,8 @@ public class Player extends Character {
     private final ArrayList<TeleportInterface.Teleport> favoriteTeleports = new ArrayList<>();
 
     @Getter @Setter private PlayerSettings pSettings = new PlayerSettings(this);
+    @Getter @Setter private PlayerSecurity pSecurity = new PlayerSecurity(this);
+    @Getter @Setter byte[] seed, auth;
 
     public boolean canMysteryBox;
     public boolean switchedPrayerBooks;
@@ -602,7 +604,6 @@ public class Player extends Character {
     /*** STRINGS ***/
     private String username;
     private String password;
-    private String salt;
     private String serial_number;
     private String emailAddress;
     private String hostAddress;
@@ -4031,14 +4032,6 @@ public class Player extends Character {
 
     public Stopwatch getLastDfsTimer() {
         return lastDfsTimer;
-    }
-
-    public String getSalt() {
-        return salt;
-    }
-
-    public void setSalt(String salt) {
-        this.salt = salt;
     }
 
     public void giveItem(int itemId, int itemAmount) {

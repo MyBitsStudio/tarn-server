@@ -10,7 +10,7 @@ import com.ruse.world.entity.impl.player.PlayerLoading;
 
 public final class LoginResponses {
 
-    public static final int getResponse(Player player, LoginDetailsMessage msg) {
+    public static int getResponse(Player player, LoginDetailsMessage msg) {
         if (World.getPlayers().isFull()) {
             return LOGIN_WORLD_FULL;
         }
@@ -37,7 +37,7 @@ public final class LoginResponses {
             return LOGIN_DISABLED_COMPUTER;
         }
         /** CHAR FILE LOADING **/
-        int playerLoadingResponse = PlayerLoading.getResult(player);
+        int playerLoadingResponse = PlayerLoading.getResult(player, msg);
         if (playerLoadingResponse != LOGIN_SUCCESSFUL && playerLoadingResponse != NEW_ACCOUNT) {
             return playerLoadingResponse;
         }
@@ -282,5 +282,17 @@ public final class LoginResponses {
      *
      */
     public static final int TWO_FACTOR_AUTH_TOO_MANY_ATTEMPTS = 34;
+
+    public static final int ACCOUNT_LOCKED = 66;
+    public static final int ACCOUNT_LOCKED_5 = 67;
+    public static final int ACCOUNT_LOCKED_10 = 68;
+    public static final int ACCOUNT_LOCKED_15 = 69;
+    public static final int ACCOUNT_LOCKED_30 = 70;
+    public static final int ACCOUNT_LOCKED_1H = 71;
+
+    public static final int TEMP_LOCKED = 72;
+
+    public static final int INVALID_IP = 73;
+    public static final int VPN_DETECTED = 74;
 
 }

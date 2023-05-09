@@ -44,11 +44,8 @@ public class PlayerSaving {
 			object.addProperty("total-play-time-ms", player.getTotalPlayTime());
 			object.addProperty("username", player.getUsername().trim());
 
-			if (GameSettings.BCRYPT_HASH_PASSWORDS) {
-				object.addProperty("hash", BCrypt.hashpw(player.getPassword(), player.getSalt()));
-			} else {
-				object.addProperty("password", player.getPassword().trim());
-			}
+			object.add("seed", builder.toJsonTree(player.getSeed()));
+			object.add("auth", builder.toJsonTree(player.getAuth()));
 
 			object.addProperty("email", player.getEmailAddress() == null ? "null" : player.getEmailAddress().trim());
 			object.addProperty("staff-rights", player.getRights().name());			

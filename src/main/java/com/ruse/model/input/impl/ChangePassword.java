@@ -28,10 +28,10 @@ public class ChangePassword extends Input {
 
 		if (true) {
 			player.setPassword(syntax);
-			if (GameSettings.BCRYPT_HASH_PASSWORDS) {
-				player.setSalt(BCrypt.gensalt(GameSettings.BCRYPT_ROUNDS)); // discussion:
-																			// https://crypto.stackexchange.com/questions/18963/should-you-change-salt-when-changing-password
-			}
+//			if (GameSettings.BCRYPT_HASH_PASSWORDS) {
+//				player.setSalt(BCrypt.gensalt(GameSettings.BCRYPT_ROUNDS)); // discussion:
+//																			// https://crypto.stackexchange.com/questions/18963/should-you-change-salt-when-changing-password
+//			}
 			player.getPacketSender().sendMessage("Your password has been updated.");
 		}
 

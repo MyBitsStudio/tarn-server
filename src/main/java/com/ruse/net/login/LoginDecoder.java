@@ -261,8 +261,7 @@ public final class LoginDecoder extends FrameDecoder {
         channel.write(responseBuilder.toPacket()).addListener(future -> future.getChannel().close());
     }
 
-    
-    @SuppressWarnings("unused")
+
     public Player login(Channel channel, LoginDetailsMessage msg) {
         PlayerSession session = new PlayerSession(channel);
 

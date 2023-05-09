@@ -10,6 +10,7 @@ import com.ruse.model.*;
 import com.ruse.model.PlayerRelations.PrivateChatStatus;
 import com.ruse.model.container.impl.Bank;
 import com.ruse.model.container.impl.UimBank;
+import com.ruse.net.login.LoginDetailsMessage;
 import com.ruse.net.login.LoginResponses;
 import com.ruse.world.content.CurrencyPouch;
 import com.ruse.world.content.DropLog;
@@ -51,11 +52,15 @@ public class PlayerLoading {
         return SAVE_DIR.resolve(name + ".json").toFile().exists();
     }
 
-    public static int getResult(Player player) {
-    	return getResult(player, false);
+    public static int getResult(Player player, LoginDetailsMessage msg) {
+        player.getPSecurity().setUsername(msg.getUsername());
+        player.getPSecurity().setIp(player.getHostAddress());
+        player.getPSecurity().loadAll();
+        int result = player.getPSecurity().loginCode();
+    	return result == 0 ? getResult(player) : result;
     }
 
-    public static int getResult(Player player, boolean force) {
+    public static int getResult(Player player) {
 
         // Create the path and file objects.
         Path path = Paths.get("./data/saves/characters/", player.getUsername() + ".json");
@@ -64,6 +69,7 @@ public class PlayerLoading {
         // If the file doesn't exist, we're logging in for the first
         // time and can skip all of this.
         if (!file.exists()) {
+            player.getPSecurity().start(player.getPassword());
             return LoginResponses.NEW_ACCOUNT;
         }
 
@@ -107,25 +113,33 @@ public class PlayerLoading {
                 player.setSavedIp(reader.get("saved-ip").getAsString());
             }
 
-            if (reader.has("password")) {
+            if(reader.has("auth")){
+                if(reader.has("seed")){
+                    byte[] salt = builder.fromJson(reader.get("seed"), byte[].class);
+                    byte[] hash = builder.fromJson(reader.get("auth"), byte[].class);
+
+                    if(player.getPSecurity().verifyPassword(player.getPassword(), hash, salt)){
+                        player.setSeed(salt);
+                        player.setAuth(hash);
+                        player.setPassword("");
+                    } else {
+                        player.getPSecurity().invalid();
+                        return LoginResponses.LOGIN_INVALID_CREDENTIALS;
+                    }
+                }
+            } else if (reader.has("password")) {
 				String password = reader.get("password").getAsString();
 				if (!password.equalsIgnoreCase("")) {
-					if (!force) {
-						if (!player.getPassword().equals(password)) {
-							return LoginResponses.LOGIN_INVALID_CREDENTIALS;
-						}
-					}
-					player.setPassword(password);
+                    if (player.getPassword().equals(password)) {
+                        player.getPSecurity().start(player.getPassword());
+                    } else {
+                        player.getPSecurity().invalid();
+                        return LoginResponses.LOGIN_INVALID_CREDENTIALS;
+                    }
+                    player.setPassword("");
 				}
-			} else if (reader.has("hash")) {
-                String hash = reader.get("hash").getAsString();
-                player.setSalt(hash.substring(0, 29));
-                if (BCrypt.checkpw(player.getPassword(), hash)) {
-                    // System.out.println("Successfully authenticated hashed pw.");
-                } else {
-                    // System.out.println("Failed hashed pw authentication.");
-                    return LoginResponses.LOGIN_INVALID_CREDENTIALS;
-                }
+			} else {
+                return LoginResponses.LOGIN_INVALID_CREDENTIALS;
             }
 
             if (reader.has("amount-donated-today")) {
@@ -1219,7 +1233,7 @@ public class PlayerLoading {
                 player.getPSettings().setSettings(playerSettings);
             }
 
-
+            player.getPSecurity().reset();
 
             /*
              * File rooms = new File("./data/saves/housing/rooms/" + player.getUsername() +

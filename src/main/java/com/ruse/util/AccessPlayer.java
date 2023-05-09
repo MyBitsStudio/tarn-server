@@ -28,7 +28,7 @@ public abstract class AccessPlayer {
             	return true;
             }
             if(playerLoadMethod(player) == -1) {
-                PlayerLoading.getResult(player, true);
+                PlayerLoading.getResult(player);
             }
             if (player instanceof MiniPlayer) {
             	return true;

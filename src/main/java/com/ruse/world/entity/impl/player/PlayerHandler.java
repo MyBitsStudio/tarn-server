@@ -255,11 +255,6 @@ public class PlayerHandler {
          * player.getSkillManager().setCurrentLevel(Skill.INVENTION, 1, true); }
          */
 
-        if (GameSettings.BCRYPT_HASH_PASSWORDS && Misc.needsNewSalt(player.getSalt())) {
-            player.setSalt(BCrypt.gensalt(GameSettings.BCRYPT_ROUNDS));
-            // System.out.println(player.getUsername() + " needs a new salt. Generated one, rounds ("
-            //	+ GameSettings.BCRYPT_ROUNDS + ")");
-        }
 
         if (Misc.isWeekend()) {
             player.getPacketSender().sendMessage("[" + GameSettings.RSPS_NAME
