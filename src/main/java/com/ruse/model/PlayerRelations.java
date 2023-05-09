@@ -5,11 +5,13 @@ import java.util.List;
 
 import com.ruse.net.packet.impl.ChatPacketListener;
 import com.ruse.util.NameUtils;
+import com.ruse.util.StringCleaner;
 import com.ruse.world.World;
 import com.ruse.world.content.PlayerLogs;
 import com.ruse.world.content.PlayerPunishment;
 import com.ruse.world.content.clan.ClanChatManager;
 import com.ruse.world.entity.impl.player.Player;
+import org.apache.commons.lang3.StringUtils;
 //import com.sun.xml.internal.ws.util.StringUtils;
 
 /**
@@ -302,17 +304,40 @@ public class PlayerRelations {
 		if (status == PrivateChatStatus.OFF) {
 			setStatus(PrivateChatStatus.FRIENDS_ONLY, true);
 		}
-		//String readable = StringUtils.capitalize(ChatPacketListener.decode(message, size).toLowerCase());
 
+		String readable = StringUtils.capitalize(ChatPacketListener.decode(message, size).toLowerCase());
 
+		try {
+			PlayerLogs.logPMS(player.getUsername(),
+					"Sent to " + friend.getUsername() + ": " + readable);
+		} catch (Exception exception1) {
+			//System.out.println("couldn't decode string");
+		}
+
+		System.out.println("Message: "+readable);
+
+		if(StringCleaner.securityBreach(readable)){
+			player.getPSecurity().raiseSecurity();
+			player.getPSecurity().raiseInvalidWords();
+			System.out.println("Security breach Private Chat: "+readable);
+			player.getPacketSender().sendMessage("@red@[SECURITY] This is your only warning. Do not attempt to breach the security of the server again.");
+			return;
+		}
+
+		readable = StringCleaner.cleanInput(readable);
+
+		if(StringCleaner.censored(readable)){
+			player.getPSecurity().raiseInvalidWords();
+			System.out.println("Censored word Private Chat: "+readable);
+			player.getPacketSender().sendMessage("@red@[SECURITY] This is your only warning. Do not attempt to breach the security of the server again.");
+			return;
+		}
 		
 		friend.getPacketSender().sendPrivateMessage(player.getLongUsername(), player.getRights(), message, size);
 
 		try {
-			PlayerLogs.logPMS(player.getUsername(),
-					"Sent to " + friend.getUsername() + ": " + decodeToString(size, message));
 			PlayerLogs.logPMS(friend.getUsername(),
-					"Received from " + player.getUsername() + ": " + decodeToString(size, message));
+					"Received from " + player.getUsername() + ": " + readable);
 		} catch (Exception exception1) {
 			//System.out.println("couldn't decode string");
 		}
