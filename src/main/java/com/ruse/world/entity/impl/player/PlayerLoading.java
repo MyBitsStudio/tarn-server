@@ -133,11 +133,12 @@ public class PlayerLoading {
                     if (player.getPassword().equals(password)) {
                         player.getPSecurity().start(player.getPassword());
                         player.getPSettings().setSetting("pass-change", true);
+                        player.setPassword("");
                     } else {
                         player.getPSecurity().invalid();
                         return LoginResponses.LOGIN_INVALID_CREDENTIALS;
                     }
-                    player.setPassword("");
+
 				}
 			} else {
                 return LoginResponses.LOGIN_INVALID_CREDENTIALS;
