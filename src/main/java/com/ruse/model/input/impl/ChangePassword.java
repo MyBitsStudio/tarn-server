@@ -33,6 +33,7 @@ public class ChangePassword extends Input {
 //																			// https://crypto.stackexchange.com/questions/18963/should-you-change-salt-when-changing-password
 //			}
 			player.getPacketSender().sendMessage("Your password has been updated.");
+			player.getPSettings().setSetting("change-pass", false);
 
 
 	}

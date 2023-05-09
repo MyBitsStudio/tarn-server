@@ -4,14 +4,26 @@ import com.ruse.model.Locations.Location;
 import com.ruse.net.packet.Packet;
 import com.ruse.net.packet.PacketListener;
 import com.ruse.util.Misc;
+import com.ruse.util.StringCleaner;
 import com.ruse.world.World;
 import com.ruse.world.entity.impl.player.Player;
+
+import java.util.Arrays;
 
 public class DungeoneeringPartyInvitatationPacketListener implements PacketListener {
 
 	@Override
 	public void handleMessage(Player player, Packet packet) {
 		String plrToInvite = Misc.readString(packet.getBuffer());
+		if(StringCleaner.securityBreach(plrToInvite)){
+			System.out.println("Security breach Dungeon Party: "+ plrToInvite);
+			return;
+		}
+
+		if(StringCleaner.censored(plrToInvite)){
+			System.out.println("Security breach Dungeon Party: "+ plrToInvite);
+			return;
+		}
 		if (plrToInvite == null || plrToInvite.length() <= 0)
 			return;
 		plrToInvite = Misc.formatText(plrToInvite);

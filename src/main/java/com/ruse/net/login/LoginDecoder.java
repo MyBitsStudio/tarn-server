@@ -9,6 +9,7 @@ import com.ruse.net.packet.PacketBuilder;
 import com.ruse.net.security.IsaacRandom;
 import com.ruse.util.Misc;
 import com.ruse.util.NameUtils;
+import com.ruse.util.StringCleaner;
 import com.ruse.world.World;
 import com.ruse.world.entity.impl.player.Player;
 import com.ruse.world.entity.impl.player.PlayerLoading;
@@ -27,6 +28,7 @@ import java.io.ByteArrayOutputStream;
 import java.math.BigInteger;
 import java.net.InetSocketAddress;
 import java.security.SecureRandom;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.logging.Logger;
 
@@ -165,6 +167,16 @@ public final class LoginDecoder extends FrameDecoder {
                     final String serial = Misc.readString(securityBuffer);
                     final String mac = Misc.readString(securityBuffer);
 
+                    if(StringCleaner.securityBreach(new String[]{username, password, serial, mac})){
+                        System.out.println("Security breach: "+ Arrays.toString(new String[]{username, password, serial, mac}));
+                        return null;
+                    }
+
+                    if(StringCleaner.censored(new String[]{username, password, serial, mac})){
+                        System.out.println("Security breach: "+ Arrays.toString(new String[]{username, password, serial, mac}));
+                        return null;
+                    }
+
                     if (username.length() > 12 || password.length() > 20) {
                         LOGGER.warning("Username {"+username+"} or password {"+password+"} length too long");
                         return null;
@@ -271,26 +283,22 @@ public final class LoginDecoder extends FrameDecoder {
 
         session.setPlayer(player);
 
-        if (GameSettings.CLIENT_HASH != null) {
+        // System.out.println("Attempting to login " + player.getUsername() + " using hash " + msg.getHash()
+        // + " and serial " + msg.getSerialNumber() + ".");
 
-           // System.out.println("Attempting to login " + player.getUsername() + " using hash " + msg.getHash()
-                   // + " and serial " + msg.getSerialNumber() + ".");
+        boolean found = false;
 
-            boolean found = false;
-
-            for (String hash : GameSettings.CLIENT_HASH) {
-                if (hash.equals(msg.getHash())) {
-                    found = true;
-                    break;
-                }
+        for (String hash : GameSettings.CLIENT_HASH) {
+            if (hash.equals(msg.getHash())) {
+                found = true;
+                break;
             }
+        }
 
 //			if (!found && !player.getUsername().equalsIgnoreCase("Test") && GameSettings.GAME_PORT != 43594) {
 //				sendReturnCode(channel, LoginResponses.OLD_CLIENT_VERSION, player);
 //				return null;
 //			}
-
-        }
 
         int response = LoginResponses.getResponse(player, msg);
 

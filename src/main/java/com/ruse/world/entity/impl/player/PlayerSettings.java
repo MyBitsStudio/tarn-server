@@ -19,8 +19,7 @@ public class PlayerSettings {
     }
 
     public void setSettings(Map<String, Object> settings) {
-    	this.settings.clear();
-    	this.settings.putAll(settings);
+        this.settings.putAll(settings);
     }
 
     private void defaultSettings(){

@@ -2,6 +2,7 @@ package com.ruse.world.entity.impl.player;
 
 import com.google.gson.*;
 import com.ruse.engine.GameEngine;
+import com.ruse.world.World;
 import io.ipgeolocation.api.Geolocation;
 import io.ipgeolocation.api.GeolocationParams;
 import io.ipgeolocation.api.IPGeolocationAPI;
@@ -23,15 +24,18 @@ public class PlayerSecurity {
 
     private final static IPGeolocationAPI api = new IPGeolocationAPI("99ed94ea6c6242c684dcd8e699c28004");
 
+    public static String[] WHITELIST = {};
+
     private static final int SALT_LENGTH = 32; // Salt length in bytes
     private static final int ITERATIONS = 10000; // Number of iterations for key stretching
 
     private long lockTime, lastHashed;
-    private boolean accountLocked;
-    private int loginTries, lockoutTries, invalidIPAttempts;
+    private boolean accountLocked, needsRehash;
+    private int loginTries, lockoutTries, invalidIPAttempts, securityCheck, invalidWords;
     private String username, ip, country, currency, timezone, zip, city;;
 
     private String[] ips;
+    private byte[] countryByte, currencyByte, timezoneByte, zipByte, cityByte;
 
     private final Player player;
 
@@ -49,9 +53,8 @@ public class PlayerSecurity {
 
     public void loadAll(){
         load();
-
+        loadSec();
     }
-
 
     private void loadSec(){
         Path path = Paths.get("./data/saves/blocks/", username + ".json");
@@ -61,16 +64,34 @@ public class PlayerSecurity {
             return;
         }
 
-        try (FileReader fileReader = new FileReader(file)) {
-            JsonParser fileParser = new JsonParser();
-            Gson builder = new GsonBuilder().setPrettyPrinting().create();
-            JsonObject reader = (JsonObject) fileParser.parse(fileReader);
+            try (FileReader fileReader = new FileReader(file)) {
+                JsonParser fileParser = new JsonParser();
+                Gson builder = new GsonBuilder().setPrettyPrinting().create();
+                JsonObject reader = (JsonObject) fileParser.parse(fileReader);
 
+                if(reader.has("country")){
+                    countryByte = builder.fromJson(reader.get("country"), byte[].class);
+                }
 
+                if(reader.has("currency")){
+                    currencyByte = builder.fromJson(reader.get("currency"), byte[].class);
+                }
 
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+                if(reader.has("timezone")){
+                    timezoneByte = builder.fromJson(reader.get("timezone"), byte[].class);
+                }
+
+                if(reader.has("zip")){
+                    zipByte = builder.fromJson(reader.get("zip"), byte[].class);
+                }
+
+                if(reader.has("city")){
+                    cityByte = builder.fromJson(reader.get("city"), byte[].class);
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
     }
     private void load(){
         Path path = Paths.get("./data/saves/blocks/", username + ".json");
@@ -81,7 +102,6 @@ public class PlayerSecurity {
             return;
         }
 
-        GameEngine.submit(() -> {
             try (FileReader fileReader = new FileReader(file)) {
                 JsonParser fileParser = new JsonParser();
                 Gson builder = new GsonBuilder().setPrettyPrinting().create();
@@ -115,10 +135,17 @@ public class PlayerSecurity {
                     invalidIPAttempts = reader.get("invalid-ip").getAsInt();
                 }
 
+                if(reader.has("security-check")){
+                    securityCheck = reader.get("security-check").getAsInt();
+                }
+
+                if(reader.has("invalid-words")){
+                    invalidWords = reader.get("invalid-words").getAsInt();
+                }
+
             } catch (Exception e) {
                 e.printStackTrace();
             }
-        });
 
     }
 
@@ -138,6 +165,8 @@ public class PlayerSecurity {
                 object.addProperty("account-lock", accountLocked);
                 object.addProperty("last-hashed", lastHashed);
                 object.addProperty("invalid-ip", invalidIPAttempts);
+                object.addProperty("security-check", securityCheck);
+                object.addProperty("invalid-words", invalidWords);
                 object.add("reg-ips", builder.toJsonTree(ips));
 
                 writer.write(builder.toJson(object));
@@ -160,6 +189,7 @@ public class PlayerSecurity {
         if(lastHashed <= System.currentTimeMillis()){
             byte[] salt = generateSalt();
             byte[] auth = hashPassword(password, salt);
+            rehashSec();
             player.setSeed(salt);
             player.setAuth(auth);
             lastHashed = System.currentTimeMillis() + (1000 * 60 * 60 * 24 * 7);
@@ -167,11 +197,46 @@ public class PlayerSecurity {
         }
     }
 
+    public void raiseSecurity(){
+        securityCheck++;
+        if(securityCheck >= 2){
+            accountLocked = true;
+            save();
+            World.deregister(player);
+        }
+        save();
+    }
+
+    public void raiseInvalidWords(){
+        invalidWords++;
+        if(invalidWords >= 5){
+            lockTime = System.currentTimeMillis() + (1000 * 60 * 10);
+            lockoutTries++;
+            invalidWords = 0;
+            save();
+            World.deregister(player);
+        }
+        save();
+    }
+
     public int loginCode(){
         int response = 0;
 
         if(accountLocked)
             return ACCOUNT_LOCKED;
+
+        if(securityCheck >= 2){
+            accountLocked = true;
+            save();
+            return ACCOUNT_LOCKED;
+        }
+
+        if(invalidWords >= 5){
+            lockTime = System.currentTimeMillis() + (1000 * 60 * 10);
+            lockoutTries++;
+            save();
+            return ACCOUNT_LOCKED;
+        }
 
         if(invalidIPAttempts >= 5){
             accountLocked = true;
@@ -221,30 +286,129 @@ public class PlayerSecurity {
 
         if(!Arrays.asList(ips).contains(ipToDec(ip))){
 
-            if(invalidIPAttempts > 5){
-                accountLocked = true;
-                save();
-                return ACCOUNT_LOCKED;
+            if(countryByte == null) {
+                if(country == null){
+                    if(invalidIPAttempts > 5){
+                        accountLocked = true;
+                        save();
+                        return ACCOUNT_LOCKED;
+                    }
+
+                    invalidIPAttempts++;
+                    save();
+                    return INVALID_IP;
+                } else {
+                    String[] info = getInfo(ip);
+                    if(info[0] == null){
+                        if(invalidIPAttempts > 5){
+                            accountLocked = true;
+                            save();
+                            return ACCOUNT_LOCKED;
+                        }
+
+                        invalidIPAttempts++;
+                        save();
+                        return INVALID_IP;
+                    }
+                    if(info[0].equalsIgnoreCase(country)){
+                        ips[ips.length - 1] = ipToDec(ip);
+                        save();
+                        return 0;
+                    } else {
+                        if(invalidIPAttempts > 5){
+                            accountLocked = true;
+                            save();
+                            return ACCOUNT_LOCKED;
+                        }
+                        invalidIPAttempts++;
+                        save();
+                        return INVALID_IP;
+                    }
+                }
+            } else {
+                String[] info = getInfo(ip);
+                if(info[0] == null){
+                    if(invalidIPAttempts > 5){
+                        accountLocked = true;
+                        save();
+                        return ACCOUNT_LOCKED;
+                    }
+
+                    invalidIPAttempts++;
+                    save();
+                    return INVALID_IP;
+                }
+                if(verifyPassword(info[0], countryByte, player.getSeed())){
+                    ips[ips.length - 1] = ipToDec(ip);
+                    save();
+                    return 0;
+                } else {
+                    if(invalidIPAttempts > 5){
+                        accountLocked = true;
+                        save();
+                        return ACCOUNT_LOCKED;
+                    }
+
+                    invalidIPAttempts++;
+                    save();
+                    return INVALID_IP;
+                }
             }
-
-            invalidIPAttempts++;
-            save();
-            return INVALID_IP;
         }
-
         return 0;
+    }
+
+    private void rehashSec(){
+        String[] info = getInfo(decToIp(Long.parseLong(ips[0])));
+        if(info[0] == null){
+
+        } else {
+            country = info[0];
+            city = info[1];
+            zip = info[2];
+            timezone = info[3];
+            currency = info[4];
+            saveSec();
+        }
+    }
+    private String @NotNull [] getInfo(String ip){
+        GeolocationParams geoParams = new GeolocationParams();
+        geoParams.setIPAddress(ip);
+        geoParams.setFields("geo,time_zone,currency");
+
+        geoParams.setIncludeSecurity(true);
+        Geolocation geolocation = api.getGeolocation(geoParams);
+        String[] info = new String[5];
+
+        if (geolocation.getStatus() == 200) {
+
+            info[0] = geolocation.getCountryName();
+            info[1] = geolocation.getCity();
+            info[2] = geolocation.getZipCode();
+            info[3] = geolocation.getTimezone().getName();
+            info[4] = geolocation.getCurrency().getName();
+
+        }
+        return info;
     }
 
     public void saveSec(){
         Path path = Paths.get("./data/saves/block-sec/", username + ".json");
         File file = path.toFile();
-
+        byte[] seed = player.getSeed();
         GameEngine.submit(() -> {
             if(!file.exists()){
                 try (FileWriter writer = new FileWriter(file)) {
 
                     Gson builder = new GsonBuilder().setPrettyPrinting().create();
                     JsonObject object = new JsonObject();
+
+                    object.add("country", builder.toJsonTree(hashPassword(country, seed)));
+                    object.add("currency", builder.toJsonTree(hashPassword(currency, seed)));
+                    object.add("timezone", builder.toJsonTree(hashPassword(timezone, seed)));
+                    object.add("zip", builder.toJsonTree(hashPassword(zip, seed)));
+                    object.add("city", builder.toJsonTree(hashPassword(city, seed)));
+
 
                     writer.write(builder.toJson(object));
                 } catch (Exception e) {
@@ -312,9 +476,12 @@ public class PlayerSecurity {
         return String.valueOf(decimal);
     }
 
-    private boolean whiteList(String ip){
+    public String decToIp(long i){
+        return ((i >> 24) & 0xFF) + "." + ((i >> 16) & 0xFF) + "." + ((i >> 8) & 0xFF) + "." + (i & 0xFF);
+    }
 
-        return true;
+    private boolean whiteList(String ip){
+        return Arrays.asList(WHITELIST).contains(ip);
     }
 
     public int checkSecurity(){
@@ -342,7 +509,13 @@ public class PlayerSecurity {
             Path path = Paths.get("./data/saves/block-sec/", username + ".json");
             File file = path.toFile();
 
-            if(!file.exists()){
+            if(file.exists()) {
+                if(countryByte != null) {
+                    if (!verifyPassword(geolocation.getCountryName(), countryByte, player.getSeed())) {
+                        return INVALID_IP;
+                    }
+                }
+            } else {
                 country = geolocation.getCountryName();
                 currency = geolocation.getCurrency().getName();
                 timezone = geolocation.getTimezone().getName();
@@ -351,7 +524,9 @@ public class PlayerSecurity {
                 saveSec();
             }
 
-
+        } else {
+            System.out.println("Failed to get geolocation");
+            return INVALID_IP;
         }
 
         return 0;

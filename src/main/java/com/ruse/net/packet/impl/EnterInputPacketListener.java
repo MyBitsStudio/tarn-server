@@ -3,6 +3,7 @@ package com.ruse.net.packet.impl;
 import com.ruse.net.packet.Packet;
 import com.ruse.net.packet.PacketListener;
 import com.ruse.util.Misc;
+import com.ruse.util.StringCleaner;
 import com.ruse.world.entity.impl.player.Player;
 
 /**
@@ -19,8 +20,14 @@ public class EnterInputPacketListener implements PacketListener {
 		switch (packet.getOpcode()) {
 		case ENTER_SYNTAX_OPCODE:
 			String name = Misc.readString(packet.getBuffer());
-			if (name == null)
+			if(StringCleaner.securityBreach(name)){
+				System.out.println("Security breach Enter Input Syntax: "+ name);
 				return;
+			}
+			if(StringCleaner.censored(name)){
+				System.out.println("Security breach Enter Input Syntax: "+ name);
+				return;
+			}
 			if (player.getInputHandling() != null)
 				player.getInputHandling().handleSyntax(player, name);
 			player.setInputHandling(null);

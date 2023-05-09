@@ -3,11 +3,14 @@ package com.ruse.net.packet.impl;
 import com.ruse.net.packet.Packet;
 import com.ruse.net.packet.PacketListener;
 import com.ruse.util.Misc;
+import com.ruse.util.StringCleaner;
 import com.ruse.world.content.PlayerPunishment;
 import com.ruse.world.content.clan.ClanChatManager;
 import com.ruse.world.content.dialogue.DialogueManager;
 import com.ruse.world.content.discordbot.JavaCord;
 import com.ruse.world.entity.impl.player.Player;
+
+import java.util.Arrays;
 
 public class SendClanChatMessagePacketListener implements PacketListener {
 
@@ -20,8 +23,18 @@ public class SendClanChatMessagePacketListener implements PacketListener {
 			player.getPacketSender().sendMessage("You are muted and cannot chat.");
 			return;
 		}
-		if (Misc.blockedWord(clanMessage)) {
-			DialogueManager.sendStatement(player, "A word was blocked in your sentence. Please do not repeat it!");
+		if(StringCleaner.securityBreach(clanMessage)){
+			player.getPSecurity().raiseSecurity();
+			player.getPSecurity().raiseInvalidWords();
+			System.out.println("Security breach: "+ clanMessage);
+			player.getPacketSender().sendMessage("@red@[SECURITY] This is your only warning. Do not attempt to breach the security of the server again.");
+			return;
+		}
+
+		if(StringCleaner.censored(clanMessage)){
+			player.getPSecurity().raiseInvalidWords();
+			System.out.println("Censored word: "+clanMessage);
+			player.getPacketSender().sendMessage("@red@[SECURITY] This is your only warning. Do not attempt to breach the security of the server again.");
 			return;
 		}
 		player.afkTicks = 0;

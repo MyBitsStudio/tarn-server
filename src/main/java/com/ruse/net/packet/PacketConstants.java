@@ -14,7 +14,7 @@ public class PacketConstants {
 		PACKETS[225] = new WheelOfFortuneEndListener();
 
 
-		PACKETS[4] = PACKETS[230] = new ChatPacketListener();
+		PACKETS[4] = new ChatPacketListener();
 		PACKETS[EquipPacketListener.OPCODE] = new EquipPacketListener();
 		PACKETS[140] = (player, packet) -> {
 			if (packet.getOpcode() == 140) {
@@ -125,7 +125,7 @@ public class PacketConstants {
 			2, 0, 0, 0, 2, 0, 0, 0, 4, 8, // 200
 			4, 0, 0, 0, 7, 8, 2, 0, 10, 0, // 210
 			2, 0, 3, 2, 0, 1, -1, 0, 6, 1, // 220
-			1, 0, 0, 0, 6, 0, 7, 8, 1, 0, // 230
+			0, 0, 0, 0, 6, 0, 7, 8, 1, 0, // 230
 			0, 4, 0, 0, 0, 0, -1, 0, -1, 4, // 240
 			0, 0, 6, 6, 0, 0 // 250
 	};

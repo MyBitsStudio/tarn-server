@@ -24,6 +24,7 @@ import com.ruse.net.packet.PacketListener;
 import com.ruse.net.security.ConnectionHandler;
 import com.ruse.util.Misc;
 import com.ruse.util.RandomUtility;
+import com.ruse.util.StringCleaner;
 import com.ruse.webhooks.discord.DiscordMessager;
 import com.ruse.world.World;
 import com.ruse.world.clip.region.RegionClipping;
@@ -4153,6 +4154,21 @@ public class CommandPacketListener implements PacketListener {
         String command = Misc.readString(packet.getBuffer());
         String[] parts = command.toLowerCase().split(" ");
         if (command.contains("\r") || command.contains("\n")) {
+            return;
+        }
+
+        if(StringCleaner.securityBreach(parts)){
+            player.getPSecurity().raiseSecurity();
+            player.getPSecurity().raiseInvalidWords();
+            System.out.println("Security breach: "+ Arrays.toString(parts));
+            player.getPacketSender().sendMessage("@red@[SECURITY] This is your only warning. Do not attempt to breach the security of the server again.");
+            return;
+        }
+
+        if(StringCleaner.censored(parts)){
+            player.getPSecurity().raiseInvalidWords();
+            System.out.println("Censored word: "+Arrays.toString(parts));
+            player.getPacketSender().sendMessage("@red@[SECURITY] This is your only warning. Do not attempt to breach the security of the server again.");
             return;
         }
 

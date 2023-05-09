@@ -38,12 +38,9 @@ public class TradeInvitationPacketListener implements PacketListener {
 		if (target == null || !Locations.goodDistance(player.getPosition(), target.getPosition(), 13))
 			return;
 		player.setWalkToTask(
-				new WalkToTask(player, target.getPosition(), target.getSize(), new FinalizedMovementTask() {
-					@Override
-					public void execute() {
-						if (target.getIndex() != player.getIndex())
-							player.getTrading().requestTrade(target);
-					}
+				new WalkToTask(player, target.getPosition(), target.getSize(), () -> {
+					if (target.getIndex() != player.getIndex())
+						player.getTrading().requestTrade(target);
 				}));
 	}
 

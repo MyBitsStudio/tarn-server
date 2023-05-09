@@ -42,7 +42,16 @@ public class Misc {
     public static final Random RANDOM = new Random(System.currentTimeMillis());
     public static final int HALF_A_DAY_IN_MILLIS = 43200000;
     private static final String[] BLOCKED_WORDS = new String[]{".com", ".net", ".org", "<img", "@cr", "<img=",
-            ":tradereq:", ":duelreq:", "<col=", "<shad="};
+            ":tradereq:", ":duelreq:", "<col=", "<shad=", "rootkit", "sql", "player.get", "inject", "injected",
+            "script", "break;", "while(true)", "while (true)", "for(", "for (", "character", "getRuntime",
+            "getclass", "getclasses", "forname", "java.lang", "java.util", "java.io", "java.net", "java.awt",
+            "java.applet", "sleep(", ".jar", "join(", "java.lang", "java.util", "java.io", "java.net", "java.awt",
+            "java.", "client.java", "client.class", "force.", ".class", "...", "getinputstream", "getoutputstream",
+            "void.", ".void", ":void", "java.", ".java", ".json", ".xml", ".txt", ".bat", ".exe", ".dll", ".bin",
+            ".dat", ".zip", ".rar", ".7z", ".tar", ".gz", ".gzip", ".tar.gz", ".tar.gzip", ".gz", ""
+
+    };
+
     public static byte directionDeltaX[] = new byte[]{0, 1, 1, 1, 0, -1, -1, -1};
     public static byte directionDeltaY[] = new byte[]{1, 1, 0, -1, -1, -1, 0, 1};
     public static byte xlateDirectionToClient[] = new byte[]{1, 2, 4, 7, 6, 5, 3, 0};
@@ -959,10 +968,10 @@ public class Misc {
     }
 
     public static boolean blockedWord(String string) {
-        for (String s : BLOCKED_WORDS) {
-            if (string.toLowerCase().contains(s.toLowerCase())) {
+        String[] chunk = string.split(" ");
+        for(String s : chunk) {
+            if(Arrays.stream(BLOCKED_WORDS).anyMatch(s::equalsIgnoreCase))
                 return true;
-            }
         }
         return false;
     }

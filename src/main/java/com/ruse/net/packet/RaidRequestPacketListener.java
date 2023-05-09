@@ -32,34 +32,31 @@ public class RaidRequestPacketListener implements PacketListener {
 		if (target == null || !Locations.goodDistance(player.getPosition(), target.getPosition(), 13))
 			return;
 		player.setWalkToTask(
-				new WalkToTask(player, target.getPosition(), target.getSize(), new FinalizedMovementTask() {
-					@Override
-					public void execute() { // TODO: inviting from player menu
-						if (target.getIndex() != player.getIndex()) {
-							if (packet.getOpcode() == 220) {
-								// System.out.println(
-								//	player.getMinigameAttributes().getDungeoneeringAttributes().getPartyInvitation()
-								//			+ " | " + target.getMinigameAttributes().getDungeoneeringAttributes()
-								//					.getPartyInvitation());
-								if (player.getMinigameAttributes().getDungeoneeringAttributes().getParty() == null) {
-									// System.out.println("YE1");
-									if (player.getMinigameAttributes().getDungeoneeringAttributes()
-											.getPartyInvitation() != null) {
-										// System.out.println("YE2");
-										player.getMinigameAttributes().getDungeoneeringAttributes().getPartyInvitation()
-												.add(player);
+				new WalkToTask(player, target.getPosition(), target.getSize(), () -> { // TODO: inviting from player menu
+					if (target.getIndex() != player.getIndex()) {
+						if (packet.getOpcode() == 220) {
+							// System.out.println(
+							//	player.getMinigameAttributes().getDungeoneeringAttributes().getPartyInvitation()
+							//			+ " | " + target.getMinigameAttributes().getDungeoneeringAttributes()
+							//					.getPartyInvitation());
+							if (player.getMinigameAttributes().getDungeoneeringAttributes().getParty() == null) {
+								// System.out.println("YE1");
+								if (player.getMinigameAttributes().getDungeoneeringAttributes()
+										.getPartyInvitation() != null) {
+									// System.out.println("YE2");
+									player.getMinigameAttributes().getDungeoneeringAttributes().getPartyInvitation()
+											.add(player);
 
-									}
 								}
-								player.getMinigameAttributes().getDungeoneeringAttributes().setPartyInvitation(null);
+							}
+							player.getMinigameAttributes().getDungeoneeringAttributes().setPartyInvitation(null);
+						} else {
+							if (player.getMinigameAttributes().getDungeoneeringAttributes().getParty() != null) {
+								player.getMinigameAttributes().getDungeoneeringAttributes().getParty()
+										.invite(target);
 							} else {
-								if (player.getMinigameAttributes().getDungeoneeringAttributes().getParty() != null) {
-									player.getMinigameAttributes().getDungeoneeringAttributes().getParty()
-											.invite(target);
-								} else {
-									player.sendMessage(
-											"You need to create a raid group before you can start inviting anyone");
-								}
+								player.sendMessage(
+										"You need to create a raid group before you can start inviting anyone");
 							}
 						}
 					}

@@ -106,13 +106,14 @@ public class World {
     }
 
     public static Player getPlayerByName(String username) {
-        Player p = playerByNames.get(NameUtils.stringToLong(username));
-
-        // If the player is disconnected but the session is still in our list
-
-
-
-        return playerByNames.get(NameUtils.stringToLong(username));
+//        Player p = playerByNames.get(NameUtils.stringToLong(username));
+//
+//        // If the player is disconnected but the session is still in our list
+//
+//
+//
+//        return playerByNames.get(NameUtils.stringToLong(username));
+        return playersByUesrname.get(username);
     }
 
     public final static LoginService LOGIN_SERVICE = new LoginService();

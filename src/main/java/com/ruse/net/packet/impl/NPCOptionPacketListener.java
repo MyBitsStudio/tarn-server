@@ -70,637 +70,634 @@ public class NPCOptionPacketListener implements PacketListener {
             player.getMovementQueue().reset();
             return;
         }
-        player.setWalkToTask(new WalkToTask(player, npc.getPosition(), npc.getSize(), new FinalizedMovementTask() {
-            @Override
-            public void execute() {
-                if (!player.getControllerManager().processNPCClick1(npc)) {
-                    return;
-                }
+        player.setWalkToTask(new WalkToTask(player, npc.getPosition(), npc.getSize(), () -> {
+            if (!player.getControllerManager().processNPCClick1(npc)) {
+                return;
+            }
 
-                if (SummoningData.beastOfBurden(npc.getId())) {
-                    Summoning summoning = player.getSummoning();
-                    if (summoning.getBeastOfBurden() != null && summoning.getFamiliar() != null
-                            && summoning.getFamiliar().getSummonNpc() != null
-                            && summoning.getFamiliar().getSummonNpc().getIndex() == npc.getIndex()) {
-                        summoning.store();
-                        player.getMovementQueue().reset();
+            if (SummoningData.beastOfBurden(npc.getId())) {
+                Summoning summoning = player.getSummoning();
+                if (summoning.getBeastOfBurden() != null && summoning.getFamiliar() != null
+                        && summoning.getFamiliar().getSummonNpc() != null
+                        && summoning.getFamiliar().getSummonNpc().getIndex() == npc.getIndex()) {
+                    summoning.store();
+                    player.getMovementQueue().reset();
+                } else {
+                    player.getPacketSender().sendMessage("That familiar is not yours!");
+                }
+                return;
+            }
+            if (ConstructionActions.handleFirstClickNpc(player, npc)) {
+                return;
+            }
+            switch (npc.getId()) {
+                case 3373:
+                    DialogueManager.start(player, 8005);
+                    player.setDialogueActionId(8005);
+                    break;
+                case 568:
+                    DialogueManager.start(player, 1311);
+                    player.setDialogueActionId(568);
+                    break;
+                case 1208://GLOVES_NPC
+                    break;
+                case 289: //DAILY TASK
+                    if (player.dailies.isEmpty()) {
+                        DialogueManager.start(player, 9901);
+                        player.setDialogueActionId(9905);
                     } else {
-                        player.getPacketSender().sendMessage("That familiar is not yours!");
+                        DailyTasks.sendProgress(player);
+                        player.getPacketSender().sendMessage(player.taskInfo);
                     }
-                    return;
-                }
-                if (ConstructionActions.handleFirstClickNpc(player, npc)) {
-                    return;
-                }
-                switch (npc.getId()) {
-                    case 3373:
-                        DialogueManager.start(player, 8005);
-                        player.setDialogueActionId(8005);
-                        break;
-                    case 568:
-                        DialogueManager.start(player, 1311);
-                        player.setDialogueActionId(568);
-                        break;
-                    case 1208://GLOVES_NPC
-                        break;
-                    case 289: //DAILY TASK
-                        if (player.dailies.isEmpty()) {
-                            DialogueManager.start(player, 9901);
-                            player.setDialogueActionId(9905);
+                    break;
+                case 9022:
+                    ServerPerks.getInstance().open(player);
+                    break;
+                case GroupConfig.NPC_ID:
+                    if (player.getGameMode() == GameMode.GROUP_IRONMAN) {
+                        if (GroupManager.isInGroup(player)) {
+                            GroupManager.openInterface(player);
                         } else {
-                            DailyTasks.sendProgress(player);
-                            player.getPacketSender().sendMessage(player.taskInfo);
+                            DialogueManager.start(player, 8001);
+                            player.setDialogueActionId(8001);
                         }
-                        break;
-                    case 9022:
-                        ServerPerks.getInstance().open(player);
-                        break;
-                    case GroupConfig.NPC_ID:
-                        if (player.getGameMode() == GameMode.GROUP_IRONMAN) {
-                            if (GroupManager.isInGroup(player)) {
-                                GroupManager.openInterface(player);
-                            } else {
-                                DialogueManager.start(player, 8001);
-                                player.setDialogueActionId(8001);
-                            }
+                    } else {
+                        player.sendMessage("You must be a group ironman to do this.");
+                    }
+                    break;
+                case 9000://first click
+                    if (!player.getSlayer().getSlayerMaster().equals(SlayerMaster.BOSS_SLAYER)
+                            && player.getSlayer().getSlayerTask().equals(SlayerTasks.NO_TASK)) {
+                        SlayerMaster.changeSlayerMaster(player, SlayerMaster.BOSS_SLAYER);
+                    }
+                    if (player.getSlayer().getSlayerMaster().equals(SlayerMaster.BOSS_SLAYER))
+                        DialogueManager.start(player, BossSlayerDialogues.dialogue(player));
+                    else {
+                        SlayerMaster yourMaster = player.getSlayer().getSlayerMaster();
+                        SlayerMaster thisMaster = SlayerMaster.forNpcId(npc.getId());
+                        String yourMastersName = "";
+                        String thisMasterName = "";
+                        int reqSlayer = 0;
+                        if(yourMaster != null) {
+                            yourMastersName = yourMaster.getSlayerMasterName();
+                        }
+                        if(thisMaster != null) {
+                            reqSlayer = thisMaster.getSlayerReq();
+                            thisMasterName = thisMaster.getSlayerMasterName();
+                        }
+                        if(player.getSkillManager().getCurrentLevel(Skill.SLAYER) < reqSlayer) {
+                            DialogueManager.sendStatement(player, "You need " + reqSlayer + " Slayer to use " + thisMasterName  + ".");
                         } else {
-                            player.sendMessage("You must be a group ironman to do this.");
+                            DialogueManager.sendStatement(player, "You currently have an assignment with " + yourMastersName);
                         }
-                        break;
-                    case 9000://first click
-                        if (!player.getSlayer().getSlayerMaster().equals(SlayerMaster.BOSS_SLAYER)
-                                && player.getSlayer().getSlayerTask().equals(SlayerTasks.NO_TASK)) {
-                            SlayerMaster.changeSlayerMaster(player, SlayerMaster.BOSS_SLAYER);
-                        }
-                        if (player.getSlayer().getSlayerMaster().equals(SlayerMaster.BOSS_SLAYER))
-                            DialogueManager.start(player, BossSlayerDialogues.dialogue(player));
-                        else {
-                            SlayerMaster yourMaster = player.getSlayer().getSlayerMaster();
-                            SlayerMaster thisMaster = SlayerMaster.forNpcId(npc.getId());
-                            String yourMastersName = "";
-                            String thisMasterName = "";
-                            int reqSlayer = 0;
-                            if(yourMaster != null) {
-                                yourMastersName = yourMaster.getSlayerMasterName();
-                            }
-                            if(thisMaster != null) {
-                                reqSlayer = thisMaster.getSlayerReq();
-                                thisMasterName = thisMaster.getSlayerMasterName();
-                            }
-                            if(player.getSkillManager().getCurrentLevel(Skill.SLAYER) < reqSlayer) {
-                                DialogueManager.sendStatement(player, "You need " + reqSlayer + " Slayer to use " + thisMasterName  + ".");
-                            } else {
-                                DialogueManager.sendStatement(player, "You currently have an assignment with " + yourMastersName);
-                            }
-                        }
-                        break;
-                    case PlayerOwnedShopManager.NPC_ID:
-                        //player.sendMessage("POS is currently disabled for a limited time.");
-                        player.getPlayerOwnedShopManager().options();
-                        break;
-                    case 4652:
-                        ShopManager.getShops().get(106).open(player);
-                        break;
-                    case 4601:
-                        player.setDialogueActionId(8);
-                        DialogueManager.start(player, 13);
-                        break;
-                    case 5382:
-                        if (player.getGameMode().equals(GameMode.ULTIMATE_IRONMAN)) {
-                            DialogueManager.start(player, 192);
+                    }
+                    break;
+                case PlayerOwnedShopManager.NPC_ID:
+                    //player.sendMessage("POS is currently disabled for a limited time.");
+                    player.getPlayerOwnedShopManager().options();
+                    break;
+                case 4652:
+                    ShopManager.getShops().get(106).open(player);
+                    break;
+                case 4601:
+                    player.setDialogueActionId(8);
+                    DialogueManager.start(player, 13);
+                    break;
+                case 5382:
+                    if (player.getGameMode().equals(GameMode.ULTIMATE_IRONMAN)) {
+                        DialogueManager.start(player, 192);
+                    } else {
+                        DialogueManager.start(player, 195);
+                    }
+                    break;
+
+                case 788:
+                    player.setEntityInteraction(npc);
+                    player.setDialogueActionId(831);
+                    EnterLotteryTicketAmount.lotteryNPC = npc;
+                    DialogueManager.start(player, 218);
+                    break;
+
+                case 2938:
+                    player.getDailyRewards().processTime();
+                    player.getDailyRewards().displayRewards();
+                    npc.forceChat("Talk to me to get your Daily Rewards!");
+                    break;
+                case 662:
+                    GrandLottery.open(player);
+                    break;
+
+                case 1394:
+                    ShopManager.getShops().get(119).open(player);
+                    break;
+
+
+                case 1050:
+                    player.moveTo(new Position(2793, 3276));
+                    npc.forceChat("Deep sea fishing!");
+                    break;
+
+                case 783:
+                    npc.forceChat("talk to me for starter tasks!");
+                    StarterTasks.updateInterface(player);
+                    int[] ids = {22074, 6570, 7462, 17273, 19153, 19142, 19141, 19115, 11137, 20000, 6769};
+                    for (int i = 0; i < ids.length; i++) {
+                        player.getPacketSender().sendItemOnInterface(53205, ids[i], i, 1, -1);
+                    }
+                    player.getPacketSender().sendInterfaceReset();
+                    player.getPacketSender().sendInterface(53200);
+                    break;
+                case 3089:
+                    ShopManager.getShops().get(104).open(player);
+                    npc.forceChat("PvM ticket shop!");
+                    break;
+                case 659:
+                    if (GameSettings.newYear2017) {
+                        if (player.getNewYear2017() == 0) {
+                            DialogueManager.start(player, 189);
+                            player.setDialogueActionId(189);
                         } else {
-                            DialogueManager.start(player, 195);
+                            DialogueManager.start(player, 190);
                         }
-                        break;
-
-                    case 788:
-                        player.setEntityInteraction(npc);
-                        player.setDialogueActionId(831);
-                        EnterLotteryTicketAmount.lotteryNPC = npc;
-                        DialogueManager.start(player, 218);
-                        break;
-
-                    case 2938:
-                        player.getDailyRewards().processTime();
-                        player.getDailyRewards().displayRewards();
-                        npc.forceChat("Talk to me to get your Daily Rewards!");
-                        break;
-                    case 662:
-                        GrandLottery.open(player);
-                        break;
-
-                    case 1394:
-                        ShopManager.getShops().get(119).open(player);
-                        break;
-
-
-                    case 1050:
-                        player.moveTo(new Position(2793, 3276));
-                        npc.forceChat("Deep sea fishing!");
-                        break;
-
-                    case 783:
-                        npc.forceChat("talk to me for starter tasks!");
-                        StarterTasks.updateInterface(player);
-                        int[] ids = {22074, 6570, 7462, 17273, 19153, 19142, 19141, 19115, 11137, 20000, 6769};
-                        for (int i = 0; i < ids.length; i++) {
-                            player.getPacketSender().sendItemOnInterface(53205, ids[i], i, 1, -1);
-                        }
-                        player.getPacketSender().sendInterfaceReset();
-                        player.getPacketSender().sendInterface(53200);
-                        break;
-                    case 3089:
-                        ShopManager.getShops().get(104).open(player);
-                        npc.forceChat("PvM ticket shop!");
-                        break;
-                    case 659:
-                        if (GameSettings.newYear2017) {
-                            if (player.getNewYear2017() == 0) {
-                                DialogueManager.start(player, 189);
-                                player.setDialogueActionId(189);
-                            } else {
-                                DialogueManager.start(player, 190);
-                            }
-                        } else {
-                            npc.forceChat("I love a good party!");
-                            ShopManager.getShops().get(81).open(player);
-                        }
-                        break;
-                    case 13651:
-                        ShopManager.getShops().get(150).open(player);
-                        break;
-                    case 1835:
-                        ShopManager.getShops().get(151).open(player);
-                        break;
-                    case 436:
-                        ShopManager.getShops().get(103).open(player);
-                        npc.forceChat("Get back to afking you lazy cat");
-                        break;
-                    case 4653:
-                        DialogueManager.start(player, 178);
-                        player.setDialogueActionId(178);
-                        break;
-                    case 1872:
-                        if (player.getLocation() == Location.ZULRAH_WAITING) {
-                            DialogueManager.start(player, 200);
-                        }
-                        break;
-                    case 1552:
-                        if (christmas2016.isChristmas()) {
-                            if (player.getChristmas2016() == 0) {
-                                DialogueManager.start(player, 169);
-                                player.setDialogueActionId(171);
-                            } else if (player.getChristmas2016() == 1) {
-                                player.getPacketSender().sendMessage("Santa wants me to talk to Explorer Jack at home.");
-                            } else if (player.getChristmas2016() == 2) {
-                                DialogueManager.start(player, 181);
-                            } else if (player.getChristmas2016() > 2 && player.getChristmas2016() < 5) {
-                                DialogueManager.start(player, 182);
-                                player.getPacketSender().sendMessage("The Reindeer need Law, Cosmic, and Nature runes.");
-                            } else if (player.getChristmas2016() == 5) {
-                                DialogueManager.start(player, 183);
-                                player.getPacketSender().sendMessage("I should \"use\" the Mind Bomb on Santa.");
-                            } else if (player.getChristmas2016() == 6) {
-                                DialogueManager.start(player, 184);
-                                player.setDialogueActionId(187);
-                            } else if (player.getChristmas2016() == 7) {
-                                DialogueManager.start(player, 188);
-                            } else {
-                                npc.forceChat("Ho ho ho!");
-                            }
+                    } else {
+                        npc.forceChat("I love a good party!");
+                        ShopManager.getShops().get(81).open(player);
+                    }
+                    break;
+                case 13651:
+                    ShopManager.getShops().get(150).open(player);
+                    break;
+                case 1835:
+                    ShopManager.getShops().get(151).open(player);
+                    break;
+                case 436:
+                    ShopManager.getShops().get(103).open(player);
+                    npc.forceChat("Get back to afking you lazy cat");
+                    break;
+                case 4653:
+                    DialogueManager.start(player, 178);
+                    player.setDialogueActionId(178);
+                    break;
+                case 1872:
+                    if (player.getLocation() == Location.ZULRAH_WAITING) {
+                        DialogueManager.start(player, 200);
+                    }
+                    break;
+                case 1552:
+                    if (christmas2016.isChristmas()) {
+                        if (player.getChristmas2016() == 0) {
+                            DialogueManager.start(player, 169);
+                            player.setDialogueActionId(171);
+                        } else if (player.getChristmas2016() == 1) {
+                            player.getPacketSender().sendMessage("Santa wants me to talk to Explorer Jack at home.");
+                        } else if (player.getChristmas2016() == 2) {
+                            DialogueManager.start(player, 181);
+                        } else if (player.getChristmas2016() > 2 && player.getChristmas2016() < 5) {
+                            DialogueManager.start(player, 182);
+                            player.getPacketSender().sendMessage("The Reindeer need Law, Cosmic, and Nature runes.");
+                        } else if (player.getChristmas2016() == 5) {
+                            DialogueManager.start(player, 183);
+                            player.getPacketSender().sendMessage("I should \"use\" the Mind Bomb on Santa.");
+                        } else if (player.getChristmas2016() == 6) {
+                            DialogueManager.start(player, 184);
+                            player.setDialogueActionId(187);
+                        } else if (player.getChristmas2016() == 7) {
+                            DialogueManager.start(player, 188);
                         } else {
                             npc.forceChat("Ho ho ho!");
                         }
-                        break;
-                    case 1084:
-                        ShopManager.getShops().get(111).open(player);
-                        break;
-                    case 1085:
-                        ShopManager.getShops().get(112).open(player);
-                        break;
-                    case 1086:
-                        ShopManager.getShops().get(113).open(player);
-                        break;
-                    case 736:
-                        player.forceChat("Ban emily!");
-                        npc.forceChat("Mods! Help! They're harassing me again!");
-                        break;
-                    case 3777:
-                        DialogueManager.start(player, 141);
-                        player.setDialogueActionId(88);
-                        break;
-                    case 13738:
-                        player.getUpgradeHandler().openInterface();
-                        break;
-                    case 5:
-                    case 4:
-                        npc.setPositionToFace(player.getPosition());
-                        DialogueManager.start(player, 167);
-                        break;
-                    case 1:
-                  //  case 2:
-                    case 3:
-                        npc.setPositionToFace(player.getPosition());
-                        DialogueManager.start(player, 165);
-                        break;
-                    case 2238:
-                        npc.setPositionToFace(player.getPosition());
-                        DialogueManager.start(player, 155);
-                        break;
-                    case 1152:
-                        DialogueManager.start(player, 127);
-                        player.setDialogueActionId(79);
-                        break;
-
-
-                    case 1837:
-                        DialogueManager.start(player, 144);
-                        player.setDialogueActionId(99);
-                        break;
-                    case 457:
-                        DialogueManager.start(player, 117);
-                        player.setDialogueActionId(74);
-                        break;
-                    case 8710:
-                    case 8707:
-                    case 8706:
-                    case 8705:
-                        EnergyHandler.rest(player);
-                        break;
-                    case 534:
-                        ShopManager.getShops().get(78).open(player);
-                        break;
-                    case 947:
-                        if (player.getPosition().getX() >= 3092) {
-                            player.getMovementQueue().reset();
-                            GrandExchange.open(player);
-                        }
-                        break;
-                    case 11226:
-                        if (Dungeoneering.doingOldDungeoneering(player)) {
-                            ShopManager.getShops().get(45).open(player);
-                        } else if(player.getLocation() == Location.DUNGEONEERING) {
-                            ShopManager.getShops().get(152).open(player);
-                        }
-
-
-                        break;
-                    case 9713:
-                        DialogueManager.start(player, 107);
-                        player.setDialogueActionId(69);
-                        break;
-                    case 2622:
-                        ShopManager.getShops().get(43).open(player);
-                        break;
-                    case 3101:
-                        DialogueManager.start(player, 90);
-                        player.setDialogueActionId(57);
-                        break;
-                    case 7969:
-                        // player.getPacketSender().sendMessage("yayayaya i am lord");
-                        if (christmas2016.isChristmas() == false || player.getChristmas2016() == 0) {
-                            ShopManager.getShops().get(28).open(player);
-                            return;
-                        } else if (player.getChristmas2016() == 1) {
-                            // player.getPacketSender().sendMessage("dialogue 173");
-                            DialogueManager.start(player, 173);
-                            player.setDialogueActionId(173);
-                        } else if (player.getChristmas2016() == 2) {
-                            DialogueManager.start(player, 173);
-                            player.setDialogueActionId(505050);
-                        }
-                        // DialogueManager.start(player, ExplorerJack.getDialogue(player));
-                        break;
-                    case 1597:
-                        if (!player.getSlayer().getSlayerMaster().equals(SlayerMaster.EASY_SLAYER)
-                                && player.getSlayer().getSlayerTask().equals(SlayerTasks.NO_TASK)) {
-                            SlayerMaster.changeSlayerMaster(player, SlayerMaster.EASY_SLAYER);
-                        }
-                        if (player.getSlayer().getSlayerMaster().equals(SlayerMaster.EASY_SLAYER))
-                            DialogueManager.start(player, SlayerDialogues.dialogue(player));
-                        else {
-                            SlayerMaster yourMaster = player.getSlayer().getSlayerMaster();
-                            SlayerMaster thisMaster = SlayerMaster.forNpcId(npc.getId());
-                            String yourMastersName = "";
-                            String thisMasterName = "";
-                            int reqSlayer = 0;
-                            if(yourMaster != null) {
-                                yourMastersName = yourMaster.getSlayerMasterName();
-                            }
-                            if(thisMaster != null) {
-                                reqSlayer = thisMaster.getSlayerReq();
-                                thisMasterName = thisMaster.getSlayerMasterName();
-                            }
-                            if(player.getSkillManager().getCurrentLevel(Skill.SLAYER) < reqSlayer) {
-                                DialogueManager.sendStatement(player, "You need " + reqSlayer + " Slayer to use " + thisMasterName  + ".");
-                            } else {
-                                DialogueManager.sendStatement(player, "You currently have an assignment with " + yourMastersName);
-                            }
-                        }
-                        break;
-                    case 8275:
-                        if (!player.getSlayer().getSlayerMaster().equals(SlayerMaster.MEDIUM_SLAYER)
-                                && player.getSlayer().getSlayerTask().equals(SlayerTasks.NO_TASK)) {
-                            SlayerMaster.changeSlayerMaster(player, SlayerMaster.MEDIUM_SLAYER);
-                        }
-                        if (player.getSlayer().getSlayerMaster().equals(SlayerMaster.MEDIUM_SLAYER))
-                            DialogueManager.start(player, SlayerDialogues.dialogue(player));
-                        else {
-                            SlayerMaster yourMaster = player.getSlayer().getSlayerMaster();
-                            SlayerMaster thisMaster = SlayerMaster.forNpcId(npc.getId());
-                            String yourMastersName = "";
-                            String thisMasterName = "";
-                            int reqSlayer = 0;
-                            if(yourMaster != null) {
-                                yourMastersName = yourMaster.getSlayerMasterName();
-                            }
-                            if(thisMaster != null) {
-                                reqSlayer = thisMaster.getSlayerReq();
-                                thisMasterName = thisMaster.getSlayerMasterName();
-                            }
-                            if(player.getSkillManager().getCurrentLevel(Skill.SLAYER) < reqSlayer) {
-                                DialogueManager.sendStatement(player, "You need " + reqSlayer + " Slayer to use " + thisMasterName  + ".");
-                            } else {
-                                DialogueManager.sendStatement(player, "You currently have an assignment with " + yourMastersName);
-                            }
-                        }
-                        break;
-                    case 9085:
-                        if (!player.getSlayer().getSlayerMaster().equals(SlayerMaster.HARD_SLAYER)
-                                && player.getSlayer().getSlayerTask().equals(SlayerTasks.NO_TASK)) {
-                            SlayerMaster.changeSlayerMaster(player, SlayerMaster.HARD_SLAYER);
-                        }
-                        if (player.getSlayer().getSlayerMaster().equals(SlayerMaster.HARD_SLAYER))
-                            DialogueManager.start(player, SlayerDialogues.dialogue(player));
-                        else {
-                            SlayerMaster yourMaster = player.getSlayer().getSlayerMaster();
-                            SlayerMaster thisMaster = SlayerMaster.forNpcId(npc.getId());
-                            String yourMastersName = "";
-                            String thisMasterName = "";
-                            int reqSlayer = 0;
-                            if(yourMaster != null) {
-                                yourMastersName = yourMaster.getSlayerMasterName();
-                            }
-                            if(thisMaster != null) {
-                                reqSlayer = thisMaster.getSlayerReq();
-                                thisMasterName = thisMaster.getSlayerMasterName();
-                            }
-                            if(player.getSkillManager().getCurrentLevel(Skill.SLAYER) < reqSlayer) {
-                                DialogueManager.sendStatement(player, "You need " + reqSlayer + " Slayer to use " + thisMasterName  + ".");
-                            } else {
-                                DialogueManager.sendStatement(player, "You currently have an assignment with " + yourMastersName);
-                            }
-                        }
-                        break;
-                    case 925:
-                        if (!player.getSlayer().getSlayerMaster().equals(SlayerMaster.ELITE_SLAYER)
-                                && player.getSlayer().getSlayerTask().equals(SlayerTasks.NO_TASK)) {
-                            SlayerMaster.changeSlayerMaster(player, SlayerMaster.ELITE_SLAYER);
-                        }
-                        if (player.getSlayer().getSlayerMaster().equals(SlayerMaster.ELITE_SLAYER))
-                            DialogueManager.start(player, SlayerDialogues.dialogue(player));
-                        else {
-                            SlayerMaster yourMaster = player.getSlayer().getSlayerMaster();
-                            SlayerMaster thisMaster = SlayerMaster.forNpcId(npc.getId());
-                            String yourMastersName = "";
-                            String thisMasterName = "";
-                            int reqSlayer = 0;
-                            if(yourMaster != null) {
-                                yourMastersName = yourMaster.getSlayerMasterName();
-                            }
-                            if(thisMaster != null) {
-                                reqSlayer = thisMaster.getSlayerReq();
-                                thisMasterName = thisMaster.getSlayerMasterName();
-                            }
-                            if(player.getSkillManager().getCurrentLevel(Skill.SLAYER) < reqSlayer) {
-                                DialogueManager.sendStatement(player, "You need " + reqSlayer + " Slayer to use " + thisMasterName  + ".");
-                            } else {
-                                DialogueManager.sendStatement(player, "You currently have an assignment with " + yourMastersName);
-                            }
-                        }
-                        break;
-                    case 437:
-                        DialogueManager.start(player, 99);
-                        player.setDialogueActionId(58);
-                        break;
-                    case 5112:
-                        ShopManager.getShops().get(38).open(player);
-                        break;
-                    case 8591:
-                        // player.nomadQuest[0] = player.nomadQuest[1] = player.nomadQuest[2] = false;
-                        if (!player.getMinigameAttributes().getNomadAttributes().hasFinishedPart(0)) {
-                            DialogueManager.start(player, 48);
-                            player.setDialogueActionId(23);
-                        } else if (player.getMinigameAttributes().getNomadAttributes().hasFinishedPart(0)
-                                && !player.getMinigameAttributes().getNomadAttributes().hasFinishedPart(1)) {
-                            DialogueManager.start(player, 50);
-                            player.setDialogueActionId(24);
-                        } else if (player.getMinigameAttributes().getNomadAttributes().hasFinishedPart(1))
-                            DialogueManager.start(player, 53);
-                        break;
-                    case 273:
-                        DialogueManager.start(player, 61);
-                        player.setDialogueActionId(28);
-                        break;
-                    case 3385:
-                        if (player.getMinigameAttributes().getRecipeForDisasterAttributes().hasFinishedPart(0) && player
-                                .getMinigameAttributes().getRecipeForDisasterAttributes().getWavesCompleted() < 6) {
-                            DialogueManager.start(player, 39);
-                            return;
-                        }
-                        if (player.getMinigameAttributes().getRecipeForDisasterAttributes().getWavesCompleted() == 6) {
-                            DialogueManager.start(player, 46);
-                            return;
-                        }
-                        DialogueManager.start(player, 38);
-                        player.setDialogueActionId(20);
-                        break;
-                   /* case 6139:
-                        DialogueManager.start(player, 29);
-                        player.setDialogueActionId(17);
-                        break;*/
-                    case 3789:
-
-                        player.getPacketSender().sendInterface(18730);
-                        player.getPacketSender().sendString(18729,
-                                "Commendations: " + Integer.toString(player.getPointsHandler().getCommendations()));
-                        break;
-                    case 2948:
-                        DialogueManager.start(player, WarriorsGuild.warriorsGuildDialogue(player));
-                        break;
-                    case 650:
-                        ShopManager.getShops().get(35).open(player);
-                        break;
-                    case 6055:
-                    case 6056:
-                    case 6057:
-                    case 6058:
-                    case 6059:
-                    case 6060:
-                    case 6061:
-                    case 6062:
-                    case 6063:
-                    case 6064:
-                    case 7903:
-                        if (npc.getId() == 7903 && player.getLocation() == Location.MEMBER_ZONE) {
-                            if (!player.getRights().isMember()) {
-                                player.getPacketSender().sendMessage("You must be a Member to use this.");
-                                return;
-                            }
-                        }
-                        PuroPuro.catchImpling(player, npc);
-                        break;
-                    case 8022:
-                    case 8028:
-                        DesoSpan.siphon(player, npc);
-                        break;
-                    case 6537:
-                        player.setDialogueActionId(10);
-                        DialogueManager.start(player, 19);
-                        break;
-                    case 4249:
-                        player.setDialogueActionId(9);
-                        DialogueManager.start(player, 64);
-                        break;
-                    case 6807:
-                    case 6994:
-                    case 6995:
-                    case 6867:
-                    case 6868:
-                    case 6794:
-                    case 6795:
-                    case 6815:
-                    case 6816:
-                    case 6874:
-                    case 6873:
-                    case 3594:
-                    case 3590:
-                    case 3596:
-                        if (player.getSummoning().getFamiliar() == null
-                                || player.getSummoning().getFamiliar().getSummonNpc() == null
-                                || player.getSummoning().getFamiliar().getSummonNpc().getIndex() != npc.getIndex()) {
-                            player.getPacketSender().sendMessage("That is not your familiar.");
-                            return;
-                        }
-                        player.getSummoning().store();
-                        break;
-                    case 605:
-                        player.getPacketSender().sendMessage("")
-                                .sendMessage("You currently have " + player.getPointsHandler().getVotingPoints()
-                                        + " Voting points.")
-                                .sendMessage(
-                                        "You can earn points and coins by voting. To do so, simply use the ::vote command.");
-                        ;
-                        ShopManager.getShops().get(90).open(player);
-                        // player.setDialogueActionId(8);
-                        // DialogueManager.start(player, 13);
-                        break;
-                    case 6970:
-                        player.setDialogueActionId(3);
-                        DialogueManager.start(player, 3);
-                        break;
-                    case 318:
-                    case 316:
-                    case 313:
-                    case 312:
-                    case 5748:
-                    case 2067:
-                        player.setEntityInteraction(npc);
-                        Fishing.setupFishing(player, Fishing.forSpot(npc.getId(), false));
-                        break;
-                    case 805:
-                        ShopManager.getShops().get(34).open(player);
-                        break;
-                    case 2843:
-                        ShopManager.getShops().get(208).open(player);
-                        break;
-                    case 462:
-                        ShopManager.getShops().get(33).open(player);
-                        break;
-                    case 461:
-                        ShopManager.getShops().get(32).open(player);
-                        break;
-                    case 8444:
-
-                        ShopManager.getShops().get(31).open(player);
-                        break;
-                    case 400:
-
-                        ShopManager.getShops().get(101).open(player);
-                        break;
-                    case 8459:
-                        ShopManager.getShops().get(30).open(player);
-                        break;
-                    case 3299:
-                        ShopManager.getShops().get(21).open(player);
-                        break;
-                    case 548:
-                        ShopManager.getShops().get(20).open(player);
-                        break;
-                    case 1685:
-                        ShopManager.getShops().get(19).open(player);
-                        break;
-                    case 308:
-                        ShopManager.getShops().get(18).open(player);
-                        break;
-                    case 802:
-                        ShopManager.getShops().get(17).open(player);
-                        break;
-                    case 970:
-                        ShopManager.getShops().get(81).open(player);
-                        break;
-                    // case 12241:
-                    case 8405:
-                        ShopManager.getShops().get(99).open(player);
-                        break;
-                    case 278:
-                        ShopManager.getShops().get(16).open(player);
-                        break;
-                    case 4946:
-                        ShopManager.getShops().get(15).open(player);
-                        break;
-                    case 948:
-                        ShopManager.getShops().get(13).open(player);
-                        break;
-                    case 4906:
-                        ShopManager.getShops().get(14).open(player);
-                        break;
-                    case 520:
-                    case 521:
-                        World.sendStaffMessage("<col=FF0066><img=2> [ALERT]<col=6600FF> "
-                                + player.getUsername() + " just tried to use the general store!");
-                        /*
-                        ShopManager.getShops().get(12).open(player);*/
-                        break;
-                    case 2292:
-                        ShopManager.getShops().get(11).open(player);
-                        break;
-                    case 28:
-                        player.getPetShop().openInterface(PetShop.PetShopType.DAMAGE);
-                        break;
-                    case 2676:
-                        player.getPacketSender().sendInterface(3559);
-                        player.getAppearance().setCanChangeAppearance(true);
-                        break;
-                    case 519:
-                        ShopManager.getShops().get(84).open(player);
-                        break;
-                    case 494:
-                    case 1360:
-                        if (player.getGameMode() == GameMode.GROUP_IRONMAN
-                                && player.getIronmanGroup() != null) {
-                            DialogueManager.start(player, 8002);
-                            player.setDialogueActionId(8002);
-                        } else {
-                            player.getBank(player.getCurrentBankTab()).open();
-                        }
-                        break;
-                }
-                if (!(npc.getId() >= 8705 && npc.getId() <= 8710)) {
+                    } else {
+                        npc.forceChat("Ho ho ho!");
+                    }
+                    break;
+                case 1084:
+                    ShopManager.getShops().get(111).open(player);
+                    break;
+                case 1085:
+                    ShopManager.getShops().get(112).open(player);
+                    break;
+                case 1086:
+                    ShopManager.getShops().get(113).open(player);
+                    break;
+                case 736:
+                    player.forceChat("Ban emily!");
+                    npc.forceChat("Mods! Help! They're harassing me again!");
+                    break;
+                case 3777:
+                    DialogueManager.start(player, 141);
+                    player.setDialogueActionId(88);
+                    break;
+                case 13738:
+                    player.getUpgradeHandler().openInterface();
+                    break;
+                case 5:
+                case 4:
                     npc.setPositionToFace(player.getPosition());
-                }
-                player.setPositionToFace(npc.getPosition());
+                    DialogueManager.start(player, 167);
+                    break;
+                case 1:
+              //  case 2:
+                case 3:
+                    npc.setPositionToFace(player.getPosition());
+                    DialogueManager.start(player, 165);
+                    break;
+                case 2238:
+                    npc.setPositionToFace(player.getPosition());
+                    DialogueManager.start(player, 155);
+                    break;
+                case 1152:
+                    DialogueManager.start(player, 127);
+                    player.setDialogueActionId(79);
+                    break;
+
+
+                case 1837:
+                    DialogueManager.start(player, 144);
+                    player.setDialogueActionId(99);
+                    break;
+                case 457:
+                    DialogueManager.start(player, 117);
+                    player.setDialogueActionId(74);
+                    break;
+                case 8710:
+                case 8707:
+                case 8706:
+                case 8705:
+                    EnergyHandler.rest(player);
+                    break;
+                case 534:
+                    ShopManager.getShops().get(78).open(player);
+                    break;
+                case 947:
+                    if (player.getPosition().getX() >= 3092) {
+                        player.getMovementQueue().reset();
+                        GrandExchange.open(player);
+                    }
+                    break;
+                case 11226:
+                    if (Dungeoneering.doingOldDungeoneering(player)) {
+                        ShopManager.getShops().get(45).open(player);
+                    } else if(player.getLocation() == Location.DUNGEONEERING) {
+                        ShopManager.getShops().get(152).open(player);
+                    }
+
+
+                    break;
+                case 9713:
+                    DialogueManager.start(player, 107);
+                    player.setDialogueActionId(69);
+                    break;
+                case 2622:
+                    ShopManager.getShops().get(43).open(player);
+                    break;
+                case 3101:
+                    DialogueManager.start(player, 90);
+                    player.setDialogueActionId(57);
+                    break;
+                case 7969:
+                    // player.getPacketSender().sendMessage("yayayaya i am lord");
+                    if (christmas2016.isChristmas() == false || player.getChristmas2016() == 0) {
+                        ShopManager.getShops().get(28).open(player);
+                        return;
+                    } else if (player.getChristmas2016() == 1) {
+                        // player.getPacketSender().sendMessage("dialogue 173");
+                        DialogueManager.start(player, 173);
+                        player.setDialogueActionId(173);
+                    } else if (player.getChristmas2016() == 2) {
+                        DialogueManager.start(player, 173);
+                        player.setDialogueActionId(505050);
+                    }
+                    // DialogueManager.start(player, ExplorerJack.getDialogue(player));
+                    break;
+                case 1597:
+                    if (!player.getSlayer().getSlayerMaster().equals(SlayerMaster.EASY_SLAYER)
+                            && player.getSlayer().getSlayerTask().equals(SlayerTasks.NO_TASK)) {
+                        SlayerMaster.changeSlayerMaster(player, SlayerMaster.EASY_SLAYER);
+                    }
+                    if (player.getSlayer().getSlayerMaster().equals(SlayerMaster.EASY_SLAYER))
+                        DialogueManager.start(player, SlayerDialogues.dialogue(player));
+                    else {
+                        SlayerMaster yourMaster = player.getSlayer().getSlayerMaster();
+                        SlayerMaster thisMaster = SlayerMaster.forNpcId(npc.getId());
+                        String yourMastersName = "";
+                        String thisMasterName = "";
+                        int reqSlayer = 0;
+                        if(yourMaster != null) {
+                            yourMastersName = yourMaster.getSlayerMasterName();
+                        }
+                        if(thisMaster != null) {
+                            reqSlayer = thisMaster.getSlayerReq();
+                            thisMasterName = thisMaster.getSlayerMasterName();
+                        }
+                        if(player.getSkillManager().getCurrentLevel(Skill.SLAYER) < reqSlayer) {
+                            DialogueManager.sendStatement(player, "You need " + reqSlayer + " Slayer to use " + thisMasterName  + ".");
+                        } else {
+                            DialogueManager.sendStatement(player, "You currently have an assignment with " + yourMastersName);
+                        }
+                    }
+                    break;
+                case 8275:
+                    if (!player.getSlayer().getSlayerMaster().equals(SlayerMaster.MEDIUM_SLAYER)
+                            && player.getSlayer().getSlayerTask().equals(SlayerTasks.NO_TASK)) {
+                        SlayerMaster.changeSlayerMaster(player, SlayerMaster.MEDIUM_SLAYER);
+                    }
+                    if (player.getSlayer().getSlayerMaster().equals(SlayerMaster.MEDIUM_SLAYER))
+                        DialogueManager.start(player, SlayerDialogues.dialogue(player));
+                    else {
+                        SlayerMaster yourMaster = player.getSlayer().getSlayerMaster();
+                        SlayerMaster thisMaster = SlayerMaster.forNpcId(npc.getId());
+                        String yourMastersName = "";
+                        String thisMasterName = "";
+                        int reqSlayer = 0;
+                        if(yourMaster != null) {
+                            yourMastersName = yourMaster.getSlayerMasterName();
+                        }
+                        if(thisMaster != null) {
+                            reqSlayer = thisMaster.getSlayerReq();
+                            thisMasterName = thisMaster.getSlayerMasterName();
+                        }
+                        if(player.getSkillManager().getCurrentLevel(Skill.SLAYER) < reqSlayer) {
+                            DialogueManager.sendStatement(player, "You need " + reqSlayer + " Slayer to use " + thisMasterName  + ".");
+                        } else {
+                            DialogueManager.sendStatement(player, "You currently have an assignment with " + yourMastersName);
+                        }
+                    }
+                    break;
+                case 9085:
+                    if (!player.getSlayer().getSlayerMaster().equals(SlayerMaster.HARD_SLAYER)
+                            && player.getSlayer().getSlayerTask().equals(SlayerTasks.NO_TASK)) {
+                        SlayerMaster.changeSlayerMaster(player, SlayerMaster.HARD_SLAYER);
+                    }
+                    if (player.getSlayer().getSlayerMaster().equals(SlayerMaster.HARD_SLAYER))
+                        DialogueManager.start(player, SlayerDialogues.dialogue(player));
+                    else {
+                        SlayerMaster yourMaster = player.getSlayer().getSlayerMaster();
+                        SlayerMaster thisMaster = SlayerMaster.forNpcId(npc.getId());
+                        String yourMastersName = "";
+                        String thisMasterName = "";
+                        int reqSlayer = 0;
+                        if(yourMaster != null) {
+                            yourMastersName = yourMaster.getSlayerMasterName();
+                        }
+                        if(thisMaster != null) {
+                            reqSlayer = thisMaster.getSlayerReq();
+                            thisMasterName = thisMaster.getSlayerMasterName();
+                        }
+                        if(player.getSkillManager().getCurrentLevel(Skill.SLAYER) < reqSlayer) {
+                            DialogueManager.sendStatement(player, "You need " + reqSlayer + " Slayer to use " + thisMasterName  + ".");
+                        } else {
+                            DialogueManager.sendStatement(player, "You currently have an assignment with " + yourMastersName);
+                        }
+                    }
+                    break;
+                case 925:
+                    if (!player.getSlayer().getSlayerMaster().equals(SlayerMaster.ELITE_SLAYER)
+                            && player.getSlayer().getSlayerTask().equals(SlayerTasks.NO_TASK)) {
+                        SlayerMaster.changeSlayerMaster(player, SlayerMaster.ELITE_SLAYER);
+                    }
+                    if (player.getSlayer().getSlayerMaster().equals(SlayerMaster.ELITE_SLAYER))
+                        DialogueManager.start(player, SlayerDialogues.dialogue(player));
+                    else {
+                        SlayerMaster yourMaster = player.getSlayer().getSlayerMaster();
+                        SlayerMaster thisMaster = SlayerMaster.forNpcId(npc.getId());
+                        String yourMastersName = "";
+                        String thisMasterName = "";
+                        int reqSlayer = 0;
+                        if(yourMaster != null) {
+                            yourMastersName = yourMaster.getSlayerMasterName();
+                        }
+                        if(thisMaster != null) {
+                            reqSlayer = thisMaster.getSlayerReq();
+                            thisMasterName = thisMaster.getSlayerMasterName();
+                        }
+                        if(player.getSkillManager().getCurrentLevel(Skill.SLAYER) < reqSlayer) {
+                            DialogueManager.sendStatement(player, "You need " + reqSlayer + " Slayer to use " + thisMasterName  + ".");
+                        } else {
+                            DialogueManager.sendStatement(player, "You currently have an assignment with " + yourMastersName);
+                        }
+                    }
+                    break;
+                case 437:
+                    DialogueManager.start(player, 99);
+                    player.setDialogueActionId(58);
+                    break;
+                case 5112:
+                    ShopManager.getShops().get(38).open(player);
+                    break;
+                case 8591:
+                    // player.nomadQuest[0] = player.nomadQuest[1] = player.nomadQuest[2] = false;
+                    if (!player.getMinigameAttributes().getNomadAttributes().hasFinishedPart(0)) {
+                        DialogueManager.start(player, 48);
+                        player.setDialogueActionId(23);
+                    } else if (player.getMinigameAttributes().getNomadAttributes().hasFinishedPart(0)
+                            && !player.getMinigameAttributes().getNomadAttributes().hasFinishedPart(1)) {
+                        DialogueManager.start(player, 50);
+                        player.setDialogueActionId(24);
+                    } else if (player.getMinigameAttributes().getNomadAttributes().hasFinishedPart(1))
+                        DialogueManager.start(player, 53);
+                    break;
+                case 273:
+                    DialogueManager.start(player, 61);
+                    player.setDialogueActionId(28);
+                    break;
+                case 3385:
+                    if (player.getMinigameAttributes().getRecipeForDisasterAttributes().hasFinishedPart(0) && player
+                            .getMinigameAttributes().getRecipeForDisasterAttributes().getWavesCompleted() < 6) {
+                        DialogueManager.start(player, 39);
+                        return;
+                    }
+                    if (player.getMinigameAttributes().getRecipeForDisasterAttributes().getWavesCompleted() == 6) {
+                        DialogueManager.start(player, 46);
+                        return;
+                    }
+                    DialogueManager.start(player, 38);
+                    player.setDialogueActionId(20);
+                    break;
+               /* case 6139:
+                    DialogueManager.start(player, 29);
+                    player.setDialogueActionId(17);
+                    break;*/
+                case 3789:
+
+                    player.getPacketSender().sendInterface(18730);
+                    player.getPacketSender().sendString(18729,
+                            "Commendations: " + Integer.toString(player.getPointsHandler().getCommendations()));
+                    break;
+                case 2948:
+                    DialogueManager.start(player, WarriorsGuild.warriorsGuildDialogue(player));
+                    break;
+                case 650:
+                    ShopManager.getShops().get(35).open(player);
+                    break;
+                case 6055:
+                case 6056:
+                case 6057:
+                case 6058:
+                case 6059:
+                case 6060:
+                case 6061:
+                case 6062:
+                case 6063:
+                case 6064:
+                case 7903:
+                    if (npc.getId() == 7903 && player.getLocation() == Location.MEMBER_ZONE) {
+                        if (!player.getRights().isMember()) {
+                            player.getPacketSender().sendMessage("You must be a Member to use this.");
+                            return;
+                        }
+                    }
+                    PuroPuro.catchImpling(player, npc);
+                    break;
+                case 8022:
+                case 8028:
+                    DesoSpan.siphon(player, npc);
+                    break;
+                case 6537:
+                    player.setDialogueActionId(10);
+                    DialogueManager.start(player, 19);
+                    break;
+                case 4249:
+                    player.setDialogueActionId(9);
+                    DialogueManager.start(player, 64);
+                    break;
+                case 6807:
+                case 6994:
+                case 6995:
+                case 6867:
+                case 6868:
+                case 6794:
+                case 6795:
+                case 6815:
+                case 6816:
+                case 6874:
+                case 6873:
+                case 3594:
+                case 3590:
+                case 3596:
+                    if (player.getSummoning().getFamiliar() == null
+                            || player.getSummoning().getFamiliar().getSummonNpc() == null
+                            || player.getSummoning().getFamiliar().getSummonNpc().getIndex() != npc.getIndex()) {
+                        player.getPacketSender().sendMessage("That is not your familiar.");
+                        return;
+                    }
+                    player.getSummoning().store();
+                    break;
+                case 605:
+                    player.getPacketSender().sendMessage("")
+                            .sendMessage("You currently have " + player.getPointsHandler().getVotingPoints()
+                                    + " Voting points.")
+                            .sendMessage(
+                                    "You can earn points and coins by voting. To do so, simply use the ::vote command.");
+                    ;
+                    ShopManager.getShops().get(90).open(player);
+                    // player.setDialogueActionId(8);
+                    // DialogueManager.start(player, 13);
+                    break;
+                case 6970:
+                    player.setDialogueActionId(3);
+                    DialogueManager.start(player, 3);
+                    break;
+                case 318:
+                case 316:
+                case 313:
+                case 312:
+                case 5748:
+                case 2067:
+                    player.setEntityInteraction(npc);
+                    Fishing.setupFishing(player, Fishing.forSpot(npc.getId(), false));
+                    break;
+                case 805:
+                    ShopManager.getShops().get(34).open(player);
+                    break;
+                case 2843:
+                    ShopManager.getShops().get(208).open(player);
+                    break;
+                case 462:
+                    ShopManager.getShops().get(33).open(player);
+                    break;
+                case 461:
+                    ShopManager.getShops().get(32).open(player);
+                    break;
+                case 8444:
+
+                    ShopManager.getShops().get(31).open(player);
+                    break;
+                case 400:
+
+                    ShopManager.getShops().get(101).open(player);
+                    break;
+                case 8459:
+                    ShopManager.getShops().get(30).open(player);
+                    break;
+                case 3299:
+                    ShopManager.getShops().get(21).open(player);
+                    break;
+                case 548:
+                    ShopManager.getShops().get(20).open(player);
+                    break;
+                case 1685:
+                    ShopManager.getShops().get(19).open(player);
+                    break;
+                case 308:
+                    ShopManager.getShops().get(18).open(player);
+                    break;
+                case 802:
+                    ShopManager.getShops().get(17).open(player);
+                    break;
+                case 970:
+                    ShopManager.getShops().get(81).open(player);
+                    break;
+                // case 12241:
+                case 8405:
+                    ShopManager.getShops().get(99).open(player);
+                    break;
+                case 278:
+                    ShopManager.getShops().get(16).open(player);
+                    break;
+                case 4946:
+                    ShopManager.getShops().get(15).open(player);
+                    break;
+                case 948:
+                    ShopManager.getShops().get(13).open(player);
+                    break;
+                case 4906:
+                    ShopManager.getShops().get(14).open(player);
+                    break;
+                case 520:
+                case 521:
+                    World.sendStaffMessage("<col=FF0066><img=2> [ALERT]<col=6600FF> "
+                            + player.getUsername() + " just tried to use the general store!");
+                    /*
+                    ShopManager.getShops().get(12).open(player);*/
+                    break;
+                case 2292:
+                    ShopManager.getShops().get(11).open(player);
+                    break;
+                case 28:
+                    player.getPetShop().openInterface(PetShop.PetShopType.DAMAGE);
+                    break;
+                case 2676:
+                    player.getPacketSender().sendInterface(3559);
+                    player.getAppearance().setCanChangeAppearance(true);
+                    break;
+                case 519:
+                    ShopManager.getShops().get(84).open(player);
+                    break;
+                case 494:
+                case 1360:
+                    if (player.getGameMode() == GameMode.GROUP_IRONMAN
+                            && player.getIronmanGroup() != null) {
+                        DialogueManager.start(player, 8002);
+                        player.setDialogueActionId(8002);
+                    } else {
+                        player.getBank(player.getCurrentBankTab()).open();
+                    }
+                    break;
             }
+            if (!(npc.getId() >= 8705 && npc.getId() <= 8710)) {
+                npc.setPositionToFace(player.getPosition());
+            }
+            player.setPositionToFace(npc.getPosition());
         }));
     }
 

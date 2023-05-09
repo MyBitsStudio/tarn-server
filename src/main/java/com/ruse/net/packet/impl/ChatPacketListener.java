@@ -5,12 +5,15 @@ import com.ruse.model.Flag;
 import com.ruse.net.packet.Packet;
 import com.ruse.net.packet.PacketListener;
 import com.ruse.util.Misc;
+import com.ruse.util.StringCleaner;
 import com.ruse.webhooks.discord.DiscordMessager;
 import com.ruse.world.content.PlayerLogs;
 import com.ruse.world.content.PlayerPunishment;
 import com.ruse.world.content.dialogue.DialogueManager;
 import com.ruse.world.entity.impl.player.Player;
 import org.apache.commons.lang3.StringUtils;
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
 //import com.sun.xml.internal.ws.util.StringUtils;
 
 /**
@@ -65,8 +68,9 @@ public class ChatPacketListener implements PacketListener {
         return buf;
     }
 
+
     @Override
-    public void handleMessage(Player player, Packet packet) {
+    public void handleMessage(@NotNull Player player, @NotNull Packet packet) {
         int effects = packet.readUnsignedByteS();
         int color = packet.readUnsignedByteS();
         int size = packet.getSize();
@@ -77,14 +81,29 @@ public class ChatPacketListener implements PacketListener {
         }
 
         String readable = StringUtils.capitalize(decode(text, size).toLowerCase());
-        // // System.out.println(player.getLocation().toString()+"|"+player.getPosition().getX()+","+player.getPosition().getY()+","+player.getPosition().getZ()+"|Said:
-        // "+readable);
 
-        String str = Misc.textUnpack(text, size).toLowerCase().replaceAll(";", ".");
-        if (Misc.blockedWord(str) && !(player.getRights().OwnerDeveloperOnly())) {
-            DialogueManager.sendStatement(player, "A word was blocked in your sentence. Please do not repeat it!");
+        if(StringCleaner.securityBreach(readable)){
+            player.getPSecurity().raiseSecurity();
+            player.getPSecurity().raiseInvalidWords();
+            System.out.println("Security breach: "+readable);
+            player.getPacketSender().sendMessage("@red@[SECURITY] This is your only warning. Do not attempt to breach the security of the server again.");
             return;
         }
+
+        readable = StringCleaner.cleanInput(readable);
+
+        if(StringCleaner.censored(readable)){
+            player.getPSecurity().raiseInvalidWords();
+            System.out.println("Censored word: "+readable);
+            player.getPacketSender().sendMessage("@red@[SECURITY] This is your only warning. Do not attempt to breach the security of the server again.");
+            return;
+        }
+
+        System.out.println(player.getLocation().toString()+"|"+player.getPosition().getX()+","+player.getPosition().getY()+","+player.getPosition().getZ()+"|Said:"+readable);
+
+        String str = Misc.textUnpack(text, size).toLowerCase().replaceAll(";", ".");
+        System.out.println("str: "+str);
+
         player.getChatMessages().set(new Message(color, effects, text));
 
         PlayerLogs.log(player.getUsername(), player.getLocation().toString() + "|" + player.getPosition().getX() + ","
@@ -96,6 +115,9 @@ public class ChatPacketListener implements PacketListener {
 
         PlayerLogs.logChat(player.getUsername(), player.getLocation().toString() + "|" + player.getPosition().getX() + ","
                 + player.getPosition().getY() + "," + player.getPosition().getZ() + "|Said: " + readable);
+
+
+
     }
 
 }

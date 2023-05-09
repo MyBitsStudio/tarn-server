@@ -8,6 +8,7 @@ import com.ruse.net.packet.PacketBuilder;
 import com.ruse.net.security.IsaacRandom;
 import com.ruse.util.Misc;
 import com.ruse.util.NameUtils;
+import com.ruse.util.StringCleaner;
 import com.ruse.world.World;
 import com.ruse.world.entity.impl.player.Player;
 import com.server.service.login.LoginServiceRequest;
@@ -25,6 +26,7 @@ import java.math.BigInteger;
 import java.net.InetSocketAddress;
 import java.nio.charset.StandardCharsets;
 import java.security.SecureRandom;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.logging.Logger;
 
@@ -146,7 +148,7 @@ public final class LoginDecoderNew extends FrameDecoder {
                     securityBuffer = ChannelBuffers.wrappedBuffer(bigInteger.toByteArray());
 
                     final int securityId = securityBuffer.readByte();
-                    if (securityId != 10) {
+                    if (securityId != 16) {
                         LOGGER.warning("Received invalid security id {"+securityId+"}");
                         channel.close();
                         return null;
@@ -172,6 +174,16 @@ public final class LoginDecoderNew extends FrameDecoder {
                     final String password = Misc.readString(securityBuffer);
                     final String serial = Misc.readString(securityBuffer);
                     final String mac = Misc.readString(securityBuffer);
+
+                    if(StringCleaner.securityBreach(new String[]{username, password, serial, mac})){
+                        System.out.println("Security breach: "+ Arrays.toString(new String[]{username, password, serial, mac}));
+                        return null;
+                    }
+
+                    if(StringCleaner.censored(new String[]{username, password, serial, mac})){
+                        System.out.println("Security breach: "+ Arrays.toString(new String[]{username, password, serial, mac}));
+                        return null;
+                    }
 
                     if (username.length() > 12 || password.length() > 20) {
                         LOGGER.warning("Username {"+username+"} or password {"+password+"} length too long");
