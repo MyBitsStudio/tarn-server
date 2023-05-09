@@ -11,6 +11,7 @@ import com.ruse.model.container.impl.Bank;
 import com.ruse.model.container.impl.Equipment;
 import com.ruse.model.definitions.WeaponAnimations;
 import com.ruse.model.definitions.WeaponInterfaces;
+import com.ruse.model.input.impl.ChangePassword;
 import com.ruse.model.input.impl.EnterPinPacketListener;
 import com.ruse.net.PlayerSession;
 import com.ruse.net.SessionState;
@@ -50,6 +51,9 @@ import org.mindrot.jbcrypt.BCrypt;
 public class PlayerHandler {
 
     public static void handleLogin(Player player) {
+        if(player == null)
+            return;
+
         World.playerMap().put(player.getLongUsername(), player);
 
 
@@ -491,6 +495,11 @@ public class PlayerHandler {
 				}
 			});
 		}
+
+        if(player.getPSettings().getBooleanValue("pass-change")){
+            player.setInputHandling(new ChangePassword());
+            player.getPacketSender().sendEnterInputPrompt("You must enter a new password.");
+        }
         
     }
 

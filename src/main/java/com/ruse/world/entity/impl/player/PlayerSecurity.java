@@ -1,7 +1,7 @@
 package com.ruse.world.entity.impl.player;
 
 import com.google.gson.*;
-import com.ruse.util.vpn.VPNDetection;
+import com.ruse.engine.GameEngine;
 import io.ipgeolocation.api.Geolocation;
 import io.ipgeolocation.api.GeolocationParams;
 import io.ipgeolocation.api.IPGeolocationAPI;
@@ -22,7 +22,6 @@ import static com.ruse.net.login.LoginResponses.*;
 public class PlayerSecurity {
 
     private final static IPGeolocationAPI api = new IPGeolocationAPI("99ed94ea6c6242c684dcd8e699c28004");
-    private final static VPNDetection vpn_detection = new VPNDetection();
 
     private static final int SALT_LENGTH = 32; // Salt length in bytes
     private static final int ITERATIONS = 10000; // Number of iterations for key stretching
@@ -82,65 +81,71 @@ public class PlayerSecurity {
             return;
         }
 
-        try (FileReader fileReader = new FileReader(file)) {
-            JsonParser fileParser = new JsonParser();
-            Gson builder = new GsonBuilder().setPrettyPrinting().create();
-            JsonObject reader = (JsonObject) fileParser.parse(fileReader);
+        GameEngine.submit(() -> {
+            try (FileReader fileReader = new FileReader(file)) {
+                JsonParser fileParser = new JsonParser();
+                Gson builder = new GsonBuilder().setPrettyPrinting().create();
+                JsonObject reader = (JsonObject) fileParser.parse(fileReader);
 
-            if(reader.has("lockout-time")){
-                lockTime = reader.get("lockout-time").getAsLong();
+                if(reader.has("lockout-time")){
+                    lockTime = reader.get("lockout-time").getAsLong();
+                }
+
+                if(reader.has("login-tries")){
+                    loginTries = reader.get("login-tries").getAsInt();
+                }
+
+                if(reader.has("lockout-tries")){
+                    lockoutTries = reader.get("lockout-tries").getAsInt();
+                }
+
+                if(reader.has("account-lock")){
+                    accountLocked = reader.get("account-lock").getAsBoolean();
+                }
+
+                if(reader.has("last-hashed")){
+                    lastHashed = reader.get("last-hashed").getAsLong();
+                }
+
+                if(reader.has("reg-ips")){
+                    ips = builder.fromJson(reader.get("reg-ips"), String[].class);
+                }
+
+                if(reader.has("invalid-ip")){
+                    invalidIPAttempts = reader.get("invalid-ip").getAsInt();
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
             }
+        });
 
-            if(reader.has("login-tries")){
-                loginTries = reader.get("login-tries").getAsInt();
-            }
-
-            if(reader.has("lockout-tries")){
-                lockoutTries = reader.get("lockout-tries").getAsInt();
-            }
-
-            if(reader.has("account-lock")){
-                accountLocked = reader.get("account-lock").getAsBoolean();
-            }
-
-            if(reader.has("last-hashed")){
-                lastHashed = reader.get("last-hashed").getAsLong();
-            }
-
-            if(reader.has("reg-ips")){
-                ips = builder.fromJson(reader.get("reg-ips"), String[].class);
-            }
-
-            if(reader.has("invalid-ip")){
-                invalidIPAttempts = reader.get("invalid-ip").getAsInt();
-            }
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 
     public void save(){
         Path path = Paths.get("./data/saves/blocks/", username + ".json");
         File file = path.toFile();
 
-        try (FileWriter writer = new FileWriter(file)) {
+        GameEngine.submit( () -> {
+            try (FileWriter writer = new FileWriter(file)) {
 
-            Gson builder = new GsonBuilder().setPrettyPrinting().create();
-            JsonObject object = new JsonObject();
+                Gson builder = new GsonBuilder().setPrettyPrinting().create();
+                JsonObject object = new JsonObject();
 
-            object.addProperty("lockout-time", lockTime);
-            object.addProperty("login-tries", loginTries);
-            object.addProperty("lockout-tries", lockoutTries);
-            object.addProperty("account-lock", accountLocked);
-            object.addProperty("last-hashed", lastHashed);
-            object.addProperty("invalid-ip", invalidIPAttempts);
-            object.add("reg-ips", builder.toJsonTree(ips));
+                object.addProperty("lockout-time", lockTime);
+                object.addProperty("login-tries", loginTries);
+                object.addProperty("lockout-tries", lockoutTries);
+                object.addProperty("account-lock", accountLocked);
+                object.addProperty("last-hashed", lastHashed);
+                object.addProperty("invalid-ip", invalidIPAttempts);
+                object.add("reg-ips", builder.toJsonTree(ips));
 
-            writer.write(builder.toJson(object));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+                writer.write(builder.toJson(object));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+
     }
 
     public void reset(){
@@ -234,17 +239,20 @@ public class PlayerSecurity {
         Path path = Paths.get("./data/saves/block-sec/", username + ".json");
         File file = path.toFile();
 
-        if(!file.exists()){
-            try (FileWriter writer = new FileWriter(file)) {
+        GameEngine.submit(() -> {
+            if(!file.exists()){
+                try (FileWriter writer = new FileWriter(file)) {
 
-                Gson builder = new GsonBuilder().setPrettyPrinting().create();
-                JsonObject object = new JsonObject();
+                    Gson builder = new GsonBuilder().setPrettyPrinting().create();
+                    JsonObject object = new JsonObject();
 
-                writer.write(builder.toJson(object));
-            } catch (Exception e) {
-                e.printStackTrace();
+                    writer.write(builder.toJson(object));
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
-        }
+        });
+
 
     }
 
@@ -327,6 +335,7 @@ public class PlayerSecurity {
                 || geolocation.getGeolocationSecurity().getCloudProvider() || geolocation.getGeolocationSecurity().getTor()
                 ||geolocation.getGeolocationSecurity().getThreatScore() > 20.0
             ){
+                System.out.println("VPN Blocked");
                 return VPN_DETECTED;
             }
 

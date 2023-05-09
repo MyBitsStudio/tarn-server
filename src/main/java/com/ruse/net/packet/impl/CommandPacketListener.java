@@ -746,6 +746,7 @@ public class CommandPacketListener implements PacketListener {
             player.setInputHandling(new ChangePassword());
             player.getPacketSender().sendEnterInputPrompt("Enter a new password:");
         }
+
         if (command[0].equalsIgnoreCase("attacks")) {
             int attack = DesolaceFormulas.getMeleeAttack(player);
             int range = DesolaceFormulas.getRangedAttack(player);

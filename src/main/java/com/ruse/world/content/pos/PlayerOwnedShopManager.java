@@ -151,6 +151,9 @@ public class PlayerOwnedShopManager {
                 PlayerOwnedShop shop = new PlayerOwnedShop();
 
                 for (File filez : Objects.requireNonNull(file.listFiles())) {
+                    if (filez.getName().contains("null")){
+                        continue;
+                    }
                     Path path = Paths.get(filez.getPath());
 
                     if (filez.getName().contains(".json") && !filez.getName().contains("posHistory")) {
@@ -567,14 +570,15 @@ public class PlayerOwnedShopManager {
         }
         PlayerOwnedShop.HistoryItem historyItem = (filtered.size() > 0 ? filtered : recentHistory).get(index);
         for (PlayerOwnedShop shops : SHOPS) {
-            if (shops.getUsername().equalsIgnoreCase(historyItem.getBuyer())) {
-                if (shops.isUpdating() && !player.getUsername().equals(shops.getUsername())) {
-                    player.getPacketSender().sendMessage("This shop is currently being updated, please wait.");
+            if(shops.getUsername() != null)
+                if (shops.getUsername().equalsIgnoreCase(historyItem.getBuyer())) {
+                    if (shops.isUpdating() && !player.getUsername().equals(shops.getUsername())) {
+                        player.getPacketSender().sendMessage("This shop is currently being updated, please wait.");
+                        return;
+                    }
+                    (current = shops).open(player);
                     return;
                 }
-                (current = shops).open(player);
-                return;
-            }
         }
     }
 
@@ -1074,6 +1078,9 @@ public class PlayerOwnedShopManager {
     public void hookShop() {
         for (PlayerOwnedShop shop : SHOPS) {
             if (shop == null) {
+                continue;
+            }
+            if(shop.getUsername() == null || shop.getUsername().equalsIgnoreCase("null")){
                 continue;
             }
             if (shop.getUsername().equalsIgnoreCase(player.getUsername())) {

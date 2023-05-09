@@ -299,49 +299,51 @@ public class NPCDeathTask extends Task {
 
                                 npc.setDying(false);
 
-                                // respawn
-                                if (npc.getDefinition().getRespawnTime() > 0 && npc.getLocation() != Location.GRAVEYARD && npc.getLocation() != Location.KEEPERS_OF_LIGHT_GAME
-                                        && npc.getLocation() != Location.DUNGEONEERING && npc.getLocation() != Location.CUSTOM_RAIDS && !npc.isEventBoss()) {
-                                    if (npc.respawn)
-                                        TaskManager.submit(new NPCRespawnTask(npc, npc.getDefinition().getRespawnTime(), killer));
-                                }
-
-                                if (npc.isEventBoss()) {
-                                    EventBossDropHandler.death(killer, npc);
-                                }
-
-                                World.deregister(npc);
-
-                                if (npc.getId() == 1158 || npc.getId() == 1160) {
-                                    KalphiteQueen.death(npc.getId(), npc.getPosition());
-                                }
-
-                                summoning(killer, npc.getId());
-
-                                if (npc.getId() == 186) {
-                                    int random = RandomUtility.inclusiveRandom(0, 100);
-                                    if (random < killer.getPointsHandler().getGlobalRate()) {// its using shillingrate though gthose go up to
-                                        // ininfinty
-                                        // well yeah i was just making an example, but im just saying, ur gona have to
-                                        // add so much stuff for each npc if u dont create a system for it
-                                        killer.getInventory().add(8212, 5);
-                                        killer.getInventory().add(8213, 1);
-                                        killer.getPointsHandler().incrementEventPoints(2);
-                                        killer.sendMessage("Because of your 'Event rate' multiplier you got extra dust");
-                                        killer.sendMessage("you also got a free Christmas token.");
-                                    } else {
-                                        killer.getInventory().add(8212, 2);
-                                        killer.getPointsHandler().incrementEventPoints(2);
-                                    }
-                                }
-
-                                if (npc.getId() == 5188) {// penguins
-                                    killer.getInventory().add(12657, 50 + killer.getPointsHandler().getSHILLINGRate());
-
-                                }
-
                                 if (Nex.nexMob(npc.getId())) {
                                     Nex.death(npc.getId());
+                                }
+
+                                if(killer != null){
+                                    if (npc.getDefinition().getRespawnTime() > 0 && npc.getLocation() != Location.GRAVEYARD && npc.getLocation() != Location.KEEPERS_OF_LIGHT_GAME
+                                            && npc.getLocation() != Location.DUNGEONEERING && npc.getLocation() != Location.CUSTOM_RAIDS && !npc.isEventBoss()) {
+                                        if (npc.respawn)
+                                            TaskManager.submit(new NPCRespawnTask(npc, npc.getDefinition().getRespawnTime(), killer));
+                                    }
+
+                                    if (npc.isEventBoss()) {
+                                        EventBossDropHandler.death(killer, npc);
+                                    }
+
+                                    World.deregister(npc);
+
+                                    if (npc.getId() == 1158 || npc.getId() == 1160) {
+                                        KalphiteQueen.death(npc.getId(), npc.getPosition());
+                                    }
+
+                                    summoning(killer, npc.getId());
+
+                                    if (npc.getId() == 186) {
+                                        int random = RandomUtility.inclusiveRandom(0, 100);
+                                        if (random < killer.getPointsHandler().getGlobalRate()) {// its using shillingrate though gthose go up to
+                                            // ininfinty
+                                            // well yeah i was just making an example, but im just saying, ur gona have to
+                                            // add so much stuff for each npc if u dont create a system for it
+                                            killer.getInventory().add(8212, 5);
+                                            killer.getInventory().add(8213, 1);
+                                            killer.getPointsHandler().incrementEventPoints(2);
+                                            killer.sendMessage("Because of your 'Event rate' multiplier you got extra dust");
+                                            killer.sendMessage("you also got a free Christmas token.");
+                                        } else {
+                                            killer.getInventory().add(8212, 2);
+                                            killer.getPointsHandler().incrementEventPoints(2);
+                                        }
+                                    }
+
+                                    if (npc.getId() == 5188) {// penguins
+                                        killer.getInventory().add(12657, 50 + killer.getPointsHandler().getSHILLINGRate());
+
+                                    }
+
                                 }
 
                                 super.stop();

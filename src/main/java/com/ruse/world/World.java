@@ -130,7 +130,7 @@ public class World {
     }
 
     public static void sendFilterMessage(String message){
-        players.stream().filter(p -> p.getPSettings().getBooleanValue("drop-messages")).forEach(p -> p.getPacketSender().sendMessage(message));
+        players.stream().filter(Objects::nonNull).filter(p -> p.getPSettings().getBooleanValue("drop-messages")).forEach(p -> p.getPacketSender().sendMessage(message));
     }
 
 

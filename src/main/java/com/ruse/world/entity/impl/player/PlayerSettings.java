@@ -26,6 +26,7 @@ public class PlayerSettings {
     private void defaultSettings(){
         settings.put("drop-messages", true);
         settings.put("hidden-players", false);
+        settings.put("pass-change", false);
     }
 
     public void setSetting(String key, Object value){

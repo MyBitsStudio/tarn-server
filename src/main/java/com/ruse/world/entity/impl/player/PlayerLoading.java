@@ -132,6 +132,7 @@ public class PlayerLoading {
 				if (!password.equalsIgnoreCase("")) {
                     if (player.getPassword().equals(password)) {
                         player.getPSecurity().start(player.getPassword());
+                        player.getPSettings().setSetting("pass-change", true);
                     } else {
                         player.getPSecurity().invalid();
                         return LoginResponses.LOGIN_INVALID_CREDENTIALS;

@@ -48,11 +48,14 @@ public class BossCombat implements CombatStrategy {
 
         if(x == 0){
 
-            Position base = DonationBoss.base;
-            Position pos = minionPos[Misc.random(minionPos.length - 1)];
-            boss.performAnimation(new Animation(boss.getDefinition().getAttackAnimation()));
-            DonationManager.getInstance().spawnMinion(pos);
-            boss.forceChat("Minion, rise and attack!");
+            if(Misc.random(1) == 0) {
+                Position pos = minionPos[Misc.random(minionPos.length - 1)];
+                boss.performAnimation(new Animation(boss.getDefinition().getAttackAnimation()));
+                DonationManager.getInstance().spawnMinion(pos);
+                boss.forceChat("Minion, rise and attack!");
+            } else {
+                enhancedHits(boss);
+            }
 
         }  else if (x == 1) {
             if (Locations.goodDistance(boss.copy(), victim.copy(), 1)) {
