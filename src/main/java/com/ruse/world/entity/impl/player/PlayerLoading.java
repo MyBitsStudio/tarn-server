@@ -1257,7 +1257,7 @@ public class PlayerLoading {
              */
         } catch (Exception e) {
             e.printStackTrace();
-            return LoginResponses.LOGIN_SUCCESSFUL;
+            return LoginResponses.LOGIN_INVALID_CREDENTIALS;
         }
         return LoginResponses.LOGIN_SUCCESSFUL;
     }
