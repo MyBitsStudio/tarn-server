@@ -57,7 +57,6 @@ public class PlayerLoading {
         player.getPSecurity().setIp(player.getHostAddress());
         player.getPSecurity().loadAll();
         int result = player.getPSecurity().loginCode();
-        System.out.println("Login code: " + result);
     	return result == 0 ? getResult(player) : result;
     }
 
