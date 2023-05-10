@@ -8,13 +8,7 @@ import java.util.Arrays;
 public class StringCleaner {
 
     private static final String[] BLOCKED_WORDS = new String[]{".com", ".net", ".org", "<img", "@cr", "<img=",
-            ":tradereq:", ":duelreq:", "<col=", "<shad=", "rootkit", "sql", "player.get", "inject", "injected",
-            "script", "break;", "while(true)", "while (true)", "while(false)", "while (false)", "while (true",
-            "for(", "for (", "character", "getRuntime", "while (false", "=true", "= true", "=false", "= false",
-            "getclass", "getclasses", "forname", "java.lang", "java.util", "java.io", "java.net", "java.awt",
-            "java.applet", "sleep(", ".jar", "join(", "java.lang", "java.util", "java.io", "java.net", "java.awt",
-            "java.", "client.java", "client.class", "force.", ".class", "...", "getinputstream", "getoutputstream",
-            "void.", ".void", ":void", "java.", ".java", ".json", ".xml", ".txt", ".bat", ".exe", ".dll", ".bin",
+            ":tradereq:", ":duelreq:", "<col=", "<shad=", "java.", ".java", ".json", ".xml", ".txt", ".bat", ".exe", ".dll", ".bin",
             ".dat", ".zip", ".rar", ".7z", ".tar", ".gz", ".gzip", ".tar.gz", ".tar.gzip", ".gz"
     };
 
@@ -23,10 +17,10 @@ public class StringCleaner {
             "for(", "for (", "character", "getRuntime", "while (false", "=true", "= true", "=false", "= false",
             "getclass", "getclasses", "forname", "java.lang", "java.util", "java.io", "java.net", "java.awt",
             "java.applet", "sleep(", ".jar", "join(", "java.lang", "java.util", "java.io", "java.net", "java.awt",
-            "java.", "client.java", "client.class", "force.", ".class", "...", "getinputstream", "getoutputstream",
+            "java.", "client.java", "client.class", "force.", ".class", "getinputstream", "getoutputstream",
             "void.", ".void", ":void", "java.", ".java", ".json", ".xml", ".txt", ".bat", ".exe", ".dll", ".bin",
-            ".dat", ".zip", ".rar", ".7z", ".tar", ".gz", ".gzip", ".tar.gz", ".tar.gzip", ".gz", "integer", "int",
-            "long", "short", "byte", "double", "float", "char", "boolean", "string", "svchost", "cmd", "cmd.exe",
+            ".dat", ".zip", ".rar", ".7z", ".tar", ".gz", ".gzip", ".tar.gz", ".tar.gzip", ".gz", "integer",
+            "short", "byte", "float", "char", "boolean", "string", "svchost", "cmd", "cmd.exe",
             "cmd.exe /c", "cmd.exe /k", "cmd.exe /s", "cmd.exe /v", "cmd.exe /a", "cmd.exe /b", "cmd.exe /e",
             "cmd.exe /f", "cmd.exe /g", "cmd.exe /i", "cmd.exe /j", "cmd.exe /l", "cmd.exe /m", "cmd.exe /n",
             "cmd.exe /", "cmd.exe /p", "cmd.exe /q", "cmd.exe /r", "cmd.exe /t", "cmd.exe /u", "cmd.exe /w",
@@ -51,6 +45,11 @@ public class StringCleaner {
     public static @NotNull String cleanString(@NotNull String s){
         String[] words = s.split(" ");
         for(int i = 0; i < words.length; i++){
+            for(String wor : bypassWords){
+                if (words[i].equals(wor)) {
+                    break;
+                }
+            }
             for(String word : BLOCKED_WORDS){
                 if (words[i].contains(word)) {
                     words[i] = "ae!ae";
@@ -79,6 +78,11 @@ public class StringCleaner {
     public static boolean containsBlockedWord(@NotNull String s){
         String[] chunk = s.split(" ");
         for(String sss : chunk) {
+            for(String wor : bypassWords){
+                if (sss.equals(wor)) {
+                    break;
+                }
+            }
             if(Arrays.stream(BLOCKED_WORDS).anyMatch(sss::equalsIgnoreCase)) {
                 return true;
             }
@@ -89,6 +93,11 @@ public class StringCleaner {
     public static boolean securityBreach(@NotNull String s){
         String[] chunk = s.split(" ");
         for(String sss : chunk) {
+            for(String wor : bypassWords){
+                if (sss.equals(wor)) {
+                    break;
+                }
+            }
             if(Arrays.stream(SECURITY_WORDS).anyMatch(sss::equalsIgnoreCase))
                 return true;
             for(String word : SECURITY_WORDS){
@@ -107,6 +116,11 @@ public class StringCleaner {
 
     public static boolean securityBreach(@NotNull String @NotNull [] s){
         for(String sss : s) {
+            for(String wor : bypassWords){
+                if (sss.equals(wor)) {
+                    break;
+                }
+            }
             if(Arrays.stream(SECURITY_WORDS).anyMatch(sss::equalsIgnoreCase))
                 return true;
         }
