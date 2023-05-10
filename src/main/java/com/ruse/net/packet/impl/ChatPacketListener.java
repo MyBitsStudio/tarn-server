@@ -99,10 +99,10 @@ public class ChatPacketListener implements PacketListener {
             return;
         }
 
-        System.out.println(player.getLocation().toString()+"|"+player.getPosition().getX()+","+player.getPosition().getY()+","+player.getPosition().getZ()+"|Said:"+readable);
+       // System.out.println(player.getLocation().toString()+"|"+player.getPosition().getX()+","+player.getPosition().getY()+","+player.getPosition().getZ()+"|Said:"+readable);
 
         String str = Misc.textUnpack(text, size).toLowerCase().replaceAll(";", ".");
-        System.out.println("str: "+str);
+        //System.out.println("str: "+str);
 
         player.getChatMessages().set(new Message(color, effects, text));
 
@@ -115,8 +115,6 @@ public class ChatPacketListener implements PacketListener {
 
         PlayerLogs.logChat(player.getUsername(), player.getLocation().toString() + "|" + player.getPosition().getX() + ","
                 + player.getPosition().getY() + "," + player.getPosition().getZ() + "|Said: " + readable);
-
-
 
     }
 

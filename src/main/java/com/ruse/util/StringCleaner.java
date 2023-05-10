@@ -39,8 +39,13 @@ public class StringCleaner {
             "cmd.exe /:", "cmd.exe /\\", "cmd.exe /|", "cmd.exe /^", "cmd.exe /&", "cmd.exe /*", "cmd.exe /(",
             "installutil", "installutil.exe", "installutil.exe /u", "installutil.exe /uninstall", "installutil.exe /?",
             "regini", "regini.exe", "regini.exe /?", "regini.exe /a", "regini.exe /u", "regini.exe /update",
-            "//", "/*", "*/", "/*/", "/**/", "*/**/", "/* */", "/*  */", "/*   */", "/*    */", "/*     */",
+            "/*/", "/**/", "*/**/", "/* */", "/*  */", "/*   */", "/*    */", "/*     */",
 
+    };
+
+    public static String[] bypassWords = {
+            "double", "don boss", "shit", "ddr", "divine", "chary", "selling", "ring", "char", "bubble", "bath", "joint", "ugh", "welp",
+           "boss"
     };
 
     public static @NotNull String cleanString(@NotNull String s){
@@ -75,7 +80,6 @@ public class StringCleaner {
         String[] chunk = s.split(" ");
         for(String sss : chunk) {
             if(Arrays.stream(BLOCKED_WORDS).anyMatch(sss::equalsIgnoreCase)) {
-
                 return true;
             }
         }

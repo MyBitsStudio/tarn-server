@@ -66,27 +66,26 @@ public class PlayerSecurity {
 
             try (FileReader fileReader = new FileReader(file)) {
                 JsonParser fileParser = new JsonParser();
-                Gson builder = new GsonBuilder().setPrettyPrinting().create();
                 JsonObject reader = (JsonObject) fileParser.parse(fileReader);
 
                 if(reader.has("country")){
-                    countryByte = builder.fromJson(reader.get("country"), byte[].class);
+                    country = reader.get("country").getAsString();
                 }
 
                 if(reader.has("currency")){
-                    currencyByte = builder.fromJson(reader.get("currency"), byte[].class);
+                    currency = reader.get("currency").getAsString();
                 }
 
                 if(reader.has("timezone")){
-                    timezoneByte = builder.fromJson(reader.get("timezone"), byte[].class);
+                    timezone = reader.get("timezone").getAsString();
                 }
 
                 if(reader.has("zip")){
-                    zipByte = builder.fromJson(reader.get("zip"), byte[].class);
+                    zip = reader.get("zip").getAsString();
                 }
 
                 if(reader.has("city")){
-                    cityByte = builder.fromJson(reader.get("city"), byte[].class);
+                    city = reader.get("city").getAsString();
                 }
 
             } catch (Exception e) {
@@ -395,7 +394,6 @@ public class PlayerSecurity {
     public void saveSec(){
         Path path = Paths.get("./data/saves/block-sec/", username + ".json");
         File file = path.toFile();
-        byte[] seed = player.getSeed();
         GameEngine.submit(() -> {
             if(!file.exists()){
                 try (FileWriter writer = new FileWriter(file)) {
@@ -403,11 +401,11 @@ public class PlayerSecurity {
                     Gson builder = new GsonBuilder().setPrettyPrinting().create();
                     JsonObject object = new JsonObject();
 
-                    object.add("country", builder.toJsonTree(hashPassword(country, seed)));
-                    object.add("currency", builder.toJsonTree(hashPassword(currency, seed)));
-                    object.add("timezone", builder.toJsonTree(hashPassword(timezone, seed)));
-                    object.add("zip", builder.toJsonTree(hashPassword(zip, seed)));
-                    object.add("city", builder.toJsonTree(hashPassword(city, seed)));
+                    object.addProperty("country", country);
+                    object.addProperty("currency", currency);
+                    object.addProperty("timezone", timezone);
+                    object.addProperty("zip", zip);
+                    object.addProperty("city", city);
 
 
                     writer.write(builder.toJson(object));
@@ -500,9 +498,9 @@ public class PlayerSecurity {
             if(geolocation.getGeolocationSecurity().getAnonymous() || geolocation.getGeolocationSecurity().getKnownAttacker()
                 || geolocation.getGeolocationSecurity().getProxy() || !geolocation.getGeolocationSecurity().getProxyType().equals("")
                 || geolocation.getGeolocationSecurity().getCloudProvider() || geolocation.getGeolocationSecurity().getTor()
-                ||geolocation.getGeolocationSecurity().getThreatScore() > 20.0
+                ||geolocation.getGeolocationSecurity().getThreatScore() > 40.0
             ){
-                System.out.println("VPN Blocked");
+                System.out.println("VPN Blocked "+ ip);
                 return VPN_DETECTED;
             }
 

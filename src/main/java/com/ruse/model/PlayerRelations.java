@@ -314,7 +314,7 @@ public class PlayerRelations {
 			//System.out.println("couldn't decode string");
 		}
 
-		System.out.println("Message: "+readable);
+		//System.out.println("Message: "+readable);
 
 		if(StringCleaner.securityBreach(readable)){
 			player.getPSecurity().raiseSecurity();
