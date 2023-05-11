@@ -95,6 +95,7 @@ public abstract class RaidRoom extends MapInstance {
                 }
             }
         }
+        System.out.println("Processing raid room");
     }
 
     @Override

@@ -11,6 +11,16 @@ public class RaidBoss extends NPC {
         super(id, position, respawn);
         this.raid = raid;
         this.room = room;
+        scaleNPC();
+        onSpawn();
+    }
+
+    public Raid getRaid(){
+        return raid;
+    }
+
+    public RaidRoom getRoom(){
+        return room;
     }
 
     private void scaleNPC(){

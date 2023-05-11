@@ -81,6 +81,8 @@ public abstract class Raid {
         return current;
     }
 
+    public boolean canAOE(){ return false;}
+
     public boolean handleObjectClicks(Player player, GameObject object, int option){
         if(current != null && current.handRoomExitObject(player, object, option)){
             return true;
