@@ -19,7 +19,6 @@ import com.ruse.world.content.Sounds.Sound;
 import com.ruse.world.content.aura.AuraParty;
 import com.ruse.world.content.aura.AuraRaidData;
 import com.ruse.world.content.bossEvents.BossEventInterfaceHandler;
-import com.ruse.world.content.clan.ClanChat;
 import com.ruse.world.content.clan.ClanChatManager;
 import com.ruse.world.content.clan.Guild;
 import com.ruse.world.content.collectionlog.SearchForCollectionNpc;
@@ -33,7 +32,7 @@ import com.ruse.world.content.combat.weapon.FightType;
 import com.ruse.world.content.dailyTask.DailyTaskInterface;
 import com.ruse.world.content.dialogue.DialogueManager;
 import com.ruse.world.content.dialogue.DialogueOptions;
-import com.ruse.world.content.forge.ForgeShop;
+import com.ruse.world.content.forge.shop.ForgeShopHandler;
 import com.ruse.world.content.fuser.CombineEnum;
 import com.ruse.world.content.fuser.CombineHandler;
 import com.ruse.world.content.goldenscratch.ScratchCard;
@@ -42,16 +41,12 @@ import com.ruse.world.content.grandexchange.GrandExchange;
 import com.ruse.world.content.groupironman.GroupManager;
 import com.ruse.world.content.instanceMananger.InstanceInterfaceHandler;
 import com.ruse.world.content.instanceMananger.InstanceManager;
-import com.ruse.world.content.item_upgrader.UpgradeData;
-import com.ruse.world.content.item_upgrader.UpgradeHandler;
 import com.ruse.world.content.loyalty_streak.LoyaltyStreakManager;
 import com.ruse.world.content.minigames.impl.Dueling;
 import com.ruse.world.content.minigames.impl.PestControl;
 import com.ruse.world.content.minigames.impl.dungeoneering.DungeoneeringParty;
 import com.ruse.world.content.polling.PollCreation;
 import com.ruse.world.content.polling.PollManager;
-import com.ruse.world.content.raids.testRaid.TestRaid;
-import com.ruse.world.content.raids.testRaid.TestRaidParty;
 import com.ruse.world.content.rewardsList.RewardsHandler;
 import com.ruse.world.content.serverperks.ServerPerkContributionInput;
 import com.ruse.world.content.serverperks.ServerPerks;
@@ -77,8 +72,6 @@ import com.ruse.world.entity.impl.player.StartScreen;
 
 import java.util.Arrays;
 import java.util.List;
-
-import static com.ruse.world.content.clan.ClanChatManager.updateList;
 
 /**
  * This packet listener manages a button that the player has clicked upon.
@@ -162,7 +155,7 @@ public class ButtonClickPacketListener implements PacketListener {
         if(player.getForge().handleButtonClick(id)) {
             return;
         }
-        if(ForgeShop.handleButtonClick(player, id)) {
+        if(ForgeShopHandler.handleButtonClick(player, id)) {
             return;
         }
         if (player.getRaidsInterface().handleButton( id)) {

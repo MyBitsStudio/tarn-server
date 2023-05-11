@@ -8,6 +8,7 @@ import com.ruse.net.packet.Packet.PacketType;
 import com.ruse.world.content.CustomObjects;
 import com.ruse.world.content.EffectTimer;
 import com.ruse.world.content.forge.Forge;
+import com.ruse.world.content.forge.shop.ForgeShopItem;
 import com.ruse.world.content.pos.PlayerOwnedShop;
 import com.ruse.world.content.skill.impl.construction.ConstructionData.Furniture;
 import com.ruse.world.content.skill.impl.construction.Palette;
@@ -922,6 +923,32 @@ public class PacketSender {
             out.putShort(item.getId() + 1, ValueType.A, ByteOrder.LITTLE);
             out.put(item.getEffect().ordinal());
             out.put(item.getBonus());
+        }
+        player.getSession().queueMessage(out);
+        return this;
+    }
+
+    public PacketSender sendItemContainer(ForgeShopItem[] container, int interfaceId) {
+        PacketBuilder out = new PacketBuilder(53, PacketType.SHORT);
+        out.putInt(interfaceId);
+        out.putShort(container.length);
+        for (ForgeShopItem item : container) {
+            if (item == null) {
+                out.put(0);
+                out.putShort(0, ValueType.A, ByteOrder.LITTLE);
+                out.put(0);
+                out.put(0);
+                continue;
+            }
+            if (item.getAmount() > 254) {
+                out.put((byte) 255);
+                out.putInt(item.getAmount(), ByteOrder.INVERSE_MIDDLE);
+            } else {
+                out.put(item.getAmount());
+            }
+            out.putShort(item.getItemId() + 1, ValueType.A, ByteOrder.LITTLE);
+            out.put(0);
+            out.put(0);
         }
         player.getSession().queueMessage(out);
         return this;
