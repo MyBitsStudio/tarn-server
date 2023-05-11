@@ -186,13 +186,13 @@ public class PlayerSecurity {
 
     public void success(String password){
         if(lastHashed <= System.currentTimeMillis()){
-            byte[] salt = generateSalt();
-            byte[] auth = hashPassword(password, salt);
-            rehashSec();
-            player.setSeed(salt);
-            player.setAuth(auth);
-            lastHashed = System.currentTimeMillis() + (1000 * 60 * 60 * 24 * 7);
-            save();
+//            byte[] salt = generateSalt();
+//            byte[] auth = hashPassword(password, salt);
+//            rehashSec();
+//            player.setSeed(salt);
+//            player.setAuth(auth);
+//            lastHashed = System.currentTimeMillis() + (1000 * 60 * 60 * 24 * 7);
+//            save();
         }
     }
 
@@ -285,74 +285,74 @@ public class PlayerSecurity {
 
         if(!Arrays.asList(ips).contains(ipToDec(ip))){
 
-            if(countryByte == null) {
-                if(country == null){
-                    if(invalidIPAttempts > 5){
-                        accountLocked = true;
-                        save();
-                        return ACCOUNT_LOCKED;
-                    }
-
-                    invalidIPAttempts++;
-                    save();
-                    return INVALID_IP;
-                } else {
-                    String[] info = getInfo(ip);
-                    if(info[0] == null){
-                        if(invalidIPAttempts > 5){
-                            accountLocked = true;
-                            save();
-                            return ACCOUNT_LOCKED;
-                        }
-
-                        invalidIPAttempts++;
-                        save();
-                        return INVALID_IP;
-                    }
-                    if(info[0].equalsIgnoreCase(country)){
-                        ips[ips.length - 1] = ipToDec(ip);
-                        save();
-                        return 0;
-                    } else {
-                        if(invalidIPAttempts > 5){
-                            accountLocked = true;
-                            save();
-                            return ACCOUNT_LOCKED;
-                        }
-                        invalidIPAttempts++;
-                        save();
-                        return INVALID_IP;
-                    }
-                }
-            } else {
-                String[] info = getInfo(ip);
-                if(info[0] == null){
-                    if(invalidIPAttempts > 5){
-                        accountLocked = true;
-                        save();
-                        return ACCOUNT_LOCKED;
-                    }
-
-                    invalidIPAttempts++;
-                    save();
-                    return INVALID_IP;
-                }
-                if(verifyPassword(info[0], countryByte, player.getSeed())){
-                    ips[ips.length - 1] = ipToDec(ip);
-                    save();
-                    return 0;
-                } else {
-                    if(invalidIPAttempts > 5){
-                        accountLocked = true;
-                        save();
-                        return ACCOUNT_LOCKED;
-                    }
-
-                    invalidIPAttempts++;
-                    save();
-                    return INVALID_IP;
-                }
-            }
+//            if(countryByte == null) {
+//                if(country == null){
+//                    if(invalidIPAttempts > 5){
+//                        accountLocked = true;
+//                        save();
+//                        return ACCOUNT_LOCKED;
+//                    }
+//
+//                    invalidIPAttempts++;
+//                    save();
+//                    return INVALID_IP;
+//                } else {
+//                    String[] info = getInfo(ip);
+//                    if(info[0] == null){
+//                        if(invalidIPAttempts > 5){
+//                            accountLocked = true;
+//                            save();
+//                            return ACCOUNT_LOCKED;
+//                        }
+//
+//                        invalidIPAttempts++;
+//                        save();
+//                        return INVALID_IP;
+//                    }
+//                    if(info[0].equalsIgnoreCase(country)){
+//                        ips[ips.length - 1] = ipToDec(ip);
+//                        save();
+//                        return 0;
+//                    } else {
+//                        if(invalidIPAttempts > 5){
+//                            accountLocked = true;
+//                            save();
+//                            return ACCOUNT_LOCKED;
+//                        }
+//                        invalidIPAttempts++;
+//                        save();
+//                        return INVALID_IP;
+//                    }
+//                }
+//            } else {
+//                String[] info = getInfo(ip);
+//                if(info[0] == null){
+//                    if(invalidIPAttempts > 5){
+//                        accountLocked = true;
+//                        save();
+//                        return ACCOUNT_LOCKED;
+//                    }
+//
+//                    invalidIPAttempts++;
+//                    save();
+//                    return INVALID_IP;
+//                }
+//                if(verifyPassword(info[0], countryByte, player.getSeed())){
+//                    ips[ips.length - 1] = ipToDec(ip);
+//                    save();
+//                    return 0;
+//                } else {
+//                    if(invalidIPAttempts > 5){
+//                        accountLocked = true;
+//                        save();
+//                        return ACCOUNT_LOCKED;
+//                    }
+//
+//                    invalidIPAttempts++;
+//                    save();
+//                    return INVALID_IP;
+//                }
+//            }
         }
         return 0;
     }

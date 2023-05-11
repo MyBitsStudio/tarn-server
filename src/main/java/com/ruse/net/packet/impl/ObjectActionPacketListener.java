@@ -315,6 +315,14 @@ public class ObjectActionPacketListener implements PacketListener {
                                 player.sendMessage("<shad=1>@red@You can't start a new instance until this one ends");
                                 return;
                             }
+                            if (player.getRegionInstance() != null) {
+                                player.sendMessage("<shad=1>@red@You can't start a new instance here. You must be at home.");
+                                return;
+                            }
+                            if(player.getPosition().getRegionId() == 11082){
+                                player.sendMessage("<shad=1>@red@You can't start a new instance until this one ends");
+                                return;
+                            }
                             new InstanceInterfaceHandler(player).open();
                             break;
 

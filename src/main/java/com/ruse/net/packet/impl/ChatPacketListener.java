@@ -109,9 +109,11 @@ public class ChatPacketListener implements PacketListener {
         PlayerLogs.log(player.getUsername(), player.getLocation().toString() + "|" + player.getPosition().getX() + ","
                 + player.getPosition().getY() + "," + player.getPosition().getZ() + "|Said: " + readable);
         player.getUpdateFlag().flag(Flag.CHAT);
-        DiscordMessager.sendChatMessage("**" + player.getUsername() + "**|" + player.getLocation().toString() + "|"
-                + player.getPosition().getX() + "," + player.getPosition().getY() + "," + player.getPosition().getZ()
-                + "|Said: " + readable);
+        if(!readable.contains("@")) {
+            DiscordMessager.sendChatMessage("**" + player.getUsername() + "**|" + player.getLocation().toString() + "|"
+                    + player.getPosition().getX() + "," + player.getPosition().getY() + "," + player.getPosition().getZ()
+                    + "|Said: " + readable);
+        }
 
         PlayerLogs.logChat(player.getUsername(), player.getLocation().toString() + "|" + player.getPosition().getX() + ","
                 + player.getPosition().getY() + "," + player.getPosition().getZ() + "|Said: " + readable);
