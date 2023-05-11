@@ -136,6 +136,10 @@ public class CommandPacketListener implements PacketListener {
             }
         }
 
+        if (command[0].startsWith("forge")) {
+            player.getForge().showInterface();
+        }
+
         if (command[0].startsWith("pickaxe")) {
             player.getInventory().add(1265, 1);
         }

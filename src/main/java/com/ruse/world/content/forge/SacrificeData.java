@@ -2,7 +2,7 @@ package com.ruse.world.content.forge;
 
 import java.util.HashMap;
 
-public final class ForgeItemConstants {
+public final class SacrificeData {
 
     private static final HashMap<Integer, Integer> ITEM_VALUES = new HashMap<>();
 
@@ -19,7 +19,7 @@ public final class ForgeItemConstants {
         return ITEM_VALUES.getOrDefault(itemId, 0);
     }
 
-    private ForgeItemConstants() {
+    private SacrificeData() {
 
     }
 }

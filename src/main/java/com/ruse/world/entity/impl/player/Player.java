@@ -60,7 +60,7 @@ import com.ruse.world.content.dialogue.Dialogue;
 import com.ruse.world.content.equipmentenhancement.EquipmentEnhancement;
 import com.ruse.world.content.eventboss.EventBossManager;
 import com.ruse.world.content.forge.Forge;
-import com.ruse.world.content.forge.ForgeShopType;
+import com.ruse.world.content.forge.shop.ForgeShopType;
 import com.ruse.world.content.gamblinginterface.GamblingInterface;
 import com.ruse.world.content.grandexchange.GrandExchangeSlot;
 import com.ruse.world.content.groupironman.IronmanGroup;
@@ -105,7 +105,6 @@ import com.ruse.world.region.RegionManager;
 import com.ruse.world.region.dynamic.DynamicRegion;
 import lombok.Getter;
 import lombok.Setter;
-import mysql.impl.Donation;
 
 import java.io.BufferedReader;
 import java.io.IOException;

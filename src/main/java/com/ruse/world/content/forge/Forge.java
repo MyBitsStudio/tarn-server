@@ -56,7 +56,7 @@ public class Forge {
             return;
         }
         int itemId = item.getId();
-        int value = ForgeItemConstants.getValue(itemId);
+        int value = SacrificeData.getValue(itemId);
         if(value == 0) {
             player.getPacketSender().sendMessage("@red@This item has no value on the forge.");
             return;
@@ -98,8 +98,8 @@ public class Forge {
         if(toRemove != null) {
             addedItemMap.remove(toRemove);
             player.getPacketSender().sendItemContainer(getItemList(), 49539);
-            progressToAdd -= ForgeItemConstants.getValue(itemId);
-            player.getPacketSender().sendItemOnInterface(49523, 18653, progressToAdd - ForgeItemConstants.getValue(itemId));
+            progressToAdd -= SacrificeData.getValue(itemId);
+            player.getPacketSender().sendItemOnInterface(49523, 18653, progressToAdd - SacrificeData.getValue(itemId));
             player.getPacketSender().sendString(49527, String.valueOf(progressToAdd));
             player.getPacketSender().updateProgressSpriteBar(PERCENTAGE_BAR_ID, progressToAdd + progress, getValueForNextTier().orElse(0));
         }
