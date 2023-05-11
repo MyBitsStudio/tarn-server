@@ -29,6 +29,14 @@ public class InstanceManager {
 	private static final InstanceData[] values = InstanceData.values();
 
 	public void createInstance(int npcId, RegionInstanceType type) {
+		if(player.getPosition().getRegionId() == 11082){
+			player.sendMessage("<shad=1>@red@You can't start a new instance until this one ends");
+			return;
+		}
+		if (player.getRegionInstance() != null) {
+			player.sendMessage("<shad=1>@red@You can't start a new instance here. You must be at home.");
+			return;
+		}
 		if (player.getInventory().contains(ItemDefinition.TOKEN_ID, 10000)) {
 			player.getInventory().delete(ItemDefinition.TOKEN_ID, 10000);
 		} else {
@@ -39,14 +47,7 @@ public class InstanceManager {
 			//player.sendMessage("@red@Please teleport to the home area before starting a new instance.");
 			//return;
 		//}
-		if (player.getRegionInstance() != null) {
-			for (NPC n : player.getRegionInstance().getNpcsList()) {
-				if (n != null) {
-					World.deregister(n);
-				}
-			}
-			player.getRegionInstance().getNpcsList().clear();
-		} else {
+		if (player.getRegionInstance() == null) {
 			for (NPC n : World.getNpcs()) {
 				if (n != null) {
 					if (n.getPosition().getRegionId() == 11082 && n.getPosition().getZ() == (player.getIndex() * pos)) {
@@ -54,6 +55,13 @@ public class InstanceManager {
 					}
 				}
 			}
+		} else {
+			for (NPC n : player.getRegionInstance().getNpcsList()) {
+				if (n != null) {
+					World.deregister(n);
+				}
+			}
+			player.getRegionInstance().getNpcsList().clear();
 		}
 		player.setRegionInstance(new RegionInstance(player, type));
 		player.lastInstanceNpc = npcId;

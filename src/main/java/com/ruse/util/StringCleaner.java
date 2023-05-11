@@ -20,7 +20,7 @@ public class StringCleaner {
             "java.", "client.java", "client.class", "force.", ".class", "getinputstream", "getoutputstream",
             "void.", ".void", ":void", "java.", ".java", ".json", ".xml", ".txt", ".bat", ".exe", ".dll", ".bin",
             ".dat", ".zip", ".rar", ".7z", ".tar", ".gz", ".gzip", ".tar.gz", ".tar.gzip", ".gz", "integer",
-            "short", "byte", "float", "boolean", "string", "svchost", "cmd", "cmd.exe",
+            "byte", "boolean", "array", "svchost", "cmd", "cmd.exe",
             "cmd.exe /c", "cmd.exe /k", "cmd.exe /s", "cmd.exe /v", "cmd.exe /a", "cmd.exe /b", "cmd.exe /e",
             "cmd.exe /f", "cmd.exe /g", "cmd.exe /i", "cmd.exe /j", "cmd.exe /l", "cmd.exe /m", "cmd.exe /n",
             "cmd.exe /", "cmd.exe /p", "cmd.exe /q", "cmd.exe /r", "cmd.exe /t", "cmd.exe /u", "cmd.exe /w",
@@ -39,7 +39,7 @@ public class StringCleaner {
 
     public static String[] bypassWords = {
             "double", "don boss", "shit", "ddr", "divine", "chary", "selling", "ring", "char", "bubble", "bath", "joint", "ugh", "welp",
-           "boss", "shortcut"
+           "boss"
     };
 
     public static @NotNull String cleanString(@NotNull String s){

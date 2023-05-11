@@ -596,7 +596,9 @@ public class ButtonClickPacketListener implements PacketListener {
                 break;
 
             case -30533:
-                if (player.getData() != null) {
+                if (player.getData() == null) {
+                    player.getPA().sendMessage("Select the boss you'd like to instance.");
+                } else {
                     if (player.getData().getNpcid() == 1265) {
                         player.sendMessage("Tarn lions can only be killed at ::train");
                         return;
@@ -610,9 +612,15 @@ public class ButtonClickPacketListener implements PacketListener {
                             return;
                         }
                     }
+                    if (player.getRegionInstance() != null) {
+                        player.sendMessage("<shad=1>@red@You can't start a new instance here. You must be at home.");
+                        return;
+                    }
+                    if(player.getPosition().getRegionId() == 11082){
+                        player.sendMessage("<shad=1>@red@You can't start a new instance until this one ends");
+                        return;
+                    }
                     new InstanceManager(player).createInstance(player.getData().getNpcid(), RegionInstance.RegionInstanceType.INSTANCE);
-                } else {
-                    player.getPA().sendMessage("Select the boss you'd like to instance.");
                 }
                 break;
             case -8254:

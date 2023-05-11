@@ -53,6 +53,7 @@ import com.ruse.world.content.donation.DonationManager;
 import com.ruse.world.content.grandexchange.GrandExchangeOffers;
 import com.ruse.world.content.groupironman.GroupManager;
 import com.ruse.world.content.holidayevents.easter2017;
+import com.ruse.world.content.instanceMananger.InstanceInterfaceHandler;
 import com.ruse.world.content.item_upgrader.UpgradeHandler;
 import com.ruse.world.content.minigames.impl.KeepersOfLight;
 import com.ruse.world.content.minigames.impl.TreasureHunter;
@@ -2813,6 +2814,18 @@ public class CommandPacketListener implements PacketListener {
 
         if (command[0].equalsIgnoreCase("dismissmini")) {
             player.getMinimeSystem().despawn();
+        }
+
+        if (command[0].startsWith("initins")) {
+            if (player.getRegionInstance() != null) {
+                player.sendMessage("<shad=1>@red@You can't start a new instance here. You must be at home.");
+                return;
+            }
+            if(player.getPosition().getRegionId() == 11082){
+                player.sendMessage("<shad=1>@red@You can't start a new instance until this one ends");
+                return;
+            }
+            new InstanceInterfaceHandler(player).open();
         }
 
         if (command[0].equalsIgnoreCase("groupa")) {
