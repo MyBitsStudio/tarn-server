@@ -62,7 +62,7 @@ import com.ruse.world.entity.impl.player.Player;
 
 public class UseItemPacketListener implements PacketListener {
 
-    public final static int USE_ITEM = 122;
+    public final static int USE_ITEM = 174;
     public final static int ITEM_ON_NPC = 57;
     public final static int ITEM_ON_ITEM = 53;
     public final static int ITEM_ON_OBJECT = 192;

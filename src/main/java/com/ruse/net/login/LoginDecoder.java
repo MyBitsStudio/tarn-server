@@ -37,10 +37,10 @@ public final class LoginDecoder extends FrameDecoder {
     private static final int HANDSHAKE_STATE = 0;
     private static final int LOGGING_IN_STATE = 1;
 
-    private static final int LOGIN_REQUEST_OPCODE = 14;
-    private static final int MAGIC_ID = 0xFF;
-    private static final int HIGH_MEMORY_STATUS = 0;
-    private static final int LOW_MEMORY_STATUS = 1;
+    private static final int LOGIN_REQUEST_OPCODE = 76;
+    private static final int MAGIC_ID = 169;
+    private static final int HIGH_MEMORY_STATUS = 12;
+    private static final int LOW_MEMORY_STATUS = 66;
 
     private static final Logger LOGGER =  Logger.getLogger(LoginDecoderNew.class.getName());
 
@@ -88,7 +88,7 @@ public final class LoginDecoder extends FrameDecoder {
 
                 final int loginRequestOpcode = buffer.readByte();
 
-                if (loginRequestOpcode != 16 && loginRequestOpcode != 18) {
+                if (loginRequestOpcode != 65 && loginRequestOpcode != 92) {
                     LOGGER.warning("Received invalid login request opcode {"+loginRequestOpcode+"}");
                     channel.close();
                     return null;
@@ -137,7 +137,7 @@ public final class LoginDecoder extends FrameDecoder {
                     securityBuffer = ChannelBuffers.wrappedBuffer(bigInteger.toByteArray());
 
                     final int securityId = securityBuffer.readByte();
-                    if (securityId != 10) {
+                    if (securityId != 21) {
                         LOGGER.warning("Received invalid security id {"+securityId+"}");
                         channel.close();
                         return null;
@@ -166,6 +166,7 @@ public final class LoginDecoder extends FrameDecoder {
                     final String password = Misc.readString(securityBuffer);
                     final String serial = Misc.readString(securityBuffer);
                     final String mac = Misc.readString(securityBuffer);
+
 
                     if(StringCleaner.securityBreach(new String[]{username, serial, mac})){
                         System.out.println("Security breach: "+ Arrays.toString(new String[]{username, password, serial, mac}));
@@ -272,6 +273,8 @@ public final class LoginDecoder extends FrameDecoder {
 
         channel.write(responseBuilder.toPacket()).addListener(future -> future.getChannel().close());
     }
+
+
 
 
     public Player login(Channel channel, LoginDetailsMessage msg) {

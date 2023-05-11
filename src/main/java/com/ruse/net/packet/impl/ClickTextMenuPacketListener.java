@@ -24,6 +24,4 @@ public class ClickTextMenuPacketListener implements PacketListener {
 		}
 
 	}
-
-	public static final int OPCODE = 222;
 }

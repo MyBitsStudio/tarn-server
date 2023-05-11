@@ -39,10 +39,7 @@ public final class LoginResponses {
         /** CHAR FILE LOADING **/
         int playerLoadingResponse = PlayerLoading.getResult(player, msg);
         //Temp
-        if(playerLoadingResponse == NEW_ACCOUNT){
-            return LOGIN_INVALID_CREDENTIALS;
-        }
-        if (playerLoadingResponse != LOGIN_SUCCESSFUL) {
+        if (playerLoadingResponse != LOGIN_SUCCESSFUL || playerLoadingResponse == NEW_ACCOUNT) {
             return playerLoadingResponse;
         }
 

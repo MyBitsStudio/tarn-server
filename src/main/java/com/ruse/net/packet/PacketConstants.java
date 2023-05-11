@@ -43,9 +43,9 @@ public class PacketConstants {
 		PACKETS[141] = new BankModifiableX();
 		PACKETS[109] = new BadPacketListener();
 		PACKETS[87] = new DropItemPacketListener();
-		PACKETS[103] = new CommandPacketListener();
+		PACKETS[231] = new CommandPacketListener();
 		PACKETS[121] = new FinalizedMapRegionChangePacketListener();
-		PACKETS[130] = new CloseInterfacePacketListener();
+		PACKETS[170] = new CloseInterfacePacketListener();
 		PACKETS[ButtonClickPacketListener.OPCODE] = new ButtonClickPacketListener();
 		PACKETS[2] = new ExamineItemPacketListener();
 		PACKETS[6] = new ExamineNpcPacketListener();
@@ -54,9 +54,9 @@ public class PacketConstants {
 		PACKETS[8] = new ChangeRelationStatusPacketListener();
 		PACKETS[11] = new ChangeAppearancePacketListener();
 		PACKETS[202] = new IdleLogoutPacketListener();
-		PACKETS[131] = new NPCOptionPacketListener();
-		PACKETS[17] = new NPCOptionPacketListener();
-		PACKETS[18] = new NPCOptionPacketListener();
+		PACKETS[171] = new NPCOptionPacketListener();
+		PACKETS[31] = new NPCOptionPacketListener();
+		PACKETS[28] = new NPCOptionPacketListener();
 		PACKETS[21] = new NPCOptionPacketListener();
 		PACKETS[210] = new RegionChangePacketListener();
 		PACKETS[214] = new SwitchItemSlotPacketListener();
@@ -87,10 +87,11 @@ public class PacketConstants {
 		PACKETS[DuelAcceptancePacketListener.OPCODE] = new DuelAcceptancePacketListener();
 		PACKETS[12] = new DungeoneeringPartyInvitatationPacketListener();
 		PACKETS[204] = new GESelectItemPacketListener();
-		PACKETS[222] = new ClickTextMenuPacketListener();
+		PACKETS[64] = new ClickTextMenuPacketListener();
 		PACKETS[223] = new PrestigeSkillPacketListener();
 		PACKETS[229] = new HeightCheckPacketListener();
 		PACKETS[199] = new ScratchCardEndPacketListener();
+		PACKETS[243] = new AuthPacketListener();
 		PACKETS[GambleInvititationPacketListener.GAMBLE_OPCODE] = new GambleInvititationPacketListener();
 		PACKETS[GambleInvititationPacketListener.CHATBOX_GAMBLE_OPCODE] = new GambleInvititationPacketListener();
 		
@@ -103,30 +104,30 @@ public class PacketConstants {
 	 */
 	public final static int[] MESSAGE_SIZES = {
 			0, 0, 4, 1, -1, -1, 2, 4, 4, 4, // 0
-			4, -1, -1, -1, 8, 0, 6, 2, 2, 0, // 10
-			0, 2, 0, 6, 0, 12, 0, 0, 0, 0, // 20
-			9, 0, 0, 0, 0, 8, 4, 0, 0, 2, // 30
+			4, -1, -1, -1, 8, 0, 6, 0, 0, 0, // 10
+			0, 2, 0, 6, 0, 12, 0, 0, 2, 0, // 20
+			9, 2, 0, 0, 0, 8, 4, 0, 0, 2, // 30
 			2, 6, 0, 10, 0, -1, 0, 0, 0, 1, // 40
 			0, 0, 0, 12, 0, 0, 0, 8, 8, 0, // 50
-			-1, 8, 0, 0, 0, 0, 0, 0, 0, 0, // 60
+			-1, 8, 0, 0, 3, 0, 0, 0, 0, 0, // 60
 			6, 0, 2, 2, 8, 6, 0, -1, 0, 6, // 70
 			-1, 0, 0, 0, 0, 1, 4, 6, 0, 0, // 80
 			0, 0, 0, 0, 0, 3, 0, 0, -1, 0, // 90
-			0, 13, 0, -1, 0, 0, 0, 0, 0, 0, // 100
+			0, 13, 0, 0, 0, 0, 0, 0, 0, 0, // 100
 			0, 0, 0, 0, 0, 0, 0, 10, 0, 0, // 110
-			1, 0, 6, 0, 0, 0, -1, -1, 2, 10, // 120
-			0, 4, 6, 8, 0, 10, 0, 0, 10, 2, // 130
+			1, 0, 0, 0, 0, 0, -1, -1, 2, 10, // 120
+			0, 0, 6, 8, 0, 10, 0, 0, 10, 2, // 130
 			6, 10, 0, 0, 0, 10, 0, 0, 0, 0, // 140
-			0, 0, 1, 2, 0, 2, 6, 0, 0, 0, // 150
+			0, 4, 1, 2, 0, 2, 6, 0, 0, 0, // 150
 			0, 0, 0, 0, -1, -1, 0, 0, 0, 0, // 160
-			0, 0, 0, 0, 0, 0, 0, 0, 0, 0, // 170
-			0, 8, 0, 3, 0, 4, 0, 0, 8, 1, // 180
-			0, 2, 12, 2, 0, 0, 0, 0, 0, 1, // 190
+			0, 2, 0, 0, 6, 0, 0, 0, 0, 0, // 170
+			0, 8, 0, 3, 0, 0, 2, 0, 8, 1, // 180
+			0, 2, 12, 2, 0, 4, 0, 0, 0, 1, // 190
 			2, 0, 0, 0, 2, 0, 0, 0, 4, 8, // 200
 			4, 0, 0, 0, 7, 8, 2, 0, 10, 0, // 210
-			2, 0, 3, 2, 0, 1, -1, 0, 6, 1, // 220
-			0, 0, 0, 0, 6, 0, 7, 8, 1, 0, // 230
-			0, 4, 0, 0, 0, 0, -1, 0, -1, 4, // 240
+			2, 0, 0, 2, 0, 1, -1, 0, 6, 1, // 220
+			0, -1, 0, 0, 6, 0, 7, 8, 1, 0, // 230
+			0, 4, 0, -1, 0, 0, -1, 0, -1, 4, // 240
 			0, 0, 6, 6, 0, 0 // 250
 	};
 }

@@ -138,7 +138,7 @@ public class HitQueue {
 						/** ACHIEVEMENTS **/
 
 
-
+						if(player.getRaid() == null) {
 							if (p.getEquipment().get(Equipment.WEAPON_SLOT).getEffect() == ItemEffect.AOE_EFFECT) {
 								if (p.getEquipment().get(Equipment.WEAPON_SLOT).getBonus() == 1) {
 									AOEHandler.handleAttack(p, victim, 1000, 5000, 3, container.getHits()[0].getHit().getCombatIcon());}
@@ -148,7 +148,18 @@ public class HitQueue {
 							if (p.getEquipment().get(Equipment.WEAPON_SLOT).getEffect() == ItemEffect.AOE_EFFECT_2x2) {
 								AOEHandler.handleAttack(p, victim, 1000, 5000, 2, container.getHits()[0].getHit().getCombatIcon());
 							}
-
+						} else if (player.getRaid().canAOE()) {
+							if (p.getEquipment().get(Equipment.WEAPON_SLOT).getEffect() == ItemEffect.AOE_EFFECT) {
+								if (p.getEquipment().get(Equipment.WEAPON_SLOT).getBonus() == 1) {
+									AOEHandler.handleAttack(p, victim, 1000, 5000, 3, container.getHits()[0].getHit().getCombatIcon());
+								} else if (p.getEquipment().get(Equipment.WEAPON_SLOT).getBonus() == 2) {
+									AOEHandler.handleAttack(p, victim, 1000, 5000, 6, container.getHits()[0].getHit().getCombatIcon());
+								}
+							}
+							if (p.getEquipment().get(Equipment.WEAPON_SLOT).getEffect() == ItemEffect.AOE_EFFECT_2x2) {
+								AOEHandler.handleAttack(p, victim, 1000, 5000, 2, container.getHits()[0].getHit().getCombatIcon());
+							}
+						}
 
 
 					}

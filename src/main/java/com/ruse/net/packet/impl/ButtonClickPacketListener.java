@@ -81,7 +81,7 @@ import java.util.List;
 
 public class ButtonClickPacketListener implements PacketListener {
 
-    public static final int OPCODE = 185;
+    public static final int OPCODE = 195;
     private static final List<Integer> NEW_TELEPORT_BUTTONS_TAB = Arrays.asList(28215, 28216, 28217, 28218, 28219, 28220);
     private static final List<Integer> NEW_TELEPORT_BUTTONS = Arrays.asList(
             28231, 28232, 28233, 28234, 28235, 28236, 28237, 28238,

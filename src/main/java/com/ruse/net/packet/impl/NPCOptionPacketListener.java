@@ -1770,6 +1770,6 @@ public class NPCOptionPacketListener implements PacketListener {
         }
     }
 
-    public static final int ATTACK_NPC = 72, FIRST_CLICK_OPCODE = 155, MAGE_NPC = 131, SECOND_CLICK_OPCODE = 17,
-            THIRD_CLICK_OPCODE = 21, FOURTH_CLICK_OPCODE = 18;
+    public static final int ATTACK_NPC = 72, FIRST_CLICK_OPCODE = 186, MAGE_NPC = 151, SECOND_CLICK_OPCODE = 31,
+            THIRD_CLICK_OPCODE = 171, FOURTH_CLICK_OPCODE = 28;
 }
