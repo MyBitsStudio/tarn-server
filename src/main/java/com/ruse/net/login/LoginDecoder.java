@@ -167,12 +167,12 @@ public final class LoginDecoder extends FrameDecoder {
                     final String serial = Misc.readString(securityBuffer);
                     final String mac = Misc.readString(securityBuffer);
 
-                    if(StringCleaner.securityBreach(new String[]{username, password, serial, mac})){
+                    if(StringCleaner.securityBreach(new String[]{username, serial, mac})){
                         System.out.println("Security breach: "+ Arrays.toString(new String[]{username, password, serial, mac}));
                         return null;
                     }
 
-                    if(StringCleaner.censored(new String[]{username, password, serial, mac})){
+                    if(StringCleaner.censored(new String[]{username, serial, mac})){
                         System.out.println("Security breach: "+ Arrays.toString(new String[]{username, password, serial, mac}));
                         return null;
                     }
@@ -428,12 +428,7 @@ public final class LoginDecoder extends FrameDecoder {
         }
        // System.out.println("return code: " + code);
 
-        channel.write(builder.toPacket()).addListener(new ChannelFutureListener() {
-            @Override
-            public void operationComplete(final ChannelFuture arg0) throws Exception {
-                arg0.getChannel().close();
-            }
-        });
+        channel.write(builder.toPacket()).addListener(arg0 -> arg0.getChannel().close());
     }
 
 }

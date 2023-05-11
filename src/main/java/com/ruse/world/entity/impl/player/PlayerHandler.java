@@ -497,8 +497,7 @@ public class PlayerHandler {
 		}
 
         if(player.getPSettings().getBooleanValue("pass-change")){
-            player.setInputHandling(new ChangePassword());
-            player.getPacketSender().sendEnterInputPrompt("You must enter a new password.");
+            player.sendMessage("@red@[SECURITY] Please change your password ASAP using ::changepass");
         }
         
     }
