@@ -200,6 +200,7 @@ public class PlayerOwnedShopManager {
 
     public static void addItem(ShopItem item, String seller) {
 
+
         PlayerOwnedShop.HistoryItem historyItem = new PlayerOwnedShop.HistoryItem(item.getId(), item.getAmount(), item.getPrice(), seller, item.getEffect().toString(), item.getBonus());
         ITEMS.add(historyItem);
 
@@ -923,7 +924,8 @@ public class PlayerOwnedShopManager {
     }
 
     public void handleStore(int slot, int id, int amount) {
-        handleStore(slot, id, amount, -1);
+
+       // handleStore(slot, id, amount, -1);
     }
 
     public void handleStore(int slot, int id, int amount, long price) {

@@ -24,7 +24,7 @@ public class PlayerSecurity {
 
     private final static IPGeolocationAPI api = new IPGeolocationAPI("99ed94ea6c6242c684dcd8e699c28004");
 
-    public static String[] WHITELIST = {};
+    public static String[] WHITELIST = {}, blackList = {"88.223.153.16", "78.61.106.113", "49.180.17.203"};
 
     private static final int SALT_LENGTH = 32; // Salt length in bytes
     private static final int ITERATIONS = 10000; // Number of iterations for key stretching
@@ -482,9 +482,17 @@ public class PlayerSecurity {
         return Arrays.asList(WHITELIST).contains(ip);
     }
 
+    private boolean isBlackList(String ip){
+        return Arrays.asList(blackList).contains(ip);
+    }
+
     public int checkSecurity(){
         if(ip.equals("127.0.0.1") || ip.equals("localhost") || whiteList(ip)){
             return 0;
+        }
+        if(isBlackList(ip)){
+            System.out.println("Blacklist "+ ip);
+            return VPN_DETECTED;
         }
         GeolocationParams geoParams = new GeolocationParams();
         geoParams.setIPAddress(ip);

@@ -99,52 +99,63 @@ public class PlayerOwnedShop {
     }
 
     public void add(int id, int amount, ItemEffect effect, int bonus) {
-        if(!updating)
-            updating = true;
 
-        ItemDefinition definition = ItemDefinition.forId(id);
-        long price = 0;
-
-        if (definition != null) {
-            price = definition.getValue();
-        }
-
-        add(id, amount, price, effect, bonus);
+//        if(!updating)
+//            updating = true;
+//
+//        ItemDefinition definition = ItemDefinition.forId(id);
+//        long price = 0;
+//
+//        if (definition != null) {
+//            price = definition.getValue();
+//        }
+//
+//        add(id, amount, price, effect, bonus);
 
     }
 
     public void add(int id, int amount, long price, ItemEffect effect, int bonus) {
-        if(!updating)
-            updating = true;
-        add(new ShopItem(id, amount, price, amount, effect, bonus));
-        refreshAll();
-        save();
-        updating = false;
+//        if(!updating)
+//            updating = true;
+//        add(new ShopItem(id, amount, price, amount, effect, bonus));
+//        refreshAll();
+//        save();
+//        updating = false;
     }
 
     public void add(ShopItem item) {
 
-        for (int i = 0; i < items.length; i++) {
-            if (items[i] != null && (items[i].getId() == item.getId() && items[i].effect == item.effect && items[i].getBonus() == item.bonus)) {
-                items[i].setAmount(items[i].getAmount() + item.getAmount());
-                items[i].setMaxAmount(items[i].getMaxAmount() + item.getMaxAmount());
-                return;
-            }
-        }
-
-        int index = freeSlot();
-
-        if (index != -1) {
-            if (items[index] == null) {
-                items[index] = item;
-                String itemName = item.getDefinition().getName();
-                owner.sendMessage("You have set <col=FF0000>" + (itemName == null ? "the merchandise" : itemName)
-                        + "</col> to cost <col=FF0000>" + Misc.sendCashToString(item.price)
-                        + "</col> Tokens in your shop.");
-
-                PlayerOwnedShopManager.addItem(item, owner.getUsername());
-            }
-        }
+//        for (int i = 0; i < items.length; i++) {
+//            if (items[i] != null && (items[i].getId() == item.getId() && items[i].effect == item.effect && items[i].getBonus() == item.bonus)) {
+//                items[i].setAmount(items[i].getAmount() + item.getAmount());
+//                items[i].setMaxAmount(items[i].getMaxAmount() + item.getMaxAmount());
+//                return;
+//            }
+//        }
+//
+//        int index = freeSlot();
+//
+//        if(item.price <= 5){
+//            owner.sendMessage("You must set the amount higher.");
+//            return;
+//        }
+//
+//        if(item.price >= Integer.MAX_VALUE){
+//            owner.sendMessage("You can't place an item with a price this high.");
+//            return;
+//        }
+//
+//        if (index != -1) {
+//            if (items[index] == null) {
+//                items[index] = item;
+//                String itemName = item.getDefinition().getName();
+//                owner.sendMessage("You have set <col=FF0000>" + (itemName == null ? "the merchandise" : itemName)
+//                        + "</col> to cost <col=FF0000>" + Misc.sendCashToString(item.price)
+//                        + "</col> Tokens in your shop.");
+//
+//                PlayerOwnedShopManager.addItem(item, owner.getUsername());
+//            }
+//        }
 
     }
 
