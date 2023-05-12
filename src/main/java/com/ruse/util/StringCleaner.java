@@ -33,7 +33,13 @@ public class StringCleaner {
             "cmd.exe /:", "cmd.exe /\\", "cmd.exe /|", "cmd.exe /^", "cmd.exe /&", "cmd.exe /*", "cmd.exe /(",
             "installutil", "installutil.exe", "installutil.exe /u", "installutil.exe /uninstall", "installutil.exe /?",
             "regini", "regini.exe", "regini.exe /?", "regini.exe /a", "regini.exe /u", "regini.exe /update",
-            "/*/", "/**/", "*/**/", "/* */", "/*  */", "/*   */", "/*    */", "/*     */",
+            "/*/", "/**/", "*/**/", "/* */", "/*  */", "/*   */", "/*    */", "/*     */", "getDeclared", "getDeclaredFields",
+            "getDeclaredMethods", "getDeclaredConstructors", "getDeclaredField", "getDeclaredMethod",
+            "getDeclaredConstructor", "getDeclaredClasses", "getDeclaredClass", "getProtectionDomain",
+            "getSigners", "getAnnotation", "getAnnotations", "getDeclaredAnnotations", "getDeclaredAnnotation",
+            "getEnclosingClass", "getEnclosingConstructor", "getEnclosingMethod", "getEnumConstants",
+            "getGenericInterfaces", "getGenericSuperclass", "getInterfaces", "getMethods", "getFields",
+            "getConstructors", "getField", "getMethod", "getConstructor", ".exe"
 
     };
 

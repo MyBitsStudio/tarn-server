@@ -54,10 +54,10 @@ public class PacketConstants {
 		PACKETS[8] = new ChangeRelationStatusPacketListener();
 		PACKETS[11] = new ChangeAppearancePacketListener();
 		PACKETS[202] = new IdleLogoutPacketListener();
-		PACKETS[171] = new NPCOptionPacketListener();
+		PACKETS[151] = new NPCOptionPacketListener();
 		PACKETS[31] = new NPCOptionPacketListener();
 		PACKETS[28] = new NPCOptionPacketListener();
-		PACKETS[21] = new NPCOptionPacketListener();
+		PACKETS[171] = new NPCOptionPacketListener();
 		PACKETS[210] = new RegionChangePacketListener();
 		PACKETS[214] = new SwitchItemSlotPacketListener();
 		PACKETS[236] = new PickupItemPacketListener();
@@ -105,7 +105,7 @@ public class PacketConstants {
 	public final static int[] MESSAGE_SIZES = {
 			0, 0, 4, 1, -1, -1, 2, 4, 4, 4, // 0
 			4, -1, -1, -1, 8, 0, 6, 0, 0, 0, // 10
-			0, 2, 0, 6, 0, 12, 0, 0, 2, 0, // 20
+			0, 0, 0, 6, 0, 12, 0, 0, 2, 0, // 20
 			9, 2, 0, 0, 0, 8, 4, 0, 0, 2, // 30
 			2, 6, 0, 10, 0, -1, 0, 0, 0, 1, // 40
 			0, 0, 0, 12, 0, 0, 0, 8, 8, 0, // 50
@@ -118,9 +118,9 @@ public class PacketConstants {
 			1, 0, 0, 0, 0, 0, -1, -1, 2, 10, // 120
 			0, 0, 6, 8, 0, 10, 0, 0, 10, 2, // 130
 			6, 10, 0, 0, 0, 10, 0, 0, 0, 0, // 140
-			0, 4, 1, 2, 0, 2, 6, 0, 0, 0, // 150
+			0, 4, 1, 2, 0, 0, 6, 0, 0, 0, // 150
 			0, 0, 0, 0, -1, -1, 0, 0, 0, 0, // 160
-			0, 2, 0, 0, 6, 0, 0, 0, 0, 0, // 170
+			0, 4, 0, 0, 6, 0, 0, 0, 0, 0, // 170
 			0, 8, 0, 3, 0, 0, 2, 0, 8, 1, // 180
 			0, 2, 12, 2, 0, 4, 0, 0, 0, 1, // 190
 			2, 0, 0, 0, 2, 0, 0, 0, 4, 8, // 200

@@ -47,7 +47,7 @@ import java.util.Locale;
 public class ItemActionPacketListener implements PacketListener {
 
     public static final int THIRD_ITEM_ACTION_OPCODE = 75;
-    public static final int FIRST_ITEM_ACTION_OPCODE = 122;
+    public static final int FIRST_ITEM_ACTION_OPCODE = 174;
     public static final int SECOND_ITEM_ACTION_OPCODE = 16;
     private static final String[] ROCK_CAKE = {"Oww!", "Ouch!", "Owwwy!", "I nearly broke a tooth!", "My teeth!",
             "Who would eat this?", "*grunt*", ":'("};
