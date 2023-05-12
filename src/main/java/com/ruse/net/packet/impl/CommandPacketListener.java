@@ -213,7 +213,7 @@ public class CommandPacketListener implements PacketListener {
                     JavaCord.sendMessage("\uD83E\uDD16│\uD835\uDDEE\uD835\uDDF0\uD835\uDE01\uD835\uDDF6\uD835\uDE03\uD835\uDDF6\uD835\uDE01\uD835\uDE06", "**[" + player.getUsername() + "] Just voted for the server, thank you!**");
                     doMotivote.setVoteCount(doMotivote.getVoteCount() + reward[0].give_amount);
                     VoteBossDrop.save();
-                    player.getSeasonPass().incrementExp(500 * reward[0].give_amount, false);
+                    player.getSeasonPass().incrementExp(3500 * reward[0].give_amount, false);
                     Achievements.doProgress(player, Achievements.Achievement.VOTE_10_TIMES, reward[0].give_amount);
                     Achievements.doProgress(player, Achievements.Achievement.VOTE_50_TIMES, reward[0].give_amount);
                     Achievements.doProgress(player, Achievements.Achievement.VOTE_100_TIMES, reward[0].give_amount);

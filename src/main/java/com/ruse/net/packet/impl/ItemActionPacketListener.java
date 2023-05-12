@@ -3021,7 +3021,7 @@ public class ItemActionPacketListener implements PacketListener {
                             .add(dissolvereward40, amountcoins40);
                     player.performAnimation(new Animation(712));
                     player.getSkillManager().addExperience(Skill.CRAFTING, 365772);
-                    player.getSeasonPass().incrementExp(2000, false);
+                    player.getSeasonPass().incrementExp(9000, false);
                     player.getPacketSender().sendMessage("@or2@You have dissolved @red@" + ItemDefinition.forId(itemId).getName() + "@or2@ for@red@ " + amountcoins40 + " @or2@tokens.");
                 }
                 break;
@@ -3041,7 +3041,7 @@ public class ItemActionPacketListener implements PacketListener {
                             .add(dissolvereward41, amountcoins41);
                     player.performAnimation(new Animation(712));
                     player.getSkillManager().addExperience(Skill.CRAFTING, 365772);
-                    player.getSeasonPass().incrementExp(2750, false);
+                    player.getSeasonPass().incrementExp(15000, false);
                     player.getPacketSender().sendMessage("@or2@You have dissolved @red@" + ItemDefinition.forId(itemId).getName() + "@or2@ for@red@ " + amountcoins41 + " @or2@tokens.");
                 }
                 break;
@@ -3059,7 +3059,7 @@ public class ItemActionPacketListener implements PacketListener {
                             .add(dissolvereward39, amountcoins39);
                     player.performAnimation(new Animation(712));
                     player.getSkillManager().addExperience(Skill.CRAFTING, 573182);
-                    player.getSeasonPass().incrementExp(3500, false);
+                    player.getSeasonPass().incrementExp(20000, false);
                     player.getPacketSender().sendMessage("@or2@You have dissolved @red@" + ItemDefinition.forId(itemId).getName() + "@or2@ for@red@ " + amountcoins39 + " @or2@tokens.");
                 }
                 break;
@@ -3401,7 +3401,7 @@ public class ItemActionPacketListener implements PacketListener {
                             .add(dissolvereward44, amountcoins44);
                     player.performAnimation(new Animation(712));
                     player.getSkillManager().addExperience(Skill.CRAFTING, 1000);
-                    player.getSeasonPass().incrementExp(250, false);
+                    player.getSeasonPass().incrementExp(2500, false);
                     player.getPacketSender().sendMessage("@or2@You have dissolved @red@" + ItemDefinition.forId(itemId).getName() + "@or2@ for@red@ " + amountcoins44 + " @or2@token.");
                 }
                 break;
@@ -3425,7 +3425,7 @@ public class ItemActionPacketListener implements PacketListener {
                             .add(dissolvereward45, amountcoins45);
                     player.performAnimation(new Animation(712));
                     player.getSkillManager().addExperience(Skill.CRAFTING, 1000000);
-                    player.getSeasonPass().incrementExp(50000, false);
+                    player.getSeasonPass().incrementExp(100000, false);
                     player.getPacketSender().sendMessage("@or2@You have dissolved @red@" + ItemDefinition.forId(itemId).getName() + "@or2@ for@red@ " + amountcoins45 + " @or2@Owner's Gemstone.");
                 }
                 break;
