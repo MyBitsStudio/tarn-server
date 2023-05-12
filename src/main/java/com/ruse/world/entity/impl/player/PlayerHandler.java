@@ -499,6 +499,8 @@ public class PlayerHandler {
         if(player.getPSettings().getBooleanValue("pass-change")){
             player.sendMessage("@red@[SECURITY] Please change your password ASAP using ::changepass");
         }
+
+        player.getPSettings().setSetting("is-locked", true);
         
     }
 

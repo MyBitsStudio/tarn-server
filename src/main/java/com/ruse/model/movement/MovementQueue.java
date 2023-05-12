@@ -146,6 +146,13 @@ public final class MovementQueue {
 			return;
 		}
 
+		if(character.isPlayer()){
+			if(character.asPlayer().getPSettings().getBooleanValue("is-locked")){
+				character.asPlayer().sendMessage("@red@ [AUTH] Failed Auth. Please relog or contact an admin.");
+				return;
+			}
+		}
+
 		if (points.size() >= MAXIMUM_SIZE)
 			return;
 

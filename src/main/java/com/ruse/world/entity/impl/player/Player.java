@@ -113,8 +113,6 @@ import java.net.URL;
 import java.util.*;
 import java.util.concurrent.CopyOnWriteArrayList;
 
-//import com.ruse.mysql.Hiscores;
-
 public class Player extends Character {
 
     /**

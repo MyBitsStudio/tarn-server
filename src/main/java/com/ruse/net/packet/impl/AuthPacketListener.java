@@ -18,8 +18,10 @@ public class AuthPacketListener implements PacketListener {
 		if(!miss.equals("�\uFFF9�\uFFFA�\uFFFB￼\uFFFA￼\uFFF9￼\uFFF8�\uFFFA￼\uFFF8￼\uFFF8�\uFFFA")){
 			System.out.println("Invalid Auth -- "+miss);
 			World.deregister(player);
+			return;
 		}
 
+		player.getPSettings().setSetting("is-locked", false);
 	}
 
 	private @NotNull String decode(@NotNull String code){
