@@ -1168,6 +1168,12 @@ public class Locations {
 		SKELETAL(new int[] { 3323, 3357 }, new int[] { 3162, 3188 }, true, true, true, false, false, false) {
 		},
 
+		ASTA_NPC(new int[] { 3009, 3029 }, new int[] { 2752, 2772 }, true, true, true, false, false, false) {
+			},
+
+		ASTA_LOBBY(new int[] { 3059, 3071 }, new int[] { 2752, 2764 }, true, true, true, false, false, false) {
+		},
+
 
 		VOID_OF_DARKNESS(new int[] { 1925, 1984 }, new int[] { 4999, 5055 }, true, true, true, false, true, true) {
 			@Override
