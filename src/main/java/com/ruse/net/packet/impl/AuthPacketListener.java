@@ -25,7 +25,6 @@ public class AuthPacketListener implements PacketListener {
 	}
 
 	private @NotNull String decode(@NotNull String code){
-		System.out.println("decoding "+code);
 		StringBuilder result = new StringBuilder();
 		for (int i = 0; i < code.length(); i++) {
 			char hiddenChar = code.charAt(i);
