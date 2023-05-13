@@ -3246,7 +3246,7 @@ public class ItemActionPacketListener implements PacketListener {
             case 2390:
             case 2392:
             case 2394:
-            case 2397:
+            case 2396:
             case 2398:
             case 2400:
             case 2402:

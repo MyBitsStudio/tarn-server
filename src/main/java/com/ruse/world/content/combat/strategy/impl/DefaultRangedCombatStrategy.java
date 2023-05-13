@@ -271,6 +271,7 @@ public class DefaultRangedCombatStrategy implements CombatStrategy {
 										|| player.getEquipment().get(Equipment.WEAPON_SLOT).getId() == 14919
 								|| player.getEquipment().get(Equipment.WEAPON_SLOT).getId() == 8253
 										|| player.getEquipment().get(Equipment.WEAPON_SLOT).getId() == 7543
+										|| player.getEquipment().get(Equipment.WEAPON_SLOT).getId() == 2632
 										|| player.getEquipment().get(Equipment.WEAPON_SLOT).getId() == 22089
 												|| player.getEquipment().get(Equipment.WEAPON_SLOT).getId() == 9929
 														|| player.getEquipment().get(Equipment.WEAPON_SLOT).getId() == 14056
@@ -421,6 +422,7 @@ public class DefaultRangedCombatStrategy implements CombatStrategy {
 											|| player.getEquipment().get(Equipment.WEAPON_SLOT).getId() == 14919
 									|| player.getEquipment().get(Equipment.WEAPON_SLOT).getId() == 8253
 											|| player.getEquipment().get(Equipment.WEAPON_SLOT).getId() == 7543
+											|| player.getEquipment().get(Equipment.WEAPON_SLOT).getId() == 2632
 											|| player.getEquipment().get(Equipment.WEAPON_SLOT).getId() == 22089
 													|| player.getEquipment().get(Equipment.WEAPON_SLOT).getId() == 9929
 															|| player.getEquipment().get(Equipment.WEAPON_SLOT).getId() == 14056
