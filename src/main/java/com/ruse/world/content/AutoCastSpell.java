@@ -25,7 +25,7 @@ public enum AutoCastSpell {
     SUPERBUU(16249, CombatSpells.SUPERBUU),
     ELITE(8412, CombatSpells.ELITE),
     GROUDON(13640, CombatSpells.GROUDON),
-    GROUDON2(2397, CombatSpells.GROUDON),
+    GROUDON2(2396, CombatSpells.GROUDON),
     ELITE2(2660, CombatSpells.ELITE),
     RUTHLESS(23145, CombatSpells.RUTHLESS),
     RUTHLESS2(2156, CombatSpells.RUTHLESS),

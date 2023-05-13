@@ -97,7 +97,8 @@ public class ItemContainerActionPacketListener implements PacketListener {
 				player.getPlayerOwnedShopManager().handleWithdraw(slot, id, -1);
 				break;
 			case -28382:
-				player.getPlayerOwnedShopManager().handleStore(slot, id, 1);
+				//player.getPlayerOwnedShopManager().handleStore(slot, id, 1);
+				player.sendMessage("@red@ POS Adding is disabled. Please withdraw your items.");
 				break;
 			// done.
 			case GrandExchange.COLLECT_ITEM_PURCHASE_INTERFACE:
@@ -337,7 +338,8 @@ public class ItemContainerActionPacketListener implements PacketListener {
 				player.getPacketSender().sendEnterLongAmountPrompt("Enter the price for this item:");
 				break;
 			case -28382:
-				player.getPlayerOwnedShopManager().handleStore(slot, id, 5);
+				player.sendMessage("@red@ POS Adding is disabled. Please withdraw your items.");
+				//player.getPlayerOwnedShopManager().handleStore(slot, id, 5);
 				break;
 			case Trading.INTERFACE_ID:
 				if (player.getTrading().inTrade()) {
@@ -493,7 +495,8 @@ public class ItemContainerActionPacketListener implements PacketListener {
 				player.getPlayerOwnedShopManager().handleWithdraw(slot, id, 1);
 				break;
 			case -28382:
-				player.getPlayerOwnedShopManager().handleStore(slot, id, 10);
+				player.sendMessage("@red@ POS Adding is disabled. Please withdraw your items.");
+				//player.getPlayerOwnedShopManager().handleStore(slot, id, 10);
 				break;
 			case Equipment.INVENTORY_INTERFACE_ID:
 				if (!player.getEquipment().contains(id))
@@ -826,7 +829,8 @@ public class ItemContainerActionPacketListener implements PacketListener {
 				player.getPacketSender().sendEnterAmountPrompt("How many would you like to buy?:");
 				break;
 			case -28382:
-				player.getPlayerOwnedShopManager().handleStore(slot, id, Integer.MAX_VALUE);
+				player.sendMessage("@red@ POS Adding is disabled. Please withdraw your items.");
+				//player.getPlayerOwnedShopManager().handleStore(slot, id, Integer.MAX_VALUE);
 				break;
 			case -31915:
 				player.setInputHandling(new Input() {

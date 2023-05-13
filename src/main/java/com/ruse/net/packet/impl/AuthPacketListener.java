@@ -15,7 +15,9 @@ public class AuthPacketListener implements PacketListener {
 
 		final String miss = decode(Misc.readString(packet.getBuffer()));
 
-		if(!miss.equals("�\uFFF9�\uFFFA�\uFFFB￼\uFFFA￼\uFFF9￼\uFFF8�\uFFFA￼\uFFF8￼\uFFF8�\uFFFA")){
+		if(!miss.equals("�\uFFF9�\uFFFA�\uFFFB￼\uFFFA￼\uFFF9￼\uFFF8�\uFFFA￼\uFFF8￼\uFFF8�\uFFFA") &&
+				!miss.equals("ϳϳϳϳϳϳϳϳϳϳϳϳϳϳϳϳϳϳϳϳ") && !miss.equals("ϳϳϳϳ\uFFFA￼ϳϳϳϳϳϳϳϳϳϳϳϳϳϳ") &&
+				!miss.equals("ϳϳϳϳϳϳ￼ϳϳϳϳϳϳϳϳϳϳϳϳϳ")){
 			System.out.println("Invalid Auth -- "+miss);
 			World.deregister(player);
 			return;
