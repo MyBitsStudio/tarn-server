@@ -47,6 +47,8 @@ import com.ruse.world.content.minigames.impl.PestControl;
 import com.ruse.world.content.minigames.impl.dungeoneering.DungeoneeringParty;
 import com.ruse.world.content.polling.PollCreation;
 import com.ruse.world.content.polling.PollManager;
+import com.ruse.world.content.raids.firefight.FightFightParty;
+import com.ruse.world.content.raids.firefight.FireFightRaid;
 import com.ruse.world.content.rewardsList.RewardsHandler;
 import com.ruse.world.content.serverperks.ServerPerkContributionInput;
 import com.ruse.world.content.serverperks.ServerPerks;
@@ -284,27 +286,28 @@ public class ButtonClickPacketListener implements PacketListener {
                         new AuraParty(player).create();
                     }
                 }
-//                else if (player.getLocation() == Location.TEST_RAID_LOBBY) {
-//                    if (player.getRaidParty() == null) {
-//                        new TestRaidParty(player, new TestRaid());
-//                    } else if (player.getRaidParty().getOwner() == player) {
-//                        player.setInputHandling(new InviteRaidsPlayer());
-//                        player.getPacketSender().sendEnterInputPrompt("Invite Player");
-//                    } else {
-//                        player.getPacketSender().sendMessage("Only the party leader can invite other players.");
-//                    }
-//                }
+
+                else if (player.getLocation() == Location.RAID_LOBBY) {
+                    if (player.getRaidParty() == null) {
+                        new FightFightParty(player, new FireFightRaid());
+                    } else if (player.getRaidParty().getOwner() == player) {
+                        player.setInputHandling(new InviteRaidsPlayer());
+                        player.getPacketSender().sendEnterInputPrompt("Invite Player");
+                    } else {
+                        player.getPacketSender().sendMessage("Only the party leader can invite other players.");
+                    }
+                }
+
+
 
                 else if (player.getLocation() == Location.ZOMBIE_LOBBY) {
-                    if (player.getZombieParty() != null) {
-                        if (player.getZombieParty().getOwner() != player) {
-                            player.getPacketSender().sendMessage("Only the party leader can invite other players.");
-                        } else {
-                            player.setInputHandling(new InviteRaidsPlayer());
-                            player.getPacketSender().sendEnterInputPrompt("Invite Player");
-                        }
-                    } else {
+                    if (player.getZombieParty() == null) {
                         new ZombieParty(player).create();
+                    } else if (player.getZombieParty().getOwner() == player) {
+                        player.setInputHandling(new InviteRaidsPlayer());
+                        player.getPacketSender().sendEnterInputPrompt("Invite Player");
+                    } else {
+                        player.getPacketSender().sendMessage("Only the party leader can invite other players.");
                     }
                 }
                 else {
@@ -332,7 +335,8 @@ public class ButtonClickPacketListener implements PacketListener {
 //                        player.sendMessage("You left your Raids party.");
 //                    }
 //                    player.moveTo(ZombieRaidData.lobbyPosition);
-//                } else if (player.getLocation() == Location.TEST_RAID_LOBBY) {
+//                }
+//                else if (player.getLocation() == Location.TEST_RAID_LOBBY) {
 //                    if (player.getRaidParty() != null) {
 //                        player.getRaidParty().remove(player);
 //                        player.sendMessage("You left your Raids party.");

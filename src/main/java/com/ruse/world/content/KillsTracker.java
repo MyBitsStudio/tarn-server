@@ -113,11 +113,9 @@ public class KillsTracker {
 
 		if(ItemEffect.hasTripleKills(player)) {
 			amount += 2;
-		} if(ItemEffect.hasDoubleKills(player)) {
+		} else if(ItemEffect.hasDoubleKills(player)) {
 			amount += 1;
-		}else if(ItemEffect.hasAllPerks(player)) {
-		amount += 4;
-	}
+		}
 
 		if(runningTotal)
 			entry.setRunningTotal(entry.getRunningTotal() + amount);

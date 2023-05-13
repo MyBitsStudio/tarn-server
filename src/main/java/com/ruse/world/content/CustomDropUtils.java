@@ -326,7 +326,7 @@ public class CustomDropUtils {
             percentBoost += 25;
         }
         if (player.getInventory().contains(8832)) {
-            percentBoost += 25;
+            percentBoost += 35;
         }
         if (player.getInventory().contains(23178)) {
             percentBoost += 100;

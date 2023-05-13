@@ -133,6 +133,7 @@ public class RarityTransfer {
                         || copy.getId() == 9084
                         || copy.getId() == 19624
                         || copy.getId() == 23002
+                        || copy.getId() == 6640
                 ) {
                     p.getPacketSender().sendInterfaceRemoval();
                     p.sendMessage("<img=3245>@red@ @blu@[Rarity Transfer] You cannot transfer rarities to this item.");

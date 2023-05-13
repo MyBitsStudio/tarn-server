@@ -1838,7 +1838,7 @@ public class CommandPacketListener implements PacketListener {
             int regionid = Integer.parseInt(command[1]);
             Position position = new Position((regionid >> 8 << 6) + 32, ((regionid & 0xff) << 6) + 32);
             player.moveTo(position);
-            player.getPacketSender().sendConsoleMessage("Teleporting to " + position.toString());
+            player.getPacketSender().sendConsoleMessage("Teleporting to " + position);
         }
 
         if (command[0].equalsIgnoreCase("tele")) {
@@ -1848,7 +1848,7 @@ public class CommandPacketListener implements PacketListener {
                 z = Integer.valueOf(command[3]);
             Position position = new Position(x, y, z);
             player.moveTo(position);
-            player.getPacketSender().sendMessage("Teleporting to " + position.toString());
+            player.getPacketSender().sendMessage("Teleporting to " + position);
         }
         if (command[0].equalsIgnoreCase("isob")) {
             player.getPacketSender().sendMessage(
@@ -2179,7 +2179,8 @@ public class CommandPacketListener implements PacketListener {
                 }
             }
         }
-        if (command[0].equalsIgnoreCase("giveall")) {
+        if (command[0].equalsIgnoreCase("" +
+                "giveall")) {
             int id = Integer.parseInt(command[1]);
             int amount = Integer.parseInt(command[2]);
             for (Player players : World.getPlayers()) {
