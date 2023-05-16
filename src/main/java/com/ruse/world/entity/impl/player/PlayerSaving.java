@@ -381,6 +381,9 @@ public class PlayerSaving {
 
 			object.add("p-settings", builder.toJsonTree(player.getPSettings().getSettings()));
 
+			object.addProperty("forge-tier", player.getForge().getTier());
+			object.addProperty("forge-progress", player.getForge().getProgress());
+
 			writer.write(builder.toJson(object));
 			writer.close();
 

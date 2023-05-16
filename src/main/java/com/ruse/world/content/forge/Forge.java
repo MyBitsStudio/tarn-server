@@ -4,6 +4,7 @@ import com.ruse.model.Item;
 import com.ruse.world.entity.impl.player.Player;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 
 import java.util.*;
 
@@ -19,8 +20,8 @@ public class Forge {
     public static final int FRAGMENT_ITEM_ID = 18653;
 
     private final Player player;
-    private int tier;
-    private int progress;
+    @Setter private int tier;
+    @Setter private int progress;
     private int progressToAdd;
     private final HashMap<Item, Integer> addedItemMap = new HashMap<>();
 

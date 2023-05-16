@@ -1235,6 +1235,14 @@ public class PlayerLoading {
                 player.getPSettings().setSettings(playerSettings);
             }
 
+            if(reader.has("forge-tier")) {
+                player.getForge().setTier(reader.get("forge-tier").getAsInt());
+            }
+
+            if(reader.has("forge-progress")) {
+                player.getForge().setProgress(reader.get("forge-progress").getAsInt());
+            }
+
             player.getPSecurity().reset();
 
             /*
