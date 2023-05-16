@@ -21,12 +21,15 @@ public class RegionInstance {
 		CONSTRUCTION_DUNGEON, TRIO, KRAKEN, CORPOREAL_BEAST, KRIL_TSUTSAROTH, GENERAL_GRAARDOR, COMMANDER_ZILYANA,
 		KREE_ARRA, ETERNAL, TORMENTED_DEMON, KING_BLACK_DRAGON, CHAOS_ELEMENTAL, SLASH_BASH, FLOREOX_BIRD,
 		BANDOS_AVATAR, DAG_PRIME, DAG_SUPREME, DAG_REX, CALLISTO, VETION, VENENATIS, GALVEK, REV_TARRAGON, NEX, KINGS,
-		ZULRAH, ZOMBIE, AURA, INSTANCE, DUNGEONEERING, VOID_OF_DARKNESS, RAIDS;
+		ZULRAH, ZOMBIE, AURA, INSTANCE, DUNGEONEERING, VOID_OF_DARKNESS, RAIDS,
+		//New Bosses
+		COUNTER_BOSS
+		;
 	}
 
 	private Player owner;
-	private RegionInstanceType type;
-	private CopyOnWriteArrayList<NPC> npcsList;
+	private final RegionInstanceType type;
+	private final CopyOnWriteArrayList<NPC> npcsList;
 	private CopyOnWriteArrayList<Player> playersList;
 
 	public RegionInstance(Player p, RegionInstanceType type) {
