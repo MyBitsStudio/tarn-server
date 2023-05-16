@@ -120,13 +120,15 @@ public class CommandPacketListener implements PacketListener {
         }
 
         if(command[0].equalsIgnoreCase("settings")){
-            switch(command[1]){
-                case "drop":
-                    player.getPSettings().setSetting("drop-messages", !player.getPSettings().getBooleanValue("drop-messages"));
-                    break;
-                case "hide":
-                    player.getPSettings().setSetting("hidden-players", !player.getPSettings().getBooleanValue("hidden-players"));
-                    break;
+            if(command.length >= 2) {
+                switch (command[1]) {
+                    case "drop":
+                        player.getPSettings().setSetting("drop-messages", !player.getPSettings().getBooleanValue("drop-messages"));
+                        break;
+                    case "hide":
+                        player.getPSettings().setSetting("hidden-players", !player.getPSettings().getBooleanValue("hidden-players"));
+                        break;
+                }
             }
         }
 
@@ -173,12 +175,12 @@ public class CommandPacketListener implements PacketListener {
                     player.getPacketSender().sendMessage("Thank you for donating!");
                     World.sendMessage("<img=857><col=FF0000><shad=1>[" + player.getUsername() + "] Just Donated For " + donations[0].product_name + " x" + donations[0].product_amount + ". Thank You For The Support!");
                     JavaCord.sendMessage("\uD83E\uDD16│\uD835\uDDEE\uD835\uDDF0\uD835\uDE01\uD835\uDDF6\uD835\uDE03\uD835\uDDF6\uD835\uDE01\uD835\uDE06", "**[" + player.getUsername() + "] Just Donated For " + donations[0].product_name + " x" +donations[0].product_amount + " ! Thanks for the support !** :heart: ");
-                    if (GameSettings.DOUBLE_BONDS_DONO = true && donations[0].product_id == 23060 || donations[0].product_id == 23057
+                    if (GameSettings.DOUBLE_BONDS_DONO && donations[0].product_id == 23060 || donations[0].product_id == 23057
                             || donations[0].product_id == 23058 || donations[0].product_id == 23059) {
                         World.sendMessage("<img=857><col=FF0000><shad=1>[" + player.getUsername() + "] Got His " + donations[0].product_name + " Donation Doubled !");
                         JavaCord.sendMessage("\uD83E\uDD16│\uD835\uDDEE\uD835\uDDF0\uD835\uDE01\uD835\uDDF6\uD835\uDE03\uD835\uDDF6\uD835\uDE01\uD835\uDE06", "**[" + player.getUsername() + "] Got His " + donations[0].product_name + " Donation Doubled !** :tada: ");
                     }
-                    if (GameSettings.DOUBLE_BOXES_DONO = true && donations[0].product_id == 15003 || donations[0].product_id == 15002
+                    if (GameSettings.DOUBLE_BOXES_DONO && donations[0].product_id == 15003 || donations[0].product_id == 15002
                             || donations[0].product_id == 15004 || donations[0].product_id == 20489 || donations[0].product_id == 20491 || donations[0].product_id == 20490 || donations[0].product_id == 23002 || donations[0].product_id == 13019) {
                         World.sendMessage("<img=857><col=FF0000><shad=1>[" + player.getUsername() + "] Got His " + donations[0].product_name + " Donation Doubled !");
                         JavaCord.sendMessage("\uD83E\uDD16│\uD835\uDDEE\uD835\uDDF0\uD835\uDE01\uD835\uDDF6\uD835\uDE03\uD835\uDDF6\uD835\uDE01\uD835\uDE06", "**[" + player.getUsername() + "] Got His " + donations[0].product_name + " Donation Doubled !** :tada: ");
