@@ -2,6 +2,7 @@ package com.ruse.world.content.forge;
 
 import com.ruse.model.Item;
 import com.ruse.world.entity.impl.player.Player;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
 import java.util.*;
@@ -9,12 +10,13 @@ import java.util.*;
 import static java.util.stream.Collectors.toList;
 
 @RequiredArgsConstructor
+@Getter
 public class Forge {
 
     public static final int INTERFACE_ID = 49510;
     private static final int PERCENTAGE_BAR_ID = 49529;
     private static final int MAX_LEVEL = ForgeTierType.VALUES.size();
-    private static final int FRAGMENT_ITEM_ID = 18653;
+    public static final int FRAGMENT_ITEM_ID = 18653;
 
     private final Player player;
     private int tier;

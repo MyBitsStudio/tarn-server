@@ -940,12 +940,7 @@ public class PacketSender {
                 out.put(0);
                 continue;
             }
-            if (item.getAmount() > 254) {
-                out.put((byte) 255);
-                out.putInt(item.getAmount(), ByteOrder.INVERSE_MIDDLE);
-            } else {
-                out.put(item.getAmount());
-            }
+            out.put(1);
             out.putShort(item.getItemId() + 1, ValueType.A, ByteOrder.LITTLE);
             out.put(0);
             out.put(0);

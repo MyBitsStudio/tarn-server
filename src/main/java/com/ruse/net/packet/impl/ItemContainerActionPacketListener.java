@@ -20,6 +20,7 @@ import com.ruse.world.content.combat.CombatFactory;
 import com.ruse.world.content.combat.magic.Autocasting;
 import com.ruse.world.content.combat.weapon.CombatSpecial;
 import com.ruse.world.content.dialogue.DialogueManager;
+import com.ruse.world.content.forge.shop.ForgeShopHandler;
 import com.ruse.world.content.grandexchange.GrandExchange;
 import com.ruse.world.content.grandexchange.GrandExchangeOffer;
 import com.ruse.world.content.minigames.impl.Dueling;
@@ -53,6 +54,9 @@ public class ItemContainerActionPacketListener implements PacketListener {
 			player.getPacketSender().sendMessage("firstAction itemContainer. IF: " + interfaceId + " slot: " + slot + ", id: " + id);
 		}
 		switch (interfaceId) {
+			case -15971:
+				ForgeShopHandler.purchase(player, id, 1);
+				break;
 			case -15995:
 				player.getForge().addItem(player.getInventory().forSlot(slot));
 				break;
@@ -307,6 +311,9 @@ public class ItemContainerActionPacketListener implements PacketListener {
 			player.getPacketSender().sendMessage("secondAction itemContainer. IF: " + interfaceId + " slot: " + slot + ", id: " + id);
 		}
 		switch (interfaceId) {
+			case -15971:
+				ForgeShopHandler.purchase(player, id, 5);
+				break;
 			case 31510:
 				player.getEventBossManager().removeNpcDropReward(id, 5);
 				break;
@@ -482,6 +489,9 @@ public class ItemContainerActionPacketListener implements PacketListener {
 					.sendMessage("thirdAction itemContainer. IF: " + interfaceId + " slot: " + slot + ", id: " + id);
 		}
 		switch (interfaceId) {
+			case -15971:
+				ForgeShopHandler.purchase(player, id, 10);
+				break;
 			case 31510:
 				player.getEventBossManager().removeNpcDropReward(id, 10);
 				break;
