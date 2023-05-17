@@ -59,18 +59,17 @@ public class CounterInstance extends BossInstance {
         }
         super.start();
 
-        for(int i = 0; i < 4; i++){
-            CounterBoss boss = new CounterBoss(pos[i]);
-            World.register(boss);
-            add(boss);
-        }
-
-        getOwner().setRegionInstance(this);
-
-        getOwner().getPacketSender().sendInterfaceRemoval();
-        getOwner().moveTo(new Position(3019, 2762));
+        getOwner().moveTo(new Position(3019, 2762, getOwner().getIndex() * 4));
 
         getOwner().getPacketSender().sendMessage("@red@Your instance has started.");
+
+        for(int i = 0; i < 4; i++){
+            CounterBoss boss = new CounterBoss(pos[i].setZ(getOwner().getIndex() * 4));
+            boss.setSpawnedFor(getOwner());
+            add(boss);
+            World.getNpcs().add(boss);
+        }
+
     }
 
 
