@@ -33,6 +33,7 @@ import com.ruse.world.content.PlayerPunishment.Jail;
 import com.ruse.world.content.achievement.Achievements;
 import com.ruse.world.content.aura.AuraParty;
 import com.ruse.world.content.aura.AuraRaids;
+import com.ruse.world.content.bosses.BossInstance;
 import com.ruse.world.content.bosses.counter.CounterBoss;
 import com.ruse.world.content.bosses.counter.CounterInstance;
 import com.ruse.world.content.clan.ClanChat;
@@ -2211,6 +2212,12 @@ public class CommandPacketListener implements PacketListener {
             player.getInventory().add(item, true);
         }
         if(command[0].equalsIgnoreCase("testCounter")){
+            if(player.getRegionInstance() != null) {
+                if (player.getRegionInstance() instanceof CounterInstance)
+                    ((CounterInstance) player.getRegionInstance()).dispose();
+                else
+                    player.getRegionInstance().destruct();
+            }
             player.setRegionInstance(new CounterInstance(player));
             ((CounterInstance) player.getRegionInstance()).start();
         }

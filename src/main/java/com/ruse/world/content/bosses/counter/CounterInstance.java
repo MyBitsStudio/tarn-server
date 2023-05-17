@@ -50,8 +50,11 @@ public class CounterInstance extends BossInstance {
     public void dispose(){
         for(CounterBoss boss : bosses){
             if(boss != null){
+                boss.setRegionInstance(null);
                 remove(boss);
+                World.deregister(boss);
                 World.getNpcs().remove(boss);
+                boss.appendDeath();
             }
         }
         super.dispose();
@@ -79,6 +82,7 @@ public class CounterInstance extends BossInstance {
         for(int i = 0; i < 4; i++){
             bosses[i] = new CounterBoss(pos[i]);
             bosses[i].setSpawnedFor(getOwner());
+            bosses[i].setRegionInstance(this);
             add(bosses[i]);
             World.getNpcs().add(bosses[i]);
         }

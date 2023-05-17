@@ -232,6 +232,8 @@ public class ObjectActionPacketListener implements PacketListener {
                                 return;
                             }
                             player.getInventory().delete(13650, 80);
+                            if(player.getRegionInstance() != null)
+                                player.getRegionInstance().destruct();
                             player.setRegionInstance(new CounterInstance(player));
                             ((CounterInstance) player.getRegionInstance()).start();
                             break;
@@ -358,7 +360,8 @@ public class ObjectActionPacketListener implements PacketListener {
                                     return;
                                 }
                             }
-                            player.moveTo(GameSettings.DEFAULT_POSITION);
+                            TeleportHandler.teleportPlayer(player, GameSettings.DEFAULT_POSITION.copy(),
+                                    player.getSpellbook().getTeleportType());
                             break;
 
                         case 22973:
