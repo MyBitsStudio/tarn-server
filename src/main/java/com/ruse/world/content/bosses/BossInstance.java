@@ -14,7 +14,6 @@ public abstract class BossInstance extends RegionInstance {
     private final Boss boss;
     private final Player owner;
 
-    private final List<NPC> npcs = new ArrayList<>();
     public BossInstance(Player p, RegionInstanceType type, Boss boss) {
         super(p, type);
         this.boss = boss;
@@ -34,7 +33,7 @@ public abstract class BossInstance extends RegionInstance {
     }
 
     public void start(){
-        add(getOwner());
+
     }
 
     public void dispose(){

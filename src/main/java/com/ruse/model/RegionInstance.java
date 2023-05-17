@@ -37,8 +37,7 @@ public class RegionInstance {
 		this.owner = p;
 		this.type = type;
 		this.npcsList = new CopyOnWriteArrayList<>();
-		if (type == RegionInstanceType.CONSTRUCTION_HOUSE || type == RegionInstanceType.THE_SIX
-		|| type == RegionInstanceType.COUNTER_BOSS) {
+		if (type == RegionInstanceType.CONSTRUCTION_HOUSE || type == RegionInstanceType.THE_SIX) {
 			this.playersList = new CopyOnWriteArrayList<>();
 		}
 	}
@@ -85,7 +84,7 @@ public class RegionInstance {
 	}
 	
 	public void add(Character c) {
-		if (type == RegionInstanceType.CONSTRUCTION_HOUSE || type == RegionInstanceType.COUNTER_BOSS) {
+		if (type == RegionInstanceType.CONSTRUCTION_HOUSE) {
 			if (c.isPlayer()) {
 				playersList.add((Player) c);
 			} else if (c.isNpc()) {
@@ -99,7 +98,7 @@ public class RegionInstance {
 	}
 
 	public void remove(Character c) {
-		if (type == RegionInstanceType.CONSTRUCTION_HOUSE || type == RegionInstanceType.COUNTER_BOSS) {
+		if (type == RegionInstanceType.CONSTRUCTION_HOUSE) {
 			if (c.isPlayer()) {
 				playersList.remove((Player) c);
 				if (owner == c) {

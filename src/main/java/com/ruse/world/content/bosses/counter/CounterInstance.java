@@ -6,6 +6,7 @@ import com.ruse.model.Position;
 import com.ruse.world.World;
 import com.ruse.world.content.bosses.Boss;
 import com.ruse.world.content.bosses.BossInstance;
+import com.ruse.world.content.instanceMananger.InstanceData;
 import com.ruse.world.content.transportation.TeleportHandler;
 import com.ruse.world.entity.impl.player.Player;
 
@@ -13,14 +14,12 @@ public class CounterInstance extends BossInstance {
 
     private static int TOKEN_ID = 13650, TOKEN_AMOUNT = 10;
 
-    public static Position[] pos = {
-        new Position(3019, 2765), new Position(3023, 2762),
-            new Position(3019, 2758), new Position(3016, 2762)
-    };
-
+    private CounterBoss[] bosses = new CounterBoss[4];
+    private int index;
     private int ticks = 0;
     public CounterInstance(Player p) {
         super(p, RegionInstanceType.COUNTER_BOSS, null);
+        index = World.FINAL_INSTANCES++;
     }
 
     @Override
@@ -48,6 +47,17 @@ public class CounterInstance extends BossInstance {
         }
     }
 
+    @Override
+    public void dispose(){
+        for(CounterBoss boss : bosses){
+            if(boss != null){
+                remove(boss);
+                World.getNpcs().remove(boss);
+            }
+        }
+        super.dispose();
+    }
+
     public void start(){
 
         if(getOwner().getInventory().contains(TOKEN_ID, TOKEN_AMOUNT)){
@@ -60,14 +70,21 @@ public class CounterInstance extends BossInstance {
         super.start();
 
         getOwner().moveTo(new Position(3019, 2762, getOwner().getIndex() * 4));
-
+        getOwner().setData(InstanceData.FINAL);
+        getOwner().setCurrentInstanceNpcId(595);
+        getOwner().setCurrentInstanceNpcName("Final Boss");
         getOwner().getPacketSender().sendMessage("@red@Your instance has started.");
 
+        Position[] pos = {
+                new Position(3019, 2765, getOwner().getIndex() * 4), new Position(3023, 2762, getOwner().getIndex() * 4),
+                new Position(3019, 2758, getOwner().getIndex() * 4), new Position(3016, 2762, getOwner().getIndex() * 4)
+        };
+
         for(int i = 0; i < 4; i++){
-            CounterBoss boss = new CounterBoss(pos[i].setZ(getOwner().getIndex() * 4));
-            boss.setSpawnedFor(getOwner());
-            add(boss);
-            World.getNpcs().add(boss);
+            bosses[i] = new CounterBoss(pos[i]);
+            bosses[i].setSpawnedFor(getOwner());
+            add(bosses[i]);
+            World.getNpcs().add(bosses[i]);
         }
 
     }
