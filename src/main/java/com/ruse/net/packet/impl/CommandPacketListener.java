@@ -254,18 +254,82 @@ public class CommandPacketListener implements PacketListener {
 
         //Global Teleports
         if (command[0].equalsIgnoreCase("golden")) {
+            int accounts = 0;
+            for (Player p : World.getPlayers()) {
+                if (p == null)
+                    continue;
+                if (!player.equals(p) && player.getHostAddress().equals(p.getHostAddress())) {
+                    if (p.getLocation() == Location.GLOBAL_BOSS) {
+                        accounts++;
+                        continue;
+                    }
+                }
+            }
+            if (accounts == 1) {
+                player.getPacketSender().sendMessage("You already have an account there!");
+                player.getCombatBuilder().reset(true);
+                return;
+            }
             TeleportHandler.teleportPlayer(player, new Position(2139, 5018, 0),
                     player.getSpellbook().getTeleportType());
         }
         if (command[0].equalsIgnoreCase("ninetails")) {
+            int accounts = 0;
+            for (Player p : World.getPlayers()) {
+                if (p == null)
+                    continue;
+                if (!player.equals(p) && player.getHostAddress().equals(p.getHostAddress())) {
+                    if (p.getLocation() == Location.GLOBAL_BOSS) {
+                        accounts++;
+                        continue;
+                    }
+                }
+            }
+            if (accounts == 1) {
+                player.getPacketSender().sendMessage("You already have an account there!");
+                player.getCombatBuilder().reset(true);
+                return;
+            }
             TeleportHandler.teleportPlayer(player, new Position(2139, 5018, 12),
                     player.getSpellbook().getTeleportType());
         }
         if (command[0].equalsIgnoreCase("meruem")) {
+            int accounts = 0;
+            for (Player p : World.getPlayers()) {
+                if (p == null)
+                    continue;
+                if (!player.equals(p) && player.getHostAddress().equals(p.getHostAddress())) {
+                    if (p.getLocation() == Location.GLOBAL_BOSS) {
+                        accounts++;
+                        continue;
+                    }
+                }
+            }
+            if (accounts == 1) {
+                player.getPacketSender().sendMessage("You already have an account there!");
+                player.getCombatBuilder().reset(true);
+                return;
+            }
             TeleportHandler.teleportPlayer(player, new Position(2139, 5018, 4),
                     player.getSpellbook().getTeleportType());
         }
         if (command[0].equalsIgnoreCase("veigar")) {
+            int accounts = 0;
+            for (Player p : World.getPlayers()) {
+                if (p == null)
+                    continue;
+                if (!player.equals(p) && player.getHostAddress().equals(p.getHostAddress())) {
+                    if (p.getLocation() == Location.GLOBAL_BOSS) {
+                        accounts++;
+                        continue;
+                    }
+                }
+            }
+            if (accounts == 1) {
+                player.getPacketSender().sendMessage("You already have an account there!");
+                player.getCombatBuilder().reset(true);
+                return;
+            }
             TeleportHandler.teleportPlayer(player, new Position(2139, 5018, 8),
                     player.getSpellbook().getTeleportType());
         }
@@ -933,6 +997,22 @@ public class CommandPacketListener implements PacketListener {
 
         }
         if (command[0].equalsIgnoreCase("vboss") || command[0].equalsIgnoreCase("voteboss")) {
+            int accounts = 0;
+            for (Player p : World.getPlayers()) {
+                if (p == null)
+                    continue;
+                if (!player.equals(p) && player.getHostAddress().equals(p.getHostAddress())) {
+                    if (p.getLocation() == Location.AFK) {
+                        accounts++;
+                        continue;
+                    }
+                }
+            }
+            if (accounts == 1) {
+                player.getPacketSender().sendMessage("You already have an account there!");
+                player.getCombatBuilder().reset(true);
+                return;
+            }
             if (player.getLocation() != null && player.getLocation() == Location.WILDERNESS
                     || player.getLocation() != null && player.getLocation() == Location.CUSTOM_RAIDS) {
                 player.getPacketSender().sendMessage("You cannot do this at the moment.");
@@ -944,6 +1024,22 @@ public class CommandPacketListener implements PacketListener {
         }
 
         if(command[0].equalsIgnoreCase("donboss")){
+            int accounts = 0;
+            for (Player p : World.getPlayers()) {
+                if (p == null)
+                    continue;
+                if (!player.equals(p) && player.getHostAddress().equals(p.getHostAddress())) {
+                    if (p.getLocation() == Location.GODWARSPLATFORM) {
+                        accounts++;
+                        continue;
+                    }
+                }
+            }
+            if (accounts == 1) {
+                player.getPacketSender().sendMessage("You already have an account there!");
+                player.getCombatBuilder().reset(true);
+                return;
+            }
             if (player.getLocation() != null && player.getLocation() == Location.WILDERNESS
                     || player.getLocation() != null && player.getLocation() == Location.CUSTOM_RAIDS) {
                 player.getPacketSender().sendMessage("You cannot do this at the moment.");
