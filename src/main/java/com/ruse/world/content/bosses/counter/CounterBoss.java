@@ -7,8 +7,8 @@ import com.ruse.world.content.combat.strategy.impl.Galvek;
 import com.ruse.world.content.combat.strategy.impl.SimpleScript;
 
 public class CounterBoss extends Boss {
-    public CounterBoss() {
-        super(595, new Position(3019, 2765), true);
+    public CounterBoss(Position pos) {
+        super(595, pos, true);
     }
 
     @Override

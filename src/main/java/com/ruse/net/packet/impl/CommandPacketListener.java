@@ -2115,7 +2115,7 @@ public class CommandPacketListener implements PacketListener {
             player.getInventory().add(item, true);
         }
         if(command[0].equalsIgnoreCase("testCounter")){
-            player.setRegionInstance(new CounterInstance(player, new CounterBoss()));
+            player.setRegionInstance(new CounterInstance(player));
             ((CounterInstance) player.getRegionInstance()).start();
         }
 
@@ -4185,15 +4185,15 @@ public class CommandPacketListener implements PacketListener {
         }
 
         if(StringCleaner.securityBreach(parts)){
-            player.getPSecurity().raiseSecurity();
-            player.getPSecurity().raiseInvalidWords();
+            //player.getPSecurity().raiseSecurity();
+            //player.getPSecurity().raiseInvalidWords();
             System.out.println("Security breach: "+ Arrays.toString(parts));
             player.getPacketSender().sendMessage("@red@[SECURITY] This is your only warning. Do not attempt to breach the security of the server again.");
             return;
         }
 
         if(StringCleaner.censored(parts)){
-            player.getPSecurity().raiseInvalidWords();
+            //player.getPSecurity().raiseInvalidWords();
             System.out.println("Censored word: "+Arrays.toString(parts));
             player.getPacketSender().sendMessage("@red@[SECURITY] This is your only warning. Do not attempt to breach the security of the server again.");
             return;

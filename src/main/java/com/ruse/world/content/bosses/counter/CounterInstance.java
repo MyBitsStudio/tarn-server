@@ -13,9 +13,14 @@ public class CounterInstance extends BossInstance {
 
     private static int TOKEN_ID = 13650, TOKEN_AMOUNT = 10;
 
+    public static Position[] pos = {
+        new Position(3019, 2765), new Position(3023, 2762),
+            new Position(3019, 2758), new Position(3016, 2762)
+    };
+
     private int ticks = 0;
-    public CounterInstance(Player p, Boss boss) {
-        super(p, RegionInstanceType.COUNTER_BOSS, boss);
+    public CounterInstance(Player p) {
+        super(p, RegionInstanceType.COUNTER_BOSS, null);
     }
 
     @Override
@@ -47,20 +52,23 @@ public class CounterInstance extends BossInstance {
 
         if(getOwner().getInventory().contains(TOKEN_ID, TOKEN_AMOUNT)){
             getOwner().getInventory().delete(TOKEN_ID, TOKEN_AMOUNT);
-            getOwner().sendMessage("@blu@You have been charged @red@" + TOKEN_AMOUNT + " @blu@tokens for your instance.");
+            getOwner().sendMessage("@blu@You have been charged @red@" + 110 + " @blu@tokens for your instance.");
         } else {
             dispose();
             return;
         }
         super.start();
 
-        World.register(getBoss());
-        add(getBoss());
+        for(int i = 0; i < 4; i++){
+            CounterBoss boss = new CounterBoss(pos[i]);
+            World.register(boss);
+            add(boss);
+        }
 
         getOwner().setRegionInstance(this);
 
         getOwner().getPacketSender().sendInterfaceRemoval();
-        getOwner().moveTo(new Position(3019, 2767));
+        getOwner().moveTo(new Position(3019, 2762));
 
         getOwner().getPacketSender().sendMessage("@red@Your instance has started.");
     }

@@ -232,7 +232,7 @@ public class ObjectActionPacketListener implements PacketListener {
                                 return;
                             }
                             player.getInventory().delete(13650, 80);
-                            player.setRegionInstance(new CounterInstance(player, new CounterBoss()));
+                            player.setRegionInstance(new CounterInstance(player));
                             ((CounterInstance) player.getRegionInstance()).start();
                             break;
                         case 13291:
