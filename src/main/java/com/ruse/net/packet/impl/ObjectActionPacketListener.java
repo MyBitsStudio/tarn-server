@@ -231,11 +231,11 @@ public class ObjectActionPacketListener implements PacketListener {
                                 player.sendMessage("You need to kill a total of 50K Black Gokus to enter this instance.");
                                 return;
                             }
-                            if(!player.getInventory().contains(13650, 80)){
+                            if(!player.getInventory().contains(13650, 90)){
                                 player.sendMessage("You need 100x Counter Tokens to enter this instance.");
                                 return;
                             }
-                            player.getInventory().delete(13650, 80);
+                            player.getInventory().delete(13650, 90);
                             if(player.getRegionInstance() != null)
                                 player.getRegionInstance().destruct();
                             player.setInstance(new CounterInstance(player));

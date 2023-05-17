@@ -112,7 +112,7 @@ public class NPCDeathTask extends Task {
 
                     if(killer != null) {
                         if (killer.getInstance() != null) {
-                            killer.getInstance().setCanLeave((System.currentTimeMillis() + (1000 * 7)));
+                            killer.getInstance().setCanLeave((System.currentTimeMillis() + (1000 * 4)));
                         }
                     }
 

@@ -59,7 +59,7 @@ public class CounterInstance extends BossInstance {
 
         if(getOwner().getInventory().contains(TOKEN_ID, TOKEN_AMOUNT)){
             getOwner().getInventory().delete(TOKEN_ID, TOKEN_AMOUNT);
-            getOwner().sendMessage("@blu@You have been charged @red@" + 110 + " @blu@tokens for your instance.");
+            getOwner().sendMessage("@blu@You have been charged @red@" + 100 + " @blu@tokens for your instance.");
         } else {
             dispose();
             return;

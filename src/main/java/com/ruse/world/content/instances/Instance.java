@@ -39,7 +39,12 @@ public abstract class Instance {
     }
 
     public boolean canLeave() {
-        System.out.println("Can leave: " + (canLeave < System.currentTimeMillis()) + " " + canLeave + " " + System.currentTimeMillis());
+        for(NPC npc : npcList){
+            if(npc != null){
+                if(npc.isDying())
+                    return false;
+            }
+        }
     	return canLeave < System.currentTimeMillis();
     }
 
@@ -51,7 +56,6 @@ public abstract class Instance {
                 break;
             if(playerList.contains(p))
                 continue;
-            System.out.println("Adding player to instance: " + p.getUsername());
             playerList.add(p);
         }
         for(;; npcs.poll()){
@@ -60,7 +64,6 @@ public abstract class Instance {
                 break;
             if(npcList.contains(n))
                 continue;
-            System.out.println("Adding npc to instance: " + n.getId());
             npcList.add(n);
             addNPC(n);
         }
@@ -68,7 +71,6 @@ public abstract class Instance {
             Player p = removePlayer.peek();
             if(p == null)
                 break;
-            System.out.println("Removing player from instance: " + p.getUsername());
             playerList.remove(p);
             removePlayer(p);
         }
@@ -76,19 +78,16 @@ public abstract class Instance {
             NPC n = removeNPC.peek();
             if(n == null)
                 break;
-            System.out.println("Removing npc from instance: " + n.getId());
             npcList.remove(n);
             removeNPC(n);
         }
     }
 
     private void preProcess(){
-        System.out.println("Preprocessing instance: " + location.name());
         for(Player player : playerList){
             if(player == null)
                 continue;
             if(!location.equals(player.getLocation())){
-                System.out.println("Removing player from instance: " + player.getUsername());
                 removePlayer.add(player);
             }
         }
@@ -107,7 +106,6 @@ public abstract class Instance {
         player.setInstance(null);
 
         if(playerList.size() == 0){
-            System.out.println("Destroying instance: " + location.name());
             destroy();
         }
 
@@ -171,7 +169,6 @@ public abstract class Instance {
     }
 
     public void destroy(){
-        System.out.println("Destroying instance: " + location.name());
         for(Player player : playerList){
             removePlayer(player);
         }
