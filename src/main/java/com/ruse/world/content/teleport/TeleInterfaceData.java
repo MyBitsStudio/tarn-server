@@ -83,6 +83,7 @@ public enum TeleInterfaceData {
     BOSS366(TeleInterfaceCategory.BOSSES, "Queen Fazula", 1311, 750, TeleInterfaceLocation.LOCATION71, null),
     BOSS367(TeleInterfaceCategory.BOSSES, "Lord Yasuda", 1313, 750, TeleInterfaceLocation.LOCATION72, null),
     BOSS368(TeleInterfaceCategory.BOSSES, "Black Goku", 1318, 750, TeleInterfaceLocation.LOCATION73, null),
+    BOSS_FINAL(TeleInterfaceCategory.BOSSES, "Final Boss", 595, 750, TeleInterfaceLocation.LOCATION80, null),
     //BOSS33(TeleInterfaceCategory.BOSSES, "Boss", 5511, 1500, TeleInterfaceLocation.LOCATION1, new Item[] {new Item(4151, 10), new Item(995, 2000000)}),
     //BOSS25(TeleInterfaceCategory.BOSSES, "Boss", 8005, 1500, TeleInterfaceLocation.LOCATION1, new Item[] {new Item(4151, 10), new Item(995, 2000000)}),
     //BOSS26(TeleInterfaceCategory.BOSSES, "Boss", 8006, 1500, TeleInterfaceLocation.LOCATION1, new Item[] {new Item(4151, 10), new Item(995, 2000000)}),

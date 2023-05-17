@@ -20,6 +20,9 @@ import com.ruse.world.World;
 import com.ruse.world.clip.region.RegionClipping;
 import com.ruse.world.content.*;
 import com.ruse.world.content.aura.AuraRaids;
+import com.ruse.world.content.bosses.BossInstance;
+import com.ruse.world.content.bosses.counter.CounterBoss;
+import com.ruse.world.content.bosses.counter.CounterInstance;
 import com.ruse.world.content.combat.magic.Autocasting;
 import com.ruse.world.content.combat.prayer.CurseHandler;
 import com.ruse.world.content.combat.prayer.PrayerHandler;
@@ -214,6 +217,21 @@ public class ObjectActionPacketListener implements PacketListener {
                             player.performGraphic(new Graphic(1555));
                             //player.getSeasonPass().incrementExp(300, false);
                         break;
+
+
+                        case 2936:
+                            if(player.getRegionInstance() != null){
+                                return;
+                            }
+
+                            if(!player.getInventory().contains(13650, 100)){
+                                player.sendMessage("You need 100x Counter Tokens to enter this instance.");
+                                return;
+                            }
+                            player.getInventory().delete(13650, 100);
+                            player.setRegionInstance(new CounterInstance(player, new CounterBoss()));
+                            ((CounterInstance) player.getRegionInstance()).start();
+                            break;
                         case 13291:
                         case 20040:
                             //player.sendMessage("Coming soon...");
@@ -331,7 +349,13 @@ public class ObjectActionPacketListener implements PacketListener {
                                 player.getPacketSender().sendMessage("@red@Please wait a few seconds before using the portal..");
                                 return;
                             }
-                                    player.moveTo(GameSettings.DEFAULT_POSITION);
+                            if(player.getRegionInstance() != null){
+                                if(player.getRegionInstance() instanceof BossInstance){
+                                    ((BossInstance) player.getRegionInstance()).dispose();
+                                    return;
+                                }
+                            }
+                            player.moveTo(GameSettings.DEFAULT_POSITION);
                             break;
 
                         case 22973:

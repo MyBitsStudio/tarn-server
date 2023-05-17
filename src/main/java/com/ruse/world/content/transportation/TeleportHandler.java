@@ -30,9 +30,7 @@ public class TeleportHandler {
 
 		if (player.getRegionInstance() != null) {
 			if(player.getRegionInstance() instanceof BossInstance)
-				((BossInstance) player.getRegionInstance()).dispose();
-			else
-				player.getRegionInstance().destruct();
+				return;
 		}
 
 		MapInstance instance = player.getMapInstance();

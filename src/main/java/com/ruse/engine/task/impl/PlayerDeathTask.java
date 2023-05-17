@@ -22,6 +22,7 @@ import com.ruse.world.World;
 import com.ruse.world.content.ItemsKeptOnDeath;
 import com.ruse.world.content.PlayerLogs;
 import com.ruse.world.content.PlayerPanel;
+import com.ruse.world.content.bosses.BossInstance;
 import com.ruse.world.content.combat.prayer.CurseHandler;
 import com.ruse.world.content.combat.prayer.PrayerHandler;
 import com.ruse.world.content.skill.impl.old_dungeoneering.Dungeoneering;
@@ -90,6 +91,10 @@ public class PlayerDeathTask extends Task {
         			Position[] locations = new Position[] { new Position(2656, 4016, 0), new Position(2656, 4016, 0) };
         			Position teleportLocation = locations[RandomUtility.exclusiveRandom(0, locations.length)];
         			TeleportHandler.teleportPlayer(player, teleportLocation, player.getSpellbook().getTeleportType());
+                    }
+                    if(player.getRegionInstance() != null){
+                        if(player.getRegionInstance() instanceof BossInstance)
+                            ((BossInstance) player.getRegionInstance()).dispose();
                     }
                     break;
                 case 1:

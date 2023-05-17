@@ -41,9 +41,24 @@ public abstract class BossInstance extends RegionInstance {
         if (getOwner().getRegionInstance() != null)
             getOwner().getRegionInstance().destruct();
 
-        TeleportHandler.teleportPlayer(getOwner(), GameSettings.DEFAULT_POSITION.copy(),
-                getOwner().getSpellbook().getTeleportType());
+        getOwner().setTeleporting(true).getMovementQueue().setLockMovement(true).reset();
+        cancelCurrentActions(getOwner());
+        getOwner().moveTo(GameSettings.HOME_CORDS).setPosition(GameSettings.HOME_CORDS);
+        getOwner().getMovementQueue().setLockMovement(false).reset();
+
         getOwner().getPacketSender().sendInterfaceRemoval();
+    }
+
+    public static void cancelCurrentActions(Player player) {
+        player.getPacketSender().sendInterfaceRemoval();
+        player.setTeleporting(false);
+        player.setWalkToTask(null);
+        player.setInputHandling(null);
+        player.getSkillManager().stopSkilling();
+        player.setEntityInteraction(null);
+        player.getMovementQueue().setFollowCharacter(null);
+        player.getCombatBuilder().cooldown(false);
+        player.setResting(false);
     }
 
 }

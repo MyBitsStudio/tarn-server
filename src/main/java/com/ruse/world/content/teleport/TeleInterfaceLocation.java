@@ -80,6 +80,8 @@ public enum TeleInterfaceLocation {
     LOCATION68(new Position(2137, 5016, 12), "Tier Ranking: ? \\n \\n Multi: True \\n \\n KC Req: None\\n \\n Recommended ELO: 10+"), //nine tails
     LOCATION69(new Position(2137, 5016, 4), "Tier Ranking: ? \\n \\n Multi: True \\n \\n KC Req: None\\n \\n Recommended ELO: 10+"), //meruem
     LOCATION70(new Position(2137, 5016, 0), "Tier Ranking: ? \\n \\n Multi: True \\n \\n KC Req: None\\n \\n Recommended ELO: 10+"), //golden
+
+    LOCATION80(new Position(3065, 2758, 8), "Tier Ranking: ? \\n \\n Multi: True \\n \\n KC Req: None \\n \\n Recommended ELO: Counter Token"), //yasuda
     LOCATION100(new Position(2661, 3044, 0), "Tier Ranking: 25.5 \\n \\n Multi: True \\n \\n KC Req: None\\n \\n Recommended ELO: 1150+"); //raids
 
 

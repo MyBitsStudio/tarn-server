@@ -88,19 +88,15 @@ public class TeleInterface {
 
     public void loadItems() {
         List<NpcDropItem> drop = getCleanList();
-        Collections.sort(drop, new Comparator<NpcDropItem>() {
-
-            @Override
-            public int compare(NpcDropItem item1, NpcDropItem item2) {
-                int v1 = item1.getItem().getDefinition().getValue() * item1.getItem().getAmount();
-                int v2 = item2.getItem().getDefinition().getValue() * item2.getItem().getAmount();
-                if (v1 == v2) {
-                    return 0;
-                } else if (v1 > v2) {
-                    return -1;
-                } else {
-                    return 1;
-                }
+        Collections.sort(drop, (item1, item2) -> {
+            int v1 = item1.getItem().getDefinition().getValue() * item1.getItem().getAmount();
+            int v2 = item2.getItem().getDefinition().getValue() * item2.getItem().getAmount();
+            if (v1 == v2) {
+                return 0;
+            } else if (v1 > v2) {
+                return -1;
+            } else {
+                return 1;
             }
         });
 
