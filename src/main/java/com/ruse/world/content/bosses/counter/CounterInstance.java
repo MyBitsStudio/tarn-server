@@ -11,7 +11,7 @@ import com.ruse.world.entity.impl.player.Player;
 
 public class CounterInstance extends BossInstance {
 
-    private static int TOKEN_ID = 995, TOKEN_AMOUNT = 10;
+    private static int TOKEN_ID = 13650, TOKEN_AMOUNT = 10;
 
     private int ticks = 0;
     public CounterInstance(Player p, Boss boss) {
@@ -31,7 +31,7 @@ public class CounterInstance extends BossInstance {
         if(ticks % 65 == 0){
             if(getOwner().getInventory().contains(TOKEN_ID, TOKEN_AMOUNT)){
                 getOwner().getInventory().delete(TOKEN_ID, TOKEN_AMOUNT);
-                getOwner().sendMessage("@blue@You have been charged " + TOKEN_AMOUNT + " tokens for your instance.");
+                getOwner().sendMessage("@blu@You have been charged @red@" + TOKEN_AMOUNT + " @blu@tokens for your instance.");
             } else {
                 dispose();
             }
@@ -47,7 +47,7 @@ public class CounterInstance extends BossInstance {
 
         if(getOwner().getInventory().contains(TOKEN_ID, TOKEN_AMOUNT)){
             getOwner().getInventory().delete(TOKEN_ID, TOKEN_AMOUNT);
-            getOwner().sendMessage("@blue@You have been charged " + TOKEN_AMOUNT + " tokens for your instance.");
+            getOwner().sendMessage("@blu@You have been charged " + TOKEN_AMOUNT + " tokens for your instance.");
         } else {
             dispose();
             return;
