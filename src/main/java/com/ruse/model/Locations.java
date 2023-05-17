@@ -9,6 +9,8 @@ import com.ruse.world.content.PlayerLogs;
 import com.ruse.world.content.PlayerPunishment.Jail;
 import com.ruse.world.content.Zulrah;
 import com.ruse.world.content.aura.AuraRaids;
+import com.ruse.world.content.bosses.BossInstance;
+import com.ruse.world.content.bosses.counter.CounterInstance;
 import com.ruse.world.content.combat.strategy.impl.Scorpia;
 import com.ruse.world.content.instanceMananger.InstanceManager;
 import com.ruse.world.content.minigames.impl.*;
@@ -344,6 +346,46 @@ public class Locations {
 			}
 		},
 
+		RAID_LOBBY(new int[]{2642, 2668}, new int[]{2778, 2804}, true, false, true, false, true, true) {
+			@Override
+			public void leave(Player player) {
+				player.getPacketSender().sendCameraNeutrality();
+
+				if (player.getRaidParty() != null)
+					player.getRaidParty().remove(player);
+
+				if (player.getRaidParty() != null)
+					player.getRaidParty().getPlayers()
+							.remove(player);
+
+				player.getMovementQueue().setLockMovement(false);
+			}
+
+			@Override
+			public void enter(Player player) {
+				if (player.getPlayerInteractingOption() != PlayerInteractingOption.INVITE)
+					player.getPacketSender().sendInteractionOption("Invite", 2, false);
+
+				player.getPacketSender().sendTab(GameSettings.STAFF_TAB);
+			}
+
+			@Override
+			public void login(Player player) {
+				if (player.getPlayerInteractingOption() != PlayerInteractingOption.INVITE)
+					player.getPacketSender().sendInteractionOption("Invite", 2, false);
+
+				player.getPacketSender().sendTab(GameSettings.STAFF_TAB);
+
+			}
+
+			@Override
+			public void process(Player player) {
+				if (player.getRaidParty() != null)
+					player.getRaidParty().refreshInterface();
+
+			}
+		},
+
 
 		AURA(new int[]{2637, 2655}, new int[]{3035, 3053}, true, false, true, false, true, true) {
 			@Override
@@ -501,45 +543,6 @@ public class Locations {
 			}
 		},
 
-//		TEST_RAID_LOBBY(new int[]{2691, 2706}, new int[]{2639, 2655}, true, false, true, false, true, true) {
-//			@Override
-//			public void leave(Player player) {
-//				player.getPacketSender().sendCameraNeutrality();
-//
-//				if (player.getRaidParty() != null)
-//					player.getRaidParty().remove(player);
-//
-//				if (player.getRaidParty() != null)
-//					player.getRaidParty().getPlayers()
-//							.remove(player);
-//
-//				player.getMovementQueue().setLockMovement(false);
-//			}
-//
-//			@Override
-//			public void enter(Player player) {
-//				if (player.getPlayerInteractingOption() != PlayerInteractingOption.INVITE)
-//					player.getPacketSender().sendInteractionOption("Invite", 2, false);
-//
-//				player.getPacketSender().sendTab(GameSettings.STAFF_TAB);
-//			}
-//
-//			@Override
-//			public void login(Player player) {
-//				if (player.getPlayerInteractingOption() != PlayerInteractingOption.INVITE)
-//					player.getPacketSender().sendInteractionOption("Invite", 2, false);
-//
-//				player.getPacketSender().sendTab(GameSettings.STAFF_TAB);
-//
-//			}
-//
-//			@Override
-//			public void process(Player player) {
-//				if (player.getRaidParty() != null)
-//					player.getRaidParty().refreshInterface();
-//
-//			}
-//		},
 //
 //		TEST_RAID(new int[]{2712, 2740}, new int[]{2633, 2661}, true, false, true, false, true, true) {
 //			@Override
@@ -905,6 +908,7 @@ public class Locations {
 		CUSTOM_RAIDS_LOBBY(new int[] { 2715, 2735 }, new int[] { 2730, 2745 }, true, false, true, false, true, false) {
 			@Override
 			public void login(Player player) {
+
 
 			}
 
