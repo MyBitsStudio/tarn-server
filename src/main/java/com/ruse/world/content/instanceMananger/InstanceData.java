@@ -124,6 +124,9 @@ public enum InstanceData {
 			RegionInstanceType.KINGS),
 	BOSS17(-30410, 1318, "Black Goku", 35, new int[] { 19624 }, "Black Goku", new Position(2632, 4760),
 			RegionInstanceType.KINGS),
+
+	FINAL(-1, 595, "Final Boss", 35, new int[] { 19624 }, "Final Boss", new Position(3019, 2762),
+			RegionInstanceType.COUNTER_BOSS),
 	;
 
 	InstanceData(int buttonid, int npcid, String text, int endamount, int rewards[], String name, Position position,
