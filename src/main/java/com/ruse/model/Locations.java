@@ -165,9 +165,42 @@ public class Locations {
 		EXODEN(new int[] { 2562, 2600}, new int[] { 4485, 4526},
 				true, true, true, false, false, true) {},
 		VBOSS(new int[] { 2959, 2998}, new int[] { 2762, 2800},
-				true, true, true, false, false, true) {},
+				true, true, true, false, false, true) {
+			@Override
+			public void enter(Player player) {
+				int accounts = 0;
+				for (Player p : World.getPlayers()) {
+					if (p == null)
+						continue;
+					if (!player.equals(p) && player.getHostAddress().equals(p.getHostAddress())) {
+						if (p.getLocation() == Location.GODWARSPLATFORM) {
+							accounts++;
+							continue;
+						}
+					}
+				}
+				if (accounts == 1) {
+					player.getPacketSender().sendMessage("You already have an account there!");
+					player.moveTo(GameSettings.HOME_CORDS);
+					player.getCombatBuilder().reset(true);
+					return;
+				}
+			}
+
+			@Override
+			public void login(Player player) {
+				player.getPacketSender().sendCameraNeutrality();
+				if (player.getLocation() == GODWARSPLATFORM) {
+					player.moveTo(GameSettings.HOME_CORDS);
+				}
+			}
+			@Override
+			public void logout(Player player) {
+				player.moveTo(GameSettings.HOME_CORDS);
+			}
+		},
 		PRIME(new int[] { 2437, 2492}, new int[] { 10113, 10171},
-				true, true, true, false, false, true) {},
+				false, true, true, false, false, true) {},
 
 
 		LUCIFER(new int[] { 2301, 2367}, new int[] { 3970, 4024},
