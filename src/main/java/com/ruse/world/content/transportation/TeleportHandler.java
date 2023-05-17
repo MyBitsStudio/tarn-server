@@ -28,6 +28,10 @@ public class TeleportHandler {
 			return;
 		}*/
 
+		if(player.getInstance() != null){
+			return;
+		}
+
 		MapInstance instance = player.getMapInstance();
 		if (instance != null && !instance.canTeleport(player, targetLocation)) {
 			player.sendMessage("You cannot teleport in this instance.");
