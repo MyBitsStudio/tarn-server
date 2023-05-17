@@ -19,7 +19,6 @@ public class CounterInstance extends BossInstance {
     private int ticks = 0;
     public CounterInstance(Player p) {
         super(p, RegionInstanceType.COUNTER_BOSS, null);
-        index = World.FINAL_INSTANCES++;
     }
 
     @Override
@@ -70,9 +69,6 @@ public class CounterInstance extends BossInstance {
         super.start();
 
         getOwner().moveTo(new Position(3019, 2762, getOwner().getIndex() * 4));
-        getOwner().setData(InstanceData.FINAL);
-        getOwner().setCurrentInstanceNpcId(595);
-        getOwner().setCurrentInstanceNpcName("Final Boss");
         getOwner().getPacketSender().sendMessage("@red@Your instance has started.");
 
         Position[] pos = {
