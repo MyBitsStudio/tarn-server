@@ -22,6 +22,7 @@ import com.ruse.world.content.combat.strategy.CombatStrategies;
 import com.ruse.world.content.combat.strategy.CombatStrategy;
 import com.ruse.world.content.combat.strategy.impl.KalphiteQueen;
 import com.ruse.world.content.combat.strategy.impl.Nex;
+import com.ruse.world.content.instances.Instance;
 import com.ruse.world.content.skill.impl.hunter.Hunter;
 import com.ruse.world.content.skill.impl.hunter.PuroPuro;
 import com.ruse.world.content.skill.impl.runecrafting.DesoSpan;
@@ -181,9 +182,6 @@ public class NPC extends Character {
         this.aggressive = definition.isAggressive();
         this.defaultConstitution = definition.getHitpoints() < 100 ? 100 : definition.getHitpoints();
         this.constitution = defaultConstitution;
-        if(id == 50) {
-           // System.out.println("Constitution: " + this.constitution);
-        }
         setLocation(Location.getLocation(this));
     }
 
@@ -668,5 +666,15 @@ public class NPC extends Character {
 
     public ObjectArrayList<NPC> getCloseNpcs(int distance) {
         return World.getNearbyNPCs(getPosition(), distance);
+    }
+
+    private Instance instance;
+
+    public Instance getInstance() {
+    	return instance;
+    }
+
+    public void setInstance(Instance instance) {
+    	this.instance = instance;
     }
 }

@@ -1,6 +1,7 @@
 package com.ruse.net.packet.impl;
 
 import com.ruse.GameSettings;
+import com.ruse.engine.GameEngine;
 import com.ruse.engine.task.Task;
 import com.ruse.engine.task.TaskManager;
 import com.ruse.engine.task.impl.WalkToTask;
@@ -223,6 +224,9 @@ public class ObjectActionPacketListener implements PacketListener {
                             if(player.getRegionInstance() != null){
                                 return;
                             }
+                            if(player.getInstance() != null){
+                                return;
+                            }
                             if (KillsTracker.getTotalKillsForNpc(1318, player) < 50000) {
                                 player.sendMessage("You need to kill a total of 50K Black Gokus to enter this instance.");
                                 return;
@@ -234,8 +238,8 @@ public class ObjectActionPacketListener implements PacketListener {
                             player.getInventory().delete(13650, 80);
                             if(player.getRegionInstance() != null)
                                 player.getRegionInstance().destruct();
-                            player.setRegionInstance(new CounterInstance(player));
-                            ((CounterInstance) player.getRegionInstance()).start();
+                            player.setInstance(new CounterInstance(player));
+                            ((CounterInstance) player.getInstance()).start();
                             break;
                         case 13291:
                         case 20040:
@@ -350,18 +354,24 @@ public class ObjectActionPacketListener implements PacketListener {
                             break;
 
                         case 4388:
-                            if (player.getCombatBuilder().isAttacking()) {
-                                player.getPacketSender().sendMessage("@red@Please wait a few seconds before using the portal..");
-                                return;
-                            }
-                            if(player.getRegionInstance() != null){
-                                if(player.getRegionInstance() instanceof BossInstance){
-                                    ((BossInstance) player.getRegionInstance()).dispose();
+                            GameEngine.submit(() -> {
+                                if(player.getCombatBuilder().wasAttacking()){
+                                    player.getPacketSender().sendMessage("@red@Please wait a few seconds before using the portal..");
                                     return;
                                 }
-                            }
-                            TeleportHandler.teleportPlayer(player, GameSettings.DEFAULT_POSITION.copy(),
-                                    player.getSpellbook().getTeleportType());
+                                if (player.getCombatBuilder().isAttacking()) {
+                                    player.getPacketSender().sendMessage("@red@Please wait a few seconds before using the portal..");
+                                    return;
+                                }
+                                if(player.getInstance() != null){
+                                    if(!player.getInstance().canLeave()){
+                                        return;
+                                    }
+                                    player.getInstance().destroy();
+                                    return;
+                                }
+                                player.moveTo(GameSettings.DEFAULT_POSITION);
+                            });
                             break;
 
                         case 22973:

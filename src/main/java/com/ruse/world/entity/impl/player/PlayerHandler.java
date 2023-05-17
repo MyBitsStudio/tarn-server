@@ -569,6 +569,10 @@ public class PlayerHandler {
                     player.getRegionInstance().onLogout(player);
                 }
 
+                if(player.getInstance() != null){
+                    player.getInstance().onLogout(player);
+                }
+
                 MapInstance instance = player.getMapInstance();
                 if (instance != null) {
                     instance.fireOnLogout(player);

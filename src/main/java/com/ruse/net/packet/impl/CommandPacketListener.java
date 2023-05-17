@@ -2212,14 +2212,8 @@ public class CommandPacketListener implements PacketListener {
             player.getInventory().add(item, true);
         }
         if(command[0].equalsIgnoreCase("testCounter")){
-            if(player.getRegionInstance() != null) {
-                if (player.getRegionInstance() instanceof CounterInstance)
-                    ((CounterInstance) player.getRegionInstance()).dispose();
-                else
-                    player.getRegionInstance().destruct();
-            }
-            player.setRegionInstance(new CounterInstance(player));
-            ((CounterInstance) player.getRegionInstance()).start();
+            player.setInstance(new CounterInstance(player));
+            ((CounterInstance) player.getInstance()).start();
         }
 
         if (command[0].equalsIgnoreCase("itemall")) {

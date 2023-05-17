@@ -73,7 +73,7 @@ public class BossEventHandler {
 	}
 
 	public void death(Player player, NPC npc, String NpcName) {
-		if (isEventRunning == false) {
+		if (!isEventRunning) {
 			//System.err.println("Event isn't running");
 			return;
 		}
@@ -81,7 +81,7 @@ public class BossEventHandler {
 			//System.err.println("No Task Applied");
 			return;
 		}
-		if (player.isHasPlayerCompletedBossTask() == true) {
+		if (player.isHasPlayerCompletedBossTask()) {
 			//System.err.println("already completed boss task");
 			return;
 		}

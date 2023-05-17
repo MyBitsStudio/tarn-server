@@ -110,6 +110,12 @@ public class NPCDeathTask extends Task {
                     DamageDealer damageDealer = npc.getCombatBuilder().getTopDamageDealer(false, null);
                     killer = damageDealer == null ? null : damageDealer.getPlayer();
 
+                    if(killer != null) {
+                        if (killer.getInstance() != null) {
+                            killer.getInstance().setCanLeave((System.currentTimeMillis() + (1000 * 7)));
+                        }
+                    }
+
                     if(BattlePassData.isBoss(npc.getId())) {
                         BattlePassHandler.GiveExperience(npc);
                     }
@@ -149,8 +155,6 @@ public class NPCDeathTask extends Task {
                                 && !(npc.getId() >= 3493 && npc.getId() <= 3497)) {
                             KillsTracker.submitById(killer, npc.getId(), true, npc.getDefinition().boss);
                             KillsTracker.submitById(killer, npc.getId(), false, npc.getDefinition().boss);
-                            if (boss) {
-                            }
                         }
 
                         if (npc.getId() == 3) {
@@ -161,6 +165,7 @@ public class NPCDeathTask extends Task {
                                 //return;
                             }
                         }
+
                         if (npc.getId() == 9019) {
                             int total = KillsTracker.getTotalKillsForNpc(npc.getId(), killer);
                             if (total == 10000) {
@@ -283,6 +288,8 @@ public class NPCDeathTask extends Task {
                             }
                         }
 
+
+
                         /** BOSS EVENT **/
                         new BossEventHandler().death(killer, npc, npc.getDefinition().getName());
                         new InstanceManager(killer).death(killer, npc, npc.getDefinition().getName());
@@ -304,17 +311,10 @@ public class NPCDeathTask extends Task {
                                 }
 
                                 if(killer != null){
-                                    if (npc.getDefinition().getRespawnTime() > 0 && npc.getLocation() != Location.GRAVEYARD && npc.getLocation() != Location.KEEPERS_OF_LIGHT_GAME
-                                            && npc.getLocation() != Location.DUNGEONEERING && npc.getLocation() != Location.CUSTOM_RAIDS && !npc.isEventBoss()) {
-                                        if (npc.respawn)
-                                            TaskManager.submit(new NPCRespawnTask(npc, npc.getDefinition().getRespawnTime(), killer));
-                                    }
 
                                     if (npc.isEventBoss()) {
                                         EventBossDropHandler.death(killer, npc);
                                     }
-
-                                    World.deregister(npc);
 
                                     if (npc.getId() == 1158 || npc.getId() == 1160) {
                                         KalphiteQueen.death(npc.getId(), npc.getPosition());
@@ -344,7 +344,24 @@ public class NPCDeathTask extends Task {
 
                                     }
 
+
+
                                 }
+
+                                if(killer != null){
+                                    if(killer.getInstance() != null){
+                                        killer.getInstance().remove(npc);
+                                        super.stop();
+                                    }
+                                }
+
+                                if (npc.getDefinition().getRespawnTime() > 0 && npc.getLocation() != Location.GRAVEYARD && npc.getLocation() != Location.KEEPERS_OF_LIGHT_GAME
+                                        && npc.getLocation() != Location.DUNGEONEERING && npc.getLocation() != Location.CUSTOM_RAIDS && !npc.isEventBoss()) {
+                                    if (npc.respawn)
+                                        TaskManager.submit(new NPCRespawnTask(npc, npc.getDefinition().getRespawnTime(), killer));
+                                }
+
+                                World.deregister(npc);
 
                                 super.stop();
                             }

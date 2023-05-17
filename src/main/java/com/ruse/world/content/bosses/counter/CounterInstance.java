@@ -12,13 +12,13 @@ import com.ruse.world.entity.impl.player.Player;
 
 public class CounterInstance extends BossInstance {
 
-    private static int TOKEN_ID = 13650, TOKEN_AMOUNT = 10;
+    private final static int TOKEN_ID = 13650, TOKEN_AMOUNT = 10;
 
-    private CounterBoss[] bosses = new CounterBoss[4];
+    private final CounterBoss[] bosses = new CounterBoss[4];
     private int index;
     private int ticks = 0;
     public CounterInstance(Player p) {
-        super(p, RegionInstanceType.COUNTER_BOSS, null);
+        super(p, Locations.Location.ASTA_NPC, null);
     }
 
     @Override
@@ -30,7 +30,6 @@ public class CounterInstance extends BossInstance {
 
     private void checkTokens(){
         ticks++;
-
         if(ticks % 65 == 0){
             if(getOwner().getInventory().contains(TOKEN_ID, TOKEN_AMOUNT)){
                 getOwner().getInventory().delete(TOKEN_ID, TOKEN_AMOUNT);
@@ -50,11 +49,7 @@ public class CounterInstance extends BossInstance {
     public void dispose(){
         for(CounterBoss boss : bosses){
             if(boss != null){
-                boss.setRegionInstance(null);
                 remove(boss);
-                World.deregister(boss);
-                World.getNpcs().remove(boss);
-                boss.appendDeath();
             }
         }
         super.dispose();
@@ -71,7 +66,9 @@ public class CounterInstance extends BossInstance {
         }
         super.start();
 
-        getOwner().moveTo(new Position(3019, 2762, getOwner().getIndex() * 4));
+        moveTo(new Position(3019, 2762, getOwner().getIndex() * 4));
+        add(getOwner());
+
         getOwner().getPacketSender().sendMessage("@red@Your instance has started.");
 
         Position[] pos = {
@@ -82,9 +79,7 @@ public class CounterInstance extends BossInstance {
         for(int i = 0; i < 4; i++){
             bosses[i] = new CounterBoss(pos[i]);
             bosses[i].setSpawnedFor(getOwner());
-            bosses[i].setRegionInstance(this);
             add(bosses[i]);
-            World.getNpcs().add(bosses[i]);
         }
 
     }

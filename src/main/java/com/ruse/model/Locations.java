@@ -1238,6 +1238,9 @@ public class Locations {
 		SKELETAL(new int[] { 3323, 3357 }, new int[] { 3162, 3188 }, true, true, true, false, false, false) {
 		},
 
+		ASTA_NPC(new int[] { 3009, 3029 }, new int[] { 2752, 2772 }, true, true, true, false, false, false) {
+		},
+
 		ASTA_LOBBY(new int[] { 3059, 3071 }, new int[] { 2752, 2764 }, true, true, true, false, false, false) {
 		},
 
@@ -2446,6 +2449,7 @@ for (Item item : player.getInventory().getItems()) {
 						|| (prev == Location.ZOMBIE && newLocation == Location.ZOMBIE_LOBBY)
 						|| (prev == Location.AURA_LOBBY && newLocation == Location.AURA)
 						|| (prev == Location.AURA && newLocation == Location.AURA_LOBBY)
+						|| prev == Location.ASTA_NPC
 //						|| (prev == Location.TEST_RAID_LOBBY && newLocation == Location.TEST_RAID)
 //						|| (prev == Location.TEST_RAID && newLocation == Location.TEST_RAID_LOBBY)
 				) {

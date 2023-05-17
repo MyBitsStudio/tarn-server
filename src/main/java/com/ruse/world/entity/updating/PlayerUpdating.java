@@ -98,11 +98,7 @@ public class PlayerUpdating {
 		}
 		player.getSession().queueMessage(packet);
 
-		if(player.getRegionInstance() != null){
-			if(player.getRegionInstance() instanceof BossInstance){
-				((BossInstance)player.getRegionInstance()).process();
-			}
-		}
+
 	}
 
 	/**

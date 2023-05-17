@@ -92,9 +92,12 @@ public class PlayerDeathTask extends Task {
         			Position teleportLocation = locations[RandomUtility.exclusiveRandom(0, locations.length)];
         			TeleportHandler.teleportPlayer(player, teleportLocation, player.getSpellbook().getTeleportType());
                     }
-                    if(player.getRegionInstance() != null){
-                        if(player.getRegionInstance() instanceof BossInstance)
-                            ((BossInstance) player.getRegionInstance()).dispose();
+                    if(player.getInstance() != null){
+                        player.getInstance().remove(player);
+                    }
+                    if(player.getInstance() != null){
+                        if(player.getInstance() instanceof BossInstance)
+                            ((BossInstance) player.getInstance()).dispose();
                     }
                     break;
                 case 1:

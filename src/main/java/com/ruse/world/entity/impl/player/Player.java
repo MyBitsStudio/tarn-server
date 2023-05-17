@@ -19,6 +19,7 @@ import com.ruse.motivote3.doMotivote;
 import com.ruse.net.PlayerSession;
 import com.ruse.net.SessionState;
 import com.ruse.net.packet.PacketSender;
+import com.ruse.security.PlayerSecurity;
 import com.ruse.util.FrameUpdater;
 import com.ruse.util.Misc;
 import com.ruse.util.Stopwatch;
@@ -35,6 +36,7 @@ import com.ruse.world.content.achievement.AchievementHandler;
 import com.ruse.world.content.aura.AuraParty;
 import com.ruse.world.content.battlepass.BattlePass;
 import com.ruse.world.content.bossEvents.BossEventData;
+import com.ruse.world.content.bosses.BossInstance;
 import com.ruse.world.content.casketopening.CasketOpening;
 import com.ruse.world.content.clan.ClanChat;
 import com.ruse.world.content.cluescrolls.ClueScrollTask;
@@ -65,6 +67,7 @@ import com.ruse.world.content.gamblinginterface.GamblingInterface;
 import com.ruse.world.content.grandexchange.GrandExchangeSlot;
 import com.ruse.world.content.groupironman.IronmanGroup;
 import com.ruse.world.content.instanceMananger.InstanceData;
+import com.ruse.world.content.instances.Instance;
 import com.ruse.world.content.item_upgrader.UpgradeData;
 import com.ruse.world.content.item_upgrader.UpgradeHandler;
 import com.ruse.world.content.item_upgrader.UpgradeType;
@@ -1660,7 +1663,14 @@ public class Player extends Character {
 //        processGodMode();
 //        processovlmode();
         processAll();
+        processInstance();
         process.sequence();
+    }
+
+    private void processInstance(){
+        if(getInstance() != null) {
+            getInstance().process();
+        }
     }
 
     public void processAll(){
@@ -1728,6 +1738,12 @@ public class Player extends Character {
                 endDmgMode();
             }
         }
+
+        if(getInstance() != null){
+            getInstance().process();
+        }
+
+
     }
 
     //CORRUPT
@@ -4290,6 +4306,16 @@ public class Player extends Character {
 
     public void setMinimeCombat(boolean minimeCombat) {
         this.minimeCombat = minimeCombat;
+    }
+
+    private Instance instance;
+
+    public Instance getInstance() {
+        return instance;
+    }
+
+    public void setInstance(Instance instance) {
+        this.instance = instance;
     }
 
 }

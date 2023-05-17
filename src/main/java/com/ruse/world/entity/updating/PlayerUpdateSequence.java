@@ -35,6 +35,7 @@ public class PlayerUpdateSequence implements UpdateSequence<Player> {
 				t.getWalkToTask().tick();
 			t.getMovementQueue().sequence();
 			NpcAggression.target(t);
+
 		} catch (Exception e) {
 			e.printStackTrace();
 			World.deregister(t);

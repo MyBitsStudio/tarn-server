@@ -373,6 +373,10 @@ public class Position {
         return "Position values: [region, x, y, z] - [" + getRegionId() + ", " + x + ", " + y + ", " + z + "].";
     }
 
+    public int[] toIntArray(){
+        return new int[]{getRegionId(), x, y, z};
+    }
+
     @Override
     public int hashCode() {
         return z << 30 | x << 15 | y;

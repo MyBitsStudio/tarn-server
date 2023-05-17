@@ -74,14 +74,17 @@ public abstract class RaidRoom extends MapInstance {
     public void process() {
         if(isStarted()) {
             if (raid == null) {
+                System.out.println("Raid is null");
                 setFinished(true);
                 destroy();
             } else {
                 if (raid.isFinished()) {
+                    System.out.println("Raid is finished");
                     setFinished(true);
                 }
 
                 if (raid.getCurrentRoom() != this) {
+                    System.out.println("Raid current room is not this room");
                     setFinished(true);
                     destroy();
                 }
@@ -91,6 +94,7 @@ public abstract class RaidRoom extends MapInstance {
                 }
 
                 if(getBoss().isDying()){
+                    System.out.println("Boss is dying");
                     setFinished(true);
                 }
             }

@@ -276,6 +276,10 @@ public class CombatBuilder {
 		return victim != null;
 	}
 
+	public boolean wasAttacking(){
+		return !character.getLastCombat().elapsed(5000);
+	}
+
 	public boolean isBeingAttacked() {
 		return !character.getLastCombat().elapsed(5000);
 	}

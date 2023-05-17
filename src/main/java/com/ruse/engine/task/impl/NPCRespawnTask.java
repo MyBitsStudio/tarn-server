@@ -35,11 +35,17 @@ public class NPCRespawnTask extends Task {
 		} else if (npc_.getId() > 5070 && npc_.getId() < 5081) {
 			Hunter.HUNTER_NPC_LIST.add(npc_);
 		}
+
 		if (killer != null) {
 			if (killer.getRegionInstance() != null) {
 				if ((killer.getLocation()  == Location.INSTANCE1 || killer.getLocation()  == Location.INSTANCE2) && npc_.getLocation() == killer.getLocation()) {
 					killer.getRegionInstance().getNpcsList().add(npc_);
 				}
+			}
+
+			if(killer.getInstance() != null){
+				killer.getInstance().spawnNPC(npc_);
+				super.stop();
 			}
 		}
 

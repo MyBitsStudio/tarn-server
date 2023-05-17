@@ -28,11 +28,6 @@ public class TeleportHandler {
 			return;
 		}*/
 
-		if (player.getRegionInstance() != null) {
-			if(player.getRegionInstance() instanceof BossInstance)
-				return;
-		}
-
 		MapInstance instance = player.getMapInstance();
 		if (instance != null && !instance.canTeleport(player, targetLocation)) {
 			player.sendMessage("You cannot teleport in this instance.");
