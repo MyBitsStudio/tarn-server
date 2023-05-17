@@ -153,8 +153,8 @@ public class NPCOptionPacketListener implements PacketListener {
                     }
                     break;
                 case PlayerOwnedShopManager.NPC_ID:
-                    //player.sendMessage("POS is currently disabled for a limited time.");
-                    player.getPlayerOwnedShopManager().options();
+                    player.sendMessage("POS is currently disabled.");
+                    //player.getPlayerOwnedShopManager().options();
                     break;
                 case 4652:
                     ShopManager.getShops().get(106).open(player);
@@ -1128,8 +1128,8 @@ public class NPCOptionPacketListener implements PacketListener {
                         DialogueManager.start(player, SlayerDialogues.findAssignment(player));
                         break;
                     case PlayerOwnedShopManager.NPC_ID:
-                       // player.sendMessage("POS is currently disabled for a limited time.");
-                        player.getPlayerOwnedShopManager().openMain();
+                        player.sendMessage("POS is currently disabled.");
+                       // player.getPlayerOwnedShopManager().openMain();
                         // player.getPlayerOwnedShopManager().open();
                         break;
                     case 8459:
@@ -1501,8 +1501,8 @@ public class NPCOptionPacketListener implements PacketListener {
                         break;
 
                     case PlayerOwnedShopManager.NPC_ID:
-                       // player.sendMessage("POS is currently disabled for a limited time.");
-                        player.getPlayerOwnedShopManager().openEditor();
+                       player.sendMessage("POS is currently disabled.");
+                        //player.getPlayerOwnedShopManager().openEditor();
                         break;
                     case 788:
                         player.sendMessage("@bla@There are currently @red@" + LotterySystem.getCurrentTicketAmount()
@@ -1643,8 +1643,8 @@ public class NPCOptionPacketListener implements PacketListener {
                         ShopManager.getShops().get(118).open(player);
                         break;
                     case PlayerOwnedShopManager.NPC_ID:
-                        //player.sendMessage("POS is currently disabled for a limited time.");
-                        player.getPlayerOwnedShopManager().claimEarnings();
+                        player.sendMessage("POS is currently disabled .");
+                        //player.getPlayerOwnedShopManager().claimEarnings();
                         // player.getPlayerOwnedShopManager().claimEarnings();
                         break;
                     case 946:

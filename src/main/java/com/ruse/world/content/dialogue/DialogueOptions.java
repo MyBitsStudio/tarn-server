@@ -74,7 +74,8 @@ public class DialogueOptions {
         if (id == FIRST_OPTION_OF_FIVE) {
             switch (player.getDialogueActionId()) {
                 case 101:
-                    player.getPlayerOwnedShopManager().openMain();
+                    player.sendMessage("POs is currently disabled");
+                   // player.getPlayerOwnedShopManager().openMain();
                     break;
                 case 9924:
                     player.setInputHandling(new WithdrawCurrencyFromCurrencyPouch(0));

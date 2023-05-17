@@ -17,7 +17,7 @@ public class BankModifiableX implements PacketListener {
 	//	System.out.println("HERE" + component);
 		switch (component) {
 			case 32621:
-				player.getPlayerOwnedShopManager().handleBuy(slot, item, 10);
+				//player.getPlayerOwnedShopManager().handleBuy(slot, item, 10);
 				break;
 		case 5064:
 			Item storing = player.getInventory().forSlot(slot).copy().setAmount(amount);

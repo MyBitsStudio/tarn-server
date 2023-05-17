@@ -95,10 +95,10 @@ public class ItemContainerActionPacketListener implements PacketListener {
 				break;
 
 			case 32621:
-				player.getPlayerOwnedShopManager().handleBuy(slot, id, -1);
+				//player.getPlayerOwnedShopManager().handleBuy(slot, id, -1);
 				break;
 			case -31915:
-				player.getPlayerOwnedShopManager().handleWithdraw(slot, id, -1);
+				//player.getPlayerOwnedShopManager().handleWithdraw(slot, id, -1);
 				break;
 			case -28382:
 				//player.getPlayerOwnedShopManager().handleStore(slot, id, 1);
@@ -499,10 +499,10 @@ public class ItemContainerActionPacketListener implements PacketListener {
 				player.getEventBossManager().addNpcDropReward(id, 10, slot);
 				break;
 			case 32621:
-				player.getPlayerOwnedShopManager().handleBuy(slot, id, 1);
+				//player.getPlayerOwnedShopManager().handleBuy(slot, id, 1);
 				break;
 			case -31915:
-				player.getPlayerOwnedShopManager().handleWithdraw(slot, id, 1);
+				//player.getPlayerOwnedShopManager().handleWithdraw(slot, id, 1);
 				break;
 			case -28382:
 				player.sendMessage("@red@ POS Adding is disabled. Please withdraw your items.");
@@ -828,30 +828,30 @@ public class ItemContainerActionPacketListener implements PacketListener {
 					player.getGambling().removeGambledItem(id, player.getInventory().getAmount(id));
 				break;
 			case 32621:
-				player.setInputHandling(new Input() {
-
-					@Override
-					public void handleAmount(Player player, int amount) {
-						player.getPlayerOwnedShopManager().handleBuy(slot, id, amount);
-					}
-
-				});
-				player.getPacketSender().sendEnterAmountPrompt("How many would you like to buy?:");
+//				player.setInputHandling(new Input() {
+//
+//					@Override
+//					public void handleAmount(Player player, int amount) {
+//						player.getPlayerOwnedShopManager().handleBuy(slot, id, amount);
+//					}
+//
+//				});
+//				player.getPacketSender().sendEnterAmountPrompt("How many would you like to buy?:");
 				break;
 			case -28382:
-				player.sendMessage("@red@ POS Adding is disabled. Please withdraw your items.");
+				player.sendMessage("@red@ POS Adding is disabled.");
 				//player.getPlayerOwnedShopManager().handleStore(slot, id, Integer.MAX_VALUE);
 				break;
 			case -31915:
-				player.setInputHandling(new Input() {
-
-					@Override
-					public void handleAmount(Player player, int amount) {
-						player.getPlayerOwnedShopManager().handleWithdraw(slot, id, amount);
-					}
-
-				});
-				player.getPacketSender().sendEnterAmountPrompt("How many would you like to withdraw?:");
+//				player.setInputHandling(new Input() {
+//
+//					@Override
+//					public void handleAmount(Player player, int amount) {
+//						player.getPlayerOwnedShopManager().handleWithdraw(slot, id, amount);
+//					}
+//
+//				});
+//				player.getPacketSender().sendEnterAmountPrompt("How many would you like to withdraw?:");
 				break;
 			case Trading.INTERFACE_REMOVAL_ID:
 				if (player.getTrading().inTrade()) {

@@ -22,9 +22,9 @@ public class PacketConstants {
 				int id = packet.readShortA();
 				int slot = packet.readShortA();
 				if (-31915 == interfaceId) {
-					player.getPlayerOwnedShopManager().handleWithdraw(slot, id, 5);
+					//player.getPlayerOwnedShopManager().handleWithdraw(slot, id, 5);
 				} else if (32621 == interfaceId) {
-					player.getPlayerOwnedShopManager().handleBuy(slot, id, 5);
+					//player.getPlayerOwnedShopManager().handleBuy(slot, id, 5);
 				}
 			}
 		};
@@ -36,7 +36,7 @@ public class PacketConstants {
 				String string = text.substring(index + 1);
 
 				if (id == 32611) {
-					player.getPlayerOwnedShopManager().searchItem(string);
+					//player.getPlayerOwnedShopManager().searchItem(string);
 				}
 			}
 		};

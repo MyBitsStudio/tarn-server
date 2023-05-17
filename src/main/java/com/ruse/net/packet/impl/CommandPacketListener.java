@@ -802,11 +802,12 @@ public class CommandPacketListener implements PacketListener {
             player.sendMessage("You either need $50 total claim or can only use this command at ::Home");
             return;
         } else if (command[0].equalsIgnoreCase("pos") && player.getAmountDonated() >= Donation.EMERALD_DONATION_AMOUNT) {
-            player.sendMessage("As a $50 Donator benefit, you can use this command anywhere.");
-            player.getPlayerOwnedShopManager().options();
+            player.sendMessage("POs is currently disabled");
+            //player.getPlayerOwnedShopManager().options();
         } else if (command[0].equalsIgnoreCase("pos") && player.getLocation() == Location.HOME_BANK
                 && player.getAmountDonated() < Donation.EMERALD_DONATION_AMOUNT) {
-            player.getPlayerOwnedShopManager().options();
+            player.sendMessage("POs is currently disabled");
+            //player.getPlayerOwnedShopManager().options();
         }
         if (command[0].equalsIgnoreCase("setloginpin")) {
             if (player.getHasPin() == false) {

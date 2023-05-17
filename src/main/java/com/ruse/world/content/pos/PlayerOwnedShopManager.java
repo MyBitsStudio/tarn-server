@@ -590,59 +590,59 @@ public class PlayerOwnedShopManager {
      */
     public boolean handleButton(int buttonId) {
         if (buttonId == 114008 || buttonId == 113009) {
-            player.setInputHandling(new PosItemInput());
-            player.getPacketSender().sendEnterInputPrompt("Item Name:");
+//            player.setInputHandling(new PosItemInput());
+//            player.getPacketSender().sendEnterInputPrompt("Item Name:");
             return true;
         }
         if (buttonId == 114009 || buttonId == 113010) {
-            player.setInputHandling(new PosPlayerInput());
-            player.getPacketSender().sendEnterInputPrompt("Player Name:");
+//            player.setInputHandling(new PosPlayerInput());
+//            player.getPacketSender().sendEnterInputPrompt("Player Name:");
             return true;
         }
         if (buttonId >= 114205 && buttonId <= 114700) {
             if (buttonId % 5 == 0) {
-                openStore((buttonId - 114205) / 5);
+                //openStore((buttonId - 114205) / 5);
                 return true;
             }
         }
 
         if (buttonId >= 114010 && buttonId <= 114013) {
             handleFilter(buttonId - 114010);
-            openListing();
+            //openListing();
             return true;
         }
         if (buttonId >= 115008 && buttonId <= 115011) {
             handleFilterHistory(buttonId - 115008);
-            openHistory();
+            //openHistory();
             return true;
         }
         if (buttonId == 113007) {
-            claimEarnings();
+            //claimEarnings();
             return true;
         }
         if (buttonId == 114006 || buttonId == -31925 || buttonId == 115006) {
             if(getMyShop() != null){
                 getMyShop().setUpdating(false);
             }
-            openMain();
+            //openMain();
             return true;
         }
         if (buttonId == 114007 || buttonId == 32611) {
-            openListing();
+            //openListing();
             return true;
         }
         if (buttonId == 115007) {
-            openHistory();
+            //openHistory();
             return true;
         }
         if (buttonId == 113008) {
-            filtered.clear();
-            setSorting(Sorting.RECENT);
-            openListing();
+//            filtered.clear();
+//            setSorting(Sorting.RECENT);
+//            openListing();
             return true;
         }
         if (buttonId >= 113559 && buttonId <= 113820) {
-            openEditor();
+            //openEditor();
             return true;
         }
 
