@@ -9,6 +9,7 @@ import com.ruse.model.Position;
 import com.ruse.world.content.Kraken;
 import com.ruse.world.content.Sounds;
 import com.ruse.world.content.Sounds.Sound;
+import com.ruse.world.content.bosses.BossInstance;
 import com.ruse.world.content.skill.impl.old_dungeoneering.Dungeoneering;
 import com.ruse.world.entity.impl.player.Player;
 import com.ruse.world.instance.MapInstance;
@@ -26,6 +27,13 @@ public class TeleportHandler {
 			player.getPacketSender().sendMessage("As a jailed person. You cannot do this.");
 			return;
 		}*/
+
+		if (player.getRegionInstance() != null) {
+			if(player.getRegionInstance() instanceof BossInstance)
+				((BossInstance) player.getRegionInstance()).dispose();
+			else
+				player.getRegionInstance().destruct();
+		}
 
 		MapInstance instance = player.getMapInstance();
 		if (instance != null && !instance.canTeleport(player, targetLocation)) {

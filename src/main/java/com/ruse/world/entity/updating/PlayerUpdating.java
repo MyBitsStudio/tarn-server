@@ -20,6 +20,7 @@ import com.ruse.net.packet.PacketBuilder;
 import com.ruse.net.packet.PacketBuilder.AccessType;
 import com.ruse.net.packet.ValueType;
 import com.ruse.world.World;
+import com.ruse.world.content.bosses.BossInstance;
 import com.ruse.world.entity.Entity;
 import com.ruse.world.entity.impl.mini.MiniPlayer;
 import com.ruse.world.entity.impl.player.Player;
@@ -96,6 +97,12 @@ public class PlayerUpdating {
 			packet.initializeAccess(AccessType.BYTE);
 		}
 		player.getSession().queueMessage(packet);
+
+		if(player.getRegionInstance() != null){
+			if(player.getRegionInstance() instanceof BossInstance){
+				((BossInstance)player.getRegionInstance()).process();
+			}
+		}
 	}
 
 	/**

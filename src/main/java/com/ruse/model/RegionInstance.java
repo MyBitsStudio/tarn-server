@@ -16,6 +16,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
  */
 public class RegionInstance {
 
+
 	public enum RegionInstanceType {
 		HALLS_OF_VALOR, BARROWS, THE_SIX, GRAVEYARD, RAID1, FIGHT_CAVE, WARRIORS_GUILD, NOMAD, RECIPE_FOR_DISASTER, CONSTRUCTION_HOUSE,
 		CONSTRUCTION_DUNGEON, TRIO, KRAKEN, CORPOREAL_BEAST, KRIL_TSUTSAROTH, GENERAL_GRAARDOR, COMMANDER_ZILYANA,
@@ -36,7 +37,8 @@ public class RegionInstance {
 		this.owner = p;
 		this.type = type;
 		this.npcsList = new CopyOnWriteArrayList<>();
-		if (type == RegionInstanceType.CONSTRUCTION_HOUSE || type == RegionInstanceType.THE_SIX) {
+		if (type == RegionInstanceType.CONSTRUCTION_HOUSE || type == RegionInstanceType.THE_SIX
+		|| type == RegionInstanceType.COUNTER_BOSS) {
 			this.playersList = new CopyOnWriteArrayList<>();
 		}
 	}
@@ -83,7 +85,7 @@ public class RegionInstance {
 	}
 	
 	public void add(Character c) {
-		if (type == RegionInstanceType.CONSTRUCTION_HOUSE) {
+		if (type == RegionInstanceType.CONSTRUCTION_HOUSE || type == RegionInstanceType.COUNTER_BOSS) {
 			if (c.isPlayer()) {
 				playersList.add((Player) c);
 			} else if (c.isNpc()) {
@@ -97,7 +99,7 @@ public class RegionInstance {
 	}
 
 	public void remove(Character c) {
-		if (type == RegionInstanceType.CONSTRUCTION_HOUSE) {
+		if (type == RegionInstanceType.CONSTRUCTION_HOUSE || type == RegionInstanceType.COUNTER_BOSS) {
 			if (c.isPlayer()) {
 				playersList.remove((Player) c);
 				if (owner == c) {
