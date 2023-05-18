@@ -3,6 +3,7 @@ package com.ruse.world.content.forge.shop;
 import com.google.common.collect.ImmutableList;
 import com.ruse.model.container.impl.Inventory;
 import com.ruse.model.definitions.ItemDefinition;
+import com.ruse.model.input.EnterAmount;
 import com.ruse.world.content.forge.Forge;
 import com.ruse.world.entity.impl.player.Player;
 
@@ -58,6 +59,16 @@ public class ForgeShopHandler {
         if(items != null) {
             player.getPacketSender().sendItemContainer(items, 49565);
         }
+    }
+
+    public static void purchaseX(Player player, int itemId) {
+        player.getPacketSender().sendEnterAmountPrompt("Enter amount of " + ItemDefinition.forId(itemId).getName() + " to buy:");
+        player.setInputHandling(new EnterAmount() {
+            @Override
+            public void handleAmount(Player player, int amount) {
+                purchase(player, itemId, amount);
+            }
+        });
     }
 
     public static void purchase(Player player, int itemId, int amount) {

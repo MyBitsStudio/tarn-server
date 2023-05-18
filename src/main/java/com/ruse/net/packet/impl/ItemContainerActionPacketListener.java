@@ -770,6 +770,9 @@ public class ItemContainerActionPacketListener implements PacketListener {
 					.sendMessage("fourthAction itemContainer. IF: " + interfaceId + " slot: " + slot + ", id: " + id);
 		}
 		switch (interfaceId) {
+			case -15971:
+				ForgeShopHandler.purchaseX(player, id);
+				break;
 			case 31510:
 				player.getPacketSender().sendEnterAmountPrompt("How many would you like to remove from the NPC Drops?");
 				player.setInputHandling(new EnterAmount() {

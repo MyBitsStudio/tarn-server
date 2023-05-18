@@ -19,7 +19,6 @@ import com.ruse.motivote3.doMotivote;
 import com.ruse.net.PlayerSession;
 import com.ruse.net.SessionState;
 import com.ruse.net.packet.PacketSender;
-import com.ruse.security.PlayerSecurity;
 import com.ruse.util.FrameUpdater;
 import com.ruse.util.Misc;
 import com.ruse.util.Stopwatch;
@@ -36,7 +35,6 @@ import com.ruse.world.content.achievement.AchievementHandler;
 import com.ruse.world.content.aura.AuraParty;
 import com.ruse.world.content.battlepass.BattlePass;
 import com.ruse.world.content.bossEvents.BossEventData;
-import com.ruse.world.content.bosses.BossInstance;
 import com.ruse.world.content.casketopening.CasketOpening;
 import com.ruse.world.content.clan.ClanChat;
 import com.ruse.world.content.cluescrolls.ClueScrollTask;
@@ -98,6 +96,7 @@ import com.ruse.world.content.upgrading.OldUpgradeInterface;
 import com.ruse.world.content.zombie.ZombieParty;
 import com.ruse.world.entity.actor.player.controller.ControllerManager;
 import com.ruse.world.entity.impl.Character;
+import com.ruse.world.entity.impl.GroundItemManager;
 import com.ruse.world.entity.impl.mini.MiniPManager;
 import com.ruse.world.entity.impl.mini.MiniPlayer;
 import com.ruse.world.entity.impl.npc.NPC;
@@ -305,6 +304,21 @@ public class Player extends Character {
         } else {
             dungeoneeringFloor = 0;
             dungeoneeringPrestige++;
+        }
+    }
+
+    public void addItemUnderAnyCircumstances(Item item) {
+        if(!getInventory().full(item.getId())) {
+            getInventory().add(item);
+        } else {
+            if(getBank(getCurrentBankTab()).full(item.getId())) {
+                GroundItemManager.spawnGroundItem(this, new GroundItem(item, getPosition(),
+                        username, false, 150, false, -1));
+                getPacketSender().sendMessage("@red@[WARNING] @bla@" + item.getDefinition().getName() + " x" + item.getAmount() + " has been dropped below you.");
+                return;
+            }
+            getBank(getCurrentBankTab()).add(item);
+            getPacketSender().sendMessage("@red@[WARNING] @bla@" + item.getDefinition().getName() + " x" + item.getAmount() + " has been sent to your bank.");
         }
     }
 
