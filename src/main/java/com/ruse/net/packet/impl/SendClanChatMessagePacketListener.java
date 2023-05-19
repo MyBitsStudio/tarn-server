@@ -24,15 +24,14 @@ public class SendClanChatMessagePacketListener implements PacketListener {
 			return;
 		}
 		if(StringCleaner.securityBreach(clanMessage)){
-			player.getPSecurity().raiseSecurity();
-			player.getPSecurity().raiseInvalidWords();
+			player.getPSecurity().getPlayerLock().increase("secLock", clanMessage);
 			System.out.println("Security breach: "+ clanMessage);
 			player.getPacketSender().sendMessage("@red@[SECURITY] This is your only warning. Do not attempt to breach the security of the server again.");
 			return;
 		}
 
 		if(StringCleaner.censored(clanMessage)){
-			player.getPSecurity().raiseInvalidWords();
+			player.getPSecurity().getPlayerLock().increase("wordAtt", clanMessage);
 			System.out.println("Censored word: "+clanMessage);
 			player.getPacketSender().sendMessage("@red@[SECURITY] This is your only warning. Do not attempt to breach the security of the server again.");
 			return;
@@ -40,7 +39,8 @@ public class SendClanChatMessagePacketListener implements PacketListener {
 		player.afkTicks = 0;
 		player.afk = false;
 		ClanChatManager.sendMessage(player, clanMessage);
-		JavaCord.sendMessage("\uD83D\uDCAC│\uD835\uDDF0\uD835\uDDF9\uD835\uDDEE\uD835\uDDFB-\uD835\uDDF0\uD835\uDDF5\uD835\uDDEE\uD835\uDE01", "**[" + player.getUsername() + "]  " + clanMessage + "  ** ");
+		if(!clanMessage.contains("@"))
+			JavaCord.sendMessage("\uD83D\uDCAC│\uD835\uDDF0\uD835\uDDF9\uD835\uDDEE\uD835\uDDFB-\uD835\uDDF0\uD835\uDDF5\uD835\uDDEE\uD835\uDE01", "**[" + player.getUsername() + "]  " + clanMessage + "  ** ");
 	}
 
 }

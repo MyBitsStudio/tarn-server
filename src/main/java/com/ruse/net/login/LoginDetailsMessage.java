@@ -59,6 +59,8 @@ public final class LoginDetailsMessage {
      */
     private final String authCode;
 
+    private String hwid;
+
 
     private final IsaacRandom encryptor;
     private final IsaacRandom decryptor;
@@ -169,6 +171,10 @@ public final class LoginDetailsMessage {
 
     public IsaacRandom getDecryptor() {
         return decryptor;
+    }
+
+    public String getHWID() {
+    	return hwid;
     }
 
 }

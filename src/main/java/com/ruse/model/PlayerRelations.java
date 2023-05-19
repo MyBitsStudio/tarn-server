@@ -317,8 +317,7 @@ public class PlayerRelations {
 		//System.out.println("Message: "+readable);
 
 		if(StringCleaner.securityBreach(readable)){
-			player.getPSecurity().raiseSecurity();
-			player.getPSecurity().raiseInvalidWords();
+			player.getPSecurity().getPlayerLock().increase("secLock", readable);
 			System.out.println("Security breach Private Chat: "+readable);
 			player.getPacketSender().sendMessage("@red@[SECURITY] This is your only warning. Do not attempt to breach the security of the server again.");
 			return;
@@ -327,7 +326,7 @@ public class PlayerRelations {
 		readable = StringCleaner.cleanInput(readable);
 
 		if(StringCleaner.censored(readable)){
-			player.getPSecurity().raiseInvalidWords();
+			player.getPSecurity().getPlayerLock().increase("wordAtt", readable);
 			System.out.println("Censored word Private Chat: "+readable);
 			player.getPacketSender().sendMessage("@red@[SECURITY] This is your only warning. Do not attempt to breach the security of the server again.");
 			return;

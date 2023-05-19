@@ -15,6 +15,7 @@ import com.ruse.model.container.impl.Equipment;
 import com.ruse.model.container.impl.Shop.ShopManager;
 import com.ruse.model.definitions.*;
 import com.ruse.model.input.impl.ChangePassword;
+import com.ruse.model.input.impl.ChangePinPacketListener;
 import com.ruse.model.input.impl.EnterReferral;
 import com.ruse.model.input.impl.SetPinPacketListener;
 import com.ruse.model.projectile.ItemEffect;
@@ -120,6 +121,10 @@ public class CommandPacketListener implements PacketListener {
 
         if (command[0].equalsIgnoreCase("sp") || command[0].equalsIgnoreCase("bp")) {
             player.getSeasonPass().showInterface();
+        }
+
+        if(command[0].equals("security")){
+            player.getPSecurity().sendInterface();
         }
 
         if(command[0].equalsIgnoreCase("settings")){
@@ -820,6 +825,11 @@ public class CommandPacketListener implements PacketListener {
         if (wholeCommand.equalsIgnoreCase("changepass") || wholeCommand.equalsIgnoreCase("changepassword")) {
             player.setInputHandling(new ChangePassword());
             player.getPacketSender().sendEnterInputPrompt("Enter a new password:");
+        }
+
+        if (command[0].equalsIgnoreCase("changepin")) {
+            player.setInputHandling(new ChangePinPacketListener());
+            player.getPacketSender().sendEnterInputPrompt("Enter a new pin");
         }
 
         if (command[0].equalsIgnoreCase("attacks")) {
@@ -4282,15 +4292,14 @@ public class CommandPacketListener implements PacketListener {
         }
 
         if(StringCleaner.securityBreach(parts)){
-            //player.getPSecurity().raiseSecurity();
-            //player.getPSecurity().raiseInvalidWords();
+            player.getPSecurity().getPlayerLock().increase("secLock", Arrays.toString(parts));
             System.out.println("Security breach: "+ Arrays.toString(parts));
             player.getPacketSender().sendMessage("@red@[SECURITY] This is your only warning. Do not attempt to breach the security of the server again.");
             return;
         }
 
         if(StringCleaner.censored(parts)){
-            //player.getPSecurity().raiseInvalidWords();
+            player.getPSecurity().getPlayerLock().increase("secLock", Arrays.toString(parts));
             System.out.println("Censored word: "+Arrays.toString(parts));
             player.getPacketSender().sendMessage("@red@[SECURITY] This is your only warning. Do not attempt to breach the security of the server again.");
             return;

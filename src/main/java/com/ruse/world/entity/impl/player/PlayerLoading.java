@@ -12,6 +12,7 @@ import com.ruse.model.container.impl.Bank;
 import com.ruse.model.container.impl.UimBank;
 import com.ruse.net.login.LoginDetailsMessage;
 import com.ruse.net.login.LoginResponses;
+import com.ruse.security.tools.SecurityUtils;
 import com.ruse.world.content.CurrencyPouch;
 import com.ruse.world.content.DropLog;
 import com.ruse.world.content.DropLog.DropLogEntry;
@@ -53,11 +54,12 @@ public class PlayerLoading {
     }
 
     public static int getResult(Player player, LoginDetailsMessage msg) {
-        player.getPSecurity().setUsername(msg.getUsername());
-        player.getPSecurity().setIp(player.getHostAddress());
-        player.getPSecurity().loadAll();
-        int result = player.getPSecurity().loginCode();
-    	return result == 0 ? getResult(player) : result;
+//        player.getPSecurity().setUsername(msg.getUsername());
+//        player.getPSecurity().setIp(player.getHostAddress());
+//        player.getPSecurity().loadAll();
+//        int result = player.getPSecurity().loginCode();
+    	//return result == 0 ? getResult(player) : result;
+        return 0;
     }
 
     public static int getResult(Player player) {
@@ -69,7 +71,7 @@ public class PlayerLoading {
         // If the file doesn't exist, we're logging in for the first
         // time and can skip all of this.
         if (!file.exists()) {
-            player.getPSecurity().start(player.getPassword());
+          //  player.getPSecurity().start(player.getPassword());
             return LoginResponses.NEW_ACCOUNT;
         }
 
@@ -118,29 +120,23 @@ public class PlayerLoading {
                     byte[] salt = builder.fromJson(reader.get("seed"), byte[].class);
                     byte[] hash = builder.fromJson(reader.get("auth"), byte[].class);
 
-                    if(player.getPSecurity().verifyPassword(player.getPassword(), hash, salt)){
-                        player.setSeed(salt);
-                        player.setAuth(hash);
-                        player.setPassword("");
+                    if(SecurityUtils.verifyPassword(player.getPassword(), hash, salt)){
+
                     } else {
-                        player.getPSecurity().invalid();
                         return LoginResponses.LOGIN_INVALID_CREDENTIALS;
                     }
                 }
             } else if (reader.has("password")) {
-				String password = reader.get("password").getAsString();
-				if (!password.equalsIgnoreCase("")) {
+                String password = reader.get("password").getAsString();
+                if (!password.equalsIgnoreCase("")) {
                     if (player.getPassword().equals(password)) {
-                        player.getPSecurity().start(player.getPassword());
-                        player.getPSettings().setSetting("pass-change", true);
-                        player.setPassword("");
+
                     } else {
-                        player.getPSecurity().invalid();
                         return LoginResponses.LOGIN_INVALID_CREDENTIALS;
                     }
 
-				}
-			} else {
+                }
+            } else {
                 return LoginResponses.LOGIN_INVALID_CREDENTIALS;
             }
 
@@ -1243,7 +1239,6 @@ public class PlayerLoading {
                 player.getForge().setProgress(reader.get("forge-progress").getAsInt());
             }
 
-            player.getPSecurity().reset();
 
             /*
              * File rooms = new File("./data/saves/housing/rooms/" + player.getUsername() +

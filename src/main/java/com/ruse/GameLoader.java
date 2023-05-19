@@ -14,6 +14,7 @@ import com.ruse.model.definitions.NpcDefinition;
 import com.ruse.model.definitions.WeaponInterfaces;
 import com.ruse.net.PipelineFactory;
 import com.ruse.net.security.ConnectionHandler;
+import com.ruse.security.ServerSecurity;
 import com.ruse.world.World;
 import com.ruse.world.allornothing.DoubleOrNothing;
 import com.ruse.world.clip.region.RegionClipping;
@@ -63,6 +64,8 @@ public final class GameLoader {
 
 	public void init() {
 		Preconditions.checkState(!serviceLoader.isShutdown(), "The bootstrap has been bound already!");
+
+		ServerSecurity.getInstance().starting();
 
 		ServiceManager.INSTANCE.init();
 

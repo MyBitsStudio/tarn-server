@@ -28,6 +28,7 @@ public class TeleportInterface {
     public static boolean handleButton(Player player, int buttonID) {
 
         switch (buttonID) {
+
             case 1716:
             case 122005:
             case 11004:
@@ -37,12 +38,12 @@ public class TeleportInterface {
             case 11011:
             case 11014:
             case 11017:
-                if (!player.isOpenedTeleports()) {
-                    player.setOpenedTeleports(true);
-                    TeleportInterface.sendMonsterData(player, TeleportInterface.Monsters.values()[0]);
-                    TeleportInterface.sendMonsterTab(player);
-                } else {
+                if (player.isOpenedTeleports()) {
                     player.getPacketSender().sendInterface(122000);
+                } else {
+                    player.setOpenedTeleports(true);
+                    TeleportInterface.sendMonsterData(player, Monsters.values()[0]);
+                    TeleportInterface.sendMonsterTab(player);
                 }
                 return true;
             case 122008:

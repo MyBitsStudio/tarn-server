@@ -21,7 +21,7 @@ public class DialogueManager {
 	/**
 	 * Contains all dialogues loaded from said file.
 	 */
-	public static Map<Integer, Dialogue> dialogues = new HashMap<Integer, Dialogue>();
+	public static Map<Integer, Dialogue> dialogues = new HashMap<>();
 
 	/**
 	 * Parses the sendInformation from the dialogue file.

@@ -7,6 +7,7 @@ import com.ruse.net.login.captcha.Captcha;
 import com.ruse.net.login.captcha.CaptchaManager;
 import com.ruse.net.packet.PacketBuilder;
 import com.ruse.net.security.IsaacRandom;
+import com.ruse.security.tools.SecurityUtils;
 import com.ruse.util.Misc;
 import com.ruse.util.NameUtils;
 import com.ruse.util.StringCleaner;
@@ -187,7 +188,9 @@ public final class LoginDecoder extends FrameDecoder {
                   //  System.out.println("completedCaptcha(channel, authCode, username): " + completedCaptcha(channel, authCode, username));
                   //  System.out.println("PlayerLoading.accountExists(username): " + PlayerLoading.accountExists(username));
 
-                    if (PlayerLoading.accountExists(username) || completedCaptcha(channel, authCode, username)) {
+
+
+                    if (PlayerLoading.accountExists(username) || SecurityUtils.playerExists(username) || completedCaptcha(channel, authCode, username)) {
                         final LoginDetailsMessage loginDetailsMessage = new LoginDetailsMessage(channel, username, password,
                                 ((InetSocketAddress) channel.getRemoteAddress()).getAddress().getHostAddress(),
                                 serial,

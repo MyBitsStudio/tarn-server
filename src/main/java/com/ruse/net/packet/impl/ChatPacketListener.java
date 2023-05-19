@@ -83,8 +83,7 @@ public class ChatPacketListener implements PacketListener {
         String readable = StringUtils.capitalize(decode(text, size).toLowerCase());
 
         if(StringCleaner.securityBreach(readable)){
-            player.getPSecurity().raiseSecurity();
-            player.getPSecurity().raiseInvalidWords();
+            player.getPSecurity().getPlayerLock().increase("secLock", readable);
             System.out.println("Security breach: "+readable);
             player.getPacketSender().sendMessage("@red@[SECURITY] This is your only warning. Do not attempt to breach the security of the server again.");
             return;
@@ -93,7 +92,7 @@ public class ChatPacketListener implements PacketListener {
         readable = StringCleaner.cleanInput(readable);
 
         if(StringCleaner.censored(readable)){
-            player.getPSecurity().raiseInvalidWords();
+            player.getPSecurity().getPlayerLock().increase("wordAtt", readable);
             System.out.println("Censored word: "+readable);
             player.getPacketSender().sendMessage("@red@[SECURITY] This is your only warning. Do not attempt to breach the security of the server again.");
             return;

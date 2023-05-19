@@ -1251,6 +1251,23 @@ public class DialogueOptions {
             }
         } else if (id == FIRST_OPTION_OF_TWO) {
             switch (player.getDialogueActionId()) {
+                //Security
+                case 11003:
+                    player.getPacketSender().sendInterfaceRemoval();
+                    DialogueManager.start(player, 11005);
+                    player.setDialogueActionId(11006);
+                    break;
+
+                case 11006:
+                    player.getPacketSender().sendInterfaceRemoval();
+                    player.sendMessage("2FA info is not implemented. Coming soon.");
+                    break;
+
+                case 11008:
+                    player.getPacketSender().sendInterfaceRemoval();
+                    player.getPSecurity().begin2FA();
+                    break;
+
                 case 6666://RAIDS invite
                     player.getPacketSender().sendInterfaceRemoval();
                     if(player.getInviteParty() == null){
@@ -1700,15 +1717,21 @@ public class DialogueOptions {
 
         } else if (id == SECOND_OPTION_OF_TWO) {
             switch (player.getDialogueActionId()) {
+                case 11003:
+                case 11008:
                 case 668://no
-                    player.getPacketSender().sendInterfaceRemoval();
-                    break;
                 case 8005:
                 case 568:
                 case 9928:
                 case 666:
                 case 901:
                     player.getPacketSender().sendInterfaceRemoval();
+                    break;
+
+                case 11006:
+                    player.getPacketSender().sendInterfaceRemoval();
+                    DialogueManager.start(player, 11007);
+                    player.setDialogueActionId(11008);
                     break;
                 case 8002:
                     player.getBank(player.getCurrentBankTab()).open();

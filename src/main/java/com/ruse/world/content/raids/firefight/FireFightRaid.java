@@ -20,7 +20,7 @@ public class FireFightRaid extends Raid {
         getParty().getPlayers().forEach(p -> {
             p.setRaid(this);
             p.moveTo(current.playerSpawn());
-            p.sendMessage(("Welcome to the " + getParty().key() + " raid!"));
+            p.sendMessage(("@red@[RAIDS]@red@ Welcome to the " + getParty().key() + " raid!"));
             p.getPA().sendInterfaceRemoval();
         });
 
@@ -38,7 +38,7 @@ public class FireFightRaid extends Raid {
         if (getParty() != null) {
             getParty().getPlayers().forEach(p -> {
                 p.getPA().sendInterfaceRemoval();
-                p.moveTo(new Position(1234, 3562, 0));
+                p.moveTo(new Position(2654, 2784, 0));
                 p.setRaid(null);
                 p.setRaidParty(null);
             });
@@ -70,7 +70,7 @@ public class FireFightRaid extends Raid {
 
         if(dead >= getParty().getPlayers().size()){
             getParty().getPlayers().forEach(p -> {
-                p.moveTo(new Position(1234, 3562, 0));
+                p.moveTo(new Position(2654, 2784, 0));
                 p.sendMessage("Your team has been defeated.");
                 dispose();
             });

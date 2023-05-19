@@ -29,11 +29,14 @@ public class FightFightParty extends RaidParty {
     @Override
     public void onJoin(@NotNull Player player) {
         player.sendMessage("You have joined the " + key() + " raid!");
+        player.setRaidParty(this);
     }
 
     @Override
     public void onLeave(Player player) {
         getPlayers().remove(player);
+        player.setRaidParty(null);
+        player.setRaid(null);
     }
 
     @Override
@@ -46,7 +49,7 @@ public class FightFightParty extends RaidParty {
     @Override
     public boolean handleStartObject(Player player, @NotNull GameObject object){
         switch(object.getId()){
-            case 12260:
+            case 621:
                 if(getOwner() == player){
                     startRaid();
                 }

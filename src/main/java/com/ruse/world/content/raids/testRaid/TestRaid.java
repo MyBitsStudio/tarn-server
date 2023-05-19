@@ -11,7 +11,6 @@ import com.ruse.world.entity.impl.player.Player;
 
 public class TestRaid extends Raid {
 
-
     public String RAID = "Test Raid";
 
     @Override
@@ -34,7 +33,6 @@ public class TestRaid extends Raid {
 
     @Override
     public void dispose() {
-        RaidsManager.getRaids().removeParty(getParty().getPlayers().get(0));
         if (getParty() != null) {
             getParty().getPlayers().forEach(p -> {
                 p.getPA().sendInterfaceRemoval();
@@ -43,7 +41,7 @@ public class TestRaid extends Raid {
                 p.setRaidParty(null);
             });
         }
-
+        RaidsManager.getRaids().removeParty(getParty().getPlayers().get(0));
     }
 
     @Override

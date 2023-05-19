@@ -2413,5 +2413,90 @@
         "line3": "No thanks.",
         "next": -1,
         "npcId": -1
+    },
+    {
+        "id": 11000,
+        "type": "NPC_STATEMENT",
+        "anim": "PLAIN_TALKING",
+        "lines": 4,
+        "line1": "You can be able to add 2FA to your account for ",
+        "line2": "better account security.",
+        "line3": "We highly recommend enabling this on your account for ",
+        "line4": "account security and ease of access.",
+        "next": 11001,
+        "npcId": 13459
+    },
+    {
+        "id": 11001,
+        "type": "NPC_STATEMENT",
+        "anim": "PLAIN_TALKING",
+        "lines": 4,
+        "line1": "You will not be able to add registered IP addresses to ",
+        "line2": "your account until this is activated.",
+        "line3": "We use Google Authenticator for our 2FA option and is  ",
+        "line4": "free to download and easy to use.",
+        "next": 11002,
+        "npcId": 13459
+    },
+    {
+        "id": 11002,
+        "type": "NPC_STATEMENT",
+        "anim": "PLAIN_TALKING",
+        "lines": 4,
+        "line1": "We will walk through how to set up your account for 2FA ",
+        "line2": "and how it will be used in the future.",
+        "line3": "Please make sure you have access to Google Authenticator before  ",
+        "line4": "continuing onto the next stage.",
+        "next": 11003,
+        "npcId": 13459
+    },
+    {
+        "id": 11003,
+        "type": "OPTION",
+        "lines": 2,
+        "line1": "I am ready!",
+        "line2": "No thanks...",
+        "next": -1,
+        "npcId": -1
+    },
+    {
+        "id": 11005,
+        "type": "NPC_STATEMENT",
+        "anim": "PLAIN_TALKING",
+        "lines": 2,
+        "line1": "Would you like to learn more about the 2FA process ",
+        "line2": "and how it works?",
+        "next": 11006,
+        "npcId": 13459
+    },
+    {
+        "id": 11006,
+        "type": "OPTION",
+        "lines": 2,
+        "line1": "Yes I would like to learn!",
+        "line2": "No thanks.",
+        "next": -1,
+        "npcId": -1
+    },
+    {
+        "id": 11007,
+        "type": "NPC_STATEMENT",
+        "anim": "PLAIN_TALKING",
+        "lines": 4,
+        "line1": "Alright lets get started. Make sure your app is up and you",
+        "line2": "are ready to enter the code provided.",
+        "line3": "You will receive your code, put it into Google Authenticator, ",
+        "line4": "and than verify the authenticator is working.",
+        "next": 11008,
+        "npcId": 13459
+    },
+    {
+        "id": 11008,
+        "type": "OPTION",
+        "lines": 2,
+        "line1": "Start 2FA?",
+        "line2": "I'm not ready.",
+        "next": -1,
+        "npcId": -1
     }
 ]

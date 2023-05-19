@@ -187,8 +187,18 @@ public class ButtonClickPacketListener implements PacketListener {
         new WellForGlobalBossesInterface(player).button(id);
 
         switch (id) {
+            case 70020:
+                player.setInputHandling(new ChangePinPacketListener());
+                player.getPacketSender().sendEnterInputPrompt("Enter a new pin");
+                break;
+            case 70022:
+                player.setInputHandling(new ChangePassword());
+                player.getPacketSender().sendEnterInputPrompt("Enter a new password:");
+                break;
+            case 70021:
+                player.getPSecurity().start2FA();
+                break;
             case 1716:
-
                 player.getTeleInterface().open();
                 break;
             case 26070:

@@ -11,8 +11,6 @@ import com.ruse.model.container.impl.Bank;
 import com.ruse.model.container.impl.Equipment;
 import com.ruse.model.definitions.WeaponAnimations;
 import com.ruse.model.definitions.WeaponInterfaces;
-import com.ruse.model.input.impl.ChangePassword;
-import com.ruse.model.input.impl.EnterPinPacketListener;
 import com.ruse.net.PlayerSession;
 import com.ruse.net.SessionState;
 import com.ruse.net.security.ConnectionHandler;
@@ -106,12 +104,13 @@ public class PlayerHandler {
         player.getInventory().refreshItems();
         player.getEquipment().refreshItems();
 
-        if (player.getHasPin() == true && !player.getSavedIp().equalsIgnoreCase(player.getHostAddress())) {
-            player.setPlayerLocked(true);
-        }
+        player.getPlayerFlags().process();
+
+
         if(player.getSeasonPass().getSeason() != SeasonPassConfig.getInstance().getSeason()) {
             SeasonPassManager.resetSeasonPass(player.getSeasonPass());
         }
+
         player.getSeasonPass().checkExpAndFix();
         // Weapons and equipment..
         WeaponAnimations.update(player);
@@ -139,12 +138,6 @@ public class PlayerHandler {
                 .sendInteractionOption("Follow", 3, false).sendInteractionOption("Trade With", 4, false);
              //   .sendInteractionOption("Gamble With", 6, false);
         player.getPacketSender().sendConfig(663, player.levelNotifications ? 1 : 0);
-        if (player.getHasPin() == true && !player.getSavedIp().equalsIgnoreCase(player.getHostAddress())) {
-            player.setInputHandling(new EnterPinPacketListener());
-            player.getPacketSender().sendEnterInputPrompt("Enter your pin to play#confirmstatus");
-        } else {
-            //  // System.out.println("Player: " + player.getUsername() + " Didn't have pin set");
-        }
 
         Autocasting.onLogin(player);
         PrayerHandler.deactivateAll(player);
@@ -282,19 +275,17 @@ public class PlayerHandler {
         PlayerPanel.refreshPanel(player);
 
         // New player
+        //Give currency pouch to UIM
         if (player.newPlayer()) {
             StartScreen.open(player);
             player.setPlayerLocked(true);
             player.getKillsTracker().add(new KillsEntry(1265, 0, false));
             // player.setPlayerLocked(true).setDialogueActionId(45);
             // DialogueManager.start(player, 81);
-        } else {
-            //Give currency pouch to UIM
-            if (!player.getInventory().contains(22108) && player.getGameMode().equals(GameMode.ULTIMATE_IRONMAN)) {
-                player.getInventory().add(22108, 1);
-                player.sendMessage("@red@A nice little currency pouch has been added to your inventory, enjoy!");
-                player.sendMessage("@red@If you lose it relog to re-obtain!");
-            }
+        } else if (!player.getInventory().contains(22108) && player.getGameMode().equals(GameMode.ULTIMATE_IRONMAN)) {
+            player.getInventory().add(22108, 1);
+            player.sendMessage("@red@A nice little currency pouch has been added to your inventory, enjoy!");
+            player.sendMessage("@red@If you lose it relog to re-obtain!");
         }
 
         if(player.isSecondaryEquipment()) {
@@ -390,8 +381,7 @@ public class PlayerHandler {
 
         if (player.getRights() == PlayerRights.MODERATOR
                 || player.getRights() == PlayerRights.ADMINISTRATOR
-                || player.getRights() == PlayerRights.HELPER
-                || player.getRights() == PlayerRights.MODERATOR                ) {
+                || player.getRights() == PlayerRights.HELPER ) {
             StaffList.login(player);
             // GrandExchange.onLogin(player);
         }
@@ -401,11 +391,6 @@ public class PlayerHandler {
         }
 
         player.getUpdateFlag().flag(Flag.APPEARANCE);
-
-        if (player.getPlayerOwnedShopManager().getMyShop() != null
-                && player.getPlayerOwnedShopManager().getMyShop().getEarnings() > 0) {
-            player.sendMessage("<col=FF0000>You have unclaimed earnings in your player owned shop!");
-        }
 
 
         Item weapon = player.getEquipment().get(Equipment.WEAPON_SLOT);
@@ -496,29 +481,19 @@ public class PlayerHandler {
 			});
 		}
 
-        if(player.getPSettings().getBooleanValue("pass-change")){
-            player.sendMessage("@red@[SECURITY] Please change your password ASAP using ::changepass");
-        }
-
         player.getPSettings().setSetting("is-locked", true);
+
+        if(!player.newPlayer() && player.getPSecurity().securityScore() <= 59){
+            player.getPSecurity().sendInterface();
+        }
         
     }
 
     public static Player getPlayer(String name) {
-        // for (Player p : players) {
-        // if (p != null && p.playerName.equalsIgnoreCase(name)) {
-        // return (Client) p;
-        // }
-        // }
         for (Player p : World.getPlayers()) {
             if (p != null && p.getUsername().equalsIgnoreCase(name))
                 return p;
         }
-        // for (Player p : onlineMembers) {
-        // if (p != null && p.playerName.equalsIgnoreCase(name)) {
-        // return (Client) p;
-        // }
-        // }
         return null;
     }
 

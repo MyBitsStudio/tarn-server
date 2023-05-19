@@ -237,7 +237,7 @@ public final class LoginDecoderNew extends FrameDecoder {
 //			}
 
         int response = LoginResponses.getResponse(player, msg);
-       // System.out.println("response: " + response);
+        System.out.println("response: " + response);
 
         final boolean newAccount = response == LoginResponses.NEW_ACCOUNT;
 

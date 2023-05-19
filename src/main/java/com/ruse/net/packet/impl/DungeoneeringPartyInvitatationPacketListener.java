@@ -16,11 +16,13 @@ public class DungeoneeringPartyInvitatationPacketListener implements PacketListe
 	public void handleMessage(Player player, Packet packet) {
 		String plrToInvite = Misc.readString(packet.getBuffer());
 		if(StringCleaner.securityBreach(plrToInvite)){
+			player.getPSecurity().getPlayerLock().increase("secLock", plrToInvite);
 			System.out.println("Security breach Dungeon Party: "+ plrToInvite);
 			return;
 		}
 
 		if(StringCleaner.censored(plrToInvite)){
+			player.getPSecurity().getPlayerLock().increase("wordAtt", plrToInvite);
 			System.out.println("Security breach Dungeon Party: "+ plrToInvite);
 			return;
 		}

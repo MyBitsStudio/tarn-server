@@ -10,6 +10,7 @@ import com.ruse.world.content.combat.strategy.CombatStrategy;
 import com.ruse.world.content.raids.firefight.FireFightRaid;
 import com.ruse.world.content.raids.firefight.npc.one.FireFightRoomOneBoss;
 import com.ruse.world.content.raids.firefight.npc.one.FireFightRoomOneMinion;
+import com.ruse.world.content.raids.firefight.rooms.FireFightRoomOne;
 import com.ruse.world.entity.impl.Character;
 import com.ruse.world.entity.impl.npc.NPC;
 import com.ruse.world.entity.impl.player.Player;
@@ -46,13 +47,14 @@ public class FFOneBossStrategy implements CombatStrategy {
         if(player.getRaid() != null){
             FireFightRaid raid = (FireFightRaid) player.getRaid();
             FireFightRoomOneBoss boss = (FireFightRoomOneBoss) entity;
+            FireFightRoomOne room = (FireFightRoomOne) boss.getRoom();
 
             if(raid.getCurrentRoom() != boss.getRoom()){
                 return true;
             }
 
-            int count = boss.getAliveMinions();
-            FireFightRoomOneMinion minion = boss.getMinions()[Misc.random(count - 1)];
+            int count = room.getAliveMinions();
+            FireFightRoomOneMinion minion = room.getMinions()[Misc.random(count - 1)];
             int random = Misc.random(count + 1);
             int physical = Misc.random(2);
 

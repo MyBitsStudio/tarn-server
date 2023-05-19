@@ -27,7 +27,7 @@ public class ZombieParty {
 
     public ZombieParty(Player owner) {
         this.owner = owner;
-        player_members = new CopyOnWriteArrayList<Player>();
+        player_members = new CopyOnWriteArrayList<>();
         player_members.add(owner);
     }
 

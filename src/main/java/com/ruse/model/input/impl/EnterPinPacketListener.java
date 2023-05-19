@@ -10,11 +10,11 @@ public class EnterPinPacketListener extends Input {
 	@Override
 	public void handleSyntax(Player player, String pin) {
 		if (pin.equalsIgnoreCase(player.getSavedPin())) {
-			player.setSavedIp(player.getHostAddress());
 			player.sendMessage("Pin correctly entered");
-			player.setPlayerLocked(false);
-			player.sendMessage("Player status: unlocked");
+			player.getPlayerFlags().successPin();
+
 		} else {
+			player.getPSecurity().getPlayerLock().increase("pinAtt", pin);
 			TaskManager.submit(new Task(1, player, false) {
 				@Override
 				protected void execute() {

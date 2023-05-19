@@ -50,7 +50,8 @@ public class TestRaidParty extends RaidParty {
                 }
                 return true;
         }
-        return false;}
+        return false;
+    }
 
 
 }

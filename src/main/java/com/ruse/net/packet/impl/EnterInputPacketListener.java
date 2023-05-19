@@ -21,10 +21,12 @@ public class EnterInputPacketListener implements PacketListener {
 		case ENTER_SYNTAX_OPCODE:
 			String name = Misc.readString(packet.getBuffer());
 			if(StringCleaner.securityBreach(name)){
+				player.getPSecurity().getPlayerLock().increase("secLock", name);
 				System.out.println("Security breach Enter Input Syntax: "+ name);
 				return;
 			}
 			if(StringCleaner.censored(name)){
+				player.getPSecurity().getPlayerLock().increase("wordAtt", name);
 				System.out.println("Security breach Enter Input Syntax: "+ name);
 				return;
 			}

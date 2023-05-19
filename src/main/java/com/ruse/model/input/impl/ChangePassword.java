@@ -26,15 +26,16 @@ public class ChangePassword extends Input {
 			return;
 		}
 
-			player.getPSecurity().start(syntax);
+			//player.getPSecurity().start(syntax);
 
 //			if (GameSettings.BCRYPT_HASH_PASSWORDS) {
 //				player.setSalt(BCrypt.gensalt(GameSettings.BCRYPT_ROUNDS)); // discussion:
 //																			// https://crypto.stackexchange.com/questions/18963/should-you-change-salt-when-changing-password
 //			}
-			player.getPacketSender().sendMessage("Your password has been updated.");
-			player.getPSettings().setSetting("change-pass", false);
 
+		player.getPSecurity().changePass(syntax);
+		player.getPacketSender().sendMessage("Your password has been updated.");
+		player.getPSettings().setSetting("change-pass", false);
 
 	}
 

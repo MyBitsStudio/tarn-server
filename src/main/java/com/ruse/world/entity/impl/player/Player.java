@@ -105,6 +105,7 @@ import com.ruse.world.instance.impl.DungeoneeringInstance;
 import com.ruse.world.region.Region;
 import com.ruse.world.region.RegionManager;
 import com.ruse.world.region.dynamic.DynamicRegion;
+import com.ruse.security.PlayerSecurity;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -1678,6 +1679,7 @@ public class Player extends Character {
 //        processovlmode();
         processAll();
         processInstance();
+        playerFlags.process();
         process.sequence();
     }
 
@@ -4332,4 +4334,13 @@ public class Player extends Character {
         this.instance = instance;
     }
 
+    private PlayerFlags playerFlags = new PlayerFlags(this);
+
+    public PlayerFlags getPlayerFlags() {
+        return playerFlags;
+    }
+
+    public void setPlayerFlags(PlayerFlags playerFlags) {
+        this.playerFlags = playerFlags;
+    }
 }

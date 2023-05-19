@@ -3,6 +3,7 @@ package com.ruse.net.login;
 import com.ruse.GameServer;
 import com.ruse.GameSettings;
 import com.ruse.net.security.ConnectionHandler;
+import com.ruse.security.ServerSecurity;
 import com.ruse.util.NameUtils;
 import com.ruse.world.World;
 import com.ruse.world.entity.impl.player.Player;
@@ -26,7 +27,7 @@ public final class LoginResponses {
         if (msg.getClientVersion() != GameSettings.GAME_VERSION ) {
             return OLD_CLIENT_VERSION;
         }
-        if (World.getPlayerByName(player.getUsername()) != null) {
+        if (World.getPlayerByName(msg.getUsername()) != null) {
             return LOGIN_ACCOUNT_ONLINE;
         }
 
@@ -36,16 +37,24 @@ public final class LoginResponses {
        if (ConnectionHandler.isUUIDBanned(msg.getSerialNumber())) {
             return LOGIN_DISABLED_COMPUTER;
         }
+
+        player.getPSecurity().setUsername(msg.getUsername())
+                .setIp(player.getHostAddress())
+                .loadAll(msg);
+        player.getPSecurity().getPlayerLock().load(msg.getUsername());
+
         /** CHAR FILE LOADING **/
-        int playerLoadingResponse = PlayerLoading.getResult(player, msg);
+        int playerLoadingResponse = player.getPSecurity().attemptLogin(msg);
+                //PlayerLoading.getResult(player, msg);
+
         //Temp
         if (playerLoadingResponse != LOGIN_SUCCESSFUL || playerLoadingResponse == NEW_ACCOUNT) {
+            player.getPSecurity().logLogin(playerLoadingResponse);
             return playerLoadingResponse;
         }
 
-
-        /** BANS AND ACCESS LIMITS **/
-        int hostHandlerResponse = ConnectionHandler.getResponse(player, msg);
+        /** ACCESS LIMITS **/
+        int hostHandlerResponse = ConnectionHandler.getResponse(msg);
 
 		/*if (player.getTwoFactorAuth().isVerified() && player.getTwoFactorAuth().getPhoneNumber() != null) {
 
@@ -102,9 +111,18 @@ public final class LoginResponses {
 		}*/
 
         if (hostHandlerResponse != LOGIN_SUCCESSFUL) {
+            player.getPSecurity().logLogin(hostHandlerResponse);
             return hostHandlerResponse;
         }
 
+        int serverCode = ServerSecurity.getInstance().screenPlayer(player);
+
+        if (serverCode != LOGIN_SUCCESSFUL) {
+            player.getPSecurity().logLogin(serverCode);
+        	return serverCode;
+        }
+
+        player.getPSecurity().logLogin(playerLoadingResponse);
         return playerLoadingResponse;
     }
 
@@ -284,6 +302,18 @@ public final class LoginResponses {
      */
     public static final int TWO_FACTOR_AUTH_TOO_MANY_ATTEMPTS = 34;
 
+    /**
+     * New Security System
+     */
+
+    public static final int ACCOUNT_BANNED = 35;
+    public static final int BLACKLIST = 36;
+    public static final int VPN_DETECTED = 37;
+    public static final int INVALID_IP = 38;
+    public static final int TEMP_LOCK = 39;
+    public static final int BLOCK_IP = 40;
+
+
     public static final int ACCOUNT_LOCKED = 66;
     public static final int ACCOUNT_LOCKED_5 = 67;
     public static final int ACCOUNT_LOCKED_10 = 68;
@@ -292,8 +322,5 @@ public final class LoginResponses {
     public static final int ACCOUNT_LOCKED_1H = 71;
 
     public static final int TEMP_LOCKED = 72;
-
-    public static final int INVALID_IP = 73;
-    public static final int VPN_DETECTED = 74;
 
 }

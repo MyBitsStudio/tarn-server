@@ -148,4 +148,11 @@ public enum ItemEffect {
                 .filter(rarity1 -> rarity1.toString().equalsIgnoreCase(name))
                 .findFirst().orElse(ItemEffect.NOTHING);
     }
+
+    public static ItemRarity getRarityForName(String name) {
+        return Arrays.stream(values())
+                .filter(rarity1 -> rarity1.toString().equalsIgnoreCase(name))
+                .findFirst().orElse(NOTHING).getRarity();
+    };
+
 }
