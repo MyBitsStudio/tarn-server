@@ -173,7 +173,7 @@ public class Locations {
 					if (p == null)
 						continue;
 					if (!player.equals(p) && player.getHostAddress().equals(p.getHostAddress())) {
-						if (p.getLocation() == Location.GODWARSPLATFORM) {
+						if (p.getLocation() == Location.VBOSS) {
 							accounts++;
 							continue;
 						}
@@ -190,7 +190,7 @@ public class Locations {
 			@Override
 			public void login(Player player) {
 				player.getPacketSender().sendCameraNeutrality();
-				if (player.getLocation() == GODWARSPLATFORM) {
+				if (player.getLocation() == VBOSS) {
 					player.moveTo(GameSettings.HOME_CORDS);
 				}
 			}
@@ -1240,7 +1240,6 @@ public class Locations {
 
 		ASTA_NPC(new int[] { 3009, 3029 }, new int[] { 2752, 2772 }, true, true, true, false, false, false) {
 		},
-
 		ASTA_LOBBY(new int[] { 3059, 3071 }, new int[] { 2752, 2764 }, true, true, true, false, false, false) {
 		},
 

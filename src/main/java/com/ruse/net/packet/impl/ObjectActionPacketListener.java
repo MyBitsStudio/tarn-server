@@ -368,7 +368,6 @@ public class ObjectActionPacketListener implements PacketListener {
                                         return;
                                     }
                                     player.getInstance().destroy();
-                                    return;
                                 }
                                 player.moveTo(GameSettings.DEFAULT_POSITION);
                             });

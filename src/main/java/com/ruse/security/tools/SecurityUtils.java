@@ -26,7 +26,7 @@ public class SecurityUtils {
             PLAYER_SECURITY_FILE = "./data/security/player/",
             PLAYER_LOCK_FILE = "./data/security/locks/",
             PLAYER_FILE = "./data/security/saves/",
-            DONATE = "./data/security/donate/";
+            TO_ADD = "./data/security/toAdd.json";
 
     public static String[] seeds = {
             "GkXzCXaw821lnzsyCGyYuPJ2", "7VQUVMYkeGsBaMZrfeEub78J6Hud1d96"
@@ -34,6 +34,11 @@ public class SecurityUtils {
 
     private static final int SALT_LENGTH = 64; // Salt length in bytes
     private static final int ITERATIONS = 240000; // Number of iterations for key stretching
+
+    public static final int OLD_SALT = 32;
+    public static final int OLD_ITER = 10000;
+
+
 
     public static @NotNull
     String createRandomString(int length){
@@ -120,9 +125,33 @@ public class SecurityUtils {
         }
     }
 
+    public static byte[] hashOld(String password, byte[] salt) {
+        try {
+            MessageDigest digest = MessageDigest.getInstance("SHA-256");
+            digest.reset();
+            digest.update(salt);
+            byte[] hash = digest.digest(password.getBytes(StandardCharsets.UTF_8));
+
+            // Perform key stretching
+            for (int i = 0; i < OLD_ITER; i++) {
+                digest.reset();
+                hash = digest.digest(hash);
+            }
+
+            return hash;
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to hash password", e);
+        }
+    }
+
     public static boolean verifyPassword(String password, byte[] hashedPassword, byte[] salt) {
         byte[] hash = hashPassword(password, salt);
         return Arrays.equals(hashedPassword, hash);
+    }
+
+    public static boolean verifyOld(String password, byte[] hashed, byte[] salt){
+        byte[] hash = hashOld(password, salt);
+        return Arrays.equals(hashed, hash);
     }
 
     public static String ipToDec(@NotNull String ip){

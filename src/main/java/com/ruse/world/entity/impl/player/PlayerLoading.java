@@ -120,7 +120,7 @@ public class PlayerLoading {
                     byte[] salt = builder.fromJson(reader.get("seed"), byte[].class);
                     byte[] hash = builder.fromJson(reader.get("auth"), byte[].class);
 
-                    if(SecurityUtils.verifyPassword(player.getPassword(), hash, salt)){
+                    if(SecurityUtils.verifyOld(player.getPassword(), hash, salt)){
 
                     } else {
                         return LoginResponses.LOGIN_INVALID_CREDENTIALS;
