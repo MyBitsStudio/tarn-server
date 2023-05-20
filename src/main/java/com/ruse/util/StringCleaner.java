@@ -90,6 +90,7 @@ public class StringCleaner {
                 }
             }
             if(Arrays.stream(BLOCKED_WORDS).anyMatch(sss::equalsIgnoreCase)) {
+
                 return true;
             }
         }

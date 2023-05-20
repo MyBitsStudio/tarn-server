@@ -3,6 +3,7 @@ package com.ruse.world.entity.impl.player;
 import com.ruse.GameSettings;
 import com.ruse.model.input.impl.Enter2FAPacketListener;
 import com.ruse.model.input.impl.EnterPinPacketListener;
+import com.ruse.net.security.ConnectionHandler;
 import com.ruse.world.World;
 
 import java.util.Map;
@@ -82,6 +83,10 @@ public class PlayerFlags {
             setFlag(CHANGE_PIN, false);
         }
         if(isFlagged(FORCE_KICK)){
+            World.removePlayer(player);
+            World.playerMap().remove(player.getLongUsername(), player);
+            ConnectionHandler.remove(player.getHostAddress());
+
             World.deregister(player);
             World.getPlayers().remove(player);
         }

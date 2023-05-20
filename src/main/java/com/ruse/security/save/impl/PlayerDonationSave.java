@@ -55,7 +55,7 @@ public class PlayerDonationSave extends SecureSave {
     public String getTime(){
         Date date = new Date(System.currentTimeMillis());
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        return format.format(date);
+        return format.format(date).replace(":", "-").replace(" ", "_");
     }
 
     @Override

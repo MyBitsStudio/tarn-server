@@ -36,7 +36,6 @@ public class ServerSecurityLoad extends SecureLoad {
             }
         }
 
-        System.out.println("associations: "+associations);
         sec.setKeys(associations);
 
         Map<String, Map<String, String>> mapping = new ConcurrentHashMap<>();
@@ -53,8 +52,6 @@ public class ServerSecurityLoad extends SecureLoad {
             }
             mapping.put(key, secure);
         }
-
-        System.out.println("mapping: "+mapping);
 
         sec.setSecurityMap(mapping);
 

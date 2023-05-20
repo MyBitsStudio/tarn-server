@@ -256,7 +256,7 @@ public class PlayerSecurity {
     }
 
     public boolean isRootIP(String ip){
-        return getSecurityListStringValue("auth").contains(ip.trim());
+        return getSecurityListStringValue("auth").contains(ip);
     }
 
     public void loadAll(LoginDetailsMessage msg){

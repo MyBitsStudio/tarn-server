@@ -1,8 +1,10 @@
 package com.ruse.security;
 
+import com.ruse.model.definitions.ItemDefinition;
 import com.ruse.security.save.impl.PlayerLockLoad;
 import com.ruse.security.save.impl.PlayerLockSave;
 import com.ruse.world.World;
+import com.ruse.world.content.discordbot.AdminCord;
 import com.ruse.world.entity.impl.player.Player;
 import org.jetbrains.annotations.NotNull;
 
@@ -237,6 +239,7 @@ public class PlayerLock {
         addLog(key, log);
         addLog(key);
         save();
+        AdminCord.sendMessage(1109203346520277013L, player.getUsername()+" has been ticked by the security system for "+key);
         return false;
     }
 
@@ -253,6 +256,8 @@ public class PlayerLock {
         if(World.getPlayerByName(player.getUsername()) != null){
             player.getPlayerFlags().setFlag(FORCE_KICK, true);
         }
+
+        AdminCord.sendMessage(1109203346520277013L, player.getUsername()+" has been locked by the security system for "+key);
 
     }
 

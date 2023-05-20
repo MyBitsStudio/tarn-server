@@ -44,6 +44,8 @@ import com.ruse.world.instance.MapInstance;
 import mysql.impl.Donation;
 import org.mindrot.jbcrypt.BCrypt;
 
+import static com.ruse.world.entity.impl.player.PlayerFlags.FORCE_KICK;
+
 //import com.ruse.world.content.Abyssector;
 
 public class PlayerHandler {
@@ -526,7 +528,6 @@ public class PlayerHandler {
               //  System.out.println("[World] Deregistering player - [username, host] : [" + player.getUsername() + ", "
                        // + player.getHostAddress() + "]");
                 player.getSession().setState(SessionState.LOGGING_OUT);
-                ConnectionHandler.remove(player.getHostAddress());
                 player.setTotalPlayTime(player.getTotalPlayTime() + player.getRecordedLogin().elapsed());
                 player.getPacketSender().sendInterfaceRemoval();
                 player.getMinimeSystem().despawn();
@@ -578,7 +579,8 @@ public class PlayerHandler {
                 if(!player.isMini()) {
                     player.save();
                 }
-                World.removePlayer(player);
+
+                player.getPlayerFlags().setFlag(FORCE_KICK, true);
 
                 if (player.getMinigameAttributes() != null && player.getMinigameAttributes().getDungeoneeringAttributes() != null && player.getMinigameAttributes().getDungeoneeringAttributes().getParty() != null) {
                     player.getMinigameAttributes().getDungeoneeringAttributes().getParty().remove(player, false, true);

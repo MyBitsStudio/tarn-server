@@ -45,7 +45,6 @@ public final class LoginResponses {
 
         /** CHAR FILE LOADING **/
         int playerLoadingResponse = player.getPSecurity().attemptLogin(msg);
-                //PlayerLoading.getResult(player, msg);
 
         //Temp
         if (playerLoadingResponse != LOGIN_SUCCESSFUL || playerLoadingResponse == NEW_ACCOUNT) {

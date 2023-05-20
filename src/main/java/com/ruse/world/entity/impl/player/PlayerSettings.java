@@ -42,11 +42,11 @@ public class PlayerSettings {
     }
 
     public int getIntValue(String key){
-        return (int) settings.get(key);
+        return (int) settings.getOrDefault(key, -1);
     }
 
     public boolean getBooleanValue(String key){
-        return (boolean) settings.get(key);
+        return (boolean) settings.getOrDefault(key, false);
     }
 
     public Object getValue(String key){

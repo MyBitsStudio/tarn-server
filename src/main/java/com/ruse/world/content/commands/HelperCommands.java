@@ -3,6 +3,8 @@ package com.ruse.world.content.commands;
 import com.ruse.GameSettings;
 import com.ruse.model.Graphic;
 import com.ruse.model.Position;
+import com.ruse.net.security.ConnectionHandler;
+import com.ruse.security.ServerSecurity;
 import com.ruse.util.Misc;
 import com.ruse.world.World;
 import com.ruse.world.content.PlayerLogs;
@@ -153,28 +155,28 @@ public class HelperCommands {
 
             case "mute":
                 try {
-                    String[] time = commands[1].split("h");
-                    long timer = Long.parseLong(time[0]);
+                    int timer = Integer.parseInt(commands[1]);
                     playerToTele = command.substring(commands[0].length() + commands[1].length() + 2);
                     player2 = World.getPlayerByName(playerToTele);
 
+                    if(player2 == null){
+                        player.getPacketSender().sendMessage("Player: " + playerToTele + " is not online.");
+                        return true;
+                    }
+
                     player2.save();
 
-                    if (PlayerPunishment.muted(playerToTele)) {
+                    if (ServerSecurity.getInstance().isPlayerMuted(playerToTele)) {
                         player.getPacketSender().sendMessage("Player: " + playerToTele + " already has an active mute.");
                         return true;
                     }
-                    PlayerLogs.log(player.getUsername(), player.getUsername() + " just muted " + playerToTele + " for " + commands[2] + "!");
-                    World.sendStaffMessage("<col=FF0066><img=2> [PUNISHMENTS]<col=6600FF> " + player.getUsername()
-                            + " just muted " + playerToTele + " for " + commands[2] + ".");
+                    PlayerLogs.log(player.getUsername(), player.getUsername() + " just muted " + playerToTele);
+                    World.sendStaffMessage("<col=FF0066><img=2> [PUNISHMENTS]<col=6600FF> " + playerToTele +" was just muted for breaking the Terms of Conduct.");
                     AdminCord.sendMessage(1109203238907027527L,  player.getUsername()
-                            + " just muted " + playerToTele + " for " + commands[2] + ".");
-                    PlayerPunishment.mute(playerToTele, LocalDateTime.now().plusHours(timer));//* , GameSettings.Temp_Mute_Time); *//*
-                    player.getPacketSender().sendMessage("Player " + playerToTele + " was successfully muted for " + commands[2] + ".");// for
-                    Player plr = World.getPlayerByName(playerToTele);
-                    if (plr != null) {
-                        plr.getPacketSender().sendMessage("You have been muted by " + player.getUsername() + " for " + commands[2] + "."); // for
-                    }
+                            + " just muted " + playerToTele);
+                    ServerSecurity.getInstance().mutePlayer(player2, timer);
+                    player.getPacketSender().sendMessage("Player " + playerToTele + " was successfully muted");
+                    player2.getPacketSender().sendMessage("@red@[STAFF] You have been muted by a staff member for "+(timer * 5)+" minutes.");
                 } catch (Exception e) {
                     player.getPacketSender().sendMessage("Error! Usage ::mute 6h username");
                 }
@@ -199,6 +201,26 @@ public class HelperCommands {
 
                 AdminCord.sendMessage(1109203238907027527L,  player.getUsername()
                         + " just warned " + playerToTele +".");
+                return true;
+
+            case "isiron":
+                playerToTele = command.substring(commands[0].length() + 1);
+                player2 = World.getPlayerByName(playerToTele);
+
+                player.sendMessage(player2.getUsername()+" is "+(player2.getGameMode().isIronman() ? "@gre@Ironman" : "@red@Not Ironman"));
+                return true;
+
+            case "remove":
+                playerToTele = command.substring(commands[0].length() + 1);
+                player2 = World.getPlayerByName(playerToTele);
+
+                if(player2 != null) {
+                    World.removePlayer(player2);
+                    World.playerMap().remove(player2.getLongUsername(), player2);
+                    ConnectionHandler.remove(player2.getHostAddress());
+                }
+                else
+                    World.removePlayer(playerToTele);
                 return true;
         }
         return false;

@@ -106,13 +106,6 @@ public class World {
     }
 
     public static Player getPlayerByName(String username) {
-//        Player p = playerByNames.get(NameUtils.stringToLong(username));
-//
-//        // If the player is disconnected but the session is still in our list
-//
-//
-//
-//        return playerByNames.get(NameUtils.stringToLong(username));
         return playersByUesrname.get(username);
     }
 
@@ -361,6 +354,10 @@ public class World {
     public static void removePlayer(Player player) {
         players.remove(player);
         playersByUesrname.remove(player.getUsername());
+    }
+
+    public static void removePlayer(String username){
+        playersByUesrname.remove(username);
     }
 
     private static Long2ObjectMap<Player> playerByNames = new Long2ObjectOpenHashMap<>();

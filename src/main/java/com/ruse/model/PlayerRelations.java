@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.ruse.net.packet.impl.ChatPacketListener;
+import com.ruse.security.ServerSecurity;
 import com.ruse.util.NameUtils;
 import com.ruse.util.StringCleaner;
 import com.ruse.world.World;
@@ -282,11 +283,11 @@ public class PlayerRelations {
 			this.player.getPacketSender().sendMessage("This player is currently offline.");
 			return;
 		}
-		if (PlayerPunishment.muted(player.getUsername()) || PlayerPunishment.IPMuted(player.getHostAddress())) {
+		if (ServerSecurity.getInstance().isPlayerMuted(player.getUsername())) {
 			player.getPacketSender().sendMessage("You are muted, your PM has not been sent.");
 			return;
 		}
-		if (PlayerPunishment.muted(player.getUsername()) && !(friend.getRights().isStaff())) {
+		if (ServerSecurity.getInstance().isPlayerMuted(player.getUsername()) && !(friend.getRights().isStaff())) {
 			player.getPacketSender()
 					.sendMessage("You can only PM staff while jailed. If you don't have any added, do ::help");
 			return;
@@ -393,7 +394,7 @@ public class PlayerRelations {
 	 * Represents a player's friends list status, whether others will be able to see
 	 * them online or not.
 	 */
-	public static enum PrivateChatStatus {
+	public enum PrivateChatStatus {
 		ON(990), FRIENDS_ONLY(991), OFF(992);
 
 		PrivateChatStatus(int actionId) {

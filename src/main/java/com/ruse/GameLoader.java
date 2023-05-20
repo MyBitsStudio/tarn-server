@@ -67,7 +67,7 @@ public final class GameLoader {
 	public void init() {
 		Preconditions.checkState(!serviceLoader.isShutdown(), "The bootstrap has been bound already!");
 
-		ServerSecurity.getInstance().starting();
+		ServerSecurity.getInstance();
 
 		ServiceManager.INSTANCE.init();
 

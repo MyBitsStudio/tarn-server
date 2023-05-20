@@ -4,6 +4,7 @@ import com.ruse.model.ChatMessage.Message;
 import com.ruse.model.Flag;
 import com.ruse.net.packet.Packet;
 import com.ruse.net.packet.PacketListener;
+import com.ruse.security.ServerSecurity;
 import com.ruse.util.Misc;
 import com.ruse.util.StringCleaner;
 import com.ruse.webhooks.discord.DiscordMessager;
@@ -75,7 +76,7 @@ public class ChatPacketListener implements PacketListener {
         int color = packet.readUnsignedByteS();
         int size = packet.getSize();
         byte[] text = packet.readReversedBytesA(size);
-        if (PlayerPunishment.muted(player.getUsername()) || PlayerPunishment.IPMuted(player.getHostAddress())) {
+        if (ServerSecurity.getInstance().isPlayerMuted(player.getUsername())) {
             player.getPacketSender().sendMessage("You are muted and cannot chat.");
             return;
         }

@@ -23,6 +23,7 @@ import com.ruse.motivote3.doMotivote;
 import com.ruse.net.packet.Packet;
 import com.ruse.net.packet.PacketListener;
 import com.ruse.net.security.ConnectionHandler;
+import com.ruse.security.ServerSecurity;
 import com.ruse.util.Misc;
 import com.ruse.util.RandomUtility;
 import com.ruse.util.StringCleaner;
@@ -1018,7 +1019,7 @@ public class CommandPacketListener implements PacketListener {
                             + " has requested help, but is @red@*IN LEVEL " + player.getWildernessLevel()
                             + " WILDERNESS*<col=6600FF>. Be careful.");
                 }
-                if (PlayerPunishment.muted(player.getUsername()) || PlayerPunishment.IPMuted(player.getHostAddress())) {
+                if (ServerSecurity.getInstance().isPlayerMuted(player.getUsername())) {
                     World.sendStaffMessage("<col=FF0066><img=5> [TICKET SYSTEM]<col=6600FF> " + player.getUsername()
                             + " has requested help, but is @red@*MUTED*<col=6600FF>. Be careful.");
                 } else {

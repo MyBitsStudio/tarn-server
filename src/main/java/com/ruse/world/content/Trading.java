@@ -12,6 +12,7 @@ import com.ruse.model.projectile.ItemEffect;
 import com.ruse.util.Misc;
 import com.ruse.world.World;
 import com.ruse.world.content.PlayerPunishment.Jail;
+import com.ruse.world.content.discordbot.AdminCord;
 import com.ruse.world.entity.impl.player.Player;
 
 /**
@@ -380,12 +381,12 @@ public class Trading {
 			player.getPacketSender().sendMessage("An error has occured. Please try re-trading the player.");
 			return;
 		}
-		if(player.getInventory().getFreeSlots() <= 0){
+		if(player.getInventory().getFreeSlots() <= offeredItems.size()){
 			player.getPacketSender().sendMessage("You do not have enough free inventory space to continue this trade.");
 			player2.getPacketSender().sendMessage("The other player does not have enough inventory space to continue this trade.");
 			return;
 		}
-		if(player2.getInventory().getFreeSlots() <= 0){
+		if(player2.getInventory().getFreeSlots() <= player2.getTrading().offeredItems.size()){
 			player.getPacketSender().sendMessage("The other player does not have enough inventory space to continue this trade.");
 			player2.getPacketSender().sendMessage("You do not have enough free inventory space to continue this trade.");
 			return;
@@ -499,6 +500,8 @@ public class Trading {
 			for (Item item : player.getTrading().offeredItems) {
 				PlayerLogs.log(player.getUsername(), "Gave item in trade to " + player2.getUsername() + ". Id: "
 						+ item.getId() + ", amount: " + item.getAmount());
+				AdminCord.sendMessage(1108220705222443070L, "Gave item in trade to " + player2.getUsername() + ". Id: "
+						+ item.getId() + ", amount: " + item.getAmount());
 			}
 			for (Item item : player2.getTrading().offeredItems) {
 				PlayerLogs.log(player.getUsername(), "Receiving item from trade with " + player2.getUsername() + " Id: "
@@ -507,6 +510,8 @@ public class Trading {
 
 			for (Item item : player.getTrading().offeredItems) {
 				PlayerLogs.logTrades(player.getUsername(), "Gave item to " + player2.getUsername() + ". Name: "
+						+ item.getDefinition().getName() + ". Id: " + item.getId() + ", amount: " + item.getAmount());
+				AdminCord.sendMessage(1108220705222443070L, "Gave item to " + player2.getUsername() + ". Name: "
 						+ item.getDefinition().getName() + ". Id: " + item.getId() + ", amount: " + item.getAmount());
 			}
 			for (Item item : player2.getTrading().offeredItems) {
@@ -542,7 +547,7 @@ public class Trading {
 		return tradeConfirmed = player2.getTrading().tradeConfirmed = false;
 	}
 
-	public CopyOnWriteArrayList<Item> offeredItems = new CopyOnWriteArrayList<Item>();
+	public CopyOnWriteArrayList<Item> offeredItems = new CopyOnWriteArrayList<>();
 	private boolean inTrade = false;
 	private boolean tradeRequested = false;
 	private int tradeWith = -1;

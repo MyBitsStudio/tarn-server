@@ -422,7 +422,7 @@ public class NPCDrops {
                         String message = "<img=15><shad><col=CB0101> [" + player.getUsername()
                                 + "]<col=680000> has received <col=CB0101>" + itemMessage + "<col=680000> from <col=CB0101>" + npcName + "";
                         JavaCord.sendMessage("\uD83E\uDD16│\uD835\uDDEE\uD835\uDDF0\uD835\uDE01\uD835\uDDF6\uD835\uDE03\uD835\uDDF6\uD835\uDE01\uD835\uDE06", "[" + player.getUsername() + "] has received " + itemMessage + " from " + npcName + ".");
-                        AdminCord.sendMessage(1108221219121135707L, "[" + player.getUsername() + "] has received " + itemMessage + " from " + npcName + ".");
+
                         World.sendFilterMessage(message);
 
                         if (ccAnnounce) {
@@ -438,6 +438,7 @@ public class NPCDrops {
                                 + ", id: " + itemId + ", amount: " + amount + ", from: " + npcName);
                     }
 
+            AdminCord.sendMessage(1108221219121135707L, "[" + player.getUsername() + "] has received x" + amount + " " + item.getDefinition().getName()+" from " + Misc.formatText(npc.getDefinition().getName()) + ".");
 
             if (drop.getChance() > 1 && player != null) {
                 player.getDryStreak().getDryStreakMap().put(npc.getId(), 0);

@@ -2,6 +2,7 @@ package com.ruse.net.packet.impl;
 
 import com.ruse.net.packet.Packet;
 import com.ruse.net.packet.PacketListener;
+import com.ruse.security.ServerSecurity;
 import com.ruse.util.Misc;
 import com.ruse.util.StringCleaner;
 import com.ruse.world.content.PlayerPunishment;
@@ -19,7 +20,7 @@ public class SendClanChatMessagePacketListener implements PacketListener {
 		String clanMessage = Misc.readString(packet.getBuffer());
 		if (clanMessage == null || clanMessage.length() < 1)
 			return;
-		if (PlayerPunishment.muted(player.getUsername()) || PlayerPunishment.IPMuted(player.getHostAddress())) {
+		if (ServerSecurity.getInstance().isPlayerMuted(player.getUsername())) {
 			player.getPacketSender().sendMessage("You are muted and cannot chat.");
 			return;
 		}

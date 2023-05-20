@@ -11,6 +11,7 @@ import com.ruse.model.definitions.NpcDefinition;
 import com.ruse.model.definitions.WeaponInterfaces;
 import com.ruse.model.projectile.ItemEffect;
 import com.ruse.motivote3.doMotivote;
+import com.ruse.security.ServerSecurity;
 import com.ruse.world.World;
 import com.ruse.world.content.LotterySystem;
 import com.ruse.world.content.WellOfGoodwill;
@@ -275,12 +276,12 @@ public class OwnerCommands {
                 if(commands.length >= 2){
                     switch(commands[1]){
                         case "donate":
-                            amount = Integer.parseInt(commands[1]);
+                            amount = Integer.parseInt(commands[2]);
                             DonationManager.getInstance().addToTotalDonation(amount);
                             return true;
 
                         case "vote":
-                            amount = Integer.parseInt(commands[1]);
+                            amount = Integer.parseInt(commands[2]);
                             doMotivote.setVoteCount(doMotivote.getVoteCount() + amount);
                             VoteBossDrop.save();
 
@@ -317,6 +318,10 @@ public class OwnerCommands {
                         case "shops":
                             Shop.ShopManager.parseShops().load();
                             return true;
+
+                        case "bans":
+                            ServerSecurity.getInstance().reload();
+                            return true;
                     }
                 }
                 return true;
@@ -339,9 +344,6 @@ public class OwnerCommands {
                 }
                 return true;
 
-            case "testdono":
-
-                return true;
         }
         return false;
     }

@@ -1,6 +1,7 @@
 package com.ruse.world.content.commands;
 
 import com.ruse.GameSettings;
+import com.ruse.security.ServerSecurity;
 import com.ruse.world.World;
 import com.ruse.world.content.WorldBosses;
 import com.ruse.world.content.WorldBosses2;
@@ -56,12 +57,6 @@ public class AdminCommands {
 
             case "unban":
 
-                return true;
-
-            case "ban":
-                switch(commands[1]){
-
-                }
                 return true;
 
             case "spawn":

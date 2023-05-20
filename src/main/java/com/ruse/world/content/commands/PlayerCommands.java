@@ -5,6 +5,7 @@ import com.ruse.model.*;
 import com.ruse.model.input.impl.ChangePassword;
 import com.ruse.model.input.impl.ChangePinPacketListener;
 import com.ruse.model.input.impl.EnterReferral;
+import com.ruse.security.ServerSecurity;
 import com.ruse.util.Misc;
 import com.ruse.util.RandomUtility;
 import com.ruse.world.World;
@@ -57,7 +58,7 @@ public class PlayerCommands {
                             player.getPSettings().setSetting("hidden-players", !player.getPSettings().getBooleanValue("hidden-players"));
                             break;
                         case "toggle":
-                            player.getPSettings().setSetting("drop-message-toggle", !player.getPSettings().getBooleanValue("drop-message-toggle"));
+                            player.getPSettings().setSetting("drop-message-personal", !player.getPSettings().getBooleanValue("drop-message-personal"));
                             break;
                     }
                 } else {
@@ -310,7 +311,7 @@ public class PlayerCommands {
                                 + " has requested help, but is @red@*IN LEVEL " + player.getWildernessLevel()
                                 + " WILDERNESS*<col=6600FF>. Be careful.");
                     }
-                    if (PlayerPunishment.muted(player.getUsername()) || PlayerPunishment.IPMuted(player.getHostAddress())) {
+                    if (ServerSecurity.getInstance().isPlayerMuted(player.getUsername())) {
                         World.sendStaffMessage("<col=FF0066><img=5> [TICKET SYSTEM]<col=6600FF> " + player.getUsername()
                                 + " has requested help, but is @red@*MUTED*<col=6600FF>. Be careful.");
                     } else {
@@ -562,7 +563,7 @@ public class PlayerCommands {
     public static void handleYell(Player player, String yell){
 
 
-        if (PlayerPunishment.muted(player.getUsername()) || PlayerPunishment.IPMuted(player.getHostAddress())) {
+        if (ServerSecurity.getInstance().isPlayerMuted(player.getUsername())) {
             player.getPacketSender().sendMessage("You are muted and cannot yell.");
             return;
         }

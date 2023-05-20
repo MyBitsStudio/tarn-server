@@ -4,6 +4,7 @@ import com.ruse.security.save.impl.ServerSecurityLoad;
 import com.ruse.security.save.impl.ServerSecuritySave;
 import com.ruse.security.tools.SecurityUtils;
 import com.ruse.world.World;
+import com.ruse.world.content.discordbot.AdminCord;
 import com.ruse.world.entity.impl.player.Player;
 import io.ipgeolocation.api.Geolocation;
 import io.ipgeolocation.api.GeolocationParams;
@@ -17,6 +18,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import static com.ruse.net.login.LoginResponses.*;
 import static com.ruse.security.tools.SecurityUtils.SERVER_SECURITY_FILE;
 import static com.ruse.security.tools.SecurityUtils.api;
+import static com.ruse.world.entity.impl.player.PlayerFlags.FORCE_KICK;
 
 public class ServerSecurity {
 
@@ -40,6 +42,7 @@ public class ServerSecurity {
         securityMap.put("ip", new ConcurrentHashMap<>());
         securityMap.put("mac", new ConcurrentHashMap<>());
         securityMap.put("hwid", new ConcurrentHashMap<>());
+        securityMap.put("mute", new ConcurrentHashMap<>());
         keys.put("pSecureKey", SecurityUtils.createRandomString(24));
         keys.put("sSecureKey", SecurityUtils.createRandomString(32));
         save();
@@ -53,6 +56,7 @@ public class ServerSecurity {
      *  IP -> IP -> Time -> *ip*
      *  MAC -> MAC -> Time -> *mac*
      *  HWID -> HWID -> Time -> *hwid*
+     *  MUTE -> NAME -> Time -> *mute*
      *
      */
     private final Map<String, Map<String, String>> securityMap = new ConcurrentHashMap<>();
@@ -64,6 +68,7 @@ public class ServerSecurity {
     public void setSecurityMap(Map<String, Map<String, String>> map){
         securityMap.putAll(map);
     }
+
     public void addSecurity(String key, String value, String time){
         Map<String, String> map = securityMap.get(key);
         if(map == null){
@@ -75,7 +80,7 @@ public class ServerSecurity {
 
     /**
      * A map of keys that server uses for multiple purposes.
-     * Player Secure Key - The key that is used to verify the player's identity -- *pSecureKey* -- (String)
+     *
      */
     private final Map<String, Object> keys = new ConcurrentHashMap<>();
 
@@ -107,6 +112,16 @@ public class ServerSecurity {
         new ServerSecuritySave(this).create().save();
     }
 
+    public void reload(){
+        if(!new File(SERVER_SECURITY_FILE).exists()){
+            return;
+        }
+        securityMap.clear();
+        keys.clear();
+        new ServerSecurityLoad(this).loadJSON(SERVER_SECURITY_FILE).run();
+        System.out.println(securityMap);
+    }
+
     private boolean whiteList(String ip){
         return Arrays.asList(WHITELIST).contains(ip);
     }
@@ -124,53 +139,70 @@ public class ServerSecurity {
     public void banPlayer(Player player, int type, long time){
         switch(type){
             case 0: //normal
-                addSecurity("player", player.getUsername(), String.valueOf(System.currentTimeMillis()+ time));
-                addSecurity("UUID", player.getUUID(), String.valueOf(System.currentTimeMillis()+ time));
+                addSecurity("player", player.getUsername().toLowerCase(), String.valueOf(System.currentTimeMillis()+ time));
+                //addSecurity("UUID", player.getUUID(), String.valueOf(System.currentTimeMillis()+ time));
                 break;
             case 1: //tri
-                addSecurity("player", player.getUsername(), String.valueOf(System.currentTimeMillis()+ time));
-                addSecurity("UUID", player.getUUID(), String.valueOf(System.currentTimeMillis()+ time));
+                addSecurity("player", player.getUsername().toLowerCase(), String.valueOf(System.currentTimeMillis()+ time));
+                //addSecurity("UUID", player.getUUID(), String.valueOf(System.currentTimeMillis()+ time));
                 addSecurity("ip", player.getPSecurity().getIp(), String.valueOf(System.currentTimeMillis()+ time));
                 break;
             case 2: //full
                 addSecurity("mac", player.getMac(), String.valueOf(System.currentTimeMillis()+ time));
-                addSecurity("player", player.getUsername(), String.valueOf(System.currentTimeMillis()+ time));
-                addSecurity("UUID", player.getUUID(), String.valueOf(System.currentTimeMillis()+ time));
+                addSecurity("player", player.getUsername().toLowerCase(), String.valueOf(System.currentTimeMillis()+ time));
+                //addSecurity("UUID", player.getUUID(), String.valueOf(System.currentTimeMillis()+ time));
                 addSecurity("ip", player.getPSecurity().getIp(), String.valueOf(System.currentTimeMillis()+ time));
                 break;
             case 3: // max
-                addSecurity("UUID", player.getUUID(), String.valueOf(System.currentTimeMillis()+ time));
+                //addSecurity("UUID", player.getUUID(), String.valueOf(System.currentTimeMillis()+ time));
                 addSecurity("mac", player.getMac(), String.valueOf(System.currentTimeMillis()+ time));
-                addSecurity("player", player.getUsername(), String.valueOf(System.currentTimeMillis()+ time));
-                addSecurity("hwid", player.getUUID(), String.valueOf(System.currentTimeMillis()+ time));
+                addSecurity("player", player.getUsername().toLowerCase(), String.valueOf(System.currentTimeMillis()+ time));
+                //addSecurity("hwid", player.getUUID(), String.valueOf(System.currentTimeMillis()+ time));
                 addSecurity("ip", player.getPSecurity().getIp(), String.valueOf(System.currentTimeMillis()+ time));
                 break;
 
             case 4://perm
-                addSecurity("UUID", player.getUUID(), String.valueOf(-1));
+               // addSecurity("UUID", player.getUUID(), String.valueOf(-1));
                 addSecurity("mac", player.getMac(), String.valueOf(-1));
-                addSecurity("player", player.getUsername(), String.valueOf(-1));
-                addSecurity("hwid", player.getUUID(), String.valueOf(-1));
+                addSecurity("player", player.getUsername().toLowerCase(), String.valueOf(-1));
+                //addSecurity("hwid", player.getUUID(), String.valueOf(-1));
                 addSecurity("ip", player.getPSecurity().getIp(), String.valueOf(-1));
                 break;
         }
+        for(Player players : World.getPlayers()){
+            if(players == null)
+                continue;
+            if(players.getPSecurity().getIp().equals(player.getPSecurity().getIp())){
+                players.save();
+                players.getPlayerFlags().setFlag(FORCE_KICK, true);
+            }
+        }
         player.save();
-        World.deregister(player);
-        World.getLogoutQueue().add(player);
+        player.getPlayerFlags().setFlag(FORCE_KICK, true);
+        save();
+        AdminCord.sendMessage(1109203346520277013L, player.getUsername()+" was just banned "+type);
+    }
+
+    public void mutePlayer(Player player, int time){
+        addSecurity("mute", player.getUsername().toLowerCase(), String.valueOf(System.currentTimeMillis()+ (1000 * 60 * (5L * time))));
+        player.save();
         save();
     }
 
     private int checkPlayerStatus(@NotNull Player player){
-        if(isPlayerBanned(player.getUsername())){
+        if(isPlayerBanned(player.getUsername().toLowerCase())){
+            AdminCord.sendMessage(1109203346520277013L, player.getUsername()+" is banned and attempted to login");
             return ACCOUNT_BANNED;
         }
 //        if(isUUIDBanned(player.getUUID())){
 //            return ACCOUNT_BANNED;
 //        }
         if(isIPBanned(player.getHostAddress())){
+            AdminCord.sendMessage(1109203346520277013L, player.getUsername()+" is ipbanned and attempted to login");
             return ACCOUNT_BANNED;
         }
         if(isMACBanned(player.getMac())){
+            AdminCord.sendMessage(1109203346520277013L, player.getUsername()+" is macbanned and attempted to login");
             return ACCOUNT_BANNED;
         }
 //        if(isHWIDBanned(player)){
@@ -178,6 +210,14 @@ public class ServerSecurity {
 //        }
         int code = checkSecurity(player);
         return code == 0 ? LOGIN_SUCCESSFUL : code;
+    }
+
+    public boolean isPlayerMuted(String username){
+        if(securityMap.get("mute").get(username.toLowerCase()) == null){
+            return false;
+        }
+        long time = Long.parseLong(securityMap.get("mute").get(username.toLowerCase()));
+        return time == -1 || time > System.currentTimeMillis();
     }
 
     private boolean isPlayerBanned(String username){
@@ -226,7 +266,7 @@ public class ServerSecurity {
             return 0;
         }
         if(isBlackList(player.getPSecurity().getIp())){
-            System.out.println("Blacklist "+ player.getPSecurity().getIp());
+            AdminCord.sendMessage(1109203346520277013L, player.getUsername()+" is blacklisted "+player.getPSecurity().getIp());
             return BLACKLIST;
         }
         GeolocationParams geoParams = new GeolocationParams();
@@ -238,17 +278,18 @@ public class ServerSecurity {
 
         if (geolocation.getStatus() == 200) {
 
+            System.out.println(geolocation.getGeolocationSecurity());
+
             if(geolocation.getGeolocationSecurity().getAnonymous() || geolocation.getGeolocationSecurity().getKnownAttacker()
                     || geolocation.getGeolocationSecurity().getProxy() || !geolocation.getGeolocationSecurity().getProxyType().equals("")
                     || geolocation.getGeolocationSecurity().getCloudProvider() || geolocation.getGeolocationSecurity().getTor()
                     ||geolocation.getGeolocationSecurity().getThreatScore() > 20.0
             ){
-                System.out.println("VPN Blocked "+ player.getPSecurity().getIp());
+                AdminCord.sendMessage(1109203346520277013L, player.getUsername()+" is using a VPN "+player.getPSecurity().getIp());
                 return VPN_DETECTED;
             }
 
         } else {
-            System.out.println("Failed to get geolocation");
             return INVALID_IP;
         }
 
