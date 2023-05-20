@@ -338,6 +338,10 @@ public class OwnerCommands {
                             "Gave " + 1 + "x " + ItemDefinition.forId(ids).getName() + " to " + targets.getUsername() + " with effect "+effect.name()+" and bonus "+bonus+".");
                 }
                 return true;
+
+            case "testdono":
+
+                return true;
         }
         return false;
     }

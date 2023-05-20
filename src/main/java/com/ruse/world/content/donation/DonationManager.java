@@ -201,6 +201,10 @@ public class DonationManager {
         });
     }
 
+    public void test(Player player){
+        logPurchase(player, new int[]{995}, 1000000);
+    }
+
     private void logPurchase(Player player, int[] items, int amount){
         new PlayerDonationSave(player, items, amount).create().save();
     }

@@ -30,7 +30,6 @@ import com.ruse.world.content.skill.impl.crafting.Jewelry;
 import com.ruse.world.content.skill.impl.smithing.EquipmentMaking;
 import com.ruse.world.content.skill.impl.smithing.SmithingData;
 import com.ruse.world.content.transportation.JewelryTeleporting;
-import com.ruse.world.content.voteclaiming.HandleVoteClaiming;
 import com.ruse.world.entity.impl.player.Player;
 
 public class ItemContainerActionPacketListener implements PacketListener {

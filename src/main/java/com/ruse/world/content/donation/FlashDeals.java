@@ -1,9 +1,11 @@
 package com.ruse.world.content.donation;
 
+import com.google.gson.Gson;
 import com.ruse.model.Item;
 import com.ruse.model.ItemRarity;
 import com.ruse.model.definitions.ItemDefinition;
 import com.ruse.model.projectile.ItemEffect;
+import com.ruse.security.save.impl.FlashDealLoad;
 import com.ruse.world.content.discordbot.AdminCord;
 import com.ruse.world.entity.impl.player.Player;
 
@@ -28,6 +30,24 @@ public class FlashDeals {
     private final List<Integer> doubledItems = new CopyOnWriteArrayList<>();
     private final Map<Integer, Map<Integer, Integer>> deals = new ConcurrentHashMap<>();
     private final Map<Integer, Map<Integer, String>> specialDeals = new ConcurrentHashMap<>();
+
+    public void setIsActive(boolean active){
+        isActive.set(active);
+    }
+
+    public void setDoubledItems(List<Integer> items){
+        doubledItems.addAll(items);
+    }
+
+    public void setDeals(Map<Integer, Map<Integer, Integer>> deals){
+        this.deals.clear();
+        this.deals.putAll(deals);
+    }
+
+    public void setSpecialDeals(Map<Integer, Map<Integer, String>> deals){
+        this.specialDeals.clear();
+        this.specialDeals.putAll(deals);
+    }
 
     public boolean handleFlashDeals(Player player, int amount, int[] items){
         if(!isActive.get()){
@@ -95,11 +115,12 @@ public class FlashDeals {
     }
 
     private void load(){
-
+        new FlashDealLoad(this).loadJSON("./data/flash.json").run();
     }
 
     public void reload(){
-
+        new FlashDealLoad(this).loadJSON("./data/flash.json").run();
+        System.out.println("Active Deals \n"+deals+"\nSpecial Deals \n"+specialDeals+"\nDoubled Items \n"+doubledItems);
     }
 
 }
