@@ -30,7 +30,7 @@ public class CounterInstance extends BossInstance {
 
     private void checkTokens(){
         ticks++;
-        if(ticks % 65 == 0){
+        if(ticks % 135 == 0){
             if(getOwner().getInventory().contains(TOKEN_ID, TOKEN_AMOUNT)){
                 getOwner().getInventory().delete(TOKEN_ID, TOKEN_AMOUNT);
                 getOwner().sendMessage("@blu@You have been charged @red@" + TOKEN_AMOUNT + " @blu@tokens for your instance.");
@@ -39,7 +39,7 @@ public class CounterInstance extends BossInstance {
             }
         }
 
-        if(ticks % (65 * 1000) == 0){
+        if(ticks % (135 * 1000) == 0){
             getOwner().sendMessage("@red@Your instance has expired.");
             dispose();
         }

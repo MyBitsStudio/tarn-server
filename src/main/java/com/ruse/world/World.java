@@ -276,6 +276,7 @@ public class World {
         WorldBosses2.sequence();
         WorldBosses3.sequence();
         WorldBosses4.sequence();
+
         Groudon.sequence();
         Ezkel.sequence();
         SupremeNex.sequence();

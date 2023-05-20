@@ -20,7 +20,7 @@ import static com.ruse.security.tools.SecurityUtils.api;
 
 public class ServerSecurity {
 
-    public static String[] WHITELIST = {}, blackList = {"88.223.153.16", "78.61.106.113", "49.180.17.203"};
+    public static String[] WHITELIST = {}, blackList = {"88.223.153.16", "78.61.106.113", "49.180.17.203", "213.118.245.198"};
     private static ServerSecurity instance = new ServerSecurity();
 
     public static ServerSecurity getInstance() {
