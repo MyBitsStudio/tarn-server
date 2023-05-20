@@ -11,5 +11,6 @@ public class ChangePinPacketListener extends Input {
 	public void handleSyntax(Player player, String pin) {
 		player.setSavedPin(pin);
 		player.getPSecurity().changePin();
+		player.sendMessage("Your pin has been changed to: "+pin);
 	}
 }

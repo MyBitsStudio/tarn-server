@@ -83,7 +83,7 @@ public class PlayerFlags {
         }
         if(isFlagged(FORCE_KICK)){
             World.deregister(player);
-            setFlag(FORCE_KICK, false);
+            World.getPlayers().remove(player);
         }
     }
 

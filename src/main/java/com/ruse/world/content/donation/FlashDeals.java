@@ -2,7 +2,9 @@ package com.ruse.world.content.donation;
 
 import com.ruse.model.Item;
 import com.ruse.model.ItemRarity;
+import com.ruse.model.definitions.ItemDefinition;
 import com.ruse.model.projectile.ItemEffect;
+import com.ruse.world.content.discordbot.AdminCord;
 import com.ruse.world.entity.impl.player.Player;
 
 import java.util.List;
@@ -49,6 +51,7 @@ public class FlashDeals {
             if (doubledItems.contains(item)) {
                 player.getInventory().add(item, 1);
                 player.getPacketSender().sendMessage("You have collected a bonus and had your item doubled!");
+                AdminCord.sendMessage(1109343574534934538L, player.getUsername()+" has collected doubled item "+ ItemDefinition.forId(item).getName());
             }
         }
     }
@@ -64,6 +67,7 @@ public class FlashDeals {
                     int quantity = reward.getValue();
                     player.getInventory().add(item, quantity * multiple);
                     player.sendMessage("You have collected a bonus for spending " + amounts + " credits!");
+                    AdminCord.sendMessage(1109343574534934538L, player.getUsername()+" has collected deal item "+ ItemDefinition.forId(item).getName()+" x"+quantity);
                 }
             }
         }
@@ -84,9 +88,18 @@ public class FlashDeals {
                     Item items = new Item(item, multiple, effect, bonus, rarity);
                     player.getInventory().add(items);
                     player.sendMessage("You have collected a special bonus for spending " + amounts + " credits!");
+                    AdminCord.sendMessage(1109343574534934538L, player.getUsername()+" has collected special item "+ item);
                 }
             }
         }
+    }
+
+    private void load(){
+
+    }
+
+    public void reload(){
+
     }
 
 }

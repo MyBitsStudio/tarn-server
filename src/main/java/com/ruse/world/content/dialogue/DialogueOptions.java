@@ -891,12 +891,6 @@ public class DialogueOptions {
                 case 83:
                     DialogueManager.start(player, 138);
                     break;
-                case 87: // Air Staff
-                    if (player.getClickDelay().elapsed(1000)) {
-                        player.getPacketSender().sendString(1, GameSettings.DifficultyUrl);
-                        player.getClickDelay().reset();
-                    }
-                    return;
             }
         } else if (id == FIRST_OPTION_OF_FOUR) {
             // System.out.println("Dialogue action id: " + player.getDialogueActionId());

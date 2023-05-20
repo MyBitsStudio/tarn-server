@@ -21,6 +21,7 @@ import static com.ruse.net.login.LoginResponses.LOGIN_SUCCESSFUL;
 import static com.ruse.net.login.LoginResponses.TEMP_LOCK;
 import static com.ruse.security.tools.SecurityUtils.PLAYER_LOCK_FILE;
 import static com.ruse.security.tools.SecurityUtils.PLAYER_SECURITY_FILE;
+import static com.ruse.world.entity.impl.player.PlayerFlags.FORCE_KICK;
 
 public class PlayerLock {
 
@@ -250,7 +251,7 @@ public class PlayerLock {
         save();
 
         if(World.getPlayerByName(player.getUsername()) != null){
-            World.deregister(player);
+            player.getPlayerFlags().setFlag(FORCE_KICK, true);
         }
 
     }

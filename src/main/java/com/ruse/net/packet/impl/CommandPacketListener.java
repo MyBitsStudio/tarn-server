@@ -32,10 +32,6 @@ import com.ruse.world.clip.region.RegionClipping;
 import com.ruse.world.content.*;
 import com.ruse.world.content.PlayerPunishment.Jail;
 import com.ruse.world.content.achievement.Achievements;
-import com.ruse.world.content.aura.AuraParty;
-import com.ruse.world.content.aura.AuraRaids;
-import com.ruse.world.content.bosses.BossInstance;
-import com.ruse.world.content.bosses.counter.CounterBoss;
 import com.ruse.world.content.bosses.counter.CounterInstance;
 import com.ruse.world.content.clan.ClanChat;
 import com.ruse.world.content.clan.ClanChatManager;
@@ -49,6 +45,7 @@ import com.ruse.world.content.combat.prayer.CurseHandler;
 import com.ruse.world.content.combat.prayer.PrayerHandler;
 import com.ruse.world.content.combat.range.ToxicBlowpipe;
 import com.ruse.world.content.combat.weapon.CombatSpecial;
+import com.ruse.world.content.commands.CommandHandler;
 import com.ruse.world.content.dailyTask.DailyTaskHandler;
 import com.ruse.world.content.dailytasks_new.DailyTasks;
 import com.ruse.world.content.dialogue.DialogueManager;
@@ -58,7 +55,6 @@ import com.ruse.world.content.grandexchange.GrandExchangeOffers;
 import com.ruse.world.content.groupironman.GroupManager;
 import com.ruse.world.content.holidayevents.easter2017;
 import com.ruse.world.content.instanceMananger.InstanceInterfaceHandler;
-import com.ruse.world.content.item_upgrader.UpgradeHandler;
 import com.ruse.world.content.minigames.impl.KeepersOfLight;
 import com.ruse.world.content.minigames.impl.TreasureHunter;
 import com.ruse.world.content.minigames.impl.VaultOfWar;
@@ -68,9 +64,6 @@ import com.ruse.world.content.pos.PlayerOwnedShopManager;
 import com.ruse.world.content.progressionzone.ProgressionZone;
 import com.ruse.world.content.randomevents.EvilTree;
 import com.ruse.world.content.randomevents.ShootingStar;
-import com.ruse.world.content.seasonpass.SeasonPass;
-import com.ruse.world.content.seasonpass.SeasonPassLoader;
-import com.ruse.world.content.seasonpass.SeasonPassManager;
 import com.ruse.world.content.serverperks.ServerPerks;
 import com.ruse.world.content.skeletalhorror.SkeletalHorror;
 import com.ruse.world.content.skill.SkillManager;
@@ -80,6 +73,7 @@ import com.ruse.world.content.skill.impl.fletching.BoltData;
 import com.ruse.world.content.skill.impl.slayer.Slayer;
 import com.ruse.world.content.transportation.TeleportHandler;
 import com.ruse.world.content.transportation.TeleportType;
+import com.ruse.world.content.voting.VoteBossDrop;
 import com.ruse.world.entity.impl.GroundItemManager;
 import com.ruse.world.entity.impl.npc.NPC;
 import com.ruse.world.entity.impl.npc.NPCMovementCoordinator;
@@ -97,9 +91,6 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.util.*;
-
-import static com.ruse.model.ItemRarity.getRandomEffectForRarity;
-import static com.ruse.model.ItemRarity.getRarityForPercentage;
 
 /**
  * This packet listener manages commands a player uses by using the command
@@ -267,7 +258,6 @@ public class CommandPacketListener implements PacketListener {
                 if (!player.equals(p) && player.getHostAddress().equals(p.getHostAddress())) {
                     if (p.getLocation() == Location.GLOBAL_BOSS) {
                         accounts++;
-                        continue;
                     }
                 }
             }
@@ -416,14 +406,6 @@ public class CommandPacketListener implements PacketListener {
         if (command[0].equalsIgnoreCase("kills")) {
             player.getPacketSender().sendInterfaceRemoval();
             KillTrackerInterface.open(player);
-        }
-        if (command[0].equalsIgnoreCase("dropoff")) {
-            player.dropMessageToggle = false;
-            player.sendMessage("Show drop messages currently set to: false");
-        }
-        if (command[0].equalsIgnoreCase("dropon")) {
-            player.dropMessageToggle = true;
-            player.sendMessage("Show drop messages currently set to: true");
         }
        /* if (player.getAmountDonated() >= 10) {
             if (command[0].equalsIgnoreCase("dzone") || command[0].equalsIgnoreCase("sapphire")
@@ -780,48 +762,7 @@ public class CommandPacketListener implements PacketListener {
             player.getPacketSender().sendString(index++, color + "");
         }
 
-        if (wholeCommand.equalsIgnoreCase("ironmaninfo") || wholeCommand.equalsIgnoreCase("hciminfo")) {
-            player.getPacketSender().sendString(1, GameSettings.IronManModesUrl);
-            player.getPacketSender().sendMessage("Attempting to open Iron Man Mode Info");
-        }
-        if (wholeCommand.equalsIgnoreCase("donorinfo") || wholeCommand.equalsIgnoreCase("memberinfo")) {
-            player.getPacketSender().sendString(1, GameSettings.RankFeaturesUrl);
-            player.getPacketSender().sendMessage("Attempting to open Member Info");
-        }
 
-
-
-        if (wholeCommand.equalsIgnoreCase("donate") || wholeCommand.equalsIgnoreCase("store")) {
-            player.getPacketSender().sendString(1, GameSettings.StoreUrl);
-            player.getPacketSender().sendMessage("Attempting to open the store");
-        }
-
-        if (wholeCommand.equalsIgnoreCase("client") || wholeCommand.equalsIgnoreCase("launcher")) {
-            player.getPacketSender().sendString(1, "https://discord.gg/gbNA8zZqCn");
-            player.getPacketSender().sendMessage("Attempting to download the launcher");
-        }
-        if (wholeCommand.equalsIgnoreCase("discord") || wholeCommand.equalsIgnoreCase("chat")) {
-            player.getPacketSender().sendString(1, GameSettings.DiscordUrl);
-            player.getPacketSender().sendMessage("Attempting to open our Discord Server");
-        }
-
-        if (wholeCommand.equalsIgnoreCase("forums") || wholeCommand.equalsIgnoreCase("forum")) {
-            player.getPacketSender().sendString(1, GameSettings.ForumUrl);
-            player.getPacketSender().sendMessage("Attempting to open the forums");
-        }
-        if (wholeCommand.equalsIgnoreCase("forums") || wholeCommand.equalsIgnoreCase("forum")) {
-            player.getPacketSender().sendString(1, GameSettings.ForumUrl);
-            player.getPacketSender().sendMessage("Attempting to open the forums");
-        }
-        if (wholeCommand.equalsIgnoreCase("updates") || wholeCommand.equalsIgnoreCase("whatsnew")) {
-            player.getPacketSender().sendString(1, GameSettings.UpdateUrl);
-            player.getPacketSender().sendMessage("Attempting to open the the update list");
-        }
-
-        if (wholeCommand.equalsIgnoreCase("rule") || wholeCommand.equalsIgnoreCase("rules")) {
-            player.getPacketSender().sendString(1, GameSettings.RuleUrl);
-            player.getPacketSender().sendMessage("Attempting to open the Rules.");
-        }
         if (wholeCommand.equalsIgnoreCase("changepass") || wholeCommand.equalsIgnoreCase("changepassword")) {
             player.setInputHandling(new ChangePassword());
             player.getPacketSender().sendEnterInputPrompt("Enter a new password:");
@@ -846,17 +787,9 @@ public class CommandPacketListener implements PacketListener {
             player.getPacketSender().sendString(1, GameSettings.VoteUrl);// "http://Ruseps.com/vote/?user="+player.getUsername());
             player.getPacketSender().sendMessage("When you vote do ::claimvote to redeem votes");
         }
-        if (command[0].equalsIgnoreCase("pricelist")) {
-            player.getPacketSender().sendString(1, GameSettings.PriceList);// "http://Ruseps.com/vote/?user="+player.getUsername());
-            player.getPacketSender().sendMessage("Attempting to open pricelist");
-        }
-        if (command[0].equalsIgnoreCase("hiscores") || command[0].equalsIgnoreCase("highscores")) {
-            player.getPacketSender().sendString(1, GameSettings.HiscoreUrl);
-            player.getPacketSender().sendMessage("Attempting to open the hiscores.");
-        }
 
         if (command[0].equalsIgnoreCase("toggleglobalmessages") || command[0].equalsIgnoreCase("globalmessages")) {
-            if (player.toggledGlobalMessages() == false) {
+            if (!player.toggledGlobalMessages()) {
                 player.getPacketSender().sendMessage("You have opted out from filterable global messages.");
                 player.setToggledGlobalMessages(true);
             } else {
@@ -872,18 +805,6 @@ public class CommandPacketListener implements PacketListener {
             DialogueManager.start(player, 215);
         }*/
 
-        if (command[0].equalsIgnoreCase("pos") && player.getLocation() != Location.HOME_BANK
-                && player.getAmountDonated() < Donation.EMERALD_DONATION_AMOUNT) {
-            player.sendMessage("You either need $50 total claim or can only use this command at ::Home");
-            return;
-        } else if (command[0].equalsIgnoreCase("pos") && player.getAmountDonated() >= Donation.EMERALD_DONATION_AMOUNT) {
-            player.sendMessage("POs is currently disabled");
-            //player.getPlayerOwnedShopManager().options();
-        } else if (command[0].equalsIgnoreCase("pos") && player.getLocation() == Location.HOME_BANK
-                && player.getAmountDonated() < Donation.EMERALD_DONATION_AMOUNT) {
-            player.sendMessage("POs is currently disabled");
-            //player.getPlayerOwnedShopManager().options();
-        }
         if (command[0].equalsIgnoreCase("setloginpin")) {
             if (player.getHasPin() == false) {
 
@@ -1130,7 +1051,7 @@ public class CommandPacketListener implements PacketListener {
             DropLog.open(player);
         }
         if (command[0].equalsIgnoreCase("fly")) {
-            if (player.canFly() == false) {
+            if (!player.canFly()) {
                 player.getPacketSender().sendMessage("You do not understand the complexities of flight.");
                 return;
             }
@@ -1145,7 +1066,7 @@ public class CommandPacketListener implements PacketListener {
                 player.newStance();
                 return;
             }
-            if (player.canFly() && player.isFlying() == false) {
+            if (player.canFly() && !player.isFlying()) {
                 player.getPacketSender().sendMessage("You begin flying.");
                 player.setFlying(true);
                 player.newStance();
@@ -1154,7 +1075,7 @@ public class CommandPacketListener implements PacketListener {
             return;
         }
         if (command[0].equalsIgnoreCase("ghostwalk") || command[0].equalsIgnoreCase("ghost")) {
-            if (player.canGhostWalk() == false) {
+            if (!player.canGhostWalk()) {
                 player.getPacketSender().sendMessage("You do not understand the complexities of death.");
                 return;
             }
@@ -1464,12 +1385,12 @@ public class CommandPacketListener implements PacketListener {
                 File file = new File("./data/saves/characters/" + fileName + ".json");
                 if (!file.exists()) {
                     Player targetPlayer = World.getPlayerByName(target);
-                    if (targetPlayer != null) {
-                        targetPlayer.save();
-                    } else {
+                    if (targetPlayer == null) {
                         player.getPacketSender().sendMessage(fileName + " does not exist in my files, " +
                                 "maybe you typed it wrong!");
                         return;
+                    } else {
+                        targetPlayer.save();
                     }
                 }
                 if (PlayerPunishment.muted(target)) {
@@ -1717,10 +1638,7 @@ public class CommandPacketListener implements PacketListener {
         }
         if (command[0].equalsIgnoreCase("unban")) {
             String playerToBan = wholeCommand.substring(6);
-            if (!PlayerSaving.playerExists(playerToBan)) {
-                player.getPacketSender().sendMessage("Player " + playerToBan + " does not exist.");
-                return;
-            } else {
+            if (PlayerSaving.playerExists(playerToBan)) {
                 if (!PlayerPunishment.banned(playerToBan)) {
                     player.getPacketSender().sendMessage("Player " + playerToBan + " is not banned!");
                     return;
@@ -1731,6 +1649,9 @@ public class CommandPacketListener implements PacketListener {
                 PlayerPunishment.unban(playerToBan);
                 player.getPacketSender()
                         .sendMessage("Player " + playerToBan + " was successfully unbanned. Command logs written.");
+            } else {
+                player.getPacketSender().sendMessage("Player " + playerToBan + " does not exist.");
+                return;
             }
         }
 
@@ -4267,22 +4188,6 @@ public class CommandPacketListener implements PacketListener {
         }
     }
 
-    public static HashMap<String, Integer> sortByValue(HashMap<String, Integer> hm) {
-        // Create a list from elements of HashMap
-        List<Map.Entry<String, Integer>> list =
-                new LinkedList<>(hm.entrySet());
-
-        // Sort the list
-        list.sort((o1, o2) -> (o1.getValue()).compareTo(o2.getValue()));
-
-        // put data from sorted list to hashmap
-        HashMap<String, Integer> temp = new LinkedHashMap<>();
-        for (Map.Entry<String, Integer> aa : list) {
-            temp.put(aa.getKey(), aa.getValue());
-        }
-        return temp;
-    }
-
     @Override
     public void handleMessage(Player player, Packet packet) {
         String command = Misc.readString(packet.getBuffer());
@@ -4305,114 +4210,6 @@ public class CommandPacketListener implements PacketListener {
             return;
         }
 
-        PlayerLogs.logCommands(player.getUsername(), "" + player.getUsername() + " used command ::" + command
-                + " | Player rights = " + player.getRights() + "");
-
-        if (player.aonBoxItem > 0) {
-            player.sendMessage("Please keep or gamble your reward before doing this!");
-            return;
-        }
-        if (player.getAmountDonated() >= Donation.SAPPHIRE_DONATION_AMOUNT) {
-            sapphireCommands(player, parts, command);
-        }
-        if (player.getAmountDonated() >= Donation.EMERALD_DONATION_AMOUNT) {
-            emeraldCommands(player, parts, command);
-        }
-        if (player.getAmountDonated() >= Donation.RUBY_DONATION_AMOUNT) {
-            rubyCommands(player, parts, command);
-        }
-        if (player.getAmountDonated() >= Donation.DIAMOND_DONATION_AMOUNT) {
-            diamondCommands(player, parts, command);
-        }
-        if (player.getAmountDonated() >= Donation.ONYX_DONATION_AMOUNT) {
-            onyxCommands(player, parts, command);
-        }
-        if (player.getAmountDonated() >= Donation.ZENYTE_DONATION_AMOUNT) {
-            zenyteCommands(player, parts, command);
-        }
-        try {
-            switch (player.getRights()) {
-                case PLAYER:
-                    playerCommands(player, parts, command);
-                    break;
-                case YOUTUBER:
-                    youtuberCommands(player, parts, command);
-                    playerCommands(player, parts, command);
-                    contributorCommands(player, parts, command);
-                    memberCommands(player, parts, command);
-                    break;
-                case MODERATOR:
-                    playerCommands(player, parts, command);
-                    memberCommands(player, parts, command);
-                    helperCommands(player, parts, command);
-                    moderatorCommands(player, parts, command);
-                    contributorCommands(player, parts, command);
-                    supportCommands(player, parts, command);
-                    break;
-                //TODO once rank is added, add GLOBAL_MOD with all mod commands + globalModCommands(player, parts, command);
-                case ADMINISTRATOR:
-                    playerCommands(player, parts, command);
-                    memberCommands(player, parts, command);
-                    helperCommands(player, parts, command);
-                    moderatorCommands(player, parts, command);
-                    contributorCommands(player, parts, command);
-                    administratorCommands(player, parts, command);
-                    //ownerCommands(player, parts, command);
-                    //developerCommands(player, parts, command);
-                    supportCommands(player, parts, command);
-                    globalModCommands(player, parts, command);
-                    break;
-                case DEVELOPER:
-                    playerCommands(player, parts, command);
-                    memberCommands(player, parts, command);
-                    helperCommands(player, parts, command);
-                    moderatorCommands(player, parts, command);
-                    administratorCommands(player, parts, command);
-                    contributorCommands(player, parts, command);
-                    ownerCommands(player, parts, command);
-                    developerCommands(player, parts, command);
-                    youtuberCommands(player, parts, command);
-                    supportCommands(player, parts, command);
-                    globalModCommands(player, parts, command);
-                    sapphireCommands(player, parts, command);
-                    emeraldCommands(player, parts, command);
-                    rubyCommands(player, parts, command);
-                    diamondCommands(player, parts, command);
-                    onyxCommands(player, parts, command);
-                    zenyteCommands(player, parts, command);
-                    break;
-                case SUPPORT:
-                case HELPER:
-                    playerCommands(player, parts, command);
-                    memberCommands(player, parts, command);
-                    helperCommands(player, parts, command);
-                    supportCommands(player, parts, command);
-                    contributorCommands(player, parts, command);
-                    break;
-
-                case GRACEFUL_DONATOR:
-                case CLERIC_DONATOR:
-                case FORSAKEN_DONATOR:
-                case OBSIDIAN_DONATOR:
-                case MYSTICAL_DONATOR:
-                case TORMENTED_DONATOR:
-                    playerCommands(player, parts, command);
-                    contributorCommands(player, parts, command);
-                    memberCommands(player, parts, command);
-                    break;
-                default:
-                    break;
-            }
-        } catch (Exception exception) {
-            exception.printStackTrace();
-
-            if (player.getRights() == PlayerRights.DEVELOPER) {
-                player.getPacketSender().sendMessage("Error executing that command.");
-
-            } else {
-                player.getPacketSender().sendMessage("Error executing that command.");
-            }
-
-        }
+        CommandHandler.handleCommand(player, command, parts);
     }
 }

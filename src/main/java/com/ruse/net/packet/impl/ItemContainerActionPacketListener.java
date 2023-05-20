@@ -784,21 +784,6 @@ public class ItemContainerActionPacketListener implements PacketListener {
 			case 2900:
 				player.getEventBossManager().addNpcDropReward(id, player.getInventory().getAmount(id), slot);
 				break;
-			case 39672:
-			case -25864:
-				player.getPA().sendMessage("You have to vote to claim this reward.");
-				new HandleVoteClaiming(player).handleClick1();
-				break;
-			case 39673:
-			case -25863:
-				player.getPA().sendMessage("You have to vote to claim this reward.");
-				new HandleVoteClaiming(player).handleClick2();
-				break;
-			case 39674:
-			case -25862:
-				player.getPA().sendMessage("You have to vote to claim this reward.");
-				new HandleVoteClaiming(player).handleClick3();
-				break;
 			case 1119: // smithing interface row 1
 			case 1120: // row 2
 			case 1121: // row 3

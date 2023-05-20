@@ -21,6 +21,7 @@ import com.ruse.world.content.cluescrolls.OLD_ClueScrolls;
 import com.ruse.world.content.collectionlog.CollectionEntry;
 import com.ruse.world.content.combat.CombatBuilder.CombatDamageCache;
 import com.ruse.world.content.combat.CombatFactory;
+import com.ruse.world.content.discordbot.AdminCord;
 import com.ruse.world.content.discordbot.JavaCord;
 import com.ruse.world.content.equipmentenhancement.BoostType;
 import com.ruse.world.content.minigames.impl.TreasureHunter;
@@ -421,6 +422,7 @@ public class NPCDrops {
                         String message = "<img=15><shad><col=CB0101> [" + player.getUsername()
                                 + "]<col=680000> has received <col=CB0101>" + itemMessage + "<col=680000> from <col=CB0101>" + npcName + "";
                         JavaCord.sendMessage("\uD83E\uDD16│\uD835\uDDEE\uD835\uDDF0\uD835\uDE01\uD835\uDDF6\uD835\uDE03\uD835\uDDF6\uD835\uDE01\uD835\uDE06", "[" + player.getUsername() + "] has received " + itemMessage + " from " + npcName + ".");
+                        AdminCord.sendMessage(1108221219121135707L, "[" + player.getUsername() + "] has received " + itemMessage + " from " + npcName + ".");
                         World.sendFilterMessage(message);
 
                         if (ccAnnounce) {
@@ -469,12 +471,12 @@ public class NPCDrops {
                 new CollectionEntry(npc.getId(), randomItem.getId(), randomItem.getAmount()).submit(player);
                 if (player.getInventory().canHold(randomItem)) {
                     player.getInventory().add(randomItem);
-                    if (player.dropMessageToggle)
+                    if(player.getPSettings().getBooleanValue("drop-message-personal"))
                         player.sendMessage("x" + randomItem.getAmount() + " "
                                 + randomItem.getDefinition().getName() + " has been sent to your inventory.");
                 } else {
                     player.depositItemBank(randomItem);
-                    if (player.dropMessageToggle)
+                    if(player.getPSettings().getBooleanValue("drop-message-personal"))
                         player.sendMessage("x" + randomItem.getAmount() + " "
                                 + randomItem.getDefinition().getName() + " has been sent to your bank.");
                 }
@@ -507,13 +509,13 @@ public class NPCDrops {
                                 if (player.getInventory().canHold(item)) {
                                     player.getInventory().add(item);
                                     player.getInventory().add(item);
-                                    if (player.dropMessageToggle)
+                                    if(player.getPSettings().getBooleanValue("drop-message-personal"))
                                         player.sendMessage("x" + item.getAmount() + " "
                                                 + item.getDefinition().getId() + " has been sent to your inventory.");
                                 } else {
                                     player.depositItemBank(item);
                                     player.depositItemBank(item);
-                                    if (player.dropMessageToggle)
+                                    if(player.getPSettings().getBooleanValue("drop-message-personal"))
                                         player.sendMessage("x" + item.getAmount() + " "
                                                 + item.getDefinition().getName() + " has been sent to your bank.");
                                 }
@@ -549,23 +551,23 @@ public class NPCDrops {
                         && (!player.isInsideRaids() &&
                         (player.getSummoning().getFamiliar().getSummonNpc().getId() == BossPets.BossPet.HEIMDALL_PET.npcId)
                         || player.getSummoning().getFamiliar().getSummonNpc().getId() == BossPets.BossPet.ODIN_PET.npcId))) {
-                    if (player.getGameMode() != GameMode.ULTIMATE_IRONMAN) {
+                    if (player.getGameMode() == GameMode.ULTIMATE_IRONMAN) {
+                        player.performGraphic(new Graphic(385));
+                        player.getInventory().add(new Item(item.getId(), item.getAmount()));
+                        DropLog.submit(player, new DropLogEntry(itemId, item.getAmount(), drop.isAnnounce()));
+                    } else {
                         player.performGraphic(new Graphic(385));
                         if (player.getInventory().canHold(item)) {
                             player.getInventory().add(item);
-                            if (player.dropMessageToggle)
+                            if(player.getPSettings().getBooleanValue("drop-message-personal"))
                                 player.sendMessage("x" + item.getAmount() + " "
                                         + item.getDefinition().getName() + " has been sent to your inventory.");
                         } else {
                             player.depositItemBank(item);
-                            if (player.dropMessageToggle)
+                            if(player.getPSettings().getBooleanValue("drop-message-personal"))
                                 player.sendMessage("x" + item.getAmount() + " "
                                         + item.getDefinition().getName() + " has been sent to your bank.");
                         }
-                    } else {
-                        player.performGraphic(new Graphic(385));
-                        player.getInventory().add(new Item(item.getId(), item.getAmount()));
-                        DropLog.submit(player, new DropLogEntry(itemId, item.getAmount(), drop.isAnnounce()));
                     }
                 } else {
                     GroundItemManager.spawnGroundItem(player,

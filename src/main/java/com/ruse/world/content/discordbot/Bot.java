@@ -48,7 +48,7 @@ public class Bot {
         if (GameSettings.LOCALHOST)
             return;
         if (countDown == TIMER) {
-            int players = (int) World.getPlayers().size() + GameSettings.players;
+            int players = World.getPlayers().size() + GameSettings.players;
             discord.getPresence().setActivity(Activity.watching((players) + " Players"));
             countDown = 0;
         } else {

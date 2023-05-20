@@ -120,7 +120,7 @@ public class WorldBosses3 {
                 String message = "Whoever dares to challenge Nine Tails, face him now at ::ninetails";
 
                 if (boss == 9907)
-                message = "Meruem The King has spawned, fight him at ::meruem ";
+                    message = "Meruem The King has spawned, fight him at ::meruem ";
                 if (GameSettings.LOCALHOST)
                     return;
                 JavaCord.sendMessage("\uD83E\uDD16│\uD835\uDDEE\uD835\uDDF0\uD835\uDE01\uD835\uDDF6\uD835\uDE03\uD835\uDDF6\uD835\uDE01\uD835\uDE06", "**[World Boss] " + message + " **");

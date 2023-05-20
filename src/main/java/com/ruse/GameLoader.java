@@ -23,6 +23,7 @@ import com.ruse.world.content.clan.ClanChatManager;
 import com.ruse.world.content.combat.effect.CombatPoisonEffect.CombatPoisonData;
 import com.ruse.world.content.combat.strategy.CombatStrategies;
 import com.ruse.world.content.dialogue.DialogueManager;
+import com.ruse.world.content.discordbot.AdminCord;
 import com.ruse.world.content.discordbot.Bot;
 import com.ruse.world.content.discordbot.JavaCord;
 import com.ruse.world.content.donation.DonationManager;
@@ -33,6 +34,7 @@ import com.ruse.world.content.polling.PollManager;
 import com.ruse.world.content.pos.PlayerOwnedShopManager;
 import com.ruse.world.content.seasonpass.SeasonPassLoader;
 import com.ruse.world.content.serverperks.ServerPerks;
+import com.ruse.world.content.voting.VoteBossDrop;
 import com.ruse.world.entity.actor.player.controller.ControllerHandler;
 import com.ruse.world.entity.impl.npc.NPC;
 import com.ruse.world.region.RegionManager;
@@ -133,6 +135,7 @@ public final class GameLoader {
 		//if (!GameSettings.LOCALHOST)
 		serviceLoader.execute(Bot::init);
 		serviceLoader.execute(JavaCord::init);
+		serviceLoader.execute(AdminCord::init);
 		serviceLoader.execute(SeasonPassLoader::load);
 		serviceLoader.execute(() -> DonationManager.getInstance().load());
 		serviceLoader.execute(VoteBossDrop::load);

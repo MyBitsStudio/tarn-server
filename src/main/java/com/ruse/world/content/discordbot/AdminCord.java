@@ -1,12 +1,7 @@
 package com.ruse.world.content.discordbot;
-import java.awt.Color;
-import java.util.List;
-import java.util.Optional;
 
 import com.ruse.GameSettings;
 import com.ruse.world.World;
-import com.ruse.world.entity.impl.player.Player;
-import com.ruse.world.entity.impl.player.PlayerHandler;
 import org.javacord.api.DiscordApi;
 import org.javacord.api.DiscordApiBuilder;
 import org.javacord.api.entity.channel.TextChannel;
@@ -18,18 +13,18 @@ import org.javacord.api.util.logging.ExceptionLogger;
  * @author Patrity || https://www.rune-server.ee/members/patrity/
  */
 
-public class JavaCord {
+public class AdminCord {
 
-    private static String token = "OTIwOTEzMjUyMjk5NDYwNjA5.Gql2R2.KKP2ae3t9YeD_I7pVW2Mnf_UEhK7c_j-XWPyF8";
+    private static String token = "MTEwOTMzNTM1MzM5NzA4NDI1MA.G5fNJg.uY3QIWhjz9hqqVUnxyAgJcG8Ae6iAiQKrBS80I";
 
-    private static String serverName = "Tarn";
+    private static String serverName = "Tarn Admin";
 
     private static DiscordApi api = null;
 
     public static void init() {
         new DiscordApiBuilder().setToken(token).login().thenAccept(api -> {
-                    JavaCord.api = api;
-                   // System.out.println("You can invite the bot by using the following url: " + api.createBotInvite());
+                    AdminCord.api = api;
+                    //System.out.println("You can invite the bot by using the following url: " + api.createBotInvite());
                     if (GameSettings.LOCALHOST)
                         return;
                     api.addMessageCreateListener(event -> {
@@ -49,11 +44,12 @@ public class JavaCord {
                 .exceptionally(ExceptionLogger.get());
     }
 
-    public static void sendMessage(String channel, String msg) {
+    //1108220766320861224L
+    public static void sendMessage(long channel, String msg) {
         try {
             new MessageBuilder()
                     .append(msg)
-                    .send((TextChannel) api.getTextChannelsByNameIgnoreCase(channel).toArray()[0]);
+                    .send((TextChannel) api.getChannelById(channel).get());
         } catch (Exception e) {
             e.printStackTrace();
         }

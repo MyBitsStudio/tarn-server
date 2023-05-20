@@ -1,4 +1,4 @@
-package com.ruse.world.content;
+package com.ruse.world.content.voting;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -57,20 +57,6 @@ public class VoteBossDrop {
 		});
 	}
 
-//	public static void save(){
-//		GameEngine.submit(() -> {
-//			Gson gson = new GsonBuilder().setPrettyPrinting().create();
-//			JsonObject jsonObject = new JsonObject();
-//			jsonObject.addProperty("amount", doMotivote.getVoteCount());
-//			jsonObject.addProperty("lastSaved", System.currentTimeMillis());
-//			try (FileWriter writer = new FileWriter("./data/saves/votes.json")){
-//				gson.toJson(jsonObject, writer);
-//			} catch (IOException e) {
-//				e.printStackTrace();
-//			}
-//		});
-//	}
-
 	public static void load() {
 		try (Reader reader = new FileReader("./data/saves/votes.json")) {
 			JsonObject jsonObject = JsonParser.parseReader(reader).getAsJsonObject();
@@ -80,23 +66,12 @@ public class VoteBossDrop {
 		}
 	}
 
-//	public static void load(){
-//		try (FileReader reader = new FileReader("./data/saves/votes.json")) {
-//			JsonParser parser = new JsonParser();
-//			JsonObject jsonObject = parser.parse(reader).getAsJsonObject();
-//			doMotivote.setVoteCount(jsonObject.get("amount").getAsInt());
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		}
-//	}
-
 	public static void handleForcedSpawn() {
 		if (currentSpawn != null){
 		//	System.out.println("Already spawned.");
 			return;
 		}
 
-		//doMotivote.setVoteCount(doMotivote.getVoteCount() - 50);
 		currentSpawn = new NPC(8013, new Position(2980, 2778, 0));
 
 		World.register(currentSpawn);

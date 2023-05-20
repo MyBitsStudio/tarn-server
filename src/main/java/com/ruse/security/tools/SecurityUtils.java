@@ -26,7 +26,7 @@ public class SecurityUtils {
             PLAYER_SECURITY_FILE = "./data/security/player/",
             PLAYER_LOCK_FILE = "./data/security/locks/",
             PLAYER_FILE = "./data/security/saves/",
-            TO_ADD = "./data/security/toAdd.json";
+            DONATE = "./data/security/donate/";
 
     public static String[] seeds = {
             "GkXzCXaw821lnzsyCGyYuPJ2", "7VQUVMYkeGsBaMZrfeEub78J6Hud1d96"

@@ -208,7 +208,6 @@ public class CrystalChest {
 			// new Item(8839, 1), //
 			// new Item(8840, 1), //
 			// amazing items
-			new Item(23020, 1), // Vote Scroll
 			new Item(2579, 1), // set 41 Ranger Boots
 			new Item(2581, 1), // set 42 Robin Hood Hat
 			new Item(19352, 1) // dragon sq (or) kit

@@ -1099,10 +1099,6 @@ public class ButtonClickPacketListener implements PacketListener {
                     PlayerPanel.refreshPanel(player);
                 }
                 break;
-            case 11213:
-                player.getPacketSender().sendString(1, GameSettings.DomainUrl);
-                player.getPacketSender().sendMessage("Attempting to open the homepage");
-                break;
             case 11217:
                 player.getPacketSender().sendString(1, GameSettings.DiscordUrl);
                 player.getPacketSender().sendMessage("Attempting to open the Discord");
@@ -1112,27 +1108,10 @@ public class ButtonClickPacketListener implements PacketListener {
                 player.getPacketSender().sendString(1, GameSettings.StoreUrl);
                 player.getPacketSender().sendMessage("Attempting to open the Store");
                 break;
-            case -26338:
-                player.getPacketSender().sendString(1, GameSettings.RuleUrl);
-                player.getPacketSender().sendMessage("Attempting to open the rules");
-                break;
-            case -26339:
-            case 11214:
-                player.getPacketSender().sendString(1, GameSettings.ForumUrl);
-                player.getPacketSender().sendMessage("Attempting to open the forums");
-                break;
             case -26336:
             case 11215:
                 player.getPacketSender().sendString(1, GameSettings.VoteUrl);
                 player.getPacketSender().sendMessage("Attempting to open the Vote page");
-                break;
-            case -26335:
-                player.getPacketSender().sendString(1, GameSettings.HiscoreUrl);
-                player.getPacketSender().sendMessage("Attempting to open the Hiscore page");
-                break;
-            case -26334:
-                player.getPacketSender().sendString(1, GameSettings.ReportUrl);
-                player.getPacketSender().sendMessage("Attempting to open the report page");
                 break;
             case 350:
                 player.getPacketSender()

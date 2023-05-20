@@ -345,8 +345,6 @@ public class PlayerSecureSave extends SecureSave {
         object.addProperty("sp-exp", player.getSeasonPass().getExp());
         object.add("sp-rewards", builder.toJsonTree(player.getSeasonPass().getRewardsClaimed()));
 
-        object.addProperty("dropMessage", player.dropMessageToggle);
-
         object.add("p-settings", builder.toJsonTree(player.getPSettings().getSettings()));
 
         object.addProperty("forge-tier", player.getForge().getTier());

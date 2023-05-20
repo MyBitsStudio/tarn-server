@@ -566,7 +566,6 @@ public class Player extends Character {
     public long lastHelpRequest;
     //	public GameModes selectedGameMode;
     public GameModes selectedGameMode;
-    public boolean dropMessageToggle = true;
     public boolean hasReferral;
     public long lastDonationClaim;
     private boolean placeholders = true;

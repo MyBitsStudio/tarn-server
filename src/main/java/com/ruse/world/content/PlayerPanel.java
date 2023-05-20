@@ -7,6 +7,7 @@ import com.ruse.world.World;
 import com.ruse.world.content.donation.DonationManager;
 import com.ruse.world.content.serverperks.ServerPerks;
 import com.ruse.world.content.skill.impl.slayer.SlayerTasks;
+import com.ruse.world.content.voting.VoteBossDrop;
 import com.ruse.world.entity.impl.player.Player;
 
 public class PlayerPanel {

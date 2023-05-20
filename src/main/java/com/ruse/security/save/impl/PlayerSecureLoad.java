@@ -1150,10 +1150,6 @@ public class PlayerSecureLoad extends SecureLoad {
             player.getSeasonPass().setRewardsClaimed(builder.fromJson(object.get("sp-rewards").getAsJsonArray(), boolean[].class));
         }
 
-        if(object.has("dropMessage")) {
-            player.dropMessageToggle = object.get("dropMessage").getAsBoolean();
-        }
-
         if(object.has("p-settings")) {
             ConcurrentMap<String, Object> playerSettings = builder.fromJson(object.get("p-settings"),
                     new TypeToken<ConcurrentMap<String, Object>>() {

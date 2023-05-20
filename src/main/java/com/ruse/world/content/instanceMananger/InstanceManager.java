@@ -195,7 +195,7 @@ public class InstanceManager {
 			return;
 		}
 		player.setCurrentInstanceAmount(player.getCurrentInstanceAmount() - 1);
-		if (player.dropMessageToggle) {
+		if (player.getPSettings().getBooleanValue("drop-message-personal")) {
 			player.getPA().sendMessage("You currently need to kill " + player.getCurrentInstanceAmount() + " " + NpcName);
 		}
 		if (player.getCurrentInstanceAmount() <= 0) {

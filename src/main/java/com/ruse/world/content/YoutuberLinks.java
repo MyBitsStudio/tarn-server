@@ -43,20 +43,21 @@ public enum YoutuberLinks {
         this.names = names;
     }
 
-    public static void handleCommand(Player player, String command){
+    public static boolean handleCommand(Player player, String command){
         for (YoutuberLinks link : YoutuberLinks.values()){
             for (String name : link.getNames()) {
                 if (command.equalsIgnoreCase(name)){
-                    if (link == VIHTIC){
+                    if (link == VIHTIC)
                         player.getPacketSender().sendString(1, "https://www.youtube.com/channel/UCyvtKISjnfLtbwe_69snxWA");
-                    }else
-                    player.getPacketSender().sendString(1, link.getURL());
+                     else
+                        player.getPacketSender().sendString(1, link.getURL());
 
                     player.getPacketSender().sendMessage("Attempting to open the link.");
-                    return;
+                    return true;
                 }
             }
         }
+        return false;
     }
 
 

@@ -40,38 +40,13 @@ public class GameSettings {
      */
     public static final String DomainUrl = "https://discord.gg/BeENR8amj2";
     public static final String ForumUrl = "https://discord.gg/BeENR8amj2";
-    public static final String showthreadx = "-x";
-    public static final String UpdateUrl = "https://discord.gg/BeENR8amj2";
     public static final String StoreUrl = "https://tarn-rsps.com/store.html";
-    public static final String sprad = "https://discord.gg/BeENR8amj2";
-    public static final String morgen = "https://www.youtube.com/channel/UCIFSpy1z7aMWZnQJlDF1Wcg";
     public static final String effigy = "https://www.youtube.com/channel/UCR-GGPuNM7V51JYWVbcDURQ";
     public static final String wr3cked = "https://www.youtube.com/channel/UCNm7R0y8KN8kSn3yVn04pkg";
-    public static final String ipkmaxjr = "https://www.youtube.com/channel/UCybjJ14mJjeeQaa7HqkyEzg";
 
-    public static final String Didy = "https://www.youtube.com/channel/UC6ag3g4fFug0ZmXOeDpHnTw";
-    public static final String FpkMerk = "https://www.youtube.com/channel/UCeVDQGzCI3dxp8NAT_YBIkQ/videos";
-    public static final String ogrsps = "https://www.youtube.com/user/HippHopp1100";
-    public static final String Stable = "https://www.youtube.com/channel/UCIFSpy1z7aMWZnQJlDF1Wcg";
-    public static final String ZachTX = "https://www.youtube.com/user/SwailyRS/";
-    public static final String Khalil = "https://www.youtube.com/channel/UCMc0hysuD8NsUTspX8MwFtw";
     public static final String VoteUrl = "https://tarn-rsps.com/vote.html";
-    public static final String PriceList = "https://discord.gg/BeENR8amj2";
-    public static final String HiscoreUrl = "https://discord.gg/BeENR8amj2";
-    public static final String ReportUrl = "https://discord.gg/BeENR8amj2";
-    public static final String RuleUrl = "https://discord.gg/BeENR8amj2";
-    public static final String CommandsUrl =  "https://discord.gg/BeENR8amj2";
-    public static final String RankFeaturesUrl = "https://discord.gg/BeENR8amj2";
-    public static final String WikiaUrl = "https://discord.gg/BeENR8amj2";
     public static final String IronManModesUrl = "https://discord.gg/BeENR8amj2";
-    public static final String HexUrl = "www.colorpicker.com";
     public static final String DiscordUrl = "https://discord.gg/BeENR8amj2";
-    public static final String ThreadUrl = "https://discord.gg/BeENR8amj2";
-    public static final String RickRoll = "https://discord.gg/BeENR8amj2";
-    public static final String DifficultyUrl =  "https://discord.gg/BeENR8amj2";
-    public static final String STARTGUIDE = "https://discord.gg/BeENR8amj2";
-    public static final String PRICEGUIDE = "https://discord.gg/BeENR8amj2";
-    public static final String SLAYERGUIDE = "https://discord.gg/BeENR8amj2";
     public static final long tempMuteInterval = 86400000;
     public static final int BaseImplingExpMultiplier = 2;
     /**

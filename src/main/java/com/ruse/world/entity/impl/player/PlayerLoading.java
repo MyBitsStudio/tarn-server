@@ -1220,10 +1220,6 @@ public class PlayerLoading {
                 player.getSeasonPass().setRewardsClaimed(builder.fromJson(reader.get("sp-rewards").getAsJsonArray(), boolean[].class));
             }
 
-            if(reader.has("dropMessage")) {
-                player.dropMessageToggle = reader.get("dropMessage").getAsBoolean();
-            }
-
             if(reader.has("p-settings")) {
                 ConcurrentMap<String, Object> playerSettings = builder.fromJson(reader.get("p-settings"),
                         new TypeToken<ConcurrentMap<String, Object>>() {
