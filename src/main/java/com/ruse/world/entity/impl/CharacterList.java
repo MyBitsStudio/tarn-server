@@ -110,6 +110,19 @@ public final class CharacterList<E extends Character> implements Iterable<E> {
 		return false;
 	}
 
+	public boolean forceRemove(E e){
+		Objects.requireNonNull(e);
+
+		if (e.isRegistered() && characters[e.getIndex()] != null) {
+			e.setRegistered(false);
+			characters[e.getIndex()] = null;
+			slotQueue.add(e.getIndex());
+			size--;
+			return true;
+		}
+		return false;
+	}
+
 	/**
 	 * Determines if this collection contains the specified element.
 	 *

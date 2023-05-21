@@ -7,6 +7,8 @@ import com.ruse.engine.task.TaskManager;
 import com.ruse.model.MessageType;
 import com.ruse.model.PlayerRights;
 import com.ruse.model.Position;
+import com.ruse.net.SessionState;
+import com.ruse.net.security.ConnectionHandler;
 import com.ruse.util.CharacterBackup;
 import com.ruse.util.NameUtils;
 import com.ruse.webhooks.discord.DiscordMessager;
@@ -107,6 +109,16 @@ public class World {
 
     public static Player getPlayerByName(String username) {
         return playersByUesrname.get(username);
+    }
+
+    public static Player getPlayer(String username){
+        for(Player player : players){
+            if(player == null)
+                continue;
+            if(player.getUsername().equals(username))
+                return player;
+        }
+        return null;
     }
 
     public final static LoginService LOGIN_SERVICE = new LoginService();
@@ -224,6 +236,24 @@ public class World {
         });
         gameThreadJobs.clear();
 
+        for(Map.Entry<String, Player> playeri : playersByUesrname.entrySet()){
+            String key = playeri.getKey();
+            boolean found = false;
+            for(Player player : players){
+                if(player == null)
+                    continue;
+               System.out.println(player.getUsername() + " " + key);
+                if(player.getUsername().equals(key)) {
+                    found = true;
+                    break;
+                }
+            }
+            if(!found){
+                playerByNames.remove(NameUtils.stringToLong(key));
+                playersByUesrname.remove(key);
+            }
+        }
+
         // Handle queued logins.
         for (int amount = 0; amount < GameSettings.LOGIN_THRESHOLD; amount++) {
             Player player = logins.poll();
@@ -254,6 +284,8 @@ public class World {
                 break;
             if (PlayerHandler.handleLogout(player, false)) {
                 $it.remove();
+                playerByNames.remove(player.getLongUsername());
+                playersByUesrname.remove(player.getUsername());
                 amount++;
             }
         }
@@ -352,8 +384,9 @@ public class World {
     }
 
     public static void removePlayer(Player player) {
-        players.remove(player);
-        playersByUesrname.remove(player.getUsername());
+        player.dispose();
+        ConnectionHandler.remove(player.getHostAddress());
+        players.forceRemove(player);
     }
 
     public static void removePlayer(String username){

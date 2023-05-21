@@ -87,15 +87,17 @@ class LoginWorker(val boss: LoginService) : Runnable {
 
                 for(player in World.getLoginQueue()){
                     if(player != null){
-                        if(player.username == username)
+                        if(player.username == username) {
                             return LoginResponses.LOGIN_ACCOUNT_ONLINE
+                        }
                     }
                 }
 
                 for(player in World.getPlayers()){
                     if(player != null){
-                        if(player.username == username)
+                        if(player.username == username) {
                             return LoginResponses.LOGIN_ACCOUNT_ONLINE
+                        }
                     }
                 }
 

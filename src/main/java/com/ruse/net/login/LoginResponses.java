@@ -27,7 +27,7 @@ public final class LoginResponses {
         if (msg.getClientVersion() != GameSettings.GAME_VERSION ) {
             return OLD_CLIENT_VERSION;
         }
-        if (World.getPlayerByName(msg.getUsername()) != null) {
+        if (World.getPlayer(msg.getUsername()) != null) {
             return LOGIN_ACCOUNT_ONLINE;
         }
 

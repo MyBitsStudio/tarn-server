@@ -216,11 +216,7 @@ public class HelperCommands {
 
                 if(player2 != null) {
                     World.removePlayer(player2);
-                    World.playerMap().remove(player2.getLongUsername(), player2);
-                    ConnectionHandler.remove(player2.getHostAddress());
                 }
-                else
-                    World.removePlayer(playerToTele);
                 return true;
         }
         return false;

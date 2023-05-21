@@ -84,11 +84,6 @@ public class PlayerFlags {
         }
         if(isFlagged(FORCE_KICK)){
             World.removePlayer(player);
-            World.playerMap().remove(player.getLongUsername(), player);
-            ConnectionHandler.remove(player.getHostAddress());
-
-            World.deregister(player);
-            World.getPlayers().remove(player);
         }
     }
 
