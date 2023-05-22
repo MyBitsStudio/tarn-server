@@ -126,6 +126,33 @@ public class OwnerCommands {
                 player.getUpdateFlag().flag(Flag.APPEARANCE);
                 return true;
 
+            case "setyellhex":
+                if(commands.length >= 2) {
+                    String hex = commands[1].replaceAll("#", "");
+                    player.setYellHex(hex);
+                    player.getPacketSender().sendMessage("You have set your hex color to: <shad=0><col=" + hex + ">#" + hex);
+                    if (player.getYellHex() == null)
+                        player.getPacketSender().sendMessage("There was an error setting your yell hex. You entered: " + hex);
+                } else {
+                    player.getPacketSender().sendMessage("You must enter a hex color code. Example: ::setyellhex 00FF00");
+                }
+                return true;
+
+            case "bank":
+                if (player.getInterfaceId() > 0) {
+                    player.getPacketSender()
+                            .sendMessage("Please close the interface you have open before opening another one.");
+                    return true;
+                }
+                if (player.getLocation() == Locations.Location.WILDERNESS || player.getLocation() == Locations.Location.DUNGEONEERING
+                        || player.getLocation() != null && player.getLocation() == Locations.Location.CUSTOM_RAIDS
+                        || player.getLocation() == Locations.Location.DUEL_ARENA) {
+                    player.getPacketSender().sendMessage("You cannot open your bank here.");
+                    return true;
+                }
+                player.getBank(player.getCurrentBankTab()).open();
+                return true;
+
             case "findnpc":
                 name = command.substring(commands[0].length() + 1);
                 player.getPacketSender().sendMessage("Finding item id for item - " + name);

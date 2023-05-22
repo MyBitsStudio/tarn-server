@@ -389,7 +389,7 @@ public class CustomDropUtils {
             percentBoost += 10;
         }
         if (PrayerHandler.isActivated(player,PrayerHandler.FURY_SWIPE)) {
-            percentBoost += 20;
+            percentBoost += 25;
         }
 
         if(percentBoost >= 2500) {
