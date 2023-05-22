@@ -349,6 +349,9 @@ public class PlayerSecureSave extends SecureSave {
 
         object.addProperty("forge-tier", player.getForge().getTier());
         object.addProperty("forge-progress", player.getForge().getProgress());
+
+        object.addProperty("lastloggedinday", player.getAttendenceManager().getLastLoggedInDate().toString());
+        object.add("attendanceprogress", builder.toJsonTree(player.getAttendenceManager().getPlayerAttendanceProgress()));
         return this;
     }
 

@@ -1672,4 +1672,11 @@ public class PacketSender {
         return this;
     }
 
+    public PacketSender sendInterfaceVisibility(int interfaceId, boolean visible) {
+        PacketBuilder out = new PacketBuilder(32);
+        out.putInt(interfaceId);
+        out.put(visible ? 0 : 1);
+        player.getSession().queueMessage(out);
+        return this;
+    }
 }

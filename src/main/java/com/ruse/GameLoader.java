@@ -19,6 +19,7 @@ import com.ruse.world.World;
 import com.ruse.world.allornothing.DoubleOrNothing;
 import com.ruse.world.clip.region.RegionClipping;
 import com.ruse.world.content.*;
+import com.ruse.world.content.attendance.DailyResetScheduler;
 import com.ruse.world.content.clan.ClanChatManager;
 import com.ruse.world.content.combat.effect.CombatPoisonEffect.CombatPoisonData;
 import com.ruse.world.content.combat.strategy.CombatStrategies;
@@ -147,6 +148,7 @@ public final class GameLoader {
 		serviceLoader.execute(SeasonPassLoader::load);
 		serviceLoader.execute(() -> DonationManager.getInstance().load());
 		serviceLoader.execute(VoteBossDrop::load);
+		serviceLoader.execute(DailyResetScheduler::initialize);
 		//serviceLoader.execute(RSAKeyGenerator::start);
 		TaskManager.submit(new LotteryTask());
 	}

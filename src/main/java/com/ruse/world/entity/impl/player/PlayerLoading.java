@@ -19,6 +19,8 @@ import com.ruse.world.content.DropLog.DropLogEntry;
 import com.ruse.world.content.KillsTracker;
 import com.ruse.world.content.KillsTracker.KillsEntry;
 import com.ruse.world.content.LoyaltyProgramme.LoyaltyTitles;
+import com.ruse.world.content.attendance.AttendanceProgress;
+import com.ruse.world.content.attendance.AttendanceTab;
 import com.ruse.world.content.collectionlog.CollectionEntry;
 import com.ruse.world.content.collectionlog.CollectionLogInterface;
 import com.ruse.world.content.combat.magic.CombatSpells;
@@ -39,6 +41,7 @@ import java.io.FileReader;
 import java.lang.reflect.Type;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -1235,6 +1238,16 @@ public class PlayerLoading {
                 player.getForge().setProgress(reader.get("forge-progress").getAsInt());
             }
 
+            if(reader.has("lastloggedinday")) {
+                player.getAttendenceManager().setLastLoggedInDate(LocalDate.parse(reader.get("lastloggedinday").getAsString()));
+            }
+
+            if(reader.has("attendanceprogress")) {
+                HashMap<AttendanceTab, AttendanceProgress> temp = builder.fromJson(reader.get("attendanceprogress"),
+                        new TypeToken<HashMap<AttendanceTab, AttendanceProgress>>() {
+                        }.getType());
+                player.getAttendenceManager().getPlayerAttendanceProgress().putAll(temp);
+            }
 
             /*
              * File rooms = new File("./data/saves/housing/rooms/" + player.getUsername() +
