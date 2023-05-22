@@ -306,7 +306,7 @@ public final class LoginResponses {
      */
 
     public static final int ACCOUNT_BANNED = 35;
-    public static final int BLACKLIST = 36;
+    public static final int BLACKLIST_IP = 36;
     public static final int VPN_DETECTED = 37;
     public static final int INVALID_IP = 38;
     public static final int TEMP_LOCK = 39;

@@ -69,12 +69,12 @@ public class PlayerSecureLoad extends SecureLoad {
         }
         if (object.has("has-pin2")) {
             player.setHasPin(object.get("has-pin2").getAsBoolean());
+            if(player.getHasPin()){
+                if (object.has("saved-pin2")) {
+                    player.setSavedPin(object.get("saved-pin2").getAsString());
+                }
+            }
         }
-
-        if (object.has("saved-pin2")) {
-            player.setSavedPin(object.get("saved-pin2").getAsString());
-        }
-
 
         if (object.has("saved-ip")) {
             player.setSavedIp(object.get("saved-ip").getAsString());

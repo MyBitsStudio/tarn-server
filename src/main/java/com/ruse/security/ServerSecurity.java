@@ -22,7 +22,7 @@ import static com.ruse.world.entity.impl.player.PlayerFlags.FORCE_KICK;
 
 public class ServerSecurity {
 
-    public static String[] WHITELIST = {}, blackList = {"88.223.153.16", "78.61.106.113", "49.180.17.203", "213.118.245.198"};
+    public static String[] WHITELIST = {};
     private static ServerSecurity instance = new ServerSecurity();
 
     public static ServerSecurity getInstance() {
@@ -36,17 +36,13 @@ public class ServerSecurity {
         load();
     }
 
-    public void starting(){
-        securityMap.put("player", new ConcurrentHashMap<>());
-        securityMap.put("UUID", new ConcurrentHashMap<>());
-        securityMap.put("ip", new ConcurrentHashMap<>());
-        securityMap.put("mac", new ConcurrentHashMap<>());
-        securityMap.put("hwid", new ConcurrentHashMap<>());
-        securityMap.put("mute", new ConcurrentHashMap<>());
-        keys.put("pSecureKey", SecurityUtils.createRandomString(24));
-        keys.put("sSecureKey", SecurityUtils.createRandomString(32));
-        save();
+    private String[] BLACKLIST;
+
+    public String[] getBlackList(){
+        return this.BLACKLIST;
     }
+
+    public void setBlackList(String[] black){ this.BLACKLIST = black;}
     /**
      * Security Map contains values for each block
      * Time (Long value (System.currentTimeMillis() + time))
@@ -105,7 +101,6 @@ public class ServerSecurity {
             return;
         }
         new ServerSecurityLoad(this).loadJSON(SERVER_SECURITY_FILE).run();
-        System.out.println(securityMap);
     }
 
     public void save(){
@@ -119,7 +114,6 @@ public class ServerSecurity {
         securityMap.clear();
         keys.clear();
         new ServerSecurityLoad(this).loadJSON(SERVER_SECURITY_FILE).run();
-        System.out.println(securityMap);
     }
 
     private boolean whiteList(String ip){
@@ -127,7 +121,7 @@ public class ServerSecurity {
     }
 
     private boolean isBlackList(String ip){
-        return Arrays.asList(blackList).contains(ip);
+        return Arrays.asList(BLACKLIST).contains(ip);
     }
 
     public int screenPlayer(Player player){
@@ -220,6 +214,13 @@ public class ServerSecurity {
         return time == -1 || time > System.currentTimeMillis();
     }
 
+    public void unMute(String username){
+        if(securityMap.get("mute").get(username.toLowerCase()) != null){
+            securityMap.get("mute").remove(username.toLowerCase());
+            save();
+        }
+    }
+
     private boolean isPlayerBanned(String username){
         if(securityMap.get("player").get(username) == null){
             return false;
@@ -267,7 +268,7 @@ public class ServerSecurity {
         }
         if(isBlackList(player.getPSecurity().getIp())){
             AdminCord.sendMessage(1109203346520277013L, player.getUsername()+" is blacklisted "+player.getPSecurity().getIp());
-            return BLACKLIST;
+            return BLACKLIST_IP;
         }
         GeolocationParams geoParams = new GeolocationParams();
         geoParams.setIPAddress(player.getPSecurity().getIp());
@@ -277,8 +278,6 @@ public class ServerSecurity {
         Geolocation geolocation = api.getGeolocation(geoParams);
 
         if (geolocation.getStatus() == 200) {
-
-            System.out.println(geolocation.getGeolocationSecurity());
 
             if(geolocation.getGeolocationSecurity().getAnonymous() || geolocation.getGeolocationSecurity().getKnownAttacker()
                     || geolocation.getGeolocationSecurity().getProxy() || !geolocation.getGeolocationSecurity().getProxyType().equals("")

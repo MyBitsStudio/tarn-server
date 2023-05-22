@@ -1,8 +1,11 @@
 package com.ruse.world.entity.impl.player;
 
 import com.ruse.GameSettings;
+import com.ruse.engine.task.Task;
+import com.ruse.engine.task.TaskManager;
 import com.ruse.model.input.impl.Enter2FAPacketListener;
 import com.ruse.model.input.impl.EnterPinPacketListener;
+import com.ruse.model.input.impl.RegisterIPName;
 import com.ruse.net.security.ConnectionHandler;
 import com.ruse.world.World;
 
@@ -62,6 +65,7 @@ public class PlayerFlags {
             }
         }
         if(isFlagged(TWO_FACTOR_AUTH)){
+            player.setPlayerLocked(true);
             if(player.getPSecurity().faEnabled()){
                 if(!reqs) {
                     reqs = true;
@@ -91,10 +95,25 @@ public class PlayerFlags {
         setFlag(PIN_LOCK, false);
         setFlag(PIN_ENTER, false);
         setFlag(TWO_FACTOR_AUTH, true);
+        player.setPlayerLocked(false);
         reqs = false;
     }
 
     public void success2FA(){
+        setFlag(TWO_FACTOR_AUTH, false);
+        player.setPlayerLocked(false);
+        reqs = false;
+        TaskManager.submit(new Task(1, player, false) {
+            @Override
+            protected void execute() {
+                player.setInputHandling(new RegisterIPName());
+                player.getPacketSender().sendEnterInputPrompt("Do you wish to add this IP to your list : (yes/no)");
+                stop();
+            }
+        });
+    }
+
+    public void successFirst2FA(){
         setFlag(TWO_FACTOR_AUTH, false);
         player.setPlayerLocked(false);
         reqs = false;

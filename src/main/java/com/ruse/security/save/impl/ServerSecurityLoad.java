@@ -4,6 +4,7 @@ import com.ruse.security.ServerSecurity;
 import com.ruse.security.save.SecureLoad;
 import com.ruse.security.tools.SecurityUtils;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -55,6 +56,10 @@ public class ServerSecurityLoad extends SecureLoad {
 
         sec.setSecurityMap(mapping);
 
+        String[] blacklist = builder.fromJson(object.get("blacklist"),
+                new com.google.gson.reflect.TypeToken<String[]>() {
+                }.getType());
+        sec.setBlackList(blacklist);
         return this;
     }
 }

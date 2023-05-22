@@ -153,6 +153,22 @@ public class HelperCommands {
                 }
                 return true;
 
+            case "unmute":
+                playerToTele = command.substring(commands[0].length() + 1);
+                player2 = World.getPlayerByName(playerToTele);
+
+                if(player2 == null){
+                    player.getPacketSender().sendMessage("Player: " + playerToTele + " is not online.");
+                    return true;
+                }
+
+                ServerSecurity.getInstance().unMute(playerToTele);
+                AdminCord.sendMessage(1109203238907027527L,  player.getUsername()
+                        + " just ummuted " + playerToTele);
+                player.getPacketSender().sendMessage("Player " + playerToTele + " was successfully unmuted");
+                player2.getPacketSender().sendMessage("@red@[STAFF] You have been unmuted by Staff. Please respect the rules next time.");
+                return true;
+
             case "mute":
                 try {
                     int timer = Integer.parseInt(commands[1]);
@@ -178,7 +194,7 @@ public class HelperCommands {
                     player.getPacketSender().sendMessage("Player " + playerToTele + " was successfully muted");
                     player2.getPacketSender().sendMessage("@red@[STAFF] You have been muted by a staff member for "+(timer * 5)+" minutes.");
                 } catch (Exception e) {
-                    player.getPacketSender().sendMessage("Error! Usage ::mute 6h username");
+                    player.getPacketSender().sendMessage("Error! Usage ::mute 1 username");
                 }
                 return true;
 
@@ -194,20 +210,26 @@ public class HelperCommands {
 
             case "warn":
                 playerToTele = command.substring(commands[0].length() + 1);
-                player2 = World.getPlayerByName(playerToTele);
+                player2 = World.getPlayer(playerToTele);
 
-                player2.getPacketSender().sendMessage("@red@[STAFF] You have been warned by staff members!");
-                player.sendMessage(playerToTele+" has been warned.");
+                if(player2 != null) {
+                    player2.getPacketSender().sendMessage("@red@[STAFF] You have been warned by staff members!");
+                    player.sendMessage(playerToTele + " has been warned.");
 
-                AdminCord.sendMessage(1109203238907027527L,  player.getUsername()
-                        + " just warned " + playerToTele +".");
+                    AdminCord.sendMessage(1109203238907027527L, player.getUsername()
+                            + " just warned " + playerToTele + ".");
+                } else {
+                    player.sendMessage("This player isn't online");
+                }
                 return true;
 
             case "isiron":
                 playerToTele = command.substring(commands[0].length() + 1);
                 player2 = World.getPlayerByName(playerToTele);
-
-                player.sendMessage(player2.getUsername()+" is "+(player2.getGameMode().isIronman() ? "@gre@Ironman" : "@red@Not Ironman"));
+                if(player2 != null)
+                    player.sendMessage(player2.getUsername()+" is "+(player2.getGameMode().isIronman() ? "@gre@Ironman" : "@red@Not Ironman"));
+                else
+                    player.sendMessage("This player isn't online");
                 return true;
 
             case "remove":

@@ -94,7 +94,7 @@ public class OwnerCommands {
                 amount = Integer.parseInt(commands[2]);
                 String plrName = command
                         .substring(commands[0].length() + commands[1].length() + commands[2].length() + 3);
-                Player target = World.getPlayerByName(plrName);
+                Player target = World.getPlayer(plrName);
                 if (target == null) {
                     player.getPacketSender().sendMessage(plrName + " must be online to give them stuff!");
                 } else {
@@ -317,10 +317,12 @@ public class OwnerCommands {
 
                         case "shops":
                             Shop.ShopManager.parseShops().load();
+                            player.sendMessage("Shop reload");
                             return true;
 
                         case "bans":
                             ServerSecurity.getInstance().reload();
+                            player.sendMessage("BAns reload");
                             return true;
                     }
                 }
@@ -334,9 +336,9 @@ public class OwnerCommands {
                 int ids = Integer.parseInt(commands[1]);
                 ItemEffect effect = ItemEffect.getEffectForName(commands[2]);
                 int bonus = Integer.parseInt(commands[3]);
-                Player targets = World.getPlayerByName(command.substring(commands[0].length() + commands[1].length() + commands[2].length() + 3));
+                Player targets = World.getPlayer(command.substring(commands[0].length() + commands[1].length() + commands[2].length() + 3));
                 if (targets == null) {
-                    player.getPacketSender().sendMessage(" must be online to give them stuff!");
+                    player.getPacketSender().sendMessage(command.substring(commands[0].length() + commands[1].length() + commands[2].length() + 3)+" must be online to give them stuff!");
                 } else {
                     targets.getInventory().add(new Item(ids, 1, effect, bonus));
                     player.getPacketSender().sendMessage(

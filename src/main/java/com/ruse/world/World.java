@@ -144,7 +144,7 @@ public class World {
         for (Player p : players) {
             if (p == null)
                 continue;
-                p.getPacketSender().sendMessage(message);
+            p.getPacketSender().sendMessage(message);
         }
     }
 
@@ -236,14 +236,27 @@ public class World {
         });
         gameThreadJobs.clear();
 
+        for(Player player : players){
+            if(player == null)
+                continue;
+
+            if(!player.getSession().getChannel().isConnected()){
+                System.out.println("Dead session");
+                removePlayer(player);
+            }
+        }
+
         for(Map.Entry<String, Player> playeri : playersByUesrname.entrySet()){
             String key = playeri.getKey();
             boolean found = false;
             for(Player player : players){
                 if(player == null)
                     continue;
-               System.out.println(player.getUsername() + " " + key);
                 if(player.getUsername().equals(key)) {
+                    if(!player.getSession().getChannel().isConnected()){
+                        System.out.println("Dead session 2 "+player.getUsername());
+                        players.remove(player);
+                    }
                     found = true;
                     break;
                 }
@@ -270,11 +283,6 @@ public class World {
             }
             PlayerHandler.handleLogin(player);
         }
-        if (PRINT_TIMESTAMPS) {
-            if (System.currentTimeMillis() - lastTime > 50)
-              //  System.out.println("Login queues took: " + (System.currentTimeMillis() - lastTime) + " ms");
-            lastTime = System.currentTimeMillis();
-        }
         // Handle queued logouts.
         int amount = 0;
         Iterator<Player> $it = logouts.iterator();
@@ -289,12 +297,7 @@ public class World {
                 amount++;
             }
         }
-        // Handle queued vote rewards
-        if (PRINT_TIMESTAMPS) {
-            if (System.currentTimeMillis() - lastTime > 50)
-              //  System.out.println("Logout queues took: " + (System.currentTimeMillis() - lastTime) + " ms");
-            lastTime = System.currentTimeMillis();
-        }
+
         FightPit.sequence();
 
         WorldBosses.sequence();
@@ -318,48 +321,23 @@ public class World {
         ServerPerks.getInstance().tick();
         CharacterBackup.sequence();
 
-        if (PRINT_TIMESTAMPS) {
-            if (System.currentTimeMillis() - lastTime > 50)
-              //  System.out.println("Content tickers took: " + (System.currentTimeMillis() - lastTime) + " ms");
-            lastTime = System.currentTimeMillis();
-        }
         // First we construct the update sequences.
         UpdateSequence<Player> playerUpdate = new PlayerUpdateSequence(synchronizer, updateExecutor);
         UpdateSequence<NPC> npcUpdate = new NpcUpdateSequence();
         // Then we execute pre-updating code.
         players.forEach(playerUpdate::executePreUpdate);
-        if (PRINT_TIMESTAMPS) {
-            if (System.currentTimeMillis() - lastTime > 50)
-              //  System.out.println("Player pre-updating took: " + (System.currentTimeMillis() - lastTime) + " ms");
-            lastTime = System.currentTimeMillis();
-        }
+
         npcs.forEach(npcUpdate::executePreUpdate);
-        if (PRINT_TIMESTAMPS) {
-            if (System.currentTimeMillis() - lastTime >= 50)
-              //  System.out.println("Entities pre-updating took: " + (System.currentTimeMillis() - lastTime) + " ms");
-            lastTime = System.currentTimeMillis();
-        }
+
         // Then we execute parallelized updating code.
         synchronizer.bulkRegister(players.size());
         players.forEach(playerUpdate::executeUpdate);
         synchronizer.arriveAndAwaitAdvance();
-        if (PRINT_TIMESTAMPS) {
-            if (System.currentTimeMillis() - lastTime > 50)
-             //   System.out.println("Entities updating took: " + (System.currentTimeMillis() - lastTime) + " ms");
-            lastTime = System.currentTimeMillis();
-        }
+
         // Then we execute post-updating code.
         players.forEach(playerUpdate::executePostUpdate);
         npcs.forEach(npcUpdate::executePostUpdate);
-        if (PRINT_TIMESTAMPS) {
-            if (System.currentTimeMillis() - lastTime > 50) {
-              //  System.out.println("Entities post-updating took: " + (System.currentTimeMillis() - lastTime) + " ms");
-            }
-            lastTime = System.currentTimeMillis();
-            if (System.currentTimeMillis() - startTime > 50) {
-              //  System.out.println("World ticking took: " + (System.currentTimeMillis() - startTime) + " ms");
-            }
-        }
+
     }
 
     public static void submitGameThreadJob(@NotNull Function0<Unit> function) {

@@ -14,14 +14,6 @@ public class Enter2FAPacketListener extends Input {
 		if (pin.equalsIgnoreCase(SecurityUtils.getTOTPCode(player.getPSecurity().getFA()))){
 			player.sendMessage("2FA correctly entered");
 			player.getPlayerFlags().success2FA();
-			TaskManager.submit(new Task(1, player, false) {
-				@Override
-				protected void execute() {
-					player.setInputHandling(new RegisterIPName());
-					player.getPacketSender().sendEnterInputPrompt("Do you wish to add this IP to your list : (yes/no)");
-					stop();
-				}
-			});
 		} else {
 			System.out.println("2FA incorrectly entered! Please try again!");
 			player.getPSecurity().getPlayerLock().increase("faAtt", pin);

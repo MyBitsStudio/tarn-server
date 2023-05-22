@@ -49,6 +49,8 @@ public class ServerSecuritySave extends SecureSave {
         }
 
         object.add("keys", builder.toJsonTree(keyMaps));
+
+        object.add("blacklist", builder.toJsonTree(sec.getBlackList()));
         return this;
     }
 

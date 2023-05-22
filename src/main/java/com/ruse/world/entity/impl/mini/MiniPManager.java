@@ -75,7 +75,7 @@ public class MiniPManager {
 
                         PlayerLoading.getResult(playerMini);
 
-                        if (World.getPlayerByName(playerMini.getUsername()) != null) {
+                        if (World.getPlayer(playerMini.getUsername()) != null) {
                            // System.out.println("Error: unable to add bot '" + playerMini.getUsername() + "' - already logged in.");
                             stop();
                         }

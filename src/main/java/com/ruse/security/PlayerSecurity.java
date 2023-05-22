@@ -322,6 +322,8 @@ public class PlayerSecurity {
 
         if (player.getHasPin() && !isRootIP(msg.getHost())) {
             player.getPlayerFlags().setFlag(PlayerFlags.PIN_ENTER, true);
+        } else if(player.getPSecurity().faEnabled() && !isRootIP(msg.getHost())) {
+            player.getPlayerFlags().setFlag(PlayerFlags.TWO_FACTOR_AUTH, true);
         }
 
         return code;
@@ -453,7 +455,8 @@ public class PlayerSecurity {
     }
 
     public void setIP(){
-        addSecurityListStringValue("auth", ip);
+        addSecurityListStringValue("auth", player.getHostAddress());
+        save();
     }
 
 }
