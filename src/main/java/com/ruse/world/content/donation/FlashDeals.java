@@ -40,6 +40,7 @@ public class FlashDeals {
     }
 
     public void setDoubledItems(List<Integer> items){
+        doubledItems.clear();
         doubledItems.addAll(items);
     }
 

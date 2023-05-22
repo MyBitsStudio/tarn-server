@@ -329,6 +329,8 @@ public class OwnerCommands {
                             WeaponInterfaces.parseInterfaces().load();
                             NpcDefinition.parseNpcs().load();
                             WeaponInterfaces.init();
+                            ServerSecurity.getInstance().reload();
+                            FlashDeals.getDeals().reload();
                             player.sendMessage("Reloaded all definitions.");
                             return true;
 
@@ -346,7 +348,12 @@ public class OwnerCommands {
 
                         case "bans":
                             ServerSecurity.getInstance().reload();
-                            player.sendMessage("BAns reload");
+                            player.sendMessage("Bans reload");
+                            return true;
+
+                        case "deals":
+                            FlashDeals.getDeals().reload();
+                            player.sendMessage("Deals reload");
                             return true;
                     }
                 }

@@ -28,6 +28,7 @@ public enum StorePacks {
     COLLECTORS_AURA(15450, 250.00),
     OWNER_CHEST(23002, 300.00), // need id
     PREMIUM_PASS(3686, 40.00), // need id
+    DAMAGE_SCROLL(4442, 150)
 
     ;
 

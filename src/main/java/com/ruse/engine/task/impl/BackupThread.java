@@ -25,7 +25,7 @@ public class BackupThread extends Task {
     public List<String> filesList= new ArrayList<>();
 
     public BackupThread(){
-        super(7200, true);
+        super(7200, false);
     }
     @Override
     protected void execute() {

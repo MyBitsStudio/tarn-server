@@ -150,7 +150,6 @@ public class PlayerLock {
         File file = path.toFile();
 
         if (!file.exists()) {
-            System.out.println("No player lock found for " + username + ".");
             start();
             save();
             return this;

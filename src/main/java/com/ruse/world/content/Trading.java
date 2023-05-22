@@ -498,24 +498,24 @@ public class Trading {
 
 			// logs
 			for (Item item : player.getTrading().offeredItems) {
-				PlayerLogs.log(player.getUsername(), "Gave item in trade to " + player2.getUsername() + ". Id: "
+				PlayerLogs.log(player.getUsername(), player.getUsername()+"Gave item in trade to " + player2.getUsername() + ". Id: "
 						+ item.getId() + ", amount: " + item.getAmount());
 				AdminCord.sendMessage(1108220705222443070L, "Gave item in trade to " + player2.getUsername() + ". Id: "
 						+ item.getId() + ", amount: " + item.getAmount());
 			}
 			for (Item item : player2.getTrading().offeredItems) {
-				PlayerLogs.log(player.getUsername(), "Receiving item from trade with " + player2.getUsername() + " Id: "
+				PlayerLogs.log(player.getUsername(), player.getUsername()+"Receiving item from trade with " + player2.getUsername() + " Id: "
 						+ item.getId() + ", amount: " + item.getAmount());
 			}
 
 			for (Item item : player.getTrading().offeredItems) {
-				PlayerLogs.logTrades(player.getUsername(), "Gave item to " + player2.getUsername() + ". Name: "
+				PlayerLogs.logTrades(player.getUsername(), player.getUsername()+"Gave item to " + player2.getUsername() + ". Name: "
 						+ item.getDefinition().getName() + ". Id: " + item.getId() + ", amount: " + item.getAmount());
-				AdminCord.sendMessage(1108220705222443070L, "Gave item to " + player2.getUsername() + ". Name: "
+				AdminCord.sendMessage(1108220705222443070L, player.getUsername()+"Gave item to " + player2.getUsername() + ". Name: "
 						+ item.getDefinition().getName() + ". Id: " + item.getId() + ", amount: " + item.getAmount());
 			}
 			for (Item item : player2.getTrading().offeredItems) {
-				PlayerLogs.logTrades(player.getUsername(), "Received item from "  + player2.getUsername() + ". Name: "
+				PlayerLogs.logTrades(player.getUsername(), player.getUsername()+"Received item from "  + player2.getUsername() + ". Name: "
 						+ item.getDefinition().getName() + ". Id: " + item.getId() + ", amount: " + item.getAmount());
 			}
 

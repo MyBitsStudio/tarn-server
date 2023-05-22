@@ -241,7 +241,6 @@ public class World {
                 continue;
 
             if(!player.getSession().getChannel().isConnected()){
-                System.out.println("Dead session");
                 removePlayer(player);
             }
         }
@@ -254,8 +253,7 @@ public class World {
                     continue;
                 if(player.getUsername().equals(key)) {
                     if(!player.getSession().getChannel().isConnected()){
-                        System.out.println("Dead session 2 "+player.getUsername());
-                        players.remove(player);
+                        removePlayer(player);
                     }
                     found = true;
                     break;
@@ -362,6 +360,7 @@ public class World {
     }
 
     public static void removePlayer(Player player) {
+        player.save();
         player.dispose();
         ConnectionHandler.remove(player.getHostAddress());
         players.forceRemove(player);
