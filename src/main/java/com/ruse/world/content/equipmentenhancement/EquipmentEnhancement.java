@@ -134,7 +134,7 @@ public class EquipmentEnhancement {
         var newLevel = ++currentLevel;
         setSlotLevel(slotId, currentLevel);
         player.getPacketSender().sendMessage("@red@You have successfully upgraded to level " + newLevel + "!");
-        player.getSeasonPass().incrementExp(5500, false);
+        player.getSeasonPass().incrementExp(780 * newLevel, false);
         var currentDr = getBoost(BoostType.DR);
         var currentCash = getBoost(BoostType.CASH);
         var currentStats = getBoost(BoostType.STATS);

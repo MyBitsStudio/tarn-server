@@ -221,7 +221,7 @@ public class Slayer {
             Achievements.doProgress(player, Achievements.Achievement.COMPLETE_50_SLAYER_TASKS);
             Achievements.doProgress(player, Achievements.Achievement.COMPLETE_150_SLAYER_TASKS);
 
-            player.getSeasonPass().incrementExp(1000, false);
+            player.getSeasonPass().incrementExp(1720, false);
 
 
             lastTask = slayerTask;

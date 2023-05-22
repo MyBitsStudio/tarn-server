@@ -547,7 +547,7 @@ public class PlayerCommands {
                 TeleportHandler.teleportPlayer(player, new Position(2980, 2771, 0),
                         TeleportType.NORMAL);
                 return true;
-            case "dboss" : case "donboss": case "donateboss":
+            case "dboss" : case "donboss": case "donatorboss":
                 TeleportHandler.teleportPlayer(player, new Position(2529, 2646, 4),
                         TeleportType.NORMAL);
                 return true;
