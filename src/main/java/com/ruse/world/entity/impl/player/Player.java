@@ -32,6 +32,8 @@ import com.ruse.world.content.KillsTracker.KillsEntry;
 import com.ruse.world.content.LoyaltyProgramme.LoyaltyTitles;
 import com.ruse.world.content.StarterTasks.StarterTaskAttributes;
 import com.ruse.world.content.achievement.AchievementHandler;
+import com.ruse.world.content.attendance.AttendanceManager;
+import com.ruse.world.content.attendance.AttendanceUI;
 import com.ruse.world.content.aura.AuraParty;
 import com.ruse.world.content.battlepass.BattlePass;
 import com.ruse.world.content.bossEvents.BossEventData;
@@ -2239,6 +2241,12 @@ public class Player extends Character {
     public PacketSender getPacketSender() {
         return packetSender;
     }
+
+    @Getter
+    private final AttendanceManager attendenceManager = new AttendanceManager(this);
+
+    @Getter
+    private final AttendanceUI attendenceUI = new AttendanceUI(this);
 
     public PacketSender getPA() {
         return packetSender;
