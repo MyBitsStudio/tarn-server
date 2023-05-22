@@ -208,32 +208,32 @@ public class OwnerCommands {
                 int time = Integer.parseInt(commands[1]);
                 if (time > 0) {
                     GameServer.setUpdating(true);
-                    World.sendStaffMessage("<col=FF0066><img=2> [SERVER]<col=6600FF> " + player.getUsername()
-                            + " just started an update in " + time + " ticks.");
-                    World.sendStaffMessage("<col=FF0066><img=2> [SERVER]<col=6600FF> Please finish what you are doing now!");
+                    World.sendNewsMessage("<col=FF0066><img=2> [SERVER]<col=6600FF> " + player.getUsername()
+                            + " just started an update in " + (int) (time * 0.6) + " ticks.");
+                    World.sendNewsMessage("<col=FF0066><img=2> [SERVER]<col=6600FF> Please finish what you are doing now!");
                     for (Player players : World.getPlayers()) {
                         if (players == null)
                             continue;
                         players.getPacketSender().sendSystemUpdate(time);
                     }
-                    TaskManager.submit(new Task(time) {
+                    TaskManager.submit(new Task((int) (time * 0.6)) {
                         int tick = 0;
                         @Override
                         protected void execute() {
-                            switch(tick){
+                            switch(tick++){
                                 case 1:
-                                    World.sendStaffMessage("<col=FF0066><img=2> [SERVER]<col=6600FF> Server is shutting down now!");
+                                    World.sendNewsMessage("<col=FF0066><img=2> [SERVER]<col=6600FF> Server is shutting down now!");
+                                    break;
+
+                                case 2:
+                                    World.sendNewsMessage("<col=FF0066><img=2> [SERVER]<col=6600FF> Wait until announcement to login again!");
                                     break;
 
                                 case 3:
-                                    World.sendStaffMessage("<col=FF0066><img=2> [SERVER]<col=6600FF> Wait until announcement to login again!");
+                                    World.sendNewsMessage("<col=FF0066><img=2> [SERVER]<col=6600FF> Updating now! See you soon!");
                                     break;
 
-                                case 6:
-                                    World.sendStaffMessage("<col=FF0066><img=2> [SERVER]<col=6600FF> Updating now! See you soon!");
-                                    break;
-
-                                case 10:
+                                case 4:
                                     for (Player player : World.getPlayers()) {
                                         if (player != null) {
                                             World.deregister(player);
@@ -242,20 +242,17 @@ public class OwnerCommands {
                                     WellOfGoodwill.save();
                                     GrandExchangeOffers.save();
                                     ClanChatManager.save();
-                                    PlayerOwnedShopManager.saveShops();
+                                    // PlayerOwnedShopManager.saveShops();
                                     Shop.ShopManager.saveTaxShop();
                                     LotterySystem.saveTickets();
                                     ServerPerks.getInstance().save();
-                                    GameServer.getLogger().info("Update task finished! Shutting off...");
-
                                     break;
-
-                                case 15:
+                                case 5:
                                     System.exit(0);
                                     stop();
                                     break;
+
                             }
-                            tick++;
                         }
                     });
                 }
@@ -336,9 +333,9 @@ public class OwnerCommands {
                 int ids = Integer.parseInt(commands[1]);
                 ItemEffect effect = ItemEffect.getEffectForName(commands[2]);
                 int bonus = Integer.parseInt(commands[3]);
-                Player targets = World.getPlayer(command.substring(commands[0].length() + commands[1].length() + commands[2].length() + 3));
+                Player targets = World.getPlayer(command.substring(commands[0].length() + commands[1].length() + commands[2].length() + commands[3].length() + 4));
                 if (targets == null) {
-                    player.getPacketSender().sendMessage(command.substring(commands[0].length() + commands[1].length() + commands[2].length() + 3)+" must be online to give them stuff!");
+                    player.getPacketSender().sendMessage(command.substring(commands[0].length() + commands[1].length() + commands[2].length() + commands[3].length() + 4)+" must be online to give them stuff!");
                 } else {
                     targets.getInventory().add(new Item(ids, 1, effect, bonus));
                     player.getPacketSender().sendMessage(

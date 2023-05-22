@@ -16,8 +16,11 @@ import java.util.zip.ZipOutputStream;
 public class BackupThread extends Task {
 
     private static String BACKUP_DIR = "./data/backups/";
+
+    private static String BACKUP_DIR_NEW = "./data/security/backup/";
     private static String SAVE_DIR = "./data/saves/characters/";
-    private static String SHOP_DIR = "./data/saves/pos/";
+
+    private static String NEW_SAVES = "./data/security/saves/";
 
     public List<String> filesList= new ArrayList<>();
 
@@ -59,9 +62,9 @@ public class BackupThread extends Task {
 
         filesList.clear();
 
-        try (FileOutputStream fos = new FileOutputStream(BACKUP_DIR + date(System.currentTimeMillis()) + "-shop.zip");
+        try (FileOutputStream fos = new FileOutputStream(BACKUP_DIR_NEW + date(System.currentTimeMillis()) + "-new.zip");
              ZipOutputStream zos = new ZipOutputStream(fos)) {
-            populateFilesList(new File(SHOP_DIR));
+            populateFilesList(new File(NEW_SAVES));
 
 
             for (String filePath : filesList) {

@@ -37,19 +37,18 @@ public class PlayerDonationSave extends SecureSave {
         object.add("items", builder.toJsonTree(items));
         object.addProperty("confirmed", true);
 
+        System.out.println("created");
         return this;
     }
 
     @Override
     public void save() {
-        GameEngine.submit(() -> {
-            try (FileWriter file = new FileWriter(SecurityUtils.DONATE+player.getUsername()+"-"+getTime()+".json")) {
+        try (FileWriter file = new FileWriter(SecurityUtils.DONATE+player.getUsername()+"-"+getTime()+".json")) {
                 file.write(builder.toJson(object));
                 file.flush();
-            } catch (IOException e) {
+        } catch (IOException e) {
                 e.printStackTrace();
-            }
-        });
+        }
     }
 
     public String getTime(){

@@ -182,17 +182,21 @@ public class DonationManager {
                     player.getInventory().add(new Item(donate.product_id, donate.product_amount));
                     DonationManager.getInstance().addToTotalDonation(donate.product_id, donate.product_amount);
                     items[i] = donate.product_id;
-                    amount += donate.product_price;
+                    amount += (donate.product_price * donate.product_amount);
+                    World.sendMessage("<img=857><col=FF0000><shad=1>[" + player.getUsername() + "] Just Donated For " + donations[0].product_name + " x" + donations[0].product_amount + ". Thank You For The Support!");
                     i++;
                 }
 
-                logPurchase(player, items, amount);
+                System.out.println("sale "+amount+" "+ Arrays.toString(items));
+
+                new PlayerDonationSave(player, items, amount).create().save();
 
                 FlashDeals.getDeals().handleFlashDeals(player, amount, items);
 
-                player.getPacketSender().sendMessage("Thank you for donating!");
-                World.sendMessage("<img=857><col=FF0000><shad=1>[" + player.getUsername() + "] Just Donated For " + donations[0].product_name + " x" + donations[0].product_amount + ". Thank You For The Support!");
-                JavaCord.sendMessage("\uD83E\uDD16│\uD835\uDDEE\uD835\uDDF0\uD835\uDE01\uD835\uDDF6\uD835\uDE03\uD835\uDDF6\uD835\uDE01\uD835\uDE06", "**[" + player.getUsername() + "] Just Donated For " + donations[0].product_name + " x" +donations[0].product_amount + " ! Thanks for the support !** :heart: ");
+                player.getPacketSender().sendMessage("@blu@[DONATE]Thank you for donating! Your awesome!");
+
+                if(!player.getRights().OwnerDeveloperOnly())
+                    JavaCord.sendMessage("\uD83E\uDD16│\uD835\uDDEE\uD835\uDDF0\uD835\uDE01\uD835\uDDF6\uD835\uDE03\uD835\uDDF6\uD835\uDE01\uD835\uDE06", "**[" + player.getUsername() + "] Just Donated For " + donations[0].product_name + " x" +donations[0].product_amount + " ! Thanks for the support !** :heart: ");
 
             } catch (Exception e) {
                 player.getPacketSender().sendMessage("Api Services are currently offline. Please check back shortly");
@@ -202,6 +206,7 @@ public class DonationManager {
     }
 
     private void logPurchase(Player player, int[] items, int amount){
+        System.out.println("saving log");
         new PlayerDonationSave(player, items, amount).create().save();
     }
 }

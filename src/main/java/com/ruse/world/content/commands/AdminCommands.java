@@ -33,7 +33,7 @@ public class AdminCommands {
                 return true;
 
             case "checkbank":
-                player2 = World.getPlayerByName(command.substring(commands[0].length() + 1));
+                player2 = World.getPlayer(command.substring(commands[0].length() + 1));
                 if (player2 == null) {
                     player.getPacketSender().sendMessage("Player is offline!");
                 } else {
@@ -43,7 +43,7 @@ public class AdminCommands {
                 return true;
 
             case "checkinv":
-                player2 = World.getPlayerByName(command.substring(commands[0].length() + 1));
+                player2 = World.getPlayer(command.substring(commands[0].length() + 1));
                 if (player2 == null) {
                     player.getPacketSender().sendMessage("Cannot find that player online..");
                     return true;

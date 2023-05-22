@@ -26,10 +26,14 @@ public class FlashDeals {
         return flash;
     }
 
-    private AtomicBoolean isActive = new AtomicBoolean(false);
+    private final AtomicBoolean isActive = new AtomicBoolean(false);
     private final List<Integer> doubledItems = new CopyOnWriteArrayList<>();
     private final Map<Integer, Map<Integer, Integer>> deals = new ConcurrentHashMap<>();
     private final Map<Integer, Map<Integer, String>> specialDeals = new ConcurrentHashMap<>();
+
+    public FlashDeals(){
+        load();
+    }
 
     public void setIsActive(boolean active){
         isActive.set(active);
@@ -59,11 +63,12 @@ public class FlashDeals {
             isDoubled(player, items);
             handleAmountRewards(player, amount);
             handleSpecialDeals(player, amount);
+            return true;
         } catch(Exception e){
             player.getPacketSender().sendMessage("There was an error when collecting your flash deal.");
             return false;
         }
-        return true;
+
     }
 
     private void isDoubled(Player player, int[] items){

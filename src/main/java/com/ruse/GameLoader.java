@@ -27,6 +27,7 @@ import com.ruse.world.content.discordbot.AdminCord;
 import com.ruse.world.content.discordbot.Bot;
 import com.ruse.world.content.discordbot.JavaCord;
 import com.ruse.world.content.donation.DonationManager;
+import com.ruse.world.content.donation.FlashDeals;
 import com.ruse.world.content.grandLottery.GrandLottery;
 import com.ruse.world.content.grandexchange.GrandExchangeOffers;
 import com.ruse.world.content.groupironman.GroupManager;
@@ -74,8 +75,15 @@ public final class GameLoader {
 		executeServiceLoad();
 		serviceLoader.shutdown();
 
+		startInstances();
+
 		World.LOGIN_SERVICE.postLoad();
 
+	}
+
+	private void startInstances(){
+		FlashDeals.getDeals();
+		DonationManager.getInstance();
 	}
 
 	public void finish() throws IOException, InterruptedException {
