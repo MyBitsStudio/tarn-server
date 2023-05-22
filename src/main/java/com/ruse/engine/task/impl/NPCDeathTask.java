@@ -603,55 +603,55 @@ public class NPCDeathTask extends Task {
         }
         //BOSSES
         if (npcId == 9017) {
-            killer.getSeasonPass().incrementExp(1, false);
+            killer.getSeasonPass().incrementExp(2, false);
             Achievements.doProgress(killer, Achievements.Achievement.KILL_SANCTUM_GOLEM);
         }
         if (npcId == 9839) {
-            killer.getSeasonPass().incrementExp(1, false);
+            killer.getSeasonPass().incrementExp(2, false);
             Achievements.doProgress(killer, Achievements.Achievement.KILL_MUTANT_HYDRA);
         }
         if (npcId == 9806) {
-            killer.getSeasonPass().incrementExp(1, false);
+            killer.getSeasonPass().incrementExp(2, false);
             Achievements.doProgress(killer, Achievements.Achievement.KILL_GORVEK);
         }
         if (npcId == 9816) {
-            killer.getSeasonPass().incrementExp(1, false);
+            killer.getSeasonPass().incrementExp(2, false);
             Achievements.doProgress(killer, Achievements.Achievement.KILL_DRAGONITE);
         }
         if (npcId == 9903) {
-            killer.getSeasonPass().incrementExp(1, false);
+            killer.getSeasonPass().incrementExp(2, false);
             Achievements.doProgress(killer, Achievements.Achievement.KILL_ASMODEUS);
         }
         if (npcId == 8002) {
-            killer.getSeasonPass().incrementExp(1, false);
+            killer.getSeasonPass().incrementExp(2, false);
             Achievements.doProgress(killer, Achievements.Achievement.KILL_MALVEK);
         }
         if (npcId == 1746) {
-            killer.getSeasonPass().incrementExp(1, false);
+            killer.getSeasonPass().incrementExp(2, false);
             Achievements.doProgress(killer, Achievements.Achievement.KILL_ONYX_GRIFFIN);
         }
         if (npcId == 3010) {
-            killer.getSeasonPass().incrementExp(1, false);
+            killer.getSeasonPass().incrementExp(2, false);
             Achievements.doProgress(killer, Achievements.Achievement.KILL_ZEIDAN_GRIMM);
         }
         if (npcId == 3013) {
-            killer.getSeasonPass().incrementExp(1, false);
+            killer.getSeasonPass().incrementExp(2, false);
             Achievements.doProgress(killer, Achievements.Achievement.KILL_AGTHOMOTH);
         }
         if (npcId == 3014) {
-            killer.getSeasonPass().incrementExp(1, false);
+            killer.getSeasonPass().incrementExp(2, false);
             Achievements.doProgress(killer, Achievements.Achievement.KILL_LILINRYSS);
         }
         if (npcId == 8010) {
-            killer.getSeasonPass().incrementExp(1, false);
+            killer.getSeasonPass().incrementExp(2, false);
             Achievements.doProgress(killer, Achievements.Achievement.KILL_GROUDON);
         }
         if (npcId == 3016) {
-            killer.getSeasonPass().incrementExp(1, false);
+            killer.getSeasonPass().incrementExp(2, false);
             Achievements.doProgress(killer, Achievements.Achievement.KILL_VARTHRAMOTH);
         }
         if (npcId == 4972) {
-            killer.getSeasonPass().incrementExp(1, false);
+            killer.getSeasonPass().incrementExp(2, false);
             Achievements.doProgress(killer, Achievements.Achievement.KILL_TYRANT_LORD);
         }
         if (npcId == 9012) {

@@ -150,7 +150,7 @@ public class UpgradeHandler {
 			player.sendMessage("Congratulations, you successfully concoct "
 					+ ItemDefinition.forId(player.getCurrentUpgrade().getResultItem()).getName() + ".");
 			player.getInventory().add(player.getCurrentUpgrade().getResultItem(), 1);
-			player.getSeasonPass().incrementExp(17500, false);
+			player.getSeasonPass().incrementExp(32500, false);
 			// }
 		}
 	}

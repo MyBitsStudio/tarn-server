@@ -591,13 +591,16 @@ public class MemberScrolls {
 			if (claimAll) {
 				funds *= amount;
 			}
+
+
 			player.getInventory().delete(item, amount);
 			player.incrementAmountDonated(funds);
 			player.incrementAmountDonatedToday(funds);
 			player.getPointsHandler().setDonatorPoints(funds, true);
-			player.getSeasonPass().incrementExp(1020 * funds, false);
+			player.getSeasonPass().incrementExp(7020 * (funds >= 100 ? (funds * 2) : funds), false);
 			player.getPacketSender().sendMessage("Your account has gained funds worth $" + (funds)
 					+ ". Your total is now at $" + player.getAmountDonated() + ".");
+			player.getPacketSender().sendMessage("Your have gained "+(7020 * (funds >= 100 ? (funds * 2) : funds)) +" BP exp");
 			checkForRankUpdate(player);
 			PlayerPanel.refreshPanel(player);
 		}
