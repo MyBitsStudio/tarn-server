@@ -28,6 +28,7 @@ public class PlayerSettings {
         settings.put("pass-change", false);
         settings.put("is-locked", false);
         settings.put("drop-message-personal", true);
+        settings.put("security-lock", true);
     }
 
     public void setSetting(String key, Object value){
@@ -47,6 +48,10 @@ public class PlayerSettings {
 
     public boolean getBooleanValue(String key){
         return (boolean) settings.getOrDefault(key, false);
+    }
+
+    public boolean getBooleanValueDef(String key){
+        return (boolean) settings.getOrDefault(key, true);
     }
 
     public Object getValue(String key){

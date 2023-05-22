@@ -89,6 +89,7 @@ public class DryStreak {
         FIXED_DRY_STREAK_MILESTONE.put(1311, 12500); //hound
         FIXED_DRY_STREAK_MILESTONE.put(1313, 15000); //hound
         FIXED_DRY_STREAK_MILESTONE.put(1318, 20000); //hound
+        FIXED_DRY_STREAK_MILESTONE.put(595, 25000); //hound
     }
 
     public DryStreak(Player player) {

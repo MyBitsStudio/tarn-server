@@ -56,4 +56,5 @@ public class VoteHandler {
             World.sendMessage("<img=857><col=FF0000><shad=1>[" + player.getUsername() + "] Just got lucky and got a Infamous box from voting!");
         }
     }
+
 }

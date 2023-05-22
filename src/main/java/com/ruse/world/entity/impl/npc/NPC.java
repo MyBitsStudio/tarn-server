@@ -677,4 +677,9 @@ public class NPC extends Character {
     public void setInstance(Instance instance) {
     	this.instance = instance;
     }
+
+    public void onDeath(){
+
+    }
+
 }

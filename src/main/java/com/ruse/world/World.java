@@ -107,6 +107,15 @@ public class World {
         EntityHandler.deregister(entity);
     }
 
+    public static void endDereg(Player player){
+        if(player.getSummoning().getFamiliar() != null
+                && player.getSummoning().getFamiliar().getSummonNpc() != null
+                && player.getSummoning().getFamiliar().getSummonNpc().isRegistered()) {
+            player.getSummoning().unsummon(true, true);
+        }
+        removePlayer(player);
+    }
+
     public static Player getPlayerByName(String username) {
         return playersByUesrname.get(username);
     }

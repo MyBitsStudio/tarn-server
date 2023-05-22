@@ -455,6 +455,12 @@ public class NPCDrops {
                         .filter(npcDropItem -> npcDropItem.getItem().getId() != 13650) // filter out the bones
                         .filter(npcDropItem -> npcDropItem.getItem().getId() != 13727) // filter out the bones
                         .collect(Collectors.toList());
+                for(NPCDrops.NpcDropItem npcDropItem : allDrops) {
+                    if(npcDropItem.getItem().getId() == 13650) {
+                        allDrops.remove(npcDropItem);
+                        break;
+                    }
+                }
                 NpcDropItem random = Misc.random(allDrops);
                 Item randomItem = random.getItem();
                 randomItem.setDefaultEffect(ItemRarity.getRandomEffectForRarity(randomItem, ItemRarity.getRarityForPercentage(Misc.getRandomDouble(100)), npc.getId()));
