@@ -387,7 +387,7 @@ public class AuraRaids {
                     Box[] loot = AuraRaidLoot.LOOT;
 
                     player.getPointsHandler().incrementANGELKILLCount(1);
-                    player.getSeasonPass().incrementExp(8600, false);
+                    player.getSeasonPass().incrementExp(12600, false);
 
                     Box drop = getLoot(loot, party.getPlayers().size());
 
