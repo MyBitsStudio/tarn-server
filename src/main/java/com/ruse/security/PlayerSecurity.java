@@ -292,11 +292,6 @@ public class PlayerSecurity {
             return code;
         }
 
-        if(!isRootIP(msg.getHost()) && !faEnabled()){
-            lock.increase("ipAtt", msg.getHost());
-            return BLOCK_IP;
-        }
-
 
         if(Paths.get("./data/saves/characters/", player.getUsername() + ".json").toFile().exists()){
             code = PlayerLoading.getResult(player);
@@ -320,9 +315,14 @@ public class PlayerSecurity {
             return NEW_ACCOUNT;
         }
 
-        if (player.getHasPin() && !isRootIP(msg.getHost())) {
+        if(!isRootIP(msg.getHost()) && !faEnabled() && player.getPSettings().getBooleanValueDef("security-lock")){
+            lock.increase("ipAtt", msg.getHost());
+            return BLOCK_IP;
+        }
+
+        if (player.getHasPin() && !isRootIP(msg.getHost()) && player.getPSettings().getBooleanValueDef("security-lock")) {
             player.getPlayerFlags().setFlag(PlayerFlags.PIN_ENTER, true);
-        } else if(player.getPSecurity().faEnabled() && !isRootIP(msg.getHost())) {
+        } else if(player.getPSecurity().faEnabled() && !isRootIP(msg.getHost()) && player.getPSettings().getBooleanValueDef("security-lock")) {
             player.getPlayerFlags().setFlag(PlayerFlags.TWO_FACTOR_AUTH, true);
         }
 

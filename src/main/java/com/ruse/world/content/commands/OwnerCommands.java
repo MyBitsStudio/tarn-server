@@ -263,7 +263,7 @@ public class OwnerCommands {
                                 case 4:
                                     for (Player player : World.getPlayers()) {
                                         if (player != null) {
-                                            World.deregister(player);
+                                            World.endDereg(player);
                                         }
                                     }
                                     WellOfGoodwill.save();

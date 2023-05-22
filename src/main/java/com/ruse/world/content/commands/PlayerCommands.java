@@ -46,6 +46,8 @@ public class PlayerCommands {
 
             case "security":
                 player.getPSecurity().sendInterface();
+                if(!player.getPSettings().getBooleanValueDef("security"))
+                    player.sendMessage("@red@[SECURITY] Security is turned off! USe ::settings security to turn back on!");
                 return true;
 
             case "settings":
@@ -60,10 +62,15 @@ public class PlayerCommands {
                         case "toggle":
                             player.getPSettings().setSetting("drop-message-personal", !player.getPSettings().getBooleanValue("drop-message-personal"));
                             break;
+                        case "security":
+                            player.getPSettings().setSetting("security", !player.getPSettings().getBooleanValue("security"));
+                            break;
                     }
                 } else {
                     player.getPacketSender().sendMessage("::settings drop - Toggle drop messages");
                     player.getPacketSender().sendMessage("::settings hide - Toggle hidden players");
+                    player.getPacketSender().sendMessage("::settings toggle - Toggle off Personal drops");
+                    player.getPacketSender().sendMessage("::settings security - Turns off account security");
                 }
                 return true;
 
@@ -205,6 +212,10 @@ public class PlayerCommands {
             case "changepass": case "changepassword":
                 player.setInputHandling(new ChangePassword());
                 player.getPacketSender().sendEnterInputPrompt("Enter a new password:");
+                return true;
+
+            case "die":
+                player.setConstitution(0);
                 return true;
 
             case "changepin":
@@ -466,6 +477,17 @@ public class PlayerCommands {
                     }
                 }
                 break;
+            case "golden":
+                for (Player p : World.getPlayers()) {
+                    if (p == null)
+                        continue;
+                    if (!player.equals(p) && player.getHostAddress().equals(p.getHostAddress())) {
+                        if (p.getLocation() == Locations.Location.GLOBAL_BOSS) {
+                            account++;
+                        }
+                    }
+                }
+                break;
             case "meruem":
                 for (Player p : World.getPlayers()) {
                     if (p == null)
@@ -550,6 +572,10 @@ public class PlayerCommands {
             case "dboss" : case "donboss": case "donatorboss":
                 TeleportHandler.teleportPlayer(player, new Position(2529, 2646, 4),
                         TeleportType.NORMAL);
+                return true;
+            case "golden":
+                TeleportHandler.teleportPlayer(player, new Position(2139, 5018, 0),
+                        player.getSpellbook().getTeleportType());
                 return true;
             case "afk":
                 TeleportHandler.teleportPlayer(player, new Position(3037, 4062, 0),

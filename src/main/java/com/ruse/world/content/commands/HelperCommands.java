@@ -212,14 +212,14 @@ public class HelperCommands {
                 playerToTele = command.substring(commands[0].length() + 1);
                 player2 = World.getPlayer(playerToTele);
 
-                if(player2 != null) {
+                if(player2 == null) {
+                    player.sendMessage("This player isn't online");
+                } else {
                     player2.getPacketSender().sendMessage("@red@[STAFF] You have been warned by staff members!");
                     player.sendMessage(playerToTele + " has been warned.");
 
                     AdminCord.sendMessage(1109203238907027527L, player.getUsername()
                             + " just warned " + playerToTele + ".");
-                } else {
-                    player.sendMessage("This player isn't online");
                 }
                 return true;
 
