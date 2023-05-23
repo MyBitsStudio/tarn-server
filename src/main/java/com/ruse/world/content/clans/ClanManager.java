@@ -125,6 +125,7 @@ public class ClanManager {
                                 }
                                 String prefix = image > 0 ? ("<img=" + image + "> ") : "";
                                 player.getPacketSender().sendString(childId.get(), prefix + others.getUsername());
+                                image = 0;
                                 childId.getAndIncrement();
                             });
 
