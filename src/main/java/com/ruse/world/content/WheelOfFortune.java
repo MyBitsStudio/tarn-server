@@ -65,6 +65,9 @@ public class WheelOfFortune {
     }
  
     public void onFinish(int index) {
+        if(game == null){
+            return;
+        }
         if (index != game.getWinningIndex()) {
             player.sendMessage("Wrong index :C");
             return;
