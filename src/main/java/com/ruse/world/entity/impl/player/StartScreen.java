@@ -6,7 +6,6 @@ import com.ruse.model.Item;
 import com.ruse.model.Position;
 import com.ruse.world.World;
 import com.ruse.world.content.PlayerPanel;
-import com.ruse.world.content.clan.ClanChatManager;
 import com.ruse.world.content.discordbot.JavaCord;
 //import sun.management.counter.perf.PerfLongArrayCounter;
 

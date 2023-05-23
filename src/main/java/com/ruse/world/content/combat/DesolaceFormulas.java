@@ -179,10 +179,6 @@ public class DesolaceFormulas {
 
         if (EquipmentBonus.voidMelee(plr)) {
             attackLevel += plr.getSkillManager().getMaxLevel(Skill.ATTACK) * 0.1;
-            if (plr.getCurrentClanChat() != null && plr.getCurrentClanChat().getName().equalsIgnoreCase("Debug")) {
-                plr.getPacketSender()
-                        .sendMessage("Void Melee accuracy buff applied. Is " + attackLevel + ", pre-equip bonuses");
-            }
         }
         attackLevel *= plr.isSpecialActivated() ? plr.getCombatSpecial().getAccuracyBonus() : 1;
         int i = (int) plr.getBonusManager().getAttackBonus()[bestMeleeAtk(plr)];
@@ -348,10 +344,6 @@ public class DesolaceFormulas {
 
         if (EquipmentBonus.voidRange(plr)) {
             rangeLevel *= 1.10;
-            if (plr.getCurrentClanChat() != null && plr.getCurrentClanChat().getName().equalsIgnoreCase("Debug")) {
-                plr.getPacketSender()
-                        .sendMessage("Void Range accuracy buff applied. Is " + rangeLevel + ", pre-equip bonuses");
-            }
             if (EquipmentBonus.voidRange(plr)) {
                 rangeLevel *= 1.10;
             }
@@ -475,10 +467,6 @@ public class DesolaceFormulas {
 
         if (EquipmentBonus.voidMage(plr)) {
             magicLevel *= 1.3;
-            if (plr.getCurrentClanChat() != null && plr.getCurrentClanChat().getName().equalsIgnoreCase("Debug")) {
-                plr.getPacketSender()
-                        .sendMessage("Void Mage accuracy buff applied. Is " + magicLevel + ", pre-equip bonuses");
-            }
         }
 
         Familiar playerFamiliar = plr.getSummoning().getFamiliar();

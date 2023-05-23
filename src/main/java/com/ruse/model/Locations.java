@@ -1657,8 +1657,6 @@ for (Item item : player.getInventory().getItems()) {
 						player.getRegionInstance().destruct();
 					}
 					new TheSix(player).leave(false);
-				} else if (player.getCurrentClanChat() != null && player.getCurrentClanChat().doingClanBarrows()) {
-					new TheSix(player).leave(false);
 				}
 			}
 
@@ -1670,16 +1668,6 @@ for (Item item : player.getInventory().getItems()) {
 					Barrows.killBarrowsNpc(killer, npc, true);
 					if (new TheSix(killer).allKilled()) {
 						respawn = true;
-					}
-				} else if (killer.getCurrentClanChat() != null && killer.getCurrentClanChat().doingClanBarrows()) {
-					for (Player p : killer.getCurrentClanChat().getMembers()) {
-						if (p == null || !p.doingClanBarrows()) {
-							continue;
-						}
-						Barrows.killBarrowsNpc(p, npc, true);
-						if (new TheSix(p).allKilled()) {
-							respawn = true;
-						}
 					}
 				}
 

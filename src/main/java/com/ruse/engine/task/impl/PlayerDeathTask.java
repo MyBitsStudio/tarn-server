@@ -97,7 +97,7 @@ public class PlayerDeathTask extends Task {
                     }
                     if(player.getInstance() != null){
                         if(player.getInstance() instanceof BossInstance)
-                            ((BossInstance) player.getInstance()).dispose();
+                            player.getInstance().dispose(player);
                     }
                     break;
                 case 1:

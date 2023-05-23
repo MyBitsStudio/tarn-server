@@ -28,6 +28,10 @@ public class FollowPlayerPacketListener implements PacketListener {
 			player.getPacketSender().sendMessage("You cannot follow other players right now.");
 			return;
 		}
+		if(leader.isFlying() || leader.isGhostWalking()){
+			player.getPacketSender().sendMessage("You cannot follow other players that are flying or ghost walking");
+			return;
+		}
 
 		player.getCombatBuilder().reset(false);
 		player.setEntityInteraction(leader);

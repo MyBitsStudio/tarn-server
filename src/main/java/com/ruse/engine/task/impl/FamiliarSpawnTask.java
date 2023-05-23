@@ -47,9 +47,7 @@ public class FamiliarSpawnTask extends Task {
 		if (player.getInterfaceId() > 0) {
 			player.getPacketSender().sendInterfaceRemoval();
 		}
-		if (BossPet.forSpawnId(familiarId) != null) {
-			player.getSummoning().summonPet(BossPet.forSpawnId(familiarId), true);
-		} else {
+		if (BossPet.forSpawnId(familiarId) == null) {
 			player.getSummoning().summon(FamiliarData.forNPCId(familiarId), false, true);
 			if (player.getSummoning().getFamiliar() != null && deathTimer > 0)
 				player.getSummoning().getFamiliar().setDeathTimer(deathTimer);
@@ -61,6 +59,8 @@ public class FamiliarSpawnTask extends Task {
 					}
 				}
 			}
+		} else {
+			player.getSummoning().summonPet(BossPet.forSpawnId(familiarId), true);
 		}
 		stop();
 	}

@@ -1,4 +1,4 @@
-package com.ruse.security.save.impl;
+package com.ruse.security.save.impl.player;
 
 import com.ruse.engine.GameEngine;
 import com.ruse.security.save.SecureSave;

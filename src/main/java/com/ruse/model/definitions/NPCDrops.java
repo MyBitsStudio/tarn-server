@@ -15,8 +15,6 @@ import com.ruse.world.content.CustomDropUtils;
 import com.ruse.world.content.DropLog;
 import com.ruse.world.content.DropLog.DropLogEntry;
 import com.ruse.world.content.PlayerLogs;
-import com.ruse.world.content.achievement.Achievements;
-import com.ruse.world.content.clan.ClanChatManager;
 import com.ruse.world.content.cluescrolls.OLD_ClueScrolls;
 import com.ruse.world.content.collectionlog.CollectionEntry;
 import com.ruse.world.content.combat.CombatBuilder.CombatDamageCache;
@@ -393,27 +391,6 @@ public class NPCDrops {
                 }
             }
 
-            boolean ccAnnounce = false;
-            if (Location.inMulti(player)) {
-                if (player.getCurrentClanChat() != null && player.getCurrentClanChat().getLootShare()) {
-                    CopyOnWriteArrayList<Player> playerList = new CopyOnWriteArrayList<Player>();
-                    for (Player member : player.getCurrentClanChat().getMembers()) {
-                        if (member != null) {
-                            if (member.getPosition().isWithinDistance(player.getPosition())) {
-                                playerList.add(member);
-                            }
-                        }
-                    }
-                    if (playerList.size() > 0) {
-                        player = playerList.get(Misc.getRandom(playerList.size() - 1));
-                        if (player == null || player.getCurrentClanChat() == null
-                                || player.getCurrentClanChat() != player.getCurrentClanChat()) {
-                            player = player;
-                        }
-                        ccAnnounce = true;
-                    }
-                }
-            }
 
                     if (drop.isAnnounce() || drop.getChance() >= 601) {
                         String itemName = item.getDefinition().getName();
@@ -424,12 +401,6 @@ public class NPCDrops {
                         JavaCord.sendMessage("\uD83E\uDD16│\uD835\uDDEE\uD835\uDDF0\uD835\uDE01\uD835\uDDF6\uD835\uDE03\uD835\uDDF6\uD835\uDE01\uD835\uDE06", "[" + player.getUsername() + "] has received " + itemMessage + " from " + npcName + ".");
 
                         World.sendFilterMessage(message);
-
-                        if (ccAnnounce) {
-                            ClanChatManager.sendMessage(player.getCurrentClanChat(),
-                                    "<col=16777215>[<col=255>Lootshare<col=16777215>]<col=3300CC> " + player.getUsername()
-                                            + " received " + itemMessage + " from " + npcName + "!");
-                        }
 
                         PlayerLogs.log(player.getUsername(),
                                 "" + player.getUsername() + " received " + itemMessage + " from " + npcName + "!");

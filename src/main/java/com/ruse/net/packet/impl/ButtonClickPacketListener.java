@@ -19,8 +19,7 @@ import com.ruse.world.content.Sounds.Sound;
 import com.ruse.world.content.aura.AuraParty;
 import com.ruse.world.content.aura.AuraRaidData;
 import com.ruse.world.content.bossEvents.BossEventInterfaceHandler;
-import com.ruse.world.content.clan.ClanChatManager;
-import com.ruse.world.content.clan.Guild;
+import com.ruse.world.content.clans.ClanManager;
 import com.ruse.world.content.collectionlog.SearchForCollectionNpc;
 import com.ruse.world.content.combat.CombatFactory;
 import com.ruse.world.content.combat.magic.Autocasting;
@@ -1130,22 +1129,22 @@ public class ButtonClickPacketListener implements PacketListener {
             case -13390:
                 player.getPacketSender().sendInterfaceRemoval();
                 break;
-            case 29454:
-                if (player.getCurrentClanChat() != null) {
-                    ClanChatManager.leave(player, false);
-                    ClanChatManager.join(player, "raids");
-                } else if (player.getCurrentClanChat() == null) {
-                    ClanChatManager.join(player, "raids");
-                }
-                break;
-            case 29450:
-                if (player.getCurrentClanChat() != null) {
-                    ClanChatManager.leave(player, false);
-                    ClanChatManager.join(player, "help");
-                } else if (player.getCurrentClanChat() == null) {
-                    ClanChatManager.join(player, "help");
-                }
-                break;
+//            case 29454:
+//                if (player.getClan() != null) {
+//                    ClanManager.getManager().leave(player, false);
+//                    ClanManager.getManager().joinChat(player, "raids");
+//                } else if (player.getCurrentClanChat() == null) {
+//                    ClanChatManager.join(player, "raids");
+//                }
+//                break;
+//            case 29450:
+//                if (player.getCurrentClanChat() != null) {
+//                    ClanChatManager.leave(player, false);
+//                    ClanChatManager.join(player, "help");
+//                } else if (player.getCurrentClanChat() == null) {
+//                    ClanChatManager.join(player, "help");
+//                }
+//                break;
             /*case 29456:
                 if (player.getInterfaceId() > 0) {
                     player.getPacketSender()
@@ -1972,13 +1971,10 @@ public class ButtonClickPacketListener implements PacketListener {
         if (GrandExchange.handleButton(player, id)) {
             return true;
         }
-        if (ClanChatManager.handleClanChatSetupButton(player, id)) {
-            return true;
-        }
-        if (Guild.handleClanButtons(player, id)) {
-            return true;
-        }
         if (new BossEventInterfaceHandler(player).button(id)) {
+            return true;
+        }
+        if(ClanManager.getManager().handleButtons(player, id)) {
             return true;
         }
 

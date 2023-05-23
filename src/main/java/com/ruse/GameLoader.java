@@ -20,7 +20,7 @@ import com.ruse.world.allornothing.DoubleOrNothing;
 import com.ruse.world.clip.region.RegionClipping;
 import com.ruse.world.content.*;
 import com.ruse.world.content.attendance.DailyResetScheduler;
-import com.ruse.world.content.clan.ClanChatManager;
+import com.ruse.world.content.clans.ClanManager;
 import com.ruse.world.content.combat.effect.CombatPoisonEffect.CombatPoisonData;
 import com.ruse.world.content.combat.strategy.CombatStrategies;
 import com.ruse.world.content.dialogue.DialogueManager;
@@ -123,7 +123,7 @@ public final class GameLoader {
 		serviceLoader.execute(Scoreboards::init);
 
 		serviceLoader.execute(WellOfGoodwill::init);
-		serviceLoader.execute(ClanChatManager::init);
+		serviceLoader.execute(ClanManager.getManager()::init);
 		serviceLoader.execute(CombatPoisonData::init);
 		serviceLoader.execute(CombatStrategies::init);
 		serviceLoader.execute(() -> NpcDefinition.parseNpcs().load());

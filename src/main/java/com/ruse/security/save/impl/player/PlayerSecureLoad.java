@@ -1,4 +1,4 @@
-package com.ruse.security.save.impl;
+package com.ruse.security.save.impl.player;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -45,8 +45,8 @@ public class PlayerSecureLoad extends SecureLoad {
     @Override
     public PlayerSecureLoad run() {
 
-        if (object.has("total-play-time-ms")) {
-            player.setTotalPlayTime(object.get("total-play-time-ms").getAsLong());
+        if (object.has("total-play-time")) {
+            player.setTotalPlayTime(object.get("total-play-time").getAsLong());
         }
 
         if (object.has("username")) {

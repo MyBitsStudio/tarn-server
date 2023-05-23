@@ -1,4 +1,4 @@
-package com.ruse.security.save.impl;
+package com.ruse.security.save.impl.server;
 
 import com.ruse.engine.GameEngine;
 import com.ruse.security.ServerSecurity;
@@ -8,7 +8,6 @@ import com.ruse.security.tools.SecurityUtils;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;

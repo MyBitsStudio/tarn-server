@@ -1,8 +1,7 @@
 package com.ruse.security;
 
-import com.ruse.security.save.impl.ServerSecurityLoad;
-import com.ruse.security.save.impl.ServerSecuritySave;
-import com.ruse.security.tools.SecurityUtils;
+import com.ruse.security.save.impl.server.ServerSecurityLoad;
+import com.ruse.security.save.impl.server.ServerSecuritySave;
 import com.ruse.world.World;
 import com.ruse.world.content.discordbot.AdminCord;
 import com.ruse.world.entity.impl.player.Player;

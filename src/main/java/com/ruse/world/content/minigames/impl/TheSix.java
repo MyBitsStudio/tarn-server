@@ -27,31 +27,11 @@ public class TheSix {
 	public void enter(boolean clan) {
 		player.getPacketSender().sendInterfaceRemoval();
 
-		if (clan) {
-			if (player.getCurrentClanChat() == null) {
-				player.getPacketSender().sendMessage("You must be in a clan to fight the six.");
-				return;
-			}
-			if (player.getCurrentClanChat().doingClanBarrows()) {
-				player.getPacketSender().sendMessage("Your clan is already playing a game of The Six.");
-				return;
-			}
-		}
 
 		int z = (player.getIndex() + 1) * 4;
 		final Position pos = new Position(2384, 4721, z);
 		final Position orig = player.getPosition().copy();
-		ArrayList<Player> close_clan_members = player.getCurrentClanChat().getClosePlayers(orig);
 
-		if (player.getCurrentClanChat() == null || player.getCurrentClanChat().getName() == null) {
-			player.getPacketSender().sendMessage("You need to be in a clan chat, make or join one.");
-			return;
-		}
-
-		if (clan && close_clan_members.size() <= 0) {
-			player.getPacketSender().sendMessage("You do not have any clan members near you.");
-			return;
-		}
 		if (!clan) {
 			Barrows.resetBarrows(player);
 			player.setDoingClanBarrows(clan);
@@ -66,34 +46,14 @@ public class TheSix {
 		player.getPacketSender().sendInterfaceRemoval();
 		player.moveTo(pos);
 
-		if (clan) {
-			player.getCurrentClanChat().setHeight(z);
-			player.getCurrentClanChat().setDoingClanBarrows(true);
-			player.getCurrentClanChat().setRegionInstance(new RegionInstance(player, RegionInstanceType.THE_SIX));
-			player.getCurrentClanChat().getRegionInstance().getPlayersList().add(player);
-			for (Player p : close_clan_members) {
-				if (p == null || p == player)
-					continue;
-				p.getPacketSender().sendInterfaceRemoval();
-				p.setDialogueActionId(81);
-				DialogueManager.start(p, 134);
-			}
-		} else {
-			player.setRegionInstance(new RegionInstance(player, RegionInstanceType.THE_SIX));
-		}
+		player.setRegionInstance(new RegionInstance(player, RegionInstanceType.THE_SIX));
 
 		spawn(clan);
 	}
 
 	public void joinClan() {
 		player.getPacketSender().sendInterfaceRemoval();
-		if (player.getCurrentClanChat() != null && player.getCurrentClanChat().doingClanBarrows()) {
-			player.setDoingClanBarrows(true);
-			player.setBarrowsKilled(0);
-			Barrows.resetBarrows(player);
-			player.moveTo(new Position(2384, 4721, player.getCurrentClanChat().getHeight()));
-			player.getCurrentClanChat().getRegionInstance().getPlayersList().add(player);
-		}
+
 	}
 
 	public void leave(boolean move) {
@@ -112,14 +72,7 @@ public class TheSix {
 		}
 
 		if (player.doingClanBarrows()) {
-			if (player.getCurrentClanChat() != null && player.getCurrentClanChat().getRegionInstance() != null) {
-				player.getCurrentClanChat().getRegionInstance().getPlayersList().remove(player);
-				if (player.getCurrentClanChat().getRegionInstance().getPlayersList().size() <= 0) {
-					player.getCurrentClanChat().getRegionInstance().destruct();
-					player.getCurrentClanChat().setRegionInstance(null);
-					player.getCurrentClanChat().setDoingClanBarrows(false);
-				}
-			}
+
 		}
 
 		player.setDoingClanBarrows(false);
@@ -145,8 +98,6 @@ public class TheSix {
 			@Override
 			protected void execute() {
 				if (player.getLocation() != Location.THE_SIX
-						|| clan && (player.getCurrentClanChat() == null
-								|| player.getCurrentClanChat().getRegionInstance() == null)
 						|| !clan && player.getRegionInstance() == null) {
 					leave(false);
 					stop();
@@ -189,17 +140,12 @@ public class TheSix {
 					Player target = player;
 					if (clan) {
 						ArrayList<Player> LIST = new ArrayList<Player>();
-						for (Player p : player.getCurrentClanChat().getMembers()) {
-							if (p == null || !p.doingClanBarrows()) {
-								continue;
-							}
-							LIST.add(p);
-						}
+
 						target = LIST.get(Misc.getRandom(LIST.size() - 1));
 					}
 					npc.getCombatBuilder().attack(target);
 					if (clan) {
-						player.getCurrentClanChat().getRegionInstance().getNpcsList().add(npc);
+
 					} else {
 						player.getRegionInstance().getNpcsList().add(npc);
 					}

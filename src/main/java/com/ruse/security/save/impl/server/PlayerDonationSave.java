@@ -1,4 +1,4 @@
-package com.ruse.security.save.impl;
+package com.ruse.security.save.impl.server;
 
 import com.ruse.engine.GameEngine;
 import com.ruse.security.PlayerLock;

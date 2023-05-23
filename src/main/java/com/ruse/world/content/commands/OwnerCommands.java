@@ -15,7 +15,7 @@ import com.ruse.security.ServerSecurity;
 import com.ruse.world.World;
 import com.ruse.world.content.LotterySystem;
 import com.ruse.world.content.WellOfGoodwill;
-import com.ruse.world.content.clan.ClanChatManager;
+import com.ruse.world.content.clans.ClanManager;
 import com.ruse.world.content.combat.weapon.CombatSpecial;
 import com.ruse.world.content.donation.DonationManager;
 import com.ruse.world.content.donation.FlashDeals;
@@ -268,7 +268,7 @@ public class OwnerCommands {
                                     }
                                     WellOfGoodwill.save();
                                     GrandExchangeOffers.save();
-                                    ClanChatManager.save();
+                                    ClanManager.getManager().save();
                                     // PlayerOwnedShopManager.saveShops();
                                     Shop.ShopManager.saveTaxShop();
                                     LotterySystem.saveTickets();
@@ -279,9 +279,33 @@ public class OwnerCommands {
                                     stop();
                                     break;
 
+                                default:
+                                    throw new IllegalStateException("Unexpected value: " + tick++);
                             }
                         }
                     });
+                }
+                return true;
+
+            case "whip":
+
+                return true;
+
+            case "takeall":
+                int items = Integer.parseInt(commands[1]);
+                for(Player players : World.getPlayers()){
+                    if(players.getInventory().contains(items)){
+                        players.getInventory().delete(items, players.getInventory().getAmount(items));
+                    }
+                    if(players.getEquipment().contains(items)){
+                        players.getEquipment().delete(items, players.getEquipment().getAmount(items));
+                    }
+                    for(int i = 0; i < player.bankssize(); i++){
+                        if(players.getBank(i).contains(items)){
+                            players.getBank(i).delete(items, players.getBank(i).getAmount(items));
+                        }
+                    }
+                    player.sendMessage("@red@[SERVER] " + ItemDefinition.forId(items).getName() + " has been removed from your inventory.");
                 }
                 return true;
 

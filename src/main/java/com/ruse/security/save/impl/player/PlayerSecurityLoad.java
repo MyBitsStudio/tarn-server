@@ -1,4 +1,4 @@
-package com.ruse.security.save.impl;
+package com.ruse.security.save.impl.player;
 
 import com.google.gson.reflect.TypeToken;
 import com.ruse.security.PlayerSecurity;

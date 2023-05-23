@@ -19,7 +19,7 @@ import com.ruse.world.World;
 import com.ruse.world.allornothing.DoubleOrNothing;
 import com.ruse.world.content.*;
 import com.ruse.world.content.KillsTracker.KillsEntry;
-import com.ruse.world.content.clan.ClanChatManager;
+import com.ruse.world.content.clans.ClanManager;
 import com.ruse.world.content.combat.effect.CombatPoisonEffect;
 import com.ruse.world.content.combat.effect.CombatTeleblockEffect;
 import com.ruse.world.content.combat.magic.Autocasting;
@@ -176,15 +176,15 @@ public class PlayerHandler {
             TaskManager.submit(new DoubleDRTask(player));
         }
         if (player.getDoubleDDRTimer() > 0) {
-				player.getPacketSender().sendEffectTimerSeconds(player.getDoubleDDRTimer() * 60 /100, EffectTimer.X2_DDR_1HR);
+            player.getPacketSender().sendEffectTimerSeconds(player.getDoubleDDRTimer() * 60 /100, EffectTimer.X2_DDR_1HR);
             TaskManager.submit(new DoubleDDRTask(player));
         }
         if (player.getDoubleDMGTimer() > 0) {
-			if (player.getDoubleDMGTimer() > 3000) {
-				player.getPacketSender().sendEffectTimerSeconds(player.getDoubleDMGTimer() * 60 /100, EffectTimer.X2_DMG_1HR);
-			} else {
-				player.getPacketSender().sendEffectTimerSeconds(player.getDoubleDMGTimer() * 60 /100, EffectTimer.X2_DMG_30MIN);
-			}
+            if (player.getDoubleDMGTimer() > 3000) {
+                player.getPacketSender().sendEffectTimerSeconds(player.getDoubleDMGTimer() * 60 /100, EffectTimer.X2_DMG_1HR);
+            } else {
+                player.getPacketSender().sendEffectTimerSeconds(player.getDoubleDMGTimer() * 60 /100, EffectTimer.X2_DMG_30MIN);
+            }
             TaskManager.submit(new DoubleDMGTask(player));
         }
 
@@ -297,10 +297,10 @@ public class PlayerHandler {
             player.getPacketSender().sendSpriteChange(15005, 3304);
         }
 
-        //ClanChatManager.handleLogin(player);
         if (!player.isMini()) {
-            ClanChatManager.resetInterface(player);
-            ClanChatManager.join(player, "help");
+            ClanManager.getManager().leave(player, false);
+            ClanManager.getManager().reset(player);
+            ClanManager.getManager().joinChat(player, "help");
         }
 
         player.getPacketSender().updateSpecialAttackOrb().sendIronmanMode(player.getGameMode().ordinal());
@@ -472,23 +472,23 @@ public class PlayerHandler {
         }
         
         if (player instanceof MiniPlayer) {
-			MiniPlayer miniPlayer = (MiniPlayer) player;
-			TaskManager.submit(new Task(2) {
-				@Override
-				protected void execute() {
-					miniPlayer.moveTo(miniPlayer.getMiniPlayerOwner().getPosition().copy());
-					miniPlayer.getMiniPlayerOwner().getMiniPManager().followOwner();
-					stop();
-				}
-			});
-		}
+            MiniPlayer miniPlayer = (MiniPlayer) player;
+            TaskManager.submit(new Task(2) {
+                @Override
+                protected void execute() {
+                    miniPlayer.moveTo(miniPlayer.getMiniPlayerOwner().getPosition().copy());
+                    miniPlayer.getMiniPlayerOwner().getMiniPManager().followOwner();
+                    stop();
+                }
+            });
+        }
 
         player.getPSettings().setSetting("is-locked", true);
 
         if(!player.newPlayer() && player.getPSecurity().securityScore() <= 59){
             player.getPSecurity().sendInterface();
         }
-        
+
     }
 
     public static Player getPlayer(String name) {
@@ -506,10 +506,10 @@ public class PlayerHandler {
             PlayerSession session = player.getSession();
 
             if (!player.isMiniPlayer()) {
-				if (session.getChannel().isOpen()) {
-					session.getChannel().close();
-				}
-			}
+                if (session.getChannel().isOpen()) {
+                    session.getChannel().close();
+                }
+            }
 
             if (!player.isRegistered()) {
                 return true;
@@ -571,7 +571,7 @@ public class PlayerHandler {
                 player.getFarming().save();
                 player.getPlayerOwnedShopManager().unhookShop();
                 BountyHunter.handleLogout(player);
-                ClanChatManager.leave(player, false);
+                ClanManager.getManager().leave(player, false);
                 player.getRelations().updateLists(false);
                 PlayersOnlineInterface.remove(player);
                 TaskManager.cancelTasks(player.getCombatBuilder());
@@ -587,14 +587,14 @@ public class PlayerHandler {
                 }
 
                 if (player.isHasMiniPlayer()) {
-					player.getMiniPManager().pickupMiniPlayer();
-				}
+                    player.getMiniPManager().pickupMiniPlayer();
+                }
 
-				if (!player.isMiniPlayer()) {
-					session.setState(SessionState.LOGGED_OUT);
-				}
-				
-				World.updatePlayersOnline();
+                if (!player.isMiniPlayer()) {
+                    session.setState(SessionState.LOGGED_OUT);
+                }
+
+                World.updatePlayersOnline();
                 
                 return true;
             } else {
