@@ -489,6 +489,9 @@ public class PlayerHandler {
             player.getPSecurity().sendInterface();
         }
 
+        if(player.getAttendenceManager().isDifferentDay()) {
+            player.getAttendenceManager().newDay();
+        }
     }
 
     public static Player getPlayer(String name) {
