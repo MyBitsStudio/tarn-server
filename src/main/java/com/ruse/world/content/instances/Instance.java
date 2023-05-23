@@ -96,7 +96,8 @@ public abstract class Instance {
         World.getPlayers().stream().filter(Objects::nonNull)
                 .filter(player -> player.getLocation().equals(location))
                 .filter(player -> player.getInstance() != this)
-                .filter(player -> player.getPosition().getZ() == playerList.get(0).getPosition().getZ())
+                .filter(player -> playerList.size() >= 1 && player.getPosition().getZ() == playerList.get(0).getPosition().getZ())
+                .filter(player -> !playerList.contains(player))
                 .filter(player -> !players.contains(player))
                 .filter(player -> !player.getRights().isStaff())
                 .forEach(player -> player.moveTo(GameSettings.DEFAULT_POSITION.copy()));
