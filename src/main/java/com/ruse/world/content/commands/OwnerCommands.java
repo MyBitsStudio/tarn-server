@@ -236,7 +236,7 @@ public class OwnerCommands {
                 if (time > 0) {
                     GameServer.setUpdating(true);
                     World.sendNewsMessage("<col=FF0066><img=2> [SERVER]<col=6600FF> " + player.getUsername()
-                            + " just started an update in " + (int) (time * 0.6) + " ticks.");
+                            + " just started an update in " + (int) ((time * 0.6)) + " ticks.");
                     World.sendNewsMessage("<col=FF0066><img=2> [SERVER]<col=6600FF> Please finish what you are doing now!");
                     for (Player players : World.getPlayers()) {
                         if (players == null)
@@ -248,19 +248,19 @@ public class OwnerCommands {
                         @Override
                         protected void execute() {
                             switch(tick++){
-                                case 1:
+                                case 0:
                                     World.sendNewsMessage("<col=FF0066><img=2> [SERVER]<col=6600FF> Server is shutting down now!");
                                     break;
 
-                                case 2:
+                                case 1:
                                     World.sendNewsMessage("<col=FF0066><img=2> [SERVER]<col=6600FF> Wait until announcement to login again!");
                                     break;
 
-                                case 3:
+                                case 2:
                                     World.sendNewsMessage("<col=FF0066><img=2> [SERVER]<col=6600FF> Updating now! See you soon!");
                                     break;
 
-                                case 4:
+                                case 3:
                                     for (Player player : World.getPlayers()) {
                                         if (player != null) {
                                             World.endDereg(player);
@@ -274,7 +274,7 @@ public class OwnerCommands {
                                     LotterySystem.saveTickets();
                                     ServerPerks.getInstance().save();
                                     break;
-                                case 5:
+                                case 4:
                                     System.exit(0);
                                     stop();
                                     break;
