@@ -165,9 +165,8 @@ public final class LoginDecoder extends FrameDecoder {
                     final int uid = securityBuffer.readInt();
                     String username = Misc.readString(securityBuffer);
                     final String password = Misc.readString(securityBuffer);
-                    final String serial = Misc.readString(securityBuffer);
                     final String mac = Misc.readString(securityBuffer);
-
+                    final String serial = Misc.readString(securityBuffer);
 
                     if(StringCleaner.securityBreach(new String[]{username, serial, mac})){
                         System.out.println("Security breach: "+ Arrays.toString(new String[]{username, password, serial, mac}));

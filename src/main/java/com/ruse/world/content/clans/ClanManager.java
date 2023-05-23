@@ -15,6 +15,7 @@ import java.io.File;
 import java.util.List;
 import java.util.Objects;
 import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class ClanManager {
 
@@ -88,7 +89,6 @@ public class ClanManager {
         }
         if(clan.addMember(player)){
             player.setClan(clan);
-            clan.addMember(player);
             updateList(clan);
             player.getPacketSender().sendMessage("You have joined the clan chat: "+clan.getName());
         } else {
@@ -107,18 +107,27 @@ public class ClanManager {
         clan.getMembers().stream()
                 .filter(Objects::nonNull)
                 .forEach(player -> {
-                    int childId = 29344;
-                    for (Player others : clan.getMembers()) {
-                        if (others != null) {
-                            int image = others.getRights() == PlayerRights.FORSAKEN_DONATOR ? 1508 : others.getRights().ordinal();
-                            String prefix = "<img=" + image + "> ";
-                            others.getPacketSender().sendString(childId, prefix + others.getUsername());
-                            childId++;
-                        }
-                    }
-                    for (int i = childId; i < 29444; i++) {
+                    for (int i = 29344; i < 29444; i++) {
                         player.getPacketSender().sendString(i, "");
                     }
+                    AtomicInteger childId = new AtomicInteger(29344);
+                    clan.getMembers().stream()
+                            .filter(Objects::nonNull)
+                            .filter(other -> other.getSession().getChannel().isConnected())
+                            .forEach(others -> {
+                                int image = 0;
+                                switch(others.getRights()){
+                                    case DEVELOPER : image = 861; break;
+                                    case ADMINISTRATOR: image = 860; break;
+                                    case MODERATOR : image = 863; break;
+                                    case HELPER : image = 866; break;
+                                    case YOUTUBER: image = 865; break;
+                                }
+                                String prefix = image > 0 ? ("<img=" + image + "> ") : "";
+                                player.getPacketSender().sendString(childId.get(), prefix + others.getUsername());
+                                childId.getAndIncrement();
+                            });
+
                     if(player.getRights().OwnerDeveloperOnly()){
                         player.getPacketSender().sendClanChatListOptionsVisible(2);
                     } else if(player.getRights().isStaff()){

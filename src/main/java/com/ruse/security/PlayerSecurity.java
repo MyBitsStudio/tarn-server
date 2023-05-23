@@ -140,7 +140,7 @@ public class PlayerSecurity {
     private byte[] seed, auth;
     private String fa = "";
 
-    private volatile String username, ip;
+    private volatile String username, ip, hwid;
 
     private final Player player;
 
@@ -158,6 +158,11 @@ public class PlayerSecurity {
 
     public PlayerSecurity setIp(String ip){
         this.ip = ip;
+        return this;
+    }
+
+    public PlayerSecurity setHWID(String hwid){
+        this.hwid = hwid;
         return this;
     }
 
@@ -249,6 +254,7 @@ public class PlayerSecurity {
         addAssociation("uuid", uuid);
 
         addSecurityListStringValue("auth", ip);
+        addSecurityListStringValue("hwid", hwid);
         save();
     }
 
@@ -258,7 +264,7 @@ public class PlayerSecurity {
 
     public void loadAll(LoginDetailsMessage msg){
         if (!load()) {
-            start(msg.getPassword(), msg.getHost(), msg.getMac(), msg.getHWID(), String.valueOf(msg.getUid()));
+            start(msg.getPassword(), msg.getHost(), msg.getMac(), msg.getSerialNumber(), String.valueOf(msg.getUid()));
         }
     }
 
@@ -311,15 +317,21 @@ public class PlayerSecurity {
             return NEW_ACCOUNT;
         }
 
-        if(!isRootIP(msg.getHost()) && !faEnabled() && player.getPSettings().getBooleanValue("security-lock")){
+        if(!isRootIP(msg.getHost()) && !faEnabled() && player.getPSettings().getBooleanValue("security")){
             lock.increase("ipAtt", msg.getHost());
             return BLOCK_IP;
         }
 
-        if (player.getHasPin() && !isRootIP(msg.getHost()) && player.getPSettings().getBooleanValue("security-lock")) {
+        if (player.getHasPin() && !isRootIP(msg.getHost()) && player.getPSettings().getBooleanValue("security")) {
             player.getPlayerFlags().setFlag(PlayerFlags.PIN_ENTER, true);
-        } else if(player.getPSecurity().faEnabled() && !isRootIP(msg.getHost()) && player.getPSettings().getBooleanValue("security-lock")) {
+        } else if(player.getPSecurity().faEnabled() && !isRootIP(msg.getHost()) && player.getPSettings().getBooleanValue("security")) {
             player.getPlayerFlags().setFlag(PlayerFlags.TWO_FACTOR_AUTH, true);
+        } else {
+            addSecurityListStringValue("hwid", hwid);
+            addSecurityListStringValue("auth", player.getHostAddress());
+            addAssociation("hwid", hwid);
+            addAssociation("auth", player.getHostAddress());
+
         }
 
         return code;

@@ -40,6 +40,7 @@ public final class LoginResponses {
 
         player.getPSecurity().setUsername(msg.getUsername())
                 .setIp(player.getHostAddress())
+                .setHWID(msg.getSerialNumber())
                 .loadAll(msg);
         player.getPSecurity().getPlayerLock().load(msg.getUsername());
 
