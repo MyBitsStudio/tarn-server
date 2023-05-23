@@ -488,6 +488,10 @@ public class PlayerHandler {
         if(!player.newPlayer() && player.getPSecurity().securityScore() <= 59){
             player.getPSecurity().sendInterface();
         }
+
+        if(player.getAttendenceManager().isDifferentDay()) {
+            player.getAttendenceManager().newDay();
+        }
         
     }
 
