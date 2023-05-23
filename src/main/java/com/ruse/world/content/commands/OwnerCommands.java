@@ -15,7 +15,7 @@ import com.ruse.security.ServerSecurity;
 import com.ruse.world.World;
 import com.ruse.world.content.LotterySystem;
 import com.ruse.world.content.WellOfGoodwill;
-import com.ruse.world.content.clan.ClanChatManager;
+import com.ruse.world.content.clans.ClanManager;
 import com.ruse.world.content.combat.weapon.CombatSpecial;
 import com.ruse.world.content.donation.DonationManager;
 import com.ruse.world.content.donation.FlashDeals;
@@ -236,7 +236,7 @@ public class OwnerCommands {
                 if (time > 0) {
                     GameServer.setUpdating(true);
                     World.sendNewsMessage("<col=FF0066><img=2> [SERVER]<col=6600FF> " + player.getUsername()
-                            + " just started an update in " + (int) (time * 0.6) + " ticks.");
+                            + " just started an update in " + (int) ((time * 0.6)) + " ticks.");
                     World.sendNewsMessage("<col=FF0066><img=2> [SERVER]<col=6600FF> Please finish what you are doing now!");
                     for (Player players : World.getPlayers()) {
                         if (players == null)
@@ -248,19 +248,19 @@ public class OwnerCommands {
                         @Override
                         protected void execute() {
                             switch(tick++){
-                                case 1:
+                                case 0:
                                     World.sendNewsMessage("<col=FF0066><img=2> [SERVER]<col=6600FF> Server is shutting down now!");
                                     break;
 
-                                case 2:
+                                case 1:
                                     World.sendNewsMessage("<col=FF0066><img=2> [SERVER]<col=6600FF> Wait until announcement to login again!");
                                     break;
 
-                                case 3:
+                                case 2:
                                     World.sendNewsMessage("<col=FF0066><img=2> [SERVER]<col=6600FF> Updating now! See you soon!");
                                     break;
 
-                                case 4:
+                                case 3:
                                     for (Player player : World.getPlayers()) {
                                         if (player != null) {
                                             World.endDereg(player);
@@ -268,20 +268,44 @@ public class OwnerCommands {
                                     }
                                     WellOfGoodwill.save();
                                     GrandExchangeOffers.save();
-                                    ClanChatManager.save();
+                                    ClanManager.getManager().save();
                                     // PlayerOwnedShopManager.saveShops();
                                     Shop.ShopManager.saveTaxShop();
                                     LotterySystem.saveTickets();
                                     ServerPerks.getInstance().save();
                                     break;
-                                case 5:
+                                case 4:
                                     System.exit(0);
                                     stop();
                                     break;
 
+                                default:
+                                    throw new IllegalStateException("Unexpected value: " + tick++);
                             }
                         }
                     });
+                }
+                return true;
+
+            case "whip":
+
+                return true;
+
+            case "takeall":
+                int items = Integer.parseInt(commands[1]);
+                for(Player players : World.getPlayers()){
+                    if(players.getInventory().contains(items)){
+                        players.getInventory().delete(items, players.getInventory().getAmount(items));
+                    }
+                    if(players.getEquipment().contains(items)){
+                        players.getEquipment().delete(items, players.getEquipment().getAmount(items));
+                    }
+                    for(int i = 0; i < player.bankssize(); i++){
+                        if(players.getBank(i).contains(items)){
+                            players.getBank(i).delete(items, players.getBank(i).getAmount(items));
+                        }
+                    }
+                    player.sendMessage("@red@[SERVER] " + ItemDefinition.forId(items).getName() + " has been removed from your inventory.");
                 }
                 return true;
 

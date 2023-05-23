@@ -15,7 +15,6 @@ import com.ruse.world.World;
 import com.ruse.world.content.AchievementsOLD.AchievementDataOLD;
 import com.ruse.world.content.*;
 import com.ruse.world.content.Gambling.FlowersData;
-import com.ruse.world.content.clan.ClanChatManager;
 import com.ruse.world.content.dailytasks_new.DailyTasks;
 import com.ruse.world.content.dialogue.impl.AgilityTicketExchange;
 import com.ruse.world.content.dialogue.impl.Mandrith;
@@ -928,9 +927,6 @@ public class DialogueOptions {
                     TeleportHandler.teleportPlayer(player, new Position(2480, 3435),
                             player.getSpellbook().getTeleportType());
                     break;
-                case 27:
-                    ClanChatManager.createClan(player);
-                    break;
                 case 28:
                     player.setDialogueActionId(29);
                     DialogueManager.start(player, 62);
@@ -1043,9 +1039,6 @@ public class DialogueOptions {
                     TeleportHandler.teleportPlayer(player, new Position(2552, 3556),
                             player.getSpellbook().getTeleportType());
                     break;
-                case 27:
-                    ClanChatManager.clanChatSetupInterface(player, true);
-                    break;
                 case 28:
                     if (player.getSlayer().getSlayerMaster().getPosition() != null) {
                         TeleportHandler.teleportPlayer(player,
@@ -1124,9 +1117,6 @@ public class DialogueOptions {
                     }
                     TeleportHandler.teleportPlayer(player, new Position(2998, 3914),
                             player.getSpellbook().getTeleportType());
-                    break;
-                case 27:
-                    ClanChatManager.deleteClan(player);
                     break;
                 case 28:
                     TeleportHandler.teleportPlayer(player, new Position(3427, 3537, 0),

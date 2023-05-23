@@ -1,8 +1,7 @@
-package com.ruse.security.save.impl;
+package com.ruse.security.save.impl.player;
 
 import com.ruse.engine.GameEngine;
 import com.ruse.security.PlayerSecurity;
-import com.ruse.security.ServerSecurity;
 import com.ruse.security.save.SecureSave;
 import com.ruse.security.tools.SecurityUtils;
 

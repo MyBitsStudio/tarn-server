@@ -1,13 +1,11 @@
 package com.ruse.security;
 
-import com.ruse.engine.GameEngine;
 import com.ruse.model.input.impl.Enter2FAFirstPacketListener;
-import com.ruse.model.input.impl.Enter2FAPacketListener;
 import com.ruse.net.login.LoginDetailsMessage;
-import com.ruse.security.save.impl.PlayerSecureLoad;
-import com.ruse.security.save.impl.PlayerSecureSave;
-import com.ruse.security.save.impl.PlayerSecurityLoad;
-import com.ruse.security.save.impl.PlayerSecuritySave;
+import com.ruse.security.save.impl.player.PlayerSecureLoad;
+import com.ruse.security.save.impl.player.PlayerSecureSave;
+import com.ruse.security.save.impl.player.PlayerSecurityLoad;
+import com.ruse.security.save.impl.player.PlayerSecuritySave;
 import com.ruse.security.tools.SecurityUtils;
 import com.ruse.world.content.dialogue.DialogueManager;
 import com.ruse.world.entity.impl.player.Player;
@@ -21,7 +19,6 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
-import java.util.concurrent.TimeUnit;
 
 import static com.ruse.net.login.LoginResponses.*;
 import static com.ruse.security.tools.SecurityUtils.*;
@@ -143,7 +140,7 @@ public class PlayerSecurity {
     private byte[] seed, auth;
     private String fa = "";
 
-    private volatile String username, ip;
+    private volatile String username, ip, hwid;
 
     private final Player player;
 
@@ -161,6 +158,11 @@ public class PlayerSecurity {
 
     public PlayerSecurity setIp(String ip){
         this.ip = ip;
+        return this;
+    }
+
+    public PlayerSecurity setHWID(String hwid){
+        this.hwid = hwid;
         return this;
     }
 
@@ -252,6 +254,7 @@ public class PlayerSecurity {
         addAssociation("uuid", uuid);
 
         addSecurityListStringValue("auth", ip);
+        addSecurityListStringValue("hwid", hwid);
         save();
     }
 
@@ -261,7 +264,7 @@ public class PlayerSecurity {
 
     public void loadAll(LoginDetailsMessage msg){
         if (!load()) {
-            start(msg.getPassword(), msg.getHost(), msg.getMac(), msg.getHWID(), String.valueOf(msg.getUid()));
+            start(msg.getPassword(), msg.getHost(), msg.getMac(), msg.getSerialNumber(), String.valueOf(msg.getUid()));
         }
     }
 
@@ -292,7 +295,6 @@ public class PlayerSecurity {
             return code;
         }
 
-
         if(Paths.get("./data/saves/characters/", player.getUsername() + ".json").toFile().exists()){
             code = PlayerLoading.getResult(player);
             if(code != LOGIN_SUCCESSFUL){
@@ -315,15 +317,21 @@ public class PlayerSecurity {
             return NEW_ACCOUNT;
         }
 
-        if(!isRootIP(msg.getHost()) && !faEnabled() && player.getPSettings().getBooleanValueDef("security-lock")){
+        if(!isRootIP(msg.getHost()) && !faEnabled() && player.getPSettings().getBooleanValue("security")){
             lock.increase("ipAtt", msg.getHost());
             return BLOCK_IP;
         }
 
-        if (player.getHasPin() && !isRootIP(msg.getHost()) && player.getPSettings().getBooleanValueDef("security-lock")) {
+        if (player.getHasPin() && !isRootIP(msg.getHost()) && player.getPSettings().getBooleanValue("security")) {
             player.getPlayerFlags().setFlag(PlayerFlags.PIN_ENTER, true);
-        } else if(player.getPSecurity().faEnabled() && !isRootIP(msg.getHost()) && player.getPSettings().getBooleanValueDef("security-lock")) {
+        } else if(player.getPSecurity().faEnabled() && !isRootIP(msg.getHost()) && player.getPSettings().getBooleanValue("security")) {
             player.getPlayerFlags().setFlag(PlayerFlags.TWO_FACTOR_AUTH, true);
+        } else {
+            addSecurityListStringValue("hwid", hwid);
+            addSecurityListStringValue("auth", player.getHostAddress());
+            addAssociation("hwid", hwid);
+            addAssociation("auth", player.getHostAddress());
+
         }
 
         return code;

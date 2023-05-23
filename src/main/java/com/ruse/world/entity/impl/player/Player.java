@@ -38,7 +38,8 @@ import com.ruse.world.content.aura.AuraParty;
 import com.ruse.world.content.battlepass.BattlePass;
 import com.ruse.world.content.bossEvents.BossEventData;
 import com.ruse.world.content.casketopening.CasketOpening;
-import com.ruse.world.content.clan.ClanChat;
+import com.ruse.world.content.clans.Clan;
+import com.ruse.world.content.clans.ClanManager;
 import com.ruse.world.content.cluescrolls.ClueScrollTask;
 import com.ruse.world.content.collectionlog.CollectionEntry;
 import com.ruse.world.content.collectionlog.CollectionLogInterface;
@@ -352,9 +353,9 @@ public class Player extends Character {
     @Getter
     @Setter
     private boolean hasMiniPlayer, isMiniPlayer;
-	@Getter
-	@Setter
-	private Player miniPlayerOwner;
+    @Getter
+    @Setter
+    private Player miniPlayerOwner;
     
     /*
      * end of minime
@@ -664,7 +665,6 @@ public class Player extends Character {
     private Prayerbook prayerbook = Prayerbook.NORMAL;
     private MagicSpellbook spellbook = MagicSpellbook.NORMAL;
     private LoyaltyTitles loyaltyTitle = LoyaltyTitles.NONE;
-    private ClanChat currentClanChat;
     private Input inputHandling;
     private WalkToTask walkToTask;
     private Shop shop;
@@ -1903,12 +1903,13 @@ public class Player extends Character {
         PlayerSaving.save(this);
     }
 
+
     /*
      * Getters & Setters
      */
 
     @Setter
- 	private boolean spawningMiniPlayer;
+    private boolean spawningMiniPlayer;
 
     @Getter
     @Setter
@@ -1920,12 +1921,6 @@ public class Player extends Character {
         for (int i = 0; i < Skill.values().length; i++) {
             playerXP[i] = this.getSkillManager().getExperience(Skill.forId(i));
         }
-//        if (this.getGameMode() == GameMode.VETERAN_MODE) {
-//            com.everythingrs.hiscores.Hiscores.update("szUziRZAX4r853p8wSF7icsTKkqLS8VgtLLJ2TQinhWRHIXqT5nyWvMQON924RSg5iOos4u4",
-//                    "Normal Mode", this.getUsername(),
-//                    this.getRights().ordinal(), playerXP, debugMessage);
-//            this.getGameMode();
-//        }
 
         if (getCombatBuilder().isBeingAttacked()) {
             getPacketSender().sendMessage("You must wait a few seconds after being out of combat before doing this.");
@@ -1935,9 +1930,11 @@ public class Player extends Character {
             getPacketSender().sendMessage("You cannot log out at the moment.");
             return false;
         }
-        // new Thread(new Hiscores(this)).start();
 
 
+        if(clan != null){
+            ClanManager.getManager().leave(this, false);
+        }
 
         return true;
     }
@@ -1980,8 +1977,8 @@ public class Player extends Character {
         getUpdateFlag().flag(Flag.APPEARANCE);
     }
     public boolean busy() {
-    	if (this instanceof MiniPlayer)
-			return false;
+        if (this instanceof MiniPlayer)
+            return false;
         return interfaceId > 0 || isBanking || shopping || trading.inTrade() || dueling.inDuelScreen || isResting || spawningMiniPlayer;
     }
 
@@ -2006,8 +2003,8 @@ public class Player extends Character {
     }
 
     public Inventory getInventory() {
-    	if (this instanceof MiniPlayer)
-			return getMiniPlayerOwner().getInventory();
+        if (this instanceof MiniPlayer)
+            return getMiniPlayerOwner().getInventory();
         return inventory;
     }
 
@@ -2553,16 +2550,16 @@ public class Player extends Character {
     }
 
     public Bank[] getBanks() {
-    	if (this instanceof MiniPlayer)
-			return this.getMiniPlayerOwner().getBanks();
+        if (this instanceof MiniPlayer)
+            return this.getMiniPlayerOwner().getBanks();
         return bankTabs;
     }
 
     public void setMiniPBanks() {
-		for (int i = 0; i <= 8; i++) {
-			bankTabs[i] = new Bank(this);
-		}
-	}
+        for (int i = 0; i <= 8; i++) {
+            bankTabs[i] = new Bank(this);
+        }
+    }
     
     public Bank getBank(int index) {
         return bankTabs[index];
@@ -2803,6 +2800,10 @@ public class Player extends Character {
         return soulInPouch > Integer.MAX_VALUE ? Integer.MAX_VALUE : (int) soulInPouch;
     }
 
+    public int bankssize(){
+        return bankTabs.length;
+    }
+
     public boolean experienceLocked() {
         return experienceLocked;
     }
@@ -2817,15 +2818,6 @@ public class Player extends Character {
 
     public void setClientExitTaskActive(boolean clientExitTaskActive) {
         this.clientExitTaskActive = clientExitTaskActive;
-    }
-
-    public ClanChat getCurrentClanChat() {
-        return currentClanChat;
-    }
-
-    public Player setCurrentClanChat(ClanChat clanChat) {
-        this.currentClanChat = clanChat;
-        return this;
     }
 
     public String getClanChatName() {
@@ -4349,5 +4341,15 @@ public class Player extends Character {
 
     public void setPlayerFlags(PlayerFlags playerFlags) {
         this.playerFlags = playerFlags;
+    }
+
+    private Clan clan;
+
+    public Clan getClan() {
+        return clan;
+    }
+
+    public void setClan(Clan clan) {
+        this.clan = clan;
     }
 }

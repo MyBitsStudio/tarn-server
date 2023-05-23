@@ -35,24 +35,24 @@ public class CounterInstance extends BossInstance {
                 getOwner().getInventory().delete(TOKEN_ID, TOKEN_AMOUNT);
                 getOwner().sendMessage("@blu@You have been charged @red@" + TOKEN_AMOUNT + " @blu@tokens for your instance.");
             } else {
-                dispose();
+                dispose(getOwner());
             }
         }
 
         if(ticks % (135 * 1000) == 0){
             getOwner().sendMessage("@red@Your instance has expired.");
-            dispose();
+            dispose(getOwner());
         }
     }
 
     @Override
-    public void dispose(){
+    public void dispose(Player player){
         for(CounterBoss boss : bosses){
             if(boss != null){
                 remove(boss);
             }
         }
-        super.dispose();
+        super.dispose(player);
     }
 
     public void start(){
@@ -61,12 +61,12 @@ public class CounterInstance extends BossInstance {
             getOwner().getInventory().delete(TOKEN_ID, TOKEN_AMOUNT);
             getOwner().sendMessage("@blu@You have been charged @red@" + 100 + " @blu@tokens for your instance.");
         } else {
-            dispose();
+            dispose(getOwner());
             return;
         }
         super.start();
 
-        moveTo(new Position(3019, 2762, getOwner().getIndex() * 4));
+        moveTo(getOwner(), new Position(3019, 2762, getOwner().getIndex() * 4));
         add(getOwner());
 
         getOwner().getPacketSender().sendMessage("@red@Your instance has started.");

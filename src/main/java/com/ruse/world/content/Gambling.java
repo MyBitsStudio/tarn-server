@@ -3,7 +3,6 @@ package com.ruse.world.content;
 import com.ruse.model.*;
 import com.ruse.model.movement.MovementQueue;
 import com.ruse.util.Misc;
-import com.ruse.world.content.clan.ClanChatManager;
 import com.ruse.world.content.dialogue.DialogueManager;
 import com.ruse.world.entity.impl.npc.NPC;
 import com.ruse.world.entity.impl.player.Player;
@@ -47,8 +46,8 @@ public class Gambling {
 		player.getMovementQueue().reset();
 		player.performAnimation(new Animation(11900));
 		player.performGraphic(new Graphic(2075));
-		ClanChatManager.sendMessage(player.getCurrentClanChat(), "@bla@[ClanChat] @whi@" + player.getUsername()
-				+ " just rolled @bla@" + roll + "@whi@ on the percentile dice.");
+		//ClanChatManager.sendMessage(player.getCurrentClanChat(), "@bla@[ClanChat] @whi@" + player.getUsername()
+		//		+ " just rolled @bla@" + roll + "@whi@ on the percentile dice.");
 		PlayerLogs.log(player.getUsername(),
 				"[ClanChat]" + player.getUsername() + " just rolled" + roll + "on the percentile dice.");
 		player.getClickDelay().reset();
@@ -83,8 +82,8 @@ public class Gambling {
 		player.getMovementQueue().reset();
 		player.performAnimation(new Animation(11900));
 		player.performGraphic(new Graphic(2075));
-		ClanChatManager.sendMessage(player.getCurrentClanChat(), "@bla@[ClanChat] @whi@" + player.getUsername()
-				+ " just rolled @bla@" + roll + "@whi@ on the percentile dice.");
+		//ClanChatManager.sendMessage(player.getCurrentClanChat(), "@bla@[ClanChat] @whi@" + player.getUsername()
+		//		+ " just rolled @bla@" + roll + "@whi@ on the percentile dice.");
 		PlayerLogs.log(player.getUsername(),
 				"[ClanChat]" + player.getUsername() + " just rolled" + roll + "on the percentile dice.");
 		player.getClickDelay().reset();

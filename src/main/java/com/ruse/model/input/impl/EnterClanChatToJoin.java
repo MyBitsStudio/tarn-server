@@ -1,7 +1,7 @@
 package com.ruse.model.input.impl;
 
 import com.ruse.model.input.Input;
-import com.ruse.world.content.clan.ClanChatManager;
+import com.ruse.world.content.clans.ClanManager;
 import com.ruse.world.entity.impl.player.Player;
 
 public class EnterClanChatToJoin extends Input {
@@ -12,6 +12,6 @@ public class EnterClanChatToJoin extends Input {
 			player.getPacketSender().sendMessage("Invalid syntax entered.");
 			return;
 		}
-		ClanChatManager.join(player, syntax);
+		ClanManager.getManager().joinChat(player, syntax);
 	}
 }

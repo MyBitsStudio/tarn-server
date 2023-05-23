@@ -1,8 +1,7 @@
 package com.ruse.security;
 
-import com.ruse.model.definitions.ItemDefinition;
-import com.ruse.security.save.impl.PlayerLockLoad;
-import com.ruse.security.save.impl.PlayerLockSave;
+import com.ruse.security.save.impl.player.PlayerLockLoad;
+import com.ruse.security.save.impl.player.PlayerLockSave;
 import com.ruse.world.World;
 import com.ruse.world.content.discordbot.AdminCord;
 import com.ruse.world.entity.impl.player.Player;
@@ -22,7 +21,6 @@ import java.util.concurrent.atomic.AtomicLong;
 import static com.ruse.net.login.LoginResponses.LOGIN_SUCCESSFUL;
 import static com.ruse.net.login.LoginResponses.TEMP_LOCK;
 import static com.ruse.security.tools.SecurityUtils.PLAYER_LOCK_FILE;
-import static com.ruse.security.tools.SecurityUtils.PLAYER_SECURITY_FILE;
 import static com.ruse.world.entity.impl.player.PlayerFlags.FORCE_KICK;
 
 public class PlayerLock {

@@ -10,7 +10,6 @@ import com.ruse.util.StringCleaner;
 import com.ruse.world.World;
 import com.ruse.world.content.PlayerLogs;
 import com.ruse.world.content.PlayerPunishment;
-import com.ruse.world.content.clan.ClanChatManager;
 import com.ruse.world.entity.impl.player.Player;
 import org.apache.commons.lang3.StringUtils;
 //import com.sun.xml.internal.ws.util.StringUtils;
@@ -173,9 +172,6 @@ public class PlayerRelations {
 			Player friend = World.getPlayerByName(name);
 			if (friend != null) {
 				friend.getRelations().updateLists(true);
-				if (player.getCurrentClanChat() != null) {
-					ClanChatManager.checkFriendsRank(friend, player.getCurrentClanChat(), true);
-				}
 			}
 		}
 	}
@@ -203,9 +199,6 @@ public class PlayerRelations {
 			Player unfriend = World.getPlayerByName(NameUtils.longToString(username));
 			if (unfriend != null) {
 				unfriend.getRelations().updateLists(false);
-				if (player.getCurrentClanChat() != null) {
-					ClanChatManager.checkFriendsRank(unfriend, player.getCurrentClanChat(), true);
-				}
 			}
 			sendFriends();
 			updateLists(false);

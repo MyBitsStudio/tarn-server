@@ -699,10 +699,6 @@ public final class CombatFactory {
             voidDmgBonus = 4.2;
             otherBonusMultiplier = 2.8;
             maxHit *= 2.1;// , CombatType.RANGED)) {
-            if (player.getCurrentClanChat() != null
-                    && player.getCurrentClanChat().getName().equalsIgnoreCase("debug")) {
-                player.getPacketSender().sendMessage("Master Void buff applied");
-            }
             voidDmgBonus = 4.2;
             otherBonusMultiplier = 2.8;
             maxHit *= 2.1;
@@ -710,10 +706,6 @@ public final class CombatFactory {
 
         if (EquipmentBonus.voidMelee(player)) {// , CombatType.MELEE)) {
             voidDmgBonus = 1.1;
-            if (player.getCurrentClanChat() != null
-                    && player.getCurrentClanChat().getName().equalsIgnoreCase("debug")) {
-                player.getPacketSender().sendMessage("Void buff applied");
-            }
         }
 
         if (strengthLevel <= 10 || attackLevel <= 10) {
@@ -931,17 +923,13 @@ public final class CombatFactory {
         }
 
         if (EquipmentBonus.voidRange(player)) {// , CombatType.RANGED)) {
-            if (player.getCurrentClanChat() != null
-                    && player.getCurrentClanChat().getName().equalsIgnoreCase("debug")) {
+            if (player.getClan() != null
+                    && player.getClan().getName().equalsIgnoreCase("debug")) {
                 player.getPacketSender().sendMessage("Void buff applied");
             }
             voidDmgBonus = 1.2;
         }
         if (EquipmentBonus.voidmRange(player)) {// , CombatType.RANGED)) {
-            if (player.getCurrentClanChat() != null
-                    && player.getCurrentClanChat().getName().equalsIgnoreCase("debug")) {
-                player.getPacketSender().sendMessage("Master Void buff applied");
-            }
             voidDmgBonus = 1.2;
         }
 

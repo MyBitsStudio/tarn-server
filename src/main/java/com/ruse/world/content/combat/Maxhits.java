@@ -231,17 +231,9 @@ public class Maxhits {
             double otherBonuses = 1;
 
             if (EquipmentBonus.voidRange(player)) {// , CombatType.RANGED)) {
-                if (player.getCurrentClanChat() != null
-                        && player.getCurrentClanChat().getName().equalsIgnoreCase("debug")) {
-                    player.getPacketSender().sendMessage("Void buff applied");
-                }
                 otherBonuses = 1.2;
             }
             if (EquipmentBonus.voidmRange(player)) {// , CombatType.RANGED)) {
-                if (player.getCurrentClanChat() != null
-                        && player.getCurrentClanChat().getName().equalsIgnoreCase("debug")) {
-                    player.getPacketSender().sendMessage("Master Void buff applied");
-                }
                 otherBonuses = 1.2;
             }
 

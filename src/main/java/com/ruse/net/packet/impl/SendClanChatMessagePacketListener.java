@@ -6,7 +6,7 @@ import com.ruse.security.ServerSecurity;
 import com.ruse.util.Misc;
 import com.ruse.util.StringCleaner;
 import com.ruse.world.content.PlayerPunishment;
-import com.ruse.world.content.clan.ClanChatManager;
+import com.ruse.world.content.clans.ClanManager;
 import com.ruse.world.content.dialogue.DialogueManager;
 import com.ruse.world.content.discordbot.JavaCord;
 import com.ruse.world.entity.impl.player.Player;
@@ -18,7 +18,7 @@ public class SendClanChatMessagePacketListener implements PacketListener {
 	@Override
 	public void handleMessage(Player player, Packet packet) {
 		String clanMessage = Misc.readString(packet.getBuffer());
-		if (clanMessage == null || clanMessage.length() < 1)
+		if (clanMessage.length() < 1)
 			return;
 		if (ServerSecurity.getInstance().isPlayerMuted(player.getUsername())) {
 			player.getPacketSender().sendMessage("You are muted and cannot chat.");
@@ -39,7 +39,7 @@ public class SendClanChatMessagePacketListener implements PacketListener {
 		}
 		player.afkTicks = 0;
 		player.afk = false;
-		ClanChatManager.sendMessage(player, clanMessage);
+		ClanManager.getManager().sendMessage(player, clanMessage);
 		if(!clanMessage.contains("@"))
 			JavaCord.sendMessage("\uD83D\uDCAC│\uD835\uDDF0\uD835\uDDF9\uD835\uDDEE\uD835\uDDFB-\uD835\uDDF0\uD835\uDDF5\uD835\uDDEE\uD835\uDE01", "**[" + player.getUsername() + "]  " + clanMessage + "  ** ");
 	}

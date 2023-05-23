@@ -6,7 +6,7 @@ import com.ruse.engine.task.TaskManager;
 import com.ruse.model.container.impl.Shop.ShopManager;
 import com.ruse.util.playerSavingTimer;
 import com.ruse.world.World;
-import com.ruse.world.content.clan.ClanChatManager;
+import com.ruse.world.content.clans.ClanManager;
 import com.ruse.world.content.grandexchange.GrandExchangeOffers;
 import com.ruse.world.content.groupironman.GroupManager;
 import com.ruse.world.content.pos.PlayerOwnedShopManager;
@@ -96,8 +96,8 @@ public final class GameEngine implements Runnable {
             ShopManager.saveTaxShop();
             playerSavingTimer.massSaving();
             GrandExchangeOffers.save();
-            ClanChatManager.save();
-            PlayerOwnedShopManager.saveShops();
+            ClanManager.getManager().init();
+            //PlayerOwnedShopManager.saveShops();
         }
     }
 
@@ -116,7 +116,7 @@ public final class GameEngine implements Runnable {
                 ShopManager.saveTaxShop();
                 playerSavingTimer.massSaving();
                 GrandExchangeOffers.save();
-                ClanChatManager.save();
+                ClanManager.getManager().save();
                 PlayerOwnedShopManager.saveShops();
             }
         }, "GameEngine Exception Handler");
