@@ -11,6 +11,8 @@ import com.ruse.world.content.CurrencyPouch;
 import com.ruse.world.content.DropLog;
 import com.ruse.world.content.KillsTracker;
 import com.ruse.world.content.LoyaltyProgramme;
+import com.ruse.world.content.attendance.AttendanceProgress;
+import com.ruse.world.content.attendance.AttendanceTab;
 import com.ruse.world.content.collectionlog.CollectionEntry;
 import com.ruse.world.content.collectionlog.CollectionLogInterface;
 import com.ruse.world.content.combat.magic.CombatSpells;
@@ -27,6 +29,7 @@ import com.ruse.world.content.skill.impl.summoning.BossPets;
 import com.ruse.world.entity.impl.player.Player;
 
 import java.lang.reflect.Type;
+import java.time.LocalDate;
 import java.util.*;
 import java.util.concurrent.ConcurrentMap;
 
@@ -1164,6 +1167,18 @@ public class PlayerSecureLoad extends SecureLoad {
         if(object.has("forge-progress")) {
             player.getForge().setProgress(object.get("forge-progress").getAsInt());
         }
+
+        if(object.has("lastloggedinday")) {
+            player.getAttendenceManager().setLastLoggedInDate(LocalDate.parse(object.get("lastloggedinday").getAsString()));
+        }
+
+        if(object.has("attendanceprogress")) {
+            HashMap<AttendanceTab, AttendanceProgress> temp = builder.fromJson(object.get("attendanceprogress"),
+                    new TypeToken<HashMap<AttendanceTab, AttendanceProgress>>() {
+                    }.getType());
+            player.getAttendenceManager().getPlayerAttendanceProgress().putAll(temp);
+        }
+
         return this;
     }
 }

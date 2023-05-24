@@ -39,9 +39,9 @@ public class AttendanceManager {
                     return;
                 }
                 if(attendanceProgress.put(nextUnclaimedDay)) {
-                    if(!p.busy()) {
-                        p.getAttendenceUI().showInterface();
-                    }
+//                    if(!p.busy()) {
+//                        p.getAttendenceUI().showInterface();
+//                    }
                     p.getPacketSender().sendMessage("@red@You have been given " + item.getDefinition().getName() + " x " + item.getAmount() + " as attendance reward for day " + nextUnclaimedDay + "!");
                     p.addItemUnderAnyCircumstances(item);
                     PlayerSaving.save(p);

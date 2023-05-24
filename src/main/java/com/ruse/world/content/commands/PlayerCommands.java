@@ -403,6 +403,10 @@ public class PlayerCommands {
             case "yell":
                 handleYell(player, command);
                 return true;
+
+            case "daily":
+                player.getAttendenceUI().showInterface();
+                return true;
         }
         return false;
     }

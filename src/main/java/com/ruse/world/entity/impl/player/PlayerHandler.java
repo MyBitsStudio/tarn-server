@@ -44,6 +44,7 @@ import com.ruse.world.instance.MapInstance;
 import mysql.impl.Donation;
 import org.mindrot.jbcrypt.BCrypt;
 
+import static com.ruse.world.entity.impl.player.PlayerFlags.DAILY;
 import static com.ruse.world.entity.impl.player.PlayerFlags.FORCE_KICK;
 
 //import com.ruse.world.content.Abyssector;
@@ -487,6 +488,8 @@ public class PlayerHandler {
 
         if(!player.newPlayer() && player.getPSecurity().securityScore() <= 59){
             player.getPSecurity().sendInterface();
+        } else {
+            player.getPlayerFlags().setFlag(DAILY, true);
         }
 
         if(player.getAttendenceManager().isDifferentDay()) {

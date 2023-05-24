@@ -41,6 +41,7 @@ public class PlayerFlags {
         flags.put("changePin", false);
         flags.put("pinEnter", false);
         flags.put("forceKick", false);
+        flags.put("daily", false);
     }
 
     public boolean isFlagged(String key){
@@ -74,6 +75,7 @@ public class PlayerFlags {
                 }
             } else {
                 setFlag(TWO_FACTOR_AUTH, false);
+                setFlag(DAILY, true);
                 player.setPlayerLocked(false);
                 reqs = false;
             }
@@ -89,6 +91,10 @@ public class PlayerFlags {
         if(isFlagged(FORCE_KICK)){
             World.removePlayer(player);
         }
+        if(isFlagged(DAILY)){
+            player.getAttendenceUI().showInterface();
+            setFlag(DAILY, false);
+        }
     }
 
     public void successPin(){
@@ -101,6 +107,7 @@ public class PlayerFlags {
 
     public void success2FA(){
         setFlag(TWO_FACTOR_AUTH, false);
+        setFlag(DAILY, true);
         player.setPlayerLocked(false);
         reqs = false;
         TaskManager.submit(new Task(1, player, false) {
@@ -131,4 +138,6 @@ public class PlayerFlags {
 
     public static String PIN_ENTER = "pinEnter";
     public static String FORCE_KICK = "forceKick";
+
+    public static String DAILY = "daily";
 }

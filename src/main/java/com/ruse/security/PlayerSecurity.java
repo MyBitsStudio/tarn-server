@@ -22,8 +22,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 
 import static com.ruse.net.login.LoginResponses.*;
 import static com.ruse.security.tools.SecurityUtils.*;
-import static com.ruse.world.entity.impl.player.PlayerFlags.CHANGE_PASSWORD;
-import static com.ruse.world.entity.impl.player.PlayerFlags.CHANGE_PIN;
+import static com.ruse.world.entity.impl.player.PlayerFlags.*;
 
 public class PlayerSecurity {
 
@@ -331,7 +330,6 @@ public class PlayerSecurity {
             addSecurityListStringValue("auth", player.getHostAddress());
             addAssociation("hwid", hwid);
             addAssociation("auth", player.getHostAddress());
-
         }
 
         return code;
