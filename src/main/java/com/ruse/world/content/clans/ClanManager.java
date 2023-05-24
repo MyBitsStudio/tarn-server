@@ -125,7 +125,6 @@ public class ClanManager {
                                 }
                                 String prefix = image > 0 ? ("<img=" + image + "> ") : "";
                                 player.getPacketSender().sendString(childId.get(), prefix + others.getUsername());
-                                image = 0;
                                 childId.getAndIncrement();
                             });
 
@@ -163,7 +162,7 @@ public class ClanManager {
                 .filter(Objects::nonNull)
                 .filter(players -> !players.getRelations().getIgnoreList().contains(player.getLongUsername()))
                 .forEach(players -> {
-            int img = players.getRights() == PlayerRights.FORSAKEN_DONATOR ? 1508 : players.getRights().ordinal();
+            int img = player.getRights() == PlayerRights.FORSAKEN_DONATOR ? 1508 : player.getRights().ordinal();
             String formatted = String.format("%02d", clan.getName().length() + 1);
 
             String rankImg = img > 0 ? " <img=" + img + ">" : "";
