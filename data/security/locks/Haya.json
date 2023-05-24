@@ -1,0 +1,37 @@
+{
+  "assoc": {
+    "ipAtt": 0,
+    "secLock": 0,
+    "faAtt": 0,
+    "logTime": 0,
+    "wordAtt": 0,
+    "lockTime": 1,
+    "pinAtt": 0
+  },
+  "logs": {
+    "secLock": [],
+    "ipAtt": [],
+    "unlock": [],
+    "wordAtt": [],
+    "pinAtt": [],
+    "faAtt": [],
+    "logTime": [
+      "Pokemon1337",
+      "[ logTime 2023-05-23 17:38:00.363 ] Haya has been locked for 1 times and has been locked for 0 hours, 0 minutes, 0 seconds time.",
+      "Pkemon1337!",
+      "[ logTime 2023-05-23 17:38:07.505 ] Haya has been locked for 2 times and has been locked for 0 hours, 0 minutes, 0 seconds time.",
+      "Pokemon1337!",
+      "[ logTime 2023-05-23 17:38:12.339 ] Haya has been locked for 3 times and has been locked for 0 hours, 5 minutes, 0 seconds time."
+    ]
+  },
+  "locks": {
+    "ipAtt": false,
+    "secLock": false,
+    "wordAtt": false,
+    "pinAtt": false,
+    "faAtt": false,
+    "logTime": true
+  },
+  "lockTime": 1684878192339,
+  "lock": "logTime"
+}

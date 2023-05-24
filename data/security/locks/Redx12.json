@@ -1,0 +1,40 @@
+{
+  "assoc": {
+    "ipAtt": 0,
+    "secLock": 0,
+    "faAtt": 0,
+    "logTime": 0,
+    "wordAtt": 0,
+    "lockTime": 0,
+    "pinAtt": 0
+  },
+  "logs": {
+    "secLock": [],
+    "ipAtt": [
+      "24.147.0.90",
+      "[ ipAtt 2023-05-22 08:15:14.770 ] Redx12 has been locked for 1 times and has been locked for 0 hours, 0 minutes, 0 seconds time.",
+      "24.147.0.90",
+      "[ ipAtt 2023-05-22 08:15:25.046 ] Redx12 has been locked for 2 times and has been locked for 0 hours, 0 minutes, 0 seconds time.",
+      "24.147.0.90",
+      "[ ipAtt 2023-05-22 08:15:48.709 ] Redx12 has been locked for 3 times and has been locked for 24 hours, 0 minutes, 0 seconds time."
+    ],
+    "unlock": [],
+    "wordAtt": [],
+    "pinAtt": [],
+    "faAtt": [],
+    "logTime": [
+      "fakescaptarn",
+      "[ logTime 2023-05-22 02:14:42.186 ] Redx12 has been locked for 1 times and has been locked for 0 hours, 0 minutes, 0 seconds time."
+    ]
+  },
+  "locks": {
+    "ipAtt": false,
+    "secLock": false,
+    "wordAtt": false,
+    "pinAtt": false,
+    "faAtt": false,
+    "logTime": false
+  },
+  "lockTime": 0,
+  "lock": ""
+}

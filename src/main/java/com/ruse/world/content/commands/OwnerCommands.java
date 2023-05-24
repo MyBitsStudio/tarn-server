@@ -243,7 +243,7 @@ public class OwnerCommands {
                             continue;
                         players.getPacketSender().sendSystemUpdate(time);
                     }
-                    TaskManager.submit(new Task((int) (time * 0.6)) {
+                    TaskManager.submit(new Task((int) (time * 0.6), false) {
                         int tick = 0;
                         @Override
                         protected void execute() {
@@ -257,10 +257,6 @@ public class OwnerCommands {
                                     break;
 
                                 case 2:
-                                    World.sendNewsMessage("<col=FF0066><img=2> [SERVER]<col=6600FF> Updating now! See you soon!");
-                                    break;
-
-                                case 3:
                                     for (Player player : World.getPlayers()) {
                                         if (player != null) {
                                             World.endDereg(player);
@@ -274,7 +270,7 @@ public class OwnerCommands {
                                     LotterySystem.saveTickets();
                                     ServerPerks.getInstance().save();
                                     break;
-                                case 4:
+                                case 3:
                                     System.exit(0);
                                     stop();
                                     break;

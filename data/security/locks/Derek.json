@@ -1,0 +1,35 @@
+{
+  "assoc": {
+    "ipAtt": 2,
+    "secLock": 0,
+    "faAtt": 0,
+    "logTime": 0,
+    "wordAtt": 0,
+    "lockTime": 0,
+    "pinAtt": 0
+  },
+  "logs": {
+    "secLock": [],
+    "ipAtt": [
+      "90.131.46.121",
+      "[ ipAtt 2023-05-23 01:56:44.932 ] Derek has been locked for 1 times and has been locked for 0 hours, 0 minutes, 0 seconds time.",
+      "90.131.46.121",
+      "[ ipAtt 2023-05-23 01:56:47.941 ] Derek has been locked for 2 times and has been locked for 0 hours, 0 minutes, 0 seconds time."
+    ],
+    "unlock": [],
+    "wordAtt": [],
+    "pinAtt": [],
+    "faAtt": [],
+    "logTime": []
+  },
+  "locks": {
+    "ipAtt": false,
+    "secLock": false,
+    "wordAtt": false,
+    "pinAtt": false,
+    "faAtt": false,
+    "logTime": false
+  },
+  "lockTime": 0,
+  "lock": ""
+}

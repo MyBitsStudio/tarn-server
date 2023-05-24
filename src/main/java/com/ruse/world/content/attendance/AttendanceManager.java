@@ -110,6 +110,7 @@ public class AttendanceManager {
         Month month = LocalDate.now(ZoneOffset.UTC).getMonth();
 
         tabs.add(AttendanceTab.LOYAL);
+        //tabs.add(AttendanceTab.DONATOR);
 
         //if(month == Month.DECEMBER) {
         //    tabs.add(AttendanceTab.CHRISTMAS);

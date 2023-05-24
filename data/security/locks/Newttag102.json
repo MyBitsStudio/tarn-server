@@ -1,0 +1,37 @@
+{
+  "assoc": {
+    "ipAtt": 0,
+    "secLock": 0,
+    "faAtt": 0,
+    "logTime": 0,
+    "wordAtt": 0,
+    "lockTime": 1,
+    "pinAtt": 0
+  },
+  "logs": {
+    "secLock": [],
+    "ipAtt": [],
+    "unlock": [],
+    "wordAtt": [],
+    "pinAtt": [],
+    "faAtt": [],
+    "logTime": [
+      "billy224",
+      "[ logTime 2023-05-23 17:17:41.365 ] Newttag102 has been locked for 1 times and has been locked for 0 hours, 0 minutes, 0 seconds time.",
+      "billy224",
+      "[ logTime 2023-05-23 17:18:00.881 ] Newttag102 has been locked for 2 times and has been locked for 0 hours, 0 minutes, 0 seconds time.",
+      "billy224",
+      "[ logTime 2023-05-23 17:18:30.074 ] Newttag102 has been locked for 3 times and has been locked for 0 hours, 5 minutes, 0 seconds time."
+    ]
+  },
+  "locks": {
+    "ipAtt": false,
+    "secLock": false,
+    "wordAtt": false,
+    "pinAtt": false,
+    "faAtt": false,
+    "logTime": true
+  },
+  "lockTime": 1684877010074,
+  "lock": "logTime"
+}

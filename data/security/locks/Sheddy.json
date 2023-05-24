@@ -1,0 +1,53 @@
+{
+  "assoc": {
+    "ipAtt": 0,
+    "secLock": 0,
+    "faAtt": 0,
+    "logTime": 0,
+    "wordAtt": 0,
+    "lockTime": 3,
+    "pinAtt": 0
+  },
+  "logs": {
+    "secLock": [],
+    "ipAtt": [],
+    "unlock": [
+      "[ unlock 2023-05-22 02:14:59.908 ] Sheddy has been unlocked.",
+      "[ unlock 2023-05-22 03:03:39.143 ] Sheddy has been unlocked.",
+      "[ unlock 2023-05-22 03:29:13.947 ] Sheddy has been unlocked."
+    ],
+    "wordAtt": [],
+    "pinAtt": [],
+    "faAtt": [],
+    "logTime": [
+      "Brooke123",
+      "[ logTime 2023-05-22 01:58:12.558 ] Sheddy has been locked for 1 times and has been locked for 0 hours, 0 minutes, 0 seconds time.",
+      "brooke125837",
+      "[ logTime 2023-05-22 01:58:22.865 ] Sheddy has been locked for 2 times and has been locked for 0 hours, 0 minutes, 0 seconds time.",
+      "brooke123",
+      "[ logTime 2023-05-22 02:08:55.950 ] Sheddy has been locked for 3 times and has been locked for 0 hours, 5 minutes, 0 seconds time.",
+      "brooke123",
+      "[ logTime 2023-05-22 02:15:00.022 ] Sheddy has been locked for 1 times and has been locked for 0 hours, 5 minutes, 0 seconds time.",
+      "brooke123",
+      "[ logTime 2023-05-22 02:15:04.531 ] Sheddy has been locked for 2 times and has been locked for 0 hours, 5 minutes, 0 seconds time.",
+      "brooke123",
+      "[ logTime 2023-05-22 02:15:52.720 ] Sheddy has been locked for 3 times and has been locked for 0 hours, 10 minutes, 0 seconds time.",
+      "brooke123",
+      "[ logTime 2023-05-22 03:03:39.239 ] Sheddy has been locked for 1 times and has been locked for 0 hours, 10 minutes, 0 seconds time.",
+      "brooke123",
+      "[ logTime 2023-05-22 03:08:43.175 ] Sheddy has been locked for 2 times and has been locked for 0 hours, 10 minutes, 0 seconds time.",
+      "brooke123",
+      "[ logTime 2023-05-22 03:10:01.070 ] Sheddy has been locked for 3 times and has been locked for 0 hours, 15 minutes, 0 seconds time."
+    ]
+  },
+  "locks": {
+    "ipAtt": false,
+    "secLock": false,
+    "wordAtt": false,
+    "pinAtt": false,
+    "faAtt": false,
+    "logTime": false
+  },
+  "lockTime": 0,
+  "lock": ""
+}

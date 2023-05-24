@@ -1,0 +1,43 @@
+{
+  "assoc": {
+    "ipAtt": 0,
+    "secLock": 0,
+    "faAtt": 0,
+    "logTime": 0,
+    "wordAtt": 0,
+    "lockTime": 1,
+    "pinAtt": 0
+  },
+  "logs": {
+    "secLock": [],
+    "ipAtt": [
+      "172.58.7.0",
+      "[ ipAtt 2023-05-23 01:00:16.664 ] Zenio has been locked for 1 times and has been locked for 0 hours, 0 minutes, 0 seconds time.",
+      "172.58.7.0",
+      "[ ipAtt 2023-05-23 01:03:39.333 ] Zenio has been locked for 2 times and has been locked for 0 hours, 0 minutes, 0 seconds time.",
+      "172.58.7.0",
+      "[ ipAtt 2023-05-23 01:03:41.175 ] Zenio has been locked for 3 times and has been locked for 24 hours, 0 minutes, 0 seconds time.",
+      "172.58.4.108",
+      "[ ipAtt 2023-05-23 21:43:45.217 ] Zenio has been locked for 1 times and has been locked for 0 hours, 0 minutes, 0 seconds time.",
+      "172.58.4.108",
+      "[ ipAtt 2023-05-23 21:43:48.894 ] Zenio has been locked for 2 times and has been locked for 0 hours, 0 minutes, 0 seconds time.",
+      "172.58.4.108",
+      "[ ipAtt 2023-05-23 21:43:53.069 ] Zenio has been locked for 3 times and has been locked for 24 hours, 0 minutes, 0 seconds time."
+    ],
+    "unlock": [],
+    "wordAtt": [],
+    "pinAtt": [],
+    "faAtt": [],
+    "logTime": []
+  },
+  "locks": {
+    "ipAtt": true,
+    "secLock": false,
+    "wordAtt": false,
+    "pinAtt": false,
+    "faAtt": false,
+    "logTime": false
+  },
+  "lockTime": 1684979033069,
+  "lock": "ipAtt"
+}

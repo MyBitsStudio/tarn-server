@@ -92,7 +92,7 @@ public class PlayerFlags {
             World.removePlayer(player);
         }
         if(isFlagged(DAILY)){
-            player.getAttendenceUI().showInterface();
+           // player.getAttendenceUI().showInterface();
             setFlag(DAILY, false);
         }
     }

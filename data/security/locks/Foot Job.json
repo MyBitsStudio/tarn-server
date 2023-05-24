@@ -1,0 +1,41 @@
+{
+  "assoc": {
+    "ipAtt": 0,
+    "secLock": 0,
+    "faAtt": 0,
+    "logTime": 1,
+    "wordAtt": 0,
+    "lockTime": 1,
+    "pinAtt": 0
+  },
+  "logs": {
+    "secLock": [],
+    "ipAtt": [],
+    "unlock": [
+      "[ unlock 2023-05-23 15:08:34.594 ] Foot Job has been unlocked."
+    ],
+    "wordAtt": [],
+    "pinAtt": [],
+    "faAtt": [],
+    "logTime": [
+      "deli123",
+      "[ logTime 2023-05-23 15:02:18.881 ] Foot Job has been locked for 1 times and has been locked for 0 hours, 0 minutes, 0 seconds time.",
+      "deli123",
+      "[ logTime 2023-05-23 15:02:27.468 ] Foot Job has been locked for 2 times and has been locked for 0 hours, 0 minutes, 0 seconds time.",
+      "deli123",
+      "[ logTime 2023-05-23 15:02:45.510 ] Foot Job has been locked for 3 times and has been locked for 0 hours, 5 minutes, 0 seconds time.",
+      "deli123",
+      "[ logTime 2023-05-23 17:43:59.247 ] Foot Job has been locked for 1 times and has been locked for 0 hours, 5 minutes, 0 seconds time."
+    ]
+  },
+  "locks": {
+    "ipAtt": false,
+    "secLock": false,
+    "wordAtt": false,
+    "pinAtt": false,
+    "faAtt": false,
+    "logTime": false
+  },
+  "lockTime": 0,
+  "lock": ""
+}
