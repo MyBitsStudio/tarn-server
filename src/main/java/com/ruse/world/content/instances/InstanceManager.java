@@ -206,13 +206,13 @@ public class InstanceManager {
 
         player.getPacketSender().sendString(70512, interData.getName());
 
-        player.getPacketSender().sendString(70516, prefix+ (int) (def.getHitpoints() * ( 1 + (diff * .5))));
-        player.getPacketSender().sendString(70518, prefix+ (int)(def.getMaxHit() * (1 + (.1 * diff))));
-        player.getPacketSender().sendString(70520, prefix+ (int)(def.getDefenceMelee() * (1 + (.3 * diff))));
-        player.getPacketSender().sendString(70522, prefix+ (int)(def.getDefenceMage() * (1 + (.3 * diff))));
-        player.getPacketSender().sendString(70524, prefix+ (int)(def.getDefenceRange() * (1 + (.3 * diff))));
+        player.getPacketSender().sendString(70516, prefix+ (long) (def.getHitpoints() * ( 1 + (diff * .5))));
+        player.getPacketSender().sendString(70518, prefix+ (long)(def.getMaxHit() * (1 + (.1 * diff))));
+        player.getPacketSender().sendString(70520, prefix+ (long)(def.getDefenceMelee() * (1 + (.3 * diff))));
+        player.getPacketSender().sendString(70522, prefix+ (long)(def.getDefenceMage() * (1 + (.3 * diff))));
+        player.getPacketSender().sendString(70524, prefix+ (long)(def.getDefenceRange() * (1 + (.3 * diff))));
 
-        player.getPacketSender().sendString(70526, prefix+ "x"+(int)(interData.getCost().getAmount() * (1+ (diff * 2L)))+" "+ItemDefinition.forId(interData.getCost().getId()).getName());
+        player.getPacketSender().sendString(70526, prefix+ "x"+ (interData.getCost().getAmount() * (1+ (diff * 2L))) +" "+ItemDefinition.forId(interData.getCost().getId()).getName());
         player.getPacketSender().sendString(70528, prefix+ interData.getSpawns());
         player.getPacketSender().sendString(70530, prefix+ interData.getCap());
         player.getPacketSender().sendString(70532, prefix+ interData.getReq());

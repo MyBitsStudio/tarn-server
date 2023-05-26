@@ -115,9 +115,9 @@ public abstract class Instance {
         World.getPlayers().stream().filter(Objects::nonNull)
                 .filter(player -> player.getLocation().equals(location))
                 .filter(player -> player.getInstance() != this)
-                .filter(player -> playerList.size() >= 1 && player.getPosition().getZ() == playerList.get(0).getPosition().getZ())
-                .filter(player -> playerList.size() >= 1 &&!playerList.contains(player))
-                .filter(player -> players.size() >= 1 &&!players.contains(player))
+                .filter(player -> player.getPosition().getZ() != (player.getIndex() / 4))
+                .filter(player -> playerList.size() >= 1 && !playerList.contains(player))
+                .filter(player -> players.size() >= 1 && !players.contains(player))
                 .filter(player -> !player.getRights().isStaff())
                 .forEach(player -> {
                     player.sendMessage("@red@[INSTANCE] This isn't your instance. Moving you home.");
