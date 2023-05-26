@@ -130,8 +130,8 @@ public class InstanceManager {
     private static boolean takeItem(@NotNull Player player, @NotNull InstanceInterData data){
         int diff = Integer.parseInt(player.getVariables().getInterfaceSettings()[2]);
         if(data.getCost() != null){
-            if(player.getInventory().contains(data.getCost().getId(), (int) (data.getCost().getAmount() * (diff * 2L)))){
-                player.getInventory().delete(data.getCost().getId(), (int) (data.getCost().getAmount() * (diff * 2L)));
+            if(player.getInventory().contains(data.getCost().getId(), (int) (data.getCost().getAmount() * (1 +(diff * 2L))))){
+                player.getInventory().delete(data.getCost().getId(), (int) (data.getCost().getAmount() * (1 +(diff * 2L))));
                 player.sendMessage("@yel@[INSTANCE] You have been charged x"+(int) (data.getCost().getAmount() * (diff * 2L))+" of "+ ItemDefinition.forId(data.getCost().getId()).getName());
                 return false;
             }
@@ -212,7 +212,7 @@ public class InstanceManager {
         player.getPacketSender().sendString(70522, prefix+ (int)(def.getDefenceMage() * (1 + (.3 * diff))));
         player.getPacketSender().sendString(70524, prefix+ (int)(def.getDefenceRange() * (1 + (.3 * diff))));
 
-        player.getPacketSender().sendString(70526, prefix+ "x"+(int)(interData.getCost().getAmount() * (diff * 2L))+" "+ItemDefinition.forId(interData.getCost().getId()).getName());
+        player.getPacketSender().sendString(70526, prefix+ "x"+(int)(interData.getCost().getAmount() * (1+ (diff * 2L)))+" "+ItemDefinition.forId(interData.getCost().getId()).getName());
         player.getPacketSender().sendString(70528, prefix+ interData.getSpawns());
         player.getPacketSender().sendString(70530, prefix+ interData.getCap());
         player.getPacketSender().sendString(70532, prefix+ interData.getReq());
