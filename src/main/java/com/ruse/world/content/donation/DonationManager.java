@@ -191,6 +191,8 @@ public class DonationManager {
 
                 FlashDeals.getDeals().handleFlashDeals(player, amount, items);
 
+                handleTickets(player, amount);
+
                 player.getPacketSender().sendMessage("@blu@[DONATE]Thank you for donating! Your awesome!");
 
                 if(!player.getRights().OwnerDeveloperOnly())
@@ -203,8 +205,11 @@ public class DonationManager {
         });
     }
 
-    private void logPurchase(Player player, int[] items, int amount){
-        System.out.println("saving log");
-        new PlayerDonationSave(player, items, amount).create().save();
+    private void handleTickets(Player player, int amount){
+        int amt = Math.floorDiv(amount, 20);
+        if(amt >= 1){
+            player.getInventory().add(23204, amt);
+            player.getPacketSender().sendMessage("@blu@[DONATION] You have received "+amt+" donation tickets for your donation!");
+        }
     }
 }

@@ -22,16 +22,16 @@ public class VoteSpecialInstance extends SpecialBossInstance {
 
     private void checkTokens(){
         ticks++;
-        if(ticks % 620 == 0){
+        if(ticks % 160 == 0){
             if(getOwner().getInventory().contains(TOKEN_ID, TOKEN_AMOUNT)){
                 getOwner().getInventory().delete(TOKEN_ID, TOKEN_AMOUNT);
-                getOwner().sendMessage("@blu@You have been charged @red@" + TOKEN_AMOUNT + " @blu@Donator Tickets for your instance.");
+                getOwner().sendMessage("@blu@You have been charged @red@" + TOKEN_AMOUNT + " @blu@Voting Tickets for your instance.");
             } else {
                 dispose(getOwner());
             }
         }
 
-        if(ticks % (620 * 100) == 0){
+        if(ticks % (160 * 100) == 0){
             getOwner().sendMessage("@red@Your instance has expired.");
             dispose(getOwner());
         }
