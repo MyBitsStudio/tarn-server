@@ -298,7 +298,7 @@ public class NPCDeathTask extends Task {
                             return;
                         } else {
                             new BossEventHandler().death(killer, npc, npc.getDefinition().getName());
-                            new InstanceManager(killer).death(killer, npc, npc.getDefinition().getName());
+                           // new InstanceManager(killer).death(killer, npc, npc.getDefinition().getName());
                             new DailyTaskHandler(killer).death(npc.getDefinition().getName());
 
                             /** SLAYER **/

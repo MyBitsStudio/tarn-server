@@ -4,6 +4,7 @@ import com.ruse.model.Locations;
 import com.ruse.model.Position;
 import com.ruse.world.content.bosses.multi.MultiBoss;
 import com.ruse.world.content.instances.Instance;
+import com.ruse.world.entity.impl.npc.NPC;
 import com.ruse.world.entity.impl.player.Player;
 import lombok.Getter;
 import lombok.Setter;
@@ -32,11 +33,21 @@ public abstract class MultiBossInstance extends Instance {
     public void spawnAll(Position[] pos){
         for(int i = 0; i < bosses.length; i++){
             if(bosses[i] == null){
-                bosses[i] = new MultiBoss(npcId, pos[i].setZ(owner.getIndex() * 4), true, getOwner());
+                bosses[i] = new MultiBoss(npcId, pos[i].setZ(owner.getIndex() * 4), false, getOwner());
                 bosses[i].setInstance(this);
             }
             bosses[i].setSpawnedFor(getOwner());
             add(bosses[i]);
+        }
+    }
+
+    @Override
+    public void signalSpawn(NPC n){
+        if(n.getId() == getNpcId()){
+            MultiBoss boss = new MultiBoss(npcId, n.getPosition().setZ(owner.getIndex() * 4), false, owner);
+            boss.setInstance(this);
+            boss.setSpawnedFor(owner);
+            add(boss);
         }
     }
 

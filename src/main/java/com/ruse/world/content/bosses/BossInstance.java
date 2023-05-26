@@ -31,4 +31,6 @@ public abstract class BossInstance extends Instance {
         return owner;
     }
 
+
+
 }

@@ -3,6 +3,7 @@ package com.ruse.world.content.bosses.multi;
 import com.ruse.model.Locations;
 import com.ruse.model.Position;
 import com.ruse.world.content.bosses.MultiBossInstance;
+import com.ruse.world.entity.impl.npc.NPC;
 import com.ruse.world.entity.impl.player.Player;
 
 public class MultiBossNormalInstance extends MultiBossInstance {
@@ -28,5 +29,7 @@ public class MultiBossNormalInstance extends MultiBossInstance {
 
         spawnAll(pos);
     }
+
+
 
 }

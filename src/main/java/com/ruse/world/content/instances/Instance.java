@@ -91,8 +91,13 @@ public abstract class Instance {
                 break;
             npcList.remove(n);
             removeNPC(n);
+            signalSpawn(n);
         }
         postProcess();
+    }
+
+    public void signalSpawn(NPC n){
+
     }
 
     private void postProcess(){
