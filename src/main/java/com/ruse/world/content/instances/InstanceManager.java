@@ -350,7 +350,7 @@ public class InstanceManager {
                 case 70534 :
                     int current = Integer.parseInt(player.getVariables().getInterfaceSettings()[2]);
                     player.getVariables().setInterfaceSettings(2, String.valueOf(
-                        current >= 3 ? 0 : current + 1)); break;
+                        current > 3 ? 0 : current + 1)); break;
                 case 70535 :
                     startInstance(player);
                     break;

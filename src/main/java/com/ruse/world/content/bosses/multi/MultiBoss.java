@@ -23,11 +23,11 @@ public class MultiBoss extends Boss {
         setConstitution((long) (hp * ( 1 + (diff * .7))));
         getDefinition().setHitpoints((long) (hp * ( 1 + (diff * .7))));
         getDefinition().setMaxHit((int) (getDefinition().getMaxHit() * (1 + (.2 * diff))));
-        getDefinition().setAttackSpeed((int) (getDefinition().getAttackSpeed() * (1 - (.1 * diff))));
-        getDefinition().setAttackBonus((int) (getDefinition().getAttackBonus() * (1 + (.2 * diff))));
-        getDefinition().setDefenceMage((int) (getDefinition().getDefenceMage() * (1 + (.3 * diff))));
-        getDefinition().setDefenceMelee((int) (getDefinition().getDefenceMelee() * (1 + (.3 * diff))));
-        getDefinition().setDefenceRange((int) (getDefinition().getDefenceRange() * (1 + (.3 * diff))));
+        getDefinition().setAttackSpeed((int) (getDefinition().getAttackSpeed() * (1 - (.2 * diff))));
+        getDefinition().setAttackBonus((int) (getDefinition().getAttackBonus() * (1 + (.3 * diff))));
+        getDefinition().setDefenceMage((int) (getDefinition().getDefenceMage() * (1 + (.4 * diff))));
+        getDefinition().setDefenceMelee((int) (getDefinition().getDefenceMelee() * (1 + (.4 * diff))));
+        getDefinition().setDefenceRange((int) (getDefinition().getDefenceRange() * (1 + (.4 * diff))));
     }
 
 }
