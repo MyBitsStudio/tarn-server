@@ -10,6 +10,7 @@ import com.ruse.world.content.bosses.crucio.CrucioInstance;
 import com.ruse.world.content.bosses.multi.impl.CounterInstance;
 import com.ruse.world.content.bosses.multi.MultiBossNormalInstance;
 import com.ruse.world.content.bosses.multi.impl.DonatorSpecialInstance;
+import com.ruse.world.content.bosses.multi.impl.VoteSpecialInstance;
 import com.ruse.world.content.discordbot.AdminCord;
 import com.ruse.world.entity.impl.player.Player;
 import org.jetbrains.annotations.NotNull;
@@ -45,8 +46,11 @@ public class InstanceManager {
             case 595:
                 instance = new CounterInstance(player, data.getNpcId(), data.getSpawns(), data.getCap());
                 break;
-            case 6692:
+            case 591:
                 instance = new DonatorSpecialInstance(player, data.getNpcId(), data.getSpawns(), data.getCap());
+                break;
+            case 593:
+                instance = new VoteSpecialInstance(player, data.getNpcId(), data.getSpawns(), data.getCap());
                 break;
         }
         
@@ -122,10 +126,11 @@ public class InstanceManager {
     }
 
     private static boolean takeItem(Player player, @NotNull InstanceInterData data){
+        int diff = Integer.parseInt(player.getVariables().getInterfaceSettings()[2]);
         if(data.getCost() != null){
-            if(player.getInventory().contains(data.getCost().getId(), data.getCost().getAmount())){
-                player.getInventory().delete(data.getCost().getId(), data.getCost().getAmount());
-                player.sendMessage("@yel@[INSTANCE] You have been charged x"+data.getCost().getAmount()+" of "+ ItemDefinition.forId(data.getCost().getId()).getName());
+            if(player.getInventory().contains(data.getCost().getId(), (int) (data.getCost().getAmount() * (diff * 2L)))){
+                player.getInventory().delete(data.getCost().getId(), (int) (data.getCost().getAmount() * (diff * 2L)));
+                player.sendMessage("@yel@[INSTANCE] You have been charged x"+(int) (data.getCost().getAmount() * (diff * 2L))+" of "+ ItemDefinition.forId(data.getCost().getId()).getName());
                 return false;
             }
             return true;
@@ -146,7 +151,6 @@ public class InstanceManager {
             player.getVariables().setInterfaceSettings(0, String.valueOf(0));
             player.getVariables().setInterfaceSettings(1, String.valueOf(0));
             player.getVariables().setInterfaceSettings(2, String.valueOf(0));
-            System.out.println("Settings : "+Arrays.toString(settings));
 
         } else {
             int tab = Integer.parseInt(settings[0]);
@@ -192,19 +196,21 @@ public class InstanceManager {
                 break;
         }
 
+        int diff = Integer.parseInt(settings[2]);
+
         player.getPacketSender().sendSpriteChange(70534, 2991 + Integer.parseInt(settings[2]));
 
         player.getPacketSender().sendNpcIdToDisplayPacket(interData.getNpcId(), 70511);
 
         player.getPacketSender().sendString(70512, interData.getName());
 
-        player.getPacketSender().sendString(70516, prefix+ def.getHitpoints());
-        player.getPacketSender().sendString(70518, prefix+ def.getMaxHit());
-        player.getPacketSender().sendString(70520, prefix+ def.getDefenceMelee());
-        player.getPacketSender().sendString(70522, prefix+ def.getDefenceMage());
-        player.getPacketSender().sendString(70524, prefix+ def.getDefenceRange());
+        player.getPacketSender().sendString(70516, prefix+ (def.getHitpoints() * (diff * 2L)));
+        player.getPacketSender().sendString(70518, prefix+ (def.getMaxHit() * (1 + (.2 * diff))));
+        player.getPacketSender().sendString(70520, prefix+ (def.getDefenceMelee() * (1 + (.2 * diff))));
+        player.getPacketSender().sendString(70522, prefix+ (def.getDefenceMage() * (1 + (.2 * diff))));
+        player.getPacketSender().sendString(70524, prefix+ (def.getDefenceRange() * (1 + (.2 * diff))));
 
-        player.getPacketSender().sendString(70526, prefix+ "x"+interData.getCost().getAmount()+" "+ItemDefinition.forId(interData.getCost().getId()).getName());
+        player.getPacketSender().sendString(70526, prefix+ "x"+(interData.getCost().getAmount() * (diff * 2L))+" "+ItemDefinition.forId(interData.getCost().getId()).getName());
         player.getPacketSender().sendString(70528, prefix+ interData.getSpawns());
         player.getPacketSender().sendString(70530, prefix+ interData.getCap());
         player.getPacketSender().sendString(70532, prefix+ interData.getReq());

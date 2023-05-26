@@ -20,7 +20,15 @@ public class MultiBoss extends Boss {
         if(diff == 0)
             return;
         long hp = getConstitution();
-        setConstitution(hp * (diff * 5L));
+        setConstitution(hp * (diff * 2L));
+        getDefinition().setHitpoints(hp * (diff * 2L));
+        getDefinition().setMaxHit((int) (getDefinition().getMaxHit() * (1 + (.2 * diff))));
+        getDefinition().setAttackSpeed((int) (getDefinition().getAttackSpeed() * (1 - (.2 * diff))));
+        getDefinition().setAttackBonus((int) (getDefinition().getAttackBonus() * (1 + (.2 * diff))));
+        getDefinition().setDefenceMage((int) (getDefinition().getDefenceMage() * (1 + (.2 * diff))));
+        getDefinition().setDefenceMelee((int) (getDefinition().getDefenceMelee() * (1 + (.2 * diff))));
+        getDefinition().setDefenceRange((int) (getDefinition().getDefenceRange() * (1 + (.2 * diff))));
+        getDefinition().setMaxHit((int) (getDefinition().getMaxHit() * (1 + (.3 * diff))));
     }
 
 }
