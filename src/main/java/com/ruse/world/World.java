@@ -14,6 +14,7 @@ import com.ruse.util.NameUtils;
 import com.ruse.webhooks.discord.DiscordMessager;
 import com.ruse.world.content.*;
 import com.ruse.world.content.discordbot.Bot;
+import com.ruse.world.content.instances.InstanceManager;
 import com.ruse.world.content.minigames.impl.FightPit;
 import com.ruse.world.content.minigames.impl.KeepersOfLight;
 import com.ruse.world.content.minigames.impl.PestControl;
@@ -326,7 +327,9 @@ public class World {
         //TriviaSystem.tick();
 
         ServerPerks.getInstance().tick();
-        CharacterBackup.sequence();
+        //CharacterBackup.sequence();
+        InstanceManager.process();
+
 
         // First we construct the update sequences.
         UpdateSequence<Player> playerUpdate = new PlayerUpdateSequence(synchronizer, updateExecutor);

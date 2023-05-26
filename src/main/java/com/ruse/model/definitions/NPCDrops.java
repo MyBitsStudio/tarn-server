@@ -411,11 +411,11 @@ public class NPCDrops {
 
             AdminCord.sendMessage(1108221219121135707L, "[" + player.getUsername() + "] has received x" + amount + " " + item.getDefinition().getName()+" from " + Misc.formatText(npc.getDefinition().getName()) + ".");
 
-            if (drop.getChance() > 1 && player != null) {
+            if (drop.getChance() > 1) {
                 player.getDryStreak().getDryStreakMap().put(npc.getId(), 0);
             }
 
-            boolean hasHitDryStreak = player != null && player.getDryStreak().hasHitDryStreak(npc.getId());
+            boolean hasHitDryStreak = player.getDryStreak().hasHitDryStreak(npc.getId());
             if (hasHitDryStreak) {
                 player.getDryStreak().getDryStreakMap().put(npc.getId(), 0);
                 NPCDrops drops = getDrops().get(npc.getId());
@@ -436,7 +436,6 @@ public class NPCDrops {
                 Item randomItem = random.getItem();
                 randomItem.setDefaultEffect(ItemRarity.getRandomEffectForRarity(randomItem, ItemRarity.getRarityForPercentage(Misc.getRandomDouble(100)), npc.getId()));
                 player.getPacketSender().sendMessage("@red@Your dry streak granted you a drop of " + randomItem.getDefinition().getName());
-               String itemName = item.getDefinition().getName();
                String itemMessage = "" + randomItem.getDefinition().getName();
                 String npcName = Misc.formatText(npc.getDefinition().getName());
 

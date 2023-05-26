@@ -33,6 +33,7 @@ public class RarityTransfer {
             } else if (hasTransferedItem && hasItemToTransferTo) {
                 if (copy.getId() == 995
                         || copy.getId() == 10835
+                        || copy.getId() == 23203
                         || copy.getId() == 6
                         || copy.getId() == 8
                         || copy.getId() == 10

@@ -1,9 +1,11 @@
 package com.ruse.world.content.instances;
 
+import com.ruse.GameSettings;
 import com.ruse.model.Locations;
 import com.ruse.model.definitions.ItemDefinition;
 import com.ruse.model.definitions.NPCDrops;
 import com.ruse.model.definitions.NpcDefinition;
+import com.ruse.world.World;
 import com.ruse.world.content.KillsTracker;
 import com.ruse.world.content.bosses.SingleBossSinglePlayerInstance;
 import com.ruse.world.content.bosses.crucio.CrucioInstance;
@@ -125,7 +127,7 @@ public class InstanceManager {
         instance.start();
     }
 
-    private static boolean takeItem(Player player, @NotNull InstanceInterData data){
+    private static boolean takeItem(@NotNull Player player, @NotNull InstanceInterData data){
         int diff = Integer.parseInt(player.getVariables().getInterfaceSettings()[2]);
         if(data.getCost() != null){
             if(player.getInventory().contains(data.getCost().getId(), (int) (data.getCost().getAmount() * (diff * 2L)))){
@@ -204,13 +206,13 @@ public class InstanceManager {
 
         player.getPacketSender().sendString(70512, interData.getName());
 
-        player.getPacketSender().sendString(70516, prefix+ (def.getHitpoints() * (diff * 2L)));
-        player.getPacketSender().sendString(70518, prefix+ (def.getMaxHit() * (1 + (.2 * diff))));
-        player.getPacketSender().sendString(70520, prefix+ (def.getDefenceMelee() * (1 + (.2 * diff))));
-        player.getPacketSender().sendString(70522, prefix+ (def.getDefenceMage() * (1 + (.2 * diff))));
-        player.getPacketSender().sendString(70524, prefix+ (def.getDefenceRange() * (1 + (.2 * diff))));
+        player.getPacketSender().sendString(70516, prefix+ (int) (def.getHitpoints() * ( 1 + (diff * .5))));
+        player.getPacketSender().sendString(70518, prefix+ (int)(def.getMaxHit() * (1 + (.1 * diff))));
+        player.getPacketSender().sendString(70520, prefix+ (int)(def.getDefenceMelee() * (1 + (.2 * diff))));
+        player.getPacketSender().sendString(70522, prefix+ (int)(def.getDefenceMage() * (1 + (.2 * diff))));
+        player.getPacketSender().sendString(70524, prefix+ (int)(def.getDefenceRange() * (1 + (.2 * diff))));
 
-        player.getPacketSender().sendString(70526, prefix+ "x"+(interData.getCost().getAmount() * (diff * 2L))+" "+ItemDefinition.forId(interData.getCost().getId()).getName());
+        player.getPacketSender().sendString(70526, prefix+ "x"+(int)(interData.getCost().getAmount() * (diff * 2L))+" "+ItemDefinition.forId(interData.getCost().getId()).getName());
         player.getPacketSender().sendString(70528, prefix+ interData.getSpawns());
         player.getPacketSender().sendString(70530, prefix+ interData.getCap());
         player.getPacketSender().sendString(70532, prefix+ interData.getReq());
@@ -412,6 +414,18 @@ public class InstanceManager {
                 break;
         }
 
+    }
+
+    public static void process(){
+        World.getPlayers().stream()
+                .filter(Objects::nonNull)
+                .filter(p -> p.getInstance() == null)
+                .forEach(p -> {
+                    for(Locations.Location loc : Locations.bossLocations){
+                        if(loc.equals(p.getLocation()))
+                            p.moveTo(GameSettings.DEFAULT_POSITION.copy());
+                    }
+                });
     }
 
 }
