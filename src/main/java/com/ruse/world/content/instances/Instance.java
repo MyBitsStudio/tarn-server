@@ -142,6 +142,7 @@ public abstract class Instance {
         }
 
         player.moveTo(GameSettings.DEFAULT_POSITION.copy());
+        player.getMovementQueue().setLockMovement(false).reset();
     }
 
     protected void addNPC(NPC npc){
