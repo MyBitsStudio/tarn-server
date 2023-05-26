@@ -689,34 +689,19 @@ public class NPC extends Character {
         this.atkBoost = boost;
     }
 
-    public int getAtkBoost() {
-        return atkBoost;
-    }
-
     public void setDefBoost(int boost) {
         this.defBoost = boost;
-    }
-
-    public int getDefBoost() {
-        return defBoost;
     }
 
     public void setSpeedBoost(int boost) {
         this.speedBoost = boost;
     }
 
-    public int getSpeedBoost() {
-        return speedBoost;
-    }
 
     public void setMaxHitBoost(int boost) {
         this.maxHitBoost = boost;
     }
 
-    public int getMaxHitBoost() {
-        return maxHitBoost;
-    }
-    
     public int getMaxHit(){
         return definition.getMaxHit() + maxHitBoost;
     }
