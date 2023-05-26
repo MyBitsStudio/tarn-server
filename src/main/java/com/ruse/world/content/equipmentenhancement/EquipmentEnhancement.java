@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.var;
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
 
 @RequiredArgsConstructor
 @Getter
@@ -45,20 +47,21 @@ public class EquipmentEnhancement {
         slotLevel |= (long) (level & 0xF) << position;
     }
 
-    public int getBoost(BoostType boost) {
+    public int getBoost(@NotNull BoostType boost) {
         var shift = boost.getPosition() * 21;
         var mask = 0x1FFFFFL << shift;
         return (int) ((this.boost & mask) >>> shift);
     }
 
-    private void setBoostValue(BoostType boost, int value) {
+    @Contract(mutates = "this")
+    private void setBoostValue(@NotNull BoostType boost, int value) {
         var shift = boost.getPosition() * 21;
         var mask = ~(0x1FFFFFL << shift);
         this.boost &= mask;
         this.boost |= (long) value << shift;
     }
 
-    private int getBoostBySlot(BoostType boost, int slot) {
+    private int getBoostBySlot(@NotNull BoostType boost, int slot) {
         var level = getSlotLevel(slot);
         int amount = 0;
         switch(boost) {

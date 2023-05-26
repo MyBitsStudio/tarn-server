@@ -39,7 +39,8 @@ import com.ruse.world.content.grandLottery.GrandLottery;
 import com.ruse.world.content.grandexchange.GrandExchange;
 import com.ruse.world.content.groupironman.GroupManager;
 import com.ruse.world.content.instanceMananger.InstanceInterfaceHandler;
-import com.ruse.world.content.instanceMananger.InstanceManager;
+
+import com.ruse.world.content.instances.InstanceManager;
 import com.ruse.world.content.loyalty_streak.LoyaltyStreakManager;
 import com.ruse.world.content.minigames.impl.Dueling;
 import com.ruse.world.content.minigames.impl.PestControl;
@@ -179,10 +180,14 @@ public class ButtonClickPacketListener implements PacketListener {
             return;
         }
 
+        if(InstanceManager.handleButton(player, id)) {
+        	return;
+        }
+
         new ScratchCard(player).reveal(id);
         new DailyTaskInterface(player).button(id);
         new DailyTaskInterface(player).tabClicking(id);
-        new InstanceInterfaceHandler(player).handleButtons(id);
+        //new InstanceInterfaceHandler(player).handleButtons(id);
         new WellForGlobalBossesInterface(player).button(id);
 
         switch (id) {
@@ -234,11 +239,11 @@ public class ButtonClickPacketListener implements PacketListener {
                 if (!player.getClickDelay().elapsed(4500) || player.getMovementQueue().isLockMovement())
                     return;
 
-                if(player.lastTeleport != null) {
+                if(player.lastTeleport == null) {
+                    player.sendMessage("You haven't teleported yet.");
+                } else {
                     player.sendMessage("You have been teleported to your last teleport location.");
                     TeleportHandler.teleportPlayer(player, player.lastTeleport, player.getSpellbook().getTeleportType());
-                } else {
-                    player.sendMessage("You haven't teleported yet.");
                 }
 
                 player.getClickDelay().reset(0);
@@ -284,28 +289,28 @@ public class ButtonClickPacketListener implements PacketListener {
             case 111703:
             case -19190:
                 if (player.getLocation() == Location.AURA_LOBBY) {
-                    if (player.getAuraParty() != null) {
+                    if (player.getAuraParty() == null) {
+                        new AuraParty(player).create();
+                    } else {
                         if (player.getAuraParty().getOwner() != player) {
                             player.getPacketSender().sendMessage("Only the party leader can invite other players.");
                         } else {
                             player.setInputHandling(new InviteRaidsPlayer());
                             player.getPacketSender().sendEnterInputPrompt("Invite Player");
                         }
-                    } else {
-                        new AuraParty(player).create();
                     }
                 }
 
-                else if (player.getLocation() == Location.RAID_LOBBY) {
-                    if (player.getRaidParty() == null) {
-                        new FightFightParty(player, new FireFightRaid());
-                    } else if (player.getRaidParty().getOwner() == player) {
-                        player.setInputHandling(new InviteRaidsPlayer());
-                        player.getPacketSender().sendEnterInputPrompt("Invite Player");
-                    } else {
-                        player.getPacketSender().sendMessage("Only the party leader can invite other players.");
-                    }
-                }
+//                else if (player.getLocation() == Location.RAID_LOBBY) {
+//                    if (player.getRaidParty() == null) {
+//                        new FightFightParty(player, new FireFightRaid());
+//                    } else if (player.getRaidParty().getOwner() == player) {
+//                        player.setInputHandling(new InviteRaidsPlayer());
+//                        player.getPacketSender().sendEnterInputPrompt("Invite Player");
+//                    } else {
+//                        player.getPacketSender().sendMessage("Only the party leader can invite other players.");
+//                    }
+//                }
 
 
 
@@ -601,34 +606,34 @@ public class ButtonClickPacketListener implements PacketListener {
                 PollCreation.resetPoll(player);
                 break;
 
-            case -30533:
-                if (player.getData() == null) {
-                    player.getPA().sendMessage("Select the boss you'd like to instance.");
-                } else {
-                    if (player.getData().getNpcid() == 1265) {
-                        player.sendMessage("Tarn lions can only be killed at ::train");
-                        return;
-                    }
-
-                    if (player.getData().getNpcid() == 1265
-                            || player.getData().getNpcid() == 1023
-                            || player.getData().getNpcid() == 1233) {
-                        if (player.getPointsHandler().getNPCKILLCount() > 5000 && KillsTracker.getTotalKillsForNpc(player.getData().getNpcid(), player) > 500) {
-                            player.sendMessage("This place is for new players with less than 5k npc kills.");
-                            return;
-                        }
-                    }
-                    if (player.getRegionInstance() != null) {
-                        player.sendMessage("<shad=1>@red@You can't start a new instance here. You must be at home.");
-                        return;
-                    }
-                    if(player.getPosition().getRegionId() == 11082){
-                        player.sendMessage("<shad=1>@red@You can't start a new instance until this one ends");
-                        return;
-                    }
-                    new InstanceManager(player).createInstance(player.getData().getNpcid(), RegionInstance.RegionInstanceType.INSTANCE);
-                }
-                break;
+//            case -30533:
+//                if (player.getData() == null) {
+//                    player.getPA().sendMessage("Select the boss you'd like to instance.");
+//                } else {
+//                    if (player.getData().getNpcid() == 1265) {
+//                        player.sendMessage("Tarn lions can only be killed at ::train");
+//                        return;
+//                    }
+//
+//                    if (player.getData().getNpcid() == 1265
+//                            || player.getData().getNpcid() == 1023
+//                            || player.getData().getNpcid() == 1233) {
+//                        if (player.getPointsHandler().getNPCKILLCount() > 5000 && KillsTracker.getTotalKillsForNpc(player.getData().getNpcid(), player) > 500) {
+//                            player.sendMessage("This place is for new players with less than 5k npc kills.");
+//                            return;
+//                        }
+//                    }
+//                    if (player.getRegionInstance() != null) {
+//                        player.sendMessage("<shad=1>@red@You can't start a new instance here. You must be at home.");
+//                        return;
+//                    }
+//                    if(player.getPosition().getRegionId() == 11082){
+//                        player.sendMessage("<shad=1>@red@You can't start a new instance until this one ends");
+//                        return;
+//                    }
+//                    new InstanceManager(player).createInstance(player.getData().getNpcid(), RegionInstance.RegionInstanceType.INSTANCE);
+//                }
+//                break;
             case -8254:
                 player.getPacketSender().sendString(1, GameSettings.StoreUrl);
                 player.getPacketSender().sendMessage("Attempting to open the store");

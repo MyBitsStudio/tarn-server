@@ -271,8 +271,8 @@ public class PacketSender {
     public PacketSender sendNpcIdToDisplayPacket(int npcId, int widgetId) {
         // if (Objects.nonNull(player.getSession())) {
         PacketBuilder out = new PacketBuilder(231, PacketType.FIXED);
-        out.putShort(npcId);
-        out.putShort(widgetId);
+        out.putInt(npcId);
+        out.putInt(widgetId);
         // out.putInt(npcId);
         player.getSession().queueMessage(out);
         // }

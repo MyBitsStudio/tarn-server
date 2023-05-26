@@ -11,6 +11,8 @@ import com.ruse.model.definitions.NpcDefinition;
 import com.ruse.model.definitions.WeaponInterfaces;
 import com.ruse.model.projectile.ItemEffect;
 import com.ruse.motivote3.doMotivote;
+import com.ruse.security.PlayerLock;
+import com.ruse.security.PlayerSecurity;
 import com.ruse.security.ServerSecurity;
 import com.ruse.world.World;
 import com.ruse.world.content.LotterySystem;
@@ -29,6 +31,8 @@ import com.ruse.world.content.voting.VoteBossDrop;
 import com.ruse.world.entity.impl.npc.NPC;
 import com.ruse.world.entity.impl.player.Player;
 
+import java.util.Objects;
+
 public class OwnerCommands {
 
     public static boolean handleCommand(Player player, String command, String[] commands){
@@ -36,6 +40,7 @@ public class OwnerCommands {
         int id, amount;
         String name;
         boolean found;
+        Player targets;
 
         switch(commands[0]){
             case "region":
@@ -107,13 +112,12 @@ public class OwnerCommands {
             case "giveall":
                 id = Integer.parseInt(commands[1]);
                 amount = Integer.parseInt(commands[2]);
-                for (Player players : World.getPlayers()) {
-                    if (players != null) {
-                        players.getInventory().add(id, amount);
-                        players.sendMessage(
-                                "You have recieved: " + ItemDefinition.forId(id).getName() + " from "+player.getUsername()+" for being beasts.");
-                    }
-                }
+                World.getPlayers().stream()
+                        .filter(Objects::nonNull)
+                        .forEach(p -> {
+                            p.getInventory().add(id, amount);
+                            p.sendMessage("You have recieved: " + ItemDefinition.forId(id).getName() + " from "+player.getUsername()+" for being beasts.");
+                        });
                 return true;
 
             case "master":
@@ -243,7 +247,7 @@ public class OwnerCommands {
                             continue;
                         players.getPacketSender().sendSystemUpdate(time);
                     }
-                    TaskManager.submit(new Task((int) (time * 0.6), false) {
+                    TaskManager.submit(new Task((int) (time * 0.6)) {
                         int tick = 0;
                         @Override
                         protected void execute() {
@@ -257,6 +261,10 @@ public class OwnerCommands {
                                     break;
 
                                 case 2:
+                                    World.sendNewsMessage("<col=FF0066><img=2> [SERVER]<col=6600FF> Updating now! See you soon!");
+                                    break;
+
+                                case 3:
                                     for (Player player : World.getPlayers()) {
                                         if (player != null) {
                                             World.endDereg(player);
@@ -270,7 +278,7 @@ public class OwnerCommands {
                                     LotterySystem.saveTickets();
                                     ServerPerks.getInstance().save();
                                     break;
-                                case 3:
+                                case 4:
                                     System.exit(0);
                                     stop();
                                     break;
@@ -284,25 +292,28 @@ public class OwnerCommands {
                 return true;
 
             case "whip":
+                World.getPlayers().stream()
+                        .filter(Objects::nonNull)
+                        .forEach(players -> {
 
+                        });
                 return true;
 
             case "takeall":
                 int items = Integer.parseInt(commands[1]);
-                for(Player players : World.getPlayers()){
-                    if(players.getInventory().contains(items)){
-                        players.getInventory().delete(items, players.getInventory().getAmount(items));
-                    }
-                    if(players.getEquipment().contains(items)){
-                        players.getEquipment().delete(items, players.getEquipment().getAmount(items));
-                    }
-                    for(int i = 0; i < player.bankssize(); i++){
-                        if(players.getBank(i).contains(items)){
-                            players.getBank(i).delete(items, players.getBank(i).getAmount(items));
-                        }
-                    }
-                    player.sendMessage("@red@[SERVER] " + ItemDefinition.forId(items).getName() + " has been removed from your inventory.");
-                }
+                World.getPlayers().stream()
+                        .filter(Objects::nonNull)
+                        .forEach(players -> {
+                            if(players.getInventory().contains(items))
+                                players.getInventory().delete(items, players.getInventory().getAmount(items));
+                            if(players.getEquipment().contains(items))
+                                players.getEquipment().delete(items, players.getEquipment().getAmount(items));
+                            for(int i = 0; i < players.bankssize(); i++){
+                                if(players.getBank(i).contains(items))
+                                    players.getBank(i).delete(items, players.getBank(i).getAmount(items));
+                            }
+                            player.sendMessage("@red@[SERVER] " + ItemDefinition.forId(items).getName() + " has been removed from your inventory.");
+                        });
                 return true;
 
             case "flashdeal":
@@ -343,7 +354,7 @@ public class OwnerCommands {
                 if(commands.length >= 2){
                     switch(commands[1]){
                         case "all":
-                           Shop.ShopManager.parseShops().load();
+                            Shop.ShopManager.parseShops().load();
                             NPCDrops.parseDrops().load();
                             ItemDefinition.init();
                             WeaponInterfaces.parseInterfaces().load();
@@ -387,7 +398,7 @@ public class OwnerCommands {
                 int ids = Integer.parseInt(commands[1]);
                 ItemEffect effect = ItemEffect.getEffectForName(commands[2]);
                 int bonus = Integer.parseInt(commands[3]);
-                Player targets = World.getPlayer(command.substring(commands[0].length() + commands[1].length() + commands[2].length() + commands[3].length() + 4));
+                targets = World.getPlayer(command.substring(commands[0].length() + commands[1].length() + commands[2].length() + commands[3].length() + 4));
                 if (targets == null) {
                     player.getPacketSender().sendMessage(command.substring(commands[0].length() + commands[1].length() + commands[2].length() + commands[3].length() + 4)+" must be online to give them stuff!");
                 } else {
@@ -395,6 +406,63 @@ public class OwnerCommands {
                     player.getPacketSender().sendMessage(
                             "Gave " + 1 + "x " + ItemDefinition.forId(ids).getName() + " to " + targets.getUsername() + " with effect "+effect.name()+" and bonus "+bonus+".");
                 }
+                return true;
+
+            case "unlock":
+                targets = World.getPlayer(command.substring(commands[0].length() + 1));
+                if(targets == null) {
+                    player.getPacketSender().sendMessage(command.substring(commands[0].length() + 1) + " is not online. Attempting to unlock...");
+                    PlayerSecurity security = new PlayerSecurity(command.substring(commands[0].length() + 1));
+                    security.load();
+                    PlayerLock lock = security.getPlayerLock();
+                    if(lock == null) {
+                        player.getPacketSender().sendMessage(command.substring(commands[0].length() + 1) + " lock is null.");
+                    } else {
+                        lock.unlock();
+                        security.save();
+                        player.sendMessage("Unlocked " + command.substring(commands[0].length() + 1) + "'s account.");
+                    }
+                } else {
+                    player.getPacketSender().sendMessage(command.substring(commands[0].length() + 1) + " is online. Can't unlock an online account.");
+                }
+                return true;
+
+            case "changepassother":
+                if(commands.length < 2){
+                    player.getPacketSender().sendMessage("Use as ::changepassother [password] [username]");
+                } else {
+                    String password = commands[1];
+                    targets = World.getPlayer(command.substring(commands[0].length() + commands[1].length() + 2));
+                    if (targets == null) {
+                        player.getPacketSender().sendMessage(command.substring(commands[0].length() + commands[1].length() + 2) + " is not online. Attempting to unlock...");
+                        PlayerSecurity security = new PlayerSecurity(command.substring(commands[0].length() + commands[1].length() + 2));
+                        security.load();
+                        security.changePass(password);
+                        player.sendMessage("Password has been successfully set");
+                    } else {
+                        player.getPacketSender().sendMessage("Player is online. Atempting to change password...");
+                        targets.getPSecurity().changePass(password);
+                        targets.sendMessage("@red@[STAFF] A staff member has just changed your password!");
+                        player.sendMessage("Password has been successfully set");
+                    }
+                }
+                return true;
+            case "obj": case "object":
+                id = Integer.parseInt(commands[1]);
+                player.getPacketSender().sendObject(new GameObject(id, player.getPosition(), 10, 3));
+                player.getPacketSender().sendMessage("Sending object: " + id);
+                return true;
+
+            case "inter": case "interface":
+                id = Integer.parseInt(commands[1]);
+                player.getPacketSender().sendInterface(id);
+                return true;
+
+            case "npc":
+                id = Integer.parseInt(commands[1]);
+                NPC npc = new NPC(id, new Position(player.getPosition().getX(), player.getPosition().getY(),
+                        player.getPosition().getZ()));
+                World.register(npc);
                 return true;
 
         }

@@ -28,12 +28,12 @@ public class trioMinigame {
 					return;
 					// fail safe
 				}
-				if (player.getLocation() != Locations.Location.TRIO_ZONE) {
-					player.getMinigameAttributes().getTrioAttuibutes().setJoinedBossRoom(false);
-					this.stop();
-					return;
-					// fail safe #2
-				}
+//				if (player.getLocation() != Locations.Location.TRIO_ZONE) {
+//					player.getMinigameAttributes().getTrioAttuibutes().setJoinedBossRoom(false);
+//					this.stop();
+//					return;
+//					// fail safe #2
+//				}
 				if (player.getInventory().contains(11180)) {
 					player.getInventory().delete(11180, 1);
 					player.performGraphic(new Graphic(1386));

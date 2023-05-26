@@ -5,13 +5,11 @@ import com.ruse.engine.GameEngine;
 import com.ruse.engine.task.Task;
 import com.ruse.engine.task.TaskManager;
 import com.ruse.engine.task.impl.WalkToTask;
-import com.ruse.engine.task.impl.WalkToTask.FinalizedMovementTask;
 import com.ruse.model.*;
 import com.ruse.model.Locations.Location;
 import com.ruse.model.container.impl.Equipment;
 import com.ruse.model.definitions.GameObjectDefinition;
 import com.ruse.model.definitions.ItemDefinition;
-import com.ruse.model.input.impl.DonateToWell;
 import com.ruse.model.input.impl.EnterAmountOfLogsToAdd;
 import com.ruse.net.packet.Packet;
 import com.ruse.net.packet.PacketListener;
@@ -21,9 +19,6 @@ import com.ruse.world.World;
 import com.ruse.world.clip.region.RegionClipping;
 import com.ruse.world.content.*;
 import com.ruse.world.content.aura.AuraRaids;
-import com.ruse.world.content.bosses.BossInstance;
-import com.ruse.world.content.bosses.counter.CounterBoss;
-import com.ruse.world.content.bosses.counter.CounterInstance;
 import com.ruse.world.content.combat.magic.Autocasting;
 import com.ruse.world.content.combat.prayer.CurseHandler;
 import com.ruse.world.content.combat.prayer.PrayerHandler;
@@ -33,9 +28,7 @@ import com.ruse.world.content.dialogue.DialogueManager;
 import com.ruse.world.content.grandexchange.GrandExchange;
 import com.ruse.world.content.holidayevents.christmas2016;
 import com.ruse.world.content.holidayevents.easter2017data;
-import com.ruse.world.content.instanceMananger.InstanceData;
-import com.ruse.world.content.instanceMananger.InstanceInterfaceHandler;
-import com.ruse.world.content.instanceMananger.InstanceManager;
+import com.ruse.world.content.instances.InstanceManager;
 import com.ruse.world.content.minigames.impl.*;
 import com.ruse.world.content.minigames.impl.Dueling.DuelRule;
 import com.ruse.world.content.minigames.impl.dungeoneering.DungeoneeringParty;
@@ -56,7 +49,6 @@ import com.ruse.world.content.skill.impl.mining.Mining;
 import com.ruse.world.content.skill.impl.mining.MiningData;
 import com.ruse.world.content.skill.impl.mining.Prospecting;
 import com.ruse.world.content.skill.impl.old_dungeoneering.Dungeoneering;
-import com.ruse.world.content.skill.impl.prayer.Prayer;
 import com.ruse.world.content.skill.impl.runecrafting.Runecrafting;
 import com.ruse.world.content.skill.impl.runecrafting.RunecraftingData;
 import com.ruse.world.content.skill.impl.smithing.EquipmentMaking;
@@ -68,13 +60,9 @@ import com.ruse.world.content.skill.impl.woodcutting.WoodcuttingData.Hatchet;
 import com.ruse.world.content.transportation.TeleportHandler;
 import com.ruse.world.content.transportation.TeleportLocations;
 import com.ruse.world.content.transportation.TeleportType;
-import com.ruse.world.content.upgrading.Upgradeables;
-import com.ruse.world.entity.impl.npc.NPC;
-import com.ruse.engine.task.Task;
 import com.ruse.world.entity.impl.player.Player;
 import mysql.impl.Donation;
 
-import static com.ruse.util.CharacterBackup.timer;
 import static com.ruse.world.content.combat.prayer.PrayerHandler.startDrain;
 
 /**
@@ -219,32 +207,12 @@ public class ObjectActionPacketListener implements PacketListener {
                             //player.getSeasonPass().incrementExp(300, false);
                         break;
 
-
-                        case 2936:
-                            if(player.getRegionInstance() != null){
-                                return;
-                            }
-                            if(player.getInstance() != null){
-                                return;
-                            }
-                            if (KillsTracker.getTotalKillsForNpc(1318, player) < 50000) {
-                                player.sendMessage("You need to kill a total of 50K Black Gokus to enter this instance.");
-                                return;
-                            }
-                            if(!player.getInventory().contains(13650, 90)){
-                                player.sendMessage("You need 100x Counter Tokens to enter this instance.");
-                                return;
-                            }
-                            player.getInventory().delete(13650, 90);
-                            if(player.getRegionInstance() != null)
-                                player.getRegionInstance().destruct();
-                            player.setInstance(new CounterInstance(player));
-                            ((CounterInstance) player.getInstance()).start();
+                        case 621:
+                            InstanceManager.sendInterface(player);
                             break;
+
                         case 13291:
                         case 20040:
-                            //player.sendMessage("Coming soon...");
-                            //player.getUpgradeInterface().openInterface(Upgradeables.UpgradeType.WEAPON);
                             player.loadUpgradeInterface().open();
                             break;
                         case 26791:
@@ -332,44 +300,20 @@ public class ObjectActionPacketListener implements PacketListener {
                             break;
 
 
-
                         case 31424:
-                            if (player.getLocation() == Location.JAIL) {
-                                player.sendMessage("<shad=1>@cya@You can't start an instance while your in jail.");
-                                return;
-                            }
-                            if (player.currentInstanceAmount >= 1) {
-                                player.sendMessage("<shad=1>@red@You can't start a new instance until this one ends");
-                                return;
-                            }
-                            if (player.getRegionInstance() != null) {
-                                player.sendMessage("<shad=1>@red@You can't start a new instance here. You must be at home.");
-                                return;
-                            }
-                            if(player.getPosition().getRegionId() == 11082){
-                                player.sendMessage("<shad=1>@red@You can't start a new instance until this one ends");
-                                return;
-                            }
-                            new InstanceInterfaceHandler(player).open();
+                            TeleportHandler.teleportPlayer(player, new Position(2654, 2796),
+                                    player.getSpellbook().getTeleportType());
                             break;
 
                         case 4388:
                             GameEngine.submit(() -> {
-                                if(player.getCombatBuilder().wasAttacking()){
-                                    player.getPacketSender().sendMessage("@red@Please wait a few seconds before using the portal..");
-                                    return;
-                                }
-                                if (player.getCombatBuilder().isAttacking()) {
-                                    player.getPacketSender().sendMessage("@red@Please wait a few seconds before using the portal..");
-                                    return;
-                                }
                                 if(player.getInstance() != null){
                                     if(!player.getInstance().canLeave()){
                                         return;
                                     }
                                     player.getInstance().destroy();
                                 }
-                                player.moveTo(GameSettings.DEFAULT_POSITION);
+                                player.moveTo(new Position(2655, 2796, 0));
                             });
                             break;
 

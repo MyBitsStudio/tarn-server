@@ -141,9 +141,14 @@ public class PlayerSecurity {
 
     private volatile String username, ip, hwid;
 
-    private final Player player;
+    private Player player;
 
     private final PlayerLock lock;
+
+    public PlayerSecurity(String username){
+        this.username = username;
+        this.lock = new PlayerLock(username);
+    }
 
     public PlayerSecurity(Player player){
         this.player = player;
@@ -195,6 +200,10 @@ public class PlayerSecurity {
 
     public void setFA(String fa){
         this.fa = fa;
+    }
+
+    public String getHwid(){
+        return hwid;
     }
 
     public List<String> getLogins(){
@@ -267,7 +276,7 @@ public class PlayerSecurity {
         }
     }
 
-    private boolean load(){
+    public boolean load(){
         Path path = Paths.get(PLAYER_SECURITY_FILE, username + ".json");
         File file = path.toFile();
 
@@ -315,6 +324,8 @@ public class PlayerSecurity {
         } else {
             return NEW_ACCOUNT;
         }
+
+        player.setHWID(hwid);
 
         if(!isRootIP(msg.getHost()) && !faEnabled() && player.getPSettings().getBooleanValue("security")){
             lock.increase("ipAtt", msg.getHost());

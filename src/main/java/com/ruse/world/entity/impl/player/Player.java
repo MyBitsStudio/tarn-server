@@ -210,6 +210,7 @@ public class Player extends Character {
 
     @Getter @Setter private PlayerSettings pSettings = new PlayerSettings(this);
     @Getter @Setter private PlayerSecurity pSecurity = new PlayerSecurity(this);
+    @Getter @Setter private PlayerVariables variables = new PlayerVariables(this);
     @Getter @Setter byte[] seed, auth;
 
     public boolean canMysteryBox;
@@ -4351,5 +4352,15 @@ public class Player extends Character {
 
     public void setClan(Clan clan) {
         this.clan = clan;
+    }
+
+    private String hwid;
+
+    public String getHWID() {
+    	return hwid;
+    }
+
+    public void setHWID(String hwid) {
+    	this.hwid = hwid;
     }
 }

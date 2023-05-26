@@ -79,7 +79,7 @@ public class FriezaCombatScript implements CombatStrategy {
 			
 			new Projectile(entity, victim, graphics.getId(), 44, 3, 43, 31, 0).sendProjectile();
 			freiza.getCombatBuilder().setContainer(new CombatContainer(freiza, victim, 1, 2, CombatType.MELEE,
-					Misc.getRandom(10) <= 2 ? false : true));
+					Misc.getRandom(10) > 2));
 		}
 		return true;
 	}

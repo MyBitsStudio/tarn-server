@@ -1916,6 +1916,21 @@ public class ItemActionPacketListener implements PacketListener {
                 player.getMinimeSystem().despawn();
                 break;
 
+            case ItemDefinition.TOKEN_ID:
+                if (player.getInventory().getFreeSlots() < 1) {
+                    player.sendMessage("You need at least "+1+" inventory slots to do this.");
+                    return;
+                }
+                if (player.getInventory().getAmount(ItemDefinition.TOKEN_ID) >= 1_000) {
+                    int amount = player.getInventory().getAmount(ItemDefinition.TOKEN_ID) / 1_000;
+                    player.getInventory().delete(new Item(ItemDefinition.TOKEN_ID, amount * 1_000));
+                    player.getInventory().add(new Item(23203, amount));
+                    player.sendMessage("You have successfully converted coins to T-Tokens");
+                } else {
+                    player.sendMessage("You don't have enough coins to convert to T-Tokens");
+                }
+                break;
+
             case 13591:
                 player.getPacketSender().sendMessage("You rub the enchanted key to teleport to chest area.");
                 Position position = new Position(2706, 2737, 0);
@@ -2191,7 +2206,7 @@ public class ItemActionPacketListener implements PacketListener {
         switch (itemId) {
 
             case 3686:
-                if (player.getSeasonPass().isPremium() != false) {
+                if (player.getSeasonPass().isPremium()) {
                     player.sendMessage("You're already a premium member of the Battle Pass.");
                     return;
                 }
@@ -2228,79 +2243,6 @@ public class ItemActionPacketListener implements PacketListener {
                 DialogueManager.start(player, 9924);
                 player.setDialogueActionId(9924);
                 break;
-           /* case 19000:
-                if (player.getInventory().contains(19000)) {
-                    int amount = player.getInventory().getAmount(19000);
-                    player.getInventory().delete(19000, amount);
-                    player.getInventory().add(ItemDefinition.MILL_ID, amount * 100);
-                    player.sendMessage("You have exchanged X" + amount + " Pet fragments for X" + amount * 100 + " Solak tokens!");
-                }
-                break;*/
-           /* case 22000:
-                if (player.getInventory().contains(22000) && player.getInventory().getAmount(ItemDefinition.MILL_ID) >= 250000 && player.getInventory().getAmount(5023) >= 250) {
-                    player.getInventory().delete(ItemDefinition.MILL_ID, 250000);
-                    player.getInventory().delete(5023, 250);
-                    player.getInventory().delete(22000, 1);
-                    player.getInventory().add(22001, 1);
-                    player.sendMessage("Congratulations you have upgraded your helm to t2. ");
-                } else {
-                    player.sendMessage("You need 250k Tokens and 250 boss slayer tickets to upgrade the helm to t2.");
-                }
-                break;
-            case 22001:
-                if (player.getInventory().contains(22001) && player.getInventory().getAmount(ItemDefinition.MILL_ID) >= 500000 && player.getInventory().getAmount(5023) >= 500) {
-                    player.getInventory().delete(ItemDefinition.MILL_ID, 500000);
-                    player.getInventory().delete(5023, 500);
-                    player.getInventory().delete(22001, 1);
-                    player.getInventory().add(22002, 1);
-                    player.sendMessage("Congratulations you have upgraded your helm to t2. ");
-                } else {
-                    player.sendMessage("You need 500k Tokens and 500 boss slayer tickets to upgrade the helm to t3.");
-                }
-                break;
-            case 22002:
-                if (player.getInventory().contains(22002) && player.getInventory().getAmount(ItemDefinition.MILL_ID) >= 2500000 && player.getInventory().getAmount(5023) >= 2500) {
-                    player.getInventory().delete(ItemDefinition.MILL_ID, 2500000);
-                    player.getInventory().delete(5023, 2500);
-                    player.getInventory().delete(22002, 1);
-                    player.getInventory().add(22003, 1);
-                    player.sendMessage("Congratulations you have upgraded your helm to t4. ");
-                } else {
-                    player.sendMessage("You need 2.5m Tokens and 2500 boss slayer tickets to upgrade the helm to t4.");
-                }
-                break;
-            case 22003:
-                if (player.getInventory().contains(22003) && player.getInventory().getAmount(ItemDefinition.MILL_ID) >= 5000000 && player.getInventory().getAmount(5023) >= 5000) {
-                    player.getInventory().delete(ItemDefinition.MILL_ID, 5000000);
-                    player.getInventory().delete(5023, 5000);
-                    player.getInventory().delete(22003, 1);
-                    player.getInventory().add(22004, 1);
-                    player.sendMessage("Congratulations you have upgraded your helm to t5. ");
-                } else {
-                    player.sendMessage("You need 5m Tokens and 5000 boss slayer tickets to upgrade the helm to t5.");
-                }
-                break;*/
-
-          /*  case 5021:
-
-                int amount1 = player.getInventory().getAmount(5021);
-                if (amount1 > 2147 || amount1 + player.getInventory().getAmount(ItemDefinition.COIN_ID) > 2147000000) {
-                    long amountLeft;
-                    if (!player.getInventory().contains(ItemDefinition.COIN_ID))
-                        amountLeft = (long) (((long) amount1 * (long) 1000000) - (long) 2147000000);
-                    else
-                        amountLeft = ((long) amount1 * (long) 1000000) - (long) (2147000000 - player.getInventory().getAmount(ItemDefinition.COIN_ID));
-                    player.getInventory().delete(5021, amount1);
-                    player.getInventory().add(ItemDefinition.COIN_ID, 2147000000 - (player.getInventory().getAmount(ItemDefinition.COIN_ID)));
-                    player.setMoneyInPouch(player.getMoneyInPouch() + amountLeft);
-                    player.getPacketSender().sendString(8135, "" + player.getMoneyInPouch());
-                    player.sendMessage("<shad=1>@red@The rest of the cash(" + amountLeft / 1000000
-                            + "M) has been added to your @blu@pouch@red@!");
-                    return;
-                }
-                player.getInventory().delete(5021, amount1);
-                player.getInventory().add(ItemDefinition.COIN_ID, 1000000 * amount1);
-                break;*/
 
             case 11846:
             case 11848:
@@ -2395,6 +2337,19 @@ public class ItemActionPacketListener implements PacketListener {
 
                 player.getInventory().delete(ItemDefinition.TOKEN_ID, amount);
                 player.getInventory().add(ItemDefinition.COIN_ID, amount * 1_000);
+                break;
+            case 23203:
+                int amount2 = player.getInventory().getAmount(23203);
+                if (amount2 >= 2147483)
+                    amount2 = 2147483;
+
+                int sum2 = (int) ((double) player.getInventory().getAmount(ItemDefinition.TOKEN_ID) + (double) (amount2 * 1_000));
+
+                if (sum2 >= Integer.MAX_VALUE || sum2 <= 0)
+                    amount = (int) (2147483 - Math.ceil(((double) player.getInventory().getAmount(ItemDefinition.TOKEN_ID) / (double) 1_000)));
+
+                player.getInventory().delete(23203, amount2);
+                player.getInventory().add(ItemDefinition.TOKEN_ID, amount2 * 1_000);
                 break;
             case 12845:
                 player.getPointsHandler().incrementPengRate(2);

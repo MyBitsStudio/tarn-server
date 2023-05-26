@@ -30,10 +30,19 @@ public abstract class Instance {
 
     protected final Locations.Location location;
 
+    protected InstanceDifficulty difficulty = InstanceDifficulty.EASY;
     protected long canLeave;
 
     public Instance(Locations.Location location){
         this.location = location;
+    }
+
+    public void setDifficulty(InstanceDifficulty difficulty) {
+        this.difficulty = difficulty;
+    }
+
+    public InstanceDifficulty getDifficulty() {
+        return difficulty;
     }
 
     public void setCanLeave(long time) {
@@ -83,24 +92,33 @@ public abstract class Instance {
             npcList.remove(n);
             removeNPC(n);
         }
+        postProcess();
+    }
+
+    private void postProcess(){
+                playerList.stream()
+                .filter(Objects::nonNull)
+                .filter(p -> !location.equals(p.getLocation()))
+                .forEach(p -> {
+                    System.out.println("Location "+location + " player "+p.getLocation());
+                    p.sendMessage("@red@[INSTANCE] How did you get here?");
+                    removePlayer.add(p);
+                });
     }
 
     private void preProcess(){
-        for(Player player : playerList){
-            if(player == null)
-                continue;
-            if(!location.equals(player.getLocation())){
-                removePlayer.add(player);
-            }
-        }
         World.getPlayers().stream().filter(Objects::nonNull)
                 .filter(player -> player.getLocation().equals(location))
                 .filter(player -> player.getInstance() != this)
                 .filter(player -> playerList.size() >= 1 && player.getPosition().getZ() == playerList.get(0).getPosition().getZ())
-                .filter(player -> !playerList.contains(player))
-                .filter(player -> !players.contains(player))
+                .filter(player -> playerList.size() >= 1 &&!playerList.contains(player))
+                .filter(player -> players.size() >= 1 &&!players.contains(player))
                 .filter(player -> !player.getRights().isStaff())
-                .forEach(player -> player.moveTo(GameSettings.DEFAULT_POSITION.copy()));
+                .forEach(player -> {
+                    player.sendMessage("@red@[INSTANCE] This isn't your instance. Moving you home.");
+                    player.setInstance(null);
+                    player.moveTo(GameSettings.DEFAULT_POSITION.copy());
+                });
     }
 
     public void spawnNPC(NPC npc){
@@ -121,7 +139,7 @@ public abstract class Instance {
         player.moveTo(GameSettings.DEFAULT_POSITION.copy());
     }
 
-    private void addNPC(NPC npc){
+    protected void addNPC(NPC npc){
         npc.setInstance(this);
         World.register(npc);
     }
@@ -204,8 +222,8 @@ public abstract class Instance {
     public void moveTo(Player player, Position pos){
         player.setTeleporting(true).getMovementQueue().setLockMovement(true).reset();
         cancelCurrentActions(player);
-        player.setLocation(location);
-        player.moveTo(pos).setPosition(pos);
+        player.setLocation(this.location);
+        player.moveTo(pos.setZ(player.getIndex() * 4)).setPosition(pos.setZ(player.getIndex() * 4));
         player.getMovementQueue().setLockMovement(false).reset();
 
         player.getPacketSender().sendInterfaceRemoval();
@@ -222,4 +240,23 @@ public abstract class Instance {
         player.getCombatBuilder().cooldown(false);
         player.setResting(false);
     }
+
+    public void start(){
+
+    }
+
+    public int cost(){
+        return -1;
+    }
+
+    public int itemId(){
+        return -1;
+    }
+
+    public boolean canEnter(Player player){
+        return true;
+    }
+
+    public String failedEntry(){return "Something went wrong...";}
+
 }

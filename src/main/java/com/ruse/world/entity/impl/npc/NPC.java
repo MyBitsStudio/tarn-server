@@ -682,4 +682,6 @@ public class NPC extends Character {
 
     }
 
+    public boolean stopTask(){ return false;}
+
 }

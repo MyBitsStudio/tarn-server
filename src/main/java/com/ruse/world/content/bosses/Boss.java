@@ -7,7 +7,13 @@ public abstract class Boss extends NPC {
 
     public Boss(int id, Position position, boolean respawns) {
         super(id, position, respawns);
+        onSpawn();
     }
 
+    public void scale(){}
+    public void onSpawn(){}
 
+    @Override
+    public void onDeath(){
+    }
 }

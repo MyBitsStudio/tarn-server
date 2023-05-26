@@ -369,7 +369,19 @@ public class Shop extends ItemContainer {
         String s = currency.getDefinition().getName().toLowerCase().endsWith("s")
                 ? currency.getDefinition().getName().toLowerCase()
                 : currency.getDefinition().getName().toLowerCase() + "s";
-        if (getCurrency().getId() != -1) {
+        if (getCurrency().getId() == -1) {
+            Object[] obj = ShopManager.getCustomShopData(id, item.getId());
+            if (obj == null)
+                return;
+            finalValue = (int) obj[0];
+            if (sellingItem) {
+                if (finalValue != 1) {
+                    finalValue = (int) (finalValue * 0.5D);
+                }
+            }
+
+            finalString += "" + finalValue + " " + obj[1] + ".";
+        } else {
             finalValue = ItemDefinition.forId(item.getId()).getValue();
 
 
@@ -411,18 +423,6 @@ public class Shop extends ItemContainer {
 
 
             finalString += "" + finalValue + " " + s + "" + shopPriceEx(finalValue) + ".";
-        } else {
-            Object[] obj = ShopManager.getCustomShopData(id, item.getId());
-            if (obj == null)
-                return;
-            finalValue = (int) obj[0];
-            if (sellingItem) {
-                if (finalValue != 1) {
-                    finalValue = (int) (finalValue * 0.5D);
-                }
-            }
-
-            finalString += "" + finalValue + " " + obj[1] + ".";
         }
 
         if (sellingItem) {

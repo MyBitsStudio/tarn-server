@@ -21,6 +21,8 @@ public abstract class SingleBossSinglePlayerInstance extends Instance {
         this.owner = p;
     }
 
+    public abstract Position getStartLocation();
+
     public Boss getBoss() {
         return boss;
     }
@@ -28,24 +30,16 @@ public abstract class SingleBossSinglePlayerInstance extends Instance {
         return owner;
     }
 
-
+    @Override
     public void start(){
+        moveTo(getOwner(), getStartLocation());
+        add(getOwner());
 
+        getBoss().setSpawnedFor(getOwner());
+        add(getBoss());
+
+        getOwner().getPacketSender().sendMessage("@blu@[INSTANCE] Your instance has started.");
     }
 
-    @Override
-    public void destroy(){
-        for(GameObject object : objects){
-            World.deregister(object);
-        }
-    }
-
-    @Override
-    public void add(Entity en){
-    }
-
-    @Override
-    public void remove(Entity en){
-    }
 
 }

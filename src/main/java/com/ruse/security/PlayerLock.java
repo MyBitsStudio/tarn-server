@@ -25,7 +25,7 @@ import static com.ruse.world.entity.impl.player.PlayerFlags.FORCE_KICK;
 
 public class PlayerLock {
 
-    private final Player player;
+    private Player player;
 
     private String username;
 
@@ -140,6 +140,10 @@ public class PlayerLock {
 
     public PlayerLock(Player player) {
         this.player = player;
+    }
+
+    public PlayerLock(String username){
+        this.username = username;
     }
 
     public PlayerLock load(String username){

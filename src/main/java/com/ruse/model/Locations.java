@@ -9,8 +9,6 @@ import com.ruse.world.content.PlayerLogs;
 import com.ruse.world.content.PlayerPunishment.Jail;
 import com.ruse.world.content.Zulrah;
 import com.ruse.world.content.aura.AuraRaids;
-import com.ruse.world.content.bosses.BossInstance;
-import com.ruse.world.content.bosses.counter.CounterInstance;
 import com.ruse.world.content.combat.strategy.impl.Scorpia;
 import com.ruse.world.content.instanceMananger.InstanceManager;
 import com.ruse.world.content.minigames.impl.*;
@@ -24,6 +22,10 @@ import com.ruse.world.entity.impl.Character;
 import com.ruse.world.entity.impl.npc.NPC;
 import com.ruse.world.entity.impl.player.Player;
 import com.ruse.world.instance.MapInstance;
+
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 public class Locations {
 	public static boolean inside(Position start, int startSize, Position target, int targetSize) {
@@ -375,46 +377,6 @@ public class Locations {
 			public void process(Player player) {
 				if (player.getZombieParty() != null)
 					player.getZombieParty().refreshInterface();
-
-			}
-		},
-
-		RAID_LOBBY(new int[]{2642, 2668}, new int[]{2778, 2804}, true, false, true, false, true, true) {
-			@Override
-			public void leave(Player player) {
-				player.getPacketSender().sendCameraNeutrality();
-
-				if (player.getRaidParty() != null)
-					player.getRaidParty().remove(player);
-
-				if (player.getRaidParty() != null)
-					player.getRaidParty().getPlayers()
-							.remove(player);
-
-				player.getMovementQueue().setLockMovement(false);
-			}
-
-			@Override
-			public void enter(Player player) {
-				if (player.getPlayerInteractingOption() != PlayerInteractingOption.INVITE)
-					player.getPacketSender().sendInteractionOption("Invite", 2, false);
-
-				player.getPacketSender().sendTab(GameSettings.STAFF_TAB);
-			}
-
-			@Override
-			public void login(Player player) {
-				if (player.getPlayerInteractingOption() != PlayerInteractingOption.INVITE)
-					player.getPacketSender().sendInteractionOption("Invite", 2, false);
-
-				player.getPacketSender().sendTab(GameSettings.STAFF_TAB);
-
-			}
-
-			@Override
-			public void process(Player player) {
-				if (player.getRaidParty() != null)
-					player.getRaidParty().refreshInterface();
 
 			}
 		},
@@ -1219,8 +1181,8 @@ public class Locations {
 				}
 			}
 		},
-		TRIO_ZONE(new int[] { 3008, 3039 }, new int[] { 5216, 5247 }, false, false, false, false, false, false) {
-		},
+//		TRIO_ZONE(new int[] { 3008, 3039 }, new int[] { 5216, 5247 }, false, false, false, false, false, false) {
+//		},
 		// xyyx
 		GAMBLE(new int[] { 2844, 2867 }, new int[] { 2696, 2720 }, false, true, true, false, true, true) {
 		},
@@ -1236,11 +1198,6 @@ public class Locations {
 		 */
 		// xyyx
 		SKELETAL(new int[] { 3323, 3357 }, new int[] { 3162, 3188 }, true, true, true, false, false, false) {
-		},
-
-		ASTA_NPC(new int[] { 3009, 3029 }, new int[] { 2752, 2772 }, true, true, true, false, false, false) {
-		},
-		ASTA_LOBBY(new int[] { 3059, 3071 }, new int[] { 2752, 2764 }, true, true, true, false, false, false) {
 		},
 
 
@@ -2218,7 +2175,19 @@ for (Item item : player.getInventory().getItems()) {
 		EXODENLOC(new int[] { 2816, 2879 }, new int[] { 2816, 2879 }, true, true, true, false, false, false) {
 		},
 		DEFAULT(null, null, false, true, true, true, true, true) {
-		};
+		},
+
+		ASTA_LOBBY(new int[] { 3059, 3071 }, new int[] { 2752, 2764 }, true, true, true, false, false, false) {
+		},
+
+		//BOSS LOCATIONS
+		INSTANCE_LOBBY(new int[]{2642, 2668}, new int[]{2778, 2804}, false, false, true, false, true, true) {
+		},
+		NORMAL_INSTANCE(new int[] {3009, 3029 }, new int[] { 2752, 2772 }, true, true, true, false, false, false) {
+		},
+		CRUCIO(new int[] { 3011, 3039 }, new int[] { 5217, 5248 }, true, false, true, false, false, false) {
+		},
+		;
 
 		Location(int[] x, int[] y, boolean multi, boolean summonAllowed, boolean followingAllowed,
 				 boolean cannonAllowed, boolean firemakingAllowed, boolean aidingAllowed) {
@@ -2436,7 +2405,7 @@ for (Item item : player.getInventory().getItems()) {
 						|| (prev == Location.ZOMBIE && newLocation == Location.ZOMBIE_LOBBY)
 						|| (prev == Location.AURA_LOBBY && newLocation == Location.AURA)
 						|| (prev == Location.AURA && newLocation == Location.AURA_LOBBY)
-						|| prev == Location.ASTA_NPC
+						|| prev == Location.NORMAL_INSTANCE
 //						|| (prev == Location.TEST_RAID_LOBBY && newLocation == Location.TEST_RAID)
 //						|| (prev == Location.TEST_RAID && newLocation == Location.TEST_RAID_LOBBY)
 				) {
@@ -2517,4 +2486,8 @@ for (Item item : player.getInventory().getItems()) {
 			return distX + 1;
 		return distX > distY ? distX : distY;
 	}
+
+	public static List<Location> bossLocations = Collections.synchronizedList(Arrays.asList(
+			Location.NORMAL_INSTANCE, Location.CRUCIO
+	));
 }

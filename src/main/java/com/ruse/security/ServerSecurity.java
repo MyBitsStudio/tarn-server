@@ -11,6 +11,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -95,6 +96,9 @@ public class ServerSecurity {
         return (String) keys.get(key);
     }
 
+
+    private final Map<String, List<String>> ipMap = new ConcurrentHashMap<>();
+
     public void load(){
         if(!new File(SERVER_SECURITY_FILE).exists()){
             return;
@@ -133,32 +137,29 @@ public class ServerSecurity {
         switch(type){
             case 0: //normal
                 addSecurity("player", player.getUsername().toLowerCase(), String.valueOf(System.currentTimeMillis()+ time));
-                //addSecurity("UUID", player.getUUID(), String.valueOf(System.currentTimeMillis()+ time));
                 break;
             case 1: //tri
                 addSecurity("player", player.getUsername().toLowerCase(), String.valueOf(System.currentTimeMillis()+ time));
-                //addSecurity("UUID", player.getUUID(), String.valueOf(System.currentTimeMillis()+ time));
                 addSecurity("ip", player.getPSecurity().getIp(), String.valueOf(System.currentTimeMillis()+ time));
+                addSecurity("mac", player.getMac(), String.valueOf(System.currentTimeMillis()+ time));
                 break;
             case 2: //full
                 addSecurity("mac", player.getMac(), String.valueOf(System.currentTimeMillis()+ time));
                 addSecurity("player", player.getUsername().toLowerCase(), String.valueOf(System.currentTimeMillis()+ time));
-                //addSecurity("UUID", player.getUUID(), String.valueOf(System.currentTimeMillis()+ time));
                 addSecurity("ip", player.getPSecurity().getIp(), String.valueOf(System.currentTimeMillis()+ time));
+                addSecurity("hwid", player.getHWID(), String.valueOf(System.currentTimeMillis()+ time));
                 break;
             case 3: // max
-                //addSecurity("UUID", player.getUUID(), String.valueOf(System.currentTimeMillis()+ time));
                 addSecurity("mac", player.getMac(), String.valueOf(System.currentTimeMillis()+ time));
+                addSecurity("hwid", player.getHWID(), String.valueOf(System.currentTimeMillis()+ time));
                 addSecurity("player", player.getUsername().toLowerCase(), String.valueOf(System.currentTimeMillis()+ time));
-                //addSecurity("hwid", player.getUUID(), String.valueOf(System.currentTimeMillis()+ time));
                 addSecurity("ip", player.getPSecurity().getIp(), String.valueOf(System.currentTimeMillis()+ time));
                 break;
 
             case 4://perm
-               // addSecurity("UUID", player.getUUID(), String.valueOf(-1));
                 addSecurity("mac", player.getMac(), String.valueOf(-1));
                 addSecurity("player", player.getUsername().toLowerCase(), String.valueOf(-1));
-                //addSecurity("hwid", player.getUUID(), String.valueOf(-1));
+                addSecurity("hwid", player.getHWID(), String.valueOf(-1));
                 addSecurity("ip", player.getPSecurity().getIp(), String.valueOf(-1));
                 break;
         }
@@ -198,9 +199,9 @@ public class ServerSecurity {
             AdminCord.sendMessage(1109203346520277013L, player.getUsername()+" is macbanned and attempted to login");
             return ACCOUNT_BANNED;
         }
-//        if(isHWIDBanned(player)){
-//            return 5;
-//        }
+        if(isHWIDBanned(player.getHWID())){
+            return 5;
+        }
         int code = checkSecurity(player);
         return code == 0 ? LOGIN_SUCCESSFUL : code;
     }
