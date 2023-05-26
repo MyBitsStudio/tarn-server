@@ -55,6 +55,8 @@ public class NPC extends Character {
 
     private boolean forceAggressive;
 
+    private int atkBoost, speedBoost, defBoost, maxHitBoost;
+
     public boolean isAggressive() {
         return aggressive;
     }
@@ -375,23 +377,22 @@ public class NPC extends Character {
 
     @Override
     public int getBaseAttack(CombatType type) {
-        return getDefinition().getAttackBonus();
+        return getDefinition().getAttackBonus() + atkBoost;
     }
 
     @Override
     public int getAttackSpeed() {
-        return this.getDefinition().getAttackSpeed();
+        return this.getDefinition().getAttackSpeed() - atkBoost;
     }
 
     @Override
     public int getBaseDefence(CombatType type) {
-
         if (type == CombatType.MAGIC)
-            return getDefinition().getDefenceMage();
+            return getDefinition().getDefenceMage() + defBoost;
         else if (type == CombatType.RANGED)
-            return getDefinition().getDefenceRange();
+            return getDefinition().getDefenceRange() + defBoost;
 
-        return getDefinition().getDefenceMelee();
+        return getDefinition().getDefenceMelee() + defBoost;
     }
 
     @Override
@@ -684,5 +685,40 @@ public class NPC extends Character {
 
     public boolean stopTask(){ return false;}
 
+    public void setAtkBoost(int boost) {
+        this.atkBoost = boost;
+    }
+
+    public int getAtkBoost() {
+        return atkBoost;
+    }
+
+    public void setDefBoost(int boost) {
+        this.defBoost = boost;
+    }
+
+    public int getDefBoost() {
+        return defBoost;
+    }
+
+    public void setSpeedBoost(int boost) {
+        this.speedBoost = boost;
+    }
+
+    public int getSpeedBoost() {
+        return speedBoost;
+    }
+
+    public void setMaxHitBoost(int boost) {
+        this.maxHitBoost = boost;
+    }
+
+    public int getMaxHitBoost() {
+        return maxHitBoost;
+    }
+    
+    public int getMaxHit(){
+        return definition.getMaxHit() + maxHitBoost;
+    }
 
 }

@@ -350,16 +350,14 @@ public class NPCDeathTask extends Task {
 
                                         }
 
-
-
                                     }
 
-                                    if(killer != null){
-                                        if(killer.getInstance() != null){
-                                            killer.getInstance().remove(npc);
-                                            super.stop();
-                                        }
+
+                                    if(npc.getInstance() != null){
+                                        npc.getInstance().remove(npc);
+                                        super.stop();
                                     }
+
 
                                     if (npc.getDefinition().getRespawnTime() > 0 && npc.getLocation() != Location.GRAVEYARD && npc.getLocation() != Location.KEEPERS_OF_LIGHT_GAME
                                             && npc.getLocation() != Location.DUNGEONEERING && npc.getLocation() != Location.CUSTOM_RAIDS && !npc.isEventBoss()) {

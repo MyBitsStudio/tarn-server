@@ -39,7 +39,7 @@ public class DesolaceFormulas {
         double maxHit = 0;
         if (entity.isNpc()) {
             NPC npc = (NPC) entity;
-            maxHit = npc.getDefinition().getMaxHit();
+            maxHit = npc.getMaxHit();
             if (npc.getStrengthWeakened()[0]) {
                 maxHit -= (int) ((0.10) * (maxHit));
             } else if (npc.getStrengthWeakened()[1]) {
@@ -534,7 +534,7 @@ public class DesolaceFormulas {
                 damage += spell.maximumHit();
             else {
                 if (attacker.isNpc()) {
-                    damage = ((NPC) attacker).getDefinition().getMaxHit();
+                    damage = ((NPC) attacker).getMaxHit();
                 } else {
                     damage = 1;
                 }
@@ -543,7 +543,7 @@ public class DesolaceFormulas {
 
         if (attacker.isNpc()) {
             if (spell == null) {
-                damage = Misc.getRandom(((NPC) attacker).getDefinition().getMaxHit());
+                damage = Misc.getRandom(((NPC) attacker).getMaxHit());
             }
             return damage;
         }

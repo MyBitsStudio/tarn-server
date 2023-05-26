@@ -91,7 +91,7 @@ public abstract class Instance {
                 break;
             npcList.remove(n);
             removeNPC(n);
-            signalSpawn(n);
+
         }
         postProcess();
     }
@@ -151,6 +151,7 @@ public abstract class Instance {
 
     protected void removeNPC(NPC npc){
         npc.setInstance(null);
+        signalSpawn(npc);
         World.deregister(npc);
     }
 

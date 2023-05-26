@@ -626,7 +626,7 @@ public final class CombatFactory {
 
         if (entity.isNpc()) {
             NPC npc = (NPC) entity;
-            maxHit = npc.getDefinition().getMaxHit();
+            maxHit = npc.getMaxHit();
             if (npc.getStrengthWeakened()[0]) {
                 maxHit -= (int) ((0.10) * (maxHit));
             } else if (npc.getStrengthWeakened()[1]) {
@@ -892,7 +892,7 @@ public final class CombatFactory {
         int maxHit = 0;
         if (entity.isNpc()) {
             NPC npc = (NPC) entity;
-            maxHit = npc.getDefinition().getMaxHit();
+            maxHit = npc.getMaxHit();
             if (npc.getStrengthWeakened()[0]) {
                 maxHit -= (int) ((0.10) * (maxHit));
             } else if (npc.getStrengthWeakened()[1]) {
@@ -1122,7 +1122,7 @@ public final class CombatFactory {
         if (e.isNpc() && v.isPlayer()) {
             Player victim = (Player) v;
             NPC npc = (NPC) e;
-            baseMax = (int) (npc.getDefinition().getMaxHit() * 3);
+            baseMax = npc.getMaxHit() * 3;
             if (victim.getFireImmunity() > 0 || victim.getEquipment().getItems()[Equipment.SHIELD_SLOT].getId() == 1540
                     || victim.getEquipment().getItems()[Equipment.SHIELD_SLOT].getId() == 11283
                     || victim.getEquipment().getItems()[Equipment.SHIELD_SLOT].getId() == 13655) {

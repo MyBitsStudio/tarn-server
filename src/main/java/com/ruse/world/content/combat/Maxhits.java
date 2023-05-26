@@ -23,7 +23,7 @@ public class Maxhits {
         double maxHit = 0;
         if (entity.isNpc()) {
             NPC npc = (NPC) entity;
-            maxHit = npc.getDefinition().getMaxHit();
+            maxHit = npc.getMaxHit();
             if (npc.getStrengthWeakened()[0]) {
                 maxHit -= (int) (0.10 * maxHit);
             } else if (npc.getStrengthWeakened()[1]) {
@@ -201,7 +201,7 @@ public class Maxhits {
 
         if (entity.isNpc()) {
             NPC npc = (NPC) entity;
-            maxHit = npc.getDefinition().getMaxHit() / 10;
+            maxHit = npc.getMaxHit() / 10;
         } else if (entity.isPlayer()) {
             Player player = (Player) entity;
 
@@ -370,7 +370,7 @@ public class Maxhits {
 
         if (entity.isNpc()) {
             NPC npc = (NPC) entity;
-            maxHit = npc.getDefinition().getMaxHit() / 10;
+            maxHit = npc.getMaxHit() / 10;
         } else if (entity.isPlayer()) {
             Player player = (Player) entity;
 
