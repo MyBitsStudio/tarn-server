@@ -323,9 +323,9 @@ public class InstanceManager {
             default : return false;
         }
         if(data.getNpcId() == 8014)
-            return KillsTracker.getTotalKills(player) < amount;
+            return KillsTracker.getTotalKills(player) > amount;
         else
-            return KillsTracker.getTotalKillsForNpc(npcId, player) < amount;
+            return KillsTracker.getTotalKillsForNpc(npcId, player) > amount;
     }
 
     private static boolean handleSpecialLock(Player player, int npcId){

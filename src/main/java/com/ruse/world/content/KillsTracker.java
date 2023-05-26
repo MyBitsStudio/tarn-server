@@ -31,30 +31,27 @@ public class KillsTracker {
 	public static void open(Player player) {
 		try {
 			/* RESORT THE KILLS */
-			Collections.sort(player.getKillsTracker(), new Comparator<KillsEntry>() {
-				@Override
-				public int compare(KillsEntry kill1, KillsEntry kill2) {
-					if (kill1.boss && !kill2.boss) {
+			player.getKillsTracker().sort((kill1, kill2) -> {
+				if (kill1.boss && !kill2.boss) {
+					return -1;
+				}
+				if (kill2.boss && !kill1.boss) {
+					return 1;
+				}
+				if (kill1.boss && kill2.boss || !kill1.boss && !kill2.boss) {
+					if (kill1.amount > kill2.amount) {
 						return -1;
-					}
-					if (kill2.boss && !kill1.boss) {
+					} else if (kill2.amount > kill1.amount) {
 						return 1;
-					}
-					if (kill1.boss && kill2.boss || !kill1.boss && !kill2.boss) {
-						if (kill1.amount > kill2.amount) {
-							return -1;
-						} else if (kill2.amount > kill1.amount) {
+					} else {
+						if (kill1.npcName.compareTo(kill2.npcName) > 0) {
 							return 1;
 						} else {
-							if (kill1.npcName.compareTo(kill2.npcName) > 0) {
-								return 1;
-							} else {
-								return -1;
-							}
+							return -1;
 						}
 					}
-					return 0;
 				}
+				return 0;
 			});
 			/* SHOW THE INTERFACE */
 			player.setKillsTrackerOpen(true);
