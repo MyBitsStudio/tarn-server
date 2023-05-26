@@ -327,8 +327,7 @@ public class World {
         //TriviaSystem.tick();
 
         ServerPerks.getInstance().tick();
-        //CharacterBackup.sequence();
-        InstanceManager.process();
+        //CharacterBackup.sequence()
 
 
         // First we construct the update sequences.

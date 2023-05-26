@@ -431,22 +431,12 @@ public class InstanceManager {
             player.getVariables().setInterfaceSettings(2, "0");
         }
         for(Locations.Location loc : Locations.bossLocations){
-            if(Locations.Location.inLocation(player, loc))
+            if(Locations.Location.inLocation(player, loc)) {
+                player.getMovementQueue().setLockMovement(false).reset();
                 player.moveTo(GameSettings.DEFAULT_POSITION.copy());
+            }
         }
 
-    }
-
-    public static void process(){
-        World.getPlayers().stream()
-                .filter(Objects::nonNull)
-                .filter(p -> p.getInstance() == null)
-                .forEach(p -> {
-                    for(Locations.Location loc : Locations.bossLocations){
-                        if(loc.equals(p.getLocation()))
-                            p.moveTo(GameSettings.DEFAULT_POSITION.copy());
-                    }
-                });
     }
 
 }

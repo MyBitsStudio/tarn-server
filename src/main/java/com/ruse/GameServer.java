@@ -24,6 +24,7 @@ public class GameServer {
 
 
     public static void main(String[] params) {
+        System.gc();
         Runtime.getRuntime().addShutdownHook(new ShutdownHook());
         try {
             logger.info("Initializing the loader...");

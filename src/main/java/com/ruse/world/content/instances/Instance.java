@@ -141,9 +141,7 @@ public abstract class Instance {
             destroy();
         }
 
-        player.getMovementQueue().setLockMovement(false).reset();
         player.moveTo(new Position(2654, 2796, 0));
-
     }
 
     protected void addNPC(NPC npc){
