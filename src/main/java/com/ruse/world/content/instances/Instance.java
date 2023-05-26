@@ -141,8 +141,9 @@ public abstract class Instance {
             destroy();
         }
 
-        player.moveTo(GameSettings.DEFAULT_POSITION.copy());
         player.getMovementQueue().setLockMovement(false).reset();
+        player.moveTo(new Position(2654, 2796, 0));
+
     }
 
     protected void addNPC(NPC npc){
@@ -214,13 +215,11 @@ public abstract class Instance {
     }
 
     public void dispose(Player player){
-        if (player.getInstance() != null)
-            player.getInstance().destroy();
-
-        player.setTeleporting(true).getMovementQueue().setLockMovement(true).reset();
+        player.setTeleporting(true).getMovementQueue().reset();
         cancelCurrentActions(player);
-        player.moveTo(GameSettings.DEFAULT_POSITION.copy()).setPosition(GameSettings.DEFAULT_POSITION.copy());
+        player.moveTo(new Position(2654, 2796, 0)).setPosition(new Position(2654, 2796, 0));
         player.getMovementQueue().setLockMovement(false).reset();
+        player.setInstance(null);
 
         player.getPacketSender().sendInterfaceRemoval();
     }

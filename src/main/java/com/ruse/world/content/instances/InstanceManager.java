@@ -208,9 +208,9 @@ public class InstanceManager {
 
         player.getPacketSender().sendString(70516, prefix+ (int) (def.getHitpoints() * ( 1 + (diff * .5))));
         player.getPacketSender().sendString(70518, prefix+ (int)(def.getMaxHit() * (1 + (.1 * diff))));
-        player.getPacketSender().sendString(70520, prefix+ (int)(def.getDefenceMelee() * (1 + (.2 * diff))));
-        player.getPacketSender().sendString(70522, prefix+ (int)(def.getDefenceMage() * (1 + (.2 * diff))));
-        player.getPacketSender().sendString(70524, prefix+ (int)(def.getDefenceRange() * (1 + (.2 * diff))));
+        player.getPacketSender().sendString(70520, prefix+ (int)(def.getDefenceMelee() * (1 + (.3 * diff))));
+        player.getPacketSender().sendString(70522, prefix+ (int)(def.getDefenceMage() * (1 + (.3 * diff))));
+        player.getPacketSender().sendString(70524, prefix+ (int)(def.getDefenceRange() * (1 + (.3 * diff))));
 
         player.getPacketSender().sendString(70526, prefix+ "x"+(int)(interData.getCost().getAmount() * (diff * 2L))+" "+ItemDefinition.forId(interData.getCost().getId()).getName());
         player.getPacketSender().sendString(70528, prefix+ interData.getSpawns());
@@ -347,10 +347,14 @@ public class InstanceManager {
                 case 70506: player.getVariables().setInterfaceSettings(0, String.valueOf(0)); break;
                 case 70507: player.getVariables().setInterfaceSettings(0, String.valueOf(1)); break;
                 case 70508: player.getVariables().setInterfaceSettings(0, String.valueOf(2)); break;
+                case 70509: player.sendMessage("Coming soon!"); break;
+                case 70510: player.sendMessage("Coming soon!"); break;
                 case 70534 :
                     int current = Integer.parseInt(player.getVariables().getInterfaceSettings()[2]);
                     player.getVariables().setInterfaceSettings(2, String.valueOf(
-                        current > 3 ? 0 : current + 1)); break;
+                        current > 3 ? 0 : current + 1));
+                    player.sendMessage("You have selected " + player.getVariables().getInterfaceSettings()[2] + " difficulty.");
+                    break;
                 case 70535 :
                     startInstance(player);
                     break;
@@ -412,6 +416,23 @@ public class InstanceManager {
             case SPECIAL:
                 startMultiInstance(player, interData);
                 break;
+        }
+
+    }
+
+    public static void onLogin(@NotNull Player player){
+        if(player.getVariables().getInterfaceSettings()[0] == null){
+            player.getVariables().setInterfaceSettings(0, "0");
+        }
+        if(player.getVariables().getInterfaceSettings()[1] == null){
+            player.getVariables().setInterfaceSettings(1, "0");
+        }
+        if(player.getVariables().getInterfaceSettings()[2] == null){
+            player.getVariables().setInterfaceSettings(2, "0");
+        }
+        for(Locations.Location loc : Locations.bossLocations){
+            if(Locations.Location.inLocation(player, loc))
+                player.moveTo(GameSettings.DEFAULT_POSITION.copy());
         }
 
     }

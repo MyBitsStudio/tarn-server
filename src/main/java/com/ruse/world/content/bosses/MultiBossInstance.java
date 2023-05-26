@@ -13,7 +13,11 @@ public abstract class MultiBossInstance extends Instance {
 
     private final Player owner;
     @Getter
-    private final int npcId, cap;
+    private final int npcId;
+    @Getter
+    private final int cap;
+    @Getter
+    private int spawned = 0;
     @Getter
     private final MultiBoss[] bosses;
 
@@ -43,6 +47,9 @@ public abstract class MultiBossInstance extends Instance {
 
     @Override
     public void signalSpawn(NPC n){
+        spawned++;
+        if(spawned >= cap)
+            return;
         if(n.getId() == getNpcId()){
             MultiBoss boss = new MultiBoss(npcId, n.getPosition().setZ(owner.getIndex() * 4), false, owner);
             boss.setInstance(this);
