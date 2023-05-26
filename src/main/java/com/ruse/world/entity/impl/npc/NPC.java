@@ -684,4 +684,12 @@ public class NPC extends Character {
 
     public boolean stopTask(){ return false;}
 
+    private int instanceIndex;
+    public int getIndex(){
+        return instanceIndex;
+    }
+    public void setInstanceIndex(int index){
+        instanceIndex = index;
+    }
+
 }

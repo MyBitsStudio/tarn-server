@@ -8,7 +8,7 @@ import com.ruse.world.entity.impl.player.Player;
 
 public class MultiBossNormalInstance extends MultiBossInstance {
 
-    private final Position[] pos = {
+    public static final Position[] pos = {
         new Position(3013, 2764), new Position(3013, 2761), new Position(3013, 2758), new Position(3013, 2755),
             new Position(3016, 2764), new Position(3016, 2761), new Position(3016, 2758), new Position(3016, 2755),
             new Position(3019, 2764), new Position(3019, 2761), new Position(3019, 2758), new Position(3019, 2755),

@@ -3,6 +3,7 @@ package com.ruse.world.content.bosses;
 import com.ruse.model.Locations;
 import com.ruse.model.Position;
 import com.ruse.world.content.bosses.multi.MultiBoss;
+import com.ruse.world.content.bosses.multi.MultiBossNormalInstance;
 import com.ruse.world.content.instances.Instance;
 import com.ruse.world.entity.impl.npc.NPC;
 import com.ruse.world.entity.impl.player.Player;
@@ -39,6 +40,7 @@ public abstract class MultiBossInstance extends Instance {
             if(bosses[i] == null){
                 bosses[i] = new MultiBoss(npcId, pos[i].setZ(owner.getIndex() * 4), false, getOwner());
                 bosses[i].setInstance(this);
+                bosses[i].setInstanceIndex(i);
             }
             bosses[i].setSpawnedFor(getOwner());
             add(bosses[i]);
@@ -51,8 +53,9 @@ public abstract class MultiBossInstance extends Instance {
         if(spawned >= cap)
             return;
         if(n.getId() == getNpcId()){
-            MultiBoss boss = new MultiBoss(npcId, n.getPosition().setZ(owner.getIndex() * 4), false, owner);
+            MultiBoss boss = new MultiBoss(npcId, MultiBossNormalInstance.pos[n.getIndex()].setZ(owner.getIndex() * 4), false, owner);
             boss.setInstance(this);
+            boss.setInstanceIndex(n.getIndex());
             boss.setSpawnedFor(owner);
             add(boss);
         }
