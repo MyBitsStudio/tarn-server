@@ -223,7 +223,7 @@ public abstract class Instance {
 
     public void dispose(Player player){
         if (player.getInstance() != null)
-            player.getInstance().destroy();
+            player.getInstance().clear();
 
         player.setTeleporting(true).getMovementQueue().reset();
         cancelCurrentActions(player);
