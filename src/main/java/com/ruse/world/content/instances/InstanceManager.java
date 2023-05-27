@@ -317,9 +317,9 @@ public class InstanceManager {
             case 1313: npcId = 1311; amount = 15000;break;
             case 1318: npcId = 1313; amount = 25000;break;
 
-            case 13650: npcId = 1318; amount = 50000;break;
+            case 595: npcId = 1318; amount = 50000;break;
 
-            case 595: npcId = 13650; amount = 15000;break;
+            case 589: npcId = 595; amount = 15000;break;
             default : return false;
         }
         if(data.getNpcId() == 8014)

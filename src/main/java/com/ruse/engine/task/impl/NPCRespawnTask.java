@@ -28,7 +28,7 @@ public class NPCRespawnTask extends Task {
 			stop();
 			return;
 		}
-		if(killer != null && killer.getInstance() != null && npc_.getLocation() == killer.getLocation() && npc_.getPosition().getZ() == (killer.getIndex() * 4)){
+		if(killer != null && killer.getInstance() != null && npc.getLocation() == killer.getLocation() && npc.getPosition().getZ() == (killer.getIndex() * 4)){
 			killer.getInstance().signalSpawn(npc_);
 			super.stop();
 			return;
@@ -46,11 +46,6 @@ public class NPCRespawnTask extends Task {
 				if ((killer.getLocation()  == Location.INSTANCE1 || killer.getLocation()  == Location.INSTANCE2) && npc_.getLocation() == killer.getLocation()) {
 					killer.getRegionInstance().getNpcsList().add(npc_);
 				}
-			}
-
-			if(killer.getInstance() != null){
-				killer.getInstance().spawnNPC(npc_);
-				super.stop();
 			}
 		}
 

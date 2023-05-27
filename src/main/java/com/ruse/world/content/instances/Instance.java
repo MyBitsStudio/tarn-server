@@ -75,8 +75,8 @@ public abstract class Instance {
                 break;
             if(npcList.contains(n))
                 continue;
-            npcList.add(n);
             addNPC(n);
+            npcList.add(n);
         }
         for(;; removePlayer.poll()){
             Player p = removePlayer.peek();
@@ -89,8 +89,9 @@ public abstract class Instance {
             NPC n = removeNPC.peek();
             if(n == null)
                 break;
-            npcList.remove(n);
             removeNPC(n);
+            npcList.remove(n);
+
 
         }
         postProcess();
@@ -145,8 +146,8 @@ public abstract class Instance {
     }
 
     protected void addNPC(NPC npc){
-        npc.setInstance(this);
         World.register(npc);
+        npc.setInstance(this);
     }
 
     protected void removeNPC(NPC npc){
