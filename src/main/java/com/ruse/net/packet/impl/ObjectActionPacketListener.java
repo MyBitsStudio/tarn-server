@@ -310,7 +310,7 @@ public class ObjectActionPacketListener implements PacketListener {
                                 if(!player.getInstance().canLeave()){
                                     return;
                                 }
-                                player.getInstance().destroy();
+                                InstanceManager.dispose(player);
                             }
                             break;
 

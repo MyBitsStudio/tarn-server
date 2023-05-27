@@ -8,6 +8,7 @@ import com.ruse.world.content.bosses.Boss;
 import com.ruse.world.content.bosses.BossInstance;
 import com.ruse.world.content.bosses.SpecialBossInstance;
 import com.ruse.world.content.instanceMananger.InstanceData;
+import com.ruse.world.content.instances.InstanceManager;
 import com.ruse.world.content.transportation.TeleportHandler;
 import com.ruse.world.entity.impl.player.Player;
 
@@ -34,13 +35,13 @@ public class CounterInstance extends SpecialBossInstance {
                 getOwner().getInventory().delete(TOKEN_ID, TOKEN_AMOUNT);
                 getOwner().sendMessage("@blu@You have been charged @red@" + TOKEN_AMOUNT + " @blu@tokens for your instance.");
             } else {
-                dispose(getOwner());
+                InstanceManager.dispose(getOwner());
             }
         }
 
         if(ticks % (135 * 1000) == 0){
             getOwner().sendMessage("@red@Your instance has expired.");
-            dispose(getOwner());
+            InstanceManager.dispose(getOwner());
         }
     }
 

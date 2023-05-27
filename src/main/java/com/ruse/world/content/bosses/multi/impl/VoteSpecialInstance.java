@@ -2,6 +2,7 @@ package com.ruse.world.content.bosses.multi.impl;
 
 import com.ruse.model.Position;
 import com.ruse.world.content.bosses.SpecialBossInstance;
+import com.ruse.world.content.instances.InstanceManager;
 import com.ruse.world.entity.impl.player.Player;
 
 public class VoteSpecialInstance extends SpecialBossInstance {
@@ -27,13 +28,13 @@ public class VoteSpecialInstance extends SpecialBossInstance {
                 getOwner().getInventory().delete(TOKEN_ID, TOKEN_AMOUNT);
                 getOwner().sendMessage("@blu@You have been charged @red@" + TOKEN_AMOUNT + " @blu@Voting Tickets for your instance.");
             } else {
-                dispose(getOwner());
+                InstanceManager.dispose(getOwner());
             }
         }
 
         if(ticks % (160 * 100) == 0){
             getOwner().sendMessage("@red@Your instance has expired.");
-            dispose(getOwner());
+            InstanceManager.dispose(getOwner());
         }
     }
 

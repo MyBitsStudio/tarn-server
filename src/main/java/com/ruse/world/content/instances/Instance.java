@@ -204,38 +204,26 @@ public abstract class Instance {
         for(Player player : playerList){
             removePlayer(player);
         }
-        for(NPC npc : npcList){
-            removeNPC(npc);
-        }
-        for(GameObject object : objects){
-            World.deregister(object);
-        }
+        clear();
+        playerList.clear();
     }
 
     public void clear(){
         for(NPC npc : npcList){
             removeNPC(npc);
         }
+        npcList.clear();
         for(GameObject object : objects){
             World.deregister(object);
         }
+        objects.clear();
+
     }
 
-    public void dispose(Player player){
-        if (player.getInstance() != null)
-            player.getInstance().clear();
-
-        player.setTeleporting(true).getMovementQueue().reset();
-        cancelCurrentActions(player);
-        player.moveTo(new Position(2654, 2796, 0)).setPosition(GameSettings.DEFAULT_POSITION.copy());
-        player.getMovementQueue().setLockMovement(false).reset();
-
-        player.getPacketSender().sendInterfaceRemoval();
-    }
 
     public void moveTo(Player player, Position pos){
         player.setTeleporting(true).getMovementQueue().setLockMovement(true).reset();
-        cancelCurrentActions(player);
+        InstanceManager.cancelCurrentActions(player);
         player.setLocation(this.location);
         player.moveTo(pos.setZ(player.getIndex() * 4)).setPosition(pos.setZ(player.getIndex() * 4));
         player.getMovementQueue().setLockMovement(false).reset();
@@ -243,17 +231,6 @@ public abstract class Instance {
         player.getPacketSender().sendInterfaceRemoval();
     }
 
-    public void cancelCurrentActions(Player player) {
-        player.getPacketSender().sendInterfaceRemoval();
-        player.setTeleporting(false);
-        player.setWalkToTask(null);
-        player.setInputHandling(null);
-        player.getSkillManager().stopSkilling();
-        player.setEntityInteraction(null);
-        player.getMovementQueue().setFollowCharacter(null);
-        player.getCombatBuilder().cooldown(false);
-        player.setResting(false);
-    }
 
     public void start(){
 

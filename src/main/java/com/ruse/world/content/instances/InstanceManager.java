@@ -2,6 +2,7 @@ package com.ruse.world.content.instances;
 
 import com.ruse.GameSettings;
 import com.ruse.model.Locations;
+import com.ruse.model.Position;
 import com.ruse.model.definitions.ItemDefinition;
 import com.ruse.model.definitions.NPCDrops;
 import com.ruse.model.definitions.NpcDefinition;
@@ -447,5 +448,31 @@ public class InstanceManager {
         }
 
     }
+
+    public static void dispose(Player player){
+        if (player.getInstance() != null)
+            player.getInstance().clear();
+
+        player.setInstance(null);
+        player.setTeleporting(true).getMovementQueue().reset();
+        cancelCurrentActions(player);
+        player.moveTo(new Position(2654, 2796, 0)).setPosition(new Position(2654, 2796, 0));
+        player.getMovementQueue().setLockMovement(false).reset();
+
+        player.getPacketSender().sendInterfaceRemoval();
+    }
+
+    public static void cancelCurrentActions(Player player) {
+        player.getPacketSender().sendInterfaceRemoval();
+        player.setTeleporting(false);
+        player.setWalkToTask(null);
+        player.setInputHandling(null);
+        player.getSkillManager().stopSkilling();
+        player.setEntityInteraction(null);
+        player.getMovementQueue().setFollowCharacter(null);
+        player.getCombatBuilder().cooldown(false);
+        player.setResting(false);
+    }
+
 
 }
