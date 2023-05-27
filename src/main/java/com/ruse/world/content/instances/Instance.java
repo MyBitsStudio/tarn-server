@@ -117,13 +117,6 @@ public abstract class Instance {
                     p.sendMessage("@red@[INSTANCE] How did you get here?");
                     removePlayer.add(p);
                 });
-                World.getNpcs().stream()
-                        .filter(Objects::nonNull)
-                        .filter(n -> n.getLocation().equals(location))
-                        .filter(n -> n.getInstance() != this)
-                        .filter(n -> !npcList.contains(n))
-                        .filter(n -> !n.getInstanceId().equals(instanceId))
-                        .forEach(World::deregister);
     }
 
     private void preProcess(){
