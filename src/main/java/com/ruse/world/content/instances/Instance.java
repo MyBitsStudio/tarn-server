@@ -139,7 +139,7 @@ public abstract class Instance {
         player.setInstance(null);
 
         if(playerList.size() == 0){
-            destroy();
+           clear();
         }
 
         player.moveTo(new Position(2654, 2796, 0));
@@ -204,6 +204,15 @@ public abstract class Instance {
         for(Player player : playerList){
             removePlayer(player);
         }
+        for(NPC npc : npcList){
+            removeNPC(npc);
+        }
+        for(GameObject object : objects){
+            World.deregister(object);
+        }
+    }
+
+    public void clear(){
         for(NPC npc : npcList){
             removeNPC(npc);
         }

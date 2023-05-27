@@ -306,15 +306,12 @@ public class ObjectActionPacketListener implements PacketListener {
                             break;
 
                         case 4388:
-                            GameEngine.submit(() -> {
-                                if(player.getInstance() != null){
-                                    if(!player.getInstance().canLeave()){
-                                        return;
-                                    }
-                                    player.getInstance().destroy();
+                            if(player.getInstance() != null){
+                                if(!player.getInstance().canLeave()){
+                                    return;
                                 }
-                                player.moveTo(new Position(2655, 2796, 0));
-                            });
+                                player.getInstance().destroy();
+                            }
                             break;
 
                         case 22973:

@@ -28,8 +28,11 @@ public class InstanceManager {
      * @param player
      */
     public static void startMultiInstance(Player player, InstanceInterData data){
-        if(player.getInstance() != null)
+        if(player.getInstance() != null) {
+            player.getInstance().clear();
+            player.setInstance(null);
             return;
+        }
 
         if(player.getLocation() != Locations.Location.INSTANCE_LOBBY){
             player.sendMessage("HACKER ALERT! "+player.getUsername());
@@ -68,8 +71,11 @@ public class InstanceManager {
      * @param player
      */
     public static void startSingleBossInstance(@NotNull Player player, InstanceInterData data){
-        if(player.getInstance() != null)
+        if(player.getInstance() != null) {
+            player.getInstance().clear();
+            player.setInstance(null);
             return;
+        }
 
         if(player.getLocation() != Locations.Location.INSTANCE_LOBBY){
             player.sendMessage("HACKER ALERT! "+player.getUsername());
@@ -107,8 +113,11 @@ public class InstanceManager {
      * @param player
      */
     public static void startMultiAmountInstance(@NotNull Player player, InstanceInterData data){
-        if(player.getInstance() != null)
+        if(player.getInstance() != null) {
+            player.getInstance().clear();
+            player.setInstance(null);
             return;
+        }
 
         if(player.getLocation() != Locations.Location.INSTANCE_LOBBY){
             player.sendMessage("HACKER ALERT! "+player.getUsername());
