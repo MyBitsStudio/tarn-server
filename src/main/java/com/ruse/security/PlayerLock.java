@@ -185,7 +185,7 @@ public class PlayerLock {
         playerLocks.put("faAtt", false);
     }
 
-    private void save(){
+    public void save(){
         new PlayerLockSave(player, this).create().save();
     }
 

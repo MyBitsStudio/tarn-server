@@ -13068,10 +13068,10 @@
     "attackAnim": 422,
     "defenceAnim": 404,
     "deathAnim": 2304,
-    "attackBonus": 170,
+    "attackBonus": 190,
     "defenceMelee": 60,
-    "defenceRange": 60,
-    "defenceMage": 60
+    "defenceRange": 90,
+    "defenceMage": 90
   },
   {
     "id": 592,
@@ -13107,15 +13107,15 @@
     "poisonous": false,
     "respawn": 1,
     "maxHit": 131,
-    "hitpoints": 20000000000,
+    "hitpoints": 30000000000,
     "attackSpeed": 7,
     "attackAnim": 422,
     "defenceAnim": 404,
     "deathAnim": 2304,
-    "attackBonus": 160,
-    "defenceMelee": 50,
-    "defenceRange": 80,
-    "defenceMage": 80
+    "attackBonus": 230,
+    "defenceMelee": 80,
+    "defenceRange": 50,
+    "defenceMage": 50
   },
   {
     "id": 594,

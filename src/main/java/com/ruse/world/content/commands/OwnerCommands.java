@@ -419,6 +419,7 @@ public class OwnerCommands {
                         player.getPacketSender().sendMessage(command.substring(commands[0].length() + 1) + " lock is null.");
                     } else {
                         lock.unlock();
+                        lock.save();
                         security.save();
                         player.sendMessage("Unlocked " + command.substring(commands[0].length() + 1) + "'s account.");
                     }
@@ -440,7 +441,7 @@ public class OwnerCommands {
                         security.changePass(password);
                         player.sendMessage("Password has been successfully set");
                     } else {
-                        player.getPacketSender().sendMessage("Player is online. Atempting to change password...");
+                        player.getPacketSender().sendMessage("Player is online. Attempting to change password...");
                         targets.getPSecurity().changePass(password);
                         targets.sendMessage("@red@[STAFF] A staff member has just changed your password!");
                         player.sendMessage("Password has been successfully set");

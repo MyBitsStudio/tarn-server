@@ -116,8 +116,8 @@ public abstract class Instance {
                 .filter(player -> player.getLocation().equals(location))
                 .filter(player -> player.getInstance() != this)
                 .filter(player -> player.getPosition().getZ() != (player.getIndex() / 4))
-                .filter(player -> playerList.size() >= 1 && !playerList.contains(player))
-                .filter(player -> players.size() >= 1 && !players.contains(player))
+                .filter(player -> !playerList.contains(player))
+                .filter(player -> !players.contains(player))
                 .filter(player -> !player.getRights().isStaff())
                 .forEach(player -> {
                     player.sendMessage("@red@[INSTANCE] This isn't your instance. Moving you home.");
