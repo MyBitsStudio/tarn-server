@@ -41,7 +41,7 @@ public class DonatorSpecialInstance extends SpecialBossInstance {
     @Override
     public void start(){
 
-        moveTo(getOwner(), new Position(3019, 2762));
+        moveTo(getOwner(), new Position(3025, 2768));
         add(getOwner());
 
         getOwner().getPacketSender().sendMessage("@blu@[INSTANCE] Your instance has started.");

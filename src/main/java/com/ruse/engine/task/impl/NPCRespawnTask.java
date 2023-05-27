@@ -23,7 +23,9 @@ public class NPCRespawnTask extends Task {
 	@Override
 	public void execute() {
 		if(killer != null && killer.getInstance() != null && npc.getLocation() == killer.getLocation() && npc.getPosition().getZ() == (killer.getIndex() * 4)){
-			killer.getInstance().signalSpawn(npc);
+			if(killer.getInstanceId().equals(npc.getInstanceId()))
+				killer.getInstance().signalSpawn(npc);
+
 			super.stop();
 			return;
 		}
