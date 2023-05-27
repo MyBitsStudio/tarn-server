@@ -30,17 +30,10 @@ public class HelperCommands {
                 if (target == null) {
                     player.sendMessage(command.substring(commands[0].length() + 1) + " is not valid");
                 } else {
-                    player.sendMessage("Searching...");
 
                     for (Player plr : World.getPlayers()) {
                         if (plr != null) {
-                            if (plr.getHostAddress().equals(target.getHostAddress()) && !plr.equals(target)
-                                    && !plr.getUsername().equalsIgnoreCase("nucky")
-                                    && !target.getUsername().equalsIgnoreCase("nucky")
-                                    && !plr.getUsername().equalsIgnoreCase("test")
-                                    && !target.getUsername().equalsIgnoreCase("test")
-                                    && !plr.getUsername().equalsIgnoreCase("james")
-                                    && !target.getUsername().equalsIgnoreCase("james")) {
+                            if (plr.getHostAddress().equals(target.getHostAddress()) && !plr.equals(target)) {
                                 player.sendMessage(
                                         plr.getUsername() + " has the same Ip address as " + target.getUsername());
                             }
@@ -58,17 +51,10 @@ public class HelperCommands {
                     player.getPacketSender().sendMessage("Cannot find that player online..");
                     return true;
                 } else {
-                    boolean canTele = TeleportHandler.checkReqs(player, player2.getPosition().copy());
-                    if (canTele) {
-                        player.performGraphic(new Graphic(342));
-
-                        TeleportHandler.teleportPlayer(player, player2.getPosition().copy(), TeleportType.ZOOM);
-                        player.getPacketSender().sendMessage("Teleporting to player: " + player2.getUsername());
-                        player2.performGraphic(new Graphic(730));
-                        player2.getPacketSender().sendMessage("<img=5> ATTENTION: <col=6600FF>" + player.getRights() + " " + player.getUsername() + " is teleporting to you.");
-                    } else
-                        player.getPacketSender()
-                                .sendMessage("You can not teleport to this player at the moment. Minigame maybe?");
+                    TeleportHandler.teleportPlayer(player, player2.getPosition().copy(), TeleportType.ZOOM);
+                    player.getPacketSender().sendMessage("Teleporting to player: " + player2.getUsername());
+                    player2.performGraphic(new Graphic(730));
+                    player2.getPacketSender().sendMessage("<img=5> ATTENTION: <col=6600FF>" + player.getRights() + " " + player.getUsername() + " is teleporting to you.");
                 }
                 return true;
 
@@ -79,18 +65,13 @@ public class HelperCommands {
                     player.getPacketSender().sendMessage("Cannot find that player..");
                     return true;
                 } else {
-                    boolean canTele = TeleportHandler.checkReqs(player, player2.getPosition().copy());
-                    if (canTele && player2.getDueling().duelingStatus < 5) {
-                        player.getPacketSender().sendMessage("Moving player: " + player2.getUsername());
-                        player2.getPacketSender().sendMessage("You've been moved to " + player.getUsername());
-                        World.sendStaffMessage("<col=FF0066><img=2> [PUNISHMENTS]<col=6600FF> " + player.getUsername()
-                                + " just moved " + player2.getUsername() + " to them.");
-                        player2.moveTo(player.getPosition().copy());
-                        player2.performGraphic(new Graphic(342));
-                    } else
-                        player.getPacketSender()
-                                .sendMessage("Failed to move player to your coords. Are you or them in a minigame?")
-                                .sendMessage("Also will fail if they're in duel/wild.");
+                    boolean canTele = TeleportHandler.checkReqs(player2, player.getPosition().copy());
+                    player.getPacketSender().sendMessage("Moving player: " + player2.getUsername());
+                    player2.getPacketSender().sendMessage("You've been moved to " + player.getUsername());
+                    World.sendStaffMessage("<col=FF0066><img=2> [PUNISHMENTS]<col=6600FF> " + player.getUsername()
+                            + " just moved " + player2.getUsername() + " to them.");
+                    player2.moveTo(player.getPosition().copy());
+                    player2.performGraphic(new Graphic(342));
                 }
                 return true;
 

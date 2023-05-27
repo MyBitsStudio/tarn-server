@@ -28,6 +28,11 @@ public class NPCRespawnTask extends Task {
 			stop();
 			return;
 		}
+		if(killer != null && killer.getInstance() != null){
+			killer.getInstance().signalSpawn(npc_);
+			super.stop();
+			return;
+		}
 		npc_.getMovementCoordinator().setCoordinator(npc.getMovementCoordinator().getCoordinator());
 
 		if (npc_.getId() == 8022 || npc_.getId() == 8028) { // Desospan, respawn at random locations

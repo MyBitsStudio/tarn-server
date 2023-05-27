@@ -115,7 +115,7 @@ public abstract class Instance {
         World.getPlayers().stream().filter(Objects::nonNull)
                 .filter(player -> player.getLocation().equals(location))
                 .filter(player -> player.getInstance() != this)
-                .filter(player -> player.getPosition().getZ() != (player.getIndex() / 4))
+                .filter(player -> player.getPosition().getZ() != (player.getIndex() * 4))
                 .filter(player -> !playerList.contains(player))
                 .filter(player -> !players.contains(player))
                 .filter(player -> !player.getRights().isStaff())
@@ -150,8 +150,8 @@ public abstract class Instance {
     }
 
     protected void removeNPC(NPC npc){
+        npc.setInstance(null);
         World.deregister(npc);
-        signalSpawn(npc);
     }
 
     public void add(Entity en){
