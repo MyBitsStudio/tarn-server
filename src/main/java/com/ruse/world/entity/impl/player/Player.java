@@ -4324,16 +4324,6 @@ public class Player extends Character {
         this.minimeCombat = minimeCombat;
     }
 
-    private Instance instance;
-
-    public Instance getInstance() {
-        return instance;
-    }
-
-    public void setInstance(Instance instance) {
-        this.instance = instance;
-    }
-
     private PlayerFlags playerFlags = new PlayerFlags(this);
 
     public PlayerFlags getPlayerFlags() {

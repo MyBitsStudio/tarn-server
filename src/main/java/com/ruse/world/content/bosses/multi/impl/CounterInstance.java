@@ -35,13 +35,13 @@ public class CounterInstance extends SpecialBossInstance {
                 getOwner().getInventory().delete(TOKEN_ID, TOKEN_AMOUNT);
                 getOwner().sendMessage("@blu@You have been charged @red@" + TOKEN_AMOUNT + " @blu@tokens for your instance.");
             } else {
-                InstanceManager.dispose(getOwner());
+                InstanceManager.getManager().dispose(getOwner());
             }
         }
 
         if(ticks % (135 * 1000) == 0){
             getOwner().sendMessage("@red@Your instance has expired.");
-            InstanceManager.dispose(getOwner());
+            InstanceManager.getManager().dispose(getOwner());
         }
     }
 

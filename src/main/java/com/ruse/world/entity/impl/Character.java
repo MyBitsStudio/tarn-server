@@ -22,6 +22,7 @@ import com.ruse.world.content.combat.CombatBuilder;
 import com.ruse.world.content.combat.CombatType;
 import com.ruse.world.content.combat.magic.CombatSpell;
 import com.ruse.world.content.combat.strategy.CombatStrategy;
+import com.ruse.world.content.instances.Instance;
 import com.ruse.world.entity.Entity;
 import com.ruse.world.entity.impl.mini.MiniPlayer;
 import com.ruse.world.entity.impl.player.Player;
@@ -113,6 +114,9 @@ public abstract class Character extends Entity {
 	private Hit primaryHit;
 	private Hit secondaryHit;
 	private RegionInstance regionInstance;
+	private Instance instance;
+
+	private String instanceId = "";
 
 	/*** INTS ***/
 	private int npcTransformationId;
@@ -678,6 +682,22 @@ public abstract class Character extends Entity {
 
 	public void setRegionInstance(RegionInstance regionInstance) {
 		this.regionInstance = regionInstance;
+	}
+
+	public Instance getInstance() {
+		return instance;
+	}
+
+	public void setInstance(Instance instance) {
+		this.instance = instance;
+	}
+
+	public void setInstanceId(String instanceId) {
+		this.instanceId = instanceId;
+	}
+
+	public String getInstanceId() {
+		return instanceId;
 	}
 
 

@@ -208,7 +208,7 @@ public class ObjectActionPacketListener implements PacketListener {
                         break;
 
                         case 621:
-                            InstanceManager.sendInterface(player);
+                            InstanceManager.getManager().sendInterface(player);
                             break;
 
                         case 13291:
@@ -310,7 +310,7 @@ public class ObjectActionPacketListener implements PacketListener {
                                 if(!player.getInstance().canLeave()){
                                     return;
                                 }
-                                InstanceManager.dispose(player);
+                                player.getInstance().remove(player);
                             }
                             break;
 

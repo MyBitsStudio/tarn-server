@@ -28,13 +28,13 @@ public class DonatorSpecialInstance extends SpecialBossInstance {
                 getOwner().getInventory().delete(TOKEN_ID, TOKEN_AMOUNT);
                 getOwner().sendMessage("@blu@You have been charged @red@" + TOKEN_AMOUNT + " @blu@Donator Tickets for your instance.");
             } else {
-                InstanceManager.dispose(getOwner());
+                InstanceManager.getManager().dispose(getOwner());
             }
         }
 
         if(ticks % (160 * 100) == 0){
             getOwner().sendMessage("@red@Your instance has expired.");
-            InstanceManager.dispose(getOwner());
+            InstanceManager.getManager().dispose(getOwner());
         }
     }
 

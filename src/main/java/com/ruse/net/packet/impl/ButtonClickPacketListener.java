@@ -180,7 +180,7 @@ public class ButtonClickPacketListener implements PacketListener {
             return;
         }
 
-        if(InstanceManager.handleButton(player, id)) {
+        if(InstanceManager.getManager().handleButton(player, id)) {
         	return;
         }
 

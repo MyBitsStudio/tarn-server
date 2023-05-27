@@ -350,14 +350,6 @@ public class NPCDeathTask extends Task {
 
                                         }
 
-
-
-                                    }
-
-                                    if(killer != null){
-                                        if(killer.getInstance() != null){
-                                            killer.getInstance().remove(npc);
-                                        }
                                     }
 
                                     if (npc.getDefinition().getRespawnTime() > 0 && npc.getLocation() != Location.GRAVEYARD && npc.getLocation() != Location.KEEPERS_OF_LIGHT_GAME
@@ -366,7 +358,14 @@ public class NPCDeathTask extends Task {
                                             TaskManager.submit(new NPCRespawnTask(npc, npc.getDefinition().getRespawnTime(), killer));
                                     }
 
-                                    World.deregister(npc);
+                                    if(killer == null) {
+                                        World.deregister(npc);
+                                    } else if (killer.getInstance() == null) {
+                                        World.deregister(npc);
+                                    } else {
+                                        killer.getInstance().remove(npc);
+                                    }
+
 
                                     super.stop();
                                 }

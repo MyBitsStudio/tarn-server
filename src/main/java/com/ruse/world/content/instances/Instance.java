@@ -4,6 +4,7 @@ import com.ruse.GameSettings;
 import com.ruse.model.GameObject;
 import com.ruse.model.Locations;
 import com.ruse.model.Position;
+import com.ruse.security.tools.SecurityUtils;
 import com.ruse.world.World;
 import com.ruse.world.entity.Entity;
 import com.ruse.world.entity.impl.npc.NPC;
@@ -32,6 +33,7 @@ public abstract class Instance {
 
     protected InstanceDifficulty difficulty = InstanceDifficulty.EASY;
     protected long canLeave;
+    protected String instanceId = SecurityUtils.createRandomString(16);
 
     public Instance(Locations.Location location){
         this.location = location;
@@ -47,6 +49,10 @@ public abstract class Instance {
 
     public void setCanLeave(long time) {
         this.canLeave = time;
+    }
+
+    public String getInstanceId() {
+        return instanceId;
     }
 
     public boolean canLeave() {
@@ -75,6 +81,8 @@ public abstract class Instance {
                 break;
             if(npcList.contains(n))
                 continue;
+            if(!n.getInstanceId().equals(""))
+                continue;
             addNPC(n);
             npcList.add(n);
         }
@@ -91,7 +99,6 @@ public abstract class Instance {
                 break;
             removeNPC(n);
             npcList.remove(n);
-
 
         }
         postProcess();
@@ -117,6 +124,7 @@ public abstract class Instance {
                 .filter(player -> player.getLocation().equals(location))
                 .filter(player -> player.getInstance() != this)
                 .filter(player -> player.getPosition().getZ() != (player.getIndex() * 4))
+                .filter(player -> !player.getInstanceId().equals(this.instanceId))
                 .filter(player -> !playerList.contains(player))
                 .filter(player -> !players.contains(player))
                 .filter(player -> !player.getRights().isStaff())
@@ -127,16 +135,14 @@ public abstract class Instance {
                 });
     }
 
-    public void spawnNPC(NPC npc){
-        npcs.add(npc);
-    }
-
     protected void addPlayer(@NotNull Player player){
         player.setInstance(this);
+        player.setInstanceId(instanceId);
     }
 
     protected void removePlayer(@NotNull Player player){
         player.setInstance(null);
+        player.setInstanceId("");
 
         if(playerList.size() == 0){
            clear();
@@ -148,6 +154,7 @@ public abstract class Instance {
     protected void addNPC(NPC npc){
         World.register(npc);
         npc.setInstance(this);
+        npc.setInstanceId(instanceId);
     }
 
     protected void removeNPC(NPC npc){
@@ -206,6 +213,7 @@ public abstract class Instance {
         }
         clear();
         playerList.clear();
+        InstanceManager.getManager().removeInstance(instanceId);
     }
 
     public void clear(){
@@ -223,7 +231,7 @@ public abstract class Instance {
 
     public void moveTo(Player player, Position pos){
         player.setTeleporting(true).getMovementQueue().setLockMovement(true).reset();
-        InstanceManager.cancelCurrentActions(player);
+        InstanceManager.getManager().cancelCurrentActions(player);
         player.setLocation(this.location);
         player.moveTo(pos.setZ(player.getIndex() * 4)).setPosition(pos.setZ(player.getIndex() * 4));
         player.getMovementQueue().setLockMovement(false).reset();
@@ -233,7 +241,6 @@ public abstract class Instance {
 
 
     public void start(){
-
     }
 
     public int cost(){

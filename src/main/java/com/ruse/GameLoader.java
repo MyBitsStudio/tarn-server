@@ -32,6 +32,7 @@ import com.ruse.world.content.donation.FlashDeals;
 import com.ruse.world.content.grandLottery.GrandLottery;
 import com.ruse.world.content.grandexchange.GrandExchangeOffers;
 import com.ruse.world.content.groupironman.GroupManager;
+import com.ruse.world.content.instances.InstanceManager;
 import com.ruse.world.content.polling.PollManager;
 import com.ruse.world.content.pos.PlayerOwnedShopManager;
 import com.ruse.world.content.seasonpass.SeasonPassLoader;
@@ -85,6 +86,7 @@ public final class GameLoader {
 	private void startInstances(){
 		FlashDeals.getDeals();
 		DonationManager.getInstance();
+		InstanceManager.getManager();
 	}
 
 	public void finish() throws IOException, InterruptedException {

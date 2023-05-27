@@ -6,7 +6,6 @@ import com.ruse.model.Position;
 import com.ruse.model.definitions.ItemDefinition;
 import com.ruse.model.definitions.NPCDrops;
 import com.ruse.model.definitions.NpcDefinition;
-import com.ruse.world.World;
 import com.ruse.world.content.KillsTracker;
 import com.ruse.world.content.bosses.SingleBossSinglePlayerInstance;
 import com.ruse.world.content.bosses.crucio.CrucioInstance;
@@ -19,19 +18,43 @@ import com.ruse.world.entity.impl.player.Player;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class InstanceManager {
+
+    public static InstanceManager manager;
+
+    public static InstanceManager getManager(){
+        if(manager == null)
+            manager = new InstanceManager();
+        return manager;
+    }
+
+    private final Map<String, Instance> instances = new ConcurrentHashMap<>();
 
     /**
      * Starts New Multi Instance That Doesnt Have A Count
      * @param player
      */
-    public static void startMultiInstance(Player player, InstanceInterData data){
+
+    public void removeInstance(String id){
+        instances.remove(id);
+    }
+
+    public void startMultiInstance(Player player, InstanceInterData data){
         if(player.getInstance() != null) {
             player.getInstance().clear();
             player.setInstance(null);
+            return;
+        }
+
+        if(!Objects.equals(player.getInstanceId(), "")){
+            instances.get(player.getInstanceId()).removePlayer(player);
+            player.setInstanceId("");
             return;
         }
 
@@ -63,6 +86,7 @@ public class InstanceManager {
         if(instance == null)
             return;
 
+        instances.put(instance.getInstanceId(), instance);
         instance.start();
 
     }
@@ -71,10 +95,16 @@ public class InstanceManager {
      * Starts Single Boss Instances
      * @param player
      */
-    public static void startSingleBossInstance(@NotNull Player player, InstanceInterData data){
+    public void startSingleBossInstance(@NotNull Player player, InstanceInterData data){
         if(player.getInstance() != null) {
             player.getInstance().clear();
             player.setInstance(null);
+            return;
+        }
+
+        if(!Objects.equals(player.getInstanceId(), "")){
+            instances.get(player.getInstanceId()).removePlayer(player);
+            player.setInstanceId("");
             return;
         }
 
@@ -105,7 +135,7 @@ public class InstanceManager {
             player.sendMessage(instance.failedEntry());
             return;
         }
-
+        instances.put(instance.getInstanceId(), instance);
         instance.start();
     }
 
@@ -113,10 +143,16 @@ public class InstanceManager {
      * Starts Multi Boss Instance With A Count
      * @param player
      */
-    public static void startMultiAmountInstance(@NotNull Player player, InstanceInterData data){
+    public void startMultiAmountInstance(@NotNull Player player, InstanceInterData data){
         if(player.getInstance() != null) {
             player.getInstance().clear();
             player.setInstance(null);
+            return;
+        }
+
+        if(!Objects.equals(player.getInstanceId(), "")){
+            instances.get(player.getInstanceId()).removePlayer(player);
+            player.setInstanceId("");
             return;
         }
 
@@ -134,10 +170,11 @@ public class InstanceManager {
         Instance instance = new MultiBossNormalInstance(player,
                 data.getNpcId(), data.getSpawns(), data.getCap());
 
+        instances.put(instance.getInstanceId(), instance);
         instance.start();
     }
 
-    private static boolean takeItem(@NotNull Player player, @NotNull InstanceInterData data){
+    private boolean takeItem(@NotNull Player player, @NotNull InstanceInterData data){
         int diff = Integer.parseInt(player.getVariables().getInterfaceSettings()[2]);
         if(data.getCost() != null){
             if(player.getInventory().contains(data.getCost().getId(), (int) (data.getCost().getAmount() * (1 +(diff * 2L))))){
@@ -150,7 +187,7 @@ public class InstanceManager {
         return false;
     }
 
-    public static void refresh(@NotNull Player player){
+    public void refresh(@NotNull Player player){
         String[] settings = player.getVariables().getInterfaceSettings();
 
         InstanceInterData[] data = new InstanceInterData[0];
@@ -255,13 +292,13 @@ public class InstanceManager {
                 .forEach(item -> player.getPacketSender().sendItemOnInterface(start.getAndIncrement(), item.getItem().getId(), item.getItem().getAmount()));
     }
 
-    public static void sendInterface(@NotNull Player player){
+    public void sendInterface(@NotNull Player player){
         player.getPacketSender().sendInterfaceRemoval();
         refresh(player);
         player.getPacketSender().sendInterface(70500);
     }
 
-    public static boolean isUnlocked(@NotNull Player player, InstanceInterData data){
+    public boolean isUnlocked(@NotNull Player player, InstanceInterData data){
         if(player.getRights().OwnerDeveloperOnly())
             return true;
 
@@ -338,7 +375,7 @@ public class InstanceManager {
             return KillsTracker.getTotalKillsForNpc(npcId, player) > amount;
     }
 
-    private static boolean handleSpecialLock(Player player, int npcId){
+    private boolean handleSpecialLock(Player player, int npcId){
         switch(npcId){
             case 9017:
 
@@ -350,7 +387,7 @@ public class InstanceManager {
         return false;
     }
 
-    public static boolean handleButton(Player player, int button){
+    public boolean handleButton(Player player, int button){
         int selection = (button >= 70501 && button <= 70714) ? 0 : -1;
         if(selection == 0){
             switch(button){
@@ -380,7 +417,7 @@ public class InstanceManager {
        return false;
     }
 
-    private static void startInstance(@NotNull Player player){
+    private void startInstance(@NotNull Player player){
         String[] settings = player.getVariables().getInterfaceSettings();
         int tab = Integer.parseInt(settings[0]);
         int child = Integer.parseInt(settings[1]);
@@ -430,7 +467,7 @@ public class InstanceManager {
 
     }
 
-    public static void onLogin(@NotNull Player player){
+    public void onLogin(@NotNull Player player){
         if(player.getVariables().getInterfaceSettings()[0] == null){
             player.getVariables().setInterfaceSettings(0, "0");
         }
@@ -449,7 +486,7 @@ public class InstanceManager {
 
     }
 
-    public static void dispose(Player player){
+    public void dispose(Player player){
         if (player.getInstance() != null)
             player.getInstance().clear();
 
@@ -462,7 +499,7 @@ public class InstanceManager {
         player.getPacketSender().sendInterfaceRemoval();
     }
 
-    public static void cancelCurrentActions(Player player) {
+    public void cancelCurrentActions(Player player) {
         player.getPacketSender().sendInterfaceRemoval();
         player.setTeleporting(false);
         player.setWalkToTask(null);

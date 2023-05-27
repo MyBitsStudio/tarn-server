@@ -51,7 +51,7 @@ public abstract class MultiBossInstance extends Instance {
     public void signalSpawn(NPC n){
         if(spawned.getAndIncrement() >= cap)
             return;
-        if(n.getId() == getNpcId()){
+        if(n.getId() == getNpcId() && n.getInstanceId().equals(getOwner().getInstanceId())){
             MultiBoss boss = new MultiBoss(npcId, n.getPosition().setZ(getOwner().getIndex() * 4), true, getOwner());
             boss.setSpawnedFor(getOwner());
             add(boss);

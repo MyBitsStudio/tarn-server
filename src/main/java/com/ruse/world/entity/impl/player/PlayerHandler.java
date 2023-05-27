@@ -233,7 +233,7 @@ public class PlayerHandler {
         Lottery.onLogin(player);
         Locations.login(player);
 
-        InstanceManager.onLogin(player);
+        InstanceManager.getManager().onLogin(player);
 
         if(player.getLocation() != Locations.Location.PROGRESSION_ZONES) {
             player.getPacketSender().sendWalkableInterface(112000, false);

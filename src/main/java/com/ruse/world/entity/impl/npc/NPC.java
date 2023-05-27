@@ -669,16 +669,6 @@ public class NPC extends Character {
         return World.getNearbyNPCs(getPosition(), distance);
     }
 
-    private Instance instance;
-
-    public Instance getInstance() {
-    	return instance;
-    }
-
-    public void setInstance(Instance instance) {
-    	this.instance = instance;
-    }
-
     public void onDeath(){
 
     }

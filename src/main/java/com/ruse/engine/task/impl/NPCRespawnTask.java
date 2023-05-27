@@ -22,17 +22,18 @@ public class NPCRespawnTask extends Task {
 
 	@Override
 	public void execute() {
+		if(killer != null && killer.getInstance() != null && npc.getLocation() == killer.getLocation() && npc.getPosition().getZ() == (killer.getIndex() * 4)){
+			killer.getInstance().signalSpawn(npc);
+			super.stop();
+			return;
+		}
 		NPC npc_ = new NPC(npc.getId(), npc.getDefaultPosition());
 		if (killer != null && killer.getLocation() != null && (killer.getLocation()  == Location.INSTANCE1 || killer.getLocation()  == Location.INSTANCE2) && killer.getCurrentInstanceAmount() == -1) {
 			World.deregister(npc_);
 			stop();
 			return;
 		}
-		if(killer != null && killer.getInstance() != null && npc.getLocation() == killer.getLocation() && npc.getPosition().getZ() == (killer.getIndex() * 4)){
-			killer.getInstance().signalSpawn(npc_);
-			super.stop();
-			return;
-		}
+
 		npc_.getMovementCoordinator().setCoordinator(npc.getMovementCoordinator().getCoordinator());
 
 		if (npc_.getId() == 8022 || npc_.getId() == 8028) { // Desospan, respawn at random locations
