@@ -152,9 +152,9 @@ public abstract class Instance {
     }
 
     protected void addNPC(NPC npc){
-        World.register(npc);
         npc.setInstance(this);
         npc.setInstanceId(instanceId);
+        World.register(npc);
     }
 
     protected void removeNPC(NPC npc){
