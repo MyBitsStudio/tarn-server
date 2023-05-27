@@ -28,7 +28,7 @@ public class NPCRespawnTask extends Task {
 			stop();
 			return;
 		}
-		if(killer != null && killer.getInstance() != null){
+		if(killer != null && killer.getInstance() != null && npc_.getLocation() == killer.getLocation() && npc_.getPosition().getZ() == (killer.getIndex() * 4)){
 			killer.getInstance().signalSpawn(npc_);
 			super.stop();
 			return;

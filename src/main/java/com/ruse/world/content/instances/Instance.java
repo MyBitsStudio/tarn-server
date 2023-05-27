@@ -150,7 +150,6 @@ public abstract class Instance {
     }
 
     protected void removeNPC(NPC npc){
-        npc.setInstance(null);
         World.deregister(npc);
     }
 
