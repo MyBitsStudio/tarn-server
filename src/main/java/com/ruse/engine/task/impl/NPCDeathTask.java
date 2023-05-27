@@ -357,7 +357,6 @@ public class NPCDeathTask extends Task {
                                     if(killer != null){
                                         if(killer.getInstance() != null){
                                             killer.getInstance().remove(npc);
-                                            super.stop();
                                         }
                                     }
 

@@ -39,7 +39,7 @@ public abstract class MultiBossInstance extends Instance {
     public void spawnAll(Position[] pos){
         for(int i = 0; i < bosses.length; i++){
             if(bosses[i] == null){
-                bosses[i] = new MultiBoss(npcId, pos[i].setZ(owner.getIndex() * 4), false, getOwner());
+                bosses[i] = new MultiBoss(npcId, pos[i].setZ(owner.getIndex() * 4), true, getOwner());
                 bosses[i].setInstance(this);
             }
             bosses[i].setSpawnedFor(getOwner());
@@ -52,7 +52,7 @@ public abstract class MultiBossInstance extends Instance {
         if(spawned.getAndIncrement() >= cap)
             return;
         if(n.getId() == getNpcId()){
-            MultiBoss boss = new MultiBoss(npcId, n.getPosition().setZ(owner.getIndex() * 4), false, owner);
+            MultiBoss boss = new MultiBoss(npcId, n.getPosition().setZ(owner.getIndex() * 4), true, owner);
             boss.setInstance(this);
             boss.setSpawnedFor(owner);
             add(boss);
