@@ -61,6 +61,8 @@ public class CombatStrategies {
 		STRATEGIES.put(252, new FriezaCombatScript());
 		STRATEGIES.put(449, new FriezaCombatScript());
 		STRATEGIES.put(595, new Galvek());
+		STRATEGIES.put(591, new FriezaCombatScript());
+		STRATEGIES.put(593, new FriezaCombatScript());
 		STRATEGIES.put(6692, new FriezaCombatScript());
 		//STRATEGIES.put(452, new FriezaCombatScript());
 		STRATEGIES.put(DungeoneeringBossNpc.Constants.BOSS_NOHEADICON, DungeoneeringBossCombat.INSTANCE);

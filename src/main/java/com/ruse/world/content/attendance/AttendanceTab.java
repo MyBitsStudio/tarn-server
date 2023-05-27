@@ -421,7 +421,13 @@ public enum AttendanceTab {
                     new Item(23058,2),
                     new Item(13650,2500),
                     new Item(20489,2),
-                    new Item(20503,5)));
+                    new Item(20503,5)))
+    ,
+    SUMMER(4,
+            new MonthlyReward(Month.MAY,
+                    new Item(13727,2000))),
+
+    ;
     
     private final int key;
     private final MonthlyReward[] monthlyReward;

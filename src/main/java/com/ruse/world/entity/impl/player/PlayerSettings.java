@@ -28,7 +28,8 @@ public class PlayerSettings {
         settings.put("pass-change", false);
         settings.put("is-locked", false);
         settings.put("drop-message-personal", true);
-        settings.put("security-lock", true);
+        settings.put("security-lock", false);
+        settings.put("summer-unlock", false);
     }
 
     public void setSetting(String key, Object value){

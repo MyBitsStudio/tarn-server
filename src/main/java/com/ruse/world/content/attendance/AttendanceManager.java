@@ -110,7 +110,12 @@ public class AttendanceManager {
         Month month = LocalDate.now(ZoneOffset.UTC).getMonth();
 
         tabs.add(AttendanceTab.LOYAL);
-        //tabs.add(AttendanceTab.DONATOR);
+
+        if(p.getRights().isContributorOnly())
+            tabs.add(AttendanceTab.DONATOR);
+
+        if(p.getPSettings().getBooleanValue("summer-unlock"))
+            tabs.add(AttendanceTab.SUMMER);
 
         //if(month == Month.DECEMBER) {
         //    tabs.add(AttendanceTab.CHRISTMAS);
@@ -121,4 +126,15 @@ public class AttendanceManager {
 
         return tabs;
     }
+
+    public boolean handleTabs(int buttonId){
+        switch(buttonId){
+            case 150006 : p.getAttendenceUI().showInterface(AttendanceTab.LOYAL); return true;
+            case 150136 : p.getAttendenceUI().showInterface(AttendanceTab.DONATOR); return true;
+            case 150138 : p.getAttendenceUI().showInterface(AttendanceTab.SUMMER); return true;
+            default : return false;
+        }
+    }
+
+
 }

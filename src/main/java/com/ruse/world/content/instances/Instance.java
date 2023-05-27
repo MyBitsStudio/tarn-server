@@ -150,9 +150,8 @@ public abstract class Instance {
     }
 
     protected void removeNPC(NPC npc){
-        npc.setInstance(null);
-        signalSpawn(npc);
         World.deregister(npc);
+        signalSpawn(npc);
     }
 
     public void add(Entity en){

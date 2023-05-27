@@ -10,6 +10,7 @@ import com.ruse.util.Misc;
 import com.ruse.util.RandomUtility;
 import com.ruse.world.World;
 import com.ruse.world.content.*;
+import com.ruse.world.content.attendance.AttendanceTab;
 import com.ruse.world.content.combat.DesolaceFormulas;
 import com.ruse.world.content.combat.Maxhits;
 import com.ruse.world.content.combat.prayer.CurseHandler;
@@ -405,7 +406,7 @@ public class PlayerCommands {
                 return true;
 
             case "daily":
-                player.getAttendenceUI().showInterface();
+                player.getAttendenceUI().showInterface(AttendanceTab.LOYAL);
                 return true;
         }
         return false;

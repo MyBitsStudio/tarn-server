@@ -9,6 +9,8 @@ import com.ruse.world.entity.impl.player.Player;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 public abstract class MultiBossInstance extends Instance {
 
     private final Player owner;
@@ -17,7 +19,7 @@ public abstract class MultiBossInstance extends Instance {
     @Getter
     private final int cap;
     @Getter
-    private int spawned = 0;
+    private AtomicInteger spawned = new AtomicInteger(0);
     @Getter
     private final MultiBoss[] bosses;
 
@@ -47,8 +49,7 @@ public abstract class MultiBossInstance extends Instance {
 
     @Override
     public void signalSpawn(NPC n){
-        spawned++;
-        if(spawned >= cap)
+        if(spawned.getAndIncrement() >= cap)
             return;
         if(n.getId() == getNpcId()){
             MultiBoss boss = new MultiBoss(npcId, n.getPosition().setZ(owner.getIndex() * 4), false, owner);

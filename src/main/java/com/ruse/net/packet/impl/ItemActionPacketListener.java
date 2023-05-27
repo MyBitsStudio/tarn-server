@@ -503,68 +503,77 @@ public class ItemActionPacketListener implements PacketListener {
                 player.getCasketOpening().setCurrentCasket(CasketOpening.Caskets.PROG_BOX_T3);
                 player.getCasketOpening().openInterface();
                 break;
-            case 11858:
-            case 11860:
-            case 11862:
-            case 11848:
-            case 11856:
-            case 11850:
-            case 11854:
-            case 11852:
-            case 11846:
-            case 11930:
-            case 11960:
-            case 19588:
-            case 11938:
-            case 14525:
-            case 11946:
-            case 11942:
-            case 11944:
-            case 19592:
-            case 11926:
-            case 14529:
-            case 19582:
-            case 9666:
-            case 19580:
             case 19659:
-                if (!player.getClickDelay().elapsed(250) || !player.getInventory().contains(itemId))
-                    return;
-                if (player.busy()) {
-                    player.getPacketSender().sendMessage("You cannot open this right now.");
+                if(player.getPSettings().getBooleanValueDef("summer-unlock")){
+                    player.sendMessage("You already have this unlocked.");
                     return;
                 }
-
-                int[] items =
-                        itemId == 11930 ? new int[]{8816, 8817, 8818, 8820, 8819}
-                                : itemId == 11960 ? new int[]{8806, 8807, 8808}
-                                : itemId == 19588 ? new int[]{14050, 14051, 14052, 1485, 14053, 14055}
-                                : itemId == 11938 ? new int[]{11183, 11184, 11179, 11762, 11182, 11181}
-                                : itemId == 14525 ? new int[]{15645, 15646, 15647}
-                                : itemId == 11946 ? new int[]{4684, 4685, 4686, 9939, 8274, 8273}
-                                : itemId == 11942 ? new int[]{17614, 17616, 17618, 17606, 17622, 11195}
-                                : itemId == 11944 ? new int[]{22136, 22137, 22138, 22141, 22139, 22142}
-                                : itemId == 19592 ? new int[]{22145, 22146, 22147, 22149, 22150}
-                                : itemId == 11926 ? new int[]{14190, 14192, 14194, 14200, 14198, 14196, 12608}
-                                : itemId == 14529 ? new int[]{22100, 22101, 22102, 22105, 22103, 22104}
-                                : itemId == 19582 ? new int[]{14202, 14204, 14206, 14303, 14301}
-                                : itemId == 9666 ? new int[]{22152, 22153, 22154, 22158, 22159, 22160}
-                                : itemId == 11874 ? new int[]{18599, 18600, 18601, 18603, 18602, 20558}
-                                : itemId == 11916 ? new int[]{23127, 23128, 23129, 23131, 23130, 23132}
-                                : itemId == 11920 ? new int[]{20060, 20062, 20063, 20073, 19802, 19800, 9929}
-                                : itemId == 19659 ? new int[]{22126, 19886, 17596, 22125, 22122, 17686, 22127, 12610, 22123, 15585, 15818, 23094}
-                                : new int[]{itemId};
-
-                if (player.getInventory().getFreeSlots() < items.length) {
-                    player.getPacketSender().sendMessage("You do not have enough space in your inventory.");
-                    return;
-                }
-                player.getInventory().delete(itemId, 1);
-                for (int i : items) {
-                    player.getInventory().add(i, 1);
-                }
-                player.getPacketSender().sendMessage("You open the set and find items inside.");
-                player.getClickDelay().reset();
+                player.getInventory().delete(19659, 1);
+                player.getPSettings().setSetting("summer-unlock", true);
+                player.sendMessage("You have unlocked the summer event! Check out your new calendar with ::daily!");
                 break;
+//            case 11858:
+//            case 11860:
+//            case 11862:
+//            case 11848:
+//            case 11856:
+//            case 11850:
+//            case 11854:
+//            case 11852:
+//            case 11846:
+//            case 11930:
+//            case 11960:
+//            case 19588:
+//            case 11938:
+//            case 14525:
+//            case 11946:
+//            case 11942:
+//            case 11944:
+//            case 19592:
+//            case 11926:
+//            case 14529:
+//            case 19582:
+//            case 9666:
+//            case 19580:
+//            case 19659:
+//                if (!player.getClickDelay().elapsed(250) || !player.getInventory().contains(itemId))
+//                    return;
+//                if (player.busy()) {
+//                    player.getPacketSender().sendMessage("You cannot open this right now.");
+//                    return;
+//                }
+//
+//                int[] items =
+//                        itemId == 11930 ? new int[]{8816, 8817, 8818, 8820, 8819}
+//                                : itemId == 11960 ? new int[]{8806, 8807, 8808}
+//                                : itemId == 19588 ? new int[]{14050, 14051, 14052, 1485, 14053, 14055}
+//                                : itemId == 11938 ? new int[]{11183, 11184, 11179, 11762, 11182, 11181}
+//                                : itemId == 14525 ? new int[]{15645, 15646, 15647}
+//                                : itemId == 11946 ? new int[]{4684, 4685, 4686, 9939, 8274, 8273}
+//                                : itemId == 11942 ? new int[]{17614, 17616, 17618, 17606, 17622, 11195}
+//                                : itemId == 11944 ? new int[]{22136, 22137, 22138, 22141, 22139, 22142}
+//                                : itemId == 19592 ? new int[]{22145, 22146, 22147, 22149, 22150}
+//                                : itemId == 11926 ? new int[]{14190, 14192, 14194, 14200, 14198, 14196, 12608}
+//                                : itemId == 14529 ? new int[]{22100, 22101, 22102, 22105, 22103, 22104}
+//                                : itemId == 19582 ? new int[]{14202, 14204, 14206, 14303, 14301}
+//                                : itemId == 9666 ? new int[]{22152, 22153, 22154, 22158, 22159, 22160}
+//                                : itemId == 11874 ? new int[]{18599, 18600, 18601, 18603, 18602, 20558}
+//                                : itemId == 11916 ? new int[]{23127, 23128, 23129, 23131, 23130, 23132}
+//                                : itemId == 11920 ? new int[]{20060, 20062, 20063, 20073, 19802, 19800, 9929}
+//                                : itemId == 19659 ? new int[]{22126, 19886, 17596, 22125, 22122, 17686, 22127, 12610, 22123, 15585, 15818, 23094}
+//                                : new int[]{itemId};
+//
+//                if (player.getInventory().getFreeSlots() < items.length) {
+//                    player.getPacketSender().sendMessage("You do not have enough space in your inventory.");
+//                    return;
+//                }
+//                player.getInventory().delete(itemId, 1);
+//                for (int i : items) {
+//                    player.getInventory().add(i, 1);
+//                }
+//                player.getPacketSender().sendMessage("You open the set and find items inside.");
+//                player.getClickDelay().reset();
+//                break;
            /* case 989:
                 if (player.getLocation() != null && player.getLocation() == Location.WILDERNESS
                         || player.getLocation() != null && player.getLocation() == Location.CUSTOM_RAIDS) {

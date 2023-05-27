@@ -184,6 +184,10 @@ public class ButtonClickPacketListener implements PacketListener {
         	return;
         }
 
+        if(player.getAttendenceManager().handleTabs(id)){
+            return;
+        }
+
         new ScratchCard(player).reveal(id);
         new DailyTaskInterface(player).button(id);
         new DailyTaskInterface(player).tabClicking(id);
@@ -292,11 +296,11 @@ public class ButtonClickPacketListener implements PacketListener {
                     if (player.getAuraParty() == null) {
                         new AuraParty(player).create();
                     } else {
-                        if (player.getAuraParty().getOwner() != player) {
-                            player.getPacketSender().sendMessage("Only the party leader can invite other players.");
-                        } else {
+                        if (player.getAuraParty().getOwner() == player) {
                             player.setInputHandling(new InviteRaidsPlayer());
                             player.getPacketSender().sendEnterInputPrompt("Invite Player");
+                        } else {
+                            player.getPacketSender().sendMessage("Only the party leader can invite other players.");
                         }
                     }
                 }

@@ -466,6 +466,18 @@ public class OwnerCommands {
                 World.register(npc);
                 return true;
 
+            case "gfx":
+                id = Integer.parseInt(commands[1]);
+                player.performGraphic(new Graphic(id));
+                player.getPacketSender().sendMessage("Sending graphic: " + id);
+                return true;
+
+            case "anim":
+                id = Integer.parseInt(commands[1]);
+                player.performAnimation(new Animation(id));
+                player.getPacketSender().sendMessage("Sending animation: " + id);
+                return true;
+
         }
         return false;
     }
