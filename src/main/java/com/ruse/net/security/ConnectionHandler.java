@@ -37,28 +37,6 @@ public class ConnectionHandler {
 
 		String host = msg.getHost();
 
-//		if (PlayerPunishment.banned(player.getUsername())) {
-//			return LoginResponses.LOGIN_DISABLED_ACCOUNT;
-//		}
-//
-//		if (isBlocked(host)) {
-//			return LoginResponses.LOGIN_REJECT_SESSION;
-//		}
-//
-//		if (isMacBanned(msg.getMac()) || isUUIDBanned(msg.getSerialNumber())) {
-//			return LoginResponses.LOGIN_DISABLED_COMPUTER;
-//		}
-
-		//if (msg.getMac().isEmpty() || msg.getMac().equalsIgnoreCase("") || msg.getSerialNumber().isEmpty()
-		//		|| msg.getSerialNumber().equalsIgnoreCase("")) {
-		//	System.out.println("here");
-		//	return LoginResponses.OLD_CLIENT_VERSION;
-		//}
-
-//		if (PlayerPunishment.IPBanned(host)) {
-//			return LoginResponses.LOGIN_DISABLED_IP;
-//		}
-
 		if (!isLocal(host)) {
 			if (CONNECTIONS.get(host) != null) {
 				if (CONNECTIONS.get(host) >= GameSettings.CONNECTION_AMOUNT) {

@@ -48,7 +48,7 @@ public final class LoginResponses {
         int playerLoadingResponse = player.getPSecurity().attemptLogin(msg);
 
         //Temp
-        if (playerLoadingResponse != LOGIN_SUCCESSFUL || playerLoadingResponse == NEW_ACCOUNT) {
+        if (playerLoadingResponse != LOGIN_SUCCESSFUL && playerLoadingResponse != NEW_ACCOUNT) {
             player.getPSecurity().logLogin(playerLoadingResponse);
             return playerLoadingResponse;
         }
@@ -56,66 +56,13 @@ public final class LoginResponses {
         /** ACCESS LIMITS **/
         int hostHandlerResponse = ConnectionHandler.getResponse(msg);
 
-		/*if (player.getTwoFactorAuth().isVerified() && player.getTwoFactorAuth().getPhoneNumber() != null) {
-
-			if (!TwoFactorAuth.isWhitelisted(player, msg.getHost())) {
-
-				int pinCode = msg.getPinCode();
-
-				if (player.getTwoFactorAuth().getAttempts() >= 3
-						&& (System.currentTimeMillis() - player.getTwoFactorAuth().getLastAttempt()) < 300000) {
-					return LoginResponses.TWO_FACTOR_AUTH_TOO_MANY_ATTEMPTS;
-				} else {
-
-					if (pinCode == -1) {
-
-						new Thread(new Runnable() {
-
-							@Override
-							public void run() {
-
-								player.getTwoFactorAuth().setAttempts(0);
-								player.getTwoFactorAuth().generatePin(false);
-								player.getTwoFactorAuth().sendPin();
-
-								PlayerSaving.save(player);
-
-							}
-
-						}).start();
-
-						return LoginResponses.TWO_FACTOR_AUTH_START;
-
-					} else if (pinCode != player.getTwoFactorAuth().getPinCode()) {
-
-						player.getTwoFactorAuth().setAttempts(player.getTwoFactorAuth().getAttempts() + 1);
-						player.getTwoFactorAuth().setLastAttempt(System.currentTimeMillis());
-						PlayerSaving.save(player);
-
-						return LoginResponses.TWO_FACTOR_AUTH_WRONG;
-
-					} else {
-
-						TwoFactorEntry entry = TwoFactorAuth.WHITE_LIST.get(player.getUsername());
-
-						if (entry != null) {
-							entry.setTimestamp(System.currentTimeMillis());
-						}
-
-					}
-
-				}
-
-			}
-
-		}*/
 
         if (hostHandlerResponse != LOGIN_SUCCESSFUL) {
             player.getPSecurity().logLogin(hostHandlerResponse);
             return hostHandlerResponse;
         }
 
-        int serverCode = ServerSecurity.getInstance().screenPlayer(player);
+        int serverCode = ServerSecurity.getInstance().screenPlayer(player, playerLoadingResponse);
 
         if (serverCode != LOGIN_SUCCESSFUL) {
             player.getPSecurity().logLogin(serverCode);
@@ -312,6 +259,8 @@ public final class LoginResponses {
     public static final int INVALID_IP = 38;
     public static final int TEMP_LOCK = 39;
     public static final int BLOCK_IP = 40;
+
+    public static final int NEW_ACCOUNT_LIMIT = 41;
 
 
     public static final int ACCOUNT_LOCKED = 66;

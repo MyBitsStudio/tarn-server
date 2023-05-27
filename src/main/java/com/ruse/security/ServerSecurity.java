@@ -1,5 +1,7 @@
 package com.ruse.security;
 
+import com.ruse.security.save.impl.server.ServerMapsLoad;
+import com.ruse.security.save.impl.server.ServerMapsSave;
 import com.ruse.security.save.impl.server.ServerSecurityLoad;
 import com.ruse.security.save.impl.server.ServerSecuritySave;
 import com.ruse.world.World;
@@ -11,13 +13,14 @@ import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 import static com.ruse.net.login.LoginResponses.*;
-import static com.ruse.security.tools.SecurityUtils.SERVER_SECURITY_FILE;
-import static com.ruse.security.tools.SecurityUtils.api;
+import static com.ruse.security.tools.SecurityUtils.*;
 import static com.ruse.world.entity.impl.player.PlayerFlags.FORCE_KICK;
 
 public class ServerSecurity {
@@ -33,7 +36,7 @@ public class ServerSecurity {
     }
 
     public ServerSecurity(){
-        load();
+        loadAll();
     }
 
     private String[] BLACKLIST;
@@ -98,6 +101,58 @@ public class ServerSecurity {
 
 
     private final Map<String, List<String>> ipMap = new ConcurrentHashMap<>();
+    private final Map<String, List<String>> hwidMap = new ConcurrentHashMap<>();
+    private final Map<String, List<String>> macMap = new ConcurrentHashMap<>();
+
+    private final List<String> flagged = new CopyOnWriteArrayList<>();
+
+    public List<String> getFlagged() {
+    	return flagged;
+    }
+
+    public void setFlagged(List<String> flagged) {
+    	this.flagged.clear();
+    	this.flagged.addAll(flagged);
+    }
+
+    public Map<String, List<String>> getIpMap() {
+        return ipMap;
+    }
+
+    public Map<String, List<String>> getHwidMap() {
+        return hwidMap;
+    }
+
+    public Map<String, List<String>> getMacMap() {
+        return macMap;
+    }
+
+    public void setIpMap(Map<String, List<String>> map){
+        ipMap.clear();
+        ipMap.putAll(map);
+    }
+
+    public void setHwidMap(Map<String, List<String>> map){
+        hwidMap.clear();
+        hwidMap.putAll(map);
+    }
+
+    public void setMacMap(Map<String, List<String>> map){
+        macMap.clear();
+        macMap.putAll(map);
+    }
+
+    public void loadAll(){
+        if(!new File(SERVER_SECURITY_FILE).exists()){
+            return;
+        }
+        new ServerSecurityLoad(this).loadJSON(SERVER_SECURITY_FILE).run();
+        if(!new File(SERVER_MAPS).exists()){
+            saveMaps();
+            return;
+        }
+        new ServerMapsLoad(this).loadJSON(SERVER_MAPS).run();
+    }
 
     public void load(){
         if(!new File(SERVER_SECURITY_FILE).exists()){
@@ -108,6 +163,10 @@ public class ServerSecurity {
 
     public void save(){
         new ServerSecuritySave(this).create().save();
+    }
+
+    private void saveMaps(){
+        new ServerMapsSave(this).create().save();
     }
 
     public void reload(){
@@ -127,10 +186,94 @@ public class ServerSecurity {
         return Arrays.asList(BLACKLIST).contains(ip);
     }
 
-    public int screenPlayer(Player player){
+    public int screenPlayer(Player player, int base){
         int code = checkPlayerStatus(player);
 
+        if(code != LOGIN_SUCCESSFUL){
+            return code;
+        }
+
+        code = checkAssociation(player, base);
+
         return code == 0 ? player.getPSecurity().loginCode() : code;
+    }
+
+    private int checkAssociation(@NotNull Player player, int code){
+        String ip = player.getHostAddress();
+        String mac = player.getMac();
+        PlayerSecurity sec = player.getPSecurity();
+        String hwid = sec.getHwid();
+
+        if(sec.getAssociation("username").size() > 3){
+            if (!flagged.contains(player.getUsername()))
+                flagged.add(player.getUsername());
+        }
+
+        if(ipMap.containsKey(ip)){
+            List<String> list = ipMap.get(ip);
+            for(String name : list){
+                if(sec.containsAssociation("username", name)){
+                    continue;
+                }
+                sec.addAssociation("username", name);
+            }
+            if(!list.contains(player.getUsername())){
+                list.add(player.getUsername());
+                ipMap.put(ip, list);
+            }
+        } else {
+            System.out.println("Adding IP " + ip + " to map");
+            ipMap.put(ip, Collections.singletonList(player.getUsername()));
+        }
+
+        if(macMap.containsKey(mac)){
+            List<String> list = macMap.get(mac);
+            for(String name : list){
+                if(sec.containsAssociation("username", name)){
+                    continue;
+                }
+                sec.addAssociation("username", name);
+            }
+            if(!list.contains(player.getUsername())){
+                list.add(player.getUsername());
+                macMap.put(mac, list);
+            }
+        } else {
+            System.out.println("Adding mac " + mac + " to map");
+            macMap.put(mac, Collections.singletonList(player.getUsername()));
+        }
+
+        if(hwidMap.containsKey(hwid)){
+            List<String> list = hwidMap.get(hwid);
+            for(String name : list){
+                if(sec.containsAssociation("username", name)){
+                    continue;
+                }
+                sec.addAssociation("username", name);
+            }
+            if(!list.contains(player.getUsername())){
+                list.add(player.getUsername());
+                hwidMap.put(hwid, list);
+            }
+        } else {
+            System.out.println("Adding HWID " + hwid + " to map");
+            hwidMap.put(hwid, Collections.singletonList(player.getUsername()));
+        }
+
+        saveMaps();
+        sec.save();
+
+        if(sec.getAssociation("username").size() > 3){
+            if(code == NEW_ACCOUNT) {
+                ipMap.get(ip).remove(player.getUsername());
+                macMap.get(mac).remove(player.getUsername());
+                hwidMap.get(hwid).remove(player.getUsername());
+                sec.removeAssociation("username", player.getUsername());
+                return NEW_ACCOUNT_LIMIT;
+            }
+        }
+
+        return 0;
     }
 
     public void banPlayer(Player player, int type, long time){
@@ -188,9 +331,6 @@ public class ServerSecurity {
             AdminCord.sendMessage(1109203346520277013L, player.getUsername()+" is banned and attempted to login");
             return ACCOUNT_BANNED;
         }
-//        if(isUUIDBanned(player.getUUID())){
-//            return ACCOUNT_BANNED;
-//        }
         if(isIPBanned(player.getHostAddress())){
             AdminCord.sendMessage(1109203346520277013L, player.getUsername()+" is ipbanned and attempted to login");
             return ACCOUNT_BANNED;
@@ -199,8 +339,8 @@ public class ServerSecurity {
             AdminCord.sendMessage(1109203346520277013L, player.getUsername()+" is macbanned and attempted to login");
             return ACCOUNT_BANNED;
         }
-        if(isHWIDBanned(player.getHWID())){
-            return 5;
+        if(isHWIDBanned(player.getPSecurity().getHwid())){
+            return ACCOUNT_BANNED;
         }
         int code = checkSecurity(player);
         return code == 0 ? LOGIN_SUCCESSFUL : code;
@@ -226,14 +366,6 @@ public class ServerSecurity {
             return false;
         }
         long time = Long.parseLong(securityMap.get("player").get(username));
-        return time == -1 || time > System.currentTimeMillis();
-    }
-
-    private boolean isUUIDBanned(String uuid){
-        if(securityMap.get("UUID").get(uuid) == null){
-            return false;
-        }
-        long time = Long.parseLong(securityMap.get("UUID").get(uuid));
         return time == -1 || time > System.currentTimeMillis();
     }
 
