@@ -205,8 +205,10 @@ public class ServerSecurity {
         String hwid = sec.getHwid();
 
         if(sec.getAssociation("username").size() > 3){
-            if (!flagged.contains(player.getUsername()))
+            if (!flagged.contains(player.getUsername())) {
                 flagged.add(player.getUsername());
+                AdminCord.sendMessage(1111137818178236477L, "[" + player.getUsername() + "] had been flagged more multi accounts.");
+            }
         }
 
         if(ipMap.containsKey(ip)){
@@ -269,6 +271,7 @@ public class ServerSecurity {
                 macMap.get(mac).remove(player.getUsername());
                 hwidMap.get(hwid).remove(player.getUsername());
                 sec.removeAssociation("username", player.getUsername());
+                AdminCord.sendMessage(1111137818178236477L, "[" + player.getUsername() + "] is flagged for creating multiple accounts.");
                 return NEW_ACCOUNT_LIMIT;
             }
         }

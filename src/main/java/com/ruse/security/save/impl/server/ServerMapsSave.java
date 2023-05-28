@@ -21,7 +21,6 @@ public class ServerMapsSave extends SecureSave {
 
     @Override
     public ServerMapsSave create() {
-        System.out.println("Creating server maps save... \n"+sec.getIpMap()+"\n"+sec.getMacMap()+"\n"+sec.getHwidMap()+"\n"+sec.getFlagged());
         object.add("ipMap", builder.toJsonTree(sec.getIpMap()));
         object.add("macMap", builder.toJsonTree(sec.getMacMap()));
         object.add("hwidMap", builder.toJsonTree(sec.getHwidMap()));
