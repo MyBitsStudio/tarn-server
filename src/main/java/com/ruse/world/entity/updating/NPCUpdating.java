@@ -72,7 +72,17 @@ public class NPCUpdating {
 								player.getSummoning().getFamiliar().getSummonNpc() != null &&
 								!player.getSummoning().getFamiliar().getSummonNpc().equals(npc)))) {
 					continue;
-				}else{
+				}else if(npc.isSummoningNpc()){
+					player.getLocalNpcs().add(npc);
+					number++;
+					if(!player.getPSettings().getBooleanValue("hidden-players")){
+						addNPC(player, npc, packet);
+						if (npc.getUpdateFlag().isUpdateRequired()) {
+							appendUpdates(npc, update);
+						}
+					}
+
+				} else {
 					player.getLocalNpcs().add(npc);
 					number++;
 					addNPC(player, npc, packet);
