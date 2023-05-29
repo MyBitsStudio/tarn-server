@@ -256,6 +256,22 @@ public enum InstanceInterData {
     VOTE("Vote", "5 Vote Tickets",
             new Item(23205, 5), 2, 100, 593,
             InstanceType.SPECIAL),
+
+    /**
+     * EVENT
+     */
+    FLASH_EVENTS("Flash Boss", "10 T-Token",
+            new Item(23203, 10), 8, 100, 593,
+            InstanceType.EVENT),
+    /**
+     * GROUP
+     */
+    DON_BOSS("Donator", "NONE",
+            new Item(-1, 0), 1, 1, 593,
+            InstanceType.GROUP),
+    VOTE_BOSS("Vote Boss", "NONE",
+            new Item(-1, 0), 1, 1, 593,
+            InstanceType.GROUP),
     ;
 
     @Getter
