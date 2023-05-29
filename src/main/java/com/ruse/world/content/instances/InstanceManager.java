@@ -6,6 +6,7 @@ import com.ruse.model.Position;
 import com.ruse.model.definitions.ItemDefinition;
 import com.ruse.model.definitions.NPCDrops;
 import com.ruse.model.definitions.NpcDefinition;
+import com.ruse.world.World;
 import com.ruse.world.content.KillsTracker;
 import com.ruse.world.content.bosses.SingleBossSinglePlayerInstance;
 import com.ruse.world.content.bosses.crucio.CrucioInstance;
@@ -172,6 +173,14 @@ public class InstanceManager {
 
         instances.put(instance.getInstanceId(), instance);
         instance.start();
+    }
+
+    private void clear(Player player){
+        World.getNpcs().stream()
+                .filter(Objects::nonNull)
+                .filter(npc -> npc.getPosition().getZ() == (player.getIndex() * 4))
+                .filter(npc -> npc.getLocation().equals(Locations.Location.NORMAL_INSTANCE))
+                .forEach(World::deregister);
     }
 
     private boolean takeItem(@NotNull Player player, @NotNull InstanceInterData data){
@@ -452,6 +461,7 @@ public class InstanceManager {
         }
 
         player.getPacketSender().sendInterfaceRemoval();
+        clear(player);
 
         switch(interData.getType()){
             case MULTI:
