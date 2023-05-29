@@ -166,9 +166,11 @@ public class CombatStrategies {
 		STRATEGIES.put(688, new RaidsMobs());
 		STRATEGIES.put(585, new RaidsMobs());
 		STRATEGIES.put(12843, new FractiteDemon());
-		STRATEGIES.put(449, new InfernalDemon());
-		STRATEGIES.put(452, new InfernalDemon());
-		STRATEGIES.put(252, new InfernalDemon());
+		STRATEGIES.put(449, new FriezaCombatScript());
+		STRATEGIES.put(452, new FriezaCombatScript());
+		STRATEGIES.put(252, new FriezaCombatScript());
+		STRATEGIES.put(187, new FriezaCombatScript());
+		STRATEGIES.put(188, new FriezaCombatScript());
 
 		STRATEGIES.put(9904, new SolakTheGreat());
 		STRATEGIES.put(9906, new SolakTheGreat());
