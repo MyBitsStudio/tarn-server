@@ -31,6 +31,7 @@ public class VoteHandler {
                 Achievements.doProgress(player, Achievements.Achievement.VOTE_50_TIMES, reward[0].give_amount);
                 Achievements.doProgress(player, Achievements.Achievement.VOTE_100_TIMES, reward[0].give_amount);
                 randomBox(player);
+                randomTicket(player);
                 if (doMotivote.getVoteCount() >= 50) {
                     VoteBossDrop.handleSpawn();
                 }
@@ -57,7 +58,7 @@ public class VoteHandler {
         }
     }
 
-    public static void rnadomTicket(Player player){
+    public static void randomTicket(Player player){
         if(Misc.random(20) == 16){
             player.getInventory().add(23205, 1);
             player.getPacketSender().sendMessage("You have received a random Ticket for voting!");

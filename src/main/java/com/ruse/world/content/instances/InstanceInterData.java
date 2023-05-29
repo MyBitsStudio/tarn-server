@@ -267,10 +267,10 @@ public enum InstanceInterData {
      * GROUP
      */
     DON_BOSS("Donator", "NONE",
-            new Item(-1, 0), 1, 1, 593,
+            new Item(-1, 0), 1, 1, 587,
             InstanceType.GROUP),
     VOTE_BOSS("Vote Boss", "NONE",
-            new Item(-1, 0), 1, 1, 593,
+            new Item(-1, 0), 1, 1, 8013,
             InstanceType.GROUP),
     ;
 
