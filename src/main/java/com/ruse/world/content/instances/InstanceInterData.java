@@ -260,7 +260,7 @@ public enum InstanceInterData {
     /**
      * EVENT
      */
-    FLASH_EVENTS("Flash Boss", "10 T-Token",
+    FLASH_EVENTS("Flash Boss", "200 T-Token",
             new Item(23203, 10), 4, 100, 601,
             InstanceType.EVENT),
     /**

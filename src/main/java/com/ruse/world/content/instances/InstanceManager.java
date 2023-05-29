@@ -10,6 +10,7 @@ import com.ruse.world.World;
 import com.ruse.world.content.KillsTracker;
 import com.ruse.world.content.bosses.SingleBossSinglePlayerInstance;
 import com.ruse.world.content.bosses.crucio.CrucioInstance;
+import com.ruse.world.content.bosses.multi.MultiBossFlashInstance;
 import com.ruse.world.content.bosses.multi.impl.CounterInstance;
 import com.ruse.world.content.bosses.multi.MultiBossNormalInstance;
 import com.ruse.world.content.bosses.multi.impl.DonatorSpecialInstance;
@@ -65,6 +66,11 @@ public class InstanceManager {
             return;
         }
 
+        Instance instance = new MultiBossFlashInstance(player,
+                data.getNpcId(), data.getSpawns(), data.getCap());
+
+        instances.put(instance.getInstanceId(), instance);
+        instance.start();
 
     }
 
@@ -277,9 +283,6 @@ public class InstanceManager {
                 case 3:
                     data = InstanceInterData.getEventInstances();
                     break;
-                case 4:
-                    data = InstanceInterData.getGroupInstances();
-                    break;
             }
 
             if (child >= data.length) {
@@ -479,7 +482,7 @@ public class InstanceManager {
                 case 70507: player.getVariables().setInterfaceSettings(0, String.valueOf(1)); break;
                 case 70508: player.getVariables().setInterfaceSettings(0, String.valueOf(2)); break;
                 case 70509: player.getVariables().setInterfaceSettings(0, String.valueOf(3)); break;
-                case 70510: player.getVariables().setInterfaceSettings(0, String.valueOf(4)); break;
+                case 70510: player.sendMessage("This is coming soon!"); break;
                 case 70534 :
                     int current = Integer.parseInt(player.getVariables().getInterfaceSettings()[2]);
                     player.getVariables().setInterfaceSettings(2, String.valueOf(
@@ -520,9 +523,6 @@ public class InstanceManager {
                 break;
             case 3:
                 data = InstanceInterData.getEventInstances();
-                break;
-            case 4:
-                data = InstanceInterData.getGroupInstances();
                 break;
         }
 

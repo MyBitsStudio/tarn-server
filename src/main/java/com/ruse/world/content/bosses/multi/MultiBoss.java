@@ -24,11 +24,11 @@ public class MultiBoss extends Boss {
         if(diff == 0)
             return;
         long hp = getConstitution();
-        setConstitution((long) (hp * (1.9 + diff)));
-        setAtkBoost((int) ((getDefinition().getAttackBonus() * (1 + (diff * .8))) - getDefinition().getAttackBonus()));
-        setDefBoost((int) ((getDefinition().getDefenceMage() * (1 + (diff * .8))) - getDefinition().getDefenceMage()));
-        setSpeedBoost((int) ((getDefinition().getAttackSpeed() * (1 + (diff * .4))) - getDefinition().getAttackSpeed()));
-        setMaxHitBoost((getDefinition().getMaxHit() * (1 + (diff))) - getDefinition().getMaxHit());
+        setConstitution((long) (hp * (0.9 + diff)));
+        setAtkBoost((int) ((getDefinition().getAttackBonus() * (1 + (diff * .4))) - getDefinition().getAttackBonus()));
+        setDefBoost((int) ((getDefinition().getDefenceMage() * (1 + (diff * .4))) - getDefinition().getDefenceMage()));
+        setSpeedBoost((int) ((getDefinition().getAttackSpeed() * (1 + (diff * .2))) - getDefinition().getAttackSpeed()));
+        setMaxHitBoost((int) ((getDefinition().getMaxHit() * (1 + (diff * .3))) - getDefinition().getMaxHit()));
 
     }
 
