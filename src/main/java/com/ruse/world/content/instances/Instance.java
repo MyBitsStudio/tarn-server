@@ -145,7 +145,7 @@ public abstract class Instance {
         player.setInstanceId("");
 
         if(playerList.size() == 0){
-           clear();
+           destroy();
         }
 
         player.moveTo(new Position(2654, 2796, 0));

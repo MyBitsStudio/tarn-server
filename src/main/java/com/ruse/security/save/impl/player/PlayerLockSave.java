@@ -17,9 +17,10 @@ public class PlayerLockSave extends SecureSave {
 
     private PlayerLock lock;
     private Player player;
-    public PlayerLockSave(Player player, PlayerLock lock) {
+    private String username;
+    public PlayerLockSave(String username, PlayerLock lock) {
         this.lock = lock;
-        this.player = player;
+        this.username = username;
     }
     @Override
     public SecureSave create() {
@@ -55,7 +56,7 @@ public class PlayerLockSave extends SecureSave {
     @Override
     public void save() {
         GameEngine.submit(() -> {
-            try (FileWriter file = new FileWriter(SecurityUtils.PLAYER_LOCK_FILE+player.getUsername()+".json")) {
+            try (FileWriter file = new FileWriter(SecurityUtils.PLAYER_LOCK_FILE+username+".json")) {
                 file.write(builder.toJson(object));
                 file.flush();
             } catch (IOException e) {

@@ -46,6 +46,26 @@ public class InstanceManager {
         instances.remove(id);
     }
 
+    public void startEventInstance(Player player, InstanceInterData data){
+        if(player.getInstance() != null) {
+            player.getInstance().clear();
+            player.setInstance(null);
+            return;
+        }
+
+        if(!Objects.equals(player.getInstanceId(), "")){
+            instances.get(player.getInstanceId()).removePlayer(player);
+            player.setInstanceId("");
+            return;
+        }
+
+        if(player.getLocation() != Locations.Location.INSTANCE_LOBBY){
+            player.sendMessage("Are you trying to abuse our system?");
+            AdminCord.sendMessage(1111137818178236477L, "[" + player.getUsername() + "] is manipulating instances.");
+            return;
+        }
+    }
+
     public void startMultiInstance(Player player, InstanceInterData data){
         if(player.getInstance() != null) {
             player.getInstance().clear();
@@ -60,7 +80,7 @@ public class InstanceManager {
         }
 
         if(player.getLocation() != Locations.Location.INSTANCE_LOBBY){
-            player.sendMessage("HACKER ALERT! "+player.getUsername());
+            player.sendMessage("Are you trying to abuse our system?");
             AdminCord.sendMessage(1111137818178236477L, "[" + player.getUsername() + "] is manipulating instances.");
             return;
         }
@@ -110,7 +130,7 @@ public class InstanceManager {
         }
 
         if(player.getLocation() != Locations.Location.INSTANCE_LOBBY){
-            player.sendMessage("HACKER ALERT! "+player.getUsername());
+            player.sendMessage("Are you trying to abuse our system?");
             AdminCord.sendMessage(1111137818178236477L, "[" + player.getUsername() + "] is manipulating instances.");
             return;
         }
@@ -158,7 +178,7 @@ public class InstanceManager {
         }
 
         if(player.getLocation() != Locations.Location.INSTANCE_LOBBY){
-            player.sendMessage("HACKER ALERT! "+player.getUsername());
+            player.sendMessage("Are you trying to abuse our system?");
             AdminCord.sendMessage(1111137818178236477L, "[" + player.getUsername() + "] is manipulating instances.");
             return;
         }
@@ -223,6 +243,12 @@ public class InstanceManager {
                     break;
                 case 2:
                     data = InstanceInterData.getSpecialInstances();
+                    break;
+                case 3:
+                    data = InstanceInterData.getEventInstances();
+                    break;
+                case 4:
+                    data = InstanceInterData.getGroupInstances();
                     break;
             }
 
@@ -313,8 +339,9 @@ public class InstanceManager {
 
         int npcId = 0, amount, base = data.getNpcId();
 
-        if(handleSpecialLock(player, base))
-            return true;
+        if(handleSpecialLock(base)){
+            return returnSpecial(player, base);
+        }
 
         switch(base){
             case 8014 : amount = 1000;break;
@@ -384,11 +411,24 @@ public class InstanceManager {
             return KillsTracker.getTotalKillsForNpc(npcId, player) > amount;
     }
 
-    private boolean handleSpecialLock(Player player, int npcId){
+    private boolean returnSpecial(Player player, int base){
+        switch(base){
+            case 9017:
+
+                return true;
+            case 591:
+            case 593:
+
+                return true;
+        }
+        return false;
+    }
+
+    private boolean handleSpecialLock(int npcId){
         switch(npcId){
             case 9017:
 
-                break;
+                return true;
             case 591:
             case 593:
                 return true;
@@ -403,8 +443,8 @@ public class InstanceManager {
                 case 70506: player.getVariables().setInterfaceSettings(0, String.valueOf(0)); break;
                 case 70507: player.getVariables().setInterfaceSettings(0, String.valueOf(1)); break;
                 case 70508: player.getVariables().setInterfaceSettings(0, String.valueOf(2)); break;
-                case 70509: player.sendMessage("Coming soon!"); break;
-                case 70510: player.sendMessage("Coming soon!"); break;
+                case 70509: player.getVariables().setInterfaceSettings(0, String.valueOf(3)); break;
+                case 70510: player.getVariables().setInterfaceSettings(0, String.valueOf(4)); break;
                 case 70534 :
                     int current = Integer.parseInt(player.getVariables().getInterfaceSettings()[2]);
                     player.getVariables().setInterfaceSettings(2, String.valueOf(

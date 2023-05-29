@@ -261,7 +261,7 @@ public enum InstanceInterData {
      * EVENT
      */
     FLASH_EVENTS("Flash Boss", "10 T-Token",
-            new Item(23203, 10), 8, 100, 593,
+            new Item(23203, 10), 4, 100, 601,
             InstanceType.EVENT),
     /**
      * GROUP
@@ -316,5 +316,15 @@ public enum InstanceInterData {
     public static InstanceInterData[] getSpecialInstances(){
         return Arrays.stream(InstanceInterData.values())
                 .filter(i -> i.getType() == InstanceType.SPECIAL).toArray(InstanceInterData[]::new);
+    }
+
+    public static InstanceInterData[] getEventInstances(){
+        return Arrays.stream(InstanceInterData.values())
+                .filter(i -> i.getType() == InstanceType.EVENT).toArray(InstanceInterData[]::new);
+    }
+
+    public static InstanceInterData[] getGroupInstances(){
+        return Arrays.stream(InstanceInterData.values())
+                .filter(i -> i.getType() == InstanceType.GROUP).toArray(InstanceInterData[]::new);
     }
 }

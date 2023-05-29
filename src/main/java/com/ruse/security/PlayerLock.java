@@ -138,12 +138,17 @@ public class PlayerLock {
         playerLocks.put(key, value);
     }
 
-    public PlayerLock(Player player) {
+    public PlayerLock(@NotNull Player player) {
         this.player = player;
+        this.username = player.getUsername();
     }
 
     public PlayerLock(String username){
         this.username = username;
+    }
+
+    public void setUsername(String username) {
+    	this.username = username;
     }
 
     public PlayerLock load(String username){
@@ -186,7 +191,7 @@ public class PlayerLock {
     }
 
     public void save(){
-        new PlayerLockSave(player, this).create().save();
+        new PlayerLockSave(username, this).create().save();
     }
 
     public int lockCode(){

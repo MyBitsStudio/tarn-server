@@ -2,6 +2,11 @@ package com.ruse.world.content.bosses.multi;
 
 import com.ruse.model.Position;
 import com.ruse.world.content.bosses.Boss;
+import com.ruse.world.content.bosses.multi.strategy.HardCombatStrategy;
+import com.ruse.world.content.bosses.multi.strategy.InsaneCombatStrategy;
+import com.ruse.world.content.combat.strategy.CombatStrategies;
+import com.ruse.world.content.combat.strategy.CombatStrategy;
+import com.ruse.world.content.combat.strategy.impl.SimpleScript;
 import com.ruse.world.entity.impl.player.Player;
 
 public class MultiBoss extends Boss {
@@ -24,6 +29,18 @@ public class MultiBoss extends Boss {
         setDefBoost((int) ((getDefinition().getDefenceMage() * (1 + (diff * .8))) - getDefinition().getDefenceMage()));
         setSpeedBoost((int) ((getDefinition().getAttackSpeed() * (1 + (diff * .4))) - getDefinition().getAttackSpeed()));
         setMaxHitBoost((getDefinition().getMaxHit() * (1 + (diff))) - getDefinition().getMaxHit());
+
+    }
+
+    @Override
+    public CombatStrategy determineStrategy() {
+        int diff = Integer.parseInt(player.getVariables().getInterfaceSettings()[2]);
+        if(diff <= 1)
+            return CombatStrategies.getStrategy(getId());
+        else if(diff == 2)
+            return new HardCombatStrategy();
+        else
+            return new InsaneCombatStrategy();
     }
 
 }

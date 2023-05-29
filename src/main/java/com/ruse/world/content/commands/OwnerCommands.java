@@ -418,6 +418,7 @@ public class OwnerCommands {
                     if(lock == null) {
                         player.getPacketSender().sendMessage(command.substring(commands[0].length() + 1) + " lock is null.");
                     } else {
+                        lock.setUsername(command.substring(commands[0].length() + 1));
                         lock.unlock();
                         lock.save();
                         security.save();
