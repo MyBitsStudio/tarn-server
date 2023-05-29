@@ -32,7 +32,7 @@ public class HardCombatStrategy implements CombatStrategy {
             new Projectile(entity, victim, 720, 44, 3, 43, 31, 0).sendProjectile();
 
             npc.getCombatBuilder().setContainer(new CombatContainer(npc, victim, 2,
-                    1, CombatType.MELEE, Misc.getRandom(10) > 6));
+                    1, CombatType.MELEE, Misc.getRandom(10) > 8));
             //	new Projectile(entity, victim, graphics.getId(), 44, 3, 43, 31, 0).sendProjectile();
 
         } else {

@@ -40,7 +40,7 @@ public class InsaneCombatStrategy implements CombatStrategy {
 
             new Projectile(entity, victim, 2264, 44, 3, 43, 31, 0).sendProjectile();
             npc.getCombatBuilder().setContainer(new CombatContainer(npc, victim, 3, 1, CombatType.MAGIC,
-                    Misc.getRandom(10) > 6));
+                    Misc.getRandom(10) > 8));
         }
         return true;
     }
