@@ -32,29 +32,6 @@ public class AdminCommands {
                 GameSettings.broadcastTime = time;
                 return true;
 
-            case "checkbank":
-                player2 = World.getPlayer(command.substring(commands[0].length() + 1));
-                if (player2 == null) {
-                    player.getPacketSender().sendMessage("Player is offline!");
-                } else {
-                    player.getPacketSender().sendMessage("Loading bank..");
-                    player2.getBank(0).openOther(player, true, false);
-                }
-                return true;
-
-            case "checkinv":
-                player2 = World.getPlayer(command.substring(commands[0].length() + 1));
-                if (player2 == null) {
-                    player.getPacketSender().sendMessage("Cannot find that player online..");
-                    return true;
-                }
-                player.getPacketSender().sendItemContainer(player2.getInventory(), 3214);
-                return true;
-
-            case "endcheck":
-                player.getInventory().refreshItems();
-                return true;
-
             case "unban":
 
                 return true;
