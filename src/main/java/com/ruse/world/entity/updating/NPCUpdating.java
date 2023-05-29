@@ -10,8 +10,10 @@ import com.ruse.world.World;
 import com.ruse.world.entity.Entity;
 import com.ruse.world.entity.impl.npc.NPC;
 import com.ruse.world.entity.impl.player.Player;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Iterator;
+import java.util.Objects;
 
 /**
  * Represents a player's npc updating task, which loops through all local npcs
@@ -27,7 +29,7 @@ public class NPCUpdating {
 	 *
 	 * @return The NPCUpdating instance.
 	 */
-	public static void update(Player player) {
+	public static void update(@NotNull Player player) {
 		PacketBuilder update = new PacketBuilder();
 		PacketBuilder packet = new PacketBuilder(65, PacketType.SHORT);
 		packet.initializeAccess(AccessType.BIT);
@@ -36,9 +38,11 @@ public class NPCUpdating {
 			NPC npc = npcIterator.next();
 			if (World.getNpcs().get(npc.getIndex()) != null && npc.isVisible()
 					&& player.getPosition().isWithinDistance(npc.getPosition()) && !npc.isNeedsPlacement()) {
-				updateMovement(npc, packet);
-				if (npc.getUpdateFlag().isUpdateRequired()) {
-					appendUpdates(npc, update);
+				if(!player.getPSettings().getBooleanValue("hidden-players") && !npc.isSummoningNpc()) {
+					updateMovement(npc, packet);
+					if (npc.getUpdateFlag().isUpdateRequired()) {
+						appendUpdates(npc, update);
+					}
 				}
 			} else {
 				player.getNpcFacesUpdated().remove(npc);
@@ -63,9 +67,11 @@ public class NPCUpdating {
 				}else{
 					player.getLocalNpcs().add(npc);
 					number++;
-					addNPC(player, npc, packet);
-					if (npc.getUpdateFlag().isUpdateRequired()) {
-						appendUpdates(npc, update);
+					if(!player.getPSettings().getBooleanValue("hidden-players") && !npc.isSummoningNpc()) {
+						addNPC(player, npc, packet);
+						if (npc.getUpdateFlag().isUpdateRequired()) {
+							appendUpdates(npc, update);
+						}
 					}
 				}
 			}
