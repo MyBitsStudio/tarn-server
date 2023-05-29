@@ -43,6 +43,10 @@ public class FlashDeals {
         specialActive.set(active);
     }
 
+    public boolean isActive(){
+        return isActive.get();
+    }
+
     public void setDoubledItems(List<Integer> items){
         doubledItems.clear();
         doubledItems.addAll(items);

@@ -1165,14 +1165,22 @@ public class ButtonClickPacketListener implements PacketListener {
                 // player.getPacketSender().sendMessage("<shad=1>@or1@There are currently @whi@[ @gre@" + (17 + World.getPlayers().size()) + "@whi@ ] @or1@players online!");
                 break;*/
             case 11001:
-
                 TeleportHandler.teleportPlayer(player, GameSettings.DEFAULT_POSITION.copy(),
                         player.getSpellbook().getTeleportType());
                 player.getPacketSender().sendInterfaceRemoval();
-                //new InstanceManager(player).onLogout();
-                //player.setDialogueActionId(217);
-                //DialogueManager.start(player, 217);
-
+                break;
+            case 11004:
+                TeleportHandler.teleportPlayer(player, new Position(2654, 2796, 0),
+                        player.getSpellbook().getTeleportType());
+                player.getPacketSender().sendInterfaceRemoval();
+                break;
+            case 11008:
+                player.sendMessage("This will be added soon!");
+                break;
+            case 11011:
+                TeleportHandler.teleportPlayer(player, new Position(2856, 2708, 0),
+                        player.getSpellbook().getTeleportType());
+                player.getPacketSender().sendInterfaceRemoval();
                 break;
             case 28211:
                 TeleportHandler.teleportPlayer(player, GameSettings.DEFAULT_POSITION.copy(),

@@ -15,14 +15,13 @@ import com.ruse.world.content.bosses.multi.MultiBossNormalInstance;
 import com.ruse.world.content.bosses.multi.impl.DonatorSpecialInstance;
 import com.ruse.world.content.bosses.multi.impl.VoteSpecialInstance;
 import com.ruse.world.content.discordbot.AdminCord;
+import com.ruse.world.content.donation.FlashDeals;
 import com.ruse.world.entity.impl.player.Player;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class InstanceManager {
@@ -36,6 +35,7 @@ public class InstanceManager {
     }
 
     private final Map<String, Instance> instances = new ConcurrentHashMap<>();
+    private final List<Instance> groups = new CopyOnWriteArrayList<>();
 
     /**
      * Starts New Multi Instance That Doesnt Have A Count
@@ -64,6 +64,36 @@ public class InstanceManager {
             AdminCord.sendMessage(1111137818178236477L, "[" + player.getUsername() + "] is manipulating instances.");
             return;
         }
+
+
+    }
+
+    public void enterGroupInstance(Player player, InstanceInterData data){
+        if(player.getInstance() != null) {
+            player.getInstance().clear();
+            player.setInstance(null);
+            return;
+        }
+
+        if(!Objects.equals(player.getInstanceId(), "")){
+            instances.get(player.getInstanceId()).removePlayer(player);
+            player.setInstanceId("");
+            return;
+        }
+
+        if(player.getLocation() != Locations.Location.INSTANCE_LOBBY){
+            player.sendMessage("Are you trying to abuse our system?");
+            AdminCord.sendMessage(1111137818178236477L, "[" + player.getUsername() + "] is manipulating instances.");
+            return;
+        }
+
+        if(takeItem(player, data)) {
+            player.sendMessage("You don't have x"+data.getCost().getAmount()+" of "+ItemDefinition.forId(data.getCost().getId()).getName());
+            return;
+        }
+
+
+
     }
 
     public void startMultiInstance(Player player, InstanceInterData data){
@@ -418,8 +448,12 @@ public class InstanceManager {
                 return true;
             case 591:
             case 593:
-
+            case 587:
+            case 8013:
                 return true;
+            case 601:
+                return FlashDeals.getDeals().isActive();
+
         }
         return false;
     }
@@ -427,10 +461,11 @@ public class InstanceManager {
     private boolean handleSpecialLock(int npcId){
         switch(npcId){
             case 9017:
-
-                return true;
             case 591:
             case 593:
+            case 601:
+            case 587:
+            case 8013:
                 return true;
         }
         return false;
@@ -483,6 +518,12 @@ public class InstanceManager {
             case 2:
                 data = InstanceInterData.getSpecialInstances();
                 break;
+            case 3:
+                data = InstanceInterData.getEventInstances();
+                break;
+            case 4:
+                data = InstanceInterData.getGroupInstances();
+                break;
         }
 
         if(child >= data.length){
@@ -512,6 +553,9 @@ public class InstanceManager {
                 break;
             case SPECIAL:
                 startMultiInstance(player, interData);
+                break;
+            case EVENT:
+                startEventInstance(player, interData);
                 break;
         }
 
