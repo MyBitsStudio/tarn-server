@@ -430,6 +430,16 @@ public class Trading {
 		Player player2 = World.getPlayers().get(getTradeWith());
 		if (player2 == null)
 			return;
+		if(player.getInventory().getFreeSlots() <= offeredItems.size()){
+			player.getPacketSender().sendMessage("You do not have enough free inventory space to continue this trade.");
+			player2.getPacketSender().sendMessage("The other player does not have enough inventory space to continue this trade.");
+			return;
+		}
+		if(player2.getInventory().getFreeSlots() <= player2.getTrading().offeredItems.size()){
+			player.getPacketSender().sendMessage("The other player does not have enough inventory space to continue this trade.");
+			player2.getPacketSender().sendMessage("You do not have enough free inventory space to continue this trade.");
+			return;
+		}
 		setCanOffer(false);
 		player.getInventory().refreshItems();
 		String SendTrade = "Absolutely nothing!";

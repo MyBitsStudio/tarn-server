@@ -38,12 +38,20 @@ public class NPCUpdating {
 			NPC npc = npcIterator.next();
 			if (World.getNpcs().get(npc.getIndex()) != null && npc.isVisible()
 					&& player.getPosition().isWithinDistance(npc.getPosition()) && !npc.isNeedsPlacement()) {
-				if(!player.getPSettings().getBooleanValue("hidden-players") && !npc.isSummoningNpc()) {
+				if(npc.isSummoningNpc()){
+					if(!player.getPSettings().getBooleanValue("hidden-players")){
+						updateMovement(npc, packet);
+						if (npc.getUpdateFlag().isUpdateRequired()) {
+							appendUpdates(npc, update);
+						}
+					}
+				} else {
 					updateMovement(npc, packet);
 					if (npc.getUpdateFlag().isUpdateRequired()) {
 						appendUpdates(npc, update);
 					}
 				}
+
 			} else {
 				player.getNpcFacesUpdated().remove(npc);
 				npcIterator.remove();
@@ -67,11 +75,9 @@ public class NPCUpdating {
 				}else{
 					player.getLocalNpcs().add(npc);
 					number++;
-					if(!player.getPSettings().getBooleanValue("hidden-players") && !npc.isSummoningNpc()) {
-						addNPC(player, npc, packet);
-						if (npc.getUpdateFlag().isUpdateRequired()) {
-							appendUpdates(npc, update);
-						}
+					addNPC(player, npc, packet);
+					if (npc.getUpdateFlag().isUpdateRequired()) {
+						appendUpdates(npc, update);
 					}
 				}
 			}
