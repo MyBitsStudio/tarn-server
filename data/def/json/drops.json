@@ -5052,6 +5052,21 @@
   },
   {
     "npcIds": [
+      601
+    ],
+    "drops": [
+      {
+        "id": 10835,
+        "count": [
+          1000,
+          2500
+        ],
+        "chance": 1
+      }
+    ]
+  },
+  {
+    "npcIds": [
       591
     ],
     "drops": [
@@ -5117,7 +5132,7 @@
           1,
           2
         ],
-        "chance": 320
+        "chance": 310
       },
       {
         "id": 20489,
@@ -5125,49 +5140,49 @@
           1,
           2
         ],
-        "chance": 390
+        "chance": 460
       },
       {
         "id": 23059,
         "count": [
           1
         ],
-        "chance": 390
+        "chance": 460
       },
       {
         "id": 13019,
         "count": [
           1
         ],
-        "chance": 390
+        "chance": 460
       },
       {
         "id": 20491,
         "count": [
           1
         ],
-        "chance": 440
+        "chance": 590
       },
       {
         "id": 20490,
         "count": [
           1
         ],
-        "chance": 510
+        "chance": 710
       },
       {
         "id": 23060,
         "count": [
           1
         ],
-        "chance": 510
+        "chance": 710
       },
       {
         "id": 23002,
         "count": [
           1
         ],
-        "chance": 1450
+        "chance": 42500
       }
     ]
   },
