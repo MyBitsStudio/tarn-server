@@ -242,12 +242,13 @@ public class OwnerCommands {
                     World.sendNewsMessage("<col=FF0066><img=2> [SERVER]<col=6600FF> " + player.getUsername()
                             + " just started an update in " + (int) ((time * 0.6)) + " ticks.");
                     World.sendNewsMessage("<col=FF0066><img=2> [SERVER]<col=6600FF> Please finish what you are doing now!");
+                    World.sendNewsMessage("<col=FF0066><img=2> [SERVER]<col=6600FF> Wait until announcement to login again!");
                     for (Player players : World.getPlayers()) {
                         if (players == null)
                             continue;
                         players.getPacketSender().sendSystemUpdate(time);
                     }
-                    TaskManager.submit(new Task((int) (time * 0.6)) {
+                    TaskManager.submit(new Task(time, false) {
                         int tick = 0;
                         @Override
                         protected void execute() {
@@ -408,47 +409,7 @@ public class OwnerCommands {
                 }
                 return true;
 
-            case "unlock":
-                targets = World.getPlayer(command.substring(commands[0].length() + 1));
-                if(targets == null) {
-                    player.getPacketSender().sendMessage(command.substring(commands[0].length() + 1) + " is not online. Attempting to unlock...");
-                    PlayerSecurity security = new PlayerSecurity(command.substring(commands[0].length() + 1));
-                    security.load();
-                    PlayerLock lock = security.getPlayerLock();
-                    if(lock == null) {
-                        player.getPacketSender().sendMessage(command.substring(commands[0].length() + 1) + " lock is null.");
-                    } else {
-                        lock.setUsername(command.substring(commands[0].length() + 1));
-                        lock.unlock();
-                        lock.save();
-                        security.save();
-                        player.sendMessage("Unlocked " + command.substring(commands[0].length() + 1) + "'s account.");
-                    }
-                } else {
-                    player.getPacketSender().sendMessage(command.substring(commands[0].length() + 1) + " is online. Can't unlock an online account.");
-                }
-                return true;
 
-            case "changepassother":
-                if(commands.length < 2){
-                    player.getPacketSender().sendMessage("Use as ::changepassother [password] [username]");
-                } else {
-                    String password = commands[1];
-                    targets = World.getPlayer(command.substring(commands[0].length() + commands[1].length() + 2));
-                    if (targets == null) {
-                        player.getPacketSender().sendMessage(command.substring(commands[0].length() + commands[1].length() + 2) + " is not online. Attempting to unlock...");
-                        PlayerSecurity security = new PlayerSecurity(command.substring(commands[0].length() + commands[1].length() + 2));
-                        security.load();
-                        security.changePass(password);
-                        player.sendMessage("Password has been successfully set");
-                    } else {
-                        player.getPacketSender().sendMessage("Player is online. Attempting to change password...");
-                        targets.getPSecurity().changePass(password);
-                        targets.sendMessage("@red@[STAFF] A staff member has just changed your password!");
-                        player.sendMessage("Password has been successfully set");
-                    }
-                }
-                return true;
             case "obj": case "object":
                 id = Integer.parseInt(commands[1]);
                 player.getPacketSender().sendObject(new GameObject(id, player.getPosition(), 10, 3));
@@ -477,6 +438,30 @@ public class OwnerCommands {
                 id = Integer.parseInt(commands[1]);
                 player.performAnimation(new Animation(id));
                 player.getPacketSender().sendMessage("Sending animation: " + id);
+                return true;
+
+            case "shutnow":
+                World.sendNewsMessage("<col=FF0066><img=2> [SERVER]<col=6600FF> Server is shutting down now!");
+
+                for (Player players : World.getPlayers()) {
+                    if (player != null) {
+                        players.save();
+                        World.endDereg(players);
+                    }
+                }
+                WellOfGoodwill.save();
+                GrandExchangeOffers.save();
+                ClanManager.getManager().save();
+                Shop.ShopManager.saveTaxShop();
+                LotterySystem.saveTickets();
+                ServerPerks.getInstance().save();
+
+                try{
+                    Thread.sleep(2000);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                System.exit(0);
                 return true;
 
         }

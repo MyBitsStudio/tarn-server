@@ -437,20 +437,28 @@ public class PlayerCommands {
         player.getPacketSender().sendString(index++, color + "4. BP is for two accounts (Main & Iron)");
         player.getPacketSender().sendString(index++, color + "5. RESPECT ALL STAFF!");
         player.getPacketSender().sendString(index++, color + "6. No advertising other servers");
-        player.getPacketSender().sendString(index++, color + "7. No scamming or luring");
+        player.getPacketSender().sendString(index++, color + "7. No scamming or baiting");
         player.getPacketSender().sendString(index++, color + "8. No impersonating staff members");
-        player.getPacketSender().sendString(index++, color + "9. Any racism or discrimination is not tolerated");
+        player.getPacketSender().sendString(index++, color + "9. Any racism/sexism/discrimination is not tolerated");
         player.getPacketSender().sendString(index++, color + "10. No Multi Accounting on PVM");
         player.getPacketSender().sendString(index++, color + "11. One account per Vote/Donator/Global boss");
         player.getPacketSender().sendString(index++, color + "12. 1 Hour AFK on main limit");
+        player.getPacketSender().sendString(index++, color + "13. No quitting giveaways");
+        player.getPacketSender().sendString(index++, color + "14. No sharing accounts / account services");
+        player.getPacketSender().sendString(index++, color + "15. No selling items/accounts for rl currency");
+        player.getPacketSender().sendString(index++, color + "16. No inappropriate player names");
         player.getPacketSender().sendString(index++, color1 + "!!----------------------------------!!");
         player.getPacketSender().sendString(index++, color1 + "!!-----------!! WARNING !!----------!!");
         player.getPacketSender().sendString(index++, color1 + "!!----------------------------------!!");
         player.getPacketSender().sendString(index++, color1 + "!! Any abuse can result in rollbacks or ban !!");
-        player.getPacketSender().sendString(index++, color1 + "!! Racism is immediate mute !!");
+        player.getPacketSender().sendString(index++, color1 + "!! Racism/Sexism is immediate mute !!");
+        player.getPacketSender().sendString(index++, color1 + "!! Selling items/accounts is immediate ban !!");
         player.getPacketSender().sendString(index++, color1 + "!! Repeated offences will result in ban !!");
         player.getPacketSender().sendString(index++, color1 + "!! BP abuse will result in no refund !!");
         player.getPacketSender().sendString(index++, color1 + "!! Warnings and Mutes stack towards chances !!");
+        player.getPacketSender().sendString(index++, color1 + "!!----------------------------------!!");
+        player.getPacketSender().sendString(index++, color + "To submit a staff abuse ticket, please visit");
+        player.getPacketSender().sendString(index++, color + "our discord, and message Corrupt or Mutant");
     }
 
     public static void sendCommands(Player player){

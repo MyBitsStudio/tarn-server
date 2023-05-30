@@ -1,8 +1,15 @@
 package com.ruse.world.content.commands;
 
+import com.ruse.GameSettings;
+import com.ruse.security.PlayerLock;
+import com.ruse.security.PlayerSecurity;
 import com.ruse.security.ServerSecurity;
 import com.ruse.world.World;
+import com.ruse.world.content.PlayerLogs;
+import com.ruse.world.content.discordbot.AdminCord;
 import com.ruse.world.entity.impl.player.Player;
+
+import static com.ruse.world.entity.impl.player.PlayerFlags.FORCE_KICK;
 
 public class ModCommands {
 
@@ -54,6 +61,35 @@ public class ModCommands {
                         player.sendMessage(player2.getUsername()+" was successfully banned");
                     }
                 }
+                return true;
+
+            case "lock":
+                String playerToTele = command.substring(commands[0].length() + 1);
+                player2 = World.getPlayerByName(playerToTele);
+                if (player2 == null) {
+                    player.getPacketSender()
+                            .sendMessage("Player " + playerToTele + " couldn't be found on " + GameSettings.RSPS_NAME + ".");
+                    return true;
+                }
+
+                player2.save();
+                World.removePlayer(player2);
+
+                PlayerSecurity security = new PlayerSecurity(command.substring(commands[0].length() + 1));
+                security.load();
+                PlayerLock lock = security.getPlayerLock();
+                lock.setUsername(command.substring(commands[0].length() + 1));
+                lock.lock("secLock");
+                lock.save();
+                security.save();
+                player.sendMessage("Locked " + command.substring(commands[0].length() + 1) + "'s account.");
+
+                PlayerLogs.log(player.getUsername(),
+                        player.getUsername() + " just locked " + player2.getUsername() + "!");
+                World.sendStaffMessage("<col=FF0066><img=2> [PUNISHMENTS]<col=6600FF> " + player.getUsername()
+                        + " just locked " + player2.getUsername() + ".");
+                AdminCord.sendMessage(1109203238907027527L, player.getUsername() + " used command ::" + command
+                        + " | Player rights = " + player.getRights());
                 return true;
 
         }

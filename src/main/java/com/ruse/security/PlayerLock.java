@@ -249,7 +249,7 @@ public class PlayerLock {
         return false;
     }
 
-    private void lock(@NotNull String key){
+    public void lock(@NotNull String key){
         setAssociation("lockTime", getAssociation("lockTime") + 1);
         LOCK = key;
         setLocked(key, true);

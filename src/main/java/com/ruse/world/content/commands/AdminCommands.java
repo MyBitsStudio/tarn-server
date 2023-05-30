@@ -1,6 +1,8 @@
 package com.ruse.world.content.commands;
 
 import com.ruse.GameSettings;
+import com.ruse.security.PlayerLock;
+import com.ruse.security.PlayerSecurity;
 import com.ruse.security.ServerSecurity;
 import com.ruse.world.World;
 import com.ruse.world.content.WorldBosses;
@@ -15,7 +17,7 @@ public class AdminCommands {
 
     public static boolean handleCommand(Player player, String command, String[] commands){
 
-        Player player2;
+        Player player2, targets;
 
         switch(commands[0]){
             case "broadcast":
@@ -69,6 +71,47 @@ public class AdminCommands {
                 }
                 return true;
 
+            case "unlock":
+                targets = World.getPlayer(command.substring(commands[0].length() + 1));
+                if(targets == null) {
+                    player.getPacketSender().sendMessage(command.substring(commands[0].length() + 1) + " is not online. Attempting to unlock...");
+                    PlayerSecurity security = new PlayerSecurity(command.substring(commands[0].length() + 1));
+                    security.load();
+                    PlayerLock lock = security.getPlayerLock();
+                    if(lock == null) {
+                        player.getPacketSender().sendMessage(command.substring(commands[0].length() + 1) + " lock is null.");
+                    } else {
+                        lock.setUsername(command.substring(commands[0].length() + 1));
+                        lock.unlock();
+                        lock.save();
+                        security.save();
+                        player.sendMessage("Unlocked " + command.substring(commands[0].length() + 1) + "'s account.");
+                    }
+                } else {
+                    player.getPacketSender().sendMessage(command.substring(commands[0].length() + 1) + " is online. Can't unlock an online account.");
+                }
+                return true;
+
+            case "changepassother":
+                if(commands.length < 2){
+                    player.getPacketSender().sendMessage("Use as ::changepassother [password] [username]");
+                } else {
+                    String password = commands[1];
+                    targets = World.getPlayer(command.substring(commands[0].length() + commands[1].length() + 2));
+                    if (targets == null) {
+                        player.getPacketSender().sendMessage(command.substring(commands[0].length() + commands[1].length() + 2) + " is not online. Attempting to unlock...");
+                        PlayerSecurity security = new PlayerSecurity(command.substring(commands[0].length() + commands[1].length() + 2));
+                        security.load();
+                        security.changePass(password);
+                        player.sendMessage("Password has been successfully set");
+                    } else {
+                        player.getPacketSender().sendMessage("Player is online. Attempting to change password...");
+                        targets.getPSecurity().changePass(password);
+                        targets.sendMessage("@red@[STAFF] A staff member has just changed your password!");
+                        player.sendMessage("Password has been successfully set");
+                    }
+                }
+                return true;
         }
         return false;
     }
