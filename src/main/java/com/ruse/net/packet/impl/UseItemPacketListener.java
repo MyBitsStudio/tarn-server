@@ -129,201 +129,235 @@ public class UseItemPacketListener implements PacketListener {
                 }
                 break;
 
+            default:
+                player.getRarityTransfer().setItemsAndStartDialogue(itemUsedWith, itemUsedSlot, usedWith, usedWithSlot);
+                break;
+
         }
 
-        player.getRarityTransfer().setItemsAndStartDialogue(itemUsedWith, itemUsedSlot, usedWith, usedWithSlot);
-
-        if (usedWith.getId() == TreasureHunter.KEY_1 || usedWith.getId() == TreasureHunter.KEY_2 | usedWith.getId() == TreasureHunter.KEY_3 || usedWith.getId() == TreasureHunter.KEY_4) {
-            TreasureHunter.combineKeys(player, usedWith, itemUsedWith);
-            return;
-        }
-
-        if (usedWith.getId() == 22106) {
-            Item[] requirements = new Item[]{new Item(22106, 1),
-                    new Item(19000, 10_000), new Item(5022, 10_000_000),
-                    new Item(ItemDefinition.TOKEN_ID, 10_000_000)};
-            if (player.getInventory().containsAll(requirements) && itemUsedWith.getId() == 19_000) {
-                player.getInventory().deleteItemSet(requirements);
-                if (Misc.exclusiveRandom(1, 100) <= 25) {
-                    player.getInventory().add(22107, 1);
-                    player.sendMessage("@red@Congratulations, you've made Lucifer's pet!");
-                    String msg = "@blu@<img=5>[CREATION]<img=5>@red@ " + player.getUsername() + " has created Lucifer's pet!";
-                    World.sendMessage(msg);
+        switch(itemUsedWith.getId()) {
+            case 20435:
+                if (itemUsedWith.getDefinition().getEquipmentSlot() != Equipment.WEAPON_SLOT) {
+                    player.sendMessage("Please use the token on a weapon.");
+                    return;
                 }
-                return;
-            } else if (player.getInventory().containsAll(requirements = new Item[]{new Item(22106, 2), new Item(18885, 1)})
-                    && itemUsedWith.getId() == requirements[1].getId()) {
-                player.getInventory().deleteItemSet(requirements);
-                player.getInventory().add(22104, 1);
-                player.sendMessage("@red@Congratulations, you've made Lucifer's gloves!");
-                String msg = "@blu@<img=5>[CREATION]<img=5>@red@ " + player.getUsername() + " has created Lucifer's gloves!";
-                World.sendMessage(msg);
-                return;
-            } else if (player.getInventory().containsAll(requirements = new Item[]{new Item(22106, 2), new Item(18887, 1),})
-                    && itemUsedWith.getId() == requirements[1].getId()) {
-                player.getInventory().deleteItemSet(requirements);
-                player.getInventory().add(22103, 1);
-                player.sendMessage("@red@Congratulations, you've made Lucifer's boots!");
-                String msg = "@blu@<img=5>[CREATION]<img=5>@red@ " + player.getUsername() + " has created Lucifer's boots!";
-                World.sendMessage(msg);
-                return;
-            } else if (player.getInventory().containsAll(requirements = new Item[]{new Item(22106, 3), new Item(4684, 1),})
-                    && itemUsedWith.getId() == requirements[1].getId()) {
-                player.getInventory().deleteItemSet(requirements);
-                player.getInventory().add(22100, 1);
-                player.sendMessage("@red@Congratulations, you've made Lucifer's head!");
-                String msg = "@blu@<img=5>[CREATION]<img=5>@red@ " + player.getUsername() + " has created Lucifer's head!";
-                World.sendMessage(msg);
-                return;
-            } else if (player.getInventory().containsAll(requirements = new Item[]{new Item(22106, 3), new Item(4685, 1),})
-                    && itemUsedWith.getId() == requirements[1].getId()) {
-                player.getInventory().deleteItemSet(requirements);
-                player.getInventory().add(22101, 1);
-                player.sendMessage("@red@Congratulations, you've made Lucifer's body!");
-                String msg = "@blu@<img=5>[CREATION]<img=5>@red@ " + player.getUsername() + " has created Lucifer's body!";
-                World.sendMessage(msg);
-                return;
-            } else if (player.getInventory().containsAll(requirements = new Item[]{new Item(22106, 3), new Item(4686, 1),})
-                    && itemUsedWith.getId() == requirements[1].getId()) {
-                player.getInventory().deleteItemSet(requirements);
-                player.getInventory().add(22102, 1);
-                player.sendMessage("@red@Congratulations, you've made Lucifer's legs!");
-                String msg = "@blu@<img=5>[CREATION]<img=5>@red@ " + player.getUsername() + " has created Lucifer's legs!";
-                World.sendMessage(msg);
-                return;
-            } else if (player.getInventory().containsAll(requirements = new Item[]{new Item(22106, 3), new Item(20400, 1),})
-                    && itemUsedWith.getId() == requirements[1].getId()) {
-                player.getInventory().deleteItemSet(requirements);
-                player.getInventory().add(22105, 1);
-                player.sendMessage("@red@Congratulations, you've made Lucifer's wings!");
-                String msg = "@blu@<img=5>[CREATION]<img=5>@red@ " + player.getUsername() + " has created Lucifer's wings!";
-                World.sendMessage(msg);
-                return;
-            }
-        }
-
-        if ((usedWith.getId() == 23004 || usedWith.getId() == 23005 || usedWith.getId() == 23006 || usedWith.getId() == 23007)
-                && (itemUsedWith.getId() == 23004 || itemUsedWith.getId() == 23005 || itemUsedWith.getId() == 23006 || itemUsedWith.getId() == 23007)) {
-            Item[] requirements = new Item[]{new Item(23004, 100),
-                    new Item(23005, 100), new Item(23006, 100),
-                    new Item(23007, 100)};
-            if (player.getInventory().containsAll(requirements)) {
-                player.getInventory().deleteItemSet(requirements);
-                player.getInventory().add(23018, 1);
-                player.sendMessage("@red@Congratulations, you've made an Armoured Bunny pet!");
-                String msg = "@blu@<img=5>[CREATION]<img=5>@red@ " + player.getUsername() + " has created a Armoured Bunny Pet!";
-                World.sendMessage(msg);
-                return;
-            }
-        }
-
-
-        if (usedWith.getId() == 28 && itemUsedWith.getId() == 29 || usedWith.getId() == 29 && itemUsedWith.getId() == 28) {
-            int rewards2[][] = {
-                    {14733, 14732, 14734, 19111, 11137, 3907, 18351, 3140, 18353, 18355, 18357, 15501, 15272, 2503,
-                            10499, 3805, 6326, 861, 1163, 1201, 6111, 544, 542, 5574, 5575, 5576, 1215, 3105, 13734,
-                            7400, 11118}, // Common, 0
-                    {18686, 13996, 13913, 13919, 18799, 18834, 18801, 18800, 5095, 19140, 19139, 19138, 4411, 19887,
-                            22078, 19123, 11617, 3909, 3318, 15501, 11133, 15126, 16043, 6500, 10828, 3751, 3753, 10589,
-                            10564, 6809, 4587, 1249, 3204, 1305, 1377, 1434, 6528, 7158, 4153, 6, 8, 10, 12, 4675, 6914,
-                            6889}, // Uncommon, 1
-                    {6739, 11728, 6585, 15259, 15332, 2579, 6920, 7630, 6922, 13879, 13883, 15241, 15243, 3321, 3391,
-                            3322, 3320, 3318, 18360} // Rare, 2
-            };
-            double numGen = Math.random();
-            /**
-             * Chances 50% chance of Common Items - cheap gear, high-end consumables 40%
-             * chance of Uncommon Items - various high-end coin-bought gear 10% chance of
-             * Rare Items - Highest-end coin-bought gear, some voting-point/pk-point
-             * equipment
-             */
-
-            int rewardGrade = numGen >= 0.5 ? 0 : numGen >= 0.20 ? 1 : 2;
-            int rewardPos = Misc.getRandom(rewards2[rewardGrade].length - 1);
-            player.getInventory().delete(28, 1);
-            player.getInventory().delete(29, 1);
-            player.getInventory().add(rewards2[rewardGrade][rewardPos], 1).refreshItems();
-            player.getPacketSender().sendMessage("You unlocked the slayer chest");
-
-
-            return;
-
-        }
-
-        /* Clue Handler */
-        if (itemUsedWith.getId() == 9003
-                && (usedWith.getId() == 2724 || ItemDefinition.forId(usedWith.getId()).getName().contains("Clue"))) {
-            OLD_ClueScrolls.sendDropTableInterface(player);
-        }
-        for (int i = 0; i < Firelighter.values().length; i++) {
-            if (usedWith.getId() == Firelighter.values()[i].getLighterId()
-                    || itemUsedWith.getId() == Firelighter.values()[i].getLighterId()) {
-                Firelighter.handleFirelighter(player, i);
+                itemUsedWith.setEffect(ItemEffect.AOE_EFFECT);
+                player.sendMessage("You successfully apply the AOE Effect to your weapon.");
                 break;
-            }
-        }
-
-        for (int i = 0; i < Crushing.values().length; i++) {
-            if (usedWith.getId() == Crushing.values()[i].getInput()
-                    || itemUsedWith.getId() == Crushing.values()[i].getInput()) {
-                Crushing.handleCrushing(player, i);
+            case 20504:
+                if(itemUsedWith.getDefinition().getEquipmentSlot() != Equipment.WEAPON_SLOT){
+                    player.sendMessage("Please use the token on a weapon.");
+                    return;
+                }
+                itemUsedWith.setEffect(ItemEffect.AOE_EFFECT_2x2);
+                player.sendMessage("You successfully apply the AOE Effect to your weapon.");
                 break;
-            }
-        }
-
-        for (int i = 0; i < BoltData.values().length; i++) {
-            if (usedWith.getId() == BoltData.values()[i].getTip()
-                    || itemUsedWith.getId() == BoltData.values()[i].getTip()) {
-                Fletching.tipBolt(player, BoltData.values()[i].getTip());
+            case 22108:
+                CurrencyPouch.handleItemOnItem(player, itemUsedWith);
                 break;
-            }
+            case 9003:
+                if(itemUsedWith.getId() == 989) {
+                    CrystalChest.sendRewardInterface(player);
+                }
+                break;
+
+            default:
+                player.getRarityTransfer().setItemsAndStartDialogue(itemUsedWith, itemUsedSlot, usedWith, usedWithSlot);
+                break;
+
         }
 
-        WeaponPoison.execute(player, itemUsedWith.getId(), usedWith.getId());
-        if (itemUsedWith.getId() == 590 || usedWith.getId() == 590)
-            Firemaking.lightFire(player, itemUsedWith.getId() == 590 ? usedWith.getId() : itemUsedWith.getId(), false,
-                    1);
-        if (itemUsedWith.getDefinition().getName().contains("(") && usedWith.getDefinition().getName().contains("("))
-            PotionCombinating.combinePotion(player, usedWith.getId(), itemUsedWith.getId());
-        if (usedWith.getId() == Herblore.VIAL || itemUsedWith.getId() == Herblore.VIAL) {
-            if (Herblore.makeUnfinishedPotion(player, usedWith.getId())
-                    || Herblore.makeUnfinishedPotion(player, itemUsedWith.getId()))
-                return;
-        }
-        if (Herblore.finishPotion(player, usedWith.getId(), itemUsedWith.getId())
-                || Herblore.finishPotion(player, itemUsedWith.getId(), usedWith.getId()))
-            return;
-        if (usedWith.getId() == 12934 || itemUsedWith.getId() == 12926 || usedWith.getId() == 12926
-                || itemUsedWith.getId() == 12934) {
-            ToxicBlowpipe.loadPipe(player);
-        }
-        if (usedWith.getId() == 5012 && itemUsedWith.getId() == 10949 && itemUsedWith.getAmount() >= 3)
-            World.sendMessage("<img=16> <shad=1>[" + player.getUsername() + "] @cya@Turned his Supreme twisted bow into a Light Twisted Bow!");
-
-        if (usedWith.getId() == 10949 && itemUsedWith.getId() == 5012 && usedWith.getAmount() >= 3)
-            World.sendMessage("<img=16> <shad=1>[" + player.getUsername() + "] @cya@Turned his Supreme twisted bow into a Light Twisted Bow!");
-
-        if (usedWith.getId() == 946 || itemUsedWith.getId() == 946)
-            Fletching.openSelection(player, usedWith.getId() == 946 ? itemUsedWith.getId() : usedWith.getId());
-        if (usedWith.getId() == 1777 || itemUsedWith.getId() == 1777)
-            Fletching.openBowStringSelection(player,
-                    usedWith.getId() == 1777 ? itemUsedWith.getId() : usedWith.getId());
-        if (usedWith.getId() == 53 || itemUsedWith.getId() == 53 || usedWith.getId() == 52
-                || itemUsedWith.getId() == 52)
-            Fletching.makeArrows(player, usedWith.getId(), itemUsedWith.getId());
-        if (itemUsedWith.getId() == 1755 || usedWith.getId() == 1755)
-            Gems.selectionInterface(player, usedWith.getId() == 1755 ? itemUsedWith.getId() : usedWith.getId());
-        if (itemUsedWith.getId() == 1755 || usedWith.getId() == 1755)
-            Fletching.openGemCrushingInterface(player,
-                    usedWith.getId() == 1755 ? itemUsedWith.getId() : usedWith.getId());
-
-        if (usedWith.getId() == 1733 || itemUsedWith.getId() == 1733)
-            LeatherMaking.craftLeatherDialogue(player, usedWith.getId(), itemUsedWith.getId());
-        Herblore.handleSpecialPotion(player, itemUsedWith.getId(), usedWith.getId());
-        if (itemUsedWith.getId() == 1759 || usedWith.getId() == 1759) {
-            Jewelry.stringAmulet(player, itemUsedWith.getId(), usedWith.getId());
-        }
-        ItemForging.forgeItem(player, itemUsedWith.getId(), usedWith.getId());
+//        if (usedWith.getId() == TreasureHunter.KEY_1 || usedWith.getId() == TreasureHunter.KEY_2 | usedWith.getId() == TreasureHunter.KEY_3 || usedWith.getId() == TreasureHunter.KEY_4) {
+//            TreasureHunter.combineKeys(player, usedWith, itemUsedWith);
+//            return;
+//        }
+//
+//        if (usedWith.getId() == 22106) {
+//            Item[] requirements = new Item[]{new Item(22106, 1),
+//                    new Item(19000, 10_000), new Item(5022, 10_000_000),
+//                    new Item(ItemDefinition.TOKEN_ID, 10_000_000)};
+//            if (player.getInventory().containsAll(requirements) && itemUsedWith.getId() == 19_000) {
+//                player.getInventory().deleteItemSet(requirements);
+//                if (Misc.exclusiveRandom(1, 100) <= 25) {
+//                    player.getInventory().add(22107, 1);
+//                    player.sendMessage("@red@Congratulations, you've made Lucifer's pet!");
+//                    String msg = "@blu@<img=5>[CREATION]<img=5>@red@ " + player.getUsername() + " has created Lucifer's pet!";
+//                    World.sendMessage(msg);
+//                }
+//                return;
+//            } else if (player.getInventory().containsAll(requirements = new Item[]{new Item(22106, 2), new Item(18885, 1)})
+//                    && itemUsedWith.getId() == requirements[1].getId()) {
+//                player.getInventory().deleteItemSet(requirements);
+//                player.getInventory().add(22104, 1);
+//                player.sendMessage("@red@Congratulations, you've made Lucifer's gloves!");
+//                String msg = "@blu@<img=5>[CREATION]<img=5>@red@ " + player.getUsername() + " has created Lucifer's gloves!";
+//                World.sendMessage(msg);
+//                return;
+//            } else if (player.getInventory().containsAll(requirements = new Item[]{new Item(22106, 2), new Item(18887, 1),})
+//                    && itemUsedWith.getId() == requirements[1].getId()) {
+//                player.getInventory().deleteItemSet(requirements);
+//                player.getInventory().add(22103, 1);
+//                player.sendMessage("@red@Congratulations, you've made Lucifer's boots!");
+//                String msg = "@blu@<img=5>[CREATION]<img=5>@red@ " + player.getUsername() + " has created Lucifer's boots!";
+//                World.sendMessage(msg);
+//                return;
+//            } else if (player.getInventory().containsAll(requirements = new Item[]{new Item(22106, 3), new Item(4684, 1),})
+//                    && itemUsedWith.getId() == requirements[1].getId()) {
+//                player.getInventory().deleteItemSet(requirements);
+//                player.getInventory().add(22100, 1);
+//                player.sendMessage("@red@Congratulations, you've made Lucifer's head!");
+//                String msg = "@blu@<img=5>[CREATION]<img=5>@red@ " + player.getUsername() + " has created Lucifer's head!";
+//                World.sendMessage(msg);
+//                return;
+//            } else if (player.getInventory().containsAll(requirements = new Item[]{new Item(22106, 3), new Item(4685, 1),})
+//                    && itemUsedWith.getId() == requirements[1].getId()) {
+//                player.getInventory().deleteItemSet(requirements);
+//                player.getInventory().add(22101, 1);
+//                player.sendMessage("@red@Congratulations, you've made Lucifer's body!");
+//                String msg = "@blu@<img=5>[CREATION]<img=5>@red@ " + player.getUsername() + " has created Lucifer's body!";
+//                World.sendMessage(msg);
+//                return;
+//            } else if (player.getInventory().containsAll(requirements = new Item[]{new Item(22106, 3), new Item(4686, 1),})
+//                    && itemUsedWith.getId() == requirements[1].getId()) {
+//                player.getInventory().deleteItemSet(requirements);
+//                player.getInventory().add(22102, 1);
+//                player.sendMessage("@red@Congratulations, you've made Lucifer's legs!");
+//                String msg = "@blu@<img=5>[CREATION]<img=5>@red@ " + player.getUsername() + " has created Lucifer's legs!";
+//                World.sendMessage(msg);
+//                return;
+//            } else if (player.getInventory().containsAll(requirements = new Item[]{new Item(22106, 3), new Item(20400, 1),})
+//                    && itemUsedWith.getId() == requirements[1].getId()) {
+//                player.getInventory().deleteItemSet(requirements);
+//                player.getInventory().add(22105, 1);
+//                player.sendMessage("@red@Congratulations, you've made Lucifer's wings!");
+//                String msg = "@blu@<img=5>[CREATION]<img=5>@red@ " + player.getUsername() + " has created Lucifer's wings!";
+//                World.sendMessage(msg);
+//                return;
+//            }
+//        }
+//
+//        if ((usedWith.getId() == 23004 || usedWith.getId() == 23005 || usedWith.getId() == 23006 || usedWith.getId() == 23007)
+//                && (itemUsedWith.getId() == 23004 || itemUsedWith.getId() == 23005 || itemUsedWith.getId() == 23006 || itemUsedWith.getId() == 23007)) {
+//            Item[] requirements = new Item[]{new Item(23004, 100),
+//                    new Item(23005, 100), new Item(23006, 100),
+//                    new Item(23007, 100)};
+//            if (player.getInventory().containsAll(requirements)) {
+//                player.getInventory().deleteItemSet(requirements);
+//                player.getInventory().add(23018, 1);
+//                player.sendMessage("@red@Congratulations, you've made an Armoured Bunny pet!");
+//                String msg = "@blu@<img=5>[CREATION]<img=5>@red@ " + player.getUsername() + " has created a Armoured Bunny Pet!";
+//                World.sendMessage(msg);
+//                return;
+//            }
+//        }
+//
+//
+//        if (usedWith.getId() == 28 && itemUsedWith.getId() == 29 || usedWith.getId() == 29 && itemUsedWith.getId() == 28) {
+//            int rewards2[][] = {
+//                    {14733, 14732, 14734, 19111, 11137, 3907, 18351, 3140, 18353, 18355, 18357, 15501, 15272, 2503,
+//                            10499, 3805, 6326, 861, 1163, 1201, 6111, 544, 542, 5574, 5575, 5576, 1215, 3105, 13734,
+//                            7400, 11118}, // Common, 0
+//                    {18686, 13996, 13913, 13919, 18799, 18834, 18801, 18800, 5095, 19140, 19139, 19138, 4411, 19887,
+//                            22078, 19123, 11617, 3909, 3318, 15501, 11133, 15126, 16043, 6500, 10828, 3751, 3753, 10589,
+//                            10564, 6809, 4587, 1249, 3204, 1305, 1377, 1434, 6528, 7158, 4153, 6, 8, 10, 12, 4675, 6914,
+//                            6889}, // Uncommon, 1
+//                    {6739, 11728, 6585, 15259, 15332, 2579, 6920, 7630, 6922, 13879, 13883, 15241, 15243, 3321, 3391,
+//                            3322, 3320, 3318, 18360} // Rare, 2
+//            };
+//            double numGen = Math.random();
+//            /**
+//             * Chances 50% chance of Common Items - cheap gear, high-end consumables 40%
+//             * chance of Uncommon Items - various high-end coin-bought gear 10% chance of
+//             * Rare Items - Highest-end coin-bought gear, some voting-point/pk-point
+//             * equipment
+//             */
+//
+//            int rewardGrade = numGen >= 0.5 ? 0 : numGen >= 0.20 ? 1 : 2;
+//            int rewardPos = Misc.getRandom(rewards2[rewardGrade].length - 1);
+//            player.getInventory().delete(28, 1);
+//            player.getInventory().delete(29, 1);
+//            player.getInventory().add(rewards2[rewardGrade][rewardPos], 1).refreshItems();
+//            player.getPacketSender().sendMessage("You unlocked the slayer chest");
+//
+//
+//            return;
+//
+//        }
+//
+//        /* Clue Handler */
+//        if (itemUsedWith.getId() == 9003
+//                && (usedWith.getId() == 2724 || ItemDefinition.forId(usedWith.getId()).getName().contains("Clue"))) {
+//            OLD_ClueScrolls.sendDropTableInterface(player);
+//        }
+//        for (int i = 0; i < Firelighter.values().length; i++) {
+//            if (usedWith.getId() == Firelighter.values()[i].getLighterId()
+//                    || itemUsedWith.getId() == Firelighter.values()[i].getLighterId()) {
+//                Firelighter.handleFirelighter(player, i);
+//                break;
+//            }
+//        }
+//
+//        for (int i = 0; i < Crushing.values().length; i++) {
+//            if (usedWith.getId() == Crushing.values()[i].getInput()
+//                    || itemUsedWith.getId() == Crushing.values()[i].getInput()) {
+//                Crushing.handleCrushing(player, i);
+//                break;
+//            }
+//        }
+//
+//        for (int i = 0; i < BoltData.values().length; i++) {
+//            if (usedWith.getId() == BoltData.values()[i].getTip()
+//                    || itemUsedWith.getId() == BoltData.values()[i].getTip()) {
+//                Fletching.tipBolt(player, BoltData.values()[i].getTip());
+//                break;
+//            }
+//        }
+//
+//        WeaponPoison.execute(player, itemUsedWith.getId(), usedWith.getId());
+//        if (itemUsedWith.getId() == 590 || usedWith.getId() == 590)
+//            Firemaking.lightFire(player, itemUsedWith.getId() == 590 ? usedWith.getId() : itemUsedWith.getId(), false,
+//                    1);
+//        if (itemUsedWith.getDefinition().getName().contains("(") && usedWith.getDefinition().getName().contains("("))
+//            PotionCombinating.combinePotion(player, usedWith.getId(), itemUsedWith.getId());
+//        if (usedWith.getId() == Herblore.VIAL || itemUsedWith.getId() == Herblore.VIAL) {
+//            if (Herblore.makeUnfinishedPotion(player, usedWith.getId())
+//                    || Herblore.makeUnfinishedPotion(player, itemUsedWith.getId()))
+//                return;
+//        }
+//        if (Herblore.finishPotion(player, usedWith.getId(), itemUsedWith.getId())
+//                || Herblore.finishPotion(player, itemUsedWith.getId(), usedWith.getId()))
+//            return;
+//        if (usedWith.getId() == 12934 || itemUsedWith.getId() == 12926 || usedWith.getId() == 12926
+//                || itemUsedWith.getId() == 12934) {
+//            ToxicBlowpipe.loadPipe(player);
+//        }
+//        if (usedWith.getId() == 5012 && itemUsedWith.getId() == 10949 && itemUsedWith.getAmount() >= 3)
+//            World.sendMessage("<img=16> <shad=1>[" + player.getUsername() + "] @cya@Turned his Supreme twisted bow into a Light Twisted Bow!");
+//
+//        if (usedWith.getId() == 10949 && itemUsedWith.getId() == 5012 && usedWith.getAmount() >= 3)
+//            World.sendMessage("<img=16> <shad=1>[" + player.getUsername() + "] @cya@Turned his Supreme twisted bow into a Light Twisted Bow!");
+//
+//        if (usedWith.getId() == 946 || itemUsedWith.getId() == 946)
+//            Fletching.openSelection(player, usedWith.getId() == 946 ? itemUsedWith.getId() : usedWith.getId());
+//        if (usedWith.getId() == 1777 || itemUsedWith.getId() == 1777)
+//            Fletching.openBowStringSelection(player,
+//                    usedWith.getId() == 1777 ? itemUsedWith.getId() : usedWith.getId());
+//        if (usedWith.getId() == 53 || itemUsedWith.getId() == 53 || usedWith.getId() == 52
+//                || itemUsedWith.getId() == 52)
+//            Fletching.makeArrows(player, usedWith.getId(), itemUsedWith.getId());
+//        if (itemUsedWith.getId() == 1755 || usedWith.getId() == 1755)
+//            Gems.selectionInterface(player, usedWith.getId() == 1755 ? itemUsedWith.getId() : usedWith.getId());
+//        if (itemUsedWith.getId() == 1755 || usedWith.getId() == 1755)
+//            Fletching.openGemCrushingInterface(player,
+//                    usedWith.getId() == 1755 ? itemUsedWith.getId() : usedWith.getId());
+//
+//        if (usedWith.getId() == 1733 || itemUsedWith.getId() == 1733)
+//            LeatherMaking.craftLeatherDialogue(player, usedWith.getId(), itemUsedWith.getId());
+//        Herblore.handleSpecialPotion(player, itemUsedWith.getId(), usedWith.getId());
+//        if (itemUsedWith.getId() == 1759 || usedWith.getId() == 1759) {
+//            Jewelry.stringAmulet(player, itemUsedWith.getId(), usedWith.getId());
+//        }
+//        ItemForging.forgeItem(player, itemUsedWith.getId(), usedWith.getId());
     }
 
     @SuppressWarnings("unused")
