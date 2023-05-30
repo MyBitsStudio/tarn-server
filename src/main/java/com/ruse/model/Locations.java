@@ -2180,6 +2180,9 @@ for (Item item : player.getInventory().getItems()) {
 		ASTA_LOBBY(new int[] { 3059, 3071 }, new int[] { 2752, 2764 }, true, true, true, false, false, false) {
 		},
 
+		HOME_AREA(new int[] { 2175, 2237 }, new int[] { 3719, 3777 }, false, true, true, false, false, true) {
+		},
+
 		//BOSS LOCATIONS
 		INSTANCE_LOBBY(new int[]{2642, 2668}, new int[]{2778, 2804}, false, false, true, false, true, true) {
 		},

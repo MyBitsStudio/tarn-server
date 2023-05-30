@@ -40,6 +40,10 @@ public class NPCUpdating {
 					&& player.getPosition().isWithinDistance(npc.getPosition()) && !npc.isNeedsPlacement()) {
 				if(npc.isSummoningNpc()){
 					if(player.getPSettings().getBooleanValue("hidden-players")){
+						player.getNpcFacesUpdated().remove(npc);
+						npcIterator.remove();
+						packet.putBits(1, 1);
+						packet.putBits(2, 3);
 						continue;
 					}
 				}
@@ -61,7 +65,7 @@ public class NPCUpdating {
 			if (npc == null || player.getLocalNpcs().contains(npc) || !npc.isVisible() || npc.isNeedsPlacement())
 				continue;
 			if (npc.getPosition().isWithinDistance(player.getPosition())) {
-				if (player.getLocation() != null && (player.getLocation() == Locations.Location.HOME_BANK) &&
+				if (player.getLocation() != null && (player.getLocation() == Locations.Location.HOME_AREA) &&
 						npc.isSummoningNpc() && (player.getSummoning().getFamiliar() == null || (
 						player.getSummoning().getFamiliar() != null &&
 								player.getSummoning().getFamiliar().getSummonNpc() != null &&
