@@ -19,7 +19,6 @@ public class ItemBonus {
         this.effect = effect;
         this.bonus = Misc.inclusiveRandom(effect.getLowBonus(), effect.getHighBonus());
         this.rarity = effect.getRarity();
-
     }
 
     public ItemBonus(ItemRarity rarity, ItemEffect effect){

@@ -103,6 +103,37 @@ public class UseItemPacketListener implements PacketListener {
             return;
         }
 
+        switch(itemUsedWith.getId()) {
+            case 20435:
+                if (itemUsedWith.getDefinition().getEquipmentSlot() != Equipment.WEAPON_SLOT) {
+                    player.sendMessage("Please use the token on a weapon.");
+                    return;
+                }
+                usedWith.setEffect(ItemEffect.AOE_EFFECT);
+                player.getInventory().refreshItems();
+                //player.getInventory().delete(itemUsedWith);
+                player.sendMessage("You successfully apply the AOE Effect to your weapon.");
+                return;
+            case 20504:
+                if(itemUsedWith.getDefinition().getEquipmentSlot() != Equipment.WEAPON_SLOT){
+                    player.sendMessage("Please use the token on a weapon.");
+                    return;
+                }
+                player.getInventory().refreshItems();
+                itemUsedWith.setEffect(ItemEffect.AOE_EFFECT_2x2);
+                player.sendMessage("You successfully apply the AOE Effect to your weapon.");
+                return;
+            case 22108:
+                CurrencyPouch.handleItemOnItem(player, itemUsedWith);
+                return;
+            case 9003:
+                if(itemUsedWith.getId() == 989) {
+                    CrystalChest.sendRewardInterface(player);
+                }
+                return;
+
+        }
+
         switch(usedWith.getId()) {
             case 20435:
                 if (itemUsedWith.getDefinition().getEquipmentSlot() != Equipment.WEAPON_SLOT) {
@@ -110,6 +141,7 @@ public class UseItemPacketListener implements PacketListener {
                     return;
                 }
                 itemUsedWith.setEffect(ItemEffect.AOE_EFFECT);
+                player.getInventory().refreshItems();
                 player.sendMessage("You successfully apply the AOE Effect to your weapon.");
                 break;
             case 20504:
@@ -118,54 +150,21 @@ public class UseItemPacketListener implements PacketListener {
                     return;
                 }
                 itemUsedWith.setEffect(ItemEffect.AOE_EFFECT_2x2);
+                player.getInventory().refreshItems();
                 player.sendMessage("You successfully apply the AOE Effect to your weapon.");
-                break;
+                 return;
             case 22108:
                 CurrencyPouch.handleItemOnItem(player, itemUsedWith);
-                break;
+                return;
             case 9003:
                 if(itemUsedWith.getId() == 989) {
                     CrystalChest.sendRewardInterface(player);
                 }
-                break;
-
-            default:
-                player.getRarityTransfer().setItemsAndStartDialogue(itemUsedWith, itemUsedSlot, usedWith, usedWithSlot);
-                break;
+                return;
 
         }
 
-        switch(itemUsedWith.getId()) {
-            case 20435:
-                if (itemUsedWith.getDefinition().getEquipmentSlot() != Equipment.WEAPON_SLOT) {
-                    player.sendMessage("Please use the token on a weapon.");
-                    return;
-                }
-                itemUsedWith.setEffect(ItemEffect.AOE_EFFECT);
-                player.sendMessage("You successfully apply the AOE Effect to your weapon.");
-                break;
-            case 20504:
-                if(itemUsedWith.getDefinition().getEquipmentSlot() != Equipment.WEAPON_SLOT){
-                    player.sendMessage("Please use the token on a weapon.");
-                    return;
-                }
-                itemUsedWith.setEffect(ItemEffect.AOE_EFFECT_2x2);
-                player.sendMessage("You successfully apply the AOE Effect to your weapon.");
-                break;
-            case 22108:
-                CurrencyPouch.handleItemOnItem(player, itemUsedWith);
-                break;
-            case 9003:
-                if(itemUsedWith.getId() == 989) {
-                    CrystalChest.sendRewardInterface(player);
-                }
-                break;
-
-            default:
-                player.getRarityTransfer().setItemsAndStartDialogue(itemUsedWith, itemUsedSlot, usedWith, usedWithSlot);
-                break;
-
-        }
+        player.getRarityTransfer().setItemsAndStartDialogue(itemUsedWith, itemUsedSlot, usedWith, usedWithSlot);
 
 //        if (usedWith.getId() == TreasureHunter.KEY_1 || usedWith.getId() == TreasureHunter.KEY_2 | usedWith.getId() == TreasureHunter.KEY_3 || usedWith.getId() == TreasureHunter.KEY_4) {
 //            TreasureHunter.combineKeys(player, usedWith, itemUsedWith);
