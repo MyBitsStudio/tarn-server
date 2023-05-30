@@ -780,10 +780,6 @@ public class DissolveItem {
                 return true;
 
             case 12843:
-            case 14440:
-            case 14446:
-            case 14438:
-            case 14444:
                 Item toDissolveItem39 = player.getInventory().get(slot);
                 if (player.getInventory().contains(toDissolveItem39.getId(), toDissolveItem39.getEffect(), toDissolveItem39.getBonus())) {
                     player.getInventory().delete(toDissolveItem39)
@@ -792,6 +788,22 @@ public class DissolveItem {
                     player.getSkillManager().addExperience(Skill.CRAFTING, 573182);
                     player.getSeasonPass().incrementExp(20000, false);
                     player.getPacketSender().sendMessage("@or2@You have dissolved @red@" + ItemDefinition.forId(id).getName() + "@or2@ for@red@ " + 5000000 + " @or2@tokens.");
+                }
+                return true;
+
+            case 14438:
+            case 14440:
+            case 14442:
+            case 14444:
+            case 14446:
+                Item toDissolveItem42 = player.getInventory().get(slot);
+                if (player.getInventory().contains(toDissolveItem42.getId(), toDissolveItem42.getEffect(), toDissolveItem42.getBonus())) {
+                    player.getInventory().delete(toDissolveItem42)
+                            .add(13650, 150);
+                    player.performAnimation(new Animation(712));
+                    player.getSkillManager().addExperience(Skill.CRAFTING, 573182);
+                    player.getSeasonPass().incrementExp(20000, false);
+                    player.getPacketSender().sendMessage("@or2@You have dissolved @red@" + ItemDefinition.forId(13650).getName() + "@or2@ for@red@ " + 150 + " @or2@ Counter Tokens.");
                 }
                 return true;
 
@@ -1134,6 +1146,7 @@ public class DissolveItem {
                     player.getPacketSender().sendMessage("@or2@You have dissolved @red@" + ItemDefinition.forId(id).getName() + "@or2@ for@red@ " + 1 + " @or2@token.");
                 }
                 return true;
+
             case 22229:
             case 22230:
             case 22231:
