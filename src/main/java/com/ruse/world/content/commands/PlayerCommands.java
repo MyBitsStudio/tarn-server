@@ -431,49 +431,26 @@ public class PlayerCommands {
         String color1 = "@red@";
 
         player.getPacketSender().sendString(index++, color1 + "In-Game Rules");
-        player.getPacketSender().sendString(index++, color + "1. No duping, maniuplating, or abusing bugs");
+        player.getPacketSender().sendString(index++, color + "1. No duping, manipulating, or abusing bugs");
         player.getPacketSender().sendString(index++, color + "2. 3 Accounts max (1 Main, 1 Iron & 1 AFK)");
         player.getPacketSender().sendString(index++, color + "3. No trading rewards from AFK account");
         player.getPacketSender().sendString(index++, color + "4. BP is for two accounts (Main & Iron)");
         player.getPacketSender().sendString(index++, color + "5. RESPECT ALL STAFF!");
         player.getPacketSender().sendString(index++, color + "6. No advertising other servers");
-        player.getPacketSender().sendString(index++, color1 + "7. No scamming or luring");
+        player.getPacketSender().sendString(index++, color + "7. No scamming or luring");
         player.getPacketSender().sendString(index++, color + "8. No impersonating staff members");
         player.getPacketSender().sendString(index++, color + "9. Any racism or discrimination is not tolerated");
         player.getPacketSender().sendString(index++, color + "10. No Multi Accounting on PVM");
-        player.getPacketSender().sendString(index++, color + "11. One account per Vote/Donator boss");
-        player.getPacketSender().sendString(index++, color + ":12. Any abuse can result in rollbacks or ban");
-//        player.getPacketSender().sendString(index++, color + "::collection - opens the collection log interface");
-//        player.getPacketSender().sendString(index++, color + "::itemstats - opens up best items interface");
-//        player.getPacketSender().sendString(index++, color + "");
-//        player.getPacketSender().sendString(index++, color1 + "Other Commands:");
-//        player.getPacketSender().sendString(index++, color + "::dr/ddr - shows you your current droprate");
-//        player.getPacketSender().sendString(index++, color + "::maxhit - shows you your current droprate");
-//        player.getPacketSender().sendString(index++, color + "::changepass - allows you to change your password");
-//
-//
-//        player.getPacketSender().sendString(index++,
-//                color + "::global - teleports to global bosses");
-//        player.getPacketSender().sendString(index++,
-//                color + "::bank - opens up your bank ($50 total claimed required)");
-//        player.getPacketSender().sendString(index++,
-//                color + "::players - tells you how many players are currently online");
-//        player.getPacketSender().sendString(index++, color + "::forums - opens up our forums for Tarn");
-//        player.getPacketSender().sendString(index++, color + "::client - downloads our client launcher");
-//        player.getPacketSender().sendString(index++, color + "::rules - opens up our rules");
-//        player.getPacketSender().sendString(index++, color + "::discord - opens up our discord for Tarn");
-//        player.getPacketSender().sendString(index++, color + "::vote - opens up our site for voting");
-//        player.getPacketSender().sendString(index++, color + "::voted - claims your votes");
-//        player.getPacketSender().sendString(index++, color + "::donate - opens up our donation site");
-//        player.getPacketSender().sendString(index++, color + "::donated - claims your donation");
-//        player.getPacketSender().sendString(index++, color + "::donationdeals - see if there are any promotions");
-//        player.getPacketSender().sendString(index++,
-//                color + "::whatdrops (item name) - tells you what drops the item");
-//        player.getPacketSender().sendString(index++,
-//                color + "::dropmessage - removes messages of drops going to your inv/bank");
-//        player.getPacketSender().sendString(index++, color + "::help - requests assistance from a staff member");
-//        player.getPacketSender().sendString(index++, color + "::yell - sends a global message");
-//        player.getPacketSender().sendString(index++, color + "");
+        player.getPacketSender().sendString(index++, color + "11. One account per Vote/Donator/Global boss");
+        player.getPacketSender().sendString(index++, color + "12. 1 Hour AFK on main limit");
+        player.getPacketSender().sendString(index++, color1 + "!!----------------------------------!!");
+        player.getPacketSender().sendString(index++, color1 + "!!-----------!! WARNING !!----------!!");
+        player.getPacketSender().sendString(index++, color1 + "!!----------------------------------!!");
+        player.getPacketSender().sendString(index++, color1 + "!! Any abuse can result in rollbacks or ban !!");
+        player.getPacketSender().sendString(index++, color1 + "!! Racism is immediate mute !!");
+        player.getPacketSender().sendString(index++, color1 + "!! Repeated offences will result in ban !!");
+        player.getPacketSender().sendString(index++, color1 + "!! BP abuse will result in no refund !!");
+        player.getPacketSender().sendString(index++, color1 + "!! Warnings and Mutes stack towards chances !!");
     }
 
     public static void sendCommands(Player player){

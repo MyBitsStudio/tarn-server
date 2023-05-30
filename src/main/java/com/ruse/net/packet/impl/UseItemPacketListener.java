@@ -788,11 +788,12 @@ public class UseItemPacketListener implements PacketListener {
             case 23058:
             case 23059:
             case 23060:
+            case 3686:
              //   System.out.println("1");
                 boolean ironman = player.getGameMode().isIronman();
                 boolean targetIronman = target.getGameMode().isIronman();
                 if (target.getGameMode() == GameMode.GROUP_IRONMAN) {
-                    player.sendMessage("You cannot give bonds to group ironmen players.");
+                    player.sendMessage("You cannot give to group ironmen players.");
                     return;
                 }
               //  System.out.println("2");
@@ -804,7 +805,9 @@ public class UseItemPacketListener implements PacketListener {
                 }*/
                // System.out.println("3");
                 //if (ironman && !targetIronman || !ironman && targetIronman) {
-                    if (!target.getInventory().isFull()) {
+                    if (target.getInventory().isFull()) {
+                        player.sendMessage("This player's inventory is full.");
+                    } else {
                    //    System.out.println("f");
                         if (player.getInventory().contains(itemId)) {
                             player.getInventory().delete(itemId, 1);
@@ -814,8 +817,6 @@ public class UseItemPacketListener implements PacketListener {
                         } else {
                             player.sendMessage("You need a bond to perform this action!");
                         }
-                    } else {
-                        player.sendMessage("This player's inventory is full.");
                     }
                 //}
                 break;
