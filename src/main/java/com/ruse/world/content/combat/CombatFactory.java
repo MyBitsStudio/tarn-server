@@ -1227,9 +1227,16 @@ public final class CombatFactory {
             return false;
         }
 
+        if(entity.isNpc()){
+            if(entity.toNpc().isSummoningNpc()){
+                if(victim.isPlayer())
+                    return false;
+            }
+        }
+
         // Here we check if the victim has teleported away.
         if (victim.isPlayer()) {
-            if (((Player) victim).isTeleporting()
+            if (victim.isTeleporting()
                     || !Location.ignoreFollowDistance(entity)
                     && !Locations.goodDistance(victim.getPosition(), entity.getPosition(), 40)
                     || (((Player) victim).isPlayerLocked() || ((Player) victim).isGroupIronmanLocked())) {
@@ -1240,7 +1247,7 @@ public final class CombatFactory {
         }
 
         if (victim.isPlayer() && entity.isPlayer() && CombatFactory.zarytebow((Player) entity) && victim != null
-                && entity != null && ((Player) entity).getLocation() != Location.FREE_FOR_ALL_ARENA) {
+                && entity != null && entity.getLocation() != Location.FREE_FOR_ALL_ARENA) {
             // ((Player)entity).getPacketSender().sendMessage("Zaryte bow is disabled in
             // PvP");
             // entity.getCombatBuilder().testReset(true);

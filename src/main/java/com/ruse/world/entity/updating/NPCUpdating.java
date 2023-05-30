@@ -39,20 +39,15 @@ public class NPCUpdating {
 			if (World.getNpcs().get(npc.getIndex()) != null && npc.isVisible()
 					&& player.getPosition().isWithinDistance(npc.getPosition()) && !npc.isNeedsPlacement()) {
 				if(npc.isSummoningNpc()){
-					if(!player.getPSettings().getBooleanValue("hidden-players")){
-						updateMovement(npc, packet);
-						if (npc.getUpdateFlag().isUpdateRequired()) {
-							appendUpdates(npc, update);
-						}
-					}
-				} else {
-					updateMovement(npc, packet);
-					if (npc.getUpdateFlag().isUpdateRequired()) {
-						appendUpdates(npc, update);
+					if(player.getPSettings().getBooleanValue("hidden-players")){
+						continue;
 					}
 				}
-
-			} else {
+				updateMovement(npc, packet);
+				if (npc.getUpdateFlag().isUpdateRequired()) {
+					appendUpdates(npc, update);
+				}
+			} else  {
 				player.getNpcFacesUpdated().remove(npc);
 				npcIterator.remove();
 				packet.putBits(1, 1);
@@ -72,17 +67,12 @@ public class NPCUpdating {
 								player.getSummoning().getFamiliar().getSummonNpc() != null &&
 								!player.getSummoning().getFamiliar().getSummonNpc().equals(npc)))) {
 					continue;
-				}else if(npc.isSummoningNpc()){
-					player.getLocalNpcs().add(npc);
-					number++;
-					if(!player.getPSettings().getBooleanValue("hidden-players")){
-						addNPC(player, npc, packet);
-						if (npc.getUpdateFlag().isUpdateRequired()) {
-							appendUpdates(npc, update);
+				}else{
+					if(npc.isSummoningNpc()){
+						if(player.getPSettings().getBooleanValue("hidden-players")){
+							continue;
 						}
 					}
-
-				} else {
 					player.getLocalNpcs().add(npc);
 					number++;
 					addNPC(player, npc, packet);

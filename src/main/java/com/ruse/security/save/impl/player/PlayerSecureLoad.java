@@ -781,9 +781,9 @@ public class PlayerSecureLoad extends SecureLoad {
 
         /** BANK **/
         for (int i = 0; i < 9; i++) {
-            if (object.has("bank-" + i + ""))
+            if (object.has("bank-" + i))
                 player.setBank(i, new Bank(player)).getBank(i).addItems(
-                        builder.fromJson(object.get("bank-" + i + "").getAsJsonArray(), Item[].class), false);
+                        builder.fromJson(object.get("bank-" + i).getAsJsonArray(), Item[].class), false);
         }
 
         if (object.has("bank-0")) {

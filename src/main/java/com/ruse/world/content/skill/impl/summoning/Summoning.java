@@ -33,10 +33,10 @@ public class Summoning {
 		if (familiar == null)
 			return;
 		if (!player.getLocation().isSummoningAllowed()) {
-			if (!renew && !login) {
-				player.getPacketSender().sendMessage("You cannot summon familiars here.");
-			} else {
+			if (renew || login) {
 				player.getPacketSender().sendMessage("Your familiar will spawn one you've left this area.");
+			} else {
+				player.getPacketSender().sendMessage("You cannot summon familiars here.");
 			}
 			return;
 		}
@@ -241,7 +241,7 @@ public class Summoning {
 								player.getPacketSender()
 										.sendMessage("@red@Warning: Your familiar will fade away in one minute.");
 							player.getPacketSender().sendString(54043, ""
-									+ Summoning.getTimer(familiar.getDeathTimer() > 0 ? familiar.getDeathTimer() : 0));
+									+ Summoning.getTimer(Math.max(familiar.getDeathTimer(), 0)));
 							// player.getPacketSender().sendString(54024,
 							// ""+SummoningData.calculateScrolls(player));
 						} else {
