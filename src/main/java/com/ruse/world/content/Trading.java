@@ -381,12 +381,14 @@ public class Trading {
 			player.getPacketSender().sendMessage("An error has occured. Please try re-trading the player.");
 			return;
 		}
-		if(player.getInventory().getFreeSlots() <= offeredItems.size()){
+		System.out.println("Item counts : "+player.getInventory().getFreeSlots() +":"+ player2.getTrading().offeredItems.size());
+		if(player.getInventory().getFreeSlots() <= player2.getTrading().offeredItems.size()){
 			player.getPacketSender().sendMessage("You do not have enough free inventory space to continue this trade.");
 			player2.getPacketSender().sendMessage("The other player does not have enough inventory space to continue this trade.");
 			return;
 		}
-		if(player2.getInventory().getFreeSlots() <= player2.getTrading().offeredItems.size()){
+		System.out.println("Item counts : "+player2.getInventory().getFreeSlots() +":"+ offeredItems.size());
+		if(player2.getInventory().getFreeSlots() <= offeredItems.size()){
 			player.getPacketSender().sendMessage("The other player does not have enough inventory space to continue this trade.");
 			player2.getPacketSender().sendMessage("You do not have enough free inventory space to continue this trade.");
 			return;
@@ -430,12 +432,12 @@ public class Trading {
 		Player player2 = World.getPlayers().get(getTradeWith());
 		if (player2 == null)
 			return;
-		if(player.getInventory().getFreeSlots() <= offeredItems.size()){
+		if(player.getInventory().getFreeSlots() <= player2.getTrading().offeredItems.size()){
 			player.getPacketSender().sendMessage("You do not have enough free inventory space to continue this trade.");
 			player2.getPacketSender().sendMessage("The other player does not have enough inventory space to continue this trade.");
 			return;
 		}
-		if(player2.getInventory().getFreeSlots() <= player2.getTrading().offeredItems.size()){
+		if(player2.getInventory().getFreeSlots() <= offeredItems.size()){
 			player.getPacketSender().sendMessage("The other player does not have enough inventory space to continue this trade.");
 			player2.getPacketSender().sendMessage("You do not have enough free inventory space to continue this trade.");
 			return;
