@@ -110,16 +110,23 @@ public class UseItemPacketListener implements PacketListener {
            }
            itemUsedWith.setEffect(ItemEffect.AOE_EFFECT);
            player.sendMessage("You successfully apply the AOE Effect to your weapon.");
-        }  else
+        }
 
 
+        if(usedWith.getId() == 20504){
+            if(itemUsedWith.getDefinition().getEquipmentSlot() != Equipment.WEAPON_SLOT){
+                player.sendMessage("Please use the token on a weapon.");
+                return;
+            }
+            itemUsedWith.setEffect(ItemEffect.AOE_EFFECT_2x2);
+            player.sendMessage("You successfully apply the Bleed Effect to your weapon.");
+        }
 
         if (usedWith.getId() == 22108) {
             CurrencyPouch.handleItemOnItem(player, itemUsedWith);
             return;
         } else
             player.getRarityTransfer().setItemsAndStartDialogue(itemUsedWith, itemUsedSlot, usedWith, usedWithSlot);
-
 
         if (usedWith.getId() == 9003 && itemUsedWith.getId() == 989) {
             CrystalChest.sendRewardInterface(player);
