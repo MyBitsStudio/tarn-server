@@ -104,14 +104,34 @@ public class UseItemPacketListener implements PacketListener {
         }
 
         switch(itemUsedWith.getId()) {
-            case 20435:
+            case 23206:
                 if (itemUsedWith.getDefinition().getEquipmentSlot() != Equipment.WEAPON_SLOT) {
                     player.sendMessage("Please use the token on a weapon.");
                     return;
                 }
                 usedWith.setEffect(ItemEffect.AOE_EFFECT);
+                player.getInventory().delete(itemUsedWith);
                 player.getInventory().refreshItems();
-                //player.getInventory().delete(itemUsedWith);
+                player.sendMessage("You successfully apply the AOE Effect to your weapon.");
+                return;
+            case 23207:
+                if (itemUsedWith.getDefinition().getEquipmentSlot() != Equipment.WEAPON_SLOT) {
+                    player.sendMessage("Please use the token on a weapon.");
+                    return;
+                }
+                usedWith.setEffect(ItemEffect.DROP_RATE_HIGH);
+                player.getInventory().delete(itemUsedWith);
+                player.getInventory().refreshItems();
+                player.sendMessage("You successfully apply the AOE Effect to your weapon.");
+                return;
+            case 23208:
+                if (itemUsedWith.getDefinition().getEquipmentSlot() != Equipment.WEAPON_SLOT) {
+                    player.sendMessage("Please use the token on a weapon.");
+                    return;
+                }
+                usedWith.setEffect(ItemEffect.ALL_DAMAGE_HIGH);
+                player.getInventory().delete(itemUsedWith);
+                player.getInventory().refreshItems();
                 player.sendMessage("You successfully apply the AOE Effect to your weapon.");
                 return;
             case 20504:
@@ -119,8 +139,9 @@ public class UseItemPacketListener implements PacketListener {
                     player.sendMessage("Please use the token on a weapon.");
                     return;
                 }
+                usedWith.setEffect(ItemEffect.AOE_EFFECT_2x2);
+                player.getInventory().delete(itemUsedWith);
                 player.getInventory().refreshItems();
-                itemUsedWith.setEffect(ItemEffect.AOE_EFFECT_2x2);
                 player.sendMessage("You successfully apply the AOE Effect to your weapon.");
                 return;
             case 22108:
@@ -135,21 +156,43 @@ public class UseItemPacketListener implements PacketListener {
         }
 
         switch(usedWith.getId()) {
-            case 20435:
+            case 23206:
                 if (itemUsedWith.getDefinition().getEquipmentSlot() != Equipment.WEAPON_SLOT) {
                     player.sendMessage("Please use the token on a weapon.");
                     return;
                 }
                 itemUsedWith.setEffect(ItemEffect.AOE_EFFECT);
+                player.getInventory().delete(usedWith);
                 player.getInventory().refreshItems();
                 player.sendMessage("You successfully apply the AOE Effect to your weapon.");
-                break;
+                return;
+            case 23207:
+                if (itemUsedWith.getDefinition().getEquipmentSlot() != Equipment.WEAPON_SLOT) {
+                    player.sendMessage("Please use the token on a weapon.");
+                    return;
+                }
+                itemUsedWith.setEffect(ItemEffect.DROP_RATE_HIGH);
+                player.getInventory().delete(usedWith);
+                player.getInventory().refreshItems();
+                player.sendMessage("You successfully apply the AOE Effect to your weapon.");
+                return;
+            case 23208:
+                if (itemUsedWith.getDefinition().getEquipmentSlot() != Equipment.WEAPON_SLOT) {
+                    player.sendMessage("Please use the token on a weapon.");
+                    return;
+                }
+                itemUsedWith.setEffect(ItemEffect.ALL_DAMAGE_HIGH);
+                player.getInventory().delete(usedWith);
+                player.getInventory().refreshItems();
+                player.sendMessage("You successfully apply the AOE Effect to your weapon.");
+                return;
             case 20504:
                 if(itemUsedWith.getDefinition().getEquipmentSlot() != Equipment.WEAPON_SLOT){
                     player.sendMessage("Please use the token on a weapon.");
                     return;
                 }
                 itemUsedWith.setEffect(ItemEffect.AOE_EFFECT_2x2);
+                player.getInventory().delete(usedWith);
                 player.getInventory().refreshItems();
                 player.sendMessage("You successfully apply the AOE Effect to your weapon.");
                  return;

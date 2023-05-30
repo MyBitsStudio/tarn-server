@@ -398,6 +398,13 @@ public class CustomDropUtils {
 
         percentBoost += player.getEquipmentEnhancement().getBoost(BoostType.DR);
 
+        if(player.getInstance() != null){
+            int diff = Integer.parseInt(player.getVariables().getInterfaceSettings()[2]);
+            if(diff != 0){
+                percentBoost += (250 * diff);
+            }
+        }
+
         return percentBoost;
     }
 

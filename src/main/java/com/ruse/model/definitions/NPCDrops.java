@@ -243,17 +243,13 @@ public class NPCDrops {
             double divisor = drop.getChance();
             if (drop.getChance() == 1 && drop.getCount()[0] != -1) {
                 constantDrops.add(drop);
+            } else if (npc.getId() == VaultOfWar.AVATAR_ID) {
+            } else if (dropRates.containsKey(divisor)) {
+                dropRates.get(divisor).add(drop);
             } else {
-                if (npc.getId() == VaultOfWar.AVATAR_ID) {
-                } else {
-                    if (!dropRates.containsKey(divisor)) {
-                        ArrayList<NpcDropItem> items = new ArrayList<>();
-                        items.add(drop);
-                        dropRates.put(divisor, items);
-                    } else {
-                        dropRates.get(divisor).add(drop);
-                    }
-                }
+                ArrayList<NpcDropItem> items = new ArrayList<>();
+                items.add(drop);
+                dropRates.put(divisor, items);
             }
         }
         for (double dropRate : dropRates.keySet()) {
@@ -384,11 +380,10 @@ public class NPCDrops {
                 player.getPacketSender().sendGlobalGraphic(new Graphic(777), pos);
                 if (player.getRights().isMember()) {
                     player.getSkillManager().addExperience(Skill.PRAYER, BonesData.forId(item.getId()).getBuryingXP() * 2);
-                    continue;
                 } else {
                     player.getSkillManager().addExperience(Skill.PRAYER, BonesData.forId(item.getId()).getBuryingXP());
-                    continue;
                 }
+                continue;
             }
 
 
@@ -436,7 +431,7 @@ public class NPCDrops {
                 Item randomItem = random.getItem();
                 randomItem.setDefaultEffect(ItemRarity.getRandomEffectForRarity(randomItem, ItemRarity.getRarityForPercentage(Misc.getRandomDouble(100)), npc.getId()));
                 player.getPacketSender().sendMessage("@red@Your dry streak granted you a drop of " + randomItem.getDefinition().getName());
-               String itemMessage = "" + randomItem.getDefinition().getName();
+               String itemMessage = randomItem.getDefinition().getName();
                 String npcName = Misc.formatText(npc.getDefinition().getName());
 
               String message = "<img=15><shad><col=CB0101> [" + player.getUsername()
@@ -471,37 +466,35 @@ public class NPCDrops {
                         if (item.getId() == ItemDefinition.COIN_ID || item.getId() == ItemDefinition.TOKEN_ID) {
                             player.getInventory().add(item.getId(), item.getAmount());
                             player.getInventory().add(item.getId(), item.getAmount());
-                        } else {
-                            if (player.getEquipment().getItems()[Equipment.AMULET_SLOT].getId() == 19888
-                                    || player.getEquipment().getItems()[Equipment.AMULET_SLOT].getId() == 19886
-                                    || player.getEquipment().getItems()[Equipment.AMULET_SLOT].getId() == 4489
-                                    || player.getEquipment().getItems()[Equipment.RING_SLOT].getId() == 4446
-                                    || player.getEquipment().getItems()[Equipment.RING_SLOT].getId() == 18823
-                                    || player.getEquipment().getItems()[Equipment.RING_SLOT].getId() == 18818
-                                    || player.getEquipment().getItems()[Equipment.AURA_SLOT].getId() == 15450
-                                    || player.getEquipment().getItems()[Equipment.AMULET_SLOT].getId() == 18888
-                                    || player.getEquipment().getItems()[Equipment.AMULET_SLOT].getId() == 15834
-                                    || player.getEquipment().getItems()[Equipment.AMULET_SLOT].getId() == 11195
-                                    || player.getEquipment().getItems()[Equipment.AMULET_SLOT].getId() == 13555) {
-                                if (player.getInventory().canHold(item)) {
-                                    player.getInventory().add(item);
-                                    player.getInventory().add(item);
-                                    if(player.getPSettings().getBooleanValue("drop-message-personal"))
-                                        player.sendMessage("x" + item.getAmount() + " "
-                                                + item.getDefinition().getId() + " has been sent to your inventory.");
-                                } else {
-                                    player.depositItemBank(item);
-                                    player.depositItemBank(item);
-                                    if(player.getPSettings().getBooleanValue("drop-message-personal"))
-                                        player.sendMessage("x" + item.getAmount() + " "
-                                                + item.getDefinition().getName() + " has been sent to your bank.");
-                                }
+                        } else if (player.getEquipment().getItems()[Equipment.AMULET_SLOT].getId() == 19888
+                                || player.getEquipment().getItems()[Equipment.AMULET_SLOT].getId() == 19886
+                                || player.getEquipment().getItems()[Equipment.AMULET_SLOT].getId() == 4489
+                                || player.getEquipment().getItems()[Equipment.RING_SLOT].getId() == 4446
+                                || player.getEquipment().getItems()[Equipment.RING_SLOT].getId() == 18823
+                                || player.getEquipment().getItems()[Equipment.RING_SLOT].getId() == 18818
+                                || player.getEquipment().getItems()[Equipment.AURA_SLOT].getId() == 15450
+                                || player.getEquipment().getItems()[Equipment.AMULET_SLOT].getId() == 18888
+                                || player.getEquipment().getItems()[Equipment.AMULET_SLOT].getId() == 15834
+                                || player.getEquipment().getItems()[Equipment.AMULET_SLOT].getId() == 11195
+                                || player.getEquipment().getItems()[Equipment.AMULET_SLOT].getId() == 13555) {
+                            if (player.getInventory().canHold(item)) {
+                                player.getInventory().add(item);
+                                player.getInventory().add(item);
+                                if (player.getPSettings().getBooleanValue("drop-message-personal"))
+                                    player.sendMessage("x" + item.getAmount() + " "
+                                            + item.getDefinition().getId() + " has been sent to your inventory.");
                             } else {
-                                GroundItemManager.spawnGroundItem(player,
-                                        new GroundItem(item, pos, player.getUsername(), false, 150, goGlobal, 200));
-                                GroundItemManager.spawnGroundItem(player,
-                                        new GroundItem(item, pos, player.getUsername(), false, 150, goGlobal, 200));
+                                player.depositItemBank(item);
+                                player.depositItemBank(item);
+                                if (player.getPSettings().getBooleanValue("drop-message-personal"))
+                                    player.sendMessage("x" + item.getAmount() + " "
+                                            + item.getDefinition().getName() + " has been sent to your bank.");
                             }
+                        } else {
+                            GroundItemManager.spawnGroundItem(player,
+                                    new GroundItem(item, pos, player.getUsername(), false, 150, goGlobal, 200));
+                            GroundItemManager.spawnGroundItem(player,
+                                    new GroundItem(item, pos, player.getUsername(), false, 150, goGlobal, 200));
                         }
 
                     }
