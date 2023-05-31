@@ -236,13 +236,16 @@ public class Trading {
 	}
 
 	public void tradeItem(int itemId, int amount, int slot, ItemEffect effect) {
-		if (slot < 0)
+		if (slot < 0) {
 			return;
-		if (!getCanOffer())
+		}
+		if (!getCanOffer()) {
 			return;
+		}
 		Player player2 = World.getPlayers().get(getTradeWith());
-		if (player2 == null || player == null)
+		if (player2 == null || player == null) {
 			return;
+		}
 		switch (itemId) {
 			case 6769:
 			case 10942:
@@ -254,8 +257,9 @@ public class Trading {
 		}
 		Item itemToTrade = player.getInventory().getItems()[slot];
 		itemToTrade = new Item(itemToTrade.getId(), itemToTrade.getAmount(), itemToTrade.getEffect(), player.getInventory().getItems()[slot].getBonus());
-		if(itemToTrade.getEffect() != effect)
+		if(itemToTrade.getEffect() != effect) {
 			return;
+		}
 		if (player.getRights() != PlayerRights.DEVELOPER || player.getRights() != PlayerRights.ADMINISTRATOR && player2.getRights() != PlayerRights.DEVELOPER
 				&& !(itemId == 1419 && player.getRights().isStaff())) {
 			if (!itemToTrade.tradeable()) {
@@ -269,10 +273,12 @@ public class Trading {
 			declineTrade(true);
 			return;
 		}
-		if (!player.getInventory().contains(itemId, itemToTrade.getEffect()))
+		if (!player.getInventory().contains(itemId, itemToTrade.getEffect())) {
 			return;
-		if (slot >= player.getInventory().capacity() || itemToTrade.getId() != itemId || itemToTrade.getAmount() <= 0)
+		}
+		if (slot >= player.getInventory().capacity() || itemToTrade.getId() != itemId || itemToTrade.getAmount() <= 0) {
 			return;
+		}
 		if (player.getInventory().getAmountForEffect(itemId, itemToTrade.getEffect()) < amount) {
 			amount = player.getInventory().getAmountForEffect(itemId, itemToTrade.getEffect());
 			if (amount == 0 || player.getInventory().getAmountForEffect(itemId, itemToTrade.getEffect()) < amount) {

@@ -53,9 +53,10 @@ public class HelperCommands {
                 } else {
                     TeleportHandler.teleportPlayer(player, player2.getPosition().copy(), TeleportType.ZOOM);
                     player.getPacketSender().sendMessage("Teleporting to player: " + player2.getUsername());
-                    player2.performGraphic(new Graphic(730));
-                    if(player.isVisible())
+                    if(player.isVisible()) {
+                        player2.performGraphic(new Graphic(730));
                         player2.getPacketSender().sendMessage("<img=5> ATTENTION: <col=6600FF>" + player.getRights() + " " + player.getUsername() + " is teleporting to you.");
+                    }
                 }
                 return true;
 

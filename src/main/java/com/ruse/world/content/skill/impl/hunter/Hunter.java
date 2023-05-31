@@ -116,9 +116,9 @@ public class Hunter {
 	 * @return
 	 */
 	public static boolean goodArea(Player client) {
-		if (client.getLocation() == Locations.Location.SKILLING_ISLAND){
-			return true;
-		}
+//		if (client.getLocation() == Locations.Location.SKILLING_ISLAND){
+//			return true;
+//		}
 		int x = client.getPosition().getX();
 		int y = client.getPosition().getY();
 		return x >= 2758 && x <= 2965 && y >= 2880 && y <= 2954;

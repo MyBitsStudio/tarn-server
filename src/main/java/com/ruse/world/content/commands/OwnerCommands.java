@@ -30,6 +30,8 @@ import com.ruse.world.content.transportation.TeleportType;
 import com.ruse.world.content.voting.VoteBossDrop;
 import com.ruse.world.entity.impl.npc.NPC;
 import com.ruse.world.entity.impl.player.Player;
+import com.ruse.world.event.WorldEventHandler;
+import com.ruse.world.event.staff.BalloonGiveaway;
 
 import java.util.Objects;
 
@@ -464,6 +466,21 @@ public class OwnerCommands {
                 System.exit(0);
                 return true;
 
+            case "event":
+                if(commands.length >= 2){
+                    switch(commands[1]){
+                        case "balloon":
+                            WorldEventHandler.getInstance().startEvent(player, new BalloonGiveaway(player, null));
+                            return true;
+
+                        case "finish":
+                            WorldEventHandler.getInstance().getEvent(player.getUsername()).stop();
+                            return true;
+                    }
+                } else {
+                    player.getPacketSender().sendMessage("Use as ::event [balloon/finish]");
+                }
+                return true;
         }
         return false;
     }

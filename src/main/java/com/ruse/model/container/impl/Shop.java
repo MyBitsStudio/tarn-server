@@ -413,12 +413,12 @@ public class Shop extends ItemContainer {
                     finalValue = (int) (finalValue * 0.5D);
                 }
             } else {
-                if (player.getLocation() == Location.SKILLING_ISLAND) {
-                    if (player.getSummoning() != null && player.getSummoning().getFamiliar() != null
-                            && player.getSummoning().getFamiliar().getSummonNpc().getId() == BossPets.BossPet.FENRIR_PET.npcId) {
-                        finalValue -= finalValue / 4;
-                    }
-                }
+//                if (player.getLocation() == Location.SKILLING_ISLAND) {
+//                    if (player.getSummoning() != null && player.getSummoning().getFamiliar() != null
+//                            && player.getSummoning().getFamiliar().getSummonNpc().getId() == BossPets.BossPet.FENRIR_PET.npcId) {
+//                        finalValue -= finalValue / 4;
+//                    }
+//                }
             }
 
 
@@ -702,12 +702,12 @@ public class Shop extends ItemContainer {
             }
         }
 
-        if (player.getLocation() == Location.SKILLING_ISLAND) {
-            if (player.getSummoning() != null && player.getSummoning().getFamiliar() != null
-                    && player.getSummoning().getFamiliar().getSummonNpc().getId() == BossPets.BossPet.FENRIR_PET.npcId) {
-                value -= value / 4;
-            }
-        }
+//        if (player.getLocation() == Location.SKILLING_ISLAND) {
+//            if (player.getSummoning() != null && player.getSummoning().getFamiliar() != null
+//                    && player.getSummoning().getFamiliar().getSummonNpc().getId() == BossPets.BossPet.FENRIR_PET.npcId) {
+//                value -= value / 4;
+//            }
+//        }
 
         if (value <= 0) {
             return this;

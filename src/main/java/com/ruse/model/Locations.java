@@ -150,8 +150,6 @@ public class Locations {
 		},
 		EASTER(new int[] { 3123, 3138}, new int[] { 3392, 3419},
 				true, true, true, false, false, true) {},
-		SUMMER_EVENT(new int[] { 3076, 3133}, new int[] { 2886, 2938},
-				true, true, true, false, false, true) {},
 		PRESENTS(new int[] { 3017, 3061}, new int[] { 2824, 2870},
 				true, true, true, false, false, true) {},
 		HULK(new int[] { 3472, 3503}, new int[] { 3601, 3632},
@@ -2163,11 +2161,6 @@ for (Item item : player.getInventory().getItems()) {
 		RUNESPAN(new int[] { 2122, 2159 }, new int[] { 5517, 5556 }, false, false, true, true, true, false) {
 		},
 		DICE_ZONE_MULTI(new int[] { 2844, 2867 }, new int[] { 2696, 2720 }, true, true, true, false, false, false) {
-		},
-		//// xyyx
-		HOMEISLAND_MULTI(new int[] { 2058, 2972 }, new int[] { 2504, 2512 }, true, true, true, false, false, false) {
-		},
-		SKILLING_ISLAND(new int[] { 2765,2852 }, new int[] { 2569,2677 }, true, true, true, false, true, false) {
 		},
 		//// xyyx
 		EARTHQUAKE(new int[] { 2883, 2942 }, new int[] { 5441, 5498 }, true, true, true, false, false, false) {
