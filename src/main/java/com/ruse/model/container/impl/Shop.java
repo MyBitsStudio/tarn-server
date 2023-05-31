@@ -33,10 +33,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Stream;
 
 /**
@@ -290,13 +287,13 @@ public class Shop extends ItemContainer {
         for (int i = 0; i < shop.getItems().length; i++) {
             Item item = getItems()[i];
             int finalValue = 0;
-            if (getCurrency().getId() != -1) {
-                finalValue = ItemDefinition.forId(item.getId()).getValue();
+            if (getCurrency().getId() == -1) {
                 Object[] obj = ShopManager.getCustomShopData(id, item.getId());
                 if (obj != null) {
                     finalValue = (int) obj[0];
                 }
             } else {
+                finalValue = ItemDefinition.forId(item.getId()).getValue();
                 Object[] obj = ShopManager.getCustomShopData(id, item.getId());
                 if (obj != null) {
                     finalValue = (int) obj[0];
@@ -392,7 +389,7 @@ public class Shop extends ItemContainer {
             }
             /** CUSTOM CURRENCY, CUSTOM SHOP VALUES **/
             if (id == TOKKUL_EXCHANGE_STORE || id == SLAYER_TICKET_STORE || id == SLAYER_STORE_EASY || id == SLAYER_STORE_MEDIUM || id == SLAYER_STORE_HARD || id == SLAYER_STORE_ELITE || id == PVM || id == AFK || id == STARDUST_EXCHANGE_STORE
-                    || id == SHILLINGS
+                    || id == SHILLINGS || id == 210
                     || id == UPGRADE_STORE
                     || id == TRAIN_MELEE
                     || id == TRAIN_RANGED
@@ -539,26 +536,7 @@ public class Shop extends ItemContainer {
             if (this.full(itemToSell.getId()) || !player.getInventory().contains(itemToSell.getId())
                     || !player.isShopping())
                 break;
-            if (!itemToSell.getDefinition().isStackable()) {
-                if (inventorySpace) {
-                    super.switchItem(player.getInventory(), this, itemToSell.getId(), -1);
-                    if (!customShop) {
-                        if (ReducedSellPrice.forId(itemToSell.getId()) != null) {
-                            player.getInventory().add(new Item(getCurrency().getId(),
-                                    ReducedSellPrice.forId(itemToSell.getId()).getSellValue()), false);
-                            PlayerLogs.logStores(player.getUsername(), "Player sold to store: " + ShopManager.getShops().get(id).getName()
-                                    + ". Item: " + itemToSell.getDefinition().getName() + ", id: " + itemToSell.getId() + ", amount: " + 1 + ", profit: " + itemValue);
-                        } else {
-                            player.getInventory().add(new Item(getCurrency().getId(), itemValue), false);
-                        }
-                    } else {
-                        // Return points here
-                    }
-                } else {
-                    player.getPacketSender().sendMessage("Please free some inventory space before doing that.");
-                    break;
-                }
-            } else {
+            if (itemToSell.getDefinition().isStackable()) {
                 if (inventorySpace) {
                     super.switchItem(player.getInventory(), this, itemToSell.getId(), amountToSell);
                     if (!customShop) {
@@ -574,6 +552,25 @@ public class Shop extends ItemContainer {
                         // Return points here
                     }
                     break;
+                } else {
+                    player.getPacketSender().sendMessage("Please free some inventory space before doing that.");
+                    break;
+                }
+            } else {
+                if (inventorySpace) {
+                    super.switchItem(player.getInventory(), this, itemToSell.getId(), -1);
+                    if (customShop) {
+                        // Return points here
+                    } else {
+                        if (ReducedSellPrice.forId(itemToSell.getId()) != null) {
+                            player.getInventory().add(new Item(getCurrency().getId(),
+                                    ReducedSellPrice.forId(itemToSell.getId()).getSellValue()), false);
+                            PlayerLogs.logStores(player.getUsername(), "Player sold to store: " + ShopManager.getShops().get(id).getName()
+                                    + ". Item: " + itemToSell.getDefinition().getName() + ", id: " + itemToSell.getId() + ", amount: " + 1 + ", profit: " + itemValue);
+                        } else {
+                            player.getInventory().add(new Item(getCurrency().getId(), itemValue), false);
+                        }
+                    }
                 } else {
                     player.getPacketSender().sendMessage("Please free some inventory space before doing that.");
                     break;
@@ -656,25 +653,7 @@ public class Shop extends ItemContainer {
             getPlayer().sendMessage("Coming soon...");
             return this;
         }
-        if (getCurrency().getId() != -1) {
-            playerCurrencyAmount = player.getInventory().getAmount(currency.getId());
-            currencyName = ItemDefinition.forId(currency.getId()).getName().toLowerCase();
-                /** CUSTOM CURRENCY, CUSTOM SHOP VALUES **/
-                if (id == TOKKUL_EXCHANGE_STORE || id == SLAYER_TICKET_STORE || id == SLAYER_STORE_EASY || id == SLAYER_STORE_MEDIUM || id == SLAYER_STORE_HARD || id == SLAYER_STORE_ELITE || id == PVM
-                        || id == AFK
-                        || id == TRAIN_MELEE
-                        || id == TRAIN_RANGED
-                        || id == UPGRADE_STORE
-                        || id == EASTER_STORE_1 || id == EASTER_STORE_2 || id == DUNGEONEERING_STORE_NEW || id == KOL_STORE
-                        || id == TRAIN_MAGIC
-                        || id == STARDUST_EXCHANGE_STORE
-                        || id == SHILLINGS || id == ENERGY_FRAGMENT_STORE || id == AGILITY_TICKET_STORE
-                        || id == GRAVEYARD_STORE || id == BARROWS_STORE || id == MEMBERS_STORE_I
-                        || id == MEMBERS_STORE_II || id == DONATOR_STORE_1 || id == DONATOR_STORE_2 || id == DONATOR_STORE_3 || id == DONATOR_STORE_4
-                        || id ==  PET_STORE_1 || id ==  PET_STORE_2 || id ==  PET_STORE_3 || id == PET_STORE_4|| id == SELL_FOR_TAXBAGS_SHOP) {
-                    value = (int) ShopManager.getCustomShopData(id, item.getId())[0];
-            }
-        } else {
+        if (getCurrency().getId() == -1) {
             Object[] obj = ShopManager.getCustomShopData(id, item.getId());
             if (obj == null)
                 return this;
@@ -699,6 +678,24 @@ public class Shop extends ItemContainer {
             } else if (id == MEMBERS_STORE_I || id == MEMBERS_STORE_II || id == DONATOR_STORE_1
                     || id == DONATOR_STORE_2 || id == DONATOR_STORE_3 || id == DONATOR_STORE_4) {
                 playerCurrencyAmount = player.getPointsHandler().getDonatorPoints();
+            }
+        } else {
+            playerCurrencyAmount = player.getInventory().getAmount(currency.getId());
+            currencyName = ItemDefinition.forId(currency.getId()).getName().toLowerCase();
+                /** CUSTOM CURRENCY, CUSTOM SHOP VALUES **/
+                if (id == TOKKUL_EXCHANGE_STORE || id == SLAYER_TICKET_STORE || id == SLAYER_STORE_EASY || id == SLAYER_STORE_MEDIUM || id == SLAYER_STORE_HARD || id == SLAYER_STORE_ELITE || id == PVM
+                        || id == AFK || id == 210
+                        || id == TRAIN_MELEE
+                        || id == TRAIN_RANGED
+                        || id == UPGRADE_STORE
+                        || id == EASTER_STORE_1 || id == EASTER_STORE_2 || id == DUNGEONEERING_STORE_NEW || id == KOL_STORE
+                        || id == TRAIN_MAGIC
+                        || id == STARDUST_EXCHANGE_STORE
+                        || id == SHILLINGS || id == ENERGY_FRAGMENT_STORE || id == AGILITY_TICKET_STORE
+                        || id == GRAVEYARD_STORE || id == BARROWS_STORE || id == MEMBERS_STORE_I
+                        || id == MEMBERS_STORE_II || id == DONATOR_STORE_1 || id == DONATOR_STORE_2 || id == DONATOR_STORE_3 || id == DONATOR_STORE_4
+                        || id ==  PET_STORE_1 || id ==  PET_STORE_2 || id ==  PET_STORE_3 || id == PET_STORE_4|| id == SELL_FOR_TAXBAGS_SHOP) {
+                    value = (int) Objects.requireNonNull(ShopManager.getCustomShopData(id, item.getId()))[0];
             }
         }
 
@@ -872,12 +869,7 @@ public class Shop extends ItemContainer {
                     if (canBeBought == 0)
                         break;
 
-                    if (!customShop) {
-                        if (usePouch) {
-                        } else {
-                            player.getInventory().delete(currency.getId(), value * canBeBought, false);
-                        }
-                    } else {
+                    if (customShop) {
                         if (id == PKING_REWARDS_STORE) {
                             player.getPointsHandler().setPkPoints(-value * canBeBought, true);
                         } else if (id == VOTE_STORE) {
@@ -898,6 +890,11 @@ public class Shop extends ItemContainer {
                                 || id == DONATOR_STORE_2 || id == DONATOR_STORE_3 || id == DONATOR_STORE_4) {
                             player.getPointsHandler().setDonatorPoints(-value * canBeBought, true);
                         }
+                    } else {
+                        if (usePouch) {
+                        } else {
+                            player.getInventory().delete(currency.getId(), value * canBeBought, false);
+                        }
                     }
                     super.switchItem(to, new Item(item.getId(), canBeBought), slot, false, false);
                     playerCurrencyAmount -= value;
@@ -905,46 +902,43 @@ public class Shop extends ItemContainer {
                 } else {
                     break;
                 }
-            } else {
-                if (playerCurrencyAmount >= value && hasInventorySpace(player, item, getCurrency().getId(), value)) {
+            } else if (playerCurrencyAmount >= value && hasInventorySpace(player, item, getCurrency().getId(), value)) {
 
-                    if (customShop) {
-                        if (id == PKING_REWARDS_STORE) {
-                            player.getPointsHandler().setPkPoints(-value, true);
-                        } else if (id == VOTE_STORE) {
-                            player.getPointsHandler().setVotingPoints(-value, true);
-                        } else if (id == DUNGEONEERING_STORE) {
-                            player.getPointsHandler().setDungeoneeringTokens(-value, true);
-                        } else if (id == EVENT_SHOP) {
-                            player.getPointsHandler().setEventPoints(-value, true);
-                        } else if (id == BOSS_SHOP) {
-                            player.getPointsHandler().setBossPoints(-value, true);
-                        } else if (id == PRESTIGE_STORE) {
-                            player.getPointsHandler().setPrestigePoints(-value, true);
-                        } else if (id == LOYALTY_POINT_SHOP) {
-                            player.getPointsHandler().setLoyaltyPoints(-value, true);
-                        } else if (id == BARROWS_STORE) {
-                            player.getPointsHandler().setBarrowsPoints(-value, true);
-                        } else if (id == MEMBERS_STORE_I || id == MEMBERS_STORE_II || id == DONATOR_STORE_1
-                                || id == DONATOR_STORE_2 || id == DONATOR_STORE_3 || id == DONATOR_STORE_4) {
-                            player.getPointsHandler().setDonatorPoints(-value, true);
-                        }
-                    } else if (usePouch) {
-                    } else {
-                        player.getInventory().delete(currency.getId(), value, false);
+                if (customShop) {
+                    if (id == PKING_REWARDS_STORE) {
+                        player.getPointsHandler().setPkPoints(-value, true);
+                    } else if (id == VOTE_STORE) {
+                        player.getPointsHandler().setVotingPoints(-value, true);
+                    } else if (id == DUNGEONEERING_STORE) {
+                        player.getPointsHandler().setDungeoneeringTokens(-value, true);
+                    } else if (id == EVENT_SHOP) {
+                        player.getPointsHandler().setEventPoints(-value, true);
+                    } else if (id == BOSS_SHOP) {
+                        player.getPointsHandler().setBossPoints(-value, true);
+                    } else if (id == PRESTIGE_STORE) {
+                        player.getPointsHandler().setPrestigePoints(-value, true);
+                    } else if (id == LOYALTY_POINT_SHOP) {
+                        player.getPointsHandler().setLoyaltyPoints(-value, true);
+                    } else if (id == BARROWS_STORE) {
+                        player.getPointsHandler().setBarrowsPoints(-value, true);
+                    } else if (id == MEMBERS_STORE_I || id == MEMBERS_STORE_II || id == DONATOR_STORE_1
+                            || id == DONATOR_STORE_2 || id == DONATOR_STORE_3 || id == DONATOR_STORE_4) {
+                        player.getPointsHandler().setDonatorPoints(-value, true);
                     }
-
-                    super.switchItem(to, new Item(item.getId(), 1), slot, false, false);
-
-                    playerCurrencyAmount -= value;
+                } else if (usePouch) {
                 } else {
-                    break;
+                    player.getInventory().delete(currency.getId(), value, false);
                 }
+
+                super.switchItem(to, new Item(item.getId(), 1), slot, false, false);
+
+                playerCurrencyAmount -= value;
+            } else {
+                break;
             }
             amountBuying--;
         }
-        if (!customShop) {
-        } else {
+        if (customShop) {
             PlayerPanel.refreshPanel(player);
         }
         player.getInventory().refreshItems();
@@ -2254,6 +2248,30 @@ public class Shop extends ItemContainer {
                     || shop == PET_STORE_3
                     || shop == PET_STORE_4) {
                 return PetShop.getPrice(item);
+            } else if(shop == 210){
+                switch (item) {
+                    case 23058:
+                        return new Object[]{25, "Elite Vote Tickets"};
+                    case 3686:
+                        return new Object[]{200, "Elite Vote Tickets"};
+                    case 23060:
+                        return new Object[]{250, "Elite Vote Tickets"};
+                    case 15682:
+                        return new Object[]{1, "Elite Vote Tickets"};
+                    case 21816:
+                        return new Object[]{5, "Elite Vote Tickets"};
+                    case 20489:
+                        return new Object[]{100, "Elite Vote Tickets"};
+                    case 20491:
+                        return new Object[]{150, "Elite Vote Tickets"};
+                    case 23206:
+                    case 23207:
+                    case 23208:
+                    case 22223:
+                    case 22224:
+                        return new Object[]{500, "Elite Vote Tickets"};
+
+                }
             }
             return null;
         }
