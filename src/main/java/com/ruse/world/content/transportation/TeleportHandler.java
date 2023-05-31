@@ -9,7 +9,6 @@ import com.ruse.model.Position;
 import com.ruse.world.content.Kraken;
 import com.ruse.world.content.Sounds;
 import com.ruse.world.content.Sounds.Sound;
-import com.ruse.world.content.bosses.BossInstance;
 import com.ruse.world.content.skill.impl.old_dungeoneering.Dungeoneering;
 import com.ruse.world.entity.impl.player.Player;
 import com.ruse.world.instance.MapInstance;

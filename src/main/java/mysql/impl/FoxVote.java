@@ -4,7 +4,7 @@ import com.ruse.GameSettings;
 import com.ruse.motivote3.doMotivote;
 import com.ruse.world.World;
 import com.ruse.world.content.PlayerLogs;
-import com.ruse.world.content.voting.VoteBossDrop;
+import com.ruse.world.packages.voting.VoteBossDrop;
 import com.ruse.world.entity.impl.player.Player;
 
 import java.sql.*;

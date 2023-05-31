@@ -80,6 +80,7 @@ public class WorldBosses2 {
         return sortedEntries;
 
     }
+
     public static String timeLeft() {
         int ticks = 6000 - (tick % 6000);
         ticks /= 100;

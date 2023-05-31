@@ -19,7 +19,7 @@ import com.ruse.world.World;
 import com.ruse.world.allornothing.DoubleOrNothing;
 import com.ruse.world.clip.region.RegionClipping;
 import com.ruse.world.content.*;
-import com.ruse.world.content.attendance.DailyResetScheduler;
+import com.ruse.world.packages.attendance.DailyResetScheduler;
 import com.ruse.world.content.clans.ClanManager;
 import com.ruse.world.content.combat.effect.CombatPoisonEffect.CombatPoisonData;
 import com.ruse.world.content.combat.strategy.CombatStrategies;
@@ -27,17 +27,18 @@ import com.ruse.world.content.dialogue.DialogueManager;
 import com.ruse.world.content.discordbot.AdminCord;
 import com.ruse.world.content.discordbot.Bot;
 import com.ruse.world.content.discordbot.JavaCord;
-import com.ruse.world.content.donation.DonationManager;
-import com.ruse.world.content.donation.FlashDeals;
+import com.ruse.world.packages.donation.DonationManager;
+import com.ruse.world.packages.donation.FlashDeals;
 import com.ruse.world.content.grandLottery.GrandLottery;
 import com.ruse.world.content.grandexchange.GrandExchangeOffers;
 import com.ruse.world.content.groupironman.GroupManager;
-import com.ruse.world.content.instances.InstanceManager;
+import com.ruse.world.packages.globals.GlobalBossManager;
+import com.ruse.world.packages.instances.InstanceManager;
 import com.ruse.world.content.polling.PollManager;
 import com.ruse.world.content.pos.PlayerOwnedShopManager;
-import com.ruse.world.content.seasonpass.SeasonPassLoader;
+import com.ruse.world.packages.seasonpass.SeasonPassLoader;
 import com.ruse.world.content.serverperks.ServerPerks;
-import com.ruse.world.content.voting.VoteBossDrop;
+import com.ruse.world.packages.voting.VoteBossDrop;
 import com.ruse.world.entity.actor.player.controller.ControllerHandler;
 import com.ruse.world.entity.impl.npc.NPC;
 import com.ruse.world.region.RegionManager;
@@ -87,6 +88,7 @@ public final class GameLoader {
 		FlashDeals.getDeals();
 		DonationManager.getInstance();
 		InstanceManager.getManager();
+		GlobalBossManager.getInstance();
 	}
 
 	public void finish() throws IOException, InterruptedException {

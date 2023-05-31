@@ -19,8 +19,8 @@ import com.ruse.world.content.DropLog.DropLogEntry;
 import com.ruse.world.content.KillsTracker;
 import com.ruse.world.content.KillsTracker.KillsEntry;
 import com.ruse.world.content.LoyaltyProgramme.LoyaltyTitles;
-import com.ruse.world.content.attendance.AttendanceProgress;
-import com.ruse.world.content.attendance.AttendanceTab;
+import com.ruse.world.packages.attendance.AttendanceProgress;
+import com.ruse.world.packages.attendance.AttendanceTab;
 import com.ruse.world.content.collectionlog.CollectionEntry;
 import com.ruse.world.content.collectionlog.CollectionLogInterface;
 import com.ruse.world.content.combat.magic.CombatSpells;
@@ -34,7 +34,6 @@ import com.ruse.world.content.skill.SkillManager.Skills;
 import com.ruse.world.content.skill.impl.slayer.SlayerMaster;
 import com.ruse.world.content.skill.impl.slayer.SlayerTasks;
 import com.ruse.world.content.skill.impl.summoning.BossPets;
-import org.mindrot.jbcrypt.BCrypt;
 
 import java.io.File;
 import java.io.FileReader;

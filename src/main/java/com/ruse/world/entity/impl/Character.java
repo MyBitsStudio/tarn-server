@@ -22,7 +22,7 @@ import com.ruse.world.content.combat.CombatBuilder;
 import com.ruse.world.content.combat.CombatType;
 import com.ruse.world.content.combat.magic.CombatSpell;
 import com.ruse.world.content.combat.strategy.CombatStrategy;
-import com.ruse.world.content.instances.Instance;
+import com.ruse.world.packages.instances.Instance;
 import com.ruse.world.entity.Entity;
 import com.ruse.world.entity.impl.mini.MiniPlayer;
 import com.ruse.world.entity.impl.player.Player;

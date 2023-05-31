@@ -1,9 +1,7 @@
 package com.ruse.world.entity.impl.npc;
 
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
-import com.google.gson.stream.JsonReader;
 import com.ruse.engine.task.TaskManager;
 import com.ruse.engine.task.impl.NPCDeathTask;
 import com.ruse.model.DamageDealer;
@@ -22,7 +20,6 @@ import com.ruse.world.content.combat.strategy.CombatStrategies;
 import com.ruse.world.content.combat.strategy.CombatStrategy;
 import com.ruse.world.content.combat.strategy.impl.KalphiteQueen;
 import com.ruse.world.content.combat.strategy.impl.Nex;
-import com.ruse.world.content.instances.Instance;
 import com.ruse.world.content.skill.impl.hunter.Hunter;
 import com.ruse.world.content.skill.impl.hunter.PuroPuro;
 import com.ruse.world.content.skill.impl.runecrafting.DesoSpan;

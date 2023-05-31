@@ -7,14 +7,11 @@ import com.ruse.engine.task.TaskManager;
 import com.ruse.model.MessageType;
 import com.ruse.model.PlayerRights;
 import com.ruse.model.Position;
-import com.ruse.net.SessionState;
 import com.ruse.net.security.ConnectionHandler;
-import com.ruse.util.CharacterBackup;
 import com.ruse.util.NameUtils;
 import com.ruse.webhooks.discord.DiscordMessager;
 import com.ruse.world.content.*;
 import com.ruse.world.content.discordbot.Bot;
-import com.ruse.world.content.instances.InstanceManager;
 import com.ruse.world.content.minigames.impl.FightPit;
 import com.ruse.world.content.minigames.impl.KeepersOfLight;
 import com.ruse.world.content.minigames.impl.PestControl;
@@ -31,6 +28,7 @@ import com.ruse.world.entity.impl.player.PlayerHandler;
 import com.ruse.world.entity.updating.NpcUpdateSequence;
 import com.ruse.world.entity.updating.PlayerUpdateSequence;
 import com.ruse.world.entity.updating.UpdateSequence;
+import com.ruse.world.packages.globals.GlobalBossManager;
 import com.server.service.login.LoginService;
 import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
 import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
@@ -308,10 +306,12 @@ public class World {
 
         FightPit.sequence();
 
-        WorldBosses.sequence();
-        WorldBosses2.sequence();
-        WorldBosses3.sequence();
-        WorldBosses4.sequence();
+        GlobalBossManager.getInstance().process();
+
+//        WorldBosses.sequence();
+//        WorldBosses2.sequence();
+//        WorldBosses3.sequence();
+//        WorldBosses4.sequence();
 
         Groudon.sequence();
         Ezkel.sequence();

@@ -22,18 +22,17 @@ import com.ruse.world.content.combat.strategy.impl.KalphiteQueen;
 import com.ruse.world.content.combat.strategy.impl.Nex;
 import com.ruse.world.content.dailyTask.DailyTaskHandler;
 import com.ruse.world.content.dailytasks_new.DailyTask;
-import com.ruse.world.content.donation.boss.DonationBoss;
+import com.ruse.world.packages.donation.boss.DonationBoss;
 import com.ruse.world.content.eventboss.EventBossDropHandler;
 import com.ruse.world.content.globalBoss.GlobalBoss;
 import com.ruse.world.content.globalBoss.GlobalBossHandler;
 import com.ruse.world.content.globalBoss.TheGeneral;
-import com.ruse.world.content.instanceMananger.InstanceManager;
 import com.ruse.world.content.progressionzone.ProgressionZone;
-import com.ruse.world.content.seasonpass.SeasonPassManager;
+import com.ruse.world.packages.seasonpass.SeasonPassManager;
 import com.ruse.world.content.skeletalhorror.SkeletalHorror;
 import com.ruse.world.content.skill.impl.old_dungeoneering.Dungeoneering;
 import com.ruse.world.content.skill.impl.slayer.SlayerTasks;
-import com.ruse.world.content.voting.VoteBossDrop;
+import com.ruse.world.packages.voting.VoteBossDrop;
 import com.ruse.world.entity.impl.mini.MiniPlayer;
 import com.ruse.world.entity.impl.npc.NPC;
 import com.ruse.world.entity.impl.player.Player;
@@ -1040,15 +1039,15 @@ public class NPCDeathTask extends Task {
 
         }
 
-        if (npc.getId() == 9908) {
-            WorldBosses.handleDrop(npc);
-        }
+//        if (npc.getId() == 9908) {
+//            WorldBosses.handleDrop(npc);
+//        }
         if (npc.getId() == 9904) {
             WorldBosses3.handleDrop(npc);
         }
-        if (npc.getId() == 9906) {
-            WorldBosses2.handleDrop(npc);
-        }
+//        if (npc.getId() == 9906) {
+//            WorldBosses2.handleDrop(npc);
+//        }
         if (npc.getId() == 9907) {
             WorldBosses4.handleDrop(npc);
         }

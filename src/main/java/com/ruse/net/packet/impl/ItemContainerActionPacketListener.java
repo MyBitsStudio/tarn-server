@@ -20,7 +20,7 @@ import com.ruse.world.content.combat.CombatFactory;
 import com.ruse.world.content.combat.magic.Autocasting;
 import com.ruse.world.content.combat.weapon.CombatSpecial;
 import com.ruse.world.content.dialogue.DialogueManager;
-import com.ruse.world.content.forge.shop.ForgeShopHandler;
+import com.ruse.world.packages.forge.shop.ForgeShopHandler;
 import com.ruse.world.content.grandexchange.GrandExchange;
 import com.ruse.world.content.grandexchange.GrandExchangeOffer;
 import com.ruse.world.content.minigames.impl.Dueling;

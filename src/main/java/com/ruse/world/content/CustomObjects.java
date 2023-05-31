@@ -70,13 +70,13 @@ public class CustomObjects {
     }
 
     public static void spawnObject(Player p, GameObject object) {
-        if (object.getId() != -1) {
+        if (object.getId() == -1) {
+            deleteObject(p, object);
+        } else {
             p.getPacketSender().sendObject(object);
             if (!RegionClipping.objectExists(object)) {
                 RegionClipping.addObject(object);
             }
-        } else {
-            deleteObject(p, object);
         }
     }
 

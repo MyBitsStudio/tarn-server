@@ -22,7 +22,6 @@ import com.ruse.world.World;
 import com.ruse.world.content.ItemsKeptOnDeath;
 import com.ruse.world.content.PlayerLogs;
 import com.ruse.world.content.PlayerPanel;
-import com.ruse.world.content.bosses.BossInstance;
 import com.ruse.world.content.combat.prayer.CurseHandler;
 import com.ruse.world.content.combat.prayer.PrayerHandler;
 import com.ruse.world.content.skill.impl.old_dungeoneering.Dungeoneering;

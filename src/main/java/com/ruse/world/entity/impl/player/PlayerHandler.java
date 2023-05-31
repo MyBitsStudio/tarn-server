@@ -29,11 +29,11 @@ import com.ruse.world.content.combat.pvp.BountyHunter;
 import com.ruse.world.content.combat.range.DwarfMultiCannon;
 import com.ruse.world.content.combat.weapon.CombatSpecial;
 import com.ruse.world.content.grandLottery.GrandLottery;
-import com.ruse.world.content.instances.InstanceManager;
+import com.ruse.world.packages.instances.InstanceManager;
 import com.ruse.world.content.minigames.impl.Barrows;
 import com.ruse.world.content.minigames.impl.VoidOfDarkness;
-import com.ruse.world.content.seasonpass.SeasonPassConfig;
-import com.ruse.world.content.seasonpass.SeasonPassManager;
+import com.ruse.world.packages.seasonpass.SeasonPassConfig;
+import com.ruse.world.packages.seasonpass.SeasonPassManager;
 import com.ruse.world.content.serverperks.ServerPerks;
 import com.ruse.world.content.skeletalhorror.SkeletalHorror;
 import com.ruse.world.content.skill.impl.hunter.Hunter;
@@ -43,9 +43,7 @@ import com.ruse.world.entity.impl.GlobalItemSpawner;
 import com.ruse.world.entity.impl.mini.MiniPlayer;
 import com.ruse.world.instance.MapInstance;
 import mysql.impl.Donation;
-import org.mindrot.jbcrypt.BCrypt;
 
-import static com.ruse.world.entity.impl.player.PlayerFlags.DAILY;
 import static com.ruse.world.entity.impl.player.PlayerFlags.FORCE_KICK;
 
 //import com.ruse.world.content.Abyssector;

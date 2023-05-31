@@ -4,7 +4,7 @@ import com.ruse.net.packet.Packet;
 import com.ruse.net.packet.PacketListener;
 import com.ruse.util.Misc;
 import com.ruse.util.StringCleaner;
-import com.ruse.world.content.commands.CommandHandler;
+import com.ruse.world.packages.commands.CommandHandler;
 import com.ruse.world.entity.impl.player.Player;
 
 import java.util.Arrays;
