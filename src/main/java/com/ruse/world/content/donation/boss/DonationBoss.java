@@ -35,46 +35,17 @@ public class DonationBoss extends NPC {
         if (getCombatBuilder().getDamageMap().size() == 0) {
             return;
         }
-        Map<Player, Long> killers = new HashMap<>();
 
-        for (Map.Entry<Player, CombatBuilder.CombatDamageCache> entry : getCombatBuilder().getDamageMap().entrySet()) {
-            if (entry == null) {
-                continue;
-            }
-
-            long timeout = entry.getValue().getStopwatch().elapsed();
-            if (timeout > CombatFactory.DAMAGE_CACHE_TIMEOUT) {
-                continue;
-            }
-
-            Player player = entry.getKey();
+        getClosePlayers(20).forEach(player -> {
             if (player.getConstitution() <= 0 || !player.isRegistered()) {
-                continue;
+                return;
             }
-
-            killers.put(player, entry.getValue().getDamage());
-        }
+            NPCDrops.handleDrops(player, this);
+        });
 
         getCombatBuilder().getDamageMap().clear();
 
-        List<Map.Entry<Player, Long>> result = sortEntries(killers);
-        for (Iterator<Map.Entry<Player, Long>> iterator = result.iterator(); iterator.hasNext(); ) {
-            Map.Entry<Player, Long> entry = iterator.next();
-            Player killer = entry.getKey();
-            NPCDrops.handleDrops(killer, this);
-            iterator.remove();
-        }
         DonationManager.getInstance().nullBoss();
-    }
-
-    static <K, V extends Comparable<? super V>> List<Map.Entry<K, V>> sortEntries(Map<K, V> map) {
-
-        List<Map.Entry<K, V>> sortedEntries = new ArrayList<>(map.entrySet());
-
-        sortedEntries.sort((e1, e2) -> e2.getValue().compareTo(e1.getValue()));
-
-        return sortedEntries;
-
     }
 
     @Override
