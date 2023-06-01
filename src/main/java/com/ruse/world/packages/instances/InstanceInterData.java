@@ -239,9 +239,6 @@ public enum InstanceInterData {
      * Single Instances
      */
 
-    CRUCIO("Crucio", "15k Asta Kills",
-            new Item(23203, 1000), 1, 1, 589,
-            InstanceType.SINGLE),
 
     /**
      * Special Instances
@@ -255,6 +252,10 @@ public enum InstanceInterData {
             InstanceType.SPECIAL),
     VOTE("Vote", "5 Vote Tickets",
             new Item(23205, 5), 2, 100, 593,
+            InstanceType.SPECIAL),
+
+    IRONMAN("Ironman", "Ironman Mode Only",
+            new Item(10835, 10000), 4, 200, 1880,
             InstanceType.SPECIAL),
 
     /**

@@ -40,7 +40,6 @@ public class InstanceManager {
 
     /**
      * Starts New Multi Instance That Doesnt Have A Count
-     * @param player
      */
 
     public void removeInstance(String id){
@@ -135,7 +134,7 @@ public class InstanceManager {
             case 591:
                 instance = new DonatorSpecialInstance(player, data.getNpcId(), data.getSpawns(), data.getCap());
                 break;
-            case 593:
+            case 1880:
                 instance = new VoteSpecialInstance(player, data.getNpcId(), data.getSpawns(), data.getCap());
                 break;
         }
@@ -479,7 +478,7 @@ public class InstanceManager {
         if(selection == 0){
             switch(button){
                 case 70506: player.getVariables().setInterfaceSettings(0, String.valueOf(0)); break;
-                case 70507: player.getVariables().setInterfaceSettings(0, String.valueOf(1)); break;
+                case 70507: player.sendMessage("This is coming soon!"); break;
                 case 70508: player.getVariables().setInterfaceSettings(0, String.valueOf(2)); break;
                 case 70509: player.getVariables().setInterfaceSettings(0, String.valueOf(3)); break;
                 case 70510: player.sendMessage("This is coming soon!"); break;
