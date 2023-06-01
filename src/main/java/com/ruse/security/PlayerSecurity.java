@@ -363,6 +363,10 @@ public class PlayerSecurity {
                 player.getPlayerFlags().setFlag(CHANGE_PIN, true);
             }
         }
+
+        if(!player.getPSettings().getBooleanValue("security")){
+            player.getPlayerFlags().setFlag(UNSECURE, true);
+        }
     }
 
     public int loginCode(){

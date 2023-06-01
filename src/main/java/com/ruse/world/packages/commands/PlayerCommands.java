@@ -56,19 +56,19 @@ public class PlayerCommands {
                     switch (commands[1]) {
                         case "drop":
                             player.getPSettings().setSetting("drop-messages", !player.getPSettings().getBooleanValue("drop-messages"));
-                            player.sendMessage("HDrop Messages is now : "+(player.getPSettings().getBooleanValue("drop-messages") ? "@gre@Active" : "@redInactive"));
+                            player.sendMessage("HDrop Messages is now : "+(player.getPSettings().getBooleanValue("drop-messages") ? "@gre@Active" : "@red@Inactive"));
                             break;
                         case "hide":
                             player.getPSettings().setSetting("hidden-players", !player.getPSettings().getBooleanValue("hidden-players"));
-                            player.sendMessage("Hidden Players is now : "+(player.getPSettings().getBooleanValue("hidden-players") ? "@gre@Active" : "@redInactive"));
+                            player.sendMessage("Hidden Players is now : "+(player.getPSettings().getBooleanValue("hidden-players") ? "@gre@Active" : "@red@Inactive"));
                             break;
                         case "toggle":
                             player.getPSettings().setSetting("drop-message-personal", !player.getPSettings().getBooleanValue("drop-message-personal"));
-                            player.sendMessage("Personal Drops is now : "+(player.getPSettings().getBooleanValue("drop-message-personal") ? "@gre@Active" : "@redInactive"));
+                            player.sendMessage("Personal Drops is now : "+(player.getPSettings().getBooleanValue("drop-message-personal") ? "@gre@Active" : "@red@Inactive"));
                             break;
                         case "security":
                             player.getPSettings().setSetting("security", !player.getPSettings().getBooleanValue("security"));
-                            player.sendMessage("Security is now : "+(player.getPSettings().getBooleanValue("security") ? "@gre@Active" : "@redInactive"));
+                            player.sendMessage("Security is now : "+(player.getPSettings().getBooleanValue("security") ? "@gre@Active" : "@red@Inactive"));
                             break;
                     }
                 } else {

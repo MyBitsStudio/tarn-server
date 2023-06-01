@@ -24,6 +24,8 @@ public class AttendanceManager {
     public void newDay() {
         if(!lastLoggedInDate.getMonth().equals(LocalDate.now(ZoneOffset.UTC).getMonth())) {
             playerAttendanceProgress.clear();
+            p.getPSettings().setSetting("donator-unlock", -1);
+            p.getPSettings().setSetting("summer-unlock", false);
         }
         lastLoggedInDate = LocalDate.now(ZoneOffset.UTC);
         for(AttendanceTab tab : getTabs()) {

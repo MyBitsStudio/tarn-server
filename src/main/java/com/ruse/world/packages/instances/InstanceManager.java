@@ -501,6 +501,7 @@ public class InstanceManager {
                 case 70508: player.getVariables().setInterfaceSettings(0, String.valueOf(2)); break;
                 case 70509: player.getVariables().setInterfaceSettings(0, String.valueOf(3)); break;
                 case 70510: player.sendMessage("This is coming soon!"); break;
+                case 70542: player.sendMessage("This is coming soon!"); break;
                 case 70534 :
                     int current = Integer.parseInt(player.getVariables().getInterfaceSettings()[2]);
                     player.getVariables().setInterfaceSettings(2, String.valueOf(

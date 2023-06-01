@@ -42,6 +42,7 @@ public class PlayerFlags {
         flags.put("pinEnter", false);
         flags.put("forceKick", false);
         flags.put("daily", false);
+        flags.put("unsecure", false);
     }
 
     public boolean isFlagged(String key){
@@ -81,19 +82,19 @@ public class PlayerFlags {
             }
         }
         if(isFlagged(CHANGE_PASSWORD)){
-            player.getPacketSender().sendMessage("<@red@[SECURITY] It's been over 30 days. Change your password ASAP! ::changepass");
+            player.getPacketSender().sendMessage("@red@[SECURITY] It's been over 30 days. Change your password ASAP! ::changepass");
             setFlag(CHANGE_PASSWORD, false);
         }
         if(isFlagged(CHANGE_PIN)){
-            player.getPacketSender().sendMessage("<@red@[SECURITY] It's been over 30 days. Change your PIN ASAP! ::changepin");
+            player.getPacketSender().sendMessage("@red@[SECURITY] It's been over 30 days. Change your PIN ASAP! ::changepin");
             setFlag(CHANGE_PIN, false);
         }
         if(isFlagged(FORCE_KICK)){
             World.removePlayer(player);
         }
-        if(isFlagged(DAILY)){
-           // player.getAttendenceUI().showInterface();
-            setFlag(DAILY, false);
+        if(isFlagged(UNSECURE)){
+           player.getPacketSender().sendMessage("@red@[SECURITY] Your IP security is off! Turn it on with ::settings security");
+            setFlag(UNSECURE, false);
         }
     }
 
@@ -140,4 +141,5 @@ public class PlayerFlags {
     public static String FORCE_KICK = "forceKick";
 
     public static String DAILY = "daily";
+    public static String UNSECURE = "unsecure";
 }
