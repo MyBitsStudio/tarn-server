@@ -443,7 +443,7 @@ public class OwnerCommands {
                 World.sendNewsMessage("<col=FF0066><img=2> [SERVER]<col=6600FF> Server is shutting down now!");
 
                 for (Player players : World.getPlayers()) {
-                    if (player != null) {
+                    if (players != null) {
                         players.save();
                         World.endDereg(players);
                     }
