@@ -8,6 +8,7 @@ import com.ruse.security.save.impl.FlashDealLoad;
 import com.ruse.world.content.discordbot.AdminCord;
 import com.ruse.world.entity.impl.player.Player;
 
+import java.util.Calendar;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -26,7 +27,7 @@ public class FlashDeals {
     }
 
     private final AtomicBoolean isActive = new AtomicBoolean(false);
-    private final AtomicBoolean specialActive = new AtomicBoolean(false);
+    private final AtomicBoolean specialActive = new AtomicBoolean(true);
     private final List<Integer> doubledItems = new CopyOnWriteArrayList<>();
     private final Map<Integer, Map<Integer, Integer>> deals = new ConcurrentHashMap<>();
     private final Map<Integer, Map<Integer, String>> specialDeals = new ConcurrentHashMap<>();
@@ -73,7 +74,7 @@ public class FlashDeals {
             handleSpecialDeals(player, amount);
 
             if(specialActive.get())
-                handleSpecialActive(player);
+                handleSpecialActive(player, amount);
 
             return true;
         } catch(Exception e){
@@ -83,7 +84,19 @@ public class FlashDeals {
 
     }
 
-    private void handleSpecialActive(Player player){
+    private void handleSpecialActive(Player player, int amount){
+        if(amount >= 25){
+            if(player.getPSettings().getIntValue("donator-unlock") == -1){
+                player.getPSettings().setSetting("donator-unlock", Calendar.MONTH);
+                player.getPacketSender().sendMessage("You have unlocked the Donator Calendar!");
+            }
+        }
+        if(amount >= 50){
+            if(!player.getPSettings().getBooleanValue("summer-unlock")) {
+                player.getInventory().add(19659, 1);
+                player.getPacketSender().sendMessage("You have been given a Summer Present!");
+            }
+        }
 
     }
 

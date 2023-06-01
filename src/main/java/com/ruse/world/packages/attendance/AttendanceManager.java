@@ -9,10 +9,7 @@ import com.ruse.world.entity.impl.player.PlayerSaving;
 import java.time.LocalDate;
 import java.time.Month;
 import java.time.ZoneOffset;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class AttendanceManager {
     private final Player p;
@@ -111,7 +108,7 @@ public class AttendanceManager {
 
         tabs.add(AttendanceTab.LOYAL);
 
-        if(p.getRights().isContributorOnly())
+        if(p.getPSettings().getIntValue("donator-unlock") == Calendar.MONTH)
             tabs.add(AttendanceTab.DONATOR);
 
         if(p.getPSettings().getBooleanValue("summer-unlock"))

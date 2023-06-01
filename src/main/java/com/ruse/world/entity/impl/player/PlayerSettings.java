@@ -22,7 +22,7 @@ public class PlayerSettings {
         this.settings.putAll(settings);
     }
 
-    private void defaultSettings(){
+    private void defaultSettings() {
         settings.put("drop-messages", true);
         settings.put("hidden-players", false);
         settings.put("pass-change", false);
@@ -30,6 +30,7 @@ public class PlayerSettings {
         settings.put("drop-message-personal", true);
         settings.put("security-lock", false);
         settings.put("summer-unlock", false);
+        settings.put("donator-unlock", -1);
     }
 
     public void setSetting(String key, Object value){
