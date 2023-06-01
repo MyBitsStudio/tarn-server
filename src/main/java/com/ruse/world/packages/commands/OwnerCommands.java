@@ -17,6 +17,7 @@ import com.ruse.world.content.LotterySystem;
 import com.ruse.world.content.WellOfGoodwill;
 import com.ruse.world.content.clans.ClanManager;
 import com.ruse.world.content.combat.weapon.CombatSpecial;
+import com.ruse.world.event.youtube.YoutubeBoss;
 import com.ruse.world.packages.donation.DonationManager;
 import com.ruse.world.packages.donation.FlashDeals;
 import com.ruse.world.content.grandexchange.GrandExchangeOffers;
@@ -466,8 +467,25 @@ public class OwnerCommands {
             case "event":
                 if(commands.length >= 2){
                     switch(commands[1]){
+                        case "tele":
+                            if(commands.length >= 3){
+                                switch(commands[2]){
+                                    case "youtube":
+                                        TeleportHandler.teleportPlayer(player, new Position(2856, 2708, 4),
+                                                player.getSpellbook().getTeleportType());
+                                        player.sendMessage("@yel@[EVENT] You have teleported to the youtube boss!");
+                                        return true;
+                                }
+                            } else {
+                                player.getPacketSender().sendMessage("Use as ::event tele [youtube]");
+                            }
+                            return true;
                         case "balloon":
                             WorldEventHandler.getInstance().startEvent(player, new BalloonGiveaway(player, null));
+                            return true;
+
+                        case "youtube":
+                            WorldEventHandler.getInstance().startEvent(player, new YoutubeBoss(player, null));
                             return true;
 
                         case "finish":
@@ -475,7 +493,7 @@ public class OwnerCommands {
                             return true;
                     }
                 } else {
-                    player.getPacketSender().sendMessage("Use as ::event [balloon/finish]");
+                    player.getPacketSender().sendMessage("Use as ::event [balloon/youtube/finish]");
                 }
                 return true;
         }

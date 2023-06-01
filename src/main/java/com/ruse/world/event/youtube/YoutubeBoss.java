@@ -1,4 +1,40 @@
 package com.ruse.world.event.youtube;
 
-public class YoutubeBoss {//4540
+import com.ruse.model.Position;
+import com.ruse.world.World;
+import com.ruse.world.entity.impl.npc.NPC;
+import com.ruse.world.entity.impl.player.Player;
+import com.ruse.world.event.Event;
+
+import javax.xml.stream.Location;
+
+public class YoutubeBoss extends Event {
+
+    public YoutubeBoss(Player player, Location loc) {
+        super(player, loc);
+    }
+
+    @Override
+    public void start() {
+        World.register(new NPC(4540, new Position(2856, 2708, 4)));
+        World.sendNewsMessage("@yel@ [EVENT] Staff has spawned a Youtube Boss event! Get them now!");
+    }
+
+    @Override
+    public void stop() {
+        if(World.npcIsRegistered(4540)) {
+            World.deregister(new NPC(4540, new Position(2856, 2708, 4)));
+        }
+        World.sendNewsMessage("@yel@ [EVENT] Youtube Boss event has ended!");
+    }
+
+    @Override
+    public String key() {
+        return "youtube";
+    }
+
+    @Override
+    public void moveTo(Player player) {
+
+    }
 }

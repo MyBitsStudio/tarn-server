@@ -845,7 +845,7 @@ public class DialogueOptions {
             }
         } else if (id == FIFTH_OPTION_OF_FIVE) {
             switch (player.getDialogueActionId()) {
-                case 11030:
+                case 11050:
                 case 9924:
                 case 9925:
                     player.setDialogueActionId(player.getDialogueActionId() + 1);
