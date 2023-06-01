@@ -76,8 +76,8 @@ public class DialogueOptions {
                     if(player.getInventory().contains(23210, 350)){
                         player.getPacketSender().sendInterfaceRemoval();
                         player.getInventory().delete(23210, 350);
-                        player.getInventory().add(3480, 1);
-                        player.sendMessage("@yel@[COMBINE] You have successfully created a Meliodas Helmet.");
+                        player.getInventory().add(23127, 1);
+                        player.sendMessage("@yel@[COMBINE] You have successfully created a Mystical Helmet.");
                     } else {
                         player.getPacketSender().sendInterfaceRemoval();
                         player.getPacketSender().sendMessage("You need 350 Event Crystals to combine this item.");
@@ -297,8 +297,8 @@ public class DialogueOptions {
                     if(player.getInventory().contains(23210, 500)){
                         player.getPacketSender().sendInterfaceRemoval();
                         player.getInventory().delete(23210, 500);
-                        player.getInventory().add(3479, 1);
-                        player.sendMessage("@yel@[COMBINE] You have successfully created a Meliodas Body.");
+                        player.getInventory().add(23128, 1);
+                        player.sendMessage("@yel@[COMBINE] You have successfully created a Mystical Body.");
                     } else {
                         player.getPacketSender().sendInterfaceRemoval();
                         player.getPacketSender().sendMessage("You need 500 Event Crystals to combine this item.");
@@ -476,8 +476,8 @@ public class DialogueOptions {
                     if(player.getInventory().contains(23210, 400)){
                         player.getPacketSender().sendInterfaceRemoval();
                         player.getInventory().delete(23210, 400);
-                        player.getInventory().add(3478, 1);
-                        player.sendMessage("@yel@[COMBINE] You have successfully created a Meliodas Legs.");
+                        player.getInventory().add(23129, 1);
+                        player.sendMessage("@yel@[COMBINE] You have successfully created a Mystical Legs.");
                     } else {
                         player.getPacketSender().sendInterfaceRemoval();
                         player.getPacketSender().sendMessage("You need 400 Event Crystals to combine this item.");
@@ -645,8 +645,8 @@ public class DialogueOptions {
                     if(player.getInventory().contains(23210, 300)){
                         player.getPacketSender().sendInterfaceRemoval();
                         player.getInventory().delete(23210, 300);
-                        player.getInventory().add(3477, 1);
-                        player.sendMessage("@yel@[COMBINE] You have successfully created a Meliodas Gloves.");
+                        player.getInventory().add(23130, 1);
+                        player.sendMessage("@yel@[COMBINE] You have successfully created a Mystical Gloves.");
                     } else {
                         player.getPacketSender().sendInterfaceRemoval();
                         player.getPacketSender().sendMessage("You need 300 Event Crystals to combine this item.");
@@ -941,6 +941,17 @@ public class DialogueOptions {
             // System.out.println("Slayer master: " + player.getSlayer().getSlayerMaster().toString());
             // System.out.println("ID: " + id);
             switch (player.getDialogueActionId()) {
+                case 11050:
+                    if(player.getInventory().contains(23210, 450)){
+                        player.getPacketSender().sendInterfaceRemoval();
+                        player.getInventory().delete(23210, 450);
+                        player.getInventory().add(23131, 1);
+                        player.sendMessage("@yel@[COMBINE] You have successfully created a Mystical Boots.");
+                    } else {
+                        player.getPacketSender().sendInterfaceRemoval();
+                        player.getPacketSender().sendMessage("You need 450 Event Crystals to combine this item.");
+                    }
+                    break;
                 case 9926:
                     player.setInputHandling(new WithdrawCurrencyFromCurrencyPouch(8));
                     player.getPacketSender().sendEnterAmountPrompt("How many Green charms would you like to withdraw?");
@@ -1017,6 +1028,17 @@ public class DialogueOptions {
             }
         } else if (id == SECOND_OPTION_OF_FOUR) {
             switch (player.getDialogueActionId()) {
+                case 11050:
+                    if(player.getInventory().contains(23210, 600)){
+                        player.getPacketSender().sendInterfaceRemoval();
+                        player.getInventory().delete(23210, 600);
+                        player.getInventory().add(23133, 1);
+                        player.sendMessage("@yel@[COMBINE] You have successfully created a Mystical Wings.");
+                    } else {
+                        player.getPacketSender().sendInterfaceRemoval();
+                        player.getPacketSender().sendMessage("You need 600 Event Crystals to combine this item.");
+                    }
+                    break;
                 case 9926:
                     player.setInputHandling(new WithdrawCurrencyFromCurrencyPouch(9));
                     player.getPacketSender().sendEnterAmountPrompt("How many Crimson charms would you like to withdraw?");
@@ -1130,6 +1152,17 @@ public class DialogueOptions {
             }
         } else if (id == THIRD_OPTION_OF_FOUR) {
             switch (player.getDialogueActionId()) {
+                case 11050:
+                    if(player.getInventory().contains(23210, 750)){
+                        player.getPacketSender().sendInterfaceRemoval();
+                        player.getInventory().delete(23210, 750);
+                        player.getInventory().add(23132, 1);
+                        player.sendMessage("@yel@[COMBINE] You have successfully created a Mystical Scythe.");
+                    } else {
+                        player.getPacketSender().sendInterfaceRemoval();
+                        player.getPacketSender().sendMessage("You need 750 Event Crystals to combine this item.");
+                    }
+                    break;
                 case 9926:
                     player.setInputHandling(new WithdrawCurrencyFromCurrencyPouch(10));
                     player.getPacketSender().sendEnterAmountPrompt("How many Blue charms would you like to withdraw?");
@@ -1880,17 +1913,6 @@ public class DialogueOptions {
             }
         } else if (id == FIRST_OPTION_OF_THREE) {
             switch (player.getDialogueActionId()) {
-                case 11051:
-                    if(player.getInventory().contains(23210, 450)){
-                        player.getPacketSender().sendInterfaceRemoval();
-                        player.getInventory().delete(23210, 450);
-                        player.getInventory().add(3476, 1);
-                        player.sendMessage("@yel@[COMBINE] You have successfully created a Meliodas Boots.");
-                    } else {
-                        player.getPacketSender().sendInterfaceRemoval();
-                        player.getPacketSender().sendMessage("You need 450 Event Crystals to combine this item.");
-                    }
-                    break;
                 case 9905:
                     player.skillingTask = true;
                     DailyTasks.checkTask(player);
@@ -2048,17 +2070,6 @@ public class DialogueOptions {
             }
         } else if (id == SECOND_OPTION_OF_THREE) {
             switch (player.getDialogueActionId()) {
-                case 11050:
-                    if(player.getInventory().contains(23210, 600)){
-                        player.getPacketSender().sendInterfaceRemoval();
-                        player.getInventory().delete(23210, 600);
-                        player.getInventory().add(3474, 1);
-                        player.sendMessage("@yel@[COMBINE] You have successfully created a Meliodas Wings.");
-                    } else {
-                        player.getPacketSender().sendInterfaceRemoval();
-                        player.getPacketSender().sendMessage("You need 600 Event Crystals to combine this item.");
-                    }
-                    break;
                 case 9905:
                     player.skillingTask = false;
                     DailyTasks.checkTask(player);
@@ -2242,7 +2253,6 @@ public class DialogueOptions {
             }
         } else if (id == THIRD_OPTION_OF_THREE) {
             switch (player.getDialogueActionId()) {
-                case 11051:
                 case 9905:
                 case 9902:
                 case 30:
