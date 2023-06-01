@@ -1274,6 +1274,7 @@ public class DialogueOptions {
             }
         } else if (id == FOURTH_OPTION_OF_FOUR) {
             switch (player.getDialogueActionId()) {
+                case 11051:
                 case 8:
                 case 9:
                 case 17:
