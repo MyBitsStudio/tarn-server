@@ -43,6 +43,7 @@ public class YoutubeBoss extends Event {
     }
 
     public static void drop(NPC bosses){
+        System.out.println("dropping youtube");
         bosses.getClosePlayers(20).forEach(player -> {
             if (player.getConstitution() <= 0 || !player.isRegistered()) {
                 return;

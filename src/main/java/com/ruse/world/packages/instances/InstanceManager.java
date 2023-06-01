@@ -471,7 +471,7 @@ public class InstanceManager {
                 return true;
             case 1880:
                 return player.getGameMode().isIronman();
-            case 601:
+            case 1120:
                 return FlashDeals.getDeals().isActive();
 
         }
