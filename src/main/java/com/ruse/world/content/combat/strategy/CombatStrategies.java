@@ -60,11 +60,10 @@ public class CombatStrategies {
 		STRATEGIES.put(8528, new Nomad());
 		STRATEGIES.put(252, new FriezaCombatScript());
 		STRATEGIES.put(449, new FriezaCombatScript());
-		STRATEGIES.put(595, new Galvek());
+		STRATEGIES.put(595, new FriezaCombatScript());
 		STRATEGIES.put(591, new FriezaCombatScript());
 		STRATEGIES.put(593, new FriezaCombatScript());
 		STRATEGIES.put(6692, new FriezaCombatScript());
-		//STRATEGIES.put(452, new FriezaCombatScript());
 		STRATEGIES.put(DungeoneeringBossNpc.Constants.BOSS_NOHEADICON, DungeoneeringBossCombat.INSTANCE);
 		STRATEGIES.put(DungeoneeringBossNpc.Constants.BOSS_PROT_MAGE, DungeoneeringBossCombat.INSTANCE);
 		STRATEGIES.put(DungeoneeringBossNpc.Constants.BOSS_PROT_RANGE, DungeoneeringBossCombat.INSTANCE);

@@ -40,7 +40,7 @@ public class GameSettings {
      */
     public static final String DomainUrl = "https://discord.gg/BeENR8amj2";
     public static final String ForumUrl = "https://discord.gg/BeENR8amj2";
-    public static final String StoreUrl = "https://tarn-rsps.com/store.html";
+    public static final String StoreUrl = "https://tarnserver.everythingrs.com/services/store";
     public static final String effigy = "https://www.youtube.com/channel/UCR-GGPuNM7V51JYWVbcDURQ";
     public static final String wr3cked = "https://www.youtube.com/channel/UCNm7R0y8KN8kSn3yVn04pkg";
 
