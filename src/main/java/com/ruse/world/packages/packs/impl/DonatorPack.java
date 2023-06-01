@@ -16,7 +16,7 @@ public class DonatorPack extends Pack {
 
     @Override
     public int getPackId() {
-        return 20501;
+        return 20502;
     }
 
     @Override
