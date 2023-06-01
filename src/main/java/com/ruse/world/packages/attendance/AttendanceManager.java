@@ -35,10 +35,10 @@ public class AttendanceManager {
                     p.getPacketSender().sendMessage("@red@This day has no reward.");
                     return;
                 }
+                if(!unlocked(p, tab)){
+                    continue;
+                }
                 if(attendanceProgress.put(nextUnclaimedDay)) {
-//                    if(!p.busy()) {
-//                        p.getAttendenceUI().showInterface();
-//                    }
                     p.getPacketSender().sendMessage("@red@You have been given " + item.getDefinition().getName() + " x " + item.getAmount() + " as attendance reward for day " + nextUnclaimedDay + "!");
                     p.addItemUnderAnyCircumstances(item);
                     PlayerSaving.save(p);
@@ -90,6 +90,19 @@ public class AttendanceManager {
         return -1;
     }
 
+    public boolean unlocked(Player player, AttendanceTab tab){
+        switch(tab){
+            case LOYAL:
+                return true;
+            case DONATOR:
+                return player.getPSettings().getIntValue("donator-unlock") == Calendar.MONTH;
+            case SUMMER:
+                return player.getPSettings().getBooleanValue("summer-unlock");
+            default:
+                return false;
+        }
+    }
+
     public LocalDate getLastLoggedInDate() {
         return lastLoggedInDate;
     }
@@ -104,7 +117,6 @@ public class AttendanceManager {
 
     public List<AttendanceTab> getTabs() {
         List<AttendanceTab> tabs = new ArrayList<>();
-        Month month = LocalDate.now(ZoneOffset.UTC).getMonth();
 
         tabs.add(AttendanceTab.LOYAL);
 
@@ -113,13 +125,6 @@ public class AttendanceManager {
 
         if(p.getPSettings().getBooleanValue("summer-unlock"))
             tabs.add(AttendanceTab.SUMMER);
-
-        //if(month == Month.DECEMBER) {
-        //    tabs.add(AttendanceTab.CHRISTMAS);
-      //  }
-        //if(p.getRights() == PlayerRights.CONTRIBUTOR) {
-          //  tabs.add(AttendanceTab.DONATOR);
-        //}
 
         return tabs;
     }
