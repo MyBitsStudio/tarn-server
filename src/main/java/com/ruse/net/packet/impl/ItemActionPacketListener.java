@@ -39,6 +39,8 @@ import com.ruse.world.content.skill.impl.summoning.SummoningData;
 import com.ruse.world.content.skill.impl.woodcutting.BirdNests;
 import com.ruse.world.content.transportation.*;
 import com.ruse.world.entity.impl.player.Player;
+import com.ruse.world.packages.packs.impl.*;
+import sun.security.krb5.internal.Ticket;
 
 import java.text.NumberFormat;
 import java.util.Locale;
@@ -189,7 +191,33 @@ public class ItemActionPacketListener implements PacketListener {
         }
 
 
+
+
         switch (itemId) {
+
+            case 20506:
+                new EnhancementChest().openPack(player);
+                break;
+
+            case 20507:
+                new OwnersUltimateChest().openPack(player);
+                break;
+
+            case 20498:
+                new TicketPack().openPack(player);
+                break;
+
+            case 20500:
+                new CounterPack().openPack(player);
+                break;
+
+            case 20501:
+                new EventPack().openPack(player);
+                break;
+
+            case 20502:
+                new DonatorPack().openPack(player);
+                break;
 
             case 23210:
                 DialogueManager.start(player, 11050);

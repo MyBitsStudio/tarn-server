@@ -164,7 +164,7 @@ public class DonationManager {
     public void claimDonation(Player player){
         GameEngine.submit(() -> {
             try {
-                com.everythingrs.donate.Donation[] donations = com.everythingrs.donate.Donation.donations("szUziRZAX4r853p8wSF7icsTKkqLS8VgtLLJ2TQinhWRHIXqT5nyWvMQON924RSg5iOos4u4",
+                com.everythingrs.donate.Donation[] donations = com.everythingrs.donate.Donation.donations("7qLCv34KB0NVyOqHYad6pxEuNqKkGXxVPPULMFR8yml5uKJbFzP3VbbrUT0I8Lgbzl8AONjs",
                         player.getUsername());
                 if (donations.length == 0) {
                     player.getPacketSender().sendMessage("You currently don't have any items waiting. You must donate first!");

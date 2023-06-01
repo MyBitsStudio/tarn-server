@@ -14,6 +14,7 @@ import com.ruse.world.packages.bosses.multi.MultiBossFlashInstance;
 import com.ruse.world.packages.bosses.multi.impl.CounterInstance;
 import com.ruse.world.packages.bosses.multi.MultiBossNormalInstance;
 import com.ruse.world.packages.bosses.multi.impl.DonatorSpecialInstance;
+import com.ruse.world.packages.bosses.multi.impl.IronmanInstance;
 import com.ruse.world.packages.bosses.multi.impl.VoteSpecialInstance;
 import com.ruse.world.content.discordbot.AdminCord;
 import com.ruse.world.packages.donation.FlashDeals;
@@ -134,8 +135,11 @@ public class InstanceManager {
             case 591:
                 instance = new DonatorSpecialInstance(player, data.getNpcId(), data.getSpawns(), data.getCap());
                 break;
-            case 1880:
+            case 593:
                 instance = new VoteSpecialInstance(player, data.getNpcId(), data.getSpawns(), data.getCap());
+                break;
+            case 1880:
+                instance = new IronmanInstance(player, data.getNpcId(), data.getSpawns(), data.getCap());
                 break;
         }
         
