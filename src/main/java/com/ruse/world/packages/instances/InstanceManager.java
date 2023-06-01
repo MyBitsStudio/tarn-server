@@ -483,7 +483,7 @@ public class InstanceManager {
             case 9017:
             case 591:
             case 593:
-            case 601:
+            case 1120:
             case 587:
             case 8013:
             case 1880:
