@@ -10,20 +10,23 @@ import javax.xml.stream.Location;
 
 public class YoutubeBoss extends Event {
 
+    private NPC boss;
+
     public YoutubeBoss(Player player, Location loc) {
         super(player, loc);
     }
 
     @Override
     public void start() {
-        World.register(new NPC(4540, new Position(2856, 2708, 4)));
+        boss = new NPC(4540, new Position(2856, 2708, 4));
+        World.register(boss);
         World.sendNewsMessage("@yel@ [EVENT] Staff has spawned a Youtube Boss event! Get them now!");
     }
 
     @Override
     public void stop() {
         if(World.npcIsRegistered(4540)) {
-            World.deregister(new NPC(4540, new Position(2856, 2708, 4)));
+            World.deregister(boss);
         }
         World.sendNewsMessage("@yel@ [EVENT] Youtube Boss event has ended!");
     }
