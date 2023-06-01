@@ -223,8 +223,20 @@ public class InstanceManager {
             return;
         }
 
+        int cap = data.getCap();
+        if(player.getRights().isRegularDonator())
+            cap *= 2;
+        if(player.getRights().isSuperDonator())
+            cap *= 3;
+        if(player.getRights().isExtremeDonator())
+            cap *= 4;
+        if(player.getRights().isSponsorDonator())
+            cap *= 5;
+        if(player.getRights().isContributorOnly())
+            cap *= 7.5;
+
         Instance instance = new MultiBossNormalInstance(player,
-                data.getNpcId(), data.getSpawns(), data.getCap());
+                data.getNpcId(), data.getSpawns(), cap);
 
         instances.put(instance.getInstanceId(), instance);
         instance.start();
@@ -320,8 +332,8 @@ public class InstanceManager {
 
         player.getPacketSender().sendString(70512, interData.getName());
 
-        player.getPacketSender().sendString(70516, prefix+ (long) (def.getHitpoints() * ( 1 + (diff * .5))));
-        player.getPacketSender().sendString(70518, prefix+ (long)(def.getMaxHit() * (1 + (.1 * diff))));
+        player.getPacketSender().sendString(70516, prefix+ (long) (def.getHitpoints() * ( 1 + (diff * 1.1))));
+        player.getPacketSender().sendString(70518, prefix+ (long)(def.getMaxHit() * (1 + (.3 * diff))));
         player.getPacketSender().sendString(70520, prefix+ (long)(def.getDefenceMelee() * (1 + (.3 * diff))));
         player.getPacketSender().sendString(70522, prefix+ (long)(def.getDefenceMage() * (1 + (.3 * diff))));
         player.getPacketSender().sendString(70524, prefix+ (long)(def.getDefenceRange() * (1 + (.3 * diff))));
@@ -453,6 +465,8 @@ public class InstanceManager {
             case 587:
             case 8013:
                 return true;
+            case 1880:
+                return player.getGameMode().isIronman();
             case 601:
                 return FlashDeals.getDeals().isActive();
 
@@ -468,6 +482,7 @@ public class InstanceManager {
             case 601:
             case 587:
             case 8013:
+            case 1880:
                 return true;
         }
         return false;

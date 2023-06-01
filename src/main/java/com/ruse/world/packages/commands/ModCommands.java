@@ -45,8 +45,8 @@ public class ModCommands {
                 return true;
 
             case "ban":
-                if(commands.length >= 4){
-                    player2 = World.getPlayer(command.substring(commands[0].length() + commands[1].length() + commands[2].length() + 3));
+                if(commands.length >= 3){
+                    player2 = World.getPlayerByName(command.substring(commands[0].length() + commands[1].length() + commands[2].length() + 3));
                     if (player2 == null) {
                         player.getPacketSender().sendMessage("Player is offline!");
                         return true;

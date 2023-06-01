@@ -72,7 +72,7 @@ public class CollectionLogInterface {
     }
 
     private boolean hasObtainedItem(int npc, int item) {
-        return player.getCollectionLogData().stream().filter(data -> data.getNpcId() == npc && data.getItem() == item).findFirst().isPresent();
+        return player.getCollectionLogData().stream().anyMatch(data -> data.getNpcId() == npc && data.getItem() == item);
     }
 
     public void checkForObtainedAll(int npcId) {

@@ -191,14 +191,19 @@ public class ItemActionPacketListener implements PacketListener {
 
         switch (itemId) {
 
-            case 3253:
-                //	player.getInventory().delete(itemId, 1);
-                player.getMinimeSystem().spawn();
+            case 23210:
+                DialogueManager.start(player, 11050);
+                player.setDialogueActionId(11050);
                 break;
 
-            case 7629:
-                player.getMiniPManager().spawnMiniPlayer();
-                break;
+//            case 3253:
+//                //	player.getInventory().delete(itemId, 1);
+//                player.getMinimeSystem().spawn();
+//                break;
+
+//            case 7629:
+//                player.getMiniPManager().spawnMiniPlayer();
+//                break;
             case 9719:
                 player.sendMessage("You must bring this to your slayer master to cancel your task.");
                 break;
@@ -2211,11 +2216,6 @@ public class ItemActionPacketListener implements PacketListener {
             return;
 
         switch (itemId) {
-
-            case 23210:
-                DialogueManager.start(player, 11050);
-                player.setDialogueActionId(11050);
-                break;
 
             case 3686:
                 if (player.getSeasonPass().isPremium()) {
