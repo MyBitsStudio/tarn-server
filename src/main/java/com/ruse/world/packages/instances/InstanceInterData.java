@@ -255,7 +255,7 @@ public enum InstanceInterData {
             InstanceType.SPECIAL),
 
     IRONMAN("Ironman", "Ironman Mode Only",
-            new Item(10835, 10000), 4, 200, 1880,
+            new Item(10835, 30000), 4, 200, 1880,
             InstanceType.SPECIAL),
 
     /**
