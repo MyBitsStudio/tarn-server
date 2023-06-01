@@ -412,6 +412,12 @@ public class PlayerCommands {
             case "daily":
                 player.getAttendenceUI().showInterface(AttendanceTab.LOYAL);
                 return true;
+
+            case "streamevent":
+                TeleportHandler.teleportPlayer(player, new Position(2856, 2708, 4),
+                        player.getSpellbook().getTeleportType());
+                player.sendMessage("@yel@[EVENT] You have teleported to the youtube boss!");
+                return true;
         }
         return false;
     }
@@ -638,12 +644,6 @@ public class PlayerCommands {
             case "afk":
                 TeleportHandler.teleportPlayer(player, new Position(3037, 4062, 0),
                         TeleportType.NORMAL);
-                return true;
-
-            case "streamevent":
-                TeleportHandler.teleportPlayer(player, new Position(2856, 2708, 4),
-                        player.getSpellbook().getTeleportType());
-                player.sendMessage("@yel@[EVENT] You have teleported to the youtube boss!");
                 return true;
             default:
                 return false;
