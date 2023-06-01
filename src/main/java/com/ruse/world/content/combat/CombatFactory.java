@@ -1407,15 +1407,16 @@ public final class CombatFactory {
 
 
                 }
-            } else if (npc.getId() == 1120) { //
-
-                if (!((Player) entity).getEquipment().containsAny(5012, 5011, 5010, 22113)) {
-                    ((Player) entity).getPacketSender().sendMessage("<shad=1>@red@Vasa Nistirio has a crystal that can only be broken by a Twisted Bow");
-                    entity.getCombatBuilder().reset(true);
-                    return false;
-
-                }
             }
+//            else if (npc.getId() == 1120) { //
+//
+//                if (!((Player) entity).getEquipment().containsAny(5012, 5011, 5010, 22113)) {
+//                    ((Player) entity).getPacketSender().sendMessage("<shad=1>@red@Vasa Nistirio has a crystal that can only be broken by a Twisted Bow");
+//                    entity.getCombatBuilder().reset(true);
+//                    return false;
+//
+//                }
+//            }
 
             if (npc.getId() == 6715 || npc.getId() == 6716 || npc.getId() == 6701 || npc.getId() == 6725
                     || npc.getId() == 6691) {

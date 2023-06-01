@@ -30,7 +30,8 @@ public class MultiBossFlashInstance extends MultiBossInstance {
         getOwner().getPacketSender().sendMessage("@blu@[INSTANCE] Your instance has started.");
 
         Position[] pos = {
-                new Position(3013, 2764), new Position(3013, 2761), new Position(3013, 2758), new Position(3013, 2755)
+                new Position(3019, 2765), new Position(3023, 2762),
+                new Position(3019, 2758), new Position(3016, 2762)
         };
 
         spawnAll(pos);
