@@ -1821,7 +1821,7 @@ public class ItemActionPacketListener implements PacketListener {
                 }
                 player.getClickDelay().reset();
                 player.getInventory().delete(15682, 1);
-                player.getInventory().add(23020, 3);
+                player.getInventory().add(23020, Misc.random(6));
                 break;
             case 11884:
                 player.getInventory().delete(11884, 1);
