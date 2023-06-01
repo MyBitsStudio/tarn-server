@@ -152,7 +152,6 @@ public class CombatStrategies {
 
 		STRATEGIES.put(9012, new LuciferCombatScript());
 		STRATEGIES.put(3831, new AzureBeast());
-		STRATEGIES.put(4540, new BandosAvatar());
 		STRATEGIES.put(6430, new CrystalQueen());
 
 		STRATEGIES.put(1234, new CrazyWitch());
@@ -176,6 +175,7 @@ public class CombatStrategies {
 		STRATEGIES.put(9906, new SolakTheGreat());
 		STRATEGIES.put(1311, new SolakTheGreat());
 		STRATEGIES.put(1318, new SolakTheGreat());
+		STRATEGIES.put(4540, new SolakTheGreat());
 		STRATEGIES.put(9907, new GolemOfSolak());
 		STRATEGIES.put(9908, new Vetion());
 		STRATEGIES.put(810, new InfernalDemon());

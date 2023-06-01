@@ -1,6 +1,7 @@
 package com.ruse.world.event.youtube;
 
 import com.ruse.model.Position;
+import com.ruse.model.definitions.NPCDrops;
 import com.ruse.world.World;
 import com.ruse.world.entity.impl.npc.NPC;
 import com.ruse.world.entity.impl.player.Player;
@@ -39,5 +40,16 @@ public class YoutubeBoss extends Event {
     @Override
     public void moveTo(Player player) {
 
+    }
+
+    public static void drop(NPC bosses){
+        bosses.getClosePlayers(20).forEach(player -> {
+            if (player.getConstitution() <= 0 || !player.isRegistered()) {
+                return;
+            }
+            NPCDrops.handleDrops(player, bosses);
+        });
+
+        bosses.getCombatBuilder().getDamageMap().clear();
     }
 }
