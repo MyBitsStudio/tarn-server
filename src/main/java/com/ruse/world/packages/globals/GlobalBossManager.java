@@ -5,7 +5,9 @@ import com.ruse.world.World;
 import com.ruse.world.content.discordbot.JavaCord;
 import com.ruse.world.entity.impl.player.Player;
 import com.ruse.world.packages.globals.impl.GoldenApeGlobal;
+import com.ruse.world.packages.globals.impl.MeruemGlobal;
 import com.ruse.world.packages.globals.impl.NineTailsGlobal;
+import com.ruse.world.packages.globals.impl.VeigarGlobal;
 
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -28,11 +30,27 @@ public class GlobalBossManager {
     public void process(){
         ticks.getAndIncrement();
 
+        if(ticks.get() % 3000 == 0){
+            if(World.npcIsRegistered(9906)){
+                return;
+            }
+            VeigarGlobal nineTailsGlobal = new VeigarGlobal();
+            spawn(nineTailsGlobal);
+        }
+
         if(ticks.get() % 6000 == 0){
             if(World.npcIsRegistered(9904)){
                 return;
             }
             NineTailsGlobal nineTailsGlobal = new NineTailsGlobal();
+            spawn(nineTailsGlobal);
+        }
+
+        if(ticks.get() % 12000 == 0){
+            if(World.npcIsRegistered(9907)){
+                return;
+            }
+            MeruemGlobal nineTailsGlobal = new MeruemGlobal();
             spawn(nineTailsGlobal);
         }
 
@@ -83,6 +101,36 @@ public class GlobalBossManager {
 
             case "golden":
                 tick = 18000 - (ticks.get() % 18000);
+                tick /= 100;
+                tick *= 60;
+
+                ms = tick ;
+                m = String.format("%dh %dm", TimeUnit.SECONDS.toHours(ms),
+                        TimeUnit.SECONDS.toMinutes(ms) - TimeUnit.HOURS.toMinutes(TimeUnit.SECONDS.toHours(ms)),
+                        TimeUnit.SECONDS.toSeconds(ms) - TimeUnit.MINUTES.toSeconds(TimeUnit.SECONDS.toMinutes(ms)));
+
+                if (ticks.get() < 0) {
+                    m = "Soon";
+                }
+                return m;
+
+            case "meruem":
+                tick = 18000 - 12000 - (ticks.get() % 12000);
+                tick /= 100;
+                tick *= 60;
+
+                ms = tick ;
+                m = String.format("%dh %dm", TimeUnit.SECONDS.toHours(ms),
+                        TimeUnit.SECONDS.toMinutes(ms) - TimeUnit.HOURS.toMinutes(TimeUnit.SECONDS.toHours(ms)),
+                        TimeUnit.SECONDS.toSeconds(ms) - TimeUnit.MINUTES.toSeconds(TimeUnit.SECONDS.toMinutes(ms)));
+
+                if (ticks.get() < 0) {
+                    m = "Soon";
+                }
+                return m;
+
+            case "veigar":
+                tick = 3000 - (ticks.get() % 3000);
                 tick /= 100;
                 tick *= 60;
 

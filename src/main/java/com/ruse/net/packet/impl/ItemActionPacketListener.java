@@ -2212,6 +2212,11 @@ public class ItemActionPacketListener implements PacketListener {
 
         switch (itemId) {
 
+            case 23210:
+                DialogueManager.start(player, 11050);
+                player.setDialogueActionId(11050);
+                break;
+
             case 3686:
                 if (player.getSeasonPass().isPremium()) {
                     player.sendMessage("You're already a premium member of the Battle Pass.");

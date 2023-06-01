@@ -42,6 +42,7 @@ import com.ruse.world.entity.impl.npc.NPCMovementCoordinator.CoordinateState;
 import com.ruse.world.entity.impl.npc.impl.HoVMobs.Heimdall;
 import com.ruse.world.entity.impl.npc.impl.HoVMobs.Kiljaeden;
 import com.ruse.world.entity.impl.player.Player;
+import com.ruse.world.packages.combat.CombatConstants;
 
 import java.util.Arrays;
 import java.util.Optional;
@@ -1108,12 +1109,16 @@ public final class CombatFactory {
             }
         }
         maxHit *= 10;
-        if (victim != null && victim.isNpc() && !player.getRights().isDeveloperOnly()) {
-            maxHit = (int) NpcMaxHitLimit.limit((NPC) victim, maxHit, CombatType.RANGED);
-        }
         if (player.getInventory().contains(4442)) {
             maxHit *= 1.5;
         }
+        if (victim != null && victim.isNpc() && !player.getRights().isDeveloperOnly()) {
+            maxHit = (int) NpcMaxHitLimit.limit((NPC) victim, maxHit, CombatType.RANGED);
+            if(CombatConstants.wearingEventArmor(player)) {
+                maxHit *= 2;
+            }
+        }
+
         return maxHit;
     }
 

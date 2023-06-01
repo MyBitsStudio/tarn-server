@@ -72,6 +72,17 @@ public class DialogueOptions {
         }
         if (id == FIRST_OPTION_OF_FIVE) {
             switch (player.getDialogueActionId()) {
+                case 11050:
+                    if(player.getInventory().contains(23210, 350)){
+                        player.getPacketSender().sendInterfaceRemoval();
+                        player.getInventory().delete(23210, 350);
+                        player.getInventory().add(3480, 1);
+                        player.sendMessage("@yel@[COMBINE] You have successfully created a Meliodas Helmet.");
+                    } else {
+                        player.getPacketSender().sendInterfaceRemoval();
+                        player.getPacketSender().sendMessage("You need 350 Event Crystals to combine this item.");
+                    }
+                    break;
                 case 101:
                     player.sendMessage("POs is currently disabled");
                    // player.getPlayerOwnedShopManager().openMain();
@@ -282,6 +293,17 @@ public class DialogueOptions {
             }
         } else if (id == SECOND_OPTION_OF_FIVE) {
             switch (player.getDialogueActionId()) {
+                case 11050:
+                    if(player.getInventory().contains(23210, 500)){
+                        player.getPacketSender().sendInterfaceRemoval();
+                        player.getInventory().delete(23210, 500);
+                        player.getInventory().add(3479, 1);
+                        player.sendMessage("@yel@[COMBINE] You have successfully created a Meliodas Body.");
+                    } else {
+                        player.getPacketSender().sendInterfaceRemoval();
+                        player.getPacketSender().sendMessage("You need 500 Event Crystals to combine this item.");
+                    }
+                    break;
                 case 101:
                     player.getPlayerOwnedShopManager().openEditor();
                     break;
@@ -450,6 +472,17 @@ public class DialogueOptions {
             }
         } else if (id == THIRD_OPTION_OF_FIVE) {
             switch (player.getDialogueActionId()) {
+                case 11050:
+                    if(player.getInventory().contains(23210, 400)){
+                        player.getPacketSender().sendInterfaceRemoval();
+                        player.getInventory().delete(23210, 400);
+                        player.getInventory().add(3478, 1);
+                        player.sendMessage("@yel@[COMBINE] You have successfully created a Meliodas Legs.");
+                    } else {
+                        player.getPacketSender().sendInterfaceRemoval();
+                        player.getPacketSender().sendMessage("You need 400 Event Crystals to combine this item.");
+                    }
+                    break;
                 case 101:
                     player.getPlayerOwnedShopManager().claimEarnings();
                     break;
@@ -608,6 +641,17 @@ public class DialogueOptions {
             }
         } else if (id == FOURTH_OPTION_OF_FIVE) {
             switch (player.getDialogueActionId()) {
+                case 11050:
+                    if(player.getInventory().contains(23210, 300)){
+                        player.getPacketSender().sendInterfaceRemoval();
+                        player.getInventory().delete(23210, 300);
+                        player.getInventory().add(3477, 1);
+                        player.sendMessage("@yel@[COMBINE] You have successfully created a Meliodas Gloves.");
+                    } else {
+                        player.getPacketSender().sendInterfaceRemoval();
+                        player.getPacketSender().sendMessage("You need 300 Event Crystals to combine this item.");
+                    }
+                    break;
                 case 101:
                     player.getPlayerOwnedShopManager().openHistory();
                     break;
@@ -801,6 +845,7 @@ public class DialogueOptions {
             }
         } else if (id == FIFTH_OPTION_OF_FIVE) {
             switch (player.getDialogueActionId()) {
+                case 11030:
                 case 9924:
                 case 9925:
                     player.setDialogueActionId(player.getDialogueActionId() + 1);
@@ -1835,6 +1880,17 @@ public class DialogueOptions {
             }
         } else if (id == FIRST_OPTION_OF_THREE) {
             switch (player.getDialogueActionId()) {
+                case 11051:
+                    if(player.getInventory().contains(23210, 450)){
+                        player.getPacketSender().sendInterfaceRemoval();
+                        player.getInventory().delete(23210, 450);
+                        player.getInventory().add(3476, 1);
+                        player.sendMessage("@yel@[COMBINE] You have successfully created a Meliodas Boots.");
+                    } else {
+                        player.getPacketSender().sendInterfaceRemoval();
+                        player.getPacketSender().sendMessage("You need 450 Event Crystals to combine this item.");
+                    }
+                    break;
                 case 9905:
                     player.skillingTask = true;
                     DailyTasks.checkTask(player);
@@ -1992,6 +2048,17 @@ public class DialogueOptions {
             }
         } else if (id == SECOND_OPTION_OF_THREE) {
             switch (player.getDialogueActionId()) {
+                case 11050:
+                    if(player.getInventory().contains(23210, 600)){
+                        player.getPacketSender().sendInterfaceRemoval();
+                        player.getInventory().delete(23210, 600);
+                        player.getInventory().add(3474, 1);
+                        player.sendMessage("@yel@[COMBINE] You have successfully created a Meliodas Wings.");
+                    } else {
+                        player.getPacketSender().sendInterfaceRemoval();
+                        player.getPacketSender().sendMessage("You need 600 Event Crystals to combine this item.");
+                    }
+                    break;
                 case 9905:
                     player.skillingTask = false;
                     DailyTasks.checkTask(player);
@@ -2175,6 +2242,7 @@ public class DialogueOptions {
             }
         } else if (id == THIRD_OPTION_OF_THREE) {
             switch (player.getDialogueActionId()) {
+                case 11051:
                 case 9905:
                 case 9902:
                 case 30:

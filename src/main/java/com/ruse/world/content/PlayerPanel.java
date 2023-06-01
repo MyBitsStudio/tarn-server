@@ -7,6 +7,7 @@ import com.ruse.world.World;
 import com.ruse.world.packages.donation.DonationManager;
 import com.ruse.world.content.serverperks.ServerPerks;
 import com.ruse.world.content.skill.impl.slayer.SlayerTasks;
+import com.ruse.world.packages.globals.GlobalBossManager;
 import com.ruse.world.packages.voting.VoteBossDrop;
 import com.ruse.world.entity.impl.player.Player;
 
@@ -39,10 +40,10 @@ public class PlayerPanel {
                 (DonationManager.getInstance().getBoss() == null
                 ? "@whi@Donation Boss: @yel@" + DonationManager.getInstance().getTotalDonated() + "/" + DonationManager.getTotalNeeded()
                         : "@whi@Donation Boss: @yel@::Donboss"),
-                "@whi@Final Boss Veigar: @yel@" + WorldBosses4.timeLeft(),
-                "@whi@Nine Tails Jinchuriki: @yel@" + WorldBosses2.timeLeft(),
-                "@whi@Meruem The King: @yel@" + WorldBosses3.timeLeft(),
-                "@whi@Golden Great Ape: @yel@" + WorldBosses.timeLeft(),
+                "@whi@Final Boss Veigar: @yel@" + GlobalBossManager.getInstance().timeLeft("veigar"),
+                "@whi@Nine Tails Jinchuriki: @yel@" + GlobalBossManager.getInstance().timeLeft("ninetails"),
+                "@whi@Meruem The King: @yel@" + GlobalBossManager.getInstance().timeLeft("meruem"),
+                "@whi@Golden Great Ape: @yel@" + GlobalBossManager.getInstance().timeLeft("golden"),
                 /* (WorldBosses.currentBoss == null
                          ? "Global bosses: @whi@" + WorldBosses.timeLeft()
                          : "Global bosses: @whi@::global"),*/

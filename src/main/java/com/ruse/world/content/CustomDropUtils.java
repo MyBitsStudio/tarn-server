@@ -12,6 +12,7 @@ import com.ruse.world.content.equipmentenhancement.BoostType;
 import com.ruse.world.content.serverperks.ServerPerks;
 import com.ruse.world.content.skill.impl.summoning.BossPets;
 import com.ruse.world.entity.impl.player.Player;
+import com.ruse.world.packages.combat.CombatConstants;
 import mysql.impl.Donation;
 
 public class CustomDropUtils {
@@ -357,7 +358,7 @@ public class CustomDropUtils {
         if (ServerPerks.getInstance().getActivePerk() == ServerPerks.Perk.DR || ServerPerks.getInstance().getActivePerk() == ServerPerks.Perk.ALL_PERKS) {
             percentBoost *= 1.5;
         }
-        if (GameSettings.DOUBLEDR == true) {
+        if (GameSettings.DOUBLEDR) {
             percentBoost *= 2;
         }
 
@@ -402,6 +403,12 @@ public class CustomDropUtils {
             int diff = Integer.parseInt(player.getVariables().getInterfaceSettings()[2]);
             if(diff != 0){
                 percentBoost += (250 * diff);
+            }
+        }
+
+        if(npc == 9906 || npc == 9904 || npc == 9907 || npc == 9908 || npc == 587 || npc == 8013){
+            if(CombatConstants.wearingEventArmor(player)){
+                percentBoost += 500;
             }
         }
 

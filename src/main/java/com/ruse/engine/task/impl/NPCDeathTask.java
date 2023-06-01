@@ -1048,9 +1048,9 @@ public class NPCDeathTask extends Task {
 //        if (npc.getId() == 9906) {
 //            WorldBosses2.handleDrop(npc);
 //        }
-        if (npc.getId() == 9907) {
-            WorldBosses4.handleDrop(npc);
-        }
+//        if (npc.getId() == 9907) {
+//            WorldBosses4.handleDrop(npc);
+//        }
         if (npc.getId() == 8010) {
             Groudon.handleDrop(npc);
         }
