@@ -17,9 +17,9 @@ public class MultiBossFlashInstance extends MultiBossInstance {
     public void process(){
         super.process();
 
-        if(!FlashDeals.getDeals().isActive()){
-            InstanceManager.getManager().dispose(getOwner());
-        }
+//        if(!FlashDeals.getDeals().isActive()){
+//            InstanceManager.getManager().dispose(getOwner());
+//        }
     }
 
     @Override
