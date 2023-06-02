@@ -48,6 +48,10 @@ public class PlayerSettings {
         return (int) settings.getOrDefault(key, -1);
     }
 
+    public double getDoubleValue(String key){
+        return (double) settings.getOrDefault(key, -1.0);
+    }
+
     public boolean getBooleanValue(String key){
         return (boolean) settings.getOrDefault(key, false);
     }
