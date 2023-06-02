@@ -7,6 +7,7 @@ import com.ruse.model.projectile.ItemEffect;
 import com.ruse.security.save.impl.FlashDealLoad;
 import com.ruse.world.content.discordbot.AdminCord;
 import com.ruse.world.entity.impl.player.Player;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Calendar;
 import java.util.List;
@@ -74,7 +75,7 @@ public class FlashDeals {
             handleSpecialDeals(player, amount);
 
             handleSpecialActive(player, amount);
-
+            flashTickets(player, amount);
             return true;
         } catch(Exception e){
             player.getPacketSender().sendMessage("There was an error when collecting your flash deal.");
@@ -99,7 +100,13 @@ public class FlashDeals {
 
     }
 
-    private void isDoubled(Player player, int[] items){
+    private void flashTickets(@NotNull Player player, int amount){
+        int multiple = Math.floorDiv(amount , 100);
+        player.getInventory().add(23211, multiple);
+        player.sendMessage("You have collected "+multiple+" Flash Tickets! Thanks for your support!");
+    }
+
+    private void isDoubled(Player player, int @NotNull [] items){
         for (int item : items) {
             if (doubledItems.contains(item)) {
                 player.getInventory().add(item, 1);
