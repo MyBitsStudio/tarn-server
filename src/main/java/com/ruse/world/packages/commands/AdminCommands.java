@@ -77,11 +77,12 @@ public class AdminCommands {
                     PlayerSecurity security = new PlayerSecurity(command.substring(commands[0].length() + 1));
                     security.load();
                     PlayerLock lock = security.getPlayerLock();
+                    lock.load(command.substring(commands[0].length() + 1));
                     if(lock == null) {
                         player.getPacketSender().sendMessage(command.substring(commands[0].length() + 1) + " lock is null.");
                     } else {
                         lock.setUsername(command.substring(commands[0].length() + 1));
-                        lock.unlock(lock.getLock());
+                        lock.unlock();
                         lock.save();
                         security.save();
                         player.sendMessage("Unlocked " + command.substring(commands[0].length() + 1) + "'s account.");
