@@ -66,6 +66,11 @@ public class InstanceManager {
             return;
         }
 
+        if(takeItem(player, data)) {
+            player.sendMessage("You don't have x"+data.getCost().getAmount()+" of "+ItemDefinition.forId(data.getCost().getId()).getName());
+            return;
+        }
+
         Instance instance = new MultiBossFlashInstance(player,
                 data.getNpcId(), data.getSpawns(), data.getCap());
 
