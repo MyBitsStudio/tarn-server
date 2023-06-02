@@ -73,8 +73,7 @@ public class FlashDeals {
             handleAmountRewards(player, amount);
             handleSpecialDeals(player, amount);
 
-            if(specialActive.get())
-                handleSpecialActive(player, amount);
+            handleSpecialActive(player, amount);
 
             return true;
         } catch(Exception e){
@@ -91,7 +90,7 @@ public class FlashDeals {
                 player.getPacketSender().sendMessage("You have unlocked the Donator Calendar!");
             }
         }
-        if(amount >= 50){
+        if(amount >= 75){
             if(!player.getPSettings().getBooleanValue("summer-unlock")) {
                 player.getInventory().add(19659, 1);
                 player.getPacketSender().sendMessage("You have been given a Summer Present!");

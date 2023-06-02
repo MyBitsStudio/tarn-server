@@ -342,9 +342,25 @@ public class InstanceManager {
         player.getPacketSender().sendString(70522, prefix+ (long)(def.getDefenceMage() * (1 + (.3 * diff))));
         player.getPacketSender().sendString(70524, prefix+ (long)(def.getDefenceRange() * (1 + (.3 * diff))));
 
+        int cap = interData.getCap();
+        if(player.getRights().isRegularDonator())
+            cap *= 2;
+        if(player.getRights().isSuperDonator())
+            cap *= 3;
+        if(player.getRights().isExtremeDonator())
+            cap *= 4;
+        if(player.getRights().isSponsorDonator())
+            cap *= 5;
+        if(player.getRights().isContributorOnly())
+            cap *= 7.5;
+
+        if(interData.getNpcId() == 1120){
+            cap = 200;
+        }
+
         player.getPacketSender().sendString(70526, prefix+ "x"+ (interData.getCost().getAmount() * (1+ (diff * 2L))) +" "+ItemDefinition.forId(interData.getCost().getId()).getName());
         player.getPacketSender().sendString(70528, prefix+ interData.getSpawns());
-        player.getPacketSender().sendString(70530, prefix+ interData.getCap());
+        player.getPacketSender().sendString(70530, prefix+ cap);
         player.getPacketSender().sendString(70532, prefix+ interData.getReq());
 
         for(int i = 0; i < (57 * 2); i+=2){

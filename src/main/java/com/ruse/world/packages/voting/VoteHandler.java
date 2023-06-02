@@ -59,7 +59,7 @@ public class VoteHandler {
     }
 
     public static void randomTicket(Player player){
-        if(Misc.random(20) == 16){
+        if(Misc.random(10) == 8){
             player.getInventory().add(23205, 1);
             player.getPacketSender().sendMessage("You have received a random Ticket for voting!");
             World.sendMessage("<img=857><col=FF0000><shad=1>[" + player.getUsername() + "] Just got lucky and got a Ticket from voting!");
