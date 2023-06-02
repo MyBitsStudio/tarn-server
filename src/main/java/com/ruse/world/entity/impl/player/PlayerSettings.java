@@ -30,7 +30,7 @@ public class PlayerSettings {
         settings.put("drop-message-personal", true);
         settings.put("security", true);
         settings.put("summer-unlock", false);
-        settings.put("donator-unlock", -1);
+        settings.put("donator-unlock", Integer.valueOf("-1"));
     }
 
     public void setSetting(String key, Object value){
