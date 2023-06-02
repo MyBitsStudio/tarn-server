@@ -81,7 +81,7 @@ public class AdminCommands {
                         player.getPacketSender().sendMessage(command.substring(commands[0].length() + 1) + " lock is null.");
                     } else {
                         lock.setUsername(command.substring(commands[0].length() + 1));
-                        lock.unlock();
+                        lock.unlock(lock.getLock());
                         lock.save();
                         security.save();
                         player.sendMessage("Unlocked " + command.substring(commands[0].length() + 1) + "'s account.");
