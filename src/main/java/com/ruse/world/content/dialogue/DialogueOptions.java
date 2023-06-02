@@ -941,7 +941,7 @@ public class DialogueOptions {
             // System.out.println("Slayer master: " + player.getSlayer().getSlayerMaster().toString());
             // System.out.println("ID: " + id);
             switch (player.getDialogueActionId()) {
-                case 11050:
+                case 11051:
                     if(player.getInventory().contains(23210, 450)){
                         player.getPacketSender().sendInterfaceRemoval();
                         player.getInventory().delete(23210, 450);
@@ -1028,7 +1028,7 @@ public class DialogueOptions {
             }
         } else if (id == SECOND_OPTION_OF_FOUR) {
             switch (player.getDialogueActionId()) {
-                case 11050:
+                case 11051:
                     if(player.getInventory().contains(23210, 600)){
                         player.getPacketSender().sendInterfaceRemoval();
                         player.getInventory().delete(23210, 600);
@@ -1152,7 +1152,7 @@ public class DialogueOptions {
             }
         } else if (id == THIRD_OPTION_OF_FOUR) {
             switch (player.getDialogueActionId()) {
-                case 11050:
+                case 11051:
                     if(player.getInventory().contains(23210, 750)){
                         player.getPacketSender().sendInterfaceRemoval();
                         player.getInventory().delete(23210, 750);
