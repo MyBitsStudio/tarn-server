@@ -93,7 +93,6 @@ public class PlayerDeathTask extends Task {
                     }
                     if(player.getInstance() != null){
                         player.getInstance().remove(player);
-                        super.stop();
                     }
                     break;
                 case 1:
