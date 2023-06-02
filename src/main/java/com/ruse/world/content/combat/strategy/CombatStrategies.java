@@ -146,7 +146,6 @@ public class CombatStrategies {
 
 		STRATEGIES.put(2342, new HerbalRogue());
 		STRATEGIES.put(3830, new OptimusPrime());
-		STRATEGIES.put(1120,new Vasa());
 		STRATEGIES.put(NazastaroolCombatStrategy.NAZASTAROOL, new NazastaroolCombatStrategy());
 		STRATEGIES.put(DrakeCombatStrategy.DRAKE, new DrakeCombatStrategy());
 
@@ -170,6 +169,8 @@ public class CombatStrategies {
 		STRATEGIES.put(187, new FriezaCombatScript());
 		STRATEGIES.put(188, new FriezaCombatScript());
 		STRATEGIES.put(1880, new FriezaCombatScript());
+		STRATEGIES.put(1120, new FriezaCombatScript());
+
 
 		STRATEGIES.put(9904, new SolakTheGreat());
 		STRATEGIES.put(9906, new SolakTheGreat());
@@ -177,6 +178,7 @@ public class CombatStrategies {
 		STRATEGIES.put(1318, new SolakTheGreat());
 		STRATEGIES.put(4540, new SolakTheGreat());
 		STRATEGIES.put(9907, new GolemOfSolak());
+
 		STRATEGIES.put(9908, new Vetion());
 		STRATEGIES.put(810, new InfernalDemon());
 		STRATEGIES.put(1307, new InfernalDemon());
