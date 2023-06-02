@@ -478,8 +478,7 @@ public class InstanceManager {
     private boolean returnSpecial(Player player, int base){
         switch(base){
             case 9017:
-
-                return true;
+                return false;
             case 591:
             case 593:
             case 587:
