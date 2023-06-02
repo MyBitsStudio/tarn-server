@@ -17,12 +17,6 @@ public enum StorePacks {
     SACRED_BOX(20490, 150.00),
     OWNER_CHEST(23002, 300.00),
 
-    COLLECTOR_NECKLACE(19886, 15.00),
-    COLLECTOR_RING(4446, 15.00),
-    COLLECTORS_AURA(15450, 175.00),
-
-    COLLECTORS_ATTACHMENT(9084, 25.00),
-    OWNER_ATTACHMENT(22110, 75.00),
 
     TRANSFER_CRYSTAL(8788, 3.00),
     DR_ENHANCE(23178, 50.00),
@@ -30,6 +24,9 @@ public enum StorePacks {
     DR_BOOSTER(4440, 125.00),
     DAMAGE_SCROLL(4442, 125.00),
     PREMIUM_PASS(3686, 40.00),
+    COLLECTORS_AURA(15450, 175.00),
+    COLLECTORS_ATTACHMENT(9084, 25.00),
+    OWNER_ATTACHMENT(22110, 75.00),
 
     ENHANCE_CHEST(20506, 100.00),
     OWNER_ULT_CHEST(20507, 1200.00),
@@ -45,8 +42,8 @@ public enum StorePacks {
 
     ;
 
-    @Getter private int itemId;
-    @Getter private double price;
+    @Getter private final int itemId;
+    @Getter private final double price;
     StorePacks(int itemId, double price) {
         this.itemId = itemId;
         this.price = price;

@@ -80,20 +80,20 @@ public class PlayerDeathTask extends Task {
                     this.death = getDeathNpc(player);
                     }
                     if (player.currentInstanceAmount >= 1) {
-            		player.getPA().sendMessage("You have been kicked from instance");
-            		player.getRegionInstance().destruct();
-            		player.setData(null);
-            		player.setCurrentInstanceAmount(-1);
-            		player.setCurrentInstanceNpcId(-1);
-            		player.setCurrentInstanceNpcName("");
-            		player.performAnimation(new Animation(0x900));
-        			Position[] locations = new Position[] { new Position(2656, 4016, 0), new Position(2656, 4016, 0) };
-        			Position teleportLocation = locations[RandomUtility.exclusiveRandom(0, locations.length)];
-        			TeleportHandler.teleportPlayer(player, teleportLocation, player.getSpellbook().getTeleportType());
+                        player.getPA().sendMessage("You have been kicked from instance");
+                        player.getRegionInstance().destruct();
+                        player.setData(null);
+                        player.setCurrentInstanceAmount(-1);
+                        player.setCurrentInstanceNpcId(-1);
+                        player.setCurrentInstanceNpcName("");
+                        player.performAnimation(new Animation(0x900));
+                        Position[] locations = new Position[] { new Position(2656, 4016, 0), new Position(2656, 4016, 0) };
+                        Position teleportLocation = locations[RandomUtility.exclusiveRandom(0, locations.length)];
+                        TeleportHandler.teleportPlayer(player, teleportLocation, player.getSpellbook().getTeleportType());
                     }
                     if(player.getInstance() != null){
                         player.getInstance().remove(player);
-
+                        return;
                     }
                     break;
                 case 1:
