@@ -219,12 +219,11 @@ public class ServerSecurity {
                 }
                 sec.addAssociation("username", name);
             }
-            if(!list.contains(player.getUsername())){
-                list.add(player.getUsername());
-                ipMap.put(ip, list);
-            }
+//            if(!list.contains(player.getUsername())){
+//                list.add(player.getUsername());
+//                ipMap.put(ip, list);
+//            }
         } else {
-            System.out.println("Adding IP " + ip + " to map");
             ipMap.put(ip, Collections.singletonList(player.getUsername()));
         }
 
@@ -236,12 +235,11 @@ public class ServerSecurity {
                 }
                 sec.addAssociation("username", name);
             }
-            if(!list.contains(player.getUsername())){
-                list.add(player.getUsername());
-                macMap.put(mac, list);
-            }
+//            if(!list.contains(player.getUsername())){
+//                list.add(player.getUsername());
+//                macMap.put(mac, list);
+//            }
         } else {
-            System.out.println("Adding mac " + mac + " to map");
             macMap.put(mac, Collections.singletonList(player.getUsername()));
         }
 
@@ -253,12 +251,11 @@ public class ServerSecurity {
                 }
                 sec.addAssociation("username", name);
             }
-            if(!list.contains(player.getUsername())){
-                list.add(player.getUsername());
-                hwidMap.put(hwid, list);
-            }
+//            if(!list.contains(player.getUsername())){
+//                list.add(player.getUsername());
+//                hwidMap.put(hwid, list);
+//            }
         } else {
-            System.out.println("Adding HWID " + hwid + " to map");
             hwidMap.put(hwid, Collections.singletonList(player.getUsername()));
         }
 

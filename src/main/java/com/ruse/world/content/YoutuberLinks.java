@@ -33,6 +33,7 @@ public enum YoutuberLinks {
     WINALLDAY("https://www.youtube.com/@WinAllDay1",  "winallday"),
     IPKMAXJR("https://www.youtube.com/@IPkMaxJr",  "max"),
     JIPY("https://www.youtube.com/@jipyrsps",  "jipy"),
+    STYLO("https://www.youtube.com/@1Stylo",  "stylo"),
     LANO("https://www.youtube.com/channel/UCIz0u4h_J2e_c5MNJBN0uiw/videos?view_as=subscriber",  "lano", "lanos"),
 
 

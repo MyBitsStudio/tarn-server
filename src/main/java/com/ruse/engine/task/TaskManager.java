@@ -47,8 +47,8 @@ public final class TaskManager {
 
 	public static void cancelTasks(Object key) {
 		try {
-			pendingTasks.stream().filter(t -> t.getKey().equals(key)).forEach(t -> t.stop());
-			activeTasks.stream().filter(t -> t.getKey().equals(key)).forEach(t -> t.stop());
+			pendingTasks.stream().filter(t -> t.getKey().equals(key)).forEach(Task::stop);
+			activeTasks.stream().filter(t -> t.getKey().equals(key)).forEach(Task::stop);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

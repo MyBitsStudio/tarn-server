@@ -183,7 +183,7 @@ public class Shop extends ItemContainer {
                 || shopId == PRESTIGE_STORE || shopId == SLAYER_STORE_EASY || shopId == SLAYER_STORE_MEDIUM || shopId == SLAYER_STORE_HARD || shopId == LOYALTY_POINT_SHOP || shopId == BARROWS_STORE
                 || shopId == MEMBERS_STORE_I || shopId == MEMBERS_STORE_II || shopId == DONATOR_STORE_1
                 || shopId == DONATOR_STORE_2 || shopId == DONATOR_STORE_3 || shopId == DONATOR_STORE_4|| shopId == PET_STORE_1
-                || shopId == PET_STORE_2 || shopId == UPGRADE_STORE || shopId == PET_STORE_3 || shopId == PET_STORE_4 || shopId == 118)
+                || shopId == PET_STORE_2 || shopId == UPGRADE_STORE || shopId == PET_STORE_3 || shopId == PET_STORE_4 || shopId == 118 || shopId == 210)
             return false;
         Shop shop = ShopManager.getShops().get(shopId);
         if (shop != null && shop.getOriginalStock() != null) {
