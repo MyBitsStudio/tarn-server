@@ -295,7 +295,7 @@ public class InstanceManager {
                     data = InstanceInterData.getMultiInstances();
                     break;
                 case 1:
-                    data = InstanceInterData.getSingleInstances();
+                    data = InstanceInterData.getMulti2Instances();
                     break;
                 case 2:
                     data = InstanceInterData.getSpecialInstances();
@@ -472,6 +472,8 @@ public class InstanceManager {
             case 595: npcId = 1318; amount = 50000;break;
 
             case 589: npcId = 595; amount = 15000;break;
+            case 440: npcId = 1318; amount = 50000; break;
+            case 438: npcId = 440; amount = 50000; break;
             default : return false;
         }
         if(data.getNpcId() == 8014)
@@ -483,7 +485,7 @@ public class InstanceManager {
     private boolean returnSpecial(Player player, int base){
         switch(base){
             case 9017:
-                return false;
+                return  KillsTracker.getTotalKills(player) > 100000;
             case 591:
             case 593:
             case 587:
@@ -517,7 +519,7 @@ public class InstanceManager {
         if(selection == 0){
             switch(button){
                 case 70506: player.getVariables().setInterfaceSettings(0, String.valueOf(0)); break;
-                case 70507: player.sendMessage("This is coming soon!"); break;
+                case 70507: player.getVariables().setInterfaceSettings(0, String.valueOf(1)); break;
                 case 70508: player.getVariables().setInterfaceSettings(0, String.valueOf(2)); break;
                 case 70509: player.getVariables().setInterfaceSettings(0, String.valueOf(3)); break;
                 case 70510: player.sendMessage("This is coming soon!"); break;
@@ -555,7 +557,7 @@ public class InstanceManager {
                 data = InstanceInterData.getMultiInstances();
                 break;
             case 1:
-                data = InstanceInterData.getSingleInstances();
+                data = InstanceInterData.getMulti2Instances();
                 break;
             case 2:
                 data = InstanceInterData.getSpecialInstances();
@@ -585,10 +587,8 @@ public class InstanceManager {
 
         switch(interData.getType()){
             case MULTI:
+            case MULTI_2:
                 startMultiAmountInstance(player, interData);
-                break;
-            case SINGLE:
-                startSingleBossInstance(player, interData);
                 break;
             case SPECIAL:
                 startMultiInstance(player, interData);

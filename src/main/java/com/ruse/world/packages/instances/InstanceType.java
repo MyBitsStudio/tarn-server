@@ -1,5 +1,5 @@
 package com.ruse.world.packages.instances;
 
 public enum InstanceType {
-    MULTI, SINGLE, SPECIAL, EVENT, GROUP
+    MULTI, MULTI_2, SPECIAL, EVENT, GROUP
 }

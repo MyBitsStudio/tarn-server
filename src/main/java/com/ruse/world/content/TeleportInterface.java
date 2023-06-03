@@ -589,6 +589,8 @@ public class TeleportInterface {
         SUPREMENEX41("Lord Yasuda", 1313, new int[]{2139, 5019, 60}, 1500),
         SUPREMENEX42("Black Goku", 1318, new int[]{2139, 5019, 60}, 1500),
         ASTA("Asta", 595, new int[]{2139, 5019, 60}, 1500),
+        ENGRAGE_SUPREME("Enraged Supreme", 440, new int[]{2139, 5019, 60}, 1500),
+        D_SUPREME("Dark Supreme", 438, new int[]{2139, 5019, 60}, 1500),
         VEIGAR("Veigar [Global]", 9906, new int[]{2139, 5019, 8}, 2500),
         NINETAILS("Nine Tails [Global]", 9904, new int[]{2139, 5019, 12}, 1000),
         MERUEM("Meruem [Global]", 9907, new int[]{2139, 5019, 4}, 1100),

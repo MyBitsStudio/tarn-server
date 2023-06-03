@@ -40,7 +40,6 @@ import com.ruse.world.content.skill.impl.woodcutting.BirdNests;
 import com.ruse.world.content.transportation.*;
 import com.ruse.world.entity.impl.player.Player;
 import com.ruse.world.packages.packs.impl.*;
-import sun.security.krb5.internal.Ticket;
 
 import java.text.NumberFormat;
 import java.util.Locale;

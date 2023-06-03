@@ -259,7 +259,8 @@ public class Shop extends ItemContainer {
                     && id != 33 && id != 39 && id != 11 && id != 34 && id != 14 && id != 13 && id != 18 && id != 15
                     && id != 21 && id != 44
                     && id != 22 && id != 42 && id != 35 && id != 32 && id != 23 && id != 38 && id != 91 && id != 92 && id != 0
-                    && id != 93 && id != 94 && id != 95 && id != 96 && id != 97 && id != 98 && id != 30 && id != 117 && id != EASTER_STORE_1 && id != EASTER_STORE_2 && id != DUNGEONEERING_STORE_NEW) { // 22 + 23 ==
+                    && id != 93 && id != 94 && id != 95 && id != 96 && id != 97 && id != 98 && id != 30 && id != 117 && id != EASTER_STORE_1 && id != EASTER_STORE_2 && id != DUNGEONEERING_STORE_NEW // 22 + 23 ==
+                    && id != 210) {
                 // pikkupstix's
                 // materials,
                 // 38 =

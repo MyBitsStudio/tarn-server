@@ -257,6 +257,8 @@ public class CollectionLogInterface {
             REWARDS.put(TeleportInterface.Bosses.SUPREMENEX41.getNpcId(), new Item[]{new Item(20491,1), new Item(13650,1000)});
             REWARDS.put(TeleportInterface.Bosses.SUPREMENEX42.getNpcId(), new Item[]{new Item(20491,1), new Item(13650,5000)});
             REWARDS.put(595, new Item[]{new Item(20491,1), new Item(13650,5000)});
+            REWARDS.put(440, new Item[]{new Item(20491,1), new Item(13650,5000)});
+            REWARDS.put(438, new Item[]{new Item(20491,1), new Item(13650,5000)});
             //GLOBALS
             REWARDS.put(TeleportInterface.Bosses.VEIGAR.getNpcId(), new Item[]{new Item(20490,1), new Item(23059,1)});
             REWARDS.put(TeleportInterface.Bosses.NINETAILS.getNpcId(), new Item[]{new Item(20490,1), new Item(23059,1)});

@@ -147,7 +147,7 @@ public class PlayerHandler {
         BonusManager.sendCurseBonuses(player);
         AchievementsOLD.updateInterface(player);
         Barrows.handleLogin(player);
-        VoidOfDarkness.handleLogin(player);
+        //VoidOfDarkness.handleLogin(player);
         // Tasks
         TaskManager.submit(new PlayerSkillsTask(player));
         TaskManager.submit(new PlayerRegenConstitutionTask(player));

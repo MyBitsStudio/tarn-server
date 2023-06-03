@@ -122,7 +122,7 @@ public class AttendanceManager {
 
         tabs.add(AttendanceTab.LOYAL);
 
-        if(p.getPSettings().getIntValue("donator-unlock") == Calendar.MONTH)
+        if(p.getPSettings().getDoubleValue("donator-unlock") == Calendar.MONTH)
             tabs.add(AttendanceTab.DONATOR);
 
         if(p.getPSettings().getBooleanValue("summer-unlock"))

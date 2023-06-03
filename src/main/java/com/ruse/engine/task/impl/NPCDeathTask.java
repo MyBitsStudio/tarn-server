@@ -111,7 +111,7 @@ public class NPCDeathTask extends Task {
 
                     if(killer != null) {
                         if (killer.getInstance() != null) {
-                            killer.getInstance().setCanLeave((System.currentTimeMillis() + (1000 * 4)));
+                            killer.getInstance().setCanLeave((System.currentTimeMillis() + (1000 * 2)));
                         }
                     }
 
@@ -956,12 +956,6 @@ public class NPCDeathTask extends Task {
             int total = KillsTracker.getTotalKillsForNpc(npcId, killer);
             if (total == 1250) {
                 killer.sendMessage("<img=5>@blu@You have reached 1250 kills and completed the requirement for Mega Avatar");
-            }
-        }
-        if (npcId == 4540) {
-            int total = KillsTracker.getTotalKillsForNpc(npcId, killer);
-            if (total == 1250) {
-                killer.sendMessage("<img=5>@blu@You have reached 1250 kills and completed the requirement for Crazy Witch");
             }
         }
         if (npcId == 1234) {

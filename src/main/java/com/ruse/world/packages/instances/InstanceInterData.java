@@ -235,6 +235,15 @@ public enum InstanceInterData {
             new Item(10835, 10000), 16, 100, 1318,
             InstanceType.MULTI),
 
+    ENRAGED_SUPREME("Enraged Supreme", "50k Black Goku",
+            new Item(10835, 10000), 16, 100, 440,
+            InstanceType.MULTI),
+
+    //NEXT LIST
+    DARK_SUPREME("Dark Supreme", "50k Enraged Supreme",
+            new Item(10835, 30000), 16, 100, 438,
+            InstanceType.MULTI_2),
+
     /**
      * Single Instances
      */
@@ -247,15 +256,15 @@ public enum InstanceInterData {
     ASTA("Asta", "50k Black Goku",
             new Item(13650, 100), 4, 999999, 595,
             InstanceType.SPECIAL),
-    DONATOR("Donator", "5 Donator Tickets",
-            new Item(23204, 5), 2, 100, 591,
+    DONATOR("Donator", "3 Donator Tickets",
+            new Item(23204, 3), 2, 200, 591,
             InstanceType.SPECIAL),
-    VOTE("Vote", "5 Vote Tickets",
-            new Item(23205, 5), 2, 100, 593,
+    VOTE("Vote", "3 Vote Tickets",
+            new Item(23205, 3), 2, 200, 593,
             InstanceType.SPECIAL),
 
     IRONMAN("Ironman", "Ironman Mode Only",
-            new Item(10835, 30000), 4, 200, 1880,
+            new Item(10835, 30000), 4, 50, 1880,
             InstanceType.SPECIAL),
 
     /**
@@ -304,9 +313,9 @@ public enum InstanceInterData {
                 .filter(i -> i.getType() == InstanceType.MULTI).toArray(InstanceInterData[]::new);
     }
 
-    public static InstanceInterData[] getSingleInstances(){
+    public static InstanceInterData[] getMulti2Instances(){
         return Arrays.stream(InstanceInterData.values())
-                .filter(i -> i.getType() == InstanceType.SINGLE).toArray(InstanceInterData[]::new);
+                .filter(i -> i.getType() == InstanceType.MULTI_2).toArray(InstanceInterData[]::new);
     }
 
     public static InstanceInterData[] getSpecialInstances(){

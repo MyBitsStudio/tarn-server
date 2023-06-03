@@ -19,18 +19,6 @@ public class BestItemsInterface {
             add(22076);
             add(21604);
             add(17694);
-            add(17694);
-            add(17694);
-            add(17694);
-            add(17694);
-            add(17694);
-            add(17694);
-            add(17694);
-            add(17694);
-            add(17694);
-
-
-            add(17694);
             add(17696);
             add(21603);
             add(5423);
@@ -329,6 +317,8 @@ public class BestItemsInterface {
             add(17728);//COL shield I
             add(17999);//COL Torva helm
 
+
+
         }
     };
 
@@ -366,7 +356,7 @@ public class BestItemsInterface {
         player.getPacketSender().sendString(100023, (bonus == 15 ? "@whi@Check " : "Check ") + text[11]);
         player.getPacketSender().sendString(100024, (bonus == 17 ? "@whi@Check " : "Check ") + text[12]);
 
-        ArrayList<ItemDefinition> objects = new ArrayList<ItemDefinition>();
+        ArrayList<ItemDefinition> objects = new ArrayList<>();
 
         for (ItemDefinition i : ItemDefinition.getDefinitions()) {
             if (i != null) {
@@ -376,21 +366,10 @@ public class BestItemsInterface {
             }
         }
 
-        Collections.sort(objects, new Comparator<ItemDefinition>() {
-            @Override
-            public int compare(ItemDefinition p, ItemDefinition p1) {
-                if (p.getBonus()[bonus] == p1.getBonus()[bonus]) {
-                    return 0;
-                } else if (p.getBonus()[bonus] > p1.getBonus()[bonus]) {
-                    return -1;
-                } else {
-                    return 1;
-                }
-            }
-        });
+        objects.sort((p, p1) -> Double.compare(p1.getBonus()[bonus], p.getBonus()[bonus]));
 
         int interId = 100102;
-        int size = (objects.size() >= 100 ? 100 : objects.size());
+        int size = (Math.min(objects.size(), 100));
         for (int i = 0; i < size; i++) {
             player.getPacketSender().sendString(interId++,
                     "" + objects.get(i).getBonus()[bonus]);

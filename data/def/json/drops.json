@@ -5332,7 +5332,7 @@
           2,
           20
         ],
-        "chance": 210
+        "chance": 610
       },
       {
         "id": 13727,
@@ -5340,14 +5340,14 @@
           1,
           25
         ],
-        "chance": 810
+        "chance": 1310
       },
       {
         "id": 2380,
         "count": [
           1
         ],
-        "chance": 400
+        "chance": 1600
       },
       {
         "id": 2736,
@@ -5355,91 +5355,91 @@
           1,
           2
         ],
-        "chance": 410
+        "chance": 1710
       },
       {
         "id": 8788,
         "count": [
           1
         ],
-        "chance": 1110
+        "chance": 2310
       },
       {
         "id": 23167,
         "count": [
           1
         ],
-        "chance": 420
+        "chance": 1720
       },
       {
         "id": 23165,
         "count": [
           1
         ],
-        "chance": 420
+        "chance": 2120
       },
       {
         "id": 23168,
         "count": [
           1
         ],
-        "chance": 420
+        "chance": 2320
       },
       {
         "id": 19886,
         "count": [
           1
         ],
-        "chance": 1860
+        "chance": 3360
       },
       {
         "id": 9084,
         "count": [
           1
         ],
-        "chance": 2160
+        "chance": 3660
       },
       {
         "id": 21815,
         "count": [
           1
         ],
-        "chance": 765
+        "chance": 1965
       },
       {
         "id": 23174,
         "count": [
           1
         ],
-        "chance": 1410
+        "chance": 2810
       },
       {
         "id": 23058,
         "count": [
           1
         ],
-        "chance": 810
+        "chance": 2010
       },
       {
         "id": 15003,
         "count": [
           1
         ],
-        "chance": 520
+        "chance": 1720
       },
       {
         "id": 15002,
         "count": [
           1
         ],
-        "chance": 790
+        "chance": 2190
       },
       {
         "id": 15004,
         "count": [
           1
         ],
-        "chance": 1210
+        "chance": 2610
       }
     ]
   },
@@ -5978,6 +5978,141 @@
           3
         ],
         "chance": 500
+      }
+    ]
+  },
+  {
+    "npcIds": [
+      440
+    ],
+    "drops": [
+      {
+        "id": 995,
+        "count": [
+          50000,
+          70000
+        ],
+        "chance": 1
+      },
+      {
+        "id": 8100,
+        "count": [
+          1
+        ],
+        "chance": 55000
+      },
+      {
+        "id": 8101,
+        "count": [
+          1
+        ],
+        "chance": 55000
+      },
+      {
+        "id": 8102,
+        "count": [
+          1
+        ],
+        "chance": 55000
+      },
+      {
+        "id": 8103,
+        "count": [
+          1
+        ],
+        "chance": 55000
+      },
+      {
+        "id": 8104,
+        "count": [
+          1
+        ],
+        "chance": 55000
+      },
+      {
+        "id": 13650,
+        "count": [
+          10
+        ],
+        "chance": 5000
+      },
+      {
+        "id": 13650,
+        "count": [
+          20
+        ],
+        "chance": 7500
+      }
+    ]
+  },
+  {
+    "npcIds": [
+      438
+    ],
+    "drops": [
+      {
+        "id": 995,
+        "count": [
+          50000,
+          70000
+        ],
+        "chance": 1
+      },
+      {
+        "id": 8105,
+        "count": [
+          1
+        ],
+        "chance": 65000
+      },
+      {
+        "id": 8106,
+        "count": [
+          1
+        ],
+        "chance": 65000
+      },
+      {
+        "id": 8107,
+        "count": [
+          1
+        ],
+        "chance": 65000
+      },
+      {
+        "id": 8108,
+        "count": [
+          1
+        ],
+        "chance": 65000
+      },
+      {
+        "id": 8109,
+        "count": [
+          1
+        ],
+        "chance": 65000
+      },
+      {
+        "id": 8110,
+        "count": [
+          1
+        ],
+        "chance": 65000
+      },
+      {
+        "id": 13650,
+        "count": [
+          10
+        ],
+        "chance": 5000
+      },
+      {
+        "id": 13650,
+        "count": [
+          20
+        ],
+        "chance": 7500
       }
     ]
   }

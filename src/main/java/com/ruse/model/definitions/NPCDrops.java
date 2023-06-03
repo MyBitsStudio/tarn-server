@@ -407,7 +407,8 @@ public class NPCDrops {
             AdminCord.sendMessage(1108221219121135707L, "[" + player.getUsername() + "] has received x" + amount + " " + item.getDefinition().getName()+" from " + Misc.formatText(npc.getDefinition().getName()) + ".");
 
             if (drop.getChance() > 1) {
-                player.getDryStreak().getDryStreakMap().put(npc.getId(), 0);
+                if(item.getId() != 13650)
+                    player.getDryStreak().getDryStreakMap().put(npc.getId(), 0);
             }
 
             boolean hasHitDryStreak = player.getDryStreak().hasHitDryStreak(npc.getId());

@@ -154,8 +154,6 @@ public class CombatStrategies {
 		STRATEGIES.put(6430, new CrystalQueen());
 
 		STRATEGIES.put(1234, new CrazyWitch());
-		STRATEGIES.put(438, new DarkSupremeCombatScript());
-		STRATEGIES.put(440, new LightSupremeCombatScript());
 		STRATEGIES.put(12810, new InfernalDemon());
 		STRATEGIES.put(3712, new RaidsMobs());
 		STRATEGIES.put(586, new RaidsMobs());
@@ -170,6 +168,8 @@ public class CombatStrategies {
 		STRATEGIES.put(188, new FriezaCombatScript());
 		STRATEGIES.put(1880, new FriezaCombatScript());
 		STRATEGIES.put(1120, new FriezaCombatScript());
+		STRATEGIES.put(440, new FriezaCombatScript());
+		STRATEGIES.put(438, new FriezaCombatScript());
 
 
 		STRATEGIES.put(9904, new SolakTheGreat());

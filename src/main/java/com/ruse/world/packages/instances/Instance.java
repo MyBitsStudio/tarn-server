@@ -56,12 +56,6 @@ public abstract class Instance {
     }
 
     public boolean canLeave() {
-        for(NPC npc : npcList){
-            if(npc != null){
-                if(npc.isDying())
-                    return false;
-            }
-        }
         return canLeave < System.currentTimeMillis();
     }
 
@@ -121,7 +115,7 @@ public abstract class Instance {
 
     private void preProcess(){
         World.getPlayers().stream().filter(Objects::nonNull)
-                .filter(player -> player.getLocation().equals(location))
+                .filter(player -> player.getLocation().equals(this.location))
                 .filter(player -> player.getInstance() != this)
                 .filter(player -> player.getPosition().getZ() != (player.getIndex() * 4))
                 .filter(player -> !player.getInstanceId().equals(this.instanceId))
@@ -131,7 +125,9 @@ public abstract class Instance {
                 .forEach(player -> {
                     player.sendMessage("@red@[INSTANCE] This isn't your instance. Moving you home.");
                     player.setInstance(null);
-                    player.moveTo(GameSettings.DEFAULT_POSITION.copy());
+                    player.setLocation(Locations.Location.DEFAULT);
+                    player.moveTo(GameSettings.DEFAULT_POSITION.copy()).setPosition(GameSettings.DEFAULT_POSITION.copy());
+                    player.getMovementQueue().setLockMovement(false).reset();
                 });
     }
 

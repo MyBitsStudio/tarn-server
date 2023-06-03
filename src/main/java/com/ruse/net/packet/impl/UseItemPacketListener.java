@@ -796,6 +796,10 @@ public class UseItemPacketListener implements PacketListener {
                     player.sendMessage("You cannot give to group ironmen players.");
                     return;
                 }
+                if(ironman){
+                    player.sendMessage("Ironman can't give these away.");
+                    return;
+                }
               //  System.out.println("2");
                /* if (!ironman && !targetIronman) { //if same ip
                     if (!player.getHostAddress().equals(target.getHostAddress())) {
@@ -805,19 +809,17 @@ public class UseItemPacketListener implements PacketListener {
                 }*/
                // System.out.println("3");
                 //if (ironman && !targetIronman || !ironman && targetIronman) {
-                    if (target.getInventory().isFull()) {
+                //    System.out.println("f");
+                if (target.getInventory().isFull()) {
                         player.sendMessage("This player's inventory is full.");
-                    } else {
-                   //    System.out.println("f");
-                        if (player.getInventory().contains(itemId)) {
-                            player.getInventory().delete(itemId, 1);
-                            target.getInventory().add(itemId, 1);
-                            player.sendMessage("You gave " + target.getUsername() + " a " + ItemDefinition.forId(itemId).getName());
-                            target.sendMessage("You received a " + ItemDefinition.forId(itemId).getName()  + " from " + target.getUsername());
-                        } else {
-                            player.sendMessage("You need a bond to perform this action!");
-                        }
-                    }
+                    } else if (player.getInventory().contains(itemId)) {
+                    player.getInventory().delete(itemId, 1);
+                    target.getInventory().add(itemId, 1);
+                    player.sendMessage("You gave " + target.getUsername() + " a " + ItemDefinition.forId(itemId).getName());
+                    target.sendMessage("You received a " + ItemDefinition.forId(itemId).getName() + " from " + target.getUsername());
+                } else {
+                    player.sendMessage("You need a bond to perform this action!");
+                }
                 //}
                 break;
             case 962:
