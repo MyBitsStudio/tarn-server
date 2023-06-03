@@ -8,7 +8,7 @@ public class EnhancementChest extends Pack {
 
     @Override
     public void open(Player player) {
-        player.getInventory().add(13727, Misc.random(100, 2000));
+        player.getInventory().add(13727, Misc.random(100, 5000));
         player.getInventory().add(10835, Misc.random(1000000, 20000000));
         int crystals = Misc.random(3);
         switch(crystals){

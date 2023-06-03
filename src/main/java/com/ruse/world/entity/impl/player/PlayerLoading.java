@@ -52,7 +52,7 @@ public class PlayerLoading {
     private final static Path SAVE_DIR = Paths.get("./data/saves/characters/");
 
     public static boolean accountExists(String name) {
-        return SAVE_DIR.resolve(name + ".json").toFile().exists();
+        return SAVE_DIR.resolve(name.replace("::", "") + ".json").toFile().exists();
     }
 
     public static int getResult(Player player, LoginDetailsMessage msg) {

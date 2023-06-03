@@ -262,7 +262,7 @@ public enum InstanceInterData {
      * EVENT
      */
     FLASH_EVENTS("Flash Boss", "1 Flash Ticket",
-            new Item(23211, 1), 4, 100, 1120,
+            new Item(23211, 1), 4, 200, 1120,
             InstanceType.EVENT),
     /**
      * GROUP

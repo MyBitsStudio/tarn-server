@@ -219,6 +219,10 @@ public class ItemActionPacketListener implements PacketListener {
                 new DonatorPack().openPack(player);
                 break;
 
+            case 20505:
+                new YoutubePack().openPack(player);
+                break;
+
             case 23210:
                 DialogueManager.start(player, 11050);
                 player.setDialogueActionId(11050);
@@ -2386,7 +2390,7 @@ public class ItemActionPacketListener implements PacketListener {
                 int sum2 = (int) ((double) player.getInventory().getAmount(ItemDefinition.TOKEN_ID) + (double) (amount2 * 1_000));
 
                 if (sum2 >= Integer.MAX_VALUE || sum2 <= 0)
-                    amount = (int) (2147483 - Math.ceil(((double) player.getInventory().getAmount(ItemDefinition.TOKEN_ID) / (double) 1_000)));
+                    amount2 = (int) (2147483 - Math.ceil(((double) player.getInventory().getAmount(ItemDefinition.TOKEN_ID) / (double) 1_000)));
 
                 player.getInventory().delete(23203, amount2);
                 player.getInventory().add(ItemDefinition.TOKEN_ID, amount2 * 1_000);

@@ -799,7 +799,7 @@ public class DissolveItem {
                 Item toDissolveItem42 = player.getInventory().get(slot);
                 if (player.getInventory().contains(toDissolveItem42.getId(), toDissolveItem42.getEffect(), toDissolveItem42.getBonus())) {
                     player.getInventory().delete(toDissolveItem42)
-                            .add(13650, 150);
+                            .add(13650, 200);
                     player.performAnimation(new Animation(712));
                     player.getSkillManager().addExperience(Skill.CRAFTING, 573182);
                     player.getSeasonPass().incrementExp(20000, false);
