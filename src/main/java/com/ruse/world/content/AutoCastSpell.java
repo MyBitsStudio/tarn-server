@@ -35,6 +35,7 @@ public enum AutoCastSpell {
     DARKSANG(22114, CombatSpells.DARKSANG),
     TOXICSANG(20495, CombatSpells.TOXICSANG),
     VIRTUOSO(14305, CombatSpells.VIRTO),
+    VIRTUOSO_U(2456, CombatSpells.VIRTO),
     WHITESTAFF(22167, CombatSpells.WHITE),
     DEATH(14355, CombatSpells.WHITE),
     FAZULA(4071, CombatSpells.WHITE),

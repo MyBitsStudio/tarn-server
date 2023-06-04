@@ -803,7 +803,40 @@ public class DissolveItem {
                     player.performAnimation(new Animation(712));
                     player.getSkillManager().addExperience(Skill.CRAFTING, 573182);
                     player.getSeasonPass().incrementExp(20000, false);
-                    player.getPacketSender().sendMessage("@or2@You have dissolved @red@" + ItemDefinition.forId(13650).getName() + "@or2@ for@red@ " + 150 + " @or2@ Counter Tokens.");
+                    player.getPacketSender().sendMessage("@or2@You have dissolved @red@" + ItemDefinition.forId(13650).getName() + "@or2@ for@red@ " + 200 + " @or2@ Counter Tokens.");
+                }
+                return true;
+
+            case 8100:
+            case 8101:
+            case 8102:
+            case 8103:
+            case 8104:
+                Item toDissolveItem43 = player.getInventory().get(slot);
+                if (player.getInventory().contains(toDissolveItem43.getId(), toDissolveItem43.getEffect(), toDissolveItem43.getBonus())) {
+                    player.getInventory().delete(toDissolveItem43)
+                            .add(13650, 300);
+                    player.performAnimation(new Animation(712));
+                    player.getSkillManager().addExperience(Skill.CRAFTING, 573182);
+                    player.getSeasonPass().incrementExp(20000, false);
+                    player.getPacketSender().sendMessage("@or2@You have dissolved @red@" + ItemDefinition.forId(13650).getName() + "@or2@ for@red@ " + 300 + " @or2@ Counter Tokens.");
+                }
+                return true;
+
+            case 8105:
+            case 8106:
+            case 8107:
+            case 8108:
+            case 8109:
+            case 8110:
+                Item toDissolveItem44 = player.getInventory().get(slot);
+                if (player.getInventory().contains(toDissolveItem44.getId(), toDissolveItem44.getEffect(), toDissolveItem44.getBonus())) {
+                    player.getInventory().delete(toDissolveItem44)
+                            .add(13650, 500);
+                    player.performAnimation(new Animation(712));
+                    player.getSkillManager().addExperience(Skill.CRAFTING, 573182);
+                    player.getSeasonPass().incrementExp(20000, false);
+                    player.getPacketSender().sendMessage("@or2@You have dissolved @red@" + ItemDefinition.forId(13650).getName() + "@or2@ for@red@ " + 500 + " @or2@ Counter Tokens.");
                 }
                 return true;
 
@@ -1136,9 +1169,9 @@ public class DissolveItem {
             case 2682:
             case 2684:
             case 2686:
-                Item toDissolveItem44 = player.getInventory().get(slot);
-                if (player.getInventory().contains(toDissolveItem44.getId(), toDissolveItem44.getEffect(), toDissolveItem44.getBonus())) {
-                    player.getInventory().delete(toDissolveItem44)
+                Item toDissolveItem45 = player.getInventory().get(slot);
+                if (player.getInventory().contains(toDissolveItem45.getId(), toDissolveItem45.getEffect(), toDissolveItem45.getBonus())) {
+                    player.getInventory().delete(toDissolveItem45)
                             .add(20503, 1);
                     player.performAnimation(new Animation(712));
                     player.getSkillManager().addExperience(Skill.CRAFTING, 1000);
@@ -1159,9 +1192,9 @@ public class DissolveItem {
             case 22238:
             case 22239:
             case 22240:
-                Item toDissolveItem45 = player.getInventory().get(slot);
-                if (player.getInventory().contains(toDissolveItem45.getId(), toDissolveItem45.getEffect(), toDissolveItem45.getBonus())) {
-                    player.getInventory().delete(toDissolveItem45)
+                Item toDissolveItem46 = player.getInventory().get(slot);
+                if (player.getInventory().contains(toDissolveItem46.getId(), toDissolveItem46.getEffect(), toDissolveItem46.getBonus())) {
+                    player.getInventory().delete(toDissolveItem46)
                             .add(6640, 1);
                     player.performAnimation(new Animation(712));
                     player.getSkillManager().addExperience(Skill.CRAFTING, 1000000);

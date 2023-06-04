@@ -4,10 +4,7 @@ import com.ruse.GameSettings;
 import com.ruse.world.World;
 import com.ruse.world.content.discordbot.JavaCord;
 import com.ruse.world.entity.impl.player.Player;
-import com.ruse.world.packages.globals.impl.GoldenApeGlobal;
-import com.ruse.world.packages.globals.impl.MeruemGlobal;
-import com.ruse.world.packages.globals.impl.NineTailsGlobal;
-import com.ruse.world.packages.globals.impl.VeigarGlobal;
+import com.ruse.world.packages.globals.impl.*;
 
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -58,8 +55,16 @@ public class GlobalBossManager {
             if(World.npcIsRegistered(9908)){
                 return;
             }
-            GoldenApeGlobal nineTailsGlobal = new GoldenApeGlobal();
-            spawn(nineTailsGlobal);
+            GoldenApeGlobal nGlobal = new GoldenApeGlobal();
+            spawn(nGlobal);
+        }
+
+        if(ticks.get() % 24000 == 0){
+            if(World.npcIsRegistered(3308)){
+                return;
+            }
+            LugiaGlobal ntGlobal = new LugiaGlobal();
+            spawn(ntGlobal);
         }
     }
 
@@ -131,6 +136,21 @@ public class GlobalBossManager {
 
             case "veigar":
                 tick = 3000 - (ticks.get() % 3000);
+                tick /= 100;
+                tick *= 60;
+
+                ms = tick ;
+                m = String.format("%dh %dm", TimeUnit.SECONDS.toHours(ms),
+                        TimeUnit.SECONDS.toMinutes(ms) - TimeUnit.HOURS.toMinutes(TimeUnit.SECONDS.toHours(ms)),
+                        TimeUnit.SECONDS.toSeconds(ms) - TimeUnit.MINUTES.toSeconds(TimeUnit.SECONDS.toMinutes(ms)));
+
+                if (ticks.get() < 0) {
+                    m = "Soon";
+                }
+                return m;
+
+            case "lugia":
+                tick = 24000 - (ticks.get() % 24000);
                 tick /= 100;
                 tick *= 60;
 

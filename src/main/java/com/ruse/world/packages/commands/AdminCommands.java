@@ -48,22 +48,22 @@ public class AdminCommands {
                             VoteBossDrop.handleForcedSpawn();
                             player.getPacketSender().sendMessage("Spawning vote boss.");
                             return true;
-                        case "meruem":
-                            WorldBosses3.handleForcedSpawn();
-                            player.getPacketSender().sendMessage("Spawning vote boss.");
-                            return true;
-                        case "veigar":
-                            WorldBosses4.handleForcedSpawn();
-                            player.getPacketSender().sendMessage("Spawning vote boss.");
-                            return true;
-                        case "golden":
-                            WorldBosses.handleForcedSpawn();
-                            player.getPacketSender().sendMessage("Spawning vote boss.");
-                            return true;
-                        case "nine":
-                            WorldBosses2.handleForcedSpawn();
-                            player.getPacketSender().sendMessage("Spawning vote boss.");
-                            return true;
+//                        case "meruem":
+//                            WorldBosses3.handleForcedSpawn();
+//                            player.getPacketSender().sendMessage("Spawning vote boss.");
+//                            return true;
+//                        case "veigar":
+//                            WorldBosses4.handleForcedSpawn();
+//                            player.getPacketSender().sendMessage("Spawning vote boss.");
+//                            return true;
+//                        case "golden":
+//                            WorldBosses.handleForcedSpawn();
+//                            player.getPacketSender().sendMessage("Spawning vote boss.");
+//                            return true;
+//                        case "nine":
+//                            WorldBosses2.handleForcedSpawn();
+//                            player.getPacketSender().sendMessage("Spawning vote boss.");
+//                            return true;
                     }
                 } else {
                     player.getPacketSender().sendMessage("Invalid spawn command.");

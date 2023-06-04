@@ -408,6 +408,9 @@ public class InstanceManager {
 
         int npcId = 0, amount, base = data.getNpcId();
 
+        if(player.getSlayer().getSlayerTask().getNpcId() == base)
+            return true;
+
         if(handleSpecialLock(base)){
             return returnSpecial(player, base);
         }

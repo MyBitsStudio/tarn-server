@@ -413,7 +413,7 @@ public class PlayerCommands {
                 player.getAttendenceUI().showInterface(AttendanceTab.LOYAL);
                 return true;
 
-            case "streamevent":
+            case "yt":
                 TeleportHandler.teleportPlayer(player, new Position(2856, 2708, 4),
                         player.getSpellbook().getTeleportType());
                 player.sendMessage("@yel@[EVENT] You have teleported to the youtube boss!");
@@ -530,6 +530,17 @@ public class PlayerCommands {
     public static boolean handleGlobalSpawn(Player player, String type){
         int account = 0, z = 0;
         switch(type){
+            case "lugia":
+                for (Player p : World.getPlayers()) {
+                    if (p == null)
+                        continue;
+                    if (!player.equals(p) && player.getHostAddress().equals(p.getHostAddress())) {
+                        if (p.getLocation() == Locations.Location.GLOBAL_BOSS && p.getPosition().getZ() == 20) {
+                            account++;
+                        }
+                    }
+                }
+                break;
             case "ninetails":
                 for (Player p : World.getPlayers()) {
                     if (p == null)
@@ -643,6 +654,9 @@ public class PlayerCommands {
                 return true;
             case "afk":
                 TeleportHandler.teleportPlayer(player, new Position(3037, 4062, 0),
+                        TeleportType.NORMAL);
+            case "lugia":
+                TeleportHandler.teleportPlayer(player, new Position(2139, 5018, 16),
                         TeleportType.NORMAL);
                 return true;
             default:

@@ -355,6 +355,8 @@ public final class WeaponInterfaces {
 				weaponInterface = WeaponInterface.WARHAMMER;
 			} else if (lowerName.contains("scythe") || lowerName.contains("vitur")) {
 				weaponInterface = WeaponInterface.SCYTHE;
+			} else if(lowerName.contains("virtuos wand")){
+				weaponInterface = WeaponInterface.STAFF;
 			}
 			if (weaponInterface == null) {
 				continue;
