@@ -1049,13 +1049,13 @@ public class NPCOptionPacketListener implements PacketListener {
             }
         }
 
-        if (interact.getId() == 9017) {
-            if (player.getPointsHandler().getANGELKILLCount() < 50) {
-                player.sendMessage("@blu@You need to complete at least 50 Champion Raids to attack this NPC @bla@| @red@" + player.getPointsHandler().getANGELKILLCount() + "/50");
-                return;
-            }
-            player.getCombatBuilder().attack(interact);
-        }
+//        if (interact.getId() == 9017) {
+//            if (player.getPointsHandler().getANGELKILLCount() < 50) {
+//                player.sendMessage("@blu@You need to complete at least 50 Champion Raids to attack this NPC @bla@| @red@" + player.getPointsHandler().getANGELKILLCount() + "/50");
+//                return;
+//            }
+//            player.getCombatBuilder().attack(interact);
+//        }
 
         if (!player.isMini()) {
             if(player.getRights() != PlayerRights.DEVELOPER) {

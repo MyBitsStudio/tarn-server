@@ -23,7 +23,7 @@ public class DonatorSpecialInstance extends SpecialBossInstance {
 
     private void checkTokens(){
         ticks++;
-        if(ticks % 160 == 0){
+        if(ticks % 560 == 0){
             if(getOwner().getInventory().contains(TOKEN_ID, TOKEN_AMOUNT)){
                 getOwner().getInventory().delete(TOKEN_ID, TOKEN_AMOUNT);
                 getOwner().sendMessage("@blu@You have been charged @red@" + TOKEN_AMOUNT + " @blu@Donator Tickets for your instance.");
@@ -32,7 +32,7 @@ public class DonatorSpecialInstance extends SpecialBossInstance {
             }
         }
 
-        if(ticks % (160 * 100) == 0){
+        if(ticks % (560 * 100) == 0){
             getOwner().sendMessage("@red@Your instance has expired.");
             InstanceManager.getManager().dispose(getOwner());
         }
