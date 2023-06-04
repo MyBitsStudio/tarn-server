@@ -97,7 +97,7 @@ public class AttendanceManager {
             case LOYAL:
                 return true;
             case DONATOR:
-                return (int) player.getPSettings().getDoubleValue("donator-unlock") == Calendar.MONTH;
+                return player.getPSettings().getIntValue("donator-unlock") == Calendar.MONTH;
             case SUMMER:
                 return player.getPSettings().getBooleanValue("summer-unlock");
             default:
@@ -122,7 +122,7 @@ public class AttendanceManager {
 
         tabs.add(AttendanceTab.LOYAL);
 
-        if(p.getPSettings().getDoubleValue("donator-unlock") == Calendar.MONTH)
+        if(p.getPSettings().getIntValue("donator-unlock") == Calendar.MONTH)
             tabs.add(AttendanceTab.DONATOR);
 
         if(p.getPSettings().getBooleanValue("summer-unlock"))

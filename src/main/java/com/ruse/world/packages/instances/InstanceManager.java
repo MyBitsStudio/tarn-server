@@ -491,6 +491,7 @@ public class InstanceManager {
                 return  KillsTracker.getTotalKills(player) > 100000;
             case 591:
             case 593:
+                return false;
             case 587:
             case 8013:
                 return true;
