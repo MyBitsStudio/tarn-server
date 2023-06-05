@@ -72,10 +72,11 @@ public class FlashDeals {
         try{
             isDoubled(player, items);
             handleAmountRewards(player, amount);
+
+            flashTickets(player, amount);
+
             handleSpecialDeals(player, amount);
 
-            handleSpecialActive(player, amount);
-            flashTickets(player, amount);
             return true;
         } catch(Exception e){
             player.getPacketSender().sendMessage("There was an error when collecting your flash deal.");
@@ -84,21 +85,7 @@ public class FlashDeals {
 
     }
 
-    private void handleSpecialActive(Player player, int amount){
-        if(amount >= 25){
-            if(player.getPSettings().getIntValue("donator-unlock") == -1){
-                player.getPSettings().setSetting("donator-unlock", Calendar.MONTH);
-                player.getPacketSender().sendMessage("You have unlocked the Donator Calendar!");
-            }
-        }
-        if(amount >= 75){
-            if(!player.getPSettings().getBooleanValue("summer-unlock")) {
-                player.getInventory().add(19659, 1);
-                player.getPacketSender().sendMessage("You have been given a Summer Present!");
-            }
-        }
 
-    }
 
     private void flashTickets(@NotNull Player player, int amount){
         int multiple = Math.floorDiv(amount , 100);

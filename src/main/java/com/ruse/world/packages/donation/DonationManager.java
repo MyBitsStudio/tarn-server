@@ -17,6 +17,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
@@ -196,6 +197,8 @@ public class DonationManager {
 
                 handleTickets(player, amount);
 
+                handleSpecialActive(player, amount);
+
                 player.getPacketSender().sendMessage("@blu@[DONATE]Thank you for donating! Your awesome!");
 
                 if(!player.getRights().OwnerDeveloperOnly())
@@ -214,5 +217,21 @@ public class DonationManager {
             player.getInventory().add(23204, amt);
             player.getPacketSender().sendMessage("@blu@[DONATION] You have received "+amt+" donation tickets for your donation!");
         }
+    }
+
+    private void handleSpecialActive(Player player, int amount){
+        if(amount >= 25){
+            if(!player.getPSettings().getBooleanValue("donator")){
+                player.getPSettings().setSetting("donator", true);
+                player.getPacketSender().sendMessage("You have unlocked the Donator Calendar!");
+            }
+        }
+        if(amount >= 75){
+            if(!player.getPSettings().getBooleanValue("summer-unlock")) {
+                player.getInventory().add(19659, 1);
+                player.getPacketSender().sendMessage("You have been given a Summer Present!");
+            }
+        }
+
     }
 }
