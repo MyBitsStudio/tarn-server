@@ -164,6 +164,9 @@ public class Maxhits {
             if (player.getEquipment().contains(23049)) { //Tier 6 Aura
                 maxHit *= 1.10D;
             }
+            if (player.getEquipment().contains(23212)) { //Tier 7 Aura
+                maxHit *= 1.15D;
+            }
 
             if (player.getDoubleDMGTimer() > 0) {
                 maxHit *= 2;
@@ -189,7 +192,7 @@ public class Maxhits {
             }
         }
 
-        if (victim != null && victim.isNpc() && (entity.isPlayer() && !entity.asPlayer().getRights().isDeveloperOnly())) {
+        if (victim != null && victim.isNpc() && (entity.isPlayer() && !entity.asPlayer().getRights().OwnerDeveloperOnly())) {
             maxHit = (long) NpcMaxHitLimit.limit((NPC) victim, maxHit, CombatType.MELEE);
         }
 
@@ -300,6 +303,9 @@ public class Maxhits {
             if (player.getEquipment().contains(23049)) { //Tier 6 Aura
                 maxHit *= 1.10D;
             }
+            if (player.getEquipment().contains(23212)) { //Tier 6 Aura
+                maxHit *= 1.15D;
+            }
             if (player.getSummoning() != null && player.getSummoning().getFamiliar() != null
                     && player.getSummoning().getFamiliar().getSummonNpc().getId() == 1906) {
                 maxHit *= 1.1D;
@@ -359,7 +365,7 @@ public class Maxhits {
 
         maxHit *= 10;
 
-        if (victim != null && victim.isNpc() && (entity.isPlayer() && !entity.asPlayer().getRights().isDeveloperOnly())) {
+        if (victim != null && victim.isNpc() && (entity.isPlayer() && !entity.asPlayer().getRights().OwnerDeveloperOnly())) {
             maxHit = (long) NpcMaxHitLimit.limit((NPC) victim, maxHit, CombatType.RANGED);
         }
         return (long) Math.floor(maxHit);
@@ -447,6 +453,9 @@ public class Maxhits {
             if (player.getEquipment().contains(23049)) { //Tier 6 Aura
                 maxHit *= 1.10D;
             }
+            if (player.getEquipment().contains(23212)) { //Tier 7 Aura
+                maxHit *= 1.15D;
+            }
             if (player.getEquipment().contains(22111)) { //Tier 6 Aura
                 maxHit *= 1.10D;
             }
@@ -531,7 +540,7 @@ public class Maxhits {
         maxHit *= 10;
 
 
-        if (victim != null && victim.isNpc() && (entity.isPlayer() && !entity.asPlayer().getRights().isDeveloperOnly())) {
+        if (victim != null && victim.isNpc() && (entity.isPlayer() && !entity.asPlayer().getRights().OwnerDeveloperOnly())) {
             maxHit = (long) NpcMaxHitLimit.limit((NPC) victim, maxHit, CombatType.RANGED);
         }
         return (long) Math.floor(maxHit);

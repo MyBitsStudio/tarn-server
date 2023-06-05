@@ -66,6 +66,9 @@ public class CustomDropUtils {
         if (player.getEquipment().contains(23049)) { //Tier 6 Aura
             percentBoost += 20;
         }
+        if (player.getEquipment().contains(23212)) { //Tier 7 Aura
+            percentBoost += 25;
+        }
         if (player.getEquipment().contains(7995)) { //Tier 6 Aura
             percentBoost += 20;
         }
@@ -463,6 +466,9 @@ public class CustomDropUtils {
         }
         if (player.getEquipment().contains(23049)) { //Tier 6 Aura
             percentBoost += 20;
+        }
+        if (player.getEquipment().contains(23212)) { //Tier 7 Aura
+            percentBoost += 25;
         }
         if (player.getEquipment().contains(7995)) { //Tier 6 Aura
             percentBoost += 20;

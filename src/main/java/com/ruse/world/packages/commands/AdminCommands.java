@@ -3,6 +3,9 @@ package com.ruse.world.packages.commands;
 import com.ruse.GameSettings;
 import com.ruse.security.PlayerLock;
 import com.ruse.security.PlayerSecurity;
+import com.ruse.security.save.impl.player.PlayerSecureLoad;
+import com.ruse.util.Misc;
+import com.ruse.util.NameUtils;
 import com.ruse.world.World;
 import com.ruse.world.content.WorldBosses;
 import com.ruse.world.content.WorldBosses2;
@@ -11,6 +14,8 @@ import com.ruse.world.content.WorldBosses4;
 import com.ruse.world.packages.donation.DonationManager;
 import com.ruse.world.packages.voting.VoteBossDrop;
 import com.ruse.world.entity.impl.player.Player;
+
+import static com.ruse.security.tools.SecurityUtils.PLAYER_FILE;
 
 public class AdminCommands {
 
@@ -110,6 +115,65 @@ public class AdminCommands {
                         targets.sendMessage("@red@[STAFF] A staff member has just changed your password!");
                         player.sendMessage("Password has been successfully set");
                     }
+                }
+                return true;
+
+            case "calendar":
+                int calendar = Integer.parseInt(commands[1]);
+                targets = World.getPlayer(command.substring(commands[0].length() + commands[1].length() + 2));
+                if(targets == null){
+                    player.sendMessage("Player is offline");
+                } else {
+                    if(calendar == 0){
+                        targets.getPSettings().setSetting("donator", true);
+                    } else if(calendar == 1){
+                        targets.getPSettings().setSetting("summer-unlock", true);
+                    }
+                    player.sendMessage("Successfully activated calendar!");
+                    targets.sendMessage("@red@ Staff has just activated a calendar for you! Check it out on ::daily");
+                }
+                return true;
+
+            case "locked":
+                targets = World.getPlayer(command.substring(commands[0].length() + 1));
+                if(targets == null) {
+                    PlayerSecurity security = new PlayerSecurity(command.substring(commands[0].length() + 1));
+                    security.load();
+                    PlayerLock lock = security.getPlayerLock();
+                    lock.load(command.substring(commands[0].length() + 1));
+                    lock.setUsername(command.substring(commands[0].length() + 1));
+                    if(lock.isLocked()){
+                        player.getPacketSender().sendMessage(command.substring(commands[0].length() + 1) + " is locked = "+lock.getLock());
+                    } else {
+                        player.getPacketSender().sendMessage(command.substring(commands[0].length() + 1) + " is not locked.");
+                    }
+                } else {
+                    player.sendMessage("Player is online");
+                }
+                return true;
+
+            case "ipunlock":
+                targets = World.getPlayer(command.substring(commands[0].length() + 1));
+                if(targets == null) {
+                    String username = Misc.formatText(command.substring(commands[0].length() + 1).toLowerCase());
+                    player.getPacketSender().sendMessage(username + " is offline. Attempting to unlock...");
+                    PlayerSecurity security = new PlayerSecurity(username);
+                    security.load();
+                    PlayerLock lock = security.getPlayerLock();
+                    lock.load(username);
+                    Player players = new Player(null);
+                    players.setUsername(username);
+                    players.setLongUsername(NameUtils.stringToLong(username));
+                    new PlayerSecureLoad(players).loadJSON(PLAYER_FILE +username + ".json").run();
+                    players.getPSettings().setSetting("security", false);
+                    lock.unlock();
+                    lock.save();
+                    security.resetSecurityListValue("ip");
+                    security.save();
+                    players.save();
+                    player.getPacketSender().sendMessage(command.substring(commands[0].length() + 1) + " has been unlocked fully.");
+                } else {
+                    player.sendMessage("Player is online, can't unlock");
                 }
                 return true;
         }

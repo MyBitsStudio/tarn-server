@@ -103,6 +103,10 @@ public class PlayerSecurity {
         securityMap.put(key, list);
     }
 
+    public void resetSecurityListValue(String key){
+        securityMap.replace(key, new CopyOnWriteArrayList<>());
+    }
+
     public String getSecurityStringValue(String key){
         return (String) securityMap.getOrDefault(key, "");
     }

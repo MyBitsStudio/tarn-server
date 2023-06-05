@@ -243,6 +243,7 @@ public class PlayerSecureSave extends SecureSave {
         object.add("secondary-equipment", builder.toJsonTree(player.getSecondaryEquipment().getItems()));
         object.add("preset-equipment", builder.toJsonTree(player.getPreSetEquipment().getItems()));
         object.add("offences", builder.toJsonTree(player.getOffences()));
+
         object.add("bank-0", builder.toJsonTree(player.getBank(0).getValidItems()));
         object.add("bank-1", builder.toJsonTree(player.getBank(1).getValidItems()));
         object.add("bank-2", builder.toJsonTree(player.getBank(2).getValidItems()));

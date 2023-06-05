@@ -21,32 +21,60 @@ public class AttendanceManager {
         this.lastLoggedInDate = LocalDate.now(ZoneOffset.UTC);
     }
 
+    public void claim(){
+        if(lastLoggedInDate.equals(LocalDate.now(ZoneOffset.UTC))) {
+            lastLoggedInDate = LocalDate.now(ZoneOffset.UTC).plusDays(1);
+            for(AttendanceTab tab : getTabs()) {
+                AttendanceProgress attendanceProgress = playerAttendanceProgress.computeIfAbsent(tab, x -> new AttendanceProgress());
+                int nextUnclaimedDay = getNextUnclaimedDay(tab);
+                if(nextUnclaimedDay != -1) {
+                    Item item = getRewardOfTheDay(tab, nextUnclaimedDay);
+                    if(item == null) {
+                        p.getPacketSender().sendMessage("@red@This day has no reward.");
+                        return;
+                    }
+                    if(!unlocked(p, tab)){
+                        continue;
+                    }
+                    if(attendanceProgress.put(nextUnclaimedDay)) {
+                        p.getPacketSender().sendMessage("@red@You have been given " + item.getDefinition().getName() + " x " + item.getAmount() + " as attendance reward for day " + nextUnclaimedDay + "!");
+                        p.addItemUnderAnyCircumstances(item);
+                        PlayerSaving.save(p);
+                    }
+                }
+            }
+
+        } else {
+            p.getPacketSender().sendMessage("@red@You have already claimed your attendance reward for today.");
+        }
+
+    }
+
     public void newDay() {
         if(!lastLoggedInDate.getMonth().equals(LocalDate.now(ZoneOffset.UTC).getMonth())) {
             playerAttendanceProgress.clear();
-            p.getPSettings().setSetting("donator-unlock", -1);
+            p.getPSettings().setSetting("donator", false);
             p.getPSettings().setSetting("summer-unlock", false);
         }
-        lastLoggedInDate = LocalDate.now(ZoneOffset.UTC);
-        for(AttendanceTab tab : getTabs()) {
-            AttendanceProgress attendanceProgress = playerAttendanceProgress.computeIfAbsent(tab, x -> new AttendanceProgress());
-            int nextUnclaimedDay = getNextUnclaimedDay(tab);
-            if(nextUnclaimedDay != -1) {
-                Item item = getRewardOfTheDay(tab, nextUnclaimedDay);
-                if(item == null) {
-                    p.getPacketSender().sendMessage("@red@This day has no reward.");
-                    return;
-                }
-                if(!unlocked(p, tab)){
-                    continue;
-                }
-                if(attendanceProgress.put(nextUnclaimedDay)) {
-                    p.getPacketSender().sendMessage("@red@You have been given " + item.getDefinition().getName() + " x " + item.getAmount() + " as attendance reward for day " + nextUnclaimedDay + "!");
-                    p.addItemUnderAnyCircumstances(item);
-                    PlayerSaving.save(p);
-                }
-            }
+
+        if(lastLoggedInDate.equals(LocalDate.now(ZoneOffset.UTC))) {
+            p.sendMessage("@yel@ [DAILY] You have a daily waiting to claim!");
         }
+
+//        for(AttendanceTab tab : getTabs()) {
+//            int nextUnclaimedDay = getNextUnclaimedDay(tab);
+//            if(nextUnclaimedDay != -1) {
+//                Item item = getRewardOfTheDay(tab, nextUnclaimedDay);
+//                if(item == null) {
+//                    p.getPacketSender().sendMessage("@red@This day has no reward.");
+//                    return;
+//                }
+//                if(!unlocked(p, tab)){
+//                    continue;
+//                }
+//                p.sendMessage("@yel@ [DAILY] You have a daily waiting to claim!");
+//            }
+//        }
     }
 
     public static void nextDay() {
@@ -93,11 +121,12 @@ public class AttendanceManager {
     }
 
     public boolean unlocked(Player player, AttendanceTab tab){
+
         switch(tab){
             case LOYAL:
                 return true;
             case DONATOR:
-                return (int) player.getPSettings().getDoubleValue("donator-unlock") == Calendar.MONTH;
+                return player.getPSettings().getBooleanValue("donator");
             case SUMMER:
                 return player.getPSettings().getBooleanValue("summer-unlock");
             default:
@@ -122,11 +151,13 @@ public class AttendanceManager {
 
         tabs.add(AttendanceTab.LOYAL);
 
-        if(p.getPSettings().getDoubleValue("donator-unlock") == Calendar.MONTH)
+        if(p.getPSettings().getBooleanValue("donator")) {
             tabs.add(AttendanceTab.DONATOR);
+        }
 
-        if(p.getPSettings().getBooleanValue("summer-unlock"))
+        if(p.getPSettings().getBooleanValue("summer-unlock")) {
             tabs.add(AttendanceTab.SUMMER);
+        }
 
         return tabs;
     }
@@ -134,8 +165,18 @@ public class AttendanceManager {
     public boolean handleTabs(int buttonId){
         switch(buttonId){
             case 150006 : p.getAttendenceUI().showInterface(AttendanceTab.LOYAL); return true;
-            case 150136 : p.getAttendenceUI().showInterface(AttendanceTab.DONATOR); return true;
-            case 150138 : p.getAttendenceUI().showInterface(AttendanceTab.SUMMER); return true;
+            case 150136 :
+                if(p.getPSettings().getBooleanValue("donator"))
+                    p.getAttendenceUI().showInterface(AttendanceTab.DONATOR);
+                else
+                    p.getPacketSender().sendMessage("You must unlock this tab by donating.");
+                return true;
+            case 150138 :
+                if(p.getPSettings().getBooleanValue("summer-unlock"))
+                    p.getAttendenceUI().showInterface(AttendanceTab.SUMMER);
+                else
+                    p.getPacketSender().sendMessage("You must unlock this tab with a Summer's Present.");
+                return true;
             default : return false;
         }
     }

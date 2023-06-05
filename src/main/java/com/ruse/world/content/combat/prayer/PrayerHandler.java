@@ -527,6 +527,9 @@ public class PrayerHandler {
 		if(player.getEquipment().contains(23049)) { //Tier 6 Aura
 			toRemove *= 0.95;
 		}
+		if(player.getEquipment().contains(23212)) { //Tier 6 Aura
+			toRemove *= 0.95;
+		}
 		if(player.getEquipment().contains(22111)) { //Tier 6 Aura
 			toRemove *= 0.95;
 		}

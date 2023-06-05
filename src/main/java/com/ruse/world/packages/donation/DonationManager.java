@@ -142,6 +142,9 @@ public class DonationManager {
 
     private void spawnBoss(){
         if(boss == null){
+            if(World.npcIsRegistered(587)){
+                return;
+            }
             boss = new DonationBoss();
 
             World.register(boss);

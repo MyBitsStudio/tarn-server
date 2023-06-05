@@ -1897,6 +1897,10 @@ public class Player extends Character {
     }
 
     public void save() {
+        if(session == null){
+            PlayerSaving.save(this);
+            return;
+        }
         if (session.getState() != SessionState.LOGGED_IN && session.getState() != SessionState.LOGGING_OUT) {
             return;
         }

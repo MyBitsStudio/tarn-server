@@ -1,5 +1,7 @@
 package com.ruse.world.entity.impl.player;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -12,14 +14,22 @@ public class PlayerSettings {
     public PlayerSettings(Player player){
         this.player = player;
         defaultSettings();
+        removeSettings();
     }
 
     public Map<String, Object> getSettings() {
     	return settings;
     }
 
-    public void setSettings(Map<String, Object> settings) {
-        this.settings.putAll(settings);
+    public void setSettings(@NotNull Map<String, Object> settings) {
+        for(Map.Entry<String, Object> entry : settings.entrySet()){
+            setSetting(entry.getKey(), entry.getValue());
+        }
+    }
+
+    private void removeSettings(){
+        settings.remove("security-lock");
+        settings.remove("donator-unlock");
     }
 
     private void defaultSettings() {
@@ -30,7 +40,7 @@ public class PlayerSettings {
         settings.put("drop-message-personal", true);
         settings.put("security", true);
         settings.put("summer-unlock", false);
-        settings.put("donator-unlock", Integer.valueOf("-1"));
+        settings.put("donator", false);
     }
 
     public void setSetting(String key, Object value){

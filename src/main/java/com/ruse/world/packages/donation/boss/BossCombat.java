@@ -48,7 +48,7 @@ public class BossCombat implements CombatStrategy {
 
         if(x == 0){
 
-            if(Misc.random(1) == 0) {
+            if(Misc.random(3) == 0) {
                 Position pos = minionPos[Misc.random(minionPos.length - 1)];
                 boss.performAnimation(new Animation(boss.getDefinition().getAttackAnimation()));
                 DonationManager.getInstance().spawnMinion(pos);

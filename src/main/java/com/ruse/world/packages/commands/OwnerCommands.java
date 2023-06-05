@@ -11,12 +11,18 @@ import com.ruse.model.definitions.NpcDefinition;
 import com.ruse.model.definitions.WeaponInterfaces;
 import com.ruse.model.projectile.ItemEffect;
 import com.ruse.motivote3.doMotivote;
+import com.ruse.security.PlayerLock;
+import com.ruse.security.PlayerSecurity;
 import com.ruse.security.ServerSecurity;
+import com.ruse.security.save.impl.player.PlayerSecureLoad;
+import com.ruse.util.Misc;
+import com.ruse.util.NameUtils;
 import com.ruse.world.World;
 import com.ruse.world.content.LotterySystem;
 import com.ruse.world.content.WellOfGoodwill;
 import com.ruse.world.content.clans.ClanManager;
 import com.ruse.world.content.combat.weapon.CombatSpecial;
+import com.ruse.world.entity.impl.player.PlayerLoading;
 import com.ruse.world.event.youtube.YoutubeBoss;
 import com.ruse.world.packages.donation.DonationManager;
 import com.ruse.world.packages.donation.FlashDeals;
@@ -32,6 +38,9 @@ import com.ruse.world.event.WorldEventHandler;
 import com.ruse.world.event.staff.BalloonGiveaway;
 
 import java.util.Objects;
+
+import static com.ruse.security.tools.SecurityUtils.PLAYER_FILE;
+import static com.ruse.security.tools.SecurityUtils.PLAYER_SECURITY_FILE;
 
 public class OwnerCommands {
 
@@ -455,6 +464,12 @@ public class OwnerCommands {
                     player.getPacketSender().sendMessage("Use as ::event [balloon/youtube/finish]");
                 }
                 return true;
+
+            case "fullscrap":
+
+                return true;
+
+
         }
         return false;
     }

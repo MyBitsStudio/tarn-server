@@ -411,6 +411,7 @@ public class PlayerCommands {
 
             case "daily":
                 player.getAttendenceUI().showInterface(AttendanceTab.LOYAL);
+                player.getAttendenceManager().claim();
                 return true;
 
             case "yt":

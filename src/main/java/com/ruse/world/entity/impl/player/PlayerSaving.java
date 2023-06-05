@@ -14,13 +14,4 @@ public class PlayerSaving {
 	public static void save(Player player) {
 		new PlayerSecureSave(player).create().save();
 	}
-
-	public static boolean playerExists(String p) {
-		p = Misc.formatPlayerName(p.toLowerCase());
-		p = WordUtils.capitalizeFully(p);
-		p.replaceAll(" ", "\\ ");
-		// // System.out.println("./data/saves/characters/"+p+".json ....... "+ new
-		// File("./data/saves/characters/"+p+".json").exists());
-		return new File("./data/saves/characters/" + p + ".json").exists();
-	}
 }

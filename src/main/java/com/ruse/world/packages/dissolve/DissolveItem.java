@@ -756,7 +756,7 @@ public class DissolveItem {
                             .add(TOKENS, 2000000);
                     player.performAnimation(new Animation(712));
                     player.getSkillManager().addExperience(Skill.CRAFTING, 365772);
-                    player.getSeasonPass().incrementExp(9000, false);
+                    player.getSeasonPass().incrementExp(10000, false);
                     player.getPacketSender().sendMessage("@or2@You have dissolved @red@" + ItemDefinition.forId(id).getName() + "@or2@ for@red@ " + 2000000 + " @or2@tokens.");
                 }
                 return true;
@@ -774,7 +774,7 @@ public class DissolveItem {
                             .add(TOKENS, 3000000);
                     player.performAnimation(new Animation(712));
                     player.getSkillManager().addExperience(Skill.CRAFTING, 365772);
-                    player.getSeasonPass().incrementExp(15000, false);
+                    player.getSeasonPass().incrementExp(17000, false);
                     player.getPacketSender().sendMessage("@or2@You have dissolved @red@" + ItemDefinition.forId(id).getName() + "@or2@ for@red@ " + 3000000 + " @or2@tokens.");
                 }
                 return true;
@@ -786,7 +786,7 @@ public class DissolveItem {
                             .add(TOKENS, 5000000);
                     player.performAnimation(new Animation(712));
                     player.getSkillManager().addExperience(Skill.CRAFTING, 573182);
-                    player.getSeasonPass().incrementExp(20000, false);
+                    player.getSeasonPass().incrementExp(22000, false);
                     player.getPacketSender().sendMessage("@or2@You have dissolved @red@" + ItemDefinition.forId(id).getName() + "@or2@ for@red@ " + 5000000 + " @or2@tokens.");
                 }
                 return true;
@@ -802,7 +802,7 @@ public class DissolveItem {
                             .add(13650, 200);
                     player.performAnimation(new Animation(712));
                     player.getSkillManager().addExperience(Skill.CRAFTING, 573182);
-                    player.getSeasonPass().incrementExp(20000, false);
+                    player.getSeasonPass().incrementExp(28000, false);
                     player.getPacketSender().sendMessage("@or2@You have dissolved @red@" + ItemDefinition.forId(13650).getName() + "@or2@ for@red@ " + 200 + " @or2@ Counter Tokens.");
                 }
                 return true;
@@ -818,7 +818,7 @@ public class DissolveItem {
                             .add(13650, 300);
                     player.performAnimation(new Animation(712));
                     player.getSkillManager().addExperience(Skill.CRAFTING, 573182);
-                    player.getSeasonPass().incrementExp(20000, false);
+                    player.getSeasonPass().incrementExp(30000, false);
                     player.getPacketSender().sendMessage("@or2@You have dissolved @red@" + ItemDefinition.forId(13650).getName() + "@or2@ for@red@ " + 300 + " @or2@ Counter Tokens.");
                 }
                 return true;
@@ -835,7 +835,7 @@ public class DissolveItem {
                             .add(13650, 500);
                     player.performAnimation(new Animation(712));
                     player.getSkillManager().addExperience(Skill.CRAFTING, 573182);
-                    player.getSeasonPass().incrementExp(20000, false);
+                    player.getSeasonPass().incrementExp(35000, false);
                     player.getPacketSender().sendMessage("@or2@You have dissolved @red@" + ItemDefinition.forId(13650).getName() + "@or2@ for@red@ " + 500 + " @or2@ Counter Tokens.");
                 }
                 return true;
