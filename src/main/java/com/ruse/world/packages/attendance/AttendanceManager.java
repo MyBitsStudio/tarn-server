@@ -60,21 +60,6 @@ public class AttendanceManager {
         if(lastLoggedInDate.equals(LocalDate.now(ZoneOffset.UTC))) {
             p.sendMessage("@yel@ [DAILY] You have a daily waiting to claim!");
         }
-
-//        for(AttendanceTab tab : getTabs()) {
-//            int nextUnclaimedDay = getNextUnclaimedDay(tab);
-//            if(nextUnclaimedDay != -1) {
-//                Item item = getRewardOfTheDay(tab, nextUnclaimedDay);
-//                if(item == null) {
-//                    p.getPacketSender().sendMessage("@red@This day has no reward.");
-//                    return;
-//                }
-//                if(!unlocked(p, tab)){
-//                    continue;
-//                }
-//                p.sendMessage("@yel@ [DAILY] You have a daily waiting to claim!");
-//            }
-//        }
     }
 
     public static void nextDay() {

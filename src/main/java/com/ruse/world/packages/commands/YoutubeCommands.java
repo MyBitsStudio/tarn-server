@@ -20,7 +20,7 @@ public class YoutubeCommands {
                             return true;
                     }
                 } else {
-                    player.sendMessage("EX: ::event boss");
+                    player.sendMessage("EX: ::event boss/finish");
                 }
                 return true;
         }

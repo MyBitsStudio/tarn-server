@@ -36,6 +36,7 @@ import com.ruse.world.packages.globals.GlobalBossManager;
 import com.ruse.world.packages.instances.InstanceManager;
 import com.ruse.world.content.polling.PollManager;
 import com.ruse.world.content.pos.PlayerOwnedShopManager;
+import com.ruse.world.packages.plus.PlusUpgrade;
 import com.ruse.world.packages.seasonpass.SeasonPassLoader;
 import com.ruse.world.content.serverperks.ServerPerks;
 import com.ruse.world.packages.voting.VoteBossDrop;
@@ -89,6 +90,7 @@ public final class GameLoader {
 		DonationManager.getInstance();
 		InstanceManager.getManager();
 		GlobalBossManager.getInstance();
+		PlusUpgrade.getPlusUpgrade();
 	}
 
 	public void finish() throws IOException, InterruptedException {

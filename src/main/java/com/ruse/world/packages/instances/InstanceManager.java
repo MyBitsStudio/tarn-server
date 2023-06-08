@@ -488,10 +488,9 @@ public class InstanceManager {
     private boolean returnSpecial(Player player, int base){
         switch(base){
             case 9017:
-                return  KillsTracker.getTotalKills(player) > 100000;
+                return  KillsTracker.getTotalKills(player) >= 50000;
 
             case 593:
-                return false;
             case 587:
             case 8013:
                 return true;

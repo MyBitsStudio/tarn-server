@@ -52,6 +52,8 @@ import com.ruse.world.content.skill.impl.smithing.EquipmentMaking;
 import com.ruse.world.content.skill.impl.smithing.Smelting;
 import com.ruse.world.entity.impl.npc.NPC;
 import com.ruse.world.entity.impl.player.Player;
+import com.ruse.world.packages.plus.PlusUpgrade;
+import com.ruse.world.packages.plus.PlusUpgrades;
 
 /**
  * This packet listener is called when a player 'uses' an item on another
@@ -100,6 +102,20 @@ public class UseItemPacketListener implements PacketListener {
         }
 
         if (!player.getControllerManager().canUseItemOnItem(usedWith, itemUsedWith)) {
+            return;
+        }
+
+        if((PlusUpgrade.getPlusUpgrade().isUpgradeable(itemUsedWith.getId()) &&
+                PlusUpgrades.isMaterial(usedWith.getId())) ||
+                (PlusUpgrade.getPlusUpgrade().isUpgradeable(usedWith.getId()) &&
+                        PlusUpgrades.isMaterial(itemUsedWith.getId()))) {
+            if(PlusUpgrades.isMaterial(itemUsedWith.getId())){
+                if(PlusUpgrade.getPlusUpgrade().upgradeGear(player, usedWith)){
+                    player.sendMessage("You successfully upgrade your gear.");
+                }
+            } else if (PlusUpgrade.getPlusUpgrade().upgradeGear(player, itemUsedWith)) {
+                player.sendMessage("You successfully upgrade your gear.");
+            }
             return;
         }
 

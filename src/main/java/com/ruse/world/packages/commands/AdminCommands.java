@@ -76,7 +76,7 @@ public class AdminCommands {
                 return true;
 
             case "unlock":
-                targets = World.getPlayer(command.substring(commands[0].length() + 1));
+                targets = World.getPlayerByName(command.substring(commands[0].length() + 1));
                 if(targets == null) {
                     player.getPacketSender().sendMessage(command.substring(commands[0].length() + 1) + " is not online. Attempting to unlock...");
                     PlayerSecurity security = new PlayerSecurity(command.substring(commands[0].length() + 1));
@@ -102,7 +102,7 @@ public class AdminCommands {
                     player.getPacketSender().sendMessage("Use as ::changepassother [password] [username]");
                 } else {
                     String password = commands[1];
-                    targets = World.getPlayer(command.substring(commands[0].length() + commands[1].length() + 2));
+                    targets = World.getPlayerByName(command.substring(commands[0].length() + commands[1].length() + 2));
                     if (targets == null) {
                         player.getPacketSender().sendMessage(command.substring(commands[0].length() + commands[1].length() + 2) + " is not online. Attempting to unlock...");
                         PlayerSecurity security = new PlayerSecurity(command.substring(commands[0].length() + commands[1].length() + 2));
@@ -120,7 +120,7 @@ public class AdminCommands {
 
             case "calendar":
                 int calendar = Integer.parseInt(commands[1]);
-                targets = World.getPlayer(command.substring(commands[0].length() + commands[1].length() + 2));
+                targets = World.getPlayerByName(command.substring(commands[0].length() + commands[1].length() + 2));
                 if(targets == null){
                     player.sendMessage("Player is offline");
                 } else {
@@ -135,7 +135,7 @@ public class AdminCommands {
                 return true;
 
             case "locked":
-                targets = World.getPlayer(command.substring(commands[0].length() + 1));
+                targets = World.getPlayerByName(command.substring(commands[0].length() + 1));
                 if(targets == null) {
                     PlayerSecurity security = new PlayerSecurity(command.substring(commands[0].length() + 1));
                     security.load();
@@ -153,7 +153,7 @@ public class AdminCommands {
                 return true;
 
             case "ipunlock":
-                targets = World.getPlayer(command.substring(commands[0].length() + 1));
+                targets = World.getPlayerByName(command.substring(commands[0].length() + 1));
                 if(targets == null) {
                     String username = Misc.formatText(command.substring(commands[0].length() + 1).toLowerCase());
                     player.getPacketSender().sendMessage(username + " is offline. Attempting to unlock...");

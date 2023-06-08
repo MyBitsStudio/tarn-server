@@ -32,7 +32,7 @@ public abstract class Instance {
     protected final Locations.Location location;
 
     protected InstanceDifficulty difficulty = InstanceDifficulty.EASY;
-    protected long canLeave;
+    protected long canLeave, started = System.currentTimeMillis();
     protected String instanceId = SecurityUtils.createRandomString(16);
 
     public Instance(Locations.Location location){
@@ -57,6 +57,14 @@ public abstract class Instance {
 
     public boolean canLeave() {
         return canLeave < System.currentTimeMillis();
+    }
+
+    public String getTime(){
+        long time = System.currentTimeMillis() - started;
+        long seconds = time / 1000;
+        long minutes = seconds / 60;
+        long hours = minutes / 60;
+        return hours + ":" + minutes + ":" + seconds;
     }
 
     public void process(){

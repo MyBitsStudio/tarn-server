@@ -193,7 +193,7 @@ public class HelperCommands {
 
             case "warn":
                 playerToTele = command.substring(commands[0].length() + 1);
-                player2 = World.getPlayer(playerToTele);
+                player2 = World.getPlayerByName(playerToTele);
 
                 if(player2 == null) {
                     player.sendMessage("This player isn't online");
@@ -221,6 +221,19 @@ public class HelperCommands {
 
                 if(player2 != null) {
                     World.removePlayer(player2);
+                }
+                return true;
+
+            case "timer":
+                playerToTele = command.substring(commands[0].length() + 1);
+                player2 = World.getPlayerByName(playerToTele);
+
+                if(player2 == null) {
+                    player.sendMessage("Player is not online.");
+                } else if (player2.getInstance() == null) {
+                    player.sendMessage("Player is not in an instance.");
+                } else {
+                    player.sendMessage("Timer: " + player2.getInstance().getTime());
                 }
                 return true;
         }

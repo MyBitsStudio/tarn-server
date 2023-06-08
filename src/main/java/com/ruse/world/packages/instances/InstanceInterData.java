@@ -99,7 +99,7 @@ public enum InstanceInterData {
             new Item(10835, 10000), 16, 100, 9914,
             InstanceType.MULTI),
 
-    SANCTUM_GOLEM("Sanctum Golem", "100k NPC Kills",
+    SANCTUM_GOLEM("Sanctum Golem", "50k NPC Kills",
             new Item(10835, 10000), 16, 100, 9017,
             InstanceType.MULTI),
 

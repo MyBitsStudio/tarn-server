@@ -22,12 +22,15 @@ import java.util.Random;
 public class SecurityUtils {
 
     public final static IPGeolocationAPI api = new IPGeolocationAPI("99ed94ea6c6242c684dcd8e699c28004");
-    public static String SERVER_SECURITY_FILE = "./data/security/serverSecurity.json",
-            PLAYER_SECURITY_FILE = "./data/security/player/",
-            PLAYER_LOCK_FILE = "./data/security/locks/",
-            PLAYER_FILE = "./data/security/saves/",
-            DONATE = "./data/security/donate/",
-            SERVER_MAPS = "./data/security/serverMaps.json";
+    public static String SERVER_SECURITY_FILE = "./data/security/serverSecurity.json";
+    public static String PLAYER_SECURITY_FILE = "./data/security/player/";
+    public static String PLAYER_LOCK_FILE = "./data/security/locks/";
+    public static String PLAYER_FILE = "./data/security/saves/";
+    public static String DONATE = "./data/security/donate/";
+    public static String SERVER_MAPS = "./data/security/serverMaps.json";
+    public static final String LOGGING = "./core/logs/"
+
+                    ;
 
     public static String[] seeds = {
             "GkXzCXaw821lnzsyCGyYuPJ2", "7VQUVMYkeGsBaMZrfeEub78J6Hud1d96"
