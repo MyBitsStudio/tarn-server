@@ -229,6 +229,10 @@ public class ItemActionPacketListener implements PacketListener {
                 new YoutubePack().openPack(player);
                 break;
 
+            case 23225:
+                new ArmorRandomPack().openPack(player);
+                break;
+
             case 23210:
                 DialogueManager.start(player, 11050);
                 player.setDialogueActionId(11050);
