@@ -39,6 +39,8 @@ import com.ruse.world.content.skill.impl.summoning.SummoningData;
 import com.ruse.world.content.skill.impl.woodcutting.BirdNests;
 import com.ruse.world.content.transportation.*;
 import com.ruse.world.entity.impl.player.Player;
+import com.ruse.world.packages.gearpack.GearPack;
+import com.ruse.world.packages.gearpack.GearPacks;
 import com.ruse.world.packages.packs.impl.*;
 
 import java.text.NumberFormat;
@@ -146,6 +148,11 @@ public class ItemActionPacketListener implements PacketListener {
 
         if(SECertificateType.playerConsume(player, itemId))
             return;
+
+        if(GearPacks.isPack(itemId)) {
+            GearPack.openGearPack(player, itemId);
+            return;
+        }
 
         if (player.aonBoxItem > 0) {
             player.sendMessage("Please choose to keep or gamble your item before doing this!");

@@ -17,6 +17,7 @@ import com.ruse.world.content.skill.impl.summoning.BossPets;
 import com.ruse.world.content.transportation.TeleportHandler;
 import com.ruse.world.entity.impl.npc.NPC;
 import com.ruse.world.entity.impl.player.Player;
+import com.ruse.world.packages.combat.CombatConstants;
 import mysql.impl.Donation;
 
 public class Slayer {
@@ -136,9 +137,9 @@ public class Slayer {
         int xp = slayerTask.getXP();
         if (amountToSlay > 1) {
             amountToSlay--;
-            player.getSkillManager().addExperience(Skill.SLAYER, xp);
+            player.getSkillManager().addExperience(Skill.SLAYER, CombatConstants.wearingSlayerArmor(player) ? xp * 2 : xp);
             if (player.getGameMode() == GameMode.VETERAN_MODE) {
-                player.getSkillManager().addExperience(Skill.SLAYER, xp * 200);
+                player.getSkillManager().addExperience(Skill.SLAYER,  CombatConstants.wearingSlayerArmor(player) ? xp * 400 : xp * 200);
             }
         } else {
             int amountOfTickets = 0;
@@ -204,6 +205,11 @@ public class Slayer {
                 amountOfTickets2 *= 2;
             }
 
+            if(CombatConstants.wearingSlayerArmor(player)){
+                amountOfTickets *= 2;
+                amountOfTickets2 *= 2;
+            }
+
             if (onEliteSlayerTask == true && slayerTask.getTaskMaster() == SlayerMaster.ELITE_SLAYER) {
                 player.sendMessage("You receive " + amountOfTickets2 + " total Elite slayer tickets.");
                 player.getInventory().addDropIfFull(5022, amountOfTickets2);
@@ -215,13 +221,13 @@ public class Slayer {
 
 
             taskStreak++;
-            player.getPointsHandler().incrementSlayerSpree(1);
+            player.getPointsHandler().incrementSlayerSpree(CombatConstants.wearingSlayerArmor(player) ? 2 : 1);
 
             Achievements.doProgress(player, Achievements.Achievement.COMPLETE_20_SLAYER_TASKS);
             Achievements.doProgress(player, Achievements.Achievement.COMPLETE_50_SLAYER_TASKS);
             Achievements.doProgress(player, Achievements.Achievement.COMPLETE_150_SLAYER_TASKS);
 
-            player.getSeasonPass().incrementExp(12160, false);
+            player.getSeasonPass().incrementExp(CombatConstants.wearingSlayerArmor(player) ? 25320 : 12160, false);
 
 
             lastTask = slayerTask;
