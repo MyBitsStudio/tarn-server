@@ -11,7 +11,7 @@ public class WheelOfFortune {
     private final int INTERFACE_ID = 21350;
     private final int WHEEL_INTERFACE_ID = 21352;
     private final int MODEL_COMPONENT_ID = 21377;
-    private final int[] REWARDS = {22239, 22238, 22237, 22240, 22236, 19624, 22234, 22233, 22232, 22235};
+    private final int[] REWARDS = {22239, 22238, 22237, 22240, 22236, 19624, 22234, 22233, 22232, 22235, 22111};
  
  
     private Player player;

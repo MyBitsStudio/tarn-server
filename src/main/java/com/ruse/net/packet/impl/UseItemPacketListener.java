@@ -126,6 +126,18 @@ public class UseItemPacketListener implements PacketListener {
                     return;
                 }
                 usedWith.setEffect(ItemEffect.AOE_EFFECT);
+                usedWith.setBonus(2);
+                player.getInventory().delete(itemUsedWith);
+                player.getInventory().refreshItems();
+                player.sendMessage("You successfully apply the AOE Effect to your weapon.");
+                return;
+            case 23219:
+                if (itemUsedWith.getDefinition().getEquipmentSlot() != Equipment.WEAPON_SLOT) {
+                    player.sendMessage("Please use the token on a weapon.");
+                    return;
+                }
+                usedWith.setEffect(ItemEffect.AOE_EFFECT);
+                usedWith.setBonus(1);
                 player.getInventory().delete(itemUsedWith);
                 player.getInventory().refreshItems();
                 player.sendMessage("You successfully apply the AOE Effect to your weapon.");
@@ -178,6 +190,18 @@ public class UseItemPacketListener implements PacketListener {
                     return;
                 }
                 itemUsedWith.setEffect(ItemEffect.AOE_EFFECT);
+                itemUsedWith.setBonus(2);
+                player.getInventory().delete(usedWith);
+                player.getInventory().refreshItems();
+                player.sendMessage("You successfully apply the AOE Effect to your weapon.");
+                return;
+            case 23219:
+                if (itemUsedWith.getDefinition().getEquipmentSlot() != Equipment.WEAPON_SLOT) {
+                    player.sendMessage("Please use the token on a weapon.");
+                    return;
+                }
+                itemUsedWith.setEffect(ItemEffect.AOE_EFFECT);
+                itemUsedWith.setBonus(1);
                 player.getInventory().delete(usedWith);
                 player.getInventory().refreshItems();
                 player.sendMessage("You successfully apply the AOE Effect to your weapon.");

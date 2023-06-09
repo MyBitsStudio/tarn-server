@@ -28,7 +28,7 @@ public class ItemDefinition {
     /**
      * The max amount of items that will be loaded.-+
      */
-    private static final int MAX_AMOUNT_OF_ITEMS = 24000;
+    private static final int MAX_AMOUNT_OF_ITEMS = 26000;
 
     /**
      * ItemDefinition array containing all items' definition values.
@@ -86,24 +86,24 @@ public class ItemDefinition {
                 String token = args[0], value = args[1];
                 if (line.contains("Bonus[")) {
                     String[] other = line.split("]");
-                    int index = Integer.valueOf(line.substring(6, other[0].length()));
-                    double bonus = Double.valueOf(value);
+                    int index = Integer.parseInt(line.substring(6, other[0].length()));
+                    double bonus = Double.parseDouble(value);
                     definition.bonus[index] = bonus;
                     continue;
                 }
                 if (line.contains("Requirement[")) {
                     String[] other = line.split("]");
-                    int index = Integer.valueOf(line.substring(12, other[0].length()));
-                    int requirement = Integer.valueOf(value);
+                    int index = Integer.parseInt(line.substring(12, other[0].length()));
+                    int requirement = Integer.parseInt(value);
                     definition.requirement[index] = requirement;
                     continue;
                 }
                 if (line.contains("SecondTab")) {
-                    definition.secondTab = Boolean.valueOf(value);
+                    definition.secondTab = Boolean.parseBoolean(value);
                 }
                 switch (token.toLowerCase()) {
                     case "item id":
-                        int id = Integer.valueOf(value);
+                        int id = Integer.parseInt(value);
                         definition = new ItemDefinition();
                         definition.id = id;
                         break;

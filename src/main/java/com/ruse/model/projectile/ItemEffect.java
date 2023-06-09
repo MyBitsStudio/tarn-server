@@ -2,6 +2,7 @@ package com.ruse.model.projectile;
 
 import com.ruse.model.Item;
 import com.ruse.model.ItemRarity;
+import com.ruse.model.definitions.ItemDefinition;
 import com.ruse.world.entity.impl.player.Player;
 import lombok.Getter;
 
@@ -142,7 +143,14 @@ public enum ItemEffect {
     }
 
     public static boolean hasNoEffect(int id) {
-        return noEffects.stream().anyMatch(item -> item == id);
+        ItemDefinition de = ItemDefinition.forId(id);
+        for(double d : de.getBonus()) {
+            if(d >= 1) {
+                return false;
+            }
+        }
+        return true;
+        //return noEffects.stream().anyMatch(item -> item == id);
     }
 
     public static ItemEffect getEffectForName(String name) {
