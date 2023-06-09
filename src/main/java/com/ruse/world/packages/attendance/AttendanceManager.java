@@ -22,8 +22,8 @@ public class AttendanceManager {
     }
 
     public void claim(){
-        if(lastLoggedInDate.equals(LocalDate.now(ZoneOffset.UTC))) {
-            lastLoggedInDate = LocalDate.now(ZoneOffset.UTC).plusDays(1);
+        if(!lastLoggedInDate.equals(LocalDate.now(ZoneOffset.UTC))) {
+            lastLoggedInDate = LocalDate.now(ZoneOffset.UTC);
             for(AttendanceTab tab : getTabs()) {
                 AttendanceProgress attendanceProgress = playerAttendanceProgress.computeIfAbsent(tab, x -> new AttendanceProgress());
                 int nextUnclaimedDay = getNextUnclaimedDay(tab);
