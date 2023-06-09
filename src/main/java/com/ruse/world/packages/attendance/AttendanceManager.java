@@ -57,7 +57,7 @@ public class AttendanceManager {
             p.getPSettings().setSetting("summer-unlock", false);
         }
 
-        if(lastLoggedInDate.equals(LocalDate.now(ZoneOffset.UTC))) {
+        if(!lastLoggedInDate.equals(LocalDate.now(ZoneOffset.UTC))) {
             p.sendMessage("@yel@ [DAILY] You have a daily waiting to claim!");
         }
     }
