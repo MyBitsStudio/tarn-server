@@ -182,7 +182,7 @@ public enum GearPacks {
 
     BLACK_GOKU(23242, 0,
             new Item(12843, 1), new Item(14440, 1), new Item(14438, 1),
-            new Item(14444, 1)
+            new Item(14444, 1), new Item(14446, 1)
     ),
 
     SOLAR(14525, 0,
@@ -217,7 +217,7 @@ public enum GearPacks {
     /**Tier 1**/
     BLACK_GOKU_1(23247, 1,
             new Item(12843, 1), new Item(14440, 1), new Item(14438, 1),
-            new Item(14444, 1)
+            new Item(14444, 1), new Item(14446, 1)
             ),
     LIGHT_GUILD_1(23248, 1,
             new Item(8100, 1), new Item(8101, 1), new Item(8102, 1),
