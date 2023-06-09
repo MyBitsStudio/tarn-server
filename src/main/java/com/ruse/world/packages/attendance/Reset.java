@@ -3,14 +3,14 @@ package com.ruse.world.packages.attendance;
 import com.ruse.security.save.impl.player.PlayerSecureLoad;
 import com.ruse.security.save.impl.player.PlayerSecureSave;
 import com.ruse.world.entity.impl.player.Player;
-import com.ruse.world.packages.seasonpass.SeasonPassConfig;
+import com.ruse.world.packages.seasonpass.SeasonPassLoader;
 
 import java.io.File;
 
 public class Reset {
 
     public static void main(String[] args) {
-        new SeasonPassConfig();
+        SeasonPassLoader.load();
         File[] files = new File("./data/security/saves").listFiles();
         assert files != null;
         for(File file : files) {
