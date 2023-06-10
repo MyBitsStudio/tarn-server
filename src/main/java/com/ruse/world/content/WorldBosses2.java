@@ -124,7 +124,7 @@ public class WorldBosses2 {
                      message = "The Fearless Nine Tails has just spawned, he can be found at ::ninetails";
                 if (GameSettings.LOCALHOST)
                     return;
-                 JavaCord.sendMessage("\uD83E\uDD16│\uD835\uDDEE\uD835\uDDF0\uD835\uDE01\uD835\uDDF6\uD835\uDE03\uD835\uDDF6\uD835\uDE01\uD835\uDE06", "**[World Boss] " + message + " **");
+                 //JavaCord.sendMessage("\uD83E\uDD16│\uD835\uDDEE\uD835\uDDF0\uD835\uDE01\uD835\uDDF6\uD835\uDE03\uD835\uDDF6\uD835\uDE01\uD835\uDE06", "**[World Boss] " + message + " **");
                 for (Player players : World.getPlayers()) {
                     if (players == null) {
                         continue;
@@ -147,6 +147,6 @@ public class WorldBosses2 {
         World.register(currentBoss);
         World.sendMessage(
                 "The Fearless Nine Tails has just spawned, he can be found at ::ninetails");
-        JavaCord.sendMessage("\uD83E\uDD16│\uD835\uDDEE\uD835\uDDF0\uD835\uDE01\uD835\uDDF6\uD835\uDE03\uD835\uDDF6\uD835\uDE01\uD835\uDE06", "**The Fearless Nine Tails has just spawned, he can be found at ::ninetails**");
+       // JavaCord.sendMessage("\uD83E\uDD16│\uD835\uDDEE\uD835\uDDF0\uD835\uDE01\uD835\uDDF6\uD835\uDE03\uD835\uDDF6\uD835\uDE01\uD835\uDE06", "**The Fearless Nine Tails has just spawned, he can be found at ::ninetails**");
     }
 }

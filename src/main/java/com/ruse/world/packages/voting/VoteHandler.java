@@ -23,7 +23,7 @@ public class VoteHandler {
                 }
                 player.getInventory().add(reward[0].reward_id, reward[0].give_amount);
                 player.getPacketSender().sendMessage("Thank you for voting! You now have " + reward[0].vote_points + " vote points.");
-                JavaCord.sendMessage("\uD83E\uDD16│\uD835\uDDEE\uD835\uDDF0\uD835\uDE01\uD835\uDDF6\uD835\uDE03\uD835\uDDF6\uD835\uDE01\uD835\uDE06", "**[" + player.getUsername() + "] Just voted for the server, thank you!**");
+                JavaCord.sendMessage(1117224370587304057L, "**[" + player.getUsername() + "] Just voted for the server, thank you!**");
                 doMotivote.setVoteCount(doMotivote.getVoteCount() + reward[0].give_amount);
                 VoteBossDrop.save();
                 player.getSeasonPass().incrementExp(36200 * reward[0].give_amount, false);

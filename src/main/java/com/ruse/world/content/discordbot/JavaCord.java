@@ -20,7 +20,7 @@ import org.javacord.api.util.logging.ExceptionLogger;
 
 public class JavaCord {
 
-    private static String token = "OTIwOTEzMjUyMjk5NDYwNjA5.Gql2R2.KKP2ae3t9YeD_I7pVW2Mnf_UEhK7c_j-XWPyF8";
+    private static String token = "MTExNzIyMjQxMTAyMTA1ODE5Mw.GYHWOp.EJ92xFeHg1tZjfsJaomNDoGZMv1wjVZBB_69Xs";
 
     private static String serverName = "Tarn";
 
@@ -29,7 +29,7 @@ public class JavaCord {
     public static void init() {
         new DiscordApiBuilder().setToken(token).login().thenAccept(api -> {
                     JavaCord.api = api;
-                   // System.out.println("You can invite the bot by using the following url: " + api.createBotInvite());
+                    System.out.println("You can invite the bot by using the following url: " + api.createBotInvite());
                     if (GameSettings.LOCALHOST)
                         return;
                     api.addMessageCreateListener(event -> {
@@ -49,11 +49,11 @@ public class JavaCord {
                 .exceptionally(ExceptionLogger.get());
     }
 
-    public static void sendMessage(String channel, String msg) {
+    public static void sendMessage(long channel, String msg) {
         try {
             new MessageBuilder()
                     .append(msg)
-                    .send((TextChannel) api.getTextChannelsByNameIgnoreCase(channel).toArray()[0]);
+                    .send((TextChannel) api.getChannelById(channel).get());
         } catch (Exception e) {
             e.printStackTrace();
         }

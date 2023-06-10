@@ -41,7 +41,7 @@ public class SendClanChatMessagePacketListener implements PacketListener {
 		player.afk = false;
 		ClanManager.getManager().sendMessage(player, clanMessage);
 		if(!clanMessage.contains("@"))
-			JavaCord.sendMessage("\uD83D\uDCAC│\uD835\uDDF0\uD835\uDDF9\uD835\uDDEE\uD835\uDDFB-\uD835\uDDF0\uD835\uDDF5\uD835\uDDEE\uD835\uDE01", "**[" + player.getUsername() + "]  " + clanMessage + "  ** ");
+			JavaCord.sendMessage(1117225324871168112L, "**[" + player.getUsername() + "]  " + clanMessage + "  ** ");
 	}
 
 }

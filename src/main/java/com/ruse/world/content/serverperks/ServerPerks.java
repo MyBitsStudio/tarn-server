@@ -77,7 +77,7 @@ public class ServerPerks {
         save();
         if (amount >= 1000000) {
             World.sendMessage("<img=16><shad=1>@or2@[" + player.getUsername() + "] @yel@has just donated @gre@" + amount + " @yel@Coins to the Server Perk!");
-            JavaCord.sendMessage("\uD83E\uDD16│\uD835\uDDEE\uD835\uDDF0\uD835\uDE01\uD835\uDDF6\uD835\uDE03\uD835\uDDF6\uD835\uDE01\uD835\uDE06", "[" + player.getUsername() + "] has just donated " + amount + " Coins to the Server Perk!");
+            JavaCord.sendMessage(1117224370587304057L, "[" + player.getUsername() + "] has just donated " + amount + " Coins to the Server Perk!");
         }
         if (total >= necessary) {
             start(perk);
@@ -109,7 +109,7 @@ public class ServerPerks {
         World.sendMessage("<img=16>[WORLD]<img=16> @red@Perk [" + activePerk.getName() + "] has just been activated!");
         if (GameSettings.LOCALHOST)
             return;
-        JavaCord.sendMessage("\uD83E\uDD16│\uD835\uDDEE\uD835\uDDF0\uD835\uDE01\uD835\uDDF6\uD835\uDE03\uD835\uDDF6\uD835\uDE01\uD835\uDE06", "[WORLD] Perk [" + activePerk.getName() + "] has just been activated!");
+        JavaCord.sendMessage(1117224370587304057L, "[WORLD] Perk [" + activePerk.getName() + "] has just been activated!");
 
         //reset();
         // Erase file contents
@@ -122,7 +122,7 @@ public class ServerPerks {
         World.sendMessage("<img=16>[WORLD]<img=16> @red@Perk [" + activePerk.getName() + "] has ended");
         if (GameSettings.LOCALHOST)
             return;
-        JavaCord.sendMessage("\uD83E\uDD16│\uD835\uDDEE\uD835\uDDF0\uD835\uDE01\uD835\uDDF6\uD835\uDE03\uD835\uDDF6\uD835\uDE01\uD835\uDE06", "[WORLD] Perk [" + activePerk.getName() + "] has ended");
+        JavaCord.sendMessage(1117224370587304057L, "[WORLD] Perk [" + activePerk.getName() + "] has ended");
         activePerk = null;
         resetInterface();
     }

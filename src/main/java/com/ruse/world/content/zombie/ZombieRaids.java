@@ -337,7 +337,7 @@ public class ZombieRaids {
                         String message = "<img=5> " +"@blu@News: @red@" + player.getUsername() + " @blu@has just received @red@"
                                 + ItemDefinition.forId(drop.getId()).getName() + "@blu@ from @red@Raids [1]";
                         World.sendFilterMessage(message);
-                        JavaCord.sendMessage("\uD83E\uDD16│\uD835\uDDEE\uD835\uDDF0\uD835\uDE01\uD835\uDDF6\uD835\uDE03\uD835\uDDF6\uD835\uDE01\uD835\uDE06", "[" + player.getUsername() + "] has just received " + ItemDefinition.forId(drop.getId()).getName() + " from Raids [1].");
+                        JavaCord.sendMessage(1117224370587304057L, "[" + player.getUsername() + "] has just received " + ItemDefinition.forId(drop.getId()).getName() + " from Raids [1].");
                     }
 
                     double amt = drop.getMin() + Misc.getRandom(drop.getMax() - drop.getMin());

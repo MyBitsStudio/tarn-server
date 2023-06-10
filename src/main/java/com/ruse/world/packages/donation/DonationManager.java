@@ -151,7 +151,7 @@ public class DonationManager {
             World.register(boss);
             World.sendMessage(
                     "<img=28><shad=f9f6f6>Donation boss has spawned at ::donboss . Get it now before its gone!<shad=-1>");
-            JavaCord.sendMessage("\uD83E\uDD16│\uD835\uDDEE\uD835\uDDF0\uD835\uDE01\uD835\uDDF6\uD835\uDE03\uD835\uDDF6\uD835\uDE01\uD835\uDE06", "**Donation boss has spawned at ::donboss . Get it now before its gone!**");
+            JavaCord.sendMessage(1117224370587304057L, "**Donation boss has spawned at ::donboss . Get it now before its gone!**");
         }
     }
 
@@ -202,7 +202,7 @@ public class DonationManager {
                 player.getPacketSender().sendMessage("@blu@[DONATE]Thank you for donating! Your awesome!");
 
                 if(!player.getRights().OwnerDeveloperOnly())
-                    JavaCord.sendMessage("\uD83E\uDD16│\uD835\uDDEE\uD835\uDDF0\uD835\uDE01\uD835\uDDF6\uD835\uDE03\uD835\uDDF6\uD835\uDE01\uD835\uDE06", "**[" + player.getUsername() + "] Just Donated For " + donations[0].product_name + " x" +donations[0].product_amount + " ! Thanks for the support !** :heart: ");
+                    JavaCord.sendMessage(1117224370587304057L, "**[" + player.getUsername() + "] Just Donated For " + donations[0].product_name + " x" +donations[0].product_amount + " ! Thanks for the support !** :heart: ");
 
             } catch (Exception e) {
                 player.getPacketSender().sendMessage("Api Services are currently offline. Please check back shortly");

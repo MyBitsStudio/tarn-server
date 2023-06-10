@@ -68,7 +68,7 @@ public class StartScreen {
             player.getAppearance().setCanChangeAppearance(true);
             player.setNewPlayer(false);
             World.sendMessage("<img=26><shad=1><col=FF0000> [" + player.getUsername() + "] <col=9E0000>has just logged into <col=FF0000>Tarn<col=9E0000> for the first time");
-            JavaCord.sendMessage("\uD83E\uDD16│\uD835\uDDEE\uD835\uDDF0\uD835\uDE01\uD835\uDDF6\uD835\uDE03\uD835\uDDF6\uD835\uDE01\uD835\uDE06", ":tada: **[New Arrival] " + player.getUsername() + " has just logged into Tarn for the first time!** ");
+            JavaCord.sendMessage(1117224946855329893L, ":tada: **[New Arrival] " + player.getUsername() + " has just logged into Tarn for the first time!** ");
             //World.sendMessage(
                    // "<img=5> <col=ffca3c><shad=1>Please give " + player.getUsername() + " a super warm welcome <3");
 

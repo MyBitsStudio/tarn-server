@@ -37,7 +37,7 @@ public class VoteBossDrop {
 		World.register(currentSpawn);
 		World.sendMessage(
 				"<img=28><shad=f9f6f6>Vote boss has spawned at ::voteboss kill it now for amazing rewards!<shad=-1>");
-		JavaCord.sendMessage("\uD83E\uDD16│\uD835\uDDEE\uD835\uDDF0\uD835\uDE01\uD835\uDDF6\uD835\uDE03\uD835\uDDF6\uD835\uDE01\uD835\uDE06", "**Vote boss has spawned at ::voteboss kill it now for amazing rewards!**");
+		JavaCord.sendMessage(1117224370587304057L, "**Vote boss has spawned at ::voteboss kill it now for amazing rewards!**");
 	}
 
 	private static final Gson gson = new GsonBuilder().setPrettyPrinting().create();
@@ -77,7 +77,7 @@ public class VoteBossDrop {
 		World.register(currentSpawn);
 		World.sendMessage(
 				"<img=28><shad=f9f6f6>Vote boss has spawned at ::voteboss kill it now for amazing rewards!<shad=-1>");
-		JavaCord.sendMessage("\uD83E\uDD16│\uD835\uDDEE\uD835\uDDF0\uD835\uDE01\uD835\uDDF6\uD835\uDE03\uD835\uDDF6\uD835\uDE01\uD835\uDE06", "**Vote boss has spawned at ::voteboss kill it now for amazing rewards!**");
+		JavaCord.sendMessage(1117224370587304057L, "**Vote boss has spawned at ::voteboss kill it now for amazing rewards!**");
 	}
 	
 	public static void handleDrop(NPC npc) {

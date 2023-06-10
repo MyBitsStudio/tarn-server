@@ -70,7 +70,7 @@ public class GlobalBossManager {
 
     private void spawn(GlobalBoss boss){
         World.register(boss);
-        JavaCord.sendMessage("\uD83E\uDD16│\uD835\uDDEE\uD835\uDDF0\uD835\uDE01\uD835\uDDF6\uD835\uDE03\uD835\uDDF6\uD835\uDE01\uD835\uDE06", "**[World Boss] "+boss.message()+" **");
+        JavaCord.sendMessage(1117224370587304057L, "**[World Boss] "+boss.message()+" **");
 
         for (Player players : World.getPlayers()) {
             if (players == null) {

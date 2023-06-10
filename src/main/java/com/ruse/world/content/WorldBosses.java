@@ -124,7 +124,7 @@ public class WorldBosses {
 
                 if (GameSettings.LOCALHOST)
                     return;
-                JavaCord.sendMessage("\uD83E\uDD16│\uD835\uDDEE\uD835\uDDF0\uD835\uDE01\uD835\uDDF6\uD835\uDE03\uD835\uDDF6\uD835\uDE01\uD835\uDE06", "**[World Boss] " + message + " **");
+                JavaCord.sendMessage(1117224370587304057L, "**[World Boss] " + message + " **");
                 for (Player players : World.getPlayers()) {
                     if (players == null) {
                         continue;
@@ -147,6 +147,6 @@ public class WorldBosses {
         World.register(currentBoss);
         World.sendMessage(
                 "Whoever dares to challenge the Golden Great Ape, face him now at ::golden");
-        JavaCord.sendMessage("\uD83E\uDD16│\uD835\uDDEE\uD835\uDDF0\uD835\uDE01\uD835\uDDF6\uD835\uDE03\uD835\uDDF6\uD835\uDE01\uD835\uDE06", "**Whoever dares to challenge the Golden Great Ape, face him now at ::golden**");
+        JavaCord.sendMessage(1117224370587304057L, "**Whoever dares to challenge the Golden Great Ape, face him now at ::golden**");
     }
 }

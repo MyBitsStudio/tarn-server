@@ -146,11 +146,14 @@ public enum ItemEffect {
         ItemDefinition de = ItemDefinition.forId(id);
         if(de.isNoted() || de.isStackable())
             return true;
+        if(noEffects.contains(id))
+            return true;
         for(double d : de.getBonus()) {
             if(d >= 1) {
                 return false;
             }
         }
+
         return true;
         //return noEffects.stream().anyMatch(item -> item == id);
     }

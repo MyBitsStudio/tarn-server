@@ -19,12 +19,12 @@ public class GlobalDoubleDRTask extends Task {
                     if (timer < 1) {
                         timer = 6000;
                         World.sendMessage("2X Drop Rate Event has begun for 60 minutes!");
-                        JavaCord.sendMessage("\uD83E\uDD16│\uD835\uDDEE\uD835\uDDF0\uD835\uDE01\uD835\uDDF6\uD835\uDE03\uD835\uDDF6\uD835\uDE01\uD835\uDE06", "2X Drop Rate Event has begun for 60 minutes!");
+                        JavaCord.sendMessage(1117224370587304057L, "2X Drop Rate Event has begun for 60 minutes!");
                         AdminCord.sendMessage(1116222317937311835L, "2X Drop Rate Event has begun for 60 minutes!");
                         GameSettings.DOUBLE_DROP = true;
                     } else if(timer == 1) {
                         World.sendMessage("2X Drop Rate Event has ended!");
-                        JavaCord.sendMessage("\uD83E\uDD16│\uD835\uDDEE\uD835\uDDF0\uD835\uDE01\uD835\uDDF6\uD835\uDE03\uD835\uDDF6\uD835\uDE01\uD835\uDE06", "2X Drop Rate Event has ended!");
+                        JavaCord.sendMessage(1117224370587304057L, "2X Drop Rate Event has ended!");
                         AdminCord.sendMessage(1116222317937311835L, "2X Drop Rate Event has ended!");
                         GameSettings.DOUBLE_DROP = false;
                         stop();

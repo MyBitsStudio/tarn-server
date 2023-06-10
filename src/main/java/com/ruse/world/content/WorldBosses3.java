@@ -123,7 +123,7 @@ public class WorldBosses3 {
                     message = "Meruem The King has spawned, fight him at ::meruem ";
                 if (GameSettings.LOCALHOST)
                     return;
-                JavaCord.sendMessage("\uD83E\uDD16│\uD835\uDDEE\uD835\uDDF0\uD835\uDE01\uD835\uDDF6\uD835\uDE03\uD835\uDDF6\uD835\uDE01\uD835\uDE06", "**[World Boss] " + message + " **");
+                //JavaCord.sendMessage("\uD83E\uDD16│\uD835\uDDEE\uD835\uDDF0\uD835\uDE01\uD835\uDDF6\uD835\uDE03\uD835\uDDF6\uD835\uDE01\uD835\uDE06", "**[World Boss] " + message + " **");
                 for (Player players : World.getPlayers()) {
                     if (players == null) {
                         continue;
@@ -146,6 +146,6 @@ public class WorldBosses3 {
         World.register(currentBoss);
         World.sendMessage(
                 "Meruem The King has spawned, fight him at ::meruem");
-        JavaCord.sendMessage("\uD83E\uDD16│\uD835\uDDEE\uD835\uDDF0\uD835\uDE01\uD835\uDDF6\uD835\uDE03\uD835\uDDF6\uD835\uDE01\uD835\uDE06", "**Meruem The King has spawned, fight him at ::meruem**");
+        //JavaCord.sendMessage("\uD83E\uDD16│\uD835\uDDEE\uD835\uDDF0\uD835\uDE01\uD835\uDDF6\uD835\uDE03\uD835\uDDF6\uD835\uDE01\uD835\uDE06", "**Meruem The King has spawned, fight him at ::meruem**");
     }
 }
