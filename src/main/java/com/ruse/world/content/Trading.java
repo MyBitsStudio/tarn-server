@@ -516,7 +516,7 @@ public class Trading {
 			for (Item item : player.getTrading().offeredItems) {
 				PlayerLogs.log(player.getUsername(), player.getUsername()+"Gave item in trade to " + player2.getUsername() + ". Id: "
 						+ item.getId() + ", amount: " + item.getAmount());
-				AdminCord.sendMessage(1108220705222443070L, "Gave item in trade to " + player2.getUsername() + ". Id: "
+				AdminCord.sendMessage(1116222330931265607L, "Gave item in trade to " + player2.getUsername() + ". Id: "
 						+ item.getId() + ", amount: " + item.getAmount());
 			}
 			for (Item item : player2.getTrading().offeredItems) {
@@ -527,7 +527,7 @@ public class Trading {
 			for (Item item : player.getTrading().offeredItems) {
 				PlayerLogs.logTrades(player.getUsername(), player.getUsername()+"Gave item to " + player2.getUsername() + ". Name: "
 						+ item.getDefinition().getName() + ". Id: " + item.getId() + ", amount: " + item.getAmount());
-				AdminCord.sendMessage(1108220705222443070L, player.getUsername()+"Gave item to " + player2.getUsername() + ". Name: "
+				AdminCord.sendMessage(1116222330931265607L, player.getUsername()+"Gave item to " + player2.getUsername() + ". Name: "
 						+ item.getDefinition().getName() + ". Id: " + item.getId() + ", amount: " + item.getAmount());
 			}
 			for (Item item : player2.getTrading().offeredItems) {

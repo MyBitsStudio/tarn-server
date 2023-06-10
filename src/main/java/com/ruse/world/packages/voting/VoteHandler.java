@@ -15,7 +15,7 @@ public class VoteHandler {
 
         com.everythingrs.vote.Vote.service.execute(() -> {
             try {
-                com.everythingrs.vote.Vote[] reward = com.everythingrs.vote.Vote.reward("szUziRZAX4r853p8wSF7icsTKkqLS8VgtLLJ2TQinhWRHIXqT5nyWvMQON924RSg5iOos4u4",
+                com.everythingrs.vote.Vote[] reward = com.everythingrs.vote.Vote.reward("7qLCv34KB0NVyOqHYad6pxEuNqKkGXxVPPULMFR8yml5uKJbFzP3VbbrUT0I8Lgbzl8AONjs",
                         playerName, String.valueOf(1),"all");
                 if (reward[0].message != null) {
                     player.getPacketSender().sendMessage(reward[0].message);

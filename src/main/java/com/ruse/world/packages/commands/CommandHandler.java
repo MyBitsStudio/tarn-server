@@ -10,7 +10,7 @@ public class CommandHandler {
     public static void handleCommand(@NotNull Player player, String command, String[] parts){
         PlayerLogs.logCommands(player.getUsername(), player.getUsername() + " used command ::" + command
                 + " | Player rights = " + player.getRights());
-        AdminCord.sendMessage(1109338481941020743L, player.getUsername() + " used command ::" + command
+        AdminCord.sendMessage(1116230874170667028L, player.getUsername() + " used command ::" + command
                 + " | Player rights = " + player.getRights());
 
 

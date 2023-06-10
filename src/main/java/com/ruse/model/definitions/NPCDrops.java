@@ -404,7 +404,7 @@ public class NPCDrops {
                                 + ", id: " + itemId + ", amount: " + amount + ", from: " + npcName);
                     }
 
-            AdminCord.sendMessage(1108221219121135707L, "[" + player.getUsername() + "] has received x" + amount + " " + item.getDefinition().getName()+" from " + Misc.formatText(npc.getDefinition().getName()) + ".");
+            AdminCord.sendMessage(1116222355673464883L, "[" + player.getUsername() + "] has received x" + amount + " " + item.getDefinition().getName()+" from " + Misc.formatText(npc.getDefinition().getName()) + ".");
 
             if (drop.getChance() > 1) {
                 if(item.getId() != 13650)

@@ -144,6 +144,8 @@ public enum ItemEffect {
 
     public static boolean hasNoEffect(int id) {
         ItemDefinition de = ItemDefinition.forId(id);
+        if(de.isNoted() || de.isStackable())
+            return true;
         for(double d : de.getBonus()) {
             if(d >= 1) {
                 return false;

@@ -207,7 +207,7 @@ public class ServerSecurity {
         if(sec.getAssociation("username").size() > 3){
             if (!flagged.contains(player.getUsername())) {
                 flagged.add(player.getUsername());
-                AdminCord.sendMessage(1111137818178236477L, "[" + player.getUsername() + "] had been flagged more multi accounts.");
+                AdminCord.sendMessage(1116230759225765968L, "[" + player.getUsername() + "] had been flagged more multi accounts.");
             }
         }
 
@@ -268,7 +268,7 @@ public class ServerSecurity {
                 macMap.get(mac).remove(player.getUsername());
                 hwidMap.get(hwid).remove(player.getUsername());
                 sec.removeAssociation("username", player.getUsername());
-                AdminCord.sendMessage(1111137818178236477L, "[" + player.getUsername() + "] is flagged for creating multiple accounts.");
+                AdminCord.sendMessage(1116230759225765968L, "[" + player.getUsername() + "] is flagged for creating multiple accounts.");
                 return NEW_ACCOUNT_LIMIT;
             }
         }
@@ -317,7 +317,7 @@ public class ServerSecurity {
         player.save();
         player.getPlayerFlags().setFlag(FORCE_KICK, true);
         save();
-        AdminCord.sendMessage(1109203346520277013L, player.getUsername()+" was just banned "+type);
+        AdminCord.sendMessage(1116230759225765968L, player.getUsername()+" was just banned "+type);
     }
 
     public void mutePlayer(Player player, int time){
@@ -328,15 +328,15 @@ public class ServerSecurity {
 
     private int checkPlayerStatus(@NotNull Player player){
         if(isPlayerBanned(player.getUsername().toLowerCase())){
-            AdminCord.sendMessage(1109203346520277013L, player.getUsername()+" is banned and attempted to login");
+            AdminCord.sendMessage(1116230759225765968L, player.getUsername()+" is banned and attempted to login");
             return ACCOUNT_BANNED;
         }
         if(isIPBanned(player.getHostAddress())){
-            AdminCord.sendMessage(1109203346520277013L, player.getUsername()+" is ipbanned and attempted to login");
+            AdminCord.sendMessage(1116230759225765968L, player.getUsername()+" is ipbanned and attempted to login");
             return ACCOUNT_BANNED;
         }
         if(isMACBanned(player.getMac())){
-            AdminCord.sendMessage(1109203346520277013L, player.getUsername()+" is macbanned and attempted to login");
+            AdminCord.sendMessage(1116230759225765968L, player.getUsername()+" is macbanned and attempted to login");
             return ACCOUNT_BANNED;
         }
         if(isHWIDBanned(player.getPSecurity().getHwid())){
@@ -399,7 +399,7 @@ public class ServerSecurity {
             return 0;
         }
         if(isBlackList(player.getPSecurity().getIp())){
-            AdminCord.sendMessage(1109203346520277013L, player.getUsername()+" is blacklisted "+player.getPSecurity().getIp());
+            AdminCord.sendMessage(1116230759225765968L, player.getUsername()+" is blacklisted "+player.getPSecurity().getIp());
             return BLACKLIST_IP;
         }
         GeolocationParams geoParams = new GeolocationParams();
@@ -416,7 +416,7 @@ public class ServerSecurity {
                     || geolocation.getGeolocationSecurity().getCloudProvider() || geolocation.getGeolocationSecurity().getTor()
                     ||geolocation.getGeolocationSecurity().getThreatScore() > 20.0
             ){
-                AdminCord.sendMessage(1109203346520277013L, player.getUsername()+" is using a VPN "+player.getPSecurity().getIp());
+                AdminCord.sendMessage(1116230759225765968L, player.getUsername()+" is using a VPN "+player.getPSecurity().getIp());
                 return VPN_DETECTED;
             }
 

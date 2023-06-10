@@ -39,7 +39,13 @@ public enum AutoCastSpell {
     WHITESTAFF(22167, CombatSpells.WHITE),
     DEATH(14355, CombatSpells.WHITE),
     FAZULA(4071, CombatSpells.WHITE),
+    WARDEN(24010, CombatSpells.CHAOS),
     OWNERS(22230, CombatSpells.WHITE),
+    OWNERS_1(23315, CombatSpells.WHITE),
+    OWNERS_2(23316, CombatSpells.WHITE),
+    OWNERS_3(23317, CombatSpells.WHITE),
+    OWNERS_4(23318, CombatSpells.WHITE),
+    OWNERS_5(23319, CombatSpells.WHITE),
     ;
 
     private int itemId;

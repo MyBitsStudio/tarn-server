@@ -245,7 +245,7 @@ public class PlayerLock {
         addLog(key, log);
         addLog(key);
         save();
-        AdminCord.sendMessage(1109203346520277013L, player.getUsername()+" has been ticked by the security system for "+key);
+        AdminCord.sendMessage(1116230759225765968L, player.getUsername()+" has been ticked by the security system for "+key);
         return false;
     }
 
@@ -263,7 +263,7 @@ public class PlayerLock {
             player.getPlayerFlags().setFlag(FORCE_KICK, true);
         }
 
-        AdminCord.sendMessage(1109203346520277013L, player.getUsername()+" has been locked by the security system for "+key);
+        AdminCord.sendMessage(1116230759225765968L, player.getUsername()+" has been locked by the security system for "+key);
 
     }
 

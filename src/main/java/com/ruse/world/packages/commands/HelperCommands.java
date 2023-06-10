@@ -108,14 +108,14 @@ public class HelperCommands {
                             player.getUsername() + " just kicked " + player2.getUsername() + "!");
                     World.sendStaffMessage("<col=FF0066><img=2> [PUNISHMENTS]<col=6600FF> " + player.getUsername()
                             + " just kicked " + player2.getUsername() + ".");
-                    AdminCord.sendMessage(1109203238907027527L, player.getUsername() + " used command ::" + command
+                    AdminCord.sendMessage(1116230874170667028L, player.getUsername() + " used command ::" + command
                             + " | Player rights = " + player.getRights());
                 } else {
                     PlayerLogs.log(player.getUsername(), player.getUsername() + " just tried to kick "
                             + player2.getUsername() + " in an active duel.");
                     World.sendStaffMessage("<col=FF0066><img=2> [PUNISHMENTS]<col=6600FF> " + player.getUsername()
                             + " just tried to kick " + player2.getUsername() + " in an active duel.");
-                    AdminCord.sendMessage(1109203238907027527L,  player.getUsername()
+                    AdminCord.sendMessage(1116230874170667028L,  player.getUsername()
                             + " just tried to kick " + player2.getUsername() + " in an active duel.");
                     player.getPacketSender().sendMessage("You've tried to kick someone in duel arena/wild. Logs written.");
                 }
@@ -146,7 +146,7 @@ public class HelperCommands {
                 }
 
                 ServerSecurity.getInstance().unMute(playerToTele);
-                AdminCord.sendMessage(1109203238907027527L,  player.getUsername()
+                AdminCord.sendMessage(1116230874170667028L,  player.getUsername()
                         + " just ummuted " + playerToTele);
                 player.getPacketSender().sendMessage("Player " + playerToTele + " was successfully unmuted");
                 player2.getPacketSender().sendMessage("@red@[STAFF] You have been unmuted by Staff. Please respect the rules next time.");
@@ -171,7 +171,7 @@ public class HelperCommands {
                     }
                     PlayerLogs.log(player.getUsername(), player.getUsername() + " just muted " + playerToTele);
                     World.sendStaffMessage("<col=FF0066><img=2> [PUNISHMENTS]<col=6600FF> " + playerToTele +" was just muted for breaking the Terms of Conduct.");
-                    AdminCord.sendMessage(1109203238907027527L,  player.getUsername()
+                    AdminCord.sendMessage(1116230874170667028L,  player.getUsername()
                             + " just muted " + playerToTele);
                     ServerSecurity.getInstance().mutePlayer(player2, timer);
                     player.getPacketSender().sendMessage("Player " + playerToTele + " was successfully muted");
@@ -201,7 +201,7 @@ public class HelperCommands {
                     player2.getPacketSender().sendMessage("@red@[STAFF] You have been warned by staff members!");
                     player.sendMessage(playerToTele + " has been warned.");
 
-                    AdminCord.sendMessage(1109203238907027527L, player.getUsername()
+                    AdminCord.sendMessage(1116230874170667028L, player.getUsername()
                             + " just warned " + playerToTele + ".");
                 }
                 return true;

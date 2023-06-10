@@ -203,18 +203,19 @@ public class DonatorShop {
             case 23126://vod weps
                 return new Object[]{75, "Donator points"};
             case 4440:
+                return new Object[]{700, "Donator points"};
             case 4442:
-                return new Object[]{150, "Donator points"};
+                return new Object[]{100, "Donator points"};
             case 15003:
-                return new Object[]{25, "Donator points"};
+                return new Object[]{100, "Donator points"};
             case 15002:
-                return new Object[]{40, "Donator points"};
+                return new Object[]{200, "Donator points"};
             case 20489:
-                return new Object[]{75, "Donator points"};
+                return new Object[]{400, "Donator points"};
             case 20491:
-                return new Object[]{125, "Donator points"};
+                return new Object[]{600, "Donator points"};
             case 20490:
-                return new Object[]{175, "Donator points"};
+                return new Object[]{1100, "Donator points"};
 
             default:
                 return new Object[]{1000, "Donator points"};

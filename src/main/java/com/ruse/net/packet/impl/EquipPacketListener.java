@@ -473,12 +473,12 @@ public class EquipPacketListener implements PacketListener {
         WeaponInterfaces.assign(player, weapon);
         WeaponAnimations.update(player);
 
-        if (AutoCastSpell.getAutoCastSpell(player) != null) {
-            player.setAutocastSpell(AutoCastSpell.getAutoCastSpell(player).getSpell());
-        } else {
+        if (AutoCastSpell.getAutoCastSpell(player) == null) {
             if (player.getAutocastSpell() != null || player.isAutocast()) {
                 Autocasting.resetAutocast(player, true);
             }
+        } else {
+            player.setAutocastSpell(AutoCastSpell.getAutoCastSpell(player).getSpell());
         }
 
         if (weapon.getId() == 4024) {
