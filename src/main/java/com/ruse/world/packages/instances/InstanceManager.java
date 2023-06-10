@@ -490,12 +490,12 @@ public class InstanceManager {
             case 9017:
                 return  KillsTracker.getTotalKills(player) >= 50000;
 
+            case 591:
             case 593:
             case 587:
             case 8013:
                 return true;
-            case 591:
-                return false;
+
             case 1880:
                 return player.getGameMode().isIronman();
             case 1120:
