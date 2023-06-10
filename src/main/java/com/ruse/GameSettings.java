@@ -38,15 +38,15 @@ public class GameSettings {
     /**
      * WEB URLS
      */
-    public static final String DomainUrl = "https://discord.gg/BeENR8amj2";
+    public static final String DomainUrl = "https://discord.gg/c5KaC3pBsn";
     public static final String ForumUrl = "https://discord.gg/BeENR8amj2";
     public static final String StoreUrl = "https://tarnserver.everythingrs.com/services/store";
     public static final String effigy = "https://www.youtube.com/channel/UCR-GGPuNM7V51JYWVbcDURQ";
     public static final String wr3cked = "https://www.youtube.com/channel/UCNm7R0y8KN8kSn3yVn04pkg";
 
-    public static final String VoteUrl = "https://tarn-rsps.com/vote.html";
+    public static final String VoteUrl = "https://tarnserver.everythingrs.com/services/vote";
     public static final String IronManModesUrl = "https://discord.gg/BeENR8amj2";
-    public static final String DiscordUrl = "https://discord.gg/BeENR8amj2";
+    public static final String DiscordUrl = "https://discord.gg/c5KaC3pBsn";
     public static final long tempMuteInterval = 86400000;
     public static final int BaseImplingExpMultiplier = 2;
     /**
