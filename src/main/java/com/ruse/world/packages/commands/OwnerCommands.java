@@ -103,21 +103,6 @@ public class OwnerCommands {
                 player.getInventory().add(item, true);
                 return true;
 
-            case "giveitem":
-                id = Integer.parseInt(commands[1]);
-                amount = Integer.parseInt(commands[2]);
-                String plrName = command
-                        .substring(commands[0].length() + commands[1].length() + commands[2].length() + 3);
-                Player target = World.getPlayer(plrName);
-                if (target == null) {
-                    player.getPacketSender().sendMessage(plrName + " must be online to give them stuff!");
-                } else {
-                    target.getInventory().add(id, amount);
-                    player.getPacketSender().sendMessage(
-                            "Gave " + amount + "x " + ItemDefinition.forId(id).getName() + " to " + plrName + ".");
-                }
-                return true;
-
             case "giveall":
                 id = Integer.parseInt(commands[1]);
                 amount = Integer.parseInt(commands[2]);

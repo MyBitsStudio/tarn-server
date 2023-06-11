@@ -236,6 +236,24 @@ public class HelperCommands {
                     player.sendMessage("Timer: " + player2.getInstance().getTime());
                 }
                 return true;
+
+            case "checkinv":
+                player2 = World.getPlayerByName(command.substring(commands[0].length() + 1));
+                if (player2 == null) {
+                    player.getPacketSender().sendMessage("Cannot find that player online..");
+                    return true;
+                }
+                player.getPacketSender().sendItemContainer(player2.getInventory(), 3214);
+                return true;
+
+            case "endcheck":
+                player.getInventory().refreshItems();
+                return true;
+
+            case "invisible":
+                player.setVisible(!player.isVisible());
+                player.sendMessage("You are now " + (player.isVisible() ? "visible" : "invisible"));
+                return true;
         }
         return false;
     }

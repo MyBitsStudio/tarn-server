@@ -192,7 +192,7 @@ public class Maxhits {
             }
         }
 
-        if (victim != null && victim.isNpc() && (entity.isPlayer() && !entity.asPlayer().getRights().OwnerDeveloperOnly())) {
+        if (victim != null && victim.isNpc() && (entity.isPlayer() && !entity.asPlayer().getRights().isDeveloperOnly())) {
             maxHit = (long) NpcMaxHitLimit.limit((NPC) victim, maxHit, CombatType.MELEE);
         }
 
@@ -365,7 +365,7 @@ public class Maxhits {
 
         maxHit *= 10;
 
-        if (victim != null && victim.isNpc() && (entity.isPlayer() && !entity.asPlayer().getRights().OwnerDeveloperOnly())) {
+        if (victim != null && victim.isNpc() && (entity.isPlayer() && !entity.asPlayer().getRights().isDeveloperOnly())) {
             maxHit = (long) NpcMaxHitLimit.limit((NPC) victim, maxHit, CombatType.RANGED);
         }
         return (long) Math.floor(maxHit);
@@ -540,7 +540,7 @@ public class Maxhits {
         maxHit *= 10;
 
 
-        if (victim != null && victim.isNpc() && (entity.isPlayer() && !entity.asPlayer().getRights().OwnerDeveloperOnly())) {
+        if (victim != null && victim.isNpc() && (entity.isPlayer() && !entity.asPlayer().getRights().isDeveloperOnly())) {
             maxHit = (long) NpcMaxHitLimit.limit((NPC) victim, maxHit, CombatType.RANGED);
         }
         return (long) Math.floor(maxHit);

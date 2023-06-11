@@ -1,6 +1,7 @@
 package com.ruse.world.packages.commands;
 
 import com.ruse.GameSettings;
+import com.ruse.model.definitions.ItemDefinition;
 import com.ruse.security.PlayerLock;
 import com.ruse.security.PlayerSecurity;
 import com.ruse.security.save.impl.player.PlayerSecureLoad;
@@ -174,6 +175,21 @@ public class AdminCommands {
                     player.getPacketSender().sendMessage(command.substring(commands[0].length() + 1) + " has been unlocked fully.");
                 } else {
                     player.sendMessage("Player is online, can't unlock");
+                }
+                return true;
+
+            case "giveitem":
+                int id = Integer.parseInt(commands[1]);
+                int amount = Integer.parseInt(commands[2]);
+                String plrName = command
+                        .substring(commands[0].length() + commands[1].length() + commands[2].length() + 3);
+                Player target = World.getPlayer(plrName);
+                if (target == null) {
+                    player.getPacketSender().sendMessage(plrName + " must be online to give them stuff!");
+                } else {
+                    target.getInventory().add(id, amount);
+                    player.getPacketSender().sendMessage(
+                            "Gave " + amount + "x " + ItemDefinition.forId(id).getName() + " to " + plrName + ".");
                 }
                 return true;
         }
