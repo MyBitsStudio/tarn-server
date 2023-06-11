@@ -483,6 +483,19 @@ public class ButtonClickPacketListener implements PacketListener {
                 player.setInputHandling(new SetPinPacketListener());
                 player.getPacketSender().sendEnterInputPrompt("Enter the pin that you want to set$pin");
                 break;
+            case 74001:
+                player.getPacketSender().sendTabInterface(GameSettings.ACHIEVEMENT_TAB, 73000);
+                player.getPacketSender().sendConfig(6000, 0);
+                break;
+            case 74002:
+                player.sendMessage("Coming Soon!");
+                break;
+            case 74003:
+                player.sendMessage("Coming Soon!");
+                break;
+            case 74004:
+                player.sendMessage("Coming Soon!");
+                break;
             case 111101:
                 player.getPacketSender().sendTabInterface(GameSettings.QUESTS_TAB, 111000);
                 player.getPacketSender().sendConfig(6000, 0);

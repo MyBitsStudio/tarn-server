@@ -1002,7 +1002,7 @@ public class NPCDeathTask extends Task {
     private void otherCheck(Player killer, int npcId){
         if (npcId == Wildywyrm.NPC_ID) {
             Wildywyrm.wyrmAlive = false;
-            World.getPlayers().forEach(p -> PlayerPanel.refreshPanel(p));
+            World.getPlayers().forEach(PlayerPanel::refreshPanel);
         }
 
         if (npcId == SkeletalHorror.NPC_ID) {

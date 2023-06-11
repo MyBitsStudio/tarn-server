@@ -680,6 +680,31 @@ public abstract class ItemContainer {
                 }
             }
         }
+        if (item.getId() == ItemDefinition.TOKEN_ID && this instanceof Inventory) {
+            if (getAmount(item.getId()) + item.getAmount() >= Integer.MAX_VALUE
+                    || getAmount(item.getId()) + item.getAmount() <= -1) {
+                if (item.getAmount() >= 1_000) {
+                    Item newItem = new Item(23203, item.getAmount() / 1_000);
+                    if (isFull()) {
+                        getPlayer().depositItemBank(newItem);
+                    } else {
+                        add(newItem);
+                    }
+                    getPlayer().getPacketSender().sendMessage("The coins that you could not hold in your inventory have been converted into tokens.");
+                    return this;
+                } else {
+                    int amount = getAmount(item.getId()) / 1_000;
+                    Item newItem = new Item(23203, amount);
+                    delete(item.getId(), amount * 1_000);
+                    if (isFull()) {
+                        getPlayer().depositItemBank(newItem);
+                    } else {
+                        add(newItem);
+                    }
+                    getPlayer().getPacketSender().sendMessage("The coins that you had have been converted into tokens.");
+                }
+            }
+        }
         if (ItemDefinition.forId(item.getId()).isStackable() || stackType() == StackType.STACKS) {
 
             int slot = getSlot(item.getId(), item.getEffect(), item.getBonus());

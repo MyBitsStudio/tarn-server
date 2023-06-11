@@ -8,6 +8,7 @@ import com.ruse.world.packages.donation.DonationManager;
 import com.ruse.world.content.serverperks.ServerPerks;
 import com.ruse.world.content.skill.impl.slayer.SlayerTasks;
 import com.ruse.world.packages.globals.GlobalBossManager;
+import com.ruse.world.packages.panels.EventPanel;
 import com.ruse.world.packages.voting.VoteBossDrop;
 import com.ruse.world.entity.impl.player.Player;
 
@@ -18,6 +19,7 @@ public class PlayerPanel {
     }
 
     public static void refreshPanel(Player player) {
+        EventPanel.refresh(player);
         int interfaceID = 111201;
         int players = (int) World.getPlayers().size() + GameSettings.players;
         String[] Messages = new String[]{
@@ -33,29 +35,29 @@ public class PlayerPanel {
                                 "N/A"),
                 (WellOfGoodwill.isActive() ? "@whi@Well of Goodwill: @yel@On" : "@whi@Well of Goodwill: @yel@Off"),
                 "@whi@Bonus Xp: @yel@" + (Misc.format(player.getMinutesBonusExp()) == null ? "0" : Misc.format(player.getMinutesBonusExp())) + " minutes left",
-                "@whi@Global",
-                (VoteBossDrop.currentSpawn == null
-                        ? "@whi@Vote Boss: @yel@" + doMotivote.getVoteCount() + "/50"
-                        : "@whi@Vote Boss: @yel@::Vboss"),
-                (DonationManager.getInstance().getBoss() == null
-                ? "@whi@Donation Boss: @yel@" + DonationManager.getInstance().getTotalDonated() + "/" + DonationManager.getTotalNeeded()
-                        : "@whi@Donation Boss: @yel@::Donboss"),
-                "@whi@Final Boss Veigar: @yel@" + GlobalBossManager.getInstance().timeLeft("veigar"),
-                "@whi@Nine Tails Jinchuriki: @yel@" + GlobalBossManager.getInstance().timeLeft("ninetails"),
-                "@whi@Meruem The King: @yel@" + GlobalBossManager.getInstance().timeLeft("meruem"),
-                "@whi@Golden Great Ape: @yel@" + GlobalBossManager.getInstance().timeLeft("golden"),
-                /* (WorldBosses.currentBoss == null
-                         ? "Global bosses: @whi@" + WorldBosses.timeLeft()
-                         : "Global bosses: @whi@::global"),*/
-                //"Next Prime Respawn:",
-                //"@whi@" + (!SkeletalHorror.wyrmAlive ? SkeletalHorror.getTimeLeft() : "Currently Alive @::prime"),
-                //
-                "@whi@Useful links",
-                "@yel@Open @yel@Homepage",
-                "@yel@Open @yel@Forums",
-                "@yel@Open @yel@Vote",
-                "@yel@Open @yel@Store",
-                "@yel@Open @yel@Discord",
+//                "@whi@Global",
+//                (VoteBossDrop.currentSpawn == null
+//                        ? "@whi@Vote Boss: @yel@" + doMotivote.getVoteCount() + "/50"
+//                        : "@whi@Vote Boss: @yel@::Vboss"),
+//                (DonationManager.getInstance().getBoss() == null
+//                ? "@whi@Donation Boss: @yel@" + DonationManager.getInstance().getTotalDonated() + "/" + DonationManager.getTotalNeeded()
+//                        : "@whi@Donation Boss: @yel@::Donboss"),
+//                "@whi@Final Boss Veigar: @yel@" + GlobalBossManager.getInstance().timeLeft("veigar"),
+//                "@whi@Nine Tails Jinchuriki: @yel@" + GlobalBossManager.getInstance().timeLeft("ninetails"),
+//                "@whi@Meruem The King: @yel@" + GlobalBossManager.getInstance().timeLeft("meruem"),
+//                "@whi@Golden Great Ape: @yel@" + GlobalBossManager.getInstance().timeLeft("golden"),
+//                /* (WorldBosses.currentBoss == null
+//                         ? "Global bosses: @whi@" + WorldBosses.timeLeft()
+//                         : "Global bosses: @whi@::global"),*/
+//                //"Next Prime Respawn:",
+//                //"@whi@" + (!SkeletalHorror.wyrmAlive ? SkeletalHorror.getTimeLeft() : "Currently Alive @::prime"),
+//                //
+//                "@whi@Useful links",
+//                "@yel@Open @yel@Homepage",
+//                "@yel@Open @yel@Forums",
+//                "@yel@Open @yel@Vote",
+//                "@yel@Open @yel@Store",
+//                "@yel@Open @yel@Discord",
         };
 
         for (int i = 0; i < Messages.length; i++) {

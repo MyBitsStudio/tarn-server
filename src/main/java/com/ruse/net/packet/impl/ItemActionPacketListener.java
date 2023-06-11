@@ -1975,6 +1975,7 @@ public class ItemActionPacketListener implements PacketListener {
                     player.sendMessage("You need at least "+1+" inventory slots to do this.");
                     return;
                 }
+
                 if (player.getInventory().getAmount(ItemDefinition.TOKEN_ID) >= 1_000) {
                     int amount = player.getInventory().getAmount(ItemDefinition.TOKEN_ID) / 1_000;
                     player.getInventory().delete(new Item(ItemDefinition.TOKEN_ID, amount * 1_000));

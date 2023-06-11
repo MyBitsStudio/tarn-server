@@ -53,6 +53,18 @@ public enum SlayerTasks {
 			new Position(1884, 5334, 0)),
 
 	// Hard bosses
+	VARTH(SlayerMaster.BOSS_SLAYER, 3016, "Varthramoth can be found by using the Instances.", 2000,
+			new Position(3018, 2759, 0)),
+	TYRANT(SlayerMaster.BOSS_SLAYER, 4972, "Tyrant Lord can be found by using the Instances.", 2000,
+			new Position(3018, 2759, 0)),
+	LUCIFER(SlayerMaster.BOSS_SLAYER, 9012, "Lucifer can be found by using the Instances.", 2000,
+			new Position(3018, 2759, 0)),
+
+	AGUMON(SlayerMaster.BOSS_SLAYER, 3020, "Agumon can be found by using the Instances.", 2000,
+			new Position(3018, 2759, 0)),
+
+	CALAMITY(SlayerMaster.BOSS_SLAYER, 9912, "Calamity can be found by using the Instances.", 2000,
+			new Position(3018, 2759, 0)),
 	GROUDON(SlayerMaster.BOSS_SLAYER, 8010, "Groudon can be found by using the Teleport interface.", 2000,
 			new Position(2784, 4445, 0)),
 	LILINRYSS(SlayerMaster.BOSS_SLAYER, 3014, "Lilinryss can be found by using the Teleport interface.", 1500,
@@ -63,6 +75,15 @@ public enum SlayerTasks {
 			new Position(2785, 4525, 0)),
 	ONYX_GRIFFIN(SlayerMaster.BOSS_SLAYER, 1746, "Onyx Griffin can be found by using the Teleport interface.", 1000,
 			new Position(2712, 4508, 0)),
+	FRIEZA(SlayerMaster.BOSS_SLAYER, 252, "Frieza can be found by using the Instances.", 596, new Position(3018, 2759, 0)),
+	CELL(SlayerMaster.BOSS_SLAYER, 449, "Perfect Cell can be found by using the Instances.", 623, new Position(3018, 2759, 0)),
+	BUU(SlayerMaster.BOSS_SLAYER, 452, "Super Buu can be found by using the Instances.", 655, new Position(3018, 2759, 0)),
+	GOKU(SlayerMaster.BOSS_SLAYER, 187, "Goku can be found by using the Instances.", 596, new Position(3018, 2759, 0)),
+	BYAKUYA(SlayerMaster.BOSS_SLAYER, 188, "Byakuya can be found by using the Instances.", 623, new Position(3018, 2759, 0)),
+	FAZULA(SlayerMaster.BOSS_SLAYER, 1311, "Queen Fazula can be found by using the Instances.", 655, new Position(3018, 2759, 0)),
+	YASUDA(SlayerMaster.BOSS_SLAYER, 1313, "Yasuda can be found by using the Instances.", 596, new Position(3018, 2759, 0)),
+	BLACK_GOKU(SlayerMaster.BOSS_SLAYER, 1318, "Black Goku can be found by using the Instances.", 623, new Position(3018, 2759, 0)),
+	ENGRAGED(SlayerMaster.BOSS_SLAYER, 440, "Enraged Supreme can be found by using the Instances.", 655, new Position(3018, 2759, 0)),
 
 
 	// Easy slayer tasks 12.5k-50k * 2 = 25-100k / task
@@ -106,7 +127,7 @@ public enum SlayerTasks {
 	EMERALD_SLAYER(SlayerMaster.HARD_SLAYER, 2342, "Emerald Slayer can be found by using the Teleport interface.", 505, new Position(2527, 2527, 56)),
 	DEATH_GOD(SlayerMaster.HARD_SLAYER, 9915, "Death God can be found by using the Teleport interface.", 502, new Position(2711, 4752, 56)),
 	ZORBAK(SlayerMaster.HARD_SLAYER, 1906, "Zorbak can be found by using the Teleport interface.", 500, new Position(2711, 4752, 52)),
-	AVATAR_TITAN(SlayerMaster.HARD_SLAYER, 8008, "Avatar Titan can be found by using the Teleport interface.", 407, new Position(2711, 4752, 48)),
+
 
 	//ELITE SLAYER
 	ELITE_SCORPION(SlayerMaster.ELITE_SLAYER, 1717, "Elite Scorpion can be found by using the Teleport interface.", 350_000, new Position(2651, 3810)),

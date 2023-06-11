@@ -659,7 +659,7 @@ public class PacketSender {
         sendTabInterface(GameSettings.ATTACK_TAB, 2423);
         sendTabInterface(GameSettings.SKILLS_TAB, 3917);// 31110);
         sendTabInterface(GameSettings.QUESTS_TAB, 111000);
-        sendTabInterface(GameSettings.ACHIEVEMENT_TAB, 46343);
+        sendTabInterface(GameSettings.ACHIEVEMENT_TAB, 73000);//46343
         sendTabInterface(GameSettings.INVENTORY_TAB, 3213);
         sendTabInterface(GameSettings.EQUIPMENT_TAB, 15000);
         sendTabInterface(GameSettings.MAGIC_TAB, player.getSpellbook().getInterfaceId());
@@ -672,7 +672,7 @@ public class PacketSender {
         sendTabInterface(GameSettings.OPTIONS_TAB, 904);
         sendTabInterface(GameSettings.EMOTES_TAB, 147);
         sendTabInterface(GameSettings.SUMMONING_TAB, 54017);
-        sendTabInterface(GameSettings.STAFF_TAB, 46343);
+        sendTabInterface(GameSettings.STAFF_TAB, 46343);//46343
         return this;
     }
 
