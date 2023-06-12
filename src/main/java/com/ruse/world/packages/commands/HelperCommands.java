@@ -254,6 +254,10 @@ public class HelperCommands {
                 player.setVisible(!player.isVisible());
                 player.sendMessage("You are now " + (player.isVisible() ? "visible" : "invisible"));
                 return true;
+
+            case "forge":
+                player.getForge().showInterface();
+                return true;
         }
         return false;
     }

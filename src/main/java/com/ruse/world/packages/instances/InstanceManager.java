@@ -2,6 +2,7 @@ package com.ruse.world.packages.instances;
 
 import com.ruse.GameSettings;
 import com.ruse.model.Locations;
+import com.ruse.model.PlayerRights;
 import com.ruse.model.Position;
 import com.ruse.model.definitions.ItemDefinition;
 import com.ruse.model.definitions.NPCDrops;
@@ -233,16 +234,18 @@ public class InstanceManager {
         }
 
         int cap = data.getCap();
-        if(player.getRights().isRegularDonator())
+        if(player.getRights() == PlayerRights.GRACEFUL_DONATOR)
             cap *= 2;
-        if(player.getRights().isSuperDonator())
+        else if(player.getRights() == PlayerRights.CLERIC_DONATOR)
             cap *= 3;
-        if(player.getRights().isExtremeDonator())
+        else if(player.getRights() == PlayerRights.TORMENTED_DONATOR)
             cap *= 4;
-        if(player.getRights().isSponsorDonator())
+        else if(player.getRights() == PlayerRights.MYSTICAL_DONATOR)
             cap *= 5;
-        if(player.getRights().isContributorOnly())
+        else if(player.getRights() == PlayerRights.OBSIDIAN_DONATOR)
             cap *= 7.5;
+        else if(player.getRights() == PlayerRights.FORSAKEN_DONATOR)
+            cap *= 10;
 
         Instance instance = new MultiBossNormalInstance(player,
                 data.getNpcId(), data.getSpawns(), cap);

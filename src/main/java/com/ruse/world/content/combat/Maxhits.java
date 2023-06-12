@@ -204,7 +204,7 @@ public class Maxhits {
 
         if (entity.isNpc()) {
             NPC npc = (NPC) entity;
-            maxHit = npc.getMaxHit() / 10;
+            maxHit = (double) npc.getMaxHit() / 10;
         } else if (entity.isPlayer()) {
             Player player = (Player) entity;
 
