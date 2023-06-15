@@ -1,7 +1,6 @@
 package com.ruse.world.content;
 
 import com.ruse.engine.GameEngine;
-import com.ruse.model.PlayerRights;
 import com.ruse.model.definitions.ItemDefinition;
 import com.ruse.util.Misc;
 import com.ruse.world.World;
@@ -99,7 +98,7 @@ public class Lottery {
 			DialogueManager.start(p, 17);
 			return;
 		}
-		if (p.getInventory().getAmount(ItemDefinition.COIN_ID) < PRICE_TO_ENTER || p.getRights() == PlayerRights.DEVELOPER) {
+		if (p.getInventory().getAmount(ItemDefinition.COIN_ID) < PRICE_TO_ENTER || p.getRank().isDeveloper()) {
 			p.getPacketSender().sendInterfaceRemoval().sendMessage("")
 					.sendMessage("You do not have enough money in your inventory to enter this week's lottery.")
 					.sendMessage("The lottery for this week costs "

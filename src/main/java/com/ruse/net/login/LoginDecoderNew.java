@@ -327,7 +327,8 @@ public final class LoginDecoderNew extends FrameDecoder {
 
                 }
 
-                PacketBuilder builder = new PacketBuilder().put((byte) 2).put((byte) player.getRights().ordinal())
+                PacketBuilder builder = new PacketBuilder().put((byte) 2).put((byte) player.getRank().ordinal())
+                        .put((byte) player.getDonator().ordinal()).put((byte) player.getVip().ordinal())
                         .put((byte) 0).put((byte) 0);
 
                 if (captchaResponse != 0) {
@@ -343,7 +344,9 @@ public final class LoginDecoderNew extends FrameDecoder {
             } else {
                 channel.write(new PacketBuilder()
                         .put((byte) 2)
-                        .put((byte) player.getRights().ordinal())
+                        .put((byte) player.getRank().ordinal())
+                        .put((byte) player.getDonator().ordinal())
+                        .put((byte) player.getVip().ordinal())
                         .put((byte) 0)
                         .put((byte) 0).toPacket());
             }

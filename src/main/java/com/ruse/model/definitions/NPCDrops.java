@@ -378,7 +378,7 @@ public class NPCDrops {
                     || (player.getSkillManager().skillCape(Skill.PRAYER) && player.getBonecrushEffect()))
                     && BonesData.forId(item.getId()) != null) {
                 player.getPacketSender().sendGlobalGraphic(new Graphic(777), pos);
-                if (player.getRights().isMember()) {
+                if (player.getDonator().isMember()) {
                     player.getSkillManager().addExperience(Skill.PRAYER, BonesData.forId(item.getId()).getBuryingXP() * 2);
                 } else {
                     player.getSkillManager().addExperience(Skill.PRAYER, BonesData.forId(item.getId()).getBuryingXP());

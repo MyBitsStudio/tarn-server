@@ -263,7 +263,7 @@ public class KeepersOfLight {
                 if (won && p.getMinigameAttributes().getPestControlAttributes().getDamageDealt() >= damageNeeded) {
                     p.getPacketSender().sendMessage("The bosses were successfully defeated. You've been rewarded for your effort.");
                     PlayerPanel.refreshPanel(p);
-                    int bonus = p.getRights().getKeeperOfLightsBonusPoints(p);
+                    int bonus = 1;
                     if(GameSettings.DOUBLE_KOL) {
                         p.getInventory().add(LIGHT_TICKET, 50 + (bonus * 2));
                         p.getPacketSender().sendMessage("You've received " + (50 + (bonus * 2)) + " Light tickets.");

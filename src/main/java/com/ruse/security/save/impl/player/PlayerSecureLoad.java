@@ -27,6 +27,9 @@ import com.ruse.world.content.skill.impl.slayer.SlayerMaster;
 import com.ruse.world.content.skill.impl.slayer.SlayerTasks;
 import com.ruse.world.content.skill.impl.summoning.BossPets;
 import com.ruse.world.entity.impl.player.Player;
+import com.ruse.world.packages.ranks.DonatorRank;
+import com.ruse.world.packages.ranks.StaffRank;
+import com.ruse.world.packages.ranks.VIPRank;
 
 import java.lang.reflect.Type;
 import java.time.LocalDate;
@@ -165,8 +168,19 @@ public class PlayerSecureLoad extends SecureLoad {
 
         if (object.has("staff-rights")) {
             String rights = object.get("staff-rights").getAsString();
+            setNewRank(player, rights);
+        }
 
-            player.setRights(PlayerRights.valueOf(rights));
+        if(object.has("staff")){
+            player.setRank(StaffRank.valueOf(object.get("staff").getAsString()));
+        }
+
+        if(object.has("donator")){
+            player.setDonator(DonatorRank.valueOf(object.get("donator").getAsString()));
+        }
+
+        if(object.has("vip")){
+            player.setVip(VIPRank.valueOf(object.get("vip").getAsString()));
         }
 
         if (object.has("game-mode")) {
@@ -1180,5 +1194,37 @@ public class PlayerSecureLoad extends SecureLoad {
         }
 
         return this;
+    }
+
+    public static void setNewRank(Player player, String rank){
+        switch(rank){
+            case "GRACEFUL_DONATOR":
+                player.setDonator(DonatorRank.GRACEFUL);
+                break;
+            case "CLERIC_DONATOR":
+                player.setDonator(DonatorRank.CLERIC);
+                break;
+            case "TORMENTED_DONATOR":
+                player.setDonator(DonatorRank.TORMENTED);
+                break;
+            case "MYSTICAL_DONATOR":
+                player.setDonator(DonatorRank.MYSTICAL);
+                break;
+            case "OBSIDIAN_DONATOR":
+                player.setDonator(DonatorRank.OBSIDIAN);
+                break;
+            case "MODERATOR":
+                player.setRank(StaffRank.MODERATOR);
+                break;
+            case "ADMINISTRATOR":
+                player.setRank(StaffRank.ADMINISTRATOR);
+                break;
+            case "DEVELOPER":
+                player.setRank(StaffRank.DEVELOPER);
+                break;
+            case "HELPER":
+                player.setRank(StaffRank.HELPER);
+                break;
+        }
     }
 }

@@ -1,4 +1,4 @@
-package com.ruse.world.content.clans;
+package com.ruse.world.packages.clans;
 
 import com.ruse.util.Stopwatch;
 import com.ruse.world.entity.impl.player.Player;

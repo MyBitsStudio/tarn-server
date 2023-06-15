@@ -18,7 +18,6 @@ import com.ruse.world.content.transportation.TeleportHandler;
 import com.ruse.world.entity.impl.npc.NPC;
 import com.ruse.world.entity.impl.player.Player;
 import com.ruse.world.packages.combat.CombatConstants;
-import mysql.impl.Donation;
 
 public class Slayer {
 
@@ -169,25 +168,29 @@ public class Slayer {
             /**
              * Donator Rank bonusses
              */
-            if (player.getAmountDonated() >= Donation.ZENYTE_DONATION_AMOUNT || player.getRights().equals(PlayerRights.YOUTUBER)) {
-                amountOfTickets += Misc.getRandom(15, 20);
-                amountOfTickets2 += Misc.getRandom(15, 20);
-            } else if (player.getAmountDonated() >= Donation.ONYX_DONATION_AMOUNT) {
-                amountOfTickets += Misc.getRandom(12, 15);
-                amountOfTickets2 += Misc.getRandom(12, 15);
-            } else if (player.getAmountDonated() >= Donation.DIAMOND_DONATION_AMOUNT) {
-                amountOfTickets += Misc.getRandom(10, 12);
-                amountOfTickets2 += Misc.getRandom(10, 12);
-            } else if (player.getAmountDonated() >= Donation.RUBY_DONATION_AMOUNT) {
-                amountOfTickets += Misc.getRandom(7, 10);
-                amountOfTickets2 += Misc.getRandom(7, 10);
-            } else if (player.getAmountDonated() >= Donation.EMERALD_DONATION_AMOUNT) {
-                amountOfTickets += Misc.getRandom(3, 7);
-                amountOfTickets2 += Misc.getRandom(3, 7);
-            } else if (player.getAmountDonated() >= Donation.SAPPHIRE_DONATION_AMOUNT) {
-                amountOfTickets += Misc.getRandom(1, 5);
-                amountOfTickets2 += Misc.getRandom(1, 5);
-            }
+
+            amountOfTickets += Misc.getRandom(player.getDonator().getSlayer()[0], player.getDonator().getSlayer()[1]);
+            amountOfTickets2 += Misc.getRandom(player.getDonator().getSlayer()[0], player.getDonator().getSlayer()[1]);
+
+//            if (player.getAmountDonated() >= Donation.ZENYTE_DONATION_AMOUNT || player.getRights().equals(PlayerRights.YOUTUBER)) {
+//                amountOfTickets += Misc.getRandom(15, 20);
+//                amountOfTickets2 += Misc.getRandom(15, 20);
+//            } else if (player.getAmountDonated() >= Donation.ONYX_DONATION_AMOUNT) {
+//                amountOfTickets += Misc.getRandom(12, 15);
+//                amountOfTickets2 += Misc.getRandom(12, 15);
+//            } else if (player.getAmountDonated() >= Donation.DIAMOND_DONATION_AMOUNT) {
+//                amountOfTickets += Misc.getRandom(10, 12);
+//                amountOfTickets2 += Misc.getRandom(10, 12);
+//            } else if (player.getAmountDonated() >= Donation.RUBY_DONATION_AMOUNT) {
+//                amountOfTickets += Misc.getRandom(7, 10);
+//                amountOfTickets2 += Misc.getRandom(7, 10);
+//            } else if (player.getAmountDonated() >= Donation.EMERALD_DONATION_AMOUNT) {
+//                amountOfTickets += Misc.getRandom(3, 7);
+//                amountOfTickets2 += Misc.getRandom(3, 7);
+//            } else if (player.getAmountDonated() >= Donation.SAPPHIRE_DONATION_AMOUNT) {
+//                amountOfTickets += Misc.getRandom(1, 5);
+//                amountOfTickets2 += Misc.getRandom(1, 5);
+//            }
 
             if (player.getSummoning() != null && player.getSummoning().getFamiliar() != null
                     && player.getSummoning().getFamiliar().getSummonNpc().getId() == BossPets.BossPet.RED_FENRIR_PET.npcId) {

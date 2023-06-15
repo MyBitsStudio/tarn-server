@@ -18,6 +18,7 @@ import com.ruse.world.entity.Entity;
 import com.ruse.world.entity.impl.Character;
 import com.ruse.world.entity.impl.npc.NPC;
 import com.ruse.world.entity.impl.player.Player;
+import com.ruse.world.packages.ranks.StaffRank;
 import com.ruse.world.region.Region;
 import com.ruse.world.region.RegionManager;
 import com.ruse.world.region.dynamic.DynamicRegion;
@@ -1196,7 +1197,7 @@ public class PacketSender {
      */
     public PacketSender sendRights() {
         PacketBuilder out = new PacketBuilder(127);
-        out.put(player.getRights().ordinal());
+        out.put(player.getRank().ordinal());
         player.getSession().queueMessage(out);
         return this;
     }
@@ -1258,7 +1259,7 @@ public class PacketSender {
         return this;
     }
 
-    public PacketSender sendPrivateMessage(long name, PlayerRights rights, byte[] message, int size) {
+    public PacketSender sendPrivateMessage(long name, StaffRank rights, byte[] message, int size) {
         PacketBuilder out = new PacketBuilder(196, PacketType.BYTE);
         out.putLong(name);
         out.putInt(player.getRelations().getPrivateMessageId());

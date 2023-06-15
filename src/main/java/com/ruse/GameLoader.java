@@ -20,7 +20,7 @@ import com.ruse.world.allornothing.DoubleOrNothing;
 import com.ruse.world.clip.region.RegionClipping;
 import com.ruse.world.content.*;
 import com.ruse.world.packages.attendance.DailyResetScheduler;
-import com.ruse.world.content.clans.ClanManager;
+import com.ruse.world.packages.clans.ClanManager;
 import com.ruse.world.content.combat.effect.CombatPoisonEffect.CombatPoisonData;
 import com.ruse.world.content.combat.strategy.CombatStrategies;
 import com.ruse.world.content.dialogue.DialogueManager;

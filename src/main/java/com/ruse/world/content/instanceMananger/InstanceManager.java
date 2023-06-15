@@ -2,7 +2,6 @@ package com.ruse.world.content.instanceMananger;
 
 import com.ruse.GameSettings;
 import com.ruse.model.Locations;
-import com.ruse.model.PlayerRights;
 import com.ruse.model.Position;
 import com.ruse.model.RegionInstance;
 import com.ruse.model.RegionInstance.RegionInstanceType;
@@ -12,7 +11,6 @@ import com.ruse.util.Misc;
 import com.ruse.world.World;
 import com.ruse.world.entity.impl.npc.NPC;
 import com.ruse.world.entity.impl.player.Player;
-import mysql.impl.Donation;
 
 public class InstanceManager {
 
@@ -116,67 +114,67 @@ public class InstanceManager {
 			World.register(npc_);
 		}
 		for (InstanceData data : values) {
-			if (npcId == data.getNpcid() && player.getRights().equals(PlayerRights.FORSAKEN_DONATOR)
-					|| NpcDefinition.forId(npcId).getName() == data.getName() && player.getRights().equals(PlayerRights.FORSAKEN_DONATOR)) {
-				player.setCurrentInstanceAmount(data.getEndamount() + Misc.getRandom(464, 465));//500
-				player.setCurrentInstanceNpcId(data.getNpcid());
-				player.setCurrentInstanceNpcName(data.getName());
-			}
-			else if (npcId == data.getNpcid() && player.getRights().equals(PlayerRights.OBSIDIAN_DONATOR)
-					|| NpcDefinition.forId(npcId).getName() == data.getName() && player.getRights().equals(PlayerRights.OBSIDIAN_DONATOR)) {
-				player.setCurrentInstanceAmount(data.getEndamount() + Misc.getRandom(314, 315));//350
-				player.setCurrentInstanceNpcId(data.getNpcid());
-				player.setCurrentInstanceNpcName(data.getName());
-			}
-			else if (npcId == data.getNpcid() && player.getRights().equals(PlayerRights.MYSTICAL_DONATOR)
-					|| NpcDefinition.forId(npcId).getName() == data.getName() && player.getRights().equals(PlayerRights.MYSTICAL_DONATOR)) {
-				player.setCurrentInstanceAmount(data.getEndamount() + Misc.getRandom(164, 165));//200
-				player.setCurrentInstanceNpcId(data.getNpcid());
-				player.setCurrentInstanceNpcName(data.getName());
-			}
-			else if (npcId == data.getNpcid() && player.getRights().equals(PlayerRights.TORMENTED_DONATOR)
-					|| NpcDefinition.forId(npcId).getName() == data.getName() && player.getRights().equals(PlayerRights.TORMENTED_DONATOR)) {
-				player.setCurrentInstanceAmount(data.getEndamount() + Misc.getRandom(89, 90));//125
-				player.setCurrentInstanceNpcId(data.getNpcid());
-				player.setCurrentInstanceNpcName(data.getName());
-			}
-			else if (npcId == data.getNpcid() && player.getRights().equals(PlayerRights.CLERIC_DONATOR)
-					|| NpcDefinition.forId(npcId).getName() == data.getName() && player.getRights().equals(PlayerRights.CLERIC_DONATOR)) {
-				player.setCurrentInstanceAmount(data.getEndamount() + Misc.getRandom(39, 40));//75
-				player.setCurrentInstanceNpcId(data.getNpcid());
-				player.setCurrentInstanceNpcName(data.getName());
-			}
-			else if (npcId == data.getNpcid() && player.getRights().equals(PlayerRights.GRACEFUL_DONATOR)
-					|| NpcDefinition.forId(npcId).getName() == data.getName() && player.getRights().equals(PlayerRights.GRACEFUL_DONATOR)) {
-				player.setCurrentInstanceAmount(data.getEndamount() + Misc.getRandom(14, 15));//50
-				player.setCurrentInstanceNpcId(data.getNpcid());
-				player.setCurrentInstanceNpcName(data.getName());
-			}
-			else if (npcId == data.getNpcid() && player.getRights().equals(PlayerRights.DEVELOPER)
-					|| NpcDefinition.forId(npcId).getName() == data.getName() && player.getRights().equals(PlayerRights.DEVELOPER)) {
-				player.setCurrentInstanceAmount(data.getEndamount() + Misc.getRandom(1555, 1556));//50
-				player.setCurrentInstanceNpcId(data.getNpcid());
-				player.setCurrentInstanceNpcName(data.getName());
-			}
-			else if (npcId == data.getNpcid() && player.getRights().equals(PlayerRights.HELPER)
-					|| NpcDefinition.forId(npcId).getName() == data.getName() && player.getRights().equals(PlayerRights.HELPER)) {
-				player.setCurrentInstanceAmount(data.getEndamount() + Misc.getRandom(464, 465));//50
-				player.setCurrentInstanceNpcId(data.getNpcid());
-				player.setCurrentInstanceNpcName(data.getName());
-			}
-			else if (npcId == data.getNpcid() && player.getRights().equals(PlayerRights.MODERATOR)
-					|| NpcDefinition.forId(npcId).getName() == data.getName() && player.getRights().equals(PlayerRights.MODERATOR)) {
-				player.setCurrentInstanceAmount(data.getEndamount() + Misc.getRandom(464, 465));//50
-				player.setCurrentInstanceNpcId(data.getNpcid());
-				player.setCurrentInstanceNpcName(data.getName());
-			}
-			else if (npcId == data.getNpcid() && player.getRights().equals(PlayerRights.ADMINISTRATOR)
-					|| NpcDefinition.forId(npcId).getName() == data.getName() && player.getRights().equals(PlayerRights.ADMINISTRATOR)) {
-				player.setCurrentInstanceAmount(data.getEndamount() + Misc.getRandom(1555, 1556));//50
-				player.setCurrentInstanceNpcId(data.getNpcid());
-				player.setCurrentInstanceNpcName(data.getName());
-			}
-			else if (npcId == data.getNpcid() || NpcDefinition.forId(npcId).getName() == data.getName()) {
+//			if (npcId == data.getNpcid() && player.getRights().equals(PlayerRights.FORSAKEN_DONATOR)
+//					|| NpcDefinition.forId(npcId).getName() == data.getName() && player.getRights().equals(PlayerRights.FORSAKEN_DONATOR)) {
+//				player.setCurrentInstanceAmount(data.getEndamount() + Misc.getRandom(464, 465));//500
+//				player.setCurrentInstanceNpcId(data.getNpcid());
+//				player.setCurrentInstanceNpcName(data.getName());
+//			}
+//			else if (npcId == data.getNpcid() && player.getRights().equals(PlayerRights.OBSIDIAN_DONATOR)
+//					|| NpcDefinition.forId(npcId).getName() == data.getName() && player.getRights().equals(PlayerRights.OBSIDIAN_DONATOR)) {
+//				player.setCurrentInstanceAmount(data.getEndamount() + Misc.getRandom(314, 315));//350
+//				player.setCurrentInstanceNpcId(data.getNpcid());
+//				player.setCurrentInstanceNpcName(data.getName());
+//			}
+//			else if (npcId == data.getNpcid() && player.getRights().equals(PlayerRights.MYSTICAL_DONATOR)
+//					|| NpcDefinition.forId(npcId).getName() == data.getName() && player.getRights().equals(PlayerRights.MYSTICAL_DONATOR)) {
+//				player.setCurrentInstanceAmount(data.getEndamount() + Misc.getRandom(164, 165));//200
+//				player.setCurrentInstanceNpcId(data.getNpcid());
+//				player.setCurrentInstanceNpcName(data.getName());
+//			}
+//			else if (npcId == data.getNpcid() && player.getRights().equals(PlayerRights.TORMENTED_DONATOR)
+//					|| NpcDefinition.forId(npcId).getName() == data.getName() && player.getRights().equals(PlayerRights.TORMENTED_DONATOR)) {
+//				player.setCurrentInstanceAmount(data.getEndamount() + Misc.getRandom(89, 90));//125
+//				player.setCurrentInstanceNpcId(data.getNpcid());
+//				player.setCurrentInstanceNpcName(data.getName());
+//			}
+//			else if (npcId == data.getNpcid() && player.getRights().equals(PlayerRights.CLERIC_DONATOR)
+//					|| NpcDefinition.forId(npcId).getName() == data.getName() && player.getRights().equals(PlayerRights.CLERIC_DONATOR)) {
+//				player.setCurrentInstanceAmount(data.getEndamount() + Misc.getRandom(39, 40));//75
+//				player.setCurrentInstanceNpcId(data.getNpcid());
+//				player.setCurrentInstanceNpcName(data.getName());
+//			}
+//			else if (npcId == data.getNpcid() && player.getRights().equals(PlayerRights.GRACEFUL_DONATOR)
+//					|| NpcDefinition.forId(npcId).getName() == data.getName() && player.getRights().equals(PlayerRights.GRACEFUL_DONATOR)) {
+//				player.setCurrentInstanceAmount(data.getEndamount() + Misc.getRandom(14, 15));//50
+//				player.setCurrentInstanceNpcId(data.getNpcid());
+//				player.setCurrentInstanceNpcName(data.getName());
+//			}
+//			else if (npcId == data.getNpcid() && player.getRights().equals(PlayerRights.DEVELOPER)
+//					|| NpcDefinition.forId(npcId).getName() == data.getName() && player.getRights().equals(PlayerRights.DEVELOPER)) {
+//				player.setCurrentInstanceAmount(data.getEndamount() + Misc.getRandom(1555, 1556));//50
+//				player.setCurrentInstanceNpcId(data.getNpcid());
+//				player.setCurrentInstanceNpcName(data.getName());
+//			}
+//			else if (npcId == data.getNpcid() && player.getRights().equals(PlayerRights.HELPER)
+//					|| NpcDefinition.forId(npcId).getName() == data.getName() && player.getRights().equals(PlayerRights.HELPER)) {
+//				player.setCurrentInstanceAmount(data.getEndamount() + Misc.getRandom(464, 465));//50
+//				player.setCurrentInstanceNpcId(data.getNpcid());
+//				player.setCurrentInstanceNpcName(data.getName());
+//			}
+//			else if (npcId == data.getNpcid() && player.getRights().equals(PlayerRights.MODERATOR)
+//					|| NpcDefinition.forId(npcId).getName() == data.getName() && player.getRights().equals(PlayerRights.MODERATOR)) {
+//				player.setCurrentInstanceAmount(data.getEndamount() + Misc.getRandom(464, 465));//50
+//				player.setCurrentInstanceNpcId(data.getNpcid());
+//				player.setCurrentInstanceNpcName(data.getName());
+//			}
+//			else if (npcId == data.getNpcid() && player.getRights().equals(PlayerRights.ADMINISTRATOR)
+//					|| NpcDefinition.forId(npcId).getName() == data.getName() && player.getRights().equals(PlayerRights.ADMINISTRATOR)) {
+//				player.setCurrentInstanceAmount(data.getEndamount() + Misc.getRandom(1555, 1556));//50
+//				player.setCurrentInstanceNpcId(data.getNpcid());
+//				player.setCurrentInstanceNpcName(data.getName());
+//			}
+			if (npcId == data.getNpcid() || NpcDefinition.forId(npcId).getName() == data.getName()) {
 				player.setCurrentInstanceAmount(data.getEndamount());
 				player.setCurrentInstanceNpcId(data.getNpcid());
 				player.setCurrentInstanceNpcName(data.getName());

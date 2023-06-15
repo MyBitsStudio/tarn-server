@@ -21,7 +21,9 @@ public class PlayerSecureSave extends SecureSave {
         object.addProperty("username", player.getUsername());
         object.addProperty("total-play-time", player.getTotalPlayTime());
 
-        object.addProperty("staff-rights", player.getRights().name());
+        object.addProperty("staff", player.getRank().name());
+        object.addProperty("donator", player.getDonator().name());
+        object.addProperty("vip", player.getVip().name());
         object.addProperty("game-mode", player.getGameMode().name());
 
         object.addProperty("yellhexcolor", player.getYellHex() == null ? "ffffff" : player.getYellHex());

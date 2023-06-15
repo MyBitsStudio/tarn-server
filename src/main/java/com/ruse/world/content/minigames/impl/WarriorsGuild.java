@@ -7,7 +7,6 @@ import com.ruse.model.GameObject;
 import com.ruse.model.Graphic;
 import com.ruse.model.GroundItem;
 import com.ruse.model.Item;
-import com.ruse.model.PlayerRights;
 import com.ruse.model.Position;
 import com.ruse.model.RegionInstance;
 import com.ruse.model.Locations.Location;
@@ -46,7 +45,7 @@ public class WarriorsGuild {
 	 */
 	public static boolean itemOnAnimator(final Player player, final Item item, final GameObject object) {
 		if (player.getMinigameAttributes().getWarriorsGuildAttributes().hasSpawnedArmour()
-				&& player.getRights() != PlayerRights.DEVELOPER) {
+				&& player.getRank().isDeveloper()) {
 			player.getPacketSender().sendMessage("You have already spawned some animated armour.");
 			return true;
 		} else {
@@ -157,7 +156,7 @@ public class WarriorsGuild {
 	/**
 	 * Warriors guild dialogue, handles what Kamfreena says.
 	 * 
-	 * @param Player The player to show the dialogue for acording to their stats.
+	 * @param  The player to show the dialogue for acording to their stats.
 	 */
 	public static Dialogue warriorsGuildDialogue(final Player player) {
 		return new Dialogue() {

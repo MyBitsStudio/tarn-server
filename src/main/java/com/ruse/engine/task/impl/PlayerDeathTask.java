@@ -12,7 +12,6 @@ import com.ruse.model.GameMode;
 import com.ruse.model.GroundItem;
 import com.ruse.model.Item;
 import com.ruse.model.Locations.Location;
-import com.ruse.model.PlayerRights;
 import com.ruse.model.Position;
 import com.ruse.model.Skill;
 import com.ruse.model.definitions.ItemDefinition;
@@ -108,20 +107,17 @@ public class PlayerDeathTask extends Task {
                         DamageDealer damageDealer = player.getCombatBuilder().getTopDamageDealer(true, null);
                         Player killer = damageDealer == null ? null : damageDealer.getPlayer();
 
-                        if (player.getRights().equals(PlayerRights.ADMINISTRATOR)
-                                || player.getRights().equals(PlayerRights.DEVELOPER))
+                        if (player.getRank().isAdmin())
                             dropItems = false;
                         if (loc == Location.WILDERNESS) {
-                            if (killer != null && (killer.getRights().equals(PlayerRights.ADMINISTRATOR)
-                                    || killer.getRights().equals(PlayerRights.DEVELOPER))) // ||
+                            if (killer != null && (killer.getRank().isAdmin())) // ||
                                 // killer.getGameMode().equals(GameMode.IRONMAN)
                                 // ||
                                 // killer.getGameMode().equals(GameMode.ULTIMATE_IRONMAN)))
                                 dropItems = false;
                         }
                         if (killer != null) {
-                            if (killer.getRights().equals(PlayerRights.ADMINISTRATOR)
-                                    || killer.getRights().equals(PlayerRights.DEVELOPER)) {
+                            if (killer.getRank().isAdmin()) {
                                 dropItems = false;
                             }
                         }

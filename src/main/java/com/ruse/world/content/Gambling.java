@@ -10,8 +10,8 @@ import com.ruse.world.entity.impl.player.Player;
 public class Gambling {
 
 	public static void rollDice(Player player) {
-		if (!player.getRights().isMember()) {
-			player.getPacketSender().sendMessage("You need to be a member to use this item.");
+		if (!player.getRank().isStaff()) {
+			player.getPacketSender().sendMessage("You need to be a staff to use this item.");
 			return;
 		}
 		if(player.getClanChatName() == null) {
@@ -54,8 +54,8 @@ public class Gambling {
 	}
 
 	public static void ScamrollDice(Player player) {
-		if (!player.getRights().isMember()) {
-			player.getPacketSender().sendMessage("You need to be a member to use this item.");
+		if (!player.getRank().isStaff()) {
+			player.getPacketSender().sendMessage("You need to be a staff to use this item.");
 			return;
 		}
 		if (player.getClanChatName() == null) {
@@ -90,8 +90,8 @@ public class Gambling {
 	}
 
 	public static void plantSeed(Player player) {
-		if (player.getRights() == PlayerRights.PLAYER) {
-			player.getPacketSender().sendMessage("You need to be a member to use this item.");
+		if (!player.getRank().isStaff()) {
+			player.getPacketSender().sendMessage("You need to be a staff to use this item.");
 			return;
 		}
 		if (!player.getClickDelay().elapsed(3000))

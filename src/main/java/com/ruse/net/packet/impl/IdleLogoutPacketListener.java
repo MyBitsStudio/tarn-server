@@ -1,6 +1,5 @@
 package com.ruse.net.packet.impl;
 
-import com.ruse.model.PlayerRights;
 import com.ruse.net.packet.Packet;
 import com.ruse.net.packet.PacketListener;
 import com.ruse.world.entity.impl.player.Player;
@@ -11,8 +10,7 @@ public class IdleLogoutPacketListener implements PacketListener {
 
 	@Override
 	public void handleMessage(Player player, Packet packet) {
-		if (player.getRights() == PlayerRights.MODERATOR || player.getRights() == PlayerRights.ADMINISTRATOR
-			 || player.getRights() == PlayerRights.DEVELOPER)
+		if (player.getRank().isStaff())
 			return;
 		/*
 		 * if(player.logout() &&
@@ -21,5 +19,6 @@ public class IdleLogoutPacketListener implements PacketListener {
 		 * { World.removePlayer(player); }
 		 */
 		player.setInactive(true);
+		System.out.println("Player " + player.getUsername() + " has been set to inactive.");
 	}
 }

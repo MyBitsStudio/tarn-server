@@ -58,7 +58,9 @@ class LoginWorker(val boss: LoginService) : Runnable {
                         if (loginResult == LoginResponses.LOGIN_SUCCESSFUL) {
                             val successResponseBuilder = PacketBuilder()
                             successResponseBuilder.put(2)
-                            successResponseBuilder.put(player.rights.ordinal)
+                            successResponseBuilder.put(player.rank.ordinal)
+                            successResponseBuilder.put(player.donator.ordinal)
+                            successResponseBuilder.put(player.vip.ordinal)
                             successResponseBuilder.put(0)
                             successResponseBuilder.put(0)
                             channel.write(successResponseBuilder.toPacket())

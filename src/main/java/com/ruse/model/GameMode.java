@@ -22,21 +22,21 @@ public enum GameMode {
 			return;
 		player.getClickDelay().reset();
 		player.getPacketSender().sendInterfaceRemoval();
-		if (player.getGameMode() == IRONMAN && newMode != NORMAL && (!(player.getRights().OwnerDeveloperOnly()))) {
+		if (player.getGameMode() == IRONMAN && newMode != NORMAL && (!(player.getRank().isDeveloper()))) {
 			player.getPacketSender().sendMessage("As an Iron Man, you can only set your game mode to Normal mode.");
 			player.setPlayerLocked(false);
 			player.getPacketSender().sendInterfaceRemoval();
 			return;
 		}
 		if (player.getGameMode() == ULTIMATE_IRONMAN && newMode == ULTIMATE_IRONMAN
-				&& (!(player.getRights().OwnerDeveloperOnly()))) {
+				&& (!(player.getRank().isDeveloper()))) {
 			player.getPacketSender().sendMessage("You already are a Ultimate Ironman, that would be pointless!");
 			player.setPlayerLocked(false);
 			player.getPacketSender().sendInterfaceRemoval();
 			return;
 		}
 		if (player.getGameMode() == ULTIMATE_IRONMAN && newMode == IRONMAN
-				&& (!(player.getRights().OwnerDeveloperOnly()))) {
+				&& (!(player.getRank().isDeveloper()))) {
 			player.getBank(0).add(16691, 1).add(9704, 1).add(17239, 1).add(16669, 1).add(16339, 1).add(6068, 1)
 					.add(9703, 1);
 			player.getPacketSender().sendMessage("Your new Iron Man armour has been sent to your bank!");

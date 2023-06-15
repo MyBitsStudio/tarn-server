@@ -4,7 +4,6 @@ import com.ruse.engine.task.Task;
 import com.ruse.engine.task.TaskManager;
 import com.ruse.model.GameMode;
 import com.ruse.model.Locations.Location;
-import com.ruse.model.PlayerRights;
 import com.ruse.model.Prayerbook;
 import com.ruse.model.Skill;
 import com.ruse.model.container.impl.Equipment;
@@ -16,7 +15,6 @@ import com.ruse.world.content.combat.CombatType;
 import com.ruse.world.content.minigames.impl.Dueling;
 import com.ruse.world.content.minigames.impl.Dueling.DuelRule;
 import com.ruse.world.entity.impl.player.Player;
-import mysql.impl.Donation;
 
 import java.util.HashMap;
 
@@ -507,7 +505,7 @@ public class PrayerHandler {
 	 * @param player The player to get drain amount for.
 	 * @return The amount of prayer that will be drained from the player.
 	 */
-	private static final double getDrain(Player player) {
+	private static double getDrain(Player player) {
 		double toRemove = 0.0;
 
 		for (int i = 0; i < player.getPrayerActive().length; i++) {
@@ -540,19 +538,24 @@ public class PrayerHandler {
 		/**
 		 * Donator Rank Bonusses
 		 */
-		if(player.getAmountDonated() >= Donation.ZENYTE_DONATION_AMOUNT || player.getRights().equals(PlayerRights.YOUTUBER)) {
-			toRemove *= 0;
-		} else if(player.getAmountDonated() >= Donation.ONYX_DONATION_AMOUNT) {
-			toRemove *= 0;
-		} else if(player.getAmountDonated() >= Donation.DIAMOND_DONATION_AMOUNT) {
-			toRemove *= 0.0;
-		} else if(player.getAmountDonated() >= Donation.RUBY_DONATION_AMOUNT) {
-			toRemove *= 0.50;
-		} else if(player.getAmountDonated() >= Donation.EMERALD_DONATION_AMOUNT) {
-			toRemove *= 0.40;
-		} else if(player.getAmountDonated() >= Donation.SAPPHIRE_DONATION_AMOUNT) {
+		if(player.getDonator().isForsakenPlus()){
 			toRemove *= 0.35;
+		} else if(player.getDonator().isClericPlus()){
+			toRemove *= 0.50;
 		}
+//		if(player.getAmountDonated() >= Donation.ZENYTE_DONATION_AMOUNT || player.getRights().equals(PlayerRights.YOUTUBER)) {
+//			toRemove *= 0;
+//		} else if(player.getAmountDonated() >= Donation.ONYX_DONATION_AMOUNT) {
+//			toRemove *= 0;
+//		} else if(player.getAmountDonated() >= Donation.DIAMOND_DONATION_AMOUNT) {
+//			toRemove *= 0.0;
+//		} else if(player.getAmountDonated() >= Donation.RUBY_DONATION_AMOUNT) {
+//			toRemove *= 0.50;
+//		} else if(player.getAmountDonated() >= Donation.EMERALD_DONATION_AMOUNT) {
+//			toRemove *= 0.40;
+//		} else if(player.getAmountDonated() >= Donation.SAPPHIRE_DONATION_AMOUNT) {
+//			toRemove *= 0.35;
+//		}
 
 		if (toRemove > 0) {
 			toRemove /= (1 + (0.05 * player.getBonusManager().getOtherBonus()[2]));

@@ -1109,7 +1109,7 @@ public class Locations {
 		JAIL(new int[] { 2505, 2535 }, new int[] { 9310, 9330 }, false, false, false, false, false, false) {
 			@Override
 			public boolean canTeleport(Player player) {
-				if (player.getRights().isStaff()) {
+				if (player.getRank().isStaff()) {
 					player.getPacketSender().sendMessage("Staff can leave at any time.");
 					return true;
 				}
@@ -1156,7 +1156,7 @@ public class Locations {
 		NEW_MEMBER_ZONE(new int[] { 2792, 2877 }, new int[] { 3319, 3396 }, false, true, true, false, true, true) {
 			@Override
 			public void process(Player player) {
-				if (!player.getRights().isMember() && !player.newPlayer()) {
+				if (!player.getDonator().isClericPlus() && !player.newPlayer()) {
 					// player.getPacketSender().sendMessage("This area is for Members only.");
 					// player.moveTo(GameSettings.HOME_CORDS);
 				}

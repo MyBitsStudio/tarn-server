@@ -580,7 +580,7 @@ public class PestControl {
 	 * @param cost   The amount it costs to buy this item
 	 */
 	public static void buyFromShop(Player p, boolean item, int id, int amount, int cost) {
-		if (p.getPointsHandler().getCommendations() < cost && p.getRights() != PlayerRights.DEVELOPER) {
+		if (p.getPointsHandler().getCommendations() < cost && p.getRank().isDeveloper()) {
 			p.getPacketSender().sendMessage("You don't have enough Commendations to purchase this.");
 			return;
 		}

@@ -1,7 +1,6 @@
 package com.ruse.net.login;
 
 import com.ruse.GameSettings;
-import com.ruse.model.PlayerRights;
 import com.ruse.net.PlayerSession;
 import com.ruse.net.login.captcha.Captcha;
 import com.ruse.net.login.captcha.CaptchaManager;
@@ -14,6 +13,9 @@ import com.ruse.util.StringCleaner;
 import com.ruse.world.World;
 import com.ruse.world.entity.impl.player.Player;
 import com.ruse.world.entity.impl.player.PlayerLoading;
+import com.ruse.world.packages.ranks.DonatorRank;
+import com.ruse.world.packages.ranks.StaffRank;
+import com.ruse.world.packages.ranks.VIPRank;
 import com.server.service.login.LoginServiceRequest;
 import com.server.service.login.ServiceManager;
 import org.jboss.netty.buffer.ChannelBuffer;
@@ -253,7 +255,9 @@ public final class LoginDecoder extends FrameDecoder {
 
         final PacketBuilder builder = new PacketBuilder()
                 .put((byte) 2)
-                .put((byte) PlayerRights.PLAYER.ordinal())
+                .put((byte) StaffRank.PLAYER.ordinal())
+                .put((byte) DonatorRank.NONE.ordinal())
+                .put((byte) VIPRank.NONE.ordinal())
                 .put((byte) 0)
                 .put((byte) captchaResponse)
                 .putShort(image.length)
@@ -394,7 +398,8 @@ public final class LoginDecoder extends FrameDecoder {
 
                 }
 
-                PacketBuilder builder = new PacketBuilder().put((byte) 2).put((byte) player.getRights().ordinal())
+                PacketBuilder builder = new PacketBuilder().put((byte) 2).put((byte) player.getRank().ordinal())
+                        .put((byte) player.getDonator().ordinal()).put((byte) player.getVip().ordinal())
                         .put((byte) 0).put((byte) 0);
 
                 if (captchaResponse != 0) {
@@ -408,7 +413,8 @@ public final class LoginDecoder extends FrameDecoder {
                 }
 
             } else {
-                channel.write(new PacketBuilder().put((byte) 2).put((byte) player.getRights().ordinal())
+                channel.write(new PacketBuilder().put((byte) 2).put((byte) player.getRank().ordinal())
+                        .put((byte) player.getDonator().ordinal()).put((byte) player.getVip().ordinal())
                         .put((byte) 0).put((byte) 0).toPacket());
             }
 

@@ -421,7 +421,7 @@ public class PlayerUpdating {
 		Message message = target.getChatMessages().get();
 		byte[] bytes = message.getText();
 		builder.putShort(((message.getColour() & 0xff) << 8) | (message.getEffects() & 0xff), ByteOrder.LITTLE);
-		builder.put(target.getRights().ordinal());
+		builder.put(target.getRank().ordinal());
 		builder.put(target.getGameMode().ordinal());
 		builder.put(bytes.length, ValueType.C);
 		builder.putBytesReverse(bytes);
@@ -677,7 +677,9 @@ public class PlayerUpdating {
 
 		properties.putLong(target.getLongUsername());
 		properties.put(target.getSkillManager().getCombatLevel());
-		properties.putShort(target.getRights().ordinal());
+		properties.putShort(target.getRank().ordinal());
+		properties.putShort(target.getDonator().ordinal());
+		properties.putShort(target.getVip().ordinal());
 		properties.putShort(target.getLoyaltyTitle().ordinal());
 		properties.putShort(target instanceof MiniPlayer ? 1 : 0);
 		out.put(properties.buffer().writerIndex(), ValueType.C);

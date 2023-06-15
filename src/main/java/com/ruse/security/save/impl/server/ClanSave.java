@@ -1,17 +1,10 @@
 package com.ruse.security.save.impl.server;
 
 import com.ruse.security.save.SecureSave;
-import com.ruse.security.tools.SecurityUtils;
-import com.ruse.world.content.clans.Clan;
-import com.ruse.world.content.clans.ClanManager;
-import com.ruse.world.entity.impl.player.Player;
+import com.ruse.world.packages.clans.Clan;
 
 import java.io.FileWriter;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 
 public class ClanSave extends SecureSave {
 

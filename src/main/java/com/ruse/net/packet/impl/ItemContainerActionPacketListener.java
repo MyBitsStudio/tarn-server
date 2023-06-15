@@ -49,7 +49,7 @@ public class ItemContainerActionPacketListener implements PacketListener {
 		Item item = new Item(id, 1, ItemEffect.values()[effect], bonus);
 		//System.out.println(id + ", " + slot + ", " + interfaceId + ", " + effect + ", " + bonus);
 
-		if (player.getRights().isDeveloperOnly()) {
+		if (player.getRank().isDeveloper()) {
 			player.getPacketSender().sendMessage("firstAction itemContainer. IF: " + interfaceId + " slot: " + slot + ", id: " + id);
 		}
 		switch (interfaceId) {
@@ -306,7 +306,7 @@ public class ItemContainerActionPacketListener implements PacketListener {
 		int bonus = packet.readShortA();
 		//System.out.println(id + ", " + slot + ", " + interfaceId + ", " + effect + ", " + bonus);
 		Item item = new Item(id, 1, ItemEffect.values()[effect], bonus);
-		if (player.getRights().isDeveloperOnly()) {
+		if (player.getRank().isDeveloper()) {
 			player.getPacketSender().sendMessage("secondAction itemContainer. IF: " + interfaceId + " slot: " + slot + ", id: " + id);
 		}
 		switch (interfaceId) {
@@ -483,7 +483,7 @@ public class ItemContainerActionPacketListener implements PacketListener {
 		int bonus = packet.readShortA();
 		Item item1 = new Item(id, 1, ItemEffect.values()[effect], bonus);
 		//System.out.println("thirdAction itemContainer. IF: " + interfaceId + " slot: " + slot + ", id: " + id + ", effect: " + effect + ", bonus: " + bonus);
-		if (player.getRights().isDeveloperOnly()) {
+		if (player.getRank().isDeveloper()) {
 			player.getPacketSender()
 					.sendMessage("thirdAction itemContainer. IF: " + interfaceId + " slot: " + slot + ", id: " + id);
 		}
@@ -764,7 +764,7 @@ public class ItemContainerActionPacketListener implements PacketListener {
 		int id = packet.readShortA();
 		int effect = packet.readShortA();
 		int bonus = packet.readShortA();
-		if (player.getRights().isDeveloperOnly()) {
+		if (player.getRank().isDeveloper()) {
 			player.getPacketSender()
 					.sendMessage("fourthAction itemContainer. IF: " + interfaceId + " slot: " + slot + ", id: " + id);
 		}
@@ -945,7 +945,7 @@ public class ItemContainerActionPacketListener implements PacketListener {
 		int id = packet.readShortA();
 		int effect = packet.readShortA();
 		int bonus = packet.readShortA();
-		if (player.getRights().isDeveloperOnly()) {
+		if (player.getRank().isDeveloper()) {
 			player.getPacketSender().sendMessage("fifthAction itemContainer. IF: " + interfaceId + " slot: " + slot + ", id: " + id);
 		}
 		switch (interfaceId) {
@@ -1107,7 +1107,7 @@ public class ItemContainerActionPacketListener implements PacketListener {
 		int id = packet.readShortA();
 		int effect = packet.readShortA();
 		int bonus = packet.readShortA();
-		if (player.getRights().isDeveloperOnly()) {
+		if (player.getRank().isDeveloper()) {
 			player.getPacketSender().sendMessage("sixthAction itemContainer. IF: " + interfaceId + " slot: " + slot + ", id: " + id);
 		}
 		switch (interfaceId) {

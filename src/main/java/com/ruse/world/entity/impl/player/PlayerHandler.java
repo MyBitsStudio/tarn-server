@@ -19,7 +19,6 @@ import com.ruse.world.World;
 import com.ruse.world.allornothing.DoubleOrNothing;
 import com.ruse.world.content.*;
 import com.ruse.world.content.KillsTracker.KillsEntry;
-import com.ruse.world.content.clans.ClanManager;
 import com.ruse.world.content.combat.effect.CombatPoisonEffect;
 import com.ruse.world.content.combat.effect.CombatTeleblockEffect;
 import com.ruse.world.content.combat.magic.Autocasting;
@@ -29,9 +28,11 @@ import com.ruse.world.content.combat.pvp.BountyHunter;
 import com.ruse.world.content.combat.range.DwarfMultiCannon;
 import com.ruse.world.content.combat.weapon.CombatSpecial;
 import com.ruse.world.content.grandLottery.GrandLottery;
+import com.ruse.world.packages.clans.ClanManager;
 import com.ruse.world.packages.instances.InstanceManager;
 import com.ruse.world.content.minigames.impl.Barrows;
 import com.ruse.world.content.minigames.impl.VoidOfDarkness;
+import com.ruse.world.packages.ranks.StaffRank;
 import com.ruse.world.packages.seasonpass.SeasonPassConfig;
 import com.ruse.world.packages.seasonpass.SeasonPassManager;
 import com.ruse.world.content.serverperks.ServerPerks;
@@ -42,7 +43,6 @@ import com.ruse.world.content.transportation.TeleportHandler;
 import com.ruse.world.entity.impl.GlobalItemSpawner;
 import com.ruse.world.entity.impl.mini.MiniPlayer;
 import com.ruse.world.instance.MapInstance;
-import mysql.impl.Donation;
 
 import static com.ruse.world.entity.impl.player.PlayerFlags.FORCE_KICK;
 
@@ -307,85 +307,44 @@ public class PlayerHandler {
 
         player.getPacketSender().updateSpecialAttackOrb().sendIronmanMode(player.getGameMode().ordinal());
 
-        if (player.getRights() == PlayerRights.HELPER && player.getAmountDonated() <= Donation.SAPPHIRE_DONATION_AMOUNT)
-            World.sendMessage(("<shad=0><col=255><img=5> Helper "
-                    + player.getUsername() + " has just logged in!"));
-
-        if (player.getRights() == PlayerRights.HELPER && player.getAmountDonated() >= Donation.SAPPHIRE_DONATION_AMOUNT && player.getAmountDonated() < Donation.EMERALD_DONATION_AMOUNT)
-            World.sendMessage(("<shad=0><col=255><img=5><img=6> Helper "
-                    + player.getUsername() + " has just logged in!"));
-        if (player.getRights() == PlayerRights.HELPER && player.getAmountDonated() >= Donation.EMERALD_DONATION_AMOUNT && player.getAmountDonated() < Donation.RUBY_DONATION_AMOUNT)
-            World.sendMessage(("<shad=0><col=255><img=5><img=7> Helper "
-                    + player.getUsername() + " has just logged in!"));
-        if (player.getRights() == PlayerRights.HELPER && player.getAmountDonated() >= Donation.RUBY_DONATION_AMOUNT && player.getAmountDonated() < Donation.DIAMOND_DONATION_AMOUNT)
-            World.sendMessage(("<shad=0><col=255><img=5><img=8> Helper "
-                    + player.getUsername() + " has just logged in!"));
-        if (player.getRights() == PlayerRights.HELPER && player.getAmountDonated() >= Donation.DIAMOND_DONATION_AMOUNT && player.getAmountDonated() < Donation.ONYX_DONATION_AMOUNT)
-            World.sendMessage(("<shad=0><col=255><img=5><img=9> Helper "
-                    + player.getUsername() + " has just logged in!"));
-        if (player.getRights() == PlayerRights.HELPER && player.getAmountDonated() >= Donation.ONYX_DONATION_AMOUNT && player.getAmountDonated() < Donation.ZENYTE_DONATION_AMOUNT)
-            World.sendMessage(("<shad=0><col=" + player.getYellHex() + "> <img=5><img=3> Helper "
+        if(player.getRank() == StaffRank.TRAIL_STAFF){
+            World.sendMessage(("<shad=0><col=" + player.getYellHex() + "> <img=5><img=1508> Trial Staff "
                     + player.getUsername() + " has just logged in."));
-        if (player.getRights() == PlayerRights.HELPER && player.getAmountDonated() >= Donation.ZENYTE_DONATION_AMOUNT)
+        }
+        if(player.getRank() == StaffRank.HELPER){
             World.sendMessage(("<shad=0><col=" + player.getYellHex() + "> <img=5><img=1508> Helper "
                     + player.getUsername() + " has just logged in."));
-
-        if (player.getRights() == PlayerRights.MODERATOR && player.getAmountDonated() <= Donation.SAPPHIRE_DONATION_AMOUNT)
-            World.sendMessage(("<shad=0><col=" + player.getYellHex() + "> <img=1> Moderator "
-                    + player.getUsername() + " has just logged in."));
-
-
-        if (player.getRights() == PlayerRights.MODERATOR && player.getAmountDonated() >= Donation.SAPPHIRE_DONATION_AMOUNT && player.getAmountDonated() < Donation.EMERALD_DONATION_AMOUNT)
-            World.sendMessage(("<shad=0><col=" + player.getYellHex() + "> <img=1><img=6> Moderator "
-                    + player.getUsername() + " has just logged in."));
-        if (player.getRights() == PlayerRights.MODERATOR && player.getAmountDonated() >= Donation.EMERALD_DONATION_AMOUNT && player.getAmountDonated() < Donation.RUBY_DONATION_AMOUNT)
-            World.sendMessage(("<shad=0><col=" + player.getYellHex() + "> <img=1><img=7> Moderator "
-                    + player.getUsername() + " has just logged in."));
-        if (player.getRights() == PlayerRights.MODERATOR && player.getAmountDonated() >= Donation.RUBY_DONATION_AMOUNT && player.getAmountDonated() < Donation.DIAMOND_DONATION_AMOUNT)
-            World.sendMessage(("<shad=0><col=" + player.getYellHex() + "> <img=1><img=8> Moderator "
-                    + player.getUsername() + " has just logged in."));
-        if (player.getRights() == PlayerRights.MODERATOR && player.getAmountDonated() >= Donation.DIAMOND_DONATION_AMOUNT && player.getAmountDonated() < Donation.ONYX_DONATION_AMOUNT)
-            World.sendMessage(("<shad=0><col=" + player.getYellHex() + "> <img=1><img=9> Moderator "
-                    + player.getUsername() + " has just logged in."));
-        if (player.getRights() == PlayerRights.MODERATOR && player.getAmountDonated() >= Donation.ONYX_DONATION_AMOUNT && player.getAmountDonated() < Donation.ZENYTE_DONATION_AMOUNT)
-            World.sendMessage(("<shad=0><col=" + player.getYellHex() + "> <img=1><img=3> Moderator "
-                    + player.getUsername() + " has just logged in."));
-        if (player.getRights() == PlayerRights.MODERATOR && player.getAmountDonated() >= Donation.ZENYTE_DONATION_AMOUNT)
+        }
+        if(player.getRank() == StaffRank.MODERATOR){
             World.sendMessage(("<shad=0><col=" + player.getYellHex() + "> <img=1><img=1508> Moderator "
                     + player.getUsername() + " has just logged in."));
-
-        if (player.getRights() == PlayerRights.ADMINISTRATOR && player.getAmountDonated() < Donation.SAPPHIRE_DONATION_AMOUNT)
-            World.sendMessage(("<shad=0><col=" + player.getYellHex() + "> <img=2> Administrator "
-                    + player.getUsername() + " has just logged in."));
-        else if (player.getRights() == PlayerRights.ADMINISTRATOR && player.getAmountDonated() >= Donation.SAPPHIRE_DONATION_AMOUNT && player.getAmountDonated() < Donation.EMERALD_DONATION_AMOUNT)
-            World.sendMessage(("<shad=0><col=" + player.getYellHex() + "> <img=2><img=6> Administrator "
-                    + player.getUsername() + " has just logged in."));
-        else if (player.getRights() == PlayerRights.ADMINISTRATOR && player.getAmountDonated() >= Donation.EMERALD_DONATION_AMOUNT && player.getAmountDonated() < Donation.RUBY_DONATION_AMOUNT)
-            World.sendMessage(("<shad=0><col=" + player.getYellHex() + "> <img=2><img=7> Administrator "
-                    + player.getUsername() + " has just logged in."));
-        else  if (player.getRights() == PlayerRights.ADMINISTRATOR && player.getAmountDonated() >= Donation.RUBY_DONATION_AMOUNT && player.getAmountDonated() < Donation.DIAMOND_DONATION_AMOUNT)
-            World.sendMessage(("<shad=0><col=" + player.getYellHex() + "> <img=2><img=8> Administrator "
-                    + player.getUsername() + " has just logged in."));
-        else  if (player.getRights() == PlayerRights.ADMINISTRATOR && player.getAmountDonated() >= Donation.DIAMOND_DONATION_AMOUNT && player.getAmountDonated() <= Donation.ONYX_DONATION_AMOUNT)
-            World.sendMessage(("<shad=0><col=" + player.getYellHex() + "> <img=2><img=9> Administrator "
-                    + player.getUsername() + " has just logged in."));
-        else if (player.getRights() == PlayerRights.ADMINISTRATOR && player.getAmountDonated() >= Donation.ONYX_DONATION_AMOUNT)
+        }
+        if(player.getRank() == StaffRank.ADMINISTRATOR){
             World.sendMessage(("<shad=0><col=" + player.getYellHex() + "> <img=2><img=3> Administrator "
                     + player.getUsername() + " has just logged in."));
-
-        if (player.getRights() == PlayerRights.YOUTUBER && player.getAmountDonated() >= 10000)
-            World.sendMessage(("<shad=0><col=" + player.getYellHex() + "><img=10> @red@Media Manager@whi@ "
+        }
+        if(player.getRank() == StaffRank.MANAGER){
+            World.sendMessage(("<shad=0><col=" + player.getYellHex() + "> <img=2><img=3> Manager "
                     + player.getUsername() + " has just logged in."));
-        if (player.getRights() == PlayerRights.FORSAKEN_DONATOR)
-            World.sendMessage(("<shad=0>@or2@<img=1508> [Forsaken Donator] "
-                    + player.getUsername() + " has just logged in."));
-        if (player.getRights() == PlayerRights.DEVELOPER && !player.getUsername().equalsIgnoreCase("test")&& !player.getUsername().equalsIgnoreCase("test1"))
+        }
+        if(player.getRank() == StaffRank.DEVELOPER){
             World.sendMessage(("<shad=0><col=" + player.getYellHex() + "><img=4> Developer "
                     + player.getUsername() + " has just logged in."));
+        }
+        if(player.getRank() == StaffRank.OWNER){
+            World.sendMessage(("<shad=0><col=" + player.getYellHex() + "><img=4> Owner "
+                    + player.getUsername() + " has just logged in."));
+        }
+        if(player.getRank() == StaffRank.YOUTUBER){
+            World.sendMessage(("<shad=0><col=" + player.getYellHex() + "><img=10> @red@Youtuber@whi@ "
+                    + player.getUsername() + " has just logged in."));
+        }
 
-        if (player.getRights() == PlayerRights.MODERATOR
-                || player.getRights() == PlayerRights.ADMINISTRATOR
-                || player.getRights() == PlayerRights.HELPER ) {
+//        if (player.getRights() == PlayerRights.FORSAKEN_DONATOR)
+//            World.sendMessage(("<shad=0>@or2@<img=1508> [Forsaken Donator] "
+//                    + player.getUsername() + " has just logged in."));
+
+        if (player.getRank().isStaff() ) {
             StaffList.login(player);
             // GrandExchange.onLogin(player);
         }

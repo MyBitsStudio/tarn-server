@@ -1,12 +1,6 @@
 package com.ruse.engine.task.impl;
 
 import com.ruse.engine.task.Task;
-import com.ruse.model.PlayerRights;
-import com.ruse.world.World;
-import com.ruse.world.content.BonusXp;
-import com.ruse.world.content.PotionHandler;
-import com.ruse.world.content.skill.SkillManager;
-import com.ruse.world.entity.impl.npc.NPC;
 import com.ruse.world.entity.impl.player.Player;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 

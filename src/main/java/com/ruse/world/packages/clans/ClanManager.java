@@ -1,8 +1,7 @@
-package com.ruse.world.content.clans;
+package com.ruse.world.packages.clans;
 
 import com.ruse.engine.task.Task;
 import com.ruse.engine.task.TaskManager;
-import com.ruse.model.PlayerRights;
 import com.ruse.security.ServerSecurity;
 import com.ruse.security.save.impl.server.ClanChatLoad;
 import com.ruse.security.save.impl.server.ClanSave;
@@ -82,7 +81,7 @@ public class ClanManager {
             return;
         }
         if(clan.getName().equalsIgnoreCase("staff")){
-            if(!player.getRights().isStaff()){
+            if(!player.getRank().isStaff()){
                 player.getPacketSender().sendMessage("You do not have the required rank to join this clan chat.");
                 return;
             }
@@ -98,9 +97,9 @@ public class ClanManager {
 
     public void updateList(Clan clan){
         clan.getMembers().sort((o1, o2) -> {
-            if(o1.getRights().isStaff() && !o2.getRights().isStaff())
+            if(o1.getRank().isStaff() && !o2.getRank().isStaff())
                 return -1;
-            if(!o1.getRights().isStaff() && o2.getRights().isStaff())
+            if(!o1.getRank().isStaff() && o2.getRank().isStaff())
                 return 1;
             return 0;
         });
@@ -116,11 +115,13 @@ public class ClanManager {
                             .filter(other -> other.getSession().getChannel().isConnected())
                             .forEach(others -> {
                                 int image = 0;
-                                switch(others.getRights()){
-                                    case DEVELOPER : image = 861; break;
+                                switch(others.getRank()){
+                                    case DEVELOPER : case OWNER:
+                                        image = 861; break;
                                     case ADMINISTRATOR: image = 860; break;
                                     case MODERATOR : image = 863; break;
-                                    case HELPER : image = 866; break;
+                                    case HELPER : case TRAIL_STAFF:
+                                        image = 866; break;
                                     case YOUTUBER: image = 865; break;
                                 }
                                 String prefix = image > 0 ? ("<img=" + image + "> ") : "";
@@ -128,9 +129,9 @@ public class ClanManager {
                                 childId.getAndIncrement();
                             });
 
-                    if(player.getRights().OwnerDeveloperOnly()){
+                    if(player.getRank().isDeveloper()){
                         player.getPacketSender().sendClanChatListOptionsVisible(2);
-                    } else if(player.getRights().isStaff()){
+                    } else if(player.getRank().isStaff()){
                         player.getPacketSender().sendClanChatListOptionsVisible(1);
                     } else {
                         player.getPacketSender().sendClanChatListOptionsVisible(0);
@@ -150,7 +151,7 @@ public class ClanManager {
             return;
         }
         long time = player.getTotalPlayTime() + player.getRecordedLogin().elapsed();
-        if((time < 1_800_000) && !Objects.equals(clan.getName(), "Help") && !player.getRights().isStaff()){
+        if((time < 1_800_000) && !Objects.equals(clan.getName(), "Help") && !player.getRank().isStaff()){
             player.getPacketSender().sendMessage("New players can only chat in Help chat.");
             return;
         }
@@ -162,7 +163,13 @@ public class ClanManager {
                 .filter(Objects::nonNull)
                 .filter(players -> !players.getRelations().getIgnoreList().contains(player.getLongUsername()))
                 .forEach(players -> {
-            int img = player.getRights() == PlayerRights.FORSAKEN_DONATOR ? 1508 : player.getRights().ordinal();
+
+            int img;
+            if(player.getRank().isStaff()){
+                img = player.getRank().getImg();
+            } else {
+                img = player.getDonator().getImg();
+            }
             String formatted = String.format("%02d", clan.getName().length() + 1);
 
             String rankImg = img > 0 ? " <img=" + img + ">" : "";
@@ -170,7 +177,7 @@ public class ClanManager {
                     + clan.getName() +  "]" + rankImg + " " + NameUtils.capitalizeWords(player.getUsername()) + ": "
                     + NameUtils.capitalize(message));
             });
-        if(time < 1_800_000 && !player.getRights().isStaff()){
+        if(time < 1_800_000 && !player.getRank().isStaff()){
             player.setCanChat(false);
             TaskManager.submit(new Task(19, false) {
                 @Override
@@ -219,7 +226,7 @@ public class ClanManager {
 
     public void handleMemberOption(Player player, int index, int menuId) {
 		if ((player.getClan() == null
-				|| !player.getRights().OwnerDeveloperOnly() && menuId != 1)) {
+				|| !player.getRank().isDeveloper() && menuId != 1)) {
 			player.getPacketSender().sendMessage("Only the clanchat owner can do that.");
 			return;
 		}
@@ -274,7 +281,7 @@ public class ClanManager {
                 ClanManager.getManager().joinChat(player, "Raids");
                 break;
             case 70107:
-                if(player.getRights().isStaff()){
+                if(player.getRank().isStaff()){
                     ClanManager.getManager().leave(player, false);
                     ClanManager.getManager().joinChat(player, "Staff");
                 } else {

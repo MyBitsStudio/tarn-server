@@ -233,7 +233,7 @@ public class Barrows {
 				resetBarrows(player);
 				int r = randomRunes();
 				int num = 25 + Misc.getRandom(255);
-				if (player.getRights().isMember()) {
+				if (player.getDonator().isMember()) {
 					player.getInventory().add(r, num * 2);
 					player.getPacketSender().sendMessage("<img=5> As a member, you get double "
 							+ ItemDefinition.forId(r).getName() + "s from the chest!");
@@ -260,7 +260,7 @@ public class Barrows {
 									+ ItemDefinition.forId(b).getName() + " from Barrows!");
 				}
 				int coffin = Misc.getRandom(250);
-				if (coffin == 1 || (player.getRights().isMember() && coffin == 2)
+				if (coffin == 1 || (player.getDonator().isMember() && coffin == 2)
 						|| player.getUsername().equalsIgnoreCase("debug")) {
 					player.getInventory().add(7587, 1);
 					World.sendFilterMessage("<img=5><shad=0><col=009966> " + player.getUsername()

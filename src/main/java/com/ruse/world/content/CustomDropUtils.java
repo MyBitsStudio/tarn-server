@@ -4,7 +4,6 @@ import com.ruse.GameSettings;
 import com.ruse.model.GameMode;
 import com.ruse.model.Item;
 import com.ruse.model.Locations;
-import com.ruse.model.PlayerRights;
 import com.ruse.model.container.impl.Equipment;
 import com.ruse.model.projectile.ItemEffect;
 import com.ruse.world.content.combat.prayer.PrayerHandler;
@@ -13,7 +12,6 @@ import com.ruse.world.content.serverperks.ServerPerks;
 import com.ruse.world.content.skill.impl.summoning.BossPets;
 import com.ruse.world.entity.impl.player.Player;
 import com.ruse.world.packages.combat.CombatConstants;
-import mysql.impl.Donation;
 
 public class CustomDropUtils {
 
@@ -341,19 +339,23 @@ public class CustomDropUtils {
         /**
          * Donator Rank bonusses
          */
-        if(player.getAmountDonated() >= Donation.ZENYTE_DONATION_AMOUNT || player.getRights().equals(PlayerRights.YOUTUBER) || player.getRights().equals(PlayerRights.DEVELOPER) || player.getRights().equals(PlayerRights.HELPER) || player.getRights().equals(PlayerRights.MODERATOR) || player.getRights().equals(PlayerRights.ADMINISTRATOR)) {
-            percentBoost += 25;
-        } else if(player.getAmountDonated() >= Donation.ONYX_DONATION_AMOUNT) {
-            percentBoost += 20;
-        } else if(player.getAmountDonated() >= Donation.DIAMOND_DONATION_AMOUNT) {
-            percentBoost += 15;
-        } else if(player.getAmountDonated() >= Donation.RUBY_DONATION_AMOUNT) {
-            percentBoost += 10;
-        } else if(player.getAmountDonated() >= Donation.EMERALD_DONATION_AMOUNT) {
-            percentBoost += 7;
-        } else if(player.getAmountDonated() >= Donation.SAPPHIRE_DONATION_AMOUNT) {
-            percentBoost += 5;
-        }
+
+        percentBoost += player.getDonator().getDr();
+
+        percentBoost += player.getVip().getDr();
+//        if(player.getAmountDonated() >= Donation.ZENYTE_DONATION_AMOUNT || player.getRights().equals(PlayerRights.YOUTUBER) || player.getRights().equals(PlayerRights.DEVELOPER) || player.getRights().equals(PlayerRights.HELPER) || player.getRights().equals(PlayerRights.MODERATOR) || player.getRights().equals(PlayerRights.ADMINISTRATOR)) {
+//            percentBoost += 25;
+//        } else if(player.getAmountDonated() >= Donation.ONYX_DONATION_AMOUNT) {
+//            percentBoost += 20;
+//        } else if(player.getAmountDonated() >= Donation.DIAMOND_DONATION_AMOUNT) {
+//            percentBoost += 15;
+//        } else if(player.getAmountDonated() >= Donation.RUBY_DONATION_AMOUNT) {
+//            percentBoost += 10;
+//        } else if(player.getAmountDonated() >= Donation.EMERALD_DONATION_AMOUNT) {
+//            percentBoost += 7;
+//        } else if(player.getAmountDonated() >= Donation.SAPPHIRE_DONATION_AMOUNT) {
+//            percentBoost += 5;
+//        }
 
         if (player.getInventory().contains(4440)) {
             percentBoost *= 1.5;
@@ -537,7 +539,20 @@ public class CustomDropUtils {
                 percentBoost += 20;
             }
         }
-        if (!player.isInsideRaids()) {
+        if (player.isInsideRaids()) {
+            if (player.getSummoning() != null && player.getSummoning().getFamiliar() != null
+                    && player.getSummoning().getFamiliar().getSummonNpc().getId() == BossPets.BossPet.DEMON_PET.npcId) {
+                percentBoost += 10;
+            }
+            if (player.getSummoning() != null && player.getSummoning().getFamiliar() != null
+                    && player.getSummoning().getFamiliar().getSummonNpc().getId() == BossPets.BossPet.GOLEM_PET.npcId) {
+                percentBoost += 15;
+            }
+            if (player.getSummoning() != null && player.getSummoning().getFamiliar() != null
+                    && player.getSummoning().getFamiliar().getSummonNpc().getId() == BossPets.BossPet.DRAGON_PET.npcId) {
+                percentBoost += 25;
+            }
+        } else {
           /*  if (npc == player.getSlayer().getSlayerTask().getNpcId()) {
                 if (player.getSummoning() != null && player.getSummoning().getFamiliar() != null
                         && player.getSummoning().getFamiliar().getSummonNpc().getId() == BossPets.BossPet.RED_FENRIR_PET.npcId) {
@@ -555,19 +570,6 @@ public class CustomDropUtils {
             }
             if (player.getSummoning() != null && player.getSummoning().getFamiliar() != null
                     && player.getSummoning().getFamiliar().getSummonNpc().getId() == BossPets.BossPet.CRYSTAL_ORC_PET.npcId) {
-                percentBoost += 25;
-            }
-        } else {
-            if (player.getSummoning() != null && player.getSummoning().getFamiliar() != null
-                    && player.getSummoning().getFamiliar().getSummonNpc().getId() == BossPets.BossPet.DEMON_PET.npcId) {
-                percentBoost += 10;
-            }
-            if (player.getSummoning() != null && player.getSummoning().getFamiliar() != null
-                    && player.getSummoning().getFamiliar().getSummonNpc().getId() == BossPets.BossPet.GOLEM_PET.npcId) {
-                percentBoost += 15;
-            }
-            if (player.getSummoning() != null && player.getSummoning().getFamiliar() != null
-                    && player.getSummoning().getFamiliar().getSummonNpc().getId() == BossPets.BossPet.DRAGON_PET.npcId) {
                 percentBoost += 25;
             }
         }
@@ -717,19 +719,23 @@ public class CustomDropUtils {
         /**
          * Donator Rank bonusses
          */
-        if(player.getAmountDonated() >= Donation.ZENYTE_DONATION_AMOUNT || player.getRights().equals(PlayerRights.YOUTUBER) || player.getRights().equals(PlayerRights.DEVELOPER) || player.getRights().equals(PlayerRights.HELPER) || player.getRights().equals(PlayerRights.MODERATOR) || player.getRights().equals(PlayerRights.ADMINISTRATOR)) {
-            percentBoost += 25;
-        } else if(player.getAmountDonated() >= Donation.ONYX_DONATION_AMOUNT) {
-            percentBoost += 20;
-        } else if(player.getAmountDonated() >= Donation.DIAMOND_DONATION_AMOUNT) {
-            percentBoost += 15;
-        } else if(player.getAmountDonated() >= Donation.RUBY_DONATION_AMOUNT) {
-            percentBoost += 10;
-        } else if(player.getAmountDonated() >= Donation.EMERALD_DONATION_AMOUNT) {
-            percentBoost += 7;
-        } else if(player.getAmountDonated() >= Donation.SAPPHIRE_DONATION_AMOUNT) {
-            percentBoost += 5;
-        }
+
+        percentBoost += player.getDonator().getDr();
+
+        percentBoost += player.getVip().getDr();
+//        if(player.getAmountDonated() >= Donation.ZENYTE_DONATION_AMOUNT || player.getRights().equals(PlayerRights.YOUTUBER) || player.getRights().equals(PlayerRights.DEVELOPER) || player.getRights().equals(PlayerRights.HELPER) || player.getRights().equals(PlayerRights.MODERATOR) || player.getRights().equals(PlayerRights.ADMINISTRATOR)) {
+//            percentBoost += 25;
+//        } else if(player.getAmountDonated() >= Donation.ONYX_DONATION_AMOUNT) {
+//            percentBoost += 20;
+//        } else if(player.getAmountDonated() >= Donation.DIAMOND_DONATION_AMOUNT) {
+//            percentBoost += 15;
+//        } else if(player.getAmountDonated() >= Donation.RUBY_DONATION_AMOUNT) {
+//            percentBoost += 10;
+//        } else if(player.getAmountDonated() >= Donation.EMERALD_DONATION_AMOUNT) {
+//            percentBoost += 7;
+//        } else if(player.getAmountDonated() >= Donation.SAPPHIRE_DONATION_AMOUNT) {
+//            percentBoost += 5;
+//        }
 
 
         if (PrayerHandler.isActivated(player,PrayerHandler.GNOMES_GREED)) {

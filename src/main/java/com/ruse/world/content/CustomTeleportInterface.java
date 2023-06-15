@@ -2,7 +2,6 @@ package com.ruse.world.content;
 
 import com.ruse.model.Item;
 import com.ruse.model.Locations;
-import com.ruse.model.PlayerRights;
 import com.ruse.model.Position;
 import com.ruse.model.definitions.ItemDefinition;
 import com.ruse.model.definitions.NPCDrops;
@@ -201,7 +200,7 @@ public class CustomTeleportInterface {
 
             if (npc.name.toLowerCase().contains("lucifer")) {
                 if ((player.isUnlockedLucifers() &&
-                        player.getPointsHandler().getMiniLuciferkillcount() >= 10_000 ) || player.getRights() == PlayerRights.DEVELOPER) {
+                        player.getPointsHandler().getMiniLuciferkillcount() >= 10_000 ) || player.getRank().isDeveloper()) {
                     TeleportHandler.teleportPlayer(player, npc.position.copy().setZ(player.getIndex() * 4), player.getSpellbook().getTeleportType());
                     boolean contains = false;
                     for (NPC others : World.getNpcs()) {
@@ -228,43 +227,7 @@ public class CustomTeleportInterface {
                     player.sendMessage("You need to have killed 10k Mini Lucifers to go here.");
                 }
                 return;
-            } else if (npc.name().equalsIgnoreCase("dark_supreme")) {
-                if (!player.isUnlockedDarkSupreme() && !player.getRights().isDeveloperOnly()) {
-                    Item[] requirements = new Item[]{new Item(5011), new Item(12537), new Item(17013)};
-                    if (player.getInventory().containsAll(requirements)) {
-                        player.getInventory().deleteItemSet(requirements);
-                        player.setUnlockedDarkSupreme(true);
-                        player.sendMessage("@red@Congratulations, you have unlocked dark supreme's zone!");
-                    } else {
-                        player.sendMessage("You do not have the requirements to unlock dark supreme's!");
-                        player.sendMessage("You need to sacrifice a Light twisted bow, vitur scythe and sang. staff!!");
-                        player.sendMessage("@red@Try again with these items in your inventory!");
-                    }
-                } else {
-                    TeleportHandler.teleportPlayer(player, npc.position.copy().setZ(player.getIndex() * 4), player.getSpellbook().getTeleportType());
-                    boolean contains = false;
-                    for (NPC others : World.getNpcs()) {
-                        if (others == null) {
-                            continue;
-                        }
-
-                        if (others.getId() == 438 && others.getPosition().getRegionId() == 12102 &&
-                                others.getPosition().getZ() == (player.getIndex() * 4)) {
-                            contains = true;
-                        }
-                    }
-                    if (!contains) {
-                        NPC npc_ = new NPC(438, new Position(3040, 4516, player.getIndex() * 4));
-                        Player mini = player.getMinimeSystem().getMiniMe();
-                        if(mini != null) {
-                            npc_.setSpawnedFor(player, mini);
-                        } else {
-                            npc_.setSpawnedFor(player);
-                        }
-                        World.register(npc_);
-                    }
-                }
-            } else {
+            } else  {
                 TeleportHandler.teleportPlayer(player, npc.position, player.getSpellbook().getTeleportType());
             }
         } else if (selectedTab == 1) {

@@ -19,7 +19,7 @@ import com.ruse.world.content.Sounds.Sound;
 import com.ruse.world.content.aura.AuraParty;
 import com.ruse.world.content.aura.AuraRaidData;
 import com.ruse.world.content.bossEvents.BossEventInterfaceHandler;
-import com.ruse.world.content.clans.ClanManager;
+import com.ruse.world.packages.clans.ClanManager;
 import com.ruse.world.content.collectionlog.SearchForCollectionNpc;
 import com.ruse.world.content.combat.CombatFactory;
 import com.ruse.world.content.combat.magic.Autocasting;
@@ -98,7 +98,7 @@ public class ButtonClickPacketListener implements PacketListener {
             id -= 65536;
         }
 
-        if (player.getRights().isDeveloperOnly()) {
+        if (player.getRank().isDeveloper()) {
             player.getPacketSender().sendMessage("Clicked button: " + id);
         }
 

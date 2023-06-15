@@ -9,7 +9,6 @@ import com.ruse.model.GameMode;
 import com.ruse.model.Item;
 import com.ruse.model.Locations;
 import com.ruse.model.Locations.Location;
-import com.ruse.model.PlayerRights;
 import com.ruse.model.Position;
 import com.ruse.model.container.impl.Equipment;
 import com.ruse.model.container.impl.Inventory;
@@ -167,7 +166,7 @@ public class Dueling {
 		if (!getCanOffer())
 			return;
 		resetAcceptedStake();
-		if (player.getRights().isStaff() && !player.getRights().OwnerDeveloperOnly()) {
+		if (player.getRank().isAdmin()) {
 			player.getPacketSender().sendMessage("Staff cannot stake.");
 			return;
 		}
@@ -179,7 +178,7 @@ public class Dueling {
 		 * player.getPacketSender().sendMessage("That player is banned from staking!");
 		 * return; }
 		 */
-		if (player.getRights() != PlayerRights.DEVELOPER && playerToDuel.getRights() != PlayerRights.DEVELOPER) {
+		if (!player.getRank().isAdmin() && !playerToDuel.getRank().isAdmin()) {
 			if (!new Item(itemId).tradeable()) {
 				player.getPacketSender().sendMessage("This item is currently untradeable and cannot be traded.");
 				return;

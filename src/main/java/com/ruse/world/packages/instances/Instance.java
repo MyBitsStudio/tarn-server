@@ -129,7 +129,7 @@ public abstract class Instance {
                 .filter(player -> !player.getInstanceId().equals(this.instanceId))
                 .filter(player -> !playerList.contains(player))
                 .filter(player -> !players.contains(player))
-                .filter(player -> !player.getRights().isStaff())
+                .filter(player -> !player.getRank().isStaff())
                 .forEach(player -> {
                     player.sendMessage("@red@[INSTANCE] This isn't your instance. Moving you home.");
                     player.setInstance(null);

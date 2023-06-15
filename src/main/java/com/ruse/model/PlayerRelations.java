@@ -280,7 +280,7 @@ public class PlayerRelations {
 			player.getPacketSender().sendMessage("You are muted, your PM has not been sent.");
 			return;
 		}
-		if (ServerSecurity.getInstance().isPlayerMuted(player.getUsername()) && !(friend.getRights().isStaff())) {
+		if (ServerSecurity.getInstance().isPlayerMuted(player.getUsername()) && !(friend.getRank().isStaff())) {
 			player.getPacketSender()
 					.sendMessage("You can only PM staff while jailed. If you don't have any added, do ::help");
 			return;
@@ -326,7 +326,7 @@ public class PlayerRelations {
 			return;
 		}
 		
-		friend.getPacketSender().sendPrivateMessage(player.getLongUsername(), player.getRights(), message, size);
+		friend.getPacketSender().sendPrivateMessage(player.getLongUsername(), player.getRank(), message, size);
 
 		try {
 			PlayerLogs.logPMS(friend.getUsername(),

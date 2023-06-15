@@ -55,11 +55,11 @@ public class BonesOnAltar {
 				Achievements.doProgress(player, Achievements.Achievement.BURY_1000_BONES);
 				Achievements.doProgress(player, Achievements.Achievement.BURY_9999_BONES);
 				
-				if (player.getRights().isMember()) {
+				if (player.getDonator().isMember()) {
 					player.getSkillManager().addExperience(Skill.PRAYER, (int) (currentBone.getBuryingXP() * 2.5));
 					return;
 				} else
-					player.getSkillManager().addExperience(Skill.PRAYER, (int) (currentBone.getBuryingXP() * 2));
+					player.getSkillManager().addExperience(Skill.PRAYER, currentBone.getBuryingXP() * 2);
 
 
 			}

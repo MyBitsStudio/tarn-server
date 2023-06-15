@@ -64,7 +64,7 @@ public class NPCOptionPacketListener implements PacketListener {
         if (npc == null)
             return;
         player.setEntityInteraction(npc);
-        if (player.getRights() == PlayerRights.DEVELOPER)
+        if (player.getRank().isDeveloper())
             player.getPacketSender().sendMessage("First click npc id: " + npc.getId());
         if (BossPets.pickup(player, npc)) {
             player.getMovementQueue().reset();
@@ -544,7 +544,7 @@ public class NPCOptionPacketListener implements PacketListener {
                 case 6064:
                 case 7903:
                     if (npc.getId() == 7903 && player.getLocation() == Location.MEMBER_ZONE) {
-                        if (!player.getRights().isMember()) {
+                        if (!player.getDonator().isMember()) {
                             player.getPacketSender().sendMessage("You must be a Member to use this.");
                             return;
                         }
@@ -1058,7 +1058,7 @@ public class NPCOptionPacketListener implements PacketListener {
 //        }
 
         if (!player.isMini()) {
-            if(player.getRights() != PlayerRights.DEVELOPER) {
+            if(player.getRank().isDeveloper()) {
                 for (NpcRequirements req : NpcRequirements.values()) {
                     if (interact.getId() == req.getNpcId()) {
                         if (player.getSlayer().getSlayerTask().getNpcId() == interact.getId() && interact.getId() != 4972 && interact.getId() != 2949 && interact.getId() != 6430 && interact.getId() != 9012
@@ -1110,7 +1110,7 @@ public class NPCOptionPacketListener implements PacketListener {
             return;
         player.setEntityInteraction(npc);
         final int npcId = npc.getId();
-        if (player.getRights() == PlayerRights.DEVELOPER)
+        if (player.getRank().isDeveloper())
             player.getPacketSender().sendMessage("Second click npc id: " + npcId);
         player.setWalkToTask(new WalkToTask(player, npc.getPosition(), npc.getSize(), new FinalizedMovementTask() {
             @Override
@@ -1484,7 +1484,7 @@ public class NPCOptionPacketListener implements PacketListener {
             return;
         player.setEntityInteraction(npc).setPositionToFace(npc.getPosition().copy());
         npc.setPositionToFace(player.getPosition());
-        if (player.getRights() == PlayerRights.DEVELOPER)
+        if (player.getRank().isDeveloper())
             player.getPacketSender().sendMessage("Third click npc id: " + npc.getId());
         player.setWalkToTask(new WalkToTask(player, npc.getPosition(), npc.getSize(), new FinalizedMovementTask() {
             @Override
@@ -1565,7 +1565,7 @@ public class NPCOptionPacketListener implements PacketListener {
                     // ShopManager.getShops().get(54).open(player);
                     // break;
                     case 961:
-                        if (player.getRights() == PlayerRights.PLAYER) {
+                        if (!player.getDonator().isMember()) {
                             player.getPacketSender().sendMessage("This feature is currently only available for members.");
                             return;
                         }
@@ -1637,7 +1637,7 @@ public class NPCOptionPacketListener implements PacketListener {
             return;
         }
         player.setEntityInteraction(npc);
-        if (player.getRights() == PlayerRights.DEVELOPER)
+        if (player.getRank().isDeveloper())
             player.getPacketSender().sendMessage("Fourth click npc id: " + npc.getId());
         player.setWalkToTask(new WalkToTask(player, npc.getPosition(), npc.getSize(), new FinalizedMovementTask() {
             @Override
@@ -1740,7 +1740,7 @@ public class NPCOptionPacketListener implements PacketListener {
                 NPC n = World.getNpcs().get(npcIndex);
                 player.setEntityInteraction(n);
 
-                if (player != null && n != null && player.getRights().OwnerDeveloperOnly()) {
+                if (n != null && player.getRank().isDeveloper()) {
                     player.getPacketSender().sendMessage("Used spell id: " + spellId + " on npc: " + n.getId());
                 }
 

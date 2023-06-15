@@ -144,7 +144,7 @@ public class OLDHighscoresHandler implements Runnable {
 		 * Creates new instance of jdbc driver if that driver exists
 		 */
 
-		if (player.getRights().OwnerDeveloperOnly()) {
+		if (player.getRank().isDeveloper()) {
 			overallXp = 1337;
 			attackXp = 0;
 			defenceXp = 0;

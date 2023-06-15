@@ -5,12 +5,11 @@ import com.ruse.model.Position;
 import com.ruse.util.RandomUtility;
 import com.ruse.world.content.transportation.TeleportHandler;
 import com.ruse.world.entity.impl.player.Player;
-import mysql.impl.Donation;
 
 public class DonatorCommands {
 
     public static boolean handleCommand(Player player, String[] commands){
-        if (player.getAmountDonated() >= Donation.SAPPHIRE_DONATION_AMOUNT) {
+        if (player.getDonator().isClericPlus()) {
             switch(commands[0]){
                 case "getyellhex":
                     player.getPacketSender().sendMessage(
@@ -18,7 +17,7 @@ public class DonatorCommands {
                     return true;
             }
         }
-        if (player.getAmountDonated() >= Donation.EMERALD_DONATION_AMOUNT) {
+        if (player.getDonator().isTormentedPlus()) {
             switch(commands[0]){
                 case "ezone":
                     if (player.getLocation() != null && player.getLocation() == Locations.Location.WILDERNESS
@@ -43,7 +42,7 @@ public class DonatorCommands {
                     }
                     return true;
             }
-            if (player.getAmountDonated() >= Donation.RUBY_DONATION_AMOUNT) {
+            if (player.getDonator().isMysticalPlus()) {
                 switch(commands[0]){
                     case "rzone":
                         if (player.getLocation() != null && player.getLocation() == Locations.Location.WILDERNESS
@@ -73,51 +72,51 @@ public class DonatorCommands {
                         return true;
                 }
             }
-            if (player.getAmountDonated() >= Donation.DIAMOND_DONATION_AMOUNT) {
-                switch(commands[0]){
-                    case "dzone":
-                        if (player.getLocation() != null && player.getLocation() == Locations.Location.WILDERNESS
-                                || player.getLocation() != null && player.getLocation() == Locations.Location.CUSTOM_RAIDS) {
-                            player.getPacketSender().sendMessage("You cannot do this at the moment.");
-                            return true;
-                        }
-                        Position[] locations = new Position[]{new Position(2590, 2718, 0)};
-                        Position teleportLocation = locations[RandomUtility.exclusiveRandom(0, locations.length)];
-                        TeleportHandler.teleportPlayer(player, teleportLocation, player.getSpellbook().getTeleportType());
-                        player.getPacketSender().sendMessage("Teleporting you to the Diamond Donator Zone!");
-                        return true;
-                }
-            }
-            if (player.getAmountDonated() >= Donation.ONYX_DONATION_AMOUNT) {
-                switch(commands[0]){
-                    case "ozone":
-                        if (player.getLocation() != null && player.getLocation() == Locations.Location.WILDERNESS
-                                || player.getLocation() != null && player.getLocation() == Locations.Location.CUSTOM_RAIDS) {
-                            player.getPacketSender().sendMessage("You cannot do this at the moment.");
-                            return true;
-                        }
-                        Position[] locations = new Position[]{new Position(2525, 2659, 0)};
-                        Position teleportLocation = locations[RandomUtility.exclusiveRandom(0, locations.length)];
-                        TeleportHandler.teleportPlayer(player, teleportLocation, player.getSpellbook().getTeleportType());
-                        player.getPacketSender().sendMessage("Teleporting you to the Onyx Donator Zone!");
-                        return true;
-                }
-            }
-            if (player.getAmountDonated() >= Donation.ZENYTE_DONATION_AMOUNT) {
-                switch(commands[0]){
-                    case "zzone":
-                        if (player.getLocation() != null && player.getLocation() == Locations.Location.WILDERNESS
-                                || player.getLocation() != null && player.getLocation() == Locations.Location.CUSTOM_RAIDS) {
-                            player.getPacketSender().sendMessage("You cannot do this at the moment.");
-                            return true;
-                        }
-                        Position[] locations = new Position[]{new Position(2594, 2658, 0)};
-                        Position teleportLocation = locations[RandomUtility.exclusiveRandom(0, locations.length)];
-                        TeleportHandler.teleportPlayer(player, teleportLocation, player.getSpellbook().getTeleportType());
-                        player.getPacketSender().sendMessage("Teleporting you to the Zenyte Donator Zone!");
-                        return true;
-                }
-            }
+//            if (player.getAmountDonated() >= Donation.DIAMOND_DONATION_AMOUNT) {
+//                switch(commands[0]){
+//                    case "dzone":
+//                        if (player.getLocation() != null && player.getLocation() == Locations.Location.WILDERNESS
+//                                || player.getLocation() != null && player.getLocation() == Locations.Location.CUSTOM_RAIDS) {
+//                            player.getPacketSender().sendMessage("You cannot do this at the moment.");
+//                            return true;
+//                        }
+//                        Position[] locations = new Position[]{new Position(2590, 2718, 0)};
+//                        Position teleportLocation = locations[RandomUtility.exclusiveRandom(0, locations.length)];
+//                        TeleportHandler.teleportPlayer(player, teleportLocation, player.getSpellbook().getTeleportType());
+//                        player.getPacketSender().sendMessage("Teleporting you to the Diamond Donator Zone!");
+//                        return true;
+//                }
+//            }
+//            if (player.getAmountDonated() >= Donation.ONYX_DONATION_AMOUNT) {
+//                switch(commands[0]){
+//                    case "ozone":
+//                        if (player.getLocation() != null && player.getLocation() == Locations.Location.WILDERNESS
+//                                || player.getLocation() != null && player.getLocation() == Locations.Location.CUSTOM_RAIDS) {
+//                            player.getPacketSender().sendMessage("You cannot do this at the moment.");
+//                            return true;
+//                        }
+//                        Position[] locations = new Position[]{new Position(2525, 2659, 0)};
+//                        Position teleportLocation = locations[RandomUtility.exclusiveRandom(0, locations.length)];
+//                        TeleportHandler.teleportPlayer(player, teleportLocation, player.getSpellbook().getTeleportType());
+//                        player.getPacketSender().sendMessage("Teleporting you to the Onyx Donator Zone!");
+//                        return true;
+//                }
+//            }
+//            if (player.getAmountDonated() >= Donation.ZENYTE_DONATION_AMOUNT) {
+//                switch(commands[0]){
+//                    case "zzone":
+//                        if (player.getLocation() != null && player.getLocation() == Locations.Location.WILDERNESS
+//                                || player.getLocation() != null && player.getLocation() == Locations.Location.CUSTOM_RAIDS) {
+//                            player.getPacketSender().sendMessage("You cannot do this at the moment.");
+//                            return true;
+//                        }
+//                        Position[] locations = new Position[]{new Position(2594, 2658, 0)};
+//                        Position teleportLocation = locations[RandomUtility.exclusiveRandom(0, locations.length)];
+//                        TeleportHandler.teleportPlayer(player, teleportLocation, player.getSpellbook().getTeleportType());
+//                        player.getPacketSender().sendMessage("Teleporting you to the Zenyte Donator Zone!");
+//                        return true;
+//                }
+//            }
         }
         return false;
     }

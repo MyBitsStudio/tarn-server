@@ -21,7 +21,6 @@ import com.ruse.world.content.skill.impl.old_dungeoneering.UltimateIronmanHandle
 import com.ruse.world.content.skill.impl.summoning.BossPets;
 import com.ruse.world.content.skill.impl.summoning.Familiar;
 import com.ruse.world.entity.impl.player.Player;
-import mysql.impl.Donation;
 
 import static com.ruse.model.GameMode.VETERAN_MODE;
 
@@ -310,7 +309,7 @@ public class SkillManager {
 
         // experience = experience / 10; // reduced by 3 times.
 
-        experience *= player.getRights().getExperienceGainModifier();
+        experience *= player.getDonator().getXpgain();
 
         if (ServerPerks.getInstance().getActivePerk() == ServerPerks.Perk.XP || ServerPerks.getInstance().getActivePerk() == ServerPerks.Perk.ALL_PERKS) {
             experience *= 3;
@@ -335,19 +334,19 @@ public class SkillManager {
 /**
  * Donator Rank Bonusses
  */
-        if(player.getAmountDonated() >= Donation.ZENYTE_DONATION_AMOUNT || player.getRights().equals(PlayerRights.YOUTUBER)) {
-            experience *= 2.00;
-        } else if(player.getAmountDonated() >= Donation.ONYX_DONATION_AMOUNT) {
-            experience *= 1.25;
-        } else if(player.getAmountDonated() >= Donation.DIAMOND_DONATION_AMOUNT) {
-            experience *= 1.20;
-        } else if(player.getAmountDonated() >= Donation.RUBY_DONATION_AMOUNT) {
-            experience *= 1.15;
-        } else if(player.getAmountDonated() >= Donation.EMERALD_DONATION_AMOUNT) {
-            experience *= 1.10;
-        } else if(player.getAmountDonated() >= Donation.SAPPHIRE_DONATION_AMOUNT) {
-            experience *= 1.05;
-        }
+//        if(player.getAmountDonated() >= Donation.ZENYTE_DONATION_AMOUNT || player.getRights().equals(PlayerRights.YOUTUBER)) {
+//            experience *= 2.00;
+//        } else if(player.getAmountDonated() >= Donation.ONYX_DONATION_AMOUNT) {
+//            experience *= 1.25;
+//        } else if(player.getAmountDonated() >= Donation.DIAMOND_DONATION_AMOUNT) {
+//            experience *= 1.20;
+//        } else if(player.getAmountDonated() >= Donation.RUBY_DONATION_AMOUNT) {
+//            experience *= 1.15;
+//        } else if(player.getAmountDonated() >= Donation.EMERALD_DONATION_AMOUNT) {
+//            experience *= 1.10;
+//        } else if(player.getAmountDonated() >= Donation.SAPPHIRE_DONATION_AMOUNT) {
+//            experience *= 1.05;
+//        }
 
         experience = BrawlingGloves.getExperienceIncrease(player, skill.ordinal(), experience);
 
@@ -496,7 +495,7 @@ public class SkillManager {
                 || player.checkItem(Equipment.CAPE_SLOT, 14019) || player.checkItem(Equipment.CAPE_SLOT, 14022)
                 || player.checkItem(Equipment.CAPE_SLOT, 22052) || player.checkItem(Equipment.CAPE_SLOT, 20081)
                 || (player.checkItem(Equipment.CAPE_SLOT, 22052) && player.getSkillManager().getMaxLevel(skill) >= 99)
-                && player.getRights().isMember()) {
+                && player.getDonator().isMember()) {
             return true;
         } else {
             return false;

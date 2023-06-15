@@ -6,7 +6,7 @@ import com.ruse.engine.task.TaskManager;
 import com.ruse.model.container.impl.Shop.ShopManager;
 import com.ruse.util.playerSavingTimer;
 import com.ruse.world.World;
-import com.ruse.world.content.clans.ClanManager;
+import com.ruse.world.packages.clans.ClanManager;
 import com.ruse.world.content.grandexchange.GrandExchangeOffers;
 import com.ruse.world.content.groupironman.GroupManager;
 import com.ruse.world.content.pos.PlayerOwnedShopManager;

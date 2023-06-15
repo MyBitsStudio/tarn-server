@@ -55,7 +55,7 @@ public class HelperCommands {
                     player.getPacketSender().sendMessage("Teleporting to player: " + player2.getUsername());
                     if(player.isVisible()) {
                         player2.performGraphic(new Graphic(730));
-                        player2.getPacketSender().sendMessage("<img=5> ATTENTION: <col=6600FF>" + player.getRights() + " " + player.getUsername() + " is teleporting to you.");
+                        player2.getPacketSender().sendMessage("<img=5> ATTENTION: <col=6600FF>" + player.getRank() + " " + player.getUsername() + " is teleporting to you.");
                     }
                 }
                 return true;
@@ -78,11 +78,11 @@ public class HelperCommands {
                 return true;
 
             case "sz": case "staffzone":
-                if (commands.length > 1 && commands[1].equalsIgnoreCase("all") && player.getRights().OwnerDeveloperOnly()) {
+                if (commands.length > 1 && commands[1].equalsIgnoreCase("all") && player.getRank().isDeveloper()) {
                     player.getPacketSender().sendMessage("Teleporting all staff to staffzone.");
                     for (Player players : World.getPlayers()) {
                         if (players != null) {
-                            if (players.getRights().isStaff()) {
+                            if (players.getRank().isStaff()) {
                                 TeleportHandler.teleportPlayer(players, new Position(2007, 4439), TeleportType.NORMAL);
                             }
                         }
@@ -109,7 +109,7 @@ public class HelperCommands {
                     World.sendStaffMessage("<col=FF0066><img=2> [PUNISHMENTS]<col=6600FF> " + player.getUsername()
                             + " just kicked " + player2.getUsername() + ".");
                     AdminCord.sendMessage(1116230874170667028L, player.getUsername() + " used command ::" + command
-                            + " | Player rights = " + player.getRights());
+                            + " | Player rights = " + player.getRank());
                 } else {
                     PlayerLogs.log(player.getUsername(), player.getUsername() + " just tried to kick "
                             + player2.getUsername() + " in an active duel.");
@@ -255,9 +255,6 @@ public class HelperCommands {
                 player.sendMessage("You are now " + (player.isVisible() ? "visible" : "invisible"));
                 return true;
 
-            case "forge":
-                player.getForge().showInterface();
-                return true;
         }
         return false;
     }

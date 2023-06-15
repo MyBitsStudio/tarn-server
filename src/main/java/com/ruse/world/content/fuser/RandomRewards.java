@@ -1,11 +1,11 @@
 package com.ruse.world.content.fuser;
 
 import com.ruse.model.Locations;
-import com.ruse.model.PlayerRights;
 import com.ruse.model.Skill;
 import com.ruse.model.definitions.ItemDefinition;
 import com.ruse.util.Misc;
 import com.ruse.world.entity.impl.player.Player;
+import com.ruse.world.packages.ranks.DonatorRank;
 
 public class RandomRewards {
 
@@ -57,41 +57,55 @@ public class RandomRewards {
             return;
         }
 
-        PlayerRights rights = player.getRights();
+        DonatorRank rights = player.getDonator();
 
         switch (rights) {
-            case GRACEFUL_DONATOR:
+            case GRACEFUL:
                 chance += 1; // Extra 1% Chance to win
                 if (Misc.random(60) == 1) {// 1 in 60 chance
                     doubleReward = true;
                 }
                 break;
-            case CLERIC_DONATOR:
+            case CLERIC:
                 chance += 2; // Extra 2% Chance to win
                 if (Misc.random(50) == 1) {// 1 in 50 chance
                     doubleReward = true;
                 }
                 break;
-            case TORMENTED_DONATOR:
+            case TORMENTED:
                 chance += 3; // Extra 3% Chance to win
                 if (Misc.random(40) == 1) {// 1 in 40 chance
                     doubleReward = true;
                 }
                 break;
-            case MYSTICAL_DONATOR:
+            case MYSTICAL:
                 chance += 4; // Extra 4% Chance to win
                 if (Misc.random(30) == 1) {// 1 in 30 chance
                     doubleReward = true;
                 }
                 break;
-            case OBSIDIAN_DONATOR:
+            case OBSIDIAN:
                 chance += 5; // Extra 5% Chance to win
                 if (Misc.random(20) == 1) {// 1 in 20 chance
                     doubleReward = true;
                 }
                 break;
-            case FORSAKEN_DONATOR:
+            case FORSAKEN:
                 chance += 6; // Extra 6% Chance to win
+                if (Misc.random(10) == 1) {// 1 in 10 chance
+                    doubleReward = true;
+                }
+                break;
+
+            case ANGELIC:
+                chance += 8; // Extra 6% Chance to win
+                if (Misc.random(10) == 1) {// 1 in 10 chance
+                    doubleReward = true;
+                }
+                break;
+
+            case DEMONIC:
+                chance += 10; // Extra 6% Chance to win
                 if (Misc.random(10) == 1) {// 1 in 10 chance
                     doubleReward = true;
                 }
@@ -113,7 +127,7 @@ public class RandomRewards {
 
 
 
-            if (rights.isMember() || rights.isStaff()) {
+            if (player.getRank().isStaff()) {
                 player.getBank(player.getCurrentBankTab()).add(stoneID, amountToGive);
                 player.sendMessage("As an "
                         + rights

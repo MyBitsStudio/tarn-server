@@ -74,7 +74,7 @@ public class PlayerPanel {
                 "@whi@Total Donated: @yel@$" + player.getAmountDonated(),
                 "@whi@Mode: @yel@"
                         + Misc.capitalizeString(player.getGameMode().toString().toLowerCase().replace("_", " ")),
-                "@whi@Rank: @yel@" + Misc.formatText(player.getRights().toString().toLowerCase()),
+                "@whi@Rank: @yel@" + Misc.formatText(player.getRank().toString().toLowerCase()),
 
                 "@whi@Droprate bonus: @yel@" + CustomDropUtils.drBonus(player, player.getSlayer().getSlayerTask().getNpcId()) + "%",
                 "@whi@Double drop bonus: @yel@" + CustomDropUtils.getDoubleDropChance(player, player.getSlayer().getSlayerTask().getNpcId()) + "%",

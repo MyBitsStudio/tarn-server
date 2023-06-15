@@ -24,7 +24,7 @@ public class JewelryTeleporting {
 			return;
 		int pItem = player.getSelectedSkillingItem();
 		if (!player.getInventory().contains(pItem) && !player.getEquipment().contains(pItem)) {
-			if (player.getRights().OwnerDeveloperOnly()) {
+			if (player.getRank().isDeveloper()) {
 				player.getPacketSender().sendMessage("You do not have an " + pItem + "!");
 			}
 			return;

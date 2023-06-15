@@ -2,7 +2,6 @@ package com.ruse.world.content.zombie;
 
 
 import com.ruse.model.GameMode;
-import com.ruse.model.PlayerRights;
 import com.ruse.model.Position;
 import com.ruse.model.Locations;
 import com.ruse.world.content.dialogue.DialogueManager;
@@ -86,7 +85,7 @@ public class ZombieParty {
             getOwner().getPacketSender().sendMessage("That player is currently in another party.");
             return;
         }
-        if (p.getRights() != PlayerRights.DEVELOPER && System.currentTimeMillis()
+        if (p.getRank().isDeveloper() && System.currentTimeMillis()
                 - getOwner().getMinigameAttributes().getZombieAttributes().getLastInvitation() < 2000) {
             getOwner().getPacketSender().sendMessage("You must wait 2 seconds between each party invitation.");
             return;

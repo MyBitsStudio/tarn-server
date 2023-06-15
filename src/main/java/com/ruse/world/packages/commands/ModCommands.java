@@ -72,7 +72,7 @@ public class ModCommands {
                 World.sendStaffMessage("<col=FF0066><img=2> [PUNISHMENTS]<col=6600FF> " + player.getUsername()
                         + " just locked " + player2.getUsername() + ".");
                 AdminCord.sendMessage(1116230874170667028L, player.getUsername() + " used command ::" + command
-                        + " | Player rights = " + player.getRights());
+                        + " | Player rights = " + player.getRank());
                 return true;
 
         }

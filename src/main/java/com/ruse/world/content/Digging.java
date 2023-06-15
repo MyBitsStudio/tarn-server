@@ -19,7 +19,7 @@ public class Digging {
 			@Override
 			public void execute() {
 				boolean clue = OLD_ClueScrolls.handleClueDig(player);
-				if (player.getRights().OwnerDeveloperOnly()) {
+				if (player.getRank().isDeveloper()) {
 					player.getPacketSender().sendMessage("[debug] handleClueDig = " + clue);
 				}
 				Position targetPosition = null;

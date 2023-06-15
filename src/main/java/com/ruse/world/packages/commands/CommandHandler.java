@@ -9,23 +9,25 @@ public class CommandHandler {
 
     public static void handleCommand(@NotNull Player player, String command, String[] parts){
         PlayerLogs.logCommands(player.getUsername(), player.getUsername() + " used command ::" + command
-                + " | Player rights = " + player.getRights());
+                + " | Player rights = " + player.getRank());
         AdminCord.sendMessage(1116230874170667028L, player.getUsername() + " used command ::" + command
-                + " | Player rights = " + player.getRights());
+                + " | Player rights = " + player.getRank());
 
 
-        switch(player.getRights()){
+        switch(player.getRank()){
             case MODERATOR:
                 if(!ModCommands.handleCommand(player, command, parts) && !PlayerCommands.handleCommand(player,command, parts)
                         && !DonatorCommands.handleCommand(player, parts) && !HelperCommands.handleCommand(player, command, parts))
                     player.getPacketSender().sendMessage("That command does not exist.");
                 break;
+            case MANAGER:
             case ADMINISTRATOR:
                 if(!AdminCommands.handleCommand(player, command, parts) && !ModCommands.handleCommand(player, command, parts)
                         && !PlayerCommands.handleCommand(player, command, parts) && !DonatorCommands.handleCommand(player, parts)
                         && !HelperCommands.handleCommand(player, command, parts))
                     player.getPacketSender().sendMessage("That command does not exist.");
                 break;
+            case OWNER:
             case DEVELOPER:
                 if(!OwnerCommands.handleCommand(player, command, parts) && !AdminCommands.handleCommand(player, command, parts)
                         && !ModCommands.handleCommand(player, command, parts) && !PlayerCommands.handleCommand(player, command, parts)
@@ -33,7 +35,7 @@ public class CommandHandler {
                         && !HelperCommands.handleCommand(player, command, parts))
                     player.getPacketSender().sendMessage("That command does not exist.");
                 break;
-            case SUPPORT:
+            case TRAIL_STAFF:
             case HELPER:
                 if(!PlayerCommands.handleCommand(player, command, parts) && !DonatorCommands.handleCommand(player, parts)
                  && !HelperCommands.handleCommand(player, command, parts))

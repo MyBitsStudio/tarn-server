@@ -6,7 +6,6 @@ import com.ruse.model.GameMode;
 import com.ruse.model.Item;
 import com.ruse.model.Locations;
 import com.ruse.model.Locations.Location;
-import com.ruse.model.PlayerRights;
 import com.ruse.model.definitions.ItemDefinition;
 import com.ruse.model.projectile.ItemEffect;
 import com.ruse.util.Misc;
@@ -35,9 +34,9 @@ public class Trading {
 			return;
 
 		if (player.getLocation() == Location.JAIL || player2.getLocation() == Location.JAIL || Jail.isJailed(player.getUsername())) {
-			if (!player.getRights().isStaff() && player2.getRights().isStaff()) {
+			if (!player.getRank().isStaff() && player2.getRank().isStaff()) {
 				player.getPacketSender().sendMessage("You may trade with staff.");
-			} else if (player.getRights().isStaff()) {
+			} else if (player.getRank().isStaff()) {
 				player.getPacketSender().sendMessage("You may trade anyone in jail.");
 			} else {
 				player.getPacketSender().sendMessage("You may not trade in jail.");
@@ -62,23 +61,23 @@ public class Trading {
 		 */
 
 		if (player.getGameMode() == GameMode.IRONMAN
-				&& !(player.getRights().OwnerDeveloperOnly() || player2.getRights().OwnerDeveloperOnly())) {
+				&& !(player.getRank().isAdmin())) {
 			player.getPacketSender().sendMessage("Ironman players are not allowed to trade.");
 			return;
 		}
 		if (player.getGameMode() == GameMode.ULTIMATE_IRONMAN
-				&& !(player.getRights().OwnerDeveloperOnly() || player2.getRights().OwnerDeveloperOnly())) {
+				&& !(player.getRank().isAdmin())) {
 			player.getPacketSender().sendMessage("Ultimate ironman players are not allowed to trade.");
 			return;
 		}
 		if (player2.getGameMode() == GameMode.IRONMAN
-				&& !(player.getRights().OwnerDeveloperOnly() || player2.getRights().OwnerDeveloperOnly())) {
+				&& !(player.getRank().isAdmin())) {
 			player.getPacketSender()
 					.sendMessage("That player is a Ultimate ironman-player and can therefore not trade.");
 			return;
 		}
 		if (player2.getGameMode() == GameMode.ULTIMATE_IRONMAN
-				&& !(player.getRights().OwnerDeveloperOnly() || player2.getRights().OwnerDeveloperOnly())) {
+				&& !(player.getRank().isAdmin())) {
 			player.getPacketSender().sendMessage("That player is an Ironman player and can therefore not trade.");
 			return;
 		}
@@ -260,8 +259,8 @@ public class Trading {
 		if(itemToTrade.getEffect() != effect) {
 			return;
 		}
-		if (player.getRights() != PlayerRights.DEVELOPER || player.getRights() != PlayerRights.ADMINISTRATOR && player2.getRights() != PlayerRights.DEVELOPER
-				&& !(itemId == 1419 && player.getRights().isStaff())) {
+		if (player.getRank().isAdmin()
+				&& !(itemId == 1419 && player.getRank().isStaff())) {
 			if (!itemToTrade.tradeable()) {
 				player.getPacketSender().sendMessage("This item is currently untradeable and cannot be traded.");
 				return;

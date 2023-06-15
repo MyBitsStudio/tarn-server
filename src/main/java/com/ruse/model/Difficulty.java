@@ -1,14 +1,6 @@
 package com.ruse.model;
 
-//import com.ruse.model.container.impl.Bank;
-//import com.ruse.model.container.impl.Bank;
-//import com.ruse.world.content.PlayerPanel;
-//import com.ruse.world.content.Achievements.AchievementData;
-//import com.ruse.world.content.dialogue.DialogueManager;
-//import com.ruse.world.content.dialogue.impl.Tutorial;
 import com.ruse.world.entity.impl.player.Player;
-//import com.ruse.world.content.skill.impl.slayer.SlayerMaster;
-//import com.ruse.world.content.skill.impl.slayer.SlayerTasks;
 
 public enum Difficulty {
 
@@ -23,7 +15,7 @@ public enum Difficulty {
 				player.getPacketSender().sendMessage("You are far too busy to do that.");
 				return;
 			}
-			if (newMode == FUN && !player.getRights().OwnerDeveloperOnly()) {
+			if (newMode == FUN && !player.getRank().isDeveloper()) {
 				player.getPacketSender().sendMessage("Error code: 104153, please report to staff.");
 				return;
 			}
@@ -31,15 +23,15 @@ public enum Difficulty {
 				player.getPacketSender().sendMessage("You are already on that difficulty!");
 				return;
 			}
-			if (cd == EASY && !player.getRights().OwnerDeveloperOnly()) {
+			if (cd == EASY && !player.getRank().isDeveloper()) {
 				player.getPacketSender().sendMessage("You cannot change your Difficulty from Easy.");
 				return;
 			}
-			if (cd == REGULAR && newMode != EASY && !player.getRights().OwnerDeveloperOnly()) {
+			if (cd == REGULAR && newMode != EASY && !player.getRank().isDeveloper()) {
 				player.getPacketSender().sendMessage("You can only change your difficulty to an easier mode.");
 				return;
 			}
-			if (cd == HARD && newMode == EXTREME && !player.getRights().OwnerDeveloperOnly()) {
+			if (cd == HARD && newMode == EXTREME && !player.getRank().isDeveloper()) {
 				player.getPacketSender().sendMessage("You can only change your difficulty to an easier mode.");
 				return;
 			}

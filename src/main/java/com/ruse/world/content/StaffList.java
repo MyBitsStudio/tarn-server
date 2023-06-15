@@ -1,6 +1,5 @@
 package com.ruse.world.content;
 
-import com.ruse.model.PlayerRights;
 import com.ruse.world.World;
 import com.ruse.world.entity.impl.player.Player;
 
@@ -22,16 +21,16 @@ public class StaffList {
 	}
 
 	public static String getPrefix(Player player) {
-		if (player.getRights() == PlayerRights.DEVELOPER) { // 679 main img 0
+		if (player.getRank().isDeveloper()) { // 679 main img 0
 			return "<img=4>";
-		}
-		if (player.getRights() == PlayerRights.MODERATOR) {
-			return "<img=1>";
-		}
-		if (player.getRights() == PlayerRights.ADMINISTRATOR) {
+		} else
+		if (player.getRank().isAdmin()){
 			return "<img=2>";
-		}
-		if (player.getRights() == PlayerRights.HELPER) {
+		} else
+		if (player.getRank().isModPlus()) {
+			return "<img=1>";
+		} else
+		if (player.getRank().isHelperPlus()) {
 			return "<img=5>";
 		}
 		return "";

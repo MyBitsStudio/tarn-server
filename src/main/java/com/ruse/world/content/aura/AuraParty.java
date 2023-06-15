@@ -3,7 +3,6 @@ package com.ruse.world.content.aura;
 
 import com.ruse.model.GameMode;
 import com.ruse.model.Locations;
-import com.ruse.model.PlayerRights;
 import com.ruse.model.Position;
 import com.ruse.world.content.dialogue.DialogueManager;
 import com.ruse.world.entity.impl.npc.NPC;
@@ -86,7 +85,7 @@ public class AuraParty {
             getOwner().getPacketSender().sendMessage("That player is currently in another party.");
             return;
         }
-        if (p.getRights() != PlayerRights.DEVELOPER && System.currentTimeMillis()
+        if (p.getRank().isDeveloper() && System.currentTimeMillis()
                 - getOwner().getMinigameAttributes().getAuraAttributes().getLastInvitation() < 2000) {
             getOwner().getPacketSender().sendMessage("You must wait 2 seconds between each party invitation.");
             return;

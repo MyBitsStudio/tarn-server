@@ -229,7 +229,7 @@ public enum OLD_ClueScrolls {
 		player.getInventory().delete(hardCasket, 1);
 		if (player.getInventory().getAmount(hardCasket) != (int) (originalCount - 1)) {
 			player.getPacketSender().sendMessage("ERROR 11012");
-			if (player.getRights().OwnerDeveloperOnly()) {
+			if (player.getRank().isDeveloper()) {
 				player.getPacketSender().sendMessage("OC = " + originalCount + ", OC-1 = " + (int) (originalCount - 1)
 						+ ", current count = " + player.getInventory().getAmount(hardCasket));
 			}
@@ -280,7 +280,7 @@ public enum OLD_ClueScrolls {
 			if (player.getInventory().contains(OLD_ClueScrolls.values()[i].getClueId())
 					&& player.getPosition().getX() == OLD_ClueScrolls.values()[i].getDigTile().getX()
 					&& player.getPosition().getY() == OLD_ClueScrolls.values()[i].getDigTile().getY()) {
-				if (player.getRights().OwnerDeveloperOnly()) {
+				if (player.getRank().isDeveloper()) {
 					player.getPacketSender()
 							.sendMessage("[debug] You are on: " + OLD_ClueScrolls.values()[i].getDigTile().getX() + ", "
 									+ OLD_ClueScrolls.values()[i].getDigTile().getY() + ", index: " + i);
@@ -288,7 +288,7 @@ public enum OLD_ClueScrolls {
 				player.getInventory().delete(OLD_ClueScrolls.values()[i].getClueId(), 1);
 				player.getPointsHandler().setClueSteps(1, true);
 				int c = Misc.getRandom(1);
-				if (player.getRights().OwnerDeveloperOnly()) {
+				if (player.getRank().isDeveloper()) {
 					player.getPacketSender().sendMessage("[debug] You rolled a: " + c + " on Misc.getRandom(1)");
 				}
 				if ((player.getPointsHandler().getClueSteps() >= 3 && c == 1)
@@ -308,14 +308,14 @@ public enum OLD_ClueScrolls {
 		for (int i = 0; i < OLD_ClueScrolls.values().length; i++) {
 			if (player.getInventory().contains(OLD_ClueScrolls.values()[i].getClueId())
 					&& npcid == OLD_ClueScrolls.values()[i].getNpcId()) {
-				if (player.getRights().OwnerDeveloperOnly()) {
+				if (player.getRank().isDeveloper()) {
 					player.getPacketSender().sendMessage("[debug] Your NPC ID: " + npcid + ", CLUE npcId "
 							+ OLD_ClueScrolls.values()[i].getNpcId() + ", index: " + i);
 				}
 				player.getInventory().delete(OLD_ClueScrolls.values()[i].getClueId(), 1);
 				player.getPointsHandler().setClueSteps(1, true);
 				int c = Misc.getRandom(1);
-				if (player.getRights().OwnerDeveloperOnly()) {
+				if (player.getRank().isDeveloper()) {
 					player.getPacketSender().sendMessage("[debug] You rolled a: " + c + " on Misc.getRandom(1)");
 				}
 				if ((player.getPointsHandler().getClueSteps() >= 3 && c == 1)

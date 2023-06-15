@@ -32,7 +32,7 @@ public class MagicOnItemsPacketListener implements PacketListener {
 			final MagicSpells spell = MagicSpells.forSpellId(spellId);
 			if (spell == null)
 				return;
-			if (player != null && player.getRights().OwnerDeveloperOnly()) {
+			if (player != null && player.getRank().isDeveloper()) {
 				player.getPacketSender().sendMessage(
 						"Used spell id: " + spellId + " on grounditem: " + itemId + " on XY: " + itemX + ", " + itemY);
 			}
@@ -62,7 +62,7 @@ public class MagicOnItemsPacketListener implements PacketListener {
 			if (magicSpell == null)
 				return;
 			Spell spell = magicSpell.getSpell();
-			if (player != null && player.getRights().OwnerDeveloperOnly()) {
+			if (player.getRank().isDeveloper()) {
 				player.getPacketSender().sendMessage("Used spell id: " + spellId + " on item: " + itemId);
 			}
 			if (UltimateIronmanHandler.hasItemsStored(player) && player.getLocation() != Location.DUNGEONEERING) {

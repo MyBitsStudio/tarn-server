@@ -19,7 +19,6 @@ import com.ruse.world.content.minigames.impl.Dueling;
 import com.ruse.world.content.minigames.impl.Dueling.DuelRule;
 import com.ruse.world.entity.impl.Character;
 import com.ruse.world.entity.impl.player.Player;
-import mysql.impl.Donation;
 
 public class CurseHandler {
 
@@ -354,19 +353,20 @@ public class CurseHandler {
 		/**
 		 * Donator Rank Bonusses
 		 */
-		if(player.getAmountDonated() >= Donation.ZENYTE_DONATION_AMOUNT || player.getRights().equals(PlayerRights.YOUTUBER)) {
-			toRemove *= 0;
-		} else if(player.getAmountDonated() >= Donation.ONYX_DONATION_AMOUNT) {
-			toRemove *= 0;
-		} else if(player.getAmountDonated() >= Donation.DIAMOND_DONATION_AMOUNT) {
-			toRemove *= 0;
-		} else if(player.getAmountDonated() >= Donation.RUBY_DONATION_AMOUNT) {
-			toRemove *= 0.60;
-		} else if(player.getAmountDonated() >= Donation.EMERALD_DONATION_AMOUNT) {
-			toRemove *= 0.80;
-		} else if(player.getAmountDonated() >= Donation.SAPPHIRE_DONATION_AMOUNT) {
-			toRemove *= 0.95;
-		}
+
+//		if(player.getAmountDonated() >= Donation.ZENYTE_DONATION_AMOUNT || player.getRights().equals(PlayerRights.YOUTUBER)) {
+//			toRemove *= 0;
+//		} else if(player.getAmountDonated() >= Donation.ONYX_DONATION_AMOUNT) {
+//			toRemove *= 0;
+//		} else if(player.getAmountDonated() >= Donation.DIAMOND_DONATION_AMOUNT) {
+//			toRemove *= 0;
+//		} else if(player.getAmountDonated() >= Donation.RUBY_DONATION_AMOUNT) {
+//			toRemove *= 0.60;
+//		} else if(player.getAmountDonated() >= Donation.EMERALD_DONATION_AMOUNT) {
+//			toRemove *= 0.80;
+//		} else if(player.getAmountDonated() >= Donation.SAPPHIRE_DONATION_AMOUNT) {
+//			toRemove *= 0.95;
+//		}
 		if (toRemove > 0) {
 			toRemove /= (1 + (0.05 * player.getBonusManager().getOtherBonus()[2]));
 		}

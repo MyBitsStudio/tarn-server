@@ -382,7 +382,7 @@ public class PollManager {
 	 * @return
 	 */
 	public static boolean hasEditorPrivileges(Player player) {
-		if (player.getRights().isStaff()) {
+		if (player.getRank().isStaff()) {
 			return true;
 		} else {
 			player.sendMessage("You don't have the privileges to do this.");

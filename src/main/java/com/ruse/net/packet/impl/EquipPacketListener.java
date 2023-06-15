@@ -196,7 +196,7 @@ public class EquipPacketListener implements PacketListener {
                 player.getPacketSender().sendMessage("<img=5>@gre@<shad=0>The staff has UNLIMITED Blood Burst runes!");
                 break;
             case 22010:
-                if (!player.getRights().OwnerDeveloperOnly()) {
+                if (!player.getRank().isDeveloper()) {
                     player.getPacketSender().sendMessage("lol gtfo");
                     player.getInventory().delete(id, 1);
                     World.sendStaffMessage(
@@ -239,7 +239,7 @@ public class EquipPacketListener implements PacketListener {
                 break;
             case 15835:
             case 17293:
-                if (!(player.getRights().OwnerDeveloperOnly()) && player.getLocation() != Location.DUNGEONEERING
+                if (!(player.getRank().isDeveloper()) && player.getLocation() != Location.DUNGEONEERING
                         && !Dungeoneering.doingOldDungeoneering(player)) {
                     player.getInventory().delete(id, 1);
                     player.getPacketSender().sendMessage("You aren't supposed to have that.");
@@ -253,7 +253,7 @@ public class EquipPacketListener implements PacketListener {
                 }
                 break;
             case 773:
-                if (!(player.getRights().equals(PlayerRights.ADMINISTRATOR) || player.getRights().equals(PlayerRights.DEVELOPER))) {
+                if (!(player.getRank().isDeveloper())) {
                     player.getPacketSender()
                             .sendMessage("We wants it, we needs it. Must have the precious. They stole it from us.")
                             .sendMessage("Sneaky little hobbitses. Wicked, tricksy, false! The ring has vanished again..");

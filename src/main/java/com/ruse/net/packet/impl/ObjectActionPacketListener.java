@@ -60,7 +60,6 @@ import com.ruse.world.content.transportation.TeleportHandler;
 import com.ruse.world.content.transportation.TeleportLocations;
 import com.ruse.world.content.transportation.TeleportType;
 import com.ruse.world.entity.impl.player.Player;
-import mysql.impl.Donation;
 
 import static com.ruse.world.content.combat.prayer.PrayerHandler.startDrain;
 
@@ -87,7 +86,7 @@ public class ObjectActionPacketListener implements PacketListener {
         final Position position = new Position(x, y, player.getPosition().getZ());
         final GameObject gameObject = new GameObject(id, position);
         if (id > 0 && id != 6 && !RegionClipping.objectExists(gameObject)) {
-            if (player.getRights().OwnerDeveloperOnly()) {
+            if (player.getRank().isDeveloper()) {
                 player.getPacketSender().sendMessage("A interaction error occured. Error code: " + id);
             } else {
                 player.getPacketSender().sendMessage("Nothing interesting happens.");
@@ -107,7 +106,7 @@ public class ObjectActionPacketListener implements PacketListener {
         gameObject.setSize(size);
         if (player.getMovementQueue().isLockMovement())
             return;
-        if (player.getRights() == PlayerRights.DEVELOPER)
+        if (player.getRank().isDeveloper())
             player.getPacketSender()
                     .sendMessage("First click object id; [id, position] : [" + id + ", " + position.toString() + "]");
         player.setInteractingObject(gameObject)
@@ -173,7 +172,7 @@ public class ObjectActionPacketListener implements PacketListener {
                     }
                     if (gameObject.getDefinition() != null && gameObject.getDefinition().getName() != null
                             && gameObject.getDefinition().name.equalsIgnoreCase("door")
-                            && player.getRights().OwnerDeveloperOnly()) {
+                            && player.getRank().isDeveloper()) {
                         player.getPacketSender().sendMessage("You just clicked a door. ID: " + id);
                     }
                     if (gameObject.getDefinition() != null && gameObject.getDefinition().getName() != null) {
@@ -693,13 +692,13 @@ public class ObjectActionPacketListener implements PacketListener {
                                     }
                                 });
                             } else if (player.getLocation() == Location.ZULRAH) {
-                                if (!player.getRights().isMember()
+                                if (!player.getDonator().isClericPlus()
                                         && player.getSkillManager().getCurrentLevel(Skill.AGILITY) < 85) {
                                     player.getPacketSender()
                                             .sendMessage("You need 85 Agility to navigate the boat back to camp!");
                                     return;
                                 }
-                                if (player.getRights().isMember()
+                                if (player.getDonator().isClericPlus()
                                         && player.getSkillManager().getCurrentLevel(Skill.AGILITY) < 85) {
                                     player.getPacketSender()
                                             .sendMessage("As a member you can navigate the swamp without 85 Agility.");
@@ -879,7 +878,7 @@ public class ObjectActionPacketListener implements PacketListener {
                              */
                             break;
                         case 2112:
-                            if (!player.getRights().isMember()) {
+                            if (!player.getDonator().isClericPlus()) {
                                 player.getPacketSender().sendMessage("You must be a member to access this area.");
                                 return;
                             }
@@ -1067,7 +1066,7 @@ public class ObjectActionPacketListener implements PacketListener {
                             }
                             break;
                         case 47180:
-                            if (!player.getRights().isMember()) {
+                            if (!player.getDonator().isClericPlus()) {
                                 player.getPacketSender().sendMessage("You must be a Member to use this.");
                                 return;
                             }
@@ -1077,7 +1076,7 @@ public class ObjectActionPacketListener implements PacketListener {
                         case 10091:
                         case 8702:
                             if (gameObject.getId() == 8702) {
-                                if (!player.getRights().isMember()) {
+                                if (!player.getDonator().isClericPlus()) {
                                     player.getPacketSender().sendMessage("You must be a Member to use this.");
                                     return;
                                 }
@@ -1312,7 +1311,7 @@ public class ObjectActionPacketListener implements PacketListener {
                                 index = 3;
                                 movePos = new Position(2925, leaveRoom ? 5332 : 5331, 2);
                             }
-                            if (!leaveRoom && (!player.getRights().isMember() && player.getMinigameAttributes()
+                            if (!leaveRoom && (!player.getDonator().isClericPlus() && player.getMinigameAttributes()
                                     .getGodwarsDungeonAttributes().getKillcount()[index] < 20)) {
                                 if (player.getInventory().contains(22053)) {
                                     player.getInventory().delete(22053, 1);
@@ -1324,7 +1323,7 @@ public class ObjectActionPacketListener implements PacketListener {
                                     return;
                                 }
                             }
-                            if (player.getRights().isMember()) {
+                            if (player.getDonator().isClericPlus()) {
                                 player.getPacketSender()
                                         .sendMessage("@red@As a member, you don't need to worry about kill count.");
                                 player.performGraphic(new Graphic(6, GraphicHeight.LOW));
@@ -1390,7 +1389,7 @@ public class ObjectActionPacketListener implements PacketListener {
                             break;
                         case 26439:
                             if (player.getSkillManager().getMaxLevel(Skill.CONSTITUTION) <= 700
-                                    && !(player.getRights().isMember())) {
+                                    && !(player.getDonator().isClericPlus())) {
                                 player.getPacketSender().sendMessage(
                                         "You need a Constitution level of at least 70 to swim across, or be a member.");
                                 return;
@@ -1445,17 +1444,17 @@ public class ObjectActionPacketListener implements PacketListener {
                         case 26384:
                             if (player.isCrossingObstacle())
                                 return;
-                            if (!player.getInventory().contains(2347) && !(player.getRights().isMember())) {
+                            if (!player.getInventory().contains(2347) && !(player.getDonator().isClericPlus())) {
                                 player.getPacketSender()
                                         .sendMessage("You need to have a hammer to bang on the door with.");
                                 return;
                             }
-                            if (!player.getInventory().contains(2347) && (player.getRights().isMember())) {
+                            if (!player.getInventory().contains(2347) && (player.getDonator().isClericPlus())) {
                                 player.getPacketSender().sendMessage(
                                         "@red@You don't have a hammer, but as a member you can enter anyway.");
                                 player.performGraphic(new Graphic(6, GraphicHeight.LOW));
                             }
-                            if (player.getRights().isMember())
+                            if (player.getDonator().isClericPlus())
                                 player.setCrossingObstacle(true);
                             final boolean goBack = player.getPosition().getX() <= 2850;
                             player.performAnimation(new Animation(377));
@@ -1476,12 +1475,12 @@ public class ObjectActionPacketListener implements PacketListener {
                             if (!player.getClickDelay().elapsed(1200))
                                 return;
                             if (player.getSkillManager().getCurrentLevel(Skill.RANGED) < 70
-                                    && !(player.getRights().isMember()))
+                                    && !(player.getDonator().isClericPlus()))
                                 player.getPacketSender()
                                         .sendMessage("You need a Ranged level of at least 70 to swing across here.")
                                         .sendMessage(
                                                 "Or, you can get membership for $10 and pass without the requirement.");
-                            else if (!player.getInventory().contains(9418) && !(player.getRights().isMember())) {
+                            else if (!player.getInventory().contains(9418) && !(player.getDonator().isClericPlus())) {
                                 player.getPacketSender().sendMessage(
                                         "You need a Mithril grapple to swing across here. Explorer Jack might have one.")
                                         .sendMessage(
@@ -1627,7 +1626,7 @@ public class ObjectActionPacketListener implements PacketListener {
                             player.getClickDelay().reset();
                             break;
                         case 305:
-                            if (player.getAmountDonated() >= Donation.EMERALD_DONATION_AMOUNT || player.getRights().equals(PlayerRights.YOUTUBER)) {
+                            if (player.getDonator().isMysticalPlus()) {
                                 boolean restore1 = player.getSpecialPercentage() < 100;
                                 if (restore1) {
                                     player.setSpecialPercentage(100);
@@ -1697,13 +1696,13 @@ public class ObjectActionPacketListener implements PacketListener {
                             });
                             break;
                         case 9293:
-                            if (!player.getRights().isMember()
+                            if (!player.getDonator().isClericPlus()
                                     && player.getSkillManager().getCurrentLevel(Skill.AGILITY) < 70) {
                                 player.getPacketSender()
                                         .sendMessage("You must have at least 70 Agility to use this shortcut.");
                                 return;
                             }
-                            if (player.getRights().isMember()
+                            if (player.getDonator().isClericPlus()
                                     && player.getSkillManager().getCurrentLevel(Skill.AGILITY) < 70) {
                                 player.getPacketSender().sendMessage(
                                         "You do not have 70 Agility, but as a member you can pass anyway.");
@@ -1942,7 +1941,7 @@ public class ObjectActionPacketListener implements PacketListener {
                             Hunter.lootTrap(player, gameObject);
                             break;
                         case 13493:
-                            if (!player.getRights().isMember()) {
+                            if (!player.getDonator().isClericPlus()) {
                                 player.getPacketSender().sendMessage("You must be a Member to use this.");
                                 return;
                             }
@@ -2172,9 +2171,9 @@ public class ObjectActionPacketListener implements PacketListener {
             distanceX = -(distanceX);
         if (distanceY < 0)
             distanceY = -(distanceY);
-        int size = distanceX > distanceY ? distanceX : distanceY;
+        int size = Math.max(distanceX, distanceY);
         gameObject.setSize(size);
-        if (player.getRights() == PlayerRights.DEVELOPER)
+        if (player.getRank().isDeveloper())
             player.getPacketSender()
                     .sendMessage("Second click object id; [id, position] : [" + id + ", " + position.toString() + "]");
         player.setInteractingObject(gameObject)
@@ -2681,7 +2680,7 @@ public class ObjectActionPacketListener implements PacketListener {
             distanceY = -(distanceY);
         int size = distanceX > distanceY ? distanceX : distanceY;
         gameObject.setSize(size);
-        if (player.getRights() == PlayerRights.DEVELOPER) {
+        if (player.getRank().isDeveloper()) {
             player.getPacketSender()
                     .sendMessage("Third click object id; [id, position] : [" + id + ", " + position.toString() + "]");
         }
@@ -2760,7 +2759,7 @@ public class ObjectActionPacketListener implements PacketListener {
             distanceY = -(distanceY);
         int size = distanceX > distanceY ? distanceX : distanceY;
         gameObject.setSize(size);
-        if (player.getRights() == PlayerRights.DEVELOPER) {
+        if (player.getRank().isDeveloper()) {
             player.getPacketSender()
                     .sendMessage("Third click object id; [id, position] : [" + id + ", " + position.toString() + "]");
         }
@@ -2792,31 +2791,31 @@ public class ObjectActionPacketListener implements PacketListener {
         switch (packet.getOpcode()) {
             case FIRST_CLICK:
                 firstClick(player, packet);
-                if (player.getRights().OwnerDeveloperOnly()) {
+                if (player.getRank().isDeveloper()) {
                     player.getPacketSender().sendMessage("1st click obj");
                 }
                 break;
             case SECOND_CLICK:
                 secondClick(player, packet);
-                if (player.getRights().OwnerDeveloperOnly()) {
+                if (player.getRank().isDeveloper()) {
                     player.getPacketSender().sendMessage("2nd click obj");
                 }
                 break;
             case THIRD_CLICK:
-                if (player.getRights().OwnerDeveloperOnly()) {
+                if (player.getRank().isDeveloper()) {
                     player.getPacketSender().sendMessage("3rd click obj");
                 }
                 thirdClick(player, packet);
                 break;
             case FOURTH_CLICK:
-                if (player.getRights().OwnerDeveloperOnly()) {
+                if (player.getRank().isDeveloper()) {
                     player.getPacketSender().sendMessage("4th click obj. no handler");
                 }
                 // fourthClick(player, packet);
                 break;
             case FIFTH_CLICK:
                 fifthClick(player, packet);
-                if (player.getRights().OwnerDeveloperOnly()) {
+                if (player.getRank().isDeveloper()) {
                     player.getPacketSender().sendMessage("5th click obj");
                 }
                 break;

@@ -26,6 +26,7 @@ public class Forge {
     private final HashMap<Item, Integer> addedItemMap = new HashMap<>();
 
     public void showInterface() {
+        System.out.println("Calling forge");
         reset();
         updateInterface();
         player.getPacketSender().sendItemContainer(player.getInventory(), 49541);

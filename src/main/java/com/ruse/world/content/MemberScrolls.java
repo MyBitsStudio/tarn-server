@@ -1,6 +1,5 @@
 package com.ruse.world.content;
 
-import com.ruse.model.PlayerRights;
 import com.ruse.model.definitions.ItemDefinition;
 import com.ruse.util.Misc;
 import com.ruse.world.World;
@@ -10,33 +9,32 @@ import com.ruse.world.content.dialogue.DialogueManager;
 import com.ruse.world.content.dialogue.DialogueType;
 import com.ruse.world.entity.impl.mini.MiniPlayer;
 import com.ruse.world.entity.impl.player.Player;
-import mysql.impl.Donation;
 
 public class MemberScrolls {
 
 	public static void checkForRankUpdate(Player player) {
-		if (player.getRights().isStaff()) {
-			return;
-		}
-		PlayerRights rights = null;
-		if (player.getAmountDonated() >= Donation.SAPPHIRE_DONATION_AMOUNT)
-			rights = PlayerRights.GRACEFUL_DONATOR;
-		if (player.getAmountDonated() >= Donation.EMERALD_DONATION_AMOUNT)
-			rights = PlayerRights.CLERIC_DONATOR;
-		if (player.getAmountDonated() >= Donation.RUBY_DONATION_AMOUNT)
-			rights = PlayerRights.TORMENTED_DONATOR;
-		if (player.getAmountDonated() >= Donation.DIAMOND_DONATION_AMOUNT)
-			rights = PlayerRights.MYSTICAL_DONATOR;
-		if (player.getAmountDonated() >= Donation.ONYX_DONATION_AMOUNT)
-			rights = PlayerRights.OBSIDIAN_DONATOR;
-		if (player.getAmountDonated() >= Donation.ZENYTE_DONATION_AMOUNT)
-			rights = PlayerRights.FORSAKEN_DONATOR;
-		if (rights != null && rights != player.getRights()) {
-			player.getPacketSender().sendMessage(
-					"You've become a " + Misc.formatText(rights.toString().toLowerCase()) + "! Congratulations!");
-			player.setRights(rights);
-			player.getPacketSender().sendRights();
-		}
+//		if (player.getRights().isStaff()) {
+//			return;
+//		}
+//		PlayerRights rights = null;
+//		if (player.getAmountDonated() >= Donation.SAPPHIRE_DONATION_AMOUNT)
+//			rights = PlayerRights.GRACEFUL_DONATOR;
+//		if (player.getAmountDonated() >= Donation.EMERALD_DONATION_AMOUNT)
+//			rights = PlayerRights.CLERIC_DONATOR;
+//		if (player.getAmountDonated() >= Donation.RUBY_DONATION_AMOUNT)
+//			rights = PlayerRights.TORMENTED_DONATOR;
+//		if (player.getAmountDonated() >= Donation.DIAMOND_DONATION_AMOUNT)
+//			rights = PlayerRights.MYSTICAL_DONATOR;
+//		if (player.getAmountDonated() >= Donation.ONYX_DONATION_AMOUNT)
+//			rights = PlayerRights.OBSIDIAN_DONATOR;
+//		if (player.getAmountDonated() >= Donation.ZENYTE_DONATION_AMOUNT)
+//			rights = PlayerRights.FORSAKEN_DONATOR;
+//		if (rights != null && rights != player.getRights()) {
+//			player.getPacketSender().sendMessage(
+//					"You've become a " + Misc.formatText(rights.toString().toLowerCase()) + "! Congratulations!");
+//			player.setRights(rights);
+//			player.getPacketSender().sendRights();
+//		}
 	}
 
 	/* 
@@ -126,127 +124,127 @@ public class MemberScrolls {
 
 			});
 			break;
-		case 10944:
-			if (player.getRights().isStaff()) {
-				player.getPacketSender().sendMessage("As a staff member, you already have member rights.");
-				PlayerLogs.log(player.getUsername(), "Attempted to redeem a " + ItemDefinition.forId(item).getName()
-						+ ", but was a staff member! (Unsuccessful)");
-				break;
-			}
-			if (player.getRights().isMember()) {
-				player.getPacketSender().sendMessage("You are a member, that would be wasteful!");
-				PlayerLogs.log(player.getUsername(), "Attempted to redeem a " + ItemDefinition.forId(item).getName()
-						+ ", but was already a member! (Unsuccessful)");
-				break;
-			} else {
-				PlayerLogs.log(player.getUsername(),
-						"Has just redeemed a " + ItemDefinition.forId(item).getName() + " successfully!");
-				player.getPacketSender().sendMessage("Sending redemption request...");
-				player.getInventory().delete(10944, 1);
-				player.incrementAmountDonated(10);
-				player.incrementAmountDonatedToday(10);
-				player.setRights(PlayerRights.CLERIC_DONATOR);
-				player.getPacketSender().sendMessage("Congratulations! You've upgraded to a member account!");
-				player.getPacketSender().sendRights();
-				PlayerPanel.refreshPanel(player);
-			}
-			break;
-		case 19119:
-			if (player.getRights().isStaff()) {
-				player.getPacketSender().sendMessage("As a staff member, you already have member rights.");
-				PlayerLogs.log(player.getUsername(), "Attempted to redeem a " + ItemDefinition.forId(item).getName()
-						+ ", but was a staff member! (Unsuccessful)");
-				break;
-			}
-			if (player.getRights().isRegularDonator()) {
-				player.getPacketSender().sendMessage("You are a member, that would be wasteful!");
-				PlayerLogs.log(player.getUsername(), "Attempted to redeem a " + ItemDefinition.forId(item).getName()
-						+ ", but was already a member! (Unsuccessful)");
-				break;
-			} else {
-				PlayerLogs.log(player.getUsername(),
-						"Has just redeemed a " + ItemDefinition.forId(item).getName() + " successfully!");
-				player.getPacketSender().sendMessage("Sending redemption request...");
-				player.getInventory().delete(19119, 1);
-				player.setRights(PlayerRights.GRACEFUL_DONATOR);
-				player.incrementAmountDonated(10);
-				player.getPacketSender().sendMessage("Congratulations! You've upgraded to a donator rank!");
-				player.getPacketSender().sendRights();
-				PlayerPanel.refreshPanel(player);
-			}
-			break;
-		case 19120:
-			if (player.getRights().isStaff()) {
-				player.getPacketSender().sendMessage("As a staff member, you already have member rights.");
-				PlayerLogs.log(player.getUsername(), "Attempted to redeem a " + ItemDefinition.forId(item).getName()
-						+ ", but was a staff member! (Unsuccessful)");
-				break;
-			}
-			if (player.getRights().isSuperDonator()) {
-				player.getPacketSender().sendMessage("You are a member, that would be wasteful!");
-				PlayerLogs.log(player.getUsername(), "Attempted to redeem a " + ItemDefinition.forId(item).getName()
-						+ ", but was already a member! (Unsuccessful)");
-				break;
-			} else {
-				PlayerLogs.log(player.getUsername(),
-						"Has just redeemed a " + ItemDefinition.forId(item).getName() + " successfully!");
-				player.getPacketSender().sendMessage("Sending redemption request...");
-				player.getInventory().delete(19120, 1);
-				player.incrementAmountDonated(20);
-				player.setRights(PlayerRights.CLERIC_DONATOR);
-				player.getPacketSender().sendMessage("Congratulations! You've upgraded to a member account!");
-				player.getPacketSender().sendRights();
-				PlayerPanel.refreshPanel(player);
-			}
-			break;
-		case 19121:
-			if (player.getRights().isStaff()) {
-				player.getPacketSender().sendMessage("As a staff member, you already have member rights.");
-				PlayerLogs.log(player.getUsername(), "Attempted to redeem a " + ItemDefinition.forId(item).getName()
-						+ ", but was a staff member! (Unsuccessful)");
-				break;
-			}
-			if (player.getRights().isExtremeDonator()) {
-				player.getPacketSender().sendMessage("You are a member, that would be wasteful!");
-				PlayerLogs.log(player.getUsername(), "Attempted to redeem a " + ItemDefinition.forId(item).getName()
-						+ ", but was already a member! (Unsuccessful)");
-				break;
-			} else {
-				PlayerLogs.log(player.getUsername(),
-						"Has just redeemed a " + ItemDefinition.forId(item).getName() + " successfully!");
-				player.getPacketSender().sendMessage("Sending redemption request...");
-				player.getInventory().delete(19121, 1);
-				player.incrementAmountDonated(60);
-				player.setRights(PlayerRights.TORMENTED_DONATOR);
-				player.getPacketSender().sendMessage("Congratulations! You've upgraded to a member account!");
-				player.getPacketSender().sendRights();
-				PlayerPanel.refreshPanel(player);
-			}
-			break;
-		case 19122:
-			if (player.getRights().isStaff()) {
-				player.getPacketSender().sendMessage("As a staff member, you already have member rights.");
-				PlayerLogs.log(player.getUsername(), "Attempted to redeem a " + ItemDefinition.forId(item).getName()
-						+ ", but was a staff member! (Unsuccessful)");
-				break;
-			}
-			if (player.getRights().isSponsorDonator()) {
-				player.getPacketSender().sendMessage("You are a member, that would be wasteful!");
-				PlayerLogs.log(player.getUsername(), "Attempted to redeem a " + ItemDefinition.forId(item).getName()
-						+ ", but was already a member! (Unsuccessful)");
-				break;
-			} else {
-				PlayerLogs.log(player.getUsername(),
-						"Has just redeemed a " + ItemDefinition.forId(item).getName() + " successfully!");
-				player.getPacketSender().sendMessage("Sending redemption request...");
-				player.getInventory().delete(19122, 1);
-				player.incrementAmountDonated(200);
-				player.setRights(PlayerRights.MYSTICAL_DONATOR);
-				player.getPacketSender().sendMessage("Congratulations! You've upgraded to a member account!");
-				player.getPacketSender().sendRights();
-				PlayerPanel.refreshPanel(player);
-			}
-			break;
+//		case 10944:
+//			if (player.getRights().isStaff()) {
+//				player.getPacketSender().sendMessage("As a staff member, you already have member rights.");
+//				PlayerLogs.log(player.getUsername(), "Attempted to redeem a " + ItemDefinition.forId(item).getName()
+//						+ ", but was a staff member! (Unsuccessful)");
+//				break;
+//			}
+//			if (player.getRights().isMember()) {
+//				player.getPacketSender().sendMessage("You are a member, that would be wasteful!");
+//				PlayerLogs.log(player.getUsername(), "Attempted to redeem a " + ItemDefinition.forId(item).getName()
+//						+ ", but was already a member! (Unsuccessful)");
+//				break;
+//			} else {
+//				PlayerLogs.log(player.getUsername(),
+//						"Has just redeemed a " + ItemDefinition.forId(item).getName() + " successfully!");
+//				player.getPacketSender().sendMessage("Sending redemption request...");
+//				player.getInventory().delete(10944, 1);
+//				player.incrementAmountDonated(10);
+//				player.incrementAmountDonatedToday(10);
+//				player.setRights(PlayerRights.CLERIC_DONATOR);
+//				player.getPacketSender().sendMessage("Congratulations! You've upgraded to a member account!");
+//				player.getPacketSender().sendRights();
+//				PlayerPanel.refreshPanel(player);
+//			}
+//			break;
+//		case 19119:
+//			if (player.getRights().isStaff()) {
+//				player.getPacketSender().sendMessage("As a staff member, you already have member rights.");
+//				PlayerLogs.log(player.getUsername(), "Attempted to redeem a " + ItemDefinition.forId(item).getName()
+//						+ ", but was a staff member! (Unsuccessful)");
+//				break;
+//			}
+//			if (player.getRights().isRegularDonator()) {
+//				player.getPacketSender().sendMessage("You are a member, that would be wasteful!");
+//				PlayerLogs.log(player.getUsername(), "Attempted to redeem a " + ItemDefinition.forId(item).getName()
+//						+ ", but was already a member! (Unsuccessful)");
+//				break;
+//			} else {
+//				PlayerLogs.log(player.getUsername(),
+//						"Has just redeemed a " + ItemDefinition.forId(item).getName() + " successfully!");
+//				player.getPacketSender().sendMessage("Sending redemption request...");
+//				player.getInventory().delete(19119, 1);
+//				player.setRights(PlayerRights.GRACEFUL_DONATOR);
+//				player.incrementAmountDonated(10);
+//				player.getPacketSender().sendMessage("Congratulations! You've upgraded to a donator rank!");
+//				player.getPacketSender().sendRights();
+//				PlayerPanel.refreshPanel(player);
+//			}
+//			break;
+//		case 19120:
+//			if (player.getRights().isStaff()) {
+//				player.getPacketSender().sendMessage("As a staff member, you already have member rights.");
+//				PlayerLogs.log(player.getUsername(), "Attempted to redeem a " + ItemDefinition.forId(item).getName()
+//						+ ", but was a staff member! (Unsuccessful)");
+//				break;
+//			}
+//			if (player.getRights().isSuperDonator()) {
+//				player.getPacketSender().sendMessage("You are a member, that would be wasteful!");
+//				PlayerLogs.log(player.getUsername(), "Attempted to redeem a " + ItemDefinition.forId(item).getName()
+//						+ ", but was already a member! (Unsuccessful)");
+//				break;
+//			} else {
+//				PlayerLogs.log(player.getUsername(),
+//						"Has just redeemed a " + ItemDefinition.forId(item).getName() + " successfully!");
+//				player.getPacketSender().sendMessage("Sending redemption request...");
+//				player.getInventory().delete(19120, 1);
+//				player.incrementAmountDonated(20);
+//				player.setRights(PlayerRights.CLERIC_DONATOR);
+//				player.getPacketSender().sendMessage("Congratulations! You've upgraded to a member account!");
+//				player.getPacketSender().sendRights();
+//				PlayerPanel.refreshPanel(player);
+//			}
+//			break;
+//		case 19121:
+//			if (player.getRights().isStaff()) {
+//				player.getPacketSender().sendMessage("As a staff member, you already have member rights.");
+//				PlayerLogs.log(player.getUsername(), "Attempted to redeem a " + ItemDefinition.forId(item).getName()
+//						+ ", but was a staff member! (Unsuccessful)");
+//				break;
+//			}
+//			if (player.getRights().isExtremeDonator()) {
+//				player.getPacketSender().sendMessage("You are a member, that would be wasteful!");
+//				PlayerLogs.log(player.getUsername(), "Attempted to redeem a " + ItemDefinition.forId(item).getName()
+//						+ ", but was already a member! (Unsuccessful)");
+//				break;
+//			} else {
+//				PlayerLogs.log(player.getUsername(),
+//						"Has just redeemed a " + ItemDefinition.forId(item).getName() + " successfully!");
+//				player.getPacketSender().sendMessage("Sending redemption request...");
+//				player.getInventory().delete(19121, 1);
+//				player.incrementAmountDonated(60);
+//				player.setRights(PlayerRights.TORMENTED_DONATOR);
+//				player.getPacketSender().sendMessage("Congratulations! You've upgraded to a member account!");
+//				player.getPacketSender().sendRights();
+//				PlayerPanel.refreshPanel(player);
+//			}
+//			break;
+//		case 19122:
+//			if (player.getRights().isStaff()) {
+//				player.getPacketSender().sendMessage("As a staff member, you already have member rights.");
+//				PlayerLogs.log(player.getUsername(), "Attempted to redeem a " + ItemDefinition.forId(item).getName()
+//						+ ", but was a staff member! (Unsuccessful)");
+//				break;
+//			}
+//			if (player.getRights().isSponsorDonator()) {
+//				player.getPacketSender().sendMessage("You are a member, that would be wasteful!");
+//				PlayerLogs.log(player.getUsername(), "Attempted to redeem a " + ItemDefinition.forId(item).getName()
+//						+ ", but was already a member! (Unsuccessful)");
+//				break;
+//			} else {
+//				PlayerLogs.log(player.getUsername(),
+//						"Has just redeemed a " + ItemDefinition.forId(item).getName() + " successfully!");
+//				player.getPacketSender().sendMessage("Sending redemption request...");
+//				player.getInventory().delete(19122, 1);
+//				player.incrementAmountDonated(200);
+//				player.setRights(PlayerRights.MYSTICAL_DONATOR);
+//				player.getPacketSender().sendMessage("Congratulations! You've upgraded to a member account!");
+//				player.getPacketSender().sendRights();
+//				PlayerPanel.refreshPanel(player);
+//			}
+//			break;
 			case 6542:
 				if (!player.getClickDelay().elapsed(100)) {
 					player.getPacketSender().sendMessage("Please wait before doing that.");
@@ -512,20 +510,20 @@ public class MemberScrolls {
 		case 13150:
 			if (player.getInventory().getFreeSlots() > 1) {
 				int boo = Misc.getRandom(10);
-				if (player.getRights().isMember()) {
+				if (player.getDonator().isMember()) {
 					boo = boo + 1;
 					player.getPacketSender().sendMessage("Your Member status increases the odds of getting loot...");
 				}
 
 				if (boo >= 10) {
 					player.getInventory().add(9013, 1);
-					if (!player.didFriday13May2016()) {
+					if (player.didFriday13May2016()) {
+						player.getPacketSender()
+								.sendMessage("<img=5> @red@You get another Skull sceptre from the box!");
+					} else {
 						player.setFriday13May2016(true);
 						player.getPacketSender()
 								.sendMessage("<img=5> @red@Congratulations! You get a Skull sceptre from the box!");
-					} else {
-						player.getPacketSender()
-								.sendMessage("<img=5> @red@You get another Skull sceptre from the box!");
 					}
 				} else {
 					player.getPacketSender().sendMessage("That box was empty! Try again!");

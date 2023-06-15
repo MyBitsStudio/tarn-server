@@ -27,7 +27,7 @@ public class CrucioInstance extends SingleBossSinglePlayerInstance {
 
     @Override
     public boolean canEnter(Player player){
-        return player.getRights().OwnerDeveloperOnly();
+        return player.getRank().isDeveloper();
     }
 
     @Override

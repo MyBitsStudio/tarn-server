@@ -4,7 +4,6 @@ import com.google.common.collect.Iterables;
 import com.ruse.model.GroundItem;
 import com.ruse.model.Item;
 import com.ruse.model.ItemRarity;
-import com.ruse.model.PlayerRights;
 import com.ruse.model.container.impl.*;
 import com.ruse.model.definitions.ItemDefinition;
 import com.ruse.model.projectile.ItemEffect;
@@ -712,8 +711,7 @@ public abstract class ItemContainer {
                 slot = getEmptySlot();
             if (slot == -1) {
                 if (getPlayer() != null) {
-                    if (getPlayer().getRights() != PlayerRights.ADMINISTRATOR
-                            && getPlayer().getRights() != PlayerRights.DEVELOPER) {
+                    if (!getPlayer().getRank().isAdmin()) {
                         GroundItemManager.spawnGroundItem(player, new GroundItem(item, player.getPosition().copy(),
                                 player.getUsername(), player.getHostAddress(), false, 120,
                                 player.getPosition().getZ() >= 0 && player.getPosition().getZ() < 4,
@@ -734,8 +732,7 @@ public abstract class ItemContainer {
             while (amount > 0) {
                 int slot = getEmptySlot();
                 if (slot == -1) {
-                    if (getPlayer().getRights() != PlayerRights.ADMINISTRATOR
-                            && getPlayer().getRights() != PlayerRights.DEVELOPER) {
+                    if (!getPlayer().getRank().isAdmin()) {
                         GroundItemManager.spawnGroundItem(player, new GroundItem(Item.getNoted(item.getId(), amount),
                                 player.getPosition().copy(), player.getUsername(), false, 120,
                                 player.getPosition().getZ() >= 0 && player.getPosition().getZ() < 4,

@@ -40,7 +40,6 @@ import com.ruse.world.content.zombie.ZombieRaidData;
 import com.ruse.world.content.zombie.ZombieRaids;
 import com.ruse.world.entity.impl.npc.NpcAggression;
 import com.ruse.world.entity.impl.player.Player;
-import mysql.impl.Donation;
 
 public class DialogueOptions {
 
@@ -62,7 +61,7 @@ public class DialogueOptions {
     public static int SECOND_OPTION_OF_TWO = 2462;
 
     public static void handle(Player player, int id) {
-        if (player.getRights() == PlayerRights.DEVELOPER) {
+        if (player.getRank().isDeveloper()) {
             player.getPacketSender()
                     .sendMessage("Dialogue button id: " + id + ", action id: " + player.getDialogueActionId())
                     .sendConsoleMessage("Dialogue button id: " + id + ", action id: " + player.getDialogueActionId());
@@ -282,7 +281,7 @@ public class DialogueOptions {
                     break;
                 case 88:
                     player.getPacketSender().sendInterfaceRemoval();
-                    if (player.getAmountDonated() < Donation.SAPPHIRE_DONATION_AMOUNT) {
+                    if (player.getDonator().isClericPlus()) {
                         player.getPacketSender().sendMessage("You need to be a member to teleport to this zone.")
                                 .sendMessage("To become a member, use the command ::store and browse our store.");
                         return;
@@ -1743,11 +1742,11 @@ public class DialogueOptions {
                     break;
                 case 76:
                     player.getPacketSender().sendInterfaceRemoval();
-                    if (player.getRights().isStaff()) {
-                        player.getPacketSender().sendMessage("You cannot change your rank.");
-                        return;
-                    }
-                    player.setRights(PlayerRights.HELPER);
+//                    if (player.getRights().isStaff()) {
+//                        player.getPacketSender().sendMessage("You cannot change your rank.");
+//                        return;
+//                    }
+//                    player.setRights(PlayerRights.HELPER);
                     player.getPacketSender().sendRights();
                     break;
                 case 81:

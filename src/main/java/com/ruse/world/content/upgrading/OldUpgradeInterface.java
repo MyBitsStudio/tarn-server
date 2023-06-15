@@ -1,7 +1,6 @@
 package com.ruse.world.content.upgrading;
 
 import com.ruse.model.Item;
-import com.ruse.model.PlayerRights;
 import com.ruse.model.Skill;
 import com.ruse.model.container.impl.Bank;
 import com.ruse.model.definitions.ItemDefinition;
@@ -10,7 +9,6 @@ import com.ruse.world.World;
 import com.ruse.world.content.PlayerLogs;
 import com.ruse.world.content.skill.impl.summoning.BossPets;
 import com.ruse.world.entity.impl.player.Player;
-import mysql.impl.Donation;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -187,15 +185,15 @@ public class OldUpgradeInterface {
     
     public double getBoost(double chance){
         double percentBoost = 0D;
-        if(player.getAmountDonated() >= Donation.ZENYTE_DONATION_AMOUNT || player.getRights().equals(PlayerRights.YOUTUBER)) {
-            percentBoost += 15;
-        } else if(player.getAmountDonated() >= Donation.ONYX_DONATION_AMOUNT) {
-            percentBoost += 10;
-        } else if(player.getAmountDonated() >= Donation.DIAMOND_DONATION_AMOUNT) {
-            percentBoost += 7;
-        } else if(player.getAmountDonated() >= Donation.RUBY_DONATION_AMOUNT) {
-            percentBoost += 5;
-        }
+//        if(player.getAmountDonated() >= Donation.ZENYTE_DONATION_AMOUNT) {
+//            percentBoost += 15;
+//        } else if(player.getAmountDonated() >= Donation.ONYX_DONATION_AMOUNT) {
+//            percentBoost += 10;
+//        } else if(player.getAmountDonated() >= Donation.DIAMOND_DONATION_AMOUNT) {
+//            percentBoost += 7;
+//        } else if(player.getAmountDonated() >= Donation.RUBY_DONATION_AMOUNT) {
+//            percentBoost += 5;
+//        }
 
         // creator set:
         if (player.getEquipment().contains(23127))

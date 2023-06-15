@@ -3,7 +3,6 @@ package com.ruse.world.content.skill.impl.construction;
 import com.ruse.engine.task.Task;
 import com.ruse.engine.task.TaskManager;
 import com.ruse.model.Animation;
-import com.ruse.model.PlayerRights;
 import com.ruse.model.Position;
 import com.ruse.model.RegionInstance.RegionInstanceType;
 import com.ruse.model.Skill;
@@ -801,7 +800,7 @@ public class Construction {
 
 	public static String hasReqs(Player p, Furniture f, HotSpots hs) {
 
-		if (p.getRights() == PlayerRights.DEVELOPER)
+		if (p.getRank().isDeveloper())
 			return null;
 		if (p.getSkillManager().getCurrentLevel(Skill.DUNGEONEERING) < f.getLevel()) {
 			return "You need a Construction level of at least " + f.getLevel() + " to build this.";

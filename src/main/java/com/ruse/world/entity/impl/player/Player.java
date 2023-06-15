@@ -38,8 +38,8 @@ import com.ruse.world.content.aura.AuraParty;
 import com.ruse.world.content.battlepass.BattlePass;
 import com.ruse.world.content.bossEvents.BossEventData;
 import com.ruse.world.content.casketopening.CasketOpening;
-import com.ruse.world.content.clans.Clan;
-import com.ruse.world.content.clans.ClanManager;
+import com.ruse.world.packages.clans.Clan;
+import com.ruse.world.packages.clans.ClanManager;
 import com.ruse.world.content.cluescrolls.ClueScrollTask;
 import com.ruse.world.content.collectionlog.CollectionEntry;
 import com.ruse.world.content.collectionlog.CollectionLogInterface;
@@ -82,6 +82,9 @@ import com.ruse.world.content.properscratchcard.Scratchcard;
 import com.ruse.world.content.raids.Raid;
 import com.ruse.world.content.raids.RaidParty;
 import com.ruse.world.content.scratchcards.ScratchCard;
+import com.ruse.world.packages.ranks.DonatorRank;
+import com.ruse.world.packages.ranks.StaffRank;
+import com.ruse.world.packages.ranks.VIPRank;
 import com.ruse.world.packages.seasonpass.SeasonPass;
 import com.ruse.world.content.skill.SkillManager;
 import com.ruse.world.content.skill.impl.construction.HouseFurniture;
@@ -636,7 +639,6 @@ public class Player extends Character {
     private ArrayList<Portal> housePortals = new ArrayList<>();
     private final PlayerSession session;
     private CharacterAnimations characterAnimations = new CharacterAnimations();
-    private PlayerRights rights = PlayerRights.PLAYER;
     private final SkillManager skillManager = new SkillManager(this);
     private final PlayerRelations relations = new PlayerRelations(this);
     private final ChatMessage chatMessages = new ChatMessage();
@@ -2224,15 +2226,6 @@ public class Player extends Character {
 
     public FrameUpdater getFrameUpdater() {
         return this.frameUpdater;
-    }
-
-    public PlayerRights getRights() {
-        return rights;
-    }
-
-    public Player setRights(PlayerRights rights) {
-        this.rights = rights;
-        return this;
     }
 
     public ChatMessage getChatMessages() {
@@ -4356,4 +4349,11 @@ public class Player extends Character {
     public void setHWID(String hwid) {
     	this.hwid = hwid;
     }
+
+    @Getter@Setter
+    public StaffRank rank = StaffRank.PLAYER;
+    @Getter@Setter
+    public DonatorRank donator = DonatorRank.NONE;
+    @Getter@Setter
+    public VIPRank vip = VIPRank.NONE;
 }

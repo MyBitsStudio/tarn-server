@@ -739,7 +739,7 @@ public class Shop extends ItemContainer {
             }
         } else if (id == 32
                 && (item.getId() == 5510 || item.getId() == 5512 || item.getId() == 5514 || item.getId() == 5509)) {
-            if (!player.getRights().isMember()) {
+            if (!player.getDonator().isMember()) {
                 player.getPacketSender().sendMessage("You must be a Member to purchase from this store.");
                 return this;
             }
@@ -800,7 +800,7 @@ public class Shop extends ItemContainer {
             }
         } else if (id == 21) {
             if (item.getId() == 6797) {
-                if (!player.getRights().isMember()) {
+                if (!player.getDonator().isMember()) {
                     player.getPacketSender().sendMessage("That item can only be bought by Members.");
                     return this;
                 }

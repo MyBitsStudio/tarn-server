@@ -5,7 +5,6 @@ import com.ruse.GameSettings;
 import com.ruse.engine.task.Task;
 import com.ruse.engine.task.TaskManager;
 import com.ruse.model.MessageType;
-import com.ruse.model.PlayerRights;
 import com.ruse.model.Position;
 import com.ruse.net.security.ConnectionHandler;
 import com.ruse.util.NameUtils;
@@ -182,14 +181,14 @@ public class World {
     }
 
     public static void sendStaffMessage(String message) {
-        players.stream().filter(p -> p != null && (p.getRights().isStaff()))
+        players.stream().filter(p -> p != null && (p.getRank().isStaff()))
                 .forEach(p -> p.getPacketSender().sendMessage(message));
         DiscordMessager.sendStaffMessage(message);
     }
 
     public static void sendOwnerDevMessage(String message) {
         players.stream().filter(
-                p -> p != null && (p.getRights() == PlayerRights.ADMINISTRATOR || p.getRights() == PlayerRights.DEVELOPER))
+                p -> p != null && (p.getRank().isDeveloper()))
                 .forEach(p -> p.getPacketSender().sendMessage(message));
         DiscordMessager.sendDebugMessage("[Owner/Developer]\n" + message);
     }

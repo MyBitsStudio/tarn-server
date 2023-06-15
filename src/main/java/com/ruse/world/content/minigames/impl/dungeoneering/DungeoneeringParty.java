@@ -99,7 +99,7 @@ public class DungeoneeringParty {
             getOwner().getPacketSender().sendMessage("That player is currently in another party.");
             return;
         }
-        if (p.getRights() != PlayerRights.DEVELOPER && System.currentTimeMillis()
+        if (p.getRank().isDeveloper() && System.currentTimeMillis()
                 - getOwner().getMinigameAttributes().getDungeoneeringAttributes().getLastInvitation() < 2000) {
             getOwner().getPacketSender().sendMessage("You must wait 2 seconds between each party invitation.");
             return;

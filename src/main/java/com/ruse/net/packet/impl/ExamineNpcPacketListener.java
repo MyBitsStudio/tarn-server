@@ -1,6 +1,5 @@
 package com.ruse.net.packet.impl;
 
-import com.ruse.model.PlayerRights;
 import com.ruse.model.definitions.NpcDefinition;
 import com.ruse.net.packet.Packet;
 import com.ruse.net.packet.PacketListener;
@@ -16,13 +15,15 @@ public class ExamineNpcPacketListener implements PacketListener {
 			return;
 		}
 		NpcDefinition npcDef = NpcDefinition.forId(npc);
-		if(player.getRights() == PlayerRights.DEVELOPER) {
+		if(player.getRank().isDeveloper()) {
 			player.getPA().sendMessage("NPC ID: " + npc);
 		}
-		if (npcDef != null || npcDef == null) {
-			int total = KillsTracker.getTotalKillsForNpc(npc, player);
-			player.getPacketSender().sendMessage("@bla@You currently have @red@"+ total +" " + npcDef.getName()+ "@bla@ kills.");
+		if(npcDef == null){
+			player.getPacketSender().sendMessage("No such NPC exists.");
+			return;
 		}
+		int total = KillsTracker.getTotalKillsForNpc(npc, player);
+		player.getPacketSender().sendMessage("@bla@You currently have @red@"+ total +" " + npcDef.getName()+ "@bla@ kills.");
 	}
 
 }

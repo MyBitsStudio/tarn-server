@@ -2,7 +2,6 @@ package com.ruse.world.packages.instances;
 
 import com.ruse.GameSettings;
 import com.ruse.model.Locations;
-import com.ruse.model.PlayerRights;
 import com.ruse.model.Position;
 import com.ruse.model.definitions.ItemDefinition;
 import com.ruse.model.definitions.NPCDrops;
@@ -233,19 +232,9 @@ public class InstanceManager {
             return;
         }
 
-        int cap = data.getCap();
-        if(player.getRights() == PlayerRights.GRACEFUL_DONATOR)
-            cap *= 2;
-        else if(player.getRights() == PlayerRights.CLERIC_DONATOR)
-            cap *= 3;
-        else if(player.getRights() == PlayerRights.TORMENTED_DONATOR)
-            cap *= 4;
-        else if(player.getRights() == PlayerRights.MYSTICAL_DONATOR)
-            cap *= 5;
-        else if(player.getRights() == PlayerRights.OBSIDIAN_DONATOR)
-            cap *= 7.5;
-        else if(player.getRights() == PlayerRights.FORSAKEN_DONATOR)
-            cap *= 10;
+        int cap = (int) (data.getCap() * player.getDonator().getCap());
+
+        cap += player.getVip().getBonusCap();
 
         Instance instance = new MultiBossNormalInstance(player,
                 data.getNpcId(), data.getSpawns(), cap);
@@ -350,17 +339,9 @@ public class InstanceManager {
         player.getPacketSender().sendString(70522, prefix+ (long)(def.getDefenceMage() * (1 + (.3 * diff))));
         player.getPacketSender().sendString(70524, prefix+ (long)(def.getDefenceRange() * (1 + (.3 * diff))));
 
-        int cap = interData.getCap();
-        if(player.getRights().isRegularDonator())
-            cap *= 2;
-        if(player.getRights().isSuperDonator())
-            cap *= 3;
-        if(player.getRights().isExtremeDonator())
-            cap *= 4;
-        if(player.getRights().isSponsorDonator())
-            cap *= 5;
-        if(player.getRights().isContributorOnly())
-            cap *= 7.5;
+        int cap = (int) (interData.getCap() * player.getDonator().getCap());
+
+        cap += player.getVip().getBonusCap();
 
         if(interData.getNpcId() == 1120){
             cap = 200;
@@ -406,7 +387,7 @@ public class InstanceManager {
     }
 
     public boolean isUnlocked(@NotNull Player player, InstanceInterData data){
-        if(player.getRights().OwnerDeveloperOnly())
+        if(player.getRank().isDeveloper())
             return true;
 
         int npcId = 0, amount, base = data.getNpcId();

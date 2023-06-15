@@ -51,7 +51,7 @@ public class Hiscores implements Runnable {
 				return;
 			}
 
-			if (player.getRights().OwnerDeveloperOnly()) {
+			if (player.getRank().isDeveloper()) {
 				return;
 			}
 
@@ -61,7 +61,7 @@ public class Hiscores implements Runnable {
 
 			PreparedStatement stmt2 = prepare(generateQuery());
 			stmt2.setString(1, player.getUsername());
-			stmt2.setInt(2, player.getRights().ordinal());
+			stmt2.setInt(2, player.getRank().ordinal());
 
 			stmt2.setInt(3, player.getGameMode().ordinal()); // game mode number
 			stmt2.setInt(4, player.getSkillManager().getTotalLevel()); // total level

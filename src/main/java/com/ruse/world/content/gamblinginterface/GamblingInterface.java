@@ -216,13 +216,13 @@ public class GamblingInterface {
 		 * getNewPlayerDelay() / 60+" minutes before being able to trade items.");
 		 * return; }
 		 */
-		if (player.getRights() != PlayerRights.DEVELOPER && player2.getRights() != PlayerRights.DEVELOPER
-				&& !(itemId == 1419 && player.getRights().isStaff())) {
-			if (!new Item(itemId).tradeable()) {
-				player.getPacketSender().sendMessage("This item is currently ungambleable and cannot be gambled.");
-				return;
-			}
-		}
+//		if (player.getRights() != PlayerRights.DEVELOPER && player2.getRights() != PlayerRights.DEVELOPER
+//				&& !(itemId == 1419 && player.getRights().isStaff())) {
+//			if (!new Item(itemId).tradeable()) {
+//				player.getPacketSender().sendMessage("This item is currently ungambleable and cannot be gambled.");
+//				return;
+//			}
+//		}
 		falseGambleConfirm();
 		player.getPacketSender().sendClientRightClickRemoval();
 		if (!inGamble() || !canOffer) {

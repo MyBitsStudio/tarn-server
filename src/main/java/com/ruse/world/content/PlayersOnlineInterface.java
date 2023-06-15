@@ -29,18 +29,15 @@ public class PlayersOnlineInterface {
 			return;
 		}
 		lastResort.reset();
-		Collections.sort(PLAYERS_ONLINE_LIST, new Comparator<Player>() {
-			@Override
-			public int compare(Player arg0, Player arg1) {
-				int value1 = getValue(arg0);
-				int value2 = getValue(arg1);
-				if (value1 == value2) {
-					return 0;
-				} else if (value1 > value2) {
-					return -1;
-				} else {
-					return 1;
-				}
+		Collections.sort(PLAYERS_ONLINE_LIST, (arg0, arg1) -> {
+			int value1 = getValue(arg0);
+			int value2 = getValue(arg1);
+			if (value1 == value2) {
+				return 0;
+			} else if (value1 > value2) {
+				return -1;
+			} else {
+				return 1;
 			}
 		});
 	}
@@ -71,7 +68,7 @@ public class PlayersOnlineInterface {
 
 	private static void sendInterfaceData(Player player) {
 		int child = 57042;
-		int players = (int) World.getPlayers().size() + GameSettings.players;
+		int players = World.getPlayers().size() + GameSettings.players;
 		for (int i = 0; i < players; i++) {
 			if (i >= PLAYERS_ONLINE_LIST.size()) {
 				player.getPacketSender().sendString(child, "   N/A");
@@ -81,7 +78,7 @@ public class PlayersOnlineInterface {
 			Player p = PLAYERS_ONLINE_LIST.get(i);
 			if (p == null)
 				continue;
-			int rankId = p.getRights().ordinal();
+			int rankId = p.getRank().ordinal();
 			if (rankId == 0) {
 				if (p.getGameMode() == GameMode.IRONMAN) {
 					rankId = 840;
@@ -94,7 +91,7 @@ public class PlayersOnlineInterface {
 				}
 			}
 			player.getPacketSender().sendString(child,
-					"" + (rankId > 0 ? "<img=" + rankId + ">" : "  ") + "" + p.getUsername());
+					(rankId > 0 ? "<img=" + rankId + ">" : "  ") + p.getUsername());
 			child++;
 		}
 	}
@@ -117,7 +114,7 @@ public class PlayersOnlineInterface {
 		Player player2 = PLAYERS_ONLINE_LIST.get(index);
 		player.setPlayerViewingIndex(index);
 		player.getPacketSender().sendString(57008, "Name: @whi@" + player2.getUsername())
-				.sendString(57009, "Rank: @whi@" + Misc.formatText(player2.getRights().name().toLowerCase()))
+				.sendString(57009, "Rank: @whi@" + Misc.formatText(player2.getRank().name().toLowerCase()))
 				.sendString(57010,
 						"Time Played: @whi@" + Misc
 								.getHoursPlayed((player2.getTotalPlayTime() + player2.getRecordedLogin().elapsed())))
@@ -159,7 +156,7 @@ public class PlayersOnlineInterface {
 
 	private static int getValue(Player p) {
 		int value = 0;
-		switch (p.getRights()) {
+		switch (p.getRank()) {
 		case PLAYER:
 			value = 0;
 			break;
@@ -172,37 +169,37 @@ public class PlayersOnlineInterface {
 		case DEVELOPER:
 			value = 13;
 			break;
-			case MYSTICAL_DONATOR:
-			value = 7;
-			break;
-			case TORMENTED_DONATOR:
-			value = 6;
-			break;
-		case CLERIC_DONATOR:
-			value = 5;
-			break;
-		case GRACEFUL_DONATOR:
-			value = 4;
-			break;
+//			case MYSTICAL_DONATOR:
+//			value = 7;
+//			break;
+//			case TORMENTED_DONATOR:
+//			value = 6;
+//			break;
+//		case CLERIC_DONATOR:
+//			value = 5;
+//			break;
+//		case GRACEFUL_DONATOR:
+//			value = 4;
+//			break;
 //		case GOLD_MEMBER:
 //			value = 5;
 //			break;
 		case MODERATOR:
 			value = 10;
 			break;
-			case OBSIDIAN_DONATOR:
-			case FORSAKEN_DONATOR:
-			value = 12;
-			break;
+//			case OBSIDIAN_DONATOR:
+//			case FORSAKEN_DONATOR:
+//			value = 12;
+//			break;
 			//		case PLATINUM_MEMBER:
 //			value = 6;
 //			break;
 //		case SILVER_MEMBER:
 //			value = 4;
 //			break;
-		case SUPPORT:
-			value = 9;
-			break;
+//		case SUPPORT:
+//			value = 9;
+//			break;
 		case HELPER:
 			value = 8;
 			break;

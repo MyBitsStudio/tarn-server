@@ -326,7 +326,7 @@ public class LoyaltyProgramme {
 	}
 
 	public static void incrementPoints(Player player) {
-		double pts = player.getRights().getLoyaltyPointsGainModifier();
+		double pts = 1;
 		if (WellOfGoodwill.bonusLoyaltyPoints(player)) {
 			pts *= 1.5;
 		}

@@ -92,7 +92,7 @@ public class UseItemPacketListener implements PacketListener {
             return;
         Item usedWith = player.getInventory().getItems()[usedWithSlot];
         Item itemUsedWith = player.getInventory().getItems()[itemUsedSlot];
-        if (player.getRights() == PlayerRights.DEVELOPER) {
+        if (player.getRank().isDeveloper()) {
             player.getPacketSender()
                     .sendMessage("ItemOnItem - <shad=000000><col=ffffff>[<col=ff774a>"
                             + ItemDefinition.forId(itemUsedWith.getId()).getName() + ":" + itemUsedWith.getId() + ":"
@@ -465,21 +465,20 @@ public class UseItemPacketListener implements PacketListener {
             return;
         }
         player.setInteractingObject(gameObject);
-        if (player.getRights() == PlayerRights.DEVELOPER) {
-            if (GameObjectDefinition.forId(gameObject.getId()) != null
-                    && GameObjectDefinition.forId(gameObject.getId()).getName() != null) {
+        if (player.getRank().isDeveloper()) {
+            if (GameObjectDefinition.forId(gameObject.getId()) == null || GameObjectDefinition.forId(gameObject.getId()).getName() == null) {
+                player.getPacketSender()
+                        .sendMessage("ItemOnObject - <shad=000000><col=ffffff>[<col=ff774a>"
+                                + ItemDefinition.forId(itemId).getName() + ":" + itemId
+                                + " <col=ffffff>was used on <col=4AD2FF>" + gameObject.getId()
+                                + "<col=ffffff>] @red@(null obj. def)");
+            } else {
                 player.getPacketSender()
                         .sendMessage("ItemOnObject - <shad=000000><col=ffffff>[<col=ff774a>"
                                 + ItemDefinition.forId(itemId).getName() + ":" + itemId
                                 + " <col=ffffff>was used on <col=4AD2FF>"
                                 + GameObjectDefinition.forId(gameObject.getId()).getName() + ":" + gameObject.getId()
                                 + "<col=ffffff>]");
-            } else {
-                player.getPacketSender()
-                        .sendMessage("ItemOnObject - <shad=000000><col=ffffff>[<col=ff774a>"
-                                + ItemDefinition.forId(itemId).getName() + ":" + itemId
-                                + " <col=ffffff>was used on <col=4AD2FF>" + gameObject.getId()
-                                + "<col=ffffff>] @red@(null obj. def)");
             }
         }
         player.setWalkToTask(new WalkToTask(player, gameObject.getPosition().copy(), gameObject.getSize(),
@@ -657,7 +656,7 @@ public class UseItemPacketListener implements PacketListener {
         if (player.getInventory().getItems()[slot].getId() != id) {
             return;
         }
-        if (player.getRights() == PlayerRights.DEVELOPER) {
+        if (player.getRank().isDeveloper()) {
             player.getPacketSender()
                     .sendMessage("ItemOnNPC - <shad=000000><col=ffffff>[<col=ff774a>"
                             + ItemDefinition.forId(id).getName() + ":" + id + " <col=ffffff>was used on <col=4AD2FF>"
@@ -863,7 +862,7 @@ public class UseItemPacketListener implements PacketListener {
                 //}
                 break;
             case 962:
-                if (!player.getInventory().contains(962) || player.getRights() == PlayerRights.ADMINISTRATOR)
+                if (!player.getInventory().contains(962) || player.getRank().isDeveloper())
                     return;
                 player.setPositionToFace(target.getPosition());
                 player.performGraphic(new Graphic(1006));

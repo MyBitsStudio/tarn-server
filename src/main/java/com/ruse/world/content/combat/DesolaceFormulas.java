@@ -22,9 +22,6 @@ import com.ruse.world.entity.impl.Character;
 import com.ruse.world.entity.impl.npc.NPC;
 import com.ruse.world.entity.impl.player.Player;
 
-import static mysql.impl.Donation.*;
-import static mysql.impl.Donation.SAPPHIRE_DONATION_AMOUNT;
-
 public class DesolaceFormulas {
 
     /*
@@ -602,24 +599,25 @@ public class DesolaceFormulas {
                 damage = maxHit;
             }
         }
-        if (p.getAmountDonated() == ZENYTE_DONATION_AMOUNT) {
-            damage *= 3.0;
-        }
-        if (p.getAmountDonated() == ONYX_DONATION_AMOUNT) {
-            damage *= 2.0;
-        }
-        if (p.getAmountDonated() == DIAMOND_DONATION_AMOUNT) {
-            damage *= 1.4;
-        }
-        if (p.getAmountDonated() == RUBY_DONATION_AMOUNT) {
-            damage *= 0.8;
-        }
-        if (p.getAmountDonated() == EMERALD_DONATION_AMOUNT) {
-            damage *= 0.5;
-        }
-        if (p.getAmountDonated() == SAPPHIRE_DONATION_AMOUNT) {
-            damage *= 0.2;
-        }
+        //TODO
+//        if (p.getAmountDonated() == ZENYTE_DONATION_AMOUNT) {
+//            damage *= 3.0;
+//        }
+//        if (p.getAmountDonated() == ONYX_DONATION_AMOUNT) {
+//            damage *= 2.0;
+//        }
+//        if (p.getAmountDonated() == DIAMOND_DONATION_AMOUNT) {
+//            damage *= 1.4;
+//        }
+//        if (p.getAmountDonated() == RUBY_DONATION_AMOUNT) {
+//            damage *= 0.8;
+//        }
+//        if (p.getAmountDonated() == EMERALD_DONATION_AMOUNT) {
+//            damage *= 0.5;
+//        }
+//        if (p.getAmountDonated() == SAPPHIRE_DONATION_AMOUNT) {
+//            damage *= 0.2;
+//        }
         if (p.getDmgPotionTimer() > 0) {
             damage *= 1.5;
         }

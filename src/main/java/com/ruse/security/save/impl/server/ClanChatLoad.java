@@ -1,9 +1,8 @@
 package com.ruse.security.save.impl.server;
 
 import com.ruse.security.save.SecureLoad;
-import com.ruse.world.content.clan.ClanChatRank;
-import com.ruse.world.content.clans.Clan;
-import com.ruse.world.content.clans.ClanManager;
+import com.ruse.world.packages.clans.Clan;
+import com.ruse.world.packages.clans.ClanManager;
 
 import java.util.List;
 

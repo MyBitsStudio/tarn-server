@@ -48,7 +48,6 @@ import java.util.Arrays;
 import java.util.Optional;
 
 import static com.ruse.world.content.combat.CombatType.RANGED;
-import static mysql.impl.Donation.*;
 
 /**
  * A static factory class containing all miscellaneous methods related to, and
@@ -776,24 +775,28 @@ public final class CombatFactory {
             if (EquipmentBonus.berserkerNecklaceEffect(player)) {
                 maxHit *= 1.2;
             }
-            if (player.getAmountDonated() == ZENYTE_DONATION_AMOUNT) {
-                maxHit *= 3.0;
-            }
-            if (player.getAmountDonated() == ONYX_DONATION_AMOUNT) {
-                maxHit *= 2.0;
-            }
-            if (player.getAmountDonated() == DIAMOND_DONATION_AMOUNT) {
-                maxHit *= 1.4;
-            }
-            if (player.getAmountDonated() == RUBY_DONATION_AMOUNT) {
-                maxHit *= 0.8;
-            }
-            if (player.getAmountDonated() == EMERALD_DONATION_AMOUNT) {
-                maxHit *= 0.5;
-            }
-            if (player.getAmountDonated() == SAPPHIRE_DONATION_AMOUNT) {
-                maxHit *= 0.2;
-            }
+
+            maxHit *= player.getDonator().getDamage();
+
+            maxHit *= player.getVip().getDamage();
+//            if (player.getAmountDonated() == ZENYTE_DONATION_AMOUNT) {
+//                maxHit *= 3.0;
+//            }
+//            if (player.getAmountDonated() == ONYX_DONATION_AMOUNT) {
+//                maxHit *= 2.0;
+//            }
+//            if (player.getAmountDonated() == DIAMOND_DONATION_AMOUNT) {
+//                maxHit *= 1.4;
+//            }
+//            if (player.getAmountDonated() == RUBY_DONATION_AMOUNT) {
+//                maxHit *= 0.8;
+//            }
+//            if (player.getAmountDonated() == EMERALD_DONATION_AMOUNT) {
+//                maxHit *= 0.5;
+//            }
+//            if (player.getAmountDonated() == SAPPHIRE_DONATION_AMOUNT) {
+//                maxHit *= 0.2;
+//            }
             /*if (player.getEquipment().getItems()[Equipment.WEAPON_SLOT].getId() == 19843) {
                 maxHit *= 2.2;
             }
@@ -943,27 +946,27 @@ public final class CombatFactory {
         }
 
         maxHit = (int) (baseDamage * specialMultiplier * voidDmgBonus);
-        if (EquipmentBonus.berserkerNecklaceEffect(player)) {
-            maxHit *= 1.2;
-        }
-        if (player.getAmountDonated() == ZENYTE_DONATION_AMOUNT) {
-            maxHit *= 3.0;
-        }
-        if (player.getAmountDonated() == ONYX_DONATION_AMOUNT) {
-            maxHit *= 2.0;
-        }
-        if (player.getAmountDonated() == DIAMOND_DONATION_AMOUNT) {
-            maxHit *= 1.4;
-        }
-        if (player.getAmountDonated() == RUBY_DONATION_AMOUNT) {
-            maxHit *= 0.8;
-        }
-        if (player.getAmountDonated() == EMERALD_DONATION_AMOUNT) {
-            maxHit *= 0.5;
-        }
-        if (player.getAmountDonated() == SAPPHIRE_DONATION_AMOUNT) {
-            maxHit *= 0.2;
-        }
+//        if (EquipmentBonus.berserkerNecklaceEffect(player)) {
+//            maxHit *= 1.2;
+//        }
+//        if (player.getAmountDonated() == ZENYTE_DONATION_AMOUNT) {
+//            maxHit *= 3.0;
+//        }
+//        if (player.getAmountDonated() == ONYX_DONATION_AMOUNT) {
+//            maxHit *= 2.0;
+//        }
+//        if (player.getAmountDonated() == DIAMOND_DONATION_AMOUNT) {
+//            maxHit *= 1.4;
+//        }
+//        if (player.getAmountDonated() == RUBY_DONATION_AMOUNT) {
+//            maxHit *= 0.8;
+//        }
+//        if (player.getAmountDonated() == EMERALD_DONATION_AMOUNT) {
+//            maxHit *= 0.5;
+//        }
+//        if (player.getAmountDonated() == SAPPHIRE_DONATION_AMOUNT) {
+//            maxHit *= 0.2;
+//        }
         /*
         if (player.checkItem(Equipment.WEAPON_SLOT, 20173)) {
             maxHit *= 2.05;
@@ -1112,9 +1115,9 @@ public final class CombatFactory {
         if (player.getInventory().contains(4442)) {
             maxHit *= 1.5;
         }
-        if (victim != null && victim.isNpc() && !player.getRights().isDeveloperOnly()) {
-            maxHit = (int) NpcMaxHitLimit.limit((NPC) victim, maxHit, player);
-        }
+//        if (victim != null && victim.isNpc() && !player.getRights().isDeveloperOnly()) {
+//            maxHit = (int) NpcMaxHitLimit.limit((NPC) victim, maxHit, player);
+//        }
 
         return maxHit;
     }

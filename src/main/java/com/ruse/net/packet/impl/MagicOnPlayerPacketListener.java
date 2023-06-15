@@ -31,7 +31,7 @@ public class MagicOnPlayerPacketListener implements PacketListener {
 			return;
 		}
 
-		if (player != null && attacked != null && player.getRights().OwnerDeveloperOnly()) {
+		if (attacked != null && player.getRank().isDeveloper()) {
 			player.getPacketSender().sendMessage("Used spell id: " + spellId + " on target: " + attacked.getUsername());
 		}
 

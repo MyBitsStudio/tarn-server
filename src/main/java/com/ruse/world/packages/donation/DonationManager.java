@@ -6,11 +6,13 @@ import com.ruse.engine.GameEngine;
 import com.ruse.model.Item;
 import com.ruse.model.Position;
 import com.ruse.security.save.impl.server.PlayerDonationSave;
+import com.ruse.util.Misc;
 import com.ruse.world.World;
 import com.ruse.world.content.discordbot.JavaCord;
 import com.ruse.world.packages.donation.boss.DonationBoss;
 import com.ruse.world.packages.donation.boss.DonationMinion;
 import com.ruse.world.entity.impl.player.Player;
+import com.ruse.world.packages.ranks.DonatorRank;
 import lombok.Getter;
 
 import java.io.FileReader;
@@ -31,6 +33,15 @@ public class DonationManager {
         }
         return instance;
     }
+
+    public static final int GRACEFUL_DONATION_AMOUNT = 10;
+    public static final int CLERIC_DONATION_AMOUNT = 50;
+    public static final int TORMENTED_DONATION_AMOUNT = 250;
+    public static final int MYSTICAL_DONATION_AMOUNT = 500;
+    public static final int OBSIDIAN_DONATION_AMOUNT = 2500;
+    public static final int FORSAKEN_DONATION_AMOUNT = 5000;
+    public static final int ANGELIC_DONATION_AMOUNT = 12500;
+    public static final int DEMONIC_DONATION_AMOUNT = 25000;
 
     private DonationBoss boss;
     private final List<DonationMinion> minions = new CopyOnWriteArrayList<>();
@@ -201,7 +212,7 @@ public class DonationManager {
 
                 player.getPacketSender().sendMessage("@blu@[DONATE]Thank you for donating! Your awesome!");
 
-                if(!player.getRights().OwnerDeveloperOnly())
+                if(!player.getRank().isAdmin())
                     JavaCord.sendMessage(1117224370587304057L, "**[" + player.getUsername() + "] Just Donated For " + donations[0].product_name + " x" +donations[0].product_amount + " ! Thanks for the support !** :heart: ");
 
             } catch (Exception e) {
@@ -233,5 +244,37 @@ public class DonationManager {
             }
         }
 
+    }
+
+    public void handleDonation(Player player){
+
+    }
+
+    public void handleDonor(Player player){
+        int amount = player.getAmountDonated();
+        DonatorRank rank = player.getDonator();
+        if(amount >= DEMONIC_DONATION_AMOUNT){
+            player.setDonator(DonatorRank.DEMONIC);
+        } else if(amount >= ANGELIC_DONATION_AMOUNT){
+            player.setDonator(DonatorRank.ANGELIC);
+        } else if(amount >= FORSAKEN_DONATION_AMOUNT){
+            player.setDonator(DonatorRank.FORSAKEN);
+        } else if(amount >= OBSIDIAN_DONATION_AMOUNT){
+            player.setDonator(DonatorRank.OBSIDIAN);
+        } else if(amount >= MYSTICAL_DONATION_AMOUNT){
+            player.setDonator(DonatorRank.MYSTICAL);
+        } else if(amount >= TORMENTED_DONATION_AMOUNT){
+            player.setDonator(DonatorRank.TORMENTED);
+        } else if(amount >= CLERIC_DONATION_AMOUNT){
+            player.setDonator(DonatorRank.CLERIC);
+        } else if(amount >= GRACEFUL_DONATION_AMOUNT){
+            player.setDonator(DonatorRank.GRACEFUL);
+        }
+
+        if(player.getDonator() != rank){
+            player.getPacketSender().sendMessage(
+                    "You've become a " + Misc.formatText(rank.toString().toLowerCase()) + "! Congratulations!");
+            player.getPacketSender().sendRights();
+        }
     }
 }

@@ -24,9 +24,9 @@ import com.ruse.world.content.serverperks.ServerPerks;
 import com.ruse.world.content.skill.impl.slayer.Slayer;
 import com.ruse.world.content.transportation.TeleportHandler;
 import com.ruse.world.content.transportation.TeleportType;
+import com.ruse.world.packages.ranks.StaffRank;
 import com.ruse.world.packages.voting.VoteHandler;
 import com.ruse.world.entity.impl.player.Player;
-import mysql.impl.Donation;
 
 public class PlayerCommands {
 
@@ -312,7 +312,7 @@ public class PlayerCommands {
                     player.getPacketSender().sendMessage("You cannot do this at the moment.");
                     return true;
                 }
-                if (!player.getRights().isStaff()) {
+                if (!player.getRank().isStaff()) {
                     if (!player.getGameMode().isIronman()) {
                         player.getPacketSender().sendMessage("Become an ironman!");
                         return true;
@@ -672,11 +672,14 @@ public class PlayerCommands {
             player.getPacketSender().sendMessage("You are muted and cannot yell.");
             return;
         }
-        if (player.getAmountDonated() < Donation.SAPPHIRE_DONATION_AMOUNT && !(player.getRights().isStaff() || player.getRights() == PlayerRights.YOUTUBER)) {
+        if(player.getRank() != StaffRank.YOUTUBER && !player.getRank().isStaff() && !player.getDonator().isClericPlus()){
             player.getPacketSender().sendMessage("You need to be a Donator to yell.");
             return;
         }
-        int delay = player.getRights().isStaff() ? 0 : player.getRights().getYellDelay();
+//        if (player.getAmountDonated() < Donation.SAPPHIRE_DONATION_AMOUNT && !(player.getRights().isStaff() || player.getRights() == PlayerRights.YOUTUBER)) {
+//
+//        }
+        int delay = player.getRank().isStaff() ? 0 : player.getDonator().getYellDelay();
         if (!player.getLastYell().elapsed((delay * 1000L))) {
             player.getPacketSender().sendMessage("You must wait at least " + delay + " seconds between every yell-message you send.");
             return;
@@ -690,18 +693,27 @@ public class PlayerCommands {
                 return;
             }
         }
-        if (player.getAmountDonated() == Donation.ZENYTE_DONATION_AMOUNT) {
-            World.sendYellMessage("<img=1508><col=" + player.getRights().getYellPrefix() +
-                    " [" + Misc.ucFirst(player.getRights().name().replaceAll("_", " ")) + "]<shad=0><col=" + player.getYellHex() + "> " + player.getUsername() +
+        if(player.getRank().isStaff()){
+            World.sendYellMessage("<img=1508><col=" + player.getRank().getYellPrefix() +
+                    " [" + Misc.ucFirst(player.getRank().name().replaceAll("_", " ")) + "]<shad=0><col=" + player.getYellHex() + "> " + player.getUsername() +
                     ": " + yellMessage);
 
             player.getLastYell().reset();
             return;
         }
-        World.sendYellMessage(player.getRights().getYellPrefix()
-                + "<img=" + player.getRights().ordinal()
-                + "><col=" + player.getRights().getYellPrefix() +
-                " [" + Misc.ucFirst(player.getRights().name().replaceAll("_", " ")) + "]<shad=0><col=" + player.getYellHex() + "> " + player.getUsername() +
+        if (player.getDonator().isForsakenPlus()) {
+            World.sendYellMessage("<img=1508><col=" + player.getDonator().getPrefix() +
+                    " [" + Misc.ucFirst(player.getDonator().name().replaceAll("_", " ")) + "]<shad=0><col=" + player.getYellHex() + "> " + player.getUsername() +
+                    ": " + yellMessage);
+
+            player.getLastYell().reset();
+            return;
+        }
+
+        World.sendYellMessage(player.getDonator().getPrefix()
+                + "<img=" + player.getDonator().ordinal()
+                + "><col=" + player.getDonator().getPrefix() +
+                " [" + Misc.ucFirst(player.getDonator().name().replaceAll("_", " ")) + "]<shad=0><col=" + player.getYellHex() + "> " + player.getUsername() +
                 ": " + yellMessage);
 
         player.getLastYell().reset();
