@@ -115,7 +115,7 @@ public enum SlayerTasks {
 	//old
 
 
-
+	AVATAR_TITAN(SlayerMaster.HARD_SLAYER, 8008, "Avatar Titan can be found by using the Teleport interface.", 407, new Position(2711, 4752, 48)),
 
 	// Hard slayer tasks 125-250k * 2 = 250-500k / task
 	SASUKE(SlayerMaster.HARD_SLAYER, 9914, "Sasuke can be found by using the Teleport interface.", 607, new Position(2964, 9478, 72)),

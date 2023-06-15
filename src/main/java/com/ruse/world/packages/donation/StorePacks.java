@@ -42,8 +42,8 @@ public enum StorePacks {
     NECK_CERT(22215, 50.00),
     GLOVES_CERT(22223, 50.00),
     GEM_CERT(22224, 50.00),
-    HELM_CERT(22214, 65.00),
-    BOOTS_CERT(22218, 65.00)
+    HELM_CERT(22214, 50.00),
+    BOOTS_CERT(22218, 50.00)
 
 
 
