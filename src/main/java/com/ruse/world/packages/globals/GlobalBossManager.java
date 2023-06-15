@@ -25,9 +25,9 @@ public class GlobalBossManager {
     }
 
     public void process(){
-        ticks.getAndIncrement();
+        int tick = ticks.getAndIncrement();
 
-        if(ticks.get() % 3000 == 0){
+        if(tick % 3000 == 0){
             if(World.npcIsRegistered(9906)){
                 return;
             }
@@ -35,7 +35,7 @@ public class GlobalBossManager {
             spawn(nineTailsGlobal);
         }
 
-        if(ticks.get() % 6000 == 0){
+        if(tick % 6000 == 0){
             if(World.npcIsRegistered(9904)){
                 return;
             }
@@ -43,7 +43,7 @@ public class GlobalBossManager {
             spawn(nineTailsGlobal);
         }
 
-        if(ticks.get() % 12000 == 0){
+        if(tick % 12000 == 0){
             if(World.npcIsRegistered(9907)){
                 return;
             }
@@ -51,7 +51,7 @@ public class GlobalBossManager {
             spawn(nineTailsGlobal);
         }
 
-        if(ticks.get() % 18000 == 0){
+        if(tick % 18000 == 0){
             if(World.npcIsRegistered(9908)){
                 return;
             }
@@ -59,7 +59,7 @@ public class GlobalBossManager {
             spawn(nGlobal);
         }
 
-        if(ticks.get() % 24000 == 0){
+        if(tick % 24000 == 0){
             if(World.npcIsRegistered(3308)){
                 return;
             }
@@ -88,9 +88,10 @@ public class GlobalBossManager {
         int tick;
         long ms;
         String m;
+        int ticka = ticks.get();
         switch(name){
             case "ninetails":
-                tick = 6000 - (ticks.get() % 6000);
+                tick = 6000 - (ticka % 6000);
                 tick /= 100;
                 tick *= 60;
 
@@ -99,13 +100,13 @@ public class GlobalBossManager {
                         TimeUnit.SECONDS.toMinutes(ms) - TimeUnit.HOURS.toMinutes(TimeUnit.SECONDS.toHours(ms)),
                         TimeUnit.SECONDS.toSeconds(ms) - TimeUnit.MINUTES.toSeconds(TimeUnit.SECONDS.toMinutes(ms)));
 
-                if (ticks.get() < 0) {
+                if (tick < 0) {
                     m = "Soon";
                 }
                 return m;
 
             case "golden":
-                tick = 18000 - (ticks.get() % 18000);
+                tick = 18000 - (ticka % 18000);
                 tick /= 100;
                 tick *= 60;
 
@@ -120,7 +121,7 @@ public class GlobalBossManager {
                 return m;
 
             case "meruem":
-                tick = 18000 - 12000 - (ticks.get() % 12000);
+                tick = 18000 - 12000 - (ticka % 12000);
                 tick /= 100;
                 tick *= 60;
 
@@ -129,13 +130,13 @@ public class GlobalBossManager {
                         TimeUnit.SECONDS.toMinutes(ms) - TimeUnit.HOURS.toMinutes(TimeUnit.SECONDS.toHours(ms)),
                         TimeUnit.SECONDS.toSeconds(ms) - TimeUnit.MINUTES.toSeconds(TimeUnit.SECONDS.toMinutes(ms)));
 
-                if (ticks.get() < 0) {
+                if (tick < 0) {
                     m = "Soon";
                 }
                 return m;
 
             case "veigar":
-                tick = 3000 - (ticks.get() % 3000);
+                tick = 3000 - (ticka % 3000);
                 tick /= 100;
                 tick *= 60;
 
@@ -144,13 +145,13 @@ public class GlobalBossManager {
                         TimeUnit.SECONDS.toMinutes(ms) - TimeUnit.HOURS.toMinutes(TimeUnit.SECONDS.toHours(ms)),
                         TimeUnit.SECONDS.toSeconds(ms) - TimeUnit.MINUTES.toSeconds(TimeUnit.SECONDS.toMinutes(ms)));
 
-                if (ticks.get() < 0) {
+                if (tick < 0) {
                     m = "Soon";
                 }
                 return m;
 
             case "lugia":
-                tick = 24000 - (ticks.get() % 24000);
+                tick = 24000 - (ticka % 24000);
                 tick /= 100;
                 tick *= 60;
 
@@ -159,7 +160,7 @@ public class GlobalBossManager {
                         TimeUnit.SECONDS.toMinutes(ms) - TimeUnit.HOURS.toMinutes(TimeUnit.SECONDS.toHours(ms)),
                         TimeUnit.SECONDS.toSeconds(ms) - TimeUnit.MINUTES.toSeconds(TimeUnit.SECONDS.toMinutes(ms)));
 
-                if (ticks.get() < 0) {
+                if (tick < 0) {
                     m = "Soon";
                 }
                 return m;

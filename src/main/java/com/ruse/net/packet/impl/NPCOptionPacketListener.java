@@ -1066,6 +1066,10 @@ public class NPCOptionPacketListener implements PacketListener {
                                 && interact.getId() != 252 && interact.getId() != 187) {
                             //player.sendMessage("This can only be attacked whilst he his your assigned boss slayer task.");
                             player.getCombatBuilder().attack(interact);
+                        } else if(player.getInstance() != null) {
+                            if (player.getSlayer().getSlayerTask().getNpcId() == interact.getId()){
+                                player.getCombatBuilder().attack(interact);
+                            }
                         } else if (req.getKillCount() > 0) {
                             if (player.getPointsHandler().getNPCKILLCount() < req.getKillCount()) {
                                 player.sendMessage("You need atleast " + req.getKillCount() + " NPC kills to attack this. (" + player.getPointsHandler().getNPCKILLCount() + "/"

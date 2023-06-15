@@ -210,11 +210,11 @@ public class Slayer {
                 amountOfTickets2 *= 2;
             }
 
-            if (onEliteSlayerTask == true && slayerTask.getTaskMaster() == SlayerMaster.ELITE_SLAYER) {
+            if (onEliteSlayerTask && slayerTask.getTaskMaster() == SlayerMaster.ELITE_SLAYER) {
                 player.sendMessage("You receive " + amountOfTickets2 + " total Elite slayer tickets.");
                 player.getInventory().addDropIfFull(5022, amountOfTickets2);
             }
-            if (amountOfTickets > 0 && onEliteSlayerTask == false) {
+            if (amountOfTickets > 0 && !onEliteSlayerTask) {
                 player.sendMessage("You receive " + amountOfTickets + " total slayer tickets.");
                 player.getInventory().addDropIfFull(5023, amountOfTickets);
             }

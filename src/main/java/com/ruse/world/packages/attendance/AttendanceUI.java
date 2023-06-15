@@ -19,8 +19,6 @@ public class AttendanceUI {
 
     public void showInterface(AttendanceTab tab) {
         p.getPacketSender().sendConfig(0,178);
-        p.getPacketSender().sendInterfaceVisibility(150_140, false);
-        p.getPacketSender().sendString(150_141, "");
         sendTabData(tab);
         p.getPacketSender().sendInterface(INTERFACE_ID);
     }

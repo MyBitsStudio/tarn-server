@@ -133,7 +133,7 @@ public class DesolaceFormulas {
             }
         }
         if (victim != null && victim.isNpc()) {
-            maxHit = NpcMaxHitLimit.limit((NPC) victim, maxHit, CombatType.MELEE);
+            maxHit = NpcMaxHitLimit.limit((NPC) victim, maxHit, entity.asPlayer());
         }
         
         return (int) Math.floor(maxHit);
@@ -659,7 +659,7 @@ public class DesolaceFormulas {
         if (p.isOpMode() || p.isGodMode())
             damage *= 6;
         if (victim.isNpc()) {
-            damage = (int) NpcMaxHitLimit.limit((NPC) victim, damage, CombatType.MAGIC);
+            damage = (int) NpcMaxHitLimit.limit((NPC) victim, damage, p);
         }
         return (int) damage;
     }

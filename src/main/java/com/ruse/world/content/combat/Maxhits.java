@@ -51,7 +51,7 @@ public class Maxhits {
             if (specialBonus > 1) {
                 base = Math.round(base) * specialBonus;
             } else {
-                base = (int) base;
+                base = (long) base;
             }
 
             if (victim.isNpc()) {
@@ -108,7 +108,7 @@ public class Maxhits {
                 base *= 1.5;
             }
 
-            maxHit = base * 10;
+            maxHit = (long) base * 10;
 
             if (player.getSummoning() != null && player.getSummoning().getFamiliar() != null
                     && player.getSummoning().getFamiliar().getSummonNpc().getId() == 1906) {
@@ -193,7 +193,8 @@ public class Maxhits {
         }
 
         if (victim != null && victim.isNpc() && (entity.isPlayer() && !entity.asPlayer().getRights().isDeveloperOnly())) {
-            maxHit = (long) NpcMaxHitLimit.limit((NPC) victim, maxHit, CombatType.MELEE);
+            maxHit = (long) NpcMaxHitLimit.limit((NPC) victim, maxHit, entity.asPlayer());
+
         }
 
         return (long) Math.floor(maxHit);
@@ -251,7 +252,7 @@ public class Maxhits {
                 specialBonus = player.getCombatSpecial().getStrengthBonus();
             }
 
-            maxHit = (int) baseDamage * specialBonus;
+            maxHit = (long) baseDamage * specialBonus;
 
             if (victim.isNpc()) {
                 if (((NPC) victim).getId() == player.getSlayer().getSlayerTask().getNpcId()) {
@@ -366,7 +367,7 @@ public class Maxhits {
         maxHit *= 10;
 
         if (victim != null && victim.isNpc() && (entity.isPlayer() && !entity.asPlayer().getRights().isDeveloperOnly())) {
-            maxHit = (long) NpcMaxHitLimit.limit((NPC) victim, maxHit, CombatType.RANGED);
+            maxHit = (long) NpcMaxHitLimit.limit((NPC) victim, maxHit, entity.asPlayer());
         }
         return (long) Math.floor(maxHit);
     }
@@ -541,7 +542,7 @@ public class Maxhits {
 
 
         if (victim != null && victim.isNpc() && (entity.isPlayer() && !entity.asPlayer().getRights().isDeveloperOnly())) {
-            maxHit = (long) NpcMaxHitLimit.limit((NPC) victim, maxHit, CombatType.RANGED);
+            maxHit = (long) NpcMaxHitLimit.limit((NPC) victim, maxHit, entity.asPlayer());
         }
         return (long) Math.floor(maxHit);
     }

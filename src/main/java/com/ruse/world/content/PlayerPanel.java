@@ -21,7 +21,7 @@ public class PlayerPanel {
     public static void refreshPanel(Player player) {
         EventPanel.refresh(player);
         int interfaceID = 111201;
-        int players = (int) World.getPlayers().size() + GameSettings.players;
+        int players = World.getPlayers().size() + GameSettings.players;
         String[] Messages = new String[]{
                 //
                 "@whi@Main",

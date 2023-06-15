@@ -27,6 +27,7 @@ import com.ruse.world.content.dialogue.DialogueManager;
 import com.ruse.world.content.discordbot.AdminCord;
 import com.ruse.world.content.discordbot.Bot;
 import com.ruse.world.content.discordbot.JavaCord;
+import com.ruse.world.packages.donation.DonateSales;
 import com.ruse.world.packages.donation.DonationManager;
 import com.ruse.world.packages.donation.FlashDeals;
 import com.ruse.world.content.grandLottery.GrandLottery;
@@ -91,6 +92,7 @@ public final class GameLoader {
 		InstanceManager.getManager();
 		GlobalBossManager.getInstance();
 		PlusUpgrade.getPlusUpgrade();
+		DonateSales.getInstance();
 	}
 
 	public void finish() throws IOException, InterruptedException {

@@ -2260,23 +2260,24 @@ public class Shop extends ItemContainer {
                     case 15682:
                         return new Object[]{1, "Elite Vote Tickets"};
                     case 21816:
-                        return new Object[]{5, "Elite Vote Tickets"};
+                        return new Object[]{3, "Elite Vote Tickets"};
                     case 20489:
-                        return new Object[]{100, "Elite Vote Tickets"};
+                        return new Object[]{75, "Elite Vote Tickets"};
                     case 20491:
-                        return new Object[]{150, "Elite Vote Tickets"};
+                        return new Object[]{100, "Elite Vote Tickets"};
                     case 23206:
                     case 23207:
                     case 23208:
+                        return new Object[]{25, "Elite Vote Tickets"};
                     case 22223:
                     case 22224:
-                        return new Object[]{500, "Elite Vote Tickets"};
+                        return new Object[]{200, "Elite Vote Tickets"};
                     case 20500:
-                        return new Object[]{150, "Elite Vote Tickets"};
+                        return new Object[]{50, "Elite Vote Tickets"};
                     case 20498:
-                        return new Object[]{250, "Elite Vote Tickets"};
+                        return new Object[]{75, "Elite Vote Tickets"};
                     case 20506:
-                        return new Object[]{350, "Elite Vote Tickets"};
+                        return new Object[]{50, "Elite Vote Tickets"};
                 }
             }
             return null;

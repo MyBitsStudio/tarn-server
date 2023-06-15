@@ -932,7 +932,7 @@ public abstract class ItemContainer {
     //lets give it a try, older items though wont work because they dont have hashes right now, so spawn a few items with the raritys and try that ight
 
     public boolean containsAll(int... ids) {
-        return Arrays.stream(ids).allMatch(id -> contains(id));
+        return Arrays.stream(ids).allMatch(this::contains);
     }
 
     public boolean containsAll(Item... items) {
@@ -940,7 +940,7 @@ public abstract class ItemContainer {
     }
 
     public boolean containsAny(int... ids) {
-        return Arrays.stream(ids).anyMatch(id -> contains(id));
+        return Arrays.stream(ids).anyMatch(this::contains);
     }
 
     public void set(int slot, Item item) {

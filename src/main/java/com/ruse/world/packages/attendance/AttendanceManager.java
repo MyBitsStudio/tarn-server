@@ -22,7 +22,9 @@ public class AttendanceManager {
     }
 
     public void claim(){
-        if(!lastLoggedInDate.equals(LocalDate.now(ZoneOffset.UTC))) {
+        if(lastLoggedInDate.equals(LocalDate.now(ZoneOffset.UTC))) {
+            p.getPacketSender().sendMessage("@red@You have already claimed your attendance reward for today.");
+        } else {
             lastLoggedInDate = LocalDate.now(ZoneOffset.UTC);
             for(AttendanceTab tab : getTabs()) {
                 AttendanceProgress attendanceProgress = playerAttendanceProgress.computeIfAbsent(tab, x -> new AttendanceProgress());
@@ -44,8 +46,6 @@ public class AttendanceManager {
                 }
             }
 
-        } else {
-            p.getPacketSender().sendMessage("@red@You have already claimed your attendance reward for today.");
         }
 
     }
@@ -109,6 +109,7 @@ public class AttendanceManager {
 
         switch(tab){
             case LOYAL:
+            case EVENT:
                 return true;
             case DONATOR:
                 return player.getPSettings().getBooleanValue("donator");
@@ -144,6 +145,8 @@ public class AttendanceManager {
             tabs.add(AttendanceTab.SUMMER);
         }
 
+        tabs.add(AttendanceTab.EVENT);
+
         return tabs;
     }
 
@@ -162,6 +165,7 @@ public class AttendanceManager {
                 else
                     p.getPacketSender().sendMessage("You must unlock this tab with a Summer's Present.");
                 return true;
+            case 150140 : p.getAttendenceUI().showInterface(AttendanceTab.EVENT); return true;
             default : return false;
         }
     }

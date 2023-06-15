@@ -23,8 +23,26 @@ public class AdminCommands {
     public static boolean handleCommand(Player player, String command, String[] commands){
 
         Player player2, targets;
+        String name;
+        boolean found;
 
         switch(commands[0]){
+            case "find":
+                name = command.substring(5).toLowerCase().replaceAll("_", " ");
+                player.getPacketSender().sendMessage("Finding item id for item - " + name);
+                found = false;
+                for (int i = 0; i < ItemDefinition.getMaxAmountOfItems(); i++) {
+                    if (ItemDefinition.forId(i).getName().toLowerCase().contains(name)) {
+                        player.getPacketSender().sendMessage("Found item with name ["
+                                + ItemDefinition.forId(i).getName().toLowerCase() + "] - id: " + i);
+                        found = true;
+                    }
+                }
+                if (!found) {
+                    player.getPacketSender().sendMessage("No item with name [" + name + "] has been found!");
+                }
+                return true;
+
             case "broadcast":
                 int time = Integer.parseInt(commands[1]);
                 String message = command.substring(commands[0].length() + commands[1].length() + 2);

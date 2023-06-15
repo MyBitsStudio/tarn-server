@@ -1113,10 +1113,7 @@ public final class CombatFactory {
             maxHit *= 1.5;
         }
         if (victim != null && victim.isNpc() && !player.getRights().isDeveloperOnly()) {
-            maxHit = (int) NpcMaxHitLimit.limit((NPC) victim, maxHit, CombatType.RANGED);
-            if(CombatConstants.wearingEventArmor(player)) {
-                maxHit *= 2;
-            }
+            maxHit = (int) NpcMaxHitLimit.limit((NPC) victim, maxHit, player);
         }
 
         return maxHit;
@@ -1166,7 +1163,7 @@ public final class CombatFactory {
             baseMax = 450 + Misc.getRandom(700);
         }
         if (v.isNpc()) {
-            baseMax = (int) NpcMaxHitLimit.limit((NPC) v, baseMax, CombatType.DRAGON_FIRE);
+            baseMax = (int) NpcMaxHitLimit.limit((NPC) v, baseMax, e.asPlayer());
         }
         return baseMax;
     }
@@ -2296,21 +2293,21 @@ public final class CombatFactory {
                         p.performGraphic(new Graphic(2214));
                         p.performAnimation(new Animation(12575));
                         new Projectile(p, target, 2215, 44, 3, 43, 31, 0).sendProjectile();
-                        p.getPacketSender().sendMessage("You decrease the your Attack, Strength and Defence level..");
+                        //p.getPacketSender().sendMessage("You decrease target Attack, Strength and Defence level..");
                     } else if (sapRanger && Misc.getRandom(16) >= 9) {
                         CurseHandler.handleLeech(target, 4, 1, -10, true);
                         CurseHandler.handleLeech(target, 1, 1, -10, true);
                         p.performGraphic(new Graphic(2217));
                         p.performAnimation(new Animation(12575));
                         new Projectile(p, target, 2218, 44, 3, 43, 31, 0).sendProjectile();
-                        p.getPacketSender().sendMessage("You decrease your target's Ranged and Defence level..");
+                        //p.getPacketSender().sendMessage("You decrease your target's Ranged and Defence level..");
                     } else if (sapMage && Misc.getRandom(15) >= 10) {
                         CurseHandler.handleLeech(target, 6, 1, -10, true);
                         CurseHandler.handleLeech(target, 1, 1, -10, true);
                         p.performGraphic(new Graphic(2220));
                         p.performAnimation(new Animation(12575));
                         new Projectile(p, target, 2221, 44, 3, 43, 31, 0).sendProjectile();
-                        p.getPacketSender().sendMessage("You decrease your target's Magic and Defence level..");
+                        //p.getPacketSender().sendMessage("You decrease your target's Magic and Defence level..");
                     }
                 }
             }

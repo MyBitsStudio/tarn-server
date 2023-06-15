@@ -1,10 +1,12 @@
 package com.ruse.world.content.combat;
 
 import com.ruse.world.entity.impl.npc.NPC;
+import com.ruse.world.entity.impl.player.Player;
+import com.ruse.world.packages.combat.CombatConstants;
 
 public class NpcMaxHitLimit {
 
-    public static double limit(NPC npc, double damage, CombatType type) {
+    public static double limit(NPC npc, double damage, Player player) {
         int maxLimit;
         switch (npc.getId()) {
             // case 187:  // goku
@@ -33,6 +35,9 @@ public class NpcMaxHitLimit {
                 break;
             default:
                 return damage;
+        }
+        if(CombatConstants.wearingEventArmor(player)) {
+            maxLimit *= 2;
         }
         return Math.min(maxLimit, damage);
     }

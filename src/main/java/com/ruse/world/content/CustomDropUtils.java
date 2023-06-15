@@ -409,7 +409,7 @@ public class CustomDropUtils {
             }
         }
 
-        if(npc == 9906 || npc == 9904 || npc == 9907 || npc == 9908 || npc == 587 || npc == 8013){
+        if(npc == 9908 || npc == 3308 || npc == 9907 || npc == 9904 || npc == 9906 || npc == 587 || npc == 8013){
             if(CombatConstants.wearingEventArmor(player)){
                 percentBoost += 500;
             }

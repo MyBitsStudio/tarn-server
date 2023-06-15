@@ -24,6 +24,7 @@ import com.ruse.world.content.clans.ClanManager;
 import com.ruse.world.content.combat.weapon.CombatSpecial;
 import com.ruse.world.entity.impl.player.PlayerLoading;
 import com.ruse.world.event.youtube.YoutubeBoss;
+import com.ruse.world.packages.donation.DonateSales;
 import com.ruse.world.packages.donation.DonationManager;
 import com.ruse.world.packages.donation.FlashDeals;
 import com.ruse.world.content.grandexchange.GrandExchangeOffers;
@@ -170,21 +171,7 @@ public class OwnerCommands {
                 }
                 return true;
 
-            case "find":
-                name = command.substring(5).toLowerCase().replaceAll("_", " ");
-                player.getPacketSender().sendMessage("Finding item id for item - " + name);
-                found = false;
-                for (int i = 0; i < ItemDefinition.getMaxAmountOfItems(); i++) {
-                    if (ItemDefinition.forId(i).getName().toLowerCase().contains(name)) {
-                        player.getPacketSender().sendMessage("Found item with name ["
-                                + ItemDefinition.forId(i).getName().toLowerCase() + "] - id: " + i);
-                        found = true;
-                    }
-                }
-                if (!found) {
-                    player.getPacketSender().sendMessage("No item with name [" + name + "] has been found!");
-                }
-                return true;
+
 
             case "god":
                 if (player.isOpMode()) {
@@ -266,7 +253,7 @@ public class OwnerCommands {
                                 if(players.getBank(i).contains(items))
                                     players.getBank(i).delete(items, players.getBank(i).getAmount(items));
                             }
-                            player.sendMessage("@red@[SERVER] " + ItemDefinition.forId(items).getName() + " has been removed from your inventory.");
+                            players.sendMessage("@red@[SERVER] " + ItemDefinition.forId(items).getName() + " has been removed from your inventory.");
                         });
                 return true;
 
@@ -339,6 +326,11 @@ public class OwnerCommands {
                         case "deals":
                             FlashDeals.getDeals().reload();
                             player.sendMessage("Deals reload");
+                            return true;
+
+                        case "sales":
+                            DonateSales.getInstance().reload();
+                            player.sendMessage("Sales reload");
                             return true;
                     }
                 }

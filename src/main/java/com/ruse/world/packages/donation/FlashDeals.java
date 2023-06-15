@@ -37,6 +37,14 @@ public class FlashDeals {
         load();
     }
 
+    public Map<Integer, Map<Integer, Integer>> getSpecialDeals() {
+    	return deals;
+    }
+
+    public List<Integer> getDoubledItems() {
+    	return doubledItems;
+    }
+
     public void setIsActive(boolean active){
         isActive.set(active);
     }
@@ -142,11 +150,11 @@ public class FlashDeals {
     }
 
     private void load(){
-        new FlashDealLoad(this).loadJSON("./data/flash.json").run();
+        new FlashDealLoad(this).loadJSON("./.core/flash.json").run();
     }
 
     public void reload(){
-        new FlashDealLoad(this).loadJSON("./data/flash.json").run();
+        new FlashDealLoad(this).loadJSON("./.core/flash.json").run();
         System.out.println("Active Deals \n"+deals+"\nSpecial Deals \n"+specialDeals+"\nDoubled Items \n"+doubledItems);
     }
 
