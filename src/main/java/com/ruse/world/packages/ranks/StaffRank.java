@@ -5,7 +5,7 @@ import lombok.Getter;
 @Getter
 public enum StaffRank {
 
-    PLAYER(0, 0, ""),
+    PLAYER(0, -1, ""),
     YOUTUBER(1, 837, "<col=CD201F><shad=ffffff"),
     TRAIL_STAFF(2, 832,"<col=0><shad=FFFFFF>"),
     HELPER(3, 832,"<col=0><shad=FFFFFF>"),

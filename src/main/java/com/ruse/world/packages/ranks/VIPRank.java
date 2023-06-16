@@ -12,7 +12,10 @@ public enum VIPRank {
     PLATINUM(4, 30, 2.1, 500),
     DIAMOND(5, 40,  2.5, 600),
     ONYX(6, 45,  3, 750),
-    ZENYTE(7, 50,  4, 1000)
+    ZENYTE(7, 50,  4, 1000),
+    SUPPORTER(8, 55,  5, 1500),
+    SPONSOR(9, 60,  6, 2000),
+    LEGENDARY(10, 65,  7, 2500)
 
     ;
 
@@ -23,6 +26,15 @@ public enum VIPRank {
         this.dr = dr;
         this.damage = damage;
         this.bonusCap = bonusCap;
+    }
+
+    public static VIPRank forRank(int rank){
+        for(VIPRank r : values()){
+            if(r.getRank() == rank){
+                return r;
+            }
+        }
+        return null;
     }
 
 }

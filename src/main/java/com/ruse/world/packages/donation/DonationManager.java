@@ -204,6 +204,8 @@ public class DonationManager {
 
                 new PlayerDonationSave(player, items, amount).create().save();
 
+                player.getPlayerVIP().addDonation(amount);
+
                 FlashDeals.getDeals().handleFlashDeals(player, amount, items);
 
                 handleTickets(player, amount);
@@ -243,10 +245,6 @@ public class DonationManager {
                 player.getPacketSender().sendMessage("You have been given a Summer Present!");
             }
         }
-
-    }
-
-    public void handleDonation(Player player){
 
     }
 

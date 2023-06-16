@@ -27,6 +27,7 @@ import com.ruse.world.content.skill.impl.slayer.SlayerMaster;
 import com.ruse.world.content.skill.impl.slayer.SlayerTasks;
 import com.ruse.world.content.skill.impl.summoning.BossPets;
 import com.ruse.world.entity.impl.player.Player;
+import com.ruse.world.packages.donation.DonationManager;
 import com.ruse.world.packages.ranks.DonatorRank;
 import com.ruse.world.packages.ranks.StaffRank;
 import com.ruse.world.packages.ranks.VIPRank;
@@ -1226,5 +1227,6 @@ public class PlayerSecureLoad extends SecureLoad {
                 player.setRank(StaffRank.HELPER);
                 break;
         }
+        DonationManager.getInstance().handleDonor(player);
     }
 }

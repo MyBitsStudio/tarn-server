@@ -107,6 +107,7 @@ import com.ruse.world.entity.impl.mini.MiniPlayer;
 import com.ruse.world.entity.impl.npc.NPC;
 import com.ruse.world.entity.impl.player.StartScreen.GameModes;
 import com.ruse.world.instance.impl.DungeoneeringInstance;
+import com.ruse.world.packages.vip.VIP;
 import com.ruse.world.region.Region;
 import com.ruse.world.region.RegionManager;
 import com.ruse.world.region.dynamic.DynamicRegion;
@@ -4356,4 +4357,7 @@ public class Player extends Character {
     public DonatorRank donator = DonatorRank.NONE;
     @Getter@Setter
     public VIPRank vip = VIPRank.NONE;
+
+    @Getter@Setter
+    public VIP playerVIP = new VIP(this);
 }

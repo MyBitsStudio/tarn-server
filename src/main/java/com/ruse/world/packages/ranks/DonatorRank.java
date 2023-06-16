@@ -5,7 +5,7 @@ import lombok.Getter;
 @Getter
 public enum DonatorRank {
 
-    NONE(0, "", 1, 1, 1, 15, 0, 1, new int[]{0, 1}),
+    NONE(0, "", 1, 1, 1, 15, -1, 1, new int[]{0, 1}),
     GRACEFUL(1, "@blu@<shad=0>", 1.1, 1, 3, 10, 833, 2, new int[]{1, 5}),
     CLERIC(2, "@gre@<shad=0>", 1.15, 5, 5, 6, 834, 3, new int[]{3, 7}),
     TORMENTED(3, "@red@<shad=0>", 1.5, 10, 7, 3, 835, 4, new int[]{6, 10}),

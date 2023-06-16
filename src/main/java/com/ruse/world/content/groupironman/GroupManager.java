@@ -132,14 +132,14 @@ public class GroupManager {
                     String name = player.getIronmanGroup().getMembers().get(i);
                     Player target = World.getPlayerByName(name);
                     player.getPacketSender().sendString(interfaceId++, name);
-                    if (target != null) {
-                        player.getPacketSender().sendString(interfaceId++, "" + target.getSkillManager().getTotalLevel());
-                        player.getPacketSender().sendString(interfaceId++,
-                                player.getRelations().getStatus() == PlayerRelations.PrivateChatStatus.ON ? "@gre@Online" : "@red@Offline");
-                    } else {
+                    if (target == null) {
                         target = IronmanPlayerLoading.getResult(name);
                         player.getPacketSender().sendString(interfaceId++, "" + target.getSkillManager().getTotalLevel() );
                         player.getPacketSender().sendString(interfaceId++, "@red@Offline");
+                    } else {
+                        player.getPacketSender().sendString(interfaceId++, "" + target.getSkillManager().getTotalLevel());
+                        player.getPacketSender().sendString(interfaceId++,
+                                player.getRelations().getStatus() == PlayerRelations.PrivateChatStatus.ON ? "@gre@Online" : "@red@Offline");
                     }
                 } else {
                     player.getPacketSender().sendString(interfaceId++, "---");
@@ -229,7 +229,7 @@ public class GroupManager {
 
             writer.write(builder.toJson(object));
         } catch (Exception e) {
-            GameServer.getLogger().log(Level.WARNING, "An error has occured while saving a ironman group!", e);
+            GameServer.getLogger().log(Level.WARNING, "An error has occurred while saving a ironman group!", e);
         }
     }
 

@@ -444,6 +444,8 @@ public class PlayerHandler {
             });
         }
 
+        player.getPlayerVIP().onLogin();
+
         player.getPSettings().setSetting("is-locked", true);
 
         if(!player.newPlayer() && player.getPSecurity().securityScore() <= 59){
