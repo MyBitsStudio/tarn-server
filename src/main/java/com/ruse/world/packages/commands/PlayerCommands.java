@@ -694,16 +694,8 @@ public class PlayerCommands {
             }
         }
         if(player.getRank().isStaff()){
-            World.sendYellMessage("<img=1508><col=" + player.getRank().getYellPrefix() +
+            World.sendYellMessage("<img="+player.getRank().getImg()+"><col=" + player.getRank().getYellPrefix() +
                     " [" + Misc.ucFirst(player.getRank().name().replaceAll("_", " ")) + "]<shad=0><col=" + player.getYellHex() + "> " + player.getUsername() +
-                    ": " + yellMessage);
-
-            player.getLastYell().reset();
-            return;
-        }
-        if (player.getDonator().isForsakenPlus()) {
-            World.sendYellMessage("<img=1508><col=" + player.getDonator().getPrefix() +
-                    " [" + Misc.ucFirst(player.getDonator().name().replaceAll("_", " ")) + "]<shad=0><col=" + player.getYellHex() + "> " + player.getUsername() +
                     ": " + yellMessage);
 
             player.getLastYell().reset();

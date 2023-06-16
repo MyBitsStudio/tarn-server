@@ -308,23 +308,23 @@ public class PlayerHandler {
         player.getPacketSender().updateSpecialAttackOrb().sendIronmanMode(player.getGameMode().ordinal());
 
         if(player.getRank() == StaffRank.TRAIL_STAFF){
-            World.sendMessage(("<shad=0><col=" + player.getYellHex() + "> <img=5><img=1508> Trial Staff "
+            World.sendMessage(("<shad=0><col=" + player.getYellHex() + "> <img=5>Trial Staff "
                     + player.getUsername() + " has just logged in."));
         }
         if(player.getRank() == StaffRank.HELPER){
-            World.sendMessage(("<shad=0><col=" + player.getYellHex() + "> <img=5><img=1508> Helper "
+            World.sendMessage(("<shad=0><col=" + player.getYellHex() + "> <img=5>Helper "
                     + player.getUsername() + " has just logged in."));
         }
         if(player.getRank() == StaffRank.MODERATOR){
-            World.sendMessage(("<shad=0><col=" + player.getYellHex() + "> <img=1><img=1508> Moderator "
+            World.sendMessage(("<shad=0><col=" + player.getYellHex() + "> <img=1>Moderator "
                     + player.getUsername() + " has just logged in."));
         }
         if(player.getRank() == StaffRank.ADMINISTRATOR){
-            World.sendMessage(("<shad=0><col=" + player.getYellHex() + "> <img=2><img=3> Administrator "
+            World.sendMessage(("<shad=0><col=" + player.getYellHex() + "> <img=2>Administrator "
                     + player.getUsername() + " has just logged in."));
         }
         if(player.getRank() == StaffRank.MANAGER){
-            World.sendMessage(("<shad=0><col=" + player.getYellHex() + "> <img=2><img=3> Manager "
+            World.sendMessage(("<shad=0><col=" + player.getYellHex() + "> <img=2>Manager "
                     + player.getUsername() + " has just logged in."));
         }
         if(player.getRank() == StaffRank.DEVELOPER){
