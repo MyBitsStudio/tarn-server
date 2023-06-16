@@ -86,9 +86,9 @@ public class PlayerCommands {
                 }
                 return true;
 
-            case "forge":
-                //player.getForge().showInterface();
-                return true;
+//            case "forge":
+//                //player.getForge().showInterface();
+//                return true;
 
             case "pickaxe":
                 player.getInventory().add(1265, 1);
