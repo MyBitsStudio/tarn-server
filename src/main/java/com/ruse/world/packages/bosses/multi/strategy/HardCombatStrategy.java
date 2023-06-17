@@ -31,23 +31,23 @@ public class HardCombatStrategy implements CombatStrategy {
             //freiza.performGraphic(graphics);
             new Projectile(entity, victim, 720, 44, 3, 43, 31, 0).sendProjectile();
 
-            npc.getCombatBuilder().setContainer(new CombatContainer(npc, victim, 2,
-                    1, CombatType.MELEE, Misc.getRandom(10) > 8));
+            npc.getCombatBuilder().setContainer(new CombatContainer(npc, victim, 1,
+                    1, CombatType.MELEE, true));
             //	new Projectile(entity, victim, graphics.getId(), 44, 3, 43, 31, 0).sendProjectile();
 
         } else {
             npc.performAnimation(new Animation(3007));
 
             new Projectile(entity, victim, 2264, 44, 3, 43, 31, 0).sendProjectile();
-            npc.getCombatBuilder().setContainer(new CombatContainer(npc, victim, 3, 1, CombatType.MAGIC,
-                    Misc.getRandom(5) == 0));
+            npc.getCombatBuilder().setContainer(new CombatContainer(npc, victim, 1, 1, CombatType.MAGIC,
+                    true));
         }
         return true;
     }
 
     @Override
     public int attackDelay(Character entity) {
-        return 5;
+        return 7;
     }
 
     @Override

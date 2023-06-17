@@ -9,11 +9,12 @@ import com.ruse.model.Locations;
 import com.ruse.util.Misc;
 import com.ruse.util.RandomUtility;
 import com.ruse.world.clip.region.RegionClipping;
-import com.ruse.world.content.combat.CombatFactory;
-import com.ruse.world.content.combat.Maxhits;
 import com.ruse.world.entity.impl.Character;
 import com.ruse.world.entity.impl.npc.NPC;
 import com.ruse.world.entity.impl.player.Player;
+import com.ruse.world.packages.combat.max.MagicMax;
+import com.ruse.world.packages.combat.max.MeleeMax;
+import com.ruse.world.packages.combat.max.RangeMax;
 
 import static com.ruse.world.content.combat.CombatFactory.npcsDeathDartDontWork;
 import static com.ruse.world.content.combat.CombatType.RANGED;
@@ -80,13 +81,13 @@ public class AOEHandler {
 					long maxhit = maximumDamage;
 					switch (((Player) attacker).getLastCombatType()) {
 						case MELEE:
-							maxhit = Maxhits.melee(attacker, victim) / 10;
+							maxhit = MeleeMax.melee(attacker, victim) / 10;
 							break;
 						case RANGED:
-							maxhit = Maxhits.ranged(attacker, victim) / 10;
+							maxhit = RangeMax.newRange(attacker, victim) / 10;
 							break;
 						case MAGIC:
-							maxhit = Maxhits.magic(attacker, victim) / 10;
+							maxhit = MagicMax.newMagic(attacker, victim) / 10;
 							break;
 					}
 

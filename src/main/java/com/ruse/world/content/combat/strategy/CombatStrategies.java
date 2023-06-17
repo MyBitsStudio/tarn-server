@@ -170,12 +170,12 @@ public class CombatStrategies {
 		STRATEGIES.put(1120, new FriezaCombatScript());
 		STRATEGIES.put(440, new FriezaCombatScript());
 		STRATEGIES.put(438, new FriezaCombatScript());
+		STRATEGIES.put(1318, new FriezaCombatScript());
+		STRATEGIES.put(1311, new FriezaCombatScript());
 
 
 		STRATEGIES.put(9904, new SolakTheGreat());
 		STRATEGIES.put(9906, new SolakTheGreat());
-		STRATEGIES.put(1311, new SolakTheGreat());
-		STRATEGIES.put(1318, new SolakTheGreat());
 		STRATEGIES.put(4540, new SolakTheGreat());
 		STRATEGIES.put(9907, new GolemOfSolak());
 

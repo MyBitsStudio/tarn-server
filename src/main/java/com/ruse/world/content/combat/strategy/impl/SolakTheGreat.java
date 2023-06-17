@@ -76,8 +76,6 @@ public class SolakTheGreat implements CombatStrategy {
 
                         t.performGraphic(new Graphic(481));
                         t.dealDamage(new Hit(Misc.getRandom(183), Hitmask.RED, CombatIcon.MAGIC));
-                        boss.forceChat("I am the conqerour of this world.");
-
                     }
 
                 } else if (tick == 11) {

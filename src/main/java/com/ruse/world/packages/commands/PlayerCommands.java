@@ -12,11 +12,13 @@ import com.ruse.world.World;
 import com.ruse.world.content.*;
 import com.ruse.world.packages.attendance.AttendanceTab;
 import com.ruse.world.content.combat.DesolaceFormulas;
-import com.ruse.world.content.combat.Maxhits;
 import com.ruse.world.content.combat.prayer.CurseHandler;
 import com.ruse.world.content.combat.prayer.PrayerHandler;
 import com.ruse.world.content.dailyTask.DailyTaskHandler;
 import com.ruse.world.content.dialogue.DialogueManager;
+import com.ruse.world.packages.combat.max.MagicMax;
+import com.ruse.world.packages.combat.max.MeleeMax;
+import com.ruse.world.packages.combat.max.RangeMax;
 import com.ruse.world.packages.donation.DonationManager;
 import com.ruse.world.content.minigames.impl.dungeoneering.DungeoneeringParty;
 import com.ruse.world.content.progressionzone.ProgressionZone;
@@ -176,10 +178,10 @@ public class PlayerCommands {
                 return true;
 
             case "maxhit":
-                player.getPacketSender().sendMessage("<shad=1>@red@Melee Maxhit: " + (Maxhits.melee(player, player) / 10));
+                player.getPacketSender().sendMessage("<shad=1>@red@Melee Maxhit: " + (MeleeMax.melee(player, player)));
                 player.getPacketSender()
-                        .sendMessage("<shad=1>@gre@Ranged Maxhit: " + (Maxhits.ranged(player, player) / 10));
-                player.getPacketSender().sendMessage("<shad=1>@cya@Magic Maxhit: " + (Maxhits.magic(player, player) / 10));
+                        .sendMessage("<shad=1>@gre@Ranged Maxhit: " + (RangeMax.newRange(player, player)));
+                player.getPacketSender().sendMessage("<shad=1>@cya@Magic Maxhit: " + (MagicMax.newMagic(player, player)));
                 return true;
 
             case "achieve": case "achievements": case "dailytasks": case "tasks":

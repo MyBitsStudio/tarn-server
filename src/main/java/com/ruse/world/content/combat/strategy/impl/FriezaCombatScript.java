@@ -78,8 +78,8 @@ public class FriezaCombatScript implements CombatStrategy {
 			freiza.performAnimation(animationsmelee);
 			
 			new Projectile(entity, victim, graphics.getId(), 44, 3, 43, 31, 0).sendProjectile();
-			freiza.getCombatBuilder().setContainer(new CombatContainer(freiza, victim, 1, 2, CombatType.MELEE,
-					Misc.getRandom(10) > 2));
+			freiza.getCombatBuilder().setContainer(new CombatContainer(freiza, victim, 1, 2, CombatType.MAGIC,
+					true));
 		}
 		return true;
 	}
@@ -99,7 +99,7 @@ public class FriezaCombatScript implements CombatStrategy {
 	@Override
 	public CombatType getCombatType() {
 		// TODO Auto-generated method stub
-		return CombatType.MELEE;
+		return CombatType.MAGIC;
 	}
 
 }

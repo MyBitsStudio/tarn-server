@@ -186,12 +186,13 @@ public class CombatContainer {
 		for (ContainerHit hit : hits) {
 			if (hit == null)
 				continue;
-			if (!hit.accurate) {
+			if (hit.accurate) {
+				damage += hit.hit.getDamage();
+			} else {
 				long absorb = hit.getHit().getAbsorb();
 				hit.hit = new Hit(0, Hitmask.RED, CombatIcon.BLOCK);
 				hit.hit.setAbsorb(absorb);
 			}
-			damage += hit.hit.getDamage();
 		}
 		return damage;
 	}
