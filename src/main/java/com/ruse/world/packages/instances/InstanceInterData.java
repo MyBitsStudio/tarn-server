@@ -141,7 +141,7 @@ public enum InstanceInterData {
 
     GROUNDON("Groundon", "3k Lilinryss",
             new Item(10835, 10000), 16, 100, 8010,
-            InstanceType.MULTI),
+            InstanceType.MULTI), //// here
 
     VARTHRAMOTH("Varthramoth", "3k Groundon",
             new Item(10835, 10000), 16, 100, 3016,

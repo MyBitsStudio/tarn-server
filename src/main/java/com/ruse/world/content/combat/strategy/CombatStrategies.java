@@ -70,7 +70,7 @@ public class CombatStrategies {
 		STRATEGIES.put(DungeoneeringBossNpc.Constants.BOSS_PROT_MELEE, DungeoneeringBossCombat.INSTANCE);
 
 		STRATEGIES.put(8349, new TormentedDemon());
-		STRATEGIES.put(1313, new TormentedDemon());
+
 		STRATEGIES.put(3200, new ChaosElemental());
 
 		STRATEGIES.put(8133, new CorporealBeast());
@@ -172,6 +172,7 @@ public class CombatStrategies {
 		STRATEGIES.put(438, new FriezaCombatScript());
 		STRATEGIES.put(1318, new FriezaCombatScript());
 		STRATEGIES.put(1311, new FriezaCombatScript());
+		STRATEGIES.put(1313, new FriezaCombatScript());
 
 
 		STRATEGIES.put(9904, new SolakTheGreat());

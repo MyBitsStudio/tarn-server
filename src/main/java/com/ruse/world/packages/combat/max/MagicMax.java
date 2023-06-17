@@ -32,6 +32,9 @@ public class MagicMax {
                 maxHit -= (defence / 2);
 
                 maxHit /= 10;
+                if(maxHit <= 0){
+                    maxHit = 1;
+                }
             }
             System.out.println("NPC Max Hit Magic: " + maxHit);
         } else if(entity.isPlayer()){

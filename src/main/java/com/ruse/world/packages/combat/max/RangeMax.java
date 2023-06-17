@@ -34,6 +34,9 @@ public class RangeMax {
 
                 maxHit /= 10;
 
+                if(maxHit <= 0){
+                    maxHit = 1;
+                }
             }
             System.out.println("NPC Max Hit Range : " + maxHit);
         } else if (entity.isPlayer()) {
