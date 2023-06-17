@@ -256,7 +256,7 @@ public class NPCDrops {
             double roll_chance = new SecureRandom().nextDouble() / divider;
 
             boolean hasAoe = player.getEquipment().get(Equipment.WEAPON_SLOT).getEffect() == ItemEffect.AOE_EFFECT;
-            double divide = (CustomDropUtils.drBonus(player, npc.getId()) > 0 ? (CustomDropUtils.drBonus(player, npc.getId()) / (hasAoe ? 250 : 500)) + 1 : 1);
+            double divide = (CustomDropUtils.drBonus(player, npc.getId()) > 0 ? ((double) CustomDropUtils.drBonus(player, npc.getId()) / (hasAoe ? 250 : 500)) + 1 : 1);
 
             double required = 1 / dropRate;
             if (roll_chance / divide <= required) {
@@ -273,39 +273,39 @@ public class NPCDrops {
             sendDrop(player, npc);
         }
 
-        if (npc.getId() == VaultOfWar.AVATAR_ID
-                && (player.getLocation() == Location.VAULT_OF_WAR || player.getLocation() == Location.DIAMOND_ZONE)) {
-
-            Item toDrop = VaultOfWar.replaceDrop(player, npc);
-            if (toDrop != null) {
-
-                if (toDrop.getId() >= 23099 && toDrop.getId() <= 23102) {//t gloves
-                    if (player.lastTGloveIndex >= 3) {
-                        player.lastTGloveIndex = 3;
-                        player.sendMessage("You've gotten the final gloves already.");
-                    } else {
-                        player.lastTGloveIndex += 1;
-                        if (player.lastTGloveIndex >= 3) {
-                            player.sendMessage("You are now hunting for the @blu@Combat gloves.");
-                        } else {
-                            int newId = VaultOfWar.T_GLOVES[player.lastTGloveIndex + 1];
-                            player.sendMessage("You are now hunting for: @blu@" + ItemDefinition.forId(newId).getName() + ".");
-                        }
-                    }
-                }
-
-                if (toDrop.getId() == 23100) {
-                    //Achievements.doProgress(player, Achievements.Achievement.COLLECT_T2_GLOVES);
-                }
-                if (toDrop.getId() == 23102) {
-                    //Achievements.doProgress(player, Achievements.Achievement.COLLECT_T4_GLOVES);
-                }
-                NPCDrops.NpcDropItem newItem = new  NPCDrops.NpcDropItem(toDrop.getId(), new int[] {1}, 0);
-                finalDropList.add(newItem);
-
-                sendDrop(player, npc);
-            }
-        }
+//        if (npc.getId() == VaultOfWar.AVATAR_ID
+//                && (player.getLocation() == Location.VAULT_OF_WAR || player.getLocation() == Location.DIAMOND_ZONE)) {
+//
+//            Item toDrop = VaultOfWar.replaceDrop(player, npc);
+//            if (toDrop != null) {
+//
+//                if (toDrop.getId() >= 23099 && toDrop.getId() <= 23102) {//t gloves
+//                    if (player.lastTGloveIndex >= 3) {
+//                        player.lastTGloveIndex = 3;
+//                        player.sendMessage("You've gotten the final gloves already.");
+//                    } else {
+//                        player.lastTGloveIndex += 1;
+//                        if (player.lastTGloveIndex >= 3) {
+//                            player.sendMessage("You are now hunting for the @blu@Combat gloves.");
+//                        } else {
+//                            int newId = VaultOfWar.T_GLOVES[player.lastTGloveIndex + 1];
+//                            player.sendMessage("You are now hunting for: @blu@" + ItemDefinition.forId(newId).getName() + ".");
+//                        }
+//                    }
+//                }
+//
+//                if (toDrop.getId() == 23100) {
+//                    //Achievements.doProgress(player, Achievements.Achievement.COLLECT_T2_GLOVES);
+//                }
+//                if (toDrop.getId() == 23102) {
+//                    //Achievements.doProgress(player, Achievements.Achievement.COLLECT_T4_GLOVES);
+//                }
+//                NPCDrops.NpcDropItem newItem = new  NPCDrops.NpcDropItem(toDrop.getId(), new int[] {1}, 0);
+//                finalDropList.add(newItem);
+//
+//                sendDrop(player, npc);
+//            }
+//        }
     }
 
     public static void sendDrop(Player player, NPC npc) {
@@ -357,7 +357,7 @@ public class NPCDrops {
             }
 
             if (npc.getId() == 2007 || npc.getId() == 2042 || npc.getId() == 2043 || npc.getId() == 2044
-                    || npc.getId() == 9014 || npc.getId() == 9017 || npc.getId() == 3305 || npc.getId() == 9904 || npc.getId() == 9904 || npc.getId() == 9906 || npc.getId() == 9907 || npc.getId() == 9908) {
+                    || npc.getId() == 9014 || npc.getId() == 9017 || npc.getId() == 3305 || npc.getId() == 9904 || npc.getId() == 9906 || npc.getId() == 9907 || npc.getId() == 9908) {
                 pos = player.getPosition().copy();
             }
 

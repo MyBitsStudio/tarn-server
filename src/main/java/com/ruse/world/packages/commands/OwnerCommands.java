@@ -435,6 +435,10 @@ public class OwnerCommands {
 
                 return true;
 
+            case "vip":
+                id = Integer.parseInt(commands[1]);
+                player.getPlayerVIP().addDonation(id);
+                return true;
 
         }
         return false;

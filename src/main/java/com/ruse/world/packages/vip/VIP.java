@@ -10,15 +10,17 @@ import java.util.Calendar;
 public class VIP {
 
     private final Player player;
-    private int exp, claimedTicket, claimedPack;
+    private int exp, claimedTicket, claimedPack, total, packXp;
 
     public VIP(Player player) {
         this.player = player;
     }
 
     public void addDonation(int amount) {
-        exp += (amount * calculateLevel());
-        player.getPacketSender().sendMessage("You have gained " + amount + " VIP experience.");
+        exp += amount;
+        packXp += amount;
+        total += amount;
+        player.getPacketSender().sendMessage("You have gained " + amount + " VIP experience. Currently at : "+ exp);
         claimPack();
         reCalculate();
     }
@@ -27,22 +29,23 @@ public class VIP {
         int level = calculateLevel();
         if(level != player.getVip().getRank()){
             player.getPacketSender().sendMessage("You have reached VIP level " + level + "!");
-            player.getPacketSender().sendMessage("You have gained " + (level - player.getVip().getRank()) + " VIP tickets.");
             player.setVip(VIPRank.forRank(level));
         }
     }
 
     private void claimPack() {
-        int bread = exp / 50;
+        int bread = calculatePack();
         int deltaPacks = bread - claimedPack;
 
         if (deltaPacks > 0) {
             sendPack(claimedPack, deltaPacks);
             claimedPack += deltaPacks;
 
-            if (claimedPack > VIPPacks.values().length) {
+            if (claimedPack >= VIPPacks.values().length) {
+                int amount = packXp - 1000;
                 claimedPack = 0;
-                player.sendMessage("@yel@[VIP] You have finished your VIP track, and have reset.");
+                packXp = amount;
+                player.sendMessage("@yel@[VIP] You have finished your VIP track, and have reset, with "+amount+" rolled over.");
             }
         }
     }
@@ -81,6 +84,38 @@ public class VIP {
         return 10;
     }
 
+    public int calculatePack() {
+        if(packXp < 50)
+            return 0;
+        if(packXp < 100)
+            return 1;
+        if(packXp < 150)
+            return 2;
+        if(packXp < 200)
+            return 3;
+        if(packXp < 250)
+            return 4;
+        if(packXp < 300)
+            return 5;
+        if(packXp < 350)
+            return 6;
+        if(packXp < 400)
+            return 7;
+        if(packXp < 500)
+            return 8;
+        if(packXp < 600)
+            return 9;
+        if(packXp < 700)
+            return 10;
+        if(packXp < 800)
+            return 11;
+        if(packXp < 900)
+            return 12;
+        if(packXp < 1000)
+            return 13;
+        return 14;
+    }
+
     public void onLogin(){
         if(Calendar.DAY_OF_MONTH != claimedTicket && player.getVip().getRank() > 0){
             claimedTicket = Calendar.DAY_OF_MONTH;
@@ -91,20 +126,20 @@ public class VIP {
     }
 
     enum VIPPacks {
-        PACK_1(50, new int[]{10835}, new int[]{1000000}),
-        PACK_2(100, new int[]{23203}, new int[]{5000}),
-        PACK_3(150, new int[]{}, new int[]{}),
-        PACK_4(200, new int[]{}, new int[]{}),
-        PACK_5(250, new int[]{}, new int[]{}),
-        PACK_6(300, new int[]{}, new int[]{}),
-        PACK_7(350, new int[]{}, new int[]{}),
-        PACK_8(400, new int[]{}, new int[]{}),
-        PACK_9(500, new int[]{}, new int[]{}),
-        PACK_10(600, new int[]{}, new int[]{}),
-        PACK_11(700, new int[]{}, new int[]{}),
-        PACK_12(800, new int[]{}, new int[]{}),
-        PACK_13(900, new int[]{}, new int[]{}),
-        PACK_14(1000, new int[]{}, new int[]{})
+        PACK_1(50, new int[]{20501}, new int[]{1}),
+        PACK_2(100, new int[]{20502}, new int[]{1}),
+        PACK_3(150, new int[]{23225}, new int[]{1}),
+        PACK_4(200, new int[]{23217}, new int[]{5}),
+        PACK_5(250, new int[]{20506}, new int[]{2}),
+        PACK_6(300, new int[]{23204}, new int[]{10}),
+        PACK_7(350, new int[]{23209}, new int[]{10}),
+        PACK_8(400, new int[]{23217}, new int[]{10}),
+        PACK_9(500, new int[]{3686}, new int[]{1}),
+        PACK_10(600, new int[]{23060}, new int[]{2}),
+        PACK_11(700, new int[]{20501}, new int[]{4}),
+        PACK_12(800, new int[]{20490}, new int[]{2}),
+        PACK_13(900, new int[]{23218}, new int[]{5}),
+        PACK_14(1000, new int[]{23002}, new int[]{1})
         ;
         @Getter
         final int amount;
@@ -120,7 +155,7 @@ public class VIP {
             int start = 0;
             for(int i = amount; i < amount + packs; i++){
                 if(i > VIPPacks.values().length)
-                    continue;
+                    break;
                 packs1[start++] = VIPPacks.values()[i];
             }
             return packs1;

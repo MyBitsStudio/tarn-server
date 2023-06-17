@@ -200,8 +200,6 @@ public class DonationManager {
                     i++;
                 }
 
-                System.out.println("sale "+amount+" "+ Arrays.toString(items));
-
                 new PlayerDonationSave(player, items, amount).create().save();
 
                 player.getPlayerVIP().addDonation(amount);
@@ -225,7 +223,7 @@ public class DonationManager {
     }
 
     private void handleTickets(Player player, int amount){
-        int amt = Math.floorDiv(amount, 20);
+        int amt = Math.floorDiv(amount, 10);
         if(amt >= 1){
             player.getInventory().add(23204, amt);
             player.getPacketSender().sendMessage("@blu@[DONATION] You have received "+amt+" donation tickets for your donation!");
@@ -271,7 +269,7 @@ public class DonationManager {
 
         if(player.getDonator() != rank){
             player.getPacketSender().sendMessage(
-                    "You've become a " + Misc.formatText(rank.toString().toLowerCase()) + "! Congratulations!");
+                    "You've become a " + Misc.formatText(player.getDonator().toString().toLowerCase()) + "! Congratulations!");
             player.getPacketSender().sendRights();
         }
     }

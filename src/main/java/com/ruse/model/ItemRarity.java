@@ -60,7 +60,6 @@ public enum ItemRarity {
 				list.add(effect);
 			}
 			ItemEffect effect = Misc.randomElement(list);
-			//System.out.println("Number Rolled: " + ran + " ------- " + "Rarity: " + rarity + " ------- Given Effect: " + effect.toString());
 		}
 	}
 

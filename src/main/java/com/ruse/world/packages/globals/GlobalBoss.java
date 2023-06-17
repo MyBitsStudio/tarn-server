@@ -9,6 +9,7 @@ import com.ruse.world.entity.impl.npc.NPC;
 import com.ruse.world.entity.impl.player.Player;
 
 public abstract class GlobalBoss extends NPC {
+
     public GlobalBoss(int id, Position position) {
         super(id, position, false);
         this.getDefinition().setAggressive(true);
