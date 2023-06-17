@@ -181,7 +181,6 @@ public class MagicMax {
                 maxHit *= 2;
             }
 
-            maxHit *= 10;
         }
 
         maxHit *= 10;

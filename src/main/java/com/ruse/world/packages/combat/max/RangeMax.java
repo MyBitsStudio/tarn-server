@@ -181,8 +181,6 @@ public class RangeMax {
             if (player.getMinutesVotingDMG() > 0) {
                 maxHit *= 2;
             }
-
-            maxHit *= 10;
         }
 
         maxHit *= 10;

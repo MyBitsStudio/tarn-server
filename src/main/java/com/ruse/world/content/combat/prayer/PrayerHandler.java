@@ -538,24 +538,15 @@ public class PrayerHandler {
 		/**
 		 * Donator Rank Bonusses
 		 */
-		if(player.getDonator().isForsakenPlus()){
-			toRemove *= 0.35;
-		} else if(player.getDonator().isClericPlus()){
-			toRemove *= 0.50;
+		if(player.getDonator().isClericPlus()){
+			toRemove *= 0.25;
+		} else if(player.getDonator().isMysticalPlus()){
+			toRemove *= 0.40;
+		} else if(player.getDonator().isTormentedPlus()){
+			toRemove *= 0.65;
+		} else if(player.getDonator().isObsidianPlus()){
+			toRemove *= 0;
 		}
-//		if(player.getAmountDonated() >= Donation.ZENYTE_DONATION_AMOUNT || player.getRights().equals(PlayerRights.YOUTUBER)) {
-//			toRemove *= 0;
-//		} else if(player.getAmountDonated() >= Donation.ONYX_DONATION_AMOUNT) {
-//			toRemove *= 0;
-//		} else if(player.getAmountDonated() >= Donation.DIAMOND_DONATION_AMOUNT) {
-//			toRemove *= 0.0;
-//		} else if(player.getAmountDonated() >= Donation.RUBY_DONATION_AMOUNT) {
-//			toRemove *= 0.50;
-//		} else if(player.getAmountDonated() >= Donation.EMERALD_DONATION_AMOUNT) {
-//			toRemove *= 0.40;
-//		} else if(player.getAmountDonated() >= Donation.SAPPHIRE_DONATION_AMOUNT) {
-//			toRemove *= 0.35;
-//		}
 
 		if (toRemove > 0) {
 			toRemove /= (1 + (0.05 * player.getBonusManager().getOtherBonus()[2]));

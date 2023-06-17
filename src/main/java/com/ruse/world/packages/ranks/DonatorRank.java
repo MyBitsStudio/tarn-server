@@ -49,6 +49,10 @@ public enum DonatorRank {
         return this == MYSTICAL || this == OBSIDIAN || this == FORSAKEN || this == ANGELIC || this == DEMONIC;
     }
 
+public boolean isObsidianPlus(){
+        return this == OBSIDIAN || this == FORSAKEN || this == ANGELIC || this == DEMONIC;
+    }
+
     public boolean isForsakenPlus(){
         return this == FORSAKEN || this == ANGELIC || this == DEMONIC;
     }
