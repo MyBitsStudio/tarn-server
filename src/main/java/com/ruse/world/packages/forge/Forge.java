@@ -121,7 +121,7 @@ public class Forge {
             }
         }
         for(Item item : itemList) {
-            player.getInventory().delete(item.getId(), item.getAmount(), item.getRarity(), item.getBonus(), item.getEffect());
+            player.getInventory().delete(item);
         }
         if(tier != MAX_LEVEL) {
             Optional<Integer> optionalInteger = getValueForNextTier();
