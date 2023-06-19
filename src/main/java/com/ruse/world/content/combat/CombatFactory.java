@@ -431,19 +431,19 @@ public final class CombatFactory {
             }
 
 
-                switch (type) {
-                /*
-                 * case MAGIC: case KORASI: int mageAttk = DesolaceFormulas.getMagicAttack(p1);
-                 * return Misc.getRandom(n.getDefinition().getDefenceMage()) <
-                 * Misc.getRandom((mageAttk / 2)) + Misc.getRandom((int) (mageAttk/2.1));
-                 */
-                case MELEE:
-                    int def = 1 + n.getDefinition().getDefenceMelee();
-                    return Misc.getRandom(def) < Misc.getRandom(5 + DesolaceFormulas.getMeleeAttack(p1) + percentBoost) + (def / 4);
-                case RANGED:
-                    return Misc.getRandom(5 + n.getDefinition().getDefenceRange()) < Misc
-                            .getRandom(5 + DesolaceFormulas.getRangedAttack(p1) + percentBoost);
-            }
+//                switch (type) {
+//                /*
+//                 * case MAGIC: case KORASI: int mageAttk = DesolaceFormulas.getMagicAttack(p1);
+//                 * return Misc.getRandom(n.getDefinition().getDefenceMage()) <
+//                 * Misc.getRandom((mageAttk / 2)) + Misc.getRandom((int) (mageAttk/2.1));
+//                 */
+//                case MELEE:
+//                    int def = 1 + n.getDefinition().getDefenceMelee();
+//                    return Misc.getRandom(def) < Misc.getRandom(5 + DesolaceFormulas.getMeleeAttack(p1) + percentBoost) + (def / 4);
+//                case RANGED:
+//                    return Misc.getRandom(5 + n.getDefinition().getDefenceRange()) < Misc
+//                            .getRandom(5 + DesolaceFormulas.getRangedAttack(p1) + percentBoost);
+//            }
         }
 
         boolean veracEffect = false;

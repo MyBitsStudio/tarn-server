@@ -54,7 +54,6 @@ public class AttendanceManager {
         if(!lastLoggedInDate.getMonth().equals(LocalDate.now(ZoneOffset.UTC).getMonth())) {
             playerAttendanceProgress.clear();
             p.getPSettings().setSetting("donator", false);
-            p.getPSettings().setSetting("summer-unlock", false);
         }
 
         if(!lastLoggedInDate.equals(LocalDate.now(ZoneOffset.UTC))) {

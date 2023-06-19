@@ -48,12 +48,12 @@ public class Forge {
     }
 
     public void addItem(Item item) {
-        if(addedItemMap.entrySet()
-                .stream()
-                .anyMatch(it -> it.getKey().getId() == item.getId())) {
-            player.getPacketSender().sendMessage("@red@You have already added a " + item.getDefinition().getName());
-            return;
-        }
+//        if(addedItemMap.entrySet()
+//                .stream()
+//                .anyMatch(it -> it.getKey().getId() == item.getId())) {
+//            player.getPacketSender().sendMessage("@red@You have already added a " + item.getDefinition().getName());
+//            return;
+//        }
         if(!player.getInventory().contains(item.getId(), item.getEffect(), item.getBonus(), item.getRarity())) {
             player.getPacketSender().sendMessage("@red@You do not have this item.");
             return;
