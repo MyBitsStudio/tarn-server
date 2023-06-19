@@ -81,7 +81,7 @@ public class AOEHandler {
 					long maxhit = maximumDamage;
 					switch (((Player) attacker).getLastCombatType()) {
 						case MELEE:
-							maxhit = MeleeMax.melee(attacker, victim) / 10;
+							maxhit = MeleeMax.newMelee(attacker, victim) / 10;
 							break;
 						case RANGED:
 							maxhit = RangeMax.newRange(attacker, victim) / 10;

@@ -31,7 +31,7 @@ public class MagicMax {
                 System.out.println("Defence " + defence);
                 maxHit -= (defence / 5);
 
-                maxHit /= 10;
+                maxHit /= 100;
                 if(maxHit <= 0){
                     maxHit = 1;
                 }
@@ -64,7 +64,7 @@ public class MagicMax {
 
             double effectiveMagicDamage = magicLevel * prayerMod;
 
-            double baseDamage = 1.3 + effectiveMagicDamage / 10 + magicStrength / 60 + effectiveMagicDamage * magicStrength / 560;
+            double baseDamage = 1.3 + effectiveMagicDamage / 10 + magicStrength / 70 + effectiveMagicDamage * magicStrength / 600;
 
 
             double specialBonus = 1;

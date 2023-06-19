@@ -83,7 +83,7 @@ public class BonusManager {
 		player.getPacketSender().sendString(66106, "Drop Rate Bonus: " + CustomDropUtils.drBonus(player, player.getSlayer().getSlayerTask().getNpcId()));
 		player.getPacketSender().sendString(66107, "Double Drop Bonus: " + CustomDropUtils.getDoubleDropChance(player, player.getSlayer().getSlayerTask().getNpcId()));
 
-		player.getPacketSender().sendString(66108, "Melee Maxhit: " +  formatNumber(MeleeMax.melee(player, player)));
+		player.getPacketSender().sendString(66108, "Melee Maxhit: " +  formatNumber(MeleeMax.newMelee(player, player)));
 		player.getPacketSender().sendString(66109, "Ranged Maxhit: " +  formatNumber(RangeMax.newRange(player, player)));
 		player.getPacketSender().sendString(66110, "Magic Maxhit: " +  formatNumber(MagicMax.newMagic(player, player)));
 

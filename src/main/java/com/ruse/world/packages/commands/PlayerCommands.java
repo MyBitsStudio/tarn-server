@@ -88,9 +88,9 @@ public class PlayerCommands {
                 }
                 return true;
 
-//            case "forge":
-//                //player.getForge().showInterface();
-//                return true;
+            case "forge":
+                player.getForge().showInterface();
+                return true;
 
             case "pickaxe":
                 player.getInventory().add(1265, 1);
@@ -178,7 +178,7 @@ public class PlayerCommands {
                 return true;
 
             case "maxhit":
-                player.getPacketSender().sendMessage("<shad=1>@red@Melee Maxhit: " + (MeleeMax.melee(player, player)));
+                player.getPacketSender().sendMessage("<shad=1>@red@Melee Maxhit: " + (MeleeMax.newMelee(player, player)));
                 player.getPacketSender()
                         .sendMessage("<shad=1>@gre@Ranged Maxhit: " + (RangeMax.newRange(player, player)));
                 player.getPacketSender().sendMessage("<shad=1>@cya@Magic Maxhit: " + (MagicMax.newMagic(player, player)));

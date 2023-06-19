@@ -350,7 +350,7 @@ public final class CombatFactory {
         long maxhit;
         switch (type) {
             case MELEE:
-                maxhit = MeleeMax.melee(entity, victim) / 10;
+                maxhit = MeleeMax.newMelee(entity, victim) / 10;
 //                if (entity.isPlayer() && victim.isNpc()) {
 //                    Player player = (Player) entity;
 //                    if (player.getEquipment().getItems()[Equipment.HEAD_SLOT].getId() == 21025) {

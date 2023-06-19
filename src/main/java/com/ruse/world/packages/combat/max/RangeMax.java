@@ -66,7 +66,7 @@ public class RangeMax {
 
             double effectiveRangeDamage = rangeLevel * prayerMod;
 
-            double baseDamage = 1.3 + effectiveRangeDamage / 10 + rangedStrength / 60 + effectiveRangeDamage * rangedStrength / 560;
+            double baseDamage = 1.3 + effectiveRangeDamage / 10 + rangedStrength / 70 + effectiveRangeDamage * rangedStrength / 600;
 
 
             double specialBonus = 1;
