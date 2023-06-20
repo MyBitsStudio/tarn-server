@@ -119,7 +119,10 @@ public class ForgeShopHandler {
         TIER_THREE(-15982, (Player player) -> switchTier(player, 3)),
         ARMOURY(-15981, (Player player) -> switchShopType(player, ForgeShopType.ARMOURY)),
         WEAPON(-15980, (Player player) -> switchShopType(player, ForgeShopType.WEAPONS)),
-        JEWELRY(-15979, (Player player) -> switchShopType(player, ForgeShopType.JEWELRY));
+        JEWELRY(-15979, (Player player) -> switchShopType(player, ForgeShopType.JEWELRY)),
+        OTHER(-15978, (Player player) -> switchShopType(player, ForgeShopType.OTHERS)),
+
+        ;
 
         private final int buttonId;
         private final ForgeButton forgeButton;

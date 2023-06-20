@@ -38,19 +38,19 @@ public enum DonatorRank {
     }
 
     public boolean isClericPlus(){
-        return this == CLERIC || this == TORMENTED || this == MYSTICAL || this == OBSIDIAN || this == FORSAKEN || this == ANGELIC || this == DEMONIC;
+        return rank >= 2;
     }
 
     public boolean isTormentedPlus(){
-        return this == TORMENTED || this == MYSTICAL || this == OBSIDIAN || this == FORSAKEN || this == ANGELIC || this == DEMONIC;
+        return rank >= 3;
     }
 
     public boolean isMysticalPlus(){
-        return this == MYSTICAL || this == OBSIDIAN || this == FORSAKEN || this == ANGELIC || this == DEMONIC;
+        return rank >= 4;
     }
 
-public boolean isObsidianPlus(){
-        return this == OBSIDIAN || this == FORSAKEN || this == ANGELIC || this == DEMONIC;
+    public boolean isObsidianPlus(){
+        return rank >= 5;
     }
 
     public boolean isForsakenPlus(){

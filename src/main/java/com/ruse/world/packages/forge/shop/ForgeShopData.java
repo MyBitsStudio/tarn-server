@@ -66,6 +66,26 @@ public class ForgeShopData {
                             new ForgeShopItem(4722,1),
                             new ForgeShopItem(4722,1),
                     },
+            },
+            {
+                    {       // tier 1 other
+                            new ForgeShopItem(4718,1),
+                            new ForgeShopItem(4718,1),
+                            new ForgeShopItem(4718,1),
+                            new ForgeShopItem(4718,1),
+                    },
+                    {       // tier 2 other
+                            new ForgeShopItem(4720,1),
+                            new ForgeShopItem(4720,1),
+                            new ForgeShopItem(4720,1),
+                            new ForgeShopItem(4720,1),
+                    },
+                    {       // tier 3 other
+                            new ForgeShopItem(4722,1),
+                            new ForgeShopItem(4722,1),
+                            new ForgeShopItem(4722,1),
+                            new ForgeShopItem(4722,1),
+                    },
             }
     };
 

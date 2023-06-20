@@ -539,11 +539,11 @@ public class PrayerHandler {
 		 * Donator Rank Bonusses
 		 */
 		if(player.getDonator().isClericPlus()){
-			toRemove *= 0.25;
+			toRemove *= 0.65;
 		} else if(player.getDonator().isMysticalPlus()){
 			toRemove *= 0.40;
 		} else if(player.getDonator().isTormentedPlus()){
-			toRemove *= 0.65;
+			toRemove *= 0.25;
 		} else if(player.getDonator().isObsidianPlus()){
 			toRemove *= 0;
 		}
@@ -562,7 +562,7 @@ public class PrayerHandler {
 	 * @return if <code>true</code>, it means player has no prayer on besides
 	 *         <code>exceptionId</code>.
 	 */
-	private final static boolean hasNoPrayerOn(Player player, int exceptionId) {
+	private static boolean hasNoPrayerOn(Player player, int exceptionId) {
 		int prayersOn = 0;
 		for (int i = 0; i < player.getPrayerActive().length; i++) {
 			if (player.getPrayerActive()[i] && i != exceptionId)

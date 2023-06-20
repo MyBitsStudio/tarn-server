@@ -57,7 +57,6 @@ public class BonesOnAltar {
 				
 				if (player.getDonator().isMember()) {
 					player.getSkillManager().addExperience(Skill.PRAYER, (int) (currentBone.getBuryingXP() * 2.5));
-					return;
 				} else
 					player.getSkillManager().addExperience(Skill.PRAYER, currentBone.getBuryingXP() * 2);
 
