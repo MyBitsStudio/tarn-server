@@ -113,7 +113,6 @@ public class PlayerHandler {
             SeasonPassManager.resetSeasonPass(player.getSeasonPass());
         }
 
-        player.getSeasonPass().checkExpAndFix();
         // Weapons and equipment..
         WeaponAnimations.update(player);
         WeaponInterfaces.assign(player, player.getEquipment().get(Equipment.WEAPON_SLOT));
