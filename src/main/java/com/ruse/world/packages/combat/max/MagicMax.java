@@ -28,7 +28,7 @@ public class MagicMax {
 
                 long defence = (long) (player.getBonusManager().getDefenceBonus()[3] / 1_000_000);
 
-                maxHit -= (defence / 5);
+                maxHit -= (defence / 7);
 
                 if(maxHit <= 0){
                     maxHit = 1;

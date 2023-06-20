@@ -29,14 +29,12 @@ public class RangeMax {
 
                 long defence = (long) (player.getBonusManager().getDefenceBonus()[4] / 1_000_000);
 
-                System.out.println("Defence " + defence);
-                maxHit -= (defence / 5);
+                maxHit -= (defence / 7);
 
                 if(maxHit <= 0){
                     maxHit = 1;
                 }
             }
-            System.out.println("NPC Max Hit Range : " + maxHit);
         } else if (entity.isPlayer()) {
             Player player = entity.asPlayer();
 

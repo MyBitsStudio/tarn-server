@@ -568,11 +568,11 @@ public final class CombatFactory {
             if(attacker.isNpc()){
                 NPC npc = attacker.toNpc();
                 if(npc.getCombatBuilder().getStrategy().getCombatType() == RANGED){
-                    equipmentBonus = player.getBonusManager().getDefenceBonus()[BonusManager.DEFENCE_RANGE] / 32_698_000;
+                    equipmentBonus = player.getBonusManager().getDefenceBonus()[BonusManager.DEFENCE_RANGE] / 12_698_000;
                 } else if(npc.getCombatBuilder().getStrategy().getCombatType() == MAGIC){
-                    equipmentBonus = player.getBonusManager().getDefenceBonus()[BonusManager.DEFENCE_MAGIC] / 32_698_000;
+                    equipmentBonus = player.getBonusManager().getDefenceBonus()[BonusManager.DEFENCE_MAGIC] / 12_698_000;
                 } else {
-                    equipmentBonus = player.getBonusManager().getDefenceBonus()[BonusManager.DEFENCE_STAB] / 32_698_000;
+                    equipmentBonus = player.getBonusManager().getDefenceBonus()[BonusManager.DEFENCE_STAB] / 12_698_000;
                 }
 
                 equipmentBonus += player.getSkillManager().getCurrentLevel(Skill.DEFENCE);
@@ -627,7 +627,7 @@ public final class CombatFactory {
             System.out.println("styleBonus def: " + styleBonus);
         }
 
-        System.out.println("equipmentBonus: " + equipmentBonus +" prayerMod: " + prayerMod + " styleBonus: " + styleBonus + " specialBonus: " + specialBonus+" attacker.getBaseAttack(type): " + attacker.getBaseAttack(type));
+        System.out.println("equipmentBonus: " + equipmentBonus +" prayerMod: " + prayerMod + " styleBonus: " + styleBonus + " specialBonus: " + specialBonus+" attacker.getBaseAttack(type): " + attacker.getBaseDefence(type));
 
         double defenceCalc = Math.floor(equipmentBonus + victim.getBaseDefence(type)) + 8;
 
