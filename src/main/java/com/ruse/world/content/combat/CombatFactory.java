@@ -547,11 +547,11 @@ public final class CombatFactory {
             if(attacker.isNpc()){
                 NPC npc = attacker.toNpc();
                 if(npc.getCombatBuilder().getStrategy().getCombatType() == RANGED){
-                    equipmentBonus = player.getBonusManager().getDefenceBonus()[BonusManager.DEFENCE_RANGE] / 1_000_000;
+                    equipmentBonus = player.getBonusManager().getDefenceBonus()[BonusManager.DEFENCE_RANGE] / 10_000_000;
                 } else if(npc.getCombatBuilder().getStrategy().getCombatType() == MAGIC){
-                    equipmentBonus = player.getBonusManager().getDefenceBonus()[BonusManager.DEFENCE_MAGIC] / 1_000_000;
+                    equipmentBonus = player.getBonusManager().getDefenceBonus()[BonusManager.DEFENCE_MAGIC] / 10_000_000;
                 } else {
-                    equipmentBonus = player.getBonusManager().getDefenceBonus()[BonusManager.DEFENCE_STAB] / 1_000_000;
+                    equipmentBonus = player.getBonusManager().getDefenceBonus()[BonusManager.DEFENCE_STAB] / 10_000_000;
                 }
                 equipmentBonus += player.getSkillManager().getCurrentLevel(Skill.DEFENCE);
             } else {
