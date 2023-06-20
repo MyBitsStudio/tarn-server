@@ -35,7 +35,6 @@ public class MagicMax {
                 }
 
             }
-            System.out.println("NPC Max Hit Magic: " + maxHit);
         } else if(entity.isPlayer()){
             Player player = entity.asPlayer();
 

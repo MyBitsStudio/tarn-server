@@ -460,7 +460,11 @@ public final class CombatFactory {
                     ? player.getBonusManager().getAttackBonus()[BonusManager.ATTACK_MAGIC]
                     : player.getBonusManager().getAttackBonus()[player.getFightType().getBonusType()];
 
+            System.out.println("equipmentBonus: " + equipmentBonus);
+
             equipmentBonus /= 1_000_000;
+
+            System.out.println("equipmentBonus 2: " + equipmentBonus);
 
             if (type == CombatType.MELEE) {
                 if (PrayerHandler.isActivated(player, PrayerHandler.CLARITY_OF_THOUGHT)) {
@@ -517,26 +521,43 @@ public final class CombatFactory {
                 }
             }
 
+            System.out.println("prayerMod: " + prayerMod);
+
             if (player.getFightType().getStyle() == FightStyle.ACCURATE) {
                 styleBonus = 3;
             } else if (player.getFightType().getStyle() == FightStyle.CONTROLLED) {
                 styleBonus = 1;
             }
 
+            System.out.println("styleBonus: " + styleBonus);
+
             if (player.isSpecialActivated()) {
                 specialBonus = player.getCombatSpecial().getAccuracyBonus();
             }
+
+            System.out.println("specialBonus: " + specialBonus);
         }
+
+        System.out.println("equipmentBonus: " + equipmentBonus +" prayerMod: " + prayerMod + " styleBonus: " + styleBonus + " specialBonus: " + specialBonus+" attacker.getBaseAttack(type): " + attacker.getBaseAttack(type));
 
         double attackCalc = Math.floor(equipmentBonus + attacker.getBaseAttack(type)) + 8;
 
+        System.out.println("attackCalc: " + attackCalc);
+
         attackCalc *= prayerMod;
+
+        System.out.println("attackCalc 2: " + attackCalc);
         attackCalc += styleBonus;
+
+        System.out.println("attackCalc 3: " + attackCalc);
 
         if (equipmentBonus < -67) {
             attackCalc = Misc.exclusiveRandom(8) == 0 ? attackCalc : 0;
         }
+
         attackCalc *= specialBonus;
+
+        System.out.println("attackCalc 4: " + attackCalc);
 
         equipmentBonus = 1;
         prayerMod = 1;
@@ -553,10 +574,12 @@ public final class CombatFactory {
                 } else {
                     equipmentBonus = player.getBonusManager().getDefenceBonus()[BonusManager.DEFENCE_STAB] / 32_698_000;
                 }
+
                 equipmentBonus += player.getSkillManager().getCurrentLevel(Skill.DEFENCE);
             } else {
                 equipmentBonus = player.getSkillManager().getCurrentLevel(Skill.DEFENCE);
             }
+            System.out.println("equipmentBonus def: " + equipmentBonus);
 //            if (bonusType == -1) {
 //                equipmentBonus = type == MAGIC
 //                        ? player.getBonusManager().getDefenceBonus()[BonusManager.DEFENCE_MAGIC]
@@ -593,23 +616,35 @@ public final class CombatFactory {
                 prayerMod = 1.15 + (player.getLeechedBonuses()[1] * 0.01);
             }
 
+            System.out.println("prayerMod def: " + prayerMod);
+
             if (player.getFightType().getStyle() == FightStyle.DEFENSIVE) {
                 styleBonus = 3;
             } else if (player.getFightType().getStyle() == FightStyle.CONTROLLED) {
                 styleBonus = 1;
             }
+
+            System.out.println("styleBonus def: " + styleBonus);
         }
 
+        System.out.println("equipmentBonus: " + equipmentBonus +" prayerMod: " + prayerMod + " styleBonus: " + styleBonus + " specialBonus: " + specialBonus+" attacker.getBaseAttack(type): " + attacker.getBaseAttack(type));
+
         double defenceCalc = Math.floor(equipmentBonus + victim.getBaseDefence(type)) + 8;
+
+        System.out.println("defenceCalc: " + defenceCalc);
         defenceCalc *= prayerMod;
+        System.out.println("defenceCalc 2: " + defenceCalc);
         defenceCalc += styleBonus;
+        System.out.println("defenceCalc 3: " + defenceCalc);
 
         if (equipmentBonus < -67) {
             defenceCalc = Misc.exclusiveRandom(8) == 0 ? defenceCalc : 0;
         }
         double A = Math.floor(attackCalc);
         double D = Math.floor(defenceCalc);
+        System.out.println("A: " + A + " D: " + D);
         double hitSucceed = A < D ? (A - 1.0) / (2.0 * D) : 1.0 - (D + 1.0) / (2.0 * A);
+        System.out.println("hitSucceed: " + hitSucceed);
         hitSucceed = hitSucceed >= 1.0 ? 0.99 : hitSucceed <= 0.0 ? 0.01 : hitSucceed;
         return hitSucceed >= Misc.RANDOM.nextDouble();
     }
