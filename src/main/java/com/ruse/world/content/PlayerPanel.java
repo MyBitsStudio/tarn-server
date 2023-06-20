@@ -55,6 +55,8 @@ public class PlayerPanel {
                 "@whi@Donator: @yel@" + Misc.formatText(player.getDonator().toString().toLowerCase()),
                 "@whi@VIP: @yel@" + Misc.formatText(player.getVip().toString().toLowerCase()),
 
+                "@whi@Others: @yel@",
+
                 "@whi@Droprate bonus: @yel@" + CustomDropUtils.drBonus(player, player.getSlayer().getSlayerTask().getNpcId()) + "%",
                 "@whi@Double drop bonus: @yel@" + CustomDropUtils.getDoubleDropChance(player, player.getSlayer().getSlayerTask().getNpcId()) + "%",
                 "@whi@Points & Statistics",

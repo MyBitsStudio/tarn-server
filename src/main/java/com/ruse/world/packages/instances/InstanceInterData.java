@@ -20,7 +20,7 @@ public enum InstanceInterData {
             InstanceType.MULTI),
 
     INFERNO("Inferno", "200 Dr.Aberrant",
-                        new Item(10835, 10000), 16, 100, 202,
+            new Item(10835, 10000), 16, 100, 202,
     InstanceType.MULTI),
 
     NAGENDRA("Nagendra", "200 Inferno",
