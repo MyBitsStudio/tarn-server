@@ -417,44 +417,35 @@ public final class CombatFactory {
                     return Misc.getRandom(10 + DesolaceFormulas.getRangedDefence(p2)) < Misc
                             .getRandom(15 + DesolaceFormulas.getRangedAttack(p1));
             }
-        } else if (attacker.isPlayer() && victim.isNpc() && type != MAGIC) {
-            Player p1 = (Player) attacker;
-            NPC n = (NPC) victim;
-            int percentBoost = 0;
-            if(!p1.isInsideRaids()) {
-                if (n.getId() == p1.getSlayer().getSlayerTask().getNpcId()) {
-                    if (p1.getSummoning() != null && p1.getSummoning().getFamiliar() != null
-                            && p1.getSummoning().getFamiliar().getSummonNpc().getId() == BossPets.BossPet.RED_FENRIR_PET.npcId) {
-                        percentBoost += 20;
-                    }
-                }
-            }
-
-
-//                switch (type) {
-//                /*
-//                 * case MAGIC: case KORASI: int mageAttk = DesolaceFormulas.getMagicAttack(p1);
-//                 * return Misc.getRandom(n.getDefinition().getDefenceMage()) <
-//                 * Misc.getRandom((mageAttk / 2)) + Misc.getRandom((int) (mageAttk/2.1));
-//                 */
-//                case MELEE:
-//                    int def = 1 + n.getDefinition().getDefenceMelee();
-//                    return Misc.getRandom(def) < Misc.getRandom(5 + DesolaceFormulas.getMeleeAttack(p1) + percentBoost) + (def / 4);
-//                case RANGED:
-//                    return Misc.getRandom(5 + n.getDefinition().getDefenceRange()) < Misc
-//                            .getRandom(5 + DesolaceFormulas.getRangedAttack(p1) + percentBoost);
+        }
+//        else if (attacker.isPlayer() && victim.isNpc() && type != MAGIC) {
+//            Player p1 = (Player) attacker;
+//            NPC n = (NPC) victim;
+//            int percentBoost = 0;
+//            if(!p1.isInsideRaids()) {
+//                if (n.getId() == p1.getSlayer().getSlayerTask().getNpcId()) {
+//                    if (p1.getSummoning() != null && p1.getSummoning().getFamiliar() != null
+//                            && p1.getSummoning().getFamiliar().getSummonNpc().getId() == BossPets.BossPet.RED_FENRIR_PET.npcId) {
+//                        percentBoost += 20;
+//                    }
+//                }
 //            }
-        }
-
-        boolean veracEffect = false;
-
-        if (type == CombatType.MELEE) {
-            if (CombatFactory.fullVeracs(attacker)) {
-                if (Misc.RANDOM.nextInt(8) == 3) {
-                    veracEffect = true;
-                }
-            }
-        }
+//
+//
+////                switch (type) {
+////                /*
+////                 * case MAGIC: case KORASI: int mageAttk = DesolaceFormulas.getMagicAttack(p1);
+////                 * return Misc.getRandom(n.getDefinition().getDefenceMage()) <
+////                 * Misc.getRandom((mageAttk / 2)) + Misc.getRandom((int) (mageAttk/2.1));
+////                 */
+////                case MELEE:
+////                    int def = 1 + n.getDefinition().getDefenceMelee();
+////                    return Misc.getRandom(def) < Misc.getRandom(5 + DesolaceFormulas.getMeleeAttack(p1) + percentBoost) + (def / 4);
+////                case RANGED:
+////                    return Misc.getRandom(5 + n.getDefinition().getDefenceRange()) < Misc
+////                            .getRandom(5 + DesolaceFormulas.getRangedAttack(p1) + percentBoost);
+////            }
+//        }
 
         if (type == CombatType.DRAGON_FIRE)
             type = MAGIC;
@@ -462,14 +453,14 @@ public final class CombatFactory {
         double equipmentBonus = 1;
         double specialBonus = 1;
         int styleBonus = 0;
-        int bonusType = -1;
         if (attacker.isPlayer()) {
             Player player = (Player) attacker;
 
             equipmentBonus = type == MAGIC
                     ? player.getBonusManager().getAttackBonus()[BonusManager.ATTACK_MAGIC]
                     : player.getBonusManager().getAttackBonus()[player.getFightType().getBonusType()];
-            bonusType = player.getFightType().getCorrespondingBonus();
+
+            equipmentBonus /= 1_000_000;
 
             if (type == CombatType.MELEE) {
                 if (PrayerHandler.isActivated(player, PrayerHandler.CLARITY_OF_THOUGHT)) {
@@ -489,9 +480,9 @@ public final class CombatFactory {
                 } else if (PrayerHandler.isActivated(player, PrayerHandler.HUNTERS_EYE)) {
                     prayerMod = 1.20;
                 } else if (CurseHandler.isActivated(player, CurseHandler.LEECH_ATTACK)) {
-                    prayerMod = 1.05 + +(player.getLeechedBonuses()[0] * 0.01);
+                    prayerMod = 1.05 + (player.getLeechedBonuses()[0] * 0.01);
                 } else if (CurseHandler.isActivated(player, CurseHandler.TURMOIL)) {
-                    prayerMod = 1.15 + +(player.getLeechedBonuses()[2] * 0.01);
+                    prayerMod = 1.15 + (player.getLeechedBonuses()[2] * 0.01);
                 }
 
             } else if (type == CombatType.RANGED) {
@@ -506,7 +497,7 @@ public final class CombatFactory {
                 } else if (PrayerHandler.isActivated(player, PrayerHandler.HUNTERS_EYE)) {
                     prayerMod = 1.22;
                 } else if (CurseHandler.isActivated(player, CurseHandler.LEECH_RANGED)) {
-                    prayerMod = 1.05 + +(player.getLeechedBonuses()[4] * 0.01);
+                    prayerMod = 1.05 + (player.getLeechedBonuses()[4] * 0.01);
                 }
             } else if (type == MAGIC) {
                 if (PrayerHandler.isActivated(player, PrayerHandler.MYSTIC_WILL)) {
@@ -522,7 +513,7 @@ public final class CombatFactory {
                 } else if (PrayerHandler.isActivated(player, PrayerHandler.AUGURY)) {
                     prayerMod = 1.22;
                 } else if (CurseHandler.isActivated(player, CurseHandler.LEECH_MAGIC)) {
-                    prayerMod = 1.05 + +(player.getLeechedBonuses()[6] * 0.01);
+                    prayerMod = 1.05 + (player.getLeechedBonuses()[6] * 0.01);
                 }
             }
 
@@ -556,11 +547,11 @@ public final class CombatFactory {
             if(attacker.isNpc()){
                 NPC npc = attacker.toNpc();
                 if(npc.getCombatBuilder().getStrategy().getCombatType() == RANGED){
-                    equipmentBonus = player.getBonusManager().getDefenceBonus()[BonusManager.DEFENCE_RANGE] / 5_000;
+                    equipmentBonus = player.getBonusManager().getDefenceBonus()[BonusManager.DEFENCE_RANGE] / 1_000_000;
                 } else if(npc.getCombatBuilder().getStrategy().getCombatType() == MAGIC){
-                    equipmentBonus = player.getBonusManager().getDefenceBonus()[BonusManager.DEFENCE_MAGIC] / 5_000;
+                    equipmentBonus = player.getBonusManager().getDefenceBonus()[BonusManager.DEFENCE_MAGIC] / 1_000_000;
                 } else {
-                    equipmentBonus = player.getBonusManager().getDefenceBonus()[BonusManager.DEFENCE_STAB] / 5_000;
+                    equipmentBonus = player.getBonusManager().getDefenceBonus()[BonusManager.DEFENCE_STAB] / 1_000_000;
                 }
                 equipmentBonus += player.getSkillManager().getCurrentLevel(Skill.DEFENCE);
             } else {
@@ -615,9 +606,6 @@ public final class CombatFactory {
 
         if (equipmentBonus < -67) {
             defenceCalc = Misc.exclusiveRandom(8) == 0 ? defenceCalc : 0;
-        }
-        if (veracEffect) {
-            defenceCalc = 0;
         }
         double A = Math.floor(attackCalc);
         double D = Math.floor(defenceCalc);

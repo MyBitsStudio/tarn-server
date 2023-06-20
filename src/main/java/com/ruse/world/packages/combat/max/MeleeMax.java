@@ -233,7 +233,7 @@ public class MeleeMax {
 
             // Use our multipliers to adjust the maxhit...
 
-            double base = 1.3 + effective / 10 + strengthBonus / 70 + effective * strengthBonus / 600;
+            double base = 1.3 + effective / 10 + strengthBonus / 70 + effective * strengthBonus / 630;
 
             if (player.isSpecialActivated() && player.getCombatSpecial().getCombatType() == CombatType.MELEE) {
                 specialBonus = player.getCombatSpecial().getStrengthBonus();
@@ -345,9 +345,9 @@ public class MeleeMax {
                 maxHit *= 2;
             }
 
+            maxHit *= 10;
         }
 
-        maxHit *= 10;
 
         if (victim != null && victim.isNpc() && (entity.isPlayer() && !entity.asPlayer().getRank().isDeveloper())) {
             maxHit = (long) NpcMaxHitLimit.limit((NPC) victim, maxHit, entity.asPlayer());

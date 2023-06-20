@@ -64,7 +64,7 @@ public class MagicMax {
 
             double effectiveMagicDamage = magicLevel * prayerMod;
 
-            double baseDamage = 1.3 + effectiveMagicDamage / 10 + magicStrength / 70 + effectiveMagicDamage * magicStrength / 600;
+            double baseDamage = 1.3 + effectiveMagicDamage / 10 + magicStrength / 70 + effectiveMagicDamage * magicStrength / 630;
 
 
             double specialBonus = 1;
@@ -184,9 +184,8 @@ public class MagicMax {
                 maxHit *= 2;
             }
 
+            maxHit *= 10;
         }
-
-        maxHit *= 10;
 
         if (victim != null && victim.isNpc() && (entity.isPlayer() && !entity.asPlayer().getRank().isDeveloper())) {
             maxHit = (long) NpcMaxHitLimit.limit((NPC) victim, maxHit, entity.asPlayer());

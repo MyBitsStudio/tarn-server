@@ -26,23 +26,23 @@ public class CustomObjects {
     private static final int[] HOME_OBJECTS = {4764, 4772};
 
     public static void init() {
-        for (int i = 0; i < CUSTOM_OBJECTS_SPAWNS.length; i++) {
-            int id = CUSTOM_OBJECTS_SPAWNS[i][0];
-            int x = CUSTOM_OBJECTS_SPAWNS[i][1];
-            int y = CUSTOM_OBJECTS_SPAWNS[i][2];
-            int z = CUSTOM_OBJECTS_SPAWNS[i][3];
-            int face = CUSTOM_OBJECTS_SPAWNS[i][4];
+        for (int[] customObjectsSpawn : CUSTOM_OBJECTS_SPAWNS) {
+            int id = customObjectsSpawn[0];
+            int x = customObjectsSpawn[1];
+            int y = customObjectsSpawn[2];
+            int z = customObjectsSpawn[3];
+            int face = customObjectsSpawn[4];
             GameObject object = new GameObject(id, new Position(x, y, z));
             object.setFace(face);
             CUSTOM_OBJECTS.add(object);
             World.register(object);
         }
-        for (int i = 0; i < CLIENT_OBJECTS.length; i++) {
-            int id = CLIENT_OBJECTS[i][0];
-            int x = CLIENT_OBJECTS[i][1];
-            int y = CLIENT_OBJECTS[i][2];
-            int z = CLIENT_OBJECTS[i][3];
-            int face = CLIENT_OBJECTS[i][4];
+        for (int[] clientObject : CLIENT_OBJECTS) {
+            int id = clientObject[0];
+            int x = clientObject[1];
+            int y = clientObject[2];
+            int z = clientObject[3];
+            int face = clientObject[4];
             GameObject object = new GameObject(id, new Position(x, y, z));
             object.setFace(face);
             RegionClipping.addObject(object);

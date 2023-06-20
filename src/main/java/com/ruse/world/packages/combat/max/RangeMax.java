@@ -66,7 +66,7 @@ public class RangeMax {
 
             double effectiveRangeDamage = rangeLevel * prayerMod;
 
-            double baseDamage = 1.3 + effectiveRangeDamage / 10 + rangedStrength / 70 + effectiveRangeDamage * rangedStrength / 600;
+            double baseDamage = 1.3 + effectiveRangeDamage / 10 + rangedStrength / 70 + effectiveRangeDamage * rangedStrength / 630;
 
 
             double specialBonus = 1;
@@ -184,9 +184,9 @@ public class RangeMax {
             if (player.getMinutesVotingDMG() > 0) {
                 maxHit *= 2;
             }
+            maxHit *= 10;
         }
 
-        maxHit *= 10;
 
         if (victim != null && victim.isNpc() && (entity.isPlayer() && !entity.asPlayer().getRank().isDeveloper())) {
             maxHit = (long) NpcMaxHitLimit.limit((NPC) victim, maxHit, entity.asPlayer());
