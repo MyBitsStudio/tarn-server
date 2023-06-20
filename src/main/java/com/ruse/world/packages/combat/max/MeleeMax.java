@@ -218,7 +218,6 @@ public class MeleeMax {
                 System.out.println("Defence " + defence);
                 maxHit -= (defence / 5);
 
-                maxHit /= 10;
                 if (maxHit <= 0) {
                     maxHit = 1;
                 }
