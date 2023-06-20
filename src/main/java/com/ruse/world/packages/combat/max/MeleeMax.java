@@ -213,16 +213,14 @@ public class MeleeMax {
             if (victim.isPlayer()) {
                 Player player = victim.asPlayer();
 
-                long defence = (long) (player.getBonusManager().getDefenceBonus()[0] / 5_000_000);
+                long defence = (long) (player.getBonusManager().getDefenceBonus()[0] / 1_000_000);
 
-                System.out.println("Defence " + defence);
                 maxHit -= (defence / 5);
 
                 if (maxHit <= 0) {
                     maxHit = 1;
                 }
             }
-            System.out.println("NPC Max Hit Melee: " + maxHit);
         } else if(entity.isPlayer()) {
             Player player = entity.asPlayer();
 

@@ -26,7 +26,7 @@ public class MagicMax {
             if(victim.isPlayer()){
                 Player player = victim.asPlayer();
 
-                long defence = (long) (player.getBonusManager().getDefenceBonus()[3] / 5_000_000);
+                long defence = (long) (player.getBonusManager().getDefenceBonus()[3] / 1_000_000);
 
                 maxHit -= (defence / 5);
 
