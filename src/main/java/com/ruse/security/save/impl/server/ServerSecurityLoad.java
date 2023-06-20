@@ -59,6 +59,13 @@ public class ServerSecurityLoad extends SecureLoad {
                 new com.google.gson.reflect.TypeToken<String[]>() {
                 }.getType());
         sec.setBlackList(blacklist);
+
+        String[] whitelist = builder.fromJson(object.get("whitelist"),
+                new com.google.gson.reflect.TypeToken<String[]>() {
+                }.getType());
+        sec.setWhiteList(whitelist);
+
+
         return this;
     }
 }

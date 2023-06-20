@@ -345,7 +345,8 @@ public class NPCDrops {
             if (ItemEffect.hasDoubleCash(player) && item.getId() == 995) {
                 item.setAmount(item.getAmount() * 2);
             }
-            if (player.getEquipment().get(Equipment.ENCHANTMENT_SLOT).getId() == 17391 && item.getId() == 995) {
+            if ((player.getEquipment().get(Equipment.ENCHANTMENT_SLOT).getId() == 17391 || player.getEquipment().get(Equipment.ENCHANTMENT_SLOT).getId() == 24011)
+                    && (item.getId() == 995 || item.getId() == 10835)) {
                 item.setAmount(item.getAmount() * 2);
             }
 

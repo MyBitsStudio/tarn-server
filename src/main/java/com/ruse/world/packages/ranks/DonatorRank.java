@@ -12,8 +12,8 @@ public enum DonatorRank {
     MYSTICAL(4, "@whi@<shad=0>", 1.75, 15, 10, 0, 836, 5, new int[]{9, 13}),
     OBSIDIAN(5, "@bla@<shad=0>", 2, 20, 12, 0, 830, 7.5, new int[]{11, 15}),
     FORSAKEN(6, "@bla@<shad=0>", 2.25, 30, 15, 0, 1508, 10, new int[]{13, 17}),
-    ANGELIC(7, "@bla@<shad=0>", 2.5, 40, 20, 0, 0, 12.5, new int[]{16, 20}),
-    DEMONIC(8, "@bla@<shad=0>", 3, 50, 25, 0, 0, 15,new int[]{20, 30})
+    ANGELIC(7, "@bla@<shad=0>", 2.5, 40, 20, 0, 1508, 12.5, new int[]{16, 20}),
+    DEMONIC(8, "@bla@<shad=0>", 3, 50, 25, 0, 1508, 15,new int[]{20, 30})
 
     ;
 

@@ -24,8 +24,6 @@ import static com.ruse.security.tools.SecurityUtils.*;
 import static com.ruse.world.entity.impl.player.PlayerFlags.FORCE_KICK;
 
 public class ServerSecurity {
-
-    public static String[] WHITELIST = {};
     private static ServerSecurity instance = new ServerSecurity();
 
     public static ServerSecurity getInstance() {
@@ -39,13 +37,19 @@ public class ServerSecurity {
         loadAll();
     }
 
-    private String[] BLACKLIST;
+    private String[] BLACKLIST, WHITELIST;
 
     public String[] getBlackList(){
         return this.BLACKLIST;
     }
 
     public void setBlackList(String[] black){ this.BLACKLIST = black;}
+
+    public String[] getWhiteList(){
+        return this.WHITELIST;
+    }
+
+    public void setWhiteList(String[] black){ this.WHITELIST = black;}
     /**
      * Security Map contains values for each block
      * Time (Long value (System.currentTimeMillis() + time))
@@ -342,6 +346,7 @@ public class ServerSecurity {
         if(isHWIDBanned(player.getPSecurity().getHwid())){
             return ACCOUNT_BANNED;
         }
+
         int code = checkSecurity(player);
         return code == 0 ? LOGIN_SUCCESSFUL : code;
     }
@@ -395,7 +400,7 @@ public class ServerSecurity {
 
     private int checkSecurity(@NotNull Player player){
         if(player.getPSecurity().getIp().equals("127.0.0.1") || player.getPSecurity().getIp().equals("localhost")
-                || whiteList(player.getPSecurity().getIp())){
+                || whiteList(player.getUsername().toLowerCase())){
             return 0;
         }
         if(isBlackList(player.getPSecurity().getIp())){

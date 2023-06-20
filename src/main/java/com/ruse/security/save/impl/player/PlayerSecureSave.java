@@ -355,6 +355,12 @@ public class PlayerSecureSave extends SecureSave {
 
         object.addProperty("lastloggedinday", player.getAttendenceManager().getLastLoggedInDate().toString());
         object.add("attendanceprogress", builder.toJsonTree(player.getAttendenceManager().getPlayerAttendanceProgress()));
+
+        object.addProperty("vipEXP", player.getPlayerVIP().getExp());
+        object.addProperty("cTicket", player.getPlayerVIP().getClaimedTicket());
+        object.addProperty("vipRPack", player.getPlayerVIP().getClaimedPack());
+        object.addProperty("vipTotal", player.getPlayerVIP().getTotal());
+        object.addProperty("packXP", player.getPlayerVIP().getPackXp());
         return this;
     }
 

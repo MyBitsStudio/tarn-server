@@ -1,12 +1,17 @@
 package com.ruse.world.packages.vip;
 
+import com.ruse.model.Item;
 import com.ruse.world.entity.impl.player.Player;
 import com.ruse.world.packages.ranks.VIPRank;
 import lombok.Getter;
+import lombok.Setter;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.Calendar;
+import java.util.Objects;
 
 @Getter
+@Setter
 public class VIP {
 
     private final Player player;
@@ -20,7 +25,7 @@ public class VIP {
         exp += amount;
         packXp += amount;
         total += amount;
-        player.getPacketSender().sendMessage("You have gained " + amount + " VIP experience. Currently at : "+ exp);
+        player.getPacketSender().sendMessage("@yel@[VIP] You have gained " + amount + " VIP experience. Currently at : "+ exp);
         claimPack();
         reCalculate();
     }
@@ -28,8 +33,12 @@ public class VIP {
     private void reCalculate(){
         int level = calculateLevel();
         if(level != player.getVip().getRank()){
-            player.getPacketSender().sendMessage("You have reached VIP level " + level + "!");
+            player.sendMessage("@yel@[VIP] You have reached VIP level " + level + "!");
             player.setVip(VIPRank.forRank(level));
+            if(rewardForLevel(level) != null) {
+                player.getInventory().addDropIfFull(Objects.requireNonNull(rewardForLevel(level)).getId(), Objects.requireNonNull(rewardForLevel(level)).getAmount());
+
+            }
         }
     }
 
@@ -82,6 +91,22 @@ public class VIP {
         if(exp < 5000)
             return 9;
         return 10;
+    }
+
+    public static @Nullable Item rewardForLevel(int level){
+        switch (level){
+            case 1: return new Item(20501, 2);
+            case 2: return new Item(23225, 3);
+            case 3: return new Item(23204, 20);
+            case 4: return new Item(23203, 20);
+            case 5: return new Item(15328, 1);
+            case 6: return new Item(23252, 1);
+            case 7: return new Item(15330, 1);
+            case 8: return new Item(23253, 1);
+            case 9: return new Item(23002, 2);
+            case 10: return new Item(20507, 1);
+        }
+        return null;
     }
 
     public int calculatePack() {

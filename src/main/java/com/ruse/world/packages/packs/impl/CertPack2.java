@@ -1,24 +1,24 @@
 package com.ruse.world.packages.packs.impl;
 
-import com.ruse.util.Misc;
 import com.ruse.world.entity.impl.player.Player;
 import com.ruse.world.packages.packs.Pack;
 
-public class OwnersUltimateChest extends Pack {
+public class CertPack2 extends Pack {
 
     @Override
     public void open(Player player) {
-        player.getInventory().add(23002, 4);
-        player.getInventory().add(20506, 2);
+        player.getInventory().add(22223, 1);
+        player.getInventory().add(22214, 1);
+        player.getInventory().add(22218, 1);
     }
 
     @Override
     public int getPackId() {
-        return 20507;
+        return 23253;
     }
 
     @Override
     public int openSpaces() {
-        return 4;
+        return 3;
     }
 }

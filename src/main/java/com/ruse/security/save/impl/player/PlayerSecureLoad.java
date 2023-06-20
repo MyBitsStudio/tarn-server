@@ -1194,6 +1194,26 @@ public class PlayerSecureLoad extends SecureLoad {
             player.getAttendenceManager().getPlayerAttendanceProgress().putAll(temp);
         }
 
+        if(object.has("vipEXP")) {
+            player.getPlayerVIP().setExp(object.get("vipEXP").getAsInt());
+        }
+
+        if(object.has("cTicket")) {
+            player.getPlayerVIP().setClaimedTicket(object.get("cTicket").getAsInt());
+        }
+
+        if(object.has("vipRPack")) {
+            player.getPlayerVIP().setClaimedPack(object.get("vipRPack").getAsInt());
+        }
+
+        if(object.has("vipTotal")) {
+            player.getPlayerVIP().setTotal(object.get("vipTotal").getAsInt());
+        }
+
+        if(object.has("packXP")) {
+            player.getPlayerVIP().setPackXp(object.get("packXP").getAsInt());
+        }
+
         return this;
     }
 

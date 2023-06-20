@@ -2181,7 +2181,7 @@ public final class CombatFactory {
                     }
                 });
             }
-                if (CurseHandler.isActivated(p, CurseHandler.SOUL_SPLIT) && damage > 0 || p.getEquipment().getItems()[Equipment.ENCHANTMENT_SLOT].getId() == 1857 && damage > 0) {
+                if (CurseHandler.isActivated(p, CurseHandler.SOUL_SPLIT) && damage > 0 || (p.getEquipment().getItems()[Equipment.ENCHANTMENT_SLOT].getId() == 1857 || p.getEquipment().getItems()[Equipment.ENCHANTMENT_SLOT].getId() == 24011) && damage > 0) {
                 final int form = (int) (damage / 4);
                 new Projectile(attacker, target, 2263, 44, 3, 43, 31, 0).sendProjectile();
                 TaskManager.submit(new Task(1, p, false) {

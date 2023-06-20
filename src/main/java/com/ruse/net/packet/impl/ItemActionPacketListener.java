@@ -216,6 +216,12 @@ public class ItemActionPacketListener implements PacketListener {
             case 20500:
                 new CounterPack().openPack(player);
                 break;
+            case 23252:
+                new CertPack1().openPack(player);
+                break;
+            case 23253:
+                new CertPack2().openPack(player);
+                break;
 
             case 20501:
                 new EventPack().openPack(player);

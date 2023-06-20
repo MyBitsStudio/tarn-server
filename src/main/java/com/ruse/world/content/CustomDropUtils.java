@@ -84,7 +84,7 @@ public class CustomDropUtils {
         if (player.getEquipment().contains(17391)) {
             percentBoost += 10;
         }
-        if (player.getEquipment().contains(1857)) {
+        if (player.getEquipment().contains(1857) || player.getEquipment().contains(24011)) {
             percentBoost += 20;
         }
 
