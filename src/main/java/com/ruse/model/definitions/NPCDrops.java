@@ -508,21 +508,14 @@ public class NPCDrops {
                 }
             }
             if (!player.isMini()) {
-                if ((player.getEquipment().getItems()[Equipment.AMULET_SLOT].getId() == 19888
-                        || player.getEquipment().getItems()[Equipment.AMULET_SLOT].getId() == 19886
-                        || player.getEquipment().getItems()[Equipment.AMULET_SLOT].getId() == 4489
-                        || player.getEquipment().getItems()[Equipment.RING_SLOT].getId() == 4446
-                        || player.getEquipment().getItems()[Equipment.RING_SLOT].getId() == 18823
-                        || player.getEquipment().getItems()[Equipment.RING_SLOT].getId() == 18818
-                        || player.getEquipment().getItems()[Equipment.AURA_SLOT].getId() == 15450
-                        || player.getEquipment().getItems()[Equipment.AMULET_SLOT].getId() == 18888
-                        || player.getEquipment().getItems()[Equipment.AMULET_SLOT].getId() == 15834
-                        || player.getEquipment().getItems()[Equipment.AMULET_SLOT].getId() == 11195
-                        || player.getEquipment().getItems()[Equipment.AMULET_SLOT].getId() == 13555)
-                        || (player.getSummoning() != null && player.getSummoning().getFamiliar() != null
-                        && (!player.isInsideRaids() &&
-                        (player.getSummoning().getFamiliar().getSummonNpc().getId() == BossPets.BossPet.HEIMDALL_PET.npcId)
-                        || player.getSummoning().getFamiliar().getSummonNpc().getId() == BossPets.BossPet.ODIN_PET.npcId))) {
+                boolean collector = false;
+                for(int i : collectors){
+                    if(player.getEquipment().contains(i)){
+                        collector = true;
+                        break;
+                    }
+                }
+                if(collector){
                     if (player.getGameMode() == GameMode.ULTIMATE_IRONMAN) {
                         player.performGraphic(new Graphic(385));
                         player.getInventory().add(new Item(item.getId(), item.getAmount()));
@@ -557,6 +550,11 @@ public class NPCDrops {
         potentialDrops.clear();
 
     }
+
+    public static int[] collectors = new int[]{
+            19888, 19886, 4489, 4446, 18823, 18818, 15450, 18888, 15834, 11195, 13555, 23365, 23366, 23367, 23368, 23369,
+            23370, 23371, 23372, 23373, 23374
+    };
 
     public NpcDropItem[] getDropList() {
         return drops;

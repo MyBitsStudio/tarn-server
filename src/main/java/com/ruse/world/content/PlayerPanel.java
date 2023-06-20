@@ -35,29 +35,6 @@ public class PlayerPanel {
                                 "N/A"),
                 (WellOfGoodwill.isActive() ? "@whi@Well of Goodwill: @yel@On" : "@whi@Well of Goodwill: @yel@Off"),
                 "@whi@Bonus Xp: @yel@" + (Misc.format(player.getMinutesBonusExp()) == null ? "0" : Misc.format(player.getMinutesBonusExp())) + " minutes left",
-//                "@whi@Global",
-//                (VoteBossDrop.currentSpawn == null
-//                        ? "@whi@Vote Boss: @yel@" + doMotivote.getVoteCount() + "/50"
-//                        : "@whi@Vote Boss: @yel@::Vboss"),
-//                (DonationManager.getInstance().getBoss() == null
-//                ? "@whi@Donation Boss: @yel@" + DonationManager.getInstance().getTotalDonated() + "/" + DonationManager.getTotalNeeded()
-//                        : "@whi@Donation Boss: @yel@::Donboss"),
-//                "@whi@Final Boss Veigar: @yel@" + GlobalBossManager.getInstance().timeLeft("veigar"),
-//                "@whi@Nine Tails Jinchuriki: @yel@" + GlobalBossManager.getInstance().timeLeft("ninetails"),
-//                "@whi@Meruem The King: @yel@" + GlobalBossManager.getInstance().timeLeft("meruem"),
-//                "@whi@Golden Great Ape: @yel@" + GlobalBossManager.getInstance().timeLeft("golden"),
-//                /* (WorldBosses.currentBoss == null
-//                         ? "Global bosses: @whi@" + WorldBosses.timeLeft()
-//                         : "Global bosses: @whi@::global"),*/
-//                //"Next Prime Respawn:",
-//                //"@whi@" + (!SkeletalHorror.wyrmAlive ? SkeletalHorror.getTimeLeft() : "Currently Alive @::prime"),
-//                //
-//                "@whi@Useful links",
-//                "@yel@Open @yel@Homepage",
-//                "@yel@Open @yel@Forums",
-//                "@yel@Open @yel@Vote",
-//                "@yel@Open @yel@Store",
-//                "@yel@Open @yel@Discord",
         };
 
         for (int i = 0; i < Messages.length; i++) {
@@ -74,27 +51,24 @@ public class PlayerPanel {
                 "@whi@Total Donated: @yel@$" + player.getAmountDonated(),
                 "@whi@Mode: @yel@"
                         + Misc.capitalizeString(player.getGameMode().toString().toLowerCase().replace("_", " ")),
-                "@whi@Rank: @yel@" + Misc.formatText(player.getRank().toString().toLowerCase()),
+                "@whi@Staff: @yel@" + Misc.formatText(player.getRank().toString().toLowerCase()),
+                "@whi@Donator: @yel@" + Misc.formatText(player.getDonator().toString().toLowerCase()),
+                "@whi@VIP: @yel@" + Misc.formatText(player.getVip().toString().toLowerCase()),
 
                 "@whi@Droprate bonus: @yel@" + CustomDropUtils.drBonus(player, player.getSlayer().getSlayerTask().getNpcId()) + "%",
                 "@whi@Double drop bonus: @yel@" + CustomDropUtils.getDoubleDropChance(player, player.getSlayer().getSlayerTask().getNpcId()) + "%",
-                //"Triple drop bonus: @whi@" + CustomDropUtils.getTripleDropChance(player) + "%",
-                //"Exp Lock: " + (player.experienceLocked() ? "Locked" : "@gre@Unlocked") + "",
-                //"Voting x2 DR Boost: @whi@" + player.getMinutesVotingDR() + "min",
-                //"Voting x2 DMG Boost: @whi@" + player.getMinutesVotingDMG() + "min",
-
-                //
                 "@whi@Points & Statistics",
                 "@whi@NPC kill Count: @yel@ " + player.getPointsHandler().getNPCKILLCount(),
-                //"Boss Points: @whi@ " + player.getPointsHandler().getBossPoints(),
                 "@whi@Donator Points: @yel@" + player.getPointsHandler().getDonatorPoints(),
                 "@whi@Voting Points: @yel@ " + player.getPointsHandler().getVotingPoints(),
+                "@whi@VIP Exp: @yel@" + player.getPlayerVIP().getExp(),
+                "@whi@Pack Exp: @yel@" + player.getPlayerVIP().getPackXp(),
+                "@whi@Total Donated: @yel@" + player.getPlayerVIP().getTotal(),
         };
 
-        for (int i = 0; i < Messages.length; i++) {
-            player.getPacketSender().sendString(interfaceID++, Messages[i]);
+        for (String message : Messages) {
+            player.getPacketSender().sendString(interfaceID++, message);
         }
-
 
 
         interfaceID = 131101;
@@ -115,8 +89,8 @@ public class PlayerPanel {
                 //      : "Duo Partner: @whi@N/A"),
         };
 
-        for (int i = 0; i < Messages.length; i++) {
-            player.getPacketSender().sendString(interfaceID++, Messages[i]);
+        for (String message : Messages) {
+            player.getPacketSender().sendString(interfaceID++, message);
         }
 
         interfaceID = 111601;
