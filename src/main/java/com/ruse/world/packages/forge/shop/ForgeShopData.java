@@ -14,7 +14,6 @@ public class ForgeShopData {
                             new ForgeShopItem(23227,15),
                             new ForgeShopItem(23228,20),
                             new ForgeShopItem(23229,25),
-                            new ForgeShopItem(23229,20),
                     },
                     {       // tier 2 armoury
                             new ForgeShopItem(8100,100),
@@ -49,7 +48,6 @@ public class ForgeShopData {
                             new ForgeShopItem(22248,400),
                             new ForgeShopItem(22252,400),
                             new ForgeShopItem(24010,200),//warden
-                            new ForgeShopItem(24008,350),//mystical
                             new ForgeShopItem(22254,400),//asta
 
                     },
@@ -65,9 +63,7 @@ public class ForgeShopData {
                     },
                     {       // tier 3 jewelry
                             new ForgeShopItem(17391,40),
-                            new ForgeShopItem(1857,30),
-                            new ForgeShopItem(4722,1),
-                            new ForgeShopItem(4722,1),
+                            new ForgeShopItem(1857,30)
                     },
             },
             {
@@ -88,14 +84,13 @@ public class ForgeShopData {
                             new ForgeShopItem(9043,110),
                             new ForgeShopItem(13650,2),
                             new ForgeShopItem(742,15),
-                            new ForgeShopItem(13019,50),
                     },
                     {       // tier 3 other
                             new ForgeShopItem(4442,50),
                             new ForgeShopItem(4440,125),
                             new ForgeShopItem(743,30),
                             new ForgeShopItem(13019,120),
-                            new ForgeShopItem(3686,1300),
+                            new ForgeShopItem(3686,2000),
                             new ForgeShopItem(15003,30),
                             new ForgeShopItem(15002,100),
                             new ForgeShopItem(15004,250),
