@@ -141,7 +141,7 @@ public enum GearPacks {
             ),
 
     FRIEZA(23235, 0,
-            new Item(17002, 1), new Item(11763, 1), new Item(11764, 1),
+            new Item(17702, 1), new Item(11763, 1), new Item(11764, 1),
             new Item(11765, 1), new Item(11767, 1), new Item(11766, 1)
 
     ),

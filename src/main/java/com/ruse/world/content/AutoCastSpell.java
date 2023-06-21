@@ -38,6 +38,7 @@ public enum AutoCastSpell {
     VIRTUOSO_U(2456, CombatSpells.VIRTO),
     WHITESTAFF(22167, CombatSpells.WHITE),
     DEATH(14355, CombatSpells.WHITE),
+    DEATH_U(2544, CombatSpells.WHITE),
     FAZULA(4071, CombatSpells.WHITE),
     WARDEN(24010, CombatSpells.CHAOS),
     OWNERS(22230, CombatSpells.WHITE),
