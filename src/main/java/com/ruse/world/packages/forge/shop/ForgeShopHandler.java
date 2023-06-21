@@ -4,6 +4,7 @@ import com.google.common.collect.ImmutableList;
 import com.ruse.model.container.impl.Inventory;
 import com.ruse.model.definitions.ItemDefinition;
 import com.ruse.model.input.EnterAmount;
+import com.ruse.world.content.dialogue.DialogueManager;
 import com.ruse.world.packages.forge.Forge;
 import com.ruse.world.entity.impl.player.Player;
 
@@ -107,6 +108,8 @@ public class ForgeShopHandler {
         player.getPacketSender().sendMessage("@red@Error buying item. please report");
     }
 
+
+
     @FunctionalInterface
     interface ForgeButton {
         void execute(Player player);
@@ -119,7 +122,7 @@ public class ForgeShopHandler {
         TIER_THREE(-15982, (Player player) -> switchTier(player, 3)),
         ARMOURY(-15981, (Player player) -> switchShopType(player, ForgeShopType.ARMOURY)),
         JEWELS(-15980, (Player player) -> switchShopType(player, ForgeShopType.JEWELRY)),
-        OTHER(-15979, (Player player) -> switchShopType(player, ForgeShopType.OTHERS))
+        OTHER(-15979, (Player player) -> switchShopType(player, ForgeShopType.OTHERS)),
 
         ;
 

@@ -68,20 +68,19 @@ public class ForgeShopData {
             },
             {
                     {       // tier 1 other
-                            new ForgeShopItem(21814,1),
+
                             new ForgeShopItem(21815,1),
                             new ForgeShopItem(9084,15),
-                            new ForgeShopItem(4718,1),
                             new ForgeShopItem(2380,5),
                             new ForgeShopItem(741,10),
                             new ForgeShopItem(23219,30),
                             new ForgeShopItem(8788,3),
                     },
                     {       // tier 2 other
-                            new ForgeShopItem(21816,4),
+                            new ForgeShopItem(21814,3),
+                            new ForgeShopItem(21816,10),
                             new ForgeShopItem(23178,40),
                             new ForgeShopItem(22110,60),
-                            new ForgeShopItem(9043,110),
                             new ForgeShopItem(13650,2),
                             new ForgeShopItem(742,15),
                     },

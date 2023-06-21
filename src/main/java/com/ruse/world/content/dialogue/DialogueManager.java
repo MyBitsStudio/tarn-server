@@ -157,7 +157,7 @@ public class DialogueManager {
 	 */
 	public static void start(Player player, Dialogue dialogue) {
 		player.setDialogue(dialogue);
-		if (player.isBanking() || player.isShopping() || player.getInterfaceId() > 0 && player.getInterfaceId() != 50)
+		if (player.isBanking() || player.isShopping() || player.getInterfaceId() > 0 && player.getInterfaceId() != 50 && player.getInterfaceId() != 49510)
 			player.getPacketSender().sendInterfaceRemoval();
 		if (dialogue == null || dialogue.id() < 0) {
 			player.getPacketSender().sendInterfaceRemoval();
@@ -167,6 +167,12 @@ public class DialogueManager {
 		}
 		if (player.getInterfaceId() != 50)
 			player.setInterfaceId(50);
+	}
+
+	public static void forceStart(Player player, int id){
+		Dialogue dialogue = dialogues.get(id);
+		showDialogue(player, dialogue);
+		dialogue.specialAction();
 	}
 
 	/**

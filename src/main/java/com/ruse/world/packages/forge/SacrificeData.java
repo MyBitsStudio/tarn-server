@@ -256,7 +256,20 @@ public final class SacrificeData {
         ITEM_VALUES.put(14329, 2);
         ITEM_VALUES.put(14323, 2);
         //death
-
+        ITEM_VALUES.put(14353, 2);
+        ITEM_VALUES.put(14349, 2);
+        ITEM_VALUES.put(14359, 2);
+        ITEM_VALUES.put(14363, 2);
+        ITEM_VALUES.put(14339, 2);
+        ITEM_VALUES.put(14347, 2);
+        ITEM_VALUES.put(14355, 2);
+        ITEM_VALUES.put(14341, 2);
+        ITEM_VALUES.put(14345, 2);
+        ITEM_VALUES.put(14343, 2);
+        ITEM_VALUES.put(14351, 2);
+        ITEM_VALUES.put(14361, 2);
+        ITEM_VALUES.put(14337, 2);
+        ITEM_VALUES.put(14357, 2);
         //char
         ITEM_VALUES.put(8828, 3);
         ITEM_VALUES.put(8829, 3);
@@ -288,7 +301,10 @@ public final class SacrificeData {
         ITEM_VALUES.put(15201, 3);
         ITEM_VALUES.put(15200, 3);
         //afreet
-
+        ITEM_VALUES.put(14379, 3);
+        ITEM_VALUES.put(14381, 3);
+        ITEM_VALUES.put(14383, 3);
+        ITEM_VALUES.put(14385, 3);
         //frieza
         ITEM_VALUES.put(11763, 3);
         ITEM_VALUES.put(11764, 3);

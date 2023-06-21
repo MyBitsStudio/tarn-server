@@ -41,6 +41,9 @@ import com.ruse.world.content.zombie.ZombieRaids;
 import com.ruse.world.entity.impl.npc.NpcAggression;
 import com.ruse.world.entity.impl.player.Player;
 
+import java.util.Arrays;
+import java.util.Objects;
+
 public class DialogueOptions {
 
     // Last id used = 88

@@ -3,9 +3,9 @@ package com.ruse.world.packages.forge;
 import com.google.common.collect.ImmutableList;
 
 public enum ForgeTierType {
-    TIER_ONE(1, 1_000),
-    TIER_TWO(2, 5_000),
-    TIER_THREE(3, 10_000)
+    TIER_ONE(1, 200),
+    TIER_TWO(2, 2_000),
+    TIER_THREE(3, 5_000)
     ;
 
     private final int tier;

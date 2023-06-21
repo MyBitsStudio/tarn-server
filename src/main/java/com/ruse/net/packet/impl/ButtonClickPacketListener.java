@@ -192,6 +192,9 @@ public class ButtonClickPacketListener implements PacketListener {
         new WellForGlobalBossesInterface(player).button(id);
 
         switch (id) {
+            case -15954:
+                player.getForge().sendDialogue();
+                break;
             case 70020:
                 player.setInputHandling(new ChangePinPacketListener());
                 player.getPacketSender().sendEnterInputPrompt("Enter a new pin");

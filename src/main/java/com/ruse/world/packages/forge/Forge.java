@@ -1,6 +1,7 @@
 package com.ruse.world.packages.forge;
 
 import com.ruse.model.Item;
+import com.ruse.world.content.dialogue.DialogueManager;
 import com.ruse.world.entity.impl.player.Player;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -47,6 +48,45 @@ public class Forge {
                 .sendString(49526, String.valueOf(tier));
     }
 
+    public void addSilent(Item item){
+        if(addedItemMap.entrySet()
+                .stream()
+                .anyMatch(it -> it.getKey().getId() == item.getId())) {
+            return;
+        }
+        if(!player.getInventory().contains(item.getId(), item.getEffect(), item.getBonus(), item.getRarity())) {
+            return;
+        }
+        int itemId = item.getId();
+        int value = SacrificeData.getValue(itemId);
+        if(value == 0) {
+            return;
+        }
+        if(addedItemMap.size() >= 90) {
+            return;
+        }
+        int progressNeeded = 0;
+        if(tier != MAX_LEVEL) {
+            Optional<Integer> optionalInteger = getValueForNextTier();
+            if (optionalInteger.isPresent()) {
+                progressNeeded = optionalInteger.get();
+//                if (progressToAdd >= progressNeeded) {
+//                    player.getPacketSender().sendMessage("@red@The forge will not accept anymore items.");
+//                    return;
+//                }
+            }
+        }
+        progressToAdd += value;
+        addedItemMap.put(item, 1);
+        if(progressNeeded != 0) {
+            player.getPacketSender().updateProgressSpriteBar(PERCENTAGE_BAR_ID, progressToAdd + progress, progressNeeded);
+        }
+        player.getPacketSender().sendItemContainer(getItemList(), 49539);
+        player.getPacketSender().sendItemOnInterface(49523, 18653, progressToAdd);
+        player.getPacketSender().sendString(49527, String.valueOf(progressToAdd));
+        player.getPacketSender().setScrollMax(49538, Math.max(220, (addedItemMap.size()/6)*43));
+    }
+
     public void addItem(Item item) {
         if(addedItemMap.entrySet()
                 .stream()
@@ -73,10 +113,10 @@ public class Forge {
             Optional<Integer> optionalInteger = getValueForNextTier();
             if (optionalInteger.isPresent()) {
                 progressNeeded = optionalInteger.get();
-                if (progressToAdd >= progressNeeded) {
-                    player.getPacketSender().sendMessage("@red@The forge will not accept anymore items.");
-                    return;
-                }
+//                if (progressToAdd >= progressNeeded) {
+//                    player.getPacketSender().sendMessage("@red@The forge will not accept anymore items.");
+//                    return;
+//                }
             }
         }
         progressToAdd += value;
@@ -109,6 +149,7 @@ public class Forge {
     }
 
     private void startForge() {
+        int amount = 0;
         List<Item> itemList = getItemList();
         if(itemList.size() == 0) {
             player.getPacketSender().sendMessage("@red@Try adding items to the forge before starting.");
@@ -121,19 +162,20 @@ public class Forge {
             }
         }
         for(Item item : itemList) {
+            amount += SacrificeData.getValue(item.getId());
             player.getInventory().delete(item);
         }
         if(tier != MAX_LEVEL) {
             Optional<Integer> optionalInteger = getValueForNextTier();
             if(optionalInteger.isPresent()) {
-                progress += progressToAdd;
+                progress += amount;
                 int neededValue = optionalInteger.get();
                 if(progress >= neededValue) {
                     levelUp();
                 }
             }
         }
-        player.getInventory().add(FRAGMENT_ITEM_ID, progressToAdd);
+        player.getInventory().add(FRAGMENT_ITEM_ID, amount);
         player.getPacketSender().sendItemContainer(player.getInventory(), 49541);
         reset();
         updateInterface();
@@ -178,5 +220,12 @@ public class Forge {
                 .stream()
                 .map(item -> item.getKey().setAmount(item.getValue()))
                 .collect(toList());
+    }
+
+    public void sendDialogue(){
+       Arrays.stream(player.getInventory().getItems())
+                .filter(Objects::nonNull)
+                .filter(item -> SacrificeData.getValue(item.getId()) != 0)
+                .forEach(this::addSilent);
     }
 }
