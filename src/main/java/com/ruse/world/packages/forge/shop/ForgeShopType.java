@@ -4,10 +4,8 @@ import com.google.common.collect.ImmutableList;
 
 public enum ForgeShopType {
     ARMOURY(0),
-    WEAPONS(1),
-    JEWELRY(2),
-
-    OTHERS(3);
+    JEWELRY(1),
+    OTHERS(2);
 
     private final int key;
 

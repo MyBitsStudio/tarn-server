@@ -189,7 +189,7 @@ public class DonationManager {
                     player.getPacketSender().sendMessage(donations[0].message);
                     return;
                 }
-                int [] items = new int[donations.length];
+                int[] items = new int[donations.length];
                 int i = 0, amount = 0;
                 for (com.everythingrs.donate.Donation donate: donations) {
                     player.getInventory().add(new Item(donate.product_id, donate.product_amount));
@@ -202,7 +202,7 @@ public class DonationManager {
 
                 new PlayerDonationSave(player, items, amount).create().save();
 
-                player.getPlayerVIP().addDonation(amount);
+                player.getPlayerVIP().addDonation(amount, items);
 
                 FlashDeals.getDeals().handleFlashDeals(player, amount, items);
 

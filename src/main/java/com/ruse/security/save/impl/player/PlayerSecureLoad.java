@@ -31,6 +31,7 @@ import com.ruse.world.packages.donation.DonationManager;
 import com.ruse.world.packages.ranks.DonatorRank;
 import com.ruse.world.packages.ranks.StaffRank;
 import com.ruse.world.packages.ranks.VIPRank;
+import com.ruse.world.packages.vip.Donation;
 
 import java.lang.reflect.Type;
 import java.time.LocalDate;
@@ -1212,6 +1213,12 @@ public class PlayerSecureLoad extends SecureLoad {
 
         if(object.has("packXP")) {
             player.getPlayerVIP().setPackXp(object.get("packXP").getAsInt());
+        }
+
+        if(object.has("vipDonate")){
+            player.getPlayerVIP().setDonations(builder.fromJson(object.get("vipDonate"),
+                    new TypeToken<List<Donation>>() {
+                    }.getType()));
         }
 
         return this;

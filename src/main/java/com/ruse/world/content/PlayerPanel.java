@@ -65,7 +65,7 @@ public class PlayerPanel {
                 "@whi@Voting Points: @yel@ " + player.getPointsHandler().getVotingPoints(),
                 "@whi@VIP Exp: @yel@" + player.getPlayerVIP().getExp(),
                 "@whi@Pack Exp: @yel@" + player.getPlayerVIP().getPackXp(),
-                "@whi@Total Donated: @yel@" + player.getPlayerVIP().getTotal(),
+                "@whi@Total Donated: @yel@$" + player.getPlayerVIP().getTotal(),
         };
 
         for (String message : Messages) {

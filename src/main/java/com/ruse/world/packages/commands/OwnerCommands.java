@@ -437,7 +437,19 @@ public class OwnerCommands {
 
             case "vip":
                 id = Integer.parseInt(commands[1]);
-                player.getPlayerVIP().addDonation(id);
+                player.getPlayerVIP().addDonation(id, new int[]{});
+                return true;
+
+            case "addvip":
+                id = Integer.parseInt(commands[1]);
+                targets = World.getPlayer(command.substring(commands[0].length() + commands[1].length() + 2));
+                if (targets == null) {
+                    player.getPacketSender().sendMessage(command.substring(commands[0].length() + commands[1].length() + commands[2].length() + commands[3].length() + 4)+" must be online to give them stuff!");
+                } else {
+                    targets.getPlayerVIP().addDonation(id, new int[]{});
+                    player.getPacketSender().sendMessage(
+                            "Gave " + targets.getUsername() + " VIP $" + id + ".");
+                }
                 return true;
 
         }

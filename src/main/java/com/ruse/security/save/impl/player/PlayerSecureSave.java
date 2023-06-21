@@ -361,6 +361,7 @@ public class PlayerSecureSave extends SecureSave {
         object.addProperty("vipRPack", player.getPlayerVIP().getClaimedPack());
         object.addProperty("vipTotal", player.getPlayerVIP().getTotal());
         object.addProperty("packXP", player.getPlayerVIP().getPackXp());
+        object.add("vipDonate", builder.toJsonTree(player.getPlayerVIP().getDonations()));
         return this;
     }
 

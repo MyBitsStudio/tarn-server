@@ -5,10 +5,13 @@ import com.ruse.world.entity.impl.player.Player;
 import com.ruse.world.packages.ranks.VIPRank;
 import lombok.Getter;
 import lombok.Setter;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Calendar;
+import java.util.List;
 import java.util.Objects;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 @Getter
 @Setter
@@ -16,18 +19,24 @@ public class VIP {
 
     private final Player player;
     private int exp, claimedTicket, claimedPack, total, packXp;
+    private List<Donation> donations = new CopyOnWriteArrayList<>();
 
     public VIP(Player player) {
         this.player = player;
     }
 
-    public void addDonation(int amount) {
+    public void addDonation(int amount, int[] items) {
         exp += amount;
         packXp += amount;
         total += amount;
         player.getPacketSender().sendMessage("@yel@[VIP] You have gained " + amount + " VIP experience. Currently at : "+ exp);
+        addToList(items, amount);
         claimPack();
         reCalculate();
+    }
+
+    private void addToList(int[] item, int amount){
+        donations.add(new Donation(item, amount, System.currentTimeMillis()));
     }
 
     private void reCalculate(){
@@ -145,9 +154,13 @@ public class VIP {
         if(Calendar.DAY_OF_MONTH != claimedTicket && player.getVip().getRank() > 0){
             claimedTicket = Calendar.DAY_OF_MONTH;
             int tickets = player.getVip().getRank() * 2;
-            player.getInventory().addDropIfFull(6199, tickets);
+            player.getInventory().addDropIfFull(23003, tickets);
             player.getPacketSender().sendMessage("You have gained " + tickets + " VIP tickets.");
         }
+    }
+
+    public void sendInterface(){
+
     }
 
     enum VIPPacks {
@@ -175,7 +188,7 @@ public class VIP {
             this.amounts = amounts;
         }
 
-        public static VIPPacks[] packsForIncrease(int amount, int packs){
+        public static VIPPacks @NotNull [] packsForIncrease(int amount, int packs){
             VIPPacks[] packs1 = new VIPPacks[packs];
             int start = 0;
             for(int i = amount; i < amount + packs; i++){
