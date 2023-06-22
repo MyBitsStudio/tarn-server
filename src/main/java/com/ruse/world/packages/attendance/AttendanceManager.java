@@ -87,10 +87,8 @@ public class AttendanceManager {
 
     private Item getRewardOfTheDay(AttendanceTab tab, int day) {
         Item[] itemsArray = getMonthlyRewardAsArray(tab);
-        if(itemsArray != null) {
-            return itemsArray[day-1];
-        }
-        return null;
+        if(day-1 >= itemsArray.length) return null;
+        return itemsArray[day - 1];
     }
 
     public int getNextUnclaimedDay(AttendanceTab tab) {
