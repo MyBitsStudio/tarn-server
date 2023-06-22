@@ -7,10 +7,8 @@ import com.ruse.model.ItemRarity;
 import com.ruse.model.container.impl.*;
 import com.ruse.model.definitions.ItemDefinition;
 import com.ruse.model.projectile.ItemEffect;
-import com.ruse.world.content.equipmentenhancement.BoostType;
 import com.ruse.world.entity.impl.GroundItemManager;
 import com.ruse.world.entity.impl.player.Player;
-import lombok.var;
 
 import java.util.ArrayList;
 import java.util.Arrays;

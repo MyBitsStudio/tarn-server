@@ -7,11 +7,11 @@ import com.ruse.world.World;
 import com.ruse.world.clip.stream.ByteStream;
 import com.ruse.world.entity.impl.player.Player;
 import com.ruse.world.region.collision.CollisionMap;
-import io.netty.util.collection.IntObjectHashMap;
 import lombok.Getter;
 
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArraySet;
 import java.util.function.Consumer;
 
@@ -32,13 +32,13 @@ public class Region {
      * The objects that are currently spawned in the region.
      */
     @Getter
-    private final Map<Integer, GameObject> spawnedObjects = new IntObjectHashMap<>();
+    private final Map<Integer, GameObject> spawnedObjects = new ConcurrentHashMap<>();
 
     /**
      * The objects that are currently removed from the region.
      */
     @Getter
-    private final Map<Integer, GameObject> removedObjects = new IntObjectHashMap<>();
+    private final Map<Integer, GameObject> removedObjects = new ConcurrentHashMap<>();
 
     /**
      * The players that are currently visible to this region (has the map loaded in their viewport).

@@ -32,7 +32,6 @@ import com.ruse.world.entity.impl.npc.NPC;
 import com.ruse.world.entity.impl.player.Player;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.var;
 
 import java.security.SecureRandom;
 import java.util.*;
@@ -596,8 +595,7 @@ public class NPCDrops {
 
         public Item getItem() {
             int amount = 0;
-            for (int i = 0; i < count.length; i++)
-                amount += count[i];
+            for (int j : count) amount += j;
             if (amount > count[0])
                 amount = count[0] + Misc.getRandom(count[1]);
             return new Item(id, amount);
@@ -605,8 +603,7 @@ public class NPCDrops {
 
         public Item getMaxAmount() {
             int amount = 0;
-            for (int i = 0; i < count.length; i++)
-                amount += count[i];
+            for (int j : count) amount += j;
             if (amount > count[0])
                 amount = count[0] + Misc.getRandom(count[1]);
             return new Item(id, amount);

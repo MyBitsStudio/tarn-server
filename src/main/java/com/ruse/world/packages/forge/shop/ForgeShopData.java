@@ -10,10 +10,10 @@ public class ForgeShopData {
             {
                     {       // tier 1 armoury
 
-                            new ForgeShopItem(23226,10),
-                            new ForgeShopItem(23227,15),
-                            new ForgeShopItem(23228,20),
-                            new ForgeShopItem(23229,25),
+                            new ForgeShopItem(23226,25),
+                            new ForgeShopItem(23227,35),
+                            new ForgeShopItem(23228,40),
+                            new ForgeShopItem(23229,50),
                     },
                     {       // tier 2 armoury
                             new ForgeShopItem(8100,100),

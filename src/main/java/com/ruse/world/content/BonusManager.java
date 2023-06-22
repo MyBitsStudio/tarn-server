@@ -12,7 +12,6 @@ import com.ruse.world.entity.impl.player.Player;
 import com.ruse.world.packages.combat.max.MagicMax;
 import com.ruse.world.packages.combat.max.MeleeMax;
 import com.ruse.world.packages.combat.max.RangeMax;
-import lombok.var;
 
 public class BonusManager {
 	public static final String[] BONUS_NAMES = new String[]{"Stab", "Slash", "Crush", "Magic", "Ranged", "Stab",
@@ -83,9 +82,9 @@ public class BonusManager {
 		player.getPacketSender().sendString(66106, "Drop Rate Bonus: " + CustomDropUtils.drBonus(player, player.getSlayer().getSlayerTask().getNpcId()));
 		player.getPacketSender().sendString(66107, "Double Drop Bonus: " + CustomDropUtils.getDoubleDropChance(player, player.getSlayer().getSlayerTask().getNpcId()));
 
-		player.getPacketSender().sendString(66108, "Melee Maxhit: " +  formatNumber(MeleeMax.newMelee(player, player)));
-		player.getPacketSender().sendString(66109, "Ranged Maxhit: " +  formatNumber(RangeMax.newRange(player, player)));
-		player.getPacketSender().sendString(66110, "Magic Maxhit: " +  formatNumber(MagicMax.newMagic(player, player)));
+		player.getPacketSender().sendString(66108, "Melee Maxhit: " +  formatNumber(MeleeMax.newMelee(player, player) / 10));
+		player.getPacketSender().sendString(66109, "Ranged Maxhit: " +  formatNumber(RangeMax.newRange(player, player) / 10));
+		player.getPacketSender().sendString(66110, "Magic Maxhit: " +  formatNumber(MagicMax.newMagic(player, player) / 10));
 
 	}
 

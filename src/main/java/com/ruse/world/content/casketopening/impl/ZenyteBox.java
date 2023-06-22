@@ -37,7 +37,7 @@ public class ZenyteBox {
             new Box(3253, 1, 50, true),
 
             new Box(4442, 1, 50, true),
-            new Box(23002, 1, 50, true),
+            new Box(23002, 1, 250, true),
 
             new Box(20490, 3, 5, true),
     };

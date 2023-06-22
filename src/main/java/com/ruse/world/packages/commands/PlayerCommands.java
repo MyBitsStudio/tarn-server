@@ -178,10 +178,10 @@ public class PlayerCommands {
                 return true;
 
             case "maxhit":
-                player.getPacketSender().sendMessage("<shad=1>@red@Melee Maxhit: " + (MeleeMax.newMelee(player, player)));
+                player.getPacketSender().sendMessage("<shad=1>@red@Melee Maxhit: " + (MeleeMax.newMelee(player, player) / 10));
                 player.getPacketSender()
-                        .sendMessage("<shad=1>@gre@Ranged Maxhit: " + (RangeMax.newRange(player, player)));
-                player.getPacketSender().sendMessage("<shad=1>@cya@Magic Maxhit: " + (MagicMax.newMagic(player, player)));
+                        .sendMessage("<shad=1>@gre@Ranged Maxhit: " + (RangeMax.newRange(player, player) / 10));
+                player.getPacketSender().sendMessage("<shad=1>@cya@Magic Maxhit: " + (MagicMax.newMagic(player, player) / 10));
                 return true;
 
             case "achieve": case "achievements": case "dailytasks": case "tasks":

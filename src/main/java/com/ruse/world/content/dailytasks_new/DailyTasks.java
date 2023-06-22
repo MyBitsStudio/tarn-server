@@ -4,7 +4,6 @@ import com.ruse.util.Misc;
 import com.ruse.world.content.dialogue.DialogueManager;
 import com.ruse.world.entity.impl.player.Player;
 import lombok.val;
-import lombok.var;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -35,10 +34,10 @@ public class DailyTasks {
                 return;
             }
             DialogueManager.start(player, 9903);
-        } else if (!tasks.isEmpty()) {
-            scanForExpired(player);
-        } else {
+        } else if (tasks.isEmpty()) {
             assign(player, TaskChallengeTimespan.DAILY);
+        } else {
+            scanForExpired(player);
         }
     }
 
