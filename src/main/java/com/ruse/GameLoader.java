@@ -19,6 +19,7 @@ import com.ruse.world.World;
 import com.ruse.world.allornothing.DoubleOrNothing;
 import com.ruse.world.clip.region.RegionClipping;
 import com.ruse.world.content.*;
+import com.ruse.world.content.tradingpost.sql.TradingPostService;
 import com.ruse.world.packages.attendance.DailyResetScheduler;
 import com.ruse.world.packages.clans.ClanManager;
 import com.ruse.world.content.combat.effect.CombatPoisonEffect.CombatPoisonData;
@@ -76,6 +77,8 @@ public final class GameLoader {
 		ServerSecurity.getInstance();
 
 		ServiceManager.INSTANCE.init();
+
+		new TradingPostService().init();
 
 		executeServiceLoad();
 		serviceLoader.shutdown();

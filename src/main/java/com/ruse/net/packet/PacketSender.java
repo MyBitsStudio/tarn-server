@@ -543,6 +543,17 @@ public class PacketSender {
         return this;
     }
 
+    public void sendInterfaceOverlay(int parentId, int overlayId) {
+        PacketBuilder out = new PacketBuilder(10);
+        out.putInt(parentId);
+        out.putInt(overlayId);
+        player.getSession().queueMessage(out);
+    }
+
+    public void removeOverlay() {
+        sendInterfaceOverlay(player.getInterfaceId(), -1);
+    }
+
     public PacketSender sendWalkableInterface(int interfaceId, boolean visible) {
         PacketBuilder out = new PacketBuilder(208);
         out.putInt(interfaceId);
@@ -758,6 +769,7 @@ public class PacketSender {
             sendClientRightClickRemoval();
             player.setBanking(false);
         }
+        sendInterfaceOverlay(player.getInterfaceId(), -1);
         if (player.isShopping()) {
             sendClientRightClickRemoval().sendItemsOnInterface(player.getShop().getInterfaceId(), new Item[]{new Item(-1)});
             player.setShopping(false);

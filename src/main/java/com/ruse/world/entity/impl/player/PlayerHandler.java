@@ -496,6 +496,7 @@ public class PlayerHandler {
                 player.setTotalPlayTime(player.getTotalPlayTime() + player.getRecordedLogin().elapsed());
                 player.getPacketSender().sendInterfaceRemoval();
                 player.getMinimeSystem().despawn();
+                player.getPacketSender().removeOverlay();
                 if (player.getCannon() != null) {
                     DwarfMultiCannon.pickupCannon(player, player.getCannon(), true);
                 }

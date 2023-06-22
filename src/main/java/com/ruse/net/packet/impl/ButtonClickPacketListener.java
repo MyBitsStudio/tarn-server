@@ -216,28 +216,37 @@ public class ButtonClickPacketListener implements PacketListener {
             case -18527:
                 player.getPacketSender().sendString(1, GameSettings.StoreUrl);
                 break;
-
             case -18522:
             case -14492:
                 player.getPacketSender().removeInterface();
                 break;
-
+            case 150547:
+                player.getPacketSender().sendInterfaceOverlay(150440, 150857);
+                break;
+            case 150848:
+                player.getPacketSender().sendInterfaceOverlay(150440, 150276);
+                break;
+            case 150861:
+                player.getPacketSender().sendMessage(":tsearch:");
+                break;
+            case 150274:
+                player.getPacketSender().sendInterfaceOverlay(150250, 150276);
+                break;
+            case 150279:
+                player.getPacketSender().removeOverlay();
+                break;
             case -18532:
                 player.getNewSpinner().findReward();
                 break;
-
             case 21353:
                 player.getWheelOfFortune().start();
                 break;
-
             case 21372:
                 player.getWheelOfFortune().open();
                 break;
-
             case 21360:
                 player.getPacketSender().sendInterfaceRemoval();
                 break;
-
             // Previous Teleport Button
             case 1717:
                 if (!player.getClickDelay().elapsed(4500) || player.getMovementQueue().isLockMovement())
