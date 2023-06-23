@@ -1,5 +1,6 @@
 package com.ruse.world.content.tradingpost;
 
+import com.google.common.collect.Lists;
 import com.ruse.model.Item;
 import com.ruse.model.definitions.ItemDefinition;
 import com.ruse.model.input.EnterAmount;
@@ -12,9 +13,7 @@ import com.ruse.world.content.tradingpost.persistance.Database;
 import com.ruse.world.content.tradingpost.persistance.SQLDatabase;
 import com.ruse.world.entity.impl.player.Player;
 
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 public class TradingPost {
 
@@ -146,12 +145,24 @@ public class TradingPost {
     }
 
     private void viewRecentOffers() {
-        if(LIVE_OFFERS.isEmpty()) return;
-        for(int i = 50; i > 0; i--) {
-            Offer offer;
-            if((offer = LIVE_OFFERS.getLast()) == null) break;
-            player.getPacketSender().sendItemOnInterface(150647+(50-i), offer.getItemId(), offer.getAmountLeft());
+        Deque<Offer> deque = new ArrayDeque<>(LIVE_OFFERS.subList(page * 50, Math.min(LIVE_OFFERS.size(), page * 50 + 50)).stream().toList());
+        final int size = deque.size();
+        for(int i = 0; i < 50; i++) {
+            if(deque.size() > 0) {
+                Offer offer = deque.pop();
+                player.getPacketSender().sendItemOnInterface(150647 + i, offer.getItemId(), offer.getAmountLeft())
+                        .sendString(150697 + i, ItemDefinition.forId(offer.getItemId()).getName())
+                        .sendString(150747 + i, Misc.formatNumber(offer.getPrice()))
+                        .sendString(150797 + i, "0:0");
+            } else {
+                player.getPacketSender().sendItemOnInterface(150647 + i, -1, 0)
+                        .sendString(150697 + i, "")
+                        .sendString(150747 + i, "")
+                        .sendString(150797 + i, "");
+            }
         }
+        player.getPacketSender().sendMessage(":maxitems:"+size);
+        player.getPacketSender().setScrollBar(150446, Math.max(221, size * 41));
     }
 
     public boolean handleButtonClick(int id) {
@@ -161,7 +172,16 @@ public class TradingPost {
             return true;
         }
         switch (id) {
-            case 150270 -> viewRecentOffers();
+            case 150270 -> {
+                viewRecentOffers();
+                player.getPacketSender().sendInterface(BUYING_INTERFACE_ID);
+            }
+            case 150856 -> openMainInterface();
+            case 150547 -> player.getPacketSender().sendInterfaceOverlay(BUYING_INTERFACE_ID, 150857);
+            case 150274 -> player.getPacketSender().sendInterfaceOverlay(MAIN_INTERFACE_ID, 150276);
+            case 150848 -> player.getPacketSender().sendInterfaceOverlay(BUYING_INTERFACE_ID, 150276);
+            case 150861 -> player.getPacketSender().sendMessage(":tsearch:");
+            case 150279,150859 -> player.getPacketSender().removeOverlay();
             default -> {
                 return false;
             }

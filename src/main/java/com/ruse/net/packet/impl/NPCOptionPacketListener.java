@@ -19,14 +19,11 @@ import com.ruse.world.content.combat.weapon.CombatSpecial;
 import com.ruse.world.content.dailytasks_new.DailyTasks;
 import com.ruse.world.content.dialogue.DialogueManager;
 import com.ruse.world.content.dialogue.EnterLotteryTicketAmount;
-import com.ruse.world.content.fuser.CombineEnum;
-import com.ruse.world.content.fuser.CombineHandler;
 import com.ruse.world.content.grandLottery.GrandLottery;
 import com.ruse.world.content.grandexchange.GrandExchange;
 import com.ruse.world.content.groupironman.GroupConfig;
 import com.ruse.world.content.groupironman.GroupManager;
 import com.ruse.world.content.holidayevents.christmas2016;
-import com.ruse.world.content.minigames.impl.VaultOfWar;
 import com.ruse.world.content.minigames.impl.WarriorsGuild;
 import com.ruse.world.content.minigames.impl.trioMinigame;
 import com.ruse.world.content.pos.PlayerOwnedShopManager;
@@ -156,7 +153,7 @@ public class NPCOptionPacketListener implements PacketListener {
                     }
                     break;
                 case PlayerOwnedShopManager.NPC_ID:
-                    player.sendMessage("POS is currently disabled.");
+                    player.getTradingPost().openMainInterface();
                     //player.getPlayerOwnedShopManager().options();
                     break;
                 case 4652:

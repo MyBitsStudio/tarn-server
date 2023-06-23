@@ -51,7 +51,7 @@ public class PacketSender {
 
     public PacketSender setScrollMax(int interfaceId, int amount) {
         PacketBuilder out = new PacketBuilder(102);
-        out.putShort(interfaceId, ByteOrder.LITTLE);
+        out.putInt(interfaceId, ByteOrder.LITTLE);
         out.putShort(amount, ValueType.A);
         player.getSession().queueMessage(out);
         return this;
