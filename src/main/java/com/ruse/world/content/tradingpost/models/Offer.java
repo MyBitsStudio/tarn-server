@@ -66,6 +66,6 @@ public class Offer {
     }
 
     public long getTotal() {
-        return 0;
+        return (long) getAmountLeft() *price;
     }
 }

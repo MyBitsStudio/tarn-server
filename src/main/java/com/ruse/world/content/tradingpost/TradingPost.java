@@ -2,6 +2,7 @@ package com.ruse.world.content.tradingpost;
 
 import com.ruse.model.Item;
 import com.ruse.model.definitions.ItemDefinition;
+import com.ruse.model.input.EnterAmount;
 import com.ruse.world.content.tradingpost.models.Offer;
 import com.ruse.world.content.tradingpost.persistance.Database;
 import com.ruse.world.content.tradingpost.persistance.SQLDatabase;
@@ -81,7 +82,6 @@ public class TradingPost {
     private void allowItemAccept() {
         player.getPacketSender().sendMessage(":invglow1:");
         selectedItemToAdd = null;
-       // player.getPacketSender().sendEnterAmountPrompt("How much would you like to sell ");
     }
 
     private void cancelSlot(int slot) {
@@ -91,7 +91,22 @@ public class TradingPost {
     public void selectItemToAdd(Item item) {
         selectedItemToAdd = item;
         player.getPacketSender().sendMessage(":invglow0:");
+        allowInputPrice();
+    }
 
+    private void offerItem(int price) {
+        Offer offer = new Offer(selectedItemToAdd.getId(), selectedItemToAdd.getBonus(), selectedItemToAdd.getEffect().name(), selectedItemToAdd.getRarity().name(), selectedItemToAdd.getAmount(), price, player.getUsername());
+        addToLiveOffers(offer);
+    }
+
+    private void allowInputPrice() {
+         player.getPacketSender().sendEnterAmountPrompt("How much would you like to sell " + ItemDefinition.forId(selectedItemToAdd.getId()).getName() + " for?");
+         player.setInputHandling(new EnterAmount() {
+             @Override
+             public void handleAmount(Player player, int amount) {
+                 offerItem(amount);
+             }
+         });
     }
 
     private void viewRecentOffers() {
@@ -121,6 +136,7 @@ public class TradingPost {
 
     public static void addToLiveOffers(Offer offer) {
         LIVE_OFFERS.offer(offer);
+        DATABASE.createOffer(offer);
     }
 
     public static void loadOffers() {
