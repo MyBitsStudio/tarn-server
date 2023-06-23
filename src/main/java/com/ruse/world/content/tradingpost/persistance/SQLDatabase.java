@@ -1,22 +1,26 @@
-package com.ruse.world.content.tradingpost.sql;
+package com.ruse.world.content.tradingpost.persistance;
 
 import com.ruse.model.definitions.ItemDefinition;
-import com.ruse.world.content.tradingpost.Offer;
-import com.ruse.world.content.tradingpost.TradingPostHandler;
+import com.ruse.world.content.tradingpost.models.Coffer;
+import com.ruse.world.content.tradingpost.models.Offer;
+import com.ruse.world.content.tradingpost.concurrency.TradingPostService;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.List;
 
-public class SQLDatabase {
+public class SQLDatabase implements Database {
 
     private static final TradingPostService service = TradingPostService.getInstance();
 
     private static final String CREATE_OFFER = "INSERT INTO live_offers(item_id, item_name, item_bonus, item_effect, item_rarity, item_initial_amount, item_amount_sold, price, seller) VALUES(?,?,?,?,? ?,?,?,?)";
+    private static final String CREATE_COFFER = "INSERT INTO coffers(username, amount) VALUES(?,?)";
     private static final String GET_ALL_OFFERS = "SELECT * FROM live_offers";
 
-    public static void createOffer(Offer offer) {
+    @Override
+    public void createOffer(Offer offer) {
         service.takeRequest((connection) -> {
             try(PreparedStatement stmt = connection.prepareStatement(CREATE_OFFER)
             ) {
@@ -36,23 +40,22 @@ public class SQLDatabase {
         });
     }
 
-    public static void createCoffer() {
-
+    @Override
+    public void createCoffer(Coffer coffer) {
+        service.takeRequest((connection) -> {
+            try(PreparedStatement stmt = connection.prepareStatement(CREATE_COFFER)
+            ) {
+                stmt.setString(1, coffer.getUsername());
+                stmt.setInt(2, coffer.getAmount());
+                stmt.executeUpdate();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        });
     }
 
-    public static void createItemHistory() {
-
-    }
-
-    public static void updateOffer() {
-
-    }
-
-    public static void updateCoffer() {
-
-    }
-
-    public static void loadOffers() {
+    @Override
+    public void loadOffers(List<Offer> offerList) {
         service.takeRequest((connection) -> {
             try(Statement stmt = connection.createStatement();
                 ResultSet rs = stmt.executeQuery(GET_ALL_OFFERS)
@@ -60,7 +63,7 @@ public class SQLDatabase {
                 while(rs.next()) {
                     Offer offer = new Offer(rs.getInt(2), rs.getInt(4), rs.getString(5), rs.getString(6), rs.getInt(7), rs.getInt(9), rs.getString(10));
                     offer.setAmountSold(rs.getInt(8));
-                    TradingPostHandler.addToLiveOffers(offer);
+                    offerList.add(offer);
                 }
             } catch (SQLException e) {
                 e.printStackTrace();

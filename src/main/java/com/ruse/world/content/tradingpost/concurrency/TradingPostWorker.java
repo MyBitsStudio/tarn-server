@@ -1,4 +1,6 @@
-package com.ruse.world.content.tradingpost.sql;
+package com.ruse.world.content.tradingpost.concurrency;
+
+import com.ruse.world.content.tradingpost.persistance.DataSource;
 
 import java.sql.Connection;
 import java.sql.SQLException;

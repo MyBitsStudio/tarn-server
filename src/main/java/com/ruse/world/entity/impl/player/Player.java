@@ -32,6 +32,7 @@ import com.ruse.world.content.KillsTracker.KillsEntry;
 import com.ruse.world.content.LoyaltyProgramme.LoyaltyTitles;
 import com.ruse.world.content.StarterTasks.StarterTaskAttributes;
 import com.ruse.world.content.achievement.AchievementHandler;
+import com.ruse.world.content.tradingpost.TradingPost;
 import com.ruse.world.packages.attendance.AttendanceManager;
 import com.ruse.world.packages.attendance.AttendanceUI;
 import com.ruse.world.content.aura.AuraParty;
@@ -215,6 +216,9 @@ public class Player extends Character {
     @Getter @Setter private PlayerSecurity pSecurity = new PlayerSecurity(this);
     @Getter @Setter private PlayerVariables variables = new PlayerVariables(this);
     @Getter @Setter byte[] seed, auth;
+
+    @Getter
+    private final TradingPost tradingPost = new TradingPost(this);
 
     public boolean canMysteryBox;
     public boolean switchedPrayerBooks;
