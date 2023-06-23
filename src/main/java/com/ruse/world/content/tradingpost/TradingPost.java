@@ -3,6 +3,10 @@ package com.ruse.world.content.tradingpost;
 import com.ruse.model.Item;
 import com.ruse.model.definitions.ItemDefinition;
 import com.ruse.model.input.EnterAmount;
+import com.ruse.model.projectile.ItemEffect;
+import com.ruse.util.Misc;
+import com.ruse.world.content.dialogue.DialogueManager;
+import com.ruse.world.content.tradingpost.dialogues.CancelOptions;
 import com.ruse.world.content.tradingpost.models.Offer;
 import com.ruse.world.content.tradingpost.persistance.Database;
 import com.ruse.world.content.tradingpost.persistance.SQLDatabase;
@@ -65,8 +69,8 @@ public class TradingPost {
     private void sendOccupiedSlotData(Offer offer, int slot) {
         player.getPacketSender().sendString(150300+slot, ItemDefinition.forId(offer.getItemId()).getName())
                 .sendString(150310+slot, (offer.getInitialAmount() - offer.getAmountLeft()) + "/" + offer.getInitialAmount())
-                .sendString(150320+slot, "Price: " + offer.getPrice())
-                .sendString(150330+slot, "="+offer.getTotal()+" total")
+                .sendString(150320+slot, "Price: " + Misc.formatNumber(offer.getPrice()))
+                .sendString(150330+slot, "="+ Misc.formatNumber(offer.getTotal())+" total")
                 .updateProgressSpriteBar(150280+slot, (offer.getInitialAmount() - offer.getAmountLeft()),  offer.getInitialAmount())
                 .sendItemOnInterface(150290+slot, offer.getItemId(), 1);
     }
@@ -82,7 +86,11 @@ public class TradingPost {
     }
 
     private void showCancelOptions(int slot) {
-
+        Optional<Offer> optionalOffer = getMyOffers()
+                .stream()
+                        .filter(it -> it.getSlot() == slot)
+                                .findFirst();
+        optionalOffer.ifPresent(offer -> DialogueManager.start(player, new CancelOptions(player, ItemDefinition.forId(offer.getItemId()).getName(), slot)));
     }
 
     private void allowItemAccept() {
@@ -91,18 +99,20 @@ public class TradingPost {
         player.getPacketSender().sendInterfaceSet(MAIN_INTERFACE_ID, 151070);
     }
 
-    private void cancelSlot(int slot) {
+    public void cancelSlot(int slot) {
         Optional<Offer> optionalSlot = LIVE_OFFERS
                 .stream()
                 .filter(it -> slot == it.getSlot() && it.getSeller().equals(player.getUsername()))
                 .findFirst();
         if(optionalSlot.isPresent()) {
             Offer offer = optionalSlot.get();
+            DATABASE.deleteOffer(offer);
             LIVE_OFFERS.remove(offer);
-            openMainInterface();
-            return;
+            player.addItemUnderAnyCircumstances(new Item(offer.getItemId(), offer.getAmountLeft(), ItemEffect.getEffectForName(offer.getItemEffect()), offer.getItemBonus(), ItemEffect.getRarityForName(offer.getItemRarity())));
+        } else {
+            player.getPacketSender().sendMessage("@red@This item does not exist");
         }
-        player.getPacketSender().sendMessage("@red@This item does not exist");
+        openMainInterface();
     }
 
     public void selectItemToAdd(Item item) {
@@ -120,6 +130,7 @@ public class TradingPost {
             return;
         }
         Offer offer = new Offer(selectedItemToAdd.getId(), selectedItemToAdd.getBonus(), selectedItemToAdd.getEffect().name(), selectedItemToAdd.getRarity().name(), selectedItemToAdd.getAmount(), price, player.getUsername(), slotSelected);
+        player.getInventory().delete(selectedItemToAdd);
         addToLiveOffers(offer);
         openMainInterface();
     }

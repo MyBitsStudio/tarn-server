@@ -18,6 +18,7 @@ public class SQLDatabase implements Database {
     private static final String CREATE_OFFER = "INSERT INTO live_offers(item_id, item_name, item_bonus, item_effect, item_rarity, item_initial_amount, item_amount_sold, price, seller, slot) VALUES(?,?,?,?,?,?,?,?,?, ?)";
     private static final String CREATE_COFFER = "INSERT INTO coffers(username, amount) VALUES(?,?)";
     private static final String GET_ALL_OFFERS = "SELECT * FROM live_offers";
+    private static final String DELETE_OFFER = "DELETE FROM live_offers WHERE seller = ? AND slot = ?";
 
     @Override
     public void createOffer(Offer offer) {
@@ -67,6 +68,20 @@ public class SQLDatabase implements Database {
                     offer.setAmountSold(rs.getInt(8));
                     offerList.add(offer);
                 }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        });
+    }
+
+    @Override
+    public void deleteOffer(Offer offer) {
+        service.takeRequest((connection) -> {
+            try(PreparedStatement stmt = connection.prepareStatement(DELETE_OFFER)
+            ) {
+                stmt.setString(1, offer.getSeller());
+                stmt.setInt(2, offer.getSlot());
+                stmt.executeUpdate();
             } catch (SQLException e) {
                 e.printStackTrace();
             }

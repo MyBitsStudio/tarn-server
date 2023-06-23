@@ -31,6 +31,7 @@ import com.ruse.world.content.skill.impl.slayer.SlayerDialogues;
 import com.ruse.world.content.skill.impl.slayer.SlayerMaster;
 import com.ruse.world.content.skill.impl.summoning.CharmingImp;
 import com.ruse.world.content.skill.impl.summoning.SummoningTab;
+import com.ruse.world.content.tradingpost.dialogues.CancelOptions;
 import com.ruse.world.content.transportation.CityTeleports;
 import com.ruse.world.content.transportation.JewelryTeleports;
 import com.ruse.world.content.transportation.TeleportHandler;
@@ -1316,6 +1317,11 @@ public class DialogueOptions {
             }
         } else if (id == FIRST_OPTION_OF_TWO) {
             switch (player.getDialogueActionId()) {
+                case 753:
+                    if(player.getDialogue() instanceof CancelOptions) {
+                        player.getTradingPost().cancelSlot(((CancelOptions)player.getDialogue()).getSlot());
+                    }
+                    break;
                 //Security
                 case 11003:
                     player.getPacketSender().sendInterfaceRemoval();
@@ -1792,7 +1798,9 @@ public class DialogueOptions {
                 case 901:
                     player.getPacketSender().sendInterfaceRemoval();
                     break;
-
+                case 753:
+                    player.getTradingPost().openMainInterface();
+                    break;
                 case 11006:
                     player.getPacketSender().sendInterfaceRemoval();
                     DialogueManager.start(player, 11007);

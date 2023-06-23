@@ -9,4 +9,5 @@ public interface Database {
     void createOffer(Offer offer);
     void createCoffer(Coffer coffer);
     void loadOffers(List<Offer> offerList);
+    void deleteOffer(Offer offer);
 }

@@ -12,12 +12,13 @@ CREATE TABLE IF NOT EXISTS live_offers(
     price INT NOT NULL,
     seller VARCHAR(255) NOT NULL,
     slot smallint NOT NULL,
-    time_stamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    time_stamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    UNIQUE(seller, slot)
 );
 
 CREATE TABLE IF NOT EXISTS coffers(
 	id INT AUTO_INCREMENT PRIMARY KEY,
-    username VARCHAR(255) NOT NULL,
+    username VARCHAR(255) NOT NULL UNIQUE,
     amount BIGINT DEFAULT 0
 );
 
