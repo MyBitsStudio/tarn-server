@@ -74,14 +74,14 @@ public class TradingPost {
     private void selectSlot(int slot) {
         Optional<Offer> offerOptional = returnIfSlotOccupied(slot);
         if(offerOptional.isPresent()) {
-            editSlot(slot);
+            showCancelOptions(slot);
             return;
         }
         slotSelected = slot;
         allowItemAccept();
     }
 
-    private void editSlot(int slot) {
+    private void showCancelOptions(int slot) {
 
     }
 
@@ -92,7 +92,17 @@ public class TradingPost {
     }
 
     private void cancelSlot(int slot) {
-
+        Optional<Offer> optionalSlot = LIVE_OFFERS
+                .stream()
+                .filter(it -> slot == it.getSlot() && it.getSeller().equals(player.getUsername()))
+                .findFirst();
+        if(optionalSlot.isPresent()) {
+            Offer offer = optionalSlot.get();
+            LIVE_OFFERS.remove(offer);
+            openMainInterface();
+            return;
+        }
+        player.getPacketSender().sendMessage("@red@This item does not exist");
     }
 
     public void selectItemToAdd(Item item) {
