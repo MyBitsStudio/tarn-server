@@ -32,7 +32,7 @@ public class OnyxBox {
 
             new Box(4442, 1, 5, true),
             new Box(20491, 3, 5, true),
-            new Box(23002, 1, 400, true),
+            new Box(23002, 1, 1, true),
 
     };
 
