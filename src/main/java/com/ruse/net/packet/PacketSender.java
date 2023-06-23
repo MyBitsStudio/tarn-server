@@ -771,9 +771,6 @@ public class PacketSender {
             player.setBanking(false);
         }
         sendInterfaceOverlay(player.getInterfaceId(), -1);
-        if(player.getInterfaceId() == TradingPost.MAIN_INTERFACE_ID) {
-            player.getPacketSender().sendMessage(":invglow0:");
-        }
         if (player.isShopping()) {
             sendClientRightClickRemoval().sendItemsOnInterface(player.getShop().getInterfaceId(), new Item[]{new Item(-1)});
             player.setShopping(false);
@@ -831,7 +828,7 @@ public class PacketSender {
     public PacketSender sendInterfaceSet(int interfaceId, int sidebarInterfaceId) {
         PacketBuilder out = new PacketBuilder(248);
         out.putInt(interfaceId);
-        out.putShort(sidebarInterfaceId);
+        out.putInt(sidebarInterfaceId);
         player.getSession().queueMessage(out);
         player.setInterfaceId(interfaceId);
         return this;
