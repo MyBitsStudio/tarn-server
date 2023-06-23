@@ -31,11 +31,7 @@ public class AttendanceManager {
                 int nextUnclaimedDay = getNextUnclaimedDay(tab);
                 if(nextUnclaimedDay != -1) {
                     Item item = getRewardOfTheDay(tab, nextUnclaimedDay);
-                    if(item == null) {
-                        p.getPacketSender().sendMessage("@red@This day has no reward.");
-                        return;
-                    }
-                    if(!unlocked(p, tab)){
+                    if(item == null || !unlocked(p, tab)){
                         continue;
                     }
                     if(attendanceProgress.put(nextUnclaimedDay)) {
