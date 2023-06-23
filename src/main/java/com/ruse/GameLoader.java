@@ -19,31 +19,31 @@ import com.ruse.world.World;
 import com.ruse.world.allornothing.DoubleOrNothing;
 import com.ruse.world.clip.region.RegionClipping;
 import com.ruse.world.content.*;
-import com.ruse.world.content.tradingpost.sql.TradingPostService;
-import com.ruse.world.packages.attendance.DailyResetScheduler;
-import com.ruse.world.packages.clans.ClanManager;
 import com.ruse.world.content.combat.effect.CombatPoisonEffect.CombatPoisonData;
 import com.ruse.world.content.combat.strategy.CombatStrategies;
 import com.ruse.world.content.dialogue.DialogueManager;
 import com.ruse.world.content.discordbot.AdminCord;
 import com.ruse.world.content.discordbot.Bot;
 import com.ruse.world.content.discordbot.JavaCord;
-import com.ruse.world.packages.donation.DonateSales;
-import com.ruse.world.packages.donation.DonationManager;
-import com.ruse.world.packages.donation.FlashDeals;
 import com.ruse.world.content.grandLottery.GrandLottery;
 import com.ruse.world.content.grandexchange.GrandExchangeOffers;
 import com.ruse.world.content.groupironman.GroupManager;
-import com.ruse.world.packages.globals.GlobalBossManager;
-import com.ruse.world.packages.instances.InstanceManager;
 import com.ruse.world.content.polling.PollManager;
 import com.ruse.world.content.pos.PlayerOwnedShopManager;
-import com.ruse.world.packages.plus.PlusUpgrade;
-import com.ruse.world.packages.seasonpass.SeasonPassLoader;
 import com.ruse.world.content.serverperks.ServerPerks;
-import com.ruse.world.packages.voting.VoteBossDrop;
+import com.ruse.world.content.tradingpost.TradingPost;
 import com.ruse.world.entity.actor.player.controller.ControllerHandler;
 import com.ruse.world.entity.impl.npc.NPC;
+import com.ruse.world.packages.attendance.DailyResetScheduler;
+import com.ruse.world.packages.clans.ClanManager;
+import com.ruse.world.packages.donation.DonateSales;
+import com.ruse.world.packages.donation.DonationManager;
+import com.ruse.world.packages.donation.FlashDeals;
+import com.ruse.world.packages.globals.GlobalBossManager;
+import com.ruse.world.packages.instances.InstanceManager;
+import com.ruse.world.packages.plus.PlusUpgrade;
+import com.ruse.world.packages.seasonpass.SeasonPassLoader;
+import com.ruse.world.packages.voting.VoteBossDrop;
 import com.ruse.world.region.RegionManager;
 import com.server.service.login.ServiceManager;
 import org.jboss.netty.bootstrap.ServerBootstrap;
@@ -77,8 +77,6 @@ public final class GameLoader {
 		ServerSecurity.getInstance();
 
 		ServiceManager.INSTANCE.init();
-
-		new TradingPostService().init();
 
 		executeServiceLoad();
 		serviceLoader.shutdown();
@@ -160,6 +158,7 @@ public final class GameLoader {
 		serviceLoader.execute(() -> DonationManager.getInstance().load());
 		serviceLoader.execute(VoteBossDrop::load);
 		serviceLoader.execute(DailyResetScheduler::initialize);
+		serviceLoader.execute(TradingPost::loadOffers);
 		//serviceLoader.execute(RSAKeyGenerator::start);
 		TaskManager.submit(new LotteryTask());
 	}

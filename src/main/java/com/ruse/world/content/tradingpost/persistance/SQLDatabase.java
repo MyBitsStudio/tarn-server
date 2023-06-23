@@ -15,7 +15,7 @@ public class SQLDatabase implements Database {
 
     private static final TradingPostService service = TradingPostService.getInstance();
 
-    private static final String CREATE_OFFER = "INSERT INTO live_offers(item_id, item_name, item_bonus, item_effect, item_rarity, item_initial_amount, item_amount_sold, price, seller) VALUES(?,?,?,?,? ?,?,?,?)";
+    private static final String CREATE_OFFER = "INSERT INTO live_offers(item_id, item_name, item_bonus, item_effect, item_rarity, item_initial_amount, item_amount_sold, price, seller, slot) VALUES(?,?,?,?,?,?,?,?,?, ?)";
     private static final String CREATE_COFFER = "INSERT INTO coffers(username, amount) VALUES(?,?)";
     private static final String GET_ALL_OFFERS = "SELECT * FROM live_offers";
 
@@ -33,6 +33,8 @@ public class SQLDatabase implements Database {
                 stmt.setInt(7, offer.getAmountSold());
                 stmt.setInt(8, offer.getPrice());
                 stmt.setString(9, offer.getSeller());
+                stmt.setInt(10, offer.getSlot());
+                System.out.println(offer);
                 stmt.executeUpdate();
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -61,7 +63,7 @@ public class SQLDatabase implements Database {
                 ResultSet rs = stmt.executeQuery(GET_ALL_OFFERS)
             ) {
                 while(rs.next()) {
-                    Offer offer = new Offer(rs.getInt(2), rs.getInt(4), rs.getString(5), rs.getString(6), rs.getInt(7), rs.getInt(9), rs.getString(10));
+                    Offer offer = new Offer(rs.getInt(2), rs.getInt(4), rs.getString(5), rs.getString(6), rs.getInt(7), rs.getInt(9), rs.getString(10), rs.getInt(11));
                     offer.setAmountSold(rs.getInt(8));
                     offerList.add(offer);
                 }
