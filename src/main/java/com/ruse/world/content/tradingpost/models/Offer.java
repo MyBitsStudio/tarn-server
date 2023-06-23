@@ -1,4 +1,4 @@
-package com.ruse.world.content.tradingpost;
+package com.ruse.world.content.tradingpost.models;
 
 public class Offer {
 
@@ -59,5 +59,13 @@ public class Offer {
 
     public String getItemRarity() {
         return itemRarity;
+    }
+
+    public int getAmountLeft() {
+        return initialAmount - amountSold;
+    }
+
+    public long getTotal() {
+        return (long) getAmountLeft() *price;
     }
 }

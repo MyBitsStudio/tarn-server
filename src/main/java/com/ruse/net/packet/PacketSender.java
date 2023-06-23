@@ -7,6 +7,7 @@ import com.ruse.model.container.ItemContainer;
 import com.ruse.net.packet.Packet.PacketType;
 import com.ruse.world.content.CustomObjects;
 import com.ruse.world.content.EffectTimer;
+import com.ruse.world.content.tradingpost.TradingPost;
 import com.ruse.world.packages.forge.Forge;
 import com.ruse.world.packages.forge.shop.ForgeShopItem;
 import com.ruse.world.content.pos.PlayerOwnedShop;
@@ -770,6 +771,9 @@ public class PacketSender {
             player.setBanking(false);
         }
         sendInterfaceOverlay(player.getInterfaceId(), -1);
+        if(player.getInterfaceId() == TradingPost.MAIN_INTERFACE_ID) {
+            player.getPacketSender().sendMessage(":invglow0:");
+        }
         if (player.isShopping()) {
             sendClientRightClickRemoval().sendItemsOnInterface(player.getShop().getInterfaceId(), new Item[]{new Item(-1)});
             player.setShopping(false);

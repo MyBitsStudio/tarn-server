@@ -1,4 +1,4 @@
-package com.ruse.world.content.tradingpost.sql;
+package com.ruse.world.content.tradingpost.concurrency;
 
 import java.sql.Connection;
 
