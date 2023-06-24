@@ -75,6 +75,10 @@ public class Offer {
         return (long) getAmountLeft() *price;
     }
 
+    public void incrementAmountSold(int amountSold) {
+        this.amountSold += amountSold;
+    }
+
     @Override
     public String toString() {
         return "Offer{" +

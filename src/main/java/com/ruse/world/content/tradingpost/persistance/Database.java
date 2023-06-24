@@ -1,6 +1,7 @@
 package com.ruse.world.content.tradingpost.persistance;
 
 import com.ruse.world.content.tradingpost.models.Coffer;
+import com.ruse.world.content.tradingpost.models.History;
 import com.ruse.world.content.tradingpost.models.Offer;
 
 import java.util.List;
@@ -10,4 +11,7 @@ public interface Database {
     void createCoffer(Coffer coffer);
     void loadOffers(List<Offer> offerList);
     void deleteOffer(Offer offer);
+    void updateOffer(Offer offer);
+    void createHistory(History history);
+    void loadHistory(List<History> historyList);
 }

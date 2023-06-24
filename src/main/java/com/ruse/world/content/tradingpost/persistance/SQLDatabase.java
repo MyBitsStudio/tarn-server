@@ -2,6 +2,7 @@ package com.ruse.world.content.tradingpost.persistance;
 
 import com.ruse.model.definitions.ItemDefinition;
 import com.ruse.world.content.tradingpost.models.Coffer;
+import com.ruse.world.content.tradingpost.models.History;
 import com.ruse.world.content.tradingpost.models.Offer;
 import com.ruse.world.content.tradingpost.concurrency.TradingPostService;
 
@@ -18,7 +19,9 @@ public class SQLDatabase implements Database {
     private static final String CREATE_OFFER = "INSERT INTO live_offers(item_id, item_name, item_bonus, item_effect, item_rarity, item_initial_amount, item_amount_sold, price, seller, slot) VALUES(?,?,?,?,?,?,?,?,?, ?)";
     private static final String CREATE_COFFER = "INSERT INTO coffers(username, amount) VALUES(?,?)";
     private static final String GET_ALL_OFFERS = "SELECT * FROM live_offers";
-    private static final String DELETE_OFFER = "DELETE FROM live_offers WHERE seller = ? AND slot = ?";
+    private static final String DELETE_OFFER = "DELETE FROM live_offers WHERE seller = ? AND slot = ? LIMIT 1";
+    private static final String UPDATE_OFFER = "UPDATE live_offers SET item_amount_sold = ? WHERE seller = ? AND slot = ? LIMIT 1";
+    private static final String CREATE_HISTORY = "INSERT INTO offer_history(item_id, item_name, item_bonus, item_effect, item_rarity, item_amount, price_each, total_price, seller, buyer) VALUES(?,?,?,?,?,?,?,?,?,?)";
 
     @Override
     public void createOffer(Offer offer) {
@@ -86,5 +89,47 @@ public class SQLDatabase implements Database {
                 e.printStackTrace();
             }
         });
+    }
+
+    @Override
+    public void updateOffer(Offer offer) {
+        service.takeRequest((connection) -> {
+            try(PreparedStatement stmt = connection.prepareStatement(UPDATE_OFFER)
+            ) {
+                stmt.setInt(1, offer.getAmountSold());
+                stmt.setString(2, offer.getSeller());
+                stmt.setInt(3, offer.getSlot());
+                stmt.executeUpdate();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        });
+    }
+
+    @Override
+    public void createHistory(History history) {
+        service.takeRequest((connection) -> {
+            try(PreparedStatement stmt = connection.prepareStatement(CREATE_HISTORY)
+            ) {
+                stmt.setInt(1, history.itemId());
+                stmt.setString(2, ItemDefinition.forId(history.itemId()).getName());
+                stmt.setInt(3, history.bonus());
+                stmt.setString(4, history.itemEffect());
+                stmt.setString(5, history.itemRarity());
+                stmt.setInt(6, history.amount());
+                stmt.setInt(7, history.price());
+                stmt.setInt(8, history.price()*history.amount());
+                stmt.setString(9, history.seller());
+                stmt.setString(10, history.buyer());
+                stmt.executeUpdate();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        });
+    }
+
+    @Override
+    public void loadHistory(List<History> historyList) {
+
     }
 }

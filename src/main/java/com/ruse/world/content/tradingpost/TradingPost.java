@@ -8,6 +8,7 @@ import com.ruse.util.Misc;
 import com.ruse.world.content.dialogue.DialogueManager;
 import com.ruse.world.content.tradingpost.dialogues.CancelOptions;
 import com.ruse.world.content.tradingpost.dialogues.PurchaseStatement;
+import com.ruse.world.content.tradingpost.models.History;
 import com.ruse.world.content.tradingpost.models.Offer;
 import com.ruse.world.content.tradingpost.models.SearchFilter;
 import com.ruse.world.content.tradingpost.models.ViewType;
@@ -220,8 +221,15 @@ public class TradingPost {
         Optional<Offer> optionalOffer = containsOptional(offer);
         if(optionalOffer.isPresent()) {
             Offer toPurchase = optionalOffer.get();
-            removeFromLiveOffers(toPurchase);
-            player.addItemUnderAnyCircumstances(new Item(toPurchase.getItemId(), toPurchase.getAmountLeft(), ItemEffect.getEffectForName(toPurchase.getItemEffect()), toPurchase.getItemBonus(), ItemEffect.getRarityForName(toPurchase.getItemRarity())));
+            if(amount == toPurchase.getAmountLeft()) {
+                removeFromLiveOffers(toPurchase);
+            } else {
+                toPurchase.incrementAmountSold(amount);
+                updateOffer(toPurchase);
+            }
+            player.getInventory().delete(CURRENCY_ID, total);
+            addToItemHistory(new History(toPurchase.getItemId(), toPurchase.getItemEffect(), toPurchase.getItemBonus(), toPurchase.getItemRarity(), amount, toPurchase.getPrice(), toPurchase.getSeller(), player.getUsername()));
+            player.addItemUnderAnyCircumstances(new Item(toPurchase.getItemId(), amount, ItemEffect.getEffectForName(toPurchase.getItemEffect()), toPurchase.getItemBonus(), ItemEffect.getRarityForName(toPurchase.getItemRarity())));
             viewBuyingPage();
             return;
         }
@@ -272,6 +280,14 @@ public class TradingPost {
     public static void removeFromLiveOffers(Offer offer) {
         LIVE_OFFERS.remove(offer);
         DATABASE.deleteOffer(offer);
+    }
+
+    public static void updateOffer(Offer offer) {
+        DATABASE.updateOffer(offer);
+    }
+
+    public static void addToItemHistory(History history) {
+        DATABASE.createHistory(history);
     }
 
     public static void loadOffers() {
