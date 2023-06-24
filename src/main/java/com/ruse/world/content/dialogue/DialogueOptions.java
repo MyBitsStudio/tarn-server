@@ -32,6 +32,8 @@ import com.ruse.world.content.skill.impl.slayer.SlayerMaster;
 import com.ruse.world.content.skill.impl.summoning.CharmingImp;
 import com.ruse.world.content.skill.impl.summoning.SummoningTab;
 import com.ruse.world.content.tradingpost.dialogues.CancelOptions;
+import com.ruse.world.content.tradingpost.dialogues.PurchaseOptions;
+import com.ruse.world.content.tradingpost.dialogues.PurchaseStatement;
 import com.ruse.world.content.transportation.CityTeleports;
 import com.ruse.world.content.transportation.JewelryTeleports;
 import com.ruse.world.content.transportation.TeleportHandler;
@@ -41,9 +43,6 @@ import com.ruse.world.content.zombie.ZombieRaidData;
 import com.ruse.world.content.zombie.ZombieRaids;
 import com.ruse.world.entity.impl.npc.NpcAggression;
 import com.ruse.world.entity.impl.player.Player;
-
-import java.util.Arrays;
-import java.util.Objects;
 
 public class DialogueOptions {
 
@@ -1318,8 +1317,13 @@ public class DialogueOptions {
         } else if (id == FIRST_OPTION_OF_TWO) {
             switch (player.getDialogueActionId()) {
                 case 753:
-                    if(player.getDialogue() instanceof CancelOptions) {
-                        player.getTradingPost().cancelSlot(((CancelOptions)player.getDialogue()).getSlot());
+                    if(player.getDialogue() instanceof CancelOptions cancelOptions) {
+                        player.getTradingPost().cancelSlot(cancelOptions.getSlot());
+                    }
+                    break;
+                case 754:
+                    if(player.getDialogue() instanceof PurchaseOptions purchaseOptions) {
+                        player.getTradingPost().purchase(purchaseOptions.getOffer(), purchaseOptions.getAmount(), 1);
                     }
                     break;
                 //Security
@@ -1797,6 +1801,11 @@ public class DialogueOptions {
                 case 666:
                 case 901:
                     player.getPacketSender().sendInterfaceRemoval();
+                    break;
+                case 754:
+                    if(player.getDialogue() instanceof PurchaseOptions purchaseOptions) {
+                        player.getTradingPost().purchase(purchaseOptions.getOffer(), purchaseOptions.getAmount(), 2);
+                    }
                     break;
                 case 753:
                     player.getTradingPost().openMainInterface();

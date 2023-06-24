@@ -1,6 +1,5 @@
 package com.ruse.world.content.tradingpost;
 
-import com.google.common.collect.Lists;
 import com.ruse.model.Item;
 import com.ruse.model.definitions.ItemDefinition;
 import com.ruse.model.input.EnterAmount;
@@ -8,7 +7,10 @@ import com.ruse.model.projectile.ItemEffect;
 import com.ruse.util.Misc;
 import com.ruse.world.content.dialogue.DialogueManager;
 import com.ruse.world.content.tradingpost.dialogues.CancelOptions;
+import com.ruse.world.content.tradingpost.dialogues.PurchaseStatement;
 import com.ruse.world.content.tradingpost.models.Offer;
+import com.ruse.world.content.tradingpost.models.SearchFilter;
+import com.ruse.world.content.tradingpost.models.ViewType;
 import com.ruse.world.content.tradingpost.persistance.Database;
 import com.ruse.world.content.tradingpost.persistance.SQLDatabase;
 import com.ruse.world.entity.impl.player.Player;
@@ -16,7 +18,7 @@ import com.ruse.world.entity.impl.player.Player;
 import java.util.*;
 
 public class TradingPost {
-
+    public static final int CURRENCY_ID = 995;
     public static final int MAIN_INTERFACE_ID = 150250;
     public static final int ITEM_CONTAINER_ID = 19999;
     private static final int BUYING_INTERFACE_ID = 150440;
@@ -34,12 +36,16 @@ public class TradingPost {
     private int slotSelected;
     private int page;
     private List<Offer> offerList;
+    private List<Offer> viewingOffers;
+    private ViewType viewType;
+    private SearchFilter searchFilter;
     public TradingPost(Player player) {
         this.player = player;
     }
 
     public void openMainInterface() {
         slotSelected = 0;
+        viewType = ViewType.RECENT;
         offerList = getMyOffers();
         for(int i = 0; i < 10; i++) {
             updateSlot(i);
@@ -105,8 +111,7 @@ public class TradingPost {
                 .findFirst();
         if(optionalSlot.isPresent()) {
             Offer offer = optionalSlot.get();
-            DATABASE.deleteOffer(offer);
-            LIVE_OFFERS.remove(offer);
+            removeFromLiveOffers(offer);
             player.addItemUnderAnyCircumstances(new Item(offer.getItemId(), offer.getAmountLeft(), ItemEffect.getEffectForName(offer.getItemEffect()), offer.getItemBonus(), ItemEffect.getRarityForName(offer.getItemRarity())));
         } else {
             player.getPacketSender().sendMessage("@red@This item does not exist");
@@ -144,8 +149,16 @@ public class TradingPost {
          });
     }
 
-    private void viewRecentOffers() {
-        Deque<Offer> deque = new ArrayDeque<>(LIVE_OFFERS.subList(page * 50, Math.min(LIVE_OFFERS.size(), page * 50 + 50)).stream().toList());
+    private void viewBuyingPage() {
+        if(viewType == ViewType.RECENT) {
+            viewingOffers = LIVE_OFFERS.subList(page * 50, Math.min(LIVE_OFFERS.size(), page * 50 + 50)).stream().toList();
+        }
+        sendBuyingPageData();
+        player.getPacketSender().sendInterface(BUYING_INTERFACE_ID);
+    }
+
+    private void sendBuyingPageData() {
+        Deque<Offer> deque = new ArrayDeque<>(viewingOffers);
         final int size = deque.size();
         for(int i = 0; i < 50; i++) {
             if(deque.size() > 0) {
@@ -165,17 +178,73 @@ public class TradingPost {
         player.getPacketSender().setScrollBar(150446, Math.max(221, size * 41));
     }
 
+    private void selectPurchase(int index) {
+        if(viewingOffers == null || viewingOffers.isEmpty()) {
+            return;
+        }
+        Offer offer = viewingOffers.get(index);
+        int amountLeft = offer.getAmountLeft();
+        if(amountLeft == 0) return;
+        if(amountLeft > 1) {
+            player.getPacketSender().sendEnterAmountPrompt("How many of " + ItemDefinition.forId(offer.getItemId()).getName() + " would you like to buy?");
+            player.setInputHandling(new EnterAmount() {
+                @Override
+                public void handleAmount(Player player, int amount) {
+                    if(amount > offer.getAmountLeft()) {
+                        amount = offer.getAmountLeft();
+                    }
+                    if((long)amount * offer.getPrice() > Integer.MAX_VALUE) {
+                        player.getPacketSender().sendMessage("@red@Invalid amount entered.");
+                        return;
+                    }
+                    DialogueManager.start(player, new PurchaseStatement(player, offer, amount));
+                }
+            });
+        } else {
+            DialogueManager.start(player, new PurchaseStatement(player, offer, 1));
+        }
+    }
+
+    public void purchase(Offer offer, int amount, int option) {
+        if(option == 2) {
+            viewBuyingPage();
+            return;
+        }
+        int total = amount * offer.getPrice();
+        if(player.getInventory().getAmount(CURRENCY_ID) < total) {
+            player.getPacketSender().sendMessage("@red@You do not have enough coins to complete this transaction.");
+            viewBuyingPage();
+            return;
+        }
+        Optional<Offer> optionalOffer = containsOptional(offer);
+        if(optionalOffer.isPresent()) {
+            Offer toPurchase = optionalOffer.get();
+            removeFromLiveOffers(toPurchase);
+            player.addItemUnderAnyCircumstances(new Item(toPurchase.getItemId(), toPurchase.getAmountLeft(), ItemEffect.getEffectForName(toPurchase.getItemEffect()), toPurchase.getItemBonus(), ItemEffect.getRarityForName(toPurchase.getItemRarity())));
+            viewBuyingPage();
+            return;
+        }
+        player.getPacketSender().sendMessage("@red@This item does not exist in the trading post anymore.");
+        viewBuyingPage();
+    }
+
+    private void viewHistory(int index) {
+        if(viewingOffers == null || viewingOffers.isEmpty()) {
+            return;
+        }
+    }
+
     public boolean handleButtonClick(int id) {
         if(id >= 150260 && id <= 150269) {
-            int slot = id - 150260;
-            selectSlot(slot);
+            selectSlot(id - 150260);
             return true;
+        } else if(id >= 150497 && id <= 150545) {
+            selectPurchase(id - 150497);
+        } else if(id >= 150547 && id <= 150595) {
+            viewHistory( id - 150547);
         }
         switch (id) {
-            case 150270 -> {
-                viewRecentOffers();
-                player.getPacketSender().sendInterface(BUYING_INTERFACE_ID);
-            }
+            case 150270 -> viewBuyingPage();
             case 150856 -> openMainInterface();
             case 150547 -> player.getPacketSender().sendInterfaceOverlay(BUYING_INTERFACE_ID, 150857);
             case 150274 -> player.getPacketSender().sendInterfaceOverlay(MAIN_INTERFACE_ID, 150276);
@@ -199,6 +268,11 @@ public class TradingPost {
         DATABASE.createOffer(offer);
     }
 
+    public static void removeFromLiveOffers(Offer offer) {
+        LIVE_OFFERS.remove(offer);
+        DATABASE.deleteOffer(offer);
+    }
+
     public static void loadOffers() {
         DATABASE.loadOffers(LIVE_OFFERS);
     }
@@ -214,6 +288,13 @@ public class TradingPost {
         return offerList
                 .stream()
                 .filter(it -> it.getSlot() == slot)
+                .findFirst();
+    }
+
+    public Optional<Offer> containsOptional(Offer offer) {
+        return LIVE_OFFERS
+                .stream()
+                .filter(it -> it.getSlot() == offer.getSlot() && it.getItemId() == offer.getItemId() && it.getSeller() == offer.getSeller())
                 .findFirst();
     }
 }
