@@ -32,6 +32,14 @@ public class TradingPostWorker implements Runnable {
                     }
                 }
                 throw new RuntimeException(e);
+            } finally {
+                try {
+                    if(connection != null) {
+                        connection.close();
+                    }
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
             }
         }
     }

@@ -13,5 +13,8 @@ public class DataSource {
         ds.setJdbcUrl(JDBC_URL);
         ds.setUsername(USERNAME);
         ds.setPassword(PASSWORD);
+        ds.setMaximumPoolSize(20);
+        ds.setConnectionTimeout(120000);
+        ds.setLeakDetectionThreshold(300000);
     }
 }

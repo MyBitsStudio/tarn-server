@@ -20,4 +20,8 @@ public class Coffer {
     public void setAmount(int amount) {
         this.amount = amount;
     }
+
+    public void incrementAmount(int amount) {
+        this.amount += amount;
+    }
 }

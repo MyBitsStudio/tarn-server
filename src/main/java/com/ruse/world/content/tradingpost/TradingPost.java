@@ -8,10 +8,7 @@ import com.ruse.util.Misc;
 import com.ruse.world.content.dialogue.DialogueManager;
 import com.ruse.world.content.tradingpost.dialogues.CancelOptions;
 import com.ruse.world.content.tradingpost.dialogues.PurchaseStatement;
-import com.ruse.world.content.tradingpost.models.History;
-import com.ruse.world.content.tradingpost.models.Offer;
-import com.ruse.world.content.tradingpost.models.SearchFilter;
-import com.ruse.world.content.tradingpost.models.ViewType;
+import com.ruse.world.content.tradingpost.models.*;
 import com.ruse.world.content.tradingpost.persistance.Database;
 import com.ruse.world.content.tradingpost.persistance.SQLDatabase;
 import com.ruse.world.entity.impl.player.Player;
@@ -25,6 +22,7 @@ public class TradingPost {
     private static final int BUYING_INTERFACE_ID = 150440;
 
     private static final LinkedList<Offer> LIVE_OFFERS = new LinkedList<>();
+    private static final HashMap<String, Coffer> COFFERS = new HashMap<>();
 
     private static final Database DATABASE;
 
@@ -48,6 +46,7 @@ public class TradingPost {
         slotSelected = 0;
         viewType = ViewType.RECENT;
         offerList = getMyOffers();
+        player.getPacketSender().sendString(150436, getCofferAmount(player.getUsername()) + " " + ItemDefinition.forId(CURRENCY_ID).getName()+"s");
         for(int i = 0; i < 10; i++) {
             updateSlot(i);
         }
@@ -212,7 +211,16 @@ public class TradingPost {
             viewBuyingPage();
             return;
         }
+        if(COFFERS.get(offer.getSeller()) == null) {
+            createCoffer(offer.getSeller());
+        }
+        int cofferAmount = getCofferAmount(offer.getSeller());
         int total = amount * offer.getPrice();
+        if((long)cofferAmount+total > Integer.MAX_VALUE) {
+            player.getPacketSender().sendMessage("@red@This seller cannot accept more " + ItemDefinition.forId(CURRENCY_ID).getName() + "s into their coffer.");
+            viewBuyingPage();
+            return;
+        }
         if(player.getInventory().getAmount(CURRENCY_ID) < total) {
             player.getPacketSender().sendMessage("@red@You do not have enough coins to complete this transaction.");
             viewBuyingPage();
@@ -227,6 +235,9 @@ public class TradingPost {
                 toPurchase.incrementAmountSold(amount);
                 updateOffer(toPurchase);
             }
+            Coffer coffer = COFFERS.get(offer.getSeller());
+            coffer.incrementAmount(total);
+            updateCoffer(coffer);
             player.getInventory().delete(CURRENCY_ID, total);
             addToItemHistory(new History(toPurchase.getItemId(), toPurchase.getItemEffect(), toPurchase.getItemBonus(), toPurchase.getItemRarity(), amount, toPurchase.getPrice(), toPurchase.getSeller(), player.getUsername()));
             player.addItemUnderAnyCircumstances(new Item(toPurchase.getItemId(), amount, ItemEffect.getEffectForName(toPurchase.getItemEffect()), toPurchase.getItemBonus(), ItemEffect.getRarityForName(toPurchase.getItemRarity())));
@@ -241,6 +252,30 @@ public class TradingPost {
         if(viewingOffers == null || viewingOffers.isEmpty()) {
             return;
         }
+    }
+
+    private int getCofferAmount(String username) {
+        return COFFERS.get(username) == null ? 0 : COFFERS.get(username).getAmount();
+    }
+
+    private void collectCoffer() {
+        Coffer coffer;
+        if((coffer = COFFERS.get(player.getUsername())) == null) {
+            return;
+        }
+        int cofferAmount = getCofferAmount(player.getUsername());
+        if(cofferAmount == 0) {
+            return;
+        }
+        int inventoryAmount = player.getInventory().getAmount(CURRENCY_ID);
+        if((long)inventoryAmount + cofferAmount > Integer.MAX_VALUE) {
+            player.getPacketSender().sendMessage("@red@Please deposit some " + ItemDefinition.forId(CURRENCY_ID).getName() + " from your inventory and reclaim again.");
+            return;
+        }
+        player.getInventory().add(CURRENCY_ID, cofferAmount);
+        coffer.setAmount(0);
+        updateCoffer(coffer);
+        openMainInterface();
     }
 
     public boolean handleButtonClick(int id) {
@@ -260,6 +295,7 @@ public class TradingPost {
             case 150848 -> player.getPacketSender().sendInterfaceOverlay(BUYING_INTERFACE_ID, 150276);
             case 150861 -> player.getPacketSender().sendMessage(":tsearch:");
             case 150279,150859 -> player.getPacketSender().removeOverlay();
+            case 150434 -> collectCoffer();
             default -> {
                 return false;
             }
@@ -267,6 +303,7 @@ public class TradingPost {
         return true;
     }
 
+    //@todo item average
     public static String getAverageValue(Item item) {
 
         return "This item has no current value";
@@ -282,6 +319,16 @@ public class TradingPost {
         DATABASE.deleteOffer(offer);
     }
 
+    public static void createCoffer(String username) {
+        Coffer coffer = new Coffer(username, 0);
+        COFFERS.put(username, coffer);
+        DATABASE.createCoffer(coffer);
+    }
+
+    public static void updateCoffer(Coffer coffer) {
+        DATABASE.updateCoffer(coffer);
+    }
+
     public static void updateOffer(Offer offer) {
         DATABASE.updateOffer(offer);
     }
@@ -290,8 +337,17 @@ public class TradingPost {
         DATABASE.createHistory(history);
     }
 
-    public static void loadOffers() {
+    private static void loadOffers() {
         DATABASE.loadOffers(LIVE_OFFERS);
+    }
+
+    private static void loadCoffers() {
+        DATABASE.loadCoffers(COFFERS);
+    }
+
+    public static void load() {
+        loadOffers();
+        loadCoffers();
     }
 
     public List<Offer> getMyOffers() {

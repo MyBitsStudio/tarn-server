@@ -5,11 +5,13 @@ import com.ruse.world.content.tradingpost.models.Coffer;
 import com.ruse.world.content.tradingpost.models.History;
 import com.ruse.world.content.tradingpost.models.Offer;
 import com.ruse.world.content.tradingpost.concurrency.TradingPostService;
+import org.checkerframework.checker.units.qual.C;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.HashMap;
 import java.util.List;
 
 public class SQLDatabase implements Database {
@@ -22,6 +24,8 @@ public class SQLDatabase implements Database {
     private static final String DELETE_OFFER = "DELETE FROM live_offers WHERE seller = ? AND slot = ? LIMIT 1";
     private static final String UPDATE_OFFER = "UPDATE live_offers SET item_amount_sold = ? WHERE seller = ? AND slot = ? LIMIT 1";
     private static final String CREATE_HISTORY = "INSERT INTO offer_history(item_id, item_name, item_bonus, item_effect, item_rarity, item_amount, price_each, total_price, seller, buyer) VALUES(?,?,?,?,?,?,?,?,?,?)";
+    private static final String UPDATE_COFFER = "UPDATE coffers SET amount = ? WHERE username = ? LIMIT 1";
+    private static final String GET_ALL_COFFERS = "SELECT * FROM coffers";
 
     @Override
     public void createOffer(Offer offer) {
@@ -53,6 +57,20 @@ public class SQLDatabase implements Database {
             ) {
                 stmt.setString(1, coffer.getUsername());
                 stmt.setInt(2, coffer.getAmount());
+                stmt.executeUpdate();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        });
+    }
+
+    @Override
+    public void updateCoffer(Coffer coffer) {
+        service.takeRequest((connection) -> {
+            try(PreparedStatement stmt = connection.prepareStatement(UPDATE_COFFER)
+            ) {
+                stmt.setInt(1, coffer.getAmount());
+                stmt.setString(2, coffer.getUsername());
                 stmt.executeUpdate();
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -131,5 +149,23 @@ public class SQLDatabase implements Database {
     @Override
     public void loadHistory(List<History> historyList) {
 
+    }
+
+    @Override
+    public void loadCoffers(HashMap<String, Coffer> cofferHashMap) {
+        service.takeRequest((connection) -> {
+            try(Statement stmt = connection.createStatement();
+                ResultSet rs = stmt.executeQuery(GET_ALL_COFFERS)
+            ) {
+                while(rs.next()) {
+                    String username = rs.getString(2);
+                    int amount = rs.getInt(3);
+                    Coffer coffer = new Coffer(username, amount);
+                    cofferHashMap.put(username, coffer);
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        });
     }
 }

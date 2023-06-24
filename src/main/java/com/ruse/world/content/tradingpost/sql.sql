@@ -18,8 +18,9 @@ CREATE TABLE IF NOT EXISTS live_offers(
 
 CREATE TABLE IF NOT EXISTS coffers(
 	id INT AUTO_INCREMENT PRIMARY KEY,
-    username VARCHAR(255) NOT NULL UNIQUE,
-    amount BIGINT DEFAULT 0
+    username VARCHAR(255) NOT NULL,
+    amount BIGINT DEFAULT 0,
+    UNIQUE(username)
 );
 
 CREATE TABLE IF NOT EXISTS offer_history(
