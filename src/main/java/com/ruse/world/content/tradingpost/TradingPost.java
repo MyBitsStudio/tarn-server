@@ -205,6 +205,7 @@ public class TradingPost {
         }
     }
 
+    //@todo noted, stackable items
     public void purchase(Offer offer, int amount, int option) {
         if(option == 2) {
             viewBuyingPage();
