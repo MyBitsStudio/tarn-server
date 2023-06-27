@@ -65,12 +65,12 @@ public class CasketOpening {
             if (drop == null)
                 continue;
             double divisor = drop.getRate();
-            if (!dropRates.containsKey(divisor)) {
+            if (dropRates.containsKey(divisor)) {
+                dropRates.get(divisor).add(drop);
+            } else {
                 ArrayList<Box> items = new ArrayList<>();
                 items.add(drop);
                 dropRates.put(divisor, items);
-            } else {
-                dropRates.get(divisor).add(drop);
             }
         }
         for (double dropRate : dropRates.keySet()) {

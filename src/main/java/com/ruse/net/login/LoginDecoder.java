@@ -58,69 +58,55 @@ public final class LoginDecoder extends FrameDecoder {
             return null;
 
         switch (state) {
-            case HANDSHAKE_STATE:
-
+            case HANDSHAKE_STATE -> {
                 if (buffer.readableBytes() < 2)
                     return null;
-
                 final int requestOpcode = buffer.readUnsignedByte();
-
                 if (requestOpcode != LOGIN_REQUEST_OPCODE) {
-                    LOGGER.warning("Received invalid handshake opcode {"+requestOpcode+"}");
+                    LOGGER.warning("Received invalid handshake opcode {" + requestOpcode + "}");
                     channel.close();
                     return null;
                 }
 
                 // user hash
                 buffer.skipBytes(1);
-
                 encryptionSeed = new SecureRandom().nextLong();
-
                 final PacketBuilder handshakeResponseBuilder = new PacketBuilder();
                 handshakeResponseBuilder.putLong(0);
                 handshakeResponseBuilder.put(0);
                 handshakeResponseBuilder.putLong(encryptionSeed);
-
                 channel.write(handshakeResponseBuilder.toPacket());
                 state = LOGGING_IN_STATE;
                 return null;
-            case LOGGING_IN_STATE:
-
+            }
+            case LOGGING_IN_STATE -> {
                 if (buffer.readableBytes() < 2)
                     return null;
-
                 final int loginRequestOpcode = buffer.readByte();
-
                 if (loginRequestOpcode != 65 && loginRequestOpcode != 92) {
-                    LOGGER.warning("Received invalid login request opcode {"+loginRequestOpcode+"}");
+                    LOGGER.warning("Received invalid login request opcode {" + loginRequestOpcode + "}");
                     channel.close();
                     return null;
                 }
-
                 final int loginBlockLength = buffer.readByte() & 0xff;
-
                 if (buffer.readableBytes() < loginBlockLength) {
-                    LOGGER.warning("Received invalid login block length {"+loginBlockLength+"}");
+                    LOGGER.warning("Received invalid login block length {" + loginBlockLength + "}");
                     channel.close();
                     return null;
                 }
-
                 final int magicId = buffer.readUnsignedByte();
                 if (magicId != MAGIC_ID) {
-                    LOGGER.warning("Received invalid magic id {"+magicId+"}");
+                    LOGGER.warning("Received invalid magic id {" + magicId + "}");
                     channel.close();
                     return null;
                 }
-
                 final int clientVersion = buffer.readShort();
                 final int memoryStatus = buffer.readByte();
-
                 if (memoryStatus != HIGH_MEMORY_STATUS && memoryStatus != LOW_MEMORY_STATUS) {
-                    LOGGER.warning("Received invalid memory status {"+memoryStatus+"}");
+                    LOGGER.warning("Received invalid memory status {" + memoryStatus + "}");
                     channel.close();
                     return null;
                 }
-
                 final int pinCode = buffer.readShort();
                 final String authCode = Misc.readString(buffer).substring(33);
 
@@ -141,7 +127,7 @@ public final class LoginDecoder extends FrameDecoder {
 
                     final int securityId = securityBuffer.readByte();
                     if (securityId != 21) {
-                        LOGGER.warning("Received invalid security id {"+securityId+"}");
+                        LOGGER.warning("Received invalid security id {" + securityId + "}");
                         channel.close();
                         return null;
                     }
@@ -149,7 +135,7 @@ public final class LoginDecoder extends FrameDecoder {
                     final long clientSeed = securityBuffer.readLong();
                     final long seedReceived = securityBuffer.readLong();
                     if (seedReceived != encryptionSeed) {
-                        LOGGER.warning("Received invalid encryption seed {"+seedReceived+"}");
+                        LOGGER.warning("Received invalid encryption seed {" + seedReceived + "}");
                         channel.close();
                         return null;
                     }
@@ -170,25 +156,24 @@ public final class LoginDecoder extends FrameDecoder {
                     final String mac = Misc.readString(securityBuffer);
                     final String serial = Misc.readString(securityBuffer);
 
-                    if(StringCleaner.securityBreach(new String[]{username, serial, mac})){
-                        System.out.println("Security breach: "+ Arrays.toString(new String[]{username, password, serial, mac}));
+                    if (StringCleaner.securityBreach(new String[]{username, serial, mac})) {
+                        System.out.println("Security breach: " + Arrays.toString(new String[]{username, password, serial, mac}));
                         return null;
                     }
 
-                    if(StringCleaner.censored(new String[]{username, serial, mac})){
-                        System.out.println("Security breach: "+ Arrays.toString(new String[]{username, password, serial, mac}));
+                    if (StringCleaner.censored(new String[]{username, serial, mac})) {
+                        System.out.println("Security breach: " + Arrays.toString(new String[]{username, password, serial, mac}));
                         return null;
                     }
 
                     if (username.length() > 12 || password.length() > 20) {
-                        LOGGER.warning("Username {"+username+"} or password {"+password+"} length too long");
+                        LOGGER.warning("Username {" + username + "} or password {" + password + "} length too long");
                         return null;
                     }
 
                     username = Misc.formatText(username.toLowerCase());
-                  //  System.out.println("completedCaptcha(channel, authCode, username): " + completedCaptcha(channel, authCode, username));
-                  //  System.out.println("PlayerLoading.accountExists(username): " + PlayerLoading.accountExists(username));
-
+                    //  System.out.println("completedCaptcha(channel, authCode, username): " + completedCaptcha(channel, authCode, username));
+                    //  System.out.println("PlayerLoading.accountExists(username): " + PlayerLoading.accountExists(username));
 
 
                     if (PlayerLoading.accountExists(username) || SecurityUtils.playerExists(username) || completedCaptcha(channel, authCode, username)) {
@@ -211,6 +196,7 @@ public final class LoginDecoder extends FrameDecoder {
                     writeResponse(channel, LoginResponses.LOGIN_GAME_UPDATE, null);
                     return null;
                 }
+            }
         }
         return null;
     }

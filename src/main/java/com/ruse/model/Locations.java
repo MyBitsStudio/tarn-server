@@ -2183,6 +2183,12 @@ for (Item item : player.getInventory().getItems()) {
 		},
 		CRUCIO(new int[] { 3011, 3039 }, new int[] { 5217, 5248 }, true, false, true, false, false, false) {
 		},
+
+		//TOWER
+		TOWER_LOBBY(new int[] {2843, 2874 }, new int[] { 2734, 2751 }, false, false, false, false, false, false) {
+		},
+		TOWER_1(new int[] {2816, 2880 }, new int[] { 2752, 2815 }, true, true, true, false, false, false) {
+		},
 		;
 
 		Location(int[] x, int[] y, boolean multi, boolean summonAllowed, boolean followingAllowed,

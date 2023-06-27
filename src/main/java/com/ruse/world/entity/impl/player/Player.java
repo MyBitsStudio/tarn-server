@@ -80,8 +80,9 @@ import com.ruse.world.content.minigames.impl.dungeoneering.Dungeoneering;
 import com.ruse.world.content.newspinner.MysteryBoxManager;
 import com.ruse.world.content.pos.PlayerOwnedShopManager;
 import com.ruse.world.content.properscratchcard.Scratchcard;
-import com.ruse.world.content.raids.Raid;
-import com.ruse.world.content.raids.RaidParty;
+import com.ruse.world.packages.plugin.impl.BossPlugin;
+import com.ruse.world.packages.raids.Raid;
+import com.ruse.world.packages.raids.RaidParty;
 import com.ruse.world.content.scratchcards.ScratchCard;
 import com.ruse.world.packages.ranks.DonatorRank;
 import com.ruse.world.packages.ranks.StaffRank;
@@ -108,6 +109,7 @@ import com.ruse.world.entity.impl.mini.MiniPlayer;
 import com.ruse.world.entity.impl.npc.NPC;
 import com.ruse.world.entity.impl.player.StartScreen.GameModes;
 import com.ruse.world.instance.impl.DungeoneeringInstance;
+import com.ruse.world.packages.tower.TowerProgress;
 import com.ruse.world.packages.vip.VIP;
 import com.ruse.world.region.Region;
 import com.ruse.world.region.RegionManager;
@@ -4364,4 +4366,10 @@ public class Player extends Character {
 
     @Getter@Setter
     public VIP playerVIP = new VIP(this);
+
+    @Getter@Setter
+    private TowerProgress tower = new TowerProgress(this);
+
+    @Getter@Setter
+    private BossPlugin bossPlugin = new BossPlugin(this);
 }

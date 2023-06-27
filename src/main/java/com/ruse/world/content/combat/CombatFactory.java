@@ -46,6 +46,8 @@ import com.ruse.world.packages.combat.CombatConstants;
 import com.ruse.world.packages.combat.max.MagicMax;
 import com.ruse.world.packages.combat.max.MeleeMax;
 import com.ruse.world.packages.combat.max.RangeMax;
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Arrays;
 import java.util.Optional;
@@ -346,44 +348,31 @@ public final class CombatFactory {
      * @param type   the combat type being used.
      * @return the melee hit.
      */
-    public static Hit getHit(Character entity, Character victim, CombatType type) {
+    @Contract("_, _, _ -> new")
+    public static @NotNull Hit getHit(Character entity, Character victim, @NotNull CombatType type) {
         long maxhit;
         switch (type) {
-            case MELEE:
-                maxhit = MeleeMax.newMelee(entity, victim) / 10;
-//                if (entity.isPlayer() && victim.isNpc()) {
-//                    Player player = (Player) entity;
-//                    if (player.getEquipment().getItems()[Equipment.HEAD_SLOT].getId() == 21025) {
-//                        damage *= 2;
-//                    }
-//                }
-                return new Hit(Misc.inclusiveRandom(0, maxhit) * 10, Hitmask.RED, CombatIcon.MELEE);
-            case RANGED:
-                maxhit = RangeMax.newRange(entity, victim) / 10;
-//                if (entity.isPlayer() && victim.isNpc()) {
-//                    Player player = (Player) entity;
-//                    if (player.getEquipment().contains(22006) && player.getLastCombatType() == RANGED) {
-//                        NPC npc = (NPC) victim;
-//                        if (npcsDeathDartDontWork(npc)) {
-//                            player.sendMessage("The Death-touch dart didn't work on this.");
-//                        } else {
-//                            calc = victim.getConstitution();
-//                        }
-//                    }
-//                }
-                return new Hit(Misc.inclusiveRandom(0, maxhit) * 10, Hitmask.RED, CombatIcon.RANGED);
-            case MAGIC:
-                maxhit = MagicMax.newMagic(entity, victim) / 10;
-                return new Hit(Misc.inclusiveRandom(0, maxhit) * 10, Hitmask.RED, CombatIcon.MAGIC);
-            case DRAGON_FIRE:
+            case MELEE -> {
+                maxhit = MeleeMax.newMelee(entity, victim);
+                return new Hit(Misc.inclusiveRandom(0, maxhit), Hitmask.RED, CombatIcon.MELEE);
+            }
+            case RANGED -> {
+                maxhit = RangeMax.newRange(entity, victim);
+                return new Hit(Misc.inclusiveRandom(0, maxhit), Hitmask.RED, CombatIcon.RANGED);
+            }
+            case MAGIC -> {
+                maxhit = MagicMax.newMagic(entity, victim);
+                return new Hit(Misc.inclusiveRandom(0, maxhit), Hitmask.RED, CombatIcon.MAGIC);
+            }
+            case DRAGON_FIRE -> {
                 return new Hit(Misc.inclusiveRandom(0, CombatFactory.calculateMaxDragonFireHit(entity, victim)),
                         Hitmask.RED, CombatIcon.MAGIC);
-            default:
-                throw new IllegalArgumentException("Invalid combat type: " + type);
+            }
+            default -> throw new IllegalArgumentException("Invalid combat type: " + type);
         }
     }
 
-    public static boolean npcsDeathDartDontWork(NPC npc) {
+    public static boolean npcsDeathDartDontWork(@NotNull NPC npc) {
         int id = npc.getId();
         return id == 8013 || id == 8009 || id == 3830 || id == 187 || id == 3779 || id == 12239 || id == 7553 || id == 3305 || id == 9017 || id == 9014 || id == 9020 || id == 9904 || id == 9904 || id == 9906 || id == 9907 || id == 9908;
 
@@ -406,16 +395,19 @@ public final class CombatFactory {
             Player p1 = (Player) attacker;
             Player p2 = (Player) victim;
             switch (type) {
-                case MAGIC:
+                case MAGIC -> {
                     int mageAttk = DesolaceFormulas.getMagicAttack(p1);
                     return Misc.getRandom(DesolaceFormulas.getMagicDefence(p2)) < Misc.getRandom((mageAttk / 2))
                             + Misc.getRandom((int) (mageAttk / 2.1));
-                case MELEE:
+                }
+                case MELEE -> {
                     int def = 1 + DesolaceFormulas.getMeleeDefence(p2);
                     return Misc.getRandom(def) < Misc.getRandom(1 + DesolaceFormulas.getMeleeAttack(p1)) + (def / 4.5);
-                case RANGED:
+                }
+                case RANGED -> {
                     return Misc.getRandom(10 + DesolaceFormulas.getRangedDefence(p2)) < Misc
                             .getRandom(15 + DesolaceFormulas.getRangedAttack(p1));
+                }
             }
         }
 //        else if (attacker.isPlayer() && victim.isNpc() && type != MAGIC) {
@@ -1975,7 +1967,7 @@ public final class CombatFactory {
      * @param damage    the total amount of damage dealt.
      */
     // TODO: Use abstraction for this, will need it when more effects are added.
-    protected static void handleArmorEffects(Character attacker, Character target, long damage, CombatType combatType) {
+    static void handleArmorEffects(Character attacker, Character target, long damage, CombatType combatType) {
         if (attacker.getConstitution() > 0 && damage > 0) {
             if (target != null && target.isPlayer()) {
                 Player t2 = (Player) target;
@@ -2019,26 +2011,6 @@ public final class CombatFactory {
                         t2.getUpdateFlag().flag(Flag.APPEARANCE);
                     }
                 }
-                /** RING OF LIFE **/
-                else if ((t2.getEquipment().getItems()[Equipment.RING_SLOT].getId() == 2570
-                        || t2.getSkillManager().skillCape(Skill.DEFENCE)) && t2.getLocation() != Location.DUEL_ARENA
-                        && t2.getLocation() != Location.WILDERNESS && t2.getLocation() != Location.ZULRAH
-                        && t2.getLocation() != Location.GRAVEYARD && t2.getLocation() != Location.FREE_FOR_ALL_ARENA) {
-                    if (t2.getSkillManager().getCurrentLevel(
-                            Skill.CONSTITUTION) <= t2.getSkillManager().getMaxLevel(Skill.CONSTITUTION) * .1) {
-                        if ((t2.getEquipment().getItems()[Equipment.RING_SLOT].getId() == 2570)) {
-                            t2.getPacketSender().sendMessage(
-                                    "Your Ring of Life tried to teleport you away, and was destroyed in the process.");
-                            t2.getEquipment().delete(t2.getEquipment().getItems()[Equipment.RING_SLOT]);
-                        }
-                        if (t2.getSkillManager().skillCape(Skill.DEFENCE)) {
-                            t2.getPacketSender()
-                                    .sendMessage("Your Defence Cape effect activated, and tried to teleport you away.");
-                        }
-                        TeleportHandler.teleportPlayer(t2, GameSettings.DEFAULT_POSITION.copy(),
-                                TeleportType.RING_TELE);
-                    }
-                }
 
                 /*
                  * need loop for enum - .forid()?
@@ -2047,43 +2019,6 @@ public final class CombatFactory {
                 // WeaponPoison.handleWeaponPoison(((Player)attacker), t2);
 
             }
-        }
-
-        // 25% chance of these barrows armor effects happening.
-        if (Misc.exclusiveRandom(4) == 0) {
-
-            // The guthans effect is here.
-            if (CombatFactory.fullGuthans(attacker)) {
-                target.performGraphic(new Graphic(398));
-                attacker.heal(damage);
-                return;
-            }
-            // The rest of the effects only apply to victims that are players.
-            /*
-             * if (builder.getVictim().isPlayer()) { Player victim = (Player)
-             * builder.getVictim();
-             *
-             * // The torags effect is here. if
-             * (CombatFactory.fullTorags(builder.getEntity())) {
-             * victim.decrementRunEnergy(Misc.inclusiveRandom(1, 100));
-             * victim.performGraphic(new Graphic(399)); return; }
-             *
-             * // The ahrims effect is here. if
-             * (CombatFactory.fullAhrims(builder.getEntity()) &&
-             * victim.getSkills()[Skills.STRENGTH].getLevel() >=
-             * victim.getSkills()[Skills.STRENGTH].getLevelForExperience()) {
-             * victim.getSkills()[Skills.STRENGTH].decreaseLevel(Utility.inclusiveRandom( 1,
-             * 10)); Skills.refresh(victim, Skills.STRENGTH); victim.performGraphic(new
-             * Graphic(400)); return; }
-             *
-             * // The karils effect is here. if
-             * (CombatFactory.fullKarils(builder.getEntity()) &&
-             * victim.getSkills()[Skills.AGILITY].getLevel() >=
-             * victim.getSkills()[Skills.AGILITY].getLevelForExperience()) {
-             * victim.performGraphic(new Graphic(401));
-             * victim.getSkills()[Skills.AGILITY].decreaseLevel(Utility.inclusiveRandom( 1,
-             * 10)); Skills.refresh(victim, Skills.AGILITY); return; } }
-             */
         }
     }
 
@@ -2158,13 +2093,12 @@ public final class CombatFactory {
             }
 
             if (PrayerHandler.isActivated(p, PrayerHandler.SOUL_LEECH) && damage > 0) {
-                //p.getPacketSender().sendMessage("Soul leech drain test");
                 final long form = damage / 2;
                 new Projectile(attacker, target, 2263, 44, 3, 43, 31, 0).sendProjectile();
                 TaskManager.submit(new Task(1, p, false) {
                     @Override
                     public void execute() {
-                        if (!(attacker == null || target == null || attacker.getConstitution() <= 0)) {
+                        if (!(attacker.getConstitution() <= 0)) {
                             target.performGraphic(new Graphic(2264, GraphicHeight.LOW));
                             new Projectile(target, attacker, 2263, 44, 3, 43, 31, 0).sendProjectile();
                             p.heal(form);
@@ -2180,7 +2114,7 @@ public final class CombatFactory {
                                 victim.getSkillManager().updateSkill(Skill.PRAYER);
                             }
                         }
-                        stop();
+                        super.stop();
                     }
                 });
             }
@@ -2190,7 +2124,7 @@ public final class CombatFactory {
                 TaskManager.submit(new Task(1, p, false) {
                     @Override
                     public void execute() {
-                        if (!(attacker == null || target == null || attacker.getConstitution() <= 0)) {
+                        if (!(attacker.getConstitution() <= 0)) {
                             target.performGraphic(new Graphic(2264, GraphicHeight.LOW));
                             p.heal(form);
                             if (target.isPlayer()) {
@@ -2205,7 +2139,7 @@ public final class CombatFactory {
                                 victim.getSkillManager().updateSkill(Skill.PRAYER);
                             }
                         }
-                        stop();
+                        super.stop();
                     }
                 });
             }
@@ -2350,7 +2284,7 @@ public final class CombatFactory {
                     TaskManager.submit(new Task(1, victim, false) {
                         @Override
                         public void execute() {
-                            if (attacker == null || attacker.getConstitution() <= 0) {
+                            if (attacker.getConstitution() <= 0) {
                                 stop();
                             } else
                                 attacker.dealDamage(new Hit(toDeflect, Hitmask.RED, CombatIcon.DEFLECT));

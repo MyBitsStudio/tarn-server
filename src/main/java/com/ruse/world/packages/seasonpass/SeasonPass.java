@@ -91,6 +91,10 @@ public class SeasonPass {
     }
 
     private boolean claimReward(int tier) {
+        if(player.getGameMode().isAFK()){
+            player.getPacketSender().sendMessage("You cannot claim rewards while AFK.");
+            return false;
+        }
         Item[] items = new Item[2];
         SeasonPassLevel spLevel = getSpLevel(tier);
         int spacesNeeded = 0;

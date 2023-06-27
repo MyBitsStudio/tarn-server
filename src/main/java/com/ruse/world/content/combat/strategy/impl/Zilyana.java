@@ -35,7 +35,7 @@ public class Zilyana implements CombatStrategy {
 		}
 		if (Locations.goodDistance(zilyana.getPosition().copy(), victim.getPosition().copy(), 1)
 				&& Misc.getRandom(5) <= 3) {
-			zilyana.performAnimation(new Animation(zilyana.getDefinition().getAttackAnimation()));
+			zilyana.performAnimation(new Animation(zilyana.getDefinition().getAttackAnim()));
 			zilyana.getCombatBuilder().setContainer(new CombatContainer(zilyana, victim, 1, 1, CombatType.MELEE, true));
 		} else {
 			zilyana.performAnimation(attack_anim);

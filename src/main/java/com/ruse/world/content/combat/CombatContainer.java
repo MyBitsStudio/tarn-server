@@ -125,9 +125,7 @@ public class CombatContainer {
 			}
 		}
 
-		if(attacker instanceof NPC) {
-			NPC npc = (NPC) attacker;
-
+		if(attacker instanceof NPC npc) {
 			// The wolf should do 10 damage every attack
 			if(npc.getId() == 6047) {
 				for (int i = 0; i < hitAmount; i++) {

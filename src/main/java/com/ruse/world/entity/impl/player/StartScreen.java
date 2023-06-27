@@ -50,7 +50,7 @@ public class StartScreen {
     public static boolean handleButton(Player player, int buttonId) {
         final int CONFIRM = 116010;
         if (buttonId == CONFIRM) {
-            if (player.didReceiveStarter() == true) {
+            if (player.didReceiveStarter()) {
                 return true;
             }//ConnectionHandler.getStarters(player.getHostAddress()) <= GameSettings.MAX_STARTERS_PER_IP
 			/*if(player.selectedGameMode == GameModes.VETERAN_MODE) {
@@ -215,22 +215,21 @@ public class StartScreen {
                 "This mode is for players that love grinding",
                 "@whi@30.0% Droprate bonus", "", "", ""),
 
-        ;
-        private String name;
-        private int stringId;
-        private int checkClick;
-        private int textClick;
-        private int configId;
-        private Item[] starterPackItems;
-        private String line1;
-        private String line2;
-        private String line3;
-        private String line4;
-        private String line5;
-        private String line6;
-        private String line7;
+        AFK("AFK", 52774, 116009, 1, 3,
+                new Item[]{new Item(703, 1)
+                },
+                "AFK Mode",
+                "@red@Gain extra AFK tickets for your main",
+                "@red@RESTRICTIONS APPLIED",
+                "", "", "", ""),
 
-        private GameModes(String name, int stringId, int checkClick, int textClick, int configId, Item[] starterPackItems, String line1, String line2, String line3, String line4, String line5, String line6, String line7) {
+        ;
+        private final String name;
+        private final int stringId, checkClick, textClick, configId;
+        private final Item[] starterPackItems;
+        private final String line1, line2, line3, line4, line5, line6, line7;
+
+        GameModes(String name, int stringId, int checkClick, int textClick, int configId, Item[] starterPackItems, String line1, String line2, String line3, String line4, String line5, String line6, String line7) {
             this.name = name;
             this.stringId = stringId;
             this.checkClick = checkClick;

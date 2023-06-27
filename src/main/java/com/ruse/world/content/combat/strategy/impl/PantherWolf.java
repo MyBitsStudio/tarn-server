@@ -29,7 +29,7 @@ public class PantherWolf implements CombatStrategy {
         if(wolf.isChargingAttack() || victim.getConstitution() <= 0) {
             return true;
         }
-        wolf.performAnimation(new Animation(wolf.getDefinition().getAttackAnimation()));
+        wolf.performAnimation(new Animation(wolf.getDefinition().getAttackAnim()));
         wolf.getCombatBuilder().setContainer(new CombatContainer(wolf, victim, 1, 1, CombatType.MELEE, false));
         return false;
     }

@@ -1,7 +1,10 @@
 package com.ruse.world.content;
 
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.concurrent.CopyOnWriteArrayList;
 
+import com.ruse.GameSettings;
 import com.ruse.model.GameMode;
 import com.ruse.model.Item;
 import com.ruse.model.Locations;
@@ -109,6 +112,14 @@ public class Trading {
 			return;
 		}
 
+		if(player.getGameMode().isAFK() || player2.getGameMode().isAFK()) {
+			if(player.getGameMode().isAFK() && !player.getHostAddress().equals(player2.getHostAddress())
+			|| player2.getGameMode().isAFK() && !player.getHostAddress().equals(player2.getHostAddress())) {
+				player.getPacketSender().sendMessage("You cannot trade someone who is AFK.");
+				return;
+			}
+		}
+
 		/*
 		 * if(Misc.getMinutesPlayed(player) < 15) { player.getPacketSender().
 		 * sendMessage("You must have played for at least 15 minutes in order to trade someone."
@@ -163,6 +174,7 @@ public class Trading {
 						.sendMessage("Please close all open interfaces before requesting to open another one.");
 			return;
 		}
+
 		tradeWith = player2.getIndex();
 		if (getTradeWith() == player.getIndex())
 			return;
@@ -234,7 +246,11 @@ public class Trading {
 		player.getPacketSender().sendItemContainer(player.getInventory(), 3322);
 	}
 
-	public void tradeItem(int itemId, int amount, int slot, ItemEffect effect) {
+	private int[] allowAFKItems = {
+			5020
+	};
+
+	public void tradeItem(int itemId, int amount, int slot, ItemEffect effect, int bonus) {
 		if (slot < 0) {
 			return;
 		}
@@ -245,17 +261,18 @@ public class Trading {
 		if (player2 == null || player == null) {
 			return;
 		}
-		switch (itemId) {
-			case 6769:
-			case 10942:
-			case 10934:
-			case 10935:
-			case 10943:
-				player.getPacketSender().sendMessage("@red@You can not trade bonds, you can only trade them via player owned shops!");
+		if(player.getGameMode().isAFK() || player2.getGameMode().isAFK()) {
+			if(!Collections.singletonList(allowAFKItems).contains(itemId)){
+				player.getPacketSender().sendMessage("You can not trade these items being AFK.");
 				return;
+			}
+		}
+		if(Collections.singletonList(GameSettings.UNTRADEABLE_ITEMS).contains(itemId)) {
+			player.getPacketSender().sendMessage("You can not trade this item.");
+			return;
 		}
 		Item itemToTrade = player.getInventory().getItems()[slot];
-		itemToTrade = new Item(itemToTrade.getId(), itemToTrade.getAmount(), itemToTrade.getEffect(), player.getInventory().getItems()[slot].getBonus());
+		itemToTrade = new Item(itemToTrade.getId(), itemToTrade.getAmount(), itemToTrade.getEffect(), itemToTrade.getBonus());
 		if(itemToTrade.getEffect() != effect) {
 			return;
 		}

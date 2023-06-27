@@ -50,7 +50,7 @@ public class BossCombat implements CombatStrategy {
 
             if(Misc.random(3) == 0) {
                 Position pos = minionPos[Misc.random(minionPos.length - 1)];
-                boss.performAnimation(new Animation(boss.getDefinition().getAttackAnimation()));
+                boss.performAnimation(new Animation(boss.getDefinition().getAttackAnim()));
                 DonationManager.getInstance().spawnMinion(pos);
                 boss.forceChat("Minion, rise and attack!");
             } else {
@@ -85,7 +85,7 @@ public class BossCombat implements CombatStrategy {
 
     private void mageThemAll(@NotNull DonationBoss boss){
         boss.setChargingAttack(true);
-        boss.performAnimation(new Animation(boss.getDefinition().getAttackAnimation()));
+        boss.performAnimation(new Animation(boss.getDefinition().getAttackAnim()));
         boss.forceChat("Check out this spell");
         TaskManager.submit(new Task(1, boss, false) {
             int tick = 0;
@@ -109,7 +109,7 @@ public class BossCombat implements CombatStrategy {
 
     private void runForYourLife(@NotNull DonationBoss boss){
         boss.setChargingAttack(true);
-        boss.performAnimation(new Animation(boss.getDefinition().getAttackAnimation()));
+        boss.performAnimation(new Animation(boss.getDefinition().getAttackAnim()));
         boss.forceChat("You think you can run?");
         TaskManager.submit(new Task(1, boss, false) {
             int tick = 0;
@@ -178,13 +178,13 @@ public class BossCombat implements CombatStrategy {
             boss.getCombatBuilder().setContainer(new CombatContainer(boss, players.get(0), 2, 0, CombatType.MELEE, false));
             boss.getCombatBuilder().setContainer(new CombatContainer(boss, players.get(1), 2, 0, CombatType.MELEE, true));
             boss.setChargingAttack(true);
-            boss.performAnimation(new Animation(boss.getDefinition().getAttackAnimation()));
+            boss.performAnimation(new Animation(boss.getDefinition().getAttackAnim()));
 
         } else {
             boss.getCombatBuilder().setContainer(new CombatContainer(boss, players.get(0), 2, 0, CombatType.MELEE, false));
             boss.getCombatBuilder().setContainer(new CombatContainer(boss, players.get(0), 2, 0, CombatType.MELEE, true));
             boss.setChargingAttack(true);
-            boss.performAnimation(new Animation(boss.getDefinition().getAttackAnimation()));
+            boss.performAnimation(new Animation(boss.getDefinition().getAttackAnim()));
 
         }
 
@@ -204,7 +204,7 @@ public class BossCombat implements CombatStrategy {
 
     private void earthquake(@NotNull DonationBoss boss){
         boss.setChargingAttack(true);
-        boss.performAnimation(new Animation(boss.getDefinition().getAttackAnimation())); // new anim
+        boss.performAnimation(new Animation(boss.getDefinition().getAttackAnim())); // new anim
 
         TaskManager.submit(new Task(1, boss, false) {
             int tick = 0;
@@ -241,7 +241,7 @@ public class BossCombat implements CombatStrategy {
     private void meleeAttack(@NotNull DonationBoss boss, Player player) {
         boss.getCombatBuilder().setContainer(new CombatContainer(boss, player, 1, 0, CombatType.MELEE, false));
         boss.setChargingAttack(true);
-        boss.performAnimation(new Animation(boss.getDefinition().getAttackAnimation()));
+        boss.performAnimation(new Animation(boss.getDefinition().getAttackAnim()));
 
 
         TaskManager.submit(new Task(1, boss, false) {

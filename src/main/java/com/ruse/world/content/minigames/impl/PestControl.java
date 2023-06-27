@@ -452,7 +452,7 @@ public class PestControl {
 								1);
 					} else {
 						npc.getCombatBuilder().reset(true);
-						int max = 5 + (npc.getDefinition().getCombatLevel() / 9);
+						int max = 5 + (npc.getDefinition().getCombat() / 9);
 						attack(npc, knight, 3901, max, CombatIcon.MELEE);
 					}
 				}
@@ -480,7 +480,7 @@ public class PestControl {
 					TaskManager.submit(new Task(1) {
 						@Override
 						public void execute() {
-							int max = 7 + (npc.getDefinition().getCombatLevel() / 9);
+							int max = 7 + (npc.getDefinition().getCombat() / 9);
 							attack(npc, knight, npc_ == PestControlNPC.DEFILER ? 3920 : 3882, max,
 									npc_ == PestControlNPC.DEFILER ? CombatIcon.RANGED : CombatIcon.MAGIC);
 							stop();

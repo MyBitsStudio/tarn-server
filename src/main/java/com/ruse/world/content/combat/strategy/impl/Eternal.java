@@ -39,7 +39,7 @@ public class Eternal implements CombatStrategy {
 		}
 		if (Locations.goodDistance(eternal.getPosition().copy(), victim.getPosition().copy(), 3)
 				&& Misc.getRandom(5) <= 3) {
-			eternal.performAnimation(new Animation(eternal.getDefinition().getAttackAnimation()));
+			eternal.performAnimation(new Animation(eternal.getDefinition().getAttackAnim()));
 			// Eternal.performAnimation(new Animation(5026));
 			eternal.getCombatBuilder().setContainer(new CombatContainer(eternal, victim, 1, 1, CombatType.MELEE, true));
 

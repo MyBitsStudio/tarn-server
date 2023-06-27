@@ -42,7 +42,7 @@ public class KreeArra implements CombatStrategy {
 		}
 
 		final CombatType style = Misc.getRandom(1) == 0 ? CombatType.MAGIC : CombatType.RANGED;
-		kreearra.performAnimation(new Animation(kreearra.getDefinition().getAttackAnimation()));
+		kreearra.performAnimation(new Animation(kreearra.getDefinition().getAttackAnim()));
 		kreearra.setChargingAttack(true);
 		Player target = (Player) victim;
 		TaskManager.submit(new Task(1, kreearra, false) {

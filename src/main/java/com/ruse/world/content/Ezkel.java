@@ -62,8 +62,8 @@ public class Ezkel {
 
             Achievements.doProgress(killer, Achievements.Achievement.KILL_45_GLOBAL_BOSSES);
             DailyTask.GLOBAL_BOSSES.tryProgress(killer);
-            KillsTracker.submitById(killer, npc.getId(), true, npc.getDefinition().boss);
-            KillsTracker.submitById(killer, npc.getId(), false, npc.getDefinition().boss);
+            KillsTracker.submitById(killer, npc.getId(), true, npc.getDefinition().isBoss());
+            KillsTracker.submitById(killer, npc.getId(), false, npc.getDefinition().isBoss());
             NPCDrops.handleDrops(killer, npc);
             iterator.remove();
         }

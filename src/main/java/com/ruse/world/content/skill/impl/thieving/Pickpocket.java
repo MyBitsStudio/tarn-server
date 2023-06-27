@@ -51,8 +51,8 @@ public class Pickpocket {
 
 			npc.forceChat(data.getFailMessage());
 			npc.setPositionToFace(player.getPosition());
-			if (npc.getDefinition().getAttackAnimation() > 0) {
-				npc.performAnimation(new Animation(npc.getDefinition().getAttackAnimation()));
+			if (npc.getDefinition().getAttackAnim() > 0) {
+				npc.performAnimation(new Animation(npc.getDefinition().getAttackAnim()));
 			} else {
 				npc.performAnimation(new Animation(422)); // punch anim
 			}

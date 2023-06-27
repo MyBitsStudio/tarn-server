@@ -74,7 +74,7 @@ public final class NpcAggression {
 				}
 
 				if (!npc.isForceAggressive()) {
-					if (player.getSkillManager().getCombatLevel() > (npc.getDefinition().getCombatLevel() * 2)
+					if (player.getSkillManager().getCombatLevel() > (npc.getDefinition().getCombat() * 2)
 							&& player.getLocation() != Location.WILDERNESS && !dung) {
 						continue;
 					}

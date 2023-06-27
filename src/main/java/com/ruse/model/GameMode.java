@@ -5,15 +5,19 @@ import com.ruse.world.entity.impl.player.Player;
 
 public enum GameMode {
 
-	NORMAL, ULTIMATE_IRONMAN, IRONMAN, VETERAN_MODE, GROUP_IRONMAN;
+	NORMAL, ULTIMATE_IRONMAN, IRONMAN, VETERAN_MODE, GROUP_IRONMAN, AFK;
 
 	public boolean isIronman() {
 		return this.equals(IRONMAN) || this.equals(ULTIMATE_IRONMAN) || this.equals(GROUP_IRONMAN);
 	}
 
+	public boolean isAFK() {
+		return this.equals(AFK);
+	}
+
 	public static void set(Player player, GameMode newMode, boolean death) {
 		if (UltimateIronmanHandler.hasItemsStored(player)) {
-			player.getPacketSender().sendMessage("You must claim your stored items at Dungeoneering first.");
+			player.getPacketSender().sendMessage("You must claim your stored items first.");
 			player.setPlayerLocked(false);
 			player.getPacketSender().sendInterfaceRemoval();
 			return;
@@ -76,19 +80,14 @@ public enum GameMode {
 		}
 		player.setGameMode(newMode);
 		player.getPacketSender().sendIronmanMode(newMode.ordinal());
-		if (!death) {
+		if (death) {
+			player.getPacketSender().sendMessage("Your account progress has been reset.");
+		} else {
 			player.getPacketSender()
 					.sendMessage(
 							"You've set your Gamemode to " + newMode.name().toLowerCase().replaceAll("_", " ") + ".")
-					.sendMessage("If you wish to change it, please talk to the town crier at home.");
-		} else {
-			player.getPacketSender().sendMessage("Your account progress has been reset.");
+					.sendMessage("If you wish to change it, please message support.");
 		}
-		if (player.newPlayer()) {
-			player.setPlayerLocked(true);
-			
-		} else {
-			player.setPlayerLocked(false);
-		}
+		player.setPlayerLocked(player.newPlayer());
 	}
 }

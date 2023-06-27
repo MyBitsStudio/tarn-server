@@ -42,7 +42,7 @@ public class BandosAvatar implements CombatStrategy {
 		}*/
 		if (Locations.goodDistance(bandosAvatar.getPosition().copy(), victim.getPosition().copy(), 1)
 				&& Misc.getRandom(5) <= 3) {
-			bandosAvatar.performAnimation(new Animation(bandosAvatar.getDefinition().getAttackAnimation()));
+			bandosAvatar.performAnimation(new Animation(bandosAvatar.getDefinition().getAttackAnim()));
 			bandosAvatar.getCombatBuilder()
 					.setContainer(new CombatContainer(bandosAvatar, victim, 1, 1, CombatType.MELEE, true));
 		} else if (!Locations.goodDistance(bandosAvatar.getPosition().copy(), victim.getPosition().copy(), 3)
@@ -57,7 +57,7 @@ public class BandosAvatar implements CombatStrategy {
 				@Override
 				protected void execute() {
 					bandosAvatar.moveTo(pos);
-					bandosAvatar.performAnimation(new Animation(bandosAvatar.getDefinition().getAttackAnimation()));
+					bandosAvatar.performAnimation(new Animation(bandosAvatar.getDefinition().getAttackAnim()));
 					bandosAvatar.getCombatBuilder()
 							.setContainer(new CombatContainer(bandosAvatar, victim, 1, 1, CombatType.MELEE, false));
 					bandosAvatar.setChargingAttack(false);

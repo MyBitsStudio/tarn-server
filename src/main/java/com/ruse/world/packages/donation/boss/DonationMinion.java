@@ -9,7 +9,7 @@ public class DonationMinion extends NPC {
         super(586, pos, false);
         this.getDefinition().setAggressive(true);
         this.getDefinition().setMulti(true);
-        this.getDefinition().setRespawnTime(-1);
+        this.getDefinition().setRespawn(-1);
     }
 
     @Override

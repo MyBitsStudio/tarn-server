@@ -31,7 +31,7 @@ public class Grimspike implements CombatStrategy {
 			return true;
 		}
 
-		grimspike.performAnimation(new Animation(grimspike.getDefinition().getAttackAnimation()));
+		grimspike.performAnimation(new Animation(grimspike.getDefinition().getAttackAnim()));
 		grimspike.setChargingAttack(true);
 
 		grimspike.getCombatBuilder()

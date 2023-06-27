@@ -116,7 +116,7 @@ public class ItemContainerActionPacketListener implements PacketListener {
 				break;
 			case Trading.INTERFACE_ID:
 				if (player.getTrading().inTrade()) {
-					player.getTrading().tradeItem(id, 1, slot, ItemEffect.values()[effect]);
+					player.getTrading().tradeItem(id, 1, slot, ItemEffect.values()[effect], bonus);
 				} else if (Dueling.checkDuel(player, 1) || Dueling.checkDuel(player, 2)) {
 					player.getDueling().stakeItem(id, 1, slot);
 				}
@@ -356,7 +356,7 @@ public class ItemContainerActionPacketListener implements PacketListener {
 				break;
 			case Trading.INTERFACE_ID:
 				if (player.getTrading().inTrade()) {
-					player.getTrading().tradeItem(id, 5, slot, ItemEffect.values()[effect]);
+					player.getTrading().tradeItem(id, 5, slot, ItemEffect.values()[effect], bonus);
 				} else if (Dueling.checkDuel(player, 1) || Dueling.checkDuel(player, 2)) {
 					player.getDueling().stakeItem(id, 5, slot);
 				}
@@ -646,7 +646,7 @@ public class ItemContainerActionPacketListener implements PacketListener {
 				break;
 			case Trading.INTERFACE_ID:
 				if (player.getTrading().inTrade()) {
-					player.getTrading().tradeItem(id, 10, slot, ItemEffect.values()[effect]);
+					player.getTrading().tradeItem(id, 10, slot, ItemEffect.values()[effect], bonus);
 				} else if (Dueling.checkDuel(player, 1) || Dueling.checkDuel(player, 2)) {
 					player.getDueling().stakeItem(id, 10, slot);
 				}
@@ -810,7 +810,7 @@ public class ItemContainerActionPacketListener implements PacketListener {
 				break;
 			case Trading.INTERFACE_ID:
 				if (player.getTrading().inTrade()) {
-					player.getTrading().tradeItem(id, player.getInventory().getAmount(id), slot, ItemEffect.values()[effect]);
+					player.getTrading().tradeItem(id, player.getInventory().getAmount(id, ItemEffect.values()[effect], bonus), slot, ItemEffect.values()[effect], bonus);
 				} else if (Dueling.checkDuel(player, 1) || Dueling.checkDuel(player, 2)) {
 					player.getDueling().stakeItem(id, player.getInventory().getAmount(id), slot);
 				}
@@ -999,7 +999,7 @@ public class ItemContainerActionPacketListener implements PacketListener {
 				break;
 			case Trading.INTERFACE_ID:
 				if (player.getTrading().inTrade()) {
-					player.setInputHandling(new EnterAmountToTrade(id, slot, ItemEffect.values()[effect]));
+					player.setInputHandling(new EnterAmountToTrade(id, slot, ItemEffect.values()[effect], bonus));
 					player.getPacketSender().sendEnterAmountPrompt("How many would you like to trade?");
 				} else if (Dueling.checkDuel(player, 1) || Dueling.checkDuel(player, 2)) {
 					player.setInputHandling(new EnterAmountToStake(id, slot));

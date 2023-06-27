@@ -46,7 +46,7 @@ public class SolakTheGreat implements CombatStrategy {
     }
 
     public void regularAttack(Character victim, NPC solak) {
-        solak.performAnimation(new Animation(solak.getDefinition().getAttackAnimation()));
+        solak.performAnimation(new Animation(solak.getDefinition().getAttackAnim()));
         //solak.setChargingAttack(false).getCombatBuilder().setAttackTimer(attackDelay(solak) - 2);
         for (Player p : Misc.getCombinedPlayerList((Player) victim)) {
             if (p != null) {
@@ -60,7 +60,7 @@ public class SolakTheGreat implements CombatStrategy {
 
     public void specialAttack(Character victim, NPC boss) {
         //boss.setChargingAttack(true);
-        boss.performAnimation(new Animation(boss.getDefinition().getAttackAnimation()));
+        boss.performAnimation(new Animation(boss.getDefinition().getAttackAnim()));
         boss.forceChat("I am the conqerour of this world.");
         TaskManager.submit(new Task(1, boss, true) {
             Player target = (Player) victim;

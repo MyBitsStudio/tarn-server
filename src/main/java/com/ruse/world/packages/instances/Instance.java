@@ -47,6 +47,10 @@ public abstract class Instance {
         return difficulty;
     }
 
+    public List<Player> getPlayers() {
+        return playerList;
+    }
+
     public void setCanLeave(long time) {
         this.canLeave = time;
     }
@@ -124,8 +128,7 @@ public abstract class Instance {
     private void preProcess(){
         World.getPlayers().stream().filter(Objects::nonNull)
                 .filter(player -> player.getLocation().equals(this.location))
-                .filter(player -> player.getInstance() != this)
-                .filter(player -> player.getPosition().getZ() != (player.getIndex() * 4))
+                .filter(player -> player.getPosition().getZ() == (player.getIndex() * 4))
                 .filter(player -> !player.getInstanceId().equals(this.instanceId))
                 .filter(player -> !playerList.contains(player))
                 .filter(player -> !players.contains(player))

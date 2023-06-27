@@ -38,7 +38,7 @@ public class Growler implements CombatStrategy {
 		}
 		if (Locations.goodDistance(growler.getPosition().copy(), victim.getPosition().copy(), 1)
 				&& Misc.getRandom(5) <= 3) {
-			growler.performAnimation(new Animation(growler.getDefinition().getAttackAnimation()));
+			growler.performAnimation(new Animation(growler.getDefinition().getAttackAnim()));
 			growler.getCombatBuilder().setContainer(new CombatContainer(growler, victim, 1, 1, CombatType.MELEE, true));
 		} else {
 			growler.setChargingAttack(true);

@@ -1,6 +1,7 @@
 package com.ruse.world.packages.commands;
 
 import com.ruse.GameSettings;
+import com.ruse.model.GameMode;
 import com.ruse.model.definitions.ItemDefinition;
 import com.ruse.security.PlayerLock;
 import com.ruse.security.PlayerSecurity;
@@ -208,6 +209,38 @@ public class AdminCommands {
                     target.getInventory().add(id, amount);
                     player.getPacketSender().sendMessage(
                             "Gave " + amount + "x " + ItemDefinition.forId(id).getName() + " to " + plrName + ".");
+                }
+                return true;
+
+            case "mode":
+                String mode = commands[1];
+                targets = World.getPlayerByName(command.substring(commands[0].length() + + commands[1].length() + 2));
+                if(targets == null) {
+                    player.sendMessage("Player is offline");
+                } else {
+                    switch (mode) {
+                        case "ironman" -> {
+                            GameMode.set(targets, GameMode.IRONMAN, false);
+                            player.sendMessage("You have set " + targets.getUsername() + "'s game mode to Ironman.");
+                        }
+                        case "ultimate" -> {
+                            GameMode.set(targets, GameMode.ULTIMATE_IRONMAN, false);
+                            player.sendMessage("You have set " + targets.getUsername() + "'s game mode to Ultimate.");
+                        }
+                        case "normal" -> {
+                            GameMode.set(targets, GameMode.NORMAL, false);
+                            player.sendMessage("You have set " + targets.getUsername() + "'s game mode to Normal.");
+                        }
+                        case "afk" -> {
+                            GameMode.set(targets, GameMode.AFK, false);
+                            player.sendMessage("You have set " + targets.getUsername() + "'s game mode to AFK.");
+                        }
+                        case "veteran" -> {
+                            GameMode.set(targets, GameMode.VETERAN_MODE, false);
+                            player.sendMessage("You have set " + targets.getUsername() + "'s game mode to Veteran.");
+                        }
+                        default -> player.sendMessage("Invalid game mode.");
+                    }
                 }
                 return true;
         }

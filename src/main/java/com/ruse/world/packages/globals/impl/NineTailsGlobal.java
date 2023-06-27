@@ -6,7 +6,7 @@ import com.ruse.world.packages.globals.GlobalBoss;
 public class NineTailsGlobal extends GlobalBoss {
 
     public NineTailsGlobal() {
-        super(9904, new Position(2143, 5016,12));
+        super(9904, new Position(2143, 5016,4));
     }
 
     @Override

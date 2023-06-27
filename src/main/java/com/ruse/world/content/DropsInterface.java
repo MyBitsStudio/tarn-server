@@ -201,7 +201,7 @@ public class DropsInterface {
 		boolean dupe = false;
 		search = search.toLowerCase();
 
-		for (int i = 0; i < NpcDefinition.getDefinitions().length; i++) {
+		for (int i = 0; i < NpcDefinition.definitions.length; i++) {
 
 			if (NpcDefinition.forId(i) == null || NpcDefinition.forId(i).getName() == null
 					|| NpcDefinition.forId(i).getName().equalsIgnoreCase("null")

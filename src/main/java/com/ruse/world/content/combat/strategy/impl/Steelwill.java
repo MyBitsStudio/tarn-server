@@ -36,7 +36,7 @@ public class Steelwill implements CombatStrategy {
 			return true;
 		}
 
-		steelwill.performAnimation(new Animation(steelwill.getDefinition().getAttackAnimation()));
+		steelwill.performAnimation(new Animation(steelwill.getDefinition().getAttackAnim()));
 		steelwill.performGraphic(new Graphic(1202));
 		steelwill.setChargingAttack(true);
 

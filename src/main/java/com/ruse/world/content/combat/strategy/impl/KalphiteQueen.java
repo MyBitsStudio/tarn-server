@@ -62,7 +62,7 @@ public class KalphiteQueen implements CombatStrategy {
 		final List<Player> list = Misc.getCombinedPlayerList(p);
 		if (Locations.goodDistance(KALPHITE_QUEEN.getPosition().copy(), victim.getPosition().copy(), 1)
 				&& Misc.getRandom(6) <= 2) {
-			KALPHITE_QUEEN.performAnimation(new Animation(KALPHITE_QUEEN.getDefinition().getAttackAnimation()));
+			KALPHITE_QUEEN.performAnimation(new Animation(KALPHITE_QUEEN.getDefinition().getAttackAnim()));
 			KALPHITE_QUEEN.getCombatBuilder()
 					.setContainer(new CombatContainer(KALPHITE_QUEEN, victim, 1, 1, CombatType.MELEE, true));
 		} else {

@@ -36,7 +36,7 @@ public class MinionCombat implements CombatStrategy {
         Player player = (Player) victim;
 
         npc.setChargingAttack(true);
-        npc.performAnimation(new Animation(npc.getDefinition().getAttackAnimation()));
+        npc.performAnimation(new Animation(npc.getDefinition().getAttackAnim()));
         npc.getCombatBuilder().setContainer(new CombatContainer(npc, player, 2, 0, CombatType.MELEE, true));
 
         TaskManager.submit(new Task(1, npc, false) {

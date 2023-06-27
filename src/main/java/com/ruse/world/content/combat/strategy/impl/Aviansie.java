@@ -32,12 +32,12 @@ public class Aviansie implements CombatStrategy {
 		}
 		if (Locations.goodDistance(aviansie.getPosition().copy(), victim.getPosition().copy(), 1)
 				&& Misc.getRandom(5) <= 3) {
-			aviansie.performAnimation(new Animation(aviansie.getDefinition().getAttackAnimation()));
+			aviansie.performAnimation(new Animation(aviansie.getDefinition().getAttackAnim()));
 			aviansie.getCombatBuilder()
 					.setContainer(new CombatContainer(aviansie, victim, 1, 1, CombatType.MELEE, true));
 		} else {
 			aviansie.setChargingAttack(true);
-			aviansie.performAnimation(new Animation(aviansie.getDefinition().getAttackAnimation()));
+			aviansie.performAnimation(new Animation(aviansie.getDefinition().getAttackAnim()));
 			aviansie.getCombatBuilder().setContainer(new CombatContainer(aviansie, victim, 1, 3,
 					aviansie.getId() == 6231 ? CombatType.MAGIC : CombatType.RANGED, true));
 			TaskManager.submit(new Task(1, aviansie, false) {

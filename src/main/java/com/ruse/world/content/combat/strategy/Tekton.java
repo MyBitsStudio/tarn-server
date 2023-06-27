@@ -35,7 +35,7 @@ public class Tekton implements CombatStrategy {
 			return true;
 		}
 		if(Locations.goodDistance(tekton.getPosition().copy(), victim.getPosition().copy(), 1) && Misc.getRandom(5) <= 3) {
-			tekton.performAnimation(new Animation(tekton.getDefinition().getAttackAnimation()));
+			tekton.performAnimation(new Animation(tekton.getDefinition().getAttackAnim()));
 			tekton.getCombatBuilder().setContainer(new CombatContainer(tekton, victim, 1, 1, CombatType.MELEE, true));
 		} else if(!Locations.goodDistance(tekton.getPosition().copy(), victim.getPosition().copy(), 3) && Misc.getRandom(5) == 1) {
 			tekton.setChargingAttack(true);
@@ -47,7 +47,7 @@ public class Tekton implements CombatStrategy {
 				@Override
 				protected void execute() {
 					tekton.moveTo(pos);
-					tekton.performAnimation(new Animation(tekton.getDefinition().getAttackAnimation()));
+					tekton.performAnimation(new Animation(tekton.getDefinition().getAttackAnim()));
 					tekton.getCombatBuilder().setContainer(new CombatContainer(tekton, victim, 1, 1, CombatType.MELEE, false));
 					tekton.setChargingAttack(false);
 					tekton.getCombatBuilder().setAttackTimer(0);

@@ -43,7 +43,7 @@ public class Callisto implements CombatStrategy {
 		}
 		if (Locations.goodDistance(callisto.getPosition().copy(), victim.getPosition().copy(), 3)
 				&& Misc.getRandom(5) <= 3) {
-			callisto.performAnimation(new Animation(callisto.getDefinition().getAttackAnimation()));
+			callisto.performAnimation(new Animation(callisto.getDefinition().getAttackAnim()));
 			callisto.getCombatBuilder()
 					.setContainer(new CombatContainer(callisto, victim, 1, 1, CombatType.MELEE, true));
 			if (Misc.getRandom(10) <= 2) {

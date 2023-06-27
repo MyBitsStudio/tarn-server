@@ -106,7 +106,7 @@ public class HallsOfValor {
             } else {
                 npc.setSpawnedFor(player);
             }
-            npc.getDefinition().setRespawnTime(-1);
+            npc.getDefinition().setRespawn(-1);
             World.register(player, npc);
            // player.getRegionInstance().getNpcsList().add(newNpc);
         }

@@ -78,7 +78,7 @@ public class DefaultMeleeCombatStrategy implements CombatStrategy {
 	private void startAnimation(Character entity) {
 		if (entity.isNpc()) {
 			NPC npc = (NPC) entity;
-			npc.performAnimation(new Animation(npc.getDefinition().getAttackAnimation()));
+			npc.performAnimation(new Animation(npc.getDefinition().getAttackAnim()));
 		} else if (entity.isPlayer()) {
 			Player player = (Player) entity;
 			if (!player.isSpecialActivated()) {

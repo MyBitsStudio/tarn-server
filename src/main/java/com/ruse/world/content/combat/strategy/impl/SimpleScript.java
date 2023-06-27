@@ -63,7 +63,7 @@ public class SimpleScript implements CombatStrategy {
 
     public void magicAttack(NPC attacker, Character victim) {
         attacker.setChargingAttack(true);
-        attacker.performAnimation(new Animation(attacker.getDefinition().getAttackAnimation()));
+        attacker.performAnimation(new Animation(attacker.getDefinition().getAttackAnim()));
         attacker.getCombatBuilder().setContainer(new CombatContainer(attacker, victim, 1, 3, CombatType.MAGIC, true));
         TaskManager.submit(new Task(1, attacker, false) {
             int tick = 0;
@@ -86,7 +86,7 @@ public class SimpleScript implements CombatStrategy {
 
     private void rangedAttack(NPC npc, Player player) {
         npc.setChargingAttack(true);
-        npc.performAnimation(new Animation(npc.getDefinition().getAttackAnimation()));
+        npc.performAnimation(new Animation(npc.getDefinition().getAttackAnim()));
         npc.getCombatBuilder().setContainer(new CombatContainer(npc, player, 1, 3, CombatType.RANGED, true));
         TaskManager.submit(new Task(1, npc, false) {
             int tick = 0;
@@ -112,7 +112,7 @@ public class SimpleScript implements CombatStrategy {
     }
 
     private void meleeAttack(NPC npc, Player player) {
-        npc.performAnimation(new Animation(npc.getDefinition().getAttackAnimation()));
+        npc.performAnimation(new Animation(npc.getDefinition().getAttackAnim()));
         npc.setChargingAttack(true);
 		npc.getCombatBuilder().setContainer(new CombatContainer(npc, player, 1, 1, CombatType.MELEE, true));
 

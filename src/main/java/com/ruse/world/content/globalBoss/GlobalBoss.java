@@ -45,7 +45,7 @@ public abstract class GlobalBoss extends NPC {
 		this.setAttackDistance(12);
 		this.getDefinition().setAggressive(true);
 		this.getDefinition().setMulti(true);
-		this.getDefinition().setRespawnTime(-1);
+		this.getDefinition().setRespawn(-1);
 		setLocation(Locations.Location.getLocation(this));
 		World.register(this);
 	}

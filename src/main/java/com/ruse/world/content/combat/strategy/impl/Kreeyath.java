@@ -43,7 +43,7 @@ public class Kreeyath implements CombatStrategy {
 		}
 		if (Locations.goodDistance(kreeyath.getPosition().copy(), victim.getPosition().copy(), 1)
 				&& Misc.getRandom(5) <= 3) {
-			kreeyath.performAnimation(new Animation(kreeyath.getDefinition().getAttackAnimation()));
+			kreeyath.performAnimation(new Animation(kreeyath.getDefinition().getAttackAnim()));
 			kreeyath.getCombatBuilder()
 					.setContainer(new CombatContainer(kreeyath, victim, 1, 1, CombatType.MELEE, true));
 		} else {

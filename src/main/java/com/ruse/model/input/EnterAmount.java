@@ -9,7 +9,7 @@ import com.ruse.model.projectile.ItemEffect;
  */
 public abstract class EnterAmount extends Input {
 
-	private int item, slot;
+	private int item, slot, bonus;
 	private ItemEffect effect;
 
 	public int getItem() {
@@ -18,6 +18,10 @@ public abstract class EnterAmount extends Input {
 
 	public int getSlot() {
 		return slot;
+	}
+
+	public int getBonus() {
+		return bonus;
 	}
 
 	public ItemEffect getEffect() {
@@ -43,6 +47,13 @@ public abstract class EnterAmount extends Input {
 	public EnterAmount(int item, int slot, ItemEffect effect) {
 		this.item = item;
 		this.slot = slot;
+	}
+
+	public EnterAmount(int item, int slot, ItemEffect effect, int bonus) {
+		this.item = item;
+		this.slot = slot;
+		this.effect = effect;
+		this.bonus = bonus;
 	}
 
 }

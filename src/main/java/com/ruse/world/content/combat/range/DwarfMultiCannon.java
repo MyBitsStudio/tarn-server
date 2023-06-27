@@ -258,7 +258,7 @@ public class DwarfMultiCannon {
 		new Projectile(cannon.getObject(), n, 53, 44, 3, 43, 31, 0).sendProjectile();
 		n.dealDamage(dmg);
 		n.getLastCombat().reset();
-		n.performAnimation(new Animation(n.getDefinition().getDefenceAnimation()));
+		n.performAnimation(new Animation(n.getDefinition().getDefenceAnim()));
 		n.getCombatBuilder().addDamage(player, dmg.getDamage());
 		player.getSkillManager().addExperience(Skill.RANGED, (int) (((dmg.getDamage() * .50))));
 		player.getSkillManager().addExperience(Skill.CONSTITUTION, (int) ((dmg.getDamage() * .30)));

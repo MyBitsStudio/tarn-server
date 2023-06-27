@@ -43,7 +43,7 @@ public class Graardor implements CombatStrategy {
 				&& Locations.goodDistance(graardor.getPosition(), victim.getPosition(), 1) ? CombatType.MELEE
 						: CombatType.RANGED;
 		if (style == CombatType.MELEE) {
-			graardor.performAnimation(new Animation(graardor.getDefinition().getAttackAnimation()));
+			graardor.performAnimation(new Animation(graardor.getDefinition().getAttackAnim()));
 			graardor.getCombatBuilder()
 					.setContainer(new CombatContainer(graardor, victim, 1, 1, CombatType.MELEE, true));
 		} else {

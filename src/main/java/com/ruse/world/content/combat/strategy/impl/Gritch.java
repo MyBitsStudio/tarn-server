@@ -37,7 +37,7 @@ public class Gritch implements CombatStrategy {
 		}
 		if (Locations.goodDistance(gritch.getPosition().copy(), victim.getPosition().copy(), 1)
 				&& Misc.getRandom(5) <= 3) {
-			gritch.performAnimation(new Animation(gritch.getDefinition().getAttackAnimation()));
+			gritch.performAnimation(new Animation(gritch.getDefinition().getAttackAnim()));
 			gritch.getCombatBuilder().setContainer(new CombatContainer(gritch, victim, 1, 1, CombatType.MELEE, true));
 		} else {
 			gritch.setChargingAttack(true);

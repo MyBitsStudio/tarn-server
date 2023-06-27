@@ -48,7 +48,7 @@ public class EliteDragon implements CombatStrategy {
 
 		if (Locations.goodDistance(dragon.getPosition().copy(), victim.getPosition().copy(), 1)
 				&& Misc.getRandom(5) <= 3) {
-			dragon.performAnimation(new Animation(dragon.getDefinition().getAttackAnimation()));
+			dragon.performAnimation(new Animation(dragon.getDefinition().getAttackAnim()));
 			dragon.getCombatBuilder().setContainer(new CombatContainer(dragon, victim, 1, 1, CombatType.MELEE, true));
 		} else {
 			dragon.setChargingAttack(true);

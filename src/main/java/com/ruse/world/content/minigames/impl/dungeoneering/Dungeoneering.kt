@@ -58,7 +58,7 @@ class Dungeoneering(val group: DungeoneeringParty) {
             val npc = NPC(Constants.MINION_MOB, Position(2276 + Misc.getRandom(19), 5001 + Misc.getRandom(19), height))
             npc.respawn = false
             npc.movementCoordinator.coordinator = NPCMovementCoordinator.Coordinator(true, 3)
-            npc.constitution = (npc.definition.hitpoints * group.players.size).toLong()
+            //npc.constitution = (npc.definition.hitpoints * group.players.size)
             World.register(group.owner, npc)
         //}
 

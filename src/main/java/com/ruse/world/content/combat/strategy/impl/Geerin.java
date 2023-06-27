@@ -31,7 +31,7 @@ public class Geerin implements CombatStrategy {
 			return true;
 		}
 
-		geerin.performAnimation(new Animation(geerin.getDefinition().getAttackAnimation()));
+		geerin.performAnimation(new Animation(geerin.getDefinition().getAttackAnim()));
 		geerin.setChargingAttack(true);
 
 		geerin.getCombatBuilder().setContainer(new CombatContainer(geerin, victim, 1, 3, CombatType.RANGED, true));

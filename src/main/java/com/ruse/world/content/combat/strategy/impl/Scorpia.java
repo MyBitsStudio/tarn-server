@@ -34,7 +34,7 @@ public class Scorpia implements CombatStrategy {
 	@Override
 	public CombatContainer attack(Character entity, Character victim) {
 		NPC npc = (NPC) entity;
-		npc.performAnimation(new Animation(npc.getDefinition().getAttackAnimation()));
+		npc.performAnimation(new Animation(npc.getDefinition().getAttackAnim()));
 
 		if (npc.getConstitution() <= 500 && !npc.hasHealed()) {
 			NPC[] babies = new NPC[] { new NPC(109, new Position(2854, 9642)), new NPC(109, new Position(2854, 9631)) };

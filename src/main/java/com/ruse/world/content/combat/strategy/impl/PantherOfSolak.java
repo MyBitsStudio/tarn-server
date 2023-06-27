@@ -50,13 +50,13 @@ public class PantherOfSolak implements CombatStrategy {
 
     public void specialAttack(Character victim, NPC panther) {
         panther.forceChat("You shall see my wrath!");
-        panther.performAnimation(new Animation(panther.getDefinition().getAttackAnimation()));
+        panther.performAnimation(new Animation(panther.getDefinition().getAttackAnim()));
         //List<Player> list = Misc.getCombinedPlayerList((Player) victim);
     }
 
     public void regularAttack(Character victim, NPC tekton) {
         //tekton.setChargingAttack(false).getCombatBuilder().setAttackTimer(attackDelay(tekton) - 2);
-        tekton.performAnimation(new Animation(tekton.getDefinition().getAttackAnimation()));
+        tekton.performAnimation(new Animation(tekton.getDefinition().getAttackAnim()));
         for (Player p : Misc.getCombinedPlayerList((Player) victim)) {
             if (p != null) {
                 boolean mage = Misc.getRandom(10) <= 7;

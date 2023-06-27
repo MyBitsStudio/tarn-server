@@ -24,6 +24,7 @@ import com.ruse.world.content.serverperks.ServerPerks;
 import com.ruse.world.content.skill.SkillManager;
 import com.ruse.world.content.transportation.TeleportHandler;
 import com.ruse.world.content.transportation.TeleportType;
+import com.ruse.world.packages.tower.TarnTower;
 import com.ruse.world.packages.voting.VoteBossDrop;
 import com.ruse.world.entity.impl.npc.NPC;
 import com.ruse.world.entity.impl.player.Player;
@@ -98,6 +99,7 @@ public class OwnerCommands {
                 amount = Integer.parseInt(commands[2]);
                 World.getPlayers().stream()
                         .filter(Objects::nonNull)
+                        .filter(p -> !p.getGameMode().isAFK())
                         .forEach(p -> {
                             p.getInventory().add(id, amount);
                             p.sendMessage("You have recieved: " + ItemDefinition.forId(id).getName() + " from "+player.getUsername()+" for being beasts.");
@@ -145,7 +147,7 @@ public class OwnerCommands {
                 name = command.substring(commands[0].length() + 1);
                 player.getPacketSender().sendMessage("Finding item id for item - " + name);
                 found = false;
-                for (int i = 0; i < NpcDefinition.getDefinitions().length; i++) {
+                for (int i = 0; i < NpcDefinition.definitions.length; i++) {
                     if (NpcDefinition.forId(i) == null || NpcDefinition.forId(i).getName() == null) {
                         continue;
                     }
@@ -449,6 +451,20 @@ public class OwnerCommands {
                     targets.getPlayerVIP().addDonation(id, new int[]{});
                     player.getPacketSender().sendMessage(
                             "Gave " + targets.getUsername() + " VIP $" + id + ".");
+                }
+                return true;
+
+            case "tower":
+                TarnTower.startTower(player);
+                return true;
+
+            case "attack":
+                for(NpcDefinition def : NpcDefinition.definitions){
+                    if(def == null)
+                        continue;
+                    if(def.isAttackable()){
+                        System.out.println(def.getId()+" "+def.getName());
+                    }
                 }
                 return true;
 

@@ -13,7 +13,7 @@ public class DonationBoss extends NPC {
         super(587, base, false);
         this.getDefinition().setAggressive(true);
         this.getDefinition().setMulti(true);
-        this.getDefinition().setRespawnTime(-1);
+        this.getDefinition().setRespawn(-1);
     }
 
     @Override

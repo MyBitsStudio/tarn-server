@@ -709,10 +709,10 @@ public class NPCOptionPacketListener implements PacketListener {
         if (interact == null)
             return;
 
-        if(NpcDefinition.getDefinitions()[interact.getId()] == null){
+        if(NpcDefinition.definitions[interact.getId()] == null){
             System.out.println("NPC Def null -- "+interact.getId());
         }
-        else if (!NpcDefinition.getDefinitions()[interact.getId()].isAttackable()) {
+        else if (!NpcDefinition.definitions[interact.getId()].isAttackable()) {
             return;
         }
         //if (!interact.isAttackable() && interact.getId() == 12810) {
@@ -1748,7 +1748,7 @@ public class NPCOptionPacketListener implements PacketListener {
                     return;
                 }
 
-                if (!NpcDefinition.getDefinitions()[n.getId()].isAttackable()) {
+                if (!NpcDefinition.definitions[n.getId()].isAttackable()) {
                     player.getMovementQueue().reset();
                     return;
                 }

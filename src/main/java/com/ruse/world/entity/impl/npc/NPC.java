@@ -127,7 +127,7 @@ public class NPC extends Character {
 
 
     public int getCombatLevel() {
-        return getDefinition().getCombatLevel();
+        return getDefinition().getCombat();
     }
 
     /**
@@ -667,6 +667,10 @@ public class NPC extends Character {
     }
 
     public void onDeath(){
+
+    }
+
+    public void onDamage(Player player, long damage){
 
     }
 

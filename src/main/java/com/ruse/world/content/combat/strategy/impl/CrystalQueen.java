@@ -37,7 +37,7 @@ public class CrystalQueen implements CombatStrategy {
 	}
 	private void meleeAttack(NPC npc, Character victim) {
 		npc.setChargingAttack(true);
-		npc.performAnimation(new Animation(npc.getDefinition().getAttackAnimation()));
+		npc.performAnimation(new Animation(npc.getDefinition().getAttackAnim()));
 		npc.getCombatBuilder().setContainer(new CombatContainer(npc, victim, 1, 1, CombatType.MELEE, true));
 		npc.setChargingAttack(false);
 	}

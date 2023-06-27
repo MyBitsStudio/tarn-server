@@ -37,7 +37,7 @@ public class ChampRaids implements CombatStrategy {
 			vetion.getCombatBuilder().setContainer(new CombatContainer(vetion, victim, 3, 3, CombatType.MAGIC, true));
 		} else {
 			vetion.setChargingAttack(true);
-			vetion.performAnimation(new Animation(vetion.getDefinition().getAttackAnimation()));
+			vetion.performAnimation(new Animation(vetion.getDefinition().getAttackAnim()));
 
 			final Position start1 = new Position(vetion.getPosition().getX(), vetion.getPosition().getY());
 

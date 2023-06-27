@@ -98,13 +98,13 @@ public class HitQueue {
 			}
 			// Do any hit modifications to the container here first.
 
-			if (attacker.isPlayer() && victim.isNpc()) {
-				NPC npc = (NPC) victim;
-				if (Kraken.isWhirpool(npc)) {
-					Kraken.attackPool(((Player) attacker), npc);
-					return;
-				}
-			}
+//			if (attacker.isPlayer() && victim.isNpc()) {
+//				NPC npc = (NPC) victim;
+//				if (Kraken.isWhirpool(npc)) {
+//					Kraken.attackPool(((Player) attacker), npc);
+//					return;
+//				}
+//			}
 
 			if (container.getModifiedDamage() > 0) {
 				container.allHits(context -> {
@@ -137,6 +137,10 @@ public class HitQueue {
 						}
 						/** ACHIEVEMENTS **/
 
+						if(victim.isNpc()){
+							NPC npc = victim.toNpc();
+							npc.onDamage(p, damage);
+						}
 
 						if(p.getRaid() == null) {
 							if (p.getEquipment().get(Equipment.WEAPON_SLOT).getEffect() == ItemEffect.AOE_EFFECT) {
@@ -145,9 +149,6 @@ public class HitQueue {
 								else if (p.getEquipment().get(Equipment.WEAPON_SLOT).getBonus() == 2) {
 									AOEHandler.handleAttack(p, victim, 1000, 5000, 6, container.getHits()[0].getHit().getCombatIcon());}
 							}
-							if (p.getEquipment().get(Equipment.WEAPON_SLOT).getEffect() == ItemEffect.AOE_EFFECT_2x2) {
-								AOEHandler.handleAttack(p, victim, 1000, 5000, 2, container.getHits()[0].getHit().getCombatIcon());
-							}
 						} else if (p.getRaid().canAOE()) {
 							if (p.getEquipment().get(Equipment.WEAPON_SLOT).getEffect() == ItemEffect.AOE_EFFECT) {
 								if (p.getEquipment().get(Equipment.WEAPON_SLOT).getBonus() == 1) {
@@ -155,9 +156,6 @@ public class HitQueue {
 								} else if (p.getEquipment().get(Equipment.WEAPON_SLOT).getBonus() == 2) {
 									AOEHandler.handleAttack(p, victim, 1000, 5000, 6, container.getHits()[0].getHit().getCombatIcon());
 								}
-							}
-							if (p.getEquipment().get(Equipment.WEAPON_SLOT).getEffect() == ItemEffect.AOE_EFFECT_2x2) {
-								AOEHandler.handleAttack(p, victim, 1000, 5000, 2, container.getHits()[0].getHit().getCombatIcon());
 							}
 						}
 
@@ -224,7 +222,7 @@ public class HitQueue {
 					victim.performAnimation(new Animation(WeaponAnimations.getBlockAnimation(((Player) victim))));
 				} else if (victim.isNpc()) {
 					//if (!(((NPC) victim).getId() >= 6142 && ((NPC) victim).getId() <= 6145))
-					//	victim.performAnimation(new Animation(((NPC) victim).getDefinition().getDefenceAnimation()));
+					victim.performAnimation(new Animation(((NPC) victim).getDefinition().getDefenceAnim()));
 				}
 			}
 
@@ -329,7 +327,6 @@ public class HitQueue {
 				NPC npc = (NPC) victim;
 				npc.getCombatBuilder().attack(attacker);
 				npc.setFindNewTarget(false);
-
 			}
 		}
 

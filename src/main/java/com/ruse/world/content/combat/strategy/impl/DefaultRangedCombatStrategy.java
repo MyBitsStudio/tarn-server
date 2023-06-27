@@ -98,7 +98,7 @@ public class DefaultRangedCombatStrategy implements CombatStrategy {
 				break;
 			}
 
-			entity.performAnimation(new Animation(npc.getDefinition().getAttackAnimation()));
+			entity.performAnimation(new Animation(npc.getDefinition().getAttackAnim()));
 
 			entity.performGraphic(new Graphic(ammo.getStartGfxId(),
 					ammo.getStartHeight() >= 43 ? GraphicHeight.HIGH : GraphicHeight.MIDDLE));

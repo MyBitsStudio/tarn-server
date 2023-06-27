@@ -337,7 +337,7 @@ public class TradingPost {
         DATABASE.createHistory(history);
     }
 
-    private static void loadOffers() {
+    public static void loadOffers() {
         DATABASE.loadOffers(LIVE_OFFERS);
     }
 

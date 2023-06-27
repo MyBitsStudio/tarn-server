@@ -28,7 +28,7 @@ public class Spinolyp implements CombatStrategy {
 		if (spinolyp.getConstitution() <= 0 || victim.getConstitution() <= 0) {
 			return true;
 		}
-		spinolyp.performAnimation(new Animation(spinolyp.getDefinition().getAttackAnimation()));
+		spinolyp.performAnimation(new Animation(spinolyp.getDefinition().getAttackAnim()));
 		boolean mage = Misc.getRandom(10) <= 7;
 		new Projectile(spinolyp, victim, mage ? 1658 : 1017, 44, 3, 43, 43, 0).sendProjectile();
 		spinolyp.getCombatBuilder().setContainer(new CombatContainer(spinolyp, victim, 1, mage ? 3 : 2,

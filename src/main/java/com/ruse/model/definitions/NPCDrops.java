@@ -32,6 +32,7 @@ import com.ruse.world.entity.impl.npc.NPC;
 import com.ruse.world.entity.impl.player.Player;
 import lombok.Getter;
 import lombok.Setter;
+import org.jetbrains.annotations.NotNull;
 
 import java.security.SecureRandom;
 import java.util.*;
@@ -48,14 +49,14 @@ import java.util.stream.Collectors;
  */
 public class NPCDrops {
 
-    public static final HashSet<Integer> multiKillNpcs = new HashSet<Integer>(Arrays.asList(
+    public static final HashSet<Integer> multiKillNpcs = new HashSet<>(Arrays.asList(
             TreasureHunter.NPC_1, TreasureHunter.NPC_2,
             TreasureHunter.NPC_3, TreasureHunter.NPC_4));
     private static final List<NpcDropItem> constantDrops = new ArrayList<>();
     private static final List<NpcDropItem> potentialDrops = new ArrayList<>();
     private static final List<NpcDropItem> finalDropList = new ArrayList<>();
 
-    private static Map<Integer, NPCDrops> dropControllers = new HashMap<Integer, NPCDrops>();
+    private static final Map<Integer, NPCDrops> dropControllers = new HashMap<>();
 
     private int[] npcIds;
 
@@ -174,7 +175,7 @@ public class NPCDrops {
         }
     }
 
-    static <K, V extends Comparable<? super V>> List<Entry<K, V>> sortEntries(Map<K, V> map) {
+    static <K, V extends Comparable<? super V>> @NotNull List<Entry<K, V>> sortEntries(@NotNull Map<K, V> map) {
 
         List<Entry<K, V>> sortedEntries = new ArrayList<Entry<K, V>>(map.entrySet());
 

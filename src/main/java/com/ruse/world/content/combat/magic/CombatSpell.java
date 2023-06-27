@@ -26,7 +26,7 @@ public abstract class CombatSpell extends Spell {
 		if (npc != null) {
 			if (npc.getId() == 3496 || npc.getId() == 6278 || npc.getId() == 2000 || npc.getId() == 109
 					|| npc.getId() == 3580 || npc.getId() == 2007) {
-				castAnimation = npc.getDefinition().getAttackAnimation();
+				castAnimation = npc.getDefinition().getAttackAnim();
 			}
 		}
 

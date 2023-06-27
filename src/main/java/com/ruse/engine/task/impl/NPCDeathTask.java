@@ -134,7 +134,7 @@ public class NPCDeathTask extends Task {
                     }
 
                     if (!(npc.getId() >= 6142 && npc.getId() <= 6145) && !(npc.getId() > 5070 && npc.getId() < 5081))
-                        npc.performAnimation(new Animation(npc.getDefinition().getDeathAnimation()));
+                        npc.performAnimation(new Animation(npc.getDefinition().getDeathAnim()));
 
                     /** CUSTOM NPC DEATHS **/
                     if (npc.getId() == 13447) {
@@ -152,8 +152,8 @@ public class NPCDeathTask extends Task {
                         boolean boss = (npc.getDefaultConstitution() > 2000);
                         if (!Nex.nexMinion(npc.getId()) && npc.getId() != 1158
                                 && !(npc.getId() >= 3493 && npc.getId() <= 3497)) {
-                            KillsTracker.submitById(killer, npc.getId(), true, npc.getDefinition().boss);
-                            KillsTracker.submitById(killer, npc.getId(), false, npc.getDefinition().boss);
+                            KillsTracker.submitById(killer, npc.getId(), true, npc.getDefinition().isBoss());
+                            KillsTracker.submitById(killer, npc.getId(), false, npc.getDefinition().isBoss());
                         }
 
                         if (npc.getId() == 3) {
@@ -356,10 +356,10 @@ public class NPCDeathTask extends Task {
 
                                     }
 
-                                    if (npc.getDefinition().getRespawnTime() > 0 && npc.getLocation() != Location.GRAVEYARD && npc.getLocation() != Location.KEEPERS_OF_LIGHT_GAME
+                                    if (npc.getDefinition().getRespawn() > 0 && npc.getLocation() != Location.GRAVEYARD && npc.getLocation() != Location.KEEPERS_OF_LIGHT_GAME
                                             && npc.getLocation() != Location.DUNGEONEERING && npc.getLocation() != Location.CUSTOM_RAIDS && !npc.isEventBoss()) {
                                         if (npc.respawn)
-                                            TaskManager.submit(new NPCRespawnTask(npc, npc.getDefinition().getRespawnTime(), killer));
+                                            TaskManager.submit(new NPCRespawnTask(npc, npc.getDefinition().getRespawn(), killer));
                                     }
 
                                     if(killer == null) {

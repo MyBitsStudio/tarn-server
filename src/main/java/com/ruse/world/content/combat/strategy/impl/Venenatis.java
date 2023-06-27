@@ -33,7 +33,7 @@ public class Venenatis implements CombatStrategy {
 			return true;
 		}
 		venenatis.setChargingAttack(true);
-		venenatis.performAnimation(new Animation(venenatis.getDefinition().getAttackAnimation()));
+		venenatis.performAnimation(new Animation(venenatis.getDefinition().getAttackAnim()));
 		venenatis.getCombatBuilder().setContainer(new CombatContainer(venenatis, victim, 1, 1, CombatType.MELEE, true));
 		TaskManager.submit(new Task(1, venenatis, false) {
 			int tick = 0;

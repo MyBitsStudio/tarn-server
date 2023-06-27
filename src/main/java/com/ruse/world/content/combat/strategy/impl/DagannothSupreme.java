@@ -28,7 +28,7 @@ public class DagannothSupreme implements CombatStrategy {
 		if (prime.getConstitution() <= 0 || victim.getConstitution() <= 0) {
 			return true;
 		}
-		prime.performAnimation(new Animation(prime.getDefinition().getAttackAnimation()));
+		prime.performAnimation(new Animation(prime.getDefinition().getAttackAnim()));
 		TaskManager.submit(new Task(1, prime, false) {
 
 			@Override

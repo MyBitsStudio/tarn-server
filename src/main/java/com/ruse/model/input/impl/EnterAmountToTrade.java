@@ -6,14 +6,14 @@ import com.ruse.world.entity.impl.player.Player;
 
 public class EnterAmountToTrade extends EnterAmount {
 
-	public EnterAmountToTrade(int item, int slot, ItemEffect effect) {
+	public EnterAmountToTrade(int item, int slot, ItemEffect effect, int bonus) {
 		super(item, slot, effect == null ? ItemEffect.NOTHING : effect);
 	}
 
 	@Override
 	public void handleAmount(Player player, int amount) {
 		if (player.getTrading().inTrade() && getItem() > 0) {
-			player.getTrading().tradeItem(getItem(), amount, getSlot(), getEffect() == null ? ItemEffect.NOTHING : getEffect());
+			player.getTrading().tradeItem(getItem(), amount, getSlot(), getEffect() == null ? ItemEffect.NOTHING : getEffect(), getBonus());
 		}else{
 			player.getPacketSender().sendInterfaceRemoval();
 		}

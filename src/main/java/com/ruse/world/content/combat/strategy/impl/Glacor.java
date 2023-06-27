@@ -33,7 +33,7 @@ public class Glacor implements CombatStrategy {
 		}
 		if (Locations.goodDistance(glacor.getPosition().copy(), victim.getPosition().copy(), 1)
 				&& Misc.getRandom(5) <= 3) {
-			glacor.performAnimation(new Animation(glacor.getDefinition().getAttackAnimation()));
+			glacor.performAnimation(new Animation(glacor.getDefinition().getAttackAnim()));
 			glacor.getCombatBuilder().setContainer(new CombatContainer(glacor, victim, 1, 1, CombatType.MELEE, true));
 		} else {
 			glacor.performAnimation(new Animation(9952));

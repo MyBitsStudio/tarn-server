@@ -77,7 +77,7 @@ public class ChaosElemental implements CombatStrategy {
 		final elementalData data = elementalData.forId(attackStyle);
 		if (data.startGraphic != null)
 			cE.performGraphic(data.startGraphic);
-		cE.performAnimation(new Animation(cE.getDefinition().getAttackAnimation()));
+		cE.performAnimation(new Animation(cE.getDefinition().getAttackAnim()));
 		if (data.projectileGraphic != null)
 			new Projectile(cE, victim, data.projectileGraphic.getId(), 44, 3, 43, 31, 0).sendProjectile();
 		cE.setChargingAttack(true);

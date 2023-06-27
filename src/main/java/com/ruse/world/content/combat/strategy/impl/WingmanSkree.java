@@ -34,7 +34,7 @@ public class WingmanSkree implements CombatStrategy {
 			return true;
 		}
 
-		skree.performAnimation(new Animation(skree.getDefinition().getAttackAnimation()));
+		skree.performAnimation(new Animation(skree.getDefinition().getAttackAnim()));
 		skree.setChargingAttack(true);
 
 		skree.getCombatBuilder().setContainer(new CombatContainer(skree, victim, 1, 3, CombatType.MAGIC, true));

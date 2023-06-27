@@ -76,8 +76,6 @@ public final class GameLoader {
 
 		ServerSecurity.getInstance();
 
-		ServiceManager.INSTANCE.init();
-
 		executeServiceLoad();
 		serviceLoader.shutdown();
 
@@ -94,6 +92,8 @@ public final class GameLoader {
 		GlobalBossManager.getInstance();
 		PlusUpgrade.getPlusUpgrade();
 		DonateSales.getInstance();
+
+		ServiceManager.INSTANCE.init();
 	}
 
 	public void finish() throws IOException, InterruptedException {
@@ -136,6 +136,7 @@ public final class GameLoader {
 		serviceLoader.execute(CombatPoisonData::init);
 		serviceLoader.execute(CombatStrategies::init);
 		serviceLoader.execute(() -> NpcDefinition.parseNpcs().load());
+
 		serviceLoader.execute(() -> NPCDrops.parseDrops().load());
 		serviceLoader.execute(() -> WeaponInterfaces.parseInterfaces().load());
 		serviceLoader.execute(WeaponInterfaces::init);

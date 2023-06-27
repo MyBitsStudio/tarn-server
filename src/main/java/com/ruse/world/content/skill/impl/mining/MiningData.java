@@ -80,7 +80,7 @@ public class MiningData {
 		private int objid[];
 		private int itemid, req, xp, ticks, respawnTimer;
 
-		private Ores(int[] objid, int req, int xp, int itemid, int ticks, int respawnTimer) {
+		Ores(int[] objid, int req, int xp, int itemid, int ticks, int respawnTimer) {
 			this.objid = objid;
 			this.req = req;
 			this.xp = xp;

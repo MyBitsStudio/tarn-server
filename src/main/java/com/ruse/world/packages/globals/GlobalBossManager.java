@@ -5,7 +5,10 @@ import com.ruse.world.World;
 import com.ruse.world.content.discordbot.JavaCord;
 import com.ruse.world.entity.impl.player.Player;
 import com.ruse.world.packages.globals.impl.*;
+import org.jetbrains.annotations.NotNull;
 
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -19,21 +22,46 @@ public class GlobalBossManager {
         return instance;
     }
     private final AtomicInteger ticks = new AtomicInteger(-20);
+    private final Map<String, Integer> wells = new ConcurrentHashMap<>();
 
     public GlobalBossManager(){
 
     }
 
+    public boolean addToWell(Player player, int itemId){
+        switch(itemId){
+            case 23003 ->{//vip tickets
+                boolean active = World.npcIsRegistered(9005);
+                if(active) {
+                    player.getPacketSender().sendMessage("The VIP boss is already active.");
+                } else {
+                    int amount = player.getInventory().getAmount(itemId),
+                            well = wells.get("VIP"), max = 50;
+                    if(well + amount > max){
+                       amount = max - well;
+                    }
+                    if(amount > 0){
+                        wells.put("VIP", well + amount);
+                        player.getInventory().delete(itemId, amount);
+                        player.getPacketSender().sendMessage("You have added "+amount+" VIP tickets to the well.");
+                        if(amount >= max){
+                            player.getPacketSender().sendMessage("The VIP boss has been summoned!");
+                            wells.put("VIP", 0);
+                            MewtwoGlobal mewtwoGlobal = new MewtwoGlobal();
+                            spawn(mewtwoGlobal);
+                        }
+                    } else {
+                        player.getPacketSender().sendMessage("Something went wrong here. Report to an admin.");
+                    }
+                }
+                return true;
+            }
+        }
+        return false;
+    }
+
     public void process(){
         int tick = ticks.getAndIncrement();
-
-        if(tick % 3000 == 0){
-            if(World.npcIsRegistered(9906)){
-                return;
-            }
-            VeigarGlobal nineTailsGlobal = new VeigarGlobal();
-            spawn(nineTailsGlobal);
-        }
 
         if(tick % 6000 == 0){
             if(World.npcIsRegistered(9904)){
@@ -44,14 +72,6 @@ public class GlobalBossManager {
         }
 
         if(tick % 12000 == 0){
-            if(World.npcIsRegistered(9907)){
-                return;
-            }
-            MeruemGlobal nineTailsGlobal = new MeruemGlobal();
-            spawn(nineTailsGlobal);
-        }
-
-        if(tick % 18000 == 0){
             if(World.npcIsRegistered(9908)){
                 return;
             }
@@ -84,87 +104,51 @@ public class GlobalBossManager {
         World.sendNewsMessage("[GLOBAL] "+boss.message());
     }
 
-    public String timeLeft(String name){
+    public String timeLeft(@NotNull String name){
         int tick;
         long ms;
         String m;
         int ticka = ticks.get();
-        switch(name){
-            case "ninetails":
+        switch (name) {
+            case "ninetails" -> {
+                if(World.npcIsRegistered(9904)){
+                    return "SPAWNED";
+                }
                 tick = 6000 - (ticka % 6000);
                 tick /= 100;
                 tick *= 60;
-
-                ms = tick ;
+                ms = tick;
                 m = String.format("%dh %dm", TimeUnit.SECONDS.toHours(ms),
                         TimeUnit.SECONDS.toMinutes(ms) - TimeUnit.HOURS.toMinutes(TimeUnit.SECONDS.toHours(ms)),
                         TimeUnit.SECONDS.toSeconds(ms) - TimeUnit.MINUTES.toSeconds(TimeUnit.SECONDS.toMinutes(ms)));
-
-                if (tick < 0) {
-                    m = "Soon";
-                }
                 return m;
-
-            case "golden":
-                tick = 18000 - (ticka % 18000);
+            }
+            case "golden" -> {
+                if(World.npcIsRegistered(9908)){
+                    return "SPAWNED";
+                }
+                tick = 12000 - (ticka % 12000);
                 tick /= 100;
                 tick *= 60;
-
-                ms = tick ;
+                ms = tick;
                 m = String.format("%dh %dm", TimeUnit.SECONDS.toHours(ms),
                         TimeUnit.SECONDS.toMinutes(ms) - TimeUnit.HOURS.toMinutes(TimeUnit.SECONDS.toHours(ms)),
                         TimeUnit.SECONDS.toSeconds(ms) - TimeUnit.MINUTES.toSeconds(TimeUnit.SECONDS.toMinutes(ms)));
-
-                if (ticks.get() < 0) {
-                    m = "Soon";
-                }
                 return m;
-
-            case "meruem":
-                tick = 18000 - 12000 - (ticka % 12000);
-                tick /= 100;
-                tick *= 60;
-
-                ms = tick ;
-                m = String.format("%dh %dm", TimeUnit.SECONDS.toHours(ms),
-                        TimeUnit.SECONDS.toMinutes(ms) - TimeUnit.HOURS.toMinutes(TimeUnit.SECONDS.toHours(ms)),
-                        TimeUnit.SECONDS.toSeconds(ms) - TimeUnit.MINUTES.toSeconds(TimeUnit.SECONDS.toMinutes(ms)));
-
-                if (tick < 0) {
-                    m = "Soon";
+            }
+            case "lugia" -> {
+                if(World.npcIsRegistered(3308)){
+                    return "SPAWNED";
                 }
-                return m;
-
-            case "veigar":
-                tick = 3000 - (ticka % 3000);
-                tick /= 100;
-                tick *= 60;
-
-                ms = tick ;
-                m = String.format("%dh %dm", TimeUnit.SECONDS.toHours(ms),
-                        TimeUnit.SECONDS.toMinutes(ms) - TimeUnit.HOURS.toMinutes(TimeUnit.SECONDS.toHours(ms)),
-                        TimeUnit.SECONDS.toSeconds(ms) - TimeUnit.MINUTES.toSeconds(TimeUnit.SECONDS.toMinutes(ms)));
-
-                if (tick < 0) {
-                    m = "Soon";
-                }
-                return m;
-
-            case "lugia":
                 tick = 24000 - (ticka % 24000);
                 tick /= 100;
                 tick *= 60;
-
-                ms = tick ;
+                ms = tick;
                 m = String.format("%dh %dm", TimeUnit.SECONDS.toHours(ms),
                         TimeUnit.SECONDS.toMinutes(ms) - TimeUnit.HOURS.toMinutes(TimeUnit.SECONDS.toHours(ms)),
                         TimeUnit.SECONDS.toSeconds(ms) - TimeUnit.MINUTES.toSeconds(TimeUnit.SECONDS.toMinutes(ms)));
-
-                if (tick < 0) {
-                    m = "Soon";
-                }
                 return m;
-
+            }
         }
         return "";
     }
