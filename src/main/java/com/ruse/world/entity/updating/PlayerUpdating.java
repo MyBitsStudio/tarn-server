@@ -423,7 +423,6 @@ public class PlayerUpdating {
 		builder.putShort(((message.getColour() & 0xff) << 8) | (message.getEffects() & 0xff), ByteOrder.LITTLE);
 		builder.put(target.getRank().ordinal());
 		builder.put(target.getDonator().ordinal());
-		builder.put(target.getVip().ordinal());
 		builder.put(target.getGameMode().ordinal());
 		builder.put(bytes.length, ValueType.C);
 		builder.putBytesReverse(bytes);
@@ -544,13 +543,13 @@ public class PlayerUpdating {
 	 */
 	private static void updateEntityInteraction(PacketBuilder builder, Player target) {
 		Entity entity = target.getInteractingEntity();
-		if (entity != null) {
+		if (entity == null) {
+			builder.putShort(-1, ByteOrder.LITTLE);
+		} else {
 			int index = entity.getIndex();
 			if (entity instanceof Player)
 				index += +32768;
 			builder.putShort(index, ByteOrder.LITTLE);
-		} else {
-			builder.putShort(-1, ByteOrder.LITTLE);
 		}
 	}
 
@@ -681,7 +680,6 @@ public class PlayerUpdating {
 		properties.put(target.getSkillManager().getCombatLevel());
 		properties.putShort(target.getRank().ordinal());
 		properties.putShort(target.getDonator().ordinal());
-		properties.putShort(target.getVip().ordinal());
 		properties.putShort(target.getLoyaltyTitle().ordinal());
 		properties.putShort(target instanceof MiniPlayer ? 1 : 0);
 		out.put(properties.buffer().writerIndex(), ValueType.C);

@@ -64,7 +64,7 @@ public class Revenant implements CombatStrategy {
 						: Misc.getRandom(10) <= 5 ? CombatType.MAGIC : CombatType.RANGED;
 		switch (attkType) {
 		case MELEE:
-			revenant.performAnimation(new Animation(revenant.getDefinition().getAttackAnimation()));
+			revenant.performAnimation(new Animation(revenant.getDefinition().getAttackAnim()));
 			revenant.getCombatBuilder()
 					.setContainer(new CombatContainer(revenant, victim, 1, 1, CombatType.MELEE, true));
 			break;

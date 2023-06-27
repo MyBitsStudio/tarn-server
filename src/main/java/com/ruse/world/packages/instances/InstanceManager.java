@@ -282,20 +282,13 @@ public class InstanceManager {
             int tab = Integer.parseInt(settings[0]);
             int child = Integer.parseInt(settings[1]);
 
-            switch (tab) {
-                case 0:
-                    data = InstanceInterData.getMultiInstances();
-                    break;
-                case 1:
-                    data = InstanceInterData.getMulti2Instances();
-                    break;
-                case 2:
-                    data = InstanceInterData.getSpecialInstances();
-                    break;
-                case 3:
-                    data = InstanceInterData.getEventInstances();
-                    break;
-            }
+            data = switch (tab) {
+                case 0 -> InstanceInterData.getMultiInstances();
+                case 1 -> InstanceInterData.getMulti2Instances();
+                case 2 -> InstanceInterData.getSpecialInstances();
+                case 3 -> InstanceInterData.getEventInstances();
+                default -> data;
+            };
 
             if (child >= data.length) {
                 child = 0;
@@ -312,18 +305,12 @@ public class InstanceManager {
             return;
         }
 
-        String prefix = "@blu@";
-        switch(Integer.parseInt(settings[2])){
-            case 1:
-                prefix = "@gre@";
-                break;
-            case 2:
-                prefix = "@red@";
-                break;
-            case 3:
-                prefix = "@yel@";
-                break;
-        }
+        String prefix = switch (Integer.parseInt(settings[2])) {
+            case 1 -> "@gre@";
+            case 2 -> "@red@";
+            case 3 -> "@yel@";
+            default -> "@blu@";
+        };
 
         int diff = Integer.parseInt(settings[2]);
 
@@ -358,7 +345,6 @@ public class InstanceManager {
         }
 
         AtomicInteger starts = new AtomicInteger(70601);
-        String finalPrefix = prefix;
         Arrays.stream(data)
                 .filter(Objects::nonNull)
                 .forEach(data1 -> {
@@ -367,7 +353,7 @@ public class InstanceManager {
                     else
                         player.getPacketSender().sendSpriteChange(starts.getAndIncrement(), 1539);
 
-                    player.getPacketSender().sendString(starts.getAndIncrement(), finalPrefix +data1.getName());
+                    player.getPacketSender().sendString(starts.getAndIncrement(), prefix +data1.getName());
                 });
 
         AtomicInteger start = new AtomicInteger(70801);

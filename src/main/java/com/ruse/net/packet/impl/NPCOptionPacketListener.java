@@ -701,6 +701,13 @@ public class NPCOptionPacketListener implements PacketListener {
         }));
     }
 
+    private static boolean canAttack(Player player, int npcId){
+        return switch(npcId){
+
+            default -> true;
+        };
+    }
+
     public static void attackNPC(Player player, Packet packet) {
         int index = packet.readShortA();
         if (index < 0 || index > World.getNpcs().capacity())
@@ -758,47 +765,6 @@ public class NPCOptionPacketListener implements PacketListener {
             player.getPacketSender().sendMessage("You must claim your stored items at Dungeoneering first.");
             player.getMovementQueue().reset();
             return;
-        }
-
-        if(interact.getId() == 810) {
-                if (player.getBonusManager().getExtraBonus()[BonusManager.DEFENCE_SUMMONING] > 500) {
-                    player.sendMessage("@red@This raid is restricted to players with an ELO of 500 or less. [Use ::elo]");
-                    player.getCombatBuilder().setDidAutoRetaliate(false);
-                    player.getMovementQueue().reset();
-                    return;
-            }
-        }
-        if(interact.getId() == 1307) {
-            if (player.getBonusManager().getExtraBonus()[BonusManager.DEFENCE_SUMMONING] > 500) {
-                player.sendMessage("@red@This raid is restricted to players with an ELO of 500 or less. [Use ::elo]");
-                player.getCombatBuilder().setDidAutoRetaliate(false);
-                player.getMovementQueue().reset();
-                return;
-            }
-        }
-        if(interact.getId() == 1308) {
-            if (player.getBonusManager().getExtraBonus()[BonusManager.DEFENCE_SUMMONING] > 500) {
-                player.sendMessage("@red@This raid is restricted to players with an ELO of 500 or less. [Use ::elo]");
-                player.getCombatBuilder().setDidAutoRetaliate(false);
-                player.getMovementQueue().reset();
-                return;
-            }
-        }
-        if(interact.getId() == 1309) {
-            if (player.getBonusManager().getExtraBonus()[BonusManager.DEFENCE_SUMMONING] > 500) {
-                player.sendMessage("@red@This raid is restricted to players with an ELO of 500 or less. [Use ::elo]");
-                player.getCombatBuilder().setDidAutoRetaliate(false);
-                player.getMovementQueue().reset();
-                return;
-            }
-        }
-        if(interact.getId() == 1310) {
-            if (player.getBonusManager().getExtraBonus()[BonusManager.DEFENCE_SUMMONING] > 500) {
-                player.sendMessage("@red@This raid is restricted to players with an ELO of 500 or less. [Use ::elo]");
-                player.getCombatBuilder().setDidAutoRetaliate(false);
-                player.getMovementQueue().reset();
-                return;
-            }
         }
 
         if (interact.getId() == 111) {

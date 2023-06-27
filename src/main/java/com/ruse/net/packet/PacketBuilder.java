@@ -177,12 +177,8 @@ public final class PacketBuilder {
 	 */
 	public PacketBuilder initializeAccess(AccessType type) {
 		switch (type) {
-		case BIT:
-			bitPosition = buffer.writerIndex() * 8;
-			break;
-		case BYTE:
-			buffer.writerIndex((bitPosition + 7) / 8);
-			break;
+			case BIT -> bitPosition = buffer.writerIndex() * 8;
+			case BYTE -> buffer.writerIndex((bitPosition + 7) / 8);
 		}
 		return this;
 	}
