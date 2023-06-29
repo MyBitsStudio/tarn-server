@@ -11,93 +11,93 @@ public enum InstanceInterData {
     /**
      * Multi Instances
      */
-    ZINGRUX("Zingrux", "1k NPC",
-            new Item(10835, 10000), 16, 100, 8014,
-            InstanceType.MULTI),
-
-    DR_ABERRANT("Dr. Aberrant", "200 Zingrux",
-            new Item(10835, 10000), 16, 100, 8003,
-            InstanceType.MULTI),
-
-    INFERNO("Inferno", "200 Dr.Aberrant",
-            new Item(10835, 10000), 16, 100, 202,
-    InstanceType.MULTI),
-
-    NAGENDRA("Nagendra", "200 Inferno",
-            new Item(10835, 10000), 16, 100, 811,
-            InstanceType.MULTI),
-
-    KOLGAL("Kol'gal", "300 Nagendra",
-            new Item(10835, 10000), 16, 100, 9815,
-            InstanceType.MULTI),
-
-    YISDAR("Yisdar", "300 Kol'gal",
-            new Item(10835, 10000), 16, 100, 9817,
-            InstanceType.MULTI),
-
-    IGTHAUR("Ig'thaur", "300 Yisdar",
-            new Item(10835, 10000), 16, 100, 9920,
-            InstanceType.MULTI),
-
-    ZERNATH("Zernath", "300 Ig'thaur",
-            new Item(10835, 10000), 16, 100, 3831,
-            InstanceType.MULTI),
-
-    AVALON("Avalon", "300 Zernath",
-            new Item(10835, 10000), 16, 100, 9025,
-            InstanceType.MULTI),
-
-    ERAGON("Nagendra", "500 Avalon",
-            new Item(10835, 10000), 16, 100, 9026,
-            InstanceType.MULTI),
-
-    DOOMWATCHER("Doomwatcher", "500 Eragon",
-            new Item(10835, 10000), 16, 100, 9836,
-            InstanceType.MULTI),
-
-    MAZE_GUARDIAN("Maze Guardian", "500 Doomwatcher",
-            new Item(10835, 10000), 16, 100, 92,
-            InstanceType.MULTI),
-
-    MISCREATION("Miscreation", "500 Maze Guardian",
-            new Item(10835, 10000), 16, 100, 3313,
-            InstanceType.MULTI),
-
-    AVATAR_TITAN("Avatar Titan", "500 Miscreation",
-            new Item(10835, 10000), 16, 100, 8008,
-            InstanceType.MULTI),
-
-    ZORBAK("Zorbak", "500 Avatar Titan",
-            new Item(10835, 10000), 16, 100, 1906,
-            InstanceType.MULTI),
-
-    DEATH_GOD("Death God", "500 Zorbak",
-            new Item(10835, 10000), 16, 100, 9915,
-            InstanceType.MULTI),
-
-    EMERALD_SLAYER("Emerald Slayer", "500 Death God",
-            new Item(10835, 10000), 16, 100, 2342,
-            InstanceType.MULTI),
-
-    GOLDEN_GOLEM("Golden Golem", "500 Emerald Slayer",
-            new Item(10835, 10000), 16, 100, 9024,
-            InstanceType.MULTI),
-
-    LUFFY("Luffy", "750 Golden Golem",
-            new Item(10835, 10000), 16, 100, 9916,
-            InstanceType.MULTI),
-
-    BROLY("Broly", "750 Luffy",
-            new Item(10835, 10000), 16, 100, 9918,
-            InstanceType.MULTI),
-
-    BOWSER("Bowser", "750 Broly",
-            new Item(10835, 10000), 16, 100, 9919,
-            InstanceType.MULTI),
-
-    SASUKE("Sasuke", "1k Bowser",
-            new Item(10835, 10000), 16, 100, 9914,
-            InstanceType.MULTI),
+//    ZINGRUX("Zingrux", "1k NPC",
+//            new Item(10835, 10000), 16, 100, 8014,
+//            InstanceType.MULTI),
+//
+//    DR_ABERRANT("Dr. Aberrant", "200 Zingrux",
+//            new Item(10835, 10000), 16, 100, 8003,
+//            InstanceType.MULTI),
+//
+//    INFERNO("Inferno", "200 Dr.Aberrant",
+//            new Item(10835, 10000), 16, 100, 202,
+//    InstanceType.MULTI),
+//
+//    NAGENDRA("Nagendra", "200 Inferno",
+//            new Item(10835, 10000), 16, 100, 811,
+//            InstanceType.MULTI),
+//
+//    KOLGAL("Kol'gal", "300 Nagendra",
+//            new Item(10835, 10000), 16, 100, 9815,
+//            InstanceType.MULTI),
+//
+//    YISDAR("Yisdar", "300 Kol'gal",
+//            new Item(10835, 10000), 16, 100, 9817,
+//            InstanceType.MULTI),
+//
+//    IGTHAUR("Ig'thaur", "300 Yisdar",
+//            new Item(10835, 10000), 16, 100, 9920,
+//            InstanceType.MULTI),
+//
+//    ZERNATH("Zernath", "300 Ig'thaur",
+//            new Item(10835, 10000), 16, 100, 3831,
+//            InstanceType.MULTI),
+//
+//    AVALON("Avalon", "300 Zernath",
+//            new Item(10835, 10000), 16, 100, 9025,
+//            InstanceType.MULTI),
+//
+//    ERAGON("Nagendra", "500 Avalon",
+//            new Item(10835, 10000), 16, 100, 9026,
+//            InstanceType.MULTI),
+//
+//    DOOMWATCHER("Doomwatcher", "500 Eragon",
+//            new Item(10835, 10000), 16, 100, 9836,
+//            InstanceType.MULTI),
+//
+//    MAZE_GUARDIAN("Maze Guardian", "500 Doomwatcher",
+//            new Item(10835, 10000), 16, 100, 92,
+//            InstanceType.MULTI),
+//
+//    MISCREATION("Miscreation", "500 Maze Guardian",
+//            new Item(10835, 10000), 16, 100, 3313,
+//            InstanceType.MULTI),
+//
+//    AVATAR_TITAN("Avatar Titan", "500 Miscreation",
+//            new Item(10835, 10000), 16, 100, 8008,
+//            InstanceType.MULTI),
+//
+//    ZORBAK("Zorbak", "500 Avatar Titan",
+//            new Item(10835, 10000), 16, 100, 1906,
+//            InstanceType.MULTI),
+//
+//    DEATH_GOD("Death God", "500 Zorbak",
+//            new Item(10835, 10000), 16, 100, 9915,
+//            InstanceType.MULTI),
+//
+//    EMERALD_SLAYER("Emerald Slayer", "500 Death God",
+//            new Item(10835, 10000), 16, 100, 2342,
+//            InstanceType.MULTI),
+//
+//    GOLDEN_GOLEM("Golden Golem", "500 Emerald Slayer",
+//            new Item(10835, 10000), 16, 100, 9024,
+//            InstanceType.MULTI),
+//
+//    LUFFY("Luffy", "750 Golden Golem",
+//            new Item(10835, 10000), 16, 100, 9916,
+//            InstanceType.MULTI),
+//
+//    BROLY("Broly", "750 Luffy",
+//            new Item(10835, 10000), 16, 100, 9918,
+//            InstanceType.MULTI),
+//
+//    BOWSER("Bowser", "750 Broly",
+//            new Item(10835, 10000), 16, 100, 9919,
+//            InstanceType.MULTI),
+//
+//    SASUKE("Sasuke", "1k Bowser",
+//            new Item(10835, 10000), 16, 100, 9914,
+//            InstanceType.MULTI),
 
     SANCTUM_GOLEM("Sanctum Golem", "50k NPC Kills",
             new Item(10835, 10000), 16, 100, 9017,

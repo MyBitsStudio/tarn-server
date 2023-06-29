@@ -1189,7 +1189,7 @@ public class ButtonClickPacketListener implements PacketListener {
                 player.getPacketSender().sendInterfaceRemoval();
                 break;
             case 11008:
-                player.sendMessage("This will be added soon!");
+                player.getTeleInterface().open();
                 break;
             case 11011:
                 TeleportHandler.teleportPlayer(player, new Position(2856, 2708, 0),
@@ -1306,7 +1306,7 @@ public class ButtonClickPacketListener implements PacketListener {
                     player.getSummoning().toInventory();
                 break;
             case 1042:
-                player.getPacketSender().sendInterface(57350);
+               // player.getPacketSender().sendInterface(57350);
                 break;
 
             case 1037:

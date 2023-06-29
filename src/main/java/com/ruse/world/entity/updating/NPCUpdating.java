@@ -103,7 +103,7 @@ public class NPCUpdating {
 	 * @param builder The packet builder to write sendInformation on.
 	 * @return The NPCUpdating instance.
 	 */
-	private static void addNPC(Player player, NPC npc, PacketBuilder builder) {
+	private static void addNPC(@NotNull Player player, @NotNull NPC npc, @NotNull PacketBuilder builder) {
 		builder.putBits(14, npc.getIndex());
 		builder.putBits(5, npc.getPosition().getY() - player.getPosition().getY());
 		builder.putBits(5, npc.getPosition().getX() - player.getPosition().getX());
@@ -119,7 +119,7 @@ public class NPCUpdating {
 	 * @param builder The packet builder to write sendInformation on.
 	 * @return The NPCUpdating instance.
 	 */
-	private static void updateMovement(NPC npc, PacketBuilder out) {
+	private static void updateMovement(@NotNull NPC npc, PacketBuilder out) {
 		if (npc.getSecondaryDirection().toInteger() == -1) {
 			if (npc.getPrimaryDirection().toInteger() == -1) {
 				if (npc.getUpdateFlag().isUpdateRequired()) {
@@ -150,7 +150,7 @@ public class NPCUpdating {
 	 * @param builder The packet builder to write sendInformation on.
 	 * @return The NPCUpdating instance.
 	 */
-	private static void appendUpdates(NPC npc, PacketBuilder block) {
+	private static void appendUpdates(@NotNull NPC npc, PacketBuilder block) {
 		int mask = 0;
 		UpdateFlag flag = npc.getUpdateFlag();
 		if (flag.flagged(Flag.ANIMATION) && npc.getAnimation() != null) {
@@ -217,7 +217,7 @@ public class NPCUpdating {
 	 * @param npc     The npc to update animation for.
 	 * @return The NPCUpdating instance.
 	 */
-	private static void updateAnimation(PacketBuilder builder, NPC npc) {
+	private static void updateAnimation(@NotNull PacketBuilder builder, @NotNull NPC npc) {
 		builder.putShort(npc.getAnimation().getId(), ByteOrder.LITTLE);
 		builder.put(npc.getAnimation().getDelay());
 	}
@@ -229,7 +229,7 @@ public class NPCUpdating {
 	 * @param npc     The npc to update graphics for.
 	 * @return The NPCUpdating instance.
 	 */
-	private static void updateGraphics(PacketBuilder builder, NPC npc) {
+	private static void updateGraphics(@NotNull PacketBuilder builder, @NotNull NPC npc) {
 		builder.putShort(npc.getGraphic().getId());
 		builder.putInt(((npc.getGraphic().getHeight().ordinal() * 50) << 16) + (npc.getGraphic().getDelay() & 0xffff));
 	}
@@ -241,7 +241,7 @@ public class NPCUpdating {
 	 * @param npc     The npc to update the single hit for.
 	 * @return The NPCUpdating instance.
 	 */
-	private static void updateSingleHit(PacketBuilder builder, NPC npc) {
+	private static void updateSingleHit(@NotNull PacketBuilder builder, @NotNull NPC npc) {
 		builder.putLong(npc.getPrimaryHit().getDamage());
 		builder.put(npc.getPrimaryHit().getHitmask().ordinal());
 		builder.put(npc.getPrimaryHit().getCombatIcon().ordinal() - 1);
@@ -256,7 +256,7 @@ public class NPCUpdating {
 	 * @param npc     The npc to update the double hit for.
 	 * @return The NPCUpdating instance.
 	 */
-	private static void updateDoubleHit(PacketBuilder builder, NPC npc) {
+	private static void updateDoubleHit(@NotNull PacketBuilder builder, @NotNull NPC npc) {
 		builder.putLong(npc.getSecondaryHit().getDamage());
 		builder.put(npc.getSecondaryHit().getHitmask().ordinal(), ValueType.S);
 		builder.put(npc.getSecondaryHit().getCombatIcon().ordinal() - 1);
@@ -269,7 +269,7 @@ public class NPCUpdating {
 	 *
 	 * @param npc The npc to reset flags for.
 	 */
-	public static void resetFlags(NPC npc) {
+	public static void resetFlags(@NotNull NPC npc) {
 		npc.getUpdateFlag().reset();
 		npc.setTeleporting(false).setForcedChat("");
 		npc.setNeedsPlacement(false);

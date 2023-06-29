@@ -10,6 +10,7 @@ import com.ruse.model.definitions.WeaponInterfaces;
 import com.ruse.model.projectile.ItemEffect;
 import com.ruse.motivote3.doMotivote;
 import com.ruse.security.ServerSecurity;
+import com.ruse.security.save.impl.server.defs.NPCDataLoad;
 import com.ruse.world.World;
 import com.ruse.world.content.LotterySystem;
 import com.ruse.world.content.WellOfGoodwill;
@@ -261,21 +262,21 @@ public class OwnerCommands {
 
             case "add":
                 if(commands.length >= 2){
-                    switch(commands[1]){
-                        case "donate":
+                    switch (commands[1]) {
+                        case "donate" -> {
                             amount = Integer.parseInt(commands[2]);
                             DonationManager.getInstance().addToTotalDonation(amount);
                             return true;
-
-                        case "vote":
+                        }
+                        case "vote" -> {
                             amount = Integer.parseInt(commands[2]);
                             doMotivote.setVoteCount(doMotivote.getVoteCount() + amount);
                             VoteBossDrop.save();
-
                             if (doMotivote.getVoteCount() >= 50) {
                                 VoteBossDrop.handleSpawn();
                             }
                             return true;
+                        }
                     }
                 } else {
                     player.getPacketSender().sendMessage("Use as ::add [donate/vote] [amount]");
@@ -284,45 +285,46 @@ public class OwnerCommands {
 
             case "reload":
                 if(commands.length >= 2){
-                    switch(commands[1]){
-                        case "all":
+                    switch (commands[1]) {
+                        case "all" -> {
                             Shop.ShopManager.parseShops().load();
                             NPCDrops.parseDrops().load();
                             ItemDefinition.init();
                             WeaponInterfaces.parseInterfaces().load();
-                            NpcDefinition.parseNpcs().load();
+                            new NPCDataLoad().loadJSON("./.core/server/defs/npc/npc_data.json").run();
                             WeaponInterfaces.init();
                             ServerSecurity.getInstance().reload();
                             FlashDeals.getDeals().reload();
                             player.sendMessage("Reloaded all definitions.");
                             return true;
-
-                        case "some":
-                            NpcDefinition.parseNpcs().load();
+                        }
+                        case "some" -> {
+                            new NPCDataLoad().loadJSON("./.core/server/defs/npc/npc_data.json").run();
                             ItemDefinition.init();
                             NPCDrops.parseDrops().load();
                             Shop.ShopManager.parseShops().load();
                             return true;
-
-                        case "shops":
+                        }
+                        case "shops" -> {
                             Shop.ShopManager.parseShops().load();
                             player.sendMessage("Shop reload");
                             return true;
-
-                        case "bans":
+                        }
+                        case "bans" -> {
                             ServerSecurity.getInstance().reload();
                             player.sendMessage("Bans reload");
                             return true;
-
-                        case "deals":
+                        }
+                        case "deals" -> {
                             FlashDeals.getDeals().reload();
                             player.sendMessage("Deals reload");
                             return true;
-
-                        case "sales":
+                        }
+                        case "sales" -> {
                             DonateSales.getInstance().reload();
                             player.sendMessage("Sales reload");
                             return true;
+                        }
                     }
                 }
                 return true;

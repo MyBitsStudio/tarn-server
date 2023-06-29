@@ -15,6 +15,7 @@ import com.ruse.model.definitions.WeaponInterfaces;
 import com.ruse.net.PipelineFactory;
 import com.ruse.net.security.ConnectionHandler;
 import com.ruse.security.ServerSecurity;
+import com.ruse.security.save.impl.server.defs.NPCDataLoad;
 import com.ruse.world.World;
 import com.ruse.world.allornothing.DoubleOrNothing;
 import com.ruse.world.clip.region.RegionClipping;
@@ -135,7 +136,8 @@ public final class GameLoader {
 		serviceLoader.execute(ClanManager.getManager()::init);
 		serviceLoader.execute(CombatPoisonData::init);
 		serviceLoader.execute(CombatStrategies::init);
-		serviceLoader.execute(() -> NpcDefinition.parseNpcs().load());
+		//serviceLoader.execute(() -> NpcDefinition.parseNpcs().load());
+		serviceLoader.execute(() -> new NPCDataLoad().loadArray("./.core/server/defs/npc/npc_data.json").run());
 
 		serviceLoader.execute(() -> NPCDrops.parseDrops().load());
 		serviceLoader.execute(() -> WeaponInterfaces.parseInterfaces().load());

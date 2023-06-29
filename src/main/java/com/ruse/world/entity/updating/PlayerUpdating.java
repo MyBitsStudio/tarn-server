@@ -23,6 +23,7 @@ import com.ruse.world.World;
 import com.ruse.world.entity.Entity;
 import com.ruse.world.entity.impl.mini.MiniPlayer;
 import com.ruse.world.entity.impl.player.Player;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * Represents the associated player's player updating.
@@ -107,7 +108,7 @@ public class PlayerUpdating {
 	 * @param builder The packet builder to write sendInformation on.
 	 * @return The PlayerUpdating instance.
 	 */
-	private static void addPlayer(Player player, Player target, PacketBuilder builder) {
+	private static void addPlayer(@NotNull Player player, @NotNull Player target, @NotNull PacketBuilder builder) {
 		builder.putBits(11, target.getIndex());
 		builder.putBits(1, 1);
 		builder.putBits(1, 1);
@@ -123,7 +124,7 @@ public class PlayerUpdating {
 	 * @param builder The packet builder to write sendInformation on.
 	 * @return The PlayerUpdating instance.
 	 */
-	private static void updateMovement(Player player, PacketBuilder builder) {
+	private static void updateMovement(@NotNull Player player, PacketBuilder builder) {
 		/*
 		 * Check if the player is teleporting.
 		 */
@@ -241,7 +242,7 @@ public class PlayerUpdating {
 	 * @param target  The player to update movement for.
 	 * @return The PlayerUpdating instance.
 	 */
-	private static void updateOtherPlayerMovement(PacketBuilder builder, Player target) {
+	private static void updateOtherPlayerMovement(PacketBuilder builder, @NotNull Player target) {
 		/*
 		 * Check which type of movement took place.
 		 */
@@ -322,8 +323,8 @@ public class PlayerUpdating {
 	 * @param noChat           Do not allow player to chat?
 	 * @return The PlayerUpdating instance.
 	 */
-	private static void appendUpdates(Player player, PacketBuilder builder, Player target, boolean updateAppearance,
-			boolean noChat) {
+	private static void appendUpdates(Player player, PacketBuilder builder, @NotNull Player target, boolean updateAppearance,
+									  boolean noChat) {
 		if (!target.getUpdateFlag().isUpdateRequired() && !updateAppearance)
 			return;
 		/*
@@ -417,7 +418,7 @@ public class PlayerUpdating {
 	 * @param target  The player to update chat for.
 	 * @return The PlayerUpdating instance.
 	 */
-	private static void updateChat(PacketBuilder builder, Player target) {
+	private static void updateChat(@NotNull PacketBuilder builder, @NotNull Player target) {
 		Message message = target.getChatMessages().get();
 		byte[] bytes = message.getText();
 		builder.putShort(((message.getColour() & 0xff) << 8) | (message.getEffects() & 0xff), ByteOrder.LITTLE);
@@ -435,7 +436,7 @@ public class PlayerUpdating {
 	 * @param target  The player to update forced chat for.
 	 * @return The PlayerUpdating instance.
 	 */
-	private static void updateForcedChat(PacketBuilder builder, Player target) {
+	private static void updateForcedChat(@NotNull PacketBuilder builder, @NotNull Player target) {
 		builder.putString(target.getForcedChat());
 	}
 
@@ -446,7 +447,7 @@ public class PlayerUpdating {
 	 * @param target  The player to update forced movement for.
 	 * @return The PlayerUpdating instance.
 	 */
-	private static void updateForcedMovement(Player player, PacketBuilder builder, Player target) {
+	private static void updateForcedMovement(@NotNull Player player, @NotNull PacketBuilder builder, @NotNull Player target) {
 		Position position = target.getPosition();
 		Position myPosition = player.getCurrentMapCenter();
 		builder.put((position.getLocalX(myPosition) + target.getForceMovement()[MovementQueue.FIRST_MOVEMENT_X]),
@@ -469,7 +470,7 @@ public class PlayerUpdating {
 	 * @param target  The player to update animations for.
 	 * @return The PlayerUpdating instance.
 	 */
-	private static void updateAnimation(PacketBuilder builder, Player target) {
+	private static void updateAnimation(@NotNull PacketBuilder builder, @NotNull Player target) {
 		builder.putShort(target.getAnimation().getId(), ByteOrder.LITTLE);
 		builder.put(target.getAnimation().getDelay(), ValueType.C);
 	}
@@ -481,7 +482,7 @@ public class PlayerUpdating {
 	 * @param target  The player to update graphics for.
 	 * @return The PlayerUpdating instance.
 	 */
-	private static void updateGraphics(PacketBuilder builder, Player target) {
+	private static void updateGraphics(@NotNull PacketBuilder builder, @NotNull Player target) {
 		builder.putShort(target.getGraphic().getId(), ByteOrder.LITTLE);
 		builder.putInt(
 				((target.getGraphic().getHeight().ordinal() * 50) << 16) + (target.getGraphic().getDelay() & 0xffff));
@@ -494,7 +495,7 @@ public class PlayerUpdating {
 	 * @param target  The player to update the single hit for.
 	 * @return The PlayerUpdating instance.
 	 */
-	private static void updateSingleHit(PacketBuilder builder, Player target) {
+	private static void updateSingleHit(@NotNull PacketBuilder builder, @NotNull Player target) {
 		builder.putLong(target.getPrimaryHit().getDamage());
 		builder.put(target.getPrimaryHit().getHitmask().ordinal());
 		builder.put(target.getPrimaryHit().getCombatIcon().ordinal() - 1);
@@ -510,7 +511,7 @@ public class PlayerUpdating {
 	 * @param target  The player to update the double hit for.
 	 * @return The PlayerUpdating instance.
 	 */
-	private static void updateDoubleHit(PacketBuilder builder, Player target) {
+	private static void updateDoubleHit(@NotNull PacketBuilder builder, @NotNull Player target) {
 		builder.putLong(target.getSecondaryHit().getDamage());
 		builder.put(target.getSecondaryHit().getHitmask().ordinal());
 		builder.put(target.getSecondaryHit().getCombatIcon().ordinal() - 1);
@@ -526,7 +527,7 @@ public class PlayerUpdating {
 	 * @param target  The player to update face position for.
 	 * @return The PlayerUpdating instance.
 	 */
-	private static void updateFacingPosition(PacketBuilder builder, Player target) {
+	private static void updateFacingPosition(@NotNull PacketBuilder builder, @NotNull Player target) {
 		final Position position = target.getPositionToFace();
 		int x = position == null ? 0 : position.getX();
 		int y = position == null ? 0 : position.getY();
@@ -541,7 +542,7 @@ public class PlayerUpdating {
 	 * @param target  The player to update entity interaction for.
 	 * @return The PlayerUpdating instance.
 	 */
-	private static void updateEntityInteraction(PacketBuilder builder, Player target) {
+	private static void updateEntityInteraction(PacketBuilder builder, @NotNull Player target) {
 		Entity entity = target.getInteractingEntity();
 		if (entity == null) {
 			builder.putShort(-1, ByteOrder.LITTLE);
@@ -557,12 +558,11 @@ public class PlayerUpdating {
 	 * This update block is used to update a player's appearance, this includes
 	 * their equipment, clothing, combat level, gender, head icons, user name and
 	 * animations.
-	 * 
-	 * @param builder The packet builder to write sendInformation on.
+	 *
 	 * @param target  The player to update appearance for.
 	 * @return The PlayerUpdating instance.
 	 */
-	private static void updateAppearance(Player player, PacketBuilder out, Player target) {
+	private static void updateAppearance(@NotNull Player player, PacketBuilder out, @NotNull Player target) {
 		Appearance appearance = target.getAppearance();
 		Equipment equipment = target.getEquipment();
 		PacketBuilder properties = new PacketBuilder();
@@ -678,10 +678,10 @@ public class PlayerUpdating {
 
 		properties.putLong(target.getLongUsername());
 		properties.put(target.getSkillManager().getCombatLevel());
-		properties.putShort(target.getRank().ordinal());
-		properties.putShort(target.getDonator().ordinal());
-		properties.putShort(target.getLoyaltyTitle().ordinal());
-		properties.putShort(target instanceof MiniPlayer ? 1 : 0);
+		properties.put(target.getRank().ordinal());
+		properties.put(target.getDonator().ordinal());
+		properties.put(target.getLoyaltyTitle().ordinal());
+		properties.put(target instanceof MiniPlayer ? 1 : 0);
 		out.put(properties.buffer().writerIndex(), ValueType.C);
 		out.putBytes(properties.buffer());
 	}
@@ -692,7 +692,7 @@ public class PlayerUpdating {
 	 * 
 	 * @return The PlayerUpdating instance.
 	 */
-	public static void resetFlags(Player player) {
+	public static void resetFlags(@NotNull Player player) {
 		player.getUpdateFlag().reset();
 		player.setRegionChange(false);
 		player.setTeleporting(false).setForcedChat("");

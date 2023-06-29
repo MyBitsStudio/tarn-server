@@ -2,6 +2,7 @@ package com.ruse.security.save;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.ruse.security.ServerSecurity;
 import com.ruse.security.tools.SecurityUtils;
@@ -18,12 +19,22 @@ public abstract class SecureLoad {
             .create();
 
     protected JsonObject object = new JsonObject();
+    protected JsonArray array = new JsonArray();
 
     public abstract String key();
 
     public SecureLoad loadJSON(String path){
         try (FileReader fileReader = new FileReader(path)){
             object = builder.fromJson(fileReader, JsonObject.class);
+        } catch(Exception e){
+            e.printStackTrace();
+        }
+        return this;
+    }
+
+    public SecureLoad loadArray(String path){
+        try (FileReader fileReader = new FileReader(path)){
+            array = builder.fromJson(fileReader, JsonArray.class);
         } catch(Exception e){
             e.printStackTrace();
         }

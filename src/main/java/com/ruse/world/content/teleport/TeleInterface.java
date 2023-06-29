@@ -13,6 +13,7 @@ import com.ruse.model.definitions.NPCDrops.NpcDropItem;
 import com.ruse.world.content.transportation.TeleportHandler;
 import com.ruse.world.content.transportation.TeleportType;
 import com.ruse.world.entity.impl.player.Player;
+import org.jetbrains.annotations.NotNull;
 
 public class TeleInterface {
 
@@ -66,38 +67,37 @@ public class TeleInterface {
             setData(getCategory()[index]);
             return true;
         }
-        switch(id) {
-            case 19016:
+        switch (id) {
+            case 19016 -> {
                 teleport();
                 return true;
-            case 19003:
+            }
+            case 19003 -> {
                 openCategory(TeleInterfaceCategory.MONSTERS);
                 return true;
-            case 19004:
+            }
+            case 19004 -> {
                 openCategory(TeleInterfaceCategory.BOSSES);
                 return true;
-            case 19005:
+            }
+            case 19005 -> {
                 openCategory(TeleInterfaceCategory.MINIGAMES);
                 return true;
-            case 19006:
+            }
+            case 19006 -> {
                 openCategory(TeleInterfaceCategory.MISC);
                 return true;
+            }
         }
         return false;
     }
 
     public void loadItems() {
         List<NpcDropItem> drop = getCleanList();
-        Collections.sort(drop, (item1, item2) -> {
+        drop.sort((item1, item2) -> {
             int v1 = item1.getItem().getDefinition().getValue() * item1.getItem().getAmount();
             int v2 = item2.getItem().getDefinition().getValue() * item2.getItem().getAmount();
-            if (v1 == v2) {
-                return 0;
-            } else if (v1 > v2) {
-                return -1;
-            } else {
-                return 1;
-            }
+            return Integer.compare(v2, v1);
         });
 
         List<Item> list = new ArrayList<Item>();
@@ -129,7 +129,7 @@ public class TeleInterface {
     public TeleInterfaceData[] getCategory() {
         return this.category;
     }
-    public void setCategory(TeleInterfaceData[] category) {
+    public void setCategory(TeleInterfaceData @NotNull [] category) {
         this.category = category;
         setData(category[0]);
         for(int i = 0; i < 35; i++)
