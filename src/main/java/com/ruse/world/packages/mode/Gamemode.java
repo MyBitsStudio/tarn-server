@@ -23,4 +23,8 @@ public abstract class Gamemode {
 
     public abstract boolean canWear(int id);
 
+    public abstract double xpRate();
+
+    public abstract double dropRate();
+
 }

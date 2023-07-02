@@ -57,4 +57,14 @@ public class Normal extends Gamemode {
             default -> true;
         };
     }
+
+    @Override
+    public double xpRate() {
+        return 0;
+    }
+
+    @Override
+    public double dropRate() {
+        return 0;
+    }
 }

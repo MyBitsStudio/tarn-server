@@ -49,4 +49,14 @@ public class Temp extends Gamemode {
     public boolean canWear(int id) {
         return false;
     }
+
+    @Override
+    public double xpRate() {
+        return 0;
+    }
+
+    @Override
+    public double dropRate() {
+        return 0;
+    }
 }

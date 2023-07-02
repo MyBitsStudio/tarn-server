@@ -123,9 +123,6 @@
     "isBoss" : false
   },
   {
-    "_comment" : "Beginning Bosses"
-  },
-  {
     "id": 8014,
     "name": "Zinqrux",
     "examine": "Keepers of the Light monster.",
@@ -137,7 +134,7 @@
     "poisonous": false,
     "respawn": 1,
     "maxHit": 5,
-    "hitpoints": 10000,
+    "hitpoints": 1000,
     "attackSpeed": 7,
     "attackAnim": 13035,
     "defenceAnim": 404,
@@ -150,9 +147,36 @@
     "isBoss" : false
   },
   {
-    "_comment" : "Bosses"
+    "_comment" : "Beginning Bosses"
   },
 
+  {
+    "_comment" : "Bosses"
+  },
+  {
+    "id": 6430,
+    "name": "Crystal queen",
+    "examine": "It's thicc quEEN",
+    "combat": 21,
+    "size": 2,
+    "attackable": true,
+    "aggressive": false,
+    "retreats": false,
+    "poisonous": false,
+    "respawn": 10,
+    "maxHit": 910,
+    "hitpoints": 1000000,
+    "attackSpeed": 7,
+    "attackAnim": 403,
+    "defenceAnim": 403,
+    "deathAnim": 836,
+    "attackBonus": 2120,
+    "defenceMelee": 12,
+    "defenceRange": 212,
+    "defenceMage": 212,
+    "isPet" : false,
+    "isBoss" : true
+  },
   {
     "_comment" : "Tarn Tower"
   },
@@ -210,6 +234,30 @@
 
   {
     "_comment" : "Pets"
+  },
+  {
+    "id": 6431,
+    "name": "Crystal queen",
+    "examine": "It's thicc quEEN",
+    "combat": 21,
+    "size": 1,
+    "attackable": false,
+    "aggressive": false,
+    "retreats": false,
+    "poisonous": false,
+    "respawn": 10,
+    "maxHit": 910,
+    "hitpoints": 1,
+    "attackSpeed": 7,
+    "attackAnim": 403,
+    "defenceAnim": 403,
+    "deathAnim": 836,
+    "attackBonus": 2120,
+    "defenceMelee": 212,
+    "defenceRange": 212,
+    "defenceMage": 212,
+    "isPet" : true,
+    "isBoss" : false
   },
   {
     "id": 9829,
