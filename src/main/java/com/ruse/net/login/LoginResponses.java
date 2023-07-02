@@ -7,7 +7,6 @@ import com.ruse.security.ServerSecurity;
 import com.ruse.util.NameUtils;
 import com.ruse.world.World;
 import com.ruse.world.entity.impl.player.Player;
-import com.ruse.world.entity.impl.player.PlayerLoading;
 
 public final class LoginResponses {
 

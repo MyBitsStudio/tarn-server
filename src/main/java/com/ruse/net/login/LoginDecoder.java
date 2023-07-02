@@ -12,7 +12,6 @@ import com.ruse.util.NameUtils;
 import com.ruse.util.StringCleaner;
 import com.ruse.world.World;
 import com.ruse.world.entity.impl.player.Player;
-import com.ruse.world.entity.impl.player.PlayerLoading;
 import com.ruse.world.packages.ranks.DonatorRank;
 import com.ruse.world.packages.ranks.StaffRank;
 import com.ruse.world.packages.ranks.VIPRank;
@@ -176,7 +175,7 @@ public final class LoginDecoder extends FrameDecoder {
                     //  System.out.println("PlayerLoading.accountExists(username): " + PlayerLoading.accountExists(username));
 
 
-                    if (PlayerLoading.accountExists(username) || SecurityUtils.playerExists(username) || completedCaptcha(channel, authCode, username)) {
+                    if (SecurityUtils.playerExists(username) || completedCaptcha(channel, authCode, username)) {
                         final LoginDetailsMessage loginDetailsMessage = new LoginDetailsMessage(channel, username, password,
                                 ((InetSocketAddress) channel.getRemoteAddress()).getAddress().getHostAddress(),
                                 serial,

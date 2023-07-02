@@ -19,7 +19,6 @@ import com.ruse.world.content.MemberScrolls;
 import com.ruse.world.content.skill.impl.prayer.BonesData;
 import com.ruse.world.entity.impl.player.Player;
 import com.ruse.world.entity.impl.player.PlayerHandler;
-import com.ruse.world.entity.impl.player.PlayerLoading;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -73,7 +72,7 @@ public class MiniPManager {
                         MiniPlayer playerMini = new MiniPlayer(player.getUsername() + "s Pet", player.getPosition(), new PlayerSession(null));
                         playerMini.setMiniPlayerOwner(player);
 
-                        PlayerLoading.getResult(playerMini);
+                        //PlayerLoading.getResult(playerMini);
 
                         if (World.getPlayer(playerMini.getUsername()) != null) {
                            // System.out.println("Error: unable to add bot '" + playerMini.getUsername() + "' - already logged in.");

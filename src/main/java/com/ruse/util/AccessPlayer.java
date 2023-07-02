@@ -7,7 +7,6 @@ import java.nio.file.Paths;
 import com.ruse.world.World;
 import com.ruse.world.entity.impl.mini.MiniPlayer;
 import com.ruse.world.entity.impl.player.Player;
-import com.ruse.world.entity.impl.player.PlayerLoading;
 import com.ruse.world.entity.impl.player.PlayerSaving;
 
 public abstract class AccessPlayer {
@@ -28,7 +27,7 @@ public abstract class AccessPlayer {
             	return true;
             }
             if(playerLoadMethod(player) == -1) {
-                PlayerLoading.getResult(player);
+               // PlayerLoading.getResult(player);
             }
             if (player instanceof MiniPlayer) {
             	return true;

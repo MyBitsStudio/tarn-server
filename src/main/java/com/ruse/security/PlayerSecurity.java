@@ -10,7 +10,6 @@ import com.ruse.security.tools.SecurityUtils;
 import com.ruse.world.content.dialogue.DialogueManager;
 import com.ruse.world.entity.impl.player.Player;
 import com.ruse.world.entity.impl.player.PlayerFlags;
-import com.ruse.world.entity.impl.player.PlayerLoading;
 
 import java.io.File;
 import java.nio.file.Path;
@@ -307,17 +306,7 @@ public class PlayerSecurity {
             return code;
         }
 
-        if(Paths.get("./data/saves/characters/", player.getUsername() + ".json").toFile().exists()){
-            code = PlayerLoading.getResult(player);
-            if(code != LOGIN_SUCCESSFUL){
-                invalid(player.getPassword());
-                return code;
-            }
-            File file = Paths.get("./data/saves/characters/", player.getUsername() + ".json").toFile();
-            file.delete();
-            success();
-            new PlayerSecureSave(player).create().save();
-        } else if(new File(PLAYER_FILE + player.getUsername()+".json").exists()){
+        if(new File(PLAYER_FILE + player.getUsername()+".json").exists()){
             if (SecurityUtils.verifyPassword(msg.getPassword(), auth, seed)) {
                 success();
                 new PlayerSecureLoad(player).loadJSON(PLAYER_FILE + player.getUsername()+".json").run();

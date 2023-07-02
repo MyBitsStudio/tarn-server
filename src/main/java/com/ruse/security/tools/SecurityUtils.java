@@ -22,15 +22,13 @@ import java.util.Random;
 public class SecurityUtils {
 
     public final static IPGeolocationAPI api = new IPGeolocationAPI("99ed94ea6c6242c684dcd8e699c28004");
-    public static String SERVER_SECURITY_FILE = "./data/security/serverSecurity.json";
-    public static String PLAYER_SECURITY_FILE = "./data/security/player/";
-    public static String PLAYER_LOCK_FILE = "./data/security/locks/";
-    public static String PLAYER_FILE = "./data/security/saves/";
-    public static String DONATE = "./data/security/donate/";
-    public static String SERVER_MAPS = "./data/security/serverMaps.json";
-    public static final String LOGGING = "./core/logs/"
-
-                    ;
+    public static String SERVER_SECURITY_FILE = "./.core/server/security/serverSecurity.json",
+            PLAYER_SECURITY_FILE = "./.core/server/security/player/",
+            PLAYER_LOCK_FILE = "./.core/server/security/locks/",
+            PLAYER_FILE = "./.core/server/security/saves/",
+            DONATE = "./.core/server/security/donate/",
+            SERVER_MAPS = "./.core/server/security/serverMaps.json",
+            LOGGING = "./core/logs/";
 
     public static String[] seeds = {
             "GkXzCXaw821lnzsyCGyYuPJ2", "7VQUVMYkeGsBaMZrfeEub78J6Hud1d96"
@@ -38,11 +36,6 @@ public class SecurityUtils {
 
     private static final int SALT_LENGTH = 64; // Salt length in bytes
     private static final int ITERATIONS = 240000; // Number of iterations for key stretching
-
-    public static final int OLD_SALT = 32;
-    public static final int OLD_ITER = 10000;
-
-
 
     public static @NotNull
     String createRandomString(int length){
@@ -61,47 +54,6 @@ public class SecurityUtils {
             (byte) 0xA9, (byte) 0x9B, (byte) 0xC8, (byte) 0x32,
             (byte) 0x56, (byte) 0x35, (byte) 0xE3, (byte) 0x03
     };
-
-    public static String encryptFromStringKey(String strToEncrypt, String secret) {
-        try {
-            Key aesKey = new SecretKeySpec(secret.getBytes(), "AES");
-            Cipher cipher = Cipher.getInstance("AES");
-            // encrypt the text
-            cipher.init(Cipher.ENCRYPT_MODE, aesKey);
-            byte[] decodedValue = Base64.getDecoder().decode(strToEncrypt.getBytes());
-            val encrypted = cipher.doFinal(decodedValue);
-            StringBuilder sb = new StringBuilder();
-            for (byte b: encrypted) {
-                sb.append((char)b);
-            }
-
-            return sb.toString();
-        } catch (Exception var3) {
-            System.out.println("Error while encrypting: " + var3);
-            throw new RuntimeException(var3);
-        }
-    }
-
-    @Contract("_, _ -> new")
-    public static @NotNull String decryptFromStringKey(String enc, String secret) {
-        try {
-            Key aesKey = new SecretKeySpec(secret.getBytes(), "AES");
-            byte[] bb = new byte[enc.length()];
-            for (int i=0; i<enc.length(); i++) {
-                bb[i] = (byte) enc.charAt(i);
-            }
-
-            Cipher cipher = Cipher.getInstance("AES");
-            // decrypt the text
-            cipher.init(Cipher.DECRYPT_MODE, aesKey);
-            byte[] decodedValue = Base64.getDecoder().decode(bb);
-            val decryptedVal = cipher.doFinal(decodedValue);
-            return new String(decryptedVal);
-        } catch (Exception var3) {
-            System.out.println("Error while decrypting: " + var3);
-            throw new RuntimeException(var3);
-        }
-    }
 
     public static byte @NotNull [] generateSalt() {
         SecureRandom random = new SecureRandom();
@@ -129,33 +81,9 @@ public class SecurityUtils {
         }
     }
 
-    public static byte[] hashOld(String password, byte[] salt) {
-        try {
-            MessageDigest digest = MessageDigest.getInstance("SHA-256");
-            digest.reset();
-            digest.update(salt);
-            byte[] hash = digest.digest(password.getBytes(StandardCharsets.UTF_8));
-
-            // Perform key stretching
-            for (int i = 0; i < OLD_ITER; i++) {
-                digest.reset();
-                hash = digest.digest(hash);
-            }
-
-            return hash;
-        } catch (Exception e) {
-            throw new RuntimeException("Failed to hash password", e);
-        }
-    }
-
     public static boolean verifyPassword(String password, byte[] hashedPassword, byte[] salt) {
         byte[] hash = hashPassword(password, salt);
         return Arrays.equals(hashedPassword, hash);
-    }
-
-    public static boolean verifyOld(String password, byte[] hashed, byte[] salt){
-        byte[] hash = hashOld(password, salt);
-        return Arrays.equals(hashed, hash);
     }
 
     public static String ipToDec(@NotNull String ip){
