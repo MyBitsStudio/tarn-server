@@ -7,6 +7,7 @@ import com.ruse.model.Position;
 import com.ruse.world.World;
 import com.ruse.world.content.PlayerPanel;
 import com.ruse.world.content.discordbot.JavaCord;
+import com.ruse.world.packages.clans.ClanManager;
 //import sun.management.counter.perf.PerfLongArrayCounter;
 
 //import com.arlania.world.content.discordbot.Main;
@@ -52,17 +53,12 @@ public class StartScreen {
         if (buttonId == CONFIRM) {
             if (player.didReceiveStarter()) {
                 return true;
-            }//ConnectionHandler.getStarters(player.getHostAddress()) <= GameSettings.MAX_STARTERS_PER_IP
-			/*if(player.selectedGameMode == GameModes.VETERAN_MODE) {
-				player.sendMessage("@bla@This mode is not available at the moment, choose another.");
-				player.sendMessage("@red@This mode is not available at the moment, choose another.");
-				player.sendMessage("@bla@This mode is not available at the moment, choose another.");
-			} else {*/
+            }
             player.getPacketSender().sendInterfaceRemoval();
             player.setReceivedStarter(true);
             handleConfirm(player);
             addStarterToInv(player);
-            //ClanChatManager.join(player, "help");
+            ClanManager.getManager().joinChat(player, "Help");
             player.setPlayerLocked(false);
             player.getPacketSender().sendInterface(3559);
             player.getAppearance().setCanChangeAppearance(true);
@@ -82,11 +78,7 @@ public class StartScreen {
                 player.moveTo(GameSettings.STARTER);
             }
 
-            //		Main.jda.getTextChannelById(620644384697745439L).sendMessage("`" + player.getUsername() + " has joined the server for the first time!"+ "`").queue();
-            //DialogueManager.start(player, 81);
             return true;
-            //}
-            //	
         }
         for (GameModes mode : GameModes.values()) {
             if (mode.checkClick == buttonId || mode.textClick == buttonId) {
@@ -100,16 +92,12 @@ public class StartScreen {
 
     public static void handleConfirm(Player player) {
 
-        // System.out.println("Game mode: " + player.selectedGameMode);
-
         if (player.selectedGameMode == GameModes.VETERAN_MODE) {
             GameMode.set(player, GameMode.VETERAN_MODE, false);
         } else if (player.selectedGameMode == GameModes.IRONMAN) {
             GameMode.set(player, GameMode.IRONMAN, false);
         } else if (player.selectedGameMode == GameModes.ULTIMATE_IRONMAN) {
             GameMode.set(player, GameMode.ULTIMATE_IRONMAN, false);
-            player.getPacketSender().sendMessage("<img=5> @red@" + player.getUsername()
-                    + ", you can un-note items by using them on a banker or bank!");
         } else if (player.selectedGameMode == GameModes.GROUP_IRON) {
             GameMode.set(player, GameMode.IRONMAN, false);
         } else {
@@ -214,14 +202,6 @@ public class StartScreen {
                 "@red@The EXP rate in this mode is the hardest",
                 "This mode is for players that love grinding",
                 "@whi@30.0% Droprate bonus", "", "", ""),
-
-        AFK("AFK", 52774, 116009, 1, 3,
-                new Item[]{new Item(703, 1)
-                },
-                "AFK Mode",
-                "@red@Gain extra AFK tickets for your main",
-                "@red@RESTRICTIONS APPLIED",
-                "", "", "", ""),
 
         ;
         private final String name;

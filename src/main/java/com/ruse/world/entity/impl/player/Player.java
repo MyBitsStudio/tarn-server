@@ -3220,22 +3220,6 @@ public class Player extends Character {
         this.gameMode = gameMode;
     }
 
-    public int getGameModeIconId() {
-        if (this.getGameMode() == GameMode.IRONMAN) {
-            return 840;
-        }
-        if (this.getGameMode() == GameMode.ULTIMATE_IRONMAN) {
-            return 839;
-        }
-        if (this.getGameMode() == GameMode.VETERAN_MODE) {
-            return 838;
-        }
-        if (this.getGameMode() == GameMode.GROUP_IRONMAN) {
-            return 1509;
-        }
-        return -1;
-    }
-
     public Difficulty getDifficulty() {
         return difficulty;
     }

@@ -282,9 +282,7 @@ public class PlayerHandler {
         if (player.newPlayer()) {
             StartScreen.open(player);
             player.setPlayerLocked(true);
-            player.getKillsTracker().add(new KillsEntry(1265, 0, false));
-            // player.setPlayerLocked(true).setDialogueActionId(45);
-            // DialogueManager.start(player, 81);
+
         } else if (!player.getInventory().contains(22108) && player.getGameMode().equals(GameMode.ULTIMATE_IRONMAN)) {
             player.getInventory().add(22108, 1);
             player.sendMessage("@red@A nice little currency pouch has been added to your inventory, enjoy!");
@@ -301,7 +299,7 @@ public class PlayerHandler {
         if (!player.isMini()) {
             ClanManager.getManager().leave(player, false);
             ClanManager.getManager().reset(player);
-            ClanManager.getManager().joinChat(player, "help");
+            ClanManager.getManager().joinChat(player, "Help");
         }
 
         player.getPacketSender().updateSpecialAttackOrb().sendIronmanMode(player.getGameMode().ordinal());
