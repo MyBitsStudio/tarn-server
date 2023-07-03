@@ -30,6 +30,9 @@ import com.ruse.world.entity.impl.GroundItemManager;
 import com.ruse.world.entity.impl.mini.MiniPlayer;
 import com.ruse.world.entity.impl.npc.NPC;
 import com.ruse.world.entity.impl.player.Player;
+import com.ruse.world.packages.mode.impl.GroupIronman;
+import com.ruse.world.packages.mode.impl.Ironman;
+import com.ruse.world.packages.mode.impl.UltimateIronman;
 import lombok.Getter;
 import lombok.Setter;
 import org.jetbrains.annotations.NotNull;
@@ -363,9 +366,9 @@ public class NPCDrops {
             }
 
             if (item.getId() == 22120) {
-                boolean iron = player.getGameMode().equals(GameMode.IRONMAN);
-                boolean ultimateIron = player.getGameMode().equals(GameMode.ULTIMATE_IRONMAN);
-                boolean groupIron = player.getGameMode().equals(GameMode.GROUP_IRONMAN);
+                boolean iron = player.getMode() instanceof Ironman;
+                boolean ultimateIron = player.getMode() instanceof UltimateIronman;
+                boolean groupIron = player.getMode() instanceof GroupIronman;
 
                 if (iron) {
                     item.setId(22120);
@@ -460,7 +463,7 @@ public class NPCDrops {
                 int chance = RandomUtility.exclusiveRandom(0, 5000);
                 if (chance <= CustomDropUtils.getDoubleDropChance(player, npc.getId())) {
                     player.performGraphic(new Graphic(436));
-                    if (player.getGameMode() == GameMode.ULTIMATE_IRONMAN) {
+                    if (player.getMode() instanceof UltimateIronman) {
                         player.getInventory().add(new Item(item.getId(), item.getAmount()));
                         player.getInventory().add(new Item(item.getId(), item.getAmount()));
                     } else {
@@ -516,7 +519,7 @@ public class NPCDrops {
                     }
                 }
                 if(collector){
-                    if (player.getGameMode() == GameMode.ULTIMATE_IRONMAN) {
+                    if (player.getMode() instanceof UltimateIronman) {
                         player.performGraphic(new Graphic(385));
                         player.getInventory().add(new Item(item.getId(), item.getAmount()));
                         DropLog.submit(player, new DropLogEntry(itemId, item.getAmount(), drop.isAnnounce()));

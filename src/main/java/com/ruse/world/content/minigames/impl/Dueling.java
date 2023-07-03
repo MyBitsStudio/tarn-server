@@ -5,7 +5,6 @@ import java.util.concurrent.CopyOnWriteArrayList;
 import com.ruse.engine.task.Task;
 import com.ruse.engine.task.TaskManager;
 import com.ruse.model.Flag;
-import com.ruse.model.GameMode;
 import com.ruse.model.Item;
 import com.ruse.model.Locations;
 import com.ruse.model.Locations.Location;
@@ -184,22 +183,26 @@ public class Dueling {
 				return;
 			}
 		}
-		if (player.getGameMode() == GameMode.IRONMAN || player.getGameMode() == GameMode.GROUP_IRONMAN) {
-			player.getPacketSender().sendMessage("Ironmen can't stake.");
+		if(!player.getMode().canStake(playerToDuel)){
+			player.getPacketSender().sendMessage("You cannot stake this player.");
 			return;
 		}
-		if (player.getGameMode() == GameMode.ULTIMATE_IRONMAN) {
-			player.getPacketSender().sendMessage("UIM can't stake.");
-			return;
-		}
-		if (playerToDuel.getGameMode() == GameMode.IRONMAN || playerToDuel.getGameMode() == GameMode.GROUP_IRONMAN) {
-			player.getPacketSender().sendMessage("You cannot stake an Ironman.");
-			return;
-		}
-		if (playerToDuel.getGameMode() == GameMode.ULTIMATE_IRONMAN) {
-			player.getPacketSender().sendMessage("You cannot stake a Ultimate Ironman.");
-			return;
-		}
+//		if (player.getGameMode() == GameMode.IRONMAN || player.getGameMode() == GameMode.GROUP_IRONMAN) {
+//			player.getPacketSender().sendMessage("Ironmen can't stake.");
+//			return;
+//		}
+//		if (player.getGameMode() == GameMode.ULTIMATE_IRONMAN) {
+//			player.getPacketSender().sendMessage("UIM can't stake.");
+//			return;
+//		}
+//		if (playerToDuel.getGameMode() == GameMode.IRONMAN || playerToDuel.getGameMode() == GameMode.GROUP_IRONMAN) {
+//			player.getPacketSender().sendMessage("You cannot stake an Ironman.");
+//			return;
+//		}
+//		if (playerToDuel.getGameMode() == GameMode.ULTIMATE_IRONMAN) {
+//			player.getPacketSender().sendMessage("You cannot stake a Ultimate Ironman.");
+//			return;
+//		}
 
 		if (!checkDuel(player, 1) || !checkDuel(playerToDuel, 1) || slot >= player.getInventory().capacity()
 				|| player.getInventory().getItems()[slot].getId() != itemId

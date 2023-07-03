@@ -47,13 +47,8 @@ public class GamblingInterface {
 			return;
 		}
 
-		if (player.getGameMode() == GameMode.IRONMAN ||player.getGameMode() == GameMode.ULTIMATE_IRONMAN ||player.getGameMode() == GameMode.GROUP_IRONMAN) {
-			player.getPacketSender().sendMessage("@red@[Warning]@bla@ Ironman-players are not allowed to gamble.");
-			return;
-		}
-		if (player2.getGameMode() == GameMode.IRONMAN || player.getGameMode() == GameMode.ULTIMATE_IRONMAN ||player.getGameMode() == GameMode.GROUP_IRONMAN) {
-			player.getPacketSender()
-					.sendMessage("@red@[Warning]@bla@ That player is a Ironman-player and can therefore not gamble.");
+		if (player.getMode().canGetRewards()){
+			player.getPacketSender().sendMessage("@red@You cannot gamble in this game mode.");
 			return;
 		}
 		if (player.getAmountDonated() <= 99) {

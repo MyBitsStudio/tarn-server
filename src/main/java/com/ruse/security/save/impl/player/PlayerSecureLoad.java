@@ -28,6 +28,8 @@ import com.ruse.world.content.skill.impl.slayer.SlayerTasks;
 import com.ruse.world.content.skill.impl.summoning.BossPets;
 import com.ruse.world.entity.impl.player.Player;
 import com.ruse.world.packages.donation.DonationManager;
+import com.ruse.world.packages.mode.GameModeConstants;
+import com.ruse.world.packages.mode.impl.*;
 import com.ruse.world.packages.ranks.DonatorRank;
 import com.ruse.world.packages.ranks.StaffRank;
 import com.ruse.world.packages.ranks.VIPRank;
@@ -186,11 +188,7 @@ public class PlayerSecureLoad extends SecureLoad {
         }
 
         if (object.has("game-mode")) {
-            if (object.get("game-mode").getAsString().equalsIgnoreCase("HARDCORE_IRONMAN")) {
-                player.setGameMode(GameMode.ULTIMATE_IRONMAN);
-            } else {
-                player.setGameMode(GameMode.valueOf(object.get("game-mode").getAsString()));
-            }
+            GameModeConstants.setMode(player, object.get("game-mode").getAsString());
         }
 
         if (object.has("collection-data")) {
@@ -1224,35 +1222,17 @@ public class PlayerSecureLoad extends SecureLoad {
         return this;
     }
 
-    public static void setNewRank(Player player, String rank){
-        switch(rank){
-            case "GRACEFUL_DONATOR":
-                player.setDonator(DonatorRank.GRACEFUL);
-                break;
-            case "CLERIC_DONATOR":
-                player.setDonator(DonatorRank.CLERIC);
-                break;
-            case "TORMENTED_DONATOR":
-                player.setDonator(DonatorRank.TORMENTED);
-                break;
-            case "MYSTICAL_DONATOR":
-                player.setDonator(DonatorRank.MYSTICAL);
-                break;
-            case "OBSIDIAN_DONATOR":
-                player.setDonator(DonatorRank.OBSIDIAN);
-                break;
-            case "MODERATOR":
-                player.setRank(StaffRank.MODERATOR);
-                break;
-            case "ADMINISTRATOR":
-                player.setRank(StaffRank.ADMINISTRATOR);
-                break;
-            case "DEVELOPER":
-                player.setRank(StaffRank.DEVELOPER);
-                break;
-            case "HELPER":
-                player.setRank(StaffRank.HELPER);
-                break;
+    private static void setNewRank(Player player, String rank){
+        switch (rank) {
+            case "GRACEFUL_DONATOR" -> player.setDonator(DonatorRank.GRACEFUL);
+            case "CLERIC_DONATOR" -> player.setDonator(DonatorRank.CLERIC);
+            case "TORMENTED_DONATOR" -> player.setDonator(DonatorRank.TORMENTED);
+            case "MYSTICAL_DONATOR" -> player.setDonator(DonatorRank.MYSTICAL);
+            case "OBSIDIAN_DONATOR" -> player.setDonator(DonatorRank.OBSIDIAN);
+            case "MODERATOR" -> player.setRank(StaffRank.MODERATOR);
+            case "ADMINISTRATOR" -> player.setRank(StaffRank.ADMINISTRATOR);
+            case "DEVELOPER" -> player.setRank(StaffRank.DEVELOPER);
+            case "HELPER" -> player.setRank(StaffRank.HELPER);
         }
         DonationManager.getInstance().handleDonor(player);
     }

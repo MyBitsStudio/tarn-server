@@ -3,7 +3,6 @@ package com.ruse.world.content.skill.impl.herblore;
 import com.ruse.engine.task.Task;
 import com.ruse.engine.task.TaskManager;
 import com.ruse.model.Animation;
-import com.ruse.model.GameMode;
 import com.ruse.model.Item;
 import com.ruse.model.Skill;
 import com.ruse.model.definitions.ItemDefinition;
@@ -32,9 +31,6 @@ public class Herblore {
 			player.getInventory().add(herb.getCleanHerb(), 1);
 			//player.getSkillManager().addExperience(Skill.HERBLORE, 30);
 			player.getSkillManager().addExperience(Skill.HERBLORE, herb.getExp());
-			if (player.getGameMode() == GameMode.VETERAN_MODE) {
-				player.getSkillManager().addExperience(Skill.HERBLORE, herb.getExp() * 100);
-			}
 			player.getPacketSender().sendMessage("You clean the dirt off the leaf.");
 			return true;
 		}

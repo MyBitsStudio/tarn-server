@@ -51,12 +51,32 @@ public class Temp extends Gamemode {
     }
 
     @Override
-    public double xpRate() {
+    public int xpRate(int xp) {
         return 0;
     }
 
     @Override
     public double dropRate() {
         return 0;
+    }
+
+    @Override
+    public int doubleDropRate() {
+        return 0;
+    }
+
+    @Override
+    public boolean canAttack(int npcId) {
+        return false;
+    }
+
+    @Override
+    public boolean openBank(Player player) {
+        return false;
+    }
+
+    @Override
+    public boolean canStake(Player player) {
+        return false;
     }
 }

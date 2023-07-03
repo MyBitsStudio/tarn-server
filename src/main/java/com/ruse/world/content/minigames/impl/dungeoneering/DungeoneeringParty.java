@@ -113,14 +113,14 @@ public class DungeoneeringParty {
         }
 
 
-        if (getOwner().getGameMode() == GameMode.GROUP_IRONMAN && !getOwner().getIronmanGroup().equals(p.getIronmanGroup())) {
-            p.getPacketSender().sendMessage("You are not a part of this players ironman group.");
-            return;
-        }
-        if (p.getGameMode() == GameMode.GROUP_IRONMAN && !p.getIronmanGroup().equals(getOwner().getIronmanGroup())) {
-            p.getPacketSender().sendMessage("You are not a part of this players ironman group.");
-            return;
-        }
+//        if (getOwner().getGameMode() == GameMode.GROUP_IRONMAN && !getOwner().getIronmanGroup().equals(p.getIronmanGroup())) {
+//            p.getPacketSender().sendMessage("You are not a part of this players ironman group.");
+//            return;
+//        }
+//        if (p.getGameMode() == GameMode.GROUP_IRONMAN && !p.getIronmanGroup().equals(getOwner().getIronmanGroup())) {
+//            p.getPacketSender().sendMessage("You are not a part of this players ironman group.");
+//            return;
+//        }
         getOwner().getMinigameAttributes().getDungeoneeringAttributes().setLastInvitation(System.currentTimeMillis());
         p.getMinigameAttributes().getDungeoneeringAttributes()
                 .setPartyInvitation(owner.getMinigameAttributes().getDungeoneeringAttributes().getParty());

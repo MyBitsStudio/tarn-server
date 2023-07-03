@@ -47,16 +47,40 @@ public class Veteran extends Gamemode {
 
     @Override
     public boolean canWear(int id) {
-        return false;
+        return switch(id){
+            case 16691, 9704, 17239, 16669, 4977, 4989, 4995, 16339, 6068, 9703
+                    -> false;
+            default -> true;
+        };
     }
 
     @Override
-    public double xpRate() {
-        return 0;
+    public int xpRate(int xp) {
+        return xp / 300;
     }
 
     @Override
     public double dropRate() {
-        return 0;
+        return 50;
+    }
+
+    @Override
+    public int doubleDropRate() {
+        return 30;
+    }
+
+    @Override
+    public boolean canAttack(int npcId) {
+        return false;
+    }
+
+    @Override
+    public boolean openBank(Player player) {
+        return true;
+    }
+
+    @Override
+    public boolean canStake(Player player) {
+        return true;
     }
 }

@@ -52,6 +52,8 @@ import com.ruse.world.content.skill.impl.smithing.EquipmentMaking;
 import com.ruse.world.content.skill.impl.smithing.Smelting;
 import com.ruse.world.entity.impl.npc.NPC;
 import com.ruse.world.entity.impl.player.Player;
+import com.ruse.world.packages.mode.impl.GroupIronman;
+import com.ruse.world.packages.mode.impl.UltimateIronman;
 import com.ruse.world.packages.plus.PlusUpgrade;
 import com.ruse.world.packages.plus.PlusUpgrades;
 
@@ -482,155 +484,143 @@ public class UseItemPacketListener implements PacketListener {
             }
         }
         player.setWalkToTask(new WalkToTask(player, gameObject.getPosition().copy(), gameObject.getSize(),
-                new FinalizedMovementTask() {
-                    @Override
-                    public void execute() {
+                () -> {
 
 
-                        if (!player.getControllerManager().handleItemOnObject(gameObject, item)) {
-                            return;
-                        }
-                        if (gameObject.getId() == TreasureHunter.CHEST_ID) {
-                            TreasureHunter.useKeyOnChest(player, item);
-                        }
-                        if (CookingData.forFish(item.getId()) != null && CookingData.isRange(objectId)) {
-                            player.setPositionToFace(gameObject.getPosition());
-                            Cooking.selectionInterface(player, CookingData.forFish(item.getId()));
-                            return;
-                        }
-                        if (Prayer.isBone(itemId) && (objectId == 409 || objectId == 24343 || objectId == 13192)) {
-                            BonesOnAltar.openInterface(player, itemId);
-                            return;
-                        }
-                        if (player.getFarming().plant(itemId, objectId, objectX, objectY))
-                            return;
-                        if (player.getFarming().useItemOnPlant(itemId, objectX, objectY))
-                            return;
-                        if (objectId == 31429) {
-                            VaultOfWar.useGlovesOnObject(player);
-                            return;
-                        }
-                        if (objectId == 15621) { // Warriors guild
-                            // animator
-                            if (!WarriorsGuild.itemOnAnimator(player, item, gameObject))
-                                player.getPacketSender().sendMessage("Nothing interesting happens..");
-                            return;
-                        }
-                        if (GameObjectDefinition.forId(objectId) != null
-                                && GameObjectDefinition.forId(objectId).getName() != null
-                                && GameObjectDefinition.forId(objectId).getName().equalsIgnoreCase("furnace")
-                                && ItemDefinition.forId(itemId) != null
-                                && ItemDefinition.forId(itemId).getName() != null
-                                && ItemDefinition.forId(itemId).getName().contains("ore")) {
-                            Smelting.openInterface(player);
-                            return;
-                        }
-                        if (GameObjectDefinition.forId(objectId) != null
-                                && GameObjectDefinition.forId(objectId).getName() != null
-                                && GameObjectDefinition.forId(objectId).getName().equalsIgnoreCase("furnace")
-                                && itemId == 2357) {
-                            Jewelry.jewelryInterface(player);
-                        }
-                        if (player.getGameMode() == GameMode.ULTIMATE_IRONMAN) { // UIM can use any noted item on a bank
-                            // booth to instantly unnote it to
-                            // fill all your free inventory
-                            // spaces
-                            if (GameObjectDefinition.forId(objectId) != null) {
-                                GameObjectDefinition def = GameObjectDefinition.forId(objectId);
-                                if (def.name != null && def.name.toLowerCase().contains("bank") && def.actions != null
-                                        && def.actions[0] != null && def.actions[0].toLowerCase().contains("use")) {
-                                    ItemDefinition def1 = ItemDefinition.forId(itemId);
-                                    ItemDefinition def2;
-                                    int newId = def1.isNoted() ? itemId - 1 : itemId + 1;
-                                    def2 = ItemDefinition.forId(newId);
-                                    if (def2 != null && def1.getName().equals(def2.getName())) {
-                                        int amt = player.getInventory().getAmount(itemId);
-                                        if (!def2.isNoted()) {
-                                            if (amt > player.getInventory().getFreeSlots())
-                                                amt = player.getInventory().getFreeSlots();
-                                        }
-                                        if (amt == 0) {
-                                            player.getPacketSender().sendMessage(
-                                                    "You do not have enough space in your inventory to do that.");
-                                            return;
-                                        }
-                                        player.getInventory().delete(itemId, amt).add(newId, amt);
-
-                                    } else {
-                                        player.getPacketSender().sendMessage("You cannot do this with that item.");
+                    if (!player.getControllerManager().handleItemOnObject(gameObject, item)) {
+                        return;
+                    }
+                    if (gameObject.getId() == TreasureHunter.CHEST_ID) {
+                        TreasureHunter.useKeyOnChest(player, item);
+                    }
+                    if (CookingData.forFish(item.getId()) != null && CookingData.isRange(objectId)) {
+                        player.setPositionToFace(gameObject.getPosition());
+                        Cooking.selectionInterface(player, CookingData.forFish(item.getId()));
+                        return;
+                    }
+                    if (Prayer.isBone(itemId) && (objectId == 409 || objectId == 24343 || objectId == 13192)) {
+                        BonesOnAltar.openInterface(player, itemId);
+                        return;
+                    }
+                    if (player.getFarming().plant(itemId, objectId, objectX, objectY))
+                        return;
+                    if (player.getFarming().useItemOnPlant(itemId, objectX, objectY))
+                        return;
+                    if (objectId == 31429) {
+                        VaultOfWar.useGlovesOnObject(player);
+                        return;
+                    }
+                    if (objectId == 15621) { // Warriors guild
+                        // animator
+                        if (!WarriorsGuild.itemOnAnimator(player, item, gameObject))
+                            player.getPacketSender().sendMessage("Nothing interesting happens..");
+                        return;
+                    }
+                    if (GameObjectDefinition.forId(objectId) != null
+                            && GameObjectDefinition.forId(objectId).getName() != null
+                            && GameObjectDefinition.forId(objectId).getName().equalsIgnoreCase("furnace")
+                            && ItemDefinition.forId(itemId) != null
+                            && ItemDefinition.forId(itemId).getName() != null
+                            && ItemDefinition.forId(itemId).getName().contains("ore")) {
+                        Smelting.openInterface(player);
+                        return;
+                    }
+                    if (GameObjectDefinition.forId(objectId) != null
+                            && GameObjectDefinition.forId(objectId).getName() != null
+                            && GameObjectDefinition.forId(objectId).getName().equalsIgnoreCase("furnace")
+                            && itemId == 2357) {
+                        Jewelry.jewelryInterface(player);
+                    }
+                    if (player.getMode() instanceof UltimateIronman) { // UIM can use any noted item on a bank
+                        // booth to instantly unnote it to
+                        // fill all your free inventory
+                        // spaces
+                        if (GameObjectDefinition.forId(objectId) != null) {
+                            GameObjectDefinition def = GameObjectDefinition.forId(objectId);
+                            if (def.name != null && def.name.toLowerCase().contains("bank") && def.actions != null
+                                    && def.actions[0] != null && def.actions[0].toLowerCase().contains("use")) {
+                                ItemDefinition def1 = ItemDefinition.forId(itemId);
+                                ItemDefinition def2;
+                                int newId = def1.isNoted() ? itemId - 1 : itemId + 1;
+                                def2 = ItemDefinition.forId(newId);
+                                if (def2 != null && def1.getName().equals(def2.getName())) {
+                                    int amt = player.getInventory().getAmount(itemId);
+                                    if (!def2.isNoted()) {
+                                        if (amt > player.getInventory().getFreeSlots())
+                                            amt = player.getInventory().getFreeSlots();
                                     }
-                                    return;
+                                    if (amt == 0) {
+                                        player.getPacketSender().sendMessage(
+                                                "You do not have enough space in your inventory to do that.");
+                                        return;
+                                    }
+                                    player.getInventory().delete(itemId, amt).add(newId, amt);
+
+                                } else {
+                                    player.getPacketSender().sendMessage("You cannot do this with that item.");
+                                }
+                                return;
+                            }
+                        }
+                    }
+                    switch (objectId) {
+                        case 172, 173 -> {
+                            if (itemId == 9003) {
+                                CrystalChest.sendRewardInterface(player);
+                            }
+                        }
+                        case 16135 -> {//betrayed
+
+                            if (itemId == 8868 || itemId == 21201 || itemId == 21202 || itemId == 21203 || itemId == 21204) {
+                                player.getPacketSender().sendMessage("Rewards for gift of betrayed @blu@coming soon@bla@. collect your keys.");
+
+                            }
+                        }
+                        case 16077 -> {//dammned
+
+                            if (itemId == 9962 || itemId == 21205 || itemId == 21206 || itemId == 21207 || itemId == 21208) {
+                                player.getPacketSender().sendMessage("Rewards for grain of damned @blu@coming soon@bla@. collect your keys.");
+
+                            }
+                        }
+                        case 16118 -> {//hidden
+
+                            if (itemId == 14471 || itemId == 21209 || itemId == 21210 || itemId == 21211 || itemId == 21212) {
+                                player.getPacketSender().sendMessage("Rewards for box of hidden @blu@coming soon@bla@. collect your keys.");
+
+                            }
+                        }
+                        case 16047 -> {//cursed
+
+                            if (itemId == 3468 || itemId == 21213 || itemId == 21214 || itemId == 21215 || itemId == 21216) {
+                                player.getPacketSender().sendMessage("Rewards for cradle of cursed @blu@coming soon@bla@. collect your keys.");
+
+                            }
+                        }
+                        case -23813, 41723 -> {
+                            if (!christmas2016.isChristmas() || player.getChristmas2016() < 2) {
+                                return;
+                            } else {
+                                christmas2016.handleItemOnReindeer(player, itemId);
+                            }
+                        }
+                        case 2644 -> {
+                            if (itemId == 1779) {
+                                Flax.showSpinInterface(player);
+                            }
+                        }
+                        case 6189, 11666 -> Jewelry.jewelryInterface(player);
+                        case 7836, 7808 -> {
+                            if (itemId == 6055) {
+                                int amt = player.getInventory().getAmount(6055);
+                                if (amt > 0) {
+                                    player.getInventory().delete(6055, amt);
+                                    player.getPacketSender().sendMessage("You put the weed in the compost bin.");
+                                    player.getSkillManager().addExperience(Skill.FARMING, 1 * amt);
                                 }
                             }
                         }
-                        switch (objectId) {
-                            case 172:
-                            case 173:
-                                if (itemId == 9003) {
-                                    CrystalChest.sendRewardInterface(player);
-                                }
-                                break;
-                            case 16135://betrayed
-
-                                if (itemId == 8868 || itemId == 21201 || itemId == 21202 || itemId == 21203 || itemId == 21204) {
-                                    player.getPacketSender().sendMessage("Rewards for gift of betrayed @blu@coming soon@bla@. collect your keys.");
-
-                                }
-                                break;
-                            case 16077://dammned
-
-                                if (itemId == 9962 || itemId == 21205 || itemId == 21206 || itemId == 21207 || itemId == 21208) {
-                                    player.getPacketSender().sendMessage("Rewards for grain of damned @blu@coming soon@bla@. collect your keys.");
-
-                                }
-                                break;
-                            case 16118://hidden
-
-                                if (itemId == 14471 || itemId == 21209 || itemId == 21210 || itemId == 21211 || itemId == 21212) {
-                                    player.getPacketSender().sendMessage("Rewards for box of hidden @blu@coming soon@bla@. collect your keys.");
-
-                                }
-                                break;
-                            case 16047://cursed
-
-                                if (itemId == 3468 || itemId == 21213 || itemId == 21214 || itemId == 21215 || itemId == 21216) {
-                                    player.getPacketSender().sendMessage("Rewards for cradle of cursed @blu@coming soon@bla@. collect your keys.");
-
-                                }
-                                break;
-
-                            case -23813:
-                            case 41723:
-                                if (!christmas2016.isChristmas() || player.getChristmas2016() < 2) {
-                                    return;
-                                } else {
-                                    christmas2016.handleItemOnReindeer(player, itemId);
-                                }
-                                break;
-                            case 2644:
-                                if (itemId == 1779) {
-                                    Flax.showSpinInterface(player);
-                                }
-                                break;
-                            case 6189:
-                            case 11666:
-                                Jewelry.jewelryInterface(player);
-                                break;
-                            case 7836:
-                            case 7808:
-                                if (itemId == 6055) {
-                                    int amt = player.getInventory().getAmount(6055);
-                                    if (amt > 0) {
-                                        player.getInventory().delete(6055, amt);
-                                        player.getPacketSender().sendMessage("You put the weed in the compost bin.");
-                                        player.getSkillManager().addExperience(Skill.FARMING, 1 * amt);
-                                    }
-                                }
-                                break;
-                            case 4306:
-                                EquipmentMaking.handleAnvil(player);
-                                break;
-                        }
+                        case 4306 -> EquipmentMaking.handleAnvil(player);
                     }
                 }));
     }
@@ -666,7 +656,7 @@ public class UseItemPacketListener implements PacketListener {
             return;
         }
 
-        if (player.getGameMode() == GameMode.ULTIMATE_IRONMAN) { // UIM can use any noted item on a bank booth to
+        if (player.getMode() instanceof UltimateIronman) { // UIM can use any noted item on a bank booth to
             // instantly unnote it to fill all your free
             // inventory spaces
             if (npc.getDefinition() != null) {
@@ -735,10 +725,10 @@ public class UseItemPacketListener implements PacketListener {
                 break;
             case 3550:// clue
                 boolean clue = OLD_ClueScrolls.handleNpcUse(player, npc.getId());
-                if (!clue) {
-                    player.getPacketSender().sendMessage("Nothing interesting happens.");
-                } else {
+                if (clue) {
                     player.getPacketSender().sendMessage("You manage to continue your clue..");
+                } else {
+                    player.getPacketSender().sendMessage("Nothing interesting happens.");
                 }
                 break;
             case 4837:
@@ -823,45 +813,41 @@ public class UseItemPacketListener implements PacketListener {
         }
 
         switch (itemId) {
-            case 23057:
-            case 23058:
-            case 23059:
-            case 23060:
-            case 3686:
-             //   System.out.println("1");
-                boolean ironman = player.getGameMode().isIronman();
-                boolean targetIronman = target.getGameMode().isIronman();
-                if (target.getGameMode() == GameMode.GROUP_IRONMAN) {
-                    player.sendMessage("You cannot give to group ironmen players.");
-                    return;
-                }
-                if(ironman){
-                    player.sendMessage("Ironman can't give these away.");
-                    return;
-                }
-              //  System.out.println("2");
-               /* if (!ironman && !targetIronman) { //if same ip
-                    if (!player.getHostAddress().equals(target.getHostAddress())) {
-                        player.sendMessage("You cannot give bonds to other mains unless its your own!");
-                        return;
-                    }
-                }*/
-               // System.out.println("3");
-                //if (ironman && !targetIronman || !ironman && targetIronman) {
-                //    System.out.println("f");
-                if (target.getInventory().isFull()) {
-                        player.sendMessage("This player's inventory is full.");
-                    } else if (player.getInventory().contains(itemId)) {
-                    player.getInventory().delete(itemId, 1);
-                    target.getInventory().add(itemId, 1);
-                    player.sendMessage("You gave " + target.getUsername() + " a " + ItemDefinition.forId(itemId).getName());
-                    target.sendMessage("You received a " + ItemDefinition.forId(itemId).getName() + " from " + target.getUsername());
-                } else {
-                    player.sendMessage("You need a bond to perform this action!");
-                }
-                //}
-                break;
-            case 962:
+//            case 23057, 23058, 23059, 23060, 3686 -> {
+//                //   System.out.println("1");
+//                boolean ironman = player.getGameMode().isIronman();
+//                boolean targetIronman = target.getGameMode().isIronman();
+//                if (target.getGameMode() == GameMode.GROUP_IRONMAN) {
+//                    player.sendMessage("You cannot give to group ironmen players.");
+//                    return;
+//                }
+//                if (ironman) {
+//                    player.sendMessage("Ironman can't give these away.");
+//                    return;
+//                }
+//                //  System.out.println("2");
+//               /* if (!ironman && !targetIronman) { //if same ip
+//                    if (!player.getHostAddress().equals(target.getHostAddress())) {
+//                        player.sendMessage("You cannot give bonds to other mains unless its your own!");
+//                        return;
+//                    }
+//                }*/
+//                // System.out.println("3");
+//                //if (ironman && !targetIronman || !ironman && targetIronman) {
+//                //    System.out.println("f");
+//                if (target.getInventory().isFull()) {
+//                    player.sendMessage("This player's inventory is full.");
+//                } else if (player.getInventory().contains(itemId)) {
+//                    player.getInventory().delete(itemId, 1);
+//                    target.getInventory().add(itemId, 1);
+//                    player.sendMessage("You gave " + target.getUsername() + " a " + ItemDefinition.forId(itemId).getName());
+//                    target.sendMessage("You received a " + ItemDefinition.forId(itemId).getName() + " from " + target.getUsername());
+//                } else {
+//                    player.sendMessage("You need a bond to perform this action!");
+//                }
+//            }
+            //}
+            case 962 -> {
                 if (!player.getInventory().contains(962) || player.getRank().isDeveloper())
                     return;
                 player.setPositionToFace(target.getPosition());
@@ -876,8 +862,8 @@ public class UseItemPacketListener implements PacketListener {
                 target.getPacketSender().sendMessage("" + player.getUsername() + " has received a Party hat!");
                 PlayerLogs.log(player.getUsername(), "Opened a cracker containing a " + ItemDefinition.forId(phat).getName()
                         + " on " + target.getUsername());
-                break;
-            case 15707:
+            }
+            case 15707 -> {
                 Player partyDung = World.getPlayers().get(targetIndex);
                 if (player.getLocation() != Location.DUNGEONEERING || player.isTeleporting()) {
                     player.getPacketSender().sendMessage("You're not in Daemonheim");
@@ -905,11 +891,9 @@ public class UseItemPacketListener implements PacketListener {
                 }
                 DialogueManager.start(partyDung, new DungPartyInvitation(player, partyDung));
                 player.getPacketSender().sendMessage("An invitation has been sent to " + partyDung.getUsername());
-                break;
-            case 4566:
-                player.performAnimation(new Animation(451));
-                break;
-            case 4155:
+            }
+            case 4566 -> player.performAnimation(new Animation(451));
+            case 4155 -> {
                 if (player.getSlayer().getDuoPartner() != null) {
                     player.getPacketSender().sendMessage("You already have a duo partner.");
                     return;
@@ -940,7 +924,7 @@ public class UseItemPacketListener implements PacketListener {
                     player.getPacketSender()
                             .sendMessage("You have invited " + duoPartner.getUsername() + " to join your Slayer duo team.");
                 }
-                break;
+            }
         }
     }
 

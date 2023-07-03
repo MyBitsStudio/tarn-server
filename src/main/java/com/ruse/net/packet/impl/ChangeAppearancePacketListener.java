@@ -6,8 +6,6 @@ import com.ruse.model.Flag;
 import com.ruse.net.packet.Packet;
 import com.ruse.net.packet.PacketListener;
 import com.ruse.util.Misc;
-import com.ruse.world.content.dialogue.DialogueManager;
-import com.ruse.world.content.dialogue.impl.Tutorial;
 import com.ruse.world.entity.impl.player.Player;
 
 public class ChangeAppearancePacketListener implements PacketListener {
@@ -15,7 +13,7 @@ public class ChangeAppearancePacketListener implements PacketListener {
 	@Override
 	public void handleMessage(Player player, Packet packet) {
 		String appearanceAttributes = Misc.readString(packet.getBuffer());
-		if (appearanceAttributes == null || appearanceAttributes.length() <= 1)
+		if (appearanceAttributes.length() <= 1)
 			return;
 		try {
 			String[] parts = appearanceAttributes.split(" ");

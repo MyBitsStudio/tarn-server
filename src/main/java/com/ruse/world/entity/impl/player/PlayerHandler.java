@@ -32,6 +32,8 @@ import com.ruse.world.packages.clans.ClanManager;
 import com.ruse.world.packages.instances.InstanceManager;
 import com.ruse.world.content.minigames.impl.Barrows;
 import com.ruse.world.content.minigames.impl.VoidOfDarkness;
+import com.ruse.world.packages.mode.GameModeConstants;
+import com.ruse.world.packages.mode.impl.UltimateIronman;
 import com.ruse.world.packages.ranks.StaffRank;
 import com.ruse.world.packages.seasonpass.SeasonPassConfig;
 import com.ruse.world.packages.seasonpass.SeasonPassManager;
@@ -282,10 +284,10 @@ public class PlayerHandler {
         if (player.newPlayer()) {
             StartScreen.open(player);
             player.setPlayerLocked(true);
-            player.getKillsTracker().add(new KillsEntry(1265, 0, false));
+            //player.getKillsTracker().add(new KillsEntry(1265, 0, false));
             // player.setPlayerLocked(true).setDialogueActionId(45);
             // DialogueManager.start(player, 81);
-        } else if (!player.getInventory().contains(22108) && player.getGameMode().equals(GameMode.ULTIMATE_IRONMAN)) {
+        } else if (!player.getInventory().contains(22108) && player.getMode() instanceof UltimateIronman) {
             player.getInventory().add(22108, 1);
             player.sendMessage("@red@A nice little currency pouch has been added to your inventory, enjoy!");
             player.sendMessage("@red@If you lose it relog to re-obtain!");
@@ -304,7 +306,7 @@ public class PlayerHandler {
             ClanManager.getManager().joinChat(player, "help");
         }
 
-        player.getPacketSender().updateSpecialAttackOrb().sendIronmanMode(player.getGameMode().ordinal());
+        player.getPacketSender().updateSpecialAttackOrb().sendIronmanMode(GameModeConstants.ordinal(player));
 
         if(player.getRank() == StaffRank.TRAIL_STAFF){
             World.sendMessage(("<shad=0><col=" + player.getYellHex() + "> <img=5>Trial Staff "

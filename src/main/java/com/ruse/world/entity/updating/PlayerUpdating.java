@@ -23,6 +23,7 @@ import com.ruse.world.World;
 import com.ruse.world.entity.Entity;
 import com.ruse.world.entity.impl.mini.MiniPlayer;
 import com.ruse.world.entity.impl.player.Player;
+import com.ruse.world.packages.mode.GameModeConstants;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -424,7 +425,7 @@ public class PlayerUpdating {
 		builder.putShort(((message.getColour() & 0xff) << 8) | (message.getEffects() & 0xff), ByteOrder.LITTLE);
 		builder.put(target.getRank().ordinal());
 		builder.put(target.getDonator().ordinal());
-		builder.put(target.getGameMode().ordinal());
+		builder.put(GameModeConstants.ordinal(target));
 		builder.put(bytes.length, ValueType.C);
 		builder.putBytesReverse(bytes);
 	}

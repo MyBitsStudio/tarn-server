@@ -6,7 +6,6 @@ import com.ruse.GameSettings;
 import com.ruse.ReducedSellPrice;
 import com.ruse.engine.task.TaskManager;
 import com.ruse.engine.task.impl.ShopRestockTask;
-import com.ruse.model.GameMode;
 import com.ruse.model.Item;
 import com.ruse.model.Locations.Location;
 import com.ruse.model.Skill;
@@ -230,50 +229,53 @@ public class Shop extends ItemContainer {
     }
 
     public Shop open(Player player) {
-        if (player.getGameMode() == GameMode.IRONMAN || player.getGameMode() == GameMode.ULTIMATE_IRONMAN || player.getGameMode() == GameMode.GROUP_IRONMAN) {
-            if (id != RECIPE_FOR_DISASTER_STORE && id != VOTE_STORE && id != PKING_REWARDS_STORE && id != 81
-                    && id != BOSS_SHOP && id != AFK && id != PVM && id != SHILLINGS && id != 9 && id != 10 && id != 8
-                    && id != 6 && id != 1 && id != 43 && id != 79 && id != 85 // trader shop
-                    && id != 31 && id != 119 // member druid
-                    && id != TRAIN_MELEE // member druid
-                    && id != TRAIN_RANGED // member druid
-                    && id != TRAIN_MAGIC // member druid
-                    && id != 82 // teleports shop
-                    && id != GENERAL_STORE && id != 40 && id != 47 // slayer shop
-                    && id != STARDUST_EXCHANGE_STORE && id != GAMBLING_STORE && id != 83 && id != PRESTIGE_STORE
-                    && id != 45 // 45 = dung guy
-                    && id != MEMBERS_STORE_I && id != MEMBERS_STORE_II && id != DONATOR_STORE_1
-                    && id != DONATOR_STORE_2 && id != DONATOR_STORE_3 && id != DONATOR_STORE_4
-                    && id != PET_STORE_1
-                    && id != PET_STORE_2 && id != PET_STORE_3 && id != PET_STORE_4
-            
-                    && id != 106
-                    && id != SLAYER_TICKET_STORE
-                    && id != SLAYER_STORE_EASY
-                    && id != SLAYER_STORE_MEDIUM
-                    && id != SLAYER_STORE_HARD
-                    && id != SLAYER_STORE_ELITE
-
-                    && id != KOL_STORE
-                    && id != 17 && id != 2 // 17
-                    && id != 33 && id != 39 && id != 11 && id != 34 && id != 14 && id != 13 && id != 18 && id != 15
-                    && id != 21 && id != 44
-                    && id != 22 && id != 42 && id != 35 && id != 32 && id != 23 && id != 38 && id != 91 && id != 92 && id != 0
-                    && id != 93 && id != 94 && id != 95 && id != 96 && id != 97 && id != 98 && id != 30 && id != 117 && id != EASTER_STORE_1 && id != EASTER_STORE_2 && id != DUNGEONEERING_STORE_NEW // 22 + 23 ==
-                    && id != 210) {
-                // pikkupstix's
-                // materials,
-                // 38 =
-                // hunting
-                // store, 30
-                // =
-                // herblore
-                // store
-                player.getPacketSender().sendMessage("You're unable to access this shop as a "
-                        + player.getGameMode().toString().toLowerCase().replace("_", " ") + " player.");
-                return this;
-            }
+        if(!player.getMode().canOpenShop(id)){
+            return this;
         }
+//        if (player.getGameMode() == GameMode.IRONMAN || player.getGameMode() == GameMode.ULTIMATE_IRONMAN || player.getGameMode() == GameMode.GROUP_IRONMAN) {
+//            if (id != RECIPE_FOR_DISASTER_STORE && id != VOTE_STORE && id != PKING_REWARDS_STORE && id != 81
+//                    && id != BOSS_SHOP && id != AFK && id != PVM && id != SHILLINGS && id != 9 && id != 10 && id != 8
+//                    && id != 6 && id != 1 && id != 43 && id != 79 && id != 85 // trader shop
+//                    && id != 31 && id != 119 // member druid
+//                    && id != TRAIN_MELEE // member druid
+//                    && id != TRAIN_RANGED // member druid
+//                    && id != TRAIN_MAGIC // member druid
+//                    && id != 82 // teleports shop
+//                    && id != GENERAL_STORE && id != 40 && id != 47 // slayer shop
+//                    && id != STARDUST_EXCHANGE_STORE && id != GAMBLING_STORE && id != 83 && id != PRESTIGE_STORE
+//                    && id != 45 // 45 = dung guy
+//                    && id != MEMBERS_STORE_I && id != MEMBERS_STORE_II && id != DONATOR_STORE_1
+//                    && id != DONATOR_STORE_2 && id != DONATOR_STORE_3 && id != DONATOR_STORE_4
+//                    && id != PET_STORE_1
+//                    && id != PET_STORE_2 && id != PET_STORE_3 && id != PET_STORE_4
+//
+//                    && id != 106
+//                    && id != SLAYER_TICKET_STORE
+//                    && id != SLAYER_STORE_EASY
+//                    && id != SLAYER_STORE_MEDIUM
+//                    && id != SLAYER_STORE_HARD
+//                    && id != SLAYER_STORE_ELITE
+//
+//                    && id != KOL_STORE
+//                    && id != 17 && id != 2 // 17
+//                    && id != 33 && id != 39 && id != 11 && id != 34 && id != 14 && id != 13 && id != 18 && id != 15
+//                    && id != 21 && id != 44
+//                    && id != 22 && id != 42 && id != 35 && id != 32 && id != 23 && id != 38 && id != 91 && id != 92 && id != 0
+//                    && id != 93 && id != 94 && id != 95 && id != 96 && id != 97 && id != 98 && id != 30 && id != 117 && id != EASTER_STORE_1 && id != EASTER_STORE_2 && id != DUNGEONEERING_STORE_NEW // 22 + 23 ==
+//                    && id != 210) {
+//                // pikkupstix's
+//                // materials,
+//                // 38 =
+//                // hunting
+//                // store, 30
+//                // =
+//                // herblore
+//                // store
+//                player.getPacketSender().sendMessage("You're unable to access this shop as a "
+//                        + player.getGameMode().toString().toLowerCase().replace("_", " ") + " player.");
+//                return this;
+//            }
+//        }
         setPlayer(player);
         getPlayer().getPacketSender().sendInterfaceRemoval().sendClientRightClickRemoval();
         getPlayer().setShop(ShopManager.getShops().get(id)).setInterfaceId(getInterfaceId()).setShopping(true);
@@ -601,11 +603,14 @@ public class Shop extends ItemContainer {
             return this;
         }
         if (this.id == GENERAL_STORE) {
-            if (player.getGameMode() == GameMode.IRONMAN || player.getGameMode() == GameMode.ULTIMATE_IRONMAN || player.getGameMode() == GameMode.GROUP_IRONMAN) {
-                player.getPacketSender()
-                        .sendMessage("Ironman-players are not allowed to buy items from the General store.");
+            if(player.getMode().canOpenShop(id)){
                 return this;
             }
+//            if (player.getGameMode() == GameMode.IRONMAN || player.getGameMode() == GameMode.ULTIMATE_IRONMAN || player.getGameMode() == GameMode.GROUP_IRONMAN) {
+//                player.getPacketSender()
+//                        .sendMessage("Ironman-players are not allowed to buy items from the General store.");
+//                return this;
+//            }
         }
         if (!shopSellsItem(item))
             return this;

@@ -23,8 +23,21 @@ public abstract class Gamemode {
 
     public abstract boolean canWear(int id);
 
-    public abstract double xpRate();
+    public abstract int xpRate(int xp);
 
     public abstract double dropRate();
+
+    public abstract int doubleDropRate();
+
+    public abstract boolean canAttack(int npcId);
+
+    public abstract boolean openBank(Player player);
+
+    //duel arena
+    public abstract boolean canStake(Player player);
+
+
+
+
 
 }

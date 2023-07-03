@@ -1,7 +1,6 @@
 package com.ruse.model.container.impl;
 
 import com.ruse.model.Flag;
-import com.ruse.model.GameMode;
 import com.ruse.model.Item;
 import com.ruse.model.container.ItemContainer;
 import com.ruse.model.container.StackType;
@@ -64,39 +63,7 @@ public class Bank extends ItemContainer {
 			BankPin.init(player, true);
 			return this;
 		}
-		if (getPlayer().getGameMode() == GameMode.ULTIMATE_IRONMAN
-				&& getPlayer().getEquipment().getItems()[Equipment.RING_SLOT].getId() == 4446
-				|| getPlayer().getGameMode() == GameMode.ULTIMATE_IRONMAN
-				&& getPlayer().getEquipment().getItems()[Equipment.AMULET_SLOT].getId() == 19886
-				|| getPlayer().getGameMode() == GameMode.ULTIMATE_IRONMAN
-				&& getPlayer().getEquipment().getItems()[Equipment.AMULET_SLOT].getId() == 15450
-				|| getPlayer().getGameMode() == GameMode.ULTIMATE_IRONMAN
-				&& getPlayer().getEquipment().getItems()[Equipment.AMULET_SLOT].getId() == 23087
-				|| getPlayer().getGameMode() == GameMode.ULTIMATE_IRONMAN
-				&& getPlayer().getEquipment().getItems()[Equipment.AMULET_SLOT].getId() == 19888
-				|| getPlayer().getGameMode() == GameMode.ULTIMATE_IRONMAN
-				&& getPlayer().getEquipment().getItems()[Equipment.AMULET_SLOT].getId() == 18888
-				|| getPlayer().getGameMode() == GameMode.ULTIMATE_IRONMAN
-				&& getPlayer().getEquipment().getItems()[Equipment.AMULET_SLOT].getId() == 13555
-				|| getPlayer().getGameMode() == GameMode.ULTIMATE_IRONMAN
-				&& getPlayer().getEquipment().getItems()[Equipment.AMULET_SLOT].getId() == 15834
-				|| getPlayer().getGameMode() == GameMode.ULTIMATE_IRONMAN
-				&& getPlayer().getEquipment().getItems()[Equipment.AMULET_SLOT].getId() == 11195
-				|| getPlayer().getGameMode() == GameMode.ULTIMATE_IRONMAN
-				&& getPlayer().getEquipment().getItems()[Equipment.AMULET_SLOT].getId() == 4489
-				|| getPlayer().getGameMode() == GameMode.ULTIMATE_IRONMAN
-				&& getPlayer().getEquipment().getItems()[Equipment.RING_SLOT].getId() == 18818
-				|| getPlayer().getGameMode() == GameMode.ULTIMATE_IRONMAN
-				&& getPlayer().getEquipment().getItems()[Equipment.RING_SLOT].getId() == 18823
-		) {
-			getPlayer().getUimBank().open();
-			player.sendMessage("UIM Bank is currently disabled");
-			return this;
-		}
-		if (getPlayer().getGameMode() == GameMode.ULTIMATE_IRONMAN) {
-			getPlayer().getPacketSender().sendInterfaceRemoval()
-					.sendMessage("Ultimate ironman players cannot use banks. ");
-			getPlayer().getPacketSender().sendMessage("@red@To open your collection box equip your collector item.");
+		if(!player.getMode().openBank(player)){
 			return this;
 		}
 
@@ -104,7 +71,6 @@ public class Bank extends ItemContainer {
 			sortItems().refreshItems();
 
 		refreshItems();
-		//sortItems().refreshItems();
 		player.setBanking(true).setInputHandling(null);
 		player.getPacketSender().sendConfig(115, player.withdrawAsNote() ? 0 : 1)
 				.sendConfig(304, player.swapMode() ? 0 : 1)

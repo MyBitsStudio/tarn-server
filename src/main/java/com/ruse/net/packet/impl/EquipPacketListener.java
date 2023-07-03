@@ -56,7 +56,7 @@ public class EquipPacketListener implements PacketListener {
         Equipment equipment;
         if(player.isSecondaryEquipment()) {
             if(!player.getSecondaryEquipmentUnlocks()[def.getEquipmentSlot()]) {
-                player.sendMessage("@red@You must first claim a " + def.getEquipmentType() + " Certificate to unlock this Secondary Equipement Slot.");
+                player.sendMessage("@red@You must first claim a " + def.getEquipmentType() + " Certificate to unlock this Secondary Equipment Slot.");
                 return false;
             }
             equipment = player.getSecondaryEquipment();
@@ -67,6 +67,11 @@ public class EquipPacketListener implements PacketListener {
             }
             equipment = player.getEquipment();
         }
+        if(!player.getMode().canWear(id)){
+            player.sendMessage("You cannot wear this item in this game mode.");
+            return false;
+        }
+
         switch (id) {
             case 4155:
                 DialogueManager.start(player, 9927);
@@ -220,7 +225,6 @@ public class EquipPacketListener implements PacketListener {
                     // player.getInventory().delete(id, 1);
                     player.getPacketSender().sendMessage("You need 10k NPC kill count to wear this");
                     return false;
-                } else {
                 }
                 break;
             case 8834:
@@ -234,7 +238,6 @@ public class EquipPacketListener implements PacketListener {
                     // player.getInventory().delete(id, 1);
                     player.getPacketSender().sendMessage("You need 2k NPC kill count to wear this");
                     return false;
-                } else {
                 }
                 break;
             case 15835:
@@ -253,33 +256,29 @@ public class EquipPacketListener implements PacketListener {
                 }
                 break;
             case 773:
-                if (!(player.getRank().isDeveloper())) {
+                if (player.getRank().isDeveloper()) {
+                    player.getPacketSender().sendMessage("Precious, precious, precious! My Precious! O my Precious!");
+                    World.sendStaffMessage("@red@[BUG] " + player.getUsername() + " just tried to equip a Perfect Ring!");
+                } else {
                     player.getPacketSender()
                             .sendMessage("We wants it, we needs it. Must have the precious. They stole it from us.")
                             .sendMessage("Sneaky little hobbitses. Wicked, tricksy, false! The ring has vanished again..");
                     player.getInventory().delete(id, 1);
                     break;
-                } else {
-                    player.getPacketSender().sendMessage("Precious, precious, precious! My Precious! O my Precious!");
-                    World.sendStaffMessage("@red@[BUG] " + player.getUsername() + " just tried to equip a Perfect Ring!");
                 }
                 break;
             case 20171:
                 // case 20553:
                 boolean haveAmmo = equipment.get(Equipment.AMMUNITION_SLOT).getId() == -1;
                 boolean spiritArrow = equipment.get(Equipment.AMMUNITION_SLOT).getId() == 78;
-                if (!haveAmmo) {
-                    if (spiritArrow) {
-                        player.getPacketSender().sendMessage("Your bow connects to your Soul arrow.");
-                    } else {
-                        player.getPacketSender().sendMessage("Please un-equip your arrows before using the Zaryte bow.");
-                        // player.getPacketSender().sendMessage("Your ammo is:
-                        // "+equipment.get(Equipment.AMMUNITION_SLOT));
-                        return false;
-                    }
-                } else {
+                if (haveAmmo) {
                     equipment.set(Equipment.AMMUNITION_SLOT, new Item(78, 1));
                     player.getPacketSender().sendMessage("Your Zaryte bow activates it's unique arrow.");
+                } else if (spiritArrow) {
+                    player.getPacketSender().sendMessage("Your bow connects to your Soul arrow.");
+                } else {
+                    player.getPacketSender().sendMessage("Please un-equip your arrows before using the Zaryte bow.");
+                    return false;
                 }
                 player.getPacketSender().sendMessage("<img=5> The Zaryte bow WILL NOT work in PvP fights!");
                 break;
@@ -306,157 +305,133 @@ public class EquipPacketListener implements PacketListener {
                     return false;
                 }
                 break;
-            case 16691: // iron men items
-            case 9704:
-            case 17239:
-            case 16669:
-            case 4977:
-            case 4989:
-            case 4995:
-            case 16339:
-            case 6068:
-            case 9703:
-                if (player.getGameMode() != GameMode.IRONMAN && player.getGameMode() != GameMode.ULTIMATE_IRONMAN && player.getGameMode() != GameMode.GROUP_IRONMAN && player.getLocation() != Location.DUNGEONEERING) {
-                    player.getPacketSender().sendMessage("You must be in Iron Man mode to use this.");
-                    return false;
-                }
-                break;
         }
-        switch (interfaceId) {
-            case Inventory.INTERFACE_ID:
+        if (interfaceId == Inventory.INTERFACE_ID) {/*
+         * Making sure slot is valid.
+         */
+            if (slot >= 0 && slot <= 28) {
+                Item item = player.getInventory().getItems()[slot].copy();
+                if (!player.getInventory().contains(item.getId()))
+                    return false;
                 /*
-                 * Making sure slot is valid.
+                 * Making sure item exists and that id is consistent.
                  */
-                if (slot >= 0 && slot <= 28) {
-                    Item item = player.getInventory().getItems()[slot].copy();
-                    if (!player.getInventory().contains(item.getId()))
-                        return false;
-                    /*
-                     * Making sure item exists and that id is consistent.
-                     */
-                    if (item != null && id == item.getId()) {
-                        for (Skill skill : Skill.values()) {
-                            if (skill == Skill.DUNGEONEERING)
-                                continue;
-                            if (item.getDefinition().getRequirement()[skill.ordinal()] > player.getSkillManager()
-                                    .getMaxLevel(skill)) {
-                                StringBuilder vowel = new StringBuilder();
-                                if (skill.getName().startsWith("a") || skill.getName().startsWith("e")
-                                        || skill.getName().startsWith("i") || skill.getName().startsWith("o")
-                                        || skill.getName().startsWith("u")) {
-                                    vowel.append("an ");
-                                } else {
-                                    vowel.append("a ");
+                if (id == item.getId()) {
+                    for (Skill skill : Skill.values()) {
+                        if (skill == Skill.DUNGEONEERING)
+                            continue;
+                        if (item.getDefinition().getRequirement()[skill.ordinal()] > player.getSkillManager()
+                                .getMaxLevel(skill)) {
+                            StringBuilder vowel = new StringBuilder();
+                            if (skill.getName().startsWith("a") || skill.getName().startsWith("e")
+                                    || skill.getName().startsWith("i") || skill.getName().startsWith("o")
+                                    || skill.getName().startsWith("u")) {
+                                vowel.append("an ");
+                            } else {
+                                vowel.append("a ");
+                            }
+                            player.getPacketSender().sendMessage("You need " + vowel.toString()
+                                    + Misc.formatText(skill.getName()) + " level of at least "
+                                    + item.getDefinition().getRequirement()[skill.ordinal()] + " to wear this.");
+                            return false;
+                        }
+                    }
+
+                    int equipmentSlot = item.getDefinition().getEquipmentSlot();
+                    Item equipItem = equipment.forSlot(equipmentSlot).copy();
+
+                    if (player.getLocation() == Location.DUEL_ARENA) {
+                        for (int i = 10; i < player.getDueling().selectedDuelRules.length; i++) {
+                            if (player.getDueling().selectedDuelRules[i]) {
+                                DuelRule duelRule = DuelRule.forId(i);
+                                if (equipmentSlot == duelRule.getEquipmentSlot()
+                                        || duelRule == DuelRule.NO_SHIELD
+                                        && item.getDefinition().isTwoHanded()) {
+                                    player.getPacketSender().sendMessage(
+                                            "The rules that were set do not allow this item to be equipped.");
+                                    return false;
                                 }
-                                player.getPacketSender().sendMessage("You need " + vowel.toString()
-                                        + Misc.formatText(skill.getName()) + " level of at least "
-                                        + item.getDefinition().getRequirement()[skill.ordinal()] + " to wear this.");
+                            }
+                        }
+                        if (player.getDueling().selectedDuelRules[DuelRule.LOCK_WEAPON.ordinal()]) {
+                            if (equipmentSlot == Equipment.WEAPON_SLOT || item.getDefinition().isTwoHanded()) {
+                                player.getPacketSender().sendMessage("Weapons have been locked during this duel!");
                                 return false;
                             }
                         }
-
-                        int equipmentSlot = item.getDefinition().getEquipmentSlot();
-                        Item equipItem = equipment.forSlot(equipmentSlot).copy();
-
-                        if (player.getLocation() == Location.DUEL_ARENA) {
-                            for (int i = 10; i < player.getDueling().selectedDuelRules.length; i++) {
-                                if (player.getDueling().selectedDuelRules[i]) {
-                                    DuelRule duelRule = DuelRule.forId(i);
-                                    if (equipmentSlot == duelRule.getEquipmentSlot()
-                                            || duelRule == DuelRule.NO_SHIELD
-                                            && item.getDefinition().isTwoHanded()) {
-                                        player.getPacketSender().sendMessage(
-                                                "The rules that were set do not allow this item to be equipped.");
-                                        return false;
-                                    }
-                                }
-                            }
-                            if (player.getDueling().selectedDuelRules[DuelRule.LOCK_WEAPON.ordinal()]) {
-                                if (equipmentSlot == Equipment.WEAPON_SLOT || item.getDefinition().isTwoHanded()) {
-                                    player.getPacketSender().sendMessage("Weapons have been locked during this duel!");
-                                    return false;
-                                }
-                            }
-                        }
-                        if (player.hasStaffOfLightEffect()
-                                && equipItem.getDefinition().getName().toLowerCase().contains("staff of light")) {
-                            player.setStaffOfLightEffect(-1);
-                            player.getPacketSender()
-                                    .sendMessage("You feel the spirit of the Staff of Light begin to fade away...");
-
-                        }
-                        if (equipItem.getDefinition().isStackable() && equipItem.getId() == item.getId()) {
-                            int amount = equipItem.getAmount() + item.getAmount() <= Integer.MAX_VALUE
-                                    ? equipItem.getAmount() + item.getAmount()
-                                    : Integer.MAX_VALUE;
-                            player.getInventory().delete(item);
-                            equipment.getItems()[equipmentSlot].setAmount(amount);
-                            equipItem.setAmount(amount);
-                            equipment.refreshItems();
-                        } else {
-                            if (item.getDefinition().isTwoHanded()
-                                    && item.getDefinition().getEquipmentSlot() == Equipment.WEAPON_SLOT) {
-                                int slotsRequired = equipment.isSlotOccupied(Equipment.SHIELD_SLOT)
-                                        && equipment.isSlotOccupied(Equipment.WEAPON_SLOT) ? 1 : 0;
-                                if (player.getInventory().getFreeSlots() < slotsRequired) {
-                                    player.getInventory().full();
-                                    return false;
-                                }
-
-                                Item shield = equipment.getItems()[Equipment.SHIELD_SLOT];
-                                Item weapon = equipment.getItems()[Equipment.WEAPON_SLOT];
-
-                                equipment.set(Equipment.SHIELD_SLOT, new Item(-1, 0));
-                                player.getInventory().delete(item);
-                                equipment.set(equipmentSlot, item);
-
-                                if (shield.getId() != -1) {
-                                    player.getInventory().add(shield);
-                                }
-
-                                if (weapon.getId() != -1) {
-                                    player.getInventory().add(weapon);
-                                }
-                            } else if (equipmentSlot == Equipment.SHIELD_SLOT
-                                    && equipment.getItems()[Equipment.WEAPON_SLOT].getDefinition()
-                                    .isTwoHanded()) { //
-                                player.getInventory().setItem(slot,
-                                        equipment.getItems()[Equipment.WEAPON_SLOT]);
-                                equipment.setItem(Equipment.WEAPON_SLOT, new Item(-1));
-                                equipment.setItem(Equipment.SHIELD_SLOT, item);
-                                resetWeapon(player);
-                            } else {
-                                if (item.getDefinition().getEquipmentSlot() == equipItem.getDefinition().getEquipmentSlot()
-                                        && equipItem.getId() != -1) {
-                                    if (player.getInventory().contains(equipItem.getId())) {
-                                        player.getInventory().delete(item);
-                                        player.getInventory().add(equipItem);
-                                    } else
-                                        player.getInventory().setItem(slot, equipItem);
-                                    equipment.setItem(equipmentSlot, item);
-                                } else {
-                                    player.getInventory().setItem(slot, new Item(-1, 0));
-                                    equipment.setItem(item.getDefinition().getEquipmentSlot(), item);
-                                }
-                            }
-                        }
-                        if (equipmentSlot == Equipment.WEAPON_SLOT) {
-                            resetWeapon(player);
-                        }
-
-                        if (equipment.get(Equipment.WEAPON_SLOT).getId() != 4153) {
-                            player.getCombatBuilder().cooldown(false);
-                        }
-
-                        player.setCastSpell(null);
-                        BonusManager.update(player);
-                        equipment.refreshItems();
-                        player.getInventory().refreshItems();
-                        player.getUpdateFlag().flag(Flag.APPEARANCE);
-                        Sounds.sendSound(player, Sound.EQUIP_ITEM);
                     }
+                    if (player.hasStaffOfLightEffect()
+                            && equipItem.getDefinition().getName().toLowerCase().contains("staff of light")) {
+                        player.setStaffOfLightEffect(-1);
+                        player.getPacketSender()
+                                .sendMessage("You feel the spirit of the Staff of Light begin to fade away...");
+
+                    }
+                    if (equipItem.getDefinition().isStackable() && equipItem.getId() == item.getId()) {
+                        int amount = Math.min(equipItem.getAmount() + item.getAmount(), Integer.MAX_VALUE);
+                        player.getInventory().delete(item);
+                        equipment.getItems()[equipmentSlot].setAmount(amount);
+                        equipItem.setAmount(amount);
+                        equipment.refreshItems();
+                    } else if (item.getDefinition().isTwoHanded()
+                            && item.getDefinition().getEquipmentSlot() == Equipment.WEAPON_SLOT) {
+                        int slotsRequired = equipment.isSlotOccupied(Equipment.SHIELD_SLOT)
+                                && equipment.isSlotOccupied(Equipment.WEAPON_SLOT) ? 1 : 0;
+                        if (player.getInventory().getFreeSlots() < slotsRequired) {
+                            player.getInventory().full();
+                            return false;
+                        }
+
+                        Item shield = equipment.getItems()[Equipment.SHIELD_SLOT];
+                        Item weapon = equipment.getItems()[Equipment.WEAPON_SLOT];
+
+                        equipment.set(Equipment.SHIELD_SLOT, new Item(-1, 0));
+                        player.getInventory().delete(item);
+                        equipment.set(equipmentSlot, item);
+
+                        if (shield.getId() != -1) {
+                            player.getInventory().add(shield);
+                        }
+
+                        if (weapon.getId() != -1) {
+                            player.getInventory().add(weapon);
+                        }
+                    } else if (equipmentSlot == Equipment.SHIELD_SLOT
+                            && equipment.getItems()[Equipment.WEAPON_SLOT].getDefinition()
+                            .isTwoHanded()) { //
+                        player.getInventory().setItem(slot,
+                                equipment.getItems()[Equipment.WEAPON_SLOT]);
+                        equipment.setItem(Equipment.WEAPON_SLOT, new Item(-1));
+                        equipment.setItem(Equipment.SHIELD_SLOT, item);
+                        resetWeapon(player);
+                    } else if (item.getDefinition().getEquipmentSlot() == equipItem.getDefinition().getEquipmentSlot()
+                            && equipItem.getId() != -1) {
+                        if (player.getInventory().contains(equipItem.getId())) {
+                            player.getInventory().delete(item);
+                            player.getInventory().add(equipItem);
+                        } else
+                            player.getInventory().setItem(slot, equipItem);
+                        equipment.setItem(equipmentSlot, item);
+                    } else {
+                        player.getInventory().setItem(slot, new Item(-1, 0));
+                        equipment.setItem(item.getDefinition().getEquipmentSlot(), item);
+                    }
+                    if (equipmentSlot == Equipment.WEAPON_SLOT) {
+                        resetWeapon(player);
+                    }
+
+                    if (equipment.get(Equipment.WEAPON_SLOT).getId() != 4153) {
+                        player.getCombatBuilder().cooldown(false);
+                    }
+
+                    player.setCastSpell(null);
+                    BonusManager.update(player);
+                    equipment.refreshItems();
+                    player.getInventory().refreshItems();
+                    player.getUpdateFlag().flag(Flag.APPEARANCE);
+                    Sounds.sendSound(player, Sound.EQUIP_ITEM);
                 }
-                break;
+            }
         }
         return true;
     }

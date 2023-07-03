@@ -1,7 +1,5 @@
 package com.ruse.world.content.aura;
 
-
-import com.ruse.model.GameMode;
 import com.ruse.model.Locations;
 import com.ruse.model.Position;
 import com.ruse.world.content.dialogue.DialogueManager;
@@ -95,15 +93,15 @@ public class AuraParty {
             return;
         }
 
-
-        if (getOwner().getGameMode() == GameMode.GROUP_IRONMAN && !getOwner().getIronmanGroup().equals(p.getIronmanGroup())){
-            p.getPacketSender().sendMessage("You are not a part of this players ironman group.");
-            return;
-        }
-        if (p.getGameMode() == GameMode.GROUP_IRONMAN && !p.getIronmanGroup().equals(getOwner().getIronmanGroup())){
-            p.getPacketSender().sendMessage("You are not a part of this players ironman group.");
-            return;
-        }
+//
+//        if (getOwner().getGameMode() == GameMode.GROUP_IRONMAN && !getOwner().getIronmanGroup().equals(p.getIronmanGroup())){
+//            p.getPacketSender().sendMessage("You are not a part of this players ironman group.");
+//            return;
+//        }
+//        if (p.getGameMode() == GameMode.GROUP_IRONMAN && !p.getIronmanGroup().equals(getOwner().getIronmanGroup())){
+//            p.getPacketSender().sendMessage("You are not a part of this players ironman group.");
+//            return;
+//        }
 
         getOwner().getMinigameAttributes().getAuraAttributes().setLastInvitation(System.currentTimeMillis());
         DialogueManager.start(p, new AuraPartyInvitation(getOwner(), p));

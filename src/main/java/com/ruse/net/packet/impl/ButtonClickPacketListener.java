@@ -68,6 +68,7 @@ import com.ruse.world.content.zombie.ZombieParty;
 import com.ruse.world.content.zombie.ZombieRaidData;
 import com.ruse.world.entity.impl.player.Player;
 import com.ruse.world.entity.impl.player.StartScreen;
+import com.ruse.world.packages.mode.impl.UltimateIronman;
 
 import java.util.Arrays;
 import java.util.List;
@@ -559,7 +560,7 @@ public class ButtonClickPacketListener implements PacketListener {
                 break;
 
             case -17497: // example for mbox with random data. - open all
-                if (player.getGameMode() == GameMode.ULTIMATE_IRONMAN) {
+                if (player.getMode() instanceof UltimateIronman) {
                     player.sendMessage("@red@As an Ultimate ironman you can't do this.");
                     return;
                 }

@@ -8,7 +8,6 @@ import com.ruse.engine.task.Task;
 import com.ruse.model.Animation;
 import com.ruse.model.DamageDealer;
 import com.ruse.model.Flag;
-import com.ruse.model.GameMode;
 import com.ruse.model.GroundItem;
 import com.ruse.model.Item;
 import com.ruse.model.Locations.Location;
@@ -28,6 +27,9 @@ import com.ruse.world.content.transportation.TeleportHandler;
 import com.ruse.world.entity.impl.GroundItemManager;
 import com.ruse.world.entity.impl.npc.NPC;
 import com.ruse.world.entity.impl.player.Player;
+import com.ruse.world.packages.mode.impl.GroupIronman;
+import com.ruse.world.packages.mode.impl.Ironman;
+import com.ruse.world.packages.mode.impl.UltimateIronman;
 
 /**
  * Represents a player's death task, through which the process of dying is
@@ -122,25 +124,15 @@ public class PlayerDeathTask extends Task {
                             }
                         }
                         if (loc == Location.THE_SIX || loc == Location.NOMAD) {
-                            spawnItems = false;// && loc != Location.NOMAD && (loc != Location.WILDERNESS &&
-                            // killer.getGameMode() != GameMode.NORMAL); //&& !(loc ==
-                            // Location.GODWARS_DUNGEON &&
-                            // player.getMinigameAttributes().getGodwarsDungeonAttributes().hasEnteredRoom());
-                        } else if (loc == Location.WILDERNESS && killer != null && killer.isPlayer()
-                                && killer.getGameMode() != GameMode.NORMAL) {
                             spawnItems = false;
-                        } else {
-                            spawnItems = true;
-                        }
-                        // // System.out.println("Location: "+loc+" | spawnItems: "+spawnItems);
-                        // // System.out.println("Killer: "+killer.getUsername()+" |
-                        // "+killer.getGameMode());
-                        // // System.out.println("Victim: "+player.getUsername()+" |
-                        // "+player.getGameMode());
+                        } else spawnItems = loc != Location.WILDERNESS || killer == null || !killer.isPlayer()
+                                || killer.getMode() instanceof Ironman || killer.getMode() instanceof UltimateIronman
+                                || killer.getMode() instanceof GroupIronman;
                         if (dropItems) { // check for item dropping
-                            if (spawnItems == false) {
-                                if (loc == Location.WILDERNESS && killer != null && killer.isPlayer()
-                                        && killer.getGameMode() != GameMode.NORMAL) {
+                            if (!spawnItems) {
+                                if (loc == Location.WILDERNESS && killer.isPlayer()
+                                && (killer.getMode() instanceof Ironman || killer.getMode() instanceof UltimateIronman
+                                        || killer.getMode() instanceof GroupIronman)) {
                                     killer.getPacketSender()
                                             .sendMessage("As an Iron/UIM player, you cannot loot " + player.getUsername()
                                                     + "...")
@@ -191,22 +183,14 @@ public class PlayerDeathTask extends Task {
                              * i2.getAmount()*i2.getDefinition().getValue())); return -1; } return 0; } });
                              */
                             for (Item item : playerItems) {
-                                // System.out.println(item.getDefinition().getName());
-                                // World.sendMessage("Before setting: "+item.getDefinition().getName() + " "+
-                                // item.getAmount());
-                                // item.setAmount(item.getAmount());
-                                // World.sendMessage("After setting: "+item.getDefinition().getName() + " "+
-                                // item.getAmount());
                                 if (!item.tradeable() || itemsToKeep.contains(item)) {
                                     if (!itemsToKeep.contains(item)) {
                                         itemsToKeep.add(item);
                                     }
                                     continue;
                                 }
-                                // World.sendMessage("spawnItems = "+spawnItems);
                                 if (spawnItems) {
-                                    // if(killer.getGameMode() != GameMode.NORMAL) {
-                                    if (item != null && item.getId() > 0 && item.getAmount() > 0) {
+                                    if (item.getId() > 0 && item.getAmount() > 0) {
                                         PlayerLogs.log(player.getUsername(),
                                                 "Died and dropped: " + (ItemDefinition.forId(item.getId()) != null
                                                         && ItemDefinition.forId(item.getId()).getName() != null
@@ -214,7 +198,7 @@ public class PlayerDeathTask extends Task {
                                                         : item.getId())
                                                         + ", amount: " + item.getAmount());
                                         GroundItemManager.spawnGroundItem(
-                                                (killer != null && killer.getGameMode() == GameMode.NORMAL ? killer
+                                                (killer != null ? killer
                                                         : player),
                                                 new GroundItem(item, position,
                                                         killer != null ? killer.getUsername() : player.getUsername(),
@@ -222,7 +206,9 @@ public class PlayerDeathTask extends Task {
                                     }
                                 }
                             }
-                            if (killer != null && player.getLocation() != Location.FREE_FOR_ALL_ARENA) {
+                            if (killer == null || player.getLocation() == Location.FREE_FOR_ALL_ARENA) {
+                                PlayerLogs.logKills(player.getUsername(), "Died to npc or unknown");
+                            } else {
                                 killer.getPlayerKillingAttributes().add(player);
                                 player.getPlayerKillingAttributes()
                                         .setPlayerDeaths(player.getPlayerKillingAttributes().getPlayerDeaths() + 1);
@@ -230,8 +216,6 @@ public class PlayerDeathTask extends Task {
                                 PlayerPanel.refreshPanel(player);
                                 PlayerLogs.logKills(killer.getUsername(), "Killed player: " + player.getUsername());
                                 PlayerLogs.logKills(player.getUsername(), "Died to player: " + killer.getUsername());
-                            } else {
-                                PlayerLogs.logKills(player.getUsername(), "Died to npc or unknown");
                             }
                             player.getInventory().resetItems().refreshItems();
                             player.getEquipment().resetItems().refreshItems();
@@ -248,22 +232,20 @@ public class PlayerDeathTask extends Task {
                     break;
                 case 0:
                     if (dropItems) {
-                        if (player.getGameMode() == GameMode.ULTIMATE_IRONMAN) {
-                            GameMode.set(player, player.getGameMode(), true);
-                        } else {
-                            if (itemsToKeep != null) {
-                                for (Item it : itemsToKeep) {
-                                    PlayerLogs.log(player.getUsername(),
-                                            "Died, but KEPT: " + (ItemDefinition.forId(it.getId()) != null
-                                                    && ItemDefinition.forId(it.getId()).getName() != null
-                                                    ? ItemDefinition.forId(it.getId()).getName()
-                                                    : it.getId())
-                                                    + ", amount: " + it.getAmount());
-                                    player.getInventory().add(it.getId(), it.getAmount());
+                        if (player.getMode() instanceof UltimateIronman) {
+                            player.getMode().changeMode(new Ironman());
+                        } else if (itemsToKeep != null) {
+                            for (Item it : itemsToKeep) {
+                                PlayerLogs.log(player.getUsername(),
+                                        "Died, but KEPT: " + (ItemDefinition.forId(it.getId()) != null
+                                                && ItemDefinition.forId(it.getId()).getName() != null
+                                                ? ItemDefinition.forId(it.getId()).getName()
+                                                : it.getId())
+                                                + ", amount: " + it.getAmount());
+                                player.getInventory().add(it.getId(), it.getAmount());
 
-                                }
-                                itemsToKeep.clear();
                             }
+                            itemsToKeep.clear();
                         }
                     }
                     if (death != null) {
@@ -319,29 +301,19 @@ public class PlayerDeathTask extends Task {
     }
 
     public static String randomDeath(String name) {
-        switch (Misc.getRandom(8)) {
-            case 0:
-                return "There is no escape, " + Misc.formatText(name) + "...";
-            case 1:
-                return "Muahahahaha!";
-            case 2:
-                return "You belong to me!";
-            case 3:
-                return "Beware mortals, " + Misc.formatText(name) + " travels with me!";
-            case 4:
-                return "Your time here is over, " + Misc.formatText(name) + "!";
-            case 5:
-                return "Now is the time you die, " + Misc.formatText(name) + "!";
-            case 6:
-                return "I claim " + Misc.formatText(name) + " as my own!";
-            case 7:
-                return "" + Misc.formatText(name) + " is mine!";
-            case 8:
-                return "Say goodbye, " + Misc.formatText(name) + "!";
-            case 9:
-                return "I have come for you, " + Misc.formatText(name) + "!";
-        }
-        return "";
+        return switch (Misc.getRandom(8)) {
+            case 0 -> "There is no escape, " + Misc.formatText(name) + "...";
+            case 1 -> "Muahahahaha!";
+            case 2 -> "You belong to me!";
+            case 3 -> "Beware mortals, " + Misc.formatText(name) + " travels with me!";
+            case 4 -> "Your time here is over, " + Misc.formatText(name) + "!";
+            case 5 -> "Now is the time you die, " + Misc.formatText(name) + "!";
+            case 6 -> "I claim " + Misc.formatText(name) + " as my own!";
+            case 7 -> Misc.formatText(name) + " is mine!";
+            case 8 -> "Say goodbye, " + Misc.formatText(name) + "!";
+            case 9 -> "I have come for you, " + Misc.formatText(name) + "!";
+            default -> "";
+        };
     }
 
 }

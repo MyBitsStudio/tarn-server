@@ -1,6 +1,5 @@
 package com.ruse.world.content.item_upgrader;
 
-import com.ruse.model.GameMode;
 import com.ruse.model.Item;
 import com.ruse.model.Skill;
 import com.ruse.model.definitions.ItemDefinition;
@@ -144,9 +143,6 @@ public class UpgradeHandler {
 				}
 			}
 			player.getSkillManager().addExperience(Skill.HERBLORE, player.getCurrentUpgrade().getOtherCurrency());
-			if (player.getGameMode() == GameMode.VETERAN_MODE) {
-				player.getSkillManager().addExperience(Skill.HERBLORE, player.getCurrentUpgrade().getOtherCurrency() * 100);
-			}
 			player.sendMessage("Congratulations, you successfully concoct "
 					+ ItemDefinition.forId(player.getCurrentUpgrade().getResultItem()).getName() + ".");
 			player.getInventory().add(player.getCurrentUpgrade().getResultItem(), 1);

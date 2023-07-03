@@ -1,8 +1,9 @@
 package com.ruse.world.packages.raids;
 
-import com.ruse.model.GameMode;
 import com.ruse.model.GameObject;
 import com.ruse.world.content.dialogue.DialogueManager;
+import com.ruse.world.packages.mode.impl.GroupIronman;
+import com.ruse.world.packages.mode.impl.UltimateIronman;
 import com.ruse.world.packages.raids.dialogue.RaidPartyInvite;
 import com.ruse.world.entity.impl.player.Player;
 
@@ -78,16 +79,32 @@ public abstract class RaidParty {
                 return;
             }
 
-            if (owner.getGameMode() == GameMode.GROUP_IRONMAN && !owner.getIronmanGroup().equals(player.getIronmanGroup())){
-                owner.sendMessage("You are not a part of this players ironman group.");
-                player.sendMessage("You are not a part of this players ironman group.");
-                return;
+            if(owner.getMode() instanceof GroupIronman){
+                if(!owner.getIronmanGroup().equals(player.getIronmanGroup())){
+                    owner.sendMessage("You are not a part of this players ironman group.");
+                    player.sendMessage("You are not a part of this players ironman group.");
+                    return;
+                }
             }
-            if (player.getGameMode() == GameMode.GROUP_IRONMAN && !player.getIronmanGroup().equals(owner.getIronmanGroup())){
-                owner.sendMessage("You are not a part of this players ironman group.");
-                player.sendMessage("You are not a part of this players ironman group.");
-                return;
+
+            if(player.getMode() instanceof GroupIronman){
+                if(!player.getIronmanGroup().equals(owner.getIronmanGroup())){
+                    owner.sendMessage("You are not a part of this players ironman group.");
+                    player.sendMessage("You are not a part of this players ironman group.");
+                    return;
+                }
             }
+
+//            if (owner.getGameMode() == GameMode.GROUP_IRONMAN && !owner.getIronmanGroup().equals(player.getIronmanGroup())){
+//                owner.sendMessage("You are not a part of this players ironman group.");
+//                player.sendMessage("You are not a part of this players ironman group.");
+//                return;
+//            }
+//            if (player.getGameMode() == GameMode.GROUP_IRONMAN && !player.getIronmanGroup().equals(owner.getIronmanGroup())){
+//                owner.sendMessage("You are not a part of this players ironman group.");
+//                player.sendMessage("You are not a part of this players ironman group.");
+//                return;
+//            }
 
             DialogueManager.start(player, new RaidPartyInvite(this, player));
             owner.sendMessage("You have invited "+player.getUsername()+" to join your party.");

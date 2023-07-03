@@ -1348,13 +1348,14 @@ public class ItemActionPacketListener implements PacketListener {
             case 1752:
             case 1754:
             case 228:
-                int[] uimint = {1748, 1750, 1752, 1754, 228};
-                for (int i = 0; i < uimint.length; i++) {
-                    if (uimint[i] == itemId && !player.getGameMode().equals(GameMode.ULTIMATE_IRONMAN)) {
-                        player.getPacketSender().sendMessage("Only Ultimate Ironman characters can do that.");
-                        return;
-                    }
-                }
+                //TODO
+//                int[] uimint = {1748, 1750, 1752, 1754, 228};
+//                for (int i = 0; i < uimint.length; i++) {
+//                    if (uimint[i] == itemId && !player.getGameMode().equals(GameMode.ULTIMATE_IRONMAN)) {
+//                        player.getPacketSender().sendMessage("Only Ultimate Ironman characters can do that.");
+//                        return;
+//                    }
+//                }
                 if (!player.getClickDelay().elapsed(100)) {
                     return;
                 }
@@ -2305,70 +2306,70 @@ public class ItemActionPacketListener implements PacketListener {
                 player.setDialogueActionId(9924);
                 break;
 
-            case 11846:
-            case 11848:
-            case 11850:
-            case 11852:
-            case 11854:
-            case 11856:
-                if (!player.getClickDelay().elapsed(250) || !player.getInventory().contains(itemId))
-                    return;
-                if (player.busy()) {
-                    player.getPacketSender().sendMessage("You cannot open this right now.");
-                    return;
-                }
-                int amountToOpen = player.getInventory().getAmount(itemId);
-                if (player.getGameMode() == GameMode.ULTIMATE_IRONMAN) {
-                    amountToOpen = player.getInventory().getFreeSlots() / 4;
-                    if (amountToOpen > player.getInventory().getAmount(itemId))
-                        amountToOpen = player.getInventory().getAmount(itemId);
-                }
-                if (amountToOpen == 0) {
-                    player.getPacketSender().sendMessage("You do not have enough inventory space to do this.");
-                    return;
-                }
-
-                int[] items = itemId == 11858 ? new int[]{10350, 10348, 10346, 10352}
-                        : itemId == 19580 ? new int[]{19308, 19311, 19314, 19317, 19320}
-                        : itemId == 11860 ? new int[]{10334, 10330, 10332, 10336}
-                        : itemId == 11862 ? new int[]{10342, 10338, 10340, 10344}
-                        : itemId == 11848 ? new int[]{4716, 4720, 4722, 4718}
-                        : itemId == 11856 ? new int[]{4753, 4757, 4759, 4755}
-                        : itemId == 11850 ? new int[]{4724, 4728, 4730, 4726}
-                        : itemId == 11854 ? new int[]{4745, 4749, 4751, 4747}
-                        : itemId == 11852 ? new int[]{4732, 4734, 4736, 4738}
-                        : itemId == 11846 ? new int[]{4708, 4712, 4714, 4710}
-                        : new int[]{itemId};
-
-                int[][] tabs = new int[items.length][2];
-
-                int index = 0;
-                for (int z : items) {
-                    tabs[index][0] = z;
-                    tabs[index][1] = Bank.getTabForItem(player, z);
-                    index++;
-                }
-
-                for (int i = 0; i < amountToOpen; i++) {
-                    player.getInventory().delete(itemId, 1, false);
-
-                    for (int[] z : tabs) {
-                        if (player.getGameMode() == GameMode.ULTIMATE_IRONMAN) {
-                            player.getInventory().add(new Item(z[0], 1), false);
-                        } else {
-                            Item item = new Item(z[0], 1);
-                            if (ItemDefinition.forId(item.getId()).isNoted()) {
-                                item.setId(Item.getUnNoted(item.getId()));
-                            }
-                            player.getBank(z[1]).add(item, false);
-                            //player.depositItemBank(z[1], new Item(z[0], 1), false);
-                        }
-                    }
-                }
-                player.getClickDelay().reset();
-                player.getInventory().refreshItems();
-                player.getPacketSender().sendMessage("You opened " + amountToOpen + " sets.");
-                break;
+//            case 11846:
+//            case 11848:
+//            case 11850:
+//            case 11852:
+//            case 11854:
+//            case 11856:
+//                if (!player.getClickDelay().elapsed(250) || !player.getInventory().contains(itemId))
+//                    return;
+//                if (player.busy()) {
+//                    player.getPacketSender().sendMessage("You cannot open this right now.");
+//                    return;
+//                }
+//                int amountToOpen = player.getInventory().getAmount(itemId);
+//                if (player.getGameMode() == GameMode.ULTIMATE_IRONMAN) {
+//                    amountToOpen = player.getInventory().getFreeSlots() / 4;
+//                    if (amountToOpen > player.getInventory().getAmount(itemId))
+//                        amountToOpen = player.getInventory().getAmount(itemId);
+//                }
+//                if (amountToOpen == 0) {
+//                    player.getPacketSender().sendMessage("You do not have enough inventory space to do this.");
+//                    return;
+//                }
+//
+//                int[] items = itemId == 11858 ? new int[]{10350, 10348, 10346, 10352}
+//                        : itemId == 19580 ? new int[]{19308, 19311, 19314, 19317, 19320}
+//                        : itemId == 11860 ? new int[]{10334, 10330, 10332, 10336}
+//                        : itemId == 11862 ? new int[]{10342, 10338, 10340, 10344}
+//                        : itemId == 11848 ? new int[]{4716, 4720, 4722, 4718}
+//                        : itemId == 11856 ? new int[]{4753, 4757, 4759, 4755}
+//                        : itemId == 11850 ? new int[]{4724, 4728, 4730, 4726}
+//                        : itemId == 11854 ? new int[]{4745, 4749, 4751, 4747}
+//                        : itemId == 11852 ? new int[]{4732, 4734, 4736, 4738}
+//                        : itemId == 11846 ? new int[]{4708, 4712, 4714, 4710}
+//                        : new int[]{itemId};
+//
+//                int[][] tabs = new int[items.length][2];
+//
+//                int index = 0;
+//                for (int z : items) {
+//                    tabs[index][0] = z;
+//                    tabs[index][1] = Bank.getTabForItem(player, z);
+//                    index++;
+//                }
+//
+//                for (int i = 0; i < amountToOpen; i++) {
+//                    player.getInventory().delete(itemId, 1, false);
+//
+//                    for (int[] z : tabs) {
+//                        if (player.getGameMode() == GameMode.ULTIMATE_IRONMAN) {
+//                            player.getInventory().add(new Item(z[0], 1), false);
+//                        } else {
+//                            Item item = new Item(z[0], 1);
+//                            if (ItemDefinition.forId(item.getId()).isNoted()) {
+//                                item.setId(Item.getUnNoted(item.getId()));
+//                            }
+//                            player.getBank(z[1]).add(item, false);
+//                            //player.depositItemBank(z[1], new Item(z[0], 1), false);
+//                        }
+//                    }
+//                }
+//                player.getClickDelay().reset();
+//                player.getInventory().refreshItems();
+//                player.getPacketSender().sendMessage("You opened " + amountToOpen + " sets.");
+//                break;
             case 5500:
                 if (player.getPointsHandler().getSlayerRate() >= 6) {
                     player.sendMessage("You can't claim more than X6 Multipliers total!");

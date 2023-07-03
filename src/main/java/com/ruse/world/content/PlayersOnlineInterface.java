@@ -1,19 +1,21 @@
 package com.ruse.world.content;
 
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 import com.ruse.GameSettings;
-import com.ruse.model.GameMode;
 import com.ruse.util.Misc;
 import com.ruse.util.Stopwatch;
 import com.ruse.world.World;
 import com.ruse.world.entity.impl.player.Player;
+import com.ruse.world.packages.mode.impl.GroupIronman;
+import com.ruse.world.packages.mode.impl.Ironman;
+import com.ruse.world.packages.mode.impl.UltimateIronman;
+import com.ruse.world.packages.mode.impl.Veteran;
+import org.jetbrains.annotations.NotNull;
 
 public class PlayersOnlineInterface {
 
-	private static Stopwatch lastResort = new Stopwatch();
+	private static final Stopwatch lastResort = new Stopwatch();
 	private final static CopyOnWriteArrayList<Player> PLAYERS_ONLINE_LIST = new CopyOnWriteArrayList<Player>();
 
 	public static void add(Player player) {
@@ -29,16 +31,10 @@ public class PlayersOnlineInterface {
 			return;
 		}
 		lastResort.reset();
-		Collections.sort(PLAYERS_ONLINE_LIST, (arg0, arg1) -> {
+		PLAYERS_ONLINE_LIST.sort((arg0, arg1) -> {
 			int value1 = getValue(arg0);
 			int value2 = getValue(arg1);
-			if (value1 == value2) {
-				return 0;
-			} else if (value1 > value2) {
-				return -1;
-			} else {
-				return 1;
-			}
+			return Integer.compare(value2, value1);
 		});
 	}
 
@@ -80,13 +76,13 @@ public class PlayersOnlineInterface {
 				continue;
 			int rankId = p.getRank().ordinal();
 			if (rankId == 0) {
-				if (p.getGameMode() == GameMode.IRONMAN) {
+				if (p.getMode() instanceof Ironman) {
 					rankId = 840;
-				} else if (p.getGameMode() == GameMode.ULTIMATE_IRONMAN) {
+				} else if (p.getMode() instanceof UltimateIronman) {
 					rankId = 839;
-				} else if (p.getGameMode() == GameMode.VETERAN_MODE) {
+				} else if (p.getMode() instanceof Veteran) {
 					rankId = 838;
-				} else if (p.getGameMode() == GameMode.GROUP_IRONMAN) {
+				} else if (p.getMode() instanceof GroupIronman) {
 					rankId = 1509;
 				}
 			}
@@ -119,7 +115,7 @@ public class PlayersOnlineInterface {
 						"Time Played: @whi@" + Misc
 								.getHoursPlayed((player2.getTotalPlayTime() + player2.getRecordedLogin().elapsed())))
 				.sendString(57011, "Claimed: @whi@$" + player2.getAmountDonated())
-				.sendString(57012, "Game Mode: @whi@" + Misc.formatText(player2.getGameMode().name().toLowerCase()))
+				.sendString(57012, "Game Mode: @whi@")
 				.sendString(57013, "Combat Level: @whi@" + player2.getSkillManager().getCombatLevel())
 				.sendString(57014, "Total Level: @whi@ " + player2.getSkillManager().getTotalLevel())
 				.sendString(57015, "Slayer Points: @whi@" + player2.getPointsHandler().getSlayerPoints())
@@ -154,63 +150,22 @@ public class PlayersOnlineInterface {
 		return false;
 	}
 
-	private static int getValue(Player p) {
-		int value = 0;
-		switch (p.getRank()) {
-		case PLAYER:
-			value = 0;
-			break;
-		case ADMINISTRATOR:
-			value = 11;
-			break;
-//		case BRONZE_MEMBER:
-//			value = 3;
-//			break;
-		case DEVELOPER:
-			value = 13;
-			break;
-//			case MYSTICAL_DONATOR:
-//			value = 7;
-//			break;
-//			case TORMENTED_DONATOR:
-//			value = 6;
-//			break;
-//		case CLERIC_DONATOR:
-//			value = 5;
-//			break;
-//		case GRACEFUL_DONATOR:
-//			value = 4;
-//			break;
-//		case GOLD_MEMBER:
-//			value = 5;
-//			break;
-		case MODERATOR:
-			value = 10;
-			break;
-//			case OBSIDIAN_DONATOR:
-//			case FORSAKEN_DONATOR:
-//			value = 12;
-//			break;
-			//		case PLATINUM_MEMBER:
-//			value = 6;
-//			break;
-//		case SILVER_MEMBER:
-//			value = 4;
-//			break;
-//		case SUPPORT:
-//			value = 9;
-//			break;
-		case HELPER:
-			value = 8;
-			break;
-		}
+	private static int getValue(@NotNull Player p) {
+		int value = switch (p.getRank()) {
+			case PLAYER -> 0;
+			case ADMINISTRATOR -> 11;
+			case DEVELOPER -> 13;
+			case MODERATOR -> 10;
+			case HELPER -> 8;
+			default -> 0;
+		};
 		if (value == 0) {
-			if (p.getGameMode() == GameMode.IRONMAN) {
+			if (p.getMode() instanceof Ironman) {
 				value = 1;
-			} else if (p.getGameMode() == GameMode.ULTIMATE_IRONMAN) {
+			} else if (p.getMode() instanceof UltimateIronman) {
 				value = 2;
 				
-			}else if (p.getGameMode() == GameMode.VETERAN_MODE) {
+			}else if (p.getMode() instanceof Veteran) {
 				value = 3;
 				
 			}

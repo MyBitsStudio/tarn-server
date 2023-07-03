@@ -1,11 +1,11 @@
 package com.ruse.world.content.groupironman;
 
-import com.ruse.model.GameMode;
 import com.ruse.model.Position;
 import com.ruse.model.container.impl.GroupIronmanBank;
 import com.ruse.world.World;
 import com.ruse.world.content.dialogue.DialogueManager;
 import com.ruse.world.entity.impl.player.Player;
+import com.ruse.world.packages.mode.impl.GroupIronman;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -105,7 +105,7 @@ public class IronmanGroup {
     public void invite(Player p) {
         if (getOwner() == null || p == getOwner())
             return;
-        if (p.getGameMode() != GameMode.GROUP_IRONMAN){
+        if (!(p.getMode() instanceof GroupIronman)){
             getOwner().getPacketSender().sendMessage("That player is is not a group ironman account.");
             return;
         }

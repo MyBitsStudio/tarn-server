@@ -13,6 +13,7 @@ import com.ruse.world.content.discordbot.AdminCord;
 import com.ruse.world.content.transportation.TeleportHandler;
 import com.ruse.world.content.transportation.TeleportType;
 import com.ruse.world.entity.impl.player.Player;
+import com.ruse.world.packages.mode.GameModeConstants;
 
 import java.io.File;
 import java.time.LocalDateTime;
@@ -210,7 +211,7 @@ public class HelperCommands {
                 playerToTele = command.substring(commands[0].length() + 1);
                 player2 = World.getPlayerByName(playerToTele);
                 if(player2 != null)
-                    player.sendMessage(player2.getUsername()+" is "+(player2.getGameMode().isIronman() ? "@gre@Ironman" : "@red@Not Ironman"));
+                    player.sendMessage(player2.getUsername()+" is "+(GameModeConstants.isIronman(player2) ? "@gre@Ironman" : "@red@Not Ironman"));
                 else
                     player.sendMessage("This player isn't online");
                 return true;

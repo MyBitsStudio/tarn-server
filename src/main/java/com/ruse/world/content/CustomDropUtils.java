@@ -1,7 +1,6 @@
 package com.ruse.world.content;
 
 import com.ruse.GameSettings;
-import com.ruse.model.GameMode;
 import com.ruse.model.Item;
 import com.ruse.model.Locations;
 import com.ruse.model.container.impl.Equipment;
@@ -381,16 +380,8 @@ public class CustomDropUtils {
             percentBoost += 100;
         }
 
+        percentBoost += player.getMode().dropRate();
 
-        if (player.getGameMode() == GameMode.GROUP_IRONMAN) {
-            percentBoost += 6;
-        }
-        if (player.getGameMode() == GameMode.ULTIMATE_IRONMAN || player.getGameMode() == GameMode.IRONMAN) {
-            percentBoost += 10;
-        }
-        if (player.getGameMode() == GameMode.VETERAN_MODE) {
-            percentBoost += 30;
-        }
         if (PrayerHandler.isActivated(player,PrayerHandler.GNOMES_GREED)) {
             percentBoost += 10;
         }
@@ -488,15 +479,7 @@ public class CustomDropUtils {
             percentBoost += 40;
         }
 
-        if (player.getGameMode() == GameMode.IRONMAN || player.getGameMode() == GameMode.ULTIMATE_IRONMAN) {
-            percentBoost += 5;
-        }
-        if (player.getGameMode() == GameMode.GROUP_IRONMAN) {
-            percentBoost += 3;
-        }
-        if (player.getGameMode() == GameMode.VETERAN_MODE) {
-			percentBoost += 30;
-        }
+        percentBoost += player.getMode().doubleDropRate();
 
 		// creator set:
 		if (player.getEquipment().contains(23127))

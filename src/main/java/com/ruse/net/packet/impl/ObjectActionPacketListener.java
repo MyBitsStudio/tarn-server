@@ -60,6 +60,7 @@ import com.ruse.world.content.transportation.TeleportHandler;
 import com.ruse.world.content.transportation.TeleportLocations;
 import com.ruse.world.content.transportation.TeleportType;
 import com.ruse.world.entity.impl.player.Player;
+import com.ruse.world.packages.mode.impl.GroupIronman;
 
 import static com.ruse.world.content.combat.prayer.PrayerHandler.startDrain;
 
@@ -177,7 +178,7 @@ public class ObjectActionPacketListener implements PacketListener {
                     }
                     if (gameObject.getDefinition() != null && gameObject.getDefinition().getName() != null) {
                         if (gameObject.getDefinition().getName().toLowerCase().contains("bank")) {
-                            if (player.getGameMode() == GameMode.GROUP_IRONMAN
+                            if (player.getMode() instanceof GroupIronman
                                     && player.getIronmanGroup() != null) {
                                 DialogueManager.start(player, 8002);
                                 player.setDialogueActionId(8002);
@@ -2135,8 +2136,7 @@ public class ObjectActionPacketListener implements PacketListener {
                         case 25808:
                         case 6084:
                         case 3194:
-                            player.sendMessage(player.getGameMode().toString() + ", " + player.getIronmanGroup());
-                            if (player.getGameMode() == GameMode.GROUP_IRONMAN
+                            if (player.getMode() instanceof GroupIronman
                                     && player.getIronmanGroup() != null) {
                                 DialogueManager.start(player, 8002);
                                 player.setDialogueActionId(8002);
@@ -2461,8 +2461,6 @@ public class ObjectActionPacketListener implements PacketListener {
                         case 26972:
                         case 11338:
                         case 19230:
-                            player.sendMessage(player.getGameMode().toString() + ", " + player.getIronmanGroup());
-
                             player.getBank(player.getCurrentBankTab()).open();
                             break;
                         case 26945:

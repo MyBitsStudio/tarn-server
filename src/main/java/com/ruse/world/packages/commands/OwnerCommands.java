@@ -100,7 +100,6 @@ public class OwnerCommands {
                 amount = Integer.parseInt(commands[2]);
                 World.getPlayers().stream()
                         .filter(Objects::nonNull)
-                        .filter(p -> !p.getGameMode().isAFK())
                         .forEach(p -> {
                             p.getInventory().add(id, amount);
                             p.sendMessage("You have recieved: " + ItemDefinition.forId(id).getName() + " from "+player.getUsername()+" for being beasts.");

@@ -2,7 +2,6 @@ package com.ruse.world.content.combat.prayer;
 
 import com.ruse.engine.task.Task;
 import com.ruse.engine.task.TaskManager;
-import com.ruse.model.GameMode;
 import com.ruse.model.Locations.Location;
 import com.ruse.model.Prayerbook;
 import com.ruse.model.Skill;
@@ -514,12 +513,6 @@ public class PrayerHandler {
 				PrayerData prayerData = PrayerData.prayerData.get(i);
 				toRemove += prayerData.drainRate / 10;
 			}
-		}
-		if(player.getGameMode() == GameMode.IRONMAN || player.getGameMode() == GameMode.ULTIMATE_IRONMAN) {
-			toRemove *= 0.99;
-		}
-		if(player.getGameMode() == GameMode.VETERAN_MODE) {
-			toRemove *= 0.97;
 		}
 
 		if(player.getEquipment().contains(23049)) { //Tier 6 Aura

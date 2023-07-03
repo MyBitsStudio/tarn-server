@@ -171,17 +171,17 @@ public class GroundItemManager {
 			return;
 		}
 
-		if (p.getGameMode().isIronman() && !Dungeoneering.doingOldDungeoneering(p)) {
-			String owner = gt.getOwner();
-			if (owner != null) { // && !owner.equals("null")
-				if (!gt.isBossDrop()) {
-					if (!owner.equals(p.getUsername())) {
-						p.getPacketSender().sendMessage("You cannot pick this item up because it was not spawned for you.");
-						return;
-					}
-				}
-			}
-		}
+//		if (p.getGameMode().isIronman() && !Dungeoneering.doingOldDungeoneering(p)) {
+//			String owner = gt.getOwner();
+//			if (owner != null) { // && !owner.equals("null")
+//				if (!gt.isBossDrop()) {
+//					if (!owner.equals(p.getUsername())) {
+//						p.getPacketSender().sendMessage("You cannot pick this item up because it was not spawned for you.");
+//						return;
+//					}
+//				}
+//			}
+//		}
 
 		if (item.getId() == 17489 && Dungeoneering.doingOldDungeoneering(p)) {
 			p.getMinigameAttributes().getDungeoneeringAttributes().getParty().setGatestonePosition(null);

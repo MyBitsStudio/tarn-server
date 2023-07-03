@@ -4,6 +4,8 @@ import com.ruse.engine.GameEngine;
 import com.ruse.security.save.SecureSave;
 import com.ruse.security.tools.SecurityUtils;
 import com.ruse.world.entity.impl.player.Player;
+import com.ruse.world.packages.mode.GameModeConstants;
+import com.ruse.world.packages.mode.impl.*;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -24,7 +26,7 @@ public class PlayerSecureSave extends SecureSave {
         object.addProperty("staff", player.getRank().name());
         object.addProperty("donator", player.getDonator().name());
         object.addProperty("vip", player.getVip().name());
-        object.addProperty("game-mode", player.getGameMode().name());
+        object.addProperty("game-mode", GameModeConstants.getMode(player));
 
         object.addProperty("yellhexcolor", player.getYellHex() == null ? "ffffff" : player.getYellHex());
 

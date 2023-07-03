@@ -8,6 +8,7 @@ import com.ruse.world.packages.donation.DonationManager;
 import com.ruse.world.content.serverperks.ServerPerks;
 import com.ruse.world.content.skill.impl.slayer.SlayerTasks;
 import com.ruse.world.packages.globals.GlobalBossManager;
+import com.ruse.world.packages.mode.impl.*;
 import com.ruse.world.packages.panels.EventPanel;
 import com.ruse.world.packages.voting.VoteBossDrop;
 import com.ruse.world.entity.impl.player.Player;
@@ -16,6 +17,22 @@ public class PlayerPanel {
 
     public static void refreshCurrentTab(Player player) {
         refreshPanel(player);
+    }
+
+    private static String getMode(Player player){
+        if(player.getMode() instanceof Normal){
+            return "NORMAL";
+        } else if(player.getMode() instanceof Ironman){
+            return "IRONMAN";
+        } else if(player.getMode() instanceof Veteran){
+            return "VETERAN";
+        } else if(player.getMode() instanceof UltimateIronman){
+            return "ULTIMATE";
+        } else if(player.getMode() instanceof GroupIronman){
+            return "GROUP";
+        } else {
+            return "NORMAL";
+        }
     }
 
     public static void refreshPanel(Player player) {
@@ -50,7 +67,7 @@ public class PlayerPanel {
                 "@whi@Username: @yel@" + player.getUsername(),
                 "@whi@Total Donated: @yel@$" + player.getAmountDonated(),
                 "@whi@Mode: @yel@"
-                        + Misc.capitalizeString(player.getGameMode().toString().toLowerCase().replace("_", " ")),
+                        + Misc.capitalizeString(getMode(player).toLowerCase().replace("_", " ")),
                 "@whi@Staff: @yel@" + Misc.formatText(player.getRank().toString().toLowerCase()),
                 "@whi@Donator: @yel@" + Misc.formatText(player.getDonator().toString().toLowerCase()),
                 "@whi@VIP: @yel@" + Misc.formatText(player.getVip().toString().toLowerCase()),

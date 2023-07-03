@@ -137,9 +137,6 @@ public class Slayer {
         if (amountToSlay > 1) {
             amountToSlay--;
             player.getSkillManager().addExperience(Skill.SLAYER, CombatConstants.wearingSlayerArmor(player) ? xp * 2 : xp);
-            if (player.getGameMode() == GameMode.VETERAN_MODE) {
-                player.getSkillManager().addExperience(Skill.SLAYER,  CombatConstants.wearingSlayerArmor(player) ? xp * 400 : xp * 200);
-            }
         } else {
             int amountOfTickets = 0;
             int amountOfTickets2 = 0;

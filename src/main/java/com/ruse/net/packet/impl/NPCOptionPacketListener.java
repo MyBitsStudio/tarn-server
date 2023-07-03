@@ -48,6 +48,8 @@ import com.ruse.world.content.skill.impl.thieving.PickpocketData;
 import com.ruse.world.content.transportation.TeleportHandler;
 import com.ruse.world.entity.impl.npc.NPC;
 import com.ruse.world.entity.impl.player.Player;
+import com.ruse.world.packages.mode.impl.GroupIronman;
+import com.ruse.world.packages.mode.impl.UltimateIronman;
 
 import static com.ruse.world.content.combat.CombatType.RANGED;
 
@@ -114,7 +116,7 @@ public class NPCOptionPacketListener implements PacketListener {
                     ServerPerks.getInstance().open(player);
                     break;
                 case GroupConfig.NPC_ID:
-                    if (player.getGameMode() == GameMode.GROUP_IRONMAN) {
+                    if (player.getMode() instanceof GroupIronman) {
                         if (GroupManager.isInGroup(player)) {
                             GroupManager.openInterface(player);
                         } else {
@@ -164,7 +166,7 @@ public class NPCOptionPacketListener implements PacketListener {
                     DialogueManager.start(player, 13);
                     break;
                 case 5382:
-                    if (player.getGameMode().equals(GameMode.ULTIMATE_IRONMAN)) {
+                    if (player.getMode() instanceof UltimateIronman) {
                         DialogueManager.start(player, 192);
                     } else {
                         DialogueManager.start(player, 195);
@@ -685,7 +687,7 @@ public class NPCOptionPacketListener implements PacketListener {
                     break;
                 case 494:
                 case 1360:
-                    if (player.getGameMode() == GameMode.GROUP_IRONMAN
+                    if (player.getMode() instanceof GroupIronman
                             && player.getIronmanGroup() != null) {
                         DialogueManager.start(player, 8002);
                         player.setDialogueActionId(8002);
@@ -1117,7 +1119,7 @@ public class NPCOptionPacketListener implements PacketListener {
                         ShopManager.getShops().get(81).open(player);
                         break;
                     case 5382:
-                        if (player.getGameMode().equals(GameMode.ULTIMATE_IRONMAN)) {
+                        if (player.getMode() instanceof UltimateIronman) {
                             UltimateIronmanHandler.handleQuickStore(player);
                         } else {
                             DialogueManager.start(player, 195);
@@ -1480,7 +1482,7 @@ public class NPCOptionPacketListener implements PacketListener {
                                 + "@bla@ Tokens");
                         break;
                     case 5382:
-                        if (player.getGameMode().equals(GameMode.ULTIMATE_IRONMAN)) {
+                        if (player.getMode() instanceof UltimateIronman) {
                             UltimateIronmanHandler.handleQuickRetrieve(player);
                         } else {
                             DialogueManager.start(player, 195);

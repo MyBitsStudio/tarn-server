@@ -4,6 +4,7 @@ import com.ruse.model.Position;
 import com.ruse.world.entity.impl.player.Player;
 import com.ruse.world.packages.bosses.SpecialBossInstance;
 import com.ruse.world.packages.instances.InstanceManager;
+import com.ruse.world.packages.mode.GameModeConstants;
 
 public class IronmanInstance extends SpecialBossInstance {
     public IronmanInstance(Player p, int npcId, int spawn, int cap) {
@@ -14,7 +15,7 @@ public class IronmanInstance extends SpecialBossInstance {
     public void process(){
         super.process();
 
-        if(!getOwner().getGameMode().isIronman()){
+        if(!GameModeConstants.isIronman(getOwner())){
             InstanceManager.getManager().dispose(getOwner());
         }
     }

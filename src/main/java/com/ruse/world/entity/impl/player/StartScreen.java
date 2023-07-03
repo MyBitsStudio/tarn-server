@@ -1,12 +1,13 @@
 package com.ruse.world.entity.impl.player;
 
 import com.ruse.GameSettings;
-import com.ruse.model.GameMode;
 import com.ruse.model.Item;
 import com.ruse.model.Position;
 import com.ruse.world.World;
 import com.ruse.world.content.PlayerPanel;
 import com.ruse.world.content.discordbot.JavaCord;
+import com.ruse.world.packages.mode.impl.*;
+import org.jetbrains.annotations.NotNull;
 //import sun.management.counter.perf.PerfLongArrayCounter;
 
 //import com.arlania.world.content.discordbot.Main;
@@ -19,7 +20,6 @@ import com.ruse.world.content.discordbot.JavaCord;
 public class StartScreen {
     public static void open(Player player) {
         sendNames(player);
-        //ClanChatManager.join(player, "help");
         player.getPacketSender().sendInterface(116000);
         player.getPacketSender().sendConfig(5331, 0);
         player.selectedGameMode = GameModes.NORMAL;
@@ -52,29 +52,23 @@ public class StartScreen {
         if (buttonId == CONFIRM) {
             if (player.didReceiveStarter()) {
                 return true;
-            }//ConnectionHandler.getStarters(player.getHostAddress()) <= GameSettings.MAX_STARTERS_PER_IP
-			/*if(player.selectedGameMode == GameModes.VETERAN_MODE) {
-				player.sendMessage("@bla@This mode is not available at the moment, choose another.");
-				player.sendMessage("@red@This mode is not available at the moment, choose another.");
-				player.sendMessage("@bla@This mode is not available at the moment, choose another.");
-			} else {*/
+            }
+
             player.getPacketSender().sendInterfaceRemoval();
             player.setReceivedStarter(true);
             handleConfirm(player);
             addStarterToInv(player);
-            //ClanChatManager.join(player, "help");
+
             player.setPlayerLocked(false);
             player.getPacketSender().sendInterface(3559);
             player.getAppearance().setCanChangeAppearance(true);
             player.setNewPlayer(false);
             World.sendMessage("<img=26><shad=1><col=FF0000> [" + player.getUsername() + "] <col=9E0000>has just logged into <col=FF0000>Tarn<col=9E0000> for the first time");
             JavaCord.sendMessage(1117224946855329893L, ":tada: **[New Arrival] " + player.getUsername() + " has just logged into Tarn for the first time!** ");
-            //World.sendMessage(
-                   // "<img=5> <col=ffca3c><shad=1>Please give " + player.getUsername() + " a super warm welcome <3");
 
             player.getPacketSender().sendRights();
 
-            if (player.getGameMode() == GameMode.GROUP_IRONMAN) {
+            if(player.getMode() instanceof GroupIronman) {
                 player.moveTo(new Position(3039, 2845, 1));
                 player.setGroupIronmanLocked(true);
                 player.sendMessage("@blu@Speak to the Ironman Manager to create a group or get invited to a group.");
@@ -82,11 +76,7 @@ public class StartScreen {
                 player.moveTo(GameSettings.STARTER);
             }
 
-            //		Main.jda.getTextChannelById(620644384697745439L).sendMessage("`" + player.getUsername() + " has joined the server for the first time!"+ "`").queue();
-            //DialogueManager.start(player, 81);
             return true;
-            //}
-            //	
         }
         for (GameModes mode : GameModes.values()) {
             if (mode.checkClick == buttonId || mode.textClick == buttonId) {
@@ -100,32 +90,33 @@ public class StartScreen {
 
     public static void handleConfirm(Player player) {
 
-        // System.out.println("Game mode: " + player.selectedGameMode);
-
-        if (player.selectedGameMode == GameModes.VETERAN_MODE) {
-            GameMode.set(player, GameMode.VETERAN_MODE, false);
-        } else if (player.selectedGameMode == GameModes.IRONMAN) {
-            GameMode.set(player, GameMode.IRONMAN, false);
-        } else if (player.selectedGameMode == GameModes.ULTIMATE_IRONMAN) {
-            GameMode.set(player, GameMode.ULTIMATE_IRONMAN, false);
-            player.getPacketSender().sendMessage("<img=5> @red@" + player.getUsername()
-                    + ", you can un-note items by using them on a banker or bank!");
-        } else if (player.selectedGameMode == GameModes.GROUP_IRON) {
-            GameMode.set(player, GameMode.IRONMAN, false);
-        } else {
-            GameMode.set(player, GameMode.NORMAL, false);
-        }
+        setMode(player, player.selectedGameMode);
         PlayerPanel.refreshPanel(player);
 
     }
 
-    public static void addStarterToInv(Player player) {
-        for (Item item : player.selectedGameMode.starterPackItems) {
+    public static void setMode(@NotNull Player player, @NotNull GameModes mode) {
+		player.getClickDelay().reset();
+		player.getPacketSender().sendInterfaceRemoval();
+
+        switch (mode) {
+            case NORMAL -> player.setMode(new Normal());
+            case IRONMAN -> player.setMode(new Ironman());
+            case ULTIMATE_IRONMAN -> player.setMode(new UltimateIronman());
+            case GROUP_IRON -> player.setMode(new GroupIronman());
+            case VETERAN_MODE -> player.setMode(new Veteran());
+        }
+
+        player.setPlayerLocked(player.newPlayer());
+    }
+
+    public static void addStarterToInv(@NotNull Player player) {
+        for (Item item : player.getMode().starterItems()) {
             player.getInventory().add(item);
         }
     }
 
-    public static void selectMode(Player player, GameModes mode) {
+    public static void selectMode(@NotNull Player player, GameModes mode) {
         player.selectedGameMode = mode;
         check(player, mode);
         sendStartPackItems(player, mode);

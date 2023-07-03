@@ -80,6 +80,8 @@ import com.ruse.world.content.minigames.impl.dungeoneering.Dungeoneering;
 import com.ruse.world.content.newspinner.MysteryBoxManager;
 import com.ruse.world.content.pos.PlayerOwnedShopManager;
 import com.ruse.world.content.properscratchcard.Scratchcard;
+import com.ruse.world.packages.mode.Gamemode;
+import com.ruse.world.packages.mode.impl.Temp;
 import com.ruse.world.packages.plugin.impl.BossPlugin;
 import com.ruse.world.packages.raids.Raid;
 import com.ruse.world.packages.raids.RaidParty;
@@ -667,7 +669,6 @@ public class Player extends Character {
 
     private Room[][][] houseRooms = new Room[5][13][13];
     private PlayerInteractingOption playerInteractingOption = PlayerInteractingOption.NONE;
-    private GameMode gameMode = GameMode.NORMAL;
     private Difficulty difficulty = Difficulty.MODERN; // modern now default difficulty, was extreme
     private CombatType lastCombatType = CombatType.MELEE;
     private FightType fightType = FightType.UNARMED_PUNCH;
@@ -3212,29 +3213,6 @@ public class Player extends Character {
         this.shadowState = shadow;
     }
 
-    public GameMode getGameMode() {
-        return gameMode;
-    }
-
-    public void setGameMode(GameMode gameMode) {
-        this.gameMode = gameMode;
-    }
-
-    public int getGameModeIconId() {
-        if (this.getGameMode() == GameMode.IRONMAN) {
-            return 840;
-        }
-        if (this.getGameMode() == GameMode.ULTIMATE_IRONMAN) {
-            return 839;
-        }
-        if (this.getGameMode() == GameMode.VETERAN_MODE) {
-            return 838;
-        }
-        if (this.getGameMode() == GameMode.GROUP_IRONMAN) {
-            return 1509;
-        }
-        return -1;
-    }
 
     public Difficulty getDifficulty() {
         return difficulty;
@@ -4372,4 +4350,7 @@ public class Player extends Character {
 
     @Getter@Setter
     private BossPlugin bossPlugin = new BossPlugin(this);
+
+    @Getter@Setter
+    private Gamemode mode = new Temp();
 }

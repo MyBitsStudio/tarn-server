@@ -1,15 +1,11 @@
 package com.ruse.world.content.pos;
 
 import com.ruse.engine.GameEngine;
-import com.ruse.model.GameMode;
 import com.ruse.model.Item;
 import com.ruse.model.definitions.ItemDefinition;
 import com.ruse.model.input.Input;
-import com.ruse.model.input.impl.PosItemInput;
-import com.ruse.model.input.impl.PosPlayerInput;
 import com.ruse.model.projectile.ItemEffect;
 import com.ruse.net.packet.PacketBuilder;
-import com.ruse.util.Condition;
 import com.ruse.util.Misc;
 import com.ruse.world.content.PlayerLogs;
 import com.ruse.world.content.dialogue.Dialogue;
@@ -225,11 +221,11 @@ public class PlayerOwnedShopManager {
      */
     public void open() {
 
-        if (player.getGameMode() == GameMode.IRONMAN || player.getGameMode() == GameMode.ULTIMATE_IRONMAN || player.getGameMode() == GameMode.GROUP_IRONMAN) {
-            player.getPacketSender().sendMessage("Ironman players are not allowed to trade.");
-            player.getPacketSender().sendInterfaceRemoval();
-            return;
-        }
+//        if (player.getGameMode() == GameMode.IRONMAN || player.getGameMode() == GameMode.ULTIMATE_IRONMAN || player.getGameMode() == GameMode.GROUP_IRONMAN) {
+//            player.getPacketSender().sendMessage("Ironman players are not allowed to trade.");
+//            player.getPacketSender().sendInterfaceRemoval();
+//            return;
+//        }
         player.getPacketSender().sendString(32610, "Player Owned Shops");
 
         int i = 0;
@@ -255,11 +251,11 @@ public class PlayerOwnedShopManager {
     }
 
     public void openMain() {
-        if (player.getGameMode() == GameMode.IRONMAN || player.getGameMode() == GameMode.ULTIMATE_IRONMAN || player.getGameMode() == GameMode.GROUP_IRONMAN) {
-            player.getPacketSender().sendMessage("Ironman players are not allowed to trade.");
-            player.getPacketSender().sendInterfaceRemoval();
-            return;
-        }
+//        if (player.getGameMode() == GameMode.IRONMAN || player.getGameMode() == GameMode.ULTIMATE_IRONMAN || player.getGameMode() == GameMode.GROUP_IRONMAN) {
+//            player.getPacketSender().sendMessage("Ironman players are not allowed to trade.");
+//            player.getPacketSender().sendInterfaceRemoval();
+//            return;
+//        }
 
         player.getPacketSender().sendString(113006, "" + Misc.insertCommasToNumber(player.getInventory().getAmount(ItemDefinition.TOKEN_ID)));
 
@@ -331,11 +327,11 @@ public class PlayerOwnedShopManager {
     }
 
     public void openListing() {
-        if (player.getGameMode() == GameMode.IRONMAN || player.getGameMode() == GameMode.ULTIMATE_IRONMAN || player.getGameMode() == GameMode.GROUP_IRONMAN) {
-            player.getPacketSender().sendMessage("Ironman players are not allowed to trade.");
-            player.getPacketSender().sendInterfaceRemoval();
-            return;
-        }
+//        if (player.getGameMode() == GameMode.IRONMAN || player.getGameMode() == GameMode.ULTIMATE_IRONMAN || player.getGameMode() == GameMode.GROUP_IRONMAN) {
+//            player.getPacketSender().sendMessage("Ironman players are not allowed to trade.");
+//            player.getPacketSender().sendInterfaceRemoval();
+//            return;
+//        }
 
 
         if (filtered.size() > 0) {
@@ -469,11 +465,11 @@ public class PlayerOwnedShopManager {
      * Open the interface to edit your own shop.
      */
     public void openEditor() {
-        if (player.getGameMode() == GameMode.IRONMAN || player.getGameMode() == GameMode.ULTIMATE_IRONMAN || player.getGameMode() == GameMode.GROUP_IRONMAN) {
-            player.getPacketSender().sendMessage("Ironman players are not allowed to trade.");
-            player.getPacketSender().sendInterfaceRemoval();
-            return;
-        }
+//        if (player.getGameMode() == GameMode.IRONMAN || player.getGameMode() == GameMode.ULTIMATE_IRONMAN || player.getGameMode() == GameMode.GROUP_IRONMAN) {
+//            player.getPacketSender().sendMessage("Ironman players are not allowed to trade.");
+//            player.getPacketSender().sendInterfaceRemoval();
+//            return;
+//        }
 
         if (myShop == null) {
             myShop = new PlayerOwnedShop();
@@ -1203,11 +1199,11 @@ public class PlayerOwnedShopManager {
     public void openHistory() {
         setSorting(Sorting.RECENT);
 
-        if (player.getGameMode() == GameMode.IRONMAN || player.getGameMode() == GameMode.ULTIMATE_IRONMAN || player.getGameMode() == GameMode.GROUP_IRONMAN) {
-            player.getPacketSender().sendMessage("Ironman players are not allowed to trade.");
-            player.getPacketSender().sendInterfaceRemoval();
-            return;
-        }
+//        if (player.getGameMode() == GameMode.IRONMAN || player.getGameMode() == GameMode.ULTIMATE_IRONMAN || player.getGameMode() == GameMode.GROUP_IRONMAN) {
+//            player.getPacketSender().sendMessage("Ironman players are not allowed to trade.");
+//            player.getPacketSender().sendInterfaceRemoval();
+//            return;
+//        }
 
 
       //  System.out.println("HISTORY_OF_BOUGHT: " + HISTORY_OF_BOUGHT.size());

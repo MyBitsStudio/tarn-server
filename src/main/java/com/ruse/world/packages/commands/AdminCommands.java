@@ -1,7 +1,6 @@
 package com.ruse.world.packages.commands;
 
 import com.ruse.GameSettings;
-import com.ruse.model.GameMode;
 import com.ruse.model.definitions.ItemDefinition;
 import com.ruse.security.PlayerLock;
 import com.ruse.security.PlayerSecurity;
@@ -14,6 +13,7 @@ import com.ruse.world.content.WorldBosses2;
 import com.ruse.world.content.WorldBosses3;
 import com.ruse.world.content.WorldBosses4;
 import com.ruse.world.packages.donation.DonationManager;
+import com.ruse.world.packages.mode.impl.*;
 import com.ruse.world.packages.voting.VoteBossDrop;
 import com.ruse.world.entity.impl.player.Player;
 
@@ -220,24 +220,24 @@ public class AdminCommands {
                 } else {
                     switch (mode) {
                         case "ironman" -> {
-                            GameMode.set(targets, GameMode.IRONMAN, false);
+                            player.getMode().changeMode(new Ironman());
                             player.sendMessage("You have set " + targets.getUsername() + "'s game mode to Ironman.");
                         }
                         case "ultimate" -> {
-                            GameMode.set(targets, GameMode.ULTIMATE_IRONMAN, false);
+                            player.getMode().changeMode(new UltimateIronman());
                             player.sendMessage("You have set " + targets.getUsername() + "'s game mode to Ultimate.");
                         }
                         case "normal" -> {
-                            GameMode.set(targets, GameMode.NORMAL, false);
+                            player.getMode().changeMode(new Normal());
                             player.sendMessage("You have set " + targets.getUsername() + "'s game mode to Normal.");
                         }
-                        case "afk" -> {
-                            GameMode.set(targets, GameMode.AFK, false);
-                            player.sendMessage("You have set " + targets.getUsername() + "'s game mode to AFK.");
-                        }
                         case "veteran" -> {
-                            GameMode.set(targets, GameMode.VETERAN_MODE, false);
+                            player.getMode().changeMode(new Veteran());
                             player.sendMessage("You have set " + targets.getUsername() + "'s game mode to Veteran.");
+                        }
+                        case "group" -> {
+                            player.getMode().changeMode(new GroupIronman());
+                            player.sendMessage("You have set " + targets.getUsername() + "'s game mode to Group Ironman.");
                         }
                         default -> player.sendMessage("Invalid game mode.");
                     }

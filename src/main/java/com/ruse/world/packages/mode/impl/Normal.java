@@ -3,6 +3,7 @@ package com.ruse.world.packages.mode.impl;
 import com.ruse.model.Item;
 import com.ruse.world.entity.impl.player.Player;
 import com.ruse.world.packages.mode.Gamemode;
+import org.jetbrains.annotations.NotNull;
 
 public class Normal extends Gamemode {
 
@@ -29,11 +30,8 @@ public class Normal extends Gamemode {
     }
 
     @Override
-    public boolean canTrade(Player player) {
-//        return switch(player.gamemode){
-//            default -> true;
-//        };
-        return true;
+    public boolean canTrade(@NotNull Player player) {
+        return player.getMode() instanceof Normal || player.getMode() instanceof Veteran;
     }
 
     @Override
@@ -43,7 +41,7 @@ public class Normal extends Gamemode {
 
     @Override
     public boolean changeMode(Gamemode change) {
-        return false;
+        return true;
     }
 
     @Override
@@ -54,17 +52,39 @@ public class Normal extends Gamemode {
     @Override
     public boolean canWear(int id) {
         return switch(id){
+            case 16691, 9704, 17239, 16669, 4977, 4989, 4995, 16339, 6068, 9703
+                    -> false;
             default -> true;
         };
     }
 
     @Override
-    public double xpRate() {
+    public int xpRate(int xp) {
         return 0;
     }
 
     @Override
     public double dropRate() {
         return 0;
+    }
+
+    @Override
+    public int doubleDropRate() {
+        return 0;
+    }
+
+    @Override
+    public boolean canAttack(int npcId) {
+        return true;
+    }
+
+    @Override
+    public boolean openBank(Player player) {
+        return true;
+    }
+
+    @Override
+    public boolean canStake(Player player) {
+        return true;
     }
 }

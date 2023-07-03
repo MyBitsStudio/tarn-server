@@ -5,7 +5,6 @@ import java.util.Collections;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 import com.ruse.GameSettings;
-import com.ruse.model.GameMode;
 import com.ruse.model.Item;
 import com.ruse.model.Locations;
 import com.ruse.model.Locations.Location;
@@ -47,61 +46,53 @@ public class Trading {
 			}
 		}
 
-		/*
-		 * if(player.getLocation() == Location.JAIL && !player.getRights().isStaff()){
-		 * player.getPacketSender().sendMessage("You're jailed, and can't trade.");
-		 * return; }
-		 *
-		 * if(player2.getLocation() == Location.JAIL && !player2.getRights().isStaff()){
-		 * player.getPacketSender().sendMessage("They're jailed, and can't trade."); }
-		 *
-		 * if(Jail.isJailed(player) && !player.getRights().isStaff()) {
-		 * player.getPacketSender().sendMessage("You cannot trade in jail."); return; }
-		 *
-		 * if(Jail.isJailed(player2) && !player2.getRights().isStaff()){
-		 * player.getPacketSender().
-		 * sendMessage("That player cannot trade as they're jailed."); return; }
-		 */
-
-		if (player.getGameMode() == GameMode.IRONMAN
-				&& !(player.getRank().isAdmin())) {
-			player.getPacketSender().sendMessage("Ironman players are not allowed to trade.");
-			return;
-		}
-		if (player.getGameMode() == GameMode.ULTIMATE_IRONMAN
-				&& !(player.getRank().isAdmin())) {
-			player.getPacketSender().sendMessage("Ultimate ironman players are not allowed to trade.");
-			return;
-		}
-		if (player2.getGameMode() == GameMode.IRONMAN
-				&& !(player.getRank().isAdmin())) {
-			player.getPacketSender()
-					.sendMessage("That player is a Ultimate ironman-player and can therefore not trade.");
-			return;
-		}
-		if (player2.getGameMode() == GameMode.ULTIMATE_IRONMAN
-				&& !(player.getRank().isAdmin())) {
-			player.getPacketSender().sendMessage("That player is an Ironman player and can therefore not trade.");
+		if(!player.getMode().canTrade(player2) && !player.getRank().isAdmin()){
 			return;
 		}
 
-
-
-		if (player.getGameMode() == GameMode.GROUP_IRONMAN && player2.getGameMode() == GameMode.GROUP_IRONMAN
-				&& player.getIronmanGroup() != null && player2.getIronmanGroup() != null &&
-				player.getIronmanGroup().getUniqueId() ==  player2.getIronmanGroup().getUniqueId()){
-		}else {
-			if (player.getGameMode() == GameMode.IRONMAN || player.getGameMode() == GameMode.ULTIMATE_IRONMAN
-					|| player.getGameMode() == GameMode.GROUP_IRONMAN) {
-				player.getPacketSender().sendMessage("Ironmen are not allowed to trade.");
-				return;
-			}
-			if (player2.getGameMode() == GameMode.IRONMAN || player2.getGameMode() == GameMode.ULTIMATE_IRONMAN
-					|| player.getGameMode() == GameMode.GROUP_IRONMAN) {
-				player.getPacketSender().sendMessage("That player is an Ironman and cannot trade.");
-				return;
-			}
+		if(player2.getMode().canTrade(player) && !player2.getRank().isAdmin()){
+			return;
 		}
+
+//		if (player.getGameMode() == GameMode.IRONMAN
+//				&& !(player.getRank().isAdmin())) {
+//			player.getPacketSender().sendMessage("Ironman players are not allowed to trade.");
+//			return;
+//		}
+//		if (player.getGameMode() == GameMode.ULTIMATE_IRONMAN
+//				&& !(player.getRank().isAdmin())) {
+//			player.getPacketSender().sendMessage("Ultimate ironman players are not allowed to trade.");
+//			return;
+//		}
+//		if (player2.getGameMode() == GameMode.IRONMAN
+//				&& !(player.getRank().isAdmin())) {
+//			player.getPacketSender()
+//					.sendMessage("That player is a Ultimate ironman-player and can therefore not trade.");
+//			return;
+//		}
+//		if (player2.getGameMode() == GameMode.ULTIMATE_IRONMAN
+//				&& !(player.getRank().isAdmin())) {
+//			player.getPacketSender().sendMessage("That player is an Ironman player and can therefore not trade.");
+//			return;
+//		}
+//
+//
+//
+//		if (player.getGameMode() == GameMode.GROUP_IRONMAN && player2.getGameMode() == GameMode.GROUP_IRONMAN
+//				&& player.getIronmanGroup() != null && player2.getIronmanGroup() != null &&
+//				player.getIronmanGroup().getUniqueId() ==  player2.getIronmanGroup().getUniqueId()){
+//		}else {
+//			if (player.getGameMode() == GameMode.IRONMAN || player.getGameMode() == GameMode.ULTIMATE_IRONMAN
+//					|| player.getGameMode() == GameMode.GROUP_IRONMAN) {
+//				player.getPacketSender().sendMessage("Ironmen are not allowed to trade.");
+//				return;
+//			}
+//			if (player2.getGameMode() == GameMode.IRONMAN || player2.getGameMode() == GameMode.ULTIMATE_IRONMAN
+//					|| player.getGameMode() == GameMode.GROUP_IRONMAN) {
+//				player.getPacketSender().sendMessage("That player is an Ironman and cannot trade.");
+//				return;
+//			}
+//		}
 
 		if (player.getLocation() == Location.DUNGEONEERING) {
 			player.getPacketSender().sendMessage("You are far too busy to trade at the moment!");
@@ -110,14 +101,6 @@ public class Trading {
 		if (player2.getLocation() == Location.DUNGEONEERING) {
 			player.getPacketSender().sendMessage("You are far too busy to trade at the moment!");
 			return;
-		}
-
-		if(player.getGameMode().isAFK() || player2.getGameMode().isAFK()) {
-			if(player.getGameMode().isAFK() && !player.getHostAddress().equals(player2.getHostAddress())
-			|| player2.getGameMode().isAFK() && !player.getHostAddress().equals(player2.getHostAddress())) {
-				player.getPacketSender().sendMessage("You cannot trade someone who is AFK.");
-				return;
-			}
 		}
 
 		/*
@@ -236,19 +219,15 @@ public class Trading {
 	public void sendText(Player player2) {
 		if (player2 == null)
 			return;
-		player2.getPacketSender().sendString(3451, "" + Misc.formatPlayerName(player.getUsername()) + "");
+		player2.getPacketSender().sendString(3451, Misc.formatPlayerName(player.getUsername()) + "");
 		player2.getPacketSender().sendString(3417, "Trading with: " + Misc.formatPlayerName(player.getUsername()) + "");
-		player.getPacketSender().sendString(3451, "" + Misc.formatPlayerName(player2.getUsername()) + "");
+		player.getPacketSender().sendString(3451, Misc.formatPlayerName(player2.getUsername()) + "");
 		player.getPacketSender().sendString(3417, "Trading with: " + Misc.formatPlayerName(player2.getUsername()) + "");
 		player.getPacketSender().sendString(3431, "");
 		player.getPacketSender().sendString(3535, "Are you sure you want to make this trade?");
 		player.getPacketSender().sendInterfaceSet(3323, 3321);
 		player.getPacketSender().sendItemContainer(player.getInventory(), 3322);
 	}
-
-	private int[] allowAFKItems = {
-			5020
-	};
 
 	public void tradeItem(int itemId, int amount, int slot, ItemEffect effect, int bonus) {
 		if (slot < 0) {
@@ -260,12 +239,6 @@ public class Trading {
 		Player player2 = World.getPlayers().get(getTradeWith());
 		if (player2 == null || player == null) {
 			return;
-		}
-		if(player.getGameMode().isAFK() || player2.getGameMode().isAFK()) {
-			if(!Collections.singletonList(allowAFKItems).contains(itemId)){
-				player.getPacketSender().sendMessage("You can not trade these items being AFK.");
-				return;
-			}
 		}
 		if(Collections.singletonList(GameSettings.UNTRADEABLE_ITEMS).contains(itemId)) {
 			player.getPacketSender().sendMessage("You can not trade this item.");

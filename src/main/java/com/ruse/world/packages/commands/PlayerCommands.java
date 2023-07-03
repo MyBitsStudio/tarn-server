@@ -26,6 +26,7 @@ import com.ruse.world.content.serverperks.ServerPerks;
 import com.ruse.world.content.skill.impl.slayer.Slayer;
 import com.ruse.world.content.transportation.TeleportHandler;
 import com.ruse.world.content.transportation.TeleportType;
+import com.ruse.world.packages.mode.GameModeConstants;
 import com.ruse.world.packages.ranks.StaffRank;
 import com.ruse.world.packages.voting.VoteHandler;
 import com.ruse.world.entity.impl.player.Player;
@@ -315,7 +316,7 @@ public class PlayerCommands {
                     return true;
                 }
                 if (!player.getRank().isStaff()) {
-                    if (!player.getGameMode().isIronman()) {
+                    if (!GameModeConstants.isIronman(player)) {
                         player.getPacketSender().sendMessage("Become an ironman!");
                         return true;
                     }

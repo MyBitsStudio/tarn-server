@@ -1,7 +1,6 @@
 package com.ruse.model.container.impl;
 
 import com.ruse.model.Flag;
-import com.ruse.model.GameMode;
 import com.ruse.model.Item;
 import com.ruse.model.Locations.Location;
 import com.ruse.model.container.ItemContainer;
@@ -14,6 +13,8 @@ import com.ruse.world.content.BonusManager;
 import com.ruse.world.content.combat.magic.Autocasting;
 import com.ruse.world.content.skill.impl.old_dungeoneering.Dungeoneering;
 import com.ruse.world.entity.impl.player.Player;
+import com.ruse.world.packages.mode.impl.GroupIronman;
+import com.ruse.world.packages.mode.impl.UltimateIronman;
 
 /**
  * 100% safe Bank System
@@ -43,7 +44,7 @@ public class GroupIronmanBank extends ItemContainer {
 			return this;
 		}
 		if (player.getLocation() != Location.DUNGEONEERING) {
-			if (player.getGameMode() == GameMode.ULTIMATE_IRONMAN) {
+			if (player.getMode() instanceof UltimateIronman) {
 				player.getPacketSender().sendInterfaceRemoval()
 						.sendMessage("Ultimate-ironman-players cannot use banks.");
 				return this;
@@ -190,7 +191,7 @@ public class GroupIronmanBank extends ItemContainer {
 			if (!p.isBanking() || p.getInterfaceId() != 106000)
 				return;
 
-		if (p.getGameMode() == GameMode.ULTIMATE_IRONMAN) {
+		if (p.getMode() instanceof UltimateIronman) {
 			if (Dungeoneering.doingOldDungeoneering(p)) {
 				p.getPacketSender().sendMessage("Your items have been banked.");
 			} else {
@@ -200,7 +201,7 @@ public class GroupIronmanBank extends ItemContainer {
 		}
 
 		for (Item it : from.getValidItems()) {
-			if (p.getGameMode() == GameMode.ULTIMATE_IRONMAN) {
+			if (p.getMode() instanceof UltimateIronman) {
 				if (p.getGroupIronmanBank().getFreeSlots() <= 322 && !(p.getGroupIronmanBank().contains(it.getId(), it.getEffect(), it.getBonus(), it.getRarity()) && it.getDefinition().isStackable())) {
 					p.getPacketSender()
 							.sendMessage("@red@Bank full. You only have 30 slots as a hc iron man for dungeoneering.");

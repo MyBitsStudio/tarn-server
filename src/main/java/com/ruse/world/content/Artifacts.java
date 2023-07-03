@@ -1,6 +1,5 @@
 package com.ruse.world.content;
 
-import com.ruse.model.GameMode;
 import com.ruse.model.GroundItem;
 import com.ruse.model.Item;
 import com.ruse.model.definitions.ItemDefinition;
@@ -8,10 +7,11 @@ import com.ruse.util.Misc;
 import com.ruse.world.World;
 import com.ruse.world.entity.impl.GroundItemManager;
 import com.ruse.world.entity.impl.player.Player;
+import com.ruse.world.packages.mode.impl.Normal;
 
 public class Artifacts {
 
-	public static int artifacts[] = { 14876, 14877, 14878, 14879, 14880, 14881, 14882, 14883, 14884, 14885, 14886,
+	public static int[] artifacts = { 14876, 14877, 14878, 14879, 14880, 14881, 14882, 14883, 14884, 14885, 14886,
 			14887, 14888, 14889, 14890, 14891, 14892 };
 
 	public static void sellArtifacts(Player c) {
@@ -26,11 +26,11 @@ public class Artifacts {
 			c.getPacketSender().sendMessage("You do not have any Artifacts in your inventory to sell to Mandrith.");
 			return;
 		}
-		for (int i = 0; i < artifacts.length; i++) {
+		for (int j : artifacts) {
 			for (Item item : c.getInventory().getValidItems()) {
-				if (item.getId() == artifacts[i]) {
-					c.getInventory().delete(artifacts[i], 1);
-					c.getInventory().add(ItemDefinition.COIN_ID, ItemDefinition.forId(artifacts[i]).getValue());
+				if (item.getId() == j) {
+					c.getInventory().delete(j, 1);
+					c.getInventory().add(ItemDefinition.COIN_ID, ItemDefinition.forId(j).getValue());
 					c.getInventory().refreshItems();
 				}
 			}
@@ -55,7 +55,7 @@ public class Artifacts {
 	 * @param Player o Player who has been killed by Player player
 	 */
 	public static void handleDrops(Player killer, Player death, boolean targetKill) {
-		if (killer.getGameMode() != GameMode.NORMAL)
+		if (!(killer.getMode() instanceof Normal))
 			return;
 		if (Misc.getRandom(100) >= 85 || targetKill)
 			GroundItemManager.spawnGroundItem(killer, new GroundItem(new Item(getRandomItem(LOW_ARTIFACTS)),
