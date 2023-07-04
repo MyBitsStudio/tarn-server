@@ -109,7 +109,6 @@ public class PacketSender {
             out.putShort(item + 1);
             final int amount = 1;
             out.put(amount);
-            out.put(0);
 
             slot++;
         }
@@ -141,7 +140,6 @@ public class PacketSender {
         } else {
             out.put(amount);
         }
-        out.put(0);
 
         player.getSession().queueMessage(out);
         return this;
@@ -184,32 +182,6 @@ public class PacketSender {
 
         }
         return this;
-    }
-
-    public void sendCombinerItemsOnInterface(int interfaceId, Item[] itemData) {
-
-        slot = 0; // lol i forgot that one :facepalm: 4am :S
-
-        PacketBuilder out = new PacketBuilder(34, PacketType.SHORT);
-
-
-        out.putShort(interfaceId);
-        for (Item item : itemData) {
-            out.put(slot);
-            out.putShort(item.getId() + 1);
-            final int amount = item.getAmount();
-            if (amount > 254) {
-                out.put(255);
-                out.putInt(amount);
-            } else {
-                out.put(amount);
-            }
-            out.put(0);
-
-            slot++;
-        }
-
-        player.getSession().queueMessage(out);
     }
 
     public PacketSender removeInterface() {
@@ -289,23 +261,12 @@ public class PacketSender {
     public PacketSender sendMapRegion() {
         player.setRegionChange(true).setAllowRegionChangePacket(true);
         player.setLastKnownRegion(player.getPosition().copy());
-        //player.setCurrentMapCenter(player.getPosition().copy());
         PacketBuilder out = new PacketBuilder(73);
         out.putShort(player.getPosition().getRegionX() + 6, ValueType.A);
         out.putShort(player.getPosition().getRegionY() + 6);
         player.getSession().queueMessage(out);
         return this;
     }
-
-    /*
-    public PacketSender sendMapRegion() {
-        PacketBuilder m = new PacketBuilder(73);
-        m.putShort(player.getPosition().getRegionX() + 6, ValueType.A);
-        m.putShort(player.getPosition().getRegionY() + 6);
-        //m.putShort(player.getRegionIds().size());
-        player.getSession().queueMessage(m);
-        return this;
-    }*/
 
 
 
@@ -1057,8 +1018,6 @@ public class PacketSender {
             out.putShort(0);
             out.put(0);
             out.putShort(0, ValueType.A, ByteOrder.LITTLE);
-            out.put(0);
-            out.put(0);
             player.getSession().queueMessage(out);
             return this;
         }

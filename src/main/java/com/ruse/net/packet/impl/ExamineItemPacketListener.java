@@ -20,14 +20,8 @@ public class ExamineItemPacketListener implements PacketListener {
 		}
 		ItemDefinition itemDef = ItemDefinition.forId(item);
 		if(itemDef != null) {
-			if (itemDef.getDescription().contains("--")){
-				String[] split = itemDef.getDescription().split("--");
+			player.getPacketSender().sendMessage("This is a @red@" + itemDef.getName() + "@bla@.");
 
-				player.getPacketSender().sendMessage(split[0]);
-				player.getPacketSender().sendMessage(split[1]);
-			} else {
-				player.getPacketSender().sendMessage("This is a @red@" + itemDef.getName() + "@bla@.");
-			}
 			for (Skill skill : Skill.values()) {
 				if (itemDef.getRequirement()[skill.ordinal()] > player.getSkillManager().getMaxLevel(skill)) {
 					player.getPacketSender().sendMessage("@red@WARNING: You need " + (skill.getName().startsWith("a")

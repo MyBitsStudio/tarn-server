@@ -446,7 +446,7 @@ public class PlayerHandler {
 
         player.getPlayerVIP().onLogin();
 
-        player.getPSettings().setSetting("is-locked", true);
+       // player.getPSettings().setSetting("is-locked", true);
 
         if(!player.newPlayer() && player.getPSecurity().securityScore() <= 59){
             player.getPSecurity().sendInterface();

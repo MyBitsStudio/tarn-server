@@ -45,7 +45,7 @@ public class ItemContainerActionPacketListener implements PacketListener {
 		int slot = packet.readShortA();
 		int id = packet.readShortA();
 		Item item = new Item(id, 1);
-		//System.out.println(id + ", " + slot + ", " + interfaceId + ", " + effect + ", " + bonus);
+		//System.out.println(id + ", " + slot + ", " + interfaceId);
 
 		if (player.getRank().isDeveloper()) {
 			player.getPacketSender().sendMessage("firstAction itemContainer. IF: " + interfaceId + " slot: " + slot + ", id: " + id);

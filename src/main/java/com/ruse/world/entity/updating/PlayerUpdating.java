@@ -681,7 +681,6 @@ public class PlayerUpdating {
 		properties.put(target.getSkillManager().getCombatLevel());
 		properties.put(target.getRank().ordinal());
 		properties.put(target.getDonator().ordinal());
-		properties.put(target.getLoyaltyTitle().ordinal());
 		properties.put(target instanceof MiniPlayer ? 1 : 0);
 		out.put(properties.buffer().writerIndex(), ValueType.C);
 		out.putBytes(properties.buffer());
