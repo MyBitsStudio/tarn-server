@@ -45,7 +45,7 @@ public class ItemContainerActionPacketListener implements PacketListener {
 		int slot = packet.readShortA();
 		int id = packet.readShortA();
 		Item item = new Item(id, 1);
-		//System.out.println(id + ", " + slot + ", " + interfaceId);
+		System.out.println(id + ", " + slot + ", " + interfaceId);
 
 		if (player.getRank().isDeveloper()) {
 			player.getPacketSender().sendMessage("firstAction itemContainer. IF: " + interfaceId + " slot: " + slot + ", id: " + id);
@@ -303,7 +303,7 @@ public class ItemContainerActionPacketListener implements PacketListener {
 		int interfaceId = packet.readShortA();
 		int id = packet.readShortA();
 		int slot = packet.readShortA();
-		//System.out.println(id + ", " + slot + ", " + interfaceId + ", " + effect + ", " + bonus);
+		System.out.println(id + ", " + slot + ", " + interfaceId );
 		Item item = new Item(id, 1);
 		if (player.getRank().isDeveloper()) {
 			player.getPacketSender().sendMessage("secondAction itemContainer. IF: " + interfaceId + " slot: " + slot + ", id: " + id);
@@ -439,7 +439,7 @@ public class ItemContainerActionPacketListener implements PacketListener {
 		int id = packet.readShortA();
 		int slot = packet.readShortA();
 		Item item1 = new Item(id, 1);
-		//System.out.println("thirdAction itemContainer. IF: " + interfaceId + " slot: " + slot + ", id: " + id + ", effect: " + effect + ", bonus: " + bonus);
+		System.out.println("thirdAction itemContainer. IF: " + interfaceId + " slot: " + slot + ", id: " + id);
 		if (player.getRank().isDeveloper()) {
 			player.getPacketSender()
 					.sendMessage("thirdAction itemContainer. IF: " + interfaceId + " slot: " + slot + ", id: " + id);

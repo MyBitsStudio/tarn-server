@@ -730,7 +730,7 @@ public class PacketSender {
             sendClientRightClickRemoval();
             player.setBanking(false);
         }
-        sendInterfaceOverlay(player.getInterfaceId(), -1);
+        //sendInterfaceOverlay(player.getInterfaceId(), -1);
         if (player.isShopping()) {
             sendClientRightClickRemoval().sendItemsOnInterface(player.getShop().getInterfaceId(), new Item[]{new Item(-1)});
             player.setShopping(false);

@@ -65,7 +65,7 @@ public class PacketConstants {
 		PACKETS[NPCOptionPacketListener.ATTACK_NPC] = PACKETS[NPCOptionPacketListener.FIRST_CLICK_OPCODE] = new NPCOptionPacketListener();
 		PACKETS[EnterInputPacketListener.ENTER_SYNTAX_OPCODE] = PACKETS[EnterInputPacketListener.ENTER_AMOUNT_OPCODE] = PACKETS[EnterInputPacketListener.ENTER_LONG_AMOUNT_OPCODE] = new EnterInputPacketListener();
 		PACKETS[UseItemPacketListener.ITEM_ON_GROUND_ITEM] = PACKETS[UseItemPacketListener.ITEM_ON_ITEM] = PACKETS[UseItemPacketListener.ITEM_ON_NPC] = PACKETS[UseItemPacketListener.ITEM_ON_OBJECT] = PACKETS[UseItemPacketListener.ITEM_ON_PLAYER] = new UseItemPacketListener();
-		PACKETS[UseItemPacketListener.USE_ITEM] = new UseItemPacketListener();
+		//PACKETS[UseItemPacketListener.USE_ITEM] = new UseItemPacketListener();
 		PACKETS[TradeInvitationPacketListener.TRADE_OPCODE] = new TradeInvitationPacketListener();
 		PACKETS[TradeInvitationPacketListener.CHATBOX_TRADE_OPCODE] = new TradeInvitationPacketListener();
 		PACKETS[DialoguePacketListener.DIALOGUE_OPCODE] = new DialoguePacketListener();
@@ -91,7 +91,7 @@ public class PacketConstants {
 		PACKETS[223] = new PrestigeSkillPacketListener();
 		PACKETS[229] = new HeightCheckPacketListener();
 		PACKETS[199] = new ScratchCardEndPacketListener();
-		PACKETS[243] = new AuthPacketListener();
+		//PACKETS[243] = new AuthPacketListener();
 		PACKETS[GambleInvititationPacketListener.GAMBLE_OPCODE] = new GambleInvititationPacketListener();
 		PACKETS[GambleInvititationPacketListener.CHATBOX_GAMBLE_OPCODE] = new GambleInvititationPacketListener();
 		

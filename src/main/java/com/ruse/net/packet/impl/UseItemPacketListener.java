@@ -828,24 +828,12 @@ public class UseItemPacketListener implements PacketListener {
         if (player.getConstitution() <= 0)
             return;
         switch (packet.getOpcode()) {
-            case ITEM_ON_ITEM:
-                itemOnItem(player, packet);
-                break;
-            case USE_ITEM:
-                useItem(player, packet);
-                break;
-            case ITEM_ON_OBJECT:
-                itemOnObject(player, packet);
-                break;
-            case ITEM_ON_GROUND_ITEM:
-                itemOnGroundItem(player);
-                break;
-            case ITEM_ON_NPC:
-                itemOnNpc(player, packet);
-                break;
-            case ITEM_ON_PLAYER:
-                itemOnPlayer(player, packet);
-                break;
+            case ITEM_ON_ITEM -> itemOnItem(player, packet);
+            case USE_ITEM -> useItem(player, packet);
+            case ITEM_ON_OBJECT -> itemOnObject(player, packet);
+            case ITEM_ON_GROUND_ITEM -> itemOnGroundItem(player);
+            case ITEM_ON_NPC -> itemOnNpc(player, packet);
+            case ITEM_ON_PLAYER -> itemOnPlayer(player, packet);
         }
     }
 }
