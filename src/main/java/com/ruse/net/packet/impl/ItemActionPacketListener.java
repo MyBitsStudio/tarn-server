@@ -2567,15 +2567,9 @@ public class ItemActionPacketListener implements PacketListener {
             return;
 
         switch (packet.getOpcode()) {
-            case THIRD_ITEM_ACTION_OPCODE:
-                thirdAction(player, packet);
-                break;
-            case FIRST_ITEM_ACTION_OPCODE:
-                firstAction(player, packet);
-                break;
-            case SECOND_ITEM_ACTION_OPCODE:
-                secondAction(player, packet);
-                break;
+            case THIRD_ITEM_ACTION_OPCODE -> thirdAction(player, packet);
+            case FIRST_ITEM_ACTION_OPCODE -> firstAction(player, packet);
+            case SECOND_ITEM_ACTION_OPCODE -> secondAction(player, packet);
         }
     }
 
