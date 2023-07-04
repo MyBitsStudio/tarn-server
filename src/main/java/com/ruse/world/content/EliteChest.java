@@ -7,7 +7,6 @@ import com.ruse.model.GameObject;
 import com.ruse.model.Graphic;
 import com.ruse.model.Item;
 import com.ruse.model.definitions.ItemDefinition;
-import com.ruse.model.projectile.ItemEffect;
 import com.ruse.util.Misc;
 import com.ruse.world.entity.impl.player.Player;
 
@@ -44,15 +43,15 @@ public class EliteChest {
 				switch (tick) {
 				case 2:
 					Item item = itemRewards[Misc.randomMinusOne(itemRewards.length)];
-					if(ItemEffect.hasDoubleCash(p) && item.getId() == 995) {
+					if(p.getEquipment().hasDoubleCash() && item.getId() == 995) {
 						item.setAmount(item.getAmount() * 2);
 					}
 					p.getInventory().add(item);
-					if (item.getDefinition() != null && item.getDefinition().getName() != null) {
+					if (item.getDefinition() == null || item.getDefinition().getName() == null) {
+						p.getPacketSender().sendMessage("..and find an item!");
+					} else {
 						p.getPacketSender().sendMessage("..and find " + Misc.anOrA(item.getDefinition().getName()) + " "
 								+ item.getDefinition().getName() + "!");
-					} else {
-						p.getPacketSender().sendMessage("..and find an item!");
 					}
 					stop();
 					break;

@@ -3,10 +3,8 @@ package com.ruse.model.container;
 import com.google.common.collect.Iterables;
 import com.ruse.model.GroundItem;
 import com.ruse.model.Item;
-import com.ruse.model.ItemRarity;
 import com.ruse.model.container.impl.*;
 import com.ruse.model.definitions.ItemDefinition;
-import com.ruse.model.projectile.ItemEffect;
 import com.ruse.world.entity.impl.GroundItemManager;
 import com.ruse.world.entity.impl.player.Player;
 
@@ -41,14 +39,14 @@ public abstract class ItemContainer {
     public ItemContainer(Player player) {
         this.player = player;
         for (int i = 0; i < capacity(); i++) {
-            items[i] = new Item(-1, 0, ItemEffect.NOTHING, 0);
+            items[i] = new Item(-1, 0);
         }
     }
 
     public ItemContainer(Player player, boolean ignored){
         this.player = player;
         for (int i = 0; i < capacity(); i++) {
-            items[i] = new Item(-1, 0, ItemEffect.NOTHING, 0);
+            items[i] = new Item(-1, 0);
         }
     }
 
@@ -61,7 +59,7 @@ public abstract class ItemContainer {
         this.player = player;
         items = new Item[capacity];
         for (int i = 0; i < capacity; i++) {
-            items[i] = new Item(-1, 0, ItemEffect.NOTHING, 0);
+            items[i] = new Item(-1, 0);
         }
     }
 
@@ -115,7 +113,7 @@ public abstract class ItemContainer {
                 Item[] newItems = new Item[capacity()];
 
                 for (int i = 0; i < capacity(); i++) {
-                    newItems[i] = new Item(-1, 0, ItemEffect.NOTHING, 0);
+                    newItems[i] = new Item(-1, 0);
                 }
                 System.arraycopy(items, 0, newItems, 0, 100);
                 setItems(newItems);
@@ -271,33 +269,6 @@ public abstract class ItemContainer {
         return false;
     }
 
-    public boolean contains(int id, ItemEffect effect) {
-        for (Item items : this.items) {
-            if (items != null && items.getId() == id && items.getEffect() == effect) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public boolean contains(int id, ItemEffect effect, int bonus) {
-        for (Item items : this.items) {
-            if (items != null && items.getId() == id && items.getEffect() == effect && items.getBonus() == bonus) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public boolean contains(int id, ItemEffect effect, int bonus, ItemRarity rarity) {
-        for (Item items : this.items) {
-            if (items != null && items.getId() == id && items.getEffect() == effect && items.getBonus() == bonus && items.getRarity() == rarity) {
-                return true;
-            }
-        }
-        return false;
-    }
-
     public boolean contains(int id, int amount) {
         for (Item items : this.items) {
             if (items != null && items.getId() == id && items.getAmount() >= amount) {
@@ -361,35 +332,6 @@ public abstract class ItemContainer {
         return -1;
     }
 
-    public int getSlotWithEffectAndBonus(int id, ItemEffect effect, int bonus) {
-        for (int i = 0; i < capacity(); i++) {
-            if (items[i].getId() > 0 && items[i].getId() == id) {
-                if (items[i].getAmount() > 0 || ((this instanceof Bank || this instanceof Shop) && items[i].getAmount() <= 0)) {
-                    if(items[i].getEffect().equals(effect) && items[i].getBonus() == bonus)
-                        return i;
-                }
-            }
-        }
-        return -1;
-    }
-
-    public int getSlot(int id, ItemEffect effect, int bonus, boolean ignore){
-        return getSlotWithEffectAndBonus(id, effect, bonus) == -1 ? getSlot(id) : getSlotWithEffectAndBonus(id, effect, bonus);
-    }
-
-    public int getSlot(int id, ItemEffect effect, int bonus){
-        for (int i = 0; i < capacity(); i++) {
-            if (items[i].getId() > 0 && items[i].getId() == id) {
-                if (items[i].getAmount() > 0 || this instanceof Bank || this instanceof Shop) {
-                    if(items[i].getEffect() == effect && items[i].getBonus() == bonus){
-                        return i;
-                    }
-                }
-            }
-        }
-        return -1;
-    }
-
     public int slotOf(Item item) {
         return getSlot(item);
     }
@@ -398,7 +340,6 @@ public abstract class ItemContainer {
         for (int i = 0; i < capacity(); i++) {
             if (items[i].getId() > 0 && items[i].getId() == item.getId()) {
                 if (items[i].getAmount() > 0 || ((this instanceof Bank) && items[i].getAmount() <= 1)) {
-                    if(items[i].getEffect() == item.getEffect() && items[i].getBonus() == item.getBonus())
                         return i;
                 }
             }
@@ -422,50 +363,10 @@ public abstract class ItemContainer {
         return totalAmount;
     }
 
-    public int getAmountForEffect(int id, ItemEffect effect) {
-        int totalAmount = 0;
-        for (Item item : items) {
-            if (item.getId() == id && item.getEffect() == effect) {
-                totalAmount += item.getAmount();
-            }
-        }
-        return totalAmount;
-    }
-
-    public int getAmountForEffectAndBonus(int id, ItemEffect effect, int bonus) {
-        int totalAmount = 0;
-        for (Item item : items) {
-            if (item.getId() == id && item.getEffect() == effect && item.getBonus() == bonus) {
-                totalAmount += item.getAmount();
-            }
-        }
-        return totalAmount;
-    }
-
-    public int getAmount(int id, ItemEffect effect, ItemRarity rarity, int bonus) {
-        int totalAmount = 0;
-        for (Item item : items) {
-            if (item.getId() == id && item.getEffect() == effect && item.getRarity() == rarity && item.getBonus() == bonus) {
-                totalAmount += item.getAmount();
-            }
-        }
-        return totalAmount;
-    }
-
-    public int getAmount(int id, ItemEffect effect, int bonus) {
-        int totalAmount = 0;
-        for (Item item : items) {
-            if (item.getId() == id && item.getEffect() == effect && item.getBonus() == bonus) {
-                totalAmount += item.getAmount();
-            }
-        }
-        return totalAmount;
-    }
-
     public int getAmount(Item it) {
         int totalAmount = 0;
         for (Item item : items) {
-            if (item.getId() == it.getId() && item.getEffect() == it.getEffect()) {
+            if (item.getId() == it.getId()) {
                 totalAmount += item.getAmount();
             }
         }
@@ -489,7 +390,7 @@ public abstract class ItemContainer {
      */
     public ItemContainer resetItems() {
         for (int i = 0; i < capacity(); i++) {
-            items[i] = new Item(-1, 0, ItemEffect.NOTHING, 0);
+            items[i] = new Item(-1, 0);
         }
         return this;
     }
@@ -504,7 +405,6 @@ public abstract class ItemContainer {
         if((slot >= 0) && (slot < items.length)) {
             return items[slot];
         }
-       // System.out.println("OUT OF BOUNDS " + slot);
         return null;
     }
 
@@ -704,7 +604,7 @@ public abstract class ItemContainer {
         }
         if (ItemDefinition.forId(item.getId()).isStackable() || stackType() == StackType.STACKS) {
 
-            int slot = getSlot(item.getId(), item.getEffect(), item.getBonus());
+            int slot = getSlot(item.getId());
               if (slot == -1)
                 slot = getEmptySlot();
             if (slot == -1) {
@@ -722,9 +622,7 @@ public abstract class ItemContainer {
                 return this;
             }
             items[slot].setId(item.getId());
-            items[slot].setAmount(items[slot].getAmount() + item.getAmount());
-            items[slot].setEffect(item.getEffect());
-            items[slot].setBonus(item.getBonus()); //its still so much more than just those 2 files lol,
+            items[slot].setAmount(items[slot].getAmount() + item.getAmount()); //its still so much more than just those 2 files lol,
         } else {
             int amount = item.getAmount();
             while (amount > 0) {
@@ -743,8 +641,6 @@ public abstract class ItemContainer {
                 } else {
                     items[slot].setId(item.getId());
                     items[slot].setAmount(1);
-                    items[slot].setEffect(item.getEffect());
-                    items[slot].setBonus(item.getBonus());
                 }
                 amount--;
             }
@@ -765,8 +661,7 @@ public abstract class ItemContainer {
      * @return The ItemContainer instance.
      */
     public ItemContainer delete(Item item) {
-        return delete(item, getSlot(item.getId(), item.getEffect(), item.getBonus()), true, null);
-        //return delete(item, getSlotWithEffectAndBonus(item.getId(), item.getEffect(), item.getBonus()), true, null);
+        return delete(item, getSlot(item.getId()), true, null);
     }
 
     public ItemContainer delete(Item item, ItemContainer to) {
@@ -809,23 +704,6 @@ public abstract class ItemContainer {
         return delete(new Item(id, amount), getSlot(id), refresh);
     }
 
-    public ItemContainer delete(int id, int amount, ItemRarity rarity, int bonus, ItemEffect effect) {
-        return delete(id, amount, getSlot(id, effect, bonus), rarity, effect);
-    }
-
-    public ItemContainer delete(int id, int amount, int slot, ItemRarity rarity, ItemEffect effect) {
-        Item toDelete = new Item(id, amount);
-        toDelete.setRarity(rarity);
-        toDelete.setEffect(effect);
-        return delete(toDelete, slot, true);
-    }
-
-    public ItemContainer delete(int id, int amount, int slot, ItemEffect effect) {
-        Item toDelete = new Item(id, amount);
-        toDelete.setEffect(effect);
-        return delete(toDelete, slot, true);
-    }
-
     /**
      * Deletes an item from the item container.
      *
@@ -855,8 +733,8 @@ public abstract class ItemContainer {
         if (item == null || slot < 0)
             return this;
         boolean leavePlaceHolder = (toContainer instanceof Inventory && this instanceof Bank && getPlayer().isPlaceholders()) || this instanceof Shop;
-        if (item.getAmount() > getAmountForEffectAndBonus(item.getId(), item.getEffect(), item.getBonus())) {
-            item.setAmount(getAmountForEffectAndBonus(item.getId(), item.getEffect(), item.getBonus()));
+        if (item.getAmount() > getAmount(item.getId())) {
+            item.setAmount(getAmount(item.getId()));
         }
         if (item.getDefinition().isStackable() || stackType() == StackType.STACKS) {
             if (toContainer != null && !item.getDefinition().isStackable() && item.getAmount() > toContainer.getFreeSlots() && !(this instanceof Bank)  && !(this instanceof GroupIronmanBank) && !(this instanceof Shop))
@@ -866,8 +744,6 @@ public abstract class ItemContainer {
                 items[slot].setAmount(0);
                 if (!leavePlaceHolder) {
                     items[slot].setId(-1);
-                    items[slot].setEffect(ItemEffect.NOTHING);
-                    items[slot].setBonus(0);
                 }
             }
         } else {
@@ -877,11 +753,9 @@ public abstract class ItemContainer {
                     break;
                 if (!leavePlaceHolder) {
                     items[slot].setId(-1);
-                    items[slot].setEffect(ItemEffect.NOTHING);
-                    items[slot].setBonus(0);
                 }
                 items[slot].setAmount(0);
-                slot = getSlot(item.getId(), item.getEffect(), item.getBonus(), true);
+                slot = getSlot(item.getId());
                 amount--;
             }
         }

@@ -3,7 +3,6 @@ package com.ruse.world.content.casketopening;
 import com.ruse.engine.task.Task;
 import com.ruse.engine.task.TaskManager;
 import com.ruse.model.Item;
-import com.ruse.model.ItemRarity;
 import com.ruse.model.definitions.ItemDefinition;
 import com.ruse.util.Misc;
 import com.ruse.world.World;
@@ -228,10 +227,6 @@ public class CasketOpening {
         String name = definition.getName();
         if(definition.isEquitable) {
             Item item = new Item(slotPrize.getId(), amount);
-            if (getCurrentCasket() == Caskets.PROG_BOX_T1 || getCurrentCasket() == Caskets.OFF_BOX || getCurrentCasket() == Caskets.DEF_BOX) {
-                item.setDefaultEffect(ItemRarity.getRandomEffectForRarity(item, ItemRarity.getRarityForPercentage(Misc.getRandomDouble(100)), 11));
-            } else
-                item.setDefaultEffect(ItemRarity.getRandomEffectForRarity(item, ItemRarity.getRarityForPercentage(Misc.getRandomDouble(100)), 1));
             player.getInventory().add(item);
         } else {
             player.getInventory().add(slotPrize.getId(), amount);

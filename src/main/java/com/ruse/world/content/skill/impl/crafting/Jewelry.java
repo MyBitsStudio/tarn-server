@@ -147,9 +147,9 @@ public class Jewelry {
 	private static void loadFreshJewlryInterface(Player player) {
 		player.getSkillManager().stopSkilling();
 		for (int j = 0; j < 7; j++) { // want it to go from 0 -> 6th iteration
-			player.getPacketSender().sendItemOnInterface(4233, -1, j, 1, -1);
-			player.getPacketSender().sendItemOnInterface(4239, -1, j, 1, -1);
-			player.getPacketSender().sendItemOnInterface(4245, -1, j, 1, -1);
+			player.getPacketSender().sendItemOnInterface(4233, -1, j, 1);
+			player.getPacketSender().sendItemOnInterface(4239, -1, j, 1);
+			player.getPacketSender().sendItemOnInterface(4245, -1, j, 1);
 		}
 
 		player.getPacketSender().sendString(4230, "You need a ring mould to craft rings.");
@@ -171,7 +171,7 @@ public class Jewelry {
 				boolean changed = false;
 				for (int j = 0; j < i.item.length; j++) {
 					if (player.getInventory().contains(jewelryData.RINGS.item[j][0])) {
-						player.getPacketSender().sendItemOnInterface(4233, jewelryData.RINGS.item[j][1], j, 1, -1);
+						player.getPacketSender().sendItemOnInterface(4233, jewelryData.RINGS.item[j][1], j, 1);
 						changed = true;
 					}
 
@@ -189,7 +189,7 @@ public class Jewelry {
 				boolean changed = false;
 				for (int j = 0; j < i.item.length; j++) {
 					if (player.getInventory().contains(jewelryData.NECKLACE.item[j][0])) {
-						player.getPacketSender().sendItemOnInterface(4239, jewelryData.NECKLACE.item[j][1], j, 1, -1);
+						player.getPacketSender().sendItemOnInterface(4239, jewelryData.NECKLACE.item[j][1], j, 1);
 						changed = true;
 					}
 					/*
@@ -211,7 +211,7 @@ public class Jewelry {
 				boolean changed = false;
 				for (int j = 0; j < i.item.length; j++) {
 					if (player.getInventory().contains(jewelryData.AMULETS.item[j][0])) {
-						player.getPacketSender().sendItemOnInterface(4245, jewelryData.AMULETS.item[j][1], j, 1, -1);
+						player.getPacketSender().sendItemOnInterface(4245, jewelryData.AMULETS.item[j][1], j, 1);
 						changed = true;
 					}
 					/*

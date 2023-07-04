@@ -288,9 +288,9 @@ public class OldUpgradeInterface {
         for (int i = 0; i < 50; i++) {
             if (upgradeablesArrayList.size() > i) {
                 player.getPacketSender().sendItemOnInterface(62209,
-                        upgradeablesArrayList.get(i).getRequired().getId(), i, upgradeablesArrayList.get(i).getRequired().getAmount(), upgradeablesArrayList.get(i).getRequired().getBonus());
+                        upgradeablesArrayList.get(i).getRequired().getId(), i, upgradeablesArrayList.get(i).getRequired().getAmount());
             } else {
-                player.getPacketSender().sendItemOnInterface(62209, -1, i, 1, -1);
+                player.getPacketSender().sendItemOnInterface(62209, -1, i, 1);
             }
         }
 

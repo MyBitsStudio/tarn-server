@@ -50,9 +50,9 @@ public class ScratchCard {
 	public void open() {
 		player.getPacketSender().sendInterface(23630);
 		for (int i = 0; i < COMMON_ITEMS.length; i++)
-			player.getPacketSender().sendItemOnInterface(23642, COMMON_ITEMS[i], i, 1, -1);
+			player.getPacketSender().sendItemOnInterface(23642, COMMON_ITEMS[i], i, 1);
 		for (int x = 0; x < RARE_ITEMS.length; x++)
-			player.getPacketSender().sendItemOnInterface(23645, RARE_ITEMS[x], x, 1, -1);
+			player.getPacketSender().sendItemOnInterface(23645, RARE_ITEMS[x], x, 1);
 	}
 
 	public void getWinnings() {

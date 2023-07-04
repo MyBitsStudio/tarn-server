@@ -60,7 +60,7 @@ public class Normal extends Gamemode {
 
     @Override
     public int xpRate(int xp) {
-        return 0;
+        return 20;
     }
 
     @Override

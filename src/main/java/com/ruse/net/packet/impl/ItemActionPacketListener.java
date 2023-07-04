@@ -2246,10 +2246,10 @@ public class ItemActionPacketListener implements PacketListener {
             return;
         if (player.getInventory().getItems()[slot].getId() != itemId)
             return;
-        if (JarData.forJar(itemId) != null) {
-            PuroPuro.lootJar(player, new Item(itemId, 1), JarData.forJar(itemId));
-            return;
-        }
+//        if (JarData.forJar(itemId) != null) {
+//            PuroPuro.lootJar(player, new Item(itemId, 1), JarData.forJar(itemId));
+//            return;
+//        }
         if (SummoningData.isPouch(player, itemId, 3)) {
             return;
         }

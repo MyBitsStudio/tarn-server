@@ -76,8 +76,8 @@ public class UpgradeHandler {
 
 	public void clearItems() {
 		for (int i = 0; i < 12; i++)
-			player.getPA().sendItemOnInterface(47332, -1, i, -1, -1);
-		player.getPA().sendItemOnInterface(47263, -1, 0, -1,-1);
+			player.getPA().sendItemOnInterface(47332, -1, i, -1);
+		player.getPA().sendItemOnInterface(47263, -1, 0, -1);
 	}
 
 	public void displayItems(int buttonId) {
@@ -87,9 +87,9 @@ public class UpgradeHandler {
 				if (buttonId == data.getClickId()) {
 					for (int i = 0; i < data.getIngredients().length; i++)
 						player.getPA().sendItemOnInterface(47332, data.getIngredients()[i].getId(), i,
-								data.getIngredients()[i].getAmount(), data.getIngredients()[i].getBonus());
-					player.getPA().sendItemOnInterface(47263, data.getResultItem(), 0, 1, -1);
-					player.getPA().sendItemOnInterface(47278, data.getSafeItem(), 0, 1, -1);
+								data.getIngredients()[i].getAmount());
+					player.getPA().sendItemOnInterface(47263, data.getResultItem(), 0, 1);
+					player.getPA().sendItemOnInterface(47278, data.getSafeItem(), 0, 1);
 				}
 			}
 		}

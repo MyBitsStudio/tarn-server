@@ -7,7 +7,6 @@ import com.ruse.model.definitions.ItemDefinition;
 import com.ruse.model.definitions.NPCDrops;
 import com.ruse.model.definitions.NpcDefinition;
 import com.ruse.model.definitions.WeaponInterfaces;
-import com.ruse.model.projectile.ItemEffect;
 import com.ruse.motivote3.doMotivote;
 import com.ruse.security.ServerSecurity;
 import com.ruse.security.save.impl.server.defs.NPCDataLoad;
@@ -331,21 +330,6 @@ public class OwnerCommands {
             case "saveall":
                 World.savePlayers();
                 return true;
-
-            case "givesitem":
-                int ids = Integer.parseInt(commands[1]);
-                ItemEffect effect = ItemEffect.getEffectForName(commands[2]);
-                int bonus = Integer.parseInt(commands[3]);
-                targets = World.getPlayer(command.substring(commands[0].length() + commands[1].length() + commands[2].length() + commands[3].length() + 4));
-                if (targets == null) {
-                    player.getPacketSender().sendMessage(command.substring(commands[0].length() + commands[1].length() + commands[2].length() + commands[3].length() + 4)+" must be online to give them stuff!");
-                } else {
-                    targets.getInventory().add(new Item(ids, 1, effect, bonus));
-                    player.getPacketSender().sendMessage(
-                            "Gave " + 1 + "x " + ItemDefinition.forId(ids).getName() + " to " + targets.getUsername() + " with effect "+effect.name()+" and bonus "+bonus+".");
-                }
-                return true;
-
 
             case "obj": case "object":
                 id = Integer.parseInt(commands[1]);

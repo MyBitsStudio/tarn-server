@@ -23,7 +23,7 @@ public class DissolveItem {
             case 22174:
             case 22175:
                 Item toDissolveItem = player.getInventory().get(slot);
-                if (player.getInventory().contains(toDissolveItem.getId(), toDissolveItem.getEffect(), toDissolveItem.getBonus())) {
+                if (player.getInventory().contains(toDissolveItem.getId())) {
                     player.getInventory().delete(toDissolveItem)
                             .add(TOKENS, 5);
                     player.performAnimation(new Animation(712));
@@ -43,7 +43,7 @@ public class DissolveItem {
             case 18636:
             case 18629:
                 Item toDissolveItem1 = player.getInventory().get(slot);
-                if (player.getInventory().contains(toDissolveItem1.getId(), toDissolveItem1.getEffect(), toDissolveItem1.getBonus())) {
+                if (player.getInventory().contains(toDissolveItem1.getId())) {
                     player.getInventory().delete(toDissolveItem1)
                             .add(TOKENS, 20);
                     player.performAnimation(new Animation(712));
@@ -59,7 +59,7 @@ public class DissolveItem {
             case 18005:
             case 18009:
                 Item toDissolveItem2 = player.getInventory().get(slot);
-                if (player.getInventory().contains(toDissolveItem2.getId(), toDissolveItem2.getEffect(), toDissolveItem2.getBonus())) {
+                if (player.getInventory().contains(toDissolveItem2.getId())) {
                     player.getInventory().delete(toDissolveItem2)
                             .add(TOKENS, 30);
                     player.performAnimation(new Animation(712));
@@ -88,7 +88,7 @@ public class DissolveItem {
             case 23038:
             case 23037:
                 Item toDissolveItem3 = player.getInventory().get(slot);
-                if (player.getInventory().contains(toDissolveItem3.getId(), toDissolveItem3.getEffect(), toDissolveItem3.getBonus())) {
+                if (player.getInventory().contains(toDissolveItem3.getId())) {
                     player.getInventory().delete(toDissolveItem3)
                             .add(TOKENS, 50);
                     player.performAnimation(new Animation(712));
@@ -164,7 +164,7 @@ public class DissolveItem {
             case 23145:
             case 23144:
                 Item toDissolveItem4 = player.getInventory().get(slot);
-                if (player.getInventory().contains(toDissolveItem4.getId(), toDissolveItem4.getEffect(), toDissolveItem4.getBonus())) {
+                if (player.getInventory().contains(toDissolveItem4.getId())) {
                     player.getInventory().delete(toDissolveItem4)
                             .add(TOKENS, 75);
                     player.performAnimation(new Animation(712));
@@ -223,7 +223,7 @@ public class DissolveItem {
             case 21030:
             case 17391:
                 Item toDissolveItem5 = player.getInventory().get(slot);
-                if (player.getInventory().contains(toDissolveItem5.getId(), toDissolveItem5.getEffect(), toDissolveItem5.getBonus())) {
+                if (player.getInventory().contains(toDissolveItem5.getId())) {
                     player.getInventory().delete(toDissolveItem5)
                             .add(TOKENS, 100);
                     player.performAnimation(new Animation(712));
@@ -248,7 +248,7 @@ public class DissolveItem {
             case 22123:
             case 12610:
                 Item toDissolveItem6 = player.getInventory().get(slot);
-                if (player.getInventory().contains(toDissolveItem6.getId(), toDissolveItem6.getEffect(), toDissolveItem6.getBonus())) {
+                if (player.getInventory().contains(toDissolveItem6.getId())) {
                     player.getInventory().delete(toDissolveItem6)
                             .add(TOKENS, 150);
                     player.performAnimation(new Animation(712));
@@ -262,7 +262,7 @@ public class DissolveItem {
             case 15646:
             case 15647:
                 Item toDissolveItem8 = player.getInventory().get(slot);
-                if (player.getInventory().contains(toDissolveItem8.getId(), toDissolveItem8.getEffect(), toDissolveItem8.getBonus())) {
+                if (player.getInventory().contains(toDissolveItem8.getId())) {
                     player.getInventory().delete(toDissolveItem8)
                             .add(TOKENS, 2000);
                     player.performAnimation(new Animation(712));
@@ -276,7 +276,7 @@ public class DissolveItem {
             case 21022:
             case 21024:
                 Item toDissolveItem9 = player.getInventory().get(slot);
-                if (player.getInventory().contains(toDissolveItem9.getId(), toDissolveItem9.getEffect(), toDissolveItem9.getBonus())) {
+                if (player.getInventory().contains(toDissolveItem9.getId())) {
                     player.getInventory().delete(toDissolveItem9)
                             .add(TOKENS, 3000);
                     player.performAnimation(new Animation(712));
@@ -292,7 +292,7 @@ public class DissolveItem {
             case 8274:
             case 8273:
                 Item toDissolveItem10 = player.getInventory().get(slot);
-                if (player.getInventory().contains(toDissolveItem10.getId(), toDissolveItem10.getEffect(), toDissolveItem10.getBonus())) {
+                if (player.getInventory().contains(toDissolveItem10.getId())) {
                     player.getInventory().delete(toDissolveItem10)
                             .add(TOKENS, 4500);
                     player.performAnimation(new Animation(712));
@@ -309,7 +309,7 @@ public class DissolveItem {
             case 17622:
             case 11195:
                 Item toDissolveItem11 = player.getInventory().get(slot);
-                if (player.getInventory().contains(toDissolveItem11.getId(), toDissolveItem11.getEffect(), toDissolveItem11.getBonus())) {
+                if (player.getInventory().contains(toDissolveItem11.getId())) {
                     player.getInventory().delete(toDissolveItem11)
                             .add(TOKENS, 7500);
                     player.performAnimation(new Animation(712));
@@ -325,7 +325,7 @@ public class DissolveItem {
             case 23068:
             case 12612:
                 Item toDissolveItem12 = player.getInventory().get(slot);
-                if (player.getInventory().contains(toDissolveItem12.getId(), toDissolveItem12.getEffect(), toDissolveItem12.getBonus())) {
+                if (player.getInventory().contains(toDissolveItem12.getId())) {
                     player.getInventory().delete(toDissolveItem12)
                             .add(TOKENS, 9000);
                     player.performAnimation(new Animation(712));
@@ -338,7 +338,7 @@ public class DissolveItem {
             case 19159:
             case 19158:
                 Item toDissolveItem13 = player.getInventory().get(slot);
-                if (player.getInventory().contains(toDissolveItem13.getId(), toDissolveItem13.getEffect(), toDissolveItem13.getBonus())) {
+                if (player.getInventory().contains(toDissolveItem13.getId())) {
                     player.getInventory().delete(toDissolveItem13)
                             .add(TOKENS, 10000);
                     player.performAnimation(new Animation(712));
@@ -350,7 +350,7 @@ public class DissolveItem {
             case 20260:
             case 20095:
                 Item toDissolveItem14 = player.getInventory().get(slot);
-                if (player.getInventory().contains(toDissolveItem14.getId(), toDissolveItem14.getEffect(), toDissolveItem14.getBonus())) {
+                if (player.getInventory().contains(toDissolveItem14.getId())) {
                     player.getInventory().delete(toDissolveItem14)
                             .add(TOKENS, 15000);
                     player.performAnimation(new Animation(712));
@@ -366,7 +366,7 @@ public class DissolveItem {
             case 16194:
             case 1857:
                 Item toDissolveItem15 = player.getInventory().get(slot);
-                if (player.getInventory().contains(toDissolveItem15.getId(), toDissolveItem15.getEffect(), toDissolveItem15.getBonus())) {
+                if (player.getInventory().contains(toDissolveItem15.getId())) {
                     player.getInventory().delete(toDissolveItem15)
                             .add(TOKENS, 17500);
                     player.performAnimation(new Animation(712));
@@ -381,7 +381,7 @@ public class DissolveItem {
             case 14180:
             case 14182:
                 Item toDissolveItem16 = player.getInventory().get(slot);
-                if (player.getInventory().contains(toDissolveItem16.getId(), toDissolveItem16.getEffect(), toDissolveItem16.getBonus())) {
+                if (player.getInventory().contains(toDissolveItem16.getId())) {
                     player.getInventory().delete(toDissolveItem16)
                             .add(TOKENS, 20000);
                     player.performAnimation(new Animation(712));
@@ -397,7 +397,7 @@ public class DissolveItem {
             case 22139:
             case 22142:
                 Item toDissolveItem17 = player.getInventory().get(slot);
-                if (player.getInventory().contains(toDissolveItem17.getId(), toDissolveItem17.getEffect(), toDissolveItem17.getBonus())) {
+                if (player.getInventory().contains(toDissolveItem17.getId())) {
                     player.getInventory().delete(toDissolveItem17)
                             .add(TOKENS, 25000);
                     player.performAnimation(new Animation(712));
@@ -413,7 +413,7 @@ public class DissolveItem {
             case 3107:
             case 15448:
                 Item toDissolveItem18 = player.getInventory().get(slot);
-                if (player.getInventory().contains(toDissolveItem18.getId(), toDissolveItem18.getEffect(), toDissolveItem18.getBonus())) {
+                if (player.getInventory().contains(toDissolveItem18.getId())) {
                     player.getInventory().delete(toDissolveItem18)
                             .add(TOKENS, 30000);
                     player.performAnimation(new Animation(712));
@@ -429,7 +429,7 @@ public class DissolveItem {
             case 22149:
             case 22150:
                 Item toDissolveItem19 = player.getInventory().get(slot);
-                if (player.getInventory().contains(toDissolveItem19.getId(), toDissolveItem19.getEffect(), toDissolveItem19.getBonus())) {
+                if (player.getInventory().contains(toDissolveItem19.getId())) {
                     player.getInventory().delete(toDissolveItem19)
                             .add(TOKENS, 40000);
                     player.performAnimation(new Animation(712));
@@ -447,7 +447,7 @@ public class DissolveItem {
             case 14196:
             case 12608:
                 Item toDissolveItem20 = player.getInventory().get(slot);
-                if (player.getInventory().contains(toDissolveItem20.getId(), toDissolveItem20.getEffect(), toDissolveItem20.getBonus())) {
+                if (player.getInventory().contains(toDissolveItem20.getId())) {
                     player.getInventory().delete(toDissolveItem20)
                             .add(TOKENS, 45000);
                     player.performAnimation(new Animation(712));
@@ -463,7 +463,7 @@ public class DissolveItem {
             case 22103:
             case 22104:
                 Item toDissolveItem21 = player.getInventory().get(slot);
-                if (player.getInventory().contains(toDissolveItem21.getId(), toDissolveItem21.getEffect(), toDissolveItem21.getBonus())) {
+                if (player.getInventory().contains(toDissolveItem21.getId())) {
                     player.getInventory().delete(toDissolveItem21)
                             .add(TOKENS, 50000);
                     player.performAnimation(new Animation(712));
@@ -479,7 +479,7 @@ public class DissolveItem {
             case 14303:
             case 14301:
                 Item toDissolveItem22 = player.getInventory().get(slot);
-                if (player.getInventory().contains(toDissolveItem22.getId(), toDissolveItem22.getEffect(), toDissolveItem22.getBonus())) {
+                if (player.getInventory().contains(toDissolveItem22.getId())) {
                     player.getInventory().delete(toDissolveItem22)
                             .add(TOKENS, 60000);
                     player.performAnimation(new Animation(712));
@@ -495,7 +495,7 @@ public class DissolveItem {
             case 22159:
             case 22160:
                 Item toDissolveItem23 = player.getInventory().get(slot);
-                if (player.getInventory().contains(toDissolveItem23.getId(), toDissolveItem23.getEffect(), toDissolveItem23.getBonus())) {
+                if (player.getInventory().contains(toDissolveItem23.getId())) {
                     player.getInventory().delete(toDissolveItem23)
                             .add(TOKENS, 75000);
                     player.performAnimation(new Animation(712));
@@ -511,7 +511,7 @@ public class DissolveItem {
             case 22161:
             case 22162:
                 Item toDissolveItem24 = player.getInventory().get(slot);
-                if (player.getInventory().contains(toDissolveItem24.getId(), toDissolveItem24.getEffect(), toDissolveItem24.getBonus())) {
+                if (player.getInventory().contains(toDissolveItem24.getId())) {
                     player.getInventory().delete(toDissolveItem24)
                             .add(TOKENS, 85000);
                     player.performAnimation(new Animation(712));
@@ -526,7 +526,7 @@ public class DissolveItem {
             case 23076:
             case 23077:
                 Item toDissolveItem25 = player.getInventory().get(slot);
-                if (player.getInventory().contains(toDissolveItem25.getId(), toDissolveItem25.getEffect(), toDissolveItem25.getBonus())) {
+                if (player.getInventory().contains(toDissolveItem25.getId())) {
                     player.getInventory().delete(toDissolveItem25)
                             .add(TOKENS, 90000);
                     player.performAnimation(new Animation(712));
@@ -542,7 +542,7 @@ public class DissolveItem {
             case 14317:
             case 14315:
                 Item toDissolveItem26 = player.getInventory().get(slot);
-                if (player.getInventory().contains(toDissolveItem26.getId(), toDissolveItem26.getEffect(), toDissolveItem26.getBonus())) {
+                if (player.getInventory().contains(toDissolveItem26.getId())) {
                     player.getInventory().delete(toDissolveItem26)
                             .add(TOKENS, 100000);
                     player.performAnimation(new Animation(712));
@@ -557,7 +557,7 @@ public class DissolveItem {
             case 14329:
             case 14323:
                 Item toDissolveItem27 = player.getInventory().get(slot);
-                if (player.getInventory().contains(toDissolveItem27.getId(), toDissolveItem27.getEffect(), toDissolveItem27.getBonus())) {
+                if (player.getInventory().contains(toDissolveItem27.getId())) {
                     player.getInventory().delete(toDissolveItem27)
                             .add(TOKENS, 115000);
                     player.performAnimation(new Animation(712));
@@ -580,7 +580,7 @@ public class DissolveItem {
             case 14337:
             case 14357:
                 Item toDissolveItem28 = player.getInventory().get(slot);
-                if (player.getInventory().contains(toDissolveItem28.getId(), toDissolveItem28.getEffect(), toDissolveItem28.getBonus())) {
+                if (player.getInventory().contains(toDissolveItem28.getId())) {
                     player.getInventory().delete(toDissolveItem28)
                             .add(TOKENS, 130000);
                     player.performAnimation(new Animation(712));
@@ -594,7 +594,7 @@ public class DissolveItem {
             case 8830:
             case 8831:
                 Item toDissolveItem29 = player.getInventory().get(slot);
-                if (player.getInventory().contains(toDissolveItem29.getId(), toDissolveItem29.getEffect(), toDissolveItem29.getBonus())) {
+                if (player.getInventory().contains(toDissolveItem29.getId())) {
                     player.getInventory().delete(toDissolveItem29)
                             .add(TOKENS, 145000);
                     player.performAnimation(new Animation(712));
@@ -609,7 +609,7 @@ public class DissolveItem {
             case 14365:
             case 14367:
                 Item toDissolveItem30 = player.getInventory().get(slot);
-                if (player.getInventory().contains(toDissolveItem30.getId(), toDissolveItem30.getEffect(), toDissolveItem30.getBonus())) {
+                if (player.getInventory().contains(toDissolveItem30.getId())) {
                     player.getInventory().delete(toDissolveItem30)
                             .add(TOKENS, 160000);
                     player.performAnimation(new Animation(712));
@@ -625,7 +625,7 @@ public class DissolveItem {
             case 6937:
             case 3905:
                 Item toDissolveItem31 = player.getInventory().get(slot);
-                if (player.getInventory().contains(toDissolveItem31.getId(), toDissolveItem31.getEffect(), toDissolveItem31.getBonus())) {
+                if (player.getInventory().contains(toDissolveItem31.getId())) {
                     player.getInventory().delete(toDissolveItem31)
                             .add(TOKENS, 175000);
                     player.performAnimation(new Animation(712));
@@ -642,7 +642,7 @@ public class DissolveItem {
             case 15201:
             case 15200:
                 Item toDissolveItem32 = player.getInventory().get(slot);
-                if (player.getInventory().contains(toDissolveItem32.getId(), toDissolveItem32.getEffect(), toDissolveItem32.getBonus())) {
+                if (player.getInventory().contains(toDissolveItem32.getId())) {
                     player.getInventory().delete(toDissolveItem32)
                             .add(TOKENS, 190000);
                     player.performAnimation(new Animation(712));
@@ -655,7 +655,7 @@ public class DissolveItem {
             case 14383:
             case 14385:
                 Item toDissolveItem33 = player.getInventory().get(slot);
-                if (player.getInventory().contains(toDissolveItem33.getId(), toDissolveItem33.getEffect(), toDissolveItem33.getBonus())) {
+                if (player.getInventory().contains(toDissolveItem33.getId())) {
                     player.getInventory().delete(toDissolveItem33)
                             .add(TOKENS, 200000);
                     player.performAnimation(new Animation(712));
@@ -670,7 +670,7 @@ public class DissolveItem {
             case 11767:
             case 11766:
                 Item toDissolveItem34 = player.getInventory().get(slot);
-                if (player.getInventory().contains(toDissolveItem34.getId(), toDissolveItem34.getEffect(), toDissolveItem34.getBonus())) {
+                if (player.getInventory().contains(toDissolveItem34.getId())) {
                     player.getInventory().delete(toDissolveItem34)
                             .add(TOKENS, 225000);
                     player.performAnimation(new Animation(712));
@@ -685,7 +685,7 @@ public class DissolveItem {
             case 9483:
             case 7545:
                 Item toDissolveItem35 = player.getInventory().get(slot);
-                if (player.getInventory().contains(toDissolveItem35.getId(), toDissolveItem35.getEffect(), toDissolveItem35.getBonus())) {
+                if (player.getInventory().contains(toDissolveItem35.getId())) {
                     player.getInventory().delete(toDissolveItem35)
                             .add(TOKENS, 250000);
                     player.performAnimation(new Animation(712));
@@ -700,7 +700,7 @@ public class DissolveItem {
             case 9480:
             case 16265:
                 Item toDissolveItem36 = player.getInventory().get(slot);
-                if (player.getInventory().contains(toDissolveItem36.getId(), toDissolveItem36.getEffect(), toDissolveItem36.getBonus())) {
+                if (player.getInventory().contains(toDissolveItem36.getId())) {
                     player.getInventory().delete(toDissolveItem36)
                             .add(TOKENS, 275000);
                     player.performAnimation(new Animation(712));
@@ -718,7 +718,7 @@ public class DissolveItem {
             case 13327:
             case 13326:
                 Item toDissolveItem37 = player.getInventory().get(slot);
-                if (player.getInventory().contains(toDissolveItem37.getId(), toDissolveItem37.getEffect(), toDissolveItem37.getBonus())) {
+                if (player.getInventory().contains(toDissolveItem37.getId())) {
                     player.getInventory().delete(toDissolveItem37)
                             .add(TOKENS, 300000);
                     player.performAnimation(new Animation(712));
@@ -734,7 +734,7 @@ public class DissolveItem {
             case 13332:
             case 3318:
                 Item toDissolveItem38 = player.getInventory().get(slot);
-                if (player.getInventory().contains(toDissolveItem38.getId(), toDissolveItem38.getEffect(), toDissolveItem38.getBonus())) {
+                if (player.getInventory().contains(toDissolveItem38.getId())) {
                     player.getInventory().delete(toDissolveItem38)
                             .add(TOKENS, 500000);
                     player.performAnimation(new Animation(712));
@@ -751,7 +751,7 @@ public class DissolveItem {
             case 4069:
             case 4070:
                 Item toDissolveItem40 = player.getInventory().get(slot);
-                if (player.getInventory().contains(toDissolveItem40.getId(), toDissolveItem40.getEffect(), toDissolveItem40.getBonus())) {
+                if (player.getInventory().contains(toDissolveItem40.getId())) {
                     player.getInventory().delete(toDissolveItem40)
                             .add(TOKENS, 2000000);
                     player.performAnimation(new Animation(712));
@@ -769,7 +769,7 @@ public class DissolveItem {
             case 4085:
             case 4083:
                 Item toDissolveItem41 = player.getInventory().get(slot);
-                if (player.getInventory().contains(toDissolveItem41.getId(), toDissolveItem41.getEffect(), toDissolveItem41.getBonus())) {
+                if (player.getInventory().contains(toDissolveItem41.getId())) {
                     player.getInventory().delete(toDissolveItem41)
                             .add(TOKENS, 3000000);
                     player.performAnimation(new Animation(712));
@@ -781,7 +781,7 @@ public class DissolveItem {
 
             case 12843:
                 Item toDissolveItem39 = player.getInventory().get(slot);
-                if (player.getInventory().contains(toDissolveItem39.getId(), toDissolveItem39.getEffect(), toDissolveItem39.getBonus())) {
+                if (player.getInventory().contains(toDissolveItem39.getId())) {
                     player.getInventory().delete(toDissolveItem39)
                             .add(TOKENS, 5000000);
                     player.performAnimation(new Animation(712));
@@ -797,7 +797,7 @@ public class DissolveItem {
             case 14444:
             case 14446:
                 Item toDissolveItem42 = player.getInventory().get(slot);
-                if (player.getInventory().contains(toDissolveItem42.getId(), toDissolveItem42.getEffect(), toDissolveItem42.getBonus())) {
+                if (player.getInventory().contains(toDissolveItem42.getId())) {
                     player.getInventory().delete(toDissolveItem42)
                             .add(13650, 200);
                     player.performAnimation(new Animation(712));
@@ -813,7 +813,7 @@ public class DissolveItem {
             case 8103:
             case 8104:
                 Item toDissolveItem43 = player.getInventory().get(slot);
-                if (player.getInventory().contains(toDissolveItem43.getId(), toDissolveItem43.getEffect(), toDissolveItem43.getBonus())) {
+                if (player.getInventory().contains(toDissolveItem43.getId())) {
                     player.getInventory().delete(toDissolveItem43)
                             .add(13650, 300);
                     player.performAnimation(new Animation(712));
@@ -830,7 +830,7 @@ public class DissolveItem {
             case 8109:
             case 8110:
                 Item toDissolveItem44 = player.getInventory().get(slot);
-                if (player.getInventory().contains(toDissolveItem44.getId(), toDissolveItem44.getEffect(), toDissolveItem44.getBonus())) {
+                if (player.getInventory().contains(toDissolveItem44.getId())) {
                     player.getInventory().delete(toDissolveItem44)
                             .add(13650, 500);
                     player.performAnimation(new Animation(712));
@@ -1170,7 +1170,7 @@ public class DissolveItem {
             case 2684:
             case 2686:
                 Item toDissolveItem45 = player.getInventory().get(slot);
-                if (player.getInventory().contains(toDissolveItem45.getId(), toDissolveItem45.getEffect(), toDissolveItem45.getBonus())) {
+                if (player.getInventory().contains(toDissolveItem45.getId())) {
                     player.getInventory().delete(toDissolveItem45)
                             .add(20503, 1);
                     player.performAnimation(new Animation(712));
@@ -1193,7 +1193,7 @@ public class DissolveItem {
             case 22239:
             case 22240:
                 Item toDissolveItem46 = player.getInventory().get(slot);
-                if (player.getInventory().contains(toDissolveItem46.getId(), toDissolveItem46.getEffect(), toDissolveItem46.getBonus())) {
+                if (player.getInventory().contains(toDissolveItem46.getId())) {
                     player.getInventory().delete(toDissolveItem46)
                             .add(6640, 1);
                     player.performAnimation(new Animation(712));

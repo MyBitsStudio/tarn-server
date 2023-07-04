@@ -58,7 +58,7 @@ public class DailyTaskInterface {
 			if (data.getDifficulty() == player.getDailyTasksDifficulty()) {
 				if (buttonId == data.getClickingId()) {
 					resetFrame34();
-					player.getPA().sendItemOnInterface(39361, data.getRewards(), 0, 1, -1);
+					player.getPA().sendItemOnInterface(39361, data.getRewards(), 0, 1);
 				}
 			}
 		}

@@ -7,8 +7,6 @@ import com.ruse.model.container.ItemContainer;
 import com.ruse.model.container.StackType;
 import com.ruse.model.container.impl.Bank.BankSearchAttributes;
 import com.ruse.model.definitions.ItemDefinition;
-import com.ruse.model.projectile.ItemEffect;
-import com.ruse.world.content.eventboss.EventBossManager;
 import com.ruse.world.entity.impl.player.Player;
 
 /**
@@ -53,9 +51,9 @@ public class Inventory extends ItemContainer {
 		}
 		if (to.isBank()) {
 			int checkId = ItemDefinition.forId(item.getId()).isNoted() ? item.getId() - 1 : item.getId();
-			if (to.getAmountForEffectAndBonus(checkId, item.getEffect(), item.getBonus()) + item.getAmount() >= Integer.MAX_VALUE
-					|| to.getAmountForEffectAndBonus(checkId, item.getEffect(), item.getBonus()) + item.getAmount() <= 0) {
-				int canBank = (Integer.MAX_VALUE - to.getAmountForEffectAndBonus(checkId, item.getEffect(), item.getBonus()));
+			if (to.getAmount(checkId) + item.getAmount() >= Integer.MAX_VALUE
+					|| to.getAmount(checkId) + item.getAmount() <= 0) {
+				int canBank = (Integer.MAX_VALUE - to.getAmount(checkId));
 				if (canBank == 0) {
 					getPlayer().getPacketSender().sendMessage("You cannot deposit more of that item into your bank.");
 					return this;

@@ -9,7 +9,6 @@ import com.ruse.model.Item;
 import com.ruse.model.Locations;
 import com.ruse.model.Locations.Location;
 import com.ruse.model.definitions.ItemDefinition;
-import com.ruse.model.projectile.ItemEffect;
 import com.ruse.util.Misc;
 import com.ruse.world.World;
 import com.ruse.world.content.PlayerPunishment.Jail;
@@ -229,7 +228,7 @@ public class Trading {
 		player.getPacketSender().sendItemContainer(player.getInventory(), 3322);
 	}
 
-	public void tradeItem(int itemId, int amount, int slot, ItemEffect effect, int bonus) {
+	public void tradeItem(int itemId, int amount, int slot) {
 		if (slot < 0) {
 			return;
 		}
@@ -245,10 +244,7 @@ public class Trading {
 			return;
 		}
 		Item itemToTrade = player.getInventory().getItems()[slot];
-		itemToTrade = new Item(itemToTrade.getId(), itemToTrade.getAmount(), itemToTrade.getEffect(), itemToTrade.getBonus());
-		if(itemToTrade.getEffect() != effect) {
-			return;
-		}
+		itemToTrade = new Item(itemToTrade.getId(), itemToTrade.getAmount());
 		if (player.getRank().isAdmin()
 				&& !(itemId == 1419 && player.getRank().isStaff())) {
 			if (!itemToTrade.tradeable()) {
@@ -262,39 +258,39 @@ public class Trading {
 			declineTrade(true);
 			return;
 		}
-		if (!player.getInventory().contains(itemId, itemToTrade.getEffect())) {
+		if (!player.getInventory().contains(itemId)) {
 			return;
 		}
 		if (slot >= player.getInventory().capacity() || itemToTrade.getId() != itemId || itemToTrade.getAmount() <= 0) {
 			return;
 		}
-		if (player.getInventory().getAmountForEffect(itemId, itemToTrade.getEffect()) < amount) {
-			amount = player.getInventory().getAmountForEffect(itemId, itemToTrade.getEffect());
-			if (amount == 0 || player.getInventory().getAmountForEffect(itemId, itemToTrade.getEffect()) < amount) {
+		if (player.getInventory().getAmount(itemId) < amount) {
+			amount = player.getInventory().getAmount(itemId);
+			if (amount == 0 || player.getInventory().getAmount(itemId) < amount) {
 				return;
 			}
 		}
 		if (!itemToTrade.getDefinition().isStackable()) {
 			for (int a = 0; a < amount && a < 28; a++) {
-				if (player.getInventory().getAmountForEffect(itemId, itemToTrade.getEffect()) >= 1) {
-					offeredItems.add(new Item(itemId, 1, itemToTrade.getEffect(), itemToTrade.getBonus()));
-					player.getInventory().delete(new Item(itemId, 1, itemToTrade.getEffect(), itemToTrade.getBonus()));
+				if (player.getInventory().getAmount(itemId) >= 1) {
+					offeredItems.add(new Item(itemId, 1));
+					player.getInventory().delete(new Item(itemId, 1));
 				}
 			}
 		} else if (itemToTrade.getDefinition().isStackable()) {
 			boolean itemInTrade = false;
 			for (Item item : offeredItems) {
-				if (item.getId() != itemId || item.getEffect() != effect)
+				if (item.getId() != itemId)
 					continue;
 				itemInTrade = true;
 				item.setAmount(item.getAmount() + amount);
-				player.getInventory().delete(new Item(itemId, amount, itemToTrade.getEffect(), itemToTrade.getBonus()));
+				player.getInventory().delete(new Item(itemId, amount));
 				break;
 			}
 
 			if (!itemInTrade) {
-				offeredItems.add(new Item(itemId, amount, itemToTrade.getEffect(), itemToTrade.getBonus()));
-				player.getInventory().delete(new Item(itemId, amount, itemToTrade.getEffect(), itemToTrade.getBonus()));
+				offeredItems.add(new Item(itemId, amount));
+				player.getInventory().delete(new Item(itemId, amount));
 			}
 		}
 
@@ -313,7 +309,7 @@ public class Trading {
 		sendText(player2);
 	}
 
-	public void removeTradedItem(int itemId, int amount, ItemEffect effect) {
+	public void removeTradedItem(int itemId, int amount) {
 		if (!player.getClickDelay().elapsed(3000)) {
 			player.getPacketSender().sendMessage("<shad=1>@red@Please wait a few seconds before trying to upgrade again.");
 			return;
@@ -333,18 +329,18 @@ public class Trading {
 			if(item == null)
 				continue;
 			for(int i = 0; i < (def.isStackable() ? 1 : !def.isStackable() && amount > 28 ? 28 : amount); i++) {
-				if (item.getId() == itemId && item.getEffect() == effect && !item.getDefinition().isStackable()) {
+				if (item.getId() == itemId && !item.getDefinition().isStackable()) {
 					offeredItems.remove(item);
 					player.getInventory().add(item);
 					break;
 				}
-				if (item.getId() == itemId && item.getEffect() == effect && item.getDefinition().isStackable()) {
+				if (item.getId() == itemId && item.getDefinition().isStackable()) {
 					if (item.getAmount() > amount) {
 						item.setAmount(item.getAmount() - amount);
-						player.getInventory().add(new Item(itemId, amount, item.getEffect(), item.getBonus()));
+						player.getInventory().add(new Item(itemId, amount));
 					} else {
 						offeredItems.remove(item);
-						player.getInventory().add(new Item(item.getId(), item.getAmount(), item.getEffect(), item.getBonus()));
+						player.getInventory().add(new Item(item.getId(), item.getAmount()));
 					}
 				}
 			}

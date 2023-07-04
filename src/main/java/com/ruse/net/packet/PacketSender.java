@@ -10,7 +10,6 @@ import com.ruse.world.content.EffectTimer;
 import com.ruse.world.content.tradingpost.TradingPost;
 import com.ruse.world.packages.forge.Forge;
 import com.ruse.world.packages.forge.shop.ForgeShopItem;
-import com.ruse.world.content.pos.PlayerOwnedShop;
 import com.ruse.world.content.skill.impl.construction.ConstructionData.Furniture;
 import com.ruse.world.content.skill.impl.construction.Palette;
 import com.ruse.world.content.skill.impl.construction.Palette.PaletteTile;
@@ -794,11 +793,6 @@ public class PacketSender {
             player.setResting(false);
             player.performAnimation(new Animation(11788));
         }
-        if(player.getPlayerOwnedShopManager().getMyShop() != null){
-            if(player.getPlayerOwnedShopManager().getMyShop().isUpdating()){
-                player.getPlayerOwnedShopManager().getMyShop().setUpdating(false);
-            }
-        }
         if(player.getInterfaceId() == Forge.INTERFACE_ID) {
             player.getForge().onInterfaceClose();
         }
@@ -846,8 +840,6 @@ public class PacketSender {
             if (item == null) {
                 out.put(0);
                 out.putShort(0, ValueType.A, ByteOrder.LITTLE);
-                out.put(0);
-                out.put(0);
                 continue;
             }
             if (item.getAmount() > 254) {
@@ -857,8 +849,6 @@ public class PacketSender {
                 out.put(item.getAmount());
             }
             out.putShort(item.getId() + 1, ValueType.A, ByteOrder.LITTLE);
-            out.put(item.getEffect().ordinal());
-            out.put(item.getBonus());
         }
         player.getSession().queueMessage(out);
         return this;
@@ -872,8 +862,6 @@ public class PacketSender {
             if (item == null) {
                 out.put(0);
                 out.putShort(0, ValueType.A, ByteOrder.LITTLE);
-                out.put(0);
-                out.put(0);
                 continue;
             }
             if (item.getAmount() > 254) {
@@ -883,8 +871,6 @@ public class PacketSender {
                 out.put(item.getAmount());
             }
             out.putShort(item.getId() + 1, ValueType.A, ByteOrder.LITTLE);
-            out.put(item.getEffect().ordinal());
-            out.put(item.getBonus());
         }
         player.getSession().queueMessage(out);
         return this;
@@ -898,8 +884,6 @@ public class PacketSender {
             if (item == null) {
                 out.put(0);
                 out.putShort(0, ValueType.A, ByteOrder.LITTLE);
-                out.put(0);
-                out.put(0);
                 continue;
             }
             if (item.getAmount() > 254) {
@@ -909,34 +893,6 @@ public class PacketSender {
                 out.put(item.getAmount());
             }
             out.putShort(item.getId() + 1, ValueType.A, ByteOrder.LITTLE);
-            out.put(item.getEffect().ordinal());
-            out.put(item.getBonus());
-        }
-        player.getSession().queueMessage(out);
-        return this;
-    }
-
-    public PacketSender sendItemContainer(PlayerOwnedShop.ShopItem[] container, int interfaceId) {
-        PacketBuilder out = new PacketBuilder(53, PacketType.SHORT);
-        out.putInt(interfaceId);
-        out.putShort(container.length);
-        for (PlayerOwnedShop.ShopItem item : container) {
-            if (item == null) {
-                out.put(0);
-                out.putShort(0, ValueType.A, ByteOrder.LITTLE);
-                out.put(0);
-                out.put(0);
-                continue;
-            }
-            if (item.getAmount() > 254) {
-                out.put((byte) 255);
-                out.putInt(item.getAmount(), ByteOrder.INVERSE_MIDDLE);
-            } else {
-                out.put(item.getAmount());
-            }
-            out.putShort(item.getId() + 1, ValueType.A, ByteOrder.LITTLE);
-            out.put(item.getEffect().ordinal());
-            out.put(item.getBonus());
         }
         player.getSession().queueMessage(out);
         return this;
@@ -950,14 +906,10 @@ public class PacketSender {
             if (item == null) {
                 out.put(0);
                 out.putShort(0, ValueType.A, ByteOrder.LITTLE);
-                out.put(0);
-                out.put(0);
                 continue;
             }
             out.put(1);
             out.putShort(item.getItemId() + 1, ValueType.A, ByteOrder.LITTLE);
-            out.put(0);
-            out.put(0);
         }
         player.getSession().queueMessage(out);
         return this;
@@ -972,8 +924,6 @@ public class PacketSender {
             if (item1 == null) {
                 out.put(0);
                 out.putShort(0, ValueType.A, ByteOrder.LITTLE);
-                out.put(0);
-                out.put(0);
                 continue;
             }
             if (item1.getAmount() > 254) {
@@ -983,21 +933,17 @@ public class PacketSender {
                 out.put(item1.getAmount());
             }
             out.putShort(item1.getId() + 1, ValueType.A, ByteOrder.LITTLE);
-            out.put(item1.getEffect().ordinal());
-            out.put(item1.getBonus());
         }
         player.getSession().queueMessage(out);
         return this;
     }
 
-    public PacketSender sendItemOnInterface(int frame, int item, int slot, int amount, int bonus) {
+    public PacketSender sendItemOnInterface(int frame, int item, int slot, int amount) {
         PacketBuilder out = new PacketBuilder(34, PacketType.SHORT);
         out.putShort(frame);
         out.put(slot);
         out.putShort(item + 1);
         out.putInt(amount);
-        out.put(0);
-        out.put(bonus);
         player.getSession().queueMessage(out);
         return this;
     }
@@ -1009,14 +955,14 @@ public class PacketSender {
 
     public PacketSender sendDuelEquipment() {
         for (int i = 0; i < player.getEquipment().getItems().length; i++) {
-            PacketBuilder out = new PacketBuilder(34, PacketType.SHORT);
+            PacketBuilder out = new PacketBuilder(159, PacketType.SHORT);
             out.putShort(13824);
             out.put(i);
             out.putShort(player.getEquipment().getItems()[i].getId() + 1);
             out.put(255);
             out.putInt(player.getEquipment().getItems()[i].getAmount());
-            out.put(0);
-            out.put(player.getEquipment().getItems()[i].getBonus());
+            out.put(player.getEquipment().getSlotBonuses()[i].getEffect().getRarity().ordinal());
+            out.put(player.getEquipment().getSlotBonuses()[i].getBonus());
             player.getSession().queueMessage(out);
         }
         return this;
@@ -1029,8 +975,6 @@ public class PacketSender {
         out.putInt(slot);
         out.putShort(id + 1);
         out.put(amount);
-        out.put(0);
-        out.put(-1);
         player.getSession().queueMessage(out);
         return this;
     }
@@ -1048,15 +992,12 @@ public class PacketSender {
                 out.put(item.getAmount());
             }
             out.putShort(item.getId() + 1, ValueType.A, ByteOrder.LITTLE);
-            out.put(item.getEffect().ordinal());
-            out.put(item.getBonus());
             current++;
         }
         if (current < 27) {
             for (int i = current; i < 28; i++) {
                 out.put(1);
                 out.putShort(-1, ValueType.A, ByteOrder.LITTLE);
-                out.put(0);
             }
         }
         player.getSession().queueMessage(out);
@@ -1080,8 +1021,6 @@ public class PacketSender {
             out.put(amount);
         }
         out.putShort(item + 1, ValueType.A, ByteOrder.LITTLE);
-        out.put(0);
-        out.put(-1);
         player.getSession().queueMessage(out);
         return this;
     }
@@ -1099,8 +1038,6 @@ public class PacketSender {
             out.put(item.getAmount());
         }
         out.putShort(item.getId() + 1, ValueType.A, ByteOrder.LITTLE);
-        out.put(item.getEffect().ordinal());
-        out.put(item.getBonus());
         player.getSession().queueMessage(out);
         return this;
     }
@@ -1113,27 +1050,6 @@ public class PacketSender {
      * builder.writeLEShortA(items.get(i).getItemId() + 1); }
      * player.write(builder.toPacket()); return this; }
      */
-
-    public PacketSender sendItemOnInterfac1(int interfaceId, Item item, int amount) {
-        if (amount <= 0)
-            amount = 1;
-        if (interfaceId <= 0)
-            return this;
-        PacketBuilder out = new PacketBuilder(53, PacketType.SHORT);
-        out.putInt(interfaceId);
-        out.putShort(1);
-        if (amount > 254) {
-            out.put((byte) 255);
-            out.putInt(amount, ByteOrder.INVERSE_MIDDLE);
-        } else {
-            out.put(amount);
-        }
-        out.putShort(item.getId() + 1, ValueType.A, ByteOrder.LITTLE);
-        out.put(item.getEffect().ordinal());
-        out.put(item.getBonus());
-        player.getSession().queueMessage(out);
-        return this;
-    }
 
     public PacketSender sendItemsOnInterface(int interfaceId, Item[] items) {
         PacketBuilder out = new PacketBuilder(53, PacketType.SHORT);
@@ -1148,7 +1064,10 @@ public class PacketSender {
         }
         out.putShort(items.length);
         for (Item item : items) {
-            if (item != null) {
+            if (item == null) {
+                out.put(0);
+                out.putShort(0, ValueType.A, ByteOrder.LITTLE);
+            } else {
                 if (item.getAmount() > 254) {
                     out.put(255);
                     out.putInt(item.getAmount(), ByteOrder.INVERSE_MIDDLE);
@@ -1156,12 +1075,7 @@ public class PacketSender {
                     out.put(item.getAmount());
                 }
                 out.putShort(item.getId() + 1, ValueType.A, ByteOrder.LITTLE);
-            } else {
-                out.put(0);
-                out.putShort(0, ValueType.A, ByteOrder.LITTLE);
             }
-            out.put(item.getEffect().ordinal());
-            out.put(item.getBonus());
         }
         player.getSession().queueMessage(out);
         return this;
@@ -1384,7 +1298,7 @@ public class PacketSender {
         sendPosition(new Position(gi.getPosition().getX(), gi.getPosition().getY()));
         PacketBuilder out = new PacketBuilder(44);
         out.putShort(gi.getItem().getId(), ValueType.A, ByteOrder.LITTLE);
-        out.putLong(gi.getItem().getAmount()).put(0).put(gi.getItem().getEffect().ordinal());
+        out.putLong(gi.getItem().getAmount()).put(0);
         player.getSession().queueMessage(out);
         return this;
     }
@@ -1394,7 +1308,6 @@ public class PacketSender {
         PacketBuilder out = new PacketBuilder(156);
         out.put(0, ValueType.A);
         out.putShort(gi.getItem().getId());
-        out.put(gi.getItem().getEffect().ordinal());
         player.getSession().queueMessage(out);
         return this;
     }
@@ -1681,7 +1594,7 @@ public class PacketSender {
 
     public PacketSender resetItemsOnInterface(final int childId, final int maxItems) {
         for (int index = 0; index < maxItems; index++) {
-            sendItemOnInterface(childId, -1, index, 0, 0);
+            sendItemOnInterface(childId, -1, index);
         }
         return this;
     }

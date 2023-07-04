@@ -6,7 +6,6 @@ import com.ruse.model.GroundItem;
 import com.ruse.model.Item;
 import com.ruse.model.Position;
 import com.ruse.model.container.impl.Equipment;
-import com.ruse.model.projectile.ItemEffect;
 import com.ruse.net.packet.Packet;
 import com.ruse.net.packet.PacketListener;
 import com.ruse.util.Misc;
@@ -26,8 +25,6 @@ public class PickupItemPacketListener implements PacketListener {
 		final int y = packet.readLEShort();
 		final int itemId = packet.readShort();
 		final int x = packet.readLEShort();
-		final int e = packet.readByte();
-		final ItemEffect effect = ItemEffect.values()[e];
 		if (player.isTeleporting())
 			return;
 		if (player.getCombatBuilder().isAttacking()) {
@@ -45,9 +42,9 @@ public class PickupItemPacketListener implements PacketListener {
 					player.getMovementQueue().reset();
 					return;
 				}
-				GroundItem gItem = GroundItemManager.getGroundItem(player, new Item(itemId, 1, effect, 0), position);
+				GroundItem gItem = GroundItemManager.getGroundItem(player, new Item(itemId, 1), position);
 
-				boolean canPickup = Misc.canAddItemToInventory(player, itemId, effect);
+				boolean canPickup = Misc.canAddItemToInventory(player, itemId);
 				if (!canPickup) {
 					player.getInventory().full();
 					return;
@@ -60,12 +57,12 @@ public class PickupItemPacketListener implements PacketListener {
 					return;
 				}
 				if (gItem != null) {
-					if (player.getInventory().getAmountForEffect(gItem.getItem().getId(), effect) + gItem.getItem().getAmount() > Integer.MAX_VALUE
-							|| player.getInventory().getAmountForEffect(gItem.getItem().getId(), effect) + gItem.getItem().getAmount() <= 0) {
+					if (player.getInventory().getAmount(gItem.getItem().getId()) + gItem.getItem().getAmount() > Integer.MAX_VALUE
+							|| player.getInventory().getAmount(gItem.getItem().getId()) + gItem.getItem().getAmount() <= 0) {
 						player.getPacketSender().sendMessage("You cannot hold that amount of this item. Clear your inventory!");
 						return;
 					}
-					GroundItemManager.pickupGroundItem(player, new Item(itemId, 1, effect, 0), new Position(x, y, player.getPosition().getZ()));
+					GroundItemManager.pickupGroundItem(player, new Item(itemId, 1), new Position(x, y, player.getPosition().getZ()));
 				}
 			}
 		}));

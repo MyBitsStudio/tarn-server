@@ -25,6 +25,6 @@ public class EnterAmountToRemoveFromGroupBank extends EnterAmount {
 			amount = invAmount;
 		if(amount <= 0)
 			return;
-		player.getGroupIronmanBank().switchItem(player, player.getInventory(), new Item(item.getId(), amount, item.getEffect(), item.getBonus(), item.getRarity()), player.getGroupIronmanBank().getSlot(item), true, true);
+		player.getGroupIronmanBank().switchItem(player, player.getInventory(), new Item(item.getId(), amount), player.getGroupIronmanBank().getSlot(item), true, true);
 	}
 }

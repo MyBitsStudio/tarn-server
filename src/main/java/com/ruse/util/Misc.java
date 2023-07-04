@@ -8,7 +8,6 @@ import com.ruse.model.container.impl.Equipment;
 import com.ruse.model.definitions.ItemDefinition;
 import com.ruse.model.definitions.WeaponAnimations;
 import com.ruse.model.definitions.WeaponInterfaces;
-import com.ruse.model.projectile.ItemEffect;
 import com.ruse.world.World;
 import com.ruse.world.content.BonusManager;
 import com.ruse.world.content.combat.CombatContainer.ContainerHit;
@@ -299,8 +298,8 @@ public class Misc {
         return "" + hourPrefix + ":" + minutePrefix + "";
     }
 
-    public static boolean canAddItemToInventory(Player player, int itemId, ItemEffect effect) {
-        return player.getInventory().getFreeSlots() > 0 || (ItemDefinition.forId(itemId).isStackable() && player.getInventory().contains(itemId, effect));
+    public static boolean canAddItemToInventory(Player player, int itemId) {
+        return player.getInventory().getFreeSlots() > 0 || (ItemDefinition.forId(itemId).isStackable() && player.getInventory().contains(itemId));
     }
 
     /**

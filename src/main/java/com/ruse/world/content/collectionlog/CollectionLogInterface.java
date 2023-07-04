@@ -124,9 +124,9 @@ public class CollectionLogInterface {
         if(rewards != null) {
             for (int i = 0; i < 8; i++) {
                 if(rewards.length > i) {
-                    player.getPacketSender().sendItemOnInterface(30711, rewards[i].getId(), i, rewards[i].getAmount(), -1);
+                    player.getPacketSender().sendItemOnInterface(30711, rewards[i].getId(), i, rewards[i].getAmount());
                 } else {
-                    player.getPacketSender().sendItemOnInterface(30711, -1, i, 0,-1);
+                    player.getPacketSender().sendItemOnInterface(30711, -1, i, 0);
                 }
             }
         }

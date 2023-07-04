@@ -11,9 +11,9 @@ public class HandleVoteClaiming {
 	}
 
 	public void onLogin() {
-		player.getPacketSender().sendItemOnInterface(39672, 15501, 0, 1, -1);
-		player.getPacketSender().sendItemOnInterface(39673, 19114, 0, 1, -1);
-		player.getPacketSender().sendItemOnInterface(39674, 19116, 0, 1, -1);
+		player.getPacketSender().sendItemOnInterface(39672, 15501, 0, 1);
+		player.getPacketSender().sendItemOnInterface(39673, 19114, 0, 1);
+		player.getPacketSender().sendItemOnInterface(39674, 19116, 0, 1);
 		player.getPA().sendInterface(39670);
 		player.getPA().sendMessage(":helloworld");
 	}

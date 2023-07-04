@@ -35,13 +35,11 @@ public class SQLDatabase implements Database {
                 stmt.setInt(1, offer.getItemId());
                 stmt.setString(2, ItemDefinition.forId(offer.getItemId()).getName());
                 stmt.setInt(3,offer.getItemBonus());
-                stmt.setString(4, offer.getItemEffect());
-                stmt.setString(5, offer.getItemRarity());
-                stmt.setInt(6, offer.getInitialAmount());
-                stmt.setInt(7, offer.getAmountSold());
-                stmt.setInt(8, offer.getPrice());
-                stmt.setString(9, offer.getSeller());
-                stmt.setInt(10, offer.getSlot());
+                stmt.setInt(4, offer.getInitialAmount());
+                stmt.setInt(5, offer.getAmountSold());
+                stmt.setInt(6, offer.getPrice());
+                stmt.setString(7, offer.getSeller());
+                stmt.setInt(8, offer.getSlot());
                 System.out.println(offer);
                 stmt.executeUpdate();
             } catch (SQLException e) {
@@ -85,7 +83,7 @@ public class SQLDatabase implements Database {
                 ResultSet rs = stmt.executeQuery(GET_ALL_OFFERS)
             ) {
                 while(rs.next()) {
-                    Offer offer = new Offer(rs.getInt(2), rs.getInt(4), rs.getString(5), rs.getString(6), rs.getInt(7), rs.getInt(9), rs.getString(10), rs.getInt(11));
+                    Offer offer = new Offer(rs.getInt(2), rs.getInt(4), rs.getInt(9), rs.getString(10), rs.getInt(11));
                     offer.setAmountSold(rs.getInt(8));
                     offerList.add(offer);
                 }
@@ -131,14 +129,11 @@ public class SQLDatabase implements Database {
             ) {
                 stmt.setInt(1, history.itemId());
                 stmt.setString(2, ItemDefinition.forId(history.itemId()).getName());
-                stmt.setInt(3, history.bonus());
-                stmt.setString(4, history.itemEffect());
-                stmt.setString(5, history.itemRarity());
-                stmt.setInt(6, history.amount());
-                stmt.setInt(7, history.price());
-                stmt.setInt(8, history.price()*history.amount());
-                stmt.setString(9, history.seller());
-                stmt.setString(10, history.buyer());
+                stmt.setInt(3, history.amount());
+                stmt.setInt(4, history.price());
+                stmt.setInt(5, history.price()*history.amount());
+                stmt.setString(6, history.seller());
+                stmt.setString(7, history.buyer());
                 stmt.executeUpdate();
             } catch (SQLException e) {
                 e.printStackTrace();

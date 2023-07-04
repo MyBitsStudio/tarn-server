@@ -54,7 +54,7 @@ public class Forge {
                 .anyMatch(it -> it.getKey().getId() == item.getId())) {
             return;
         }
-        if(!player.getInventory().contains(item.getId(), item.getEffect(), item.getBonus(), item.getRarity())) {
+        if(!player.getInventory().contains(item.getId())) {
             return;
         }
         int itemId = item.getId();
@@ -94,7 +94,7 @@ public class Forge {
             player.getPacketSender().sendMessage("@red@You have already added a " + item.getDefinition().getName());
             return;
         }
-        if(!player.getInventory().contains(item.getId(), item.getEffect(), item.getBonus(), item.getRarity())) {
+        if(!player.getInventory().contains(item.getId())) {
             player.getPacketSender().sendMessage("@red@You do not have this item.");
             return;
         }
@@ -156,7 +156,7 @@ public class Forge {
             return;
         }
         for(Item item : itemList) {
-            if(player.getInventory().getAmount(item.getId(), item.getEffect(), item.getRarity(), item.getBonus()) < item.getAmount()) {
+            if(player.getInventory().getAmount(item.getId()) < item.getAmount()) {
                 player.getPacketSender().sendMessage("@red@Please try again.");
                 return;
             }

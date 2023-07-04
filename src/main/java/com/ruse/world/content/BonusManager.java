@@ -4,7 +4,6 @@ import com.ruse.model.Item;
 import com.ruse.model.Prayerbook;
 import com.ruse.model.container.impl.Equipment;
 import com.ruse.model.definitions.ItemDefinition;
-import com.ruse.model.projectile.ItemEffect;
 import com.ruse.world.content.combat.prayer.CurseHandler;
 import com.ruse.world.content.combat.prayer.PrayerHandler;
 import com.ruse.world.content.equipmentenhancement.BoostType;
@@ -31,9 +30,6 @@ public class BonusManager {
 					bonuses[10] += definition.getBonus()[i] / 3000;
 				}
 			}
-			ItemEffect effect = item.getEffect();
-			if(effect == ItemEffect.NOTHING)
-				continue;
 
 		}
 		for (Item item : player.getSecondaryEquipment().getItems()) {
@@ -46,9 +42,6 @@ public class BonusManager {
 					bonuses[10] += definition.getBonus()[i] / 3000;
 				}
 			}
-			ItemEffect effect = item.getEffect();
-			if(effect == ItemEffect.NOTHING)
-				continue;
 		}
 		if (player.isMini()) {
 			for (Item item : player.getEquipment().getItems()) {

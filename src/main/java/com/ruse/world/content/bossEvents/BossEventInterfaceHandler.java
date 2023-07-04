@@ -41,7 +41,7 @@ public class BossEventInterfaceHandler {
 			player.getPA().sendFrame126("Task Weakness: " + player.getBossevent().getWeakness(), 37413);
 			player.getPA().sendFrame126("Task Amount: " + player.getBossevent().getEndamount(), 37415);
 			player.getPA().sendNpcIdToDisplayPacket(player.getBossevent().getNpcid(), 37416);
-			player.getPacketSender().sendItemOnInterface(ITEM_GROUP_ID, player.getBossevent().getRewards(), 0, 1, -1);
+			player.getPacketSender().sendItemOnInterface(ITEM_GROUP_ID, player.getBossevent().getRewards(), 0, 1);
 		}
 	}
 

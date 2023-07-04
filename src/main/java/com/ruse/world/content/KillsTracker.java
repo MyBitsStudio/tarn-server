@@ -4,7 +4,6 @@ import java.util.Collections;
 import java.util.Comparator;
 
 import com.ruse.model.definitions.NpcDefinition;
-import com.ruse.model.projectile.ItemEffect;
 import com.ruse.world.entity.impl.player.Player;
 
 public class KillsTracker {
@@ -43,12 +42,10 @@ public class KillsTracker {
 						return -1;
 					} else if (kill2.amount > kill1.amount) {
 						return 1;
+					} else if (kill1.npcName.compareTo(kill2.npcName) > 0) {
+						return 1;
 					} else {
-						if (kill1.npcName.compareTo(kill2.npcName) > 0) {
-							return 1;
-						} else {
-							return -1;
-						}
+						return -1;
 					}
 				}
 				return 0;
@@ -108,11 +105,12 @@ public class KillsTracker {
 			amount = 2;
 		}
 
-		if(ItemEffect.hasTripleKills(player)) {
+		if(player.getEquipment().hasQuadKills())
+			amount += 3;
+		else if(player.getEquipment().hasTripleKills())
 			amount += 2;
-		} else if(ItemEffect.hasDoubleKills(player)) {
+		else if(player.getEquipment().hasDoubleKills())
 			amount += 1;
-		}
 
 		if(runningTotal)
 			entry.setRunningTotal(entry.getRunningTotal() + amount);

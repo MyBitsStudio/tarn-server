@@ -3,9 +3,6 @@ package com.ruse.model;
 import com.ruse.GameSettings;
 import com.ruse.ReducedSellPrice;
 import com.ruse.model.definitions.ItemDefinition;
-import com.ruse.model.projectile.ItemEffect;
-import com.ruse.util.Misc;
-import com.ruse.util.StringUtils;
 import com.ruse.world.content.Effigies;
 
 /**
@@ -18,8 +15,6 @@ public class Item {
 
 	private int id, amount, slot;
 
-	private ItemBonus bonus;
-
 	/**
 	 * An Item object constructor.
 	 *
@@ -29,28 +24,6 @@ public class Item {
 	public Item(int id, int amount) {
 		this.id = id;
 		this.amount = amount;
-	}
-
-	public Item(int id, int amount, ItemEffect effect, int bonus, ItemRarity rarity){
-		this(id, amount, effect, bonus);
-		if(this.bonus == null)
-			this.bonus = new ItemBonus(rarity, effect, bonus);
-		else{
-			this.bonus.setEffect(effect, bonus);
-		}
-	}
-
-	public Item(int id, int amount, ItemEffect effect, int bonus) {
-		this(id, amount);
-		if(this.bonus == null)
-			this.bonus = new ItemBonus(effect, bonus);
-		else
-			this.bonus.setEffect(effect, bonus);
-	}
-
-	public Item(int id, int amount, ItemBonus bonus){
-		this(id, amount);
-		this.bonus = bonus;
 	}
 
 	/**
@@ -84,8 +57,6 @@ public class Item {
 		return this;
 	}
 
-	public ItemBonus getItemBonus(){ return this.bonus;}
-
 	/**
 	 * Sets the amount of the item.
 	 */
@@ -103,22 +74,12 @@ public class Item {
 
 	public boolean tradeable() {
 		String name = getDefinition().getName().toLowerCase();
-		/*if (name.contains("clue scroll"))
-			return false;
-		if (name.contains("overload") && !name.contains("infinite"))
-			return false;
-		if (name.toLowerCase().contains("(deg)") || name.toLowerCase().contains("brawling"))
-			return false;
-		if (name.toLowerCase().contains("pet"))
-			return false;*/
 
 		for (int i : GameSettings.UNTRADEABLE_ITEMS) {
 			if (id == i)
 				return false;
 		}
-		if (Effigies.isEffigy(id))
-			return false;
-		return true;
+		return !Effigies.isEffigy(id);
 	}
 
 	public boolean reducedPrice() {
@@ -195,7 +156,7 @@ public class Item {
 	 * Copying the item by making a new item with same values.
 	 */
 	public Item copy() {
-		return new Item(id, amount, bonus);
+		return new Item(id, amount);
 	}
 
 	/**
@@ -219,17 +180,6 @@ public class Item {
 	}
 
 	/**
-	 * Increment the amount by the specified amount.
-	 */
-	public void incrementAmountBy(int amount) {
-		if ((this.amount + amount) > Integer.MAX_VALUE) {
-			this.amount = Integer.MAX_VALUE;
-		} else {
-			this.amount += amount;
-		}
-	}
-
-	/**
 	 * Decrement the amount by the specified amount.
 	 */
 	public void decrementAmountBy(int amount) {
@@ -239,36 +189,6 @@ public class Item {
 			this.amount -= amount;
 		}
 	}
-
-	public void setEffect(ItemEffect effect){
-		this.bonus = new ItemBonus(effect);
-	}
-
-	public void setDefaultEffect(ItemEffect effect){
-		this.bonus = new ItemBonus(effect);
-	}
-
-	public ItemEffect getEffect(){
-		return this.bonus == null ? ItemEffect.NOTHING : this.bonus.getEffect();
-	}
-
-	public void setBonus(int bonus){
-		this.bonus.setBonus(bonus);
-	}
-
-	public Item setRarity(ItemRarity rarity){
-		if(this.bonus == null){
-			this.bonus = new ItemBonus(ItemEffect.NOTHING);
-		}
-		this.bonus.setRarity(rarity);
-		return this;
-	}
-
-	public ItemRarity getRarity() {
-		return this.bonus == null ? ItemRarity.COMMON : this.bonus.getRarity();
-	}
-
-	public int getBonus(){ return this.bonus == null ? 0 : this.bonus.getBonus();}
 
 	@Override
 	public String toString() {

@@ -4,7 +4,6 @@ import com.ruse.GameSettings;
 import com.ruse.model.*;
 import com.ruse.model.container.impl.Shop.ShopManager;
 import com.ruse.model.definitions.NpcDefinition;
-import com.ruse.model.projectile.ItemEffect;
 import com.ruse.util.Misc;
 import com.ruse.world.World;
 import com.ruse.world.content.KillsTracker;
@@ -197,10 +196,6 @@ public class Slayer {
             }
 
             if (GameSettings.DOUBLE_SLAYER) {
-                amountOfTickets *= 2;
-                amountOfTickets2 *= 2;
-            }
-            if (ItemEffect.hasDoubleSlayer(player)) {
                 amountOfTickets *= 2;
                 amountOfTickets2 *= 2;
             }

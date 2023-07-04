@@ -3,7 +3,6 @@ package com.ruse.world.packages.combat.max;
 import com.ruse.model.Item;
 import com.ruse.model.Skill;
 import com.ruse.model.container.impl.Equipment;
-import com.ruse.model.projectile.ItemEffect;
 import com.ruse.util.Misc;
 import com.ruse.world.content.combat.CombatType;
 import com.ruse.world.content.combat.NpcMaxHitLimit;
@@ -96,24 +95,10 @@ public class RangeMax {
             }
 
 
-            for (Item item : player.getEquipment().getItems()) {
-                ItemEffect effect = item.getEffect();
-                if (effect == ItemEffect.NOTHING)
-                    continue;
-                switch (effect) {
-                    /*case RANGE_DAMAGE:
-                        maxHit *= item.getBonus() / 2;
-                        break;*/
-                    case ALL_DAMAGE_LOW:
-                        maxHit *= 1.05;
-                        break;
-                    case ALL_DAMAGE_MEDIUM:
-                        maxHit *= 1.07;
-                        break;
-                    case ALL_DAMAGE_HIGH:
-                        maxHit *= 1.09;
-                        break;
-                }
+            switch(player.getEquipment().getDamageBonus()){
+                case 1 -> maxHit *= 1.07;
+                case 2 -> maxHit *= 1.16;
+                case 3 -> maxHit *= 1.23;
             }
 
             if (player.getSummoning() != null && player.getSummoning().getFamiliar() != null

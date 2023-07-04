@@ -42,18 +42,18 @@ public class MysteryBoxOpener {
 			player.getPacketSender().resetItemsOnInterface(48051 + i * 10,150);
 		}
 		player.getPacketSender().sendString(48035, name);
-		player.getPacketSender().sendItemOnInterface(48045, boxId, 0, 1,-1);
+		player.getPacketSender().sendItemOnInterface(48045, boxId, 0, 1);
 
 		for (int i = 0; i < common.length; i++) {
-			player.getPacketSender().sendItemOnInterface(48051, common[i], i, 1,-1);
+			player.getPacketSender().sendItemOnInterface(48051, common[i], i, 1);
 		}
 
 		for (int i = 0; i < uncommon.length; i++) {
-			player.getPacketSender().sendItemOnInterface(48061, uncommon[i], i, 1,-1);
+			player.getPacketSender().sendItemOnInterface(48061, uncommon[i], i, 1);
 		}
 
 		for (int i = 0; i < rare.length; i++) {
-			player.getPacketSender().sendItemOnInterface(48071, rare[i], i, 1,-1);
+			player.getPacketSender().sendItemOnInterface(48071, rare[i], i, 1);
 		}
 
 	}

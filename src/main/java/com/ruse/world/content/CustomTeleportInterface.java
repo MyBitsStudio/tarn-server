@@ -34,7 +34,7 @@ public class CustomTeleportInterface {
             }
             for (int i = 0; i < drops.getDropList().length; i++) {
                 player.getPacketSender().sendItemOnInterface(60000 + 63, drops.getDropList()[i].getId(), i,
-                        drops.getDropList()[i].getItem().getAmount(), drops.getDropList()[i].getItem().getBonus());
+                        drops.getDropList()[i].getItem().getAmount());
             }
         } catch (Exception e) {
             e.printStackTrace();

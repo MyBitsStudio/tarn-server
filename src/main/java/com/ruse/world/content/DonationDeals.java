@@ -55,7 +55,7 @@ public class DonationDeals {
 		player.getPacketSender().sendInterface(57265);
 		int slot = 0;
 		for (int[] item : items) {
-			player.getPacketSender().sendItemOnInterface(57276, item[0], slot, item[1], -1);
+			player.getPacketSender().sendItemOnInterface(57276, item[0], slot, item[1]);
 			slot++;
 			// // System.out.println("Added to slot: " + slot);
 		}

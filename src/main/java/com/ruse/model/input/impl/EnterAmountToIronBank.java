@@ -23,7 +23,7 @@ public class EnterAmountToIronBank extends EnterAmount {
 			amount = invAmount;
 		if (amount <= 0)
 			return;
-		player.getInventory().switchItem(player.getGroupIronmanBank(), new Item(item, amount,player.getInventory().getItems()[getSlot()].getEffect(), player.getInventory().getItems()[getSlot()].getBonus()),
+		player.getInventory().switchItem(player.getGroupIronmanBank(), new Item(item, amount),
 				getSlot(), false, true);
 	}
 }

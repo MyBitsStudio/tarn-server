@@ -52,9 +52,9 @@ public class TeleInterface {
         }
         for(int i = 0; i < 18; i++) {
             if(getData().getDrops().length > i) {
-                player.getPacketSender().sendItemOnInterface(19093, getData().getDrops()[i].getId(), i, getData().getDrops()[i].getAmount(), getData().getDrops()[i].getBonus());
+                player.getPacketSender().sendItemOnInterface(19093, getData().getDrops()[i].getId(), i, getData().getDrops()[i].getAmount());
             } else {
-                player.getPacketSender().sendItemOnInterface(19093, -1, i, 0, 0);
+                player.getPacketSender().sendItemOnInterface(19093, -1, i, 0);
             }
         }
     }

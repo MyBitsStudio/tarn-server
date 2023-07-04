@@ -88,8 +88,8 @@ public class GroupIronmanBank extends ItemContainer {
 			if (getItems()[slot].getId() != item.getId() || !contains(item.getId()))
 				return this;
 
-			if (item.getAmount() > getAmountForEffect(item.getId(), item.getEffect())) {
-				item.setAmount(getAmountForEffect(item.getId(), item.getEffect()));
+			if (item.getAmount() > getAmount(item.getId())) {
+				item.setAmount(getAmount(item.getId()));
 			}
 
 			if (item.getAmount() <= 0) {
@@ -202,7 +202,7 @@ public class GroupIronmanBank extends ItemContainer {
 
 		for (Item it : from.getValidItems()) {
 			if (p.getMode() instanceof UltimateIronman) {
-				if (p.getGroupIronmanBank().getFreeSlots() <= 322 && !(p.getGroupIronmanBank().contains(it.getId(), it.getEffect(), it.getBonus(), it.getRarity()) && it.getDefinition().isStackable())) {
+				if (p.getGroupIronmanBank().getFreeSlots() <= 322 && !(p.getGroupIronmanBank().contains(it.getId()) && it.getDefinition().isStackable())) {
 					p.getPacketSender()
 							.sendMessage("@red@Bank full. You only have 30 slots as a hc iron man for dungeoneering.");
 
@@ -210,16 +210,16 @@ public class GroupIronmanBank extends ItemContainer {
 				}
 			}
 			if (p.getGroupIronmanBank().getFreeSlots() <= 0
-					&& !(p.getGroupIronmanBank().contains(it.getId(), it.getEffect(), it.getBonus(), it.getRarity()) && it.getDefinition().isStackable())) {
+					&& !(p.getGroupIronmanBank().contains(it.getId()) && it.getDefinition().isStackable())) {
 				p.getPacketSender().sendMessage("Bank full.");
 				return;
 			}
 
 			Item toBank = new Item((it.getDefinition().isNoted() ? (it.getId() - 1) : it.getId()),
-					it.getAmount(), it.getEffect(), it.getBonus(), it.getRarity());
+					it.getAmount());
 
 
-			int bankAmt = p.getGroupIronmanBank().getAmount(toBank.getId(), toBank.getEffect(), toBank.getRarity(), toBank.getBonus());
+			int bankAmt = p.getGroupIronmanBank().getAmount(toBank.getId());
 			if (bankAmt + toBank.getAmount() >= Integer.MAX_VALUE || bankAmt + toBank.getAmount() <= 0) {
 				p.getPacketSender().sendMessage("Your bank cannot hold that amount of that item.");
 				continue;

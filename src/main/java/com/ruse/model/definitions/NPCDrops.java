@@ -6,7 +6,6 @@ import com.ruse.model.*;
 import com.ruse.model.Locations.Location;
 import com.ruse.model.container.impl.Bank;
 import com.ruse.model.container.impl.Equipment;
-import com.ruse.model.projectile.ItemEffect;
 import com.ruse.util.JsonLoader;
 import com.ruse.util.Misc;
 import com.ruse.util.RandomUtility;
@@ -258,7 +257,7 @@ public class NPCDrops {
         for (double dropRate : dropRates.keySet()) {
             double roll_chance = new SecureRandom().nextDouble() / divider;
 
-            boolean hasAoe = player.getEquipment().get(Equipment.WEAPON_SLOT).getEffect() == ItemEffect.AOE_EFFECT;
+            boolean hasAoe = player.getEquipment().hasAoE();
             double divide = (CustomDropUtils.drBonus(player, npc.getId()) > 0 ? ((double) CustomDropUtils.drBonus(player, npc.getId()) / (hasAoe ? 250 : 500)) + 1 : 1);
 
             double required = 1 / dropRate;
@@ -342,10 +341,9 @@ public class NPCDrops {
 
             Item item = new Item(drop.getId(), amount);
             double ran = Misc.getRandom(0, 100);
-            item.setDefaultEffect(ItemRarity.getRandomEffectForRarity(item, ItemRarity.getRarityForPercentage(ran), npc.getId()));
             int itemId = item.getId();
 
-            if (ItemEffect.hasDoubleCash(player) && item.getId() == 995) {
+            if (player.getEquipment().hasDoubleCash() && item.getId() == 995) {
                 item.setAmount(item.getAmount() * 2);
             }
             if ((player.getEquipment().get(Equipment.ENCHANTMENT_SLOT).getId() == 17391 || player.getEquipment().get(Equipment.ENCHANTMENT_SLOT).getId() == 24011)
@@ -434,7 +432,6 @@ public class NPCDrops {
                 }
                 NpcDropItem random = Misc.random(allDrops);
                 Item randomItem = random.getItem();
-                randomItem.setDefaultEffect(ItemRarity.getRandomEffectForRarity(randomItem, ItemRarity.getRarityForPercentage(Misc.getRandomDouble(100)), npc.getId()));
                 player.getPacketSender().sendMessage("@red@Your dry streak granted you a drop of " + randomItem.getDefinition().getName());
                String itemMessage = randomItem.getDefinition().getName();
                 String npcName = Misc.formatText(npc.getDefinition().getName());

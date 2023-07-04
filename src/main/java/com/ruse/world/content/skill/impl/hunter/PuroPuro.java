@@ -231,59 +231,59 @@ public class PuroPuro {
 	 * @param player The player looting the jar
 	 * @param itemId The jar the player is looting
 	 */
-	public static void lootJar(final Player player, Item jar, JarData jarData) {
-		if (player == null || jar == null || jarData == null || !player.getClickDelay().elapsed(2000))
-			return;
-		if (player.getInventory().getFreeSlots() < 2) {
-			player.getPacketSender().sendMessage("You need at least 2 free inventory space to loot this.");
-			return;
-		}
-		player.getInventory().delete(jar);
-		player.getInventory().add(11260, 1);
-		int randomCommonItem = Misc.getRandom(JarData.getLootRarity(jarData, 0));
-		int randomUncommonItem = JarData.getLootRarity(jarData, 0) + Misc.getRandom(JarData.getLootRarity(jarData, 1));
-		int randomRareItem = JarData.getLootRarity(jarData, 2);
-		int randomVeryRareItem = JarData.getLootRarity(jarData, 3);
-		Item reward = null;
-		switch (JarData.getRar()) {
-		case 0:
-			reward = jarData.loot[randomCommonItem];
-			if (reward != null)
-				player.getInventory().add(reward);
-			break;
-		case 1:
-			reward = jarData.loot[randomUncommonItem];
-			if (reward != null)
-				player.getInventory().add(reward);
-			break;
-		case 2:
-			reward = jarData.loot[randomRareItem];
-			if (reward != null)
-				player.getInventory().add(reward);
-			break;
-		case 3:
-			reward = jarData.loot[randomVeryRareItem];
-			if (reward != null)
-				player.getInventory().add(reward);
-			break;
-		}
-		String rewardName = reward.getDefinition().getName();
-		String s = Misc.anOrA(rewardName);
-		if (reward.getAmount() > 1) {
-			s = "" + reward.getAmount() + "";
-			if (!rewardName.endsWith("s")) {
-				if (rewardName.contains("potion")) {
-					String l = rewardName.substring(0, rewardName.indexOf(" potion"));
-					String l2 = rewardName.substring(rewardName.indexOf("potion"), 8);
-					l2 += rewardName.contains("(3)") ? "(3)" : "(4)";
-					rewardName = "" + l + " potions " + l2 + "";
-				} else
-					rewardName = rewardName + "s";
-			}
-		}
-		player.getPacketSender().sendMessage(
-				"You loot the " + jar.getDefinition().getName() + " and find " + s + " " + rewardName + ".");
-		player.getClickDelay().reset();
+	public static void lootJar(final Player player, Item jar) {
+//		if (player == null || jar == null || jarData == null || !player.getClickDelay().elapsed(2000))
+//			return;
+//		if (player.getInventory().getFreeSlots() < 2) {
+//			player.getPacketSender().sendMessage("You need at least 2 free inventory space to loot this.");
+//			return;
+//		}
+//		player.getInventory().delete(jar);
+//		player.getInventory().add(11260, 1);
+//		int randomCommonItem = Misc.getRandom(JarData.getLootRarity(jarData, 0));
+//		int randomUncommonItem = JarData.getLootRarity(jarData, 0) + Misc.getRandom(JarData.getLootRarity(jarData, 1));
+//		int randomRareItem = JarData.getLootRarity(jarData, 2);
+//		int randomVeryRareItem = JarData.getLootRarity(jarData, 3);
+//		Item reward = null;
+//		switch (JarData.getRar()) {
+//		case 0:
+//			reward = jarData.loot[randomCommonItem];
+//			if (reward != null)
+//				player.getInventory().add(reward);
+//			break;
+//		case 1:
+//			reward = jarData.loot[randomUncommonItem];
+//			if (reward != null)
+//				player.getInventory().add(reward);
+//			break;
+//		case 2:
+//			reward = jarData.loot[randomRareItem];
+//			if (reward != null)
+//				player.getInventory().add(reward);
+//			break;
+//		case 3:
+//			reward = jarData.loot[randomVeryRareItem];
+//			if (reward != null)
+//				player.getInventory().add(reward);
+//			break;
+//		}
+//		String rewardName = reward.getDefinition().getName();
+//		String s = Misc.anOrA(rewardName);
+//		if (reward.getAmount() > 1) {
+//			s = "" + reward.getAmount() + "";
+//			if (!rewardName.endsWith("s")) {
+//				if (rewardName.contains("potion")) {
+//					String l = rewardName.substring(0, rewardName.indexOf(" potion"));
+//					String l2 = rewardName.substring(rewardName.indexOf("potion"), 8);
+//					l2 += rewardName.contains("(3)") ? "(3)" : "(4)";
+//					rewardName = "" + l + " potions " + l2 + "";
+//				} else
+//					rewardName = rewardName + "s";
+//			}
+//		}
+//		player.getPacketSender().sendMessage(
+//				"You loot the " + jar.getDefinition().getName() + " and find " + s + " " + rewardName + ".");
+//		player.getClickDelay().reset();
 	}
 
 }

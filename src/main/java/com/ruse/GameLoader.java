@@ -30,7 +30,6 @@ import com.ruse.world.content.grandLottery.GrandLottery;
 import com.ruse.world.content.grandexchange.GrandExchangeOffers;
 import com.ruse.world.content.groupironman.GroupManager;
 import com.ruse.world.content.polling.PollManager;
-import com.ruse.world.content.pos.PlayerOwnedShopManager;
 import com.ruse.world.content.serverperks.ServerPerks;
 import com.ruse.world.content.tradingpost.TradingPost;
 import com.ruse.world.entity.actor.player.controller.ControllerHandler;
@@ -143,7 +142,6 @@ public final class GameLoader {
 		serviceLoader.execute(() -> WeaponInterfaces.parseInterfaces().load());
 		serviceLoader.execute(WeaponInterfaces::init);
 		serviceLoader.execute(() -> ShopManager.parseShops().load());
-		serviceLoader.execute(PlayerOwnedShopManager::loadShops);
 		serviceLoader.execute(() -> DialogueManager.parseDialogues().load());
 		serviceLoader.execute(NPC::init);
 		serviceLoader.execute(DoubleOrNothing::initialize);

@@ -90,7 +90,7 @@ public class ScratchCard {
 				player.getPA().sendFrame126("", 39306);
 				// player.getPacketSender().sendItemOnInterface(39330,
 				// COMBINATION.get(i).getFirst().getId(), 1);
-				player.getPacketSender().sendItemOnInterface(39330, COMBINATION.get(i).getFirst().getId(), 1, 1,-1);
+				player.getPacketSender().sendItemOnInterface(39330, COMBINATION.get(i).getFirst().getId(), 1, 1);
 			}
 			break;
 		case -26215:
@@ -101,7 +101,7 @@ public class ScratchCard {
 				}
 				COMBINATION_COUNT.add(COMBINATION.get(i).getSecond());
 				player.getPA().sendFrame126("", 39316);
-				player.getPacketSender().sendItemOnInterface(39331, COMBINATION.get(i).getSecond().getId(), 1, 1,-1);
+				player.getPacketSender().sendItemOnInterface(39331, COMBINATION.get(i).getSecond().getId(), 1, 1);
 
 			}
 			break;
@@ -113,7 +113,7 @@ public class ScratchCard {
 				}
 				COMBINATION_COUNT.add(COMBINATION.get(i).getThird());
 				player.getPA().sendFrame126("", 39314);
-				player.getPacketSender().sendItemOnInterface(39333, COMBINATION.get(i).getThird().getId(), 1, 1,-1);
+				player.getPacketSender().sendItemOnInterface(39333, COMBINATION.get(i).getThird().getId(), 1, 1);
 
 			}
 			break;
@@ -146,11 +146,11 @@ public class ScratchCard {
 		int item1 = BonusRewards[random.nextInt(BonusRewards.length)];
 		if (Misc.exclusiveRandom(1, 3) <= 1) {
 			player.getInventory().add(new Item(item, 1));
-			player.getPacketSender().sendItemOnInterface(39332, item, 1, 1,-1);
+			player.getPacketSender().sendItemOnInterface(39332, item, 1, 1);
 
 		} else {
 			player.getInventory().add(new Item(item1, 1));
-			player.getPacketSender().sendItemOnInterface(39332, item1, 1, 1,-1);
+			player.getPacketSender().sendItemOnInterface(39332, item1, 1, 1);
 		}
 
 	}

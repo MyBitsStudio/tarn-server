@@ -4,7 +4,6 @@ import com.ruse.GameSettings;
 import com.ruse.model.Item;
 import com.ruse.model.Locations;
 import com.ruse.model.container.impl.Equipment;
-import com.ruse.model.projectile.ItemEffect;
 import com.ruse.world.content.combat.prayer.PrayerHandler;
 import com.ruse.world.content.equipmentenhancement.BoostType;
 import com.ruse.world.content.serverperks.ServerPerks;
@@ -23,19 +22,9 @@ public class CustomDropUtils {
      */
     public static int drBonus(Player player, int npc) {
         int percentBoost = 0;
-        for (Item item : player.getEquipment().getItems()) {
-            if(item == null)
-                continue;
-            ItemEffect effect = item.getEffect();
-            if(effect == ItemEffect.NOTHING)
-                continue;
-            switch(effect) {
-                case DROP_RATE_LOW:
-                case DROP_RATE_HIGH:
-                    percentBoost += item.getBonus();
-                    break;
-            }
-        }
+
+        percentBoost += player.getEquipment().getDropRateBonus();
+
         if (player.getEquipment().contains(23044)) { //Tier 1 Aura
             percentBoost += 5;
         }
@@ -139,7 +128,22 @@ public class CustomDropUtils {
             }
         }
 
-        if (!player.isInsideRaids()) {
+        if (player.isInsideRaids()) {
+            if (player.getSummoning() != null && player.getSummoning().getFamiliar() != null
+                    && player.getSummoning().getFamiliar().getSummonNpc().getId() == BossPets.BossPet.DEMON_PET.npcId) {
+                percentBoost += 10;
+            }
+            if (player.getSummoning() != null && player.getSummoning().getFamiliar() != null
+                    && player.getSummoning().getFamiliar().getSummonNpc().getId() == BossPets.BossPet.GOLEM_PET.npcId) {
+                percentBoost += 15;
+            }
+            if (player.getSummoning() != null && player.getSummoning().getFamiliar() != null
+                    && player.getSummoning().getFamiliar().getSummonNpc().getId() == BossPets.BossPet.DRAGON_PET.npcId) {
+                percentBoost += 25;
+            }
+
+
+        } else {
             /*if (npc == player.getSlayer().getSlayerTask().getNpcId()) {
                 if (player.getSummoning() != null && player.getSummoning().getFamiliar() != null
                         && player.getSummoning().getFamiliar().getSummonNpc().getId() == BossPets.BossPet.RED_FENRIR_PET.npcId) {
@@ -158,21 +162,6 @@ public class CustomDropUtils {
                     && player.getSummoning().getFamiliar().getSummonNpc().getId() == BossPets.BossPet.CRYSTAL_ORC_PET.npcId) {
                 percentBoost += 25;
             }
-        } else {
-            if (player.getSummoning() != null && player.getSummoning().getFamiliar() != null
-                    && player.getSummoning().getFamiliar().getSummonNpc().getId() == BossPets.BossPet.DEMON_PET.npcId) {
-                percentBoost += 10;
-            }
-            if (player.getSummoning() != null && player.getSummoning().getFamiliar() != null
-                    && player.getSummoning().getFamiliar().getSummonNpc().getId() == BossPets.BossPet.GOLEM_PET.npcId) {
-                percentBoost += 15;
-            }
-            if (player.getSummoning() != null && player.getSummoning().getFamiliar() != null
-                    && player.getSummoning().getFamiliar().getSummonNpc().getId() == BossPets.BossPet.DRAGON_PET.npcId) {
-                percentBoost += 25;
-            }
-
-
         }
         if (player.getSummoning() != null && player.getSummoning().getFamiliar() != null
                 && player.getSummoning().getFamiliar().getSummonNpc().getId() == BossPets.BossPet.ODIN_PET.npcId) {
@@ -414,14 +403,8 @@ public class CustomDropUtils {
 
     public static int getDoubleDropChance(Player player, int npc) {
         int percentBoost = 0;
-        for (Item item : player.getEquipment().getItems()) {
-            if(item == null)
-                continue;
-            ItemEffect effect = item.getEffect();
-            if(effect != ItemEffect.DOUBLE_DROP)
-                continue;
-            percentBoost += item.getBonus();
-        }
+
+        percentBoost += player.getEquipment().getDoubleDrop();
 
         if (player.getDdrPotionTimer() > 0) {
             percentBoost += 100;

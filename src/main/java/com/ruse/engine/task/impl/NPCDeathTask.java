@@ -7,7 +7,6 @@ import com.ruse.model.Animation;
 import com.ruse.model.DamageDealer;
 import com.ruse.model.Locations.Location;
 import com.ruse.model.definitions.NPCDrops;
-import com.ruse.model.projectile.ItemEffect;
 import com.ruse.util.Misc;
 import com.ruse.util.RandomUtility;
 import com.ruse.world.World;
@@ -258,12 +257,12 @@ public class NPCDeathTask extends Task {
 
                         int killCount = 1;
 
-                        if (ItemEffect.hasTripleKills(killer)) {
-                            killCount *= 3;
-                        }
-
-                        if (ItemEffect.hasDoubleKills(killer)) {
-                            killCount *= 2;
+                        if(killer.getEquipment().hasQuadKills()){
+                            killCount = 4;
+                        } else if(killer.getEquipment().hasTripleKills()){
+                            killCount = 3;
+                        } else if(killer.getEquipment().hasDoubleKills()){
+                            killCount = 2;
                         }
 
                         killer.getPointsHandler().incrementNPCKILLCount(killCount);
@@ -393,27 +392,30 @@ public class NPCDeathTask extends Task {
             System.out.println("killer is null");
             return;
         }
-        boolean tripleKills = ItemEffect.hasTripleKills(killer);
-        boolean doubleKills = ItemEffect.hasDoubleKills(killer);
+
         boolean hasPet = killer.getSummoning() != null && killer.getSummoning().getFamiliar() != null && killer.getSummoning().getFamiliar().getSummonNpc().getId() == 302;
         int assign = 0;
 
         if(npcId == 1614) {
-            if(tripleKills)
+            if(killer.getEquipment().hasQuadKills()){
+                assign += 3;
+            } else if(killer.getEquipment().hasTripleKills()){
                 assign += 2;
-            else if(doubleKills)
+            } else if(killer.getEquipment().hasDoubleKills()){
                 assign += 1;
-            if(hasPet)
-                assign += 1;
+            }
             assign++;
             killer.getPointsHandler().incrementNPCKILLCount(assign);
         }
 
         if(npcId == 603) {
-            if(tripleKills)
+            if(killer.getEquipment().hasQuadKills()){
+                assign += 3;
+            } else if(killer.getEquipment().hasTripleKills()){
                 assign += 2;
-            else if(doubleKills)
+            } else if(killer.getEquipment().hasDoubleKills()){
                 assign += 1;
+            }
             if(hasPet)
                 assign += 1;
             assign++;
@@ -421,20 +423,26 @@ public class NPCDeathTask extends Task {
         }
 
         if(npcId == 12843) {
-            if(tripleKills)
+            if(killer.getEquipment().hasQuadKills()){
+                assign += 3;
+            } else if(killer.getEquipment().hasTripleKills()){
                 assign += 2;
-            else if(doubleKills)
+            } else if(killer.getEquipment().hasDoubleKills()){
                 assign += 1;
+            }
             if(hasPet)
                 assign += 1;
             assign++;
             killer.getPointsHandler().incrementDEMONKILLCount(assign);
         }
         if(npcId == 8014) {
-            if(tripleKills)
+            if(killer.getEquipment().hasQuadKills()){
+                assign += 3;
+            } else if(killer.getEquipment().hasTripleKills()){
                 assign += 2;
-            else if(doubleKills)
+            } else if(killer.getEquipment().hasDoubleKills()){
                 assign += 1;
+            }
             if(hasPet)
                 assign += 1;
             assign++;

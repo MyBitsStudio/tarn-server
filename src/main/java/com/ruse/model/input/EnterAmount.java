@@ -1,7 +1,5 @@
 package com.ruse.model.input;
 
-import com.ruse.model.projectile.ItemEffect;
-
 /**
  * Handles entering amounts
  * 
@@ -9,8 +7,7 @@ import com.ruse.model.projectile.ItemEffect;
  */
 public abstract class EnterAmount extends Input {
 
-	private int item, slot, bonus;
-	private ItemEffect effect;
+	private int item, slot;
 
 	public int getItem() {
 		return item;
@@ -18,14 +15,6 @@ public abstract class EnterAmount extends Input {
 
 	public int getSlot() {
 		return slot;
-	}
-
-	public int getBonus() {
-		return bonus;
-	}
-
-	public ItemEffect getEffect() {
-		return effect;
 	}
 
 	public EnterAmount() {
@@ -38,22 +27,6 @@ public abstract class EnterAmount extends Input {
 	public EnterAmount(int item, int slot) {
 		this.item = item;
 		this.slot = slot;
-	}
-
-	public EnterAmount(int item, ItemEffect effect) {
-		this.item = item;
-		this.effect = effect;
-	}
-	public EnterAmount(int item, int slot, ItemEffect effect) {
-		this.item = item;
-		this.slot = slot;
-	}
-
-	public EnterAmount(int item, int slot, ItemEffect effect, int bonus) {
-		this.item = item;
-		this.slot = slot;
-		this.effect = effect;
-		this.bonus = bonus;
 	}
 
 }

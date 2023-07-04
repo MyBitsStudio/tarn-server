@@ -293,9 +293,6 @@ public class DialogueOptions {
                         player.getPacketSender().sendMessage("You need 500 Event Crystals to combine this item.");
                     }
                     break;
-                case 101:
-                    player.getPlayerOwnedShopManager().openEditor();
-                    break;
                 case 9924:
                     player.setInputHandling(new WithdrawCurrencyFromCurrencyPouch(1));
                     player.getPacketSender().sendEnterAmountPrompt("How many Pvm tickets would you like to withdraw?");
@@ -459,7 +456,6 @@ public class DialogueOptions {
                         player.getPacketSender().sendMessage("You need 400 Event Crystals to combine this item.");
                     }
                 }
-                case 101 -> player.getPlayerOwnedShopManager().claimEarnings();
                 case 9924 -> {
                     player.setInputHandling(new WithdrawCurrencyFromCurrencyPouch(2));
                     player.getPacketSender().sendEnterAmountPrompt("How many Afk tickets would you like to withdraw?");
@@ -587,7 +583,6 @@ public class DialogueOptions {
                         player.getPacketSender().sendMessage("You need 300 Event Crystals to combine this item.");
                     }
                 }
-                case 101 -> player.getPlayerOwnedShopManager().openHistory();
                 case 9924 -> {
                     player.setInputHandling(new WithdrawCurrencyFromCurrencyPouch(3));
                     player.getPacketSender().sendEnterAmountPrompt("How many Slayer tickets would you like to withdraw?");
@@ -1123,7 +1118,6 @@ public class DialogueOptions {
                     player.getInviteParty().add(player);
                     player.setInviteParty(null);
                 }
-                case 901 -> player.getRarityTransfer().transfer();
                 case 8005 -> {
                     player.getPacketSender().sendInterfaceRemoval();
                     if (!player.getSkillManager().maxed()) {

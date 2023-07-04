@@ -43,9 +43,6 @@ public class BankModifiableX implements PacketListener {
 			player.getBank(tab).setPlayer(player).switchItem(player.getInventory(), new Item(outcome, amount),
 					player.getBank(tab).getSlot(outcome), false, true);
 			break;
-		case -31915:
-			player.getPlayerOwnedShopManager().handleWithdraw(slot, item, 10);
-			break;
 		}
 	}
 

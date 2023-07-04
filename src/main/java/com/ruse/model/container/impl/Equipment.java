@@ -5,6 +5,9 @@ import com.ruse.model.container.ItemContainer;
 import com.ruse.model.container.StackType;
 import com.ruse.model.definitions.ItemDefinition;
 import com.ruse.world.entity.impl.player.Player;
+import com.ruse.world.packages.slot.SlotBonus;
+import com.ruse.world.packages.slot.SlotEffect;
+import lombok.Getter;
 
 /**
  * Represents a player's equipment item container.
@@ -14,6 +17,11 @@ import com.ruse.world.entity.impl.player.Player;
 
 public class Equipment extends ItemContainer {
 
+	//packet 159
+
+	@Getter
+	private final SlotBonus[] slotBonuses = new SlotBonus[15];
+
 	/**
 	 * The Equipment constructor.
 	 * 
@@ -21,6 +29,8 @@ public class Equipment extends ItemContainer {
 	 */
 	public Equipment(Player player) {
 		super(player);
+		for(int i = 0; i < slotBonuses.length; i++)
+			slotBonuses[i] = new SlotBonus();
 	}
 
 	@Override
@@ -123,20 +133,6 @@ public class Equipment extends ItemContainer {
 		return torva || pernix || virtus;
 	}
 
-	public boolean wearingHalberd() {
-		ItemDefinition def = ItemDefinition.forId(getPlayer().getEquipment().getItems()[Equipment.WEAPON_SLOT].getId());
-		return def != null && def.getName().toLowerCase().endsWith("halberd");
-	}
-
-	public boolean properEquipmentForWilderness() {
-		int count = 0;
-		for (Item item : getValidItems()) {
-			if (item != null && item.tradeable())
-				count++;
-		}
-		return count >= 3;
-	}
-
 	/**
 	 * Gets the amount of item of a type a player has, for example, gets how many
 	 * Zamorak items a player is wearing for GWD
@@ -161,5 +157,89 @@ public class Equipment extends ItemContainer {
 					count++;
 			}
 		return count;
+	}
+
+	/**
+	 * Booleans for effects
+	 */
+
+	public boolean hasDoubleKills(){
+		for (SlotBonus slotBonus : slotBonuses) {
+			if (slotBonus.getEffect() == SlotEffect.MULTI_KILLS) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	public boolean hasTripleKills(){
+		for (SlotBonus slotBonus : slotBonuses) {
+			if (slotBonus.getEffect() == SlotEffect.MULTI_KILLS) {
+				if(slotBonus.getBonus() == 2)
+					return true;
+			}
+		}
+		return false;
+	}
+
+	public boolean hasQuadKills(){
+		for (SlotBonus slotBonus : slotBonuses) {
+			if (slotBonus.getEffect() == SlotEffect.MULTI_KILLS) {
+				if(slotBonus.getBonus() == 3)
+					return true;
+			}
+		}
+		return false;
+	}
+
+	public boolean hasAoE(){
+		return slotBonuses[WEAPON_SLOT].getEffect() == SlotEffect.AOE_EFFECT;
+	}
+
+	public boolean hasDoubleCash(){
+		for (SlotBonus slotBonus : slotBonuses) {
+			if (slotBonus.getEffect() == SlotEffect.DOUBLE_CASH) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	public boolean hasDoubleXP(){
+		for (SlotBonus slotBonus : slotBonuses) {
+			if (slotBonus.getEffect() == SlotEffect.DOUBLE_XP) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	public int getDamageBonus() {
+		for (SlotBonus slotBonus : slotBonuses) {
+			if (slotBonus.getEffect() == SlotEffect.ALL_DAMAGE) {
+				return slotBonus.getBonus();
+			}
+		}
+		return 0;
+	}
+
+	public int getDoubleDrop(){
+		int bonus = 0;
+		for (SlotBonus slotBonus : slotBonuses) {
+			if (slotBonus.getEffect() == SlotEffect.DOUBLE_DROP) {
+				bonus += slotBonus.getBonus();
+			}
+		}
+		return bonus;
+	}
+
+	public int getDropRateBonus() {
+		int bonus = 0;
+		for (SlotBonus slotBonus : slotBonuses) {
+			if (slotBonus.getEffect() == SlotEffect.DROP_RATE_LOW || slotBonus.getEffect() == SlotEffect.DROP_RATE_MED || slotBonus.getEffect() == SlotEffect.DROP_RATE_HIGH) {
+				bonus += slotBonus.getBonus();
+			}
+		}
+		return bonus;
 	}
 }

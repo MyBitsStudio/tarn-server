@@ -4,19 +4,14 @@ public class Offer {
 
     private final int itemId;
     private int itemBonus;
-    private final String itemEffect;
-    private final String itemRarity;
     private final int initialAmount;
     private final int price;
     private final String seller;
     private final int slot;
     private int amountSold;
 
-    public Offer(int itemId, int itemBonus, String itemEffect, String itemRarity, int initialAmount, int price, String seller, int slot) {
+    public Offer(int itemId,  int initialAmount, int price, String seller, int slot) {
         this.itemId = itemId;
-        this.itemBonus = itemBonus;
-        this.itemEffect = itemEffect;
-        this.itemRarity = itemRarity;
         this.initialAmount = initialAmount;
         this.price = price;
         this.seller = seller;
@@ -59,14 +54,6 @@ public class Offer {
         this.itemBonus = itemBonus;
     }
 
-    public String getItemEffect() {
-        return itemEffect;
-    }
-
-    public String getItemRarity() {
-        return itemRarity;
-    }
-
     public int getAmountLeft() {
         return initialAmount - amountSold;
     }
@@ -84,8 +71,6 @@ public class Offer {
         return "Offer{" +
                 "itemId=" + itemId +
                 ", itemBonus=" + itemBonus +
-                ", itemEffect='" + itemEffect + '\'' +
-                ", itemRarity='" + itemRarity + '\'' +
                 ", initialAmount=" + initialAmount +
                 ", price=" + price +
                 ", seller='" + seller + '\'' +

@@ -4,7 +4,6 @@ import com.ruse.engine.task.Task;
 import com.ruse.engine.task.TaskManager;
 import com.ruse.model.*;
 import com.ruse.model.definitions.ItemDefinition;
-import com.ruse.model.projectile.ItemEffect;
 import com.ruse.util.Misc;
 import com.ruse.world.World;
 import com.ruse.world.content.BonusManager;
@@ -95,12 +94,12 @@ public class AuraRaids {
                 }
             }
             if (member != null) {
-                if (KillsTracker.getTotalKillsForNpc(9914, member) < 1000) {
-                        member.sendMessage("@red@Your Sasuke KC is too low to participate. " + NpcRequirements.SASUKE.getKillCount() + "/1000");
-                        p.getPacketSender().sendMessage(
-                                "@red@ " + member.getUsername() + "'s Sasuke KC is lower than 1000. ");
-                        return;
-                    }
+//                if (KillsTracker.getTotalKillsForNpc(9914, member) < 1000) {
+//                        //member.sendMessage("@red@Your Sasuke KC is too low to participate. " + NpcRequirements.SASUKE.getKillCount() + "/1000");
+//                        p.getPacketSender().sendMessage(
+//                                "@red@ " + member.getUsername() + "'s Sasuke KC is lower than 1000. ");
+//                        return;
+//                    }
             }
         }
         party.enteredDungeon(true);
@@ -403,9 +402,6 @@ public class AuraRaids {
                     if (drop.getId() == 20509) {
                         player.getInventory().delete(20509, 1);
                         Item item1 = new Item(20504);
-                        item1.setEffect(ItemEffect.AOE_EFFECT_2x2);
-                        item1.setRarity(ItemRarity.LEGENDARY);
-                        item1.setBonus(1);
                         player.getInventory().add(item1);
                     }
                     player.getInventory().add(10835, Misc.getRandom(712, 9764));

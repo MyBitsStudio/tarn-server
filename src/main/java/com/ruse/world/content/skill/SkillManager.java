@@ -8,7 +8,6 @@ import com.ruse.model.Locations.Location;
 import com.ruse.model.container.impl.Equipment;
 import com.ruse.model.definitions.WeaponAnimations;
 import com.ruse.model.definitions.WeaponInterfaces;
-import com.ruse.model.projectile.ItemEffect;
 import com.ruse.util.Misc;
 import com.ruse.world.World;
 import com.ruse.world.content.*;
@@ -206,7 +205,7 @@ public class SkillManager {
         if (ServerPerks.getInstance().getActivePerk() == ServerPerks.Perk.XP || ServerPerks.getInstance().getActivePerk() == ServerPerks.Perk.ALL_PERKS) {
             experience *= 3;
         }
-        if (ItemEffect.hasDoubleXp(player)) {
+        if (player.getEquipment().hasDoubleXP()) {
             experience *= 2;
         }
         if (WellOfGoodwill.isActive())

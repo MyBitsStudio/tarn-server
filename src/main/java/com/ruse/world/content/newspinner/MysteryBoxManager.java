@@ -64,7 +64,7 @@ public class MysteryBoxManager {
 
     public void clearMysteryBox() {
         for (int i = 0; i < 100; i++) {
-            player.getPacketSender().sendItemOnInterface(POSSIBLE_REWARDS_INTERFACE_ID, -1, i, -1, -1);
+            player.getPacketSender().sendItemOnInterface(POSSIBLE_REWARDS_INTERFACE_ID, -1, i, -1);
         }
     }
 
@@ -72,22 +72,22 @@ public class MysteryBoxManager {
         int slot = 0;
 
         for (Item item : mysteryBox.getSuper_rare_items()) {
-            player.getPacketSender().sendItemOnInterface(POSSIBLE_REWARDS_INTERFACE_ID, item.getId(), slot, item.getAmount(), item.getBonus());
+            player.getPacketSender().sendItemOnInterface(POSSIBLE_REWARDS_INTERFACE_ID, item.getId(), slot, item.getAmount());
             slot++;
         }
 
         for (Item item : mysteryBox.getRare_items()) {
-            player.getPacketSender().sendItemOnInterface(POSSIBLE_REWARDS_INTERFACE_ID, item.getId(), slot, item.getAmount(), item.getBonus());
+            player.getPacketSender().sendItemOnInterface(POSSIBLE_REWARDS_INTERFACE_ID, item.getId(), slot, item.getAmount());
             slot++;
         }
 
         for (Item item : mysteryBox.getUncommon_items()) {
-            player.getPacketSender().sendItemOnInterface(POSSIBLE_REWARDS_INTERFACE_ID, item.getId(), slot, item.getAmount(), item.getBonus());
+            player.getPacketSender().sendItemOnInterface(POSSIBLE_REWARDS_INTERFACE_ID, item.getId(), slot, item.getAmount());
             slot++;
         }
 
         for (Item item : mysteryBox.getCommon_items()) {
-            player.getPacketSender().sendItemOnInterface(POSSIBLE_REWARDS_INTERFACE_ID, item.getId(),  slot, item.getAmount(), item.getBonus());
+            player.getPacketSender().sendItemOnInterface(POSSIBLE_REWARDS_INTERFACE_ID, item.getId(),  slot, item.getAmount());
             slot++;
         }
     }
@@ -105,7 +105,7 @@ public class MysteryBoxManager {
     public void refreshLatest() {
         if (mysteryBox.getId() == 6199) {
             for (int i = 0; i < 17; i++) {
-                player.getPacketSender().sendItemOnInterface(47030, player.mboxLoot[i], i, 1,-1);
+                player.getPacketSender().sendItemOnInterface(47030, player.mboxLoot[i], i, 1);
             }
         }
     }
@@ -121,7 +121,7 @@ public class MysteryBoxManager {
         int slot = 0;
 
         for (Item item : all_rewards) {
-            player.getPacketSender().sendItemOnInterface(REWARD_STRIP_INTERFACE_ID,item.getId(),  slot, item.getAmount(), item.getBonus());
+            player.getPacketSender().sendItemOnInterface(REWARD_STRIP_INTERFACE_ID,item.getId(),  slot, item.getAmount());
             slot++;
         }
     }
@@ -161,7 +161,7 @@ public class MysteryBoxManager {
         player.sendMessage(":spinner:");
 
         for (Item item : all_rewards) {
-            player.getPacketSender().sendItemOnInterface(REWARD_STRIP_INTERFACE_ID,item.getId(), slot,  item.getAmount(), item.getBonus());
+            player.getPacketSender().sendItemOnInterface(REWARD_STRIP_INTERFACE_ID,item.getId(), slot,  item.getAmount());
             slot++;
         }
 

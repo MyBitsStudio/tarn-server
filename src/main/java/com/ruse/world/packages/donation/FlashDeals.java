@@ -1,9 +1,7 @@
 package com.ruse.world.packages.donation;
 
 import com.ruse.model.Item;
-import com.ruse.model.ItemRarity;
 import com.ruse.model.definitions.ItemDefinition;
-import com.ruse.model.projectile.ItemEffect;
 import com.ruse.security.save.impl.FlashDealLoad;
 import com.ruse.world.content.discordbot.AdminCord;
 import com.ruse.world.entity.impl.player.Player;
@@ -136,11 +134,7 @@ public class FlashDeals {
                 Map<Integer, String> rewards = deal.getValue();
                 for(Map.Entry<Integer, String> reward : rewards.entrySet()){
                     int item = reward.getKey();
-                    String[] name = reward.getValue().split("--");
-                    ItemEffect effect = ItemEffect.getEffectForName(name[0]);
-                    ItemRarity rarity = ItemEffect.getRarityForName(name[0]);
-                    int bonus = Integer.parseInt(name[1]);
-                    Item items = new Item(item, multiple, effect, bonus, rarity);
+                    Item items = new Item(item, multiple);
                     player.getInventory().add(items);
                     player.sendMessage("You have collected a special bonus for spending " + amounts + " credits!");
                     AdminCord.sendMessage(1116222411868733460L, player.getUsername()+" has collected special item "+ item);

@@ -5,7 +5,6 @@ import com.ruse.model.Item;
 import com.ruse.model.Skill;
 import com.ruse.model.container.impl.Equipment;
 import com.ruse.model.definitions.ItemDefinition;
-import com.ruse.model.projectile.ItemEffect;
 import com.ruse.util.Misc;
 import com.ruse.world.content.combat.effect.EquipmentBonus;
 import com.ruse.world.content.combat.magic.CombatSpell;
@@ -319,24 +318,10 @@ public class DesolaceFormulas {
             rangeLevel *= 1.5;
         }
 
-        for (Item item : plr.getEquipment().getItems()) {
-            ItemEffect effect = item.getEffect();
-            if (effect == ItemEffect.NOTHING)
-                continue;
-            switch (effect) {
-               /* case RANGE_DAMAGE:
-                    rangeLevel *= item.getBonus() / 2;
-                    break;*/
-                case ALL_DAMAGE_LOW:
-                    rangeLevel *= 1.05;
-                    break;
-                case ALL_DAMAGE_MEDIUM:
-                    rangeLevel *= 1.07;
-                    break;
-                case ALL_DAMAGE_HIGH:
-                    rangeLevel *= 1.09;
-                    break;
-            }
+        switch(plr.getEquipment().getDamageBonus()){
+            case 1 -> rangeLevel *= 1.07;
+            case 2 -> rangeLevel *= 1.16;
+            case 3 -> rangeLevel *= 1.23;
         }
 
         if (EquipmentBonus.voidRange(plr)) {
@@ -442,24 +427,10 @@ public class DesolaceFormulas {
             magicLevel *= 1.5;
         }
 
-        for (Item item : plr.getEquipment().getItems()) {
-            ItemEffect effect = item.getEffect();
-            if (effect == ItemEffect.NOTHING)
-                continue;
-            switch (effect) {
-               /* case MAGIC_DAMAGE:
-                    magicLevel *= item.getBonus() / 2;
-                    break;*/
-                case ALL_DAMAGE_LOW:
-                    magicLevel *= 1.05;
-                    break;
-                case ALL_DAMAGE_MEDIUM:
-                    magicLevel *= 1.07;
-                    break;
-                case ALL_DAMAGE_HIGH:
-                    magicLevel *= 1.09;
-                    break;
-            }
+        switch(plr.getEquipment().getDamageBonus()){
+            case 1 -> magicLevel *= 1.07;
+            case 2 -> magicLevel *= 1.16;
+            case 3 -> magicLevel *= 1.23;
         }
 
         if (EquipmentBonus.voidMage(plr)) {
@@ -625,24 +596,10 @@ public class DesolaceFormulas {
             damage *= 1.5;
         }
 
-        for (Item item : p.getEquipment().getItems()) {
-            ItemEffect effect = item.getEffect();
-            if (effect == ItemEffect.NOTHING)
-                continue;
-            switch (effect) {
-                /*case MAGIC_DAMAGE:
-                    damage *= item.getBonus() / 2;
-                    break;*/
-                case ALL_DAMAGE_LOW:
-                    damage *= 1.05;
-                    break;
-                case ALL_DAMAGE_MEDIUM:
-                    damage *= 1.07;
-                    break;
-                case ALL_DAMAGE_HIGH:
-                    damage *= 1.09;
-                    break;
-            }
+        switch(p.getEquipment().getDamageBonus()){
+            case 1 -> damage *= 1.07;
+            case 2 -> damage *= 1.16;
+            case 3 -> damage *= 1.23;
         }
 
         if (p.getInventory().contains(4442)) {

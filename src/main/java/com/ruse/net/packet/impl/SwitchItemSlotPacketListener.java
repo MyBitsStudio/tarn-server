@@ -64,12 +64,12 @@ public class SwitchItemSlotPacketListener implements PacketListener {
 				toBankTab = Bank.BANK_TAB_INTERFACES[i][0] == interfaceId;
 				Item item = player.getBank(player.getCurrentBankTab()).getItems()[fromSlot].copy();
 
-				int realAmt = player.getBank(player.getCurrentBankTab()).getAmountForEffect(item.getId(), item.getEffect());
+				int realAmt = player.getBank(player.getCurrentBankTab()).getAmount(item.getId());
 				if (realAmt == 0) {
 					return;
 				}
 
-				if (!player.getBank(player.getCurrentBankTab()).contains(item.getId(), item.getEffect()) || realAmt < item.getAmount())
+				if (!player.getBank(player.getCurrentBankTab()).contains(item.getId()) || realAmt < item.getAmount())
 					return;
 				if (toBankTab) {
 					if (player.getBankSearchingAttribtues().isSearchingBank()) {
@@ -81,7 +81,7 @@ public class SwitchItemSlotPacketListener implements PacketListener {
 					if (slot < 0)
 						return;
 					player.setNoteWithdrawal(false);
-					player.getBank(Bank.getTabForItemAndEffect(player, item)).switchItem(player.getBank(bankTab), item, slot, false, false);
+					player.getBank(Bank.getTabForItem(player, item)).switchItem(player.getBank(bankTab), item, slot, false, false);
 					Bank.sendTabs(player, null);
 					player.getBank(player.getCurrentBankTab()).open(player, false, false);
 					//player.getBank(player.getCurrentBankTab()).open(false);

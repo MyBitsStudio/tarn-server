@@ -262,31 +262,31 @@ public class DailyRewards {
 	public void displayRewards() {
 		player.getPacketSender().sendInterface(57210);
 		for (int i = 0; i < day7.length; i++) {
-			player.getPacketSender().sendItemOnInterface(57223, day7[i], i, 1, -1);
+			player.getPacketSender().sendItemOnInterface(57223, day7[i], i, 1);
 		}
 
 		for (int t = 0; t < day1.length; t++) {
-			player.getPacketSender().sendItemOnInterface(57232, day1[t], t, t == 0 ? 5 : 2, -1);
+			player.getPacketSender().sendItemOnInterface(57232, day1[t], t, t == 0 ? 5 : 2);
 		}
 
 		for (int y = 0; y < day2.length; y++) {
-			player.getPacketSender().sendItemOnInterface(57233, day2[y], y, y == 0 ? 1 : 3, -1);
+			player.getPacketSender().sendItemOnInterface(57233, day2[y], y, y == 0 ? 1 : 3);
 		}
 
 		for (int u = 0; u < day3.length; u++) {
-			player.getPacketSender().sendItemOnInterface(57234, day3[u], u, u == 0 ? 1 : 8, -1);
+			player.getPacketSender().sendItemOnInterface(57234, day3[u], u, u == 0 ? 1 : 8);
 		}
 
 		for (int o = 0; o < day4.length; o++) {
-			player.getPacketSender().sendItemOnInterface(57235, day4[o], o, o == 0 ? 1 : 3, -1);
+			player.getPacketSender().sendItemOnInterface(57235, day4[o], o, o == 0 ? 1 : 3);
 		}
 
 		for (int p = 0; p < day5.length; p++) {
-			player.getPacketSender().sendItemOnInterface(57236, day5[p], p, p == 0 ? 1 : 2000, -1);
+			player.getPacketSender().sendItemOnInterface(57236, day5[p], p, p == 0 ? 1 : 2000);
 		}
 
 		for (int a = 0; a < day6.length; a++) {
-			player.getPacketSender().sendItemOnInterface(57237, day6[a], a, a == 0 ? 25 : 100, -1);
+			player.getPacketSender().sendItemOnInterface(57237, day6[a], a, a == 0 ? 25 : 100);
 		}
 	}
 }

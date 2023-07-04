@@ -36,7 +36,7 @@ public class RewardsHandler {
 		RewardsData data = RewardsData.byId.get(id);
 		if (data != null) {
 			for (int index = 0; index < data.getItemID().length; index++) {
-				player.getPacketSender().sendItemOnInterface(17752, data.getItemID()[index], index, 1,-1);
+				player.getPacketSender().sendItemOnInterface(17752, data.getItemID()[index], index, 1);
 			}
 		}
 		player.getPacketSender().sendString(17556, "Rewards List From: " + data.getText());
@@ -52,7 +52,7 @@ public class RewardsHandler {
 	public void ResetFrame34() {
 		int interfaceId = 17752;
 		for (int index = 0; index < 100; index++) {
-			player.getPacketSender().sendItemOnInterface(interfaceId, -1, index, -1,-1);
+			player.getPacketSender().sendItemOnInterface(interfaceId, -1, index, -1);
 		}
 	}
 

@@ -26,7 +26,6 @@ import com.ruse.world.content.groupironman.GroupManager;
 import com.ruse.world.content.holidayevents.christmas2016;
 import com.ruse.world.content.minigames.impl.WarriorsGuild;
 import com.ruse.world.content.minigames.impl.trioMinigame;
-import com.ruse.world.content.pos.PlayerOwnedShopManager;
 import com.ruse.world.content.serverperks.ServerPerks;
 import com.ruse.world.content.skill.impl.construction.ConstructionActions;
 import com.ruse.world.content.skill.impl.crafting.Tanning;
@@ -154,10 +153,6 @@ public class NPCOptionPacketListener implements PacketListener {
                         }
                     }
                     break;
-                case PlayerOwnedShopManager.NPC_ID:
-                    player.getTradingPost().openMainInterface();
-                    //player.getPlayerOwnedShopManager().options();
-                    break;
                 case 4652:
                     ShopManager.getShops().get(106).open(player);
                     break;
@@ -204,7 +199,7 @@ public class NPCOptionPacketListener implements PacketListener {
                     StarterTasks.updateInterface(player);
                     int[] ids = {22074, 6570, 7462, 17273, 19153, 19142, 19141, 19115, 11137, 20000, 6769};
                     for (int i = 0; i < ids.length; i++) {
-                        player.getPacketSender().sendItemOnInterface(53205, ids[i], i, 1, -1);
+                        player.getPacketSender().sendItemOnInterface(53205, ids[i], i);
                     }
                     player.getPacketSender().sendInterfaceReset();
                     player.getPacketSender().sendInterface(53200);
@@ -703,13 +698,6 @@ public class NPCOptionPacketListener implements PacketListener {
         }));
     }
 
-    private static boolean canAttack(Player player, int npcId){
-        return switch(npcId){
-
-            default -> true;
-        };
-    }
-
     public static void attackNPC(Player player, Packet packet) {
         int index = packet.readShortA();
         if (index < 0 || index > World.getNpcs().capacity())
@@ -1087,72 +1075,53 @@ public class NPCOptionPacketListener implements PacketListener {
                     Pickpocket.handleNpc(player, npc);
                     return;
                 }
-                // if ()
                 switch (npc.getId()) {
-                    case 289: //DAILY TASK
-                        DailyTasks.claimReward(player);
-                        break;
-                    case 568:
-                        ShopManager.getShops().get(207).open(player);
-
-                        break;
-                    case 845:
-                        DialogueManager.start(player, SlayerDialogues.findAssignment(player));
-                        break;
-                    case PlayerOwnedShopManager.NPC_ID:
-                        player.sendMessage("POS is currently disabled.");
-                       // player.getPlayerOwnedShopManager().openMain();
-                        // player.getPlayerOwnedShopManager().open();
-                        break;
-                    case 8459:
-                        Decanting.notedDecanting(player);
-                        break;
-                    case 788:
+                    case 289 -> //DAILY TASK
+                            DailyTasks.claimReward(player);
+                    case 568 -> ShopManager.getShops().get(207).open(player);
+                    case 845 -> DialogueManager.start(player, SlayerDialogues.findAssignment(player));
+                    case 8459 -> Decanting.notedDecanting(player);
+                    case 788 -> {
                         player.getPacketSender().sendEnterInputPrompt(
                                 "How many would you like to buy (1 Lottery ticket costs 1 Billion)");
                         player.setInputHandling(new EnterLotteryTicketAmount());
-                        break;
-                    case 3306:
-                    case 130:
+                    }
+                    case 3306, 130 -> {
                         player.getPacketSender().sendMessage("<col=255>You currently have "
                                 + player.getPointsHandler().getEventPoints() + " Event points!");
                         ShopManager.getShops().get(81).open(player);
-                        break;
-                    case 5382:
+                    }
+                    case 5382 -> {
                         if (player.getMode() instanceof UltimateIronman) {
                             UltimateIronmanHandler.handleQuickStore(player);
                         } else {
                             DialogueManager.start(player, 195);
                         }
-
                         player.getClickDelay().reset();
-                        break;
-                    case 4601:
-
+                    }
+                    case 4601 -> {
                         ShopManager.getShops().get(110).open(player);
                         player.getPacketSender().sendString(3903,
                                 "Success rate: @whi@" + player.getPointsHandler().getLoyaltyPoints() + "55%");
                         player.getPacketSender().sendMessage("").sendMessage(
                                 "You currently have " + player.getPointsHandler().getLoyaltyPoints() + " Loyalty Points.");
                         ;
-                        break;
-                    case 1394:
+                    }
+                    case 1394 -> {
                         int[] items = {1053, 1057, 1055, 1038, 1040, 1042, 1044, 1046, 1048, 1050, 14008, 14009, 14010,
                                 14484, 19115, 19114, 13736, 13744, 13738, 13742, 13740, 6293, 18754, 11694, 11696, 11698, 11700,
                                 15018, 15019, 15020, 15220, 12601, 12603, 12605, 20000, 20001, 20002, 6769, 10942, 10934,
                                 455};
                         player.getPacketSender().sendInterface(52300);
                         for (int i = 0; i < items.length; i++)
-                            player.getPacketSender().sendItemOnInterface(52302, items[i], i, 1, -1);
-                        break;
-                    case 4653:
+                            player.getPacketSender().sendItemOnInterface(52302, items[i], 1, i);
+                    }
+                    case 4653 -> {
                         player.getPacketSender().sendInterfaceRemoval();
                         ShopManager.getShops().get(85).open(player);
-                        break;
-                    case 736:
-                        npc.forceChat("Thanx for the follow :)");
-                        break;
-                    case 1837:
+                    }
+                    case 736 -> npc.forceChat("Thanx for the follow :)");
+                    case 1837 -> {
                         player.getPacketSender().sendInterfaceRemoval();
                         if (player.getInventory().getAmount(11180) < 1) {
                             player.getPacketSender().sendMessage("You do not have enough tokens.");
@@ -1172,43 +1141,34 @@ public class NPCOptionPacketListener implements PacketListener {
                         // trioMinigame.failsafe(player);
                         // trioMinigame.handleNPCSpawning(player);
                         trioMinigame.handleTokenRemoval(player);
-
-                        break;
-                    case 3777:
+                    }
+                    case 3777 -> {
                         player.getPacketSender().sendMessage("")
                                 .sendMessage("<shad=1>@gre@You currently have " + player.getPointsHandler().getDonatorPoints()
                                         + " Donator points.")
                                 .sendMessage("<shad=1>@gre@You can get more points by donating at ::donate");
                         ShopManager.getShops().get(80).open(player);
-                        break;
-                    case 13738:
-                        player.getUpgradeHandler().openInterface();
-                        break;
-                    case 550:
-                        ShopManager.getShops().get(2).open(player);
-                        break;
-                    case 457:
+                    }
+                    case 13738 -> player.getUpgradeHandler().openInterface();
+                    case 550 -> ShopManager.getShops().get(2).open(player);
+                    case 457 -> {
                         player.getPacketSender().sendMessage("The ghost teleports you away.");
                         player.getPacketSender().sendInterfaceRemoval();
                         player.moveTo(new Position(3651, 3486));
-                        break;
-                    case 2622:
-                        ShopManager.getShops().get(43).open(player);
-                        break;
-                    case 462:
+                    }
+                    case 2622 -> ShopManager.getShops().get(43).open(player);
+                    case 462 -> {
                         npc.performAnimation(CombatSpells.CONFUSE.getSpell().castAnimation().get());
                         npc.forceChat("Off you go!");
                         TeleportHandler.teleportPlayer(player, new Position(2911, 4832),
                                 player.getSpellbook().getTeleportType());
-                        break;
-                    case 3101:
+                    }
+                    case 3101 -> {
                         DialogueManager.start(player, 95);
                         player.setDialogueActionId(57);
-                        break;
-                    case 7969:
-                        ShopManager.getShops().get(28).open(player);
-                        break;
-                    case 605:
+                    }
+                    case 7969 -> ShopManager.getShops().get(28).open(player);
+                    case 605 -> {
                         player.getPacketSender().sendMessage("")
                                 .sendMessage("You currently have " + player.getPointsHandler().getVotingPoints()
                                         + " Voting points.")
@@ -1216,8 +1176,8 @@ public class NPCOptionPacketListener implements PacketListener {
                                         "You can earn points and coins by voting. To do so, simply use the ::vote command.");
                         ;
                         ShopManager.getShops().get(90).open(player);
-                        break;
-                    case 1597:
+                    }
+                    case 1597 -> {
                         if (!player.getSlayer().getSlayerMaster().equals(SlayerMaster.EASY_SLAYER)
                                 && player.getSlayer().getSlayerTask().equals(SlayerTasks.NO_TASK)) {
                             SlayerMaster.changeSlayerMaster(player, SlayerMaster.EASY_SLAYER);
@@ -1236,21 +1196,21 @@ public class NPCOptionPacketListener implements PacketListener {
                             String yourMastersName = "";
                             String thisMasterName = "";
                             int reqSlayer = 0;
-                            if(yourMaster != null) {
+                            if (yourMaster != null) {
                                 yourMastersName = yourMaster.getSlayerMasterName();
                             }
-                            if(thisMaster != null) {
+                            if (thisMaster != null) {
                                 reqSlayer = thisMaster.getSlayerReq();
                                 thisMasterName = thisMaster.getSlayerMasterName();
                             }
-                            if(player.getSkillManager().getCurrentLevel(Skill.SLAYER) < reqSlayer) {
-                                DialogueManager.sendStatement(player, "You need " + reqSlayer + " Slayer to use " + thisMasterName  + ".");
+                            if (player.getSkillManager().getCurrentLevel(Skill.SLAYER) < reqSlayer) {
+                                DialogueManager.sendStatement(player, "You need " + reqSlayer + " Slayer to use " + thisMasterName + ".");
                             } else {
                                 DialogueManager.sendStatement(player, "You currently have an assignment with " + yourMastersName);
                             }
                         }
-                        break;
-                    case 8275:
+                    }
+                    case 8275 -> {
                         if (!player.getSlayer().getSlayerMaster().equals(SlayerMaster.MEDIUM_SLAYER)
                                 && player.getSlayer().getSlayerTask().equals(SlayerTasks.NO_TASK)) {
                             SlayerMaster.changeSlayerMaster(player, SlayerMaster.MEDIUM_SLAYER);
@@ -1269,21 +1229,21 @@ public class NPCOptionPacketListener implements PacketListener {
                             String yourMastersName = "";
                             String thisMasterName = "";
                             int reqSlayer = 0;
-                            if(yourMaster != null) {
+                            if (yourMaster != null) {
                                 yourMastersName = yourMaster.getSlayerMasterName();
                             }
-                            if(thisMaster != null) {
+                            if (thisMaster != null) {
                                 reqSlayer = thisMaster.getSlayerReq();
                                 thisMasterName = thisMaster.getSlayerMasterName();
                             }
-                            if(player.getSkillManager().getCurrentLevel(Skill.SLAYER) < reqSlayer) {
-                                DialogueManager.sendStatement(player, "You need " + reqSlayer + " Slayer to use " + thisMasterName  + ".");
+                            if (player.getSkillManager().getCurrentLevel(Skill.SLAYER) < reqSlayer) {
+                                DialogueManager.sendStatement(player, "You need " + reqSlayer + " Slayer to use " + thisMasterName + ".");
                             } else {
                                 DialogueManager.sendStatement(player, "You currently have an assignment with " + yourMastersName);
                             }
                         }
-                        break;
-                    case 9085:
+                    }
+                    case 9085 -> {
                         if (!player.getSlayer().getSlayerMaster().equals(SlayerMaster.HARD_SLAYER)
                                 && player.getSlayer().getSlayerTask().equals(SlayerTasks.NO_TASK)) {
                             SlayerMaster.changeSlayerMaster(player, SlayerMaster.HARD_SLAYER);
@@ -1302,23 +1262,21 @@ public class NPCOptionPacketListener implements PacketListener {
                             String yourMastersName = "";
                             String thisMasterName = "";
                             int reqSlayer = 0;
-                            if(yourMaster != null) {
+                            if (yourMaster != null) {
                                 yourMastersName = yourMaster.getSlayerMasterName();
                             }
-                            if(thisMaster != null) {
+                            if (thisMaster != null) {
                                 reqSlayer = thisMaster.getSlayerReq();
                                 thisMasterName = thisMaster.getSlayerMasterName();
                             }
-                            if(player.getSkillManager().getCurrentLevel(Skill.SLAYER) < reqSlayer) {
-                                DialogueManager.sendStatement(player, "You need " + reqSlayer + " Slayer to use " + thisMasterName  + ".");
+                            if (player.getSkillManager().getCurrentLevel(Skill.SLAYER) < reqSlayer) {
+                                DialogueManager.sendStatement(player, "You need " + reqSlayer + " Slayer to use " + thisMasterName + ".");
                             } else {
                                 DialogueManager.sendStatement(player, "You currently have an assignment with " + yourMastersName);
                             }
                         }
-
-
-                        break;
-                    case 925:
+                    }
+                    case 925 -> {
                         if (!player.getSlayer().getSlayerMaster().equals(SlayerMaster.ELITE_SLAYER)
                                 && player.getSlayer().getSlayerTask().equals(SlayerTasks.NO_TASK)) {
                             SlayerMaster.changeSlayerMaster(player, SlayerMaster.ELITE_SLAYER);
@@ -1337,23 +1295,21 @@ public class NPCOptionPacketListener implements PacketListener {
                             String yourMastersName = "";
                             String thisMasterName = "";
                             int reqSlayer = 0;
-                            if(yourMaster != null) {
+                            if (yourMaster != null) {
                                 yourMastersName = yourMaster.getSlayerMasterName();
                             }
-                            if(thisMaster != null) {
+                            if (thisMaster != null) {
                                 reqSlayer = thisMaster.getSlayerReq();
                                 thisMasterName = thisMaster.getSlayerMasterName();
                             }
-                            if(player.getSkillManager().getCurrentLevel(Skill.SLAYER) < reqSlayer) {
-                                DialogueManager.sendStatement(player, "You need " + reqSlayer + " Slayer to use " + thisMasterName  + ".");
+                            if (player.getSkillManager().getCurrentLevel(Skill.SLAYER) < reqSlayer) {
+                                DialogueManager.sendStatement(player, "You need " + reqSlayer + " Slayer to use " + thisMasterName + ".");
                             } else {
                                 DialogueManager.sendStatement(player, "You currently have an assignment with " + yourMastersName);
                             }
                         }
-
-
-                        break;
-                    case 9000://second click
+                    }
+                    case 9000 -> {//second click
 
                         if (!player.getSlayer().getSlayerMaster().equals(SlayerMaster.BOSS_SLAYER)
                                 && player.getSlayer().getSlayerTask().equals(SlayerTasks.NO_TASK)) {
@@ -1373,63 +1329,43 @@ public class NPCOptionPacketListener implements PacketListener {
                             String yourMastersName = "";
                             String thisMasterName = "";
                             int reqSlayer = 0;
-                            if(yourMaster != null) {
+                            if (yourMaster != null) {
                                 yourMastersName = yourMaster.getSlayerMasterName();
                             }
-                            if(thisMaster != null) {
+                            if (thisMaster != null) {
                                 reqSlayer = thisMaster.getSlayerReq();
                                 thisMasterName = thisMaster.getSlayerMasterName();
                             }
-                            if(player.getSkillManager().getCurrentLevel(Skill.SLAYER) < reqSlayer) {
-                                DialogueManager.sendStatement(player, "You need " + reqSlayer + " Slayer to use " + thisMasterName  + ".");
+                            if (player.getSkillManager().getCurrentLevel(Skill.SLAYER) < reqSlayer) {
+                                DialogueManager.sendStatement(player, "You need " + reqSlayer + " Slayer to use " + thisMasterName + ".");
                             } else {
                                 DialogueManager.sendStatement(player, "You currently have an assignment with " + yourMastersName);
                             }
                         }
-
-                        break;
-                    case 8591:
+                    }
+                    case 8591 -> {
                         if (!player.getMinigameAttributes().getNomadAttributes().hasFinishedPart(1)) {
                             player.getPacketSender()
                                     .sendMessage("You must complete Nomad's quest before being able to use this shop.");
                             return;
                         }
                         ShopManager.getShops().get(37).open(player);
-                        break;
-                    case 805:
-                        Tanning.selectionInterface(player);
-                        break;
-                    case 318:
-                    case 316:
-                    case 313:
-                    case 312:
-                    case 5748:
-                    case 2067:
+                    }
+                    case 805 -> Tanning.selectionInterface(player);
+                    case 318, 316, 313, 312, 5748, 2067 -> {
                         player.setEntityInteraction(npc);
                         Fishing.setupFishing(player, Fishing.forSpot(npc.getId(), true));
-                        break;
-                    case 4946:
-                        ShopManager.getShops().get(15).open(player);
-                        break;
-                    case 946:
-                        ShopManager.getShops().get(1).open(player);
-                        break;
-                    case 961:
-                        ShopManager.getShops().get(6).open(player);
-                        break;
-                    case 1861:
-                        ShopManager.getShops().get(3).open(player);
-                        break;
-                    case 705:
-                        ShopManager.getShops().get(4).open(player);
-                        break;
-                    case 2253:
-                        ShopManager.getShops().get(9).open(player);
-                        break;
-                    case 6970:
+                    }
+                    case 4946 -> ShopManager.getShops().get(15).open(player);
+                    case 946 -> ShopManager.getShops().get(1).open(player);
+                    case 961 -> ShopManager.getShops().get(6).open(player);
+                    case 1861 -> ShopManager.getShops().get(3).open(player);
+                    case 705 -> ShopManager.getShops().get(4).open(player);
+                    case 2253 -> ShopManager.getShops().get(9).open(player);
+                    case 6970 -> {
                         player.setDialogueActionId(35);
                         DialogueManager.start(player, 63);
-                        break;
+                    }
 
                     // begin ironman second click handles
 
@@ -1458,78 +1394,51 @@ public class NPCOptionPacketListener implements PacketListener {
                     return;
                 }
                 switch (npc.getId()) {
-                    case 289:
-                        DailyTasks.cancelTask(player);
-                        break;
-                    case 552:
-                        ShopManager.getShops().get(115).open(player);
-                        break;
-                    case 9000:
-                        if(player.getSkillManager().getCurrentLevel(Skill.SLAYER) < 90) {
+                    case 289 -> DailyTasks.cancelTask(player);
+                    case 552 -> ShopManager.getShops().get(115).open(player);
+                    case 9000 -> {
+                        if (player.getSkillManager().getCurrentLevel(Skill.SLAYER) < 90) {
                             DialogueManager.sendStatement(player, "You need a Slayer Level of 90 to access this shop.");
                             return;
                         }
                         ShopManager.getShops().get(107).open(player);
-                        break;
-
-                    case PlayerOwnedShopManager.NPC_ID:
-                       player.sendMessage("POS is currently disabled.");
-                        //player.getPlayerOwnedShopManager().openEditor();
-                        break;
-                    case 788:
-                        player.sendMessage("@bla@There are currently @red@" + LotterySystem.getCurrentTicketAmount()
-                                + " @bla@Lottery tickets- Winner pot is@red@: " + LotterySystem.getTotalPrizepool()
-                                + "@bla@ Tokens");
-                        break;
-                    case 5382:
+                    }
+                    case 788 ->
+                            player.sendMessage("@bla@There are currently @red@" + LotterySystem.getCurrentTicketAmount()
+                                    + " @bla@Lottery tickets- Winner pot is@red@: " + LotterySystem.getTotalPrizepool()
+                                    + "@bla@ Tokens");
+                    case 5382 -> {
                         if (player.getMode() instanceof UltimateIronman) {
                             UltimateIronmanHandler.handleQuickRetrieve(player);
                         } else {
                             DialogueManager.start(player, 195);
                         }
-
                         player.getClickDelay().reset();
-                        break;
-                    case 4653:
-                        player.getPacketSender()
-                                .sendMessage("Unfortunately, ship charters are still being established. Check back soon.");
-                        break;
-                    case 736:
-                        player.forceChat("Nah. I don't want to feed the cancer.");
-                        break;
-                    case 5604:
+                    }
+                    case 4653 -> player.getPacketSender()
+                            .sendMessage("Unfortunately, ship charters are still being established. Check back soon.");
+                    case 736 -> player.forceChat("Nah. I don't want to feed the cancer.");
+                    case 5604 -> {
                         ShopManager.getShops().get(102).open(player);
                         player.sendMessage(
                                 "<img=99>You have @red@" + player.getPointsHandler().getBossPoints() + " Boss Points!");
-
-                        break;
-                    case 3777:
-                        player.getDonatorShop().openInterface(DonatorShop.DonatorShopType.WEAPON);
-                        break;
-                    case 13738:
-                        player.getUpgradeHandler().openInterface();
-                        break;
-                    case 3101:
-                        ShopManager.getShops().get(42).open(player);
-                        break;
-                    case 1597:
-                    case 8275:
-                    case 9085:
-                        if(player.getSkillManager().getCurrentLevel(Skill.SLAYER) < 80) {
+                    }
+                    case 3777 -> player.getDonatorShop().openInterface(DonatorShop.DonatorShopType.WEAPON);
+                    case 13738 -> player.getUpgradeHandler().openInterface();
+                    case 3101 -> ShopManager.getShops().get(42).open(player);
+                    case 1597, 8275, 9085 -> {
+                        if (player.getSkillManager().getCurrentLevel(Skill.SLAYER) < 80) {
                             DialogueManager.sendStatement(player, "You need a Slayer Level of 80 to access this shop.");
                         }
                         ShopManager.getShops().get(40).open(player);
-                        break;
-                    case 946:
-                        ShopManager.getShops().get(0).open(player);
-                        break;
-                    case 1861:
-                        ShopManager.getShops().get(2).open(player);
-                        break;
+                    }
+                    case 946 -> ShopManager.getShops().get(0).open(player);
+                    case 1861 -> ShopManager.getShops().get(2).open(player);
+
                     // case 597:
                     // ShopManager.getShops().get(54).open(player);
                     // break;
-                    case 961:
+                    case 961 -> {
                         if (!player.getDonator().isMember()) {
                             player.getPacketSender().sendMessage("This feature is currently only available for members.");
                             return;
@@ -1553,24 +1462,17 @@ public class NPCOptionPacketListener implements PacketListener {
                             player.getPacketSender().sendMessage("Your stats have been restored.");
                         } else
                             player.getPacketSender().sendMessage("Your stats do not need to be restored at the moment.");
-                        break;
-                    case 705:
-                        ShopManager.getShops().get(5).open(player);
-                        break;
-                    case 605:
-                        player.getPacketSender().sendMessage("Coming soon!");
-                        // player.getPacketSender().sendMessage("").sendMessage("You currently have
-                        // "+player.getPointsHandler().getVotingPoints()+" Voting
-                        // points.").sendMessage("You can earn points and coins by voting. To do so,
-                        // simply use the ::vote command.");;
-                        // ShopManager.getShops().get(90).open(player);
-                        break;
-                    case 2253:
-                        ShopManager.getShops().get(10).open(player);
-                        break;
-                    case 5913:
-                        ShopManager.getShops().get(0).open(player);
-                        break;
+                    }
+                    case 705 -> ShopManager.getShops().get(5).open(player);
+                    case 605 -> player.getPacketSender().sendMessage("Coming soon!");
+
+                    // player.getPacketSender().sendMessage("").sendMessage("You currently have
+                    // "+player.getPointsHandler().getVotingPoints()+" Voting
+                    // points.").sendMessage("You can earn points and coins by voting. To do so,
+                    // simply use the ::vote command.");;
+                    // ShopManager.getShops().get(90).open(player);
+                    case 2253 -> ShopManager.getShops().get(10).open(player);
+                    case 5913 -> ShopManager.getShops().get(0).open(player);
                 }
                 npc.setPositionToFace(player.getPosition());
                 player.setPositionToFace(npc.getPosition());
@@ -1611,57 +1513,34 @@ public class NPCOptionPacketListener implements PacketListener {
                     return;
                 }
                 switch (npc.getId()) {
-                    case 961:
-                        ShopManager.getShops().get(118).open(player);
-                        break;
-                    case PlayerOwnedShopManager.NPC_ID:
-                        player.sendMessage("POS is currently disabled .");
-                        //player.getPlayerOwnedShopManager().claimEarnings();
-                        // player.getPlayerOwnedShopManager().claimEarnings();
-                        break;
-                    case 946:
-                        ShopManager.getShops().get(82).open(player);
-                        break;
-                    case 3777:
+                    case 961 -> ShopManager.getShops().get(118).open(player);
+                    case 946 -> ShopManager.getShops().get(82).open(player);
+                    case 3777 -> {
                         // ShopManager.getShops().get(24).open(player); //DONATOR SHOP 3 HERE
                         player.sendMessage("<shad=1>@yel@<img=14>Please check out the donation deals in our ::Discord - #Donation-deals");
                         player.sendMessage("<shad=1>@yel@<img=14>Please check out the donation deals in our ::Discord - #Donation-deals");
-                        break;
-                    case 13738:
-                        player.getUpgradeHandler().openInterface();
-                        break;
-                    case 705:
-                        ShopManager.getShops().get(7).open(player);
-                        break;
-                    case 2253:
-                        ShopManager.getShops().get(8).open(player);
-                        break;
-                    case 605:
-                        LoyaltyProgramme.open(player);
-                        break;
-                    case 4601:
-                        LoyaltyProgramme.open(player);
-                        break;
-                    case 1597:
-                        ShopManager.getShops().get(47).open(player);
-                        break;
-                    case 9085:
-                        if(player.getSkillManager().getCurrentLevel(Skill.SLAYER) < 80) {
+                    }
+                    case 13738 -> player.getUpgradeHandler().openInterface();
+                    case 705 -> ShopManager.getShops().get(7).open(player);
+                    case 2253 -> ShopManager.getShops().get(8).open(player);
+                    case 605 -> LoyaltyProgramme.open(player);
+                    case 4601 -> LoyaltyProgramme.open(player);
+                    case 1597 -> ShopManager.getShops().get(47).open(player);
+                    case 9085 -> {
+                        if (player.getSkillManager().getCurrentLevel(Skill.SLAYER) < 80) {
                             DialogueManager.sendStatement(player, "You need a Slayer Level of 80 to access this shop.");
                             return;
                         }
                         ShopManager.getShops().get(472).open(player);
-                        break;
-                    case 925:
-                        ShopManager.getShops().get(473).open(player);
-                        break;
-                    case 8275:
-                        if(player.getSkillManager().getCurrentLevel(Skill.SLAYER) < 60) {
+                    }
+                    case 925 -> ShopManager.getShops().get(473).open(player);
+                    case 8275 -> {
+                        if (player.getSkillManager().getCurrentLevel(Skill.SLAYER) < 60) {
                             DialogueManager.sendStatement(player, "You need a Slayer Level of 60 to access this shop.");
                             return;
                         }
                         ShopManager.getShops().get(471).open(player);
-                        break;
+                    }
                 }
                 npc.setPositionToFace(player.getPosition());
                 player.setPositionToFace(npc.getPosition());

@@ -1,8 +1,6 @@
 package com.ruse.world.packages.plus;
 
 import com.ruse.model.Item;
-import com.ruse.model.ItemBonus;
-import com.ruse.model.projectile.ItemEffect;
 import com.ruse.world.entity.impl.player.Player;
 
 import java.util.Arrays;
@@ -37,10 +35,9 @@ public class PlusUpgrade {
                 }
             });
             if(hasItems.get()){
-                ItemBonus effect = item.getItemBonus();
                 Arrays.stream(cost).forEach(i -> player.getInventory().delete(i));
                 player.getInventory().delete(item);
-                player.getInventory().add(new Item(plus.getResult().getId(), plus.getResult().getAmount(), effect));
+                player.getInventory().add(new Item(plus.getResult().getId(), plus.getResult().getAmount()));
                 return true;
             } else {
                 player.getPacketSender().sendMessage("You do not have the required items to upgrade this item.");

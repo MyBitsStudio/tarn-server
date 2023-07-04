@@ -144,10 +144,6 @@ public class ButtonClickPacketListener implements PacketListener {
             return;
         }
 
-        if (player.getPlayerOwnedShopManager().handleButton(id)) {
-            return;
-        }
-
         if (player.getGoodieBag().handleClick(id)) {
             return;
         }
@@ -656,9 +652,6 @@ public class ButtonClickPacketListener implements PacketListener {
             case -8254:
                 player.getPacketSender().sendString(1, GameSettings.StoreUrl);
                 player.getPacketSender().sendMessage("Attempting to open the store");
-                break;
-            case -11438:
-                player.getPlayerOwnedShopManager().openEditor();
                 break;
 
             case 106005:

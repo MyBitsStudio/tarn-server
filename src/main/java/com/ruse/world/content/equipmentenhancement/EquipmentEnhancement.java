@@ -178,9 +178,9 @@ public class EquipmentEnhancement {
                 .sendString(49435, (drBoost + DROP_RATE_BOOST_ADD) + "%")
                 .sendString(49436, (cashBoost + CASH_BOOST_ADD) + "%")
                 .sendString(49434, (statsBoost + STATS_BOOST_ADD) + "%")
-                .sendItemOnInterface(49441, gemId, 0, 1, 0)
-                .sendItemOnInterface(49441, CASH_ID, 1, cashRequirement, 0)
-                .sendItemOnInterface(49441, OTHER_ID, 2, otherRequirement, 0);
+                .sendItemOnInterface(49441, gemId, 0, 1)
+                .sendItemOnInterface(49441, CASH_ID, 1, cashRequirement)
+                .sendItemOnInterface(49441, OTHER_ID, 2, otherRequirement);
     }
 
     private boolean isSuccessful() {

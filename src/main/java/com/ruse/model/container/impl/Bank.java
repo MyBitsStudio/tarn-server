@@ -7,7 +7,6 @@ import com.ruse.model.container.StackType;
 import com.ruse.model.definitions.ItemDefinition;
 import com.ruse.model.definitions.WeaponInterfaces;
 import com.ruse.model.input.impl.ItemSearch;
-import com.ruse.model.projectile.ItemEffect;
 import com.ruse.world.content.BankPin;
 import com.ruse.world.content.BonusManager;
 import com.ruse.world.content.combat.magic.Autocasting;
@@ -103,18 +102,18 @@ public class Bank extends ItemContainer {
 	@Override
 	public Bank switchItem(ItemContainer to, Item item, int slot, boolean sort, boolean refresh) {
 		if (!getPlayer().isBanking() || getPlayer().getInterfaceId() != 5292 || to instanceof Inventory
-				&& !(getPlayer().getBank(getPlayer().getCurrentBankTab()).contains(item.getId(), item.getEffect())
+				&& !(getPlayer().getBank(getPlayer().getCurrentBankTab()).contains(item.getId())
 				|| getPlayer().getBankSearchingAttribtues().getSearchedBank() != null
-				&& getPlayer().getBankSearchingAttribtues().getSearchedBank().contains(item.getId(), item.getEffect()))) {
+				&& getPlayer().getBankSearchingAttribtues().getSearchedBank().contains(item.getId()))) {
 			getPlayer().getPacketSender().sendClientRightClickRemoval();
 			return this;
 		}
 		ItemDefinition def = ItemDefinition.forId(item.getId() + 1);
-		if (to.getFreeSlots() <= 0 && (!(to.contains(item.getId(), item.getEffect()) && item.getDefinition().isStackable()))
-				&& !(getPlayer().withdrawAsNote() && def != null && def.isNoted() && to.contains(def.getId(), item.getEffect()))) {
-			int tab = Bank.getTabForItemAndEffect(getPlayer(), item);
-			if (getPlayer().getBank(tab).contains(item.getId(), item.getEffect())) {
-				if (getPlayer().getBank(tab).getAmount(item.getId(), item.getEffect(), item.getBonus()) > 0 && to instanceof Inventory) {
+		if (to.getFreeSlots() <= 0 && (!(to.contains(item.getId()) && item.getDefinition().isStackable()))
+				&& !(getPlayer().withdrawAsNote() && def != null && def.isNoted() && to.contains(def.getId()))) {
+			int tab = Bank.getTabForItem(getPlayer(), item);
+			if (getPlayer().getBank(tab).contains(item.getId())) {
+				if (getPlayer().getBank(tab).getAmount(item.getId()) > 0 && to instanceof Inventory) {
 					to.full();
 					return this;
 				}
@@ -132,12 +131,12 @@ public class Bank extends ItemContainer {
 
 		if (getPlayer().getBankSearchingAttribtues().isSearchingBank()
 				&& getPlayer().getBankSearchingAttribtues().getSearchedBank() != null) {
-			int tab = Bank.getTabForItemAndEffect(getPlayer(), item);
+			int tab = Bank.getTabForItem(getPlayer(), item);
 			if (!getPlayer().getBank(tab).contains(item.getId())
 					|| !getPlayer().getBankSearchingAttribtues().getSearchedBank().contains(item.getId())){
 				return this;
 			}
-			int from = getPlayer().getBank(tab).getSlot(item.getId(), item.getEffect(), item.getBonus());
+			int from = getPlayer().getBank(tab).getSlot(item.getId());
 			if (item.getAmount() > getPlayer().getBank(tab).getItems()[from].getAmount()) {
 				item.setAmount(getPlayer().getBank(tab).getItems()[from].getAmount());
 			}
@@ -153,10 +152,10 @@ public class Bank extends ItemContainer {
 			getPlayer().getBankSearchingAttribtues().getSearchedBank().delete(item);
 			getPlayer().getBankSearchingAttribtues().getSearchedBank().open(getPlayer(), true);
 		} else {
-			if (getItems()[slot].getId() != item.getId() || !contains(item.getId(), item.getEffect()))
+			if (getItems()[slot].getId() != item.getId() || !contains(item.getId()))
 				return this;
-			if (item.getAmount() > getAmount(item.getId(), item.getEffect(), item.getBonus())) {
-				item.setAmount(getAmount(item.getId(), item.getEffect(), item.getBonus()));
+			if (item.getAmount() > getAmount(item.getId())) {
+				item.setAmount(getAmount(item.getId()));
 			}
 
 			if (item.getAmount() <= 0) {
@@ -173,8 +172,8 @@ public class Bank extends ItemContainer {
 						&& !def.getName().contains("Torva") && !def.getName().contains("Virtus")
 						&& !def.getName().contains("Pernix");
 				int checkId = withdrawAsNote ? item.getId() + 1 : item.getId();
-				if (to.getAmountForEffectAndBonus(checkId, item.getEffect(), item.getBonus()) + item.getAmount() > Integer.MAX_VALUE
-						|| to.getAmountForEffectAndBonus(checkId, item.getEffect(), item.getBonus()) + item.getAmount() <= 0) {
+				if (to.getAmount(checkId) + item.getAmount() > Integer.MAX_VALUE
+						|| to.getAmount(checkId) + item.getAmount() <= 0) {
 					getPlayer().getPacketSender().sendMessage("You cannot withdraw that entire amount into your inventory.");
 					return this;
 				}
@@ -221,7 +220,6 @@ public class Bank extends ItemContainer {
 					getItems()[slot].setAmount(0);
 				else{
 					getItems()[slot].setId(-1);
-					getItems()[slot].setEffect(ItemEffect.NOTHING);
 				}
 			} else {
 				getItems()[slot].setAmount(getItems()[slot].getAmount() - amount);
@@ -353,10 +351,10 @@ public class Bank extends ItemContainer {
 				return;
 			}
 
-			Item toBank = new Item(ItemDefinition.forId(it.getId()).isNoted() ? (it.getId() - 1) : it.getId(), it.getAmount(), it.getEffect(), it.getBonus());
-			int tab = getTabForItemAndEffect(p, toBank.getId(), toBank.getEffect());
+			Item toBank = new Item(ItemDefinition.forId(it.getId()).isNoted() ? (it.getId() - 1) : it.getId(), it.getAmount());
+			int tab = getTabForItem(p, toBank.getId());
 			p.setCurrentBankTab(tab);
-			int bankAmt = p.getBank(tab).getAmountForEffectAndBonus(toBank.getId(), toBank.getEffect(), toBank.getBonus());
+			int bankAmt = p.getBank(tab).getAmount(toBank.getId());
 			if (bankAmt + toBank.getAmount() >= Integer.MAX_VALUE || bankAmt + toBank.getAmount() <= 0) {
 				p.getPacketSender().sendMessage("Your bank cannot hold that amount of that item.");
 				continue;
@@ -404,40 +402,6 @@ public class Bank extends ItemContainer {
 			}
 			for (int i = 0; i < bank.getValidItems().size(); i++) {
 				if (bank.getItems()[i].getId() == itemID) {
-					return k;
-				}
-			}
-		}
-		return player.getCurrentBankTab();
-	}
-
-	public static int getTabForItemAndEffect(Player player, int itemID, ItemEffect effect) {
-		if (ItemDefinition.forId(itemID).isNoted()) {
-			itemID = Item.getUnNoted(itemID);
-		}
-		for (int k = 0; k < 9; k++) {
-			Bank bank = player.getBank(k);
-			if (bank == null) {
-				continue;
-			}
-			for (int i = 0; i < bank.getValidItems().size(); i++) {
-				if (bank.getItems()[i].getId() == itemID && bank.getItems()[i].getEffect() == effect) {
-					return k;
-				}
-			}
-		}
-		return player.getCurrentBankTab();
-	}
-
-	public static int getTabForItemAndEffect(Player player, Item item) {
-		if (ItemDefinition.forId(item.getId()).isNoted()) {
-			item.setId(Item.getUnNoted(item.getId()));
-		}
-		for (int k = 0; k < 9; k++) {
-			Bank bank = player.getBank(k);
-			for (int i = 0; i < bank.getValidItems().size(); i++) {
-				if (bank.getItems()[i].getId() == item.getId() && bank.getItems()[i].getEffect() == item.getEffect()
-				&& bank.getItems()[i].getBonus() == item.getBonus()){
 					return k;
 				}
 			}

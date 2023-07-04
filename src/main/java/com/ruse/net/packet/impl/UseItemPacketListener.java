@@ -10,7 +10,6 @@ import com.ruse.model.container.impl.Equipment;
 import com.ruse.model.definitions.GameObjectDefinition;
 import com.ruse.model.definitions.ItemDefinition;
 import com.ruse.model.definitions.NpcDefinition;
-import com.ruse.model.projectile.ItemEffect;
 import com.ruse.net.packet.Packet;
 import com.ruse.net.packet.PacketListener;
 import com.ruse.util.Misc;
@@ -121,135 +120,31 @@ public class UseItemPacketListener implements PacketListener {
             return;
         }
 
-        switch(itemUsedWith.getId()) {
-            case 23206:
-                if (itemUsedWith.getDefinition().getEquipmentSlot() != Equipment.WEAPON_SLOT) {
-                    player.sendMessage("Please use the token on a weapon.");
-                    return;
-                }
-                usedWith.setEffect(ItemEffect.AOE_EFFECT);
-                usedWith.setBonus(2);
-                player.getInventory().delete(itemUsedWith);
-                player.getInventory().refreshItems();
-                player.sendMessage("You successfully apply the AOE Effect to your weapon.");
-                return;
-            case 23219:
-                if (itemUsedWith.getDefinition().getEquipmentSlot() != Equipment.WEAPON_SLOT) {
-                    player.sendMessage("Please use the token on a weapon.");
-                    return;
-                }
-                usedWith.setEffect(ItemEffect.AOE_EFFECT);
-                usedWith.setBonus(1);
-                player.getInventory().delete(itemUsedWith);
-                player.getInventory().refreshItems();
-                player.sendMessage("You successfully apply the AOE Effect to your weapon.");
-                return;
-            case 23207:
-                if (itemUsedWith.getDefinition().getEquipmentSlot() != Equipment.WEAPON_SLOT) {
-                    player.sendMessage("Please use the token on a weapon.");
-                    return;
-                }
-                usedWith.setEffect(ItemEffect.DROP_RATE_HIGH);
-                player.getInventory().delete(itemUsedWith);
-                player.getInventory().refreshItems();
-                player.sendMessage("You successfully apply the AOE Effect to your weapon.");
-                return;
-            case 23208:
-                if (itemUsedWith.getDefinition().getEquipmentSlot() != Equipment.WEAPON_SLOT) {
-                    player.sendMessage("Please use the token on a weapon.");
-                    return;
-                }
-                usedWith.setEffect(ItemEffect.ALL_DAMAGE_HIGH);
-                player.getInventory().delete(itemUsedWith);
-                player.getInventory().refreshItems();
-                player.sendMessage("You successfully apply the AOE Effect to your weapon.");
-                return;
-            case 20504:
-                if(itemUsedWith.getDefinition().getEquipmentSlot() != Equipment.WEAPON_SLOT){
-                    player.sendMessage("Please use the token on a weapon.");
-                    return;
-                }
-                usedWith.setEffect(ItemEffect.AOE_EFFECT_2x2);
-                player.getInventory().delete(itemUsedWith);
-                player.getInventory().refreshItems();
-                player.sendMessage("You successfully apply the AOE Effect to your weapon.");
-                return;
-            case 22108:
+        switch (itemUsedWith.getId()) {
+            case 22108 -> {
                 CurrencyPouch.handleItemOnItem(player, itemUsedWith);
                 return;
-            case 9003:
-                if(itemUsedWith.getId() == 989) {
+            }
+            case 9003 -> {
+                if (itemUsedWith.getId() == 989) {
                     CrystalChest.sendRewardInterface(player);
                 }
                 return;
-
+            }
         }
 
-        switch(usedWith.getId()) {
-            case 23206:
-                if (itemUsedWith.getDefinition().getEquipmentSlot() != Equipment.WEAPON_SLOT) {
-                    player.sendMessage("Please use the token on a weapon.");
-                    return;
-                }
-                itemUsedWith.setEffect(ItemEffect.AOE_EFFECT);
-                itemUsedWith.setBonus(2);
-                player.getInventory().delete(usedWith);
-                player.getInventory().refreshItems();
-                player.sendMessage("You successfully apply the AOE Effect to your weapon.");
-                return;
-            case 23219:
-                if (itemUsedWith.getDefinition().getEquipmentSlot() != Equipment.WEAPON_SLOT) {
-                    player.sendMessage("Please use the token on a weapon.");
-                    return;
-                }
-                itemUsedWith.setEffect(ItemEffect.AOE_EFFECT);
-                itemUsedWith.setBonus(1);
-                player.getInventory().delete(usedWith);
-                player.getInventory().refreshItems();
-                player.sendMessage("You successfully apply the AOE Effect to your weapon.");
-                return;
-            case 23207:
-                if (itemUsedWith.getDefinition().getEquipmentSlot() != Equipment.WEAPON_SLOT) {
-                    player.sendMessage("Please use the token on a weapon.");
-                    return;
-                }
-                itemUsedWith.setEffect(ItemEffect.DROP_RATE_HIGH);
-                player.getInventory().delete(usedWith);
-                player.getInventory().refreshItems();
-                player.sendMessage("You successfully apply the AOE Effect to your weapon.");
-                return;
-            case 23208:
-                if (itemUsedWith.getDefinition().getEquipmentSlot() != Equipment.WEAPON_SLOT) {
-                    player.sendMessage("Please use the token on a weapon.");
-                    return;
-                }
-                itemUsedWith.setEffect(ItemEffect.ALL_DAMAGE_HIGH);
-                player.getInventory().delete(usedWith);
-                player.getInventory().refreshItems();
-                player.sendMessage("You successfully apply the AOE Effect to your weapon.");
-                return;
-            case 20504:
-                if(itemUsedWith.getDefinition().getEquipmentSlot() != Equipment.WEAPON_SLOT){
-                    player.sendMessage("Please use the token on a weapon.");
-                    return;
-                }
-                itemUsedWith.setEffect(ItemEffect.AOE_EFFECT_2x2);
-                player.getInventory().delete(usedWith);
-                player.getInventory().refreshItems();
-                player.sendMessage("You successfully apply the AOE Effect to your weapon.");
-                 return;
-            case 22108:
+        switch (usedWith.getId()) {
+            case 22108 -> {
                 CurrencyPouch.handleItemOnItem(player, itemUsedWith);
                 return;
-            case 9003:
-                if(itemUsedWith.getId() == 989) {
+            }
+            case 9003 -> {
+                if (itemUsedWith.getId() == 989) {
                     CrystalChest.sendRewardInterface(player);
                 }
                 return;
-
+            }
         }
-
-        player.getRarityTransfer().setItemsAndStartDialogue(itemUsedWith, itemUsedSlot, usedWith, usedWithSlot);
 
 //        if (usedWith.getId() == TreasureHunter.KEY_1 || usedWith.getId() == TreasureHunter.KEY_2 | usedWith.getId() == TreasureHunter.KEY_3 || usedWith.getId() == TreasureHunter.KEY_4) {
 //            TreasureHunter.combineKeys(player, usedWith, itemUsedWith);

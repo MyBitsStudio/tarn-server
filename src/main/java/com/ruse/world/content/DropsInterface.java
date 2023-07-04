@@ -5,7 +5,6 @@ import com.ruse.model.container.impl.Equipment;
 import com.ruse.model.definitions.NPCDrops;
 import com.ruse.model.definitions.NpcDefinition;
 import com.ruse.model.input.impl.EnterSyntaxToSearchDropsFor;
-import com.ruse.model.projectile.ItemEffect;
 import com.ruse.util.Misc;
 import com.ruse.world.entity.impl.player.Player;
 
@@ -59,7 +58,7 @@ public class DropsInterface {
 			if (i > NPCDrops.forId(npcId).getDropList().length - 1) {
 				// System.out.println(player + "opening Drop table");
 				// System.out.println("sending blank on "+i);
-				player.getPacketSender().sendItemOnInterface(ITEM_MODEL + i, -1, 0, 1, -1); // remove all item models
+				player.getPacketSender().sendItemOnInterface(ITEM_MODEL + i, -1, 0, 1); // remove all item models
 				player.getPacketSender().sendString(ITEM_NAME + i, ""); // remove all item names
 				player.getPacketSender().sendString(ITEM_AMOUNT + i, "");
 				player.getPacketSender().sendString(ITEM_CHANCE + i, "");
@@ -72,13 +71,12 @@ public class DropsInterface {
 				int min = NPCDrops.forId(npcId).getDropList()[i].getCount()[0];
 				int amount =NPCDrops.forId(npcId).getDropList()[i].getCount()[NPCDrops.forId(npcId).getDropList()[i].getCount().length - 1];
 				int chance = NPCDrops.forId(npcId).getDropList()[i].getChance();
-				player.getPacketSender().sendItemOnInterface(ITEM_MODEL + i, item.getId(), 0, amount, -1); // remove all
+				player.getPacketSender().sendItemOnInterface(ITEM_MODEL + i, item.getId(), 0, amount); // remove all
 				// item models
 				player.getPacketSender().sendString(ITEM_NAME + i, item.getDefinition().getName()); // remove all item
 				// names
 				player.getPacketSender().sendString(ITEM_AMOUNT + i, (min == amount ? Misc.formatNumber(amount) : ( Misc.formatNumber(min) + "-" + Misc.formatNumber(amount))));
-				boolean hasAoe = player.getEquipment().get(Equipment.WEAPON_SLOT).getEffect() == ItemEffect.AOE_EFFECT;
-				double divide = ((double) CustomDropUtils.drBonus(player, npcId) / (hasAoe ? 1000 : 500)) + 1;
+				double divide = ((double) CustomDropUtils.drBonus(player, npcId) / 500);
 				int chances = (int) (chance / divide);
 
 				player.getPacketSender().sendString(ITEM_CHANCE + i, "1/" +(chance == 1 ? 1 : chances));
@@ -136,7 +134,7 @@ public class DropsInterface {
 		player.getPacketSender().sendString(STRING_CHANCE, "");
 		player.getPacketSender().sendString(STRING_VALUE, "");
 		for (int i = 0; i < 80; i++) {
-			player.getPacketSender().sendItemOnInterface(ITEM_MODEL + i, -1, 0, 1, -1); // remove all item models
+			player.getPacketSender().sendItemOnInterface(ITEM_MODEL + i, -1, 0, 1); // remove all item models
 			player.getPacketSender().sendString(ITEM_NAME + i, ""); // remove all item names
 			player.getPacketSender().sendString(ITEM_AMOUNT + i, "");
 			player.getPacketSender().sendString(ITEM_CHANCE + i, "");

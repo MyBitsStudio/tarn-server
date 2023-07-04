@@ -3,7 +3,6 @@ package com.ruse.world.content.tradingpost;
 import com.ruse.model.Item;
 import com.ruse.model.definitions.ItemDefinition;
 import com.ruse.model.input.EnterAmount;
-import com.ruse.model.projectile.ItemEffect;
 import com.ruse.util.Misc;
 import com.ruse.world.content.dialogue.DialogueManager;
 import com.ruse.world.content.tradingpost.dialogues.CancelOptions;
@@ -112,7 +111,7 @@ public class TradingPost {
         if(optionalSlot.isPresent()) {
             Offer offer = optionalSlot.get();
             removeFromLiveOffers(offer);
-            player.addItemUnderAnyCircumstances(new Item(offer.getItemId(), offer.getAmountLeft(), ItemEffect.getEffectForName(offer.getItemEffect()), offer.getItemBonus(), ItemEffect.getRarityForName(offer.getItemRarity())));
+            player.addItemUnderAnyCircumstances(new Item(offer.getItemId(), offer.getAmountLeft()));
         } else {
             player.getPacketSender().sendMessage("@red@This item does not exist");
         }
@@ -122,7 +121,7 @@ public class TradingPost {
     public void selectItemToAdd(Item item) {
         selectedItemToAdd = item;
         int amount;
-        if((amount = player.getInventory().getAmount(item.getId(), item.getEffect(), item.getRarity(), item.getBonus())) < item.getAmount()) {
+        if((amount = player.getInventory().getAmount(item.getId())) < item.getAmount()) {
             selectedItemToAdd.setAmount(amount);
         }
         allowInputPrice();
@@ -133,7 +132,7 @@ public class TradingPost {
             player.getPacketSender().sendMessage("@red@Invalid price entered.");
             return;
         }
-        Offer offer = new Offer(selectedItemToAdd.getId(), selectedItemToAdd.getBonus(), selectedItemToAdd.getEffect().name(), selectedItemToAdd.getRarity().name(), selectedItemToAdd.getAmount(), price, player.getUsername(), slotSelected);
+        Offer offer = new Offer(selectedItemToAdd.getId(), selectedItemToAdd.getAmount(), price, player.getUsername(), slotSelected);
         player.getInventory().delete(selectedItemToAdd);
         addToLiveOffers(offer);
         openMainInterface();
@@ -239,8 +238,8 @@ public class TradingPost {
             coffer.incrementAmount(total);
             updateCoffer(coffer);
             player.getInventory().delete(CURRENCY_ID, total);
-            addToItemHistory(new History(toPurchase.getItemId(), toPurchase.getItemEffect(), toPurchase.getItemBonus(), toPurchase.getItemRarity(), amount, toPurchase.getPrice(), toPurchase.getSeller(), player.getUsername()));
-            player.addItemUnderAnyCircumstances(new Item(toPurchase.getItemId(), amount, ItemEffect.getEffectForName(toPurchase.getItemEffect()), toPurchase.getItemBonus(), ItemEffect.getRarityForName(toPurchase.getItemRarity())));
+            addToItemHistory(new History(toPurchase.getItemId(), amount, toPurchase.getPrice(), toPurchase.getSeller(), player.getUsername()));
+            player.addItemUnderAnyCircumstances(new Item(toPurchase.getItemId(), amount));
             viewBuyingPage();
             return;
         }

@@ -56,7 +56,7 @@ public class GoodieBag {
         }
 
         for (int i = 0; i < rewards.length; i++) {
-            player.getPacketSender().sendItemOnInterface(49270, rewards[i], i, 1,-1);
+            player.getPacketSender().sendItemOnInterface(49270, rewards[i], i, 1);
         }
     }
 

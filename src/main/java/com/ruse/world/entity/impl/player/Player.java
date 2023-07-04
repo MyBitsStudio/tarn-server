@@ -78,7 +78,6 @@ import com.ruse.world.content.minigames.impl.HallsOfValor;
 import com.ruse.world.content.minigames.impl.VoidOfDarkness;
 import com.ruse.world.content.minigames.impl.dungeoneering.Dungeoneering;
 import com.ruse.world.content.newspinner.MysteryBoxManager;
-import com.ruse.world.content.pos.PlayerOwnedShopManager;
 import com.ruse.world.content.properscratchcard.Scratchcard;
 import com.ruse.world.packages.mode.Gamemode;
 import com.ruse.world.packages.mode.impl.Temp;
@@ -441,8 +440,6 @@ public class Player extends Character {
     private final List<GroundItem> itemsInScene = new CopyOnWriteArrayList<>();
     private final DailyRewards dailyRewards = new DailyRewards(this);
     private final StarterTaskAttributes starterTaskAttributes = new StarterTaskAttributes();
-    private final PlayerOwnedShopManager playerOwnedShopManager = new PlayerOwnedShopManager(this);
-    // Timers (Stopwatches)
     private final Stopwatch sqlTimer = new Stopwatch();
     private final Stopwatch foodTimer = new Stopwatch();
     private final Stopwatch potionTimer = new Stopwatch();
@@ -971,12 +968,6 @@ public class Player extends Character {
         this.savedPin = savedPin;
     }
 
-    public RarityTransfer getRarityTransfer() {
-        return rarityTransfer;
-    }
-
-    public final RarityTransfer rarityTransfer = new RarityTransfer(this);
-
     public MysteryBoxOpener getMysteryBoxOpener() {
         return mysteryBoxOpener;
     }
@@ -1276,11 +1267,6 @@ public class Player extends Character {
     public StarterTaskAttributes getStarterTaskAttributes() {
         return starterTaskAttributes;
     }
-
-    public PlayerOwnedShopManager getPlayerOwnedShopManager() {
-        return playerOwnedShopManager;
-    }
-
     public String getMac() {
         return mac;
     }

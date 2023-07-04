@@ -10,7 +10,6 @@ import com.ruse.model.Locations.Location;
 import com.ruse.model.container.impl.Equipment;
 import com.ruse.model.definitions.ItemDefinition;
 import com.ruse.model.definitions.WeaponAnimations;
-import com.ruse.model.projectile.ItemEffect;
 import com.ruse.util.Misc;
 import com.ruse.world.content.*;
 import com.ruse.world.content.combat.strategy.impl.Nex;
@@ -143,19 +142,22 @@ public class HitQueue {
 						}
 
 						if(p.getRaid() == null) {
-							if (p.getEquipment().get(Equipment.WEAPON_SLOT).getEffect() == ItemEffect.AOE_EFFECT) {
-								if (p.getEquipment().get(Equipment.WEAPON_SLOT).getBonus() == 1) {
+							if (p.getEquipment().hasAoE()) {
+								if (p.getEquipment().getSlotBonuses()[Equipment.WEAPON_SLOT].getBonus() == 1) {
 									AOEHandler.handleAttack(p, victim, 1000, 5000, 3, container.getHits()[0].getHit().getCombatIcon());}
-								else if (p.getEquipment().get(Equipment.WEAPON_SLOT).getBonus() == 2) {
+								else if (p.getEquipment().getSlotBonuses()[Equipment.WEAPON_SLOT].getBonus() == 2) {
 									AOEHandler.handleAttack(p, victim, 1000, 5000, 6, container.getHits()[0].getHit().getCombatIcon());}
+								else if (p.getEquipment().getSlotBonuses()[Equipment.WEAPON_SLOT].getBonus() == 3) {
+									AOEHandler.handleAttack(p, victim, 1000, 5000, 9, container.getHits()[0].getHit().getCombatIcon());}
 							}
 						} else if (p.getRaid().canAOE()) {
-							if (p.getEquipment().get(Equipment.WEAPON_SLOT).getEffect() == ItemEffect.AOE_EFFECT) {
-								if (p.getEquipment().get(Equipment.WEAPON_SLOT).getBonus() == 1) {
-									AOEHandler.handleAttack(p, victim, 1000, 5000, 3, container.getHits()[0].getHit().getCombatIcon());
-								} else if (p.getEquipment().get(Equipment.WEAPON_SLOT).getBonus() == 2) {
-									AOEHandler.handleAttack(p, victim, 1000, 5000, 6, container.getHits()[0].getHit().getCombatIcon());
-								}
+							if (p.getEquipment().hasAoE()) {
+								if (p.getEquipment().getSlotBonuses()[Equipment.WEAPON_SLOT].getBonus() == 1) {
+									AOEHandler.handleAttack(p, victim, 1000, 5000, 3, container.getHits()[0].getHit().getCombatIcon());}
+								else if (p.getEquipment().getSlotBonuses()[Equipment.WEAPON_SLOT].getBonus() == 2) {
+									AOEHandler.handleAttack(p, victim, 1000, 5000, 6, container.getHits()[0].getHit().getCombatIcon());}
+								else if (p.getEquipment().getSlotBonuses()[Equipment.WEAPON_SLOT].getBonus() == 3) {
+									AOEHandler.handleAttack(p, victim, 1000, 5000, 9, container.getHits()[0].getHit().getCombatIcon());}
 							}
 						}
 

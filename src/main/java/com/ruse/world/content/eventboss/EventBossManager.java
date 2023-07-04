@@ -35,7 +35,7 @@ public class EventBossManager {
 
     private void resetInterfaceAttributes() {
     	for (int index = 0; index < 35; index++) {
-			player.getPacketSender().sendItemOnInterface(31510, -1, index, -1, -1);
+			player.getPacketSender().sendItemOnInterface(31510, -1, index, -1);
 		}
     }
     
@@ -49,7 +49,7 @@ public class EventBossManager {
     private void updateLootTable() {
     	for (int index = 0; index < npcDropRewards.size(); index++) {
     		Item item = npcDropRewards.get(index);
-			player.getPacketSender().sendItemOnInterface(31510, item.getId(), index, item.getAmount(), item.getBonus());
+			player.getPacketSender().sendItemOnInterface(31510, item.getId(), index, item.getAmount());
 		}
     }
     
@@ -121,7 +121,7 @@ public class EventBossManager {
         }
         player.getInventory().refreshItems();
         for(int i = 0; i < npcDropRewards.size(); i++) {
-            player.getPacketSender().sendItemOnInterface(31510, npcDropRewards.get(i).getId(), i, npcDropRewards.get(i).getAmount(), npcDropRewards.get(i).getBonus());
+            player.getPacketSender().sendItemOnInterface(31510, npcDropRewards.get(i).getId(), i, npcDropRewards.get(i).getAmount());
         }
         player.getPacketSender().sendInterfaceSet(31500, 3321);
         player.getPacketSender().sendItemContainer(player.getInventory(), 3322);
@@ -162,7 +162,7 @@ public class EventBossManager {
         player.getInventory().refreshItems();
         resetInterfaceAttributes();
         for(int i = 0; i < npcDropRewards.size(); i++) {
-            player.getPacketSender().sendItemOnInterface(31510, npcDropRewards.get(i).getId(), i, npcDropRewards.get(i).getAmount(), npcDropRewards.get(i).getBonus());
+            player.getPacketSender().sendItemOnInterface(31510, npcDropRewards.get(i).getId(), i, npcDropRewards.get(i).getAmount());
         }
         player.getPacketSender().sendInterfaceSet(31500, 3321);
         player.getPacketSender().sendItemContainer(player.getInventory(), 3322);

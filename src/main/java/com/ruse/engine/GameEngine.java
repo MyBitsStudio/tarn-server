@@ -9,7 +9,6 @@ import com.ruse.world.World;
 import com.ruse.world.packages.clans.ClanManager;
 import com.ruse.world.content.grandexchange.GrandExchangeOffers;
 import com.ruse.world.content.groupironman.GroupManager;
-import com.ruse.world.content.pos.PlayerOwnedShopManager;
 import com.ruse.world.entity.impl.GlobalItemSpawner;
 
 import java.util.concurrent.*;
@@ -117,7 +116,6 @@ public final class GameEngine implements Runnable {
                 playerSavingTimer.massSaving();
                 GrandExchangeOffers.save();
                 ClanManager.getManager().save();
-                PlayerOwnedShopManager.saveShops();
             }
         }, "GameEngine Exception Handler");
         exceptionHandlerThread.start();

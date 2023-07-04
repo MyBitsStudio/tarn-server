@@ -155,7 +155,7 @@ public class GroundItemManager {
 	public static void pickupGroundItem(Player p, Item item, Position position) {
 		if (!p.getLastItemPickup().elapsed(500))
 			return;
-		boolean canAddItem = p.getInventory().getFreeSlots() > 0 || item.getDefinition().isStackable() && p.getInventory().contains(item.getId(), item.getEffect());
+		boolean canAddItem = p.getInventory().getFreeSlots() > 0 || item.getDefinition().isStackable() && p.getInventory().contains(item.getId());
 		if (!canAddItem) {
 			p.getInventory().full();
 			return;
@@ -193,11 +193,11 @@ public class GroundItemManager {
 		gt.setPickedUp(true);
 		remove(gt, true);
 		p.getInventory().add(item);
-		if (ItemDefinition.forId(item.getId()) != null && ItemDefinition.forId(item.getId()).getName() != null) {
+		if (ItemDefinition.forId(item.getId()) == null || ItemDefinition.forId(item.getId()).getName() == null) {
+			PlayerLogs.log(p.getUsername(), "Picked up gr.Item " + item.getId() + ", amount: " + item.getAmount());
+		} else {
 			PlayerLogs.log(p.getUsername(),
 					"Picked up gr.Item " + item.getDefinition().getName() + ", amount: " + item.getAmount());
-		} else {
-			PlayerLogs.log(p.getUsername(), "Picked up gr.Item " + item.getId() + ", amount: " + item.getAmount());
 		}
 
 		PlayerLogs.logPickupItems(p.getUsername(), "Player picked up item: " + item.getDefinition().getName()
@@ -251,7 +251,7 @@ public class GroundItemManager {
 	public static GroundItem getGroundItem(Player p, Item item, Position position) {
 		List<GroundItem> pile = getGroundItems(position);
 		for (GroundItem l : pile) {
-			if (l.getItem().getId() == item.getId() && l.getItem().getEffect() == item.getEffect()) {
+			if (l.getItem().getId() == item.getId()) {
 				if (l.isGlobal()) {
 					return l;
 				} else if (p != null) {

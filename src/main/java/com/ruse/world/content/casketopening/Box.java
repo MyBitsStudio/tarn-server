@@ -1,9 +1,5 @@
 package com.ruse.world.content.casketopening;
 
-import com.ruse.model.Item;
-import com.ruse.model.ItemRarity;
-import com.ruse.model.definitions.ItemDefinition;
-import com.ruse.model.projectile.ItemEffect;
 import com.ruse.util.Misc;
 
 public class Box {

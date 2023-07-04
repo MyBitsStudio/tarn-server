@@ -9,7 +9,6 @@ import com.ruse.model.Locations.Location;
 import com.ruse.model.container.impl.Equipment;
 import com.ruse.model.movement.MovementQueue;
 import com.ruse.model.movement.PathFinder;
-import com.ruse.model.projectile.ItemEffect;
 import com.ruse.util.Misc;
 import com.ruse.world.clip.region.RegionClipping;
 import com.ruse.world.content.BonusManager;
@@ -760,24 +759,10 @@ public final class CombatFactory {
                 maxHit *= 1.5;
             }
 
-            for (Item item : player.getEquipment().getItems()) {
-                ItemEffect effect = item.getEffect();
-                if (effect == ItemEffect.NOTHING)
-                    continue;
-                switch (effect) {
-                   /* case STRENGTH_DAMAGE:
-                        maxHit *= item.getBonus() / 2;
-                        break;*/
-                    case ALL_DAMAGE_LOW:
-                        maxHit *= 1.05;
-                        break;
-                    case ALL_DAMAGE_MEDIUM:
-                        maxHit *= 1.07;
-                        break;
-                    case ALL_DAMAGE_HIGH:
-                        maxHit *= 1.09;
-                        break;
-                }
+            switch(player.getEquipment().getDamageBonus()){
+                case 1 -> maxHit *= 1.07;
+                case 2 -> maxHit *= 1.16;
+                case 3 -> maxHit *= 1.23;
             }
 
             // OBSIDIAN SHIT
@@ -1084,24 +1069,10 @@ public final class CombatFactory {
 
         if (victim != null && victim.isNpc()) {
 
-            for (Item item : player.getEquipment().getItems()) {
-                ItemEffect effect = item.getEffect();
-                if (effect == ItemEffect.NOTHING)
-                    continue;
-                switch (effect) {
-                   /* case RANGE_DAMAGE:
-                        maxHit *= item.getBonus() / 2;
-                        break;*/
-                    case ALL_DAMAGE_LOW:
-                        maxHit *= 1.05;
-                        break;
-                    case ALL_DAMAGE_MEDIUM:
-                        maxHit *= 1.07;
-                        break;
-                    case ALL_DAMAGE_HIGH:
-                        maxHit *= 1.09;
-                        break;
-                }
+            switch(player.getEquipment().getDamageBonus()){
+                case 1 -> maxHit *= 1.07;
+                case 2 -> maxHit *= 1.16;
+                case 3 -> maxHit *= 1.23;
             }
 
             NPC npc = (NPC) victim;

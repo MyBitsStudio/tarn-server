@@ -67,7 +67,6 @@ public class PlayerHandler {
                 + ", serial number: " + player.getSerialNumber() + ", mac address:" + player.getMac());
         PlayerLogs.logPlayerLogin(player.getUsername(), "Login ");
         player.getControllerManager().login();
-        player.getPlayerOwnedShopManager().hookShop();
         ConnectionHandler.add(player.getHostAddress());
         World.addPlayer(player);
         if (!player.isMini()) {
@@ -537,7 +536,6 @@ public class PlayerHandler {
                 Locations.logout(player);
                 player.getSummoning().unsummon(false, false);
                 player.getFarming().save();
-                player.getPlayerOwnedShopManager().unhookShop();
                 BountyHunter.handleLogout(player);
                 ClanManager.getManager().leave(player, false);
                 player.getRelations().updateLists(false);
