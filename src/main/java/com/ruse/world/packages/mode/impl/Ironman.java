@@ -17,7 +17,12 @@ public class Ironman extends Gamemode {
 
     @Override
     public Item[] starterItems() {
-        return new Item[0];
+        return new Item[]{new Item(703, 1), new Item(704, 1), new Item(705, 1),
+                new Item(19946, 1), new Item(19945, 1), new Item(19914, 1),
+                new Item(19944, 1), new Item(23089, 1), new Item(23091, 1),
+                new Item(22084, 1), new Item(22092, 1), new Item(22083, 1),
+                new Item(3025, 100), new Item(17818, 100), new Item(22120, 1), new Item(995, 1_000_000)
+        };
     }
 
     @Override
@@ -54,7 +59,7 @@ public class Ironman extends Gamemode {
 
     @Override
     public int xpRate(int xp) {
-        return 10;
+        return xp * 20;
     }
 
     @Override

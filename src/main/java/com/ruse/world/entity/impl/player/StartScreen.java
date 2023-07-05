@@ -204,15 +204,7 @@ public class StartScreen {
                 "This is probably the hardest game mode",
                 "@red@The EXP rate in this mode is the hardest",
                 "This mode is for players that love grinding",
-                "@whi@30.0% Droprate bonus", "", "", ""),
-
-        AFK("AFK", 52774, 116009, 1, 3,
-                new Item[]{new Item(703, 1)
-                },
-                "AFK Mode",
-                "@red@Gain extra AFK tickets for your main",
-                "@red@RESTRICTIONS APPLIED",
-                "", "", "", ""),
+                "@whi@30.0% Droprate bonus", "", "", "")
 
         ;
         private final String name;
