@@ -1,7 +1,6 @@
 package com.ruse.net.packet;
 
 import com.ruse.net.packet.impl.*;
-import com.ruse.world.entity.impl.player.Player;
 
 public class PacketConstants {
 
@@ -86,7 +85,7 @@ public class PacketConstants {
 		PACKETS[153] = new PlayerOptionPacketListener();
 		PACKETS[DuelAcceptancePacketListener.OPCODE] = new DuelAcceptancePacketListener();
 		PACKETS[12] = new DungeoneeringPartyInvitatationPacketListener();
-		PACKETS[204] = new GESelectItemPacketListener();
+		PACKETS[204] = new TradingPostItemSelectListener();
 		PACKETS[64] = new ClickTextMenuPacketListener();
 		PACKETS[223] = new PrestigeSkillPacketListener();
 		PACKETS[229] = new HeightCheckPacketListener();
@@ -123,7 +122,7 @@ public class PacketConstants {
 			0, 2, 0, 0, 6, 0, 0, 0, 0, 0, // 170
 			0, 8, 0, 3, 0, 0, 2, 0, 8, 1, // 180
 			0, 2, 12, 2, 0, 4, 0, 0, 0, 1, // 190
-			2, 0, 0, 0, 2, 0, 0, 0, 4, 8, // 200
+			2, 0, 0, 0, 4, 0, 0, 0, 4, 8, // 200
 			4, 0, 0, 0, 7, 8, 2, 0, 10, 0, // 210
 			2, 0, 0, 2, 0, 1, -1, 0, 6, 1, // 220
 			0, -1, 0, 0, 6, 0, 6, 8, 1, 0, // 230

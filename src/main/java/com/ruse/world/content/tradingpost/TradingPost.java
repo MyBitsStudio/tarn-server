@@ -35,15 +35,15 @@ public class TradingPost {
     private int page;
     private List<Offer> offerList;
     private List<Offer> viewingOffers;
-    private ViewType viewType;
-    private SearchFilter searchFilter;
+    private int searchedItem;
     public TradingPost(Player player) {
         this.player = player;
     }
 
     public void openMainInterface() {
         slotSelected = 0;
-        viewType = ViewType.RECENT;
+        searchedItem = -1;
+        page = 0;
         offerList = getMyOffers();
         player.getPacketSender().sendString(150436, getCofferAmount(player.getUsername()) + " " + ItemDefinition.forId(CURRENCY_ID).getName()+"s");
         for(int i = 0; i < 10; i++) {
@@ -149,11 +149,42 @@ public class TradingPost {
     }
 
     private void viewBuyingPage() {
-        if(viewType == ViewType.RECENT) {
-            viewingOffers = LIVE_OFFERS.subList(page * 50, Math.min(LIVE_OFFERS.size(), page * 50 + 50)).stream().toList();
+        if(LIVE_OFFERS.isEmpty()) {
+            player.getPacketSender().sendMessage("@red@The trading post contains no items.");
+            return;
+        }
+        if(searchedItem == -1) {
+            if(checkNextPage(LIVE_OFFERS)) {
+                player.getPacketSender().sendMessage("@red@There are no more listings on the next page.");
+                page--;
+                return;
+            }
+            viewingOffers = LIVE_OFFERS.subList(Math.min(LIVE_OFFERS.size(), page * 50), Math.min(LIVE_OFFERS.size(), page * 50 + 50)).stream().toList();
+        } else {
+            viewingOffers = LIVE_OFFERS.
+                    stream()
+                    .filter(it -> it.getItemId() == searchedItem)
+                    .toList();
+            if(viewingOffers.isEmpty()) {
+                player.getPacketSender().sendMessage("@red@There are no offers for " + ItemDefinition.forId(searchedItem).getName()+".");
+                searchedItem = -1;
+                page = 0;
+                viewBuyingPage();
+            } else {
+                if(checkNextPage(viewingOffers)) {
+                    player.getPacketSender().sendMessage("@red@There are no more listings on the next page.");
+                    page--;
+                    return;
+                }
+                viewingOffers = viewingOffers.subList(Math.min(viewingOffers.size(), page * 50), Math.min(viewingOffers.size(), page * 50 + 50));
+            }
         }
         sendBuyingPageData();
         player.getPacketSender().sendInterface(BUYING_INTERFACE_ID);
+    }
+
+    public boolean checkNextPage(List<Offer> offers) {
+        return offers.size() < page * 50;
     }
 
     private void sendBuyingPageData() {
@@ -173,6 +204,7 @@ public class TradingPost {
                         .sendString(150797 + i, "");
             }
         }
+        player.getPacketSender().sendString(150851, String.valueOf((page+1)));
         player.getPacketSender().sendMessage(":maxitems:"+size);
         player.getPacketSender().setScrollBar(150446, Math.max(221, size * 41));
     }
@@ -202,6 +234,13 @@ public class TradingPost {
         } else {
             DialogueManager.start(player, new PurchaseStatement(player, offer, 1));
         }
+    }
+
+    public void searchItem(int itemId) {
+        page = 0;
+        searchedItem = itemId;
+        System.out.println("Id: " + searchedItem);
+        viewBuyingPage();
     }
 
     //@todo noted, stackable items
@@ -290,11 +329,19 @@ public class TradingPost {
             case 150270 -> viewBuyingPage();
             case 150856 -> openMainInterface();
             case 150547 -> player.getPacketSender().sendInterfaceOverlay(BUYING_INTERFACE_ID, 150857);
-            case 150274 -> player.getPacketSender().sendInterfaceOverlay(MAIN_INTERFACE_ID, 150276);
-            case 150848 -> player.getPacketSender().sendInterfaceOverlay(BUYING_INTERFACE_ID, 150276);
-            case 150861 -> player.getPacketSender().sendMessage(":tsearch:");
+            case 150274, 150861, 150848 -> player.getPacketSender().sendMessage(":tsearch:");
             case 150279,150859 -> player.getPacketSender().removeOverlay();
             case 150434 -> collectCoffer();
+            case 150849 -> {
+                page++;
+                viewBuyingPage();
+            }
+            case 150850 -> {
+                if(page != 0) {
+                    page--;
+                    viewBuyingPage();
+                }
+            }
             default -> {
                 return false;
             }
@@ -366,7 +413,7 @@ public class TradingPost {
     public Optional<Offer> containsOptional(Offer offer) {
         return LIVE_OFFERS
                 .stream()
-                .filter(it -> it.getSlot() == offer.getSlot() && it.getItemId() == offer.getItemId() && it.getSeller() == offer.getSeller())
+                .filter(it -> it.getSlot() == offer.getSlot() && it.getItemId() == offer.getItemId() && Objects.equals(it.getSeller(), offer.getSeller()))
                 .findFirst();
     }
 }

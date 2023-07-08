@@ -18,12 +18,12 @@ public class SQLDatabase implements Database {
 
     private static final TradingPostService service = TradingPostService.getInstance();
 
-    private static final String CREATE_OFFER = "INSERT INTO live_offers(item_id, item_name, item_bonus, item_effect, item_rarity, item_initial_amount, item_amount_sold, price, seller, slot) VALUES(?,?,?,?,?,?,?,?,?, ?)";
+    private static final String CREATE_OFFER = "INSERT INTO live_offers(item_id, item_name, item_initial_amount, item_amount_sold, price, seller, slot) VALUES(?,?,?,?,?,?, ?)";
     private static final String CREATE_COFFER = "INSERT INTO coffers(username, amount) VALUES(?,?)";
     private static final String GET_ALL_OFFERS = "SELECT * FROM live_offers";
     private static final String DELETE_OFFER = "DELETE FROM live_offers WHERE seller = ? AND slot = ? LIMIT 1";
     private static final String UPDATE_OFFER = "UPDATE live_offers SET item_amount_sold = ? WHERE seller = ? AND slot = ? LIMIT 1";
-    private static final String CREATE_HISTORY = "INSERT INTO offer_history(item_id, item_name, item_bonus, item_effect, item_rarity, item_amount, price_each, total_price, seller, buyer) VALUES(?,?,?,?,?,?,?,?,?,?)";
+    private static final String CREATE_HISTORY = "INSERT INTO offer_history(item_id, item_name, item_amount, price_each, total_price, seller, buyer) VALUES(?,?,?,?,?,?,?)";
     private static final String UPDATE_COFFER = "UPDATE coffers SET amount = ? WHERE username = ? LIMIT 1";
     private static final String GET_ALL_COFFERS = "SELECT * FROM coffers";
 
@@ -34,13 +34,11 @@ public class SQLDatabase implements Database {
             ) {
                 stmt.setInt(1, offer.getItemId());
                 stmt.setString(2, ItemDefinition.forId(offer.getItemId()).getName());
-                stmt.setInt(3,offer.getItemBonus());
-                stmt.setInt(4, offer.getInitialAmount());
-                stmt.setInt(5, offer.getAmountSold());
-                stmt.setInt(6, offer.getPrice());
-                stmt.setString(7, offer.getSeller());
-                stmt.setInt(8, offer.getSlot());
-                System.out.println(offer);
+                stmt.setInt(3, offer.getInitialAmount());
+                stmt.setInt(4, offer.getAmountSold());
+                stmt.setInt(5, offer.getPrice());
+                stmt.setString(6, offer.getSeller());
+                stmt.setInt(7, offer.getSlot());
                 stmt.executeUpdate();
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -83,8 +81,8 @@ public class SQLDatabase implements Database {
                 ResultSet rs = stmt.executeQuery(GET_ALL_OFFERS)
             ) {
                 while(rs.next()) {
-                    Offer offer = new Offer(rs.getInt(2), rs.getInt(4), rs.getInt(9), rs.getString(10), rs.getInt(11));
-                    offer.setAmountSold(rs.getInt(8));
+                    Offer offer = new Offer(rs.getInt(2), rs.getInt(4), rs.getInt(6), rs.getString(7), rs.getInt(8));
+                    offer.setAmountSold(rs.getInt(4));
                     offerList.add(offer);
                 }
             } catch (SQLException e) {

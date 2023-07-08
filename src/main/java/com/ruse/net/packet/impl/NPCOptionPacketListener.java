@@ -89,6 +89,9 @@ public class NPCOptionPacketListener implements PacketListener {
                 return;
             }
             switch (npc.getId()) {
+                case 4651:
+                    player.getTradingPost().openMainInterface();
+                    break;
                 case 5249:
                     ShopManager.getShops().get(210).open(player);
                     break;

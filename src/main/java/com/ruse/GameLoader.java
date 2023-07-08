@@ -159,7 +159,7 @@ public final class GameLoader {
 		serviceLoader.execute(() -> DonationManager.getInstance().load());
 		serviceLoader.execute(VoteBossDrop::load);
 		serviceLoader.execute(DailyResetScheduler::initialize);
-		serviceLoader.execute(TradingPost::loadOffers);
+		serviceLoader.execute(TradingPost::load);
 		//serviceLoader.execute(RSAKeyGenerator::start);
 		TaskManager.submit(new LotteryTask());
 	}
