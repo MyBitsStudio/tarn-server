@@ -9,13 +9,15 @@ public class Offer {
     private final String seller;
     private final int slot;
     private int amountSold;
+    private final long timestamp;
 
-    public Offer(int itemId,  int initialAmount, int price, String seller, int slot) {
+    public Offer(int itemId,  int initialAmount, int price, String seller, int slot, long timestamp) {
         this.itemId = itemId;
         this.initialAmount = initialAmount;
         this.price = price;
         this.seller = seller;
         this.slot = slot;
+        this.timestamp = timestamp;
     }
 
     public int getItemId() {
@@ -64,6 +66,10 @@ public class Offer {
 
     public void incrementAmountSold(int amountSold) {
         this.amountSold += amountSold;
+    }
+
+    public long getTimestamp() {
+        return timestamp;
     }
 
     @Override

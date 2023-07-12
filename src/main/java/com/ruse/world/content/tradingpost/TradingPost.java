@@ -12,6 +12,8 @@ import com.ruse.world.content.tradingpost.persistance.Database;
 import com.ruse.world.content.tradingpost.persistance.SQLDatabase;
 import com.ruse.world.entity.impl.player.Player;
 
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.*;
 
 public class TradingPost {
@@ -21,6 +23,7 @@ public class TradingPost {
     private static final int BUYING_INTERFACE_ID = 150440;
 
     private static final LinkedList<Offer> LIVE_OFFERS = new LinkedList<>();
+    private static final HashMap<Integer, LinkedList<History>> ITEM_HISTORIES = new HashMap<>();
     private static final HashMap<String, Coffer> COFFERS = new HashMap<>();
 
     private static final Database DATABASE;
@@ -132,7 +135,7 @@ public class TradingPost {
             player.getPacketSender().sendMessage("@red@Invalid price entered.");
             return;
         }
-        Offer offer = new Offer(selectedItemToAdd.getId(), selectedItemToAdd.getAmount(), price, player.getUsername(), slotSelected);
+        Offer offer = new Offer(selectedItemToAdd.getId(), selectedItemToAdd.getAmount(), price, player.getUsername(), slotSelected, System.currentTimeMillis());
         player.getInventory().delete(selectedItemToAdd);
         addToLiveOffers(offer);
         openMainInterface();
@@ -150,6 +153,7 @@ public class TradingPost {
 
     private void viewBuyingPage() {
         if(LIVE_OFFERS.isEmpty()) {
+            openMainInterface();
             player.getPacketSender().sendMessage("@red@The trading post contains no items.");
             return;
         }
@@ -193,10 +197,15 @@ public class TradingPost {
         for(int i = 0; i < 50; i++) {
             if(deque.size() > 0) {
                 Offer offer = deque.pop();
+                Timestamp timestamp = new Timestamp(offer.getTimestamp());
+                LocalDateTime localDateTime = timestamp.toLocalDateTime();
+                int month = localDateTime.getMonthValue();
+                int day = localDateTime.getDayOfMonth();
+                int year = localDateTime.getYear();
                 player.getPacketSender().sendItemOnInterface(150647 + i, offer.getItemId(), offer.getAmountLeft())
                         .sendString(150697 + i, ItemDefinition.forId(offer.getItemId()).getName())
                         .sendString(150747 + i, Misc.formatNumber(offer.getPrice()))
-                        .sendString(150797 + i, "0:0");
+                        .sendString(150797 + i, month + "/" + day + "/"+ year);
             } else {
                 player.getPacketSender().sendItemOnInterface(150647 + i, -1, 0)
                         .sendString(150697 + i, "")
@@ -239,7 +248,6 @@ public class TradingPost {
     public void searchItem(int itemId) {
         page = 0;
         searchedItem = itemId;
-        System.out.println("Id: " + searchedItem);
         viewBuyingPage();
     }
 
@@ -277,7 +285,7 @@ public class TradingPost {
             coffer.incrementAmount(total);
             updateCoffer(coffer);
             player.getInventory().delete(CURRENCY_ID, total);
-            addToItemHistory(new History(toPurchase.getItemId(), amount, toPurchase.getPrice(), toPurchase.getSeller(), player.getUsername()));
+            addToItemHistory(new History(toPurchase.getItemId(), amount, toPurchase.getPrice(), toPurchase.getSeller(), player.getUsername(), System.currentTimeMillis(), new Date(System.currentTimeMillis())));
             player.addItemUnderAnyCircumstances(new Item(toPurchase.getItemId(), amount));
             viewBuyingPage();
             return;
@@ -287,9 +295,37 @@ public class TradingPost {
     }
 
     private void viewHistory(int index) {
-        if(viewingOffers == null || viewingOffers.isEmpty()) {
+        if(viewingOffers == null || viewingOffers.isEmpty() || index >= viewingOffers.size()) return;
+        int itemId = viewingOffers.get(index).getItemId();
+        sendHistoryData(itemId);
+    }
+
+    public void sendHistoryData(int itemId) {
+        LinkedList<History> histories;
+        if((histories = ITEM_HISTORIES.get(itemId)) == null) {
+            player.getPacketSender().sendMessage("@red@This item has no history.");
             return;
         }
+        Deque<History> deque = new ArrayDeque<>(histories);
+        final int size = deque.size();
+        for(int i = 0; i < 50; i++) {
+            if(deque.size() > 0) {
+                History history = deque.pop();
+                Timestamp timestamp = new Timestamp(history.timestamp());
+                LocalDateTime localDateTime = timestamp.toLocalDateTime();
+                int month = localDateTime.getMonthValue();
+                int day = localDateTime.getDayOfMonth();
+                int year = localDateTime.getYear();
+                player.getPacketSender().sendItemOnInterface(150917 + i, history.itemId(), history.amount())
+                        .sendString(150967 + i, history.price() + " (ea)")
+                        .sendString(151017 + i, month + "/" + day + "/"+ year);
+            } else {
+                player.getPacketSender().sendItemOnInterface(150917 + i, -1, 0);
+            }
+        }
+        player.getPacketSender().sendInterfaceOverlay(BUYING_INTERFACE_ID, 150857);
+        player.getPacketSender().sendMessage(":maxitems:"+size);
+        player.getPacketSender().setScrollBar(150863, Math.max(247, size * 35));
     }
 
     private int getCofferAmount(String username) {
@@ -326,9 +362,8 @@ public class TradingPost {
             viewHistory( id - 150547);
         }
         switch (id) {
-            case 150270 -> viewBuyingPage();
+            case 150270, 150847 -> viewBuyingPage();
             case 150856 -> openMainInterface();
-            case 150547 -> player.getPacketSender().sendInterfaceOverlay(BUYING_INTERFACE_ID, 150857);
             case 150274, 150861, 150848 -> player.getPacketSender().sendMessage(":tsearch:");
             case 150279,150859 -> player.getPacketSender().removeOverlay();
             case 150434 -> collectCoffer();
@@ -349,9 +384,18 @@ public class TradingPost {
         return true;
     }
 
-    //@todo item average
     public static String getAverageValue(Item item) {
-
+        LinkedList<History> historyLinkedList;
+        if((historyLinkedList = ITEM_HISTORIES.get(item.getId())) == null || historyLinkedList.size() < 3) {
+            return "@red@Not enough of this item has sold to calculate an average";
+        }
+        OptionalDouble average = historyLinkedList
+                .stream()
+                .mapToDouble(History::price)
+                .average();
+        if(average.isPresent()) {
+            return "Average: @red@ " + Misc.formatNumber((long) average.getAsDouble());
+        }
         return "This item has no current value";
     }
 
@@ -381,6 +425,8 @@ public class TradingPost {
 
     public static void addToItemHistory(History history) {
         DATABASE.createHistory(history);
+        LinkedList<History> histories = ITEM_HISTORIES.computeIfAbsent(history.itemId(), x -> new LinkedList<>());
+        histories.add(history);
     }
 
     public static void loadOffers() {
@@ -391,9 +437,15 @@ public class TradingPost {
         DATABASE.loadCoffers(COFFERS);
     }
 
+    private static void loadHistories() {
+        DATABASE.loadHistory(ITEM_HISTORIES);
+    }
+
+
     public static void load() {
         loadOffers();
         loadCoffers();
+        loadHistories();
     }
 
     public List<Offer> getMyOffers() {

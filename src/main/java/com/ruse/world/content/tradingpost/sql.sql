@@ -9,7 +9,7 @@ CREATE TABLE IF NOT EXISTS live_offers(
     price INT NOT NULL,
     seller VARCHAR(255) NOT NULL,
     slot smallint NOT NULL,
-    time_stamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    time_stamp bigint NOT NULL,
     UNIQUE(seller, slot)
 );
 
@@ -29,5 +29,6 @@ CREATE TABLE IF NOT EXISTS offer_history(
     total_price INT NOT NULL,
     seller VARCHAR(255) NOT NULL,
     buyer VARCHAR(255) NOT NULL,
-    time_stamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    time_stamp bigint NOT NULL,
+    UNIQUE(item_id, seller, buyer, time_stamp)
 );

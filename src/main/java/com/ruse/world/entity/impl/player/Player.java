@@ -144,6 +144,8 @@ public class Player extends Character {
 
     private boolean miniPlayer;
 
+    @Getter @Setter private int overlayInterface;
+
     public boolean isMiniPlayer() {
         return miniPlayer;
     }

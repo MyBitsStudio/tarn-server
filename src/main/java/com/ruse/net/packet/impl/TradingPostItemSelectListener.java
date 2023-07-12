@@ -20,6 +20,10 @@ public class TradingPostItemSelectListener implements PacketListener {
 						.sendMessage("This item can currently not be purchased or sold in the trading post.");
 				return;
 			}
+			if(player.getOverlayInterface() == 150857) {
+				player.getTradingPost().sendHistoryData(item);
+				return;
+			}
 			player.getTradingPost().searchItem(item);
 		}
 	}

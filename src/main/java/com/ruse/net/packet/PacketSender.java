@@ -508,10 +508,12 @@ public class PacketSender {
         PacketBuilder out = new PacketBuilder(10);
         out.putInt(parentId);
         out.putInt(overlayId);
+        player.setOverlayInterface(overlayId);
         player.getSession().queueMessage(out);
     }
 
     public void removeOverlay() {
+        player.setOverlayInterface(-1);
         sendInterfaceOverlay(player.getInterfaceId(), -1);
     }
 

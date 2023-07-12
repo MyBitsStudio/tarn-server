@@ -7,25 +7,25 @@ import com.ruse.world.content.tradingpost.models.Offer;
 import com.ruse.world.content.tradingpost.concurrency.TradingPostService;
 import org.checkerframework.checker.units.qual.C;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 
 public class SQLDatabase implements Database {
 
     private static final TradingPostService service = TradingPostService.getInstance();
 
-    private static final String CREATE_OFFER = "INSERT INTO live_offers(item_id, item_name, item_initial_amount, item_amount_sold, price, seller, slot) VALUES(?,?,?,?,?,?, ?)";
+    private static final String CREATE_OFFER = "INSERT INTO live_offers(item_id, item_name, item_initial_amount, item_amount_sold, price, seller, slot, time_stamp) VALUES(?,?,?,?,?,?,?,?)";
     private static final String CREATE_COFFER = "INSERT INTO coffers(username, amount) VALUES(?,?)";
     private static final String GET_ALL_OFFERS = "SELECT * FROM live_offers";
     private static final String DELETE_OFFER = "DELETE FROM live_offers WHERE seller = ? AND slot = ? LIMIT 1";
     private static final String UPDATE_OFFER = "UPDATE live_offers SET item_amount_sold = ? WHERE seller = ? AND slot = ? LIMIT 1";
-    private static final String CREATE_HISTORY = "INSERT INTO offer_history(item_id, item_name, item_amount, price_each, total_price, seller, buyer) VALUES(?,?,?,?,?,?,?)";
+    private static final String CREATE_HISTORY = "INSERT INTO offer_history(item_id, item_name, item_amount, price_each, total_price, seller, buyer, time_stamp) VALUES(?,?,?,?,?,?,?,?)";
     private static final String UPDATE_COFFER = "UPDATE coffers SET amount = ? WHERE username = ? LIMIT 1";
     private static final String GET_ALL_COFFERS = "SELECT * FROM coffers";
+    private static final String GET_ALL_HISTORY = "SELECT * FROM offer_history";
 
     @Override
     public void createOffer(Offer offer) {
@@ -39,6 +39,7 @@ public class SQLDatabase implements Database {
                 stmt.setInt(5, offer.getPrice());
                 stmt.setString(6, offer.getSeller());
                 stmt.setInt(7, offer.getSlot());
+                stmt.setLong(8, offer.getTimestamp());
                 stmt.executeUpdate();
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -75,14 +76,14 @@ public class SQLDatabase implements Database {
     }
 
     @Override
-    public void loadOffers(List<Offer> offerList) {
+    public void loadOffers(LinkedList<Offer> offerList) {
         service.takeRequest((connection) -> {
             try(Statement stmt = connection.createStatement();
                 ResultSet rs = stmt.executeQuery(GET_ALL_OFFERS)
             ) {
                 while(rs.next()) {
-                    Offer offer = new Offer(rs.getInt(2), rs.getInt(4), rs.getInt(6), rs.getString(7), rs.getInt(8));
-                    offer.setAmountSold(rs.getInt(4));
+                    Offer offer = new Offer(rs.getInt(2), rs.getInt(4), rs.getInt(6), rs.getString(7), rs.getInt(8), rs.getLong(9));
+                    offer.setAmountSold(rs.getInt(5));
                     offerList.add(offer);
                 }
             } catch (SQLException e) {
@@ -132,6 +133,7 @@ public class SQLDatabase implements Database {
                 stmt.setInt(5, history.price()*history.amount());
                 stmt.setString(6, history.seller());
                 stmt.setString(7, history.buyer());
+                stmt.setLong(8, history.timestamp());
                 stmt.executeUpdate();
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -140,8 +142,22 @@ public class SQLDatabase implements Database {
     }
 
     @Override
-    public void loadHistory(List<History> historyList) {
-
+    public void loadHistory(HashMap<Integer, LinkedList<History>> histories) {
+        service.takeRequest((connection) -> {
+            try(Statement stmt = connection.createStatement();
+                ResultSet rs = stmt.executeQuery(GET_ALL_HISTORY)
+            ) {
+                while(rs.next()) {
+                    long timestamp = rs.getLong(9);
+                    History history = new History(rs.getInt(2), rs.getInt(4), rs.getInt(5), rs.getString(7), rs.getString(8), timestamp, new Date(timestamp));
+                    int itemId = history.itemId();
+                    LinkedList<History> historyLinkedList = histories.computeIfAbsent(itemId, x -> new LinkedList<>());
+                    historyLinkedList.add(history);
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        });
     }
 
     @Override
