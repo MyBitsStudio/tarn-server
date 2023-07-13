@@ -22,7 +22,7 @@ public class Lobby {
     private final Set<Player> playerSet = new HashSet<>();
 
     /**
-     * The current ongoing game
+     * The current ongoing {@link Game}
      */
     private Game game;
 
