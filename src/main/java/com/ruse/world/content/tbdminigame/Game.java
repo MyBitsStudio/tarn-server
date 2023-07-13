@@ -20,6 +20,7 @@ public class Game {
 
     public void start() {
         playerSet.forEach(player -> {
+            player.getPacketSender().sendWalkableInterface(151100, false);
             TeleportHandler.teleportPlayer(player, START_POSITION, TeleportType.NORMAL);
         });
     }

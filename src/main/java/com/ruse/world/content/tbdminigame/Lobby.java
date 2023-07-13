@@ -2,6 +2,7 @@ package com.ruse.world.content.tbdminigame;
 
 import com.ruse.engine.task.Task;
 import com.ruse.engine.task.TaskManager;
+import com.ruse.model.Position;
 import com.ruse.world.World;
 import com.ruse.world.content.dialogue.DialogueManager;
 import com.ruse.world.entity.impl.player.Player;
@@ -10,6 +11,9 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class Lobby {
+
+    private static final Position LOBBY_ENTER_POSITION = new Position(2399, 3747, 0);
+    private static final Position LOBBY_EXIT_POSITION = new Position(2399, 3748, 0);
 
     private static Lobby INSTANCE;
 
@@ -20,6 +24,8 @@ public class Lobby {
     private static final int LOBBY_TIMER = 2;
 
     private final Set<Player> playerSet = new HashSet<>();
+
+    private int taskTicks;
 
     /**
      * The current ongoing {@link Game}
@@ -43,14 +49,17 @@ public class Lobby {
             return;
         }
         playerSet.add(player);
+        player.moveTo(LOBBY_ENTER_POSITION);
         if(playerSet.size() == 1) startTimer();
-        player.getPacketSender().sendWalkableInterface(1, true);
+        player.getPacketSender().sendWalkableInterface(151100, true);
         updatePlayerCountInterface();
+        updateTimerInterface(LOBBY_TIMER - taskTicks);
     }
 
     private void remove(Player player) {
         playerSet.remove(player);
-        player.getPacketSender().sendWalkableInterface(1, false);
+        player.moveTo(LOBBY_EXIT_POSITION);
+        player.getPacketSender().sendWalkableInterface(151100, false);
         if(playerSet.isEmpty())
             cancelTimer();
     }
@@ -62,12 +71,12 @@ public class Lobby {
 
     private void updatePlayerCountInterface() {
         for(Player player : playerSet)
-            player.getPacketSender().sendString(1, String.valueOf(playerSet.size()));
+            player.getPacketSender().sendString(151104, "Players: " + playerSet.size());
     }
 
     private void updateTimerInterface(int minutesLeft) {
         for(Player player : playerSet)
-            player.getPacketSender().sendString(1, minutesLeft + "min left");
+            player.getPacketSender().sendString(151105, "Time left: " + minutesLeft + " min");
     }
 
     private void cancelTimer() {
@@ -75,16 +84,16 @@ public class Lobby {
     }
 
     private void startTimer() {
+        taskTicks = 0;
         TaskManager.submit(new Task(100, this, false) {
-            int ticks = 0;
             @Override
             protected void execute() {
-                if(ticks == LOBBY_TIMER) {
+                taskTicks++;
+                if(taskTicks == LOBBY_TIMER) {
                     startGame();
                     stop();
                 } else {
-                   ticks++;
-                   updateTimerInterface(LOBBY_TIMER - ticks);
+                   updateTimerInterface(LOBBY_TIMER - taskTicks);
                 }
             }
         });
