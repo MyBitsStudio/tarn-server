@@ -27,6 +27,7 @@ import com.ruse.world.content.dialogue.DialogueManager;
 import com.ruse.world.content.grandexchange.GrandExchange;
 import com.ruse.world.content.holidayevents.christmas2016;
 import com.ruse.world.content.holidayevents.easter2017data;
+import com.ruse.world.content.tbdminigame.Lobby;
 import com.ruse.world.packages.instances.InstanceManager;
 import com.ruse.world.content.minigames.impl.*;
 import com.ruse.world.content.minigames.impl.Dueling.DuelRule;
@@ -205,7 +206,9 @@ public class ObjectActionPacketListener implements PacketListener {
                             player.performGraphic(new Graphic(1555));
                             //player.getSeasonPass().incrementExp(300, false);
                         break;
-
+                        case 4469:
+                            Lobby.getInstance().barrierClick(player);
+                            break;
                         case 621:
                             InstanceManager.getManager().sendInterface(player);
                             break;

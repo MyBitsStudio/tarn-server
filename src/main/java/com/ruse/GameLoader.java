@@ -31,6 +31,7 @@ import com.ruse.world.content.grandexchange.GrandExchangeOffers;
 import com.ruse.world.content.groupironman.GroupManager;
 import com.ruse.world.content.polling.PollManager;
 import com.ruse.world.content.serverperks.ServerPerks;
+import com.ruse.world.content.tbdminigame.Lobby;
 import com.ruse.world.content.tradingpost.TradingPost;
 import com.ruse.world.entity.actor.player.controller.ControllerHandler;
 import com.ruse.world.entity.impl.npc.NPC;
@@ -92,7 +93,7 @@ public final class GameLoader {
 		GlobalBossManager.getInstance();
 		PlusUpgrade.getPlusUpgrade();
 		DonateSales.getInstance();
-
+		new Lobby();
 		ServiceManager.INSTANCE.init();
 	}
 
