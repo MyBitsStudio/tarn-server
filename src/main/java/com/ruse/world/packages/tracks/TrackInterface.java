@@ -44,30 +44,37 @@ public class TrackInterface {
             }
         }
 
-        switch(Integer.parseInt(settings[1])){
+        switch(Integer.parseInt(settings[0])) {
             case 0 -> {
-                int type = Integer.parseInt(settings[2]);
-                int index = Integer.parseInt(settings[3]);
-                StarterTasks tasks = StarterTasks.getByIndexAndCategory(type, index);
-                if(tasks != null) {
-                    switch(Integer.parseInt(settings[4])){
-                        case 0 -> {
-                            player.getPacketSender().sendString(161045, tasks.getTaskName());
-                            player.getPacketSender().sendString(161046, "XP +"+tasks.getXp());
-                            player.getPacketSender().sendString(161048, (player.getStarter().completed(tasks) ? "@gre@Completed" : "@red@Not Completed"));
+                switch(Integer.parseInt(settings[1])){
+                    case 0 -> {
+                        int type = Integer.parseInt(settings[2]);
+                        int index = Integer.parseInt(settings[3]);
+                        StarterTasks tasks = StarterTasks.getByIndexAndCategory(type, index);
+                        if(tasks != null) {
+                            switch(Integer.parseInt(settings[4])){
+                                case 0 -> {
+                                    player.getPacketSender().sendString(161045, tasks.getTaskName());
+                                    player.getPacketSender().sendString(161046, "XP +"+tasks.getXp());
+                                    player.getPacketSender().sendString(161048, (player.getStarter().completed(tasks) ? "@gre@Completed" : "@red@Not Completed"));
 
-                            if(tasks.getNpc() == -1) {
+                                    if(tasks.getNpc() == -1) {
 
-                            } else {
-                                StarterTasks kill = StarterTasks.byKills(tasks.getNpc());
-                                if(kill == null) {
-                                    player.getPacketSender().sendString(161047, "Kills : @red@ERROR");
-                                } else {
-                                    player.getPacketSender().sendString(161047, "Kills : "+ KillsTracker.getTotalKillsForNpc(kill.getNpc(), player)+"/"+kill.getCount());
+                                    } else {
+                                        StarterTasks kill = StarterTasks.byKills(tasks.getNpc());
+                                        if(kill == null) {
+                                            player.getPacketSender().sendString(161047, "Kills : @red@ERROR");
+                                        } else {
+                                            player.getPacketSender().sendString(161047, "Kills : "+ KillsTracker.getTotalKillsForNpc(kill.getNpc(), player)+"/"+kill.getCount());
+                                        }
+                                    }
+                                }
+                                case 1 -> {
+                                    player.getPacketSender().sendInterfaceDisplayState(161300, false);
+                                    player.getPacketSender().sendItemOnInterface(161301, tasks.getReward().item(), tasks.getReward().amount());
                                 }
                             }
                         }
-                        case 1 -> player.getPacketSender().sendItemOnInterface(161301, tasks.getReward().item(), tasks.getReward().amount());
                     }
                 }
             }
@@ -75,6 +82,7 @@ public class TrackInterface {
 
         switch(Integer.parseInt(settings[0])){
             case 0 -> {
+                player.getPacketSender().updateProgressSpriteBar(161058, player.getStarter().getProgress(), 100);
                 switch(Integer.parseInt(settings[5])){
                     case 0 -> {
                         player.getPacketSender().sendString(161052, "XP : "+player.getStarter().xp+"/"+player.getStarter().maxLevel);
@@ -83,7 +91,24 @@ public class TrackInterface {
                         player.getPacketSender().sendString(161055, "Difficulty : Easy");
                         player.getPacketSender().sendString(161056, "Tasks Completed : "+player.getStarter().getCompleted());
                         player.getPacketSender().sendString(161057, "Tasks Left : "+player.getStarter().nonCompleted());
-                        player.getPacketSender().updateProgressSpriteBar(161058, player.getStarter().getProgress(), 100);
+
+                    }
+                    case 1 -> {
+                        player.getPacketSender().sendInterfaceDisplayState(161400, false);
+                        player.getPacketSender().sendInterfaceDisplayState(161059, false);
+                        player.getPacketSender().sendString(161060, "CLAIM");
+
+                        int used = 0;
+                        for(ProgressReward reward : player.getStarter().getRewards().getRewards()) {
+                            if(reward == null)
+                                continue;
+
+                            if(player.getStarter().position >= reward.getLevel() && !reward.isClaimed())
+                                player.getPacketSender().sendItemOnInterface(161401 + (used++), reward.getItem(), reward.getAmount());
+                        }
+                        player.getPacketSender().sendString(161055, "Waiting : "+used);
+                        player.getPacketSender().sendString(161056, "Tasks Completed : "+player.getStarter().getCompleted());
+                        player.getPacketSender().sendString(161057, "Tasks Left : "+player.getStarter().nonCompleted());
                     }
                 }
             }
@@ -102,9 +127,14 @@ public class TrackInterface {
 
     private static void reset(@NotNull Player player){
         player.getPacketSender().sendInterfaceDisplayState(161300, true);
+        player.getPacketSender().sendInterfaceDisplayState(161400, true);
+        player.getPacketSender().sendInterfaceDisplayState(161059, true);
+        player.getPacketSender().sendString(161060, "");
 
         for(int i = 0; i < 45; i++)
             player.getPacketSender().sendItemOnInterface(161301 + i, -1, 1);
+        for(int i = 0; i < 15; i++)
+            player.getPacketSender().sendItemOnInterface(161401 + i, -1, 1);
 
         for(int i = 0; i < 6; i++)
             player.getPacketSender().sendString(161044 + (i + 1), "");
@@ -223,9 +253,18 @@ public class TrackInterface {
                 return true;
             }
 
-            default -> {
-                return false;
+            case 161059 -> {
+                switch(Integer.parseInt(player.getVariables().getInterfaceSettings()[0])){
+                    case 0 -> {
+                        switch(Integer.parseInt(player.getVariables().getInterfaceSettings()[1])){
+                            case 0 -> player.getStarter().getRewards().claimRewards(player, player.getStarter().position, false, false);
+                        }
+                    }
+                }
+                sendInterface(player, false);
+                return true;
             }
         }
+        return false;
     }
 }

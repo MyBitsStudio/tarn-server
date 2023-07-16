@@ -31,6 +31,38 @@ public enum StarterTasks {
             , 9922, 1),
     TASK_010(0, 25,"Kill 50 Blurite Centaurs", new TaskReward(995, 1000)
             , 9922, 50),
+    TASK_011(0, 5,"Kill 1 Zinqrux", new TaskReward(995, 1000)
+            , 8014, 1),
+    TASK_012(0, 25,"Kill 50 Zinqrux", new TaskReward(995, 1000)
+            , 8014, 50),
+    TASK_013(0, 5,"Kill 1 Dr.Aberrant", new TaskReward(995, 1000)
+            , 8003, 1),
+    TASK_014(0, 25,"Kill 50 Dr.Aberrant", new TaskReward(995, 1000)
+            , 8003, 50),
+    TASK_015(0, 5,"Kill 1 Nagenda", new TaskReward(995, 1000)
+            , 811, 1),
+    TASK_016(0, 25,"Kill 50 Nagenda", new TaskReward(995, 1000)
+            , 811, 50),
+    TASK_017(0, 5,"Kill 1 Yisdar", new TaskReward(995, 1000)
+            , 9817, 1),
+    TASK_018(0, 25,"Kill 50 Yisdar", new TaskReward(995, 1000)
+            , 9817, 50),
+    TASK_019(0, 5,"Kill 1 Doomwatcher", new TaskReward(995, 1000)
+            , 9836, 1),
+    TASK_020(0, 25,"Kill 50 Doomwatcher", new TaskReward(995, 1000)
+            , 9836, 50),
+    TASK_021(0, 5,"Kill 1 Maze Guardian", new TaskReward(995, 1000)
+            , 92, 1),
+    TASK_022(0, 25,"Kill 50 Maze Guardian", new TaskReward(995, 1000)
+            , 92, 50),
+    TASK_023(0, 5,"Kill 1 Miscreation", new TaskReward(995, 1000)
+            , 3313, 1),
+    TASK_024(0, 25,"Kill 50 Miscreation", new TaskReward(995, 1000)
+            , 3313, 50),
+    TASK_025(0, 5,"Kill 1 Zorbak", new TaskReward(995, 1000)
+            , 1906, 1),
+    TASK_026(0, 25,"Kill 50 Zorbak", new TaskReward(995, 1000)
+            , 1906, 50),
 
     TASK_050(1, 10,"Gain 1 99 Skill", new TaskReward(995, 1000)
             , -1, -1),
@@ -40,11 +72,39 @@ public enum StarterTasks {
             , -1, -1),
 
     TASK_100(2, 10,"Kill 1 Avalon", new TaskReward(995, 1000)
-            , -1, -1),
+            , 9025, 1),
     TASK_101(2, 40,"Kill 100 Avalons", new TaskReward(995, 1000)
-            , -1, -1),
+            , 9025, 100),
+    TASK_102(2, 10,"Kill 1 Eragon", new TaskReward(995, 1000)
+            , 9026, 1),
+    TASK_103(2, 40,"Kill 100 Eragons", new TaskReward(995, 1000)
+            , 9026, 100),
+    TASK_104(2, 10,"Kill 1 Avatar Titan", new TaskReward(995, 1000)
+            , 8008, 1),
+    TASK_105(2, 40,"Kill 100 Avatar Titans", new TaskReward(995, 1000)
+            , 8008, 100),
+    TASK_106(2, 10,"Kill 1 Emerald Slayer", new TaskReward(995, 1000)
+            , 2342, 1),
+    TASK_107(2, 40,"Kill 100 Emerald Slayer", new TaskReward(995, 1000)
+            , 2342, 100),
+    TASK_108(2, 10,"Kill 1 Mutant Hydra", new TaskReward(995, 1000)
+            , 9839, 1),
+    TASK_109(2, 40,"Kill 100 Mutant Hydra", new TaskReward(995, 1000)
+            , 9839, 100),
+    TASK_110(2, 10,"Kill 1 Gorvek", new TaskReward(995, 1000)
+            , 9806, 1),
+    TASK_111(2, 40,"Kill 100 Gorvek", new TaskReward(995, 1000)
+            , 9806, 100),
+    TASK_112(2, 10,"Kill 1 Onyx Griffin", new TaskReward(995, 1000)
+            , 1746, 1),
+    TASK_113(2, 40,"Kill 100 Onyx Griffin", new TaskReward(995, 1000)
+            , 1746, 100),
 
-    TASK_151(3, 10,"Clear LVL 5 Tarn Tower", new TaskReward(995, 1000)
+    TASK_150(3, 10,"Clear LVL 5 Tarn Tower", new TaskReward(995, 1000)
+            , -1, -1),
+    TASK_151(3, 50,"Clear LVL 10 Tarn Tower", new TaskReward(995, 1000)
+            , -1, -1),
+    TASK_152(3, 100,"Clear LVL 20 Tarn Tower", new TaskReward(995, 1000)
             , -1, -1),
 
     TASK_200(4, 5,"Vote 5 Times", new TaskReward(995, 1000)
@@ -52,13 +112,7 @@ public enum StarterTasks {
     TASK_201(4, 50,"Vote 50 Times", new TaskReward(995, 1000)
             , -1, -1),
     TASK_202(4, 100,"Vote 100 Times", new TaskReward(995, 1000)
-            , -1, -1),
-    TASK_203(4, 50,"Donate 10$", new TaskReward(995, 1000)
-            , -1, -1),
-    TASK_204(4, 250,"Donate 50$", new TaskReward(995, 1000)
-            , -1, -1),
-    TASK_205(4, 500,"Donate 100$", new TaskReward(995, 1000)
-            , -1, -1),
+            , -1, -1)
     ;
     private final int category, xp, npc, count;
     private final String taskName;

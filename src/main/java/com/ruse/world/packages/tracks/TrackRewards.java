@@ -3,20 +3,33 @@ package com.ruse.world.packages.tracks;
 import com.ruse.world.entity.impl.player.Player;
 import lombok.Getter;
 import lombok.Setter;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 @Getter
-@Setter
 public abstract class TrackRewards {
 
     protected List<ProgressReward> rewards = new CopyOnWriteArrayList<>();
 
     public abstract void loadRewards();
 
+    public TrackRewards() {
+        loadRewards();
+    }
+
+    public void setRewards(@NotNull List<ProgressReward> rewards) {
+        for(ProgressReward reward : rewards)
+            if(reward != null)
+                if(this.rewards.contains(reward))
+                    this.rewards.set(this.rewards.indexOf(reward), reward);
+    }
+
     public void claimRewards(Player player, int position, boolean premium, boolean premiumUnlock){
         for(ProgressReward reward : rewards){
+            if(reward == null)
+                continue;
             if(reward.getLevel() <= position){
                 if(!reward.isClaimed()){
                     if(player.getInventory().getFreeSlots() >= 1){

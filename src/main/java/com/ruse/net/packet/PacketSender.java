@@ -532,7 +532,7 @@ public class PacketSender {
     public PacketSender sendInterfaceDisplayState(int interfaceId, boolean hide) {
         PacketBuilder out = new PacketBuilder(171);
         out.put(hide ? 1 : 0);
-        out.putShort(interfaceId);
+        out.putInt(interfaceId);
         player.getSession().queueMessage(out);
         return this;
     }

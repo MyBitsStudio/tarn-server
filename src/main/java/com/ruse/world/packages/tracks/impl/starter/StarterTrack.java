@@ -22,7 +22,10 @@ public class StarterTrack extends Track {
     }
 
     public void setTasks(@NotNull Map<StarterTasks, Boolean> tasks) {
-        this.tasks.replaceAll((k, v) -> tasks.get(k));
+        for(StarterTasks task : tasks.keySet())
+            if(task != null)
+                if(this.tasks.containsKey(task))
+                    this.tasks.put(task, tasks.get(task));
     }
 
     private void setUp(){
@@ -49,6 +52,9 @@ public class StarterTrack extends Track {
             case 4 -> tasks = StarterTasks.getMiscTasks();
             default -> player.getPacketSender().sendMessage("Invalid task type.");
         }
+
+        if(tasks == null)
+            return;
 
         for (int i = 0; i < Objects.requireNonNull(tasks).size(); i++) {
             StarterTasks task = tasks.get(i);

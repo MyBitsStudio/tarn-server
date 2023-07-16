@@ -2,6 +2,7 @@ package com.ruse.world.packages.tracks;
 
 import com.ruse.world.entity.impl.player.Player;
 import lombok.Getter;
+import org.jetbrains.annotations.NotNull;
 
 @Getter
 public class ProgressReward {
@@ -19,10 +20,11 @@ public class ProgressReward {
     }
 
     public void claim(){
-
+        claimed = true;
     }
 
-    public void claimPremium(Player player){
-
+    public void claimPremium(@NotNull Player player){
+        premiumClaimed = true;
+        player.getPacketSender().sendMessage("You have unlocked a premium reward!");
     }
 }
