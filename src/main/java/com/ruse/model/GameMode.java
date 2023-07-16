@@ -15,6 +15,7 @@
 //		return this.equals(AFK);
 //	}
 //
+
 //	public static void set(Player player, GameMode newMode, boolean death) {
 //		if (UltimateIronmanHandler.hasItemsStored(player)) {
 //			player.getPacketSender().sendMessage("You must claim your stored items first.");

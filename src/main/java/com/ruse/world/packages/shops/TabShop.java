@@ -42,8 +42,10 @@ public class TabShop {
 
     public void process(){
         for(Shop shop : shops){
-            shop.process();
+            if(shop == null)
+                continue;
 
+            shop.process();
         }
 
     }

@@ -364,6 +364,12 @@ public class PlayerSecureSave extends SecureSave {
         object.addProperty("vipTotal", player.getPlayerVIP().getTotal());
         object.addProperty("packXP", player.getPlayerVIP().getPackXp());
         object.add("vipDonate", builder.toJsonTree(player.getPlayerVIP().getDonations()));
+
+        object.addProperty("starterLevel", player.getStarter().getPosition());
+        object.addProperty("starterXp", player.getStarter().getXp());
+        object.add("starterTasks", builder.toJsonTree(player.getStarter().getTasks()));
+        object.add("starterRewards", builder.toJsonTree(player.getStarter().getRewards().getRewards()));
+
         return this;
     }
 

@@ -16,6 +16,11 @@ public class PvMTrack extends Track {
         this.maxLevel = 50;
     }
 
+    @Override
+    public void sendInterfaceList() {
+
+    }
+
     private void setTasks(){
         int rank = Math.floorDiv(position, 10);
         tasks = new PvmTask[3];

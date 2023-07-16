@@ -1,0 +1,231 @@
+package com.ruse.world.packages.tracks;
+
+import com.ruse.world.content.KillsTracker;
+import com.ruse.world.entity.impl.player.Player;
+import com.ruse.world.packages.tracks.impl.starter.StarterTasks;
+import org.jetbrains.annotations.NotNull;
+
+import java.util.ArrayList;
+
+public class TrackInterface {
+    /**
+     * Adding new Tracks
+     * 1. Add a new String[][] to the tracks array
+     */
+
+    public static String[][] tracks = {
+            {"Starter"},
+            {},
+            {},
+            {},
+            {}
+    };
+
+    public static void sendInterface(Player player, boolean refresh){
+        if(refresh)
+            resetVars(player);
+
+        reset(player);
+
+        player.getPacketSender().sendInterface(161000);
+
+        String[] settings = player.getVariables().getInterfaceSettings();
+
+        String[] trackNames = tracks[Integer.parseInt(settings[0])];
+
+        for(int i = 0; i < trackNames.length; i++)
+            player.getPacketSender().sendString(161101 + i, trackNames[i]);
+
+        switch(Integer.parseInt(settings[0])){
+            case 0 -> {
+                switch(Integer.parseInt(settings[1])){
+                    case 0 -> player.getStarter().sendInterfaceList();
+                }
+            }
+        }
+
+        switch(Integer.parseInt(settings[1])){
+            case 0 -> {
+                int type = Integer.parseInt(settings[2]);
+                int index = Integer.parseInt(settings[3]);
+                StarterTasks tasks = StarterTasks.getByIndexAndCategory(type, index);
+                if(tasks != null) {
+                    switch(Integer.parseInt(settings[4])){
+                        case 0 -> {
+                            player.getPacketSender().sendString(161045, tasks.getTaskName());
+                            player.getPacketSender().sendString(161046, "XP +"+tasks.getXp());
+                            player.getPacketSender().sendString(161048, (player.getStarter().completed(tasks) ? "@gre@Completed" : "@red@Not Completed"));
+
+                            if(tasks.getNpc() == -1) {
+
+                            } else {
+                                StarterTasks kill = StarterTasks.byKills(tasks.getNpc());
+                                if(kill == null) {
+                                    player.getPacketSender().sendString(161047, "Kills : @red@ERROR");
+                                } else {
+                                    player.getPacketSender().sendString(161047, "Kills : "+ KillsTracker.getTotalKillsForNpc(kill.getNpc(), player)+"/"+kill.getCount());
+                                }
+                            }
+                        }
+                        case 1 -> player.getPacketSender().sendItemOnInterface(161301, tasks.getReward().item(), tasks.getReward().amount());
+                    }
+                }
+            }
+        }
+
+        switch(Integer.parseInt(settings[0])){
+            case 0 -> {
+                switch(Integer.parseInt(settings[5])){
+                    case 0 -> {
+                        player.getPacketSender().sendString(161052, "XP : "+player.getStarter().xp+"/"+player.getStarter().maxLevel);
+                        player.getPacketSender().sendString(161053, "Level : "+player.getStarter().position);
+                        player.getPacketSender().sendString(161054, "Max Level : 40");
+                        player.getPacketSender().sendString(161055, "Difficulty : Easy");
+                        player.getPacketSender().sendString(161056, "Tasks Completed : "+player.getStarter().getCompleted());
+                        player.getPacketSender().sendString(161057, "Tasks Left : "+player.getStarter().nonCompleted());
+                        player.getPacketSender().updateProgressSpriteBar(161058, player.getStarter().getProgress(), 100);
+                    }
+                }
+            }
+        }
+
+    }
+
+    private static void resetVars(@NotNull Player player){
+        player.getVariables().setInterfaceSettings(0, "0");
+        player.getVariables().setInterfaceSettings(1, "0");
+        player.getVariables().setInterfaceSettings(2, "0");
+        player.getVariables().setInterfaceSettings(3, "0");
+        player.getVariables().setInterfaceSettings(4, "0");
+        player.getVariables().setInterfaceSettings(5, "0");
+    }
+
+    private static void reset(@NotNull Player player){
+        player.getPacketSender().sendInterfaceDisplayState(161300, true);
+
+        for(int i = 0; i < 45; i++)
+            player.getPacketSender().sendItemOnInterface(161301 + i, -1, 1);
+
+        for(int i = 0; i < 6; i++)
+            player.getPacketSender().sendString(161044 + (i + 1), "");
+
+        for(int i = 0; i < 50; i++)
+            player.getPacketSender().sendString(161101 + i, "");
+
+        for(int i = 0; i < 50; i++)
+            player.getPacketSender().sendString(161201 + i, "");
+
+        for(int i = 0; i < 6; i++)
+            player.getPacketSender().sendString(161052 + i, "");
+
+    }
+
+    public static boolean handleButtons(Player player, int id){
+        if(id >= 161101 && id <= 161150){
+            int index = id - 161101;
+            player.getVariables().setInterfaceSettings(1, String.valueOf(index));
+            sendInterface(player, false);
+            return true;
+        }
+        if(id >= 161201 && id <= 161250){
+            int index = id - 161201;
+            player.getVariables().setInterfaceSettings(3, String.valueOf(index));
+            sendInterface(player, false);
+            return true;
+        }
+        switch(id){
+
+            case 161006 -> {
+                player.getVariables().setInterfaceSettings(0, "0");
+                sendInterface(player, false);
+                return true;
+            }
+            case 161007 -> {
+                player.getVariables().setInterfaceSettings(0, "1");
+                sendInterface(player, false);
+                return true;
+            }
+            case 161008 -> {
+                player.getVariables().setInterfaceSettings(0, "2");
+                sendInterface(player, false);
+                return true;
+            }
+            case 161009 -> {
+                player.getVariables().setInterfaceSettings(0, "3");
+                sendInterface(player, false);
+                return true;
+            }
+            case 161010 -> {
+                player.getVariables().setInterfaceSettings(0, "4");
+                sendInterface(player, false);
+                return true;
+            }
+
+            case 161011 -> {
+                player.getVariables().setInterfaceSettings(2, "0");
+                sendInterface(player, false);
+                return true;
+            }
+            case 161012 -> {
+                player.getVariables().setInterfaceSettings(2, "1");
+                sendInterface(player, false);
+                return true;
+            }
+            case 161013 -> {
+                player.getVariables().setInterfaceSettings(2, "2");
+                sendInterface(player, false);
+                return true;
+            }
+            case 161014 -> {
+                player.getVariables().setInterfaceSettings(2, "3");
+                sendInterface(player, false);
+                return true;
+            }
+            case 161015 -> {
+                player.getVariables().setInterfaceSettings(2, "4");
+                sendInterface(player, false);
+                return true;
+            }
+            case 161016 -> {
+                player.getVariables().setInterfaceSettings(2, "5");
+                sendInterface(player, false);
+                return true;
+            }
+
+            case 161017 -> {
+                player.getVariables().setInterfaceSettings(4, "0");
+                sendInterface(player, false);
+                return true;
+            }
+            case 161018 -> {
+                player.getVariables().setInterfaceSettings(4, "1");
+                sendInterface(player, false);
+                return true;
+            }
+            case 161019 -> {
+                player.getVariables().setInterfaceSettings(4, "2");
+                sendInterface(player, false);
+                return true;
+            }
+            case 161020, 161023, 161024 -> {
+                player.sendMessage("Coming soon!");
+                return true;
+            }
+
+            case 161021 -> {
+                player.getVariables().setInterfaceSettings(5, "0");
+                sendInterface(player, false);
+                return true;
+            }
+            case 161022 -> {
+                player.getVariables().setInterfaceSettings(5, "1");
+                sendInterface(player, false);
+                return true;
+            }
+
+            default -> {
+                return false;
+            }
+        }
+    }
+}

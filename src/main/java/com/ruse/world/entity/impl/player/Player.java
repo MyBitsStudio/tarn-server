@@ -111,6 +111,7 @@ import com.ruse.world.entity.impl.npc.NPC;
 import com.ruse.world.entity.impl.player.StartScreen.GameModes;
 import com.ruse.world.instance.impl.DungeoneeringInstance;
 import com.ruse.world.packages.tower.TowerProgress;
+import com.ruse.world.packages.tracks.impl.starter.StarterTrack;
 import com.ruse.world.packages.vip.VIP;
 import com.ruse.world.region.Region;
 import com.ruse.world.region.RegionManager;
@@ -4341,4 +4342,7 @@ public class Player extends Character {
 
     @Getter@Setter
     private Gamemode mode = new Temp();
+
+    @Getter@Setter
+    private StarterTrack starter = new StarterTrack(this);
 }

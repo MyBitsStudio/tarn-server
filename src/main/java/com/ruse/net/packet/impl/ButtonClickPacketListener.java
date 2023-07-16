@@ -69,6 +69,7 @@ import com.ruse.world.content.zombie.ZombieRaidData;
 import com.ruse.world.entity.impl.player.Player;
 import com.ruse.world.entity.impl.player.StartScreen;
 import com.ruse.world.packages.mode.impl.UltimateIronman;
+import com.ruse.world.packages.tracks.TrackInterface;
 
 import java.util.Arrays;
 import java.util.List;
@@ -118,6 +119,9 @@ public class ButtonClickPacketListener implements PacketListener {
             }
         }
         if(player.getTradingPost().handleButtonClick(id)) {
+            return;
+        }
+        if(TrackInterface.handleButtons(player, id)) {
             return;
         }
         if (!player.getControllerManager().processButtonClick(id)) {

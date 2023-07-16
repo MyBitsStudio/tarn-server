@@ -23,7 +23,7 @@ public class PlayerVariables {
     }
 
     private void defaultSettings(){
-        settings.put("interface-settings", new String[3]);
+        settings.put("interface-settings", new String[6]);
         settings.put("active-shop", Integer.parseInt("-1"));
         settings.put("active-tab", Integer.parseInt("-1"));
     }
@@ -56,7 +56,7 @@ public class PlayerVariables {
     }
 
     public String[] getInterfaceSettings() {
-    	return (String[]) settings.getOrDefault("interface-settings", new String[3]);
+    	return (String[]) settings.getOrDefault("interface-settings", new String[6]);
     }
 
     public void setInterfaceSettings(int index, String put) {

@@ -14,6 +14,11 @@ public class TarnTrack extends Track {
         this.maxLevel = 50;
     }
 
+    @Override
+    public void sendInterfaceList() {
+
+    }
+
     private void setTasks(){
         int rank = Math.floorDiv(position, 10);
         tasks = new TarnTask[3];

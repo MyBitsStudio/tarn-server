@@ -7,16 +7,17 @@ import java.util.Objects;
 
 import com.ruse.util.Misc;
 import com.ruse.world.entity.impl.player.Player;
+import org.jetbrains.annotations.NotNull;
 
 public class KillTrackerInterface {
 
-	   private static List<KillsTracker.KillsEntry> currentlyViewing = new ArrayList<>();
-	    private static enum Type {
+	   private static final List<KillsTracker.KillsEntry> currentlyViewing = new ArrayList<>();
+	    private enum Type {
 	        MONSTERS,
 	        BOSSES,
 	        OTHER;
 	    }
-	    public static void open(Player player) {
+	    public static void open(@NotNull Player player) {
 	        player.getPA().sendString(33310, "Total NPC Kills:" + Misc.insertCommasToNumber(String.valueOf(KillsTracker.getTotalKills(player))));
 	        sendNames(player, Type.MONSTERS);
 	        if(!currentlyViewing.isEmpty()) {
@@ -48,28 +49,28 @@ public class KillTrackerInterface {
 	        currentlyViewing.clear();
 	        switch(type) {
 	            case MONSTERS:
-	                Collections.sort(player.getKillsTracker(), (kill1, kill2) -> {
-	                    if(kill1.boss && !kill2.boss) {
-	                        return -1;
-	                    }
-	                    if(kill2.boss && !kill1.boss) {
-	                        return 1;
-	                    }
-	                    if(kill1.boss && kill2.boss || !kill1.boss && !kill2.boss) {
-	                        if(kill1.amount > kill2.amount) {
-	                            return -1;
-	                        } else if(kill2.amount > kill1.amount) {
-	                            return 1;
-	                        } else {
-	                            if(kill1.npcName.compareTo(kill2.npcName) > 0) {
-	                                return 1;
-	                            } else {
-	                                return -1;
-	                            }
-	                        }
-	                    }
-	                    return 0;
-	                });
+	                player.getKillsTracker().sort((kill1, kill2) -> {
+						if (kill1.boss && !kill2.boss) {
+							return -1;
+						}
+						if (kill2.boss && !kill1.boss) {
+							return 1;
+						}
+						if (kill1.boss && kill2.boss || !kill1.boss && !kill2.boss) {
+							if (kill1.amount > kill2.amount) {
+								return -1;
+							} else if (kill2.amount > kill1.amount) {
+								return 1;
+							} else {
+								if (kill1.npcName.compareTo(kill2.npcName) > 0) {
+									return 1;
+								} else {
+									return -1;
+								}
+							}
+						}
+						return 0;
+					});
 	                for(KillsTracker.KillsEntry entry : player.getKillsTracker()) {
 	                    if(!entry.boss) {
 	                        currentlyViewing.add(entry);
@@ -77,28 +78,28 @@ public class KillTrackerInterface {
 	                }
 	                break;
 	            case BOSSES:
-	                Collections.sort(player.getKillsTracker(), (kill1, kill2) -> {
-	                    if(kill1.boss && !kill2.boss) {
-	                        return -1;
-	                    }
-	                    if(kill2.boss && !kill1.boss) {
-	                        return 1;
-	                    }
-	                    if(kill1.boss && kill2.boss || !kill1.boss && !kill2.boss) {
-	                        if(kill1.amount > kill2.amount) {
-	                            return -1;
-	                        } else if(kill2.amount > kill1.amount) {
-	                            return 1;
-	                        } else {
-	                            if(kill1.npcName.compareTo(kill2.npcName) > 0) {
-	                                return 1;
-	                            } else {
-	                                return -1;
-	                            }
-	                        }
-	                    }
-	                    return 0;
-	                });
+	                player.getKillsTracker().sort((kill1, kill2) -> {
+						if (kill1.boss && !kill2.boss) {
+							return -1;
+						}
+						if (kill2.boss && !kill1.boss) {
+							return 1;
+						}
+						if (kill1.boss && kill2.boss || !kill1.boss && !kill2.boss) {
+							if (kill1.amount > kill2.amount) {
+								return -1;
+							} else if (kill2.amount > kill1.amount) {
+								return 1;
+							} else {
+								if (kill1.npcName.compareTo(kill2.npcName) > 0) {
+									return 1;
+								} else {
+									return -1;
+								}
+							}
+						}
+						return 0;
+					});
 
 	                for(KillsTracker.KillsEntry entry : player.getKillsTracker()) {
 	                    if(entry.boss) {
@@ -112,7 +113,7 @@ public class KillTrackerInterface {
 	        }
 	    }
 
-	    private static void sendData(Player player, KillsTracker.KillsEntry entry) {
+	    private static void sendData(@NotNull Player player, KillsTracker.@NotNull KillsEntry entry) {
 	        player.getPA().sendString(33308, "Currently Viewing: " + entry.npcName)
 	                .sendString(33309, entry.npcName + " kills: " + Misc.insertCommasToNumber(String.valueOf(entry.amount)))
 	                .sendNpcIdToDisplayPacket(entry.npcId, 33311);
@@ -121,19 +122,20 @@ public class KillTrackerInterface {
 	    public static boolean handleButton(Player player, int id) {
 	        if(id >= -32215 && id <= -32165) {
 	            try {
-	                	if(currentlyViewing.get(id + 32215).npcId > 0)
-	                    sendData(player, currentlyViewing.get(id + 32215));
+					if(currentlyViewing.get(id + 32215).npcId > 0) sendData(player, currentlyViewing.get(id + 32215));
 	            } catch(Exception e) {}
 	            return true;
 	        }
-	        switch (id) {
-	            case -32234:
-	                sendNames(player, Type.MONSTERS);
-	                return true;
-	            case -32233:
-	                sendNames(player, Type.BOSSES);
-	                return true;
-	        }
+			switch (id) {
+				case -32234 -> {
+					sendNames(player, Type.MONSTERS);
+					return true;
+				}
+				case -32233 -> {
+					sendNames(player, Type.BOSSES);
+					return true;
+				}
+			}
 	        return false;
 	    }
 	}

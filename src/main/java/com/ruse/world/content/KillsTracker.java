@@ -70,7 +70,7 @@ public class KillsTracker {
 				if (entry.boss)
 					continue;
 				int toSend = 8147 + index > 8196 ? 12174 + index : 8147 + index;
-				player.getPacketSender().sendString(toSend, "@dre@ " + entry.npcName + ": " + entry.amount + "");
+				player.getPacketSender().sendString(toSend, "@dre@ " + entry.npcName + ": " + entry.amount);
 				index++;
 			}
 		} catch (Exception e) {

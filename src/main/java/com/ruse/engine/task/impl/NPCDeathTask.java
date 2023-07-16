@@ -50,21 +50,6 @@ import java.util.Set;
  */
 
 public class NPCDeathTask extends Task {
-    public static NPC FRIEZA;
-    // this
-    // array
-    // of
-    // npcs
-    // to
-    // change
-    // the
-    // npcs
-    // you
-    // want
-    // to
-    // give
-    // boss
-    // points
     /**
      * The npc setting off the death task.
      */
@@ -78,7 +63,7 @@ public class NPCDeathTask extends Task {
     /**
      * The amount of ticks on the task.
      */
-    private int ticks = 2;
+    private int ticks;
 
     /**
      * The player who killed the NPC
@@ -96,52 +81,30 @@ public class NPCDeathTask extends Task {
         this.ticks = 2;
     }
 
-    @SuppressWarnings("incomplete-switch")
     @Override
     public void execute() {
         try {
             npc.setEntityInteraction(null);
             switch (ticks) {
-                case 2:
+                case 2 -> {
                     npc.getMovementQueue().setLockMovement(true).reset();
-
                     DamageDealer damageDealer = npc.getCombatBuilder().getTopDamageDealer(false, null);
                     killer = damageDealer == null ? null : damageDealer.getPlayer();
-
-                    if(killer != null) {
+                    if (killer != null) {
                         if (killer.getInstance() != null) {
                             killer.getInstance().setCanLeave((System.currentTimeMillis() + (1000 * 2)));
                         }
                     }
-
-                    if(BattlePassData.isBoss(npc.getId())) {
-                        BattlePassHandler.GiveExperience(npc);
-                    }
-
-                    if (npc.getId() == GlobalEventBossTask.eventBossID) {
-                       // World.sendMessage("Event Boss has died.");
-                        World.deregister(npc);
-                        return;
-                    }
-
                     if ((killer instanceof MiniPlayer) && killer.getMiniPlayerOwner() != null) {
                         killer = killer.getMiniPlayerOwner();
                     }
-
-                    if(killer != null){
+                    if (killer != null) {
                         killer.getControllerManager().processNPCDeath(npc);
                     }
-
                     if (!(npc.getId() >= 6142 && npc.getId() <= 6145) && !(npc.getId() > 5070 && npc.getId() < 5081))
                         npc.performAnimation(new Animation(npc.getDefinition().getDeathAnim()));
-
-                    /** CUSTOM NPC DEATHS **/
-                    if (npc.getId() == 13447) {
-                        Nex.handleDeath();
-                    }
-
-                    break;
-                case 0:
+                }
+                case 0 -> {
                     if (killer != null) {
                         DryStreak dryStreak = killer.getDryStreak();
                         killer.getDryStreak().dryStreakMap.put(npc.getId(), dryStreak.getDryStreak(npc.getId()) + 1);
@@ -149,41 +112,20 @@ public class NPCDeathTask extends Task {
                         dryStreak.sendAlert(npc.getId());
 
                         boolean boss = (npc.getDefaultConstitution() > 2000);
-                        if (!Nex.nexMinion(npc.getId()) && npc.getId() != 1158
-                                && !(npc.getId() >= 3493 && npc.getId() <= 3497)) {
-                            KillsTracker.submitById(killer, npc.getId(), true, npc.getDefinition().isBoss());
-                            KillsTracker.submitById(killer, npc.getId(), false, npc.getDefinition().isBoss());
-                        }
-
-                        if (npc.getId() == 3) {
-                            int total = KillsTracker.getTotalKillsForNpc(npc.getId(), killer);
-                            if (total == 10000) {
-                                killer.sendMessage("@blu@You have reached 10,000 kills and received a Dan's present.");
-                                killer.getInventory().add(6542, 1);
-                                //return;
-                            }
-                        }
-
-                        if (npc.getId() == 9019) {
-                            int total = KillsTracker.getTotalKillsForNpc(npc.getId(), killer);
-                            if (total == 10000) {
-                                killer.sendMessage("@blu@You have reached 10,000 kills and received a St. Patrick's Box.");
-                                killer.getInventory().add(13802, 1);
-                                //return;
-                            }
-                        }
+//
+//                        if (npc.getId() == 9019) {
+//                            int total = KillsTracker.getTotalKillsForNpc(npc.getId(), killer);
+//                            if (total == 10000) {
+//                                killer.sendMessage("@blu@You have reached 10,000 kills and received a St. Patrick's Box.");
+//                                killer.getInventory().add(13802, 1);
+//                                //return;
+//                            }
+//                        }
 
                         SeasonPassManager.addNpcKillExp(killer.getSeasonPass(), npc.getDefinition().getName());
 
                         achieve(killer, npc.getId());
                         killTracker(killer, npc.getId());
-
-                       /* if (BOSSES.contains(npc.getId())) {
-
-                            killer.getPointsHandler().incrementBossPoints(1);
-                            killer.sendMessage("<img=99>You now have @red@" + killer.getPointsHandler().getBossPoints()
-                                    + " Boss Points!");
-                        }*/
 
                         Achievements.doProgress(killer, Achievements.Achievement.KILL_5000_NPCS);
                         Achievements.doProgress(killer, Achievements.Achievement.KILL_10000_NPCS);
@@ -204,7 +146,7 @@ public class NPCDeathTask extends Task {
                         }
                         if (killer.getLocation() == Location.CUSTOM_RAIDS) {
                             Dungeoneering.handleNpcDeath(killer, npc);
-                        } // fixed, enjoy.
+                        }
 
                         if (boss) {
                             DailyTask.BOSSES.tryProgress(killer);
@@ -221,21 +163,11 @@ public class NPCDeathTask extends Task {
                             killer.sendMessage("@red@You received a PVM Casket");
                             killer.getInventory().add(2736, 1);
                         }
-                        ProgressionZone.handleKill(killer, npc.getId());
+
+                        //ProgressionZone.handleKill(killer, npc.getId());
 
                         /** LOCATION KILLS **/
                         if (npc.getLocation().handleKilledNPC(killer, npc)) {
-                            stop();
-                            return;
-                        }
-                        if (npc.getPosition().getRegionId() == 7758) {
-                            killer.vod.killBarrowsNpc(killer, npc, true);
-                            stop();
-                            return;
-                        }
-
-                        if (npc.getPosition().getRegionId() == 8782) {
-                            killer.hov.killBarrowsNpc(npc, true);
                             stop();
                             return;
                         }
@@ -246,8 +178,6 @@ public class NPCDeathTask extends Task {
                             killer.getPointsHandler().incrementNPCKILLCount(1);
                             if (!npc.isEventBoss()) {
                                 NPCDrops.handleDrops(killer, npc, 1);
-
-                                // NPCDrops.dropItems(killer, npc);
                             }
                         }
                         if (killer.getSummoning() != null && killer.getSummoning().getFamiliar() != null
@@ -257,15 +187,19 @@ public class NPCDeathTask extends Task {
 
                         int killCount = 1;
 
-                        if(killer.getEquipment().hasQuadKills()){
+                        if (killer.getEquipment().hasQuadKills()) {
                             killCount = 4;
-                        } else if(killer.getEquipment().hasTripleKills()){
+                        } else if (killer.getEquipment().hasTripleKills()) {
                             killCount = 3;
-                        } else if(killer.getEquipment().hasDoubleKills()){
+                        } else if (killer.getEquipment().hasDoubleKills()) {
                             killCount = 2;
                         }
 
                         killer.getPointsHandler().incrementNPCKILLCount(killCount);
+
+                        KillsTracker.submitById(killer, npc.getId(), false, npc.getDefinition().isBoss());
+
+                        killer.getStarter().handleKillCount(npc.getId());
 
                         if (npc instanceof GlobalBoss) {
                             GlobalBossHandler.onDeath((GlobalBoss) npc);
@@ -275,7 +209,7 @@ public class NPCDeathTask extends Task {
                             ((DonationBoss) npc).handleDrops();
                         }
 
-                        if(npc.getId() == 4540){
+                        if (npc.getId() == 4540) {
                             YoutubeBoss.drop(npc);
                         }
 
@@ -301,14 +235,14 @@ public class NPCDeathTask extends Task {
                             return;
                         } else {
                             new BossEventHandler().death(killer, npc, npc.getDefinition().getName());
-                           // new InstanceManager(killer).death(killer, npc, npc.getDefinition().getName());
+                            // new InstanceManager(killer).death(killer, npc, npc.getDefinition().getName());
                             new DailyTaskHandler(killer).death(npc.getDefinition().getName());
 
                             /** SLAYER **/
                             killer.getSlayer().killedNpc(npc);
                             npc.getCombatBuilder().getDamageMap().clear();
 
-                            TaskManager.submit(new Task(0, killer, true){
+                            TaskManager.submit(new Task(0, killer, true) {
                                 @Override
                                 protected void execute() {
                                     setEventRunning(false);
@@ -319,7 +253,7 @@ public class NPCDeathTask extends Task {
                                         Nex.death(npc.getId());
                                     }
 
-                                    if(killer != null){
+                                    if (killer != null) {
 
                                         if (npc.isEventBoss()) {
                                             EventBossDropHandler.death(killer, npc);
@@ -361,7 +295,7 @@ public class NPCDeathTask extends Task {
                                             TaskManager.submit(new NPCRespawnTask(npc, npc.getDefinition().getRespawn(), killer));
                                     }
 
-                                    if(killer == null) {
+                                    if (killer == null) {
                                         World.deregister(npc);
                                     } else if (killer.getInstance() == null) {
                                         World.deregister(npc);
@@ -376,9 +310,9 @@ public class NPCDeathTask extends Task {
                         }
 
                         super.stop();
-                        break;
 
                     }
+                }
             }
             ticks--;
         } catch (Exception e) {
@@ -1016,19 +950,19 @@ public class NPCDeathTask extends Task {
         if (npcId == SkeletalHorror.NPC_ID) {
             SkeletalHorror.wyrmAlive = false;
         }
-        if (npcId == 6203 || npcId == 6260 || npcId == 6247 || npcId == 6222) { // done
-            StarterTasks.doProgress(killer, StarterTaskData.KILL_20_GWD_BOSSES);
-        }
-        if (npcId == 1023) { // done
-            StarterTasks.doProgress(killer, StarterTaskData.KILL_100_STARTER);
-        }
-        if (npcId == 4972) { // done
-            StarterTasks.doProgress(killer, StarterTaskData.KILL_ETERNAL);
-        }
-
-        if (!(npcId == 1)) {
-            StarterTasks.doProgress(killer, StarterTaskData.REACH_1000_TOTAL);
-        }
+//        if (npcId == 6203 || npcId == 6260 || npcId == 6247 || npcId == 6222) { // done
+//            StarterTasks.doProgress(killer, StarterTaskData.KILL_20_GWD_BOSSES);
+//        }
+//        if (npcId == 1023) { // done
+//            StarterTasks.doProgress(killer, StarterTaskData.KILL_100_STARTER);
+//        }
+//        if (npcId == 4972) { // done
+//            StarterTasks.doProgress(killer, StarterTaskData.KILL_ETERNAL);
+//        }
+//
+//        if (!(npcId == 1)) {
+//            StarterTasks.doProgress(killer, StarterTaskData.REACH_1000_TOTAL);
+//        }
         /** PARSE DROPS **/
         if (npcId == 3830) {
             SkeletalHorror.handleDrop(npc);
@@ -1040,7 +974,6 @@ public class NPCDeathTask extends Task {
         if (npc.getId() == 8013) {// resets the vote count to 0 on votizo
             VoteBossDrop.handleDrop(npc);
             World.sendMessage("<shad=f9f6f6>Vote boss has been slain...");
-
         }
 
 //        if (npc.getId() == 9908) {

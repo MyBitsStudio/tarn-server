@@ -9,9 +9,9 @@ import java.util.concurrent.CopyOnWriteArrayList;
 @Getter
 public class Shop {
 
-    private int id;
-    private Currency currency;
-    private String name;
+    private final int id;
+    private final Currency currency;
+    private final String name;
     private final List<ShopItem> items = new CopyOnWriteArrayList<>();
     private long lastUpdate;
 

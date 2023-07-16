@@ -25,6 +25,7 @@ import com.ruse.world.content.skill.SkillManager;
 import com.ruse.world.content.transportation.TeleportHandler;
 import com.ruse.world.content.transportation.TeleportType;
 import com.ruse.world.packages.tower.TarnTower;
+import com.ruse.world.packages.tracks.TrackInterface;
 import com.ruse.world.packages.voting.VoteBossDrop;
 import com.ruse.world.entity.impl.npc.NPC;
 import com.ruse.world.entity.impl.player.Player;
@@ -451,6 +452,10 @@ public class OwnerCommands {
                         System.out.println(def.getId()+" "+def.getName());
                     }
                 }
+                return true;
+
+            case "track":
+                TrackInterface.sendInterface(player, true);
                 return true;
 
         }

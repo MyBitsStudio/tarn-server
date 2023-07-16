@@ -1,10 +1,14 @@
 package com.ruse.world.packages.tracks;
 
 import com.ruse.world.entity.impl.player.Player;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
+@Getter
+@Setter
 public abstract class TrackRewards {
 
     protected List<ProgressReward> rewards = new CopyOnWriteArrayList<>();

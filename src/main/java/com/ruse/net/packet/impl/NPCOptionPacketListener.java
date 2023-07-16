@@ -815,35 +815,6 @@ public class NPCOptionPacketListener implements PacketListener {
             }
         }
 
-        if (interact.getId() == 9837) {
-            if (player.getPointsHandler().getNPCKILLCount() > 100) {
-                player.sendMessage("@red@This place is for new players with less than 100 NPC Kills.");
-                player.getCombatBuilder().reset(true);
-                return;
-            }
-        }
-        if (interact.getId() == 9027) {
-            if (player.getPointsHandler().getNPCKILLCount() > 200) {
-                player.sendMessage("@red@This place is for new players with less than 200 NPC Kills.");
-                player.getCombatBuilder().reset(true);
-                return;
-            }
-        }
-        if (interact.getId() == 9835) {
-            if (player.getPointsHandler().getNPCKILLCount() > 300) {
-                player.sendMessage("@red@This place is for new players with less than 300 NPC Kills.");
-                player.getCombatBuilder().reset(true);
-                return;
-            }
-        }
-        if (interact.getId() == 9911) {
-            if (player.getPointsHandler().getNPCKILLCount() > 400) {
-                player.sendMessage("@red@This place is for new players with less than 400 NPC Kills.");
-                player.getCombatBuilder().reset(true);
-                return;
-            }
-        }
-
         if (interact.getId() == 3){
             player.sendMessage("The Dan Event has ended.");
             player.getCombatBuilder().reset(true);

@@ -33,6 +33,8 @@ import com.ruse.world.packages.mode.impl.*;
 import com.ruse.world.packages.ranks.DonatorRank;
 import com.ruse.world.packages.ranks.StaffRank;
 import com.ruse.world.packages.ranks.VIPRank;
+import com.ruse.world.packages.tracks.ProgressReward;
+import com.ruse.world.packages.tracks.impl.starter.StarterTasks;
 import com.ruse.world.packages.vip.Donation;
 
 import java.lang.reflect.Type;
@@ -1218,6 +1220,27 @@ public class PlayerSecureLoad extends SecureLoad {
                     new TypeToken<List<Donation>>() {
                     }.getType()));
         }
+
+        if(object.has("starterLevel")) {
+            player.getStarter().setPosition(object.get("starterLevel").getAsInt());
+        }
+
+        if(object.has("starterXp")) {
+            player.getStarter().setXp(object.get("starterXp").getAsInt());
+        }
+
+        if(object.has("starterTasks")) {
+            player.getStarter().setTasks(builder.fromJson(object.get("starterTasks"),
+                    new TypeToken<Map<StarterTasks, Boolean>>() {
+                    }.getType()));
+        }
+
+        if(object.has("starterRewards")) {
+            player.getStarter().getRewards().setRewards(builder.fromJson(object.get("starterRewards"),
+                    new TypeToken<List<ProgressReward>>() {
+                    }.getType()));
+        }
+
 
         return this;
     }
