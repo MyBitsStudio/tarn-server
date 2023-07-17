@@ -38,7 +38,7 @@ public class PlayerSettings {
         settings.put("pass-change", false);
         settings.put("is-locked", false);
         settings.put("drop-message-personal", true);
-        settings.put("security", true);
+        settings.put("security", false);
         settings.put("summer-unlock", false);
         settings.put("donator", false);
     }

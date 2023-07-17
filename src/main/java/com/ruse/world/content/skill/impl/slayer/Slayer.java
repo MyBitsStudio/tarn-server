@@ -46,8 +46,8 @@ public class Slayer {
         if(duoSlayer) {
             slayerTaskAmount *= 2;
         }
-        if (taskToSet == player.getSlayer().getLastTask() || NpcDefinition.forId(taskToSet.getNpcId())
-                .getSlayerLevel() > player.getSkillManager().getMaxLevel(Skill.SLAYER)) {
+        if (taskToSet == player.getSlayer().getLastTask() || (NpcDefinition.forId(taskToSet.getNpcId()) != null ? NpcDefinition.forId(taskToSet.getNpcId())
+                .getSlayerLevel() : 1) > player.getSkillManager().getMaxLevel(Skill.SLAYER)) {
             assignTask();
             return;
         }
