@@ -123,10 +123,6 @@ public class PlayerCommands {
                 ServerPerks.getInstance().open(player);
                 break;
 
-            case "startzones": case "starterzone": case "train": case "start" : case "starter": case "training":
-                ProgressionZone.teleport(player);
-                break;
-
             case "kills":
                 player.getPacketSender().sendInterfaceRemoval();
                 KillTrackerInterface.open(player);

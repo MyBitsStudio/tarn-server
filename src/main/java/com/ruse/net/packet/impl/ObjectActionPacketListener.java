@@ -330,7 +330,7 @@ public class ObjectActionPacketListener implements PacketListener {
                         case 2914:
                         case 2912:*/
                         case 2469:
-                            ProgressionZone.handleGates(player, gameObject, false);
+                            TeleportHandler.teleportPlayer(player, GameSettings.DEFAULT_POSITION, TeleportType.NORMAL);
                             break;
                         case 7289:
 //                            if (player.getLocation() == Location.ZOMBIE) {
@@ -2205,13 +2205,10 @@ public class ObjectActionPacketListener implements PacketListener {
                         return;
                     }
                     switch (gameObject.getId()) {
-                        case 2469:
-                            ProgressionZone.handleGates(player, gameObject, true);
-                            break;
-                        case 12100:
-                            Smelting.openInterface(player);
-                            break;
-                        case 13192:
+                        case 2469 ->
+                                TeleportHandler.teleportPlayer(player, GameSettings.DEFAULT_POSITION, TeleportType.NORMAL);
+                        case 12100 -> Smelting.openInterface(player);
+                        case 13192 -> {
                             player.performAnimation(new Animation(645));
                             if (player.getPrayerbook() == Prayerbook.NORMAL) {
                                 player.getPacketSender().sendMessage("You sense a surge of power flow through your body!");
@@ -2225,7 +2222,7 @@ public class ObjectActionPacketListener implements PacketListener {
                                 player.getPacketSender().sendMessage("You sense a surge of holiness flow through your body!");
                                 CurseHandler.deactivateAll(player);
                                 //PrayerHandler.deactivateAll(player);
-                               // PrayerHandler.startDrain(player);
+                                // PrayerHandler.startDrain(player);
                                 CurseHandler.startDrain(player);
                                 player.setPrayerbook(Prayerbook.HOLY);
                                 //player.switchedPrayerBooks = true;
@@ -2245,7 +2242,7 @@ public class ObjectActionPacketListener implements PacketListener {
                             CurseHandler.startDrain(player);
                             startDrain(player);
                             player.switchedPrayerBooks = true;
-                            break;
+                        }
                         /*case 2562:
                             if (player.getAmountDonated() <= 5000) {
                                 player.sendMessage("You need $5k+ total claim to use this!");
@@ -2255,36 +2252,33 @@ public class ObjectActionPacketListener implements PacketListener {
                                 Stalls.stealFromAFKStall(player, id, 4);
                             }
                             break;*/
-                        case 39644:
-                        case -25892:
-                        case 39643:
-                        case -25893:
+                        case 39644, -25892, 39643, -25893 -> {
                             switch (Misc.getRandom(9)) {
-                                case 0:
+                                case 0 -> {
                                     player.getPacketSender().sendInterface(28130);
                                     player.getPacketSender().sendMessage("You have been booty trapped!");
-                                    break;
-                                case 1:
+                                }
+                                case 1 -> {
                                     player.moveTo(new Position(2439, 2845, 0));
                                     player.getPacketSender().sendMessage("wrong trigger!");
-                                    break;
-                                case 2:
+                                }
+                                case 2 -> {
                                     player.moveTo(new Position(2448, 2841, 0));
                                     player.getPacketSender().sendMessage("oopsie!");
-                                    break;
-                                case 3:
+                                }
+                                case 3 -> {
                                     player.moveTo(new Position(2448, 2843, 0));
                                     player.getPacketSender().sendMessage("you did it again!");
-                                    break;
-                                case 4:
+                                }
+                                case 4 -> {
                                     player.moveTo(new Position(2439, 2845, 0));
                                     player.getPacketSender().sendMessage("wrong trigger!");
-                                    break;
-                                case 5:
+                                }
+                                case 5 -> {
                                     player.getPacketSender().sendInterface(27130);
                                     player.getPacketSender().sendMessage("piccolo died!");
-                                    break;
-                                case 6:
+                                }
+                                case 6 -> {
                                     Position[] locations = new Position[]{new Position(2434, 2820, 0),
                                             new Position(2436, 2818, 0), new Position(2491, 2818, 0),
                                             new Position(2493, 2820, 0), new Position(2491, 2877, 0),
@@ -2292,33 +2286,28 @@ public class ObjectActionPacketListener implements PacketListener {
                                             new Position(2436, 2877, 0)};
                                     Position teleportLocation = locations[RandomUtility.exclusiveRandom(0,
                                             locations.length)];
-
                                     TeleportHandler.teleportPlayer(player, teleportLocation,
                                             player.getSpellbook().getTeleportType());
                                     player.getPacketSender().sendMessage("EEEEK!");
                                     player.forceChat("eek!");
-                                    break;
-                                case 7:
+                                }
+                                case 7 -> {
                                     player.moveTo(new Position(2438, 2839, 0));
                                     player.getPacketSender().sendMessage("almost there!");
-                                    break;
-                                case 8:
+                                }
+                                case 8 -> {
                                     player.moveTo(new Position(2444, 2836, 0));
                                     player.forceChat("yayy!");
                                     player.getPacketSender().sendMessage("@gre@success!");
-                                    break;
-                                case 9:
+                                }
+                                case 9 -> {
                                     player.getPacketSender().sendInterface(26130);
                                     player.getPacketSender().sendMessage("You are haunted!");
-                                    break;
+                                }
                             }
-
-                            break;
+                        }
                         //
-                        case 39641:
-                        case -25894:
-                        case 39642:
-                        case -25895:
+                        case 39641, -25894, 39642, -25895 -> {
                             switch (Misc.getRandom(9)) {
                                 case 0:
                                     player.getPacketSender().sendInterface(28130);
@@ -2372,13 +2361,9 @@ public class ObjectActionPacketListener implements PacketListener {
                                     player.getPacketSender().sendMessage("You are haunted!");
                                     break;
                             }
-
-                            break;
+                        }
                         //
-                        case 39640:
-                        case -25896:
-                        case 39639:
-                        case -25897:
+                        case 39640, -25896, 39639, -25897 -> {
                             switch (Misc.getRandom(9)) {
                                 case 0:
                                     player.getPacketSender().sendInterface(28130);
@@ -2433,44 +2418,23 @@ public class ObjectActionPacketListener implements PacketListener {
                                     player.getPacketSender().sendMessage("You are haunted!");
                                     break;
                             }
-
-                            break;
-                        case 2145:
-                            player.getPacketSender().sendMessage("Eww. That's a terrible idea!");
-                            break;
-                        case 1739:
+                        }
+                        case 2145 -> player.getPacketSender().sendMessage("Eww. That's a terrible idea!");
+                        case 1739 -> {
                             if (player.getLocation() == Location.LUMBRIDGE) {
                                 player.moveTo(
                                         new Position(player.getPosition().getX(), player.getPosition().getY(), 0));
                             }
-                            break;
-                        case 172:
-                            CrystalChest.sendRewardInterface(player);
-                            break;
-
-                        case 9975:
+                        }
+                        case 172 -> CrystalChest.sendRewardInterface(player);
+                        case 9975 -> {
                             DialogueManager.start(player, 22);
                             player.setDialogueActionId(14);
-                            break;
-                        case 6910:
-                        case 4483:
-                        case 25808:
-                        case 3193:
-                        case 2213:
-                        case 11758:
-                        case 14367:
-                        case 42192:
-                        case 75:
-                        case 26972:
-                        case 11338:
-                        case 19230:
-                            player.getBank(player.getCurrentBankTab()).open();
-                            break;
-                        case 26945:
-                            ServerPerks.getInstance().open(player);
-                            break;
-                        case 2646:
-                        case 312:
+                        }
+                        case 6910, 4483, 25808, 3193, 2213, 11758, 14367, 42192, 75, 26972, 11338, 19230 ->
+                                player.getBank(player.getCurrentBankTab()).open();
+                        case 26945 -> ServerPerks.getInstance().open(player);
+                        case 2646, 312 -> {
                             if (!player.getClickDelay().elapsed(1200))
                                 return;
                             if (player.getInventory().isFull()) {
@@ -2490,18 +2454,16 @@ public class ObjectActionPacketListener implements PacketListener {
                                         gameObject, 10);
                             }
                             player.getClickDelay().reset();
-                            break;
-                        case 2644:
-                            Flax.showSpinInterface(player);
-                            break;
-                        case 6:
+                        }
+                        case 2644 -> Flax.showSpinInterface(player);
+                        case 6 -> {
                             DwarfCannon cannon = player.getCannon();
                             if (cannon == null || cannon.getOwnerIndex() != player.getIndex()) {
                                 player.getPacketSender().sendMessage("This is not your cannon!");
                             } else {
                                 DwarfMultiCannon.pickupCannon(player, cannon, false);
                             }
-                            break;
+                        }
                        /* case 5917: // friday the 13th event
                             Stalls.stealFromStall(player, gameObject, 1, 0, new Item(13150, 1),
                                     "You search the Plasma Vent... and find a Spooky Box!");
@@ -2633,19 +2595,14 @@ public class ObjectActionPacketListener implements PacketListener {
                             player.getPacketSender().sendMessage("You steal a scimitar");
                             // Stalls.stealFromStall(player, 80, 101, 11998, "You steal a scimitar.");
                             break;*/
-                        case 3044:
-                        case 6189:
-                        case 26814:
-                        case 11666:
-                            Jewelry.jewelryInterface(player);
-                            break;
-                        case 2152:
+                        case 3044, 6189, 26814, 11666 -> Jewelry.jewelryInterface(player);
+                        case 2152 -> {
                             player.performAnimation(new Animation(8502));
                             player.performGraphic(new Graphic(1308));
                             player.getSkillManager().setCurrentLevel(Skill.SUMMONING,
                                     player.getSkillManager().getMaxLevel(Skill.SUMMONING));
                             player.getPacketSender().sendMessage("You renew your Summoning points.");
-                            break;
+                        }
                     }
                 }));
     }

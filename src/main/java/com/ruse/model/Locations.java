@@ -210,19 +210,19 @@ public class Locations {
 				false, true, true, false, false, true) {
 			@Override
 			public void process(Player player) {
-				if (player.getWalkableInterfaceId() != 112000)
-					player.getPacketSender().sendWalkableInterface(112000, true);
+//				if (player.getWalkableInterfaceId() != 112000)
+//					player.getPacketSender().sendWalkableInterface(112000, true);
 			}
 
 
 			@Override
 			public void enter(Player player) {
-				ProgressionZone.updateInterface(player);
+				//ProgressionZone.updateInterface(player);
 			}
 
 			@Override
 			public void leave(Player player) {
-				player.getPacketSender().sendWalkableInterface(112000, false);
+//				player.getPacketSender().sendWalkableInterface(112000, false);
 			}
 		},
 		ZOMBIE(new int[]{2712, 2740}, new int[]{2633, 2661}, true, false, true, false, true, true) {
