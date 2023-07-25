@@ -7,7 +7,9 @@ import org.jetbrains.annotations.Nullable;
 @Getter
 public enum TowerTierRewards {
 
-    T1(0, new Item(20301, 1)),
+    T1(0, new Item(15004, 3)),
+    T2(1, new Item(10835, 100)),
+    T3(0, new Item(20301, 1)),
 
     ;
 

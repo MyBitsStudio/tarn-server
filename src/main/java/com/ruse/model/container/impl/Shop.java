@@ -2270,10 +2270,6 @@ public class Shop extends ItemContainer {
                         return new Object[]{75, "Elite Vote Tickets"};
                     case 20491:
                         return new Object[]{100, "Elite Vote Tickets"};
-                    case 23206:
-                    case 23207:
-                    case 23208:
-                        return new Object[]{25, "Elite Vote Tickets"};
                     case 22223:
                     case 22224:
                         return new Object[]{200, "Elite Vote Tickets"};

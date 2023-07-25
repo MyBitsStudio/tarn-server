@@ -3,7 +3,7 @@ package com.ruse.world.content.minigames.impl.dungeoneering;
 import com.ruse.GameSettings;
 import com.ruse.model.*;
 import com.ruse.world.World;
-import com.ruse.world.content.casketopening.Box;
+import com.ruse.world.packages.packs.casket.Box;
 import com.ruse.world.content.skill.impl.old_dungeoneering.Dungeoneering;
 import com.ruse.world.content.skill.impl.old_dungeoneering.DungeoneeringFloor;
 import com.ruse.world.content.transportation.TeleportHandler;

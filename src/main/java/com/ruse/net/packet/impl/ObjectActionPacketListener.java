@@ -62,6 +62,7 @@ import com.ruse.world.content.transportation.TeleportLocations;
 import com.ruse.world.content.transportation.TeleportType;
 import com.ruse.world.entity.impl.player.Player;
 import com.ruse.world.packages.mode.impl.GroupIronman;
+import com.ruse.world.packages.tower.TarnTower;
 
 import static com.ruse.world.content.combat.prayer.PrayerHandler.startDrain;
 
@@ -186,6 +187,16 @@ public class ObjectActionPacketListener implements PacketListener {
                             } else {
                                 player.getBank(player.getCurrentBankTab()).open();
                             }
+                            return;
+                        }
+                    }
+                    switch(id){
+                        case 16116 -> {
+                            TarnTower.startTower(player);
+                            return;
+                        }
+                        case 16686 -> {
+                            TarnTower.leave(player);
                             return;
                         }
                     }
@@ -516,9 +527,7 @@ public class ObjectActionPacketListener implements PacketListener {
 
                             player.moveTo(new Position(2358, 5218, 0));
                             break;
-                        case 16116:
-                            player.moveTo(new Position(2149, 5278, 0));
-                            break;
+
                         case 16115:
                             player.moveTo(new Position(2358, 5215, 0));
                             break;

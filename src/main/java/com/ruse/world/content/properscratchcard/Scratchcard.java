@@ -57,7 +57,7 @@ public class Scratchcard {
         } else {
             player.getPacketSender().sendMessage("Unfortunately you did not win.");
             player.getPacketSender().sendMessage("<shad=1>@cya@Tarn gave you a free $25 bond for trying !");
-            player.getInventory().add(10934, 1);
+            player.getInventory().add(10946, 1);
         }
 
         game.setGameStarted(false);

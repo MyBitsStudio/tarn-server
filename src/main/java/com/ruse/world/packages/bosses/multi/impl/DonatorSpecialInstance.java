@@ -7,7 +7,7 @@ import com.ruse.world.entity.impl.player.Player;
 
 public class DonatorSpecialInstance extends SpecialBossInstance {
 
-    private final static int TOKEN_ID = 23204, TOKEN_AMOUNT = 1;
+    private final static int TOKEN_ID = 1, TOKEN_AMOUNT = 1;
 
     private int ticks = 0;
     public DonatorSpecialInstance(Player p, int npcId, int spawn, int cap) {

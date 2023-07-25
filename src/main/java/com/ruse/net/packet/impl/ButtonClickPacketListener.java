@@ -68,6 +68,7 @@ import com.ruse.world.content.zombie.ZombieParty;
 import com.ruse.world.content.zombie.ZombieRaidData;
 import com.ruse.world.entity.impl.player.Player;
 import com.ruse.world.entity.impl.player.StartScreen;
+import com.ruse.world.packages.misc.PossibleLootInterface;
 import com.ruse.world.packages.mode.impl.UltimateIronman;
 import com.ruse.world.packages.tracks.TrackInterface;
 
@@ -148,9 +149,12 @@ public class ButtonClickPacketListener implements PacketListener {
             return;
         }
 
-        if (player.getGoodieBag().handleClick(id)) {
-            return;
+        if(player.getBag() != null){
+            if (player.getBag().handleClick(id)) {
+                return;
+            }
         }
+
         if (PossibleLootInterface.handleButton(player, id)) {
             return;
         }
@@ -534,13 +538,13 @@ public class ButtonClickPacketListener implements PacketListener {
                 break;
 
             case -16332:
-                player.getGoodieBag().claim();
+                player.getBag().claim();
                 break;
 
 
             case 23638:
             case 23636:
-                player.getScratchCard().scratch();
+                player.getCard().scratch();
                 break;
 
             case -8274:

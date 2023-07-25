@@ -70,6 +70,9 @@ public class NPCDrops {
 
             @Override
             public void load(JsonObject reader, Gson builder) {
+                if(reader.has("_comment")) {
+                    return;
+                }
                 int[] npcIds = builder.fromJson(reader.get("npcIds"), int[].class);
                 NpcDropItem[] drops = builder.fromJson(reader.get("drops"), NpcDropItem[].class);
 
@@ -83,7 +86,7 @@ public class NPCDrops {
 
             @Override
             public String filePath() {
-                return "./data/def/json/drops.json";
+                return "./.core/server/defs/drops.json";
             }
         };
     }

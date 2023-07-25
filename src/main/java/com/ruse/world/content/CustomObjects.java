@@ -51,21 +51,14 @@ public class CustomObjects {
 
     private static void handleList(GameObject object, String handleType) {
         switch (handleType.toUpperCase()) {
-            case "DELETE":
-                for (GameObject objects : CUSTOM_OBJECTS) {
-                    if (objects.getId() == object.getId() && object.getPosition().equals(objects.getPosition())) {
-                        CUSTOM_OBJECTS.remove(objects);
-                    }
-                }
-                break;
-            case "ADD":
+            case "DELETE" ->
+                    CUSTOM_OBJECTS.removeIf(objects -> objects.getId() == object.getId() && object.getPosition().equals(objects.getPosition()));
+            case "ADD" -> {
                 if (!CUSTOM_OBJECTS.contains(object)) {
                     CUSTOM_OBJECTS.add(object);
                 }
-                break;
-            case "EMPTY":
-                CUSTOM_OBJECTS.clear();
-                break;
+            }
+            case "EMPTY" -> CUSTOM_OBJECTS.clear();
         }
     }
 
@@ -762,6 +755,10 @@ public class CustomObjects {
 
     // Objects that are handled by the server on regionchange
     private static final int[][] CUSTOM_OBJECTS_SPAWNS = {
+
+            {16116, 2859, 2748, 0, 1},
+
+
             {42192, 1783, 5334, 0, 1},
             {42192, 1783, 5332, 0, 1},
             {42192, 1783, 5331, 0, 1},

@@ -107,7 +107,7 @@ public class VIP {
             case 1 -> new Item(20501, 2);
             case 2 -> new Item(23225, 3);
             case 3 -> new Item(23204, 20);
-            case 4 -> new Item(23203, 20);
+            case 4 -> new Item(1, 20);
             case 5 -> new Item(15328, 1);
             case 6 -> new Item(23252, 1);
             case 7 -> new Item(15330, 1);
@@ -166,18 +166,18 @@ public class VIP {
     enum VIPPacks {
         PACK_1(50, new int[]{20501}, new int[]{1}),
         PACK_2(100, new int[]{20502}, new int[]{1}),
-        PACK_3(150, new int[]{23225}, new int[]{1}),
-        PACK_4(200, new int[]{23217}, new int[]{5}),
+        PACK_3(150, new int[]{1}, new int[]{1}),
+        PACK_4(200, new int[]{1}, new int[]{5}),
         PACK_5(250, new int[]{20506}, new int[]{2}),
-        PACK_6(300, new int[]{23204}, new int[]{10}),
-        PACK_7(350, new int[]{23209}, new int[]{10}),
-        PACK_8(400, new int[]{23217}, new int[]{10}),
+        PACK_6(300, new int[]{1}, new int[]{10}),
+        PACK_7(350, new int[]{1}, new int[]{10}),
+        PACK_8(400, new int[]{1}, new int[]{10}),
         PACK_9(500, new int[]{3686}, new int[]{1}),
-        PACK_10(600, new int[]{23060}, new int[]{2}),
+        PACK_10(600, new int[]{1}, new int[]{2}),
         PACK_11(700, new int[]{20501}, new int[]{4}),
         PACK_12(800, new int[]{20490}, new int[]{2}),
-        PACK_13(900, new int[]{23218}, new int[]{5}),
-        PACK_14(1000, new int[]{23002}, new int[]{1})
+        PACK_13(900, new int[]{1}, new int[]{5}),
+        PACK_14(1000, new int[]{1}, new int[]{1})
         ;
         @Getter
         final int amount;

@@ -320,7 +320,8 @@ public class EquipPacketListener implements PacketListener {
                     for (Skill skill : Skill.values()) {
                         if (skill == Skill.DUNGEONEERING)
                             continue;
-                        if (item.getDefinition().getRequirement()[skill.ordinal()] > player.getSkillManager()
+
+                        if (item.getDefinition().getRequirement().length != 0 && item.getDefinition().getRequirement()[skill.ordinal()] > player.getSkillManager()
                                 .getMaxLevel(skill)) {
                             StringBuilder vowel = new StringBuilder();
                             if (skill.getName().startsWith("a") || skill.getName().startsWith("e")
@@ -330,7 +331,7 @@ public class EquipPacketListener implements PacketListener {
                             } else {
                                 vowel.append("a ");
                             }
-                            player.getPacketSender().sendMessage("You need " + vowel.toString()
+                            player.getPacketSender().sendMessage("You need " + vowel
                                     + Misc.formatText(skill.getName()) + " level of at least "
                                     + item.getDefinition().getRequirement()[skill.ordinal()] + " to wear this.");
                             return false;

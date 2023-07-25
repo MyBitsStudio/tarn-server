@@ -3,10 +3,7 @@ package com.ruse.world.packages.commands;
 import com.ruse.GameServer;
 import com.ruse.model.*;
 import com.ruse.model.container.impl.Shop;
-import com.ruse.model.definitions.ItemDefinition;
-import com.ruse.model.definitions.NPCDrops;
-import com.ruse.model.definitions.NpcDefinition;
-import com.ruse.model.definitions.WeaponInterfaces;
+import com.ruse.model.definitions.*;
 import com.ruse.motivote3.doMotivote;
 import com.ruse.security.ServerSecurity;
 import com.ruse.security.save.impl.server.defs.NPCDataLoad;
@@ -43,8 +40,27 @@ public class OwnerCommands {
         boolean found;
         Player targets;
 
-        switch(commands[0]){
-            case "region":
+        switch (commands[0]) {
+            case "findobj" -> {
+                name = command.substring(8).toLowerCase().replaceAll("_", " ");
+                player.getPacketSender().sendMessage("Finding object id for object - " + name);
+                found = false;
+                for (int i = 0; i <  100000; i++) {
+                    GameObjectDefinition def = GameObjectDefinition.forId(i);
+                    if(def == null || def.getName() == null)
+                        continue;
+                    if ( def.getName().toLowerCase().contains(name)) {
+                        player.getPacketSender().sendMessage("Found object with name ["
+                                +  def.getName().toLowerCase() + "] - id: " + i);
+                        found = true;
+                    }
+                }
+                if (!found) {
+                    player.getPacketSender().sendMessage("No object with name [" + name + "] has been found!");
+                }
+                return true;
+            }
+            case "region" -> {
                 try {
                     int region = Integer.parseInt(commands[1]);
                     int x = (region >> 8) * 64 + 32;
@@ -56,11 +72,12 @@ public class OwnerCommands {
                     return true;
                 }
                 return true;
-            case "mypos": case "postion": case "coords":
+            }
+            case "mypos", "postion", "coords" -> {
                 player.getPacketSender().sendMessage(player.getPosition().toString());
                 return true;
-
-            case "tele":
+            }
+            case "tele" -> {
                 int x = Integer.parseInt(commands[1]), y = Integer.parseInt(commands[2]);
                 int z = player.getPosition().getZ();
                 if (commands.length > 3)
@@ -69,8 +86,8 @@ public class OwnerCommands {
                 player.moveTo(position);
                 player.getPacketSender().sendMessage("Teleporting to " + position);
                 return true;
-
-            case "delete":
+            }
+            case "delete" -> {
                 id = Integer.parseInt(commands[1]);
                 for (NPC npc : World.getNpcs()) {
                     if (npc == null)
@@ -80,8 +97,8 @@ public class OwnerCommands {
                     }
                 }
                 return true;
-
-            case "item":
+            }
+            case "item" -> {
                 id = Integer.parseInt(commands[1]);
                 if (id > ItemDefinition.getMaxAmountOfItems()) {
                     player.getPacketSender().sendMessage(
@@ -94,19 +111,19 @@ public class OwnerCommands {
                 Item item = new Item(id, amount);
                 player.getInventory().add(item, true);
                 return true;
-
-            case "giveall":
+            }
+            case "giveall" -> {
                 id = Integer.parseInt(commands[1]);
                 amount = Integer.parseInt(commands[2]);
                 World.getPlayers().stream()
                         .filter(Objects::nonNull)
                         .forEach(p -> {
                             p.getInventory().add(id, amount);
-                            p.sendMessage("You have recieved: " + ItemDefinition.forId(id).getName() + " from "+player.getUsername()+" for being beasts.");
+                            p.sendMessage("You have recieved: " + ItemDefinition.forId(id).getName() + " from " + player.getUsername() + " for being beasts.");
                         });
                 return true;
-
-            case "master":
+            }
+            case "master" -> {
                 for (Skill skill : Skill.values()) {
                     int level = SkillManager.getMaxAchievingLevel(skill);
                     player.getSkillManager().setCurrentLevel(skill, level).setMaxLevel(skill, level).setExperience(skill,
@@ -115,9 +132,9 @@ public class OwnerCommands {
                 player.getPacketSender().sendMessage("You are now a master of all skills.");
                 player.getUpdateFlag().flag(Flag.APPEARANCE);
                 return true;
-
-            case "setyellhex":
-                if(commands.length >= 2) {
+            }
+            case "setyellhex" -> {
+                if (commands.length >= 2) {
                     String hex = commands[1].replaceAll("#", "");
                     player.setYellHex(hex);
                     player.getPacketSender().sendMessage("You have set your hex color to: <shad=0><col=" + hex + ">#" + hex);
@@ -127,8 +144,8 @@ public class OwnerCommands {
                     player.getPacketSender().sendMessage("You must enter a hex color code. Example: ::setyellhex 00FF00");
                 }
                 return true;
-
-            case "bank":
+            }
+            case "bank" -> {
                 if (player.getInterfaceId() > 0) {
                     player.getPacketSender()
                             .sendMessage("Please close the interface you have open before opening another one.");
@@ -142,8 +159,8 @@ public class OwnerCommands {
                 }
                 player.getBank(player.getCurrentBankTab()).open();
                 return true;
-
-            case "findnpc":
+            }
+            case "findnpc" -> {
                 name = command.substring(commands[0].length() + 1);
                 player.getPacketSender().sendMessage("Finding item id for item - " + name);
                 found = false;
@@ -161,10 +178,8 @@ public class OwnerCommands {
                     player.getPacketSender().sendMessage("No NPC with name [" + name + "] has been found!");
                 }
                 return true;
-
-
-
-            case "god":
+            }
+            case "god" -> {
                 if (player.isOpMode()) {
                     player.setSpecialPercentage(100);
                     CombatSpecial.updateBar(player);
@@ -206,8 +221,8 @@ public class OwnerCommands {
                 }
                 player.setOpMode(!player.isOpMode());
                 return true;
-
-            case "update":
+            }
+            case "update" -> {
                 int time = Integer.parseInt(commands[1]);
                 if (time > 0) {
                     GameServer.setUpdating(true);
@@ -222,33 +237,33 @@ public class OwnerCommands {
                     }
                 }
                 return true;
-
-            case "whip":
+            }
+            case "whip" -> {
                 World.getPlayers().stream()
                         .filter(Objects::nonNull)
                         .forEach(players -> {
 
                         });
                 return true;
-
-            case "takeall":
+            }
+            case "takeall" -> {
                 int items = Integer.parseInt(commands[1]);
                 World.getPlayers().stream()
                         .filter(Objects::nonNull)
                         .forEach(players -> {
-                            if(players.getInventory().contains(items))
+                            if (players.getInventory().contains(items))
                                 players.getInventory().delete(items, players.getInventory().getAmount(items));
-                            if(players.getEquipment().contains(items))
+                            if (players.getEquipment().contains(items))
                                 players.getEquipment().delete(items, players.getEquipment().getAmount(items));
-                            for(int i = 0; i < players.bankssize(); i++){
-                                if(players.getBank(i).contains(items))
+                            for (int i = 0; i < players.bankssize(); i++) {
+                                if (players.getBank(i).contains(items))
                                     players.getBank(i).delete(items, players.getBank(i).getAmount(items));
                             }
                             players.sendMessage("@red@[SERVER] " + ItemDefinition.forId(items).getName() + " has been removed from your inventory.");
                         });
                 return true;
-
-            case "flashdeal":
+            }
+            case "flashdeal" -> {
                 FlashDeals.getDeals().reload();
                 World.sendStaffMessage("<img=5> @blu@[DEALS] Flash Deals are active. Check them out now!");
                 for (Player players : World.getPlayers()) {
@@ -258,9 +273,9 @@ public class OwnerCommands {
                     players.getPacketSender().sendBroadCastMessage("FLASH DEALS ARE ACTIVE! CHECK THEM OUT BEFORE THEY ARE GONE!", 300);
                 }
                 return true;
-
-            case "add":
-                if(commands.length >= 2){
+            }
+            case "add" -> {
+                if (commands.length >= 2) {
                     switch (commands[1]) {
                         case "donate" -> {
                             amount = Integer.parseInt(commands[2]);
@@ -281,9 +296,9 @@ public class OwnerCommands {
                     player.getPacketSender().sendMessage("Use as ::add [donate/vote] [amount]");
                 }
                 return true;
-
-            case "reload":
-                if(commands.length >= 2){
+            }
+            case "reload" -> {
+                if (commands.length >= 2) {
                     switch (commands[1]) {
                         case "all" -> {
                             Shop.ShopManager.parseShops().load();
@@ -327,44 +342,43 @@ public class OwnerCommands {
                     }
                 }
                 return true;
-
-            case "saveall":
+            }
+            case "saveall" -> {
                 World.savePlayers();
                 return true;
-
-            case "obj": case "object":
+            }
+            case "obj", "object" -> {
                 id = Integer.parseInt(commands[1]);
                 player.getPacketSender().sendObject(new GameObject(id, player.getPosition(), 10, 3));
                 player.getPacketSender().sendMessage("Sending object: " + id);
                 return true;
-
-            case "inter": case "interface":
+            }
+            case "inter", "interface" -> {
                 id = Integer.parseInt(commands[1]);
                 player.getPacketSender().sendInterface(id);
                 return true;
-
-            case "npc":
+            }
+            case "npc" -> {
                 id = Integer.parseInt(commands[1]);
                 NPC npc = new NPC(id, new Position(player.getPosition().getX(), player.getPosition().getY(),
                         player.getPosition().getZ()));
                 World.register(npc);
                 return true;
-
-            case "gfx":
+            }
+            case "gfx" -> {
                 id = Integer.parseInt(commands[1]);
                 player.performGraphic(new Graphic(id));
                 player.getPacketSender().sendMessage("Sending graphic: " + id);
                 return true;
-
-            case "anim":
+            }
+            case "anim" -> {
                 id = Integer.parseInt(commands[1]);
                 player.performAnimation(new Animation(id));
                 player.getPacketSender().sendMessage("Sending animation: " + id);
                 return true;
-
-            case "shutnow":
+            }
+            case "shutnow" -> {
                 World.sendNewsMessage("<col=FF0066><img=2> [SERVER]<col=6600FF> Server is shutting down now!");
-
                 for (Player players : World.getPlayers()) {
                     if (players != null) {
                         players.save();
@@ -377,21 +391,20 @@ public class OwnerCommands {
                 Shop.ShopManager.saveTaxShop();
                 LotterySystem.saveTickets();
                 ServerPerks.getInstance().save();
-
-                try{
+                try {
                     Thread.sleep(2000);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
                 System.exit(0);
                 return true;
-
-            case "event":
-                if(commands.length >= 2){
-                    switch(commands[1]){
+            }
+            case "event" -> {
+                if (commands.length >= 2) {
+                    switch (commands[1]) {
                         case "tele":
-                            if(commands.length >= 3){
-                                switch(commands[2]){
+                            if (commands.length >= 3) {
+                                switch (commands[2]) {
                                     case "youtube":
                                         TeleportHandler.teleportPlayer(player, new Position(2856, 2708, 4),
                                                 player.getSpellbook().getTeleportType());
@@ -418,46 +431,45 @@ public class OwnerCommands {
                     player.getPacketSender().sendMessage("Use as ::event [balloon/youtube/finish]");
                 }
                 return true;
-
-            case "fullscrap":
-
+            }
+            case "fullscrap" -> {
                 return true;
-
-            case "vip":
+            }
+            case "vip" -> {
                 id = Integer.parseInt(commands[1]);
                 player.getPlayerVIP().addDonation(id, new int[]{});
                 return true;
-
-            case "addvip":
+            }
+            case "addvip" -> {
                 id = Integer.parseInt(commands[1]);
                 targets = World.getPlayer(command.substring(commands[0].length() + commands[1].length() + 2));
                 if (targets == null) {
-                    player.getPacketSender().sendMessage(command.substring(commands[0].length() + commands[1].length() + commands[2].length() + commands[3].length() + 4)+" must be online to give them stuff!");
+                    player.getPacketSender().sendMessage(command.substring(commands[0].length() + commands[1].length() + commands[2].length() + commands[3].length() + 4) + " must be online to give them stuff!");
                 } else {
                     targets.getPlayerVIP().addDonation(id, new int[]{});
                     player.getPacketSender().sendMessage(
                             "Gave " + targets.getUsername() + " VIP $" + id + ".");
                 }
                 return true;
-
-            case "tower":
+            }
+            case "tower" -> {
                 TarnTower.startTower(player);
                 return true;
-
-            case "attack":
-                for(NpcDefinition def : NpcDefinition.definitions){
-                    if(def == null)
+            }
+            case "attack" -> {
+                for (NpcDefinition def : NpcDefinition.definitions) {
+                    if (def == null)
                         continue;
-                    if(def.isAttackable()){
-                        System.out.println(def.getId()+" "+def.getName());
+                    if (def.isAttackable()) {
+                        System.out.println(def.getId() + " " + def.getName());
                     }
                 }
                 return true;
-
-            case "track":
+            }
+            case "track" -> {
                 TrackInterface.sendInterface(player, true);
                 return true;
-
+            }
         }
         return false;
     }

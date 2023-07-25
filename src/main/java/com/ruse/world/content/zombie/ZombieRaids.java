@@ -10,7 +10,7 @@ import com.ruse.model.definitions.ItemDefinition;
 import com.ruse.util.Misc;
 import com.ruse.world.World;
 import com.ruse.world.content.boxes.ZombieRaidLoot;
-import com.ruse.world.content.casketopening.Box;
+import com.ruse.world.packages.packs.casket.Box;
 import com.ruse.world.content.combat.prayer.CurseHandler;
 import com.ruse.world.content.combat.prayer.PrayerHandler;
 import com.ruse.world.content.discordbot.JavaCord;

@@ -82,7 +82,14 @@ public enum TeleInterfaceLocation {
     LOCATION70(new Position(2137, 5016, 0), "Tier Ranking: ? \\n \\n Multi: True \\n \\n KC Req: None\\n \\n Recommended ELO: 10+"), //golden
 
     LOCATION80(new Position(3065, 2758, 8), "Tier Ranking: ? \\n \\n Multi: True \\n \\n KC Req: None \\n \\n Recommended ELO: Counter Token"), //yasuda
-    LOCATION100(new Position(2661, 3044, 0), "Tier Ranking: 25.5 \\n \\n Multi: True \\n \\n KC Req: None\\n \\n Recommended ELO: 1150+"); //raids
+    LOCATION100(new Position(2661, 3044, 0), "Tier Ranking: 25.5 \\n \\n Multi: True \\n \\n KC Req: None\\n \\n Recommended ELO: 1150+"),
+
+    /* New */
+
+    TARN_TOWER(new Position(2859, 2744, 0), "Tarn Tower \\n \\n Multi: True \\n \\n KC Req: None\\n \\n Climb The Tower")
+
+
+    ; //raids
 
 
     TeleInterfaceLocation(Position position, String description) {

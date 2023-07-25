@@ -3,11 +3,8 @@ package com.ruse.world.content.minigames.impl;
 import com.ruse.model.Item;
 import com.ruse.model.Position;
 import com.ruse.model.definitions.ItemDefinition;
-import com.ruse.util.Misc;
-import com.ruse.world.content.achievement.Achievements;
-import com.ruse.world.content.casketopening.Box;
-import com.ruse.world.content.casketopening.BoxLoot;
-import com.ruse.world.content.dailytasks_new.DailyTask;
+import com.ruse.world.packages.packs.casket.Box;
+import com.ruse.world.packages.packs.casket.BoxLoot;
 import com.ruse.world.entity.impl.npc.NPC;
 import com.ruse.world.entity.impl.player.Player;
 

@@ -11,64 +11,64 @@ import java.util.List;
 @Getter
 public enum StarterTasks {
 
-    TASK_001(0, 5, "Kill 1 Blurite Goblin", new TaskReward(995, 1000)
+    TASK_001(0, 5, "Kill 1 Blurite Goblin", new TaskReward(23200, 1)
     , 9837, 1),
-    TASK_002(0, 25, "Kill 50 Blurite Goblins", new TaskReward(995, 1000)
+    TASK_002(0, 25, "Kill 50 Blurite Goblins", new TaskReward(12852, 50)
             , 9837, 50),
-    TASK_003(0, 5, "Kill 1 Blurite Orc", new TaskReward(995, 1000)
+    TASK_003(0, 5, "Kill 1 Blurite Orc", new TaskReward(23200, 1)
             , 9027, 1),
-    TASK_004(0, 25,"Kill 50 Blurite Orcs", new TaskReward(995, 1000)
+    TASK_004(0, 25,"Kill 50 Blurite Orcs", new TaskReward(12852, 50)
             , 9027, 50),
-    TASK_005(0, 5, "Kill 1 Blurite Demon", new TaskReward(995, 1000)
+    TASK_005(0, 5, "Kill 1 Blurite Demon", new TaskReward(23200, 1)
             , 9835, 1),
-    TASK_006(0, 25,"Kill 50 Blurite Demons", new TaskReward(995, 1000)
+    TASK_006(0, 25,"Kill 50 Blurite Demons", new TaskReward(12852, 50)
             , 9835, 50),
-    TASK_007(0, 5, "Kill 1 Blurite Werewolf", new TaskReward(995, 1000)
+    TASK_007(0, 5, "Kill 1 Blurite Werewolf", new TaskReward(23200, 1)
             , 9911, 1),
-    TASK_008(0, 25,"Kill 50 Blurite Werewolves", new TaskReward(995, 1000)
+    TASK_008(0, 25,"Kill 50 Blurite Werewolves", new TaskReward(12852, 50)
             , 9911, 50),
-    TASK_009(0, 5, "Kill 1 Blurite Centaur", new TaskReward(995, 1000)
+    TASK_009(0, 5, "Kill 1 Blurite Centaur", new TaskReward(23200, 1)
             , 9922, 1),
-    TASK_010(0, 25,"Kill 50 Blurite Centaurs", new TaskReward(995, 1000)
+    TASK_010(0, 25,"Kill 50 Blurite Centaurs", new TaskReward(12852, 50)
             , 9922, 50),
-    TASK_011(0, 5,"Kill 1 Zinqrux", new TaskReward(995, 1000)
+    TASK_011(0, 5,"Kill 1 Zinqrux", new TaskReward(23201, 1)
             , 8014, 1),
-    TASK_012(0, 25,"Kill 50 Zinqrux", new TaskReward(995, 1000)
+    TASK_012(0, 25,"Kill 50 Zinqrux", new TaskReward(12852, 50)
             , 8014, 50),
-    TASK_013(0, 5,"Kill 1 Dr.Aberrant", new TaskReward(995, 1000)
+    TASK_013(0, 5,"Kill 1 Dr.Aberrant", new TaskReward(23201, 1)
             , 8003, 1),
-    TASK_014(0, 25,"Kill 50 Dr.Aberrant", new TaskReward(995, 1000)
+    TASK_014(0, 25,"Kill 50 Dr.Aberrant", new TaskReward(12852, 50)
             , 8003, 50),
-    TASK_015(0, 5,"Kill 1 Nagenda", new TaskReward(995, 1000)
+    TASK_015(0, 5,"Kill 1 Nagenda", new TaskReward(23201, 1)
             , 811, 1),
-    TASK_016(0, 25,"Kill 50 Nagenda", new TaskReward(995, 1000)
+    TASK_016(0, 25,"Kill 50 Nagenda", new TaskReward(12852, 50)
             , 811, 50),
-    TASK_017(0, 5,"Kill 1 Yisdar", new TaskReward(995, 1000)
+    TASK_017(0, 5,"Kill 1 Yisdar", new TaskReward(23201, 1)
             , 9817, 1),
-    TASK_018(0, 25,"Kill 50 Yisdar", new TaskReward(995, 1000)
+    TASK_018(0, 25,"Kill 50 Yisdar", new TaskReward(12852, 50)
             , 9817, 50),
-    TASK_019(0, 5,"Kill 1 Doomwatcher", new TaskReward(995, 1000)
+    TASK_019(0, 5,"Kill 1 Doomwatcher", new TaskReward(23202, 1)
             , 9836, 1),
-    TASK_020(0, 25,"Kill 50 Doomwatcher", new TaskReward(995, 1000)
+    TASK_020(0, 25,"Kill 50 Doomwatcher", new TaskReward(12852, 50)
             , 9836, 50),
-    TASK_021(0, 5,"Kill 1 Maze Guardian", new TaskReward(995, 1000)
+    TASK_021(0, 5,"Kill 1 Maze Guardian", new TaskReward(23202, 1)
             , 92, 1),
-    TASK_022(0, 25,"Kill 50 Maze Guardian", new TaskReward(995, 1000)
+    TASK_022(0, 25,"Kill 50 Maze Guardian", new TaskReward(12852, 50)
             , 92, 50),
-    TASK_023(0, 5,"Kill 1 Miscreation", new TaskReward(995, 1000)
+    TASK_023(0, 5,"Kill 1 Miscreation", new TaskReward(23202, 1)
             , 3313, 1),
-    TASK_024(0, 25,"Kill 50 Miscreation", new TaskReward(995, 1000)
+    TASK_024(0, 25,"Kill 50 Miscreation", new TaskReward(12852, 50)
             , 3313, 50),
-    TASK_025(0, 5,"Kill 1 Zorbak", new TaskReward(995, 1000)
+    TASK_025(0, 5,"Kill 1 Zorbak", new TaskReward(23202, 1)
             , 1906, 1),
-    TASK_026(0, 25,"Kill 50 Zorbak", new TaskReward(995, 1000)
+    TASK_026(0, 25,"Kill 50 Zorbak", new TaskReward(12852, 50)
             , 1906, 50),
 
-    TASK_050(1, 10,"Gain 1 99 Skill", new TaskReward(995, 1000)
+    TASK_050(1, 10,"Gain 1 99 Skill", new TaskReward(995, 10000)
             , -1, -1),
-    TASK_051(1, 50, "Gain 10 99 Skills", new TaskReward(995, 1000)
+    TASK_051(1, 50, "Gain 10 99 Skills", new TaskReward(15004, 1)
             , -1, -1),
-    TASK_052(1, 150,"Gain All 99 Skills", new TaskReward(995, 1000)
+    TASK_052(1, 150,"Gain All 99 Skills", new TaskReward(15004, 5)
             , -1, -1),
 
     TASK_100(2, 10,"Kill 1 Avalon", new TaskReward(995, 1000)
@@ -190,7 +190,19 @@ public enum StarterTasks {
         return null;
     }
 
-    public static @Nullable StarterTasks byKills(int npc){
+    public static List<StarterTasks> byKills(int npc){
+        List<StarterTasks> tasks = new ArrayList<>();
+        for(StarterTasks task : StarterTasks.values()){
+            if(task.getNpc() == -1)
+                continue;
+            if(task.getNpc() == npc){
+                tasks.add(task);
+            }
+        }
+        return tasks;
+    }
+
+    public static StarterTasks byNPC(int npc){
         for(StarterTasks task : StarterTasks.values()){
             if(task.getNpc() == -1)
                 continue;

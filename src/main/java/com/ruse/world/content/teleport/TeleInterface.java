@@ -100,7 +100,7 @@ public class TeleInterface {
             return Integer.compare(v2, v1);
         });
 
-        List<Item> list = new ArrayList<Item>();
+        List<Item> list = new ArrayList<>();
 
         for (int i = 0; i < 18; i++) {
             if(i == drop.size())

@@ -4,7 +4,6 @@ import com.ruse.engine.task.TaskManager;
 import com.ruse.engine.task.impl.*;
 import com.ruse.model.*;
 import com.ruse.model.Locations.Location;
-import com.ruse.model.container.impl.Bank;
 import com.ruse.model.definitions.ItemDefinition;
 import com.ruse.net.packet.Packet;
 import com.ruse.net.packet.PacketListener;
@@ -13,11 +12,11 @@ import com.ruse.world.World;
 import com.ruse.world.content.*;
 import com.ruse.world.content.Sounds.Sound;
 import com.ruse.world.content.StarterTasks.StarterTaskData;
-import com.ruse.world.content.casketopening.Box;
-import com.ruse.world.content.casketopening.BoxLoot;
-import com.ruse.world.content.casketopening.CasketOpening;
-import com.ruse.world.content.casketopening.impl.EliteSlayerCasket;
-import com.ruse.world.content.casketopening.impl.SlayerCasket;
+import com.ruse.world.packages.packs.casket.Box;
+import com.ruse.world.packages.packs.casket.BoxLoot;
+import com.ruse.world.packages.packs.casket.CasketOpening;
+import com.ruse.world.packages.packs.casket.impl.EliteSlayerCasket;
+import com.ruse.world.packages.packs.casket.impl.SlayerCasket;
 import com.ruse.world.content.cluescrolls.ClueScroll;
 import com.ruse.world.content.cluescrolls.ClueScrollReward;
 import com.ruse.world.content.cluescrolls.OLD_ClueScrolls;
@@ -39,9 +38,10 @@ import com.ruse.world.content.skill.impl.summoning.SummoningData;
 import com.ruse.world.content.skill.impl.woodcutting.BirdNests;
 import com.ruse.world.content.transportation.*;
 import com.ruse.world.entity.impl.player.Player;
-import com.ruse.world.packages.gearpack.GearPack;
-import com.ruse.world.packages.gearpack.GearPacks;
-import com.ruse.world.packages.packs.impl.*;
+import com.ruse.world.packages.packs.gearpack.GearPack;
+import com.ruse.world.packages.packs.gearpack.GearPacks;
+import com.ruse.world.packages.packs.basic.impl.*;
+import com.ruse.world.packages.packs.scratch.impl.RareScratchI;
 
 import java.text.NumberFormat;
 import java.util.Locale;
@@ -150,7 +150,10 @@ public class ItemActionPacketListener implements PacketListener {
             return;
 
         if(GearPacks.isPack(itemId)) {
-            GearPack.openGearPack(player, itemId);
+            if(GearPacks.isRandom(itemId))
+                GearPack.openRandomBox(player, itemId);
+            else
+                GearPack.openGearPack(player, itemId);
             return;
         }
 
@@ -239,10 +242,10 @@ public class ItemActionPacketListener implements PacketListener {
                 new ArmorRandomPack().openPack(player);
                 break;
 
-            case 23210:
-                DialogueManager.start(player, 11050);
-                player.setDialogueActionId(11050);
-                break;
+//            case 23210:
+//                DialogueManager.start(player, 11050);
+//                player.setDialogueActionId(11050);
+//                break;
 
 //            case 3253:
 //                //	player.getInventory().delete(itemId, 1);
@@ -275,14 +278,6 @@ public class ItemActionPacketListener implements PacketListener {
                 player.getInventory().add(23143, 1);
                 break;
 
-            //Raid keys
-            case 23200:
-            case 23201:
-            case 23202:
-                player.getPacketSender().sendMessage("You rub the enchanted key to teleport to chest area.");
-                Position positionR = new Position(2706, 2737, 0);
-                TeleportHandler.teleportPlayer(player, positionR, TeleportType.NORMAL);
-                break;
 
             case PrayerHandler.HOLY_SCROLL_DESTRUCTION_ITEM:
                 if(!player.isHolyPrayerUnlocked(PrayerHandler.HOLY_DESTRUCTION_IDX)) {
@@ -394,7 +389,6 @@ public class ItemActionPacketListener implements PacketListener {
                     player.getInventory().add(20489, 1);
                     player.getInventory().add(15002, 1);
                     player.getInventory().add(15003, 1);
-                    player.getInventory().add(15004, 1);
                     player.getPacketSender().sendMessage("Enjoy your reward!");
                     World.sendMessage("<shad=1>@yel@[<img=18>" + player.getUsername() + "<img=18>] @whi@Killed 10K @red@Valentine's Boxes@whi@ and opened his Heart crystal! Happy Valentine's day!");
                     player.getInventory().delete(745, 1);
@@ -480,80 +474,83 @@ public class ItemActionPacketListener implements PacketListener {
                 player.setDoubleDMGTimer(3000);
                 TaskManager.submit(new DoubleDMGTask(player));
                 break;
-
-
-            case 23171:
-                player.getCasketOpening().setCurrentCasket(CasketOpening.Caskets.RARE_BOX);
-                player.getCasketOpening().openInterface();
-                break;
-            case 14487:
-                player.getCasketOpening().setCurrentCasket(CasketOpening.Caskets.DEF_BOX);
-                player.getCasketOpening().openInterface();
-                break;
-            case 15003:
-                player.getCasketOpening().setCurrentCasket(CasketOpening.Caskets.SILVER_BOX);
-                player.getCasketOpening().openInterface();
-                break;
-            case 15002:
-                player.getCasketOpening().setCurrentCasket(CasketOpening.Caskets.RUBY_BOX);
-                player.getCasketOpening().openInterface();
-                break;
             case 15004:
-                player.getCasketOpening().setCurrentCasket(CasketOpening.Caskets.DIAMOND_BOX);
+                player.getCasketOpening().setCurrentCasket(CasketOpening.Caskets.STARTER_I);
                 player.getCasketOpening().openInterface();
                 break;
-            case 20489:
-                player.getCasketOpening().setCurrentCasket(CasketOpening.Caskets.PREMIUM_BOX);
-                player.getCasketOpening().openInterface();
-                break;
-            case 20490:
-                player.getCasketOpening().setCurrentCasket(CasketOpening.Caskets.ZENYTE_BOX);
-                player.getCasketOpening().openInterface();
-                break;
-            case 20491:
-                player.getCasketOpening().setCurrentCasket(CasketOpening.Caskets.ONYX_BOX);
-                player.getCasketOpening().openInterface();
-                break;
-            case 19624:
-                player.getCasketOpening().setCurrentCasket(CasketOpening.Caskets.ELITE_BOX);
-                player.getCasketOpening().openInterface();
-                break;
-            case 18404:
-                player.getCasketOpening().setCurrentCasket(CasketOpening.Caskets.RAIDS_BOX);
-                player.getCasketOpening().openInterface();
-                break;
-            case 20488:
-                player.getCasketOpening().setCurrentCasket(CasketOpening.Caskets.SUPREME_BOX);
-                player.getCasketOpening().openInterface();
-                break;
-            case 14488:
-                player.getCasketOpening().setCurrentCasket(CasketOpening.Caskets.OFF_BOX);
-                player.getCasketOpening().openInterface();
-                break;
-            case 14490:
-                player.getCasketOpening().setCurrentCasket(CasketOpening.Caskets.DEATH_BOX);
-                player.getCasketOpening().openInterface();
-                break;
-            case 14492:
-                player.getCasketOpening().setCurrentCasket(CasketOpening.Caskets.AFREET_BOX);
-                player.getCasketOpening().openInterface();
-                break;
-            case 19114:
-                player.getCasketOpening().setCurrentCasket(CasketOpening.Caskets.WEAPON_BOX);
-                player.getCasketOpening().openInterface();
-                break;
-            case 10025:
-                player.getCasketOpening().setCurrentCasket(CasketOpening.Caskets.PROG_BOX_T1);
-                player.getCasketOpening().openInterface();
-                break;
-            case 10029:
-                player.getCasketOpening().setCurrentCasket(CasketOpening.Caskets.PROG_BOX_T2);
-                player.getCasketOpening().openInterface();
-                break;
-            case 10027:
-                player.getCasketOpening().setCurrentCasket(CasketOpening.Caskets.PROG_BOX_T3);
-                player.getCasketOpening().openInterface();
-                break;
+
+//            case 23171:
+//                player.getCasketOpening().setCurrentCasket(CasketOpening.Caskets.RARE_BOX);
+//                player.getCasketOpening().openInterface();
+//                break;
+//            case 14487:
+//                player.getCasketOpening().setCurrentCasket(CasketOpening.Caskets.DEF_BOX);
+//                player.getCasketOpening().openInterface();
+//                break;
+//            case 15003:
+//                player.getCasketOpening().setCurrentCasket(CasketOpening.Caskets.SILVER_BOX);
+//                player.getCasketOpening().openInterface();
+//                break;
+//            case 15002:
+//                player.getCasketOpening().setCurrentCasket(CasketOpening.Caskets.RUBY_BOX);
+//                player.getCasketOpening().openInterface();
+//                break;
+//            case 15004:
+//                player.getCasketOpening().setCurrentCasket(CasketOpening.Caskets.DIAMOND_BOX);
+//                player.getCasketOpening().openInterface();
+//                break;
+//            case 20489:
+//                player.getCasketOpening().setCurrentCasket(CasketOpening.Caskets.PREMIUM_BOX);
+//                player.getCasketOpening().openInterface();
+//                break;
+//            case 20490:
+//                player.getCasketOpening().setCurrentCasket(CasketOpening.Caskets.ZENYTE_BOX);
+//                player.getCasketOpening().openInterface();
+//                break;
+//            case 20491:
+//                player.getCasketOpening().setCurrentCasket(CasketOpening.Caskets.ONYX_BOX);
+//                player.getCasketOpening().openInterface();
+//                break;
+//            case 19624:
+//                player.getCasketOpening().setCurrentCasket(CasketOpening.Caskets.ELITE_BOX);
+//                player.getCasketOpening().openInterface();
+//                break;
+//            case 18404:
+//                player.getCasketOpening().setCurrentCasket(CasketOpening.Caskets.RAIDS_BOX);
+//                player.getCasketOpening().openInterface();
+//                break;
+//            case 20488:
+//                player.getCasketOpening().setCurrentCasket(CasketOpening.Caskets.SUPREME_BOX);
+//                player.getCasketOpening().openInterface();
+//                break;
+//            case 14488:
+//                player.getCasketOpening().setCurrentCasket(CasketOpening.Caskets.OFF_BOX);
+//                player.getCasketOpening().openInterface();
+//                break;
+//            case 14490:
+//                player.getCasketOpening().setCurrentCasket(CasketOpening.Caskets.DEATH_BOX);
+//                player.getCasketOpening().openInterface();
+//                break;
+//            case 14492:
+//                player.getCasketOpening().setCurrentCasket(CasketOpening.Caskets.AFREET_BOX);
+//                player.getCasketOpening().openInterface();
+//                break;
+//            case 19114:
+//                player.getCasketOpening().setCurrentCasket(CasketOpening.Caskets.WEAPON_BOX);
+//                player.getCasketOpening().openInterface();
+//                break;
+//            case 10025:
+//                player.getCasketOpening().setCurrentCasket(CasketOpening.Caskets.PROG_BOX_T1);
+//                player.getCasketOpening().openInterface();
+//                break;
+//            case 10029:
+//                player.getCasketOpening().setCurrentCasket(CasketOpening.Caskets.PROG_BOX_T2);
+//                player.getCasketOpening().openInterface();
+//                break;
+//            case 10027:
+//                player.getCasketOpening().setCurrentCasket(CasketOpening.Caskets.PROG_BOX_T3);
+//                player.getCasketOpening().openInterface();
+//                break;
             case 19659:
                 if(player.getPSettings().getBooleanValueDef("summer-unlock")){
                     player.sendMessage("You already have this unlocked.");
@@ -873,18 +870,12 @@ public class ItemActionPacketListener implements PacketListener {
                 player.sendMessage("<shad=1>@yel@You swapped your God potion to 125K Tokens!");
                 break;*/
             case 455:
-                player.getScratchCard().open();
+                player.setCard(new RareScratchI(player));
+                player.getCard().open();
                 break;
             case 22121:
-                if (player.getLocation() != Location.HOME_BANK) {
-                    player.sendMessage("<shad=1>@red@You have to be in ::home to scratch this card!");
-                    player.sendMessage("<shad=1>@red@You have to be in ::home to scratch this card!");
-                    return;
-                }
-                player.getScratchcard().open();
-                player.getInventory().delete(22121, 1);
-
-
+                player.setCard(new RareScratchI(player));
+                player.getCard().open();
                 break;
 
             case 2150:
@@ -918,47 +909,47 @@ public class ItemActionPacketListener implements PacketListener {
                 player.getPacketSender().sendMessage("You Blew on the whistle and the King summons you!");
                 break;
 
-            case 6833:
-                player.getGoodieBag().boxId = itemId;
-                player.getGoodieBag().rewards = new int[]{455, 6199, 19116, 10946, 15290, 16045, 15785, 19331,
-                        18686, 15501, 989, 962, 3318, 3907, 11137, 4151, 12790, 15332, 7956};
-                player.getGoodieBag().open();
-                break;
-            case 3578:
-                player.getGoodieBag().boxId = itemId;
-                player.getGoodieBag().rewards = new int[]{23058, 23058, 23058, 23058, 23058, 23058, 23058, 23058, 23058, 23058, 23058, 23058, 23058, 23058, 23058, 23058, 23058, 23058, 7995, 23058};
-                player.getGoodieBag().open();
-                break;
-
-            //SPECIAL
-            case 13017:
-                player.getGoodieBag().boxId = itemId;
-                player.getGoodieBag().rewards = new int[]{20489, 20490, 20491, 23058, 23057, 17702, 16249, 7543, 23120, 23123, 23126, 8136, 5011, 17013, 23049, 12630, 18881, 18883, 7995, 23169};
-                player.getGoodieBag().open();
-                break;
-            //ELITE
-            case 13021:
-                player.getGoodieBag().boxId = itemId;
-                player.getGoodieBag().rewards = new int[]{4442, 20490, 20491, 23058, 23057, 8410, 8411, 8412, 23059, 20489, 15004, 7543, 16249, 17702, 4373, 12630, 8831, 13555, 7995, 8812};
-                player.getGoodieBag().open();
-                break;
-            //OWNER JEWELRY
-            case 13019:
-                player.getGoodieBag().boxId = itemId;
-                player.getGoodieBag().rewards = new int[]{23058, 23058, 23058, 23058, 23058, 23058, 23058, 23058, 23058, 23058, 8832, 23058, 23058, 23058, 23058, 23058, 23058, 23058, 15834, 23058};
-                player.getGoodieBag().open();
-                break;
-
-            case 13035:
-                player.getGoodieBag().boxId = itemId;
-                player.getGoodieBag().rewards = new int[]{21607, 21608, 21609, 12535, 5012, 9942, 8274, 8273, 9939, 17698, 17700, 21018, 23057, 23058, 17644, 22105, 8100, 8101, 8102, 1486};
-                player.getGoodieBag().open();
-                break;
-            case 3576:
-                player.getGoodieBag().boxId = itemId;
-                player.getGoodieBag().rewards = new int[]{13323, 13324, 13325, 8410, 8411, 8412, 17694, 17696, 18883, 8136, 5011, 17013, 11183, 11184, 11179, 19886, 23046, 23122, 23125, 23059};
-                player.getGoodieBag().open();
-                break;
+//            case 6833:
+//                player.getGoodieBag().boxId = itemId;
+//                player.getGoodieBag().rewards = new int[]{455, 6199, 19116, 10946, 15290, 16045, 15785, 19331,
+//                        18686, 15501, 989, 962, 3318, 3907, 11137, 4151, 12790, 15332, 7956};
+//                player.getGoodieBag().open();
+//                break;
+//            case 3578:
+//                player.getGoodieBag().boxId = itemId;
+//                player.getGoodieBag().rewards = new int[]{23058, 23058, 23058, 23058, 23058, 23058, 23058, 23058, 23058, 23058, 23058, 23058, 23058, 23058, 23058, 23058, 23058, 23058, 7995, 23058};
+//                player.getGoodieBag().open();
+//                break;
+//
+//            //SPECIAL
+//            case 13017:
+//                player.getGoodieBag().boxId = itemId;
+//                player.getGoodieBag().rewards = new int[]{20489, 20490, 20491, 23058, 23057, 17702, 16249, 7543, 23120, 23123, 23126, 8136, 5011, 17013, 23049, 12630, 18881, 18883, 7995, 23169};
+//                player.getGoodieBag().open();
+//                break;
+//            //ELITE
+//            case 13021:
+//                player.getGoodieBag().boxId = itemId;
+//                player.getGoodieBag().rewards = new int[]{4442, 20490, 20491, 23058, 23057, 8410, 8411, 8412, 23059, 20489, 15004, 7543, 16249, 17702, 4373, 12630, 8831, 13555, 7995, 8812};
+//                player.getGoodieBag().open();
+//                break;
+//            //OWNER JEWELRY
+//            case 13019:
+//                player.getGoodieBag().boxId = itemId;
+//                player.getGoodieBag().rewards = new int[]{23058, 23058, 23058, 23058, 23058, 23058, 23058, 23058, 23058, 23058, 8832, 23058, 23058, 23058, 23058, 23058, 23058, 23058, 15834, 23058};
+//                player.getGoodieBag().open();
+//                break;
+//
+//            case 13035:
+//                player.getGoodieBag().boxId = itemId;
+//                player.getGoodieBag().rewards = new int[]{21607, 21608, 21609, 12535, 5012, 9942, 8274, 8273, 9939, 17698, 17700, 21018, 23057, 23058, 17644, 22105, 8100, 8101, 8102, 1486};
+//                player.getGoodieBag().open();
+//                break;
+//            case 3576:
+//                player.getGoodieBag().boxId = itemId;
+//                player.getGoodieBag().rewards = new int[]{13323, 13324, 13325, 8410, 8411, 8412, 17694, 17696, 18883, 8136, 5011, 17013, 11183, 11184, 11179, 19886, 23046, 23122, 23125, 23059};
+//                player.getGoodieBag().open();
+//                break;
 
             case 7510:
                 long plc = player.getConstitution();
@@ -1977,22 +1968,6 @@ public class ItemActionPacketListener implements PacketListener {
                 player.getMinimeSystem().despawn();
                 break;
 
-            case ItemDefinition.TOKEN_ID:
-                if (player.getInventory().getFreeSlots() < 1) {
-                    player.sendMessage("You need at least "+1+" inventory slots to do this.");
-                    return;
-                }
-
-                if (player.getInventory().getAmount(ItemDefinition.TOKEN_ID) >= 1_000) {
-                    int amount = player.getInventory().getAmount(ItemDefinition.TOKEN_ID) / 1_000;
-                    player.getInventory().delete(new Item(ItemDefinition.TOKEN_ID, amount * 1_000));
-                    player.getInventory().add(new Item(23203, amount));
-                    player.sendMessage("You have successfully converted coins to T-Tokens");
-                } else {
-                    player.sendMessage("You don't have enough coins to convert to T-Tokens");
-                }
-                break;
-
             case 13591:
                 player.getPacketSender().sendMessage("You rub the enchanted key to teleport to chest area.");
                 Position position = new Position(2706, 2737, 0);
@@ -2400,19 +2375,7 @@ public class ItemActionPacketListener implements PacketListener {
                 player.getInventory().delete(ItemDefinition.TOKEN_ID, amount);
                 player.getInventory().add(ItemDefinition.COIN_ID, amount * 1_000);
                 break;
-            case 23203:
-                int amount2 = player.getInventory().getAmount(23203);
-                if (amount2 >= 2147483)
-                    amount2 = 2147483;
 
-                int sum2 = (int) ((double) player.getInventory().getAmount(ItemDefinition.TOKEN_ID) + (double) (amount2 * 1_000));
-
-                if (sum2 >= Integer.MAX_VALUE || sum2 <= 0)
-                    amount2 = (int) (2147483 - Math.ceil(((double) player.getInventory().getAmount(ItemDefinition.TOKEN_ID) / (double) 1_000)));
-
-                player.getInventory().delete(23203, amount2);
-                player.getInventory().add(ItemDefinition.TOKEN_ID, amount2 * 1_000);
-                break;
             case 12845:
                 player.getPointsHandler().incrementPengRate(2);
                 player.getPacketSender().sendMessage("You have increased your penguin rate. @blu@"

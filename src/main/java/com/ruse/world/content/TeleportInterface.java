@@ -3,7 +3,7 @@ package com.ruse.world.content;
 import com.ruse.model.Position;
 import com.ruse.model.definitions.NPCDrops;
 import com.ruse.world.content.aura.AuraRaids;
-import com.ruse.world.content.casketopening.Box;
+import com.ruse.world.packages.packs.casket.Box;
 import com.ruse.world.content.minigames.impl.*;
 import com.ruse.world.content.minigames.impl.dungeoneering.DungeoneeringParty;
 import com.ruse.world.content.progressionzone.ProgressionZone;

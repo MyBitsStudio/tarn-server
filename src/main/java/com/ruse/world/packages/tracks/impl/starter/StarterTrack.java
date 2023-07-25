@@ -71,15 +71,17 @@ public class StarterTrack extends Track {
     }
 
     public void handleKillCount(int npcId) {
-        StarterTasks task = StarterTasks.byKills(npcId);
-        if(task != null){
-            if (!tasks.containsKey(task))
-                tasks.put(task, false);
-            if (!tasks.get(task)) {
-                if (KillsTracker.getTotalKillsForNpc(npcId, player) >= task.getCount()) {
-                    tasks.put(task, true);
-                    reward(task);
-                    addXP(task.getXp());
+        List<StarterTasks> taska = StarterTasks.byKills(npcId);
+        for(StarterTasks task : taska) {
+            if (task != null) {
+                if (!tasks.containsKey(task))
+                    tasks.put(task, false);
+                if (!tasks.get(task)) {
+                    if (KillsTracker.getTotalKillsForNpc(npcId, player) >= task.getCount()) {
+                        tasks.put(task, true);
+                        reward(task);
+                        addXP(task.getXp());
+                    }
                 }
             }
         }

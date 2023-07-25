@@ -7,7 +7,7 @@ import com.ruse.world.entity.impl.player.Player;
 
 public class VoteSpecialInstance extends SpecialBossInstance {
 
-    private final static int TOKEN_ID = 23205, TOKEN_AMOUNT = 1;
+    private final static int TOKEN_ID = 1, TOKEN_AMOUNT = 1;
 
     private int ticks = 0;
     public VoteSpecialInstance(Player p, int npcId, int spawn, int cap) {

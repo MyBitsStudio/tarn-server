@@ -38,7 +38,7 @@ import com.ruse.world.packages.attendance.AttendanceUI;
 import com.ruse.world.content.aura.AuraParty;
 import com.ruse.world.content.battlepass.BattlePass;
 import com.ruse.world.content.bossEvents.BossEventData;
-import com.ruse.world.content.casketopening.CasketOpening;
+import com.ruse.world.packages.packs.casket.CasketOpening;
 import com.ruse.world.packages.clans.Clan;
 import com.ruse.world.packages.clans.ClanManager;
 import com.ruse.world.content.cluescrolls.ClueScrollTask;
@@ -81,13 +81,14 @@ import com.ruse.world.content.newspinner.MysteryBoxManager;
 import com.ruse.world.content.properscratchcard.Scratchcard;
 import com.ruse.world.packages.mode.Gamemode;
 import com.ruse.world.packages.mode.impl.Temp;
+import com.ruse.world.packages.packs.goody.GoodyBag;
 import com.ruse.world.packages.plugin.impl.BossPlugin;
 import com.ruse.world.packages.raids.Raid;
 import com.ruse.world.packages.raids.RaidParty;
-import com.ruse.world.content.scratchcards.ScratchCard;
 import com.ruse.world.packages.ranks.DonatorRank;
 import com.ruse.world.packages.ranks.StaffRank;
 import com.ruse.world.packages.ranks.VIPRank;
+import com.ruse.world.packages.packs.scratch.Scratch;
 import com.ruse.world.packages.seasonpass.SeasonPass;
 import com.ruse.world.content.skill.SkillManager;
 import com.ruse.world.content.skill.impl.construction.HouseFurniture;
@@ -599,7 +600,6 @@ public class Player extends Character {
     private int godModeTimer;
     @Getter
     private final BestItems bestItems = new BestItems(this);
-    private final GoodieBag goodieBag = new GoodieBag(this);
     /**
      * Custom Combiner
      */
@@ -618,7 +618,6 @@ public class Player extends Character {
     private List<CollectionEntry> collectionLogData = new ArrayList<>();
     private Map<Integer, Map<Integer, Integer>> collectedItems = new HashMap<>(); //wtf
     private final GamblingInterface gambling = new GamblingInterface(this);
-    private final ScratchCard scratchCard = new ScratchCard(this);
     /**
      * Donation deals
      */
@@ -942,11 +941,6 @@ public class Player extends Character {
         this.afkStallCount3 = afkStallCount3;
     }
 
-
-    public GoodieBag getGoodieBag() {
-        return goodieBag;
-    }
-
     public String getSavedIp() {
         return savedIp;
     }
@@ -999,10 +993,6 @@ public class Player extends Character {
 
     public GamblingInterface getGambling() {
         return gambling;
-    }
-
-    public ScratchCard getScratchCard() {
-        return scratchCard;
     }
 
     public DailyRewards getDailyRewards() {
@@ -4345,4 +4335,10 @@ public class Player extends Character {
 
     @Getter@Setter
     private StarterTrack starter = new StarterTrack(this);
+
+    @Getter@Setter
+    private Scratch card;
+
+    @Getter@Setter
+    private GoodyBag bag;
 }

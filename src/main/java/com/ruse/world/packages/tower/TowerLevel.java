@@ -1,6 +1,9 @@
 package com.ruse.world.packages.tower;
 
+import com.ruse.model.GameObject;
 import com.ruse.model.Locations;
+import com.ruse.model.Position;
+import com.ruse.world.World;
 import com.ruse.world.entity.impl.player.Player;
 import com.ruse.world.packages.instances.Instance;
 import com.ruse.world.packages.tower.npcs.TowerBoss;
@@ -12,7 +15,6 @@ public class TowerLevel extends Instance {
     public TowerLevel(Locations.Location location) {
         super(location);
     }
-
 
     public void enter(@NotNull Player player){
         TowerProgress progress = player.getTower();
@@ -28,6 +30,11 @@ public class TowerLevel extends Instance {
         add(player);
         player.sendMessage("You have entered the tower.");
         spawnNPCs(tower, player);
+        spawnObjects(player);
+    }
+
+    private void spawnObjects(@NotNull Player player){
+        World.register(new GameObject(16686, new Position(2867, 2760, player.getIndex() * 4)));
     }
 
     private void spawnNPCs(@NotNull Tower tower, @NotNull Player player){
@@ -43,6 +50,10 @@ public class TowerLevel extends Instance {
                 add(minion);
             }
         }
+    }
+
+    private void check(){
+
     }
 
 }

@@ -59,21 +59,21 @@ public enum TeleInterfaceData {
     //BOSS20(TeleInterfaceCategory.BOSSES, "Lucifer", 9012, 1000, TeleInterfaceLocation.LOCATION49, null),
     //BOSS21(TeleInterfaceCategory.BOSSES, "Virtuoso", 3019, 1000, TeleInterfaceLocation.LOCATION50, null),
     //BOSS22(TeleInterfaceCategory.BOSSES, "Agumon", 3020, 650, TeleInterfaceLocation.LOCATION51, null),
-    BOSS23(TeleInterfaceCategory.BOSSES, "White Beard", 3021, 650, TeleInterfaceLocation.LOCATION52, null),
-    BOSS24(TeleInterfaceCategory.BOSSES, "Panther", 3305, 1100, TeleInterfaceLocation.LOCATION53, null),
-    MONSTER15(TeleInterfaceCategory.BOSSES, "Leviathan", 9818, 1250, TeleInterfaceLocation.LOCATION54, null),
-    MONSTER31(TeleInterfaceCategory.BOSSES, "Calamity", 9912, 1250, TeleInterfaceLocation.LOCATION55, null),
-    //MONSTER32(TeleInterfaceCategory.BOSSES, "Slender Man", 9913, 1250, TeleInterfaceLocation.LOCATION56, null),
-    MONSTER34(TeleInterfaceCategory.BOSSES, "Charybdis", 3117, 850, TeleInterfaceLocation.LOCATION57, null),
-    MONSTER35(TeleInterfaceCategory.BOSSES, "Scylla", 3115, 1250, TeleInterfaceLocation.LOCATION58, null),
-   // MONSTER36(TeleInterfaceCategory.BOSSES, "Exoden", 12239, 1400, TeleInterfaceLocation.LOCATION59, null),
-    //BOSS31(TeleInterfaceCategory.BOSSES, "Ezkel-Nojad", 3112, 1900, TeleInterfaceLocation.LOCATION60, null),
-   // BOSS13(TeleInterfaceCategory.BOSSES, "Janemba", 3011, 750, TeleInterfaceLocation.LOCATION61, null),
-   // BOSS14(TeleInterfaceCategory.BOSSES, "Frieza", 252, 850, TeleInterfaceLocation.LOCATION62, null),
-   // BOSS4(TeleInterfaceCategory.BOSSES, "Perfect Cell", 449, 750, TeleInterfaceLocation.LOCATION63, null),
-  //  BOSS5(TeleInterfaceCategory.BOSSES, "Super Buu", 452, 850, TeleInterfaceLocation.LOCATION64, null),
-   // BOSS2(TeleInterfaceCategory.BOSSES, "Goku", 187, 750, TeleInterfaceLocation.LOCATION65, null),
-    BOSS35(TeleInterfaceCategory.BOSSES, "Byakuya", 188, 650, TeleInterfaceLocation.LOCATION66, null),
+//    BOSS23(TeleInterfaceCategory.BOSSES, "White Beard", 3021, 650, TeleInterfaceLocation.LOCATION52, null),
+//    BOSS24(TeleInterfaceCategory.BOSSES, "Panther", 3305, 1100, TeleInterfaceLocation.LOCATION53, null),
+//    MONSTER15(TeleInterfaceCategory.BOSSES, "Leviathan", 9818, 1250, TeleInterfaceLocation.LOCATION54, null),
+//    MONSTER31(TeleInterfaceCategory.BOSSES, "Calamity", 9912, 1250, TeleInterfaceLocation.LOCATION55, null),
+//    //MONSTER32(TeleInterfaceCategory.BOSSES, "Slender Man", 9913, 1250, TeleInterfaceLocation.LOCATION56, null),
+//    MONSTER34(TeleInterfaceCategory.BOSSES, "Charybdis", 3117, 850, TeleInterfaceLocation.LOCATION57, null),
+//    MONSTER35(TeleInterfaceCategory.BOSSES, "Scylla", 3115, 1250, TeleInterfaceLocation.LOCATION58, null),
+//   // MONSTER36(TeleInterfaceCategory.BOSSES, "Exoden", 12239, 1400, TeleInterfaceLocation.LOCATION59, null),
+//    //BOSS31(TeleInterfaceCategory.BOSSES, "Ezkel-Nojad", 3112, 1900, TeleInterfaceLocation.LOCATION60, null),
+//   // BOSS13(TeleInterfaceCategory.BOSSES, "Janemba", 3011, 750, TeleInterfaceLocation.LOCATION61, null),
+//   // BOSS14(TeleInterfaceCategory.BOSSES, "Frieza", 252, 850, TeleInterfaceLocation.LOCATION62, null),
+//   // BOSS4(TeleInterfaceCategory.BOSSES, "Perfect Cell", 449, 750, TeleInterfaceLocation.LOCATION63, null),
+//  //  BOSS5(TeleInterfaceCategory.BOSSES, "Super Buu", 452, 850, TeleInterfaceLocation.LOCATION64, null),
+//   // BOSS2(TeleInterfaceCategory.BOSSES, "Goku", 187, 750, TeleInterfaceLocation.LOCATION65, null),
+//    BOSS35(TeleInterfaceCategory.BOSSES, "Byakuya", 188, 650, TeleInterfaceLocation.LOCATION66, null),
     //BOSS366(TeleInterfaceCategory.BOSSES, "Queen Fazula", 1311, 750, TeleInterfaceLocation.LOCATION71, null),
     //BOSS367(TeleInterfaceCategory.BOSSES, "Lord Yasuda", 1313, 750, TeleInterfaceLocation.LOCATION72, null),
     //BOSS368(TeleInterfaceCategory.BOSSES, "Black Goku", 1318, 750, TeleInterfaceLocation.LOCATION73, null),
@@ -84,14 +84,15 @@ public enum TeleInterfaceData {
     //BOSS29(TeleInterfaceCategory.BOSSES, "Boss", 1898, 1500, TeleInterfaceLocation.LOCATION1, new Item[] {new Item(4151, 10), new Item(995, 2000000)}),
 
     /* Minigames */
-    BARROWS(TeleInterfaceCategory.MINIGAMES, "DISABLED", 1307, 1500, TeleInterfaceLocation.LOCATION100, new Item(20504,1), new Item(22215,1), new Item(22228,1),new Item(4022,1),new Item(4024,1),new Item(4034,1),new Item(4032,1),new Item(4030,1),new Item(4026,1),new Item(4028,1)),
+    TARNTOWER(TeleInterfaceCategory.MINIGAMES, "Tarn Tower", 9910, 1500, TeleInterfaceLocation.TARN_TOWER, new Item(995,1)),
 
     /* Misc */
-   VEIGAR(TeleInterfaceCategory.MISC, "DISABLED", 9906, 2000, TeleInterfaceLocation.LOCATION67, null),
+   //VEIGAR(TeleInterfaceCategory.MISC, "DISABLED", 9906, 2000, TeleInterfaceLocation.LOCATION67, null),
     //NINETAILS(TeleInterfaceCategory.MISC, "Nine Tails Jinchuriki", 9904, 1500, TeleInterfaceLocation.LOCATION68, null),
    // MERUEM(TeleInterfaceCategory.MISC, "Meruem The King", 9907, 1500, TeleInterfaceLocation.LOCATION69, null),
    // GOLDEN(TeleInterfaceCategory.MISC, "Golden Great Ape", 9908, 1500, TeleInterfaceLocation.LOCATION70, null)
 
+    RAIDS_1(TeleInterfaceCategory.MINIGAMES, "DISABLED", 9910, 1500, TeleInterfaceLocation.TARN_TOWER, new Item(995,1)),
     ;
     TeleInterfaceData(TeleInterfaceCategory category, String name, int npcId, int zoom, TeleInterfaceLocation location, Item... drops) {
         this.category = category;

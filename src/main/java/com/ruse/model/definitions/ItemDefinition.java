@@ -1,7 +1,12 @@
 package com.ruse.model.definitions;
 
 import com.ruse.GameServer;
+import com.ruse.engine.GameEngine;
 import com.ruse.model.container.impl.Equipment;
+import com.ruse.security.save.impl.server.defs.ItemDataLoad;
+import com.ruse.security.save.impl.server.defs.NPCDataLoad;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.io.*;
 
@@ -11,29 +16,22 @@ import java.io.*;
  *
  * @author relex lawl
  */
-
+@Getter
+@Setter
 public class ItemDefinition {
 
 
     public static final int COIN_ID = 995;
     public static final int TOKEN_ID = 10835;
-  //  public static final int MILL_ID = 23151;
-
-    /**
-     * The directory in which item definitions are found.
-     */
-    private static final String FILE_DIRECTORY = "./data/def/txt/items.txt";
-    private static final String NAME_DIRECTORY = "./data/def/txt/items.txt";
-
     /**
      * The max amount of items that will be loaded.-+
      */
-    private static final int MAX_AMOUNT_OF_ITEMS = 26000;
+    private static final int  MAX_AMOUNT_OF_ITEMS = 26000;
 
     /**
      * ItemDefinition array containing all items' definition values.
      */
-    private static ItemDefinition[] definitions = new ItemDefinition[MAX_AMOUNT_OF_ITEMS];
+    public static final ItemDefinition[] definitions = new ItemDefinition[MAX_AMOUNT_OF_ITEMS];
     /**
      * The id of the item.
      */
@@ -41,11 +39,7 @@ public class ItemDefinition {
     /**
      * The name of the item.
      */
-    private String name = "None";
-    /**
-     * The item's description.
-     */
-    private String description = "Null";
+    private String name = "None", description = "Null";
     /**
      * Flag to check if item is stackable.
      */
@@ -57,11 +51,7 @@ public class ItemDefinition {
     /**
      * Flag that checks if item is noted.
      */
-    private boolean noted;
-    private boolean isTwoHanded;
-    private boolean weapon;
-
-    private boolean secondTab;
+    private boolean noted, isTwoHanded, weapon, secondTab;
     private EquipmentType equipmentType = EquipmentType.WEAPON;
     private double[] bonus = new double[18];
     private int[] requirement = new int[25];
@@ -70,112 +60,8 @@ public class ItemDefinition {
      * Loading all item definitions
      */
     public static void init() {
-        ItemDefinition definition = definitions[0];
-        try {
-            File file = new File(FILE_DIRECTORY);
-            BufferedReader reader = new BufferedReader(new FileReader(file));
-            String line;
-            while ((line = reader.readLine()) != null) {
-                if (line.contains("inish")) {
-                    definitions[definition.id] = definition;
-                    continue;
-                }
-                String[] args = line.split(": ");
-                if (args.length <= 1)
-                    continue;
-                String token = args[0], value = args[1];
-                if (line.contains("Bonus[")) {
-                    String[] other = line.split("]");
-                    int index = Integer.parseInt(line.substring(6, other[0].length()));
-                    double bonus = Double.parseDouble(value);
-                    definition.bonus[index] = bonus;
-                    continue;
-                }
-                if (line.contains("Requirement[")) {
-                    String[] other = line.split("]");
-                    int index = Integer.parseInt(line.substring(12, other[0].length()));
-                    int requirement = Integer.parseInt(value);
-                    definition.requirement[index] = requirement;
-                    continue;
-                }
-                if (line.contains("SecondTab")) {
-                    definition.secondTab = Boolean.parseBoolean(value);
-                }
-                switch (token.toLowerCase()) {
-                    case "item id":
-                        int id = Integer.parseInt(value);
-                        definition = new ItemDefinition();
-                        definition.id = id;
-                        break;
-                    case "name":
-                        if (value == null)
-                            continue;
-                        definition.name = value;
-                        break;
-                    case "examine":
-                        definition.description = value;
-                        break;
-                    case "value":
-                        int price = Integer.valueOf(value);
-                        definition.value = price;
-                        break;
-                    case "stackable":
-                        definition.stackable = Boolean.valueOf(value);
-                        break;
-                    case "noted":
-                        definition.noted = Boolean.valueOf(value);
-                        break;
-                    case "double-handed":
-                        definition.isTwoHanded = Boolean.valueOf(value);
-                        break;
-                    case "equipment type":
-                        definition.equipmentType = EquipmentType.valueOf(value);
-                        break;
-                    case "is weapon":
-                        definition.weapon = Boolean.valueOf(value);
-                        break;
-                }
-            }
-            reader.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-
-        try {
-            File file = new File(NAME_DIRECTORY);
-            BufferedReader reader = new BufferedReader(new FileReader(file));
-            String line;
-            while ((line = reader.readLine()) != null) {
-                if (line.contains("inish")) {
-                    definitions[definition.id] = definition;
-                    continue;
-                }
-
-                String[] args = line.split(": ");
-                if (args.length <= 1)
-                    continue;
-                String token = args[0], value = args[1];
-
-                switch (token.toLowerCase()) {
-                    case "item id":
-                        int id = Integer.valueOf(value);
-                        if (id < definitions.length)
-                            definition = ItemDefinition.forId(id);
-                        break;
-                    case "Name":
-                        if (definition != null)
-                            definition.name = value;
-                        break;
-                }
-                definition.isEquitable = definition.equipmentType != EquipmentType.WEAPON || definition.isWeapon();
-            }
-            reader.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-     dumpItems();
+        new ItemDataLoad().loadArray("./.core/server/defs/items/itemData.json").run();
+        dumpItems();
     }
     
     public boolean isEquitable;
@@ -186,7 +72,7 @@ public class ItemDefinition {
         if (file.exists())
            file.delete();
 
-        GameServer.getLoader().getEngine().submit(() -> {
+        GameEngine.submit(() -> {
             try {
                 FileWriter fw = new FileWriter("./data/def/itemstats.dat", true);
                 if (fw != null) {
@@ -211,7 +97,7 @@ public class ItemDefinition {
             }
 
             if (dump) {
-                GameServer.getLoader().getEngine().submit(() -> {
+                GameEngine.submit(() -> {
                     try {
                         FileWriter fw = new FileWriter("./data/def/itemstats.dat", true);
                         String write = def.id + " ";
@@ -378,10 +264,11 @@ public class ItemDefinition {
         return requirement;
     }
 
+
     @Override
     public String toString() {
         return "[ItemDefinition(" + id + ")] - Name: " + name + "; equipment slot: " + getEquipmentSlot() + "; value: "
-                + value + "; stackable ? " + Boolean.toString(stackable) + "; noted ? " + Boolean.toString(noted)
+                + value + "; stackable ? " + stackable + "; noted ? " + noted
                 + "; 2h ? " + isTwoHanded;
     }
 
@@ -394,9 +281,9 @@ public class ItemDefinition {
         LEGS(Equipment.LEG_SLOT), WEAPON(Equipment.WEAPON_SLOT), AURA(Equipment.AURA_SLOT),
         ENCHANTMENT(Equipment.ENCHANTMENT_SLOT), HALO(Equipment.HALO_SLOT), GEMSTONE(Equipment.GEMSTONE_SLOT);
 
-        private int slot;
+        private final int slot;
 
-        private EquipmentType(int slot) {
+        EquipmentType(int slot) {
             this.slot = slot;
         }
 

@@ -139,7 +139,7 @@ public class BonusManager {
 	/** CURSES **/
 
 	public static void sendCurseBonuses(final Player p) {
-		if (p.getPrayerbook() == Prayerbook.CURSES || p.getPrayerbook() == p.getPrayerbook().HOLY) {
+		if (p.getPrayerbook() == Prayerbook.CURSES || p.getPrayerbook() == Prayerbook.HOLY) {
 			sendAttackBonus(p);
 			sendDefenceBonus(p);
 			sendStrengthBonus(p);

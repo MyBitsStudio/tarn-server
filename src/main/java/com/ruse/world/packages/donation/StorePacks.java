@@ -24,8 +24,6 @@ public enum StorePacks {
 
     DROP_RATE_TOKEN(23207, 5.00),
     DAMAGE_HIGH_TOKEN(23208, 5.00),
-    AOE_TOKEN_6(23206, 25.00),
-    AOE_TOKEN_3(23219, 10.00),
 
     SOLAR_3(23243, 10.00),
     SHINI_2(23244, 30.00),

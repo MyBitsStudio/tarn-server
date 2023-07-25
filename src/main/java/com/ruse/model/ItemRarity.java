@@ -4,7 +4,7 @@
 //import com.ruse.model.definitions.ItemDefinition;
 //import com.ruse.model.projectile.ItemEffect;
 //import com.ruse.util.Misc;
-//import com.ruse.world.content.casketopening.Box;
+//import com.ruse.world.packages.casketopening.Box;
 //
 //import java.security.SecureRandom;
 //import java.util.ArrayList;

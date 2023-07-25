@@ -10,9 +10,9 @@ public class ScratchCardEndPacketListener implements PacketListener {
 		if (packet.readByte() != 1)
 			return;
 
-		player.getScratchCard().scratching = false;
+		player.getCard().setScratching(false);
 
-		player.getScratchCard().getWinnings();
+		player.getCard().getWinnings();
 
 	}
 

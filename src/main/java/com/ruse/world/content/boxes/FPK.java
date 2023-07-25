@@ -1,7 +1,7 @@
 package com.ruse.world.content.boxes;
 
 
-import com.ruse.world.content.casketopening.Box;
+import com.ruse.world.packages.packs.casket.Box;
 
 public class FPK {
 

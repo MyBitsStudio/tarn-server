@@ -15,7 +15,7 @@ public class CollectionEntry {
     private int amount;
 
     public void submit(Player player) {
-    	if(player.getCollectionLogData().stream().filter(data -> data.npcId == npcId && data.item == item).findAny().isPresent()) {
+    	if(player.getCollectionLogData().stream().anyMatch(data -> data.npcId == npcId && data.item == item)) {
     		var edit = player.getCollectionLogData().stream().filter(data -> data.npcId == npcId && data.item == item).findFirst().get();
     		player.getCollectionLogData().stream().filter(data -> data.npcId == npcId && data.item == item).findFirst().get().setAmount(edit.getAmount() + 1);
     		return;

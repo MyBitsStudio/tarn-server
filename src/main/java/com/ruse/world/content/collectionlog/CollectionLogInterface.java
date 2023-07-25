@@ -6,6 +6,7 @@ import com.ruse.model.definitions.NpcDefinition;
 import com.ruse.util.Misc;
 import com.ruse.world.content.KillsTracker;
 import com.ruse.world.content.TeleportInterface;
+import com.ruse.world.content.teleport.TeleInterfaceData;
 import com.ruse.world.entity.impl.player.Player;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -23,7 +24,7 @@ public class CollectionLogInterface {
     public static final int INTERFACE_ID = 30360;
     private final int[] NPC_LIST = new int[]{};
     private final Player player;
-    private List<Integer> currentlyViewing = new ArrayList<>();
+    private final List<Integer> currentlyViewing = new ArrayList<>();
     private int currentIndex;
     @Getter @Setter public HashMap<Integer, RewardClaim> rewardsClaims = new HashMap<>();
 
@@ -37,13 +38,13 @@ public class CollectionLogInterface {
 
     private void sendBossNames() {
         int[] startingLine = new int[]{30560};
-        currentlyViewing.forEach(entry -> player.getPA().sendString(startingLine[0]++, "" + NpcDefinition.forId(entry).getName()));
+        currentlyViewing.forEach(entry -> player.getPA().sendString(startingLine[0]++, NpcDefinition.forId(entry).getName()));
     }
 
     private void initialiseCurrentlyViewing() {
         currentlyViewing.clear();
 
-		for (TeleportInterface.Bosses data : TeleportInterface.Bosses.values())
+		for (TeleInterfaceData data : TeleInterfaceData.values())
 			currentlyViewing.add(data.getNpcId());
 
 		for (int entry : NPC_LIST) {
@@ -147,22 +148,20 @@ public class CollectionLogInterface {
                 if(rewardClaim.canClaim) {
                     if(rewardClaim.hasClaimed) {
                         player.getPacketSender().sendMessage("@red@You already claimed this reward.");
-                    } else {
-                        if(player.getInventory().getFreeSlots() >= rewards.length) {
-                            NPCDrops drops = NPCDrops.forId(npcId);
-                            for(NPCDrops.NpcDropItem drop : drops.getDropList()) {
-                                if (drop.getChance() <= 1) {
-                                    continue;
-                                }
-                                if(!hasObtainedItem(npcId, drop.getId())) {
-                                    return true;
-                                }
+                    } else if (player.getInventory().getFreeSlots() >= rewards.length) {
+                        NPCDrops drops = NPCDrops.forId(npcId);
+                        for (NPCDrops.NpcDropItem drop : drops.getDropList()) {
+                            if (drop.getChance() <= 1) {
+                                continue;
                             }
-                            rewardClaim.hasClaimed = true;
-                            player.getInventory().addItemSet(rewards);
-                        } else {
-                            player.getPacketSender().sendMessage("@red@You need at least " + rewards.length + " free slots to claim this.");
+                            if (!hasObtainedItem(npcId, drop.getId())) {
+                                return true;
+                            }
                         }
+                        rewardClaim.hasClaimed = true;
+                        player.getInventory().addItemSet(rewards);
+                    } else {
+                        player.getPacketSender().sendMessage("@red@You need at least " + rewards.length + " free slots to claim this.");
                     }
                 } else {
                     player.getPacketSender().sendMessage("@red@You cannot claim this reward yet.");
@@ -193,76 +192,76 @@ public class CollectionLogInterface {
 
         static {
             //MOBS
-            REWARDS.put(TeleportInterface.Bosses.ELITE_DRAGON.getNpcId(), new Item[]{new Item(19119,1), new Item(10835,5000)});
-            REWARDS.put(TeleportInterface.Bosses.ETERNAL_DRAGON.getNpcId(), new Item[]{new Item(2736,3), new Item(10835,10000)});
-            REWARDS.put(TeleportInterface.Bosses.SCARLET_FALCON.getNpcId(), new Item[]{new Item(2736,3), new Item(10835,10000)});
-            REWARDS.put(TeleportInterface.Bosses.CRYSTAL_QUEEN.getNpcId(), new Item[]{new Item(2736,3), new Item(10835,10000)});
-            REWARDS.put(TeleportInterface.Bosses.LUCIFER.getNpcId(),  new Item[]{new Item(19886,1), new Item(10835,10000)});
-            REWARDS.put(TeleportInterface.Bosses.MEGA_AVATAR.getNpcId(), new Item[]{new Item(2736,3), new Item(10835,10000)});
-            REWARDS.put(TeleportInterface.Bosses.CRAZY_WITCH.getNpcId(), new Item[]{new Item(2736,3), new Item(15584,1)});
-            REWARDS.put(TeleportInterface.Bosses.LIGHT_SUPREME.getNpcId(), new Item[]{new Item(2736,3), new Item(10835,10000)});
-            REWARDS.put(TeleportInterface.Bosses.DARK_SUPREME.getNpcId(), new Item[]{new Item(2736,3), new Item(10835,10000)});
-            REWARDS.put(TeleportInterface.Bosses.FRACTITE_DEMON.getNpcId(), new Item[]{new Item(2736,3), new Item(10835,10000)});
-            REWARDS.put(TeleportInterface.Bosses.INFERNAL_DEMON.getNpcId(), new Item[]{new Item(2736,3), new Item(10835,10000)});
-            REWARDS.put(TeleportInterface.Bosses.PERFECT_CELL.getNpcId(), new Item[]{new Item(2736,3), new Item(10835,10000)});
-            REWARDS.put(TeleportInterface.Bosses.SUPER_BUU.getNpcId(), new Item[]{new Item(10946,3), new Item(21815,2)});
-            REWARDS.put(TeleportInterface.Bosses.FRIEZA.getNpcId(), new Item[]{new Item(10946,3), new Item(21815,2)});
-            REWARDS.put(TeleportInterface.Bosses.GOKU.getNpcId(), new Item[]{new Item(10946,3), new Item(21815,2)});
-            REWARDS.put(TeleportInterface.Bosses.GROUDON.getNpcId(), new Item[]{new Item(10946,3), new Item(21815,2)});
-            REWARDS.put(TeleportInterface.Bosses.EZKEL.getNpcId(), new Item[]{new Item(10946,3), new Item(21815,2)});
-            REWARDS.put(TeleportInterface.Bosses.SUPREMENEX.getNpcId(), new Item[]{new Item(10946,5), new Item(21815,5)});
-            REWARDS.put(TeleportInterface.Bosses.EXTRA1.getNpcId(), new Item[]{new Item(2736,5), new Item(15585,1)});
-            REWARDS.put(TeleportInterface.Bosses.SUPREMENEX2.getNpcId(), new Item[]{new Item(20488,1), new Item(10835,20000)});
-            REWARDS.put(TeleportInterface.Bosses.SUPREMENEX3.getNpcId(), new Item[]{new Item(20488,1), new Item(10835,20000)});
-            REWARDS.put(TeleportInterface.Bosses.SUPREMENEX4.getNpcId(), new Item[]{new Item(10946,5), new Item(21814,5)});
-            REWARDS.put(TeleportInterface.Bosses.SUPREMENEX5.getNpcId(), new Item[]{new Item(10946,5), new Item(21815,5)});
-            REWARDS.put(TeleportInterface.Bosses.SUPREMENEX6.getNpcId(), new Item[]{new Item(10946,5), new Item(21816,5)});
-            REWARDS.put(TeleportInterface.Bosses.SUPREMENEX7.getNpcId(), new Item[]{new Item(10946,5), new Item(21814,5)});
-            REWARDS.put(TeleportInterface.Bosses.SUPREMENEX8.getNpcId(), new Item[]{new Item(10946,5), new Item(21815,5)});
-            REWARDS.put(TeleportInterface.Bosses.SUPREMENEX9.getNpcId(), new Item[]{new Item(10946,5), new Item(21816,5)});
-            //BOSSES
-            REWARDS.put(TeleportInterface.Bosses.SUPREMENEX10.getNpcId(), new Item[]{new Item(15003,1), new Item(15586,1)});
-            REWARDS.put(TeleportInterface.Bosses.SUPREMENEX11.getNpcId(), new Item[]{new Item(20488,1), new Item(15589,1)});
-            REWARDS.put(TeleportInterface.Bosses.SUPREMENEX12.getNpcId(), new Item[]{new Item(20488,1), new Item(10946,5)});
-            REWARDS.put(TeleportInterface.Bosses.SUPREMENEX13.getNpcId(), new Item[]{new Item(2736,10), new Item(21816,15)});
-            REWARDS.put(TeleportInterface.Bosses.SUPREMENEX14.getNpcId(), new Item[]{new Item(15003,1), new Item(15587,1)});
-            REWARDS.put(TeleportInterface.Bosses.SUPREMENEX15.getNpcId(), new Item[]{new Item(20488,1), new Item(15588,1)});
-
-            REWARDS.put(TeleportInterface.Bosses.SUPREMENEX16.getNpcId(), new Item[]{new Item(20488,1), new Item(21815,5)});
-            REWARDS.put(TeleportInterface.Bosses.SUPREMENEX17.getNpcId(), new Item[]{new Item(20488,1), new Item(21814,5)});
-            REWARDS.put(TeleportInterface.Bosses.SUPREMENEX18.getNpcId(), new Item[]{new Item(20488,1), new Item(21816,5)});
-            REWARDS.put(TeleportInterface.Bosses.SUPREMENEX19.getNpcId(), new Item[]{new Item(15004,1), new Item(3578,1)});
-            REWARDS.put(TeleportInterface.Bosses.SUPREMENEX20.getNpcId(), new Item[]{new Item(20488,1), new Item(8788,1)});
-            REWARDS.put(TeleportInterface.Bosses.SUPREMENEX21.getNpcId(), new Item[]{new Item(3578,1), new Item(8788,1)});
-            REWARDS.put(TeleportInterface.Bosses.SUPREMENEX22.getNpcId(), new Item[]{new Item(20488,1), new Item(8788,1)});
-            REWARDS.put(TeleportInterface.Bosses.SUPREMENEX23.getNpcId(), new Item[]{new Item(20488,1), new Item(21815,5)});
-            REWARDS.put(TeleportInterface.Bosses.SUPREMENEX24.getNpcId(), new Item[]{new Item(20488,1), new Item(21815,5)});
-            REWARDS.put(TeleportInterface.Bosses.SUPREMENEX25.getNpcId(), new Item[]{new Item(3578,1), new Item(21815,5)});
-            REWARDS.put(TeleportInterface.Bosses.SUPREMENEX26.getNpcId(), new Item[]{new Item(20488,1), new Item(8788,1)});
-            REWARDS.put(TeleportInterface.Bosses.SUPREMENEX27.getNpcId(), new Item[]{new Item(20488,1), new Item(21816,5)});
-            REWARDS.put(TeleportInterface.Bosses.SUPREMENEX28.getNpcId(), new Item[]{new Item(13019,1), new Item(8788,1)});
-            REWARDS.put(TeleportInterface.Bosses.SUPREMENEX29.getNpcId(), new Item[]{new Item(20488,1), new Item(21814,5)});
-            REWARDS.put(TeleportInterface.Bosses.SUPREMENEX30.getNpcId(), new Item[]{new Item(3578,1), new Item(8788,1)});
-            REWARDS.put(TeleportInterface.Bosses.SUPREMENEX31.getNpcId(), new Item[]{new Item(20488,1), new Item(21814,5)});
-            REWARDS.put(TeleportInterface.Bosses.SUPREMENEX32.getNpcId(), new Item[]{new Item(20488,1), new Item(8788,1)});
-            REWARDS.put(TeleportInterface.Bosses.SUPREMENEX33.getNpcId(), new Item[]{new Item(13019,1), new Item(21814,5)});
-            REWARDS.put(TeleportInterface.Bosses.SUPREMENEX34.getNpcId(), new Item[]{new Item(20488,1), new Item(8788,1)});
-            REWARDS.put(TeleportInterface.Bosses.SUPREMENEX35.getNpcId(), new Item[]{new Item(20488,1), new Item(21815,5)});
-            REWARDS.put(TeleportInterface.Bosses.SUPREMENEX36.getNpcId(), new Item[]{new Item(20488,1), new Item(8788,1)});
-            REWARDS.put(TeleportInterface.Bosses.SUPREMENEX37.getNpcId(), new Item[]{new Item(20491,1), new Item(20488,1)});
-            REWARDS.put(TeleportInterface.Bosses.SUPREMENEX38.getNpcId(), new Item[]{new Item(20488,1), new Item(8788,1)});
-            REWARDS.put(TeleportInterface.Bosses.SUPREMENEX39.getNpcId(), new Item[]{new Item(13019,1), new Item(3578,1)});
-            REWARDS.put(TeleportInterface.Bosses.SUPREMENEX40.getNpcId(), new Item[]{new Item(20491,1), new Item(13650,1000)});
-            REWARDS.put(TeleportInterface.Bosses.SUPREMENEX41.getNpcId(), new Item[]{new Item(20491,1), new Item(13650,1000)});
-            REWARDS.put(TeleportInterface.Bosses.SUPREMENEX42.getNpcId(), new Item[]{new Item(20491,1), new Item(13650,5000)});
-            REWARDS.put(595, new Item[]{new Item(20491,1), new Item(13650,5000)});
-            REWARDS.put(440, new Item[]{new Item(20491,1), new Item(13650,5000)});
-            REWARDS.put(438, new Item[]{new Item(20491,1), new Item(13650,5000)});
-            //GLOBALS
-            REWARDS.put(TeleportInterface.Bosses.VEIGAR.getNpcId(), new Item[]{new Item(20490,1), new Item(23059,1)});
-            REWARDS.put(TeleportInterface.Bosses.NINETAILS.getNpcId(), new Item[]{new Item(20490,1), new Item(23059,1)});
-            REWARDS.put(TeleportInterface.Bosses.MERUEM.getNpcId(), new Item[]{new Item(20490,1), new Item(23059,1)});
-            REWARDS.put(TeleportInterface.Bosses.GOLDEN.getNpcId(), new Item[]{new Item(20490,1), new Item(23059,1)});
+            REWARDS.put(9837, new Item[]{new Item(990,1000), new Item(23200,5)});
+//            REWARDS.put(TeleportInterface.Bosses.ETERNAL_DRAGON.getNpcId(), new Item[]{new Item(2736,3), new Item(10835,10000)});
+//            REWARDS.put(TeleportInterface.Bosses.SCARLET_FALCON.getNpcId(), new Item[]{new Item(2736,3), new Item(10835,10000)});
+//            REWARDS.put(TeleportInterface.Bosses.CRYSTAL_QUEEN.getNpcId(), new Item[]{new Item(2736,3), new Item(10835,10000)});
+//            REWARDS.put(TeleportInterface.Bosses.LUCIFER.getNpcId(),  new Item[]{new Item(19886,1), new Item(10835,10000)});
+//            REWARDS.put(TeleportInterface.Bosses.MEGA_AVATAR.getNpcId(), new Item[]{new Item(2736,3), new Item(10835,10000)});
+//            REWARDS.put(TeleportInterface.Bosses.CRAZY_WITCH.getNpcId(), new Item[]{new Item(2736,3), new Item(15584,1)});
+//            REWARDS.put(TeleportInterface.Bosses.LIGHT_SUPREME.getNpcId(), new Item[]{new Item(2736,3), new Item(10835,10000)});
+//            REWARDS.put(TeleportInterface.Bosses.DARK_SUPREME.getNpcId(), new Item[]{new Item(2736,3), new Item(10835,10000)});
+//            REWARDS.put(TeleportInterface.Bosses.FRACTITE_DEMON.getNpcId(), new Item[]{new Item(2736,3), new Item(10835,10000)});
+//            REWARDS.put(TeleportInterface.Bosses.INFERNAL_DEMON.getNpcId(), new Item[]{new Item(2736,3), new Item(10835,10000)});
+//            REWARDS.put(TeleportInterface.Bosses.PERFECT_CELL.getNpcId(), new Item[]{new Item(2736,3), new Item(10835,10000)});
+//            REWARDS.put(TeleportInterface.Bosses.SUPER_BUU.getNpcId(), new Item[]{new Item(10946,3), new Item(21815,2)});
+//            REWARDS.put(TeleportInterface.Bosses.FRIEZA.getNpcId(), new Item[]{new Item(10946,3), new Item(21815,2)});
+//            REWARDS.put(TeleportInterface.Bosses.GOKU.getNpcId(), new Item[]{new Item(10946,3), new Item(21815,2)});
+//            REWARDS.put(TeleportInterface.Bosses.GROUDON.getNpcId(), new Item[]{new Item(10946,3), new Item(21815,2)});
+//            REWARDS.put(TeleportInterface.Bosses.EZKEL.getNpcId(), new Item[]{new Item(10946,3), new Item(21815,2)});
+//            REWARDS.put(TeleportInterface.Bosses.SUPREMENEX.getNpcId(), new Item[]{new Item(10946,5), new Item(21815,5)});
+//            REWARDS.put(TeleportInterface.Bosses.EXTRA1.getNpcId(), new Item[]{new Item(2736,5), new Item(15585,1)});
+//            REWARDS.put(TeleportInterface.Bosses.SUPREMENEX2.getNpcId(), new Item[]{new Item(20488,1), new Item(10835,20000)});
+//            REWARDS.put(TeleportInterface.Bosses.SUPREMENEX3.getNpcId(), new Item[]{new Item(20488,1), new Item(10835,20000)});
+//            REWARDS.put(TeleportInterface.Bosses.SUPREMENEX4.getNpcId(), new Item[]{new Item(10946,5), new Item(21814,5)});
+//            REWARDS.put(TeleportInterface.Bosses.SUPREMENEX5.getNpcId(), new Item[]{new Item(10946,5), new Item(21815,5)});
+//            REWARDS.put(TeleportInterface.Bosses.SUPREMENEX6.getNpcId(), new Item[]{new Item(10946,5), new Item(21816,5)});
+//            REWARDS.put(TeleportInterface.Bosses.SUPREMENEX7.getNpcId(), new Item[]{new Item(10946,5), new Item(21814,5)});
+//            REWARDS.put(TeleportInterface.Bosses.SUPREMENEX8.getNpcId(), new Item[]{new Item(10946,5), new Item(21815,5)});
+//            REWARDS.put(TeleportInterface.Bosses.SUPREMENEX9.getNpcId(), new Item[]{new Item(10946,5), new Item(21816,5)});
+//            //BOSSES
+//            REWARDS.put(TeleportInterface.Bosses.SUPREMENEX10.getNpcId(), new Item[]{new Item(15003,1), new Item(15586,1)});
+//            REWARDS.put(TeleportInterface.Bosses.SUPREMENEX11.getNpcId(), new Item[]{new Item(20488,1), new Item(15589,1)});
+//            REWARDS.put(TeleportInterface.Bosses.SUPREMENEX12.getNpcId(), new Item[]{new Item(20488,1), new Item(10946,5)});
+//            REWARDS.put(TeleportInterface.Bosses.SUPREMENEX13.getNpcId(), new Item[]{new Item(2736,10), new Item(21816,15)});
+//            REWARDS.put(TeleportInterface.Bosses.SUPREMENEX14.getNpcId(), new Item[]{new Item(15003,1), new Item(15587,1)});
+//            REWARDS.put(TeleportInterface.Bosses.SUPREMENEX15.getNpcId(), new Item[]{new Item(20488,1), new Item(15588,1)});
+//
+//            REWARDS.put(TeleportInterface.Bosses.SUPREMENEX16.getNpcId(), new Item[]{new Item(20488,1), new Item(21815,5)});
+//            REWARDS.put(TeleportInterface.Bosses.SUPREMENEX17.getNpcId(), new Item[]{new Item(20488,1), new Item(21814,5)});
+//            REWARDS.put(TeleportInterface.Bosses.SUPREMENEX18.getNpcId(), new Item[]{new Item(20488,1), new Item(21816,5)});
+//            REWARDS.put(TeleportInterface.Bosses.SUPREMENEX19.getNpcId(), new Item[]{new Item(15004,1), new Item(3578,1)});
+//            REWARDS.put(TeleportInterface.Bosses.SUPREMENEX20.getNpcId(), new Item[]{new Item(20488,1), new Item(8788,1)});
+//            REWARDS.put(TeleportInterface.Bosses.SUPREMENEX21.getNpcId(), new Item[]{new Item(3578,1), new Item(8788,1)});
+//            REWARDS.put(TeleportInterface.Bosses.SUPREMENEX22.getNpcId(), new Item[]{new Item(20488,1), new Item(8788,1)});
+//            REWARDS.put(TeleportInterface.Bosses.SUPREMENEX23.getNpcId(), new Item[]{new Item(20488,1), new Item(21815,5)});
+//            REWARDS.put(TeleportInterface.Bosses.SUPREMENEX24.getNpcId(), new Item[]{new Item(20488,1), new Item(21815,5)});
+//            REWARDS.put(TeleportInterface.Bosses.SUPREMENEX25.getNpcId(), new Item[]{new Item(3578,1), new Item(21815,5)});
+//            REWARDS.put(TeleportInterface.Bosses.SUPREMENEX26.getNpcId(), new Item[]{new Item(20488,1), new Item(8788,1)});
+//            REWARDS.put(TeleportInterface.Bosses.SUPREMENEX27.getNpcId(), new Item[]{new Item(20488,1), new Item(21816,5)});
+//            REWARDS.put(TeleportInterface.Bosses.SUPREMENEX28.getNpcId(), new Item[]{new Item(13019,1), new Item(8788,1)});
+//            REWARDS.put(TeleportInterface.Bosses.SUPREMENEX29.getNpcId(), new Item[]{new Item(20488,1), new Item(21814,5)});
+//            REWARDS.put(TeleportInterface.Bosses.SUPREMENEX30.getNpcId(), new Item[]{new Item(3578,1), new Item(8788,1)});
+//            REWARDS.put(TeleportInterface.Bosses.SUPREMENEX31.getNpcId(), new Item[]{new Item(20488,1), new Item(21814,5)});
+//            REWARDS.put(TeleportInterface.Bosses.SUPREMENEX32.getNpcId(), new Item[]{new Item(20488,1), new Item(8788,1)});
+//            REWARDS.put(TeleportInterface.Bosses.SUPREMENEX33.getNpcId(), new Item[]{new Item(13019,1), new Item(21814,5)});
+//            REWARDS.put(TeleportInterface.Bosses.SUPREMENEX34.getNpcId(), new Item[]{new Item(20488,1), new Item(8788,1)});
+//            REWARDS.put(TeleportInterface.Bosses.SUPREMENEX35.getNpcId(), new Item[]{new Item(20488,1), new Item(21815,5)});
+//            REWARDS.put(TeleportInterface.Bosses.SUPREMENEX36.getNpcId(), new Item[]{new Item(20488,1), new Item(8788,1)});
+//            REWARDS.put(TeleportInterface.Bosses.SUPREMENEX37.getNpcId(), new Item[]{new Item(20491,1), new Item(20488,1)});
+//            REWARDS.put(TeleportInterface.Bosses.SUPREMENEX38.getNpcId(), new Item[]{new Item(20488,1), new Item(8788,1)});
+//            REWARDS.put(TeleportInterface.Bosses.SUPREMENEX39.getNpcId(), new Item[]{new Item(13019,1), new Item(3578,1)});
+//            REWARDS.put(TeleportInterface.Bosses.SUPREMENEX40.getNpcId(), new Item[]{new Item(20491,1), new Item(13650,1000)});
+//            REWARDS.put(TeleportInterface.Bosses.SUPREMENEX41.getNpcId(), new Item[]{new Item(20491,1), new Item(13650,1000)});
+//            REWARDS.put(TeleportInterface.Bosses.SUPREMENEX42.getNpcId(), new Item[]{new Item(20491,1), new Item(13650,5000)});
+//            REWARDS.put(595, new Item[]{new Item(20491,1), new Item(13650,5000)});
+//            REWARDS.put(440, new Item[]{new Item(20491,1), new Item(13650,5000)});
+//            REWARDS.put(438, new Item[]{new Item(20491,1), new Item(13650,5000)});
+//            //GLOBALS
+//            REWARDS.put(TeleportInterface.Bosses.VEIGAR.getNpcId(), new Item[]{new Item(20490,1), new Item(23059,1)});
+//            REWARDS.put(TeleportInterface.Bosses.NINETAILS.getNpcId(), new Item[]{new Item(20490,1), new Item(23059,1)});
+//            REWARDS.put(TeleportInterface.Bosses.MERUEM.getNpcId(), new Item[]{new Item(20490,1), new Item(23059,1)});
+//            REWARDS.put(TeleportInterface.Bosses.GOLDEN.getNpcId(), new Item[]{new Item(20490,1), new Item(23059,1)});
         }
     }
 

@@ -61,11 +61,11 @@ public class TrackInterface {
                                     if(tasks.getNpc() == -1) {
 
                                     } else {
-                                        StarterTasks kill = StarterTasks.byKills(tasks.getNpc());
+                                        StarterTasks kill = StarterTasks.byNPC(tasks.getNpc());
                                         if(kill == null) {
                                             player.getPacketSender().sendString(161047, "Kills : @red@ERROR");
                                         } else {
-                                            player.getPacketSender().sendString(161047, "Kills : "+ KillsTracker.getTotalKillsForNpc(kill.getNpc(), player)+"/"+kill.getCount());
+                                            player.getPacketSender().sendString(161047, "Kills : "+ KillsTracker.getTotalKillsForNpc(tasks.getNpc(), player)+"/"+tasks.getCount());
                                         }
                                     }
                                 }

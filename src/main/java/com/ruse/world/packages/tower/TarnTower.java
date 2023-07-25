@@ -28,7 +28,11 @@ public class TarnTower {
             return;
         }
 
-        TowerProgress progress = new TowerProgress(player);
+        if(!canEnter(player)){
+            return;
+        }
+
+        TowerProgress progress = player.getTower();
 
         TowerLevel level = new TowerLevel(Objects.requireNonNull(TowerLocations.get(progress.getTier())).getLocation());
 
@@ -39,5 +43,14 @@ public class TarnTower {
     public static boolean canEnter(Player player){
 
         return true;
+    }
+
+    public static void leave(Player player){
+        if(player.getInstance() != null) {
+            player.getInstance().destroy();
+            player.setInstance(null);
+            player.setInstanceId("");
+            remove(player);
+        }
     }
 }
