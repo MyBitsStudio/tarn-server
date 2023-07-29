@@ -653,7 +653,7 @@ public class Player extends Character {
     private Inventory inventory = new Inventory(this);
     private Equipment equipment = new Equipment(this);
     private Equipment preSetEquipment = new Equipment(this);
-    private Equipment secondaryEquipment = new Equipment(this);
+    private final Equipment secondaryEquipment = new Equipment(this);
     private boolean isSecondary;
     private DungeoneeringIronInventory dungeoneeringIronInventory = new DungeoneeringIronInventory(this);
     private DungeoneeringIronEquipment dungeoneeringIronEquipment = new DungeoneeringIronEquipment(this);

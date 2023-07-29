@@ -50,6 +50,11 @@ public class ItemContainerActionPacketListener implements PacketListener {
 		if (player.getRank().isDeveloper()) {
 			player.getPacketSender().sendMessage("firstAction itemContainer. IF: " + interfaceId + " slot: " + slot + ", id: " + id);
 		}
+
+		if(player.getEquipment().handleContainer(slot, 1, id)){
+			return;
+		}
+
 		switch (interfaceId) {
 			case TradingPost.ITEM_CONTAINER_ID:
 				player.getPacketSender().sendMessage(TradingPost.getAverageValue(item));
@@ -139,58 +144,60 @@ public class ItemContainerActionPacketListener implements PacketListener {
 					return;
 				}
 				break;
-			case Equipment.INVENTORY_INTERFACE_ID:
-				Equipment equipment;
-				if(player.isSecondaryEquipment()) {
-					equipment = player.getSecondaryEquipment();
-				} else {
-					equipment = player.getEquipment();
-				}
-				item = slot < 0 ? null : equipment.getItems()[slot];
-				item = new Item(item.getId(), item.getAmount());
-				if (item == null || item.getId() != id)
-					return;
-				if (player.getLocation() == Location.DUEL_ARENA) {
-					if (player.getDueling().selectedDuelRules[DuelRule.LOCK_WEAPON.ordinal()]) {
-						if (item.getDefinition().getEquipmentSlot() == Equipment.WEAPON_SLOT
-								|| item.getDefinition().isTwoHanded()) {
-							player.getPacketSender().sendMessage("Weapons have been locked during this duel!");
-							return;
-						}
-					}
-				}
-				boolean stackItem = item.getDefinition().isStackable() && player.getInventory().getAmount(item.getId()) > 0;
-				int inventorySlot = player.getInventory().getEmptySlot();
-				if (inventorySlot == -1) {
-					player.getInventory().full();
-				} else {
-					Item itemReplacement = new Item(-1, 0);
-					equipment.setItem(slot, itemReplacement);
-					if (!stackItem)
-						player.getInventory().setItem(inventorySlot, item);
-					else
-						player.getInventory().add(item.getId(), item.getAmount());
-					BonusManager.update(player);
-					if (item.getDefinition().getEquipmentSlot() == Equipment.WEAPON_SLOT) {
-						WeaponInterfaces.assign(player, player.getEquipment().get(Equipment.WEAPON_SLOT));
-						WeaponAnimations.update(player);
-						if (player.getAutocastSpell() != null || player.isAutocast()) {
-							Autocasting.resetAutocast(player, true);
-							player.getPacketSender().sendMessage("Autocast spell cleared.");
-						}
-						player.setSpecialActivated(false);
-						CombatSpecial.updateBar(player);
-						if (player.hasStaffOfLightEffect()) {
-							player.setStaffOfLightEffect(-1);
-							player.getPacketSender()
-									.sendMessage("You feel the spirit of the Staff of Light begin to fade away...");
-						}
-					}
-					equipment.refreshItems();
-					player.getInventory().refreshItems();
-					player.getUpdateFlag().flag(Flag.APPEARANCE);
-				}
-				break;
+//			case Equipment.INVENTORY_INTERFACE_ID:
+//				Equipment equipment;
+//				if(player.isSecondaryEquipment()) {
+//					equipment = player.getSecondaryEquipment();
+//				} else {
+//					equipment = player.getEquipment();
+//				}
+//				slot = player.getEquipment().convertSlotFromClient(slot);
+//				item = slot < 0 ? null : equipment.getItems()[slot];
+//				assert item != null;
+//				item = new Item(item.getId(), item.getAmount());
+//				if (item.getId() != id)
+//					return;
+//				if (player.getLocation() == Location.DUEL_ARENA) {
+//					if (player.getDueling().selectedDuelRules[DuelRule.LOCK_WEAPON.ordinal()]) {
+//						if (item.getDefinition().getEquipmentSlot() == Equipment.WEAPON_SLOT
+//								|| item.getDefinition().isTwoHanded()) {
+//							player.getPacketSender().sendMessage("Weapons have been locked during this duel!");
+//							return;
+//						}
+//					}
+//				}
+//				boolean stackItem = item.getDefinition().isStackable() && player.getInventory().getAmount(item.getId()) > 0;
+//				int inventorySlot = player.getInventory().getEmptySlot();
+//				if (inventorySlot == -1) {
+//					player.getInventory().full();
+//				} else {
+//					Item itemReplacement = new Item(-1, 0);
+//					equipment.setItem(slot, itemReplacement);
+//					if (!stackItem)
+//						player.getInventory().setItem(inventorySlot, item);
+//					else
+//						player.getInventory().add(item.getId(), item.getAmount());
+//					BonusManager.update(player);
+//					if (item.getDefinition().getEquipmentSlot() == Equipment.WEAPON_SLOT) {
+//						WeaponInterfaces.assign(player, player.getEquipment().get(Equipment.WEAPON_SLOT));
+//						WeaponAnimations.update(player);
+//						if (player.getAutocastSpell() != null || player.isAutocast()) {
+//							Autocasting.resetAutocast(player, true);
+//							player.getPacketSender().sendMessage("Autocast spell cleared.");
+//						}
+//						player.setSpecialActivated(false);
+//						CombatSpecial.updateBar(player);
+//						if (player.hasStaffOfLightEffect()) {
+//							player.setStaffOfLightEffect(-1);
+//							player.getPacketSender()
+//									.sendMessage("You feel the spirit of the Staff of Light begin to fade away...");
+//						}
+//					}
+//					equipment.refreshItems();
+//					player.getInventory().refreshItems();
+//					player.getUpdateFlag().flag(Flag.APPEARANCE);
+//				}
+//				break;
 			case Bank.INTERFACE_ID:
 				if (!player.isBanking() || player.getInterfaceId() != 5292)
 					break;
@@ -307,6 +314,9 @@ public class ItemContainerActionPacketListener implements PacketListener {
 		Item item = new Item(id, 1);
 		if (player.getRank().isDeveloper()) {
 			player.getPacketSender().sendMessage("secondAction itemContainer. IF: " + interfaceId + " slot: " + slot + ", id: " + id);
+		}
+		if(player.getEquipment().handleContainer(slot, 2, id)){
+			return;
 		}
 		switch (interfaceId) {
 			case TradingPost.ITEM_CONTAINER_ID -> player.getTradingPost().selectItemToAdd(item);
@@ -444,6 +454,9 @@ public class ItemContainerActionPacketListener implements PacketListener {
 			player.getPacketSender()
 					.sendMessage("thirdAction itemContainer. IF: " + interfaceId + " slot: " + slot + ", id: " + id);
 		}
+		if(player.getEquipment().handleContainer(slot, 3, id)){
+			return;
+		}
 		switch (interfaceId) {
 			case TradingPost.ITEM_CONTAINER_ID:
 				player.getTradingPost().selectItemToAdd(item1.setAmount(5));
@@ -467,133 +480,99 @@ public class ItemContainerActionPacketListener implements PacketListener {
 				player.sendMessage("@red@ POS Adding is disabled. Please withdraw your items.");
 				//player.getPlayerOwnedShopManager().handleStore(slot, id, 10);
 				break;
-			case Equipment.INVENTORY_INTERFACE_ID:
-				if (!player.getEquipment().contains(id))
-					return;
-				if(id >= 23069 && id <= 23074) {
-					if(slot == 4) {
-						DialogueManager.start(player, new YesNoDialogue(player, "Would you like to teleport to your slayer task", "for the price of 250k?", 668));
-					}
-				}
-
-				switch (id) {
-					case 2550:
-						int recoilcharges = (ItemDegrading.maxRecoilCharges - player.getRecoilCharges());
-						player.getPacketSender().sendMessage("You have " + recoilcharges + " recoil "
-								+ (recoilcharges == 1 ? "charge" : "charges") + " remaining.");
-						break;
-					case 2568:
-						int forgingcharges = (ItemDegrading.maxForgingCharges - player.getForgingCharges());
-						player.getPacketSender().sendMessage("You have " + forgingcharges + " forging "
-								+ (forgingcharges == 1 ? "charge" : "charges") + " remaining.");
-						break;
-					case 1712: // glory start
-					case 1710:
-					case 1708:
-					case 1706: // glory end
-					case 11118: // cb brace start
-					case 11120:
-					case 11122:
-					case 11124: // cb brace end
-					case 2552: // duel start
-					case 2554:
-					case 2556:
-					case 2558:
-					case 2560:
-					case 2562:
-					case 2564:
-					case 2566: // duel end
-					case 3853: // games start
-					case 3855:
-					case 3857:
-					case 3859:
-					case 3861:
-					case 3863:
-					case 3865:
-					case 3867: // games end
-					case 11194: // digsite start
-					case 11193:
-					case 11192:
-					case 11191:
-					case 11190: // digsite start
-						// String jewelName = JewelryTeleports.stripName(id);
-						// JewelryTeleports.handleDialogue(player, id,
-						// JewelryTeleports.jewelIndex(jewelName));
-						player.getPacketSender().sendMessage("You cannot operate this item while wearing it.");
-						break;
-					case 10362:
-						JewelryTeleporting.rub(player, id);
-						break;
-					// case 13738:
-					case 13740:
-					case 13742:
-						// case 13744:
-						if (player.isSpiritDebug()) {
-							player.getPacketSender()
-									.sendMessage("You toggle your Spirit Shield to not display specific messages.");
-							player.setSpiritDebug(false);
-						} else if (player.isSpiritDebug() == false) {
-							player.getPacketSender().sendMessage("You toggle your Spirit Shield to display specific messages.");
-							player.setSpiritDebug(true);
-						}
-						break;
-					case 4566:
-						player.performAnimation(new Animation(451));
-						break;
-					case 1704:
-						player.getPacketSender().sendMessage("Your amulet has run out of charges.");
-						break;
-					case 11126:
-						player.getPacketSender().sendMessage("Your bracelet has run out of charges.");
-						break;
-					case 9759:
-					case 9760:
-						if (player.getCombatBuilder().isAttacking() || player.getCombatBuilder().isBeingAttacked()) {
-							player.getPacketSender().sendMessage("You cannot configure this right now.");
-							return;
-						}
-						player.getPacketSender().sendInterfaceRemoval();
-						player.setBonecrushEffect(!player.getBonecrushEffect());
-						player.getPacketSender()
-								.sendMessage("<img=5> You have " + (player.getBonecrushEffect() ? "activated" : "disabled")
-										+ " your cape's Bonecrusher effect.");
-						break;
-					case 18508:
-					case 18509:
-						if (player.getCombatBuilder().isAttacking() || player.getCombatBuilder().isBeingAttacked()) {
-							player.getPacketSender().sendMessage("You cannot configure this right now.");
-							return;
-						}
-						player.getPacketSender().sendInterfaceRemoval();
-						DialogueManager.start(player, 101);
-						player.setDialogueActionId(60);
-						break;
-					case 22052:
-					case 14019:
-					case 14022:
-					case 20081:
-						if (player.getCombatBuilder().isAttacking() || player.getCombatBuilder().isBeingAttacked()) {
-							player.getPacketSender().sendMessage("You cannot configure this right now.");
-							return;
-						}
-						player.getPacketSender().sendInterfaceRemoval();
-						DialogueManager.start(player, 202);
-						player.setDialogueActionId(202);
-						break;
-					case 11283:
-						if (player.getDfsCharges() > 0) {
-							if (player.getCombatBuilder().isAttacking()) {
-								CombatFactory.handleDragonFireShield(player, player.getCombatBuilder().getVictim());
-							} else {
-								player.getPacketSender().sendMessage("You can only use this in combat.");
-							}
-						} else {
-							player.getPacketSender().sendMessage("Your shield doesn't have enough power yet. It has "
-									+ player.getDfsCharges() + "/20 dragon-fire charges.");
-						}
-						break;
-				}
-				break;
+//			case Equipment.INVENTORY_INTERFACE_ID:
+//				if (!player.getEquipment().contains(id))
+//					return;
+//				if(id >= 23069 && id <= 23074) {
+//					if(slot == 4) {
+//						DialogueManager.start(player, new YesNoDialogue(player, "Would you like to teleport to your slayer task", "for the price of 250k?", 668));
+//					}
+//				}
+//
+//				switch (id) {
+//					case 2550 -> {
+//						int recoilcharges = (ItemDegrading.maxRecoilCharges - player.getRecoilCharges());
+//						player.getPacketSender().sendMessage("You have " + recoilcharges + " recoil "
+//								+ (recoilcharges == 1 ? "charge" : "charges") + " remaining.");
+//					}
+//					case 2568 -> {
+//						int forgingcharges = (ItemDegrading.maxForgingCharges - player.getForgingCharges());
+//						player.getPacketSender().sendMessage("You have " + forgingcharges + " forging "
+//								+ (forgingcharges == 1 ? "charge" : "charges") + " remaining.");
+//					} // glory start
+//					// glory end
+//					// cb brace start
+//					// cb brace end
+//					// duel start
+//					// duel end
+//					// games start
+//					// games end
+//					// digsite start
+//					case 1712, 1710, 1708, 1706, 11118, 11120, 11122, 11124, 2552, 2554, 2556, 2558, 2560, 2562, 2564, 2566, 3853, 3855, 3857, 3859, 3861, 3863, 3865, 3867, 11194, 11193, 11192, 11191, 11190 -> // digsite start
+//						// String jewelName = JewelryTeleports.stripName(id);
+//						// JewelryTeleports.handleDialogue(player, id,
+//						// JewelryTeleports.jewelIndex(jewelName));
+//							player.getPacketSender().sendMessage("You cannot operate this item while wearing it.");
+//					case 10362 -> JewelryTeleporting.rub(player, id);
+//
+//					// case 13738:
+//					case 13740, 13742 -> {
+//						// case 13744:
+//						if (player.isSpiritDebug()) {
+//							player.getPacketSender()
+//									.sendMessage("You toggle your Spirit Shield to not display specific messages.");
+//							player.setSpiritDebug(false);
+//						} else if (player.isSpiritDebug() == false) {
+//							player.getPacketSender().sendMessage("You toggle your Spirit Shield to display specific messages.");
+//							player.setSpiritDebug(true);
+//						}
+//					}
+//					case 4566 -> player.performAnimation(new Animation(451));
+//					case 1704 -> player.getPacketSender().sendMessage("Your amulet has run out of charges.");
+//					case 11126 -> player.getPacketSender().sendMessage("Your bracelet has run out of charges.");
+//					case 9759, 9760 -> {
+//						if (player.getCombatBuilder().isAttacking() || player.getCombatBuilder().isBeingAttacked()) {
+//							player.getPacketSender().sendMessage("You cannot configure this right now.");
+//							return;
+//						}
+//						player.getPacketSender().sendInterfaceRemoval();
+//						player.setBonecrushEffect(!player.getBonecrushEffect());
+//						player.getPacketSender()
+//								.sendMessage("<img=5> You have " + (player.getBonecrushEffect() ? "activated" : "disabled")
+//										+ " your cape's Bonecrusher effect.");
+//					}
+//					case 18508, 18509 -> {
+//						if (player.getCombatBuilder().isAttacking() || player.getCombatBuilder().isBeingAttacked()) {
+//							player.getPacketSender().sendMessage("You cannot configure this right now.");
+//							return;
+//						}
+//						player.getPacketSender().sendInterfaceRemoval();
+//						DialogueManager.start(player, 101);
+//						player.setDialogueActionId(60);
+//					}
+//					case 22052, 14019, 14022, 20081 -> {
+//						if (player.getCombatBuilder().isAttacking() || player.getCombatBuilder().isBeingAttacked()) {
+//							player.getPacketSender().sendMessage("You cannot configure this right now.");
+//							return;
+//						}
+//						player.getPacketSender().sendInterfaceRemoval();
+//						DialogueManager.start(player, 202);
+//						player.setDialogueActionId(202);
+//					}
+//					case 11283 -> {
+//						if (player.getDfsCharges() > 0) {
+//							if (player.getCombatBuilder().isAttacking()) {
+//								CombatFactory.handleDragonFireShield(player, player.getCombatBuilder().getVictim());
+//							} else {
+//								player.getPacketSender().sendMessage("You can only use this in combat.");
+//							}
+//						} else {
+//							player.getPacketSender().sendMessage("Your shield doesn't have enough power yet. It has "
+//									+ player.getDfsCharges() + "/20 dragon-fire charges.");
+//						}
+//					}
+//				}
+//				break;
 			case Trading.INTERFACE_ID:
 				if (player.getTrading().inTrade()) {
 					player.getTrading().tradeItem(id, 10, slot);
@@ -725,6 +704,9 @@ public class ItemContainerActionPacketListener implements PacketListener {
 		if (player.getRank().isDeveloper()) {
 			player.getPacketSender()
 					.sendMessage("fourthAction itemContainer. IF: " + interfaceId + " slot: " + slot + ", id: " + id);
+		}
+		if(player.getEquipment().handleContainer(slot, 4, id)){
+			return;
 		}
 		switch (interfaceId) {
 			case TradingPost.ITEM_CONTAINER_ID:
@@ -907,6 +889,9 @@ public class ItemContainerActionPacketListener implements PacketListener {
 		if (player.getRank().isDeveloper()) {
 			player.getPacketSender().sendMessage("fifthAction itemContainer. IF: " + interfaceId + " slot: " + slot + ", id: " + id);
 		}
+		if(player.getEquipment().handleContainer(slot, 5, id)){
+			return;
+		}
 		switch (interfaceId) {
 			case TradingPost.ITEM_CONTAINER_ID -> player.getPacketSender().sendMessage("X value here");
 			case 31510 -> player.getEventBossManager().removeNpcDropReward(id, player.getInventory().getAmount(id));
@@ -1059,10 +1044,12 @@ public class ItemContainerActionPacketListener implements PacketListener {
 		if (player.getRank().isDeveloper()) {
 			player.getPacketSender().sendMessage("sixthAction itemContainer. IF: " + interfaceId + " slot: " + slot + ", id: " + id);
 		}
+		if(player.getEquipment().handleContainer(slot, 6, id)){
+			return;
+		}
 		if (interfaceId == Shop.INVENTORY_INTERFACE_ID) {
 			if (player.isShopping()) {
 				player.getShop().sellItem(player, slot, player.getInventory().getAmount(id));
-				return;
 			}
 		}
 	}

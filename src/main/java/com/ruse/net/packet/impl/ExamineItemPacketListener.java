@@ -21,16 +21,17 @@ public class ExamineItemPacketListener implements PacketListener {
 		ItemDefinition itemDef = ItemDefinition.forId(item);
 		if(itemDef != null) {
 			player.getPacketSender().sendMessage("This is a @red@" + itemDef.getName() + "@bla@.");
-
-			for (Skill skill : Skill.values()) {
-				if (itemDef.getRequirement()[skill.ordinal()] > player.getSkillManager().getMaxLevel(skill)) {
-					player.getPacketSender().sendMessage("@red@WARNING: You need " + (skill.getName().startsWith("a")
-							|| skill.getName().startsWith("e")
-							|| skill.getName().startsWith("i")
-							|| skill.getName().startsWith("o")
-							|| skill.getName().startsWith("u") ? "an " : "a ")
-							+ Misc.formatText(skill.getName()) + " level of at least "
-							+ itemDef.getRequirement()[skill.ordinal()] + " to wear this.");
+			if(itemDef.getRequirement() != null){
+				for (Skill skill : Skill.values()) {
+					if (itemDef.getRequirement()[skill.ordinal()] > player.getSkillManager().getMaxLevel(skill)) {
+						player.getPacketSender().sendMessage("@red@WARNING: You need " + (skill.getName().startsWith("a")
+								|| skill.getName().startsWith("e")
+								|| skill.getName().startsWith("i")
+								|| skill.getName().startsWith("o")
+								|| skill.getName().startsWith("u") ? "an " : "a ")
+								+ Misc.formatText(skill.getName()) + " level of at least "
+								+ itemDef.getRequirement()[skill.ordinal()] + " to wear this.");
+					}
 				}
 			}
 		}

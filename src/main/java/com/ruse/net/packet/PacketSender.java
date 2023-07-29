@@ -636,7 +636,7 @@ public class PacketSender {
         sendTabInterface(GameSettings.QUESTS_TAB, 111000);
         sendTabInterface(GameSettings.ACHIEVEMENT_TAB, 73000);//46343
         sendTabInterface(GameSettings.INVENTORY_TAB, 3213);
-        sendTabInterface(GameSettings.EQUIPMENT_TAB, 15000);
+        sendTabInterface(GameSettings.EQUIPMENT_TAB, 162600);
         sendTabInterface(GameSettings.MAGIC_TAB, player.getSpellbook().getInterfaceId());
         sendTabInterface(GameSettings.PRAYER_TAB, player.getPrayerbook().getInterfaceId());
         // Row 2
@@ -923,6 +923,19 @@ public class PacketSender {
             out.put(i);
             out.putShort(player.getEquipment().getItems()[i].getId() + 1);
             out.put(255);
+            out.putInt(player.getEquipment().getItems()[i].getAmount());
+            out.put(player.getEquipment().getSlotBonuses()[i].getEffect().getRarity().ordinal());
+            out.put(player.getEquipment().getSlotBonuses()[i].getBonus());
+            player.getSession().queueMessage(out);
+        }
+        return this;
+    }
+
+    public PacketSender sendEquipment() {
+        for (int i = 0; i < player.getEquipment().getItems().length; i++) {
+            PacketBuilder out = new PacketBuilder(184, PacketType.SHORT);
+            out.put(i);
+            out.putShort(player.getEquipment().getItems()[i].getId() + 1);
             out.putInt(player.getEquipment().getItems()[i].getAmount());
             out.put(player.getEquipment().getSlotBonuses()[i].getEffect().getRarity().ordinal());
             out.put(player.getEquipment().getSlotBonuses()[i].getBonus());

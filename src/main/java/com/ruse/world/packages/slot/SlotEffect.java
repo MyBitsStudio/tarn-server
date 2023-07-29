@@ -13,13 +13,14 @@ public enum SlotEffect {
     DOUBLE_DROP(SlotRarity.RARE, 5, 20),
     DROP_RATE_MED(SlotRarity.RARE, 25, 50),
 
-
     MULTI_KILLS(SlotRarity.LEGENDARY, 1, 3),
     DOUBLE_CASH(SlotRarity.LEGENDARY),
     ALL_DAMAGE(SlotRarity.LEGENDARY, 1, 3),
 
     AOE_EFFECT(SlotRarity.MYTHICAL, 1, 4),
     DROP_RATE_HIGH(SlotRarity.MYTHICAL, 50, 99),
+    TRIPLE_CASH(SlotRarity.MYTHICAL),
+    MULTI_SHOT(SlotRarity.MYTHICAL, 2, 3)
 
     ;
 

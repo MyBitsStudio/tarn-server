@@ -184,6 +184,10 @@ public class ButtonClickPacketListener implements PacketListener {
             return;
         }
 
+        if(player.getEquipment().handleClicks(id)){
+            return;
+        }
+
         if(InstanceManager.getManager().handleButton(player, id)) {
         	return;
         }
@@ -1541,29 +1545,7 @@ public class ButtonClickPacketListener implements PacketListener {
                 player.getPacketSender().sendMessage("Your experience is now " + type + ".");
                 PlayerPanel.refreshPanel(player);
                 break;
-            case 15005:
-                if(player.isSecondaryEquipment()) {
-                    player.setIsSecondaryEquipment(false);
-                    player.getEquipment().refreshItems();
-                    player.getPacketSender().sendSpriteChange(15005, 3304);
-                } else {
-                    player.setIsSecondaryEquipment(true);
-                    player.getSecondaryEquipment().refreshItems();
-                    player.getPacketSender().sendSpriteChange(15005, 3305);
-                }
-                break;
             case 27651:
-            case 15001:
-                if (player.getInterfaceId() == -1) {
-                    player.getSkillManager().stopSkilling();
-                    BonusManager.update(player);
-                    player.getPacketSender().sendInterface(21172);
-                } else
-                    player.getPacketSender().sendMessage("Please close the interface you have open before doing this.");
-                break;
-            case 15003:
-                player.getEquipmentEnhancement().openInterface();
-                break;
             case 2458: // Logout
                 if (player.logout()) {
                     World.removePlayer(player);
