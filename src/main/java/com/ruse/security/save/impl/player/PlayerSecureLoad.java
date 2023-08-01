@@ -33,6 +33,7 @@ import com.ruse.world.packages.mode.impl.*;
 import com.ruse.world.packages.ranks.DonatorRank;
 import com.ruse.world.packages.ranks.StaffRank;
 import com.ruse.world.packages.ranks.VIPRank;
+import com.ruse.world.packages.slot.SlotBonus;
 import com.ruse.world.packages.tracks.ProgressReward;
 import com.ruse.world.packages.tracks.impl.starter.StarterTasks;
 import com.ruse.world.packages.vip.Donation;
@@ -1239,6 +1240,16 @@ public class PlayerSecureLoad extends SecureLoad {
             player.getStarter().getRewards().setRewards(builder.fromJson(object.get("starterRewards"),
                     new TypeToken<List<ProgressReward>>() {
                     }.getType()));
+        }
+
+        if (object.has("equip-slot")) {
+            player.getEquipment()
+                    .setSlots(builder.fromJson(object.get("equip-slot").getAsJsonArray(), SlotBonus[].class));
+        }
+
+        if (object.has("second-slot")) {
+            player.getSecondaryEquipment()
+                    .setSlots(builder.fromJson(object.get("second-slot").getAsJsonArray(), SlotBonus[].class));
         }
 
 

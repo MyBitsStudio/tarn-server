@@ -3,7 +3,6 @@ package com.ruse.world.content;
 import com.ruse.model.*;
 import com.ruse.model.movement.MovementQueue;
 import com.ruse.util.Misc;
-import com.ruse.world.content.dialogue.DialogueManager;
 import com.ruse.world.entity.impl.npc.NPC;
 import com.ruse.world.entity.impl.player.Player;
 
@@ -118,7 +117,7 @@ public class Gambling {
 		player.getMovementQueue().reset();
 		player.setDialogueActionId(42);
 		player.setInteractingObject(flower);
-		DialogueManager.start(player, 78);
+		//DialogueManager.start(player, 78);
 		MovementQueue.stepAway(player);
 		CustomObjects.globalObjectRemovalTask(flower, 90);
 		player.setPositionToFace(flower.getPosition());

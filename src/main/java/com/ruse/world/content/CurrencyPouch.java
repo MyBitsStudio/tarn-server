@@ -3,7 +3,6 @@ package com.ruse.world.content;
 import com.ruse.model.Item;
 import com.ruse.model.definitions.ItemDefinition;
 import com.ruse.util.Misc;
-import com.ruse.world.content.dialogue.DialogueManager;
 import com.ruse.world.entity.impl.player.Player;
 
 import static com.ruse.world.content.skill.impl.summoning.CharmingImp.*;
@@ -72,7 +71,7 @@ public class CurrencyPouch {
 
     public static void withdrawCurrency(Player player, int type, int amount) {
         if (amount <= 0) {
-            DialogueManager.sendStatement(player, "You can not withdraw an invalid amount!");
+            //DialogueManager.sendStatement(player, "You can not withdraw an invalid amount!");
             return;
         }
 
@@ -381,17 +380,17 @@ public class CurrencyPouch {
                 break;
         }
         if (insufficientFundsError) {
-            DialogueManager.sendStatement(player, "You do not have this much to withdraw!");
+            //DialogueManager.sendStatement(player, "You do not have this much to withdraw!");
             return;
         }
         if (emptyFundsError) {
-            DialogueManager.sendStatement(player, "You do not have any of this currency!");
+            //DialogueManager.sendStatement(player, "You do not have any of this currency!");
         }
     }
 
     public static void depositCurrency(Player player, int type, int amount) {
         if (amount <= 0) {
-            DialogueManager.sendStatement(player, "You can not deposit an invalid amount!");
+            //DialogueManager.sendStatement(player, "You can not deposit an invalid amount!");
             return;
         }
 
@@ -435,7 +434,7 @@ public class CurrencyPouch {
                 throw new IllegalStateException("Unexpected value: " + type);
         }
         if (attemptDeposit(player, amount, insufficientFundsError, currency)) {
-            DialogueManager.sendStatement(player, "You do not have this much to withdraw!");
+            //DialogueManager.sendStatement(player, "You do not have this much to withdraw!");
         }
     }
 
@@ -497,7 +496,7 @@ public class CurrencyPouch {
         } else if (used.getId() == BLUE_CHARM) {
             depositCurrency(player, 10, used.getAmount());
         } else {
-            DialogueManager.sendStatement(player, "You can not use this currency on the pouch!");
+            //DialogueManager.sendStatement(player, "You can not use this currency on the pouch!");
         }
     }
 }

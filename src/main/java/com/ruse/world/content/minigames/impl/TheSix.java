@@ -11,7 +11,6 @@ import com.ruse.model.RegionInstance;
 import com.ruse.model.RegionInstance.RegionInstanceType;
 import com.ruse.util.Misc;
 import com.ruse.world.World;
-import com.ruse.world.content.dialogue.DialogueManager;
 import com.ruse.world.entity.impl.npc.NPC;
 import com.ruse.world.entity.impl.player.Player;
 

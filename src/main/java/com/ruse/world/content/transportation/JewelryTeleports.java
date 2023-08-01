@@ -2,7 +2,6 @@ package com.ruse.world.content.transportation;
 
 import com.ruse.model.Position;
 import com.ruse.model.definitions.ItemDefinition;
-import com.ruse.world.content.dialogue.DialogueManager;
 import com.ruse.world.entity.impl.player.Player;
 
 public enum JewelryTeleports {
@@ -65,8 +64,8 @@ public enum JewelryTeleports {
 				player.setSelectedSkillingItem(itemId);
 				player.setSelectedSkillingItemTwo(JewelryTeleports.values()[jeweleryIndex].getItemIdIndex(i + 1));
 				player.setStrippedJewelryName(stripName(itemId));
-				player.setDialogueActionId(JewelryTeleports.values()[jeweleryIndex].getDialogueActionId());
-				DialogueManager.start(player, JewelryTeleports.values()[jeweleryIndex].getDialogueId());
+				//player.setDialogueActionId(JewelryTeleports.values()[jeweleryIndex].getDialogueActionId());
+				//DialogueManager.start(player, JewelryTeleports.values()[jeweleryIndex].getDialogueId());
 				break;
 			}
 		}

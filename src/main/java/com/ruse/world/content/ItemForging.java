@@ -73,11 +73,11 @@ public class ItemForging {
      */
     @Getter
     private enum ItemForgeData {
-        MASTER_MAX_CAPE(new Item[]{new Item(23158), new Item(23159), new Item(23160)}, new Item(23176), new int[]{1, -1, 0}, true),
+        MASTER_MAX_CAPE(new Item[]{ },  new Item(1),new int[]{1, -1, 0}, true),
 
-        MAGIC_MAX_CAPE(new Item[]{new Item(23148), new Item(14019)}, new Item(23158), new int[]{1, -1, 0}, true),
-        MELEE_MAX_CAPE(new Item[]{new Item(23147), new Item(14019)}, new Item(23159), new int[]{1, -1, 0}, true),
-        RANGED_MAX_CAPE(new Item[]{new Item(23149), new Item(14019)}, new Item(23160), new int[]{1, -1, 0}, true),
+        MAGIC_MAX_CAPE(new Item[]{new Item(14019)}, new Item(1), new int[]{1, -1, 0}, true),
+        MELEE_MAX_CAPE(new Item[]{new Item(14019)}, new Item(1), new int[]{1, -1, 0}, true),
+        RANGED_MAX_CAPE(new Item[]{ new Item(14019)}, new Item(1), new int[]{1, -1, 0}, true),
 
      /*   BUNNY_HAT_GREEN(new Item[]{new Item(23013), new Item(23009)}, new Item(23014), new int[]{0, 0, 0}),
         BUNNY_HAT_GOLD(new Item[]{new Item(23013), new Item(23010)}, new Item(23015), new int[]{0, 0, 0}),

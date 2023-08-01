@@ -1,8 +1,8 @@
 package com.ruse.world.content.dailytasks_new;
 
 import com.ruse.util.Misc;
-import com.ruse.world.content.dialogue.DialogueManager;
 import com.ruse.world.entity.impl.player.Player;
+import com.ruse.world.packages.dialogue.DialogueManager;
 import lombok.val;
 
 import java.util.ArrayList;
@@ -33,7 +33,7 @@ public class DailyTasks {
                 checkTask(player);
                 return;
             }
-            DialogueManager.start(player, 9903);
+            DialogueManager.sendStatement(player, "You have completed all of your daily tasks for today.");
         } else if (tasks.isEmpty()) {
             assign(player, TaskChallengeTimespan.DAILY);
         } else {
@@ -128,10 +128,10 @@ public class DailyTasks {
                 player.dailiesCompleted = 0;
             }
         });
-        if (!removed.isEmpty()) {
-            removed.forEach(index -> dailies.remove(index.key));
+        if (removed.isEmpty()) {
+            DialogueManager.sendStatement(player, "You have no expired daily tasks.");
         } else {
-            DialogueManager.start(player, 9904);
+            removed.forEach(index -> dailies.remove(index.key));
         }
 
         removed.clear();

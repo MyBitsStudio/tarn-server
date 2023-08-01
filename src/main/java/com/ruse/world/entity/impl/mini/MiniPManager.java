@@ -15,7 +15,6 @@ import com.ruse.net.packet.impl.EquipPacketListener;
 import com.ruse.util.AccessPlayer;
 import com.ruse.world.World;
 import com.ruse.world.content.Consumables;
-import com.ruse.world.content.MemberScrolls;
 import com.ruse.world.content.skill.impl.prayer.BonesData;
 import com.ruse.world.entity.impl.player.Player;
 import com.ruse.world.entity.impl.player.PlayerHandler;
@@ -242,11 +241,11 @@ public class MiniPManager {
                         stop();
                         return;
                     }
-                    if(MemberScrolls.handleScroll(miniPlayer, item, false)) {
-                        result[0] = "Your mini players funds now sit at $" + miniPlayer.getAmountDonated();
-                        stop();
-                        return;
-                    }
+//                    if(MemberScrolls.handleScroll(miniPlayer, item, false)) {
+//                        result[0] = "Your mini players funds now sit at $" + miniPlayer.getAmountDonated();
+//                        stop();
+//                        return;
+//                    }
                     if(Consumables.isFood(miniPlayer, item, slot)) {
                         result[0] = "Your mini player has eaten it's meal.";
                         stop();

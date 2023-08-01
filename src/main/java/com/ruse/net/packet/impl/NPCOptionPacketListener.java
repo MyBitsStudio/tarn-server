@@ -17,7 +17,6 @@ import com.ruse.world.content.combat.magic.CombatSpell;
 import com.ruse.world.content.combat.magic.CombatSpells;
 import com.ruse.world.content.combat.weapon.CombatSpecial;
 import com.ruse.world.content.dailytasks_new.DailyTasks;
-import com.ruse.world.content.dialogue.DialogueManager;
 import com.ruse.world.content.dialogue.EnterLotteryTicketAmount;
 import com.ruse.world.content.grandLottery.GrandLottery;
 import com.ruse.world.content.grandexchange.GrandExchange;
@@ -35,8 +34,6 @@ import com.ruse.world.content.skill.impl.hunter.PuroPuro;
 import com.ruse.world.content.skill.impl.old_dungeoneering.Dungeoneering;
 import com.ruse.world.content.skill.impl.old_dungeoneering.UltimateIronmanHandler;
 import com.ruse.world.content.skill.impl.runecrafting.DesoSpan;
-import com.ruse.world.content.skill.impl.slayer.BossSlayerDialogues;
-import com.ruse.world.content.skill.impl.slayer.SlayerDialogues;
 import com.ruse.world.content.skill.impl.slayer.SlayerMaster;
 import com.ruse.world.content.skill.impl.slayer.SlayerTasks;
 import com.ruse.world.content.skill.impl.summoning.BossPets;
@@ -47,6 +44,7 @@ import com.ruse.world.content.skill.impl.thieving.PickpocketData;
 import com.ruse.world.content.transportation.TeleportHandler;
 import com.ruse.world.entity.impl.npc.NPC;
 import com.ruse.world.entity.impl.player.Player;
+import com.ruse.world.packages.dialogue.DialogueManager;
 import com.ruse.world.packages.mode.impl.GroupIronman;
 import com.ruse.world.packages.mode.impl.UltimateIronman;
 
@@ -96,47 +94,47 @@ public class NPCOptionPacketListener implements PacketListener {
                     ShopManager.getShops().get(210).open(player);
                     break;
                 case 3373:
-                    DialogueManager.start(player, 8005);
-                    player.setDialogueActionId(8005);
+//                    DialogueManager.start(player, 8005);
+//                    player.setDialogueActionId(8005);
                     break;
                 case 568:
-                    DialogueManager.start(player, 1311);
-                    player.setDialogueActionId(568);
+//                    DialogueManager.start(player, 1311);
+//                    player.setDialogueActionId(568);
                     break;
                 case 1208://GLOVES_NPC
                     break;
                 case 289: //DAILY TASK
-                    if (player.dailies.isEmpty()) {
-                        DialogueManager.start(player, 9901);
-                        player.setDialogueActionId(9905);
-                    } else {
-                        DailyTasks.sendProgress(player);
-                        player.getPacketSender().sendMessage(player.taskInfo);
-                    }
+//                    if (player.dailies.isEmpty()) {
+//                        DialogueManager.start(player, 9901);
+//                        player.setDialogueActionId(9905);
+//                    } else {
+//                        DailyTasks.sendProgress(player);
+//                        player.getPacketSender().sendMessage(player.taskInfo);
+//                    }
                     break;
                 case 9022:
                     ServerPerks.getInstance().open(player);
                     break;
                 case GroupConfig.NPC_ID:
-                    if (player.getMode() instanceof GroupIronman) {
-                        if (GroupManager.isInGroup(player)) {
-                            GroupManager.openInterface(player);
-                        } else {
-                            DialogueManager.start(player, 8001);
-                            player.setDialogueActionId(8001);
-                        }
-                    } else {
-                        player.sendMessage("You must be a group ironman to do this.");
-                    }
+//                    if (player.getMode() instanceof GroupIronman) {
+//                        if (GroupManager.isInGroup(player)) {
+//                            GroupManager.openInterface(player);
+//                        } else {
+//                            DialogueManager.start(player, 8001);
+//                            player.setDialogueActionId(8001);
+//                        }
+//                    } else {
+//                        player.sendMessage("You must be a group ironman to do this.");
+//                    }
                     break;
                 case 9000://first click
                     if (!player.getSlayer().getSlayerMaster().equals(SlayerMaster.BOSS_SLAYER)
                             && player.getSlayer().getSlayerTask().equals(SlayerTasks.NO_TASK)) {
                         SlayerMaster.changeSlayerMaster(player, SlayerMaster.BOSS_SLAYER);
                     }
-                    if (player.getSlayer().getSlayerMaster().equals(SlayerMaster.BOSS_SLAYER))
-                        DialogueManager.start(player, BossSlayerDialogues.dialogue(player));
-                    else {
+                    if (player.getSlayer().getSlayerMaster().equals(SlayerMaster.BOSS_SLAYER)) {
+                       // DialogueManager.start(player, BossSlayerDialogues.dialogue(player));
+                    }else {
                         SlayerMaster yourMaster = player.getSlayer().getSlayerMaster();
                         SlayerMaster thisMaster = SlayerMaster.forNpcId(npc.getId());
                         String yourMastersName = "";
@@ -161,22 +159,22 @@ public class NPCOptionPacketListener implements PacketListener {
                     break;
                 case 4601:
                     player.setDialogueActionId(8);
-                    DialogueManager.start(player, 13);
+                   // DialogueManager.start(player, 13);
                     break;
                 case 5382:
-                    if (player.getMode() instanceof UltimateIronman) {
-                        DialogueManager.start(player, 192);
-                    } else {
-                        DialogueManager.start(player, 195);
-                    }
+//                    if (player.getMode() instanceof UltimateIronman) {
+//                        DialogueManager.start(player, 192);
+//                    } else {
+//                        DialogueManager.start(player, 195);
+//                    }
                     break;
 
-                case 788:
-                    player.setEntityInteraction(npc);
-                    player.setDialogueActionId(831);
-                    EnterLotteryTicketAmount.lotteryNPC = npc;
-                    DialogueManager.start(player, 218);
-                    break;
+//                case 788:
+//                    player.setEntityInteraction(npc);
+//                    player.setDialogueActionId(831);
+//                    EnterLotteryTicketAmount.lotteryNPC = npc;
+//                    DialogueManager.start(player, 218);
+//                    break;
 
                 case 2938:
                     player.getDailyRewards().processTime();
@@ -211,19 +209,19 @@ public class NPCOptionPacketListener implements PacketListener {
                     ShopManager.getShops().get(104).open(player);
                     npc.forceChat("PvM ticket shop!");
                     break;
-                case 659:
-                    if (GameSettings.newYear2017) {
-                        if (player.getNewYear2017() == 0) {
-                            DialogueManager.start(player, 189);
-                            player.setDialogueActionId(189);
-                        } else {
-                            DialogueManager.start(player, 190);
-                        }
-                    } else {
-                        npc.forceChat("I love a good party!");
-                        ShopManager.getShops().get(81).open(player);
-                    }
-                    break;
+//                case 659:
+//                    if (GameSettings.newYear2017) {
+//                        if (player.getNewYear2017() == 0) {
+//                            DialogueManager.start(player, 189);
+//                            player.setDialogueActionId(189);
+//                        } else {
+//                            DialogueManager.start(player, 190);
+//                        }
+//                    } else {
+//                        npc.forceChat("I love a good party!");
+//                        ShopManager.getShops().get(81).open(player);
+//                    }
+//                    break;
                 case 13651:
                     ShopManager.getShops().get(150).open(player);
                     break;
@@ -234,42 +232,42 @@ public class NPCOptionPacketListener implements PacketListener {
                     ShopManager.getShops().get(103).open(player);
                     npc.forceChat("Get back to afking you lazy cat");
                     break;
-                case 4653:
-                    DialogueManager.start(player, 178);
-                    player.setDialogueActionId(178);
-                    break;
-                case 1872:
-                    if (player.getLocation() == Location.ZULRAH_WAITING) {
-                        DialogueManager.start(player, 200);
-                    }
-                    break;
-                case 1552:
-                    if (christmas2016.isChristmas()) {
-                        if (player.getChristmas2016() == 0) {
-                            DialogueManager.start(player, 169);
-                            player.setDialogueActionId(171);
-                        } else if (player.getChristmas2016() == 1) {
-                            player.getPacketSender().sendMessage("Santa wants me to talk to Explorer Jack at home.");
-                        } else if (player.getChristmas2016() == 2) {
-                            DialogueManager.start(player, 181);
-                        } else if (player.getChristmas2016() > 2 && player.getChristmas2016() < 5) {
-                            DialogueManager.start(player, 182);
-                            player.getPacketSender().sendMessage("The Reindeer need Law, Cosmic, and Nature runes.");
-                        } else if (player.getChristmas2016() == 5) {
-                            DialogueManager.start(player, 183);
-                            player.getPacketSender().sendMessage("I should \"use\" the Mind Bomb on Santa.");
-                        } else if (player.getChristmas2016() == 6) {
-                            DialogueManager.start(player, 184);
-                            player.setDialogueActionId(187);
-                        } else if (player.getChristmas2016() == 7) {
-                            DialogueManager.start(player, 188);
-                        } else {
-                            npc.forceChat("Ho ho ho!");
-                        }
-                    } else {
-                        npc.forceChat("Ho ho ho!");
-                    }
-                    break;
+//                case 4653:
+//                    DialogueManager.start(player, 178);
+//                    player.setDialogueActionId(178);
+//                    break;
+//                case 1872:
+//                    if (player.getLocation() == Location.ZULRAH_WAITING) {
+//                        DialogueManager.start(player, 200);
+//                    }
+//                    break;
+//                case 1552:
+//                    if (christmas2016.isChristmas()) {
+//                        if (player.getChristmas2016() == 0) {
+//                            DialogueManager.start(player, 169);
+//                            player.setDialogueActionId(171);
+//                        } else if (player.getChristmas2016() == 1) {
+//                            player.getPacketSender().sendMessage("Santa wants me to talk to Explorer Jack at home.");
+//                        } else if (player.getChristmas2016() == 2) {
+//                            DialogueManager.start(player, 181);
+//                        } else if (player.getChristmas2016() > 2 && player.getChristmas2016() < 5) {
+//                            DialogueManager.start(player, 182);
+//                            player.getPacketSender().sendMessage("The Reindeer need Law, Cosmic, and Nature runes.");
+//                        } else if (player.getChristmas2016() == 5) {
+//                            DialogueManager.start(player, 183);
+//                            player.getPacketSender().sendMessage("I should \"use\" the Mind Bomb on Santa.");
+//                        } else if (player.getChristmas2016() == 6) {
+//                            DialogueManager.start(player, 184);
+//                            player.setDialogueActionId(187);
+//                        } else if (player.getChristmas2016() == 7) {
+//                            DialogueManager.start(player, 188);
+//                        } else {
+//                            npc.forceChat("Ho ho ho!");
+//                        }
+//                    } else {
+//                        npc.forceChat("Ho ho ho!");
+//                    }
+//                    break;
                 case 1084:
                     ShopManager.getShops().get(111).open(player);
                     break;
@@ -283,42 +281,42 @@ public class NPCOptionPacketListener implements PacketListener {
                     player.forceChat("Ban emily!");
                     npc.forceChat("Mods! Help! They're harassing me again!");
                     break;
-                case 3777:
-                    DialogueManager.start(player, 141);
-                    player.setDialogueActionId(88);
-                    break;
+//                case 3777:
+//                    DialogueManager.start(player, 141);
+//                    player.setDialogueActionId(88);
+//                    break;
                 case 13738:
                     player.getUpgradeHandler().openInterface();
                     break;
                 case 5:
-                case 4:
-                    npc.setPositionToFace(player.getPosition());
-                    DialogueManager.start(player, 167);
-                    break;
+//                case 4:
+//                    npc.setPositionToFace(player.getPosition());
+//                    DialogueManager.start(player, 167);
+//                    break;
                 case 1:
               //  case 2:
-                case 3:
-                    npc.setPositionToFace(player.getPosition());
-                    DialogueManager.start(player, 165);
-                    break;
-                case 2238:
-                    npc.setPositionToFace(player.getPosition());
-                    DialogueManager.start(player, 155);
-                    break;
-                case 1152:
-                    DialogueManager.start(player, 127);
-                    player.setDialogueActionId(79);
-                    break;
+//                case 3:
+//                    npc.setPositionToFace(player.getPosition());
+//                    DialogueManager.start(player, 165);
+//                    break;
+//                case 2238:
+//                    npc.setPositionToFace(player.getPosition());
+//                    DialogueManager.start(player, 155);
+//                    break;
+//                case 1152:
+//                    DialogueManager.start(player, 127);
+//                    player.setDialogueActionId(79);
+//                    break;
 
 
-                case 1837:
-                    DialogueManager.start(player, 144);
-                    player.setDialogueActionId(99);
-                    break;
-                case 457:
-                    DialogueManager.start(player, 117);
-                    player.setDialogueActionId(74);
-                    break;
+//                case 1837:
+//                    DialogueManager.start(player, 144);
+//                    player.setDialogueActionId(99);
+//                    break;
+//                case 457:
+//                    DialogueManager.start(player, 117);
+//                    player.setDialogueActionId(74);
+//                    break;
                 case 8710:
                 case 8707:
                 case 8706:
@@ -343,176 +341,176 @@ public class NPCOptionPacketListener implements PacketListener {
 
 
                     break;
-                case 9713:
-                    DialogueManager.start(player, 107);
-                    player.setDialogueActionId(69);
-                    break;
+//                case 9713:
+//                    DialogueManager.start(player, 107);
+//                    player.setDialogueActionId(69);
+//                    break;
                 case 2622:
                     ShopManager.getShops().get(43).open(player);
                     break;
-                case 3101:
-                    DialogueManager.start(player, 90);
-                    player.setDialogueActionId(57);
-                    break;
-                case 7969:
-                    // player.getPacketSender().sendMessage("yayayaya i am lord");
-                    if (christmas2016.isChristmas() == false || player.getChristmas2016() == 0) {
-                        ShopManager.getShops().get(28).open(player);
-                        return;
-                    } else if (player.getChristmas2016() == 1) {
-                        // player.getPacketSender().sendMessage("dialogue 173");
-                        DialogueManager.start(player, 173);
-                        player.setDialogueActionId(173);
-                    } else if (player.getChristmas2016() == 2) {
-                        DialogueManager.start(player, 173);
-                        player.setDialogueActionId(505050);
-                    }
-                    // DialogueManager.start(player, ExplorerJack.getDialogue(player));
-                    break;
-                case 1597:
-                    if (!player.getSlayer().getSlayerMaster().equals(SlayerMaster.EASY_SLAYER)
-                            && player.getSlayer().getSlayerTask().equals(SlayerTasks.NO_TASK)) {
-                        SlayerMaster.changeSlayerMaster(player, SlayerMaster.EASY_SLAYER);
-                    }
-                    if (player.getSlayer().getSlayerMaster().equals(SlayerMaster.EASY_SLAYER))
-                        DialogueManager.start(player, SlayerDialogues.dialogue(player));
-                    else {
-                        SlayerMaster yourMaster = player.getSlayer().getSlayerMaster();
-                        SlayerMaster thisMaster = SlayerMaster.forNpcId(npc.getId());
-                        String yourMastersName = "";
-                        String thisMasterName = "";
-                        int reqSlayer = 0;
-                        if(yourMaster != null) {
-                            yourMastersName = yourMaster.getSlayerMasterName();
-                        }
-                        if(thisMaster != null) {
-                            reqSlayer = thisMaster.getSlayerReq();
-                            thisMasterName = thisMaster.getSlayerMasterName();
-                        }
-                        if(player.getSkillManager().getCurrentLevel(Skill.SLAYER) < reqSlayer) {
-                            DialogueManager.sendStatement(player, "You need " + reqSlayer + " Slayer to use " + thisMasterName  + ".");
-                        } else {
-                            DialogueManager.sendStatement(player, "You currently have an assignment with " + yourMastersName);
-                        }
-                    }
-                    break;
-                case 8275:
-                    if (!player.getSlayer().getSlayerMaster().equals(SlayerMaster.MEDIUM_SLAYER)
-                            && player.getSlayer().getSlayerTask().equals(SlayerTasks.NO_TASK)) {
-                        SlayerMaster.changeSlayerMaster(player, SlayerMaster.MEDIUM_SLAYER);
-                    }
-                    if (player.getSlayer().getSlayerMaster().equals(SlayerMaster.MEDIUM_SLAYER))
-                        DialogueManager.start(player, SlayerDialogues.dialogue(player));
-                    else {
-                        SlayerMaster yourMaster = player.getSlayer().getSlayerMaster();
-                        SlayerMaster thisMaster = SlayerMaster.forNpcId(npc.getId());
-                        String yourMastersName = "";
-                        String thisMasterName = "";
-                        int reqSlayer = 0;
-                        if(yourMaster != null) {
-                            yourMastersName = yourMaster.getSlayerMasterName();
-                        }
-                        if(thisMaster != null) {
-                            reqSlayer = thisMaster.getSlayerReq();
-                            thisMasterName = thisMaster.getSlayerMasterName();
-                        }
-                        if(player.getSkillManager().getCurrentLevel(Skill.SLAYER) < reqSlayer) {
-                            DialogueManager.sendStatement(player, "You need " + reqSlayer + " Slayer to use " + thisMasterName  + ".");
-                        } else {
-                            DialogueManager.sendStatement(player, "You currently have an assignment with " + yourMastersName);
-                        }
-                    }
-                    break;
-                case 9085:
-                    if (!player.getSlayer().getSlayerMaster().equals(SlayerMaster.HARD_SLAYER)
-                            && player.getSlayer().getSlayerTask().equals(SlayerTasks.NO_TASK)) {
-                        SlayerMaster.changeSlayerMaster(player, SlayerMaster.HARD_SLAYER);
-                    }
-                    if (player.getSlayer().getSlayerMaster().equals(SlayerMaster.HARD_SLAYER))
-                        DialogueManager.start(player, SlayerDialogues.dialogue(player));
-                    else {
-                        SlayerMaster yourMaster = player.getSlayer().getSlayerMaster();
-                        SlayerMaster thisMaster = SlayerMaster.forNpcId(npc.getId());
-                        String yourMastersName = "";
-                        String thisMasterName = "";
-                        int reqSlayer = 0;
-                        if(yourMaster != null) {
-                            yourMastersName = yourMaster.getSlayerMasterName();
-                        }
-                        if(thisMaster != null) {
-                            reqSlayer = thisMaster.getSlayerReq();
-                            thisMasterName = thisMaster.getSlayerMasterName();
-                        }
-                        if(player.getSkillManager().getCurrentLevel(Skill.SLAYER) < reqSlayer) {
-                            DialogueManager.sendStatement(player, "You need " + reqSlayer + " Slayer to use " + thisMasterName  + ".");
-                        } else {
-                            DialogueManager.sendStatement(player, "You currently have an assignment with " + yourMastersName);
-                        }
-                    }
-                    break;
-                case 925:
-                    if (!player.getSlayer().getSlayerMaster().equals(SlayerMaster.ELITE_SLAYER)
-                            && player.getSlayer().getSlayerTask().equals(SlayerTasks.NO_TASK)) {
-                        SlayerMaster.changeSlayerMaster(player, SlayerMaster.ELITE_SLAYER);
-                    }
-                    if (player.getSlayer().getSlayerMaster().equals(SlayerMaster.ELITE_SLAYER))
-                        DialogueManager.start(player, SlayerDialogues.dialogue(player));
-                    else {
-                        SlayerMaster yourMaster = player.getSlayer().getSlayerMaster();
-                        SlayerMaster thisMaster = SlayerMaster.forNpcId(npc.getId());
-                        String yourMastersName = "";
-                        String thisMasterName = "";
-                        int reqSlayer = 0;
-                        if(yourMaster != null) {
-                            yourMastersName = yourMaster.getSlayerMasterName();
-                        }
-                        if(thisMaster != null) {
-                            reqSlayer = thisMaster.getSlayerReq();
-                            thisMasterName = thisMaster.getSlayerMasterName();
-                        }
-                        if(player.getSkillManager().getCurrentLevel(Skill.SLAYER) < reqSlayer) {
-                            DialogueManager.sendStatement(player, "You need " + reqSlayer + " Slayer to use " + thisMasterName  + ".");
-                        } else {
-                            DialogueManager.sendStatement(player, "You currently have an assignment with " + yourMastersName);
-                        }
-                    }
-                    break;
-                case 437:
-                    DialogueManager.start(player, 99);
-                    player.setDialogueActionId(58);
-                    break;
+//                case 3101:
+//                    DialogueManager.start(player, 90);
+//                    player.setDialogueActionId(57);
+//                    break;
+//                case 7969:
+//                    // player.getPacketSender().sendMessage("yayayaya i am lord");
+//                    if (christmas2016.isChristmas() == false || player.getChristmas2016() == 0) {
+//                        ShopManager.getShops().get(28).open(player);
+//                        return;
+//                    } else if (player.getChristmas2016() == 1) {
+//                        // player.getPacketSender().sendMessage("dialogue 173");
+//                        DialogueManager.start(player, 173);
+//                        player.setDialogueActionId(173);
+//                    } else if (player.getChristmas2016() == 2) {
+//                        DialogueManager.start(player, 173);
+//                        player.setDialogueActionId(505050);
+//                    }
+//                    // DialogueManager.start(player, ExplorerJack.getDialogue(player));
+//                    break;
+//                case 1597:
+//                    if (!player.getSlayer().getSlayerMaster().equals(SlayerMaster.EASY_SLAYER)
+//                            && player.getSlayer().getSlayerTask().equals(SlayerTasks.NO_TASK)) {
+//                        SlayerMaster.changeSlayerMaster(player, SlayerMaster.EASY_SLAYER);
+//                    }
+//                    if (player.getSlayer().getSlayerMaster().equals(SlayerMaster.EASY_SLAYER))
+//                        DialogueManager.start(player, SlayerDialogues.dialogue(player));
+//                    else {
+//                        SlayerMaster yourMaster = player.getSlayer().getSlayerMaster();
+//                        SlayerMaster thisMaster = SlayerMaster.forNpcId(npc.getId());
+//                        String yourMastersName = "";
+//                        String thisMasterName = "";
+//                        int reqSlayer = 0;
+//                        if(yourMaster != null) {
+//                            yourMastersName = yourMaster.getSlayerMasterName();
+//                        }
+//                        if(thisMaster != null) {
+//                            reqSlayer = thisMaster.getSlayerReq();
+//                            thisMasterName = thisMaster.getSlayerMasterName();
+//                        }
+//                        if(player.getSkillManager().getCurrentLevel(Skill.SLAYER) < reqSlayer) {
+//                            DialogueManager.sendStatement(player, "You need " + reqSlayer + " Slayer to use " + thisMasterName  + ".");
+//                        } else {
+//                            DialogueManager.sendStatement(player, "You currently have an assignment with " + yourMastersName);
+//                        }
+//                    }
+//                    break;
+//                case 8275:
+//                    if (!player.getSlayer().getSlayerMaster().equals(SlayerMaster.MEDIUM_SLAYER)
+//                            && player.getSlayer().getSlayerTask().equals(SlayerTasks.NO_TASK)) {
+//                        SlayerMaster.changeSlayerMaster(player, SlayerMaster.MEDIUM_SLAYER);
+//                    }
+//                    if (player.getSlayer().getSlayerMaster().equals(SlayerMaster.MEDIUM_SLAYER))
+//                        DialogueManager.start(player, SlayerDialogues.dialogue(player));
+//                    else {
+//                        SlayerMaster yourMaster = player.getSlayer().getSlayerMaster();
+//                        SlayerMaster thisMaster = SlayerMaster.forNpcId(npc.getId());
+//                        String yourMastersName = "";
+//                        String thisMasterName = "";
+//                        int reqSlayer = 0;
+//                        if(yourMaster != null) {
+//                            yourMastersName = yourMaster.getSlayerMasterName();
+//                        }
+//                        if(thisMaster != null) {
+//                            reqSlayer = thisMaster.getSlayerReq();
+//                            thisMasterName = thisMaster.getSlayerMasterName();
+//                        }
+//                        if(player.getSkillManager().getCurrentLevel(Skill.SLAYER) < reqSlayer) {
+//                            DialogueManager.sendStatement(player, "You need " + reqSlayer + " Slayer to use " + thisMasterName  + ".");
+//                        } else {
+//                            DialogueManager.sendStatement(player, "You currently have an assignment with " + yourMastersName);
+//                        }
+//                    }
+//                    break;
+//                case 9085:
+//                    if (!player.getSlayer().getSlayerMaster().equals(SlayerMaster.HARD_SLAYER)
+//                            && player.getSlayer().getSlayerTask().equals(SlayerTasks.NO_TASK)) {
+//                        SlayerMaster.changeSlayerMaster(player, SlayerMaster.HARD_SLAYER);
+//                    }
+//                    if (player.getSlayer().getSlayerMaster().equals(SlayerMaster.HARD_SLAYER))
+//                        DialogueManager.start(player, SlayerDialogues.dialogue(player));
+//                    else {
+//                        SlayerMaster yourMaster = player.getSlayer().getSlayerMaster();
+//                        SlayerMaster thisMaster = SlayerMaster.forNpcId(npc.getId());
+//                        String yourMastersName = "";
+//                        String thisMasterName = "";
+//                        int reqSlayer = 0;
+//                        if(yourMaster != null) {
+//                            yourMastersName = yourMaster.getSlayerMasterName();
+//                        }
+//                        if(thisMaster != null) {
+//                            reqSlayer = thisMaster.getSlayerReq();
+//                            thisMasterName = thisMaster.getSlayerMasterName();
+//                        }
+//                        if(player.getSkillManager().getCurrentLevel(Skill.SLAYER) < reqSlayer) {
+//                            DialogueManager.sendStatement(player, "You need " + reqSlayer + " Slayer to use " + thisMasterName  + ".");
+//                        } else {
+//                            DialogueManager.sendStatement(player, "You currently have an assignment with " + yourMastersName);
+//                        }
+//                    }
+//                    break;
+//                case 925:
+//                    if (!player.getSlayer().getSlayerMaster().equals(SlayerMaster.ELITE_SLAYER)
+//                            && player.getSlayer().getSlayerTask().equals(SlayerTasks.NO_TASK)) {
+//                        SlayerMaster.changeSlayerMaster(player, SlayerMaster.ELITE_SLAYER);
+//                    }
+//                    if (player.getSlayer().getSlayerMaster().equals(SlayerMaster.ELITE_SLAYER))
+//                        DialogueManager.start(player, SlayerDialogues.dialogue(player));
+//                    else {
+//                        SlayerMaster yourMaster = player.getSlayer().getSlayerMaster();
+//                        SlayerMaster thisMaster = SlayerMaster.forNpcId(npc.getId());
+//                        String yourMastersName = "";
+//                        String thisMasterName = "";
+//                        int reqSlayer = 0;
+//                        if(yourMaster != null) {
+//                            yourMastersName = yourMaster.getSlayerMasterName();
+//                        }
+//                        if(thisMaster != null) {
+//                            reqSlayer = thisMaster.getSlayerReq();
+//                            thisMasterName = thisMaster.getSlayerMasterName();
+//                        }
+//                        if(player.getSkillManager().getCurrentLevel(Skill.SLAYER) < reqSlayer) {
+//                            DialogueManager.sendStatement(player, "You need " + reqSlayer + " Slayer to use " + thisMasterName  + ".");
+//                        } else {
+//                            DialogueManager.sendStatement(player, "You currently have an assignment with " + yourMastersName);
+//                        }
+//                    }
+//                    break;
+//                case 437:
+//                    DialogueManager.start(player, 99);
+//                    player.setDialogueActionId(58);
+//                    break;
                 case 5112:
                     ShopManager.getShops().get(38).open(player);
                     break;
-                case 8591:
-                    // player.nomadQuest[0] = player.nomadQuest[1] = player.nomadQuest[2] = false;
-                    if (!player.getMinigameAttributes().getNomadAttributes().hasFinishedPart(0)) {
-                        DialogueManager.start(player, 48);
-                        player.setDialogueActionId(23);
-                    } else if (player.getMinigameAttributes().getNomadAttributes().hasFinishedPart(0)
-                            && !player.getMinigameAttributes().getNomadAttributes().hasFinishedPart(1)) {
-                        DialogueManager.start(player, 50);
-                        player.setDialogueActionId(24);
-                    } else if (player.getMinigameAttributes().getNomadAttributes().hasFinishedPart(1))
-                        DialogueManager.start(player, 53);
-                    break;
-                case 273:
-                    DialogueManager.start(player, 61);
-                    player.setDialogueActionId(28);
-                    break;
-                case 3385:
-                    if (player.getMinigameAttributes().getRecipeForDisasterAttributes().hasFinishedPart(0) && player
-                            .getMinigameAttributes().getRecipeForDisasterAttributes().getWavesCompleted() < 6) {
-                        DialogueManager.start(player, 39);
-                        return;
-                    }
-                    if (player.getMinigameAttributes().getRecipeForDisasterAttributes().getWavesCompleted() == 6) {
-                        DialogueManager.start(player, 46);
-                        return;
-                    }
-                    DialogueManager.start(player, 38);
-                    player.setDialogueActionId(20);
-                    break;
+//                case 8591:
+//                    // player.nomadQuest[0] = player.nomadQuest[1] = player.nomadQuest[2] = false;
+//                    if (!player.getMinigameAttributes().getNomadAttributes().hasFinishedPart(0)) {
+//                        DialogueManager.start(player, 48);
+//                        player.setDialogueActionId(23);
+//                    } else if (player.getMinigameAttributes().getNomadAttributes().hasFinishedPart(0)
+//                            && !player.getMinigameAttributes().getNomadAttributes().hasFinishedPart(1)) {
+//                        DialogueManager.start(player, 50);
+//                        player.setDialogueActionId(24);
+//                    } else if (player.getMinigameAttributes().getNomadAttributes().hasFinishedPart(1))
+//                        DialogueManager.start(player, 53);
+//                    break;
+//                case 273:
+//                    DialogueManager.start(player, 61);
+//                    player.setDialogueActionId(28);
+//                    break;
+//                case 3385:
+//                    if (player.getMinigameAttributes().getRecipeForDisasterAttributes().hasFinishedPart(0) && player
+//                            .getMinigameAttributes().getRecipeForDisasterAttributes().getWavesCompleted() < 6) {
+//                        DialogueManager.start(player, 39);
+//                        return;
+//                    }
+//                    if (player.getMinigameAttributes().getRecipeForDisasterAttributes().getWavesCompleted() == 6) {
+//                        DialogueManager.start(player, 46);
+//                        return;
+//                    }
+//                    DialogueManager.start(player, 38);
+//                    player.setDialogueActionId(20);
+//                    break;
                /* case 6139:
                     DialogueManager.start(player, 29);
                     player.setDialogueActionId(17);
@@ -523,9 +521,9 @@ public class NPCOptionPacketListener implements PacketListener {
                     player.getPacketSender().sendString(18729,
                             "Commendations: " + Integer.toString(player.getPointsHandler().getCommendations()));
                     break;
-                case 2948:
-                    DialogueManager.start(player, WarriorsGuild.warriorsGuildDialogue(player));
-                    break;
+//                case 2948:
+//                    DialogueManager.start(player, WarriorsGuild.warriorsGuildDialogue(player));
+//                    break;
                 case 650:
                     ShopManager.getShops().get(35).open(player);
                     break;
@@ -552,14 +550,14 @@ public class NPCOptionPacketListener implements PacketListener {
                 case 8028:
                     DesoSpan.siphon(player, npc);
                     break;
-                case 6537:
-                    player.setDialogueActionId(10);
-                    DialogueManager.start(player, 19);
-                    break;
-                case 4249:
-                    player.setDialogueActionId(9);
-                    DialogueManager.start(player, 64);
-                    break;
+//                case 6537:
+//                    player.setDialogueActionId(10);
+//                    DialogueManager.start(player, 19);
+//                    break;
+//                case 4249:
+//                    player.setDialogueActionId(9);
+//                    DialogueManager.start(player, 64);
+//                    break;
                 case 6807:
                 case 6994:
                 case 6995:
@@ -593,10 +591,10 @@ public class NPCOptionPacketListener implements PacketListener {
                     // player.setDialogueActionId(8);
                     // DialogueManager.start(player, 13);
                     break;
-                case 6970:
-                    player.setDialogueActionId(3);
-                    DialogueManager.start(player, 3);
-                    break;
+//                case 6970:
+//                    player.setDialogueActionId(3);
+//                    DialogueManager.start(player, 3);
+//                    break;
                 case 318:
                 case 316:
                 case 313:
@@ -684,15 +682,15 @@ public class NPCOptionPacketListener implements PacketListener {
                     ShopManager.getShops().get(84).open(player);
                     break;
                 case 494:
-                case 1360:
-                    if (player.getMode() instanceof GroupIronman
-                            && player.getIronmanGroup() != null) {
-                        DialogueManager.start(player, 8002);
-                        player.setDialogueActionId(8002);
-                    } else {
-                        player.getBank(player.getCurrentBankTab()).open();
-                    }
-                    break;
+//                case 1360:
+//                    if (player.getMode() instanceof GroupIronman
+//                            && player.getIronmanGroup() != null) {
+//                        DialogueManager.start(player, 8002);
+//                        player.setDialogueActionId(8002);
+//                    } else {
+//                        player.getBank(player.getCurrentBankTab()).open();
+//                    }
+//                    break;
             }
             if (!(npc.getId() >= 8705 && npc.getId() <= 8710)) {
                 npc.setPositionToFace(player.getPosition());
@@ -1053,7 +1051,7 @@ public class NPCOptionPacketListener implements PacketListener {
                     case 289 -> //DAILY TASK
                             DailyTasks.claimReward(player);
                     case 568 -> ShopManager.getShops().get(207).open(player);
-                    case 845 -> DialogueManager.start(player, SlayerDialogues.findAssignment(player));
+                    //case 845 -> DialogueManager.start(player, SlayerDialogues.findAssignment(player));
                     case 8459 -> Decanting.notedDecanting(player);
                     case 788 -> {
                         player.getPacketSender().sendEnterInputPrompt(
@@ -1065,14 +1063,14 @@ public class NPCOptionPacketListener implements PacketListener {
                                 + player.getPointsHandler().getEventPoints() + " Event points!");
                         ShopManager.getShops().get(81).open(player);
                     }
-                    case 5382 -> {
-                        if (player.getMode() instanceof UltimateIronman) {
-                            UltimateIronmanHandler.handleQuickStore(player);
-                        } else {
-                            DialogueManager.start(player, 195);
-                        }
-                        player.getClickDelay().reset();
-                    }
+//                    case 5382 -> {
+//                        if (player.getMode() instanceof UltimateIronman) {
+//                            UltimateIronmanHandler.handleQuickStore(player);
+//                        } else {
+//                            DialogueManager.start(player, 195);
+//                        }
+//                        player.getClickDelay().reset();
+//                    }
                     case 4601 -> {
                         ShopManager.getShops().get(110).open(player);
                         player.getPacketSender().sendString(3903,
@@ -1137,10 +1135,10 @@ public class NPCOptionPacketListener implements PacketListener {
                         TeleportHandler.teleportPlayer(player, new Position(2911, 4832),
                                 player.getSpellbook().getTeleportType());
                     }
-                    case 3101 -> {
-                        DialogueManager.start(player, 95);
-                        player.setDialogueActionId(57);
-                    }
+//                    case 3101 -> {
+//                        DialogueManager.start(player, 95);
+//                        player.setDialogueActionId(57);
+//                    }
                     case 7969 -> ShopManager.getShops().get(28).open(player);
                     case 605 -> {
                         player.getPacketSender().sendMessage("")
@@ -1151,172 +1149,172 @@ public class NPCOptionPacketListener implements PacketListener {
                         ;
                         ShopManager.getShops().get(90).open(player);
                     }
-                    case 1597 -> {
-                        if (!player.getSlayer().getSlayerMaster().equals(SlayerMaster.EASY_SLAYER)
-                                && player.getSlayer().getSlayerTask().equals(SlayerTasks.NO_TASK)) {
-                            SlayerMaster.changeSlayerMaster(player, SlayerMaster.EASY_SLAYER);
-                        }
-                        if (player.getSlayer().getSlayerMaster().equals(SlayerMaster.EASY_SLAYER)) {
-
-                            SlayerMaster.changeSlayerMaster(player, SlayerMaster.EASY_SLAYER);
-                            if (player.getSlayer().getSlayerTask() == SlayerTasks.NO_TASK)
-                                player.getSlayer().assignTask();
-
-                            else
-                                DialogueManager.start(player, SlayerDialogues.findAssignment(player));
-                        } else {
-                            SlayerMaster yourMaster = player.getSlayer().getSlayerMaster();
-                            SlayerMaster thisMaster = SlayerMaster.forNpcId(npc.getId());
-                            String yourMastersName = "";
-                            String thisMasterName = "";
-                            int reqSlayer = 0;
-                            if (yourMaster != null) {
-                                yourMastersName = yourMaster.getSlayerMasterName();
-                            }
-                            if (thisMaster != null) {
-                                reqSlayer = thisMaster.getSlayerReq();
-                                thisMasterName = thisMaster.getSlayerMasterName();
-                            }
-                            if (player.getSkillManager().getCurrentLevel(Skill.SLAYER) < reqSlayer) {
-                                DialogueManager.sendStatement(player, "You need " + reqSlayer + " Slayer to use " + thisMasterName + ".");
-                            } else {
-                                DialogueManager.sendStatement(player, "You currently have an assignment with " + yourMastersName);
-                            }
-                        }
-                    }
-                    case 8275 -> {
-                        if (!player.getSlayer().getSlayerMaster().equals(SlayerMaster.MEDIUM_SLAYER)
-                                && player.getSlayer().getSlayerTask().equals(SlayerTasks.NO_TASK)) {
-                            SlayerMaster.changeSlayerMaster(player, SlayerMaster.MEDIUM_SLAYER);
-                        }
-                        if (player.getSlayer().getSlayerMaster().equals(SlayerMaster.MEDIUM_SLAYER)) {
-
-                            SlayerMaster.changeSlayerMaster(player, SlayerMaster.MEDIUM_SLAYER);
-                            if (player.getSlayer().getSlayerTask() == SlayerTasks.NO_TASK)
-                                player.getSlayer().assignTask();
-
-                            else
-                                DialogueManager.start(player, SlayerDialogues.findAssignment(player));
-                        } else {
-                            SlayerMaster yourMaster = player.getSlayer().getSlayerMaster();
-                            SlayerMaster thisMaster = SlayerMaster.forNpcId(npc.getId());
-                            String yourMastersName = "";
-                            String thisMasterName = "";
-                            int reqSlayer = 0;
-                            if (yourMaster != null) {
-                                yourMastersName = yourMaster.getSlayerMasterName();
-                            }
-                            if (thisMaster != null) {
-                                reqSlayer = thisMaster.getSlayerReq();
-                                thisMasterName = thisMaster.getSlayerMasterName();
-                            }
-                            if (player.getSkillManager().getCurrentLevel(Skill.SLAYER) < reqSlayer) {
-                                DialogueManager.sendStatement(player, "You need " + reqSlayer + " Slayer to use " + thisMasterName + ".");
-                            } else {
-                                DialogueManager.sendStatement(player, "You currently have an assignment with " + yourMastersName);
-                            }
-                        }
-                    }
-                    case 9085 -> {
-                        if (!player.getSlayer().getSlayerMaster().equals(SlayerMaster.HARD_SLAYER)
-                                && player.getSlayer().getSlayerTask().equals(SlayerTasks.NO_TASK)) {
-                            SlayerMaster.changeSlayerMaster(player, SlayerMaster.HARD_SLAYER);
-                        }
-                        if (player.getSlayer().getSlayerMaster().equals(SlayerMaster.HARD_SLAYER)) {
-
-                            SlayerMaster.changeSlayerMaster(player, SlayerMaster.HARD_SLAYER);
-                            if (player.getSlayer().getSlayerTask() == SlayerTasks.NO_TASK)
-                                player.getSlayer().assignTask();
-
-                            else
-                                DialogueManager.start(player, SlayerDialogues.findAssignment(player));
-                        } else {
-                            SlayerMaster yourMaster = player.getSlayer().getSlayerMaster();
-                            SlayerMaster thisMaster = SlayerMaster.forNpcId(npc.getId());
-                            String yourMastersName = "";
-                            String thisMasterName = "";
-                            int reqSlayer = 0;
-                            if (yourMaster != null) {
-                                yourMastersName = yourMaster.getSlayerMasterName();
-                            }
-                            if (thisMaster != null) {
-                                reqSlayer = thisMaster.getSlayerReq();
-                                thisMasterName = thisMaster.getSlayerMasterName();
-                            }
-                            if (player.getSkillManager().getCurrentLevel(Skill.SLAYER) < reqSlayer) {
-                                DialogueManager.sendStatement(player, "You need " + reqSlayer + " Slayer to use " + thisMasterName + ".");
-                            } else {
-                                DialogueManager.sendStatement(player, "You currently have an assignment with " + yourMastersName);
-                            }
-                        }
-                    }
-                    case 925 -> {
-                        if (!player.getSlayer().getSlayerMaster().equals(SlayerMaster.ELITE_SLAYER)
-                                && player.getSlayer().getSlayerTask().equals(SlayerTasks.NO_TASK)) {
-                            SlayerMaster.changeSlayerMaster(player, SlayerMaster.ELITE_SLAYER);
-                        }
-                        if (player.getSlayer().getSlayerMaster().equals(SlayerMaster.ELITE_SLAYER)) {
-
-                            SlayerMaster.changeSlayerMaster(player, SlayerMaster.ELITE_SLAYER);
-                            if (player.getSlayer().getSlayerTask() == SlayerTasks.NO_TASK)
-                                player.getSlayer().assignTask();
-
-                            else
-                                DialogueManager.start(player, SlayerDialogues.findAssignment(player));
-                        } else {
-                            SlayerMaster yourMaster = player.getSlayer().getSlayerMaster();
-                            SlayerMaster thisMaster = SlayerMaster.forNpcId(npc.getId());
-                            String yourMastersName = "";
-                            String thisMasterName = "";
-                            int reqSlayer = 0;
-                            if (yourMaster != null) {
-                                yourMastersName = yourMaster.getSlayerMasterName();
-                            }
-                            if (thisMaster != null) {
-                                reqSlayer = thisMaster.getSlayerReq();
-                                thisMasterName = thisMaster.getSlayerMasterName();
-                            }
-                            if (player.getSkillManager().getCurrentLevel(Skill.SLAYER) < reqSlayer) {
-                                DialogueManager.sendStatement(player, "You need " + reqSlayer + " Slayer to use " + thisMasterName + ".");
-                            } else {
-                                DialogueManager.sendStatement(player, "You currently have an assignment with " + yourMastersName);
-                            }
-                        }
-                    }
-                    case 9000 -> {//second click
-
-                        if (!player.getSlayer().getSlayerMaster().equals(SlayerMaster.BOSS_SLAYER)
-                                && player.getSlayer().getSlayerTask().equals(SlayerTasks.NO_TASK)) {
-                            SlayerMaster.changeSlayerMaster(player, SlayerMaster.BOSS_SLAYER);
-                        }
-                        if (player.getSlayer().getSlayerMaster().equals(SlayerMaster.BOSS_SLAYER)) {
-
-                            SlayerMaster.changeSlayerMaster(player, SlayerMaster.BOSS_SLAYER);
-                            if (player.getSlayer().getSlayerTask() == SlayerTasks.NO_TASK)
-                                player.getSlayer().assignTask();
-
-                            else
-                                DialogueManager.start(player, BossSlayerDialogues.findAssignment(player));
-                        } else {
-                            SlayerMaster yourMaster = player.getSlayer().getSlayerMaster();
-                            SlayerMaster thisMaster = SlayerMaster.forNpcId(npc.getId());
-                            String yourMastersName = "";
-                            String thisMasterName = "";
-                            int reqSlayer = 0;
-                            if (yourMaster != null) {
-                                yourMastersName = yourMaster.getSlayerMasterName();
-                            }
-                            if (thisMaster != null) {
-                                reqSlayer = thisMaster.getSlayerReq();
-                                thisMasterName = thisMaster.getSlayerMasterName();
-                            }
-                            if (player.getSkillManager().getCurrentLevel(Skill.SLAYER) < reqSlayer) {
-                                DialogueManager.sendStatement(player, "You need " + reqSlayer + " Slayer to use " + thisMasterName + ".");
-                            } else {
-                                DialogueManager.sendStatement(player, "You currently have an assignment with " + yourMastersName);
-                            }
-                        }
-                    }
+//                    case 1597 -> {
+//                        if (!player.getSlayer().getSlayerMaster().equals(SlayerMaster.EASY_SLAYER)
+//                                && player.getSlayer().getSlayerTask().equals(SlayerTasks.NO_TASK)) {
+//                            SlayerMaster.changeSlayerMaster(player, SlayerMaster.EASY_SLAYER);
+//                        }
+//                        if (player.getSlayer().getSlayerMaster().equals(SlayerMaster.EASY_SLAYER)) {
+//
+//                            SlayerMaster.changeSlayerMaster(player, SlayerMaster.EASY_SLAYER);
+////                            if (player.getSlayer().getSlayerTask() == SlayerTasks.NO_TASK)
+////                                player.getSlayer().assignTask();
+////
+////                            else
+////                                DialogueManager.start(player, SlayerDialogues.findAssignment(player));
+//                        } else {
+//                            SlayerMaster yourMaster = player.getSlayer().getSlayerMaster();
+//                            SlayerMaster thisMaster = SlayerMaster.forNpcId(npc.getId());
+//                            String yourMastersName = "";
+//                            String thisMasterName = "";
+//                            int reqSlayer = 0;
+//                            if (yourMaster != null) {
+//                                yourMastersName = yourMaster.getSlayerMasterName();
+//                            }
+//                            if (thisMaster != null) {
+//                                reqSlayer = thisMaster.getSlayerReq();
+//                                thisMasterName = thisMaster.getSlayerMasterName();
+//                            }
+//                            if (player.getSkillManager().getCurrentLevel(Skill.SLAYER) < reqSlayer) {
+//                                DialogueManager.sendStatement(player, "You need " + reqSlayer + " Slayer to use " + thisMasterName + ".");
+//                            } else {
+//                                DialogueManager.sendStatement(player, "You currently have an assignment with " + yourMastersName);
+//                            }
+//                        }
+//                    }
+//                    case 8275 -> {
+//                        if (!player.getSlayer().getSlayerMaster().equals(SlayerMaster.MEDIUM_SLAYER)
+//                                && player.getSlayer().getSlayerTask().equals(SlayerTasks.NO_TASK)) {
+//                            SlayerMaster.changeSlayerMaster(player, SlayerMaster.MEDIUM_SLAYER);
+//                        }
+//                        if (player.getSlayer().getSlayerMaster().equals(SlayerMaster.MEDIUM_SLAYER)) {
+//
+//                            SlayerMaster.changeSlayerMaster(player, SlayerMaster.MEDIUM_SLAYER);
+////                            if (player.getSlayer().getSlayerTask() == SlayerTasks.NO_TASK)
+////                                player.getSlayer().assignTask();
+////
+////                            else
+////                                DialogueManager.start(player, SlayerDialogues.findAssignment(player));
+//                        } else {
+//                            SlayerMaster yourMaster = player.getSlayer().getSlayerMaster();
+//                            SlayerMaster thisMaster = SlayerMaster.forNpcId(npc.getId());
+//                            String yourMastersName = "";
+//                            String thisMasterName = "";
+//                            int reqSlayer = 0;
+//                            if (yourMaster != null) {
+//                                yourMastersName = yourMaster.getSlayerMasterName();
+//                            }
+//                            if (thisMaster != null) {
+//                                reqSlayer = thisMaster.getSlayerReq();
+//                                thisMasterName = thisMaster.getSlayerMasterName();
+//                            }
+//                            if (player.getSkillManager().getCurrentLevel(Skill.SLAYER) < reqSlayer) {
+//                                DialogueManager.sendStatement(player, "You need " + reqSlayer + " Slayer to use " + thisMasterName + ".");
+//                            } else {
+//                                DialogueManager.sendStatement(player, "You currently have an assignment with " + yourMastersName);
+//                            }
+//                        }
+//                    }
+//                    case 9085 -> {
+//                        if (!player.getSlayer().getSlayerMaster().equals(SlayerMaster.HARD_SLAYER)
+//                                && player.getSlayer().getSlayerTask().equals(SlayerTasks.NO_TASK)) {
+//                            SlayerMaster.changeSlayerMaster(player, SlayerMaster.HARD_SLAYER);
+//                        }
+//                        if (player.getSlayer().getSlayerMaster().equals(SlayerMaster.HARD_SLAYER)) {
+//
+//                            SlayerMaster.changeSlayerMaster(player, SlayerMaster.HARD_SLAYER);
+//                            if (player.getSlayer().getSlayerTask() == SlayerTasks.NO_TASK)
+//                                player.getSlayer().assignTask();
+//
+//                            else
+//                                DialogueManager.start(player, SlayerDialogues.findAssignment(player));
+//                        } else {
+//                            SlayerMaster yourMaster = player.getSlayer().getSlayerMaster();
+//                            SlayerMaster thisMaster = SlayerMaster.forNpcId(npc.getId());
+//                            String yourMastersName = "";
+//                            String thisMasterName = "";
+//                            int reqSlayer = 0;
+//                            if (yourMaster != null) {
+//                                yourMastersName = yourMaster.getSlayerMasterName();
+//                            }
+//                            if (thisMaster != null) {
+//                                reqSlayer = thisMaster.getSlayerReq();
+//                                thisMasterName = thisMaster.getSlayerMasterName();
+//                            }
+//                            if (player.getSkillManager().getCurrentLevel(Skill.SLAYER) < reqSlayer) {
+//                                DialogueManager.sendStatement(player, "You need " + reqSlayer + " Slayer to use " + thisMasterName + ".");
+//                            } else {
+//                                DialogueManager.sendStatement(player, "You currently have an assignment with " + yourMastersName);
+//                            }
+//                        }
+//                    }
+//                    case 925 -> {
+//                        if (!player.getSlayer().getSlayerMaster().equals(SlayerMaster.ELITE_SLAYER)
+//                                && player.getSlayer().getSlayerTask().equals(SlayerTasks.NO_TASK)) {
+//                            SlayerMaster.changeSlayerMaster(player, SlayerMaster.ELITE_SLAYER);
+//                        }
+//                        if (player.getSlayer().getSlayerMaster().equals(SlayerMaster.ELITE_SLAYER)) {
+//
+//                            SlayerMaster.changeSlayerMaster(player, SlayerMaster.ELITE_SLAYER);
+//                            if (player.getSlayer().getSlayerTask() == SlayerTasks.NO_TASK)
+//                                player.getSlayer().assignTask();
+//
+//                            else
+//                                DialogueManager.start(player, SlayerDialogues.findAssignment(player));
+//                        } else {
+//                            SlayerMaster yourMaster = player.getSlayer().getSlayerMaster();
+//                            SlayerMaster thisMaster = SlayerMaster.forNpcId(npc.getId());
+//                            String yourMastersName = "";
+//                            String thisMasterName = "";
+//                            int reqSlayer = 0;
+//                            if (yourMaster != null) {
+//                                yourMastersName = yourMaster.getSlayerMasterName();
+//                            }
+//                            if (thisMaster != null) {
+//                                reqSlayer = thisMaster.getSlayerReq();
+//                                thisMasterName = thisMaster.getSlayerMasterName();
+//                            }
+//                            if (player.getSkillManager().getCurrentLevel(Skill.SLAYER) < reqSlayer) {
+//                                DialogueManager.sendStatement(player, "You need " + reqSlayer + " Slayer to use " + thisMasterName + ".");
+//                            } else {
+//                                DialogueManager.sendStatement(player, "You currently have an assignment with " + yourMastersName);
+//                            }
+//                        }
+//                    }
+//                    case 9000 -> {//second click
+//
+//                        if (!player.getSlayer().getSlayerMaster().equals(SlayerMaster.BOSS_SLAYER)
+//                                && player.getSlayer().getSlayerTask().equals(SlayerTasks.NO_TASK)) {
+//                            SlayerMaster.changeSlayerMaster(player, SlayerMaster.BOSS_SLAYER);
+//                        }
+//                        if (player.getSlayer().getSlayerMaster().equals(SlayerMaster.BOSS_SLAYER)) {
+//
+//                            SlayerMaster.changeSlayerMaster(player, SlayerMaster.BOSS_SLAYER);
+//                            if (player.getSlayer().getSlayerTask() == SlayerTasks.NO_TASK)
+//                                player.getSlayer().assignTask();
+//
+//                            else
+//                                DialogueManager.start(player, BossSlayerDialogues.findAssignment(player));
+//                        } else {
+//                            SlayerMaster yourMaster = player.getSlayer().getSlayerMaster();
+//                            SlayerMaster thisMaster = SlayerMaster.forNpcId(npc.getId());
+//                            String yourMastersName = "";
+//                            String thisMasterName = "";
+//                            int reqSlayer = 0;
+//                            if (yourMaster != null) {
+//                                yourMastersName = yourMaster.getSlayerMasterName();
+//                            }
+//                            if (thisMaster != null) {
+//                                reqSlayer = thisMaster.getSlayerReq();
+//                                thisMasterName = thisMaster.getSlayerMasterName();
+//                            }
+//                            if (player.getSkillManager().getCurrentLevel(Skill.SLAYER) < reqSlayer) {
+//                                DialogueManager.sendStatement(player, "You need " + reqSlayer + " Slayer to use " + thisMasterName + ".");
+//                            } else {
+//                                DialogueManager.sendStatement(player, "You currently have an assignment with " + yourMastersName);
+//                            }
+//                        }
+//                    }
                     case 8591 -> {
                         if (!player.getMinigameAttributes().getNomadAttributes().hasFinishedPart(1)) {
                             player.getPacketSender()
@@ -1338,7 +1336,7 @@ public class NPCOptionPacketListener implements PacketListener {
                     case 2253 -> ShopManager.getShops().get(9).open(player);
                     case 6970 -> {
                         player.setDialogueActionId(35);
-                        DialogueManager.start(player, 63);
+                        //DialogueManager.start(player, 63);
                     }
 
                     // begin ironman second click handles
@@ -1385,7 +1383,7 @@ public class NPCOptionPacketListener implements PacketListener {
                         if (player.getMode() instanceof UltimateIronman) {
                             UltimateIronmanHandler.handleQuickRetrieve(player);
                         } else {
-                            DialogueManager.start(player, 195);
+                           // DialogueManager.start(player, 195);
                         }
                         player.getClickDelay().reset();
                     }

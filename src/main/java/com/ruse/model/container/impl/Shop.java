@@ -2034,12 +2034,6 @@ public class Shop extends ItemContainer {
                         return new Object[]{1000, "Elite Slayer tickets"};
                     case 23174:
                         return new Object[]{25000, "Elite Slayer tickets"};
-                    case 23147:
-                        return new Object[]{20000, "Elite Slayer tickets"};
-                    case 23148:
-                        return new Object[]{20000, "Elite Slayer tickets"};
-                    case 23149:
-                        return new Object[]{20000, "Elite Slayer tickets"};
                 }
             } else if (shop == BARROWS_STORE) {
                 switch (item) {

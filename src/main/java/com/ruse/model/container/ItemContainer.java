@@ -340,6 +340,7 @@ public abstract class ItemContainer {
         for (int i = 0; i < capacity(); i++) {
             if (items[i].getId() > 0 && items[i].getId() == item.getId()) {
                 if (items[i].getAmount() > 0 || ((this instanceof Bank) && items[i].getAmount() <= 1)) {
+                    if(items[i].getEffect() == item.getEffect() && items[i].getBonus()  == item.getBonus())
                         return i;
                 }
             }
@@ -604,7 +605,7 @@ public abstract class ItemContainer {
                 int slot = getEmptySlot();
                 if (slot == -1) {
                     if (!getPlayer().getRank().isAdmin()) {
-                        GroundItemManager.spawnGroundItem(player, new GroundItem(Item.getNoted(item.getId(), amount),
+                        GroundItemManager.spawnGroundItem(player, new GroundItem(item.getEffect() == -1 ? Item.getNoted(item.getId(), amount) : item,
                                 player.getPosition().copy(), player.getUsername(), false, 120,
                                 player.getPosition().getZ() >= 0 && player.getPosition().getZ() < 4,
                                 60));
@@ -616,6 +617,8 @@ public abstract class ItemContainer {
                 } else {
                     items[slot].setId(item.getId());
                     items[slot].setAmount(1);
+                    items[slot].setBonus(item.getBonus());
+                    items[slot].setEffect(item.getEffect());
                 }
                 amount--;
             }
@@ -636,7 +639,7 @@ public abstract class ItemContainer {
      * @return The ItemContainer instance.
      */
     public ItemContainer delete(Item item) {
-        return delete(item, getSlot(item.getId()), true, null);
+        return delete(item, getSlot(item), true, null);
     }
 
     public ItemContainer delete(Item item, ItemContainer to) {

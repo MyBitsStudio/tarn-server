@@ -3,11 +3,8 @@ package com.ruse.world.content;
 import com.ruse.model.definitions.ItemDefinition;
 import com.ruse.util.Misc;
 import com.ruse.world.World;
-import com.ruse.world.content.dialogue.Dialogue;
-import com.ruse.world.content.dialogue.DialogueExpression;
-import com.ruse.world.content.dialogue.DialogueManager;
-import com.ruse.world.content.dialogue.DialogueType;
 import com.ruse.world.entity.impl.player.Player;
+import com.ruse.world.packages.dialogue.DialogueManager;
 
 import java.io.*;
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -56,81 +53,48 @@ public class WellOfGoodwill {
 		}
 	}
 
-	public static void lookDownWell(Player player) {
-		if (checkFull(player)) {
-			return;
-		}
-		DialogueManager.start(player, new Dialogue() {
-
-			@Override
-			public DialogueType type() {
-				return DialogueType.NPC_STATEMENT;
-			}
-
-			@Override
-			public DialogueExpression animation() {
-				return DialogueExpression.NORMAL;
-			}
-
-			@Override
-			public String[] dialogue() {
-				return new String[] { "It looks like the well could hold another "
-						+ Misc.insertCommasToNumber("" + getMissingAmount() + "") + " coins." };
-			}
-
-			@Override
-			public int npcId() {
-				return 802;
-			}
-
-			@Override
-			public Dialogue nextDialogue() {
-				return DialogueManager.getDialogues().get(75);
-			}
-
-		});
-	}
+//	public static void lookDownWell(Player player) {
+//		if (checkFull(player)) {
+//			return;
+//		}
+//		DialogueManager.start(player, new Dialogue() {
+//
+//			@Override
+//			public DialogueType type() {
+//				return DialogueType.NPC_STATEMENT;
+//			}
+//
+//			@Override
+//			public DialogueExpression animation() {
+//				return DialogueExpression.NORMAL;
+//			}
+//
+//			@Override
+//			public String[] dialogue() {
+//				return new String[] { "It looks like the well could hold another "
+//						+ Misc.insertCommasToNumber("" + getMissingAmount() + "") + " coins." };
+//			}
+//
+//			@Override
+//			public int npcId() {
+//				return 802;
+//			}
+//
+//			@Override
+//			public Dialogue nextDialogue() {
+//				return DialogueManager.getDialogues().get(75);
+//			}
+//
+//		});
+//	}
 
 	public static boolean checkFull(Player player) {
-		if (STATE == WellState.FULL) {
-			DialogueManager.start(player, new Dialogue() {
-
-				@Override
-				public DialogueType type() {
-					return DialogueType.NPC_STATEMENT;
-				}
-
-				@Override
-				public DialogueExpression animation() {
-					return DialogueExpression.NORMAL;
-				}
-
-				@Override
-				public String[] dialogue() {
-					return new String[] { "The well is already full of coins and Saradomin",
-							"has granted players with bonus experience for their",
-							"generosity! There are currently " + getMinutesRemaining() + " minutes",
-							"of bonus experience left." };
-				}
-
-				@Override
-				public int npcId() {
-					return 802;
-				}
-
-				@Override
-				public Dialogue nextDialogue() {
-					return DialogueManager.getDialogues().get(75);
-				}
-
-			});
-			return true;
-		}
-		return false;
+		return STATE == WellState.FULL;
 	}
 
 	public static void donate(Player player, int amount) {
 		if (checkFull(player)) {
+			player.sendMessage("The well is already full.");
 			return;
 		}
 		if (amount < LEAST_DONATE_AMOUNT_ACCEPTED) {

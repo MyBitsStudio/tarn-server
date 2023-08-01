@@ -14,7 +14,6 @@ import com.ruse.world.content.BankPin;
 import com.ruse.world.content.CustomObjects;
 import com.ruse.world.content.Gambling.FlowersData;
 import com.ruse.world.content.PlayerLogs;
-import com.ruse.world.content.dialogue.DialogueManager;
 import com.ruse.world.entity.impl.player.Player;
 
 import java.util.ArrayList;
@@ -721,7 +720,7 @@ public class GamblingInterface {
 			@Override
 			protected void execute() {
 				player.setDialogueActionId(920);
-				DialogueManager.start(player, 216);
+				//DialogueManager.start(player, 216);
 				// System.out.println("Starting for: " + player.getUsername());
 				stop();
 				return;
@@ -735,7 +734,7 @@ public class GamblingInterface {
 	public void setHostTurn() {
 		Player player2 = World.getPlayers().get(getGambleWith());
 		player2.setDialogueActionId(920);
-		DialogueManager.start(player2, 216);
+		//DialogueManager.start(player2, 216);
 		// System.out.println("Starting for: " + player2.getUsername());
 		player2.getGambling().bjTurn = 2;
 		bjTurn = 2;

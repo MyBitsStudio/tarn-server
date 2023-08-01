@@ -1,10 +1,9 @@
 package com.ruse.world.packages.raids;
 
 import com.ruse.model.GameObject;
-import com.ruse.world.content.dialogue.DialogueManager;
+import com.ruse.world.packages.dialogue.DialogueManager;
+import com.ruse.world.packages.dialogue.impl.raid.RaidPartyInvite;
 import com.ruse.world.packages.mode.impl.GroupIronman;
-import com.ruse.world.packages.mode.impl.UltimateIronman;
-import com.ruse.world.packages.raids.dialogue.RaidPartyInvite;
 import com.ruse.world.entity.impl.player.Player;
 
 import java.util.ArrayList;
@@ -106,7 +105,7 @@ public abstract class RaidParty {
 //                return;
 //            }
 
-            DialogueManager.start(player, new RaidPartyInvite(this, player));
+            DialogueManager.sendDialogue(player, new RaidPartyInvite(player, this), -1);
             owner.sendMessage("You have invited "+player.getUsername()+" to join your party.");
 
         } else {

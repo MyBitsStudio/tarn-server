@@ -1,7 +1,6 @@
 package com.ruse.world.packages.forge;
 
 import com.ruse.model.Item;
-import com.ruse.world.content.dialogue.DialogueManager;
 import com.ruse.world.entity.impl.player.Player;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

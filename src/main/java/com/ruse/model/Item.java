@@ -3,7 +3,6 @@ package com.ruse.model;
 import com.ruse.GameSettings;
 import com.ruse.ReducedSellPrice;
 import com.ruse.model.definitions.ItemDefinition;
-import com.ruse.world.content.Effigies;
 
 /**
  * Represents an item which is owned by a player.
@@ -13,7 +12,7 @@ import com.ruse.world.content.Effigies;
 
 public class Item {
 
-	private int id, amount, slot;
+	private int id, amount, slot, effect = -1, bonus = -1;
 
 	/**
 	 * An Item object constructor.
@@ -24,6 +23,13 @@ public class Item {
 	public Item(int id, int amount) {
 		this.id = id;
 		this.amount = amount;
+	}
+
+	public Item(int id, int amount, int effect, int bonus) {
+		this.id = id;
+		this.amount = amount;
+		this.effect = effect;
+		this.bonus = bonus;
 	}
 
 	/**
@@ -52,6 +58,22 @@ public class Item {
 		this.slot = slot;
 	}
 
+    public int getEffect() {
+		return this.effect;
+	}
+
+	public int getBonus() {
+		return this.bonus;
+	}
+
+	public void setBonus(int bonus) {
+		this.bonus = bonus;
+	}
+
+	public void setEffect(int effect) {
+		this.effect = effect;
+	}
+
 	public Item setId(int id) {
 		this.id = id;
 		return this;
@@ -73,13 +95,11 @@ public class Item {
 	}
 
 	public boolean tradeable() {
-		String name = getDefinition().getName().toLowerCase();
-
 		for (int i : GameSettings.UNTRADEABLE_ITEMS) {
 			if (id == i)
 				return false;
 		}
-		return !Effigies.isEffigy(id);
+		return true;
 	}
 
 	public boolean reducedPrice() {
@@ -107,8 +127,6 @@ public class Item {
 			if (id == i)
 				return false;
 		}
-		if (Effigies.isEffigy(id))
-			return false;
 		return true;
 	}
 

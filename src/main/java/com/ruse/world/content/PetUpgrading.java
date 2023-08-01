@@ -3,11 +3,8 @@ package com.ruse.world.content;
 import com.ruse.model.Item;
 import com.ruse.model.definitions.ItemDefinition;
 import com.ruse.util.Misc;
-import com.ruse.world.content.dialogue.Dialogue;
-import com.ruse.world.content.dialogue.DialogueExpression;
-import com.ruse.world.content.dialogue.DialogueManager;
-import com.ruse.world.content.dialogue.DialogueType;
 import com.ruse.world.entity.impl.player.Player;
+import com.ruse.world.packages.dialogue.DialogueManager;
 import lombok.Getter;
 
 public enum PetUpgrading {
@@ -56,8 +53,8 @@ public enum PetUpgrading {
     public static boolean upgradeable(Player player, int itemId) {
         for (PetUpgrading petUpgrading : PetUpgrading.values()) {
             if (petUpgrading.itemId == itemId) {
-                DialogueManager.start(player, 9923);
-                player.setDialogueActionId(9923);
+//                DialogueManager.start(player, 9923);
+//                player.setDialogueActionId(9923);
             }
         }
         return false;
@@ -94,35 +91,35 @@ public enum PetUpgrading {
     }
 
     
-    public static Dialogue dialogue(final Player player) {
-        return new Dialogue() {
-            @Override
-            public DialogueType type() {
-                return DialogueType.OPTION;
-            }
-
-            @Override
-            public int npcId() {
-                return -1;
-            }
-
-            @Override
-            public DialogueExpression animation() {
-                return null;
-            }
-
-            @Override
-            public String[] dialogue() {
-                return new String[]{"Sell x" + player.getInventory().getAmount(19000) + " Pet fragments for 100 Tokens each ("
-                        + (player.getInventory().getAmount(19000)  * 100)+" total)",  "Cancel"
-                };
-            }
-
-            @Override
-            public void specialAction() {
-                player.setDialogueActionId(6969);
-            }
-        };
-    }
+//    public static Dialogue dialogue(final Player player) {
+//        return new Dialogue() {
+//            @Override
+//            public DialogueType type() {
+//                return DialogueType.OPTION;
+//            }
+//
+//            @Override
+//            public int npcId() {
+//                return -1;
+//            }
+//
+//            @Override
+//            public DialogueExpression animation() {
+//                return null;
+//            }
+//
+//            @Override
+//            public String[] dialogue() {
+//                return new String[]{"Sell x" + player.getInventory().getAmount(19000) + " Pet fragments for 100 Tokens each ("
+//                        + (player.getInventory().getAmount(19000)  * 100)+" total)",  "Cancel"
+//                };
+//            }
+//
+//            @Override
+//            public void specialAction() {
+//                player.setDialogueActionId(6969);
+//            }
+//        };
+//    }
 
 }

@@ -15,7 +15,6 @@ import com.ruse.world.World;
 import com.ruse.world.content.PlayerPanel;
 import com.ruse.world.content.combat.prayer.CurseHandler;
 import com.ruse.world.content.combat.prayer.PrayerHandler;
-import com.ruse.world.content.dialogue.DialogueManager;
 import com.ruse.world.entity.impl.npc.NPC;
 import com.ruse.world.entity.impl.player.Player;
 
@@ -84,7 +83,7 @@ public class RecipeForDisaster {
 			player.getMinigameAttributes().getRecipeForDisasterAttributes().setPartFinished(8, true);
 			player.moveTo(new Position(3081, 3500, 0));
 			player.restart();
-			DialogueManager.start(player, 46);
+			//DialogueManager.start(player, 46);
 			PlayerPanel.refreshPanel(player);
 			break;
 		}

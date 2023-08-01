@@ -14,9 +14,6 @@ import com.ruse.model.RegionInstance.RegionInstanceType;
 import com.ruse.model.definitions.ItemDefinition;
 import com.ruse.util.Misc;
 import com.ruse.world.World;
-import com.ruse.world.content.dialogue.Dialogue;
-import com.ruse.world.content.dialogue.DialogueExpression;
-import com.ruse.world.content.dialogue.DialogueType;
 import com.ruse.world.entity.impl.GroundItemManager;
 import com.ruse.world.entity.impl.npc.NPC;
 import com.ruse.world.entity.impl.player.Player;
@@ -158,34 +155,34 @@ public class WarriorsGuild {
 	 * 
 	 * @param  The player to show the dialogue for acording to their stats.
 	 */
-	public static Dialogue warriorsGuildDialogue(final Player player) {
-		return new Dialogue() {
-
-			@Override
-			public DialogueType type() {
-				return DialogueType.NPC_STATEMENT;
-			}
-
-			@Override
-			public DialogueExpression animation() {
-				return DialogueExpression.NORMAL;
-			}
-
-			@Override
-			public String[] dialogue() {
-				int defender = getDefender(player);
-				return new String[] { "I'll release some Cyclops which might drop",
-						"" + ItemDefinition.forId(defender).getName().replace(" defender", "") + " Defenders for you.",
-						"Good luck warrior!" };
-			}
-
-			@Override
-			public int npcId() {
-				return 2948;
-			}
-
-		};
-	}
+//	public static Dialogue warriorsGuildDialogue(final Player player) {
+//		return new Dialogue() {
+//
+//			@Override
+//			public DialogueType type() {
+//				return DialogueType.NPC_STATEMENT;
+//			}
+//
+//			@Override
+//			public DialogueExpression animation() {
+//				return DialogueExpression.NORMAL;
+//			}
+//
+//			@Override
+//			public String[] dialogue() {
+//				int defender = getDefender(player);
+//				return new String[] { "I'll release some Cyclops which might drop",
+//						"" + ItemDefinition.forId(defender).getName().replace(" defender", "") + " Defenders for you.",
+//						"Good luck warrior!" };
+//			}
+//
+//			@Override
+//			public int npcId() {
+//				return 2948;
+//			}
+//
+//		};
+//	}
 
 	/**
 	 * The warriors guild task

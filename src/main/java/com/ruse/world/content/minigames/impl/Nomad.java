@@ -8,7 +8,6 @@ import com.ruse.model.RegionInstance;
 import com.ruse.model.RegionInstance.RegionInstanceType;
 import com.ruse.world.World;
 import com.ruse.world.content.PlayerPanel;
-import com.ruse.world.content.dialogue.DialogueManager;
 import com.ruse.world.entity.impl.npc.NPC;
 import com.ruse.world.entity.impl.player.Player;
 
@@ -56,7 +55,7 @@ public class Nomad {
 		if (killed) {
 			p.restart();
 			p.getMinigameAttributes().getNomadAttributes().setPartFinished(1, true);
-			DialogueManager.start(p, 53);
+			//DialogueManager.start(p, 53);
 			PlayerPanel.refreshPanel(p);
 		}
 	}

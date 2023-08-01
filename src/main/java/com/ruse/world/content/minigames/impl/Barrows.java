@@ -11,7 +11,6 @@ import com.ruse.model.RegionInstance.RegionInstanceType;
 import com.ruse.model.definitions.ItemDefinition;
 import com.ruse.util.Misc;
 import com.ruse.world.World;
-import com.ruse.world.content.dialogue.DialogueManager;
 import com.ruse.world.entity.impl.npc.NPC;
 import com.ruse.world.entity.impl.player.Player;
 
@@ -426,8 +425,8 @@ public class Barrows {
 			player.getMinigameAttributes().getBarrowsMinigameAttributes().setRandomCoffin(getRandomCoffin());
 		if (COFFIN_AND_BROTHERS[player.getMinigameAttributes().getBarrowsMinigameAttributes()
 				.getRandomCoffin()][0] == coffinId) {
-			DialogueManager.start(player, 27);
-			player.setDialogueActionId(16);
+//			DialogueManager.start(player, 27);
+//			player.setDialogueActionId(16);
 			return true;
 		}
 		return false;

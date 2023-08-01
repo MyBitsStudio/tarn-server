@@ -6,7 +6,6 @@ import java.util.Map;
 
 import com.ruse.model.Position;
 import com.ruse.util.Misc;
-import com.ruse.world.content.dialogue.DialogueManager;
 import com.ruse.world.entity.impl.player.Player;
 
 public class FightPit {
@@ -150,12 +149,12 @@ public class FightPit {
 					endGame();
 					player.getCombatBuilder().reset(true);
 					boolean giveTokkul = TOTAL_PLAYERS >= 3;
-					if (giveTokkul) {
-						int amount = 400 + (200 * TOTAL_PLAYERS) + Misc.getRandom(200);
-						player.getInventory().add(TOKKUL_ID, amount);
-						DialogueManager.start(player, 359);
-					} else
-						DialogueManager.start(player, 360);
+//					if (giveTokkul) {
+//						int amount = 400 + (200 * TOTAL_PLAYERS) + Misc.getRandom(200);
+//						player.getInventory().add(TOKKUL_ID, amount);
+//						DialogueManager.start(player, 359);
+//					} else
+//						DialogueManager.start(player, 360);
 					return true;
 				}
 			}

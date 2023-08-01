@@ -4,7 +4,6 @@ import com.ruse.engine.task.Task;
 import com.ruse.engine.task.TaskManager;
 import com.ruse.model.*;
 import com.ruse.util.Misc;
-import com.ruse.world.content.dialogue.DialogueManager;
 import com.ruse.world.entity.impl.player.Player;
 
 /**
@@ -182,12 +181,12 @@ public enum ObstacleData {
 					player.getClickDelay().reset();
 					player.getUpdateFlag().flag(Flag.APPEARANCE);
 					if (Agility.passedAllObstacles(player)) {
-						DialogueManager.start(player, DialogueManager.getDialogues().get(57 + Misc.getRandom(2)));
+						//DialogueManager.start(player, DialogueManager.getDialogues().get(57 + Misc.getRandom(2)));
 						player.getInventory().add(2996, 2);
 						Agility.addExperience(player, 60);
 						Agility.finishCourse(player);
 					} else {
-						DialogueManager.start(player, DialogueManager.getDialogues().get(56));
+						//DialogueManager.start(player, DialogueManager.getDialogues().get(56));
 					}
 					Agility.resetProgress(player);
 					player.getPacketSender().sendMessage("You manage to make your way through the pipe.");
@@ -231,14 +230,14 @@ public enum ObstacleData {
 					player.getClickDelay().reset();
 					player.getUpdateFlag().flag(Flag.APPEARANCE);
 					if (Agility.passedAllObstacles(player)) {
-						DialogueManager.start(player, DialogueManager.getDialogues().get(57 + Misc.getRandom(2)));
+						//DialogueManager.start(player, DialogueManager.getDialogues().get(57 + Misc.getRandom(2)));
 						player.getInventory().add(2996, 2);
 						Agility.addExperience(player, 220);
 
 						Agility.finishCourse(player);
 
 					} else {
-						DialogueManager.start(player, DialogueManager.getDialogues().get(56));
+						//DialogueManager.start(player, DialogueManager.getDialogues().get(56));
 					}
 					player.getPacketSender().sendMessage("You manage to make your way through the pipe.");
 					Agility.resetProgress(player);
@@ -461,13 +460,13 @@ public enum ObstacleData {
 					player.setCrossingObstacle(false).setCrossedObstacle(first ? 5 : 6, true);
 					if (player.getPosition().getX() == 2543 && player.getPosition().getY() == 3553) {
 						if (Agility.passedAllObstacles(player)) {
-							DialogueManager.start(player, 57);
+							//DialogueManager.start(player, 57);
 							player.getInventory().add(2996, 4);
 							Agility.addExperience(player, 265);
 							Agility.resetProgress(player);
 							Agility.finishCourse(player);
 						} else {
-							DialogueManager.start(player, 56);
+							//DialogueManager.start(player, 56);
 						}
 						player.getPacketSender().sendMessage("You manage to jump over the wall.");
 					}
@@ -758,12 +757,12 @@ public enum ObstacleData {
 					player.setCrossedObstacle(6, true).setCrossingObstacle(false);
 					Agility.addExperience(player, 100);
 					if (Agility.passedAllObstacles(player)) {
-						DialogueManager.start(player, 57);
+						//DialogueManager.start(player, 57);
 						player.getInventory().add(2996, 6);
 						Agility.addExperience(player, 350);
 						Agility.finishCourse(player);
 					} else {
-						DialogueManager.start(player, 56);
+						//DialogueManager.start(player, 56);
 					}
 					player.getPacketSender().sendMessage("You manage to climb up the wall.");
 					Agility.resetProgress(player);

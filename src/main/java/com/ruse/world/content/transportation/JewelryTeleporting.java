@@ -3,7 +3,6 @@ package com.ruse.world.content.transportation;
 import com.ruse.model.Item;
 import com.ruse.model.Position;
 import com.ruse.model.container.impl.Equipment;
-import com.ruse.world.content.dialogue.DialogueManager;
 import com.ruse.world.entity.impl.player.Player;
 
 public class JewelryTeleporting {
@@ -11,8 +10,8 @@ public class JewelryTeleporting {
 	public static void rub(Player player, int item) {
 		if (player.getInterfaceId() > 0)
 			player.getPacketSender().sendInterfaceRemoval();
-		player.setDialogueActionId(195);
-		DialogueManager.start(player, 88);
+		//player.setDialogueActionId(195);
+		//DialogueManager.start(player, 88);
 		player.setSelectedSkillingItem(item);
 	}
 

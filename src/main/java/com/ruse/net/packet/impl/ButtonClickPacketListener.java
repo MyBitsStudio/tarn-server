@@ -29,8 +29,8 @@ import com.ruse.world.content.combat.prayer.PrayerHandler;
 import com.ruse.world.content.combat.weapon.CombatSpecial;
 import com.ruse.world.content.combat.weapon.FightType;
 import com.ruse.world.content.dailyTask.DailyTaskInterface;
-import com.ruse.world.content.dialogue.DialogueManager;
-import com.ruse.world.content.dialogue.DialogueOptions;
+import com.ruse.world.packages.dialogue.DialogueManager;
+import com.ruse.world.packages.dialogue.impl.bank.BankPinDialogue;
 import com.ruse.world.packages.forge.shop.ForgeShopHandler;
 import com.ruse.world.content.fuser.CombineEnum;
 import com.ruse.world.content.fuser.CombineHandler;
@@ -240,7 +240,7 @@ public class ButtonClickPacketListener implements PacketListener {
             case 21372:
                 player.getWheelOfFortune().open();
                 break;
-            case 21360:
+            case 21360, -13390:
                 player.getPacketSender().sendInterfaceRemoval();
                 break;
             // Previous Teleport Button
@@ -677,11 +677,11 @@ public class ButtonClickPacketListener implements PacketListener {
                 break;
 
 
-            case -3292:
-
-                DialogueManager.start(player, 217);
-                player.setDialogueActionId(217);
-                break;
+//            case -3292:
+//
+//                DialogueManager.start(player, 217);
+//                player.setDialogueActionId(217);
+//                break;
 
             case -27454:
             case -27534:
@@ -1042,28 +1042,28 @@ public class ButtonClickPacketListener implements PacketListener {
                 }
                 break;
             case 26226://Exit TODO
-                if (Dungeoneering.doingOldDungeoneering(player)) {
-                    DialogueManager.start(player, 114);
-                    player.setDialogueActionId(71);
-                }
-                break;
-            case 26229://leave
-                com.ruse.world.content.minigames.impl.dungeoneering.Dungeoneering.Companion.leaveParty(player);
-                player.getPacketSender().sendDungeoneeringTabIcon(true).sendTabInterface(GameSettings.QUESTS_TAB, 27224).sendTab(GameSettings.QUESTS_TAB);
-                break;
-            case 26244:
-            case 26247://floors
-                /*
-                if (player.getMinigameAttributes().getDungeoneeringAttributes().getParty() != null) {
-                    if (player.getMinigameAttributes().getDungeoneeringAttributes().getParty().getOwner().getUsername()
-                            .equals(player.getUsername())) {
-                        DialogueManager.start(player, id == 26247 ? 106 : 105);
-                        player.setDialogueActionId(id == 26247 ? 68 : 67);
-                    } else {
-                        player.getPacketSender().sendMessage("Only the party owner can change this setting.");
-                    }
-                }*/
-                break;
+//                if (Dungeoneering.doingOldDungeoneering(player)) {
+//                    DialogueManager.start(player, 114);
+//                    player.setDialogueActionId(71);
+//                }
+//                break;
+//            case 26229://leave
+//                com.ruse.world.content.minigames.impl.dungeoneering.Dungeoneering.Companion.leaveParty(player);
+//                player.getPacketSender().sendDungeoneeringTabIcon(true).sendTabInterface(GameSettings.QUESTS_TAB, 27224).sendTab(GameSettings.QUESTS_TAB);
+//                break;
+//            case 26244:
+//            case 26247://floors
+//                /*
+//                if (player.getMinigameAttributes().getDungeoneeringAttributes().getParty() != null) {
+//                    if (player.getMinigameAttributes().getDungeoneeringAttributes().getParty().getOwner().getUsername()
+//                            .equals(player.getUsername())) {
+//                        DialogueManager.start(player, id == 26247 ? 106 : 105);
+//                        player.setDialogueActionId(id == 26247 ? 68 : 67);
+//                    } else {
+//                        player.getPacketSender().sendMessage("Only the party owner can change this setting.");
+//                    }
+//                }*/
+//                break;
             case 28180:
                 player.getPacketSender().sendMessage("<shad=1>@red@Teleporting to PVP Arena!");
                 TeleportHandler.teleportPlayer(player, new Position(2375, 4021), player.getSpellbook().getTeleportType());
@@ -1146,19 +1146,7 @@ public class ButtonClickPacketListener implements PacketListener {
                         .sendMessage("To autocast a spell, please right-click it and choose the autocast option.")
                         .sendTab(GameSettings.MAGIC_TAB).sendConfig(108, player.getAutocastSpell() == null ? 3 : 1);
                 break;
-            case 29335:
-                if (player.getInterfaceId() > 0) {
-                    player.getPacketSender()
-                            .sendMessage("Please close the interface you have open before opening another one.");
-                    return;
-                }
-                DialogueManager.start(player, 60);
-                player.setDialogueActionId(27);
-                break;
-            case -13390:
-                player.getPacketSender().sendInterfaceRemoval();
-                break;
-//            case 29454:
+            //            case 29454:
 //                if (player.getClan() != null) {
 //                    ClanManager.getManager().leave(player, false);
 //                    ClanManager.getManager().joinChat(player, "raids");
@@ -1269,9 +1257,7 @@ public class ButtonClickPacketListener implements PacketListener {
                 break;
             case 5294:
                 player.getPacketSender().sendClientRightClickRemoval().sendInterfaceRemoval();
-                player.setDialogueActionId(player.getBankPinAttributes().hasBankPin() ? 8 : 7);
-                DialogueManager.start(player,
-                        DialogueManager.getDialogues().get(player.getBankPinAttributes().hasBankPin() ? 12 : 9));
+                DialogueManager.sendDialogue(player, new BankPinDialogue(player, player.getBankPinAttributes().hasBankPin()), -1);
                 break;
             case 15002:
 
@@ -1285,11 +1271,11 @@ public class ButtonClickPacketListener implements PacketListener {
                 break;
             case 2735:
             case 1511:
-                if (player.getSummoning().getBeastOfBurden() != null) {
+                if (player.getSummoning().getBeastOfBurden() == null) {
+                    player.getPacketSender().sendMessage("You do not have a familiar who can hold items.");
+                } else {
                     player.getSummoning().toInventory();
                     player.getPacketSender().sendInterfaceRemoval();
-                } else {
-                    player.getPacketSender().sendMessage("You do not have a familiar who can hold items.");
                 }
                 break;
             case -11501:
@@ -1865,36 +1851,26 @@ public class ButtonClickPacketListener implements PacketListener {
             return true;
         }
         switch (id) {
-            case 14650:
+            case 14650 -> {
                 player.getPacketSender().removeInterface();
                 return true;
-            case 2494:
-            case 2495:
-            case 2496:
-            case 2497:
-            case 2498:
-            case 2471:
-            case 2472:
-            case 2473:
-            case 2461:
-            case 2462:
-            case 2482:
-            case 2483:
-            case 2484:
-            case 2485:
-                DialogueOptions.handle(player, id);
+            }
+            case 2494, 2495, 2496, 2497, 2498, 2471, 2472, 2473, 2461, 2462, 2482, 2483, 2484, 2485 -> {
+                if (player.getRank().isDeveloper()) {
+                    player.getPacketSender()
+                            .sendMessage("Dialogue button id: " + id + ", dialogue: " + player.getChat().id())
+                            .sendConsoleMessage("Dialogue button id: " + id + ", dialogue: " + player.getChat().id());
+                }
+                if (player.getChat() != null)
+                    player.getChat().handleOption(id);
+                else
+                    player.getPacketSender().removeInterface();
                 return true;
-
-            case -8307:
-            case -8308:
-            case -8309:
-            case -8310:
-            case -8311:
-            case -8312:
-                if (DailyRewards.handleRewards(player, id))
-                    ;
+            }
+            case -8307, -8308, -8309, -8310, -8311, -8312 -> {
+                DailyRewards.handleRewards(player, id);
                 return true;
-
+            }
         }
 
         if (GroupManager.handleButton(player, id)) {
@@ -1908,10 +1884,6 @@ public class ButtonClickPacketListener implements PacketListener {
         if (player.getTeleInterface().handleButton(id)) {
             return true;
         }
-
-      /*  if (TeleportInterface.handleButton(player, id)) {
-            return true;
-        }*/
 
         if(player.loadUpgradeInterface().handleButton(id)) {
             return true;

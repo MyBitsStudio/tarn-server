@@ -6,8 +6,6 @@ import com.ruse.util.Misc;
 import com.ruse.world.World;
 import com.ruse.world.content.KillsTracker;
 import com.ruse.world.content.NpcRequirements;
-import com.ruse.world.content.PlayerPanel;
-import com.ruse.world.content.dialogue.DialogueManager;
 import com.ruse.world.content.skill.impl.slayer.*;
 import com.ruse.world.entity.impl.player.Player;
 

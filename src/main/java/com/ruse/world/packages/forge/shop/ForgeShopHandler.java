@@ -4,7 +4,6 @@ import com.google.common.collect.ImmutableList;
 import com.ruse.model.container.impl.Inventory;
 import com.ruse.model.definitions.ItemDefinition;
 import com.ruse.model.input.EnterAmount;
-import com.ruse.world.content.dialogue.DialogueManager;
 import com.ruse.world.packages.forge.Forge;
 import com.ruse.world.entity.impl.player.Player;
 

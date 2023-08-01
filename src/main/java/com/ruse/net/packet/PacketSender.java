@@ -19,6 +19,7 @@ import com.ruse.world.entity.impl.Character;
 import com.ruse.world.entity.impl.npc.NPC;
 import com.ruse.world.entity.impl.player.Player;
 import com.ruse.world.packages.ranks.StaffRank;
+import com.ruse.world.packages.slot.PerkEquip;
 import com.ruse.world.region.Region;
 import com.ruse.world.region.RegionManager;
 import com.ruse.world.region.dynamic.DynamicRegion;

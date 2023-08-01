@@ -2,12 +2,14 @@ package com.ruse.world.packages.slot;
 
 import com.ruse.util.Misc;
 import lombok.Getter;
+import lombok.Setter;
 import org.jetbrains.annotations.NotNull;
 
 @Getter
+@Setter
 public class SlotBonus {
 
-    private final SlotEffect effect;
+    private SlotEffect effect;
 
     private int bonus = 0;
 

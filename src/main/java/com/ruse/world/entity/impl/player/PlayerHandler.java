@@ -228,7 +228,6 @@ public class PlayerHandler {
         // Update appearance
 
         // Others
-        Lottery.onLogin(player);
         Locations.login(player);
 
         InstanceManager.getManager().onLogin(player);

@@ -23,7 +23,6 @@ import com.ruse.world.content.combat.prayer.CurseHandler;
 import com.ruse.world.content.combat.prayer.PrayerHandler;
 import com.ruse.world.content.combat.range.DwarfMultiCannon;
 import com.ruse.world.content.combat.weapon.CombatSpecial;
-import com.ruse.world.content.dialogue.DialogueManager;
 import com.ruse.world.content.grandexchange.GrandExchange;
 import com.ruse.world.content.holidayevents.christmas2016;
 import com.ruse.world.content.holidayevents.easter2017data;
@@ -182,8 +181,8 @@ public class ObjectActionPacketListener implements PacketListener {
                         if (gameObject.getDefinition().getName().toLowerCase().contains("bank")) {
                             if (player.getMode() instanceof GroupIronman
                                     && player.getIronmanGroup() != null) {
-                                DialogueManager.start(player, 8002);
-                                player.setDialogueActionId(8002);
+//                                DialogueManager.start(player, 8002);
+//                                player.setDialogueActionId(8002);
                             } else {
                                 player.getBank(player.getCurrentBankTab()).open();
                             }
@@ -244,53 +243,53 @@ public class ObjectActionPacketListener implements PacketListener {
 
                             CurseHandler.deactivateAll(player);
 
-                            if (player.getLocation() == Location.ZOMBIE_LOBBY) {
-                                if (player.getZombieParty() != null) {
-                                    if (player.getZombieParty().getOwner().equals(player)) {
-                                        player.setDialogueActionId(2012);
-                                        DialogueManager.start(player, 2012);
-                                    } else {
-                                        player.sendMessage("Only the party leader can start the Raids [1]");
-                                    }
-                                } else {
-                                    player.sendMessage("You must be in a party to start the Raids [1]");
-                                }
-                            }
+//                            if (player.getLocation() == Location.ZOMBIE_LOBBY) {
+//                                if (player.getZombieParty() != null) {
+//                                    if (player.getZombieParty().getOwner().equals(player)) {
+//                                        player.setDialogueActionId(2012);
+//                                        DialogueManager.start(player, 2012);
+//                                    } else {
+//                                        player.sendMessage("Only the party leader can start the Raids [1]");
+//                                    }
+//                                } else {
+//                                    player.sendMessage("You must be in a party to start the Raids [1]");
+//                                }
+//                            }
                             break;
                         case 10251:
 
                             CurseHandler.deactivateAll(player);
 
-                            if (player.getLocation() == Location.AURA_LOBBY) {
-                                if (player.getAuraParty() != null) {
-                                    if (player.getAuraParty().getOwner().equals(player)) {
-                                        AuraRaids.start(player.getAuraParty());
-                                        //player.setDialogueActionId(2012);
-                                       // DialogueManager.start(player, 2012);
-                                    } else {
-                                        player.sendMessage("Only the party leader can start the Raids [2]");
-                                    }
-                                } else {
-                                    player.sendMessage("You must be in a party to start the Raids [2]");
-                                }
-                            }
+//                            if (player.getLocation() == Location.AURA_LOBBY) {
+//                                if (player.getAuraParty() != null) {
+//                                    if (player.getAuraParty().getOwner().equals(player)) {
+//                                        AuraRaids.start(player.getAuraParty());
+//                                        //player.setDialogueActionId(2012);
+//                                       // DialogueManager.start(player, 2012);
+//                                    } else {
+//                                        player.sendMessage("Only the party leader can start the Raids [2]");
+//                                    }
+//                                } else {
+//                                    player.sendMessage("You must be in a party to start the Raids [2]");
+//                                }
+//                            }
                             break;
                         case 10014:
                             DungeoneeringParty party1 = player.getMinigameAttributes().getDungeoneeringAttributes().getParty();
-                            if (party1 != null) {
-                                if (!party1.getOwner().equals(player)) {
-                                    player.sendMessage("Only the party leader can start the dungeon.");
-                                } else {
-                                    if (com.ruse.world.content.minigames.impl.dungeoneering.Dungeoneering.Companion.ready(party1)) {
-                                        com.ruse.world.content.minigames.impl.dungeoneering.Dungeoneering dung = new com.ruse.world.content.minigames.impl.dungeoneering.Dungeoneering(party1);
-                                        dung.startDungeon();
-                                    } else {
-                                        party1.sendMessage("Your party is not ready.");
-                                    }
-                                }
-                            } else {
-                                player.sendMessage("Please join a party before entering a dungeon.");
-                            }
+//                            if (party1 != null) {
+//                                if (!party1.getOwner().equals(player)) {
+//                                    player.sendMessage("Only the party leader can start the dungeon.");
+//                                } else {
+//                                    if (com.ruse.world.content.minigames.impl.dungeoneering.Dungeoneering.Companion.ready(party1)) {
+//                                        com.ruse.world.content.minigames.impl.dungeoneering.Dungeoneering dung = new com.ruse.world.content.minigames.impl.dungeoneering.Dungeoneering(party1);
+//                                        dung.startDungeon();
+//                                    } else {
+//                                        party1.sendMessage("Your party is not ready.");
+//                                    }
+//                                }
+//                            } else {
+//                                player.sendMessage("Please join a party before entering a dungeon.");
+//                            }
                             break;
 
                         case 5222:
@@ -356,18 +355,18 @@ public class ObjectActionPacketListener implements PacketListener {
                         case 16958:
                             CurseHandler.deactivateAll(player);
 
-                            if (player.getLocation() == Location.ZOMBIE_LOBBY) {
-                                if (player.getZombieParty() != null) {
-                                    if (player.getZombieParty().getOwner().equals(player)) {
-                                        player.setDialogueActionId(2012);
-                                        DialogueManager.start(player, 2012);
-                                    } else {
-                                        player.sendMessage("Only the party leader can start the Raids [2]");
-                                    }
-                                } else {
-                                    player.sendMessage("You must be in a party to start the Raids [2]");
-                                }
-                            }
+//                            if (player.getLocation() == Location.ZOMBIE_LOBBY) {
+//                                if (player.getZombieParty() != null) {
+//                                    if (player.getZombieParty().getOwner().equals(player)) {
+//                                        player.setDialogueActionId(2012);
+//                                        DialogueManager.start(player, 2012);
+//                                    } else {
+//                                        player.sendMessage("Only the party leader can start the Raids [2]");
+//                                    }
+//                                } else {
+//                                    player.sendMessage("You must be in a party to start the Raids [2]");
+//                                }
+//                            }
                             break;
                        /* case 52601:
                             Stalls.stealFromAFKStall(player, id, 1);
@@ -558,10 +557,10 @@ public class ObjectActionPacketListener implements PacketListener {
                                 player.getPacketSender().sendMessage("You escape from the spikes.");
                             }
                             break;
-                        case 4387://
-                            player.setDialogueActionId(214);
-                            DialogueManager.start(player, 214);
-                            break;
+//                        case 4387://
+//                            player.setDialogueActionId(214);
+//                            DialogueManager.start(player, 214);
+//                            break;
                         case 4408:
 
                             /*
@@ -855,12 +854,12 @@ public class ObjectActionPacketListener implements PacketListener {
                             player.getPacketSender().sendMessage("@red@Kill stormtrooper to get the key 1 and 2.");
                             break;
 
-                        case 9975:
-                        case 2804:
-                        case 41900:
-                            DialogueManager.start(player, 22);
-                            player.setDialogueActionId(14);
-                            break;
+//                        case 9975:
+//                        case 2804:
+//                        case 41900:
+//                            DialogueManager.start(player, 22);
+//                            player.setDialogueActionId(14);
+//                            break;
 
                         case 134:
                         case 135:
@@ -969,19 +968,19 @@ public class ObjectActionPacketListener implements PacketListener {
                             player.moveTo(new Position(3563, 3313, 0));
                             Location.THE_SIX.leave(player);
                             break;
-                        case 5259:
-                            if (player.getPosition().getX() >= 3653) { // :)
-                                if (player.getPosition().getY() != 3485 && player.getPosition().getY() != 3486) {
-                                    player.getPacketSender()
-                                            .sendMessage("You need to stand infront of the barrier to pass through.");
-                                    return;
-                                }
-                                player.moveTo(new Position(3651, player.getPosition().getY()));
-                            } else {
-                                player.setDialogueActionId(73);
-                                DialogueManager.start(player, 115);
-                            }
-                            break;
+//                        case 5259:
+//                            if (player.getPosition().getX() >= 3653) { // :)
+//                                if (player.getPosition().getY() != 3485 && player.getPosition().getY() != 3486) {
+//                                    player.getPacketSender()
+//                                            .sendMessage("You need to stand infront of the barrier to pass through.");
+//                                    return;
+//                                }
+//                                player.moveTo(new Position(3651, player.getPosition().getY()));
+//                            } else {
+//                                player.setDialogueActionId(73);
+//                                DialogueManager.start(player, 115);
+//                            }
+//                            break;
                         case 4470:
                             if (player.getPosition().getX() == 2459 && player.getPosition().getY() == 2862
                                     || player.getPosition().getY() == 2861) { // :)
@@ -1023,11 +1022,11 @@ public class ObjectActionPacketListener implements PacketListener {
                                         .sendMessage("The portal does not seem to be functioning properly.");
                             }
                             break;
-                        case 45803:
-                        case 1767:
-                            DialogueManager.start(player, 114);
-                            player.setDialogueActionId(72);
-                            break;
+//                        case 45803:
+//                        case 1767:
+//                            DialogueManager.start(player, 114);
+//                            player.setDialogueActionId(72);
+//                            break;
                         case 7352:
                             if (Dungeoneering.doingOldDungeoneering(player) && player.getMinigameAttributes()
                                     .getDungeoneeringAttributes().getParty().getGatestonePosition() != null) {
@@ -1538,10 +1537,10 @@ public class ObjectActionPacketListener implements PacketListener {
                         case 4496:
                             player.moveTo(new Position(3412, 3541, 1));
                             break;
-                        case 2491:
-                            player.setDialogueActionId(48);
-                            DialogueManager.start(player, 87);
-                            break;
+//                        case 2491:
+//                            player.setDialogueActionId(48);
+//                            DialogueManager.start(player, 87);
+//                            break;
                         case 25339:
                         case 25340:
                             player.moveTo(new Position(1778, 5346, player.getPosition().getZ() == 0 ? 1 : 0));
@@ -1679,15 +1678,15 @@ public class ObjectActionPacketListener implements PacketListener {
                                             + player.getSkillManager().getMaxLevel(Skill.SUMMONING));
                             player.getPacketSender().sendMessage("You recharge your Summoning points.");
                             break;
-                        case 57225:
-                            if (!player.getMinigameAttributes().getGodwarsDungeonAttributes().hasEnteredRoom()) {
-                                player.setDialogueActionId(44);
-                                DialogueManager.start(player, 79);
-                            } else {
-                                player.moveTo(new Position(2906, 5204));
-                                player.getMinigameAttributes().getGodwarsDungeonAttributes().setHasEnteredRoom(false);
-                            }
-                            break;
+//                        case 57225:
+//                            if (!player.getMinigameAttributes().getGodwarsDungeonAttributes().hasEnteredRoom()) {
+//                                player.setDialogueActionId(44);
+//                                DialogueManager.start(player, 79);
+//                            } else {
+//                                player.moveTo(new Position(2906, 5204));
+//                                player.getMinigameAttributes().getGodwarsDungeonAttributes().setHasEnteredRoom(false);
+//                            }
+//                            break;
                         // open dialogueopti
                         // Trying to make this object open a dialouge.
                         // and when clicking on the fi
@@ -1911,26 +1910,25 @@ public class ObjectActionPacketListener implements PacketListener {
                         case 15644:
                         case 15641:
                             switch (player.getPosition().getZ()) {
-                                case 0:
-                                    player.moveTo(new Position(2855, player.getPosition().getY() >= 3546 ? 3545 : 3546));
-                                    break;
-                                case 2:
-                                    if (player.getPosition().getX() == 2846) {
-                                        if (player.getInventory().getAmount(8851) < 70) {
-                                            player.getPacketSender()
-                                                    .sendMessage("You need at least 70 tokens to enter this area.");
-                                            return;
-                                        }
-                                        DialogueManager.start(player, WarriorsGuild.warriorsGuildDialogue(player));
-                                        player.moveTo(new Position(2847, player.getPosition().getY(), 2));
-                                        WarriorsGuild.handleTokenRemoval(player);
-                                    } else if (player.getPosition().getX() == 2847) {
-                                        WarriorsGuild.resetCyclopsCombat(player);
-                                        player.moveTo(new Position(2846, player.getPosition().getY(), 2));
-                                        player.getMinigameAttributes().getWarriorsGuildAttributes()
-                                                .setEnteredTokenRoom(false);
-                                    }
-                                    break;
+                                case 0 ->
+                                        player.moveTo(new Position(2855, player.getPosition().getY() >= 3546 ? 3545 : 3546));
+//                                case 2 -> {
+//                                    if (player.getPosition().getX() == 2846) {
+//                                        if (player.getInventory().getAmount(8851) < 70) {
+//                                            player.getPacketSender()
+//                                                    .sendMessage("You need at least 70 tokens to enter this area.");
+//                                            return;
+//                                        }
+//                                        DialogueManager.start(player, WarriorsGuild.warriorsGuildDialogue(player));
+//                                        player.moveTo(new Position(2847, player.getPosition().getY(), 2));
+//                                        WarriorsGuild.handleTokenRemoval(player);
+//                                    } else if (player.getPosition().getX() == 2847) {
+//                                        WarriorsGuild.resetCyclopsCombat(player);
+//                                        player.moveTo(new Position(2846, player.getPosition().getY(), 2));
+//                                        player.getMinigameAttributes().getWarriorsGuildAttributes()
+//                                                .setEnteredTokenRoom(false);
+//                                    }
+//                                }
                             }
                             break;
                         case 28714:
@@ -1972,10 +1970,10 @@ public class ObjectActionPacketListener implements PacketListener {
                         case 22774:
                             Stalls.stealFromStall(player, gameObject, 90, 250, new Item(ItemDefinition.COIN_ID, 3000 + Misc.getRandom(7000)), "You stole some coins.");
                             break;
-                        case 30205:
-                            player.setDialogueActionId(11);
-                            DialogueManager.start(player, 20);
-                            break;
+//                        case 30205:
+//                            player.setDialogueActionId(11);
+//                            DialogueManager.start(player, 20);
+//                            break;
                         case 28716:
                             if (!player.busy()) {
                                 player.getSkillManager().updateSkill(Skill.SUMMONING);
@@ -2150,8 +2148,8 @@ public class ObjectActionPacketListener implements PacketListener {
                         case 3194:
                             if (player.getMode() instanceof GroupIronman
                                     && player.getIronmanGroup() != null) {
-                                DialogueManager.start(player, 8002);
-                                player.setDialogueActionId(8002);
+//                                DialogueManager.start(player, 8002);
+//                                player.setDialogueActionId(8002);
                             } else {
                                 player.getBank(player.getCurrentBankTab()).open();
                             }
@@ -2436,10 +2434,10 @@ public class ObjectActionPacketListener implements PacketListener {
                             }
                         }
                         case 172 -> CrystalChest.sendRewardInterface(player);
-                        case 9975 -> {
-                            DialogueManager.start(player, 22);
-                            player.setDialogueActionId(14);
-                        }
+//                        case 9975 -> {
+//                            DialogueManager.start(player, 22);
+//                            player.setDialogueActionId(14);
+//                        }
                         case 6910, 4483, 25808, 3193, 2213, 11758, 14367, 42192, 75, 26972, 11338, 19230 ->
                                 player.getBank(player.getCurrentBankTab()).open();
                         case 26945 -> ServerPerks.getInstance().open(player);

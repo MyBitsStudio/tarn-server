@@ -15,22 +15,17 @@ import com.ruse.model.input.impl.*;
 import com.ruse.net.packet.Packet;
 import com.ruse.net.packet.PacketListener;
 import com.ruse.world.content.*;
-import com.ruse.world.content.combat.CombatFactory;
-import com.ruse.world.content.combat.magic.Autocasting;
-import com.ruse.world.content.combat.weapon.CombatSpecial;
-import com.ruse.world.content.dialogue.DialogueManager;
 import com.ruse.world.content.tradingpost.TradingPost;
 import com.ruse.world.packages.forge.shop.ForgeShopHandler;
 import com.ruse.world.content.grandexchange.GrandExchange;
 import com.ruse.world.content.grandexchange.GrandExchangeOffer;
 import com.ruse.world.content.minigames.impl.Dueling;
-import com.ruse.world.content.minigames.impl.Dueling.DuelRule;
-import com.ruse.world.content.minigames.impl.YesNoDialogue;
 import com.ruse.world.content.skill.impl.crafting.Jewelry;
 import com.ruse.world.content.skill.impl.smithing.EquipmentMaking;
 import com.ruse.world.content.skill.impl.smithing.SmithingData;
 import com.ruse.world.content.transportation.JewelryTeleporting;
 import com.ruse.world.entity.impl.player.Player;
+import com.ruse.world.packages.slot.SlotItems;
 
 public class ItemContainerActionPacketListener implements PacketListener {
 
@@ -52,6 +47,10 @@ public class ItemContainerActionPacketListener implements PacketListener {
 		}
 
 		if(player.getEquipment().handleContainer(slot, 1, id)){
+			return;
+		}
+
+		if(SlotItems.handlePerk(player, player.getInventory().get(slot))){
 			return;
 		}
 
@@ -316,6 +315,9 @@ public class ItemContainerActionPacketListener implements PacketListener {
 			player.getPacketSender().sendMessage("secondAction itemContainer. IF: " + interfaceId + " slot: " + slot + ", id: " + id);
 		}
 		if(player.getEquipment().handleContainer(slot, 2, id)){
+			return;
+		}
+		if(SlotItems.handlePerk(player, player.getInventory().get(slot))){
 			return;
 		}
 		switch (interfaceId) {

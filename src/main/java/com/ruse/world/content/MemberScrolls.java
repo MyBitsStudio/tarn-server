@@ -1,3 +1,4 @@
+/*
 package com.ruse.world.content;
 
 import com.ruse.model.definitions.ItemDefinition;
@@ -38,9 +39,11 @@ public class MemberScrolls {
 //		}
 	}
 
-	/*
+	*/
+/*
 	
-	 */
+	 *//*
+
 
 	public static boolean handleScroll(Player player, int item, boolean claimAll) {
 		if (!player.getInventory().contains(item) && !(player instanceof MiniPlayer)) {
@@ -581,3 +584,4 @@ public class MemberScrolls {
 		player.bondClickedClaimAll = false;
 	}
 }
+*/

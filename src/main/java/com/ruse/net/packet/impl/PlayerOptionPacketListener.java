@@ -9,8 +9,6 @@ import com.ruse.util.Misc;
 import com.ruse.world.World;
 import com.ruse.world.content.PlayerLogs;
 import com.ruse.world.content.combat.CombatFactory;
-import com.ruse.world.content.dialogue.DialogueManager;
-import com.ruse.world.content.dialogue.impl.DungPartyInvitation;
 import com.ruse.world.content.minigames.impl.dungeoneering.Dungeoneering;
 import com.ruse.world.content.skill.impl.old_dungeoneering.UltimateIronmanHandler;
 import com.ruse.world.entity.impl.player.Player;
@@ -77,15 +75,15 @@ public class PlayerOptionPacketListener implements PacketListener {
 
 		if(player.getPlayerInteractingOption() == PlayerInteractingOption.INVITE) {
 
-			if(player.getLocation() == Location.DUNGEONEERING) {
-				if(!Dungeoneering.Companion.checkInv(player, attacked)) {
-					return;
-				}
-
-				player.getMinigameAttributes().getDungeoneeringAttributes().setLastInvitation(System.currentTimeMillis());
-				DialogueManager.start(attacked, new DungPartyInvitation(player, attacked));
-				player.getPacketSender().sendMessage("An invitation has been sent to " + attacked.getUsername());
-			}
+//			if(player.getLocation() == Location.DUNGEONEERING) {
+//				if(!Dungeoneering.Companion.checkInv(player, attacked)) {
+//					return;
+//				}
+//
+//				player.getMinigameAttributes().getDungeoneeringAttributes().setLastInvitation(System.currentTimeMillis());
+//				DialogueManager.start(attacked, new DungPartyInvitation(player, attacked));
+//				player.getPacketSender().sendMessage("An invitation has been sent to " + attacked.getUsername());
+//			}
 
 		}
 

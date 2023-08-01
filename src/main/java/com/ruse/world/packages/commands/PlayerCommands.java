@@ -15,10 +15,11 @@ import com.ruse.world.content.combat.DesolaceFormulas;
 import com.ruse.world.content.combat.prayer.CurseHandler;
 import com.ruse.world.content.combat.prayer.PrayerHandler;
 import com.ruse.world.content.dailyTask.DailyTaskHandler;
-import com.ruse.world.content.dialogue.DialogueManager;
 import com.ruse.world.packages.combat.max.MagicMax;
 import com.ruse.world.packages.combat.max.MeleeMax;
 import com.ruse.world.packages.combat.max.RangeMax;
+import com.ruse.world.packages.dialogue.DialogueManager;
+import com.ruse.world.packages.dialogue.impl.EmptyInv;
 import com.ruse.world.packages.donation.DonationManager;
 import com.ruse.world.content.minigames.impl.dungeoneering.DungeoneeringParty;
 import com.ruse.world.content.progressionzone.ProgressionZone;
@@ -348,8 +349,7 @@ public class PlayerCommands {
                 return true;
 
             case "empty":
-                player.setDialogueActionId(523);
-                DialogueManager.start(player, 523);
+                DialogueManager.sendDialogue(player, new EmptyInv(player), -1);
                 return true;
 
             case "droplog":

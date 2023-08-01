@@ -9,7 +9,6 @@ import com.ruse.model.Skill;
 import com.ruse.model.definitions.ItemDefinition;
 import com.ruse.util.Misc;
 import com.ruse.world.World;
-import com.ruse.world.content.dialogue.DialogueManager;
 import com.ruse.world.content.skill.impl.construction.ConstructionData.*;
 import com.ruse.world.content.skill.impl.construction.Palette.PaletteTile;
 import com.ruse.world.entity.impl.npc.NPC;
@@ -788,11 +787,11 @@ public class Construction {
 			return;
 		for (int i : ConstructionData.DOORSPACEIDS) {
 			if (objectId == i) {
-				if (!roomExists(p)) {
+				if (roomExists(p)) {
+					//DialogueManager.start(p, ConstructionDialogues.rotateObjectDialogue(p));
+				} else {
 					p.getPacketSender().sendInterface(28643);
 					return;
-				} else {
-					DialogueManager.start(p, ConstructionDialogues.rotateObjectDialogue(p));
 				}
 			}
 		}
@@ -937,7 +936,7 @@ public class Construction {
 				return true;
 			}
 			if (p.getDialogueActionId() == 428) {
-				DialogueManager.start(p, ConstructionDialogues.withdrawSuppliesDialogue(p, 427));
+				//DialogueManager.start(p, ConstructionDialogues.withdrawSuppliesDialogue(p, 427));
 				return true;
 			}
 			if (p.getDialogueActionId() == 442) {
@@ -1038,7 +1037,7 @@ public class Construction {
 				return true;
 			}
 			if (p.getDialogueActionId() == 430) {
-				DialogueManager.start(p, ConstructionDialogues.withdrawSuppliesDialogue(p, 429));
+				//DialogueManager.start(p, ConstructionDialogues.withdrawSuppliesDialogue(p, 429));
 				return true;
 			}
 			if (p.getDialogueActionId() == 434) {
@@ -1060,7 +1059,7 @@ public class Construction {
 				String s = Portals.VARROCK.canBuild(p);
 				if (s != null) {
 					p.getPacketSender().sendInterfaceRemoval();
-					DialogueManager.start(p, ConstructionDialogues.sendConstructionStatement(s));
+					//DialogueManager.start(p, ConstructionDialogues.sendConstructionStatement(s));
 				}
 				return true;
 			}
@@ -1068,7 +1067,7 @@ public class Construction {
 				String s = Portals.ARDOUGNE.canBuild(p);
 				if (s != null) {
 					p.getPacketSender().sendInterfaceRemoval();
-					DialogueManager.start(p, ConstructionDialogues.sendConstructionStatement(s));
+					//DialogueManager.start(p, ConstructionDialogues.sendConstructionStatement(s));
 				}
 				return true;
 			}
@@ -1122,7 +1121,7 @@ public class Construction {
 				String s = Portals.LUMBRIDGE.canBuild(p);
 				if (s != null) {
 					p.getPacketSender().sendInterfaceRemoval();
-					DialogueManager.start(p, ConstructionDialogues.sendConstructionStatement(s));
+					//DialogueManager.start(p, ConstructionDialogues.sendConstructionStatement(s));
 				}
 				return true;
 			}
@@ -1130,7 +1129,7 @@ public class Construction {
 				String s = Portals.YANILLE.canBuild(p);
 				if (s != null) {
 					p.getPacketSender().sendInterfaceRemoval();
-					DialogueManager.start(p, ConstructionDialogues.sendConstructionStatement(s));
+					//DialogueManager.start(p, ConstructionDialogues.sendConstructionStatement(s));
 				}
 				return true;
 			}
@@ -1154,10 +1153,10 @@ public class Construction {
 			}
 			if (p.getDialogueActionId() == 452) {
 				if (p.getRegionInstance().getOwner() == p) {
-					DialogueManager.start(p, ConstructionDialogues.servantOptions(p, 453));
+					//DialogueManager.start(p, ConstructionDialogues.servantOptions(p, 453));
 				} else
-					DialogueManager.start(p,
-							ConstructionDialogues.notPlayersButler(((NPC) p.getInteractingEntity()).getId()));
+					//DialogueManager.start(p,
+							//ConstructionDialogues.notPlayersButler(((NPC) p.getInteractingEntity()).getId()));
 				return true;
 			}
 			if (p.getDialogueActionId() == 441) {
@@ -1194,7 +1193,7 @@ public class Construction {
 				String s = Portals.FALADOR.canBuild(p);
 				if (s != null) {
 					p.getPacketSender().sendInterfaceRemoval();
-					DialogueManager.start(p, ConstructionDialogues.sendConstructionStatement(s));
+					//DialogueManager.start(p, ConstructionDialogues.sendConstructionStatement(s));
 				}
 				return true;
 			}
@@ -1202,7 +1201,7 @@ public class Construction {
 				String s = Portals.KHARYLL.canBuild(p);
 				if (s != null) {
 					p.getPacketSender().sendInterfaceRemoval();
-					DialogueManager.start(p, ConstructionDialogues.sendConstructionStatement(s));
+					//DialogueManager.start(p, ConstructionDialogues.sendConstructionStatement(s));
 				}
 				return true;
 			}
@@ -1235,8 +1234,8 @@ public class Construction {
 					butler.setGreetVisitors(true);
 					p.getPacketSender().sendInterfaceRemoval();
 				} else {
-					DialogueManager.start(p,
-							ConstructionDialogues.notPlayersButler(((NPC) p.getInteractingEntity()).getId()));
+					//DialogueManager.start(p,
+							//ConstructionDialogues.notPlayersButler(((NPC) p.getInteractingEntity()).getId()));
 				}
 				return true;
 
@@ -1268,7 +1267,7 @@ public class Construction {
 				String s = Portals.CAMELOT.canBuild(p);
 				if (s != null) {
 					p.getPacketSender().sendInterfaceRemoval();
-					DialogueManager.start(p, ConstructionDialogues.sendConstructionStatement(s));
+					//DialogueManager.start(p, ConstructionDialogues.sendConstructionStatement(s));
 				}
 				return true;
 			}
@@ -1276,7 +1275,7 @@ public class Construction {
 				String s = Portals.EMPTY.canBuild(p);
 				if (s != null) {
 					p.getPacketSender().sendInterfaceRemoval();
-					DialogueManager.start(p, ConstructionDialogues.sendConstructionStatement(s));
+					//DialogueManager.start(p, ConstructionDialogues.sendConstructionStatement(s));
 				}
 				return true;
 			}
@@ -1287,7 +1286,7 @@ public class Construction {
 				return true;
 			}
 			if (p.getDialogueActionId() == 454) {
-				DialogueManager.start(p, ConstructionDialogues.servantOptions(p, 453));
+				//DialogueManager.start(p, ConstructionDialogues.servantOptions(p, 453));
 				return true;
 			}
 			if (p.getDialogueActionId() == 455) {
@@ -1332,13 +1331,13 @@ public class Construction {
 			break;
 		case 2498:
 			if (p.getDialogueActionId() == 453) {
-				DialogueManager.start(p, ConstructionDialogues.servantOptions(p, 454));
+				//DialogueManager.start(p, ConstructionDialogues.servantOptions(p, 454));
 				return true;
 			} else if (p.getDialogueActionId() == 454) {
-				DialogueManager.start(p, ConstructionDialogues.servantOptions(p, 455));
+				//DialogueManager.start(p, ConstructionDialogues.servantOptions(p, 455));
 				return true;
 			} else if (p.getDialogueActionId() == 455) {
-				DialogueManager.start(p, ConstructionDialogues.servantOptions(p, 454));
+				//DialogueManager.start(p, ConstructionDialogues.servantOptions(p, 454));
 				return true;
 			}
 			if (p.getDialogueActionId() == 452) {
@@ -1370,25 +1369,25 @@ public class Construction {
 				return true;
 			}
 			if (p.getDialogueActionId() == 427) {
-				DialogueManager.start(p, ConstructionDialogues.withdrawSuppliesDialogue(p, 428));
+				//DialogueManager.start(p, ConstructionDialogues.withdrawSuppliesDialogue(p, 428));
 				return true;
 			}
 			if (p.getDialogueActionId() == 429) {
-				DialogueManager.start(p, ConstructionDialogues.withdrawSuppliesDialogue(p, 430));
+				//DialogueManager.start(p, ConstructionDialogues.withdrawSuppliesDialogue(p, 430));
 				return true;
 			}
 			if (p.getDialogueActionId() == 431) {
-				DialogueManager.start(p, ConstructionDialogues.withdrawSuppliesDialogue(p, 432));
+				//DialogueManager.start(p, ConstructionDialogues.withdrawSuppliesDialogue(p, 432));
 				return true;
 			} else if (p.getDialogueActionId() == 432) {
-				DialogueManager.start(p, ConstructionDialogues.withdrawSuppliesDialogue(p, 431));
+				//DialogueManager.start(p, ConstructionDialogues.withdrawSuppliesDialogue(p, 431));
 				return true;
 			}
 			if (p.getDialogueActionId() == 435) {
-				DialogueManager.start(p, ConstructionDialogues.withdrawSuppliesDialogue(p, 436));
+				//DialogueManager.start(p, ConstructionDialogues.withdrawSuppliesDialogue(p, 436));
 				return true;
 			} else if (p.getDialogueActionId() == 436) {
-				DialogueManager.start(p, ConstructionDialogues.withdrawSuppliesDialogue(p, 435));
+				//DialogueManager.start(p, ConstructionDialogues.withdrawSuppliesDialogue(p, 435));
 				return true;
 			}
 			break;
@@ -1404,7 +1403,7 @@ public class Construction {
 						Furniture.EXIT_PORTAL.getFurnitureId(), HotSpots.CENTREPIECE.getXOffset(),
 						HotSpots.CENTREPIECE.getYOffset());
 				p.getHouseFurniture().add(pf);
-				DialogueManager.start(p, 354);
+				//DialogueManager.start(p, 354);
 				return true;
 			}
 			if (p.getDialogueActionId() == 457) {
@@ -1422,8 +1421,8 @@ public class Construction {
 			if (p.getDialogueActionId() == 444) {
 				Butlers b = Butlers.forId(((NPC) p.getInteractingEntity()).getId());
 				if (p.getSkillManager().getCurrentLevel(Skill.DUNGEONEERING) < b.getConsLevel()) {
-					DialogueManager.start(p,
-							ConstructionDialogues.hireServantDeclineDialogue(p, b.getNpcId(), "lvlreq"));
+					//DialogueManager.start(p,
+						//	ConstructionDialogues.hireServantDeclineDialogue(p, b.getNpcId(), "lvlreq"));
 					return true;
 				}
 				int roomCount = 0;
@@ -1441,15 +1440,15 @@ public class Construction {
 					}
 				}
 				if (roomCount < 2) {
-					DialogueManager.start(p, ConstructionDialogues.hireServantDeclineDialogue(p, b.getNpcId(), "room"));
+					//DialogueManager.start(p, ConstructionDialogues.hireServantDeclineDialogue(p, b.getNpcId(), "room"));
 					return true;
 				}
-				DialogueManager.start(p, ConstructionDialogues.hireServantMakeDealDialogue(p, b.getNpcId()));
+				//DialogueManager.start(p, ConstructionDialogues.hireServantMakeDealDialogue(p, b.getNpcId()));
 				return true;
 			}
 			if (p.getDialogueActionId() == 448) {
 				p.setServantItemFetch(((NPC) p.getInteractingEntity()).getId());
-				DialogueManager.start(p, ConstructionDialogues.finalServantDealDialogue(true));
+				//DialogueManager.start(p, ConstructionDialogues.finalServantDealDialogue(true));
 				return true;
 			}
 			if (p.getDialogueActionId() == 439) {
@@ -1534,7 +1533,7 @@ public class Construction {
 
 		case 2462:// no option
 			if (p.getDialogueActionId() == 448 || p.getDialogueActionId() == 444) {
-				DialogueManager.start(p, ConstructionDialogues.finalServantDealDialogue(false));
+				//DialogueManager.start(p, ConstructionDialogues.finalServantDealDialogue(false));
 				return true;
 			}
 			if (p.getDialogueActionId() == 439) {

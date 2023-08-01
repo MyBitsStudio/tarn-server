@@ -11,12 +11,13 @@ import com.ruse.world.content.NpcRequirements;
 import com.ruse.world.content.PlayerPanel;
 import com.ruse.world.content.achievement.Achievements;
 import com.ruse.world.content.dailytasks_new.DailyTask;
-import com.ruse.world.content.dialogue.DialogueManager;
 import com.ruse.world.content.skill.impl.summoning.BossPets;
 import com.ruse.world.content.transportation.TeleportHandler;
 import com.ruse.world.entity.impl.npc.NPC;
 import com.ruse.world.entity.impl.player.Player;
 import com.ruse.world.packages.combat.CombatConstants;
+import com.ruse.world.packages.dialogue.DialogueManager;
+import com.ruse.world.packages.dialogue.impl.slayer.ReceivedTask;
 
 public class Slayer {
 
@@ -56,14 +57,14 @@ public class Slayer {
         player.getPacketSender().sendInterfaceRemoval();
         this.amountToSlay = slayerTaskAmount;
         this.slayerTask = taskToSet;
-        DialogueManager.start(player, SlayerDialogues.receivedTask(player, getSlayerMaster(), getSlayerTask()));
+        DialogueManager.sendDialogue(player, new ReceivedTask(player, getSlayerTask()), getSlayerMaster().getNpcId());
         PlayerPanel.refreshPanel(player);
         if (duoSlayer) {
             Player duo = World.getPlayerByName(duoPartner);
             duo.getSlayer().setSlayerTask(taskToSet);
             duo.getSlayer().setAmountToSlay(slayerTaskAmount);
             duo.getPacketSender().sendInterfaceRemoval();
-            DialogueManager.start(duo, SlayerDialogues.receivedTask(duo, slayerMaster, taskToSet));
+            DialogueManager.sendDialogue(duo, new ReceivedTask(duo, taskToSet), getSlayerMaster().getNpcId());
             PlayerPanel.refreshPanel(duo);
         }
     }
@@ -89,7 +90,9 @@ public class Slayer {
 
         PlayerPanel.refreshPanel(player);
         Player duo = duoPartner == null ? null : World.getPlayerByName(duoPartner);
-        if (duo != null) {
+        if (duo == null) {
+            player.getPacketSender().sendMessage("Your Slayer task has been reset.");
+        } else {
             if (duo.getSkillManager().skillCape(Skill.SLAYER)) {
                 duo.getPacketSender().sendMessage("Your cape allows you to keep your slayer streak.");
             } else {
@@ -100,8 +103,6 @@ public class Slayer {
                     .sendMessage("Your partner reset your team's Slayer task.");
             PlayerPanel.refreshPanel(duo);
             player.getPacketSender().sendMessage("You've successfully reset your team's Slayer task.");
-        } else {
-            player.getPacketSender().sendMessage("Your Slayer task has been reset.");
         }
     }
 
@@ -143,18 +144,14 @@ public class Slayer {
             boolean onEliteSlayerTask = false;
             if (slayerTask.getTaskMaster() == SlayerMaster.EASY_SLAYER) {
                 DailyTask.EASY_SLAYER_TASKS.tryProgress(player);
-                onEliteSlayerTask = false;
                 amountOfTickets += 25;
             } else if (slayerTask.getTaskMaster() == SlayerMaster.MEDIUM_SLAYER) {
                 DailyTask.MEDIUM_SLAYER_TASKS.tryProgress(player);
-                onEliteSlayerTask = false;
                 amountOfTickets += 50;
             } else if (slayerTask.getTaskMaster() == SlayerMaster.HARD_SLAYER) {
                 DailyTask.HARD_SLAYER_TASKS.tryProgress(player);
-                onEliteSlayerTask = false;
                 amountOfTickets += 75;
             } else if (slayerTask.getTaskMaster() == SlayerMaster.BOSS_SLAYER) {
-                onEliteSlayerTask = false;
                 amountOfTickets += 75;
             } else if (slayerTask.getTaskMaster() == SlayerMaster.ELITE_SLAYER) {
                 onEliteSlayerTask = true;
@@ -168,25 +165,6 @@ public class Slayer {
             amountOfTickets += Misc.getRandom(player.getDonator().getSlayer()[0], player.getDonator().getSlayer()[1]);
             amountOfTickets2 += Misc.getRandom(player.getDonator().getSlayer()[0], player.getDonator().getSlayer()[1]);
 
-//            if (player.getAmountDonated() >= Donation.ZENYTE_DONATION_AMOUNT || player.getRights().equals(PlayerRights.YOUTUBER)) {
-//                amountOfTickets += Misc.getRandom(15, 20);
-//                amountOfTickets2 += Misc.getRandom(15, 20);
-//            } else if (player.getAmountDonated() >= Donation.ONYX_DONATION_AMOUNT) {
-//                amountOfTickets += Misc.getRandom(12, 15);
-//                amountOfTickets2 += Misc.getRandom(12, 15);
-//            } else if (player.getAmountDonated() >= Donation.DIAMOND_DONATION_AMOUNT) {
-//                amountOfTickets += Misc.getRandom(10, 12);
-//                amountOfTickets2 += Misc.getRandom(10, 12);
-//            } else if (player.getAmountDonated() >= Donation.RUBY_DONATION_AMOUNT) {
-//                amountOfTickets += Misc.getRandom(7, 10);
-//                amountOfTickets2 += Misc.getRandom(7, 10);
-//            } else if (player.getAmountDonated() >= Donation.EMERALD_DONATION_AMOUNT) {
-//                amountOfTickets += Misc.getRandom(3, 7);
-//                amountOfTickets2 += Misc.getRandom(3, 7);
-//            } else if (player.getAmountDonated() >= Donation.SAPPHIRE_DONATION_AMOUNT) {
-//                amountOfTickets += Misc.getRandom(1, 5);
-//                amountOfTickets2 += Misc.getRandom(1, 5);
-//            }
 
             if (player.getSummoning() != null && player.getSummoning().getFamiliar() != null
                     && player.getSummoning().getFamiliar().getSummonNpc().getId() == BossPets.BossPet.RED_FENRIR_PET.npcId) {
@@ -238,32 +216,25 @@ public class Slayer {
 
     @SuppressWarnings("incomplete-switch")
     public void givePoints(SlayerMaster master) {
-        int pointsReceived = 2;
-        switch (master) {
-            case MEDIUM_SLAYER:
-                pointsReceived = 5;
-                break;
-            case HARD_SLAYER:
-                pointsReceived = 7;
-                break;
-            case ELITE_SLAYER:
-                pointsReceived = 11;
-                break;
-
-        }
+        int pointsReceived = switch (master) {
+            case MEDIUM_SLAYER -> 5;
+            case HARD_SLAYER -> 7;
+            case ELITE_SLAYER -> 11;
+            default -> 2;
+        };
         int per5 = pointsReceived * 3;
         int per10 = pointsReceived * 5;
 
         // Bonus tickets
         if (player.getSlayer().getTaskStreak() % 10 == 0) {
-            player.getInventory().addDropIfFull(5023, 100);
-            player.getPacketSender().sendMessage("You received 100 Slayer tickets");
+            player.getInventory().addDropIfFull(5023, per10);
+            player.getPacketSender().sendMessage("You received "+per10+" Slayer tickets");
         } else if (player.getSlayer().getTaskStreak() % 5 == 0) {
-            player.getInventory().addDropIfFull(5023, 50);
-            player.getPacketSender().sendMessage("You received 50 Slayer tickets");
+            player.getInventory().addDropIfFull(5023, per5);
+            player.getPacketSender().sendMessage("You received "+per5+" Slayer tickets");
         } else {
-            player.getInventory().addDropIfFull(5023, 2);
-            player.getPacketSender().sendMessage("You received 2 Slayer tickets.");
+            player.getInventory().addDropIfFull(5023, pointsReceived);
+            player.getPacketSender().sendMessage("You received "+pointsReceived+" Slayer tickets.");
         }
 
         PlayerPanel.refreshPanel(player);

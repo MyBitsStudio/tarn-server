@@ -12,6 +12,8 @@ import com.ruse.world.World;
 import com.ruse.world.content.*;
 import com.ruse.world.content.Sounds.Sound;
 import com.ruse.world.content.StarterTasks.StarterTaskData;
+import com.ruse.world.packages.dialogue.DialogueManager;
+import com.ruse.world.packages.dialogue.impl.RedeemBond;
 import com.ruse.world.packages.packs.casket.Box;
 import com.ruse.world.packages.packs.casket.BoxLoot;
 import com.ruse.world.packages.packs.casket.CasketOpening;
@@ -21,7 +23,6 @@ import com.ruse.world.content.cluescrolls.ClueScroll;
 import com.ruse.world.content.cluescrolls.ClueScrollReward;
 import com.ruse.world.content.cluescrolls.OLD_ClueScrolls;
 import com.ruse.world.content.combat.prayer.PrayerHandler;
-import com.ruse.world.content.dialogue.DialogueManager;
 import com.ruse.world.packages.dissolve.DissolveItem;
 import com.ruse.world.content.holidayevents.easter2017;
 import com.ruse.world.content.skill.impl.herblore.Herblore;
@@ -42,6 +43,7 @@ import com.ruse.world.packages.packs.gearpack.GearPack;
 import com.ruse.world.packages.packs.gearpack.GearPacks;
 import com.ruse.world.packages.packs.basic.impl.*;
 import com.ruse.world.packages.packs.scratch.impl.RareScratchI;
+import com.ruse.world.packages.slot.SlotItems;
 
 import java.text.NumberFormat;
 import java.util.Locale;
@@ -136,18 +138,16 @@ public class ItemActionPacketListener implements PacketListener {
         }
         if (Herblore.cleanHerb(player, itemId))
             return;
-        if (MemberScrolls.handleScroll(player, itemId, false))
-            return;
-        if (Effigies.isEffigy(itemId)) {
-            Effigies.handleEffigy(player, itemId);
-            return;
-        }
         if (ExperienceLamps.handleLamp(player, itemId)) {
             return;
         }
 
         if(SECertificateType.playerConsume(player, itemId))
             return;
+
+        if(SlotItems.handlePerk(player, player.getInventory().get(slot))){
+            return;
+        }
 
         if(GearPacks.isPack(itemId)) {
             if(GearPacks.isRandom(itemId))
@@ -203,6 +203,13 @@ public class ItemActionPacketListener implements PacketListener {
 
 
         switch (itemId) {
+
+            case 23057:
+            case 23058:
+            case 23059:
+            case 23060:
+                DialogueManager.sendDialogue(player, new RedeemBond(player, itemId, false), -1);
+                break;
 
             case 20506:
                 new EnhancementChest().openPack(player);
@@ -425,9 +432,9 @@ public class ItemActionPacketListener implements PacketListener {
                 player.getClickDelay().reset();
                 break;
 
-            case 19000:
-                DialogueManager.start(player, PetUpgrading.dialogue(player));
-                break;
+//            case 19000:
+//                DialogueManager.start(player, PetUpgrading.dialogue(player));
+//                break;
 
             case 15355:
                 if (player.getDoubleDRTimer() > 0) {
@@ -1973,15 +1980,15 @@ public class ItemActionPacketListener implements PacketListener {
                 Position position = new Position(2706, 2737, 0);
                 TeleportHandler.teleportPlayer(player, position, TeleportType.NORMAL);
                 break;
-            case 6500:
-                if (player.getCombatBuilder().isAttacking() || player.getCombatBuilder().isBeingAttacked()) {
-                    player.getPacketSender().sendMessage("You cannot configure this right now.");
-                    return;
-                }
-                player.getPacketSender().sendInterfaceRemoval();
-                DialogueManager.start(player, 101);
-                player.setDialogueActionId(60);
-                break;
+//            case 6500:
+//                if (player.getCombatBuilder().isAttacking() || player.getCombatBuilder().isBeingAttacked()) {
+//                    player.getPacketSender().sendMessage("You cannot configure this right now.");
+//                    return;
+//                }
+//                player.getPacketSender().sendInterfaceRemoval();
+//                DialogueManager.start(player, 101);
+//                player.setDialogueActionId(60);
+//                break;
             case 1712: // glory start
             case 1710:
             case 1708:
@@ -2237,10 +2244,15 @@ public class ItemActionPacketListener implements PacketListener {
             return;
         }
 
-        if (MemberScrolls.handleScroll(player, itemId, true))
-            return;
 
         switch (itemId) {
+
+            case 23057:
+            case 23058:
+            case 23059:
+            case 23060:
+                DialogueManager.sendDialogue(player, new RedeemBond(player, itemId, true), -1);
+                break;
 
             case 3686:
                 if (player.getSeasonPass().isPremium()) {
@@ -2276,10 +2288,10 @@ public class ItemActionPacketListener implements PacketListener {
                     player.sendMessage("You need 50m Solak tokens to upgrade.");
                 }
                 break;*/
-            case 22108:
-                DialogueManager.start(player, 9924);
-                player.setDialogueActionId(9924);
-                break;
+//            case 22108:
+//                DialogueManager.start(player, 9924);
+//                player.setDialogueActionId(9924);
+//                break;
 
 //            case 11846:
 //            case 11848:

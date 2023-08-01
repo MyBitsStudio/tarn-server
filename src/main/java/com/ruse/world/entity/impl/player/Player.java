@@ -38,6 +38,7 @@ import com.ruse.world.packages.attendance.AttendanceUI;
 import com.ruse.world.content.aura.AuraParty;
 import com.ruse.world.content.battlepass.BattlePass;
 import com.ruse.world.content.bossEvents.BossEventData;
+import com.ruse.world.packages.dialogue.Dialogue;
 import com.ruse.world.packages.packs.casket.CasketOpening;
 import com.ruse.world.packages.clans.Clan;
 import com.ruse.world.packages.clans.ClanManager;
@@ -60,7 +61,6 @@ import com.ruse.world.content.dailyTask.DailyTaskData;
 import com.ruse.world.content.dailyTask.DailyTaskDifficulty;
 import com.ruse.world.content.dailytasks_new.DailyTask;
 import com.ruse.world.content.dailytasks_new.TaskChallenge;
-import com.ruse.world.content.dialogue.Dialogue;
 import com.ruse.world.content.equipmentenhancement.EquipmentEnhancement;
 import com.ruse.world.content.eventboss.EventBossManager;
 import com.ruse.world.packages.forge.Forge;
@@ -679,7 +679,6 @@ public class Player extends Character {
     private Shop shop;
     private GameObject interactingObject;
     private Item interactingItem;
-    private Dialogue dialogue;
     private DwarfCannon cannon;
     private CombatSpell autocastSpell, castSpell, previousCastSpell;
     private RangedWeaponData rangedWeaponData;
@@ -2006,7 +2005,7 @@ public class Player extends Character {
     }
 
     public Equipment getEquipment() {
-        return equipment;
+        return isSecondaryEquipment() ? getSecondaryEquipment() : equipment;
     }
 
     public void setEquipment(Equipment equipment) {
@@ -2941,14 +2940,6 @@ public class Player extends Character {
 
     public void setInteractingItem(Item interactingItem) {
         this.interactingItem = interactingItem;
-    }
-
-    public Dialogue getDialogue() {
-        return this.dialogue;
-    }
-
-    public void setDialogue(Dialogue dialogue) {
-        this.dialogue = dialogue;
     }
 
     public int getDialogueActionId() {
@@ -4341,4 +4332,7 @@ public class Player extends Character {
 
     @Getter@Setter
     private GoodyBag bag;
+
+    @Getter@Setter
+    private Dialogue chat;
 }

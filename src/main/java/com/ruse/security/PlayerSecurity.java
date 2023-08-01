@@ -7,9 +7,10 @@ import com.ruse.security.save.impl.player.PlayerSecureSave;
 import com.ruse.security.save.impl.player.PlayerSecurityLoad;
 import com.ruse.security.save.impl.player.PlayerSecuritySave;
 import com.ruse.security.tools.SecurityUtils;
-import com.ruse.world.content.dialogue.DialogueManager;
 import com.ruse.world.entity.impl.player.Player;
 import com.ruse.world.entity.impl.player.PlayerFlags;
+import com.ruse.world.packages.dialogue.DialogueManager;
+import com.ruse.world.packages.dialogue.impl.Start2FA;
 
 import java.io.File;
 import java.nio.file.Path;
@@ -458,8 +459,7 @@ public class PlayerSecurity {
 
     public void start2FA(){
         player.getPacketSender().sendInterfaceRemoval();
-        DialogueManager.start(player, 11000);
-        player.setDialogueActionId(11003);
+        DialogueManager.sendDialogue(player, new Start2FA(player), 13459);
     }
 
     public void begin2FA(){

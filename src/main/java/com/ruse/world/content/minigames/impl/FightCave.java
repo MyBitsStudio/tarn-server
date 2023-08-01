@@ -9,7 +9,6 @@ import com.ruse.model.RegionInstance;
 import com.ruse.model.RegionInstance.RegionInstanceType;
 import com.ruse.util.Misc;
 import com.ruse.world.World;
-import com.ruse.world.content.dialogue.DialogueManager;
 import com.ruse.world.entity.impl.npc.NPC;
 import com.ruse.world.entity.impl.player.Player;
 
@@ -19,7 +18,7 @@ public class FightCave {
 
 	public static void enterCave(Player player) {
 		player.moveTo(new Position(2413, 5117, (player.getIndex() + 1) * 4));
-		DialogueManager.start(player, 36);
+		//DialogueManager.start(player, 36);
 		player.setRegionInstance(new RegionInstance(player, RegionInstanceType.FIGHT_CAVE));
 		spawnJad(player);
 	}
@@ -53,7 +52,7 @@ public class FightCave {
 		if (n.getId() == JAD_NPC_ID) {
 			if (player.getRegionInstance() != null)
 				player.getRegionInstance().getNpcsList().remove(n);
-			DialogueManager.start(player, 37);
+			//DialogueManager.start(player, 37);
 			player.getInventory().add(6570, 1).add(6529, 1000 + Misc.getRandom(2000));
 		}
 	}

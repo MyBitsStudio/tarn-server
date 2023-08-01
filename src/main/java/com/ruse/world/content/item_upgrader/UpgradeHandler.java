@@ -4,8 +4,8 @@ import com.ruse.model.Item;
 import com.ruse.model.Skill;
 import com.ruse.model.definitions.ItemDefinition;
 import com.ruse.util.Misc;
-import com.ruse.world.content.dialogue.DialogueManager;
 import com.ruse.world.entity.impl.player.Player;
+import com.ruse.world.packages.dialogue.DialogueManager;
 
 public class UpgradeHandler {
 

@@ -6,7 +6,6 @@ import com.ruse.model.Item;
 import com.ruse.model.Locations;
 import com.ruse.model.container.ItemContainer;
 import com.ruse.model.container.StackType;
-import com.ruse.model.definitions.ItemDefinition;
 import com.ruse.model.definitions.WeaponAnimations;
 import com.ruse.model.definitions.WeaponInterfaces;
 import com.ruse.world.content.BonusManager;
@@ -14,6 +13,9 @@ import com.ruse.world.content.combat.magic.Autocasting;
 import com.ruse.world.content.combat.weapon.CombatSpecial;
 import com.ruse.world.content.minigames.impl.Dueling;
 import com.ruse.world.entity.impl.player.Player;
+import com.ruse.world.packages.dialogue.DialogueManager;
+import com.ruse.world.packages.dialogue.impl.slot.UnequipSlotPerk;
+import com.ruse.world.packages.slot.PerkEquip;
 import com.ruse.world.packages.slot.SlotBonus;
 import com.ruse.world.packages.slot.SlotEffect;
 import lombok.Getter;
@@ -61,6 +63,10 @@ public class Equipment extends ItemContainer {
 	@Override
 	public Equipment full() {
 		return this;
+	}
+
+	public void setSlots(SlotBonus[] slots){
+		System.arraycopy(slots, 0, slotBonuses, 0, slotBonuses.length);
 	}
 
 	/**
@@ -130,6 +136,27 @@ public class Equipment extends ItemContainer {
 	public static final int AMMUNITION_SLOT = 13;
 
 	public static final int GEMSTONE_SLOT = 14;
+
+	public String slotToName(int slot){
+		return switch(slot){
+			case HEAD_SLOT -> "Head";
+			case CAPE_SLOT -> "Cape";
+			case AMULET_SLOT -> "Amulet";
+			case WEAPON_SLOT -> "Weapon";
+			case BODY_SLOT -> "Body";
+			case SHIELD_SLOT -> "Shield";
+			case AURA_SLOT -> "Aura";
+			case LEG_SLOT -> "Legs";
+			case ENCHANTMENT_SLOT -> "Enchantment";
+			case HANDS_SLOT -> "Hands";
+			case FEET_SLOT -> "Feet";
+			case HALO_SLOT -> "Halo";
+			case RING_SLOT -> "Ring";
+			case AMMUNITION_SLOT -> "Ammunition";
+			case GEMSTONE_SLOT -> "Gemstone";
+			default -> throw new IllegalStateException("Unexpected value: " + slot);
+		};
+	}
 
 	public boolean wearingNexAmours() {
 		int head = getPlayer().getEquipment().getItems()[HEAD_SLOT].getId();
@@ -305,13 +332,16 @@ public class Equipment extends ItemContainer {
 		getPlayer().getPacketSender().sendString(162652, getSlotName(slot));
 
 		slot = convertSlotFromClient(slot);
+		getPlayer().getVariables().setSetting("slot-chosen", slot);
 
 		if(slotBonuses[slot] == null) {
 			getPlayer().sendMessage("Something went wrong here.");
 		} else {
 			SlotBonus bonus = slotBonuses[slot];
 			if(!Objects.equal(bonus.getEffect(), SlotEffect.NOTHING)){
-
+				getPlayer().getPacketSender().sendString(162656, bonus.getEffect().name().replace("_", " "));
+				getPlayer().getPacketSender().sendString(162658, "BONUS : "+bonus.getBonus() + "%");
+				getPlayer().getPacketSender().sendString(162659, "RARITY : "+bonus.getEffect().getRarity().name());
 			}
 		}
 	}
@@ -337,6 +367,10 @@ public class Equipment extends ItemContainer {
 
 	public boolean handleClicks(int button){
 		if(button >= 162501 && button <= 162515){
+			if(getPlayer().getInterfaceId() == 162750){
+				PerkEquip.handleButton(getPlayer(), button - 162501);
+				return true;
+			}
 			sendSlotPerk(button - 162501);
 			return true;
 		}
@@ -349,7 +383,7 @@ public class Equipment extends ItemContainer {
 				} else {
 					getPlayer().sendMessage("Switched to second equip");
 					getPlayer().setIsSecondaryEquipment(true);
-					getPlayer().getSecondaryEquipment().refreshItems();
+					getPlayer().getEquipment().refreshItems();
 				}
 				return true;
 			}
@@ -372,7 +406,19 @@ public class Equipment extends ItemContainer {
 				return true;
 			}
 			case 162600 -> {
-
+				int slot = getPlayer().getVariables().getIntValue("slot-chosen");
+				if(slot == -1){
+					getPlayer().sendMessage("Something went wrong here.");
+				} else {
+					SlotBonus bonus = slotBonuses[slot];
+					if(bonus == null){
+						getPlayer().sendMessage("Something went wrong here..");
+					} else if (bonus.getEffect() == SlotEffect.NOTHING) {
+						getPlayer().sendMessage("There isn't a perk to remove.");
+					} else {
+						DialogueManager.sendDialogue(getPlayer(), new UnequipSlotPerk(getPlayer()), -1);
+					}
+				}
 				return true;
 			}
 		}

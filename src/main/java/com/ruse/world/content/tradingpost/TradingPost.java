@@ -4,13 +4,13 @@ import com.ruse.model.Item;
 import com.ruse.model.definitions.ItemDefinition;
 import com.ruse.model.input.EnterAmount;
 import com.ruse.util.Misc;
-import com.ruse.world.content.dialogue.DialogueManager;
-import com.ruse.world.content.tradingpost.dialogues.CancelOptions;
-import com.ruse.world.content.tradingpost.dialogues.PurchaseStatement;
 import com.ruse.world.content.tradingpost.models.*;
 import com.ruse.world.content.tradingpost.persistance.Database;
 import com.ruse.world.content.tradingpost.persistance.SQLDatabase;
 import com.ruse.world.entity.impl.player.Player;
+import com.ruse.world.packages.dialogue.DialogueManager;
+import com.ruse.world.packages.dialogue.impl.tp.CancelTPOptions;
+import com.ruse.world.packages.dialogue.impl.tp.PurchaseTPStatement;
 
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
@@ -97,7 +97,7 @@ public class TradingPost {
                 .stream()
                         .filter(it -> it.getSlot() == slot)
                                 .findFirst();
-        optionalOffer.ifPresent(offer -> DialogueManager.start(player, new CancelOptions(player, ItemDefinition.forId(offer.getItemId()).getName(), slot)));
+        optionalOffer.ifPresent(offer -> DialogueManager.sendDialogue(player, new CancelTPOptions(player, ItemDefinition.forId(offer.getItemId()).getName(), slot), -1));
     }
 
     private void allowItemAccept() {
@@ -237,11 +237,11 @@ public class TradingPost {
                         player.getPacketSender().sendMessage("@red@Invalid amount entered.");
                         return;
                     }
-                    DialogueManager.start(player, new PurchaseStatement(player, offer, amount));
+                    DialogueManager.sendDialogue(player, new PurchaseTPStatement(player, offer, amount), -1);
                 }
             });
         } else {
-            DialogueManager.start(player, new PurchaseStatement(player, offer, 1));
+            DialogueManager.sendDialogue(player, new PurchaseTPStatement(player, offer, 1), -1);
         }
     }
 

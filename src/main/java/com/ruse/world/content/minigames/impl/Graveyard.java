@@ -8,7 +8,6 @@ import com.ruse.model.RegionInstance;
 import com.ruse.model.RegionInstance.RegionInstanceType;
 import com.ruse.util.Misc;
 import com.ruse.world.World;
-import com.ruse.world.content.dialogue.DialogueManager;
 import com.ruse.world.entity.impl.npc.NPC;
 import com.ruse.world.entity.impl.player.Player;
 
@@ -18,7 +17,7 @@ public class Graveyard {
 		player.getPacketSender().sendInterfaceRemoval();
 		player.moveTo(new Position(3503, 3568, (player.getIndex() + 1) * 4));
 		player.setRegionInstance(new RegionInstance(player, RegionInstanceType.GRAVEYARD));
-		DialogueManager.start(player, 97);
+		//DialogueManager.start(player, 97);
 		player.getMinigameAttributes().getGraveyardAttributes().setEntered(true).setWave(1).setLevel(0);
 		spawn(player, 1, 0);
 		player.getPacketSender()

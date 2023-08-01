@@ -69,7 +69,7 @@ public enum GearPacks {
     ),
     ANTIQUE(23213, 0,
             new Item(8816, 1), new Item(8817, 1), new Item(8818, 1),
-            new Item(23144, 1), new Item(23145, 1), new Item(23147, 1)
+            new Item(23144, 1), new Item(23145, 1), new Item(23146, 1)
     ),
 
 

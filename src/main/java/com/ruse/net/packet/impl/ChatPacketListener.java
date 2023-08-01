@@ -9,8 +9,6 @@ import com.ruse.util.Misc;
 import com.ruse.util.StringCleaner;
 import com.ruse.webhooks.discord.DiscordMessager;
 import com.ruse.world.content.PlayerLogs;
-import com.ruse.world.content.PlayerPunishment;
-import com.ruse.world.content.dialogue.DialogueManager;
 import com.ruse.world.entity.impl.player.Player;
 import org.apache.commons.lang3.StringUtils;
 import org.jetbrains.annotations.Contract;

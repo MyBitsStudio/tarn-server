@@ -304,7 +304,7 @@ public class SkillManager {
                     setCurrentLevel(skill, skills.maxLevel[skill.ordinal()]);
             }
 
-            player.setDialogue(null);
+            player.setChat(null);
 
             if (player.levelNotifications) {
                 player.getPacketSender().sendString(4268, "Congratulations! You have achieved a " + skillName + " level!");

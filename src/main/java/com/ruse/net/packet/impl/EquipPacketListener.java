@@ -20,10 +20,11 @@ import com.ruse.world.content.Sounds;
 import com.ruse.world.content.Sounds.Sound;
 import com.ruse.world.content.combat.magic.Autocasting;
 import com.ruse.world.content.combat.weapon.CombatSpecial;
-import com.ruse.world.content.dialogue.DialogueManager;
 import com.ruse.world.content.minigames.impl.Dueling.DuelRule;
 import com.ruse.world.content.skill.impl.old_dungeoneering.Dungeoneering;
 import com.ruse.world.entity.impl.player.Player;
+import com.ruse.world.packages.dialogue.DialogueManager;
+import com.ruse.world.packages.dialogue.impl.TaskTeleport;
 
 import java.time.LocalDateTime;
 
@@ -74,8 +75,7 @@ public class EquipPacketListener implements PacketListener {
 
         switch (id) {
             case 4155:
-                DialogueManager.start(player, 9927);
-                player.setDialogueActionId(9928);
+                DialogueManager.sendDialogue(player, new TaskTeleport(player), -1);
                 return false;
             case 9922:
             case 9921:

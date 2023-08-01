@@ -3,8 +3,9 @@ package com.ruse.world.content.groupironman;
 import com.ruse.model.Position;
 import com.ruse.model.container.impl.GroupIronmanBank;
 import com.ruse.world.World;
-import com.ruse.world.content.dialogue.DialogueManager;
 import com.ruse.world.entity.impl.player.Player;
+import com.ruse.world.packages.dialogue.DialogueManager;
+import com.ruse.world.packages.dialogue.impl.GroupManInvite;
 import com.ruse.world.packages.mode.impl.GroupIronman;
 import lombok.Getter;
 import lombok.Setter;
@@ -127,7 +128,7 @@ public class IronmanGroup {
         }
 
         p.setGroupInvitationId(uniqueId);
-        DialogueManager.start(p, new GroupIronmanInvitation(getOwner(), p));
+        DialogueManager.sendDialogue(p, new GroupManInvite(getOwner(), p), -1);
         getOwner().getPacketSender().sendMessage("An invitation has been sent to " + p.getUsername() + ".");
     }
 }

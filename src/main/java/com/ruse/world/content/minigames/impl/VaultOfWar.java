@@ -10,7 +10,6 @@ import com.ruse.model.definitions.ItemDefinition;
 import com.ruse.util.Misc;
 import com.ruse.world.World;
 import com.ruse.world.packages.packs.casket.Box;
-import com.ruse.world.content.dialogue.DialogueManager;
 import com.ruse.world.entity.impl.npc.NPC;
 import com.ruse.world.entity.impl.player.Player;
 
@@ -140,7 +139,7 @@ public class VaultOfWar {
 
     public static void useGlovesOnObject(Player player) {
         if (hasAllCombatRings(player)) {
-            DialogueManager.start(player, new VowDialogue(player));
+            //DialogueManager.start(player, new VowDialogue(player));
         } else {
             player.sendMessage("You must have all 3 combat gloves to forge mercenary gloves.");
         }

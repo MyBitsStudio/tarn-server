@@ -26,6 +26,9 @@ public class PlayerVariables {
         settings.put("interface-settings", new String[6]);
         settings.put("active-shop", Integer.parseInt("-1"));
         settings.put("active-tab", Integer.parseInt("-1"));
+
+        settings.put("slot-chosen", Integer.parseInt("-1"));
+        settings.put("inv-slot", Integer.parseInt("-1"));
     }
 
     public void setSetting(String key, Object value){

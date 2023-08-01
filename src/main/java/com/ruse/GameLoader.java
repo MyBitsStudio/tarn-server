@@ -22,7 +22,6 @@ import com.ruse.world.clip.region.RegionClipping;
 import com.ruse.world.content.*;
 import com.ruse.world.content.combat.effect.CombatPoisonEffect.CombatPoisonData;
 import com.ruse.world.content.combat.strategy.CombatStrategies;
-import com.ruse.world.content.dialogue.DialogueManager;
 import com.ruse.world.content.discordbot.AdminCord;
 import com.ruse.world.content.discordbot.Bot;
 import com.ruse.world.content.discordbot.JavaCord;
@@ -128,7 +127,6 @@ public final class GameLoader {
 
 		serviceLoader.execute(ItemDefinition::init);
 
-		serviceLoader.execute(Lottery::init);
 		serviceLoader.execute(GrandExchangeOffers::init);
 		serviceLoader.execute(Scoreboards::init);
 
@@ -143,7 +141,7 @@ public final class GameLoader {
 		serviceLoader.execute(() -> WeaponInterfaces.parseInterfaces().load());
 		serviceLoader.execute(WeaponInterfaces::init);
 		serviceLoader.execute(() -> ShopManager.parseShops().load());
-		serviceLoader.execute(() -> DialogueManager.parseDialogues().load());
+		//serviceLoader.execute(() -> DialogueManager.parseDialogues().load());
 		serviceLoader.execute(NPC::init);
 		serviceLoader.execute(DoubleOrNothing::initialize);
 		serviceLoader.execute(PollManager::initialize);

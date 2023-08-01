@@ -20,10 +20,6 @@ import com.ruse.world.content.CurrencyPouch;
 import com.ruse.world.content.ItemForging;
 import com.ruse.world.content.PlayerLogs;
 import com.ruse.world.content.cluescrolls.OLD_ClueScrolls;
-import com.ruse.world.content.combat.range.ToxicBlowpipe;
-import com.ruse.world.content.dialogue.DialogueManager;
-import com.ruse.world.content.dialogue.impl.DungPartyInvitation;
-import com.ruse.world.content.discordbot.JavaCord;
 import com.ruse.world.content.holidayevents.christmas2016;
 import com.ruse.world.content.minigames.impl.TreasureHunter;
 import com.ruse.world.content.minigames.impl.VaultOfWar;
@@ -45,12 +41,13 @@ import com.ruse.world.content.skill.impl.herblore.PotionCombinating;
 import com.ruse.world.content.skill.impl.herblore.WeaponPoison;
 import com.ruse.world.content.skill.impl.prayer.BonesOnAltar;
 import com.ruse.world.content.skill.impl.prayer.Prayer;
-import com.ruse.world.content.skill.impl.slayer.SlayerDialogues;
 import com.ruse.world.content.skill.impl.slayer.SlayerTasks;
 import com.ruse.world.content.skill.impl.smithing.EquipmentMaking;
 import com.ruse.world.content.skill.impl.smithing.Smelting;
 import com.ruse.world.entity.impl.npc.NPC;
 import com.ruse.world.entity.impl.player.Player;
+import com.ruse.world.packages.dialogue.DialogueManager;
+import com.ruse.world.packages.dialogue.impl.slayer.InviteDuo;
 import com.ruse.world.packages.mode.impl.GroupIronman;
 import com.ruse.world.packages.mode.impl.UltimateIronman;
 import com.ruse.world.packages.plus.PlusUpgrade;
@@ -758,35 +755,35 @@ public class UseItemPacketListener implements PacketListener {
                 PlayerLogs.log(player.getUsername(), "Opened a cracker containing a " + ItemDefinition.forId(phat).getName()
                         + " on " + target.getUsername());
             }
-            case 15707 -> {
-                Player partyDung = World.getPlayers().get(targetIndex);
-                if (player.getLocation() != Location.DUNGEONEERING || player.isTeleporting()) {
-                    player.getPacketSender().sendMessage("You're not in Daemonheim");
-                    return;
-                }
-                if (partyDung.getMinigameAttributes().getDungeoneeringAttributes().getParty() != null) {
-                    player.getPacketSender().sendMessage("That player is already in a party.");
-                    return;
-                }
-                if (player.getMinigameAttributes().getDungeoneeringAttributes().getParty() == null) {
-                    player.getPacketSender().sendMessage("You're not in a party!");
-                    return;
-                }
-                if (player.getMinigameAttributes().getDungeoneeringAttributes().getParty().getOwner() != player) {
-                    player.getPacketSender().sendMessage("Only the party leader can invite other players.");
-                    return;
-                }
-                if (player.busy()) {
-                    player.getPacketSender().sendMessage("You're busy and can't invite anyone.");
-                    return;
-                }
-                if (partyDung.busy()) {
-                    player.getPacketSender().sendMessage(partyDung.getUsername() + " is too busy to get your invite.");
-                    return;
-                }
-                DialogueManager.start(partyDung, new DungPartyInvitation(player, partyDung));
-                player.getPacketSender().sendMessage("An invitation has been sent to " + partyDung.getUsername());
-            }
+//            case 15707 -> {
+//                Player partyDung = World.getPlayers().get(targetIndex);
+//                if (player.getLocation() != Location.DUNGEONEERING || player.isTeleporting()) {
+//                    player.getPacketSender().sendMessage("You're not in Daemonheim");
+//                    return;
+//                }
+//                if (partyDung.getMinigameAttributes().getDungeoneeringAttributes().getParty() != null) {
+//                    player.getPacketSender().sendMessage("That player is already in a party.");
+//                    return;
+//                }
+//                if (player.getMinigameAttributes().getDungeoneeringAttributes().getParty() == null) {
+//                    player.getPacketSender().sendMessage("You're not in a party!");
+//                    return;
+//                }
+//                if (player.getMinigameAttributes().getDungeoneeringAttributes().getParty().getOwner() != player) {
+//                    player.getPacketSender().sendMessage("Only the party leader can invite other players.");
+//                    return;
+//                }
+//                if (player.busy()) {
+//                    player.getPacketSender().sendMessage("You're busy and can't invite anyone.");
+//                    return;
+//                }
+//                if (partyDung.busy()) {
+//                    player.getPacketSender().sendMessage(partyDung.getUsername() + " is too busy to get your invite.");
+//                    return;
+//                }
+//                DialogueManager.start(partyDung, new DungPartyInvitation(player, partyDung));
+//                player.getPacketSender().sendMessage("An invitation has been sent to " + partyDung.getUsername());
+//            }
             case 4566 -> player.performAnimation(new Animation(451));
             case 4155 -> {
                 if (player.getSlayer().getDuoPartner() != null) {
@@ -815,7 +812,7 @@ public class UseItemPacketListener implements PacketListener {
                         player.getPacketSender().sendMessage("This player is currently busy.");
                         return;
                     }
-                    DialogueManager.start(duoPartner, SlayerDialogues.inviteDuo(duoPartner, player));
+                    DialogueManager.sendDialogue(duoPartner, new InviteDuo(duoPartner, player), -1);
                     player.getPacketSender()
                             .sendMessage("You have invited " + duoPartner.getUsername() + " to join your Slayer duo team.");
                 }

@@ -2,7 +2,6 @@ package com.ruse.world.content.zombie;
 
 import com.ruse.model.Position;
 import com.ruse.model.Locations;
-import com.ruse.world.content.dialogue.DialogueManager;
 import com.ruse.world.entity.impl.npc.NPC;
 import com.ruse.world.entity.impl.player.Player;
 
@@ -104,7 +103,7 @@ public class ZombieParty {
 //        }
 
         getOwner().getMinigameAttributes().getZombieAttributes().setLastInvitation(System.currentTimeMillis());
-        DialogueManager.start(p, new ZombiePartyInvitation(getOwner(), p));
+        //DialogueManager.start(p, new ZombiePartyInvitation(getOwner(), p));
         getOwner().getPacketSender().sendMessage("An invitation has been sent to " + p.getUsername() + ".");
     }
 

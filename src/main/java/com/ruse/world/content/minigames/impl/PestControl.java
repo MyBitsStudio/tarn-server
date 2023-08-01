@@ -10,7 +10,6 @@ import com.ruse.model.movement.PathFinder;
 import com.ruse.util.Misc;
 import com.ruse.world.World;
 import com.ruse.world.content.PlayerPanel;
-import com.ruse.world.content.dialogue.DialogueManager;
 import com.ruse.world.entity.impl.npc.NPC;
 import com.ruse.world.entity.impl.player.Player;
 
@@ -226,7 +225,7 @@ public class PestControl {
 		p.getSession().clearMessages();
 		p.moveTo(new Position(2658, 2611, 0));
 		p.getMovementQueue().setLockMovement(false).reset();
-		DialogueManager.start(p, 26);
+		//DialogueManager.start(p, 26);
 		PLAYERS_IN_BOAT--;
 	}
 
@@ -257,7 +256,7 @@ public class PestControl {
 
 				else {
 					p.getPacketSender().sendMessage("You failed to kill all the portals in time.");
-					DialogueManager.start(p, 356);
+					//DialogueManager.start(p, 356);
 				}
 				p.getMinigameAttributes().getPestControlAttributes().setDamageDealt(0);
 			}

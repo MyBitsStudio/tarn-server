@@ -3,8 +3,9 @@ package com.ruse.world.content.skill.impl.summoning;
 import java.util.concurrent.TimeUnit;
 
 import com.ruse.util.Misc;
-import com.ruse.world.content.dialogue.DialogueManager;
 import com.ruse.world.entity.impl.player.Player;
+import com.ruse.world.packages.dialogue.DialogueManager;
+import com.ruse.world.packages.dialogue.impl.DismissFollower;
 
 public class SummoningTab {
 
@@ -19,15 +20,14 @@ public class SummoningTab {
 			return;
 		}
 		if (dismiss) {
-			if (c.getSummoning().getFamiliar() != null) {
+			if (c.getSummoning().getFamiliar() == null) {
+				c.getPacketSender().sendMessage("You don't have a familiar to dismiss.");
+			} else {
 				c.getSummoning().unsummon(true, true);
 				c.getPacketSender().sendMessage("You've dismissed your familiar.");
-			} else {
-				c.getPacketSender().sendMessage("You don't have a familiar to dismiss.");
 			}
 		} else {
-			DialogueManager.start(c, 4);
-			c.setDialogueActionId(4);
+			DialogueManager.sendDialogue(c, new DismissFollower(c), -1);
 		}
 	}
 
@@ -123,7 +123,9 @@ public class SummoningTab {
 	}
 
 	public static void callFollower(final Player c) {
-		if (c.getSummoning().getFamiliar() != null && c.getSummoning().getFamiliar().getSummonNpc() != null) {
+		if (c.getSummoning().getFamiliar() == null || c.getSummoning().getFamiliar().getSummonNpc() == null) {
+			c.getPacketSender().sendMessage("You don't have a familiar to call.");
+		} else {
 			if (!c.getLastSummon().elapsed(30000)) {
 				c.getPacketSender()
 						.sendMessage("You must wait another "
@@ -132,13 +134,13 @@ public class SummoningTab {
 				return;
 			}
 			c.getSummoning().moveFollower(false);
-		} else {
-			c.getPacketSender().sendMessage("You don't have a familiar to call.");
 		}
 	}
 
 	public static void renewFamiliar(Player c) {
-		if (c.getSummoning().getFamiliar() != null && FamiliarData.forNPCId(c.getSummoning().getFamiliar().getSummonNpc().getId()) != null) {
+		if (c.getSummoning().getFamiliar() == null || FamiliarData.forNPCId(c.getSummoning().getFamiliar().getSummonNpc().getId()) == null) {
+			c.getPacketSender().sendMessage("You don't have a familiar to renew.");
+		} else {
 			int pouchRequired = FamiliarData.forNPCId(c.getSummoning().getFamiliar().getSummonNpc().getId())
 					.getPouchId();
 			if (c.getInventory().contains(pouchRequired)) {
@@ -147,8 +149,6 @@ public class SummoningTab {
 			} else {
 				c.getPacketSender().sendMessage("You don't have the pouch required to renew this familiar.");
 			}
-		} else {
-			c.getPacketSender().sendMessage("You don't have a familiar to renew.");
 		}
 	}
 }
