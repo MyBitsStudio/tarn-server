@@ -38,7 +38,6 @@ public class InstanceManager {
     }
 
     private final Map<String, Instance> instances = new ConcurrentHashMap<>();
-    private final List<Instance> groups = new CopyOnWriteArrayList<>();
 
     /**
      * Starts New Multi Instance That Doesnt Have A Count
@@ -49,38 +48,38 @@ public class InstanceManager {
     }
 
     public void startEventInstance(Player player, InstanceInterData data){
-        if(player.getInstance() != null) {
-            player.getInstance().clear();
-            player.setInstance(null);
-            return;
-        }
-
-        if(!Objects.equals(player.getInstanceId(), "")){
-            instances.get(player.getInstanceId()).removePlayer(player);
-            player.setInstanceId("");
-            return;
-        }
-
-        if(player.getLocation() != Locations.Location.INSTANCE_LOBBY){
-            player.sendMessage("Are you trying to abuse our system?");
-            AdminCord.sendMessage(1116222441614745610L, "[" + player.getUsername() + "] is manipulating instances.");
-            return;
-        }
-
-        if(takeItem(player, data)) {
-            player.sendMessage("You don't have x"+data.getCost().getAmount()+" of "+ItemDefinition.forId(data.getCost().getId()).getName());
-            return;
-        }
-
-        Instance instance = new MultiBossFlashInstance(player,
-                data.getNpcId(), data.getSpawns(), data.getCap());
-
-        instances.put(instance.getInstanceId(), instance);
-        instance.start();
+//        if(player.getInstance() != null) {
+//            player.getInstance().clear();
+//            player.setInstance(null);
+//            return;
+//        }
+//
+//        if(!Objects.equals(player.getInstanceId(), "")){
+//            instances.get(player.getInstanceId()).removePlayer(player);
+//            player.setInstanceId("");
+//            return;
+//        }
+//
+//        if(player.getLocation() != Locations.Location.INSTANCE_LOBBY){
+//            player.sendMessage("Are you trying to abuse our system?");
+//            AdminCord.sendMessage(1116222441614745610L, "[" + player.getUsername() + "] is manipulating instances.");
+//            return;
+//        }
+//
+//        if(takeItem(player, data)) {
+//            player.sendMessage("You don't have x"+data.getCost().getAmount()+" of "+ItemDefinition.forId(data.getCost().getId()).getName());
+//            return;
+//        }
+//
+//        Instance instance = new MultiBossFlashInstance(player,
+//                data.getNpcId(), data.getSpawns(), data.getCap());
+//
+//        instances.put(instance.getInstanceId(), instance);
+//        instance.start();
 
     }
 
-    public void enterGroupInstance(Player player, InstanceInterData data){
+    public void enterMasterInstance(Player player, InstanceInterData data){
         if(player.getInstance() != null) {
             player.getInstance().clear();
             player.setInstance(null);
@@ -132,23 +131,14 @@ public class InstanceManager {
             return;
         }
 
-        Instance instance = null;
+        Instance instance = switch (data.getNpcId()) {
+            case 595 -> new CounterInstance(player, data.getNpcId(), data.getSpawns(), data.getCap());
+            case 591 -> new DonatorSpecialInstance(player, data.getNpcId(), data.getSpawns(), data.getCap());
+            case 593 -> new VoteSpecialInstance(player, data.getNpcId(), data.getSpawns(), data.getCap());
+            case 1880 -> new IronmanInstance(player, data.getNpcId(), data.getSpawns(), data.getCap());
+            default -> null;
+        };
 
-        switch(data.getNpcId()){
-            case 595:
-                instance = new CounterInstance(player, data.getNpcId(), data.getSpawns(), data.getCap());
-                break;
-            case 591:
-                instance = new DonatorSpecialInstance(player, data.getNpcId(), data.getSpawns(), data.getCap());
-                break;
-            case 593:
-                instance = new VoteSpecialInstance(player, data.getNpcId(), data.getSpawns(), data.getCap());
-                break;
-            case 1880:
-                instance = new IronmanInstance(player, data.getNpcId(), data.getSpawns(), data.getCap());
-                break;
-        }
-        
         if(instance == null)
             return;
 
@@ -233,12 +223,8 @@ public class InstanceManager {
             return;
         }
 
-        int cap = (int) (data.getCap() * player.getDonator().getCap());
-
-        cap += player.getVip().getBonusCap();
-
         Instance instance = new MultiBossNormalInstance(player,
-                data.getNpcId(), data.getSpawns(), cap);
+                data.getNpcId(), data.getSpawns(), 1000 * 60);
 
         instances.put(instance.getInstanceId(), instance);
         instance.start();
@@ -285,9 +271,10 @@ public class InstanceManager {
 
             data = switch (tab) {
                 case 0 -> InstanceInterData.getMultiInstances();
-                case 1 -> InstanceInterData.getMulti2Instances();
+                case 1 -> InstanceInterData.getSingleInstances();
                 case 2 -> InstanceInterData.getSpecialInstances();
                 case 3 -> InstanceInterData.getEventInstances();
+                case 4 -> InstanceInterData.getMasterInstances();
                 default -> data;
             };
 
@@ -305,13 +292,7 @@ public class InstanceManager {
         if (def == null) {
             return;
         }
-
-        String prefix = switch (Integer.parseInt(settings[2])) {
-            case 1 -> "@gre@";
-            case 2 -> "@red@";
-            case 3 -> "@yel@";
-            default -> "@blu@";
-        };
+        String prefix = "@red@";
 
         int diff = Integer.parseInt(settings[2]);
 
@@ -392,242 +373,11 @@ public class InstanceManager {
                 npcId = 8014;
                 amount = 200;
             }
-            case 202 -> {
-                npcId = 8003;
-                amount = 200;
-            }
-            case 811 -> {
-                npcId = 202;
-                amount = 200;
-            }
-            case 9815 -> {
-                npcId = 811;
-                amount = 200;
-            }
-            case 9817 -> {
-                npcId = 9815;
-                amount = 300;
-            }
-            case 9920 -> {
-                npcId = 9817;
-                amount = 300;
-            }
-            case 3831 -> {
-                npcId = 9920;
-                amount = 300;
-            }
-            case 9025 -> {
-                npcId = 3831;
-                amount = 300;
-            }
-            case 9026 -> {
-                npcId = 9025;
-                amount = 500;
-            }
-            case 9836 -> {
-                npcId = 9026;
-                amount = 500;
-            }
-            case 92 -> {
-                npcId = 9836;
-                amount = 500;
-            }
-            case 3313 -> {
-                npcId = 92;
-                amount = 500;
-            }
-            case 8008 -> {
-                npcId = 3313;
-                amount = 500;
-            }
-            case 1906 -> {
-                npcId = 8008;
-                amount = 500;
-            }
-            case 9915 -> {
-                npcId = 1906;
-                amount = 500;
-            }
-            case 2342 -> {
-                npcId = 9915;
-                amount = 500;
-            }
-            case 9024 -> {
-                npcId = 2342;
-                amount = 500;
-            }
-            case 9916 -> {
-                npcId = 9024;
-                amount = 750;
-            }
-            case 9918 -> {
-                npcId = 9916;
-                amount = 750;
-            }
-            case 9919 -> {
-                npcId = 9918;
-                amount = 750;
-            }
-            case 9914 -> {
-                npcId = 9919;
-                amount = 1000;
-            }
-            case 9839 -> {
-                npcId = 9017;
-                amount = 1000;
-            }
-            case 9806 -> {
-                npcId = 9839;
-                amount = 1000;
-            }
-            case 9816 -> {
-                npcId = 9806;
-                amount = 1000;
-            }
-            case 9903 -> {
-                npcId = 9816;
-                amount = 2000;
-            }
-            case 8002 -> {
-                npcId = 9903;
-                amount = 2000;
-            }
-            case 1746 -> {
-                npcId = 8002;
-                amount = 2000;
-            }
-            case 3010 -> {
-                npcId = 1746;
-                amount = 2000;
-            }
-            case 3013 -> {
-                npcId = 3010;
-                amount = 2000;
-            }
-            case 3014 -> {
-                npcId = 3013;
-                amount = 3000;
-            }
-            case 8010 -> {
-                npcId = 3014;
-                amount = 3000;
-            }
-            case 3016 -> {
-                npcId = 8010;
-                amount = 3000;
-            }
-            case 4972 -> {
-                npcId = 3016;
-                amount = 3000;
-            }
-            case 9012 -> {
-                npcId = 4972;
-                amount = 3000;
-            }
-            case 3019 -> {
-                npcId = 9012;
-                amount = 3000;
-            }
-            case 3020 -> {
-                npcId = 3019;
-                amount = 3000;
-            }
-            case 3021 -> {
-                npcId = 3020;
-                amount = 5000;
-            }
-            case 3305 -> {
-                npcId = 3021;
-                amount = 5000;
-            }
-            case 9818 -> {
-                npcId = 3305;
-                amount = 5000;
-            }
-            case 9912 -> {
-                npcId = 9818;
-                amount = 5000;
-            }
-            case 9913 -> {
-                npcId = 9912;
-                amount = 5000;
-            }
-            case 3117 -> {
-                npcId = 9913;
-                amount = 5000;
-            }
-            case 3115 -> {
-                npcId = 3117;
-                amount = 5000;
-            }
-            case 12239 -> {
-                npcId = 3115;
-                amount = 5000;
-            }
-            case 3112 -> {
-                npcId = 12239;
-                amount = 5000;
-            }
-            case 3011 -> {
-                npcId = 3112;
-                amount = 5000;
-            }
-            case 252 -> {
-                npcId = 3011;
-                amount = 5000;
-            }
-            case 449 -> {
-                npcId = 252;
-                amount = 5000;
-            }
-            case 452 -> {
-                npcId = 449;
-                amount = 5000;
-            }
-            case 187 -> {
-                npcId = 452;
-                amount = 5000;
-            }
-            case 188 -> {
-                npcId = 187;
-                amount = 10000;
-            }
-            case 1311 -> {
-                npcId = 188;
-                amount = 15000;
-            }
-            case 1313 -> {
-                npcId = 1311;
-                amount = 15000;
-            }
-            case 1318 -> {
-                npcId = 1313;
-                amount = 25000;
-            }
-            case 595 -> {
-                npcId = 1318;
-                amount = 50000;
-            }
-            case 589 -> {
-                npcId = 595;
-                amount = 15000;
-            }
-            case 440 -> {
-                npcId = 1318;
-                amount = 50000;
-            }
-            case 438 -> {
-                npcId = 440;
-                amount = 50000;
-            }
             default -> {
                 return false;
             }
         }
-        if(data.getNpcId() == 8014)
-            return KillsTracker.getTotalKills(player) > amount;
-        else
-            return KillsTracker.getTotalKillsForNpc(npcId, player) > amount;
+        return false;
     }
 
     private boolean returnSpecial(Player player, int base){
@@ -642,7 +392,7 @@ public class InstanceManager {
 
     private boolean handleSpecialLock(int npcId){
         return switch (npcId) {
-            case 9017, 591, 593, 1120, 587, 8013, 1880 -> true;
+            case 9017 -> true;
             default -> false;
         };
     }
@@ -655,13 +405,8 @@ public class InstanceManager {
                 case 70507 -> player.getVariables().setInterfaceSettings(0, String.valueOf(1));
                 case 70508 -> player.getVariables().setInterfaceSettings(0, String.valueOf(2));
                 case 70509 -> player.getVariables().setInterfaceSettings(0, String.valueOf(3));
-                case 70510, 70542 -> player.sendMessage("This is coming soon!");
-                case 70534 -> {
-                    int current = Integer.parseInt(player.getVariables().getInterfaceSettings()[2]);
-                    player.getVariables().setInterfaceSettings(2, String.valueOf(
-                            current >= 3 ? 0 : current + 1));
-                    player.sendMessage("You have selected " + player.getVariables().getInterfaceSettings()[2] + " difficulty.");
-                }
+                case 70510 -> player.getVariables().setInterfaceSettings(0, String.valueOf(4));
+                case 70542 -> player.sendMessage("This is coming soon!");
                 case 70535 -> startInstance(player);
                 default -> {
                     int select = (button - 70602) / 2;
@@ -682,9 +427,10 @@ public class InstanceManager {
 
         InstanceInterData[] data = switch (tab) {
             case 0 -> InstanceInterData.getMultiInstances();
-            case 1 -> InstanceInterData.getMulti2Instances();
+            case 1 -> InstanceInterData.getSingleInstances();
             case 2 -> InstanceInterData.getSpecialInstances();
             case 3 -> InstanceInterData.getEventInstances();
+            case 4 -> InstanceInterData.getMasterInstances();
             default -> new InstanceInterData[0];
         };
 
@@ -707,9 +453,11 @@ public class InstanceManager {
         clear(player);
 
         switch (interData.getType()) {
-            case MULTI, MULTI_2 -> startMultiAmountInstance(player, interData);
+            case MULTI -> startMultiAmountInstance(player, interData);
+            case SINGLE -> startSingleBossInstance(player, interData);
             case SPECIAL -> startMultiInstance(player, interData);
             case EVENT -> startEventInstance(player, interData);
+            case MASTER -> enterMasterInstance(player, interData);
         }
 
     }

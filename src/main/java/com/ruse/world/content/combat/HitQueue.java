@@ -17,6 +17,7 @@ import com.ruse.world.entity.impl.Character;
 import com.ruse.world.entity.impl.npc.NPC;
 import com.ruse.world.entity.impl.npc.NPCMovementCoordinator.CoordinateState;
 import com.ruse.world.entity.impl.player.Player;
+import com.ruse.world.packages.slot.EffectHandler;
 
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -56,16 +57,16 @@ public class HitQueue {
 		private Player player;
 
 		/** The attacker instance. */
-		private Character attacker;
+		private final Character attacker;
 
 		/** The victim instance. */
-		private Character victim;
+		private final Character victim;
 
 		/** The attacker's combat builder attached to this task. */
-		private CombatBuilder builder;
+		private final CombatBuilder builder;
 
 		/** The attacker's combat container that will be used. */
-		private CombatContainer container;
+		private final CombatContainer container;
 
 		/** The total damage dealt during this hit. */
 		private long damage;
@@ -95,15 +96,6 @@ public class HitQueue {
 			if (victim == null) {
 				return;
 			}
-			// Do any hit modifications to the container here first.
-
-//			if (attacker.isPlayer() && victim.isNpc()) {
-//				NPC npc = (NPC) victim;
-//				if (Kraken.isWhirpool(npc)) {
-//					Kraken.attackPool(((Player) attacker), npc);
-//					return;
-//				}
-//			}
 
 			if (container.getModifiedDamage() > 0) {
 				container.allHits(context -> {
@@ -129,11 +121,6 @@ public class HitQueue {
 					Player p = (Player) attacker;
 
 					if (damage > 0) {
-						if (p.getLocation() == Location.PEST_CONTROL_GAME || p.getLocation() == Location.KEEPERS_OF_LIGHT_GAME) {
-							p.getMinigameAttributes().getPestControlAttributes().incrementDamageDealt(damage);
-						} else if (p.getLocation() == Location.DUNGEONEERING) {
-							p.getMinigameAttributes().getDungeoneeringAttributes().incrementDamageDealt(damage);
-						}
 						/** ACHIEVEMENTS **/
 
 						if(victim.isNpc()){
@@ -141,26 +128,7 @@ public class HitQueue {
 							npc.onDamage(p, damage);
 						}
 
-						if(p.getRaid() == null) {
-							if (p.getEquipment().hasAoE()) {
-								if (p.getEquipment().getSlotBonuses()[Equipment.WEAPON_SLOT].getBonus() == 1) {
-									AOEHandler.handleAttack(p, victim, 1000, 5000, 3, container.getHits()[0].getHit().getCombatIcon());}
-								else if (p.getEquipment().getSlotBonuses()[Equipment.WEAPON_SLOT].getBonus() == 2) {
-									AOEHandler.handleAttack(p, victim, 1000, 5000, 6, container.getHits()[0].getHit().getCombatIcon());}
-								else if (p.getEquipment().getSlotBonuses()[Equipment.WEAPON_SLOT].getBonus() == 3) {
-									AOEHandler.handleAttack(p, victim, 1000, 5000, 9, container.getHits()[0].getHit().getCombatIcon());}
-							}
-						} else if (p.getRaid().canAOE()) {
-							if (p.getEquipment().hasAoE()) {
-								if (p.getEquipment().getSlotBonuses()[Equipment.WEAPON_SLOT].getBonus() == 1) {
-									AOEHandler.handleAttack(p, victim, 1000, 5000, 3, container.getHits()[0].getHit().getCombatIcon());}
-								else if (p.getEquipment().getSlotBonuses()[Equipment.WEAPON_SLOT].getBonus() == 2) {
-									AOEHandler.handleAttack(p, victim, 1000, 5000, 6, container.getHits()[0].getHit().getCombatIcon());}
-								else if (p.getEquipment().getSlotBonuses()[Equipment.WEAPON_SLOT].getBonus() == 3) {
-									AOEHandler.handleAttack(p, victim, 1000, 5000, 9, container.getHits()[0].getHit().getCombatIcon());}
-							}
-						}
-
+						EffectHandler.handlePlayerAttack(p, victim);
 
 					}
 					p.getControllerManager().processOutgoingHit(container);
@@ -265,10 +233,6 @@ public class HitQueue {
 				}
 
 				Sounds.sendSound(p, Sounds.getPlayerBlockSounds(p.getEquipment().get(Equipment.WEAPON_SLOT).getId()));
-				/** CUSTOM ON DAMAGE STUFF **/
-				if (victim.isPlayer() && npc.getId() == 13447) {
-					Nex.dealtDamage(((Player) victim), damage);
-				}
 
 			} else if (attacker.isPlayer()) {
 				Player player = (Player) attacker;
@@ -294,9 +258,7 @@ public class HitQueue {
 
 				/** CUSTOM ON DAMAGE STUFF **/
 				if (victim.isNpc()) {
-					if (((NPC) victim).getId() == 13447) {
-						Nex.takeDamage(player, damage);
-					}
+
 				} else {
 					Sounds.sendSound((Player) victim, Sounds
 							.getPlayerBlockSounds(((Player) victim).getEquipment().get(Equipment.WEAPON_SLOT).getId()));
@@ -315,8 +277,7 @@ public class HitQueue {
 						&& ((Player) victim).getWalkToTask() == null;
 			} else if (!(attacker.isNpc() && ((NPC) attacker).isSummoningNpc())) {
 				NPC npc = (NPC) victim;
-				return npc.getMovementCoordinator().getCoordinateState() == CoordinateState.HOME
-						&& npc.getLocation() != Location.PEST_CONTROL_GAME;
+				return npc.getMovementCoordinator().getCoordinateState() == CoordinateState.HOME;
 			}
 			return false;
 		}

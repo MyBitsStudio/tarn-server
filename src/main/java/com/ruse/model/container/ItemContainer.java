@@ -7,6 +7,7 @@ import com.ruse.model.container.impl.*;
 import com.ruse.model.definitions.ItemDefinition;
 import com.ruse.world.entity.impl.GroundItemManager;
 import com.ruse.world.entity.impl.player.Player;
+import com.ruse.world.packages.misc.ItemIdentifiers;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -340,7 +341,7 @@ public abstract class ItemContainer {
         for (int i = 0; i < capacity(); i++) {
             if (items[i].getId() > 0 && items[i].getId() == item.getId()) {
                 if (items[i].getAmount() > 0 || ((this instanceof Bank) && items[i].getAmount() <= 1)) {
-                    if(items[i].getEffect() == item.getEffect() && items[i].getBonus()  == item.getBonus())
+                    if(item.getUid().equals(items[i].getUid()))
                         return i;
                 }
             }
@@ -468,7 +469,7 @@ public abstract class ItemContainer {
         if (item.getDefinition().isStackable() && amount > 1) { // Item is stackable
             item.setAmount(from.getAmount(item.getId()));
             from.delete(item.getId(), amount, false);
-            to.add(item.getId(), amount);
+            to.add(item);
         } else {
             from.delete(item.getId(), item.getAmount(), false);
             to.add(item);
@@ -540,6 +541,10 @@ public abstract class ItemContainer {
         }
     }
 
+    public static int[] unstackables = new int[] {
+        23150, 23151, 23152, 23153, 23154, 23155, 23156, 23157, 23158, 23159, 23160
+    };
+
     /**
      * Adds an item to the item container.
      *
@@ -578,7 +583,8 @@ public abstract class ItemContainer {
                 }
             }
         }
-        if (ItemDefinition.forId(item.getId()).isStackable() || stackType() == StackType.STACKS) {
+        if (ItemDefinition.forId(item.getId()).isStackable() || stackType() == StackType.STACKS
+        && Arrays.stream(unstackables).noneMatch(i -> i == item.getId())) {
 
             int slot = getSlot(item.getId());
               if (slot == -1)
@@ -598,14 +604,15 @@ public abstract class ItemContainer {
                 return this;
             }
             items[slot].setId(item.getId());
-            items[slot].setAmount(items[slot].getAmount() + item.getAmount()); //its still so much more than just those 2 files lol,
+            items[slot].setAmount(items[slot].getAmount() + item.getAmount());
+            items[slot].setUid(item.getUid());
         } else {
             int amount = item.getAmount();
             while (amount > 0) {
                 int slot = getEmptySlot();
                 if (slot == -1) {
                     if (!getPlayer().getRank().isAdmin()) {
-                        GroundItemManager.spawnGroundItem(player, new GroundItem(item.getEffect() == -1 ? Item.getNoted(item.getId(), amount) : item,
+                        GroundItemManager.spawnGroundItem(player, new GroundItem(Item.getNoted(item.getId(), amount),
                                 player.getPosition().copy(), player.getUsername(), false, 120,
                                 player.getPosition().getZ() >= 0 && player.getPosition().getZ() < 4,
                                 60));
@@ -617,8 +624,7 @@ public abstract class ItemContainer {
                 } else {
                     items[slot].setId(item.getId());
                     items[slot].setAmount(1);
-                    items[slot].setBonus(item.getBonus());
-                    items[slot].setEffect(item.getEffect());
+                    items[slot].setUid(item.getUid());
                 }
                 amount--;
             }
@@ -723,6 +729,7 @@ public abstract class ItemContainer {
                 if (!leavePlaceHolder) {
                     items[slot].setId(-1);
                 }
+                items[slot].setUid("-1");
             }
         } else {
             int amount = item.getAmount();
@@ -733,6 +740,7 @@ public abstract class ItemContainer {
                     items[slot].setId(-1);
                 }
                 items[slot].setAmount(0);
+                items[slot].setUid("-1");
                 slot = getSlot(item.getId());
                 amount--;
             }

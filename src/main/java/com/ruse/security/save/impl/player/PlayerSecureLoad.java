@@ -573,9 +573,6 @@ public class PlayerSecureLoad extends SecureLoad {
                 player.setAutocastSpell(CombatSpells.getSpell(spell));
         }
 
-        if (object.has("dfs-charges")) {
-            player.incrementDfsCharges(object.get("dfs-charges").getAsInt());
-        }
         if (object.has("kills")) {
             KillsTracker.submit(player, builder.fromJson(object.get("kills").getAsJsonArray(), KillsTracker.KillsEntry[].class));
         }
@@ -649,23 +646,6 @@ public class PlayerSecureLoad extends SecureLoad {
             player.getSlayer().doubleSlayerXP = object.get("double-slay-xp").getAsBoolean();
         }
 
-        if (object.has("recoil-deg")) {
-            player.setRecoilCharges(object.get("recoil-deg").getAsInt());
-        }
-
-        if (object.has("brawlers-deg")) {
-            player.setBrawlerCharges(builder.fromJson(object.get("brawlers-deg").getAsJsonArray(), int[].class));
-        }
-
-        if (object.has("ancient-deg")) {
-            player.setAncientArmourCharges(
-                    builder.fromJson(object.get("ancient-deg").getAsJsonArray(), int[].class));
-        }
-
-        if (object.has("blowpipe-deg")) {
-            player.setBlowpipeCharges(object.get("blowpipe-deg").getAsInt());
-        }
-
         if (object.has("killed-players")) {
             List<String> list = new ArrayList<>();
             String[] killed_players = builder.fromJson(object.get("killed-players").getAsJsonArray(),
@@ -674,27 +654,6 @@ public class PlayerSecureLoad extends SecureLoad {
             player.getPlayerKillingAttributes().setKilledPlayers(list);
         }
 
-        if (object.has("killed-gods")) {
-            player.getAchievementAttributes()
-                    .setGodsKilled(builder.fromJson(object.get("killed-gods").getAsJsonArray(), boolean[].class));
-        }
-        if (object.has("vod-brother")) {
-            player.getMinigameAttributes().getVoidOfDarknessAttributes().setBarrowsData(
-                    builder.fromJson(object.get("vod-brother").getAsJsonArray(), int[][].class));
-        }
-
-        if (object.has("vod-killcount")) {
-            player.getMinigameAttributes().getVoidOfDarknessAttributes()
-                    .setKillcount((object.get("vod-killcount").getAsInt()));
-        }
-        if (object.has("hov-killcount")) {
-            player.getMinigameAttributes().getHallsOfValorAttributes()
-                    .setKillcount((object.get("hov-killcount").getAsInt()));
-        }
-        if (object.has("barrows-brother")) {
-            player.getMinigameAttributes().getBarrowsMinigameAttributes().setBarrowsData(
-                    builder.fromJson(object.get("barrows-brother").getAsJsonArray(), int[][].class));
-        }
 
         if (object.has("random-coffin")) {
             player.getMinigameAttributes().getBarrowsMinigameAttributes()
@@ -1250,6 +1209,12 @@ public class PlayerSecureLoad extends SecureLoad {
         if (object.has("second-slot")) {
             player.getSecondaryEquipment()
                     .setSlots(builder.fromJson(object.get("second-slot").getAsJsonArray(), SlotBonus[].class));
+        }
+
+        if (object.has("charges")) {
+            player.getItems()
+                    .setCharges(builder.fromJson(object.get("charges"),  new TypeToken<Map<String, Integer>>() {
+                    }.getType()));
         }
 
 

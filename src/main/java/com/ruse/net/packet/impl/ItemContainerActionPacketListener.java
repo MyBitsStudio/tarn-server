@@ -46,13 +46,10 @@ public class ItemContainerActionPacketListener implements PacketListener {
 			player.getPacketSender().sendMessage("firstAction itemContainer. IF: " + interfaceId + " slot: " + slot + ", id: " + id);
 		}
 
-		if(player.getEquipment().handleContainer(slot, 1, id)){
-			return;
-		}
+		if(interfaceId == 31444)
+			if(player.getEquipment().handleContainer(slot, 1, id))
+				return;
 
-		if(SlotItems.handlePerk(player, player.getInventory().get(slot))){
-			return;
-		}
 
 		switch (interfaceId) {
 			case TradingPost.ITEM_CONTAINER_ID:
@@ -105,7 +102,6 @@ public class ItemContainerActionPacketListener implements PacketListener {
 				//player.getPlayerOwnedShopManager().handleWithdraw(slot, id, -1);
 				break;
 			case -28382:
-				//player.getPlayerOwnedShopManager().handleStore(slot, id, 1);
 				player.sendMessage("@red@ POS Adding is disabled. Please withdraw your items.");
 				break;
 			// done.
@@ -200,19 +196,19 @@ public class ItemContainerActionPacketListener implements PacketListener {
 			case Bank.INTERFACE_ID:
 				if (!player.isBanking() || player.getInterfaceId() != 5292)
 					break;
-				item = new Item(item.getId(), item.getAmount());
+				item = player.getBank(player.getCurrentBankTab()).forSlot(slot).copy();
 				player.getBank(player.getCurrentBankTab()).switchItem(player.getInventory(), item, slot, true, true);
 				player.getBank(player.getCurrentBankTab()).open();
 				break;
 			case GroupIronmanBank.INTERFACE_ID:
 				if (!player.isBanking() || player.getInterfaceId() != 106000)
 					break;
-				item = new Item(item.getId(), item.getAmount());
+				item = new Item(item.getId(), item.getAmount(), item.getUid());
 				player.getGroupIronmanBank().switchItem(player, player.getInventory(), item, slot, true, true);
 				player.getGroupIronmanBank().open(player);
 				break;
 			case Bank.INVENTORY_INTERFACE_ID:
-				item = new Item(item.getId(), item.getAmount());
+				item = player.getInventory().forSlot(slot).copy();
 				if (player.isBanking() && player.getInterfaceId() == 106000 && player.getInventory().contains(item.getId())){
 					player.getInventory().switchItem(player.getGroupIronmanBank(), item, slot, false, true);
 					player.getGroupIronmanBank().refreshItems(player);
@@ -314,12 +310,10 @@ public class ItemContainerActionPacketListener implements PacketListener {
 		if (player.getRank().isDeveloper()) {
 			player.getPacketSender().sendMessage("secondAction itemContainer. IF: " + interfaceId + " slot: " + slot + ", id: " + id);
 		}
-		if(player.getEquipment().handleContainer(slot, 2, id)){
-			return;
-		}
-		if(SlotItems.handlePerk(player, player.getInventory().get(slot))){
-			return;
-		}
+		if(interfaceId == 31444)
+			if(player.getEquipment().handleContainer(slot, 2, id))
+				return;
+
 		switch (interfaceId) {
 			case TradingPost.ITEM_CONTAINER_ID -> player.getTradingPost().selectItemToAdd(item);
 			case -15971 -> ForgeShopHandler.purchase(player, id, 5);
@@ -356,7 +350,7 @@ public class ItemContainerActionPacketListener implements PacketListener {
 			case Bank.INTERFACE_ID -> {
 				if (!player.isBanking() || item.getId() != id || player.getInterfaceId() != 5292)
 					return;
-				item = new Item(item.getId(), 5);
+				item = player.getBank(player.getCurrentBankTab()).forSlot(slot).copy().setAmount(5);
 				player.getBank(player.getCurrentBankTab()).switchItem(player.getInventory(), item, slot, true, true);
 				player.getBank(player.getCurrentBankTab()).open();
 			}
@@ -368,7 +362,7 @@ public class ItemContainerActionPacketListener implements PacketListener {
 				player.getGroupIronmanBank().open(player);
 			}
 			case Bank.INVENTORY_INTERFACE_ID -> {
-				item = new Item(item.getId(), 5);
+				item = player.getInventory().forSlot(slot).copy().setAmount(5);
 				if (player.isBanking() && player.getInterfaceId() == 106000 && player.getInventory().contains(item.getId())) {
 					player.getInventory().switchItem(player.getGroupIronmanBank(), item, slot, false, true);
 					player.getGroupIronmanBank().refreshItems(player);
@@ -456,9 +450,11 @@ public class ItemContainerActionPacketListener implements PacketListener {
 			player.getPacketSender()
 					.sendMessage("thirdAction itemContainer. IF: " + interfaceId + " slot: " + slot + ", id: " + id);
 		}
-		if(player.getEquipment().handleContainer(slot, 3, id)){
-			return;
-		}
+
+		if(interfaceId == 31444)
+			if(player.getEquipment().handleContainer(slot, 3, id))
+				return;
+
 		switch (interfaceId) {
 			case TradingPost.ITEM_CONTAINER_ID:
 				player.getTradingPost().selectItemToAdd(item1.setAmount(5));
@@ -602,7 +598,7 @@ public class ItemContainerActionPacketListener implements PacketListener {
 			case Bank.INTERFACE_ID:
 				if (!player.isBanking() || player.getInterfaceId() != 5292)
 					return;
-				player.getBank(player.getCurrentBankTab()).switchItem(player.getInventory(),  new Item(id, 10), slot, true,true);
+				player.getBank(player.getCurrentBankTab()).switchItem(player.getInventory(), player.getBank(player.getCurrentBankTab()).forSlot(slot).copy().setAmount(10), slot, true,true);
 				player.getBank(player.getCurrentBankTab()).open();
 				break;
 			case GroupIronmanBank.INTERFACE_ID:
@@ -613,7 +609,6 @@ public class ItemContainerActionPacketListener implements PacketListener {
 				break;
 			case Bank.INVENTORY_INTERFACE_ID:
 				Item item = player.getInventory().forSlot(slot).copy().setAmount(10).copy();
-				item = new Item(id, 10);
 				if (player.isBanking() && player.getInterfaceId() == 106000 && player.getInventory().contains(item.getId())){
 					player.getInventory().switchItem(player.getGroupIronmanBank(), item, slot, false, true);
 					player.getGroupIronmanBank().refreshItems(player);
@@ -707,9 +702,11 @@ public class ItemContainerActionPacketListener implements PacketListener {
 			player.getPacketSender()
 					.sendMessage("fourthAction itemContainer. IF: " + interfaceId + " slot: " + slot + ", id: " + id);
 		}
-		if(player.getEquipment().handleContainer(slot, 4, id)){
-			return;
-		}
+
+		if(interfaceId == 31444)
+			if(player.getEquipment().handleContainer(slot, 4, id))
+				return;
+
 		switch (interfaceId) {
 			case TradingPost.ITEM_CONTAINER_ID:
 				player.getTradingPost().selectItemToAdd(new Item(id, 10));
@@ -891,9 +888,10 @@ public class ItemContainerActionPacketListener implements PacketListener {
 		if (player.getRank().isDeveloper()) {
 			player.getPacketSender().sendMessage("fifthAction itemContainer. IF: " + interfaceId + " slot: " + slot + ", id: " + id);
 		}
-		if(player.getEquipment().handleContainer(slot, 5, id)){
-			return;
-		}
+		if(interfaceId == 31444)
+			if(player.getEquipment().handleContainer(slot, 5, id))
+				return;
+
 		switch (interfaceId) {
 			case TradingPost.ITEM_CONTAINER_ID -> player.getPacketSender().sendMessage("X value here");
 			case 31510 -> player.getEventBossManager().removeNpcDropReward(id, player.getInventory().getAmount(id));
@@ -1046,9 +1044,10 @@ public class ItemContainerActionPacketListener implements PacketListener {
 		if (player.getRank().isDeveloper()) {
 			player.getPacketSender().sendMessage("sixthAction itemContainer. IF: " + interfaceId + " slot: " + slot + ", id: " + id);
 		}
-		if(player.getEquipment().handleContainer(slot, 6, id)){
-			return;
-		}
+		if(interfaceId == 31444)
+			if(player.getEquipment().handleContainer(slot, 6, id))
+				return;
+
 		if (interfaceId == Shop.INVENTORY_INTERFACE_ID) {
 			if (player.isShopping()) {
 				player.getShop().sellItem(player, slot, player.getInventory().getAmount(id));

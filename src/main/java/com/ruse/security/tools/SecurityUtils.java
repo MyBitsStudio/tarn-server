@@ -28,6 +28,8 @@ public class SecurityUtils {
             PLAYER_FILE = "./.core/server/security/saves/",
             DONATE = "./.core/server/security/donate/",
             SERVER_MAPS = "./.core/server/security/serverMaps.json",
+
+            IDENTIFIERS = "./.core/server/identifiers.json",
             LOGGING = "./core/logs/";
 
     public static String[] seeds = {

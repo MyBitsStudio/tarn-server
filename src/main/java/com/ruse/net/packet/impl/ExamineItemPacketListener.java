@@ -8,7 +8,10 @@ import com.ruse.net.packet.PacketListener;
 import com.ruse.util.Misc;
 import com.ruse.world.content.BonusManager;
 import com.ruse.world.entity.impl.player.Player;
+import com.ruse.world.packages.misc.ItemIdentifiers;
 import com.ruse.world.packages.slot.SlotEffect;
+
+import java.util.Objects;
 
 public class ExamineItemPacketListener implements PacketListener {
 
@@ -16,30 +19,39 @@ public class ExamineItemPacketListener implements PacketListener {
 	public void handleMessage(Player player, Packet packet) {
 		int item = packet.readShort();
 		int slot = packet.readByte();
-		Item items = player.getInventory().get(slot);
-		if(item == ItemDefinition.COIN_ID || item == 18201) {
+		Item items;
+		if(player.isBanking()){
+			items = player.getBank(player.getCurrentBankTab()).getItems()[slot];
+		} else {
+			items = player.getInventory().getItems()[slot];
+		}
+		if(item == ItemDefinition.COIN_ID || item == 10835) {
 			player.getPacketSender().sendMessage("Mhmm... Shining coins...");
 			return;
 		}
 		ItemDefinition itemDef = ItemDefinition.forId(item);
 		if(itemDef != null) {
-			player.getPacketSender().sendMessage("This is a @red@" + itemDef.getName() + "@bla@.");
-			if(items.getEffect() != -1){
-				player.getPacketSender().sendMessage("It has @red@" + SlotEffect.values()[items.getEffect()].name().replace("_", " ") + (items.getBonus() == -1 ? "" : " with a bonus of @red@"+items.getBonus()));
-			}
-			if(itemDef.getRequirement() != null){
-				for (Skill skill : Skill.values()) {
-					if (itemDef.getRequirement()[skill.ordinal()] > player.getSkillManager().getMaxLevel(skill)) {
-						player.getPacketSender().sendMessage("@red@WARNING: You need " + (skill.getName().startsWith("a")
-								|| skill.getName().startsWith("e")
-								|| skill.getName().startsWith("i")
-								|| skill.getName().startsWith("o")
-								|| skill.getName().startsWith("u") ? "an " : "a ")
-								+ Misc.formatText(skill.getName()) + " level of at least "
-								+ itemDef.getRequirement()[skill.ordinal()] + " to wear this.");
-					}
+			player.getPacketSender().sendMessage(itemDef.getDescription());
+			if(ItemIdentifiers.itemIdentifiers.containsKey(items.getUid())){
+				SlotEffect effect = SlotEffect.values()[Integer.parseInt(ItemIdentifiers.getItemIdentifier(items.getUid(), "PERK"))];
+				int bonus = Integer.parseInt(ItemIdentifiers.getItemIdentifier(items.getUid(), "BONUS"));
+				if(effect != null && !effect.equals(SlotEffect.NOTHING)){
+					player.getPacketSender().sendMessage("This item has a @red@"+effect.name()+"@bla@ perk"+(bonus != 0 && bonus != -1 ? "with bonus of "+bonus+"%." : "."));
 				}
 			}
+//			if(itemDef.getRequirement() != null){
+//				for (Skill skill : Skill.values()) {
+//					if (itemDef.getRequirement()[skill.ordinal()] > player.getSkillManager().getMaxLevel(skill)) {
+//						player.getPacketSender().sendMessage("@red@WARNING: You need " + (skill.getName().startsWith("a")
+//								|| skill.getName().startsWith("e")
+//								|| skill.getName().startsWith("i")
+//								|| skill.getName().startsWith("o")
+//								|| skill.getName().startsWith("u") ? "an " : "a ")
+//								+ Misc.formatText(skill.getName()) + " level of at least "
+//								+ itemDef.getRequirement()[skill.ordinal()] + " to wear this.");
+//					}
+//				}
+//			}
 		}
 	}
 

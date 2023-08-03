@@ -7,8 +7,8 @@ import com.ruse.world.entity.impl.player.Player;
 public class MultiBossNormalInstance extends MultiBossInstance {
 
     public MultiBossNormalInstance(Player p, int npcId,
-                                   int amount, int cap){
-        super(p, npcId, amount, cap);
+                                   int amount, long time){
+        super(p, npcId, amount, time);
     }
 
     @Override

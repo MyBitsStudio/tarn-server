@@ -343,16 +343,18 @@ public class NPCDrops {
             }
 
             Item item = new Item(drop.getId(), amount);
-            double ran = Misc.getRandom(0, 100);
             int itemId = item.getId();
 
-            if (player.getEquipment().hasDoubleCash() && item.getId() == 995) {
+            if (player.getEquipment().hasDoubleCash() && (item.getId() == 995 || item.getId() == 10835)) {
                 item.setAmount(item.getAmount() * 2);
+            } else if(player.getEquipment().hasTripleCash() && (item.getId() == 995 || item.getId() == 10835)) {
+                item.setAmount(item.getAmount() * 3);
             }
-            if ((player.getEquipment().get(Equipment.ENCHANTMENT_SLOT).getId() == 17391 || player.getEquipment().get(Equipment.ENCHANTMENT_SLOT).getId() == 24011)
-                    && (item.getId() == 995 || item.getId() == 10835)) {
-                item.setAmount(item.getAmount() * 2);
-            }
+
+//            if ((player.getEquipment().get(Equipment.ENCHANTMENT_SLOT).getId() == 17391 || player.getEquipment().get(Equipment.ENCHANTMENT_SLOT).getId() == 24011)
+//                    && (item.getId() == 995 || item.getId() == 10835)) {
+//                item.setAmount(item.getAmount() * 2);
+//            }
 
             if(item.getId() == 995) {
                 var currentAmount = item.getAmount();
@@ -379,6 +381,7 @@ public class NPCDrops {
                     item.setId(22118);
                 }
             }
+
             if ((player.getInventory().contains(3323) || player.getInventory().contains(18337)
                     || (player.getSkillManager().skillCape(Skill.PRAYER) && player.getBonecrushEffect()))
                     && BonesData.forId(item.getId()) != null) {

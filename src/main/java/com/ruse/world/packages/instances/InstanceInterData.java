@@ -11,10 +11,26 @@ public enum InstanceInterData {
     /**
      * Multi Instances
      */
-//
-//    INFERNO("Inferno", "200 Dr.Aberrant",
-//            new Item(10835, 10000), 16, 100, 202,
-//    InstanceType.MULTI),
+
+    DEATH_GOD("Death God", "",
+            new Item(10835, 1000), 16, 100, 9915,
+    InstanceType.MULTI),
+
+    AGTHOMOTH("Ag'thomoth", "",
+            new Item(10835, 5000), 1, 100, 3013,
+            InstanceType.SINGLE),
+
+    DONATOR("Donator Semi-Boss", "",
+            new Item(10835, 5000), 16, 100, 9818,
+            InstanceType.SPECIAL),
+
+    SUMMER("Summer Solstice Boss", "",
+            new Item(10835, 5000), 16, 100, 3019,
+            InstanceType.EVENT),
+
+    ZEIDAN("Zeidan Grimm", "",
+            new Item(10835, 250000), 1, 100, 3010,
+            InstanceType.MASTER),
 //
 //    KOLGAL("Kol'gal", "300 Nagendra",
 //            new Item(10835, 10000), 16, 100, 9815,
@@ -223,9 +239,9 @@ public enum InstanceInterData {
                 .filter(i -> i.getType() == InstanceType.MULTI).toArray(InstanceInterData[]::new);
     }
 
-    public static InstanceInterData[] getMulti2Instances(){
+    public static InstanceInterData[] getSingleInstances(){
         return Arrays.stream(InstanceInterData.values())
-                .filter(i -> i.getType() == InstanceType.MULTI_2).toArray(InstanceInterData[]::new);
+                .filter(i -> i.getType() == InstanceType.SINGLE).toArray(InstanceInterData[]::new);
     }
 
     public static InstanceInterData[] getSpecialInstances(){
@@ -238,8 +254,8 @@ public enum InstanceInterData {
                 .filter(i -> i.getType() == InstanceType.EVENT).toArray(InstanceInterData[]::new);
     }
 
-    public static InstanceInterData[] getGroupInstances(){
+    public static InstanceInterData[] getMasterInstances(){
         return Arrays.stream(InstanceInterData.values())
-                .filter(i -> i.getType() == InstanceType.GROUP).toArray(InstanceInterData[]::new);
+                .filter(i -> i.getType() == InstanceType.MASTER).toArray(InstanceInterData[]::new);
     }
 }

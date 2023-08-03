@@ -5,17 +5,23 @@ import com.ruse.model.container.impl.Equipment;
 import com.ruse.world.entity.impl.player.Player;
 import com.ruse.world.packages.dialogue.DialogueManager;
 import com.ruse.world.packages.dialogue.impl.slot.EquipOnSlot;
+import com.ruse.world.packages.misc.ItemIdentifiers;
 
 import java.util.Objects;
 
 public class PerkEquip {
 
     public static void equipPerk(Player player, Item item){
-        boolean weaponPerk = SlotEffect.values()[item.getEffect()].isWeapon();
+        SlotEffect effect = SlotEffect.values()[Integer.parseInt(ItemIdentifiers.getItemIdentifier(item.getUid(), "PERK"))];
+        if(Objects.equals(effect, null)){
+            player.sendMessage("Something went wrong here. Effect is Null");
+            return;
+        }
+        boolean weaponPerk = effect.isWeapon();
         player.getVariables().setSetting("inv-slot", player.getInventory().slotOf(item));
 
         if(weaponPerk){
-            player.getVariables().setSetting("slot-chosen", ""+Equipment.WEAPON_SLOT);
+            player.getVariables().setSetting("slot-chosen", Equipment.WEAPON_SLOT);
             DialogueManager.sendDialogue(player, new EquipOnSlot(player), -1);
         } else {
             player.getPacketSender().sendInterface(162750);
@@ -39,14 +45,18 @@ public class PerkEquip {
             player.sendMessage("Something went wrong here. Item is Null");
             return;
         }
-        SlotEffect effect = SlotEffect.values()[item.getEffect()];
+        SlotEffect effect = SlotEffect.values()[Integer.parseInt(ItemIdentifiers.getItemIdentifier(item.getUid(), "PERK"))];
         if(Objects.equals(effect, null) || Objects.equals(effect, SlotEffect.NOTHING)){
             player.sendMessage("Something went wrong here. Effect is Null");
             return;
         }
-
-        player.getEquipment().getSlotBonuses()[player.getVariables().getIntValue("slot-chosen")] = new SlotBonus(effect, item.getBonus());
+        if(player.getVariables().getIntValue("slot-chosen") == Equipment.WEAPON_SLOT && !effect.isWeapon()){
+            player.sendMessage("You can't equip this perk in the weapon slot.");
+            return;
+        }
+        player.getEquipment().getSlotBonuses()[player.getVariables().getIntValue("slot-chosen")] = new SlotBonus(effect, Integer.parseInt(ItemIdentifiers.getItemIdentifier(item.getUid(), "BONUS")));
         player.getInventory().delete(item);
+        ItemIdentifiers.removeItemIdentifier(item.getUid());
         player.getEquipment().refreshItems();
         player.sendMessage("You have added the perk to your"+player.getEquipment().slotToName(player.getVariables().getIntValue("slot-chosen"))+" slot.");
         reset(player);

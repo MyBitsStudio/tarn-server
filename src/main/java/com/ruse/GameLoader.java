@@ -41,6 +41,7 @@ import com.ruse.world.packages.donation.DonationManager;
 import com.ruse.world.packages.donation.FlashDeals;
 import com.ruse.world.packages.globals.GlobalBossManager;
 import com.ruse.world.packages.instances.InstanceManager;
+import com.ruse.world.packages.misc.ItemIdentifiers;
 import com.ruse.world.packages.plus.PlusUpgrade;
 import com.ruse.world.packages.seasonpass.SeasonPassLoader;
 import com.ruse.world.packages.voting.VoteBossDrop;
@@ -159,6 +160,7 @@ public final class GameLoader {
 		serviceLoader.execute(VoteBossDrop::load);
 		serviceLoader.execute(DailyResetScheduler::initialize);
 		serviceLoader.execute(TradingPost::load);
+		serviceLoader.execute(ItemIdentifiers::load);
 		//serviceLoader.execute(RSAKeyGenerator::start);
 		TaskManager.submit(new LotteryTask());
 	}

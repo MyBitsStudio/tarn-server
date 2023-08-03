@@ -9,10 +9,14 @@ import com.ruse.model.container.StackType;
 import com.ruse.model.definitions.WeaponAnimations;
 import com.ruse.model.definitions.WeaponInterfaces;
 import com.ruse.world.content.BonusManager;
+import com.ruse.world.content.CustomDropUtils;
 import com.ruse.world.content.combat.magic.Autocasting;
 import com.ruse.world.content.combat.weapon.CombatSpecial;
 import com.ruse.world.content.minigames.impl.Dueling;
 import com.ruse.world.entity.impl.player.Player;
+import com.ruse.world.packages.combat.max.MagicMax;
+import com.ruse.world.packages.combat.max.MeleeMax;
+import com.ruse.world.packages.combat.max.RangeMax;
 import com.ruse.world.packages.dialogue.DialogueManager;
 import com.ruse.world.packages.dialogue.impl.slot.UnequipSlotPerk;
 import com.ruse.world.packages.slot.PerkEquip;
@@ -57,7 +61,17 @@ public class Equipment extends ItemContainer {
 	@Override
 	public ItemContainer refreshItems() {
 		getPlayer().getPacketSender().sendEquipment();
+		equipStats();
 		return this;
+	}
+
+	private void equipStats(){
+		getPlayer().getPacketSender().sendTooltip(162602, "Melee Max : "+ (MeleeMax.newMelee(getPlayer(), getPlayer()) / 10));
+		getPlayer().getPacketSender().sendTooltip(162603, "Magic Max : "+ (MagicMax.newMagic(getPlayer(), getPlayer()) / 10));
+		getPlayer().getPacketSender().sendTooltip(162604, "Ranged Max : "+ (RangeMax.newRange(getPlayer(), getPlayer()) / 10));
+		getPlayer().getPacketSender().sendTooltip(162605, "Drop Rate : "+ CustomDropUtils.drBonus(getPlayer(), getPlayer().getSlayer().getSlayerTask().getNpcId()));
+		getPlayer().getPacketSender().sendTooltip(162606, "Double Drop : "+ CustomDropUtils.getDoubleDropChance(getPlayer(), getPlayer().getSlayer().getSlayerTask().getNpcId()));
+		getPlayer().getPacketSender().sendTooltip(162607, "Set Bonus : None");
 	}
 
 	@Override
@@ -231,9 +245,28 @@ public class Equipment extends ItemContainer {
 		return slotBonuses[WEAPON_SLOT].getEffect() == SlotEffect.AOE_EFFECT;
 	}
 
+	public boolean hasTripleShot(){
+		return slotBonuses[WEAPON_SLOT].getEffect() == SlotEffect.MULTI_SHOT
+				&& slotBonuses[WEAPON_SLOT].getBonus() == 3;
+	}
+
+	public boolean hasDoubleShot(){
+		return slotBonuses[WEAPON_SLOT].getEffect() == SlotEffect.MULTI_SHOT
+				&& slotBonuses[WEAPON_SLOT].getBonus() == 2;
+	}
+
 	public boolean hasDoubleCash(){
 		for (SlotBonus slotBonus : slotBonuses) {
 			if (slotBonus.getEffect() == SlotEffect.DOUBLE_CASH) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	public boolean hasTripleCash(){
+		for (SlotBonus slotBonus : slotBonuses) {
+			if (slotBonus.getEffect() == SlotEffect.TRIPLE_CASH) {
 				return true;
 			}
 		}
@@ -338,7 +371,11 @@ public class Equipment extends ItemContainer {
 			getPlayer().sendMessage("Something went wrong here.");
 		} else {
 			SlotBonus bonus = slotBonuses[slot];
-			if(!Objects.equal(bonus.getEffect(), SlotEffect.NOTHING)){
+			if(Objects.equal(bonus.getEffect(), SlotEffect.NOTHING)) {
+				getPlayer().getPacketSender().sendString(162656, "NONE");
+				getPlayer().getPacketSender().sendString(162658, "BONUS : 0%");
+				getPlayer().getPacketSender().sendString(162659, "RARITY : ");
+			} else {
 				getPlayer().getPacketSender().sendString(162656, bonus.getEffect().name().replace("_", " "));
 				getPlayer().getPacketSender().sendString(162658, "BONUS : "+bonus.getBonus() + "%");
 				getPlayer().getPacketSender().sendString(162659, "RARITY : "+bonus.getEffect().getRarity().name());
@@ -367,12 +404,14 @@ public class Equipment extends ItemContainer {
 
 	public boolean handleClicks(int button){
 		if(button >= 162501 && button <= 162515){
-			if(getPlayer().getInterfaceId() == 162750){
-				PerkEquip.handleButton(getPlayer(), button - 162501);
-				return true;
-			}
 			sendSlotPerk(button - 162501);
 			return true;
+		}
+		if(button >= 162551 && button <= 162565){
+			if(getPlayer().getInterfaceId() == 162750){
+				PerkEquip.handleButton(getPlayer(), button - 162551);
+				return true;
+			}
 		}
 		switch(button){
 			case 162612 -> {
@@ -405,7 +444,7 @@ public class Equipment extends ItemContainer {
 				sendAllPerks();
 				return true;
 			}
-			case 162600 -> {
+			case 162660 -> {
 				int slot = getPlayer().getVariables().getIntValue("slot-chosen");
 				if(slot == -1){
 					getPlayer().sendMessage("Something went wrong here.");

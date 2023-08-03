@@ -92,7 +92,7 @@ public enum TeleInterfaceData {
    // MERUEM(TeleInterfaceCategory.MISC, "Meruem The King", 9907, 1500, TeleInterfaceLocation.LOCATION69, null),
    // GOLDEN(TeleInterfaceCategory.MISC, "Golden Great Ape", 9908, 1500, TeleInterfaceLocation.LOCATION70, null)
 
-    RAIDS_1(TeleInterfaceCategory.MINIGAMES, "DISABLED", 9910, 1500, TeleInterfaceLocation.TARN_TOWER, new Item(995,1)),
+    RAIDS_1(TeleInterfaceCategory.MISC, "DISABLED", 9910, 1500, TeleInterfaceLocation.TARN_TOWER, new Item(995,1)),
     ;
     TeleInterfaceData(TeleInterfaceCategory category, String name, int npcId, int zoom, TeleInterfaceLocation location, Item... drops) {
         this.category = category;

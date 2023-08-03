@@ -390,25 +390,7 @@ public final class CombatFactory {
     @SuppressWarnings("incomplete-switch")
     public static boolean rollAccuracy(Character attacker, Character victim, CombatType type) {
 
-        if (attacker.isPlayer() && victim.isPlayer()) {
-            Player p1 = (Player) attacker;
-            Player p2 = (Player) victim;
-            switch (type) {
-                case MAGIC -> {
-                    int mageAttk = DesolaceFormulas.getMagicAttack(p1);
-                    return Misc.getRandom(DesolaceFormulas.getMagicDefence(p2)) < Misc.getRandom((mageAttk / 2))
-                            + Misc.getRandom((int) (mageAttk / 2.1));
-                }
-                case MELEE -> {
-                    int def = 1 + DesolaceFormulas.getMeleeDefence(p2);
-                    return Misc.getRandom(def) < Misc.getRandom(1 + DesolaceFormulas.getMeleeAttack(p1)) + (def / 4.5);
-                }
-                case RANGED -> {
-                    return Misc.getRandom(10 + DesolaceFormulas.getRangedDefence(p2)) < Misc
-                            .getRandom(15 + DesolaceFormulas.getRangedAttack(p1));
-                }
-            }
-        }
+
 //        else if (attacker.isPlayer() && victim.isNpc() && type != MAGIC) {
 //            Player p1 = (Player) attacker;
 //            NPC n = (NPC) victim;

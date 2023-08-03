@@ -25,7 +25,7 @@ public class MagicMax {
             if(victim.isPlayer()){
                 Player player = victim.asPlayer();
 
-                long defence = (long) (player.getBonusManager().getDefenceBonus()[3] / 1_000_000);
+                long defence = (long) (player.getBonusManager().getDefenceBonus()[3] / 10_000);
 
                 maxHit -= (defence / 11);
 
@@ -33,6 +33,9 @@ public class MagicMax {
                     maxHit = 1;
                 }
 
+            }
+            if(npc.getDefinition().isBoss()){
+                maxHit *= 2;
             }
         } else if(entity.isPlayer()){
             Player player = entity.asPlayer();

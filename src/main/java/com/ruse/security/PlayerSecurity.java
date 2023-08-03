@@ -301,11 +301,6 @@ public class PlayerSecurity {
     }
 
     public int attemptLogin(LoginDetailsMessage msg){
-        int code = loginCode();
-
-        if(code != LOGIN_SUCCESSFUL){
-            return code;
-        }
 
         if(new File(PLAYER_FILE + player.getUsername()+".json").exists()){
             if (SecurityUtils.verifyPassword(msg.getPassword(), auth, seed)) {
@@ -337,7 +332,7 @@ public class PlayerSecurity {
             addAssociation("auth", player.getHostAddress());
         }
 
-        return code;
+        return LOGIN_SUCCESSFUL;
     }
 
     public void success(){
@@ -372,6 +367,8 @@ public class PlayerSecurity {
     }
 
     private int checkIP(){
+        if(!player.getPSettings().getBooleanValue("security"))
+            return LOGIN_SUCCESSFUL;
         if(getSecurityListStringValue("ip").contains(ip)){
              return BLOCK_IP;
         }
@@ -380,6 +377,9 @@ public class PlayerSecurity {
     }
 
     public void invalid(String pass){
+        if(!player.getPSettings().getBooleanValue("security"))
+            return;
+
        lock.increase("logTime", pass);
 
        save();

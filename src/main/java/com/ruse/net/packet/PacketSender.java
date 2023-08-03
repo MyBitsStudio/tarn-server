@@ -932,6 +932,14 @@ public class PacketSender {
         return this;
     }
 
+    public PacketSender sendTooltip(int id, String tool) {
+        PacketBuilder out = new PacketBuilder(22, PacketType.SHORT);
+        out.putString(tool);
+        out.putInt(id);
+        player.getSession().queueMessage(out);
+        return this;
+    }
+
     public PacketSender sendEquipment() {
         for (int i = 0; i < player.getEquipment().getItems().length; i++) {
             PacketBuilder out = new PacketBuilder(184, PacketType.SHORT);

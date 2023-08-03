@@ -230,11 +230,11 @@ public class ObjectActionPacketListener implements PacketListener {
                         case 26791:
                             player.getUpgradeHandler().openInterface();
                             break;
-                        case 41204:
-                            player.setOpenedTeleports(true);
-                            TeleportInterface.sendMinigameData(player, TeleportInterface.Minigames.values()[0]);
-                            TeleportInterface.sendMinigamesTab(player);
-                            break;
+//                        case 41204:
+//                            player.setOpenedTeleports(true);
+//                            TeleportInterface.sendMinigameData(player, TeleportInterface.Minigames.values()[0]);
+//                            TeleportInterface.sendMinigamesTab(player);
+//                            break;
                         case 41205:
                             player.sendMessage("Coming soon...");
                             ///player.getRaidsInterface().openInterface(RaidsInterface.Raids.FURY_RAIDS);

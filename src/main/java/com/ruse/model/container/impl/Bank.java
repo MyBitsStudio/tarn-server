@@ -183,13 +183,7 @@ public class Bank extends ItemContainer {
 		}
 
 		if (getPlayer().withdrawAsNote()) {
-			if (def != null && def.isNoted() && item.getDefinition() != null
-					&& def.getName().equalsIgnoreCase(item.getDefinition().getName())
-					&& !def.getName().contains("Torva") && !def.getName().contains("Virtus")
-					&& !def.getName().contains("Pernix") && !def.getName().contains("Torva"))
-				item.setId(item.getId() + 1);
-			else
-				getPlayer().getPacketSender().sendMessage("This item cannot be withdrawn as a note.");
+			getPlayer().getPacketSender().sendMessage("This item cannot be withdrawn as a note.");
 		}
 
 		to.add(item, refresh);
@@ -351,7 +345,7 @@ public class Bank extends ItemContainer {
 				return;
 			}
 
-			Item toBank = new Item(ItemDefinition.forId(it.getId()).isNoted() ? (it.getId() - 1) : it.getId(), it.getAmount());
+			Item toBank = new Item(ItemDefinition.forId(it.getId()).isNoted() ? (it.getId() - 1) : it.getId(), it.getAmount(), it.getUid());
 			int tab = getTabForItem(p, toBank.getId());
 			p.setCurrentBankTab(tab);
 			int bankAmt = p.getBank(tab).getAmount(toBank.getId());

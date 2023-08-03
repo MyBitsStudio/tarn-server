@@ -16,6 +16,9 @@ public class StarterIIBox {
             new Box(23209, 1, 15, true),
             new Box(23210, 1, 10, true),
             new Box(23301, 1, 5, true),
+            new Box(23147, 1, 5, true),
+            new Box(23148, 1, 3, true),
+            new Box(23149, 1, 1, true),
     };
 
 }

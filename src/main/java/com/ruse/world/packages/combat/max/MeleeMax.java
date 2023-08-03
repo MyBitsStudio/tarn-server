@@ -212,12 +212,16 @@ public class MeleeMax {
             if (victim.isPlayer()) {
                 Player player = victim.asPlayer();
 
-                long defence = (long) (player.getBonusManager().getDefenceBonus()[0] / 1_000_000);
+                long defence = (long) (player.getBonusManager().getDefenceBonus()[0] / 10_000);
 
                 maxHit -= (defence / 11);
 
                 if (maxHit <= 0) {
                     maxHit = 1;
+                }
+
+                if(npc.getDefinition().isBoss()){
+                    maxHit *= 2;
                 }
             }
         } else if(entity.isPlayer()) {
@@ -359,7 +363,7 @@ public class MeleeMax {
         } else if (CurseHandler.isActivated(player, CurseHandler.TURMOIL)) {
             prayerMod = 1.25;
         } else if(PrayerHandler.isActivated(player, PrayerHandler.SOUL_LEECH)) {
-            prayerMod = 1.15 + +(player.getLeechedBonuses()[2] * 0.01);
+            prayerMod = 1.15 + (player.getLeechedBonuses()[2] * 0.01);
             if (Misc.getRandom(100) <= 1) {
                 player.setDoubleDMGTimer(1);
                 // player.getPacketSender().sendMessage("Coup de grace activated");

@@ -145,7 +145,7 @@ public class ItemActionPacketListener implements PacketListener {
         if(SECertificateType.playerConsume(player, itemId))
             return;
 
-        if(SlotItems.handlePerk(player, player.getInventory().get(slot))){
+        if(SlotItems.handlePerk(player, slot)){
             return;
         }
 

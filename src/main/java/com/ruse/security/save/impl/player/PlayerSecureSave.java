@@ -192,7 +192,6 @@ public class PlayerSecureSave extends SecureSave {
         object.addProperty("autocast", player.isAutocast());
         object.addProperty("autocast-spell",
                 player.getAutocastSpell() != null ? player.getAutocastSpell().spellId() : -1);
-        object.addProperty("dfs-charges", player.getDfsCharges());
         object.addProperty("coins-gambled", player.getAchievementAttributes().getCoinsGambled());
         object.addProperty("slayer-master", player.getSlayer().getSlayerMaster().name());
         object.addProperty("slayer-task", player.getSlayer().getSlayerTask().name());
@@ -202,20 +201,7 @@ public class PlayerSecureSave extends SecureSave {
         object.addProperty("duo-partner",
                 player.getSlayer().getDuoPartner() == null ? "null" : player.getSlayer().getDuoPartner());
         object.addProperty("double-slay-xp", player.getSlayer().doubleSlayerXP);
-        object.addProperty("recoil-deg", player.getRecoilCharges());
-        object.addProperty("blowpipe-deg", player.getBlowpipeCharges());
-        object.add("brawlers-deg", builder.toJsonTree(player.getBrawlerChargers()));
-        object.add("ancient-deg", builder.toJsonTree(player.getAncientArmourCharges()));
         object.add("killed-players", builder.toJsonTree(player.getPlayerKillingAttributes().getKilledPlayers()));
-        object.add("killed-gods", builder.toJsonTree(player.getAchievementAttributes().getGodsKilled()));
-        object.add("vod-brother",
-                builder.toJsonTree(player.getMinigameAttributes().getVoidOfDarknessAttributes().getBarrowsData()));
-        object.addProperty("vod-killcount",
-                player.getMinigameAttributes().getVoidOfDarknessAttributes().getKillcount());
-        object.addProperty("hov-killcount",
-                player.getMinigameAttributes().getHallsOfValorAttributes().getKillcount());
-        object.add("barrows-brother",
-                builder.toJsonTree(player.getMinigameAttributes().getBarrowsMinigameAttributes().getBarrowsData()));
         object.addProperty("random-coffin",
                 player.getMinigameAttributes().getBarrowsMinigameAttributes().getRandomCoffin());
         object.addProperty("barrows-killcount",
@@ -372,6 +358,8 @@ public class PlayerSecureSave extends SecureSave {
 
         object.add("equip-slot", builder.toJsonTree(player.getEquipment().getSlotBonuses()));
         object.add("second-slot", builder.toJsonTree(player.getSecondaryEquipment().getSlotBonuses()));
+
+        object.add("charges", builder.toJsonTree(player.getItems().getCharges()));
 
         return this;
     }

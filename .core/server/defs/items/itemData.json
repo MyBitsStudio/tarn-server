@@ -163,6 +163,16 @@
     "weapon" : false
   },
   {
+    "id" : 8788,
+    "name" : "Transfer Crystal",
+    "examine" : "Keep your perk when removing.",
+    "stackable" : true,
+    "noted" : false,
+    "2h" : false,
+    "type" : "WEAPON",
+    "weapon" : false
+  },
+  {
     "id" : 23147,
     "name" : "Rare Perk Token",
     "examine" : "Get increased Legendary and Mythical Perks",
@@ -195,7 +205,7 @@
   {
     "id" : 23150,
     "name" : "Drop Rate Low",
-    "examine" : "",
+    "examine" : "Perk Token",
     "stackable" : false,
     "noted" : false,
     "2h" : false,
@@ -205,7 +215,7 @@
   {
     "id" : 23151,
     "name" : "Double XP",
-    "examine" : "",
+    "examine" : "Perk Token",
     "stackable" : false,
     "noted" : false,
     "2h" : false,
@@ -215,7 +225,7 @@
   {
     "id" : 23152,
     "name" : "Double Drop",
-    "examine" : "",
+    "examine" : "Perk Token",
     "stackable" : false,
     "noted" : false,
     "2h" : false,
@@ -225,7 +235,7 @@
   {
     "id" : 23153,
     "name" : "Drop Rate Medium",
-    "examine" : "",
+    "examine" : "Perk Token",
     "stackable" : false,
     "noted" : false,
     "2h" : false,
@@ -235,7 +245,7 @@
   {
     "id" : 23154,
     "name" : "Multi Kills",
-    "examine" : "",
+    "examine" : "Perk Token",
     "stackable" : false,
     "noted" : false,
     "2h" : false,
@@ -245,7 +255,7 @@
   {
     "id" : 23155,
     "name" : "Double Cash",
-    "examine" : "",
+    "examine" : "Perk Token",
     "stackable" : false,
     "noted" : false,
     "2h" : false,
@@ -255,7 +265,7 @@
   {
     "id" : 23156,
     "name" : "Damage Boost",
-    "examine" : "",
+    "examine" : "Perk Token",
     "stackable" : false,
     "noted" : false,
     "2h" : false,
@@ -265,7 +275,7 @@
   {
     "id" : 23157,
     "name" : "AoE",
-    "examine" : "",
+    "examine" : "Perk Token",
     "stackable" : false,
     "noted" : false,
     "2h" : false,
@@ -275,7 +285,7 @@
   {
     "id" : 23158,
     "name" : "Drop Rate High",
-    "examine" : "",
+    "examine" : "Perk Token",
     "stackable" : false,
     "noted" : false,
     "2h" : false,
@@ -285,7 +295,7 @@
   {
     "id" : 23159,
     "name" : "Triple Cash",
-    "examine" : "",
+    "examine" : "Perk Token",
     "stackable" : false,
     "noted" : false,
     "2h" : false,
@@ -295,7 +305,7 @@
   {
     "id" : 23160,
     "name" : "Multi Shot",
-    "examine" : "",
+    "examine" : "Perk Token",
     "stackable" : false,
     "noted" : false,
     "2h" : false,
@@ -308,6 +318,26 @@
   {
     "id" : 15004,
     "name" : "Starter Pack I",
+    "examine" : "Open for a sweet reward!",
+    "stackable" : true,
+    "noted" : false,
+    "2h" : false,
+    "type" : "WEAPON",
+    "weapon" : false
+  },
+  {
+    "id" : 23300,
+    "name" : "Starter Pack II",
+    "examine" : "Open for a sweet reward!",
+    "stackable" : true,
+    "noted" : false,
+    "2h" : false,
+    "type" : "WEAPON",
+    "weapon" : false
+  },
+  {
+    "id" : 23301,
+    "name" : "Starter Pack III",
     "examine" : "Open for a sweet reward!",
     "stackable" : true,
     "noted" : false,

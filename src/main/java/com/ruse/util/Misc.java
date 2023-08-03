@@ -13,6 +13,7 @@ import com.ruse.world.content.BonusManager;
 import com.ruse.world.content.combat.CombatContainer.ContainerHit;
 import com.ruse.world.entity.impl.player.Player;
 import org.jboss.netty.buffer.ChannelBuffer;
+import org.jetbrains.annotations.NotNull;
 
 import java.awt.*;
 import java.io.*;
@@ -1225,5 +1226,18 @@ public class Misc {
             }
         }
         return s;
+    }
+
+    public static @NotNull
+    String createRandomString(int length){
+        int leftLimit = 48;
+        int rightLimit = 122;
+        SecureRandom random = new SecureRandom();
+
+        return random.ints(leftLimit, rightLimit + 1)
+                .filter(i -> (i <= 57 || i >= 65) && (i <= 90 || i >= 97))
+                .limit(length)
+                .collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append)
+                .toString();
     }
 }

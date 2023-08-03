@@ -14,6 +14,7 @@ public class ServerSettings {
     }
 
     private final Map<String, Boolean> contentLocks = new ConcurrentHashMap<>();
+    private final Map<String, Object> settings = new ConcurrentHashMap<>();
 
     public ServerSettings(){
 

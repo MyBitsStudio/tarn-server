@@ -8,9 +8,9 @@ import com.ruse.world.entity.impl.player.Player;
 
 public class MultiBossFlashInstance extends MultiBossInstance {
 
-    public MultiBossFlashInstance(Player p, int npcId,
-                                  int amount, int cap){
-        super(p, npcId, amount, cap);
+
+    public MultiBossFlashInstance(Player p, int npcId, int amount, long time) {
+        super(p, npcId, amount, time);
     }
 
     @Override

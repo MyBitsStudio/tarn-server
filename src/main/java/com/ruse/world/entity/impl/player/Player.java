@@ -4335,4 +4335,7 @@ public class Player extends Character {
 
     @Getter@Setter
     private Dialogue chat;
+
+    @Getter@Setter
+    private PlayerItems items = new PlayerItems();
 }

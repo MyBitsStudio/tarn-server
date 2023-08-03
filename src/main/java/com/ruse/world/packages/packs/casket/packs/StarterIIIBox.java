@@ -13,7 +13,10 @@ public class StarterIIIBox {
             new Box(12852, 250, 55, true),
             new Box(23211, 1, 25, true),
             new Box(23212, 1, 20, true),
-            new Box(23213, 1, 15, true)
+            new Box(23213, 1, 15, true),
+            new Box(23147, 1, 5, true),
+            new Box(23148, 1, 3, true),
+            new Box(23149, 1, 1, true),
     };
 
 }

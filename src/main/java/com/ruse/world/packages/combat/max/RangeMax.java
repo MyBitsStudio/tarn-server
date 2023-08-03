@@ -26,12 +26,15 @@ public class RangeMax {
             if(victim.isPlayer()){
                 Player player = victim.asPlayer();
 
-                long defence = (long) (player.getBonusManager().getDefenceBonus()[4] / 1_000_000);
+                long defence = (long) (player.getBonusManager().getDefenceBonus()[4] / 10_000);
 
                 maxHit -= (defence / 11);
 
                 if(maxHit <= 0){
                     maxHit = 1;
+                }
+                if(npc.getDefinition().isBoss()){
+                    maxHit *= 2;
                 }
             }
         } else if (entity.isPlayer()) {

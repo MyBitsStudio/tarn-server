@@ -14,6 +14,9 @@ public class StarterIBox {
             new Box(23206, 1, 25, true),
             new Box(23300, 1, 10, true),
             new Box(23301, 1, 5, true),
+            new Box(23147, 1, 5, true),
+            new Box(23148, 1, 3, true),
+            new Box(23149, 1, 1, true),
 
     };
 

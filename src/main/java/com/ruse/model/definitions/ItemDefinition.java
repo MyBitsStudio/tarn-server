@@ -158,33 +158,6 @@ public class ItemDefinition {
     }
 
     /**
-     * Gets the item's id.
-     *
-     * @return id.
-     */
-    public int getId() {
-        return id;
-    }
-
-    /**
-     * Gets the item's name.
-     *
-     * @return name.
-     */
-    public String getName() {
-        return name;
-    }
-
-    /**
-     * Gets the item's description.
-     *
-     * @return description.
-     */
-    public String getDescription() {
-        return description;
-    }
-
-    /**
      * Checks if the item is stackable.
      *
      * @return stackable.

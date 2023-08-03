@@ -1,9 +1,12 @@
 package com.ruse.world.packages.dialogue.impl.slot;
 
+import com.ruse.model.Item;
 import com.ruse.world.entity.impl.player.Player;
 import com.ruse.world.packages.dialogue.Dialogue;
 import com.ruse.world.packages.dialogue.DialogueExpression;
 import com.ruse.world.packages.dialogue.DialogueType;
+import com.ruse.world.packages.misc.ItemIdentifiers;
+import com.ruse.world.packages.slot.SlotBonus;
 
 public class UnequipSlotPerk extends Dialogue {
 
@@ -31,7 +34,7 @@ public class UnequipSlotPerk extends Dialogue {
         switch(stage){
             case 0 -> sendRegularStatement("You have selected to unequip a slot perk.");
             case 1 -> sendOption("Would you like to remove the perk?", "Keep (Transfer Crystal)", "Remove", "Never Mind");
-            case 2-> end();
+            case 2 -> end();
         }
     }
 
@@ -49,12 +52,29 @@ public class UnequipSlotPerk extends Dialogue {
     public boolean handleOption(int option) {
         switch(option){
             case FIRST_OPTION_OF_THREE -> {
-                getPlayer().sendMessage("HERE!");
+                if(getPlayer().getInventory().contains(8788)){
+                    if(getPlayer().getInventory().getFreeSlots() < 0){
+                        getPlayer().sendMessage("You do not have enough inventory space to transfer the perk.");
+                    } else {
+                        getPlayer().getInventory().delete(8788, 1);
+                        Item items = new Item(getPlayer().getEquipment().getSlotBonuses()[getPlayer().getVariables().getIntValue("slot-chosen")].getEffect().getItemId(), 1);
+                        ItemIdentifiers.addItemIdentifier(items.getUid(), "PERK", String.valueOf(getPlayer().getEquipment().getSlotBonuses()[getPlayer().getVariables().getIntValue("slot-chosen")].getEffect().ordinal()));
+                        ItemIdentifiers.addItemIdentifier(items.getUid(), "BONUS", String.valueOf(getPlayer().getEquipment().getSlotBonuses()[getPlayer().getVariables().getIntValue("slot-chosen")].getBonus()));
+                        getPlayer().getInventory().add(items);
+                        getPlayer().getEquipment().getSlotBonuses()[getPlayer().getVariables().getIntValue("slot-chosen")] = new SlotBonus();
+                        getPlayer().getEquipment().refreshItems();
+                        getPlayer().sendMessage("You have transferred the slot perk to a token.");
+                    }
+                } else {
+                    getPlayer().sendMessage("You do not have a crystal to transfer the perk to.");
+                }
                 end();
                 return true;
             }
             case SECOND_OPTION_OF_THREE -> {
-
+                getPlayer().getEquipment().getSlotBonuses()[getPlayer().getVariables().getIntValue("slot-chosen")] = new SlotBonus();
+                getPlayer().getEquipment().refreshItems();
+                getPlayer().sendMessage("You have removed the slot perk.");
                 end();
                 return true;
             }

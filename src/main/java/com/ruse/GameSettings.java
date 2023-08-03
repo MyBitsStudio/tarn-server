@@ -45,9 +45,7 @@ public class GameSettings {
     public static final String wr3cked = "https://www.youtube.com/channel/UCNm7R0y8KN8kSn3yVn04pkg";
 
     public static final String VoteUrl = "https://tarnserver.everythingrs.com/services/vote";
-    public static final String IronManModesUrl = "https://discord.gg/BeENR8amj2";
     public static final String DiscordUrl = "https://discord.gg/c5KaC3pBsn";
-    public static final long tempMuteInterval = 86400000;
     public static final int BaseImplingExpMultiplier = 2;
     /**
      * Shop Buy Limit (at one time)

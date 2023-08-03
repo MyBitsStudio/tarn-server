@@ -16,19 +16,19 @@ public abstract class MultiBossInstance extends Instance {
     @Getter
     private final int npcId;
     @Getter
-    private final int cap;
+    private final long times;
     @Getter
     private AtomicInteger spawned = new AtomicInteger(0);
     @Getter
     private final MultiBoss[] bosses;
 
     public MultiBossInstance(Player p, int npcId,
-                             int amount, int cap) {
+                             int amount, long time) {
         super(Locations.Location.NORMAL_INSTANCE);
         this.owner = p;
         this.npcId = npcId;
         this.bosses = new MultiBoss[amount];
-        this.cap = cap;
+        this.times = time;
     }
 
     public Player getOwner() {
@@ -48,8 +48,10 @@ public abstract class MultiBossInstance extends Instance {
 
     @Override
     public void signalSpawn(NPC n){
-        if(spawned.getAndIncrement() >= cap)
+        if(started + times <= System.currentTimeMillis()){
+            getOwner().sendMessage("Your instance has expired.");
             return;
+        }
         if(n.getId() == getNpcId() && n.getInstanceId().equals(getOwner().getInstanceId())){
             MultiBoss boss = new MultiBoss(npcId, n.getPosition().setZ(getOwner().getIndex() * 4), true, getOwner());
             boss.setSpawnedFor(getOwner());
