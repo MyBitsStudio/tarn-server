@@ -70,6 +70,7 @@ import com.ruse.world.entity.impl.player.Player;
 import com.ruse.world.entity.impl.player.StartScreen;
 import com.ruse.world.packages.misc.PossibleLootInterface;
 import com.ruse.world.packages.mode.impl.UltimateIronman;
+import com.ruse.world.packages.tower.TarnTower;
 import com.ruse.world.packages.tracks.TrackInterface;
 
 import java.util.Arrays;
@@ -195,6 +196,9 @@ public class ButtonClickPacketListener implements PacketListener {
         if(player.getAttendenceManager().handleTabs(id)){
             return;
         }
+
+        if(TarnTower.handleButton(player, id))
+            return;
 
         new ScratchCard(player).reveal(id);
         new DailyTaskInterface(player).button(id);

@@ -18,7 +18,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 public class VIP {
 
     private final Player player;
-    private int exp, claimedTicket, claimedPack, total, packXp;
+    private int exp = 0, claimedTicket, claimedPack, total = 0, packXp = 0, points = 0;
     private List<Donation> donations = new CopyOnWriteArrayList<>();
 
     public VIP(Player player) {
@@ -29,6 +29,7 @@ public class VIP {
         exp += amount;
         packXp += amount;
         total += amount;
+        points += amount;
         player.getPacketSender().sendMessage("@yel@[VIP] You have gained " + amount + " VIP experience. Currently at : "+ exp);
         addToList(items, amount);
         claimPack();
@@ -160,7 +161,29 @@ public class VIP {
     }
 
     public void sendInterface(){
+        reset();
+        player.getPacketSender().sendInterface(77000);
 
+        player.getPacketSender().sendString(77008, "Points : @gre@"+points);
+        player.getPacketSender().sendString(77009, "Rank : @gre@"+player.getVip());
+        player.getPacketSender().sendString(77010, "Exp : @gre@"+exp);
+        player.getPacketSender().sendString(77011, "Instance : @gre@0M");
+        player.getPacketSender().sendString(77012, "Tickets : @gre@"+(player.getVip().getRank() * 2));
+        player.getPacketSender().sendString(77013, "Bonus : @gre@0%");
+
+        int level = calculatePack();
+        VIPPacks pack = VIPPacks.values()[level];
+
+        int amount = pack.getAmount() - packXp;
+
+        player.getPacketSender().sendString(77014, "Next : "+amount+"$");
+        player.getPacketSender().sendItemOnInterface(77015, pack.getItems()[0], pack.getAmounts()[0]);
+    }
+
+    private void reset(){
+        for(int i = 78001; i < 78001 + 35; i++){
+            player.getPacketSender().sendString(i, "");
+        }
     }
 
     enum VIPPacks {
@@ -181,6 +204,7 @@ public class VIP {
         ;
         @Getter
         final int amount;
+        @Getter
         final int[] items, amounts;
         VIPPacks(int amount , int[] items, int[] amounts){
             this.amount = amount;

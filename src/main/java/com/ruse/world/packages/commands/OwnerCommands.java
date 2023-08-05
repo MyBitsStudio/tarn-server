@@ -435,7 +435,7 @@ public class OwnerCommands {
             case "fullscrap" -> {
                 return true;
             }
-            case "vip" -> {
+            case "vipadd" -> {
                 id = Integer.parseInt(commands[1]);
                 player.getPlayerVIP().addDonation(id, new int[]{});
                 return true;

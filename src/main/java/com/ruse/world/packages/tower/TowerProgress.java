@@ -1,8 +1,11 @@
 package com.ruse.world.packages.tower;
 
+import com.ruse.model.GameObject;
 import com.ruse.model.Item;
+import com.ruse.model.Position;
 import com.ruse.model.container.ItemContainer;
 import com.ruse.model.container.StackType;
+import com.ruse.world.World;
 import com.ruse.world.entity.impl.player.Player;
 import com.ruse.world.packages.tower.props.Tower;
 import com.ruse.world.packages.tower.props.TowerTierRewards;
@@ -16,6 +19,7 @@ public class TowerProgress {
     private Player player;
     private int tier = 0, level = 0, lastLevel = 20, lastTier = 4;
     private ItemContainer rewards;
+    private TowerLevel instance;
 
     public TowerProgress(Player player) {
         this.player = player;
@@ -43,6 +47,7 @@ public class TowerProgress {
     }
 
     public void progress(){
+        spawnExit();
         if(level == lastLevel){
             if(tier == lastTier){
                 sendFinish();
@@ -52,6 +57,11 @@ public class TowerProgress {
             return;
         }
         sendProgress();
+    }
+
+    private void spawnExit(){
+        World.deregister(new GameObject(16686, new Position(2867, 2760, player.getIndex() * 4)));
+        World.register(new GameObject(16150, new Position(2838, 2794, player.getIndex() * 4)));
     }
 
     private void sendFinish(){
@@ -77,10 +87,30 @@ public class TowerProgress {
         if(tower == null){
             return;
         }
-        player.sendMessage("You have progressed to tier " + tier + " level " + level + "!");
         rewards.add(tower.getReward());
         player.sendMessage("You have received " + tower.getReward().getAmount() + " " + tower.getReward().getDefinition().getName() + "!");
         level++;
+        player.sendMessage("You have progressed to tier " + tier + " level " + level + "!");
+    }
+
+    public void collectRewards(){
+        if(rewards.getValidItems().isEmpty()){
+            player.sendMessage("You have no rewards to collect!");
+            return;
+        }
+        for(Item item : rewards.getValidItems()){
+            if(item == null){
+                continue;
+            }
+            if(!player.getInventory().canHold(item)){
+                player.sendMessage("You do not have enough inventory space to collect your rewards!");
+                return;
+            }
+            player.getInventory().add(item);
+            rewards.delete(item);
+        }
+        player.sendMessage("You have collected your rewards!");
+        TarnTower.sendInterface(player);
     }
 
 }

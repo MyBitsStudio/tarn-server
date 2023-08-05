@@ -12,6 +12,8 @@ import com.ruse.world.packages.tower.props.Tower;
 import org.jetbrains.annotations.NotNull;
 
 public class TowerLevel extends Instance {
+
+    private int amount;
     public TowerLevel(Locations.Location location) {
         super(location);
     }
@@ -38,6 +40,7 @@ public class TowerLevel extends Instance {
     }
 
     private void spawnNPCs(@NotNull Tower tower, @NotNull Player player){
+        amount = tower.getNpcIds().length;
         TowerBoss boss = new TowerBoss(tower.getNpcIds()[0], tower.getNpcPositions()[0].setZ(player.getIndex() * 4));
         boss.buff(tower.getBuffs());
         boss.setSpawnedFor(player);
@@ -52,8 +55,12 @@ public class TowerLevel extends Instance {
         }
     }
 
-    private void check(){
-
+    public void check(Player player){
+        amount--;
+        System.out.println("Checking tower");
+        if(amount <= 0){
+            player.getTower().progress();
+        }
     }
 
 }

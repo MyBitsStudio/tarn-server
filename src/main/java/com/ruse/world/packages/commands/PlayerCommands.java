@@ -418,6 +418,10 @@ public class PlayerCommands {
                         player.getSpellbook().getTeleportType());
                 player.sendMessage("@yel@[EVENT] You have teleported to the youtube boss!");
                 return true;
+
+            case "vip":
+                player.getPlayerVIP().sendInterface();
+                return true;
         }
         return false;
     }
