@@ -14,9 +14,9 @@ public enum TeleInterfaceLocation {
     LOCATION8(new Position(3486, 3617, 24), "Tier Ranking: 2 \\n \\n Multi: False \\n \\n KC Req: 70 Imperial Scorpions \\n \\n Recommended ELO: 0"), //ranger
     LOCATION9(new Position(3486, 3617, 28), "Tier Ranking: 2 \\n \\n Multi: False \\n \\n KC Req: 80 Imperial Rangers \\n \\n Recommended ELO: 0"), //paladin
     LOCATION10(new Position(2711, 4752, 28), "Tier Ranking: 3 \\n \\n Multi: True \\n \\n KC Req: 90 Imperial Paladins \\n \\n Recommended ELO: 0"), //wyvern
-    LOCATION11(new Position(2711, 4752, 32), "Tier Ranking: 4 \\n \\n Multi: True \\n \\n KC Req: 500 NPC Kills \\n \\n Recommended ELO: 11+"), //Mystic
-    LOCATION12(new Position(2711, 4752, 36), "Tier Ranking: 4 \\n \\n Multi: True \\n \\n KC Req: 500 NPC Kills \\n \\n Recommended ELO: 11+"), //Nightmare
-    LOCATION13(new Position(2711, 4752, 40), "Tier Ranking: 4 \\n \\n Multi: True \\n \\n KC Req: 500 NPC Kills \\n \\n Recommended ELO: 11+"), //Patience
+    LOCATION11(new Position(2711, 4752, 32), "Tier Ranking: 3 \\n \\n Multi: True \\n \\n KC Req: 500 NPC Kills \\n \\n Recommended ELO: 11+"), //Mystic
+    LOCATION12(new Position(2711, 4752, 36), "Tier Ranking: 3 \\n \\n Multi: True \\n \\n KC Req: 500 NPC Kills \\n \\n Recommended ELO: 11+"), //Nightmare
+    LOCATION13(new Position(2711, 4752, 40), "Tier Ranking: 3 \\n \\n Multi: True \\n \\n KC Req: 500 NPC Kills \\n \\n Recommended ELO: 11+"), //Patience
     LOCATION14(new Position(2527, 2527, 4), "Tier Ranking: 5 \\n \\n Multi: True \\n \\n KC Req: 1000 NPC Kills \\n \\n Recommended ELO: 13+"), //Zinqrux
     LOCATION15(new Position(2527, 2527, 8), "Tier Ranking: 6 \\n \\n Multi: True \\n \\n KC Req: 200 Zinqruxs \\n \\n Recommended ELO: 21+"), //Aberrant
     LOCATION16(new Position(2527, 2527, 12), "Tier Ranking: 7 \\n \\n Multi: True \\n \\n KC Req: 200 Dr. Abberants \\n \\n Recommended ELO: 35+"), //Inferno
