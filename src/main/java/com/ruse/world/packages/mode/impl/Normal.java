@@ -36,7 +36,7 @@ public class Normal extends Gamemode {
 
     @Override
     public boolean canTrade(@NotNull Player player) {
-        return player.getMode() instanceof Normal || player.getMode() instanceof Veteran;
+        return true;
     }
 
     @Override

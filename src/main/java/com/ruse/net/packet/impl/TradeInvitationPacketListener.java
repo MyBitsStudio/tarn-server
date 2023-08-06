@@ -20,23 +20,29 @@ public class TradeInvitationPacketListener implements PacketListener {
 
 	@Override
 	public void handleMessage(Player player, Packet packet) {
-		if (player.getConstitution() <= 0)
-			return;
-		if (player.isTeleporting())
-			return;
-		if (player.isPlayerLocked())
-			return;
-		player.getSkillManager().stopSkilling();
-		if (player.getLocation() == Location.FIGHT_PITS) {
-			player.getPacketSender().sendMessage("You cannot trade other players here.");
+		if (player.getConstitution() <= 0) {
+			System.out.println("Player is dead, cannot trade.");
 			return;
 		}
+		if (player.isTeleporting()) {
+			System.out.println("Player is teleporting, cannot trade.");
+			return;
+		}
+		if (player.isPlayerLocked()) {
+			System.out.println("Player is locked, cannot trade.");
+			return;
+		}
+		player.getSkillManager().stopSkilling();
 		int index = packet.getOpcode() == TRADE_OPCODE ? (packet.readShort() & 0xFF) : packet.readLEShort();
-		if (index < 0 || index > World.getPlayers().capacity())
+		if (index < 0 || index > World.getPlayers().capacity()) {
+			System.out.println("Invalid player index: " + index);
 			return;
+		}
 		Player target = World.getPlayers().get(index);
-		if (target == null || !Locations.goodDistance(player.getPosition(), target.getPosition(), 13))
+		if (target == null || !Locations.goodDistance(player.getPosition(), target.getPosition(), 13)) {
+			System.out.println("Null : " + index);
 			return;
+		}
 		player.setWalkToTask(
 				new WalkToTask(player, target.getPosition(), target.getSize(), () -> {
 					if (target.getIndex() != player.getIndex())

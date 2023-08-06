@@ -573,7 +573,7 @@
     ]
   },
   {
-    "id" : 23089,
+    "id" : 23091,
     "name" : "Starter Ring",
     "examine" : "A Starter Ring",
     "stackable" : false,
@@ -760,12 +760,43 @@
   },
   {
     "id" : 19946,
-    "name" : "Starter Cape",
-    "examine" : "A Starter Cape",
+    "name" : "Starter Gloves",
+    "examine" : "A Starter Gloves",
     "stackable" : false,
     "noted" : false,
     "2h" : false,
-    "type" : "CAPE",
+    "type" : "GLOVES",
+    "weapon" : false,
+    "reqs" : [],
+    "bonus" : [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  {
+    "id" : 19914,
+    "name" : "Starter Defender",
+    "examine" : "A Starter Defender",
+    "stackable" : false,
+    "noted" : false,
+    "2h" : false,
+    "type" : "SHIELD",
     "weapon" : false,
     "reqs" : [],
     "bonus" : [
@@ -855,7 +886,7 @@
     ]
   },
   {
-    "id" : 19985,
+    "id" : 19986,
     "name" : "Blurite Legs",
     "examine" : "A Blurite Legs",
     "stackable" : false,

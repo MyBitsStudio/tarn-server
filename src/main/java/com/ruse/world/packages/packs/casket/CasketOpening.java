@@ -13,7 +13,9 @@ import com.ruse.world.packages.packs.casket.packs.StarterIIIBox;
 import lombok.Getter;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Optional;
 
 public class CasketOpening {
 
@@ -192,9 +194,6 @@ public class CasketOpening {
         }
 
 
-      //  if (player.getUsername().equalsIgnoreCase("don draper")){
-    //        SlotPrize = WeaponCasket.lootGolden[13];
-     //   }
         boolean announce = slotPrize.isAnnounce();
         for (int i = 0; i < 7; i++) {
             Box NOT_PRIZE = getLoot1(loot);
@@ -203,8 +202,6 @@ public class CasketOpening {
             }
             sendItem(i, 3, slotPrize.getId(), slotPrize.getMax(), NOT_PRIZE.getId(), NOT_PRIZE.getMax(), 110501);
         }
-         // player.getBank(0).add(new Item(SlotPrize.getId(), SlotPrize.getMax()), false);
-       //   canCasketOpening = true;
 
         reward(announce);
         player.setSpinning(false);
@@ -295,6 +292,16 @@ public class CasketOpening {
 
     public void setCurrentCasket(Caskets currentCasket) {
         this.currentCasket = currentCasket;
+    }
+
+    public boolean handleAction(int id){
+        Optional<Caskets> casket = Arrays.stream(Caskets.values()).filter(c -> c.itemID == id).findFirst();
+        if(casket.isPresent()){
+            setCurrentCasket(casket.get());
+            openInterface();
+            return true;
+        }
+        return false;
     }
 
     @Getter

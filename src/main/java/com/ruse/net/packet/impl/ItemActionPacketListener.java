@@ -200,6 +200,8 @@ public class ItemActionPacketListener implements PacketListener {
         }
 
 
+        if(player.getCasketOpening().handleAction(itemId))
+            return;
 
 
         switch (itemId) {
@@ -481,83 +483,6 @@ public class ItemActionPacketListener implements PacketListener {
                 player.setDoubleDMGTimer(3000);
                 TaskManager.submit(new DoubleDMGTask(player));
                 break;
-            case 15004:
-                player.getCasketOpening().setCurrentCasket(CasketOpening.Caskets.STARTER_I);
-                player.getCasketOpening().openInterface();
-                break;
-
-//            case 23171:
-//                player.getCasketOpening().setCurrentCasket(CasketOpening.Caskets.RARE_BOX);
-//                player.getCasketOpening().openInterface();
-//                break;
-//            case 14487:
-//                player.getCasketOpening().setCurrentCasket(CasketOpening.Caskets.DEF_BOX);
-//                player.getCasketOpening().openInterface();
-//                break;
-//            case 15003:
-//                player.getCasketOpening().setCurrentCasket(CasketOpening.Caskets.SILVER_BOX);
-//                player.getCasketOpening().openInterface();
-//                break;
-//            case 15002:
-//                player.getCasketOpening().setCurrentCasket(CasketOpening.Caskets.RUBY_BOX);
-//                player.getCasketOpening().openInterface();
-//                break;
-//            case 15004:
-//                player.getCasketOpening().setCurrentCasket(CasketOpening.Caskets.DIAMOND_BOX);
-//                player.getCasketOpening().openInterface();
-//                break;
-//            case 20489:
-//                player.getCasketOpening().setCurrentCasket(CasketOpening.Caskets.PREMIUM_BOX);
-//                player.getCasketOpening().openInterface();
-//                break;
-//            case 20490:
-//                player.getCasketOpening().setCurrentCasket(CasketOpening.Caskets.ZENYTE_BOX);
-//                player.getCasketOpening().openInterface();
-//                break;
-//            case 20491:
-//                player.getCasketOpening().setCurrentCasket(CasketOpening.Caskets.ONYX_BOX);
-//                player.getCasketOpening().openInterface();
-//                break;
-//            case 19624:
-//                player.getCasketOpening().setCurrentCasket(CasketOpening.Caskets.ELITE_BOX);
-//                player.getCasketOpening().openInterface();
-//                break;
-//            case 18404:
-//                player.getCasketOpening().setCurrentCasket(CasketOpening.Caskets.RAIDS_BOX);
-//                player.getCasketOpening().openInterface();
-//                break;
-//            case 20488:
-//                player.getCasketOpening().setCurrentCasket(CasketOpening.Caskets.SUPREME_BOX);
-//                player.getCasketOpening().openInterface();
-//                break;
-//            case 14488:
-//                player.getCasketOpening().setCurrentCasket(CasketOpening.Caskets.OFF_BOX);
-//                player.getCasketOpening().openInterface();
-//                break;
-//            case 14490:
-//                player.getCasketOpening().setCurrentCasket(CasketOpening.Caskets.DEATH_BOX);
-//                player.getCasketOpening().openInterface();
-//                break;
-//            case 14492:
-//                player.getCasketOpening().setCurrentCasket(CasketOpening.Caskets.AFREET_BOX);
-//                player.getCasketOpening().openInterface();
-//                break;
-//            case 19114:
-//                player.getCasketOpening().setCurrentCasket(CasketOpening.Caskets.WEAPON_BOX);
-//                player.getCasketOpening().openInterface();
-//                break;
-//            case 10025:
-//                player.getCasketOpening().setCurrentCasket(CasketOpening.Caskets.PROG_BOX_T1);
-//                player.getCasketOpening().openInterface();
-//                break;
-//            case 10029:
-//                player.getCasketOpening().setCurrentCasket(CasketOpening.Caskets.PROG_BOX_T2);
-//                player.getCasketOpening().openInterface();
-//                break;
-//            case 10027:
-//                player.getCasketOpening().setCurrentCasket(CasketOpening.Caskets.PROG_BOX_T3);
-//                player.getCasketOpening().openInterface();
-//                break;
             case 19659:
                 if(player.getPSettings().getBooleanValueDef("summer-unlock")){
                     player.sendMessage("You already have this unlocked.");

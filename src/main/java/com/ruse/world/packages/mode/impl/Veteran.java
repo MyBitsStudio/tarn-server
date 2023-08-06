@@ -32,7 +32,7 @@ public class Veteran extends Gamemode {
 
     @Override
     public boolean canTrade(Player player) {
-        return false;
+        return true;
     }
 
     @Override
