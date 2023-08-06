@@ -224,8 +224,6 @@ public class NPCDeathTask extends Task {
                             }
                         }
 
-                        npc.onDeath();
-
                         if (npc.stopTask()) {
                             setEventRunning(false);
                             npc.setDying(false);

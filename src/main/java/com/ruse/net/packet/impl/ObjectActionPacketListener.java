@@ -27,6 +27,8 @@ import com.ruse.world.content.grandexchange.GrandExchange;
 import com.ruse.world.content.holidayevents.christmas2016;
 import com.ruse.world.content.holidayevents.easter2017data;
 import com.ruse.world.content.tbdminigame.Lobby;
+import com.ruse.world.packages.dialogue.DialogueManager;
+import com.ruse.world.packages.dialogue.impl.tower.NextLevel;
 import com.ruse.world.packages.instances.InstanceManager;
 import com.ruse.world.content.minigames.impl.*;
 import com.ruse.world.content.minigames.impl.Dueling.DuelRule;
@@ -191,7 +193,7 @@ public class ObjectActionPacketListener implements PacketListener {
                     }
                     switch(id){
                         case 16116 -> {
-                            TarnTower.startTower(player);
+                            TarnTower.sendInterface(player);
                             return;
                         }
                         case 16686 -> {
@@ -417,10 +419,7 @@ public class ObjectActionPacketListener implements PacketListener {
                             TeleportHandler.teleportPlayer(player, new Position(2722, 2737),
                                     player.getSpellbook().getTeleportType());
                             Dungeoneering.leave(player, false, true);
-                            if (player.getMinigameAttributes().getDungeoneeringAttributes().getParty() != null) {
-                                player.getMinigameAttributes().getDungeoneeringAttributes().getParty()
-                                        .refreshInterface();
-                            } else {
+                            if (player.getMinigameAttributes().getDungeoneeringAttributes().getParty() == null) {
                                 player.getPacketSender().sendString(29053, "").sendString(29054, "");
 
                                 for (int i = 0; i < 10; i++) {
@@ -428,11 +427,14 @@ public class ObjectActionPacketListener implements PacketListener {
                                     // thing., added UI check for
                                     // every place now.
                                 }
+                            } else {
+                                player.getMinigameAttributes().getDungeoneeringAttributes().getParty()
+                                        .refreshInterface();
                             }
 
                             break;
                         case 16150:
-                            player.moveTo(new Position(1913, 5225, 0));
+                            DialogueManager.sendDialogue(player, new NextLevel(player), -1);
                             break;
 
                         // RAID CHEST REWARDS

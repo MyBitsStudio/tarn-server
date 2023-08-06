@@ -435,7 +435,7 @@ public class OwnerCommands {
             case "fullscrap" -> {
                 return true;
             }
-            case "vip" -> {
+            case "vipadd" -> {
                 id = Integer.parseInt(commands[1]);
                 player.getPlayerVIP().addDonation(id, new int[]{});
                 return true;
@@ -464,10 +464,6 @@ public class OwnerCommands {
                         System.out.println(def.getId() + " " + def.getName());
                     }
                 }
-                return true;
-            }
-            case "track" -> {
-                TrackInterface.sendInterface(player, true);
                 return true;
             }
         }

@@ -10,74 +10,57 @@ public enum GearPacks {
 
     /**Begginer Sets**/
 
-    BLURITE(23200, 0,
+    TIER_I(23200, 0,
             new Item(19984), new Item(19985), new Item(19986),
             new Item(19987), new Item(19988), new Item(19989),
             new Item(19991), new Item(19992), new Item(19993),
-            new Item(20400)),
-    NAGI(23201, 0,
-            new Item(21063), new Item(21064), new Item(21066),
+            new Item(20400), new Item(21063), new Item(21064), new Item(21066),
             new Item(21067), new Item(21068), new Item(21069),
-            new Item(21071), new Item(5012)),
-    EXECUTIVE(23202, 0,
-            new Item(9942, 1), new Item(4684, 1), new Item(4686, 1),
+            new Item(21071), new Item(5012), new Item(9942, 1), new Item(4684, 1), new Item(4686, 1),
             new Item(4685, 1), new Item(8274, 1), new Item(9939, 1),
             new Item(8273, 1)),
-    IMPERIAL(23203, 0,
+    TIER_II(23201, 0,
             new Item(18629, 1), new Item(20086, 1), new Item(20087, 1),
             new Item(20088, 1), new Item(20091, 1), new Item(20089, 1),
-            new Item(20092, 1), new Item(20093, 1)
-    ),
-    UNKNOWN(23204, 0,
-            new Item(21042, 1), new Item(21043, 1), new Item(21044, 1),
+            new Item(20092, 1), new Item(20093, 1), new Item(21042, 1), new Item(21043, 1), new Item(21044, 1),
             new Item(21045, 1), new Item(21046, 1), new Item(21047, 1),
-            new Item(19998, 1)
-    ),
-    TURTLE(23205, 0,
-            new Item(21015, 1), new Item(21016, 1), new Item(21017, 1),
+            new Item(19998, 1), new Item(21015, 1), new Item(21016, 1), new Item(21017, 1),
             new Item(21018, 1)
     ),
-    TORMENTED(23206, 0,
+    TIER_III(23202, 0,
             new Item(21036, 1), new Item(21037, 1), new Item(21038, 1),
             new Item(21039, 1), new Item(21040, 1), new Item(21041, 1),
             new Item(8088, 1)
     ),
-    REVENANT(23207, 0,
+    TIER_IV(23203, 0,
             new Item(17999, 1), new Item(18001, 1), new Item(18003, 1),
             new Item(18005, 1), new Item(18009, 1)
     ),
-    FREEFLOW(23208, 0,
+    TIER_V(23204, 0,
             new Item(23050, 1), new Item(23051, 1), new Item(23052, 1),
             new Item(23053, 1), new Item(23054, 1), new Item(23055, 1),
             new Item(23056, 1)
     ),
-    SOLDIER(23209, 0,
+    TIER_VI(23205, 0,
             new Item(23075, 1), new Item(23076, 1), new Item(23077, 1),
             new Item(23079, 1), new Item(23080, 1)
     ),
-    MYSTICAL(23210, 0,
+    TIER_VII(23206, 0,
             new Item(23127, 1), new Item(23128, 1), new Item(23129, 1),
             new Item(23130, 1), new Item(23131, 1), new Item(23133, 1)
     ),
-    SACRED(23211, 0,
+    TIER_VIII(23207, 0,
             new Item(23134, 1), new Item(23135, 1), new Item(23136, 1),
             new Item(23137, 1), new Item(23138, 1)
     ),
-    RUTHLESS(23212, 0,
+    TIER_IX(23208, 0,
             new Item(23139, 1), new Item(23140, 1), new Item(23141, 1),
             new Item(23142, 1), new Item(23143, 1)
     ),
-    ANTIQUE(23213, 0,
+    TIER_X(23209, 0,
             new Item(8816, 1), new Item(8817, 1), new Item(8818, 1),
             new Item(23144, 1), new Item(23145, 1), new Item(23146, 1)
     ),
-
-
-//    ANTIQUE(11930, 0,
-//            new Item(8816, 1), new Item(8817, 1), new Item(8818, 1),
-//            new Item(8819, 1), new Item(8820, 1), new Item(Misc.random(23144, 23146), 1)
-//    ),
-//
 
 //
 //    NITE(11942, 0,

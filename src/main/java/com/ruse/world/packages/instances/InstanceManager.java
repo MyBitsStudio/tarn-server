@@ -224,7 +224,7 @@ public class InstanceManager {
         }
 
         Instance instance = new MultiBossNormalInstance(player,
-                data.getNpcId(), data.getSpawns(), 1000 * 60);
+                data.getNpcId(), data.getSpawns(), (1000 * 60 * 10));
 
         instances.put(instance.getInstanceId(), instance);
         instance.start();

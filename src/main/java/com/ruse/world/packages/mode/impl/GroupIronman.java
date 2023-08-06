@@ -22,7 +22,7 @@ public class GroupIronman extends Gamemode {
                 new Item(19946, 1), new Item(19945, 1), new Item(19914, 1),
                 new Item(19944, 1), new Item(23089, 1), new Item(23091, 1),
                 new Item(22084, 1), new Item(22092, 1), new Item(22083, 1),
-                new Item(3025, 100), new Item(17818, 100), new Item(22118, 1), new Item(995, 1_000_000)
+                new Item(22118, 1), new Item(995, 1_000_000)
         };
     }
 

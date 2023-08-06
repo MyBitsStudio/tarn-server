@@ -1217,6 +1217,18 @@ public class PlayerSecureLoad extends SecureLoad {
                     }.getType()));
         }
 
+        if (object.has("towerTier")) {
+           player.getTower().setTier(object.get("towerTier").getAsInt());
+        }
+
+        if (object.has("towerLevel")) {
+            player.getTower().setLevel(object.get("towerLevel").getAsInt());
+        }
+
+        if (object.has("towerRewards")) {
+            player.getTower().getRewards().setItems(builder.fromJson(object.get("towerRewards").getAsJsonArray(), Item[].class));
+        }
+
 
         return this;
     }
