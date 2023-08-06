@@ -107,7 +107,7 @@ public final class PlayerSession {
 	 */
 	public void handleInputMessage(Packet msg) {
 		int op = msg.getOpcode();
-		System.out.println("Packet: " + op + " " + PacketConstants.PACKETS[op] + " " + msg.getSize());
+		//System.out.println("Packet: " + op + " " + PacketConstants.PACKETS[op] + " " + msg.getSize());
 		PacketListener listener = PacketConstants.PACKETS[op];
 		listener.handleMessage(player, msg);
 	}

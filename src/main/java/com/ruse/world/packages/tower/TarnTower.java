@@ -65,6 +65,8 @@ public class TarnTower {
 
     public static void sendInterface(Player player){
         reset(player);
+
+
         player.getPacketSender().sendInterface(81000);
 
         player.getPacketSender().sendString(81007, "Tier : "+player.getTower().getTier());
@@ -78,7 +80,8 @@ public class TarnTower {
             next = 0;
         }
 
-        player.getPacketSender().sendNpcIdToDisplayPacket(Objects.requireNonNull(Tower.get(tier, next)).getNpcIds()[0], 81010);
+        if(next < 10)
+            player.getPacketSender().sendNpcIdToDisplayPacket(Objects.requireNonNull(Tower.get(tier, next)).getNpcIds()[0], 81010);
 
         int start = 81031;
         ItemContainer container = player.getTower().getRewards();
