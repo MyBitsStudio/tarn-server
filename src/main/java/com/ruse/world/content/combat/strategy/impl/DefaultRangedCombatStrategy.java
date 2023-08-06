@@ -29,6 +29,8 @@ import com.ruse.world.entity.impl.GroundItemManager;
 import com.ruse.world.entity.impl.npc.NPC;
 import com.ruse.world.entity.impl.player.Player;
 
+import java.util.Arrays;
+
 /**
  * The default combat strategy assigned to an {@link Character} during a ranged
  * based combat session.
@@ -385,62 +387,15 @@ public class DefaultRangedCombatStrategy implements CombatStrategy {
 
 		// If we are at 0 ammo remove the item from the equipment completely.
 
-		if (player.getEquipment().get(slot).getAmount() == 0) {
-			if (player.getEquipment().get(Equipment.WEAPON_SLOT).getId() == 22010
-					|| player.getEquipment().get(Equipment.WEAPON_SLOT).getId() == 20553
-							|| player.getEquipment().get(Equipment.WEAPON_SLOT).getId() == 21018
-					|| player.getEquipment().get(Equipment.WEAPON_SLOT).getId() == 20497
-					|| player.getEquipment().get(Equipment.WEAPON_SLOT).getId() == 22134
-					|| player.getEquipment().get(Equipment.WEAPON_SLOT).getId() == 16337
-							|| player.getEquipment().get(Equipment.WEAPON_SLOT).getId() == 3738
-							|| player.getEquipment().get(Equipment.WEAPON_SLOT).getId() == 21053
-									|| player.getEquipment().get(Equipment.WEAPON_SLOT).getId() == 21054
-											|| player.getEquipment().get(Equipment.WEAPON_SLOT).getId() == 21055
-													|| player.getEquipment().get(Equipment.WEAPON_SLOT).getId() == 21056
-					|| player.getEquipment().get(Equipment.WEAPON_SLOT).getId() == 19137
-					|| player.getEquipment().get(Equipment.WEAPON_SLOT).getId() == 20173
-							|| player.getEquipment().get(Equipment.WEAPON_SLOT).getId() == 671
-									|| player.getEquipment().get(Equipment.WEAPON_SLOT).getId() == 16879
-											|| player.getEquipment().get(Equipment.WEAPON_SLOT).getId() == 18332
-					|| player.getEquipment().get(Equipment.WEAPON_SLOT).getId() == 22083
-					|| player.getEquipment().get(Equipment.WEAPON_SLOT).getId() == 19136
-					|| player.getEquipment().get(Equipment.WEAPON_SLOT).getId() == 19135
-							|| player.getEquipment().get(Equipment.WEAPON_SLOT).getId() == 18636
-									|| player.getEquipment().get(Equipment.WEAPON_SLOT).getId() == 15785
-									|| player.getEquipment().get(Equipment.WEAPON_SLOT).getId() == 8088
-											|| player.getEquipment().get(Equipment.WEAPON_SLOT).getId() == 5073
-											|| player.getEquipment().get(Equipment.WEAPON_SLOT).getId() == 8411
-					|| player.getEquipment().get(Equipment.WEAPON_SLOT).getId() == 22148
-													|| player.getEquipment().get(Equipment.WEAPON_SLOT).getId() == 5012
-													|| player.getEquipment().get(Equipment.WEAPON_SLOT).getId() == 12843
-															|| player.getEquipment().get(Equipment.WEAPON_SLOT).getId() == 5011
-					|| player.getEquipment().get(Equipment.WEAPON_SLOT).getId() == 22113
-					|| player.getEquipment().get(Equipment.WEAPON_SLOT).getId() == 5010
-											|| player.getEquipment().get(Equipment.WEAPON_SLOT).getId() == 8001
-					|| player.getEquipment().get(Equipment.WEAPON_SLOT).getId() == 21606
-					|| player.getEquipment().get(Equipment.WEAPON_SLOT).getId() == 4017
-											|| player.getEquipment().get(Equipment.WEAPON_SLOT).getId() == 14919
-									|| player.getEquipment().get(Equipment.WEAPON_SLOT).getId() == 8253
-											|| player.getEquipment().get(Equipment.WEAPON_SLOT).getId() == 7543
-											|| player.getEquipment().get(Equipment.WEAPON_SLOT).getId() == 2632
-											|| player.getEquipment().get(Equipment.WEAPON_SLOT).getId() == 22089
-													|| player.getEquipment().get(Equipment.WEAPON_SLOT).getId() == 9929
-															|| player.getEquipment().get(Equipment.WEAPON_SLOT).getId() == 14056
-													|| player.getEquipment().get(Equipment.WEAPON_SLOT).getId() == 9941
-					|| player.getEquipment().get(Equipment.WEAPON_SLOT).getId() == 2040
-					|| player.getEquipment().get(Equipment.WEAPON_SLOT).getId() == 2074
-					|| player.getEquipment().get(Equipment.WEAPON_SLOT).getId() == 2158
-					|| player.getEquipment().get(Equipment.WEAPON_SLOT).getId() == 2206
-					|| player.getEquipment().get(Equipment.WEAPON_SLOT).getId() == 2220
-					|| player.getEquipment().get(Equipment.WEAPON_SLOT).getId() == 2296
-					|| player.getEquipment().get(Equipment.WEAPON_SLOT).getId() == 22115
-					|| player.getEquipment().get(Equipment.WEAPON_SLOT).getId() == 2470
-					|| player.getEquipment().get(Equipment.WEAPON_SLOT).getId() == 14343
-					|| player.getEquipment().get(Equipment.WEAPON_SLOT).getId() == 2550
-					|| player.getEquipment().get(Equipment.WEAPON_SLOT).getId() == 2632
-					|| player.getEquipment().get(Equipment.WEAPON_SLOT).getId() == 2658
-					|| player.getEquipment().get(Equipment.WEAPON_SLOT).getId() == 19843) {
+		int[] ignore = {
+				22010, 20553, 21018, 20497, 22134, 16337, 3738, 21053, 21054, 21055, 21056, 19137, 20173, 671,
+				16879, 18332, 20083, 19136, 19135, 18636, 15785, 8088, 5073, 8411, 22148, 5012, 12843, 5011,
+				22113, 5010, 8001, 21606, 4017, 14919, 8253, 7543, 2632, 22089, 9929, 14056, 9941, 2040, 2074,
+				2158, 2206, 2220, 2296, 22115, 2470, 14343, 2550, 2632, 2658, 19843
+		};
 
+		if (player.getEquipment().get(slot).getAmount() == 0) {
+			if(Arrays.stream(ignore).anyMatch(i -> i == player.getEquipment().get(slot).getId())){
 				return;
 			} else {
 				player.getPacketSender().sendMessage("You have run out of ammunition!");

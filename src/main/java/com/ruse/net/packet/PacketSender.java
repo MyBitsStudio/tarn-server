@@ -103,7 +103,6 @@ public class PacketSender {
 
         PacketBuilder out = new PacketBuilder(34, PacketType.SHORT);
 
-
         out.putShort(frame);
         for (int item : items) {
             out.put(slot);
@@ -113,7 +112,6 @@ public class PacketSender {
 
             slot++;
         }
-
         player.getSession().queueMessage(out);
         return this;
     }

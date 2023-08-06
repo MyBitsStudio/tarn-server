@@ -17,8 +17,9 @@ public class DialoguePacketListener implements PacketListener {
 	public void handleMessage(Player player, Packet packet) {
 		switch (packet.getOpcode()) {
 			case DIALOGUE_OPCODE:
-				if(player.getChat() != null)
-					player.getChat().nextStage();
+				if(player.getChat() == null) {
+					player.getPacketSender().sendInterfaceRemoval();
+				} else player.getChat().nextStage();
 				break;
 			}
 	}

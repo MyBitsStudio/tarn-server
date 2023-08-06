@@ -51,8 +51,8 @@ public class CancelTPOptions extends Dialogue {
     public boolean handleOption(int option) {
         switch(option){
             case FIRST_OPTION_OF_TWO -> {
-                getPlayer().getTradingPost().cancelSlot(slot);
                 end();
+                getPlayer().getTradingPost().cancelSlot(slot);
                 return true;
             }
             case SECOND_OPTION_OF_TWO -> {
