@@ -29,6 +29,7 @@ import com.ruse.world.content.transportation.TeleportHandler;
 import com.ruse.world.content.transportation.TeleportType;
 import com.ruse.world.packages.mode.GameModeConstants;
 import com.ruse.world.packages.ranks.StaffRank;
+import com.ruse.world.packages.tracks.TrackInterface;
 import com.ruse.world.packages.voting.VoteHandler;
 import com.ruse.world.entity.impl.player.Player;
 
@@ -422,6 +423,12 @@ public class PlayerCommands {
             case "vip":
                 player.getPlayerVIP().sendInterface();
                 return true;
+
+            case "track":
+            case "tracks" :
+                TrackInterface.sendInterface(player, true);
+                return true;
+
         }
         return false;
     }

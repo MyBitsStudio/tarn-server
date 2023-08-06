@@ -466,10 +466,6 @@ public class OwnerCommands {
                 }
                 return true;
             }
-            case "track" -> {
-                TrackInterface.sendInterface(player, true);
-                return true;
-            }
         }
         return false;
     }
