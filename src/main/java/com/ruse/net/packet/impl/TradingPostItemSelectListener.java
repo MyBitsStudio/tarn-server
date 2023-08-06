@@ -15,7 +15,7 @@ public class TradingPostItemSelectListener implements PacketListener {
 		if (item <= 0) return;
 		ItemDefinition def = ItemDefinition.forId(item);
 		if (def != null) {
-			if (def.getValue() <= 0 || !Item.tradeable(item) || item == ItemDefinition.COIN_ID) {
+			if (!Item.tradeable(item) || item == ItemDefinition.COIN_ID) {
 				player.getPacketSender()
 						.sendMessage("This item can currently not be purchased or sold in the trading post.");
 				return;
