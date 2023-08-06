@@ -10,6 +10,8 @@ import com.ruse.model.Item;
 import com.ruse.model.Locations.Location;
 import com.ruse.model.Position;
 import com.ruse.model.definitions.NpcDefinition;
+import com.ruse.security.save.impl.server.defs.ItemDataLoad;
+import com.ruse.security.save.impl.server.defs.WorldNPCLoad;
 import com.ruse.util.JsonLoader;
 import com.ruse.util.Misc;
 import com.ruse.world.World;
@@ -241,67 +243,82 @@ public class NPC extends Character {
         regionIds.stream().map(RegionManager::getRegion).filter(Objects::nonNull).forEach(region -> region.getVisibleNpcs().remove(index));
     }
 
+    public static void startSpawn(int id, Direction direction, Position pos, Coordinator cord){
+        NPCSpawn spawn = new NPCSpawn(id, direction, pos, cord);
+        if (spawns.contains(spawn)) {
+            System.out.println("Spawn already exists! "+id);
+            return;
+        }
+        NPC npc = new NPC(spawn.npcId, spawn.position);
+        npc.movementCoordinator.setCoordinator(cord);
+        npc.setDirection(direction);
+        World.register(npc);
+        spawns.add(spawn);
+        spawnedWorldsNpcs.add(npc);
+    }
+
     public static void init() {
         spawns.clear();
-        new JsonLoader() {
-            @Override
-            public void load(JsonObject reader, Gson builder) {
-                if (reader == null || reader.get("npc-id") == null)
-                    return;
-                int id = reader.get("npc-id").getAsInt();
-                Position position = builder.fromJson(reader.get("position").getAsJsonObject(), Position.class);
-                Coordinator coordinator = builder.fromJson(reader.get("walking-policy").getAsJsonObject(), Coordinator.class);
-                Direction direction = Direction.valueOf(reader.get("face").getAsString());
-                NPCSpawn spawn = new NPCSpawn(id, direction, position, coordinator);
-                if (spawns.contains(spawn)) {
-                    return;
-                }
-                NPC npc = new NPC(spawn.npcId, spawn.position);
-                npc.movementCoordinator.setCoordinator(coordinator);
-                npc.setDirection(direction);
-                World.register(npc);
-                spawns.add(spawn);
-                spawnedWorldsNpcs.add(npc);
-                if (id == 9019) {
-                    for (int i = 0; i < 8; i ++) {
-                        Position newPos = position.copy().setZ((i * 4) + 5);
-                        NPC newnpc = new NPC(id, newPos);
-                        newnpc.movementCoordinator.setCoordinator(coordinator);
-                        newnpc.setDirection(direction);
-                        World.register(newnpc);
-                    }
-                }
-                if (id == 9001) {
-                    for (int i = 1; i < 5; i ++) {
-                        Position newPos = position.copy().setZ((i * 4));
-                        NPC newnpc = new NPC(id + i, newPos);
-                        newnpc.movementCoordinator.setCoordinator(coordinator);
-                        newnpc.setDirection(direction);
-                        World.register(newnpc);
-                    }
-                    for (int i = 0; i < 5; i ++) {
-                        Position newPos = position.copy().setZ((i * 4) + 20);
-                        NPC newnpc = new NPC(id + i, newPos);
-                        newnpc.movementCoordinator.setCoordinator(coordinator);
-                        newnpc.setDirection(direction);
-                        World.register(newnpc);
-                    }
-                }
-
-                if (id > 5070 && id < 5081) {
-                    Hunter.HUNTER_NPC_LIST.add(npc);
-                }
-                position = null;
-                coordinator = null;
-                direction = null;
-            }
-
-            @Override
-            public String filePath() {
-                return "./data/def/json/world_npcs.json";
-            }
-        }.load();
-      //  System.out.println("Loaded "+spawns.size()+" NPC Spawns.");
+        new WorldNPCLoad().loadArray("./.core/server/defs/spawns/npcSpawn.json").run();
+//        new JsonLoader() {
+//            @Override
+//            public void load(JsonObject reader, Gson builder) {
+//                if (reader == null || reader.get("npc-id") == null)
+//                    return;
+//                int id = reader.get("npc-id").getAsInt();
+//                Position position = builder.fromJson(reader.get("position").getAsJsonObject(), Position.class);
+//                Coordinator coordinator = builder.fromJson(reader.get("walking-policy").getAsJsonObject(), Coordinator.class);
+//                Direction direction = Direction.valueOf(reader.get("face").getAsString());
+//                NPCSpawn spawn = new NPCSpawn(id, direction, position, coordinator);
+//                if (spawns.contains(spawn)) {
+//                    return;
+//                }
+//                NPC npc = new NPC(spawn.npcId, spawn.position);
+//                npc.movementCoordinator.setCoordinator(coordinator);
+//                npc.setDirection(direction);
+//                World.register(npc);
+//                spawns.add(spawn);
+//                spawnedWorldsNpcs.add(npc);
+//                if (id == 9019) {
+//                    for (int i = 0; i < 8; i ++) {
+//                        Position newPos = position.copy().setZ((i * 4) + 5);
+//                        NPC newnpc = new NPC(id, newPos);
+//                        newnpc.movementCoordinator.setCoordinator(coordinator);
+//                        newnpc.setDirection(direction);
+//                        World.register(newnpc);
+//                    }
+//                }
+//                if (id == 9001) {
+//                    for (int i = 1; i < 5; i ++) {
+//                        Position newPos = position.copy().setZ((i * 4));
+//                        NPC newnpc = new NPC(id + i, newPos);
+//                        newnpc.movementCoordinator.setCoordinator(coordinator);
+//                        newnpc.setDirection(direction);
+//                        World.register(newnpc);
+//                    }
+//                    for (int i = 0; i < 5; i ++) {
+//                        Position newPos = position.copy().setZ((i * 4) + 20);
+//                        NPC newnpc = new NPC(id + i, newPos);
+//                        newnpc.movementCoordinator.setCoordinator(coordinator);
+//                        newnpc.setDirection(direction);
+//                        World.register(newnpc);
+//                    }
+//                }
+//
+//                if (id > 5070 && id < 5081) {
+//                    Hunter.HUNTER_NPC_LIST.add(npc);
+//                }
+//                position = null;
+//                coordinator = null;
+//                direction = null;
+//            }
+//
+//            @Override
+//            public String filePath() {
+//                return "./data/def/json/world_npcs.json";
+//            }
+//        }.load();
+        System.out.println("Loaded "+spawns.size()+" NPC Spawns.");
         Nex.spawn();
         PuroPuro.spawn();
         DesoSpan.spawn();
