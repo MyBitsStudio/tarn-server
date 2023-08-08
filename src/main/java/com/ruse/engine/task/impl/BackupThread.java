@@ -63,7 +63,7 @@ public class BackupThread extends Task {
     private void populateFilesList(File dir) {
         File[] files = dir.listFiles();
         assert files != null;
-        for(File file : files){
+        for(File file : Objects.requireNonNull(files)){
             if(file == null) continue;
             if(file.isFile()) filesList.add(file.getAbsolutePath().replace(" ", "_"));
             else populateFilesList(file);

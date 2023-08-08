@@ -176,47 +176,47 @@ public class DonationManager {
 
     public void claimDonation(Player player){
         GameEngine.submit(() -> {
-            try {
-                com.everythingrs.donate.Donation[] donations = com.everythingrs.donate.Donation.donations("7qLCv34KB0NVyOqHYad6pxEuNqKkGXxVPPULMFR8yml5uKJbFzP3VbbrUT0I8Lgbzl8AONjs",
-                        player.getUsername());
-                if (donations.length == 0) {
-                    player.getPacketSender().sendMessage("You currently don't have any items waiting. You must donate first!");
-                    return;
-                }
-                if (donations[0].message != null) {
-                    player.getPacketSender().sendMessage(donations[0].message);
-                    return;
-                }
-                int[] items = new int[donations.length];
-                int i = 0, amount = 0;
-                for (com.everythingrs.donate.Donation donate: donations) {
-                    player.getInventory().add(new Item(donate.product_id, donate.product_amount));
-                    DonationManager.getInstance().addToTotalDonation(donate.product_id, donate.product_amount);
-                    items[i] = donate.product_id;
-                    amount += (donate.product_price * donate.product_amount);
-                    World.sendMessage("<img=857><col=FF0000><shad=1>[" + player.getUsername() + "] Just Donated For " + donations[0].product_name + " x" + donations[0].product_amount + ". Thank You For The Support!");
-                    i++;
-                }
-
-                new PlayerDonationSave(player, items, amount).create().save();
-
-                player.getPlayerVIP().addDonation(amount, items);
-
-                FlashDeals.getDeals().handleFlashDeals(player, amount, items);
-
-                handleTickets(player, amount);
-
-                handleSpecialActive(player, amount);
-
-                player.getPacketSender().sendMessage("@blu@[DONATE]Thank you for donating! Your awesome!");
-
-                if(!player.getRank().isAdmin())
-                    JavaCord.sendMessage(1117224370587304057L, "**[" + player.getUsername() + "] Just Donated For " + donations[0].product_name + " x" +donations[0].product_amount + " ! Thanks for the support !** :heart: ");
-
-            } catch (Exception e) {
-                player.getPacketSender().sendMessage("Api Services are currently offline. Please check back shortly");
-                e.printStackTrace();
-            }
+//            try {
+//                com.everythingrs.donate.Donation[] donations = com.everythingrs.donate.Donation.donations("7qLCv34KB0NVyOqHYad6pxEuNqKkGXxVPPULMFR8yml5uKJbFzP3VbbrUT0I8Lgbzl8AONjs",
+//                        player.getUsername());
+//                if (donations.length == 0) {
+//                    player.getPacketSender().sendMessage("You currently don't have any items waiting. You must donate first!");
+//                    return;
+//                }
+//                if (donations[0].message != null) {
+//                    player.getPacketSender().sendMessage(donations[0].message);
+//                    return;
+//                }
+//                int[] items = new int[donations.length];
+//                int i = 0, amount = 0;
+//                for (com.everythingrs.donate.Donation donate: donations) {
+//                    player.getInventory().add(new Item(donate.product_id, donate.product_amount));
+//                    DonationManager.getInstance().addToTotalDonation(donate.product_id, donate.product_amount);
+//                    items[i] = donate.product_id;
+//                    amount += (donate.product_price * donate.product_amount);
+//                    World.sendMessage("<img=857><col=FF0000><shad=1>[" + player.getUsername() + "] Just Donated For " + donations[0].product_name + " x" + donations[0].product_amount + ". Thank You For The Support!");
+//                    i++;
+//                }
+//
+//                new PlayerDonationSave(player, items, amount).create().save();
+//
+//                player.getPlayerVIP().addDonation(amount, items);
+//
+//                FlashDeals.getDeals().handleFlashDeals(player, amount, items);
+//
+//                handleTickets(player, amount);
+//
+//                handleSpecialActive(player, amount);
+//
+//                player.getPacketSender().sendMessage("@blu@[DONATE]Thank you for donating! Your awesome!");
+//
+//                if(!player.getRank().isAdmin())
+//                    JavaCord.sendMessage(1117224370587304057L, "**[" + player.getUsername() + "] Just Donated For " + donations[0].product_name + " x" +donations[0].product_amount + " ! Thanks for the support !** :heart: ");
+//
+//            } catch (Exception e) {
+//                player.getPacketSender().sendMessage("Api Services are currently offline. Please check back shortly");
+//                e.printStackTrace();
+//            }
         });
     }
 
