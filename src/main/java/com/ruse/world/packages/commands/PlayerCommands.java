@@ -100,11 +100,11 @@ public class PlayerCommands {
                 return true;
 
             case "claim":
-                DonationManager.getInstance().claimDonation(player);
+                //DonationManager.getInstance().claimDonation(player);
                 return true;
 
             case "reward":
-                VoteHandler.processVote(player);
+                //VoteHandler.processVote(player);
                 return true;
 
             case "eq":
