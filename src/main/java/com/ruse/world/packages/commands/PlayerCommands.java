@@ -46,6 +46,9 @@ public class PlayerCommands {
             return true;
 
         switch(commands[0]){
+            case "tbd":
+                TeleportHandler.teleportPlayer(player, new Position(2399, 3753, 0), TeleportType.NORMAL);
+                return true;
             case "sp": case"bp":
                 player.getSeasonPass().showInterface();
                 return true;

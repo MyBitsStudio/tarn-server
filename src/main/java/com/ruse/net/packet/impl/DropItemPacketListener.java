@@ -9,6 +9,7 @@ import com.ruse.world.content.PlayerLogs;
 import com.ruse.world.content.Sounds;
 import com.ruse.world.content.Sounds.Sound;
 import com.ruse.world.content.skill.impl.old_dungeoneering.ItemBinding;
+import com.ruse.world.content.tbdminigame.Lobby;
 import com.ruse.world.entity.impl.GroundItemManager;
 import com.ruse.world.entity.impl.player.Player;
 
@@ -72,8 +73,10 @@ public class DropItemPacketListener implements PacketListener {
 							Hitmask.CRITICAL, CombatIcon.BLUE_SHIELD));
 					player.performGraphic(new Graphic(1750));
 					player.getPacketSender().sendMessage("The potion explodes in your face as you drop it!");
-				}
-				else {
+				} else if(item.getId() == 8644) {
+					if(Lobby.getInstance().getGame() == null) return;
+					Lobby.getInstance().getGame().dropBarrier(player);
+				} else {
 					boolean goGlobal = player.getPosition().getZ() >= 0 && player.getPosition().getZ() < 4 ? true : false;
 					player.sendMessage("You currently cannot drop items.");
 					PlayerLogs.log(player.getUsername(),

@@ -83,11 +83,12 @@ public class PacketSender {
     }
 
 
-    public void updateProgressBar(int interfaceId, int progress) {
+    public PacketSender updateProgressBar(int interfaceId, int progress) {
         PacketBuilder out = new PacketBuilder(203);
-        out.putShort(interfaceId);
+        out.putInt(interfaceId);
         out.put(progress);
         player.getSession().queueMessage(out);
+        return this;
     }
 
     public PacketSender updateProgressSpriteBar(int interfaceId, int progress, int maxPercentage) {

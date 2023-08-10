@@ -4,8 +4,11 @@ import com.ruse.model.definitions.NpcDefinition;
 import com.ruse.world.content.PetUpgrading;
 import com.ruse.world.entity.impl.player.Player;
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.HashMap;
 
 @Getter
 @Setter
@@ -15,7 +18,7 @@ public abstract class Dialogue {
 
     private final int[] PLAYER_DIALOGUE_ID = { 971, 976, 982, 989 };
 
-    private final int[] OPTION_DIALOGUE_ID = { 13760, 2461, 2471, 2482, 2494 };
+    public static final int[] OPTION_DIALOGUE_ID = { 13760, 2461, 2471, 2482, 2494 };
     protected final int FIRST_OPTION_OF_FIVE = 2494;
     protected final int SECOND_OPTION_OF_FIVE = 2495;
     protected final int THIRD_OPTION_OF_FIVE = 2496;
@@ -30,6 +33,7 @@ public abstract class Dialogue {
     protected final int THIRD_OPTION_OF_THREE = 2473;
     protected final int FIRST_OPTION_OF_TWO = 2461;
     protected final int SECOND_OPTION_OF_TWO = 2462;
+    protected HashMap<Integer, String> options = new HashMap<>();
 
     private int stage = -1, npcId = -1, option = -1;
 
@@ -136,6 +140,7 @@ public abstract class Dialogue {
             } else {
                 player.getPacketSender().sendString(firstChildId + i, lines[i + 1]);
             }
+            options.put(firstChildId+i, lines[i+1]);
         }
         player.getPacketSender().sendChatboxInterface(firstChildId - 2);
     }

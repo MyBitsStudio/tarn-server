@@ -1,6 +1,7 @@
 package com.ruse.world.packages.commands;
 
 import com.ruse.GameSettings;
+import com.ruse.model.Flag;
 import com.ruse.model.definitions.ItemDefinition;
 import com.ruse.security.PlayerLock;
 import com.ruse.security.PlayerSecurity;
@@ -28,6 +29,13 @@ public class AdminCommands {
         boolean found;
 
         switch (commands[0]) {
+            case "pnpc" -> {
+            int npcID = Integer.parseInt(commands[1]);
+            player.setNpcTransformationId(npcID);
+            player.getStrategy(npcID);
+            player.getUpdateFlag().flag(Flag.APPEARANCE);
+            return true;
+             }
             case "find" -> {
                 name = command.substring(5).toLowerCase().replaceAll("_", " ");
                 player.getPacketSender().sendMessage("Finding item id for item - " + name);

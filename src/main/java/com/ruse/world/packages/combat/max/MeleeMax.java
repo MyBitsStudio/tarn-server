@@ -210,9 +210,6 @@ public class MeleeMax {
         if(entity.isNpc()) {
             NPC npc = entity.toNpc();
             maxHit = npc.getMaxHit();
-
-            System.out.println("Max hit : " + maxHit);
-
             if (victim.isPlayer()) {
                 Player player = victim.asPlayer();
 

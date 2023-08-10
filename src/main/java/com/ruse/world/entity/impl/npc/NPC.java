@@ -56,6 +56,8 @@ public class NPC extends Character {
 
     private int atkBoost, speedBoost, defBoost, maxHitBoost;
 
+    public boolean isTreeMinigameNpc;
+
     public boolean isAggressive() {
         return aggressive;
     }

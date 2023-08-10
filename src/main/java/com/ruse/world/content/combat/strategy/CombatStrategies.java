@@ -50,6 +50,8 @@ public class CombatStrategies {
 		STRATEGIES.put(9029, defaultMeleeCombatStrategy);
 		STRATEGIES.put(9028, defaultMagicStrategy);
 		STRATEGIES.put(9030, defaultRangedStrategy);
+		STRATEGIES.put(1511, defaultRangedStrategy);
+		STRATEGIES.put(1508, defaultRangedStrategy);
 
 		STRATEGIES.put(7553, new TheGeneral());
 		STRATEGIES.put(9176, new SkeletalHorror());

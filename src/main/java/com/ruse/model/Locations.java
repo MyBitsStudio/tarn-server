@@ -2225,6 +2225,8 @@ for (Item item : player.getInventory().getItems()) {
 				return true;
 			if (x >= 2434 && x <= 2496 && y >= 5378 && y <= 5440) // onyx
 				return true;
+			if(x >= 2475 && x <= 2519 && y >= 3749 && y <= 3792)
+				return true;
 			if (gc.getLocation() == WILDERNESS) {
 				if (x >= 3250 && x <= 3302 && y >= 3905 && y <= 3925 || x >= 3020 && x <= 3055 && y >= 3684 && y <= 3711
 						|| x >= 3150 && x <= 3195 && y >= 2958 && y <= 3003

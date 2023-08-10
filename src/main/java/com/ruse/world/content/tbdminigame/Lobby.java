@@ -13,7 +13,7 @@ import java.util.Set;
 public class Lobby {
 
     private static final Position LOBBY_ENTER_POSITION = new Position(2399, 3747, 0);
-    private static final Position LOBBY_EXIT_POSITION = new Position(2399, 3748, 0);
+    public static final Position LOBBY_EXIT_POSITION = new Position(2399, 3748, 0);
 
     private static Lobby INSTANCE;
 
@@ -21,7 +21,7 @@ public class Lobby {
      * The amount of time in minutes that the players in {@link #playerSet}
      * must wait until a new game begins.
      */
-    private static final int LOBBY_TIMER = 2;
+    private static final int LOBBY_TIMER = 1;
 
     private final Set<Player> playerSet = new HashSet<>();
 
@@ -105,6 +105,10 @@ public class Lobby {
 
     public void allowEntrance() {
         game = null;
-        World.sendMessage("@yel@type ::tbd to player the tbd minigame!");
+        World.sendMessage("@yel@type ::tbd to play the tbd minigame!");
+    }
+
+    public Game getGame() {
+        return game;
     }
 }

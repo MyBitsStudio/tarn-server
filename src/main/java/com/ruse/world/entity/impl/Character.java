@@ -22,6 +22,7 @@ import com.ruse.world.content.combat.CombatBuilder;
 import com.ruse.world.content.combat.CombatType;
 import com.ruse.world.content.combat.magic.CombatSpell;
 import com.ruse.world.content.combat.strategy.CombatStrategy;
+import com.ruse.world.entity.impl.npc.NPC;
 import com.ruse.world.packages.instances.Instance;
 import com.ruse.world.entity.Entity;
 import com.ruse.world.entity.impl.mini.MiniPlayer;
@@ -462,6 +463,7 @@ public abstract class Character extends Entity {
 	}
 
 	public Character setEntityInteraction(Entity entity) {
+		if(this.isNpc() && (((NPC)this).getId() == 550 || ((NPC)this).getId() == 551)) return this;
 		this.interactingEntity = entity;
 		getUpdateFlag().flag(Flag.ENTITY_INTERACTION);
 		return this;

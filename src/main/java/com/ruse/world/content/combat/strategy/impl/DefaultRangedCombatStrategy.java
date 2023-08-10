@@ -24,6 +24,7 @@ import com.ruse.world.content.combat.weapon.CombatSpecial;
 import com.ruse.world.content.combat.weapon.FightStyle;
 import com.ruse.world.content.minigames.impl.Dueling;
 import com.ruse.world.content.minigames.impl.Dueling.DuelRule;
+import com.ruse.world.content.tbdminigame.Game;
 import com.ruse.world.entity.impl.Character;
 import com.ruse.world.entity.impl.GroundItemManager;
 import com.ruse.world.entity.impl.npc.NPC;
@@ -96,6 +97,8 @@ public class DefaultRangedCombatStrategy implements CombatStrategy {
 				ammo = AmmunitionData.STEEL_JAVELIN;
 				break;
 			case 6252:
+				case 1511:
+				case 1508:
 				ammo = AmmunitionData.RUNE_ARROW;
 				break;
 			}
@@ -107,7 +110,12 @@ public class DefaultRangedCombatStrategy implements CombatStrategy {
 
 			fireProjectile(npc, victim, ammo, false);
 
-			return new CombatContainer(entity, victim, 1, CombatType.RANGED, true);
+			CombatContainer combatContainer = new CombatContainer(entity, victim, 1, CombatType.RANGED, true);
+
+			if(((NPC) entity).isTreeMinigameNpc)
+				combatContainer.setModifiedDamage(Misc.random(Game.NPC_MIN_DAMAGE,Game.NPC_MAX_DAMAGE));
+
+			return combatContainer;
 		}
 
 		Player player = (Player) entity;

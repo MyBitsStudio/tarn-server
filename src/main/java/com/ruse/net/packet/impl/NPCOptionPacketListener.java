@@ -40,6 +40,7 @@ import com.ruse.world.content.skill.impl.summoning.Summoning;
 import com.ruse.world.content.skill.impl.summoning.SummoningData;
 import com.ruse.world.content.skill.impl.thieving.Pickpocket;
 import com.ruse.world.content.skill.impl.thieving.PickpocketData;
+import com.ruse.world.content.tbdminigame.Lobby;
 import com.ruse.world.content.transportation.TeleportHandler;
 import com.ruse.world.entity.impl.npc.NPC;
 import com.ruse.world.entity.impl.player.Player;
@@ -87,6 +88,10 @@ public class NPCOptionPacketListener implements PacketListener {
                 return;
             }
             switch (npc.getId()) {
+                case 550:
+                    if(Lobby.getInstance().getGame() == null) return;
+                    Lobby.getInstance().getGame().obeliskClick(player);
+                    break;
                 case 4651:
                     player.getTradingPost().openMainInterface();
                     break;
@@ -622,7 +627,7 @@ public class NPCOptionPacketListener implements PacketListener {
 //                    }
 //                    break;
             }
-            if (!(npc.getId() >= 8705 && npc.getId() <= 8710)) {
+            if (!(npc.getId() >= 8705 && npc.getId() <= 8710) && npc.getId() != 550 && npc.getId() != 551) {
                 npc.setPositionToFace(player.getPosition());
             }
             player.setPositionToFace(npc.getPosition());
@@ -1048,7 +1053,6 @@ public class NPCOptionPacketListener implements PacketListener {
                         ShopHandler.getShop(1).ifPresent(shop -> shop.send(player, true));
                     }
                     case 13738 -> player.getUpgradeHandler().openInterface();
-                    //case 550 -> ShopManager.getShops().get(2).open(player);
                     case 457 -> {
                         player.getPacketSender().sendMessage("The ghost teleports you away.");
                         player.getPacketSender().sendInterfaceRemoval();

@@ -21,6 +21,8 @@ import com.ruse.world.content.combat.strategy.impl.KalphiteQueen;
 import com.ruse.world.content.combat.strategy.impl.Nex;
 import com.ruse.world.content.dailyTask.DailyTaskHandler;
 import com.ruse.world.content.dailytasks_new.DailyTask;
+import com.ruse.world.content.tbdminigame.Game;
+import com.ruse.world.content.tbdminigame.Lobby;
 import com.ruse.world.event.youtube.YoutubeBoss;
 import com.ruse.world.packages.donation.boss.DonationBoss;
 import com.ruse.world.content.eventboss.EventBossDropHandler;
@@ -123,6 +125,11 @@ public class NPCDeathTask extends Task {
 //                        }
 
                         SeasonPassManager.addNpcKillExp(killer.getSeasonPass(), npc.getDefinition().getName());
+
+                        Game game;
+                        if((game = Lobby.getInstance().getGame()) != null) {
+                            game.npcDeath(npc, killer);
+                        }
 
                         achieve(killer, npc.getId());
                         killTracker(killer, npc.getId());

@@ -10,6 +10,7 @@ import com.ruse.world.content.Kraken;
 import com.ruse.world.content.Sounds;
 import com.ruse.world.content.Sounds.Sound;
 import com.ruse.world.content.skill.impl.old_dungeoneering.Dungeoneering;
+import com.ruse.world.content.tbdminigame.Lobby;
 import com.ruse.world.entity.impl.player.Player;
 import com.ruse.world.instance.MapInstance;
 
@@ -42,6 +43,9 @@ public class TeleportHandler {
 		}
 		if (!player.getClickDelay().elapsed(4500) || player.getMovementQueue().isLockMovement())
 			return;
+		if(Lobby.getInstance().getGame() != null) {
+			Lobby.getInstance().getGame().leave(player, true);
+		}
 		player.setTeleporting(true).getMovementQueue().setLockMovement(true).reset();
 		cancelCurrentActions(player);
 		player.performAnimation(teleportType.getStartAnimation());

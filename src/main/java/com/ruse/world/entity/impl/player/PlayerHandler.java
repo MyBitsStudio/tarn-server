@@ -28,6 +28,7 @@ import com.ruse.world.content.combat.pvp.BountyHunter;
 import com.ruse.world.content.combat.range.DwarfMultiCannon;
 import com.ruse.world.content.combat.weapon.CombatSpecial;
 import com.ruse.world.content.grandLottery.GrandLottery;
+import com.ruse.world.content.tbdminigame.Lobby;
 import com.ruse.world.packages.clans.ClanManager;
 import com.ruse.world.packages.instances.InstanceManager;
 import com.ruse.world.content.minigames.impl.Barrows;
@@ -501,7 +502,9 @@ public class PlayerHandler {
                 if (player.getRegionInstance() != null) {
                     player.getRegionInstance().onLogout(player);
                 }
-
+                if(Lobby.getInstance().getGame() != null) {
+                    Lobby.getInstance().getGame().leave(player, true);
+                }
                 if(player.getInstance() != null){
                     player.getInstance().onLogout(player);
                 }
