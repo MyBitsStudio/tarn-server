@@ -5,6 +5,7 @@ import lombok.Getter;
 
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.concurrent.atomic.AtomicInteger;
 
 @Getter
 public class Shop {
@@ -43,17 +44,21 @@ public class Shop {
     }
 
     public void send(Player player){
-
+        AtomicInteger index = new AtomicInteger(162001);
+        items.forEach(item -> {
+            if(item == null)
+                return;
+            player.getPacketSender().sendItemOnInterface(index.getAndIncrement(), item.getId(), item.getStock());
+        });
     }
 
-    public boolean sell(Player player, int itemId, int amount){
-
-        return false;
+    public ShopItem getItem(int id){
+        return this.items.stream().filter(item -> item.getId() == id).findFirst().orElse(null);
     }
 
-    public boolean buy(Player player, int itemId, int amount){
-
-        return false;
+    public void resetUpdate(){
+        this.updated = false;
+        this.forceUpdate = false;
     }
 
 }

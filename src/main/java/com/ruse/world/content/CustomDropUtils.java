@@ -25,6 +25,8 @@ public class CustomDropUtils {
 
         percentBoost += player.getEquipment().getDropRateBonus();
 
+        percentBoost += player.getEquipment().getBonus() == null ? 0 : player.getEquipment().getBonus().dropChance();
+
         if (player.getEquipment().contains(23044)) { //Tier 1 Aura
             percentBoost += 5;
         }
@@ -405,6 +407,7 @@ public class CustomDropUtils {
         int percentBoost = 0;
 
         percentBoost += player.getEquipment().getDoubleDrop();
+        percentBoost += player.getEquipment().getBonus() == null ? 0 : player.getEquipment().getBonus().doubleDropChance();
 
         if (player.getDdrPotionTimer() > 0) {
             percentBoost += 100;

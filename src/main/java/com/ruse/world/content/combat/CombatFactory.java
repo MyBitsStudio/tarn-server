@@ -388,219 +388,219 @@ public final class CombatFactory {
      * @return true if the hit was successful, or in other words accurate.
      */
     @SuppressWarnings("incomplete-switch")
-    public static boolean rollAccuracy(Character attacker, Character victim, CombatType type) {
-
-
-//        else if (attacker.isPlayer() && victim.isNpc() && type != MAGIC) {
-//            Player p1 = (Player) attacker;
-//            NPC n = (NPC) victim;
-//            int percentBoost = 0;
-//            if(!p1.isInsideRaids()) {
-//                if (n.getId() == p1.getSlayer().getSlayerTask().getNpcId()) {
-//                    if (p1.getSummoning() != null && p1.getSummoning().getFamiliar() != null
-//                            && p1.getSummoning().getFamiliar().getSummonNpc().getId() == BossPets.BossPet.RED_FENRIR_PET.npcId) {
-//                        percentBoost += 20;
-//                    }
+//    public static boolean rollAccuracy(Character attacker, Character victim, CombatType type) {
+//
+//
+////        else if (attacker.isPlayer() && victim.isNpc() && type != MAGIC) {
+////            Player p1 = (Player) attacker;
+////            NPC n = (NPC) victim;
+////            int percentBoost = 0;
+////            if(!p1.isInsideRaids()) {
+////                if (n.getId() == p1.getSlayer().getSlayerTask().getNpcId()) {
+////                    if (p1.getSummoning() != null && p1.getSummoning().getFamiliar() != null
+////                            && p1.getSummoning().getFamiliar().getSummonNpc().getId() == BossPets.BossPet.RED_FENRIR_PET.npcId) {
+////                        percentBoost += 20;
+////                    }
+////                }
+////            }
+////
+////
+//////                switch (type) {
+//////                /*
+//////                 * case MAGIC: case KORASI: int mageAttk = DesolaceFormulas.getMagicAttack(p1);
+//////                 * return Misc.getRandom(n.getDefinition().getDefenceMage()) <
+//////                 * Misc.getRandom((mageAttk / 2)) + Misc.getRandom((int) (mageAttk/2.1));
+//////                 */
+//////                case MELEE:
+//////                    int def = 1 + n.getDefinition().getDefenceMelee();
+//////                    return Misc.getRandom(def) < Misc.getRandom(5 + DesolaceFormulas.getMeleeAttack(p1) + percentBoost) + (def / 4);
+//////                case RANGED:
+//////                    return Misc.getRandom(5 + n.getDefinition().getDefenceRange()) < Misc
+//////                            .getRandom(5 + DesolaceFormulas.getRangedAttack(p1) + percentBoost);
+//////            }
+////        }
+//
+//        if (type == CombatType.DRAGON_FIRE)
+//            type = MAGIC;
+//        double prayerMod = 1;
+//        double equipmentBonus = 1;
+//        double specialBonus = 1;
+//        int styleBonus = 0;
+//        if (attacker.isPlayer()) {
+//            Player player = (Player) attacker;
+//
+//            equipmentBonus = type == MAGIC
+//                    ? player.getBonusManager().getAttackBonus()[BonusManager.ATTACK_MAGIC]
+//                    : player.getBonusManager().getAttackBonus()[player.getFightType().getBonusType()];
+//
+//
+//            equipmentBonus /= 1_000_000;
+//
+//
+//            if (type == CombatType.MELEE) {
+//                if (PrayerHandler.isActivated(player, PrayerHandler.CLARITY_OF_THOUGHT)) {
+//                    prayerMod = 1.05;
+//                } else if (PrayerHandler.isActivated(player, PrayerHandler.IMPROVED_REFLEXES)) {
+//                    prayerMod = 1.10;
+//                } else if (PrayerHandler.isActivated(player, PrayerHandler.INCREDIBLE_REFLEXES)) {
+//                    prayerMod = 1.15;
+//                } else if (PrayerHandler.isActivated(player, PrayerHandler.CHIVALRY)) {
+//                    prayerMod = 1.15;
+//                } else if (PrayerHandler.isActivated(player, PrayerHandler.PIETY)) {
+//                    prayerMod = 1.20;
+//                } else if (PrayerHandler.isActivated(player, PrayerHandler.RIGOUR)) {
+//                    prayerMod = 1.20;
+//                } else if (PrayerHandler.isActivated(player, PrayerHandler.AUGURY)) {
+//                    prayerMod = 1.20;
+//                } else if (PrayerHandler.isActivated(player, PrayerHandler.HUNTERS_EYE)) {
+//                    prayerMod = 1.20;
+//                } else if (CurseHandler.isActivated(player, CurseHandler.LEECH_ATTACK)) {
+//                    prayerMod = 1.05 + (player.getLeechedBonuses()[0] * 0.01);
+//                } else if (CurseHandler.isActivated(player, CurseHandler.TURMOIL)) {
+//                    prayerMod = 1.15 + (player.getLeechedBonuses()[2] * 0.01);
+//                }
+//
+//            } else if (type == CombatType.RANGED) {
+//                if (PrayerHandler.isActivated(player, PrayerHandler.SHARP_EYE)) {
+//                    prayerMod = 1.05;
+//                } else if (PrayerHandler.isActivated(player, PrayerHandler.HAWK_EYE)) {
+//                    prayerMod = 1.10;
+//                } else if (PrayerHandler.isActivated(player, PrayerHandler.EAGLE_EYE)) {
+//                    prayerMod = 1.15;
+//                } else if (PrayerHandler.isActivated(player, PrayerHandler.RIGOUR)) {
+//                    prayerMod = 1.22;
+//                } else if (PrayerHandler.isActivated(player, PrayerHandler.HUNTERS_EYE)) {
+//                    prayerMod = 1.22;
+//                } else if (CurseHandler.isActivated(player, CurseHandler.LEECH_RANGED)) {
+//                    prayerMod = 1.05 + (player.getLeechedBonuses()[4] * 0.01);
+//                }
+//            } else if (type == MAGIC) {
+//                if (PrayerHandler.isActivated(player, PrayerHandler.MYSTIC_WILL)) {
+//                    prayerMod = 1.05;
+//                } if (PrayerHandler.isActivated(player, PrayerHandler.FORTITUDE)) {
+//                        prayerMod = 1.25;
+//                } else if (PrayerHandler.isActivated(player, PrayerHandler.FURY_SWIPE)) {
+//                    prayerMod = 1.25;
+//                } else if (PrayerHandler.isActivated(player, PrayerHandler.MYSTIC_LORE)) {
+//                    prayerMod = 1.10;
+//                } else if (PrayerHandler.isActivated(player, PrayerHandler.MYSTIC_MIGHT)) {
+//                    prayerMod = 1.15;
+//                } else if (PrayerHandler.isActivated(player, PrayerHandler.AUGURY)) {
+//                    prayerMod = 1.22;
+//                } else if (CurseHandler.isActivated(player, CurseHandler.LEECH_MAGIC)) {
+//                    prayerMod = 1.05 + (player.getLeechedBonuses()[6] * 0.01);
 //                }
 //            }
 //
 //
-////                switch (type) {
-////                /*
-////                 * case MAGIC: case KORASI: int mageAttk = DesolaceFormulas.getMagicAttack(p1);
-////                 * return Misc.getRandom(n.getDefinition().getDefenceMage()) <
-////                 * Misc.getRandom((mageAttk / 2)) + Misc.getRandom((int) (mageAttk/2.1));
-////                 */
-////                case MELEE:
-////                    int def = 1 + n.getDefinition().getDefenceMelee();
-////                    return Misc.getRandom(def) < Misc.getRandom(5 + DesolaceFormulas.getMeleeAttack(p1) + percentBoost) + (def / 4);
-////                case RANGED:
-////                    return Misc.getRandom(5 + n.getDefinition().getDefenceRange()) < Misc
-////                            .getRandom(5 + DesolaceFormulas.getRangedAttack(p1) + percentBoost);
-////            }
-//        }
-
-        if (type == CombatType.DRAGON_FIRE)
-            type = MAGIC;
-        double prayerMod = 1;
-        double equipmentBonus = 1;
-        double specialBonus = 1;
-        int styleBonus = 0;
-        if (attacker.isPlayer()) {
-            Player player = (Player) attacker;
-
-            equipmentBonus = type == MAGIC
-                    ? player.getBonusManager().getAttackBonus()[BonusManager.ATTACK_MAGIC]
-                    : player.getBonusManager().getAttackBonus()[player.getFightType().getBonusType()];
-
-
-            equipmentBonus /= 1_000_000;
-
-
-            if (type == CombatType.MELEE) {
-                if (PrayerHandler.isActivated(player, PrayerHandler.CLARITY_OF_THOUGHT)) {
-                    prayerMod = 1.05;
-                } else if (PrayerHandler.isActivated(player, PrayerHandler.IMPROVED_REFLEXES)) {
-                    prayerMod = 1.10;
-                } else if (PrayerHandler.isActivated(player, PrayerHandler.INCREDIBLE_REFLEXES)) {
-                    prayerMod = 1.15;
-                } else if (PrayerHandler.isActivated(player, PrayerHandler.CHIVALRY)) {
-                    prayerMod = 1.15;
-                } else if (PrayerHandler.isActivated(player, PrayerHandler.PIETY)) {
-                    prayerMod = 1.20;
-                } else if (PrayerHandler.isActivated(player, PrayerHandler.RIGOUR)) {
-                    prayerMod = 1.20;
-                } else if (PrayerHandler.isActivated(player, PrayerHandler.AUGURY)) {
-                    prayerMod = 1.20;
-                } else if (PrayerHandler.isActivated(player, PrayerHandler.HUNTERS_EYE)) {
-                    prayerMod = 1.20;
-                } else if (CurseHandler.isActivated(player, CurseHandler.LEECH_ATTACK)) {
-                    prayerMod = 1.05 + (player.getLeechedBonuses()[0] * 0.01);
-                } else if (CurseHandler.isActivated(player, CurseHandler.TURMOIL)) {
-                    prayerMod = 1.15 + (player.getLeechedBonuses()[2] * 0.01);
-                }
-
-            } else if (type == CombatType.RANGED) {
-                if (PrayerHandler.isActivated(player, PrayerHandler.SHARP_EYE)) {
-                    prayerMod = 1.05;
-                } else if (PrayerHandler.isActivated(player, PrayerHandler.HAWK_EYE)) {
-                    prayerMod = 1.10;
-                } else if (PrayerHandler.isActivated(player, PrayerHandler.EAGLE_EYE)) {
-                    prayerMod = 1.15;
-                } else if (PrayerHandler.isActivated(player, PrayerHandler.RIGOUR)) {
-                    prayerMod = 1.22;
-                } else if (PrayerHandler.isActivated(player, PrayerHandler.HUNTERS_EYE)) {
-                    prayerMod = 1.22;
-                } else if (CurseHandler.isActivated(player, CurseHandler.LEECH_RANGED)) {
-                    prayerMod = 1.05 + (player.getLeechedBonuses()[4] * 0.01);
-                }
-            } else if (type == MAGIC) {
-                if (PrayerHandler.isActivated(player, PrayerHandler.MYSTIC_WILL)) {
-                    prayerMod = 1.05;
-                } if (PrayerHandler.isActivated(player, PrayerHandler.FORTITUDE)) {
-                        prayerMod = 1.25;
-                } else if (PrayerHandler.isActivated(player, PrayerHandler.FURY_SWIPE)) {
-                    prayerMod = 1.25;
-                } else if (PrayerHandler.isActivated(player, PrayerHandler.MYSTIC_LORE)) {
-                    prayerMod = 1.10;
-                } else if (PrayerHandler.isActivated(player, PrayerHandler.MYSTIC_MIGHT)) {
-                    prayerMod = 1.15;
-                } else if (PrayerHandler.isActivated(player, PrayerHandler.AUGURY)) {
-                    prayerMod = 1.22;
-                } else if (CurseHandler.isActivated(player, CurseHandler.LEECH_MAGIC)) {
-                    prayerMod = 1.05 + (player.getLeechedBonuses()[6] * 0.01);
-                }
-            }
-
-
-            if (player.getFightType().getStyle() == FightStyle.ACCURATE) {
-                styleBonus = 3;
-            } else if (player.getFightType().getStyle() == FightStyle.CONTROLLED) {
-                styleBonus = 1;
-            }
-
-
-            if (player.isSpecialActivated()) {
-                specialBonus = player.getCombatSpecial().getAccuracyBonus();
-            }
-
-        }
-
-
-        double attackCalc = Math.floor(equipmentBonus + attacker.getBaseAttack(type)) + 8;
-
-
-        attackCalc *= prayerMod;
-
-        attackCalc += styleBonus;
-
-
-        if (equipmentBonus < -67) {
-            attackCalc = Misc.exclusiveRandom(8) == 0 ? attackCalc : 0;
-        }
-
-        attackCalc *= specialBonus;
-
-        equipmentBonus = 1;
-        prayerMod = 1;
-        styleBonus = 0;
-        if (victim.isPlayer()) {
-            Player player = (Player) victim;
-
-            if(attacker.isNpc()){
-                NPC npc = attacker.toNpc();
-                if(npc.getCombatBuilder().getStrategy().getCombatType() == RANGED){
-                    equipmentBonus = player.getBonusManager().getDefenceBonus()[BonusManager.DEFENCE_RANGE] / 12_698_000;
-                } else if(npc.getCombatBuilder().getStrategy().getCombatType() == MAGIC){
-                    equipmentBonus = player.getBonusManager().getDefenceBonus()[BonusManager.DEFENCE_MAGIC] / 12_698_000;
-                } else {
-                    equipmentBonus = player.getBonusManager().getDefenceBonus()[BonusManager.DEFENCE_STAB] / 12_698_000;
-                }
-
-                equipmentBonus += player.getSkillManager().getCurrentLevel(Skill.DEFENCE);
-            } else {
-                equipmentBonus = player.getSkillManager().getCurrentLevel(Skill.DEFENCE);
-            }
-//            if (bonusType == -1) {
-//                equipmentBonus = type == MAGIC
-//                        ? player.getBonusManager().getDefenceBonus()[BonusManager.DEFENCE_MAGIC]
-//                        : player.getSkillManager().getCurrentLevel(Skill.DEFENCE);
-//            } else {
-//                equipmentBonus = type == MAGIC
-//                        ? player.getBonusManager().getDefenceBonus()[BonusManager.DEFENCE_MAGIC]
-//                        : player.getBonusManager().getDefenceBonus()[bonusType];
+//            if (player.getFightType().getStyle() == FightStyle.ACCURATE) {
+//                styleBonus = 3;
+//            } else if (player.getFightType().getStyle() == FightStyle.CONTROLLED) {
+//                styleBonus = 1;
 //            }
-
-            if (PrayerHandler.isActivated(player, PrayerHandler.THICK_SKIN)) {
-                prayerMod = 1.05;
-            } else if (PrayerHandler.isActivated(player, PrayerHandler.ROCK_SKIN)) {
-                prayerMod = 1.10;
-            } else if (PrayerHandler.isActivated(player, PrayerHandler.STEEL_SKIN)) {
-                prayerMod = 1.15;
-            } else if (PrayerHandler.isActivated(player, PrayerHandler.CHIVALRY)) {
-                prayerMod = 1.20;
-            } else if (PrayerHandler.isActivated(player, PrayerHandler.PIETY)) {
-                prayerMod = 1.25;
-            } else if (PrayerHandler.isActivated(player, PrayerHandler.RIGOUR)) {
-                prayerMod = 1.25;
-            } else if (PrayerHandler.isActivated(player, PrayerHandler.AUGURY)) {
-                prayerMod = 1.25;
-            } else if (PrayerHandler.isActivated(player, PrayerHandler.DESTRUCTION)) {
-                prayerMod = 1.25;
-            } else if (PrayerHandler.isActivated(player, PrayerHandler.HUNTERS_EYE)) {
-                prayerMod = 1.25;
-            } else if (CurseHandler.isActivated(player, CurseHandler.LEECH_DEFENCE)) {
-                prayerMod = 1.05 + (player.getLeechedBonuses()[1] * 0.01);
-            } else if (PrayerHandler.isActivated(player, PrayerHandler.FORTITUDE)) {
-                prayerMod = 10;
-            } else if (CurseHandler.isActivated(player, CurseHandler.TURMOIL)) {
-                prayerMod = 1.15 + (player.getLeechedBonuses()[1] * 0.01);
-            }
-
-
-            if (player.getFightType().getStyle() == FightStyle.DEFENSIVE) {
-                styleBonus = 3;
-            } else if (player.getFightType().getStyle() == FightStyle.CONTROLLED) {
-                styleBonus = 1;
-            }
-
-        }
-
-
-        double defenceCalc = Math.floor(equipmentBonus + victim.getBaseDefence(type)) + 8;
-
-        defenceCalc *= prayerMod;
-        defenceCalc += styleBonus;
-
-        if (equipmentBonus < -67) {
-            defenceCalc = Misc.exclusiveRandom(8) == 0 ? defenceCalc : 0;
-        }
-        double A = Math.floor(attackCalc);
-        double D = Math.floor(defenceCalc);
-        double hitSucceed = A < D ? (A - 1.0) / (2.0 * D) : 1.0 - (D + 1.0) / (2.0 * A);
-        hitSucceed = hitSucceed >= 1.0 ? 0.99 : hitSucceed <= 0.0 ? 0.01 : hitSucceed;
-        return hitSucceed >= Misc.RANDOM.nextDouble();
-    }
+//
+//
+//            if (player.isSpecialActivated()) {
+//                specialBonus = player.getCombatSpecial().getAccuracyBonus();
+//            }
+//
+//        }
+//
+//
+//        double attackCalc = Math.floor(equipmentBonus + attacker.getBaseAttack(type)) + 8;
+//
+//
+//        attackCalc *= prayerMod;
+//
+//        attackCalc += styleBonus;
+//
+//
+//        if (equipmentBonus < -67) {
+//            attackCalc = Misc.exclusiveRandom(8) == 0 ? attackCalc : 0;
+//        }
+//
+//        attackCalc *= specialBonus;
+//
+//        equipmentBonus = 1;
+//        prayerMod = 1;
+//        styleBonus = 0;
+//        if (victim.isPlayer()) {
+//            Player player = (Player) victim;
+//
+//            if(attacker.isNpc()){
+//                NPC npc = attacker.toNpc();
+//                if(npc.getCombatBuilder().getStrategy().getCombatType() == RANGED){
+//                    equipmentBonus = player.getBonusManager().getDefenceBonus()[BonusManager.DEFENCE_RANGE] / 12_698_000;
+//                } else if(npc.getCombatBuilder().getStrategy().getCombatType() == MAGIC){
+//                    equipmentBonus = player.getBonusManager().getDefenceBonus()[BonusManager.DEFENCE_MAGIC] / 12_698_000;
+//                } else {
+//                    equipmentBonus = player.getBonusManager().getDefenceBonus()[BonusManager.DEFENCE_STAB] / 12_698_000;
+//                }
+//
+//                equipmentBonus += player.getSkillManager().getCurrentLevel(Skill.DEFENCE);
+//            } else {
+//                equipmentBonus = player.getSkillManager().getCurrentLevel(Skill.DEFENCE);
+//            }
+////            if (bonusType == -1) {
+////                equipmentBonus = type == MAGIC
+////                        ? player.getBonusManager().getDefenceBonus()[BonusManager.DEFENCE_MAGIC]
+////                        : player.getSkillManager().getCurrentLevel(Skill.DEFENCE);
+////            } else {
+////                equipmentBonus = type == MAGIC
+////                        ? player.getBonusManager().getDefenceBonus()[BonusManager.DEFENCE_MAGIC]
+////                        : player.getBonusManager().getDefenceBonus()[bonusType];
+////            }
+//
+//            if (PrayerHandler.isActivated(player, PrayerHandler.THICK_SKIN)) {
+//                prayerMod = 1.05;
+//            } else if (PrayerHandler.isActivated(player, PrayerHandler.ROCK_SKIN)) {
+//                prayerMod = 1.10;
+//            } else if (PrayerHandler.isActivated(player, PrayerHandler.STEEL_SKIN)) {
+//                prayerMod = 1.15;
+//            } else if (PrayerHandler.isActivated(player, PrayerHandler.CHIVALRY)) {
+//                prayerMod = 1.20;
+//            } else if (PrayerHandler.isActivated(player, PrayerHandler.PIETY)) {
+//                prayerMod = 1.25;
+//            } else if (PrayerHandler.isActivated(player, PrayerHandler.RIGOUR)) {
+//                prayerMod = 1.25;
+//            } else if (PrayerHandler.isActivated(player, PrayerHandler.AUGURY)) {
+//                prayerMod = 1.25;
+//            } else if (PrayerHandler.isActivated(player, PrayerHandler.DESTRUCTION)) {
+//                prayerMod = 1.25;
+//            } else if (PrayerHandler.isActivated(player, PrayerHandler.HUNTERS_EYE)) {
+//                prayerMod = 1.25;
+//            } else if (CurseHandler.isActivated(player, CurseHandler.LEECH_DEFENCE)) {
+//                prayerMod = 1.05 + (player.getLeechedBonuses()[1] * 0.01);
+//            } else if (PrayerHandler.isActivated(player, PrayerHandler.FORTITUDE)) {
+//                prayerMod = 10;
+//            } else if (CurseHandler.isActivated(player, CurseHandler.TURMOIL)) {
+//                prayerMod = 1.15 + (player.getLeechedBonuses()[1] * 0.01);
+//            }
+//
+//
+//            if (player.getFightType().getStyle() == FightStyle.DEFENSIVE) {
+//                styleBonus = 3;
+//            } else if (player.getFightType().getStyle() == FightStyle.CONTROLLED) {
+//                styleBonus = 1;
+//            }
+//
+//        }
+//
+//
+//        double defenceCalc = Math.floor(equipmentBonus + victim.getBaseDefence(type)) + 8;
+//
+//        defenceCalc *= prayerMod;
+//        defenceCalc += styleBonus;
+//
+//        if (equipmentBonus < -67) {
+//            defenceCalc = Misc.exclusiveRandom(8) == 0 ? defenceCalc : 0;
+//        }
+//        double A = Math.floor(attackCalc);
+//        double D = Math.floor(defenceCalc);
+//        double hitSucceed = A < D ? (A - 1.0) / (2.0 * D) : 1.0 - (D + 1.0) / (2.0 * A);
+//        hitSucceed = hitSucceed >= 1.0 ? 0.99 : hitSucceed <= 0.0 ? 0.01 : hitSucceed;
+//        return hitSucceed >= Misc.RANDOM.nextDouble();
+//    }
 
     /**
      * Calculates the maximum melee hit for the argued {@link Character} without
@@ -610,7 +610,6 @@ public final class CombatFactory {
      * @param victim the victim being attacked.
      * @return the maximum melee hit that this entity can deal.
      */
-    @SuppressWarnings("incomplete-switch")
     public static int calculateMaxMeleeHit(Character entity, Character victim) {
         int maxHit = 0;
 
@@ -1980,7 +1979,7 @@ public final class CombatFactory {
      *
      * @param damage    the total amount of damage dealt.
      */
-    protected static void handlePrayerEffects(Character attacker, Character target, long damage, CombatType combatType) {
+    static void handlePrayerEffects(Character attacker, Character target, long damage, CombatType combatType) {
         if (attacker == null || target == null)
             return;
         // Prayer effects can only be done with victims that are players.

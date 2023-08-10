@@ -36,6 +36,14 @@ public class VIP {
         reCalculate();
     }
 
+    public void takePoints(int amount){
+        this.points -= amount;
+    }
+
+    public void addPoints(int amount){
+        this.points += amount;
+    }
+
     private void addToList(int[] item, int amount){
         donations.add(new Donation(item, amount, System.currentTimeMillis()));
     }

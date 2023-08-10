@@ -3,7 +3,6 @@ package com.ruse.util;
 import java.util.logging.Logger;
 
 import com.ruse.GameServer;
-import com.ruse.model.container.impl.Shop;
 import com.ruse.world.World;
 import com.ruse.world.content.LotterySystem;
 import com.ruse.world.content.WellOfGoodwill;
@@ -34,8 +33,9 @@ public class ShutdownHook extends Thread {
 		WellOfGoodwill.save();
 		GrandExchangeOffers.save();
 		ClanManager.getManager().save();
+
 		// PlayerOwnedShopManager.saveShops();
-		Shop.ShopManager.saveTaxShop();
+		//Shop.ShopManager.saveTaxShop();
 		LotterySystem.saveTickets();
 		ServerPerks.getInstance().save();
 		logger.info("The shudown hook actions have been completed, shutting the server down...");

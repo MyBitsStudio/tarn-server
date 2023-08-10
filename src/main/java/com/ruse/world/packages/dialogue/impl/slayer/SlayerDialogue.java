@@ -1,7 +1,6 @@
 package com.ruse.world.packages.dialogue.impl.slayer;
 
 import com.google.common.base.Objects;
-import com.ruse.model.container.impl.Shop;
 import com.ruse.world.World;
 import com.ruse.world.content.skill.impl.slayer.Slayer;
 import com.ruse.world.content.skill.impl.slayer.SlayerTasks;
@@ -10,6 +9,7 @@ import com.ruse.world.packages.dialogue.Dialogue;
 import com.ruse.world.packages.dialogue.DialogueExpression;
 import com.ruse.world.packages.dialogue.DialogueManager;
 import com.ruse.world.packages.dialogue.DialogueType;
+import com.ruse.world.packages.shops.ShopHandler;
 
 public class SlayerDialogue extends Dialogue {
     public SlayerDialogue(Player player) {
@@ -73,25 +73,8 @@ public class SlayerDialogue extends Dialogue {
                             return true;
                         }
 
-                        case 2 ->{
-                            if (getPlayer().getSlayer().getSlayerMaster().getNpcId() == 1597) {
-                                Shop.ShopManager.getShops().get(47).open(getPlayer());
-                            }
-                            if (getPlayer().getSlayer().getSlayerMaster().getNpcId() == 9085) {
-                                Shop.ShopManager.getShops().get(472).open(getPlayer());
-                            }
-                            if (getPlayer().getSlayer().getSlayerMaster().getNpcId() == 8275) {
-                                Shop.ShopManager.getShops().get(471).open(getPlayer());
-                            }
-                            if (getPlayer().getSlayer().getSlayerMaster().getNpcId() == 9000) {
-                                Shop.ShopManager.getShops().get(107).open(getPlayer());
-                            }
-                            end();
-                            return true;
-                        }
-
-                        case 3-> {
-                            Shop.ShopManager.getShops().get(40).open(getPlayer());
+                        case 2, 3 ->{
+                            ShopHandler.getShop(2).ifPresent(shop -> shop.send(getPlayer(), true));
                             end();
                             return true;
                         }

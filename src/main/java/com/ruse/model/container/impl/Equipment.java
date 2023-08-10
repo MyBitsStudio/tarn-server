@@ -17,12 +17,15 @@ import com.ruse.world.entity.impl.player.Player;
 import com.ruse.world.packages.combat.max.MagicMax;
 import com.ruse.world.packages.combat.max.MeleeMax;
 import com.ruse.world.packages.combat.max.RangeMax;
+import com.ruse.world.packages.combat.sets.SetBonus;
+import com.ruse.world.packages.combat.sets.SetBonuses;
 import com.ruse.world.packages.dialogue.DialogueManager;
 import com.ruse.world.packages.dialogue.impl.slot.UnequipSlotPerk;
 import com.ruse.world.packages.slot.PerkEquip;
 import com.ruse.world.packages.slot.SlotBonus;
 import com.ruse.world.packages.slot.SlotEffect;
 import lombok.Getter;
+import lombok.Setter;
 
 /**
  * Represents a player's equipment item container.
@@ -36,6 +39,10 @@ public class Equipment extends ItemContainer {
 
 	@Getter
 	private final SlotBonus[] slotBonuses = new SlotBonus[15];
+
+	@Getter
+	@Setter
+	private SetBonus bonus;
 
 	/**
 	 * The Equipment constructor.
@@ -61,17 +68,18 @@ public class Equipment extends ItemContainer {
 	@Override
 	public ItemContainer refreshItems() {
 		getPlayer().getPacketSender().sendEquipment();
+		checkBonus();
 		equipStats();
 		return this;
 	}
 
 	private void equipStats(){
-		getPlayer().getPacketSender().sendTooltip(162602, "Melee Max : "+ (MeleeMax.newMelee(getPlayer(), getPlayer()) / 10));
-		getPlayer().getPacketSender().sendTooltip(162603, "Magic Max : "+ (MagicMax.newMagic(getPlayer(), getPlayer()) / 10));
-		getPlayer().getPacketSender().sendTooltip(162604, "Ranged Max : "+ (RangeMax.newRange(getPlayer(), getPlayer()) / 10));
+		getPlayer().getPacketSender().sendTooltip(162602, "Melee Max : "+ BonusManager.formatNumber((MeleeMax.newMelee(getPlayer(), getPlayer()) / 10)));
+		getPlayer().getPacketSender().sendTooltip(162603, "Magic Max : "+ BonusManager.formatNumber((MagicMax.newMagic(getPlayer(), getPlayer()) / 10)));
+		getPlayer().getPacketSender().sendTooltip(162604, "Ranged Max : "+ BonusManager.formatNumber((RangeMax.newRange(getPlayer(), getPlayer()) / 10)));
 		getPlayer().getPacketSender().sendTooltip(162605, "Drop Rate : "+ CustomDropUtils.drBonus(getPlayer(), getPlayer().getSlayer().getSlayerTask().getNpcId()));
 		getPlayer().getPacketSender().sendTooltip(162606, "Double Drop : "+ CustomDropUtils.getDoubleDropChance(getPlayer(), getPlayer().getSlayer().getSlayerTask().getNpcId()));
-		getPlayer().getPacketSender().sendTooltip(162607, "Set Bonus : None");
+		getPlayer().getPacketSender().sendTooltip(162607, "Set Bonus : "+ (getBonus() != null ? getBonus().name() : "None"));
 	}
 
 	@Override
@@ -318,15 +326,6 @@ public class Equipment extends ItemContainer {
 		item = new Item(item.getId(), item.getAmount());
 		if (item.getId() != id)
 			return;
-		if (getPlayer().getLocation() == Locations.Location.DUEL_ARENA) {
-			if (getPlayer().getDueling().selectedDuelRules[Dueling.DuelRule.LOCK_WEAPON.ordinal()]) {
-				if (item.getDefinition().getEquipmentSlot() == Equipment.WEAPON_SLOT
-						|| item.getDefinition().isTwoHanded()) {
-					getPlayer().getPacketSender().sendMessage("Weapons have been locked during this duel!");
-					return;
-				}
-			}
-		}
 		boolean stackItem = item.getDefinition().isStackable() && getPlayer().getInventory().getAmount(item.getId()) > 0;
 		int inventorySlot = getPlayer().getInventory().getEmptySlot();
 		if (inventorySlot == -1) {
@@ -338,7 +337,6 @@ public class Equipment extends ItemContainer {
 				getPlayer().getInventory().setItem(inventorySlot, item);
 			else
 				getPlayer().getInventory().add(item.getId(), item.getAmount());
-			BonusManager.update(getPlayer());
 			if (item.getDefinition().getEquipmentSlot() == Equipment.WEAPON_SLOT) {
 				WeaponInterfaces.assign(getPlayer(), getPlayer().getEquipment().get(Equipment.WEAPON_SLOT));
 				WeaponAnimations.update(getPlayer());
@@ -348,16 +346,16 @@ public class Equipment extends ItemContainer {
 				}
 				getPlayer().setSpecialActivated(false);
 				CombatSpecial.updateBar(getPlayer());
-				if (getPlayer().hasStaffOfLightEffect()) {
-					getPlayer().setStaffOfLightEffect(-1);
-					getPlayer().getPacketSender()
-							.sendMessage("You feel the spirit of the Staff of Light begin to fade away...");
-				}
 			}
+			BonusManager.update(getPlayer());
 			refreshItems();
 			getPlayer().getInventory().refreshItems();
 			getPlayer().getUpdateFlag().flag(Flag.APPEARANCE);
 		}
+	}
+
+	private void checkBonus(){
+		bonus = SetBonuses.checkBonus(getPlayer());
 	}
 
 	private void sendSlotPerk(int slot){
@@ -418,12 +416,12 @@ public class Equipment extends ItemContainer {
 				if(getPlayer().isSecondaryEquipment()) {
 					getPlayer().sendMessage("Switched back to original equip");
 					getPlayer().setIsSecondaryEquipment(false);
-					getPlayer().getEquipment().refreshItems();
 				} else {
 					getPlayer().sendMessage("Switched to second equip");
 					getPlayer().setIsSecondaryEquipment(true);
-					getPlayer().getEquipment().refreshItems();
 				}
+				getPlayer().getEquipment().refreshItems();
+				getPlayer().getUpdateFlag().flag(Flag.APPEARANCE);
 				return true;
 			}
 			case 162610 -> {

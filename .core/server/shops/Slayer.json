@@ -1,0 +1,22 @@
+[
+  {
+    "id": 2,
+    "name": "Slayer Shop",
+    "canSell": false,
+    "shops": [
+      {
+        "shopId": 0,
+        "currency": "slayer",
+        "shopName": "Misc",
+        "restrict": 0,
+        "items": [
+          {
+            "id": -1,
+            "amount": 0,
+            "price": 1
+          }
+        ]
+      }
+    ]
+  }
+]

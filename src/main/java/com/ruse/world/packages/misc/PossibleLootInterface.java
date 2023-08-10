@@ -5,9 +5,8 @@ import com.ruse.model.definitions.ItemDefinition;
 import com.ruse.util.Misc;
 import com.ruse.world.packages.packs.casket.Box;
 import com.ruse.world.entity.impl.player.Player;
-import com.ruse.world.packages.packs.casket.packs.StarterIBox;
-import com.ruse.world.packages.packs.casket.packs.StarterIIBox;
-import com.ruse.world.packages.packs.casket.packs.StarterIIIBox;
+import com.ruse.world.packages.packs.casket.packs.*;
+import com.ruse.world.packages.packs.casket.packs.limited.LimitedMaster1;
 
 import java.util.ArrayList;
 
@@ -58,6 +57,27 @@ public class PossibleLootInterface {
         STARTER_I(15004, StarterIBox.loot),
         STARTER_II(23300, StarterIIBox.loot),
         STARTER_III(23301, StarterIIIBox.loot),
+
+        ENHANCE_1(20500, new Item[]{new Item(13727, 125), new Item(2380, 3), new Item(2381, 3)}),
+        ENHANCE_2(20501, new Item[]{new Item(13727, 460), new Item(2380, 6), new Item(2381, 6), new Item(2382, 6)}),
+        ENHANCE_3(20502, new Item[]{new Item(13727, 825), new Item(2380, 9), new Item(2381, 9), new Item(2382, 9)}),
+
+        CERT_PACK_I(23250, new Item[]{new Item(22214), new Item(22215), new Item(22216), new Item(22217)}),
+        CERT_PACK_II(23251, new Item[]{new Item(22218), new Item(22219), new Item(22220), new Item(22221), new Item(22222)}),
+        CERT_PACK_III(23252, new Item[]{new Item(22223), new Item(22224), new Item(22225), new Item(22226), new Item(22227), new Item(22228)}),
+
+        TICKET_PACK_I(23253, new Item[]{ new Item(21814, 5), new Item(21815, 5)}),
+        TICKET_PACK_II(23254, new Item[]{ new Item(21814, 25), new Item(21815, 25)}),
+        TICKET_PACK_III(23255, new Item[]{ new Item(21814, 25), new Item(21815, 25), new Item(21816, 10)}),
+
+        DONATOR_BOX_I(23256, DonatorBoxI.loot),
+        DONATOR_BOX_II(23257, DonatorBoxII.loot),
+        DONATOR_BOX_III(23258, DonatorBoxIII.loot),
+        ULTIMATE_DONATOR(23259, UltimateDonatorBox.loot),
+
+        LIMITED_MASTERS(23260, LimitedMaster1.loot)
+
+
         //SLAYER_CASKET(2734, SlayerCasket.loot),
         //ELITE_SLAYER_CHEST(18647, EliteChest.loot22),
         //HALLS_OF_VALOR("          Halls of Valor", 23094, HallsOfValor.loot),

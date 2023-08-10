@@ -130,12 +130,6 @@ public abstract class ItemContainer {
      */
     public ItemContainer setItems(Item[] items) {
 
-        if (!(this instanceof Shop)) { // Fixes an exploit
-            if (items.length != capacity()) {
-                return this;
-            }
-        }
-
         this.items = items;
         return this;
     }
@@ -157,7 +151,7 @@ public abstract class ItemContainer {
         List<Item> items = new ArrayList<>();
         for (Item item : this.items) {
             if (item != null && item.getId() > 0) {
-                if (item.getAmount() > 0 || (this instanceof Bank || this instanceof Shop) && (item.getAmount() == 0 || item.getAmount() == -1)) {
+                if (item.getAmount() > 0 || (this instanceof Bank) && (item.getAmount() == 0 || item.getAmount() == -1)) {
                     items.add(item);
                 }
             }
@@ -309,7 +303,7 @@ public abstract class ItemContainer {
      */
     public int getEmptySlot() {
         for (int i = 0; i < capacity(); i++) {
-            if (items[i].getId() <= 0 || !(this instanceof Bank || this instanceof Shop) && items[i].getAmount() <= 0) {
+            if (items[i].getId() <= 0 || !(this instanceof Bank) && items[i].getAmount() <= 0) {
                 return i;
             }
         }
@@ -325,7 +319,7 @@ public abstract class ItemContainer {
     public int getSlot(int id) {
         for (int i = 0; i < capacity(); i++) {
             if (items[i].getId() > 0 && items[i].getId() == id) {
-                if (items[i].getAmount() > 0 || (this instanceof Bank || this instanceof Shop) && items[i].getAmount() == 0) {
+                if (items[i].getAmount() > 0 || (this instanceof Bank) && items[i].getAmount() == 0) {
                     return i;
                 }
             }
@@ -431,9 +425,6 @@ public abstract class ItemContainer {
             to.full();
             return this;
         }
-        if (this instanceof Shop) {
-            delete(item, slot, refresh, to);
-        }
         to.add(item, refresh);
         if (sort && getAmount(item.getId()) <= 0)
             sortItems();
@@ -485,7 +476,7 @@ public abstract class ItemContainer {
         if (items == null)
             return;
         for (Item item : items) {
-            if (item.getId() > 0 && (item.getAmount() > 0 || (item.getAmount() == 0 && (this instanceof Bank || this instanceof Shop)))) {
+            if (item.getId() > 0 && (item.getAmount() > 0 || (item.getAmount() == 0 && (this instanceof Bank)))) {
                 this.add(item, refresh);
             }
         }
@@ -558,7 +549,7 @@ public abstract class ItemContainer {
      * @return The ItemContainer instance.
      */
     public ItemContainer add(Item item, boolean refresh) {
-        if (item == null || item.getId() <= 0 || (item.getAmount() <= 0 && !(this instanceof Shop || this instanceof Bank))) {
+        if (item == null || item.getId() <= 0 || (item.getAmount() <= 0 && !(this instanceof Bank))) {
             return this;
         }
 
@@ -720,12 +711,12 @@ public abstract class ItemContainer {
     public ItemContainer delete(Item item, int slot, boolean refresh, ItemContainer toContainer) {
         if (item == null || slot < 0)
             return this;
-        boolean leavePlaceHolder = (toContainer instanceof Inventory && this instanceof Bank && getPlayer().isPlaceholders()) || this instanceof Shop;
+        boolean leavePlaceHolder = (toContainer instanceof Inventory && this instanceof Bank && getPlayer().isPlaceholders());
         if (item.getAmount() > getAmount(item.getId())) {
             item.setAmount(getAmount(item.getId()));
         }
         if (item.getDefinition().isStackable() || stackType() == StackType.STACKS) {
-            if (toContainer != null && !item.getDefinition().isStackable() && item.getAmount() > toContainer.getFreeSlots() && !(this instanceof Bank)  && !(this instanceof GroupIronmanBank) && !(this instanceof Shop))
+            if (toContainer != null && !item.getDefinition().isStackable() && item.getAmount() > toContainer.getFreeSlots() && !(this instanceof Bank)  && !(this instanceof GroupIronmanBank))
                 item.setAmount(toContainer.getFreeSlots());
             items[slot].setAmount(items[slot].getAmount() - item.getAmount());
             if (items[slot].getAmount() < 1) {

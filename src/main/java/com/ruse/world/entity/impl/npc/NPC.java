@@ -135,7 +135,7 @@ public class NPC extends Character {
     /**
      * INSTANCES
      **/
-    private Position defaultPosition = null;
+    private Position defaultPosition;
     /**
      * INTS
      **/

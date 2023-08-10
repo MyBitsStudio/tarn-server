@@ -34,6 +34,7 @@ public class NPCDataLoad extends SecureLoad {
                 NpcDefinition.definitions[id].setName(obj.get("name").getAsString());
                 NpcDefinition.definitions[id].setCombat(obj.get("combat").getAsInt());
                 NpcDefinition.definitions[id].setSize(obj.get("size").getAsInt());
+                NpcDefinition.definitions[id].setMaxHit(obj.get("maxHit").getAsInt());
                 NpcDefinition.definitions[id].setHitpoints(obj.get("hitpoints").getAsLong());
                 NpcDefinition.definitions[id].setAttackSpeed(obj.get("attackSpeed").getAsInt());
                 NpcDefinition.definitions[id].setAttackAnim(obj.get("attackAnim").getAsInt());

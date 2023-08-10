@@ -28,6 +28,7 @@ import com.ruse.world.entity.updating.NpcUpdateSequence;
 import com.ruse.world.entity.updating.PlayerUpdateSequence;
 import com.ruse.world.entity.updating.UpdateSequence;
 import com.ruse.world.packages.globals.GlobalBossManager;
+import com.ruse.world.packages.shops.ShopHandler;
 import com.server.service.login.LoginService;
 import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
 import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
@@ -303,22 +304,20 @@ public class World {
             }
         }
 
-        FightPit.sequence();
+        //FightPit.sequence();
 
         GlobalBossManager.getInstance().process();
 
-//        WorldBosses.sequence();
-//        WorldBosses2.sequence();
-//        WorldBosses3.sequence();
-//        WorldBosses4.sequence();
+        ShopHandler.process();
 
-        Groudon.sequence();
-        Ezkel.sequence();
-        SupremeNex.sequence();
-        KeepersOfLight.sequence();
-        PestControl.sequence();
-        ShootingStar.sequence();
-        EvilTree.sequence();
+
+        //Groudon.sequence();
+        //Ezkel.sequence();
+        //SupremeNex.sequence();
+        //KeepersOfLight.sequence();
+        //PestControl.sequence();
+        //ShootingStar.sequence();
+        //EvilTree.sequence();
         Bot.updatePlayers();
         // Abyssector.initialize();
         //Wildywyrm.initialize();

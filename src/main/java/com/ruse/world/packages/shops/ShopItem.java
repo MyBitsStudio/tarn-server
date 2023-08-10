@@ -9,12 +9,13 @@ public class ShopItem {
 
     private final int defaultStock;
 
-    private int stock, flag, price;
+    private int stock, flag, price, id;
 
-    public ShopItem(int amount, int stock, int price) {
-        this.stock = amount;
+    public ShopItem(int id, int stock, int price) {
+        this.stock = stock;
         this.defaultStock = stock;
         this.price = price;
+        this.id = id;
     }
 
 }

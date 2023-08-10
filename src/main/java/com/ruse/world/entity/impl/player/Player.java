@@ -32,7 +32,7 @@ import com.ruse.world.content.KillsTracker.KillsEntry;
 import com.ruse.world.content.LoyaltyProgramme.LoyaltyTitles;
 import com.ruse.world.content.StarterTasks.StarterTaskAttributes;
 import com.ruse.world.content.achievement.AchievementHandler;
-import com.ruse.world.content.tradingpost.TradingPost;
+import com.ruse.world.packages.tradingpost.TradingPost;
 import com.ruse.world.packages.attendance.AttendanceManager;
 import com.ruse.world.packages.attendance.AttendanceUI;
 import com.ruse.world.content.aura.AuraParty;
@@ -203,12 +203,6 @@ public class Player extends Character {
 
     @Getter
     private final ArrayList<BossPets.BossPet> obtainedPets = new ArrayList<>();
-
-    @Getter
-    private final DonatorShop donatorShop = new DonatorShop(this);
-
-    @Getter
-    private final PetShop petShop = new PetShop(this);
 
     @Getter
     private final RaidsInterface raidsInterface = new RaidsInterface(this);
@@ -676,7 +670,6 @@ public class Player extends Character {
     private LoyaltyTitles loyaltyTitle = LoyaltyTitles.NONE;
     private Input inputHandling;
     private WalkToTask walkToTask;
-    private Shop shop;
     private GameObject interactingObject;
     private Item interactingItem;
     private DwarfCannon cannon;
@@ -2914,15 +2907,6 @@ public class Player extends Character {
 
     public void setShopping(boolean shopping) {
         this.shopping = shopping;
-    }
-
-    public Shop getShop() {
-        return shop;
-    }
-
-    public Player setShop(Shop shop) {
-        this.shop = shop;
-        return this;
     }
 
     public GameObject getInteractingObject() {

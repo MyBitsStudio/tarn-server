@@ -1,0 +1,32 @@
+[
+  {
+    "id": 3,
+    "name": "Vote Shop",
+    "canSell": false,
+    "shops": [
+      {
+        "shopId": 0,
+        "currency": "vote",
+        "shopName": "Misc",
+        "restrict": 0,
+        "items": [
+          {
+            "id": 23118,
+            "amount": 50,
+            "price": 100
+          },
+          {
+            "id": 23121,
+            "amount": 50,
+            "price": 100
+          },
+          {
+            "id": 23124,
+            "amount": 50,
+            "price": 100
+          }
+        ]
+      }
+    ]
+  }
+]

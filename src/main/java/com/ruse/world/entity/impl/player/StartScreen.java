@@ -7,6 +7,7 @@ import com.ruse.world.World;
 import com.ruse.world.content.PlayerPanel;
 import com.ruse.world.content.discordbot.JavaCord;
 import com.ruse.world.packages.mode.impl.*;
+import com.ruse.world.packages.tracks.TrackInterface;
 import org.jetbrains.annotations.NotNull;
 //import sun.management.counter.perf.PerfLongArrayCounter;
 
@@ -60,8 +61,6 @@ public class StartScreen {
             addStarterToInv(player);
 
             player.setPlayerLocked(false);
-            player.getPacketSender().sendInterface(3559);
-            player.getAppearance().setCanChangeAppearance(true);
             player.setNewPlayer(false);
             World.sendMessage("<img=26><shad=1><col=FF0000> [" + player.getUsername() + "] <col=9E0000>has just logged into <col=FF0000>Tarn<col=9E0000> for the first time");
             JavaCord.sendMessage(1117224946855329893L, ":tada: **[New Arrival] " + player.getUsername() + " has just logged into Tarn for the first time!** ");
@@ -75,6 +74,8 @@ public class StartScreen {
             } else {
                 player.moveTo(GameSettings.STARTER);
             }
+
+            TrackInterface.sendInterface(player, true);
 
             return true;
         }

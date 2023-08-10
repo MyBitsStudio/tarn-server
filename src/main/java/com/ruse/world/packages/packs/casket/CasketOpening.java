@@ -7,9 +7,8 @@ import com.ruse.model.definitions.ItemDefinition;
 import com.ruse.util.Misc;
 import com.ruse.world.World;
 import com.ruse.world.entity.impl.player.Player;
-import com.ruse.world.packages.packs.casket.packs.StarterIBox;
-import com.ruse.world.packages.packs.casket.packs.StarterIIBox;
-import com.ruse.world.packages.packs.casket.packs.StarterIIIBox;
+import com.ruse.world.packages.packs.casket.packs.*;
+import com.ruse.world.packages.packs.casket.packs.limited.LimitedMaster1;
 import lombok.Getter;
 
 import java.util.ArrayList;
@@ -37,12 +36,12 @@ public class CasketOpening {
             if (drop == null)
                 continue;
             double divisor = drop.getRate();
-            if (!dropRates.containsKey(divisor)) {
+            if (dropRates.containsKey(divisor)) {
+                dropRates.get(divisor).add(drop);
+            } else {
                 ArrayList<Box> items = new ArrayList<>();
                 items.add(drop);
                 dropRates.put(divisor, items);
-            } else {
-                dropRates.get(divisor).add(drop);
             }
         }
         for (double dropRate : dropRates.keySet()) {
@@ -311,24 +310,14 @@ public class CasketOpening {
         STARTER_II(23300, StarterIIBox.loot),
         STARTER_III(23301, StarterIIIBox.loot),
 
-//        RARE_BOX(23171, RareBox.loot),
-//        DEF_BOX(14487, DefBox.loot),
-//        OFF_BOX(14488, OffBox.loot),
-//        WEAPON_BOX(19114, WepBox.loot),
-//        SILVER_BOX(15003, SilverBox.loot),
-//        RUBY_BOX(15002, RubyBox.loot),
-//        DIAMOND_BOX(15004, DiamondBox.loot),
-//        PREMIUM_BOX(20489, PremiumBox.loot),
-//        ELITE_BOX(19624, EliteBox.loot),
-//        RAIDS_BOX(18404, RaidsBox.loot),
-//        ONYX_BOX(20491, OnyxBox.loot),
-//        ZENYTE_BOX(20490, ZenyteBox.loot),
-//        SUPREME_BOX(20488, SupremeBox.loot),
-//        DEATH_BOX(14490, DeathBox.loot),
-//        AFREET_BOX(14492, AfreetBox.loot),
-//        PROG_BOX_T1(10025, ProgBox.loot),
-//        PROG_BOX_T2(10029, ProgBox2.loot),
-//        PROG_BOX_T3(10027, ProgBox3.loot),
+        DONATOR_BOX_I(23256, DonatorBoxI.loot),
+        DONATOR_BOX_II(23257, DonatorBoxII.loot),
+        DONATOR_BOX_III(23258, DonatorBoxIII.loot),
+
+        ULTIMATE_DONATOR(23259, UltimateDonatorBox.loot),
+
+        LIMITED_MASTERS(23260, LimitedMaster1.loot)
+
         ;
         private final int itemID;
         private final Box[] loot;

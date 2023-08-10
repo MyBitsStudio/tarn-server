@@ -205,26 +205,6 @@ public class Locations {
 
 		LUCIFER(new int[] { 2301, 2367}, new int[] { 3970, 4024},
 				false, true, true, false, false, true) {},
-
-		PROGRESSION_ZONES(new int[] { 3016, 3071}, new int[] { 10244, 10297},
-				false, true, true, false, false, true) {
-			@Override
-			public void process(Player player) {
-//				if (player.getWalkableInterfaceId() != 112000)
-//					player.getPacketSender().sendWalkableInterface(112000, true);
-			}
-
-
-			@Override
-			public void enter(Player player) {
-				//ProgressionZone.updateInterface(player);
-			}
-
-			@Override
-			public void leave(Player player) {
-//				player.getPacketSender().sendWalkableInterface(112000, false);
-			}
-		},
 		ZOMBIE(new int[]{2712, 2740}, new int[]{2633, 2661}, true, false, true, false, true, true) {
 			@Override
 			public void logout(Player player) {
@@ -2174,6 +2154,10 @@ for (Item item : player.getInventory().getItems()) {
 		},
 
 		HOME_AREA(new int[] { 2175, 2237 }, new int[] { 3719, 3777 }, false, true, true, false, false, true) {
+		},
+
+		//Monster Locations
+		STARTER(new int[] { 3022, 3052 }, new int[] { 10255, 10286 }, false, true, true, false, false, true) {
 		},
 
 		//BOSS LOCATIONS

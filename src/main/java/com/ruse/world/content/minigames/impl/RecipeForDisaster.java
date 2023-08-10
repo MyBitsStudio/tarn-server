@@ -7,10 +7,6 @@ import com.ruse.model.Locations.Location;
 import com.ruse.model.Position;
 import com.ruse.model.RegionInstance;
 import com.ruse.model.RegionInstance.RegionInstanceType;
-import com.ruse.model.container.impl.Shop;
-import com.ruse.model.definitions.ItemDefinition;
-import com.ruse.model.input.impl.EnterAmountToBuyFromShop;
-import com.ruse.model.input.impl.EnterAmountToSellToShop;
 import com.ruse.world.World;
 import com.ruse.world.content.PlayerPanel;
 import com.ruse.world.content.combat.prayer.CurseHandler;
@@ -180,18 +176,18 @@ public class RecipeForDisaster {
 		Item[] stockItems = new Item[stock.length];
 		for (int i = 0; i < stock.length; i++)
 			stockItems[i] = new Item(stock[i], stockAmount[i]);
-		Shop shop = new Shop(player, Shop.RECIPE_FOR_DISASTER_STORE, "Culinaromancer's chest", new Item(ItemDefinition.COIN_ID),
-				stockItems);
-		stock = stockAmount = null;
-		stockItems = null;
-		shop.setPlayer(player);
-		player.getPacketSender().sendItemContainer(player.getInventory(), Shop.INVENTORY_INTERFACE_ID);
-		player.getPacketSender().sendItemContainer(shop, Shop.ITEM_CHILD_ID);
-		player.getPacketSender().sendString(Shop.NAME_INTERFACE_CHILD_ID, "Culinaromancer's chest");
-		if (player.getInputHandling() == null || !(player.getInputHandling() instanceof EnterAmountToSellToShop
-				|| player.getInputHandling() instanceof EnterAmountToBuyFromShop))
-			player.getPacketSender().sendInterfaceSet(Shop.INTERFACE_ID, Shop.INVENTORY_INTERFACE_ID - 1);
-		player.setShop(shop).setInterfaceId(Shop.INTERFACE_ID).setShopping(true);
+//		Shop shop = new Shop(player, Shop.RECIPE_FOR_DISASTER_STORE, "Culinaromancer's chest", new Item(ItemDefinition.COIN_ID),
+//				stockItems);
+//		stock = stockAmount = null;
+//		stockItems = null;
+//		shop.setPlayer(player);
+//		player.getPacketSender().sendItemContainer(player.getInventory(), Shop.INVENTORY_INTERFACE_ID);
+//		player.getPacketSender().sendItemContainer(shop, Shop.ITEM_CHILD_ID);
+//		player.getPacketSender().sendString(Shop.NAME_INTERFACE_CHILD_ID, "Culinaromancer's chest");
+//		if (player.getInputHandling() == null || !(player.getInputHandling() instanceof EnterAmountToSellToShop
+//				|| player.getInputHandling() instanceof EnterAmountToBuyFromShop))
+//			player.getPacketSender().sendInterfaceSet(Shop.INTERFACE_ID, Shop.INVENTORY_INTERFACE_ID - 1);
+//		player.setShop(shop).setInterfaceId(Shop.INTERFACE_ID).setShopping(true);
 	}
 
 	private static final Position spawnPos = new Position(1900, 5354);

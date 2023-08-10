@@ -14,6 +14,7 @@ import com.ruse.world.entity.impl.npc.NPC;
 import com.ruse.world.entity.impl.npc.impl.MaxHitDummy;
 
 import com.ruse.world.entity.impl.player.Player;
+import com.ruse.world.packages.combat.CombatAccuracy;
 
 /**
  * A container that holds all of the data needed for a single combat hook.
@@ -23,16 +24,16 @@ import com.ruse.world.entity.impl.player.Player;
 public class CombatContainer {
 
 	/** The attacker in this combat hook. */
-	private Character attacker;
+	private final Character attacker;
 
 	/** The victim in this combat hook. */
-	private Character victim;
+	private final Character victim;
 
 	/** The hits that will be dealt during this combat hook. */
 	private ContainerHit[] hits;
 
 	/** The skills that will be given experience. */
-	private int[] experience;
+	private final int[] experience;
 
 	/** The combat type that is being used during this combat hook. */
 	private CombatType combatType;
@@ -47,7 +48,7 @@ public class CombatContainer {
 	private long modifiedDamage;
 
 	/** The delay before the hit is executed **/
-	private int hitDelay;
+	private final int hitDelay;
 
 	/**
 	 * Create a new {@link CombatContainer}.
@@ -110,7 +111,7 @@ public class CombatContainer {
 
 		// No hit for this turn, but we still need to calculate accuracy.
 		if (hitAmount == 0) {
-			accurate = !checkAccuracy || CombatFactory.rollAccuracy(attacker, victim, combatType);
+			accurate = !checkAccuracy || CombatAccuracy.roll(attacker, victim, combatType);
 			return new ContainerHit[] {};
 		}
 
@@ -118,20 +119,10 @@ public class CombatContainer {
 		// hit and accuracy calculations.
 		ContainerHit[] array = new ContainerHit[hitAmount];
 		for (int i = 0; i < array.length; i++) {
-			boolean accuracy = !checkAccuracy || CombatFactory.rollAccuracy(attacker, victim, combatType);
+			boolean accuracy = !checkAccuracy || CombatAccuracy.roll(attacker, victim, combatType);
 			array[i] = new ContainerHit(CombatFactory.getHit(attacker, victim, combatType), accuracy);
 			if (array[i].isAccurate()) {
 				accurate = true;
-			}
-		}
-
-		if(attacker instanceof NPC npc) {
-			// The wolf should do 10 damage every attack
-			if(npc.getId() == 6047) {
-				for (int i = 0; i < hitAmount; i++) {
-					array[i].getHit().setDamage(100);
-					array[i].setAccurate(true);
-				}
 			}
 		}
 

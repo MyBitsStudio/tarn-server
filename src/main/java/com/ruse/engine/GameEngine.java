@@ -3,7 +3,6 @@ package com.ruse.engine;
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
 import com.ruse.GameSettings;
 import com.ruse.engine.task.TaskManager;
-import com.ruse.model.container.impl.Shop.ShopManager;
 import com.ruse.util.playerSavingTimer;
 import com.ruse.world.World;
 import com.ruse.world.packages.clans.ClanManager;
@@ -92,7 +91,7 @@ public final class GameEngine implements Runnable {
             e.printStackTrace();
             GroupManager.saveGroups();
             World.savePlayers();
-            ShopManager.saveTaxShop();
+            //ShopManager.saveTaxShop();
             playerSavingTimer.massSaving();
             GrandExchangeOffers.save();
             ClanManager.getManager().init();
@@ -112,7 +111,7 @@ public final class GameEngine implements Runnable {
             } catch (ExecutionException | InterruptedException e){
                 GroupManager.saveGroups();
                 World.savePlayers();
-                ShopManager.saveTaxShop();
+                //ShopManager.saveTaxShop();
                 playerSavingTimer.massSaving();
                 GrandExchangeOffers.save();
                 ClanManager.getManager().save();

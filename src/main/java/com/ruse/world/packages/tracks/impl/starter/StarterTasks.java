@@ -63,48 +63,96 @@ public enum StarterTasks {
             , 1906, 1),
     TASK_026(0, 25,"Kill 50 Zorbak", new TaskReward(12852, 50)
             , 1906, 50),
+    TASK_027(0, 5,"Kill 1 Unicorn", new TaskReward(23203, 1)
+            , 1742, 1),
+    TASK_028(0, 25,"Kill 50 Unicorn", new TaskReward(12852, 50)
+            , 1742, 50),
+    TASK_029(0, 5,"Kill 1 Hyndra", new TaskReward(23203, 1)
+            , 1743, 1),
+    TASK_030(0, 25,"Kill 50 Hyndra", new TaskReward(12852, 50)
+            , 1743, 50),
+    TASK_031(0, 5,"Kill 1 Grooter", new TaskReward(23203, 1)
+            , 1744, 1),
+    TASK_032(0, 25,"Kill 50 Grooter", new TaskReward(12852, 50)
+            , 1744, 50),
+    TASK_033(0, 5,"Kill 1 Turtle", new TaskReward(23203, 1)
+            , 1745, 1),
+    TASK_034(0, 25,"Kill 50 Turtle", new TaskReward(12852, 50)
+            , 1745, 50),
+    TASK_035(0, 5,"Kill 1 Toad", new TaskReward(23204, 1)
+            , 1738, 1),
+    TASK_036(0, 25,"Kill 50 Toad", new TaskReward(12852, 50)
+            , 1738, 50),
+    TASK_037(0, 5,"Kill 1 Cloud", new TaskReward(23204, 1)
+            , 1739, 1),
+    TASK_038(0, 25,"Kill 50 Cloud", new TaskReward(12852, 50)
+            , 1739, 50),
+    TASK_039(0, 5,"Kill 1 Moss", new TaskReward(23204, 1)
+            , 1740, 1),
+    TASK_040(0, 25,"Kill 50 Moss", new TaskReward(12852, 50)
+            , 1740, 50),
+    TASK_041(0, 5,"Kill 1 Fire", new TaskReward(23204, 1)
+            , 1741, 1),
+    TASK_042(0, 25,"Kill 50 Fire", new TaskReward(12852, 50)
+            , 1741, 50),
 
-    TASK_050(1, 10,"Gain 1 99 Skill", new TaskReward(995, 10000)
+    TASK_050(1, 10,"Gain 1 99 Skill", new TaskReward(995, 100000)
             , -1, -1),
     TASK_051(1, 50, "Gain 10 99 Skills", new TaskReward(15004, 1)
             , -1, -1),
     TASK_052(1, 150,"Gain All 99 Skills", new TaskReward(15004, 5)
             , -1, -1),
 
-    TASK_100(2, 10,"Kill 1 Avalon", new TaskReward(995, 1000)
+    TASK_100(2, 10,"Kill 1 Avalon", new TaskReward(23203, 1)
             , 9025, 1),
-    TASK_101(2, 40,"Kill 100 Avalons", new TaskReward(995, 1000)
+    TASK_101(2, 40,"Kill 100 Avalons", new TaskReward(20500, 1)
             , 9025, 100),
-    TASK_102(2, 10,"Kill 1 Eragon", new TaskReward(995, 1000)
+    TASK_102(2, 10,"Kill 1 Eragon", new TaskReward(23203, 2)
             , 9026, 1),
-    TASK_103(2, 40,"Kill 100 Eragons", new TaskReward(995, 1000)
+    TASK_103(2, 40,"Kill 100 Eragons", new TaskReward(20500, 2)
             , 9026, 100),
-    TASK_104(2, 10,"Kill 1 Avatar Titan", new TaskReward(995, 1000)
+    TASK_104(2, 10,"Kill 1 Avatar Titan", new TaskReward(23204, 1)
             , 8008, 1),
-    TASK_105(2, 40,"Kill 100 Avatar Titans", new TaskReward(995, 1000)
+    TASK_105(2, 40,"Kill 100 Avatar Titans", new TaskReward(20500, 3)
             , 8008, 100),
-    TASK_106(2, 10,"Kill 1 Emerald Slayer", new TaskReward(995, 1000)
+    TASK_106(2, 10,"Kill 1 Emerald Slayer", new TaskReward(23204, 2)
             , 2342, 1),
-    TASK_107(2, 40,"Kill 100 Emerald Slayer", new TaskReward(995, 1000)
+    TASK_107(2, 40,"Kill 100 Emerald Slayer", new TaskReward(23253, 1)
             , 2342, 100),
-    TASK_108(2, 10,"Kill 1 Mutant Hydra", new TaskReward(995, 1000)
+    TASK_108(2, 10,"Kill 1 Mutant Hydra", new TaskReward(23205, 1)
             , 9839, 1),
-    TASK_109(2, 40,"Kill 100 Mutant Hydra", new TaskReward(995, 1000)
+    TASK_109(2, 40,"Kill 100 Mutant Hydra", new TaskReward(23253, 2)
             , 9839, 100),
-    TASK_110(2, 10,"Kill 1 Gorvek", new TaskReward(995, 1000)
+    TASK_110(2, 10,"Kill 1 Gorvek", new TaskReward(23205, 2)
             , 9806, 1),
-    TASK_111(2, 40,"Kill 100 Gorvek", new TaskReward(995, 1000)
+    TASK_111(2, 40,"Kill 100 Gorvek", new TaskReward(23253, 3)
             , 9806, 100),
-    TASK_112(2, 10,"Kill 1 Onyx Griffin", new TaskReward(995, 1000)
+    TASK_112(2, 10,"Kill 1 Onyx Griffin", new TaskReward(23206, 1)
             , 1746, 1),
-    TASK_113(2, 40,"Kill 100 Onyx Griffin", new TaskReward(995, 1000)
+    TASK_113(2, 40,"Kill 100 Onyx Griffin", new TaskReward(23256, 1)
+            , 1746, 100),
+    TASK_114(2, 10,"Kill 1 Tyrant Lord", new TaskReward(23206, 2)
+            , 4972, 1),
+    TASK_115(2, 40,"Kill 100 Tyrant Lord", new TaskReward(23256, 1)
+            , 4972, 100),
+    TASK_116(2, 10,"Kill 1 White Beard", new TaskReward(23207, 1)
+            , 3021, 1),
+    TASK_117(2, 40,"Kill 100 White Beard", new TaskReward(23256, 2)
+            , 3021, 100),
+    TASK_118(2, 10,"Kill 1 Panther", new TaskReward(23208, 1)
+            , 3305, 1),
+    TASK_119(2, 40,"Kill 100 Panther", new TaskReward(23256, 2)
+            , 3305, 100),
+    TASK_120(2, 10,"Kill 1 Warrior", new TaskReward(23209, 1)
+            , 1746, 1),
+    TASK_121(2, 40,"Kill 100 Warrior", new TaskReward(23256, 5)
             , 1746, 100),
 
-    TASK_150(3, 10,"Clear LVL 5 Tarn Tower", new TaskReward(995, 1000)
+    TASK_150(3, 10,"Clear LVL 5 Tarn Tower", new TaskReward(23253, 1)
             , -1, -1),
-    TASK_151(3, 50,"Clear LVL 10 Tarn Tower", new TaskReward(995, 1000)
+    TASK_151(3, 50,"Clear LVL 10 Tarn Tower", new TaskReward(23254, 1)
             , -1, -1),
-    TASK_152(3, 100,"Clear LVL 20 Tarn Tower", new TaskReward(995, 1000)
+    TASK_152(3, 100,"Clear LVL 20 Tarn Tower", new TaskReward(23255, 1)
             , -1, -1),
 
     TASK_200(4, 5,"Vote 5 Times", new TaskReward(995, 1000)

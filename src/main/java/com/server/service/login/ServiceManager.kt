@@ -1,6 +1,6 @@
 package com.server.service.login
 
-import com.ruse.world.content.tradingpost.concurrency.TradingPostService
+import com.ruse.world.packages.tradingpost.concurrency.TradingPostService
 
 /**
  * Manages all [Service] implementations used by the game.

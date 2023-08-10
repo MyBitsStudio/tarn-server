@@ -14,6 +14,10 @@ import com.ruse.world.packages.combat.max.MagicMax;
 import com.ruse.world.packages.combat.max.MeleeMax;
 import com.ruse.world.packages.combat.max.RangeMax;
 
+import java.util.Objects;
+
+import static com.ruse.world.packages.combat.sets.SetPerk.AOE_3;
+
 public class EffectHandler {
 
     public static void handlePlayerAttack(Player p, Character victim){
@@ -35,6 +39,13 @@ public class EffectHandler {
             victim.getCombatBuilder().addDamage(p, calc);
             victim.getCombatBuilder().attack(p);
         }
+        if(p.getEquipment().getBonus() != null){
+            if(Objects.equals(p.getEquipment().getBonus().perk(), AOE_3)){
+                handleAoE(p, victim,
+                        3);
+            }
+        }
+
     }
 
     private static void handleAoE(Character attacker, Character victim,
@@ -42,7 +53,7 @@ public class EffectHandler {
 
         // if no radius, loc isn't multi, stops.
         if (radius == 0 || !Locations.Location.inMulti(victim)) {
-            // System.out.println("Radius 0");
+             System.out.println("Radius 0");
             return;
         }
 

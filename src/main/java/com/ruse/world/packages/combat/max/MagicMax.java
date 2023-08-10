@@ -4,6 +4,7 @@ import com.ruse.model.Item;
 import com.ruse.model.Skill;
 import com.ruse.model.container.impl.Equipment;
 import com.ruse.util.Misc;
+import com.ruse.world.content.BonusManager;
 import com.ruse.world.content.combat.CombatType;
 import com.ruse.world.content.combat.NpcMaxHitLimit;
 import com.ruse.world.content.combat.prayer.CurseHandler;
@@ -25,18 +26,20 @@ public class MagicMax {
             if(victim.isPlayer()){
                 Player player = victim.asPlayer();
 
-                long defence = (long) (player.getBonusManager().getDefenceBonus()[3] / 10_000);
+                long defence = Math.floorDiv((int) player.getBonusManager().getDefenceBonus()[BonusManager.DEFENCE_MAGIC], 100_000);
 
-                maxHit -= (defence / 11);
+                maxHit -= Math.floorDiv(defence , 11);
 
                 if(maxHit <= 0){
                     maxHit = 1;
                 }
 
             }
+
             if(npc.getDefinition().isBoss()){
                 maxHit *= 2;
             }
+
         } else if(entity.isPlayer()){
             Player player = entity.asPlayer();
 
@@ -62,7 +65,7 @@ public class MagicMax {
                 }
             }
 
-            double effectiveMagicDamage = magicLevel * prayerMod;
+            double effectiveMagicDamage = 120 * prayerMod * Math.floorDiv((int) magicStrength, 1_000);
 
             double baseDamage = 1.3 + effectiveMagicDamage / 10 + magicStrength / 70 + effectiveMagicDamage * magicStrength / 630;
 
@@ -171,6 +174,8 @@ public class MagicMax {
             }
 
             maxHit *= 10;
+
+            maxHit *= player.getEquipment().getBonus() == null ? 1 : player.getEquipment().getBonus().mageDamage();
         }
 
         if (victim != null && victim.isNpc() && (entity.isPlayer() && !entity.asPlayer().getRank().isDeveloper())) {

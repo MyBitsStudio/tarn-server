@@ -7,7 +7,6 @@ import com.ruse.model.container.ItemContainer;
 import com.ruse.net.packet.Packet.PacketType;
 import com.ruse.world.content.CustomObjects;
 import com.ruse.world.content.EffectTimer;
-import com.ruse.world.content.tradingpost.TradingPost;
 import com.ruse.world.packages.forge.Forge;
 import com.ruse.world.packages.forge.shop.ForgeShopItem;
 import com.ruse.world.content.skill.impl.construction.ConstructionData.Furniture;
@@ -19,7 +18,8 @@ import com.ruse.world.entity.impl.Character;
 import com.ruse.world.entity.impl.npc.NPC;
 import com.ruse.world.entity.impl.player.Player;
 import com.ruse.world.packages.ranks.StaffRank;
-import com.ruse.world.packages.slot.PerkEquip;
+import com.ruse.world.packages.shops.ShopHandler;
+import com.ruse.world.packages.shops.TabShop;
 import com.ruse.world.region.Region;
 import com.ruse.world.region.RegionManager;
 import com.ruse.world.region.dynamic.DynamicRegion;
@@ -193,7 +193,7 @@ public class PacketSender {
             player.setIronBanking(false);
         }
         if (player.isShopping()) {
-            sendClientRightClickRemoval().sendItemsOnInterface(player.getShop().getInterfaceId(), new Item[]{new Item(-1)});
+            sendClientRightClickRemoval().sendItemsOnInterface(162001, new Item[]{new Item(-1)});
             player.setShopping(false);
         }
         if (player.getPriceChecker().isOpen()) {
@@ -733,7 +733,9 @@ public class PacketSender {
         }
         //sendInterfaceOverlay(player.getInterfaceId(), -1);
         if (player.isShopping()) {
-            sendClientRightClickRemoval().sendItemsOnInterface(player.getShop().getInterfaceId(), new Item[]{new Item(-1)});
+            Optional<TabShop> shop = ShopHandler.getShop(player.getVariables().getIntValue("active-shop"));
+            shop.ifPresent(tabShop -> tabShop.removePlayer(player));
+            //sendClientRightClickRemoval().sendItemsOnInterface(player.getShop().getInterfaceId(), new Item[]{new Item(-1)});
             player.setShopping(false);
         }
         if (player.getPriceChecker().isOpen()) {

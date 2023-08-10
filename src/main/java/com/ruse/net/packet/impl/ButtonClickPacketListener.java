@@ -70,6 +70,7 @@ import com.ruse.world.entity.impl.player.Player;
 import com.ruse.world.entity.impl.player.StartScreen;
 import com.ruse.world.packages.misc.PossibleLootInterface;
 import com.ruse.world.packages.mode.impl.UltimateIronman;
+import com.ruse.world.packages.shops.ShopHandler;
 import com.ruse.world.packages.tower.TarnTower;
 import com.ruse.world.packages.tracks.TrackInterface;
 
@@ -126,6 +127,9 @@ public class ButtonClickPacketListener implements PacketListener {
         if(TrackInterface.handleButtons(player, id)) {
             return;
         }
+        if(ShopHandler.handleButton(player, id)) {
+            return;
+        }
         if (!player.getControllerManager().processButtonClick(id)) {
             return;
         }
@@ -178,13 +182,6 @@ public class ButtonClickPacketListener implements PacketListener {
             return;
         }
 
-        if (player.getDonatorShop().handleButton( id)) {
-            return;
-        }
-        if (player.getPetShop().handleButton( id)) {
-            return;
-        }
-
         if(player.getEquipment().handleClicks(id)){
             return;
         }
@@ -221,7 +218,7 @@ public class ButtonClickPacketListener implements PacketListener {
             case 70021:
                 player.getPSecurity().start2FA();
                 break;
-            case 1716:
+            case 1716, 11008:
                 player.getTeleInterface().open();
                 break;
             case 26070:
@@ -1182,12 +1179,8 @@ public class ButtonClickPacketListener implements PacketListener {
                 player.getPacketSender().sendInterfaceRemoval();
                 break;
             case 11004:
-                TeleportHandler.teleportPlayer(player, new Position(2654, 2796, 0),
-                        player.getSpellbook().getTeleportType());
                 player.getPacketSender().sendInterfaceRemoval();
-                break;
-            case 11008:
-                player.getTeleInterface().open();
+                InstanceManager.getManager().sendInterface(player);
                 break;
             case 11011:
                 TeleportHandler.teleportPlayer(player, new Position(2856, 2708, 0),

@@ -30,9 +30,9 @@
 //import com.ruse.world.content.skill.impl.slayer.SlayerMaster;
 //import com.ruse.world.content.skill.impl.summoning.CharmingImp;
 //import com.ruse.world.content.skill.impl.summoning.SummoningTab;
-//import com.ruse.world.content.tradingpost.dialogues.CancelOptions;
-//import com.ruse.world.content.tradingpost.dialogues.PurchaseOptions;
-//import com.ruse.world.content.tradingpost.dialogues.PurchaseStatement;
+//import com.ruse.world.packages.tradingpost.dialogues.CancelOptions;
+//import com.ruse.world.packages.tradingpost.dialogues.PurchaseOptions;
+//import com.ruse.world.packages.tradingpost.dialogues.PurchaseStatement;
 //import com.ruse.world.content.transportation.CityTeleports;
 //import com.ruse.world.content.transportation.JewelryTeleports;
 //import com.ruse.world.content.transportation.TeleportHandler;

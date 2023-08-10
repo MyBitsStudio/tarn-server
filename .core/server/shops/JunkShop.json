@@ -1,0 +1,22 @@
+[
+  {
+    "id": 0,
+    "name": "Junk Shop (Sell To Me)",
+    "canSell": true,
+    "shops": [
+      {
+        "shopId": 0,
+        "currency": "coins",
+        "shopName": "Junk",
+        "restrict": 0,
+        "items": [
+          {
+            "id": -1,
+            "amount": 0,
+            "price": 1
+          }
+        ]
+      }
+    ]
+  }
+]

@@ -1,21 +1,15 @@
 package com.ruse.net.packet.impl;
 
-import com.ruse.model.Animation;
-import com.ruse.model.Flag;
 import com.ruse.model.Item;
-import com.ruse.model.Locations.Location;
 import com.ruse.model.container.impl.*;
-import com.ruse.model.container.impl.Shop.ShopManager;
 import com.ruse.model.definitions.ItemDefinition;
-import com.ruse.model.definitions.WeaponAnimations;
-import com.ruse.model.definitions.WeaponInterfaces;
 import com.ruse.model.input.EnterAmount;
-import com.ruse.model.input.Input;
 import com.ruse.model.input.impl.*;
 import com.ruse.net.packet.Packet;
 import com.ruse.net.packet.PacketListener;
+import com.ruse.util.Misc;
 import com.ruse.world.content.*;
-import com.ruse.world.content.tradingpost.TradingPost;
+import com.ruse.world.packages.tradingpost.TradingPost;
 import com.ruse.world.packages.forge.shop.ForgeShopHandler;
 import com.ruse.world.content.grandexchange.GrandExchange;
 import com.ruse.world.content.grandexchange.GrandExchangeOffer;
@@ -23,9 +17,10 @@ import com.ruse.world.content.minigames.impl.Dueling;
 import com.ruse.world.content.skill.impl.crafting.Jewelry;
 import com.ruse.world.content.skill.impl.smithing.EquipmentMaking;
 import com.ruse.world.content.skill.impl.smithing.SmithingData;
-import com.ruse.world.content.transportation.JewelryTeleporting;
 import com.ruse.world.entity.impl.player.Player;
-import com.ruse.world.packages.slot.SlotItems;
+import com.ruse.world.packages.shops.ShopHandler;
+
+import java.util.Optional;
 
 public class ItemContainerActionPacketListener implements PacketListener {
 
@@ -49,6 +44,9 @@ public class ItemContainerActionPacketListener implements PacketListener {
 		if(interfaceId == 31444)
 			if(player.getEquipment().handleContainer(slot, 1, id))
 				return;
+
+		if(ShopHandler.handleShop(player, interfaceId, 1, slot))
+			return;
 
 
 		switch (interfaceId) {
@@ -77,18 +75,6 @@ public class ItemContainerActionPacketListener implements PacketListener {
 
 			case -16815:
 				player.getUimBank().withdraw(id, 1, slot);
-				break;
-
-			case -13234:
-				// System.out.println("Item was: " + item.getId());
-				Object[] obj = ShopManager.getCustomShopData(119, item.getId());
-				if (obj == null) {
-					return;
-				}
-				int value = (int) ((int) obj[0] * 0.85);
-				String name = item.getDefinition().getName();
-				player.sendMessage("@blu@The shop buys @red@" + name + " for " + value + " Bill Bags");
-
 				break;
 
 			case -3327:
@@ -232,15 +218,13 @@ public class ItemContainerActionPacketListener implements PacketListener {
 					player.getInventory().switchItem(player.getBank(player.getCurrentBankTab()), item, slot, false, true);
 				}
 				break;
-			case Shop.ITEM_CHILD_ID:
-			case DonatorShop.ITEM_CHILD_ID_CLICK:
-			case PetShop.ITEM_CHILD_ID_CLICK:
-				if (player.getShop() != null)
-					player.getShop().checkValue(player, slot, false);
-				break;
-			case Shop.INVENTORY_INTERFACE_ID:
-				if (player.getShop() != null)
-					player.getShop().checkValue(player, slot, true);
+			case 3823:
+				Optional<Integer> price = Optional.ofNullable(ShopHandler.junkPrices.get(item.getId()));
+				if(price.isPresent()){
+					player.sendMessage("You sell the item to the store for "+ Misc.insertCommasToNumber(price.get())+" coins.");
+				} else {
+					player.sendMessage("You can't sell this item to this shop.");
+				}
 				break;
 			case BeastOfBurden.INTERFACE_ID:
 				if (player.getInterfaceId() == BeastOfBurden.INTERFACE_ID
@@ -314,6 +298,9 @@ public class ItemContainerActionPacketListener implements PacketListener {
 			if(player.getEquipment().handleContainer(slot, 2, id))
 				return;
 
+		if(ShopHandler.handleShop(player, interfaceId, 2, slot))
+			return;
+
 		switch (interfaceId) {
 			case TradingPost.ITEM_CONTAINER_ID -> player.getTradingPost().selectItemToAdd(item);
 			case -15971 -> ForgeShopHandler.purchase(player, id, 5);
@@ -374,16 +361,17 @@ public class ItemContainerActionPacketListener implements PacketListener {
 				player.setCurrentBankTab(Bank.getTabForItem(player, item.getId()));
 				player.getInventory().switchItem(player.getBank(player.getCurrentBankTab()), item, slot, false, true);
 			}
-			case Shop.ITEM_CHILD_ID, DonatorShop.ITEM_CHILD_ID_CLICK, PetShop.ITEM_CHILD_ID_CLICK -> {
-				if (player.getShop() == null)
-					return;
-				item = player.getShop().forSlot(slot).copy().setAmount(1).copy();
-				player.getShop().setPlayer(player).switchItem(player.getInventory(), item, slot, false, true);
-			}
-			case Shop.INVENTORY_INTERFACE_ID -> {
+//			case Shop.ITEM_CHILD_ID, DonatorShop.ITEM_CHILD_ID_CLICK, PetShop.ITEM_CHILD_ID_CLICK -> {
+//				if (player.getShop() == null)
+//					return;
+//				item = player.getShop().forSlot(slot).copy().setAmount(1).copy();
+//				player.getShop().setPlayer(player).switchItem(player.getInventory(), item, slot, false, true);
+//			}
+			case 3823 -> {
 				if (player.isShopping()) {
-					player.getShop().sellItem(player, slot, 1);
-					return;
+					ShopHandler.sell(player, slot, 1);
+				} else {
+					System.out.println("Not shopping.");
 				}
 			}
 			case BeastOfBurden.INTERFACE_ID -> {
@@ -620,20 +608,6 @@ public class ItemContainerActionPacketListener implements PacketListener {
 				player.setCurrentBankTab(Bank.getTabForItem(player, item));
 				player.getInventory().switchItem(player.getBank(player.getCurrentBankTab()), item, slot, false, true);
 				break;
-			case Shop.ITEM_CHILD_ID:
-			case DonatorShop.ITEM_CHILD_ID_CLICK:
-			case PetShop.ITEM_CHILD_ID_CLICK:
-				if (player.getShop() == null)
-					return;
-				item = player.getShop().forSlot(slot).copy().setAmount(5).copy();
-				player.getShop().setPlayer(player).switchItem(player.getInventory(), item, slot, false, true);
-				break;
-			case Shop.INVENTORY_INTERFACE_ID:
-				if (player.isShopping()) {
-					player.getShop().sellItem(player, slot, 5);
-					return;
-				}
-				break;
 			case BeastOfBurden.INTERFACE_ID:
 				if (player.getInterfaceId() == BeastOfBurden.INTERFACE_ID
 						&& player.getSummoning().getBeastOfBurden() != null) {
@@ -826,18 +800,11 @@ public class ItemContainerActionPacketListener implements PacketListener {
 				player.setCurrentBankTab(Bank.getTabForItem(player, item.getId()));
 				player.getInventory().switchItem(player.getBank(player.getCurrentBankTab()), item, slot, false, true);
 				break;
-			case Shop.ITEM_CHILD_ID:
-			case DonatorShop.ITEM_CHILD_ID_CLICK:
-			case PetShop.ITEM_CHILD_ID_CLICK:
-				if (player.getShop() == null)
-					return;
-				item = player.getShop().forSlot(slot).copy().setAmount(10).copy();
-				player.getShop().setPlayer(player).switchItem(player.getInventory(), item, slot, true, true);
-				break;
-			case Shop.INVENTORY_INTERFACE_ID:
+			case 3823:
 				if (player.isShopping()) {
-					player.getShop().sellItem(player, slot, 10);
-					return;
+					ShopHandler.sell(player, slot, 10);
+				} else {
+					System.out.println("Not shopping.");
 				}
 				break;
 			case BeastOfBurden.INTERFACE_ID:
@@ -985,22 +952,14 @@ public class ItemContainerActionPacketListener implements PacketListener {
 					}*/
 				}
 			}
-			case Shop.ITEM_CHILD_ID, DonatorShop.ITEM_CHILD_ID_CLICK, PetShop.ITEM_CHILD_ID_CLICK -> {
-				if (player.isBanking())
-					return;
-				if (player.isShopping()) {
-					player.setInputHandling(new EnterAmountToBuyFromShop(id, slot));
-					player.getPacketSender().sendEnterAmountPrompt("How many would you like to buy?");
-					player.getShop().setPlayer(player);
-				}
-			}
-			case Shop.INVENTORY_INTERFACE_ID -> {
+			case 3823 -> {
 				if (player.isBanking())
 					return;
 				if (player.isShopping()) {
 					player.setInputHandling(new EnterAmountToSellToShop(id, slot));
 					player.getPacketSender().sendEnterAmountPrompt("How many would you like to sell?");
-					player.getShop().setPlayer(player);
+				} else {
+					System.out.println("Not shopping.");
 				}
 			}
 			case PriceChecker.INTERFACE_PC_ID -> {
@@ -1047,12 +1006,6 @@ public class ItemContainerActionPacketListener implements PacketListener {
 		if(interfaceId == 31444)
 			if(player.getEquipment().handleContainer(slot, 6, id))
 				return;
-
-		if (interfaceId == Shop.INVENTORY_INTERFACE_ID) {
-			if (player.isShopping()) {
-				player.getShop().sellItem(player, slot, player.getInventory().getAmount(id));
-			}
-		}
 	}
 
 	@Override

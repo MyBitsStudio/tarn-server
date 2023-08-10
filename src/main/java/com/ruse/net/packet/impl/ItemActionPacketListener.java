@@ -14,6 +14,7 @@ import com.ruse.world.content.Sounds.Sound;
 import com.ruse.world.content.StarterTasks.StarterTaskData;
 import com.ruse.world.packages.dialogue.DialogueManager;
 import com.ruse.world.packages.dialogue.impl.RedeemBond;
+import com.ruse.world.packages.packs.basic.PackOpener;
 import com.ruse.world.packages.packs.casket.Box;
 import com.ruse.world.packages.packs.casket.BoxLoot;
 import com.ruse.world.packages.packs.casket.CasketOpening;
@@ -43,6 +44,7 @@ import com.ruse.world.packages.packs.gearpack.GearPack;
 import com.ruse.world.packages.packs.gearpack.GearPacks;
 import com.ruse.world.packages.packs.basic.impl.*;
 import com.ruse.world.packages.packs.scratch.impl.RareScratchI;
+import com.ruse.world.packages.packs.scratch.impl.ScratchI;
 import com.ruse.world.packages.slot.SlotItems;
 
 import java.text.NumberFormat;
@@ -118,6 +120,15 @@ public class ItemActionPacketListener implements PacketListener {
             return;
         Item item = player.getInventory().getItems()[slot];
         player.setInteractingItem(item);
+
+        if(ItemDefinition.forId(itemId).getName().equalsIgnoreCase("none")){
+            System.out.println("Item name is none");
+            return;
+        }
+
+        if(PackOpener.openPack(player, itemId))
+            return;
+
         if (!player.getControllerManager().processItemClick1(slot, item)) {
             return;
         }
@@ -213,43 +224,43 @@ public class ItemActionPacketListener implements PacketListener {
                 DialogueManager.sendDialogue(player, new RedeemBond(player, itemId, false), -1);
                 break;
 
-            case 20506:
-                new EnhancementChest().openPack(player);
-                break;
-
-            case 20507:
-                new OwnersUltimateChest().openPack(player);
-                break;
-
-            case 20498:
-                new TicketPack().openPack(player);
-                break;
-
-            case 20500:
-                new CounterPack().openPack(player);
-                break;
-            case 23252:
-                new CertPack1().openPack(player);
-                break;
-            case 23253:
-                new CertPack2().openPack(player);
-                break;
-
-            case 20501:
-                new EventPack().openPack(player);
-                break;
-
-            case 20502:
-                new DonatorPack().openPack(player);
-                break;
-
-            case 20505:
-                new YoutubePack().openPack(player);
-                break;
-
-            case 23225:
-                new ArmorRandomPack().openPack(player);
-                break;
+//            case 20506:
+//                new EnhancementChest().openPack(player);
+//                break;
+//
+//            case 20507:
+//                new OwnersUltimateChest().openPack(player);
+//                break;
+//
+//            case 20498:
+//                new TicketPack().openPack(player);
+//                break;
+//
+//            case 20500:
+//                new CounterPack().openPack(player);
+//                break;
+//            case 23252:
+//                new CertPack1().openPack(player);
+//                break;
+//            case 23253:
+//                new CertPack2().openPack(player);
+//                break;
+//
+//            case 20501:
+//                new EventPack().openPack(player);
+//                break;
+//
+//            case 20502:
+//                new DonatorPack().openPack(player);
+//                break;
+//
+//            case 20505:
+//                new YoutubePack().openPack(player);
+//                break;
+//
+//            case 23225:
+//                new ArmorRandomPack().openPack(player);
+//                break;
 
 //            case 23210:
 //                DialogueManager.start(player, 11050);
@@ -802,7 +813,7 @@ public class ItemActionPacketListener implements PacketListener {
                 player.sendMessage("<shad=1>@yel@You swapped your God potion to 125K Tokens!");
                 break;*/
             case 455:
-                player.setCard(new RareScratchI(player));
+                player.setCard(new ScratchI(player));
                 player.getCard().open();
                 break;
             case 22121:
@@ -1874,6 +1885,13 @@ public class ItemActionPacketListener implements PacketListener {
 
         player.setInteractingItem(player.getInventory().getItems()[slot]);
 
+        if(ItemDefinition.forId(itemId).getName().equalsIgnoreCase("none")){
+            System.out.println("Item name is none");
+            return;
+        }
+
+        if(PackOpener.openPack(player, itemId))
+            return;
 
         if (SummoningData.isPouch(player, itemId, 2))
             return;
@@ -2153,10 +2171,15 @@ public class ItemActionPacketListener implements PacketListener {
             return;
         if (player.getInventory().getItems()[slot].getId() != itemId)
             return;
-//        if (JarData.forJar(itemId) != null) {
-//            PuroPuro.lootJar(player, new Item(itemId, 1), JarData.forJar(itemId));
-//            return;
-//        }
+
+        if(ItemDefinition.forId(itemId).getName().equalsIgnoreCase("none")){
+            System.out.println("Item name is none");
+            return;
+        }
+
+        if(PackOpener.openPack(player, itemId))
+            return;
+
         if (SummoningData.isPouch(player, itemId, 3)) {
             return;
         }

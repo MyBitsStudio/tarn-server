@@ -62,9 +62,14 @@ public class CombatAccuracy {
                 specialBonus = player.getCombatSpecial().getAccuracyBonus();
             }
 
+        } else {
+            NPC npc = attacker.toNpc();
+
+            specialBonus = npc.getDefinition().isBoss() ? 8 : 3;
+            equipmentBonus = npc.getCombatLevel();
         }
 
-        double attackCalc = Math.floor(equipmentBonus + attacker.getBaseAttack(type)) + 8;
+        double attackCalc = equipmentBonus + attacker.getBaseAttack(type) + 8;
 
         attackCalc *= prayerMod;
 
@@ -76,6 +81,8 @@ public class CombatAccuracy {
 
         equipmentBonus = 1;
         prayerMod = 1;
+
+        double defenceCalc = 1;
 
         if (victim.isPlayer()) {
             Player player = victim.asPlayer();
@@ -105,22 +112,32 @@ public class CombatAccuracy {
                 equipmentBonus = player.getSkillManager().getCurrentLevel(Skill.DEFENCE);
             }
 
-            double defenceCalc = Math.floor(equipmentBonus + victim.getBaseDefence(type)) + 8;
+            defenceCalc = Math.floor(equipmentBonus + victim.getBaseDefence(type)) + 8;
             defenceCalc *= prayerMod;
 
-            if (equipmentBonus < -67) {
-                defenceCalc = Misc.exclusiveRandom(8) == 0 ? defenceCalc : 0;
+        } else {
+            NPC npc = victim.toNpc();
+
+            if (npc.getDefinition().isBoss()) {
+                equipmentBonus = npc.getCombatLevel() * 3;
+            } else {
+                equipmentBonus = npc.getCombatLevel();
             }
 
-            double A = Math.floor(attackCalc);
-            double D = Math.floor(defenceCalc);
-            double hitSucceed = A < D ? (A - 1.0) / (2.0 * D) : 1.0 - (D + 1.0) / (2.0 * A);
-            hitSucceed = hitSucceed >= 1.0 ? 0.99 : hitSucceed <= 0.0 ? 0.01 : hitSucceed;
-            return hitSucceed >= Misc.RANDOM.nextDouble();
+            defenceCalc = Math.floor(equipmentBonus + victim.getBaseDefence(type)) + 8;
 
         }
 
-        return false;
+        if (equipmentBonus < -67) {
+            defenceCalc = Misc.exclusiveRandom(8) == 0 ? defenceCalc : 0;
+        }
+
+        double A = Math.floor(attackCalc);
+        double D = Math.floor(defenceCalc);
+        double hitSucceed = A < D ? (A - 1.0) / (2.0 * D) : 1.0 - (D + 1.0) / (2.0 * A);
+        hitSucceed = hitSucceed >= 1.0 ? 0.99 : hitSucceed <= 0.0 ? 0.01 : hitSucceed;
+        double hitRoll = Misc.RANDOM.nextDouble();
+        return hitSucceed >= hitRoll;
     }
 
     private static double prayerBonus(Player player, CombatType type){

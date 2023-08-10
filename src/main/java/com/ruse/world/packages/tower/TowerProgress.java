@@ -48,6 +48,7 @@ public class TowerProgress {
 
     public void progress(){
         spawnExit();
+        getPlayer().getStarter().handleTower(level);
         if(level == lastLevel){
             if(tier == lastTier){
                 sendFinish();

@@ -222,7 +222,7 @@ public class ObjectActionPacketListener implements PacketListener {
                             Lobby.getInstance().barrierClick(player);
                             break;
                         case 621:
-                            InstanceManager.getManager().sendInterface(player);
+
                             break;
 
                         case 13291:
@@ -336,39 +336,13 @@ public class ObjectActionPacketListener implements PacketListener {
                             player.getPacketSender().sendMessage("You have been rejuvinated.");
                             player.performGraphic(new Graphic(1310));
                             break;
-                       /* case 166: // Zones gates
-                        case 167:
-                        case 2913:
-                        case 2914:
-                        case 2912:*/
                         case 2469:
-                            TeleportHandler.teleportPlayer(player, GameSettings.DEFAULT_POSITION, TeleportType.NORMAL);
-                            break;
-                        case 7289:
-//                            if (player.getLocation() == Location.ZOMBIE) {
-//                                if (player.getZombieParty() != null) {
-//                                    player.setDialogueActionId(71260);
-//                                    DialogueManager.start(player, 7126);
-//                                }
-//                            }
+                            TeleportHandler.teleportPlayer(player, player.getPosition().setZ(player.getPosition().getZ() + 4), TeleportType.NORMAL);
                             break;
 
 
                         case 16958:
                             CurseHandler.deactivateAll(player);
-
-//                            if (player.getLocation() == Location.ZOMBIE_LOBBY) {
-//                                if (player.getZombieParty() != null) {
-//                                    if (player.getZombieParty().getOwner().equals(player)) {
-//                                        player.setDialogueActionId(2012);
-//                                        DialogueManager.start(player, 2012);
-//                                    } else {
-//                                        player.sendMessage("Only the party leader can start the Raids [2]");
-//                                    }
-//                                } else {
-//                                    player.sendMessage("You must be in a party to start the Raids [2]");
-//                                }
-//                            }
                             break;
                        /* case 52601:
                             Stalls.stealFromAFKStall(player, id, 1);
@@ -2215,7 +2189,7 @@ public class ObjectActionPacketListener implements PacketListener {
                     }
                     switch (gameObject.getId()) {
                         case 2469 ->
-                                TeleportHandler.teleportPlayer(player, GameSettings.DEFAULT_POSITION, TeleportType.NORMAL);
+                                TeleportHandler.teleportPlayer(player, player.getPosition().setZ(Math.max(player.getPosition().getZ() - 4, 0)), TeleportType.NORMAL);
                         case 12100 -> Smelting.openInterface(player);
                         case 13192 -> {
                             player.performAnimation(new Animation(645));

@@ -1,7 +1,32 @@
 package com.ruse.world.packages.combat.sets;
 
-import lombok.Getter;
+public abstract class SetBonus {
 
-@Getter
-public enum SetBonus {
+    public double dropChance(){
+        return 0.0;
+    }
+
+    public double doubleDropChance(){
+        return 0.0;
+    }
+
+    public double meleeDamage(){
+        return 0.0;
+    }
+
+    public double mageDamage(){
+        return 0.0;
+    }
+
+    public double rangeDamage(){
+        return 0.0;
+    }
+
+    public SetPerk perk(){
+        return null;
+    }
+
+    public String name(){
+        return "";
+    }
 }

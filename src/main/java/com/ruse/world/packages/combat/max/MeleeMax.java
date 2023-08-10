@@ -4,6 +4,7 @@ import com.ruse.model.Item;
 import com.ruse.model.Skill;
 import com.ruse.model.container.impl.Equipment;
 import com.ruse.util.Misc;
+import com.ruse.world.content.BonusManager;
 import com.ruse.world.content.combat.CombatFactory;
 import com.ruse.world.content.combat.CombatType;
 import com.ruse.world.content.combat.NpcMaxHitLimit;
@@ -16,6 +17,7 @@ import com.ruse.world.content.skill.impl.summoning.Familiar;
 import com.ruse.world.entity.impl.Character;
 import com.ruse.world.entity.impl.npc.NPC;
 import com.ruse.world.entity.impl.player.Player;
+import org.jetbrains.annotations.NotNull;
 
 public class MeleeMax {
 
@@ -209,20 +211,22 @@ public class MeleeMax {
             NPC npc = entity.toNpc();
             maxHit = npc.getMaxHit();
 
+            System.out.println("Max hit : " + maxHit);
+
             if (victim.isPlayer()) {
                 Player player = victim.asPlayer();
 
-                long defence = (long) (player.getBonusManager().getDefenceBonus()[0] / 10_000);
+                long defence = (long) (player.getBonusManager().getDefenceBonus()[BonusManager.DEFENCE_STAB] / 100_000);
 
                 maxHit -= (defence / 11);
 
                 if (maxHit <= 0) {
                     maxHit = 1;
                 }
+            }
 
-                if(npc.getDefinition().isBoss()){
-                    maxHit *= 2;
-                }
+            if(npc.getDefinition().isBoss()){
+                maxHit *= 2;
             }
         } else if(entity.isPlayer()) {
             Player player = entity.asPlayer();
@@ -332,6 +336,8 @@ public class MeleeMax {
             }
 
             maxHit *= 10;
+
+            maxHit *= player.getEquipment().getBonus() == null ? 1 : player.getEquipment().getBonus().meleeDamage();
         }
 
 
@@ -342,14 +348,21 @@ public class MeleeMax {
         return maxHit;
     }
 
-    public static double getEffectiveStr(Player player) {
+    public static double getEffectiveStr(@NotNull Player player) {
         double styleBonus = 0;
         FightStyle style = player.getFightType().getStyle();
 
-        double otherBonus = 1;
+        switch(style){
+            case ACCURATE -> styleBonus = 3;
+            case AGGRESSIVE -> styleBonus = 15;
+            case CONTROLLED -> styleBonus = 10;
+            case DEFENSIVE -> styleBonus = 0;
+        }
+
+        double otherBonus = Math.floorDiv((int) player.getBonusManager().getOtherBonus()[BonusManager.BONUS_STRENGTH], 1_000);
 
         double prayerMod = 1.0;
-        double random = Math.random() * 10;
+
         if (PrayerHandler.isActivated(player, PrayerHandler.BURST_OF_STRENGTH) || CurseHandler.isActivated(player, CurseHandler.LEECH_STRENGTH)) {
             prayerMod = 1.05;
         } else if (PrayerHandler.isActivated(player, PrayerHandler.SUPERHUMAN_STRENGTH)) {
@@ -366,11 +379,10 @@ public class MeleeMax {
             prayerMod = 1.15 + (player.getLeechedBonuses()[2] * 0.01);
             if (Misc.getRandom(100) <= 1) {
                 player.setDoubleDMGTimer(1);
-                // player.getPacketSender().sendMessage("Coup de grace activated");
 
             }
         }
 
-        return (int) (player.getSkillManager().getCurrentLevel(Skill.STRENGTH) * prayerMod * otherBonus + styleBonus);
+        return 120 * prayerMod * otherBonus + styleBonus;
     }
 }

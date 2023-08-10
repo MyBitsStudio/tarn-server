@@ -324,6 +324,7 @@ public class SkillManager {
             }
 
             if (skills.maxLevel[skill.ordinal()] == getMaxAchievingLevel(skill)) {
+                player.getStarter().handleSkillCount(maxedSkills());
                 player.getPacketSender()
                         .sendMessage("Well done! You've achieved the highest possible level in this skill!");
 
@@ -358,6 +359,17 @@ public class SkillManager {
         updateSkill(skill);
         this.totalGainedExp += experience;
         return this;
+    }
+
+    private int maxedSkills(){
+        int maxed = 0;
+        for (int i = 0; i < Skill.values().length; i++) {
+            if (i == 23)// skip summoning
+                continue;
+            if (skills.maxLevel[i] >= 99)
+                maxed++;
+        }
+        return maxed;
     }
 
     public boolean skillCape(Skill skill) {

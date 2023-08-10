@@ -232,13 +232,9 @@ public class PlayerHandler {
 
         InstanceManager.getManager().onLogin(player);
 
-        if(player.getLocation() != Locations.Location.PROGRESSION_ZONES) {
+        if(player.getLocation() != Location.STARTER) {
             player.getPacketSender().sendWalkableInterface(112000, false);
         }
-        if(player.getLocation() == Location.KEEPERS_OF_LIGHT_LOBBY ||  player.getLocation() == Location.KEEPERS_OF_LIGHT_GAME) {
-            player.getPacketSender().sendWalkableInterface(21005, false);
-        }
-
 
         player.getPacketSender().sendMessage("<shad=1>@bla@Welcome to " + GameSettings.RSPS_NAME + "!");
 
@@ -259,8 +255,6 @@ public class PlayerHandler {
         if (Misc.isWeekend()) {
             player.getPacketSender().sendMessage("[" + GameSettings.RSPS_NAME
                     + "] Double EXP has been activated. It stacks with Vote scrolls, Enjoy!");
-            // player.getPacketSender().sendMessage("<img=5> <col=ff00ff>Oh, and this
-            // weekend we're having double vote points as well!");
         }
 
         if (Wildywyrm.wyrmAlive) {
@@ -281,10 +275,7 @@ public class PlayerHandler {
         //Give currency pouch to UIM
         if (player.newPlayer()) {
             StartScreen.open(player);
-            player.setPlayerLocked(true);
-            //player.getKillsTracker().add(new KillsEntry(1265, 0, false));
-            // player.setPlayerLocked(true).setDialogueActionId(45);
-            // DialogueManager.start(player, 81);
+            player.setPlayerLocked(true);;
         } else if (!player.getInventory().contains(22108) && player.getMode() instanceof UltimateIronman) {
             player.getInventory().add(22108, 1);
             player.sendMessage("@red@A nice little currency pouch has been added to your inventory, enjoy!");

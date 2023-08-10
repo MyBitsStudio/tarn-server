@@ -26,7 +26,7 @@ public class RangeMax {
             if(victim.isPlayer()){
                 Player player = victim.asPlayer();
 
-                long defence = (long) (player.getBonusManager().getDefenceBonus()[4] / 10_000);
+                long defence = (long) (player.getBonusManager().getDefenceBonus()[4] / 100_000);
 
                 maxHit -= (defence / 11);
 
@@ -62,7 +62,7 @@ public class RangeMax {
                 }
             }
 
-            double effectiveRangeDamage = rangeLevel * prayerMod;
+            double effectiveRangeDamage = 120 * prayerMod * Math.floorDiv((int) rangedStrength, 1_000);
 
             double baseDamage = 1.3 + effectiveRangeDamage / 10 + rangedStrength / 70 + effectiveRangeDamage * rangedStrength / 630;
 
@@ -169,6 +169,8 @@ public class RangeMax {
                 maxHit *= 2;
             }
             maxHit *= 10;
+
+            maxHit *= player.getEquipment().getBonus() == null ? 1 : player.getEquipment().getBonus().rangeDamage();
         }
 
 

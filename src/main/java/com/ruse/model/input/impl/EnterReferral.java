@@ -49,17 +49,7 @@ public class EnterReferral extends Input {
 
     public static boolean referralResponse(Player player, String username) {
         if (Arrays.stream(refs).anyMatch(username::equalsIgnoreCase)) {
-            player.getInventory().add(23020, 2);
-            player.getInventory().add(15358, 1);
-            player.getInventory().add(15359, 1);
-            player.getInventory().add(11137, 3);
-            player.getInventory().add(2736, 5);
-            player.getInventory().add(14487, 2);
-            player.getInventory().add(10025, 1);
-            player.getInventory().add(995, 1000000);
-            player.getInventory().add(3086, 1);
-            player.getInventory().add(1033, 1);
-            player.getInventory().add(3090, 1);
+
             player.sendMessage("<img=19>@red@ Congratulations! Because you used the code " + username + " you receive a reward!");
             return true;
         }

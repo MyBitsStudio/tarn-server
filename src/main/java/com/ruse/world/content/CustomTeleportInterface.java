@@ -393,7 +393,7 @@ public class CustomTeleportInterface {
     public enum Minigames {
 
 
-        PROGRESSION_ZONE(ID_START, 1750, 9001, "Starter Progression", "Melee", "Any", new Position(2649, 4021, 0), Locations.Location.PROGRESSION_ZONES, 1),
+        PROGRESSION_ZONE(ID_START, 1750, 9001, "Starter Progression", "Melee", "Any", new Position(2649, 4021, 0), Locations.Location.ZONES1, 1),
         RAIDS(ID_START + 1, 1750, 2017, "Raids @or1@[1]", "Melee/Magic/Range", "Melee/Range", new Position(2649, 4020, 0), Locations.Location.EXODENLOC, 10),
         RAIDS2(ID_START + 2, 3500, 587, "Raids @or2@[2]", "Melee/Magic", "Magic/Range/Melee", new Position(2553, 3717, 0), Locations.Location.EXODENLOC, 10),
         CASHZONE(ID_START + 3, 1000, 1851, "Key Minigame", "Melee/Range/Magic", "Melee/Range", new Position(2579, 2566, 0), Locations.Location.EXODENLOC, 4),

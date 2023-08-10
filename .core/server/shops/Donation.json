@@ -1,0 +1,214 @@
+[
+  {
+    "id": 1,
+    "name": "Donation",
+    "canSell": true,
+    "shops": [
+      {
+        "shopId": 0,
+        "currency": "donation",
+        "shopName": "Packs",
+        "restrict": 0,
+        "items": [
+          {
+            "id": 23250,
+            "amount": 25,
+            "price": 125
+          },
+          {
+            "id": 23251,
+            "amount": 25,
+            "price": 125
+          },
+          {
+            "id": 23252,
+            "amount": 25,
+            "price": 125
+          },
+          {
+            "id": 20500,
+            "amount": 1000,
+            "price": 15
+          },
+          {
+            "id": 20501,
+            "amount": 1000,
+            "price": 50
+          },
+          {
+            "id": 20502,
+            "amount": 1000,
+            "price": 100
+          },
+          {
+            "id": 23253,
+            "amount": 1000,
+            "price": 15
+          },
+          {
+            "id": 23254,
+            "amount": 1000,
+            "price": 50
+          },
+          {
+            "id": 23255,
+            "amount": 1000,
+            "price": 100
+          },
+          {
+            "id": 23256,
+            "amount": 100,
+            "price": 20
+          },
+          {
+            "id": 23257,
+            "amount": 100,
+            "price": 60
+          },
+          {
+            "id": 23258,
+            "amount": 100,
+            "price": 145
+          },
+          {
+            "id": 23259,
+            "amount": 10,
+            "price": 495
+          },
+          {
+            "id": 23260,
+            "amount": 10,
+            "price": 295
+          }
+        ]
+      },
+      {
+        "shopId": 1,
+        "currency": "donation",
+        "shopName": "Events",
+        "restrict": 0,
+        "items": [
+          {
+            "id": 23250,
+            "amount": 25,
+            "price": 125
+          }
+        ]
+      },
+      {
+        "shopId": 2,
+        "currency": "donation",
+        "shopName": "Special",
+        "restrict": 0,
+        "items": [
+          {
+            "id": 23147,
+            "amount": 50,
+            "price": 25
+          },
+          {
+            "id": 23148,
+            "amount": 25,
+            "price": 55
+          },
+          {
+            "id": 23149,
+            "amount": 10,
+            "price": 135
+          },
+          {
+            "id": 10946,
+            "amount": 100,
+            "price": 11
+          },
+          {
+            "id": 23057,
+            "amount": 80,
+            "price": 110
+          },
+          {
+            "id": 23058,
+            "amount": 60,
+            "price": 275
+          },
+          {
+            "id": 23059,
+            "amount": 40,
+            "price": 1100
+          },
+          {
+            "id": 23060,
+            "amount": 10,
+            "price": 2750
+          },
+          {
+            "id": 8788,
+            "amount": 1000000,
+            "price": 10
+          },
+          {
+            "id": 3686,
+            "amount": 100,
+            "price": 245
+          }
+        ]
+      },
+      {
+        "shopId": 3,
+        "currency": "donation",
+        "shopName": "Coming Soon",
+        "restrict": 0,
+        "items": [
+          {
+            "id": -1,
+            "amount": 0,
+            "price": 125
+          }
+        ]
+      },
+      {
+        "shopId": 4,
+        "currency": "donation",
+        "shopName": "Misc",
+        "restrict": 0,
+        "items": [
+          {
+            "id": 22121,
+            "amount": 100,
+            "price": 25
+          },
+          {
+            "id": 23119,
+            "amount": 10,
+            "price": 95
+          },
+          {
+            "id": 23120,
+            "amount": 10,
+            "price": 145
+          },
+          {
+            "id": 23122,
+            "amount": 10,
+            "price": 95
+          },
+          {
+            "id": 23123,
+            "amount": 10,
+            "price": 145
+          },
+          {
+            "id": 23125,
+            "amount": 10,
+            "price": 95
+          },
+          {
+            "id": 23126,
+            "amount": 10,
+            "price": 145
+          }
+        ]
+      }
+    ]
+  }
+]

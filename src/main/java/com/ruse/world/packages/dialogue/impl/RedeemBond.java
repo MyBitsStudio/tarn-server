@@ -31,7 +31,7 @@ public class RedeemBond extends Dialogue {
 
     @Override
     public String[] items() {
-        return new String[]{String.valueOf(this.item), "1"};
+        return new String[]{String.valueOf(this.item), "1", "BOND"};
     }
 
     @Override
@@ -59,11 +59,12 @@ public class RedeemBond extends Dialogue {
         int amount = 0;
         switch(option){
             case FIRST_OPTION_OF_TWO-> {
+                end();
                 switch(item){
-                    case 23057 -> amount = 10;
-                    case 23058 -> amount = 25;
-                    case 23059 -> amount = 100;
-                    case 23060 -> amount = 250;
+                    case 23057 -> amount = 100;
+                    case 23058 -> amount = 250;
+                    case 23059 -> amount = 1000;
+                    case 23060 -> amount = 2500;
                 }
                 if (getPlayer().getInventory().contains(item)) {
                     PlayerLogs.log(getPlayer().getUsername(),
@@ -77,16 +78,13 @@ public class RedeemBond extends Dialogue {
 
                     getPlayer().getInventory().delete(item, amounts);
                     getPlayer().incrementAmountDonated(amount);
-                    getPlayer().incrementAmountDonatedToday(amount);
-                    getPlayer().getPointsHandler().setDonatorPoints(amount, true);
-                    getPlayer().getSeasonPass().incrementExp(4020 * (amount >= 100 ? (amount * 2) : amount), false);
+                    getPlayer().getPlayerVIP().addPoints(amount);
+                    getPlayer().getSeasonPass().incrementExp(1020 * (amount >= 100 ? (amount * 2) : amount), false);
                     getPlayer().getPacketSender().sendMessage("Your account has gained funds worth $" + (amount)
                             + ". Your total is now at $" + getPlayer().getAmountDonated() + ".");
-                    getPlayer().getPacketSender().sendMessage("Your have gained "+(7020 * (amount >= 100 ? (amount * 2) : amount)) +" BP exp");
-                    DonationManager.getInstance().handleDonor(getPlayer());
+                    getPlayer().getPacketSender().sendMessage("Your have gained "+(1020 * (amount >= 100 ? (amount * 2) : amount)) +" BP exp");
                     PlayerPanel.refreshPanel(getPlayer());
                 }
-                end();
                 return true;
             }
             case SECOND_OPTION_OF_TWO -> {

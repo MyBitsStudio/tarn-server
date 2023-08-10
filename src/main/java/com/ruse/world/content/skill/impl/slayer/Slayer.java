@@ -2,7 +2,6 @@ package com.ruse.world.content.skill.impl.slayer;
 
 import com.ruse.GameSettings;
 import com.ruse.model.*;
-import com.ruse.model.container.impl.Shop.ShopManager;
 import com.ruse.model.definitions.NpcDefinition;
 import com.ruse.util.Misc;
 import com.ruse.world.World;
@@ -18,6 +17,7 @@ import com.ruse.world.entity.impl.player.Player;
 import com.ruse.world.packages.combat.CombatConstants;
 import com.ruse.world.packages.dialogue.DialogueManager;
 import com.ruse.world.packages.dialogue.impl.slayer.ReceivedTask;
+import com.ruse.world.packages.shops.ShopHandler;
 
 public class Slayer {
 
@@ -447,7 +447,7 @@ public class Slayer {
                     player.getPacketSender().sendInterfaceRemoval();
                     break;
                 case -29531:
-                    ShopManager.getShops().get(47).open(player);
+                    ShopHandler.getShop(2).ifPresent(shop -> shop.send(player, true));
                     break;
             }
             player.getPacketSender().sendString(36030,

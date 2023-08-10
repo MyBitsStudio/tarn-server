@@ -92,12 +92,6 @@ public class InstanceManager {
             return;
         }
 
-        if(player.getLocation() != Locations.Location.INSTANCE_LOBBY){
-            player.sendMessage("Are you trying to abuse our system?");
-            AdminCord.sendMessage(1116222441614745610L, "[" + player.getUsername() + "] is manipulating instances.");
-            return;
-        }
-
         if(takeItem(player, data)) {
             player.sendMessage("You don't have x"+data.getCost().getAmount()+" of "+ItemDefinition.forId(data.getCost().getId()).getName());
             return;
@@ -117,12 +111,6 @@ public class InstanceManager {
         if(!Objects.equals(player.getInstanceId(), "")){
             instances.get(player.getInstanceId()).removePlayer(player);
             player.setInstanceId("");
-            return;
-        }
-
-        if(player.getLocation() != Locations.Location.INSTANCE_LOBBY){
-            player.sendMessage("Are you trying to abuse our system?");
-            AdminCord.sendMessage(1116222441614745610L, "[" + player.getUsername() + "] is manipulating instances.");
             return;
         }
 
@@ -161,12 +149,6 @@ public class InstanceManager {
         if(!Objects.equals(player.getInstanceId(), "")){
             instances.get(player.getInstanceId()).removePlayer(player);
             player.setInstanceId("");
-            return;
-        }
-
-        if(player.getLocation() != Locations.Location.INSTANCE_LOBBY){
-            player.sendMessage("Are you trying to abuse our system?");
-            AdminCord.sendMessage(1116222441614745610L, "[" + player.getUsername() + "] is manipulating instances.");
             return;
         }
 
@@ -209,12 +191,6 @@ public class InstanceManager {
         if(!Objects.equals(player.getInstanceId(), "")){
             instances.get(player.getInstanceId()).removePlayer(player);
             player.setInstanceId("");
-            return;
-        }
-
-        if(player.getLocation() != Locations.Location.INSTANCE_LOBBY){
-            player.sendMessage("Are you trying to abuse our system?");
-            AdminCord.sendMessage(1116222441614745610L, "[" + player.getUsername() + "] is manipulating instances.");
             return;
         }
 

@@ -69,32 +69,13 @@ public class ForgeShopData {
             {
                     {       // tier 1 other
 
-                            new ForgeShopItem(21815,1),
-                            new ForgeShopItem(9084,15),
-                            new ForgeShopItem(2380,5),
-                            new ForgeShopItem(741,10),
-                            new ForgeShopItem(23219,30),
-                            new ForgeShopItem(8788,3),
+                            new ForgeShopItem(21815,1)
                     },
                     {       // tier 2 other
-                            new ForgeShopItem(21814,3),
-                            new ForgeShopItem(21816,10),
-                            new ForgeShopItem(23178,40),
-                            new ForgeShopItem(22110,60),
-                            new ForgeShopItem(13650,2),
-                            new ForgeShopItem(742,15),
+                            new ForgeShopItem(21814,3)
                     },
                     {       // tier 3 other
-                            new ForgeShopItem(4442,100),
-                            new ForgeShopItem(4440,250),
-                            new ForgeShopItem(743,120),
-                            new ForgeShopItem(13019,500),
-                            new ForgeShopItem(3686,5000),
-                            new ForgeShopItem(15003,50),
-                            new ForgeShopItem(15002,250),
-                            new ForgeShopItem(15004,600),
-                            new ForgeShopItem(20491,1100),
-                            new ForgeShopItem(20490,1900),
+                            new ForgeShopItem(4442,100)
                     },
             }
     };

@@ -32,7 +32,7 @@ public class StarterTrack extends Track {
         this.rewards = new StarterTrackRewards();
         this.hasPremium = false;
         this.position = 0;
-        this.maxLevel = 100;
+        this.maxLevel = 341;
         for(StarterTasks task : StarterTasks.values())
             tasks.put(task, false);
     }
@@ -79,6 +79,40 @@ public class StarterTrack extends Track {
                 if (!tasks.get(task)) {
                     if (KillsTracker.getTotalKillsForNpc(npcId, player) >= task.getCount()) {
                         tasks.put(task, true);
+                        reward(task);
+                        addXP(task.getXp());
+                    }
+                }
+            }
+        }
+    }
+
+    public void handleSkillCount(int amount){
+        List<StarterTasks> tasks = StarterTasks.getSkillTasks();
+        for(StarterTasks task : tasks){
+            if(task != null){
+                if(!this.tasks.containsKey(task))
+                    this.tasks.put(task, false);
+                if(!this.tasks.get(task)){
+                    if(amount >= task.getCount()){
+                        this.tasks.put(task, true);
+                        reward(task);
+                        addXP(task.getXp());
+                    }
+                }
+            }
+        }
+    }
+
+    public void handleTower(int level){
+        List<StarterTasks> tasks = StarterTasks.getMiniTasks();
+        for(StarterTasks task : tasks){
+            if(task != null){
+                if(!this.tasks.containsKey(task))
+                    this.tasks.put(task, false);
+                if(!this.tasks.get(task)){
+                    if(level >= task.getCount()){
+                        this.tasks.put(task, true);
                         reward(task);
                         addXP(task.getXp());
                     }

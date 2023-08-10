@@ -2,8 +2,8 @@ package com.ruse.world.packages.dialogue.impl.tp;
 
 import com.ruse.model.definitions.ItemDefinition;
 import com.ruse.util.Misc;
-import com.ruse.world.content.tradingpost.TradingPost;
-import com.ruse.world.content.tradingpost.models.Offer;
+import com.ruse.world.packages.tradingpost.TradingPost;
+import com.ruse.world.packages.tradingpost.models.Offer;
 import com.ruse.world.entity.impl.player.Player;
 import com.ruse.world.packages.dialogue.Dialogue;
 import com.ruse.world.packages.dialogue.DialogueExpression;
