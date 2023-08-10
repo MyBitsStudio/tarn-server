@@ -42,7 +42,7 @@ public class EffectHandler {
         if(p.getEquipment().getBonus() != null){
             if(Objects.equals(p.getEquipment().getBonus().perk(), AOE_3)){
                 handleAoE(p, victim,
-                        3);
+                        6);
             }
         }
 
