@@ -19,6 +19,7 @@ import com.ruse.world.entity.impl.npc.NPC;
 import com.ruse.world.entity.impl.player.Player;
 import com.ruse.world.packages.ranks.StaffRank;
 import com.ruse.world.packages.shops.ShopHandler;
+import com.ruse.world.packages.shops.ShopItem;
 import com.ruse.world.packages.shops.TabShop;
 import com.ruse.world.region.Region;
 import com.ruse.world.region.RegionManager;
@@ -833,6 +834,28 @@ public class PacketSender {
                 out.putInt(item.getAmount(), ByteOrder.INVERSE_MIDDLE);
             } else {
                 out.put(item.getAmount());
+            }
+            out.putShort(item.getId() + 1, ValueType.A, ByteOrder.LITTLE);
+        }
+        player.getSession().queueMessage(out);
+        return this;
+    }
+
+    public PacketSender sendItemContainerArray(ShopItem[] container, int interfaceId) {
+        PacketBuilder out = new PacketBuilder(53, PacketType.SHORT);
+        out.putInt(interfaceId);
+        out.putShort(container.length);
+        for (ShopItem item : container) {
+            if (item == null) {
+                out.put(0);
+                out.putShort(0, ValueType.A, ByteOrder.LITTLE);
+                continue;
+            }
+            if (item.getStock() > 254) {
+                out.put((byte) 255);
+                out.putInt(item.getStock(), ByteOrder.INVERSE_MIDDLE);
+            } else {
+                out.put(item.getStock());
             }
             out.putShort(item.getId() + 1, ValueType.A, ByteOrder.LITTLE);
         }

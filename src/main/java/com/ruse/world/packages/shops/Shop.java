@@ -2,6 +2,7 @@ package com.ruse.world.packages.shops;
 
 import com.ruse.world.entity.impl.player.Player;
 import lombok.Getter;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -43,17 +44,16 @@ public class Shop {
         }
     }
 
-    public void send(Player player){
-        AtomicInteger index = new AtomicInteger(162001);
-        items.forEach(item -> {
-            if(item == null)
-                return;
-            player.getPacketSender().sendItemOnInterface(index.getAndIncrement(), item.getId(), item.getStock());
-        });
+    public void send(@NotNull Player player){
+        player.getPacketSender().sendItemContainerArray(items.toArray(new ShopItem[0]), 162001);
     }
 
     public ShopItem getItem(int id){
         return this.items.stream().filter(item -> item.getId() == id).findFirst().orElse(null);
+    }
+
+    public ShopItem[] asArray(){
+        return this.items.toArray(new ShopItem[0]);
     }
 
     public void resetUpdate(){

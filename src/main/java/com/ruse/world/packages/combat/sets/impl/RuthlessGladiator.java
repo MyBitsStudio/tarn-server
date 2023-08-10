@@ -7,7 +7,7 @@ public class RuthlessGladiator extends SetBonus {
 
     @Override
     public double meleeDamage(){
-        return 0.10;
+        return 1.10;
     }
 
     @Override

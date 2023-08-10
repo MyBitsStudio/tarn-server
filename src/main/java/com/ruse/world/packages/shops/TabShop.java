@@ -104,10 +104,6 @@ public class TabShop {
 
         for(int i = 160006; i < 160020; i++)
             player.getPacketSender().sendInterfaceVisibility(i, false);
-
-        for(int i = 162001; i < 162136; i++){
-            player.getPacketSender().sendItemOnInterface(i, -1, 0);
-        }
     }
 
     private void refresh(Player player){

@@ -45,7 +45,7 @@ public class ItemContainerActionPacketListener implements PacketListener {
 			if(player.getEquipment().handleContainer(slot, 1, id))
 				return;
 
-		if(ShopHandler.handleShop(player, interfaceId, 1, slot))
+		if(ShopHandler.handleShop(player, interfaceId, 1, slot, id))
 			return;
 
 
@@ -298,7 +298,7 @@ public class ItemContainerActionPacketListener implements PacketListener {
 			if(player.getEquipment().handleContainer(slot, 2, id))
 				return;
 
-		if(ShopHandler.handleShop(player, interfaceId, 2, slot))
+		if(ShopHandler.handleShop(player, interfaceId, 2, slot, id))
 			return;
 
 		switch (interfaceId) {
