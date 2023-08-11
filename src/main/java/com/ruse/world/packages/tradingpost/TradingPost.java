@@ -163,7 +163,8 @@ public class TradingPost {
                 page--;
                 return;
             }
-            viewingOffers = LIVE_OFFERS.subList(Math.min(LIVE_OFFERS.size(), page * 50), Math.min(LIVE_OFFERS.size(), page * 50 + 50)).stream().toList();
+            viewingOffers = LIVE_OFFERS.subList(Math.min(LIVE_OFFERS.size(), page * 50), Math.min(LIVE_OFFERS.size(), page * 50 + 50))
+                    .stream().filter(offer -> !offer.getSeller().equalsIgnoreCase(player.getUsername())).toList();
         } else {
             viewingOffers = LIVE_OFFERS.
                     stream()
@@ -180,7 +181,8 @@ public class TradingPost {
                     page--;
                     return;
                 }
-                viewingOffers = viewingOffers.subList(Math.min(viewingOffers.size(), page * 50), Math.min(viewingOffers.size(), page * 50 + 50));
+                viewingOffers = viewingOffers.subList(Math.min(viewingOffers.size(), page * 50), Math.min(viewingOffers.size(), page * 50 + 50))
+                        .stream().filter(offer -> !offer.getSeller().equalsIgnoreCase(player.getUsername())).toList();
             }
         }
         sendBuyingPageData();
@@ -367,6 +369,7 @@ public class TradingPost {
             case 150274, 150861, 150848 -> player.getPacketSender().sendMessage(":tsearch:");
             case 150279,150859 -> player.getPacketSender().removeOverlay();
             case 150434 -> collectCoffer();
+            case 150432 -> player.getPacketSender().sendInterfaceOverlay(MAIN_INTERFACE_ID, 150857);
             case 150849 -> {
                 page++;
                 viewBuyingPage();
