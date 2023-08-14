@@ -9,22 +9,17 @@ import com.ruse.model.definitions.NpcDefinition;
 import com.ruse.world.World;
 import com.ruse.world.content.KillsTracker;
 import com.ruse.world.packages.bosses.SingleBossSinglePlayerInstance;
-import com.ruse.world.packages.bosses.crucio.CrucioInstance;
-import com.ruse.world.packages.bosses.multi.MultiBossFlashInstance;
 import com.ruse.world.packages.bosses.multi.impl.CounterInstance;
 import com.ruse.world.packages.bosses.multi.MultiBossNormalInstance;
 import com.ruse.world.packages.bosses.multi.impl.DonatorSpecialInstance;
 import com.ruse.world.packages.bosses.multi.impl.IronmanInstance;
 import com.ruse.world.packages.bosses.multi.impl.VoteSpecialInstance;
-import com.ruse.world.content.discordbot.AdminCord;
-import com.ruse.world.packages.donation.FlashDeals;
+import com.ruse.world.packages.bosses.single.agthomoth.AgthomothInstance;
 import com.ruse.world.entity.impl.player.Player;
-import com.ruse.world.packages.mode.GameModeConstants;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class InstanceManager {
@@ -48,34 +43,51 @@ public class InstanceManager {
     }
 
     public void startEventInstance(Player player, InstanceInterData data){
-//        if(player.getInstance() != null) {
-//            player.getInstance().clear();
-//            player.setInstance(null);
-//            return;
-//        }
-//
-//        if(!Objects.equals(player.getInstanceId(), "")){
-//            instances.get(player.getInstanceId()).removePlayer(player);
-//            player.setInstanceId("");
-//            return;
-//        }
-//
-//        if(player.getLocation() != Locations.Location.INSTANCE_LOBBY){
-//            player.sendMessage("Are you trying to abuse our system?");
-//            AdminCord.sendMessage(1116222441614745610L, "[" + player.getUsername() + "] is manipulating instances.");
-//            return;
-//        }
-//
-//        if(takeItem(player, data)) {
-//            player.sendMessage("You don't have x"+data.getCost().getAmount()+" of "+ItemDefinition.forId(data.getCost().getId()).getName());
-//            return;
-//        }
-//
-//        Instance instance = new MultiBossFlashInstance(player,
+        if(player.getInstance() != null) {
+            player.getInstance().clear();
+            player.setInstance(null);
+            return;
+        }
+
+        if(!Objects.equals(player.getInstanceId(), "")){
+            instances.get(player.getInstanceId()).removePlayer(player);
+            player.setInstanceId("");
+            return;
+        }
+
+        switch(data.getNpcId()){
+            case 10835 -> {
+                if(!World.handler.eventActive("Solstice"))
+                    return;
+
+                if(takeItem(player, data)) {
+                     player.sendMessage("You don't have x"+data.getCost().getAmount()+" of "+ItemDefinition.forId(data.getCost().getId()).getName());
+                 return;
+                }
+
+//                Instance instance = new MultiBossFlashInstance(player,
 //                data.getNpcId(), data.getSpawns(), data.getCap());
 //
-//        instances.put(instance.getInstanceId(), instance);
-//        instance.start();
+//                instances.put(instance.getInstanceId(), instance);
+//                instance.start();
+            }
+            case 1736 -> {
+                if(!World.handler.eventActive("Solstice"))
+                    return;
+
+                if(takeItem(player, data)) {
+                    player.sendMessage("You don't have x"+data.getCost().getAmount()+" of "+ItemDefinition.forId(data.getCost().getId()).getName());
+                    return;
+                }
+
+                Instance instance = new MultiBossNormalInstance(player,
+                        data.getNpcId(), data.getSpawns(), (1000 * 60 * 15));
+
+                instances.put(instance.getInstanceId(), instance);
+                instance.start();
+            }
+        }
+
 
     }
 
@@ -160,9 +172,7 @@ public class InstanceManager {
         SingleBossSinglePlayerInstance instance = null;
 
         switch(data.getNpcId()){
-            case 589:
-                instance = new CrucioInstance(player);
-                break;
+            case 3013 -> instance = new AgthomothInstance(player);
         }
 
         if(instance == null)
@@ -173,6 +183,7 @@ public class InstanceManager {
             player.sendMessage(instance.failedEntry());
             return;
         }
+
         instances.put(instance.getInstanceId(), instance);
         instance.start();
     }
@@ -336,9 +347,6 @@ public class InstanceManager {
 
         int npcId = 0, amount, base = data.getNpcId();
 
-        if(player.getSlayer().getSlayerTask().getNpcId() == base)
-            return true;
-
         if(handleSpecialLock(base)){
             return returnSpecial(player, base);
         }
@@ -359,9 +367,6 @@ public class InstanceManager {
     private boolean returnSpecial(Player player, int base){
         return switch (base) {
             case 9017 -> KillsTracker.getTotalKills(player) >= 50000;
-            case 591, 593, 587, 8013 -> true;
-            case 1880 -> GameModeConstants.isIronman(player);
-            case 1120 -> FlashDeals.getDeals().isActive();
             default -> false;
         };
     }

@@ -9,6 +9,7 @@ import com.ruse.world.World;
 import com.ruse.world.entity.Entity;
 import com.ruse.world.entity.impl.npc.NPC;
 import com.ruse.world.entity.impl.player.Player;
+import com.ruse.world.packages.bosses.BossLocations;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.LinkedList;

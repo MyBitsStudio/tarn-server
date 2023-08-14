@@ -14,10 +14,10 @@ import com.ruse.world.content.Sounds.Sound;
 import com.ruse.world.content.StarterTasks.StarterTaskData;
 import com.ruse.world.packages.dialogue.DialogueManager;
 import com.ruse.world.packages.dialogue.impl.RedeemBond;
+import com.ruse.world.packages.items.monic.Monics;
 import com.ruse.world.packages.packs.basic.PackOpener;
 import com.ruse.world.packages.packs.casket.Box;
 import com.ruse.world.packages.packs.casket.BoxLoot;
-import com.ruse.world.packages.packs.casket.CasketOpening;
 import com.ruse.world.packages.packs.casket.impl.EliteSlayerCasket;
 import com.ruse.world.packages.packs.casket.impl.SlayerCasket;
 import com.ruse.world.content.cluescrolls.ClueScroll;
@@ -42,7 +42,7 @@ import com.ruse.world.content.transportation.*;
 import com.ruse.world.entity.impl.player.Player;
 import com.ruse.world.packages.packs.gearpack.GearPack;
 import com.ruse.world.packages.packs.gearpack.GearPacks;
-import com.ruse.world.packages.packs.basic.impl.*;
+import com.ruse.world.packages.packs.locked.Locks;
 import com.ruse.world.packages.packs.scratch.impl.RareScratchI;
 import com.ruse.world.packages.packs.scratch.impl.ScratchI;
 import com.ruse.world.packages.slot.SlotItems;
@@ -111,9 +111,6 @@ public class ItemActionPacketListener implements PacketListener {
          * if(interfaceId == 38274) { Construction.handleItemClick(itemId, player);
          * return; }
          */
-        if (Misc.checkForOwner()) {
-            // System.out.println("Slot: " + slot + ", itemId: " + itemId + ", interface: " + interfaceId);
-        }
         if (slot < 0 || slot > player.getInventory().capacity())
             return;
         if (player.getInventory().getItems()[slot].getId() != itemId)
@@ -125,6 +122,9 @@ public class ItemActionPacketListener implements PacketListener {
             System.out.println("Item name is none");
             return;
         }
+
+        if(Locks.handleLocks(player, itemId))
+            return;
 
         if(PackOpener.openPack(player, itemId))
             return;
@@ -159,6 +159,9 @@ public class ItemActionPacketListener implements PacketListener {
         if(SlotItems.handlePerk(player, slot)){
             return;
         }
+
+        if(Monics.handleMonic(player, itemId))
+            return;
 
         if(GearPacks.isPack(itemId)) {
             if(GearPacks.isRandom(itemId))
@@ -493,15 +496,6 @@ public class ItemActionPacketListener implements PacketListener {
                 player.getInventory().delete(15359, 1);
                 player.setDoubleDMGTimer(3000);
                 TaskManager.submit(new DoubleDMGTask(player));
-                break;
-            case 19659:
-                if(player.getPSettings().getBooleanValueDef("summer-unlock")){
-                    player.sendMessage("You already have this unlocked.");
-                    return;
-                }
-                player.getInventory().delete(19659, 1);
-                player.getPSettings().setSetting("summer-unlock", true);
-                player.sendMessage("You have unlocked the summer event! Check out your new calendar with ::daily!");
                 break;
 //            case 11858:
 //            case 11860:
@@ -1776,35 +1770,36 @@ public class ItemActionPacketListener implements PacketListener {
                 }
                 player.getClickDelay().reset();
                 player.getInventory().delete(15682, 1);
-                player.getInventory().add(23020, Misc.random(6));
+                player.getInventory().add(23020, Misc.random(3));
+                player.getInventory().add(4000, Misc.random(3));
                 break;
-            case 11884:
-                player.getInventory().delete(11884, 1);
-                player.getInventory().add(2595, 1).refreshItems();
-                player.getInventory().add(2591, 1).refreshItems();
-                player.getInventory().add(3473, 1).refreshItems();
-                player.getInventory().add(2597, 1).refreshItems();
-                break;
-            case 11882:
-                player.getInventory().delete(11882, 1);
-                player.getInventory().add(2595, 1).refreshItems();
-                player.getInventory().add(2591, 1).refreshItems();
-                player.getInventory().add(2593, 1).refreshItems();
-                player.getInventory().add(2597, 1).refreshItems();
-                break;
-            case 11906:
-                player.getInventory().delete(11906, 1);
-                player.getInventory().add(7394, 1).refreshItems();
-                player.getInventory().add(7390, 1).refreshItems();
-                player.getInventory().add(7386, 1).refreshItems();
-                break;
-            case 15262:
-                if (!player.getClickDelay().elapsed(1000))
-                    return;
-                player.getInventory().delete(15262, 1);
-                player.getInventory().add(18016, 10000).refreshItems();
-                player.getClickDelay().reset();
-                break;
+//            case 11884:
+//                player.getInventory().delete(11884, 1);
+//                player.getInventory().add(2595, 1).refreshItems();
+//                player.getInventory().add(2591, 1).refreshItems();
+//                player.getInventory().add(3473, 1).refreshItems();
+//                player.getInventory().add(2597, 1).refreshItems();
+//                break;
+//            case 11882:
+//                player.getInventory().delete(11882, 1);
+//                player.getInventory().add(2595, 1).refreshItems();
+//                player.getInventory().add(2591, 1).refreshItems();
+//                player.getInventory().add(2593, 1).refreshItems();
+//                player.getInventory().add(2597, 1).refreshItems();
+//                break;
+//            case 11906:
+//                player.getInventory().delete(11906, 1);
+//                player.getInventory().add(7394, 1).refreshItems();
+//                player.getInventory().add(7390, 1).refreshItems();
+//                player.getInventory().add(7386, 1).refreshItems();
+//                break;
+//            case 15262:
+//                if (!player.getClickDelay().elapsed(1000))
+//                    return;
+//                player.getInventory().delete(15262, 1);
+//                player.getInventory().add(18016, 10000).refreshItems();
+//                player.getClickDelay().reset();
+//                break;
             case 6:
                 // DwarfMultiCannon.setupCannon(player);
                 player.getPacketSender().sendMessage("Cannon is disabled.");
@@ -1902,27 +1897,23 @@ public class ItemActionPacketListener implements PacketListener {
         }
 
         switch (itemId) {
-
-            case 3686:
-                if (player.getSeasonPass().isPremium() != false) {
+            case 3686 -> {
+                if (player.getSeasonPass().isPremium()) {
                     player.sendMessage("You're already a premium member of the Battle Pass.");
                     return;
                 }
                 player.sendMessage("You've claimed the Premium Battle Pass.");
                 player.getSeasonPass().setPremium(true);
                 player.getInventory().delete(3686, 1);
-                break;
-
-            case 3253:
+            }
+            case 3253 ->
                 //	player.getInventory().delete(itemId, 1);
-                player.getMinimeSystem().despawn();
-                break;
-
-            case 13591:
+                    player.getMinimeSystem().despawn();
+            case 13591 -> {
                 player.getPacketSender().sendMessage("You rub the enchanted key to teleport to chest area.");
                 Position position = new Position(2706, 2737, 0);
                 TeleportHandler.teleportPlayer(player, position, TeleportType.NORMAL);
-                break;
+            }
 //            case 6500:
 //                if (player.getCombatBuilder().isAttacking() || player.getCombatBuilder().isBeingAttacked()) {
 //                    player.getPacketSender().sendMessage("You cannot configure this right now.");
@@ -1932,120 +1923,72 @@ public class ItemActionPacketListener implements PacketListener {
 //                DialogueManager.start(player, 101);
 //                player.setDialogueActionId(60);
 //                break;
-            case 1712: // glory start
-            case 1710:
-            case 1708:
-            case 1706: // glory end
-            case 11118: // cb brace start
-            case 11120:
-            case 11122:
-            case 11124: // cb brace end
-            case 2552: // duel start
-            case 2554:
-            case 2556:
-            case 2558:
-            case 2560:
-            case 2562:
-            case 2564:
-            case 2566: // duel end
-            case 3853: // games start
-            case 3855:
-            case 3857:
-            case 3859:
-            case 3861:
-            case 3863:
-            case 3865:
-            case 3867: // games end
-            case 11194: // digsite start
-            case 11193:
-            case 11192:
-            case 11191:
-            case 11190: // digsite start
+            // glory start
+            // glory end
+            // cb brace start
+            // cb brace end
+            // duel start
+            // duel end
+            // games start
+            // games end
+            // digsite start
+            case 1712, 1710, 1708, 1706, 11118, 11120, 11122, 11124, 2552, 2554, 2556, 2558, 2560, 2562, 2564, 2566, 3853, 3855, 3857, 3859, 3861, 3863, 3865, 3867, 11194, 11193, 11192, 11191, 11190 -> { // digsite start
                 Position position1 = new Position(2074, 4456, 0);
                 TeleportHandler.teleportPlayer(player, position1, TeleportType.NORMAL);
-                break;
-            case 10362:
-                JewelryTeleporting.rub(player, itemId);
-                break;
-            case 10732:
-            case 4566:
-                player.performAnimation(new Animation(1835));
-                break;
+            }
+            case 10362 -> JewelryTeleporting.rub(player, itemId);
+            case 10732, 4566 -> player.performAnimation(new Animation(1835));
+
 //
             //
-            case 13263:
+            case 13263 -> {
                 if (player.getInventory().contains(13263) && player.getInventory().getAmount(5023) >= 1000) {
                     player.getInventory().delete(13263, 1).delete(5023, 1000).add(21075, 1);
                     player.getPacketSender().sendMessage("You have upgraded your slayer helmet");
                 } else {
                     player.getPacketSender().sendMessage("You need at least 1K Slayer tickets to upgrade your helmet.");
                 }
-                break;
-            case 21075:
+            }
+            case 21075 -> {
                 if (player.getInventory().contains(21075) && player.getInventory().getAmount(5023) >= 3000) {
                     player.getInventory().delete(21075, 1).delete(5023, 3000).add(21076, 1);
                     player.getPacketSender().sendMessage("You have upgraded your slayer helmet");
                 } else {
                     player.getPacketSender().sendMessage("You need at least 3K Slayer tickets to upgrade your helmet.");
                 }
-                break;
-            case 21076:
+            }
+            case 21076 -> {
                 if (player.getInventory().contains(21076) && player.getInventory().getAmount(5023) >= 6000) {
                     player.getInventory().delete(21076, 1).delete(5023, 6000).add(21077, 1);
                     player.getPacketSender().sendMessage("You have upgraded your slayer helmet");
                 } else {
                     player.getPacketSender().sendMessage("You need at least 6K Slayer tickets to upgrade your helmet.");
                 }
-                break;
-            case 21077:
+            }
+            case 21077 -> {
                 if (player.getInventory().contains(21077) && player.getInventory().getAmount(5023) >= 10000) {
                     player.getInventory().delete(21077, 1).delete(5023, 10000).add(21078, 1);
                     player.getPacketSender().sendMessage("You have upgraded your slayer helmet");
                 } else {
                     player.getPacketSender().sendMessage("You need at least 10K Slayer tickets to upgrade your helmet.");
                 }
-                break;
-            case 21078:
+            }
+            case 21078 -> {
                 if (player.getInventory().contains(21077) && player.getInventory().getAmount(5023) >= 20000) {
                     player.getInventory().delete(21077, 1).delete(5023, 20000).add(21079, 1);
                     player.getPacketSender().sendMessage("You have upgraded your slayer helmet");
                 } else {
                     player.getPacketSender().sendMessage("You need at least 20K Slayer tickets to upgrade your helmet.");
                 }
-                break;
-
-
-            case 11113:
-                player.getPacketSender().sendMessage("All skill teleports are available in the skills tab.");
-                break;
-
-            case 1704:
-                player.getPacketSender().sendMessage("Your amulet has run out of charges.");
-                break;
-            case 11126:
-                player.getPacketSender().sendMessage("Your bracelet has run out of charges.");
-                break;
-            case 13281:
-            case 13282:
-            case 13283:
-            case 13284:
-            case 13285:
-            case 13286:
-            case 13287:
-            case 13288:
-
-                player.getSlayer().handleSlayerRingTP(itemId);
-                break;
-            case 18819:
-                player.getSlayer().handleSlayerRingTP2(itemId);
-                break;
-            case 5509:
-            case 5510:
-            case 5512:
-            case 5514:
-                RunecraftingPouches.check(player, RunecraftingPouch.forId(itemId));
-                break;
-            case 2550:
+            }
+            case 11113 -> player.getPacketSender().sendMessage("All skill teleports are available in the skills tab.");
+            case 1704 -> player.getPacketSender().sendMessage("Your amulet has run out of charges.");
+            case 11126 -> player.getPacketSender().sendMessage("Your bracelet has run out of charges.");
+            case 13281, 13282, 13283, 13284, 13285, 13286, 13287, 13288 ->
+                    player.getSlayer().handleSlayerRingTP(itemId);
+            case 18819 -> player.getSlayer().handleSlayerRingTP2(itemId);
+            case 5509, 5510, 5512, 5514 -> RunecraftingPouches.check(player, RunecraftingPouch.forId(itemId));
+            case 2550 -> {
                 if (!player.getInventory().contains(2550)) {
                     player.getPacketSender().sendMessage("You must have a ring of recoil in your inventory to do this.");
                     return;
@@ -2057,9 +2000,8 @@ public class ItemActionPacketListener implements PacketListener {
                 player.getInventory().delete(2550, 1);
                 player.setRecoilCharges(0);
                 player.getPacketSender().sendMessage("Your ring of recoil turns to dust, and your charges are reset.");
-                break;
-
-            case 12926:
+            }
+            case 12926 -> {
                 int charges = player.getBlowpipeCharges();
                 if (!player.getInventory().contains(12926)) {
                     return;
@@ -2076,74 +2018,72 @@ public class ItemActionPacketListener implements PacketListener {
                 } else {
                     player.getPacketSender().sendMessage("You need an inventory space.");
                 }
-                break;
-            case ItemDefinition.COIN_ID:
-                ConvertCoins.convertMillCoins(player);
-                break;
-            case 19131:
+            }
+            case ItemDefinition.COIN_ID -> ConvertCoins.convertMillCoins(player);
+            case 19131 -> {
                 if (player.getInventory().contains(19131) && player.getInventory().getAmount(12657) >= 1000) {
                     player.getInventory().delete(19131, 1).delete(12657, 1000).add(19130, 1);
                     player.getPacketSender().sendMessage("You have upgraded your boots!");
                 } else {
                     player.getPacketSender().sendMessage("You need at least 1000 Pebbles to upgrade your boots.");
                 }
-                break;
-            case 19130:
+            }
+            case 19130 -> {
                 if (player.getInventory().contains(19130) && player.getInventory().getAmount(12657) >= 2000) {
                     player.getInventory().delete(19130, 1).delete(12657, 2000).add(19129, 1);
                     player.getPacketSender().sendMessage("You have upgraded your boots!");
                 } else {
                     player.getPacketSender().sendMessage("You need at least 2000 Pebbles to upgrade your boots.");
                 }
-                break;
-            case 19129:
+            }
+            case 19129 -> {
                 if (player.getInventory().contains(19129) && player.getInventory().getAmount(12657) >= 3000) {
                     player.getInventory().delete(19129, 1).delete(12657, 3000).add(19128, 1);
                     player.getPacketSender().sendMessage("You have upgraded your Steel boots!");
                 } else {
                     player.getPacketSender().sendMessage("You need at least 3000 Pebbles to upgrade your boots.");
                 }
-                break;
-            case 19128:
+            }
+            case 19128 -> {
                 if (player.getInventory().contains(19128) && player.getInventory().getAmount(12657) >= 4000) {
                     player.getInventory().delete(19128, 1).delete(12657, 4000).add(19127, 1);
                     player.getPacketSender().sendMessage("You have upgraded your boots!");
                 } else {
                     player.getPacketSender().sendMessage("You need at least 4000 Pebbles to upgrade your boots.");
                 }
-                break;
-            case 19127:
+            }
+            case 19127 -> {
                 if (player.getInventory().contains(19127) && player.getInventory().getAmount(12657) >= 5000) {
                     player.getInventory().delete(19127, 1).delete(12657, 5000).add(19126, 1);
                     player.getPacketSender().sendMessage("You have upgraded your boots!");
                 } else {
                     player.getPacketSender().sendMessage("You need at least 5000 Pebbles to upgrade your boots.");
                 }
-                break;
-            case 19126:
+            }
+            case 19126 -> {
                 if (player.getInventory().contains(19126) && player.getInventory().getAmount(12657) >= 6000) {
                     player.getInventory().delete(19126, 1).delete(12657, 6000).add(19125, 1);
                     player.getPacketSender().sendMessage("You have upgraded your boots!");
                 } else {
                     player.getPacketSender().sendMessage("You need at least 6000 Pebbles to upgrade your boots.");
                 }
-                break;
-            case 19125:
+            }
+            case 19125 -> {
                 if (player.getInventory().contains(19125) && player.getInventory().getAmount(12657) >= 7000) {
                     player.getInventory().delete(19125, 1).delete(12657, 7000).add(19124, 1);
                     player.getPacketSender().sendMessage("You have upgraded your boots!");
                 } else {
                     player.getPacketSender().sendMessage("You need at least 7000 Pebbles to upgrade your boots.");
                 }
-                break;
-            case 19124:
+            }
+            case 19124 -> {
                 if (player.getInventory().contains(19124) && player.getInventory().getAmount(12657) >= 8000) {
                     player.getInventory().delete(19124, 1).delete(12657, 8000).add(19123, 1);
                     player.getPacketSender().sendMessage("You have upgraded your boots!");
                 } else {
                     player.getPacketSender().sendMessage("You need at least 8000 Pebbles to upgrade your boots.");
                 }
-                break;
+            }
 
             /*case 1438:
             case 1448:

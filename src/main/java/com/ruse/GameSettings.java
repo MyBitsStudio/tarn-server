@@ -352,4 +352,12 @@ public class GameSettings {
     public static boolean LOG_DONATIONS = true;
     public static boolean LOG_CLAN = true;
 
+
+
+    public static String DATABASE_URL = "jdbc:mysql://198.12.12.226:3306/tarnser1_website_core_en_91827";
+
+    public static String DATABASE_USER = "tarnser1_website_core_en_user_019278";
+
+    public static String DATABASE_PASS = "Z7W88DW4Q0lAWZ2v1oA1hbhd";
+
 }

@@ -24,8 +24,11 @@ public enum InstanceInterData {
             new Item(10835, 5000), 16, 100, 9818,
             InstanceType.SPECIAL),
 
-    SUMMER("Summer Solstice Boss", "",
-            new Item(10835, 5000), 16, 100, 3019,
+    SUMMER("Summer Solstice Boss", "Summer Solstice Event",
+            new Item(10835, 5000), 1, 100, 3019,
+            InstanceType.EVENT),
+    SUMMER_RANDOM("Solstice Devils", "Summer Solstice Event",
+            new Item(10835, 5000), 16, 100, 1736,
             InstanceType.EVENT),
 
     ZEIDAN("Zeidan Grimm", "",

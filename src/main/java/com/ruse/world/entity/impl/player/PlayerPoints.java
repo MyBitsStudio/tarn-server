@@ -1,21 +1,27 @@
 package com.ruse.world.entity.impl.player;
 
+import lombok.Getter;
+
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class PlayerPoints {
 
-    private final Player player;
-
+    @Getter
     private final Map<String, Integer> points = new ConcurrentHashMap<>();
 
-    public PlayerPoints(Player player) {
-        this.player = player;
+    public PlayerPoints() {
         start();
     }
 
     private void start(){
-        points.put("single-boss", 0);
+        points.put("voted", 0);
+        points.put("donated", 0);
+
+    }
+
+    public void load(Map<String, Integer> points){
+        this.points.putAll(points);
     }
 
     public void add(String name, int amount) {

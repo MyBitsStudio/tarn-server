@@ -35,13 +35,13 @@ public class PossibleLootInterface {
             rows = 6;
         player.getPacketSender().setScrollBar(101100, 2 + (rows * 35));
 
-        for (int z = i; z < (rows * 7 >= 42 ? rows * 7 : 42); z++) {
+        for (int z = i; z < (Math.max(rows * 7, 42)); z++) {
             player.getPacketSender().sendItemOnInterface(index++, -1, 1);
         }
     }
 
     public static boolean handleButton(Player player, int buttonID) {
-        if (buttonID >= 101262 && buttonID <= 101295) {
+        if (buttonID >= 101262 && buttonID <= 101312) {
             int index = (buttonID - 101262) / 2;
 
             if (index <= LootData.values().length)

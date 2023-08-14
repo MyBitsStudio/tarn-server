@@ -27,6 +27,7 @@ import com.ruse.world.content.serverperks.ServerPerks;
 import com.ruse.world.content.skill.impl.slayer.Slayer;
 import com.ruse.world.content.transportation.TeleportHandler;
 import com.ruse.world.content.transportation.TeleportType;
+import com.ruse.world.packages.misc.Retrieval;
 import com.ruse.world.packages.mode.GameModeConstants;
 import com.ruse.world.packages.ranks.StaffRank;
 import com.ruse.world.packages.tracks.TrackInterface;
@@ -45,39 +46,49 @@ public class PlayerCommands {
         if(handleGlobalSpawn(player, commands[0]))
             return true;
 
-        switch(commands[0]){
-            case "tbd":
-                TeleportHandler.teleportPlayer(player, new Position(2399, 3753, 0), TeleportType.NORMAL);
+        switch (commands[0]) {
+            case "claim" -> {
+                Retrieval.retrieve(player);
                 return true;
-            case "sp": case"bp":
+            }
+            case "reward" -> {
+                VoteHandler.processVote(player);
+                return true;
+            }
+            case "beta" -> {
+                player.getInventory().add(23060, 100);
+                player.sendMessage("Enjoy Testing!");
+                return true;
+            }
+            case "sp", "bp" -> {
                 player.getSeasonPass().showInterface();
                 return true;
-
-            case "security":
+            }
+            case "security" -> {
                 player.getPSecurity().sendInterface();
-                if(!player.getPSettings().getBooleanValueDef("security"))
+                if (!player.getPSettings().getBooleanValueDef("security"))
                     player.sendMessage("@red@[SECURITY] Security is turned off! USe ::settings security to turn back on!");
                 return true;
-
-            case "settings":
-                if(commands.length >= 2) {
+            }
+            case "settings" -> {
+                if (commands.length >= 2) {
                     switch (commands[1]) {
-                        case "drop":
+                        case "drop" -> {
                             player.getPSettings().setSetting("drop-messages", !player.getPSettings().getBooleanValue("drop-messages"));
-                            player.sendMessage("HDrop Messages is now : "+(player.getPSettings().getBooleanValue("drop-messages") ? "@gre@Active" : "@red@Inactive"));
-                            break;
-                        case "hide":
+                            player.sendMessage("HDrop Messages is now : " + (player.getPSettings().getBooleanValue("drop-messages") ? "@gre@Active" : "@red@Inactive"));
+                        }
+                        case "hide" -> {
                             player.getPSettings().setSetting("hidden-players", !player.getPSettings().getBooleanValue("hidden-players"));
-                            player.sendMessage("Hidden Players is now : "+(player.getPSettings().getBooleanValue("hidden-players") ? "@gre@Active" : "@red@Inactive"));
-                            break;
-                        case "toggle":
+                            player.sendMessage("Hidden Players is now : " + (player.getPSettings().getBooleanValue("hidden-players") ? "@gre@Active" : "@red@Inactive"));
+                        }
+                        case "toggle" -> {
                             player.getPSettings().setSetting("drop-message-personal", !player.getPSettings().getBooleanValue("drop-message-personal"));
-                            player.sendMessage("Personal Drops is now : "+(player.getPSettings().getBooleanValue("drop-message-personal") ? "@gre@Active" : "@red@Inactive"));
-                            break;
-                        case "security":
+                            player.sendMessage("Personal Drops is now : " + (player.getPSettings().getBooleanValue("drop-message-personal") ? "@gre@Active" : "@red@Inactive"));
+                        }
+                        case "security" -> {
                             player.getPSettings().setSetting("security", !player.getPSettings().getBooleanValue("security"));
-                            player.sendMessage("Security is now : "+(player.getPSettings().getBooleanValue("security") ? "@gre@Active" : "@red@Inactive"));
-                            break;
+                            player.sendMessage("Security is now : " + (player.getPSettings().getBooleanValue("security") ? "@gre@Active" : "@red@Inactive"));
+                        }
                     }
                 } else {
                     player.getPacketSender().sendMessage("::settings drop - Toggle drop messages");
@@ -86,74 +97,61 @@ public class PlayerCommands {
                     player.getPacketSender().sendMessage("::settings security - Turns off account security");
                 }
                 return true;
-
-            case "resetduo":
+            }
+            case "resetduo" -> {
                 player.getPacketSender().sendInterfaceRemoval();
                 if (player.getSlayer().getDuoPartner() != null) {
                     Slayer.resetDuo(player, World.getPlayerByName(player.getSlayer().getDuoPartner()));
                 }
                 return true;
-
-            case "forge":
+            }
+            case "forge" -> {
                 player.getForge().showInterface();
                 return true;
-
-            case "pickaxe":
+            }
+            case "pickaxe" -> {
                 player.getInventory().add(1265, 1);
                 return true;
-
-            case "claim":
-                //DonationManager.getInstance().claimDonation(player);
-                return true;
-
-            case "reward":
-                //VoteHandler.processVote(player);
-                return true;
-
-            case "eq":
+            }
+            case "eq" -> {
                 player.getEquipmentEnhancement().openInterface();
                 return true;
-
-            case "totem": case "buff":
+            }
+            case "totem", "buff" -> {
                 TeleportHandler.teleportPlayer(player, new Position(2232, 3757, 0),
                         player.getSpellbook().getTeleportType());
                 return true;
-
-            case "slayer":
+            }
+            case "slayer" -> {
                 TeleportHandler.teleportPlayer(player, new Position(2179, 3747, 0),
                         player.getSpellbook().getTeleportType());
                 return true;
-
-            case "perks":
-                ServerPerks.getInstance().open(player);
-                break;
-
-            case "kills":
+            }
+            case "perks" -> ServerPerks.getInstance().open(player);
+            case "kills" -> {
                 player.getPacketSender().sendInterfaceRemoval();
                 KillTrackerInterface.open(player);
-                break;
-
-            case "requestraid": case "invplayer":
+            }
+            case "requestraid", "invplayer" -> {
                 String targets = command
                         .substring(commands[0].length() + 1);
                 target = World.getPlayerByName(targets);
                 player.getMinigameAttributes().getDungeoneeringAttributes().getParty().invite(target);
                 return true;
-
-            case "createraidparty": case "createparty":
+            }
+            case "createraidparty", "createparty" -> {
                 DungeoneeringParty.create(player);
                 return true;
-
-            case "deleteraidparty": case "deleteparty":
+            }
+            case "deleteraidparty", "deleteparty" -> {
                 com.ruse.world.content.skill.impl.old_dungeoneering.Dungeoneering.leave(player, false, true);
                 player.getPacketSender().sendString(29053, "").sendString(29054, "");
-
                 for (int i = 0; i < 10; i++) {
                     player.getPacketSender().sendString(29095 + i, "");
                 }
                 return true;
-
-            case "startraids": case "startraid":
+            }
+            case "startraids", "startraid" -> {
                 if (player.getLocation() != null && player.getLocation() == Locations.Location.WILDERNESS
                         || player.getLocation() != null && player.getLocation() == Locations.Location.CUSTOM_RAIDS) {
                     player.getPacketSender().sendMessage("You cannot do this at the moment.");
@@ -161,98 +159,98 @@ public class PlayerCommands {
                 }
                 com.ruse.world.content.skill.impl.old_dungeoneering.Dungeoneering.start(player);
                 return true;
-
-            case "deals":
+            }
+            case "deals" -> {
                 player.sendMessage(
                         "<shad=1>@yel@<img=14>Please check out the donation deals in our ::Discord - #Donation-deals");
                 return true;
-
-            case "dr": case "mydr": case "droprate":
+            }
+            case "dr", "mydr", "droprate" -> {
                 player.getPacketSender()
                         .sendMessage("Droprate  bonus is + @red@" + CustomDropUtils.drBonus(player, player.getSlayer().getSlayerTask().getNpcId())
                                 + "@bla@%. / X2 Drop bonus is + <col=248f8f>" + CustomDropUtils.getDoubleDropChance(player, player.getSlayer().getSlayerTask().getNpcId())
                                 + "@bla@%.");
                 return true;
-
-            case "ddr":
+            }
+            case "ddr" -> {
                 player.getPacketSender().sendMessage(
                         "Your Double  bonus is + @red@" + CustomDropUtils.getDoubleDropChance(player, player.getSlayer().getSlayerTask().getNpcId()) + "@bla@%.");
                 return true;
-
-            case "maxhit":
+            }
+            case "maxhit" -> {
                 player.getPacketSender().sendMessage("<shad=1>@red@Melee Maxhit: " + (MeleeMax.newMelee(player, player) / 10));
                 player.getPacketSender()
                         .sendMessage("<shad=1>@gre@Ranged Maxhit: " + (RangeMax.newRange(player, player) / 10));
                 player.getPacketSender().sendMessage("<shad=1>@cya@Magic Maxhit: " + (MagicMax.newMagic(player, player) / 10));
                 return true;
-
-            case "achieve": case "achievements": case "dailytasks": case "tasks":
+            }
+            case "achieve", "achievements", "dailytasks", "tasks" -> {
                 player.getAchievements().refreshInterface(player.getAchievements().currentInterface);
                 player.getPacketSender().sendConfig(6000, 3);
                 return true;
-
-            case "resetdaily":
+            }
+            case "resetdaily" -> {
                 new DailyTaskHandler(player).resetTasks();
                 return true;
-
-            case "collection": case "collectionlogs":
+            }
+            case "collection", "collectionlogs" -> {
                 player.getCollectionLog().open();
                 return true;
-
-            case "commands":
+            }
+            case "commands" -> {
                 sendCommands(player);
                 return true;
-
-            case "donate": case "store":
+            }
+            case "donate", "store" -> {
                 player.getPacketSender().sendString(1, GameSettings.StoreUrl);
                 player.getPacketSender().sendMessage("Attempting to open the store");
                 return true;
-
-            case "discord": case "forums": case "forum": case "updates":
+            }
+            case "discord", "forums", "forum", "updates" -> {
                 player.getPacketSender().sendString(1, GameSettings.DiscordUrl);
                 player.getPacketSender().sendMessage("Attempting to open our Discord Server");
                 return true;
-
-            case "rule": case "rules":
+            }
+            case "rule", "rules" -> {
                 sendRules(player);
                 return true;
-
-            case "vote":
+            }
+            case "vote" -> {
                 player.getPacketSender().sendString(1, GameSettings.VoteUrl);// "http://Ruseps.com/vote/?user="+player.getUsername());
                 player.getPacketSender().sendMessage("When you vote do ::reward to redeem votes");
                 return true;
-
-            case "changepass": case "changepassword":
+            }
+            case "changepass", "changepassword" -> {
                 player.setInputHandling(new ChangePassword());
                 player.getPacketSender().sendEnterInputPrompt("Enter a new password:");
                 return true;
-
-            case "die":
+            }
+            case "die" -> {
                 player.setConstitution(0);
                 return true;
-
-            case "changepin":
+            }
+            case "changepin" -> {
                 player.setInputHandling(new ChangePinPacketListener());
                 player.getPacketSender().sendEnterInputPrompt("Enter a new pin");
                 return true;
-
-            case "attacks":
+            }
+            case "attacks" -> {
                 int attack = DesolaceFormulas.getMeleeAttack(player);
                 int range = DesolaceFormulas.getRangedAttack(player);
                 int magic = DesolaceFormulas.getMagicAttack(player);
                 player.getPacketSender().sendMessage("@bla@Melee attack: @or2@" + attack + "@bla@, ranged attack: @or2@"
                         + range + "@bla@, magic attack: @or2@" + magic);
                 return true;
-
-            case "elo":
+            }
+            case "elo" -> {
                 player.sendMessage("ELO Rating : @red@" + Math.round(player.getBonusManager().getExtraBonus()[BonusManager.DEFENCE_SUMMONING]));
                 return true;
-
-            case "logout":
+            }
+            case "logout" -> {
                 World.getPlayers().remove(player);
                 return true;
-
-            case "ref": case "refer": case "referal":
+            }
+            case "ref", "refer", "referal" -> {
                 if (player.hasReferral) {
                     player.getPacketSender().sendMessage("You have already claimed a referral reward on this account!");
                 } else {
@@ -260,8 +258,8 @@ public class PlayerCommands {
                     player.setInputHandling(new EnterReferral());
                 }
                 return true;
-
-            case "switchbook":
+            }
+            case "switchbook" -> {
                 if (player.getSkillManager().getMaxLevel(Skill.DEFENCE) < 30) {
                     player.getPacketSender().sendMessage("You need a Defence level of at least 30 to use this altar.");
                     return true;
@@ -278,8 +276,8 @@ public class PlayerCommands {
                 PrayerHandler.deactivateAll(player);
                 CurseHandler.deactivateAll(player);
                 return true;
-
-            case "home":
+            }
+            case "home" -> {
                 if (player.getLocation() != null && player.getLocation() == Locations.Location.WILDERNESS
                         || player.getLocation() != null && player.getLocation() == Locations.Location.CUSTOM_RAIDS) {
                     player.getPacketSender().sendMessage("You cannot do this at the moment.");
@@ -289,16 +287,16 @@ public class PlayerCommands {
                 TeleportHandler.teleportPlayer(player, pos, player.getSpellbook().getTeleportType());
                 player.getPacketSender().sendMessage("Teleporting you home!");
                 return true;
-
-            case "dson":
+            }
+            case "dson" -> {
                 player.getPacketSender().sendWalkableInterface(60_000, true);
                 return true;
-
-            case "dsoff":
+            }
+            case "dsoff" -> {
                 player.getPacketSender().sendWalkableInterface(60_000, false);
                 return true;
-
-            case "youtube": case "stream":
+            }
+            case "youtube", "stream" -> {
                 if (player.getLocation() != null && player.getLocation() == Locations.Location.WILDERNESS
                         || player.getLocation() != null && player.getLocation() == Locations.Location.CUSTOM_RAIDS) {
                     player.getPacketSender().sendMessage("You cannot do this at the moment.");
@@ -306,11 +304,10 @@ public class PlayerCommands {
                 }
                 Position[] locations = new Position[]{new Position(2852, 2708, 0)};
                 Position teleportLocation = locations[RandomUtility.exclusiveRandom(0, locations.length)];
-
                 TeleportHandler.teleportPlayer(player, teleportLocation, player.getSpellbook().getTeleportType());
                 return true;
-
-            case "iron":
+            }
+            case "iron" -> {
                 if (player.getLocation() != null && player.getLocation() == Locations.Location.WILDERNESS
                         || player.getLocation() != null && player.getLocation() == Locations.Location.CUSTOM_RAIDS) {
                     player.getPacketSender().sendMessage("You cannot do this at the moment.");
@@ -323,11 +320,10 @@ public class PlayerCommands {
                     }
                 }
                 Position position = new Position(3811, 2839, 0);
-
                 TeleportHandler.teleportPlayer(player, position, TeleportType.NORMAL);
                 return true;
-
-            case "help":
+            }
+            case "help" -> {
                 if (player.getLastYell().elapsed(30000)) {
                     if (player.getLocation() != null && player.getLocation() == Locations.Location.WILDERNESS
                             || player.getLocation() != null && player.getLocation() == Locations.Location.CUSTOM_RAIDS) {
@@ -351,16 +347,16 @@ public class PlayerCommands {
                                     "<col=663300>If it's an emergency, please private message a staff member directly instead.");
                 }
                 return true;
-
-            case "empty":
+            }
+            case "empty" -> {
                 DialogueManager.sendDialogue(player, new EmptyInv(player), -1);
                 return true;
-
-            case "droplog":
+            }
+            case "droplog" -> {
                 player.getPacketSender().sendInterfaceRemoval();
                 return true;
-
-            case "fly":
+            }
+            case "fly" -> {
                 if (!player.canFly()) {
                     player.getPacketSender().sendMessage("You do not understand the complexities of flight.");
                     return true;
@@ -383,8 +379,8 @@ public class PlayerCommands {
                     return true;
                 }
                 return true;
-
-            case "ghost":
+            }
+            case "ghost" -> {
                 if (!player.canGhostWalk()) {
                     player.getPacketSender().sendMessage("You do not understand the complexities of death.");
                     return true;
@@ -407,31 +403,30 @@ public class PlayerCommands {
                     return true;
                 }
                 return true;
-
-            case "yell":
+            }
+            case "yell" -> {
                 handleYell(player, command);
                 return true;
-
-            case "daily":
+            }
+            case "daily" -> {
                 player.getAttendenceUI().showInterface(AttendanceTab.LOYAL);
                 player.getAttendenceManager().claim();
                 return true;
-
-            case "yt":
+            }
+            case "yt" -> {
                 TeleportHandler.teleportPlayer(player, new Position(2856, 2708, 4),
                         player.getSpellbook().getTeleportType());
                 player.sendMessage("@yel@[EVENT] You have teleported to the youtube boss!");
                 return true;
-
-            case "vip":
+            }
+            case "vip" -> {
                 player.getPlayerVIP().sendInterface();
                 return true;
-
-            case "track":
-            case "tracks" :
+            }
+            case "track", "tracks" -> {
                 TrackInterface.sendInterface(player, true);
                 return true;
-
+            }
         }
         return false;
     }

@@ -2165,7 +2165,7 @@ for (Item item : player.getInventory().getItems()) {
 		},
 		NORMAL_INSTANCE(new int[] {3009, 3029 }, new int[] { 2752, 2772 }, true, true, true, false, false, false) {
 		},
-		CRUCIO(new int[] { 3011, 3039 }, new int[] { 5217, 5248 }, true, false, true, false, false, false) {
+		SINGLE_INSTANCE(new int[] { 3011, 3039 }, new int[] { 5217, 5248 }, true, false, true, false, false, false) {
 		},
 
 		//TOWER
@@ -2476,6 +2476,6 @@ for (Item item : player.getInventory().getItems()) {
 	}
 
 	public static List<Location> bossLocations = Collections.synchronizedList(Arrays.asList(
-			Location.NORMAL_INSTANCE, Location.CRUCIO
+			Location.NORMAL_INSTANCE, Location.SINGLE_INSTANCE
 	));
 }

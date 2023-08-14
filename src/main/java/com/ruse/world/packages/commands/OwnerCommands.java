@@ -11,7 +11,6 @@ import com.ruse.world.content.LotterySystem;
 import com.ruse.world.content.WellOfGoodwill;
 import com.ruse.world.packages.clans.ClanManager;
 import com.ruse.world.content.combat.weapon.CombatSpecial;
-import com.ruse.world.event.youtube.YoutubeBoss;
 import com.ruse.world.packages.donation.DonateSales;
 import com.ruse.world.packages.donation.DonationManager;
 import com.ruse.world.packages.donation.FlashDeals;
@@ -26,8 +25,6 @@ import com.ruse.world.packages.tracks.TrackInterface;
 import com.ruse.world.packages.voting.VoteBossDrop;
 import com.ruse.world.entity.impl.npc.NPC;
 import com.ruse.world.entity.impl.player.Player;
-import com.ruse.world.event.WorldEventHandler;
-import com.ruse.world.event.staff.BalloonGiveaway;
 
 import java.util.Objects;
 
@@ -302,7 +299,6 @@ public class OwnerCommands {
                     switch (commands[1]) {
                         case "all" -> {
                             ShopHandler.load();
-                            //Shop.ShopManager.parseShops().load();
                             NPCDrops.parseDrops().load();
                             ItemDefinition.init();
                             WeaponInterfaces.parseInterfaces().load();
@@ -310,6 +306,7 @@ public class OwnerCommands {
                             WeaponInterfaces.init();
                             ServerSecurity.getInstance().reload();
                             FlashDeals.getDeals().reload();
+                            World.handler.reload();
                             player.sendMessage("Reloaded all definitions.");
                             return true;
                         }
@@ -338,6 +335,11 @@ public class OwnerCommands {
                         case "sales" -> {
                             DonateSales.getInstance().reload();
                             player.sendMessage("Sales reload");
+                            return true;
+                        }
+                        case "events" -> {
+                            World.handler.reload();
+                            player.sendMessage("Events reload");
                             return true;
                         }
                     }
@@ -399,39 +401,7 @@ public class OwnerCommands {
                 System.exit(0);
                 return true;
             }
-            case "event" -> {
-                if (commands.length >= 2) {
-                    switch (commands[1]) {
-                        case "tele":
-                            if (commands.length >= 3) {
-                                switch (commands[2]) {
-                                    case "youtube":
-                                        TeleportHandler.teleportPlayer(player, new Position(2856, 2708, 4),
-                                                player.getSpellbook().getTeleportType());
-                                        player.sendMessage("@yel@[EVENT] You have teleported to the youtube boss!");
-                                        return true;
-                                }
-                            } else {
-                                player.getPacketSender().sendMessage("Use as ::event tele [youtube]");
-                            }
-                            return true;
-                        case "balloon":
-                            WorldEventHandler.getInstance().startEvent(player, new BalloonGiveaway(player, null));
-                            return true;
 
-                        case "youtube":
-                            WorldEventHandler.getInstance().startEvent(player, new YoutubeBoss(player, null));
-                            return true;
-
-                        case "finish":
-                            WorldEventHandler.getInstance().getEvent(player.getUsername()).stop();
-                            return true;
-                    }
-                } else {
-                    player.getPacketSender().sendMessage("Use as ::event [balloon/youtube/finish]");
-                }
-                return true;
-            }
             case "fullscrap" -> {
                 return true;
             }

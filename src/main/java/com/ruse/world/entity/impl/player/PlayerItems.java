@@ -12,8 +12,8 @@ public class PlayerItems {
     private final Map<String, Integer> charges = new ConcurrentHashMap<>();
 
     private void setDefault(){
-        charges.put("play-monic", 0);
-        charges.put("gold-monic", 0);
+        charges.put("ancient-monic", 0);
+        charges.put("crystal-monic", 0);
     }
 
     public Map<String, Integer> getCharges() {
@@ -30,6 +30,10 @@ public class PlayerItems {
 
     public void useCharge(String name){
         charges.put(name, charges.getOrDefault(name, 0) - 1);
+    }
+
+    public void useCharge(String name, int amount){
+        charges.put(name, charges.getOrDefault(name, 0) - amount);
     }
 
     public void addCharge(String name, int amount){

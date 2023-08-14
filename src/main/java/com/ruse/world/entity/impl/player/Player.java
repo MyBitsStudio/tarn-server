@@ -32,6 +32,7 @@ import com.ruse.world.content.KillsTracker.KillsEntry;
 import com.ruse.world.content.LoyaltyProgramme.LoyaltyTitles;
 import com.ruse.world.content.StarterTasks.StarterTaskAttributes;
 import com.ruse.world.content.achievement.AchievementHandler;
+import com.ruse.world.packages.loyalty.LoyaltyManager;
 import com.ruse.world.packages.tradingpost.TradingPost;
 import com.ruse.world.packages.attendance.AttendanceManager;
 import com.ruse.world.packages.attendance.AttendanceUI;
@@ -1656,9 +1657,6 @@ public class Player extends Character {
     }
 
     public void process() {
-//        processAggroMode();
-//        processGodMode();
-//        processovlmode();
         processAll();
         processInstance();
         playerFlags.process();
@@ -1741,6 +1739,7 @@ public class Player extends Character {
             getInstance().process();
         }
 
+        getLoyalty().handleLoyalty(this);
 
     }
 
@@ -4322,4 +4321,10 @@ public class Player extends Character {
 
     @Getter@Setter
     private PlayerItems items = new PlayerItems();
+
+    @Getter@Setter
+    private LoyaltyManager loyalty = new LoyaltyManager();
+
+    @Getter@Setter
+    private PlayerPoints points = new PlayerPoints();
 }

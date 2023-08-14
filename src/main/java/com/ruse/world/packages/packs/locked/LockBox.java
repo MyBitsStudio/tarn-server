@@ -8,7 +8,7 @@ import org.jetbrains.annotations.NotNull;
 
 public abstract class LockBox {
 
-    protected final int masterKey = 1;
+    protected final int masterKey = 23107;
 
     public abstract int key();
 
@@ -29,6 +29,7 @@ public abstract class LockBox {
             player.getPacketSender().sendMessage("You need a "+ ItemDefinition.forId(key()).getName()+" to open this box.");
             return;
         }
+        player.getInventory().delete(boxId(), 1);
         int misc = Misc.random(2650);
 
         Item[] items;

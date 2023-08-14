@@ -73,10 +73,40 @@
     "weapon" : false
   },
   {
+    "id" : 5022,
+    "name" : "Loyalty Tickets",
+    "examine" : "Too easy to get, easier to spend",
+    "stackable" : true,
+    "noted" : false,
+    "2h" : false,
+    "type" : "WEAPON",
+    "weapon" : false
+  },
+  {
     "id" : 5023,
     "name" : "Slayer Tickets",
     "examine" : "Too easy to get, easier to spend",
     "stackable" : true,
+    "noted" : false,
+    "2h" : false,
+    "type" : "WEAPON",
+    "weapon" : false
+  },
+  {
+    "id" : 14505,
+    "name" : "Ancient Monic",
+    "examine" : "I wonder who made this?",
+    "stackable" : false,
+    "noted" : false,
+    "2h" : false,
+    "type" : "WEAPON",
+    "weapon" : false
+  },
+  {
+    "id" : 19640,
+    "name" : "Crystal Monic",
+    "examine" : "Forged in the fires of the gods.",
+    "stackable" : false,
     "noted" : false,
     "2h" : false,
     "type" : "WEAPON",
@@ -136,6 +166,36 @@
     "id" : 23020,
     "name" : "Vote Scroll",
     "examine" : "Amazing Rewards For Voting!",
+    "stackable" : true,
+    "noted" : false,
+    "2h" : false,
+    "type" : "WEAPON",
+    "weapon" : false
+  },
+  {
+    "id" : 4000,
+    "name" : "Vote Ticket",
+    "examine" : "Amazing Rewards For Voting!",
+    "stackable" : true,
+    "noted" : false,
+    "2h" : false,
+    "type" : "WEAPON",
+    "weapon" : false
+  },
+  {
+    "id" : 4001,
+    "name" : "Elite Vote Ticket",
+    "examine" : "Elite times calls for elite rewards!",
+    "stackable" : true,
+    "noted" : false,
+    "2h" : false,
+    "type" : "WEAPON",
+    "weapon" : false
+  },
+  {
+    "id" : 15682,
+    "name" : "Vote Crate",
+    "examine" : "Nice! I wonder what's inside?",
     "stackable" : true,
     "noted" : false,
     "2h" : false,
@@ -215,6 +275,26 @@
   {
     "id" : 12852,
     "name" : "Starter Tokens",
+    "examine" : "Trade these in for sweet starter rewards!",
+    "stackable" : true,
+    "noted" : false,
+    "2h" : false,
+    "type" : "WEAPON",
+    "weapon" : false
+  },
+  {
+    "id" : 23003,
+    "name" : "VIP Ticket",
+    "examine" : "I wonder what I can use this for?",
+    "stackable" : true,
+    "noted" : false,
+    "2h" : false,
+    "type" : "WEAPON",
+    "weapon" : false
+  },
+  {
+    "id" : 14819,
+    "name" : "Summer Certificate",
     "examine" : "Trade these in for sweet starter rewards!",
     "stackable" : true,
     "noted" : false,
@@ -519,6 +599,212 @@
     "id" : 23160,
     "name" : "Multi Shot",
     "examine" : "Perk Token",
+    "stackable" : false,
+    "noted" : false,
+    "2h" : false,
+    "type" : "WEAPON",
+    "weapon" : false
+  },
+  {
+    "_comment" : "Food"
+  },
+  {
+    "id" : 1969,
+    "name" : "Spinach Roll",
+    "examine" : "It's supposed to be good for you.",
+    "stackable" : false,
+    "noted" : false,
+    "2h" : false,
+    "type" : "WEAPON",
+    "weapon" : false
+  },
+  {
+    "id" : 19778,
+    "name" : "Cooked Rabbit",
+    "examine" : "Check for rabies!",
+    "stackable" : false,
+    "noted" : false,
+    "2h" : false,
+    "type" : "WEAPON",
+    "weapon" : false
+  },
+  {
+    "id" : 18171,
+    "name" : "Bouldabass",
+    "examine" : "A huge fish ripe for the eating",
+    "stackable" : false,
+    "noted" : false,
+    "2h" : false,
+    "type" : "WEAPON",
+    "weapon" : false
+  },
+  {
+    "id" : 18175,
+    "name" : "Blue crab",
+    "examine" : "I wonder what made it blue",
+    "stackable" : false,
+    "noted" : false,
+    "2h" : false,
+    "type" : "WEAPON",
+    "weapon" : false
+  },
+  {
+    "id" : 19778,
+    "name" : "Peach",
+    "examine" : "Sweet peaches!",
+    "stackable" : false,
+    "noted" : false,
+    "2h" : false,
+    "type" : "WEAPON",
+    "weapon" : false
+  },
+  {
+    "id" : 17817,
+    "name" : "Fury Shark",
+    "examine" : "Sweet fury of the ocean",
+    "stackable" : false,
+    "noted" : false,
+    "2h" : false,
+    "type" : "WEAPON",
+    "weapon" : false
+  },
+  {
+    "id" : 15272,
+    "name" : "Rocktail",
+    "examine" : "It sure rocks my tail",
+    "stackable" : false,
+    "noted" : false,
+    "2h" : false,
+    "type" : "WEAPON",
+    "weapon" : false
+  },
+  {
+    "id" : 397,
+    "name" : "Sea Turtle",
+    "examine" : "I kinda feel guilty eating this",
+    "stackable" : false,
+    "noted" : false,
+    "2h" : false,
+    "type" : "WEAPON",
+    "weapon" : false
+  },
+  {
+    "id" : 391,
+    "name" : "Manta Ray",
+    "examine" : "Hopefully it taste as good as it looks",
+    "stackable" : false,
+    "noted" : false,
+    "2h" : false,
+    "type" : "WEAPON",
+    "weapon" : false
+  },
+  {
+    "id" : 379,
+    "name" : "Lobster",
+    "examine" : "Let's crack those claws",
+    "stackable" : false,
+    "noted" : false,
+    "2h" : false,
+    "type" : "WEAPON",
+    "weapon" : false
+  },
+  {
+    "_comment" : "Event Food"
+  },
+  {
+    "id" : 13557,
+    "name" : "Candy",
+    "examine" : "Heal for 70 HP",
+    "stackable" : true,
+    "noted" : false,
+    "2h" : false,
+    "type" : "WEAPON",
+    "weapon" : false
+  },
+  {
+    "id" : 4558,
+    "name" : "Blue Sweets",
+    "examine" : "Heal for 30 HP",
+    "stackable" : true,
+    "noted" : false,
+    "2h" : false,
+    "type" : "WEAPON",
+    "weapon" : false
+  },
+  {
+    "id" : 4559,
+    "name" : "Deep Blue Sweets",
+    "examine" : "Heal for 50 HP",
+    "stackable" : true,
+    "noted" : false,
+    "2h" : false,
+    "type" : "WEAPON",
+    "weapon" : false
+  },
+  {
+    "id" : 4560,
+    "name" : "White Sweets",
+    "examine" : "Heal for 50 HP",
+    "stackable" : true,
+    "noted" : false,
+    "2h" : false,
+    "type" : "WEAPON",
+    "weapon" : false
+  },
+  {
+    "id" : 4564,
+    "name" : "Pink Sweets",
+    "examine" : "Heal for 60 HP",
+    "stackable" : true,
+    "noted" : false,
+    "2h" : false,
+    "type" : "WEAPON",
+    "weapon" : false
+  },
+  {
+    "id" : 4563,
+    "name" : "Green Sweets",
+    "examine" : "Heal for 80 HP",
+    "stackable" : true,
+    "noted" : false,
+    "2h" : false,
+    "type" : "WEAPON",
+    "weapon" : false
+  },
+  {
+    "id" : 4561,
+    "name" : "Purple Sweets",
+    "examine" : "Heal for 100 HP",
+    "stackable" : true,
+    "noted" : false,
+    "2h" : false,
+    "type" : "WEAPON",
+    "weapon" : false
+  },
+  {
+    "id" : 4558,
+    "name" : "Red Sweets",
+    "examine" : "Heal for 120 HP",
+    "stackable" : true,
+    "noted" : false,
+    "2h" : false,
+    "type" : "WEAPON",
+    "weapon" : false
+  },
+  {
+    "id" : 1959,
+    "name" : "Pumpkin",
+    "examine" : "Should I make this into a pie?",
+    "stackable" : false,
+    "noted" : false,
+    "2h" : false,
+    "type" : "WEAPON",
+    "weapon" : false
+  },
+  {
+    "id" : 19778,
+    "name" : "Oktoberfest Pretzel",
+    "examine" : "The best time to get your munch on!",
     "stackable" : false,
     "noted" : false,
     "2h" : false,
@@ -1015,6 +1301,39 @@
     "id" : 23260,
     "name" : "Limited Masters 1",
     "examine" : "Open for a sweet reward!",
+    "stackable" : true,
+    "noted" : false,
+    "2h" : false,
+    "type" : "WEAPON",
+    "weapon" : false
+  },
+  {
+    "id" : 29,
+    "name" : "Locked Summer Chest",
+    "examine" : "Open for a sweet reward!",
+    "stackable" : true,
+    "noted" : false,
+    "2h" : false,
+    "type" : "WEAPON",
+    "weapon" : false
+  },
+  {
+    "_comment" : "Keys"
+  },
+  {
+    "id" : 28,
+    "name" : "Summer Key",
+    "examine" : "Use to unlock Summer Chests!",
+    "stackable" : true,
+    "noted" : false,
+    "2h" : false,
+    "type" : "WEAPON",
+    "weapon" : false
+  },
+  {
+    "id" : 23107,
+    "name" : "Master Key",
+    "examine" : "Use to unlock any chest!",
     "stackable" : true,
     "noted" : false,
     "2h" : false,
@@ -3996,6 +4315,7 @@
       3805.0
     ]
   },
+
   {
     "_comment" : "Masters"
   },

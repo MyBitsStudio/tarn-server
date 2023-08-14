@@ -29,6 +29,9 @@ public class PlayerVariables {
 
         settings.put("slot-chosen", Integer.parseInt("-1"));
         settings.put("inv-slot", Integer.parseInt("-1"));
+
+        settings.put("perk-chosen", Integer.parseInt("-1"));
+        settings.put("monic-chosen", Integer.parseInt("-1"));
     }
 
     public void setSetting(String key, Object value){

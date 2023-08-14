@@ -149,11 +149,10 @@ public class Consumables {
         JANGERBERRIES(new Item(247), 20), WORM_CRUNCHIES(new Item(2205), 70), EDIBLE_SEAWEED(new Item(403), 40),
         ANCHOVIES(new Item(319), 10), SHRIMPS(new Item(315), 30), SARDINE(new Item(325), 40), COD(new Item(339), 70),
         TROUT(new Item(333), 70), PIKE(new Item(351), 80), MACKEREL(new Item(355), 60), SALMON(new Item(329), 90),
-        TUNA(new Item(361), 100), LOBSTER(new Item(379), 120), BASS(new Item(365), 130), SWORDFISH(new Item(373), 140),
+        TUNA(new Item(361), 100), BASS(new Item(365), 130), SWORDFISH(new Item(373), 140),
         MEAT_PIZZA(new Item(2293), 145), MONKFISH(new Item(7946), 160), SHARK(new Item(385), 200),
-        SEA_TURTLE(new Item(397), 210), MANTA_RAY(new Item(391), 220), CAVEFISH(new Item(15266), 230),
-        ROCKTAIL(new Item(15272), 230), FURYSHARK(new Item(17817), 500),
-        CANDY(new Item(13557), 200),
+        CAVEFISH(new Item(15266), 230),
+
         /*
          * Baked goods food types a player can make with the cooking skill.
          */
@@ -165,10 +164,9 @@ public class Consumables {
          * Fruit food types which a player can get by picking from certain trees or
          * hand-making them (such as pineapple chunks/rings).
          */
-        SPINACH_ROLL(new Item(1969), 20), RABBIT(new Item(3228), 50), BANANA(new Item(1963), 20),
+         BANANA(new Item(1963), 20),
         BANANA_(new Item(18199), 20), CABBAGE(new Item(1965), 20), ORANGE(new Item(2108), 20),
-        PINEAPPLE(new Item(2114), 50), PINEAPPLE_CHUNKS(new Item(2116), 20), PINEAPPLE_RINGS(new Item(2118), 20),
-        PEACH(new Item(6883), 80),
+        PINEAPPLE_CHUNKS(new Item(2116), 20),
 
         /*
          * Dungeoneering food types, which you can get in the Dungeoneering skill
@@ -176,13 +174,28 @@ public class Consumables {
          */
         HEIM_CRAB(new Item(18159), 20), RED_EYE(new Item(18161), 50), DUSK_EEL(new Item(18163), 70),
         GIANT_FLATFISH(new Item(18165), 100), SHORT_FINNED_EEL(new Item(18167), 120), WEB_SNIPPER(new Item(18169), 150),
-        BOULDABASS(new Item(18171), 170), SALVE_EEL(new Item(18173), 200), BLUE_CRAB(new Item(18175), 220),
+        SALVE_EEL(new Item(18173), 200),
 
         /*
          * Other food types.
          */
-        EASTER_EGG(new Item(1961), 14), PUMPKIN(new Item(1959), 14), PURPLE_SWEETS(new Item(4561), 30),
-        OKTOBERTFEST_PRETZEL(new Item(19778), 120);
+        EASTER_EGG(new Item(1961), 14),
+        /*
+         * New food types.
+         */
+        SPINACH_ROLL(new Item(1969), 20), RABBIT(new Item(3228), 30), BLUE_CRAB(new Item(18175), 50),
+        BOULDABASS(new Item(18171), 40), PEACH(new Item(6883), 80),  ROCKTAIL(new Item(15272), 290),
+        FURYSHARK(new Item(17817), 500),  SEA_TURTLE(new Item(397), 160), MANTA_RAY(new Item(391), 220),
+        LOBSTER(new Item(379), 100),
+
+        /*
+         * Event types.
+         */
+         PUMPKIN(new Item(1959), 14), OKTOBERTFEST_PRETZEL(new Item(19778), 120),
+        BLUE_SWEETS(new Item(4558), 30), DEEP_SWEETS(new Item(4559), 40), WHITE_SWEETS(new Item(4560), 50),
+        PINK_SWEETS(new Item(4564), 60), GREEN_SWEETS(new Item(4563), 80), PURPLE_SWEETS(new Item(4561), 100),
+        RED_SWEETS(new Item(4562), 120), CANDY(new Item(13557), 100),
+        ;
 
         private FoodType(Item item, int heal) {
             this.item = item;

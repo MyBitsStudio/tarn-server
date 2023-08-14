@@ -1,0 +1,42 @@
+[
+  {
+    "id": 5,
+    "name": "Loyalty Shop",
+    "canSell": false,
+    "shops": [
+      {
+        "shopId": 0,
+        "currency": "loyalty",
+        "shopName": "Special",
+        "restrict": 0,
+        "items": [
+          {
+            "id": 23148,
+            "amount": 10,
+            "price": 250
+          },
+          {
+            "id": 23149,
+            "amount": 10,
+            "price": 150
+          },
+          {
+            "id": 8788,
+            "amount": 100,
+            "price": 50
+          },
+          {
+            "id": 20501,
+            "amount": 25,
+            "price": 100
+          },
+          {
+            "id": 23254,
+            "amount": 25,
+            "price": 100
+          }
+        ]
+      }
+    ]
+  }
+]

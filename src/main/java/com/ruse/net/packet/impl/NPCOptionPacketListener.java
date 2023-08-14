@@ -88,6 +88,15 @@ public class NPCOptionPacketListener implements PacketListener {
                 return;
             }
             switch (npc.getId()) {
+                case 3321:
+                    ShopHandler.getShop(4).ifPresent(shop -> shop.send(player, true));
+                    break;
+                case 5049:
+                    ShopHandler.getShop(5).ifPresent(shop -> shop.send(player, true));
+                    break;
+                case 932:
+                    ShopHandler.getShop(6).ifPresent(shop -> shop.send(player, true));
+                    break;
                 case 550:
                     if(Lobby.getInstance().getGame() == null) return;
                     Lobby.getInstance().getGame().obeliskClick(player);

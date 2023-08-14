@@ -1,13 +1,14 @@
-package com.ruse.world.packages.bosses.crucio;
+package com.ruse.world.packages.bosses.single.agthomoth;
 
 import com.ruse.model.Locations;
 import com.ruse.model.Position;
-import com.ruse.world.packages.bosses.SingleBossSinglePlayerInstance;
 import com.ruse.world.entity.impl.player.Player;
+import com.ruse.world.packages.bosses.SingleBossSinglePlayerInstance;
 
-public class CrucioInstance extends SingleBossSinglePlayerInstance {
-    public CrucioInstance(Player p) {
-        super(p, Locations.Location.CRUCIO, new CrucioBoss(p.getIndex() * 4));
+public class AgthomothInstance extends SingleBossSinglePlayerInstance {
+
+    public AgthomothInstance(Player p) {
+        super(p, Locations.Location.SINGLE_INSTANCE, new AgthomothBoss(p.getIndex() * 4));
     }
 
     @Override
@@ -17,7 +18,7 @@ public class CrucioInstance extends SingleBossSinglePlayerInstance {
 
     @Override
     public int cost(){
-        return 100000;
+        return 10;
     }
 
     @Override

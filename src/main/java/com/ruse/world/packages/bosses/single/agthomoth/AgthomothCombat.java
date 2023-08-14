@@ -1,4 +1,4 @@
-package com.ruse.world.packages.bosses.crucio;
+package com.ruse.world.packages.bosses.single.agthomoth;
 
 import com.ruse.model.Animation;
 import com.ruse.model.Locations;
@@ -6,12 +6,11 @@ import com.ruse.model.Projectile;
 import com.ruse.util.Misc;
 import com.ruse.world.content.combat.CombatContainer;
 import com.ruse.world.content.combat.CombatType;
-import com.ruse.world.content.combat.strategy.CombatStrategies;
 import com.ruse.world.content.combat.strategy.CombatStrategy;
 import com.ruse.world.entity.impl.Character;
 import com.ruse.world.entity.impl.npc.NPC;
 
-public class CrucioCombat implements CombatStrategy {
+public class AgthomothCombat implements CombatStrategy {
 
     @Override
     public boolean canAttack(Character entity, Character victim) {

@@ -47,6 +47,8 @@ import com.ruse.world.entity.impl.GlobalItemSpawner;
 import com.ruse.world.entity.impl.mini.MiniPlayer;
 import com.ruse.world.instance.MapInstance;
 
+import java.util.Objects;
+
 import static com.ruse.world.entity.impl.player.PlayerFlags.FORCE_KICK;
 
 //import com.ruse.world.content.Abyssector;
@@ -98,7 +100,7 @@ public class PlayerHandler {
 
         // Setting up the player's item containers..
 
-        player.getMinimeSystem().onLogin();
+        //player.getMinimeSystem().onLogin();
 
         for (int i = 0; i < player.getBanks().length; i++) {
             if (player.getBank(i) == null) {
@@ -122,8 +124,8 @@ public class PlayerHandler {
         BonusManager.update(player);
 
         // Skills
-        player.getSummoning().login();
-        player.getFarming().load();
+       // player.getSummoning().login();
+        //player.getFarming().load();
         //player.getBestItems().fillDefinitions();
         Slayer.checkDuoSlayer(player, true);
         for (Skill skill : Skill.values()) {
@@ -146,8 +148,8 @@ public class PlayerHandler {
         PrayerHandler.deactivateAll(player);
         CurseHandler.deactivateAll(player);
         BonusManager.sendCurseBonuses(player);
-        AchievementsOLD.updateInterface(player);
-        Barrows.handleLogin(player);
+       // AchievementsOLD.updateInterface(player);
+       // Barrows.handleLogin(player);
         //VoidOfDarkness.handleLogin(player);
         // Tasks
         TaskManager.submit(new PlayerSkillsTask(player));
@@ -189,7 +191,7 @@ public class PlayerHandler {
             TaskManager.submit(new DoubleDMGTask(player));
         }
 
-        player.getDonationDeals().shouldReset();
+        //player.getDonationDeals().shouldReset();
 
         if (player.getSkullTimer() > 0) {
             player.setSkullIcon(1);
@@ -258,12 +260,12 @@ public class PlayerHandler {
                     + "] Double EXP has been activated. It stacks with Vote scrolls, Enjoy!");
         }
 
-        if (Wildywyrm.wyrmAlive) {
-            Wildywyrm.sendHint(player);
-        }
-        if (SkeletalHorror.wyrmAlive) {
-            SkeletalHorror.sendHint(player);
-        }
+//        if (Wildywyrm.wyrmAlive) {
+//            Wildywyrm.sendHint(player);
+//        }
+//        if (SkeletalHorror.wyrmAlive) {
+//            SkeletalHorror.sendHint(player);
+//        }
         if (WellOfGoodwill.isActive()) {
             player.getPacketSender().sendMessage(MessageType.SERVER_ALERT,
                     "The Well of Goodwill is granting 30% bonus experience for another "
@@ -337,7 +339,6 @@ public class PlayerHandler {
 
         if (player.getRank().isStaff() ) {
             StaffList.login(player);
-            // GrandExchange.onLogin(player);
         }
         StaffList.updateGlobalInterface();
         if (player.getPointsHandler().getAchievementPoints() == 0) {
@@ -350,12 +351,12 @@ public class PlayerHandler {
         Item weapon = player.getEquipment().get(Equipment.WEAPON_SLOT);
 
         if (weapon != null) {
-            if (AutoCastSpell.getAutoCastSpell(player) != null) {
-                player.setAutocastSpell(AutoCastSpell.getAutoCastSpell(player).getSpell());
-            } else {
+            if (AutoCastSpell.getAutoCastSpell(player) == null) {
                 if (player.getAutocastSpell() != null || player.isAutocast()) {
                     Autocasting.resetAutocast(player, true);
                 }
+            } else {
+                player.setAutocastSpell(Objects.requireNonNull(AutoCastSpell.getAutoCastSpell(player)).getSpell());
             }
         }
 
@@ -371,48 +372,40 @@ public class PlayerHandler {
          * +" logged in from a bad session. They have 0 HP and are nulled. Set them to 1 and kicked them."
          * ); // TODO this may cause dupes. removed temp. }
          */
-        if (player.isInDung()) {
-            // System.out.println(player.getUsername() + " logged in from a bad dungeoneering session.");
-            PlayerLogs.log(player.getUsername(), " logged in from a bad dungeoneering session. Inv/equipment wiped.");
-            player.getInventory().resetItems().refreshItems();
-            player.getEquipment().resetItems().refreshItems();
-            if (player.getLocation() == Location.DUNGEONEERING) {
-                // player.moveTo(GameSettings.DEFAULT_POSITION.copy());
-                TeleportHandler.teleportPlayer(player,
-                        new Position(2524 + Misc.getRandom(10), 2595 + Misc.getRandom(6)),
-                        player.getSpellbook().getTeleportType());
-
-            }
-            player.getPacketSender().sendMessage("Your Dungeon has been disbanded.");
-            player.setInDung(false);
-        }
-        if (player.getLocation() == Location.GRAVEYARD && player.getPosition().getY() > 3566) {
-            PlayerLogs.log(player.getUsername(), "logged in inside the graveyard arena, moved their ass out.");
-            player.moveTo(new Position(3503, 3565, 0));
-            player.setPositionToFace(new Position(3503, 3566));
-            player.getPacketSender().sendMessage("You logged off inside the graveyard arena. Moved you to lobby area.");
-        }
-        if (player.getPosition().getX() == 3004 && player.getPosition().getY() >= 3938
-                && player.getPosition().getY() <= 3949) {
-            PlayerLogs.log(player.getUsername(), player.getUsername() + " was stuck in the obstacle pipe in the Wild.");
-            player.moveTo(new Position(3006, player.getPosition().getY(), player.getPosition().getZ()));
-            player.getPacketSender().sendMessage("You logged off inside the obstacle pipe, moved out.");
-        }
+//        if (player.isInDung()) {
+//            // System.out.println(player.getUsername() + " logged in from a bad dungeoneering session.");
+//            PlayerLogs.log(player.getUsername(), " logged in from a bad dungeoneering session. Inv/equipment wiped.");
+//            player.getInventory().resetItems().refreshItems();
+//            player.getEquipment().resetItems().refreshItems();
+//            if (player.getLocation() == Location.DUNGEONEERING) {
+//                // player.moveTo(GameSettings.DEFAULT_POSITION.copy());
+//                TeleportHandler.teleportPlayer(player,
+//                        new Position(2524 + Misc.getRandom(10), 2595 + Misc.getRandom(6)),
+//                        player.getSpellbook().getTeleportType());
+//
+//            }
+//            player.getPacketSender().sendMessage("Your Dungeon has been disbanded.");
+//            player.setInDung(false);
+//        }
+//        if (player.getLocation() == Location.GRAVEYARD && player.getPosition().getY() > 3566) {
+//            PlayerLogs.log(player.getUsername(), "logged in inside the graveyard arena, moved their ass out.");
+//            player.moveTo(new Position(3503, 3565, 0));
+//            player.setPositionToFace(new Position(3503, 3566));
+//            player.getPacketSender().sendMessage("You logged off inside the graveyard arena. Moved you to lobby area.");
+//        }
+//        if (player.getPosition().getX() == 3004 && player.getPosition().getY() >= 3938
+//                && player.getPosition().getY() <= 3949) {
+//            PlayerLogs.log(player.getUsername(), player.getUsername() + " was stuck in the obstacle pipe in the Wild.");
+//            player.moveTo(new Position(3006, player.getPosition().getY(), player.getPosition().getZ()));
+//            player.getPacketSender().sendMessage("You logged off inside the obstacle pipe, moved out.");
+//        }
         if (player.getCurrentInstanceNpcName() != null) {
             player.moveTo(new Position(2529, 2595, 0));
             player.getPacketSender()
                     .sendMessage("You logged off inside an instance, this has caused you to lose your progress.");
         }
 
-        if (GrandLottery.enabled) {
-            // player.getPA()
-            // .sendMessage("The Lottery is currently active, Talk to Lottie at home bank to
-            // enter the Lottery.");
-        }
-
-        if(!player.isMini()) {
-            GlobalItemSpawner.spawnGlobalGroundItems(player);
-        }
+        GlobalItemSpawner.spawnGlobalGroundItems(player);
         player.unlockPkTitles();
         // player.getPacketSender().sendString(39160, "@or2@Players online: @or2@[
         // @yel@"+(int)(World.getPlayers().size())+"@or2@ ]"); Handled by
@@ -422,22 +415,12 @@ public class PlayerHandler {
         if (GameSettings.B2GO) {
             player.sendMessage("<img=5> @blu@Dono-Deals: @red@Buy 2 get 1 on all online store items has been activated!");
         }
-        
-        if (player instanceof MiniPlayer) {
-            MiniPlayer miniPlayer = (MiniPlayer) player;
-            TaskManager.submit(new Task(2) {
-                @Override
-                protected void execute() {
-                    miniPlayer.moveTo(miniPlayer.getMiniPlayerOwner().getPosition().copy());
-                    miniPlayer.getMiniPlayerOwner().getMiniPManager().followOwner();
-                    stop();
-                }
-            });
-        }
 
         player.getPlayerVIP().onLogin();
 
-       // player.getPSettings().setSetting("is-locked", true);
+        player.getLoyalty().onLogin();
+
+        World.handler.onLogin(player);
 
         if(!player.newPlayer() && player.getPSecurity().securityScore() <= 59){
             player.getPSecurity().sendInterface();

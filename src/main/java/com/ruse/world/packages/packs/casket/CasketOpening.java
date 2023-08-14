@@ -316,7 +316,7 @@ public class CasketOpening {
 
         ULTIMATE_DONATOR(23259, UltimateDonatorBox.loot),
 
-        LIMITED_MASTERS(23260, LimitedMaster1.loot)
+        LIMITED_MASTERS(23260, LimitedMaster1.loot),
 
         ;
         private final int itemID;

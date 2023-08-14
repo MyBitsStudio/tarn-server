@@ -1133,6 +1133,30 @@
     "isBoss" : true
   },
   {
+    "id": 1736,
+    "name": "Solstice Devil",
+    "examine": "A special NPC for events.",
+    "combat": 167,
+    "size": 1,
+    "attackable": true,
+    "aggressive": false,
+    "retreats": false,
+    "poisonous": false,
+    "respawn": 5,
+    "maxHit": 112,
+    "hitpoints": 65000,
+    "attackSpeed": 4,
+    "attackAnim": 7974,
+    "defenceAnim": 7820,
+    "deathAnim": 7818,
+    "attackBonus": 160,
+    "defenceMelee": 200,
+    "defenceRange": 200,
+    "defenceMage": 200,
+    "isPet" : false,
+    "isBoss" : true
+  },
+  {
     "_comment" : "Instance-Master"
   },
   {

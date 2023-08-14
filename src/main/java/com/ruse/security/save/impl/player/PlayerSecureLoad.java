@@ -1217,6 +1217,11 @@ public class PlayerSecureLoad extends SecureLoad {
                     }.getType()));
         }
 
+        if (object.has("points")) {
+            player.getPoints().load(builder.fromJson(object.get("points"),  new TypeToken<Map<String, Integer>>() {
+                    }.getType()));
+        }
+
         if (object.has("towerTier")) {
            player.getTower().setTier(object.get("towerTier").getAsInt());
         }

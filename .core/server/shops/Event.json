@@ -1,0 +1,52 @@
+[
+  {
+    "id": 4,
+    "name": "Event Shop",
+    "canSell": false,
+    "shops": [
+      {
+        "shopId": 0,
+        "currency": "summer",
+        "shopName": "Summer",
+        "restrict": 0,
+        "items": [
+          {
+            "id": 28,
+            "amount": 100,
+            "price": 250
+          },
+          {
+            "id": 29,
+            "amount": 100,
+            "price": 100
+          },
+          {
+            "id": 23260,
+            "amount": 5,
+            "price": 3500
+          },
+          {
+            "id": 20501,
+            "amount": 25,
+            "price": 600
+          },
+          {
+            "id": 23254,
+            "amount": 25,
+            "price": 600
+          },
+          {
+            "id": 23149,
+            "amount": 10,
+            "price": 300
+          },
+          {
+            "id": 22121,
+            "amount": 10,
+            "price": 50
+          }
+        ]
+      }
+    ]
+  }
+]

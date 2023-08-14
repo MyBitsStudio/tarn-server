@@ -27,6 +27,8 @@ import com.ruse.world.entity.impl.player.PlayerHandler;
 import com.ruse.world.entity.updating.NpcUpdateSequence;
 import com.ruse.world.entity.updating.PlayerUpdateSequence;
 import com.ruse.world.entity.updating.UpdateSequence;
+import com.ruse.world.packages.database.Database;
+import com.ruse.world.packages.event.WorldEventHandler;
 import com.ruse.world.packages.globals.GlobalBossManager;
 import com.ruse.world.packages.shops.ShopHandler;
 import com.server.service.login.LoginService;
@@ -37,6 +39,7 @@ import kotlin.Unit;
 import kotlin.jvm.functions.Function0;
 import org.jetbrains.annotations.NotNull;
 
+import java.sql.SQLException;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Objects;
@@ -62,10 +65,14 @@ public class World {
      */
     private static final CharacterList<NPC> npcs = new CharacterList<>(GameSettings.npcCharacterListCapacity);
 
+
+    public static Database database = new Database();
     /**
      * Used to block the game thread until updating has completed.
      */
     private static final Phaser synchronizer = new Phaser(1);
+
+    public static WorldEventHandler handler = new WorldEventHandler();
 
     /**
      * A thread pool that will update players in parallel.
@@ -309,23 +316,15 @@ public class World {
         GlobalBossManager.getInstance().process();
 
         ShopHandler.process();
-
-
-        //Groudon.sequence();
-        //Ezkel.sequence();
-        //SupremeNex.sequence();
-        //KeepersOfLight.sequence();
-        //PestControl.sequence();
-        //ShootingStar.sequence();
-        //EvilTree.sequence();
         Bot.updatePlayers();
-        // Abyssector.initialize();
-        //Wildywyrm.initialize();
-        //SkeletalHorror.initialize();
-        //TriviaSystem.tick();
 
         ServerPerks.getInstance().tick();
-        //CharacterBackup.sequence()
+
+        try{
+            database.executeStatementQueue();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
 
 
         // First we construct the update sequences.

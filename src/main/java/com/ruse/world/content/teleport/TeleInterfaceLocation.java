@@ -86,7 +86,8 @@ public enum TeleInterfaceLocation {//3487, 3615 , 2711, 4752 , 2527, 2527, 1652,
 
     /* New */
 
-    TARN_TOWER(new Position(2859, 2744, 0), "Tarn Tower \\n \\n Multi: True \\n \\n KC Req: None\\n \\n Climb The Tower")
+    TARN_TOWER(new Position(2859, 2744, 0), "Tarn Tower \\n \\n Multi: True \\n \\n KC Req: None\\n \\n Climb The Tower"),
+    CREATION(new Position(2399, 3753, 0), "Creation Minigame \\n \\n Multi: false \\n \\n KC Req: None\\n \\n Defend the Tree")
 
 
     ; //raids

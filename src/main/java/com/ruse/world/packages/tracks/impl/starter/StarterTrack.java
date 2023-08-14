@@ -121,6 +121,23 @@ public class StarterTrack extends Track {
         }
     }
 
+    public void handleVote(int votes){
+        List<StarterTasks> tasks = StarterTasks.getMiscTasks();
+        for(StarterTasks task : tasks){
+            if(task != null){
+                if(!this.tasks.containsKey(task))
+                    this.tasks.put(task, false);
+                if(!this.tasks.get(task)){
+                    if(votes >= task.getCount()){
+                        this.tasks.put(task, true);
+                        reward(task);
+                        addXP(task.getXp());
+                    }
+                }
+            }
+        }
+    }
+
 
 
     private void addXP(int amount){

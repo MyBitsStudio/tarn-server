@@ -23,7 +23,6 @@ import com.ruse.world.content.dailyTask.DailyTaskHandler;
 import com.ruse.world.content.dailytasks_new.DailyTask;
 import com.ruse.world.content.tbdminigame.Game;
 import com.ruse.world.content.tbdminigame.Lobby;
-import com.ruse.world.event.youtube.YoutubeBoss;
 import com.ruse.world.packages.donation.boss.DonationBoss;
 import com.ruse.world.content.eventboss.EventBossDropHandler;
 import com.ruse.world.content.globalBoss.GlobalBoss;
@@ -216,9 +215,6 @@ public class NPCDeathTask extends Task {
                             ((DonationBoss) npc).handleDrops();
                         }
 
-                        if (npc.getId() == 4540) {
-                            YoutubeBoss.drop(npc);
-                        }
 
                         if (killer.getCurrentClue().getCurrentTask() != SlayerTasks.NO_TASK) {
                             if (killer.getCurrentClue().getAmountToSlay() > 0) {

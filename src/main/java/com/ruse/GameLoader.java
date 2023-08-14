@@ -117,40 +117,22 @@ public final class GameLoader {
 
 		serviceLoader.execute(GroupManager::loadGroups);
 		serviceLoader.execute(ConnectionHandler::init);
-		serviceLoader.execute(PlayerPunishment::init);
-
 		serviceLoader.execute(RegionClipping::init);
 		serviceLoader.execute(CustomObjects::init);
 		serviceLoader.execute(RegionManager::initialise);
 		serviceLoader.execute(ControllerHandler::initialise);
-
-
 		serviceLoader.execute(ItemDefinition::init);
-
-		serviceLoader.execute(GrandExchangeOffers::init);
-		serviceLoader.execute(Scoreboards::init);
-
 		serviceLoader.execute(WellOfGoodwill::init);
 		serviceLoader.execute(ClanManager.getManager()::init);
 		serviceLoader.execute(CombatPoisonData::init);
 		serviceLoader.execute(CombatStrategies::init);
-		//serviceLoader.execute(() -> NpcDefinition.parseNpcs().load());
 		serviceLoader.execute(() -> new NPCDataLoad().loadArray("./.core/server/defs/npc/npc_data.json").run());
 
 		serviceLoader.execute(() -> NPCDrops.parseDrops().load());
 		serviceLoader.execute(() -> WeaponInterfaces.parseInterfaces().load());
 		serviceLoader.execute(WeaponInterfaces::init);
-		//serviceLoader.execute(() -> ShopManager.parseShops().load());
-		//serviceLoader.execute(() -> DialogueManager.parseDialogues().load());
 		serviceLoader.execute(NPC::init);
-		serviceLoader.execute(DoubleOrNothing::initialize);
-		serviceLoader.execute(PollManager::initialize);
-		serviceLoader.execute(GrandLottery::init);
-		//serviceLoader.execute(ShopManager::parseTaxShop);
-		serviceLoader.execute(LotterySystem::loadTickets);
-		//serviceLoader.execute(AOESystem.getSingleton()::parseData);
 		serviceLoader.execute(ServerPerks.getInstance()::load);
-		//if (!GameSettings.LOCALHOST)
 		serviceLoader.execute(Bot::init);
 		serviceLoader.execute(JavaCord::init);
 		serviceLoader.execute(AdminCord::init);
@@ -162,7 +144,7 @@ public final class GameLoader {
 		serviceLoader.execute(ItemIdentifiers::load);
 		serviceLoader.execute(ShopHandler::load);
 		serviceLoader.execute(ShopHandler::loadPrices);
-		//serviceLoader.execute(RSAKeyGenerator::start);
+		serviceLoader.execute(World.handler.load()::startEvents);
 		TaskManager.submit(new LotteryTask());
 	}
 

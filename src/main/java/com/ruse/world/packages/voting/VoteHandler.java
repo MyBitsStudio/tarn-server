@@ -1,69 +1,82 @@
 package com.ruse.world.packages.voting;
 
-import com.ruse.motivote3.doMotivote;
+import com.ruse.engine.GameEngine;
 import com.ruse.util.Misc;
 import com.ruse.world.World;
 import com.ruse.world.content.achievement.Achievements;
 import com.ruse.world.content.discordbot.JavaCord;
 import com.ruse.world.entity.impl.player.Player;
+import com.ruse.world.packages.database.model.VoteRedeem;
 import org.jetbrains.annotations.NotNull;
+
+import java.sql.SQLException;
+import java.util.List;
 
 public class VoteHandler {
 
     public static void processVote(@NotNull Player player){
-        final String playerName = player.getUsername();
-
-        com.everythingrs.vote.Vote.service.execute(() -> {
-            try {
-                com.everythingrs.vote.Vote[] reward = com.everythingrs.vote.Vote.reward("7qLCv34KB0NVyOqHYad6pxEuNqKkGXxVPPULMFR8yml5uKJbFzP3VbbrUT0I8Lgbzl8AONjs",
-                        playerName, String.valueOf(1),"all");
-                if (reward[0].message != null) {
-                    player.getPacketSender().sendMessage(reward[0].message);
+        try {
+            GameEngine.submit(() -> {
+                List<VoteRedeem> voteRedeems = World.database.redeemVotes(player);
+                if(voteRedeems.isEmpty()){
+                    player.getPacketSender().sendMessage("You have no votes to redeem.");
                     return;
                 }
-                player.getInventory().add(reward[0].reward_id, reward[0].give_amount);
-                player.getPacketSender().sendMessage("Thank you for voting! You now have " + reward[0].vote_points + " vote points.");
-                JavaCord.sendMessage(1117224370587304057L, "**[" + player.getUsername() + "] Just voted for the server, thank you!**");
-                doMotivote.setVoteCount(doMotivote.getVoteCount() + reward[0].give_amount);
-                VoteBossDrop.save();
-                player.getSeasonPass().incrementExp(36200 * reward[0].give_amount, false);
-                Achievements.doProgress(player, Achievements.Achievement.VOTE_10_TIMES, reward[0].give_amount);
-                Achievements.doProgress(player, Achievements.Achievement.VOTE_50_TIMES, reward[0].give_amount);
-                Achievements.doProgress(player, Achievements.Achievement.VOTE_100_TIMES, reward[0].give_amount);
-                randomBox(player);
-                randomTicket(player);
-                if (doMotivote.getVoteCount() >= 50) {
-                    VoteBossDrop.handleSpawn();
+                for(VoteRedeem redeem : voteRedeems){
+                    try {
+                        World.database.executeStatement("UPDATE `core_votes` SET `claimed` = '1' WHERE `uid` = '" + redeem.uid() + "'");
+                    } catch (SQLException e) {
+                        throw new RuntimeException(e);
+                    }
+                    player.getPoints().add("voted", 1);
+                    player.getPacketSender().sendMessage("Thank you for voting! Enjoy your reward!");
+                    JavaCord.sendMessage(1117224370587304057L, "**[" + player.getUsername() + "] Just voted for the server, thank you!**");
+                    add(player);
+                    progress(player);
+                    player.save();
                 }
-            } catch (Exception e) {
-                player.getPacketSender().sendMessage("Api Services are currently offline. Please check back shortly");
-                e.printStackTrace();
-            }
-        });
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static void progress(Player player){
+        Achievements.doProgress(player, Achievements.Achievement.VOTE_10_TIMES, 1);
+        Achievements.doProgress(player, Achievements.Achievement.VOTE_50_TIMES, 1);
+        Achievements.doProgress(player, Achievements.Achievement.VOTE_100_TIMES, 1);
+        player.getStarter().handleVote(player.getPoints().get("voted"));
+    }
+
+    private static void add(Player player){
+        player.getInventory().add(23020, 1);
+        player.getInventory().add(4000, 1);
+        if(Misc.random(10) == 1)
+            player.getInventory().add(15682, 1);
+        randomBox(player);
+        randomTicket(player);
     }
 
     public static void randomBox(Player player){
-        if(Misc.random(352) == 213){
-            player.getInventory().add(15002, 1);
-            player.getPacketSender().sendMessage("You have received a random Gracious box for voting!");
-            World.sendMessage("<img=857><col=FF0000><shad=1>[" + player.getUsername() + "] Just got lucky and got a Gracious box from voting!");
-        } else if(Misc.random(597) == 197){
-            player.getInventory().add(15004, 1);
-            player.getPacketSender().sendMessage("You have received a random Majestic box for voting!");
-            World.sendMessage("<img=857><col=FF0000><shad=1>[" + player.getUsername() + "] Just got lucky and got a Majestic box from voting!");
-        } else if(Misc.random(1117) == 732){
-            player.getInventory().add(20489, 1);
-            player.getPacketSender().sendMessage("You have received a random Infamous box for voting!");
-            World.sendMessage("<img=857><col=FF0000><shad=1>[" + player.getUsername() + "] Just got lucky and got a Infamous box from voting!");
-        }
+        int random = Misc.random(1000);
+        if(random == 987)
+            player.getInventory().add(23258, 1);
+        else if(random >= 762 && random <= 786)
+            player.getInventory().add(23257, 1);
+        else if(random >= 313 && random <= 341)
+            player.getInventory().add(23256, 1);
     }
 
     public static void randomTicket(Player player){
-        if(Misc.random(10) == 8){
-            player.getInventory().add(1, Misc.random(1,3));
-            player.getPacketSender().sendMessage("You have received a random Ticket for voting!");
-            World.sendMessage("<img=857><col=FF0000><shad=1>[" + player.getUsername() + "] Just got lucky and got a Ticket from voting!");
-        }
+        int random = Misc.random(200);
+        if(random == 187)
+            player.getInventory().add(4001, Misc.random(3, 7));
+        else if(random >= 67 && random <= 89)
+            player.getInventory().add(4001, Misc.random(2, 5));
+        else if(random >= 10 && random <= 50)
+            player.getInventory().add(4001, Misc.random(1, 3));
+        else if(random >= 10 && random <= 100)
+            player.getInventory().add(4001, 1);
     }
 
 }

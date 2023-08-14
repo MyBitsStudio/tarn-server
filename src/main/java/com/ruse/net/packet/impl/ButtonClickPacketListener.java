@@ -68,6 +68,7 @@ import com.ruse.world.content.zombie.ZombieParty;
 import com.ruse.world.content.zombie.ZombieRaidData;
 import com.ruse.world.entity.impl.player.Player;
 import com.ruse.world.entity.impl.player.StartScreen;
+import com.ruse.world.packages.items.monic.Monics;
 import com.ruse.world.packages.misc.PossibleLootInterface;
 import com.ruse.world.packages.mode.impl.UltimateIronman;
 import com.ruse.world.packages.shops.ShopHandler;
@@ -195,6 +196,9 @@ public class ButtonClickPacketListener implements PacketListener {
         }
 
         if(TarnTower.handleButton(player, id))
+            return;
+
+        if(Monics.handleButtons(player, id))
             return;
 
         new ScratchCard(player).reveal(id);

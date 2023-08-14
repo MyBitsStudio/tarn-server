@@ -17,6 +17,7 @@ public class DonatorBoxIII {
             new Box(23120, 1, 25, true),
             new Box(23123, 1, 25, true),
             new Box(23126, 1, 25, true),
+            new Box(4564, 10, 10, true),
     };
 
 }
