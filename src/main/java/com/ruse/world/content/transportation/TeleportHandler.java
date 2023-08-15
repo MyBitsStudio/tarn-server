@@ -46,6 +46,9 @@ public class TeleportHandler {
 		if(Lobby.getInstance().getGame() != null) {
 			Lobby.getInstance().getGame().leave(player, true);
 		}
+		if(Lobby.getInstance().getPlayerSet().contains(player)) {
+			Lobby.getInstance().remove(player);
+		}
 		player.setTeleporting(true).getMovementQueue().setLockMovement(true).reset();
 		cancelCurrentActions(player);
 		player.performAnimation(teleportType.getStartAnimation());

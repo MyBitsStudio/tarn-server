@@ -32,6 +32,8 @@ import com.ruse.world.content.KillsTracker.KillsEntry;
 import com.ruse.world.content.LoyaltyProgramme.LoyaltyTitles;
 import com.ruse.world.content.StarterTasks.StarterTaskAttributes;
 import com.ruse.world.content.achievement.AchievementHandler;
+import com.ruse.world.content.johnachievementsystem.Achievement;
+import com.ruse.world.content.johnachievementsystem.AchievementProgress;
 import com.ruse.world.content.tbdminigame.Lobby;
 import com.ruse.world.packages.loyalty.LoyaltyManager;
 import com.ruse.world.packages.tradingpost.TradingPost;
@@ -803,6 +805,15 @@ public class Player extends Character {
     private List<Integer> lootList;
     private boolean clickToTeleport;
     private final EventBossManager eventBossManager = new EventBossManager(this);
+    @Getter
+    private final HashMap<Achievement, AchievementProgress> achievementsMap = new HashMap<>();
+    @Getter
+    @Setter
+    private int achievementPoints;
+
+    public void addAchievementPoints(int amount) {
+        achievementPoints += amount;
+    }
     /**
      * Progression Manager
      */
