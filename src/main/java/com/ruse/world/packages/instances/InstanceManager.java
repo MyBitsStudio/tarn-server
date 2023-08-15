@@ -342,26 +342,26 @@ public class InstanceManager {
     }
 
     public boolean isUnlocked(@NotNull Player player, InstanceInterData data){
-        if(player.getRank().isDeveloper())
-            return true;
-
-        int npcId = 0, amount, base = data.getNpcId();
-
-        if(handleSpecialLock(base)){
-            return returnSpecial(player, base);
-        }
-
-        switch (base) {
-            case 8014 -> amount = 1000;
-            case 8003 -> {
-                npcId = 8014;
-                amount = 200;
-            }
-            default -> {
-                return false;
-            }
-        }
-        return false;
+//        if(player.getRank().isDeveloper())
+//            return true;
+//
+//        int npcId = 0, amount, base = data.getNpcId();
+//
+//        if(handleSpecialLock(base)){
+//            return returnSpecial(player, base);
+//        }
+//
+//        switch (base) {
+//            case 8014 -> amount = 1000;
+//            case 8003 -> {
+//                npcId = 8014;
+//                amount = 200;
+//            }
+//            default -> {
+//                return false;
+//            }
+//        }
+        return true;
     }
 
     private boolean returnSpecial(Player player, int base){
