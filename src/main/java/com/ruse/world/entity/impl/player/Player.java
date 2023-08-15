@@ -32,6 +32,7 @@ import com.ruse.world.content.KillsTracker.KillsEntry;
 import com.ruse.world.content.LoyaltyProgramme.LoyaltyTitles;
 import com.ruse.world.content.StarterTasks.StarterTaskAttributes;
 import com.ruse.world.content.achievement.AchievementHandler;
+import com.ruse.world.content.tbdminigame.Lobby;
 import com.ruse.world.packages.loyalty.LoyaltyManager;
 import com.ruse.world.packages.tradingpost.TradingPost;
 import com.ruse.world.packages.attendance.AttendanceManager;
@@ -1915,6 +1916,12 @@ public class Player extends Character {
             return false;
         }
 
+        if(Lobby.getInstance().getGame() != null) {
+            Lobby.getInstance().getGame().leave(this, true);
+        }
+        if(Lobby.getInstance().getPlayerSet().contains(this)) {
+            Lobby.getInstance().remove(this);
+        }
 
         if(clan != null){
             ClanManager.getManager().leave(this, false);

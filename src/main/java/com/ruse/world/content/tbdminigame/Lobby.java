@@ -56,7 +56,7 @@ public class Lobby {
         updateTimerInterface(LOBBY_TIMER - taskTicks);
     }
 
-    private void remove(Player player) {
+    public void remove(Player player) {
         playerSet.remove(player);
         player.moveTo(LOBBY_EXIT_POSITION);
         player.getPacketSender().sendWalkableInterface(151100, false);
@@ -89,11 +89,15 @@ public class Lobby {
             @Override
             protected void execute() {
                 taskTicks++;
-                if(taskTicks == LOBBY_TIMER) {
-                    startGame();
+                if(playerSet.isEmpty()) {
                     stop();
                 } else {
-                   updateTimerInterface(LOBBY_TIMER - taskTicks);
+                    if (taskTicks == LOBBY_TIMER) {
+                        startGame();
+                        stop();
+                    } else {
+                        updateTimerInterface(LOBBY_TIMER - taskTicks);
+                    }
                 }
             }
         });
@@ -110,5 +114,9 @@ public class Lobby {
 
     public Game getGame() {
         return game;
+    }
+
+    public Set<Player> getPlayerSet() {
+        return playerSet;
     }
 }

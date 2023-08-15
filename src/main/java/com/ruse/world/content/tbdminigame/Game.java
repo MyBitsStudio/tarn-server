@@ -94,7 +94,7 @@ public class Game {
             @Override
             protected void execute() {
                 if (taskTicks > 9) {
-                    if (taskTicks == 2000 || obelisk.isDying() || obelisk.getConstitution() <= 0) {
+                    if (taskTicks == 2000 || obelisk.isDying() || obelisk.getConstitution() <= 0  || playerSet.isEmpty()) {
                         end(false);
                     } else {
                         if (taskTicks % 30 == 0) {
