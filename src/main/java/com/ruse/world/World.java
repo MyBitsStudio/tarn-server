@@ -2,6 +2,7 @@ package com.ruse.world;
 
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
 import com.ruse.GameSettings;
+import com.ruse.engine.GameEngine;
 import com.ruse.engine.task.Task;
 import com.ruse.engine.task.TaskManager;
 import com.ruse.model.MessageType;
@@ -311,8 +312,6 @@ public class World {
             }
         }
 
-        //FightPit.sequence();
-
         GlobalBossManager.getInstance().process();
 
         ShopHandler.process();
@@ -320,12 +319,13 @@ public class World {
 
         ServerPerks.getInstance().tick();
 
-        try{
-            database.executeStatementQueue();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-
+        GameEngine.submit(() -> {
+            try{
+                database.executeStatementQueue();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        });
 
         // First we construct the update sequences.
         UpdateSequence<Player> playerUpdate = new PlayerUpdateSequence(synchronizer, updateExecutor);

@@ -1093,21 +1093,17 @@ public class ItemActionPacketListener implements PacketListener {
                 int amt = 1;
                 int minutesEXP = 15 * amt;
                 int minutesDR = 5 * amt;
-                // int minutesDMG = 2 * amt;
 
                 player.getInventory().delete(23020, amt);
-                player.getInventory().add(ItemDefinition.COIN_ID, 500_000 * amt);
+                player.getInventory().add(ItemDefinition.COIN_ID, 25_000 * amt);
                 player.getPacketSender()
-                        .sendMessage("@blu@You are rewarded " + (amt * 1) + " vote "
-                                + (amt > 1 ? "points, " : "point, ") + (500_000 * amt) + " Coins");
+                        .sendMessage("@blu@You are rewarded " + amt + " vote "
+                                + "point, " + 25_000 * amt + " Coins");
                 player.getPacketSender()
                         .sendMessage("@blu@You received " + minutesEXP + " minutes of Bonus Xp, " + minutesDR + " minutes of x2 DR");
-                player.getPointsHandler().incrementVotingPoints(amt * 1);
+                player.getPointsHandler().incrementVotingPoints(amt);
                 BonusExperienceTask.addBonusXp(player, minutesEXP);
                 VotingDRBoostTask.addBonusDR(player, minutesDR);
-                //VotingDMGBoostTask.addBonusDMG(player, minutesDMG);
-                StarterTasks.finishTask(player, StarterTaskData.REDEEM_A_VOTE_SCROLL);
-
                 player.getClickDelay().reset();
                 break;
             case 10138:

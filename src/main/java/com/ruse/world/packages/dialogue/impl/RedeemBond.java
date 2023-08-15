@@ -11,7 +11,7 @@ import com.ruse.world.packages.donation.DonationManager;
 
 public class RedeemBond extends Dialogue {
 
-    private int item = 23057;
+    private final int item;
     private final boolean all;
     public RedeemBond(Player player, int item, boolean all) {
         super(player);
@@ -80,8 +80,8 @@ public class RedeemBond extends Dialogue {
                     getPlayer().incrementAmountDonated(amount);
                     getPlayer().getPlayerVIP().addPoints(amount);
                     getPlayer().getSeasonPass().incrementExp(1020 * (amount >= 100 ? (amount * 2) : amount), false);
-                    getPlayer().getPacketSender().sendMessage("Your account has gained funds worth $" + (amount)
-                            + ". Your total is now at $" + getPlayer().getAmountDonated() + ".");
+                    getPlayer().getPacketSender().sendMessage("Your account has gained funds worth $" + (amount / 10)
+                            + ". Your total is now at " + getPlayer().getPlayerVIP().getPoints() + ".");
                     getPlayer().getPacketSender().sendMessage("Your have gained "+(1020 * (amount >= 100 ? (amount * 2) : amount)) +" BP exp");
                     PlayerPanel.refreshPanel(getPlayer());
                 }

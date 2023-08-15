@@ -11,25 +11,6 @@ public class VoteRewardHandler {
 
 	public static final int minutes = 5;
 
-	public static void voteRewards(Player player, boolean claimAll) {
-
-		if (!player.getInventory().contains(23020) || player.getInventory().getAmount(23020) < 1) {
-			return;
-		}
-
-		int amt = player.getInventory().getAmount(23020);
-
-		player.getInventory().delete(23020, (claimAll ? amt : 1));
-		player.getPacketSender()
-				.sendMessage("You are rewarded " + (claimAll ? Misc.format(amt) : 1) + " vote "
-						+ (claimAll && amt > 1 ? "points" : "point") + " " + "and "
-						+ (claimAll ? Misc.format(amt * minutes) : minutes) + " minutes of 30% bonus XP!");
-		BonusExperienceTask.addBonusXp(player, (claimAll ? amt * minutes : minutes)); // minutes);
-		player.getPointsHandler().incrementVotingPoints(claimAll ? amt : 1);
-		player.getClickDelay().reset();
-
-	}
-
 	public static void AFKFISH(Player player, boolean claimAll) {
 
 		if (!player.getInventory().contains(10138) || player.getInventory().getAmount(10138) < 1) {
@@ -42,9 +23,6 @@ public class VoteRewardHandler {
 		player.getPacketSender().sendMessage("You are rewarded " + (claimAll ? Misc.format(amt) : 1) + " AFK "
 				+ (claimAll && amt > 1 ? "tickets" : "ticket") + ".");
 		player.getInventory().add(5020, (claimAll ? amt : 1));
-		// BonusExperienceTask.addBonusXp(player, (claimAll ? amt*minutes : minutes));
-		// //minutes);
-		// player.getPointsHandler().incrementVotingPoints(claimAll ? amt : 1);
 
 		player.getClickDelay().reset();
 	}
@@ -61,9 +39,6 @@ public class VoteRewardHandler {
 		player.getPacketSender().sendMessage("You are rewarded " + (claimAll ? Misc.format(amt) : 1) + " AFK "
 				+ (claimAll && amt > 1 ? "tickets" : "ticket") + ".");
 		player.getInventory().add(5020, (claimAll ? amt : 1));
-		// BonusExperienceTask.addBonusXp(player, (claimAll ? amt*minutes : minutes));
-		// //minutes);
-		// player.getPointsHandler().incrementVotingPoints(claimAll ? amt : 1);
 
 		player.getClickDelay().reset();
 	}

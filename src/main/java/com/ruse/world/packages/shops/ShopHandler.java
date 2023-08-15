@@ -106,7 +106,12 @@ public class ShopHandler {
     }
 
     public static Optional<Shop> getTabbedShop(int shop, int index){
-        return shops.get(shop).getShops().stream().filter(shopx -> Objects.equals(shopx.getId(), index)).findFirst();
+        TabShop shops = getShop(shop).orElse(null);
+        if(shops == null)
+            return Optional.empty();
+        else {
+            return shops.getShops().stream().filter(shop1 -> shop1.getId() == index).findFirst();
+        }
     }
 
     public static boolean sell(Player player, int slot, int amount){
@@ -162,7 +167,7 @@ public class ShopHandler {
         if(option.isPresent()){
             TabShop shop = option.get();
 
-            Optional<Shop> shopOption = getTabbedShop(shop.getId(), player.getVariables().getIntValue("active-tab"));
+            Optional<Shop> shopOption = getTabbedShop(player.getVariables().getIntValue("active-shop"), player.getVariables().getIntValue("active-tab"));
 
             if(shopOption.isPresent()){
                 Shop shop1 = shopOption.get();
@@ -170,6 +175,7 @@ public class ShopHandler {
                 ShopItem item = shop1.getItem(itemId);
 
                 if(Objects.equals(item, null)){
+                    player.sendMessage("This item is not sold in this shop.");
                     return false;
                 } else {
                     Currency currency = shop1.getCurrency();
@@ -223,6 +229,7 @@ public class ShopHandler {
         if(interfaceId != 30929)
             return false;
 
+        System.out.println("Option: " + option + " Slot: " + slot + " Id: " + id);
         switch(option){
             case 1 -> {
                 Optional<TabShop> option1 = getShop(player.getVariables().getIntValue("active-shop"));
@@ -257,6 +264,7 @@ public class ShopHandler {
                 } else {
                     System.out.println("TabShop not present");
                 }
+                return true;
             }
             case 2 -> {
                 Optional<TabShop> option1 = getShop(player.getVariables().getIntValue("active-shop"));
@@ -265,17 +273,17 @@ public class ShopHandler {
 
                     Optional<Shop> p = shop.getShops().stream().filter(shop1 -> Objects.equals(shop1.getId(), player.getVariables().getIntValue("active-tab"))).findFirst();
 
-                    if (p.isPresent()) {
+                    if(p.isPresent()){
                         Shop l = p.get();
 
-                        if (slot >= l.asArray().length) {
+                        if(slot >= l.asArray().length) {
                             System.out.println("Slot is greater than shop size");
                             return true;
                         }
 
                         ShopItem item = l.asArray()[slot];
 
-                        if (item == null) {
+                        if(item == null) {
                             item = l.getItem(id);
                             if (item == null) {
                                 System.out.println("Item is null");
@@ -283,15 +291,15 @@ public class ShopHandler {
                             }
                         }
 
-                        if (item.getStock() == 0) {
-                            player.sendMessage("This item is out of stock.");
-                            return true;
-                        }
-
                         buy(player, item.getId(), 1);
                         return true;
+                    } else {
+                        System.out.println("Shop not present");
                     }
+                } else {
+                    System.out.println("TabShop not present");
                 }
+                return true;
             }
 
         }
