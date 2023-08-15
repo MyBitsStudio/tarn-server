@@ -5,6 +5,7 @@ import com.ruse.GameSettings;
 import com.ruse.engine.GameEngine;
 import com.ruse.engine.task.Task;
 import com.ruse.engine.task.TaskManager;
+import com.ruse.io.ThreadProgressor;
 import com.ruse.model.MessageType;
 import com.ruse.model.Position;
 import com.ruse.net.security.ConnectionHandler;
@@ -246,7 +247,6 @@ public class World {
             try {
                 job.invoke();
             } catch (Exception e){
-//                logger.severe("Error executing game-thread job. "+e.getMessage());
                 e.printStackTrace();
             }
         });
@@ -319,12 +319,13 @@ public class World {
 
         ServerPerks.getInstance().tick();
 
-        GameEngine.submit(() -> {
-            try{
+        ThreadProgressor.submit(true, () -> {
+            try {
                 database.executeStatementQueue();
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }
+            return null;
         });
 
         // First we construct the update sequences.

@@ -1,6 +1,7 @@
 package com.ruse.security.save.impl.player;
 
 import com.ruse.engine.GameEngine;
+import com.ruse.io.ThreadProgressor;
 import com.ruse.security.save.SecureSave;
 import com.ruse.security.tools.SecurityUtils;
 import com.ruse.world.entity.impl.player.Player;
@@ -372,13 +373,14 @@ public class PlayerSecureSave extends SecureSave {
 
     @Override
     public void save() {
-        GameEngine.submit(() -> {
+        ThreadProgressor.submit(true, () -> {
             try (FileWriter file = new FileWriter(SecurityUtils.PLAYER_FILE+player.getUsername()+".json")) {
                 file.write(builder.toJson(object));
                 file.flush();
             } catch (IOException e) {
                 e.printStackTrace();
             }
+            return null;
         });
     }
 

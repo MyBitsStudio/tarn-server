@@ -3,6 +3,7 @@ package com.ruse.engine;
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
 import com.ruse.GameSettings;
 import com.ruse.engine.task.TaskManager;
+import com.ruse.io.ThreadProgressor;
 import com.ruse.util.playerSavingTimer;
 import com.ruse.world.World;
 import com.ruse.world.packages.clans.ClanManager;
@@ -18,15 +19,7 @@ import java.util.concurrent.ThreadPoolExecutor.CallerRunsPolicy;
  * @author Gabriel Hannason
  */
 public final class GameEngine implements Runnable {
-
-    //private static final ScheduledExecutorService logicService = GameEngine.createLogicService();
     private static final ThreadFactory THREAD_FACTORY_BUILDER = new ThreadFactoryBuilder().setNameFormat("GameThread").build();
-
-    // private static final int PROCESS_GAME_TICK = 2;
-
-    // private EngineState engineState = EngineState.PACKET_PROCESSING;
-
-    // private int engineTick = 0;
 
     /**
      * STATIC
@@ -52,50 +45,18 @@ public final class GameEngine implements Runnable {
     @Override
     public void run() {
         try {
-            final boolean PRINT_TIMESTAMP = true;
-            long start = System.currentTimeMillis();
-            long lastTime = System.currentTimeMillis();
-
             TaskManager.sequence();
-            if (PRINT_TIMESTAMP) {
-                if (System.currentTimeMillis() - lastTime > 150) {
-                  //  System.out.println("Task sequencing took: " + (System.currentTimeMillis() - lastTime) + " ms");
-                }
-                lastTime = System.currentTimeMillis();
-            }
+            ThreadProgressor.execute();
             World.sequence();
-            if (PRINT_TIMESTAMP) {
-                if (System.currentTimeMillis() - lastTime > 150) {
-                   // System.out.println("World processing took: " + (System.currentTimeMillis() - lastTime) + " ms");
-                }
-                lastTime = System.currentTimeMillis();
-            }
             playerSavingTimer.massSaving();
-            if (PRINT_TIMESTAMP) {
-                if (System.currentTimeMillis() - lastTime > 150) {
-                  //  System.out.println("Player saving timer took: " + (System.currentTimeMillis() - lastTime) + " ms");
-                }
-                lastTime = System.currentTimeMillis();
-            }
             GlobalItemSpawner.startup();
-            if (PRINT_TIMESTAMP) {
-                if (System.currentTimeMillis() - lastTime > 150) {
-                   // System.out.println("Global item spawner took: " + (System.currentTimeMillis() - lastTime) + " ms");
-                }
-                lastTime = System.currentTimeMillis();
-                if (System.currentTimeMillis() - start > 600) {
-                   // System.out.println("Total tick time was " + (System.currentTimeMillis() - start) + " ms");
-                }
-            }
         } catch (Throwable e) {
             e.printStackTrace();
             GroupManager.saveGroups();
             World.savePlayers();
-            //ShopManager.saveTaxShop();
             playerSavingTimer.massSaving();
             GrandExchangeOffers.save();
             ClanManager.getManager().init();
-            //PlayerOwnedShopManager.saveShops();
         }
     }
 
@@ -111,7 +72,6 @@ public final class GameEngine implements Runnable {
             } catch (ExecutionException | InterruptedException e){
                 GroupManager.saveGroups();
                 World.savePlayers();
-                //ShopManager.saveTaxShop();
                 playerSavingTimer.massSaving();
                 GrandExchangeOffers.save();
                 ClanManager.getManager().save();
