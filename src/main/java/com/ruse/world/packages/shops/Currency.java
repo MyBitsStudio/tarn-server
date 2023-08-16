@@ -11,6 +11,7 @@ public enum Currency {
     SLAYER("slayer", -1),
     VOTE("vote", 4000),
     SUMMER("summer", 14819),
+    LOYALTY("loyalty", 5022),
 
     ;
 

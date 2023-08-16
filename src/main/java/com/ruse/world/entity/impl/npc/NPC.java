@@ -171,6 +171,10 @@ public class NPC extends Character {
     public NPC(int id, Position position) {
         this(id, position, true);
     }
+
+    public NPC(int id){
+        this(id, new Position(0, 0));
+    }
     public NPC(int id, Position position, boolean respawn) {
         super(position);
         NpcDefinition definition = NpcDefinition.forId(id);

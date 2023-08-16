@@ -213,18 +213,26 @@ public class MeleeMax {
             if (victim.isPlayer()) {
                 Player player = victim.asPlayer();
 
-                long defence = (long) (player.getBonusManager().getDefenceBonus()[BonusManager.DEFENCE_STAB] / 100_000);
+                double defence = (player.getBonusManager().getDefenceBonus()[BonusManager.DEFENCE_STAB] / 1_000);
 
-                maxHit -= (defence / 11);
+                maxHit -= defence;
 
-                if (maxHit <= 0) {
+                if(maxHit <= 0){
                     maxHit = 1;
+                }
+
+                double absorb = player.getBonusManager().getExtraBonus()[BonusManager.ABSORB_MELEE];
+
+                if(absorb > 0){
+                    double percent = 1 - ( 1 - (absorb / 1000.0));
+                    maxHit -= (long) (maxHit * percent);
                 }
             }
 
             if(npc.getDefinition().isBoss()){
-                maxHit *= 2;
+                maxHit *= 1.25;
             }
+
         } else if(entity.isPlayer()) {
             Player player = entity.asPlayer();
 
@@ -234,7 +242,7 @@ public class MeleeMax {
 
             // Use our multipliers to adjust the maxhit...
 
-            double base = 1.3 + effective / 10 + strengthBonus / 70 + effective * strengthBonus / 630;
+            double base = 1.3 + (effective / 10) + (strengthBonus / 70) + effective * (strengthBonus / 630);
 
             if (player.isSpecialActivated() && player.getCombatSpecial().getCombatType() == CombatType.MELEE) {
                 specialBonus = player.getCombatSpecial().getStrengthBonus();
@@ -356,7 +364,7 @@ public class MeleeMax {
             case DEFENSIVE -> styleBonus = 0;
         }
 
-        double otherBonus = Math.floorDiv((int) player.getBonusManager().getOtherBonus()[BonusManager.BONUS_STRENGTH], 1_000);
+        double otherBonus = player.getBonusManager().getOtherBonus()[BonusManager.BONUS_STRENGTH] / 1_000;
 
         double prayerMod = 1.0;
 
@@ -380,6 +388,6 @@ public class MeleeMax {
             }
         }
 
-        return 120 * prayerMod * otherBonus + styleBonus;
+        return (120 * prayerMod) * otherBonus + styleBonus;
     }
 }
