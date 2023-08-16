@@ -26,25 +26,30 @@ public class MagicMax {
             if(victim.isPlayer()){
                 Player player = victim.asPlayer();
 
-                long defence = Math.floorDiv((int) player.getBonusManager().getDefenceBonus()[BonusManager.DEFENCE_MAGIC], 100_000);
+                double defence = player.getBonusManager().getDefenceBonus()[BonusManager.DEFENCE_MAGIC] / 1_000;
 
-                maxHit -= Math.floorDiv(defence , 11);
+                maxHit -= defence;
 
                 if(maxHit <= 0){
                     maxHit = 1;
                 }
 
+                double absorb = player.getBonusManager().getExtraBonus()[BonusManager.ABSORB_MAGIC];
+
+                if(absorb > 0){
+                    double percent = 1 - ( 1 - (absorb / 1000.0));
+                    maxHit -= (long) (maxHit * percent);
+                }
             }
 
             if(npc.getDefinition().isBoss()){
-                maxHit *= 2;
+                maxHit *= 1.25;
             }
 
         } else if(entity.isPlayer()){
             Player player = entity.asPlayer();
 
             double magicStrength = player.getBonusManager().getOtherBonus()[3];
-            long magicLevel = Math.max(player.getSkillManager().getCurrentLevel(Skill.MAGIC), 120);
 
             double prayerMod = 1.0;
             if (PrayerHandler.isActivated(player, PrayerHandler.MYSTIC_WILL) || CurseHandler.isActivated(player, CurseHandler.LEECH_MAGIC)) {
@@ -65,9 +70,9 @@ public class MagicMax {
                 }
             }
 
-            double effectiveMagicDamage = 120 * prayerMod * Math.floorDiv((int) magicStrength, 1_000);
+            double effectiveMagicDamage = (120 * prayerMod) *  (magicStrength / 1_000);
 
-            double baseDamage = 1.3 + effectiveMagicDamage / 10 + magicStrength / 70 + effectiveMagicDamage * magicStrength / 630;
+            double baseDamage = 1.3 + (effectiveMagicDamage / 10) + (magicStrength / 70) + effectiveMagicDamage * (magicStrength / 630);
 
 
             double specialBonus = 1;

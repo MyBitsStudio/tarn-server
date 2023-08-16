@@ -40,8 +40,6 @@ public class FriezaCombatScript implements CombatStrategy {
 	 * Attacking melee
 	 */
 	private Animation animationsmelee = new Animation(getRandomAnimationMelee());
-//	private Animation animationsmagic = new Animation(getRandomAnimationMagic());
-	//private Animation animationsrange = new Animation(getRandomAnimationRange());
 	private Graphic graphics = new Graphic(getRandomGfx());
 	
 

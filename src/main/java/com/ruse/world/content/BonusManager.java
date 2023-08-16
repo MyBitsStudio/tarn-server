@@ -7,6 +7,7 @@ import com.ruse.model.definitions.ItemDefinition;
 import com.ruse.world.content.combat.prayer.CurseHandler;
 import com.ruse.world.content.combat.prayer.PrayerHandler;
 import com.ruse.world.content.equipmentenhancement.BoostType;
+import com.ruse.world.entity.impl.npc.NPC;
 import com.ruse.world.entity.impl.player.Player;
 import com.ruse.world.packages.combat.max.MagicMax;
 import com.ruse.world.packages.combat.max.MeleeMax;
@@ -72,12 +73,14 @@ public class BonusManager {
 			player.getPacketSender().sendString(21190 + i, BONUS_NAMES[i] + ": " + ((int) bonus > 0 ? "+ " + formatNumber((int) bonus) : formatNumber((int) bonus)));
 		}
 
-		player.getPacketSender().sendString(66106, "Drop Rate Bonus: " + CustomDropUtils.drBonus(player, player.getSlayer().getSlayerTask().getNpcId()));
-		player.getPacketSender().sendString(66107, "Double Drop Bonus: " + CustomDropUtils.getDoubleDropChance(player, player.getSlayer().getSlayerTask().getNpcId()));
+		NPC npc = new NPC(9837);
 
-		player.getPacketSender().sendString(66108, "Melee Maxhit: " +  formatNumber(MeleeMax.newMelee(player, player) / 10));
-		player.getPacketSender().sendString(66109, "Ranged Maxhit: " +  formatNumber(RangeMax.newRange(player, player) / 10));
-		player.getPacketSender().sendString(66110, "Magic Maxhit: " +  formatNumber(MagicMax.newMagic(player, player) / 10));
+		player.getPacketSender().sendString(66106, "Drop Rate Bonus: " + CustomDropUtils.drBonus(player, npc.getId()));
+		player.getPacketSender().sendString(66107, "Double Drop Bonus: " + CustomDropUtils.getDoubleDropChance(player, npc.getId()));
+
+		player.getPacketSender().sendString(66108, "Melee Maxhit: " +  formatNumber(MeleeMax.newMelee(player, npc)));
+		player.getPacketSender().sendString(66109, "Ranged Maxhit: " +  formatNumber(RangeMax.newRange(player, npc)));
+		player.getPacketSender().sendString(66110, "Magic Maxhit: " +  formatNumber(MagicMax.newMagic(player, npc)));
 
 	}
 
@@ -97,13 +100,13 @@ public class BonusManager {
 		return otherBonus;
 	}
 
-	private double[] attackBonus = new double[5];
+	private final double[] attackBonus = new double[5];
 
-	private double[] defenceBonus = new double[5];
+	private final double[] defenceBonus = new double[5];
 
-	private double[] extraBonus = new double[4];
+	private final double[] extraBonus = new double[4];
 
-	private double[] otherBonus = new double[4];
+	private final double[] otherBonus = new double[4];
 
 	private static final String[][] STRING_ID = { { "1675", "Stab" }, // 0
 			{ "1676", "Slash" }, // 1

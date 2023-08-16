@@ -191,13 +191,13 @@ public class Consumables {
         /*
          * Event types.
          */
-         PUMPKIN(new Item(1959), 14), OKTOBERTFEST_PRETZEL(new Item(19778), 120),
-        BLUE_SWEETS(new Item(4558), 30), DEEP_SWEETS(new Item(4559), 40), WHITE_SWEETS(new Item(4560), 50),
-        PINK_SWEETS(new Item(4564), 60), GREEN_SWEETS(new Item(4563), 80), PURPLE_SWEETS(new Item(4561), 100),
-        RED_SWEETS(new Item(4562), 120), CANDY(new Item(13557), 100),
+         PUMPKIN(new Item(1959), 260), OKTOBERTFEST_PRETZEL(new Item(19778), 820),
+        BLUE_SWEETS(new Item(4558), 100), DEEP_SWEETS(new Item(4559), 120), WHITE_SWEETS(new Item(4560), 250),
+        PINK_SWEETS(new Item(4564), 360), GREEN_SWEETS(new Item(4563), 470), PURPLE_SWEETS(new Item(4561), 520),
+        RED_SWEETS(new Item(4562), 660), CANDY(new Item(13557), 300),
         ;
 
-        private FoodType(Item item, int heal) {
+        FoodType(Item item, int heal) {
             this.item = item;
             this.heal = heal;
             this.name = (toString().toLowerCase().replaceAll("__", "-").replaceAll("_", " "));

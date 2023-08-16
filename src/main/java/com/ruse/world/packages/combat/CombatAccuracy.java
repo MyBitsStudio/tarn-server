@@ -106,6 +106,12 @@ public class CombatAccuracy {
                         equipmentBonus /= 10_000;
                         prayerMod = prayerBonus(player, CombatType.RANGED);
                     }
+                    case MIXED -> {
+                        double bonuss =  player.getBonusManager().getDefenceBonus()[BonusManager.DEFENCE_STAB] +  player.getBonusManager().getDefenceBonus()[BonusManager.DEFENCE_RANGE] + player.getBonusManager().getDefenceBonus()[BonusManager.DEFENCE_MAGIC];
+                        equipmentBonus = bonuss / 3;
+                        equipmentBonus /= 10_000;
+                        prayerMod = prayerBonus(player, CombatType.MELEE);
+                    }
                 }
 
             } else {

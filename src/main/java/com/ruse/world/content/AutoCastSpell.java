@@ -8,6 +8,9 @@ public enum AutoCastSpell {
 
     STARTER(22092, CombatSpells.BEGINNER),
     STARTER2(22174, CombatSpells.BEGINNER),
+    EXECUTIVE(9942, CombatSpells.EXECUTION),
+    REVANANT(17011, CombatSpells.AZURE),
+
     FESTIVE(14924, CombatSpells.BEGINNER),
     AZURE(3739, CombatSpells.AZURE),
     FLAMETHROWER(17712, CombatSpells.FLAMETHROWER),
@@ -18,7 +21,6 @@ public enum AutoCastSpell {
     CHAOS2(2378, CombatSpells.CHAOS),
     PATRONUM(17664, CombatSpells.PATRONUM),
     PATRONUM2(2108, CombatSpells.PATRONUM),
-    EXECUTION(9942, CombatSpells.EXECUTION),
     LIGHT(17013, CombatSpells.LIGHTSANG),
     DEMON(22135, CombatSpells.DEMON),
     DEMON2(2278, CombatSpells.DEMON),
