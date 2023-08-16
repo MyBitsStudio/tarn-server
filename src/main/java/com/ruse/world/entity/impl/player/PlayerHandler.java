@@ -28,6 +28,7 @@ import com.ruse.world.content.combat.pvp.BountyHunter;
 import com.ruse.world.content.combat.range.DwarfMultiCannon;
 import com.ruse.world.content.combat.weapon.CombatSpecial;
 import com.ruse.world.content.grandLottery.GrandLottery;
+import com.ruse.world.content.johnachievementsystem.AchievementHandler;
 import com.ruse.world.content.tbdminigame.Lobby;
 import com.ruse.world.packages.clans.ClanManager;
 import com.ruse.world.packages.instances.InstanceManager;
@@ -298,6 +299,8 @@ public class PlayerHandler {
             ClanManager.getManager().joinChat(player, "help");
         }
 
+        AchievementHandler.onPlayerLogin(player);
+
         player.getPacketSender().updateSpecialAttackOrb().sendIronmanMode(GameModeConstants.ordinal(player));
 
         if(player.getRank() == StaffRank.TRAIL_STAFF){
@@ -444,7 +447,6 @@ public class PlayerHandler {
             World.playerMap().remove(player.getLongUsername(), player);
 
             PlayerSession session = player.getSession();
-
             if (!player.isMiniPlayer()) {
                 if (session.getChannel().isOpen()) {
                     session.getChannel().close();
@@ -484,9 +486,6 @@ public class PlayerHandler {
                 }
                 if (player.getRegionInstance() != null) {
                     player.getRegionInstance().onLogout(player);
-                }
-                if(Lobby.getInstance().getGame() != null) {
-                    Lobby.getInstance().getGame().leave(player, true);
                 }
                 if(player.getInstance() != null){
                     player.getInstance().onLogout(player);
