@@ -25,7 +25,7 @@ public class AchievementHandler {
     }
 
     public static void sendProgressAmount(Player player, AchievementProgress achievementProgress, Achievement achievement) {
-        player.getPacketSender().sendMessage("achP#"+achievement.getComponentId()+","+achievementProgress.getProgress()+","+achievement.getMaxProgress());
+        player.getPacketSender().sendMessage("achP#"+achievement.getComponentId()+","+achievementProgress.getProgress());
     }
 
     public static void increaseCompleteAmount(Player player, AchievementDifficulty difficulty, int amount) {
