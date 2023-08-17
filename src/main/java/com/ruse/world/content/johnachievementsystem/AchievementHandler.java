@@ -3,8 +3,6 @@ package com.ruse.world.content.johnachievementsystem;
 import com.ruse.model.Item;
 import com.ruse.world.entity.impl.player.Player;
 
-import java.util.Map;
-
 public class AchievementHandler {
 
     public static void progress(Player player, int amount, Achievement achievement) {
@@ -24,11 +22,11 @@ public class AchievementHandler {
         sendProgressAmount(player, ap, achievement);
     }
 
-    public static void sendProgressAmount(Player player, AchievementProgress achievementProgress, Achievement achievement) {
+    private static void sendProgressAmount(Player player, AchievementProgress achievementProgress, Achievement achievement) {
         player.getPacketSender().sendMessage("achP#"+achievement.getComponentId()+","+achievementProgress.getProgress());
     }
 
-    public static void increaseCompleteAmount(Player player, AchievementDifficulty difficulty, int amount) {
+    private static void increaseCompleteAmount(Player player, AchievementDifficulty difficulty, int amount) {
         player.getPacketSender().sendMessage("achC#"+difficulty.getKey() + "," + amount);
     }
 
@@ -38,22 +36,14 @@ public class AchievementHandler {
                     AchievementProgress ap = player.getAchievementsMap().computeIfAbsent(achievement, x -> new AchievementProgress());
                     sendProgressAmount(player, ap, achievement);
                 });
-        int completedBeginner = 0, completedEasy = 0, completedMedium = 0, completedHard = 0, completedElite = 0;
-        for(Map.Entry<Achievement, AchievementProgress> entry : player.getAchievementsMap().entrySet()) {
-            if(entry.getValue().isComplete()) {
-                switch (entry.getKey().getAchievementDifficulty()) {
-                    case BEGINNER -> completedBeginner++;
-                    case EASY -> completedEasy++;
-                    case MEDIUM -> completedMedium++;
-                    case HARD -> completedHard++;
-                    case ELITE -> completedElite++;
-                }
-            }
-        }
-        increaseCompleteAmount(player, AchievementDifficulty.BEGINNER, completedBeginner);
-        increaseCompleteAmount(player, AchievementDifficulty.EASY, completedEasy);
-        increaseCompleteAmount(player, AchievementDifficulty.MEDIUM, completedMedium);
-        increaseCompleteAmount(player, AchievementDifficulty.HARD, completedHard);
-        increaseCompleteAmount(player, AchievementDifficulty.ELITE, completedElite);
+        AchievementDifficulty.VALUES.forEach(difficulty -> increaseCompleteAmount(player, difficulty, getCompletedAchievements(player, difficulty)));
+    }
+
+    private static int getCompletedAchievements(Player player, AchievementDifficulty difficulty) {
+        return (int) player.getAchievementsMap().entrySet()
+                .stream()
+                .filter(achievementAchievementProgressEntry -> achievementAchievementProgressEntry.getKey().getAchievementDifficulty().equals(difficulty)
+                        && achievementAchievementProgressEntry.getValue().isComplete())
+                .count();
     }
 }

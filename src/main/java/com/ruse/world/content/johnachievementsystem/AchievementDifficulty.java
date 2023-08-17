@@ -1,5 +1,7 @@
 package com.ruse.world.content.johnachievementsystem;
 
+import com.google.common.collect.ImmutableList;
+
 public enum AchievementDifficulty {
     BEGINNER(0, 1),
     EASY(1, 2),
@@ -22,4 +24,6 @@ public enum AchievementDifficulty {
     public int getPoints() {
         return points;
     }
+
+    public static ImmutableList<AchievementDifficulty> VALUES = ImmutableList.copyOf(values());
 }
