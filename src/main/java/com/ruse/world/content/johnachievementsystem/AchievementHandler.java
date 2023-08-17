@@ -1,9 +1,21 @@
 package com.ruse.world.content.johnachievementsystem;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 import com.ruse.model.Item;
 import com.ruse.world.entity.impl.player.Player;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
 public class AchievementHandler {
+
+    private static final int INTERFACE_ID = 165001;
+    private static final int OVERLAY_ID = 165329;
+
+    public static final List<Achievement> achievements = new ArrayList<>();
 
     public static void progress(Player player, int amount, Achievement achievement) {
         AchievementProgress ap = player.getAchievementsMap().get(achievement);
@@ -16,8 +28,8 @@ public class AchievementHandler {
             int pointsAwarded = achievement.getAchievementDifficulty().getPoints();
             player.addAchievementPoints(pointsAwarded);
             player.sendMessage("@red@You have been awarded some items and " + pointsAwarded + " for completing an achievement!");
-            for(Item item : achievement.getRewards())
-                player.addItemUnderAnyCircumstances(item);
+            for(Reward item : achievement.getRewards())
+                player.addItemUnderAnyCircumstances(new Item(item.getItemId(), item.getAmount()));
         }
         sendProgressAmount(player, ap, achievement);
     }
@@ -31,7 +43,7 @@ public class AchievementHandler {
     }
 
     public static void onPlayerLogin(Player player) {
-        Achievement.VALUES
+        achievements
                 .forEach(achievement -> {
                     AchievementProgress ap = player.getAchievementsMap().computeIfAbsent(achievement, x -> new AchievementProgress());
                     sendProgressAmount(player, ap, achievement);
@@ -45,5 +57,24 @@ public class AchievementHandler {
                 .filter(achievementAchievementProgressEntry -> achievementAchievementProgressEntry.getKey().getAchievementDifficulty().equals(difficulty)
                         && achievementAchievementProgressEntry.getValue().isComplete())
                 .count();
+    }
+
+    public static boolean onButtonClick(Player player, int id) {
+        return false;
+    }
+
+    public static void load() {
+        ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
+        try {
+            achievements.addAll(mapper.readValue(
+                    new File("./.core/server/defs/achievements.yaml"),
+                    mapper.getTypeFactory().constructCollectionType(List.class, Achievement.class)
+            ));
+            for (int i = 0; i < achievements.size(); i++) {
+                achievements.get(i).setComponentId(165029 + i);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

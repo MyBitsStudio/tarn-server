@@ -19,6 +19,7 @@ import com.ruse.world.content.Sounds.Sound;
 import com.ruse.world.content.aura.AuraParty;
 import com.ruse.world.content.aura.AuraRaidData;
 import com.ruse.world.content.bossEvents.BossEventInterfaceHandler;
+import com.ruse.world.content.johnachievementsystem.AchievementHandler;
 import com.ruse.world.packages.clans.ClanManager;
 import com.ruse.world.content.collectionlog.SearchForCollectionNpc;
 import com.ruse.world.content.combat.CombatFactory;
@@ -199,6 +200,9 @@ public class ButtonClickPacketListener implements PacketListener {
             return;
 
         if(Monics.handleButtons(player, id))
+            return;
+
+        if(AchievementHandler.onButtonClick(player, id))
             return;
 
         new ScratchCard(player).reveal(id);

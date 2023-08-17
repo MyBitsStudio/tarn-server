@@ -26,6 +26,7 @@ import com.ruse.world.content.discordbot.JavaCord;
 import com.ruse.world.content.grandLottery.GrandLottery;
 import com.ruse.world.content.grandexchange.GrandExchangeOffers;
 import com.ruse.world.content.groupironman.GroupManager;
+import com.ruse.world.content.johnachievementsystem.AchievementHandler;
 import com.ruse.world.content.polling.PollManager;
 import com.ruse.world.content.serverperks.ServerPerks;
 import com.ruse.world.content.tbdminigame.Lobby;
@@ -144,7 +145,8 @@ public final class GameLoader {
 		serviceLoader.execute(ItemIdentifiers::load);
 		serviceLoader.execute(ShopHandler::load);
 		serviceLoader.execute(ShopHandler::loadPrices);
-		serviceLoader.execute(World.handler.load()::startEvents);
+		serviceLoader.execute(AchievementHandler::load);
+//		serviceLoader.execute(World.handler.load()::startEvents);
 		TaskManager.submit(new LotteryTask());
 	}
 
