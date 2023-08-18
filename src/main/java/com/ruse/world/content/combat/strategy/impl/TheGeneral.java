@@ -77,7 +77,7 @@ public class TheGeneral implements CombatStrategy {
 					}
 					int skill = Misc.getRandom(6);
 					Skill skillT = Skill.forId(skill);
-					Player player = (Player) target;
+					Player player = target;
 					int lvl = player.getSkillManager().getCurrentLevel(skillT);
 					lvl -= 5 + Misc.getRandom(6);
 					player.getSkillManager().setCurrentLevel(skillT,

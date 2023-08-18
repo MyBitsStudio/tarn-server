@@ -369,6 +369,8 @@ public class PlayerSecureSave extends SecureSave {
         object.add("towerRewards", builder.toJsonTree(player.getTower().getRewards().getItems()));
         object.add("achievements-map", builder.toJsonTree(player.getAchievementsMap()));
 
+        object.add("timers", builder.toJsonTree(player.getTimers().save()));
+
         return this;
     }
 

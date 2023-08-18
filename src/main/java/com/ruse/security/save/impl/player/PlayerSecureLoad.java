@@ -1234,6 +1234,11 @@ public class PlayerSecureLoad extends SecureLoad {
             player.getTower().getRewards().setItems(builder.fromJson(object.get("towerRewards").getAsJsonArray(), Item[].class));
         }
 
+        if (object.has("timers")) {
+            player.getTimers().load(builder.fromJson(object.get("timers"),  new TypeToken<Map<String, Long>>() {
+            }.getType()));
+        }
+
 
         return this;
     }

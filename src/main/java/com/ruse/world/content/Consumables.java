@@ -13,6 +13,7 @@ import com.ruse.world.content.minigames.impl.Dueling;
 import com.ruse.world.content.minigames.impl.Dueling.DuelRule;
 import com.ruse.world.content.skill.SkillManager;
 import com.ruse.world.entity.impl.player.Player;
+import com.ruse.world.entity.impl.player.timers.impl.potion.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -79,12 +80,11 @@ public class Consumables {
             player.getPacketSender().sendMessage("Food has been disabled in this duel.");
             return;
         }
-        if (food != null && player.getFoodTimer().elapsed(1100)) {
+        if (player.getFoodTimer().elapsed(1100)) {
             player.getCombatBuilder().incrementAttackTimer(2).cooldown(false);
             player.getCombatBuilder().setDistanceSession(null);
             player.setCastSpell(null);
             player.getFoodTimer().reset();
-            // player.getPotionTimer().reset();
             player.getPacketSender().sendInterfaceRemoval();
             player.performAnimation(new Animation(829));
 
@@ -92,11 +92,8 @@ public class Consumables {
                 player.getInventory().delete(food.item, slot);
 
             int heal = food.heal;
-            boolean nexEffect = player.getEquipment().wearingNexAmours();
             if (food == FoodType.ROCKTAIL) {
                 int max = (player.getSkillManager().getMaxLevel(Skill.CONSTITUTION) + 100);
-                if (nexEffect)
-                    max = (player.getSkillManager().getMaxLevel(Skill.CONSTITUTION) + 400);
                 if (player.getSkillManager().getCurrentLevel(Skill.CONSTITUTION) >= (max)) {
                     heal = 100;
                 }
@@ -105,27 +102,21 @@ public class Consumables {
                 }
             } else {
                 int max = player.getSkillManager().getMaxLevel(Skill.CONSTITUTION);
-                if (nexEffect)
-                    max = 1390;
                 if (heal + player.getSkillManager().getCurrentLevel(Skill.CONSTITUTION) > max) {
                     heal = max - player.getSkillManager().getCurrentLevel(Skill.CONSTITUTION);
                 }
             }
-            if (food == FoodType.PAPAYA) {
-                if (player.getRunEnergy() < 100) {
-                    player.setRunEnergy(100);
-                    player.getPacketSender().sendRunEnergy(100);
-                    player.getLastRunRecovery().reset();
-                }
-            }
-            if (food == FoodType.CAKE || food == FoodType.SECOND_CAKE_SLICE || food == FoodType.CHOCOLATE_CAKE
-                    || food == FoodType.SECOND_SLICE_OF_CHOCOLATE_CAKE) {
-                player.getInventory().add(new Item(food.item.getId() + 2, 1));
-            }
-            String e = food.toString() == "BANDAGES" ? "use" : "eat";
+//            if (food == FoodType.PAPAYA) {
+//                if (player.getRunEnergy() < 100) {
+//                    player.setRunEnergy(100);
+//                    player.getPacketSender().sendRunEnergy(100);
+//                    player.getLastRunRecovery().reset();
+//                }
+//            }
+            String e = Objects.equals(food.toString(), "BANDAGES") ? "use" : "eat";
             player.getPacketSender().sendMessage("You " + e + " the " + food.name + ".");
             player.setConstitution(player.getConstitution() + heal);
-            if (player.getConstitution() > 1190 && !nexEffect)
+            if (player.getConstitution() > 1190)
                 player.setConstitution(1190);
             Sounds.sendSound(player, Sound.EAT_FOOD);
         }
@@ -140,41 +131,41 @@ public class Consumables {
         /*
          * Fish food types players can get by fishing or purchasing from other entities.
          */
-        KING_WORM(new Item(2162), 20), TOAD_LEGS(new Item(2152), 30), BREAD(new Item(2309), 50),
-        PAPAYA(new Item(5972), 50), ROASTED_BIRD_MEAT(new Item(9980), 60), CHICKEN(new Item(2140), 50),
-        KEBAB(new Item(1971), 40), CHEESE(new Item(1985), 45), CAKE(new Item(1891), 50),
-        SECOND_CAKE_SLICE(new Item(1893), 50), THIRD_CAKE_SLICE(new Item(1895), 50), CHOCOLATE_CAKE(new Item(1897), 60),
-        SECOND_SLICE_OF_CHOCOLATE_CAKE(new Item(1899), 60), THIRD_SLICE_OF_CHOCOLATE_CAKE(new Item(1901), 60),
-        STRAWBERRY(new Item(5504), 60), SWEETCORN(new Item(7088), 100), BANDAGES(new Item(14640), 120),
-        JANGERBERRIES(new Item(247), 20), WORM_CRUNCHIES(new Item(2205), 70), EDIBLE_SEAWEED(new Item(403), 40),
-        ANCHOVIES(new Item(319), 10), SHRIMPS(new Item(315), 30), SARDINE(new Item(325), 40), COD(new Item(339), 70),
-        TROUT(new Item(333), 70), PIKE(new Item(351), 80), MACKEREL(new Item(355), 60), SALMON(new Item(329), 90),
-        TUNA(new Item(361), 100), BASS(new Item(365), 130), SWORDFISH(new Item(373), 140),
-        MEAT_PIZZA(new Item(2293), 145), MONKFISH(new Item(7946), 160), SHARK(new Item(385), 200),
-        CAVEFISH(new Item(15266), 230),
-
-        /*
-         * Baked goods food types a player can make with the cooking skill.
-         */
-        POTATO(new Item(1942), 10), BAKED_POTATO(new Item(6701), 40), POTATO_WITH_BUTTER(new Item(6703), 140),
-        CHILLI_POTATO(new Item(7054), 140), EGG_POTATO(new Item(7056), 160), POTATO_WITH_CHEESE(new Item(6705), 160),
-        MUSHROOM_POTATO(new Item(7058), 200), TUNA_POTATO(new Item(7060), 220),
-
-        /*
-         * Fruit food types which a player can get by picking from certain trees or
-         * hand-making them (such as pineapple chunks/rings).
-         */
-         BANANA(new Item(1963), 20),
-        BANANA_(new Item(18199), 20), CABBAGE(new Item(1965), 20), ORANGE(new Item(2108), 20),
-        PINEAPPLE_CHUNKS(new Item(2116), 20),
-
-        /*
-         * Dungeoneering food types, which you can get in the Dungeoneering skill
-         * dungeons.
-         */
-        HEIM_CRAB(new Item(18159), 20), RED_EYE(new Item(18161), 50), DUSK_EEL(new Item(18163), 70),
-        GIANT_FLATFISH(new Item(18165), 100), SHORT_FINNED_EEL(new Item(18167), 120), WEB_SNIPPER(new Item(18169), 150),
-        SALVE_EEL(new Item(18173), 200),
+//        KING_WORM(new Item(2162), 20), TOAD_LEGS(new Item(2152), 30), BREAD(new Item(2309), 50),
+//        PAPAYA(new Item(5972), 50), ROASTED_BIRD_MEAT(new Item(9980), 60), CHICKEN(new Item(2140), 50),
+//        KEBAB(new Item(1971), 40), CHEESE(new Item(1985), 45), CAKE(new Item(1891), 50),
+//        SECOND_CAKE_SLICE(new Item(1893), 50), THIRD_CAKE_SLICE(new Item(1895), 50), CHOCOLATE_CAKE(new Item(1897), 60),
+//        SECOND_SLICE_OF_CHOCOLATE_CAKE(new Item(1899), 60), THIRD_SLICE_OF_CHOCOLATE_CAKE(new Item(1901), 60),
+//        STRAWBERRY(new Item(5504), 60), SWEETCORN(new Item(7088), 100), BANDAGES(new Item(14640), 120),
+//        JANGERBERRIES(new Item(247), 20), WORM_CRUNCHIES(new Item(2205), 70), EDIBLE_SEAWEED(new Item(403), 40),
+//        ANCHOVIES(new Item(319), 10), SHRIMPS(new Item(315), 30), SARDINE(new Item(325), 40), COD(new Item(339), 70),
+//        TROUT(new Item(333), 70), PIKE(new Item(351), 80), MACKEREL(new Item(355), 60), SALMON(new Item(329), 90),
+//        TUNA(new Item(361), 100), BASS(new Item(365), 130), SWORDFISH(new Item(373), 140),
+//        MEAT_PIZZA(new Item(2293), 145), MONKFISH(new Item(7946), 160), SHARK(new Item(385), 200),
+//        CAVEFISH(new Item(15266), 230),
+//
+//        /*
+//         * Baked goods food types a player can make with the cooking skill.
+//         */
+//        POTATO(new Item(1942), 10), BAKED_POTATO(new Item(6701), 40), POTATO_WITH_BUTTER(new Item(6703), 140),
+//        CHILLI_POTATO(new Item(7054), 140), EGG_POTATO(new Item(7056), 160), POTATO_WITH_CHEESE(new Item(6705), 160),
+//        MUSHROOM_POTATO(new Item(7058), 200), TUNA_POTATO(new Item(7060), 220),
+//
+//        /*
+//         * Fruit food types which a player can get by picking from certain trees or
+//         * hand-making them (such as pineapple chunks/rings).
+//         */
+//         BANANA(new Item(1963), 20),
+//        BANANA_(new Item(18199), 20), CABBAGE(new Item(1965), 20), ORANGE(new Item(2108), 20),
+//        PINEAPPLE_CHUNKS(new Item(2116), 20),
+//
+//        /*
+//         * Dungeoneering food types, which you can get in the Dungeoneering skill
+//         * dungeons.
+//         */
+//        HEIM_CRAB(new Item(18159), 20), RED_EYE(new Item(18161), 50), DUSK_EEL(new Item(18163), 70),
+//        GIANT_FLATFISH(new Item(18165), 100), SHORT_FINNED_EEL(new Item(18167), 120), WEB_SNIPPER(new Item(18169), 150),
+//        SALVE_EEL(new Item(18173), 200),
 
         /*
          * Other food types.
@@ -203,13 +194,13 @@ public class Consumables {
             this.name = (toString().toLowerCase().replaceAll("__", "-").replaceAll("_", " "));
         }
 
-        private Item item;
+        private final Item item;
 
-        private int heal;
+        private final int heal;
 
-        private String name;
+        private final String name;
 
-        private static Map<Integer, FoodType> types = new HashMap<Integer, FoodType>();
+        private static final Map<Integer, FoodType> types = new HashMap<>();
 
         static {
             for (FoodType type : FoodType.values()) {
@@ -225,24 +216,11 @@ public class Consumables {
     public static boolean isPotion(int itemId) {
         String pot = ItemDefinition.forId(itemId).getName();
         return pot.contains("(4)") || pot.contains("(3)") || pot.contains("(2)") || pot.contains("(1)")
-                || pot.contains("ummer pi") || pot.equalsIgnoreCase("beer") || pot.equalsIgnoreCase("whisky")
-                || pot.equalsIgnoreCase("Jug of wine") || pot.equalsIgnoreCase("vodka")
-                || pot.equalsIgnoreCase("brandy") || pot.equalsIgnoreCase("grog")
                 || pot.toLowerCase().contains("infinite healing") || pot.toLowerCase().contains("infinite prayer")
                 || pot.equalsIgnoreCase("wizard's mind bomb") && !pot.toLowerCase().contains("infinite prayer");
     }
 
-    public static boolean healingPotion(int itemId) {
-        String pot = ItemDefinition.forId(itemId).getName();
-        pot = pot.toLowerCase();
-        return pot.contains("saradomin brew");
-    }
-
     public static boolean drinkInfiniteOverload(final Player player, int time) {
-        if (player.getLocation() == Location.WILDERNESS || player.getLocation() == Location.DUEL_ARENA) {
-            player.getPacketSender().sendMessage("You cannot use this potion here.");
-            return false;
-        }
         if (player.getOverloadPotionTimer() > 0) {
             player.getPacketSender().sendMessage("You already have the effect of an Overload potion.");
             return false;
@@ -266,8 +244,8 @@ public class Consumables {
     public static void drinkInfinitePrayerPotion(Player player, int amount) {
         player.performAnimation(new Animation(829));
         player.getSkillManager().setCurrentLevel(Skill.PRAYER,
-                (int) (player.getSkillManager().getCurrentLevel(Skill.PRAYER)
-                        + amount));
+                player.getSkillManager().getCurrentLevel(Skill.PRAYER)
+                        + amount);
         if (player.getSkillManager().getCurrentLevel(Skill.PRAYER) > player.getSkillManager()
                 .getMaxLevel(Skill.PRAYER))
             player.getSkillManager().setCurrentLevel(Skill.PRAYER,
@@ -277,43 +255,31 @@ public class Consumables {
     public static void handlePotion(final Player player, final int itemId, final int slot) {
         if (player.getConstitution() <= 0)
             return;
-        if (Dueling.checkRule(player, DuelRule.NO_FOOD) && healingPotion(itemId)) {
-            player.getPacketSender()
-                    .sendMessage("Since food has been disabled in this duel, health-healing potions won't work.");
-            return;
-        }
         if (!player.getControllerManager().canPot(itemId)) {
-            return;
-        }
-        if (Dueling.checkRule(player, DuelRule.NO_POTIONS)) {
-            player.getPacketSender().sendMessage("Potions have been disabled in this duel.");
             return;
         }
         if (player.getPotionTimer().elapsed(900)) {
             switch (itemId) {
                 //Healing potions
                 case 23118: //T1
-                    player.heal(100);
-                    player.performAnimation(new Animation(829));
+                    player.getTimers().register(new InfiniteHealing1(player));
                     break;
                 case 23119: //T2
-                    player.heal(150);
-                    player.performAnimation(new Animation(829));
+                    player.getTimers().register(new InfiniteHealing2(player));
                     break;
                 case 23120: //T3
-                    player.heal(250);
-                    player.performAnimation(new Animation(829));
+                    player.getTimers().register(new InfiniteHealing3(player));
                     break;
 
-                //Restore potions
+                //prayer
                 case 23121: //T1
-                    drinkInfinitePrayerPotion(player,50);
+                    player.getTimers().register(new InfinitePrayer1(player));
                     break;
                 case 23122: //T2
-                    drinkInfinitePrayerPotion(player,100);
+                    player.getTimers().register(new InfinitePrayer2(player));
                     break;
                 case 23123: //T3
-                    drinkInfinitePrayerPotion(player,200);
+                    player.getTimers().register(new InfinitePrayer3(player));
                     break;
 
                 //Overload potions
@@ -1811,11 +1777,8 @@ public class Consumables {
             player.getFoodTimer().reset();
             player.getPotionTimer().reset();
             String potion = ItemDefinition.forId(itemId).getName();
-            if (potion.contains("ummer pi")) {
-                player.getPacketSender().sendMessage("You eat your " + potion + ".");
-            } else {
-                player.getPacketSender().sendMessage("You drink some of your " + potion + ".");
-            }
+            player.getPacketSender().sendMessage("You drink some of your " + potion + ".");
+
             if (potion.endsWith("(4)")) {
                 player.getPacketSender().sendMessage("You have 3 doses of potion left.");
             } else if (potion.endsWith("(3)")) {
@@ -1947,6 +1910,6 @@ public class Consumables {
     }
 
     public static int getBrewStat(final Player player, int skill, double amount) {
-        return (int) (player.getSkillManager().getMaxLevel(Skill.forId(skill)) * amount);
+        return (int) (player.getSkillManager().getMaxLevel(Objects.requireNonNull(Skill.forId(skill))) * amount);
     }
 }

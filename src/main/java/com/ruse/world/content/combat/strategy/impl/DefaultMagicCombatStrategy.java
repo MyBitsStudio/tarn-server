@@ -14,6 +14,8 @@ import com.ruse.world.entity.impl.Character;
 import com.ruse.world.entity.impl.npc.NPC;
 import com.ruse.world.entity.impl.player.Player;
 
+import java.util.Objects;
+
 /**
  * The default combat strategy assigned to an {@link Entity} during a magic
  * based combat session.
@@ -89,81 +91,37 @@ public class DefaultMagicCombatStrategy implements CombatStrategy {
 			player.setPreviousCastSpell(player.getCastSpell());
 
 			if (AutoCastSpell.getAutoCastSpell(player) != null) {
-				player.setCastSpell(AutoCastSpell.getAutoCastSpell(player).getSpell());
+				player.setCastSpell(Objects.requireNonNull(AutoCastSpell.getAutoCastSpell(player)).getSpell());
 			}
 		} else if (entity.isNpc()) {
 			NPC npc = (NPC) entity;
 
 			switch (npc.getId()) {
-			case 2007:
-			case 1234:
-				npc.prepareSpell(CombatSpells.WATER_WAVE.getSpell(), victim);
-				break;
-			case 3580:
-				npc.prepareSpell(CombatSpells.WATER_STRIKE.getSpell(), victim);
-				break;
-				case 109:
-					npc.prepareSpell(CombatSpells.BABY_SCORPION.getSpell(), victim);
-					break;
-				case 9028:
-					npc.prepareSpell(CombatSpells.WATER_WAVE.getSpell(), victim);
-					break;
-			case 13:
-			case 172:
-			case 174:
-				npc.prepareSpell(Misc.randomElement(new CombatSpells[] { CombatSpells.WEAKEN, CombatSpells.FIRE_STRIKE,
-						CombatSpells.EARTH_STRIKE, CombatSpells.WATER_STRIKE }).getSpell(), victim);
-				break;
-			case 2025:
-			case 1643:
-				npc.prepareSpell(Misc.randomElement(
-						new CombatSpells[] { CombatSpells.FIRE_WAVE, CombatSpells.EARTH_WAVE, CombatSpells.WATER_WAVE })
+				case 2007, 1234, 9028, 6257 -> npc.prepareSpell(CombatSpells.WATER_WAVE.getSpell(), victim);
+				case 3580, 2896 -> npc.prepareSpell(CombatSpells.WATER_STRIKE.getSpell(), victim);
+				case 109 -> npc.prepareSpell(CombatSpells.BABY_SCORPION.getSpell(), victim);
+				case 13, 172, 174 ->
+						npc.prepareSpell(Misc.randomElement(new CombatSpells[]{CombatSpells.WEAKEN, CombatSpells.FIRE_STRIKE,
+								CombatSpells.EARTH_STRIKE, CombatSpells.WATER_STRIKE}).getSpell(), victim);
+				case 2025, 1643 -> npc.prepareSpell(Misc.randomElement(
+								new CombatSpells[]{CombatSpells.FIRE_WAVE, CombatSpells.EARTH_WAVE, CombatSpells.WATER_WAVE})
 						.getSpell(), victim);
-				break;
-			case 3495:
-				npc.prepareSpell(Misc.randomElement(new CombatSpells[] { CombatSpells.SMOKE_BLITZ,
-						CombatSpells.ICE_BLITZ, CombatSpells.ICE_BURST, CombatSpells.SHADOW_BARRAGE }).getSpell(),
+				case 3495 -> npc.prepareSpell(Misc.randomElement(new CombatSpells[]{CombatSpells.SMOKE_BLITZ,
+								CombatSpells.ICE_BLITZ, CombatSpells.ICE_BURST, CombatSpells.SHADOW_BARRAGE}).getSpell(),
 						victim);
-				break;
-			case 3496:
-				npc.prepareSpell(Misc.randomElement(new CombatSpells[] { CombatSpells.BLOOD_BARRAGE,
-						CombatSpells.BLOOD_BURST, CombatSpells.BLOOD_BLITZ, CombatSpells.BLOOD_RUSH }).getSpell(),
+				case 3496 -> npc.prepareSpell(Misc.randomElement(new CombatSpells[]{CombatSpells.BLOOD_BARRAGE,
+								CombatSpells.BLOOD_BURST, CombatSpells.BLOOD_BLITZ, CombatSpells.BLOOD_RUSH}).getSpell(),
 						victim);
-				break;
-			case 3491:
-				npc.prepareSpell(Misc.randomElement(new CombatSpells[] { CombatSpells.ICE_BARRAGE,
-						CombatSpells.ICE_BLITZ, CombatSpells.ICE_BURST, CombatSpells.ICE_RUSH }).getSpell(), victim);
-				break;
-			case 13454:
-				npc.prepareSpell(CombatSpells.ICE_BLITZ.getSpell(), victim);
-				break;
-			case 13453:
-				npc.prepareSpell(CombatSpells.BLOOD_BURST.getSpell(), victim);
-				break;
-			case 13452:
-				npc.prepareSpell(CombatSpells.SHADOW_BARRAGE.getSpell(), victim);
-				break;
-			case 13451:
-				npc.prepareSpell(CombatSpells.SHADOW_BURST.getSpell(), victim);
-				break;
-			case 2896:
-				npc.prepareSpell(CombatSpells.WATER_STRIKE.getSpell(), victim);
-				break;
-			case 2882:
-				npc.prepareSpell(CombatSpells.DAGANNOTH_PRIME.getSpell(), victim);
-				break;
-			case 6254:
-				npc.prepareSpell(CombatSpells.WIND_WAVE.getSpell(), victim);
-				break;
-			case 6257:
-				npc.prepareSpell(CombatSpells.WATER_WAVE.getSpell(), victim);
-				break;
-			case 6278:
-				npc.prepareSpell(CombatSpells.SHADOW_RUSH.getSpell(), victim);
-				break;
-			case 6221:
-				npc.prepareSpell(CombatSpells.FIRE_BLAST.getSpell(), victim);
-				break;
+				case 3491 -> npc.prepareSpell(Misc.randomElement(new CombatSpells[]{CombatSpells.ICE_BARRAGE,
+						CombatSpells.ICE_BLITZ, CombatSpells.ICE_BURST, CombatSpells.ICE_RUSH}).getSpell(), victim);
+				case 13454 -> npc.prepareSpell(CombatSpells.ICE_BLITZ.getSpell(), victim);
+				case 13453 -> npc.prepareSpell(CombatSpells.BLOOD_BURST.getSpell(), victim);
+				case 13452 -> npc.prepareSpell(CombatSpells.SHADOW_BARRAGE.getSpell(), victim);
+				case 13451 -> npc.prepareSpell(CombatSpells.SHADOW_BURST.getSpell(), victim);
+				case 2882 -> npc.prepareSpell(CombatSpells.DAGANNOTH_PRIME.getSpell(), victim);
+				case 6254 -> npc.prepareSpell(CombatSpells.WIND_WAVE.getSpell(), victim);
+				case 6278 -> npc.prepareSpell(CombatSpells.SHADOW_RUSH.getSpell(), victim);
+				case 6221 -> npc.prepareSpell(CombatSpells.FIRE_BLAST.getSpell(), victim);
 			}
 
 			if (npc.getCurrentlyCasting() == null)
@@ -187,13 +145,7 @@ public class DefaultMagicCombatStrategy implements CombatStrategy {
 		int distance = 8;
 		if (entity.isNpc()) {
 			switch (((NPC) entity).getId()) {
-			case 2896:
-			case 13451:
-			case 13452:
-			case 13453:
-			case 13454:
-				distance = 40;
-				break;
+				case 2896, 13451, 13452, 13453, 13454 -> distance = 40;
 			}
 		}
 		return distance;

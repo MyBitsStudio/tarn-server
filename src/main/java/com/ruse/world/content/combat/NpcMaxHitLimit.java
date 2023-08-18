@@ -36,9 +36,6 @@ public class NpcMaxHitLimit {
             default:
                 return damage;
         }
-        if(CombatConstants.wearingEventArmor(player)) {
-            maxLimit *= 2;
-        }
         return Math.min(maxLimit, damage);
     }
 }

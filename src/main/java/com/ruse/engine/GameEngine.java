@@ -6,6 +6,7 @@ import com.ruse.engine.task.TaskManager;
 import com.ruse.io.ThreadProgressor;
 import com.ruse.util.playerSavingTimer;
 import com.ruse.world.World;
+import com.ruse.world.WorldTimers;
 import com.ruse.world.packages.clans.ClanManager;
 import com.ruse.world.content.grandexchange.GrandExchangeOffers;
 import com.ruse.world.content.groupironman.GroupManager;
@@ -47,6 +48,7 @@ public final class GameEngine implements Runnable {
         try {
             TaskManager.sequence();
             ThreadProgressor.execute();
+            WorldTimers.sequence();
             World.sequence();
             playerSavingTimer.massSaving();
             GlobalItemSpawner.startup();

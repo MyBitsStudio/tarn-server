@@ -3,6 +3,7 @@ package com.ruse.world.packages.bosses.single.agthomoth;
 import com.ruse.model.Position;
 import com.ruse.world.content.combat.strategy.CombatStrategy;
 import com.ruse.world.packages.bosses.Boss;
+import com.ruse.world.packages.combat.scripts.npc.single.AgthomothCombat;
 
 public class AgthomothBoss extends Boss {
     public AgthomothBoss(int z) {

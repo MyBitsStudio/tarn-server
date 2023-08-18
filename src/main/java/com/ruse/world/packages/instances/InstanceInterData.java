@@ -12,15 +12,15 @@ public enum InstanceInterData {
      * Multi Instances
      */
 
-    DEATH_GOD("Death God", "",
-            new Item(10835, 1000), 16, 100, 9915,
+    DEATH_GOD("Death God", "Instance Unlock",
+            new Item(995, 25000), 4, 100, 9915,
     InstanceType.MULTI),
 
-    AGTHOMOTH("Ag'thomoth", "",
-            new Item(10835, 5000), 1, 100, 3013,
+    AGTHOMOTH("Ag'thomoth", "Instance Unlock",
+            new Item(995, 25000), 1, 100, 3013,
             InstanceType.SINGLE),
 
-    DONATOR("Donator Semi-Boss", "",
+    DONATOR("Donator Semi-Boss", "VIP Tier 2",
             new Item(10835, 5000), 16, 100, 9818,
             InstanceType.SPECIAL),
 
@@ -31,7 +31,7 @@ public enum InstanceInterData {
             new Item(10835, 5000), 16, 100, 1736,
             InstanceType.EVENT),
 
-    ZEIDAN("Zeidan Grimm", "",
+    ZEIDAN("Zeidan Grimm", "Instance Unlock",
             new Item(10835, 250000), 1, 100, 3010,
             InstanceType.MASTER),
 //

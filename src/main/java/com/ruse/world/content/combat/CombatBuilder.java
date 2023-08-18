@@ -65,8 +65,6 @@ public class CombatBuilder {
 			World.sendStaffMessage("[BUG TRACKER] Error 959.7 has occured. PLEASE REPORT TO CORRUPT!");
 			Player player = (Player) character;
 			PlayerLogs.log("1 - PVP BUGS", "Error 959.7 PVP bug occured with " + player.getUsername() + " attacking ");
-			// System.out.println("Bug Found [959.7]: Attacker: " + player.getUsername() + " Player Attacked: ");
-			return;
 		}
 
 		if (target.equals(victim)) {
@@ -78,7 +76,7 @@ public class CombatBuilder {
 			}
 		}
 
-			character.getMovementQueue().setFollowCharacter(target);
+		character.getMovementQueue().setFollowCharacter(target);
 		if (character.getInteractingEntity() != target)
 			character.setEntityInteraction(target);
 

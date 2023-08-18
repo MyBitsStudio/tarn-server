@@ -35,6 +35,7 @@ import com.ruse.world.content.achievement.AchievementHandler;
 import com.ruse.world.content.johnachievementsystem.Achievement;
 import com.ruse.world.content.johnachievementsystem.AchievementProgress;
 import com.ruse.world.content.tbdminigame.Lobby;
+import com.ruse.world.entity.impl.player.timers.PlayerTimers;
 import com.ruse.world.packages.loyalty.LoyaltyManager;
 import com.ruse.world.packages.tradingpost.TradingPost;
 import com.ruse.world.packages.attendance.AttendanceManager;
@@ -1697,55 +1698,56 @@ public class Player extends Character {
                 endGodMode();
             }
         }
-        if(overloadPotionTimer >=1){
-            packetSender.sendString(48302, (overloadPotionTimer / 100) + " minutes");
-            packetSender.sendString(48303, getPotionUsed());
-            overloadPotionTimer--;
-            if (overloadPotionTimer < 1) {
-                endovlmode();
-            }
-        }
 
-        if(aggroPotionTimer >= 1){
-            packetSender.sendString(58352, (aggroPotionTimer / 100) + " minutes");
-            packetSender.sendString(58353, "Aggro");
-            aggroPotionTimer--;
-            if (aggroPotionTimer < 1) {
-                endAggroMode();
-            }
-        }
-        if(expPotionTimer >= 1){
-            packetSender.sendString(58362, (expPotionTimer / 100) + " minutes");
-            packetSender.sendString(58363, "EXP");
-            expPotionTimer--;
-            if (expPotionTimer < 1) {
-                endExpMode();
-            }
-        }
-        if(drPotionTimer >= 1){
-            packetSender.sendString(58372, (drPotionTimer / 100) + " minutes");
-            packetSender.sendString(58373, "DR");
-            drPotionTimer--;
-            if (drPotionTimer < 1) {
-                endDrMode();
-            }
-        }
-        if(ddrPotionTimer >= 1){
-            packetSender.sendString(58382, (ddrPotionTimer / 100) + " minutes");
-            packetSender.sendString(58383, "DDR");
-            ddrPotionTimer--;
-            if (ddrPotionTimer < 1) {
-                endDdrMode();
-            }
-        }
-        if(dmgPotionTimer >= 1){
-            packetSender.sendString(58392, (dmgPotionTimer / 100) + " minutes");
-            packetSender.sendString(58393, "DMG");
-            dmgPotionTimer--;
-            if (dmgPotionTimer < 1) {
-                endDmgMode();
-            }
-        }
+//        if(overloadPotionTimer >=1){
+//            packetSender.sendString(48302, (overloadPotionTimer / 100) + " minutes");
+//            packetSender.sendString(48303, getPotionUsed());
+//            overloadPotionTimer--;
+//            if (overloadPotionTimer < 1) {
+//                endovlmode();
+//            }
+//        }
+//
+//        if(aggroPotionTimer >= 1){
+//            packetSender.sendString(58352, (aggroPotionTimer / 100) + " minutes");
+//            packetSender.sendString(58353, "Aggro");
+//            aggroPotionTimer--;
+//            if (aggroPotionTimer < 1) {
+//                endAggroMode();
+//            }
+//        }
+//        if(expPotionTimer >= 1){
+//            packetSender.sendString(58362, (expPotionTimer / 100) + " minutes");
+//            packetSender.sendString(58363, "EXP");
+//            expPotionTimer--;
+//            if (expPotionTimer < 1) {
+//                endExpMode();
+//            }
+//        }
+//        if(drPotionTimer >= 1){
+//            packetSender.sendString(58372, (drPotionTimer / 100) + " minutes");
+//            packetSender.sendString(58373, "DR");
+//            drPotionTimer--;
+//            if (drPotionTimer < 1) {
+//                endDrMode();
+//            }
+//        }
+//        if(ddrPotionTimer >= 1){
+//            packetSender.sendString(58382, (ddrPotionTimer / 100) + " minutes");
+//            packetSender.sendString(58383, "DDR");
+//            ddrPotionTimer--;
+//            if (ddrPotionTimer < 1) {
+//                endDdrMode();
+//            }
+//        }
+//        if(dmgPotionTimer >= 1){
+//            packetSender.sendString(58392, (dmgPotionTimer / 100) + " minutes");
+//            packetSender.sendString(58393, "DMG");
+//            dmgPotionTimer--;
+//            if (dmgPotionTimer < 1) {
+//                endDmgMode();
+//            }
+//        }
 
         if(getInstance() != null){
             getInstance().process();
@@ -4345,4 +4347,7 @@ public class Player extends Character {
 
     @Getter@Setter
     private PlayerPoints points = new PlayerPoints();
+
+    @Getter@Setter
+    private PlayerTimers timers = new PlayerTimers();
 }

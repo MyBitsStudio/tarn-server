@@ -45,7 +45,6 @@ public class CombatDistanceSession {
 				builder.getStrategy().attackDistance(builder.getCharacter()))) {
 			sucessFul();
 			stop();
-			return;
 		}
 	}
 

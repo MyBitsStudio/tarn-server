@@ -1,4 +1,4 @@
-package com.ruse.world.packages.bosses.single.agthomoth;
+package com.ruse.world.packages.combat.scripts.npc.master;
 
 import com.ruse.model.Animation;
 import com.ruse.model.Locations;
@@ -10,11 +10,11 @@ import com.ruse.world.content.combat.strategy.CombatStrategy;
 import com.ruse.world.entity.impl.Character;
 import com.ruse.world.entity.impl.npc.NPC;
 
-public class AgthomothCombat implements CombatStrategy {
+public class MagicMaster implements CombatStrategy {
 
     @Override
     public boolean canAttack(Character entity, Character victim) {
-        return victim.isPlayer() && victim.asPlayer().getInstance() != null;
+        return victim.isPlayer();
     }
 
     @Override
@@ -73,7 +73,7 @@ public class AgthomothCombat implements CombatStrategy {
 
     @Override
     public int attackDelay(Character entity) {
-        return 5;
+        return 8;
     }
 
     @Override
