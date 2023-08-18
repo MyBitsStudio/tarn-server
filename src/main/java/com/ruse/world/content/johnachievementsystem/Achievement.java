@@ -2,12 +2,13 @@ package com.ruse.world.content.johnachievementsystem;
 
 public class Achievement {
 
+    private int primaryKey;
     private String title;
+    private AchievementDifficulty difficulty;
     private String description;
-    private transient int maxProgress;
-    private transient AchievementDifficulty difficulty;
-    private transient Reward[] rewards;
-    private transient int componentId;
+    private int maxProgress;
+    private Reward[] rewards;
+    private int componentId;
 
     public int getComponentId() {
         return componentId;
@@ -63,5 +64,13 @@ public class Achievement {
 
     public void setDifficulty(AchievementDifficulty difficulty) {
         this.difficulty = difficulty;
+    }
+
+    public int getPrimaryKey() {
+        return primaryKey;
+    }
+
+    public void setPrimaryKey(int primaryKey) {
+        this.primaryKey = primaryKey;
     }
 }

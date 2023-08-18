@@ -806,7 +806,7 @@ public class Player extends Character {
     private boolean clickToTeleport;
     private final EventBossManager eventBossManager = new EventBossManager(this);
     @Getter
-    private final HashMap<Achievement, AchievementProgress> achievementsMap = new HashMap<>();
+    private final HashMap<Integer, AchievementProgress> achievementsMap = new HashMap<>();
     @Getter
     @Setter
     private int achievementPoints;
