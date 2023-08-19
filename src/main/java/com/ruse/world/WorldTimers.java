@@ -12,10 +12,5 @@ public class WorldTimers {
 
     public static void sequence() {
         timers.values().forEach(Timer::tick);
-        for(Player player : World.getPlayers()) {
-            if(player == null)
-                continue;
-            player.getTimers().tick();
-        }
     }
 }

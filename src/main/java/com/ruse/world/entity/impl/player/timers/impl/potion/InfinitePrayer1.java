@@ -35,12 +35,10 @@ public class InfinitePrayer1 extends PotionTimer {
     public Animation getAnimation() {
         return new Animation(829);
     }
-
     @Override
-    public void onEnd() {
+    public void finish() {
         getPlayer().sendMessage("Your prayer potion has ran out.");
     }
-
     @Override
     public String getName() {
         return "inf-pray-1";

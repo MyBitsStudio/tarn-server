@@ -22,7 +22,9 @@ public abstract class PotionTimer extends Timer {
         if(getAnimation() != null)
             getPlayer().performAnimation(getAnimation());
 
-        
+        if(getEffectTimer() != null){
+            player.getPacketSender().sendEffectTimerSeconds(getEffectTimer().getTime(), getEffectTimer());
+        }
 
         applyEffect();
     }
@@ -30,11 +32,20 @@ public abstract class PotionTimer extends Timer {
     @Override
     public void onTick() {
         tick++;
-        if(tick % 15 == 0){
-            System.out.println("tick");
+        if(tick % 100 == 0){
             applyEffect();
         }
     }
+
+    @Override
+    public void onEnd(){
+        if(getEffectTimer() != null){
+            player.getPacketSender().sendEffectTimerSeconds(0, getEffectTimer());
+        }
+        finish();
+    }
+
+    public abstract void finish();
 
     public abstract void applyEffect();
     public abstract EffectTimer getEffectTimer();

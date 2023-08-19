@@ -16,13 +16,85 @@ public enum InstanceInterData {
             new Item(995, 25000), 4, 100, 9915,
     InstanceType.MULTI),
 
+    GOLDEN_GOLEM("Golden Golem", "Instance Unlock",
+        new Item(995, 40000), 16, 100, 9024,
+    InstanceType.MULTI),
+
+    BOWSER("Bowser", "Instance Unlock",
+            new Item(995, 60000), 16, 100, 9919,
+    InstanceType.MULTI),
+
+    MALVEK("Malvek", "Instance Unlock",
+            new Item(995, 80000), 16, 100, 8002,
+    InstanceType.MULTI),
+
+    GALVEK("Galvek", "Instance Unlock",
+            new Item(995, 90000), 16, 100, 8000,
+            InstanceType.MULTI),
+
+    AGUMON("Agumon", "Instance Unlock",
+            new Item(10835, 100), 16, 100, 3020,
+    InstanceType.MULTI),
+
+    SLENDER_MAN("Slender Man", "Instance Unlock",
+        new Item(10835, 120), 16, 100, 9913,
+    InstanceType.MULTI),
+
+    LUFFY("Luffy", "Instance Unlock",
+         new Item(10835, 150), 16, 100, 9916,
+    InstanceType.MULTI),
+
+    QUEEN_FAZULA("Queen Fazula", "Instance Unlock",
+        new Item(10835, 200), 16, 100, 1311,
+    InstanceType.MULTI),
+
+    LORD_YASUDA("Lord Yasuda", "Instance Unlock",
+        new Item(10835, 250), 16, 100, 1313,
+    InstanceType.MULTI),
+
     AGTHOMOTH("Ag'thomoth", "Instance Unlock",
-            new Item(995, 25000), 1, 100, 3013,
+         new Item(995, 25000), 1, 100, 3013,
+    InstanceType.SINGLE),
+
+    ZERNATH("Zernath", "Instance Unlock",
+        new Item(995, 45000), 1, 100, 3831,
+    InstanceType.SINGLE),
+
+    SANCTUM_GOLEM("Sanctum Golem", "Instance Unlock",
+        new Item(995, 70000), 1, 100, 9017,
+    InstanceType.SINGLE),
+
+    ASMODEUS("Asmodeus", "Instance Unlock",
+        new Item(995, 95000), 1, 100, 9903,
+    InstanceType.SINGLE),
+
+    VARTHRAMOTH("Varthramoth", "Instance Unlock",
+        new Item(10835, 105), 16, 100, 3016,
+    InstanceType.SINGLE),
+
+    EXODON("Exodon", "Instance Unlock",
+        new Item(10835, 145), 16, 100, 12239,
+    InstanceType.SINGLE),
+
+    ENRAGED_SUPREME("Enraged Supreme", "Instance Unlock",
+            new Item(10835, 195), 16, 100, 440,
             InstanceType.SINGLE),
 
     DONATOR("Donator Semi-Boss", "VIP Tier 2",
-            new Item(10835, 5000), 16, 100, 9818,
+            new Item(10835, 25), 16, 100, 9818,
             InstanceType.SPECIAL),
+
+    DONATOR_V2("Donator Boss", "VIP Tier 5",
+         new Item(10835, 50), 2, 200, 591,
+    InstanceType.SPECIAL),
+
+    VOTE("Vote", "3 Vote Tickets",
+         new Item(23205, 3), 2, 200, 593,
+    InstanceType.SPECIAL),
+
+    IRONMAN("Ironman", "Ironman Mode Only",
+        new Item(995, 75000), 4, 50, 1880,
+    InstanceType.SPECIAL),
 
     SUMMER("Summer Solstice Boss", "Summer Solstice Event",
             new Item(10835, 5000), 1, 100, 3019,
@@ -32,101 +104,47 @@ public enum InstanceInterData {
             InstanceType.EVENT),
 
     ZEIDAN("Zeidan Grimm", "Instance Unlock",
-            new Item(10835, 250000), 1, 100, 3010,
+            new Item(10835, 2500), 1, 100, 3010,
             InstanceType.MASTER),
+
+    LILINRYSS("Lilinryss", "Instance Unlock",
+        new Item(10835, 4000), 16, 100, 3014,
+    InstanceType.MASTER),
+
+    ASTA("Asta", "Instance Unlock",
+        new Item(10835, 7500), 4, 999999, 595,
+    InstanceType.MASTER),
 //
 //    KOLGAL("Kol'gal", "300 Nagendra",
 //            new Item(10835, 10000), 16, 100, 9815,
 //            InstanceType.MULTI),
 //
-//    IGTHAUR("Ig'thaur", "300 Yisdar",
+//    IGTHAUR("Ig'thaur", "300 Yisdar", // single
 //            new Item(10835, 10000), 16, 100, 9920,
 //            InstanceType.MULTI),
 //
-//    ZERNATH("Zernath", "300 Ig'thaur",
-//            new Item(10835, 10000), 16, 100, 3831,
-//            InstanceType.MULTI),
 //
-//    DEATH_GOD("Death God", "500 Zorbak",
-//            new Item(10835, 10000), 16, 100, 9915,
-//            InstanceType.MULTI),
-//
-//    GOLDEN_GOLEM("Golden Golem", "500 Emerald Slayer",
-//            new Item(10835, 10000), 16, 100, 9024,
-//            InstanceType.MULTI),
-//
-//    LUFFY("Luffy", "750 Golden Golem",
-//            new Item(10835, 10000), 16, 100, 9916,
-//            InstanceType.MULTI),
 //
 //    BROLY("Broly", "750 Luffy",
 //            new Item(10835, 10000), 16, 100, 9918,
 //            InstanceType.MULTI),
 //
-//    BOWSER("Bowser", "750 Broly",
-//            new Item(10835, 10000), 16, 100, 9919,
-//            InstanceType.MULTI),
-//
 //    SASUKE("Sasuke", "1k Bowser",
 //            new Item(10835, 10000), 16, 100, 9914,
 //            InstanceType.MULTI),
-
-//    SANCTUM_GOLEM("Sanctum Golem", "50k NPC Kills",
-//            new Item(10835, 10000), 16, 100, 9017,
-//            InstanceType.MULTI),
 //
-//    DRAGONITE("Dragonite", "1k Gorvek",
+//    DRAGONITE("Dragonite", "1k Gorvek", // tower
 //            new Item(10835, 10000), 16, 100, 9816,
-//            InstanceType.MULTI),
-//
-//    ASMODEUS("Asmodeus", "2k Dragonite",
-//            new Item(10835, 10000), 16, 100, 9903,
-//            InstanceType.MULTI),
-//
-//    MALVEK("Malvek", "2k Asmodeus",
-//            new Item(10835, 10000), 16, 100, 8002,
-//            InstanceType.MULTI),
-//
-//
-//    ZEIDAN_GRIMM("Zeidan Grimm", "2k Onyx Griffin",
-//            new Item(10835, 10000), 16, 100, 3010,
-//            InstanceType.MULTI),
-//
-//    AGTHOMOTH("Ag'thomoth", "2k Zeidan Grimm",
-//            new Item(10835, 10000), 16, 100, 3013,
-//            InstanceType.MULTI),
-//
-//    LILINRYSS("Lilinryss", "3k Ag'thomoth",
-//            new Item(10835, 10000), 16, 100, 3014,
 //            InstanceType.MULTI),
 //
 //    GROUNDON("Groundon", "3k Lilinryss",
 //            new Item(10835, 10000), 16, 100, 8010,
 //            InstanceType.MULTI), //// here
 //
-//    VARTHRAMOTH("Varthramoth", "3k Groundon",
-//            new Item(10835, 10000), 16, 100, 3016,
-//            InstanceType.MULTI),
-//
 //    LUCIFER("Lucifer", "3k Tyrant Lord",
 //            new Item(10835, 10000), 16, 100, 9012,
-//            InstanceType.MULTI),
+//            InstanceType.MULTI)
 //
-//    VIRTUOSO("Virtuoso", "3k Lucifer",
-//            new Item(10835, 10000), 16, 100, 3019,
-//            InstanceType.MULTI),
-//
-//    AGUMON("Agumon", "3k Virtuoso",
-//            new Item(10835, 10000), 16, 100, 3020,
-//            InstanceType.MULTI),
-//
-//    SLENDER_MAN("Slender Man", "5k Calamity",
-//            new Item(10835, 10000), 16, 100, 9913,
-//            InstanceType.MULTI),
-//
-//    EXODON("Exodon", "5k Scylla",
-//            new Item(10835, 10000), 16, 100, 12239,
-//            InstanceType.MULTI),
 //
 //    EZKELNOJAD("Ezkel-Nojad", "5k Exodon",
 //            new Item(10835, 10000), 16, 100, 3112,
@@ -152,21 +170,10 @@ public enum InstanceInterData {
 //            new Item(10835, 10000), 16, 100, 187,
 //            InstanceType.MULTI),
 //
-//    QUEEN_FAZULA("Queen Fazula", "15k Byakuya",
-//            new Item(10835, 10000), 16, 100, 1311,
-//            InstanceType.MULTI),
-//
-//    LORD_YASUDA("Lord Yasuda", "15k Queen Fazula",
-//            new Item(10835, 10000), 16, 100, 1313,
-//            InstanceType.MULTI),
-//
 //    BLACK_GOKU("Black Goku", "25k Lord Yasuda",
 //            new Item(10835, 10000), 16, 100, 1318,
 //            InstanceType.MULTI),
 //
-//    ENRAGED_SUPREME("Enraged Supreme", "50k Black Goku",
-//            new Item(10835, 10000), 16, 100, 440,
-//            InstanceType.MULTI),
 //
 //    //NEXT LIST
 //    DARK_SUPREME("Dark Supreme", "50k Enraged Supreme",
@@ -182,19 +189,7 @@ public enum InstanceInterData {
 //     * Special Instances
 //     */
 //
-//    ASTA("Asta", "50k Black Goku",
-//            new Item(13650, 100), 4, 999999, 595,
-//            InstanceType.SPECIAL),
-//    DONATOR("Donator", "3 Donator Tickets",
-//            new Item(23204, 3), 2, 200, 591,
-//            InstanceType.SPECIAL),
-//    VOTE("Vote", "3 Vote Tickets",
-//            new Item(23205, 3), 2, 200, 593,
-//            InstanceType.SPECIAL),
 //
-//    IRONMAN("Ironman", "Ironman Mode Only",
-//            new Item(10835, 30000), 4, 50, 1880,
-//            InstanceType.SPECIAL),
 //
 //    /**
 //     * EVENT
@@ -202,10 +197,6 @@ public enum InstanceInterData {
 //    FLASH_EVENTS("Flash Boss", "1 Flash Ticket",
 //            new Item(23211, 1), 4, 200, 1120,
 //            InstanceType.EVENT),
-    /**
-     * GROUP
-     */
-
     ;
 
     @Getter

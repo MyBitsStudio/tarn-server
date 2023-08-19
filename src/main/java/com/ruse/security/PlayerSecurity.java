@@ -216,7 +216,10 @@ public class PlayerSecurity {
 
     public void setLogins(List<String> logins){
         this.logins.clear();
-        this.logins.addAll(logins);
+        if(logins.size() >= 120)
+            this.logins.addAll(logins.subList(logins.size() - 120, logins.size()));
+        else
+            this.logins.addAll(logins);
     }
 
     public PlayerLock getPlayerLock(){

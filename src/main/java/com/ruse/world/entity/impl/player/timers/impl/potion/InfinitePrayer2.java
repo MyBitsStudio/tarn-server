@@ -37,7 +37,7 @@ public class InfinitePrayer2 extends PotionTimer {
     }
 
     @Override
-    public void onEnd() {
+    public void finish() {
         getPlayer().sendMessage("Your prayer potion has ran out.");
     }
 

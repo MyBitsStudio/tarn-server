@@ -9,6 +9,7 @@ import com.ruse.model.definitions.NpcDefinition;
 import com.ruse.world.World;
 import com.ruse.world.content.KillsTracker;
 import com.ruse.world.packages.bosses.SingleBossSinglePlayerInstance;
+import com.ruse.world.packages.bosses.multi.MultiBossFlashInstance;
 import com.ruse.world.packages.bosses.multi.impl.CounterInstance;
 import com.ruse.world.packages.bosses.multi.MultiBossNormalInstance;
 import com.ruse.world.packages.bosses.multi.impl.DonatorSpecialInstance;

@@ -30,10 +30,9 @@ public class InfiniteHealing3 extends PotionTimer {
     }
 
     @Override
-    public void onEnd() {
+    public void finish() {
         getPlayer().sendMessage("Your healing potion has ran out.");
     }
-
     @Override
     public String getName() {
         return "inf-heal-3";

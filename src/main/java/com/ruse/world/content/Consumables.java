@@ -284,161 +284,19 @@ public class Consumables {
 
                 //Overload potions
                 case 23124: //T1
-                    if (!drinkInfiniteOverload(player, 300))
-                        return;
+                    player.getTimers().register(new InfiniteOverload1(player));
                     break;
                 case 23125: //T2
-                    if (!drinkInfiniteOverload(player, 400))
-                        return;
+                    player.getTimers().register(new InfiniteOverload2(player));
                     break;
                 case 23126: //T3
-                    if (!drinkInfiniteOverload(player, 500))
-                        return;
+                    player.getTimers().register(new InfiniteOverload3(player));
                     break;
 
-                /*
-                 * Attack potions
+                /**
+                 * Restore Pots
                  */
 
-                case 7218:
-                    drinkStatPotion(player, itemId, 229, slot, Skill.AGILITY.ordinal(), false);
-                    player.heal(110);
-                    player.getInventory().add(7220, 1);
-                    break;
-                case 7220:
-                    drinkStatPotion(player, itemId, 2313, slot, Skill.AGILITY.ordinal(), false);
-                    player.heal(110);
-                    break;
-                case 2428:
-                    drinkStatPotion(player, itemId, 121, slot, 0, false); // attack pot 4
-                    break;
-                case 121:
-                    drinkStatPotion(player, itemId, 123, slot, 0, false); // attack pot 3
-                    break;
-                case 123:
-                    drinkStatPotion(player, itemId, 125, slot, 0, false); // attack pot2
-                    break;
-                case 125:
-                    drinkStatPotion(player, itemId, 229, slot, 0, false); // attack pot 1
-                    player.getInventory().delete(229,1);//player.sendMessage("Remove The Pot NOW!");
-                    break;
-                /*
-                 * Defence potions
-                 */
-                case 2432:
-                    drinkStatPotion(player, itemId, 133, slot, 1, false); // Defence pot 4
-                    break;
-                case 133:
-                    drinkStatPotion(player, itemId, 135, slot, 1, false); // Defence pot 3
-                    break;
-                case 135:
-                    drinkStatPotion(player, itemId, 137, slot, 1, false); // Defence pot 2
-                    break;
-                case 137:
-                    drinkStatPotion(player, itemId, 229, slot, 1, false); // Defence pot 1
-                    break;
-                /*
-                 * Strength potions
-                 */
-                case 113:
-                    drinkStatPotion(player, itemId, 115, slot, 2, false); // Strength pot 4
-                    break;
-                case 115:
-                    drinkStatPotion(player, itemId, 117, slot, 2, false); // Strength pot 3
-                    break;
-                case 117:
-                    drinkStatPotion(player, itemId, 119, slot, 2, false); // Strength pot 2
-                    break;
-                case 119:
-                    drinkStatPotion(player, itemId, 229, slot, 2, false); // Strength pot 1
-                    player.getInventory().delete(229,1);//player.sendMessage("Remove The Pot NOW!");
-                    break;
-
-                /*
-                 * ALCHOHOL
-                 */
-                case 1917:
-                case 2017:
-                case 1993:
-                case 2015:
-                case 2021:
-                case 1915:
-                    player.getInventory().delete(itemId, 1);
-                    player.performAnimation(new Animation(829));
-                    player.getSkillManager().setCurrentLevel(Skill.STRENGTH,
-                            (player.getSkillManager().getCurrentLevel(Skill.STRENGTH) + 3 > player.getSkillManager()
-                                    .getMaxLevel(Skill.STRENGTH) ? player.getSkillManager().getMaxLevel(Skill.STRENGTH) + 3
-                                    : player.getSkillManager().getCurrentLevel(Skill.STRENGTH) + 3));
-                    player.heal(10);
-                    player.getInventory().add(1919, 1);
-                    player.getInventory().refreshItems();
-                    // player.getPacketSender().sendMessage("You finish off your beverage.");
-                    break;
-                case 1907:
-                    player.getInventory().delete(itemId, 1);
-                    player.performAnimation(new Animation(829));
-                    player.getSkillManager().setCurrentLevel(Skill.MAGIC,
-                            (player.getSkillManager().getCurrentLevel(Skill.MAGIC) + 3 > player.getSkillManager()
-                                    .getMaxLevel(Skill.MAGIC) ? player.getSkillManager().getMaxLevel(Skill.MAGIC) + 3
-                                    : player.getSkillManager().getCurrentLevel(Skill.MAGIC) + 3));
-                    player.heal(10);
-                    player.getInventory().add(1919, 1);
-                    player.getInventory().refreshItems();
-                    // player.getPacketSender().sendMessage("You finish off your beverage.");
-                    break;
-                /*
-                 * Antipoison
-                 */
-                case 2446:
-                    player.performAnimation(new Animation(829));
-                    player.getInventory().getItems()[slot] = new Item(175, 1);
-                    player.getInventory().refreshItems();
-                    PoisonImmunityTask.makeImmune(player, 86);
-                    player.getPacketSender().sendMessage("You're now immune to any kind of poison for another 86 seconds.");
-                    break;
-                case 175:
-                    player.performAnimation(new Animation(829));
-                    player.getInventory().getItems()[slot] = new Item(177, 1);
-                    player.getInventory().refreshItems();
-                    PoisonImmunityTask.makeImmune(player, 86);
-                    player.getPacketSender().sendMessage("You're now immune to any kind of poison for another 86 seconds.");
-                    break;
-                case 177:
-                    player.performAnimation(new Animation(829));
-                    player.getInventory().getItems()[slot] = new Item(179, 1);
-                    player.getInventory().refreshItems();
-                    PoisonImmunityTask.makeImmune(player, 86);
-                    player.getPacketSender().sendMessage("You're now immune to any kind of poison for another 86 seconds.");
-                    break;
-                case 179:
-                    player.performAnimation(new Animation(829));
-                    player.getInventory().getItems()[slot] = new Item(229);
-                    player.getInventory().refreshItems();
-                    PoisonImmunityTask.makeImmune(player, 86);
-                    player.getPacketSender().sendMessage("You're now immune to any kind of poison for another 86 seconds.");
-                    break;
-                /*
-                 * Restore potion
-                 */
-                case 2430:
-                    player.performAnimation(new Animation(829));
-                    player.getInventory().getItems()[slot] = new Item(127, 1);
-                    player.getInventory().refreshItems();
-                    for (int i = 0; i < 24; i++) {
-                        if (i == 3 || i == 5)
-                            continue;
-                        if (player.getSkillManager().getCurrentLevel(Skill.forId(i)) < player.getSkillManager()
-                                .getMaxLevel(i)) {
-                            player.getSkillManager().setCurrentLevel(Skill.forId((i)),
-                                    (int) (player.getSkillManager().getCurrentLevel(Skill.forId(i))
-                                            + (player.getSkillManager().getMaxLevel(Skill.forId(i)) * 0.11)));
-                            if (player.getSkillManager().getCurrentLevel(Skill.forId(i)) > player.getSkillManager()
-                                    .getMaxLevel(Skill.forId(i)))
-                                player.getSkillManager().setCurrentLevel(Skill.forId(i),
-                                        player.getSkillManager().getMaxLevel(Skill.forId(i)));
-                        }
-                    }
-                    break;
                 case 127:
                     player.performAnimation(new Animation(829));
                     player.getInventory().getItems()[slot] = new Item(129, 1);
@@ -480,6 +338,292 @@ public class Consumables {
                 case 131:
                     player.performAnimation(new Animation(829));
                     player.getInventory().getItems()[slot] = new Item(229);
+                    player.getInventory().refreshItems();
+                    for (int i = 0; i < 24; i++) {
+                        if (i == 3 || i == 5)
+                            continue;
+                        if (player.getSkillManager().getCurrentLevel(Skill.forId(i)) < player.getSkillManager()
+                                .getMaxLevel(i)) {
+                            player.getSkillManager().setCurrentLevel(Skill.forId((i)),
+                                    (int) (player.getSkillManager().getCurrentLevel(Skill.forId(i))
+                                            + (player.getSkillManager().getMaxLevel(Skill.forId(i)) * 0.11)));
+                            if (player.getSkillManager().getCurrentLevel(Skill.forId(i)) > player.getSkillManager()
+                                    .getMaxLevel(Skill.forId(i)))
+                                player.getSkillManager().setCurrentLevel(Skill.forId(i),
+                                        player.getSkillManager().getMaxLevel(Skill.forId(i)));
+                        }
+                    }
+                    break;
+
+                /**
+                 * Super Restore Pots
+                 */
+
+                case 3024:
+                    player.performAnimation(new Animation(829));
+                    player.getInventory().getItems()[slot] = new Item(3026, 1);
+                    player.getInventory().refreshItems();
+                    for (int i = 0; i < 24; i++) {
+                        if (i == 3)
+                            continue;
+                        if (player.getSkillManager().getCurrentLevel(Skill.forId(i)) < player.getSkillManager()
+                                .getMaxLevel(i)) {
+                            double restoreMod = i == 5 ? 0.29 : 0.18;
+                            int toRestore = (int) (player.getSkillManager().getCurrentLevel(Skill.forId(i))
+                                    + (player.getSkillManager().getMaxLevel(Skill.forId(i)) * restoreMod));
+                            player.getSkillManager().setCurrentLevel(Skill.forId((i)), toRestore);
+                            if (player.getSkillManager().getCurrentLevel(Skill.forId(i)) > player.getSkillManager()
+                                    .getMaxLevel(Skill.forId(i)))
+                                player.getSkillManager().setCurrentLevel(Skill.forId(i),
+                                        player.getSkillManager().getMaxLevel(Skill.forId(i)));
+                        }
+                    }
+                    break;
+                case 3026:
+                    player.performAnimation(new Animation(829));
+                    player.getInventory().getItems()[slot] = new Item(3028, 1);
+                    player.getInventory().refreshItems();
+                    for (int i = 0; i < 24; i++) {
+                        if (i == 3)
+                            continue;
+                        if (player.getSkillManager().getCurrentLevel(Skill.forId(i)) < player.getSkillManager()
+                                .getMaxLevel(i)) {
+                            double restoreMod = i == 5 ? 0.29 : 0.18;
+                            int toRestore = (int) (player.getSkillManager().getCurrentLevel(Skill.forId(i))
+                                    + (player.getSkillManager().getMaxLevel(Skill.forId(i)) * restoreMod));
+                            player.getSkillManager().setCurrentLevel(Skill.forId((i)), toRestore);
+                            if (player.getSkillManager().getCurrentLevel(Skill.forId(i)) > player.getSkillManager()
+                                    .getMaxLevel(Skill.forId(i)))
+                                player.getSkillManager().setCurrentLevel(Skill.forId(i),
+                                        player.getSkillManager().getMaxLevel(Skill.forId(i)));
+                        }
+                    }
+                    break;
+                case 3028:
+                    player.performAnimation(new Animation(829));
+                    player.getInventory().getItems()[slot] = new Item(3030, 1);
+                    player.getInventory().refreshItems();
+                    for (int i = 0; i < 24; i++) {
+                        if (i == 3)
+                            continue;
+                        if (player.getSkillManager().getCurrentLevel(Skill.forId(i)) < player.getSkillManager()
+                                .getMaxLevel(i)) {
+                            double restoreMod = i == 5 ? 0.29 : 0.18;
+                            int toRestore = (int) (player.getSkillManager().getCurrentLevel(Skill.forId(i))
+                                    + (player.getSkillManager().getMaxLevel(Skill.forId(i)) * restoreMod));
+                            player.getSkillManager().setCurrentLevel(Skill.forId((i)), toRestore);
+                            if (player.getSkillManager().getCurrentLevel(Skill.forId(i)) > player.getSkillManager()
+                                    .getMaxLevel(Skill.forId(i)))
+                                player.getSkillManager().setCurrentLevel(Skill.forId(i),
+                                        player.getSkillManager().getMaxLevel(Skill.forId(i)));
+                        }
+                    }
+                    break;
+                case 3030:
+                    player.performAnimation(new Animation(829));
+                    player.getInventory().getItems()[slot] = new Item(229);
+                    player.getInventory().refreshItems();
+                    for (int i = 0; i < 24; i++) {
+                        if (i == 3)
+                            continue;
+                        if (player.getSkillManager().getCurrentLevel(Skill.forId(i)) < player.getSkillManager()
+                                .getMaxLevel(i)) {
+                            double restoreMod = i == 5 ? 0.29 : 0.18;
+                            int toRestore = (int) (player.getSkillManager().getCurrentLevel(Skill.forId(i))
+                                    + (player.getSkillManager().getMaxLevel(Skill.forId(i)) * restoreMod));
+                            player.getSkillManager().setCurrentLevel(Skill.forId((i)), toRestore);
+                            if (player.getSkillManager().getCurrentLevel(Skill.forId(i)) > player.getSkillManager()
+                                    .getMaxLevel(Skill.forId(i)))
+                                player.getSkillManager().setCurrentLevel(Skill.forId(i),
+                                        player.getSkillManager().getMaxLevel(Skill.forId(i)));
+                        }
+                    }
+                    break;
+
+                    /**
+                     * Anti Posion
+                     *
+                     */
+                case 175:
+                    player.performAnimation(new Animation(829));
+                    player.getInventory().getItems()[slot] = new Item(177, 1);
+                    player.getInventory().refreshItems();
+                    PoisonImmunityTask.makeImmune(player, 86);
+                    player.getPacketSender().sendMessage("You're now immune to any kind of poison for another 86 seconds.");
+                    break;
+                case 177:
+                    player.performAnimation(new Animation(829));
+                    player.getInventory().getItems()[slot] = new Item(179, 1);
+                    player.getInventory().refreshItems();
+                    PoisonImmunityTask.makeImmune(player, 86);
+                    player.getPacketSender().sendMessage("You're now immune to any kind of poison for another 86 seconds.");
+                    break;
+                case 179:
+                    player.performAnimation(new Animation(829));
+                    player.getInventory().getItems()[slot] = new Item(229);
+                    player.getInventory().refreshItems();
+                    PoisonImmunityTask.makeImmune(player, 86);
+                    player.getPacketSender().sendMessage("You're now immune to any kind of poison for another 86 seconds.");
+                    break;
+
+                    /**
+                     * Super Anti Posion
+                     */
+
+                case 181: // Super anti poison pot 3
+                    player.performAnimation(new Animation(829));
+                    player.getInventory().getItems()[slot] = new Item(183, 1);
+                    player.getInventory().refreshItems();
+                    PoisonImmunityTask.makeImmune(player, 346);
+                    player.getPacketSender()
+                            .sendMessage("You're now immune to any kind of poison for another 346 seconds.");
+                    break;
+                case 183: // Super anti poison pot 2
+                    player.performAnimation(new Animation(829));
+                    player.getInventory().getItems()[slot] = new Item(185, 1);
+                    player.getInventory().refreshItems();
+                    PoisonImmunityTask.makeImmune(player, 346);
+                    player.getPacketSender()
+                            .sendMessage("You're now immune to any kind of poison for another 346 seconds.");
+                    break;
+                case 185: // Super anti poison pot 1
+                    player.performAnimation(new Animation(829));
+                    player.getInventory().getItems()[slot] = new Item(229);
+                    player.getInventory().delete(229,1);//player.sendMessage("Remove The Pot NOW!");
+                    player.getInventory().refreshItems();
+                    PoisonImmunityTask.makeImmune(player, 346);
+                    player.getPacketSender()
+                            .sendMessage("You're now immune to any kind of poison for another 346 seconds.");
+                    break;
+
+                    /**
+                     * Energy
+                     */
+
+                case 3016, 3020, 3018: // Super energy 4
+                    player.performAnimation(new Animation(829));
+                    player.getInventory().getItems()[slot] = new Item(itemId + 2, 1);
+                    player.getInventory().refreshItems();
+                    player.setRunEnergy(player.getRunEnergy() +  40);
+                    if (player.getRunEnergy() > 100)
+                        player.setRunEnergy(100);
+                    break;
+                case 3022:
+                    player.performAnimation(new Animation(829));
+                    player.getInventory().getItems()[slot] = new Item(229);
+                    player.getInventory().refreshItems();
+                    player.setRunEnergy(player.getRunEnergy() +  40);
+                    if (player.getRunEnergy() > 100)
+                        player.setRunEnergy(100);
+                    break;
+
+
+//                /*
+//                 * Attack potions
+//                 */
+//
+//                case 7218:
+//                    drinkStatPotion(player, itemId, 229, slot, Skill.AGILITY.ordinal(), false);
+//                    player.heal(110);
+//                    player.getInventory().add(7220, 1);
+//                    break;
+//                case 7220:
+//                    drinkStatPotion(player, itemId, 2313, slot, Skill.AGILITY.ordinal(), false);
+//                    player.heal(110);
+//                    break;
+//                case 2428:
+//                    drinkStatPotion(player, itemId, 121, slot, 0, false); // attack pot 4
+//                    break;
+//                case 121:
+//                    drinkStatPotion(player, itemId, 123, slot, 0, false); // attack pot 3
+//                    break;
+//                case 123:
+//                    drinkStatPotion(player, itemId, 125, slot, 0, false); // attack pot2
+//                    break;
+//                case 125:
+//                    drinkStatPotion(player, itemId, 229, slot, 0, false); // attack pot 1
+//                    player.getInventory().delete(229,1);//player.sendMessage("Remove The Pot NOW!");
+//                    break;
+//                /*
+//                 * Defence potions
+//                 */
+//                case 2432:
+//                    drinkStatPotion(player, itemId, 133, slot, 1, false); // Defence pot 4
+//                    break;
+//                case 133:
+//                    drinkStatPotion(player, itemId, 135, slot, 1, false); // Defence pot 3
+//                    break;
+//                case 135:
+//                    drinkStatPotion(player, itemId, 137, slot, 1, false); // Defence pot 2
+//                    break;
+//                case 137:
+//                    drinkStatPotion(player, itemId, 229, slot, 1, false); // Defence pot 1
+//                    break;
+//                /*
+//                 * Strength potions
+//                 */
+//                case 113:
+//                    drinkStatPotion(player, itemId, 115, slot, 2, false); // Strength pot 4
+//                    break;
+//                case 115:
+//                    drinkStatPotion(player, itemId, 117, slot, 2, false); // Strength pot 3
+//                    break;
+//                case 117:
+//                    drinkStatPotion(player, itemId, 119, slot, 2, false); // Strength pot 2
+//                    break;
+//                case 119:
+//                    drinkStatPotion(player, itemId, 229, slot, 2, false); // Strength pot 1
+//                    player.getInventory().delete(229,1);//player.sendMessage("Remove The Pot NOW!");
+//                    break;
+//
+//                /*
+//                 * ALCHOHOL
+//                 */
+//                case 1917:
+//                case 2017:
+//                case 1993:
+//                case 2015:
+//                case 2021:
+//                case 1915:
+//                    player.getInventory().delete(itemId, 1);
+//                    player.performAnimation(new Animation(829));
+//                    player.getSkillManager().setCurrentLevel(Skill.STRENGTH,
+//                            (player.getSkillManager().getCurrentLevel(Skill.STRENGTH) + 3 > player.getSkillManager()
+//                                    .getMaxLevel(Skill.STRENGTH) ? player.getSkillManager().getMaxLevel(Skill.STRENGTH) + 3
+//                                    : player.getSkillManager().getCurrentLevel(Skill.STRENGTH) + 3));
+//                    player.heal(10);
+//                    player.getInventory().add(1919, 1);
+//                    player.getInventory().refreshItems();
+//                    // player.getPacketSender().sendMessage("You finish off your beverage.");
+//                    break;
+//                case 1907:
+//                    player.getInventory().delete(itemId, 1);
+//                    player.performAnimation(new Animation(829));
+//                    player.getSkillManager().setCurrentLevel(Skill.MAGIC,
+//                            (player.getSkillManager().getCurrentLevel(Skill.MAGIC) + 3 > player.getSkillManager()
+//                                    .getMaxLevel(Skill.MAGIC) ? player.getSkillManager().getMaxLevel(Skill.MAGIC) + 3
+//                                    : player.getSkillManager().getCurrentLevel(Skill.MAGIC) + 3));
+//                    player.heal(10);
+//                    player.getInventory().add(1919, 1);
+//                    player.getInventory().refreshItems();
+//                    // player.getPacketSender().sendMessage("You finish off your beverage.");
+//                    break;
+                /*
+                 * Antipoison
+                 */
+                case 2446:
+                    player.performAnimation(new Animation(829));
+                    player.getInventory().getItems()[slot] = new Item(175, 1);
+                    player.getInventory().refreshItems();
+                    PoisonImmunityTask.makeImmune(player, 86);
+                    player.getPacketSender().sendMessage("You're now immune to any kind of poison for another 86 seconds.");
+                    break;
+                /*
+                 * Restore potion
+                 */
+                case 2430:
+                    player.performAnimation(new Animation(829));
+                    player.getInventory().getItems()[slot] = new Item(127, 1);
                     player.getInventory().refreshItems();
                     for (int i = 0; i < 24; i++) {
                         if (i == 3 || i == 5)
@@ -571,43 +715,6 @@ public class Consumables {
                 /*
                  * Restore energy
                  */
-                case 3016: // Super energy 4
-                case 3008: // Energy potion 4
-                    player.performAnimation(new Animation(829));
-                    player.getInventory().getItems()[slot] = new Item(itemId + 2, 1);
-                    player.getInventory().refreshItems();
-                    player.setRunEnergy(player.getRunEnergy() + (itemId == 3008 ? 15 : 40));
-                    if (player.getRunEnergy() > 100)
-                        player.setRunEnergy(100);
-                    break;
-                case 3018: // Super energy 3
-                case 3010: // Energy potion 3
-                    player.performAnimation(new Animation(829));
-                    player.getInventory().getItems()[slot] = new Item(itemId + 2, 1);
-                    player.getInventory().refreshItems();
-                    player.setRunEnergy(player.getRunEnergy() + (itemId == 3010 ? 15 : 40));
-                    if (player.getRunEnergy() > 100)
-                        player.setRunEnergy(100);
-                    break;
-                case 3020: // Super energy 2
-                case 3012: // Energy potion 2
-                    player.performAnimation(new Animation(829));
-                    player.getInventory().getItems()[slot] = new Item(itemId + 2, 1);
-                    player.getInventory().refreshItems();
-                    player.setRunEnergy(player.getRunEnergy() + (itemId == 3012 ? 15 : 40));
-                    if (player.getRunEnergy() > 100)
-                        player.setRunEnergy(100);
-                    break;
-                case 3022:
-                case 3014: // Energy potion 1
-                    player.performAnimation(new Animation(829));
-                    player.getInventory().getItems()[slot] = new Item(229);
-                    player.getInventory().delete(229,1);//player.sendMessage("Remove The Pot NOW!");
-                    player.getInventory().refreshItems();
-                    player.setRunEnergy(player.getRunEnergy() + (itemId == 3014 ? 15 : 40));
-                    if (player.getRunEnergy() > 100)
-                        player.setRunEnergy(100);
-                    break;
                 /*
                  * Combat potions
                  */
@@ -790,31 +897,6 @@ public class Consumables {
                     player.getPacketSender()
                             .sendMessage("You're now immune to any kind of poison for another 346 seconds.");
                     break;
-                case 181: // Super anti poison pot 3
-                    player.performAnimation(new Animation(829));
-                    player.getInventory().getItems()[slot] = new Item(183, 1);
-                    player.getInventory().refreshItems();
-                    PoisonImmunityTask.makeImmune(player, 346);
-                    player.getPacketSender()
-                            .sendMessage("You're now immune to any kind of poison for another 346 seconds.");
-                    break;
-                case 183: // Super anti poison pot 2
-                    player.performAnimation(new Animation(829));
-                    player.getInventory().getItems()[slot] = new Item(185, 1);
-                    player.getInventory().refreshItems();
-                    PoisonImmunityTask.makeImmune(player, 346);
-                    player.getPacketSender()
-                            .sendMessage("You're now immune to any kind of poison for another 346 seconds.");
-                    break;
-                case 185: // Super anti poison pot 1
-                    player.performAnimation(new Animation(829));
-                    player.getInventory().getItems()[slot] = new Item(229);
-                    player.getInventory().delete(229,1);//player.sendMessage("Remove The Pot NOW!");
-                    player.getInventory().refreshItems();
-                    PoisonImmunityTask.makeImmune(player, 346);
-                    player.getPacketSender()
-                            .sendMessage("You're now immune to any kind of poison for another 346 seconds.");
-                    break;
                 /*
                  * Fishing potions
                  */
@@ -882,86 +964,6 @@ public class Consumables {
                 /*
                  * Super Restore potions
                  */
-                case 3024:
-                    player.performAnimation(new Animation(829));
-                    player.getInventory().getItems()[slot] = new Item(3026, 1);
-                    player.getInventory().refreshItems();
-                    for (int i = 0; i < 24; i++) {
-                        if (i == 3)
-                            continue;
-                        if (player.getSkillManager().getCurrentLevel(Skill.forId(i)) < player.getSkillManager()
-                                .getMaxLevel(i)) {
-                            double restoreMod = i == 5 ? 0.29 : 0.18;
-                            int toRestore = (int) (player.getSkillManager().getCurrentLevel(Skill.forId(i))
-                                    + (player.getSkillManager().getMaxLevel(Skill.forId(i)) * restoreMod));
-                            player.getSkillManager().setCurrentLevel(Skill.forId((i)), toRestore);
-                            if (player.getSkillManager().getCurrentLevel(Skill.forId(i)) > player.getSkillManager()
-                                    .getMaxLevel(Skill.forId(i)))
-                                player.getSkillManager().setCurrentLevel(Skill.forId(i),
-                                        player.getSkillManager().getMaxLevel(Skill.forId(i)));
-                        }
-                    }
-                    break;
-                case 3026:
-                    player.performAnimation(new Animation(829));
-                    player.getInventory().getItems()[slot] = new Item(3028, 1);
-                    player.getInventory().refreshItems();
-                    for (int i = 0; i < 24; i++) {
-                        if (i == 3)
-                            continue;
-                        if (player.getSkillManager().getCurrentLevel(Skill.forId(i)) < player.getSkillManager()
-                                .getMaxLevel(i)) {
-                            double restoreMod = i == 5 ? 0.29 : 0.18;
-                            int toRestore = (int) (player.getSkillManager().getCurrentLevel(Skill.forId(i))
-                                    + (player.getSkillManager().getMaxLevel(Skill.forId(i)) * restoreMod));
-                            player.getSkillManager().setCurrentLevel(Skill.forId((i)), toRestore);
-                            if (player.getSkillManager().getCurrentLevel(Skill.forId(i)) > player.getSkillManager()
-                                    .getMaxLevel(Skill.forId(i)))
-                                player.getSkillManager().setCurrentLevel(Skill.forId(i),
-                                        player.getSkillManager().getMaxLevel(Skill.forId(i)));
-                        }
-                    }
-                    break;
-                case 3028:
-                    player.performAnimation(new Animation(829));
-                    player.getInventory().getItems()[slot] = new Item(3030, 1);
-                    player.getInventory().refreshItems();
-                    for (int i = 0; i < 24; i++) {
-                        if (i == 3)
-                            continue;
-                        if (player.getSkillManager().getCurrentLevel(Skill.forId(i)) < player.getSkillManager()
-                                .getMaxLevel(i)) {
-                            double restoreMod = i == 5 ? 0.29 : 0.18;
-                            int toRestore = (int) (player.getSkillManager().getCurrentLevel(Skill.forId(i))
-                                    + (player.getSkillManager().getMaxLevel(Skill.forId(i)) * restoreMod));
-                            player.getSkillManager().setCurrentLevel(Skill.forId((i)), toRestore);
-                            if (player.getSkillManager().getCurrentLevel(Skill.forId(i)) > player.getSkillManager()
-                                    .getMaxLevel(Skill.forId(i)))
-                                player.getSkillManager().setCurrentLevel(Skill.forId(i),
-                                        player.getSkillManager().getMaxLevel(Skill.forId(i)));
-                        }
-                    }
-                    break;
-                case 3030:
-                    player.performAnimation(new Animation(829));
-                    player.getInventory().getItems()[slot] = new Item(229);
-                    player.getInventory().refreshItems();
-                    for (int i = 0; i < 24; i++) {
-                        if (i == 3)
-                            continue;
-                        if (player.getSkillManager().getCurrentLevel(Skill.forId(i)) < player.getSkillManager()
-                                .getMaxLevel(i)) {
-                            double restoreMod = i == 5 ? 0.29 : 0.18;
-                            int toRestore = (int) (player.getSkillManager().getCurrentLevel(Skill.forId(i))
-                                    + (player.getSkillManager().getMaxLevel(Skill.forId(i)) * restoreMod));
-                            player.getSkillManager().setCurrentLevel(Skill.forId((i)), toRestore);
-                            if (player.getSkillManager().getCurrentLevel(Skill.forId(i)) > player.getSkillManager()
-                                    .getMaxLevel(Skill.forId(i)))
-                                player.getSkillManager().setCurrentLevel(Skill.forId(i),
-                                        player.getSkillManager().getMaxLevel(Skill.forId(i)));
-                        }
-                    }
-                    break;
                 /*
                  * Super Defence potions
                  */

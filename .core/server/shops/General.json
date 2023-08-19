@@ -61,6 +61,39 @@
             "price": 19875
           }
         ]
+      },
+      {
+        "shopId": 1,
+        "currency": "coins",
+        "shopName": "Potions",
+        "restrict": 0,
+        "items": [
+          {
+            "id": 128,
+            "amount": 200000,
+            "price": 300
+          },
+          {
+            "id": 3025,
+            "amount": 200000,
+            "price": 12500
+          },
+          {
+            "id": 176,
+            "amount": 200000,
+            "price": 550
+          },
+          {
+            "id": 182,
+            "amount": 200000,
+            "price": 2650
+          },
+          {
+            "id": 3017,
+            "amount": 200000,
+            "price": 1250
+          }
+        ]
       }
     ]
   }

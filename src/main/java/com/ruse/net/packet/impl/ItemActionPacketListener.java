@@ -452,7 +452,7 @@ public class ItemActionPacketListener implements PacketListener {
 //                DialogueManager.start(player, PetUpgrading.dialogue(player));
 //                break;
 
-            case 15355:
+            case 15355: // TODO
                 if (player.getDoubleDRTimer() > 0) {
                     player.sendMessage("You already have a double DR scroll active.");
                     return;

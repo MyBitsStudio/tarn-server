@@ -4,9 +4,10 @@ import com.google.common.base.Preconditions;
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
 import com.ruse.engine.GameEngine;
 import com.ruse.engine.task.TaskManager;
-import com.ruse.engine.task.impl.BackupThread;
 import com.ruse.engine.task.impl.LotteryTask;
 import com.ruse.engine.task.impl.ServerTimeUpdateTask;
+import com.ruse.io.ThreadProgressor;
+import com.ruse.model.Backup;
 import com.ruse.model.definitions.ItemDefinition;
 import com.ruse.model.definitions.NPCDrops;
 import com.ruse.model.definitions.WeaponInterfaces;
@@ -51,11 +52,16 @@ import org.jboss.netty.bootstrap.ServerBootstrap;
 import org.jboss.netty.channel.socket.nio.NioServerSocketChannelFactory;
 import org.jboss.netty.util.HashedWheelTimer;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipOutputStream;
 
 /**
  * Credit: lare96, Gabbe
@@ -106,15 +112,17 @@ public final class GameLoader {
 		serverBootstrap.bind(new InetSocketAddress(port));
 		engine.init();
 		TaskManager.submit(new ServerTimeUpdateTask());
-		TaskManager.submit(new BackupThread());
-
+		ThreadProgressor.submit(false, () -> {
+			Backup.backup();
+			ThreadProgressor.submit(false, () -> {
+				Backup.backup();
+				return null;
+			});
+			return null;
+		});
 	}
 
 	private void executeServiceLoad() {
-		/*
-		 * if (GameSettings.MYSQL_ENABLED) { serviceLoader.execute(() ->
-		 * MySQLController.init()); }
-		 */
 
 		serviceLoader.execute(GroupManager::loadGroups);
 		serviceLoader.execute(ConnectionHandler::init);

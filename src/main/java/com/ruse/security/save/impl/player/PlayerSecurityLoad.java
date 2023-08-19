@@ -29,6 +29,7 @@ public class PlayerSecurityLoad extends SecureLoad {
         Map<String, List<String>> label = builder.fromJson(object.get("associations"),
                 new TypeToken<ConcurrentMap<String, List<String>>>() {
                 }.getType());
+
         for(Map.Entry<String, List<String>> asso : label.entrySet()){
             String key = asso.getKey();
             List<String> labels = new CopyOnWriteArrayList<>();
