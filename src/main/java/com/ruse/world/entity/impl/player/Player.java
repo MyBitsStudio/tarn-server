@@ -1755,6 +1755,8 @@ public class Player extends Character {
 
         getLoyalty().handleLoyalty(this);
 
+        getTimers().tick();
+
     }
 
     //CORRUPT

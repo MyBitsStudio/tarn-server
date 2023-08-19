@@ -239,55 +239,29 @@ public class World {
     }
 
     public static void sequence() {
-        final boolean PRINT_TIMESTAMPS = true;
         long startTime = System.currentTimeMillis();
-        long lastTime = startTime;
-
-        gameThreadJobs.forEach(job -> {
-            try {
-                job.invoke();
-            } catch (Exception e){
-                e.printStackTrace();
-            }
-        });
-        gameThreadJobs.clear();
-
-        for(Player player : players){
-            if(player == null)
-                continue;
-
-            if(!player.getSession().getChannel().isConnected()){
-                removePlayer(player);
-            }
-        }
 
         for(Map.Entry<String, Player> playeri : playersByUesrname.entrySet()){
             String key = playeri.getKey();
-            boolean found = false;
             for(Player player : players){
                 if(player == null)
                     continue;
                 if(player.getUsername().equals(key)) {
                     if(!player.getSession().getChannel().isConnected()){
                         removePlayer(player);
+                        playerByNames.remove(NameUtils.stringToLong(key));
+                        playersByUesrname.remove(key);
                     }
-                    found = true;
-                    break;
                 }
-            }
-            if(!found){
-                playerByNames.remove(NameUtils.stringToLong(key));
-                playersByUesrname.remove(key);
             }
         }
 
-        // Handle queued logins.
         for (int amount = 0; amount < GameSettings.LOGIN_THRESHOLD; amount++) {
             Player player = logins.poll();
             if (player == null)
                 break;
             if (World.getPlayerByName(player.getUsername()) != null) {
-               // System.out.println("STOPPED MULTI LOG by " + player.getUsername());
+                // System.out.println("STOPPED MULTI LOG by " + player.getUsername());
                 PlayerLogs.log(player.getUsername(), "Had a multilog attempt.");
                 break;
             }
@@ -312,12 +286,24 @@ public class World {
             }
         }
 
+        gameThreadJobs.forEach(job -> {
+            try {
+                job.invoke();
+            } catch (Exception e){
+                e.printStackTrace();
+            }
+        });
+        gameThreadJobs.clear();
+
+
         GlobalBossManager.getInstance().process();
 
         ShopHandler.process();
         Bot.updatePlayers();
 
         ServerPerks.getInstance().tick();
+
+        WorldTimers.sequence();
 
         ThreadProgressor.submit(true, () -> {
             try {

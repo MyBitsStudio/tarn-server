@@ -79,6 +79,8 @@ public class GameSettings {
      * sequence.
      */
     public static final int LOGOUT_THRESHOLD = 100;
+
+    public static final int MAX_PLAYERS = 1024;
     /**
      * The maximum amount of players who can receive rewards on a single game
      * sequence.
