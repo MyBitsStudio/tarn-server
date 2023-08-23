@@ -46,6 +46,10 @@ public class AchievementHandler {
         player.getPacketSender().sendMessage("achC#"+difficulty.getKey() + "," + amount);
     }
 
+    public static void sendPerkUnlock(Player player, int perk) {
+        player.getPacketSender().sendMessage("achPP#"+player.getUnlockedPerks()[perk]+","+perk);
+    }
+
     public static void onPlayerLogin(Player player) {
         achievements.values()
                 .forEach(achievement -> {
@@ -53,6 +57,9 @@ public class AchievementHandler {
                     sendProgressAmount(player, ap, achievement);
                 });
         AchievementDifficulty.VALUES.forEach(difficulty -> increaseCompleteAmount(player, difficulty, getCompletedAchievements(player, difficulty)));
+        for(int i = 0; i< player.getUnlockedPerks().length; i++) {
+            sendPerkUnlock(player, i);
+        }
     }
 
     private static int getCompletedAchievements(Player player, AchievementDifficulty difficulty) {
@@ -82,4 +89,5 @@ public class AchievementHandler {
             e.printStackTrace();
         }
     }
+
 }

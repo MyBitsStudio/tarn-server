@@ -197,6 +197,9 @@ public class Player extends Character {
     }
 
     @Getter
+    public boolean[] unlockedPerks = new boolean[9];
+
+    @Getter
     private SeasonPass seasonPass = new SeasonPass(this);
 
     @Getter
