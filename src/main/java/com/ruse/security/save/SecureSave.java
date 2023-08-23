@@ -7,6 +7,7 @@ import com.ruse.security.ServerSecurity;
 import com.ruse.security.tools.SecurityUtils;
 import org.jetbrains.annotations.NotNull;
 
+import java.io.File;
 import java.nio.ByteBuffer;
 
 public abstract class SecureSave {
@@ -21,6 +22,12 @@ public abstract class SecureSave {
     public abstract SecureSave create();
 
     public abstract void save();
+
+    public void save(String path){
+        synchronized (new File(path)){
+            save();
+        }
+    }
 
     public abstract String key();
 

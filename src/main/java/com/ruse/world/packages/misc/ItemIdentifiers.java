@@ -37,6 +37,6 @@ public class ItemIdentifiers {
     }
 
     public static void save(){
-        new IdentifiersSave().create().save();
+        new IdentifiersSave().create().save(SecurityUtils.IDENTIFIERS);
     }
 }

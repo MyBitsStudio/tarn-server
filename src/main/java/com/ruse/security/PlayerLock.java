@@ -2,6 +2,7 @@ package com.ruse.security;
 
 import com.ruse.security.save.impl.player.PlayerLockLoad;
 import com.ruse.security.save.impl.player.PlayerLockSave;
+import com.ruse.security.tools.SecurityUtils;
 import com.ruse.world.World;
 import com.ruse.world.content.discordbot.AdminCord;
 import com.ruse.world.entity.impl.player.Player;
@@ -191,7 +192,7 @@ public class PlayerLock {
     }
 
     public void save(){
-        new PlayerLockSave(username, this).create().save();
+        new PlayerLockSave(username, this).create().save(SecurityUtils.PLAYER_LOCK_FILE+username+".json");
     }
 
     public int lockCode(){

@@ -4,6 +4,7 @@ import com.google.gson.reflect.TypeToken;
 import com.ruse.security.PlayerSecurity;
 import com.ruse.security.save.SecureLoad;
 import com.ruse.security.tools.SecurityUtils;
+import com.ruse.world.packages.misc.ItemIdentifiers;
 
 import java.util.List;
 import java.util.Map;
@@ -25,21 +26,11 @@ public class PlayerSecurityLoad extends SecureLoad {
 
     @Override
     public PlayerSecurityLoad run() {
-        Map<String, List<String>> ass = new ConcurrentHashMap<>();
         Map<String, List<String>> label = builder.fromJson(object.get("associations"),
                 new TypeToken<ConcurrentMap<String, List<String>>>() {
                 }.getType());
 
-        for(Map.Entry<String, List<String>> asso : label.entrySet()){
-            String key = asso.getKey();
-            List<String> labels = new CopyOnWriteArrayList<>();
-            for(String enc : asso.getValue()){
-                labels.add(get(enc));
-            }
-            ass.put(key, labels);
-        }
-
-        sec.setAssociations(ass);
+        sec.setAssociations(label);
 
         Map<String, Object> mapping = new ConcurrentHashMap<>();
         Map<String, Object> labels = builder.fromJson(object.get("securityMap"),

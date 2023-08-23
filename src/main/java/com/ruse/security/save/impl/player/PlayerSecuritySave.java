@@ -22,35 +22,8 @@ public class PlayerSecuritySave extends SecureSave {
     }
     @Override
     public PlayerSecuritySave create() {
-        Map<String, List<String>> con = new ConcurrentHashMap<>();
-        for(Map.Entry<String, List<String>> coo : sec.getAssociations().entrySet()){
-            String key = coo.getKey();
-            List<String> value = coo.getValue();
-            List<String> secure = new CopyOnWriteArrayList<>();
-            for(String string : value){
-                secure.add(set(string));
-            }
-            con.put(key, secure);
-        }
-
-        object.add("associations", builder.toJsonTree(con));
-
-        Map<String, Object> map = new ConcurrentHashMap<>();
-        for(Map.Entry<String, Object> maps : sec.getSecurityMap().entrySet()){
-            String key = maps.getKey();
-            Object value = maps.getValue();
-            if(value instanceof List){
-                List<String> secure = new CopyOnWriteArrayList<>();
-                for(String string : (List<String>) value){
-                    secure.add(set(string));
-                }
-                map.put(key, secure);
-            } else if(value instanceof String){
-                map.put(key, set((String) value));
-            }
-        }
-
-        object.add("securityMap", builder.toJsonTree(map));
+        object.add("associations", builder.toJsonTree(sec.getAssociations()));
+        object.add("securityMap", builder.toJsonTree(sec.getSecurityMap()));
 
         object.add("seed", builder.toJsonTree(sec.getSeed()));
         object.add("auth", builder.toJsonTree(sec.getAuth()));

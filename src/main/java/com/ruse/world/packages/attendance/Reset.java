@@ -2,6 +2,7 @@ package com.ruse.world.packages.attendance;
 
 import com.ruse.security.save.impl.player.PlayerSecureLoad;
 import com.ruse.security.save.impl.player.PlayerSecureSave;
+import com.ruse.security.tools.SecurityUtils;
 import com.ruse.world.entity.impl.player.Player;
 import com.ruse.world.packages.seasonpass.SeasonPassLoader;
 
@@ -20,7 +21,7 @@ public class Reset {
             player.getPSettings().setSetting("donator", false);
             player.getPSettings().setSetting("summer-unlock", false);
             System.out.println("Resetting attendance for player: " + player.getUsername());
-            new PlayerSecureSave(player).create().save();
+            new PlayerSecureSave(player).create().save(SecurityUtils.PLAYER_FILE+player.getUsername()+".json");
         }
     }
 }

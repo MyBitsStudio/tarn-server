@@ -27,26 +27,9 @@ public class PlayerLockSave extends SecureSave {
     public SecureSave create() {
         object.add("assoc", builder.toJsonTree(lock.getAssociations()));
 
-        Map<String, List<String>> con = new ConcurrentHashMap<>();
-        for(Map.Entry<String, List<String>> coo : lock.getLockLogs().entrySet()){
-            String key = coo.getKey();
-            List<String> value = coo.getValue();
-            List<String> secure = new CopyOnWriteArrayList<>();
-            for(String string : value){
-                secure.add(set(string));
-            }
-            con.put(key, secure);
-        }
+        object.add("logs", builder.toJsonTree(lock.getLockLogs()));
 
-        object.add("logs", builder.toJsonTree(con));
-
-        Map<String, Boolean> boos = new ConcurrentHashMap<>();
-        for(Map.Entry<String, Boolean> coo : lock.getPlayerLocks().entrySet()){
-            String key = coo.getKey();
-            boos.put(key, coo.getValue());
-        }
-
-        object.add("locks", builder.toJsonTree(boos));
+        object.add("locks", builder.toJsonTree(lock.getPlayerLocks()));
 
         object.addProperty("lockTime", lock.getLockTime());
         object.addProperty("lock", lock.getLock());

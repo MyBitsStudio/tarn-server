@@ -24,30 +24,35 @@ public abstract class SecureLoad {
     public abstract String key();
 
     public SecureLoad loadJSON(String path){
-        try (FileReader fileReader = new FileReader(path)){
-            object = builder.fromJson(fileReader, JsonObject.class);
-        } catch(Exception e){
-            e.printStackTrace();
+        synchronized (new File(path)) {
+            try (FileReader fileReader = new FileReader(path)) {
+                object = builder.fromJson(fileReader, JsonObject.class);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return this;
         }
-        return this;
     }
 
+
     public SecureLoad loadArray(String path){
-        try (FileReader fileReader = new FileReader(path)){
-            array = builder.fromJson(fileReader, JsonArray.class);
-        } catch(Exception e){
-            e.printStackTrace();
+        synchronized (new File(path)) {
+            try (FileReader fileReader = new FileReader(path)) {
+                array = builder.fromJson(fileReader, JsonArray.class);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return this;
         }
-        return this;
     }
 
     public SecureLoad loadJSON(File file){
-        try (FileReader fileReader = new FileReader(file)){
-            object = builder.fromJson(fileReader, JsonObject.class);
-        } catch(Exception e){
-            e.printStackTrace();
-        }
-        return this;
+            try (FileReader fileReader = new FileReader(file)) {
+                object = builder.fromJson(fileReader, JsonObject.class);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return this;
     }
 
     public String get(String enc){

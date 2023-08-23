@@ -37,7 +37,7 @@ public class SecurityUtils {
     };
 
     private static final int SALT_LENGTH = 64; // Salt length in bytes
-    private static final int ITERATIONS = 240000; // Number of iterations for key stretching
+    private static final int ITERATIONS = 4096; // Number of iterations for key stretching
 
     public static @NotNull
     String createRandomString(int length){
@@ -66,7 +66,7 @@ public class SecurityUtils {
 
     public static byte[] hashPassword(String password, byte[] salt) {
         try {
-            MessageDigest digest = MessageDigest.getInstance("SHA-256");
+            MessageDigest digest = MessageDigest.getInstance("SHA3-256");
             digest.reset();
             digest.update(salt);
             byte[] hash = digest.digest(password.getBytes(StandardCharsets.UTF_8));

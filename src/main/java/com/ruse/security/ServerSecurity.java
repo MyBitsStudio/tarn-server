@@ -4,6 +4,7 @@ import com.ruse.security.save.impl.server.ServerMapsLoad;
 import com.ruse.security.save.impl.server.ServerMapsSave;
 import com.ruse.security.save.impl.server.ServerSecurityLoad;
 import com.ruse.security.save.impl.server.ServerSecuritySave;
+import com.ruse.security.tools.SecurityUtils;
 import com.ruse.world.World;
 import com.ruse.world.content.discordbot.AdminCord;
 import com.ruse.world.entity.impl.player.Player;
@@ -166,7 +167,7 @@ public class ServerSecurity {
     }
 
     public void save(){
-        new ServerSecuritySave(this).create().save();
+        new ServerSecuritySave(this).create().save(SecurityUtils.SERVER_SECURITY_FILE);
     }
 
     private void saveMaps(){

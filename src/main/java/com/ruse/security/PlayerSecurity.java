@@ -296,7 +296,7 @@ public class PlayerSecurity {
     }
 
     public void save(){
-       new PlayerSecuritySave(this).create().save();
+       new PlayerSecuritySave(this).create().save(SecurityUtils.PLAYER_SECURITY_FILE+getUsername()+".json");
     }
 
     public void blockIP(){
