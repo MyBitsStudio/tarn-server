@@ -73,13 +73,6 @@ public class PlayerSecureLoad extends SecureLoad {
             player.setUimBankItems(items);
         }
 
-        if(object.has("dg-floor")) {
-            player.setDungeoneeringFloor(object.get("dg-floor").getAsInt());
-        }
-
-        if(object.has("dg-prestige")) {
-            player.setDungeoneeringPrestige(object.get("dg-prestige").getAsInt());
-        }
         if (object.has("has-pin2")) {
             player.setHasPin(object.get("has-pin2").getAsBoolean());
             if(player.getHasPin()){
@@ -91,10 +84,6 @@ public class PlayerSecureLoad extends SecureLoad {
 
         if (object.has("saved-ip")) {
             player.setSavedIp(object.get("saved-ip").getAsString());
-        }
-
-        if (object.has("amount-donated-today")) {
-            player.setAmountDonatedToday(object.get("amount-donated-today").getAsInt());
         }
 
         if (object.has("global-rate")) {
@@ -111,17 +100,6 @@ public class PlayerSecureLoad extends SecureLoad {
         if (object.has("slayer-rate")) {
             player.getPointsHandler().setSlayerRate(object.get("slayer-rate").getAsInt());
         }
-        if (object.has("claimed-first")) {
-            player.claimedFirst = object.get("claimed-first").getAsBoolean();
-        }
-
-        if (object.has("claimed-second")) {
-            player.claimedSecond = object.get("claimed-second").getAsBoolean();
-        }
-
-        if (object.has("claimed-third")) {
-            player.claimedThird = object.get("claimed-third").getAsBoolean();
-        }
 
         if (object.has("last-donation")) {
             player.lastDonation = object.get("last-donation").getAsLong();
@@ -134,9 +112,7 @@ public class PlayerSecureLoad extends SecureLoad {
         if (object.has("email")) {
             player.setEmailAddress(object.get("email").getAsString());
         }
-        if (object.has("lastTGloveIndex")) {
-            player.lastTGloveIndex = object.get("lastTGloveIndex").getAsInt();
-        }
+
         if (object.has("tasks-progress")) {
             int[] loadedProgress = builder.fromJson(object.get("tasks-progress").getAsJsonArray(), int[].class);
             int defaultLength = player.getStarterTaskAttributes().getProgress().length;
@@ -304,94 +280,20 @@ public class PlayerSecureLoad extends SecureLoad {
             player.getSkillManager().setTotalGainedExp(object.get("total-gained-exp").getAsInt());
         }
 
-        if (object.has("dung-tokens")) {
-            player.getPointsHandler().setDungeoneeringTokens(object.get("dung-tokens").getAsInt(), false);
-        }
 
-        if (object.has("barrows-points")) {
-            player.getPointsHandler().setBarrowsPoints(object.get("barrows-points").getAsInt(), false);
-        }
-
-        if (object.has("donator-points")) {
-            player.getPointsHandler().setDonatorPoints(object.get("donator-points").getAsInt(), false);
-        }
-
-        if (object.has("prestige-points")) {
-            player.getPointsHandler().setPrestigePoints(object.get("prestige-points").getAsInt(), false);
-        }
         if (object.has("Skilling-points")) {
             player.getPointsHandler().setSkillingPoints(object.get("Skilling-points").getAsInt(), false);
-        }
-
-        if (object.has("achievement-points")) {
-            player.getPointsHandler().setAchievementPoints(object.get("achievement-points").getAsInt(), false);
-        }
-
-        if (object.has("mini-me-equipment")) {
-            player.setMinimeEquipment(builder.fromJson(object.get("mini-me-equipment"), Item[].class));
         }
 
         if (object.has("commendations")) {
             player.getPointsHandler().setCommendations(object.get("commendations").getAsInt(), false);
         }
 
-        if (object.has("loyalty-points")) {
-            player.getPointsHandler().setLoyaltyPoints(object.get("loyalty-points").getAsInt(), false);
-        }
-
-        if (object.has("total-loyalty-points")) {
-            player.getAchievementAttributes()
-                    .incrementTotalLoyaltyPointsEarned(object.get("total-loyalty-points").getAsDouble());
-        }
 
         if (object.has("voting-points")) {
             player.getPointsHandler().setVotingPoints(object.get("voting-points").getAsInt(), false);
         }
-        if (object.has("spawn-killcount")) {
-            player.getPointsHandler().setSPAWNKILLCount(object.get("spawn-killcount").getAsInt(), false);
-        }
-        if (object.has("lord-killcount")) {
-            player.getPointsHandler().setLORDKILLCount(object.get("lord-killcount").getAsInt(), false);
-        }
-        if (object.has("demon-killcount")) {
-            player.getPointsHandler().setDEMONKILLCount(object.get("demon-killcount").getAsInt(), false);
-        }
-        if (object.has("dragon-killcount")) {
-            player.getPointsHandler().setDRAGONKILLCount(object.get("dragon-killcount").getAsInt(), false);
-        }
-        if (object.has("beast-killcount")) {
-            player.getPointsHandler().setBEASTKILLCount(object.get("beast-killcount").getAsInt(), false);
-        }
-        if (object.has("king-killcount")) {
-            player.getPointsHandler().setKINGKILLCount(object.get("king-killcount").getAsInt(), false);
-        }
-        if (object.has("avatar-killcount")) {
-            player.getPointsHandler().setAVATARKILLCount(object.get("avatar-killcount").getAsInt(), false);
-        }
-        if (object.has("angel-killcount")) {
-            player.getPointsHandler().setANGELKILLCount(object.get("angel-killcount").getAsInt(), false);
-        }
-        if (object.has("lucien-killcount")) {
-            player.getPointsHandler().setLUCIENKILLCount(object.get("lucien-killcount").getAsInt(), false);
-        }
-        if (object.has("hercules-killcount")) {
-            player.getPointsHandler().setHERCULESKILLCount(object.get("hercules-killcount").getAsInt(), false);
-        }
-        if (object.has("satan-killcount")) {
-            player.getPointsHandler().setSATANKILLCount(object.get("satan-killcount").getAsInt(), false);
-        }
-        if (object.has("zeus-killcount")) {
-            player.getPointsHandler().setZEUSKILLCount(object.get("zeus-killcount").getAsInt(), false);
-        }
-        if (object.has("mini-lucifer-killcount")) {
-            player.getPointsHandler().setMiniLuciferkillcount(object.get("mini-lucifer-killcount").getAsInt());
-        }
-        if (object.has("lucifer-killcount")) {
-            player.getPointsHandler().setLuciferkillcount(object.get("lucifer-killcount").getAsInt());
-        }
-        if (object.has("npc-killcount")) {
-            player.getPointsHandler().setNPCKILLCount(object.get("npc-killcount").getAsInt(), false);
-        }
+
         if (object.has("total-prestiges")) {
             player.getPointsHandler().setTotalPrestiges(object.get("total-prestiges").getAsInt(), false);
         }
@@ -416,25 +318,6 @@ public class PlayerSecureLoad extends SecureLoad {
             player.getPointsHandler().setPkPoints(object.get("pk-points").getAsInt(), false);
         }
 
-        if (object.has("player-kills")) {
-            player.getPlayerKillingAttributes().setPlayerKills(object.get("player-kills").getAsInt());
-        }
-
-        if (object.has("player-killstreak")) {
-            player.getPlayerKillingAttributes().setPlayerKillStreak(object.get("player-killstreak").getAsInt());
-        }
-
-        if (object.has("player-deaths")) {
-            player.getPlayerKillingAttributes().setPlayerDeaths(object.get("player-deaths").getAsInt());
-        }
-
-        if (object.has("target-percentage")) {
-            player.getPlayerKillingAttributes().setTargetPercentage(object.get("target-percentage").getAsInt());
-        }
-
-        if (object.has("bh-rank")) {
-            player.getAppearance().setBountyHunterSkull(object.get("bh-rank").getAsInt());
-        }
 
         if (object.has("gender")) {
             player.getAppearance().setGender(Gender.valueOf(object.get("gender").getAsString()));
@@ -480,18 +363,7 @@ public class PlayerSecureLoad extends SecureLoad {
         if (object.has("skull-timer")) {
             player.setSkullTimer(object.get("skull-timer").getAsInt());
         }
-        if (object.has("fuse-combination-timer")) {
-            player.setFuseCombinationTimer(object.get("fuse-combination-timer").getAsLong());
-        }
-        if (object.has("fuse-item-selected")) {
-            player.setFuseItemSelected(object.get("fuse-item-selected").getAsInt());
-        }
-        if (object.has("claimed-fuse-item")) {
-            player.setClaimedFuseItem(object.get("claimed-fuse-item").getAsBoolean());
-        }
-        if (object.has("fuse-in-progress")) {
-            player.setFuseInProgress(object.get("fuse-in-progress").getAsBoolean());
-        }
+
         if (object.has("accept-aid")) {
             player.setAcceptAid(object.get("accept-aid").getAsBoolean());
         }
@@ -526,24 +398,6 @@ public class PlayerSecureLoad extends SecureLoad {
             player.setSpecialPercentage(object.get("special-amount").getAsInt());
         }
 
-        if (object.has("entered-gwd-room")) {
-            player.getMinigameAttributes().getGodwarsDungeonAttributes()
-                    .setHasEnteredRoom(object.get("entered-gwd-room").getAsBoolean());
-        }
-
-        if (object.has("gwd-altar-delay")) {
-            player.getMinigameAttributes().getGodwarsDungeonAttributes()
-                    .setAltarDelay(object.get("gwd-altar-delay").getAsLong());
-        }
-
-        if (object.has("gwd-killcount")) {
-            player.getMinigameAttributes().getGodwarsDungeonAttributes()
-                    .setKillcount(builder.fromJson(object.get("gwd-killcount"), int[].class));
-        }
-
-        if (object.has("effigy")) {
-            player.setEffigy(object.get("effigy").getAsInt());
-        }
 
         if (object.has("summon-npc")) {
             int npc = object.get("summon-npc").getAsInt();
@@ -581,10 +435,6 @@ public class PlayerSecureLoad extends SecureLoad {
             DropLog.submit(player, builder.fromJson(object.get("drops").getAsJsonArray(), DropLog.DropLogEntry[].class));
         }
 
-        if (object.has("coins-gambled")) {
-            player.getAchievementAttributes().setCoinsGambled(object.get("coins-gambled").getAsInt());
-        }
-
         if (object.has("slayer-master")) {
             player.getSlayer().setSlayerMaster(SlayerMaster.valueOf(object.get("slayer-master").getAsString()));
         }
@@ -598,32 +448,6 @@ public class PlayerSecureLoad extends SecureLoad {
         if (object.has("lastdailyclaim"))
             player.lastDailyClaim = (object.get("lastdailyclaim").getAsLong());
 
-        if (object.has("day1claimed"))
-            player.day1Claimed = (object.get("day1claimed").getAsBoolean());
-
-        if (object.has("day2claimed"))
-            player.day2Claimed = (object.get("day2claimed").getAsBoolean());
-
-        if (object.has("day3claimed"))
-            player.day3Claimed = (object.get("day3claimed").getAsBoolean());
-
-        if (object.has("day4claimed"))
-            player.day4Claimed = (object.get("day4claimed").getAsBoolean());
-
-        if (object.has("day5claimed"))
-            player.day5Claimed = (object.get("day5claimed").getAsBoolean());
-
-        if (object.has("day6claimed"))
-            player.day6Claimed = (object.get("day6claimed").getAsBoolean());
-
-        if (object.has("day7claimed"))
-            player.day7Claimed = (object.get("day7claimed").getAsBoolean());
-
-        if (object.has("lastvotetime"))
-            player.lastVoteTime = (object.get("lastvotetime").getAsLong());
-
-        if (object.has("hasvotedtoday"))
-            player.hasVotedToday = (object.get("hasvotedtoday").getAsBoolean());
 
         if (object.has("prev-slayer-task")) {
             player.getSlayer().setLastTask(SlayerTasks.valueOf(object.get("prev-slayer-task").getAsString()));
@@ -660,42 +484,6 @@ public class PlayerSecureLoad extends SecureLoad {
                     .setRandomCoffin((object.get("random-coffin").getAsInt()));
         }
 
-        if (object.has("barrows-killcount")) {
-            player.getMinigameAttributes().getBarrowsMinigameAttributes()
-                    .setKillcount((object.get("barrows-killcount").getAsInt()));
-        }
-
-        if (object.has("nomad")) {
-            player.getMinigameAttributes().getNomadAttributes()
-                    .setQuestParts(builder.fromJson(object.get("nomad").getAsJsonArray(), boolean[].class));
-        }
-
-        if (object.has("recipe-for-disaster")) {
-            player.getMinigameAttributes().getRecipeForDisasterAttributes().setQuestParts(
-                    builder.fromJson(object.get("recipe-for-disaster").getAsJsonArray(), boolean[].class));
-        }
-
-        if (object.has("recipe-for-disaster-wave")) {
-            player.getMinigameAttributes().getRecipeForDisasterAttributes()
-                    .setWavesCompleted((object.get("recipe-for-disaster-wave").getAsInt()));
-        }
-
-        if (object.has("clue-progress")) {
-            player.setClueProgress((object.get("clue-progress").getAsInt()));
-        }
-
-        if (object.has("dung-items-bound")) {
-            player.getMinigameAttributes().getDungeoneeringAttributes()
-                    .setBoundItems(builder.fromJson(object.get("dung-items-bound").getAsJsonArray(), int[].class));
-        }
-
-        if (object.has("rune-ess")) {
-            player.setStoredRuneEssence((object.get("rune-ess").getAsInt()));
-        }
-
-        if (object.has("pure-ess")) {
-            player.setStoredPureEssence((object.get("pure-ess").getAsInt()));
-        }
 
         if (object.has("bank-pin")) {
             player.getBankPinAttributes()
@@ -721,11 +509,6 @@ public class PlayerSecureLoad extends SecureLoad {
             player.getAppearance().set(builder.fromJson(object.get("appearance").getAsJsonArray(), int[].class));
         }
 
-        if (object.has("agility-obj")) {
-            player.setCrossedObstacles(
-                    builder.fromJson(object.get("agility-obj").getAsJsonArray(), boolean[].class));
-        }
-
 
         if (object.has("skills")) {
             player.getSkillManager().setSkills(builder.fromJson(object.get("skills"), SkillManager.Skills.class));
@@ -747,13 +530,6 @@ public class PlayerSecureLoad extends SecureLoad {
                     .setItems(builder.fromJson(object.get("preset-equipment").getAsJsonArray(), Item[].class));
         }
 
-        if (object.has("offences")) {
-            ArrayList<String> list = new ArrayList<String>();
-            String[] killed_players = builder.fromJson(object.get("offences").getAsJsonArray(), String[].class);
-            for (String s : killed_players)
-                list.add(s);
-            player.setOffences(list);
-        }
 
         /** BANK **/
         for (int i = 0; i < 9; i++) {
@@ -813,23 +589,6 @@ public class PlayerSecureLoad extends SecureLoad {
                     .addItems(builder.fromJson(object.get("new-uim-bank").getAsJsonArray(), Item[].class), false);
         }
 
-        if (object.has("ge-slots")) {
-            GrandExchangeSlot[] slots = builder.fromJson(object.get("ge-slots").getAsJsonArray(),
-                    GrandExchangeSlot[].class);
-            player.setGrandExchangeSlots(slots);
-        }
-
-        if (object.has("store")) {
-            Item[] validStoredItems = builder.fromJson(object.get("store").getAsJsonArray(), Item[].class);
-            if (player.getSummoning().getSpawnTask() != null) {
-                player.getSummoning().getSpawnTask().setValidItems(validStoredItems);
-            }
-        }
-
-        if (object.has("charm-imp")) {
-            int[] charmImpConfig = builder.fromJson(object.get("charm-imp").getAsJsonArray(), int[].class);
-            player.getSummoning().setCharmimpConfig(charmImpConfig);
-        }
 
         if (object.has("friends")) {
             long[] friends = builder.fromJson(object.get("friends").getAsJsonArray(), long[].class);
@@ -869,13 +628,6 @@ public class PlayerSecureLoad extends SecureLoad {
             player.setYellTitle(object.get("yell-tit").getAsString());
         }
 
-        if (object.has("fri13may16")) {
-            player.setFriday13May2016(object.get("fri13may16").getAsBoolean());
-        }
-
-        if (object.has("spiritdebug")) {
-            player.setSpiritDebug(object.get("spiritdebug").getAsBoolean());
-        }
 
         if (object.has("reffered")) {
             player.setReffered(object.get("reffered").getAsBoolean());
@@ -883,10 +635,6 @@ public class PlayerSecureLoad extends SecureLoad {
 
         if (object.has("is-secondary-equipment")) {
             player.setIsSecondaryEquipment(object.get("is-secondary-equipment").getAsBoolean());
-        }
-
-        if (object.has("indung")) {
-            player.setInDung(object.get("indung").getAsBoolean());
         }
 
         if (object.has("toggledglobalmessages")) {
@@ -909,74 +657,9 @@ public class PlayerSecureLoad extends SecureLoad {
             player.setGhostWalking(object.get("ghostwalking").getAsBoolean());
         }
 
-        if (object.has("barrowschests")) {
-            player.getPointsHandler().setBarrowsChests(object.get("barrowschests").getAsInt(), false);
-        }
-
-        if (object.has("cluesteps")) {
-            player.getPointsHandler().setClueSteps(object.get("cluesteps").getAsInt(), false);
-        }
-
-        if (object.has("currency-pouch")) {
-            player.setCurrencyPouch(builder.fromJson(object.get("currency-pouch"), CurrencyPouch.class));
-        }
-
-        /*
-         * RIP difficulty loading. We'll still keep original values though, because fuck
-         * it. if (object.has("difficulty")) { Difficulty.set(player,
-         * Difficulty.valueOf(object.get("difficulty").getAsString()), true);
-         * //player.setGameMode(GameMode.valueOf(object.get("game-mode").getAsString()))
-         * ; }
-         */
-
         if (object.has("secondary-equipment-slots-unlocked")) {
             player.setSecondaryEquipmentUnlocks(builder.fromJson(object.get("secondary-equipment-slots-unlocked").getAsJsonArray(), boolean[].class));
         }
-
-        if (object.has("hween2016")) {
-            player.setHween2016All(builder.fromJson(object.get("hween2016").getAsJsonArray(), boolean[].class));
-        }
-
-        if (object.has("donehween2016")) {
-            player.setDoneHween2016(object.get("donehween2016").getAsBoolean());
-        }
-
-        if (object.has("christmas2016")) {
-            player.setchristmas2016(object.get("christmas2016").getAsInt());
-        }
-
-        if (object.has("newYear2017")) {
-            player.setNewYear2017(object.get("newYear2017").getAsInt());
-        }
-
-        if (object.has("easter2017")) {
-            player.setEaster2017(object.get("easter2017").getAsInt());
-        }
-
-        if (object.has("hcimdunginventory")) {
-            player.getDungeoneeringIronInventory()
-                    .setItems(builder.fromJson(object.get("hcimdunginventory").getAsJsonArray(), Item[].class));
-        }
-
-        if (object.has("hcimdungequipment")) {
-            player.getDungeoneeringIronEquipment()
-                    .setItems(builder.fromJson(object.get("hcimdungequipment").getAsJsonArray(), Item[].class));
-        }
-
-        if (object.has("bonecrusheffect")) {
-            player.setBonecrushEffect(object.get("bonecrusheffect").getAsBoolean());
-        }
-
-        if (object.has("p-tps")) {
-            player.setPreviousTeleports(builder.fromJson(object.get("p-tps").getAsJsonArray(), int[].class));
-        }
-
-        if (object.has("afkstall1"))
-            player.setAfkStallCount1(object.get("afkstall1").getAsInt());
-        if (object.has("afkstall2"))
-            player.setAfkStallCount2(object.get("afkstall2").getAsInt());
-        if (object.has("afkstall3"))
-            player.setAfkStallCount3(object.get("afkstall3").getAsInt());
 
 
         if (object.has("achievements-points")) {
@@ -997,31 +680,6 @@ public class PlayerSecureLoad extends SecureLoad {
             player.getAchievements().setDailyTaskDate(object.get("achievements-daily").getAsLong());
         }
 
-
-        if (object.has("gwd-killcount")) {
-            player.getMinigameAttributes().getGodwarsDungeonAttributes()
-                    .setKillcount(builder.fromJson(object.get("gwd-killcount"), int[].class));
-        }
-
-        if (object.has("progression-zones")) {
-            player.setProgressionZones(builder.fromJson(object.get("progression-zones"), int[].class));
-        }
-        if (object.has("zones-complete")) {
-            player.setZonesComplete(builder.fromJson(object.get("zones-complete"), boolean[].class));
-        }
-
-        if (object.has("gamble-banned")) {
-            player.setGambleBanned(object.get("gamble-banned").getAsBoolean());
-        }
-
-        if (object.has("lucifers-unlocked")) {
-            player.setUnlockedLucifers(object.get("lucifers-unlocked").getAsBoolean());
-        }
-
-        if (object.has("dark-supremes-unlocked")) {
-            player.setUnlockedDarkSupreme(object.get("dark-supremes-unlocked").getAsBoolean());
-        }
-
         if (object.has("group-ironman-id")) {
             IronmanGroup group = GroupManager.getGroup((object.get("group-ironman-id").getAsInt()));
             //  System.out.println("ID : " + object.get("group-ironman-id").getAsInt());
@@ -1040,10 +698,6 @@ public class PlayerSecureLoad extends SecureLoad {
 
         if (object.has("group-ironman-locked")) {
             player.setGroupIronmanLocked((object.get("group-ironman-locked").getAsBoolean()));
-        }
-
-        if (object.has("lastInstanceNpc")) {
-            player.lastInstanceNpc = object.get("lastInstanceNpc").getAsInt();
         }
 
         if (object.has("daily-task")) {
@@ -1079,12 +733,6 @@ public class PlayerSecureLoad extends SecureLoad {
         if (object.has("dailies-received-times")) {
             player.setTaskReceivedTimes(builder.fromJson(object.get("dailies-received-times").getAsJsonArray(), long[].class));
         }
-            /*if (object.has("favorite-teleports")) {
-                TeleportInterface.Teleport[] data = builder.fromJson(object.get("favorite-teleports").getAsJsonArray(), TeleportInterface.Teleport[].class);
-                for (TeleportInterface.Teleport l : data) {
-                    player.getFavoriteTeleports().add(l);
-                }
-            }*/
 
         if (object.has("obtained-pets")) {
             BossPets.BossPet[] data = builder.fromJson(object.get("obtained-pets").getAsJsonArray(), BossPets.BossPet[].class);
