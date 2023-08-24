@@ -32,8 +32,9 @@ import com.ruse.world.content.KillsTracker.KillsEntry;
 import com.ruse.world.content.LoyaltyProgramme.LoyaltyTitles;
 import com.ruse.world.content.StarterTasks.StarterTaskAttributes;
 import com.ruse.world.content.achievement.AchievementHandler;
-import com.ruse.world.content.johnachievementsystem.Achievement;
 import com.ruse.world.content.johnachievementsystem.AchievementProgress;
+import com.ruse.world.content.johnachievementsystem.Perk;
+import com.ruse.world.content.johnachievementsystem.PerkType;
 import com.ruse.world.content.tbdminigame.Lobby;
 import com.ruse.world.entity.impl.player.timers.PlayerTimers;
 import com.ruse.world.packages.loyalty.LoyaltyManager;
@@ -197,7 +198,7 @@ public class Player extends Character {
     }
 
     @Getter
-    public boolean[] unlockedPerks = new boolean[9];
+    public HashMap<PerkType, Perk> perks = new HashMap<>();
 
     @Getter
     @Setter

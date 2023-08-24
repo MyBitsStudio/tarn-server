@@ -46,8 +46,8 @@ public class AchievementHandler {
         player.getPacketSender().sendMessage("achC#"+difficulty.getKey() + "," + amount);
     }
 
-    public static void sendPerkUnlock(Player player, int perk) {
-        player.getPacketSender().sendMessage("achPP#"+player.getUnlockedPerks()[perk]+","+perk);
+    public static void sendPerkUnlock(Player player, PerkType perkType) {
+        player.getPacketSender().sendMessage("achPP#"+player.getPerks().computeIfAbsent(perkType, x -> new Perk())+","+perkType.getKey());
     }
 
     public static void onPlayerLogin(Player player) {
@@ -57,8 +57,8 @@ public class AchievementHandler {
                     sendProgressAmount(player, ap, achievement);
                 });
         AchievementDifficulty.VALUES.forEach(difficulty -> increaseCompleteAmount(player, difficulty, getCompletedAchievements(player, difficulty)));
-        for(int i = 0; i< player.getUnlockedPerks().length; i++) {
-            sendPerkUnlock(player, i);
+        for(PerkType pt : PerkType.VALUES) {
+            sendPerkUnlock(player, pt);
         }
     }
 
@@ -79,18 +79,38 @@ public class AchievementHandler {
             case 165340:
                 player.setSelectedPerk(0);
                 return true;
+            case 165344:
+                selectUpgrade(player);
+                return true;
+            case 165345:
+                selectBuy(player);
+                return true;
         }
         return false;
     }
 
-    private static void selectUpgrade(Player player) {
+    private static PerkType getSelectedPerkType(Player player) {
+        return PerkType.VALUES.stream().filter(perkType_ ->  perkType_.getKey() == player.getSelectedPerk()).findFirst().orElse(null);
+    }
 
+    private static void selectUpgrade(Player player) {
+        PerkType perkType = getSelectedPerkType(player);
+        if(perkType == null) return;
+        Perk perk = player.getPerks().get(perkType);
+        if(!perk.hasUnlocked()) return;
+        int currentLevel = perk.getLevel();
+        int currentExp = perk.getExp();
+        // now handle upgrading
     }
 
     private static void selectBuy(Player player) {
-
+        PerkType perkType = getSelectedPerkType(player);
+        if(perkType == null) return;
+        Perk perk = player.getPerks().get(perkType);
+        if(perk.hasUnlocked()) return;
+        // now handle buying
     }
-    
+
     public static void load() {
         ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
         try {
