@@ -93,7 +93,11 @@ public class AchievementHandler {
         // No need to check if null because hashmap gets populated on player login
         return player.getPerks().get(perkType).hasUnlocked();
     }
-    
+
+    public static int getPerkLevel(Player player, PerkType perkType) {
+        return player.getPerks().get(perkType).getLevel();
+    }
+
     private static PerkType getSelectedPerkType(Player player) {
         return PerkType.VALUES.stream().filter(perkType_ ->  perkType_.getKey() == player.getSelectedPerk()).findFirst().orElse(null);
     }
@@ -131,5 +135,4 @@ public class AchievementHandler {
             e.printStackTrace();
         }
     }
-
 }
