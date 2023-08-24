@@ -71,9 +71,26 @@ public class AchievementHandler {
     }
 
     public static boolean onButtonClick(Player player, int id) {
+        if(id >= 165354 && id <= 165362) {
+            player.setSelectedPerk(id - 165354);
+            return true;
+        }
+        switch (id) {
+            case 165340:
+                player.setSelectedPerk(0);
+                return true;
+        }
         return false;
     }
 
+    private static void selectUpgrade(Player player) {
+
+    }
+
+    private static void selectBuy(Player player) {
+
+    }
+    
     public static void load() {
         ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
         try {
