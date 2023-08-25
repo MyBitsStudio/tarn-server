@@ -299,7 +299,7 @@ public class OwnerCommands {
                     switch (commands[1]) {
                         case "all" -> {
                             ShopHandler.load();
-                            NPCDrops.parseDrops().load();
+                            //NPCDrops.parseDrops().load();
                             ItemDefinition.init();
                             WeaponInterfaces.parseInterfaces().load();
                             new NPCDataLoad().loadJSON("./.core/server/defs/npc/npc_data.json").run();
@@ -313,7 +313,7 @@ public class OwnerCommands {
                         case "some" -> {
                             new NPCDataLoad().loadJSON("./.core/server/defs/npc/npc_data.json").run();
                             ItemDefinition.init();
-                            NPCDrops.parseDrops().load();
+                           // NPCDrops.parseDrops().load();
                             ShopHandler.load();
                             return true;
                         }

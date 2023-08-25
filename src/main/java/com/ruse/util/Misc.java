@@ -88,7 +88,11 @@ public class Misc {
         return RAND.nextInt(upper);
     }
 
-    private static final SecureRandom RAND = new SecureRandom();
+    public static final SecureRandom RAND = new SecureRandom();
+
+    public static double getRandom(double min, double max) {
+        return min + (max - min) * RAND.nextDouble();
+    }
 
     public static String toFormattedHMS(long time) {
         return String.format("%02d:%02d:%02d", TimeUnit.MILLISECONDS.toHours(time),
@@ -915,8 +919,6 @@ public class Misc {
 
     /**
      * Reads string from a data input stream.
-     *
-     * @param inputStream The input stream to read string from.
      * @return The String value.
      */
     /*public static String readString(ChannelBuffer buffer) {

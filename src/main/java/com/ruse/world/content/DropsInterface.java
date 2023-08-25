@@ -1,12 +1,11 @@
 package com.ruse.world.content;
 
 import com.ruse.model.Item;
-import com.ruse.model.container.impl.Equipment;
-import com.ruse.model.definitions.NPCDrops;
 import com.ruse.model.definitions.NpcDefinition;
 import com.ruse.model.input.impl.EnterSyntaxToSearchDropsFor;
 import com.ruse.util.Misc;
 import com.ruse.world.entity.impl.player.Player;
+import com.ruse.world.packages.combat.drops.DropManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,14 +47,14 @@ public class DropsInterface {
 		player.getPacketSender().sendString(STRING_VALUE, "");
 		int scrollAmount = 0;
 		for (int i = 0; i < 80; i++) {
-			if (i > NPCDrops.forId(npcId).getDropList().length - 1) {
+			if (i > DropManager.getManager().forId(npcId).customTable().drops().length - 1) {
 			} else {
 				scrollAmount++;
 			}
 		}
 		player.getPacketSender().setScrollMax(34000, 37 * scrollAmount);
 		for (int i = 0; i < 80; i++) {
-			if (i > NPCDrops.forId(npcId).getDropList().length - 1) {
+			if (i > DropManager.getManager().forId(npcId).customTable().drops().length - 1) {
 				// System.out.println(player + "opening Drop table");
 				// System.out.println("sending blank on "+i);
 				player.getPacketSender().sendItemOnInterface(ITEM_MODEL + i, -1, 0, 1); // remove all item models
@@ -64,13 +63,13 @@ public class DropsInterface {
 				player.getPacketSender().sendString(ITEM_CHANCE + i, "");
 				player.getPacketSender().sendString(ITEM_VALUE + i, "");
 			} else {
-				Item item = NPCDrops.forId(npcId).getDropList()[i].getItem();
+				Item item = new Item(DropManager.getManager().forId(npcId).customTable().drops()[i].id());
 				if (item.getDefinition() == null) {
 					continue;
 				}
-				int min = NPCDrops.forId(npcId).getDropList()[i].getCount()[0];
-				int amount =NPCDrops.forId(npcId).getDropList()[i].getCount()[NPCDrops.forId(npcId).getDropList()[i].getCount().length - 1];
-				int chance = NPCDrops.forId(npcId).getDropList()[i].getChance();
+				int min = DropManager.getManager().forId(npcId).customTable().drops()[i].min();
+				int amount =DropManager.getManager().forId(npcId).customTable().drops()[i].max();
+				double chance = DropManager.getManager().forId(npcId).customTable().drops()[i].modifier();
 				player.getPacketSender().sendItemOnInterface(ITEM_MODEL + i, item.getId(), 0, amount); // remove all
 				// item models
 				player.getPacketSender().sendString(ITEM_NAME + i, item.getDefinition().getName()); // remove all item
@@ -172,12 +171,11 @@ public class DropsInterface {
 		// System.out.println("Searching for "+syntax);
 		List<Integer> list = getList(syntax);
 		player.getPacketSender().sendString(SEARCHED_STRING, "" + syntax);
-		if (!list.isEmpty()) {
+		if (list.isEmpty()) {
+			player.getPacketSender().sendMessage("No results found, please refine your NPC search.");
+		} else {
 			player.setLootList(list);
 			populateNpcOptions(player);
-		} else {
-			player.getPacketSender().sendMessage("No results found, please refine your NPC search.");
-			return;
 		}
 	}
 
@@ -195,56 +193,35 @@ public class DropsInterface {
 	}
 
 	public static List<Integer> getList(String search) {
-		List<Integer> list = new ArrayList<Integer>();
+		List<Integer> list = new ArrayList<>();
 		boolean dupe = false;
 		search = search.toLowerCase();
 
 		for (int i = 0; i < NpcDefinition.definitions.length; i++) {
-
-			if (NpcDefinition.forId(i) == null || NpcDefinition.forId(i).getName() == null
-					|| NpcDefinition.forId(i).getName().equalsIgnoreCase("null")
-					|| NpcDefinition.forId(i).getName().equalsIgnoreCase("") || NPCDrops.forId(i) == null
-					|| NPCDrops.forId(i).getDropList() == null || NPCDrops.forId(i).getDropList().length <= 0) {
-				// System.out.println("Skipping "+i);
+			NpcDefinition def = NpcDefinition.forId(i);
+			if(def == null)
 				continue;
-			}
 
-			if (!NpcDefinition.forId(i).getName().toLowerCase().contains(search)) {
+			if (!def.getName().toLowerCase().contains(search)) {
 				// System.out.println("Skipping
 				// "+NpcDefinition.forId(i).getName().toLowerCase());
 				continue;
 			}
 
-			for (int l = 0; l < list.size(); l++) {
-				if (NpcDefinition.forId(list.get(l)).getName().equalsIgnoreCase(NpcDefinition.forId(i).getName())) {
+			for (Integer integer : list) {
+				if (def.getName().equalsIgnoreCase(NpcDefinition.forId(integer).getName())) {
 					dupe = true;
-					// System.out.println("We got a dupe!");
 					break;
 				}
 			}
 
 			if (!dupe) {
-				// System.out.println("Adding "+i+", "+NpcDefinition.forId(i).getName()+" to
-				// list.");
 				list.add(i);
 			}
 
 		}
 
-		// printList(list);
-
 		return list;
-	}
-
-	public static void printList(List<Integer> list) {
-		for (int i = 0; i < list.size(); i++) {
-
-			//System.out.println("List(" + i + "): " + list.get(i) + ", " + NpcDefinition.forId(list.get(i)).getName());
-
-			// System.out.println("Added pair for id: "+i+", name =
-			// "+ItemDefinition.forId(i).getName());
-
-		}
 	}
 
 }

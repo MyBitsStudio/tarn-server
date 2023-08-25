@@ -6,7 +6,6 @@ import com.ruse.engine.task.impl.globalevents.GlobalEventBossTask;
 import com.ruse.model.Animation;
 import com.ruse.model.DamageDealer;
 import com.ruse.model.Locations.Location;
-import com.ruse.model.definitions.NPCDrops;
 import com.ruse.util.Misc;
 import com.ruse.util.RandomUtility;
 import com.ruse.world.World;
@@ -23,6 +22,7 @@ import com.ruse.world.content.dailyTask.DailyTaskHandler;
 import com.ruse.world.content.dailytasks_new.DailyTask;
 import com.ruse.world.content.tbdminigame.Game;
 import com.ruse.world.content.tbdminigame.Lobby;
+import com.ruse.world.packages.combat.drops.DropManager;
 import com.ruse.world.packages.donation.boss.DonationBoss;
 import com.ruse.world.content.eventboss.EventBossDropHandler;
 import com.ruse.world.content.globalBoss.GlobalBoss;
@@ -178,14 +178,17 @@ public class NPCDeathTask extends Task {
                             return;
                         }
 
-                        if (NPCDrops.multiKillNpcs.contains(npc.getId())) {
-                            NPCDrops.dropItemsMultiKill(npc);
-                        } else {
-                            killer.getPointsHandler().incrementNPCKILLCount(1);
-                            if (!npc.isEventBoss()) {
-                                NPCDrops.handleDrops(killer, npc, 1);
-                            }
+                        killer.getPointsHandler().incrementNPCKILLCount(1);
+                        if (!npc.isEventBoss()) {
+                            DropManager.getManager().sendDrop(npc, killer);
                         }
+
+//                        if (NPCDrops.multiKillNpcs.contains(npc.getId())) {
+//                            NPCDrops.dropItemsMultiKill(npc);
+//                        } else {
+//                            killer.getPointsHandler().incrementNPCKILLCount(1);
+//
+//                        }
                         if (killer.getSummoning() != null && killer.getSummoning().getFamiliar() != null
                                 && killer.getSummoning().getFamiliar().getSummonNpc().getId() == 302) {
                             killer.getPointsHandler().incrementNPCKILLCount(1);
@@ -980,32 +983,15 @@ public class NPCDeathTask extends Task {
 //        if (npc.getId() == 9908) {
 //            WorldBosses.handleDrop(npc);
 //        }
-        if (npc.getId() == 9904) {
-            WorldBosses3.handleDrop(npc);
-        }
+//        if (npc.getId() == 9904) {
+//            WorldBosses3.handleDrop(npc);
+//        }
 //        if (npc.getId() == 9906) {
 //            WorldBosses2.handleDrop(npc);
 //        }
 //        if (npc.getId() == 9907) {
 //            WorldBosses4.handleDrop(npc);
 //        }
-        if (npc.getId() == 8010) {
-            Groudon.handleDrop(npc);
-        }
-        if (npc.getId() == 3112) {
-            Ezkel.handleDrop(npc);
-        }
-        if (npc.getId() == 12239) {
-            SupremeNex.handleDrop(npc);
-        }
-
-        if (npc.getId() == 7553) {
-            TheGeneral.giveLoot(killer, npc);
-        }
-        if (npc.getId() == Exoden.MINION_NPCID) {
-            Exoden.minions_dead = true;
-            Exoden.minions_spawned = false;
-        }
     }
 
 }

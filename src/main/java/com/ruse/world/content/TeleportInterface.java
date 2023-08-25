@@ -1,8 +1,9 @@
 package com.ruse.world.content;
 
 import com.ruse.model.Position;
-import com.ruse.model.definitions.NPCDrops;
 import com.ruse.world.content.aura.AuraRaids;
+import com.ruse.world.packages.combat.drops.DropManager;
+import com.ruse.world.packages.combat.drops.NPCDrops;
 import com.ruse.world.packages.packs.casket.Box;
 import com.ruse.world.content.minigames.impl.*;
 import com.ruse.world.content.minigames.impl.dungeoneering.DungeoneeringParty;
@@ -400,9 +401,11 @@ public class TeleportInterface {
             player.getPacketSender().setScrollBar(122060, scroll);
         } else {
             try {
-                NPCDrops drops = NPCDrops.getDrops().get(npcId);
-                if (drops != null) {
-                    int length = drops.getDropList().length;
+                NPCDrops drops = DropManager.getManager().forId(npcId);
+                if (drops == null) {
+                    sendDrops(player, -1);
+                } else {
+                    int length = drops.customTable().drops().length;
                     if (length >= 160)
                         length = 160;
 
@@ -413,10 +416,9 @@ public class TeleportInterface {
                     }
 
                     for (int i = 0; i < length + 5; i++) {
-                        if (drops.getDropList().length > i) {
-                            player.getPacketSender().sendItemOnInterface1(35500, drops.getDropList()[i].getId(), i,
-                                    drops.getDropList()[i].getCount()[drops.getDropList()[i].getCount().length - 1] == -1 ? 25000
-                                            : drops.getDropList()[i].getCount()[drops.getDropList()[i].getCount().length - 1]);
+                        if (drops.customTable().drops().length > i) {
+                            player.getPacketSender().sendItemOnInterface1(35500, drops.customTable().drops()[i].id(), i,
+                                    drops.customTable().drops()[i].max());
                         } else {
                             player.getPacketSender().sendItemOnInterface1(35500, -1, i,
                                     0);
@@ -428,8 +430,6 @@ public class TeleportInterface {
                         scroll = 43;
 
                     player.getPacketSender().setScrollBar(122060, scroll);
-                }else{
-                    sendDrops(player, -1);
                 }
             } catch (Exception e) {
                 e.printStackTrace();

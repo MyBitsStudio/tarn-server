@@ -4,7 +4,6 @@ import com.ruse.model.Item;
 import com.ruse.model.Locations;
 import com.ruse.model.Position;
 import com.ruse.model.definitions.ItemDefinition;
-import com.ruse.model.definitions.NPCDrops;
 import com.ruse.model.definitions.NpcDefinition;
 import com.ruse.world.World;
 import com.ruse.world.content.minigames.impl.VoidOfDarkness;
@@ -12,6 +11,8 @@ import com.ruse.world.content.progressionzone.ProgressionZone;
 import com.ruse.world.content.transportation.TeleportHandler;
 import com.ruse.world.entity.impl.npc.NPC;
 import com.ruse.world.entity.impl.player.Player;
+import com.ruse.world.packages.combat.drops.DropManager;
+import com.ruse.world.packages.combat.drops.NPCDrops;
 
 public class CustomTeleportInterface {
 
@@ -27,14 +28,14 @@ public class CustomTeleportInterface {
     public static void sendDrops(Player player, int npcId) {
         player.getPacketSender().resetItemsOnInterface(60000 + 63, 100);
         try {
-            NPCDrops drops = NPCDrops.forId(npcId);
+            NPCDrops drops = DropManager.getManager().forId(npcId);
             if (drops == null) {
                 // System.out.println("Was null");
                 return;
             }
-            for (int i = 0; i < drops.getDropList().length; i++) {
-                player.getPacketSender().sendItemOnInterface(60000 + 63, drops.getDropList()[i].getId(), i,
-                        drops.getDropList()[i].getItem().getAmount());
+            for (int i = 0; i < drops.customTable().drops().length; i++) {
+                player.getPacketSender().sendItemOnInterface(60000 + 63, drops.customTable().drops()[i].id(), i,
+                        drops.customTable().drops()[i].max());
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -52,36 +53,7 @@ public class CustomTeleportInterface {
             return;
         }
 
-        if (!onClick) {
-
-            for (int i = ID_START; i < ID_START + 16; i++) {
-                player.getPacketSender().sendString(i, "");
-            }
-
-            if (selectedTab == 0) {
-                for (Bosses npc : Bosses.values()) {
-                    player.getPacketSender().sendString(npc.id, npc.name);
-                }
-
-            } else if (selectedTab == 1) {
-                for (Monsters npc : Monsters.values()) {
-                    player.getPacketSender().sendString(npc.id, npc.name);
-                }
-            } else if (selectedTab == 2) {
-                for (Minigames npc : Minigames.values()) {
-                    player.getPacketSender().sendString(npc.id, npc.name);
-                }
-            } else if (selectedTab == 3) {
-                for (Dungeons npc : Dungeons.values()) {
-                    player.getPacketSender().sendString(npc.id, npc.name);
-                }
-            } else if (selectedTab == 4) {
-                for (Cities npc : Cities.values()) {
-                    player.getPacketSender().sendString(npc.id, npc.name);
-                }
-            }
-            return;
-        } else {
+        if (onClick) {
             if (selectedTab == 0) {
                 Bosses npc = Bosses.values()[selectedIndex];
                 player.getPacketSender().sendString(60000 + 50, "Tier: " + npc.tier);
@@ -186,6 +158,35 @@ public class CustomTeleportInterface {
                 player.getPacketSender().sendNpcOnInterface(60000 + 62, npc.npcId, npc.adjustedZoom != 0 ? npc.adjustedZoom : 0);
                 player.getPacketSender().sendString(60000 + 55, "Players here: " + playerCount);
             }
+        } else {
+
+            for (int i = ID_START; i < ID_START + 16; i++) {
+                player.getPacketSender().sendString(i, "");
+            }
+
+            if (selectedTab == 0) {
+                for (Bosses npc : Bosses.values()) {
+                    player.getPacketSender().sendString(npc.id, npc.name);
+                }
+
+            } else if (selectedTab == 1) {
+                for (Monsters npc : Monsters.values()) {
+                    player.getPacketSender().sendString(npc.id, npc.name);
+                }
+            } else if (selectedTab == 2) {
+                for (Minigames npc : Minigames.values()) {
+                    player.getPacketSender().sendString(npc.id, npc.name);
+                }
+            } else if (selectedTab == 3) {
+                for (Dungeons npc : Dungeons.values()) {
+                    player.getPacketSender().sendString(npc.id, npc.name);
+                }
+            } else if (selectedTab == 4) {
+                for (Cities npc : Cities.values()) {
+                    player.getPacketSender().sendString(npc.id, npc.name);
+                }
+            }
+            return;
         }
 
     }

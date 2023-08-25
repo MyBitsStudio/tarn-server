@@ -2,7 +2,6 @@ package com.ruse.world.content;
 
 import com.ruse.GameSettings;
 import com.ruse.model.Position;
-import com.ruse.model.definitions.NPCDrops;
 import com.ruse.util.Misc;
 import com.ruse.world.World;
 import com.ruse.world.content.achievement.Achievements;
@@ -67,7 +66,7 @@ public class WorldBosses {
             Achievements.doProgress(killer, Achievements.Achievement.KILL_45_GLOBAL_BOSSES);
             DailyTask.GLOBAL_BOSSES.tryProgress(killer);
 
-            NPCDrops.handleDrops(killer, npc);
+            //NPCDrops.handleDrops(killer, npc);
             iterator.remove();
         }
     }

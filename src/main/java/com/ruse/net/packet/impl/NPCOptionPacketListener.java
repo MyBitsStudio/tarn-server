@@ -5,7 +5,6 @@ import com.ruse.engine.task.impl.WalkToTask;
 import com.ruse.engine.task.impl.WalkToTask.FinalizedMovementTask;
 import com.ruse.model.*;
 import com.ruse.model.Locations.Location;
-import com.ruse.model.definitions.NPCDrops;
 import com.ruse.model.definitions.NpcDefinition;
 import com.ruse.net.packet.Packet;
 import com.ruse.net.packet.PacketListener;
@@ -1395,10 +1394,6 @@ public class NPCOptionPacketListener implements PacketListener {
 
        
         if (npc.getDefinition().isAttackable()) {
-            if (NPCDrops.forId(npc.getId()) == null && npc.getDefinition().getId() != 1880) {
-                player.sendMessage("This NPC doesn't have drops.");
-                return;
-            }
             DropsInterface.open(player);
             DropsInterface.buildRightSide(player, npc.getId());
             return;

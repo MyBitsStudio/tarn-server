@@ -8,11 +8,11 @@ import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 import com.ruse.model.Item;
-import com.ruse.model.definitions.NPCDrops;
-import com.ruse.model.definitions.NPCDrops.NpcDropItem;
 import com.ruse.world.content.transportation.TeleportHandler;
 import com.ruse.world.content.transportation.TeleportType;
 import com.ruse.world.entity.impl.player.Player;
+import com.ruse.world.packages.combat.drops.Drop;
+import com.ruse.world.packages.combat.drops.DropManager;
 import org.jetbrains.annotations.NotNull;
 
 public class TeleInterface {
@@ -93,34 +93,29 @@ public class TeleInterface {
     }
 
     public void loadItems() {
-        List<NpcDropItem> drop = getCleanList();
-        drop.sort((item1, item2) -> {
-            int v1 = item1.getItem().getDefinition().getValue() * item1.getItem().getAmount();
-            int v2 = item2.getItem().getDefinition().getValue() * item2.getItem().getAmount();
-            return Integer.compare(v2, v1);
-        });
+        List<Drop> drop = getCleanList();
 
         List<Item> list = new ArrayList<>();
 
         for (int i = 0; i < 18; i++) {
             if(i == drop.size())
                 break;
-            Item item = drop.get(i).getItem();
+            Item item = new Item(drop.get(i).id(), drop.get(i).max());
             if (item.getDefinition() == null)
                 continue;
             if(item.getId() == -1 || item.getAmount() == -1)
                 continue;
             list.add(item);
         }
-        getData().setDrops(list.toArray(new Item[list.size()]));
+        getData().setDrops(list.toArray(new Item[0]));
     }
 
-    public List<NpcDropItem> getCleanList() {
-        CopyOnWriteArrayList<NpcDropItem> drop = new CopyOnWriteArrayList<NpcDropItem> (Arrays.asList(NPCDrops.forId(getData().getNpcId()).getDropList()));
-        for(NpcDropItem item : drop) {
+    public List<Drop> getCleanList() {
+        CopyOnWriteArrayList<Drop> drop = new CopyOnWriteArrayList<>(Arrays.asList(DropManager.getManager().forId(getData().getNpcId()).customTable().drops()));
+        for(Drop item : drop) {
             if(item == null)
                 drop.remove(item);
-            if(item.getItem().getId() == -1 || item.getItem().getAmount() == -1)
+            if(item.id() == -1 || item.min() == -1)
                 drop.remove(item);
         }
         return drop;

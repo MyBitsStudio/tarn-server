@@ -1,0 +1,96 @@
+[
+  {
+    "id" : [
+      9837, 9027, 9835, 9911, 9922
+    ],
+    "tables" : [
+      "GENERAL"
+    ],
+    "custom" : {
+      "name" : "Tier1",
+      "weight" : 1.25,
+      "drops" : [
+        {
+          "id" : 12852,
+          "chance" : 0,
+          "min" : 1,
+          "max" : 5,
+          "modifier" : 150.00,
+          "announce" : false
+        },
+        {
+          "id" : 23200,
+          "chance" : 0,
+          "min" : 1,
+          "max" : 1,
+          "modifier" : 400.00,
+          "announce" : false
+        },
+        {
+          "id" : 19984,
+          "chance" : 0,
+          "min" : 1,
+          "max" : 1,
+          "modifier" : 315.00,
+          "announce" : false
+        },
+        {
+          "id" : 19985,
+          "chance" : 0,
+          "min" : 1,
+          "max" : 1,
+          "modifier" : 315.00,
+          "announce" : false
+        },
+        {
+          "id" : 19986,
+          "chance" : 0,
+          "min" : 1,
+          "max" : 1,
+          "modifier" : 315.00,
+          "announce" : false
+        },
+        {
+          "id" : 20400,
+          "chance" : 0,
+          "min" : 1,
+          "max" : 1,
+          "modifier" : 315.00,
+          "announce" : false
+        },
+        {
+          "id" : 19989,
+          "chance" : 0,
+          "min" : 1,
+          "max" : 1,
+          "modifier" : 315.00,
+          "announce" : false
+        },
+        {
+          "id" : 19988,
+          "chance" : 0,
+          "min" : 1,
+          "max" : 1,
+          "modifier" : 315.00,
+          "announce" : false
+        },
+        {
+          "id" : 19992,
+          "chance" : 0,
+          "min" : 1,
+          "max" : 1,
+          "modifier" : 315.00,
+          "announce" : false
+        },
+        {
+          "id" : 19991,
+          "chance" : 0,
+          "min" : 1,
+          "max" : 1,
+          "modifier" : 315.00,
+          "announce" : false
+        }
+      ]
+    }
+  }
+]

@@ -1,13 +1,15 @@
 package com.ruse.world.content.collectionlog;
 
 import com.ruse.model.Item;
-import com.ruse.model.definitions.NPCDrops;
 import com.ruse.model.definitions.NpcDefinition;
 import com.ruse.util.Misc;
 import com.ruse.world.content.KillsTracker;
 import com.ruse.world.content.TeleportInterface;
 import com.ruse.world.content.teleport.TeleInterfaceData;
 import com.ruse.world.entity.impl.player.Player;
+import com.ruse.world.packages.combat.drops.Drop;
+import com.ruse.world.packages.combat.drops.DropManager;
+import com.ruse.world.packages.combat.drops.NPCDrops;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
@@ -78,15 +80,14 @@ public class CollectionLogInterface {
     public void checkForObtainedAll(int npcId) {
         RewardClaim rewardClaim = rewardsClaims.computeIfAbsent(npcId, x -> new RewardClaim());
         if(rewardClaim.hasClaimed || rewardClaim.canClaim) return;
-        NPCDrops.NpcDropItem[] npcDropItems;
-        NPCDrops drops = NPCDrops.forId(npcId);
+        NPCDrops drops = DropManager.getManager().forId(npcId);
         if(drops != null) {
-            npcDropItems = drops.getDropList();
-            for (NPCDrops.NpcDropItem npcDrop : npcDropItems) {
-                if (npcDrop.getChance() <= 1) {
+           Drop[] npcDropItems = drops.customTable().drops();
+            for (Drop npcDrop : npcDropItems) {
+                if (npcDrop.modifier() <= 1) {
                     continue;
                 }
-                if (!hasObtainedItem(npcId, npcDrop.getId())) {
+                if (!hasObtainedItem(npcId, npcDrop.id())) {
                     return;
                 }
             }
@@ -98,23 +99,23 @@ public class CollectionLogInterface {
         int received = 0;
         int total = 0;
         var definition = NpcDefinition.forId(currentlyViewing.get(index));
-        player.getPacketSender().sendString(30368, "" + definition.getName() + "");
+        player.getPacketSender().sendString(30368, definition.getName());
         player.getPacketSender().sendString(30369, "Killcount: " +
                 Misc.insertCommasToNumber(String.valueOf(KillsTracker.getTotalKillsForNpc(definition.getId(), player))));
-        var drops = NPCDrops.forId(definition.getId());
-        NPCDrops.NpcDropItem[] npcDropItems;
-        if(drops != null && (npcDropItems = drops.getDropList()) != null) {
+        var drops = DropManager.getManager().forId(definition.getId());
+        Drop[] npcDropItems;
+        if(drops != null && (npcDropItems = drops.customTable().drops()) != null) {
             List<Item> items = new ArrayList<>();
-            for (NPCDrops.NpcDropItem npcDrop : npcDropItems) {
-                if (npcDrop.getChance() <= 1) {
+            for (Drop npcDrop : npcDropItems) {
+                if (npcDrop.modifier() <= 1) {
                     continue;
                 }
-                if (hasObtainedItem(definition.getId(), npcDrop.getId())) {
-                    var item = player.getCollectionLogData().stream().filter(data -> data.getNpcId() == definition.getId() && data.getItem() == npcDrop.getId()).findFirst().get();
+                if (hasObtainedItem(definition.getId(), npcDrop.id())) {
+                    var item = player.getCollectionLogData().stream().filter(data -> data.getNpcId() == definition.getId() && data.getItem() == npcDrop.id()).findFirst().get();
                     items.add(new Item(item.getItem(), item.getAmount()));
                     received++;
                 } else {
-                    items.add(new Item(npcDrop.getId(), 0));
+                    items.add(new Item(npcDrop.id(), 0));
                 }
                 total++;
             }
@@ -149,12 +150,12 @@ public class CollectionLogInterface {
                     if(rewardClaim.hasClaimed) {
                         player.getPacketSender().sendMessage("@red@You already claimed this reward.");
                     } else if (player.getInventory().getFreeSlots() >= rewards.length) {
-                        NPCDrops drops = NPCDrops.forId(npcId);
-                        for (NPCDrops.NpcDropItem drop : drops.getDropList()) {
-                            if (drop.getChance() <= 1) {
+                        NPCDrops drops = DropManager.getManager().forId(npcId);
+                        for (Drop drop : drops.customTable().drops()) {
+                            if (drop.modifier() <= 1) {
                                 continue;
                             }
-                            if (!hasObtainedItem(npcId, drop.getId())) {
+                            if (!hasObtainedItem(npcId, drop.id())) {
                                 return true;
                             }
                         }

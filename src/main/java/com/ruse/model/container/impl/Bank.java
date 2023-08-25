@@ -6,7 +6,6 @@ import com.ruse.model.container.ItemContainer;
 import com.ruse.model.container.StackType;
 import com.ruse.model.definitions.ItemDefinition;
 import com.ruse.model.definitions.WeaponInterfaces;
-import com.ruse.model.input.impl.ItemSearch;
 import com.ruse.world.content.BankPin;
 import com.ruse.world.content.BonusManager;
 import com.ruse.world.content.combat.magic.Autocasting;
@@ -500,9 +499,37 @@ public class Bank extends ItemContainer {
 			return this;
 		}
 
+		public static Object[] getFixedSyntax(String searchSyntax) {
+			searchSyntax = searchSyntax.toLowerCase();
+			return switch (searchSyntax) {
+				case "ags" -> new Object[]{"armadyl godsword", 11694};
+				case "sgs" -> new Object[]{"saradomin godsword", 11698};
+				case "bgs" -> new Object[]{"bandos godsword", 11696};
+				case "zgs" -> new Object[]{"zamorak godsword", 11700};
+				case "dclaws", "d claws" -> new Object[]{"dragon claws", 14484};
+				case "bcp" -> new Object[]{"bandos chestplate", 11724};
+				case "dds" -> new Object[]{"dragon dagger", 1215};
+				case "sol" -> new Object[]{"staff of light", 15486};
+				case "vls" -> new Object[]{"vesta's longsword", 13899};
+				case "tassy" -> new Object[]{"bandos tassets", 11726};
+				case "swh" -> new Object[]{"statius's warhammer", 13902};
+				case "steads" -> new Object[]{"steadfast boots", 20000};
+				case "obby maul" -> new Object[]{"Tthaar-ket-om", 6528};
+				case "g maul", "gmaul" -> new Object[]{"granite maul", 4153};
+				case "nat" -> new Object[]{"nature rune", 561};
+				case "ely" -> new Object[]{"elysian spirit shield", 13742};
+				case "dfs" -> new Object[]{"dragonfire shield", 11283};
+				case "dbones" -> new Object[]{"dragon bones", 536};
+				case "fury" -> new Object[]{"amulet of fury", 6585};
+				case "dboots", "d boots" -> new Object[]{"dragon boots", 11732};
+				case "whip", "abby whip", "abbysal whip", "abbyssal whip" -> new Object[]{"abyssal whip", 4151};
+				default -> new Object[]{searchSyntax, -1};
+			};
+		}
+
 		public static void beginSearch(Player player, String searchSyntax) {
 			player.getPacketSender().sendClientRightClickRemoval();
-			searchSyntax = (String) ItemSearch.getFixedSyntax(searchSyntax)[0];
+			searchSyntax = (String) getFixedSyntax(searchSyntax)[0];
 			player.getPacketSender().sendString(5383, "Searching for: " + searchSyntax + "..");
 			player.getBankSearchingAttribtues().setSearchingBank(true).setSearchSyntax(searchSyntax);
 			player.setCurrentBankTab(0).setNoteWithdrawal(false);

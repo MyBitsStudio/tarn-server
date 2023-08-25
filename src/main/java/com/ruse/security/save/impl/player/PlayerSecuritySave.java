@@ -28,7 +28,7 @@ public class PlayerSecuritySave extends SecureSave {
         object.add("seed", builder.toJsonTree(sec.getSeed()));
         object.add("auth", builder.toJsonTree(sec.getAuth()));
 
-        object.add("logs", builder.toJsonTree(sec.getLogins()));
+        //object.add("logs", builder.toJsonTree(sec.getLogins()));
 
         object.addProperty("fa", sec.getFA());
 

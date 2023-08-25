@@ -6,7 +6,6 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.ruse.engine.GameEngine;
 import com.ruse.model.Position;
-import com.ruse.model.definitions.NPCDrops;
 import com.ruse.motivote3.doMotivote;
 import com.ruse.world.World;
 import com.ruse.world.content.combat.CombatBuilder.CombatDamageCache;
@@ -110,7 +109,7 @@ public class VoteBossDrop {
 		for (Iterator<Entry<Player, Long>> iterator = result.iterator(); iterator.hasNext(); ) {
 			Entry<Player, Long> entry = iterator.next();
 			Player killer = entry.getKey();
-			NPCDrops.handleDrops(killer, npc);
+			//NPCDrops.handleDrops(killer, npc);
 			iterator.remove();
 		}
 		currentSpawn = null;

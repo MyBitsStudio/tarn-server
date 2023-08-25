@@ -2,7 +2,6 @@ package com.ruse.world.packages.globals;
 
 import com.ruse.model.Locations;
 import com.ruse.model.Position;
-import com.ruse.model.definitions.NPCDrops;
 import com.ruse.world.content.achievement.Achievements;
 import com.ruse.world.content.dailytasks_new.DailyTask;
 import com.ruse.world.entity.impl.npc.NPC;
@@ -34,7 +33,7 @@ public abstract class GlobalBoss extends NPC {
             Achievements.doProgress(player, Achievements.Achievement.KILL_45_GLOBAL_BOSSES);
             DailyTask.GLOBAL_BOSSES.tryProgress(player);
             player.getBossPlugin().setDamage(this.getDefinition().getName(), 0L);
-            NPCDrops.handleDrops(player, this);
+            //NPCDrops.handleDrops(player, this);
         }
     }
 

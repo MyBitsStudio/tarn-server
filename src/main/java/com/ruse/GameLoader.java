@@ -9,14 +9,14 @@ import com.ruse.engine.task.impl.ServerTimeUpdateTask;
 import com.ruse.io.ThreadProgressor;
 import com.ruse.model.Backup;
 import com.ruse.model.definitions.ItemDefinition;
-import com.ruse.model.definitions.NPCDrops;
 import com.ruse.model.definitions.WeaponInterfaces;
 import com.ruse.net.PipelineFactory;
 import com.ruse.net.security.ConnectionHandler;
 import com.ruse.security.ServerSecurity;
+import com.ruse.security.save.impl.server.defs.NPCDropsLoad;
+import com.ruse.security.save.impl.server.defs.TablesLoad;
 import com.ruse.security.save.impl.server.defs.NPCDataLoad;
 import com.ruse.world.World;
-import com.ruse.world.allornothing.DoubleOrNothing;
 import com.ruse.world.clip.region.RegionClipping;
 import com.ruse.world.content.*;
 import com.ruse.world.content.combat.effect.CombatPoisonEffect.CombatPoisonData;
@@ -24,13 +24,11 @@ import com.ruse.world.content.combat.strategy.CombatStrategies;
 import com.ruse.world.content.discordbot.AdminCord;
 import com.ruse.world.content.discordbot.Bot;
 import com.ruse.world.content.discordbot.JavaCord;
-import com.ruse.world.content.grandLottery.GrandLottery;
-import com.ruse.world.content.grandexchange.GrandExchangeOffers;
 import com.ruse.world.content.groupironman.GroupManager;
 import com.ruse.world.content.johnachievementsystem.AchievementHandler;
-import com.ruse.world.content.polling.PollManager;
 import com.ruse.world.content.serverperks.ServerPerks;
 import com.ruse.world.content.tbdminigame.Lobby;
+import com.ruse.world.packages.combat.drops.DropManager;
 import com.ruse.world.packages.tradingpost.TradingPost;
 import com.ruse.world.entity.actor.player.controller.ControllerHandler;
 import com.ruse.world.entity.impl.npc.NPC;
@@ -52,16 +50,11 @@ import org.jboss.netty.bootstrap.ServerBootstrap;
 import org.jboss.netty.channel.socket.nio.NioServerSocketChannelFactory;
 import org.jboss.netty.util.HashedWheelTimer;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipOutputStream;
 
 /**
  * Credit: lare96, Gabbe
@@ -137,7 +130,10 @@ public final class GameLoader {
 		serviceLoader.execute(CombatStrategies::init);
 		serviceLoader.execute(() -> new NPCDataLoad().loadArray("./.core/server/defs/npc/npc_data.json").run());
 
-		serviceLoader.execute(() -> NPCDrops.parseDrops().load());
+		//serviceLoader.execute(() -> NPCDrops.parseDrops().load());
+		serviceLoader.execute(() -> new TablesLoad().loadArray("./.core/server/defs/drops/tables.json").run());
+		serviceLoader.execute(() -> new NPCDropsLoad().loadArray("./.core/server/defs/drops/npcDrops.json").run());
+
 		serviceLoader.execute(() -> WeaponInterfaces.parseInterfaces().load());
 		serviceLoader.execute(WeaponInterfaces::init);
 		serviceLoader.execute(NPC::init);
@@ -154,7 +150,6 @@ public final class GameLoader {
 		serviceLoader.execute(ShopHandler::load);
 		serviceLoader.execute(ShopHandler::loadPrices);
 		serviceLoader.execute(AchievementHandler::load);
-//		serviceLoader.execute(World.handler.load()::startEvents);
 		TaskManager.submit(new LotteryTask());
 	}
 

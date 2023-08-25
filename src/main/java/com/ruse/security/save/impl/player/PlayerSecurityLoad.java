@@ -55,8 +55,8 @@ public class PlayerSecurityLoad extends SecureLoad {
 
         sec.setFA(object.get("fa").getAsString());
 
-        List<String> logs = builder.fromJson(object.get("logs"), new TypeToken<List<String>>(){}.getType());
-        sec.setLogins(logs);
+//        List<String> logs = builder.fromJson(object.get("logs"), new TypeToken<List<String>>(){}.getType());
+//        sec.setLogins(logs);
 
         return this;
     }

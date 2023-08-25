@@ -1,7 +1,6 @@
 package com.ruse.world.packages.donation.boss;
 
 import com.ruse.model.Position;
-import com.ruse.model.definitions.NPCDrops;
 import com.ruse.world.content.combat.strategy.CombatStrategy;
 import com.ruse.world.packages.donation.DonationManager;
 import com.ruse.world.entity.impl.npc.NPC;
@@ -35,7 +34,7 @@ public class DonationBoss extends NPC {
             if (player.getConstitution() <= 0 || !player.isRegistered()) {
                 return;
             }
-            NPCDrops.handleDrops(player, this);
+            //NPCDrops.handleDrops(player, this);
         });
 
         getCombatBuilder().getDamageMap().clear();

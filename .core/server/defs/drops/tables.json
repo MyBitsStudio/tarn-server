@@ -1,0 +1,100 @@
+[
+  {
+    "name" : "GENERAL",
+    "floor" : 5.00,
+    "ceiling" : 95.00,
+    "drops" : [
+      {
+        "id" : 995,
+        "chance" : 0,
+        "min" : 10,
+        "max" : 250,
+        "modifier" : 120.00,
+        "announce" : false
+      },
+      {
+        "id" : 2023,
+        "chance" : 1,
+        "min" : 1,
+        "max" : 1,
+        "modifier" : 1.00,
+        "announce" : false
+      }
+    ]
+  },
+  {
+    "name" : "COMMON",
+    "floor" : 10.00,
+    "ceiling" : 95.00,
+    "drops" : [
+      {
+        "id" : 995,
+        "chance" : 0,
+        "min" : 100,
+        "max" : 2500,
+        "modifier" : 80.00,
+        "announce" : false
+      }
+    ]
+  },
+  {
+    "name" : "UNCOMMON",
+    "floor" : 40.00,
+    "ceiling" : 99.90,
+    "drops" : [
+      {
+        "id" : 995,
+        "chance" : 0,
+        "min" : 500,
+        "max" : 7500,
+        "modifier" : 80.00,
+        "announce" : false
+      }
+    ]
+  },
+  {
+    "name" : "RARE",
+    "floor" : 85.90,
+    "ceiling" : 99.90,
+    "drops" : [
+      {
+        "id" : 10835,
+        "chance" : 0,
+        "min" : 1,
+        "max" : 25,
+        "modifier" : 80.00,
+        "announce" : false
+      }
+    ]
+  },
+  {
+    "name" : "UNIQUE",
+    "floor" : 95.90,
+    "ceiling" : 99.90,
+    "drops" : [
+      {
+        "id" : 10835,
+        "chance" : 0,
+        "min" : 10,
+        "max" : 500,
+        "modifier" : 80.00,
+        "announce" : false
+      }
+    ]
+  },
+  {
+    "name" : "MASTER",
+    "floor" : 99.00,
+    "ceiling" : 99.90,
+    "drops" : [
+      {
+        "id" : 10835,
+        "chance" : 0,
+        "min" : 100,
+        "max" : 25000,
+        "modifier" : 90.00,
+        "announce" : false
+      }
+    ]
+  }
+]

@@ -4,7 +4,6 @@ import com.ruse.GameSettings;
 import com.ruse.model.Locations;
 import com.ruse.model.Position;
 import com.ruse.model.definitions.ItemDefinition;
-import com.ruse.model.definitions.NPCDrops;
 import com.ruse.model.definitions.NpcDefinition;
 import com.ruse.world.World;
 import com.ruse.world.content.KillsTracker;
@@ -17,6 +16,7 @@ import com.ruse.world.packages.bosses.multi.impl.IronmanInstance;
 import com.ruse.world.packages.bosses.multi.impl.VoteSpecialInstance;
 import com.ruse.world.packages.bosses.single.agthomoth.AgthomothInstance;
 import com.ruse.world.entity.impl.player.Player;
+import com.ruse.world.packages.combat.drops.DropManager;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
@@ -331,9 +331,9 @@ public class InstanceManager {
             player.getPacketSender().sendItemOnInterface(i, -1, 0);
         }
 
-        Arrays.stream(NPCDrops.forId(interData.getNpcId()).getDropList())
+        Arrays.stream(DropManager.getManager().forId(interData.getNpcId()).customTable().drops())
                 .filter(Objects::nonNull)
-                .forEach(item -> player.getPacketSender().sendItemOnInterface(start.getAndIncrement(), item.getItem().getId(), item.getItem().getAmount()));
+                .forEach(item -> player.getPacketSender().sendItemOnInterface(start.getAndIncrement(), item.id(), item.max()));
     }
 
     public void sendInterface(@NotNull Player player){
