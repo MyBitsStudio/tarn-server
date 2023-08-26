@@ -5,6 +5,7 @@ import com.ruse.model.definitions.NpcDefinition;
 import com.ruse.model.input.impl.EnterSyntaxToSearchDropsFor;
 import com.ruse.util.Misc;
 import com.ruse.world.entity.impl.player.Player;
+import com.ruse.world.packages.combat.drops.DropCalculator;
 import com.ruse.world.packages.combat.drops.DropManager;
 
 import java.util.ArrayList;
@@ -75,7 +76,7 @@ public class DropsInterface {
 				player.getPacketSender().sendString(ITEM_NAME + i, item.getDefinition().getName()); // remove all item
 				// names
 				player.getPacketSender().sendString(ITEM_AMOUNT + i, (min == amount ? Misc.formatNumber(amount) : ( Misc.formatNumber(min) + "-" + Misc.formatNumber(amount))));
-				double divide = ((double) CustomDropUtils.drBonus(player, npcId) / 500);
+				double divide = ((double) DropCalculator.getDropChance(player, npcId) / 500);
 				int chances = (int) (chance / divide);
 
 				player.getPacketSender().sendString(ITEM_CHANCE + i, "1/" +(chance == 1 ? 1 : chances));

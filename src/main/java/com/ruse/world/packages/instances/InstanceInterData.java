@@ -13,106 +13,102 @@ public enum InstanceInterData {
      */
 
     DEATH_GOD("Death God", "Instance Unlock",
-            new Item(995, 25000), 4, 100, 9915,
+            new Item(995, 25000), 4, 15, 9915,
     InstanceType.MULTI),
 
     GOLDEN_GOLEM("Golden Golem", "Instance Unlock",
-        new Item(995, 40000), 16, 100, 9024,
+        new Item(995, 40000), 16, 15, 9024,
     InstanceType.MULTI),
-
-    BOWSER("Bowser", "Instance Unlock",
-            new Item(995, 60000), 16, 100, 9919,
-    InstanceType.MULTI),
-
     MALVEK("Malvek", "Instance Unlock",
-            new Item(995, 80000), 16, 100, 8002,
+            new Item(995, 80000), 16, 15, 8002,
     InstanceType.MULTI),
 
     GALVEK("Galvek", "Instance Unlock",
-            new Item(995, 90000), 16, 100, 8000,
+            new Item(995, 90000), 16, 15, 8000,
             InstanceType.MULTI),
 
     AGUMON("Agumon", "Instance Unlock",
-            new Item(10835, 100), 16, 100, 3020,
+            new Item(10835, 100), 16, 15, 3020,
     InstanceType.MULTI),
 
+    BOWSER("Bowser", "Instance Unlock",
+            new Item(995, 60000), 16, 15, 9919,
+            InstanceType.MULTI),
+
+
     SLENDER_MAN("Slender Man", "Instance Unlock",
-        new Item(10835, 120), 16, 100, 9913,
+        new Item(10835, 120), 16, 15, 9913,
     InstanceType.MULTI),
 
     LUFFY("Luffy", "Instance Unlock",
-         new Item(10835, 150), 16, 100, 9916,
+         new Item(10835, 150), 16, 15, 9916,
     InstanceType.MULTI),
 
     QUEEN_FAZULA("Queen Fazula", "Instance Unlock",
-        new Item(10835, 200), 16, 100, 1311,
+        new Item(10835, 200), 16, 15, 1311,
     InstanceType.MULTI),
 
     LORD_YASUDA("Lord Yasuda", "Instance Unlock",
-        new Item(10835, 250), 16, 100, 1313,
+        new Item(10835, 250), 16, 15, 1313,
     InstanceType.MULTI),
 
     AGTHOMOTH("Ag'thomoth", "Instance Unlock",
-         new Item(995, 25000), 1, 100, 3013,
+         new Item(995, 25000), 1, 20, 3013,
     InstanceType.SINGLE),
 
     ZERNATH("Zernath", "Instance Unlock",
-        new Item(995, 45000), 1, 100, 3831,
+        new Item(995, 45000), 1, 20, 3831,
     InstanceType.SINGLE),
 
     SANCTUM_GOLEM("Sanctum Golem", "Instance Unlock",
-        new Item(995, 70000), 1, 100, 9017,
+        new Item(995, 70000), 1, 20, 9017,
     InstanceType.SINGLE),
 
     ASMODEUS("Asmodeus", "Instance Unlock",
-        new Item(995, 95000), 1, 100, 9903,
+        new Item(995, 95000), 1, 20, 9903,
     InstanceType.SINGLE),
 
     VARTHRAMOTH("Varthramoth", "Instance Unlock",
-        new Item(10835, 105), 16, 100, 3016,
+        new Item(10835, 105), 16, 20, 3016,
     InstanceType.SINGLE),
 
     EXODON("Exodon", "Instance Unlock",
-        new Item(10835, 145), 16, 100, 12239,
+        new Item(10835, 145), 16, 20, 12239,
     InstanceType.SINGLE),
 
-    ENRAGED_SUPREME("Enraged Supreme", "Instance Unlock",
-            new Item(10835, 195), 16, 100, 440,
-            InstanceType.SINGLE),
-
     DONATOR("Donator Semi-Boss", "VIP Tier 2",
-            new Item(10835, 25), 16, 100, 9818,
+            new Item(10835, 25), 16, 20, 9818,
             InstanceType.SPECIAL),
 
     DONATOR_V2("Donator Boss", "VIP Tier 5",
-         new Item(10835, 50), 2, 200, 591,
+         new Item(10835, 50), 2, 30, 591,
     InstanceType.SPECIAL),
 
     VOTE("Vote", "3 Vote Tickets",
-         new Item(23205, 3), 2, 200, 593,
+         new Item(23205, 3), 2, 20, 593,
     InstanceType.SPECIAL),
 
     IRONMAN("Ironman", "Ironman Mode Only",
-        new Item(995, 75000), 4, 50, 1880,
+        new Item(995, 75000), 4, 20, 1880,
     InstanceType.SPECIAL),
 
     SUMMER("Summer Solstice Boss", "Summer Solstice Event",
-            new Item(10835, 5000), 1, 100, 3019,
+            new Item(10835, 5000), 1, 30, 3019,
             InstanceType.EVENT),
     SUMMER_RANDOM("Solstice Devils", "Summer Solstice Event",
-            new Item(10835, 5000), 16, 100, 1736,
+            new Item(10835, 5000), 16, 30, 1736,
             InstanceType.EVENT),
 
     ZEIDAN("Zeidan Grimm", "Instance Unlock",
-            new Item(10835, 2500), 1, 100, 3010,
+            new Item(10835, 2500), 1, 30, 3010,
             InstanceType.MASTER),
 
     LILINRYSS("Lilinryss", "Instance Unlock",
-        new Item(10835, 4000), 16, 100, 3014,
+        new Item(10835, 4000), 16, 30, 3014,
     InstanceType.MASTER),
 
     ASTA("Asta", "Instance Unlock",
-        new Item(10835, 7500), 4, 999999, 595,
+        new Item(10835, 7500), 4, 30, 595,
     InstanceType.MASTER),
 //
 //    KOLGAL("Kol'gal", "300 Nagendra",

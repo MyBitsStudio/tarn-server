@@ -42,7 +42,6 @@ import com.ruse.world.packages.seasonpass.SeasonPassManager;
 import com.ruse.world.content.serverperks.ServerPerks;
 import com.ruse.world.content.skeletalhorror.SkeletalHorror;
 import com.ruse.world.content.skill.impl.hunter.Hunter;
-import com.ruse.world.content.skill.impl.slayer.Slayer;
 import com.ruse.world.content.transportation.TeleportHandler;
 import com.ruse.world.entity.impl.GlobalItemSpawner;
 import com.ruse.world.entity.impl.mini.MiniPlayer;
@@ -127,8 +126,7 @@ public class PlayerHandler {
         // Skills
        // player.getSummoning().login();
         //player.getFarming().load();
-        //player.getBestItems().fillDefinitions();
-        Slayer.checkDuoSlayer(player, true);
+        //player.getBestItems().fillDefinitions();;
         for (Skill skill : Skill.values()) {
             player.getSkillManager().updateSkill(skill);
         }

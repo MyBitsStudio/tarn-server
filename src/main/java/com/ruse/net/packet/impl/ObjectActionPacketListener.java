@@ -227,10 +227,12 @@ public class ObjectActionPacketListener implements PacketListener {
 
                         case 13291:
                         case 20040:
-                            player.loadUpgradeInterface().open();
+                            player.sendMessage("This is being reworked! Check back soon!");
+                            //player.loadUpgradeInterface().open();
                             break;
                         case 26791:
-                            player.getUpgradeHandler().openInterface();
+                            player.sendMessage("This is being reworked! Check back soon!");
+                            //player.getUpgradeHandler().openInterface();
                             break;
 //                        case 41204:
 //                            player.setOpenedTeleports(true);
@@ -315,8 +317,9 @@ public class ObjectActionPacketListener implements PacketListener {
 
 
                         case 31424:
-                            TeleportHandler.teleportPlayer(player, new Position(2654, 2796),
-                                    player.getSpellbook().getTeleportType());
+//                            TeleportHandler.teleportPlayer(player, new Position(2654, 2796),
+//                                    player.getSpellbook().getTeleportType());
+                            player.sendMessage("This is being changed! Check back soon!");
                             break;
 
                         case 4388:
@@ -2043,29 +2046,6 @@ public class ObjectActionPacketListener implements PacketListener {
                                 player.getPacketSender().sendMessage("You recharge your Prayer points.");
                             }
                             break;
-                        case 411:
-                            if (player.getSkillManager().getMaxLevel(Skill.DEFENCE) < 30) {
-                                player.getPacketSender()
-                                        .sendMessage("You need a Defence level of at least 30 to use this altar.");
-                                return;
-                            }
-                            player.performAnimation(new Animation(645));
-                            if (player.getPrayerbook() == Prayerbook.NORMAL) {
-                                player.getPacketSender()
-                                        .sendMessage("You sense a surge of power flow through your body!");
-                                player.setPrayerbook(Prayerbook.CURSES);
-                            } else {
-                                player.getPacketSender()
-                                        .sendMessage("You sense a surge of purity flow through your body!");
-                                player.setPrayerbook(Prayerbook.NORMAL);
-                            }
-                            player.getPacketSender().sendTabInterface(GameSettings.PRAYER_TAB,
-                                    player.getPrayerbook().getInterfaceId());
-                            PrayerHandler.deactivateAll(player);
-                            CurseHandler.deactivateAll(player);
-                            CurseHandler.startDrain(player);
-                            startDrain(player);
-                            break;
                         case 6552:
                             player.performAnimation(new Animation(645));
                             player.setSpellbook(player.getSpellbook() == MagicSpellbook.ANCIENT ? MagicSpellbook.NORMAL
@@ -2193,30 +2173,21 @@ public class ObjectActionPacketListener implements PacketListener {
                         case 12100 -> Smelting.openInterface(player);
                         case 13192 -> {
                             player.performAnimation(new Animation(645));
-                            if (player.getPrayerbook() == Prayerbook.NORMAL) {
-                                player.getPacketSender().sendMessage("You sense a surge of power flow through your body!");
-                                //CurseHandler.deactivateAll(player);
-                                PrayerHandler.deactivateAll(player);
-                                PrayerHandler.startDrain(player);
-                                //CurseHandler.startDrain(player);
-                                //player.switchedPrayerBooks = true;
-                                player.setPrayerbook(Prayerbook.CURSES);
-                            } else if (player.getPrayerbook() == Prayerbook.CURSES) {
-                                player.getPacketSender().sendMessage("You sense a surge of holiness flow through your body!");
-                                CurseHandler.deactivateAll(player);
-                                //PrayerHandler.deactivateAll(player);
-                                // PrayerHandler.startDrain(player);
-                                CurseHandler.startDrain(player);
-                                player.setPrayerbook(Prayerbook.HOLY);
-                                //player.switchedPrayerBooks = true;
+                            if (player.getPrayerbook() == Prayerbook.CURSES) {
+                                if(player.getPSettings().getBooleanValue("holy-unlock")) {
+                                    player.getPacketSender().sendMessage("You sense a surge of holiness flow through your body!");
+                                    CurseHandler.deactivateAll(player);
+                                    CurseHandler.startDrain(player);
+                                    player.setPrayerbook(Prayerbook.HOLY);
+                                } else {
+                                    player.getPacketSender().sendMessage("You need to unlock this prayer book first");
+                                    return;
+                                }
                             } else if (player.getPrayerbook() == Prayerbook.HOLY) {
-                                player.getPacketSender().sendMessage("You sense a surge of holiness flow through your body!");
-                                //CurseHandler.deactivateAll(player);
+                                player.getPacketSender().sendMessage("You sense a surge of power flow through your body!");
                                 PrayerHandler.deactivateAll(player);
                                 PrayerHandler.startDrain(player);
-                                //CurseHandler.startDrain(player);
-                                player.setPrayerbook(Prayerbook.NORMAL);
-                                //player.switchedPrayerBooks = true;
+                                player.setPrayerbook(Prayerbook.CURSES);
                             }
                             PrayerHandler.deactivateAll(player);
                             CurseHandler.deactivateAll(player);

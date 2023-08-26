@@ -9,6 +9,7 @@ import com.ruse.world.content.combat.prayer.PrayerHandler;
 import com.ruse.world.content.equipmentenhancement.BoostType;
 import com.ruse.world.entity.impl.npc.NPC;
 import com.ruse.world.entity.impl.player.Player;
+import com.ruse.world.packages.combat.drops.DropCalculator;
 import com.ruse.world.packages.combat.max.MagicMax;
 import com.ruse.world.packages.combat.max.MeleeMax;
 import com.ruse.world.packages.combat.max.RangeMax;
@@ -75,8 +76,8 @@ public class BonusManager {
 
 		NPC npc = new NPC(9837);
 
-		player.getPacketSender().sendString(66106, "Drop Rate Bonus: " + CustomDropUtils.drBonus(player, npc.getId()));
-		player.getPacketSender().sendString(66107, "Double Drop Bonus: " + CustomDropUtils.getDoubleDropChance(player, npc.getId()));
+		player.getPacketSender().sendString(66106, "Drop Rate Bonus: " + DropCalculator.getDropChance(player, npc.getId()));
+		player.getPacketSender().sendString(66107, "Double Drop Bonus: " + DropCalculator.getDoubleDropChance(player, npc.getId()));
 
 		player.getPacketSender().sendString(66108, "Melee Maxhit: " +  formatNumber(MeleeMax.newMelee(player, npc)));
 		player.getPacketSender().sendString(66109, "Ranged Maxhit: " +  formatNumber(RangeMax.newRange(player, npc)));

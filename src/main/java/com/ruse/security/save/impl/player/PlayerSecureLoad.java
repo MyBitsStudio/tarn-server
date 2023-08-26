@@ -23,8 +23,6 @@ import com.ruse.world.content.grandexchange.GrandExchangeSlot;
 import com.ruse.world.content.groupironman.GroupManager;
 import com.ruse.world.content.groupironman.IronmanGroup;
 import com.ruse.world.content.skill.SkillManager;
-import com.ruse.world.content.skill.impl.slayer.SlayerMaster;
-import com.ruse.world.content.skill.impl.slayer.SlayerTasks;
 import com.ruse.world.content.skill.impl.summoning.BossPets;
 import com.ruse.world.entity.impl.player.Player;
 import com.ruse.world.packages.donation.DonationManager;
@@ -33,7 +31,10 @@ import com.ruse.world.packages.mode.impl.*;
 import com.ruse.world.packages.ranks.DonatorRank;
 import com.ruse.world.packages.ranks.StaffRank;
 import com.ruse.world.packages.ranks.VIPRank;
+import com.ruse.world.packages.skills.slayer.SlayerMasters;
+import com.ruse.world.packages.skills.slayer.SlayerTask;
 import com.ruse.world.packages.slot.SlotBonus;
+import com.ruse.world.packages.starter.StartShopItems;
 import com.ruse.world.packages.tracks.ProgressReward;
 import com.ruse.world.packages.tracks.impl.starter.StarterTasks;
 import com.ruse.world.packages.vip.Donation;
@@ -436,11 +437,21 @@ public class PlayerSecureLoad extends SecureLoad {
         }
 
         if (object.has("slayer-master")) {
-            player.getSlayer().setSlayerMaster(SlayerMaster.valueOf(object.get("slayer-master").getAsString()));
+            player.getSlayer().setMaster(SlayerMasters.valueOf(object.get("slayer-master").getAsString()));
         }
 
         if (object.has("slayer-task")) {
-            player.getSlayer().setSlayerTask(SlayerTasks.valueOf(object.get("slayer-task").getAsString()));
+            player.getSlayer().setTask(builder.fromJson(object.get("slayer-task"),  new TypeToken<SlayerTask>() {
+            }.getType()));
+        }
+
+        if (object.has("slayer-last-task")) {
+            player.getSlayer().setLastTask(builder.fromJson(object.get("slayer-last-task"),  new TypeToken<SlayerTask>() {
+            }.getType()));
+        }
+
+        if (object.has("slayer-streak")) {
+            player.getSlayer().setStreak(object.get("slayer-streak").getAsInt());
         }
 
         if (object.has("lastlogin"))
@@ -448,27 +459,6 @@ public class PlayerSecureLoad extends SecureLoad {
         if (object.has("lastdailyclaim"))
             player.lastDailyClaim = (object.get("lastdailyclaim").getAsLong());
 
-
-        if (object.has("prev-slayer-task")) {
-            player.getSlayer().setLastTask(SlayerTasks.valueOf(object.get("prev-slayer-task").getAsString()));
-        }
-
-        if (object.has("task-amount")) {
-            player.getSlayer().setAmountToSlay(object.get("task-amount").getAsInt());
-        }
-
-        if (object.has("task-streak")) {
-            player.getSlayer().setTaskStreak(object.get("task-streak").getAsInt());
-        }
-
-        if (object.has("duo-partner")) {
-            String partner = object.get("duo-partner").getAsString();
-            player.getSlayer().setDuoPartner(partner.equals("null") ? null : partner);
-        }
-
-        if (object.has("double-slay-xp")) {
-            player.getSlayer().doubleSlayerXP = object.get("double-slay-xp").getAsBoolean();
-        }
 
         if (object.has("killed-players")) {
             List<String> list = new ArrayList<>();
@@ -848,6 +838,13 @@ public class PlayerSecureLoad extends SecureLoad {
                     new TypeToken<List<ProgressReward>>() {
                     }.getType()));
         }
+
+        if(object.has("starter-shop")) {
+            player.getStarterShop().load(builder.fromJson(object.get("starter-shop"),
+                    new TypeToken<Map<StartShopItems, Integer>>() {
+                    }.getType()));
+        }
+
 
         if (object.has("equip-slot")) {
             player.getEquipment()

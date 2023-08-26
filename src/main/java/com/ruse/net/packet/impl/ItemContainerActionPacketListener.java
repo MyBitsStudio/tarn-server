@@ -48,6 +48,9 @@ public class ItemContainerActionPacketListener implements PacketListener {
 		if(ShopHandler.handleShop(player, interfaceId, 1, slot, id))
 			return;
 
+		if(player.getStarterShop().handleShop(interfaceId, 1, slot, id))
+			return;
+
 
 		switch (interfaceId) {
 			case TradingPost.ITEM_CONTAINER_ID:
@@ -301,6 +304,9 @@ public class ItemContainerActionPacketListener implements PacketListener {
 		if(ShopHandler.handleShop(player, interfaceId, 2, slot, id))
 			return;
 
+		if(player.getStarterShop().handleShop(interfaceId, 2, slot, id))
+			return;
+
 		switch (interfaceId) {
 			case TradingPost.ITEM_CONTAINER_ID -> player.getTradingPost().selectItemToAdd(item);
 			case -15971 -> ForgeShopHandler.purchase(player, id, 5);
@@ -442,6 +448,9 @@ public class ItemContainerActionPacketListener implements PacketListener {
 		if(interfaceId == 31444)
 			if(player.getEquipment().handleContainer(slot, 3, id))
 				return;
+
+		if(ShopHandler.handleShop(player, interfaceId, 3, slot, id))
+			return;
 
 		switch (interfaceId) {
 			case TradingPost.ITEM_CONTAINER_ID:
@@ -681,6 +690,9 @@ public class ItemContainerActionPacketListener implements PacketListener {
 			if(player.getEquipment().handleContainer(slot, 4, id))
 				return;
 
+		if(ShopHandler.handleShop(player, interfaceId, 4, slot, id))
+			return;
+
 		switch (interfaceId) {
 			case TradingPost.ITEM_CONTAINER_ID:
 				player.getTradingPost().selectItemToAdd(new Item(id, 10));
@@ -858,6 +870,9 @@ public class ItemContainerActionPacketListener implements PacketListener {
 		if(interfaceId == 31444)
 			if(player.getEquipment().handleContainer(slot, 5, id))
 				return;
+
+		if(ShopHandler.handleShop(player, interfaceId, 5, slot, id))
+			return;
 
 		switch (interfaceId) {
 			case TradingPost.ITEM_CONTAINER_ID -> player.getPacketSender().sendMessage("X value here");

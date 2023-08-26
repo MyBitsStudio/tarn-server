@@ -97,11 +97,11 @@ public enum StarterTasks {
             , 1741, 50),
 
     TASK_050(1, 10,"Gain 1 99 Skill", new TaskReward(995, 100000)
-            , -1, -1),
+            , -1, 1),
     TASK_051(1, 50, "Gain 10 99 Skills", new TaskReward(15004, 1)
-            , -1, -1),
+            , -1, 10),
     TASK_052(1, 150,"Gain All 99 Skills", new TaskReward(15004, 5)
-            , -1, -1),
+            , -1, 99),
 
     TASK_100(2, 10,"Kill 1 Avalon", new TaskReward(23203, 1)
             , 9025, 1),
@@ -149,11 +149,11 @@ public enum StarterTasks {
             , 1746, 100),
 
     TASK_150(3, 10,"Clear LVL 5 Tarn Tower", new TaskReward(23253, 1)
-            , -1, -1),
+            , -1, 5),
     TASK_151(3, 50,"Clear LVL 10 Tarn Tower", new TaskReward(23254, 1)
-            , -1, -1),
+            , -1, 10),
     TASK_152(3, 100,"Clear LVL 20 Tarn Tower", new TaskReward(23255, 1)
-            , -1, -1),
+            , -1, 20),
 
     TASK_200(4, 5,"Vote 5 Times", new TaskReward(995, 1000)
             , -1, -1),

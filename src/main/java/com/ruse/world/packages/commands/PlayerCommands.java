@@ -15,6 +15,7 @@ import com.ruse.world.content.combat.DesolaceFormulas;
 import com.ruse.world.content.combat.prayer.CurseHandler;
 import com.ruse.world.content.combat.prayer.PrayerHandler;
 import com.ruse.world.content.dailyTask.DailyTaskHandler;
+import com.ruse.world.packages.combat.drops.DropCalculator;
 import com.ruse.world.packages.combat.max.MagicMax;
 import com.ruse.world.packages.combat.max.MeleeMax;
 import com.ruse.world.packages.combat.max.RangeMax;
@@ -24,7 +25,6 @@ import com.ruse.world.packages.donation.DonationManager;
 import com.ruse.world.content.minigames.impl.dungeoneering.DungeoneeringParty;
 import com.ruse.world.content.progressionzone.ProgressionZone;
 import com.ruse.world.content.serverperks.ServerPerks;
-import com.ruse.world.content.skill.impl.slayer.Slayer;
 import com.ruse.world.content.transportation.TeleportHandler;
 import com.ruse.world.content.transportation.TeleportType;
 import com.ruse.world.packages.misc.Retrieval;
@@ -98,13 +98,6 @@ public class PlayerCommands {
                 }
                 return true;
             }
-            case "resetduo" -> {
-                player.getPacketSender().sendInterfaceRemoval();
-                if (player.getSlayer().getDuoPartner() != null) {
-                    Slayer.resetDuo(player, World.getPlayerByName(player.getSlayer().getDuoPartner()));
-                }
-                return true;
-            }
             case "forge" -> {
                 player.getForge().showInterface();
                 return true;
@@ -167,14 +160,14 @@ public class PlayerCommands {
             }
             case "dr", "mydr", "droprate" -> {
                 player.getPacketSender()
-                        .sendMessage("Droprate  bonus is + @red@" + CustomDropUtils.drBonus(player, player.getSlayer().getSlayerTask().getNpcId())
-                                + "@bla@%. / X2 Drop bonus is + <col=248f8f>" + CustomDropUtils.getDoubleDropChance(player, player.getSlayer().getSlayerTask().getNpcId())
+                        .sendMessage("Droprate  bonus is + @red@" + DropCalculator.getDropChance(player, 9837)
+                                + "@bla@%. / X2 Drop bonus is + <col=248f8f>" + DropCalculator.getDoubleDropChance(player, 9837)
                                 + "@bla@%.");
                 return true;
             }
             case "ddr" -> {
                 player.getPacketSender().sendMessage(
-                        "Your Double  bonus is + @red@" + CustomDropUtils.getDoubleDropChance(player, player.getSlayer().getSlayerTask().getNpcId()) + "@bla@%.");
+                        "Your Double  bonus is + @red@" + DropCalculator.getDoubleDropChance(player, 9837) + "@bla@%.");
                 return true;
             }
             case "maxhit" -> {
@@ -260,17 +253,21 @@ public class PlayerCommands {
                 return true;
             }
             case "switchbook" -> {
-                if (player.getSkillManager().getMaxLevel(Skill.DEFENCE) < 30) {
-                    player.getPacketSender().sendMessage("You need a Defence level of at least 30 to use this altar.");
-                    return true;
-                }
                 player.performAnimation(new Animation(645));
-                if (player.getPrayerbook() == Prayerbook.NORMAL) {
+                if (player.getPrayerbook() == Prayerbook.CURSES) {
+                    if(player.getPSettings().getBooleanValue("holy-unlock")) {
+                        player.getPacketSender().sendMessage("You sense a surge of holiness flow through your body!");
+                        CurseHandler.deactivateAll(player);
+                        CurseHandler.startDrain(player);
+                        player.setPrayerbook(Prayerbook.HOLY);
+                    } else {
+                        player.getPacketSender().sendMessage("You need to unlock this prayer book first");
+                    }
+                } else if (player.getPrayerbook() == Prayerbook.HOLY) {
                     player.getPacketSender().sendMessage("You sense a surge of power flow through your body!");
+                    PrayerHandler.deactivateAll(player);
+                    PrayerHandler.startDrain(player);
                     player.setPrayerbook(Prayerbook.CURSES);
-                } else {
-                    player.getPacketSender().sendMessage("You sense a surge of purity flow through your body!");
-                    player.setPrayerbook(Prayerbook.NORMAL);
                 }
                 player.getPacketSender().sendTabInterface(GameSettings.PRAYER_TAB, player.getPrayerbook().getInterfaceId());
                 PrayerHandler.deactivateAll(player);

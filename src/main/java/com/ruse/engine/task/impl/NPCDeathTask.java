@@ -32,7 +32,6 @@ import com.ruse.world.content.progressionzone.ProgressionZone;
 import com.ruse.world.packages.seasonpass.SeasonPassManager;
 import com.ruse.world.content.skeletalhorror.SkeletalHorror;
 import com.ruse.world.content.skill.impl.old_dungeoneering.Dungeoneering;
-import com.ruse.world.content.skill.impl.slayer.SlayerTasks;
 import com.ruse.world.packages.voting.VoteBossDrop;
 import com.ruse.world.entity.impl.mini.MiniPlayer;
 import com.ruse.world.entity.impl.npc.NPC;
@@ -218,22 +217,10 @@ public class NPCDeathTask extends Task {
                             ((DonationBoss) npc).handleDrops();
                         }
 
-
-                        if (killer.getCurrentClue().getCurrentTask() != SlayerTasks.NO_TASK) {
-                            if (killer.getCurrentClue().getAmountToSlay() > 0) {
-                                int newV = killer.getCurrentClue().getAmountToSlay() - 1;
-                                killer.getCurrentClue().setAmountToSlay(newV);
-                                if (newV == 0) {
-                                    killer.sendMessage("You have completed your clue task! Read the clue again to claim your prize!");
-                                }
-
-                            }
-                        }
-
                         if (npc.stopTask()) {
                             setEventRunning(false);
                             npc.setDying(false);
-                            killer.getSlayer().killedNpc(npc);
+                            killer.getSlayer().handleSlayerTask(killer, npc.getId());
                             npc.getCombatBuilder().getDamageMap().clear();
                             stop();
                             return;
@@ -243,7 +230,7 @@ public class NPCDeathTask extends Task {
                             new DailyTaskHandler(killer).death(npc.getDefinition().getName());
 
                             /** SLAYER **/
-                            killer.getSlayer().killedNpc(npc);
+                            killer.getSlayer().handleSlayerTask(killer, npc.getId());
                             npc.getCombatBuilder().getDamageMap().clear();
 
                             TaskManager.submit(new Task(0, killer, true) {

@@ -146,14 +146,11 @@ public class PlayerSecureSave extends SecureSave {
         object.addProperty("autocast-spell",
                 player.getAutocastSpell() != null ? player.getAutocastSpell().spellId() : -1);
 
-        object.addProperty("slayer-master", player.getSlayer().getSlayerMaster().name());
-        object.addProperty("slayer-task", player.getSlayer().getSlayerTask().name());
-        object.addProperty("prev-slayer-task", player.getSlayer().getLastTask().name());
-        object.addProperty("task-amount", player.getSlayer().getAmountToSlay());
-        object.addProperty("task-streak", player.getSlayer().getTaskStreak());
-        object.addProperty("duo-partner",
-                player.getSlayer().getDuoPartner() == null ? "null" : player.getSlayer().getDuoPartner());
-        object.addProperty("double-slay-xp", player.getSlayer().doubleSlayerXP);
+        object.addProperty("slayer-master", player.getSlayer().getMaster().name());
+        object.add("slayer-task", builder.toJsonTree(player.getSlayer().getTask()));
+        object.add("slayer-last-task", builder.toJsonTree(player.getSlayer().getLastTask()));
+        object.addProperty("slayer-streak", player.getSlayer().getStreak());
+
         object.add("killed-players", builder.toJsonTree(player.getPlayerKillingAttributes().getKilledPlayers()));
         object.addProperty("random-coffin",
                 player.getMinigameAttributes().getBarrowsMinigameAttributes().getRandomCoffin());
@@ -262,6 +259,7 @@ public class PlayerSecureSave extends SecureSave {
         object.addProperty("starterXp", player.getStarter().getXp());
         object.add("starterTasks", builder.toJsonTree(player.getStarter().getTasks()));
         object.add("starterRewards", builder.toJsonTree(player.getStarter().getRewards().getRewards()));
+        object.add("starter-shop", builder.toJsonTree(player.getStarterShop().getItems()));
 
         object.add("equip-slot", builder.toJsonTree(player.getEquipment().getSlotBonuses()));
         object.add("second-slot", builder.toJsonTree(player.getSecondaryEquipment().getSlotBonuses()));

@@ -45,25 +45,27 @@ public class InstanceManager {
 
     public void startEventInstance(Player player, InstanceInterData data){
         if(player.getInstance() != null) {
-            player.getInstance().clear();
+            player.getInstance().destroy();
             player.setInstance(null);
             return;
         }
 
         if(!Objects.equals(player.getInstanceId(), "")){
-            instances.get(player.getInstanceId()).removePlayer(player);
+            instances.remove(player.getInstanceId());
             player.setInstanceId("");
-            return;
         }
+
+        int cap = (int) (data.getCap() * player.getDonator().getCap());
+
+        cap += player.getVip().getBonusCap();
 
         switch(data.getNpcId()){
             case 10835 -> {
                 if(!World.handler.eventActive("Solstice"))
                     return;
 
-                if(takeItem(player, data)) {
+                if(!takeItem(player, data)) {
                      player.sendMessage("You don't have x"+data.getCost().getAmount()+" of "+ItemDefinition.forId(data.getCost().getId()).getName());
-                 return;
                 }
 
 //                Instance instance = new MultiBossFlashInstance(player,
@@ -76,7 +78,7 @@ public class InstanceManager {
                 if(!World.handler.eventActive("Solstice"))
                     return;
 
-                if(takeItem(player, data)) {
+                if(!takeItem(player, data)) {
                     player.sendMessage("You don't have x"+data.getCost().getAmount()+" of "+ItemDefinition.forId(data.getCost().getId()).getName());
                     return;
                 }
@@ -94,21 +96,24 @@ public class InstanceManager {
 
     public void enterMasterInstance(Player player, InstanceInterData data){
         if(player.getInstance() != null) {
-            player.getInstance().clear();
+            player.getInstance().destroy();
             player.setInstance(null);
             return;
         }
 
         if(!Objects.equals(player.getInstanceId(), "")){
-            instances.get(player.getInstanceId()).removePlayer(player);
+            instances.remove(player.getInstanceId());
             player.setInstanceId("");
-            return;
         }
 
         if(takeItem(player, data)) {
             player.sendMessage("You don't have x"+data.getCost().getAmount()+" of "+ItemDefinition.forId(data.getCost().getId()).getName());
             return;
         }
+
+        int cap = (int) (data.getCap() * player.getDonator().getCap());
+
+        cap += player.getVip().getBonusCap();
 
 
 
@@ -116,15 +121,14 @@ public class InstanceManager {
 
     public void startMultiInstance(Player player, InstanceInterData data){
         if(player.getInstance() != null) {
-            player.getInstance().clear();
+            player.getInstance().destroy();
             player.setInstance(null);
             return;
         }
 
         if(!Objects.equals(player.getInstanceId(), "")){
-            instances.get(player.getInstanceId()).removePlayer(player);
+            instances.remove(player.getInstanceId());
             player.setInstanceId("");
-            return;
         }
 
         if(takeItem(player, data)) {
@@ -132,11 +136,15 @@ public class InstanceManager {
             return;
         }
 
+        int cap = (int) (data.getCap() * player.getDonator().getCap());
+
+        cap += player.getVip().getBonusCap();
+
         Instance instance = switch (data.getNpcId()) {
-            case 595 -> new CounterInstance(player, data.getNpcId(), data.getSpawns(), data.getCap());
-            case 591 -> new DonatorSpecialInstance(player, data.getNpcId(), data.getSpawns(), data.getCap());
-            case 593 -> new VoteSpecialInstance(player, data.getNpcId(), data.getSpawns(), data.getCap());
-            case 1880 -> new IronmanInstance(player, data.getNpcId(), data.getSpawns(), data.getCap());
+            case 595 -> new CounterInstance(player, data.getNpcId(), cap, data.getCap());
+            case 591 -> new DonatorSpecialInstance(player, data.getNpcId(), cap, data.getCap());
+            case 593 -> new VoteSpecialInstance(player, data.getNpcId(), cap, data.getCap());
+            case 1880 -> new IronmanInstance(player, data.getNpcId(), cap, data.getCap());
             default -> null;
         };
 
@@ -154,21 +162,24 @@ public class InstanceManager {
      */
     public void startSingleBossInstance(@NotNull Player player, InstanceInterData data){
         if(player.getInstance() != null) {
-            player.getInstance().clear();
+            player.getInstance().destroy();
             player.setInstance(null);
             return;
         }
 
         if(!Objects.equals(player.getInstanceId(), "")){
-            instances.get(player.getInstanceId()).removePlayer(player);
+            instances.remove(player.getInstanceId());
             player.setInstanceId("");
-            return;
         }
 
         if(takeItem(player, data)) {
             player.sendMessage("You don't have x"+data.getCost().getAmount()+" of "+ItemDefinition.forId(data.getCost().getId()).getName());
             return;
         }
+
+        int cap = (int) (data.getCap() * player.getDonator().getCap());
+
+        cap += player.getVip().getBonusCap();
 
         SingleBossSinglePlayerInstance instance = null;
 
@@ -195,15 +206,14 @@ public class InstanceManager {
      */
     public void startMultiAmountInstance(@NotNull Player player, InstanceInterData data){
         if(player.getInstance() != null) {
-            player.getInstance().clear();
+            player.getInstance().destroy();
             player.setInstance(null);
             return;
         }
 
         if(!Objects.equals(player.getInstanceId(), "")){
-            instances.get(player.getInstanceId()).removePlayer(player);
+            instances.remove(player.getInstanceId());
             player.setInstanceId("");
-            return;
         }
 
         if(takeItem(player, data)) {
@@ -211,8 +221,12 @@ public class InstanceManager {
             return;
         }
 
+        int cap = (int) (data.getCap() * player.getDonator().getCap());
+
+        cap += player.getVip().getBonusCap();
+
         Instance instance = new MultiBossNormalInstance(player,
-                data.getNpcId(), data.getSpawns(), (1000 * 60 * 10));
+                data.getNpcId(), data.getSpawns(), ((1000 * 60 ) * cap));
 
         instances.put(instance.getInstanceId(), instance);
         instance.start();
@@ -296,17 +310,13 @@ public class InstanceManager {
         player.getPacketSender().sendString(70522, prefix+ (long)(def.getDefenceMage() * (1 + (.3 * diff))));
         player.getPacketSender().sendString(70524, prefix+ (long)(def.getDefenceRange() * (1 + (.3 * diff))));
 
-        int cap = (int) (interData.getCap() * player.getDonator().getCap());
+        int cap = (int) (interData.getCap() + player.getDonator().getCap());
 
         cap += player.getVip().getBonusCap();
 
-        if(interData.getNpcId() == 1120){
-            cap = 200;
-        }
-
         player.getPacketSender().sendString(70526, prefix+ "x"+ (interData.getCost().getAmount() * (1+ (diff * 2L))) +" "+ItemDefinition.forId(interData.getCost().getId()).getName());
         player.getPacketSender().sendString(70528, prefix+ interData.getSpawns());
-        player.getPacketSender().sendString(70530, prefix+ cap);
+        player.getPacketSender().sendString(70530, prefix+ cap+" minutes");
         player.getPacketSender().sendString(70532, prefix+ interData.getReq());
 
         for(int i = 0; i < (57 * 2); i+=2){
@@ -362,7 +372,7 @@ public class InstanceManager {
 //                return false;
 //            }
 //        }
-        return true;
+        return player.getPSettings().getBooleanValue("instance-unlock");
     }
 
     private boolean returnSpecial(Player player, int base){

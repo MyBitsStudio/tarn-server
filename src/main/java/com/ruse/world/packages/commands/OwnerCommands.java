@@ -437,10 +437,12 @@ public class OwnerCommands {
                 return true;
             }
 
-            case "shopp" -> {
-                ShopHandler.getShop(0).get().send(player, true);
+            case "sttart" -> {
+                player.getStarterShop().open(true);
                 return true;
             }
+
+
         }
         return false;
     }

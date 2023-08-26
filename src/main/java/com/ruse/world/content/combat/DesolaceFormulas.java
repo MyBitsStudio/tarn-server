@@ -14,7 +14,6 @@ import com.ruse.world.content.combat.range.CombatRangedAmmo.RangedWeaponData;
 import com.ruse.world.content.combat.weapon.FightType;
 import com.ruse.world.content.serverperks.ServerPerks;
 import com.ruse.world.content.skill.DropUtils;
-import com.ruse.world.content.skill.impl.slayer.SlayerTasks;
 import com.ruse.world.content.skill.impl.summoning.BossPets;
 import com.ruse.world.content.skill.impl.summoning.Familiar;
 import com.ruse.world.entity.impl.Character;
@@ -81,11 +80,6 @@ public class DesolaceFormulas {
                 }
 
                 /** SLAYER HELMET **/
-                if (npc.getId() == plr.getSlayer().getSlayerTask().getNpcId()) {
-                    if (plr.getEquipment().getItems()[Equipment.HEAD_SLOT].getId() == 13263) {
-                        base *= 1.12;
-                    }
-                }
 
                 Familiar playerFamiliar = plr.getSummoning().getFamiliar();
 

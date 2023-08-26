@@ -354,19 +354,6 @@ public class CurseHandler {
 		 * Donator Rank Bonusses
 		 */
 
-//		if(player.getAmountDonated() >= Donation.ZENYTE_DONATION_AMOUNT || player.getRights().equals(PlayerRights.YOUTUBER)) {
-//			toRemove *= 0;
-//		} else if(player.getAmountDonated() >= Donation.ONYX_DONATION_AMOUNT) {
-//			toRemove *= 0;
-//		} else if(player.getAmountDonated() >= Donation.DIAMOND_DONATION_AMOUNT) {
-//			toRemove *= 0;
-//		} else if(player.getAmountDonated() >= Donation.RUBY_DONATION_AMOUNT) {
-//			toRemove *= 0.60;
-//		} else if(player.getAmountDonated() >= Donation.EMERALD_DONATION_AMOUNT) {
-//			toRemove *= 0.80;
-//		} else if(player.getAmountDonated() >= Donation.SAPPHIRE_DONATION_AMOUNT) {
-//			toRemove *= 0.95;
-//		}
 		if (toRemove > 0) {
 			toRemove /= (1 + (0.05 * player.getBonusManager().getOtherBonus()[2]));
 		}
@@ -374,16 +361,16 @@ public class CurseHandler {
 	}
 
 	private enum CurseData {
-		PROTECT_ITEM(50, .1, 32503, 610, new PrayerAnimation(new Animation(12567), new Graphic(2213))),
-		SAP_WARRIOR(50, .3, 32505, 611), SAP_RANGER(52, .3, 32507, 612), SAP_MAGE(54, .3, 32509, 613),
-		SAP_SPIRIT(56, .3, 32511, 614),
-		BERSERKER(59, .4, 32513, 615, new PrayerAnimation(new Animation(12589), new Graphic(2266))),
-		DEFLECT_SUMMONING(62, .5, 32515, 616), DEFLECT_MAGIC(65, .5, 32517, 617), DEFLECT_MISSILES(68, .5, 32519, 618),
-		DEFLECT_MELEE(71, .5, 32521, 619), LEECH_ATTACK(74, 1, 32523, 620), LEECH_RANGED(76, 1, 32525, 621),
-		LEECH_MAGIC(78, 1, 32527, 622), LEECH_DEFENCE(80, 1, 32529, 623), LEECH_STRENGTH(82, 1, 32531, 624),
-		LEECH_ENERGY(84, 1, 32533, 625), LEECH_SPECIAL_ATTACK(86, 1, 32535, 626), WRATH(89, 1.2, 32537, 627),
-		SOUL_SPLIT(92, 1.5, 32539, 628),
-		TURMOIL(95, 3, 32541, 629, new PrayerAnimation(new Animation(12565), new Graphic(2226)));
+		PROTECT_ITEM(12, .1, 32503, 610, new PrayerAnimation(new Animation(12567), new Graphic(2213))),
+		SAP_WARRIOR(25, .3, 32505, 611), SAP_RANGER(52, .3, 32507, 612), SAP_MAGE(54, .3, 32509, 613),
+		SAP_SPIRIT(28, .3, 32511, 614),
+		BERSERKER(36, .4, 32513, 615, new PrayerAnimation(new Animation(12589), new Graphic(2266))),
+		DEFLECT_SUMMONING(42, .5, 32515, 616), DEFLECT_MAGIC(65, .5, 32517, 617), DEFLECT_MISSILES(68, .5, 32519, 618),
+		DEFLECT_MELEE(52, .5, 32521, 619), LEECH_ATTACK(74, 1, 32523, 620), LEECH_RANGED(76, 1, 32525, 621),
+		LEECH_MAGIC(56, 1, 32527, 622), LEECH_DEFENCE(80, 1, 32529, 623), LEECH_STRENGTH(82, 1, 32531, 624),
+		LEECH_ENERGY(60, 1, 32533, 625), LEECH_SPECIAL_ATTACK(86, 1, 32535, 626), WRATH(89, 1.2, 32537, 627),
+		SOUL_SPLIT(72, 1.5, 32539, 628),
+		TURMOIL(86, 3, 32541, 629, new PrayerAnimation(new Animation(12565), new Graphic(2226)));
 
 		private CurseData(int requirement, double drainRate, int buttonId, int configId,
 				PrayerAnimation... animations) {

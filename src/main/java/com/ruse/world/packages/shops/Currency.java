@@ -8,7 +8,7 @@ public enum Currency {
 
     TOKENS("coins", 995),
     DONATION("donation", -1),
-    SLAYER("slayer", -1),
+    SLAYER("slayer", 5023),
     VOTE("vote", 4000),
     SUMMER("summer", 14819),
     LOYALTY("loyalty", 5022),

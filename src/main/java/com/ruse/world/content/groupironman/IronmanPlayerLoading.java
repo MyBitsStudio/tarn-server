@@ -4,17 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import com.google.gson.reflect.TypeToken;
-import com.ruse.engine.task.impl.FamiliarSpawnTask;
-import com.ruse.model.*;
-import com.ruse.world.content.DropLog;
-import com.ruse.world.content.KillsTracker;
-import com.ruse.world.content.LoyaltyProgramme;
-import com.ruse.world.content.combat.magic.CombatSpells;
-import com.ruse.world.content.combat.weapon.FightType;
-import com.ruse.world.content.grandexchange.GrandExchangeSlot;
 import com.ruse.world.content.skill.SkillManager;
-import com.ruse.world.content.skill.impl.slayer.SlayerMaster;
 import com.ruse.world.entity.impl.player.Player;
 import lombok.SneakyThrows;
 

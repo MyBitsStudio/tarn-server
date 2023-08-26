@@ -32,8 +32,6 @@ import com.ruse.world.content.skill.impl.hunter.PuroPuro;
 import com.ruse.world.content.skill.impl.old_dungeoneering.Dungeoneering;
 import com.ruse.world.content.skill.impl.old_dungeoneering.UltimateIronmanHandler;
 import com.ruse.world.content.skill.impl.runecrafting.DesoSpan;
-import com.ruse.world.content.skill.impl.slayer.SlayerMaster;
-import com.ruse.world.content.skill.impl.slayer.SlayerTasks;
 import com.ruse.world.content.skill.impl.summoning.BossPets;
 import com.ruse.world.content.skill.impl.summoning.Summoning;
 import com.ruse.world.content.skill.impl.summoning.SummoningData;
@@ -138,32 +136,8 @@ public class NPCOptionPacketListener implements PacketListener {
 //                        player.sendMessage("You must be a group ironman to do this.");
 //                    }
                     break;
-                case 9000://first click
-                    if (!player.getSlayer().getSlayerMaster().equals(SlayerMaster.BOSS_SLAYER)
-                            && player.getSlayer().getSlayerTask().equals(SlayerTasks.NO_TASK)) {
-                        SlayerMaster.changeSlayerMaster(player, SlayerMaster.BOSS_SLAYER);
-                    }
-                    if (player.getSlayer().getSlayerMaster().equals(SlayerMaster.BOSS_SLAYER)) {
-                       // DialogueManager.start(player, BossSlayerDialogues.dialogue(player));
-                    }else {
-                        SlayerMaster yourMaster = player.getSlayer().getSlayerMaster();
-                        SlayerMaster thisMaster = SlayerMaster.forNpcId(npc.getId());
-                        String yourMastersName = "";
-                        String thisMasterName = "";
-                        int reqSlayer = 0;
-                        if(yourMaster != null) {
-                            yourMastersName = yourMaster.getSlayerMasterName();
-                        }
-                        if(thisMaster != null) {
-                            reqSlayer = thisMaster.getSlayerReq();
-                            thisMasterName = thisMaster.getSlayerMasterName();
-                        }
-                        if(player.getSkillManager().getCurrentLevel(Skill.SLAYER) < reqSlayer) {
-                            DialogueManager.sendStatement(player, "You need " + reqSlayer + " Slayer to use " + thisMasterName  + ".");
-                        } else {
-                            DialogueManager.sendStatement(player, "You currently have an assignment with " + yourMastersName);
-                        }
-                    }
+                case 9000://slayer
+                    player.getSlayer().sendInterface(player);
                     break;
 
                 case 2938:
@@ -316,33 +290,9 @@ public class NPCOptionPacketListener implements PacketListener {
 //                    }
 //                    // DialogueManager.start(player, ExplorerJack.getDialogue(player));
 //                    break;
-//                case 1597:
-//                    if (!player.getSlayer().getSlayerMaster().equals(SlayerMaster.EASY_SLAYER)
-//                            && player.getSlayer().getSlayerTask().equals(SlayerTasks.NO_TASK)) {
-//                        SlayerMaster.changeSlayerMaster(player, SlayerMaster.EASY_SLAYER);
-//                    }
-//                    if (player.getSlayer().getSlayerMaster().equals(SlayerMaster.EASY_SLAYER))
-//                        DialogueManager.start(player, SlayerDialogues.dialogue(player));
-//                    else {
-//                        SlayerMaster yourMaster = player.getSlayer().getSlayerMaster();
-//                        SlayerMaster thisMaster = SlayerMaster.forNpcId(npc.getId());
-//                        String yourMastersName = "";
-//                        String thisMasterName = "";
-//                        int reqSlayer = 0;
-//                        if(yourMaster != null) {
-//                            yourMastersName = yourMaster.getSlayerMasterName();
-//                        }
-//                        if(thisMaster != null) {
-//                            reqSlayer = thisMaster.getSlayerReq();
-//                            thisMasterName = thisMaster.getSlayerMasterName();
-//                        }
-//                        if(player.getSkillManager().getCurrentLevel(Skill.SLAYER) < reqSlayer) {
-//                            DialogueManager.sendStatement(player, "You need " + reqSlayer + " Slayer to use " + thisMasterName  + ".");
-//                        } else {
-//                            DialogueManager.sendStatement(player, "You currently have an assignment with " + yourMastersName);
-//                        }
-//                    }
-//                    break;
+                case 1597:
+
+                    break;
 //                case 8275:
 //                    if (!player.getSlayer().getSlayerMaster().equals(SlayerMaster.MEDIUM_SLAYER)
 //                            && player.getSlayer().getSlayerTask().equals(SlayerTasks.NO_TASK)) {
@@ -652,42 +602,20 @@ public class NPCOptionPacketListener implements PacketListener {
 
         if(NpcDefinition.definitions[interact.getId()] == null){
             System.out.println("NPC Def null -- "+interact.getId());
+            return;
         }
         else if (!NpcDefinition.definitions[interact.getId()].isAttackable()) {
             return;
         }
-        //if (!interact.isAttackable() && interact.getId() == 12810) {
-       //     player.getMovementQueue().reset();
-       //     player.sendMessage("You cannot attack him while his minions are still alive.");
-      //      return;
-      //  }
-
-       /* if (player.getUsername() == "Nucky"){
-            interact.setConstitution(10);
-        }*/
 
 
         if (interact.getConstitution() <= 0 && !interact.isDying()){
-        //    player.sendMessage("This npc was glitched");
             interact.setConstitution(interact.getDefinition().getHitpoints());
-            //TaskManager.submit(new NPCRespawnTask(interact,  2, player));
-           // World.deregister(interact);
-
         }
 
         if (interact.getConstitution() <= 0) {
             player.getMovementQueue().reset();
             return;
-        }
-
-        if (player.getUsername().equalsIgnoreCase("test")){
-        //    World.deregister(interact);
-        }
-        if (player.getEquipment().contains(22006) && player.getLastCombatType() == RANGED) {
-            if (CombatFactory.npcsDeathDartDontWork(interact)) {
-                player.getMovementQueue().reset();
-                return;
-            }
         }
         if (player.getCombatBuilder().getStrategy() == null) {
             player.getCombatBuilder().determineStrategy();
@@ -701,221 +629,144 @@ public class NPCOptionPacketListener implements PacketListener {
             return;
         }
 
-        if (interact.getId() == 111) {
-            if (player.getSlayer().getSlayerTask().getNpcId() != interact.getId()) {
-                player.sendMessage("@or2@You can only attack @red@" + interact.getDefinition().getName() + " @or2@when it's assigned as a slayer task.");
-                return;
-            }
-        }
-        if (interact.getId() == 111) {
-            if (player.getSlayer().getSlayerTask().getNpcId() != interact.getId()) {
-                player.sendMessage("@or2@You can only attack @red@" + interact.getDefinition().getName() + " @or2@when it's assigned as a slayer task.");
-                return;
-            }
-        }
-        if (interact.getId() == 111) {
-            if (player.getSlayer().getSlayerTask().getNpcId() != interact.getId()) {
-                player.sendMessage("@or2@You can only attack @red@" + interact.getDefinition().getName() + " @or2@when it's assigned as a slayer task.");
-                return;
-            }
-        }
-        if (interact.getId() == 111) {
-            if (player.getSlayer().getSlayerTask().getNpcId() != interact.getId()) {
-                player.sendMessage("@or2@You can only attack @red@" + interact.getDefinition().getName() + " @or2@when it's assigned as a slayer task.");
-                return;
-            }
-        }
-        if (interact.getId() == 111) {
-            if (player.getSlayer().getSlayerTask().getNpcId() != interact.getId()) {
-                player.sendMessage("@or2@You can only attack @red@" + interact.getDefinition().getName() + " @or2@when it's assigned as a slayer task.");
-                return;
-            }
-        }
-        if (interact.getId() == 111) {
-            if (player.getSlayer().getSlayerTask().getNpcId() != interact.getId()) {
-                player.sendMessage("@or2@You can only attack @red@" + interact.getDefinition().getName() + " @or2@when it's assigned as a slayer task.");
-                return;
-            }
-        }
-        if (interact.getId() == 111) {
-            if (player.getSlayer().getSlayerTask().getNpcId() != interact.getId()) {
-                player.sendMessage("@or2@You can only attack @red@" + interact.getDefinition().getName() + " @or2@when it's assigned as a slayer task.");
-                return;
-            }
-        }
-        if (interact.getId() == 111) {
-            if (player.getSlayer().getSlayerTask().getNpcId() != interact.getId()) {
-                player.sendMessage("@or2@You can only attack @red@" + interact.getDefinition().getName() + " @or2@when it's assigned as a slayer task.");
-                return;
-            }
-        }
-        if (interact.getId() == 111) {
-            if (player.getSlayer().getSlayerTask().getNpcId() != interact.getId()) {
-                player.sendMessage("@or2@You can only attack @red@" + interact.getDefinition().getName() + " @or2@when it's assigned as a slayer task.");
-                return;
-            }
-        }
-
-        if (interact.getId() == 3){
-            player.sendMessage("The Dan Event has ended.");
-            player.getCombatBuilder().reset(true);
-            return;
-            /*int total = KillsTracker.getTotalKillsForNpc(interact.getId(), player);
-            if (total >= 10000){
-                player.sendMessage("You have reached your 10,000 kill limit for Dan's presents.");
-                player.getCombatBuilder().reset(true);
-                return;
-            }*/
-        }
-
-        if (interact.getId() == 9019){
-            player.sendMessage("The St. Patrick's Event has ended.");
-            player.getCombatBuilder().reset(true);
-            return;
-           /* int total = KillsTracker.getTotalKillsForNpc(interact.getId(), player);
-            if (total >= 10000){
-                player.sendMessage("You have reached your 10,000 kill limit for St. Patrick Leprechauns.");
-                player.getCombatBuilder().reset(true);
-                return;
-            }*/
-        }
 
 
-        if (interact.getId() == 9020) {
-            int accounts = 0;
-            for (Player p : World.getPlayers()) {
-                if (p == null)
-                    continue;
-                if (!player.equals(p) && player.getHostAddress().equals(p.getHostAddress())) {
-                    if (p.getCombatBuilder() != null && p.getCombatBuilder().getVictim() != null
-                            && p.getCombatBuilder().getVictim().isNpc() && ((NPC)p.getCombatBuilder().getVictim()).getId() == 9020) {
-                        accounts++;
-                        continue;
-                    }
-                }
-                if (!player.isMini()) {
-                    accounts--;
-                }
-            }
-            if (accounts == 1) {
-                player.getPacketSender().sendMessage("You already have an account attacking the Bunny!");
-                player.getCombatBuilder().reset(true);
-                return;
-            }
-        }
 
-        if (interact.getId() == 8013) {
-            int accounts = 0;
-            for (Player p : World.getPlayers()) {
-                if (p == null)
-                    continue;
-                if (!player.equals(p) && player.getHostAddress().equals(p.getHostAddress())) {
-                    if (p.getCombatBuilder() != null && p.getCombatBuilder().getVictim() != null
-                            && p.getCombatBuilder().getVictim().isNpc() && ((NPC)p.getCombatBuilder().getVictim()).getId() == 8013) {
-                        accounts++;
-                        continue;
-                    }
-                }
-                if (!player.isMini()) {
-                    accounts--;
-                }
-            }
-            if (accounts == 1) {
-                player.getPacketSender().sendMessage("You already have an account attacking the Vote Boss!");
-                player.getCombatBuilder().reset(true);
-                return;
-            }
-        }
-        if (interact.getId() == 9907) {
-            int accounts = 0;
-            for (Player p : World.getPlayers()) {
-                if (p == null)
-                    continue;
-                if (!player.equals(p) && player.getHostAddress().equals(p.getHostAddress())) {
-                    if (p.getCombatBuilder() != null && p.getCombatBuilder().getVictim() != null
-                            && p.getCombatBuilder().getVictim().isNpc() && ((NPC)p.getCombatBuilder().getVictim()).getId() == 9907) {
-                        accounts++;
-                        continue;
-                    }
-                }
-                if (!player.isMini()) {
-                    accounts--;
-                }
-            }
-            if (accounts == 1) {
-                player.getPacketSender().sendMessage("You already have an account attacking Meruem!");
-                player.getCombatBuilder().reset(true);
-                return;
-            }
-        }
-        if (interact.getId() == 9906) {
-            int accounts = 0;
-            for (Player p : World.getPlayers()) {
-                if (p == null)
-                    continue;
-                if (!player.equals(p) && player.getHostAddress().equals(p.getHostAddress())) {
-                    if (p.getCombatBuilder() != null && p.getCombatBuilder().getVictim() != null
-                            && p.getCombatBuilder().getVictim().isNpc() && ((NPC)p.getCombatBuilder().getVictim()).getId() == 9906) {
-                        accounts++;
-                        continue;
-                    }
-                }
-                if (!player.isMini()) {
-                    accounts--;
-                }
-            }
-            if (accounts == 1) {
-                player.getPacketSender().sendMessage("You already have an account attacking Veigar!");
-                player.getCombatBuilder().reset(true);
-                return;
-            }
-        }
-
-        if (interact.getId() == 9904) {
-            int accounts = 0;
-            for (Player p : World.getPlayers()) {
-                if (p == null)
-                    continue;
-                if (!player.equals(p) && player.getHostAddress().equals(p.getHostAddress())) {
-                    if (p.getCombatBuilder() != null && p.getCombatBuilder().getVictim() != null
-                            && p.getCombatBuilder().getVictim().isNpc() && ((NPC)p.getCombatBuilder().getVictim()).getId() == 9904) {
-                        accounts++;
-                        continue;
-                    }
-                }
-                if (!player.isMini()) {
-                    accounts--;
-                }
-            }
-            if (accounts == 1) {
-                player.getPacketSender().sendMessage("You already have an account attacking Nine Tails!");
-                player.getCombatBuilder().reset(true);
-                return;
-            }
-        }
-
-        if (interact.getId() == 9908) {
-            int accounts = 0;
-            for (Player p : World.getPlayers()) {
-                if (p == null)
-                    continue;
-                if (!player.equals(p) && player.getHostAddress().equals(p.getHostAddress())) {
-                    if (p.getCombatBuilder() != null && p.getCombatBuilder().getVictim() != null
-                            && p.getCombatBuilder().getVictim().isNpc() && ((NPC)p.getCombatBuilder().getVictim()).getId() == 9908) {
-                        accounts++;
-                        continue;
-                    }
-                }
-                if (!player.isMini()) {
-                    accounts--;
-                }
-            }
-            if (accounts == 1) {
-                player.getPacketSender().sendMessage("You already have an account attacking Golden Great Ape!");
-                player.getCombatBuilder().reset(true);
-                return;
-            }
-        }
+//        if (interact.getId() == 9020) {
+//            int accounts = 0;
+//            for (Player p : World.getPlayers()) {
+//                if (p == null)
+//                    continue;
+//                if (!player.equals(p) && player.getHostAddress().equals(p.getHostAddress())) {
+//                    if (p.getCombatBuilder() != null && p.getCombatBuilder().getVictim() != null
+//                            && p.getCombatBuilder().getVictim().isNpc() && ((NPC)p.getCombatBuilder().getVictim()).getId() == 9020) {
+//                        accounts++;
+//                        continue;
+//                    }
+//                }
+//                if (!player.isMini()) {
+//                    accounts--;
+//                }
+//            }
+//            if (accounts == 1) {
+//                player.getPacketSender().sendMessage("You already have an account attacking the Bunny!");
+//                player.getCombatBuilder().reset(true);
+//                return;
+//            }
+//        }
+//
+//        if (interact.getId() == 8013) {
+//            int accounts = 0;
+//            for (Player p : World.getPlayers()) {
+//                if (p == null)
+//                    continue;
+//                if (!player.equals(p) && player.getHostAddress().equals(p.getHostAddress())) {
+//                    if (p.getCombatBuilder() != null && p.getCombatBuilder().getVictim() != null
+//                            && p.getCombatBuilder().getVictim().isNpc() && ((NPC)p.getCombatBuilder().getVictim()).getId() == 8013) {
+//                        accounts++;
+//                        continue;
+//                    }
+//                }
+//                if (!player.isMini()) {
+//                    accounts--;
+//                }
+//            }
+//            if (accounts == 1) {
+//                player.getPacketSender().sendMessage("You already have an account attacking the Vote Boss!");
+//                player.getCombatBuilder().reset(true);
+//                return;
+//            }
+//        }
+//        if (interact.getId() == 9907) {
+//            int accounts = 0;
+//            for (Player p : World.getPlayers()) {
+//                if (p == null)
+//                    continue;
+//                if (!player.equals(p) && player.getHostAddress().equals(p.getHostAddress())) {
+//                    if (p.getCombatBuilder() != null && p.getCombatBuilder().getVictim() != null
+//                            && p.getCombatBuilder().getVictim().isNpc() && ((NPC)p.getCombatBuilder().getVictim()).getId() == 9907) {
+//                        accounts++;
+//                        continue;
+//                    }
+//                }
+//                if (!player.isMini()) {
+//                    accounts--;
+//                }
+//            }
+//            if (accounts == 1) {
+//                player.getPacketSender().sendMessage("You already have an account attacking Meruem!");
+//                player.getCombatBuilder().reset(true);
+//                return;
+//            }
+//        }
+//        if (interact.getId() == 9906) {
+//            int accounts = 0;
+//            for (Player p : World.getPlayers()) {
+//                if (p == null)
+//                    continue;
+//                if (!player.equals(p) && player.getHostAddress().equals(p.getHostAddress())) {
+//                    if (p.getCombatBuilder() != null && p.getCombatBuilder().getVictim() != null
+//                            && p.getCombatBuilder().getVictim().isNpc() && ((NPC)p.getCombatBuilder().getVictim()).getId() == 9906) {
+//                        accounts++;
+//                        continue;
+//                    }
+//                }
+//                if (!player.isMini()) {
+//                    accounts--;
+//                }
+//            }
+//            if (accounts == 1) {
+//                player.getPacketSender().sendMessage("You already have an account attacking Veigar!");
+//                player.getCombatBuilder().reset(true);
+//                return;
+//            }
+//        }
+//
+//        if (interact.getId() == 9904) {
+//            int accounts = 0;
+//            for (Player p : World.getPlayers()) {
+//                if (p == null)
+//                    continue;
+//                if (!player.equals(p) && player.getHostAddress().equals(p.getHostAddress())) {
+//                    if (p.getCombatBuilder() != null && p.getCombatBuilder().getVictim() != null
+//                            && p.getCombatBuilder().getVictim().isNpc() && ((NPC)p.getCombatBuilder().getVictim()).getId() == 9904) {
+//                        accounts++;
+//                        continue;
+//                    }
+//                }
+//                if (!player.isMini()) {
+//                    accounts--;
+//                }
+//            }
+//            if (accounts == 1) {
+//                player.getPacketSender().sendMessage("You already have an account attacking Nine Tails!");
+//                player.getCombatBuilder().reset(true);
+//                return;
+//            }
+//        }
+//
+//        if (interact.getId() == 9908) {
+//            int accounts = 0;
+//            for (Player p : World.getPlayers()) {
+//                if (p == null)
+//                    continue;
+//                if (!player.equals(p) && player.getHostAddress().equals(p.getHostAddress())) {
+//                    if (p.getCombatBuilder() != null && p.getCombatBuilder().getVictim() != null
+//                            && p.getCombatBuilder().getVictim().isNpc() && ((NPC)p.getCombatBuilder().getVictim()).getId() == 9908) {
+//                        accounts++;
+//                        continue;
+//                    }
+//                }
+//                if (!player.isMini()) {
+//                    accounts--;
+//                }
+//            }
+//            if (accounts == 1) {
+//                player.getPacketSender().sendMessage("You already have an account attacking Golden Great Ape!");
+//                player.getCombatBuilder().reset(true);
+//                return;
+//            }
+//        }
 
 //        if (interact.getId() == 9017) {
 //            if (player.getPointsHandler().getANGELKILLCount() < 50) {
@@ -925,49 +776,48 @@ public class NPCOptionPacketListener implements PacketListener {
 //            player.getCombatBuilder().attack(interact);
 //        }
 
-        if (!player.isMini()) {
-            if(player.getRank().isDeveloper()) {
-                for (NpcRequirements req : NpcRequirements.values()) {
-                    if (interact.getId() == req.getNpcId()) {
-                        if (player.getSlayer().getSlayerTask().getNpcId() == interact.getId() && interact.getId() != 4972 && interact.getId() != 2949 && interact.getId() != 6430 && interact.getId() != 9012
-                                && interact.getId() != 4540 && interact.getId() != 1234 && interact.getId() != 440 && interact.getId() != 438 && interact.getId() != 12843 && interact.getId() != 449 && interact.getId() != 452
-                                && interact.getId() != 252 && interact.getId() != 187) {
-                            //player.sendMessage("This can only be attacked whilst he his your assigned boss slayer task.");
-                            player.getCombatBuilder().attack(interact);
-                        } else if(player.getInstance() != null) {
-                            if (player.getSlayer().getSlayerTask().getNpcId() == interact.getId()){
-                                player.getCombatBuilder().attack(interact);
-                            }
-                        } else if (req.getKillCount() > 0) {
-                            if (player.getPointsHandler().getNPCKILLCount() < req.getKillCount()) {
-                                player.sendMessage("You need atleast " + req.getKillCount() + " NPC kills to attack this. (" + player.getPointsHandler().getNPCKILLCount() + "/"
-                                        + req.getKillCount() + ")");
-                                return;
-                            }
-                        } else {
-                            int npc = req.getRequireNpcId();
-                            int total = KillsTracker.getTotalKillsForNpc(npc, player);
-                            if (total < req.getAmountRequired()) {
-                                player.sendMessage("You need atleast " + req.getAmountRequired() + " "
-                                        + NpcDefinition.forId(npc).getName() + " kills to attack this. (" + total + "/"
-                                        + req.getAmountRequired() + ")");
-                                return;
-                            }
-                        }
-                        break;
-                    }
-                }
-            }
-      }
+//        if (!player.isMini()) {
+//            if(player.getRank().isDeveloper()) {
+//                for (NpcRequirements req : NpcRequirements.values()) {
+//                    if (interact.getId() == req.getNpcId()) {
+//                        if (player.getSlayer().getSlayerTask().getNpcId() == interact.getId() && interact.getId() != 4972 && interact.getId() != 2949 && interact.getId() != 6430 && interact.getId() != 9012
+//                                && interact.getId() != 4540 && interact.getId() != 1234 && interact.getId() != 440 && interact.getId() != 438 && interact.getId() != 12843 && interact.getId() != 449 && interact.getId() != 452
+//                                && interact.getId() != 252 && interact.getId() != 187) {
+//                            //player.sendMessage("This can only be attacked whilst he his your assigned boss slayer task.");
+//                            player.getCombatBuilder().attack(interact);
+//                        } else if(player.getInstance() != null) {
+//                            if (player.getSlayer().getSlayerTask().getNpcId() == interact.getId()){
+//                                player.getCombatBuilder().attack(interact);
+//                            }
+//                        } else if (req.getKillCount() > 0) {
+//                            if (player.getPointsHandler().getNPCKILLCount() < req.getKillCount()) {
+//                                player.sendMessage("You need atleast " + req.getKillCount() + " NPC kills to attack this. (" + player.getPointsHandler().getNPCKILLCount() + "/"
+//                                        + req.getKillCount() + ")");
+//                                return;
+//                            }
+//                        } else {
+//                            int npc = req.getRequireNpcId();
+//                            int total = KillsTracker.getTotalKillsForNpc(npc, player);
+//                            if (total < req.getAmountRequired()) {
+//                                player.sendMessage("You need atleast " + req.getAmountRequired() + " "
+//                                        + NpcDefinition.forId(npc).getName() + " kills to attack this. (" + total + "/"
+//                                        + req.getAmountRequired() + ")");
+//                                return;
+//                            }
+//                        }
+//                        break;
+//                    }
+//                }
+//            }
+//      }
 
 
         player.getCombatBuilder().attack(interact);
-             if (player.getMinimeSystem().getMiniMe() != null) {
-                 player.getMinimeSystem().getMiniMe().getCombatBuilder().attack(interact);
-             }
+//             if (player.getMinimeSystem().getMiniMe() != null) {
+//                 player.getMinimeSystem().getMiniMe().getCombatBuilder().attack(interact);
+//             }
 
-    }// this is on the attack option btw. i wasnt able to make it work on "show drop"
-    // ill pay you
+    }
 
     public void handleSecondClick(Player player, Packet packet) {
         int index = packet.readLEShortA();
