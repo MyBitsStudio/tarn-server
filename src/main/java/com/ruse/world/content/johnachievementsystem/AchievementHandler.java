@@ -47,7 +47,11 @@ public class AchievementHandler {
     }
 
     public static void sendPerkUnlock(Player player, PerkType perkType) {
-        player.getPacketSender().sendMessage("achPP#"+player.getPerks().computeIfAbsent(perkType, x -> new Perk())+","+perkType.getKey());
+        player.getPacketSender().sendMessage("achPP#"+player.getPerks().computeIfAbsent(perkType, x -> new Perk()).hasUnlocked()+","+perkType.getKey());
+    }
+
+    public static void sendPerkLevel(Player player, PerkType perkType) {
+        player.getPacketSender().sendMessage("achPL#"+player.getPerks().computeIfAbsent(perkType, x -> new Perk()).getLevel()+","+perkType.getKey());
     }
 
     public static void onPlayerLogin(Player player) {
@@ -59,6 +63,7 @@ public class AchievementHandler {
         AchievementDifficulty.VALUES.forEach(difficulty -> increaseCompleteAmount(player, difficulty, getCompletedAchievements(player, difficulty)));
         for(PerkType pt : PerkType.VALUES) {
             sendPerkUnlock(player, pt);
+            sendPerkLevel(player, pt);
         }
     }
 
@@ -76,15 +81,18 @@ public class AchievementHandler {
             return true;
         }
         switch (id) {
-            case 165340:
+            case 165340 -> {
                 player.setSelectedPerk(0);
                 return true;
-            case 165344:
+            }
+            case 165344 -> {
                 selectUpgrade(player);
                 return true;
-            case 165345:
+            }
+            case 165345 -> {
                 selectBuy(player);
                 return true;
+            }
         }
         return false;
     }
@@ -108,8 +116,15 @@ public class AchievementHandler {
         Perk perk = player.getPerks().get(perkType);
         if(!perk.hasUnlocked()) return;
         int currentLevel = perk.getLevel();
-        int currentExp = perk.getExp();
+        if(currentLevel == 5) return;
         // now handle upgrading
+
+
+        // increasing level on upgrade
+        perk.setLevel(currentLevel+1);
+
+        // send this method on perk upgrade
+        sendPerkLevel(player, perkType);
     }
 
     private static void selectBuy(Player player) {
@@ -118,6 +133,13 @@ public class AchievementHandler {
         Perk perk = player.getPerks().get(perkType);
         if(perk.hasUnlocked()) return;
         // now handle buying
+
+        // setting to level 1 automatically unlocks perk
+        perk.setLevel(1);
+
+        // send these two methods successful unlock
+        sendPerkUnlock(player, perkType);
+        sendPerkLevel(player, perkType);
     }
 
     public static void load() {
