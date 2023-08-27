@@ -77,7 +77,7 @@ public class DropManager {
 
         NPCDrops npcDrops = drops.get();
 
-        double chance = Misc.getRandom(0.0, 50.0), dblChance = 0.0;
+        double chance = Misc.getRandom(0.0, 10.0), dblChance = 0.0;
 
         List<DropTable> tables = new ArrayList<>(Arrays.asList(npcDrops.tables()));
         List<Drop> finalDrops = new CopyOnWriteArrayList<>(), extraDrops = new CopyOnWriteArrayList<>();
@@ -99,15 +99,15 @@ public class DropManager {
             }
             double reduce = npcDrops.customTable() == null ? 1 : npcDrops.customTable().weight();
             final int v = (int) ((chance + modifier >= 5000 ? 4999 : (int) (chance + modifier)) / reduce);
-            double chances = Misc.random(v, v < 1000 ? v * 10 : 10000);
+
             for(Drop drop : table.drops()){
                 if(drop.modifier() == 1.0) {
                     finalDrops.add(drop);
                     continue;
                 }
-                double roll = Misc.RAND.nextDouble();
-                roll = (drop.modifier() / roll) > 10000 ? 10000 : (drop.modifier() / roll);
-                if((int) chances > (int) roll){
+                double rolled = (Misc.RAND.nextDouble() * v) / reduce;
+                double req = 1 + Misc.RAND.nextDouble() * drop.modifier();
+                if(rolled > req){
                     finalDrops.add(drop);
                 }
             }
@@ -118,9 +118,9 @@ public class DropManager {
                         finalDrops.add(drop);
                         continue;
                     }
-                    double roll = Misc.RAND.nextDouble();
-                    roll = (drop.modifier() / roll) > 10000 ? 10000 : (drop.modifier() / roll);
-                    if((int) chances > (int) roll){
+                    double rolled = (Misc.RAND.nextDouble() * v) / reduce;
+                    double req = 1 + Misc.RAND.nextDouble() * drop.modifier();
+                    if(rolled > req){
                         finalDrops.add(drop);
                     }
                 }
@@ -131,9 +131,9 @@ public class DropManager {
                     if(drop.modifier() == 1.0) {
                         continue;
                     }
-                    double roll = Misc.RAND.nextDouble();
-                    roll = (drop.modifier() / roll) > 10000 ? 10000 : (drop.modifier() / roll);
-                    if((int) chances > (int) roll){
+                    double rolled = (Misc.RAND.nextDouble() * v) / reduce;
+                    double req = 1 + Misc.RAND.nextDouble() * drop.modifier();
+                    if(rolled > req){
                         extraDrops.add(drop);
                     }
                 }

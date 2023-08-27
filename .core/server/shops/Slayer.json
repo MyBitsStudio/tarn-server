@@ -7,6 +7,24 @@
       {
         "shopId": 0,
         "currency": "slayer",
+        "shopName": "Slayer Items",
+        "restrict": 0,
+        "items": [
+          {
+            "id": 4155,
+            "amount": 100,
+            "price": 25
+          },
+          {
+            "id": 9719,
+            "amount": 20,
+            "price": 50
+          }
+        ]
+      },
+      {
+        "shopId": 1,
+        "currency": "slayer",
         "shopName": "Misc",
         "restrict": 0,
         "items": [

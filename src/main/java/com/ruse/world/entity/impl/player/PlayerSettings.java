@@ -28,8 +28,6 @@ public class PlayerSettings {
     }
 
     private void removeSettings(){
-        settings.remove("security-lock");
-        settings.remove("donator-unlock");
     }
 
     private void defaultSettings() {
@@ -39,8 +37,11 @@ public class PlayerSettings {
         settings.put("is-locked", false);
         settings.put("drop-message-personal", true);
         settings.put("security", false);
-        settings.put("summer-unlock", false);
-        settings.put("donator", false);
+
+        settings.put("instance-unlock", false);
+        settings.put("raid-unlock", false);
+        settings.put("holy-unlock", false);
+
     }
 
     public void setSetting(String key, Object value){

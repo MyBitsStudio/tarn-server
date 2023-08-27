@@ -115,20 +115,20 @@ public class CustomDropUtils {
                 percentBoost += 10;
             }
         }
-
-        if (npc == player.getSlayer().getSlayerTask().getNpcId()) {
-            if (player.getEquipment().getItems()[Equipment.HEAD_SLOT].getId() == 23071) {
-                percentBoost += 5;
-            } else if (player.getEquipment().getItems()[Equipment.HEAD_SLOT].getId() == 23069 || player.getEquipment().getItems()[Equipment.HEAD_SLOT].getId() == 23070) {
-                percentBoost += 7;
-            } else if (player.getEquipment().getItems()[Equipment.HEAD_SLOT].getId() == 23074) {
-                percentBoost += 10;
-            } else if (player.getEquipment().getItems()[Equipment.HEAD_SLOT].getId() == 23072) {
-                percentBoost += 15;
-            } else if (player.getEquipment().getItems()[Equipment.HEAD_SLOT].getId() == 23073) {
-                percentBoost += 20;
-            }
-        }
+//
+//        if (npc == player.getSlayer().getSlayerTask().getNpcId()) {
+//            if (player.getEquipment().getItems()[Equipment.HEAD_SLOT].getId() == 23071) {
+//                percentBoost += 5;
+//            } else if (player.getEquipment().getItems()[Equipment.HEAD_SLOT].getId() == 23069 || player.getEquipment().getItems()[Equipment.HEAD_SLOT].getId() == 23070) {
+//                percentBoost += 7;
+//            } else if (player.getEquipment().getItems()[Equipment.HEAD_SLOT].getId() == 23074) {
+//                percentBoost += 10;
+//            } else if (player.getEquipment().getItems()[Equipment.HEAD_SLOT].getId() == 23072) {
+//                percentBoost += 15;
+//            } else if (player.getEquipment().getItems()[Equipment.HEAD_SLOT].getId() == 23073) {
+//                percentBoost += 20;
+//            }
+//        }
 
         if (player.isInsideRaids()) {
             if (player.getSummoning() != null && player.getSummoning().getFamiliar() != null
@@ -304,12 +304,7 @@ public class CustomDropUtils {
 
 
         //1% TICKETS
-        if (player.getInventory().contains(21816)) {
-            percentBoost += player.getInventory().getAmount(21816);
-        }
-        if (player.getInventory().contains(21815)) {
-            percentBoost += player.getInventory().getAmount(21815);
-        }
+
 
         if (player.getInventory().contains(23174)) {
             percentBoost += 10;
@@ -330,9 +325,7 @@ public class CustomDropUtils {
          * Donator Rank bonusses
          */
 
-        percentBoost += player.getDonator().getDr();
 
-        percentBoost += player.getVip().getDr();
 //        if(player.getAmountDonated() >= Donation.ZENYTE_DONATION_AMOUNT || player.getRights().equals(PlayerRights.YOUTUBER) || player.getRights().equals(PlayerRights.DEVELOPER) || player.getRights().equals(PlayerRights.HELPER) || player.getRights().equals(PlayerRights.MODERATOR) || player.getRights().equals(PlayerRights.ADMINISTRATOR)) {
 //            percentBoost += 25;
 //        } else if(player.getAmountDonated() >= Donation.ONYX_DONATION_AMOUNT) {
@@ -350,9 +343,7 @@ public class CustomDropUtils {
         if (player.getInventory().contains(4440)) {
             percentBoost *= 1.5;
         }
-        if (ServerPerks.getInstance().getActivePerk() == ServerPerks.Perk.DR || ServerPerks.getInstance().getActivePerk() == ServerPerks.Perk.ALL_PERKS) {
-            percentBoost *= 1.5;
-        }
+
         if (GameSettings.DOUBLEDR) {
             percentBoost *= 2;
         }
@@ -371,7 +362,7 @@ public class CustomDropUtils {
             percentBoost += 100;
         }
 
-        percentBoost += player.getMode().dropRate();
+
 
         if (PrayerHandler.isActivated(player,PrayerHandler.GNOMES_GREED)) {
             percentBoost += 10;
@@ -415,12 +406,7 @@ public class CustomDropUtils {
         }
 
         //1% TICKETS
-        if (player.getInventory().contains(21816)) {
-            percentBoost += player.getInventory().getAmount(21816);
-        }
-        if (player.getInventory().contains(21814)) {
-            percentBoost += player.getInventory().getAmount(21814);
-        }
+
 
         if (player.getEquipment().contains(23044)) { //Tier 1 Aura
             percentBoost += 5;
@@ -459,7 +445,7 @@ public class CustomDropUtils {
             percentBoost += 40;
         }
 
-        percentBoost += player.getMode().doubleDropRate();
+
 
 		// creator set:
 		if (player.getEquipment().contains(23127))
@@ -489,19 +475,19 @@ public class CustomDropUtils {
                 percentBoost += 10;
             }
         }
-        if (npc == player.getSlayer().getSlayerTask().getNpcId()) {
-            if (player.getEquipment().getItems()[Equipment.HEAD_SLOT].getId() == 23071) {
-                percentBoost += 5;
-            } else if (player.getEquipment().getItems()[Equipment.HEAD_SLOT].getId() == 23069 || player.getEquipment().getItems()[Equipment.HEAD_SLOT].getId() == 23070) {
-                percentBoost += 7;
-            } else if (player.getEquipment().getItems()[Equipment.HEAD_SLOT].getId() == 23074) {
-                percentBoost += 10;
-            } else if (player.getEquipment().getItems()[Equipment.HEAD_SLOT].getId() == 23072) {
-                percentBoost += 15;
-            } else if (player.getEquipment().getItems()[Equipment.HEAD_SLOT].getId() == 23073) {
-                percentBoost += 20;
-            }
-        }
+//        if (npc == player.getSlayer().getSlayerTask().getNpcId()) {
+//            if (player.getEquipment().getItems()[Equipment.HEAD_SLOT].getId() == 23071) {
+//                percentBoost += 5;
+//            } else if (player.getEquipment().getItems()[Equipment.HEAD_SLOT].getId() == 23069 || player.getEquipment().getItems()[Equipment.HEAD_SLOT].getId() == 23070) {
+//                percentBoost += 7;
+//            } else if (player.getEquipment().getItems()[Equipment.HEAD_SLOT].getId() == 23074) {
+//                percentBoost += 10;
+//            } else if (player.getEquipment().getItems()[Equipment.HEAD_SLOT].getId() == 23072) {
+//                percentBoost += 15;
+//            } else if (player.getEquipment().getItems()[Equipment.HEAD_SLOT].getId() == 23073) {
+//                percentBoost += 20;
+//            }
+//        }
         if (player.isInsideRaids()) {
             if (player.getSummoning() != null && player.getSummoning().getFamiliar() != null
                     && player.getSummoning().getFamiliar().getSummonNpc().getId() == BossPets.BossPet.DEMON_PET.npcId) {
@@ -677,15 +663,13 @@ public class CustomDropUtils {
             percentBoost = 2500;
         }
 
-        percentBoost += player.getEquipmentEnhancement().getBoost(BoostType.DR);
+
 
         /**
          * Donator Rank bonusses
          */
 
-        percentBoost += player.getDonator().getDr();
 
-        percentBoost += player.getVip().getDr();
 //        if(player.getAmountDonated() >= Donation.ZENYTE_DONATION_AMOUNT || player.getRights().equals(PlayerRights.YOUTUBER) || player.getRights().equals(PlayerRights.DEVELOPER) || player.getRights().equals(PlayerRights.HELPER) || player.getRights().equals(PlayerRights.MODERATOR) || player.getRights().equals(PlayerRights.ADMINISTRATOR)) {
 //            percentBoost += 25;
 //        } else if(player.getAmountDonated() >= Donation.ONYX_DONATION_AMOUNT) {
@@ -701,9 +685,7 @@ public class CustomDropUtils {
 //        }
 
 
-        if (PrayerHandler.isActivated(player,PrayerHandler.GNOMES_GREED)) {
-            percentBoost += 10;
-        }
+
 
         return percentBoost;
     }

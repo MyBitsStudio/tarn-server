@@ -35,7 +35,7 @@ public abstract class Dialogue {
     protected final int SECOND_OPTION_OF_TWO = 2462;
     protected HashMap<Integer, String> options = new HashMap<>();
 
-    private int stage = -1, npcId = -1, option = -1;
+    private int stage = 0, npcId = -1, option = -1;
 
     private final Player player;
 
@@ -67,7 +67,7 @@ public abstract class Dialogue {
         setNpcId(npcId);
         if (player.getInterfaceId() != 50)
             player.setInterfaceId(50);
-        next(stage = 0);
+        next(stage++);
     }
 
     public void end(){

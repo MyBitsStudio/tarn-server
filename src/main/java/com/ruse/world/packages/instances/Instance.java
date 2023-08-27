@@ -155,7 +155,7 @@ public abstract class Instance {
            destroy();
         }
 
-        player.moveTo(new Position(2654, 2796, 0));
+        player.moveTo(GameSettings.DEFAULT_POSITION);
     }
 
     protected void addNPC(NPC npc){

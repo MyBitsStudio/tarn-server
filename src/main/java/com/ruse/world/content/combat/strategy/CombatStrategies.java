@@ -60,6 +60,16 @@ public class CombatStrategies {
 		 */
 
 		STRATEGIES.put(9915, script);
+		STRATEGIES.put(9024, script);
+		STRATEGIES.put(8002, script);
+		STRATEGIES.put(8000, script);
+		STRATEGIES.put(3020, script);
+		STRATEGIES.put(9919, script);
+		STRATEGIES.put(9916, script);
+		STRATEGIES.put(9913, script);
+		STRATEGIES.put(1313, script);
+		STRATEGIES.put(1311, script);
+
 
 
 

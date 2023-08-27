@@ -24,7 +24,6 @@ import com.ruse.world.content.minigames.impl.Dueling.DuelRule;
 import com.ruse.world.content.skill.impl.old_dungeoneering.Dungeoneering;
 import com.ruse.world.entity.impl.player.Player;
 import com.ruse.world.packages.dialogue.DialogueManager;
-import com.ruse.world.packages.dialogue.impl.TaskTeleport;
 
 import java.time.LocalDateTime;
 
@@ -74,9 +73,6 @@ public class EquipPacketListener implements PacketListener {
         }
 
         switch (id) {
-            case 4155:
-                DialogueManager.sendDialogue(player, new TaskTeleport(player), -1);
-                return false;
             case 9922:
             case 9921:
             case 22036:

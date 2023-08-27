@@ -14,6 +14,7 @@ import com.ruse.world.content.combat.magic.Autocasting;
 import com.ruse.world.content.combat.weapon.CombatSpecial;
 import com.ruse.world.content.minigames.impl.Dueling;
 import com.ruse.world.entity.impl.player.Player;
+import com.ruse.world.packages.combat.drops.DropCalculator;
 import com.ruse.world.packages.combat.max.MagicMax;
 import com.ruse.world.packages.combat.max.MeleeMax;
 import com.ruse.world.packages.combat.max.RangeMax;
@@ -74,11 +75,11 @@ public class Equipment extends ItemContainer {
 	}
 
 	private void equipStats(){
-		getPlayer().getPacketSender().sendTooltip(162602, "Melee Max : "+ BonusManager.formatNumber((MeleeMax.newMelee(getPlayer(), getPlayer()) / 10)));
-		getPlayer().getPacketSender().sendTooltip(162603, "Magic Max : "+ BonusManager.formatNumber((MagicMax.newMagic(getPlayer(), getPlayer()) / 10)));
-		getPlayer().getPacketSender().sendTooltip(162604, "Ranged Max : "+ BonusManager.formatNumber((RangeMax.newRange(getPlayer(), getPlayer()) / 10)));
-		getPlayer().getPacketSender().sendTooltip(162605, "Drop Rate : "+ CustomDropUtils.drBonus(getPlayer(), getPlayer().getSlayer().getSlayerTask().getNpcId()));
-		getPlayer().getPacketSender().sendTooltip(162606, "Double Drop : "+ CustomDropUtils.getDoubleDropChance(getPlayer(), getPlayer().getSlayer().getSlayerTask().getNpcId()));
+		getPlayer().getPacketSender().sendTooltip(162602, "Melee Max : "+ BonusManager.formatNumber((MeleeMax.newMelee(getPlayer(), getPlayer()))));
+		getPlayer().getPacketSender().sendTooltip(162603, "Magic Max : "+ BonusManager.formatNumber((MagicMax.newMagic(getPlayer(), getPlayer()))));
+		getPlayer().getPacketSender().sendTooltip(162604, "Ranged Max : "+ BonusManager.formatNumber((RangeMax.newRange(getPlayer(), getPlayer()))));
+		getPlayer().getPacketSender().sendTooltip(162605, "Drop Rate : "+ DropCalculator.getDropChance(getPlayer(), 9837));
+		getPlayer().getPacketSender().sendTooltip(162606, "Double Drop : "+ DropCalculator.getDoubleDropChance(getPlayer(), 9837));
 		getPlayer().getPacketSender().sendTooltip(162607, "Set Bonus : "+ (getBonus() != null ? getBonus().name() : "None"));
 	}
 

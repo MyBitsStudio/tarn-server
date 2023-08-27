@@ -14,6 +14,8 @@ import com.ruse.world.content.combat.CombatType;
 import com.ruse.world.content.minigames.impl.Dueling;
 import com.ruse.world.content.minigames.impl.Dueling.DuelRule;
 import com.ruse.world.entity.impl.player.Player;
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
 
@@ -25,19 +27,6 @@ import java.util.HashMap;
  */
 public class PrayerHandler {
 
-	public static final int HOLY_DESTRUCTION_IDX = 0;
-	public static final int HOLY_HUNTERS_EYE_IDX = 1;
-	public static final int HOLY_FORTITUDE_IDX = 2;
-	public static final int HOLY_GNOMES_GREED_IDX = 3;
-	public static final int HOLY_SOUL_LEECH_IDX = 4;
-	public static final int HOLY_FURY_SWIPE_IDX = 5;
-	public static final int HOLY_SCROLL_DESTRUCTION_ITEM = 23167;
-	public static final int HOLY_SCROLL_HUNTERS_EYE_ITEM = 23165;
-	public static final int HOLY_SCROLL_FORTITUDE_ITEM = 23168;
-	public static final int HOLY_SCROLL_GNOMES_GREED_ITEM = 23170;
-	public static final int HOLY_SCROLL_SOUL_LEECH_ITEM = 23169;
-	public static final int HOLY_SCROLL_FURY_SWIPE_ITEM = 23166;
-
     /**
 	 * Represents a prayer's configurations, such as their level requirement,
 	 * buttonId, configId and drain rate.
@@ -45,34 +34,34 @@ public class PrayerHandler {
 	 * @author relex lawl
 	 */
 	private enum PrayerData {
-		THICK_SKIN(1, 1, 25000, 83),
-		BURST_OF_STRENGTH(4, 1, 25002, 84),
-		CLARITY_OF_THOUGHT(7, 1, 25004, 85),
-		SHARP_EYE(8, 1, 25006, 601),
-		MYSTIC_WILL(9, 1, 25008, 602),
-		ROCK_SKIN(10, 2, 25010, 86),
-		SUPERHUMAN_STRENGTH(13, 2, 25012, 87),
-		IMPROVED_REFLEXES(16, 2, 25014, 88),
-		RAPID_RESTORE(19, .4, 25016, 89),
-		RAPID_HEAL(22, .6, 25018, 90),
-		PROTECT_ITEM(25, .6, 25020, 91),
-		HAWK_EYE(26, 1.5, 25022, 603),
-		MYSTIC_LORE(27, 2, 25024, 604),
-		STEEL_SKIN(28, 4, 25026, 92),
-		ULTIMATE_STRENGTH(31, 4, 25028, 93),
-		INCREDIBLE_REFLEXES(34, 4, 25030, 94),
-		PROTECT_FROM_MAGIC(37, 4, 25032, 95, 2),
-		PROTECT_FROM_MISSILES(40, 4, 25034, 96, 1),
-		PROTECT_FROM_MELEE(43, 4, 25036, 97, 0),
-		EAGLE_EYE(44, 4, 25038, 605),
-		MYSTIC_MIGHT(45, 4, 25040, 606),
-		RETRIBUTION(46, 1, 25042, 98, 4),
-		REDEMPTION(49, 2, 25044, 99, 5),
-		SMITE(52, 6, 25046, 100, 685, 6),
-		CHIVALRY(60, 8, 25048, 607),
-		PIETY(70, 10, 25050, 608),
-		RIGOUR(80, 11, 25104, 609),
-		AUGURY(80, 11, 25108, 610),
+//		THICK_SKIN(1, 1, 25000, 83),
+//		BURST_OF_STRENGTH(4, 1, 25002, 84),
+//		CLARITY_OF_THOUGHT(7, 1, 25004, 85),
+//		SHARP_EYE(8, 1, 25006, 601),
+//		MYSTIC_WILL(9, 1, 25008, 602),
+//		ROCK_SKIN(10, 2, 25010, 86),
+//		SUPERHUMAN_STRENGTH(13, 2, 25012, 87),
+//		IMPROVED_REFLEXES(16, 2, 25014, 88),
+//		RAPID_RESTORE(19, .4, 25016, 89),
+//		RAPID_HEAL(22, .6, 25018, 90),
+//		PROTECT_ITEM(25, .6, 25020, 91),
+//		HAWK_EYE(26, 1.5, 25022, 603),
+//		MYSTIC_LORE(27, 2, 25024, 604),
+//		STEEL_SKIN(28, 4, 25026, 92),
+//		ULTIMATE_STRENGTH(31, 4, 25028, 93),
+//		INCREDIBLE_REFLEXES(34, 4, 25030, 94),
+//		PROTECT_FROM_MAGIC(37, 4, 25032, 95, 2),
+//		PROTECT_FROM_MISSILES(40, 4, 25034, 96, 1),
+//		PROTECT_FROM_MELEE(43, 4, 25036, 97, 0),
+//		EAGLE_EYE(44, 4, 25038, 605),
+//		MYSTIC_MIGHT(45, 4, 25040, 606),
+//		RETRIBUTION(46, 1, 25042, 98, 4),
+//		REDEMPTION(49, 2, 25044, 99, 5),
+//		SMITE(52, 6, 25046, 100, 685, 6),
+//		CHIVALRY(60, 8, 25048, 607),
+//		PIETY(70, 10, 25050, 608),
+//		RIGOUR(80, 11, 25104, 609),
+//		AUGURY(80, 11, 25108, 610),
 
 		DESTRUCTION(75, 10, -23033, 690),
 		HUNTERS_EYE(80, 11, -23031, 691),
@@ -81,7 +70,8 @@ public class PrayerHandler {
 		SOUL_LEECH(94, 14, -23025, 694, 9),
 		FURY_SWIPE(99, 16, -23023, 695);
 
-		PrayerData(int requirement, double drainRate, int buttonId, int configId, int... hint) {
+		@Contract(pure = true)
+		PrayerData(int requirement, double drainRate, int buttonId, int configId, int @NotNull ... hint) {
 			this.requirement = requirement;
 			this.drainRate = drainRate;
 			this.buttonId = buttonId;
@@ -93,29 +83,18 @@ public class PrayerHandler {
 		/**
 		 * The prayer's level requirement for player to be able to activate it.
 		 */
-		private int requirement;
-
-		/**
-		 * The prayer's action button id in prayer tab.
-		 */
-		private int buttonId;
-
-		/**
-		 * The prayer's config id to switch their glow on/off by sending the sendConfig
-		 * packet.
-		 */
-		private int configId;
+		private final int requirement, buttonId, configId;
 
 		/**
 		 * The prayer's drain rate as which it will drain the associated player's prayer
 		 * points.
 		 */
-		private double drainRate;
+		private final double drainRate;
 
 		/**
 		 * The prayer's head icon hint index.
 		 */
-		private int hint = -1;
+		private int hint = -1 ;
 
 		/**
 		 * The prayer's formatted name.
@@ -127,7 +106,7 @@ public class PrayerHandler {
 		 * 
 		 * @return The prayer's name
 		 */
-		private final String getPrayerName() {
+		private String getPrayerName() {
 			if (name == null)
 				return NameUtils.capitalizeWords(toString().toLowerCase().replaceAll("_", " "));
 			return name;
@@ -136,12 +115,12 @@ public class PrayerHandler {
 		/**
 		 * Contains the PrayerData with their corresponding prayerId.
 		 */
-		private static HashMap<Integer, PrayerData> prayerData = new HashMap<Integer, PrayerData>();
+		private static final HashMap<Integer, PrayerData> prayerData = new HashMap<>();
 
 		/**
 		 * Contains the PrayerData with their corresponding buttonId.
 		 */
-		private static HashMap<Integer, PrayerData> actionButton = new HashMap<Integer, PrayerData>();
+		private static final HashMap<Integer, PrayerData> actionButton = new HashMap<>();
 
 		/**
 		 * Populates the prayerId and buttonId maps.
@@ -161,22 +140,17 @@ public class PrayerHandler {
 	 * @return the protecting prayer.
 	 */
 	public static int getProtectingPrayer(CombatType type) {
-		switch (type) {
-		case MELEE:
-			return PROTECT_FROM_MELEE;
-		case MAGIC:
-		case DRAGON_FIRE:
-			return PROTECT_FROM_MAGIC;
-		case RANGED:
-			return PROTECT_FROM_MISSILES;
-		default:
-			throw new IllegalArgumentException("Invalid combat type: " + type);
-		}
+		return switch (type) {
+			case MELEE -> PROTECT_FROM_MELEE;
+			case MAGIC, DRAGON_FIRE -> PROTECT_FROM_MAGIC;
+			case RANGED -> PROTECT_FROM_MISSILES;
+			default -> throw new IllegalArgumentException("Invalid combat type: " + type);
+		};
 	}
 
 	public static boolean isActivated(Player player, int prayer) {
 		//BonusManager.sendCurseBonuses(player);
-		return player.getPrayerActive().length > prayer ? player.getPrayerActive()[prayer] : false;
+		return player.getPrayerActive().length > prayer && player.getPrayerActive()[prayer];
 	}
 
 	/**
@@ -232,7 +206,6 @@ public class PrayerHandler {
 		}
 		if (!player.isDrainingPrayer()) {
 			startDrain(player);
-			//CurseHandler.startDrain(player);
 		}
 		if (player.getPrayerbook() == Prayerbook.CURSES && !player.isDrainingPrayer()) {
 			startDrain(player);
@@ -243,126 +216,69 @@ public class PrayerHandler {
 					"You need a Prayer level of at least " + pd.requirement + " to use " + pd.getPrayerName() + ".");
 			return;
 		}
-		if (prayerId == CHIVALRY && player.getSkillManager().getMaxLevel(Skill.DEFENCE) < 60) {
-			player.getPacketSender().sendConfig(pd.configId, 0);
-			player.getPacketSender().sendMessage("You need a Defence level of at least 60 to use Chivalry.");
-			return;
-		}
-		if (prayerId == PIETY && player.getSkillManager().getMaxLevel(Skill.DEFENCE) < 70) {
-			player.getPacketSender().sendConfig(pd.configId, 0);
-			player.getPacketSender().sendMessage("You need a Defence level of at least 70 to use Piety.");
-			return;
-		}
-		if (prayerId == RIGOUR && player.getSkillManager().getMaxLevel(Skill.DUNGEONEERING) < 78) {
-			player.getPacketSender().sendConfig(pd.configId, 0);
-			player.getPacketSender().sendMessage("You need a Dungeoneering level of at least 78 to use Rigour.");
-			return;
-		}
-		if (prayerId == AUGURY && player.getSkillManager().getMaxLevel(Skill.DUNGEONEERING) < 78) {
-			player.getPacketSender().sendConfig(pd.configId, 0);
-			player.getPacketSender().sendMessage("You need a Dungeoneering level of at least 78 to use Augury.");
-			return;
-		}
 
-		if(prayerId == DESTRUCTION && !player.isHolyPrayerUnlocked(HOLY_DESTRUCTION_IDX)) {
-			player.getPacketSender().sendConfig(pd.configId, 0);
-			player.getPacketSender().sendMessage("You need to unlock Warlock with a holy prayer scroll before using it!");
-			return;
-		}
-		if(prayerId == HUNTERS_EYE && !player.isHolyPrayerUnlocked(HOLY_HUNTERS_EYE_IDX)) {
-			player.getPacketSender().sendConfig(pd.configId, 0);
-			player.getPacketSender().sendMessage("You need to unlock Knight with a holy prayer scroll before using it!");
-			return;
-		}
-		if(prayerId == FORTITUDE && !player.isHolyPrayerUnlocked(HOLY_FORTITUDE_IDX)) {
-			player.getPacketSender().sendConfig(pd.configId, 0);
-			player.getPacketSender().sendMessage("You need to unlock Marksman with a holy prayer scroll before using it!");
-			return;
-		}
-		if(prayerId == GNOMES_GREED && !player.isHolyPrayerUnlocked(HOLY_GNOMES_GREED_IDX)) {
-			player.getPacketSender().sendConfig(pd.configId, 0);
-			player.getPacketSender().sendMessage("You need to unlock Prosperous with a holy prayer scroll before using it!");
-			return;
-		}
-		if(prayerId == SOUL_LEECH && !player.isHolyPrayerUnlocked(HOLY_SOUL_LEECH_IDX)) {
-			player.getPacketSender().sendConfig(pd.configId, 0);
-			player.getPacketSender().sendMessage("You need to unlock Sovereignty with a holy prayer scroll before using it!");
-			return;
-		}
-		if(prayerId == FURY_SWIPE && !player.isHolyPrayerUnlocked(HOLY_FURY_SWIPE_IDX)) {
-			player.getPacketSender().sendConfig(pd.configId, 0);
-			player.getPacketSender().sendMessage("You need to unlock Trinity with a holy prayer scroll before using it!");
-			return;
-		}
+//		if(prayerId == DESTRUCTION && !player.isHolyPrayerUnlocked(HOLY_DESTRUCTION_IDX)) {
+//			player.getPacketSender().sendConfig(pd.configId, 0);
+//			player.getPacketSender().sendMessage("You need to unlock Warlock with a holy prayer scroll before using it!");
+//			return;
+//		}
+//		if(prayerId == HUNTERS_EYE && !player.isHolyPrayerUnlocked(HOLY_HUNTERS_EYE_IDX)) {
+//			player.getPacketSender().sendConfig(pd.configId, 0);
+//			player.getPacketSender().sendMessage("You need to unlock Knight with a holy prayer scroll before using it!");
+//			return;
+//		}
+//		if(prayerId == FORTITUDE && !player.isHolyPrayerUnlocked(HOLY_FORTITUDE_IDX)) {
+//			player.getPacketSender().sendConfig(pd.configId, 0);
+//			player.getPacketSender().sendMessage("You need to unlock Marksman with a holy prayer scroll before using it!");
+//			return;
+//		}
+//		if(prayerId == GNOMES_GREED && !player.isHolyPrayerUnlocked(HOLY_GNOMES_GREED_IDX)) {
+//			player.getPacketSender().sendConfig(pd.configId, 0);
+//			player.getPacketSender().sendMessage("You need to unlock Prosperous with a holy prayer scroll before using it!");
+//			return;
+//		}
+//		if(prayerId == SOUL_LEECH && !player.isHolyPrayerUnlocked(HOLY_SOUL_LEECH_IDX)) {
+//			player.getPacketSender().sendConfig(pd.configId, 0);
+//			player.getPacketSender().sendMessage("You need to unlock Sovereignty with a holy prayer scroll before using it!");
+//			return;
+//		}
+//		if(prayerId == FURY_SWIPE && !player.isHolyPrayerUnlocked(HOLY_FURY_SWIPE_IDX)) {
+//			player.getPacketSender().sendConfig(pd.configId, 0);
+//			player.getPacketSender().sendMessage("You need to unlock Trinity with a holy prayer scroll before using it!");
+//			return;
+//		}
 		switch (prayerId) {
-			case FURY_SWIPE:
-				resetPrayers(player, DISABLED_WITH_FURY_SWIPE, prayerId);
-				break;
-			case HUNTERS_EYE:
-				resetPrayers(player, DISABLED_WITH_HUNTERS_EYE, prayerId);
-				break;
-			case DESTRUCTION:
-				resetPrayers(player, DISABLED_WITH_DESTRUCTION, prayerId);
-				break;
-			case FORTITUDE:
-				resetPrayers(player, DISABLED_WITH_FORTITUDE, prayerId);
-				break;
-		case THICK_SKIN:
-		case ROCK_SKIN:
-		case STEEL_SKIN:
-			resetPrayers(player, DEFENCE_PRAYERS, prayerId);
-			break;
-		case BURST_OF_STRENGTH:
-		case SUPERHUMAN_STRENGTH:
-		case ULTIMATE_STRENGTH:
-			resetPrayers(player, STRENGTH_PRAYERS, prayerId);
-			resetPrayers(player, RANGED_PRAYERS, prayerId);
-			resetPrayers(player, MAGIC_PRAYERS, prayerId);
-			break;
-		case CLARITY_OF_THOUGHT:
-		case IMPROVED_REFLEXES:
-		case INCREDIBLE_REFLEXES:
-			resetPrayers(player, ATTACK_PRAYERS, prayerId);
-			resetPrayers(player, RANGED_PRAYERS, prayerId);
-			resetPrayers(player, MAGIC_PRAYERS, prayerId);
-			break;
-		case SHARP_EYE:
-		case HAWK_EYE:
-		case EAGLE_EYE:
-		case MYSTIC_WILL:
-		case MYSTIC_LORE:
-		case MYSTIC_MIGHT:
-			resetPrayers(player, STRENGTH_PRAYERS, prayerId);
-			resetPrayers(player, ATTACK_PRAYERS, prayerId);
-			resetPrayers(player, RANGED_PRAYERS, prayerId);
-			resetPrayers(player, MAGIC_PRAYERS, prayerId);
-			break;
-		case CHIVALRY:
-		case PIETY:
-			resetPrayers(player, DEFENCE_PRAYERS, prayerId);
-			resetPrayers(player, STRENGTH_PRAYERS, prayerId);
-			resetPrayers(player, ATTACK_PRAYERS, prayerId);
-			resetPrayers(player, RANGED_PRAYERS, prayerId);
-			resetPrayers(player, MAGIC_PRAYERS, prayerId);
-			break;
-		case PROTECT_FROM_MAGIC:
-		case PROTECT_FROM_MISSILES:
-		case PROTECT_FROM_MELEE:
-			resetPrayers(player, OVERHEAD_PRAYERS, prayerId);
-			break;
-		case RIGOUR:
-		case AUGURY:
-			resetPrayers(player, DEFENCE_PRAYERS, prayerId);
-			resetPrayers(player, STRENGTH_PRAYERS, prayerId);
-			resetPrayers(player, ATTACK_PRAYERS, prayerId);
-			resetPrayers(player, RANGED_PRAYERS, prayerId);
-			resetPrayers(player, MAGIC_PRAYERS, prayerId);
-			break;
-		case RETRIBUTION:
-		case REDEMPTION:
-		case SMITE:
-			resetPrayers(player, OVERHEAD_PRAYERS, prayerId);
-			break;
+			case FURY_SWIPE -> resetPrayers(player, DISABLED_WITH_FURY_SWIPE, prayerId);
+			case HUNTERS_EYE -> resetPrayers(player, DISABLED_WITH_HUNTERS_EYE, prayerId);
+			case DESTRUCTION -> resetPrayers(player, DISABLED_WITH_DESTRUCTION, prayerId);
+			case FORTITUDE -> resetPrayers(player, DISABLED_WITH_FORTITUDE, prayerId);
+			case THICK_SKIN, ROCK_SKIN, STEEL_SKIN -> resetPrayers(player, DEFENCE_PRAYERS, prayerId);
+			case BURST_OF_STRENGTH, SUPERHUMAN_STRENGTH, ULTIMATE_STRENGTH -> {
+				resetPrayers(player, STRENGTH_PRAYERS, prayerId);
+				resetPrayers(player, RANGED_PRAYERS, prayerId);
+				resetPrayers(player, MAGIC_PRAYERS, prayerId);
+			}
+			case CLARITY_OF_THOUGHT, IMPROVED_REFLEXES, INCREDIBLE_REFLEXES -> {
+				resetPrayers(player, ATTACK_PRAYERS, prayerId);
+				resetPrayers(player, RANGED_PRAYERS, prayerId);
+				resetPrayers(player, MAGIC_PRAYERS, prayerId);
+			}
+			case SHARP_EYE, HAWK_EYE, EAGLE_EYE, MYSTIC_WILL, MYSTIC_LORE, MYSTIC_MIGHT -> {
+				resetPrayers(player, STRENGTH_PRAYERS, prayerId);
+				resetPrayers(player, ATTACK_PRAYERS, prayerId);
+				resetPrayers(player, RANGED_PRAYERS, prayerId);
+				resetPrayers(player, MAGIC_PRAYERS, prayerId);
+			}
+			case CHIVALRY, PIETY, RIGOUR, AUGURY -> {
+				resetPrayers(player, DEFENCE_PRAYERS, prayerId);
+				resetPrayers(player, STRENGTH_PRAYERS, prayerId);
+				resetPrayers(player, ATTACK_PRAYERS, prayerId);
+				resetPrayers(player, RANGED_PRAYERS, prayerId);
+				resetPrayers(player, MAGIC_PRAYERS, prayerId);
+			}
+			case PROTECT_FROM_MAGIC, PROTECT_FROM_MISSILES, PROTECT_FROM_MELEE ->
+					resetPrayers(player, OVERHEAD_PRAYERS, prayerId);
+			case RETRIBUTION, REDEMPTION, SMITE -> resetPrayers(player, OVERHEAD_PRAYERS, prayerId);
 		}
 		/*
 		 * if (player.isPrayerInjured()) { if (prayerId == PROTECT_FROM_MAGIC ||
@@ -576,8 +492,7 @@ public class PrayerHandler {
 
 	/**
 	 * Checks if action button ID is a prayer button.
-	 * 
-	 * @param buttonId action button being hit.
+	 *
 	 */
 	public static final boolean isButton(final int actionButtonID) {
 		return PrayerData.actionButton.containsKey(actionButtonID);
@@ -588,8 +503,7 @@ public class PrayerHandler {
 			RAPID_HEAL = 9, PROTECT_ITEM = 10, HAWK_EYE = 11, MYSTIC_LORE = 12, STEEL_SKIN = 13, ULTIMATE_STRENGTH = 14,
 			INCREDIBLE_REFLEXES = 15, PROTECT_FROM_MAGIC = 16, PROTECT_FROM_MISSILES = 17, PROTECT_FROM_MELEE = 18,
 			EAGLE_EYE = 19, MYSTIC_MIGHT = 20, RETRIBUTION = 21, REDEMPTION = 22, SMITE = 23, CHIVALRY = 24, PIETY = 25,
-			RIGOUR = 26, AUGURY = 27, DESTRUCTION = 28, HUNTERS_EYE = 29,
-			FORTITUDE = 30, GNOMES_GREED = 31,
+			RIGOUR = 26, AUGURY = 27, DESTRUCTION = 28, HUNTERS_EYE = 29, FORTITUDE = 30, GNOMES_GREED = 31,
 			SOUL_LEECH = 32, FURY_SWIPE = 33;
 
 	private static final int[] DISABLED_WITH_FURY_SWIPE = {HUNTERS_EYE, DESTRUCTION, FORTITUDE};

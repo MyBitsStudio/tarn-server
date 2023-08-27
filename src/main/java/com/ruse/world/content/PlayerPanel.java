@@ -1,12 +1,13 @@
 package com.ruse.world.content;
 
 import com.ruse.GameSettings;
+import com.ruse.model.definitions.NpcDefinition;
 import com.ruse.motivote3.doMotivote;
 import com.ruse.util.Misc;
 import com.ruse.world.World;
+import com.ruse.world.packages.combat.drops.DropCalculator;
 import com.ruse.world.packages.donation.DonationManager;
 import com.ruse.world.content.serverperks.ServerPerks;
-import com.ruse.world.content.skill.impl.slayer.SlayerTasks;
 import com.ruse.world.packages.globals.GlobalBossManager;
 import com.ruse.world.packages.mode.impl.*;
 import com.ruse.world.packages.panels.EventPanel;
@@ -74,8 +75,8 @@ public class PlayerPanel {
 
                 "@whi@Others: @yel@",
 
-                "@whi@Droprate bonus: @yel@" + CustomDropUtils.drBonus(player, player.getSlayer().getSlayerTask().getNpcId()) + "%",
-                "@whi@Double drop bonus: @yel@" + CustomDropUtils.getDoubleDropChance(player, player.getSlayer().getSlayerTask().getNpcId()) + "%",
+                "@whi@Droprate bonus: @yel@" + DropCalculator.getDropChance(player, 9837) + "%",
+                "@whi@Double drop bonus: @yel@" + DropCalculator.getDoubleDropChance(player, 9837) + "%",
                 "@whi@Points & Statistics",
                 "@whi@NPC kill Count: @yel@ " + player.getPointsHandler().getNPCKILLCount(),
                 "@whi@Donator Points: @yel@" + player.getPointsHandler().getDonatorPoints(),
@@ -94,13 +95,12 @@ public class PlayerPanel {
 
         Messages = new String[]{"@whi@Slayer Information",
                 "@whi@Master: @yel@" + Misc
-                        .formatText(player.getSlayer().getSlayerMaster().toString().toLowerCase().replaceAll("_", " ")),
-                (player.getSlayer().getSlayerTask() == SlayerTasks.NO_TASK
-                        ? "@whi@Task: @yel@" + player.getSlayer().getSlayerTask().getName()
-                        : "@whi@Task: @yel@" + player.getSlayer().getSlayerTask().getName()
-                        + "s"),
-                "@whi@Amount: @yel@" + player.getSlayer().getAmountToSlay(),
-                "@whi@Streak: @yel@" + player.getSlayer().getTaskStreak(),
+                        .formatText(player.getSlayer().getMaster().toString().toLowerCase().replaceAll("_", " ")),
+                (player.getSlayer().getTask() != null
+                        ? "@whi@Task: @yel@" + NpcDefinition.forId(player.getSlayer().getTask().getId()).getName()
+                        : "@whi@Task: @yel@None"),
+                "@whi@Amount: @yel@" + (player.getSlayer().getTask() != null ? player.getSlayer().getTask().getAmount() - player.getSlayer().getTask().getSlayed() : 0),
+                "@whi@Streak: @yel@" + player.getSlayer().getStreak(),
                 "@whi@Slayer Multiplier: @yel@ " + player.getPointsHandler().getSlayerRate() + "%",
                 "@whi@Slayer Points: @yel@ " + player.getPointsHandler().getSlayerPoints() + " ",
                 // (player.getSlayer().getDuoPartner() != null

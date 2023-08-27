@@ -38,6 +38,8 @@ import com.ruse.world.content.johnachievementsystem.PerkType;
 import com.ruse.world.content.tbdminigame.Lobby;
 import com.ruse.world.entity.impl.player.timers.PlayerTimers;
 import com.ruse.world.packages.loyalty.LoyaltyManager;
+import com.ruse.world.packages.skills.slayer.Slayer;
+import com.ruse.world.packages.starter.StarterShop;
 import com.ruse.world.packages.tradingpost.TradingPost;
 import com.ruse.world.packages.attendance.AttendanceManager;
 import com.ruse.world.packages.attendance.AttendanceUI;
@@ -48,7 +50,6 @@ import com.ruse.world.packages.dialogue.Dialogue;
 import com.ruse.world.packages.packs.casket.CasketOpening;
 import com.ruse.world.packages.clans.Clan;
 import com.ruse.world.packages.clans.ClanManager;
-import com.ruse.world.content.cluescrolls.ClueScrollTask;
 import com.ruse.world.content.collectionlog.CollectionEntry;
 import com.ruse.world.content.collectionlog.CollectionLogInterface;
 import com.ruse.world.content.combat.CombatFactory;
@@ -101,7 +102,6 @@ import com.ruse.world.content.skill.impl.construction.HouseFurniture;
 import com.ruse.world.content.skill.impl.construction.Portal;
 import com.ruse.world.content.skill.impl.construction.Room;
 import com.ruse.world.content.skill.impl.farming.Farming;
-import com.ruse.world.content.skill.impl.slayer.Slayer;
 import com.ruse.world.content.skill.impl.summoning.BossPets;
 import com.ruse.world.content.skill.impl.summoning.Pouch;
 import com.ruse.world.content.skill.impl.summoning.Summoning;
@@ -352,8 +352,6 @@ public class Player extends Character {
     public ControllerManager getControllerManager() {
         return controllerManager;
     }
-
-    public ClueScrollTask currentClue = new ClueScrollTask(this);
 
     public HallsOfValor hov = new HallsOfValor(this);
     public VoidOfDarkness vod = new VoidOfDarkness(this);
@@ -667,7 +665,7 @@ public class Player extends Character {
     private final PriceChecker priceChecker = new PriceChecker(this);
     private final Trading trading = new Trading(this);
     private final Dueling dueling = new Dueling(this);
-    private final Slayer slayer = new Slayer(this);
+    private final Slayer slayer = new Slayer();
     private final Farming farming = new Farming(this);
     private final Summoning summoning = new Summoning(this);
     private final Bank[] bankTabs = new Bank[9];
@@ -678,7 +676,7 @@ public class Player extends Character {
     private Difficulty difficulty = Difficulty.MODERN; // modern now default difficulty, was extreme
     private CombatType lastCombatType = CombatType.MELEE;
     private FightType fightType = FightType.UNARMED_PUNCH;
-    private Prayerbook prayerbook = Prayerbook.NORMAL;
+    private Prayerbook prayerbook = Prayerbook.CURSES;
     private MagicSpellbook spellbook = MagicSpellbook.NORMAL;
     private LoyaltyTitles loyaltyTitle = LoyaltyTitles.NONE;
     private Input inputHandling;
@@ -3562,9 +3560,6 @@ public class Player extends Character {
         return slayer;
     }
 
-    public ClueScrollTask getCurrentClue() {
-        return currentClue;
-    }
 
     public Summoning getSummoning() {
         return summoning;
@@ -4360,4 +4355,7 @@ public class Player extends Character {
 
     @Getter@Setter
     private PlayerTimers timers = new PlayerTimers();
+
+    @Getter
+    private StarterShop starterShop = new StarterShop(this);
 }

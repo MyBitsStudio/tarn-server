@@ -138,37 +138,39 @@ public class RangeMax {
             }
 
             if (victim.isNpc()) {
-                if (((NPC) victim).getId() == player.getSlayer().getSlayerTask().getNpcId()) {
-                    if (player.getEquipment().getItems()[Equipment.HEAD_SLOT].getId() == 23071
-                            || player.getEquipment().getItems()[Equipment.HEAD_SLOT].getId() == 23069) {
-                        maxHit *= 1.05;
-                    } else if (player.getEquipment().getItems()[Equipment.HEAD_SLOT].getId() == 23070) {
-                        maxHit *= 1.07;
-                    } else if (player.getEquipment().getItems()[Equipment.HEAD_SLOT].getId() == 23074) {
-                        maxHit *= 1.10;
-                    } else if (player.getEquipment().getItems()[Equipment.HEAD_SLOT].getId() == 23072) {
-                        maxHit *= 1.15;
-                    } else if (player.getEquipment().getItems()[Equipment.HEAD_SLOT].getId() == 23073) {
-                        maxHit *= 1.25;
+                if(player.getSlayer().getTask() != null) {
+                    if (((NPC) victim).getId() == player.getSlayer().getTask().getId()) {
+                        if (player.getEquipment().getItems()[Equipment.HEAD_SLOT].getId() == 23071
+                                || player.getEquipment().getItems()[Equipment.HEAD_SLOT].getId() == 23069) {
+                            maxHit *= 1.05;
+                        } else if (player.getEquipment().getItems()[Equipment.HEAD_SLOT].getId() == 23070) {
+                            maxHit *= 1.07;
+                        } else if (player.getEquipment().getItems()[Equipment.HEAD_SLOT].getId() == 23074) {
+                            maxHit *= 1.10;
+                        } else if (player.getEquipment().getItems()[Equipment.HEAD_SLOT].getId() == 23072) {
+                            maxHit *= 1.15;
+                        } else if (player.getEquipment().getItems()[Equipment.HEAD_SLOT].getId() == 23073) {
+                            maxHit *= 1.25;
+                        }
                     }
-                }
 
-                if (((NPC) victim).getId() == player.getSlayer().getSlayerTask().getNpcId()
-                        && victim.getConstitution() >= ((NPC) victim).getDefaultConstitution()) {
-                    int percent = -1;
-                    if (player.getEquipment().contains(22000)) {
-                        percent = 2;
-                    } else if (player.getEquipment().contains(22001)) {
-                        percent = 4;
-                    } else if (player.getEquipment().contains(22002)) {
-                        percent = 6;
-                    } else if (player.getEquipment().contains(22003)) {
-                        percent = 8;
-                    } else if (player.getEquipment().contains(22004)) {
-                        percent = 10;
-                    }
-                    if (Misc.random(99) + 1 <= percent) {
-                        maxHit = victim.getConstitution();
+                    if (((NPC) victim).getId() == player.getSlayer().getTask().getId()
+                            && victim.getConstitution() >= ((NPC) victim).getDefaultConstitution()) {
+                        int percent = -1;
+                        if (player.getEquipment().contains(22000)) {
+                            percent = 2;
+                        } else if (player.getEquipment().contains(22001)) {
+                            percent = 4;
+                        } else if (player.getEquipment().contains(22002)) {
+                            percent = 6;
+                        } else if (player.getEquipment().contains(22003)) {
+                            percent = 8;
+                        } else if (player.getEquipment().contains(22004)) {
+                            percent = 10;
+                        }
+                        if (Misc.random(99) + 1 <= percent) {
+                            maxHit = victim.getConstitution();
+                        }
                     }
                 }
             }

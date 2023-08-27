@@ -58,7 +58,6 @@ import com.ruse.world.content.skill.impl.fletching.Fletching;
 import com.ruse.world.content.skill.impl.herblore.ingredientsBook;
 import com.ruse.world.content.skill.impl.old_dungeoneering.Dungeoneering;
 import com.ruse.world.content.skill.impl.old_dungeoneering.ItemBinding;
-import com.ruse.world.content.skill.impl.slayer.Slayer;
 import com.ruse.world.content.skill.impl.smithing.SmithingData;
 import com.ruse.world.content.skill.impl.summoning.PouchMaking;
 import com.ruse.world.content.skill.impl.summoning.SummoningTab;
@@ -147,10 +146,17 @@ public class ButtonClickPacketListener implements PacketListener {
         if (player.getSeasonPass().handleButtonClick(id)) {
             return;
         }
+        if(player.getSlayer().handleButtons(player, id)) {
+            return;
+        }
         if (checkHandlers(player, id))
             return;
 
         player.getGambling().handleChoice(id);
+
+        if(player.getStarterShop().handleButton(id)) {
+            return;
+        }
 
         if(player.getEquipmentEnhancement().handleButtonClick(id)){
             return;
@@ -1951,9 +1957,9 @@ public class ButtonClickPacketListener implements PacketListener {
         if (player.getLocation() == Location.DUEL_ARENA && Dueling.handleDuelingButtons(player, id)) {
             return true;
         }
-        if (Slayer.handleRewardsInterface(player, id)) {
-            return true;
-        }
+//        if (Slayer.handleRewardsInterface(player, id)) {
+//            return true;
+//        }
         if (ExperienceLamps.handleButton(player, id)) {
             return true;
         }

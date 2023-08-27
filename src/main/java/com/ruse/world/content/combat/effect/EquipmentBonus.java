@@ -41,24 +41,6 @@ public class EquipmentBonus {
 		return false;
 	}
 
-	public static boolean slayerMageBonus(Player player, NPC npc) {
-		if (npc.getId() == player.getSlayer().getSlayerTask().getNpcId()
-				&& (player.getEquipment().getItems()[Equipment.HEAD_SLOT].getId() == 15492
-						|| player.getEquipment().getItems()[Equipment.HEAD_SLOT].getId() == 15488)) {
-			return true;
-		}
-		return false;
-	}
-
-	public static boolean SoulsplitARMOUR(Player player, NPC npc) {
-		if (npc.getId() == player.getSlayer().getSlayerTask().getNpcId()
-				&& (player.getEquipment().getItems()[Equipment.HEAD_SLOT].getId() == 15492
-						|| player.getEquipment().getItems()[Equipment.HEAD_SLOT].getId() == 15488)) {
-			return true;
-		}
-		return false;
-	}
-
 	/*
 	 * HELMS -> 11665 Melee, 11664 Range, 11663 Mage DEFLECTOR -> 19712 BODY -> 8839
 	 * LEGS -> 8840 GLOVES -> 8842 ELITE BODY -> 19785 ELITE LEGS -> 19786

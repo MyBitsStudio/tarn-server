@@ -150,13 +150,6 @@
 			<version>4.5.14</version>
 		</dependency>
 		<dependency>
-			<groupId>com.everythingrs</groupId>
-			<artifactId>everythingrs-api</artifactId>
-			<version>1.0</version>
-			<scope>system</scope>
-			<systemPath>${project.basedir}/libs/everythingrs-api.jar</systemPath>
-		</dependency>
-		<dependency>
 			<groupId>com.motivoters</groupId>
 			<artifactId>mvgate</artifactId>
 			<version>3.0</version>

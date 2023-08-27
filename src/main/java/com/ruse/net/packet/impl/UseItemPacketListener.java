@@ -41,14 +41,10 @@ import com.ruse.world.content.skill.impl.herblore.PotionCombinating;
 import com.ruse.world.content.skill.impl.herblore.WeaponPoison;
 import com.ruse.world.content.skill.impl.prayer.BonesOnAltar;
 import com.ruse.world.content.skill.impl.prayer.Prayer;
-import com.ruse.world.content.skill.impl.slayer.SlayerTasks;
 import com.ruse.world.content.skill.impl.smithing.EquipmentMaking;
 import com.ruse.world.content.skill.impl.smithing.Smelting;
 import com.ruse.world.entity.impl.npc.NPC;
 import com.ruse.world.entity.impl.player.Player;
-import com.ruse.world.packages.dialogue.DialogueManager;
-import com.ruse.world.packages.dialogue.impl.slayer.InviteDuo;
-import com.ruse.world.packages.mode.impl.GroupIronman;
 import com.ruse.world.packages.mode.impl.UltimateIronman;
 import com.ruse.world.packages.plus.PlusUpgrade;
 import com.ruse.world.packages.plus.PlusUpgrades;
@@ -784,39 +780,8 @@ public class UseItemPacketListener implements PacketListener {
 //                DialogueManager.start(partyDung, new DungPartyInvitation(player, partyDung));
 //                player.getPacketSender().sendMessage("An invitation has been sent to " + partyDung.getUsername());
 //            }
-            case 4566 -> player.performAnimation(new Animation(451));
-            case 4155 -> {
-                if (player.getSlayer().getDuoPartner() != null) {
-                    player.getPacketSender().sendMessage("You already have a duo partner.");
-                    return;
-                }
-                if (player.getSlayer().getSlayerTask() != SlayerTasks.NO_TASK) {
-                    player.getPacketSender().sendMessage("You already have a Slayer task. You must reset it first.");
-                    return;
-                }
-                Player duoPartner = World.getPlayers().get(targetIndex);
-                if (duoPartner != null) {
-                    if (duoPartner.getSlayer().getDuoPartner() != null) {
-                        player.getPacketSender().sendMessage("This player already has a duo partner.");
-                        return;
-                    }
-                    if (duoPartner.getSlayer().getSlayerTask() != SlayerTasks.NO_TASK) {
-                        player.getPacketSender().sendMessage("This player already has a Slayer task.");
-                        return;
-                    }
-                    if (duoPartner.getSlayer().getSlayerMaster() != player.getSlayer().getSlayerMaster()) {
-                        player.getPacketSender().sendMessage("You do not have the same Slayer master as that player.");
-                        return;
-                    }
-                    if (duoPartner.busy() || duoPartner.getLocation() == Location.WILDERNESS) {
-                        player.getPacketSender().sendMessage("This player is currently busy.");
-                        return;
-                    }
-                    DialogueManager.sendDialogue(duoPartner, new InviteDuo(duoPartner, player), -1);
-                    player.getPacketSender()
-                            .sendMessage("You have invited " + duoPartner.getUsername() + " to join your Slayer duo team.");
-                }
-            }
+//            case 4566 -> player.performAnimation(new Animation(451));
+            case 4155 -> player.getSlayer().handleSlayerTask(player, 1);
         }
     }
 

@@ -20,8 +20,6 @@ import com.ruse.world.packages.packs.casket.Box;
 import com.ruse.world.packages.packs.casket.BoxLoot;
 import com.ruse.world.packages.packs.casket.impl.EliteSlayerCasket;
 import com.ruse.world.packages.packs.casket.impl.SlayerCasket;
-import com.ruse.world.content.cluescrolls.ClueScroll;
-import com.ruse.world.content.cluescrolls.ClueScrollReward;
 import com.ruse.world.content.cluescrolls.OLD_ClueScrolls;
 import com.ruse.world.content.combat.prayer.PrayerHandler;
 import com.ruse.world.packages.dissolve.DissolveItem;
@@ -34,7 +32,6 @@ import com.ruse.world.content.skill.impl.old_dungeoneering.ItemBinding;
 import com.ruse.world.content.skill.impl.prayer.Prayer;
 import com.ruse.world.content.skill.impl.runecrafting.RunecraftingPouches;
 import com.ruse.world.content.skill.impl.runecrafting.RunecraftingPouches.RunecraftingPouch;
-import com.ruse.world.content.skill.impl.slayer.SlayerTasks;
 import com.ruse.world.content.skill.impl.summoning.CharmingImp;
 import com.ruse.world.content.skill.impl.summoning.SummoningData;
 import com.ruse.world.content.skill.impl.woodcutting.BirdNests;
@@ -227,43 +224,35 @@ public class ItemActionPacketListener implements PacketListener {
                 DialogueManager.sendDialogue(player, new RedeemBond(player, itemId, false), -1);
                 break;
 
-//            case 20506:
-//                new EnhancementChest().openPack(player);
-//                break;
-//
-//            case 20507:
-//                new OwnersUltimateChest().openPack(player);
-//                break;
-//
-//            case 20498:
-//                new TicketPack().openPack(player);
-//                break;
-//
-//            case 20500:
-//                new CounterPack().openPack(player);
-//                break;
-//            case 23252:
-//                new CertPack1().openPack(player);
-//                break;
-//            case 23253:
-//                new CertPack2().openPack(player);
-//                break;
-//
-//            case 20501:
-//                new EventPack().openPack(player);
-//                break;
-//
-//            case 20502:
-//                new DonatorPack().openPack(player);
-//                break;
-//
-//            case 20505:
-//                new YoutubePack().openPack(player);
-//                break;
-//
-//            case 23225:
-//                new ArmorRandomPack().openPack(player);
-//                break;
+            case 23166:
+                if(player.getPSettings().getBooleanValue("instance-unlock")){
+                    player.sendMessage("You already have this unlocked.");
+                    return;
+                }
+                player.getInventory().delete(23166, 1);
+                player.getPSettings().setSetting("instance-unlock", true);
+                player.sendMessage("You've unlocked the ability to create instances.");
+                break;
+
+            case 23167:
+                if(player.getPSettings().getBooleanValue("holy-unlock")){
+                    player.sendMessage("You already have this unlocked.");
+                    return;
+                }
+                player.getInventory().delete(23167, 1);
+                player.getPSettings().setSetting("holy-unlock", true);
+                player.sendMessage("You've unlocked the ability to use holy prayers.");
+                break;
+
+            case 23168:
+                if(player.getPSettings().getBooleanValue("raid-unlock")){
+                    player.sendMessage("You already have this unlocked.");
+                    return;
+                }
+                player.getInventory().delete(23168, 1);
+                player.getPSettings().setSetting("raid-unlock", true);
+                player.sendMessage("You've unlocked the ability to enter raids.");
+                break;
 
 //            case 23210:
 //                DialogueManager.start(player, 11050);
@@ -302,98 +291,73 @@ public class ItemActionPacketListener implements PacketListener {
                 break;
 
 
-            case PrayerHandler.HOLY_SCROLL_DESTRUCTION_ITEM:
-                if(!player.isHolyPrayerUnlocked(PrayerHandler.HOLY_DESTRUCTION_IDX)) {
-                    player.setUnlockedHolyPrayer(PrayerHandler.HOLY_DESTRUCTION_IDX, true);
-                    player.getInventory().delete(PrayerHandler.HOLY_SCROLL_DESTRUCTION_ITEM, 1);
-                    player.sendMessage("You unlock the Warlock holy prayer.");
-                    World.sendMessage("<shad=15536940><img=5> " + player.getUsername()
-                            + " has unlocked the " + "<col=ff4f4f>Warlock " + "prayer!");
-                } else {
-                    player.sendMessage("You have already unlocked this prayer!");
-                }
-                break;
-            case PrayerHandler.HOLY_SCROLL_HUNTERS_EYE_ITEM:
-                if(!player.isHolyPrayerUnlocked(PrayerHandler.HOLY_HUNTERS_EYE_IDX)) {
-                    player.setUnlockedHolyPrayer(PrayerHandler.HOLY_HUNTERS_EYE_IDX, true);
-                    player.getInventory().delete(PrayerHandler.HOLY_SCROLL_HUNTERS_EYE_ITEM, 1);
-                    player.sendMessage("You unlock the Knight holy prayer.");
-                    World.sendMessage("<shad=15536940><img=5> " + player.getUsername()
-                            + " has unlocked the " + "<col=ff4f4f>Knight " + "prayer!");
-                } else {
-                    player.sendMessage("You have already unlocked this prayer!");
-                }
-                break;
-            case PrayerHandler.HOLY_SCROLL_FORTITUDE_ITEM:
-                if(!player.isHolyPrayerUnlocked(PrayerHandler.HOLY_FORTITUDE_IDX)) {
-                    player.setUnlockedHolyPrayer(PrayerHandler.HOLY_FORTITUDE_IDX, true);
-                    player.getInventory().delete(PrayerHandler.HOLY_SCROLL_FORTITUDE_ITEM, 1);
-                    player.sendMessage("You unlock the Marksman holy prayer.");
-                    World.sendMessage("<shad=15536940><img=5> " + player.getUsername()
-                            + " has unlocked the " + "<col=ff4f4f>Marksman " + "prayer!");
-                } else {
-                    player.sendMessage("You have already unlocked this prayer!");
-                }
-                break;
-            case PrayerHandler.HOLY_SCROLL_GNOMES_GREED_ITEM:
-                if(!player.isHolyPrayerUnlocked(PrayerHandler.HOLY_GNOMES_GREED_IDX)) {
-                    player.setUnlockedHolyPrayer(PrayerHandler.HOLY_GNOMES_GREED_IDX, true);
-                    player.getInventory().delete(PrayerHandler.HOLY_SCROLL_GNOMES_GREED_ITEM, 1);
-                    player.sendMessage("You unlock the Prosperous holy prayer.");
-                    World.sendMessage("<shad=15536940><img=5> " + player.getUsername()
-                            + " has unlocked the " + "<col=ff4f4f>Prosperous " + "prayer!");
-                } else {
-                    player.sendMessage("You have already unlocked this prayer!");
-                }
-                break;
-            case PrayerHandler.HOLY_SCROLL_SOUL_LEECH_ITEM:
-                if(!player.isHolyPrayerUnlocked(PrayerHandler.HOLY_SOUL_LEECH_IDX)) {
-                    player.setUnlockedHolyPrayer(PrayerHandler.HOLY_SOUL_LEECH_IDX, true);
-                    player.getInventory().delete(PrayerHandler.HOLY_SCROLL_SOUL_LEECH_ITEM, 1);
-                    player.sendMessage("You unlock the Sovereignty holy prayer.");
-                    World.sendMessage("<shad=15536940><img=5> " + player.getUsername()
-                            + " has unlocked the " + "<col=ff4f4f>Sovereignty " + "prayer!");
-                } else {
-                    player.sendMessage("You have already unlocked this prayer!");
-                }
-                break;
-            case PrayerHandler.HOLY_SCROLL_FURY_SWIPE_ITEM:
-                if(!player.isHolyPrayerUnlocked(PrayerHandler.HOLY_FURY_SWIPE_IDX)) {
-                    player.setUnlockedHolyPrayer(PrayerHandler.HOLY_FURY_SWIPE_IDX, true);
-                    player.getInventory().delete(PrayerHandler.HOLY_SCROLL_FURY_SWIPE_ITEM, 1);
-                    player.sendMessage("You unlock the Trinity holy prayer.");
-                    World.sendMessage("<shad=15536940><img=5> " + player.getUsername()
-                            + " has unlocked the " + "<col=ff4f4f>Trinity " + "prayer!");
-                } else {
-                    player.sendMessage("You have already unlocked this prayer!");
-                }
-                break;
+//            case PrayerHandler.HOLY_SCROLL_DESTRUCTION_ITEM:
+//                if(!player.isHolyPrayerUnlocked(PrayerHandler.HOLY_DESTRUCTION_IDX)) {
+//                    player.setUnlockedHolyPrayer(PrayerHandler.HOLY_DESTRUCTION_IDX, true);
+//                    player.getInventory().delete(PrayerHandler.HOLY_SCROLL_DESTRUCTION_ITEM, 1);
+//                    player.sendMessage("You unlock the Warlock holy prayer.");
+//                    World.sendMessage("<shad=15536940><img=5> " + player.getUsername()
+//                            + " has unlocked the " + "<col=ff4f4f>Warlock " + "prayer!");
+//                } else {
+//                    player.sendMessage("You have already unlocked this prayer!");
+//                }
+//                break;
+//            case PrayerHandler.HOLY_SCROLL_HUNTERS_EYE_ITEM:
+//                if(!player.isHolyPrayerUnlocked(PrayerHandler.HOLY_HUNTERS_EYE_IDX)) {
+//                    player.setUnlockedHolyPrayer(PrayerHandler.HOLY_HUNTERS_EYE_IDX, true);
+//                    player.getInventory().delete(PrayerHandler.HOLY_SCROLL_HUNTERS_EYE_ITEM, 1);
+//                    player.sendMessage("You unlock the Knight holy prayer.");
+//                    World.sendMessage("<shad=15536940><img=5> " + player.getUsername()
+//                            + " has unlocked the " + "<col=ff4f4f>Knight " + "prayer!");
+//                } else {
+//                    player.sendMessage("You have already unlocked this prayer!");
+//                }
+//                break;
+//            case PrayerHandler.HOLY_SCROLL_FORTITUDE_ITEM:
+//                if(!player.isHolyPrayerUnlocked(PrayerHandler.HOLY_FORTITUDE_IDX)) {
+//                    player.setUnlockedHolyPrayer(PrayerHandler.HOLY_FORTITUDE_IDX, true);
+//                    player.getInventory().delete(PrayerHandler.HOLY_SCROLL_FORTITUDE_ITEM, 1);
+//                    player.sendMessage("You unlock the Marksman holy prayer.");
+//                    World.sendMessage("<shad=15536940><img=5> " + player.getUsername()
+//                            + " has unlocked the " + "<col=ff4f4f>Marksman " + "prayer!");
+//                } else {
+//                    player.sendMessage("You have already unlocked this prayer!");
+//                }
+//                break;
+//            case PrayerHandler.HOLY_SCROLL_GNOMES_GREED_ITEM:
+//                if(!player.isHolyPrayerUnlocked(PrayerHandler.HOLY_GNOMES_GREED_IDX)) {
+//                    player.setUnlockedHolyPrayer(PrayerHandler.HOLY_GNOMES_GREED_IDX, true);
+//                    player.getInventory().delete(PrayerHandler.HOLY_SCROLL_GNOMES_GREED_ITEM, 1);
+//                    player.sendMessage("You unlock the Prosperous holy prayer.");
+//                    World.sendMessage("<shad=15536940><img=5> " + player.getUsername()
+//                            + " has unlocked the " + "<col=ff4f4f>Prosperous " + "prayer!");
+//                } else {
+//                    player.sendMessage("You have already unlocked this prayer!");
+//                }
+//                break;
+//            case PrayerHandler.HOLY_SCROLL_SOUL_LEECH_ITEM:
+//                if(!player.isHolyPrayerUnlocked(PrayerHandler.HOLY_SOUL_LEECH_IDX)) {
+//                    player.setUnlockedHolyPrayer(PrayerHandler.HOLY_SOUL_LEECH_IDX, true);
+//                    player.getInventory().delete(PrayerHandler.HOLY_SCROLL_SOUL_LEECH_ITEM, 1);
+//                    player.sendMessage("You unlock the Sovereignty holy prayer.");
+//                    World.sendMessage("<shad=15536940><img=5> " + player.getUsername()
+//                            + " has unlocked the " + "<col=ff4f4f>Sovereignty " + "prayer!");
+//                } else {
+//                    player.sendMessage("You have already unlocked this prayer!");
+//                }
+//                break;
+//            case PrayerHandler.HOLY_SCROLL_FURY_SWIPE_ITEM:
+//                if(!player.isHolyPrayerUnlocked(PrayerHandler.HOLY_FURY_SWIPE_IDX)) {
+//                    player.setUnlockedHolyPrayer(PrayerHandler.HOLY_FURY_SWIPE_IDX, true);
+//                    player.getInventory().delete(PrayerHandler.HOLY_SCROLL_FURY_SWIPE_ITEM, 1);
+//                    player.sendMessage("You unlock the Trinity holy prayer.");
+//                    World.sendMessage("<shad=15536940><img=5> " + player.getUsername()
+//                            + " has unlocked the " + "<col=ff4f4f>Trinity " + "prayer!");
+//                } else {
+//                    player.sendMessage("You have already unlocked this prayer!");
+//                }
+//                break;
 
-            case 2677:
-                if (ClueScroll.readClue(player, ClueScroll.EASY)) {
-                    player.getInventory().delete(itemId, 1);
-                    ClueScrollReward reward = ClueScrollReward.getWeightedReward(ClueScroll.EASY);
-                    player.getInventory().add(reward.getItemId(), Misc.getRandom(reward.getMinAmt(), reward.getMaxAmt()));
-
-                }
-                break;
-            case 2831:
-                if (ClueScroll.readClue(player, ClueScroll.MEDIUM)) {
-                    player.getInventory().delete(itemId, 1);
-                    ClueScrollReward reward = ClueScrollReward.getWeightedReward(ClueScroll.MEDIUM);
-                    player.getInventory().add(reward.getItemId(), Misc.getRandom(reward.getMinAmt(), reward.getMaxAmt()));
-                    player.getCurrentClue().setLastTask(player.getCurrentClue().getCurrentTask());
-                    player.getCurrentClue().setCurrentTask(SlayerTasks.NO_TASK);
-
-                }
-                break;
-            case 2773:
-                if (ClueScroll.readClue(player, ClueScroll.HARD)) {
-                    player.getInventory().delete(itemId, 1);
-                    ClueScrollReward reward = ClueScrollReward.getWeightedReward(ClueScroll.HARD);
-                    player.getInventory().add(reward.getItemId(), Misc.getRandom(reward.getMinAmt(), reward.getMaxAmt()));
-                }
-                break;
             case 23002:
                 player.getWheelOfFortune().open();
                 break;
@@ -766,18 +730,7 @@ public class ItemActionPacketListener implements PacketListener {
                 player.getInventory().add(27, 1);
                 break;
             case 27:
-                player.getSlayer().handleSlayerRingTP(itemId);
-                break;
-            case 14819:
-                if (player.getSlayer().doubleSlayerXP) {
-                    player.getPacketSender().sendMessage("You already have Double Slayer Points.");
-                    return;
-                }
-                player.getInventory().delete(14819, 1);
-                // player.getPointsHandler().setSlayerPoints(-300, true);
-                player.getSlayer().doubleSlayerXP = true;
-                PlayerPanel.refreshPanel(player);
-                player.getPacketSender().sendMessage("You will now permanently receive double Slayer experience.");
+                player.getSlayer().handleSlayerTask(player, 2);
                 break;
             case 19775:
                 player.getPointsHandler().incrementGlobalRate(5);
@@ -1231,13 +1184,7 @@ public class ItemActionPacketListener implements PacketListener {
              * player.getPacketSender().sendMessage("holds the next piece."); break;
              */
             case 4155:
-                player.sendMessage("This is temporarily disabled");
-//                if (player.getSlayer().getSlayerTask() == SlayerTasks.NO_TASK) {
-//                    player.getPacketSender().sendInterfaceRemoval();
-//                    player.getPacketSender().sendMessage("You do not have a Slayer task.");
-//                    return;
-//                }
-//                DialogueManager.start(player, SlayerDialogues.dialogue(player));
+                player.getSlayer().handleGem(player, itemId, 1);
                 break;
             case 18719: // potion of flight
                 if (player.canFly()) {
@@ -1980,9 +1927,9 @@ public class ItemActionPacketListener implements PacketListener {
             case 11113 -> player.getPacketSender().sendMessage("All skill teleports are available in the skills tab.");
             case 1704 -> player.getPacketSender().sendMessage("Your amulet has run out of charges.");
             case 11126 -> player.getPacketSender().sendMessage("Your bracelet has run out of charges.");
-            case 13281, 13282, 13283, 13284, 13285, 13286, 13287, 13288 ->
-                    player.getSlayer().handleSlayerRingTP(itemId);
-            case 18819 -> player.getSlayer().handleSlayerRingTP2(itemId);
+//            case 13281, 13282, 13283, 13284, 13285, 13286, 13287, 13288 ->
+//                    player.getSlayer().handleSlayerRingTP(itemId);
+//            case 18819 -> player.getSlayer().handleSlayerRingTP2(itemId);
             case 5509, 5510, 5512, 5514 -> RunecraftingPouches.check(player, RunecraftingPouch.forId(itemId));
             case 2550 -> {
                 if (!player.getInventory().contains(2550)) {
@@ -2374,22 +2321,22 @@ public class ItemActionPacketListener implements PacketListener {
             case 6500:
                 CharmingImp.sendConfig(player);
                 break;
-            case 13281:
-            case 13282:
-            case 13283:
-            case 13284:
-            case 13285:
-            case 13286:
-            case 13287:
-            case 13288:
-            case 18819:
-                player.getPacketSender().sendInterfaceRemoval();
-                player.getPacketSender().sendMessage(player.getSlayer().getSlayerTask() == SlayerTasks.NO_TASK
-                        ? ("You do not have a Slayer task.")
-                        : ("You're assigned to kill "
-                        + player.getSlayer().getSlayerTask().getName()
-                        + "s, only " + player.getSlayer().getAmountToSlay() + " more to go."));
-                break;
+//            case 13281:
+//            case 13282:
+//            case 13283:
+//            case 13284:
+//            case 13285:
+//            case 13286:
+//            case 13287:
+//            case 13288:
+//            case 18819:
+//                player.getPacketSender().sendInterfaceRemoval();
+//                player.getPacketSender().sendMessage(player.getSlayer().getSlayerTask() == SlayerTasks.NO_TASK
+//                        ? ("You do not have a Slayer task.")
+//                        : ("You're assigned to kill "
+//                        + player.getSlayer().getSlayerTask().getName()
+//                        + "s, only " + player.getSlayer().getAmountToSlay() + " more to go."));
+//                break;
             case 6570:
                 if (player.getInventory().contains(6570) && player.getInventory().getAmount(6529) >= 50000) {
                     player.getInventory().delete(6570, 1).delete(6529, 50000).add(19111, 1);

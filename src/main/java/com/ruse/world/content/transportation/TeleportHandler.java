@@ -28,7 +28,9 @@ public class TeleportHandler {
 			return;
 		}*/
 
-		if(player.getInstance() != null){
+		if(player.getInstance() != null) {
+			player.getInstance().destroy();
+			player.setInstance(null);
 			return;
 		}
 

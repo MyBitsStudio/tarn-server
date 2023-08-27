@@ -9,15 +9,47 @@
         "chance" : 0,
         "min" : 10,
         "max" : 250,
-        "modifier" : 120.00,
+        "modifier" : 155.00,
         "announce" : false
       },
       {
-        "id" : 2023,
+        "id" : 2025,
         "chance" : 1,
         "min" : 1,
         "max" : 1,
         "modifier" : 1.00,
+        "announce" : false
+      },
+      {
+        "id" : 13727,
+        "chance" : 0,
+        "min" : 5,
+        "max" : 25,
+        "modifier" : 445.00,
+        "announce" : false
+      },
+      {
+        "id" : 23149,
+        "chance" : 1,
+        "min" : 1,
+        "max" : 1,
+        "modifier" : 895.00,
+        "announce" : false
+      },
+      {
+        "id" : 23148,
+        "chance" : 1,
+        "min" : 1,
+        "max" : 1,
+        "modifier" : 1495.00,
+        "announce" : false
+      },
+      {
+        "id" : 23147,
+        "chance" : 1,
+        "min" : 1,
+        "max" : 1,
+        "modifier" : 2125.00,
         "announce" : false
       }
     ]
@@ -34,6 +66,14 @@
         "max" : 2500,
         "modifier" : 80.00,
         "announce" : false
+      },
+      {
+        "id" : 4010,
+        "chance" : 1,
+        "min" : 1,
+        "max" : 1,
+        "modifier" : 1.00,
+        "announce" : false
       }
     ]
   },
@@ -48,6 +88,14 @@
         "min" : 500,
         "max" : 7500,
         "modifier" : 80.00,
+        "announce" : false
+      },
+      {
+        "id" : 2023,
+        "chance" : 1,
+        "min" : 1,
+        "max" : 1,
+        "modifier" : 1.00,
         "announce" : false
       }
     ]
@@ -64,6 +112,14 @@
         "max" : 25,
         "modifier" : 80.00,
         "announce" : false
+      },
+      {
+        "id" : 4011,
+        "chance" : 1,
+        "min" : 1,
+        "max" : 1,
+        "modifier" : 1.00,
+        "announce" : false
       }
     ]
   },
@@ -79,6 +135,14 @@
         "max" : 500,
         "modifier" : 80.00,
         "announce" : false
+      },
+      {
+        "id" : 4012,
+        "chance" : 1,
+        "min" : 1,
+        "max" : 1,
+        "modifier" : 1.00,
+        "announce" : false
       }
     ]
   },
@@ -93,6 +157,14 @@
         "min" : 100,
         "max" : 25000,
         "modifier" : 90.00,
+        "announce" : false
+      },
+      {
+        "id" : 4013,
+        "chance" : 1,
+        "min" : 1,
+        "max" : 1,
+        "modifier" : 1.00,
         "announce" : false
       }
     ]

@@ -228,8 +228,6 @@ public class ShopHandler {
     public static boolean handleShop(Player player, int interfaceId, int option, int slot, int id){
         if(interfaceId != 30929)
             return false;
-
-        System.out.println("Option: " + option + " Slot: " + slot + " Id: " + id);
         switch(option){
             case 1 -> {
                 Optional<TabShop> option1 = getShop(player.getVariables().getIntValue("active-shop"));
