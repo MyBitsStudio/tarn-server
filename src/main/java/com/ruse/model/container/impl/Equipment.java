@@ -9,7 +9,6 @@ import com.ruse.model.container.StackType;
 import com.ruse.model.definitions.WeaponAnimations;
 import com.ruse.model.definitions.WeaponInterfaces;
 import com.ruse.world.content.BonusManager;
-import com.ruse.world.content.CustomDropUtils;
 import com.ruse.world.content.combat.magic.Autocasting;
 import com.ruse.world.content.combat.weapon.CombatSpecial;
 import com.ruse.world.content.minigames.impl.Dueling;
@@ -168,9 +167,9 @@ public class Equipment extends ItemContainer {
 			case WEAPON_SLOT -> "Weapon";
 			case BODY_SLOT -> "Body";
 			case SHIELD_SLOT -> "Shield";
-			case AURA_SLOT -> "Aura";
+			case ENCHANTMENT_SLOT -> "Aura";
 			case LEG_SLOT -> "Legs";
-			case ENCHANTMENT_SLOT -> "Enchantment";
+			case AURA_SLOT -> "Enchantment";
 			case HANDS_SLOT -> "Hands";
 			case FEET_SLOT -> "Feet";
 			case HALO_SLOT -> "Halo";
@@ -291,6 +290,24 @@ public class Equipment extends ItemContainer {
 		return false;
 	}
 
+	public boolean hasDoubleSlayer(){
+		for (SlotBonus slotBonus : slotBonuses) {
+			if (slotBonus.getEffect() == SlotEffect.DOUBLE_SLAYER_TICK) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	public boolean hasFirewall(){
+		for (SlotBonus slotBonus : slotBonuses) {
+			if (slotBonus.getEffect() == SlotEffect.FIREWALL) {
+				return true;
+			}
+		}
+		return false;
+	}
+
 	public int getDamageBonus() {
 		for (SlotBonus slotBonus : slotBonuses) {
 			if (slotBonus.getEffect() == SlotEffect.ALL_DAMAGE) {
@@ -318,6 +335,10 @@ public class Equipment extends ItemContainer {
 			}
 		}
 		return bonus;
+	}
+
+	public boolean hasCollector(){
+		return contains(14880);
 	}
 
 	private void handleUnequip(int slot, int id){
@@ -474,9 +495,9 @@ public class Equipment extends ItemContainer {
 			case 6 -> WEAPON_SLOT;
 			case 7 -> BODY_SLOT;
 			case 8 -> SHIELD_SLOT;
-			case 9 -> ENCHANTMENT_SLOT;
+			case 11 -> ENCHANTMENT_SLOT;
 			case 10 -> LEG_SLOT;
-			case 11 -> AURA_SLOT;
+			case 9 -> AURA_SLOT;
 			case 12 -> HANDS_SLOT;
 			case 13 -> FEET_SLOT;
 			case 14 -> RING_SLOT;

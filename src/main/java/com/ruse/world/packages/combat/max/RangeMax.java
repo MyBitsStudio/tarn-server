@@ -65,10 +65,6 @@ public class RangeMax {
                 prayerMod = 1.25;
             } else if (PrayerHandler.isActivated(player,PrayerHandler.SOUL_LEECH)) {
                 prayerMod = 1.15 + (player.getLeechedBonuses()[2] * 0.01);
-                if (Misc.getRandom(100) <= 1) {
-                    player.setDoubleDMGTimer(1);
-                    // player.getPacketSender().sendMessage("Coup de grace activated");
-                }
             }
 
 
@@ -175,12 +171,16 @@ public class RangeMax {
                 }
             }
 
-            if (player.getDoubleDMGTimer() > 0) {
+            if (player.getVariables().getBooleanValue("double-damage")) {
                 maxHit *= 2;
             }
             if (player.getMinutesVotingDMG() > 0) {
                 maxHit *= 2;
             }
+
+            if(player.getEquipment().contains(15587))
+                maxHit *= 1.5;
+
             maxHit *= 10;
 
             maxHit *= player.getEquipment().getBonus() == null ? 1 : player.getEquipment().getBonus().rangeDamage();

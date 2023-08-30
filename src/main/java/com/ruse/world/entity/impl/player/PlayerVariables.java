@@ -32,6 +32,10 @@ public class PlayerVariables {
 
         settings.put("perk-chosen", Integer.parseInt("-1"));
         settings.put("monic-chosen", Integer.parseInt("-1"));
+
+        settings.put("double-dr", false);
+        settings.put("double-ddr", false);
+        settings.put("double-damage", false);
     }
 
     public void setSetting(String key, Object value){

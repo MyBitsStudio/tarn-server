@@ -107,7 +107,7 @@
         "restrict": 0,
         "items": [
           {
-            "id": 23147,
+            "id": 23149,
             "amount": 50,
             "price": 25
           },
@@ -117,7 +117,7 @@
             "price": 55
           },
           {
-            "id": 23149,
+            "id": 23147,
             "amount": 10,
             "price": 135
           },
@@ -176,12 +176,47 @@
       {
         "shopId": 3,
         "currency": "donation",
-        "shopName": "Coming Soon",
+        "shopName": "Equipment",
         "restrict": 0,
         "items": [
           {
-            "id": -1,
-            "amount": 0,
+            "id": 15589,
+            "amount": 5,
+            "price": 145
+          },
+          {
+            "id": 15588,
+            "amount": 5,
+            "price": 145
+          },
+          {
+            "id": 15587,
+            "amount": 5,
+            "price": 145
+          },
+          {
+            "id": 15585,
+            "amount": 5,
+            "price": 145
+          },
+          {
+            "id": 15586,
+            "amount": 5,
+            "price": 145
+          },
+          {
+            "id": 15584,
+            "amount": 5,
+            "price": 145
+          },
+          {
+            "id": 15449,
+            "amount": 10,
+            "price": 125
+          },
+          {
+            "id": 15448,
+            "amount": 10,
             "price": 125
           }
         ]
@@ -195,7 +230,22 @@
           {
             "id": 22121,
             "amount": 100,
+            "price": 12
+          },
+          {
+            "id": 22122,
+            "amount": 100,
             "price": 25
+          },
+          {
+            "id": 22123,
+            "amount": 100,
+            "price": 45
+          },
+          {
+            "id": 22124,
+            "amount": 100,
+            "price": 65
           },
           {
             "id": 23119,
@@ -236,6 +286,21 @@
             "id": 4014,
             "amount": 10000,
             "price": 5
+          },
+          {
+            "id": 15355,
+            "amount": 10,
+            "price": 55
+          },
+          {
+            "id": 15356,
+            "amount": 10,
+            "price": 55
+          },
+          {
+            "id": 15357,
+            "amount": 10,
+            "price": 65
           }
         ]
       }

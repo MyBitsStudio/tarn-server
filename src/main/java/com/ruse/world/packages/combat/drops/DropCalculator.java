@@ -27,9 +27,12 @@ public class DropCalculator {
 
         chance += player.getMode().doubleDropRate();
 
-        chance += player.getDonator().getDr();
+        chance += player.getLoyalty().dropChance();
 
         chance += player.getVip().getDr();
+
+        if(chance >= 3000)
+            chance = 3000;
 
         chance += player.getEquipmentEnhancement().getBoost(BoostType.DR);
 
@@ -53,17 +56,21 @@ public class DropCalculator {
             chance += player.getInventory().getAmount(21815);
         }
 
-        chance += player.getDonator().getDr();
+        if (ServerPerks.getInstance().getActivePerk() == ServerPerks.Perk.DR || ServerPerks.getInstance().getActivePerk() == ServerPerks.Perk.ALL_PERKS) {
+            chance *= 1.5;
+        }
+
+        chance += player.getLoyalty().doubleDropChance();
 
         chance += player.getVip().getDr();
 
         chance += player.getMode().dropRate();
 
+        if(chance >= 3000)
+            chance = 3000;
+
         chance += player.getEquipmentEnhancement().getBoost(BoostType.DR);
 
-        if (ServerPerks.getInstance().getActivePerk() == ServerPerks.Perk.DR || ServerPerks.getInstance().getActivePerk() == ServerPerks.Perk.ALL_PERKS) {
-            chance *= 1.5;
-        }
 
         if(player.getRank().isDeveloper()){
             chance += 100;

@@ -1,18 +1,17 @@
 package com.ruse.world.packages.slot;
 
-import com.ruse.model.CombatIcon;
-import com.ruse.model.Hit;
-import com.ruse.model.Hitmask;
-import com.ruse.model.Locations;
+import com.ruse.model.*;
 import com.ruse.model.container.impl.Equipment;
 import com.ruse.util.Misc;
 import com.ruse.world.clip.region.RegionClipping;
+import com.ruse.world.content.combat.effect.FireWall;
 import com.ruse.world.entity.impl.Character;
 import com.ruse.world.entity.impl.npc.NPC;
 import com.ruse.world.entity.impl.player.Player;
 import com.ruse.world.packages.combat.max.MagicMax;
 import com.ruse.world.packages.combat.max.MeleeMax;
 import com.ruse.world.packages.combat.max.RangeMax;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
 
@@ -20,7 +19,7 @@ import static com.ruse.world.packages.combat.sets.SetPerk.AOE_3;
 
 public class EffectHandler {
 
-    public static void handlePlayerAttack(Player p, Character victim){
+    public static void handlePlayerAttack(@NotNull Player p, Character victim){
         if (p.getEquipment().hasAoE()) {
             handleAoE(p, victim,
                     p.getEquipment().getSlotBonuses()[Equipment.WEAPON_SLOT].getBonus() * 3);
@@ -39,6 +38,9 @@ public class EffectHandler {
             victim.getCombatBuilder().addDamage(p, calc);
             victim.getCombatBuilder().attack(p);
         }
+        if(p.getEquipment().hasFirewall()){
+            new FireWall(10, FireWall.Dir.SOUTH, p.getPosition().getX() + 1, p.getPosition().getY() + 1, new Graphic(453), 5, 1, 25000, 10).start(false, p);
+        }
         if(p.getEquipment().getBonus() != null){
             if(Objects.equals(p.getEquipment().getBonus().perk(), AOE_3)){
                 handleAoE(p, victim,
@@ -53,7 +55,6 @@ public class EffectHandler {
 
         // if no radius, loc isn't multi, stops.
         if (radius == 0 || !Locations.Location.inMulti(victim)) {
-             System.out.println("Radius 0");
             return;
         }
 
@@ -89,6 +90,7 @@ public class EffectHandler {
 
                 long calc = Misc.inclusiveRandom(500, maxhit * 5);
                 next.dealDamage(new Hit(calc, Hitmask.RED, CombatIcon.MAGIC));
+                next.setAggressive(true);
                 next.getCombatBuilder().addDamage(attacker, calc);
                 next.getCombatBuilder().attack(attacker);
             }

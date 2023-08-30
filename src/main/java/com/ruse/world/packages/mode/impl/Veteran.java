@@ -27,7 +27,7 @@ public class Veteran extends Gamemode {
 
     @Override
     public boolean canOpenShop(int shopId) {
-        return false;
+        return true;
     }
 
     @Override
@@ -37,7 +37,7 @@ public class Veteran extends Gamemode {
 
     @Override
     public boolean canGetRewards() {
-        return false;
+        return true;
     }
 
     @Override
@@ -47,7 +47,7 @@ public class Veteran extends Gamemode {
 
     @Override
     public boolean canInstance() {
-        return false;
+        return true;
     }
 
     @Override

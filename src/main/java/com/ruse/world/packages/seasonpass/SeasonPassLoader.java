@@ -13,21 +13,21 @@ public class SeasonPassLoader {
     @SneakyThrows
     private static void loadLevelData() {
         ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
-        File file = new File("./data/seasonpass/levels.yaml");
+        File file = new File("./.core/seasonpass/levels.yaml");
         SeasonPass.levels = mapper.readValue(file, SeasonPassLevel[].class);
     }
 
     @SneakyThrows
     private static void loadExperienceData() {
         ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
-        File file = new File("./data/seasonpass/experience.yaml");
+        File file = new File("./.core/seasonpass/experience.yaml");
         SeasonPassManager.EXP_MAP.putAll(mapper.readValue(file, Map.class));
     }
 
     @SneakyThrows
     private static void loadConfig() {
         ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
-        File file = new File("./data/seasonpass/configuration.yaml");
+        File file = new File("./.core/seasonpass/configuration.yaml");
         if(file.length() == 0) {
             new SeasonPassConfig();
             SeasonPassConfig.getInstance().setSeason(1);

@@ -77,8 +77,7 @@ public class DropItemPacketListener implements PacketListener {
 					if(Lobby.getInstance().getGame() == null) return;
 					Lobby.getInstance().getGame().dropBarrier(player);
 				} else {
-					boolean goGlobal = player.getPosition().getZ() >= 0 && player.getPosition().getZ() < 4 ? true : false;
-					player.sendMessage("You currently cannot drop items.");
+					destroyItemInterface(player, item);
 					PlayerLogs.log(player.getUsername(),
 							"Player dropping item: " + (ItemDefinition.forId(item.getId()) != null
 									&& ItemDefinition.forId(item.getId()).getName() != null

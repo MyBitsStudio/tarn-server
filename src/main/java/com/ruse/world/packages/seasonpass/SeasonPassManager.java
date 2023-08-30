@@ -1,5 +1,7 @@
 package com.ruse.world.packages.seasonpass;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.HashMap;
 
 import static com.ruse.world.packages.seasonpass.SeasonPass.REWARD_AMOUNT;
@@ -19,11 +21,8 @@ public class SeasonPassManager {
         seasonPass.getPlayer().sendMessage("@red@Season " + seasonPass.getSeason() + " has begun!");
     }
 
-    public static void resetRewards(SeasonPass seasonPass) {
+    public static void resetRewards(@NotNull SeasonPass seasonPass) {
         boolean[] arr = new boolean[REWARD_AMOUNT];
-        for(int i = 0; i < REWARD_AMOUNT; i++) {
-            arr[i] = false;
-        }
         seasonPass.setRewardsClaimed(arr);
     }
 

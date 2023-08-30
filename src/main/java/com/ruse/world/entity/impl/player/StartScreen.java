@@ -51,6 +51,10 @@ public class StartScreen {
     public static boolean handleButton(Player player, int buttonId) {
         final int CONFIRM = 116010;
         if (buttonId == CONFIRM) {
+            if(player.selectedGameMode.equals(GameModes.GROUP_IRON)){
+                player.sendMessage("This mode is currently disabled. Please use another mode for now.");
+                return true;
+            }
             if (player.didReceiveStarter()) {
                 return true;
             }
@@ -67,16 +71,9 @@ public class StartScreen {
 
             player.getPacketSender().sendRights();
 
-            if(player.getMode() instanceof GroupIronman) {
-                player.moveTo(new Position(3039, 2845, 1));
-                player.setGroupIronmanLocked(true);
-                player.sendMessage("@blu@Speak to the Ironman Manager to create a group or get invited to a group.");
-            } else {
-                player.moveTo(GameSettings.STARTER);
-            }
+            player.moveTo(GameSettings.STARTER);
 
             TrackInterface.sendInterface(player, true);
-
             return true;
         }
         for (GameModes mode : GameModes.values()) {
@@ -90,13 +87,15 @@ public class StartScreen {
     }
 
     public static void handleConfirm(Player player) {
-
         setMode(player, player.selectedGameMode);
         PlayerPanel.refreshPanel(player);
-
     }
 
     public static void setMode(@NotNull Player player, @NotNull GameModes mode) {
+        if(mode.equals(GameModes.GROUP_IRON)){
+            player.sendMessage("This mode is currently disabled. Please use another mode for now.");
+            return;
+        }
 		player.getClickDelay().reset();
 		player.getPacketSender().sendInterfaceRemoval();
 
@@ -104,7 +103,6 @@ public class StartScreen {
             case NORMAL -> player.setMode(new Normal());
             case IRONMAN -> player.setMode(new Ironman());
             case ULTIMATE_IRONMAN -> player.setMode(new UltimateIronman());
-            case GROUP_IRON -> player.setMode(new GroupIronman());
             case VETERAN_MODE -> player.setMode(new Veteran());
         }
 

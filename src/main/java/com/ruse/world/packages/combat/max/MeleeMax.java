@@ -335,12 +335,15 @@ public class MeleeMax {
                 }
             }
 
-            if (player.getDoubleDMGTimer() > 0) {
+            if (player.getVariables().getBooleanValue("double-damage")) {
                 maxHit *= 2;
             }
             if (player.getMinutesVotingDMG() > 0) {
                 maxHit *= 2;
             }
+
+            if(player.getEquipment().contains(15588))
+                maxHit *= 1.5;
 
             maxHit *= 10;
 
@@ -384,10 +387,6 @@ public class MeleeMax {
             prayerMod = 1.25;
         } else if(PrayerHandler.isActivated(player, PrayerHandler.SOUL_LEECH)) {
             prayerMod = 1.15 + (player.getLeechedBonuses()[2] * 0.01);
-            if (Misc.getRandom(100) <= 1) {
-                player.setDoubleDMGTimer(1);
-
-            }
         }
 
         return (120 * prayerMod) * otherBonus + styleBonus;

@@ -374,15 +374,6 @@ public class PlayerSecureLoad extends SecureLoad {
         if (object.has("poison-immunity")) {
             player.setPoisonImmunity(object.get("poison-immunity").getAsInt());
         }
-        if (object.has("double-dr-timer")) {
-            player.setDoubleDRTimer(object.get("double-dr-timer").getAsInt());
-        }
-        if (object.has("double-ddr-timer")) {
-            player.setDoubleDDRTimer(object.get("double-ddr-timer").getAsInt());
-        }
-        if (object.has("double-dmg-timer")) {
-            player.setDoubleDMGTimer(object.get("double-dmg-timer").getAsInt());
-        }
         if (object.has("fire-immunity")) {
             player.setFireImmunity(object.get("fire-immunity").getAsInt());
         }
@@ -881,7 +872,7 @@ public class PlayerSecureLoad extends SecureLoad {
 
         if (object.has("timers")) {
             player.getTimers().load(builder.fromJson(object.get("timers"),  new TypeToken<Map<String, Long>>() {
-            }.getType()));
+            }.getType()), player);
         }
 
 

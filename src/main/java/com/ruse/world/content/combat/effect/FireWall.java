@@ -6,7 +6,9 @@ import com.ruse.model.Graphic;
 import com.ruse.model.Hit;
 import com.ruse.model.Position;
 import com.ruse.util.Misc;
+import com.ruse.world.entity.impl.npc.NPC;
 import com.ruse.world.entity.impl.player.Player;
+import com.ruse.world.packages.combat.max.MagicMax;
 
 import java.util.Arrays;
 
@@ -59,6 +61,27 @@ public class FireWall {
             }
 
         }
+    }
+
+    public void start(boolean force, Player player){
+        TaskManager.submit(new Task(ticksBetweenStages) {
+            int stage = 0;
+            @Override
+            protected void execute() {
+                if(stage == stages-1) stop();
+                for (NPC next : player.getLocalNpcs()) {
+                    if(next != null && next.getConstitution() > 0) {
+                        if (next.getPosition().isWithinDistance(player.getPosition(), width)) {
+                           next.performGraphic(graphic);
+                           next.dealDamage(new Hit(MagicMax.newMagic(player, next) / 12));
+                           next.setAggressive(true);
+                           next.getCombatBuilder().attack(player);
+                        }
+                    }
+                }
+                stage++;
+            }
+        });
     }
 
     public void start(Player player) {

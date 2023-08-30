@@ -59,6 +59,8 @@ public class InstanceManager {
 
         cap += player.getVip().getBonusCap();
 
+        cap += player.getLoyalty().timeOnInstance();
+
         switch(data.getNpcId()){
             case 10835 -> {
                 if(!World.handler.eventActive("Solstice"))
@@ -115,6 +117,8 @@ public class InstanceManager {
 
         cap += player.getVip().getBonusCap();
 
+        cap += player.getLoyalty().timeOnInstance();
+
 
 
     }
@@ -139,6 +143,8 @@ public class InstanceManager {
         int cap = (int) (data.getCap() * player.getDonator().getCap());
 
         cap += player.getVip().getBonusCap();
+
+        cap += player.getLoyalty().timeOnInstance();
 
         Instance instance = switch (data.getNpcId()) {
             case 595 -> new CounterInstance(player, data.getNpcId(), cap, data.getCap());
@@ -180,6 +186,8 @@ public class InstanceManager {
         int cap = (int) (data.getCap() * player.getDonator().getCap());
 
         cap += player.getVip().getBonusCap();
+
+        cap += player.getLoyalty().timeOnInstance();
 
         SingleBossSinglePlayerInstance instance = null;
 
@@ -224,6 +232,8 @@ public class InstanceManager {
         int cap = (int) (data.getCap() * player.getDonator().getCap());
 
         cap += player.getVip().getBonusCap();
+
+        cap += player.getLoyalty().timeOnInstance();
 
         Instance instance = new MultiBossNormalInstance(player,
                 data.getNpcId(), data.getSpawns(), ((1000 * 60 ) * cap));

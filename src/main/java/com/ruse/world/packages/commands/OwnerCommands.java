@@ -2,6 +2,7 @@ package com.ruse.world.packages.commands;
 
 import com.ruse.GameServer;
 import com.ruse.model.*;
+import com.ruse.model.container.impl.Equipment;
 import com.ruse.model.definitions.*;
 import com.ruse.motivote3.doMotivote;
 import com.ruse.security.ServerSecurity;
@@ -20,6 +21,8 @@ import com.ruse.world.content.skill.SkillManager;
 import com.ruse.world.content.transportation.TeleportHandler;
 import com.ruse.world.content.transportation.TeleportType;
 import com.ruse.world.packages.shops.ShopHandler;
+import com.ruse.world.packages.slot.SlotBonus;
+import com.ruse.world.packages.slot.SlotEffect;
 import com.ruse.world.packages.tower.TarnTower;
 import com.ruse.world.packages.tracks.TrackInterface;
 import com.ruse.world.packages.voting.VoteBossDrop;
@@ -437,8 +440,9 @@ public class OwnerCommands {
                 return true;
             }
 
-            case "sttart" -> {
-                player.getStarterShop().open(true);
+            case "firewall" -> {
+                player.getEquipment().getSlotBonuses()[Equipment.WEAPON_SLOT] = new SlotBonus(SlotEffect.FIREWALL, 1);
+                player.getEquipment().refreshItems();
                 return true;
             }
 

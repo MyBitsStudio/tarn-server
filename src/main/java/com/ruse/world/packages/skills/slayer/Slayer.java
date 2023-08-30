@@ -178,6 +178,13 @@ public class Slayer {
 
         streak++;
         player.getPacketSender().sendMessage("You have completed "+streak+" tasks in a row.");
+
+        if(player.getEquipment().hasDoubleSlayer())
+            amount *= 2;
+
+        if(player.getEquipment().contains(15586))
+            amount *= 2;
+
         player.getInventory().add(SLAYER_TICKETS, amount);
         player.getSkillManager().addExperience(Skill.SLAYER, monsters.getXp());
 

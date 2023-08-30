@@ -127,7 +127,6 @@ public class DryStreak {
             player.getPacketSender().sendString(60_004, String.valueOf(difference));
 
             if(milestone > myDryStreak) {
-
                 if((difference % 20 == 0 && player.getPSettings().getBooleanValue("drop-message-personal"))) {
                     player.getPacketSender().sendMessage("@red@You will receive a drop from " + NpcDefinition.forId(npcId).getName() + " in " + difference + " kills");
                 }

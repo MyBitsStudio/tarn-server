@@ -28,6 +28,10 @@ public class MagicMax {
 
                 double defence = player.getBonusManager().getDefenceBonus()[BonusManager.DEFENCE_MAGIC] / 1_000;
 
+                if (player.getEquipment().contains(15448)) {
+                    defence *= 1.4;
+                }
+
                 maxHit -= defence;
 
                 if(maxHit <= 0){
@@ -64,10 +68,6 @@ public class MagicMax {
                 prayerMod = 1.25;
             } else if(PrayerHandler.isActivated(player, PrayerHandler.SOUL_LEECH)){
                 prayerMod = 1.25 + +(player.getLeechedBonuses()[2] * 0.01);
-                if (Misc.getRandom(100) <= 1) {
-                    player.setDoubleDMGTimer(1);
-                    // player.getPacketSender().sendMessage("Coup de grace activated");
-                }
             }
 
             double effectiveMagicDamage = (120 * prayerMod) *  (magicStrength / 1_000);
@@ -173,12 +173,15 @@ public class MagicMax {
                 }
             }
 
-            if (player.getDoubleDMGTimer() > 0) {
+            if (player.getVariables().getBooleanValue("double-damage")) {
                 maxHit *= 2;
             }
             if (player.getMinutesVotingDMG() > 0) {
                 maxHit *= 2;
             }
+
+            if(player.getEquipment().contains(15589))
+                maxHit *= 1.5;
 
             maxHit *= 10;
 

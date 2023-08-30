@@ -9,10 +9,11 @@ import java.util.Objects;
 @Getter
 public enum SlotEffect {
 
-    NOTHING(SlotRarity.COMMON, -1),
+    NOTHING(SlotRarity.NONE, -1),
 
     DROP_RATE_LOW(SlotRarity.UNCOMMON, 23150, 5, 20),
     DOUBLE_XP(SlotRarity.UNCOMMON, 23151),
+    DOUBLE_SLAYER_TICK(SlotRarity.UNCOMMON, 23161),
 
     DOUBLE_DROP(SlotRarity.RARE, 23152, 5, 20),
     DROP_RATE_MED(SlotRarity.RARE, 23153,25, 50),
@@ -24,7 +25,9 @@ public enum SlotEffect {
     AOE_EFFECT(SlotRarity.MYTHICAL, 23157, 1, 4),
     DROP_RATE_HIGH(SlotRarity.MYTHICAL, 23158, 50, 99),
     TRIPLE_CASH(SlotRarity.MYTHICAL, 23159),
-    MULTI_SHOT(SlotRarity.MYTHICAL, 23160, 2, 3)
+    MULTI_SHOT(SlotRarity.MYTHICAL, 23160, 2, 3),
+
+    FIREWALL(SlotRarity.GODLY, 23160)
 
     ;
 
@@ -47,6 +50,11 @@ public enum SlotEffect {
                 effect.getRarity() == SlotRarity.RARE) ? Arrays.stream(SlotEffect.values()).filter(effect -> effect.getRarity() == SlotRarity.RARE).toArray(SlotEffect[]::new) : null;
     }
 
+    public static SlotEffect[] godly(){
+        return Arrays.stream(SlotEffect.values()).anyMatch(effect ->
+                effect.getRarity() == SlotRarity.GODLY) ? Arrays.stream(SlotEffect.values()).filter(effect -> effect.getRarity() == SlotRarity.GODLY).toArray(SlotEffect[]::new) : null;
+    }
+
     public static SlotEffect[] legendaries(){
         return Arrays.stream(SlotEffect.values()).anyMatch(effect ->
                 effect.getRarity() == SlotRarity.LEGENDARY) ? Arrays.stream(SlotEffect.values()).filter(effect -> effect.getRarity() == SlotRarity.LEGENDARY).toArray(SlotEffect[]::new) : null;
@@ -59,7 +67,8 @@ public enum SlotEffect {
 
     public boolean isWeapon(){
         return this == SlotEffect.AOE_EFFECT ||
-                this == SlotEffect.MULTI_SHOT;
+                this == SlotEffect.MULTI_SHOT ||
+                this == SlotEffect.FIREWALL;
     }
 
     public static SlotEffect lowBonus(){
@@ -99,6 +108,8 @@ public enum SlotEffect {
             return Misc.random(Objects.requireNonNull(legendaries()));
          else if(random >= 19 && random <= 61)
             return Misc.random(Objects.requireNonNull(rares()));
+         else if(random == 13)
+            return Misc.random(Objects.requireNonNull(godly()));
          else
             return Misc.random(Objects.requireNonNull(uncommons()));
 

@@ -147,7 +147,8 @@ public class DropManager {
             }
 
             Position pos = npc.getPosition().copy();
-            boolean collector = player.getInventory().contains(Lootbag.LOOT_DEVICE);
+            boolean collector = player.getEquipment().hasCollector();
+            boolean hasLoot = player.getInventory().contains(Lootbag.LOOT_DEVICE);
 
             for(Drop drop : finalDrops){
                 if(drop.modifier() != 1.0) {
@@ -277,6 +278,10 @@ public class DropManager {
             amount *= 2;
         } else if(player.getEquipment().hasTripleCash() && isCash) {
             amount *= 3;
+        }
+
+        if(player.getEquipment().contains(15585) && isCash){
+            amount *= 1.25;
         }
 
         if(isCash){

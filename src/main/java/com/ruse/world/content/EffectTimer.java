@@ -13,6 +13,7 @@ public enum EffectTimer {
 	T1_INF_OVERLOAD(23124, 500),
 	T2_INF_OVERLOAD(23125, 500),
 	T3_INF_OVERLOAD(23126, 500),
+
 	;
 	
 	EffectTimer(int clientSprite, int time) {

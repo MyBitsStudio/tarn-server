@@ -2148,6 +2148,10 @@ for (Item item : player.getInventory().getItems()) {
 		EXODENLOC(new int[] { 2816, 2879 }, new int[] { 2816, 2879 }, true, true, true, false, false, false) {
 		},
 		DEFAULT(null, null, false, true, true, true, true, true) {
+			@Override
+			public void enter(Player player) {
+				player.getPacketSender().sendWalkableInterface(60_000, false);
+			}
 		},
 
 		ASTA_LOBBY(new int[] { 3059, 3071 }, new int[] { 2752, 2764 }, true, true, true, false, false, false) {
@@ -2158,14 +2162,26 @@ for (Item item : player.getInventory().getItems()) {
 
 		//Monster Locations
 		STARTER(new int[] { 3022, 3052 }, new int[] { 10255, 10286 }, false, true, true, false, false, true) {
+			@Override
+			public void leave(Player player) {
+				player.getPacketSender().sendWalkableInterface(60_000, false);
+			}
 		},
 
 		//BOSS LOCATIONS
 		INSTANCE_LOBBY(new int[]{2642, 2668}, new int[]{2778, 2804}, false, false, true, false, true, true) {
 		},
 		NORMAL_INSTANCE(new int[] {3009, 3029 }, new int[] { 2752, 2772 }, true, true, true, false, false, false) {
+			@Override
+			public void leave(Player player) {
+				player.getPacketSender().sendWalkableInterface(60_000, false);
+			}
 		},
 		SINGLE_INSTANCE(new int[] { 3011, 3039 }, new int[] { 5217, 5248 }, true, false, true, false, false, false) {
+			@Override
+			public void leave(Player player) {
+				player.getPacketSender().sendWalkableInterface(60_000, false);
+			}
 		},
 
 		//TOWER
@@ -2215,41 +2231,6 @@ for (Item item : player.getInventory().getItems()) {
 			if (gc.isForceMultiArea()) {
 				return true;
 			}
-			MapInstance mapInstance = gc.getMapInstance();
-			if (mapInstance != null && mapInstance.isMultiArea(gc)) {
-				return true;
-			}
-
-			int x = gc.getPosition().getX(), y = gc.getPosition().getY();
-			if (x >= 2844 && x <= 2867 && y >= 2696 && y <= 2720) // merk boss
-				return true;
-			if (x >= 2434 && x <= 2496 && y >= 5378 && y <= 5440) // onyx
-				return true;
-			if(x >= 2475 && x <= 2519 && y >= 3749 && y <= 3792)
-				return true;
-			if (gc.getLocation() == WILDERNESS) {
-				if (x >= 3250 && x <= 3302 && y >= 3905 && y <= 3925 || x >= 3020 && x <= 3055 && y >= 3684 && y <= 3711
-						|| x >= 3150 && x <= 3195 && y >= 2958 && y <= 3003
-						|| x >= 3645 && x <= 3715 && y >= 3454 && y <= 3550
-						|| x >= 3150 && x <= 3199 && y >= 3796 && y <= 3869
-						|| x >= 2994 && x <= 3041 && y >= 3733 && y <= 3790)
-					return true;
-				if (x >= 3336 && x <= 3371 && y >= 3792 && y <= 3819) // zulrah pinnensula
-					return true;
-
-
-				// wyrm multi handler
-				if (x >= 3052 && x <= 3083 && y >= 3929 && y <= 3963 || x >= 3294 && x <= 3315 && y >= 3919 && y <= 3961
-						|| x >= 3214 && x <= 3253 && y >= 3594 && y <= 3639
-						|| x >= 3266 && x <= 3306 && y >= 3868 && y <= 3903
-						|| x >= 3169 && x <= 3221 && y >= 3651 && y <= 3700
-						|| x >= 3152 && x <= 3190 && y >= 3776 && y <= 3817)
-					return true;
-				// z x1: 3336, x2: 3371, y1: 3819, y2: 3792
-			}
-			if (x >= 3123 && x <= 3138 && y >= 3392 && y <= 3403 )
-				return true;
-			//return true;
 			return gc.getLocation().multi;
 		}
 
@@ -2284,23 +2265,8 @@ for (Item item : player.getInventory().getItems()) {
 
 		public static boolean inLocation(Entity gc, Location location) {
 			if (location == Location.DEFAULT) {
-				if (getLocation(gc) == Location.DEFAULT)
-					return true;
-				else
-					return false;
+				return getLocation(gc) == Location.DEFAULT;
 			}
-			/*
-			 * if(gc instanceof Player) { Player p = (Player)gc; if(location ==
-			 * Location.TRAWLER_GAME) { String state = FishingTrawler.getState(p); return
-			 * (state != null && state.equals("PLAYING")); } else if(location ==
-			 * FIGHT_PITS_WAIT_ROOM || location == FIGHT_PITS) { String state =
-			 * FightPit.getState(p), needed = (location == FIGHT_PITS_WAIT_ROOM) ? "WAITING"
-			 * : "PLAYING"; return (state != null && state.equals(needed)); } else
-			 * if(location == Location.SOULWARS) { return (SoulWars.redTeam.contains(p) ||
-			 * SoulWars.blueTeam.contains(p) && SoulWars.gameRunning); } else if(location ==
-			 * Location.SOULWARS_WAIT) { return SoulWars.isWithin(SoulWars.BLUE_LOBBY, p) ||
-			 * SoulWars.isWithin(SoulWars.RED_LOBBY, p); } }
-			 */
 			return inLocation(gc.getPosition().getX(), gc.getPosition().getY(), location);
 		}
 
@@ -2356,9 +2322,7 @@ for (Item item : player.getInventory().getItems()) {
 		 * SHOULD AN ENTITY FOLLOW ANOTHER ENTITY NO MATTER THE DISTANCE BETWEEN THEM?
 		 **/
 		public static boolean ignoreFollowDistance(Character character) {
-			Location location = character.getLocation();
-			return location == Location.RECIPE_FOR_DISASTER
-					|| location == Location.NOMAD;
+			return false;
 		}
 	}
 

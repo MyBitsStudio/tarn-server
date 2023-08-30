@@ -218,6 +218,10 @@ public class ButtonClickPacketListener implements PacketListener {
         new WellForGlobalBossesInterface(player).button(id);
 
         switch (id) {
+            case 77018 :
+                player.getPacketSender().sendInterfaceRemoval();
+                ShopHandler.getShop(1).ifPresent(shop -> shop.send(player, true));
+                break;
             case -15954:
                 player.getForge().sendDialogue();
                 break;
@@ -477,7 +481,7 @@ public class ButtonClickPacketListener implements PacketListener {
                 player.getAchievements().drawInterface(player.getAchievements().currentInterface);
                 break;
             case 12162:
-                TeleportHandler.teleportPlayer(player, new Position(2179, 3747, 0),
+                TeleportHandler.teleportPlayer(player, new Position(2207, 3745, 0),
                         player.getSpellbook().getTeleportType());
                 break;
             case 111602:

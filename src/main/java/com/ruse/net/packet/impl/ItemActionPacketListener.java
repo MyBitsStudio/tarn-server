@@ -12,6 +12,7 @@ import com.ruse.world.World;
 import com.ruse.world.content.*;
 import com.ruse.world.content.Sounds.Sound;
 import com.ruse.world.content.StarterTasks.StarterTaskData;
+import com.ruse.world.entity.impl.player.timers.impl.scroll.*;
 import com.ruse.world.packages.dialogue.DialogueManager;
 import com.ruse.world.packages.dialogue.impl.RedeemBond;
 import com.ruse.world.packages.items.monic.Monics;
@@ -40,8 +41,7 @@ import com.ruse.world.entity.impl.player.Player;
 import com.ruse.world.packages.packs.gearpack.GearPack;
 import com.ruse.world.packages.packs.gearpack.GearPacks;
 import com.ruse.world.packages.packs.locked.Locks;
-import com.ruse.world.packages.packs.scratch.impl.RareScratchI;
-import com.ruse.world.packages.packs.scratch.impl.ScratchI;
+import com.ruse.world.packages.packs.scratch.impl.*;
 import com.ruse.world.packages.slot.SlotItems;
 
 import java.text.NumberFormat;
@@ -222,6 +222,10 @@ public class ItemActionPacketListener implements PacketListener {
             case 23059:
             case 23060:
                 DialogueManager.sendDialogue(player, new RedeemBond(player, itemId, false), -1);
+                break;
+
+            case 12852:
+                player.getStarterShop().open(true);
                 break;
 
             case 23166:
@@ -417,49 +421,44 @@ public class ItemActionPacketListener implements PacketListener {
 //                break;
 
             case 15355: // TODO
-                if (player.getDoubleDRTimer() > 0) {
+                if (player.getVariables().getBooleanValue("double-dr")) {
                     player.sendMessage("You already have a double DR scroll active.");
                     return;
                 }
                 player.getInventory().delete(15355, 1);
-                player.setDoubleDRTimer(6000);
-                TaskManager.submit(new DoubleDRTask(player));
+                player.getTimers().register(new DoubleDRHour(player));
                 break;
             case 15356:
-                if (player.getDoubleDDRTimer() > 0) {
+                if (player.getVariables().getBooleanValue("double-ddr")) {
                     player.sendMessage("You already have a double DDR scroll active.");
                     return;
                 }
                 player.getInventory().delete(15356, 1);
-                player.setDoubleDDRTimer(6000);
-                TaskManager.submit(new DoubleDDRTask(player));
+                player.getTimers().register(new DoubleDDRHour(player));
                 break;
             case 15357:
-                if (player.getDoubleDMGTimer() > 0) {
-                    player.sendMessage("You already have a double DMG scroll active.");
+                if (player.getVariables().getBooleanValue("double-damage")) {
+                    player.sendMessage("You already have a double damage scroll active.");
                     return;
                 }
                 player.getInventory().delete(15357, 1);
-                player.setDoubleDMGTimer(6000);
-                TaskManager.submit(new DoubleDMGTask(player));
+                player.getTimers().register(new DoubleDamageHour(player));
                 break;
             case 15358:
-                if (player.getDoubleDRTimer() > 0) {
+                if (player.getVariables().getBooleanValue("double-dr")) {
                     player.sendMessage("You already have a double DR scroll active.");
                     return;
                 }
                 player.getInventory().delete(15358, 1);
-                player.setDoubleDRTimer(3000);
-                TaskManager.submit(new DoubleDRTask(player));
+                player.getTimers().register(new DoubleDRHalf(player));
                 break;
             case 15359:
-                if (player.getDoubleDMGTimer() > 0) {
+                if (player.getVariables().getBooleanValue("double-damage")) {
                     player.sendMessage("You already have a double DMG scroll active.");
                     return;
                 }
                 player.getInventory().delete(15359, 1);
-                player.setDoubleDMGTimer(3000);
-                TaskManager.submit(new DoubleDMGTask(player));
+                player.getTimers().register(new DoubleDamageHalf(player));
                 break;
 //            case 11858:
 //            case 11860:
@@ -765,6 +764,18 @@ public class ItemActionPacketListener implements PacketListener {
                 break;
             case 22121:
                 player.setCard(new RareScratchI(player));
+                player.getCard().open();
+                break;
+            case 22122:
+                player.setCard(new RareScratchII(player));
+                player.getCard().open();
+                break;
+            case 22123:
+                player.setCard(new RareScratchIII(player));
+                player.getCard().open();
+                break;
+            case 22124:
+                player.setCard(new RareScratchIV(player));
                 player.getCard().open();
                 break;
 

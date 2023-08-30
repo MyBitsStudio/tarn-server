@@ -113,13 +113,7 @@ public class NPCOptionPacketListener implements PacketListener {
 //                    player.setDialogueActionId(568);
                     break;
                 case 289: //DAILY TASK
-//                    if (player.dailies.isEmpty()) {
-//                        DialogueManager.start(player, 9901);
-//                        player.setDialogueActionId(9905);
-//                    } else {
-//                        DailyTasks.sendProgress(player);
-//                        player.getPacketSender().sendMessage(player.taskInfo);
-//                    }
+                    player.sendMessage("Kingdom's are currently being built. Check back soon!");
                     break;
                 case 9022:
                     ServerPerks.getInstance().open(player);
@@ -830,27 +824,47 @@ public class NPCOptionPacketListener implements PacketListener {
         final int npcId = npc.getId();
         if (player.getRank().isDeveloper())
             player.getPacketSender().sendMessage("Second click npc id: " + npcId);
-        player.setWalkToTask(new WalkToTask(player, npc.getPosition(), npc.getSize(), new FinalizedMovementTask() {
-            @Override
-            public void execute() {
-                if (!player.getControllerManager().processNPCClick2(npc)) {
-                    return;
-                }
-                if (PickpocketData.forNpc(npc.getId()) != null) {
-                    Pickpocket.handleNpc(player, npc);
-                    return;
-                }
-                switch (npc.getId()) {
-                    case 289 -> //DAILY TASK
-                            DailyTasks.claimReward(player);
-                    //case 568 -> ShopManager.getShops().get(207).open(player);
-                    //case 845 -> DialogueManager.start(player, SlayerDialogues.findAssignment(player));
-                    case 8459 -> Decanting.notedDecanting(player);
-                    case 788 -> {
-                        player.getPacketSender().sendEnterInputPrompt(
-                                "How many would you like to buy (1 Lottery ticket costs 1 Billion)");
-                        player.setInputHandling(new EnterLotteryTicketAmount());
+        player.setWalkToTask(new WalkToTask(player, npc.getPosition(), npc.getSize(), () -> {
+            if (!player.getControllerManager().processNPCClick2(npc)) {
+                return;
+            }
+            if (PickpocketData.forNpc(npc.getId()) != null) {
+                Pickpocket.handleNpc(player, npc);
+                return;
+            }
+            switch (npc.getId()) {
+                case 9000 -> player.getSlayer().sendInterface(player);
+                case 961 -> {
+                    boolean restore = player.getSpecialPercentage() < 100;
+                    if (restore) {
+                        player.setSpecialPercentage(100);
+                        CombatSpecial.updateBar(player);
+                        player.getPacketSender().sendMessage("Your special attack energy has been restored.");
                     }
+                    for (Skill skill : Skill.values()) {
+                        if (player.getSkillManager().getCurrentLevel(skill) < player.getSkillManager()
+                                .getMaxLevel(skill)) {
+                            player.getSkillManager().setCurrentLevel(skill,
+                                    player.getSkillManager().getMaxLevel(skill));
+                            restore = true;
+                        }
+                    }
+                    if (restore) {
+                        player.performGraphic(new Graphic(1302));
+                        player.getPacketSender().sendMessage("Your stats have been restored.");
+                    } else
+                        player.getPacketSender().sendMessage("Your stats do not need to be restored at the moment.");
+                }
+                case 289 -> //DAILY TASK
+                        player.sendMessage("Kingdom's are currently being built. Check back soon!");
+                //case 568 -> ShopManager.getShops().get(207).open(player);
+                //case 845 -> DialogueManager.start(player, SlayerDialogues.findAssignment(player));
+                case 8459 -> Decanting.notedDecanting(player);
+                case 788 -> {
+                    player.getPacketSender().sendEnterInputPrompt(
+                            "How many would you like to buy (1 Lottery ticket costs 1 Billion)");
+                    player.setInputHandling(new EnterLotteryTicketAmount());
+                }
 //                    case 3306, 130 -> {
 //                        player.getPacketSender().sendMessage("<col=255>You currently have "
 //                                + player.getPointsHandler().getEventPoints() + " Event points!");
@@ -872,65 +886,65 @@ public class NPCOptionPacketListener implements PacketListener {
 //                                "You currently have " + player.getPointsHandler().getLoyaltyPoints() + " Loyalty Points.");
 //                        ;
 //                    }
-                    case 1394 -> {
-                        int[] items = {1053, 1057, 1055, 1038, 1040, 1042, 1044, 1046, 1048, 1050, 14008, 14009, 14010,
-                                14484, 19115, 19114, 13736, 13744, 13738, 13742, 13740, 6293, 18754, 11694, 11696, 11698, 11700,
-                                15018, 15019, 15020, 15220, 12601, 12603, 12605, 20000, 20001, 20002, 6769, 10942, 10934,
-                                455};
-                        player.getPacketSender().sendInterface(52300);
-                        for (int i = 0; i < items.length; i++)
-                            player.getPacketSender().sendItemOnInterface(52302, items[i], 1, i);
-                    }
+                case 1394 -> {
+                    int[] items = {1053, 1057, 1055, 1038, 1040, 1042, 1044, 1046, 1048, 1050, 14008, 14009, 14010,
+                            14484, 19115, 19114, 13736, 13744, 13738, 13742, 13740, 6293, 18754, 11694, 11696, 11698, 11700,
+                            15018, 15019, 15020, 15220, 12601, 12603, 12605, 20000, 20001, 20002, 6769, 10942, 10934,
+                            455};
+                    player.getPacketSender().sendInterface(52300);
+                    for (int i = 0; i < items.length; i++)
+                        player.getPacketSender().sendItemOnInterface(52302, items[i], 1, i);
+                }
 //                    case 4653 -> {
 //                        player.getPacketSender().sendInterfaceRemoval();
 //                        ShopManager.getShops().get(85).open(player);
 //                    }
-                    case 736 -> npc.forceChat("Thanx for the follow :)");
-                    case 1837 -> {
-                        player.getPacketSender().sendInterfaceRemoval();
-                        if (player.getInventory().getAmount(11180) < 1) {
-                            player.getPacketSender().sendMessage("You do not have enough tokens.");
-                            return;
-                        } else
-                            player.getInventory().delete(11180, 1);
-                        // So we grab the players pID too determine what Z they will be getting. Not
-                        // sure how kraken handles it, but this is how we'll handle it.
-                        player.moveTo(new Position(3025, 5231));
-                        // player.getPacketSender().sendMessage("Index: " + player.getIndex());
-                        // player.getPacketSender().sendMessage("Z: " + player.getIndex() * 4);
-                        player.getPacketSender().sendMessage("Teleporting to Trio...");
-                        player.getPacketSender()
-                                .sendMessage("@red@Warning:@bla@ you @red@will@bla@ lose your items on death here!");
-                        // Will sumbit a task to handle token remove, once they leave the minigame the
-                        // task will be removed.
-                        // trioMinigame.failsafe(player);
-                        // trioMinigame.handleNPCSpawning(player);
-                        trioMinigame.handleTokenRemoval(player);
-                    }
-                    case 3777 -> {
-                        ShopHandler.getShop(1).ifPresent(shop -> shop.send(player, true));
-                    }
-                    case 13738 -> player.getUpgradeHandler().openInterface();
-                    case 457 -> {
-                        player.getPacketSender().sendMessage("The ghost teleports you away.");
-                        player.getPacketSender().sendInterfaceRemoval();
-                        player.moveTo(new Position(3651, 3486));
-                    }
-                    //case 2622 -> ShopManager.getShops().get(43).open(player);
-                    case 462 -> {
-                        npc.performAnimation(CombatSpells.CONFUSE.getSpell().castAnimation().get());
-                        npc.forceChat("Off you go!");
-                        TeleportHandler.teleportPlayer(player, new Position(2911, 4832),
-                                player.getSpellbook().getTeleportType());
-                    }
+                case 736 -> npc.forceChat("Thanx for the follow :)");
+                case 1837 -> {
+                    player.getPacketSender().sendInterfaceRemoval();
+                    if (player.getInventory().getAmount(11180) < 1) {
+                        player.getPacketSender().sendMessage("You do not have enough tokens.");
+                        return;
+                    } else
+                        player.getInventory().delete(11180, 1);
+                    // So we grab the players pID too determine what Z they will be getting. Not
+                    // sure how kraken handles it, but this is how we'll handle it.
+                    player.moveTo(new Position(3025, 5231));
+                    // player.getPacketSender().sendMessage("Index: " + player.getIndex());
+                    // player.getPacketSender().sendMessage("Z: " + player.getIndex() * 4);
+                    player.getPacketSender().sendMessage("Teleporting to Trio...");
+                    player.getPacketSender()
+                            .sendMessage("@red@Warning:@bla@ you @red@will@bla@ lose your items on death here!");
+                    // Will sumbit a task to handle token remove, once they leave the minigame the
+                    // task will be removed.
+                    // trioMinigame.failsafe(player);
+                    // trioMinigame.handleNPCSpawning(player);
+                    trioMinigame.handleTokenRemoval(player);
+                }
+                case 3777 -> {
+                    ShopHandler.getShop(1).ifPresent(shop -> shop.send(player, true));
+                }
+                case 13738 -> player.getUpgradeHandler().openInterface();
+                case 457 -> {
+                    player.getPacketSender().sendMessage("The ghost teleports you away.");
+                    player.getPacketSender().sendInterfaceRemoval();
+                    player.moveTo(new Position(3651, 3486));
+                }
+                //case 2622 -> ShopManager.getShops().get(43).open(player);
+                case 462 -> {
+                    npc.performAnimation(CombatSpells.CONFUSE.getSpell().castAnimation().get());
+                    npc.forceChat("Off you go!");
+                    TeleportHandler.teleportPlayer(player, new Position(2911, 4832),
+                            player.getSpellbook().getTeleportType());
+                }
 //                    case 3101 -> {
 //                        DialogueManager.start(player, 95);
 //                        player.setDialogueActionId(57);
 //                    }
-                    //case 7969 -> ShopManager.getShops().get(28).open(player);
-                    case 605 -> {
-                        ShopHandler.getShop(3).ifPresent(shop -> shop.send(player, true));
-                    }
+                //case 7969 -> ShopManager.getShops().get(28).open(player);
+                case 605 -> {
+                    ShopHandler.getShop(3).ifPresent(shop -> shop.send(player, true));
+                }
 //                    case 1597 -> {
 //                        if (!player.getSlayer().getSlayerMaster().equals(SlayerMaster.EASY_SLAYER)
 //                                && player.getSlayer().getSlayerTask().equals(SlayerTasks.NO_TASK)) {
@@ -1105,28 +1119,26 @@ public class NPCOptionPacketListener implements PacketListener {
 //                        }
 //                        ShopManager.getShops().get(37).open(player);
 //                    }
-                    case 805 -> Tanning.selectionInterface(player);
-                    case 318, 316, 313, 312, 5748, 2067 -> {
-                        player.setEntityInteraction(npc);
-                        Fishing.setupFishing(player, Fishing.forSpot(npc.getId(), true));
-                    }
+                case 805 -> Tanning.selectionInterface(player);
+                case 318, 316, 313, 312, 5748, 2067 -> {
+                    player.setEntityInteraction(npc);
+                    Fishing.setupFishing(player, Fishing.forSpot(npc.getId(), true));
+                }
 //                    case 4946 -> ShopManager.getShops().get(15).open(player);
 //                    case 946 -> ShopManager.getShops().get(1).open(player);
-//                    case 961 -> ShopManager.getShops().get(6).open(player);
 //                    case 1861 -> ShopManager.getShops().get(3).open(player);
 //                    case 705 -> ShopManager.getShops().get(4).open(player);
 //                    case 2253 -> ShopManager.getShops().get(9).open(player);
-                    case 6970 -> {
-                        player.setDialogueActionId(35);
-                        //DialogueManager.start(player, 63);
-                    }
-
-                    // begin ironman second click handles
-
+                case 6970 -> {
+                    player.setDialogueActionId(35);
+                    //DialogueManager.start(player, 63);
                 }
-                npc.setPositionToFace(player.getPosition());
-                player.setPositionToFace(npc.getPosition());
+
+                // begin ironman second click handles
+
             }
+            npc.setPositionToFace(player.getPosition());
+            player.setPositionToFace(npc.getPosition());
         }));
     }
 
@@ -1192,31 +1204,6 @@ public class NPCOptionPacketListener implements PacketListener {
                     // case 597:
                     // ShopManager.getShops().get(54).open(player);
                     // break;
-                    case 961 -> {
-                        if (!player.getDonator().isMember()) {
-                            player.getPacketSender().sendMessage("This feature is currently only available for members.");
-                            return;
-                        }
-                        boolean restore = player.getSpecialPercentage() < 100;
-                        if (restore) {
-                            player.setSpecialPercentage(100);
-                            CombatSpecial.updateBar(player);
-                            player.getPacketSender().sendMessage("Your special attack energy has been restored.");
-                        }
-                        for (Skill skill : Skill.values()) {
-                            if (player.getSkillManager().getCurrentLevel(skill) < player.getSkillManager()
-                                    .getMaxLevel(skill)) {
-                                player.getSkillManager().setCurrentLevel(skill,
-                                        player.getSkillManager().getMaxLevel(skill));
-                                restore = true;
-                            }
-                        }
-                        if (restore) {
-                            player.performGraphic(new Graphic(1302));
-                            player.getPacketSender().sendMessage("Your stats have been restored.");
-                        } else
-                            player.getPacketSender().sendMessage("Your stats do not need to be restored at the moment.");
-                    }
                    // case 705 -> ShopManager.getShops().get(5).open(player);
                     case 605 -> player.getPacketSender().sendMessage("Coming soon!");
 
@@ -1263,7 +1250,6 @@ public class NPCOptionPacketListener implements PacketListener {
                     return;
                 }
                 switch (npc.getId()) {
-//                    case 961 -> ShopManager.getShops().get(118).open(player);
 //                    case 946 -> ShopManager.getShops().get(82).open(player);
                     case 3777 -> {
                         // ShopManager.getShops().get(24).open(player); //DONATOR SHOP 3 HERE
@@ -1308,55 +1294,35 @@ public class NPCOptionPacketListener implements PacketListener {
         player.afkTicks = 0;
         player.afk = false;
         switch (packet.getOpcode()) {
-            case ATTACK_NPC:
-                attackNPC(player, packet);
-                break;
-            case FIRST_CLICK_OPCODE:
-                firstClick(player, packet);
-                break;
-            case SECOND_CLICK_OPCODE:
-                handleSecondClick(player, packet);
-                break;
-            case THIRD_CLICK_OPCODE:
-                handleThirdClick(player, packet);
-                break;
-            case FOURTH_CLICK_OPCODE:
-                handleFourthClick(player, packet);
-                break;
-            case MAGE_NPC:
+            case ATTACK_NPC -> attackNPC(player, packet);
+            case FIRST_CLICK_OPCODE -> firstClick(player, packet);
+            case SECOND_CLICK_OPCODE -> handleSecondClick(player, packet);
+            case THIRD_CLICK_OPCODE -> handleThirdClick(player, packet);
+            case FOURTH_CLICK_OPCODE -> handleFourthClick(player, packet);
+            case MAGE_NPC -> {
                 int npcIndex = packet.readLEShortA();
                 int spellId = packet.readShortA();
-
                 if (npcIndex < 0 || spellId < 0 || npcIndex > World.getNpcs().capacity()) {
                     return;
                 }
-
                 NPC n = World.getNpcs().get(npcIndex);
                 player.setEntityInteraction(n);
-
                 if (n != null && player.getRank().isDeveloper()) {
                     player.getPacketSender().sendMessage("Used spell id: " + spellId + " on npc: " + n.getId());
                 }
-
                 CombatSpell spell = CombatSpells.getSpell(spellId);
-
                 if (n == null || spell == null) {
                     player.getMovementQueue().reset();
                     return;
                 }
-
                 if (!NpcDefinition.definitions[n.getId()].isAttackable()) {
                     player.getMovementQueue().reset();
                     return;
                 }
-
                 if (n.getConstitution() <= 0) {
                     player.getMovementQueue().reset();
                     return;
                 }
-
-
-
                 player.setPositionToFace(n.getPosition());
                 player.setCastSpell(spell);
                 if (player.getCombatBuilder().getStrategy() == null) {
@@ -1367,7 +1333,7 @@ public class NPCOptionPacketListener implements PacketListener {
                 }
                 player.getCombatBuilder().resetCooldown();
                 player.getCombatBuilder().attack(n);
-                break;
+            }
         }
     }
 

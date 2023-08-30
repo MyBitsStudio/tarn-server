@@ -712,7 +712,6 @@ public class Player extends Character {
 
     @Getter
     @Setter
-    private int doubleDRTimer, doubleDDRTimer, doubleDMGTimer;
 
     private int overloadPotionTimer, prayerRenewalPotionTimer, aggroPotionTimer, expPotionTimer, drPotionTimer, ddrPotionTimer, dmgPotionTimer;
     private int fireImmunity, fireDamageModifier;
@@ -1651,7 +1650,6 @@ public class Player extends Character {
     @Override
     public CombatStrategy determineStrategy() {
         if (specialActivated && castSpell == null) {
-
             if (combatSpecial.getCombatType() == CombatType.MELEE) {
                 return CombatStrategies.getDefaultMeleeStrategy();
             } else if (combatSpecial.getCombatType() == CombatType.RANGED) {

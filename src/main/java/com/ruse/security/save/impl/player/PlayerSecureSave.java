@@ -122,10 +122,6 @@ public class PlayerSecureSave extends SecureSave {
         object.addProperty("ddr-timer", player.getDdrPotionTimer());
         object.addProperty("dmg-timer", player.getDmgPotionTimer());
 
-        object.addProperty("double-dr-timer", player.getDoubleDRTimer());
-        object.addProperty("double-ddr-timer", player.getDoubleDDRTimer());
-        object.addProperty("double-dmg-timer", player.getDoubleDMGTimer());
-
         object.addProperty("fire-immunity", player.getFireImmunity());
         object.addProperty("fire-damage-mod", player.getFireDamageModifier());
         object.addProperty("prayer-renewal-timer", player.getPrayerRenewalPotionTimer());

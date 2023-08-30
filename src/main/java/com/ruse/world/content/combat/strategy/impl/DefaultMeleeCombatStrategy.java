@@ -24,16 +24,6 @@ public class DefaultMeleeCombatStrategy implements CombatStrategy {
 
 	@Override
 	public boolean canAttack(Character entity, Character victim) {
-
-		if (entity.isPlayer()) {
-			Player player = (Player) entity;
-			if (Dueling.checkRule(player, DuelRule.NO_MELEE)) {
-				player.getPacketSender().sendMessage("Melee-attacks have been turned off in this duel!");
-				player.getCombatBuilder().reset(true);
-				return false;
-			}
-		}
-
 		return true;
 	}
 
@@ -56,17 +46,6 @@ public class DefaultMeleeCombatStrategy implements CombatStrategy {
 
 	@Override
 	public int attackDistance(Character entity) {
-		// The default distance for all npcs using melee is 1.
-		if (entity.isNpc() || entity instanceof GlobalBoss) {
-			return ((NPC) entity).getDefinition().getSize();
-		}
-
-		// The default distance for all players is 1, or 2 if they are using a
-		// halberd.
-		Player player = (Player) entity;
-		if (player.getWeapon() == WeaponInterface.HALBERD) {
-			return 2;
-		}
 		return 1;
 	}
 
@@ -81,10 +60,10 @@ public class DefaultMeleeCombatStrategy implements CombatStrategy {
 			npc.performAnimation(new Animation(npc.getDefinition().getAttackAnim()));
 		} else if (entity.isPlayer()) {
 			Player player = (Player) entity;
-			if (!player.isSpecialActivated()) {
-				player.performAnimation(new Animation(WeaponAnimations.getAttackAnimation(player)));
-			} else {
+			if (player.isSpecialActivated()) {
 				player.performAnimation(new Animation(player.getFightType().getAnimation()));
+			} else {
+				player.performAnimation(new Animation(WeaponAnimations.getAttackAnimation(player)));
 			}
 		}
 	}

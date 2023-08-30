@@ -48,6 +48,10 @@ public abstract class Timer {
         running.set(false);
     }
 
+    public void set(){
+        running.set(true);
+    }
+
     public long returnLeft(){
         return length - (System.currentTimeMillis() - start);
     }

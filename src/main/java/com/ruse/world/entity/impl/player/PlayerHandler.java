@@ -169,27 +169,6 @@ public class PlayerHandler {
             TaskManager.submit(new CombatTeleblockEffect(player));
         }
 
-        if (player.getDoubleDRTimer() > 0) {
-            if (player.getDoubleDRTimer() > 3000) {
-                player.getPacketSender().sendEffectTimerSeconds(player.getDoubleDRTimer() * 60 /100, EffectTimer.X2_DR_1HR);
-            } else {
-                player.getPacketSender().sendEffectTimerSeconds(player.getDoubleDRTimer() * 60 /100, EffectTimer.X2_DR_30MIN);
-            }
-            TaskManager.submit(new DoubleDRTask(player));
-        }
-        if (player.getDoubleDDRTimer() > 0) {
-            player.getPacketSender().sendEffectTimerSeconds(player.getDoubleDDRTimer() * 60 /100, EffectTimer.X2_DDR_1HR);
-            TaskManager.submit(new DoubleDDRTask(player));
-        }
-        if (player.getDoubleDMGTimer() > 0) {
-            if (player.getDoubleDMGTimer() > 3000) {
-                player.getPacketSender().sendEffectTimerSeconds(player.getDoubleDMGTimer() * 60 /100, EffectTimer.X2_DMG_1HR);
-            } else {
-                player.getPacketSender().sendEffectTimerSeconds(player.getDoubleDMGTimer() * 60 /100, EffectTimer.X2_DMG_30MIN);
-            }
-            TaskManager.submit(new DoubleDMGTask(player));
-        }
-
         //player.getDonationDeals().shouldReset();
 
         if (player.getSkullTimer() > 0) {
@@ -430,6 +409,8 @@ public class PlayerHandler {
         if(player.getAttendenceManager().isDifferentDay()) {
             player.getAttendenceManager().newDay();
         }
+
+        player.getTimers().startAll();
     }
 
     public static Player getPlayer(String name) {

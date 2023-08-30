@@ -27,23 +27,17 @@ public enum InstanceInterData {
             new Item(995, 90000), 16, 15, 8000,
             InstanceType.MULTI),
 
-    AGUMON("Agumon", "Instance Unlock",
-            new Item(10835, 100), 16, 15, 3020,
-    InstanceType.MULTI),
-
     BOWSER("Bowser", "Instance Unlock",
             new Item(995, 60000), 16, 15, 9919,
             InstanceType.MULTI),
-
 
     SLENDER_MAN("Slender Man", "Instance Unlock",
         new Item(10835, 120), 16, 15, 9913,
     InstanceType.MULTI),
 
-    LUFFY("Luffy", "Instance Unlock",
-         new Item(10835, 150), 16, 15, 9916,
-    InstanceType.MULTI),
-
+    AGUMON("Agumon", "Instance Unlock",
+            new Item(10835, 100), 16, 15, 3020,
+            InstanceType.MULTI),
     QUEEN_FAZULA("Queen Fazula", "Instance Unlock",
         new Item(10835, 200), 16, 15, 1311,
     InstanceType.MULTI),

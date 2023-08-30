@@ -61,6 +61,32 @@ public enum GearPacks {
             new Item(8816, 1), new Item(8817, 1), new Item(8818, 1),
             new Item(23144, 1), new Item(23145, 1), new Item(23146, 1)
     ),
+    TIER_XI(23210, 0,
+            new Item(19160, 1), new Item(19159, 1), new Item(19158, 1),
+            new Item(14018, 1), new Item(11340, 1), new Item(11341, 1),
+            new Item(11342, 1), new Item(8001, 1), new Item(11421, 1),
+            new Item(11422, 1), new Item(11423, 1), new Item(17600, 1)
+    ),
+    TIER_XII(23211, 0,
+            new Item(15115, 1), new Item(15116, 1), new Item(15117, 1),
+            new Item(15118, 1), new Item(15119, 1), new Item(15121, 1),
+            new Item(22135, 1), new Item(15645, 1), new Item(15646, 1),
+            new Item(15647, 1), new Item(19800, 1), new Item(14056, 1),
+            new Item(20060, 1), new Item(20062, 1), new Item(20063, 1),
+            new Item(20073, 1)
+    ),
+    TIER_XIII(23212, 0,
+            new Item(22152, 1), new Item(22153, 1), new Item(22154, 1),
+            new Item(22155, 1), new Item(22156, 1), new Item(22157, 1)
+    ),
+    TIER_XIV(23213, 0,
+            new Item(4075, 1), new Item(4077, 1), new Item(3473, 1),
+            new Item(4083, 1), new Item(4085, 1), new Item(3470, 1),
+            new Item(3472, 1), new Item(4071, 1), new Item(4072, 1),
+            new Item(4066, 1), new Item(4067, 1), new Item(4068, 1),
+            new Item(4069, 1), new Item(4070, 1), new Item(3723, 1),
+            new Item(3724, 1), new Item(3725, 1), new Item(3738, 1)
+    ),
 
 //
 //    NITE(11942, 0,

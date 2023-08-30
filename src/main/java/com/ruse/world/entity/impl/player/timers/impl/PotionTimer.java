@@ -11,10 +11,14 @@ public abstract class PotionTimer extends Timer {
 
     private int tick = 0;
 
-    private final Player player;
+    private Player player;
     public PotionTimer(Player player, long length) {
         super(length);
         this.player = player;
+    }
+
+    public void setPlayer(Player player) {
+    	this.player = player;
     }
 
     @Override
@@ -23,7 +27,7 @@ public abstract class PotionTimer extends Timer {
             getPlayer().performAnimation(getAnimation());
 
         if(getEffectTimer() != null){
-            player.getPacketSender().sendEffectTimerSeconds(getEffectTimer().getTime(), getEffectTimer());
+            player.getPacketSender().sendEffectTimerSeconds((int) (getLength() / SECONDS), getEffectTimer());
         }
 
         applyEffect();

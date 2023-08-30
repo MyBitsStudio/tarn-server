@@ -26,6 +26,24 @@
             "price": 100
           }
         ]
+      },
+      {
+        "shopId": 1,
+        "currency": "vote",
+        "shopName": "Equipment",
+        "restrict": 0,
+        "items": [
+          {
+            "id": 15448,
+            "amount": 50,
+            "price": 250
+          },
+          {
+            "id": 15449,
+            "amount": 50,
+            "price": 250
+          }
+        ]
       }
     ]
   }
