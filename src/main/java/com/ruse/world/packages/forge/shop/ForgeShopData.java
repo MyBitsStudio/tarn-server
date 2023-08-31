@@ -29,26 +29,8 @@ public class ForgeShopData {
                             new ForgeShopItem(8110,125),
                     },
                     {       // tier 3 armoury
-                            new ForgeShopItem(24003,400),//warden
-                            new ForgeShopItem(24004,400),
-                            new ForgeShopItem(24005,400),
-                            new ForgeShopItem(24006,400),
-                            new ForgeShopItem(24007,400),
-                            new ForgeShopItem(24008,400),
-                            new ForgeShopItem(24009,400),
-                            new ForgeShopItem(23127,600),//mystical
-                            new ForgeShopItem(23128,600),
-                            new ForgeShopItem(23129,600),
-                            new ForgeShopItem(23130,600),
-                            new ForgeShopItem(23131,600),
-                            new ForgeShopItem(22242,800),//asta
-                            new ForgeShopItem(22244,800),
-                            new ForgeShopItem(22246,800),
-                            new ForgeShopItem(22250,800),
-                            new ForgeShopItem(22248,800),
-                            new ForgeShopItem(22252,800),
-                            new ForgeShopItem(24010,400),//warden
-                            new ForgeShopItem(22254,600),//asta
+                            new ForgeShopItem(19641,5000),
+                            new ForgeShopItem(9076,500),
 
                     },
             },

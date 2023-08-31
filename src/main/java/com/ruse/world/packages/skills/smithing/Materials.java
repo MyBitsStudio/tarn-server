@@ -7,6 +7,7 @@ public enum Materials {
 
     MASTER_CORE(19641),
     MASTER_STEEL(9077),
+    GOLD_SEAL(9040),
     MASTER_ORE(9076),
     SHANK_SIGIL(13748),
     CROSS_SIGIL(13746),

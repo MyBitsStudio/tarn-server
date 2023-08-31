@@ -13,7 +13,8 @@ import lombok.Getter;
 @Getter
 public enum Events {
 
-    SOLSTICE(new Solstice(), new int[]{7, 10, 8, 23}),
+    SOLSTICE(new Solstice(), new int[]{7, 10, 8, 1}),
+    FALL(new Solstice(), new int[]{8, 1, 10, 1}),
 
     ;
 

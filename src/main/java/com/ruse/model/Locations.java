@@ -150,8 +150,6 @@ public class Locations {
 		},
 		EASTER(new int[] { 3123, 3138}, new int[] { 3392, 3419},
 				true, true, true, false, false, true) {},
-		PRESENTS(new int[] { 3017, 3061}, new int[] { 2824, 2870},
-				true, true, true, false, false, true) {},
 		HULK(new int[] { 3472, 3503}, new int[] { 3601, 3632},
 				true, true, true, false, false, true) {},
 		GOKU(new int[] { 2853, 2880}, new int[] { 2855, 2880},
@@ -2187,7 +2185,7 @@ for (Item item : player.getInventory().getItems()) {
 		//TOWER
 		TOWER_LOBBY(new int[] {2843, 2874 }, new int[] { 2734, 2751 }, false, false, false, false, false, false) {
 		},
-		TOWER_1(new int[] {2816, 2880 }, new int[] { 2752, 2815 }, true, true, true, false, false, false) {
+		TOWER_1(new int[] {3011, 3071 }, new int[] { 2813, 2879 }, true, true, true, false, false, false) {
 		},
 		;
 

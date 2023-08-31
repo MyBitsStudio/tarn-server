@@ -49,7 +49,6 @@ public class EquipPacketListener implements PacketListener {
             if(def.isNoted()) {
                 String offence = "Attempted to equip notable item!";
                 PlayerLogs.log(player.getUsername(), offence);
-                player.getOffences().add(offence);
                 return false;
             }
         }
@@ -73,183 +72,9 @@ public class EquipPacketListener implements PacketListener {
         }
 
         switch (id) {
-            case 9922:
-            case 9921:
-            case 22036:
-            case 22037:
-            case 22038:
-            case 22039:
-            case 22040:
-                int count = 0;
-                String itm = "items";
-                for (int i = 0; i < GameSettings.hweenIds2016.length; i++) {
-                    if (GameSettings.hweenIds2016[i] == id && !player.getHween2016(i)) {
-                        player.getPacketSender()
-                                .sendMessage("You've unlocked @red@" + ItemDefinition.forId(id).getName() + "<col=-1>.");
-                        player.setHween2016(i, true);
-                    }
-                    if (!player.getHween2016(i)) {
-                        count = count + 1;
-                    }
-                }
-                if (count == 1) {
-                    itm = "item";
-                }
-                if (count > 0) {
-                    player.getPacketSender()
-                            .sendMessage("<img=5> You need " + count + " more " + itm + " to finish the event.");
-                } else if (!player.doneHween2016()) {
-                    player.getPacketSender()
-                            .sendMessage("<img=5> @or1@<shad=0>Congratulations! You've completed the Halloween event!");
-                    player.setDoneHween2016(true);
-                }
-                break;
-            /*
-             * case 15755: //novite case 16207: case 16273: case 15936: case 16262: //case
-             * 16383 starter: case 16024: //case 16405: starter case 16174: case 16647: case
-             * 16196: case 15925: case 15914: case 16713: case 16080: case 16889: case
-             * 16127: //case 16935: starter case 16035: case 17019: case 16116: case 16013:
-             * case 17341: case 15808: //novite end case 16208: //bathus start case 16275:
-             * case 15937: case 16341: case 16263: case 16385: case 16025: case 16407: case
-             * 16175: case 16649: case 16197: case 16671: case 15926: case 16693: case
-             * 15915: case 16715: case 16081: case 16891: case 16128: case 16937: case
-             * 16036: case 17021: case 16117: case 17241: case 16014: case 17343: case
-             * 15809: //bathus end case 15757: //Marmaros start case 16209: case 16277: case
-             * 15938: case 16343: case 16264: case 16387: case 16026: case 16409: case
-             * 16176: case 16651: case 16198: case 16673: case 15927: case 16695: case
-             * 15916: case 16717: case 16082: case 16893: case 16129: case 16939: case
-             * 16037: case 17023: case 16118: case 17243: case 16015: case 17345: case
-             * 15810://marmaros end case 15759: case 16210: case 16279: case 15939: case
-             * 16345: case 16265: case 16389: case 16027: case 16411: case 16177: case
-             * 16653: case 16199: case 16675: case 15928: case 16697: case 15917: case
-             * 16719: case 16083: case 16895: case 16130: case 16941: case 16038: case
-             * 17025: case 16119: case 17245: case 16016: case 17347: case 15811: case
-             * 15761: case 16211: case 16281: case 15940: case 16347: case 16266: case
-             * 16391: case 16028: case 16413: case 16178: case 16655: case 16200: case
-             * 16677: case 15929: case 16699: case 15918: case 16721: case 16084: case
-             * 16897: case 16131: case 16943: case 16039: case 17027: case 16120: case
-             * 17247: case 16017: case 17349: case 15812: case 15763: case 16212: case
-             * 16283: case 15941: case 16349: case 16267: case 16393: case 16029: case
-             * 16415: case 16179: case 16657: case 16201: case 16679: case 15930: case
-             * 16701: case 15919: case 16723: case 16085: case 16899: case 16132: case
-             * 16945: case 16040: case 17029: case 16121: case 17249: case 16018: case
-             * 17351: case 15813: case 15765: case 16213: case 16285: case 15942: case
-             * 16351: case 16268: case 16395: case 16030: case 16417: case 16180: case
-             * 16659: case 16202: case 16681: case 15931: case 16703: case 15920: case
-             * 16725: case 16086: case 16901: case 16133: case 16947: case 16041: case
-             * 17031: case 16122: case 17251: case 16019: case 17353: case 15814: case
-             * 15767: case 16214: case 16287: case 15943: case 16353: case 16269: case
-             * 16397: case 16031: case 16419: case 16181: case 16661: case 16203: case
-             * 16683: case 15932: case 16705: case 15921: case 16727: case 16087: case
-             * 16903: case 16134: case 16949: case 16042: case 17033: case 16123: case
-             * 17253: case 16020: case 17355: case 15815: case 15769: case 16215: case
-             * 16289: case 15944: case 16355: case 16270: case 16399: case 16032: case
-             * 16421: case 16182: case 16663: case 16204: case 16685: case 15933: case
-             * 16707: case 15922: case 16729: case 16088: case 16905: case 16135: case
-             * 16951: case 16043: case 17035: case 16124: case 17255: case 16021: case
-             * 17357: case 15816: case 15771: case 16216: case 16291: case 15945: case
-             * 16357: case 16271: case 16401: case 16033: case 16423: case 16183: case
-             * 16665: case 16205: case 16687: case 15934: case 16709: case 15923: case
-             * 16731: case 16089: case 16907: case 16136: case 16953: case 16044: case
-             * 17037: case 16125: case 17257: case 16022: case 17359: case 15817: case
-             * 15773: case 16217: case 16293: case 15946: case 16359: case 16272: case
-             * 16403: case 16034: case 16425: case 16184: case 16667: case 16206: case
-             * 16689: case 15935: case 16711: case 15924: case 16733: case 16090: case
-             * 16909: case 16137: case 16955: case 16045: case 17039: case 16126: case
-             * 17259: case 16023: case 17361: case 15818:
-             * if(!(player.getRights().OwnerDeveloperOnly()) && player.getLocation() !=
-             * Location.DUNGEONEERING && !Dungeoneering.doingDungeoneering(player)){
-             * player.getInventory().delete(id, 1);
-             * player.getPacketSender().sendMessage("You aren't supposed to have that.");
-             * World.sendStaffMessage(player.getUsername()+" has tried to equip a "
-             * +ItemDefinition.forId(id).getName()+" outside of dungeoneering."); //TODO FIX
-             * THIS PlayerLogs.log("1 - Item smuggling",
-             * player.getUsername()+" tried to equip a: "+ItemDefinition.forId(id).getName()
-             * ); break; } else {
-             * // System.out.println(player.getUsername()+" equipped a "+ItemDefinition.forId(
-             * id).getName()); } break;
-             */
-            case 13632:
-                DialogueManager.sendStatement(player, "<img=5>The staff has UNLIMITED Ice Burst runes!");
-                player.getPacketSender().sendMessage("<img=5>@gre@<shad=0>The staff has UNLIMITED Ice Burst runes!");
-                break;
-            case 13641:
-                player.getPacketSender().sendMessage("This staff has unlimited Blast spell runes!");
-                break;
-            case 19886:
-            case 4446:
-            case 19888:
-            case 4489:
-            case 18823:
-            case 18888:
-            case 15450:
-            case 13555:
-            case 15834:
-            case 11195:
-            case 23087:
-            case 23090:
-            case 18818:
+            case 14880:
                 DialogueManager.sendStatement(player, "<img=14>This item collects all drops automatically!");
                 player.getPacketSender().sendMessage("<shad=1>@red@This item collects all drops automatically!");
-                break;
-            case 13634:
-                DialogueManager.sendStatement(player, "<img=5>The staff has UNLIMITED Blood Burst runes!");
-                player.getPacketSender().sendMessage("<img=5>@gre@<shad=0>The staff has UNLIMITED Blood Burst runes!");
-                break;
-            case 22010:
-                if (!player.getRank().isDeveloper()) {
-                    player.getPacketSender().sendMessage("lol gtfo");
-                    player.getInventory().delete(id, 1);
-                    World.sendStaffMessage(
-                            player.getUsername() + " just tried to equip a Ginrei... Jailed, removed. Still has? "
-                                    + player.getInventory().contains(22010) + " " + player.getBank(0).contains(22010));
-                    Jail.jailPlayer(player.getUsername(), LocalDateTime.now().plusHours(6));
-                }
-                break;
-            case 8813:
-            case 8814:
-            case 8815:
-               // System.out.println("This is not possible in Dungeoneering.");
-                break;
-            case 8816:
-            case 8817:
-            case 8818:
-            case 8819:
-            case 8820:
-                if (!(player.getNPCKILLCount() <= 9999) && player.getLocation() != Location.DUNGEONEERING
-                        && !Dungeoneering.doingOldDungeoneering(player)) {
-                    // player.getInventory().delete(id, 1);
-                    player.getPacketSender().sendMessage("You need 10k NPC kill count to wear this");
-                    return false;
-                }
-                break;
-            case 8834:
-            case 8835:
-            case 8860:
-            case 8861:
-            case 8862:
-            case 15830:
-                if (!(player.getNPCKILLCount() <= 1999) && player.getLocation() != Location.DUNGEONEERING
-                        && !Dungeoneering.doingOldDungeoneering(player)) {
-                    // player.getInventory().delete(id, 1);
-                    player.getPacketSender().sendMessage("You need 2k NPC kill count to wear this");
-                    return false;
-                }
-                break;
-            case 15835:
-            case 17293:
-                if (!(player.getRank().isDeveloper()) && player.getLocation() != Location.DUNGEONEERING
-                        && !Dungeoneering.doingOldDungeoneering(player)) {
-                    player.getInventory().delete(id, 1);
-                    player.getPacketSender().sendMessage("You aren't supposed to have that.");
-                    World.sendStaffMessage(
-                            "@red@[BUG] " + player.getUsername() + " just tried to equip a Doomcore Staff out of dung!");
-                    return false;
-                } else {
-                    DialogueManager.sendStatement(player, "<img=5>The Doomcore Staff has UNLIMITED runes!");
-                    player.getPacketSender()
-                            .sendMessage("<img=5><shad=0> @gre@The Doomcore Staff @bla@has UNLIMITED runes!");
-                }
                 break;
             case 773:
                 if (player.getRank().isDeveloper()) {
@@ -261,44 +86,6 @@ public class EquipPacketListener implements PacketListener {
                             .sendMessage("Sneaky little hobbitses. Wicked, tricksy, false! The ring has vanished again..");
                     player.getInventory().delete(id, 1);
                     break;
-                }
-                break;
-            case 20171:
-                // case 20553:
-                boolean haveAmmo = equipment.get(Equipment.AMMUNITION_SLOT).getId() == -1;
-                boolean spiritArrow = equipment.get(Equipment.AMMUNITION_SLOT).getId() == 78;
-                if (haveAmmo) {
-                    equipment.set(Equipment.AMMUNITION_SLOT, new Item(78, 1));
-                    player.getPacketSender().sendMessage("Your Zaryte bow activates it's unique arrow.");
-                } else if (spiritArrow) {
-                    player.getPacketSender().sendMessage("Your bow connects to your Soul arrow.");
-                } else {
-                    player.getPacketSender().sendMessage("Please un-equip your arrows before using the Zaryte bow.");
-                    return false;
-                }
-                player.getPacketSender().sendMessage("<img=5> The Zaryte bow WILL NOT work in PvP fights!");
-                break;
-            case 78:
-                boolean zaryte = equipment.get(Equipment.WEAPON_SLOT).getId() == 20171;
-                boolean hasArrow = equipment.get(Equipment.AMMUNITION_SLOT).getId() == 78;
-                boolean noWep = equipment.get(Equipment.WEAPON_SLOT).getId() == -1;
-                if (noWep) {
-                    player.getPacketSender().sendMessage("Soul arrows are not toys.");
-                    player.getInventory().delete(78, 1);
-                    return false;
-                }
-                if (zaryte) {
-                    if (hasArrow) {
-                        player.getPacketSender().sendMessage("You already have a link to another Soul arrow.");
-                        player.getInventory().delete(78, 1);
-                        return false;
-                    } else {
-                        player.getPacketSender().sendMessage("You connect the Soul arrow to your Zaryte bow.");
-                    }
-                } else {
-                    player.getPacketSender().sendMessage("A toy like that could never use a Soul arrow.");
-                    player.getInventory().delete(78, 1);
-                    return false;
                 }
                 break;
         }
@@ -337,33 +124,6 @@ public class EquipPacketListener implements PacketListener {
                     int equipmentSlot = item.getDefinition().getEquipmentSlot();
                     Item equipItem = equipment.forSlot(equipmentSlot).copy();
 
-                    if (player.getLocation() == Location.DUEL_ARENA) {
-                        for (int i = 10; i < player.getDueling().selectedDuelRules.length; i++) {
-                            if (player.getDueling().selectedDuelRules[i]) {
-                                DuelRule duelRule = DuelRule.forId(i);
-                                if (equipmentSlot == duelRule.getEquipmentSlot()
-                                        || duelRule == DuelRule.NO_SHIELD
-                                        && item.getDefinition().isTwoHanded()) {
-                                    player.getPacketSender().sendMessage(
-                                            "The rules that were set do not allow this item to be equipped.");
-                                    return false;
-                                }
-                            }
-                        }
-                        if (player.getDueling().selectedDuelRules[DuelRule.LOCK_WEAPON.ordinal()]) {
-                            if (equipmentSlot == Equipment.WEAPON_SLOT || item.getDefinition().isTwoHanded()) {
-                                player.getPacketSender().sendMessage("Weapons have been locked during this duel!");
-                                return false;
-                            }
-                        }
-                    }
-                    if (player.hasStaffOfLightEffect()
-                            && equipItem.getDefinition().getName().toLowerCase().contains("staff of light")) {
-                        player.setStaffOfLightEffect(-1);
-                        player.getPacketSender()
-                                .sendMessage("You feel the spirit of the Staff of Light begin to fade away...");
-
-                    }
                     if (equipItem.getDefinition().isStackable() && equipItem.getId() == item.getId()) {
                         int amount = Math.min(equipItem.getAmount() + item.getAmount(), Integer.MAX_VALUE);
                         player.getInventory().delete(item);

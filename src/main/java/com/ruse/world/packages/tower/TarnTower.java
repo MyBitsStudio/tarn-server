@@ -72,10 +72,10 @@ public class TarnTower {
         player.getPacketSender().sendString(81007, "Tier : "+player.getTower().getTier());
         player.getPacketSender().sendString(81008, "Level : "+player.getTower().getLevel());
 
-        int next = player.getTower().getLevel()+1;
+        int next = player.getTower().getLevel();
         int tier = player.getTower().getTier();
 
-        if(next >= 21){
+        if(next >= 20){
             tier++;
             next = 0;
         }
@@ -89,7 +89,6 @@ public class TarnTower {
             if(container.get(i - start) != null)
                 player.getPacketSender().sendItemOnInterface(i, container.get(i - start).getId(), container.get(i - start).getAmount());
         }
-
 
     }
 

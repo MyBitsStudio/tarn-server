@@ -36,7 +36,7 @@ public class TowerLevel extends Instance {
     }
 
     private void spawnObjects(@NotNull Player player){
-        World.register(new GameObject(16686, new Position(2867, 2760, player.getIndex() * 4)));
+        World.register(new GameObject(16686, new Position(3016, 2864, player.getIndex() * 4)));
     }
 
     private void spawnNPCs(@NotNull Tower tower, @NotNull Player player){

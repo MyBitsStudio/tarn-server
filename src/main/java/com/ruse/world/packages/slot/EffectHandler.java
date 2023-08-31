@@ -91,6 +91,7 @@ public class EffectHandler {
                 long calc = Misc.inclusiveRandom(500, maxhit * 5);
                 next.dealDamage(new Hit(calc, Hitmask.RED, CombatIcon.MAGIC));
                 next.setAggressive(true);
+                next.getCombatBuilder().setLastAttacker(attacker);
                 next.getCombatBuilder().addDamage(attacker, calc);
                 next.getCombatBuilder().attack(attacker);
             }

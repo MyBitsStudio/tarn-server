@@ -73,6 +73,7 @@ public class FireWall {
                     if(next != null && next.getConstitution() > 0) {
                         if (next.getPosition().isWithinDistance(player.getPosition(), width)) {
                            next.performGraphic(graphic);
+                           next.getCombatBuilder().setLastAttacker(player);
                            next.dealDamage(new Hit(MagicMax.newMagic(player, next) / 12));
                            next.setAggressive(true);
                            next.getCombatBuilder().attack(player);

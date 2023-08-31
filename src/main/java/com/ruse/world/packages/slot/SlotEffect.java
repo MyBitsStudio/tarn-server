@@ -13,7 +13,7 @@ public enum SlotEffect {
 
     DROP_RATE_LOW(SlotRarity.UNCOMMON, 23150, 5, 20),
     DOUBLE_XP(SlotRarity.UNCOMMON, 23151),
-    DOUBLE_SLAYER_TICK(SlotRarity.UNCOMMON, 23161),
+    DOUBLE_SLAYER_TICK(SlotRarity.UNCOMMON, 25000),
 
     DOUBLE_DROP(SlotRarity.RARE, 23152, 5, 20),
     DROP_RATE_MED(SlotRarity.RARE, 23153,25, 50),
@@ -27,7 +27,7 @@ public enum SlotEffect {
     TRIPLE_CASH(SlotRarity.MYTHICAL, 23159),
     MULTI_SHOT(SlotRarity.MYTHICAL, 23160, 2, 3),
 
-    FIREWALL(SlotRarity.GODLY, 23160)
+    FIREWALL(SlotRarity.GODLY, 25001)
 
     ;
 

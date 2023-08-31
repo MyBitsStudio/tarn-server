@@ -836,16 +836,18 @@ public class PlayerSecureLoad extends SecureLoad {
                     }.getType()));
         }
 
-
+        player.setIsSecondaryEquipment(false);
         if (object.has("equip-slot")) {
             player.getEquipment()
                     .setSlots(builder.fromJson(object.get("equip-slot").getAsJsonArray(), SlotBonus[].class));
         }
 
+        player.setIsSecondaryEquipment(true);
         if (object.has("second-slot")) {
-            player.getSecondaryEquipment()
+            player.getEquipment()
                     .setSlots(builder.fromJson(object.get("second-slot").getAsJsonArray(), SlotBonus[].class));
         }
+        player.setIsSecondaryEquipment(false);
 
         if (object.has("charges")) {
             player.getItems()

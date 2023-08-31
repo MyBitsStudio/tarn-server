@@ -94,6 +94,39 @@
             "price": 1250
           }
         ]
+      },
+      {
+        "shopId": 2,
+        "currency": "coins",
+        "shopName": "Crafting",
+        "restrict": 0,
+        "items": [
+          {
+            "id": 1761,
+            "amount": 200000,
+            "price": 25
+          },
+          {
+            "id": 1763,
+            "amount": 200000,
+            "price": 125
+          },
+          {
+            "id": 1765,
+            "amount": 200000,
+            "price": 125
+          },
+          {
+            "id": 1767,
+            "amount": 200000,
+            "price": 125
+          },
+          {
+            "id": 15437,
+            "amount": 200000,
+            "price": 5000
+          }
+        ]
       }
     ]
   }

@@ -32,10 +32,7 @@ public class PlayerRegenConstitutionTask extends Task {
 		// int current = player.getSkillManager().getCurrentLevel(Skill.CONSTITUTION);
 		int heal = 10;
 
-		if (player.getEquipment().getItems()[Equipment.HANDS_SLOT].getId() == 11133) // regen bracelet
-			heal *= 10;
-		if (player.getSkillManager().skillCape(Skill.CONSTITUTION)
-				|| PrayerHandler.isActivated(player, PrayerHandler.RAPID_HEAL))
+		if (PrayerHandler.isActivated(player, PrayerHandler.RAPID_HEAL))
 			heal *= 2;
 
 		player.heal(heal);

@@ -6,12 +6,13 @@ import com.ruse.world.entity.impl.player.Player;
 import com.ruse.world.packages.dialogue.DialogueManager;
 import com.ruse.world.packages.dialogue.impl.slot.EquipOnSlot;
 import com.ruse.world.packages.misc.ItemIdentifiers;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
 
 public class PerkEquip {
 
-    public static void equipPerk(Player player, Item item){
+    public static void equipPerk(Player player, @NotNull Item item){
         SlotEffect effect = SlotEffect.values()[Integer.parseInt(ItemIdentifiers.getItemIdentifier(item.getUid(), "PERK"))];
         if(Objects.equals(effect, null)){
             player.sendMessage("Something went wrong here. Effect is Null");
@@ -29,7 +30,7 @@ public class PerkEquip {
 
     }
 
-    public static void handleButton(Player player, int button){
+    public static void handleButton(@NotNull Player player, int button){
         int slot = player.getEquipment().convertSlotFromClient(button);
         if(slot == -1){
             player.sendMessage("Something went wrong here...");
@@ -39,7 +40,7 @@ public class PerkEquip {
         DialogueManager.sendDialogue(player, new EquipOnSlot(player), -1);
     }
 
-    public static void finishEquip(Player player){
+    public static void finishEquip(@NotNull Player player){
         Item item = player.getInventory().get(player.getVariables().getIntValue("inv-slot"));
         if(Objects.equals(item, null)){
             player.sendMessage("Something went wrong here. Item is Null");
@@ -62,7 +63,7 @@ public class PerkEquip {
         reset(player);
     }
 
-    public static void reset(Player player){
+    public static void reset(@NotNull Player player){
         player.getVariables().setSetting("inv-slot", -1);
         player.getVariables().setSetting("slot-chosen", -1);
     }

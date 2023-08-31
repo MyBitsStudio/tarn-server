@@ -14,6 +14,7 @@ public class PlayerItems {
     private void setDefault(){
         charges.put("ancient-monic", 0);
         charges.put("crystal-monic", 0);
+        charges.put("starter-pot", 50);
     }
 
     public Map<String, Integer> getCharges() {

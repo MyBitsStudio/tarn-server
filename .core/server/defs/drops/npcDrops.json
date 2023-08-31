@@ -920,7 +920,7 @@
   },
   {
     "id" : [
-      3021
+      3021, 3305
     ],
     "tables" : [
       "GENERAL"
@@ -998,7 +998,7 @@
   },
   {
     "id" : [
-      3305, 125
+      125
     ],
     "tables" : [
       "GENERAL"
@@ -1896,15 +1896,22 @@
   },
   {
     "id" : [
-      3019
+      6430
     ],
     "tables" : [
       "GENERAL"
     ],
     "custom" : {
       "name" : "Tier12",
-      "weight" : 2.79,
+      "weight" : 8.79,
       "drops" : [
+        {
+          "id": 14819,
+          "count": [
+            10, 25
+          ],
+          "chance": 1650
+        }
       ]
     }
   },
@@ -1917,8 +1924,15 @@
     ],
     "custom" : {
       "name" : "Tier12",
-      "weight" : 2.79,
+      "weight" : 12.79,
       "drops" : [
+        {
+          "id": 14819,
+          "count": [
+            1, 10
+          ],
+          "chance": 26500
+        }
       ]
     }
   },

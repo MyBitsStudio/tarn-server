@@ -61,8 +61,8 @@ public class TowerProgress {
     }
 
     private void spawnExit(){
-        World.deregister(new GameObject(16686, new Position(2867, 2760, player.getIndex() * 4)));
-        World.register(new GameObject(16150, new Position(2838, 2794, player.getIndex() * 4)));
+        World.deregister(new GameObject(16686, new Position(3016, 2864, player.getIndex() * 4)));
+        World.register(new GameObject(16150, new Position(3014, 2840, player.getIndex() * 4)));
     }
 
     private void sendFinish(){
@@ -74,12 +74,12 @@ public class TowerProgress {
         if(rewards == null){
             return;
         }
-        player.sendMessage("You have progressed to tier " + tier + "!");
         for(Item reward : rewards.getRewards()){
             this.rewards.add(reward);
             player.sendMessage("You have received " + reward.getAmount() + " " + reward.getDefinition().getName() + "!");
         }
         tier++;
+        player.sendMessage("You have progressed to tier " + tier + "!");
         level = 0;
     }
 

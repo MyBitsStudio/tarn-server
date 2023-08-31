@@ -63,7 +63,7 @@ public class SlotItems {
 
 
             case 23150, 23151, 23152, 23153, 23154, 23155, 23156,
-                    23157, 23158, 23159, 23160 -> {
+                    23157, 23158, 23159, 23160, 25000, 25001 -> {
                 PerkEquip.equipPerk(player,item);
                 return true;
             }

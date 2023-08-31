@@ -3,7 +3,6 @@ package com.ruse.model.container.impl;
 import com.google.common.base.Objects;
 import com.ruse.model.Flag;
 import com.ruse.model.Item;
-import com.ruse.model.Locations;
 import com.ruse.model.container.ItemContainer;
 import com.ruse.model.container.StackType;
 import com.ruse.model.definitions.WeaponAnimations;
@@ -11,7 +10,6 @@ import com.ruse.model.definitions.WeaponInterfaces;
 import com.ruse.world.content.BonusManager;
 import com.ruse.world.content.combat.magic.Autocasting;
 import com.ruse.world.content.combat.weapon.CombatSpecial;
-import com.ruse.world.content.minigames.impl.Dueling;
 import com.ruse.world.entity.impl.player.Player;
 import com.ruse.world.packages.combat.drops.DropCalculator;
 import com.ruse.world.packages.combat.max.MagicMax;
@@ -405,7 +403,6 @@ public class Equipment extends ItemContainer {
 
 	private void sendAllPerks(){
 		getPlayer().getPacketSender().sendInterface(162700);
-
 	}
 
 	public boolean handleContainer(int slot, int option, int id){

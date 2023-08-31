@@ -29,9 +29,35 @@ public class PlayerSecureSave extends SecureSave {
         object.addProperty("vip", player.getVip().name());
         object.addProperty("game-mode", GameModeConstants.getMode(player));
 
-        object.addProperty("yellhexcolor", player.getYellHex() == null ? "ffffff" : player.getYellHex());
-
         object.add("position", builder.toJsonTree(player.getPosition()));
+
+        object.add("skills", builder.toJsonTree(player.getSkillManager().getSkills()));
+        object.add("inventory", builder.toJsonTree(player.getInventory().getItems()));
+        player.setIsSecondaryEquipment(false);
+        player.getEquipment().refreshItems();
+        object.add("equipment", builder.toJsonTree(player.getEquipment().getItems()));
+        object.add("equip-slot", builder.toJsonTree(player.getEquipment().getSlotBonuses()));
+        player.setIsSecondaryEquipment(true);
+        player.getEquipment().refreshItems();
+        object.add("secondary-equipment", builder.toJsonTree(player.getEquipment().getItems()));
+        object.add("second-slot", builder.toJsonTree(player.getEquipment().getSlotBonuses()));
+        player.setIsSecondaryEquipment(false);
+        player.getEquipment().refreshItems();
+        object.add("preset-equipment", builder.toJsonTree(player.getPreSetEquipment().getItems()));
+
+        object.add("bank-0", builder.toJsonTree(player.getBank(0).getValidItems()));
+        object.add("bank-1", builder.toJsonTree(player.getBank(1).getValidItems()));
+        object.add("bank-2", builder.toJsonTree(player.getBank(2).getValidItems()));
+        object.add("bank-3", builder.toJsonTree(player.getBank(3).getValidItems()));
+        object.add("bank-4", builder.toJsonTree(player.getBank(4).getValidItems()));
+        object.add("bank-5", builder.toJsonTree(player.getBank(5).getValidItems()));
+        object.add("bank-6", builder.toJsonTree(player.getBank(6).getValidItems()));
+        object.add("bank-7", builder.toJsonTree(player.getBank(7).getValidItems()));
+        object.add("bank-8", builder.toJsonTree(player.getBank(8).getValidItems()));
+
+        object.add("new-uim-bank", builder.toJsonTree(player.getUIMBank().getValidItems()));
+
+        object.addProperty("yellhexcolor", player.getYellHex() == null ? "ffffff" : player.getYellHex());
 
         object.addProperty("online-status", player.getRelations().getStatus().name());
         object.addProperty("given-starter", player.didReceiveStarter());
@@ -161,24 +187,6 @@ public class PlayerSecureSave extends SecureSave {
         object.add("bank-pin", builder.toJsonTree(player.getBankPinAttributes().getBankPin()));
         object.add("appearance", builder.toJsonTree(player.getAppearance().getLook()));
 
-        object.add("skills", builder.toJsonTree(player.getSkillManager().getSkills()));
-        object.add("inventory", builder.toJsonTree(player.getInventory().getItems()));
-        object.add("equipment", builder.toJsonTree(player.getEquipment().getItems()));
-        object.add("secondary-equipment", builder.toJsonTree(player.getSecondaryEquipment().getItems()));
-        object.add("preset-equipment", builder.toJsonTree(player.getPreSetEquipment().getItems()));
-
-        object.add("bank-0", builder.toJsonTree(player.getBank(0).getValidItems()));
-        object.add("bank-1", builder.toJsonTree(player.getBank(1).getValidItems()));
-        object.add("bank-2", builder.toJsonTree(player.getBank(2).getValidItems()));
-        object.add("bank-3", builder.toJsonTree(player.getBank(3).getValidItems()));
-        object.add("bank-4", builder.toJsonTree(player.getBank(4).getValidItems()));
-        object.add("bank-5", builder.toJsonTree(player.getBank(5).getValidItems()));
-        object.add("bank-6", builder.toJsonTree(player.getBank(6).getValidItems()));
-        object.add("bank-7", builder.toJsonTree(player.getBank(7).getValidItems()));
-        object.add("bank-8", builder.toJsonTree(player.getBank(8).getValidItems()));
-
-        object.add("new-uim-bank", builder.toJsonTree(player.getUIMBank().getValidItems()));
-
 
         object.add("friends", builder.toJsonTree(player.getRelations().getFriendList().toArray()));
         object.add("ignores", builder.toJsonTree(player.getRelations().getIgnoreList().toArray()));
@@ -256,9 +264,6 @@ public class PlayerSecureSave extends SecureSave {
         object.add("starterTasks", builder.toJsonTree(player.getStarter().getTasks()));
         object.add("starterRewards", builder.toJsonTree(player.getStarter().getRewards().getRewards()));
         object.add("starter-shop", builder.toJsonTree(player.getStarterShop().getItems()));
-
-        object.add("equip-slot", builder.toJsonTree(player.getEquipment().getSlotBonuses()));
-        object.add("second-slot", builder.toJsonTree(player.getSecondaryEquipment().getSlotBonuses()));
 
         object.add("charges", builder.toJsonTree(player.getItems().getCharges()));
 

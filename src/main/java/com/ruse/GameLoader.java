@@ -128,6 +128,7 @@ public final class GameLoader {
 		serviceLoader.execute(ClanManager.getManager()::init);
 		serviceLoader.execute(CombatPoisonData::init);
 		serviceLoader.execute(CombatStrategies::init);
+		serviceLoader.execute(World.handler.load()::startEvents);
 		serviceLoader.execute(() -> new NPCDataLoad().loadArray("./.core/server/defs/npc/npc_data.json").run());
 
 		//serviceLoader.execute(() -> NPCDrops.parseDrops().load());

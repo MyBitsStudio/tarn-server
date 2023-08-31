@@ -182,10 +182,10 @@ public class Consumables {
         /*
          * Event types.
          */
-         PUMPKIN(new Item(1959), 260), OKTOBERTFEST_PRETZEL(new Item(19778), 820),
-        BLUE_SWEETS(new Item(4558), 100), DEEP_SWEETS(new Item(4559), 120), WHITE_SWEETS(new Item(4560), 250),
+        PUMPKIN(new Item(1959), 260), OKTOBERTFEST_PRETZEL(new Item(19778), 820),
+        BLUE_SWEETS(new Item(4558), 100), DEEP_SWEETS(new Item(4559), 160), WHITE_SWEETS(new Item(4560), 250),
         PINK_SWEETS(new Item(4564), 360), GREEN_SWEETS(new Item(4563), 470), PURPLE_SWEETS(new Item(4561), 520),
-        RED_SWEETS(new Item(4562), 660), CANDY(new Item(13557), 300),
+        RED_SWEETS(new Item(4562), 660), CANDY(new Item(13557), 200),
         ;
 
         FoodType(Item item, int heal) {
@@ -217,6 +217,7 @@ public class Consumables {
         String pot = ItemDefinition.forId(itemId).getName();
         return pot.contains("(4)") || pot.contains("(3)") || pot.contains("(2)") || pot.contains("(1)")
                 || pot.toLowerCase().contains("infinite healing") || pot.toLowerCase().contains("infinite prayer")
+                || pot.toLowerCase().contains("starter potion")
                 || pot.equalsIgnoreCase("wizard's mind bomb") && !pot.toLowerCase().contains("infinite prayer");
     }
 
@@ -260,6 +261,16 @@ public class Consumables {
         }
         if (player.getPotionTimer().elapsed(900)) {
             switch (itemId) {
+
+                case 21403:
+                    if(player.getItems().getCharges("starter-pot") <= 0){
+                        player.getPacketSender().sendMessage("You have no charges left on this potion.");
+                        return;
+                    }
+                    player.getPacketSender().sendMessage("You have "+player.getItems().getCharges("starter-pot")+" charges left on this potion.");
+                    player.getItems().useCharge("starter-pot");
+                    player.heal(200);
+                    break;
                 //Healing potions
                 case 23118: //T1
                     player.getTimers().register(new InfiniteHealing1(player));

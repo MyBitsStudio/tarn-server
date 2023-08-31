@@ -17,12 +17,12 @@ public class WorldEventHandler {
 
             calendar.set(Calendar.MONTH, dates[0]);
             calendar.set(Calendar.DAY_OF_MONTH, dates[1]);
-            calendar.set(Calendar.YEAR, 2023); // TODO: Change this to 2022 when the year changes (or make it dynamic)
+            calendar.set(Calendar.YEAR, 2023);
             long start = calendar.getTimeInMillis();
 
             calendar.set(Calendar.MONTH, dates[2]);
             calendar.set(Calendar.DAY_OF_MONTH, dates[3]);
-            calendar.set(Calendar.YEAR, 2023); // TODO: Change this to 2022 when the year changes (or make it dynamic)
+            calendar.set(Calendar.YEAR, 2023);
             long end = calendar.getTimeInMillis();
 
             if(System.currentTimeMillis() >= start && System.currentTimeMillis() <= end){
