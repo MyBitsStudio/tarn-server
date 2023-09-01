@@ -29,6 +29,7 @@ import com.ruse.world.content.holidayevents.easter2017data;
 import com.ruse.world.content.tbdminigame.Lobby;
 import com.ruse.world.packages.dialogue.DialogueManager;
 import com.ruse.world.packages.dialogue.impl.tower.NextLevel;
+import com.ruse.world.packages.globals.GlobalBossManager;
 import com.ruse.world.packages.instances.InstanceManager;
 import com.ruse.world.content.minigames.impl.*;
 import com.ruse.world.content.minigames.impl.Dueling.DuelRule;
@@ -64,6 +65,7 @@ import com.ruse.world.content.transportation.TeleportType;
 import com.ruse.world.entity.impl.player.Player;
 import com.ruse.world.packages.mode.impl.GroupIronman;
 import com.ruse.world.packages.tower.TarnTower;
+import org.jetbrains.annotations.NotNull;
 
 import static com.ruse.world.content.combat.prayer.PrayerHandler.startDrain;
 
@@ -174,11 +176,7 @@ public class ObjectActionPacketListener implements PacketListener {
                     if (ConstructionActions.handleFirstObjectClick(player, gameObject)) {
                         return;
                     }
-                    if (gameObject.getDefinition() != null && gameObject.getDefinition().getName() != null
-                            && gameObject.getDefinition().name.equalsIgnoreCase("door")
-                            && player.getRank().isDeveloper()) {
-                        player.getPacketSender().sendMessage("You just clicked a door. ID: " + id);
-                    }
+
                     if (gameObject.getDefinition() != null && gameObject.getDefinition().getName() != null) {
                         if (gameObject.getDefinition().getName().toLowerCase().contains("bank")) {
                             if (player.getMode() instanceof GroupIronman
@@ -192,6 +190,16 @@ public class ObjectActionPacketListener implements PacketListener {
                         }
                     }
                     switch(id){
+                        case 2912, 2913 ->{
+                            handleDoor(player, gameObject);
+                            return;
+                        }
+
+                        case 26945 -> {
+                            player.sendMessage("VIP Boss : "+GlobalBossManager.getInstance().getProgress("VIP")+"/50");
+                            return;
+                        }
+
                         case 16116 -> {
                             TarnTower.sendInterface(player);
                             return;
@@ -371,9 +379,6 @@ public class ObjectActionPacketListener implements PacketListener {
                         case 16118:
                             player.getPacketSender().sendMessage(
                                     "In order to unlock box of hidden you must use a @blu@Hidden@bla@ key on it.");
-                            break;
-                        case 26945:
-                            ServerPerks.getInstance().open(player);
                             break;
                         case 13615:
                             if (player.getSkillManager().getCombatLevel() < 100) {
@@ -2387,7 +2392,6 @@ public class ObjectActionPacketListener implements PacketListener {
 //                        }
                         case 6910, 4483, 25808, 3193, 2213, 11758, 14367, 42192, 75, 26972, 11338, 19230 ->
                                 player.getBank(player.getCurrentBankTab()).open();
-                        case 26945 -> ServerPerks.getInstance().open(player);
                         case 2646, 312 -> {
                             if (!player.getClickDelay().elapsed(1200))
                                 return;
@@ -2612,9 +2616,6 @@ public class ObjectActionPacketListener implements PacketListener {
                 }
             }
             switch (id) {
-                case 26945:
-                    ServerPerks.getInstance().open(player);
-                    break;
 
                 case 13192:
                     player.performAnimation(new Animation(645));
@@ -2698,8 +2699,7 @@ public class ObjectActionPacketListener implements PacketListener {
     public void handleMessage(Player player, Packet packet) {
         if (player.isTeleporting() || (player.isPlayerLocked() || player.isGroupIronmanLocked()) || player.getMovementQueue().isLockMovement())
             return;
-        player.afkTicks = 0;
-        player.afk = false;
+        player.getAfk().setAFK(false);
         switch (packet.getOpcode()) {
             case FIRST_CLICK:
                 firstClick(player, packet);
@@ -2731,6 +2731,51 @@ public class ObjectActionPacketListener implements PacketListener {
                     player.getPacketSender().sendMessage("5th click obj");
                 }
                 break;
+        }
+    }
+
+    private static void handleDoor(Player player, @NotNull GameObject object){
+        System.out.println("Door "+object.getFace());
+        switch(object.getId()){
+            case 2912, 2913 -> {
+                if(object.getPosition().equals(new Position(3033, 2876, player.getIndex() * 4))){
+                    if(player.getPosition().getX() > object.getPosition().getX()){
+                        player.moveTo(new Position(object.getPosition().getX() - 1, object.getPosition().getY(), object.getPosition().getZ()));
+                    } else {
+                        player.moveTo(new Position(object.getPosition().getX() + 1, object.getPosition().getY(), object.getPosition().getZ()));
+                    }
+                } else if(object.getPosition().equals(new Position(3033, 2877, player.getIndex() * 4))){
+                    if(player.getPosition().getX() > object.getPosition().getX()){
+                        player.moveTo(new Position(object.getPosition().getX() - 1, object.getPosition().getY(), object.getPosition().getZ()));
+                    } else {
+                        player.moveTo(new Position(object.getPosition().getX() + 1, object.getPosition().getY(), object.getPosition().getZ()));
+                    }
+                } else if(object.getPosition().equals(new Position(3056, 2848, player.getIndex() * 4))){
+                    if(player.getPosition().getY() > object.getPosition().getY()){
+                        player.moveTo(new Position(object.getPosition().getX(), object.getPosition().getY() - 1, object.getPosition().getZ()));
+                    } else {
+                        player.moveTo(new Position(object.getPosition().getX(), object.getPosition().getY() + 1, object.getPosition().getZ()));
+                    }
+                } else if(object.getPosition().equals(new Position(3057, 2848, player.getIndex() * 4))){
+                    if(player.getPosition().getY() > object.getPosition().getY()){
+                        player.moveTo(new Position(object.getPosition().getX(), object.getPosition().getY() - 1, object.getPosition().getZ()));
+                    } else {
+                        player.moveTo(new Position(object.getPosition().getX(), object.getPosition().getY() + 1, object.getPosition().getZ()));
+                    }
+                } else if(object.getPosition().equals(new Position(3024, 2822, player.getIndex() * 4))){
+                    if(player.getPosition().getY() > object.getPosition().getY()){
+                        player.moveTo(new Position(object.getPosition().getX(), object.getPosition().getY() - 1, object.getPosition().getZ()));
+                    } else {
+                        player.moveTo(new Position(object.getPosition().getX(), object.getPosition().getY() + 1, object.getPosition().getZ()));
+                    }
+                } else if(object.getPosition().equals(new Position(3023, 2822, player.getIndex() * 4))){
+                    if(player.getPosition().getY() > object.getPosition().getY()){
+                        player.moveTo(new Position(object.getPosition().getX(), object.getPosition().getY() - 1, object.getPosition().getZ()));
+                    } else {
+                        player.moveTo(new Position(object.getPosition().getX(), object.getPosition().getY() + 1, object.getPosition().getZ()));
+                    }
+                }
+            }
         }
     }
 }

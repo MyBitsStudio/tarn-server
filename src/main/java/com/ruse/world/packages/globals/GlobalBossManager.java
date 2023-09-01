@@ -1,6 +1,8 @@
 package com.ruse.world.packages.globals;
 
 import com.ruse.GameSettings;
+import com.ruse.model.input.impl.ChangePinPacketListener;
+import com.ruse.security.save.impl.server.WellsSave;
 import com.ruse.world.World;
 import com.ruse.world.content.discordbot.JavaCord;
 import com.ruse.world.entity.impl.player.Player;
@@ -24,40 +26,74 @@ public class GlobalBossManager {
     private final AtomicInteger ticks = new AtomicInteger(-20);
     private final Map<String, Integer> wells = new ConcurrentHashMap<>();
 
-    public GlobalBossManager(){
 
+
+    public GlobalBossManager(){
+        setUp();
     }
 
-    public boolean addToWell(Player player, int itemId){
-        switch(itemId){
+    public void setUp(){
+        wells.put("VIP", 0);
+    }
+
+    public boolean interact(Player player, int item) {
+        switch (item) {
+            case 23003 -> {
+                player.setInputHandling(new ChangePinPacketListener());
+                player.getPacketSender().sendEnterInputPrompt("Enter a new pin");
+            }
+        }
+        return false;
+    }
+
+    public int getProgress(String name){
+        return wells.get(name);
+    }
+
+    public Map<String, Integer> getWells(){
+        return wells;
+    }
+
+    private void save(){
+        new WellsSave().create().save();
+    }
+
+    public void load(Map<String, Integer> maps){
+        wells.putAll(maps);
+    }
+
+    public void addToWell(Player player, int item, int amount){
+        switch(item){
             case 23003 ->{//vip tickets
                 boolean active = World.npcIsRegistered(9005);
                 if(active) {
                     player.getPacketSender().sendMessage("The VIP boss is already active.");
                 } else {
-                    int amount = player.getInventory().getAmount(itemId),
-                            well = wells.get("VIP"), max = 50;
+                    int well = wells.get("VIP"), max = 50;
                     if(well + amount > max){
-                       amount = max - well;
+                        amount = max - well;
                     }
                     if(amount > 0){
                         wells.put("VIP", well + amount);
-                        player.getInventory().delete(itemId, amount);
+                        player.getInventory().delete(item, amount);
                         player.getPacketSender().sendMessage("You have added "+amount+" VIP tickets to the well.");
-                        if(amount >= max){
-                            player.getPacketSender().sendMessage("The VIP boss has been summoned!");
-                            wells.put("VIP", 0);
-                            MewtwoGlobal mewtwoGlobal = new MewtwoGlobal();
-                            spawn(mewtwoGlobal);
-                        }
+
                     } else {
                         player.getPacketSender().sendMessage("Something went wrong here. Report to an admin.");
                     }
                 }
-                return true;
+                check();
             }
         }
-        return false;
+    }
+
+    private void check(){
+        if(wells.get("VIP") >= 50){
+            wells.put("VIP", 0);
+            MewtwoGlobal mewtwoGlobal = new MewtwoGlobal();
+            spawn(mewtwoGlobal);
+        }
+        save();
     }
 
     public void process(){
@@ -72,11 +108,11 @@ public class GlobalBossManager {
         }
 
         if(tick % 12000 == 0){
-            if(World.npcIsRegistered(9908)){
+            if(World.npcIsRegistered(8010)){
                 return;
             }
-            GoldenApeGlobal nGlobal = new GoldenApeGlobal();
-            spawn(nGlobal);
+            GroundonGlobal ntGlobal = new GroundonGlobal();
+            spawn(ntGlobal);
         }
 
         if(tick % 24000 == 0){
@@ -86,11 +122,11 @@ public class GlobalBossManager {
             LugiaGlobal ntGlobal = new LugiaGlobal();
             spawn(ntGlobal);
         }
+        check();
     }
 
     private void spawn(GlobalBoss boss){
         World.register(boss);
-        //JavaCord.sendMessage(1117224370587304057L, "**[World Boss] "+boss.message()+" **");
 
         for (Player players : World.getPlayers()) {
             if (players == null) {
@@ -110,32 +146,6 @@ public class GlobalBossManager {
         String m;
         int ticka = ticks.get();
         switch (name) {
-            case "ninetails" -> {
-                if(World.npcIsRegistered(9904)){
-                    return "SPAWNED";
-                }
-                tick = 6000 - (ticka % 6000);
-                tick /= 100;
-                tick *= 60;
-                ms = tick;
-                m = String.format("%dh %dm", TimeUnit.SECONDS.toHours(ms),
-                        TimeUnit.SECONDS.toMinutes(ms) - TimeUnit.HOURS.toMinutes(TimeUnit.SECONDS.toHours(ms)),
-                        TimeUnit.SECONDS.toSeconds(ms) - TimeUnit.MINUTES.toSeconds(TimeUnit.SECONDS.toMinutes(ms)));
-                return m;
-            }
-            case "golden" -> {
-                if(World.npcIsRegistered(9908)){
-                    return "SPAWNED";
-                }
-                tick = 12000 - (ticka % 12000);
-                tick /= 100;
-                tick *= 60;
-                ms = tick;
-                m = String.format("%dh %dm", TimeUnit.SECONDS.toHours(ms),
-                        TimeUnit.SECONDS.toMinutes(ms) - TimeUnit.HOURS.toMinutes(TimeUnit.SECONDS.toHours(ms)),
-                        TimeUnit.SECONDS.toSeconds(ms) - TimeUnit.MINUTES.toSeconds(TimeUnit.SECONDS.toMinutes(ms)));
-                return m;
-            }
             case "lugia" -> {
                 if(World.npcIsRegistered(3308)){
                     return "SPAWNED";

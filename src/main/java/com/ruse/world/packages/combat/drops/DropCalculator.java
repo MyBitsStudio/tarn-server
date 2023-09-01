@@ -3,6 +3,7 @@ package com.ruse.world.packages.combat.drops;
 import com.ruse.world.content.combat.prayer.PrayerHandler;
 import com.ruse.world.content.equipmentenhancement.BoostType;
 import com.ruse.world.content.serverperks.ServerPerks;
+import com.ruse.world.content.skill.impl.summoning.BossPets;
 import com.ruse.world.entity.impl.player.Player;
 import org.jetbrains.annotations.NotNull;
 
@@ -60,6 +61,8 @@ public class DropCalculator {
             chance *= 1.5;
         }
 
+        chance *= multiply(player);
+
         chance += player.getLoyalty().doubleDropChance();
 
         chance += player.getVip().getDr();
@@ -77,5 +80,15 @@ public class DropCalculator {
         }
 
         return chance;
+    }
+
+    public static double multiply(@NotNull Player player){
+        double multiply = 1.0;
+        if(player.getSummoning().getFamiliar() != null) {
+            if (player.getSummoning().getFamiliar().getSummonNpc().getId() == BossPets.BossPet.SHADOW.npcId) {
+                multiply += 1;
+            }
+        }
+        return multiply;
     }
 }

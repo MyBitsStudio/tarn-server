@@ -30,8 +30,7 @@ public class RegionChangePacketListener implements PacketListener {
 			}
 			player.getNpcFacesUpdated().clear();
 			player.setRegionChange(false).setAllowRegionChangePacket(false);
-			player.afkTicks = 0;
-			player.afk = false;
+			player.getAfk().setAFK(false);
 		}
 	}
 }

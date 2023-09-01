@@ -70,15 +70,7 @@ public class PlayerProcess {
 			Achievements.resetDailys(player);
 		}
 
-		if (!player.isInActive()) {
-			if (loyaltyTick >= 6) {
-				PlayerPanel.refreshPanel(player);
-				//LoyaltyProgramme.incrementPoints(player);
-				loyaltyTick = 0;
-			}
-			loyaltyTick++;
-		}
-
+		player.getAfk().process();
 		/*
 		 * if(timerTick >= 1) { HANDLED BY PlayerPanel
 		 * player.getPacketSender().sendString(39166,

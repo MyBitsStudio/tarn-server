@@ -221,6 +221,7 @@ public class ItemActionPacketListener implements PacketListener {
             case 23058:
             case 23059:
             case 23060:
+            case 10946:
                 DialogueManager.sendDialogue(player, new RedeemBond(player, itemId, false), -1);
                 break;
 
@@ -2093,6 +2094,7 @@ public class ItemActionPacketListener implements PacketListener {
             case 23058:
             case 23059:
             case 23060:
+            case 10946:
                 DialogueManager.sendDialogue(player, new RedeemBond(player, itemId, true), -1);
                 break;
 

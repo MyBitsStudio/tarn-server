@@ -13,9 +13,11 @@ import com.ruse.model.definitions.WeaponInterfaces;
 import com.ruse.net.PipelineFactory;
 import com.ruse.net.security.ConnectionHandler;
 import com.ruse.security.ServerSecurity;
+import com.ruse.security.save.impl.server.WellsLoad;
 import com.ruse.security.save.impl.server.defs.NPCDropsLoad;
 import com.ruse.security.save.impl.server.defs.TablesLoad;
 import com.ruse.security.save.impl.server.defs.NPCDataLoad;
+import com.ruse.security.tools.SecurityUtils;
 import com.ruse.world.World;
 import com.ruse.world.clip.region.RegionClipping;
 import com.ruse.world.content.*;
@@ -57,7 +59,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
 /**
- * Credit: lare96, Gabbe
+ * Credit: Corrupt
  */
 public final class GameLoader {
 
@@ -81,6 +83,8 @@ public final class GameLoader {
 
 		startInstances();
 
+		postLoad();
+
 		World.LOGIN_SERVICE.postLoad();
 
 	}
@@ -94,6 +98,10 @@ public final class GameLoader {
 		DonateSales.getInstance();
 		new Lobby();
 		ServiceManager.INSTANCE.init();
+	}
+
+	private void postLoad(){
+		new WellsLoad().loadJSON(SecurityUtils.WELLS).run();
 	}
 
 	public void finish() throws IOException, InterruptedException {

@@ -23,6 +23,36 @@
     "weapon" : false
   },
   {
+    "id" : 5020,
+    "name" : "AFK Tickets",
+    "examine" : "Looks like it can be used somewhere..",
+    "stackable" : true,
+    "noted" : false,
+    "2h" : false,
+    "type" : "WEAPON",
+    "weapon" : false
+  },
+  {
+    "id" : 19000,
+    "name" : "Pet Fragments",
+    "examine" : "The souls of a fragmented pet..",
+    "stackable" : true,
+    "noted" : false,
+    "2h" : false,
+    "type" : "WEAPON",
+    "weapon" : false
+  },
+  {
+    "id" : 19002,
+    "name" : "Elite Pet Fragments",
+    "examine" : "The souls of a fragmented pet..",
+    "stackable" : true,
+    "noted" : false,
+    "2h" : false,
+    "type" : "WEAPON",
+    "weapon" : false
+  },
+  {
     "id" : 2380,
     "name" : "Crystal",
     "examine" : "Its not that heavy..",
@@ -1441,6 +1471,16 @@
     "_comment" : "Packs"
   },
   {
+    "id" : 19001,
+    "name" : "Pet Fragment Box",
+    "examine" : "The souls of a fragmented pet..",
+    "stackable" : true,
+    "noted" : false,
+    "2h" : false,
+    "type" : "WEAPON",
+    "weapon" : false
+  },
+  {
     "id" : 2734,
     "name" : "Slayer Casket",
     "examine" : "Open for a sweet reward!",
@@ -2093,6 +2133,56 @@
     "_comment" : "Pets"
   },
   {
+    "id" : 19486,
+    "name" : "Onyx Griffin Pet",
+    "examine" : "Use to summon a Onyx Griffin Pet",
+    "stackable" : false,
+    "noted" : false,
+    "2h" : false,
+    "type" : "WEAPON",
+    "weapon" : false
+  },
+  {
+    "id" : 19482,
+    "name" : "Mutant Hydra Pet",
+    "examine" : "Use to summon a Mutant Hydra Pet",
+    "stackable" : false,
+    "noted" : false,
+    "2h" : false,
+    "type" : "WEAPON",
+    "weapon" : false
+  },
+  {
+    "id" : 23081,
+    "name" : "Gorvek Pet",
+    "examine" : "Use to summon a Gorvek Pet",
+    "stackable" : false,
+    "noted" : false,
+    "2h" : false,
+    "type" : "WEAPON",
+    "weapon" : false
+  },
+  {
+    "id" : 19490,
+    "name" : "Groundon Pet",
+    "examine" : "Use to summon a Groundon Pet",
+    "stackable" : false,
+    "noted" : false,
+    "2h" : false,
+    "type" : "WEAPON",
+    "weapon" : false
+  },
+  {
+    "id" : 19488,
+    "name" : "Ag'thomoth Pet",
+    "examine" : "Use to summon a Ag'thomoth Pet",
+    "stackable" : false,
+    "noted" : false,
+    "2h" : false,
+    "type" : "WEAPON",
+    "weapon" : false
+  },
+  {
     "id" : 4073,
     "name" : "Fazula Pet",
     "examine" : "Use to summon a Fazula Pet",
@@ -2142,6 +2232,128 @@
     "type" : "WEAPON",
     "weapon" : false
   },
+  {
+    "id" : 19484,
+    "name" : "Asmodeus Pet",
+    "examine" : "Use to summon a Asmodeus Pet",
+    "stackable" : false,
+    "noted" : false,
+    "2h" : false,
+    "type" : "WEAPON",
+    "weapon" : false
+  },
+  {
+    "id" : 19487,
+    "name" : "Zeidan Grimm Pet",
+    "examine" : "Use to summon a Zeidan Grimm Pet",
+    "stackable" : false,
+    "noted" : false,
+    "2h" : false,
+    "type" : "WEAPON",
+    "weapon" : false
+  },
+  {
+    "id" : 19489,
+    "name" : "Lilinryss Pet",
+    "examine" : "Use to summon a Lilinryss Pet",
+    "stackable" : false,
+    "noted" : false,
+    "2h" : false,
+    "type" : "WEAPON",
+    "weapon" : false
+  },
+  {
+    "id" : 19492,
+    "name" : "Tyrant Lord Pet",
+    "examine" : "Use to summon a Tyrant Lord Pet",
+    "stackable" : false,
+    "noted" : false,
+    "2h" : false,
+    "type" : "WEAPON",
+    "weapon" : false
+  },
+  {
+    "id" : 20582,
+    "name" : "White Beard Pet",
+    "examine" : "Use to summon a White Beard Pet",
+    "stackable" : false,
+    "noted" : false,
+    "2h" : false,
+    "type" : "WEAPON",
+    "weapon" : false
+  },
+  {
+    "id" : 20583,
+    "name" : "Panther Pet",
+    "examine" : "Use to summon a Panther Pet",
+    "stackable" : false,
+    "noted" : false,
+    "2h" : false,
+    "type" : "WEAPON",
+    "weapon" : false
+  },
+  {
+    "id" : 23041,
+    "name" : "Magic Pet",
+    "examine" : "Use to summon a Magic Pet",
+    "stackable" : false,
+    "noted" : false,
+    "2h" : false,
+    "type" : "WEAPON",
+    "weapon" : false
+  },
+  {
+    "id" : 23042,
+    "name" : "Melee Pet",
+    "examine" : "Use to summon a Melee Pet",
+    "stackable" : false,
+    "noted" : false,
+    "2h" : false,
+    "type" : "WEAPON",
+    "weapon" : false
+  },
+  {
+    "id" : 23043,
+    "name" : "Range Pet",
+    "examine" : "Use to summon a Range Pet",
+    "stackable" : false,
+    "noted" : false,
+    "2h" : false,
+    "type" : "WEAPON",
+    "weapon" : false
+  },
+  {
+    "id" : 23018,
+    "name" : "Armor Bunny Pet",
+    "examine" : "Use to summon a Armor Bunny Pet",
+    "stackable" : false,
+    "noted" : false,
+    "2h" : false,
+    "type" : "WEAPON",
+    "weapon" : false
+  },
+  {
+    "id" : 20511,
+    "name" : "Hooker Pet",
+    "examine" : "Use to summon a Hooker Pet",
+    "stackable" : false,
+    "noted" : false,
+    "2h" : false,
+    "type" : "WEAPON",
+    "weapon" : false
+  },
+  {
+    "id" : 11314,
+    "name" : "Shadow Pet",
+    "examine" : "Use to summon a Shadow Pet",
+    "stackable" : false,
+    "noted" : false,
+    "2h" : false,
+    "type" : "WEAPON",
+    "weapon" : false
+  },
+
+
   {
     "_comment" : "Statues"
   },

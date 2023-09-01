@@ -295,7 +295,6 @@ public class World {
         });
         gameThreadJobs.clear();
 
-
         GlobalBossManager.getInstance().process();
 
         ShopHandler.process();

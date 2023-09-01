@@ -28,8 +28,7 @@ public class MovementPacketListener implements PacketListener {
 		player.setEntityInteraction(null);
 		player.getSkillManager().stopSkilling();
 		player.getMovementQueue().setFollowCharacter(null);
-		player.afkTicks = 0;
-		player.afk = false;
+		player.getAfk().setAFK(false);
 		if (packet.getOpcode() != COMMAND_MOVEMENT_OPCODE) {
 			player.setWalkToTask(null);
 			player.setCastSpell(null);

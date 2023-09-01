@@ -33,8 +33,7 @@ public class SendClanChatMessagePacketListener implements PacketListener {
 			player.getPacketSender().sendMessage("@red@[SECURITY] This is your only warning. Do not attempt to breach the security of the server again.");
 			return;
 		}
-		player.afkTicks = 0;
-		player.afk = false;
+		player.getAfk().setAFK(false);
 		ClanManager.getManager().sendMessage(player, clanMessage);
 		if(!clanMessage.contains("@"))
 			JavaCord.sendMessage(1117225324871168112L, "**[" + player.getUsername() + "]  " + clanMessage + "  ** ");

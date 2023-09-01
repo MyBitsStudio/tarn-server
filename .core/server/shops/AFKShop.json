@@ -1,0 +1,22 @@
+[
+  {
+    "id": 7,
+    "name": "AFK Shop",
+    "canSell": false,
+    "shops": [
+      {
+        "shopId": 0,
+        "currency": "afk",
+        "shopName": "Misc",
+        "restrict": 0,
+        "items": [
+          {
+            "id": -1,
+            "amount": 0,
+            "price": 1
+          }
+        ]
+      }
+    ]
+  }
+]

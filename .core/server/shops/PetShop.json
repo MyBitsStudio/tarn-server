@@ -1,0 +1,68 @@
+[
+  {
+    "id": 8,
+    "name": "Pet Shop",
+    "canSell": false,
+    "shops": [
+      {
+        "shopId": 0,
+        "currency": "pet",
+        "shopName": "Cosmetic",
+        "restrict": 0,
+        "items": [
+          {
+            "id": -1,
+            "amount": 0,
+            "price": 1
+          }
+        ]
+      },
+      {
+        "shopId": 1,
+        "currency": "pet",
+        "shopName": "Benefit",
+        "restrict": 0,
+        "items": [
+          {
+            "id": 23041,
+            "amount": 5,
+            "price": 5000
+          },
+          {
+            "id": 23042,
+            "amount": 5,
+            "price": 5000
+          },
+          {
+            "id": 23043,
+            "amount": 5,
+            "price": 5000
+          },
+          {
+            "id": 23018,
+            "amount": 5,
+            "price": 5000
+          }
+        ]
+      },
+      {
+        "shopId": 2,
+        "currency": "elite_pet",
+        "shopName": "Elites",
+        "restrict": 0,
+        "items": [
+          {
+            "id": 20511,
+            "amount": 5,
+            "price": 500
+          },
+          {
+            "id": 11314,
+            "amount": 5,
+            "price": 2500
+          }
+        ]
+      }
+    ]
+  }
+]

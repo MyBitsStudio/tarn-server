@@ -12,7 +12,10 @@ public enum Currency {
     VOTE("vote", 4000),
     SUMMER("summer", 14819),
     LOYALTY("loyalty", 5022),
-
+    AFK("afk", 5020),
+    PETS("pet", 19000),
+    ELITE_PET("elite_pet", 19002),
+    VIP("vip", 23003)
     ;
 
     private final String name;

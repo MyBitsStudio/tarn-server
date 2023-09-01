@@ -85,6 +85,12 @@ public class NPCOptionPacketListener implements PacketListener {
                 return;
             }
             switch (npc.getId()) {
+                case 14:
+                    ShopHandler.getShop(8).ifPresent(shop -> shop.send(player, true));
+                    break;
+                case 4652:
+                    ShopHandler.getShop(7).ifPresent(shop -> shop.send(player, true));
+                    break;
                 case 3321:
                     ShopHandler.getShop(4).ifPresent(shop -> shop.send(player, true));
                     break;
@@ -1291,8 +1297,7 @@ public class NPCOptionPacketListener implements PacketListener {
     public void handleMessage(Player player, Packet packet) {
         if (player.isTeleporting() || player.isPlayerLocked() || player.getMovementQueue().isLockMovement())
             return;
-        player.afkTicks = 0;
-        player.afk = false;
+        player.getAfk().setAFK(false);
         switch (packet.getOpcode()) {
             case ATTACK_NPC -> attackNPC(player, packet);
             case FIRST_CLICK_OPCODE -> firstClick(player, packet);

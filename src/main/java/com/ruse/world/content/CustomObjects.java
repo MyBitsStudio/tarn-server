@@ -22,7 +22,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 public class CustomObjects {
 
     private static final int DISTANCE_SPAWN = 70; // Spawn if within 70 squares of distance
-    private static final CopyOnWriteArrayList<GameObject> CUSTOM_OBJECTS = new CopyOnWriteArrayList<GameObject>();
+    private static final CopyOnWriteArrayList<GameObject> CUSTOM_OBJECTS = new CopyOnWriteArrayList<>();
     private static final int[] HOME_OBJECTS = {4764, 4772};
 
     public static void init() {
@@ -46,6 +46,14 @@ public class CustomObjects {
             GameObject object = new GameObject(id, new Position(x, y, z));
             object.setFace(face);
             RegionClipping.addObject(object);
+        }
+        for (int[] customObjectsSpawn : CUSTOM_OBJECTS_DESPAWNS) {
+            int id = customObjectsSpawn[0];
+            int x = customObjectsSpawn[1];
+            int y = customObjectsSpawn[2];
+            int z = customObjectsSpawn[3];
+            GameObject object = new GameObject(id, new Position(x, y, z));
+            deleteGlobalObject(object);
         }
     }
 
@@ -754,6 +762,10 @@ public class CustomObjects {
      */
 
     // Objects that are handled by the server on regionchange
+
+    private static final int[][] CUSTOM_OBJECTS_DESPAWNS = {
+
+    };
     private static final int[][] CUSTOM_OBJECTS_SPAWNS = {
 
             {16116, 2859, 2748, 0, 1},

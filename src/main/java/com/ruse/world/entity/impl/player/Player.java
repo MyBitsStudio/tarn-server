@@ -37,6 +37,7 @@ import com.ruse.world.content.johnachievementsystem.Perk;
 import com.ruse.world.content.johnachievementsystem.PerkType;
 import com.ruse.world.content.tbdminigame.Lobby;
 import com.ruse.world.entity.impl.player.timers.PlayerTimers;
+import com.ruse.world.packages.afk.AFKSystem;
 import com.ruse.world.packages.loyalty.LoyaltyManager;
 import com.ruse.world.packages.skills.slayer.Slayer;
 import com.ruse.world.packages.starter.StarterShop;
@@ -3971,9 +3972,6 @@ public class Player extends Character {
         return (int) Math.sqrt(Math.pow(getPosition().getX() - pointX, 2) + Math.pow(getPosition().getY() - pointY, 2));
     }
 
-    public int afkTicks;
-    public boolean afk;
-
     public boolean register() {
         return World.getPlayers().add(this);
     }
@@ -4115,4 +4113,7 @@ public class Player extends Character {
 
     @Getter
     private StarterShop starterShop = new StarterShop(this);
+
+    @Getter
+    private AFKSystem afk = new AFKSystem(this);
 }

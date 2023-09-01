@@ -6,7 +6,7 @@ import com.ruse.world.packages.globals.GlobalBoss;
 public class LugiaGlobal extends GlobalBoss {
 
     public LugiaGlobal() {
-        super(3308, new Position(2143, 5016,8));
+        super(3308, new Position(2143, 5016,4));
     }
 
     @Override

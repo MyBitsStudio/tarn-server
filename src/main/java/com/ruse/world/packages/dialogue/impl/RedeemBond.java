@@ -65,6 +65,7 @@ public class RedeemBond extends Dialogue {
                     case 23058 -> amount = 250;
                     case 23059 -> amount = 1000;
                     case 23060 -> amount = 2500;
+                    case 10946 -> amount = 10;
                 }
                 if (getPlayer().getInventory().contains(item)) {
                     PlayerLogs.log(getPlayer().getUsername(),
@@ -79,10 +80,8 @@ public class RedeemBond extends Dialogue {
                     getPlayer().getInventory().delete(item, amounts);
                     getPlayer().incrementAmountDonated(amount);
                     getPlayer().getPlayerVIP().addPoints(amount);
-                    getPlayer().getSeasonPass().incrementExp(1020 * (amount >= 100 ? (amount * 2) : amount), false);
                     getPlayer().getPacketSender().sendMessage("Your account has gained funds worth $" + (amount / 10)
                             + ". Your total is now at " + getPlayer().getPlayerVIP().getPoints() + ".");
-                    getPlayer().getPacketSender().sendMessage("Your have gained "+(1020 * (amount >= 100 ? (amount * 2) : amount)) +" BP exp");
                     PlayerPanel.refreshPanel(getPlayer());
                 }
                 return true;

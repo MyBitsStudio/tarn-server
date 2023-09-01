@@ -256,13 +256,6 @@ public class SkillManager {
         Familiar playerFamiliar = player.getSummoning().getFamiliar();
 
         if (playerFamiliar != null) {
-            // // System.out.println("Experience without pet: " + experience);
-            // // System.out.println("Experience with pet: " + (experience *=
-            // DropUtils.getXpBonus(playerFamiliar.getSummonNpc().getId())));
-
-            if (player.getSummoning().getFamiliar().getSummonNpc().getId() == BossPets.BossPet.FENRIR_PET.npcId) {
-                experience *= 2;
-            }
             if (player.getSummoning().getFamiliar().getSummonNpc().getId() == BossPets.BossPet.ODIN_PET.npcId) {
                 experience *= 2;
             }

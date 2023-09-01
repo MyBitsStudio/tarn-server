@@ -496,6 +496,7 @@ public final class RegionClipping {
 		switch (objectId) {
 		case 14233: // pest control gates
 		case 14235: // pest control gates
+			case 2913:
 			return;
 		}
 		final Position position = new Position(x, y, height);
@@ -514,12 +515,12 @@ public final class RegionClipping {
 		}
 		int xLength;
 		int yLength;
-		if (direction != 1 && direction != 3) {
-			xLength = def.xLength();
-			yLength = def.yLength();
-		} else {
+		if (direction == 1 || direction == 3) {
 			yLength = def.xLength();
 			xLength = def.yLength();
+		} else {
+			xLength = def.xLength();
+			yLength = def.yLength();
 		}
 		if (type == 22) {
 			if (def.hasActions() && def.unwalkable) {

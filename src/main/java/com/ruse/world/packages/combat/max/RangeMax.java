@@ -11,9 +11,11 @@ import com.ruse.world.content.combat.effect.EquipmentBonus;
 import com.ruse.world.content.combat.prayer.CurseHandler;
 import com.ruse.world.content.combat.prayer.PrayerHandler;
 import com.ruse.world.content.serverperks.ServerPerks;
+import com.ruse.world.content.skill.impl.summoning.BossPets;
 import com.ruse.world.entity.impl.Character;
 import com.ruse.world.entity.impl.npc.NPC;
 import com.ruse.world.entity.impl.player.Player;
+import org.jetbrains.annotations.NotNull;
 
 public class RangeMax {
 
@@ -174,6 +176,9 @@ public class RangeMax {
             if (player.getVariables().getBooleanValue("double-damage")) {
                 maxHit *= 2;
             }
+
+            maxHit *= multiplyDamage(player);
+
             if (player.getMinutesVotingDMG() > 0) {
                 maxHit *= 2;
             }
@@ -192,6 +197,19 @@ public class RangeMax {
         }
 
         return maxHit;
+    }
+
+    public static double multiplyDamage(@NotNull Player player){
+        double multiply = 1.0;
+        if(player.getSummoning().getFamiliar() != null) {
+            if (player.getSummoning().getFamiliar().getSummonNpc().getId() == BossPets.BossPet.RANGED_PET.npcId) {
+                multiply += 0.10;
+            }
+            if (player.getSummoning().getFamiliar().getSummonNpc().getId() == BossPets.BossPet.SHADOW.npcId) {
+                multiply += 0.5;
+            }
+        }
+        return multiply;
     }
 
 }

@@ -30,6 +30,7 @@ public class SecurityUtils {
             SERVER_MAPS = "./.core/server/security/serverMaps.json",
 
             IDENTIFIERS = "./.core/server/identifiers.json",
+           WELLS = "./.core/server/wells.json",
             LOGGING = "./core/logs/";
 
     public static String[] seeds = {

@@ -13,6 +13,7 @@ import com.ruse.world.content.combat.prayer.PrayerHandler;
 import com.ruse.world.content.combat.weapon.FightStyle;
 import com.ruse.world.content.serverperks.ServerPerks;
 import com.ruse.world.content.skill.DropUtils;
+import com.ruse.world.content.skill.impl.summoning.BossPets;
 import com.ruse.world.content.skill.impl.summoning.Familiar;
 import com.ruse.world.entity.impl.Character;
 import com.ruse.world.entity.impl.npc.NPC;
@@ -338,6 +339,9 @@ public class MeleeMax {
             if (player.getVariables().getBooleanValue("double-damage")) {
                 maxHit *= 2;
             }
+
+            maxHit *= multiplyDamage(player);
+
             if (player.getMinutesVotingDMG() > 0) {
                 maxHit *= 2;
             }
@@ -390,5 +394,18 @@ public class MeleeMax {
         }
 
         return (120 * prayerMod) * otherBonus + styleBonus;
+    }
+
+    public static double multiplyDamage(@NotNull Player player){
+        double multiply = 1.0;
+        if(player.getSummoning().getFamiliar() != null) {
+            if (player.getSummoning().getFamiliar().getSummonNpc().getId() == BossPets.BossPet.MELEE_PET.npcId) {
+                multiply += 0.10;
+            }
+            if (player.getSummoning().getFamiliar().getSummonNpc().getId() == BossPets.BossPet.SHADOW.npcId) {
+                multiply += 0.5;
+            }
+        }
+        return multiply;
     }
 }

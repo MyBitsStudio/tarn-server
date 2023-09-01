@@ -10,6 +10,8 @@ import com.ruse.model.container.impl.Equipment;
 import com.ruse.model.definitions.GameObjectDefinition;
 import com.ruse.model.definitions.ItemDefinition;
 import com.ruse.model.definitions.NpcDefinition;
+import com.ruse.model.input.impl.DonateToWellListener;
+import com.ruse.model.input.impl.EnterAmountOfBarsToSmelt;
 import com.ruse.net.packet.Packet;
 import com.ruse.net.packet.PacketListener;
 import com.ruse.util.Misc;
@@ -402,6 +404,12 @@ public class UseItemPacketListener implements PacketListener {
                         // animator
                         if (!WarriorsGuild.itemOnAnimator(player, item, gameObject))
                             player.getPacketSender().sendMessage("Nothing interesting happens..");
+                        return;
+                    }
+                    if(objectId == 26945){
+                        player.setInputHandling(new DonateToWellListener(player, item.getId()));
+                        player.getPacketSender().sendEnterAmountPrompt(
+                                "How many " + ItemDefinition.forId(item.getId()).getName() + "s would you like to donate?");
                         return;
                     }
                     if (GameObjectDefinition.forId(objectId) != null

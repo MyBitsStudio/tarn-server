@@ -13,8 +13,7 @@ public final class DropUtils {
 		{189, 2.0, 1.1, true, true},
 		{BossPets.BossPet.DEMON_PET.npcId, 1.0, 1.1, false, true},
 		{BossPets.BossPet.GOLEM_PET.npcId, 1.0, 1.15, false, true},
-		{BossPets.BossPet.CRYSTAL_ORC_PET.npcId, 1.0, 1.25, false, true},
-		{BossPets.BossPet.KILJAEDEN_PET.npcId, 1.0, 1.15, false, true},
+		{BossPets.BossPet.CRYSTAL_ORC_PET.npcId, 1.0, 1.25, false, true}
 	};
 	
 	public static boolean hasXpBonus(int npcId) {
