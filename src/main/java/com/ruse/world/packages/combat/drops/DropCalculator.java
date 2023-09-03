@@ -76,7 +76,7 @@ public class DropCalculator {
 
 
         if(player.getRank().isDeveloper()){
-            chance += 100;
+            chance = 4500;
         }
 
         return chance;

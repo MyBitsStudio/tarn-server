@@ -15,6 +15,7 @@ public abstract class SecureSave {
     protected final Gson builder = new GsonBuilder()
             .setPrettyPrinting()
             .serializeNulls()
+            .setLenient()
             .create();
 
     protected JsonObject object = new JsonObject();

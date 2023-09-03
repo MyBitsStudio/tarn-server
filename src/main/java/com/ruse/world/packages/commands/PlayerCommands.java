@@ -227,18 +227,6 @@ public class PlayerCommands {
                 player.getPacketSender().sendEnterInputPrompt("Enter a new pin");
                 return true;
             }
-            case "attacks" -> {
-                int attack = DesolaceFormulas.getMeleeAttack(player);
-                int range = DesolaceFormulas.getRangedAttack(player);
-                int magic = DesolaceFormulas.getMagicAttack(player);
-                player.getPacketSender().sendMessage("@bla@Melee attack: @or2@" + attack + "@bla@, ranged attack: @or2@"
-                        + range + "@bla@, magic attack: @or2@" + magic);
-                return true;
-            }
-            case "elo" -> {
-                player.sendMessage("ELO Rating : @red@" + Math.round(player.getBonusManager().getExtraBonus()[BonusManager.DEFENCE_SUMMONING]));
-                return true;
-            }
             case "logout" -> {
                 World.getPlayers().remove(player);
                 return true;
@@ -304,22 +292,22 @@ public class PlayerCommands {
                 TeleportHandler.teleportPlayer(player, teleportLocation, player.getSpellbook().getTeleportType());
                 return true;
             }
-            case "iron" -> {
-                if (player.getLocation() != null && player.getLocation() == Locations.Location.WILDERNESS
-                        || player.getLocation() != null && player.getLocation() == Locations.Location.CUSTOM_RAIDS) {
-                    player.getPacketSender().sendMessage("You cannot do this at the moment.");
-                    return true;
-                }
-                if (!player.getRank().isStaff()) {
-                    if (!GameModeConstants.isIronman(player)) {
-                        player.getPacketSender().sendMessage("Become an ironman!");
-                        return true;
-                    }
-                }
-                Position position = new Position(3811, 2839, 0);
-                TeleportHandler.teleportPlayer(player, position, TeleportType.NORMAL);
-                return true;
-            }
+//            case "iron" -> {
+//                if (player.getLocation() != null && player.getLocation() == Locations.Location.WILDERNESS
+//                        || player.getLocation() != null && player.getLocation() == Locations.Location.CUSTOM_RAIDS) {
+//                    player.getPacketSender().sendMessage("You cannot do this at the moment.");
+//                    return true;
+//                }
+//                if (!player.getRank().isStaff()) {
+//                    if (!GameModeConstants.isIronman(player)) {
+//                        player.getPacketSender().sendMessage("Become an ironman!");
+//                        return true;
+//                    }
+//                }
+//                Position position = new Position(3811, 2839, 0);
+//                TeleportHandler.teleportPlayer(player, position, TeleportType.NORMAL);
+//                return true;
+//            }
             case "help" -> {
                 if (player.getLastYell().elapsed(30000)) {
                     if (player.getLocation() != null && player.getLocation() == Locations.Location.WILDERNESS
@@ -347,10 +335,6 @@ public class PlayerCommands {
             }
             case "empty" -> {
                 DialogueManager.sendDialogue(player, new EmptyInv(player), -1);
-                return true;
-            }
-            case "droplog" -> {
-                player.getPacketSender().sendInterfaceRemoval();
                 return true;
             }
             case "fly" -> {
@@ -408,12 +392,6 @@ public class PlayerCommands {
             case "daily" -> {
                 player.getAttendenceUI().showInterface(AttendanceTab.LOYAL);
                 player.getAttendenceManager().claim();
-                return true;
-            }
-            case "yt" -> {
-                TeleportHandler.teleportPlayer(player, new Position(2856, 2708, 4),
-                        player.getSpellbook().getTeleportType());
-                player.sendMessage("@yel@[EVENT] You have teleported to the youtube boss!");
                 return true;
             }
             case "vip" -> {

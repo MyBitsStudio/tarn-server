@@ -6,6 +6,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.ruse.model.Item;
 import com.ruse.security.save.impl.server.JunkPriceLoad;
+import com.ruse.world.World;
 import com.ruse.world.entity.impl.player.Player;
 
 import java.io.BufferedReader;
@@ -162,6 +163,9 @@ public class ShopHandler {
     }
 
     public static boolean buy(Player player, int itemId, int amount){
+        if(!World.attributes.getSetting("shop")){
+            return false;
+        }
         Optional<TabShop> option = getShop(player.getVariables().getIntValue("active-shop"));
 
         if(option.isPresent()){

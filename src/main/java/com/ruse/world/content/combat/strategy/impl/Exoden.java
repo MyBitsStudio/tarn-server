@@ -75,6 +75,7 @@ public class Exoden implements CombatStrategy {
 				});
 
 			}
+		} else
 			if (randomNomad >= 23 && randomNomad <= 29) {
 				nomad.setChargingAttack(true);
 				nomad.getMovementQueue().setLockMovement(true);
@@ -98,11 +99,7 @@ public class Exoden implements CombatStrategy {
 							nomad.performAnimation(new Animation(6501));
 							new Projectile(nomad, target, 2283, 44, 3, 43, 31, 0).sendProjectile();
 							nomad.getCombatBuilder()
-									.setContainer(new CombatContainer(nomad, target, 1, 1, CombatType.MAGIC, true));
-							long damage = target.getConstitution() / 4;
-							Hit h = new Hit(damage);
-							target.dealDamage(h);
-							target.setConstitution(target.getConstitution() / 4);
+									.setContainer(new CombatContainer(nomad, target, 2, 1, CombatType.MAGIC, true));
 						} else if (ticks == 16) {
 							nomad.getMovementQueue().setLockMovement(false);
 							nomad.setChargingAttack(false);
@@ -126,11 +123,7 @@ public class Exoden implements CombatStrategy {
 							nomad.forceChat("Freeze!");
 							nomad.performAnimation(new Animation(6501));
 							nomad.getCombatBuilder()
-									.setContainer(new CombatContainer(nomad, target, 1, CombatType.MAGIC, true));
-							long damage = target.getConstitution() / 4;
-							Hit h = new Hit(damage);
-							target.dealDamage(h);
-							target.setConstitution(target.getConstitution() / 4);
+									.setContainer(new CombatContainer(nomad, target, 2, CombatType.MAGIC, true));
 						} else if (ticks == 1 || ticks == 4 || ticks == 5) {
 							nomad.performGraphic(gfx2);
 							nomad.performAnimation(anim3);
@@ -147,13 +140,12 @@ public class Exoden implements CombatStrategy {
 							new Projectile(nomad, target, 2001, 44, 3, 43, 31, 0).sendProjectile();
 						if (ticks == 24)
 							target.performGraphic(new Graphic(2004));
-						long damage = target.getConstitution() / 4;
-						Hit h = new Hit(damage);
-						target.dealDamage(h);
-						target.setConstitution(target.getConstitution() / 4);
 						if (ticks == 25) {
 							nomad.getCombatBuilder()
-									.setContainer(new CombatContainer(nomad, target, 1, 1, CombatType.MAGIC, false));
+									.setContainer(new CombatContainer(nomad, target, 2, 1, CombatType.MAGIC, false));
+							long damage = target.getConstitution() / 8;
+							Hit h = new Hit(damage);
+							target.dealDamage(h);
 							target.getMovementQueue().freeze(0);
 							nomad.getMovementQueue().setLockMovement(false);
 							nomad.setChargingAttack(false);
@@ -162,27 +154,8 @@ public class Exoden implements CombatStrategy {
 						ticks++;
 					}
 				});
-			} else {
-				if (meleeDistance) {
-					nomad.performAnimation(anim2);
-					nomad.forceChat("You shall fall!");
-					nomad.getCombatBuilder()
-							.setContainer(new CombatContainer(nomad, target, 1, 1, CombatType.MELEE, false));
-				} else {
-					target.getMovementQueue().freeze(15);
-					target.performGraphic(gfx3);
-					nomad.forceChat("Freeze!");
-					nomad.performAnimation(new Animation(6501));
-					nomad.getCombatBuilder()
-							.setContainer(new CombatContainer(nomad, target, 1, 1, CombatType.MAGIC, true));
-					long damage = target.getConstitution() / 4;
-					Hit h = new Hit(damage);
-					target.dealDamage(h);
-					target.setConstitution(target.getConstitution() / 4);
-				}
-			}
-		}
-		if (nomad.getConstitution() <= 65000 && minions_dead == false) {
+			} else
+		if (nomad.getConstitution() <= 650000 && !minions_dead) {
 			nomad.forceChat("Time to spawn my army!");
 			NPC[] babies = new NPC[] { new NPC(MINION_NPCID, target.getPosition()) };
 			minions_spawned = true;
@@ -193,7 +166,7 @@ public class Exoden implements CombatStrategy {
 					World.deregister(n);
 				}
 			}
-		}
+		} else
 		if (nomad.getConstitution() <= 50000) {
 			final Position start = target.getPosition().copy();
 			final Position second = new Position(start.getX() + 2, start.getY() + Misc.getRandom(2));
@@ -211,20 +184,19 @@ public class Exoden implements CombatStrategy {
 					p.getPacketSender().sendGlobalGraphic(new Graphic(281), start);
 					p.getPacketSender().sendGlobalGraphic(new Graphic(281), second);
 					p.getPacketSender().sendGlobalGraphic(new Graphic(281), last);
-					long damage = target.getConstitution() / 2;
-					Hit h = new Hit(damage);
-					p.dealDamage(h);
-					p.setConstitution(p.getConstitution() / 2);
 				}
 			}
 			// }
+		} else {
+			new CombatHit(nomad.getCombatBuilder(), new CombatContainer(nomad, target, 2, CombatType.MAGIC, true))
+					.handleAttack();
 		}
 		return true;
 	}
 
 	@Override
 	public int attackDelay(Character entity) {
-		return entity.getAttackSpeed();
+		return 5;
 	}
 
 	@Override

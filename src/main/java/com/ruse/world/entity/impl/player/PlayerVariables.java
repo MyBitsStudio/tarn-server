@@ -36,6 +36,8 @@ public class PlayerVariables {
         settings.put("double-dr", false);
         settings.put("double-ddr", false);
         settings.put("double-damage", false);
+        settings.put("vote-xp", false);
+        settings.put("vote-dr", false);
 
         settings.put("item-chosen", Integer.parseInt("-1"));
     }

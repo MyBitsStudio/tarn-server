@@ -12,6 +12,7 @@ import com.ruse.world.World;
 import com.ruse.world.content.*;
 import com.ruse.world.content.Sounds.Sound;
 import com.ruse.world.content.StarterTasks.StarterTaskData;
+import com.ruse.world.entity.impl.player.timers.impl.scroll.VoteXP;
 import com.ruse.world.entity.impl.player.timers.impl.scroll.*;
 import com.ruse.world.packages.dialogue.DialogueManager;
 import com.ruse.world.packages.dialogue.impl.RedeemBond;
@@ -22,7 +23,6 @@ import com.ruse.world.packages.packs.casket.BoxLoot;
 import com.ruse.world.packages.packs.casket.impl.EliteSlayerCasket;
 import com.ruse.world.packages.packs.casket.impl.SlayerCasket;
 import com.ruse.world.content.cluescrolls.OLD_ClueScrolls;
-import com.ruse.world.content.combat.prayer.PrayerHandler;
 import com.ruse.world.packages.dissolve.DissolveItem;
 import com.ruse.world.content.holidayevents.easter2017;
 import com.ruse.world.content.skill.impl.herblore.Herblore;
@@ -257,6 +257,16 @@ public class ItemActionPacketListener implements PacketListener {
                 player.getInventory().delete(23168, 1);
                 player.getPSettings().setSetting("raid-unlock", true);
                 player.sendMessage("You've unlocked the ability to enter raids.");
+                break;
+
+            case 25100:
+                if(player.getPSettings().getBooleanValue("fall-unlock")){
+                    player.sendMessage("You already have this unlocked.");
+                    return;
+                }
+                player.getInventory().delete(25100, 1);
+                player.getPSettings().setSetting("fall-unlock", true);
+                player.sendMessage("You've unlocked the fall calendar!");
                 break;
 
 //            case 23210:
@@ -1033,20 +1043,6 @@ public class ItemActionPacketListener implements PacketListener {
             case 13610:
                 TeleportTabs.teleportTabs(player, itemId);
                 break;
-            case 2724:
-                OLD_ClueScrolls.openCasket(player);
-                break;
-            case 13663:
-                if (player.getInterfaceId() > 0) {
-                    player.getPacketSender().sendMessage("Please close the interface you have open before doing this.");
-                    return;
-                }
-                player.setUsableObject(new Object[2]).setUsableObject(0, "reset");
-                player.getPacketSender().sendString(38006, "Choose stat to reset!")
-                        .sendMessage("@red@Please select a skill you wish to reset and then click on the 'Confim' button.")
-                        .sendString(38090, "Which skill would you like to reset?");
-                player.getPacketSender().sendInterface(38000);
-                break;
             case 23020:
                 if (player.busy()) {
                     player.getPacketSender().sendMessage("You can not do this right now.");
@@ -1066,48 +1062,9 @@ public class ItemActionPacketListener implements PacketListener {
                                 + "point, " + 25_000 * amt + " Coins");
                 player.getPacketSender()
                         .sendMessage("@blu@You received " + minutesEXP + " minutes of Bonus Xp, " + minutesDR + " minutes of x2 DR");
-                player.getPointsHandler().incrementVotingPoints(amt);
-                BonusExperienceTask.addBonusXp(player, minutesEXP);
-                VotingDRBoostTask.addBonusDR(player, minutesDR);
+                player.getTimers().register(new VoteXP(player, minutesEXP));
+                player.getTimers().register(new VoteDR(player, minutesDR));
                 player.getClickDelay().reset();
-                break;
-            case 10138:
-                if (player.busy()) {
-                    player.getPacketSender().sendMessage("You can not do this right now.");
-                    return;
-                }
-                VoteRewardHandler.AFKFISH(player, false);
-                break;
-            case 17634:
-                if (player.busy()) {
-                    player.getPacketSender().sendMessage("You can not do this right now.");
-                    return;
-                }
-                VoteRewardHandler.AFKMINE(player, false);
-                break;
-            case 9013:
-                String[] messages = {"BOO!", "SURPRISE!", "SPOOOKED YA", "Ooooh!", "Spoooooooookyy",
-                        "ooooOOoooOOOooOOOOooo", "I'm a ghost!", "I ain't afraid of no ghost",
-                        "If there's something strange in your neighborhood...", "Who you gonna call?", "GHOST BUSTERS!",// KEEP
-                        // A
-                        // COMMA
-                        // ON
-                        // THE
-                        // LAST
-                        // ONE!
-                };
-                int max = messages.length;
-
-                // // System.out.println("Count: " + count + " | Max: " + max);
-                player.forceChat(messages[count]);
-                player.performAnimation(new Animation(2836));
-                player.performGraphic(new Graphic(293));
-                count++;
-
-                if (count == max) {
-                    // // System.out.println("Resetting count to 0");
-                    count = 0;
-                }
                 break;
             case 20692:
                 player.performGraphic(new Graphic(199));
@@ -2303,18 +2260,16 @@ public class ItemActionPacketListener implements PacketListener {
                 //int minutesDMG = 2 * amt;
 
                 player.getInventory().delete(23020, amt);
-                player.getInventory().add(ItemDefinition.COIN_ID, 500000  * amt);
+                player.getInventory().add(ItemDefinition.COIN_ID, 25_000  * amt);
                 player.getPacketSender()
                         .sendMessage("@blu@You are rewarded " + (amt * 1) + " vote "
                                 + (amt > 1 ? "points, " : "point, ") + (1000 * amt) + " Coins, and " + (1000 * amt) + " PVM Tickets!");
                 player.getPacketSender()
                         .sendMessage("@blu@You received " + minutesEXP + " minutes of Bonus Xp, " + minutesDR + " minutes of x2 DR");
                 player.getPointsHandler().incrementVotingPoints(amt * 1);
-                BonusExperienceTask.addBonusXp(player, minutesEXP);
-                VotingDRBoostTask.addBonusDR(player, minutesDR);
-                // VotingDMGBoostTask.addBonusDMG(player, minutesDMG);
+                player.getTimers().register(new VoteXP(player, minutesEXP));
+                player.getTimers().register(new VoteDR(player, minutesDR));
                 StarterTasks.finishTask(player, StarterTaskData.REDEEM_A_VOTE_SCROLL);
-
                 player.getClickDelay().reset();
                 break;
             case 10138:

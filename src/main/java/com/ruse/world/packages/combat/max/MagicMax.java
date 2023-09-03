@@ -34,6 +34,10 @@ public class MagicMax {
                     defence *= 1.4;
                 }
 
+                if(defence >= 800)
+                    defence = 800;
+
+
                 maxHit -= defence;
 
                 if(maxHit <= 0){
@@ -41,6 +45,9 @@ public class MagicMax {
                 }
 
                 double absorb = player.getBonusManager().getExtraBonus()[BonusManager.ABSORB_MAGIC];
+
+                if(absorb >= 900)
+                    absorb = 900;
 
                 if(absorb > 0){
                     double percent = 1 - ( 1 - (absorb / 1000.0));
@@ -181,9 +188,10 @@ public class MagicMax {
 
             maxHit *= multiplyDamage(player);
 
-            if (player.getMinutesVotingDMG() > 0) {
-                maxHit *= 2;
-            }
+            if (player.getTimers().get("double-damage") != null)
+                if (player.getTimers().get("double-damage").returnLeft() > 0) {
+                    maxHit *= 2;
+                }
 
             if(player.getEquipment().contains(15589))
                 maxHit *= 1.5;

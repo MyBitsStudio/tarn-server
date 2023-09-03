@@ -52,7 +52,7 @@ public class PlayerPanel {
                                 ServerPerks.getInstance().getActivePerk().getName() :
                                 "N/A"),
                 (WellOfGoodwill.isActive() ? "@whi@Well of Goodwill: @yel@On" : "@whi@Well of Goodwill: @yel@Off"),
-                "@whi@Bonus Xp: @yel@" + (Misc.format(player.getMinutesBonusExp()) == null ? "0" : Misc.format(player.getMinutesBonusExp())) + " minutes left",
+                "@whi@Bonus Xp: @yel@" + (player.getTimers().get("double-damage") == null ? 0 :(Misc.format((int) player.getTimers().get("vote-xp").returnLeft() / (1000 * 60)) == null ? "0" : Misc.format((int) (player.getTimers().get("vote-xp").returnLeft() / (1000 * 60)))) + " minutes left"),
         };
 
         for (int i = 0; i < Messages.length; i++) {

@@ -620,9 +620,10 @@ public class Misc {
         if (Misc.isWeekend()) {
             original *= 2;
         }
-        if (player.getMinutesBonusExp() >= 0) {
-            original *= 2;
-        }
+        if (player.getTimers().get("vote-xp") != null)
+            if (player.getTimers().get("vote-xp").returnLeft() >= 0) {
+                original *= 2;
+            }
         return original;
     }
 

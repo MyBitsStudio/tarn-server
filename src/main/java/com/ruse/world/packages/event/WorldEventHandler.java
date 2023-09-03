@@ -1,36 +1,58 @@
 package com.ruse.world.packages.event;
 
+import com.ruse.model.Timer;
+import com.ruse.util.Misc;
+import com.ruse.world.WorldCalendar;
+import com.ruse.world.WorldTimers;
 import com.ruse.world.entity.impl.player.Player;
+import com.ruse.world.packages.event.impl.DonatorBoostEvent;
+import com.ruse.world.packages.event.impl.DoubleDropEvent;
+import com.ruse.world.packages.event.impl.SlayerBonusEvent;
+import com.ruse.world.packages.event.impl.VoteBonusEvent;
+import com.ruse.world.timers.DoubleDropTimer;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 public class WorldEventHandler {
-
-    private final Calendar calendar = Calendar.getInstance();
     private final List<Event> events = new ArrayList<>();
+
+    private int ticks;
 
     public WorldEventHandler load(){
         for(Events event : Events.values()){
             int[] dates = event.getDates();
 
-            calendar.set(Calendar.MONTH, dates[0]);
-            calendar.set(Calendar.DAY_OF_MONTH, dates[1]);
-            calendar.set(Calendar.YEAR, 2023);
-            long start = calendar.getTimeInMillis();
-
-            calendar.set(Calendar.MONTH, dates[2]);
-            calendar.set(Calendar.DAY_OF_MONTH, dates[3]);
-            calendar.set(Calendar.YEAR, 2023);
-            long end = calendar.getTimeInMillis();
-
-            if(System.currentTimeMillis() >= start && System.currentTimeMillis() <= end){
+            if(WorldCalendar.getInstance().isWithinDate(dates[0], dates[1], dates[2], dates[3])){
                 events.add(event.getEvent());
             }
+
+        }
+        if(WorldCalendar.getInstance().isWeekend()){
+            events.add(new DonatorBoostEvent());
+            events.add(new SlayerBonusEvent());
+            events.add(new VoteBonusEvent());
         }
         return this;
     }
+
+    public void runRandomEvent(){
+
+        if(ticks++ % 100 == 0) {
+
+            int random = Misc.random(100000);
+
+            if (random == 63315) {
+                WorldTimers.register(new DoubleDropTimer(Timer.HOURS * 2));
+            } else if (random == 38512) {
+                WorldTimers.register(new DoubleDropTimer(Timer.HOURS * 3));
+            }
+        }
+    }
+
 
     public void startEvents(){
         if(events.isEmpty()){

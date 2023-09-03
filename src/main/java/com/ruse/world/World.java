@@ -76,6 +76,8 @@ public class World {
 
     public static WorldEventHandler handler = new WorldEventHandler();
 
+    public static WorldAttributes attributes = new WorldAttributes();
+
     /**
      * A thread pool that will update players in parallel.
      */
@@ -304,6 +306,8 @@ public class World {
 
         WorldTimers.sequence();
 
+        handler.runRandomEvent();
+
         ThreadProgressor.submit(true, () -> {
             try {
                 database.executeStatementQueue();
@@ -367,13 +371,6 @@ public class World {
     private static Long2ObjectMap<Player> playerByNames = new Long2ObjectOpenHashMap<>();
     public static Long2ObjectMap<Player> playerMap() {
         return playerByNames;
-    }
-
-    public static ObjectArrayList<Entity> getNearbyEntities(final Position position, final int range) {
-        ObjectArrayList<Entity> coll = new ObjectArrayList<>();
-        coll.addAll(getNearbyPlayers(position,range));
-        coll.addAll(getNearbyNPCs(position,range));
-        return coll;
     }
 
     public static ObjectArrayList<Player> getNearbyPlayers(final Position position, final int range) {

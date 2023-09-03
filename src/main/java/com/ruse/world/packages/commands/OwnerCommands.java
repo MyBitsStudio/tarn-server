@@ -41,6 +41,15 @@ public class OwnerCommands {
         Player targets;
 
         switch (commands[0]) {
+            case "server" -> {
+                if(commands.length == 1 || commands.length == 2){
+                    player.sendMessage("Usage: ::server ATTRIBUTE VALUE");
+                    return true;
+                } else {
+                    World.attributes.setSetting(commands[1], Boolean.parseBoolean(commands[2]));
+                }
+                return true;
+            }
             case "findobj" -> {
                 name = command.substring(8).toLowerCase().replaceAll("_", " ");
                 player.getPacketSender().sendMessage("Finding object id for object - " + name);
@@ -180,47 +189,7 @@ public class OwnerCommands {
                 return true;
             }
             case "god" -> {
-                if (player.isOpMode()) {
-                    player.setSpecialPercentage(100);
-                    CombatSpecial.updateBar(player);
-                    player.getSkillManager().setCurrentLevel(Skill.PRAYER,
-                            player.getSkillManager().getMaxLevel(Skill.PRAYER));
-                    player.getSkillManager().setCurrentLevel(Skill.ATTACK,
-                            player.getSkillManager().getMaxLevel(Skill.ATTACK));
-                    player.getSkillManager().setCurrentLevel(Skill.STRENGTH,
-                            player.getSkillManager().getMaxLevel(Skill.STRENGTH));
-                    player.getSkillManager().setCurrentLevel(Skill.DEFENCE,
-                            player.getSkillManager().getMaxLevel(Skill.DEFENCE));
-                    player.getSkillManager().setCurrentLevel(Skill.RANGED,
-                            player.getSkillManager().getMaxLevel(Skill.RANGED));
-                    player.getSkillManager().setCurrentLevel(Skill.MAGIC,
-                            player.getSkillManager().getMaxLevel(Skill.MAGIC));
-                    player.getSkillManager().setCurrentLevel(Skill.CONSTITUTION,
-                            player.getSkillManager().getMaxLevel(Skill.CONSTITUTION));
-                    player.getSkillManager().setCurrentLevel(Skill.SUMMONING,
-                            player.getSkillManager().getMaxLevel(Skill.SUMMONING));
-                    player.setSpecialPercentage(100);
-                    player.setHasVengeance(false);
-                    player.performAnimation(new Animation(860));
-                    player.getPacketSender().sendMessage("You cool down, and forfeit op mode.");
-                } else {
-                    player.setSpecialPercentage(15000);
-                    CombatSpecial.updateBar(player);
-                    player.getSkillManager().setCurrentLevel(Skill.PRAYER, 150000);
-                    player.getSkillManager().setCurrentLevel(Skill.ATTACK, 15000);
-                    player.getSkillManager().setCurrentLevel(Skill.STRENGTH, 15000);
-                    player.getSkillManager().setCurrentLevel(Skill.DEFENCE, 15000);
-                    player.getSkillManager().setCurrentLevel(Skill.RANGED, 15000);
-                    player.getSkillManager().setCurrentLevel(Skill.MAGIC, 15000);
-                    player.getSkillManager().setCurrentLevel(Skill.CONSTITUTION, 150000);
-                    player.getSkillManager().setCurrentLevel(Skill.SUMMONING, 15000);
-                    player.setHasVengeance(true);
-                    player.performAnimation(new Animation(725));
-                    player.performGraphic(new Graphic(1555));
-                    player.getPacketSender().sendMessage("You're on op mode now, and everyone knows it.");
-                }
-                player.setOpMode(!player.isOpMode());
-                return true;
+
             }
             case "update" -> {
                 int time = Integer.parseInt(commands[1]);

@@ -1,7 +1,9 @@
 package com.ruse.world.packages.loyalty;
 
+import com.ruse.world.World;
 import com.ruse.world.entity.impl.player.Player;
 import lombok.Getter;
+import org.jetbrains.annotations.NotNull;
 
 public class LoyaltyManager {
 
@@ -20,9 +22,11 @@ public class LoyaltyManager {
         xp = 0;
         int points = 2500;
         while(xp < points){
-            xp += (level * 100);
+            xp += (level * 250);
             level++;
         }
+        if(level >= 10)
+            level = 10;
     }
 
     public int timeOnInstance(){
@@ -37,9 +41,16 @@ public class LoyaltyManager {
         return (int) (level * 1.2);
     }
 
-    public void handleLoyalty(Player player){
+    public void handleLoyalty(@NotNull Player player){
         long time = (System.currentTimeMillis() - timeOnLogin) / 1000 > 0 ? (System.currentTimeMillis() - timeOnLogin) / 1000 : 1;
 
+        if(!World.attributes.getSetting("loyalty")){
+            return;
+        }
+        if(player.getAfk().isAFK()){
+            timeOnLogin = System.currentTimeMillis();
+            return;
+        }
         if(time >= (400 * 60)){
             timeOnLogin = System.currentTimeMillis();
             return;

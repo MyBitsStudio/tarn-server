@@ -3,10 +3,12 @@ package com.ruse.world.packages.skills.slayer;
 import com.ruse.model.Skill;
 import com.ruse.model.definitions.NpcDefinition;
 import com.ruse.util.Misc;
+import com.ruse.world.World;
 import com.ruse.world.content.KillsTracker;
 import com.ruse.world.content.PlayerPanel;
 import com.ruse.world.content.achievement.Achievements;
 import com.ruse.world.entity.impl.player.Player;
+import com.ruse.world.packages.event.impl.SlayerBonusEvent;
 import com.ruse.world.packages.shops.ShopHandler;
 import lombok.Getter;
 import lombok.Setter;
@@ -184,6 +186,11 @@ public class Slayer {
 
         if(player.getEquipment().contains(15586))
             amount *= 2;
+
+        if(World.attributes.getSetting("slayer-bonus")){
+            SlayerBonusEvent event = (SlayerBonusEvent) World.handler.getEvent("SlayerBonus");
+            amount *= (1 + (event.getBonus() / 100));
+        }
 
         player.getInventory().add(SLAYER_TICKETS, amount);
         player.getSkillManager().addExperience(Skill.SLAYER, monsters.getXp());

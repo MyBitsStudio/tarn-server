@@ -96,9 +96,6 @@ public class PlayerSecureSave extends SecureSave {
         object.addProperty("lastlogin", player.lastLogin);
         object.addProperty("lastdailyclaim", player.lastDailyClaim);
 
-        object.addProperty("minutes-bonus-exp", player.getMinutesBonusExp());
-        object.addProperty("minutes-voting-dr", player.getMinutesVotingDR());
-        object.addProperty("minutes-voting-dmg", player.getMinutesVotingDMG());
         object.addProperty("total-gained-exp", player.getSkillManager().getTotalGainedExp());
 
         object.addProperty("Skilling-points", player.getPointsHandler().getSkillingPoints());

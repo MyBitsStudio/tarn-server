@@ -267,16 +267,6 @@ public class PlayerSecureLoad extends SecureLoad {
             player.incrementAmountDonated(object.get("donated").getAsInt());
         }
 
-        if (object.has("minutes-bonus-exp")) {
-            player.setMinutesBonusExp(object.get("minutes-bonus-exp").getAsInt(), false);
-        }
-        if (object.has("minutes-voting-dr")) {
-            player.setMinutesVotingDR(object.get("minutes-voting-dr").getAsInt(), false);
-        }
-        if (object.has("minutes-voting-dmg")) {
-            player.setMinutesVotingDMG(object.get("minutes-voting-dmg").getAsInt(), false);
-        }
-
         if (object.has("total-gained-exp")) {
             player.getSkillManager().setTotalGainedExp(object.get("total-gained-exp").getAsInt());
         }

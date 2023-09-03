@@ -12,96 +12,92 @@ public enum InstanceInterData {
      * Multi Instances
      */
 
-    DEATH_GOD("Death God", "Instance Unlock",
+    DEATH_GOD("Death God", "T10",
             new Item(995, 25000), 4, 15, 9915,
     InstanceType.MULTI),
 
-    GOLDEN_GOLEM("Golden Golem", "Instance Unlock",
-        new Item(995, 40000), 16, 15, 9024,
+    GOLDEN_GOLEM("Golden Golem", "T10",
+        new Item(995, 40000), 8, 15, 9024,
     InstanceType.MULTI),
-    MALVEK("Malvek", "Instance Unlock",
-            new Item(995, 80000), 16, 15, 8002,
+    MALVEK("Malvek", "T11",
+            new Item(995, 80000), 12, 15, 8002,
     InstanceType.MULTI),
 
-    GALVEK("Galvek", "Instance Unlock",
+    GALVEK("Galvek", "T11",
             new Item(995, 90000), 16, 15, 8000,
             InstanceType.MULTI),
 
-    BOWSER("Bowser", "Instance Unlock",
+    BOWSER("Bowser", "T12",
             new Item(995, 60000), 16, 15, 9919,
             InstanceType.MULTI),
 
-    SLENDER_MAN("Slender Man", "Instance Unlock",
+    SLENDER_MAN("Slender Man", "T12",
         new Item(10835, 120), 16, 15, 9913,
     InstanceType.MULTI),
 
-    AGUMON("Agumon", "Instance Unlock",
+    AGUMON("Agumon", "T13",
             new Item(10835, 100), 16, 15, 3020,
             InstanceType.MULTI),
-    QUEEN_FAZULA("Queen Fazula", "Instance Unlock",
+    QUEEN_FAZULA("Queen Fazula", "T14",
         new Item(10835, 200), 16, 15, 1311,
     InstanceType.MULTI),
 
-    LORD_YASUDA("Lord Yasuda", "Instance Unlock",
+    LORD_YASUDA("Lord Yasuda", "T14",
         new Item(10835, 250), 16, 15, 1313,
     InstanceType.MULTI),
 
-    AGTHOMOTH("Ag'thomoth", "Instance Unlock",
+    AGTHOMOTH("Ag'thomoth", "T10",
          new Item(995, 25000), 1, 20, 3013,
     InstanceType.SINGLE),
 
-    ZERNATH("Zernath", "Instance Unlock",
+    ZERNATH("Zernath", "T11",
         new Item(995, 45000), 1, 20, 3831,
     InstanceType.SINGLE),
 
-    SANCTUM_GOLEM("Sanctum Golem", "Instance Unlock",
+    SANCTUM_GOLEM("Sanctum Golem", "T12",
         new Item(995, 70000), 1, 20, 9017,
     InstanceType.SINGLE),
 
-    ASMODEUS("Asmodeus", "Instance Unlock",
-        new Item(995, 95000), 1, 20, 9903,
+    VARTHRAMOTH("Varthramoth", "T13",
+        new Item(10835, 105), 1, 20, 3016,
     InstanceType.SINGLE),
 
-    VARTHRAMOTH("Varthramoth", "Instance Unlock",
-        new Item(10835, 105), 16, 20, 3016,
+    EXODON("Exodon", "T14",
+        new Item(10835, 145), 1, 20, 12239,
     InstanceType.SINGLE),
 
-    EXODON("Exodon", "Instance Unlock",
-        new Item(10835, 145), 16, 20, 12239,
-    InstanceType.SINGLE),
-
-    DONATOR("Donator Semi-Boss", "VIP Tier 2",
-            new Item(10835, 25), 16, 20, 9818,
+    DONATOR("Donator Semi-Boss", "VIP 2 / T15",
+            new Item(10835, 25), 4, 5, 9818,
             InstanceType.SPECIAL),
 
-    DONATOR_V2("Donator Boss", "VIP Tier 5",
-         new Item(10835, 50), 2, 30, 591,
+    DONATOR_V2("Donator Boss", "VIP 7 / Master",
+         new Item(10835, 50), 4, 5, 591,
     InstanceType.SPECIAL),
 
-    VOTE("Vote", "3 Vote Tickets",
-         new Item(23205, 3), 2, 20, 593,
+    VOTE("Vote", "10 Vote Tickets / T15",
+         new Item(4000, 10), 4, 5, 593,
     InstanceType.SPECIAL),
 
-    IRONMAN("Ironman", "Ironman Mode Only",
-        new Item(995, 75000), 4, 20, 1880,
+    IRONMAN("Ironman", "Ironman / T15",
+        new Item(995, 75000), 4, 5, 1880,
     InstanceType.SPECIAL),
 
-    FALL("Fall Boss", "Fall Event",
+    FALL("Fall Boss", "Fall Event/T17",
             new Item(10835, 1000), 1, 30, 6430,
             InstanceType.EVENT),
-    EVENT_RANDOM("Event Devils", "Fall Event",
+    EVENT_RANDOM("Event Devils", "Fall Event/T15",
             new Item(10835, 1000), 16, 30, 1736,
             InstanceType.EVENT),
 
-    ZEIDAN("Zeidan Grimm", "Instance Unlock",
+    ZEIDAN("Zeidan Grimm", "T20",
             new Item(10835, 2500), 1, 30, 3010,
             InstanceType.MASTER),
 
-    LILINRYSS("Lilinryss", "Instance Unlock",
+    LILINRYSS("Lilinryss", "Master",
         new Item(10835, 4000), 16, 30, 3014,
     InstanceType.MASTER),
 
-    ASTA("Asta", "Instance Unlock",
+    ASTA("Asta", "Master",
         new Item(10835, 7500), 4, 30, 595,
     InstanceType.MASTER),
 //

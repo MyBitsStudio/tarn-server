@@ -2,18 +2,24 @@ package com.ruse.world.packages.bosses;
 
 import com.ruse.model.Locations;
 import com.ruse.model.Position;
+import com.ruse.world.entity.impl.npc.NPC;
+import com.ruse.world.packages.bosses.multi.MultiBoss;
 import com.ruse.world.packages.instances.Instance;
 import com.ruse.world.entity.impl.player.Player;
+import lombok.Getter;
 
 public abstract class SingleBossSinglePlayerInstance extends Instance {
 
-    private final Boss boss;
+    private Boss boss;
     private final Player owner;
+    @Getter
+    private final long times;
 
-    public SingleBossSinglePlayerInstance(Player p, Locations.Location loc, Boss boss) {
+    public SingleBossSinglePlayerInstance(Player p, Locations.Location loc, Boss boss, long time) {
         super(loc);
         this.boss = boss;
         this.owner = p;
+        this.times = time;
     }
 
     public abstract Position getStartLocation();
@@ -23,6 +29,9 @@ public abstract class SingleBossSinglePlayerInstance extends Instance {
     }
     public Player getOwner() {
         return owner;
+    }
+    public void setBoss(Boss boss){
+        this.boss = boss;
     }
 
     @Override
@@ -34,6 +43,16 @@ public abstract class SingleBossSinglePlayerInstance extends Instance {
         add(getBoss());
 
         getOwner().getPacketSender().sendMessage("@blu@[INSTANCE] Your instance has started.");
+    }
+
+    public abstract void startAnew();
+    @Override
+    public void signalSpawn(NPC n){
+        if(started + times <= System.currentTimeMillis()){
+            getOwner().sendMessage("Your instance has expired.");
+            return;
+        }
+        startAnew();
     }
 
 

@@ -3,6 +3,7 @@ package com.ruse.world.packages.attendance;
 import com.ruse.model.Item;
 import com.ruse.net.packet.Packet;
 import com.ruse.net.packet.PacketBuilder;
+import com.ruse.world.World;
 import com.ruse.world.entity.impl.player.Player;
 
 import java.time.LocalDate;
@@ -18,6 +19,10 @@ public class AttendanceUI {
     }
 
     public void showInterface(AttendanceTab tab) {
+        if(!World.attributes.getSetting("calendar")){
+            p.getPacketSender().sendMessage("@red@The calendar is currently disabled.");
+            return;
+        }
         p.getPacketSender().sendConfig(0,178);
         sendTabData(tab);
         p.getPacketSender().sendInterface(INTERFACE_ID);

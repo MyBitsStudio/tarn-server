@@ -1,6 +1,7 @@
 package com.ruse.world.packages.tower;
 
 import com.ruse.model.container.ItemContainer;
+import com.ruse.world.World;
 import com.ruse.world.entity.impl.player.Player;
 import com.ruse.world.packages.instances.Instance;
 import com.ruse.world.packages.tower.props.Tower;
@@ -20,6 +21,10 @@ public class TarnTower {
         instances.removeIf(instance -> instance.getPlayers().contains(player));
     }
     public static void startTower(@NotNull Player player) {
+        if(!World.attributes.getSetting("tower")){
+            player.sendMessage("The tower is currently disabled.");
+            return;
+        }
         if(player.getInstance() != null) {
             player.getInstance().clear();
             player.setInstance(null);
@@ -64,6 +69,10 @@ public class TarnTower {
     }
 
     public static void sendInterface(Player player){
+        if(!World.attributes.getSetting("tower")){
+            player.sendMessage("The tower is currently disabled.");
+            return;
+        }
         reset(player);
 
 

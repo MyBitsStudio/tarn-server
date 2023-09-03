@@ -1,5 +1,6 @@
 package com.ruse.world.packages.shops;
 
+import com.ruse.world.World;
 import com.ruse.world.entity.impl.player.Player;
 import lombok.Getter;
 
@@ -61,6 +62,9 @@ public class TabShop {
     }
 
     public void send(Player player, boolean refresh){
+        if(!World.attributes.getSetting("shop")){
+            return;
+        }
         if(!canOpen(player))
             return;
 

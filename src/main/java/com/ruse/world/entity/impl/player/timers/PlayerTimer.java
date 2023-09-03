@@ -25,6 +25,9 @@ public enum PlayerTimer {
     DOUBLE_DR_30("DoubleDR30", new DoubleDRHalf()),
     DOUBLE_DMG_30("DoubleDMG30", new DoubleDamageHalf()),
 
+    VOTE_XP("VoteXP", new VoteXP()),
+    VOTE_DR("VoteDR", new VoteDR()),
+
     ;
 
     private final Timer timerClass;

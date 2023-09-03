@@ -57,6 +57,12 @@ public class AnimGFX {
     public static int BLUE_DEMON_DIG_INTO_GROUND = 2923;
     public static int WHITE_DEMON_DIG_OUT_OF_GROUND = 2910;
 
+    public static int WATER_PLUMMET = 5;
+    public static int WATER_TUNNEL = 2281;
+    public static int ICE_BARRAGE = 369;
+    public static int ICE_LIGHTNING = 281;
+
+    public static int RED_WAVE_OUT = 481;
 
 
     /**

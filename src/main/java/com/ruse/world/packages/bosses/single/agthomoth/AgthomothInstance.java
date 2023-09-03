@@ -7,13 +7,23 @@ import com.ruse.world.packages.bosses.SingleBossSinglePlayerInstance;
 
 public class AgthomothInstance extends SingleBossSinglePlayerInstance {
 
-    public AgthomothInstance(Player p) {
-        super(p, Locations.Location.SINGLE_INSTANCE, new AgthomothBoss(p.getIndex() * 4));
+    public AgthomothInstance(Player p, long time) {
+        super(p, Locations.Location.SINGLE_INSTANCE, new AgthomothBoss(p.getIndex() * 4),
+                time);
     }
 
     @Override
     public Position getStartLocation() {
         return new Position(3025, 5231);
+    }
+
+    @Override
+    public void startAnew() {
+        removeNPC(getBoss());
+        setBoss(null);
+        setBoss(new AgthomothBoss(getOwner().getIndex() * 4));
+        getBoss().setSpawnedFor(getOwner());
+        add(getBoss());
     }
 
     @Override

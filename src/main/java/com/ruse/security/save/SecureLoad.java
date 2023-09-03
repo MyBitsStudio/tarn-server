@@ -16,6 +16,7 @@ public abstract class SecureLoad {
     protected final Gson builder = new GsonBuilder()
             .setPrettyPrinting()
             .serializeNulls()
+            .setLenient()
             .create();
 
     protected JsonObject object = new JsonObject();

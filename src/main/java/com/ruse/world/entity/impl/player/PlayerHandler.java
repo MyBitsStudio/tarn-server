@@ -157,7 +157,6 @@ public class PlayerHandler {
         if (player.isPoisoned()) {
             TaskManager.submit(new CombatPoisonEffect(player));
         }
-        player.getBonusXp().init();
         player.getUpgradeHandler().init();
         if (player.getPrayerRenewalPotionTimer() > 0) {
             TaskManager.submit(new PrayerRenewalPotionTask(player));
@@ -195,16 +194,6 @@ public class PlayerHandler {
         if (player.hasStaffOfLightEffect()) {
             TaskManager.submit(new StaffOfLightSpecialAttackTask(player));
         }
-        if (player.getMinutesBonusExp() > 0) {
-            TaskManager.submit(new BonusExperienceTask(player));
-        }
-
-        if (player.getMinutesVotingDR() > 0) {
-            TaskManager.submit(new VotingDRBoostTask(player));
-        }
-        if (player.getMinutesVotingDMG() > 0) {
-            TaskManager.submit(new VotingDMGBoostTask(player));
-        }
 
         // Update appearance
 
@@ -238,12 +227,6 @@ public class PlayerHandler {
                     + "] Double EXP has been activated. It stacks with Vote scrolls, Enjoy!");
         }
 
-//        if (Wildywyrm.wyrmAlive) {
-//            Wildywyrm.sendHint(player);
-//        }
-//        if (SkeletalHorror.wyrmAlive) {
-//            SkeletalHorror.sendHint(player);
-//        }
         if (WellOfGoodwill.isActive()) {
             player.getPacketSender().sendMessage(MessageType.SERVER_ALERT,
                     "The Well of Goodwill is granting 30% bonus experience for another "

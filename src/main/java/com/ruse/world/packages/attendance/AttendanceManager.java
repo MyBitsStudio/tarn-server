@@ -5,6 +5,7 @@ import com.ruse.net.SessionState;
 import com.ruse.world.World;
 import com.ruse.world.entity.impl.player.Player;
 import com.ruse.world.entity.impl.player.PlayerSaving;
+import org.jetbrains.annotations.NotNull;
 
 import java.time.LocalDate;
 import java.time.Month;
@@ -22,6 +23,10 @@ public class AttendanceManager {
     }
 
     public void claim(){
+        if(!World.attributes.getSetting("calendar")){
+            p.getPacketSender().sendMessage("@red@The calendar is currently disabled.");
+            return;
+        }
         if(lastLoggedInDate.equals(LocalDate.now(ZoneOffset.UTC))) {
             p.getPacketSender().sendMessage("@red@You have already claimed your attendance reward for today.");
         } else {
@@ -98,19 +103,14 @@ public class AttendanceManager {
         return -1;
     }
 
-    public boolean unlocked(Player player, AttendanceTab tab){
+    public boolean unlocked(Player player, @NotNull AttendanceTab tab){
 
-        switch(tab){
-            case LOYAL:
-            case EVENT:
-                return true;
-            case DONATOR:
-                return player.getPSettings().getBooleanValue("donator");
-            case SUMMER:
-                return player.getPSettings().getBooleanValue("summer-unlock");
-            default:
-                return false;
-        }
+        return switch (tab) {
+            case LOYAL, EVENT -> true;
+            case DONATOR -> player.getPSettings().getBooleanValue("donator");
+            case FALL -> player.getPSettings().getBooleanValue("fall-unlock");
+            default -> false;
+        };
     }
 
     public LocalDate getLastLoggedInDate() {
@@ -134,8 +134,8 @@ public class AttendanceManager {
             tabs.add(AttendanceTab.DONATOR);
         }
 
-        if(p.getPSettings().getBooleanValue("summer-unlock")) {
-            tabs.add(AttendanceTab.SUMMER);
+        if(p.getPSettings().getBooleanValue("fall-unlock")) {
+            tabs.add(AttendanceTab.FALL);
         }
 
         tabs.add(AttendanceTab.EVENT);
@@ -144,22 +144,32 @@ public class AttendanceManager {
     }
 
     public boolean handleTabs(int buttonId){
-        switch(buttonId){
-            case 150006 : p.getAttendenceUI().showInterface(AttendanceTab.LOYAL); return true;
-            case 150136 :
-                if(p.getPSettings().getBooleanValue("donator"))
+        switch (buttonId) {
+            case 150006 -> {
+                p.getAttendenceUI().showInterface(AttendanceTab.LOYAL);
+                return true;
+            }
+            case 150136 -> {
+                if (p.getPSettings().getBooleanValue("donator"))
                     p.getAttendenceUI().showInterface(AttendanceTab.DONATOR);
                 else
                     p.getPacketSender().sendMessage("You must unlock this tab by donating.");
                 return true;
-            case 150138 :
-                if(p.getPSettings().getBooleanValue("summer-unlock"))
-                    p.getAttendenceUI().showInterface(AttendanceTab.SUMMER);
+            }
+            case 150138 -> {
+                if (p.getPSettings().getBooleanValue("fall-unlock"))
+                    p.getAttendenceUI().showInterface(AttendanceTab.FALL);
                 else
-                    p.getPacketSender().sendMessage("You must unlock this tab with a Summer's Present.");
+                    p.getPacketSender().sendMessage("You must unlock this tab with a Fall Scroll.");
                 return true;
-            case 150140 : p.getAttendenceUI().showInterface(AttendanceTab.EVENT); return true;
-            default : return false;
+            }
+            case 150140 -> {
+                p.getAttendenceUI().showInterface(AttendanceTab.EVENT);
+                return true;
+            }
+            default -> {
+                return false;
+            }
         }
     }
 

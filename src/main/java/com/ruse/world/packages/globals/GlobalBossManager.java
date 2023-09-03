@@ -63,27 +63,28 @@ public class GlobalBossManager {
     }
 
     public void addToWell(Player player, int item, int amount){
-        switch(item){
-            case 23003 ->{//vip tickets
-                boolean active = World.npcIsRegistered(9005);
-                if(active) {
-                    player.getPacketSender().sendMessage("The VIP boss is already active.");
-                } else {
-                    int well = wells.get("VIP"), max = 50;
-                    if(well + amount > max){
-                        amount = max - well;
-                    }
-                    if(amount > 0){
-                        wells.put("VIP", well + amount);
-                        player.getInventory().delete(item, amount);
-                        player.getPacketSender().sendMessage("You have added "+amount+" VIP tickets to the well.");
-
-                    } else {
-                        player.getPacketSender().sendMessage("Something went wrong here. Report to an admin.");
-                    }
+        if(World.attributes.getSetting("globals")){
+            return;
+        }
+        if (item == 23003) {//vip tickets
+            boolean active = World.npcIsRegistered(9005);
+            if (active) {
+                player.getPacketSender().sendMessage("The VIP boss is already active.");
+            } else {
+                int well = wells.get("VIP"), max = 50;
+                if (well + amount > max) {
+                    amount = max - well;
                 }
-                check();
+                if (amount > 0) {
+                    wells.put("VIP", well + amount);
+                    player.getInventory().delete(item, amount);
+                    player.getPacketSender().sendMessage("You have added " + amount + " VIP tickets to the well.");
+
+                } else {
+                    player.getPacketSender().sendMessage("Something went wrong here. Report to an admin.");
+                }
             }
+            check();
         }
     }
 
@@ -98,6 +99,10 @@ public class GlobalBossManager {
 
     public void process(){
         int tick = ticks.getAndIncrement();
+
+        if(!World.attributes.getSetting("globals")){
+            return;
+        }
 
         if(tick % 6000 == 0){
             if(World.npcIsRegistered(9904)){

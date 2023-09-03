@@ -1,6 +1,7 @@
 package com.ruse.world.packages.seasonpass;
 
 import com.ruse.model.Item;
+import com.ruse.world.World;
 import com.ruse.world.entity.impl.player.Player;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -91,6 +92,10 @@ public class SeasonPass {
     }
 
     private boolean claimReward(int tier) {
+        if(!World.attributes.getSetting("battlepass")){
+            return false;
+        }
+
         if(!player.getMode().canGetRewards()){
             player.getPacketSender().sendMessage("You cannot claim rewards on this mode.");
             return false;
@@ -168,6 +173,10 @@ public class SeasonPass {
     }
 
     public void showInterface() {
+        if(!World.attributes.getSetting("battlepass")){
+            player.sendMessage("Battlepass is currently disabled.");
+            return;
+        }
         page = 0;
         int level = getLevel();
         int expNeeded = getSpLevel(level).getExpNeeded();

@@ -1,5 +1,6 @@
 package com.ruse.world.packages.afk;
 
+import com.ruse.world.World;
 import com.ruse.world.entity.impl.player.Player;
 
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -14,6 +15,9 @@ public class AFKSystem {
     }
 
     public void process(){
+        if(!World.attributes.getSetting("afk")){
+            return;
+        }
         if(afk.get()){
             timer++;
 

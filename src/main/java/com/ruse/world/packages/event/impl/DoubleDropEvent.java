@@ -7,20 +7,20 @@ import com.ruse.world.entity.impl.npc.NPC;
 import com.ruse.world.entity.impl.player.Player;
 import com.ruse.world.packages.event.Event;
 
-public class Solstice extends Event {
+public class DoubleDropEvent extends Event {
     @Override
     public String name() {
-        return "Solstice";
+        return "Fall";
     }
 
     @Override
     public void start() {
-        World.register(new NPC(3321, new Position(2221, 3746, 0)));
+
     }
 
     @Override
     public void onLogin(Player player) {
-        player.sendMessage("@red@[EVENT]@whi@ Summer Solstice event is active!");
+        player.sendMessage("@red@[EVENT]@whi@ Fall event is active!");
     }
 
     @Override

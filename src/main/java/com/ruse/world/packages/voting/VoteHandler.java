@@ -33,8 +33,8 @@ public class VoteHandler {
                     JavaCord.sendMessage(1117224370587304057L, "**[" + player.getUsername() + "] Just voted for the server, thank you!**");
                     add(player);
                     progress(player);
-                    player.save();
                 }
+                player.save();
             });
         } catch (Exception e) {
             e.printStackTrace();
@@ -48,35 +48,37 @@ public class VoteHandler {
         player.getStarter().handleVote(player.getPoints().get("voted"));
     }
 
-    private static void add(Player player){
-        player.getInventory().add(23020, 1);
-        player.getInventory().add(4000, 1);
+    private static void add(@NotNull Player player){
+        int amount = World.attributes.getSetting("vote-bonus") ? 2 : 1;
+        player.getInventory().add(23020, amount);
+        player.getInventory().add(4000, amount);
         if(Misc.random(10) == 1)
-            player.getInventory().add(15682, 1);
+            player.getInventory().add(15682, amount);
         randomBox(player);
         randomTicket(player);
+        player.getPoints().add("voted", 1);
     }
 
     public static void randomBox(Player player){
         int random = Misc.random(1000);
         if(random == 987)
-            player.getInventory().add(23258, 1);
+            player.getInventory().add(25101, 1);
         else if(random >= 762 && random <= 786)
-            player.getInventory().add(23257, 1);
+            player.getInventory().add(15682, 1);
         else if(random >= 313 && random <= 341)
-            player.getInventory().add(23256, 1);
+            player.getInventory().add(18768, 1);
     }
 
     public static void randomTicket(Player player){
         int random = Misc.random(200);
         if(random == 187)
-            player.getInventory().add(4001, Misc.random(3, 7));
+            player.getInventory().add(4001, Misc.random(1, 4));
         else if(random >= 67 && random <= 89)
-            player.getInventory().add(4001, Misc.random(2, 5));
+            player.getInventory().add(4001, Misc.random(1, 2));
         else if(random >= 10 && random <= 50)
-            player.getInventory().add(4001, Misc.random(1, 3));
+            player.getInventory().add(4000, Misc.random(1, 3));
         else if(random >= 10 && random <= 100)
-            player.getInventory().add(4001, 1);
+            player.getInventory().add(4000, 1);
     }
 
 }

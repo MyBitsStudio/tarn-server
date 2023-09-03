@@ -19,6 +19,7 @@ import com.ruse.security.save.impl.server.defs.TablesLoad;
 import com.ruse.security.save.impl.server.defs.NPCDataLoad;
 import com.ruse.security.tools.SecurityUtils;
 import com.ruse.world.World;
+import com.ruse.world.WorldCalendar;
 import com.ruse.world.clip.region.RegionClipping;
 import com.ruse.world.content.*;
 import com.ruse.world.content.combat.effect.CombatPoisonEffect.CombatPoisonData;
@@ -94,14 +95,17 @@ public final class GameLoader {
 		DonationManager.getInstance();
 		InstanceManager.getManager();
 		GlobalBossManager.getInstance();
-		PlusUpgrade.getPlusUpgrade();
+		//PlusUpgrade.getPlusUpgrade();
 		DonateSales.getInstance();
+		WorldCalendar.getInstance();
 		new Lobby();
 		ServiceManager.INSTANCE.init();
 	}
 
 	private void postLoad(){
 		new WellsLoad().loadJSON(SecurityUtils.WELLS).run();
+		WorldCalendar.getInstance().load();
+		World.attributes.load();
 	}
 
 	public void finish() throws IOException, InterruptedException {
@@ -153,12 +157,13 @@ public final class GameLoader {
 		serviceLoader.execute(SeasonPassLoader::load);
 		serviceLoader.execute(() -> DonationManager.getInstance().load());
 		serviceLoader.execute(VoteBossDrop::load);
-		serviceLoader.execute(DailyResetScheduler::initialize);
+		serviceLoader.execute(WorldCalendar::initialize);
 		serviceLoader.execute(TradingPost::load);
 		serviceLoader.execute(ItemIdentifiers::load);
 		serviceLoader.execute(ShopHandler::load);
 		serviceLoader.execute(ShopHandler::loadPrices);
 		serviceLoader.execute(AchievementHandler::load);
+
 		TaskManager.submit(new LotteryTask());
 	}
 

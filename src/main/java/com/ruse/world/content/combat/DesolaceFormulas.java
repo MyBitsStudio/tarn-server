@@ -601,16 +601,16 @@ public class DesolaceFormulas {
         }
         if (p.getEquipment().contains(20591)) {
             damage *= 1.5;
-            if (p.isOpMode() || p.isGodMode())
+            if (p.isGodMode())
                 damage += damage * 6;
             return (int) damage;
         }
-        if (p.isOpMode() || p.isGodMode())
+        if (p.isGodMode())
             damage *= 6;
         if (victim.isNpc()) {
             damage = (int) NpcMaxHitLimit.limit((NPC) victim, damage, p);
         }
-        return (int) damage;
+        return damage;
     }
 
     public static int getAttackDelay(Player plr) {

@@ -4,6 +4,7 @@ import com.ruse.model.Item;
 import com.ruse.model.definitions.ItemDefinition;
 import com.ruse.model.input.EnterAmount;
 import com.ruse.util.Misc;
+import com.ruse.world.World;
 import com.ruse.world.packages.tradingpost.models.*;
 import com.ruse.world.packages.tradingpost.persistance.Database;
 import com.ruse.world.packages.tradingpost.persistance.SQLDatabase;
@@ -44,6 +45,9 @@ public class TradingPost {
     }
 
     public void openMainInterface() {
+        if(!World.attributes.getSetting("pos")){
+            return;
+        }
         slotSelected = 0;
         searchedItem = -1;
         page = 0;

@@ -10,6 +10,7 @@ import com.ruse.world.content.combat.weapon.FightStyle;
 import com.ruse.world.entity.impl.Character;
 import com.ruse.world.entity.impl.npc.NPC;
 import com.ruse.world.entity.impl.player.Player;
+import org.jetbrains.annotations.NotNull;
 
 import static com.ruse.world.content.combat.CombatType.MAGIC;
 
@@ -21,7 +22,7 @@ public class CombatAccuracy {
          */
 
         double prayerMod = 1;
-        double equipmentBonus = 1;
+        double equipmentBonus;
         double specialBonus = 1;
 
         if (type == CombatType.DRAGON_FIRE)
@@ -50,10 +51,12 @@ public class CombatAccuracy {
             NPC npc = attacker.toNpc();
 
             specialBonus = npc.getDefinition().isBoss() ? 8 : 3;
-            equipmentBonus = npc.getCombatLevel();
+            equipmentBonus = npc.getCombatLevel() * 2;
+
         }
 
         double attackCalc = equipmentBonus + attacker.getBaseAttack(type) + 8;
+
 
         attackCalc *= prayerMod;
 
@@ -66,7 +69,7 @@ public class CombatAccuracy {
         equipmentBonus = 1;
         prayerMod = 1;
 
-        double defenceCalc = 1;
+        double defenceCalc;
 
         if (victim.isPlayer()) {
             Player player = victim.asPlayer();
@@ -74,26 +77,29 @@ public class CombatAccuracy {
             if(attacker.isNpc()){
                 NPC npc = attacker.toNpc();
 
+                if(npc.isDying() || npc.getConstitution() <= 0)
+                    return false;
+
                 switch(npc.getCombatBuilder().getStrategy().getCombatType()){
                     case MAGIC -> {
                         equipmentBonus = player.getBonusManager().getDefenceBonus()[BonusManager.DEFENCE_MAGIC];
-                        equipmentBonus /= 3_000;
+                        equipmentBonus /= 10_000;
                         prayerMod = prayerBonus(player, MAGIC);
                     }
                     case MELEE -> {
                         equipmentBonus = player.getBonusManager().getDefenceBonus()[BonusManager.DEFENCE_STAB];
-                        equipmentBonus /= 3_000;
+                        equipmentBonus /= 10_000;
                         prayerMod = prayerBonus(player, CombatType.MELEE);
                     }
                     case RANGED -> {
                         equipmentBonus = player.getBonusManager().getDefenceBonus()[BonusManager.DEFENCE_RANGE];
-                        equipmentBonus /= 3_000;
+                        equipmentBonus /= 10_000;
                         prayerMod = prayerBonus(player, CombatType.RANGED);
                     }
                     case MIXED -> {
                         double bonuss =  player.getBonusManager().getDefenceBonus()[BonusManager.DEFENCE_STAB] +  player.getBonusManager().getDefenceBonus()[BonusManager.DEFENCE_RANGE] + player.getBonusManager().getDefenceBonus()[BonusManager.DEFENCE_MAGIC];
                         equipmentBonus = bonuss / 3;
-                        equipmentBonus /= 3_000;
+                        equipmentBonus /= 10_000;
                         prayerMod = prayerBonus(player, CombatType.MELEE);
                     }
                 }
@@ -102,14 +108,15 @@ public class CombatAccuracy {
                 equipmentBonus = 2;
             }
 
-            defenceCalc = Math.floor(equipmentBonus + 120) + 8;
+            defenceCalc = Math.floor(equipmentBonus + 90) + 8;
             defenceCalc *= prayerMod;
+
 
         } else {
             NPC npc = victim.toNpc();
 
             if (npc.getDefinition().isBoss()) {
-                equipmentBonus = npc.getCombatLevel() * 2;
+                equipmentBonus = npc.getCombatLevel() * 3;
             } else {
                 equipmentBonus = npc.getCombatLevel();
             }
@@ -130,7 +137,7 @@ public class CombatAccuracy {
         return hitSucceed >= hitRoll;
     }
 
-    private static double prayerBonus(Player player, CombatType type){
+    private static double prayerBonus(Player player, @NotNull CombatType type){
         double prayerMod = 1;
 
         switch(type) {

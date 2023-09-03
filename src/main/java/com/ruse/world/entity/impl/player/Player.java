@@ -630,8 +630,6 @@ public class Player extends Character {
 
     private final DonationDeals donationDeals = new DonationDeals(this);
     private int amountDonatedToday;
-    private boolean opMode;
-    private final BonusXp bonusXp = new BonusXp(this); // instance of BonusXp class
     private final DonatorDiscount donatordiscount = new DonatorDiscount(this); // instance of BonusXp class
     private String mac;
     private String uuid;
@@ -1243,18 +1241,6 @@ public class Player extends Character {
 
     public void setCurrentBossTask(int currentBossTask) {
         this.currentBossTask = currentBossTask;
-    }
-
-    public boolean isOpMode() {
-        return opMode;
-    }
-
-    public void setOpMode(boolean newMode) {
-        this.opMode = newMode;
-    }
-
-    public BonusXp getBonusXp() { // getter for that instance.
-        return bonusXp;
     }
 
     public DonatorDiscount getdonatordiscount() { // getter for that instance.
@@ -3082,30 +3068,6 @@ public class Player extends Character {
 
     public void setOpenBank(boolean openBank) {
         this.openBank = openBank;
-    }
-
-    public int getMinutesBonusExp() {
-        return minutesBonusExp;
-    }
-
-    public void setMinutesBonusExp(int minutesBonusExp, boolean add) {
-        this.minutesBonusExp = (add ? this.minutesBonusExp + minutesBonusExp : minutesBonusExp);
-    }
-
-    public int getMinutesVotingDR() {
-        return minutesVotingDR;
-    }
-
-    public void setMinutesVotingDR(int minutesVotingDR, boolean add) {
-        this.minutesVotingDR = (add ? this.minutesVotingDR + minutesVotingDR : minutesVotingDR);
-    }
-
-    public int getMinutesVotingDMG() {
-        return minutesVotingDMG;
-    }
-
-    public void setMinutesVotingDMG(int minutesVotingDMG, boolean add) {
-        this.minutesVotingDMG = (add ? this.minutesVotingDMG + minutesVotingDMG : minutesVotingDMG);
     }
 
     public void setInactive(boolean inActive) {

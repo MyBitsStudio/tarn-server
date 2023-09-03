@@ -42,6 +42,9 @@ public class PlayerSettings {
         settings.put("raid-unlock", false);
         settings.put("holy-unlock", false);
 
+        settings.put("donator", false); // donator calendar
+        settings.put("fall-unlock", false); // donator calendar
+
     }
 
     public void setSetting(String key, Object value){

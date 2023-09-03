@@ -1,10 +1,8 @@
-package com.ruse.world.packages.bosses.multi.impl;
+package com.ruse.world.packages.bosses.special;
 
 import com.ruse.model.Position;
 import com.ruse.world.entity.impl.player.Player;
 import com.ruse.world.packages.bosses.SpecialBossInstance;
-import com.ruse.world.packages.instances.InstanceManager;
-import com.ruse.world.packages.mode.GameModeConstants;
 
 public class IronmanInstance extends SpecialBossInstance {
     public IronmanInstance(Player p, int npcId, int spawn, int cap) {
@@ -12,18 +10,8 @@ public class IronmanInstance extends SpecialBossInstance {
     }
 
     @Override
-    public void process(){
-        super.process();
-
-        if(!GameModeConstants.isIronman(getOwner())){
-            InstanceManager.getManager().dispose(getOwner());
-        }
-    }
-
-    @Override
     public void start(){
-
-        moveTo(getOwner(), new Position(3025, 2768));
+        moveTo(getOwner(), new Position(3015, 2758));
         add(getOwner());
 
         getOwner().getPacketSender().sendMessage("@blu@[INSTANCE] Your instance has started.");

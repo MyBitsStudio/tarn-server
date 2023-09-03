@@ -1,6 +1,7 @@
 package com.ruse.world.packages.forge;
 
 import com.ruse.model.Item;
+import com.ruse.world.World;
 import com.ruse.world.entity.impl.player.Player;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -26,6 +27,10 @@ public class Forge {
     private final HashMap<Item, Integer> addedItemMap = new HashMap<>();
 
     public void showInterface() {
+        if(!World.attributes.getSetting("forge")){
+            player.sendMessage("This feature is currently disabled.");
+            return;
+        }
         reset();
         updateInterface();
         player.getPacketSender().sendItemContainer(player.getInventory(), 49541);
@@ -87,6 +92,10 @@ public class Forge {
     }
 
     public void addItem(Item item) {
+        if(!World.attributes.getSetting("forge")){
+            player.sendMessage("This feature is currently disabled.");
+            return;
+        }
         if(addedItemMap.entrySet()
                 .stream()
                 .anyMatch(it -> it.getKey().getId() == item.getId())) {

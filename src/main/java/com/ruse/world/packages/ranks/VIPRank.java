@@ -6,8 +6,8 @@ import lombok.Getter;
 public enum VIPRank {
 
     NONE(0, 1, 1, 0),
-    BRONZE(1, 5, 1.2, 100),
-    SILVER(2, 10, 1.4, 200),
+    BRONZE(1, 5, 1.2, 10),
+    SILVER(2, 10, 1.4, 20),
     GOLD(3, 20, 1.8, 350),
     PLATINUM(4, 30, 2.1, 500),
     DIAMOND(5, 40,  2.5, 600),

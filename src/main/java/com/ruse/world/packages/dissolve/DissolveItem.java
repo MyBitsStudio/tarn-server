@@ -5,12 +5,17 @@ import com.ruse.model.Item;
 import com.ruse.model.Skill;
 import com.ruse.model.definitions.ItemDefinition;
 import com.ruse.util.Misc;
+import com.ruse.world.World;
 import com.ruse.world.entity.impl.player.Player;
 
 public class DissolveItem {
 
     public static int TOKENS = 10835, COINS = 995;
     public static boolean dissolveItem(Player player, int id, int slot){
+        if(!World.attributes.getSetting("dissolve")){
+            player.getPacketSender().sendMessage("You cannot dissolve items right now.");
+            return false;
+        }
         Item toDissolve;
         switch(id){
             case 19984,19985, 19986,19987,20400,19989,

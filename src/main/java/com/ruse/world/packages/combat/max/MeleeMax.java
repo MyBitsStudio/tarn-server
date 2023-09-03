@@ -214,7 +214,11 @@ public class MeleeMax {
             if (victim.isPlayer()) {
                 Player player = victim.asPlayer();
 
-                double defence = (player.getBonusManager().getDefenceBonus()[BonusManager.DEFENCE_STAB] / 1_000);
+                double defence = (player.getBonusManager().getDefenceBonus()[BonusManager.DEFENCE_STAB] / 10_000);
+
+                if(defence >= 800)
+                    defence = 800;
+
 
                 maxHit -= defence;
 
@@ -223,6 +227,9 @@ public class MeleeMax {
                 }
 
                 double absorb = player.getBonusManager().getExtraBonus()[BonusManager.ABSORB_MELEE];
+
+                if(absorb >= 900)
+                    absorb = 900;
 
                 if(absorb > 0){
                     double percent = 1 - ( 1 - (absorb / 1000.0));
@@ -342,9 +349,10 @@ public class MeleeMax {
 
             maxHit *= multiplyDamage(player);
 
-            if (player.getMinutesVotingDMG() > 0) {
-                maxHit *= 2;
-            }
+            if (player.getTimers().get("double-damage") != null)
+                if (player.getTimers().get("double-damage").returnLeft() > 0) {
+                    maxHit *= 2;
+                }
 
             if(player.getEquipment().contains(15588))
                 maxHit *= 1.5;

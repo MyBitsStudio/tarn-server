@@ -41,7 +41,11 @@ public class DropsInterface {
 	}
 
 	public static void buildRightSide(Player player, int npcId) {
-		player.getPacketSender().sendString(HEADER, "Viewing drops for: " + NpcDefinition.forId(npcId).getName()); // Search
+		NpcDefinition def = NpcDefinition.forId(npcId);
+		if (def == null) {
+			return;
+		}
+		player.getPacketSender().sendString(HEADER, "Viewing drops for: " + def.getName()); // Search
 		// button
 		player.getPacketSender().sendString(STRING_AMOUNT, "");
 		player.getPacketSender().sendString(STRING_CHANCE, "");
@@ -49,6 +53,7 @@ public class DropsInterface {
 		int scrollAmount = 0;
 		for (int i = 0; i < 80; i++) {
 			if (i > DropManager.getManager().forId(npcId).customTable().drops().length - 1) {
+
 			} else {
 				scrollAmount++;
 			}
@@ -56,8 +61,6 @@ public class DropsInterface {
 		player.getPacketSender().setScrollMax(34000, 37 * scrollAmount);
 		for (int i = 0; i < 80; i++) {
 			if (i > DropManager.getManager().forId(npcId).customTable().drops().length - 1) {
-				// System.out.println(player + "opening Drop table");
-				// System.out.println("sending blank on "+i);
 				player.getPacketSender().sendItemOnInterface(ITEM_MODEL + i, -1, 0, 1); // remove all item models
 				player.getPacketSender().sendString(ITEM_NAME + i, ""); // remove all item names
 				player.getPacketSender().sendString(ITEM_AMOUNT + i, "");
@@ -76,12 +79,13 @@ public class DropsInterface {
 				player.getPacketSender().sendString(ITEM_NAME + i, item.getDefinition().getName()); // remove all item
 				// names
 				player.getPacketSender().sendString(ITEM_AMOUNT + i, (min == amount ? Misc.formatNumber(amount) : ( Misc.formatNumber(min) + "-" + Misc.formatNumber(amount))));
-				double divide = ((double) DropCalculator.getDropChance(player, npcId) / 500);
-				int chances = (int) (chance / divide);
+				double divide = (DropCalculator.getDropChance(player, npcId) / DropManager.getManager().forId(npcId).customTable().weight());
+				System.out.println("divide: "+divide+" chance: "+chance+" chances: "+Math.floorDiv((int) chance, (int) divide));
+				int chances = Math.floorDiv((int) chance, (int) divide);
 
-				player.getPacketSender().sendString(ITEM_CHANCE + i, "1/" +(chance == 1 ? 1 : chances));
+				player.getPacketSender().sendString(ITEM_CHANCE + i, "1/" +(chance <= 1 ? 1 : chances));
 				player.getPacketSender().sendString(ITEM_VALUE + i,
-						Misc.format(amount * item.getDefinition().getValue()) + "");
+						Misc.format(amount * item.getDefinition().getValue()));
 				scrollAmount++;
 			}
 		}

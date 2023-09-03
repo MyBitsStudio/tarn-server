@@ -13,15 +13,6 @@ public class GameSettings {
     public static boolean LOCALHOST = false;
     public static boolean BOGO = false;
     public static boolean B2GO = false;
-
-    // Beta variable, allows certain functionality.. DISABLE WHEN LIVE
-    public static boolean BETA_ENABLED = false;
-
-    /*
-     * Bunch of variables for the Global Events
-     */
-    public static boolean DOUBLE_BOXES_DONO = false;
-    public static boolean DOUBLE_BONDS_DONO = false;
     public static boolean DOUBLE_VOTE = false;
     public static boolean DOUBLE_DROP = false;
     public static boolean DOUBLE_SKILL_EXP = false;
@@ -38,14 +29,14 @@ public class GameSettings {
     /**
      * WEB URLS
      */
-    public static final String DomainUrl = "https://discord.gg/c5KaC3pBsn";
+    public static final String DomainUrl = "https://tarnserver.com/";
     public static final String ForumUrl = "https://discord.gg/BeENR8amj2";
-    public static final String StoreUrl = "https://tarnserver.everythingrs.com/services/store";
+    public static final String StoreUrl = "https://tarnserver.com/donate";
     public static final String effigy = "https://www.youtube.com/channel/UCR-GGPuNM7V51JYWVbcDURQ";
     public static final String wr3cked = "https://www.youtube.com/channel/UCNm7R0y8KN8kSn3yVn04pkg";
 
-    public static final String VoteUrl = "https://tarnserver.everythingrs.com/services/vote";
-    public static final String DiscordUrl = "https://discord.gg/c5KaC3pBsn";
+    public static final String VoteUrl = "https://tarnserver.com/voting";
+    public static final String DiscordUrl = "https://discord.gg/tarnserver";
     public static final int BaseImplingExpMultiplier = 2;
     /**
      * Shop Buy Limit (at one time)

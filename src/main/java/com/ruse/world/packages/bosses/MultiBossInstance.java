@@ -36,6 +36,9 @@ public abstract class MultiBossInstance extends Instance {
     }
 
     public void spawnAll(Position[] pos){
+        if(pos == null || pos.length != bosses.length){
+            throw new IllegalArgumentException("Positions must be the same length as the bosses array.");
+        }
         for(int i = 0; i < bosses.length; i++){
             if(bosses[i] == null){
                 bosses[i] = new MultiBoss(npcId, pos[i].setZ(getOwner().getIndex() * 4), true, getOwner());

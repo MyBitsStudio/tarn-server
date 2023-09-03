@@ -1,6 +1,5 @@
 package com.ruse.model;
 
-import com.ruse.engine.task.impl.BonusExperienceTask;
 import com.ruse.util.Misc;
 import com.ruse.world.entity.impl.player.Player;
 

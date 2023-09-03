@@ -6,17 +6,20 @@ import com.ruse.model.Position;
 import com.ruse.model.definitions.ItemDefinition;
 import com.ruse.model.definitions.NpcDefinition;
 import com.ruse.world.World;
-import com.ruse.world.content.KillsTracker;
 import com.ruse.world.packages.bosses.SingleBossSinglePlayerInstance;
-import com.ruse.world.packages.bosses.multi.MultiBossFlashInstance;
-import com.ruse.world.packages.bosses.multi.impl.CounterInstance;
 import com.ruse.world.packages.bosses.multi.MultiBossNormalInstance;
-import com.ruse.world.packages.bosses.multi.impl.DonatorSpecialInstance;
-import com.ruse.world.packages.bosses.multi.impl.IronmanInstance;
-import com.ruse.world.packages.bosses.multi.impl.VoteSpecialInstance;
 import com.ruse.world.packages.bosses.single.agthomoth.AgthomothInstance;
 import com.ruse.world.entity.impl.player.Player;
+import com.ruse.world.packages.bosses.single.exodon.ExodonInstance;
+import com.ruse.world.packages.bosses.single.sanctum.SanctumInstance;
+import com.ruse.world.packages.bosses.single.varthramoth.VarthInstance;
+import com.ruse.world.packages.bosses.single.zernath.ZernathInstance;
+import com.ruse.world.packages.bosses.special.DonatorInstance;
+import com.ruse.world.packages.bosses.special.IronmanInstance;
+import com.ruse.world.packages.bosses.special.SemiDonatorInstance;
+import com.ruse.world.packages.bosses.special.VoteInstance;
 import com.ruse.world.packages.combat.drops.DropManager;
+import com.ruse.world.packages.mode.GameModeConstants;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
@@ -43,7 +46,7 @@ public class InstanceManager {
         instances.remove(id);
     }
 
-    public void startEventInstance(Player player, InstanceInterData data){
+    public void startEventInstance(@NotNull Player player, InstanceInterData data){
         if(player.getInstance() != null) {
             player.getInstance().destroy();
             player.setInstance(null);
@@ -55,11 +58,13 @@ public class InstanceManager {
             player.setInstanceId("");
         }
 
-        int cap = (int) (data.getCap() * player.getDonator().getCap());
+        int cap = data.getCap();
 
         cap += player.getVip().getBonusCap();
 
         cap += player.getLoyalty().timeOnInstance();
+
+        cap *= (1000 * 60);
 
         switch(data.getNpcId()){
             case 10835 -> {
@@ -96,34 +101,37 @@ public class InstanceManager {
 
     }
 
-    public void enterMasterInstance(Player player, InstanceInterData data){
-        if(player.getInstance() != null) {
-            player.getInstance().destroy();
-            player.setInstance(null);
-            return;
-        }
+    public void enterMasterInstance(@NotNull Player player, InstanceInterData data){
+        player.sendMessage("Currently disabled. Will be activated soon!");
+        return;
 
-        if(!Objects.equals(player.getInstanceId(), "")){
-            instances.remove(player.getInstanceId());
-            player.setInstanceId("");
-        }
-
-        if(takeItem(player, data)) {
-            player.sendMessage("You don't have x"+data.getCost().getAmount()+" of "+ItemDefinition.forId(data.getCost().getId()).getName());
-            return;
-        }
-
-        int cap = (int) (data.getCap() * player.getDonator().getCap());
-
-        cap += player.getVip().getBonusCap();
-
-        cap += player.getLoyalty().timeOnInstance();
-
-
+//        if(player.getInstance() != null) {
+//            player.getInstance().destroy();
+//            player.setInstance(null);
+//            return;
+//        }
+//
+//        if(!Objects.equals(player.getInstanceId(), "")){
+//            instances.remove(player.getInstanceId());
+//            player.setInstanceId("");
+//        }
+//
+//        if(takeItem(player, data)) {
+//            player.sendMessage("You don't have x"+data.getCost().getAmount()+" of "+ItemDefinition.forId(data.getCost().getId()).getName());
+//            return;
+//        }
+//
+//        int cap = data.getCap();
+//
+//        cap += player.getVip().getBonusCap();
+//
+//        cap += player.getLoyalty().timeOnInstance();
+//
+//        cap *= (1000 * 60);
 
     }
 
-    public void startMultiInstance(Player player, InstanceInterData data){
+    public void startMultiInstance(@NotNull Player player, InstanceInterData data){
         if(player.getInstance() != null) {
             player.getInstance().destroy();
             player.setInstance(null);
@@ -140,17 +148,25 @@ public class InstanceManager {
             return;
         }
 
-        int cap = (int) (data.getCap() * player.getDonator().getCap());
+        int cap = data.getCap();
 
         cap += player.getVip().getBonusCap();
 
         cap += player.getLoyalty().timeOnInstance();
 
+        cap /= 2;
+
+        cap *= (1000 * 60);
+
         Instance instance = switch (data.getNpcId()) {
-            case 595 -> new CounterInstance(player, data.getNpcId(), cap, data.getCap());
-            case 591 -> new DonatorSpecialInstance(player, data.getNpcId(), cap, data.getCap());
-            case 593 -> new VoteSpecialInstance(player, data.getNpcId(), cap, data.getCap());
-            case 1880 -> new IronmanInstance(player, data.getNpcId(), cap, data.getCap());
+            case 9818 -> new SemiDonatorInstance(player,
+                    data.getNpcId(), data.getSpawns(), cap);
+            case 591 -> new DonatorInstance(player,
+                    data.getNpcId(), data.getSpawns(), cap);
+            case 593 -> new VoteInstance(player,
+                    data.getNpcId(), data.getSpawns(), cap);
+            case 1880 -> new IronmanInstance(player,
+                    data.getNpcId(), data.getSpawns(), cap);
             default -> null;
         };
 
@@ -183,16 +199,22 @@ public class InstanceManager {
             return;
         }
 
-        int cap = (int) (data.getCap() * player.getDonator().getCap());
+        int cap = data.getCap();
 
         cap += player.getVip().getBonusCap();
 
         cap += player.getLoyalty().timeOnInstance();
 
+        cap *= (1000 * 60);
+
         SingleBossSinglePlayerInstance instance = null;
 
         switch(data.getNpcId()){
-            case 3013 -> instance = new AgthomothInstance(player);
+            case 3013 -> instance = new AgthomothInstance(player, cap);
+            case 3831 -> instance = new ZernathInstance(player, cap);
+            case 9017 -> instance = new SanctumInstance(player, cap);
+            case 3016 -> instance = new VarthInstance(player, cap);
+            case 12239 -> instance = new ExodonInstance(player, cap);
         }
 
         if(instance == null)
@@ -229,14 +251,16 @@ public class InstanceManager {
             return;
         }
 
-        int cap = (int) (data.getCap() * player.getDonator().getCap());
+        int cap = data.getCap();
 
         cap += player.getVip().getBonusCap();
 
         cap += player.getLoyalty().timeOnInstance();
 
+        cap *= (1000 * 60);
+
         Instance instance = new MultiBossNormalInstance(player,
-                data.getNpcId(), data.getSpawns(), ((1000 * 60 ) * cap));
+                data.getNpcId(), data.getSpawns(), cap);
 
         instances.put(instance.getInstanceId(), instance);
         instance.start();
@@ -363,38 +387,35 @@ public class InstanceManager {
     }
 
     public boolean isUnlocked(@NotNull Player player, InstanceInterData data){
-//        if(player.getRank().isDeveloper())
-//            return true;
-//
-//        int npcId = 0, amount, base = data.getNpcId();
-//
-//        if(handleSpecialLock(base)){
-//            return returnSpecial(player, base);
-//        }
-//
-//        switch (base) {
-//            case 8014 -> amount = 1000;
-//            case 8003 -> {
-//                npcId = 8014;
-//                amount = 200;
-//            }
-//            default -> {
-//                return false;
-//            }
-//        }
+        if(player.getRank().isDeveloper())
+            return true;
+
+        if(!World.attributes.getSetting("instances")){
+            return false;
+        }
+
+        int base = data.getNpcId();
+
+        if(handleSpecialLock(base)){
+            return returnSpecial(player, base);
+        }
+
         return player.getPSettings().getBooleanValue("instance-unlock");
     }
 
     private boolean returnSpecial(Player player, int base){
         return switch (base) {
-            case 9017 -> KillsTracker.getTotalKills(player) >= 50000;
+            case 9818 -> player.getVip().getRank() >= 2 && player.getPSettings().getBooleanValue("instance-unlock");
+            case 591 -> player.getVip().getRank() >= 7 && player.getPSettings().getBooleanValue("instance-unlock");
+            case 1880 -> GameModeConstants.isIronman(player) && player.getPSettings().getBooleanValue("instance-unlock");
+            case 1736, 6430 -> World.handler.eventActive("Fall") && player.getPSettings().getBooleanValue("instance-unlock");
             default -> false;
         };
     }
 
     private boolean handleSpecialLock(int npcId){
         return switch (npcId) {
-            case 9017 -> true;
+            case 9818, 591, 1880, 1736, 6430 -> true;
             default -> false;
         };
     }
@@ -423,6 +444,12 @@ public class InstanceManager {
     }
 
     private void startInstance(@NotNull Player player){
+
+        if(!World.attributes.getSetting("instances")){
+            player.sendMessage("Instances are currently disabled.");
+            return;
+        }
+
         String[] settings = player.getVariables().getInterfaceSettings();
         int tab = Integer.parseInt(settings[0]);
         int child = Integer.parseInt(settings[1]);

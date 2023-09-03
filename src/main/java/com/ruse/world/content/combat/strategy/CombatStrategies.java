@@ -72,7 +72,11 @@ public class CombatStrategies {
 
 
 
-
+		// special
+		STRATEGIES.put(9818, script);
+		STRATEGIES.put(591, script);
+		STRATEGIES.put(593, script);
+		STRATEGIES.put(1880, script);
 		DefaultMagicCombatStrategy defaultMagicStrategy = new DefaultMagicCombatStrategy();
 //		STRATEGIES.put(13, defaultMagicStrategy);
 //		STRATEGIES.put(172, defaultMagicStrategy);

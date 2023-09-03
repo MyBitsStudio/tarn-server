@@ -214,7 +214,7 @@ public class SkillManager {
          * if(player.getGameMode() != GameMode.NORMAL) { experience *= 0.6; }
          */
 
-        if (player.getMinutesBonusExp() != -1) {
+        if (player.getVariables().getBooleanValue("vote-xp")) {
             experience *= 1.30;
         }
 

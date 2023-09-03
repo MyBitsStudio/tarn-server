@@ -41,9 +41,12 @@ public class AgthomothCombat implements CombatStrategy {
 					switch (tick++) {
 					case 1:
 						npc.performGraphic(new Graphic(AnimGFX.EARTHQUAKE_FRONT));
-                        npc.getCombatBuilder().setContainer(new CombatContainer(npc, player, 2, 1, CombatType.MELEE, false));
-						stop();
 						break;
+
+                    case 2:
+                        npc.getCombatBuilder().setContainer(new CombatContainer(npc, player, 2, 1, CombatType.MELEE, false));
+                        stop();
+                        break;
 					}
 				}
 			});
@@ -57,7 +60,7 @@ public class AgthomothCombat implements CombatStrategy {
 
     @Override
     public int attackDelay(Character entity) {
-        return 8;
+        return 5;
     }
 
     @Override

@@ -42,6 +42,10 @@ public abstract class SpecialBossInstance extends Instance {
 
     @Override
     public void signalSpawn(NPC n){
+        if(started + cap <= System.currentTimeMillis()){
+            getOwner().sendMessage("Your instance has expired.");
+            return;
+        }
         if(n.getId() == getNpcId()){
             MultiBoss boss = new MultiBoss(npcId, n.getPosition().setZ(owner.getIndex() * 4), true, owner);
             boss.setInstance(this);

@@ -1,20 +1,21 @@
 package com.ruse.world.packages.event;
 
-import com.ruse.world.packages.event.impl.Solstice;
+import com.ruse.world.packages.event.impl.DonatorReleaseEvent;
+import com.ruse.world.packages.event.impl.FallEvent;
 import lombok.Getter;
 
 /**
  * Dates :
- * [0] - Start Month - 1
+ * [0] - Start Month
  * [1] - Start Day
- * [2] - End Month - 1
+ * [2] - End Month
  * [3] - End Day
  */
 @Getter
 public enum Events {
 
-    SOLSTICE(new Solstice(), new int[]{7, 10, 8, 1}),
-    FALL(new Solstice(), new int[]{8, 1, 10, 1}),
+    DONATOR_RELEASE(new DonatorReleaseEvent(), new int[]{9, 2, 9, 15}),
+    FALL(new FallEvent(), new int[]{9, 1, 11, 1}),
 
     ;
 
