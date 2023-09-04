@@ -49,7 +49,6 @@ public class PacketConstants {
 		PACKETS[2] = new ExamineItemPacketListener();
 		PACKETS[6] = new ExamineNpcPacketListener();
 		PACKETS[5] = new SendClanChatMessagePacketListener();
-		//PACKETS[7] = new WithdrawMoneyFromPouchPacketListener();
 		PACKETS[8] = new ChangeRelationStatusPacketListener();
 		PACKETS[11] = new ChangeAppearancePacketListener();
 		PACKETS[202] = new IdleLogoutPacketListener();

@@ -84,4 +84,9 @@ public class Temp extends Gamemode {
     public boolean canStake(Player player) {
         return false;
     }
+
+    @Override
+    public String toString() {
+        return "Hacks";
+    }
 }

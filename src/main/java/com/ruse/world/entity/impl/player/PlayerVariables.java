@@ -40,6 +40,8 @@ public class PlayerVariables {
         settings.put("vote-dr", false);
 
         settings.put("item-chosen", Integer.parseInt("-1"));
+
+        settings.put("last-button", System.currentTimeMillis());
     }
 
     public void setSetting(String key, Object value){
@@ -61,6 +63,13 @@ public class PlayerVariables {
         return (boolean) settings.getOrDefault(key, false);
     }
 
+    public Long getLongValue(String key){
+        return (Long) settings.getOrDefault(key, Long.valueOf("-1"));
+    }
+
+    public void setLongValue(String key, Long value) {
+    	settings.put(key, value);
+    }
     public boolean getBooleanValueDef(String key){
         return (boolean) settings.getOrDefault(key, true);
     }

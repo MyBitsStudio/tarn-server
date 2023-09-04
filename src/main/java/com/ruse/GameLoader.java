@@ -20,6 +20,7 @@ import com.ruse.security.save.impl.server.defs.NPCDataLoad;
 import com.ruse.security.tools.SecurityUtils;
 import com.ruse.world.World;
 import com.ruse.world.WorldCalendar;
+import com.ruse.world.WorldIPChecker;
 import com.ruse.world.clip.region.RegionClipping;
 import com.ruse.world.content.*;
 import com.ruse.world.content.combat.effect.CombatPoisonEffect.CombatPoisonData;
@@ -93,12 +94,14 @@ public final class GameLoader {
 		WorldCalendar.getInstance();
 		new Lobby();
 		ServiceManager.INSTANCE.init();
+		WorldIPChecker.getInstance();
 	}
 
 	private void postLoad(){
 		new WellsLoad().loadJSON(SecurityUtils.WELLS).run();
 		WorldCalendar.getInstance().load();
 		World.attributes.load();
+		WorldIPChecker.getInstance().load();
 	}
 
 	public void finish() throws IOException, InterruptedException {

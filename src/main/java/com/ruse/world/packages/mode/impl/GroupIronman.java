@@ -92,4 +92,9 @@ public class GroupIronman extends Gamemode {
     public boolean canStake(Player player) {
         return false;
     }
+
+    @Override
+    public String toString() {
+        return "GroupIronman";
+    }
 }

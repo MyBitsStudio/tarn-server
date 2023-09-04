@@ -2,6 +2,7 @@ package com.ruse.world.packages.seasonpass;
 
 import com.ruse.model.Item;
 import com.ruse.world.World;
+import com.ruse.world.WorldIPChecker;
 import com.ruse.world.entity.impl.player.Player;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -100,6 +101,12 @@ public class SeasonPass {
             player.getPacketSender().sendMessage("You cannot claim rewards on this mode.");
             return false;
         }
+
+        if(!WorldIPChecker.getInstance().check(player, "battlepass-"+season)){
+            player.sendMessage("You can only claim rewards once per game mode per IP address.");
+            return false;
+        }
+
         Item[] items = new Item[2];
         SeasonPassLevel spLevel = getSpLevel(tier);
         int spacesNeeded = 0;

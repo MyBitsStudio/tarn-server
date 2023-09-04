@@ -97,4 +97,9 @@ public class Normal extends Gamemode {
     public boolean canStake(Player player) {
         return true;
     }
+
+    @Override
+    public String toString() {
+        return "Normal";
+    }
 }

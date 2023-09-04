@@ -33,6 +33,8 @@ public class PlayerUpdateSequence implements UpdateSequence<Player> {
 			t.process();
 			if (t.getWalkToTask() != null)
 				t.getWalkToTask().tick();
+			if (t.getFightTask() != null)
+				t.getFightTask().tick();
 			t.getMovementQueue().sequence();
 			NpcAggression.target(t);
 

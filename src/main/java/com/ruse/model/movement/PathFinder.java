@@ -20,8 +20,8 @@ public class PathFinder {
 			destY = destY - 8 * gc.getPosition().getRegionY();
 			final int[][] via = new int[104][104];
 			final int[][] cost = new int[104][104];
-			final LinkedList<Integer> tileQueueX = new LinkedList<Integer>();
-			final LinkedList<Integer> tileQueueY = new LinkedList<Integer>();
+			final LinkedList<Integer> tileQueueX = new LinkedList<>();
+			final LinkedList<Integer> tileQueueY = new LinkedList<>();
 			for (int xx = 0; xx < 104; xx++)
 				for (int yy = 0; yy < 104; yy++)
 					cost[xx][yy] = 99999999;

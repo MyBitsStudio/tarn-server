@@ -1,6 +1,7 @@
 package com.ruse.net.packet.impl;
 
 import com.ruse.GameSettings;
+import com.ruse.engine.task.impl.WalkToFightTask;
 import com.ruse.engine.task.impl.WalkToTask;
 import com.ruse.engine.task.impl.WalkToTask.FinalizedMovementTask;
 import com.ruse.model.*;
@@ -620,14 +621,10 @@ public class NPCOptionPacketListener implements PacketListener {
         if (player.getCombatBuilder().getStrategy() == null) {
             player.getCombatBuilder().determineStrategy();
         }
-        if (CombatFactory.checkAttackDistance(player, interact)) {
-            player.getMovementQueue().reset();
-        }
-        if (UltimateIronmanHandler.hasItemsStored(player) && player.getLocation() != Location.DUNGEONEERING) {
-            player.getPacketSender().sendMessage("You must claim your stored items at Dungeoneering first.");
-            player.getMovementQueue().reset();
-            return;
-        }
+        player.setFightTask(new WalkToFightTask(player, interact, interact.getPosition(), () -> player.getCombatBuilder().attack(interact)));
+//        if (CombatFactory.checkAttackDistance(player, interact)) {
+//            player.getMovementQueue().reset();
+//        }
 
 
 
@@ -812,7 +809,7 @@ public class NPCOptionPacketListener implements PacketListener {
 //      }
 
 
-        player.getCombatBuilder().attack(interact);
+        //player.getCombatBuilder().attack(interact);
 //             if (player.getMinimeSystem().getMiniMe() != null) {
 //                 player.getMinimeSystem().getMiniMe().getCombatBuilder().attack(interact);
 //             }
@@ -1249,24 +1246,22 @@ public class NPCOptionPacketListener implements PacketListener {
         player.setEntityInteraction(npc);
         if (player.getRank().isDeveloper())
             player.getPacketSender().sendMessage("Fourth click npc id: " + npc.getId());
-        player.setWalkToTask(new WalkToTask(player, npc.getPosition(), npc.getSize(), new FinalizedMovementTask() {
-            @Override
-            public void execute() {
-                if (!player.getControllerManager().processNPCClick4(npc)) {
-                    return;
-                }
-                switch (npc.getId()) {
+        player.setWalkToTask(new WalkToTask(player, npc.getPosition(), npc.getSize(), () -> {
+            if (!player.getControllerManager().processNPCClick4(npc)) {
+                return;
+            }
+            switch (npc.getId()) {
 //                    case 946 -> ShopManager.getShops().get(82).open(player);
-                    case 3777 -> {
-                        // ShopManager.getShops().get(24).open(player); //DONATOR SHOP 3 HERE
-                        player.sendMessage("<shad=1>@yel@<img=14>Please check out the donation deals in our ::Discord - #Donation-deals");
-                        player.sendMessage("<shad=1>@yel@<img=14>Please check out the donation deals in our ::Discord - #Donation-deals");
-                    }
-                    case 13738 -> player.getUpgradeHandler().openInterface();
+                case 3777 -> {
+                    // ShopManager.getShops().get(24).open(player); //DONATOR SHOP 3 HERE
+                    player.sendMessage("<shad=1>@yel@<img=14>Please check out the donation deals in our ::Discord - #Donation-deals");
+                    player.sendMessage("<shad=1>@yel@<img=14>Please check out the donation deals in our ::Discord - #Donation-deals");
+                }
+                case 13738 -> player.getUpgradeHandler().openInterface();
 //                    case 705 -> ShopManager.getShops().get(7).open(player);
 //                    case 2253 -> ShopManager.getShops().get(8).open(player);
-                    case 605 -> LoyaltyProgramme.open(player);
-                    case 4601 -> LoyaltyProgramme.open(player);
+                case 605 -> LoyaltyProgramme.open(player);
+                case 4601 -> LoyaltyProgramme.open(player);
 //                    case 1597 -> ShopManager.getShops().get(47).open(player);
 //                    case 9085 -> {
 //                        if (player.getSkillManager().getCurrentLevel(Skill.SLAYER) < 80) {
@@ -1283,13 +1278,12 @@ public class NPCOptionPacketListener implements PacketListener {
 //                        }
 //                        ShopManager.getShops().get(471).open(player);
 //                    }
-                }
-                npc.setPositionToFace(player.getPosition());
-                player.setPositionToFace(npc.getPosition());
-                // DropsInterface.open(player);
-                // DropsInterface.getList(NpcDefinition.getDefinitions().getClass().getName());
-
             }
+            npc.setPositionToFace(player.getPosition());
+            player.setPositionToFace(npc.getPosition());
+            // DropsInterface.open(player);
+            // DropsInterface.getList(NpcDefinition.getDefinitions().getClass().getName());
+
         }));
     }
 

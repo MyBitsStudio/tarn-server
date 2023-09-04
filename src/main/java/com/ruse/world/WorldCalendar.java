@@ -1,6 +1,10 @@
 package com.ruse.world;
 
+import com.ruse.world.entity.impl.player.Player;
 import com.ruse.world.packages.attendance.AttendanceManager;
+import com.ruse.world.packages.seasonpass.SeasonPass;
+import com.ruse.world.packages.seasonpass.SeasonPassConfig;
+import com.ruse.world.packages.seasonpass.SeasonPassManager;
 import lombok.SneakyThrows;
 import org.quartz.*;
 import org.quartz.impl.StdSchedulerFactory;
@@ -18,6 +22,10 @@ public class WorldCalendar implements Job {
         if(instance == null)
             instance = new WorldCalendar();
         return instance;
+    }
+
+    public String getTime(){
+        return dates.toString();
     }
 
     private static final String CRON_EXPRESSION = "0 0 0 * * ?";
@@ -55,6 +63,7 @@ public class WorldCalendar implements Job {
     public void execute(JobExecutionContext context) throws JobExecutionException {
         AttendanceManager.nextDay();
         World.handler.reload();
+        handleSeasonPass();
         load();
     }
 
@@ -69,5 +78,18 @@ public class WorldCalendar implements Job {
         LocalDate now = LocalDate.now( ZoneOffset.UTC ).withMonth(month).withDayOfMonth(day);
         LocalDate endd = LocalDate.now( ZoneOffset.UTC ).withMonth(end).withDayOfMonth(endf);
         return !dates.isBefore(now) && dates.isBefore(endd);
+    }
+
+    public void handleSeasonPass(){
+        LocalDate date = SeasonPassConfig.getInstance().getLocalTime();
+        if(!dates.isBefore(date)){
+            SeasonPassConfig.getInstance().setSeason(SeasonPassConfig.getInstance().getSeason()+1);
+            SeasonPassConfig.getInstance().rewriteConfig();
+            for(Player player : World.getPlayers()) {
+                if(player == null) continue;
+                SeasonPass seasonPass = player.getSeasonPass();
+                SeasonPassManager.resetSeasonPass(seasonPass);
+            }
+        }
     }
 }

@@ -45,6 +45,6 @@ public class SeasonPassLoader {
         loadLevelData();
         loadExperienceData();
         loadConfig();
-        new SeasonPassScheduler().register();
+        //new SeasonPassScheduler().register();
     }
 }

@@ -571,7 +571,7 @@ public final class CombatFactory {
             a.getCombatBuilder().determineStrategy();
         CombatStrategy strategy = a.getCombatBuilder().getStrategy();
         int distance = strategy.attackDistance(a);
-        if (a.isPlayer() && strategy.getCombatType() != CombatType.MELEE) {
+        if (a.isPlayer()) {
             if (b.getSize() >= 2)
                 distance += b.getSize() - 1;
         }

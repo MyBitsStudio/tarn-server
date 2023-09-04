@@ -93,4 +93,9 @@ public class Veteran extends Gamemode {
     public boolean canStake(Player player) {
         return true;
     }
+
+    @Override
+    public String toString() {
+        return "Veteran";
+    }
 }

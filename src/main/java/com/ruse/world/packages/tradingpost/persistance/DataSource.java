@@ -1,5 +1,6 @@
 package com.ruse.world.packages.tradingpost.persistance;
 
+import com.ruse.GameSettings;
 import com.zaxxer.hikari.HikariDataSource;
 
 public class DataSource {
@@ -10,9 +11,9 @@ public class DataSource {
 
     public static final HikariDataSource ds = new HikariDataSource();
     static {
-        ds.setJdbcUrl(JDBC_URL);
-        ds.setUsername(USERNAME);
-        ds.setPassword(PASSWORD);
+        ds.setJdbcUrl(GameSettings.DATABASE_URL);
+        ds.setUsername(GameSettings.DATABASE_USER);
+        ds.setPassword(GameSettings.DATABASE_PASS);
         ds.setMaximumPoolSize(20);
         ds.setConnectionTimeout(120000);
         ds.setLeakDetectionThreshold(300000);

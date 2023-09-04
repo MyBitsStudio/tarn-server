@@ -32,6 +32,7 @@ public class SecurityUtils {
             IDENTIFIERS = "./.core/server/identifiers.json",
            WELLS = "./.core/server/wells.json",
                     ATTRIBUTES = "./.core/server/attributes.json",
+                    IP_LOGS = "./.core/server/ipLogs.json",
             LOGGING = "./core/logs/";
 
     public static String[] seeds = {

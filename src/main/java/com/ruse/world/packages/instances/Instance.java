@@ -35,6 +35,8 @@ public abstract class Instance {
     protected long canLeave, started = System.currentTimeMillis();
     protected String instanceId = SecurityUtils.createRandomString(16);
 
+    protected int getZ = -1;
+
     public Instance(Locations.Location location){
         this.location = location;
     }
@@ -79,6 +81,9 @@ public abstract class Instance {
                 break;
             if(playerList.contains(p))
                 continue;
+            if(playerList.isEmpty())
+                getZ = p.getIndex() * 4;
+
             playerList.add(p);
         }
         for(;; npcs.poll()){
@@ -128,11 +133,11 @@ public abstract class Instance {
     private void preProcess(){
         World.getPlayers().stream().filter(Objects::nonNull)
                 .filter(player -> player.getLocation().equals(this.location))
-                .filter(player -> player.getPosition().getZ() == (player.getIndex() * 4))
+                .filter(player -> player.getPosition().getZ() == getZ)
                 .filter(player -> !player.getInstanceId().equals(this.instanceId))
                 .filter(player -> !playerList.contains(player))
                 .filter(player -> !players.contains(player))
-                .filter(player -> !player.getRank().isStaff())
+                //.filter(player -> !player.getRank().isStaff())
                 .forEach(player -> {
                     player.sendMessage("@red@[INSTANCE] This isn't your instance. Moving you home.");
                     player.setInstance(null);

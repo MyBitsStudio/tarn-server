@@ -59,15 +59,6 @@ public class Trading {
 			return;
 		}
 
-		if (player.getLocation() == Location.DUNGEONEERING) {
-			player.getPacketSender().sendMessage("You are far too busy to trade at the moment!");
-			return;
-		}
-		if (player2.getLocation() == Location.DUNGEONEERING) {
-			player.getPacketSender().sendMessage("You are far too busy to trade at the moment!");
-			return;
-		}
-
 		/*
 		 * if(Misc.getMinutesPlayed(player) < 15) { player.getPacketSender().
 		 * sendMessage("You must have played for at least 15 minutes in order to trade someone."
@@ -89,12 +80,6 @@ public class Trading {
 			declineTrade(true);
 			return;
 		}
-		/*if (player.getLocation() == Location.GODWARS_DUNGEON
-				&& player.getMinigameAttributes().getGodwarsDungeonAttributes().hasEnteredRoom()
-				&& !player2.getMinigameAttributes().getGodwarsDungeonAttributes().hasEnteredRoom()) {
-			player.getPacketSender().sendMessage("You cannot reach that.");
-			return;
-		}*/
 		if (player.isShopping() || player.isBanking()) {
 			player.getPacketSender().sendMessage("Player is shopping or banking");
 			player.getPacketSender().sendInterfaceRemoval();
@@ -141,7 +126,7 @@ public class Trading {
 	public void openTrade() {
 		player.getPacketSender().sendClientRightClickRemoval();
 		Player player2 = World.getPlayers().get(getTradeWith());
-		if (player == null || player2 == null || getTradeWith() == player.getIndex() || player.isBanking())
+		if (player2 == null || getTradeWith() == player.getIndex() || player.isBanking())
 			return;
 		setTrading(true);
 		setTradeRequested(false);
@@ -189,6 +174,8 @@ public class Trading {
 		player.getPacketSender().sendItemContainer(player.getInventory(), 3322);
 	}
 
+
+
 	public void tradeItem(int itemId, int amount, int slot) {
 		if (slot < 0) {
 			return;
@@ -200,12 +187,12 @@ public class Trading {
 		if (player2 == null || player == null) {
 			return;
 		}
-		if(Collections.singletonList(GameSettings.UNTRADEABLE_ITEMS).contains(itemId)) {
+
+		if(Arrays.stream(GameSettings.UNTRADEABLE_ITEMS).anyMatch(i -> i == itemId) && !player.getRank().isStaff()) {
 			player.getPacketSender().sendMessage("You can not trade this item.");
 			return;
 		}
-		Item itemToTrade = player.getInventory().getItems()[slot];
-		itemToTrade = new Item(itemToTrade.getId(), itemToTrade.getAmount());
+		Item itemToTrade = player.getInventory().getItems()[slot].copy();
 		if (player.getRank().isAdmin()
 				&& !(itemId == 1419 && player.getRank().isStaff())) {
 			if (!itemToTrade.tradeable()) {
@@ -222,7 +209,7 @@ public class Trading {
 		if (!player.getInventory().contains(itemId)) {
 			return;
 		}
-		if (slot >= player.getInventory().capacity() || itemToTrade.getId() != itemId || itemToTrade.getAmount() <= 0) {
+		if (slot >= player.getInventory().capacity() || itemToTrade.getId() != itemId  || itemToTrade.getAmount() <= 0) {
 			return;
 		}
 		if (player.getInventory().getAmount(itemId) < amount) {
@@ -234,8 +221,8 @@ public class Trading {
 		if (!itemToTrade.getDefinition().isStackable()) {
 			for (int a = 0; a < amount && a < 28; a++) {
 				if (player.getInventory().getAmount(itemId) >= 1) {
-					offeredItems.add(new Item(itemId, 1));
-					player.getInventory().delete(new Item(itemId, 1));
+					offeredItems.add(itemToTrade.setAmount(1));
+					player.getInventory().delete(itemToTrade.setAmount(1));
 				}
 			}
 		} else if (itemToTrade.getDefinition().isStackable()) {
@@ -325,7 +312,7 @@ public class Trading {
 			return;
 		}
 		Player player2 = World.getPlayers().get(getTradeWith());
-		if (player == null || player2 == null) {
+		if (player2 == null) {
 			declineTrade(false);
 			return;
 		}
@@ -527,6 +514,10 @@ public class Trading {
 
 	public boolean inTrade() {
 		return this.inTrade;
+	}
+
+	public CopyOnWriteArrayList<Item> getOfferedItems() {
+		return this.offeredItems;
 	}
 
 	public void setTradeRequested(boolean tradeRequested) {

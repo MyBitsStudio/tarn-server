@@ -37,7 +37,7 @@ public abstract class Gamemode {
     //duel arena
     public abstract boolean canStake(Player player);
 
-
+    public abstract String toString();
 
 
 

@@ -10,9 +10,11 @@ public class Offer {
     private final int slot;
     private int amountSold;
     private final long timestamp;
+    private String uid;
 
-    public Offer(int itemId,  int initialAmount, int price, String seller, int slot, long timestamp) {
+    public Offer(int itemId, String uid,  int initialAmount, int price, String seller, int slot, long timestamp) {
         this.itemId = itemId;
+        this.uid = uid;
         this.initialAmount = initialAmount;
         this.price = price;
         this.seller = seller;
@@ -44,6 +46,9 @@ public class Offer {
         this.amountSold = amountSold;
     }
 
+    public String getUid() {
+        return uid;
+    }
     public int getItemBonus() {
         return itemBonus;
     }

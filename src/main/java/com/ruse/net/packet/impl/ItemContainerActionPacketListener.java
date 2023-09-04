@@ -185,7 +185,7 @@ public class ItemContainerActionPacketListener implements PacketListener {
 			case Bank.INTERFACE_ID:
 				if (!player.isBanking() || player.getInterfaceId() != 5292)
 					break;
-				item = player.getBank(player.getCurrentBankTab()).forSlot(slot).copy();
+				item = player.getBank(player.getCurrentBankTab()).forSlot(slot).copy().setAmount(1);
 				player.getBank(player.getCurrentBankTab()).switchItem(player.getInventory(), item, slot, true, true);
 				player.getBank(player.getCurrentBankTab()).open();
 				break;
@@ -197,7 +197,7 @@ public class ItemContainerActionPacketListener implements PacketListener {
 				player.getGroupIronmanBank().open(player);
 				break;
 			case Bank.INVENTORY_INTERFACE_ID:
-				item = player.getInventory().forSlot(slot).copy();
+				item = player.getInventory().forSlot(slot).copy().setAmount(1);
 				if (player.isBanking() && player.getInterfaceId() == 106000 && player.getInventory().contains(item.getId())){
 					player.getInventory().switchItem(player.getGroupIronmanBank(), item, slot, false, true);
 					player.getGroupIronmanBank().refreshItems(player);
@@ -308,7 +308,7 @@ public class ItemContainerActionPacketListener implements PacketListener {
 			return;
 
 		switch (interfaceId) {
-			case TradingPost.ITEM_CONTAINER_ID -> player.getTradingPost().selectItemToAdd(item);
+			case TradingPost.ITEM_CONTAINER_ID -> player.getTradingPost().selectItemToAdd(player.getInventory().get(slot));
 			case -15971 -> ForgeShopHandler.purchase(player, id, 5);
 			case 31510 -> player.getEventBossManager().removeNpcDropReward(id, 5);
 			case 2900 -> player.getEventBossManager().addNpcDropReward(id, 5, slot);

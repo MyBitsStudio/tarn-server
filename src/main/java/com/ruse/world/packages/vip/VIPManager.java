@@ -14,11 +14,10 @@ import java.util.List;
 
 public class VIPManager {
 
-    private static void handleDonation(@NotNull Player player, int amount, String id){
+    private static void handleDonation(@NotNull Player player, int amount){
         player.getPlayerVIP().addDonation(amount);
         player.getPacketSender().sendMessage("@blu@[DONATE]@whi@Thank you for your donation of $" + amount + "! K3");
         World.sendMessage("<img=857><col=FF0000><shad=1>[" + player.getUsername() + "] Just Donated For " + amount+". Thank You For The Support!");
-        new PlayerDonationSave(player, amount, id).create().save();
     }
 
     public static void claim(Player player){
@@ -36,7 +35,8 @@ public class VIPManager {
                         throw new RuntimeException(e);
                     }
                     int amount = modify(player, redeem.amount());
-                    handleDonation(player, amount, redeem.payment_id());
+                    handleDonation(player, amount);
+                    new PlayerDonationSave(player, redeem.amount(), redeem.payment_id()).create().save();
                     progress(player, redeem.amount());
                     handleTickets(player, redeem.amount());
                     handleSpecialActive(player, redeem.amount());

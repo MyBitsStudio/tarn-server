@@ -5,6 +5,7 @@ import com.ruse.GameSettings;
 import com.ruse.engine.task.Task;
 import com.ruse.engine.task.TaskManager;
 import com.ruse.engine.task.impl.PlayerDeathTask;
+import com.ruse.engine.task.impl.WalkToFightTask;
 import com.ruse.engine.task.impl.WalkToTask;
 import com.ruse.model.*;
 import com.ruse.model.container.impl.*;
@@ -335,9 +336,7 @@ public class Player extends Character {
     }
 
     public void addItemUnderAnyCircumstances(Item item) {
-        if(!getInventory().full(item.getId())) {
-            getInventory().add(item);
-        } else {
+        if(getInventory().full(item.getId())) {
             if(getBank(getCurrentBankTab()).full(item.getId())) {
                 GroundItemManager.spawnGroundItem(this, new GroundItem(item, getPosition(),
                         username, false, 150, false, -1));
@@ -346,6 +345,8 @@ public class Player extends Character {
             }
             getBank(getCurrentBankTab()).add(item);
             getPacketSender().sendMessage("@red@[WARNING] @bla@" + item.getDefinition().getName() + " x" + item.getAmount() + " has been sent to your bank.");
+        } else {
+            getInventory().add(item);
         }
     }
 
@@ -680,6 +681,7 @@ public class Player extends Character {
     private LoyaltyTitles loyaltyTitle = LoyaltyTitles.NONE;
     private Input inputHandling;
     private WalkToTask walkToTask;
+    private WalkToFightTask fightTask;
     private GameObject interactingObject;
     private Item interactingItem;
     private DwarfCannon cannon;
@@ -2354,6 +2356,14 @@ public class Player extends Character {
 
     public void setWalkToTask(WalkToTask walkToTask) {
         this.walkToTask = walkToTask;
+    }
+
+    public WalkToFightTask getFightTask() {
+        return fightTask;
+    }
+
+    public void setFightTask(WalkToFightTask walkToTask) {
+        this.fightTask = walkToTask;
     }
 
     public MagicSpellbook getSpellbook() {

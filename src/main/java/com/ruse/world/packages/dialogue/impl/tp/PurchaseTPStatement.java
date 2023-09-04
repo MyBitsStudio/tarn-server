@@ -54,7 +54,7 @@ public class PurchaseTPStatement extends Dialogue {
 
     @Override
     public boolean handleOption(int option) {
-        if(option == 1){
+        if(option == FIRST_OPTION_OF_TWO){
             end();
             getPlayer().getTradingPost().purchase(offer, amount, 1);
         } else {

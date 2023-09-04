@@ -95,4 +95,9 @@ public class Ironman extends Gamemode {
     public boolean canStake(Player player) {
         return false;
     }
+
+    @Override
+    public String toString() {
+        return "Ironman";
+    }
 }

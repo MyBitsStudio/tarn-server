@@ -87,14 +87,6 @@ import java.util.List;
 public class ButtonClickPacketListener implements PacketListener {
 
     public static final int OPCODE = 195;
-    private static final List<Integer> NEW_TELEPORT_BUTTONS_TAB = Arrays.asList(28215, 28216, 28217, 28218, 28219, 28220);
-    private static final List<Integer> NEW_TELEPORT_BUTTONS = Arrays.asList(
-            28231, 28232, 28233, 28234, 28235, 28236, 28237, 28238,
-            28239, 28240, 28241, 28242,
-            28243, 28244, 28245, 28246, 28247, 28248, 28249, 28250, 28251, 28252, 28253, 28254,
-            28307, 28308, 28309, 28310, 28311, 28312, 28313, 28314, 28315, 28316, 28317, 28318, 28319,
-            28320, 28321, 28322, 28323, 28324, 28325, 28326, 28327, 28328, 28329, 28330,
-            28331, 28332, 28333, 28334, 28335, 28336, 28337, 28338, 28339);
 
     @Override
     public void handleMessage(Player player, Packet packet) {
@@ -107,6 +99,12 @@ public class ButtonClickPacketListener implements PacketListener {
         if (player.getRank().isDeveloper()) {
             player.getPacketSender().sendMessage("Clicked button: " + id);
         }
+
+        if(player.getVariables().getLongValue("last-button") + 1000 > System.currentTimeMillis()) {
+            return;
+        }
+
+        player.getVariables().setLongValue("last-button", System.currentTimeMillis());
 
         if(id >= -12235 && id <= -12224)
         {

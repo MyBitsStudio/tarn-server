@@ -844,35 +844,6 @@ public class ObjectActionPacketListener implements PacketListener {
 //                            DialogueManager.start(player, 22);
 //                            player.setDialogueActionId(14);
 //                            break;
-
-                        case 134:
-                        case 135:
-                            if (player.getPosition().getY() < 3354 && GameSettings.Halloween) {
-                                TeleportHandler.teleportPlayer(player, new Position(3109, 3354, 404),
-                                        TeleportType.NORMAL);
-                            }
-                            boolean move = player.getPosition().getY() < 3354;
-                            if (!move) {
-                                player.getPacketSender().sendMessage("Nope, it's not going to move.");
-                            }
-
-                            /*
-                             * TaskManager.submit(new Task(0, player, true) { int tick = 0;
-                             *
-                             * @Override public void execute() { tick++; if (player.getPosition().getX() >
-                             * 3106 && player.getPosition().getX() < 3111 && player.getPosition().getY() ==
-                             * 3353) { //player.getPosition().getY() > 3226 && player.getPosition().getY() <
-                             * 3229) { player.getMovementQueue().walkStep(0, 1);
-                             * player.getPacketSender().sendMessage("The heavy doors shut as you enter."); }
-                             * else if (player.getPosition().getY() > 3353) {
-                             * player.getPacketSender().sendMessage("That has no intention of moving..."); }
-                             * else { player.getPacketSender().sendMessage("You're too far away!"); }
-                             * if(tick == 1) stop(); }
-                             *
-                             * @Override public void stop() { setEventRunning(false);
-                             * //player.setCrossingObstacle(false); } }); }
-                             */
-                            break;
                         case 2112:
                             if (!player.getDonator().isClericPlus()) {
                                 player.getPacketSender().sendMessage("You must be a member to access this area.");
@@ -1118,11 +1089,6 @@ public class ObjectActionPacketListener implements PacketListener {
                                 player.moveTo(GameSettings.DEFAULT_POSITION.copy());
                                 player.getPacketSender().sendMessage("The portal teleports you home.");
                                 return;
-                            }
-                            if (gameObject.getPosition().getX() == 3674 && gameObject.getPosition().getY() == 2981
-                                    && GameSettings.FridayThe13th) {
-                                player.moveTo(new Position(2463, 4782));
-                                player.getPacketSender().sendMessage("Enjoy the Friday the 13th mini-event.");
                             }
                             if (gameObject.getPosition().getX() == 3674 && gameObject.getPosition().getY() == 2981
                                     && GameSettings.Halloween) {

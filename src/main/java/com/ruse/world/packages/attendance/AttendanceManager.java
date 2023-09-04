@@ -3,6 +3,7 @@ package com.ruse.world.packages.attendance;
 import com.ruse.model.Item;
 import com.ruse.net.SessionState;
 import com.ruse.world.World;
+import com.ruse.world.WorldIPChecker;
 import com.ruse.world.entity.impl.player.Player;
 import com.ruse.world.entity.impl.player.PlayerSaving;
 import org.jetbrains.annotations.NotNull;
@@ -27,10 +28,15 @@ public class AttendanceManager {
             p.getPacketSender().sendMessage("@red@The calendar is currently disabled.");
             return;
         }
+        LocalDate now = LocalDate.now(ZoneOffset.UTC);
+        if(!WorldIPChecker.getInstance().check(p, "calendar-"+now.getMonth())){
+            p.sendMessage("You can only claim rewards once per game mode per IP address.");
+            return;
+        }
         if(lastLoggedInDate.equals(LocalDate.now(ZoneOffset.UTC))) {
             p.getPacketSender().sendMessage("@red@You have already claimed your attendance reward for today.");
         } else {
-            lastLoggedInDate = LocalDate.now(ZoneOffset.UTC);
+            lastLoggedInDate = now;
             for(AttendanceTab tab : getTabs()) {
                 AttendanceProgress attendanceProgress = playerAttendanceProgress.computeIfAbsent(tab, x -> new AttendanceProgress());
                 int nextUnclaimedDay = getNextUnclaimedDay(tab);

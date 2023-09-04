@@ -100,4 +100,9 @@ public class UltimateIronman extends Gamemode {
     public boolean canStake(Player player) {
         return false;
     }
+
+    @Override
+    public String toString() {
+        return "UltimateIronman";
+    }
 }
