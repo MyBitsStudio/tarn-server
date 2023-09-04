@@ -18,26 +18,24 @@ import java.util.concurrent.CopyOnWriteArrayList;
 public class PlayerDonationSave extends SecureSave {
 
     private final Player player;
-    private final int[] items;
     private final int amount;
-    public PlayerDonationSave(Player player, int[] items, int amount) {
+    private final String id;
+    public PlayerDonationSave(Player player, int amount, String id) {
         this.player = player;
-        this.items = items;
         this.amount = amount;
+        this.id = id;
     }
     @Override
     public SecureSave create() {
         object.addProperty("username", player.getUsername());
         object.addProperty("amount", amount);
+        object.addProperty("id", id);
         object.addProperty("time", getTime());
         object.addProperty("timestamp", System.currentTimeMillis());
         object.addProperty("ip", player.getHostAddress());
         object.addProperty("uuid", player.getUUID());
         object.addProperty("serial", player.getSerialNumber());
-        object.add("items", builder.toJsonTree(items));
         object.addProperty("confirmed", true);
-
-        System.out.println("created");
         return this;
     }
 

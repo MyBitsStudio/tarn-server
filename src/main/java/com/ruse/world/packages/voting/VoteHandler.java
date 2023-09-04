@@ -7,6 +7,7 @@ import com.ruse.world.content.achievement.Achievements;
 import com.ruse.world.content.discordbot.JavaCord;
 import com.ruse.world.entity.impl.player.Player;
 import com.ruse.world.packages.database.model.VoteRedeem;
+import com.ruse.world.packages.globals.GlobalBossManager;
 import org.jetbrains.annotations.NotNull;
 
 import java.sql.SQLException;
@@ -28,16 +29,27 @@ public class VoteHandler {
                     } catch (SQLException e) {
                         throw new RuntimeException(e);
                     }
-                    player.getPoints().add("voted", 1);
                     player.getPacketSender().sendMessage("Thank you for voting! Enjoy your reward!");
                     JavaCord.sendMessage(1117224370587304057L, "**[" + player.getUsername() + "] Just voted for the server, thank you!**");
                     add(player);
                     progress(player);
+                    checkBoss();
                 }
                 player.save();
             });
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+
+    private static void checkBoss(){
+        World.attributes.setAmount("vote-boss", World.attributes.getAmount("vote-boss") + 1);
+        if(World.attributes.getAmount("vote-boss") >= 100){
+            if(World.npcIsRegistered(8013)){
+                return;
+            }
+            World.attributes.setAmount("vote-boss", World.attributes.getAmount("vote-boss") - 100);
+            GlobalBossManager.getInstance().spawnVoteBoss();
         }
     }
 

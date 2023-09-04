@@ -45,6 +45,8 @@ public class PlayerSettings {
         settings.put("donator", false); // donator calendar
         settings.put("fall-unlock", false); // donator calendar
 
+        settings.put("last-login", 1);
+
     }
 
     public void setSetting(String key, Object value){

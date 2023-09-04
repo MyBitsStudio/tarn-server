@@ -23,7 +23,6 @@ import com.ruse.world.content.dailytasks_new.DailyTask;
 import com.ruse.world.content.tbdminigame.Game;
 import com.ruse.world.content.tbdminigame.Lobby;
 import com.ruse.world.packages.combat.drops.DropManager;
-import com.ruse.world.packages.donation.boss.DonationBoss;
 import com.ruse.world.content.eventboss.EventBossDropHandler;
 import com.ruse.world.content.globalBoss.GlobalBoss;
 import com.ruse.world.content.globalBoss.GlobalBossHandler;
@@ -211,10 +210,6 @@ public class NPCDeathTask extends Task {
 
                         if (npc instanceof GlobalBoss) {
                             GlobalBossHandler.onDeath((GlobalBoss) npc);
-                        }
-
-                        if (npc instanceof DonationBoss) {
-                            ((DonationBoss) npc).handleDrops();
                         }
 
                         if (npc.stopTask()) {

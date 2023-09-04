@@ -25,7 +25,6 @@ import com.ruse.world.content.groupironman.IronmanGroup;
 import com.ruse.world.content.skill.SkillManager;
 import com.ruse.world.content.skill.impl.summoning.BossPets;
 import com.ruse.world.entity.impl.player.Player;
-import com.ruse.world.packages.donation.DonationManager;
 import com.ruse.world.packages.mode.GameModeConstants;
 import com.ruse.world.packages.mode.impl.*;
 import com.ruse.world.packages.ranks.DonatorRank;
@@ -790,6 +789,10 @@ public class PlayerSecureLoad extends SecureLoad {
             player.getPlayerVIP().setTotal(object.get("vipTotal").getAsInt());
         }
 
+        if(object.has("vipPoints")) {
+            player.getPlayerVIP().setPoints(object.get("vipPoints").getAsInt());
+        }
+
         if(object.has("packXP")) {
             player.getPlayerVIP().setPackXp(object.get("packXP").getAsInt());
         }
@@ -883,6 +886,5 @@ public class PlayerSecureLoad extends SecureLoad {
             case "DEVELOPER" -> player.setRank(StaffRank.DEVELOPER);
             case "HELPER" -> player.setRank(StaffRank.HELPER);
         }
-        DonationManager.getInstance().handleDonor(player);
     }
 }

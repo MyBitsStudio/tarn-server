@@ -1,6 +1,7 @@
 package com.ruse.world.packages.vip;
 
 import com.ruse.model.Item;
+import com.ruse.world.WorldCalendar;
 import com.ruse.world.entity.impl.player.Player;
 import com.ruse.world.packages.ranks.VIPRank;
 import lombok.Getter;
@@ -25,13 +26,13 @@ public class VIP {
         this.player = player;
     }
 
-    public void addDonation(int amount, int[] items) {
+    public void addDonation(int amount) {
         exp += amount;
         packXp += amount;
         total += amount;
         points += amount;
         player.getPacketSender().sendMessage("@yel@[VIP] You have gained " + amount + " VIP experience. Currently at : "+ exp);
-        addToList(items, amount);
+        addToList(amount);
         claimPack();
         reCalculate();
     }
@@ -44,8 +45,8 @@ public class VIP {
         this.points += amount;
     }
 
-    private void addToList(int[] item, int amount){
-        donations.add(new Donation(item, amount, System.currentTimeMillis()));
+    private void addToList(int amount){
+        donations.add(new Donation(amount, System.currentTimeMillis()));
     }
 
     private void reCalculate(){
@@ -88,25 +89,25 @@ public class VIP {
     }
 
     public int calculateLevel() {
-        if(exp < 25)
-            return 0;
         if(exp < 50)
+            return 0;
+        if(exp < 100)
             return 1;
-        if(exp < 150)
+        if(exp < 250)
             return 2;
-        if(exp < 300)
-            return 3;
         if(exp < 500)
-            return 4;
+            return 3;
         if(exp < 750)
-            return 5;
+            return 4;
         if(exp < 1000)
-            return 6;
+            return 5;
         if(exp < 1500)
-            return 7;
+            return 6;
         if(exp < 2500)
-            return 8;
+            return 7;
         if(exp < 5000)
+            return 8;
+        if(exp < 10000)
             return 9;
         return 10;
     }
@@ -160,9 +161,9 @@ public class VIP {
     }
 
     public void onLogin(){
-        if(Calendar.DAY_OF_MONTH != claimedTicket && player.getVip().getRank() > 0){
-            claimedTicket = Calendar.DAY_OF_MONTH;
-            int tickets = player.getVip().getRank() * 2;
+        if(WorldCalendar.getInstance().getDay() != claimedTicket && player.getVip().getRank() > 0){
+            claimedTicket = WorldCalendar.getInstance().getDay();
+            int tickets = player.getVip().getRank();
             player.getInventory().addDropIfFull(23003, tickets);
             player.getPacketSender().sendMessage("You have gained " + tickets + " VIP tickets.");
         }

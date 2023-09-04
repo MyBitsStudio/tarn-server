@@ -4,6 +4,7 @@ import com.ruse.GameSettings;
 import com.ruse.engine.GameEngine;
 import com.ruse.util.Misc;
 import com.ruse.world.entity.impl.player.Player;
+import com.ruse.world.packages.database.model.DonateRedeem;
 import com.ruse.world.packages.database.model.Retrievals;
 import com.ruse.world.packages.database.model.VoteRedeem;
 import com.zaxxer.hikari.HikariConfig;
@@ -28,6 +29,11 @@ public class Database {
         config.setJdbcUrl(GameSettings.DATABASE_URL );
         config.setUsername( GameSettings.DATABASE_USER );
         config.setPassword( GameSettings.DATABASE_PASS );
+        config.setMinimumIdle(5);
+        config.setMaximumPoolSize(50);
+        config.setConnectionTimeout(10000);
+        config.setIdleTimeout(600000);
+        config.setMaxLifetime(1800000);
         config.addDataSourceProperty( "cachePrepStmts" , "true" );
         config.addDataSourceProperty( "prepStmtCacheSize" , "250" );
         config.addDataSourceProperty( "prepStmtCacheSqlLimit" , "2048" );
@@ -105,6 +111,29 @@ public class Database {
                         if(rs.getTime("callback_date") == null)
                             continue;
                         votes.add(new VoteRedeem( rs.getInt("id"), rs.getString("uid")));
+                    }
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        } catch(Exception e){
+            e.printStackTrace();
+        }
+        return votes;
+    }
+
+    public List<DonateRedeem> redeemDonate(Player player){
+        String name = Misc.formatPlayerName(player.getUsername());
+        String sql = "SELECT * FROM payments WHERE player =?";
+        List<DonateRedeem> votes = new ArrayList<>();
+        try (Connection con = ds.getConnection()){
+            try (PreparedStatement stmt = con.prepareStatement(sql)) {
+                stmt.setString(1, name);
+                try (ResultSet rs = stmt.executeQuery()) {
+                    while ( rs.next() ) {
+                        if(rs.getInt("claimed") == 1)
+                            continue;
+                        votes.add(new DonateRedeem( rs.getInt("id"), rs.getString("payment_id"), rs.getString("player"), rs.getInt(("amount")), rs.getDate("posted").toString()));
                     }
                 }
             } catch (SQLException e) {

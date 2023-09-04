@@ -11,7 +11,6 @@ import com.ruse.util.RandomUtility;
 import com.ruse.world.World;
 import com.ruse.world.content.*;
 import com.ruse.world.packages.attendance.AttendanceTab;
-import com.ruse.world.content.combat.DesolaceFormulas;
 import com.ruse.world.content.combat.prayer.CurseHandler;
 import com.ruse.world.content.combat.prayer.PrayerHandler;
 import com.ruse.world.content.dailyTask.DailyTaskHandler;
@@ -21,16 +20,14 @@ import com.ruse.world.packages.combat.max.MeleeMax;
 import com.ruse.world.packages.combat.max.RangeMax;
 import com.ruse.world.packages.dialogue.DialogueManager;
 import com.ruse.world.packages.dialogue.impl.EmptyInv;
-import com.ruse.world.packages.donation.DonationManager;
 import com.ruse.world.content.minigames.impl.dungeoneering.DungeoneeringParty;
-import com.ruse.world.content.progressionzone.ProgressionZone;
 import com.ruse.world.content.serverperks.ServerPerks;
 import com.ruse.world.content.transportation.TeleportHandler;
 import com.ruse.world.content.transportation.TeleportType;
 import com.ruse.world.packages.misc.Retrieval;
-import com.ruse.world.packages.mode.GameModeConstants;
 import com.ruse.world.packages.ranks.StaffRank;
 import com.ruse.world.packages.tracks.TrackInterface;
+import com.ruse.world.packages.vip.VIPManager;
 import com.ruse.world.packages.voting.VoteHandler;
 import com.ruse.world.entity.impl.player.Player;
 
@@ -47,6 +44,28 @@ public class PlayerCommands {
             return true;
 
         switch (commands[0]) {
+            case "redeem" -> {
+                if(commands.length >= 2) {
+                    switch(commands[1]){
+                        case "voting", "voted", "vote" -> {
+                            VoteHandler.processVote(player);
+                            return true;
+                        }
+                        case "donation", "donated", "donate" -> {
+                            VIPManager.claim(player);
+                            return true;
+                        }
+                        case "retrieve", "ret" -> {
+                            Retrieval.retrieve(player);
+                            return true;
+                        }
+                    }
+
+                } else {
+                    player.sendMessage("::redeem donate|donated|donation|vote|voted|voting|retrieve|ret");
+                }
+                return true;
+            }
             case "claim" -> {
                 Retrieval.retrieve(player);
                 return true;

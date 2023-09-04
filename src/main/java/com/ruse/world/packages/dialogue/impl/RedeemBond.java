@@ -7,7 +7,6 @@ import com.ruse.world.entity.impl.player.Player;
 import com.ruse.world.packages.dialogue.Dialogue;
 import com.ruse.world.packages.dialogue.DialogueExpression;
 import com.ruse.world.packages.dialogue.DialogueType;
-import com.ruse.world.packages.donation.DonationManager;
 
 public class RedeemBond extends Dialogue {
 

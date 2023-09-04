@@ -20,6 +20,7 @@ public abstract class Gamemode {
     public abstract boolean changeMode(Gamemode change);
 
     public abstract boolean canInstance();
+    public abstract boolean canPOS();
 
     public abstract boolean canWear(int id);
 

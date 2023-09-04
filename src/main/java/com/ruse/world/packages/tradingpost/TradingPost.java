@@ -48,6 +48,10 @@ public class TradingPost {
         if(!World.attributes.getSetting("pos")){
             return;
         }
+        if(!player.getMode().canPOS()){
+            player.getPacketSender().sendMessage("You cannot use the trading post in this game mode.");
+            return;
+        }
         slotSelected = 0;
         searchedItem = -1;
         page = 0;

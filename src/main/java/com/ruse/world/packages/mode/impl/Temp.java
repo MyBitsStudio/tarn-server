@@ -46,6 +46,11 @@ public class Temp extends Gamemode {
     }
 
     @Override
+    public boolean canPOS() {
+        return false;
+    }
+
+    @Override
     public boolean canWear(int id) {
         return false;
     }

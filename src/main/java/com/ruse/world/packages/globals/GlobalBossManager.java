@@ -130,6 +130,22 @@ public class GlobalBossManager {
         check();
     }
 
+    public void spawnDonationBoss(){
+        if(World.npcIsRegistered(587)){
+            return;
+        }
+        DonationGlobal donationGlobal = new DonationGlobal();
+        spawn(donationGlobal);
+    }
+
+    public void spawnVoteBoss(){
+        if(World.npcIsRegistered(8013)){
+            return;
+        }
+        VoteGlobal donationGlobal = new VoteGlobal();
+        spawn(donationGlobal);
+    }
+
     private void spawn(GlobalBoss boss){
         World.register(boss);
 

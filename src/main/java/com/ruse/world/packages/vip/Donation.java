@@ -10,12 +10,10 @@ import java.util.Date;
 @Getter
 public class Donation {
 
-    private final int[] item;
     private final int amount;
     private final String date;
 
-    public Donation(int[] item, int amount, long date) {
-        this.item = item;
+    public Donation(int amount, long date) {
         this.amount = amount;
         this.date = longToDate(date);
     }

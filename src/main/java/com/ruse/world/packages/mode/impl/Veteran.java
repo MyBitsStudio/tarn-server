@@ -51,6 +51,11 @@ public class Veteran extends Gamemode {
     }
 
     @Override
+    public boolean canPOS() {
+        return true;
+    }
+
+    @Override
     public boolean canWear(int id) {
         return switch(id){
             case 16691, 9704, 17239, 16669, 4977, 4989, 4995, 16339, 6068, 9703

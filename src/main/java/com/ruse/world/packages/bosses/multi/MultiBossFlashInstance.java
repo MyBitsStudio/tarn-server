@@ -2,8 +2,6 @@ package com.ruse.world.packages.bosses.multi;
 
 import com.ruse.model.Position;
 import com.ruse.world.packages.bosses.MultiBossInstance;
-import com.ruse.world.packages.donation.FlashDeals;
-import com.ruse.world.packages.instances.InstanceManager;
 import com.ruse.world.entity.impl.player.Player;
 
 public class MultiBossFlashInstance extends MultiBossInstance {

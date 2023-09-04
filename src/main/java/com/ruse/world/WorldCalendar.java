@@ -55,6 +55,7 @@ public class WorldCalendar implements Job {
     public void execute(JobExecutionContext context) throws JobExecutionException {
         AttendanceManager.nextDay();
         World.handler.reload();
+        load();
     }
 
     @SneakyThrows

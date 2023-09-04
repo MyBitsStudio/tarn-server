@@ -6,7 +6,6 @@ import com.ruse.motivote3.doMotivote;
 import com.ruse.util.Misc;
 import com.ruse.world.World;
 import com.ruse.world.packages.combat.drops.DropCalculator;
-import com.ruse.world.packages.donation.DonationManager;
 import com.ruse.world.content.serverperks.ServerPerks;
 import com.ruse.world.packages.globals.GlobalBossManager;
 import com.ruse.world.packages.mode.impl.*;

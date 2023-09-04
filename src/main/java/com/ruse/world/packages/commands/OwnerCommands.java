@@ -11,10 +11,6 @@ import com.ruse.world.World;
 import com.ruse.world.content.LotterySystem;
 import com.ruse.world.content.WellOfGoodwill;
 import com.ruse.world.packages.clans.ClanManager;
-import com.ruse.world.content.combat.weapon.CombatSpecial;
-import com.ruse.world.packages.donation.DonateSales;
-import com.ruse.world.packages.donation.DonationManager;
-import com.ruse.world.packages.donation.FlashDeals;
 import com.ruse.world.content.grandexchange.GrandExchangeOffers;
 import com.ruse.world.content.serverperks.ServerPerks;
 import com.ruse.world.content.skill.SkillManager;
@@ -232,32 +228,12 @@ public class OwnerCommands {
                         });
                 return true;
             }
-            case "flashdeal" -> {
-                FlashDeals.getDeals().reload();
-                World.sendStaffMessage("<img=5> @blu@[DEALS] Flash Deals are active. Check them out now!");
-                for (Player players : World.getPlayers()) {
-                    if (players == null) {
-                        continue;
-                    }
-                    players.getPacketSender().sendBroadCastMessage("FLASH DEALS ARE ACTIVE! CHECK THEM OUT BEFORE THEY ARE GONE!", 300);
-                }
-                return true;
-            }
             case "add" -> {
                 if (commands.length >= 2) {
                     switch (commands[1]) {
-                        case "donate" -> {
-                            amount = Integer.parseInt(commands[2]);
-                            DonationManager.getInstance().addToTotalDonation(amount);
-                            return true;
-                        }
                         case "vote" -> {
                             amount = Integer.parseInt(commands[2]);
-                            doMotivote.setVoteCount(doMotivote.getVoteCount() + amount);
-                            VoteBossDrop.save();
-                            if (doMotivote.getVoteCount() >= 50) {
-                                VoteBossDrop.handleSpawn();
-                            }
+
                             return true;
                         }
                     }
@@ -277,7 +253,7 @@ public class OwnerCommands {
                             new NPCDataLoad().loadJSON("./.core/server/defs/npc/npc_data.json").run();
                             WeaponInterfaces.init();
                             ServerSecurity.getInstance().reload();
-                            FlashDeals.getDeals().reload();
+
                             World.handler.reload();
                             player.sendMessage("Reloaded all definitions.");
                             return true;
@@ -297,16 +273,6 @@ public class OwnerCommands {
                         case "bans" -> {
                             ServerSecurity.getInstance().reload();
                             player.sendMessage("Bans reload");
-                            return true;
-                        }
-                        case "deals" -> {
-                            FlashDeals.getDeals().reload();
-                            player.sendMessage("Deals reload");
-                            return true;
-                        }
-                        case "sales" -> {
-                            DonateSales.getInstance().reload();
-                            player.sendMessage("Sales reload");
                             return true;
                         }
                         case "events" -> {
@@ -379,7 +345,7 @@ public class OwnerCommands {
             }
             case "vipadd" -> {
                 id = Integer.parseInt(commands[1]);
-                player.getPlayerVIP().addDonation(id, new int[]{});
+                player.getPlayerVIP().addDonation(id);
                 return true;
             }
             case "addvip" -> {
@@ -388,7 +354,7 @@ public class OwnerCommands {
                 if (targets == null) {
                     player.getPacketSender().sendMessage(command.substring(commands[0].length() + commands[1].length() + commands[2].length() + commands[3].length() + 4) + " must be online to give them stuff!");
                 } else {
-                    targets.getPlayerVIP().addDonation(id, new int[]{});
+                    targets.getPlayerVIP().addDonation(id);
                     player.getPacketSender().sendMessage(
                             "Gave " + targets.getUsername() + " VIP $" + id + ".");
                 }

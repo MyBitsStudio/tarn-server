@@ -37,9 +37,6 @@ import com.ruse.world.entity.actor.player.controller.ControllerHandler;
 import com.ruse.world.entity.impl.npc.NPC;
 import com.ruse.world.packages.attendance.DailyResetScheduler;
 import com.ruse.world.packages.clans.ClanManager;
-import com.ruse.world.packages.donation.DonateSales;
-import com.ruse.world.packages.donation.DonationManager;
-import com.ruse.world.packages.donation.FlashDeals;
 import com.ruse.world.packages.globals.GlobalBossManager;
 import com.ruse.world.packages.instances.InstanceManager;
 import com.ruse.world.packages.misc.ItemIdentifiers;
@@ -91,12 +88,8 @@ public final class GameLoader {
 	}
 
 	private void startInstances(){
-		FlashDeals.getDeals();
-		DonationManager.getInstance();
 		InstanceManager.getManager();
 		GlobalBossManager.getInstance();
-		//PlusUpgrade.getPlusUpgrade();
-		DonateSales.getInstance();
 		WorldCalendar.getInstance();
 		new Lobby();
 		ServiceManager.INSTANCE.init();
@@ -155,7 +148,6 @@ public final class GameLoader {
 		serviceLoader.execute(JavaCord::init);
 		serviceLoader.execute(AdminCord::init);
 		serviceLoader.execute(SeasonPassLoader::load);
-		serviceLoader.execute(() -> DonationManager.getInstance().load());
 		serviceLoader.execute(VoteBossDrop::load);
 		serviceLoader.execute(WorldCalendar::initialize);
 		serviceLoader.execute(TradingPost::load);

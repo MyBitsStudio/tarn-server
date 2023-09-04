@@ -63,12 +63,12 @@ public class PrayerHandler {
 //		RIGOUR(80, 11, 25104, 609),
 //		AUGURY(80, 11, 25108, 610),
 
-		DESTRUCTION(75, 10, -23033, 690),
-		HUNTERS_EYE(80, 11, -23031, 691),
-		FORTITUDE(85, 12, -23029, 692),
-		GNOMES_GREED(90, 13, -23027, 693),
-		SOUL_LEECH(94, 14, -23025, 694, 9),
-		FURY_SWIPE(99, 16, -23023, 695);
+		WARLOCK(75, 10, -23033, 690),
+		KNIGHT(80, 11, -23031, 691),
+		MARKSMAN(85, 12, -23029, 692),
+		PROSPEROUS(90, 13, -23027, 693),
+		SOVEREIGNTY(94, 14, -23025, 694, 9),
+		TRINITY(99, 16, -23023, 695);
 
 		@Contract(pure = true)
 		PrayerData(int requirement, double drainRate, int buttonId, int configId, int @NotNull ... hint) {

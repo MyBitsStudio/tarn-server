@@ -17,6 +17,7 @@ public class AttributesSave extends SecureSave {
     @Override
     public AttributesSave create() {
         object.add("attributes", builder.toJsonTree(World.attributes.getSettings()));
+        object.add("amounts", builder.toJsonTree(World.attributes.getAmounts()));
         return this;
     }
 

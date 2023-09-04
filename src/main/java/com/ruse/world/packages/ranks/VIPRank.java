@@ -6,16 +6,16 @@ import lombok.Getter;
 public enum VIPRank {
 
     NONE(0, 1, 1, 0),
-    BRONZE(1, 5, 1.2, 10),
-    SILVER(2, 10, 1.4, 20),
-    GOLD(3, 20, 1.8, 350),
-    PLATINUM(4, 30, 2.1, 500),
-    DIAMOND(5, 40,  2.5, 600),
-    ONYX(6, 45,  3, 750),
-    ZENYTE(7, 50,  4, 1000),
-    SUPPORTER(8, 55,  5, 1500),
-    SPONSOR(9, 60,  6, 2000),
-    LEGENDARY(10, 65,  7, 2500)
+    BRONZE(1, 10, 1.1, 10),
+    SILVER(2, 25, 1.2, 15),
+    GOLD(3, 50, 1.3, 20),
+    PLATINUM(4, 75, 1.5, 25),
+    DIAMOND(5, 100,  1.75, 30),
+    ONYX(6, 150,  2, 40),
+    ZENYTE(7, 200,  2.2, 50),
+    SUPPORTER(8, 250,  2.5, 60),
+    SPONSOR(9, 300,  3, 75),
+    LEGENDARY(10, 500,  5, 90)
 
     ;
 

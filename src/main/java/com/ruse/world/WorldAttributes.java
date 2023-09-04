@@ -12,6 +12,8 @@ public class WorldAttributes {
 
     @Getter
     private Map<String, Boolean> settings = new ConcurrentHashMap<>();
+    @Getter
+    private Map<String, Integer> amounts = new ConcurrentHashMap<>();
 
     public WorldAttributes(){
         defaultSettings();
@@ -35,10 +37,18 @@ public class WorldAttributes {
         settings.put("slayer-bonus", false);
         settings.put("double-drops", false);
         settings.put("vote-bonus", false);
+
+
+        amounts.put("donation-boss", 0);
+        amounts.put("vote-boss", 0);
     }
 
     public boolean getSetting(String key){
         return settings.get(key);
+    }
+
+    public int getAmount(String key) {
+    	return amounts.get(key);
     }
 
     public void save(){
@@ -49,13 +59,20 @@ public class WorldAttributes {
         new AttributesLoad().loadJSON(SecurityUtils.ATTRIBUTES).run();
     }
 
-    public void load(Map<String, Boolean> settings){
+    public void load(Map<String, Boolean> settings, Map<String, Integer> amounts){
         this.settings.putAll(settings);
+        this.amounts.putAll(amounts);
     }
 
     public void setSetting(String key, boolean value){
         if(settings.containsKey(key))
             settings.replace(key, value);
         save();
+    }
+
+    public void setAmount(String key, int value) {
+    	if(amounts.containsKey(key))
+    		amounts.replace(key, value);
+    	save();
     }
 }

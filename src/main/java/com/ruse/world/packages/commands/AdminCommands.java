@@ -9,7 +9,7 @@ import com.ruse.security.save.impl.player.PlayerSecureLoad;
 import com.ruse.util.Misc;
 import com.ruse.util.NameUtils;
 import com.ruse.world.World;
-import com.ruse.world.packages.donation.DonationManager;
+import com.ruse.world.packages.globals.GlobalBossManager;
 import com.ruse.world.packages.mode.impl.*;
 import com.ruse.world.packages.voting.VoteBossDrop;
 import com.ruse.world.entity.impl.player.Player;
@@ -70,11 +70,11 @@ public class AdminCommands {
                     switch (commands[1]) {
                         case "donation":
                         case "donate":
-                            DonationManager.getInstance().forceSpawn();
+                            GlobalBossManager.getInstance().spawnDonationBoss();
                             player.getPacketSender().sendMessage("Spawning donation boss.");
                             return true;
                         case "vote":
-                            VoteBossDrop.handleForcedSpawn();
+                            GlobalBossManager.getInstance().spawnVoteBoss();
                             player.getPacketSender().sendMessage("Spawning vote boss.");
                             return true;
 //                        case "meruem":
