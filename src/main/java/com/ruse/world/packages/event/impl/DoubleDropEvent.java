@@ -10,7 +10,7 @@ import com.ruse.world.packages.event.Event;
 public class DoubleDropEvent extends Event {
     @Override
     public String name() {
-        return "Fall";
+        return "DoubleDrop";
     }
 
     @Override
@@ -20,7 +20,7 @@ public class DoubleDropEvent extends Event {
 
     @Override
     public void onLogin(Player player) {
-        player.sendMessage("@red@[EVENT]@whi@ Fall event is active!");
+        player.sendMessage("@red@[EVENT]@whi@ Double Drop event is active!");
     }
 
     @Override
