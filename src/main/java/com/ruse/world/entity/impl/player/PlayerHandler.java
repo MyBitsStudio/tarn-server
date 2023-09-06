@@ -479,9 +479,9 @@ public class PlayerHandler {
                 PlayersOnlineInterface.remove(player);
                 TaskManager.cancelTasks(player.getCombatBuilder());
                 TaskManager.cancelTasks(player);
-                if(!player.isMini()) {
-                    player.save();
-                }
+
+                player.save();
+
 
                 player.getPlayerFlags().setFlag(FORCE_KICK, true);
 

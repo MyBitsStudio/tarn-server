@@ -24,23 +24,26 @@ public class EffectHandler {
             handleAoE(p, victim,
                     p.getEquipment().getSlotBonuses()[Equipment.WEAPON_SLOT].getBonus() * 3);
         }
+        if(p.getEquipment().hasFirewall()){
+            new FireWall(10, FireWall.Dir.SOUTH, p.getPosition().getX() + 1, p.getPosition().getY() + 1, new Graphic(453), 5, 3, 25000, 10).start(false, p);
+        }
         if(p.getEquipment().hasDoubleShot()){
             long calc = Misc.inclusiveRandom(100, 1000 * 5);
             victim.dealDamage(new Hit(calc, Hitmask.RED, CombatIcon.MAGIC));
+            victim.getCombatBuilder().setLastAttacker(p);
             victim.getCombatBuilder().addDamage(p, calc);
             victim.getCombatBuilder().attack(p);
         }
         if(p.getEquipment().hasTripleShot()){
             long calc = Misc.inclusiveRandom(200, 1500 * 5);
+            victim.getCombatBuilder().setLastAttacker(p);
             victim.dealDamage(new Hit(calc, Hitmask.RED, CombatIcon.MAGIC));
             victim.getCombatBuilder().addDamage(p, calc);
             victim.dealDamage(new Hit(calc, Hitmask.RED, CombatIcon.MAGIC));
             victim.getCombatBuilder().addDamage(p, calc);
             victim.getCombatBuilder().attack(p);
         }
-        if(p.getEquipment().hasFirewall()){
-            new FireWall(10, FireWall.Dir.SOUTH, p.getPosition().getX() + 1, p.getPosition().getY() + 1, new Graphic(453), 5, 1, 25000, 10).start(false, p);
-        }
+
         if(p.getEquipment().getBonus() != null){
             if(Objects.equals(p.getEquipment().getBonus().perk(), AOE_3)){
                 handleAoE(p, victim,

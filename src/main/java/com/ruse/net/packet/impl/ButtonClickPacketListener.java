@@ -100,7 +100,7 @@ public class ButtonClickPacketListener implements PacketListener {
             player.getPacketSender().sendMessage("Clicked button: " + id);
         }
 
-        if(player.getVariables().getLongValue("last-button") + 1000 > System.currentTimeMillis()) {
+        if(player.getVariables().getLongValue("last-button") + 500 > System.currentTimeMillis()) {
             return;
         }
 

@@ -19,7 +19,6 @@ public class TowerMinions extends NPC {
         if(player != null){
             player.getTower().getInstance().check(player);
         }
-        super.onDeath();
     }
 
 

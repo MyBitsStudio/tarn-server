@@ -45,12 +45,14 @@ public class TowerLevel extends Instance {
         TowerBoss boss = new TowerBoss(tower.getNpcIds()[0], tower.getNpcPositions()[0].setZ(player.getIndex() * 4));
         boss.buff(tower.getBuffs());
         boss.setSpawnedFor(player);
+        boss.setInstance(this);
         add(boss);
         if(tower.getNpcIds().length > 1){
             for(int i = 1; i < tower.getNpcIds().length; i++){
                 TowerMinions minion = new TowerMinions(tower.getNpcIds()[i], tower.getNpcPositions()[i].setZ(player.getIndex() * 4));
                 minion.buff(tower.getBuffs());
                 minion.setSpawnedFor(player);
+                minion.setInstance(this);
                 add(minion);
             }
         }
@@ -58,7 +60,7 @@ public class TowerLevel extends Instance {
 
     public void check(Player player){
         amount--;
-        System.out.println("Checking tower");
+        System.out.println("Checking tower amount "+amount);
         if(amount <= 0){
             player.getTower().progress();
         }

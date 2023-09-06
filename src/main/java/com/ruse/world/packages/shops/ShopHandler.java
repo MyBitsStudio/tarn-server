@@ -303,6 +303,76 @@ public class ShopHandler {
                 }
                 return true;
             }
+            case 3 -> {
+                Optional<TabShop> option1 = getShop(player.getVariables().getIntValue("active-shop"));
+                if (option1.isPresent()) {
+                    TabShop shop = option1.get();
+
+                    Optional<Shop> p = shop.getShops().stream().filter(shop1 -> Objects.equals(shop1.getId(), player.getVariables().getIntValue("active-tab"))).findFirst();
+
+                    if(p.isPresent()){
+                        Shop l = p.get();
+
+                        if(slot >= l.asArray().length) {
+                            System.out.println("Slot is greater than shop size");
+                            return true;
+                        }
+
+                        ShopItem item = l.asArray()[slot];
+
+                        if(item == null) {
+                            item = l.getItem(id);
+                            if (item == null) {
+                                System.out.println("Item is null");
+                                return true;
+                            }
+                        }
+
+                        buy(player, item.getId(), 5);
+                        return true;
+                    } else {
+                        System.out.println("Shop not present");
+                    }
+                } else {
+                    System.out.println("TabShop not present");
+                }
+                return true;
+            }
+            case 4 -> {
+                Optional<TabShop> option1 = getShop(player.getVariables().getIntValue("active-shop"));
+                if (option1.isPresent()) {
+                    TabShop shop = option1.get();
+
+                    Optional<Shop> p = shop.getShops().stream().filter(shop1 -> Objects.equals(shop1.getId(), player.getVariables().getIntValue("active-tab"))).findFirst();
+
+                    if(p.isPresent()){
+                        Shop l = p.get();
+
+                        if(slot >= l.asArray().length) {
+                            System.out.println("Slot is greater than shop size");
+                            return true;
+                        }
+
+                        ShopItem item = l.asArray()[slot];
+
+                        if(item == null) {
+                            item = l.getItem(id);
+                            if (item == null) {
+                                System.out.println("Item is null");
+                                return true;
+                            }
+                        }
+
+                        buy(player, item.getId(), 10);
+                        return true;
+                    } else {
+                        System.out.println("Shop not present");
+                    }
+                } else {
+                    System.out.println("TabShop not present");
+                }
+                return true;
+            }
 
         }
 

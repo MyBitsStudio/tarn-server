@@ -19,6 +19,5 @@ public class TowerBoss extends NPC {
         if(player != null){
             player.getTower().getInstance().check(player);
         }
-        super.onDeath();
     }
 }

@@ -31,6 +31,7 @@ public class NpcDefinition {
 
 	private int combat, size, id;
 
+	@Getter
 	private boolean attackable, aggressive, retreats, poisonous, multi = false, boss, pet;
 
 	private int respawn, maxHit, attackSpeed, attackAnim, defenceAnim, deathAnim
@@ -42,7 +43,7 @@ public class NpcDefinition {
 		NpcDefinition definition = new NpcDefinition();
 		definition.setCombat(1);
 		definition.setName("");
-		definition.setAttackable(true);
+		definition.setAttackable(false);
 		definition.setSize(1);
 		return definition;
 	}
@@ -51,7 +52,4 @@ public class NpcDefinition {
 		this.multi = multi;
 	}
 
-	public boolean isMulti() {
-		return this.multi;
-	}
 }

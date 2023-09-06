@@ -26,7 +26,6 @@ public class ShutdownHook extends Thread {
 		GameServer.setUpdating(true);
 		for (Player player : World.getPlayers()) {
 			if (player != null) {
-				// World.deregister(player);
 				PlayerHandler.handleLogout(player, false);
 			}
 		}
@@ -34,8 +33,6 @@ public class ShutdownHook extends Thread {
 		GrandExchangeOffers.save();
 		ClanManager.getManager().save();
 
-		// PlayerOwnedShopManager.saveShops();
-		//Shop.ShopManager.saveTaxShop();
 		LotterySystem.saveTickets();
 		ServerPerks.getInstance().save();
 		logger.info("The shudown hook actions have been completed, shutting the server down...");

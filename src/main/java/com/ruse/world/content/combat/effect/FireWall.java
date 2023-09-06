@@ -5,6 +5,7 @@ import com.ruse.engine.task.TaskManager;
 import com.ruse.model.Graphic;
 import com.ruse.model.Hit;
 import com.ruse.model.Position;
+import com.ruse.model.definitions.NpcDefinition;
 import com.ruse.util.Misc;
 import com.ruse.world.entity.impl.npc.NPC;
 import com.ruse.world.entity.impl.player.Player;
@@ -16,6 +17,7 @@ public class FireWall {
 
     private final int width;
 
+    private int startX, startY;
     private final Graphic graphic;
     private final int stages;
     private final int ticksBetweenStages;
@@ -30,6 +32,8 @@ public class FireWall {
         this.ticksBetweenStages = ticksBetweenStages;
         this.damage = damage;
         this.openSpotCount = openSpotCount;
+        this.startX = startX;
+        this.startY = startY;
 
         positions = new Position[stages][width];
         int x = startX;
@@ -68,18 +72,32 @@ public class FireWall {
             int stage = 0;
             @Override
             protected void execute() {
-                if(stage == stages-1) stop();
-                for (NPC next : player.getLocalNpcs()) {
-                    if(next != null && next.getConstitution() > 0) {
-                        if (next.getPosition().isWithinDistance(player.getPosition(), width)) {
-                           next.performGraphic(graphic);
-                           next.getCombatBuilder().setLastAttacker(player);
-                           next.dealDamage(new Hit(MagicMax.newMagic(player, next) / 12));
-                           next.setAggressive(true);
-                           next.getCombatBuilder().attack(player);
+                    if(stage == stages-1) stop();
+                    if(player.getLocalNpcs().isEmpty()) stop();
+
+                    if(player.getPosition().getX() >= startX + 11) stop();
+                    if(player.getPosition().getY() >= startY + 11) stop();
+
+
+                    for (NPC next : player.getLocalNpcs()) {
+                        if (next == null || next.getConstitution() <= 0 || next.isDying()
+                        || !next.getDefinition().isAttackable() || next.isSummoningNpc()){
+                            continue;
                         }
+
+                        NpcDefinition definition = next.getDefinition();
+
+                        if (next.getPosition().isWithinDistance(player.getPosition(), width)) {
+                            next.performGraphic(graphic);
+                            long maxHit = MagicMax.newMagic(player, next) / 25;
+                            next.dealDamage(new Hit(maxHit));
+                            next.setAggressive(true);
+                            next.getCombatBuilder().setLastAttacker(player);
+                            next.getCombatBuilder().addDamage(player, maxHit);
+                            next.getCombatBuilder().attack(player);
+                        }
+
                     }
-                }
                 stage++;
             }
         });

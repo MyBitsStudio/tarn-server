@@ -58,11 +58,11 @@ public class WalkToFightTask {
 		if (player == null)
 			return;
 		if (!player.isRegistered()) {
-			player.setWalkToTask(null);
+			player.setFightTask(null);
 			return;
 		}
 		if (player.isTeleporting() || player.getConstitution() <= 0 || destination == null) {
-			player.setWalkToTask(null);
+			player.setFightTask(null);
 			return;
 		}
 
@@ -70,7 +70,7 @@ public class WalkToFightTask {
 				destination.getY(), distance) || destination.equals(player.getPosition())) {
 			finalizedTask.execute();
 			player.setEntityInteraction(null);
-			player.setWalkToTask(null);
+			player.setFightTask(null);
 		}
 	}
 }

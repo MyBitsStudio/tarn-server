@@ -36,9 +36,10 @@ public class WorldIPChecker {
         if(added) {
             List<WorldIPLog> worldIPLog = worldIPLogs.stream().filter(worldIPLog1 -> worldIPLog1.getIp().equals(player.getHostAddress()) && worldIPLog1.getContent().equals(content)).toList();
             if(!worldIPLog.isEmpty()) {
-                boolean run = true;
+                boolean run = true, bypass = false;
                 for(WorldIPLog log : worldIPLogs) {
                     if(log.getUsername().equals(player.getUsername())) {
+                        bypass = true;
                         continue;
                     }
                     if(log.getIp().equals(player.getHostAddress()) && log.getContent().equals(content)) {
@@ -54,8 +55,10 @@ public class WorldIPChecker {
                     }
                 }
                 if(run) {
-                    worldIPLogs.add(new WorldIPLog(player.getUsername(), content, player.getHostAddress(), WorldCalendar.getInstance().getTime(), GameModeConstants.isIronman(player) ? "ironman" : player.getMode().toString()));
-                    save();
+                    if(!bypass) {
+                        worldIPLogs.add(new WorldIPLog(player.getUsername(), content, player.getHostAddress(), WorldCalendar.getInstance().getTime(), GameModeConstants.isIronman(player) ? "ironman" : player.getMode().toString()));
+                        save();
+                    }
                     return true;
                 } else {
                     return false;

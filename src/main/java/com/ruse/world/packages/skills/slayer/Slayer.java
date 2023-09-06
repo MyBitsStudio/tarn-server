@@ -187,9 +187,11 @@ public class Slayer {
         if(player.getEquipment().contains(15586))
             amount *= 2;
 
-        if(World.attributes.getSetting("slayer-bonus")){
-            SlayerBonusEvent event = (SlayerBonusEvent) World.handler.getEvent("SlayerBonus");
-            amount *= (1 + (event.getBonus() / 100));
+        if(World.handler.eventActive("SlayerBonus")) {
+            if (World.attributes.getSetting("slayer-bonus")) {
+                SlayerBonusEvent event = (SlayerBonusEvent) World.handler.getEvent("SlayerBonus");
+                amount *= (1 + (event.getBonus() / 100));
+            }
         }
 
         player.getInventory().add(SLAYER_TICKETS, amount);

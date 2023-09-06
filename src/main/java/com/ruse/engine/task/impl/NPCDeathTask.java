@@ -107,19 +107,7 @@ public class NPCDeathTask extends Task {
                     if (killer != null) {
                         DryStreak dryStreak = killer.getDryStreak();
                         killer.getDryStreak().dryStreakMap.put(npc.getId(), dryStreak.getDryStreak(npc.getId()) + 1);
-                        //System.out.println("Streak: " + dryStreak.getDryStreak(npc.getId()));
                         dryStreak.sendAlert(npc.getId());
-
-                        boolean boss = (npc.getDefaultConstitution() > 2000);
-//
-//                        if (npc.getId() == 9019) {
-//                            int total = KillsTracker.getTotalKillsForNpc(npc.getId(), killer);
-//                            if (total == 10000) {
-//                                killer.sendMessage("@blu@You have reached 10,000 kills and received a St. Patrick's Box.");
-//                                killer.getInventory().add(13802, 1);
-//                                //return;
-//                            }
-//                        }
 
                         SeasonPassManager.addNpcKillExp(killer.getSeasonPass(), npc.getDefinition().getName());
 
@@ -135,27 +123,6 @@ public class NPCDeathTask extends Task {
                         Achievements.doProgress(killer, Achievements.Achievement.KILL_10000_NPCS);
                         Achievements.doProgress(killer, Achievements.Achievement.KILL_25000_NPCS);
 
-
-                        if (npc.getId() == 6260) {
-                            killer.getAchievementAttributes().setGodKilled(0, true);
-                        } else if (npc.getId() == 6222) {
-                            killer.getAchievementAttributes().setGodKilled(1, true);
-                        } else if (npc.getId() == 6247) {
-                            killer.getAchievementAttributes().setGodKilled(2, true);
-                        } else if (npc.getId() == 6203) {
-                            killer.getAchievementAttributes().setGodKilled(3, true);
-                        } else if (npc.getId() == 8133) {
-                        } else if (npc.getId() == 13447) {
-                            killer.getAchievementAttributes().setGodKilled(4, true);
-                        }
-                        if (killer.getLocation() == Location.CUSTOM_RAIDS) {
-                            Dungeoneering.handleNpcDeath(killer, npc);
-                        }
-
-                        if (boss) {
-                            DailyTask.BOSSES.tryProgress(killer);
-                        }
-
                         for (Achievements.Achievement ach : Achievements.Achievement.values()) {
                             if (ach.getNpcId() != -1 && ach.getNpcId() == npc.getId())
                                 Achievements.doProgress(killer, ach);
@@ -168,25 +135,17 @@ public class NPCDeathTask extends Task {
                             killer.getInventory().add(2736, 1);
                         }
 
-                        //ProgressionZone.handleKill(killer, npc.getId());
-
                         /** LOCATION KILLS **/
                         if (npc.getLocation().handleKilledNPC(killer, npc)) {
                             stop();
                             return;
                         }
 
-                        killer.getPointsHandler().incrementNPCKILLCount(1);
+
                         if (!npc.isEventBoss()) {
                             DropManager.getManager().sendDrop(npc, killer);
                         }
 
-//                        if (NPCDrops.multiKillNpcs.contains(npc.getId())) {
-//                            NPCDrops.dropItemsMultiKill(npc);
-//                        } else {
-//                            killer.getPointsHandler().incrementNPCKILLCount(1);
-//
-//                        }
                         if (killer.getSummoning() != null && killer.getSummoning().getFamiliar() != null
                                 && killer.getSummoning().getFamiliar().getSummonNpc().getId() == 302) {
                             killer.getPointsHandler().incrementNPCKILLCount(1);
@@ -221,8 +180,6 @@ public class NPCDeathTask extends Task {
                             return;
                         } else {
                             new BossEventHandler().death(killer, npc, npc.getDefinition().getName());
-                            // new InstanceManager(killer).death(killer, npc, npc.getDefinition().getName());
-                            new DailyTaskHandler(killer).death(npc.getDefinition().getName());
 
                             /** SLAYER **/
                             killer.getSlayer().handleSlayerTask(killer, npc.getId());
@@ -235,50 +192,14 @@ public class NPCDeathTask extends Task {
 
                                     npc.setDying(false);
 
-                                    if (Nex.nexMob(npc.getId())) {
-                                        Nex.death(npc.getId());
-                                    }
-
                                     if (killer != null) {
 
                                         if (npc.isEventBoss()) {
                                             EventBossDropHandler.death(killer, npc);
                                         }
 
-                                        if (npc.getId() == 1158 || npc.getId() == 1160) {
-                                            KalphiteQueen.death(npc.getId(), npc.getPosition());
-                                        }
-
                                         summoning(killer, npc.getId());
 
-                                        if (npc.getId() == 186) {
-                                            int random = RandomUtility.inclusiveRandom(0, 100);
-                                            if (random < killer.getPointsHandler().getGlobalRate()) {// its using shillingrate though gthose go up to
-                                                // ininfinty
-                                                // well yeah i was just making an example, but im just saying, ur gona have to
-                                                // add so much stuff for each npc if u dont create a system for it
-                                                killer.getInventory().add(8212, 5);
-                                                killer.getInventory().add(8213, 1);
-                                                killer.getPointsHandler().incrementEventPoints(2);
-                                                killer.sendMessage("Because of your 'Event rate' multiplier you got extra dust");
-                                                killer.sendMessage("you also got a free Christmas token.");
-                                            } else {
-                                                killer.getInventory().add(8212, 2);
-                                                killer.getPointsHandler().incrementEventPoints(2);
-                                            }
-                                        }
-
-                                        if (npc.getId() == 5188) {// penguins
-                                            killer.getInventory().add(12657, 50 + killer.getPointsHandler().getSHILLINGRate());
-
-                                        }
-
-                                    }
-
-                                    if (npc.getDefinition().getRespawn() > 0 && npc.getLocation() != Location.GRAVEYARD && npc.getLocation() != Location.KEEPERS_OF_LIGHT_GAME
-                                            && npc.getLocation() != Location.DUNGEONEERING && npc.getLocation() != Location.CUSTOM_RAIDS && !npc.isEventBoss()) {
-                                        if (npc.respawn)
-                                            TaskManager.submit(new NPCRespawnTask(npc, npc.getDefinition().getRespawn(), killer));
                                     }
 
                                     if (killer == null) {
@@ -287,6 +208,11 @@ public class NPCDeathTask extends Task {
                                         World.deregister(npc);
                                     } else {
                                         killer.getInstance().remove(npc);
+                                    }
+
+                                    if (npc.getDefinition().getRespawn() > 0 && !npc.isEventBoss()) {
+                                        if (npc.respawn)
+                                            TaskManager.submit(new NPCRespawnTask(npc, npc.getDefinition().getRespawn(), killer));
                                     }
 
 

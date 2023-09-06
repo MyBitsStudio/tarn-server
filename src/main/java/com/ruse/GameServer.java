@@ -1,6 +1,7 @@
 package com.ruse;
 
 import com.ruse.util.ShutdownHook;
+import lombok.Getter;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -15,7 +16,9 @@ import java.util.logging.Logger;
  */
 public class GameServer {
 
+    @Getter
     private static final GameLoader loader = new GameLoader(GameSettings.GAME_PORT);
+    @Getter
     private static final Logger logger = Logger.getLogger("Ruse");
     private static boolean updating;
 
@@ -40,14 +43,6 @@ public class GameServer {
         }
 
         // PkingBots.init();
-    }
-
-    public static GameLoader getLoader() {
-        return loader;
-    }
-
-    public static Logger getLogger() {
-        return logger;
     }
 
     public static void setUpdating(boolean updating) {

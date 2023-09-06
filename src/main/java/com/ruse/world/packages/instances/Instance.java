@@ -92,7 +92,7 @@ public abstract class Instance {
                 break;
             if(npcList.contains(n))
                 continue;
-            if(!n.getInstanceId().equals(""))
+            if(!n.getInstanceId().isEmpty())
                 continue;
             addNPC(n);
             npcList.add(n);
@@ -110,7 +110,6 @@ public abstract class Instance {
                 break;
             removeNPC(n);
             npcList.remove(n);
-
         }
         postProcess();
     }
@@ -156,14 +155,14 @@ public abstract class Instance {
         player.setInstance(null);
         player.setInstanceId("");
 
-        if(playerList.size() == 0){
+        if(playerList.isEmpty()){
            destroy();
         }
 
         player.moveTo(GameSettings.DEFAULT_POSITION);
     }
 
-    protected void addNPC(NPC npc){
+    protected void addNPC(@NotNull NPC npc){
         npc.setInstance(this);
         npc.setInstanceId(instanceId);
         World.register(npc);
@@ -210,7 +209,6 @@ public abstract class Instance {
                 }
                 en.toNpc().onDeath();
             }
-
         } else if(en instanceof GameObject){
             objects.remove(en);
         }
