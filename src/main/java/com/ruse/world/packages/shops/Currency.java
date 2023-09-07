@@ -10,6 +10,7 @@ public enum Currency {
     DONATION("donation", -1),
     SLAYER("slayer", 5023),
     VOTE("vote", 4000),
+    ELITE_VOTE("elite_vote", 4001),
     SUMMER("summer", 14819),
     LOYALTY("loyalty", 5022),
     AFK("afk", 5020),

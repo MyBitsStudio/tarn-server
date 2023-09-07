@@ -386,6 +386,7 @@ public class ShopHandler {
             case 160010 -> { player.getVariables().setSetting("active-tab", 2); getShop(player.getVariables().getIntValue("active-shop")).ifPresent(s -> s.send(player, false));return true; }
             case 160012 -> { player.getVariables().setSetting("active-tab", 3); getShop(player.getVariables().getIntValue("active-shop")).ifPresent(s -> s.send(player, false));return true; }
             case 160014 -> { player.getVariables().setSetting("active-tab", 4); getShop(player.getVariables().getIntValue("active-shop")).ifPresent(s -> s.send(player, false));return true; }
+            case 160016 -> { player.getVariables().setSetting("active-tab", 5); getShop(player.getVariables().getIntValue("active-shop")).ifPresent(s -> s.send(player, false));return true; }
         }
         return false;
     }

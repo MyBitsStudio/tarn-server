@@ -204,8 +204,8 @@
   },
   {
     "id" : 20503,
-    "name" : "Upgrade Tokens",
-    "examine" : "Used to upgrade armor",
+    "name" : "Elite Tokens",
+    "examine" : "An Elite Token",
     "stackable" : true,
     "noted" : false,
     "2h" : false,
@@ -2141,6 +2141,46 @@
   },
   {
     "_comment" : "Pets"
+  },
+  {
+    "id" : 22050,
+    "name" : "Vote Pet",
+    "examine" : "Use to summon a Vote Pet",
+    "stackable" : false,
+    "noted" : false,
+    "2h" : false,
+    "type" : "WEAPON",
+    "weapon" : false
+  },
+  {
+    "id" : 23108,
+    "name" : "Fenrir Pet",
+    "examine" : "Use to summon a Fenrir Pet",
+    "stackable" : false,
+    "noted" : false,
+    "2h" : false,
+    "type" : "WEAPON",
+    "weapon" : false
+  },
+  {
+    "id" : 23109,
+    "name" : "Green Fenrir Pet",
+    "examine" : "Use to summon a Green Fenrir Pet",
+    "stackable" : false,
+    "noted" : false,
+    "2h" : false,
+    "type" : "WEAPON",
+    "weapon" : false
+  },
+  {
+    "id" : 23110,
+    "name" : "Red Fenrir Pet",
+    "examine" : "Use to summon a Red Fenrir Pet",
+    "stackable" : false,
+    "noted" : false,
+    "2h" : false,
+    "type" : "WEAPON",
+    "weapon" : false
   },
   {
     "id" : 19486,

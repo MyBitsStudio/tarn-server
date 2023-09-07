@@ -5,6 +5,7 @@ import com.ruse.model.container.impl.Equipment;
 import com.ruse.util.Misc;
 import com.ruse.world.clip.region.RegionClipping;
 import com.ruse.world.content.combat.effect.FireWall;
+import com.ruse.world.content.skill.impl.summoning.BossPets;
 import com.ruse.world.entity.impl.Character;
 import com.ruse.world.entity.impl.npc.NPC;
 import com.ruse.world.entity.impl.player.Player;
@@ -51,6 +52,17 @@ public class EffectHandler {
             }
         }
 
+        if(p.getSummoning().getFamiliar() != null){
+            handlePets(p, victim.toNpc());
+        }
+
+    }
+
+    private static void handlePets(@NotNull Player player, NPC victim){
+        if (player.getSummoning().getFamiliar().getSummonNpc().getId() == BossPets.BossPet.HEIMDALL_PET.getNpcId()) {
+            handleAoE(player, victim,
+                    6);
+        }
     }
 
     private static void handleAoE(Character attacker, Character victim,

@@ -36,10 +36,15 @@ public class BossPets {
 		MELEE_PET(9032, 23042,500, "25% Melee damage boost"),
 		RANGED_PET(9033, 23043, 500,"25% Ranged damage boost"),
 		BUNNY_PET(9830, 23108, 300,"20% Defence Boost"),
+		VOTE_PET(6324, 22050, 300,"Double Vote Rewards"),
+		FENRIR_PET(9830, 23108, 300,"250 DR & DDR & 10% Damage"),
 
 		//ELITE
+		GREEN_FENRIR_PET(9831, 23109, 300,"500 DR & DDR & 15% Damage"),
+		RED_FENRIR_PET(9832, 23110,300, "1000 DR & DDR & 20% Damage"),
 		HOOKER(4444, 20511, "Extra Coins and Collector"),
-		SHADOW(302, 11314, "Elite Pet"),
+		SHADOW(302, 11314, "100 % DR Rate & 50% Damage"),
+		HEIMDALL_PET(9834, 23112, 400,"6x6 AoE Effect"),
 
 		//BOSS
 
@@ -85,11 +90,6 @@ public class BossPets {
 		GOLEM_PET(9821, 23163, 400,"15% Overall damage boost\\n15% Drop rate boost\\n15% Double Drop rate boost"),
 		DRAGON_PET(9820, 23162, 1500,"25% Overall damage boost\\n25% Drop rate boost\\n25% Double Drop rate boost"),
 
-
-
-		GREEN_FENRIR_PET(9831, 23109, 300,"10% Overall damage boost,\\n 10% Drop rate boost,\\n 10% Double Drop rate boost,\\n while doing minigames"),
-		RED_FENRIR_PET(9832, 23110,300, "2X Slayer Tickets on Task \\n20% Overall dmg boost on task"),
-		HEIMDALL_PET(9834, 23112, 400,"Collects all items on the\\nground to the bank."),
 		ODIN_PET(9833, 23111, 400,
 				"20% Overall damage boost\\n25% DR, DDR, Upgrade Boost\\n Collects items on ground to bank\\n 2X EXP Boost"),
 
