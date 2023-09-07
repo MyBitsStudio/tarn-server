@@ -6,6 +6,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.ruse.model.Item;
 import com.ruse.security.save.impl.server.JunkPriceLoad;
+import com.ruse.util.Misc;
 import com.ruse.world.World;
 import com.ruse.world.entity.impl.player.Player;
 
@@ -258,7 +259,7 @@ public class ShopHandler {
                             }
                         }
 
-                        player.sendMessage("This item costs " + item.getPrice() + " " + l.getCurrency().getName() + ".");
+                        player.sendMessage("This item costs x" + item.getPrice() + " " + Misc.ucFirst(l.getCurrency().getName().replace("_", " ")));
                         return true;
                     } else {
                         System.out.println("Shop not present");

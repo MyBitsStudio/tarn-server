@@ -30,6 +30,12 @@ public class BossPets {
 		//MASTER(9020, 9021, 23018),
 
 		//COSMETIC
+		GORILLA_PET(3001, 460, 500,""),
+		WOLF_PET(4414, 459, 500,""),
+		BEAR_PET(105, 458, 500,""),
+		UNICORN_PET(133, 457, 500,""),
+		SCORPION_PET(271, 456, 500,""),
+		PENGUIN_PET(6305, 22017, 500,""),
 
 		//EFFECT
 		MAGE_PET(9031, 23041, 500,"25% Magic damage boost"),
@@ -38,6 +44,7 @@ public class BossPets {
 		BUNNY_PET(9830, 23108, 300,"20% Defence Boost"),
 		VOTE_PET(6324, 22050, 300,"Double Vote Rewards"),
 		FENRIR_PET(9830, 23108, 300,"250 DR & DDR & 10% Damage"),
+		RAICHU_PET(1801, 11318, 500,"Double Damage Towards Globals"),
 
 		//ELITE
 		GREEN_FENRIR_PET(9831, 23109, 300,"500 DR & DDR & 15% Damage"),
@@ -45,6 +52,8 @@ public class BossPets {
 		HOOKER(4444, 20511, "Extra Coins and Collector"),
 		SHADOW(302, 11314, "100 % DR Rate & 50% Damage"),
 		HEIMDALL_PET(9834, 23112, 400,"6x6 AoE Effect"),
+		ODIN_PET(9833, 23111, 400, "Firewall Perk"),
+		WARLORD_PET(6304, 22016, 400,""),
 
 		//BOSS
 
@@ -89,9 +98,6 @@ public class BossPets {
 		DEMON_PET(9819, 23161, 300,"10% Overall damage boost\\n10% Drop rate boost\\n10% Double Drop rate boost"),
 		GOLEM_PET(9821, 23163, 400,"15% Overall damage boost\\n15% Drop rate boost\\n15% Double Drop rate boost"),
 		DRAGON_PET(9820, 23162, 1500,"25% Overall damage boost\\n25% Drop rate boost\\n25% Double Drop rate boost"),
-
-		ODIN_PET(9833, 23111, 400,
-				"20% Overall damage boost\\n25% DR, DDR, Upgrade Boost\\n Collects items on ground to bank\\n 2X EXP Boost"),
 
 		//NEW BOSS PETS START
 

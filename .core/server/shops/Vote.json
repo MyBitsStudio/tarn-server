@@ -83,7 +83,7 @@
       {
         "shopId": 2,
         "currency": "elite_vote",
-        "shopName": "Equipment",
+        "shopName": "Elite Vote",
         "restrict": 0,
         "items": [
           {
@@ -125,6 +125,11 @@
             "id": 20501,
             "amount": 50,
             "price": 100
+          },
+          {
+            "id": 23108,
+            "amount": 50,
+            "price": 250
           }
         ]
       }
