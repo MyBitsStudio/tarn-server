@@ -37,6 +37,9 @@ public class PackOpener {
             case 23276 -> {
                 new UltimateCertPack().openPack(player); return true;
             }
+            case 19001 -> {
+                new PetEnhancementPack().openPack(player); return true;
+            }
 
         }
 

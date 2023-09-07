@@ -75,7 +75,11 @@ public class PossibleLootInterface {
         DONATOR_BOX_III(23258, DonatorBoxIII.loot),
         ULTIMATE_DONATOR(23259, UltimateDonatorBox.loot),
 
-        LIMITED_MASTERS(23260, LimitedMaster1.loot)
+        LIMITED_MASTERS(23260, LimitedMaster1.loot),
+        VOTE_BOX(18768, VoteBox.loot),
+        SLAYER_CASKET(2734, SlayerCasket.loot),
+
+        PvM_CASKET(2736, PvMCasket.loot),
 
 
         //SLAYER_CASKET(2734, SlayerCasket.loot),

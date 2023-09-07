@@ -2,9 +2,9 @@ package com.ruse.world.packages.skills.slayer;
 
 import lombok.Getter;
 
+@Getter
 public class SlayerTask {
 
-    @Getter
     private int id, amount, slayed;
 
     public SlayerTask(int id, int amount){

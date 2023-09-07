@@ -42,7 +42,7 @@ public class TarnTower {
 
         TowerProgress progress = player.getTower();
 
-        if(progress.getLevel() >= 10){
+        if(progress.getTier() >= 1){
             player.sendMessage("More coming soon!");
             return;
         }

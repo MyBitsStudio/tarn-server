@@ -54,7 +54,7 @@ public enum Tower {
             new Position(3024, 2840), new Position(3056, 2825),
             new Position(3062, 2832), new Position(3051, 2831),
             new Position(3062, 2863), new Position(3059, 2871)),
-    T_0_L_10(0, 9, new int[]{9920, 9815, 9845, 9845, 9945, 9845}, new int[]{},
+    T_0_L_10(0, 9, new int[]{9920, 9815, 9845, 9845, 9845, 9845}, new int[]{},
             new Item(23300, 3), new Position(3017, 2867),
             new Position(3024, 2840), new Position(3056, 2825),
             new Position(3062, 2832), new Position(3051, 2831),

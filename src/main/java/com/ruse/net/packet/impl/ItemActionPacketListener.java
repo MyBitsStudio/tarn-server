@@ -18,10 +18,6 @@ import com.ruse.world.packages.dialogue.DialogueManager;
 import com.ruse.world.packages.dialogue.impl.RedeemBond;
 import com.ruse.world.packages.items.monic.Monics;
 import com.ruse.world.packages.packs.basic.PackOpener;
-import com.ruse.world.packages.packs.casket.Box;
-import com.ruse.world.packages.packs.casket.BoxLoot;
-import com.ruse.world.packages.packs.casket.impl.EliteSlayerCasket;
-import com.ruse.world.packages.packs.casket.impl.SlayerCasket;
 import com.ruse.world.content.cluescrolls.OLD_ClueScrolls;
 import com.ruse.world.packages.dissolve.DissolveItem;
 import com.ruse.world.content.holidayevents.easter2017;
@@ -55,28 +51,6 @@ public class ItemActionPacketListener implements PacketListener {
     private static final String[] ROCK_CAKE = {"Oww!", "Ouch!", "Owwwy!", "I nearly broke a tooth!", "My teeth!",
             "Who would eat this?", "*grunt*", ":'("};
     public static int count = 0;
-
-    public static boolean drinkSuperOverload(final Player player, int slot, int replacePotion) {
-        if (player.getLocation() == Location.WILDERNESS || player.getLocation() == Location.DUEL_ARENA) {
-            player.getPacketSender().sendMessage("You cannot use this potion here.");
-            return false;
-        }
-        if (player.getOverloadPotionTimer() > 0 && player.getOverloadPotionTimer() < 750) {
-            player.getPacketSender().sendMessage("You already have the effect of an Overload or Super/Infinity Overload potion.");
-            return false;
-        }
-        if (player.getSkillManager().getCurrentLevel(Skill.CONSTITUTION) < 500) {
-            player.getPacketSender().sendMessage("You need to have at least 500 Hitpoints to drink this potion.");
-            return false;
-        }
-        player.performAnimation(new Animation(829));
-        player.getInventory().getItems()[slot] = new Item(replacePotion, 1);
-        player.getInventory().refreshItems();
-        player.setOverloadPotionTimer(600);
-        player.setPotionUsed("Super Ovl");
-        TaskManager.submit(new SuperOverloadPotionTask(player));
-        return true;
-    }
 
     public static boolean drinkInfinityRage(final Player player, int slot, int replacePotion) {
         if (player.getLocation() == Location.WILDERNESS || player.getLocation() == Location.DUEL_ARENA) {
@@ -115,10 +89,10 @@ public class ItemActionPacketListener implements PacketListener {
         Item item = player.getInventory().getItems()[slot];
         player.setInteractingItem(item);
 
-        if(ItemDefinition.forId(itemId).getName().equalsIgnoreCase("none")){
-            System.out.println("Item name is none");
-            return;
-        }
+//        if(ItemDefinition.forId(itemId).getName().equalsIgnoreCase("none")){
+//            System.out.println("Item name is none");
+//            return;
+//        }
 
         if(Locks.handleLocks(player, itemId))
             return;
@@ -1126,18 +1100,6 @@ public class ItemActionPacketListener implements PacketListener {
             case 299:
                 Gambling.plantSeed(player);
                 break;
-            case 15103:
-                player.getPacketSender().sendMessage("This came from a Goblin. Kill Nex, or Zulrah for another.");
-                break;
-            case 15104:
-                player.getPacketSender().sendMessage("This came from Nex or Zulrah. Kill Monkey Skeletons for another.");
-                break;
-            case 15105:
-                player.getPacketSender().sendMessage("This came from a Monkey Skeleton. Kill the KBD for another.");
-                break;
-            case 15106:
-                player.getPacketSender().sendMessage("This came from the KBD, kill Goblins for another.");
-                break;
             /*
              * player.getPacketSender().
              * sendMessage("What lies in the <shad=f999f7>Antiqua Carcere<shad=-1>?");
@@ -1152,9 +1114,6 @@ public class ItemActionPacketListener implements PacketListener {
              * sendMessage("<shad=000000>53 61 67 69 74 74 61 72 69 69 73");
              * player.getPacketSender().sendMessage("holds the next piece."); break;
              */
-            case 4155:
-                player.getSlayer().handleGem(player, itemId, 1);
-                break;
             case 18719: // potion of flight
                 if (player.canFly()) {
                     player.getPacketSender().sendMessage("You already know how to fly.");
@@ -1241,57 +1200,7 @@ public class ItemActionPacketListener implements PacketListener {
             case 292:
                 ingredientsBook.readBook(player, 0, false);
                 break;
-            case 8868:
-                player.getInventory().delete(8868, 1);
-                player.getInventory().add(19116, 2);
-                player.getInventory().add(7956, 5);
-                player.getInventory().add(989, 10);
-                player.sendMessage(
-                        "<shad=1>@blu@You swapped your @red@key@blu@ for @red@X5@blu@ PVM Box, @red@X10@blu@ Ckeys, @red@X2@blu@ Super Mbox");
-                break;
-            case 14471:
-                player.getInventory().delete(14471, 1);
-                player.getInventory().add(19116, 2);
-                player.getInventory().add(7956, 5);
-                player.getInventory().add(989, 10);
-                player.sendMessage(
-                        "<shad=1>@blu@You swapped your @red@key@blu@ for @red@X5@blu@ PVM Box, @red@X10@blu@ Ckeys, @red@X2@blu@ Super Mbox");
-                break;
-            case 9662:
-                player.getInventory().delete(9662, 1);
-                player.getInventory().add(19116, 2);
-                player.getInventory().add(7956, 5);
-                player.getInventory().add(989, 10);
-                player.sendMessage(
-                        "<shad=1>@blu@You swapped your @red@key@blu@ for @red@X5@blu@ PVM Box, @red@X10@blu@ Ckeys, @red@X2@blu@ Super Mbox");
-                break;
-            case 3468:
-                player.getInventory().delete(3468, 1);
-                player.getInventory().add(19116, 2);
-                player.getInventory().add(7956, 5);
-                player.getInventory().add(989, 10);
-                player.sendMessage(
-                        "<shad=1>@blu@You swapped your @red@key@blu@ for @red@X5@blu@ PVM Box, @red@X10@blu@ Ckeys, @red@X2@blu@ Super Mbox");
-                break;
-            case 2734:
-                int amountNeeded = 4;
-                if (player.getInventory().contains(995))
-                    amountNeeded -= 1;
-                if (player.getInventory().contains(5023))
-                    amountNeeded -= 1;
-                if (player.getInventory().contains(11137))
-                    amountNeeded -= 1;
-                if (player.getInventory().getFreeSlots() < amountNeeded) {
-                    player.sendMessage("You need atleast "+amountNeeded+" inventory slots to do this.");
-                    return;
-                }
-                player.getInventory().delete(2734, 1);
-                Box loot = BoxLoot.getLoot(SlayerCasket.loot);
-                player.getInventory().add(995, 1000 + Misc.getRandom(19000));
-                player.getInventory().add(5023, 10 + Misc.getRandom(40));
-                player.getInventory().add(11137, 1 + Misc.getRandom(2));
-                player.getInventory().add(loot.getId(), loot.getMin() + Misc.getRandom(loot.getMax() - loot.getMin()));
-                break;
+
             case 22144:
                 int amountNeeded5 = 12;
                 if (player.getInventory().contains(2023))
@@ -1301,21 +1210,6 @@ public class ItemActionPacketListener implements PacketListener {
                     return;
                 }
                 player.getInventory().delete(22144, 1);
-                break;
-            case 2736:
-                int amountNeeded2 = 4;
-                if (player.getInventory().contains(995))
-                    amountNeeded2 -= 1;
-                if (player.getInventory().contains(11137))
-                    amountNeeded2 -= 1;
-                if (player.getInventory().getFreeSlots() < amountNeeded2) {
-                    player.sendMessage("You need atleast "+amountNeeded2+" inventory slots to do this.");
-                    return;
-                }
-                player.getInventory().delete(2736, 1);
-                Box loot2 = BoxLoot.getLoot(EliteSlayerCasket.loot);
-                player.getInventory().add(995, 1000000 + Misc.getRandom(10000));
-                player.getInventory().add(loot2.getId(), loot2.getMin() + Misc.getRandom(loot2.getMax() - loot2.getMin()));
                 break;
             case 6199:
                 player.getNewSpinner().openBox(6199);
@@ -1853,46 +1747,7 @@ public class ItemActionPacketListener implements PacketListener {
 
 //
             //
-            case 13263 -> {
-                if (player.getInventory().contains(13263) && player.getInventory().getAmount(5023) >= 1000) {
-                    player.getInventory().delete(13263, 1).delete(5023, 1000).add(21075, 1);
-                    player.getPacketSender().sendMessage("You have upgraded your slayer helmet");
-                } else {
-                    player.getPacketSender().sendMessage("You need at least 1K Slayer tickets to upgrade your helmet.");
-                }
-            }
-            case 21075 -> {
-                if (player.getInventory().contains(21075) && player.getInventory().getAmount(5023) >= 3000) {
-                    player.getInventory().delete(21075, 1).delete(5023, 3000).add(21076, 1);
-                    player.getPacketSender().sendMessage("You have upgraded your slayer helmet");
-                } else {
-                    player.getPacketSender().sendMessage("You need at least 3K Slayer tickets to upgrade your helmet.");
-                }
-            }
-            case 21076 -> {
-                if (player.getInventory().contains(21076) && player.getInventory().getAmount(5023) >= 6000) {
-                    player.getInventory().delete(21076, 1).delete(5023, 6000).add(21077, 1);
-                    player.getPacketSender().sendMessage("You have upgraded your slayer helmet");
-                } else {
-                    player.getPacketSender().sendMessage("You need at least 6K Slayer tickets to upgrade your helmet.");
-                }
-            }
-            case 21077 -> {
-                if (player.getInventory().contains(21077) && player.getInventory().getAmount(5023) >= 10000) {
-                    player.getInventory().delete(21077, 1).delete(5023, 10000).add(21078, 1);
-                    player.getPacketSender().sendMessage("You have upgraded your slayer helmet");
-                } else {
-                    player.getPacketSender().sendMessage("You need at least 10K Slayer tickets to upgrade your helmet.");
-                }
-            }
-            case 21078 -> {
-                if (player.getInventory().contains(21077) && player.getInventory().getAmount(5023) >= 20000) {
-                    player.getInventory().delete(21077, 1).delete(5023, 20000).add(21079, 1);
-                    player.getPacketSender().sendMessage("You have upgraded your slayer helmet");
-                } else {
-                    player.getPacketSender().sendMessage("You need at least 20K Slayer tickets to upgrade your helmet.");
-                }
-            }
+            case 13263, 21075, 21076, 21077, 21078 -> player.getSlayer().upgradeHelmet(player, itemId);
             case 11113 -> player.getPacketSender().sendMessage("All skill teleports are available in the skills tab.");
             case 1704 -> player.getPacketSender().sendMessage("Your amulet has run out of charges.");
             case 11126 -> player.getPacketSender().sendMessage("Your bracelet has run out of charges.");

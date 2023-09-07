@@ -2701,7 +2701,6 @@ public class ObjectActionPacketListener implements PacketListener {
     }
 
     private static void handleDoor(Player player, @NotNull GameObject object){
-        System.out.println("Door "+object.getFace());
         switch(object.getId()){
             case 2912, 2913 -> {
                 if(object.getPosition().equals(new Position(3033, 2876, player.getIndex() * 4))){

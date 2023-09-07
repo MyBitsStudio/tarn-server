@@ -1,5 +1,6 @@
 package com.ruse.world.content.equipmentenhancement;
 
+import com.ruse.util.Misc;
 import com.ruse.world.entity.impl.player.Player;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -13,9 +14,9 @@ import org.jetbrains.annotations.NotNull;
 public class EquipmentEnhancement {
 
     private static final int INTERFACE_ID = 49400;
-    private static final int BASE_CASH_REQUIREMENT = 100000;
+    private static final int BASE_CASH_REQUIREMENT = 1000;
     private static final int BASE_OTHER_REQUIREMENT = 100;
-    private static final double CASH_REQUIREMENT_MULTI = 300000.0;
+    private static final double CASH_REQUIREMENT_MULTI = 3000.0;
     private static final double OTHER_REQUIREMENT_MULTI = 233.0;
     private static final int DROP_RATE_BOOST_ADD = 2;
     private static final int CASH_BOOST_ADD = 5;
@@ -63,15 +64,11 @@ public class EquipmentEnhancement {
     private int getBoostBySlot(@NotNull BoostType boost, int slot) {
         var level = getSlotLevel(slot);
         int amount = 0;
-        switch(boost) {
-            case DR:
-                return level * DROP_RATE_BOOST_ADD;
-            case CASH:
-                return level * CASH_BOOST_ADD;
-            case STATS:
-                return level * STATS_BOOST_ADD;
-        }
-        return amount;
+        return switch (boost) {
+            case DR -> level * DROP_RATE_BOOST_ADD;
+            case CASH -> level * CASH_BOOST_ADD;
+            case STATS -> level * STATS_BOOST_ADD;
+        };
     }
 
     private int calculateCashRequirement(int slot) {
@@ -115,6 +112,37 @@ public class EquipmentEnhancement {
         return false;
     }
 
+    private void failure(Player player){
+        var slotId = selectedSlot.getId();
+        var currentLevel = getSlotLevel(slotId);
+        if(Misc.random(5) >= 3){
+            if(currentLevel == 0) {
+                player.getPacketSender().sendMessage("@red@You have failed upgrading");
+                return;
+            }
+            if(player.getInventory().contains(604)){
+                player.getInventory().delete(604, 1);
+                player.getPacketSender().sendMessage("@red@Your supreme shard has saved you from losing a level.");
+            } else {
+                var newLevel = --currentLevel;
+                setSlotLevel(slotId, newLevel);
+                var currentDr = getBoost(BoostType.DR);
+                var currentCash = getBoost(BoostType.CASH);
+                var currentStats = getBoost(BoostType.STATS);
+                var newDr = currentDr + DROP_RATE_BOOST_ADD;
+                var newCash = currentCash + CASH_BOOST_ADD;
+                var newStats = currentStats + STATS_BOOST_ADD;
+                setBoostValue(BoostType.DR, newDr);
+                setBoostValue(BoostType.CASH, newCash);
+                setBoostValue(BoostType.STATS, newStats);
+                calculateRequirements();
+                player.getPacketSender().sendMessage("@red@You have failed this upgrade and lost a level.");
+            }
+        } else {
+            player.getPacketSender().sendMessage("@red@You have failed upgrading, but saved from losing a level.");
+        }
+    }
+
     private void attemptUpgrade() {
         if(selectedSlot == null) return;
         var slotId = selectedSlot.getId();
@@ -130,7 +158,7 @@ public class EquipmentEnhancement {
         var success = isSuccessful();
         player.getInventory().delete(CASH_ID, cashRequirement).delete(OTHER_ID, otherRequirement).delete(gemId, 1);
         if(!success) {
-            player.getPacketSender().sendMessage("@red@You have failed this upgrade.");
+            failure(player);
             return;
         }
         var newLevel = ++currentLevel;

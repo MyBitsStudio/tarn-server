@@ -1,40 +1,26 @@
 package com.ruse.world.content.combat;
 
+import com.ruse.world.content.skill.impl.summoning.BossPets;
 import com.ruse.world.entity.impl.npc.NPC;
 import com.ruse.world.entity.impl.player.Player;
 import com.ruse.world.packages.combat.CombatConstants;
+import org.jetbrains.annotations.NotNull;
 
 public class NpcMaxHitLimit {
 
-    public static double limit(NPC npc, double damage, Player player) {
-        int maxLimit;
+    public static long limit(@NotNull NPC npc, long damage, Player player) {
+        long maxLimit;
         switch (npc.getId()) {
-            // case 187:  // goku
-            //case 8009: // hulk
-            case 1:
-                maxLimit = 80000;
-                break;
-            case 9908:
-            case 9904:
-            case 9907:
-            case 9906:
-            case 8013:
-                maxLimit = 10000;
-                break;
-            case 3308:
-                maxLimit = 50000;
-                break;
-            case 587:
-                maxLimit = 5000000;
-                break;
-            case 586:
-                maxLimit = 200000;
-                break;
-            case 4540:
-                maxLimit = 450000;
-                break;
-            default:
+            case 587, 8013 -> maxLimit = 250000;
+            case 9904, 8010, 3308, 9005 -> maxLimit = 200000;
+            default -> {
                 return damage;
+            }
+        }
+        if(player.getSummoning().getFamiliar() != null){
+            if(player.getSummoning().getFamiliar().getSummonNpc().getId() == BossPets.BossPet.RAICHU_PET.getNpcId()){
+                maxLimit = (long) (maxLimit * 1.15);
+            }
         }
         return Math.min(maxLimit, damage);
     }

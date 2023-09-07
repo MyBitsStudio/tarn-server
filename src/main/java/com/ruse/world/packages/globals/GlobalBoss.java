@@ -32,7 +32,6 @@ public abstract class GlobalBoss extends NPC {
             player.getPacketSender().sendMessage(dropMessage());
             Achievements.doProgress(player, Achievements.Achievement.KILL_45_GLOBAL_BOSSES);
             player.getBossPlugin().setDamage(this.getDefinition().getName(), 0L);
-            //NPCDrops.handleDrops(player, this);
         }
     }
 

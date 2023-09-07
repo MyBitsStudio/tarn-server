@@ -77,6 +77,16 @@ public class CombatStrategies {
 		STRATEGIES.put(591, script);
 		STRATEGIES.put(593, script);
 		STRATEGIES.put(1880, script);
+
+
+		// Globals
+		STRATEGIES.put(9904, new SolakTheGreat());
+		STRATEGIES.put(3308, new SolakTheGreat());
+		STRATEGIES.put(9905, new SolakTheGreat());
+		STRATEGIES.put(8010, new SolakTheGreat());
+		STRATEGIES.put(587, new SolakTheGreat());
+		STRATEGIES.put(8013, new SolakTheGreat());
+
 		DefaultMagicCombatStrategy defaultMagicStrategy = new DefaultMagicCombatStrategy();
 //		STRATEGIES.put(13, defaultMagicStrategy);
 //		STRATEGIES.put(172, defaultMagicStrategy);

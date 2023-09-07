@@ -318,6 +318,12 @@ public class CasketOpening {
 
         LIMITED_MASTERS(23260, LimitedMaster1.loot),
 
+        VOTE_BOX(18768, VoteBox.loot),
+
+        SLAYER_CASKET(2734, SlayerCasket.loot),
+
+        PvM_CASKET(2736, PvMCasket.loot),
+
         ;
         private final int itemID;
         private final Box[] loot;

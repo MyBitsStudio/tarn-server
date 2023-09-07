@@ -6,7 +6,7 @@ import com.ruse.world.packages.globals.GlobalBoss;
 public class GroundonGlobal extends GlobalBoss {
 
     public GroundonGlobal() {
-        super(9904, new Position(2143, 5016,8));
+        super(8010, new Position(2143, 5016,8));
     }
 
     @Override

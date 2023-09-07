@@ -122,9 +122,6 @@ public class DesolaceFormulas {
                 p.performGraphic(new Graphic(2319));
             }
         }
-        if (victim != null && victim.isNpc()) {
-            maxHit = NpcMaxHitLimit.limit((NPC) victim, maxHit, entity.asPlayer());
-        }
         
         return (int) Math.floor(maxHit);
     }

@@ -186,7 +186,7 @@ public class MagicMax {
                 maxHit *= 2;
             }
 
-            maxHit *= multiplyDamage(player);
+            maxHit *= (long) multiplyDamage(player);
 
             if (player.getTimers().get("double-damage") != null)
                 if (player.getTimers().get("double-damage").returnLeft() > 0) {
@@ -198,11 +198,11 @@ public class MagicMax {
 
             maxHit *= 10;
 
-            maxHit *= player.getEquipment().getBonus() == null ? 1 : player.getEquipment().getBonus().mageDamage();
+            maxHit *= player.getEquipment().getBonus() == null ? 1 : (long) player.getEquipment().getBonus().mageDamage();
         }
 
         if (victim != null && victim.isNpc() && (entity.isPlayer() && !entity.asPlayer().getRank().isDeveloper())) {
-            maxHit = (long) NpcMaxHitLimit.limit((NPC) victim, maxHit, entity.asPlayer());
+            maxHit = NpcMaxHitLimit.limit((NPC) victim, maxHit, entity.asPlayer());
         }
 
         return maxHit;

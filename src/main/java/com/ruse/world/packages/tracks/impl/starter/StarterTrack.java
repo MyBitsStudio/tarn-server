@@ -11,9 +11,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
+@Getter
 public class StarterTrack extends Track {
 
-    @Getter
     private final Map<StarterTasks, Boolean> tasks = new HashMap<>();
 
     public StarterTrack(Player player) {
@@ -83,6 +83,7 @@ public class StarterTrack extends Track {
                         addXP(task.getXp());
                     }
                 }
+                getPlayer().save();
             }
         }
     }
@@ -100,6 +101,7 @@ public class StarterTrack extends Track {
                         addXP(task.getXp());
                     }
                 }
+                getPlayer().save();
             }
         }
     }
@@ -117,6 +119,7 @@ public class StarterTrack extends Track {
                         addXP(task.getXp());
                     }
                 }
+                getPlayer().save();
             }
         }
     }
@@ -134,6 +137,7 @@ public class StarterTrack extends Track {
                         addXP(task.getXp());
                     }
                 }
+                getPlayer().save();
             }
         }
     }

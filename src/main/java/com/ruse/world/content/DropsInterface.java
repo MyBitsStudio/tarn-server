@@ -7,6 +7,7 @@ import com.ruse.util.Misc;
 import com.ruse.world.entity.impl.player.Player;
 import com.ruse.world.packages.combat.drops.DropCalculator;
 import com.ruse.world.packages.combat.drops.DropManager;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,6 +46,9 @@ public class DropsInterface {
 		if (def == null) {
 			return;
 		}
+		if(def.isPet()){
+			return;
+		}
 		player.getPacketSender().sendString(HEADER, "Viewing drops for: " + def.getName()); // Search
 		// button
 		player.getPacketSender().sendString(STRING_AMOUNT, "");
@@ -80,7 +84,7 @@ public class DropsInterface {
 				// names
 				player.getPacketSender().sendString(ITEM_AMOUNT + i, (min == amount ? Misc.formatNumber(amount) : ( Misc.formatNumber(min) + "-" + Misc.formatNumber(amount))));
 				double divide = (DropCalculator.getDropChance(player, npcId) / DropManager.getManager().forId(npcId).customTable().weight());
-				System.out.println("divide: "+divide+" chance: "+chance+" chances: "+Math.floorDiv((int) chance, (int) divide));
+				//System.out.println("divide: "+divide+" chance: "+chance+" chances: "+Math.floorDiv((int) chance, (int) divide));
 				int chances = Math.floorDiv((int) chance, (int) divide);
 
 				player.getPacketSender().sendString(ITEM_CHANCE + i, "1/" +(chance <= 1 ? 1 : chances));
@@ -197,7 +201,7 @@ public class DropsInterface {
 		// List<Integer> list = getList(search);
 	}
 
-	public static List<Integer> getList(String search) {
+	public static @NotNull List<Integer> getList(String search) {
 		List<Integer> list = new ArrayList<>();
 		boolean dupe = false;
 		search = search.toLowerCase();
@@ -212,6 +216,9 @@ public class DropsInterface {
 				// "+NpcDefinition.forId(i).getName().toLowerCase());
 				continue;
 			}
+
+			if(def.isPet())
+				continue;
 
 			for (Integer integer : list) {
 				if (def.getName().equalsIgnoreCase(NpcDefinition.forId(integer).getName())) {

@@ -6,7 +6,7 @@ import com.ruse.world.packages.globals.GlobalBoss;
 public class VoteGlobal extends GlobalBoss {
 
     public VoteGlobal() {
-        super(8013, new Position(2529, 2633,8));
+        super(8013, new Position(2529, 2633,0));
     }
 
     @Override
@@ -18,4 +18,5 @@ public class VoteGlobal extends GlobalBoss {
     public String dropMessage() {
         return "@yel@Congratulations, you have received a reward for killing the Vote Boss!";
     }
+
 }

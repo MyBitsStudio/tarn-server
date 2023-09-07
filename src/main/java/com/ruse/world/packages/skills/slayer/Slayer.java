@@ -8,6 +8,9 @@ import com.ruse.world.content.KillsTracker;
 import com.ruse.world.content.PlayerPanel;
 import com.ruse.world.content.achievement.Achievements;
 import com.ruse.world.entity.impl.player.Player;
+import com.ruse.world.packages.combat.CombatConstants;
+import com.ruse.world.packages.dialogue.DialogueManager;
+import com.ruse.world.packages.dialogue.impl.slayer.ResetTask;
 import com.ruse.world.packages.event.impl.SlayerBonusEvent;
 import com.ruse.world.packages.shops.ShopHandler;
 import lombok.Getter;
@@ -80,7 +83,7 @@ public class Slayer {
                         assignTask(player, false);
                     } else {
                         player.getPacketSender().sendInterfaceRemoval();
-                        resetTask(player);
+                        DialogueManager.sendDialogue(player, new ResetTask(player), 9000);
                     }
                     return true;
                 }
@@ -97,8 +100,20 @@ public class Slayer {
         return false;
     }
 
-    private void resetTask(@NotNull Player player){
-        player.sendMessage("Coming Soon!");
+    public void resetTask(@NotNull Player player){
+        if(task == null){
+            player.getPacketSender().sendMessage("You do not have a task to reset.");
+            return;
+        }
+        if(player.getInventory().contains(RESET_TOKEN)){
+            player.getInventory().delete(RESET_TOKEN, 1);
+            player.getPacketSender().sendMessage("You have reset your task.");
+            lastTask = task;
+            task = null;
+            streak = 0;
+        } else {
+            player.getPacketSender().sendMessage("You need a reset token to reset your task.");
+        }
     }
 
     public void sendInterface(@NotNull Player player){
@@ -139,28 +154,6 @@ public class Slayer {
         }
     }
 
-    public void handleGem(Player player, int id, int option){
-        if(id != GEM){
-            return;
-        }
-        switch(option){
-            case 1 -> {
-                if(task == null){
-                    player.sendMessage("You do not have a task to check.");
-                } else {
-                    player.sendMessage("You have "+(task.getAmount() - task.getSlayed())+" "+NpcDefinition.forId(task.getId()).getName()+"s left to kill.");
-                }
-            }
-            case 2 -> {
-                if(task == null){
-                    player.sendMessage("You do not have a task to check.");
-                } else {
-                    player.sendMessage("Task teleport is disabled for now");
-                }
-            }
-        }
-    }
-
     public void handleSlayerTask(Player player, int id){
         if(this.task != null) {
             if (id == task.getId()) {
@@ -187,6 +180,8 @@ public class Slayer {
         if(player.getEquipment().contains(15586))
             amount *= 2;
 
+        amount = handleEquipmentBonuses(player, amount);
+
         if(World.handler.eventActive("SlayerBonus")) {
             if (World.attributes.getSetting("slayer-bonus")) {
                 SlayerBonusEvent event = (SlayerBonusEvent) World.handler.getEvent("SlayerBonus");
@@ -197,12 +192,89 @@ public class Slayer {
         player.getInventory().add(SLAYER_TICKETS, amount);
         player.getSkillManager().addExperience(Skill.SLAYER, monsters.getXp());
 
+        randomBox(player);
+
         Achievements.doProgress(player, Achievements.Achievement.COMPLETE_20_SLAYER_TASKS);
         Achievements.doProgress(player, Achievements.Achievement.COMPLETE_50_SLAYER_TASKS);
         Achievements.doProgress(player, Achievements.Achievement.COMPLETE_150_SLAYER_TASKS);
 
         PlayerPanel.refreshPanel(player);
 
+    }
+
+    private void randomBox(Player player){
+        if(Misc.random(100) <= 16){
+            player.getInventory().add(2734, 1);
+            player.getPacketSender().sendMessage("@yel@You have received a Slayer Casket.");
+        }
+        if(Misc.random(1000) >= 987){
+            player.getInventory().add(25102, 1);
+            player.getPacketSender().sendMessage("@yel@You got lucky and received a Locked Slayer Chest.");
+        }
+    }
+
+    private int handleEquipmentBonuses(Player player, int amount){
+        if(CombatConstants.wearingSlayerArmor(player)){
+            amount *= 2;
+        } else if(CombatConstants.wearingAnySlayer(player)){
+            amount *= (int) CombatConstants.multiply(player);
+        }
+        return amount;
+    }
+
+    public void upgradeHelmet(Player player, int item){
+        switch(item){
+            case 13263 -> {
+                if(player.getInventory().contains(4155, 5) &&
+                player.getInventory().contains(5023, 250)){
+                    player.getInventory().delete(4155, 5).delete(5023, 250).
+                            delete(13263, 1).add(21075, 1);
+                    player.getPacketSender().sendMessage("You have upgraded your Slayer Helmet to a Slayer Helmet [T1].");
+                } else {
+                    player.getPacketSender().sendMessage("You need 5 Slayer Gems and 250 Slayer Tickets to upgrade.");
+                }
+            }
+            case 21075 -> {
+                if(player.getInventory().contains(4155, 10) &&
+                        player.getInventory().contains(5023, 500)){
+                    player.getInventory().delete(4155, 10).delete(5023, 500).
+                            delete(21075, 1).add(21076, 1);
+                    player.getPacketSender().sendMessage("You have upgraded your Slayer Helmet to a Slayer Helmet [T2].");
+                } else {
+                    player.getPacketSender().sendMessage("You need 10 Slayer Gems and 500 Slayer Tickets to upgrade.");
+                }
+            }
+            case 21076 -> {
+                if(player.getInventory().contains(4155, 20) &&
+                        player.getInventory().contains(5023, 1000)){
+                    player.getInventory().delete(4155, 20).delete(5023, 1000).
+                            delete(21076, 1).add(21077, 1);
+                    player.getPacketSender().sendMessage("You have upgraded your Slayer Helmet to a Slayer Helmet [T3].");
+                } else {
+                    player.getPacketSender().sendMessage("You need 20 Slayer Gems and 1000 Slayer Tickets to upgrade.");
+                }
+            }
+            case 21077 -> {
+                if(player.getInventory().contains(4155, 40) &&
+                        player.getInventory().contains(5023, 2500)){
+                    player.getInventory().delete(4155, 40).delete(5023, 2500).
+                            delete(21077, 1).add(21078, 1);
+                    player.getPacketSender().sendMessage("You have upgraded your Slayer Helmet to a Slayer Helmet [T4].");
+                } else {
+                    player.getPacketSender().sendMessage("You need 40 Slayer Gems and 2500 Slayer Tickets to upgrade.");
+                }
+            }
+            case 21078 -> {
+                if(player.getInventory().contains(4155, 100) &&
+                        player.getInventory().contains(5023, 10000)){
+                    player.getInventory().delete(4155, 100).delete(5023, 10000).
+                            delete(21078, 1).add(21079, 1);
+                    player.getPacketSender().sendMessage("You have upgraded your Slayer Helmet to a Slayer Helmet [MAX].");
+                } else {
+                    player.getPacketSender().sendMessage("You need 100 Slayer Gems and 10000 Slayer Tickets to upgrade.");
+                }
+            }
+        }
     }
 
 }
