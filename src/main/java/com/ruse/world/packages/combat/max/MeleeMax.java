@@ -347,12 +347,11 @@ public class MeleeMax {
                 maxHit *= 2;
             }
 
-            maxHit *= (long) multiplyDamage(player);
+            if (player.getVariables().getBooleanValue("monic-damage")) {
+                maxHit *= 2;
+            }
 
-            if (player.getTimers().get("double-damage") != null)
-                if (player.getTimers().get("double-damage").returnLeft() > 0) {
-                    maxHit *= 2;
-                }
+            maxHit *= (long) multiplyDamage(player);
 
             if(player.getEquipment().contains(15588))
                 maxHit *= 1.5;

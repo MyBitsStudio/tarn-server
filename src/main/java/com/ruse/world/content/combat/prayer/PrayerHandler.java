@@ -217,36 +217,7 @@ public class PrayerHandler {
 			return;
 		}
 
-//		if(prayerId == DESTRUCTION && !player.isHolyPrayerUnlocked(HOLY_DESTRUCTION_IDX)) {
-//			player.getPacketSender().sendConfig(pd.configId, 0);
-//			player.getPacketSender().sendMessage("You need to unlock Warlock with a holy prayer scroll before using it!");
-//			return;
-//		}
-//		if(prayerId == HUNTERS_EYE && !player.isHolyPrayerUnlocked(HOLY_HUNTERS_EYE_IDX)) {
-//			player.getPacketSender().sendConfig(pd.configId, 0);
-//			player.getPacketSender().sendMessage("You need to unlock Knight with a holy prayer scroll before using it!");
-//			return;
-//		}
-//		if(prayerId == FORTITUDE && !player.isHolyPrayerUnlocked(HOLY_FORTITUDE_IDX)) {
-//			player.getPacketSender().sendConfig(pd.configId, 0);
-//			player.getPacketSender().sendMessage("You need to unlock Marksman with a holy prayer scroll before using it!");
-//			return;
-//		}
-//		if(prayerId == GNOMES_GREED && !player.isHolyPrayerUnlocked(HOLY_GNOMES_GREED_IDX)) {
-//			player.getPacketSender().sendConfig(pd.configId, 0);
-//			player.getPacketSender().sendMessage("You need to unlock Prosperous with a holy prayer scroll before using it!");
-//			return;
-//		}
-//		if(prayerId == SOUL_LEECH && !player.isHolyPrayerUnlocked(HOLY_SOUL_LEECH_IDX)) {
-//			player.getPacketSender().sendConfig(pd.configId, 0);
-//			player.getPacketSender().sendMessage("You need to unlock Sovereignty with a holy prayer scroll before using it!");
-//			return;
-//		}
-//		if(prayerId == FURY_SWIPE && !player.isHolyPrayerUnlocked(HOLY_FURY_SWIPE_IDX)) {
-//			player.getPacketSender().sendConfig(pd.configId, 0);
-//			player.getPacketSender().sendMessage("You need to unlock Trinity with a holy prayer scroll before using it!");
-//			return;
-//		}
+//
 		switch (prayerId) {
 			case FURY_SWIPE -> resetPrayers(player, DISABLED_WITH_FURY_SWIPE, prayerId);
 			case HUNTERS_EYE -> resetPrayers(player, DISABLED_WITH_HUNTERS_EYE, prayerId);
@@ -280,15 +251,7 @@ public class PrayerHandler {
 					resetPrayers(player, OVERHEAD_PRAYERS, prayerId);
 			case RETRIBUTION, REDEMPTION, SMITE -> resetPrayers(player, OVERHEAD_PRAYERS, prayerId);
 		}
-		/*
-		 * if (player.isPrayerInjured()) { if (prayerId == PROTECT_FROM_MAGIC ||
-		 * prayerId == PROTECT_FROM_MISSILES || prayerId == PROTECT_FROM_MELEE) {
-		 * player.getPacketSender().
-		 * sendMessage("You have been injured and cannot use this prayer!");
-		 * player.getPacketSender().sendConfig(pd.configId, 0); return; } }
-		 * SoundEffects.sendSoundEffect(player,
-		 * SoundEffects.SoundData.ACTIVATE_PRAYER_OR_CURSE, 10, 0);
-		 */
+
 		player.setPrayerActive(prayerId, true);
 		player.getPacketSender().sendConfig(pd.configId, 1);
 		if (hasNoPrayerOn(player, prayerId) && !player.isDrainingPrayer())
@@ -398,12 +361,13 @@ public class PrayerHandler {
 					return;
 				}
 				double drainAmount = getDrain(player);
-				//if (drainAmount <= 0 && !player.checkItem(Equipment.CAPE_SLOT, 19748)) {
-				//	this.stop();
-				//	return;
-			//	}
-				int total = (int) (player.getSkillManager().getCurrentLevel(Skill.PRAYER) - drainAmount);
-				player.getSkillManager().setCurrentLevel(Skill.PRAYER, total, true);
+				boolean drain = player.getVariables().getBooleanValue("monic-prayer");
+
+				if(!drain){
+					int total = (int) (player.getSkillManager().getCurrentLevel(Skill.PRAYER) - drainAmount);
+					player.getSkillManager().setCurrentLevel(Skill.PRAYER, total, true);
+				}
+
 			}
 
 			@Override
@@ -431,27 +395,16 @@ public class PrayerHandler {
 			}
 		}
 
-		if(player.getEquipment().contains(23049)) { //Tier 6 Aura
-			toRemove *= 0.95;
-		}
-		if(player.getEquipment().contains(23212)) { //Tier 6 Aura
-			toRemove *= 0.95;
-		}
-		if(player.getEquipment().contains(22111)) { //Tier 6 Aura
-			toRemove *= 0.95;
-		}
-		if(player.getEquipment().contains(22109)) { //Tier 6 Aura
-			toRemove *= 0.95;
-		}
-
-		if(player.getDonator().isObsidianPlus()){
-			toRemove *= 0;
-		} else if(player.getDonator().isTormentedPlus()){
+		if(player.getVip().getRank() == 10){
+			toRemove *= 0.0;
+		} else if(player.getVip().getRank() >= 8){
 			toRemove *= 0.25;
-		} else if(player.getDonator().isMysticalPlus()){
-			toRemove *= 0.40;
-		} else if(player.getDonator().isClericPlus()){
-			toRemove *= 0.65;
+		} else if(player.getVip().getRank() >= 6){
+			toRemove *= 0.45;
+		} else if(player.getVip().getRank() >= 4){
+			toRemove *= 0.60;
+		} else if(player.getVip().getRank() >= 2){
+			toRemove *= 0.85;
 		}
 
 		if (toRemove > 0) {

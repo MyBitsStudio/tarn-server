@@ -45,6 +45,7 @@ public class BossPets {
 		VOTE_PET(6324, 22050, 300,"Double Vote Rewards"),
 		FENRIR_PET(9830, 23108, 300,"250 DR & DDR & 10% Damage"),
 		RAICHU_PET(1801, 11318, 500,"Double Damage Towards Globals"),
+		MARLEY_PET(8007, 22018, 500,"Double Loyalty Tickets"),
 
 		//ELITE
 		GREEN_FENRIR_PET(9831, 23109, 300,"500 DR & DDR & 15% Damage"),

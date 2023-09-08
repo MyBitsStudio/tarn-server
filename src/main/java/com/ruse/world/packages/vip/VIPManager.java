@@ -48,8 +48,8 @@ public class VIPManager {
         }
     }
 
-    private static void progress(Player player, int amount){
-
+    private static void progress(@NotNull Player player, int amount){
+        player.getSeasonPass().incrementExp(265 * amount, false);
     }
 
     private static int modify(Player player, int amount){

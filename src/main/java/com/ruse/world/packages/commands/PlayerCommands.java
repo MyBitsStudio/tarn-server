@@ -48,19 +48,6 @@ public class PlayerCommands {
             return true;
 
         switch (commands[0]) {
-            /* REMOVE */
-            case "beta" -> {
-
-                return true;
-            }
-            case "donbb" -> {
-                GlobalBossManager.getInstance().spawnDonationBoss();
-                return true;
-            }
-            case "votebb" -> {
-                GlobalBossManager.getInstance().spawnVoteBoss();
-                return true;
-            }
 
             case "redeem" -> {
                 if(commands.length >= 2) {
@@ -424,8 +411,8 @@ public class PlayerCommands {
                         TeleportType.NORMAL);
                 return true;
             }
-            case "groundon" -> {
-                if(!WorldIPChecker.getInstance().addToContent(player, "groundon")){
+            case "groudon" -> {
+                if(!WorldIPChecker.getInstance().addToContent(player, "groudon")){
                     return false;
                 }
                 TeleportHandler.teleportPlayer(player, new Position(2139, 5018, 8),

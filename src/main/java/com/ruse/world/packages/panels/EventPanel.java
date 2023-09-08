@@ -16,33 +16,32 @@ public class EventPanel {
         player.getPacketSender().sendString(interfaceID++, "@whi@BOSSES");
         player.getPacketSender().sendString(interfaceID++, "@whi@-------------------");
         player.getPacketSender().sendString(interfaceID++, "@whi@GLOBALS");
-        player.getPacketSender().sendString(interfaceID++, "@whi@Final Boss Veigar: @yel@" + GlobalBossManager.getInstance().timeLeft("veigar"));
+        player.getPacketSender().sendString(interfaceID++, "@whi@Lugia: @yel@" + GlobalBossManager.getInstance().timeLeft("lugia"));
         player.getPacketSender().sendString(interfaceID++, "@whi@Nine Tails Jinchuriki: @yel@" + GlobalBossManager.getInstance().timeLeft("ninetails"));
-        player.getPacketSender().sendString(interfaceID++, "@whi@Meruem The King: @yel@" + GlobalBossManager.getInstance().timeLeft("meruem"));
-        player.getPacketSender().sendString(interfaceID++, "@whi@Golden Great Ape: @yel@" + GlobalBossManager.getInstance().timeLeft("golden"));
-        player.getPacketSender().sendString(interfaceID++, "@whi@Angel Lugia: @yel@" + GlobalBossManager.getInstance().timeLeft("lugia"));
+        player.getPacketSender().sendString(interfaceID++, "@whi@Groudon: @yel@" + GlobalBossManager.getInstance().timeLeft("groudon"));
+        player.getPacketSender().sendString(interfaceID++, "@whi@Mewtwo: @yel@" + (World.npcIsRegistered(9005) ? "@gre@::mewtwo" : "@red@INACTIVE"));
         player.getPacketSender().sendString(interfaceID++, "@whi@-------------------");
+        player.getPacketSender().sendString(interfaceID++, "");
         player.getPacketSender().sendString(interfaceID++, "");
         player.getPacketSender().sendString(interfaceID++, "");
         player.getPacketSender().sendString(interfaceID++, "@whi@SPECIALS");
-        player.getPacketSender().sendString(interfaceID++, (VoteBossDrop.currentSpawn == null
-                        ? "@whi@Vote Boss: @yel@" + doMotivote.getVoteCount() + "/50"
-                        : "@whi@Vote Boss: @yel@::Vboss"));
-        player.getPacketSender().sendString(interfaceID++, World.npcIsRegistered(4540) ? "@whi@Youtube Boss: @yel@::yt" : "@whi@Youtube Boss: INACTIVE");
+        player.getPacketSender().sendString(interfaceID++, World.npcIsRegistered(587) ? "@whi@Donation Boss: @yel@::donboss" : "@whi@Donation Boss: @red@INACTIVE");
+        player.getPacketSender().sendString(interfaceID++, World.npcIsRegistered(8013) ? "@whi@Vote Boss: @yel@::vboss" : "@whi@Vote Boss: @red@INACTIVE");
+        player.getPacketSender().sendString(interfaceID++, "");
+        player.getPacketSender().sendString(interfaceID++, "");
 
         interfaceID = 75501;
-        player.getPacketSender().sendString(interfaceID++, "@whi@DONATE DEALS");
+        player.getPacketSender().sendString(interfaceID++, "@whi@-------------------");
         player.getPacketSender().sendString(interfaceID++, "@whi@-------------------");
 
+        player.getPacketSender().sendString(interfaceID++, "");
+        player.getPacketSender().sendString(interfaceID++, "");
+        player.getPacketSender().sendString(interfaceID++, "");
+        player.getPacketSender().sendString(interfaceID++, "");
+        player.getPacketSender().sendString(interfaceID++, "");
+        player.getPacketSender().sendString(interfaceID++, "");
             player.getPacketSender().sendString(interfaceID++, "");
             player.getPacketSender().sendString(interfaceID++, "");
-            player.getPacketSender().sendString(interfaceID++, "");
-            player.getPacketSender().sendString(interfaceID++, "");
-            player.getPacketSender().sendString(interfaceID++, "");
-            player.getPacketSender().sendString(interfaceID++, "");
-            player.getPacketSender().sendString(interfaceID++, "");
-            player.getPacketSender().sendString(interfaceID++, "");
-
 
             player.getPacketSender().sendString(interfaceID++, "");
             player.getPacketSender().sendString(interfaceID++, "");

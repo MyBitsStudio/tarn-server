@@ -23,10 +23,6 @@ public class TeleportHandler {
 				return;
 			}
 		}
-		/*if (PlayerPunishment.Jail.isJailed(player.getUsername())) {
-			player.getPacketSender().sendMessage("As a jailed person. You cannot do this.");
-			return;
-		}*/
 
 		if(player.getInstance() != null) {
 			player.getInstance().destroy();
@@ -82,14 +78,8 @@ public class TeleportHandler {
 						player.performAnimation(teleportType.getEndAnimation());
 						player.performGraphic(teleportType.getEndGraphic());
 
-						if (Dungeoneering.doingOldDungeoneering(player)) {
-							final Position dungEntrance = player.getMinigameAttributes().getDungeoneeringAttributes()
-									.getParty().getDungeoneeringFloor().getEntrance().copy()
-									.setZ(player.getPosition().getZ());
-							player.moveTo(dungEntrance).setPosition(dungEntrance);
-						} else {
-								player.moveTo(targetLocation).setPosition(targetLocation);
-						}
+						player.moveTo(targetLocation).setPosition(targetLocation);
+
 						if(!targetLocation.sameAs(GameSettings.DEFAULT_POSITION)) {
 							player.lastTeleport = targetLocation;
 						}
@@ -119,14 +109,7 @@ public class TeleportHandler {
 		if (targetLocation.getX() == 3683 && targetLocation.getY() == 9888) { // Kraken
 			Kraken.enter(player);
 		}
-	}
 
-	public static boolean interfaceOpen(Player player) {
-		if (player.getInterfaceId() > 0 && player.getInterfaceId() != 50100) {
-			player.getPacketSender().sendMessage("Please close the interface you have open before opening another.");
-			return true;
-		}
-		return false;
 	}
 
 	public static boolean checkReqs(Player player, Position targetLocation) {

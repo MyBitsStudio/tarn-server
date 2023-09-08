@@ -42,7 +42,8 @@ public class WorldIPChecker {
                         bypass = true;
                         continue;
                     }
-                    if(log.getIp().equals(player.getHostAddress()) && log.getContent().equals(content)) {
+                    if(log.getIp().equals(player.getHostAddress()) && log.getContent().equals(content)
+                        && !log.getUsername().equals(player.getUsername())) {
                         if(log.gameMode().equals(player.getMode().toString())) {
                             run = false;
                             break;
@@ -84,7 +85,18 @@ public class WorldIPChecker {
             contents.get(player.getHostAddress()).put(content, true);
             return true;
         }
+        System.out.println(contents);
         return false;
+    }
+
+    public void leaveContent(@NotNull Player player){
+        if(contents.containsKey(player.getHostAddress())){
+            contents.get(player.getHostAddress()).forEach((s, aBoolean) -> {
+                if(aBoolean){
+                    contents.get(player.getHostAddress()).put(s, false);
+                }
+            });
+        }
     }
 
     public void save(){

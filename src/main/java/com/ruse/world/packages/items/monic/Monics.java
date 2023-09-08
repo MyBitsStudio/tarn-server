@@ -1,6 +1,7 @@
 package com.ruse.world.packages.items.monic;
 
 import com.ruse.world.entity.impl.player.Player;
+import com.ruse.world.entity.impl.player.timers.impl.monic.*;
 import org.jetbrains.annotations.NotNull;
 
 public class Monics {
@@ -89,13 +90,29 @@ public class Monics {
             player.getPacketSender().sendMessage("You do not have enough charges to activate this perk.");
             return;
         }
-        player.getItems().useCharge(perk.name(), perk.charges());
+        player.getItems().useCharge(monic.getName(), perk.charges());
         switch(perk.desc()){
-            case "ancient-donator" ->{
-                player.getPacketSender().sendMessage("You have received a Donator Chest I.");
-                player.getInventory().add(23257, 1);
-            }
+            case "ancient-xp" -> player.getTimers().register(new DXPMonicHour(player));
+            case "ancient-dr" -> player.getTimers().register(new DDRMonicHour(player));
+            case "ancient-ddr" -> player.getTimers().register(new DDDRMonicHour(player));
+            case "ancient-perk" -> player.getInventory().add(23149, 1);
+            case "ancient-enhance" -> player.getInventory().add(20500, 1);
+            case "ancient-tickets" -> player.getInventory().add(23253, 1);
+            case "ancient-blue" -> player.getInventory().add(4558, 5);
+            case "ancient-deep-blue" -> player.getInventory().add(4559, 5);
+            case "ancient-coins" -> player.getInventory().add(995, 25000);
 
+            case "crystal-prayer" -> player.getTimers().register(new PrayerMonicHour(player));
+            case "crystal-damage" -> player.getTimers().register(new DDMGMonicHour(player));
+            case "crystal-enhance" -> player.getInventory().add(20502, 1);
+            case "crystal-tickets" -> player.getInventory().add(23255, 1);
+            case "crystal-pack" -> player.getInventory().add(19001, 1);
+            case "crystal-rare-perk" -> player.getInventory().add(23147, 1);
+            case "crystal-white" -> player.getInventory().add(4560, 5);
+            case "crystal-pinks" -> player.getInventory().add(4564, 5);
+            case "crystal-coins" -> player.getInventory().add(10835, 5000);
         }
+        player.sendMessage("You have activated the "+perk.name()+" perk.");
+        sendInterface(player, id, false);
     }
 }

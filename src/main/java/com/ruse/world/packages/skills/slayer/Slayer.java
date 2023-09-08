@@ -194,6 +194,8 @@ public class Slayer {
 
         randomBox(player);
 
+        player.getSeasonPass().incrementExp(50, false);
+
         Achievements.doProgress(player, Achievements.Achievement.COMPLETE_20_SLAYER_TASKS);
         Achievements.doProgress(player, Achievements.Achievement.COMPLETE_50_SLAYER_TASKS);
         Achievements.doProgress(player, Achievements.Achievement.COMPLETE_150_SLAYER_TASKS);

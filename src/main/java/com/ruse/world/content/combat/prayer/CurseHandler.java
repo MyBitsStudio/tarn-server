@@ -35,17 +35,12 @@ public class CurseHandler {
 	}
 
 	public static int getProtectingPrayer(CombatType type) {
-		switch (type) {
-		case MELEE:
-			return DEFLECT_MELEE;
-		case MAGIC:
-		case DRAGON_FIRE:
-			return DEFLECT_MAGIC;
-		case RANGED:
-			return DEFLECT_MISSILES;
-		default:
-			throw new IllegalArgumentException("Invalid combat type: " + type);
-		}
+        return switch (type) {
+            case MELEE -> DEFLECT_MELEE;
+            case MAGIC, DRAGON_FIRE -> DEFLECT_MAGIC;
+            case RANGED -> DEFLECT_MISSILES;
+            default -> throw new IllegalArgumentException("Invalid combat type: " + type);
+        };
 	}
 
 	public static boolean isActivated(Player player, int prayer) {
@@ -306,15 +301,12 @@ public class CurseHandler {
 					return;
 				}
 				double drain = getDrain(player);
-				/*if(player.getAmountDonated() >=500) {
-					drain = 0;
-				}*/
-				//if (drain <= 0 && !player.checkItem(Equipment.CAPE_SLOT, 19748)) {
-				//	stop();
-				//	return;
-				//}
-				int total = (int) (player.getSkillManager().getCurrentLevel(Skill.PRAYER) - drain);
-				player.getSkillManager().setCurrentLevel(Skill.PRAYER, total, true);
+				boolean drains = player.getVariables().getBooleanValue("monic-prayer");
+
+				if(!drains) {
+					int total = (int) (player.getSkillManager().getCurrentLevel(Skill.PRAYER) - drain);
+					player.getSkillManager().setCurrentLevel(Skill.PRAYER, total, true);
+				}
 			}
 
 			@Override
@@ -331,28 +323,25 @@ public class CurseHandler {
 	 * @param player The player to get drain amount for.
 	 * @return The amount of prayer that will be drained from the player.
 	 */
-	private static final double getDrain(Player player) {
+	private static double getDrain(Player player) {
 		double toRemove = 0;
 		for (CurseData curse : CurseData.values()) {
 			if (player.getCurseActive()[curse.ordinal()]) {
 				toRemove += curse.drainRate;
 			}
 		}
-		if(player.getEquipment().contains(23049)) { //Tier 6 Aura
-			toRemove *= 0.95;
+
+		if(player.getVip().getRank() == 10){
+			toRemove *= 0.0;
+		} else if(player.getVip().getRank() >= 8){
+			toRemove *= 0.25;
+		} else if(player.getVip().getRank() >= 6){
+			toRemove *= 0.45;
+		} else if(player.getVip().getRank() >= 4){
+			toRemove *= 0.60;
+		} else if(player.getVip().getRank() >= 2){
+			toRemove *= 0.85;
 		}
-		if (player.getEquipment().contains(23212)) { //Tier 6 Aura
-			toRemove *= 0.90;
-		}
-		if(player.getEquipment().contains(22111)) { //Tier 6 Aura
-			toRemove *= 0.95;
-		}
-		if(player.getEquipment().contains(22109)) { //Tier 6 Aura
-			toRemove *= 0.95;
-		}
-		/**
-		 * Donator Rank Bonusses
-		 */
 
 		if (toRemove > 0) {
 			toRemove /= (1 + (0.05 * player.getBonusManager().getOtherBonus()[2]));

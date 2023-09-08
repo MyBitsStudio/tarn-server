@@ -57,7 +57,6 @@ public class Crimson implements CombatStrategy {
 			Crimson.performAnimation(attack_anim3);
 			Crimson.performGraphic(StormGFX);
 			Crimson.setChargingAttack(true);
-			Crimson.forceChat("I've banned people for less.");
 			TaskManager.submit(new Task(2, Crimson, false) {
 				int tick = 0;
 

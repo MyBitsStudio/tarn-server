@@ -18,6 +18,7 @@ import com.ruse.world.packages.bosses.special.DonatorInstance;
 import com.ruse.world.packages.bosses.special.IronmanInstance;
 import com.ruse.world.packages.bosses.special.SemiDonatorInstance;
 import com.ruse.world.packages.bosses.special.VoteInstance;
+import com.ruse.world.packages.bosses.special.event.EventInstance;
 import com.ruse.world.packages.combat.drops.DropManager;
 import com.ruse.world.packages.mode.GameModeConstants;
 import org.jetbrains.annotations.NotNull;
@@ -67,22 +68,22 @@ public class InstanceManager {
         cap *= (1000 * 60);
 
         switch(data.getNpcId()){
-            case 10835 -> {
-                if(!World.handler.eventActive("Solstice"))
+            case 6430 -> {
+                if(!World.handler.eventActive("Fall"))
                     return;
 
                 if(!takeItem(player, data)) {
                      player.sendMessage("You don't have x"+data.getCost().getAmount()+" of "+ItemDefinition.forId(data.getCost().getId()).getName());
+                     return;
                 }
 
-//                Instance instance = new MultiBossFlashInstance(player,
-//                data.getNpcId(), data.getSpawns(), data.getCap());
-//
-//                instances.put(instance.getInstanceId(), instance);
-//                instance.start();
+                EventInstance instance = new EventInstance(player, cap);
+
+                instances.put(instance.getInstanceId(), instance);
+                instance.start();
             }
             case 1736 -> {
-                if(!World.handler.eventActive("Solstice"))
+                if(!World.handler.eventActive("Fall"))
                     return;
 
                 if(!takeItem(player, data)) {
@@ -91,7 +92,7 @@ public class InstanceManager {
                 }
 
                 Instance instance = new MultiBossNormalInstance(player,
-                        data.getNpcId(), data.getSpawns(), (1000 * 60 * 15));
+                        data.getNpcId(), data.getSpawns(), cap);
 
                 instances.put(instance.getInstanceId(), instance);
                 instance.start();
@@ -143,7 +144,7 @@ public class InstanceManager {
             player.setInstanceId("");
         }
 
-        if(takeItem(player, data)) {
+        if(!takeItem(player, data)) {
             player.sendMessage("You don't have x"+data.getCost().getAmount()+" of "+ItemDefinition.forId(data.getCost().getId()).getName());
             return;
         }
@@ -194,7 +195,7 @@ public class InstanceManager {
             player.setInstanceId("");
         }
 
-        if(takeItem(player, data)) {
+        if(!takeItem(player, data)) {
             player.sendMessage("You don't have x"+data.getCost().getAmount()+" of "+ItemDefinition.forId(data.getCost().getId()).getName());
             return;
         }
@@ -246,7 +247,7 @@ public class InstanceManager {
             player.setInstanceId("");
         }
 
-        if(takeItem(player, data)) {
+        if(!takeItem(player, data)) {
             player.sendMessage("You don't have x"+data.getCost().getAmount()+" of "+ItemDefinition.forId(data.getCost().getId()).getName());
             return;
         }
@@ -275,14 +276,14 @@ public class InstanceManager {
     }
 
     private boolean takeItem(@NotNull Player player, @NotNull InstanceInterData data){
-        int diff = Integer.parseInt(player.getVariables().getInterfaceSettings()[2]);
         if(data.getCost() != null){
-            if(player.getInventory().contains(data.getCost().getId(), (int) (data.getCost().getAmount() * (1 +(diff * 2L))))){
-                player.getInventory().delete(data.getCost().getId(), (int) (data.getCost().getAmount() * (1 +(diff * 2L))));
-                player.sendMessage("@yel@[INSTANCE] You have been charged x"+(int) (data.getCost().getAmount() * (diff * 2L))+" of "+ ItemDefinition.forId(data.getCost().getId()).getName());
+            if(player.getInventory().contains(data.getCost().getId(), (data.getCost().getAmount()))){
+                player.getInventory().delete(data.getCost().getId(), (data.getCost().getAmount()));
+                player.sendMessage("@yel@[INSTANCE] You have been charged x"+data.getCost().getAmount()+" of "+ ItemDefinition.forId(data.getCost().getId()).getName());
+                return true;
+            } else {
                 return false;
             }
-            return true;
         }
         return false;
     }

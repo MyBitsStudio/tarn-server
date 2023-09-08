@@ -183,12 +183,12 @@ public class RangeMax {
                 maxHit *= 2;
             }
 
+            if (player.getVariables().getBooleanValue("monic-damage")) {
+                maxHit *= 2;
+            }
+
             maxHit *= (long) multiplyDamage(player);
 
-            if (player.getTimers().get("double-damage") != null)
-                if (player.getTimers().get("double-damage").returnLeft() > 0) {
-                    maxHit *= 2;
-                }
 
             if(player.getEquipment().contains(15587))
                 maxHit *= 1.5;

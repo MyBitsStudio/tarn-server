@@ -7,6 +7,7 @@ import com.ruse.util.Misc;
 import com.ruse.world.World;
 import com.ruse.world.packages.combat.drops.DropCalculator;
 import com.ruse.world.content.serverperks.ServerPerks;
+import com.ruse.world.packages.event.Event;
 import com.ruse.world.packages.globals.GlobalBossManager;
 import com.ruse.world.packages.mode.impl.*;
 import com.ruse.world.packages.panels.EventPanel;
@@ -39,6 +40,11 @@ public class PlayerPanel {
         EventPanel.refresh(player);
         int interfaceID = 111201;
         int players = World.getPlayers().size() + GameSettings.players;
+        String[] add = new String[World.handler.getEvents().size()];
+        int n = 0;
+        for(Event event : World.handler.getEvents()){
+            add[n++] = event.name();
+        }
         String[] Messages = new String[]{
                 //
                 "@whi@Main",
@@ -46,17 +52,24 @@ public class PlayerPanel {
                 "@whi@Server Time: @yel@" + Misc.getCurrentServerTime(),
                 //
                 "@whi@Events",
-                "@whi@Current Event: @yel@" +
+                "@whi@Current Perk: @yel@" +
                         ( ServerPerks.getInstance().getActivePerk() != null ?
                                 ServerPerks.getInstance().getActivePerk().getName() :
                                 "N/A"),
-                (WellOfGoodwill.isActive() ? "@whi@Well of Goodwill: @yel@On" : "@whi@Well of Goodwill: @yel@Off"),
+                "@whi@Well of Globals: @yel@VIP : "+GlobalBossManager.getInstance().getWells().get("VIP")+" / 50",
+                "@whi@Vote Boss: @yel@"+ World.attributes.getAmount("vote-boss")+" / 50",
+                "@whi@Donation Boss: @yel@"+ World.attributes.getAmount("donation-boss")+" / 50",
                 "@whi@Bonus Xp: @yel@" + (player.getTimers().get("double-damage") == null ? 0 :(Misc.format((int) player.getTimers().get("vote-xp").returnLeft() / (1000 * 60)) == null ? "0" : Misc.format((int) (player.getTimers().get("vote-xp").returnLeft() / (1000 * 60)))) + " minutes left"),
         };
 
-        for (int i = 0; i < Messages.length; i++) {
-            player.getPacketSender().sendString(interfaceID++, Messages[i]);
+
+        for (String string : Messages) {
+            player.getPacketSender().sendString(interfaceID++, string);
         }
+        for (String s : add) {
+            player.getPacketSender().sendString(interfaceID++, s);
+        }
+
 
 
         interfaceID = 111401;
@@ -65,24 +78,21 @@ public class PlayerPanel {
                 "@whi@Time Played: @yel@"
                         + Misc.getHoursPlayed((player.getTotalPlayTime() + player.getRecordedLogin().elapsed())),
                 "@whi@Username: @yel@" + player.getUsername(),
-                "@whi@Total Donated: @yel@$" + player.getAmountDonated(),
+                "@whi@Total Donated: @yel@$" + player.getPlayerVIP().getTotal(),
                 "@whi@Mode: @yel@"
                         + Misc.capitalizeString(getMode(player).toLowerCase().replace("_", " ")),
                 "@whi@Staff: @yel@" + Misc.formatText(player.getRank().toString().toLowerCase()),
-                "@whi@Donator: @yel@" + Misc.formatText(player.getDonator().toString().toLowerCase()),
                 "@whi@VIP: @yel@" + Misc.formatText(player.getVip().toString().toLowerCase()),
-
+                " ",
                 "@whi@Others: @yel@",
-
+                " ",
                 "@whi@Droprate bonus: @yel@" + DropCalculator.getDropChance(player, 9837) + "%",
                 "@whi@Double drop bonus: @yel@" + DropCalculator.getDoubleDropChance(player, 9837) + "%",
-                "@whi@Points & Statistics",
                 "@whi@NPC kill Count: @yel@ " + player.getPointsHandler().getNPCKILLCount(),
-                "@whi@Donator Points: @yel@" + player.getPointsHandler().getDonatorPoints(),
-                "@whi@Voting Points: @yel@ " + player.getPointsHandler().getVotingPoints(),
+                "@whi@Total Votes: @yel@ " + player.getPoints().get("voted"),
+                "@whi@VIP Points: @yel@" + player.getPlayerVIP().getPoints(),
                 "@whi@VIP Exp: @yel@" + player.getPlayerVIP().getExp(),
-                "@whi@Pack Exp: @yel@" + player.getPlayerVIP().getPackXp(),
-                "@whi@Total Donated: @yel@$" + player.getPlayerVIP().getTotal(),
+                "@whi@Pack Exp: @yel@" + player.getPlayerVIP().getPackXp()
         };
 
         for (String message : Messages) {
@@ -100,11 +110,6 @@ public class PlayerPanel {
                         : "@whi@Task: @yel@None"),
                 "@whi@Amount: @yel@" + (player.getSlayer().getTask() != null ? player.getSlayer().getTask().getAmount() - player.getSlayer().getTask().getSlayed() : 0),
                 "@whi@Streak: @yel@" + player.getSlayer().getStreak(),
-                "@whi@Slayer Multiplier: @yel@ " + player.getPointsHandler().getSlayerRate() + "%",
-                "@whi@Slayer Points: @yel@ " + player.getPointsHandler().getSlayerPoints() + " ",
-                // (player.getSlayer().getDuoPartner() != null
-                //        ? "Duo Partner: @whi@" + player.getSlayer().getDuoPartner()
-                //      : "Duo Partner: @whi@N/A"),
         };
 
         for (String message : Messages) {
@@ -112,16 +117,17 @@ public class PlayerPanel {
         }
 
         interfaceID = 111601;
+        player.getPacketSender().sendString(interfaceID++, "@yel@View @yel@Tracks");
+        player.getPacketSender().sendString(interfaceID++, "@yel@View @yel@Battlepass");
         player.getPacketSender().sendString(interfaceID++, "@yel@View @yel@Achievements");
         player.getPacketSender().sendString(interfaceID++, "@yel@View @yel@Drop Tables");
-        //player.getPacketSender().sendString(interfaceID++, "View Item List");
         player.getPacketSender().sendString(interfaceID++, "@yel@View @yel@Collection Log");
         player.getPacketSender().sendString(interfaceID++, "@yel@View @yel@Possible Loot");
         player.getPacketSender().sendString(interfaceID++, "@yel@View @yel@Best In Slot Items");
         player.getPacketSender().sendString(interfaceID++, "@yel@View @yel@Kill Tracker");
         player.getPacketSender().sendString(interfaceID++, "@yel@Change Password");
         player.getPacketSender().sendString(interfaceID++, "@yel@Edit Pin");
-        //player.getPacketSender().sendString(interfaceID++, "@whi@View @yel@Kill Tracker");
+
 
 
 

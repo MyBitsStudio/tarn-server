@@ -26,6 +26,14 @@ public class DropCalculator {
             chance += 10;
         }
 
+        if(player.getVariables().getBooleanValue("double-ddr")){
+            chance *= 2;
+        }
+
+        if(player.getVariables().getBooleanValue("monic-ddr")){
+            chance *= 2;
+        }
+
         chance += player.getMode().doubleDropRate();
 
         chance += player.getLoyalty().dropChance();
@@ -59,6 +67,18 @@ public class DropCalculator {
 
         if (ServerPerks.getInstance().getActivePerk() == ServerPerks.Perk.DR || ServerPerks.getInstance().getActivePerk() == ServerPerks.Perk.ALL_PERKS) {
             chance *= 1.5;
+        }
+
+        if(player.getVariables().getBooleanValue("double-dr")){
+            chance *= 2;
+        }
+
+        if(player.getVariables().getBooleanValue("monic-dr")){
+            chance *= 2;
+        }
+
+        if(player.getVariables().getBooleanValue("vote-dr")){
+            chance *= 1.25;
         }
 
         chance *= multiply(player);

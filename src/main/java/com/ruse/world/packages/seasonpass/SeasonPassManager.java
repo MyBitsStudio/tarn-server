@@ -3,12 +3,19 @@ package com.ruse.world.packages.seasonpass;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
+import java.util.Map;
 
 import static com.ruse.world.packages.seasonpass.SeasonPass.REWARD_AMOUNT;
 
 public class SeasonPassManager {
 
-    public static final HashMap<String, Integer> EXP_MAP = new HashMap<>();
+    public static final Map<Integer, Integer> EXP_MAP = new HashMap<>();
+
+    public static void put(Map map){
+        for(Object key : map.keySet()){
+            EXP_MAP.put(Integer.parseInt((String) key), (Integer) map.get(key));
+        }
+    }
 
     public static void resetSeasonPass(SeasonPass seasonPass) {
         seasonPass.setExp(0);
@@ -26,12 +33,15 @@ public class SeasonPassManager {
         seasonPass.setRewardsClaimed(arr);
     }
 
-    public static void addNpcKillExp(SeasonPass seasonPass, String npc) {
+    public static void addNpcKillExp(SeasonPass seasonPass, int npc) {
         if(EXP_MAP.isEmpty()) {
+            System.out.println("EXP_MAP is empty");
             return;
         }
+        System.out.println("Adding exp "+npc+" "+EXP_MAP.get(npc));
         Integer amount = EXP_MAP.get(npc);
         if(amount == null) {
+            System.out.println("Amount is null");
             return;
         }
         seasonPass.incrementExp(amount, false);

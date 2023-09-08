@@ -10,6 +10,7 @@ import com.ruse.world.packages.event.impl.DoubleDropEvent;
 import com.ruse.world.packages.event.impl.SlayerBonusEvent;
 import com.ruse.world.packages.event.impl.VoteBonusEvent;
 import com.ruse.world.timers.DoubleDropTimer;
+import lombok.Getter;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
@@ -18,6 +19,7 @@ import java.util.Date;
 import java.util.List;
 
 public class WorldEventHandler {
+    @Getter
     private final List<Event> events = new ArrayList<>();
 
     private int ticks;

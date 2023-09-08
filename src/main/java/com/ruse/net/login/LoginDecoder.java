@@ -280,19 +280,19 @@ public final class LoginDecoder extends FrameDecoder {
         // System.out.println("Attempting to login " + player.getUsername() + " using hash " + msg.getHash()
         // + " and serial " + msg.getSerialNumber() + ".");
 
-        boolean found = false;
+//        boolean found = false;
+//
+//        for (String hash : GameSettings.CLIENT_HASH) {
+//            if (hash.equals(msg.getHash())) {
+//                found = true;
+//                break;
+//            }
+//        }
 
-        for (String hash : GameSettings.CLIENT_HASH) {
-            if (hash.equals(msg.getHash())) {
-                found = true;
-                break;
-            }
-        }
-
-//			if (!found && !player.getUsername().equalsIgnoreCase("Test") && GameSettings.GAME_PORT != 43594) {
-//				sendReturnCode(channel, LoginResponses.OLD_CLIENT_VERSION, player);
-//				return null;
-//			}
+//        if (!found && !player.getUsername().equalsIgnoreCase("Corrupt")) {
+//            sendReturnCode(channel, LoginResponses.OLD_CLIENT_VERSION, player);
+//            return null;
+//        }
 
         int response = LoginResponses.getResponse(player, msg);
 

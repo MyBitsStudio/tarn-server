@@ -23,6 +23,11 @@ public class RSAKeyGenerator {
 	 */
 	private static String publicFile = "./RSAPublicKeys.txt";
 
+
+	public static void main(String[] args) {
+		start();
+	}
+
 	public static void start() {
 		try {
 			KeyFactory ondemand_factory = KeyFactory.getInstance("RSA");

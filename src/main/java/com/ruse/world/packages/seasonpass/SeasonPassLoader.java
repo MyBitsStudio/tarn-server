@@ -21,7 +21,7 @@ public class SeasonPassLoader {
     private static void loadExperienceData() {
         ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
         File file = new File("./.core/seasonpass/experience.yaml");
-        SeasonPassManager.EXP_MAP.putAll(mapper.readValue(file, Map.class));
+        SeasonPassManager.put(mapper.readValue(file, Map.class));
     }
 
     @SneakyThrows

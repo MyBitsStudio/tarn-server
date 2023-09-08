@@ -4,6 +4,7 @@ import com.ruse.GameSettings;
 import com.ruse.model.RegionInstance.RegionInstanceType;
 import com.ruse.util.Misc;
 import com.ruse.world.World;
+import com.ruse.world.WorldIPChecker;
 import com.ruse.world.content.KillsTracker;
 import com.ruse.world.content.PlayerLogs;
 import com.ruse.world.content.PlayerPunishment.Jail;
@@ -162,41 +163,6 @@ public class Locations {
 				true, true, true, false, false, true) {},
 		EXODEN(new int[] { 2562, 2600}, new int[] { 4485, 4526},
 				true, true, true, false, false, true) {},
-		VBOSS(new int[] { 2959, 2998}, new int[] { 2762, 2800},
-				true, true, true, false, false, true) {
-			@Override
-			public void enter(Player player) {
-				int accounts = 0;
-				for (Player p : World.getPlayers()) {
-					if (p == null)
-						continue;
-					if (!player.equals(p) && player.getHostAddress().equals(p.getHostAddress())) {
-						if (p.getLocation() == Location.VBOSS) {
-							accounts++;
-							continue;
-						}
-					}
-				}
-				if (accounts == 1) {
-					player.getPacketSender().sendMessage("You already have an account there!");
-					player.moveTo(GameSettings.HOME_CORDS);
-					player.getCombatBuilder().reset(true);
-					return;
-				}
-			}
-
-			@Override
-			public void login(Player player) {
-				player.getPacketSender().sendCameraNeutrality();
-				if (player.getLocation() == VBOSS) {
-					player.moveTo(GameSettings.HOME_CORDS);
-				}
-			}
-			@Override
-			public void logout(Player player) {
-				player.moveTo(GameSettings.HOME_CORDS);
-			}
-		},
 		PRIME(new int[] { 2437, 2492}, new int[] { 10113, 10171},
 				false, true, true, false, false, true) {},
 
@@ -812,41 +778,7 @@ public class Locations {
 		// Location(int[] x, int[] y, boolean multi, boolean summonAllowed, boolean
 		// followingAllowed, boolean cannonAllowed, boolean firemakingAllowed, boolean
 		// aidingAllowed) {
-		GODWARSPLATFORM(new int[] { 2506, 2550 }, new int[] { 2627, 2677 }, true, true, true, true, false, true) {
 
-			@Override
-			public void enter(Player player) {
-				int accounts = 0;
-				for (Player p : World.getPlayers()) {
-					if (p == null)
-						continue;
-					if (!player.equals(p) && player.getHostAddress().equals(p.getHostAddress())) {
-						if (p.getLocation() == Location.GODWARSPLATFORM) {
-							accounts++;
-							continue;
-						}
-					}
-				}
-				if (accounts == 1) {
-					player.getPacketSender().sendMessage("You already have an account there!");
-					player.moveTo(GameSettings.HOME_CORDS);
-					player.getCombatBuilder().reset(true);
-					return;
-				}
-			}
-
-			@Override
-			public void login(Player player) {
-				player.getPacketSender().sendCameraNeutrality();
-				if (player.getLocation() == GODWARSPLATFORM) {
-					player.moveTo(GameSettings.HOME_CORDS);
-				}
-			}
-			@Override
-			public void logout(Player player) {
-				player.moveTo(GameSettings.HOME_CORDS);
-				}
-			},
 		CUSTOMINI(new int[] { 2567, 2597 }, new int[] { 2564, 2600 }, false, true, true, true, false, false) {
 		},
 		// xyyx
@@ -1248,41 +1180,6 @@ public class Locations {
 
 		},
 		TREASURE_HUNTER(new int[] { 1986, 2045 }, new int[] { 4994, 5052 }, true, true, true, false, false, false) {
-		},
-		GLOBAL_BOSS(new int[] { 2128, 2161 }, new int[] { 5004, 5034 }, true, true, true, false, false, false) {
-
-			@Override
-			public void enter(Player player) {
-				int accounts = 0;
-				for (Player p : World.getPlayers()) {
-					if (p == null)
-						continue;
-					if (!player.equals(p) && player.getHostAddress().equals(p.getHostAddress())) {
-						if (p.getLocation() == Location.GLOBAL_BOSS) {
-							accounts++;
-							continue;
-						}
-					}
-				}
-				if (accounts == 1) {
-					player.getPacketSender().sendMessage("You already have an account there!");
-					player.moveTo(GameSettings.HOME_CORDS);
-					player.getCombatBuilder().reset(true);
-					return;
-				}
-			}
-
-			@Override
-			public void login(Player player) {
-				player.getPacketSender().sendCameraNeutrality();
-				if (player.getLocation() == GLOBAL_BOSS) {
-					player.moveTo(GameSettings.HOME_CORDS);
-				}
-			}
-			@Override
-			public void logout(Player player) {
-				player.moveTo(GameSettings.HOME_CORDS);
-			}
 		},
 		DIAMOND_ZONE(new int[] { 2571, 2619 }, new int[] { 2695, 2746 }, false, true, true, false, true, false) {
 
@@ -2182,6 +2079,14 @@ for (Item item : player.getInventory().getItems()) {
 			}
 		},
 
+
+		//Globals
+		NORMAL_GLOBAL(new int[] { 2130, 2156 }, new int[] { 5001, 5028 }, true, false, true, false, false, false) {
+			@Override
+			public void leave(Player player) {
+				WorldIPChecker.getInstance().leaveContent(player);
+			}
+		},
 		//TOWER
 		TOWER_LOBBY(new int[] {2843, 2874 }, new int[] { 2734, 2751 }, false, false, false, false, false, false) {
 		},
@@ -2216,19 +2121,11 @@ for (Item item : player.getInventory().getItems()) {
 		public int[] getY() {
 			return y;
 		}
-
-		/**
-		 * MB_WYLDYWYRM(new int[]{3052, 3083}, new int[]{3929, 3963}, true, true, true,
-		 * false, false, false) {}, RC_WYLDYWYRM(new int[]{3294, 3315}, new int[]{3919,
-		 * 3961}, true, true, true, false, false, false) {}, CA_WYLDYWYRM(new
-		 * int[]{3214, 3253}, new int[]{3594, 3639}, true, true, true, false, false,
-		 * false) {}, DR_WYLDYWYRM(new int[]{3266, 3306}, new int[]{3868, 3903}, true,
-		 * true, true, false, false, false) {},
-		 */
 		public static boolean inMulti(Character gc) {
 			if (gc.isForceMultiArea()) {
 				return true;
 			}
+			gc.setLocation(Locations.Location.getLocation(gc));
 			return gc.getLocation().multi;
 		}
 

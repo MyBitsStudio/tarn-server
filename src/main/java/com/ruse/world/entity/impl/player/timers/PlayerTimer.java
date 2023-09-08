@@ -1,6 +1,7 @@
 package com.ruse.world.entity.impl.player.timers;
 
 import com.ruse.model.Timer;
+import com.ruse.world.entity.impl.player.timers.impl.monic.*;
 import com.ruse.world.entity.impl.player.timers.impl.potion.*;
 import com.ruse.world.entity.impl.player.timers.impl.scroll.*;
 import lombok.Getter;
@@ -28,6 +29,11 @@ public enum PlayerTimer {
     VOTE_XP("VoteXP", new VoteXP()),
     VOTE_DR("VoteDR", new VoteDR()),
 
+    MONIC_DDR("MonicDDDRH", new DDDRMonicHour()),
+    MONIC_DMG("MonicDMGH", new DDMGMonicHour()),
+    MONIC_DR("MonicDDRH", new DDRMonicHour()),
+    MONIC_PRAYER("MonicPrayerH", new PrayerMonicHour()),
+    MONIC_XP("MonicXpH", new DXPMonicHour()),
     ;
 
     private final Timer timerClass;

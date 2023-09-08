@@ -78,6 +78,10 @@ public class CombatStrategies {
 		STRATEGIES.put(593, script);
 		STRATEGIES.put(1880, script);
 
+		//event
+		STRATEGIES.put(1736, script);
+		STRATEGIES.put(6430, new Crimson());
+
 
 		// Globals
 		STRATEGIES.put(9904, new SolakTheGreat());

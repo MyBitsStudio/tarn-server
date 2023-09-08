@@ -1,10 +1,11 @@
 package com.ruse.world.packages.slot;
 
+import com.ruse.engine.GameEngine;
+import com.ruse.engine.task.TaskManager;
 import com.ruse.model.*;
 import com.ruse.model.container.impl.Equipment;
 import com.ruse.util.Misc;
 import com.ruse.world.clip.region.RegionClipping;
-import com.ruse.world.content.combat.effect.FireWall;
 import com.ruse.world.content.skill.impl.summoning.BossPets;
 import com.ruse.world.entity.impl.Character;
 import com.ruse.world.entity.impl.npc.NPC;
@@ -12,6 +13,7 @@ import com.ruse.world.entity.impl.player.Player;
 import com.ruse.world.packages.combat.max.MagicMax;
 import com.ruse.world.packages.combat.max.MeleeMax;
 import com.ruse.world.packages.combat.max.RangeMax;
+import com.ruse.world.packages.slot.effects.FireWall;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
@@ -22,11 +24,11 @@ public class EffectHandler {
 
     public static void handlePlayerAttack(@NotNull Player p, Character victim){
         if (p.getEquipment().hasAoE()) {
-            handleAoE(p, victim,
-                    p.getEquipment().getSlotBonuses()[Equipment.WEAPON_SLOT].getBonus() * 3);
+            GameEngine.submit(() -> handleAoE(p, victim,
+                    p.getEquipment().getSlotBonuses()[Equipment.WEAPON_SLOT].getBonus() * 3));
         }
         if(p.getEquipment().hasFirewall()){
-            new FireWall(10, FireWall.Dir.SOUTH, p.getPosition().getX() + 1, p.getPosition().getY() + 1, new Graphic(453), 5, 3, 25000, 10).start(false, p);
+            TaskManager.submit(new FireWall(p, p.getPosition().getX(), p.getPosition().getY(), 5));
         }
         if(p.getEquipment().hasDoubleShot()){
             long calc = Misc.inclusiveRandom(100, 1000 * 5);
@@ -47,8 +49,8 @@ public class EffectHandler {
 
         if(p.getEquipment().getBonus() != null){
             if(Objects.equals(p.getEquipment().getBonus().perk(), AOE_3)){
-                handleAoE(p, victim,
-                        6);
+                GameEngine.submit(() -> handleAoE(p, victim,
+                        6));
             }
         }
 
@@ -60,8 +62,8 @@ public class EffectHandler {
 
     private static void handlePets(@NotNull Player player, NPC victim){
         if (player.getSummoning().getFamiliar().getSummonNpc().getId() == BossPets.BossPet.HEIMDALL_PET.getNpcId()) {
-            handleAoE(player, victim,
-                    6);
+            GameEngine.submit(() -> handleAoE(player, victim,
+                    6));
         }
     }
 
@@ -96,6 +98,9 @@ public class EffectHandler {
                 if (!RegionClipping.canProjectileAttack(attacker, next)) {
                     continue;
                 }
+
+                if(!Locations.Location.inMulti(attacker)) return;
+
                 long maxhit = switch (((Player) attacker).getLastCombatType()) {
                     case MELEE -> MeleeMax.newMelee(attacker, victim) / 50;
                     case RANGED -> RangeMax.newRange(attacker, victim) / 50;

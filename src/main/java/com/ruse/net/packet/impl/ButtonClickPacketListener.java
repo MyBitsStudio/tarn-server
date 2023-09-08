@@ -482,32 +482,9 @@ public class ButtonClickPacketListener implements PacketListener {
                 TeleportHandler.teleportPlayer(player, new Position(2207, 3745, 0),
                         player.getSpellbook().getTeleportType());
                 break;
-            case 111602:
-                DropsInterface.open(player);
-                break;
             /*case 111603:
                 BestItemsInterface.openInterface(player, 0);
                 break;*/
-            case 111603:
-                player.getCollectionLog().open();
-                break;
-            case 111604:
-                PossibleLootInterface.openInterface(player, PossibleLootInterface.LootData.values()[0]);
-                break;
-            case 111605:
-                BestItemsInterface.openInterface(player, 0);
-                break;
-            case 111606:
-                KillTrackerInterface.open(player);
-                break;
-            case 111607:
-                player.setInputHandling(new ChangePassword());
-                player.getPacketSender().sendEnterInputPrompt("Enter a new password:");
-                break;
-            case 111608:
-                player.setInputHandling(new SetPinPacketListener());
-                player.getPacketSender().sendEnterInputPrompt("Enter the pin that you want to set$pin");
-                break;
             case 74001:
             case 76001:
                 player.getPacketSender().sendTabInterface(GameSettings.ACHIEVEMENT_TAB, 73000);
@@ -543,8 +520,36 @@ public class ButtonClickPacketListener implements PacketListener {
                 player.getPacketSender().sendConfig(6000, 3);
                 break;
             case 111601:
-                player.getAchievements().refreshInterface(player.getAchievements().currentInterface);
-                player.getPacketSender().sendConfig(6000, 3);
+                TrackInterface.sendInterface(player, true);
+                break;
+            case 111602:
+                player.getSeasonPass().showInterface();
+                break;
+            case 111603:
+                player.sendMessage("Coming Soon!");
+                break;
+            case 111604:
+                DropsInterface.open(player);
+                break;
+            case 111605:
+                player.getCollectionLog().open();
+                break;
+            case 111606:
+                PossibleLootInterface.openInterface(player, PossibleLootInterface.LootData.values()[0]);
+                break;
+            case 111607:
+                BestItemsInterface.openInterface(player, 0);
+                break;
+            case 111608:
+                KillTrackerInterface.open(player);
+                break;
+            case 111609:
+                player.setInputHandling(new ChangePassword());
+                player.getPacketSender().sendEnterInputPrompt("Enter a new password:");
+                break;
+            case 111610:
+                player.setInputHandling(new SetPinPacketListener());
+                player.getPacketSender().sendEnterInputPrompt("Enter the pin that you want to set$pin");
                 break;
             case 31508:
                 player.getEventBossManager().updateNpcIdentification();

@@ -17,6 +17,7 @@ import com.ruse.model.definitions.ItemDefinition;
 import com.ruse.util.Misc;
 import com.ruse.util.RandomUtility;
 import com.ruse.world.World;
+import com.ruse.world.WorldIPChecker;
 import com.ruse.world.content.ItemsKeptOnDeath;
 import com.ruse.world.content.PlayerLogs;
 import com.ruse.world.content.PlayerPanel;
@@ -102,7 +103,7 @@ public class PlayerDeathTask extends Task {
                     if (loc != Location.DUNGEONEERING && loc != Location.CUSTOM_RAIDS && loc != Location.PEST_CONTROL_GAME && loc != Location.DUEL_ARENA
                             && loc != Location.FREE_FOR_ALL_ARENA && loc != Location.FREE_FOR_ALL_WAIT
                             && loc != Location.SOULWARS && loc != Location.FIGHT_PITS
-                            && loc != Location.FIGHT_PITS_WAIT_ROOM && loc != Location.FIGHT_PITS
+                            && loc != Location.FIGHT_PITS_WAIT_ROOM
                             && loc != Location.RECIPE_FOR_DISASTER && loc != Location.GRAVEYARD && loc != Location.ZULRAH
                             && loc != Location.RUNESPAN) {
 
@@ -251,6 +252,7 @@ public class PlayerDeathTask extends Task {
                     if (death != null) {
                         World.deregister(death);
                     }
+                    WorldIPChecker.getInstance().leaveContent(player);
                     player.restart();
                     player.getUpdateFlag().flag(Flag.APPEARANCE);
                     loc.onDeath(player);

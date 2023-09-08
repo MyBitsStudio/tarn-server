@@ -63,7 +63,7 @@ public class GlobalBossManager {
     }
 
     public void addToWell(Player player, int item, int amount){
-        if(World.attributes.getSetting("globals")){
+        if(!World.attributes.getSetting("globals")){
             return;
         }
         if (item == 23003) {//vip tickets
@@ -169,9 +169,35 @@ public class GlobalBossManager {
         switch (name) {
             case "lugia" -> {
                 if(World.npcIsRegistered(3308)){
-                    return "SPAWNED";
+                    return "::lugia";
                 }
                 tick = 24000 - (ticka % 24000);
+                tick /= 100;
+                tick *= 60;
+                ms = tick;
+                m = String.format("%dh %dm", TimeUnit.SECONDS.toHours(ms),
+                        TimeUnit.SECONDS.toMinutes(ms) - TimeUnit.HOURS.toMinutes(TimeUnit.SECONDS.toHours(ms)),
+                        TimeUnit.SECONDS.toSeconds(ms) - TimeUnit.MINUTES.toSeconds(TimeUnit.SECONDS.toMinutes(ms)));
+                return m;
+            }
+            case "ninetails" -> {
+                if(World.npcIsRegistered(9904)){
+                    return "::ninetails";
+                }
+                tick = 6000 - (ticka % 6000);
+                tick /= 100;
+                tick *= 60;
+                ms = tick;
+                m = String.format("%dh %dm", TimeUnit.SECONDS.toHours(ms),
+                        TimeUnit.SECONDS.toMinutes(ms) - TimeUnit.HOURS.toMinutes(TimeUnit.SECONDS.toHours(ms)),
+                        TimeUnit.SECONDS.toSeconds(ms) - TimeUnit.MINUTES.toSeconds(TimeUnit.SECONDS.toMinutes(ms)));
+                return m;
+            }
+            case "groudon" -> {
+                if(World.npcIsRegistered(8010)){
+                    return "::groudon";
+                }
+                tick = 12000 - (ticka % 12000);
                 tick /= 100;
                 tick *= 60;
                 ms = tick;

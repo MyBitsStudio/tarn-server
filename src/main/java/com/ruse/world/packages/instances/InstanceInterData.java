@@ -83,10 +83,10 @@ public enum InstanceInterData {
     InstanceType.SPECIAL),
 
     FALL("Fall Boss", "Fall Event/T17",
-            new Item(10835, 1000), 1, 30, 6430,
+            new Item(10835, 1000), 1, 15, 6430,
             InstanceType.EVENT),
     EVENT_RANDOM("Event Devils", "Fall Event/T15",
-            new Item(10835, 1000), 16, 30, 1736,
+            new Item(10835, 1000), 16, 15, 1736,
             InstanceType.EVENT),
 
     ZEIDAN("Zeidan Grimm", "T20",

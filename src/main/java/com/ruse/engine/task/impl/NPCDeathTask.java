@@ -106,7 +106,7 @@ public class NPCDeathTask extends Task {
                         killer.getDryStreak().dryStreakMap.put(npc.getId(), dryStreak.getDryStreak(npc.getId()) + 1);
                         dryStreak.sendAlert(npc.getId());
 
-                        SeasonPassManager.addNpcKillExp(killer.getSeasonPass(), npc.getDefinition().getName());
+                        SeasonPassManager.addNpcKillExp(killer.getSeasonPass(), npc.getDefinition().getId());
 
                         Game game;
                         if((game = Lobby.getInstance().getGame()) != null) {

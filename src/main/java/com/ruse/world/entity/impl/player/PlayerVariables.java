@@ -39,6 +39,12 @@ public class PlayerVariables {
         settings.put("vote-xp", false);
         settings.put("vote-dr", false);
 
+        settings.put("monic-xp", false);
+        settings.put("monic-dr", false);
+        settings.put("monic-ddr", false);
+        settings.put("monic-damage", false);
+        settings.put("monic-prayer", false);
+
         settings.put("item-chosen", Integer.parseInt("-1"));
 
         settings.put("last-button", System.currentTimeMillis());

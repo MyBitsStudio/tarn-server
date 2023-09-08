@@ -154,6 +154,7 @@ public class StarterTrack extends Track {
     }
 
     private void reward(@NotNull StarterTasks task){
+        player.getSeasonPass().incrementExp(5, false);
         player.getInventory().addDropIfFull(task.getReward().item(),
                 task.getReward().amount());
         player.sendMessage("@gre@ You have completed a starter task and received a reward!");

@@ -218,6 +218,10 @@ public class SkillManager {
             experience *= 1.30;
         }
 
+        if (player.getVariables().getBooleanValue("monic-xp")) {
+            experience *= 2;
+        }
+
 /**
  * Donator Rank Bonusses
  */
