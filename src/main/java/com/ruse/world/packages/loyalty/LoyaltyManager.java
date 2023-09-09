@@ -76,23 +76,23 @@ public class LoyaltyManager {
         } else if(time % (120 * 60) == 0){
             player.getInventory().add(LOYALTY_TICKET, (6 * multiplier));
             xp += 6 * multiplier;
-            player.sendMessage("@red@[LOYALTY]@whi@You have been rewarded with 6 Loyalty Tickets for being online for 3 hours.");
+            player.sendMessage("@red@[LOYALTY]@whi@You have been rewarded with 6 Loyalty Tickets for being online for 2 hours.");
         } else if(time % (60 * 60) == 0){
             player.getInventory().add(LOYALTY_TICKET, (4 * multiplier));
             xp += 4 * multiplier;
-            player.sendMessage("@red@[LOYALTY]@whi@You have been rewarded with 4 Loyalty Tickets for being online for 2 hours.");
+            player.sendMessage("@red@[LOYALTY]@whi@You have been rewarded with 4 Loyalty Tickets for being online for 1 hours.");
         } else if(time % (30 * 60) == 0){
             player.getInventory().add(LOYALTY_TICKET, (3 * multiplier));
             xp += 3 * multiplier;
-            player.sendMessage("@red@[LOYALTY]@whi@You have been rewarded with 3 Loyalty Tickets for being online for 1.5 hours.");
+            player.sendMessage("@red@[LOYALTY]@whi@You have been rewarded with 3 Loyalty Tickets for being online for 30 minutes.");
         } else if(time % (20 * 60) == 0){
             player.getInventory().add(LOYALTY_TICKET, (2 * multiplier));
             xp += 2 * multiplier;
-            player.sendMessage("@red@[LOYALTY]@whi@You have been rewarded with 2 Loyalty Tickets for being online for 1 hours.");
+            player.sendMessage("@red@[LOYALTY]@whi@You have been rewarded with 2 Loyalty Tickets for being online for 20 minutes.");
         } else if(time % (10 * 60) == 0){
             player.getInventory().add(LOYALTY_TICKET, (multiplier));
             xp += multiplier;
-            player.sendMessage("@red@[LOYALTY]@whi@You have been rewarded with 1 Loyalty Tickets for being online for 30 minutes.");
+            player.sendMessage("@red@[LOYALTY]@whi@You have been rewarded with 1 Loyalty Tickets for being online for 10 minutes.");
         }
 
         calculateLevel();

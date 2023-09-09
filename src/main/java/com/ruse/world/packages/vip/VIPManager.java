@@ -67,11 +67,11 @@ public class VIPManager {
     }
 
     private static void handleTickets(Player player, int amount){
-        int amt = Math.floorDiv(amount, 10);
-        if(amt >= 1){
-            player.getInventory().add(1, amt);
-            player.getPacketSender().sendMessage("@blu@[DONATION] You have received "+amt+" donation tickets for your donation!");
-        }
+//        int amt = Math.floorDiv(amount, 10);
+//        if(amt >= 1){
+//            player.getInventory().add(1, amt);
+//            player.getPacketSender().sendMessage("@blu@[DONATION] You have received "+amt+" donation tickets for your donation!");
+//        }
     }
 
     private static void handleSpecialActive(Player player, int amount){

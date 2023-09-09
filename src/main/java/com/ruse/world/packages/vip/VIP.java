@@ -32,7 +32,7 @@ public class VIP {
         exp += amount;
         packXp += amount;
         total += amount;
-        points += amount;
+        points += (amount * 10);
         player.getPacketSender().sendMessage("@yel@[VIP] You have gained " + amount + " VIP experience. Currently at : "+ exp);
         addToList(amount);
         claimPack();
