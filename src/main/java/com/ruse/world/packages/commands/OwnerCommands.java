@@ -37,15 +37,6 @@ public class OwnerCommands {
         Player targets;
 
         switch (commands[0]) {
-            case "server" -> {
-                if(commands.length == 1 || commands.length == 2){
-                    player.sendMessage("Usage: ::server ATTRIBUTE VALUE");
-                    return true;
-                } else {
-                    World.attributes.setSetting(commands[1], Boolean.parseBoolean(commands[2]));
-                }
-                return true;
-            }
             case "findobj" -> {
                 name = command.substring(8).toLowerCase().replaceAll("_", " ");
                 player.getPacketSender().sendMessage("Finding object id for object - " + name);

@@ -48,6 +48,15 @@ public class AdminCommands {
                 }
                 return true;
             }
+            case "server" -> {
+                if(commands.length == 1 || commands.length == 2){
+                    player.sendMessage("Usage: ::server ATTRIBUTE VALUE");
+                    return true;
+                } else {
+                    World.attributes.setSetting(commands[1], Boolean.parseBoolean(commands[2]));
+                }
+                return true;
+            }
             case "broadcast" -> {
                 int time = Integer.parseInt(commands[1]);
                 String message = command.substring(commands[0].length() + commands[1].length() + 2);
