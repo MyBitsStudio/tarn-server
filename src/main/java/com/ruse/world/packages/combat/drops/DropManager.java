@@ -167,7 +167,7 @@ public class DropManager {
                 }
                 log(player, npc, drop, item.getAmount());
 
-                if(collector){
+                if(collector || hasLoot){
                     player.depositItemBank(item);
                     player.sendMessage("Your loot has been sent to your bank.");
                 } else {

@@ -39,7 +39,7 @@ public class ExodonInstance extends SingleBossSinglePlayerInstance {
 
     @Override
     public boolean canEnter(Player player){
-        return player.getRank().isDeveloper();
+        return player.getPSettings().getBooleanValue("instance-unlock");
     }
 
     @Override

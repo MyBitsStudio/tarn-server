@@ -336,7 +336,7 @@ public class Equipment extends ItemContainer {
 	}
 
 	public boolean hasCollector(){
-		return contains(14880);
+		return containsAny(14880);
 	}
 
 	private void handleUnequip(int slot, int id){

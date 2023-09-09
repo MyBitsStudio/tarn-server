@@ -85,6 +85,8 @@ public class DropsInterface {
 				player.getPacketSender().sendString(ITEM_AMOUNT + i, (min == amount ? Misc.formatNumber(amount) : ( Misc.formatNumber(min) + "-" + Misc.formatNumber(amount))));
 				double divide = (DropCalculator.getDropChance(player, npcId) / DropManager.getManager().forId(npcId).customTable().weight());
 				//System.out.println("divide: "+divide+" chance: "+chance+" chances: "+Math.floorDiv((int) chance, (int) divide));
+				if(divide <= 1)
+					divide = 1;
 				int chances = Math.floorDiv((int) chance, (int) divide);
 
 				player.getPacketSender().sendString(ITEM_CHANCE + i, "1/" +(chance <= 1 ? 1 : chances));
