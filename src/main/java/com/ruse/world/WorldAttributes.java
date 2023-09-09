@@ -32,6 +32,7 @@ public class WorldAttributes {
         settings.put("battlepass", true);
         settings.put("shop", true);
         settings.put("tower", true);
+        settings.put("collection", false);
 
         settings.put("donator-bonus", false);
         settings.put("slayer-bonus", false);

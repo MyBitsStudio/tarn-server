@@ -89,10 +89,10 @@ public class ItemActionPacketListener implements PacketListener {
         Item item = player.getInventory().getItems()[slot];
         player.setInteractingItem(item);
 
-//        if(ItemDefinition.forId(itemId).getName().equalsIgnoreCase("none")){
-//            System.out.println("Item name is none");
-//            return;
-//        }
+        if(ItemDefinition.forId(itemId).getName().equalsIgnoreCase("none")){
+            System.out.println("Item name is none");
+            return;
+        }
 
         if(Locks.handleLocks(player, itemId))
             return;
@@ -202,6 +202,12 @@ public class ItemActionPacketListener implements PacketListener {
             case 12852:
                 player.getStarterShop().open(true);
                 break;
+
+            case 23335:
+                player.getInventory().delete(23335, 1);
+                player.getPlayerVIP().addCertificate();
+                break;
+
 
             case 23166:
                 if(player.getPSettings().getBooleanValue("instance-unlock")){
@@ -540,26 +546,18 @@ public class ItemActionPacketListener implements PacketListener {
                 player.getInventory().add(ItemDefinition.COIN_ID, 1000000 * amount1);*//*
 
                 break;*/
-            case 15328:
-                PotionHandler.drinkPotion(player, slot, PotionHandler.INFINITY_RAGE);
-                if (!drinkInfinityRage(player, slot, 15328))
-                    return;
-                player.getPacketSender().sendInterfaceRemoval();
-                player.getCombatBuilder().incrementAttackTimer(1).cooldown(false);
-                player.getCombatBuilder().setDistanceSession(null);
-                player.setCastSpell(null);
-                player.getFoodTimer().reset();
-                player.getPotionTimer().reset();
-                player.setOverloadPotionTimer(100000);
-                if (player.getOverloadPotionTimer() > 0) { // Prevents decreasing stats
-                    Consumables.overloadIncrease(player, Skill.ATTACK, 0.67);
-                    Consumables.overloadIncrease(player, Skill.STRENGTH, 0.67);
-                    Consumables.overloadIncrease(player, Skill.DEFENCE, 0.67);
-                    Consumables.overloadIncrease(player, Skill.RANGED, 0.67);
-                    Consumables.overloadIncrease(player, Skill.MAGIC, 0.67);
-                }
-                Sounds.sendSound(player, Sound.DRINK_POTION);
-                break;
+//            case 15328:
+//                PotionHandler.drinkPotion(player, slot, PotionHandler.INFINITY_RAGE);
+//                if (!drinkInfinityRage(player, slot, 15328))
+//                    return;
+//                player.getPacketSender().sendInterfaceRemoval();
+//                player.getCombatBuilder().incrementAttackTimer(1).cooldown(false);
+//                player.getCombatBuilder().setDistanceSession(null);
+//                player.setCastSpell(null);
+//                player.getFoodTimer().reset();
+//                player.getPotionTimer().reset();
+//                Sounds.sendSound(player, Sound.DRINK_POTION);
+//                break;
             case 15330:
                 PotionHandler.drinkPotion(player, slot, PotionHandler.INF_OVERLOAD);
                 break;

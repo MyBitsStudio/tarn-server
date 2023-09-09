@@ -382,8 +382,9 @@ public class PlayerSecureLoad extends SecureLoad {
 
         if (object.has("summon-npc")) {
             int npc = object.get("summon-npc").getAsInt();
+            System.out.println("npc: " + npc);
             if (npc > 0)
-                player.getSummoning().setFamiliarSpawnTask(new FamiliarSpawnTask(player)).setFamiliarId(npc);
+                player.getVariables().setSetting("summon-npc", npc);
         }
         if (object.has("summon-death")) {
             int death = object.get("summon-death").getAsInt();

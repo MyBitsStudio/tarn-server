@@ -60,6 +60,7 @@ public class FamiliarSpawnTask extends Task {
 				}
 			}
 		} else {
+			System.out.println("Summoning pet: " + BossPet.forSpawnId(familiarId).name());
 			player.getSummoning().summonPet(BossPet.forSpawnId(familiarId), true);
 		}
 		stop();

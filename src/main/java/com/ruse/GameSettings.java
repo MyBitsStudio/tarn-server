@@ -33,7 +33,7 @@ public class GameSettings {
     public static final String StoreUrl = "https://tarnserver.com/donate";
 
     public static final String VoteUrl = "https://tarnserver.com/voting";
-    public static final String DiscordUrl = "https://discord.gg/tarnserver";
+    public static final String DiscordUrl = "https://discord.gg/c5KaC3pBsn";
     public static final int BaseImplingExpMultiplier = 2;
     /**
      * Shop Buy Limit (at one time)

@@ -18,6 +18,8 @@ import java.util.concurrent.CopyOnWriteArrayList;
 @Setter
 public class VIP {
 
+    // Amount given for free +25 (+20 bp)
+
     private final Player player;
     private int exp = 0, claimedTicket, claimedPack, total = 0, packXp = 0, points = 0;
     private List<Donation> donations = new CopyOnWriteArrayList<>();
@@ -56,7 +58,6 @@ public class VIP {
             player.setVip(VIPRank.forRank(level));
             if(rewardForLevel(level) != null) {
                 player.getInventory().addDropIfFull(Objects.requireNonNull(rewardForLevel(level)).getId(), Objects.requireNonNull(rewardForLevel(level)).getAmount());
-
             }
         }
     }
@@ -114,18 +115,23 @@ public class VIP {
 
     public static @Nullable Item rewardForLevel(int level){
         return switch (level) {
-            case 1 -> new Item(20501, 2);
-            case 2 -> new Item(23225, 3);
-            case 3 -> new Item(23204, 20);
-            case 4 -> new Item(1, 20);
-            case 5 -> new Item(15328, 1);
-            case 6 -> new Item(23252, 1);
-            case 7 -> new Item(15330, 1);
-            case 8 -> new Item(23253, 1);
-            case 9 -> new Item(23002, 2);
-            case 10 -> new Item(20507, 1);
+            case 1 -> new Item(15330, 1);
+            case 2 -> new Item(15328, 1);
+            case 3 -> new Item(12630, 1);
+            case 4 -> new Item(23330, 1);
+            case 5 -> new Item(15230, 1);
+            case 6 -> new Item(15231, 1);
+            case 7 -> new Item(15232, 1);
+            case 8 -> new Item(15234, 1);
+            case 9 -> new Item(15233, 1);
+            case 10 -> new Item(23276, 1);
             default -> null;
         };
+    }
+
+    public void addCertificate(){
+        exp += 5;
+        reCalculate();
     }
 
     public int calculatePack() {
@@ -195,25 +201,24 @@ public class VIP {
         }
     }
 
+    @Getter
     enum VIPPacks {
-        PACK_1(50, new int[]{20501}, new int[]{1}),
-        PACK_2(100, new int[]{20502}, new int[]{1}),
-        PACK_3(150, new int[]{1}, new int[]{1}),
-        PACK_4(200, new int[]{1}, new int[]{5}),
-        PACK_5(250, new int[]{20506}, new int[]{2}),
-        PACK_6(300, new int[]{1}, new int[]{10}),
-        PACK_7(350, new int[]{1}, new int[]{10}),
-        PACK_8(400, new int[]{1}, new int[]{10}),
+        PACK_1(50, new int[]{23250}, new int[]{1}),
+        PACK_2(100, new int[]{23251}, new int[]{1}),
+        PACK_3(150, new int[]{23252}, new int[]{1}),
+        PACK_4(200, new int[]{20502}, new int[]{2}),
+        PACK_5(250, new int[]{23255}, new int[]{2}),
+        PACK_6(300, new int[]{23107}, new int[]{5}),
+        PACK_7(350, new int[]{23148}, new int[]{5}),
+        PACK_8(400, new int[]{23147}, new int[]{3}),
         PACK_9(500, new int[]{3686}, new int[]{1}),
-        PACK_10(600, new int[]{1}, new int[]{2}),
-        PACK_11(700, new int[]{20501}, new int[]{4}),
-        PACK_12(800, new int[]{20490}, new int[]{2}),
-        PACK_13(900, new int[]{1}, new int[]{5}),
-        PACK_14(1000, new int[]{1}, new int[]{1})
+        PACK_10(600, new int[]{23256}, new int[]{5}),
+        PACK_11(700, new int[]{23257}, new int[]{3}),
+        PACK_12(800, new int[]{23258}, new int[]{2}),
+        PACK_13(900, new int[]{23059}, new int[]{1}),
+        PACK_14(1000, new int[]{23259}, new int[]{3})
         ;
-        @Getter
         final int amount;
-        @Getter
         final int[] items, amounts;
         VIPPacks(int amount , int[] items, int[] amounts){
             this.amount = amount;

@@ -40,11 +40,6 @@ public class PlayerPanel {
         EventPanel.refresh(player);
         int interfaceID = 111201;
         int players = World.getPlayers().size() + GameSettings.players;
-        String[] add = new String[World.handler.getEvents().size()];
-        int n = 0;
-        for(Event event : World.handler.getEvents()){
-            add[n++] = event.name();
-        }
         String[] Messages = new String[]{
                 //
                 "@whi@Main",
@@ -56,21 +51,14 @@ public class PlayerPanel {
                         ( ServerPerks.getInstance().getActivePerk() != null ?
                                 ServerPerks.getInstance().getActivePerk().getName() :
                                 "N/A"),
-                "@whi@Well of Globals: @yel@VIP : "+GlobalBossManager.getInstance().getWells().get("VIP")+" / 50",
-                "@whi@Vote Boss: @yel@"+ World.attributes.getAmount("vote-boss")+" / 50",
-                "@whi@Donation Boss: @yel@"+ World.attributes.getAmount("donation-boss")+" / 50",
                 "@whi@Bonus Xp: @yel@" + (player.getTimers().get("double-damage") == null ? 0 :(Misc.format((int) player.getTimers().get("vote-xp").returnLeft() / (1000 * 60)) == null ? "0" : Misc.format((int) (player.getTimers().get("vote-xp").returnLeft() / (1000 * 60)))) + " minutes left"),
+                ""
         };
 
 
         for (String string : Messages) {
             player.getPacketSender().sendString(interfaceID++, string);
         }
-        for (String s : add) {
-            player.getPacketSender().sendString(interfaceID++, s);
-        }
-
-
 
         interfaceID = 111401;
 
@@ -92,7 +80,8 @@ public class PlayerPanel {
                 "@whi@Total Votes: @yel@ " + player.getPoints().get("voted"),
                 "@whi@VIP Points: @yel@" + player.getPlayerVIP().getPoints(),
                 "@whi@VIP Exp: @yel@" + player.getPlayerVIP().getExp(),
-                "@whi@Pack Exp: @yel@" + player.getPlayerVIP().getPackXp()
+                "@whi@Pack Exp: @yel@" + player.getPlayerVIP().getPackXp(),
+                ""
         };
 
         for (String message : Messages) {
@@ -110,6 +99,8 @@ public class PlayerPanel {
                         : "@whi@Task: @yel@None"),
                 "@whi@Amount: @yel@" + (player.getSlayer().getTask() != null ? player.getSlayer().getTask().getAmount() - player.getSlayer().getTask().getSlayed() : 0),
                 "@whi@Streak: @yel@" + player.getSlayer().getStreak(),
+                "",
+                ""
         };
 
         for (String message : Messages) {

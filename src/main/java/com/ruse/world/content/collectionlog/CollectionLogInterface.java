@@ -3,6 +3,7 @@ package com.ruse.world.content.collectionlog;
 import com.ruse.model.Item;
 import com.ruse.model.definitions.NpcDefinition;
 import com.ruse.util.Misc;
+import com.ruse.world.World;
 import com.ruse.world.content.KillsTracker;
 import com.ruse.world.content.TeleportInterface;
 import com.ruse.world.content.teleport.TeleInterfaceData;
@@ -142,6 +143,10 @@ public class CollectionLogInterface {
     public boolean handleButton(int buttonId) {
         if(player.getInterfaceId() == INTERFACE_ID) {
             if(buttonId == 30712) {
+                if(!World.attributes.getSetting("collection")){
+                    player.getPacketSender().sendMessage("The collection log is currently disabled.");
+                    return true;
+                }
                 int npcId = currentlyViewing.get(currentIndex);
                 if(RewardClaim.REWARDS.get(npcId) == null) return true;
                 RewardClaim rewardClaim = rewardsClaims.computeIfAbsent(npcId, x -> new RewardClaim());

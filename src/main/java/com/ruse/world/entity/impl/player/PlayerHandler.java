@@ -29,6 +29,7 @@ import com.ruse.world.content.combat.range.DwarfMultiCannon;
 import com.ruse.world.content.combat.weapon.CombatSpecial;
 import com.ruse.world.content.grandLottery.GrandLottery;
 import com.ruse.world.content.johnachievementsystem.AchievementHandler;
+import com.ruse.world.content.skill.impl.summoning.BossPets;
 import com.ruse.world.content.tbdminigame.Lobby;
 import com.ruse.world.packages.clans.ClanManager;
 import com.ruse.world.packages.instances.InstanceManager;
@@ -385,6 +386,10 @@ public class PlayerHandler {
 
         World.handler.onLogin(player);
 
+        if(player.getVariables().getIntValue("summon-npc") != -1){
+            player.getSummoning().summonPet(BossPets.BossPet.forSpawnId(player.getVariables().getIntValue("summon-npc")), true);
+        }
+
         if(!player.newPlayer() && player.getPSecurity().securityScore() <= 59){
             player.getPSecurity().sendInterface();
         }
@@ -471,7 +476,6 @@ public class PlayerHandler {
                 StaffList.updateGlobalInterface();
                 Hunter.handleLogout(player);
                 Locations.logout(player);
-                player.getSummoning().unsummon(false, false);
                 player.getFarming().save();
                 BountyHunter.handleLogout(player);
                 ClanManager.getManager().leave(player, false);
@@ -479,6 +483,21 @@ public class PlayerHandler {
                 PlayersOnlineInterface.remove(player);
                 TaskManager.cancelTasks(player.getCombatBuilder());
                 TaskManager.cancelTasks(player);
+
+//                if (player.getSummoning().getFamiliar() != null && player.getSummoning().getFamiliar().getSummonNpc() != null) {
+//                    final int spawnId = player.getSummoning().getFamiliar().getSummonNpc().getId();
+//                    World.deregister(player.getSummoning().getFamiliar().getSummonNpc());
+//                    BossPets.BossPet pet = BossPets.BossPet.forSpawnId(spawnId);
+//                    if(pet != null){
+//                        System.out.println("Pet: " + pet.name() + " is being saved.");
+//                            if (player.getInventory().getFreeSlots() < 1) {
+//                                player.getPacketSender().sendMessage("Your familiar has been sent to your bank.");
+//                                player.getBank(player.getCurrentBankTab()).add(pet.itemId, 1);
+//                            } else {
+//                                player.getInventory().add(pet.itemId, 1);
+//                            }
+//                    }
+//                }
 
                 player.save();
 

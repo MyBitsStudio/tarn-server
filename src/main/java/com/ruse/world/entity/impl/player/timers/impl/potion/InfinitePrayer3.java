@@ -19,7 +19,7 @@ public class InfinitePrayer3 extends PotionTimer {
     public void applyEffect() {
         getPlayer().getSkillManager().setCurrentLevel(Skill.PRAYER,
                 getPlayer().getSkillManager().getCurrentLevel(Skill.PRAYER)
-                        + 100);
+                        + 160);
         if (getPlayer().getSkillManager().getCurrentLevel(Skill.PRAYER) > getPlayer().getSkillManager()
                 .getMaxLevel(Skill.PRAYER))
             getPlayer().getSkillManager().setCurrentLevel(Skill.PRAYER,

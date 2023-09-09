@@ -45,6 +45,8 @@ public class PlayerVariables {
         settings.put("monic-damage", false);
         settings.put("monic-prayer", false);
 
+        settings.put("summon-npc", Integer.parseInt("-1"));
+
         settings.put("item-chosen", Integer.parseInt("-1"));
 
         settings.put("last-button", System.currentTimeMillis());

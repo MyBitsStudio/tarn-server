@@ -6,12 +6,12 @@ import com.ruse.world.content.EffectTimer;
 import com.ruse.world.entity.impl.player.Player;
 import com.ruse.world.entity.impl.player.timers.impl.PotionTimer;
 
-public class InfinitePrayer1 extends PotionTimer {
+public class InfinitePrayer extends PotionTimer {
 
-    public InfinitePrayer1(){
+    public InfinitePrayer(){
         super(null, 0);
     }
-    public InfinitePrayer1(Player player) {
+    public InfinitePrayer(Player player) {
         super(player, DAYS);
     }
 
@@ -19,7 +19,7 @@ public class InfinitePrayer1 extends PotionTimer {
     public void applyEffect() {
         getPlayer().getSkillManager().setCurrentLevel(Skill.PRAYER,
                 getPlayer().getSkillManager().getCurrentLevel(Skill.PRAYER)
-                        + 40);
+                        + 500);
         if (getPlayer().getSkillManager().getCurrentLevel(Skill.PRAYER) > getPlayer().getSkillManager()
                 .getMaxLevel(Skill.PRAYER))
             getPlayer().getSkillManager().setCurrentLevel(Skill.PRAYER,
@@ -35,12 +35,13 @@ public class InfinitePrayer1 extends PotionTimer {
     public Animation getAnimation() {
         return new Animation(829);
     }
+
     @Override
     public void finish() {
         getPlayer().sendMessage("Your prayer potion has ran out.");
     }
     @Override
     public String getName() {
-        return "inf-pray-1";
+        return "inf-pray";
     }
 }

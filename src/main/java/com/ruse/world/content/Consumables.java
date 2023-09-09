@@ -292,6 +292,9 @@ public class Consumables {
                 case 23123: //T3
                     player.getTimers().register(new InfinitePrayer3(player));
                     break;
+                case 15330: //T3
+                    player.getTimers().register(new InfinitePrayer(player));
+                    break;
 
                 //Overload potions
                 case 23124: //T1
@@ -302,6 +305,9 @@ public class Consumables {
                     break;
                 case 23126: //T3
                     player.getTimers().register(new InfiniteOverload3(player));
+                    break;
+                case 15328: //Rage
+                    player.getTimers().register(new InfiniteRage(player));
                     break;
 
                 /**
@@ -1406,15 +1412,6 @@ public class Consumables {
                 /*
                  * Extreme Attack potions
                  */
-                case 15330:
-                    PotionHandler.drinkPotion(player, slot, PotionHandler.INF_OVERLOAD);
-                    return;
-                case 15331:
-                    PotionHandler.drinkPotion(player, slot, PotionHandler.SUPER_OVL_1);
-                    return;
-                case 15328:
-                    PotionHandler.drinkPotion(player, slot, PotionHandler.INFINITY_RAGE);
-                    return;
                 case 15329: //disabled -- super prayer pot
 //                    if (!drinkSuperOverload(player, slot, 229))
 //

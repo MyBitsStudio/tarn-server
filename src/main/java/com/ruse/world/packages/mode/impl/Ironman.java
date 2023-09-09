@@ -17,7 +17,7 @@ public class Ironman extends Gamemode {
 
     @Override
     public Item[] starterItems() {
-        return new Item[]{new Item(703, 1), new Item(704, 1), new Item(705, 1),
+        return new Item[]{new Item(16691, 1), new Item(17239, 1), new Item(16669, 1),
                 new Item(19946, 1), new Item(19945, 1), new Item(19914, 1),
                 new Item(19944, 1), new Item(21403, 1), new Item(23091, 1),
                 new Item(22084, 1), new Item(22092, 1), new Item(22083, 1),

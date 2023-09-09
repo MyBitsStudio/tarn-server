@@ -5,6 +5,7 @@ import com.ruse.world.content.equipmentenhancement.BoostType;
 import com.ruse.world.content.serverperks.ServerPerks;
 import com.ruse.world.content.skill.impl.summoning.BossPets;
 import com.ruse.world.entity.impl.player.Player;
+import com.ruse.world.packages.combat.CombatConstants;
 import org.jetbrains.annotations.NotNull;
 
 public class DropCalculator {
@@ -21,6 +22,16 @@ public class DropCalculator {
         if (player.getInventory().contains(21814)) {
             chance += player.getInventory().getAmount(21814);
         }
+        if (player.getEquipment().contains(12630)) {
+            chance += 250;
+        }
+        if (player.getEquipment().contains(23330)) {
+            chance += 250;
+        }
+        if(CombatConstants.wearingDonator(player)){
+            chance += 1000;
+        }
+
 
         if (PrayerHandler.isActivated(player,PrayerHandler.GNOMES_GREED)) {
             chance += 10;
@@ -64,6 +75,15 @@ public class DropCalculator {
         if (player.getInventory().contains(21815)) {
             chance += player.getInventory().getAmount(21815);
         }
+        if (player.getEquipment().contains(12630)) {
+            chance += 250;
+        }
+        if (player.getEquipment().contains(23330)) {
+            chance += 250;
+        }
+        if(CombatConstants.wearingDonator(player)){
+            chance += 1000;
+        }
 
         if (ServerPerks.getInstance().getActivePerk() == ServerPerks.Perk.DR || ServerPerks.getInstance().getActivePerk() == ServerPerks.Perk.ALL_PERKS) {
             chance *= 1.5;
@@ -79,6 +99,10 @@ public class DropCalculator {
 
         if(player.getVariables().getBooleanValue("vote-dr")){
             chance *= 1.25;
+        }
+
+        if(CombatConstants.wearingDonator(player)){
+            chance += 1000;
         }
 
         chance *= multiply(player);

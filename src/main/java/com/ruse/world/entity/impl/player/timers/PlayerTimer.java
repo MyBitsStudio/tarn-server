@@ -19,6 +19,8 @@ public enum PlayerTimer {
     INFINITE_PRAYER_1("inf-pray-1",new InfinitePrayer1()),
     INFINITE_PRAYER_2("inf-pray-2",new InfinitePrayer2()),
     INFINITE_PRAYER_3("inf-pray-3",new InfinitePrayer3()),
+    INFINITE_PRAYER("inf-pray",new InfinitePrayer()),
+    INFINITE_RAGE("inf-rage-1",new InfiniteRage()),
 
     DOUBLE_DR_HOUR("DoubleDRH", new DoubleDRHour()),
     DOUBLE_DDR_HOUR("DoubleDDRH", new DoubleDDRHour()),
