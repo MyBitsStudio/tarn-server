@@ -90,7 +90,7 @@ public class ItemActionPacketListener implements PacketListener {
         player.setInteractingItem(item);
 
         if(ItemDefinition.forId(itemId).getName().equalsIgnoreCase("none")){
-            System.out.println("Item name is none");
+            System.out.println("Item name is none "+itemId);
             return;
         }
 

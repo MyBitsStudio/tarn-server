@@ -72,7 +72,7 @@ public class StarterShop {
     public boolean handleShop(int inter, int option, int slot, int id){
         if(inter != -32507)
             return false;
-        System.out.println("Interface : "+inter+"Option: " + option + " Slot: " + slot + " Id: " + id);
+        //System.out.println("Interface : "+inter+"Option: " + option + " Slot: " + slot + " Id: " + id);
         StartShopItems item = getItem(id);
         if(item == null)
             return false;

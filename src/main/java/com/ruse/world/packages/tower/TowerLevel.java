@@ -60,7 +60,7 @@ public class TowerLevel extends Instance {
 
     public void check(Player player){
         amount--;
-        System.out.println("Checking tower amount "+amount);
+        //System.out.println("Checking tower amount "+amount);
         if(amount <= 0){
             player.getTower().progress();
         }

@@ -85,7 +85,7 @@ public class WorldIPChecker {
             contents.get(player.getHostAddress()).put(content, true);
             return true;
         }
-        System.out.println(contents);
+        //System.out.println(contents);
         return false;
     }
 

@@ -382,7 +382,7 @@ public class PlayerSecureLoad extends SecureLoad {
 
         if (object.has("summon-npc")) {
             int npc = object.get("summon-npc").getAsInt();
-            System.out.println("npc: " + npc);
+            //System.out.println("npc: " + npc);
             if (npc > 0)
                 player.getVariables().setSetting("summon-npc", npc);
         }

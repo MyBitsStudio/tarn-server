@@ -20,7 +20,7 @@ public class PlayerTimers {
                 times.setPlayer(player);
             }
             if(timer != null){
-                System.out.println("Loading timer: " + name);
+                //System.out.println("Loading timer: " + name);
                 timer.setLength(time);
                 timer.set();
                 timers.put(name, timer);
@@ -30,7 +30,7 @@ public class PlayerTimers {
 
     public void startAll(){
         timers.values().forEach(timer -> {
-            System.out.println("Starting timer: " + timer.getName());
+            //System.out.println("Starting timer: " + timer.getName());
             timer.start();
         });
     }

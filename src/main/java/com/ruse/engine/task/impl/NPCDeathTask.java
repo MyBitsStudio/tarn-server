@@ -237,7 +237,7 @@ public class NPCDeathTask extends Task {
 
     private void summoning(Player killer, int npcId){
         if(killer == null){
-            System.out.println("killer is null");
+            //System.out.println("killer is null");
             return;
         }
 

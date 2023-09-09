@@ -38,10 +38,10 @@ public class SeasonPassManager {
             System.out.println("EXP_MAP is empty");
             return;
         }
-        System.out.println("Adding exp "+npc+" "+EXP_MAP.get(npc));
+        //System.out.println("Adding exp "+npc+" "+EXP_MAP.get(npc));
         Integer amount = EXP_MAP.get(npc);
         if(amount == null) {
-            System.out.println("Amount is null");
+            //System.out.println("Amount is null");
             return;
         }
         seasonPass.incrementExp(amount, false);
