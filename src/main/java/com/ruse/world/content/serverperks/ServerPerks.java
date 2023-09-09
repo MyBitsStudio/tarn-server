@@ -22,11 +22,12 @@ public class ServerPerks {
 
     private static ServerPerks instance = null;
     private final Map<Perk, Integer> contributions = new HashMap<>();
-    private final int TIME = 6000; // 1 hour
+    private final int TIME = 12000; // 1 hour
     public static final int INTERFACE_ID = 42050;
     public static final int OVERLAY_ID = 42112;
     private final Perk[] PERKS = Perk.values();
     private final Path FILE_PATH = Paths.get("./data/serverperks.txt");
+    @Getter
     private Perk activePerk;
     private int currentTime = 0;
     private boolean active = false;
@@ -42,10 +43,6 @@ public class ServerPerks {
         return instance;
     }
 
-    public Perk getActivePerk() {
-        return activePerk;
-    }
-
     public void open(Player player) {
         player.getPacketSender().sendInterface(INTERFACE_ID);
         player.setPerkIndex(0);
@@ -57,8 +54,8 @@ public class ServerPerks {
             player.sendMessage("@red@A perk is already active");
             return;
         }
-        if (!player.getInventory().contains(ItemDefinition.TOKEN_ID, amount)) {
-            amount = player.getInventory().getAmount(ItemDefinition.TOKEN_ID);
+        if (!player.getInventory().contains(995, amount)) {
+            amount = player.getInventory().getAmount(995);
         }
         int index = player.getPerkIndex();
         Perk perk = PERKS[index];
@@ -70,7 +67,7 @@ public class ServerPerks {
         int necessary = perk.getAmount();
         amount = Math.min(amount, necessary - current);
 
-        player.getInventory().delete(ItemDefinition.TOKEN_ID, amount);
+        player.getInventory().delete(995, amount);
         int total = contributions.merge(perk, amount, Integer::sum);
         updateInterface(player);
 
@@ -237,10 +234,10 @@ public class ServerPerks {
     public enum Perk {
         //DOUBLE_BONDS(0, 100000000, 1521), // TO DO
         // NPC_KILLS(2, 25000000, 1523),// DONE
-        DAMAGE("x1.5 Damage", 0, 100000, 1522),// DONE
-        DR("x1.5 Drop Rate Boost", 1, 100000, 1521),// DONE
-        XP("x3 EXP Boost", 2, 100000, 1524),// DONE
-        ALL_PERKS("All Perks", 3, 1500000, 1525),// DONE
+        DAMAGE("x1.5 Damage", 0, 250000, 1522),// DONE
+        DR("x1.5 Drop Rate Boost", 1, 1000000, 1521),// DONE
+        XP("x3 EXP Boost", 2, 500000, 1524),// DONE
+        ALL_PERKS("All Perks", 3, 5000000, 1525),// DONE
        // UPGRADE("x1.2 Upgrade Chance", 3, 500000000, 1525),// DONE
 
         ;

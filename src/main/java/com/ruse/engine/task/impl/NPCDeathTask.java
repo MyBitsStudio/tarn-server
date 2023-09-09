@@ -204,6 +204,8 @@ public class NPCDeathTask extends Task {
 
                                     }
 
+                                    npc.onDeath();
+
                                     if (killer == null) {
                                         World.deregister(npc);
                                     } else if (killer.getInstance() == null) {

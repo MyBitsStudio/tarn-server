@@ -35,6 +35,7 @@ public class StarterShop {
     }
 
     public void open(boolean refresh){
+        player.getPacketSender().sendInterfaceRemoval();
         reset();
         if(refresh)
             refresh();

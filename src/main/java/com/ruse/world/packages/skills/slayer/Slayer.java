@@ -63,7 +63,7 @@ public class Slayer {
     private void assignMaster(@NotNull Player player){
         int level = player.getSkillManager().getCurrentLevel(Skill.SLAYER);
         if(level >= 99){
-            master = SlayerMasters.SPECIAL;
+            master = SlayerMasters.ELITE;
         } else if(level >= 92){
             master = SlayerMasters.ELITE;
         } else if(level >= 76){
@@ -132,11 +132,12 @@ public class Slayer {
         List<SlayerMonsters> monsters = SlayerMonsters.forCategory(master.getCategory());
         boolean canAssign = monsters.stream().anyMatch(monster -> check(player, monster.getId()));
         if(canAssign) {
-            SlayerMonsters monster = monsters.stream().filter(mon -> check(player, mon.getId())).findFirst().orElse(null);
-            if(monster == null){
+            List<SlayerMonsters> monstera = monsters.stream().filter(mon -> check(player, mon.getId())).toList();
+            if(monstera.isEmpty()){
                 player.getPacketSender().sendMessage("There was an error assigning your task. Error : AST-7810");
                 return;
             }
+            SlayerMonsters monster = monstera.get(Misc.random(monstera.size() - 1));
             task = new SlayerTask(monster.getId(), Misc.random(monster.getRanges()[0], monster.getRanges()[1]));
             player.getPacketSender().sendMessage("You have been assigned to kill "+task.getAmount()+" "+ NpcDefinition.forId(monster.getId()).getName() +"s.");
         } else if (master.getCategory() == 0) {

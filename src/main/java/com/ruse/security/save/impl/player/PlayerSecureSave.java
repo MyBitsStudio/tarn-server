@@ -263,6 +263,7 @@ public class PlayerSecureSave extends SecureSave {
         object.add("starterRewards", builder.toJsonTree(player.getStarter().getRewards().getRewards()));
         object.add("starter-shop", builder.toJsonTree(player.getStarterShop().getItems()));
 
+
         object.add("charges", builder.toJsonTree(player.getItems().getCharges()));
 
         object.add("points", builder.toJsonTree(player.getPoints().getPoints()));

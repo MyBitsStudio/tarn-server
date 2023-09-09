@@ -84,12 +84,12 @@ public class CombatStrategies {
 
 
 		// Globals
-		STRATEGIES.put(9904, new SolakTheGreat());
-		STRATEGIES.put(3308, new SolakTheGreat());
-		STRATEGIES.put(9905, new SolakTheGreat());
-		STRATEGIES.put(8010, new SolakTheGreat());
-		STRATEGIES.put(587, new SolakTheGreat());
-		STRATEGIES.put(8013, new SolakTheGreat());
+		STRATEGIES.put(9904, new Eternal());
+		STRATEGIES.put(3308, new Eternal());
+		STRATEGIES.put(9905, new Eternal());
+		STRATEGIES.put(8010, new Eternal());
+		STRATEGIES.put(587, new Eternal());
+		STRATEGIES.put(8013, new Eternal());
 
 		DefaultMagicCombatStrategy defaultMagicStrategy = new DefaultMagicCombatStrategy();
 //		STRATEGIES.put(13, defaultMagicStrategy);

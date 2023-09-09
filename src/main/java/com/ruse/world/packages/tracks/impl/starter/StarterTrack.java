@@ -16,6 +16,8 @@ public class StarterTrack extends Track {
 
     private final Map<StarterTasks, Boolean> tasks = new HashMap<>();
 
+    private int level = 0;
+
     public StarterTrack(Player player) {
         super(player);
         setUp();
@@ -158,6 +160,7 @@ public class StarterTrack extends Track {
         player.getInventory().addDropIfFull(task.getReward().item(),
                 task.getReward().amount());
         player.sendMessage("@gre@ You have completed a starter task and received a reward!");
+        player.save();
     }
 
     public int getCompleted(){

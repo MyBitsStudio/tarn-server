@@ -2,6 +2,7 @@ package com.ruse.world.packages.globals;
 
 import com.ruse.model.Locations;
 import com.ruse.model.Position;
+import com.ruse.world.World;
 import com.ruse.world.content.achievement.Achievements;
 import com.ruse.world.content.dailytasks_new.DailyTask;
 import com.ruse.world.entity.impl.npc.NPC;
@@ -22,7 +23,7 @@ public abstract class GlobalBoss extends NPC {
     public abstract String dropMessage();
 
     public void handleDrop(){
-        for(Player player : getClosePlayers(25)){
+        for(Player player : World.getPlayers()){
             if(player == null || !player.isRegistered())
                 continue;
             if(player.getBossPlugin() == null)

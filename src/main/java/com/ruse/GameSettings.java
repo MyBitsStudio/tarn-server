@@ -8,7 +8,7 @@ import java.math.BigInteger;
 
 public class GameSettings {
 
-    public static final int GAME_VERSION = 14;
+    public static final int GAME_VERSION = 101;
     public static final int GAME_PORT = 43519;
     public static boolean LOCALHOST = false;
     public static boolean BOGO = false;

@@ -36,6 +36,10 @@ public abstract class Plugin {
         return vars.get("damage").getOrDefault(name, 0L);
     }
 
+    public Map<String, Long> getDamageMap(){
+        return vars.get("damage");
+    }
+
     public long getCount(String name){
         return vars.get("count").getOrDefault(name, 0L);
     }

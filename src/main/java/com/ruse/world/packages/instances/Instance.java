@@ -207,7 +207,6 @@ public abstract class Instance {
                 } else {
                     npcs.remove(en);
                 }
-                en.toNpc().onDeath();
             }
         } else if(en instanceof GameObject){
             objects.remove(en);

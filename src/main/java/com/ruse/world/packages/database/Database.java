@@ -78,7 +78,7 @@ public class Database {
         String name = Misc.formatPlayerName(player.getUsername());
         String sql = "SELECT * FROM retrievals WHERE username =?";
         List<Retrievals> retrieve = new ArrayList<>();
-        try (Connection con = ds.getConnection()){
+        try (Connection con = getConnection()){
             try (PreparedStatement stmt = con.prepareStatement(sql)) {
                 stmt.setString(1, name);
                 try (ResultSet rs = stmt.executeQuery()) {
@@ -101,7 +101,7 @@ public class Database {
         String name = Misc.formatPlayerName(player.getUsername());
         String sql = "SELECT * FROM core_votes WHERE username =?";
         List<VoteRedeem> votes = new ArrayList<>();
-        try (Connection con = ds.getConnection()){
+        try (Connection con = getConnection()){
             try (PreparedStatement stmt = con.prepareStatement(sql)) {
                 stmt.setString(1, name);
                 try (ResultSet rs = stmt.executeQuery()) {
@@ -126,7 +126,7 @@ public class Database {
         String name = Misc.formatPlayerName(player.getUsername());
         String sql = "SELECT * FROM payments WHERE player =?";
         List<DonateRedeem> votes = new ArrayList<>();
-        try (Connection con = ds.getConnection()){
+        try (Connection con = getConnection()){
             try (PreparedStatement stmt = con.prepareStatement(sql)) {
                 stmt.setString(1, name);
                 try (ResultSet rs = stmt.executeQuery()) {

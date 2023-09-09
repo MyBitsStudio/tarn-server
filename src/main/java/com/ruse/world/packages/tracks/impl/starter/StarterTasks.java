@@ -144,9 +144,9 @@ public enum StarterTasks {
     TASK_119(2, 40,"Kill 100 Panther", new TaskReward(23256, 2)
             , 3305, 100),
     TASK_120(2, 10,"Kill 1 Warrior", new TaskReward(23209, 1)
-            , 1746, 1),
+            , 125, 1),
     TASK_121(2, 40,"Kill 100 Warrior", new TaskReward(23256, 5)
-            , 1746, 100),
+            , 125, 100),
 
     TASK_150(3, 10,"Clear LVL 5 Tarn Tower", new TaskReward(23253, 1)
             , -1, 5),

@@ -20,10 +20,7 @@ public abstract class TrackRewards {
     }
 
     public void setRewards(@NotNull List<ProgressReward> rewards) {
-        for(ProgressReward reward : rewards)
-            if(reward != null)
-                if(this.rewards.contains(reward))
-                    this.rewards.set(this.rewards.indexOf(reward), reward);
+        this.rewards = rewards;
     }
 
     public void claimRewards(Player player, int position, boolean premium, boolean premiumUnlock){
@@ -55,6 +52,7 @@ public abstract class TrackRewards {
                 }
             }
         }
+        player.save();
     }
 
 }
