@@ -1,6 +1,7 @@
 package com.ruse.world.packages.voting;
 
 import com.ruse.engine.GameEngine;
+import com.ruse.io.ThreadProgressor;
 import com.ruse.util.Misc;
 import com.ruse.world.World;
 import com.ruse.world.content.achievement.Achievements;
@@ -17,11 +18,11 @@ public class VoteHandler {
 
     public static void processVote(@NotNull Player player){
         try {
-            GameEngine.submit(() -> {
+            ThreadProgressor.submit(true, () -> {
                 List<VoteRedeem> voteRedeems = World.database.redeemVotes(player);
                 if(voteRedeems.isEmpty()){
                     player.getPacketSender().sendMessage("You have no votes to redeem.");
-                    return;
+                    return null;
                 }
                 for(VoteRedeem redeem : voteRedeems){
                     try {
@@ -36,6 +37,7 @@ public class VoteHandler {
                     checkBoss();
                 }
                 player.save();
+                return null;
             });
         } catch (Exception e) {
             e.printStackTrace();

@@ -1,6 +1,7 @@
 package com.ruse.world.packages.vip;
 
 import com.ruse.engine.GameEngine;
+import com.ruse.io.ThreadProgressor;
 import com.ruse.security.save.impl.server.PlayerDonationSave;
 import com.ruse.world.World;
 import com.ruse.world.entity.impl.player.Player;
@@ -22,11 +23,11 @@ public class VIPManager {
 
     public static void claim(Player player){
         try {
-            GameEngine.submit(() -> {
+            ThreadProgressor.submit(true, () -> {
                 List<DonateRedeem> donateRedeems = World.database.redeemDonate(player);
                 if(donateRedeems.isEmpty()){
                     player.getPacketSender().sendMessage("You have no donations to redeem.");
-                    return;
+                    return null;
                 }
                 for(DonateRedeem redeem : donateRedeems){
                     try {
@@ -42,6 +43,7 @@ public class VIPManager {
                     handleSpecialActive(player, redeem.amount());
                     handleDonationBoss(redeem.amount());
                 }
+                return null;
             });
         } catch (Exception e) {
             e.printStackTrace();

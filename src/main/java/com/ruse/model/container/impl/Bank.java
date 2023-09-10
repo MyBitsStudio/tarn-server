@@ -160,6 +160,7 @@ public class Bank extends ItemContainer {
 			if (item.getAmount() <= 0) {
 				// Placeholder
 				getItems()[slot].setId(-1);
+				getItems()[slot].setUid("");
 				refreshItems();
 				return this;
 			}
@@ -208,11 +209,13 @@ public class Bank extends ItemContainer {
 			if(slot == -1)
 				return this;
 
-			if(getItems()[slot].getAmount() - amount <= 0){
-				if(leavePlaceHolder)
+			if(getItems()[slot].getAmount() - amount <= 0) {
+				if (leavePlaceHolder){
 					getItems()[slot].setAmount(0);
-				else{
+				getItems()[slot].setUid("");
+			}else{
 					getItems()[slot].setId(-1);
+					getItems()[slot].setUid("");
 				}
 			} else {
 				getItems()[slot].setAmount(getItems()[slot].getAmount() - amount);

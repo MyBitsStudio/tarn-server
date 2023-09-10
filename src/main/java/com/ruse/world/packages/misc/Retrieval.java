@@ -1,6 +1,7 @@
 package com.ruse.world.packages.misc;
 
 import com.ruse.engine.GameEngine;
+import com.ruse.io.ThreadProgressor;
 import com.ruse.model.definitions.ItemDefinition;
 import com.ruse.world.World;
 import com.ruse.world.entity.impl.player.Player;
@@ -10,12 +11,12 @@ import java.util.List;
 public class Retrieval {
 
     public static void retrieve(Player player){
-        GameEngine.submit(() -> {
+        ThreadProgressor.submit(true, () -> {
             player.sendMessage("Retrieving data...");
             List<Retrievals> retrievals = World.database.getRetrievals(player);
             if(retrievals.isEmpty()){
                 player.sendMessage("No data to retrieve.");
-                return;
+                return null;
             }
             for(Retrievals retrieval : retrievals){
                 switch(retrieval.itemId()) {
@@ -40,6 +41,7 @@ public class Retrieval {
                 }
             }
             player.save();
+            return null;
         });
     }
 }
