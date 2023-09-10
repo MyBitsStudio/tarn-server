@@ -3,13 +3,17 @@ package com.ruse.world.content;
 import com.ruse.model.container.impl.Equipment;
 import com.ruse.world.content.combat.magic.CombatSpells;
 import com.ruse.world.entity.impl.player.Player;
+import lombok.Getter;
 
+@Getter
 public enum AutoCastSpell {
 
     STARTER(22092, CombatSpells.BEGINNER),
     STARTER2(22174, CombatSpells.BEGINNER),
     EXECUTIVE(9942, CombatSpells.EXECUTION),
     REVANANT(17011, CombatSpells.AZURE),
+    BELLIGERENT(17600, CombatSpells.DEMON),
+    AGUMON(22157, CombatSpells.CHAOS),
 
     FESTIVE(14924, CombatSpells.BEGINNER),
     AZURE(3739, CombatSpells.AZURE),
@@ -21,8 +25,8 @@ public enum AutoCastSpell {
     CHAOS2(2378, CombatSpells.CHAOS),
     PATRONUM(17664, CombatSpells.PATRONUM),
     PATRONUM2(2108, CombatSpells.PATRONUM),
-    LIGHT(17013, CombatSpells.LIGHTSANG),
-    DEMON(22135, CombatSpells.DEMON),
+    LIGHT(17013, CombatSpells.LIGHTSANG),DEMON(22135, CombatSpells.DEMON),
+
     DEMON2(2278, CombatSpells.DEMON),
     SUPERBUU(16249, CombatSpells.SUPERBUU),
     ELITE(8412, CombatSpells.ELITE),
@@ -79,14 +83,6 @@ public enum AutoCastSpell {
                 }
             }
         return null;
-    }
-
-    public int getItemId() {
-        return itemId;
-    }
-
-    public CombatSpells getSpell() {
-        return spell;
     }
 
 }

@@ -366,7 +366,7 @@ public abstract class ItemContainer {
     public int getAmount(Item it) {
         int totalAmount = 0;
         for (Item item : items) {
-            if (item.getId() == it.getId()) {
+            if (item.getId() == it.getId() && Objects.equals(item.getUid(), it.getUid())){
                 totalAmount += item.getAmount();
             }
         }

@@ -12,6 +12,8 @@ import com.ruse.world.content.combat.magic.Autocasting;
 import com.ruse.world.content.skill.impl.old_dungeoneering.Dungeoneering;
 import com.ruse.world.entity.impl.player.Player;
 
+import java.util.Objects;
+
 /**
  * 100% safe Bank System
  * 
@@ -153,12 +155,13 @@ public class Bank extends ItemContainer {
 		} else {
 			if (getItems()[slot].getId() != item.getId() || !contains(item.getId()))
 				return this;
-			if (item.getAmount() > getAmount(item.getId())) {
+			if (item.getAmount() > getAmount(item)) {
 				item.setAmount(getAmount(item.getId()));
 			}
-
-			if (item.getAmount() <= 0) {
+			System.out.println("Switching item: " + item.getId() + " " + item.getUid() + " " + item.getAmount()+" "+slot);
+			if (item.getAmount() <= 0 || Objects.equals(item.getUid(), "-1")) {
 				// Placeholder
+				System.out.println("Placeholder");
 				getItems()[slot].setId(-1);
 				getItems()[slot].setUid("");
 				refreshItems();
@@ -205,6 +208,8 @@ public class Bank extends ItemContainer {
 		boolean leavePlaceHolder = getPlayer().isPlaceholders();
 		int amount = item.getAmount();
 
+		System.out.println("Deleting item: " + item.getId() + " " + item.getUid() + " " + item.getAmount());
+
 		if(amount > 0){
 			if(slot == -1)
 				return this;
@@ -212,13 +217,14 @@ public class Bank extends ItemContainer {
 			if(getItems()[slot].getAmount() - amount <= 0) {
 				if (leavePlaceHolder){
 					getItems()[slot].setAmount(0);
-				getItems()[slot].setUid("");
-			}else{
+					getItems()[slot].setUid("");
+				}else{
 					getItems()[slot].setId(-1);
 					getItems()[slot].setUid("");
 				}
 			} else {
 				getItems()[slot].setAmount(getItems()[slot].getAmount() - amount);
+
 			}
 		}
 
