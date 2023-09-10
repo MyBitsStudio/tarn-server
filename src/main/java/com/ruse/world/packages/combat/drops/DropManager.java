@@ -201,7 +201,7 @@ public class DropManager {
             }
             log(player, npc, finalDrop, item.getAmount());
 
-            if(collector){
+            if(collector || hasLoot){
                 player.depositItemBank(item);
                 player.sendMessage("Your loot has been sent to your bank.");
             } else {
@@ -229,7 +229,7 @@ public class DropManager {
             }
             log(player, npc, finalDrop2, item2.getAmount());
 
-            if(collector){
+            if(collector || hasLoot){
                 player.depositItemBank(item2);
                 player.sendMessage("Your loot has been sent to your bank.");
             } else {

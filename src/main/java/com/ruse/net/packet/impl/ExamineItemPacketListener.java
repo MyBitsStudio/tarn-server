@@ -25,7 +25,7 @@ public class ExamineItemPacketListener implements PacketListener {
 		int item = packet.readShort();
 		int slot = packet.readByte();
 		Item items = null;
-		System.out.println("Item: " + item + " Slot: " + slot+" "+player.getInterfaceId());
+		//System.out.println("Item: " + item + " Slot: " + slot+" "+player.getInterfaceId());
 		if(player.isBanking()){
 			items = player.getBank(player.getCurrentBankTab()).getItems()[slot];
 		} else if(player.getTrading().inTrade()) {
@@ -55,7 +55,7 @@ public class ExamineItemPacketListener implements PacketListener {
 			Offer offer = player.getTradingPost().getViewingOfferList().get(slot);
 			items = new Item(offer.getItemId(), 1, offer.getUid());
 		} else if(player.getInterfaceId() == TradingPost.MAIN_INTERFACE_ID){
-			System.out.println(player.getTradingPost().getMyOfferList().get(slot));
+			//System.out.println(player.getTradingPost().getMyOfferList().get(slot));
 			Offer offer = player.getTradingPost().getMyOfferList().get(slot);
 			items = new Item(offer.getItemId(), 1, offer.getUid());
 		} else {

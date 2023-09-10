@@ -7,6 +7,7 @@ import com.ruse.world.content.achievement.Achievements;
 import com.ruse.world.content.dailytasks_new.DailyTask;
 import com.ruse.world.entity.impl.npc.NPC;
 import com.ruse.world.entity.impl.player.Player;
+import com.ruse.world.packages.combat.drops.DropManager;
 import org.jetbrains.annotations.NotNull;
 
 public abstract class GlobalBoss extends NPC {
@@ -33,6 +34,7 @@ public abstract class GlobalBoss extends NPC {
             player.getPacketSender().sendMessage(dropMessage());
             Achievements.doProgress(player, Achievements.Achievement.KILL_45_GLOBAL_BOSSES);
             player.getBossPlugin().setDamage(this.getDefinition().getName(), 0L);
+            DropManager.getManager().sendDrop(this, player, 1.0);
         }
     }
 
