@@ -28,7 +28,7 @@ public class EffectHandler {
                     p.getEquipment().getSlotBonuses()[Equipment.WEAPON_SLOT].getBonus() * 3);
         }
         if(p.getEquipment().hasFirewall()){
-            TaskManager.submit(new FireWall(p, p.getPosition().getX(), p.getPosition().getY(), 5));
+           handleFirewall(p, victim);
         }
         if(p.getEquipment().hasDoubleShot()){
             long calc = Misc.inclusiveRandom(100, 1000 * 5);
@@ -112,6 +112,62 @@ public class EffectHandler {
                 next.dealDamage(new Hit(calc, Hitmask.RED, CombatIcon.MAGIC));
                 next.setAggressive(true);
                 next.getCombatBuilder().setLastAttacker(attacker);
+                next.getCombatBuilder().addDamage(attacker, calc);
+                next.getCombatBuilder().attack(attacker);
+            }
+        }
+
+    }
+
+    private static void handleFirewall(Character attacker, Character victim) {
+
+        // if no radius, loc isn't multi, stops.
+        if (!Locations.Location.inMulti(victim)) {
+            return;
+        }
+
+        // We passed the checks, so now we do multiple target stuff.
+
+        for (NPC next : ((Player) attacker).getLocalNpcs()) {
+            if (next == null) {
+                continue;
+            }
+
+            if (next.isNpc()) {
+                if (!next.getDefinition().isAttackable() || next.isSummoningNpc()) {
+                    continue;
+                }
+            } else {
+                continue;
+            }
+
+            if (next.getPosition().isWithinDistance(victim.getPosition(), 6) && !next.equals(attacker)
+                    && !next.equals(victim) && next.getConstitution() > 0) {
+                if (next.isNpc() && next.getConstitution() <= 0 && next.isDying()) {
+                    continue;
+                }
+                if (!RegionClipping.canProjectileAttack(attacker, next)) {
+                    continue;
+                }
+
+                if(!Locations.Location.inMulti(attacker)) return;
+
+                long maxhit = switch (((Player) attacker).getLastCombatType()) {
+                    case MELEE -> MeleeMax.newMelee(attacker, victim) / 10;
+                    case RANGED -> RangeMax.newRange(attacker, victim) / 10;
+                    case MAGIC -> MagicMax.newMagic(attacker, victim) / 10;
+                    default -> 10000;
+                };
+
+                next.performGraphic(new Graphic(453));
+                long calc = Misc.inclusiveRandom(500, maxhit);
+                next.dealDamage(new Hit(calc, Hitmask.RED, CombatIcon.MAGIC));
+                next.dealDamage(new Hit(calc, Hitmask.RED, CombatIcon.MAGIC));
+                next.dealDamage(new Hit(calc, Hitmask.RED, CombatIcon.MAGIC));
+                next.setAggressive(true);
+                next.getCombatBuilder().setLastAttacker(attacker);
+                next.getCombatBuilder().addDamage(attacker, calc);
+                next.getCombatBuilder().addDamage(attacker, calc);
                 next.getCombatBuilder().addDamage(attacker, calc);
                 next.getCombatBuilder().attack(attacker);
             }
