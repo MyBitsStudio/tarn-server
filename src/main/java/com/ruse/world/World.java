@@ -29,7 +29,6 @@ import com.ruse.world.entity.impl.player.PlayerHandler;
 import com.ruse.world.entity.updating.NpcUpdateSequence;
 import com.ruse.world.entity.updating.PlayerUpdateSequence;
 import com.ruse.world.entity.updating.UpdateSequence;
-import com.ruse.world.packages.database.Database;
 import com.ruse.world.packages.event.WorldEventHandler;
 import com.ruse.world.packages.globals.GlobalBossManager;
 import com.ruse.world.packages.shops.ShopHandler;
@@ -68,10 +67,6 @@ public class World {
     private static final CharacterList<NPC> npcs = new CharacterList<>(GameSettings.npcCharacterListCapacity);
 
 
-    public static Database database = new Database();
-    /**
-     * Used to block the game thread until updating has completed.
-     */
     private static final Phaser synchronizer = new Phaser(1);
 
     public static WorldEventHandler handler = new WorldEventHandler();
@@ -307,15 +302,6 @@ public class World {
         WorldTimers.sequence();
 
         handler.runRandomEvent();
-
-        ThreadProgressor.submit(true, () -> {
-            try {
-                database.executeStatementQueue();
-            } catch (SQLException e) {
-                throw new RuntimeException(e);
-            }
-            return null;
-        });
 
         // First we construct the update sequences.
         UpdateSequence<Player> playerUpdate = new PlayerUpdateSequence(synchronizer, updateExecutor);

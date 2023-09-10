@@ -1,13 +1,13 @@
 package com.ruse.world.packages.tradingpost;
 
+import com.ruse.io.database.models.TradingPostStatement;
+import com.ruse.io.database.models.impl.TradingPostDataStore;
 import com.ruse.model.Item;
 import com.ruse.model.definitions.ItemDefinition;
 import com.ruse.model.input.EnterAmount;
 import com.ruse.util.Misc;
 import com.ruse.world.World;
 import com.ruse.world.packages.tradingpost.models.*;
-import com.ruse.world.packages.tradingpost.persistance.Database;
-import com.ruse.world.packages.tradingpost.persistance.SQLDatabase;
 import com.ruse.world.entity.impl.player.Player;
 import com.ruse.world.packages.dialogue.DialogueManager;
 import com.ruse.world.packages.dialogue.impl.tp.CancelTPOptions;
@@ -28,10 +28,10 @@ public class TradingPost {
     private static final HashMap<Integer, LinkedList<History>> ITEM_HISTORIES = new HashMap<>();
     private static final HashMap<String, Coffer> COFFERS = new HashMap<>();
 
-    private static final Database DATABASE;
+    private static final TradingPostStatement DATABASE;
 
     static {
-        DATABASE = new SQLDatabase();
+        DATABASE = new TradingPostDataStore();
     }
 
     private final Player player;

@@ -1,50 +1,26 @@
 package com.ruse.world.packages.voting;
 
-import com.ruse.engine.GameEngine;
-import com.ruse.io.ThreadProgressor;
+import com.ruse.io.database.models.DatabaseRequestStatement;
+import com.ruse.io.database.models.impl.VoteClaim;
 import com.ruse.util.Misc;
 import com.ruse.world.World;
 import com.ruse.world.content.achievement.Achievements;
-import com.ruse.world.content.discordbot.JavaCord;
 import com.ruse.world.entity.impl.player.Player;
-import com.ruse.world.packages.database.model.VoteRedeem;
 import com.ruse.world.packages.globals.GlobalBossManager;
 import org.jetbrains.annotations.NotNull;
 
-import java.sql.SQLException;
-import java.util.List;
-
 public class VoteHandler {
 
+    public static DatabaseRequestStatement source = new VoteClaim();
     public static void processVote(@NotNull Player player){
         try {
-            ThreadProgressor.submit(true, () -> {
-                List<VoteRedeem> voteRedeems = World.database.redeemVotes(player);
-                if(voteRedeems.isEmpty()){
-                    player.getPacketSender().sendMessage("You have no votes to redeem.");
-                    return null;
-                }
-                for(VoteRedeem redeem : voteRedeems){
-                    try {
-                        World.database.executeStatement("UPDATE `core_votes` SET `claimed` = '1' WHERE `uid` = '" + redeem.uid() + "'");
-                    } catch (SQLException e) {
-                        throw new RuntimeException(e);
-                    }
-                    player.getPacketSender().sendMessage("Thank you for voting! Enjoy your reward!");
-                    JavaCord.sendMessage(1117224370587304057L, "**[" + player.getUsername() + "] Just voted for the server, thank you!**");
-                    add(player);
-                    progress(player);
-                    checkBoss();
-                }
-                player.save();
-                return null;
-            });
+           source.execute(player);
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    private static void checkBoss(){
+    public static void checkBoss(){
         World.attributes.setAmount("vote-boss", World.attributes.getAmount("vote-boss") + 1);
         if(World.attributes.getAmount("vote-boss") >= 100){
             if(World.npcIsRegistered(8013)){
@@ -55,14 +31,14 @@ public class VoteHandler {
         }
     }
 
-    private static void progress(Player player){
+    public static void progress(Player player){
         Achievements.doProgress(player, Achievements.Achievement.VOTE_10_TIMES, 1);
         Achievements.doProgress(player, Achievements.Achievement.VOTE_50_TIMES, 1);
         Achievements.doProgress(player, Achievements.Achievement.VOTE_100_TIMES, 1);
         player.getStarter().handleVote(player.getPoints().get("voted"));
     }
 
-    private static void add(@NotNull Player player){
+    public static void add(@NotNull Player player){
         int amount = World.attributes.getSetting("vote-bonus") ? 2 : 1;
         player.getInventory().add(23020, amount);
         player.getInventory().add(4000, amount);

@@ -1,3 +1,3 @@
-package com.ruse.world.packages.database.model;
+package com.ruse.io.database.records;
 public record VoteRedeem(int id, String uid) {
 }

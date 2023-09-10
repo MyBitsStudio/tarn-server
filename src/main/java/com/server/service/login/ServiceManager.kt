@@ -1,6 +1,7 @@
 package com.server.service.login
 
-import com.ruse.world.packages.tradingpost.concurrency.TradingPostService
+import com.ruse.io.ThreadProgressor
+
 
 /**
  * Manages all [Service] implementations used by the game.
@@ -13,7 +14,6 @@ object ServiceManager {
      * [Service] for handling login requests.
      */
     val loginService = LoginService()
-    val tradingPostService = TradingPostService();
 
     /**
      * Executes at the startup of the game, before any of the game assets are loaded.
@@ -21,6 +21,6 @@ object ServiceManager {
      */
     fun init(){
         loginService.init()
-        tradingPostService.init();
+        ThreadProgressor.initDatabase();
     }
 }

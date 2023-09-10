@@ -24,8 +24,8 @@ public class EffectHandler {
 
     public static void handlePlayerAttack(@NotNull Player p, Character victim){
         if (p.getEquipment().hasAoE()) {
-            GameEngine.submit(() -> handleAoE(p, victim,
-                    p.getEquipment().getSlotBonuses()[Equipment.WEAPON_SLOT].getBonus() * 3));
+            handleAoE(p, victim,
+                    p.getEquipment().getSlotBonuses()[Equipment.WEAPON_SLOT].getBonus() * 3);
         }
         if(p.getEquipment().hasFirewall()){
             TaskManager.submit(new FireWall(p, p.getPosition().getX(), p.getPosition().getY(), 5));
@@ -49,8 +49,8 @@ public class EffectHandler {
 
         if(p.getEquipment().getBonus() != null){
             if(Objects.equals(p.getEquipment().getBonus().perk(), AOE_3)){
-                GameEngine.submit(() -> handleAoE(p, victim,
-                        6));
+                handleAoE(p, victim,
+                        6);
             }
         }
 
@@ -62,8 +62,8 @@ public class EffectHandler {
 
     private static void handlePets(@NotNull Player player, NPC victim){
         if (player.getSummoning().getFamiliar().getSummonNpc().getId() == BossPets.BossPet.HEIMDALL_PET.getNpcId()) {
-            GameEngine.submit(() -> handleAoE(player, victim,
-                    6));
+           handleAoE(player, victim,
+                    6);
         }
     }
 
@@ -102,13 +102,13 @@ public class EffectHandler {
                 if(!Locations.Location.inMulti(attacker)) return;
 
                 long maxhit = switch (((Player) attacker).getLastCombatType()) {
-                    case MELEE -> MeleeMax.newMelee(attacker, victim) / 50;
-                    case RANGED -> RangeMax.newRange(attacker, victim) / 50;
-                    case MAGIC -> MagicMax.newMagic(attacker, victim) / 50;
+                    case MELEE -> MeleeMax.newMelee(attacker, victim) / 10;
+                    case RANGED -> RangeMax.newRange(attacker, victim) / 10;
+                    case MAGIC -> MagicMax.newMagic(attacker, victim) / 10;
                     default -> 10000;
                 };
 
-                long calc = Misc.inclusiveRandom(500, maxhit * 5);
+                long calc = Misc.inclusiveRandom(500, maxhit);
                 next.dealDamage(new Hit(calc, Hitmask.RED, CombatIcon.MAGIC));
                 next.setAggressive(true);
                 next.getCombatBuilder().setLastAttacker(attacker);

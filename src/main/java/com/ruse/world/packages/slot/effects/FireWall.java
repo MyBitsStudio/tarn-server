@@ -44,7 +44,7 @@ public class FireWall extends Task {
 
             if (next.getPosition().isWithinDistance(player.getPosition(), width)) {
                 next.performGraphic(new Graphic(453));
-                long maxHit = MagicMax.newMagic(player, next) / 25;
+                long maxHit = MagicMax.newMagic(player, next) / 10;
                 next.dealDamage(new Hit(maxHit));
                 next.setAggressive(true);
                 next.getCombatBuilder().setLastAttacker(player);
