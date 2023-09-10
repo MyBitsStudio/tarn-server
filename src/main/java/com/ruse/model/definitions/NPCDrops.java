@@ -18,8 +18,8 @@
 //import com.ruse.world.content.collectionlog.CollectionEntry;
 //import com.ruse.world.content.combat.CombatBuilder.CombatDamageCache;
 //import com.ruse.world.content.combat.CombatFactory;
-//import com.ruse.world.content.discordbot.AdminCord;
-//import com.ruse.world.content.discordbot.JavaCord;
+//import com.ruse.world.packages.discordbot.AdminCord;
+//import com.ruse.world.packages.discordbot.JavaCord;
 //import com.ruse.world.content.equipmentenhancement.BoostType;
 //import com.ruse.world.content.minigames.impl.TreasureHunter;
 //import com.ruse.world.content.minigames.impl.VaultOfWar;

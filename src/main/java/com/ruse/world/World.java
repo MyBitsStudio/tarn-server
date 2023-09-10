@@ -2,22 +2,15 @@ package com.ruse.world;
 
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
 import com.ruse.GameSettings;
-import com.ruse.engine.GameEngine;
 import com.ruse.engine.task.Task;
 import com.ruse.engine.task.TaskManager;
-import com.ruse.io.ThreadProgressor;
 import com.ruse.model.MessageType;
 import com.ruse.model.Position;
 import com.ruse.net.security.ConnectionHandler;
 import com.ruse.util.NameUtils;
 import com.ruse.webhooks.discord.DiscordMessager;
 import com.ruse.world.content.*;
-import com.ruse.world.content.discordbot.Bot;
-import com.ruse.world.content.minigames.impl.FightPit;
-import com.ruse.world.content.minigames.impl.KeepersOfLight;
-import com.ruse.world.content.minigames.impl.PestControl;
-import com.ruse.world.content.randomevents.EvilTree;
-import com.ruse.world.content.randomevents.ShootingStar;
+import com.ruse.world.packages.discordbot.Bot;
 import com.ruse.world.content.serverperks.ServerPerks;
 import com.ruse.world.entity.Entity;
 import com.ruse.world.entity.EntityHandler;
@@ -40,7 +33,6 @@ import kotlin.Unit;
 import kotlin.jvm.functions.Function0;
 import org.jetbrains.annotations.NotNull;
 
-import java.sql.SQLException;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Objects;
@@ -295,7 +287,7 @@ public class World {
         GlobalBossManager.getInstance().process();
 
         ShopHandler.process();
-        Bot.updatePlayers();
+        //Bot.updatePlayers();
 
         ServerPerks.getInstance().tick();
 

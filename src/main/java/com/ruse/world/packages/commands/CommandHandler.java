@@ -1,7 +1,7 @@
 package com.ruse.world.packages.commands;
 
 import com.ruse.world.content.PlayerLogs;
-import com.ruse.world.content.discordbot.AdminCord;
+import com.ruse.world.packages.discordbot.AdminCord;
 import com.ruse.world.entity.impl.player.Player;
 import org.jetbrains.annotations.NotNull;
 

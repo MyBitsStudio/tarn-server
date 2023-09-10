@@ -16,7 +16,6 @@ import com.ruse.model.definitions.WeaponAnimations;
 import com.ruse.model.definitions.WeaponInterfaces;
 import com.ruse.model.definitions.WeaponInterfaces.WeaponInterface;
 import com.ruse.model.input.Input;
-import com.ruse.motivote3.doMotivote;
 import com.ruse.net.PlayerSession;
 import com.ruse.net.SessionState;
 import com.ruse.net.packet.PacketSender;
@@ -3845,14 +3844,6 @@ public class Player extends Character {
     public boolean isActive() {
         return true;
     }
-
-    public void setVoteCount(int voteCount) {
-        doMotivote.setVoteCount(voteCount);
-    }
-
-//    public void claimDonation(Player player, boolean fromLogin) {
-//        new Thread(new Donation(player)).start();
-//    }
 
 
     public void depositItemBank(Item item) {

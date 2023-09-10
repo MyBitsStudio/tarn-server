@@ -1,7 +1,6 @@
 package com.ruse.world.content;
 
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 import com.ruse.GameSettings;
@@ -12,7 +11,7 @@ import com.ruse.model.definitions.ItemDefinition;
 import com.ruse.util.Misc;
 import com.ruse.world.World;
 import com.ruse.world.content.PlayerPunishment.Jail;
-import com.ruse.world.content.discordbot.AdminCord;
+import com.ruse.world.packages.discordbot.AdminCord;
 import com.ruse.world.entity.impl.player.Player;
 
 /**

@@ -1,12 +1,8 @@
 package com.ruse.util.vpn;
 
-import com.ruse.world.content.discordbot.AdminCord;
-import com.ruse.world.entity.impl.player.Player;
 import io.ipgeolocation.api.Geolocation;
 import io.ipgeolocation.api.GeolocationParams;
-import org.jetbrains.annotations.NotNull;
 
-import static com.ruse.net.login.LoginResponses.*;
 import static com.ruse.security.tools.SecurityUtils.api;
 
 public class VPNTool {

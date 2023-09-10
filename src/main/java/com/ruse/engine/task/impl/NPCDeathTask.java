@@ -29,10 +29,6 @@ import com.ruse.world.content.globalBoss.GlobalBossHandler;
 import com.ruse.world.content.globalBoss.TheGeneral;
 import com.ruse.world.content.progressionzone.ProgressionZone;
 import com.ruse.world.packages.seasonpass.SeasonPassManager;
-import com.ruse.world.content.skeletalhorror.SkeletalHorror;
-import com.ruse.world.content.skill.impl.old_dungeoneering.Dungeoneering;
-import com.ruse.world.packages.voting.VoteBossDrop;
-import com.ruse.world.entity.impl.mini.MiniPlayer;
 import com.ruse.world.entity.impl.npc.NPC;
 import com.ruse.world.entity.impl.player.Player;
 

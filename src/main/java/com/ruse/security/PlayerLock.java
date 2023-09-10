@@ -4,7 +4,7 @@ import com.ruse.security.save.impl.player.PlayerLockLoad;
 import com.ruse.security.save.impl.player.PlayerLockSave;
 import com.ruse.security.tools.SecurityUtils;
 import com.ruse.world.World;
-import com.ruse.world.content.discordbot.AdminCord;
+import com.ruse.world.packages.discordbot.AdminCord;
 import com.ruse.world.entity.impl.player.Player;
 import org.jetbrains.annotations.NotNull;
 

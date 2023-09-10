@@ -25,28 +25,26 @@ import com.ruse.world.clip.region.RegionClipping;
 import com.ruse.world.content.*;
 import com.ruse.world.content.combat.effect.CombatPoisonEffect.CombatPoisonData;
 import com.ruse.world.content.combat.strategy.CombatStrategies;
-import com.ruse.world.content.discordbot.AdminCord;
-import com.ruse.world.content.discordbot.Bot;
-import com.ruse.world.content.discordbot.JavaCord;
+import com.ruse.world.packages.discord.BotManager;
+import com.ruse.world.packages.discordbot.AdminCord;
+import com.ruse.world.packages.discordbot.Bot;
+import com.ruse.world.packages.discordbot.JavaCord;
 import com.ruse.world.content.groupironman.GroupManager;
 import com.ruse.world.content.johnachievementsystem.AchievementHandler;
 import com.ruse.world.content.serverperks.ServerPerks;
 import com.ruse.world.content.tbdminigame.Lobby;
-import com.ruse.world.packages.combat.drops.DropManager;
 import com.ruse.world.packages.tradingpost.TradingPost;
 import com.ruse.world.entity.actor.player.controller.ControllerHandler;
 import com.ruse.world.entity.impl.npc.NPC;
-import com.ruse.world.packages.attendance.DailyResetScheduler;
 import com.ruse.world.packages.clans.ClanManager;
 import com.ruse.world.packages.globals.GlobalBossManager;
 import com.ruse.world.packages.instances.InstanceManager;
 import com.ruse.world.packages.misc.ItemIdentifiers;
-import com.ruse.world.packages.plus.PlusUpgrade;
 import com.ruse.world.packages.seasonpass.SeasonPassLoader;
 import com.ruse.world.packages.shops.ShopHandler;
-import com.ruse.world.packages.voting.VoteBossDrop;
 import com.ruse.world.region.RegionManager;
 import com.server.service.login.ServiceManager;
+import lombok.Getter;
 import org.jboss.netty.bootstrap.ServerBootstrap;
 import org.jboss.netty.channel.socket.nio.NioServerSocketChannelFactory;
 import org.jboss.netty.util.HashedWheelTimer;
@@ -64,6 +62,7 @@ public final class GameLoader {
 
 	private final ExecutorService serviceLoader = Executors
 			.newSingleThreadExecutor(new ThreadFactoryBuilder().setNameFormat("GameLoadingThread").build());
+	@Getter
 	private final GameEngine engine;
 	private final int port;
 
@@ -113,20 +112,12 @@ public final class GameLoader {
 		serverBootstrap.bind(new InetSocketAddress(port));
 		engine.init();
 		TaskManager.submit(new ServerTimeUpdateTask());
-		ThreadProgressor.submit(false, () -> {
-			Backup.backup();
-			ThreadProgressor.submit(false, () -> {
-				Backup.backup();
-				return null;
-			});
-			return null;
-		});
 	}
 
 	private void executeServiceLoad() {
 
 		serviceLoader.execute(GroupManager::loadGroups);
-		serviceLoader.execute(ConnectionHandler::init);
+		//serviceLoader.execute(ConnectionHandler::init);
 		serviceLoader.execute(RegionClipping::init);
 		serviceLoader.execute(CustomObjects::init);
 		serviceLoader.execute(RegionManager::initialise);
@@ -147,11 +138,10 @@ public final class GameLoader {
 		serviceLoader.execute(WeaponInterfaces::init);
 		serviceLoader.execute(NPC::init);
 		serviceLoader.execute(ServerPerks.getInstance()::load);
-		serviceLoader.execute(Bot::init);
-		serviceLoader.execute(JavaCord::init);
-		serviceLoader.execute(AdminCord::init);
+		//serviceLoader.execute(Bot::init);
+		//serviceLoader.execute(JavaCord::init);
+		//serviceLoader.execute(BotManager.getInstance()::init);
 		serviceLoader.execute(SeasonPassLoader::load);
-		serviceLoader.execute(VoteBossDrop::load);
 		serviceLoader.execute(WorldCalendar::initialize);
 		serviceLoader.execute(TradingPost::load);
 		serviceLoader.execute(ItemIdentifiers::load);
@@ -159,10 +149,7 @@ public final class GameLoader {
 		serviceLoader.execute(ShopHandler::loadPrices);
 		serviceLoader.execute(AchievementHandler::load);
 
-		TaskManager.submit(new LotteryTask());
+		//TaskManager.submit(new LotteryTask());
 	}
 
-	public GameEngine getEngine() {
-		return engine;
-	}
 }

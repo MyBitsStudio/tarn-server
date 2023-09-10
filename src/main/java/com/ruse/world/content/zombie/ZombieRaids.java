@@ -13,7 +13,7 @@ import com.ruse.world.content.boxes.ZombieRaidLoot;
 import com.ruse.world.packages.packs.casket.Box;
 import com.ruse.world.content.combat.prayer.CurseHandler;
 import com.ruse.world.content.combat.prayer.PrayerHandler;
-import com.ruse.world.content.discordbot.JavaCord;
+import com.ruse.world.packages.discordbot.JavaCord;
 import com.ruse.world.entity.impl.npc.NPC;
 import com.ruse.world.entity.impl.player.Player;
 

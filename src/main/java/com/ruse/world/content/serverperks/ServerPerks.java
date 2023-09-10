@@ -2,11 +2,11 @@ package com.ruse.world.content.serverperks;
 
 import com.ruse.GameSettings;
 import com.ruse.engine.GameEngine;
-import com.ruse.model.definitions.ItemDefinition;
+import com.ruse.io.ThreadProgressor;
 import com.ruse.util.Misc;
 import com.ruse.util.StringUtils;
 import com.ruse.world.World;
-import com.ruse.world.content.discordbot.JavaCord;
+import com.ruse.world.packages.discordbot.JavaCord;
 import com.ruse.world.entity.impl.player.Player;
 import lombok.Getter;
 
@@ -14,7 +14,6 @@ import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.time.LocalDateTime;
 import java.util.*;
 import java.util.stream.Stream;
 
@@ -104,8 +103,6 @@ public class ServerPerks {
         activePerk = perk;
         updateOverlay();
         World.sendMessage("<img=16>[WORLD]<img=16> @red@Perk [" + activePerk.getName() + "] has just been activated!");
-        if (GameSettings.LOCALHOST)
-            return;
         JavaCord.sendMessage(1117224370587304057L, "[WORLD] Perk [" + activePerk.getName() + "] has just been activated!");
 
         //reset();
@@ -117,8 +114,6 @@ public class ServerPerks {
         active = false;
         contributions.put(activePerk, 0);
         World.sendMessage("<img=16>[WORLD]<img=16> @red@Perk [" + activePerk.getName() + "] has ended");
-        if (GameSettings.LOCALHOST)
-            return;
         JavaCord.sendMessage(1117224370587304057L, "[WORLD] Perk [" + activePerk.getName() + "] has ended");
         activePerk = null;
         resetInterface();
@@ -202,7 +197,7 @@ public class ServerPerks {
         World.getPlayers().forEach(this::updateInterface);
     }
     public void deleteTypeFromLog(Perk name) {
-        GameEngine.submit(() -> {
+        ThreadProgressor.submit(false, () -> {
             try {
                 BufferedReader r = new BufferedReader(new FileReader(FILE_PATH.toString()));
                 ArrayList<String> contents = new ArrayList<>();
@@ -229,6 +224,7 @@ public class ServerPerks {
                 w.close();
             } catch (Exception e) {
             }
+            return null;
         });
     }
     public enum Perk {

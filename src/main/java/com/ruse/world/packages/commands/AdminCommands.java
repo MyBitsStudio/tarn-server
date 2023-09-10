@@ -11,7 +11,6 @@ import com.ruse.util.NameUtils;
 import com.ruse.world.World;
 import com.ruse.world.packages.globals.GlobalBossManager;
 import com.ruse.world.packages.mode.impl.*;
-import com.ruse.world.packages.voting.VoteBossDrop;
 import com.ruse.world.entity.impl.player.Player;
 
 import static com.ruse.security.tools.SecurityUtils.PLAYER_FILE;

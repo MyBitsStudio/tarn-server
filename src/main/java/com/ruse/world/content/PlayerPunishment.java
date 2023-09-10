@@ -26,7 +26,7 @@ public class PlayerPunishment {
 	public static ArrayList<String> IPSMuted = new ArrayList<String>();
 	public static Map<String, LocalDateTime> AccountsBanned = new HashMap<>();
 	public static Map<String, LocalDateTime> AccountsMuted = new HashMap<>();
-	public static ArrayList<String> AccountsTempMuted = new ArrayList<String>();
+	public static ArrayList<String> AccountsTempMuted = new ArrayList<>();
 
 	public static void init() {
 		initializeList(BAN_DIRECTORY, "IPBans", IPSBanned);

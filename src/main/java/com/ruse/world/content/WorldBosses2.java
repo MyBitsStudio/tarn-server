@@ -8,7 +8,6 @@ import com.ruse.world.content.achievement.Achievements;
 import com.ruse.world.content.combat.CombatBuilder;
 import com.ruse.world.content.combat.CombatFactory;
 import com.ruse.world.content.dailytasks_new.DailyTask;
-import com.ruse.world.content.discordbot.JavaCord;
 import com.ruse.world.entity.impl.npc.NPC;
 import com.ruse.world.entity.impl.player.Player;
 

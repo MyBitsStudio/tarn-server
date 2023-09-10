@@ -2,7 +2,6 @@ package com.ruse.world.content;
 
 import com.ruse.GameSettings;
 import com.ruse.model.definitions.NpcDefinition;
-import com.ruse.motivote3.doMotivote;
 import com.ruse.util.Misc;
 import com.ruse.world.World;
 import com.ruse.world.packages.combat.drops.DropCalculator;
@@ -11,7 +10,6 @@ import com.ruse.world.packages.event.Event;
 import com.ruse.world.packages.globals.GlobalBossManager;
 import com.ruse.world.packages.mode.impl.*;
 import com.ruse.world.packages.panels.EventPanel;
-import com.ruse.world.packages.voting.VoteBossDrop;
 import com.ruse.world.entity.impl.player.Player;
 
 public class PlayerPanel {

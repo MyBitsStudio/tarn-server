@@ -6,7 +6,7 @@ import com.ruse.security.ServerSecurity;
 import com.ruse.util.Misc;
 import com.ruse.util.StringCleaner;
 import com.ruse.world.packages.clans.ClanManager;
-import com.ruse.world.content.discordbot.JavaCord;
+import com.ruse.world.packages.discordbot.JavaCord;
 import com.ruse.world.entity.impl.player.Player;
 
 public class SendClanChatMessagePacketListener implements PacketListener {

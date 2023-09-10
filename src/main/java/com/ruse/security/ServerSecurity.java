@@ -6,7 +6,7 @@ import com.ruse.security.save.impl.server.ServerSecurityLoad;
 import com.ruse.security.save.impl.server.ServerSecuritySave;
 import com.ruse.security.tools.SecurityUtils;
 import com.ruse.world.World;
-import com.ruse.world.content.discordbot.AdminCord;
+import com.ruse.world.packages.discordbot.AdminCord;
 import com.ruse.world.entity.impl.player.Player;
 import io.ipgeolocation.api.Geolocation;
 import io.ipgeolocation.api.GeolocationParams;

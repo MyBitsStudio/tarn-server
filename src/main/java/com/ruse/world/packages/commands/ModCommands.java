@@ -6,10 +6,8 @@ import com.ruse.security.PlayerSecurity;
 import com.ruse.security.ServerSecurity;
 import com.ruse.world.World;
 import com.ruse.world.content.PlayerLogs;
-import com.ruse.world.content.discordbot.AdminCord;
+import com.ruse.world.packages.discordbot.AdminCord;
 import com.ruse.world.entity.impl.player.Player;
-
-import static com.ruse.world.entity.impl.player.PlayerFlags.FORCE_KICK;
 
 public class ModCommands {
 

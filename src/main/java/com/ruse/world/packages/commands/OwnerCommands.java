@@ -4,7 +4,6 @@ import com.ruse.GameServer;
 import com.ruse.model.*;
 import com.ruse.model.container.impl.Equipment;
 import com.ruse.model.definitions.*;
-import com.ruse.motivote3.doMotivote;
 import com.ruse.security.ServerSecurity;
 import com.ruse.security.save.impl.server.defs.NPCDataLoad;
 import com.ruse.world.World;
@@ -20,8 +19,6 @@ import com.ruse.world.packages.shops.ShopHandler;
 import com.ruse.world.packages.slot.SlotBonus;
 import com.ruse.world.packages.slot.SlotEffect;
 import com.ruse.world.packages.tower.TarnTower;
-import com.ruse.world.packages.tracks.TrackInterface;
-import com.ruse.world.packages.voting.VoteBossDrop;
 import com.ruse.world.entity.impl.npc.NPC;
 import com.ruse.world.entity.impl.player.Player;
 

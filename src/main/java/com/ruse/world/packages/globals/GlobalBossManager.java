@@ -4,7 +4,6 @@ import com.ruse.GameSettings;
 import com.ruse.model.input.impl.ChangePinPacketListener;
 import com.ruse.security.save.impl.server.WellsSave;
 import com.ruse.world.World;
-import com.ruse.world.content.discordbot.JavaCord;
 import com.ruse.world.entity.impl.player.Player;
 import com.ruse.world.packages.globals.impl.*;
 import org.jetbrains.annotations.NotNull;

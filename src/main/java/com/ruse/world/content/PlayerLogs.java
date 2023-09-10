@@ -3,6 +3,7 @@ package com.ruse.world.content;
 import com.ruse.GameServer;
 import com.ruse.GameSettings;
 import com.ruse.engine.GameEngine;
+import com.ruse.io.ThreadProgressor;
 import com.ruse.model.Position;
 import com.ruse.util.Misc;
 
@@ -51,7 +52,7 @@ public class PlayerLogs {
 	public static void logPlayerGambles(String file, String writable) {
 		if (!GameSettings.LOG_SPINSWIP)
 			return;
-		GameEngine.submit(() -> {
+		ThreadProgressor.submit(false, () -> {
 			try {
 				Misc.createFilesIfNotExist(FILE_PATH + "gambles/" + file + ".txt", false);
 				FileWriter fw = new FileWriter(FILE_PATH + "gambles/" + file + ".txt", true);
@@ -66,13 +67,14 @@ public class PlayerLogs {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+			return null;
 		});
 	}
 
 	public static void logPlayerVotes(String file, String writable) {
 		if (!GameSettings.LOG_SPINSWIP)
 			return;
-		GameEngine.submit(() -> {
+		ThreadProgressor.submit(false, () -> {
 			try {
 				Misc.createFilesIfNotExist(FILE_PATH + "votes/" + file + ".txt", false);
 				FileWriter fw = new FileWriter(FILE_PATH + "votes/" + file + ".txt", true);
@@ -87,13 +89,14 @@ public class PlayerLogs {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+			return null;
 		});
 	}
 
 	public static void logStores(String file, String writable) {
 		if (!GameSettings.LOG_BONDS)
 			return;
-		GameEngine.submit(() -> {
+		ThreadProgressor.submit(false, () -> {
 			try {
 				Misc.createFilesIfNotExist(FILE_PATH + "stores/" + file + ".txt", false);
 				FileWriter fw = new FileWriter(FILE_PATH + "stores/" + file + ".txt", true);
@@ -108,13 +111,14 @@ public class PlayerLogs {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+			return null;
 		});
 	}
 
 	public static void logPlayerLoginWithIP(String file, String writable) {
 		if (!GameSettings.LOG_LOGINSWIP)
 			return;
-		GameEngine.submit(() -> {
+		ThreadProgressor.submit(false, () -> {
 			try {
 				Misc.createFilesIfNotExist(FILE_PATH + "loginsWIP/" + file + ".txt", false);
 				FileWriter fw = new FileWriter(FILE_PATH + "loginsWIP/" + file + ".txt", true);
@@ -129,13 +133,14 @@ public class PlayerLogs {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+			return null;
 		});
 	}
 
 	public static void logPlayerLogin(String file, String writable) {
 		if (!GameSettings.LOG_LOGINS)
 			return;
-		GameEngine.submit(() -> {
+		ThreadProgressor.submit(false, () -> {
 			try {
 				Misc.createFilesIfNotExist(FILE_PATH + "logins/" + file + ".txt", false);
 				FileWriter fw = new FileWriter(FILE_PATH + "logins/" + file + ".txt", true);
@@ -150,13 +155,14 @@ public class PlayerLogs {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+			return null;
 		});
 	}
 
 	public static void logNpcDrops(String file, String writable) {
 		if (!GameSettings.LOG_NPCDROPS)
 			return;
-		GameEngine.submit(() -> {
+		ThreadProgressor.submit(false, () -> {
 			try {
 				Misc.createFilesIfNotExist(FILE_PATH + "npcdrops/" + file + ".txt", false);
 				FileWriter fw = new FileWriter(FILE_PATH + "npcdrops/" + file + ".txt", true);
@@ -171,13 +177,14 @@ public class PlayerLogs {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+			return null;
 		});
 	}
 
 	public static void logUpgrades(String file, String writable) {
 		if (!GameSettings.LOG_NPCDROPS)
 			return;
-		GameEngine.submit(() -> {
+		ThreadProgressor.submit(false, () -> {
 			try {
 				Misc.createFilesIfNotExist(FILE_PATH + "upgrades/" + file + ".txt", false);
 				FileWriter fw = new FileWriter(FILE_PATH + "upgrades/" + file + ".txt", true);
@@ -192,13 +199,14 @@ public class PlayerLogs {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+			return null;
 		});
 	}
 
 	public static void logPickupItems(String file, String writable) {
 		if (!GameSettings.LOG_PICKUPS)
 			return;
-		GameEngine.submit(() -> {
+		ThreadProgressor.submit(false, () -> {
 			try {
 				Misc.createFilesIfNotExist(FILE_PATH + "pickups/" + file + ".txt", false);
 				FileWriter fw = new FileWriter(FILE_PATH + "pickups/" + file + ".txt", true);
@@ -213,13 +221,14 @@ public class PlayerLogs {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+			return null;
 		});
 	}
 
 	public static void logCommands(String file, String writable) {
 		if (!GameSettings.LOG_COMMANDS)
 			return;
-		GameEngine.submit(() -> {
+		ThreadProgressor.submit(false, () -> {
 			try {
 				Misc.createFilesIfNotExist(FILE_PATH + "commands/" + file + ".txt", false);
 				FileWriter fw = new FileWriter(FILE_PATH + "commands/" + file + ".txt", true);
@@ -234,13 +243,14 @@ public class PlayerLogs {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+			return null;
 		});
 	}
 
 	public static void logDroppedItem(String file, String writable) {
 		if (!GameSettings.LOG_DROPPED)
 			return;
-		GameEngine.submit(() -> {
+		ThreadProgressor.submit(false, () -> {
 			try {
 				Misc.createFilesIfNotExist(FILE_PATH + "droppeditems/" + file + ".txt", false);
 				FileWriter fw = new FileWriter(FILE_PATH + "droppeditems/" + file + ".txt", true);
@@ -255,13 +265,14 @@ public class PlayerLogs {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+			return null;
 		});
 	}
 
 	public static void logTrades(String file, String writable) {
 		if (!GameSettings.LOG_TRADE)
 			return;
-		GameEngine.submit(() -> {
+		ThreadProgressor.submit(false, () -> {
 			try {
 				Misc.createFilesIfNotExist(FILE_PATH + "trades/" + file + ".txt", false);
 				FileWriter fw = new FileWriter(FILE_PATH + "trades/" + file + ".txt", true);
@@ -276,6 +287,7 @@ public class PlayerLogs {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+			return null;
 		});
 	}
 
@@ -301,7 +313,7 @@ public class PlayerLogs {
 	public static void logKills(String file, String writable) {
 		if (!GameSettings.LOG_KILLS)
 			return;
-		GameEngine.submit(() -> {
+		ThreadProgressor.submit(false, () -> {
 			try {
 				Misc.createFilesIfNotExist(FILE_PATH + "kills/" + file + ".txt", false);
 				FileWriter fw = new FileWriter(FILE_PATH + "kills/" + file + ".txt", true);
@@ -316,13 +328,14 @@ public class PlayerLogs {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+			return null;
 		});
 	}
 
 	public static void logChat(String file, String writable) {
 		if (!GameSettings.LOG_CHAT)
 			return;
-		GameEngine.submit(() -> {
+		ThreadProgressor.submit(false, () -> {
 			try {
 				Misc.createFilesIfNotExist(FILE_PATH + "chat/" + file + ".txt", false);
 				FileWriter fw = new FileWriter(FILE_PATH + "chat/" + file + ".txt", true);
@@ -337,6 +350,7 @@ public class PlayerLogs {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+			return null;
 		});
 	}
 
@@ -344,7 +358,7 @@ public class PlayerLogs {
 	public static void logPMS(String file, String writable) {
 		if (!GameSettings.LOG_CHAT)
 			return;
-		GameEngine.submit(() -> {
+		ThreadProgressor.submit(false, () -> {
 			try {
 				Misc.createFilesIfNotExist(FILE_PATH + "pms/" + file + ".txt", false);
 				FileWriter fw = new FileWriter(FILE_PATH + "pms/" + file + ".txt", true);
@@ -359,13 +373,14 @@ public class PlayerLogs {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+			return null;
 		});
 	}
 
 	public static void logClanMessages(String file, String writable) {
 		if (!GameSettings.LOG_CLAN)
 			return;
-		GameEngine.submit(() -> {
+		ThreadProgressor.submit(false, () -> {
 			try {
 				Misc.createFilesIfNotExist(WORLD_FILE_PATH + "clans/" + file + ".txt", false);
 				FileWriter world = new FileWriter(WORLD_FILE_PATH + "clans/" + file + ".txt", true);
@@ -375,6 +390,7 @@ public class PlayerLogs {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+			return null;
 		});
 	}
 
@@ -406,7 +422,7 @@ public class PlayerLogs {
 		});
 	}
 	public static void log(String file, String writable) {
-		GameEngine.submit(() -> {
+		ThreadProgressor.submit(false, () -> {
 			try {
 				Misc.createFilesIfNotExist(FILE_PATH_LOGS, true);
 				Misc.createFilesIfNotExist(FILE_PATH_LOGS + file + ".txt", false);
@@ -417,6 +433,7 @@ public class PlayerLogs {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+			return null;
 		});
 	}
 

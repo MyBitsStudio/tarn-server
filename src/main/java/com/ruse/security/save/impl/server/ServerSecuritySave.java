@@ -1,6 +1,7 @@
 package com.ruse.security.save.impl.server;
 
 import com.ruse.engine.GameEngine;
+import com.ruse.io.ThreadProgressor;
 import com.ruse.security.ServerSecurity;
 import com.ruse.security.save.SecureSave;
 import com.ruse.security.tools.SecurityUtils;
@@ -55,13 +56,14 @@ public class ServerSecuritySave extends SecureSave {
 
     @Override
     public void save() {
-        GameEngine.submit(() -> {
+        ThreadProgressor.submit(false, () -> {
             try (FileWriter file = new FileWriter(SecurityUtils.SERVER_SECURITY_FILE)) {
                 file.write(builder.toJson(object));
                 file.flush();
             } catch (IOException e) {
                 e.printStackTrace();
             }
+            return null;
         });
     }
 

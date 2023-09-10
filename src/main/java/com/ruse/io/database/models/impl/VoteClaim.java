@@ -4,7 +4,7 @@ import com.ruse.io.ThreadProgressor;
 import com.ruse.io.database.models.DatabaseRequestStatement;
 import com.ruse.io.database.records.VoteRedeem;
 import com.ruse.util.Misc;
-import com.ruse.world.content.discordbot.JavaCord;
+import com.ruse.world.packages.discordbot.JavaCord;
 import com.ruse.world.entity.impl.player.Player;
 import com.ruse.world.packages.voting.VoteHandler;
 import org.jetbrains.annotations.NotNull;

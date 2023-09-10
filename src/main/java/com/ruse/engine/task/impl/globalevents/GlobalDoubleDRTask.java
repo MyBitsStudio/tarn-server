@@ -3,8 +3,8 @@ package com.ruse.engine.task.impl.globalevents;
 import com.ruse.GameSettings;
 import com.ruse.engine.task.Task;
 import com.ruse.world.World;
-import com.ruse.world.content.discordbot.AdminCord;
-import com.ruse.world.content.discordbot.JavaCord;
+import com.ruse.world.packages.discordbot.AdminCord;
+import com.ruse.world.packages.discordbot.JavaCord;
 
 public class GlobalDoubleDRTask extends Task {
 
