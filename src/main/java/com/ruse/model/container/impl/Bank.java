@@ -158,10 +158,10 @@ public class Bank extends ItemContainer {
 			if (item.getAmount() > getAmount(item)) {
 				item.setAmount(getAmount(item.getId()));
 			}
-			System.out.println("Switching item: " + item.getId() + " " + item.getUid() + " " + item.getAmount()+" "+slot);
+			//System.out.println("Switching item: " + item.getId() + " " + item.getUid() + " " + item.getAmount()+" "+slot);
 			if (item.getAmount() <= 0 || Objects.equals(item.getUid(), "-1")) {
 				// Placeholder
-				System.out.println("Placeholder");
+				//System.out.println("Placeholder");
 				getItems()[slot].setId(-1);
 				getItems()[slot].setUid("");
 				refreshItems();
@@ -208,7 +208,7 @@ public class Bank extends ItemContainer {
 		boolean leavePlaceHolder = getPlayer().isPlaceholders();
 		int amount = item.getAmount();
 
-		System.out.println("Deleting item: " + item.getId() + " " + item.getUid() + " " + item.getAmount());
+		//System.out.println("Deleting item: " + item.getId() + " " + item.getUid() + " " + item.getAmount());
 
 		if(amount > 0){
 			if(slot == -1)

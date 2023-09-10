@@ -17,6 +17,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.concurrent.TimeUnit;
 
 public class Database {
 
@@ -31,9 +32,8 @@ public class Database {
         config.setPassword( GameSettings.DATABASE_PASS );
         config.setMinimumIdle(5);
         config.setMaximumPoolSize(50);
-        config.setConnectionTimeout(10000);
-        config.setIdleTimeout(600000);
-        config.setMaxLifetime(1800000);
+        config.setConnectionTimeout(TimeUnit.SECONDS.toMillis(45));
+        config.setValidationTimeout(TimeUnit.MINUTES.toMillis(1));
         config.addDataSourceProperty( "cachePrepStmts" , "true" );
         config.addDataSourceProperty( "prepStmtCacheSize" , "250" );
         config.addDataSourceProperty( "prepStmtCacheSqlLimit" , "2048" );
