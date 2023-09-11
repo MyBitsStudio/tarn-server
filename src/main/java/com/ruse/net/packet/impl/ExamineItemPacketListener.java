@@ -25,7 +25,7 @@ public class ExamineItemPacketListener implements PacketListener {
 		int item = packet.readShort();
 		int slot = packet.readByte();
 		Item items = null;
-		//System.out.println("Item: " + item + " Slot: " + slot+" "+player.getInterfaceId());
+		System.out.println("Item: " + item + " Slot: " + slot+" "+player.getInterfaceId());
 		if(player.isBanking()){
 			items = player.getBank(player.getCurrentBankTab()).getItems()[slot];
 		} else if(player.getTrading().inTrade()) {

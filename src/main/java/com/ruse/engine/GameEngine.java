@@ -47,8 +47,8 @@ public final class GameEngine implements Runnable {
     public void run() {
         try {
             TaskManager.sequence();
-            ThreadProgressor.execute();
             World.sequence();
+            ThreadProgressor.execute();
             playerSavingTimer.massSaving();
             GlobalItemSpawner.startup();
         } catch (Throwable e) {

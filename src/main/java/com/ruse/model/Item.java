@@ -4,6 +4,7 @@ import com.ruse.GameSettings;
 import com.ruse.ReducedSellPrice;
 import com.ruse.model.definitions.ItemDefinition;
 import com.ruse.util.Misc;
+import lombok.Getter;
 
 /**
  * Represents an item which is owned by a player.
@@ -11,6 +12,7 @@ import com.ruse.util.Misc;
  * @author relex lawl
  */
 
+@Getter
 public class Item {
 
 	private int id, amount, slot;
@@ -25,7 +27,7 @@ public class Item {
 	public Item(int id, int amount) {
 		this.id = id;
 		this.amount = amount;
-		this.uid = Misc.createRandomString(12);
+		this.uid = "stale";
 	}
 
 	public Item(int id, int amount, String uid) {
@@ -43,25 +45,9 @@ public class Item {
 		this(id, 1);
 	}
 
-	public int getId() {
-		return id;
-	}
-
-
-	public int getAmount() {
-		return amount;
-	}
-
-	public int getSlot() {
-		return this.slot;
-	}
 
 	public void setSlot(int slot) {
 		this.slot = slot;
-	}
-
-	public String getUid(){
-		return uid;
 	}
 
 	public void setUid(String uid){

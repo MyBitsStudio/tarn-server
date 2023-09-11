@@ -441,12 +441,12 @@ public class PlayerHandler {
                 player.getPacketSender().sendInterfaceRemoval();
                 player.getMinimeSystem().despawn();
                 player.getPacketSender().removeOverlay();
-                if (player.getCannon() != null) {
-                    DwarfMultiCannon.pickupCannon(player, player.getCannon(), true);
-                }
-                if (player.aonBoxItem > 0) {
-                    DoubleOrNothing.handleKeep(player);
-                }
+//                if (player.getCannon() != null) {
+//                    DwarfMultiCannon.pickupCannon(player, player.getCannon(), true);
+//                }
+//                if (player.aonBoxItem > 0) {
+//                    DoubleOrNothing.handleKeep(player);
+//                }
                 if (exception && player.getResetPosition() != null) {
                     player.moveTo(player.getResetPosition());
                     player.setResetPosition(null);
@@ -474,47 +474,27 @@ public class PlayerHandler {
                 player.getControllerManager().logout();
                 StaffList.logout(player);
                 StaffList.updateGlobalInterface();
-                Hunter.handleLogout(player);
+               // Hunter.handleLogout(player);
                 Locations.logout(player);
-                player.getFarming().save();
-                BountyHunter.handleLogout(player);
+               // player.getFarming().save();
+               // BountyHunter.handleLogout(player);
                 ClanManager.getManager().leave(player, false);
                 player.getRelations().updateLists(false);
                 PlayersOnlineInterface.remove(player);
                 TaskManager.cancelTasks(player.getCombatBuilder());
                 TaskManager.cancelTasks(player);
 
-//                if (player.getSummoning().getFamiliar() != null && player.getSummoning().getFamiliar().getSummonNpc() != null) {
-//                    final int spawnId = player.getSummoning().getFamiliar().getSummonNpc().getId();
-//                    World.deregister(player.getSummoning().getFamiliar().getSummonNpc());
-//                    BossPets.BossPet pet = BossPets.BossPet.forSpawnId(spawnId);
-//                    if(pet != null){
-//                        System.out.println("Pet: " + pet.name() + " is being saved.");
-//                            if (player.getInventory().getFreeSlots() < 1) {
-//                                player.getPacketSender().sendMessage("Your familiar has been sent to your bank.");
-//                                player.getBank(player.getCurrentBankTab()).add(pet.itemId, 1);
-//                            } else {
-//                                player.getInventory().add(pet.itemId, 1);
-//                            }
-//                    }
-//                }
-
                 player.save();
 
-
-                player.getPlayerFlags().setFlag(FORCE_KICK, true);
 
                 if (player.getMinigameAttributes() != null && player.getMinigameAttributes().getDungeoneeringAttributes() != null && player.getMinigameAttributes().getDungeoneeringAttributes().getParty() != null) {
                     player.getMinigameAttributes().getDungeoneeringAttributes().getParty().remove(player, false, true);
                 }
 
-                if (player.isHasMiniPlayer()) {
-                    player.getMiniPManager().pickupMiniPlayer();
-                }
+                session.setState(SessionState.LOGGED_OUT);
 
-                if (!player.isMiniPlayer()) {
-                    session.setState(SessionState.LOGGED_OUT);
-                }
+                player.getPlayerFlags().setFlag(FORCE_KICK, true);
+
 
                 World.updatePlayersOnline();
                 

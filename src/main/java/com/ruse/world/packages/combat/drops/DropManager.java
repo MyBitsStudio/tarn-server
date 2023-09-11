@@ -41,7 +41,7 @@ public class DropManager {
     private final Map<Integer, NPCDrops> npcDrops = new HashMap<>();
 
     public void sendDrop(NPC npc, Player player){
-        sendDrop(npc, player, 0.0);
+        sendDrop(npc, player, 1.0);
     }
 
     public void addTables(DropTable table){
@@ -95,7 +95,9 @@ public class DropManager {
                 extra = spin.get(new SecureRandom().nextInt(spin.size()));
             }
             double reduce = npcDrops.customTable() == null ? 1 : npcDrops.customTable().weight();
-            final int v = (int) ((chance + modifier >= 5000 ? 4999 : (int) (chance + modifier)) / reduce);
+            final int v = chance + modifier >= 5000 ? 4999 : (int) (chance + modifier);
+
+            System.out.println("V: " + v + " | Reduce: " + reduce + " | Chance: " + chance + " | Modifier: " + modifier);
 
             for(Drop drop : table.drops()){
                 if(drop.modifier() == 1.0) {
@@ -103,7 +105,8 @@ public class DropManager {
                     continue;
                 }
                 double rolled = (Misc.RAND.nextDouble() * v) / reduce;
-                double req = 1 + Misc.RAND.nextDouble() * drop.modifier();
+                double req = 1 + (Misc.RAND.nextDouble() * drop.modifier());
+                System.out.println("First Rolled: " + rolled + " | Req: " + req);
                 if(rolled > req){
                     finalDrops.add(drop);
                 }
@@ -116,7 +119,8 @@ public class DropManager {
                         continue;
                     }
                     double rolled = (Misc.RAND.nextDouble() * v) / reduce;
-                    double req = 1 + Misc.RAND.nextDouble() * drop.modifier();
+                    double req = 1 + (Misc.RAND.nextDouble() * drop.modifier());
+                    System.out.println("Second Rolled: " + rolled + " | Req: " + req);
                     if(rolled > req){
                         finalDrops.add(drop);
                     }
@@ -129,7 +133,8 @@ public class DropManager {
                         continue;
                     }
                     double rolled = (Misc.RAND.nextDouble() * v) / reduce;
-                    double req = 1 + Misc.RAND.nextDouble() * drop.modifier();
+                    double req = 1 + (Misc.RAND.nextDouble() * drop.modifier());
+                    System.out.println("Third Rolled: " + rolled + " | Req: " + req);
                     if(rolled > req){
                         extraDrops.add(drop);
                     }
@@ -263,7 +268,7 @@ public class DropManager {
 
         if(hit){
             player.getDryStreak().getDryStreakMap().put(npc.getId(), 0);
-            sendDrop(npc, player, 100.0);
+            sendDrop(npc, player, 5000.0);
         }
     }
 

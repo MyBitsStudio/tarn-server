@@ -19,6 +19,7 @@ import com.ruse.world.content.skill.impl.old_dungeoneering.UltimateIronmanHandle
 import com.ruse.world.content.skill.impl.summoning.BossPets;
 import com.ruse.world.content.skill.impl.summoning.Familiar;
 import com.ruse.world.entity.impl.player.Player;
+import com.ruse.world.packages.mode.impl.Veteran;
 
 /**
  * Represents a player's skills in the game, also manages calculations such as
@@ -179,10 +180,6 @@ public class SkillManager {
 
         if (player.experienceLocked())
             return this;
-        /*
-         * If the experience in the skill is already greater or equal to {@code
-         * MAX_EXPERIENCE} then stop.
-         */
 
 
         if (this.skills.experience[skill.ordinal()] >= MAX_EXPERIENCE)
@@ -193,23 +190,23 @@ public class SkillManager {
                     .sendMessage("<shad=0>@red@You will gain NO EXP until you claim your stored Dungeoneering items.");
             return this;
         }
+
         if (skill.equals(Skill.SLAYER)) {
-            experience = experience / 4; // reduced by 3 times.
-        }
-        if (skill.equals(Skill.DUNGEONEERING)) {
-            experience = experience * 2; // reduced by 3 times.
+            if(player.getMode() instanceof Veteran)
+                experience = experience / 2;
         }
 
         experience *= player.getDonator().getXpgain();
 
-        if (ServerPerks.getInstance().getActivePerk() == ServerPerks.Perk.XP || ServerPerks.getInstance().getActivePerk() == ServerPerks.Perk.ALL_PERKS) {
+        if (ServerPerks.getInstance().getActivePerk() == ServerPerks.Perk.XP || ServerPerks.getInstance().getActivePerk() == ServerPerks.Perk.ALL_PERKS
+        || ServerPerks.getInstance().getActivePerk() == ServerPerks.Perk.ALL_PERKS) {
             experience *= 3;
         }
+
         if (player.getEquipment().hasDoubleXP()) {
             experience *= 2;
         }
-        if (WellOfGoodwill.isActive())
-            experience *= 1.3;
+
         /*
          * if(player.getGameMode() != GameMode.NORMAL) { experience *= 0.6; }
          */
@@ -222,37 +219,6 @@ public class SkillManager {
             experience *= 2;
         }
 
-/**
- * Donator Rank Bonusses
- */
-//        if(player.getAmountDonated() >= Donation.ZENYTE_DONATION_AMOUNT || player.getRights().equals(PlayerRights.YOUTUBER)) {
-//            experience *= 2.00;
-//        } else if(player.getAmountDonated() >= Donation.ONYX_DONATION_AMOUNT) {
-//            experience *= 1.25;
-//        } else if(player.getAmountDonated() >= Donation.DIAMOND_DONATION_AMOUNT) {
-//            experience *= 1.20;
-//        } else if(player.getAmountDonated() >= Donation.RUBY_DONATION_AMOUNT) {
-//            experience *= 1.15;
-//        } else if(player.getAmountDonated() >= Donation.EMERALD_DONATION_AMOUNT) {
-//            experience *= 1.10;
-//        } else if(player.getAmountDonated() >= Donation.SAPPHIRE_DONATION_AMOUNT) {
-//            experience *= 1.05;
-//        }
-
-        experience = BrawlingGloves.getExperienceIncrease(player, skill.ordinal(), experience);
-
-        experience *= Difficulty.getDifficultyModifier(player, skill);
-
-        if (Misc.isWeekend()) {
-            experience *= 2;
-        }
-
-        if (GameSettings.DOUBLE_SKILL_EXP) {
-            if (!skill.isCombat()) {
-                experience *= 2;
-            }
-        }
-
         if (player.getExpPotionTimer() > 0) {
             experience *= 2;
         }
@@ -263,7 +229,7 @@ public class SkillManager {
             if (player.getSummoning().getFamiliar().getSummonNpc().getId() == BossPets.BossPet.ODIN_PET.npcId) {
                 experience *= 2;
             }
-            experience *= DropUtils.getXpBonus(playerFamiliar.getSummonNpc().getId());
+            //experience *= DropUtils.getXpBonus(playerFamiliar.getSummonNpc().getId());
             // // System.out.println("Experience here: " + experience);
         }
 
@@ -314,11 +280,6 @@ public class SkillManager {
             player.performGraphic(new Graphic(312));
             player.getPacketSender()
                     .sendMessage("You've just advanced " + skillName + " level! You have reached level " + newLevel);
-
-            if (skill.equals(Skill.DUNGEONEERING)) {
-                player.performGraphic(new Graphic(312));
-                player.getPacketSender().sendInterfaceRemoval();
-            }
 
             if (skills.maxLevel[skill.ordinal()] == getMaxAchievingLevel(skill)) {
                 player.getStarter().handleSkillCount(maxedSkills());

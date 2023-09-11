@@ -85,7 +85,8 @@ public class DropCalculator {
             chance += 1000;
         }
 
-        if (ServerPerks.getInstance().getActivePerk() == ServerPerks.Perk.DR || ServerPerks.getInstance().getActivePerk() == ServerPerks.Perk.ALL_PERKS) {
+        if (ServerPerks.getInstance().getActivePerk() == ServerPerks.Perk.DR || ServerPerks.getInstance().getActivePerk() == ServerPerks.Perk.ALL_PERKS ||
+                ServerPerks.getInstance().getActivePerk() == ServerPerks.Perk.MEGA_PERK) {
             chance *= 1.5;
         }
 
@@ -120,7 +121,7 @@ public class DropCalculator {
 
 
         if(player.getRank().isDeveloper()){
-            chance = 4500;
+            chance = 1200;
         }
 
         return chance;

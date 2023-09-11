@@ -105,7 +105,8 @@ public class DesolaceFormulas {
             if (plr.getDmgPotionTimer() > 0) {
                 maxHit *= 1.5;
             }
-            if(ServerPerks.getInstance().getActivePerk() == ServerPerks.Perk.DAMAGE || ServerPerks.getInstance().getActivePerk() == ServerPerks.Perk.ALL_PERKS) {
+            if(ServerPerks.getInstance().getActivePerk() == ServerPerks.Perk.ALL_PERKS ||
+                    ServerPerks.getInstance().getActivePerk() == ServerPerks.Perk.MEGA_PERK) {
                 base *= 1.5;
             }
 
@@ -305,7 +306,7 @@ public class DesolaceFormulas {
         if (plr.getDmgPotionTimer() > 0) {
             rangeLevel *= 1.5;
         }
-        if(ServerPerks.getInstance().getActivePerk() == ServerPerks.Perk.DAMAGE || ServerPerks.getInstance().getActivePerk() == ServerPerks.Perk.ALL_PERKS) {
+        if(ServerPerks.getInstance().getActivePerk() == ServerPerks.Perk.ALL_PERKS) {
             rangeLevel *= 1.5;
         }
 
@@ -414,7 +415,7 @@ public class DesolaceFormulas {
         if (plr.getDmgPotionTimer() > 0) {
             magicLevel *= 1.5;
         }
-        if(ServerPerks.getInstance().getActivePerk() == ServerPerks.Perk.DAMAGE || ServerPerks.getInstance().getActivePerk() == ServerPerks.Perk.ALL_PERKS) {
+        if(ServerPerks.getInstance().getActivePerk() == ServerPerks.Perk.ALL_PERKS) {
             magicLevel *= 1.5;
         }
 
@@ -583,7 +584,7 @@ public class DesolaceFormulas {
         if (p.getDmgPotionTimer() > 0) {
             damage *= 1.5;
         }
-        if(ServerPerks.getInstance().getActivePerk() == ServerPerks.Perk.DAMAGE || ServerPerks.getInstance().getActivePerk() == ServerPerks.Perk.ALL_PERKS) {
+        if(ServerPerks.getInstance().getActivePerk() == ServerPerks.Perk.ALL_PERKS) {
             damage *= 1.5;
         }
 

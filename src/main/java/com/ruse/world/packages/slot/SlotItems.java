@@ -25,7 +25,7 @@ public class SlotItems {
                 }
                 player.getInventory().delete(item.getId(), 1);
                 SlotEffect effect = SlotEffect.lowBonus();
-                Item reward = new Item(effect.getItemId(), 1);
+                Item reward = new Item(effect.getItemId(), 1, Misc.createRandomString(12));
                 ItemIdentifiers.addItemIdentifier(reward.getUid(), "PERK", String.valueOf(effect.ordinal()));
                 ItemIdentifiers.addItemIdentifier(reward.getUid(), "BONUS", String.valueOf(effect.getRanges().length != 0 ? Misc.random(effect.getRanges()[0], effect.getRanges()[1]) : -1));
                 player.getInventory().add(reward);
@@ -39,7 +39,7 @@ public class SlotItems {
                 }
                 player.getInventory().delete(item.getId(), 1);
                 SlotEffect effect = SlotEffect.medBonus();
-                Item reward = new Item(effect.getItemId(), 1);
+                Item reward = new Item(effect.getItemId(), 1,  Misc.createRandomString(12));
                 ItemIdentifiers.addItemIdentifier(reward.getUid(), "PERK", String.valueOf(effect.ordinal()));
                 ItemIdentifiers.addItemIdentifier(reward.getUid(), "BONUS", String.valueOf(effect.getRanges().length != 0 ? Misc.random(effect.getRanges()[0], effect.getRanges()[1]) : -1));
                 player.getInventory().add(reward);
@@ -53,7 +53,7 @@ public class SlotItems {
                 }
                 player.getInventory().delete(item.getId(), 1);
                 SlotEffect effect = SlotEffect.highBonus();
-                Item reward = new Item(effect.getItemId(), 1);
+                Item reward = new Item(effect.getItemId(), 1, Misc.createRandomString(12));
                 ItemIdentifiers.addItemIdentifier(reward.getUid(), "PERK", String.valueOf(effect.ordinal()));
                 ItemIdentifiers.addItemIdentifier(reward.getUid(), "BONUS", String.valueOf(effect.getRanges().length != 0 ? Misc.random(effect.getRanges()[0], effect.getRanges()[1]) : -1));
                 player.getInventory().add(reward);

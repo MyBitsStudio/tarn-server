@@ -108,11 +108,10 @@ public class EffectHandler {
                     default -> 10000;
                 };
 
-                long calc = Misc.inclusiveRandom(500, maxhit);
-                next.dealDamage(new Hit(calc, Hitmask.RED, CombatIcon.MAGIC));
+                next.dealDamage(new Hit(maxhit, Hitmask.RED, CombatIcon.MAGIC));
                 next.setAggressive(true);
                 next.getCombatBuilder().setLastAttacker(attacker);
-                next.getCombatBuilder().addDamage(attacker, calc);
+                next.getCombatBuilder().addDamage(attacker, maxhit);
                 next.getCombatBuilder().attack(attacker);
             }
         }
@@ -160,15 +159,14 @@ public class EffectHandler {
                 };
 
                 next.performGraphic(new Graphic(453));
-                long calc = Misc.inclusiveRandom(500, maxhit);
-                next.dealDamage(new Hit(calc, Hitmask.RED, CombatIcon.MAGIC));
-                next.dealDamage(new Hit(calc, Hitmask.RED, CombatIcon.MAGIC));
-                next.dealDamage(new Hit(calc, Hitmask.RED, CombatIcon.MAGIC));
+                next.dealDamage(new Hit(maxhit, Hitmask.RED, CombatIcon.MAGIC));
+                next.dealDamage(new Hit(maxhit, Hitmask.RED, CombatIcon.MAGIC));
+                next.dealDamage(new Hit(maxhit, Hitmask.RED, CombatIcon.MAGIC));
                 next.setAggressive(true);
                 next.getCombatBuilder().setLastAttacker(attacker);
-                next.getCombatBuilder().addDamage(attacker, calc);
-                next.getCombatBuilder().addDamage(attacker, calc);
-                next.getCombatBuilder().addDamage(attacker, calc);
+                next.getCombatBuilder().addDamage(attacker, maxhit);
+                next.getCombatBuilder().addDamage(attacker, maxhit);
+                next.getCombatBuilder().addDamage(attacker, maxhit);
                 next.getCombatBuilder().attack(attacker);
             }
         }

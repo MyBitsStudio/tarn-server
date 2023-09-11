@@ -163,7 +163,7 @@ public class Bank extends ItemContainer {
 				// Placeholder
 				//System.out.println("Placeholder");
 				getItems()[slot].setId(-1);
-				getItems()[slot].setUid("");
+				getItems()[slot].setUid("-1");
 				refreshItems();
 				return this;
 			}

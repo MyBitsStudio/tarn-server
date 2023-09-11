@@ -7,6 +7,7 @@ import com.ruse.world.World;
 import com.ruse.world.content.KillsTracker;
 import com.ruse.world.content.PlayerPanel;
 import com.ruse.world.content.achievement.Achievements;
+import com.ruse.world.content.serverperks.ServerPerks;
 import com.ruse.world.entity.impl.player.Player;
 import com.ruse.world.packages.combat.CombatConstants;
 import com.ruse.world.packages.dialogue.DialogueManager;
@@ -180,6 +181,11 @@ public class Slayer {
 
         if(player.getEquipment().contains(15586))
             amount *= 2;
+
+        if(ServerPerks.getInstance().getActivePerk() == ServerPerks.Perk.SLAYER ||
+                ServerPerks.getInstance().getActivePerk() == ServerPerks.Perk.MEGA_PERK){
+            amount *= 2;
+        }
 
         amount = handleEquipmentBonuses(player, amount);
 

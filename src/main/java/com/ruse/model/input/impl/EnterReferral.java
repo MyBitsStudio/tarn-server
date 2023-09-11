@@ -60,7 +60,7 @@ public class EnterReferral extends Input {
     public static boolean checkIps(String ip) {
         File file = new File("data/refer/referral_data.txt");
         if (!file.exists())
-            file.createNewFile();
+            file.mkdir();
         Scanner scanner = new Scanner(file);
         String content;
         int count = 0;

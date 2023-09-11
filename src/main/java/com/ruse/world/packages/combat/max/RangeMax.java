@@ -105,7 +105,9 @@ public class RangeMax {
             if (player.getDmgPotionTimer() > 0) {
                 maxHit *= 1.5;
             }
-            if(ServerPerks.getInstance().getActivePerk() == ServerPerks.Perk.DAMAGE || ServerPerks.getInstance().getActivePerk() == ServerPerks.Perk.ALL_PERKS) {
+            if(ServerPerks.getInstance().getActivePerk() == ServerPerks.Perk.ALL_PERKS ||
+                    ServerPerks.getInstance().getActivePerk() == ServerPerks.Perk.MEGA_PERK ||
+                    ServerPerks.getInstance().getActivePerk() == ServerPerks.Perk.DMG) {
                 maxHit *= 1.5;
             }
             if (player.getInventory().contains(4442)) {

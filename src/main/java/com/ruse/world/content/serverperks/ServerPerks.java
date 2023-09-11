@@ -58,10 +58,6 @@ public class ServerPerks {
         }
         int index = player.getPerkIndex();
         Perk perk = PERKS[index];
-        if(perk != Perk.ALL_PERKS){
-            player.sendMessage("@red@You can only contribute to the All Perks perk at the moment.");
-            return;
-        }
         int current = contributions.getOrDefault(perk, 0);
         int necessary = perk.getAmount();
         amount = Math.min(amount, necessary - current);
@@ -156,7 +152,7 @@ public class ServerPerks {
     }
 
     public boolean handleButton(Player player, int id) {
-        if (id > -23465 || id < -23470) {
+        if (id > -23465 || id < -23472) {
             return false;
         }
 
@@ -227,22 +223,19 @@ public class ServerPerks {
             return null;
         });
     }
+    @Getter
     public enum Perk {
-        //DOUBLE_BONDS(0, 100000000, 1521), // TO DO
-        // NPC_KILLS(2, 25000000, 1523),// DONE
-        DAMAGE("x1.5 Damage", 0, 250000, 1522),// DONE
-        DR("x1.5 Drop Rate Boost", 1, 1000000, 1521),// DONE
-        XP("x3 EXP Boost", 2, 500000, 1524),// DONE
-        ALL_PERKS("All Perks", 3, 5000000, 1525),// DONE
-       // UPGRADE("x1.2 Upgrade Chance", 3, 500000000, 1525),// DONE
-
+        SLAYER("x2 Slayer Tickets", 0, 2500000, 1522),//DONE
+        DMG("50% Damage Boost", 1, 3500000, 1521),// DONE
+        DR("50% Drop Boost", 2, 5000000, 1521),// DONE
+        XP("x3 EXP Boost", 3, 1000000, 1524),// DONE
+        ALL_PERKS("DR/DMG/XP", 4, 10000000, 1523),// DONE
+        MEGA_PERK("ALL PERKS", 5, 25000000, 1525),// DONE
         ;
 
-        private final int index;
-        private final int amount;
+        private final int index, amount;
         private final int spriteId;
-        @Getter
-        private String name;
+        private final String name;
 
         Perk(String name, int index, int amount, int spriteId) {
             this.name = name;
@@ -251,17 +244,6 @@ public class ServerPerks {
             this.spriteId = spriteId;
         }
 
-        public int getIndex() {
-            return index;
-        }
-
-        public int getAmount() {
-            return amount;
-        }
-
-        public int getSpriteId() {
-            return spriteId;
-        }
     }
 
 
