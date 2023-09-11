@@ -67,11 +67,11 @@ public enum InstanceInterData {
     InstanceType.SINGLE),
 
     DONATOR("Donator Semi-Boss", "VIP 2 / T15",
-            new Item(10835, 25), 4, 5, 9818,
+            new Item(23003, 25), 4, 5, 9818,
             InstanceType.SPECIAL),
 
     DONATOR_V2("Donator Boss", "VIP 7 / Master",
-         new Item(10835, 50), 4, 5, 591,
+         new Item(23003, 75), 4, 5, 591,
     InstanceType.SPECIAL),
 
     VOTE("Vote", "10 Vote Tickets / T15",
