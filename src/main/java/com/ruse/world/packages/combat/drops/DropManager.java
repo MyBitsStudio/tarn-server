@@ -97,7 +97,7 @@ public class DropManager {
             double reduce = npcDrops.customTable() == null ? 1 : npcDrops.customTable().weight();
             final int v = chance + modifier >= 5000 ? 4999 : (int) (chance + modifier);
 
-            System.out.println("V: " + v + " | Reduce: " + reduce + " | Chance: " + chance + " | Modifier: " + modifier);
+           // System.out.println("V: " + v + " | Reduce: " + reduce + " | Chance: " + chance + " | Modifier: " + modifier);
 
             for(Drop drop : table.drops()){
                 if(drop.modifier() == 1.0) {
@@ -106,7 +106,7 @@ public class DropManager {
                 }
                 double rolled = (Misc.RAND.nextDouble() * v) / reduce;
                 double req = 1 + (Misc.RAND.nextDouble() * drop.modifier());
-                System.out.println("First Rolled: " + rolled + " | Req: " + req);
+               // System.out.println("First Rolled: " + rolled + " | Req: " + req);
                 if(rolled > req){
                     finalDrops.add(drop);
                 }
@@ -120,7 +120,7 @@ public class DropManager {
                     }
                     double rolled = (Misc.RAND.nextDouble() * v) / reduce;
                     double req = 1 + (Misc.RAND.nextDouble() * drop.modifier());
-                    System.out.println("Second Rolled: " + rolled + " | Req: " + req);
+                   // System.out.println("Second Rolled: " + rolled + " | Req: " + req);
                     if(rolled > req){
                         finalDrops.add(drop);
                     }
@@ -134,7 +134,7 @@ public class DropManager {
                     }
                     double rolled = (Misc.RAND.nextDouble() * v) / reduce;
                     double req = 1 + (Misc.RAND.nextDouble() * drop.modifier());
-                    System.out.println("Third Rolled: " + rolled + " | Req: " + req);
+                    //System.out.println("Third Rolled: " + rolled + " | Req: " + req);
                     if(rolled > req){
                         extraDrops.add(drop);
                     }

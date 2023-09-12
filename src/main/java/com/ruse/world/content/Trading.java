@@ -29,6 +29,10 @@ public class Trading {
 
 	public void requestTrade(Player player2) {
 
+		if(!World.attributes.getSetting("trading")){
+			return;
+		}
+
 		if (player == null || player2 == null || player.getConstitution() <= 0 || player2.getConstitution() <= 0
 				|| player.isTeleporting() || player2.isTeleporting()) {
 			if(player != null) {

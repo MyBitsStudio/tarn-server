@@ -33,6 +33,7 @@ public class WorldAttributes {
         settings.put("shop", true);
         settings.put("tower", true);
         settings.put("collection", false);
+        settings.put("trading", false);
 
         settings.put("donator-bonus", false);
         settings.put("slayer-bonus", false);
