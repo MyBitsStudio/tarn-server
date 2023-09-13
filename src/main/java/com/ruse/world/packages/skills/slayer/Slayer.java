@@ -235,52 +235,52 @@ public class Slayer {
         switch(item){
             case 13263 -> {
                 if(player.getInventory().contains(4155, 5) &&
-                player.getInventory().contains(5023, 250)){
-                    player.getInventory().delete(4155, 5).delete(5023, 250).
+                player.getInventory().contains(5023, 500)){
+                    player.getInventory().delete(4155, 5).delete(5023, 500).
                             delete(13263, 1).add(21075, 1);
                     player.getPacketSender().sendMessage("You have upgraded your Slayer Helmet to a Slayer Helmet [T1].");
                 } else {
-                    player.getPacketSender().sendMessage("You need 5 Slayer Gems and 250 Slayer Tickets to upgrade.");
+                    player.getPacketSender().sendMessage("You need 5 Slayer Gems and 500 Slayer Tickets to upgrade.");
                 }
             }
             case 21075 -> {
                 if(player.getInventory().contains(4155, 10) &&
-                        player.getInventory().contains(5023, 500)){
-                    player.getInventory().delete(4155, 10).delete(5023, 500).
+                        player.getInventory().contains(5023, 1500)){
+                    player.getInventory().delete(4155, 10).delete(5023, 1500).
                             delete(21075, 1).add(21076, 1);
                     player.getPacketSender().sendMessage("You have upgraded your Slayer Helmet to a Slayer Helmet [T2].");
                 } else {
-                    player.getPacketSender().sendMessage("You need 10 Slayer Gems and 500 Slayer Tickets to upgrade.");
+                    player.getPacketSender().sendMessage("You need 10 Slayer Gems and 1500 Slayer Tickets to upgrade.");
                 }
             }
             case 21076 -> {
                 if(player.getInventory().contains(4155, 20) &&
-                        player.getInventory().contains(5023, 1000)){
-                    player.getInventory().delete(4155, 20).delete(5023, 1000).
+                        player.getInventory().contains(5023, 2500)){
+                    player.getInventory().delete(4155, 20).delete(5023, 2500).
                             delete(21076, 1).add(21077, 1);
                     player.getPacketSender().sendMessage("You have upgraded your Slayer Helmet to a Slayer Helmet [T3].");
                 } else {
-                    player.getPacketSender().sendMessage("You need 20 Slayer Gems and 1000 Slayer Tickets to upgrade.");
+                    player.getPacketSender().sendMessage("You need 20 Slayer Gems and 2500 Slayer Tickets to upgrade.");
                 }
             }
             case 21077 -> {
                 if(player.getInventory().contains(4155, 40) &&
-                        player.getInventory().contains(5023, 2500)){
-                    player.getInventory().delete(4155, 40).delete(5023, 2500).
+                        player.getInventory().contains(5023, 5000)){
+                    player.getInventory().delete(4155, 40).delete(5023, 5000).
                             delete(21077, 1).add(21078, 1);
                     player.getPacketSender().sendMessage("You have upgraded your Slayer Helmet to a Slayer Helmet [T4].");
                 } else {
-                    player.getPacketSender().sendMessage("You need 40 Slayer Gems and 2500 Slayer Tickets to upgrade.");
+                    player.getPacketSender().sendMessage("You need 40 Slayer Gems and 5000 Slayer Tickets to upgrade.");
                 }
             }
             case 21078 -> {
                 if(player.getInventory().contains(4155, 100) &&
-                        player.getInventory().contains(5023, 10000)){
-                    player.getInventory().delete(4155, 100).delete(5023, 10000).
+                        player.getInventory().contains(5023, 25000)){
+                    player.getInventory().delete(4155, 100).delete(5023, 25000).
                             delete(21078, 1).add(21079, 1);
                     player.getPacketSender().sendMessage("You have upgraded your Slayer Helmet to a Slayer Helmet [MAX].");
                 } else {
-                    player.getPacketSender().sendMessage("You need 100 Slayer Gems and 10000 Slayer Tickets to upgrade.");
+                    player.getPacketSender().sendMessage("You need 100 Slayer Gems and 25000 Slayer Tickets to upgrade.");
                 }
             }
         }
