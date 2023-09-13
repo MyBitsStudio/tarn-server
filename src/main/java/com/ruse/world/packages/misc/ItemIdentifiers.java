@@ -53,6 +53,7 @@ public class ItemIdentifiers {
                     if(itemIdentifiers.containsKey(item.getUid())){
                         item.setPerk(itemIdentifiers.get(item.getUid()).get("PERK"));
                         item.setBonus(itemIdentifiers.get(item.getUid()).get("BONUS"));
+                        itemIdentifiers.remove(item.getUid());
                         return;
                     }
                     item.setUid("stale");
@@ -65,6 +66,7 @@ public class ItemIdentifiers {
                     if(itemIdentifiers.containsKey(item.getUid())){
                         item.setPerk(itemIdentifiers.get(item.getUid()).get("PERK"));
                         item.setBonus(itemIdentifiers.get(item.getUid()).get("BONUS"));
+                        itemIdentifiers.remove(item.getUid());
                         return;
                     }
                     item.setUid("stale");
@@ -77,6 +79,7 @@ public class ItemIdentifiers {
                     if(itemIdentifiers.containsKey(item.getUid())){
                         item.setPerk(itemIdentifiers.get(item.getUid()).get("PERK"));
                         item.setBonus(itemIdentifiers.get(item.getUid()).get("BONUS"));
+                        itemIdentifiers.remove(item.getUid());
                         return;
                     }
                     item.setUid("stale");
@@ -92,11 +95,13 @@ public class ItemIdentifiers {
                         if(itemIdentifiers.containsKey(item.getUid())){
                             item.setPerk(itemIdentifiers.get(item.getUid()).get("PERK"));
                             item.setBonus(itemIdentifiers.get(item.getUid()).get("BONUS"));
+                            itemIdentifiers.remove(item.getUid());
                             return;
                         }
                         item.setUid("stale");
                     });
         }
+        save();
 
     }
 }

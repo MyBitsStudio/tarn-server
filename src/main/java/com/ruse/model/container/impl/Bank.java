@@ -158,7 +158,7 @@ public class Bank extends ItemContainer {
 			if (item.getAmount() > getAmount(item)) {
 				item.setAmount(getAmount(item));
 			}
-			System.out.println("Switching item: " + item.getId() + " " + item.getUid() + " " + item.getAmount()+" "+slot+" "+item.getPerk() + " " + item.getBonus());
+			//System.out.println("Switching item: " + item.getId() + " " + item.getUid() + " " + item.getAmount()+" "+slot+" "+item.getPerk() + " " + item.getBonus());
 			if (item.getAmount() <= 0 || Objects.equals(item.getUid(), "-1")) {
 				// Placeholder
 				//System.out.println("Placeholder");
