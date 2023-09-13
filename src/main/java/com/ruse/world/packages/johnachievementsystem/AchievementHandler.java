@@ -1,9 +1,10 @@
-package com.ruse.world.content.johnachievementsystem;
+package com.ruse.world.packages.johnachievementsystem;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 import com.ruse.model.Item;
 import com.ruse.world.entity.impl.player.Player;
+import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
 import java.io.IOException;
@@ -15,6 +16,13 @@ import java.util.stream.Collectors;
 public class AchievementHandler {
 
     public static final HashMap<Integer, Achievement> achievements = new HashMap<>();
+
+
+    public static void sendInterface(Player player){
+        player.getPacketSender().sendInterface(165001);
+        player.getPacketSender().sendString(165024, String.valueOf(player.getAchievementPoints()));
+        player.getPacketSender().sendString(165339, "You can spend your achievement points in the store to unlock exclusive perks with amazing benefits!");
+    }
 
     public static void progress(Player player, int amount, int primaryKey) {
         Achievement achievement = achievements.get(primaryKey);
@@ -67,7 +75,7 @@ public class AchievementHandler {
         }
     }
 
-    private static int getCompletedAchievements(Player player, AchievementDifficulty difficulty) {
+    private static int getCompletedAchievements(@NotNull Player player, AchievementDifficulty difficulty) {
         return (int) player.getAchievementsMap().entrySet()
                 .stream()
                 .filter(entry -> achievements.get(entry.getKey()).getAchievementDifficulty().equals(difficulty)
@@ -97,12 +105,12 @@ public class AchievementHandler {
         return false;
     }
 
-    public static boolean hasUnlocked(Player player, PerkType perkType) {
+    public static boolean hasUnlocked(@NotNull Player player, PerkType perkType) {
         // No need to check if null because hashmap gets populated on player login
         return player.getPerks().get(perkType).hasUnlocked();
     }
 
-    public static int getPerkLevel(Player player, PerkType perkType) {
+    public static int getPerkLevel(@NotNull Player player, PerkType perkType) {
         return player.getPerks().get(perkType).getLevel();
     }
 
@@ -118,7 +126,8 @@ public class AchievementHandler {
         int currentLevel = perk.getLevel();
         if(currentLevel == 5) return;
         // now handle upgrading
-
+        if(player.getAchievementPoints() <= costForLevel(currentLevel)) return;
+        player.setAchievementPoints(player.getAchievementPoints() - costForLevel(currentLevel));
 
         // increasing level on upgrade
         perk.setLevel(currentLevel+1);
@@ -127,13 +136,24 @@ public class AchievementHandler {
         sendPerkLevel(player, perkType);
     }
 
-    private static void selectBuy(Player player) {
+    private static int costForLevel(int level) {
+        return switch(level){
+            case 1 -> 75;
+            case 2 -> 100;
+            case 3 -> 150;
+            case 4 -> 200;
+            default -> -1;
+        };
+    }
+
+    private static void selectBuy(Player player) { // 50
         PerkType perkType = getSelectedPerkType(player);
         if(perkType == null) return;
         Perk perk = player.getPerks().get(perkType);
         if(perk.hasUnlocked()) return;
         // now handle buying
-
+        if(player.getAchievementPoints() <= 50) return;
+        player.setAchievementPoints(player.getAchievementPoints() - 50);
         // setting to level 1 automatically unlocks perk
         perk.setLevel(1);
 

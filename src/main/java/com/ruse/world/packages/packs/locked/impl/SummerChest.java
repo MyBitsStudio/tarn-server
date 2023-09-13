@@ -40,8 +40,8 @@ public class SummerChest extends LockBox {
             new Item(23147, 1),
             new Item(23255, 2),
             new Item(23256, Misc.random(2)),
-            new Item(4562, Misc.random(2, 24)),
-            new Item(13557, Misc.random(2, 24)),
+            new Item(4562, Misc.random(1, 24)),
+            new Item(13557, 1),
         };
     }
 

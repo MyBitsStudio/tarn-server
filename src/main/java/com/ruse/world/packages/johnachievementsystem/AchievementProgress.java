@@ -1,4 +1,4 @@
-package com.ruse.world.content.johnachievementsystem;
+package com.ruse.world.packages.johnachievementsystem;
 
 public class AchievementProgress {
 

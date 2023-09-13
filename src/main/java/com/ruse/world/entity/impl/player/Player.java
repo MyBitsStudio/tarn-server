@@ -32,9 +32,9 @@ import com.ruse.world.content.KillsTracker.KillsEntry;
 import com.ruse.world.content.LoyaltyProgramme.LoyaltyTitles;
 import com.ruse.world.content.StarterTasks.StarterTaskAttributes;
 import com.ruse.world.content.achievement.AchievementHandler;
-import com.ruse.world.content.johnachievementsystem.AchievementProgress;
-import com.ruse.world.content.johnachievementsystem.Perk;
-import com.ruse.world.content.johnachievementsystem.PerkType;
+import com.ruse.world.packages.johnachievementsystem.AchievementProgress;
+import com.ruse.world.packages.johnachievementsystem.Perk;
+import com.ruse.world.packages.johnachievementsystem.PerkType;
 import com.ruse.world.content.tbdminigame.Lobby;
 import com.ruse.world.entity.impl.player.timers.PlayerTimers;
 import com.ruse.world.packages.afk.AFKSystem;
@@ -51,8 +51,8 @@ import com.ruse.world.packages.dialogue.Dialogue;
 import com.ruse.world.packages.packs.casket.CasketOpening;
 import com.ruse.world.packages.clans.Clan;
 import com.ruse.world.packages.clans.ClanManager;
-import com.ruse.world.content.collectionlog.CollectionEntry;
-import com.ruse.world.content.collectionlog.CollectionLogInterface;
+import com.ruse.world.packages.collectionlog.CollectionEntry;
+import com.ruse.world.packages.collectionlog.CollectionLogInterface;
 import com.ruse.world.content.combat.CombatFactory;
 import com.ruse.world.content.combat.CombatType;
 import com.ruse.world.content.combat.effect.CombatPoisonEffect.CombatPoisonData;
@@ -199,6 +199,7 @@ public class Player extends Character {
     }
 
     @Getter
+    @Setter
     public HashMap<PerkType, Perk> perks = new HashMap<>();
 
     @Getter

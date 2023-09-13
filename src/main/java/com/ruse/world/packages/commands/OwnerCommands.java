@@ -6,7 +6,9 @@ import com.ruse.model.container.impl.Equipment;
 import com.ruse.model.definitions.*;
 import com.ruse.security.ServerSecurity;
 import com.ruse.security.save.impl.server.defs.NPCDataLoad;
+import com.ruse.util.Misc;
 import com.ruse.world.World;
+import com.ruse.world.WorldIPChecker;
 import com.ruse.world.content.LotterySystem;
 import com.ruse.world.content.WellOfGoodwill;
 import com.ruse.world.packages.clans.ClanManager;
@@ -15,6 +17,7 @@ import com.ruse.world.content.serverperks.ServerPerks;
 import com.ruse.world.content.skill.SkillManager;
 import com.ruse.world.content.transportation.TeleportHandler;
 import com.ruse.world.content.transportation.TeleportType;
+import com.ruse.world.packages.johnachievementsystem.AchievementHandler;
 import com.ruse.world.packages.shops.ShopHandler;
 import com.ruse.world.packages.slot.SlotBonus;
 import com.ruse.world.packages.slot.SlotEffect;
@@ -34,6 +37,10 @@ public class OwnerCommands {
         Player targets;
 
         switch (commands[0]) {
+            case "accc" -> {
+                AchievementHandler.sendInterface(player);
+                return true;
+            }
             case "findobj" -> {
                 name = command.substring(8).toLowerCase().replaceAll("_", " ");
                 player.getPacketSender().sendMessage("Finding object id for object - " + name);
@@ -108,11 +115,14 @@ public class OwnerCommands {
             case "giveall" -> {
                 id = Integer.parseInt(commands[1]);
                 amount = Integer.parseInt(commands[2]);
+                String code = Misc.createRandomString(10);
                 World.getPlayers().stream()
                         .filter(Objects::nonNull)
                         .forEach(p -> {
-                            p.getInventory().add(id, amount);
-                            p.sendMessage("You have recieved: " + ItemDefinition.forId(id).getName() + " from " + player.getUsername() + " for being beasts.");
+                            if(WorldIPChecker.getInstance().strictCheck(p, "giveaway"+code)) {
+                                p.getInventory().add(id, amount);
+                                p.sendMessage("You have recieved: " + ItemDefinition.forId(id).getName() + " from " + player.getUsername() + " for being beasts.");
+                            }
                         });
                 return true;
             }

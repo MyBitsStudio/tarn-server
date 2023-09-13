@@ -6,6 +6,7 @@ import com.ruse.security.save.impl.server.WellsSave;
 import com.ruse.world.World;
 import com.ruse.world.entity.impl.player.Player;
 import com.ruse.world.packages.globals.impl.*;
+import lombok.Getter;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Map;
@@ -23,6 +24,7 @@ public class GlobalBossManager {
         return instance;
     }
     private final AtomicInteger ticks = new AtomicInteger(-20);
+    @Getter
     private final Map<String, Integer> wells = new ConcurrentHashMap<>();
 
 
@@ -35,22 +37,8 @@ public class GlobalBossManager {
         wells.put("VIP", 0);
     }
 
-    public boolean interact(Player player, int item) {
-        switch (item) {
-            case 23003 -> {
-                player.setInputHandling(new ChangePinPacketListener());
-                player.getPacketSender().sendEnterInputPrompt("Enter a new pin");
-            }
-        }
-        return false;
-    }
-
     public int getProgress(String name){
         return wells.get(name);
-    }
-
-    public Map<String, Integer> getWells(){
-        return wells;
     }
 
     private void save(){

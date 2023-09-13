@@ -1,4 +1,4 @@
-package com.ruse.world.content.collectionlog;
+package com.ruse.world.packages.collectionlog;
 
 import com.ruse.world.entity.impl.player.Player;
 

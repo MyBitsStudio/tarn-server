@@ -134,7 +134,7 @@ public class TradingPost {
         if(optionalSlot.isPresent()) {
             Offer offer = optionalSlot.get();
             removeFromLiveOffers(offer);
-            player.addItemUnderAnyCircumstances(new Item(offer.getItemId(), offer.getAmountLeft(), offer.getUid()));
+            player.addItemUnderAnyCircumstances(new Item(offer.getItemId(), offer.getAmountLeft(), offer.getUid(), offer.getPerk(), offer.getBonus()));
         } else {
             player.getPacketSender().sendMessage("@red@This item does not exist");
         }
@@ -151,11 +151,15 @@ public class TradingPost {
     }
 
     private void offerItem(int price) {
+        if(!selectedItemToAdd.sellable()) {
+            player.getPacketSender().sendMessage("@red@You can't sell this item on the Trading Post.");
+            return;
+        }
         if(price * selectedItemToAdd.getAmount() <= 0) {
             player.getPacketSender().sendMessage("@red@Invalid price entered.");
             return;
         }
-        Offer offer = new Offer(selectedItemToAdd.getId(), selectedItemToAdd.getUid(), selectedItemToAdd.getAmount(), price, player.getUsername(), slotSelected, System.currentTimeMillis());
+        Offer offer = new Offer(selectedItemToAdd.getId(), selectedItemToAdd.getUid(), selectedItemToAdd.getPerk(), selectedItemToAdd.getBonus(), selectedItemToAdd.getAmount(), price, player.getUsername(), slotSelected, System.currentTimeMillis());
         player.getInventory().delete(selectedItemToAdd);
         addToLiveOffers(offer);
         openMainInterface();
@@ -308,7 +312,7 @@ public class TradingPost {
             updateCoffer(coffer);
             player.getInventory().delete(CURRENCY_ID, total);
             addToItemHistory(new History(toPurchase.getItemId(), amount, toPurchase.getPrice(), toPurchase.getSeller(), player.getUsername(), System.currentTimeMillis(), new Date(System.currentTimeMillis())));
-            player.addItemUnderAnyCircumstances(new Item(toPurchase.getItemId(), amount, toPurchase.getUid()));
+            player.addItemUnderAnyCircumstances(new Item(toPurchase.getItemId(), amount, toPurchase.getUid(), toPurchase.getPerk(), toPurchase.getBonus()));
             viewBuyingPage();
             return;
         }

@@ -25,11 +25,10 @@ public class SlotItems {
                 }
                 player.getInventory().delete(item.getId(), 1);
                 SlotEffect effect = SlotEffect.lowBonus();
-                Item reward = new Item(effect.getItemId(), 1, Misc.createRandomString(12));
-                ItemIdentifiers.addItemIdentifier(reward.getUid(), "PERK", String.valueOf(effect.ordinal()));
-                ItemIdentifiers.addItemIdentifier(reward.getUid(), "BONUS", String.valueOf(effect.getRanges().length != 0 ? Misc.random(effect.getRanges()[0], effect.getRanges()[1]) : -1));
+                Item reward = new Item(effect.getItemId(), 1, Misc.createRandomString(12),
+                        String.valueOf(effect.ordinal()), String.valueOf(effect.getRanges().length != 0 ? Misc.random(effect.getRanges()[0], effect.getRanges()[1]) : -1));
                 player.getInventory().add(reward);
-                player.getPacketSender().sendMessage("You have received a " + reward.getDefinition().getName() + " with a bonus of " + ItemIdentifiers.getItemIdentifier(reward.getUid(), "BONUS") + ".");
+                player.getPacketSender().sendMessage("You have received a " + reward.getDefinition().getName() + " with a bonus of " + reward.getBonus() + ".");
                 return true;
             }
             case 23148 -> {
@@ -39,11 +38,10 @@ public class SlotItems {
                 }
                 player.getInventory().delete(item.getId(), 1);
                 SlotEffect effect = SlotEffect.medBonus();
-                Item reward = new Item(effect.getItemId(), 1,  Misc.createRandomString(12));
-                ItemIdentifiers.addItemIdentifier(reward.getUid(), "PERK", String.valueOf(effect.ordinal()));
-                ItemIdentifiers.addItemIdentifier(reward.getUid(), "BONUS", String.valueOf(effect.getRanges().length != 0 ? Misc.random(effect.getRanges()[0], effect.getRanges()[1]) : -1));
+                Item reward = new Item(effect.getItemId(), 1, Misc.createRandomString(12),
+                        String.valueOf(effect.ordinal()), String.valueOf(effect.getRanges().length != 0 ? Misc.random(effect.getRanges()[0], effect.getRanges()[1]) : -1));
                 player.getInventory().add(reward);
-                player.getPacketSender().sendMessage("You have received a " + reward.getDefinition().getName() + " with a bonus of " + ItemIdentifiers.getItemIdentifier(reward.getUid(), "BONUS") + ".");
+                player.getPacketSender().sendMessage("You have received a " + reward.getDefinition().getName() + " with a bonus of " + reward.getBonus() + ".");
                 return true;
             }
             case 23147 -> {
@@ -53,11 +51,10 @@ public class SlotItems {
                 }
                 player.getInventory().delete(item.getId(), 1);
                 SlotEffect effect = SlotEffect.highBonus();
-                Item reward = new Item(effect.getItemId(), 1, Misc.createRandomString(12));
-                ItemIdentifiers.addItemIdentifier(reward.getUid(), "PERK", String.valueOf(effect.ordinal()));
-                ItemIdentifiers.addItemIdentifier(reward.getUid(), "BONUS", String.valueOf(effect.getRanges().length != 0 ? Misc.random(effect.getRanges()[0], effect.getRanges()[1]) : -1));
+                Item reward = new Item(effect.getItemId(), 1, Misc.createRandomString(12),
+                        String.valueOf(effect.ordinal()), String.valueOf(effect.getRanges().length != 0 ? Misc.random(effect.getRanges()[0], effect.getRanges()[1]) : -1));
                 player.getInventory().add(reward);
-                player.getPacketSender().sendMessage("You have received a " + reward.getDefinition().getName() + " with a bonus of " + ItemIdentifiers.getItemIdentifier(reward.getUid(), "BONUS") + ".");
+                player.getPacketSender().sendMessage("You have received a " + reward.getDefinition().getName() + " with a bonus of " + reward.getBonus() + ".");
                 return true;
             }
 

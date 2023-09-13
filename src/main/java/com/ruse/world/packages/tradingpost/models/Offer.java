@@ -1,5 +1,8 @@
 package com.ruse.world.packages.tradingpost.models;
 
+import lombok.Getter;
+
+@Getter
 public class Offer {
 
     private final int itemId;
@@ -10,11 +13,13 @@ public class Offer {
     private final int slot;
     private int amountSold;
     private final long timestamp;
-    private String uid;
+    private final String uid, perk, bonus;
 
-    public Offer(int itemId, String uid,  int initialAmount, int price, String seller, int slot, long timestamp) {
+    public Offer(int itemId, String uid, String perk, String bonus, int initialAmount, int price, String seller, int slot, long timestamp) {
         this.itemId = itemId;
         this.uid = uid;
+        this.perk = perk;
+        this.bonus = bonus;
         this.initialAmount = initialAmount;
         this.price = price;
         this.seller = seller;
@@ -22,39 +27,8 @@ public class Offer {
         this.timestamp = timestamp;
     }
 
-    public int getItemId() {
-        return itemId;
-    }
-
-    public int getInitialAmount() {
-        return initialAmount;
-    }
-
-    public int getPrice() {
-        return price;
-    }
-
-    public String getSeller() {
-        return seller;
-    }
-
-    public int getAmountSold() {
-        return amountSold;
-    }
-
     public void setAmountSold(int amountSold) {
         this.amountSold = amountSold;
-    }
-
-    public String getUid() {
-        return uid;
-    }
-    public int getItemBonus() {
-        return itemBonus;
-    }
-
-    public int getSlot() {
-        return slot;
     }
 
     public void setItemBonus(int itemBonus) {
@@ -71,10 +45,6 @@ public class Offer {
 
     public void incrementAmountSold(int amountSold) {
         this.amountSold += amountSold;
-    }
-
-    public long getTimestamp() {
-        return timestamp;
     }
 
     @Override

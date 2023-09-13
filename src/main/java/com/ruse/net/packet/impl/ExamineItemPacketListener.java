@@ -25,7 +25,7 @@ public class ExamineItemPacketListener implements PacketListener {
 		int item = packet.readShort();
 		int slot = packet.readByte();
 		Item items = null;
-		System.out.println("Item: " + item + " Slot: " + slot+" "+player.getInterfaceId());
+		//System.out.println("Item: " + item + " Slot: " + slot+" "+player.getInterfaceId());
 		if(player.isBanking()){
 			items = player.getBank(player.getCurrentBankTab()).getItems()[slot];
 		} else if(player.getTrading().inTrade()) {
@@ -53,11 +53,10 @@ public class ExamineItemPacketListener implements PacketListener {
 			}
 		} else if(player.getInterfaceId() == TradingPost.BUYING_INTERFACE_ID){
 			Offer offer = player.getTradingPost().getViewingOfferList().get(slot);
-			items = new Item(offer.getItemId(), 1, offer.getUid());
+			items = new Item(offer.getItemId(), 1, offer.getUid(), offer.getPerk(), offer.getBonus());
 		} else if(player.getInterfaceId() == TradingPost.MAIN_INTERFACE_ID){
-			//System.out.println(player.getTradingPost().getMyOfferList().get(slot));
 			Offer offer = player.getTradingPost().getMyOfferList().get(slot);
-			items = new Item(offer.getItemId(), 1, offer.getUid());
+			items = new Item(offer.getItemId(), 1, offer.getUid(), offer.getPerk(), offer.getBonus());
 		} else {
 			items = player.getInventory().getItems()[slot];
 		}
@@ -69,14 +68,14 @@ public class ExamineItemPacketListener implements PacketListener {
 		if(itemDef != null) {
 			player.getPacketSender().sendMessage(itemDef.getDescription());
 			if (items != null) {
-				if(ItemIdentifiers.itemIdentifiers.containsKey(items.getUid())){
-					SlotEffect effect = SlotEffect.values()[Integer.parseInt(ItemIdentifiers.getItemIdentifier(items.getUid(), "PERK"))];
-					int bonus = Integer.parseInt(ItemIdentifiers.getItemIdentifier(items.getUid(), "BONUS"));
+				if(items.getPerk() != null && !items.getPerk().isEmpty()
+				&& !items.getPerk().equals("none")){
+					SlotEffect effect = SlotEffect.values()[Integer.parseInt(items.getPerk())];
+					int bonus = Integer.parseInt(items.getBonus());
 					if(effect != null && !effect.equals(SlotEffect.NOTHING)){
 						player.getPacketSender().sendMessage("This item has a @red@"+effect.name()+"@bla@ perk"+(bonus != 0 && bonus != -1 ? "with bonus of "+bonus+"%." : "."));
 					}
 				}
-
 			}
 		}
 	}

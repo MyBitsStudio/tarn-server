@@ -1,11 +1,10 @@
-package com.ruse.world.content.collectionlog;
+package com.ruse.world.packages.collectionlog;
 
 import com.ruse.model.Item;
 import com.ruse.model.definitions.NpcDefinition;
 import com.ruse.util.Misc;
 import com.ruse.world.World;
 import com.ruse.world.content.KillsTracker;
-import com.ruse.world.content.TeleportInterface;
 import com.ruse.world.content.teleport.TeleInterfaceData;
 import com.ruse.world.entity.impl.player.Player;
 import com.ruse.world.packages.combat.drops.Drop;
@@ -15,17 +14,33 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 //import com.sun.scenario.effect.DropShadow;
 
 @RequiredArgsConstructor
 public class CollectionLogInterface {
     public static final int INTERFACE_ID = 30360;
-    private final int[] NPC_LIST = new int[]{};
+    private final int[] NPC_LIST = new int[]{
+            //starters
+            9837, 9027, 9835, 9911, 9922, 8014, 8003, 811, 9817, 92, 3313, 1906, 9836, 1742,
+            1743, 1744, 1745, 1738, 1739, 1740, 1741, 9025, 9026, 8008, 2342, 9839,
+            9806, 4972, 1746, 3305, 3021, 125,
+
+            //globals
+            8010, 3308, 9904, 8013, 9005, 587,
+
+            //instances
+            9915, 9024, 8002, 8000, 9919, 9913, 3020, 1313, 1311, //multi
+
+            3013, 9017, 3016, 12239, // single
+
+            9818, 591, 593, //special
+
+            3010, 3014, 595 //masters
+
+
+    };
     private final Player player;
     private final List<Integer> currentlyViewing = new ArrayList<>();
     private int currentIndex;
@@ -47,11 +62,9 @@ public class CollectionLogInterface {
     private void initialiseCurrentlyViewing() {
         currentlyViewing.clear();
 
-		for (TeleInterfaceData data : TeleInterfaceData.values())
-			currentlyViewing.add(data.getNpcId());
-
 		for (int entry : NPC_LIST) {
-            currentlyViewing.add(entry);
+            if(currentlyViewing.stream().noneMatch(x -> x == entry))
+                currentlyViewing.add(entry);
         }
     }
 
@@ -136,8 +149,22 @@ public class CollectionLogInterface {
         int lines = total / 6;
         if (total % 6 > 0)
             lines++;
+
         player.getPacketSender().setScrollMax(30385, lines * 40);
         player.getPacketSender().sendString(30367, "Obtained: @gre@" + received + "/" + total + "");
+
+        int npcId = currentlyViewing.get(currentIndex);
+        if(RewardClaim.REWARDS.get(npcId) == null) return;
+        RewardClaim rewardClaim = rewardsClaims.computeIfAbsent(npcId, x -> new RewardClaim());
+        if(rewardClaim.canClaim) {
+            if (rewardClaim.hasClaimed) {
+                player.getPacketSender().sendString(30712, "Claimed");
+            } else {
+                player.getPacketSender().sendString(30712, "Claim Now!");
+            }
+        } else {
+            player.getPacketSender().sendString(30712, "Cannot Claim");
+        }
     }
 
     public boolean handleButton(int buttonId) {
@@ -169,6 +196,7 @@ public class CollectionLogInterface {
                     } else {
                         player.getPacketSender().sendMessage("@red@You need at least " + rewards.length + " free slots to claim this.");
                     }
+                    player.save();
                 } else {
                     player.getPacketSender().sendMessage("@red@You cannot claim this reward yet.");
                 }
@@ -197,7 +225,74 @@ public class CollectionLogInterface {
         public static HashMap<Integer, Item[]> REWARDS = new HashMap<>();
 
         static {
-            REWARDS.put(9837, new Item[]{new Item(995,1000), new Item(23200,5)});
+            REWARDS.put(9837, new Item[]{new Item(995,15000), new Item(12852,25)});
+            REWARDS.put(9027, new Item[]{new Item(995,15000), new Item(12852,25)});
+            REWARDS.put(9835, new Item[]{new Item(995,15000), new Item(12852,25)});
+            REWARDS.put(9911, new Item[]{new Item(995,15000), new Item(12852,25)});
+            REWARDS.put(9922, new Item[]{new Item(995,15000), new Item(12852,25)});
+            REWARDS.put(8014, new Item[]{new Item(995,15000), new Item(12852,25)});
+            REWARDS.put(8003, new Item[]{new Item(995,15000), new Item(12852,25)});
+            REWARDS.put(811, new Item[]{new Item(995,15000), new Item(12852,25)});
+            REWARDS.put(9817, new Item[]{new Item(995,15000), new Item(12852,25)});
+            REWARDS.put(92, new Item[]{new Item(995,15000), new Item(12852,25)});
+            REWARDS.put(3313, new Item[]{new Item(995,15000), new Item(12852,25)});
+            REWARDS.put(1906, new Item[]{new Item(995,15000), new Item(12852,25)});
+            REWARDS.put(9836, new Item[]{new Item(995,15000), new Item(12852,25)});
+
+            REWARDS.put(1742, new Item[]{new Item(995,20000), new Item(23253,1)});
+            REWARDS.put(1743, new Item[]{new Item(995,20000), new Item(23253,1)});
+            REWARDS.put(1744, new Item[]{new Item(995,20000), new Item(23253,1)});
+            REWARDS.put(1745, new Item[]{new Item(995,20000), new Item(23253,1)});
+            REWARDS.put(1738, new Item[]{new Item(995,20000), new Item(23253,1)});
+            REWARDS.put(1739, new Item[]{new Item(995,20000), new Item(23253,1)});
+
+            REWARDS.put(1740, new Item[]{new Item(995,25000), new Item(23149,1)});
+            REWARDS.put(1741, new Item[]{new Item(995,25000), new Item(23149,1)});
+
+            REWARDS.put(9025, new Item[]{new Item(995,30000), new Item(20500,1)});
+            REWARDS.put(9026, new Item[]{new Item(995,30000), new Item(20500,1)});
+            REWARDS.put(8008, new Item[]{new Item(995,30000), new Item(20500,1)});
+            REWARDS.put(2342, new Item[]{new Item(995,30000), new Item(20500,1)});
+            REWARDS.put(9839, new Item[]{new Item(995,30000), new Item(20500,1)});
+            REWARDS.put(9806, new Item[]{new Item(995,30000), new Item(20500,1)});
+
+            REWARDS.put(4972, new Item[]{new Item(995,35000), new Item(23149,2)});
+            REWARDS.put(1746, new Item[]{new Item(995,35000), new Item(23149,2)});
+            REWARDS.put(3305, new Item[]{new Item(995,35000), new Item(23149,2)});
+            REWARDS.put(3021, new Item[]{new Item(995,35000), new Item(23149,2)});
+            REWARDS.put(125, new Item[]{new Item(995,35000), new Item(23149,2)});
+
+            REWARDS.put(8010, new Item[]{new Item(10835,100), new Item(19001,3)});
+            REWARDS.put(3308, new Item[]{new Item(10835,100), new Item(19001,3)});
+            REWARDS.put(9904, new Item[]{new Item(10835,100), new Item(19001,3)});
+            REWARDS.put(8013, new Item[]{new Item(4001,50), new Item(18768,3)});
+            REWARDS.put(9005, new Item[]{new Item(23335,10), new Item(23058,2), new Item(23256,2)});
+            REWARDS.put(587, new Item[]{new Item(23335,15), new Item(23257,2)});
+
+            REWARDS.put(9915, new Item[]{new Item(995,50000), new Item(23254,2)});
+            REWARDS.put(9024, new Item[]{new Item(995,50000), new Item(23254,2)});
+            REWARDS.put(8002, new Item[]{new Item(995,50000), new Item(23254,2)});
+            REWARDS.put(8000, new Item[]{new Item(995,50000), new Item(23254,2)});
+            REWARDS.put(3013, new Item[]{new Item(995,50000), new Item(23254,2)});
+            REWARDS.put(3831, new Item[]{new Item(995,50000), new Item(23254,2)});
+
+            REWARDS.put(9919, new Item[]{new Item(995,65000), new Item(20501,2)});
+            REWARDS.put(9913, new Item[]{new Item(995,65000), new Item(20501,2)});
+            REWARDS.put(3020, new Item[]{new Item(995,65000), new Item(20501,2)});
+            REWARDS.put(9017, new Item[]{new Item(995,65000), new Item(20501,2)});
+            REWARDS.put(3016, new Item[]{new Item(995,65000), new Item(20501,2)});
+
+            REWARDS.put(1313, new Item[]{new Item(995,75000), new Item(23148,1)});
+            REWARDS.put(1311, new Item[]{new Item(995,75000), new Item(23148,1)});
+            REWARDS.put(12239, new Item[]{new Item(995,75000), new Item(23148,1)});
+
+            REWARDS.put(9818, new Item[]{new Item(10835,100), new Item(23058,1)});
+            REWARDS.put(591, new Item[]{new Item(10835,250), new Item(23058,2)});
+            REWARDS.put(593, new Item[]{new Item(4000,100), new Item(4001,25), new Item(18768,2)});
+
+            REWARDS.put(3010, new Item[]{new Item(10835,250), new Item(9076,10)});
+            REWARDS.put(3014, new Item[]{new Item(10835,250), new Item(9076,10)});
+            REWARDS.put(595, new Item[]{new Item(10835,250), new Item(9076,10)});
         }
     }
 

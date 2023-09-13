@@ -156,14 +156,16 @@ public class Bank extends ItemContainer {
 			if (getItems()[slot].getId() != item.getId() || !contains(item.getId()))
 				return this;
 			if (item.getAmount() > getAmount(item)) {
-				item.setAmount(getAmount(item.getId()));
+				item.setAmount(getAmount(item));
 			}
-			//System.out.println("Switching item: " + item.getId() + " " + item.getUid() + " " + item.getAmount()+" "+slot);
+			System.out.println("Switching item: " + item.getId() + " " + item.getUid() + " " + item.getAmount()+" "+slot+" "+item.getPerk() + " " + item.getBonus());
 			if (item.getAmount() <= 0 || Objects.equals(item.getUid(), "-1")) {
 				// Placeholder
 				//System.out.println("Placeholder");
 				getItems()[slot].setId(-1);
 				getItems()[slot].setUid("-1");
+				getItems()[slot].setPerk("none");
+				getItems()[slot].setBonus("none");
 				refreshItems();
 				return this;
 			}
@@ -217,14 +219,15 @@ public class Bank extends ItemContainer {
 			if(getItems()[slot].getAmount() - amount <= 0) {
 				if (leavePlaceHolder){
 					getItems()[slot].setAmount(0);
-					getItems()[slot].setUid("");
-				}else{
+					getItems()[slot].setUid("-1");
+                }else{
 					getItems()[slot].setId(-1);
-					getItems()[slot].setUid("");
-				}
-			} else {
+					getItems()[slot].setUid("stale");
+                }
+                getItems()[slot].setPerk("none");
+                getItems()[slot].setBonus("none");
+            } else {
 				getItems()[slot].setAmount(getItems()[slot].getAmount() - amount);
-
 			}
 		}
 

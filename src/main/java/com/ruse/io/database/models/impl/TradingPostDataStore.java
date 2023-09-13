@@ -17,7 +17,7 @@ import java.util.LinkedList;
 
 public class TradingPostDataStore implements TradingPostStatement {
 
-    private static final String CREATE_OFFER = "INSERT INTO live_offers(item_id, item_name, item_initial_amount, item_amount_sold, price, seller, slot, time_stamp, uid) VALUES(?,?,?,?,?,?,?,?,?)";
+    private static final String CREATE_OFFER = "INSERT INTO live_offers(item_id, item_name, item_initial_amount, item_amount_sold, price, seller, slot, time_stamp, uid, perk, bonus) VALUES(?,?,?,?,?,?,?,?,?,?,?)";
     private static final String CREATE_COFFER = "INSERT INTO coffers(username, amount) VALUES(?,?)";
     private static final String GET_ALL_OFFERS = "SELECT * FROM live_offers";
     private static final String DELETE_OFFER = "DELETE FROM live_offers WHERE seller = ? AND slot = ? LIMIT 1";
@@ -40,6 +40,8 @@ public class TradingPostDataStore implements TradingPostStatement {
                 stmt.setInt(7, offer.getSlot());
                 stmt.setLong(8, offer.getTimestamp());
                 stmt.setString(9, offer.getUid());
+                stmt.setString(10, offer.getPerk());
+                stmt.setString(11, offer.getBonus());
                 stmt.executeUpdate();
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -82,7 +84,7 @@ public class TradingPostDataStore implements TradingPostStatement {
                 ResultSet rs = stmt.executeQuery(GET_ALL_OFFERS)
             ) {
                 while(rs.next()) {
-                    Offer offer = new Offer(rs.getInt(2), rs.getString(10), rs.getInt(4), rs.getInt(6), rs.getString(7), rs.getInt(8), rs.getLong(9));
+                    Offer offer = new Offer(rs.getInt(2), rs.getString(10), rs.getString(11), rs.getString(12), rs.getInt(4), rs.getInt(6), rs.getString(7), rs.getInt(8), rs.getLong(9));
                     offer.setAmountSold(rs.getInt(5));
                     offerList.add(offer);
                 }

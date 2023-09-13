@@ -335,7 +335,8 @@ public abstract class ItemContainer {
         for (int i = 0; i < capacity(); i++) {
             if (items[i].getId() > 0 && items[i].getId() == item.getId()) {
                 if (items[i].getAmount() > 0 || ((this instanceof Bank) && items[i].getAmount() <= 1)) {
-                    if (ItemIdentifiers.itemIdentifiers.containsKey(item.getUid())){
+                    if (!item.getUid().equals("stale") && !item.getUid().equals("-1")
+                        && !item.getPerk().equals("none")){
                         if (item.getUid().equals(items[i].getUid()))
                             return i;
                     }else {
@@ -426,7 +427,7 @@ public abstract class ItemContainer {
             return this;
         }
         to.add(item, refresh);
-        if (sort && getAmount(item.getId()) <= 0)
+        if (sort && getAmount(item) <= 0)
             sortItems();
         if (refresh) {
             refreshItems();
@@ -462,13 +463,10 @@ public abstract class ItemContainer {
         if (item == null || item.getId() <= 0 || item.getAmount() <= 0)
             return this;
         if (item.getDefinition().isStackable() && amount > 1) { // Item is stackable
-            item.setAmount(from.getAmount(item.getId()));
-            from.delete(item.getId(), amount, false);
-            to.add(item);
-        } else {
-            from.delete(item.getId(), item.getAmount(), false);
-            to.add(item);
+            item.setAmount(from.getAmount(item));
         }
+        from.delete(item);
+        to.add(item);
         return this;
     }
 
@@ -581,7 +579,7 @@ public abstract class ItemContainer {
         if (ItemDefinition.forId(item.getId()).isStackable() || stackType() == StackType.STACKS
         && Arrays.stream(unstackables).noneMatch(i -> i == item.getId())) {
 
-            int slot = getSlot(item.getId());
+            int slot = getSlot(item);
               if (slot == -1)
                 slot = getEmptySlot();
             if (slot == -1) {
@@ -598,9 +596,12 @@ public abstract class ItemContainer {
                 }
                 return this;
             }
+            //System.out.println("here");
             items[slot].setId(item.getId());
             items[slot].setAmount(items[slot].getAmount() + item.getAmount());
             items[slot].setUid(item.getUid());
+            items[slot].setPerk(item.getPerk());
+            items[slot].setBonus(item.getBonus());
         } else {
             int amount = item.getAmount();
             while (amount > 0) {
@@ -617,9 +618,12 @@ public abstract class ItemContainer {
                         return this;
                     }
                 } else {
+                    //System.out.println("adding "+item.getId()+" to slot "+slot+" with amount "+amount+" and uid "+item.getUid()+" and perk "+item.getPerk()+" and bonus "+item.getBonus());
                     items[slot].setId(item.getId());
                     items[slot].setAmount(1);
                     items[slot].setUid(item.getUid());
+                    items[slot].setPerk(item.getPerk());
+                    items[slot].setBonus(item.getBonus());
                 }
                 amount--;
             }
@@ -712,31 +716,37 @@ public abstract class ItemContainer {
         if (item == null || slot < 0)
             return this;
         boolean leavePlaceHolder = (toContainer instanceof Inventory && this instanceof Bank && getPlayer().isPlaceholders());
-        if (item.getAmount() > getAmount(item.getId())) {
-            item.setAmount(getAmount(item.getId()));
+        if (item.getAmount() > getAmount(item)) {
+            item.setAmount(getAmount(item));
         }
         if (item.getDefinition().isStackable() || stackType() == StackType.STACKS) {
             if (toContainer != null && !item.getDefinition().isStackable() && item.getAmount() > toContainer.getFreeSlots() && !(this instanceof Bank)  && !(this instanceof GroupIronmanBank))
                 item.setAmount(toContainer.getFreeSlots());
             items[slot].setAmount(items[slot].getAmount() - item.getAmount());
+            //System.out.println("deleting from slot "+slot+" with amount "+item.getAmount()+" and uid "+item.getUid()+" and perk "+item.getPerk()+" and bonus "+item.getBonus());
             if (items[slot].getAmount() < 1) {
                 items[slot].setAmount(0);
                 if (!leavePlaceHolder) {
                     items[slot].setId(-1);
                 }
-                items[slot].setUid("-1");
+                items[slot].setUid("stale");
+                items[slot].setPerk("none");
+                items[slot].setBonus("none");
             }
         } else {
             int amount = item.getAmount();
             while (amount > 0) {
                 if (slot == -1 || (toContainer != null && toContainer.isFull()))
                     break;
+                //System.out.println("deleting by slot "+slot+" with amount "+item.getAmount()+" and uid "+item.getUid()+" and perk "+item.getPerk()+" and bonus "+item.getBonus());
                 if (!leavePlaceHolder) {
                     items[slot].setId(-1);
                 }
                 items[slot].setAmount(0);
-                items[slot].setUid("-1");
-                slot = getSlot(item.getId());
+                items[slot].setUid("stale");
+                items[slot].setPerk("none");
+                items[slot].setBonus("none");
+                slot = getSlot(item);
                 amount--;
             }
         }

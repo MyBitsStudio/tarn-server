@@ -16,7 +16,7 @@ import lombok.Getter;
 public class Item {
 
 	private int id, amount, slot;
-	private String uid;
+	private String uid = "stale", perk = "none", bonus = "none";
 
 	/**
 	 * An Item object constructor.
@@ -27,13 +27,20 @@ public class Item {
 	public Item(int id, int amount) {
 		this.id = id;
 		this.amount = amount;
-		this.uid = "stale";
 	}
 
 	public Item(int id, int amount, String uid) {
 		this.id = id;
 		this.amount = amount;
 		this.uid = uid;
+	}
+
+	public Item(int id, int amount, String uid, String perk, String bonus) {
+		this.id = id;
+		this.amount = amount;
+		this.uid = uid;
+		this.perk = perk;
+		this.bonus = bonus;
 	}
 
 	/**
@@ -67,6 +74,15 @@ public class Item {
 		return this;
 	}
 
+	public Item setPerk(String perk){
+		this.perk = perk;
+		return this;
+	}
+
+	public Item setBonus(String bonus){
+		this.bonus = bonus;
+		return this;
+	}
 	/**
 	 * Gets item's definition.
 	 */
@@ -92,13 +108,6 @@ public class Item {
 	}
 
 	public boolean sellable() {
-		String name = getDefinition().getName().toLowerCase();
-		if (name.contains("clue scroll"))
-			return false;
-		if (name.contains("overload") || name.contains("extreme"))
-			return false;
-		if (name.toLowerCase().contains("(deg)") || name.toLowerCase().contains("brawling"))
-			return false;
 		for (int i : GameSettings.UNTRADEABLE_ITEMS) {
 			if (id == i)
 				return false;
@@ -154,7 +163,7 @@ public class Item {
 	 * Copying the item by making a new item with same values.
 	 */
 	public Item copy() {
-		return new Item(id, amount, uid);
+		return new Item(id, amount, uid, perk, bonus);
 	}
 
 	/**

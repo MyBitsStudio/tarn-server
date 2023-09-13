@@ -8,7 +8,7 @@ import com.ruse.util.Misc;
 import com.ruse.world.World;
 import com.ruse.world.content.DropLog;
 import com.ruse.world.content.PlayerLogs;
-import com.ruse.world.content.collectionlog.CollectionEntry;
+import com.ruse.world.packages.collectionlog.CollectionEntry;
 import com.ruse.world.packages.discordbot.AdminCord;
 import com.ruse.world.content.equipmentenhancement.BoostType;
 import com.ruse.world.entity.impl.GroundItemManager;

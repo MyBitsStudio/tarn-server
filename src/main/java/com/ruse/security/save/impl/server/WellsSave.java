@@ -12,7 +12,6 @@ import java.io.IOException;
 
 public class WellsSave extends SecureSave {
     public WellsSave(){
-        ;
     }
 
     @Override

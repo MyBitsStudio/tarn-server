@@ -15,7 +15,7 @@
 //import com.ruse.world.content.DropLog.DropLogEntry;
 //import com.ruse.world.content.PlayerLogs;
 //import com.ruse.world.content.cluescrolls.OLD_ClueScrolls;
-//import com.ruse.world.content.collectionlog.CollectionEntry;
+//import com.ruse.world.packages.collectionlog.CollectionEntry;
 //import com.ruse.world.content.combat.CombatBuilder.CombatDamageCache;
 //import com.ruse.world.content.combat.CombatFactory;
 //import com.ruse.world.packages.discordbot.AdminCord;

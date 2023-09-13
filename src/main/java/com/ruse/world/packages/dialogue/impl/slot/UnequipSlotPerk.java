@@ -1,6 +1,7 @@
 package com.ruse.world.packages.dialogue.impl.slot;
 
 import com.ruse.model.Item;
+import com.ruse.util.Misc;
 import com.ruse.world.entity.impl.player.Player;
 import com.ruse.world.packages.dialogue.Dialogue;
 import com.ruse.world.packages.dialogue.DialogueExpression;
@@ -57,9 +58,9 @@ public class UnequipSlotPerk extends Dialogue {
                         getPlayer().sendMessage("You do not have enough inventory space to transfer the perk.");
                     } else {
                         getPlayer().getInventory().delete(8788, 1);
-                        Item items = new Item(getPlayer().getEquipment().getSlotBonuses()[getPlayer().getVariables().getIntValue("slot-chosen")].getEffect().getItemId(), 1);
-                        ItemIdentifiers.addItemIdentifier(items.getUid(), "PERK", String.valueOf(getPlayer().getEquipment().getSlotBonuses()[getPlayer().getVariables().getIntValue("slot-chosen")].getEffect().ordinal()));
-                        ItemIdentifiers.addItemIdentifier(items.getUid(), "BONUS", String.valueOf(getPlayer().getEquipment().getSlotBonuses()[getPlayer().getVariables().getIntValue("slot-chosen")].getBonus()));
+                        Item items = new Item(getPlayer().getEquipment().getSlotBonuses()[getPlayer().getVariables().getIntValue("slot-chosen")].getEffect().getItemId(), 1, Misc.createRandomString(12),
+                                String.valueOf(getPlayer().getEquipment().getSlotBonuses()[getPlayer().getVariables().getIntValue("slot-chosen")].getEffect().ordinal()),
+                                String.valueOf(getPlayer().getEquipment().getSlotBonuses()[getPlayer().getVariables().getIntValue("slot-chosen")].getBonus()));
                         getPlayer().getInventory().add(items);
                         getPlayer().getEquipment().getSlotBonuses()[getPlayer().getVariables().getIntValue("slot-chosen")] = new SlotBonus();
                         getPlayer().getEquipment().refreshItems();

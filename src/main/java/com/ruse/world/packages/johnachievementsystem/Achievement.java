@@ -1,5 +1,8 @@
-package com.ruse.world.content.johnachievementsystem;
+package com.ruse.world.packages.johnachievementsystem;
 
+import lombok.Getter;
+
+@Getter
 public class Achievement {
 
     private int primaryKey;
@@ -9,18 +12,6 @@ public class Achievement {
     private int maxProgress;
     private Reward[] rewards;
     private int componentId;
-
-    public int getComponentId() {
-        return componentId;
-    }
-
-    public int getMaxProgress() {
-        return maxProgress;
-    }
-
-    public Reward[] getRewards() {
-        return rewards;
-    }
 
     public AchievementDifficulty getAchievementDifficulty() {
         return difficulty;
@@ -42,32 +33,16 @@ public class Achievement {
         this.rewards = rewards;
     }
 
-    public String getTitle() {
-        return title;
-    }
-
     public void setTitle(String title) {
         this.title = title;
-    }
-
-    public String getDescription() {
-        return description;
     }
 
     public void setDescription(String description) {
         this.description = description;
     }
 
-    public AchievementDifficulty getDifficulty() {
-        return difficulty;
-    }
-
     public void setDifficulty(AchievementDifficulty difficulty) {
         this.difficulty = difficulty;
-    }
-
-    public int getPrimaryKey() {
-        return primaryKey;
     }
 
     public void setPrimaryKey(int primaryKey) {

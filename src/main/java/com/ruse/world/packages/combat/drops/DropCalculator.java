@@ -121,7 +121,7 @@ public class DropCalculator {
 
 
         if(player.getRank().isDeveloper()){
-            chance = 1200;
+            chance = 3100;
         }
 
         return chance;

@@ -12,9 +12,6 @@ public class DonateToWellListener extends EnterAmount {
 		player.getVariables().setSetting("item-chosen", id);
 	}
 
-//	 player.setInputHandling(new ChangePinPacketListener());
-//                player.getPacketSender().sendEnterInputPrompt("Enter a new pin");
-
 	@Override
 	public void handleAmount(Player player, int amount) {
 		int item = player.getVariables().getIntValue("item-chosen");

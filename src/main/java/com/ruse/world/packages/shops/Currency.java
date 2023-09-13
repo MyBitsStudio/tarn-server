@@ -11,7 +11,7 @@ public enum Currency {
     SLAYER("slayer", 5023),
     VOTE("vote", 4000),
     ELITE_VOTE("elite_vote", 4001),
-    SUMMER("fall", 14819),
+    FALL("fall", 14819),
     LOYALTY("loyalty", 5022),
     AFK("afk", 5020),
     PETS("pet", 19000),

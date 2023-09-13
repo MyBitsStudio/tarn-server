@@ -2,7 +2,6 @@ package com.ruse.world.entity.impl.player;
 
 import com.ruse.GameServer;
 import com.ruse.GameSettings;
-import com.ruse.engine.task.Task;
 import com.ruse.engine.task.TaskManager;
 import com.ruse.engine.task.impl.*;
 import com.ruse.model.*;
@@ -16,36 +15,25 @@ import com.ruse.net.SessionState;
 import com.ruse.net.security.ConnectionHandler;
 import com.ruse.util.Misc;
 import com.ruse.world.World;
-import com.ruse.world.allornothing.DoubleOrNothing;
 import com.ruse.world.content.*;
-import com.ruse.world.content.KillsTracker.KillsEntry;
 import com.ruse.world.content.combat.effect.CombatPoisonEffect;
 import com.ruse.world.content.combat.effect.CombatTeleblockEffect;
 import com.ruse.world.content.combat.magic.Autocasting;
 import com.ruse.world.content.combat.prayer.CurseHandler;
 import com.ruse.world.content.combat.prayer.PrayerHandler;
-import com.ruse.world.content.combat.pvp.BountyHunter;
-import com.ruse.world.content.combat.range.DwarfMultiCannon;
 import com.ruse.world.content.combat.weapon.CombatSpecial;
-import com.ruse.world.content.grandLottery.GrandLottery;
-import com.ruse.world.content.johnachievementsystem.AchievementHandler;
+import com.ruse.world.packages.johnachievementsystem.AchievementHandler;
 import com.ruse.world.content.skill.impl.summoning.BossPets;
-import com.ruse.world.content.tbdminigame.Lobby;
 import com.ruse.world.packages.clans.ClanManager;
 import com.ruse.world.packages.instances.InstanceManager;
-import com.ruse.world.content.minigames.impl.Barrows;
-import com.ruse.world.content.minigames.impl.VoidOfDarkness;
+import com.ruse.world.packages.misc.ItemIdentifiers;
 import com.ruse.world.packages.mode.GameModeConstants;
 import com.ruse.world.packages.mode.impl.UltimateIronman;
 import com.ruse.world.packages.ranks.StaffRank;
 import com.ruse.world.packages.seasonpass.SeasonPassConfig;
 import com.ruse.world.packages.seasonpass.SeasonPassManager;
 import com.ruse.world.content.serverperks.ServerPerks;
-import com.ruse.world.content.skeletalhorror.SkeletalHorror;
-import com.ruse.world.content.skill.impl.hunter.Hunter;
-import com.ruse.world.content.transportation.TeleportHandler;
 import com.ruse.world.entity.impl.GlobalItemSpawner;
-import com.ruse.world.entity.impl.mini.MiniPlayer;
 import com.ruse.world.instance.MapInstance;
 
 import java.util.Objects;
@@ -399,6 +387,8 @@ public class PlayerHandler {
         }
 
         player.getTimers().startAll();
+
+        ItemIdentifiers.convert(player);
     }
 
     public static Player getPlayer(String name) {

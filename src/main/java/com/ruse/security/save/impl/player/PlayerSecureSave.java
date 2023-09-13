@@ -100,7 +100,6 @@ public class PlayerSecureSave extends SecureSave {
 
         object.addProperty("Skilling-points", player.getPointsHandler().getSkillingPoints());
         object.addProperty("prestige-points", player.getPointsHandler().getPrestigePoints());
-        object.addProperty("achievement-points", player.getPointsHandler().getAchievementPoints());
         object.addProperty("dung-tokens", player.getPointsHandler().getDungeoneeringTokens());
         object.addProperty("commendations", player.getPointsHandler().getCommendations());
 
@@ -192,9 +191,6 @@ public class PlayerSecureSave extends SecureSave {
 
         object.add("kills", builder.toJsonTree(player.getKillsTracker().toArray()));
         object.add("drops", builder.toJsonTree(player.getDropLog().toArray()));
-        object.add("achievements-completion",
-                builder.toJsonTree(player.getAchievementAttributes().getCompletion()));
-        object.add("achievements-progress", builder.toJsonTree(player.getAchievementAttributes().getProgress()));
 
         object.addProperty("reffered", player.gotReffered());
         object.addProperty("toggledglobalmessages", player.toggledGlobalMessages());
@@ -207,11 +203,6 @@ public class PlayerSecureSave extends SecureSave {
         object.add("secondary-equipment-slots-unlocked", builder.toJsonTree(player.getSecondaryEquipmentUnlocks()));
 
         object.addProperty("yell-tit", player.getYellTitle() == null ? "null" : player.getYellTitle());
-
-        object.add("achievements-points", builder.toJsonTree(player.getAchievements().getPoints()));
-        object.add("achievements-amount", builder.toJsonTree(player.getAchievements().getAmountRemaining()));
-        object.add("achievements-completed", builder.toJsonTree(player.getAchievements().getCompleted()));
-        object.addProperty("achievements-daily", player.getAchievements().getDailyAchievementsDate());
 
         if (player.getIronmanGroup() != null)
             object.addProperty("group-ironman-id", player.getIronmanGroup().getUniqueId());
@@ -271,7 +262,11 @@ public class PlayerSecureSave extends SecureSave {
         object.addProperty("towerTier", player.getTower().getTier());
         object.addProperty("towerLevel", player.getTower().getLevel());
         object.add("towerRewards", builder.toJsonTree(player.getTower().getRewards().getItems()));
+
         object.add("achievements-map", builder.toJsonTree(player.getAchievementsMap()));
+        object.addProperty("achievement-points", player.getAchievementPoints());
+        object.add("ach-perks", builder.toJsonTree(player.getPerks()));
+
 
         object.add("timers", builder.toJsonTree(player.getTimers().save()));
 

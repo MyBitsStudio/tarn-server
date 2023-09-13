@@ -196,6 +196,10 @@ public class Trading {
 			return;
 		}
 		Item itemToTrade = player.getInventory().getItems()[slot].copy();
+		if(!itemToTrade.sellable()){
+			player.getPacketSender().sendMessage("This item is currently untradeable and cannot be traded.");
+			return;
+		}
 		if (player.getRank().isAdmin()
 				&& !(itemId == 1419 && player.getRank().isStaff())) {
 			if (!itemToTrade.tradeable()) {

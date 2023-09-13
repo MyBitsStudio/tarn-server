@@ -70,6 +70,7 @@ public class Inventory extends ItemContainer {
 		}
 
 		delete(item, slot, refresh, to);
+
 		if (to.isBank() && ItemDefinition.forId(item.getId()).isNoted()
 				&& !ItemDefinition.forId(item.getId() - 1).isNoted())
 			item.setId(item.getId() - 1);

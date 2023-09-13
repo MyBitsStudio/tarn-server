@@ -1,144 +1,1012 @@
-- title: ach
-  description: desc
-  maxProgress: 100
+- title: Kill 1000
+  description: Kill 1000 NPCs
+  maxProgress: 1000
   difficulty: BEGINNER
   primaryKey: 0
   rewards:
-    - itemId: 4151
-      amount: 1
-    - itemId: 4151
-      amount: 1
+    - itemId: 995
+      amount: 10000
+    - itemId: 2736
+      amount: 2
 
-- title: ach1
-  description: desc
-  maxProgress: 100
+- title: Kill 2500
+  description: Kill 2500 NPCs
+  maxProgress: 2500
   difficulty: BEGINNER
   primaryKey: 1
   rewards:
-    - itemId: 4151
-      amount: 1
-    - itemId: 4151
-      amount: 1
+    - itemId: 995
+      amount: 25000
+    - itemId: 2736
+      amount: 5
 
-- title: ach2
-  description: desc
-  maxProgress: 100
+- title: 1000 Tokens
+  description: Spend 1000 Starter Tokens
+  maxProgress: 1000
   difficulty: BEGINNER
   primaryKey: 2
   rewards:
-    - itemId: 4151
+    - itemId: 15004
       amount: 1
-    - itemId: 4151
+    - itemId: 23300
       amount: 1
 
-- title: ach3
-  description: desc
-  maxProgress: 100
+- title: 2500 Tokens
+  description: Spend 2500 Starter Tokens
+  maxProgress: 2500
   difficulty: BEGINNER
   primaryKey: 3
   rewards:
-    - itemId: 4151
+    - itemId: 23300
       amount: 1
-    - itemId: 4151
+    - itemId: 23301
       amount: 1
 
-- title: ach4
-  description: desc1324
+- title: Open 100 Tiers
+  description: Open 100 Tier Boxes
   maxProgress: 100
-  difficulty: EASY
+  difficulty: BEGINNER
   primaryKey: 4
   rewards:
-    - itemId: 4151
+    - itemId: 20500
       amount: 1
-    - itemId: 4151
+    - itemId: 23253
       amount: 1
 
-- title: ach5
-  description: desc2543
-  maxProgress: 100
-  difficulty: MEDIUM
+- title: 10 Votes
+  description: Vote 10 Times
+  maxProgress: 10
+  difficulty: BEGINNER
   primaryKey: 5
   rewards:
-    - itemId: 4151
-      amount: 1
-    - itemId: 4151
-      amount: 1
+    - itemId: 4000
+      amount: 10
+    - itemId: 4001
+      amount: 5
 
-- title: ach6
-  description: desc13
-  maxProgress: 100
-  difficulty: HARD
+- title: 25 Votes
+  description: Vote 25 Times
+  maxProgress: 25
+  difficulty: BEGINNER
   primaryKey: 6
   rewards:
-    - itemId: 4151
-      amount: 1
-    - itemId: 4151
-      amount: 1
+    - itemId: 4000
+      amount: 25
+    - itemId: 4001
+      amount: 10
 
-- title: ach7
-  description: desc14
-  maxProgress: 100
-  difficulty: HARD
+- title: Donate $25
+  description: Donate $25
+  maxProgress: 25
+  difficulty: BEGINNER
   primaryKey: 7
   rewards:
-    - itemId: 4151
-      amount: 1
-    - itemId: 4151
-      amount: 1
+    - itemId: 23003
+      amount: 10
+    - itemId: 604
+      amount: 5
 
-- title: ach8
-  description: desc14
+- title: 100 AFK
+  description: Gain 100 AFK Tickets
   maxProgress: 100
-  difficulty: HARD
+  difficulty: BEGINNER
   primaryKey: 8
   rewards:
-    - itemId: 4151
-      amount: 1
-    - itemId: 4151
-      amount: 1
+    - itemId: 4558
+      amount: 5
+    - itemId: 4559
+      amount: 5
 
-- title: ach9
-  description: desc14
-  maxProgress: 100
-  difficulty: HARD
+- title: 50 Loyalty
+  description: Gain 50 Loyalty Tickets
+  maxProgress: 50
+  difficulty: BEGINNER
   primaryKey: 9
   rewards:
-    - itemId: 4151
-      amount: 1
-    - itemId: 4151
-      amount: 1
+    - itemId: 23105
+      amount: 2
+    - itemId: 8788
+      amount: 2
 
-- title: ach10
-  description: desc14
-  maxProgress: 100
-  difficulty: HARD
+- title: 5m Server Perks
+  description: Donate 5m To Server Perks
+  maxProgress: 5000000
+  difficulty: BEGINNER
   primaryKey: 10
   rewards:
-    - itemId: 4151
-      amount: 1
-    - itemId: 4151
-      amount: 1
+    - itemId: 995
+      amount: 500000
+    - itemId: 23149
+      amount: 2
 
-- title: ach11
-  description: desc34
-  maxProgress: 100
-  difficulty: ELITE
+- title: 20 Tracks
+  description: Finish 20 Starter Tracks
+  maxProgress: 20
+  difficulty: BEGINNER
   primaryKey: 11
   rewards:
-    - itemId: 4151
-      amount: 1
-    - itemId: 4151
+    - itemId: 15004
+      amount: 2
+    - itemId: 23300
       amount: 1
 
-- title: ach12
-  description: desc34
-  maxProgress: 100
-  difficulty: ELITE
+- title: 40 Tracks
+  description: Finish 40 Starter Tracks
+  maxProgress: 40
+  difficulty: BEGINNER
   primaryKey: 12
   rewards:
-    - itemId: 4151
-      amount: 1
-    - itemId: 4151
-      amount: 1
-    - itemId: 4151
+    - itemId: 23300
       amount: 2
+    - itemId: 23301
+      amount: 1
+
+- title: 20 BP
+  description: Finish 20 Battlepass Levels
+  maxProgress: 20
+  difficulty: BEGINNER
+  primaryKey: 13
+  rewards:
+    - itemId: 10835
+      amount: 100
+    - itemId: 23057
+      amount: 1
+
+- title: 5 Globals
+  description: Kill 5 Global Bosses
+  maxProgress: 5
+  difficulty: BEGINNER
+  primaryKey: 14
+  rewards:
+    - itemId: 19001
+      amount: 3
+
+- title: Kill 5000
+  description: Kill 5000 NPCs
+  maxProgress: 5000
+  difficulty: EASY
+  primaryKey: 15
+  rewards:
+    - itemId: 10835
+      amount: 50
+    - itemId: 25103
+      amount: 1
+
+- title: Kill 10000
+  description: Kill 10000 NPCs
+  maxProgress: 10000
+  difficulty: EASY
+  primaryKey: 16
+  rewards:
+    - itemId: 10835
+      amount: 150
+    - itemId: 25103
+      amount: 3
+
+- title: 50 Votes
+  description: Vote 50 Times
+  maxProgress: 50
+  difficulty: EASY
+  primaryKey: 17
+  rewards:
+    - itemId: 4001
+      amount: 20
+    - itemId: 25101
+      amount: 2
+
+- title: 100 Votes
+  description: Vote 100 Times
+  maxProgress: 100
+  difficulty: EASY
+  primaryKey: 18
+  rewards:
+    - itemId: 4001
+      amount: 35
+    - itemId: 25101
+      amount: 5
+
+- title: Donate $100
+  description: Donate $100
+  maxProgress: 100
+  difficulty: EASY
+  primaryKey: 19
+  rewards:
+    - itemId: 23003
+      amount: 25
+    - itemId: 23167
+      amount: 1
+
+- title: 250 AFK
+  description: Gain 250 AFK Tickets
+  maxProgress: 250
+  difficulty: EASY
+  primaryKey: 20
+  rewards:
+    - itemId: 15358
+      amount: 1
+    - itemId: 15359
+      amount: 1
+
+- title: 100 Loyalty
+  description: Gain 100 Loyalty Tickets
+  maxProgress: 100
+  difficulty: EASY
+  primaryKey: 21
+  rewards:
+    - itemId: 23105
+      amount: 3
+    - itemId: 22121
+      amount: 5
+
+- title: 25m Server Perks
+  description: Donate 25m to Server Perks
+  maxProgress: 25000000
+  difficulty: EASY
+  primaryKey: 22
+  rewards:
+    - itemId: 10835
+      amount: 500
+    - itemId: 23148
+      amount: 2
+
+- title: Finish BP
+  description: Finish 1 Battlepass
+  maxProgress: 1
+  difficulty: EASY
+  primaryKey: 23
+  rewards:
+    - itemId: 23058
+      amount: 1
+
+- title: 20 Slayer
+  description: Finish 20 Slayer Tasks
+  maxProgress: 20
+  difficulty: EASY
+  primaryKey: 45
+  rewards:
+    - itemId: 9719
+      amount: 2
+
+- title: 50 Degrade
+  description: Degrade 50 Items
+  maxProgress: 50
+  difficulty: EASY
+  primaryKey: 46
+  rewards:
+    - itemId: 10835
+      amount: 100
+
+- title: 25 Globals
+  description: Kill 25 Globals
+  maxProgress: 25
+  difficulty: EASY
+  primaryKey: 24
+  rewards:
+    - itemId: 19001
+      amount: 5
+
+- title: 100 Instance
+  description: Kill 100 Instance Bosses
+  maxProgress: 100
+  difficulty: EASY
+  primaryKey: 26
+  rewards:
+    - itemId: 10835
+      amount: 100
+    - itemId: 23149
+      amount: 2
+
+- title: 250 Instance
+  description: Kill 250 Instance Bosses
+  maxProgress: 250
+  difficulty: EASY
+  primaryKey: 27
+  rewards:
+    - itemId: 10835
+      amount: 150
+    - itemId: 23149
+      amount: 5
+
+- title: Kill 25000
+  description: Kill 25000 NPCs
+  maxProgress: 25000
+  difficulty: MEDIUM
+  primaryKey: 28
+  rewards:
+    - itemId: 10835
+      amount: 250
+    - itemId: 25103
+      amount: 5
+
+- title: Kill 50000
+  description: Kill 50000 NPCs
+  maxProgress: 50000
+  difficulty: MEDIUM
+  primaryKey: 29
+  rewards:
+    - itemId: 10835
+      amount: 500
+    - itemId: 23105
+      amount: 5
+
+- title: 100 Votes
+  description: Vote 100 Times
+  maxProgress: 100
+  difficulty: MEDIUM
+  primaryKey: 30
+  rewards:
+    - itemId: 4001
+      amount: 30
+    - itemId: 4000
+      amount: 100
+
+- title: 250 Votes
+  description: Vote 250 Times
+  maxProgress: 250
+  difficulty: MEDIUM
+  primaryKey: 31
+  rewards:
+    - itemId: 25101
+      amount: 5
+    - itemId: 23103
+      amount: 5
+
+- title: Donate $250
+  description: Donate $250
+  maxProgress: 250
+  difficulty: MEDIUM
+  primaryKey: 32
+  rewards:
+    - itemId: 23003
+      amount: 50
+    - itemId: 23256
+      amount: 2
+
+- title: Donate $500
+  description: Donate $500
+  maxProgress: 500
+  difficulty: MEDIUM
+  primaryKey: 33
+  rewards:
+    - itemId: 23003
+      amount: 100
+    - itemId: 23257
+      amount: 2
+
+- title: 500 AFK
+  description: Gain 500 AFK Tickets
+  maxProgress: 500
+  difficulty: MEDIUM
+  primaryKey: 34
+  rewards:
+    - itemId: 15358
+      amount: 2
+    - itemId: 22121
+      amount: 5
+
+- title: 1000 AFK
+  description: Gain 1000 AFK Tickets
+  maxProgress: 1000
+  difficulty: MEDIUM
+  primaryKey: 35
+  rewards:
+    - itemId: 15359
+      amount: 2
+    - itemId: 22122
+      amount: 5
+
+- title: 250 Loyalty
+  description: Gain 250 Loyalty Tickets
+  maxProgress: 250
+  difficulty: MEDIUM
+  primaryKey: 36
+  rewards:
+    - itemId: 23250
+      amount: 1
+    - itemId: 23251
+      amount: 1
+
+- title: 500 Loyalty
+  description: Gain 500 Loyalty Tickets
+  maxProgress: 500
+  difficulty: MEDIUM
+  primaryKey: 37
+  rewards:
+    - itemId: 20501
+      amount: 3
+    - itemId: 23254
+      amount: 3
+
+- title: 50m Server Perks
+  description: Donate 50m to Server Perks
+  maxProgress: 50000000
+  difficulty: MEDIUM
+  primaryKey: 38
+  rewards:
+    - itemId: 10835
+      amount: 1000
+    - itemId: 23147
+      amount: 2
+
+- title: Finish 2 BP
+  description: Finish 2 Battlepass
+  maxProgress: 2
+  difficulty: MEDIUM
+  primaryKey: 39
+  rewards:
+    - itemId: 23058
+      amount: 2
+
+- title: Finish 3 BP
+  description: Finish 3 Battlepass
+  maxProgress: 3
+  difficulty: MEDIUM
+  primaryKey: 40
+  rewards:
+    - itemId: 3686
+      amount: 1
+
+- title: 50 Globals
+  description: Kill 50 Globals
+  maxProgress: 50
+  difficulty: MEDIUM
+  primaryKey: 41
+  rewards:
+    - itemId: 19001
+      amount: 10
+
+- title: 100 Globals
+  description: Kill 100 Globals
+  maxProgress: 100
+  difficulty: MEDIUM
+  primaryKey: 42
+  rewards:
+    - itemId: 19001
+      amount: 5
+    - itemId: 23107
+      amount: 3
+
+- title: 500 Instance
+  description: Kill 500 Instance Bosses
+  maxProgress: 500
+  difficulty: MEDIUM
+  primaryKey: 43
+  rewards:
+    - itemId: 10835
+      amount: 500
+    - itemId: 23148
+      amount: 2
+
+- title: 1000 Instance
+  description: Kill 1000 Instance Bosses
+  maxProgress: 1000
+  difficulty: MEDIUM
+  primaryKey: 44
+  rewards:
+    - itemId: 10835
+      amount: 1000
+    - itemId: 23148
+      amount: 5
+
+- title: 50 Slayer
+  description: Complete 50 Slayer Tasks
+  maxProgress: 50
+  difficulty: MEDIUM
+  primaryKey: 47
+  rewards:
+    - itemId: 23104
+      amount: 3
+    - itemId: 13727
+      amount: 500
+
+- title: 100 Slayer
+  description: Complete 100 Slayer Tasks
+  maxProgress: 100
+  difficulty: MEDIUM
+  primaryKey: 48
+  rewards:
+    - itemId: 23104
+      amount: 5
+    - itemId: 13727
+      amount: 1000
+
+- title: 100 Degrade
+  description: Degrade 100 Times
+  maxProgress: 100
+  difficulty: MEDIUM
+  primaryKey: 49
+  rewards:
+    - itemId: 10835
+      amount: 150
+
+- title: 250 Degrade
+  description: Degrade 250 Times
+  maxProgress: 250
+  difficulty: MEDIUM
+  primaryKey: 50
+  rewards:
+    - itemId: 10835
+      amount: 250
+
+- title: 25 Enhance
+  description: Enhance successfully 25 times
+  maxProgress: 25
+  difficulty: MEDIUM
+  primaryKey: 51
+  rewards:
+    - itemId: 13727
+      amount: 250
+    - itemId: 10835
+      amount: 100
+
+- title: Kill 100000
+  description: Kill 100000 NPCs
+  maxProgress: 100000
+  difficulty: HARD
+  primaryKey: 52
+  rewards:
+    - itemId: 10835
+      amount: 1000
+    - itemId: 25103
+      amount: 10
+
+- title: Kill 250000
+  description: Kill 250000 NPCs
+  maxProgress: 250000
+  difficulty: HARD
+  primaryKey: 53
+  rewards:
+    - itemId: 10835
+      amount: 2500
+    - itemId: 23105
+      amount: 10
+
+- title: 500 Votes
+  description: Vote 500 Times
+  maxProgress: 500
+  difficulty: HARD
+  primaryKey: 54
+  rewards:
+    - itemId: 4001
+      amount: 100
+    - itemId: 4000
+      amount: 250
+
+- title: 1000 Votes
+  description: Vote 1000 Times
+  maxProgress: 1000
+  difficulty: HARD
+  primaryKey: 55
+  rewards:
+    - itemId: 25101
+      amount: 10
+    - itemId: 23103
+      amount: 10
+
+- title: Donate $1000
+  description: Donate $1000
+  maxProgress: 1000
+  difficulty: HARD
+  primaryKey: 56
+  rewards:
+    - itemId: 23257
+      amount: 5
+    - itemId: 23258
+      amount: 5
+
+- title: Donate $2500
+  description: Donate $2500
+  maxProgress: 2500
+  difficulty: HARD
+  primaryKey: 57
+  rewards:
+    - itemId: 23259
+      amount: 5
+    - itemId: 23258
+      amount: 10
+
+- title: 2500 AFK
+  description: Gain 2500 AFK Tickets
+  maxProgress: 2500
+  difficulty: HARD
+  primaryKey: 58
+  rewards:
+    - itemId: 4564
+      amount: 50
+    - itemId: 23252
+      amount: 1
+
+- title: 10000 AFK
+  description: Gain 10000 AFK Tickets
+  maxProgress: 10000
+  difficulty: HARD
+  primaryKey: 59
+  rewards:
+    - itemId: 23147
+      amount: 5
+    - itemId: 23252
+      amount: 1
+
+- title: 1000 Loyalty
+  description: Gain 1000 Loyalty Tickets
+  maxProgress: 1000
+  difficulty: HARD
+  primaryKey: 60
+  rewards:
+    - itemId: 23250
+      amount: 2
+    - itemId: 23251
+      amount: 2
+
+- title: 5000 Loyalty
+  description: Gain 5000 Loyalty Tickets
+  maxProgress: 5000
+  difficulty: HARD
+  primaryKey: 61
+  rewards:
+    - itemId: 20501
+      amount: 5
+    - itemId: 23254
+      amount: 5
+
+- title: 250m Server Perks
+  description: Donate 250m to Server Perks
+  maxProgress: 250000000
+  difficulty: HARD
+  primaryKey: 62
+  rewards:
+    - itemId: 10835
+      amount: 2500
+    - itemId: 23149
+      amount: 2
+
+- title: Finish 5 BP
+  description: Finish 5 Battlepass
+  maxProgress: 5
+  difficulty: HARD
+  primaryKey: 63
+  rewards:
+    - itemId: 23058
+      amount: 4
+
+- title: Finish 10 BP
+  description: Finish 10 Battlepass
+  maxProgress: 10
+  difficulty: HARD
+  primaryKey: 64
+  rewards:
+    - itemId: 3686
+      amount: 1
+
+- title: 250 Globals
+  description: Kill 250 Globals
+  maxProgress: 250
+  difficulty: HARD
+  primaryKey: 65
+  rewards:
+    - itemId: 19001
+      amount: 25
+
+- title: 500 Globals
+  description: Kill 500 Globals
+  maxProgress: 500
+  difficulty: HARD
+  primaryKey: 66
+  rewards:
+    - itemId: 19001
+      amount: 20
+    - itemId: 19002
+      amount: 200
+
+- title: 2500 Instance
+  description: Kill 2500 Instance Bosses
+  maxProgress: 2500
+  difficulty: HARD
+  primaryKey: 67
+  rewards:
+    - itemId: 10835
+      amount: 2500
+    - itemId: 23149
+      amount: 2
+
+- title: 5000 Instance
+  description: Kill 5000 Instance Bosses
+  maxProgress: 5000
+  difficulty: HARD
+  primaryKey: 68
+  rewards:
+    - itemId: 10835
+      amount: 1000
+    - itemId: 23149
+      amount: 5
+
+- title: 250 Slayer
+  description: Complete 250 Slayer Tasks
+  maxProgress: 250
+  difficulty: HARD
+  primaryKey: 69
+  rewards:
+    - itemId: 25102
+      amount: 5
+    - itemId: 23104
+      amount: 5
+
+- title: 500 Slayer
+  description: Complete 500 Slayer Tasks
+  maxProgress: 500
+  difficulty: HARD
+  primaryKey: 70
+  rewards:
+    - itemId: 4155
+      amount: 25
+    - itemId: 13727
+      amount: 2500
+
+- title: 500 Degrade
+  description: Degrade 500 Times
+  maxProgress: 500
+  difficulty: HARD
+  primaryKey: 71
+  rewards:
+    - itemId: 10835
+      amount: 500
+
+- title: 1000 Degrade
+  description: Degrade 1000 Times
+  maxProgress: 1000
+  difficulty: HARD
+  primaryKey: 72
+  rewards:
+    - itemId: 10835
+      amount: 1000
+
+- title: 50 Enhance
+  description: Enhance successfully 50 times
+  maxProgress: 50
+  difficulty: HARD
+  primaryKey: 73
+  rewards:
+    - itemId: 13727
+      amount: 1000
+    - itemId: 604
+      amount: 5
+
+- title: Kill 1000000
+  description: Kill 1000000 NPCs
+  maxProgress: 1000000
+  difficulty: ELITE
+  primaryKey: 74
+  rewards:
+    - itemId: 10835
+      amount: 5000
+    - itemId: 25103
+      amount: 25
+
+- title: Kill 2500000
+  description: Kill 2500000 NPCs
+  maxProgress: 2500000
+  difficulty: ELITE
+  primaryKey: 75
+  rewards:
+    - itemId: 10835
+      amount: 12500
+    - itemId: 23105
+      amount: 25
+
+- title: 2500 Votes
+  description: Vote 2500 Times
+  maxProgress: 2500
+  difficulty: ELITE
+  primaryKey: 76
+  rewards:
+    - itemId: 4001
+      amount: 500
+    - itemId: 4000
+      amount: 1000
+
+- title: 5000 Votes
+  description: Vote 5000 Times
+  maxProgress: 5000
+  difficulty: ELITE
+  primaryKey: 77
+  rewards:
+    - itemId: 25101
+      amount: 25
+    - itemId: 23103
+      amount: 25
+
+- title: Donate $5000
+  description: Donate $5000
+  maxProgress: 5000
+  difficulty: ELITE
+  primaryKey: 78
+  rewards:
+    - itemId: 23259
+      amount: 10
+    - itemId: 22124
+      amount: 25
+
+- title: Donate $10000
+  description: Donate $10000
+  maxProgress: 10000
+  difficulty: ELITE
+  primaryKey: 79
+  rewards:
+    - itemId: 23259
+      amount: 20
+    - itemId: 23276
+      amount: 2
+
+- title: 25000 AFK
+  description: Gain 25000 AFK Tickets
+  maxProgress: 25000
+  difficulty: ELITE
+  primaryKey: 80
+  rewards:
+    - itemId: 23105
+      amount: 50
+    - itemId: 20501
+      amount: 10
+
+- title: 10000 Loyalty
+  description: Gain 10000 Loyalty Tickets
+  maxProgress: 10000
+  difficulty: ELITE
+  primaryKey: 81
+  rewards:
+    - itemId: 23147
+      amount: 5
+    - itemId: 8788
+      amount: 10
+    - itemId: 23256
+      amount: 2
+
+- title: 50000 Loyalty
+  description: Gain 50000 Loyalty Tickets
+  maxProgress: 50000
+  difficulty: ELITE
+  primaryKey: 82
+  rewards:
+    - itemId: 23256
+      amount: 5
+    - itemId: 23257
+      amount: 5
+    - itemId: 8788
+      amount: 10
+
+- title: 1b Server Perks
+  description: Donate 1b to Server Perks
+  maxProgress: 1000000000
+  difficulty: ELITE
+  primaryKey: 83
+  rewards:
+    - itemId: 10835
+      amount: 10000
+    - itemId: 23250
+      amount: 1
+    - itemId: 23251
+      amount: 1
+    - itemId: 23252
+      amount: 1
+
+- title: Finish 25 BP
+  description: Finish 25 Battlepass
+  maxProgress: 25
+  difficulty: ELITE
+  primaryKey: 84
+  rewards:
+    - itemId: 3686
+      amount: 5
+
+- title: Finish 50 BP
+  description: Finish 50 Battlepass
+  maxProgress: 50
+  difficulty: ELITE
+  primaryKey: 85
+  rewards:
+    - itemId: 3686
+      amount: 10
+
+- title: 1000 Globals
+  description: Kill 1000 Globals
+  maxProgress: 1000
+  difficulty: ELITE
+  primaryKey: 86
+  rewards:
+    - itemId: 19001
+      amount: 50
+
+- title: 2500 Globals
+  description: Kill 2500 Globals
+  maxProgress: 2500
+  difficulty: ELITE
+  primaryKey: 87
+  rewards:
+    - itemId: 19001
+      amount: 50
+    - itemId: 19002
+      amount: 500
+
+- title: 10000 Instance
+  description: Kill 10000 Instance Bosses
+  maxProgress: 10000
+  difficulty: ELITE
+  primaryKey: 88
+  rewards:
+    - itemId: 20501
+      amount: 10
+    - itemId: 23254
+      amount: 10
+
+- title: 50000 Instance
+  description: Kill 50000 Instance Bosses
+  maxProgress: 50000
+  difficulty: ELITE
+  primaryKey: 89
+  rewards:
+    - itemId: 10835
+      amount: 25000
+    - itemId: 23257
+      amount: 2
+
+- title: 1000 Slayer
+  description: Complete 1000 Slayer Tasks
+  maxProgress: 1000
+  difficulty: ELITE
+  primaryKey: 90
+  rewards:
+    - itemId: 9719
+      amount: 50
+    - itemId: 23104
+      amount: 25
+
+- title: 5000 Slayer
+  description: Complete 5000 Slayer Tasks
+  maxProgress: 5000
+  difficulty: ELITE
+  primaryKey: 91
+  rewards:
+    - itemId: 23058
+      amount: 2
+    - itemId: 13727
+      amount: 5000
+
+- title: 5000 Degrade
+  description: Degrade 5000 Times
+  maxProgress: 5000
+  difficulty: ELITE
+  primaryKey: 92
+  rewards:
+    - itemId: 10835
+      amount: 5000
+
+- title: 10000 Degrade
+  description: Degrade 10000 Times
+  maxProgress: 10000
+  difficulty: ELITE
+  primaryKey: 93
+  rewards:
+    - itemId: 10835
+      amount: 10000
+
+- title: 100 Enhance
+  description: Enhance successfully 100 times
+  maxProgress: 100
+  difficulty: ELITE
+  primaryKey: 94
+  rewards:
+    - itemId: 13727
+      amount: 2500
+    - itemId: 604
+      amount: 10
+
+- title: 150 Enhance
+  description: Enhance successfully 150 times
+  maxProgress: 150
+  difficulty: ELITE
+  primaryKey: 95
+  rewards:
+    - itemId: 23257
+      amount: 2
+    - itemId: 604
+      amount: 25

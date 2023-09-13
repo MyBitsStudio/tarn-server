@@ -19,9 +19,9 @@ import com.ruse.world.content.Sounds.Sound;
 import com.ruse.world.content.aura.AuraParty;
 import com.ruse.world.content.aura.AuraRaidData;
 import com.ruse.world.content.bossEvents.BossEventInterfaceHandler;
-import com.ruse.world.content.johnachievementsystem.AchievementHandler;
+import com.ruse.world.packages.johnachievementsystem.AchievementHandler;
 import com.ruse.world.packages.clans.ClanManager;
-import com.ruse.world.content.collectionlog.SearchForCollectionNpc;
+import com.ruse.world.packages.collectionlog.SearchForCollectionNpc;
 import com.ruse.world.content.combat.CombatFactory;
 import com.ruse.world.content.combat.magic.Autocasting;
 import com.ruse.world.content.combat.magic.MagicSpells;
@@ -74,9 +74,6 @@ import com.ruse.world.packages.mode.impl.UltimateIronman;
 import com.ruse.world.packages.shops.ShopHandler;
 import com.ruse.world.packages.tower.TarnTower;
 import com.ruse.world.packages.tracks.TrackInterface;
-
-import java.util.Arrays;
-import java.util.List;
 
 /**
  * This packet listener manages a button that the player has clicked upon.

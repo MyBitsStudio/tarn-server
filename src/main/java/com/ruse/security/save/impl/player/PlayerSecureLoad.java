@@ -2,31 +2,30 @@ package com.ruse.security.save.impl.player;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.ruse.engine.task.impl.FamiliarSpawnTask;
 import com.ruse.model.*;
 import com.ruse.model.container.impl.Bank;
 import com.ruse.model.container.impl.UimBank;
 import com.ruse.security.save.SecureLoad;
-import com.ruse.world.content.CurrencyPouch;
 import com.ruse.world.content.DropLog;
 import com.ruse.world.content.KillsTracker;
 import com.ruse.world.content.LoyaltyProgramme;
 import com.ruse.world.packages.attendance.AttendanceProgress;
 import com.ruse.world.packages.attendance.AttendanceTab;
-import com.ruse.world.content.collectionlog.CollectionEntry;
-import com.ruse.world.content.collectionlog.CollectionLogInterface;
+import com.ruse.world.packages.collectionlog.CollectionEntry;
+import com.ruse.world.packages.collectionlog.CollectionLogInterface;
 import com.ruse.world.content.combat.magic.CombatSpells;
 import com.ruse.world.content.combat.weapon.FightType;
 import com.ruse.world.content.dailytasks_new.DailyTask;
 import com.ruse.world.content.dailytasks_new.TaskChallenge;
-import com.ruse.world.content.grandexchange.GrandExchangeSlot;
 import com.ruse.world.content.groupironman.GroupManager;
 import com.ruse.world.content.groupironman.IronmanGroup;
 import com.ruse.world.content.skill.SkillManager;
 import com.ruse.world.content.skill.impl.summoning.BossPets;
 import com.ruse.world.entity.impl.player.Player;
+import com.ruse.world.packages.johnachievementsystem.AchievementProgress;
+import com.ruse.world.packages.johnachievementsystem.Perk;
+import com.ruse.world.packages.johnachievementsystem.PerkType;
 import com.ruse.world.packages.mode.GameModeConstants;
-import com.ruse.world.packages.mode.impl.*;
 import com.ruse.world.packages.ranks.DonatorRank;
 import com.ruse.world.packages.ranks.StaffRank;
 import com.ruse.world.packages.ranks.VIPRank;
@@ -581,16 +580,6 @@ public class PlayerSecureLoad extends SecureLoad {
                     builder.fromJson(object.get("loyalty-titles").getAsJsonArray(), boolean[].class));
         }
 
-        if (object.has("achievements-completion")) {
-            player.getAchievementAttributes().setCompletion(
-                    builder.fromJson(object.get("achievements-completion").getAsJsonArray(), boolean[].class));
-        }
-
-        if (object.has("achievements-progress")) {
-            player.getAchievementAttributes().setProgress(
-                    builder.fromJson(object.get("achievements-progress").getAsJsonArray(), int[].class));
-        }
-
         if (object.has("yellhexcolor")) {
             player.setYellHex(object.get("yellhexcolor").getAsString());
         }
@@ -632,24 +621,6 @@ public class PlayerSecureLoad extends SecureLoad {
             player.setSecondaryEquipmentUnlocks(builder.fromJson(object.get("secondary-equipment-slots-unlocked").getAsJsonArray(), boolean[].class));
         }
 
-
-        if (object.has("achievements-points")) {
-            int points = object.get("achievements-points").getAsInt();
-            player.getAchievements().setPoints(points);
-        }
-        if (object.has("achievements-amount")) {
-            int[][] amountRemaining = builder.fromJson(object.get("achievements-amount").getAsJsonArray(),
-                    int[][].class);
-            player.getAchievements().setAmountRemaining(amountRemaining);
-        }
-        if (object.has("achievements-completed")) {
-            boolean[][] completed = builder.fromJson(object.get("achievements-completed").getAsJsonArray(),
-                    boolean[][].class);
-            player.getAchievements().setCompleted(completed);
-        }
-        if (object.has("achievements-daily")) {
-            player.getAchievements().setDailyTaskDate(object.get("achievements-daily").getAsLong());
-        }
 
         if (object.has("group-ironman-id")) {
             IronmanGroup group = GroupManager.getGroup((object.get("group-ironman-id").getAsInt()));
@@ -869,6 +840,22 @@ public class PlayerSecureLoad extends SecureLoad {
         if (object.has("timers")) {
             player.getTimers().load(builder.fromJson(object.get("timers"),  new TypeToken<Map<String, Long>>() {
             }.getType()), player);
+        }
+
+        if(object.has("achievements-map")){
+            player.getAchievementsMap().putAll(builder.fromJson(object.get("achievements-map"),
+                    new TypeToken<Map<Integer, AchievementProgress>>() {
+                    }.getType()));
+        }
+
+        if(object.has("achievement-points")){
+            player.setAchievementPoints(object.get("achievement-points").getAsInt());
+        }
+
+        if(object.has("ach-perks")){
+            player.setPerks(builder.fromJson(object.get("ach-perks"),
+                    new TypeToken<Map<PerkType, Perk>>() {
+                    }.getType()));
         }
 
 

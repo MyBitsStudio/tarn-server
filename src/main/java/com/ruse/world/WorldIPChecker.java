@@ -31,6 +31,41 @@ public class WorldIPChecker {
         return worldIPLogs;
     }
 
+    public boolean strictCheck(Player player, String content) {
+        boolean added = worldIPLogs.stream().anyMatch(worldIPLog -> worldIPLog.getIp().equals(player.getHostAddress()) && worldIPLog.getContent().equals(content));
+        if (added) {
+            List<WorldIPLog> worldIPLog = worldIPLogs.stream().filter(worldIPLog1 -> worldIPLog1.getIp().equals(player.getHostAddress()) && worldIPLog1.getContent().equals(content)).toList();
+            if (!worldIPLog.isEmpty()) {
+                boolean run = true, bypass = false;
+                for (WorldIPLog log : worldIPLogs) {
+                    if (log.getUsername().equals(player.getUsername())) {
+                        bypass = true;
+                        continue;
+                    }
+                    if(log.getIp().equals(player.getHostAddress()) && log.getContent().equals(content)
+                            && !log.getUsername().equals(player.getUsername())) {
+                        run = false;
+                        break;
+                    }
+                }
+                if(run) {
+                    if(!bypass) {
+                        worldIPLogs.add(new WorldIPLog(player.getUsername(), content, player.getHostAddress(), WorldCalendar.getInstance().getTime(), GameModeConstants.isIronman(player) ? "ironman" : player.getMode().toString()));
+                        save();
+                    }
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        } else {
+            worldIPLogs.add(new WorldIPLog(player.getUsername(), content, player.getHostAddress(), WorldCalendar.getInstance().getTime(), player.getMode().toString()));
+            save();
+            return true;
+        }
+        return false;
+    }
+
     public boolean check(Player player, String content){
         boolean added = worldIPLogs.stream().anyMatch(worldIPLog -> worldIPLog.getIp().equals(player.getHostAddress()) && worldIPLog.getContent().equals(content));
         if(added) {
@@ -85,7 +120,6 @@ public class WorldIPChecker {
             contents.get(player.getHostAddress()).put(content, true);
             return true;
         }
-        //System.out.println(contents);
         return false;
     }
 
