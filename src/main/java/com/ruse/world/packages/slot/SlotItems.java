@@ -12,7 +12,7 @@ public class SlotItems {
             player.getPacketSender().sendMessage("This slot does not exist.");
             return false;
         }
-        Item item = player.getInventory().get(slot);
+        Item item = player.getInventory().get(slot).copy();
         if(item == null) {
             player.getPacketSender().sendMessage("This item does not exist.");
             return false;

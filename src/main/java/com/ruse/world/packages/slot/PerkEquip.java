@@ -13,6 +13,10 @@ import java.util.Objects;
 public class PerkEquip {
 
     public static void equipPerk(Player player, @NotNull Item item){
+        if(Objects.equals(item.getPerk(), null) || Objects.equals(item.getPerk(), "none")){
+            player.sendMessage("Something went wrong here. Perk is Null");
+            return;
+        }
         SlotEffect effect = SlotEffect.values()[Integer.parseInt(item.getPerk())];
         if(Objects.equals(effect, null)){
             player.sendMessage("Something went wrong here. Effect is Null");
