@@ -183,6 +183,9 @@ public class Slayer {
         if(player.getEquipment().contains(15586))
             amount *= 2;
 
+        if(player.getEquipment().contains(19892))
+            amount *= 1.10;
+
         if(ServerPerks.getInstance().getActivePerk() == ServerPerks.Perk.SLAYER ||
                 ServerPerks.getInstance().getActivePerk() == ServerPerks.Perk.MEGA_PERK){
             amount *= 2;

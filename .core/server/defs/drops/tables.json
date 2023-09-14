@@ -8,7 +8,7 @@
         "id" : 995,
         "chance" : 0,
         "min" : 10,
-        "max" : 500,
+        "max" : 200,
         "modifier" : 1.00,
         "announce" : false
       },
@@ -70,8 +70,8 @@
       {
         "id" : 995,
         "chance" : 0,
-        "min" : 100,
-        "max" : 750,
+        "min" : 25,
+        "max" : 350,
         "modifier" : 1.00,
         "announce" : false
       },
@@ -133,8 +133,8 @@
       {
         "id" : 995,
         "chance" : 0,
-        "min" : 250,
-        "max" : 1500,
+        "min" : 30,
+        "max" : 400,
         "modifier" : 1.00,
         "announce" : false
       },
@@ -194,10 +194,10 @@
     "ceiling" : 99.90,
     "drops" : [
       {
-        "id" : 10835,
+        "id" : 995,
         "chance" : 0,
-        "min" : 1,
-        "max" : 5,
+        "min" : 50,
+        "max" : 550,
         "modifier" : 1.00,
         "announce" : false
       },
@@ -233,10 +233,10 @@
     "ceiling" : 99.90,
     "drops" : [
       {
-        "id" : 10835,
+        "id" : 995,
         "chance" : 0,
-        "min" : 2,
-        "max" : 10,
+        "min" : 75,
+        "max" : 750,
         "modifier" : 1.00,
         "announce" : false
       },
@@ -256,10 +256,10 @@
     "ceiling" : 99.90,
     "drops" : [
       {
-        "id" : 10835,
+        "id" : 995,
         "chance" : 0,
-        "min" : 5,
-        "max" : 25,
+        "min" : 100,
+        "max" : 1000,
         "modifier" : 1.00,
         "announce" : false
       },

@@ -1124,30 +1124,6 @@
     "isBoss" : true
   },
   {
-    "id": 3117,
-    "name": "Charybdis",
-    "examine": "A very, very large bloody-dwelling devil worshipper.",
-    "combat": 172,
-    "size": 5,
-    "attackable": true,
-    "aggressive": false,
-    "retreats": false,
-    "poisonous": false,
-    "respawn": 1,
-    "maxHit": 105,
-    "hitpoints": 150000000,
-    "attackSpeed": 7,
-    "attackAnim": 64,
-    "defenceAnim": 65,
-    "deathAnim": 67,
-    "attackBonus": 1119,
-    "defenceMelee": 629,
-    "defenceRange": 629,
-    "defenceMage": 629,
-    "isPet" : false,
-    "isBoss" : true
-  },
-  {
     "id": 3115, // event boss
     "name": "Scylla",
     "examine": "Scylla seems to be covered in sand.",

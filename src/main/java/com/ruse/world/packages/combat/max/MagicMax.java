@@ -30,21 +30,37 @@ public class MagicMax {
 
                 double defence = player.getBonusManager().getDefenceBonus()[BonusManager.DEFENCE_MAGIC] / 1_000;
 
+                if(AchievementHandler.hasUnlocked(player, PerkType.DEFENCE)){
+                    defence *= (1 + (AchievementHandler.getPerkLevel(player, PerkType.DEFENCE) * 0.05));
+                }
+
                 if (player.getEquipment().contains(15448)) {
                     defence *= 1.4;
                 }
 
-                if(defence >= 800)
-                    defence = 800;
+                if (player.getEquipment().contains(23088)) {
+                    defence *= 1.2;
+                }
+
+                if(defence >= 1000)
+                    defence = 1000;
 
 
-                maxHit -= defence;
+                maxHit -= (long) defence;
 
                 if(maxHit <= 0){
                     maxHit = 1;
                 }
 
                 double absorb = player.getBonusManager().getExtraBonus()[BonusManager.ABSORB_MAGIC];
+
+                if(AchievementHandler.hasUnlocked(player, PerkType.ABSORB)){
+                    absorb *= (1 + (AchievementHandler.getPerkLevel(player, PerkType.ABSORB) * 0.05));
+                }
+
+                if (player.getEquipment().contains(23088)) {
+                    absorb *= 1.2;
+                }
 
                 if(absorb >= 900)
                     absorb = 900;
@@ -194,8 +210,6 @@ public class MagicMax {
 
             maxHit *= (long) multiplyDamage(player);
 
-            if(player.getEquipment().contains(15589))
-                maxHit *= 1.5;
 
             maxHit *= player.getEquipment().getBonus() == null ? 1 : (long) player.getEquipment().getBonus().mageDamage();
 
@@ -224,6 +238,15 @@ public class MagicMax {
                 multiply += 0.5;
             }
         }
+        if(player.getEquipment().contains(15589))
+            multiply += 0.5;
+
+        if(player.getEquipment().contains(19888))
+            multiply += 0.25;
+
+        if(player.getEquipment().contains(18823))
+            multiply += 0.25;
+
         return multiply;
     }
 

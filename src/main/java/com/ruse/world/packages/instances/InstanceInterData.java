@@ -51,11 +51,15 @@ public enum InstanceInterData {
             InstanceType.MULTI),
 
     JOKER("Joker", "T16",
-            new Item(10835, 350), 16, 15, 185,
+            new Item(10835, 400), 16, 15, 185,
             InstanceType.MULTI),
 
     BYAKUYA("Byakuya", "T16",
-            new Item(10835, 400), 16, 15, 188,
+            new Item(10835, 500), 16, 15, 188,
+            InstanceType.MULTI),
+
+    CHARYBDIS("Charybdis", "T16",
+            new Item(10835, 600), 16, 15, 3117,
             InstanceType.MULTI),
 
     AGTHOMOTH("Ag'thomoth", "T10",

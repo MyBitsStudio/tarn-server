@@ -217,6 +217,10 @@ public class MeleeMax {
                     defence *= (1 + (AchievementHandler.getPerkLevel(player, PerkType.DEFENCE) * 0.05));
                 }
 
+                if (player.getEquipment().contains(23088)) {
+                    defence *= 1.2;
+                }
+
                 if(defence >= 1000)
                     defence = 1000;
 
@@ -231,6 +235,10 @@ public class MeleeMax {
 
                 if(AchievementHandler.hasUnlocked(player, PerkType.ABSORB)){
                     absorb *= (1 + (AchievementHandler.getPerkLevel(player, PerkType.ABSORB) * 0.05));
+                }
+
+                if (player.getEquipment().contains(23088)) {
+                    absorb *= 1.2;
                 }
 
                 if(absorb >= 900)
@@ -360,8 +368,6 @@ public class MeleeMax {
 
             maxHit *= (long) multiplyDamage(player);
 
-            if(player.getEquipment().contains(15588))
-                maxHit *= 1.5;
 
             maxHit *= player.getEquipment().getBonus() == null ? 1 : (long) player.getEquipment().getBonus().meleeDamage();
 
@@ -426,6 +432,17 @@ public class MeleeMax {
                 multiply += 0.5;
             }
         }
+
+        if(player.getEquipment().contains(15588))
+            multiply *= 0.5;
+
+        if(player.getEquipment().contains(19888))
+            multiply += 0.25;
+
+        if(player.getEquipment().contains(18823))
+            multiply += 0.25;
+
+
         return multiply;
     }
 }

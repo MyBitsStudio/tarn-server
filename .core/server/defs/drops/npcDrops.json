@@ -2802,6 +2802,14 @@
           "max" : 1,
           "modifier" : 13445.00,
           "announce" : false
+        },
+        {
+          "id" : 5074,
+          "chance" : 1,
+          "min" : 1,
+          "max" : 1,
+          "modifier" : 29495.00,
+          "announce" : false
         }
       ]
     }
@@ -2863,6 +2871,84 @@
           "min" : 1,
           "max" : 1,
           "modifier" : 13445.00,
+          "announce" : false
+        }
+      ]
+    }
+  },
+  {
+    "id" : [
+      3117
+    ],
+    "tables" : [
+      "COMMON", "UNCOMMON"
+    ],
+    "custom" : {
+      "name" : "Tier16s",
+      "weight" : 36.99,
+      "drops" : [
+        {
+          "id" : 23215,
+          "chance" : 1,
+          "min" : 1,
+          "max" : 1,
+          "modifier" : 10495.00,
+          "announce" : false
+        },
+        {
+          "id" : 8828,
+          "chance" : 1,
+          "min" : 1,
+          "max" : 1,
+          "modifier" : 12445.00,
+          "announce" : false
+        },
+        {
+          "id" : 8829,
+          "chance" : 1,
+          "min" : 1,
+          "max" : 1,
+          "modifier" : 12445.00,
+          "announce" : false
+        },
+        {
+          "id" : 8833,
+          "chance" : 1,
+          "min" : 1,
+          "max" : 1,
+          "modifier" : 12445.00,
+          "announce" : false
+        },
+        {
+          "id" : 8830,
+          "chance" : 1,
+          "min" : 1,
+          "max" : 1,
+          "modifier" : 12445.00,
+          "announce" : false
+        },
+        {
+          "id" : 8831,
+          "chance" : 1,
+          "min" : 1,
+          "max" : 1,
+          "modifier" : 12445.00,
+          "announce" : false
+        },
+        {
+          "id" : 22173,
+          "chance" : 1,
+          "min" : 1,
+          "max" : 1,
+          "modifier" : 15445.00,
+          "announce" : false
+        },
+        {
+          "id" : 20587,
+          "chance" : 1,
+          "min" : 1,
+          "max" : 1,
+          "modifier" : 30445.00,
           "announce" : false
         }
       ]
@@ -3099,7 +3185,7 @@
       "weight" : 9.79,
       "drops" : [
         {
-          "id": 19484,
+          "id": 19491,
           "count": [
             1
           ],

@@ -37,7 +37,7 @@ public class CombatAccuracy {
                     ? player.getBonusManager().getAttackBonus()[BonusManager.ATTACK_MAGIC]
                     : player.getBonusManager().getAttackBonus()[player.getFightType().getBonusType()];
 
-            equipmentBonus /= 7_500;
+            equipmentBonus /= 6_000;
 
             if(player.getEquipment().contains(15449)){
                 equipmentBonus *= 1.25;
@@ -135,6 +135,10 @@ public class CombatAccuracy {
             Player player = attacker.asPlayer();
             if(AchievementHandler.hasUnlocked(player, PerkType.ACCURACY)){
                 attackCalc *= (1 + (AchievementHandler.getPerkLevel(player, PerkType.ACCURACY) * 0.10));
+            }
+
+            if(player.getEquipment().contains(23087)){
+                attackCalc *= 1.25;
             }
         }
 

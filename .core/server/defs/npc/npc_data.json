@@ -1584,6 +1584,30 @@
     "isBoss" : true
   },
   {
+    "id": 3117,
+    "name": "Charybdis",
+    "examine": "A very, very large bloody-dwelling devil worshipper.",
+    "combat": 499,
+    "size": 2,
+    "attackable": true,
+    "aggressive": false,
+    "retreats": false,
+    "poisonous": false,
+    "respawn": 1,
+    "maxHit": 175,
+    "hitpoints": 35000000,
+    "attackSpeed": 7,
+    "attackAnim": 64,
+    "defenceAnim": 65,
+    "deathAnim": 67,
+    "attackBonus": 629,
+    "defenceMelee": 429,
+    "defenceRange": 429,
+    "defenceMage": 429,
+    "isPet" : false,
+    "isBoss" : true
+  },
+  {
     "_comment" : "Instance-Single"
   },
   {

@@ -96,25 +96,15 @@ public enum GearPacks {
             new Item(5074, 1), new Item(5068, 1), new Item(5069, 1),
             new Item(5070, 1), new Item(5071, 1), new Item(5072, 1),
             new Item(17718, 1), new Item(13328, 1), new Item(13329, 1),
-            new Item(13330, 1), new Item(13332, 1), new Item(13333, 1)
+            new Item(13330, 1), new Item(13332, 1), new Item(13333, 1),
+            new Item(8828, 1), new Item(8829, 1), new Item(8833, 1),
+            new Item(8830, 1), new Item(8831, 1), new Item(22173, 1)
     ),
-//
-//    NITE(11942, 0,
-//            new Item(17698, 1), new Item(17770, 1), new Item(17614, 1),
-//            new Item(17616, 1), new Item(17618, 1), new Item(17606, 1),
-//            new Item(17622, 1), new Item(11195, 1)
-//            ),
-//
 //    /****/
 //    OBSIDIAN(11938, 0,
 //            new Item(23066, 1), new Item(23067, 1), new Item(23061, 1),
 //            new Item(23062, 1), new Item(23063, 1), new Item(23068, 1),
 //            new Item(12612, 1)
-//            ),
-//    /****/
-//    MALVEK(19588, 0,
-//            new Item(14018, 1), new Item(19160, 1), new Item(19519, 1),
-//            new Item(19158, 1)
 //            ),
 //    /****/
 //    ONYX(11960, 0,

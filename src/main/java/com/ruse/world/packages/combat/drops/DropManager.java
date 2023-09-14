@@ -173,7 +173,7 @@ public class DropManager {
 
                 if(collector || hasLoot){
                     player.depositItemBank(item);
-                    player.sendMessage("Your loot has been sent to your bank.");
+                    player.sendMessage("x"+item.getAmount()+" of "+item.getDefinition().getName() +" has been sent to your bank from your collector.");
                 } else {
                     GroundItemManager.spawnGroundItem(player,
                             new GroundItem(item, pos, player.getUsername(), false, 150, false, 200));
@@ -207,7 +207,7 @@ public class DropManager {
 
             if(collector || hasLoot){
                 player.depositItemBank(item);
-                player.sendMessage("Your loot has been sent to your bank.");
+                player.sendMessage("x"+item.getAmount()+" of "+item.getDefinition().getName() +" has been sent to your bank from your collector.");
             } else {
                 GroundItemManager.spawnGroundItem(player,
                         new GroundItem(item, pos, player.getUsername(), false, 150, false, 200));
@@ -235,7 +235,7 @@ public class DropManager {
 
             if(collector || hasLoot){
                 player.depositItemBank(item2);
-                player.sendMessage("Your loot has been sent to your bank.");
+                player.sendMessage("x"+item.getAmount()+" of "+item.getDefinition().getName() +" has been sent to your bank from your collector.");
             } else {
                 GroundItemManager.spawnGroundItem(player,
                         new GroundItem(item2, pos, player.getUsername(), false, 150, false, 200));
@@ -278,6 +278,7 @@ public class DropManager {
     private @NotNull Drop getModifier(@NotNull Player player, @NotNull Drop drop, int amounts){
         int id = drop.id(), amount = amounts;
         boolean isCash = id == 995 || id == 10835;
+
         if (player.getEquipment().hasDoubleCash() && isCash) {
             amount *= 2;
         } else if(player.getEquipment().hasTripleCash() && isCash) {
@@ -290,12 +291,12 @@ public class DropManager {
 
         if(isCash){
             var multiplier = player.getEquipmentEnhancement().getBoost(BoostType.CASH);
-            amount = (int) Math.floor(Math.max(amount, (amount * (1 + ((multiplier / 100.0))))));
+            amount *= (1 + (multiplier * 0.01));
         }
 
         if(isCash){
             if(AchievementHandler.hasUnlocked(player, PerkType.COINS)){
-                amount *= (int) Math.floor(Math.max(amount, (amount * (1 + ((AchievementHandler.getPerkLevel(player, PerkType.COINS) * 0.10))))));
+                amount *= (1 + (AchievementHandler.getPerkLevel(player, PerkType.COINS) * 0.10));
             }
         }
 
