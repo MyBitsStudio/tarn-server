@@ -17,6 +17,7 @@ import com.ruse.world.content.minigames.impl.dungeoneering.DungeoneeringParty;
 import com.ruse.world.content.progressionzone.ProgressionZone;
 import com.ruse.world.content.skill.impl.old_dungeoneering.Dungeoneering;
 import com.ruse.world.content.transportation.TeleportHandler;
+import com.ruse.world.content.transportation.TeleportType;
 import com.ruse.world.content.zombie.ZombieRaids;
 import com.ruse.world.entity.Entity;
 import com.ruse.world.entity.impl.Character;
@@ -2079,9 +2080,26 @@ for (Item item : player.getInventory().getItems()) {
 			}
 		},
 
-
 		//Globals
 		NORMAL_GLOBAL(new int[] { 2130, 2156 }, new int[] { 5001, 5028 }, true, false, true, false, false, false) {
+			@Override
+			public void enter(Player player) {
+				if(!WorldIPChecker.getInstance().addToContent(player, "global")){
+					player.moveTo(GameSettings.DEFAULT_POSITION);
+					player.sendMessage("You are only allowed one account in globals");
+				}
+			}
+
+			@Override
+			public void logout(Player player) {
+				WorldIPChecker.getInstance().leaveContent(player);
+			}
+
+			@Override
+			public void onDeath(Player player) {
+				WorldIPChecker.getInstance().leaveContent(player);
+			}
+
 			@Override
 			public void leave(Player player) {
 				WorldIPChecker.getInstance().leaveContent(player);

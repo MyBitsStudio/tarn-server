@@ -1,20 +1,17 @@
 package com.ruse.world.packages.combat.max;
 
-import com.ruse.model.Item;
-import com.ruse.model.Skill;
 import com.ruse.model.container.impl.Equipment;
 import com.ruse.util.Misc;
 import com.ruse.world.content.BonusManager;
-import com.ruse.world.content.combat.CombatFactory;
 import com.ruse.world.content.combat.CombatType;
 import com.ruse.world.content.combat.NpcMaxHitLimit;
 import com.ruse.world.content.combat.prayer.CurseHandler;
 import com.ruse.world.content.combat.prayer.PrayerHandler;
 import com.ruse.world.content.combat.weapon.FightStyle;
-import com.ruse.world.content.serverperks.ServerPerks;
-import com.ruse.world.content.skill.DropUtils;
+import com.ruse.world.packages.johnachievementsystem.AchievementHandler;
+import com.ruse.world.packages.johnachievementsystem.PerkType;
+import com.ruse.world.packages.serverperks.ServerPerks;
 import com.ruse.world.content.skill.impl.summoning.BossPets;
-import com.ruse.world.content.skill.impl.summoning.Familiar;
 import com.ruse.world.entity.impl.Character;
 import com.ruse.world.entity.impl.npc.NPC;
 import com.ruse.world.entity.impl.player.Player;
@@ -216,17 +213,25 @@ public class MeleeMax {
 
                 double defence = (player.getBonusManager().getDefenceBonus()[BonusManager.DEFENCE_STAB] / 10_000);
 
-                if(defence >= 800)
-                    defence = 800;
+                if(AchievementHandler.hasUnlocked(player, PerkType.DEFENCE)){
+                    defence *= (1 + (AchievementHandler.getPerkLevel(player, PerkType.DEFENCE) * 0.05));
+                }
+
+                if(defence >= 1000)
+                    defence = 1000;
 
 
-                maxHit -= defence;
+                maxHit -= (long) defence;
 
                 if(maxHit <= 0){
                     maxHit = 1;
                 }
 
                 double absorb = player.getBonusManager().getExtraBonus()[BonusManager.ABSORB_MELEE];
+
+                if(AchievementHandler.hasUnlocked(player, PerkType.ABSORB)){
+                    absorb *= (1 + (AchievementHandler.getPerkLevel(player, PerkType.ABSORB) * 0.05));
+                }
 
                 if(absorb >= 900)
                     absorb = 900;
@@ -358,9 +363,15 @@ public class MeleeMax {
             if(player.getEquipment().contains(15588))
                 maxHit *= 1.5;
 
+            maxHit *= player.getEquipment().getBonus() == null ? 1 : (long) player.getEquipment().getBonus().meleeDamage();
+
+            if(AchievementHandler.hasUnlocked(player, PerkType.MELEE)){
+                maxHit *= (1 + (AchievementHandler.getPerkLevel(player, PerkType.MELEE) * 0.10));
+            }
+
             maxHit *= 10;
 
-            maxHit *= player.getEquipment().getBonus() == null ? 1 : (long) player.getEquipment().getBonus().meleeDamage();
+
         }
 
 

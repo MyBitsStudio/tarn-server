@@ -7,7 +7,6 @@ import com.ruse.engine.task.impl.NPCRespawnTask;
 import com.ruse.model.*;
 import com.ruse.util.Misc;
 import com.ruse.world.World;
-import com.ruse.world.content.achievement.Achievements;
 import com.ruse.world.entity.impl.npc.NPC;
 import com.ruse.world.entity.impl.npc.NPCMovementCoordinator.Coordinator;
 import com.ruse.world.entity.impl.player.Player;

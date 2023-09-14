@@ -103,7 +103,6 @@ public enum TeleInterfaceData {
 
     /* Minigames */
     TARNTOWER(TeleInterfaceCategory.MINIGAMES, "Tarn Tower", 9910, 1500, TeleInterfaceLocation.TARN_TOWER, new Item(995,1)),
-    CREATION(TeleInterfaceCategory.MINIGAMES, "Creation", 9910, 1500, TeleInterfaceLocation.CREATION, new Item(995,1)),
 
     /* Misc */
    //VEIGAR(TeleInterfaceCategory.MISC, "DISABLED", 9906, 2000, TeleInterfaceLocation.LOCATION67, null),

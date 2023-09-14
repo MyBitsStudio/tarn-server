@@ -4,7 +4,6 @@ import com.ruse.model.Animation;
 import com.ruse.model.GameObject;
 import com.ruse.model.Item;
 import com.ruse.model.Skill;
-import com.ruse.world.content.achievement.Achievements;
 import com.ruse.world.entity.impl.player.Player;
 
 public class Stalls {

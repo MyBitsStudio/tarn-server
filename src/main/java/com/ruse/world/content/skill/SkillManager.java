@@ -1,6 +1,5 @@
 package com.ruse.world.content.skill;
 
-import com.ruse.GameSettings;
 import com.ruse.engine.task.Task;
 import com.ruse.engine.task.TaskManager;
 import com.ruse.model.*;
@@ -14,7 +13,7 @@ import com.ruse.world.content.*;
 import com.ruse.world.content.Sounds.Sound;
 import com.ruse.world.content.combat.prayer.CurseHandler;
 import com.ruse.world.content.combat.prayer.PrayerHandler;
-import com.ruse.world.content.serverperks.ServerPerks;
+import com.ruse.world.packages.serverperks.ServerPerks;
 import com.ruse.world.content.skill.impl.old_dungeoneering.UltimateIronmanHandler;
 import com.ruse.world.content.skill.impl.summoning.BossPets;
 import com.ruse.world.content.skill.impl.summoning.Familiar;

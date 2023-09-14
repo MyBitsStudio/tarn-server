@@ -90,6 +90,7 @@ public class BossPets {
 		GOKU_PET(3047, 13774, 300,""),
 		BYAKUYA_PET(3048, 13775, 300,""),
 		FAZULA_PET(1312, 4073, 300,""),
+		JOKER_PET(184, 5074, 300,""),
 
 		SKREEG_PET(9827, 23115, 400,"10% Drop rate boost\\n10% Double Drop rate boost"),
 		ORIX_PET(9828, 23116, 400,"20% Drop rate boost\\n20% Double Drop rate boost"),

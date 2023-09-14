@@ -2,7 +2,9 @@ package com.ruse.world.packages.combat.drops;
 
 import com.ruse.world.content.combat.prayer.PrayerHandler;
 import com.ruse.world.content.equipmentenhancement.BoostType;
-import com.ruse.world.content.serverperks.ServerPerks;
+import com.ruse.world.packages.johnachievementsystem.AchievementHandler;
+import com.ruse.world.packages.johnachievementsystem.PerkType;
+import com.ruse.world.packages.serverperks.ServerPerks;
 import com.ruse.world.content.skill.impl.summoning.BossPets;
 import com.ruse.world.entity.impl.player.Player;
 import com.ruse.world.packages.combat.CombatConstants;
@@ -119,9 +121,12 @@ public class DropCalculator {
 
         chance += player.getEquipmentEnhancement().getBoost(BoostType.DR);
 
+        if(AchievementHandler.hasUnlocked(player, PerkType.DROP)){
+            chance += (AchievementHandler.getPerkLevel(player, PerkType.DROP) * 150);
+        }
 
         if(player.getRank().isDeveloper()){
-            chance = 3100;
+            chance = 4800;
         }
 
         return chance;

@@ -7,8 +7,8 @@ import com.ruse.model.Item;
 import com.ruse.model.Skill;
 import com.ruse.world.content.Sounds;
 import com.ruse.world.content.Sounds.Sound;
-import com.ruse.world.content.achievement.Achievements;
 import com.ruse.world.entity.impl.player.Player;
+import com.ruse.world.packages.johnachievementsystem.AchievementHandler;
 
 /**
  * The prayer skill is based upon burying the corpses of enemies. Obtaining a
@@ -45,9 +45,11 @@ public class Prayer {
 				player.getSkillManager().addExperience(Skill.PRAYER, currentBone.getBuryingXP());
 				Sounds.sendSound(player, Sound.BURY_BONE);
 
-				Achievements.doProgress(player, Achievements.Achievement.BURY_100_BONES);
-				Achievements.doProgress(player, Achievements.Achievement.BURY_1000_BONES);
-				Achievements.doProgress(player, Achievements.Achievement.BURY_9999_BONES);
+				AchievementHandler.progress(player, 1, 96);
+				AchievementHandler.progress(player, 1, 97);
+				AchievementHandler.progress(player, 1, 98);
+				AchievementHandler.progress(player, 1, 99);
+				AchievementHandler.progress(player, 1, 100);
 
 
 				stop();

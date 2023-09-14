@@ -19,7 +19,7 @@ public class EventPanel {
         player.getPacketSender().sendString(interfaceID++, "@whi@Groudon: @yel@" + GlobalBossManager.getInstance().timeLeft("groudon"));
         player.getPacketSender().sendString(interfaceID++, "@whi@Mewtwo: @yel@" + (World.npcIsRegistered(9005) ? "@gre@::mewtwo" : "@red@INACTIVE"));
         player.getPacketSender().sendString(interfaceID++, "@whi@-------------------");
-        player.getPacketSender().sendString(interfaceID++, "@whi@Vote Boss: @yel@"+ World.attributes.getAmount("vote-boss")+" / 50");
+        player.getPacketSender().sendString(interfaceID++, "@whi@Vote Boss: @yel@"+ World.attributes.getAmount("vote-boss")+" / 100");
         player.getPacketSender().sendString(interfaceID++, "@whi@Donation Boss: @yel@"+ World.attributes.getAmount("donation-boss")+" / 350");
         player.getPacketSender().sendString(interfaceID++, "@whi@Well of Globals: @yel@VIP : "+GlobalBossManager.getInstance().getWells().get("VIP")+" / 50");
         player.getPacketSender().sendString(interfaceID++, "@whi@SPECIALS");

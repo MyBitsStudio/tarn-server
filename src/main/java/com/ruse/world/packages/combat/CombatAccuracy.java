@@ -10,6 +10,8 @@ import com.ruse.world.content.combat.weapon.FightStyle;
 import com.ruse.world.entity.impl.Character;
 import com.ruse.world.entity.impl.npc.NPC;
 import com.ruse.world.entity.impl.player.Player;
+import com.ruse.world.packages.johnachievementsystem.AchievementHandler;
+import com.ruse.world.packages.johnachievementsystem.PerkType;
 import org.jetbrains.annotations.NotNull;
 
 import static com.ruse.world.content.combat.CombatType.MAGIC;
@@ -35,7 +37,7 @@ public class CombatAccuracy {
                     ? player.getBonusManager().getAttackBonus()[BonusManager.ATTACK_MAGIC]
                     : player.getBonusManager().getAttackBonus()[player.getFightType().getBonusType()];
 
-            equipmentBonus /= 10_000;
+            equipmentBonus /= 7_500;
 
             if(player.getEquipment().contains(15449)){
                 equipmentBonus *= 1.25;
@@ -116,7 +118,7 @@ public class CombatAccuracy {
             NPC npc = victim.toNpc();
 
             if (npc.getDefinition().isBoss()) {
-                equipmentBonus = npc.getCombatLevel() * 3;
+                equipmentBonus = npc.getCombatLevel() * 2;
             } else {
                 equipmentBonus = npc.getCombatLevel();
             }
@@ -127,6 +129,13 @@ public class CombatAccuracy {
 
         if (equipmentBonus < -67) {
             defenceCalc = Misc.exclusiveRandom(8) == 0 ? defenceCalc : 0;
+        }
+
+        if(attacker.isPlayer()){
+            Player player = attacker.asPlayer();
+            if(AchievementHandler.hasUnlocked(player, PerkType.ACCURACY)){
+                attackCalc *= (1 + (AchievementHandler.getPerkLevel(player, PerkType.ACCURACY) * 0.10));
+            }
         }
 
         double A = Math.floor(attackCalc);

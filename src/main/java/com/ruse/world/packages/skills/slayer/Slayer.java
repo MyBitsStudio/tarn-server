@@ -6,13 +6,14 @@ import com.ruse.util.Misc;
 import com.ruse.world.World;
 import com.ruse.world.content.KillsTracker;
 import com.ruse.world.content.PlayerPanel;
-import com.ruse.world.content.achievement.Achievements;
-import com.ruse.world.content.serverperks.ServerPerks;
+import com.ruse.world.packages.serverperks.ServerPerks;
 import com.ruse.world.entity.impl.player.Player;
 import com.ruse.world.packages.combat.CombatConstants;
 import com.ruse.world.packages.dialogue.DialogueManager;
 import com.ruse.world.packages.dialogue.impl.slayer.ResetTask;
 import com.ruse.world.packages.event.impl.SlayerBonusEvent;
+import com.ruse.world.packages.johnachievementsystem.AchievementHandler;
+import com.ruse.world.packages.johnachievementsystem.PerkType;
 import com.ruse.world.packages.shops.ShopHandler;
 import lombok.Getter;
 import lombok.Setter;
@@ -196,6 +197,10 @@ public class Slayer {
             }
         }
 
+        if(AchievementHandler.hasUnlocked(player, PerkType.SKILLING)){
+            amount *= (1 + ((AchievementHandler.getPerkLevel(player, PerkType.SKILLING) * 5) / 100));
+        }
+
         player.getInventory().add(SLAYER_TICKETS, amount);
         player.getSkillManager().addExperience(Skill.SLAYER, monsters.getXp());
 
@@ -203,9 +208,13 @@ public class Slayer {
 
         player.getSeasonPass().incrementExp(50, false);
 
-        Achievements.doProgress(player, Achievements.Achievement.COMPLETE_20_SLAYER_TASKS);
-        Achievements.doProgress(player, Achievements.Achievement.COMPLETE_50_SLAYER_TASKS);
-        Achievements.doProgress(player, Achievements.Achievement.COMPLETE_150_SLAYER_TASKS);
+        AchievementHandler.progress(player, 1, 45);
+        AchievementHandler.progress(player, 1, 47);
+        AchievementHandler.progress(player, 1, 48);
+        AchievementHandler.progress(player, 1, 69);
+        AchievementHandler.progress(player, 1, 70);
+        AchievementHandler.progress(player, 1, 90);
+        AchievementHandler.progress(player, 1, 91);
 
         PlayerPanel.refreshPanel(player);
 

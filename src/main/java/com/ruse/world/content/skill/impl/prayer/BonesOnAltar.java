@@ -7,8 +7,8 @@ import com.ruse.model.Graphic;
 import com.ruse.model.Skill;
 import com.ruse.model.definitions.ItemDefinition;
 import com.ruse.model.input.impl.EnterAmountOfBonesToSacrifice;
-import com.ruse.world.content.achievement.Achievements;
 import com.ruse.world.entity.impl.player.Player;
+import com.ruse.world.packages.johnachievementsystem.AchievementHandler;
 
 public class BonesOnAltar {
 
@@ -51,9 +51,11 @@ public class BonesOnAltar {
 				player.getInventory().delete(boneId, 1);
 				player.performAnimation(new Animation(713));
 
-				Achievements.doProgress(player, Achievements.Achievement.BURY_100_BONES);
-				Achievements.doProgress(player, Achievements.Achievement.BURY_1000_BONES);
-				Achievements.doProgress(player, Achievements.Achievement.BURY_9999_BONES);
+				AchievementHandler.progress(player, 1, 96);
+				AchievementHandler.progress(player, 1, 97);
+				AchievementHandler.progress(player, 1, 98);
+				AchievementHandler.progress(player, 1, 99);
+				AchievementHandler.progress(player, 1, 100);
 				
 				if (player.getDonator().isMember()) {
 					player.getSkillManager().addExperience(Skill.PRAYER, (int) (currentBone.getBuryingXP() * 2.5));

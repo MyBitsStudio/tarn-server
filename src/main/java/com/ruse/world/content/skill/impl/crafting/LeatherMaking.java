@@ -7,7 +7,6 @@ import com.ruse.model.Skill;
 import com.ruse.model.definitions.ItemDefinition;
 import com.ruse.model.input.impl.EnterAmountOfLeatherToCraft;
 import com.ruse.util.Misc;
-import com.ruse.world.content.achievement.Achievements;
 import com.ruse.world.entity.impl.player.Player;
 
 public class LeatherMaking {

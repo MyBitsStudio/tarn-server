@@ -3,11 +3,11 @@ package com.ruse.world.packages.globals;
 import com.ruse.model.Locations;
 import com.ruse.model.Position;
 import com.ruse.world.World;
-import com.ruse.world.content.achievement.Achievements;
 import com.ruse.world.content.dailytasks_new.DailyTask;
 import com.ruse.world.entity.impl.npc.NPC;
 import com.ruse.world.entity.impl.player.Player;
 import com.ruse.world.packages.combat.drops.DropManager;
+import com.ruse.world.packages.johnachievementsystem.AchievementHandler;
 import org.jetbrains.annotations.NotNull;
 
 public abstract class GlobalBoss extends NPC {
@@ -32,14 +32,23 @@ public abstract class GlobalBoss extends NPC {
             if(player.getBossPlugin().getDamage(this.getDefinition().getName()) < 1000)
                 continue;
             player.getPacketSender().sendMessage(dropMessage());
-            Achievements.doProgress(player, Achievements.Achievement.KILL_45_GLOBAL_BOSSES);
+
+            AchievementHandler.progress(player, 1, 14);
+            AchievementHandler.progress(player, 1, 24);
+            AchievementHandler.progress(player, 1, 41);
+            AchievementHandler.progress(player, 1, 42);
+            AchievementHandler.progress(player, 1, 65);
+            AchievementHandler.progress(player, 1, 66);
+            AchievementHandler.progress(player, 1, 86);
+            AchievementHandler.progress(player, 1, 87);
+
             player.getBossPlugin().setDamage(this.getDefinition().getName(), 0L);
             DropManager.getManager().sendDrop(this, player, 1.0);
         }
     }
 
     @Override
-    public void onDeath(){
+    public void onDeath(Player player){
         handleDrop();
     }
 

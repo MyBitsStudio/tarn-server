@@ -689,7 +689,7 @@ public class NPC extends Character {
         return World.getNearbyNPCs(getPosition(), distance);
     }
 
-    public void onDeath(){
+    public void onDeath(Player player){
 
     }
 

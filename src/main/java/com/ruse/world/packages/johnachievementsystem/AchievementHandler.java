@@ -3,6 +3,7 @@ package com.ruse.world.packages.johnachievementsystem;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 import com.ruse.model.Item;
+import com.ruse.world.World;
 import com.ruse.world.entity.impl.player.Player;
 import org.jetbrains.annotations.NotNull;
 
@@ -19,12 +20,19 @@ public class AchievementHandler {
 
 
     public static void sendInterface(Player player){
+        if(!World.attributes.getSetting("achievements")){
+            player.sendMessage("Achievements are currently disabled.");
+            return;
+        }
         player.getPacketSender().sendInterface(165001);
         player.getPacketSender().sendString(165024, String.valueOf(player.getAchievementPoints()));
         player.getPacketSender().sendString(165339, "You can spend your achievement points in the store to unlock exclusive perks with amazing benefits!");
     }
 
     public static void progress(Player player, int amount, int primaryKey) {
+        if(!World.attributes.getSetting("achievements")){
+            return;
+        }
         Achievement achievement = achievements.get(primaryKey);
         if(achievement == null) {
             player.getPacketSender().sendMessage("@red@This achievement does not exist");
@@ -107,7 +115,7 @@ public class AchievementHandler {
 
     public static boolean hasUnlocked(@NotNull Player player, PerkType perkType) {
         // No need to check if null because hashmap gets populated on player login
-        return player.getPerks().get(perkType).hasUnlocked();
+        return player.getPerks().get(perkType) != null && player.getPerks().get(perkType).hasUnlocked();
     }
 
     public static int getPerkLevel(@NotNull Player player, PerkType perkType) {

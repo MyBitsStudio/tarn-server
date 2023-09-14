@@ -1,7 +1,6 @@
 package com.ruse.world.content.combat;
 
 import com.ruse.model.Graphic;
-import com.ruse.model.Item;
 import com.ruse.model.Skill;
 import com.ruse.model.container.impl.Equipment;
 import com.ruse.model.definitions.ItemDefinition;
@@ -12,7 +11,7 @@ import com.ruse.world.content.combat.prayer.CurseHandler;
 import com.ruse.world.content.combat.prayer.PrayerHandler;
 import com.ruse.world.content.combat.range.CombatRangedAmmo.RangedWeaponData;
 import com.ruse.world.content.combat.weapon.FightType;
-import com.ruse.world.content.serverperks.ServerPerks;
+import com.ruse.world.packages.serverperks.ServerPerks;
 import com.ruse.world.content.skill.DropUtils;
 import com.ruse.world.content.skill.impl.summoning.BossPets;
 import com.ruse.world.content.skill.impl.summoning.Familiar;

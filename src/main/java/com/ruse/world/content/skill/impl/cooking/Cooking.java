@@ -6,7 +6,6 @@ import com.ruse.model.Animation;
 import com.ruse.model.Skill;
 import com.ruse.model.definitions.ItemDefinition;
 import com.ruse.model.input.impl.EnterAmountToCook;
-import com.ruse.world.content.achievement.Achievements;
 import com.ruse.world.content.dailytasks_new.DailyTask;
 import com.ruse.world.entity.impl.player.Player;
 

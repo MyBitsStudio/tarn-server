@@ -4,6 +4,7 @@ import com.ruse.model.Item;
 import com.ruse.world.World;
 import com.ruse.world.WorldIPChecker;
 import com.ruse.world.entity.impl.player.Player;
+import com.ruse.world.packages.johnachievementsystem.AchievementHandler;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
@@ -48,12 +49,27 @@ public class SeasonPass {
             return;
         }
         level++;
+        handleAchievements(level);
         exp = 0;
         incrementExp(overflow, true);
     }
 
     private SeasonPassLevel getSpLevel(int level) {
         return levels[level];
+    }
+
+    private void handleAchievements(int level){
+        AchievementHandler.progress(player, 1, 13);
+
+        if(level == getMaxPassLevel()){
+            AchievementHandler.progress(player, 1, 23);
+            AchievementHandler.progress(player, 1, 39);
+            AchievementHandler.progress(player, 1, 40);
+            AchievementHandler.progress(player, 1, 63);
+            AchievementHandler.progress(player, 1, 64);
+            AchievementHandler.progress(player, 1, 85);
+            AchievementHandler.progress(player, 1, 86);
+        }
     }
 
     private void selectClaimReward() {

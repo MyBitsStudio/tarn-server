@@ -15,6 +15,8 @@ import com.ruse.world.entity.impl.GroundItemManager;
 import com.ruse.world.entity.impl.npc.NPC;
 import com.ruse.world.entity.impl.player.Player;
 import com.ruse.world.packages.items.loot.Lootbag;
+import com.ruse.world.packages.johnachievementsystem.AchievementHandler;
+import com.ruse.world.packages.johnachievementsystem.PerkType;
 import com.ruse.world.packages.mode.impl.GroupIronman;
 import com.ruse.world.packages.mode.impl.UltimateIronman;
 import org.jetbrains.annotations.Contract;
@@ -289,6 +291,12 @@ public class DropManager {
         if(isCash){
             var multiplier = player.getEquipmentEnhancement().getBoost(BoostType.CASH);
             amount = (int) Math.floor(Math.max(amount, (amount * (1 + ((multiplier / 100.0))))));
+        }
+
+        if(isCash){
+            if(AchievementHandler.hasUnlocked(player, PerkType.COINS)){
+                amount *= (int) Math.floor(Math.max(amount, (amount * (1 + ((AchievementHandler.getPerkLevel(player, PerkType.COINS) * 0.10))))));
+            }
         }
 
         if (id == 22120) {

@@ -1,6 +1,5 @@
 package com.ruse.world.content.combat;
 
-import com.ruse.GameSettings;
 import com.ruse.engine.task.Task;
 import com.ruse.engine.task.TaskManager;
 import com.ruse.engine.task.impl.CombatSkullEffect;
@@ -14,34 +13,19 @@ import com.ruse.world.clip.region.RegionClipping;
 import com.ruse.world.content.BonusManager;
 import com.ruse.world.content.ItemDegrading;
 import com.ruse.world.content.ItemDegrading.DegradingItem;
-import com.ruse.world.content.KillsTracker;
-import com.ruse.world.content.Kraken.KrakenInstance;
 import com.ruse.world.content.combat.effect.CombatPoisonEffect;
 import com.ruse.world.content.combat.effect.CombatPoisonEffect.PoisonType;
-import com.ruse.world.content.combat.effect.EquipmentBonus;
 import com.ruse.world.content.combat.magic.CombatAncientSpell;
 import com.ruse.world.content.combat.prayer.CurseHandler;
 import com.ruse.world.content.combat.prayer.PrayerHandler;
-import com.ruse.world.content.combat.range.CombatRangedAmmo.RangedWeaponData;
 import com.ruse.world.content.combat.strategy.CombatStrategy;
 import com.ruse.world.content.combat.strategy.impl.Nex;
-import com.ruse.world.content.combat.strategy.impl.Scorpia;
 import com.ruse.world.content.combat.weapon.CombatSpecial;
-import com.ruse.world.content.combat.weapon.FightStyle;
-import com.ruse.world.content.minigames.impl.VaultOfWar;
 import com.ruse.world.content.minigames.impl.dungeoneering.DungeoneeringBossNpc;
-import com.ruse.world.content.serverperks.ServerPerks;
-import com.ruse.world.content.skill.impl.prayer.Prayer;
-import com.ruse.world.content.skill.impl.summoning.BossPets;
-import com.ruse.world.content.transportation.TeleportHandler;
-import com.ruse.world.content.transportation.TeleportType;
 import com.ruse.world.entity.impl.Character;
 import com.ruse.world.entity.impl.npc.NPC;
 import com.ruse.world.entity.impl.npc.NPCMovementCoordinator.CoordinateState;
-import com.ruse.world.entity.impl.npc.impl.HoVMobs.Heimdall;
-import com.ruse.world.entity.impl.npc.impl.HoVMobs.Kiljaeden;
 import com.ruse.world.entity.impl.player.Player;
-import com.ruse.world.packages.combat.CombatConstants;
 import com.ruse.world.packages.combat.max.MagicMax;
 import com.ruse.world.packages.combat.max.MeleeMax;
 import com.ruse.world.packages.combat.max.RangeMax;
@@ -630,7 +614,7 @@ public final class CombatFactory {
      * @param container the combat container that holds the hits.
      * @param builder   the builder to apply prayer effects to.
      */
-    protected static void applyPrayerProtection(CombatContainer container, CombatBuilder builder) {
+    static void applyPrayerProtection(CombatContainer container, CombatBuilder builder) {
 
         // If we aren't checking the accuracy, then don't bother doing any of
         // this.

@@ -121,30 +121,6 @@
     "isBoss" : true
   },
   {
-    "id": 185,
-    "name": "Joker",
-    "examine": "It's JOKER from BATMAN'",
-    "combat": 21,
-    "size": 4,
-    "attackable": true,
-    "aggressive": false,
-    "retreats": false,
-    "poisonous": false,
-    "respawn": 10,
-    "maxHit": 400,
-    "hitpoints": 500000,
-    "attackSpeed": 7,
-    "attackAnim": 403,
-    "defenceAnim": 403,
-    "deathAnim": 836,
-    "attackBonus": 750,
-    "defenceMelee": 212,
-    "defenceRange": 212,
-    "defenceMage": 212,
-    "isPet" : false,
-    "isBoss" : true
-  },
-  {
     "id": 201,
     "name": "Hercules",
     "examine": "He was the Roman equivalent of the Greek divine hero Heracles, who was the son of Zeus.",
@@ -165,6 +141,30 @@
     "defenceMelee": 460,
     "defenceRange": 460,
     "defenceMage": 400,
+    "isPet" : false,
+    "isBoss" : true
+  },
+  {
+    "id": 9916,
+    "name": "Luffy::UNUSED",
+    "examine": "Keepers of the Light monster.",
+    "combat": 415,
+    "size": 3,
+    "attackable": true,
+    "aggressive": false,
+    "retreats": false,
+    "poisonous": false,
+    "respawn": 1,
+    "maxHit": 147,
+    "hitpoints": 1555000,
+    "attackSpeed": 7,
+    "attackAnim": 13035,
+    "defenceAnim": 404,
+    "deathAnim": 2304,
+    "attackBonus": 499,
+    "defenceMelee": 345,
+    "defenceRange": 345,
+    "defenceMage": 345,
     "isPet" : false,
     "isBoss" : true
   },
@@ -922,7 +922,6 @@
     "defenceRange": 276,
     "defenceMage": 321
   },
-
   {
     "id": 1318,
     "name": "Black Goku",
@@ -1100,9 +1099,6 @@
     "defenceRange": 182,
     "defenceMage": 0
   },
-
-
-
   {
     "id": 9912,
     "name": "Calamity",
@@ -1172,30 +1168,6 @@
     "defenceMelee": 233,
     "defenceRange": 233,
     "defenceMage": 233,
-    "isPet" : false,
-    "isBoss" : true
-  },
-  {
-    "id": 188,
-    "name": "Byakuya",
-    "examine": "An evil human cleric.",
-    "combat": 1222,
-    "size": 1,
-    "attackable": true,
-    "aggressive": false,
-    "retreats": false,
-    "poisonous": false,
-    "respawn": 1,
-    "maxHit": 125,
-    "hitpoints": 800000000,
-    "attackSpeed": 3,
-    "attackAnim": 422,
-    "defenceAnim": 404,
-    "deathAnim": 2304,
-    "attackBonus": 1469,
-    "defenceMelee": 659,
-    "defenceRange": 739,
-    "defenceMage": 799,
     "isPet" : false,
     "isBoss" : true
   },
@@ -1471,29 +1443,6 @@
     "defenceAnim": 404,
     "deathAnim": 2304,
     "attackBonus": 60,
-    "defenceMelee": 30,
-    "defenceRange": 30,
-    "defenceMage": 30
-  },
-
-  {
-    "id": 9914,
-    "name": "Sasuke",
-    "examine": "Keepers of the Light monster.",
-    "combat": 999,
-    "size": 3,
-    "attackable": true,
-    "aggressive": false,
-    "retreats": false,
-    "poisonous": false,
-    "respawn": 1,
-    "maxHit": 20,
-    "hitpoints": 600000,
-    "attackSpeed": 3,
-    "attackAnim": 13035,
-    "defenceAnim": 404,
-    "deathAnim": 2304,
-    "attackBonus": 99,
     "defenceMelee": 30,
     "defenceRange": 30,
     "defenceMage": 30

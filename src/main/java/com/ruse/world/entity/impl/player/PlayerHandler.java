@@ -32,7 +32,7 @@ import com.ruse.world.packages.mode.impl.UltimateIronman;
 import com.ruse.world.packages.ranks.StaffRank;
 import com.ruse.world.packages.seasonpass.SeasonPassConfig;
 import com.ruse.world.packages.seasonpass.SeasonPassManager;
-import com.ruse.world.content.serverperks.ServerPerks;
+import com.ruse.world.packages.serverperks.ServerPerks;
 import com.ruse.world.entity.impl.GlobalItemSpawner;
 import com.ruse.world.instance.MapInstance;
 
@@ -293,9 +293,6 @@ public class PlayerHandler {
             StaffList.login(player);
         }
         StaffList.updateGlobalInterface();
-        if (player.getPointsHandler().getAchievementPoints() == 0) {
-            AchievementsOLD.setPoints(player);
-        }
 
         player.getUpdateFlag().flag(Flag.APPEARANCE);
 

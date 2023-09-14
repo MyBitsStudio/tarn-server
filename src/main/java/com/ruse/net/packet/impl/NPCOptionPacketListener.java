@@ -1,6 +1,5 @@
 package com.ruse.net.packet.impl;
 
-import com.ruse.GameSettings;
 import com.ruse.engine.task.impl.WalkToFightTask;
 import com.ruse.engine.task.impl.WalkToTask;
 import com.ruse.engine.task.impl.WalkToTask.FinalizedMovementTask;
@@ -18,19 +17,14 @@ import com.ruse.world.content.combat.weapon.CombatSpecial;
 import com.ruse.world.content.dailytasks_new.DailyTasks;
 import com.ruse.world.content.dialogue.EnterLotteryTicketAmount;
 import com.ruse.world.content.grandLottery.GrandLottery;
-import com.ruse.world.content.grandexchange.GrandExchange;
 import com.ruse.world.content.groupironman.GroupConfig;
-import com.ruse.world.content.groupironman.GroupManager;
-import com.ruse.world.content.holidayevents.christmas2016;
-import com.ruse.world.content.minigames.impl.WarriorsGuild;
 import com.ruse.world.content.minigames.impl.trioMinigame;
-import com.ruse.world.content.serverperks.ServerPerks;
+import com.ruse.world.packages.serverperks.ServerPerks;
 import com.ruse.world.content.skill.impl.construction.ConstructionActions;
 import com.ruse.world.content.skill.impl.crafting.Tanning;
 import com.ruse.world.content.skill.impl.fishing.Fishing;
 import com.ruse.world.content.skill.impl.herblore.Decanting;
 import com.ruse.world.content.skill.impl.hunter.PuroPuro;
-import com.ruse.world.content.skill.impl.old_dungeoneering.Dungeoneering;
 import com.ruse.world.content.skill.impl.old_dungeoneering.UltimateIronmanHandler;
 import com.ruse.world.content.skill.impl.runecrafting.DesoSpan;
 import com.ruse.world.content.skill.impl.summoning.BossPets;
@@ -42,12 +36,8 @@ import com.ruse.world.content.tbdminigame.Lobby;
 import com.ruse.world.content.transportation.TeleportHandler;
 import com.ruse.world.entity.impl.npc.NPC;
 import com.ruse.world.entity.impl.player.Player;
-import com.ruse.world.packages.dialogue.DialogueManager;
-import com.ruse.world.packages.mode.impl.GroupIronman;
 import com.ruse.world.packages.mode.impl.UltimateIronman;
 import com.ruse.world.packages.shops.ShopHandler;
-
-import static com.ruse.world.content.combat.CombatType.RANGED;
 
 public class NPCOptionPacketListener implements PacketListener {
 

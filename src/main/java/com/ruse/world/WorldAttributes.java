@@ -34,6 +34,7 @@ public class WorldAttributes {
         settings.put("tower", true);
         settings.put("collection", false);
         settings.put("trading", false);
+        settings.put("achievements", true);
 
         settings.put("donator-bonus", false);
         settings.put("slayer-bonus", false);

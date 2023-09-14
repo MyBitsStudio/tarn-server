@@ -2,6 +2,7 @@ package com.ruse.world.packages.tracks.impl.starter;
 
 import com.ruse.world.content.KillsTracker;
 import com.ruse.world.entity.impl.player.Player;
+import com.ruse.world.packages.johnachievementsystem.AchievementHandler;
 import com.ruse.world.packages.tracks.Track;
 import lombok.Getter;
 import org.jetbrains.annotations.NotNull;
@@ -156,10 +157,12 @@ public class StarterTrack extends Track {
     }
 
     private void reward(@NotNull StarterTasks task){
-        player.getSeasonPass().incrementExp(5, false);
+        player.getSeasonPass().incrementExp(25, false);
         player.getInventory().addDropIfFull(task.getReward().item(),
                 task.getReward().amount());
         player.sendMessage("@gre@ You have completed a starter task and received a reward!");
+        AchievementHandler.progress(player, 1, 11);
+        AchievementHandler.progress(player, 1, 12);
         player.save();
     }
 

@@ -4,9 +4,9 @@ import com.ruse.io.database.models.DatabaseRequestStatement;
 import com.ruse.io.database.models.impl.VoteClaim;
 import com.ruse.util.Misc;
 import com.ruse.world.World;
-import com.ruse.world.content.achievement.Achievements;
 import com.ruse.world.entity.impl.player.Player;
 import com.ruse.world.packages.globals.GlobalBossManager;
+import com.ruse.world.packages.johnachievementsystem.AchievementHandler;
 import org.jetbrains.annotations.NotNull;
 
 public class VoteHandler {
@@ -32,9 +32,16 @@ public class VoteHandler {
     }
 
     public static void progress(Player player){
-        Achievements.doProgress(player, Achievements.Achievement.VOTE_10_TIMES, 1);
-        Achievements.doProgress(player, Achievements.Achievement.VOTE_50_TIMES, 1);
-        Achievements.doProgress(player, Achievements.Achievement.VOTE_100_TIMES, 1);
+        AchievementHandler.progress(player, 1, 5);
+        AchievementHandler.progress(player, 1, 6);
+        AchievementHandler.progress(player, 1, 17);
+        AchievementHandler.progress(player, 1, 18);
+        AchievementHandler.progress(player, 1, 30);
+        AchievementHandler.progress(player, 1, 31);
+        AchievementHandler.progress(player, 1, 54);
+        AchievementHandler.progress(player, 1, 55);
+        AchievementHandler.progress(player, 1, 76);
+        AchievementHandler.progress(player, 1, 77);
         player.getStarter().handleVote(player.getPoints().get("voted"));
     }
 

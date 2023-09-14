@@ -12,7 +12,6 @@ import com.ruse.model.input.impl.EnterGemAmount;
 import com.ruse.util.Misc;
 import com.ruse.world.content.Sounds;
 import com.ruse.world.content.Sounds.Sound;
-import com.ruse.world.content.achievement.Achievements;
 import com.ruse.world.content.dailytasks_new.DailyTask;
 import com.ruse.world.entity.impl.player.Player;
 

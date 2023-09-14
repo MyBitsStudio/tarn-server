@@ -48,8 +48,8 @@ import com.ruse.world.content.minigames.impl.dungeoneering.DungeoneeringParty;
 import com.ruse.world.content.polling.PollCreation;
 import com.ruse.world.content.polling.PollManager;
 import com.ruse.world.content.rewardsList.RewardsHandler;
-import com.ruse.world.content.serverperks.ServerPerkContributionInput;
-import com.ruse.world.content.serverperks.ServerPerks;
+import com.ruse.world.packages.serverperks.ServerPerkContributionInput;
+import com.ruse.world.packages.serverperks.ServerPerks;
 import com.ruse.world.content.skill.ChatboxInterfaceSkillAction;
 import com.ruse.world.content.skill.impl.construction.Construction;
 import com.ruse.world.content.skill.impl.crafting.LeatherMaking;
@@ -132,10 +132,6 @@ public class ButtonClickPacketListener implements PacketListener {
         if (id == -23480) {
             player.getPacketSender().sendEnterAmountPrompt("How much would you like to contribute?");
             player.setInputHandling(new ServerPerkContributionInput());
-            return;
-        }
-
-        if (player.getAchievements().handleButtonClick(id)) {
             return;
         }
         if (player.getSeasonPass().handleButtonClick(id)) {
@@ -467,14 +463,6 @@ public class ButtonClickPacketListener implements PacketListener {
 //                }
                 return;
 
-            case -29536:
-                player.getAchievements().clickedAchievement = true;
-                player.getAchievements().drawInterface(0);
-                break;
-            case -26365:
-                player.getAchievements().clickedAchievement = true;
-                player.getAchievements().drawInterface(player.getAchievements().currentInterface);
-                break;
             case 12162:
                 TeleportHandler.teleportPlayer(player, new Position(2207, 3745, 0),
                         player.getSpellbook().getTeleportType());
@@ -523,7 +511,7 @@ public class ButtonClickPacketListener implements PacketListener {
                 player.getSeasonPass().showInterface();
                 break;
             case 111603:
-                player.sendMessage("Coming Soon!");
+                AchievementHandler.sendInterface(player);
                 break;
             case 111604:
                 DropsInterface.open(player);
@@ -1919,9 +1907,6 @@ public class ButtonClickPacketListener implements PacketListener {
             return true;
         }
         if (player.isPlayerLocked() && id != 2458) {
-            return true;
-        }
-        if (AchievementsOLD.handleButton(player, id)) {
             return true;
         }
         if (Sounds.handleButton(player, id)) {

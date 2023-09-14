@@ -245,6 +245,7 @@ public class ItemDefinition {
                 + "; 2h ? " + isTwoHanded;
     }
 
+    @Getter
     public enum EquipmentType {
         HAT(Equipment.HEAD_SLOT), CAPE(Equipment.CAPE_SLOT), SHIELD(Equipment.SHIELD_SLOT),
         GLOVES(Equipment.HANDS_SLOT), BOOTS(Equipment.FEET_SLOT), AMULET(Equipment.AMULET_SLOT),
@@ -260,8 +261,5 @@ public class ItemDefinition {
             this.slot = slot;
         }
 
-        public int getSlot() {
-            return slot;
-        }
     }
 }

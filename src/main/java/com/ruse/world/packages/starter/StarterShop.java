@@ -2,6 +2,7 @@ package com.ruse.world.packages.starter;
 
 import com.ruse.model.definitions.ItemDefinition;
 import com.ruse.world.entity.impl.player.Player;
+import com.ruse.world.packages.johnachievementsystem.AchievementHandler;
 import com.ruse.world.packages.shops.ShopItem;
 import org.jetbrains.annotations.NotNull;
 
@@ -97,6 +98,8 @@ public class StarterShop {
                 items.put(item, items.get(item) - 1);
                 player.getInventory().add(item.getId(), 1);
                 player.sendMessage("You have purchased a " + ItemDefinition.forId(item.getId()).getName() + ".");
+                AchievementHandler.progress(player, item.getPrice(), 2);
+                AchievementHandler.progress(player, item.getPrice(), 3);
                 open(false);
                 return true;
             }

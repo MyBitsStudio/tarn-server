@@ -2,6 +2,7 @@ package com.ruse.world.packages.loyalty;
 
 import com.ruse.world.World;
 import com.ruse.world.entity.impl.player.Player;
+import com.ruse.world.packages.johnachievementsystem.AchievementHandler;
 import lombok.Getter;
 import org.jetbrains.annotations.NotNull;
 
@@ -62,38 +63,41 @@ public class LoyaltyManager {
             multiplier += 1;
         }
 
+        int amount = 0;
+
         if(time % (360 * 60) == 0){
             player.getItems().addCharge("ancient-monic", 1);
             player.sendMessage("@red@[LOYALTY]@whi@You have been rewarded with 1 ancient monic charge for being online for 6 hours.");
         } else if(time % (300 * 60) == 0){
-            player.getInventory().add(LOYALTY_TICKET, (10 * multiplier));
-            xp += 10 * multiplier;
-            player.sendMessage("@red@[LOYALTY]@whi@You have been rewarded with 10 Loyalty Tickets for being online for 5 hours.");
+            amount = 10 * multiplier;
         } else if(time % (240 * 60) == 0){
-            player.getInventory().add(LOYALTY_TICKET, (8 * multiplier));
-            xp += 8 * multiplier;
-            player.sendMessage("@red@[LOYALTY]@whi@You have been rewarded with 8 Loyalty Tickets for being online for 4 hours.");
+            amount = 8 * multiplier;
         } else if(time % (120 * 60) == 0){
-            player.getInventory().add(LOYALTY_TICKET, (6 * multiplier));
-            xp += 6 * multiplier;
-            player.sendMessage("@red@[LOYALTY]@whi@You have been rewarded with 6 Loyalty Tickets for being online for 2 hours.");
+            amount = 6 * multiplier;
         } else if(time % (60 * 60) == 0){
-            player.getInventory().add(LOYALTY_TICKET, (4 * multiplier));
-            xp += 4 * multiplier;
-            player.sendMessage("@red@[LOYALTY]@whi@You have been rewarded with 4 Loyalty Tickets for being online for 1 hours.");
+           amount = 4 * multiplier;
         } else if(time % (30 * 60) == 0){
-            player.getInventory().add(LOYALTY_TICKET, (3 * multiplier));
-            xp += 3 * multiplier;
-            player.sendMessage("@red@[LOYALTY]@whi@You have been rewarded with 3 Loyalty Tickets for being online for 30 minutes.");
+           amount = 3 * multiplier;
         } else if(time % (20 * 60) == 0){
-            player.getInventory().add(LOYALTY_TICKET, (2 * multiplier));
-            xp += 2 * multiplier;
-            player.sendMessage("@red@[LOYALTY]@whi@You have been rewarded with 2 Loyalty Tickets for being online for 20 minutes.");
+            amount = 2 * multiplier;
         } else if(time % (10 * 60) == 0){
-            player.getInventory().add(LOYALTY_TICKET, (multiplier));
-            xp += multiplier;
-            player.sendMessage("@red@[LOYALTY]@whi@You have been rewarded with 1 Loyalty Tickets for being online for 10 minutes.");
+            amount = multiplier;
         }
+
+        if(amount > 0) {
+            player.getInventory().add(LOYALTY_TICKET, amount);
+            xp += amount;
+            player.sendMessage("@red@[LOYALTY]@whi@You have been rewarded with "+amount+" Loyalty Tickets for being online.");
+            AchievementHandler.progress(player, amount, 9);
+            AchievementHandler.progress(player, amount, 21);
+            AchievementHandler.progress(player, amount, 36);
+            AchievementHandler.progress(player, amount, 37);
+            AchievementHandler.progress(player, amount, 60);
+            AchievementHandler.progress(player, amount, 61);
+            AchievementHandler.progress(player, amount, 81);
+            AchievementHandler.progress(player, amount, 82);
+        }
+
 
         calculateLevel();
 

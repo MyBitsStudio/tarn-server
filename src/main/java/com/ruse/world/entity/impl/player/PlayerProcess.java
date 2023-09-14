@@ -9,8 +9,6 @@ import com.ruse.model.RegionInstance.RegionInstanceType;
 import com.ruse.model.Skill;
 import com.ruse.world.content.PlayerPanel;
 import com.ruse.world.content.PlayerPunishment;
-import com.ruse.world.content.achievement.AchievementHandler;
-import com.ruse.world.content.achievement.Achievements;
 import com.ruse.world.content.combat.pvp.BountyHunter;
 import com.ruse.world.content.skill.impl.construction.House;
 import com.ruse.world.entity.impl.GroundItemManager;
@@ -62,12 +60,6 @@ public class PlayerProcess {
 		if (previousHeight != player.getPosition().getZ()) {
 			GroundItemManager.handleRegionChange(player);
 			previousHeight = player.getPosition().getZ();
-		}
-		if (player.getInterfaceId() == 36000 && player.getAchievements().currentInterface == 3) {
-			player.getPA().sendString(36503, "Time Left: " + AchievementHandler.getTimeLeft());
-		}
-		if (player.getAchievements().getDailyAchievementsDate() != player.getAchievements().getTodayDate()) {
-			Achievements.resetDailys(player);
 		}
 
 		player.getAfk().process();

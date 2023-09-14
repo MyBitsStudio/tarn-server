@@ -2,6 +2,7 @@ package com.ruse.world.packages.packs.gearpack;
 
 import com.ruse.util.Misc;
 import com.ruse.world.entity.impl.player.Player;
+import com.ruse.world.packages.johnachievementsystem.AchievementHandler;
 
 public class GearPack {
 
@@ -16,6 +17,8 @@ public class GearPack {
             player.getInventory().delete(itemId, 1);
 
             player.getInventory().addItems(pack.getItems(), true);
+
+            AchievementHandler.progress(player, 1, 4);
 
         }
     }

@@ -22,7 +22,7 @@ public class EventInstance extends SingleBossSinglePlayerInstance {
     public void startAnew() {
         removeNPC(getBoss());
         setBoss(null);
-        setBoss(new AgthomothBoss(getOwner().getIndex() * 4));
+        setBoss(new EventBoss(getOwner().getIndex() * 4));
         getBoss().setSpawnedFor(getOwner());
         add(getBoss());
     }

@@ -13,7 +13,7 @@ import com.ruse.world.content.LotterySystem;
 import com.ruse.world.content.WellOfGoodwill;
 import com.ruse.world.packages.clans.ClanManager;
 import com.ruse.world.content.grandexchange.GrandExchangeOffers;
-import com.ruse.world.content.serverperks.ServerPerks;
+import com.ruse.world.packages.serverperks.ServerPerks;
 import com.ruse.world.content.skill.SkillManager;
 import com.ruse.world.content.transportation.TeleportHandler;
 import com.ruse.world.content.transportation.TeleportType;

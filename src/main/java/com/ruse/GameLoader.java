@@ -23,7 +23,7 @@ import com.ruse.world.content.combat.effect.CombatPoisonEffect.CombatPoisonData;
 import com.ruse.world.content.combat.strategy.CombatStrategies;
 import com.ruse.world.content.groupironman.GroupManager;
 import com.ruse.world.packages.johnachievementsystem.AchievementHandler;
-import com.ruse.world.content.serverperks.ServerPerks;
+import com.ruse.world.packages.serverperks.ServerPerks;
 import com.ruse.world.content.tbdminigame.Lobby;
 import com.ruse.world.packages.tradingpost.TradingPost;
 import com.ruse.world.entity.actor.player.controller.ControllerHandler;

@@ -6,7 +6,7 @@
 //import com.ruse.model.container.impl.Equipment;
 //import com.ruse.world.content.combat.prayer.PrayerHandler;
 //import com.ruse.world.content.equipmentenhancement.BoostType;
-//import com.ruse.world.content.serverperks.ServerPerks;
+//import com.ruse.world.packages.serverperks.ServerPerks;
 //import com.ruse.world.content.skill.impl.summoning.BossPets;
 //import com.ruse.world.entity.impl.player.Player;
 //import com.ruse.world.packages.combat.CombatConstants;

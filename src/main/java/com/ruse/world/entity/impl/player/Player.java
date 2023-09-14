@@ -24,14 +24,12 @@ import com.ruse.util.Misc;
 import com.ruse.util.Stopwatch;
 import com.ruse.world.World;
 import com.ruse.world.allornothing.AONType;
-import com.ruse.world.content.AchievementsOLD.AchievementAttributes;
 import com.ruse.world.content.BankPin.BankPinAttributes;
 import com.ruse.world.content.*;
 import com.ruse.world.content.DropLog.DropLogEntry;
 import com.ruse.world.content.KillsTracker.KillsEntry;
 import com.ruse.world.content.LoyaltyProgramme.LoyaltyTitles;
 import com.ruse.world.content.StarterTasks.StarterTaskAttributes;
-import com.ruse.world.content.achievement.AchievementHandler;
 import com.ruse.world.packages.johnachievementsystem.AchievementProgress;
 import com.ruse.world.packages.johnachievementsystem.Perk;
 import com.ruse.world.packages.johnachievementsystem.PerkType;
@@ -479,7 +477,6 @@ public class Player extends Character {
     private final MinigameAttributes minigameAttributes = new MinigameAttributes();
     private final BankPinAttributes bankPinAttributes = new BankPinAttributes();
     private final BankSearchAttributes bankSearchAttributes = new BankSearchAttributes();
-    private final AchievementAttributes achievementAttributes = new AchievementAttributes();
     private final BonusManager bonusManager = new BonusManager();
     private final PointsHandler pointsHandler = new PointsHandler(this);
     private final PacketSender packetSender = new PacketSender(this);
@@ -831,7 +828,6 @@ public class Player extends Character {
      */
 
     private boolean chargingAttack;
-    private AchievementHandler achievementHandler;
 
     /**
      * Raids
@@ -921,12 +917,6 @@ public class Player extends Character {
 
     public void setAuraParty(AuraParty auraParty) {
         this.auraParty = auraParty;
-    }
-
-    public AchievementHandler getAchievements() {
-        if (achievementHandler == null)
-            achievementHandler = new AchievementHandler(this);
-        return achievementHandler;
     }
 
     public int getAfkStallCount1() {
@@ -2581,10 +2571,6 @@ public class Player extends Character {
 
     public BankSearchAttributes getBankSearchingAttribtues() {
         return bankSearchAttributes;
-    }
-
-    public AchievementAttributes getAchievementAttributes() {
-        return achievementAttributes;
     }
 
     public BankPinAttributes getBankPinAttributes() {

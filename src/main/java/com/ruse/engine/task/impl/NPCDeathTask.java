@@ -10,24 +10,13 @@ import com.ruse.util.Misc;
 import com.ruse.util.RandomUtility;
 import com.ruse.world.World;
 import com.ruse.world.content.*;
-import com.ruse.world.content.StarterTasks.StarterTaskData;
-import com.ruse.world.content.achievement.Achievements;
-import com.ruse.world.content.battlepass.BattlePassData;
-import com.ruse.world.content.battlepass.BattlePassHandler;
 import com.ruse.world.content.bossEvents.BossEventHandler;
-import com.ruse.world.content.combat.strategy.impl.Exoden;
-import com.ruse.world.content.combat.strategy.impl.KalphiteQueen;
-import com.ruse.world.content.combat.strategy.impl.Nex;
-import com.ruse.world.content.dailyTask.DailyTaskHandler;
-import com.ruse.world.content.dailytasks_new.DailyTask;
 import com.ruse.world.content.tbdminigame.Game;
 import com.ruse.world.content.tbdminigame.Lobby;
 import com.ruse.world.packages.combat.drops.DropManager;
 import com.ruse.world.content.eventboss.EventBossDropHandler;
 import com.ruse.world.content.globalBoss.GlobalBoss;
-import com.ruse.world.content.globalBoss.GlobalBossHandler;
-import com.ruse.world.content.globalBoss.TheGeneral;
-import com.ruse.world.content.progressionzone.ProgressionZone;
+import com.ruse.world.packages.johnachievementsystem.AchievementHandler;
 import com.ruse.world.packages.seasonpass.SeasonPassManager;
 import com.ruse.world.entity.impl.npc.NPC;
 import com.ruse.world.entity.impl.player.Player;
@@ -112,14 +101,17 @@ public class NPCDeathTask extends Task {
                         achieve(killer, npc.getId());
                         killTracker(killer, npc.getId());
 
-                        Achievements.doProgress(killer, Achievements.Achievement.KILL_5000_NPCS);
-                        Achievements.doProgress(killer, Achievements.Achievement.KILL_10000_NPCS);
-                        Achievements.doProgress(killer, Achievements.Achievement.KILL_25000_NPCS);
+                        AchievementHandler.progress(killer, 1, 0);
+                        AchievementHandler.progress(killer, 1, 1);
+                        AchievementHandler.progress(killer, 1, 15);
+                        AchievementHandler.progress(killer, 1, 16);
+                        AchievementHandler.progress(killer, 1, 28);
+                        AchievementHandler.progress(killer, 1, 29);
+                        AchievementHandler.progress(killer, 1, 52);
+                        AchievementHandler.progress(killer, 1, 53);
+                        AchievementHandler.progress(killer, 1, 74);
+                        AchievementHandler.progress(killer, 1, 75);
 
-                        for (Achievements.Achievement ach : Achievements.Achievement.values()) {
-                            if (ach.getNpcId() != -1 && ach.getNpcId() == npc.getId())
-                                Achievements.doProgress(killer, ach);
-                        }
 
                         otherCheck(killer, npc.getId());
 
@@ -165,10 +157,6 @@ public class NPCDeathTask extends Task {
 
                         killer.getStarter().handleKillCount(npc.getId());
 
-                        if (npc instanceof GlobalBoss) {
-                            GlobalBossHandler.onDeath((GlobalBoss) npc);
-                        }
-
                         if (npc.stopTask()) {
                             setEventRunning(false);
                             npc.setDying(false);
@@ -200,7 +188,7 @@ public class NPCDeathTask extends Task {
 
                                     }
 
-                                    npc.onDeath();
+                                    npc.onDeath(killer);
 
                                     if (killer == null) {
                                         World.deregister(npc);

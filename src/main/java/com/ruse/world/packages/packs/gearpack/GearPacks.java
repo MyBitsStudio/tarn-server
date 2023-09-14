@@ -87,7 +87,17 @@ public enum GearPacks {
             new Item(4069, 1), new Item(4070, 1), new Item(3723, 1),
             new Item(3724, 1), new Item(3725, 1), new Item(3738, 1)
     ),
-
+    TIER_XV(23214, 0,
+            new Item(17614, 1), new Item(17616, 1), new Item(17618, 1),
+            new Item(17606, 1), new Item(8411, 1), new Item(8410, 1),
+            new Item(8412, 1)
+    ),
+    TIER_XVI(23215, 0,
+            new Item(5074, 1), new Item(5068, 1), new Item(5069, 1),
+            new Item(5070, 1), new Item(5071, 1), new Item(5072, 1),
+            new Item(17718, 1), new Item(13328, 1), new Item(13329, 1),
+            new Item(13330, 1), new Item(13332, 1), new Item(13333, 1)
+    ),
 //
 //    NITE(11942, 0,
 //            new Item(17698, 1), new Item(17770, 1), new Item(17614, 1),

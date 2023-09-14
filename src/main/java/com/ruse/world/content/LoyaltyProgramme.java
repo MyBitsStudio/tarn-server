@@ -119,14 +119,7 @@ public class LoyaltyProgramme {
 			@Override
 			boolean canBuy(Player p, boolean sendMessage) {
 				if (!p.getUnlockedLoyaltyTitles()[8]) {
-					for (boolean b : p.getAchievementAttributes().getGodsKilled()) {
-						if (!b) {
-							if (sendMessage)
-								p.getPacketSender().sendMessage(
-										"To unlock this title, you must slay all of the 5 gods in the Godwars Dungeon.");
-							return false;
-						}
-					}
+
 				}
 				unlock(p, this);
 				return true;
@@ -151,14 +144,7 @@ public class LoyaltyProgramme {
 			@Override
 			boolean canBuy(Player p, boolean sendMessage) {
 				if (!p.getUnlockedLoyaltyTitles()[10]) {
-					if (p.getAchievementAttributes().getTotalLoyaltyPointsEarned() < 500000) { // TODO fix this to
-																								// account for owned
-																								// titles.
-						if (sendMessage)
-							p.getPacketSender().sendMessage(
-									"To unlock this title, you must have earned 500,000 Loyalty Points in total.");
-						return false;
-					}
+
 				}
 				unlock(p, this);
 				return true;
@@ -331,7 +317,7 @@ public class LoyaltyProgramme {
 			pts *= 1.5;
 		}
 		player.getPointsHandler().incrementLoyaltyPoints(pts);
-		player.getAchievementAttributes().incrementTotalLoyaltyPointsEarned(pts);
+
 
 		int totalPoints = (int) player.getPointsHandler().getLoyaltyPoints();
 		if (totalPoints >= 100000) {
@@ -345,9 +331,6 @@ public class LoyaltyProgramme {
 		// player.getPacketSender().sendString(39172, "@or2@Loyalty Points:
 		// @yel@"+totalPoints); HANDLED by PlayerPanel
 
-		if (player.getAchievementAttributes().getTotalLoyaltyPointsEarned() >= 500000) {
-			unlock(player, LoyaltyTitles.VETERAN);
-		}
 		PlayerPanel.refreshPanel(player);
 	}
 }

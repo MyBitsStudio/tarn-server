@@ -7,12 +7,13 @@ import com.ruse.model.Skill;
 import com.ruse.model.definitions.ItemDefinition;
 import com.ruse.model.input.impl.EnterAmountOfGemsToCut;
 import com.ruse.util.Misc;
-import com.ruse.world.content.achievement.Achievements;
 import com.ruse.world.content.dailytasks_new.DailyTask;
 import com.ruse.world.entity.impl.player.Player;
+import lombok.Getter;
 
 public class Gems {
 
+	@Getter
 	enum GEM_DATA {
 
 		OPAL(1625, 1609, 8, 15, new Animation(886), -1), JADE(1627, 1611, 13, 20, new Animation(886), -1),
@@ -32,30 +33,6 @@ public class Gems {
 
 		private int uncutGem, cutGem, levelReq, xpReward, amuletInt;
 		private Animation animation;
-
-		public int getUncutGem() {
-			return uncutGem;
-		}
-
-		public int getCutGem() {
-			return cutGem;
-		}
-
-		public int getLevelReq() {
-			return levelReq;
-		}
-
-		public int getXpReward() {
-			return xpReward;
-		}
-
-		public int getAmuletInt() {
-			return amuletInt;
-		}
-
-		public Animation getAnimation() {
-			return animation;
-		}
 
 		public static GEM_DATA forUncutGem(int uncutGem) {
 			for (GEM_DATA data : GEM_DATA.values()) {

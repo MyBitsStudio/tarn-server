@@ -46,6 +46,18 @@ public enum InstanceInterData {
         new Item(10835, 250), 16, 15, 1313,
     InstanceType.MULTI),
 
+    SASUKE("Sasuke", "T15",
+            new Item(10835, 300), 16, 15, 9914,
+            InstanceType.MULTI),
+
+    JOKER("Joker", "T16",
+            new Item(10835, 350), 16, 15, 185,
+            InstanceType.MULTI),
+
+    BYAKUYA("Byakuya", "T16",
+            new Item(10835, 400), 16, 15, 188,
+            InstanceType.MULTI),
+
     AGTHOMOTH("Ag'thomoth", "T10",
          new Item(995, 25000), 1, 20, 3013,
     InstanceType.SINGLE),

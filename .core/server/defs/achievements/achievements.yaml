@@ -1010,3 +1010,58 @@
       amount: 2
     - itemId: 604
       amount: 25
+
+- title: 100 Bones
+  description: Bury 100 Bones
+  maxProgress: 100
+  difficulty: BEGINNER
+  primaryKey: 96
+  rewards:
+    - itemId: 995
+      amount: 25000
+    - itemId: 3025
+      amount: 10
+
+- title: 500 Bones
+  description: Bury 500 Bones
+  maxProgress: 500
+  difficulty: EASY
+  primaryKey: 97
+  rewards:
+    - itemId: 995
+      amount: 50000
+    - itemId: 3025
+      amount: 25
+
+- title: 1000 Bones
+  description: Bury 1000 Bones
+  maxProgress: 1000
+  difficulty: MEDIUM
+  primaryKey: 98
+  rewards:
+    - itemId: 995
+      amount: 125000
+    - itemId: 3025
+      amount: 50
+
+- title: 5000 Bones
+  description: Bury 5000 Bones
+  maxProgress: 5000
+  difficulty: HARD
+  primaryKey: 99
+  rewards:
+    - itemId: 995
+      amount: 250000
+    - itemId: 4564
+      amount: 20
+
+- title: 10000 Bones
+  description: Bury 10000 Bones
+  maxProgress: 10000
+  difficulty: ELITE
+  primaryKey: 100
+  rewards:
+    - itemId: 995
+      amount: 500000
+    - itemId: 4563
+      amount: 20

@@ -14,8 +14,7 @@ public class TowerBoss extends NPC {
     }
 
     @Override
-    public void onDeath(){
-        Player player = getCombatBuilder().getLastAttacker().asPlayer();
+    public void onDeath(Player player){
         if(player != null){
             player.getTower().getInstance().check(player);
         }

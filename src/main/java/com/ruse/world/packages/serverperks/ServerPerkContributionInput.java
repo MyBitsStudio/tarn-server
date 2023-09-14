@@ -1,4 +1,4 @@
-package com.ruse.world.content.serverperks;
+package com.ruse.world.packages.serverperks;
 
 import com.ruse.model.input.Input;
 import com.ruse.world.entity.impl.player.Player;

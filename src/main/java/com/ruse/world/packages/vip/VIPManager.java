@@ -9,6 +9,7 @@ import com.ruse.world.World;
 import com.ruse.world.entity.impl.player.Player;
 import com.ruse.world.packages.event.impl.DonatorBoostEvent;
 import com.ruse.world.packages.globals.GlobalBossManager;
+import com.ruse.world.packages.johnachievementsystem.AchievementHandler;
 import org.jetbrains.annotations.NotNull;
 
 import java.sql.SQLException;
@@ -34,6 +35,14 @@ public class VIPManager {
 
     public static void progress(@NotNull Player player, int amount){
         player.getSeasonPass().incrementExp(265 * amount, false);
+        AchievementHandler.progress(player, amount, 7);
+        AchievementHandler.progress(player, amount, 19);
+        AchievementHandler.progress(player, amount, 32);
+        AchievementHandler.progress(player, amount, 33);
+        AchievementHandler.progress(player, amount, 56);
+        AchievementHandler.progress(player, amount, 57);
+        AchievementHandler.progress(player, amount, 78);
+        AchievementHandler.progress(player, amount, 79);
     }
 
     public static int modify(Player player, int amount){

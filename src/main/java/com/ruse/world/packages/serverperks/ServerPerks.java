@@ -1,13 +1,12 @@
-package com.ruse.world.content.serverperks;
+package com.ruse.world.packages.serverperks;
 
-import com.ruse.GameSettings;
-import com.ruse.engine.GameEngine;
 import com.ruse.io.ThreadProgressor;
 import com.ruse.util.Misc;
 import com.ruse.util.StringUtils;
 import com.ruse.world.World;
 import com.ruse.world.packages.discordbot.JavaCord;
 import com.ruse.world.entity.impl.player.Player;
+import com.ruse.world.packages.johnachievementsystem.AchievementHandler;
 import lombok.Getter;
 
 import java.io.*;
@@ -66,6 +65,8 @@ public class ServerPerks {
         int total = contributions.merge(perk, amount, Integer::sum);
         updateInterface(player);
 
+        updateAchievements(player, amount);
+
         save();
         if (amount >= 1000000) {
             World.sendMessage("<img=16><shad=1>@or2@[" + player.getUsername() + "] @yel@has just donated @gre@" + amount + " @yel@Coins to the Server Perk!");
@@ -74,6 +75,14 @@ public class ServerPerks {
         if (total >= necessary) {
             start(perk);
         }
+    }
+
+    private void updateAchievements(Player player, int amount){
+        AchievementHandler.progress(player, amount, 10);
+        AchievementHandler.progress(player, amount, 22);
+        AchievementHandler.progress(player, amount, 38);
+        AchievementHandler.progress(player, amount, 62);
+        AchievementHandler.progress(player, amount, 83);
     }
 
     public void tick() {

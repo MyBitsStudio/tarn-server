@@ -11,22 +11,15 @@ import com.ruse.util.RandomUtility;
 import com.ruse.world.World;
 import com.ruse.world.WorldIPChecker;
 import com.ruse.world.content.*;
-import com.ruse.world.content.globalBoss.GlobalBossHandler;
 import com.ruse.world.packages.attendance.AttendanceTab;
-import com.ruse.world.content.combat.prayer.CurseHandler;
-import com.ruse.world.content.combat.prayer.PrayerHandler;
-import com.ruse.world.content.dailyTask.DailyTaskHandler;
 import com.ruse.world.packages.combat.drops.DropCalculator;
 import com.ruse.world.packages.combat.max.MagicMax;
 import com.ruse.world.packages.combat.max.MeleeMax;
 import com.ruse.world.packages.combat.max.RangeMax;
 import com.ruse.world.packages.dialogue.DialogueManager;
 import com.ruse.world.packages.dialogue.impl.EmptyInv;
-import com.ruse.world.content.minigames.impl.dungeoneering.DungeoneeringParty;
-import com.ruse.world.content.serverperks.ServerPerks;
 import com.ruse.world.content.transportation.TeleportHandler;
 import com.ruse.world.content.transportation.TeleportType;
-import com.ruse.world.packages.globals.GlobalBossManager;
 import com.ruse.world.packages.misc.Retrieval;
 import com.ruse.world.packages.ranks.StaffRank;
 import com.ruse.world.packages.tracks.TrackInterface;
@@ -388,49 +381,31 @@ public class PlayerCommands {
     public static boolean handleGlobalSpawn(Player player, @NotNull String type){
         switch (type) {
             case "lugia" -> {
-                if(!WorldIPChecker.getInstance().addToContent(player, "lugia")){
-                    return false;
-                }
                 TeleportHandler.teleportPlayer(player, new Position(2139, 5018, 4),
                         TeleportType.NORMAL);
                 return true;
             }
             case "ninetails" -> {
-                if(!WorldIPChecker.getInstance().addToContent(player, "ninetails")){
-                    return false;
-                }
                 TeleportHandler.teleportPlayer(player, new Position(2139, 5018, 0),
                         player.getSpellbook().getTeleportType());
                 return true;
             }
             case "mewtwo" -> {
-                if(!WorldIPChecker.getInstance().addToContent(player, "mewtwo")){
-                    return false;
-                }
                 TeleportHandler.teleportPlayer(player, new Position(2139, 5018, 12),
                         TeleportType.NORMAL);
                 return true;
             }
             case "groudon" -> {
-                if(!WorldIPChecker.getInstance().addToContent(player, "groudon")){
-                    return false;
-                }
                 TeleportHandler.teleportPlayer(player, new Position(2139, 5018, 8),
                         TeleportType.NORMAL);
                 return true;
             }
             case "vboss", "voteboss" -> {
-                if(!WorldIPChecker.getInstance().addToContent(player, "vote-boss")){
-                    return false;
-                }
                 TeleportHandler.teleportPlayer(player, new Position(2530, 2648, 0),
                         TeleportType.NORMAL);
                 return true;
             }
             case "donboss", "donatorboss", "dboss" -> {
-                if(!WorldIPChecker.getInstance().addToContent(player, "donate-boss")){
-                    return false;
-                }
                 TeleportHandler.teleportPlayer(player, new Position(2530, 2648, 4),
                         TeleportType.NORMAL);
                 return true;
@@ -442,7 +417,6 @@ public class PlayerCommands {
     }
 
     public static void handleYell(Player player, String yell){
-
 
         if (ServerSecurity.getInstance().isPlayerMuted(player.getUsername())) {
             player.getPacketSender().sendMessage("You are muted and cannot yell.");

@@ -1,4 +1,4 @@
-package com.ruse.world.content.serverperks;
+package com.ruse.world.packages.serverperks;
 
 /**
  * @Author Suic

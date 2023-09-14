@@ -1,16 +1,15 @@
 package com.ruse.world.packages.combat.max;
 
-import com.ruse.model.Item;
-import com.ruse.model.Skill;
 import com.ruse.model.container.impl.Equipment;
 import com.ruse.util.Misc;
 import com.ruse.world.content.BonusManager;
 import com.ruse.world.content.combat.CombatType;
 import com.ruse.world.content.combat.NpcMaxHitLimit;
-import com.ruse.world.content.combat.effect.EquipmentBonus;
 import com.ruse.world.content.combat.prayer.CurseHandler;
 import com.ruse.world.content.combat.prayer.PrayerHandler;
-import com.ruse.world.content.serverperks.ServerPerks;
+import com.ruse.world.packages.johnachievementsystem.AchievementHandler;
+import com.ruse.world.packages.johnachievementsystem.PerkType;
+import com.ruse.world.packages.serverperks.ServerPerks;
 import com.ruse.world.content.skill.impl.summoning.BossPets;
 import com.ruse.world.entity.impl.Character;
 import com.ruse.world.entity.impl.npc.NPC;
@@ -195,9 +194,14 @@ public class RangeMax {
             if(player.getEquipment().contains(15587))
                 maxHit *= 1.5;
 
+            maxHit *= player.getEquipment().getBonus() == null ? 1 : (long) player.getEquipment().getBonus().rangeDamage();
+
+            if(AchievementHandler.hasUnlocked(player, PerkType.RANGE)){
+                maxHit *= (1 + (AchievementHandler.getPerkLevel(player, PerkType.RANGE) * 0.10));
+            }
+
             maxHit *= 10;
 
-            maxHit *= player.getEquipment().getBonus() == null ? 1 : (long) player.getEquipment().getBonus().rangeDamage();
         }
 
 
