@@ -29,29 +29,31 @@ public class AchievementHandler {
         player.getPacketSender().sendString(165339, "You can spend your achievement points in the store to unlock exclusive perks with amazing benefits!");
     }
 
-    public static void progress(Player player, int amount, int primaryKey) {
+    public static void progress(Player player, int amount, int... primaryKeys) {
         if(!World.attributes.getSetting("achievements")){
             return;
         }
-        Achievement achievement = achievements.get(primaryKey);
-        if(achievement == null) {
-            player.getPacketSender().sendMessage("@red@This achievement does not exist");
-            return;
+        for (int key : primaryKeys) {
+            Achievement achievement = achievements.get(key);
+            if (achievement == null) {
+                player.getPacketSender().sendMessage("@red@This achievement does not exist");
+                continue;
+            }
+            AchievementProgress ap = player.getAchievementsMap().get(key);
+            if (ap.isComplete()) continue;
+            ap.addProgressAmount(amount);
+            if (ap.getProgress() >= achievement.getMaxProgress()) {
+                ap.setComplete(true);
+                increaseCompleteAmount(player, achievement.getAchievementDifficulty(), 1);
+                ap.setProgress(achievement.getMaxProgress());
+                int pointsAwarded = achievement.getAchievementDifficulty().getPoints();
+                player.addAchievementPoints(pointsAwarded);
+                player.sendMessage("@red@You have been awarded some items and " + pointsAwarded + " for completing an achievement!");
+                for (Reward item : achievement.getRewards())
+                    player.addItemUnderAnyCircumstances(new Item(item.getItemId(), item.getAmount()));
+            }
+            sendProgressAmount(player, ap, achievement);
         }
-        AchievementProgress ap = player.getAchievementsMap().get(primaryKey);
-        if(ap.isComplete()) return;
-        ap.addProgressAmount(amount);
-        if(ap.getProgress() >= achievement.getMaxProgress()) {
-            ap.setComplete(true);
-            increaseCompleteAmount(player, achievement.getAchievementDifficulty(), 1);
-            ap.setProgress(achievement.getMaxProgress());
-            int pointsAwarded = achievement.getAchievementDifficulty().getPoints();
-            player.addAchievementPoints(pointsAwarded);
-            player.sendMessage("@red@You have been awarded some items and " + pointsAwarded + " for completing an achievement!");
-            for(Reward item : achievement.getRewards())
-                player.addItemUnderAnyCircumstances(new Item(item.getItemId(), item.getAmount()));
-        }
-        sendProgressAmount(player, ap, achievement);
     }
 
     private static void sendProgressAmount(Player player, AchievementProgress achievementProgress, Achievement achievement) {
