@@ -323,7 +323,8 @@ public class CasketOpening {
         SLAYER_CASKET(2734, SlayerCasket.loot),
 
         PvM_CASKET(2736, PvMCasket.loot),
-
+        ASTA_BOX(20488, AstaFireChest.loot),
+        TARN_CHEST(23002, TarnMasterChest.loot),
         ;
         private final int itemID;
         private final Box[] loot;

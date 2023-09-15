@@ -368,6 +368,15 @@ public class MeleeMax {
 
             maxHit *= (long) multiplyDamage(player);
 
+            if(player.getEquipment().contains(15588))
+                maxHit *= 1.5;
+
+            if(player.getEquipment().contains(19888))
+                maxHit *= 1.25;
+
+            if(player.getEquipment().contains(18823))
+                maxHit *= 1.25;
+
 
             maxHit *= player.getEquipment().getBonus() == null ? 1 : (long) player.getEquipment().getBonus().meleeDamage();
 
@@ -432,15 +441,6 @@ public class MeleeMax {
                 multiply += 0.5;
             }
         }
-
-        if(player.getEquipment().contains(15588))
-            multiply *= 0.5;
-
-        if(player.getEquipment().contains(19888))
-            multiply += 0.25;
-
-        if(player.getEquipment().contains(18823))
-            multiply += 0.25;
 
 
         return multiply;

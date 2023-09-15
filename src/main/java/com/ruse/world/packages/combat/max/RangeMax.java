@@ -207,6 +207,15 @@ public class RangeMax {
 
             maxHit *= (long) multiplyDamage(player);
 
+            if(player.getEquipment().contains(15587))
+                maxHit *= 1.5;
+
+            if(player.getEquipment().contains(19888))
+                maxHit *= 1.25;
+
+            if(player.getEquipment().contains(18823))
+                maxHit *= 1.25;
+
             maxHit *= player.getEquipment().getBonus() == null ? 1 : (long) player.getEquipment().getBonus().rangeDamage();
 
             if(AchievementHandler.hasUnlocked(player, PerkType.RANGE)){
@@ -235,15 +244,6 @@ public class RangeMax {
                 multiply += 0.5;
             }
         }
-
-        if(player.getEquipment().contains(15587))
-            multiply *= 0.5;
-
-        if(player.getEquipment().contains(19888))
-            multiply += 0.25;
-
-        if(player.getEquipment().contains(18823))
-            multiply += 0.25;
 
         return multiply;
     }

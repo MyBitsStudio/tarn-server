@@ -200,6 +200,19 @@ public class DissolveItem {
                 }
                 ran = true;
             }
+
+            case 23150, 23151, 23152, 23153, 23154, 23155, 23156, 23157,
+                    23158, 23159, 23160, 25000, 25001 -> {
+                toDissolve = player.getInventory().get(slot);
+                if (player.getInventory().contains(toDissolve.getId())) {
+                    player.getInventory().delete(toDissolve)
+                            .add(19639, 1);
+                    player.performAnimation(new Animation(712));
+                    player.getSkillManager().addExperience(Skill.CRAFTING, 92);
+                    player.getPacketSender().sendMessage("@or2@You have dissolved @red@" + ItemDefinition.forId(id).getName() + "@or2@");
+                }
+                ran = true;
+            }
         }
 
         if(ran){

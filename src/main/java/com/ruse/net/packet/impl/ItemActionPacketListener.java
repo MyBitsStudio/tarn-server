@@ -89,6 +89,10 @@ public class ItemActionPacketListener implements PacketListener {
         Item item = player.getInventory().getItems()[slot];
         player.setInteractingItem(item);
 
+        if(player.getRank().isDeveloper()){
+            player.sendMessage("First Packet Action");
+        }
+
         if(ItemDefinition.forId(itemId).getName().equalsIgnoreCase("none")){
             System.out.println("Item name is none "+itemId);
             return;
@@ -1700,6 +1704,10 @@ public class ItemActionPacketListener implements PacketListener {
             return;
         }
 
+        if(player.getRank().isDeveloper()){
+            player.sendMessage("Third Packet Action");
+        }
+
         switch (itemId) {
             case 3686 -> {
                 if (player.getSeasonPass().isPremium()) {
@@ -1880,6 +1888,10 @@ public class ItemActionPacketListener implements PacketListener {
         if(ItemDefinition.forId(itemId).getName().equalsIgnoreCase("none")){
             System.out.println("Item name is none");
             return;
+        }
+
+        if(player.getRank().isDeveloper()){
+            player.sendMessage("Second Packet Action");
         }
 
         if(PackOpener.openPack(player, itemId))

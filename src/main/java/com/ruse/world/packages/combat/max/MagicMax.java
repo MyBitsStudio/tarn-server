@@ -210,6 +210,15 @@ public class MagicMax {
 
             maxHit *= (long) multiplyDamage(player);
 
+            if(player.getEquipment().contains(15589))
+                maxHit *= 1.5;
+
+            if(player.getEquipment().contains(19888))
+                maxHit *= 1.25;
+
+            if(player.getEquipment().contains(18823))
+                maxHit *= 1.25;
+
 
             maxHit *= player.getEquipment().getBonus() == null ? 1 : (long) player.getEquipment().getBonus().mageDamage();
 
@@ -238,14 +247,6 @@ public class MagicMax {
                 multiply += 0.5;
             }
         }
-        if(player.getEquipment().contains(15589))
-            multiply += 0.5;
-
-        if(player.getEquipment().contains(19888))
-            multiply += 0.25;
-
-        if(player.getEquipment().contains(18823))
-            multiply += 0.25;
 
         return multiply;
     }
