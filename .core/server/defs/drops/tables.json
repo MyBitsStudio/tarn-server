@@ -27,38 +27,6 @@
         "max" : 10,
         "modifier" : 945.00,
         "announce" : false
-      },
-      {
-        "id" : 13727,
-        "chance" : 0,
-        "min" : 5,
-        "max" : 25,
-        "modifier" : 945.00,
-        "announce" : false
-      },
-      {
-        "id" : 23149,
-        "chance" : 1,
-        "min" : 1,
-        "max" : 1,
-        "modifier" : 1895.00,
-        "announce" : false
-      },
-      {
-        "id" : 23148,
-        "chance" : 1,
-        "min" : 1,
-        "max" : 1,
-        "modifier" : 2495.00,
-        "announce" : false
-      },
-      {
-        "id" : 23147,
-        "chance" : 1,
-        "min" : 1,
-        "max" : 1,
-        "modifier" : 4125.00,
-        "announce" : false
       }
     ]
   },
@@ -88,39 +56,47 @@
         "chance" : 1,
         "min" : 1,
         "max" : 1,
-        "modifier" : 2395.00,
+        "modifier" : 2895.00,
         "announce" : false
       },
       {
-        "id" : 23148,
-        "chance" : 1,
-        "min" : 1,
-        "max" : 1,
-        "modifier" : 3995.00,
+        "id" : 13727,
+        "chance" : 0,
+        "min" : 5,
+        "max" : 25,
+        "modifier" : 1495.00,
         "announce" : false
       },
       {
-        "id" : 23147,
+        "id" : 19639,
         "chance" : 1,
         "min" : 1,
         "max" : 1,
-        "modifier" : 5125.00,
+        "modifier" : 1995.00,
         "announce" : false
       },
       {
-        "id" : 21815,
-        "chance" : 1,
+        "id" : 128,
+        "chance" : 0,
         "min" : 1,
-        "max" : 1,
-        "modifier" : 4425.00,
+        "max" : 3,
+        "modifier" : 895.00,
         "announce" : false
       },
       {
-        "id" : 21814,
-        "chance" : 1,
+        "id" : 13024,
+        "chance" : 0,
         "min" : 1,
-        "max" : 1,
-        "modifier" : 4425.00,
+        "max" : 3,
+        "modifier" : 995.00,
+        "announce" : false
+      },
+      {
+        "id" : 176,
+        "chance" : 0,
+        "min" : 1,
+        "max" : 3,
+        "modifier" : 895.00,
         "announce" : false
       }
     ]
@@ -147,43 +123,27 @@
         "announce" : false
       },
       {
-        "id" : 23149,
-        "chance" : 1,
-        "min" : 1,
-        "max" : 1,
-        "modifier" : 2395.00,
-        "announce" : false
-      },
-      {
         "id" : 23148,
         "chance" : 1,
         "min" : 1,
         "max" : 1,
-        "modifier" : 3995.00,
+        "modifier" : 3295.00,
         "announce" : false
       },
       {
-        "id" : 23147,
-        "chance" : 1,
+        "id" : 181,
+        "chance" : 0,
         "min" : 1,
-        "max" : 1,
-        "modifier" : 5125.00,
+        "max" : 3,
+        "modifier" : 1195.00,
         "announce" : false
       },
       {
-        "id" : 21815,
-        "chance" : 1,
+        "id" : 3016,
+        "chance" : 0,
         "min" : 1,
-        "max" : 1,
-        "modifier" : 4425.00,
-        "announce" : false
-      },
-      {
-        "id" : 21814,
-        "chance" : 1,
-        "min" : 1,
-        "max" : 1,
-        "modifier" : 4425.00,
+        "max" : 2,
+        "modifier" : 1195.00,
         "announce" : false
       }
     ]
@@ -210,11 +170,19 @@
         "announce" : false
       },
       {
-        "id" : 23148,
+        "id" : 21815,
         "chance" : 1,
         "min" : 1,
         "max" : 1,
-        "modifier" : 2495.00,
+        "modifier" : 4425.00,
+        "announce" : false
+      },
+      {
+        "id" : 21814,
+        "chance" : 1,
+        "min" : 1,
+        "max" : 1,
+        "modifier" : 4425.00,
         "announce" : false
       },
       {
@@ -222,7 +190,23 @@
         "chance" : 1,
         "min" : 1,
         "max" : 1,
-        "modifier" : 3695.00,
+        "modifier" : 3995.00,
+        "announce" : false
+      },
+      {
+        "id" : 8788,
+        "chance" : 1,
+        "min" : 1,
+        "max" : 1,
+        "modifier" : 2195.00,
+        "announce" : false
+      },
+      {
+        "id" : 23105,
+        "chance" : 1,
+        "min" : 1,
+        "max" : 1,
+        "modifier" : 3195.00,
         "announce" : false
       }
     ]

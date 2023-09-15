@@ -158,7 +158,7 @@ public class Bank extends ItemContainer {
 			if (item.getAmount() > getAmount(item)) {
 				item.setAmount(getAmount(item));
 			}
-			//System.out.println("Switching item: " + item.getId() + " " + item.getUid() + " " + item.getAmount()+" "+slot+" "+item.getPerk() + " " + item.getBonus());
+			System.out.println("Switching item: " + item.getId() + " " + item.getUid() + " " + item.getAmount()+" "+slot+" "+item.getPerk() + " " + item.getBonus());
 			if (item.getAmount() <= 0 || Objects.equals(item.getUid(), "-1")) {
 				// Placeholder
 				//System.out.println("Placeholder");
@@ -173,9 +173,7 @@ public class Bank extends ItemContainer {
 			if (to instanceof Inventory) {
 				boolean withdrawAsNote = getPlayer().withdrawAsNote() && def != null && def.isNoted()
 						&& item.getDefinition() != null
-						&& def.getName().equalsIgnoreCase(item.getDefinition().getName())
-						&& !def.getName().contains("Torva") && !def.getName().contains("Virtus")
-						&& !def.getName().contains("Pernix");
+						&& def.getName().equalsIgnoreCase(item.getDefinition().getName());
 				int checkId = withdrawAsNote ? item.getId() + 1 : item.getId();
 				if (to.getAmount(checkId) + item.getAmount() > Integer.MAX_VALUE
 						|| to.getAmount(checkId) + item.getAmount() <= 0) {
@@ -210,13 +208,15 @@ public class Bank extends ItemContainer {
 		boolean leavePlaceHolder = getPlayer().isPlaceholders();
 		int amount = item.getAmount();
 
-		//System.out.println("Deleting item: " + item.getId() + " " + item.getUid() + " " + item.getAmount());
+
 
 		if(amount > 0){
 			if(slot == -1)
 				return this;
 
-			if(getItems()[slot].getAmount() - amount <= 0) {
+			int amounts = getItems()[slot].getAmount() - amount;
+			//System.out.println("Deleting item: " + item.getId() + " " + item.getUid() + " " + item.getAmount() +" "+amounts);
+			if(amounts <= 0) {
 				if (leavePlaceHolder){
 					getItems()[slot].setAmount(0);
 					getItems()[slot].setUid("-1");

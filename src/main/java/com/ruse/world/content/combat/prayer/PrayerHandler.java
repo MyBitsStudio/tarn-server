@@ -34,34 +34,6 @@ public class PrayerHandler {
 	 * @author relex lawl
 	 */
 	private enum PrayerData {
-//		THICK_SKIN(1, 1, 25000, 83),
-//		BURST_OF_STRENGTH(4, 1, 25002, 84),
-//		CLARITY_OF_THOUGHT(7, 1, 25004, 85),
-//		SHARP_EYE(8, 1, 25006, 601),
-//		MYSTIC_WILL(9, 1, 25008, 602),
-//		ROCK_SKIN(10, 2, 25010, 86),
-//		SUPERHUMAN_STRENGTH(13, 2, 25012, 87),
-//		IMPROVED_REFLEXES(16, 2, 25014, 88),
-//		RAPID_RESTORE(19, .4, 25016, 89),
-//		RAPID_HEAL(22, .6, 25018, 90),
-//		PROTECT_ITEM(25, .6, 25020, 91),
-//		HAWK_EYE(26, 1.5, 25022, 603),
-//		MYSTIC_LORE(27, 2, 25024, 604),
-//		STEEL_SKIN(28, 4, 25026, 92),
-//		ULTIMATE_STRENGTH(31, 4, 25028, 93),
-//		INCREDIBLE_REFLEXES(34, 4, 25030, 94),
-//		PROTECT_FROM_MAGIC(37, 4, 25032, 95, 2),
-//		PROTECT_FROM_MISSILES(40, 4, 25034, 96, 1),
-//		PROTECT_FROM_MELEE(43, 4, 25036, 97, 0),
-//		EAGLE_EYE(44, 4, 25038, 605),
-//		MYSTIC_MIGHT(45, 4, 25040, 606),
-//		RETRIBUTION(46, 1, 25042, 98, 4),
-//		REDEMPTION(49, 2, 25044, 99, 5),
-//		SMITE(52, 6, 25046, 100, 685, 6),
-//		CHIVALRY(60, 8, 25048, 607),
-//		PIETY(70, 10, 25050, 608),
-//		RIGOUR(80, 11, 25104, 609),
-//		AUGURY(80, 11, 25108, 610),
 
 		WARLOCK(75, 10, -23033, 690),
 		KNIGHT(80, 11, -23031, 691),
@@ -183,25 +155,10 @@ public class PrayerHandler {
 			return;
 		if (player.getPrayerActive()[prayerId])
 			return;
-		if (Dueling.checkRule(player, DuelRule.NO_PRAYER)) {
-			player.getPacketSender().sendMessage("Prayer has been disabled in this duel.");
-			CurseHandler.deactivateAll(player);
-			PrayerHandler.deactivateAll(player);
-			//HolyPrayers.deactivateAll(player);
-			return;
-		}
-		if (player.getLocation() == Location.RECIPE_FOR_DISASTER) {
-			player.getPacketSender().sendMessage("For some reason, your prayers do not have any effect in here.");
-			CurseHandler.deactivateAll(player);
-			PrayerHandler.deactivateAll(player);
-			//HolyPrayers.deactivateAll(player);
-			return;
-		}
 		PrayerData pd = PrayerData.prayerData.get(prayerId);
 		if (player.getSkillManager().getCurrentLevel(Skill.PRAYER) <= 0) {
 			player.getPacketSender().sendConfig(pd.configId, 0);
 			player.getPacketSender().sendMessage("You do not have enough Prayer points. You can recharge your points at an altar.");
-			//PrayerHandler.deactivateAll(player);
 			return;
 		}
 		if (!player.isDrainingPrayer()) {

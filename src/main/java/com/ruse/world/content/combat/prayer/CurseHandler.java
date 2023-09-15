@@ -62,7 +62,6 @@ public class CurseHandler {
 
 	public static void activateCurse(Player player, int curseId) {
 		if (!player.isDrainingPrayer()) {
-			//startDrain(player);
 			CurseHandler.startDrain(player);
 		}
 		if (player.getPrayerbook() == Prayerbook.NORMAL)
@@ -80,25 +79,12 @@ public class CurseHandler {
 
 	public static void activateCurse(Player player, CurseData curse) {
 		if (!player.isDrainingPrayer()) {
-			//startDrain(player);
 			CurseHandler.startDrain(player);
 		}
 		if (player.getPrayerbook() == Prayerbook.NORMAL)
 			return;
 		if (player.getCurseActive()[curse.ordinal()])
 			return;
-		if (Dueling.checkRule(player, DuelRule.NO_PRAYER)) {
-			player.getPacketSender().sendMessage("Prayer has been disabled in this duel.");
-			CurseHandler.deactivateAll(player);
-			PrayerHandler.deactivateAll(player);
-			return;
-		}
-		if (player.getLocation() == Location.RECIPE_FOR_DISASTER) {
-			player.getPacketSender().sendMessage("For some reason, your prayers do not have any effect here.");
-			CurseHandler.deactivateAll(player);
-			PrayerHandler.deactivateAll(player);
-			return;
-		}
 		if (player.getSkillManager().getCurrentLevel(Skill.PRAYER) <= 0) {
 			player.getPacketSender().sendConfig(curse.configId, 0);
 			player.getPacketSender()
@@ -119,60 +105,36 @@ public class CurseHandler {
 			player.getPacketSender().sendMessage("You need a Defence level of at least 30 to use Turmoil.");
 			return;
 		}
-		switch (curse) {
-		case SAP_WARRIOR:
-		case LEECH_ATTACK:
-			deactivateCurses(player, ACCURACY_CURSES);
-			break;
-		case SAP_RANGER:
-		case LEECH_RANGED:
-			deactivateCurses(player, RANGED_CURSES);
-			break;
-		case SAP_MAGE:
-		case LEECH_MAGIC:
-			deactivateCurses(player, MAGIC_CURSES);
-			break;
-		case SAP_SPIRIT:
-			deactivateCurses(player, SPECIAL_ATTACK_CURSES);
-			break;
-		case LEECH_SPECIAL_ATTACK:
-			deactivateCurses(player, SPECIAL_ATTACK_CURSES);
-			deactivateCurse(player, CurseData.TURMOIL);
-			break;
-		case LEECH_DEFENCE:
-			deactivateCurses(player, DEFENSE_CURSES);
-			break;
-		case LEECH_STRENGTH:
-			deactivateCurses(player, STRENGTH_CURSES);
-			break;
-		case DEFLECT_SUMMONING:
-			deactivateCurses(player, NON_DEFLECT_OVERHEAD_CURSES);
-			break;
-		case WRATH:
-		case SOUL_SPLIT:
-			deactivateCurses(player, OVERHEAD_CURSES);
-			deactivateCurse(player, CurseData.DEFLECT_SUMMONING);
-			break;
-		case DEFLECT_MAGIC:
-		case DEFLECT_MISSILES:
-		case DEFLECT_MELEE:
-			deactivateCurses(player, OVERHEAD_CURSES);
-			break;
-		case TURMOIL:
-			deactivateCurses(player, COMBAT_CURSES);
-			deactivateCurse(player, CurseData.LEECH_ENERGY);
-			deactivateCurses(player, SPECIAL_ATTACK_CURSES);
-			break;
-		case BERSERKER:
-			break;
-		case LEECH_ENERGY:
-			deactivateCurse(player, CurseData.TURMOIL);
-			break;
-		case PROTECT_ITEM:
-			break;
-		default:
-			break;
-		}
+        switch (curse) {
+            case SAP_WARRIOR, LEECH_ATTACK -> deactivateCurses(player, ACCURACY_CURSES);
+            case SAP_RANGER, LEECH_RANGED -> deactivateCurses(player, RANGED_CURSES);
+            case SAP_MAGE, LEECH_MAGIC -> deactivateCurses(player, MAGIC_CURSES);
+            case SAP_SPIRIT -> deactivateCurses(player, SPECIAL_ATTACK_CURSES);
+            case LEECH_SPECIAL_ATTACK -> {
+                deactivateCurses(player, SPECIAL_ATTACK_CURSES);
+                deactivateCurse(player, CurseData.TURMOIL);
+            }
+            case LEECH_DEFENCE -> deactivateCurses(player, DEFENSE_CURSES);
+            case LEECH_STRENGTH -> deactivateCurses(player, STRENGTH_CURSES);
+            case DEFLECT_SUMMONING -> deactivateCurses(player, NON_DEFLECT_OVERHEAD_CURSES);
+            case WRATH, SOUL_SPLIT -> {
+                deactivateCurses(player, OVERHEAD_CURSES);
+                deactivateCurse(player, CurseData.DEFLECT_SUMMONING);
+            }
+            case DEFLECT_MAGIC, DEFLECT_MISSILES, DEFLECT_MELEE -> deactivateCurses(player, OVERHEAD_CURSES);
+            case TURMOIL -> {
+                deactivateCurses(player, COMBAT_CURSES);
+                deactivateCurse(player, CurseData.LEECH_ENERGY);
+                deactivateCurses(player, SPECIAL_ATTACK_CURSES);
+            }
+            case BERSERKER -> {
+            }
+            case LEECH_ENERGY -> deactivateCurse(player, CurseData.TURMOIL);
+            case PROTECT_ITEM -> {
+            }
+            default -> {
+            }
+        }
 		/*
 		 * if (player.isPrayerInjured()) { if (curse == CurseData.DEFLECT_MAGIC || curse
 		 * == CurseData.DEFLECT_MELEE || curse == CurseData.DEFLECT_MISSILES || curse ==
@@ -204,13 +166,6 @@ public class CurseHandler {
 			return;
 		
 		}
-	/*		if (player.getEquipment().get(Equipment.CAPE_SLOT).getId() == 1486) {
-				
-				return;
-			
-		}*/
-		// SoundEffects.sendSoundEffect(player,
-		// SoundEffects.SoundData.DEACTIVATE_PRAYER_OR_CURSE, 10, 0);
 		player.getPacketSender().sendConfig(curse.configId, 0);
 		player.setCurseActive(curse.ordinal(), false);
 		player.getAppearance().setHeadHint(getHeadHint(player));

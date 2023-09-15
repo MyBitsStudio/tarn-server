@@ -108,7 +108,6 @@ public class DropManager {
                 }
                 double rolled = (Misc.RAND.nextDouble() * v) / reduce;
                 double req = 1 + (Misc.RAND.nextDouble() * drop.modifier());
-               // System.out.println("First Rolled: " + rolled + " | Req: " + req);
                 if(rolled > req){
                     finalDrops.add(drop);
                 }
@@ -143,13 +142,6 @@ public class DropManager {
                 }
             }
 
-            if(finalDrops.isEmpty() && extraDrops.isEmpty()){
-                handleDryStreak(player, npc);
-                return;
-            } else {
-                player.getDryStreak().getDryStreakMap().put(npc.getId(), 0);
-            }
-
             Position pos = npc.getPosition().copy();
             boolean collector = player.getEquipment().hasCollector();
             boolean hasLoot = player.getInventory().contains(Lootbag.LOOT_DEVICE);
@@ -182,11 +174,10 @@ public class DropManager {
             }
 
             if(finalDrops.isEmpty() && extraDrops.isEmpty()){
+                handleDryStreak(player, npc);
                 return;
-            }
-
-            if(finalDrops.isEmpty()){
-                return;
+            } else {
+                player.getDryStreak().getDryStreakMap().put(npc.getId(), 0);
             }
 
             Drop finalDrop = finalDrops.get(new SecureRandom().nextInt(finalDrops.size()));

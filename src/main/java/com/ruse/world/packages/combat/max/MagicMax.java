@@ -109,21 +109,7 @@ public class MagicMax {
 
             maxHit = (long) (baseDamage * specialBonus);
 
-            if (player.getEquipment().contains(23048)) { //Tier 5 Aura
-                maxHit *= 1.05D;
-            }
-            if (player.getEquipment().contains(23049)) { //Tier 6 Aura
-                maxHit *= 1.10D;
-            }
-            if (player.getEquipment().contains(23212)) { //Tier 7 Aura
-                maxHit *= 1.15D;
-            }
-            if (player.getEquipment().contains(22111)) { //Tier 6 Aura
-                maxHit *= 1.10D;
-            }
-            if (player.getDmgPotionTimer() > 0) {
-                maxHit *= 1.5;
-            }
+
             if(ServerPerks.getInstance().getActivePerk() == ServerPerks.Perk.ALL_PERKS ||
                     ServerPerks.getInstance().getActivePerk() == ServerPerks.Perk.MEGA_PERK ||
                     ServerPerks.getInstance().getActivePerk() == ServerPerks.Perk.DMG) {
@@ -137,29 +123,6 @@ public class MagicMax {
                 case 1 -> maxHit *= 1.07;
                 case 2 -> maxHit *= 1.16;
                 case 3 -> maxHit *= 1.23;
-            }
-
-
-            if (player.getSummoning() != null && player.getSummoning().getFamiliar() != null
-                    && player.getSummoning().getFamiliar().getSummonNpc().getId() == 1906) {
-                maxHit *= 1.1D;
-            }
-            if (player.getSummoning() != null && player.getSummoning().getFamiliar() != null
-                    && player.getSummoning().getFamiliar().getSummonNpc().getId() == 9833) {
-                maxHit *= 1.2D;
-            }
-            if (player.getSummoning() != null && player.getSummoning().getFamiliar() != null
-                    && player.getSummoning().getFamiliar().getSummonNpc().getId() == 1801) {// admin pet
-                maxHit *= 1.15D;
-            }
-
-            if (player.getSummoning() != null && player.getSummoning().getFamiliar() != null
-                    && player.getSummoning().getFamiliar().getSummonNpc().getId() == 9013) {// admin pet
-                maxHit *= 1.25D;
-            }
-            if (player.getSummoning() != null && player.getSummoning().getFamiliar() != null
-                    && player.getSummoning().getFamiliar().getSummonNpc().getId() == 9016) {// admin pet
-                maxHit *= 1.25D;
             }
 
 

@@ -618,7 +618,7 @@ public abstract class ItemContainer {
                         return this;
                     }
                 } else {
-                    //System.out.println("adding "+item.getId()+" to slot "+slot+" with amount "+amount+" and uid "+item.getUid()+" and perk "+item.getPerk()+" and bonus "+item.getBonus());
+                    System.out.println("adding "+item.getId()+" to slot "+slot+" with amount "+amount+" and uid "+item.getUid()+" and perk "+item.getPerk()+" and bonus "+item.getBonus());
                     items[slot].setId(item.getId());
                     items[slot].setAmount(1);
                     items[slot].setUid(item.getUid());
@@ -728,8 +728,10 @@ public abstract class ItemContainer {
                 items[slot].setAmount(0);
                 if (!leavePlaceHolder) {
                     items[slot].setId(-1);
+                    items[slot].setUid("stale");
+                } else {
+                    items[slot].setUid("-1");
                 }
-                items[slot].setUid("stale");
                 items[slot].setPerk("none");
                 items[slot].setBonus("none");
             }
@@ -741,6 +743,9 @@ public abstract class ItemContainer {
                 //System.out.println("deleting by slot "+slot+" with amount "+item.getAmount()+" and uid "+item.getUid()+" and perk "+item.getPerk()+" and bonus "+item.getBonus());
                 if (!leavePlaceHolder) {
                     items[slot].setId(-1);
+                    items[slot].setUid("stale");
+                } else {
+                    items[slot].setUid("-1");
                 }
                 items[slot].setAmount(0);
                 items[slot].setUid("stale");
