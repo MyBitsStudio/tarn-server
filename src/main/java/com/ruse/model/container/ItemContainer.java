@@ -618,7 +618,7 @@ public abstract class ItemContainer {
                         return this;
                     }
                 } else {
-                    System.out.println("adding "+item.getId()+" to slot "+slot+" with amount "+amount+" and uid "+item.getUid()+" and perk "+item.getPerk()+" and bonus "+item.getBonus());
+                    //System.out.println("adding "+item.getId()+" to slot "+slot+" with amount "+amount+" and uid "+item.getUid()+" and perk "+item.getPerk()+" and bonus "+item.getBonus());
                     items[slot].setId(item.getId());
                     items[slot].setAmount(1);
                     items[slot].setUid(item.getUid());
