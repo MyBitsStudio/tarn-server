@@ -73,8 +73,8 @@ public abstract class Scratch {
         if (count == 0) {
             player.sendMessage("None of the same ones so u don't win anything :(");
         } else if (count == 1) {
-            player.sendMessage("Congrats, there were 2 of the same matches. You were given 1$ as a reward!");
-            player.getInventory().add(10946,1);
+            player.sendMessage("Congrats, there were 2 of the same matches. You were given 10 Tokens as a reward!");
+            player.getInventory().add(10835,10);
         } else {
             player.sendMessage("WINNER! there were 3 of the same matches!");
             player.getInventory().add(item1);
