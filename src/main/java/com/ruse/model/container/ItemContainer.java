@@ -356,6 +356,8 @@ public abstract class ItemContainer {
     public int getAmount(int id) {
         int totalAmount = 0;
         for (Item item : items) {
+            if(Objects.equals(item.getUid(), "-1"))
+                continue;
             if (item.getId() == id) {
                 totalAmount += item.getAmount();
             }
@@ -366,6 +368,8 @@ public abstract class ItemContainer {
     public int getAmount(Item it) {
         int totalAmount = 0;
         for (Item item : items) {
+            if(Objects.equals(item.getUid(), "-1"))
+                continue;
             if (item.getId() == it.getId() && Objects.equals(item.getUid(), it.getUid())){
                 totalAmount += item.getAmount();
             }
@@ -579,7 +583,7 @@ public abstract class ItemContainer {
         && Arrays.stream(unstackables).noneMatch(i -> i == item.getId())) {
 
             int slot = getSlot(item);
-              if (slot == -1)
+            if (slot == -1)
                 slot = getEmptySlot();
             if (slot == -1) {
                 if (getPlayer() != null) {

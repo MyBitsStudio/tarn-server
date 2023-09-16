@@ -24,12 +24,13 @@ public class EnterAmountToRemoveFromBank extends EnterAmount {
 			return;
 		if (!player.getBank(tab).contains(item))
 			return;
-		int invAmount = player.getBank(tab).getAmount(item);
-		if (amount > invAmount)
-			amount = invAmount;
+		Item items = player.getBank(tab).forSlot(getSlot()).copy();
+		if (amount > items.getAmount())
+			amount = items.getAmount();
 		if (amount <= 0)
 			return;
-		player.getBank(tab).setPlayer(player).switchItem(player.getInventory(), new Item(item, amount),
-				player.getBank(tab).getSlot(item), false, true);
+		items.setAmount(amount);
+		player.getBank(tab).switchItem(player.getInventory(), items,
+				player.getBank(tab).slotOf(items), false, true);
 	}
 }
