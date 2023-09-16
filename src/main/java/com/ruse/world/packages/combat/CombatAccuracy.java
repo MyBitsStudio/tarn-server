@@ -37,7 +37,7 @@ public class CombatAccuracy {
                     ? player.getBonusManager().getAttackBonus()[BonusManager.ATTACK_MAGIC]
                     : player.getBonusManager().getAttackBonus()[player.getFightType().getBonusType()];
 
-            equipmentBonus /= 6_000;
+            equipmentBonus /= 5_895;
 
             if(player.getEquipment().contains(15449)){
                 equipmentBonus *= 1.25;
@@ -52,7 +52,7 @@ public class CombatAccuracy {
         } else {
             NPC npc = attacker.toNpc();
 
-            specialBonus = npc.getDefinition().isBoss() ? 8 : 3;
+            specialBonus = npc.getDefinition().isBoss() ? 9 : 4;
             equipmentBonus = npc.getCombatLevel() * 2;
 
         }

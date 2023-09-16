@@ -10,7 +10,7 @@ import com.ruse.world.packages.combat.scripts.npc.single.ZernathCombat;
 
 public class VarthBoss extends Boss {
     public VarthBoss(int z) {
-        super(3016, new Position(3029, 5231, z), false);
+        super(3016, new Position(3029, 5231, z), true);
     }
 
     @Override

@@ -5,11 +5,11 @@ import lombok.Getter;
 
 @Getter
 public enum AchievementDifficulty {
-    BEGINNER(0, 1),
-    EASY(1, 2),
-    MEDIUM(2, 3),
-    HARD(3, 5),
-    ELITE(4, 8);
+    BEGINNER(0, 2),
+    EASY(1, 4),
+    MEDIUM(2, 6),
+    HARD(3, 8),
+    ELITE(4, 10);
 
     private final int key;
     private final int points;
