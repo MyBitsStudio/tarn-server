@@ -748,7 +748,8 @@ public class ItemContainerActionPacketListener implements PacketListener {
 			case Bank.INTERFACE_ID:
 				if (!player.isBanking() || player.getBank(Bank.getTabForItem(player, id)).getAmount(id) <= 0 || player.getInterfaceId() != 5292)
 					return;
-				player.getBank(player.getCurrentBankTab()).switchItem(player.getInventory(), new Item(id, player.getBank(Bank.getTabForItem(player, id)).getAmount(id)), slot, true, true);
+				Item items = player.getBank(Bank.getTabForItem(player, id)).forSlot(slot).copy();
+				player.getBank(player.getCurrentBankTab()).switchItem(player.getInventory(), items, slot, true, true);
 				player.getBank(player.getCurrentBankTab()).open();
 				break;
 			case GroupIronmanBank.INTERFACE_ID:
@@ -921,6 +922,14 @@ public class ItemContainerActionPacketListener implements PacketListener {
 						player.getBank(player.getCurrentBankTab()).open(player, false);
 					}*/
 				}
+			}
+			case 30929 -> {
+				player.getPacketSender().sendEnterAmountPrompt("How many would you like to buy?");
+				player.setInputHandling(new EnterAmount() {
+					public void handleAmount(Player player, int amount) {
+						ShopHandler.buy(player, id, amount);
+					}
+				});
 			}
 			case 3823 -> {
 				if (player.isBanking())

@@ -209,7 +209,7 @@ public class Slayer {
 
         randomBox(player);
 
-        player.getSeasonPass().incrementExp(50, false);
+        player.getSeasonPass().incrementExp(265, false);
 
         AchievementHandler.progress(player, 1, 45);
         AchievementHandler.progress(player, 1, 47);

@@ -8,8 +8,8 @@ import java.math.BigInteger;
 
 public class GameSettings {
 
-    public static final int GAME_VERSION = 101;
-    public static final int GAME_PORT = 43519;
+    public static final int GAME_VERSION = 3;
+    public static final int GAME_PORT = 42166;
     public static boolean LOCALHOST = true;
     public static boolean BOGO = false;
     public static boolean B2GO = false;

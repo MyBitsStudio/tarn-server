@@ -48,7 +48,7 @@ public class TowerProgress {
 
     public void progress(){
         spawnExit();
-        player.getSeasonPass().incrementExp(10 * level, false);
+        player.getSeasonPass().incrementExp(25 * level, false);
         getPlayer().getStarter().handleTower(level);
         if(level == lastLevel){
             if(tier == lastTier){

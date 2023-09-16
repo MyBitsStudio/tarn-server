@@ -34,7 +34,7 @@ public class VIPManager {
     }
 
     public static void progress(@NotNull Player player, int amount){
-        player.getSeasonPass().incrementExp(265 * amount, false);
+        player.getSeasonPass().incrementExp(495 * amount, false);
         AchievementHandler.progress(player, amount, 7);
         AchievementHandler.progress(player, amount, 19);
         AchievementHandler.progress(player, amount, 32);

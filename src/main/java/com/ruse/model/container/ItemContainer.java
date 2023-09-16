@@ -335,8 +335,7 @@ public abstract class ItemContainer {
         for (int i = 0; i < capacity(); i++) {
             if (items[i].getId() > 0 && items[i].getId() == item.getId()) {
                 if (items[i].getAmount() > 0 || ((this instanceof Bank) && items[i].getAmount() <= 1)) {
-                    if (!item.getUid().equals("stale") && !item.getUid().equals("-1")
-                        && !item.getPerk().equals("none")){
+                    if (!item.getUid().equals("-1")){
                         if (item.getUid().equals(items[i].getUid()))
                             return i;
                     }else {

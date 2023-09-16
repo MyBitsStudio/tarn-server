@@ -14,6 +14,7 @@ public enum AutoCastSpell {
     REVANANT(17011, CombatSpells.AZURE),
     BELLIGERENT(17600, CombatSpells.DEMON),
     AGUMON(22157, CombatSpells.CHAOS),
+    CHAR(22173, CombatSpells.ELITE),
 
     FESTIVE(14924, CombatSpells.BEGINNER),
     AZURE(3739, CombatSpells.AZURE),

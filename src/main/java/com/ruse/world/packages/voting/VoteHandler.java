@@ -54,7 +54,7 @@ public class VoteHandler {
         randomBox(player);
         randomTicket(player);
         player.getPoints().add("voted", 1);
-        player.getSeasonPass().incrementExp(100, false);
+        player.getSeasonPass().incrementExp(995, false);
     }
 
     public static void randomBox(Player player){
