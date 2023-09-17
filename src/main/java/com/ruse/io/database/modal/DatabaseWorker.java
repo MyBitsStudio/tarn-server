@@ -13,7 +13,7 @@ public class DatabaseWorker implements Runnable{
             Connection connection = null;
             try {
                 DatabaseRequest request = ThreadProgressor.getBoss().take();
-                connection = DataSource.ds.getConnection();
+                connection = DataSource.getInstance().getConnection();
                 connection.setAutoCommit(false);
                 request.execute(connection);
                 connection.commit();
