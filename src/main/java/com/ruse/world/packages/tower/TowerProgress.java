@@ -108,7 +108,7 @@ public class TowerProgress {
                 player.sendMessage("You do not have enough inventory space to collect your rewards!");
                 return;
             }
-            player.getInventory().add(item);
+            player.getInventory().add(item.copy());
             rewards.delete(item);
         }
         player.sendMessage("You have collected your rewards!");

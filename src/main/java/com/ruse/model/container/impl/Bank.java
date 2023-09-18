@@ -356,7 +356,7 @@ public class Bank extends ItemContainer {
 				return;
 			}
 
-			Item toBank = new Item(ItemDefinition.forId(it.getId()).isNoted() ? (it.getId() - 1) : it.getId(), it.getAmount(), it.getUid());
+			Item toBank = new Item(ItemDefinition.forId(it.getId()).isNoted() ? (it.getId() - 1) : it.getId(), it.getAmount(), it.getUid(), it.getPerk(), it.getBonus());
 			int tab = getTabForItem(p, toBank.getId());
 			p.setCurrentBankTab(tab);
 			int bankAmt = p.getBank(tab).getAmount(toBank.getId());
