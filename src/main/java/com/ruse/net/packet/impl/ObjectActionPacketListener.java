@@ -115,17 +115,6 @@ public class ObjectActionPacketListener implements PacketListener {
                 .setWalkToTask(new WalkToTask(player, position, gameObject.getSize(), () -> {
                     player.setPositionToFace(gameObject.getPosition());
 
-                    if(player.getRaid() != null){
-                        if(player.getRaid().handleObjectClicks(player, gameObject, 1)){
-                            return;
-                        }
-                    }
-
-                    if(player.getRaidParty() != null){
-                        if(player.getRaidParty().handleStartObject(player, gameObject)){
-                            return;
-                        }
-                    }
 
                     if (WoodcuttingData.Trees.forId(id) != null) {
                         Woodcutting.cutWood(player, gameObject, false);
@@ -2111,16 +2100,7 @@ public class ObjectActionPacketListener implements PacketListener {
                     .sendMessage("Second click object id; [id, position] : [" + id + ", " + position.toString() + "]");
         player.setInteractingObject(gameObject)
                 .setWalkToTask(new WalkToTask(player, position, gameObject.getSize(), () -> {
-                    if(player.getRaid() != null){
-                        if(player.getRaid().handleObjectClicks(player, gameObject, 2)){
-                            return;
-                        }
-                    }
-                    if(player.getRaidParty() != null){
-                        if(player.getRaidParty().handleStartObject(player, gameObject)){
-                            return;
-                        }
-                    }
+
                     if (MiningData.forRock(gameObject.getId()) != null) {
                         Prospecting.prospectOre(player, id);
                         return;
@@ -2567,16 +2547,7 @@ public class ObjectActionPacketListener implements PacketListener {
             if (!player.getControllerManager().processObjectClick3(gameObject)) {
                 return;
             }
-            if(player.getRaid() != null){
-                if(player.getRaid().handleObjectClicks(player, gameObject, 3)){
-                    return;
-                }
-            }
-            if(player.getRaidParty() != null){
-                if(player.getRaidParty().handleStartObject(player, gameObject)){
-                    return;
-                }
-            }
+
             switch (id) {
 
                 case 13192:
@@ -2643,12 +2614,6 @@ public class ObjectActionPacketListener implements PacketListener {
 
             if (!player.getControllerManager().processObjectClick5(gameObject)) {
                 return;
-            }
-
-            if(player.getRaid() != null){
-                if(player.getRaid().handleObjectClicks(player, gameObject, 1)){
-                    return;
-                }
             }
 
             switch (id) {

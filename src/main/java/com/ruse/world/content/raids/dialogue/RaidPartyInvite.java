@@ -1,9 +1,9 @@
-//package com.ruse.world.packages.raids.dialogue;
+//package com.ruse.world.content.raids.dialogue;
 //
 //import com.ruse.world.content.dialogue.Dialogue;
 //import com.ruse.world.content.dialogue.DialogueExpression;
 //import com.ruse.world.content.dialogue.DialogueType;
-//import com.ruse.world.packages.raids.RaidParty;
+//import com.ruse.world.content.raids.RaidParty;
 //import com.ruse.world.entity.impl.player.Player;
 //
 //public class RaidPartyInvite extends Dialogue {

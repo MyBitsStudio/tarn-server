@@ -1,129 +1,50 @@
-package com.ruse.world.packages.raids;
+package com.ruse.world.packages.raid.party;
 
-import com.ruse.model.GameObject;
+import com.ruse.world.entity.impl.player.Player;
 import com.ruse.world.packages.dialogue.DialogueManager;
 import com.ruse.world.packages.dialogue.impl.raid.RaidPartyInvite;
-import com.ruse.world.packages.mode.impl.GroupIronman;
-import com.ruse.world.entity.impl.player.Player;
+import com.ruse.world.packages.raid.Raid;
+import lombok.Getter;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+import java.util.concurrent.CopyOnWriteArrayList;
 
-public abstract class RaidParty {
+@Getter
+public class RaidParty {
 
-    protected List<Player> players = new ArrayList<>();
-    protected Raid raid;
-    protected RaidRoom current;
-    protected Player owner;
+    private final List<Player> players = new CopyOnWriteArrayList<>();
 
-    protected Map<Player, Integer> points = new HashMap<>();
+    private final PartyAttributes attributes;
+    private Raid raid;
+    private Player owner;
 
-    public RaidParty(Player player, Raid raid){
-        this.raid = raid;
-        setOwner(player);
-    }
-
-    private void setOwner(Player player){
-        players.add(player);
+    public RaidParty(Player player, PartyAttributes attributes){
         owner = player;
-        player.setRaidParty(this);
-    }
-
-    public Player getOwner(){
-        return owner;
-    }
-    public List<Player> getPlayers(){
-        return players;
-    }
-
-    public abstract String key();
-    public abstract boolean canJoin(Player player);
-    public abstract void onJoin(Player player);
-
-    public abstract void onLeave(Player player);
-
-    public abstract void startRaid();
-
-    public boolean handleStartObject(Player player, GameObject object){ return false;}
-
-    public String getKeyWithHighestValue() {
-        String maxKey = null;
-        int maxValue = 0;
-        for (Map.Entry<Player, Integer> entry : points.entrySet()) {
-            if (entry.getValue() > maxValue) {
-                maxKey = entry.getKey().getUsername();
-                maxValue = entry.getValue();
-            }
-        }
-        return maxKey;
+        this.attributes = attributes;
+        players.add(player);
     }
 
     public void invite(Player player){
-        if(players.size() < 10){
+        if(players.size() < attributes.getMaxPlayers()){
             if(players.contains(player) && players.get(0) != player){
                 owner.sendMessage("This player is already in this party.");
                 player.sendMessage("You are already in this party.");
                 return;
             }
-            if(player.getRaidParty() != null){
-                owner.sendMessage("This player is already in a party.");
-                player.sendMessage("You are already in a party.");
-                return;
-            }
+
             if(player.busy()){
                 owner.sendMessage("This player is busy.");
                 player.sendMessage("You are busy.");
                 return;
             }
 
-            if(owner.getMode() instanceof GroupIronman){
-                if(!owner.getIronmanGroup().equals(player.getIronmanGroup())){
-                    owner.sendMessage("You are not a part of this players ironman group.");
-                    player.sendMessage("You are not a part of this players ironman group.");
-                    return;
-                }
-            }
-
-            if(player.getMode() instanceof GroupIronman){
-                if(!player.getIronmanGroup().equals(owner.getIronmanGroup())){
-                    owner.sendMessage("You are not a part of this players ironman group.");
-                    player.sendMessage("You are not a part of this players ironman group.");
-                    return;
-                }
-            }
-
-//            if (owner.getGameMode() == GameMode.GROUP_IRONMAN && !owner.getIronmanGroup().equals(player.getIronmanGroup())){
-//                owner.sendMessage("You are not a part of this players ironman group.");
-//                player.sendMessage("You are not a part of this players ironman group.");
-//                return;
-//            }
-//            if (player.getGameMode() == GameMode.GROUP_IRONMAN && !player.getIronmanGroup().equals(owner.getIronmanGroup())){
-//                owner.sendMessage("You are not a part of this players ironman group.");
-//                player.sendMessage("You are not a part of this players ironman group.");
-//                return;
-//            }
-
             DialogueManager.sendDialogue(player, new RaidPartyInvite(player, this), -1);
             owner.sendMessage("You have invited "+player.getUsername()+" to join your party.");
-
-        } else {
-            player.sendMessage("This party is full.");
         }
-    }
-
-    public void addPoints(Player player, int points){
-        if(this.points.containsKey(player)){
-            this.points.put(player, this.points.get(player) + points);
-        } else {
-            this.points.put(player, points);
-        }
-        player.sendMessage("You now have "+this.points.get(player)+" points");
     }
 
     public void add(Player player){
-        if(players.size() < 10){
+        if(players.size() < attributes.getMaxPlayers()){
             if(players.contains(player) && players.get(0) != player){
                 player.sendMessage("You are already in this party.");
                 return;
@@ -141,7 +62,6 @@ public abstract class RaidParty {
 
     public void remove(Player player){
         if(players.contains(player)){
-
             player.getPacketSender().sendCameraNeutrality();
             player.getPacketSender().sendInterfaceRemoval();
             player.getPacketSender().sendString(111709, "Create");
@@ -171,8 +91,8 @@ public abstract class RaidParty {
         }
     }
 
-    private void dispose(){
-        raid.dispose();
+    public void dispose(){
+
     }
 
     public void refreshInterface(){
@@ -200,7 +120,7 @@ public abstract class RaidParty {
         }
     }
 
-    public void sendMessage(String message) {
+    public void sendMessage(String message){
         for (Player member : players) {
             if (member != null) {
                 member.getPacketSender().sendMessage(message);
@@ -208,4 +128,21 @@ public abstract class RaidParty {
         }
     }
 
+    public void startRaid(){
+        raid = attributes.getRaid();
+        if(raid == null){
+            dispose();
+            return;
+        }
+
+        raid.setParty(this);
+
+        for(Player player : players){
+            player.setRaid(raid);
+
+            player.getPacketSender().sendInterfaceRemoval();
+        }
+
+        raid.start();
+    }
 }

@@ -37,6 +37,8 @@ import com.ruse.world.content.tbdminigame.Lobby;
 import com.ruse.world.entity.impl.player.timers.PlayerTimers;
 import com.ruse.world.packages.afk.AFKSystem;
 import com.ruse.world.packages.loyalty.LoyaltyManager;
+import com.ruse.world.packages.raid.Raid;
+import com.ruse.world.packages.raid.party.RaidParty;
 import com.ruse.world.packages.skills.slayer.Slayer;
 import com.ruse.world.packages.starter.StarterShop;
 import com.ruse.world.packages.tradingpost.TradingPost;
@@ -89,8 +91,6 @@ import com.ruse.world.packages.mode.Gamemode;
 import com.ruse.world.packages.mode.impl.Temp;
 import com.ruse.world.packages.packs.goody.GoodyBag;
 import com.ruse.world.packages.plugin.impl.BossPlugin;
-import com.ruse.world.packages.raids.Raid;
-import com.ruse.world.packages.raids.RaidParty;
 import com.ruse.world.packages.ranks.DonatorRank;
 import com.ruse.world.packages.ranks.StaffRank;
 import com.ruse.world.packages.ranks.VIPRank;
@@ -833,8 +833,6 @@ public class Player extends Character {
      * Raids
      */
 
-    @Getter @Setter private RaidParty raidParty, inviteParty;
-    @Getter @Setter private Raid raid;
     @Getter @Setter private PlayerAttributes playerAttributes = new PlayerAttributes(this);
     @Getter @Setter private boolean hiddenPlayers = false;
 
@@ -1274,9 +1272,6 @@ public class Player extends Character {
             isDying = true;
             if (!controllerManager.appendDeath())
                 return;
-            if(raid != null)
-                if(raid.handleDeath(this))
-                    return;
             TaskManager.submit(new PlayerDeathTask(this));
         }
     }
@@ -4014,8 +4009,16 @@ public class Player extends Character {
     private PlayerTimers timers = new PlayerTimers();
 
     @Getter
-    private StarterShop starterShop = new StarterShop(this);
+    private final StarterShop starterShop = new StarterShop(this);
 
     @Getter
-    private AFKSystem afk = new AFKSystem(this);
+    private final AFKSystem afk = new AFKSystem(this);
+
+    @Getter@Setter
+    private RaidParty raidParty;
+
+    @Getter@Setter
+    private Raid raid;
+
+
 }

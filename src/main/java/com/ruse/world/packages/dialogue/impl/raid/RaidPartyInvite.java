@@ -4,7 +4,7 @@ import com.ruse.world.entity.impl.player.Player;
 import com.ruse.world.packages.dialogue.Dialogue;
 import com.ruse.world.packages.dialogue.DialogueExpression;
 import com.ruse.world.packages.dialogue.DialogueType;
-import com.ruse.world.packages.raids.RaidParty;
+import com.ruse.world.packages.raid.party.RaidParty;
 
 public class RaidPartyInvite extends Dialogue {
 
@@ -52,16 +52,11 @@ public class RaidPartyInvite extends Dialogue {
         switch(option){
             case 1->{
                 getPlayer().getPacketSender().sendInterfaceRemoval();
-                if (getPlayer().getInviteParty() == null) {
-                    return true;
-                }
-                getPlayer().getInviteParty().add(getPlayer());
-                getPlayer().setInviteParty(null);
-                end();
+                party.add(getPlayer());
                 return true;
             }
             case 2->{
-                getPlayer().setInviteParty(null);
+                //getPlayer().setInviteParty(null);
                 end();
                 return true;
             }
