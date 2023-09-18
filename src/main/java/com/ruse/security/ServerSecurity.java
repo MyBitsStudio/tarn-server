@@ -400,35 +400,35 @@ public class ServerSecurity {
     }
 
     private int checkSecurity(@NotNull Player player){
-        if(player.getPSecurity().getIp().equals("127.0.0.1") || player.getPSecurity().getIp().equals("localhost")
-                || whiteList(player.getUsername().toLowerCase())){
-            return 0;
-        }
-        if(isBlackList(player.getPSecurity().getIp())){
-            AdminCord.sendMessage(1116230759225765968L, player.getUsername()+" is blacklisted "+player.getPSecurity().getIp());
-            return BLACKLIST_IP;
-        }
-        GeolocationParams geoParams = new GeolocationParams();
-        geoParams.setIPAddress(player.getPSecurity().getIp());
-        geoParams.setFields("geo,time_zone,currency");
-
-        geoParams.setIncludeSecurity(true);
-        Geolocation geolocation = api.getGeolocation(geoParams);
-
-        if (geolocation.getStatus() == 200) {
-
-            if(geolocation.getGeolocationSecurity().getAnonymous() || geolocation.getGeolocationSecurity().getKnownAttacker()
-                    || geolocation.getGeolocationSecurity().getProxy() || !geolocation.getGeolocationSecurity().getProxyType().equals("")
-                    || geolocation.getGeolocationSecurity().getCloudProvider() || geolocation.getGeolocationSecurity().getTor()
-                    ||geolocation.getGeolocationSecurity().getThreatScore() > 20.0
-            ){
-                AdminCord.sendMessage(1116230759225765968L, player.getUsername()+" is using a VPN "+player.getPSecurity().getIp());
-                return VPN_DETECTED;
-            }
-
-        } else {
-            return INVALID_IP;
-        }
+//        if(player.getPSecurity().getIp().equals("127.0.0.1") || player.getPSecurity().getIp().equals("localhost")
+//                || whiteList(player.getUsername().toLowerCase())){
+//            return 0;
+//        }
+//        if(isBlackList(player.getPSecurity().getIp())){
+//            AdminCord.sendMessage(1116230759225765968L, player.getUsername()+" is blacklisted "+player.getPSecurity().getIp());
+//            return BLACKLIST_IP;
+//        }
+//        GeolocationParams geoParams = new GeolocationParams();
+//        geoParams.setIPAddress(player.getPSecurity().getIp());
+//        geoParams.setFields("geo,time_zone,currency");
+//
+//        geoParams.setIncludeSecurity(true);
+//        Geolocation geolocation = api.getGeolocation(geoParams);
+//
+//        if (geolocation.getStatus() == 200) {
+//
+//            if(geolocation.getGeolocationSecurity().getAnonymous() || geolocation.getGeolocationSecurity().getKnownAttacker()
+//                    || geolocation.getGeolocationSecurity().getProxy() || !geolocation.getGeolocationSecurity().getProxyType().equals("")
+//                    || geolocation.getGeolocationSecurity().getCloudProvider() || geolocation.getGeolocationSecurity().getTor()
+//                    ||geolocation.getGeolocationSecurity().getThreatScore() > 20.0
+//            ){
+//                AdminCord.sendMessage(1116230759225765968L, player.getUsername()+" is using a VPN "+player.getPSecurity().getIp());
+//                return VPN_DETECTED;
+//            }
+//
+//        } else {
+//            return INVALID_IP;
+//        }
 
         return 0;
     }
