@@ -1,7 +1,9 @@
-package com.ruse.world.content.equipmentenhancement;
+package com.ruse.world.packages.equipmentenhancement;
 
+import com.ruse.model.Item;
 import com.ruse.util.Misc;
 import com.ruse.world.entity.impl.player.Player;
+import com.ruse.world.packages.johnachievementsystem.AchievementHandler;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
@@ -63,7 +65,6 @@ public class EquipmentEnhancement {
 
     private int getBoostBySlot(@NotNull BoostType boost, int slot) {
         var level = getSlotLevel(slot);
-        int amount = 0;
         return switch (boost) {
             case DR -> level * DROP_RATE_BOOST_ADD;
             case CASH -> level * CASH_BOOST_ADD;
@@ -115,13 +116,13 @@ public class EquipmentEnhancement {
     private void failure(Player player){
         var slotId = selectedSlot.getId();
         var currentLevel = getSlotLevel(slotId);
-        if(Misc.random(5) >= 3){
+        if(Misc.random(5) >= 2){
             if(currentLevel == 0) {
                 player.getPacketSender().sendMessage("@red@You have failed upgrading");
                 return;
             }
             if(player.getInventory().contains(604)){
-                player.getInventory().delete(604, 1);
+                player.getInventory().delete(new Item(604, 1));
                 player.getPacketSender().sendMessage("@red@Your supreme shard has saved you from losing a level.");
             } else {
                 var newLevel = --currentLevel;
@@ -139,7 +140,7 @@ public class EquipmentEnhancement {
                 player.getPacketSender().sendMessage("@red@You have failed this upgrade and lost a level.");
             }
         } else {
-            player.getPacketSender().sendMessage("@red@You have failed upgrading, but saved from losing a level.");
+            player.getPacketSender().sendMessage("@red@You have failed upgrading, but got lucky and saved a level.");
         }
     }
 
@@ -165,6 +166,7 @@ public class EquipmentEnhancement {
         setSlotLevel(slotId, currentLevel);
         player.getPacketSender().sendMessage("@red@You have successfully upgraded to level " + newLevel + "!");
         player.getSeasonPass().incrementExp(360 * newLevel, false);
+        AchievementHandler.progress(player, 1, 51, 73, 94, 150);
         var currentDr = getBoost(BoostType.DR);
         var currentCash = getBoost(BoostType.CASH);
         var currentStats = getBoost(BoostType.STATS);

@@ -24,6 +24,7 @@ public abstract class Track {
     }
 
     public abstract void sendInterfaceList();
+    public abstract void setUp();
 
 
 

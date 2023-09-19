@@ -31,7 +31,7 @@ public class Slayer {
     private SlayerMasters master = SlayerMasters.EASY;
     @Getter
     @Setter
-    private int streak;
+    private int streak, total;
 
     private static int SLAYER_TICKETS = 5023, GEM = 4155, RESET_TOKEN = 9719;
 
@@ -175,6 +175,7 @@ public class Slayer {
         int amount = monsters.getTickets();
 
         streak++;
+        total++;
         player.getPacketSender().sendMessage("You have completed "+streak+" tasks in a row.");
 
         if(player.getEquipment().hasDoubleSlayer())
@@ -208,6 +209,8 @@ public class Slayer {
         player.getSkillManager().addExperience(Skill.SLAYER, monsters.getXp());
 
         randomBox(player);
+
+        player.getTarnNormal().handleSlayerTasks(total);
 
         player.getSeasonPass().incrementExp(265, false);
 

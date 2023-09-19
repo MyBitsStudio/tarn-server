@@ -1,4 +1,4 @@
-package com.ruse.world.content.equipmentenhancement;
+package com.ruse.world.packages.equipmentenhancement;
 
 import com.google.common.collect.ImmutableList;
 import lombok.Getter;

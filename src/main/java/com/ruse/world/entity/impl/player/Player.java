@@ -41,6 +41,7 @@ import com.ruse.world.packages.raid.Raid;
 import com.ruse.world.packages.raid.party.RaidParty;
 import com.ruse.world.packages.skills.slayer.Slayer;
 import com.ruse.world.packages.starter.StarterShop;
+import com.ruse.world.packages.tracks.impl.tarn.normal.TarnNormalTrack;
 import com.ruse.world.packages.tradingpost.TradingPost;
 import com.ruse.world.packages.attendance.AttendanceManager;
 import com.ruse.world.packages.attendance.AttendanceUI;
@@ -69,7 +70,7 @@ import com.ruse.world.content.dailyTask.DailyTaskData;
 import com.ruse.world.content.dailyTask.DailyTaskDifficulty;
 import com.ruse.world.content.dailytasks_new.DailyTask;
 import com.ruse.world.content.dailytasks_new.TaskChallenge;
-import com.ruse.world.content.equipmentenhancement.EquipmentEnhancement;
+import com.ruse.world.packages.equipmentenhancement.EquipmentEnhancement;
 import com.ruse.world.content.eventboss.EventBossManager;
 import com.ruse.world.packages.forge.Forge;
 import com.ruse.world.packages.forge.shop.ForgeShopType;
@@ -3986,6 +3987,8 @@ public class Player extends Character {
 
     @Getter@Setter
     private StarterTrack starter = new StarterTrack(this);
+    @Getter@Setter
+    private TarnNormalTrack tarnNormal = new TarnNormalTrack(this);
 
     @Getter@Setter
     private Scratch card;

@@ -14,11 +14,10 @@ public class GearPack {
                 player.getPacketSender().sendMessage("You need at least "+items+" free inventory slots to open this pack.");
                 return;
             }
+
             player.getInventory().delete(itemId, 1);
 
             player.getInventory().addItems(pack.getItems(), true);
-
-            AchievementHandler.progress(player, 1, 4);
 
         }
     }
@@ -31,7 +30,7 @@ public class GearPack {
                 return;
             }
             player.getInventory().delete(itemId, 1);
-
+            AchievementHandler.progress(player, 1, 4);
             int random = Misc.random(pack.getItems().length - 1);
             player.getInventory().add(pack.getItems()[random].getId(), 1);
 

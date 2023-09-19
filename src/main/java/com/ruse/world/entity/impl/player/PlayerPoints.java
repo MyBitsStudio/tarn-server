@@ -18,6 +18,7 @@ public class PlayerPoints {
         points.put("voted", 0);
         points.put("donated", 0);
 
+        points.put("dissolve", 0);
     }
 
     public void load(Map<String, Integer> points){

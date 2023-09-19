@@ -20,7 +20,7 @@
 //import com.ruse.world.content.combat.CombatFactory;
 //import com.ruse.world.packages.discordbot.AdminCord;
 //import com.ruse.world.packages.discordbot.JavaCord;
-//import com.ruse.world.content.equipmentenhancement.BoostType;
+//import com.ruse.world.packages.equipmentenhancement.BoostType;
 //import com.ruse.world.content.minigames.impl.TreasureHunter;
 //import com.ruse.world.content.minigames.impl.VaultOfWar;
 //import com.ruse.world.content.skill.impl.prayer.BonesData;

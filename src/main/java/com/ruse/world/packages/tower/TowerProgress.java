@@ -46,6 +46,18 @@ public class TowerProgress {
         };
     }
 
+    public void forceLevel(){
+        if(level == lastLevel){
+            if(tier == lastTier){
+                sendFinish();
+                return;
+            }
+            sendTier();
+            return;
+        }
+        sendProgress();
+    }
+
     public void progress(){
         spawnExit();
         player.getSeasonPass().incrementExp(25 * level, false);

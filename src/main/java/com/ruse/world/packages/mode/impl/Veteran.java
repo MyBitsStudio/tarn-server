@@ -71,12 +71,12 @@ public class Veteran extends Gamemode {
 
     @Override
     public double dropRate() {
-        return 30;
+        return 250;
     }
 
     @Override
     public int doubleDropRate() {
-        return 20;
+        return 200;
     }
 
     @Override

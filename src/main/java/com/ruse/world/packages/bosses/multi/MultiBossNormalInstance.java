@@ -18,7 +18,7 @@ public class MultiBossNormalInstance extends MultiBossInstance {
 
         getOwner().getPacketSender().sendMessage("@blu@[INSTANCE] Your instance has started.");
 
-        Position[] pos = new Position[0];
+        Position[] pos;
 
         if(getBosses().length == 4){
            pos = new Position[]{

@@ -5,6 +5,7 @@ import com.ruse.model.GameObject;
 import com.ruse.model.Locations;
 import com.ruse.model.Position;
 import com.ruse.security.tools.SecurityUtils;
+import com.ruse.util.Misc;
 import com.ruse.world.World;
 import com.ruse.world.entity.Entity;
 import com.ruse.world.entity.impl.npc.NPC;
@@ -127,6 +128,7 @@ public abstract class Instance {
                     p.sendMessage("@red@[INSTANCE] How did you get here?");
                     removePlayer.add(p);
                 });
+
     }
 
     private void preProcess(){
@@ -141,6 +143,7 @@ public abstract class Instance {
                     player.sendMessage("@red@[INSTANCE] This isn't your instance. Moving you home.");
                     player.setInstance(null);
                     player.setLocation(Locations.Location.DEFAULT);
+                    player.getPacketSender().sendWalkableInterface(63000, false);
                     player.moveTo(GameSettings.DEFAULT_POSITION.copy()).setPosition(GameSettings.DEFAULT_POSITION.copy());
                     player.getMovementQueue().setLockMovement(false).reset();
                 });
@@ -159,6 +162,7 @@ public abstract class Instance {
            destroy();
         }
 
+        player.getPacketSender().sendWalkableInterface(63000, false);
         player.moveTo(GameSettings.DEFAULT_POSITION);
     }
 

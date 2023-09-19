@@ -182,9 +182,9 @@ public class VIP {
         player.getPacketSender().sendString(77008, "Points : @gre@"+points);
         player.getPacketSender().sendString(77009, "Rank : @gre@"+player.getVip());
         player.getPacketSender().sendString(77010, "Exp : @gre@"+exp);
-        player.getPacketSender().sendString(77011, "Instance : @gre@0M");
-        player.getPacketSender().sendString(77012, "Tickets : @gre@"+(player.getVip().getRank() * 2));
-        player.getPacketSender().sendString(77013, "Bonus : @gre@0%");
+        player.getPacketSender().sendString(77011, "Instance : @gre@"+player.getVip().getBonusCap()+"Min");
+        player.getPacketSender().sendString(77012, "Tickets : @gre@"+player.getVip().getRank());
+        player.getPacketSender().sendString(77013, "Bonus DMG : @gre@"+(player.getVip().getDamage()*100)+"%");
 
         int level = calculatePack();
         VIPPacks pack = VIPPacks.values()[level];

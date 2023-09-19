@@ -65,6 +65,7 @@ public class InstanceManager {
 
         cap += player.getLoyalty().timeOnInstance();
 
+
         cap *= (1000 * 60);
 
         switch(data.getNpcId()){
@@ -345,9 +346,11 @@ public class InstanceManager {
         player.getPacketSender().sendString(70522, prefix+ (long)(def.getDefenceMage() * (1 + (.3 * diff))));
         player.getPacketSender().sendString(70524, prefix+ (long)(def.getDefenceRange() * (1 + (.3 * diff))));
 
-        int cap = (int) (interData.getCap() + player.getDonator().getCap());
+        int cap =interData.getCap();
 
         cap += player.getVip().getBonusCap();
+
+        cap += player.getLoyalty().timeOnInstance();
 
         player.getPacketSender().sendString(70526, prefix+ "x"+ (interData.getCost().getAmount() * (1+ (diff * 2L))) +" "+ItemDefinition.forId(interData.getCost().getId()).getName());
         player.getPacketSender().sendString(70528, prefix+ interData.getSpawns());

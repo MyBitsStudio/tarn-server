@@ -17,7 +17,7 @@ public class StarterTrack extends Track {
 
     private final Map<StarterTasks, Boolean> tasks = new HashMap<>();
 
-    private int level = 0;
+    private final int level = 0;
 
     public StarterTrack(Player player) {
         super(player);
@@ -31,7 +31,8 @@ public class StarterTrack extends Track {
                     this.tasks.put(task, tasks.get(task));
     }
 
-    private void setUp(){
+    @Override
+    public void setUp(){
         this.rewards = new StarterTrackRewards();
         this.hasPremium = false;
         this.position = 0;

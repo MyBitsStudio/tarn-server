@@ -213,6 +213,10 @@ public class ButtonClickPacketListener implements PacketListener {
                 player.getPacketSender().sendInterfaceRemoval();
                 ShopHandler.getShop(1).ifPresent(shop -> shop.send(player, true));
                 break;
+            case 77016 :
+                player.getPacketSender().sendInterfaceRemoval();
+                player.getPacketSender().sendString(-1, GameSettings.StoreUrl);
+                break;
             case -15954:
                 player.getForge().sendDialogue();
                 break;

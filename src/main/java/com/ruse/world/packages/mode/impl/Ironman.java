@@ -73,12 +73,12 @@ public class Ironman extends Gamemode {
 
     @Override
     public double dropRate() {
-        return 15;
+        return 125;
     }
 
     @Override
     public int doubleDropRate() {
-        return 5;
+        return 75;
     }
 
     @Override

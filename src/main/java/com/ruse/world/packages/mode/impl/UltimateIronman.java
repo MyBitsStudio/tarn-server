@@ -75,12 +75,12 @@ public class UltimateIronman extends Gamemode {
 
     @Override
     public double dropRate() {
-        return 15;
+        return 175;
     }
 
     @Override
     public int doubleDropRate() {
-        return 10;
+        return 125;
     }
 
     @Override

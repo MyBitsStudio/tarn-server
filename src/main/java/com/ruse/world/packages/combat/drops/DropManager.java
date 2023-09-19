@@ -10,7 +10,7 @@ import com.ruse.world.content.DropLog;
 import com.ruse.world.content.PlayerLogs;
 import com.ruse.world.packages.collectionlog.CollectionEntry;
 import com.ruse.world.packages.discordbot.AdminCord;
-import com.ruse.world.content.equipmentenhancement.BoostType;
+import com.ruse.world.packages.equipmentenhancement.BoostType;
 import com.ruse.world.entity.impl.GroundItemManager;
 import com.ruse.world.entity.impl.npc.NPC;
 import com.ruse.world.entity.impl.player.Player;

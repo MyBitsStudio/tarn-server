@@ -359,7 +359,17 @@ public class OwnerCommands {
                 return true;
             }
             case "tower" -> {
-                TarnTower.startTower(player);
+                switch(commands[1]){
+                    case "start" -> {
+                        TarnTower.startTower(player);
+                        return true;
+                    }
+                    case "level" -> {
+                        player.getTower().forceLevel();
+                        return true;
+                    }
+                }
+
                 return true;
             }
             case "attack" -> {

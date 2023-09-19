@@ -1,4 +1,4 @@
-package com.ruse.world.content.equipmentenhancement;
+package com.ruse.world.packages.equipmentenhancement;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

@@ -2054,6 +2054,11 @@ for (Item item : player.getInventory().getItems()) {
 		},
 
 		HOME_AREA(new int[] { 2175, 2237 }, new int[] { 3719, 3777 }, false, true, true, false, false, true) {
+			@Override
+			public void enter(Player player) {
+				player.getPacketSender().sendWalkableInterface(63000, false);
+				player.getPacketSender().sendWalkableInterface(60000, false);
+			}
 		},
 
 		//Monster Locations

@@ -221,6 +221,7 @@ public class ItemActionPacketListener implements PacketListener {
                 player.getInventory().delete(23166, 1);
                 player.getPSettings().setSetting("instance-unlock", true);
                 player.sendMessage("You've unlocked the ability to create instances.");
+                player.save();
                 break;
 
             case 23167:
@@ -231,6 +232,7 @@ public class ItemActionPacketListener implements PacketListener {
                 player.getInventory().delete(23167, 1);
                 player.getPSettings().setSetting("holy-unlock", true);
                 player.sendMessage("You've unlocked the ability to use holy prayers.");
+                player.save();
                 break;
 
             case 23168:
@@ -241,6 +243,7 @@ public class ItemActionPacketListener implements PacketListener {
                 player.getInventory().delete(23168, 1);
                 player.getPSettings().setSetting("raid-unlock", true);
                 player.sendMessage("You've unlocked the ability to enter raids.");
+                player.save();
                 break;
 
             case 25100:
@@ -251,6 +254,7 @@ public class ItemActionPacketListener implements PacketListener {
                 player.getInventory().delete(25100, 1);
                 player.getPSettings().setSetting("fall-unlock", true);
                 player.sendMessage("You've unlocked the fall calendar!");
+                player.save();
                 break;
 
 //            case 23210:

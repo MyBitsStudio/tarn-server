@@ -156,6 +156,7 @@ public class NPCDeathTask extends Task {
                         KillsTracker.submitById(killer, npc.getId(), false, npc.getDefinition().isBoss());
 
                         killer.getStarter().handleKillCount(npc.getId());
+                        killer.getTarnNormal().handleKillCount(npc.getId());
 
                         if (npc.stopTask()) {
                             setEventRunning(false);

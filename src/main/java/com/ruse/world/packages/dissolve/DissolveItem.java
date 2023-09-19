@@ -189,6 +189,32 @@ public class DissolveItem {
                 ran = true;
             }
 
+            case 17614, 17616, 17618, 17606, 8411, 8410, 8412-> {
+                toDissolve = player.getInventory().get(slot);
+                if (player.getInventory().contains(toDissolve.getId())) {
+                    player.getInventory().delete(toDissolve)
+                            .add(COINS, Misc.random(1021, 8160));
+                    player.performAnimation(new Animation(712));
+                    player.getSkillManager().addExperience(Skill.CRAFTING, 69);
+                    player.getPacketSender().sendMessage("@or2@You have dissolved @red@" + ItemDefinition.forId(id).getName() + "@or2@");
+                }
+                ran = true;
+            }
+
+            case 5068, 5069, 5070, 5071, 5072, 17718, 13328, 13329,
+                    13330, 13332, 13333, 8828, 8829, 8833, 8830,
+                    8831, 22173 -> {
+                toDissolve = player.getInventory().get(slot);
+                if (player.getInventory().contains(toDissolve.getId())) {
+                    player.getInventory().delete(toDissolve)
+                            .add(COINS, Misc.random(1141, 9652));
+                    player.performAnimation(new Animation(712));
+                    player.getSkillManager().addExperience(Skill.CRAFTING, 74);
+                    player.getPacketSender().sendMessage("@or2@You have dissolved @red@" + ItemDefinition.forId(id).getName() + "@or2@");
+                }
+                ran = true;
+            }
+
             case 15005, 15006, 15007, 15008, 15200, 15201, 15100, 14915 -> {
                 toDissolve = player.getInventory().get(slot);
                 if (player.getInventory().contains(toDissolve.getId())) {
@@ -216,13 +242,9 @@ public class DissolveItem {
         }
 
         if(ran){
-            AchievementHandler.progress(player, 1, 46);
-            AchievementHandler.progress(player, 1, 49);
-            AchievementHandler.progress(player, 1, 50);
-            AchievementHandler.progress(player, 1, 71);
-            AchievementHandler.progress(player, 1, 72);
-            AchievementHandler.progress(player, 1, 92);
-            AchievementHandler.progress(player, 1, 93);
+            player.getPoints().add("dissolve", 1);
+            AchievementHandler.progress(player, 1, 46, 49, 50, 71, 72, 92, 93);
+            player.getTarnNormal().handleDissolveTasks(player.getPoints().get("dissolve"));
         }
 
         return false;

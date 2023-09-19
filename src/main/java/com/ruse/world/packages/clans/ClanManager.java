@@ -114,16 +114,14 @@ public class ClanManager {
                             .filter(Objects::nonNull)
                             .filter(other -> other.getSession().getChannel().isConnected())
                             .forEach(others -> {
-                                int image = 0;
-                                switch(others.getRank()){
-                                    case DEVELOPER : case OWNER:
-                                        image = 861; break;
-                                    case ADMINISTRATOR: image = 860; break;
-                                    case MODERATOR : image = 863; break;
-                                    case HELPER : case TRAIL_STAFF:
-                                        image = 866; break;
-                                    case YOUTUBER: image = 865; break;
-                                }
+                                int image = switch (others.getRank()) {
+                                    case DEVELOPER, OWNER -> 861;
+                                    case ADMINISTRATOR, MANAGER -> 860;
+                                    case MODERATOR -> 863;
+                                    case HELPER, TRAIL_STAFF -> 866;
+                                    case YOUTUBER -> 865;
+                                    default -> 0;
+                                };
                                 String prefix = image > 0 ? ("<img=" + image + "> ") : "";
                                 player.getPacketSender().sendString(childId.get(), prefix + others.getUsername());
                                 childId.getAndIncrement();

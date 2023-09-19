@@ -35,6 +35,7 @@ import com.ruse.world.packages.slot.SlotBonus;
 import com.ruse.world.packages.starter.StartShopItems;
 import com.ruse.world.packages.tracks.ProgressReward;
 import com.ruse.world.packages.tracks.impl.starter.StarterTasks;
+import com.ruse.world.packages.tracks.impl.tarn.normal.TarnNormalTasks;
 import com.ruse.world.packages.vip.Donation;
 
 import java.lang.reflect.Type;
@@ -855,6 +856,12 @@ public class PlayerSecureLoad extends SecureLoad {
         if(object.has("ach-perks")){
             player.setPerks(builder.fromJson(object.get("ach-perks"),
                     new TypeToken<Map<PerkType, Perk>>() {
+                    }.getType()));
+        }
+
+        if(object.has("tarn-normal")) {
+            player.getTarnNormal().setTasks(builder.fromJson(object.get("tarn-normal"),
+                    new TypeToken<Map<TarnNormalTasks, Boolean>>() {
                     }.getType()));
         }
 

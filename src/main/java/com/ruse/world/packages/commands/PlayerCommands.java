@@ -20,6 +20,7 @@ import com.ruse.world.packages.dialogue.DialogueManager;
 import com.ruse.world.packages.dialogue.impl.EmptyInv;
 import com.ruse.world.content.transportation.TeleportHandler;
 import com.ruse.world.content.transportation.TeleportType;
+import com.ruse.world.packages.johnachievementsystem.AchievementHandler;
 import com.ruse.world.packages.misc.Retrieval;
 import com.ruse.world.packages.ranks.StaffRank;
 import com.ruse.world.packages.tracks.TrackInterface;
@@ -311,6 +312,12 @@ public class PlayerCommands {
             case "track", "tracks" -> {
                 TrackInterface.sendInterface(player, true);
                 return true;
+            }
+            case "achfix" -> {
+                AchievementHandler.progress(player, 2500, 2, 3);
+                AchievementHandler.progress(player, 40, 11, 12);
+                return true;
+
             }
         }
         return false;

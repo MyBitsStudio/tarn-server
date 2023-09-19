@@ -8,6 +8,7 @@ import com.ruse.world.entity.impl.npc.NPC;
 import com.ruse.world.entity.impl.player.Player;
 import lombok.Getter;
 
+import java.util.Objects;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public abstract class MultiBossInstance extends Instance {
@@ -31,6 +32,20 @@ public abstract class MultiBossInstance extends Instance {
         this.times = time;
     }
 
+    @Override
+    public void process(){
+        super.process();
+        long time = System.currentTimeMillis() - started;
+        long timea = times - time;
+        String timeStamp = ""+ timea / (1000 * 60);
+        playerList.stream()
+              .filter(Objects::nonNull)
+              .forEach(p -> {
+                     p.getPacketSender().sendWalkableInterface(63000, true);
+                     p.getPacketSender().sendString(63004, timeStamp+"M");
+              });
+    }
+
     public Player getOwner() {
         return owner;
     }
@@ -51,7 +66,7 @@ public abstract class MultiBossInstance extends Instance {
 
     @Override
     public void signalSpawn(NPC n){
-        if(started + times <= System.currentTimeMillis()){
+        if(System.currentTimeMillis() >= (started + times)){
             getOwner().sendMessage("Your instance has expired.");
             return;
         }

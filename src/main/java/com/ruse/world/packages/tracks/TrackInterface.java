@@ -3,6 +3,7 @@ package com.ruse.world.packages.tracks;
 import com.ruse.world.content.KillsTracker;
 import com.ruse.world.entity.impl.player.Player;
 import com.ruse.world.packages.tracks.impl.starter.StarterTasks;
+import com.ruse.world.packages.tracks.impl.tarn.normal.TarnNormalTasks;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
@@ -15,7 +16,7 @@ public class TrackInterface {
 
     public static String[][] tracks = {
             {"Starter"},
-            {},
+            {"Tarn Normal"},
             {},
             {},
             {}
@@ -40,6 +41,11 @@ public class TrackInterface {
             case 0 -> {
                 switch(Integer.parseInt(settings[1])){
                     case 0 -> player.getStarter().sendInterfaceList();
+                }
+            }
+            case 1-> {
+                switch(Integer.parseInt(settings[1])){
+                    case 0 -> player.getTarnNormal().sendInterfaceList();
                 }
             }
         }
@@ -78,6 +84,46 @@ public class TrackInterface {
                     }
                 }
             }
+            case 1 -> {
+                switch(Integer.parseInt(settings[1])){
+                    case 0 -> {
+                        int type = Integer.parseInt(settings[2]);
+                        int index = Integer.parseInt(settings[3]);
+                        TarnNormalTasks tasks = TarnNormalTasks.getByIndexAndCategory(type, index);
+                        if(tasks != null) {
+                            switch(Integer.parseInt(settings[4])){
+                                case 0 -> {
+                                    player.getPacketSender().sendString(161045, tasks.getTaskName());
+                                    player.getPacketSender().sendString(161046, "XP +"+tasks.getXp());
+                                    player.getPacketSender().sendString(161048, (player.getTarnNormal().completed(tasks) ? "@gre@Completed" : "@red@Not Completed"));
+
+                                    if(tasks.getNpc() == -1) {
+                                        switch(tasks){
+                                            case TASK_100, TASK_101, TASK_102 -> {
+                                                player.getPacketSender().sendString(161047, "Tasks : "+player.getSlayer().getTotal()+"/"+tasks.getCount());
+                                            }
+                                            case TASK_103, TASK_104, TASK_105 -> {
+                                                player.getPacketSender().sendString(161047, "Dissolve : "+player.getPoints().get("dissolve")+"/"+tasks.getCount());
+                                            }
+                                        }
+                                    } else {
+                                        TarnNormalTasks kill = TarnNormalTasks.byNPC(tasks.getNpc());
+                                        if(kill == null) {
+                                            player.getPacketSender().sendString(161047, "Kills : @red@ERROR");
+                                        } else {
+                                            player.getPacketSender().sendString(161047, "Kills : "+ KillsTracker.getTotalKillsForNpc(tasks.getNpc(), player)+"/"+tasks.getCount());
+                                        }
+                                    }
+                                }
+                                case 1 -> {
+                                    player.getPacketSender().sendInterfaceDisplayState(161300, false);
+                                    player.getPacketSender().sendItemOnInterface(161301, tasks.getReward().item(), tasks.getReward().amount());
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
 
         switch(Integer.parseInt(settings[0])){
@@ -87,7 +133,7 @@ public class TrackInterface {
                     case 0 -> {
                         player.getPacketSender().sendString(161052, "XP : "+player.getStarter().xp+"/"+player.getStarter().maxLevel);
                         player.getPacketSender().sendString(161053, "Level : "+player.getStarter().position);
-                        player.getPacketSender().sendString(161054, "Max Level : 40");
+                        player.getPacketSender().sendString(161054, "Max Level : 5");
                         player.getPacketSender().sendString(161055, "Difficulty : Easy");
                         player.getPacketSender().sendString(161056, "Tasks Completed : "+player.getStarter().getCompleted());
                         player.getPacketSender().sendString(161057, "Tasks Left : "+player.getStarter().nonCompleted());
@@ -109,6 +155,37 @@ public class TrackInterface {
                         player.getPacketSender().sendString(161055, "Waiting : "+used);
                         player.getPacketSender().sendString(161056, "Tasks Completed : "+player.getStarter().getCompleted());
                         player.getPacketSender().sendString(161057, "Tasks Left : "+player.getStarter().nonCompleted());
+                    }
+                }
+            }
+            case 1 -> {
+                player.getPacketSender().updateProgressSpriteBar(161058, player.getTarnNormal().getProgress(), 100);
+                switch(Integer.parseInt(settings[5])){
+                    case 0 -> {
+                        player.getPacketSender().sendString(161052, "XP : "+player.getTarnNormal().xp+"/"+player.getTarnNormal().maxLevel);
+                        player.getPacketSender().sendString(161053, "Level : "+player.getTarnNormal().position);
+                        player.getPacketSender().sendString(161054, "Max Level : 5");
+                        player.getPacketSender().sendString(161055, "Difficulty : Medium");
+                        player.getPacketSender().sendString(161056, "Tasks Completed : "+player.getTarnNormal().getCompleted());
+                        player.getPacketSender().sendString(161057, "Tasks Left : "+player.getTarnNormal().nonCompleted());
+
+                    }
+                    case 1 -> {
+                        player.getPacketSender().sendInterfaceDisplayState(161400, false);
+                        player.getPacketSender().sendInterfaceDisplayState(161059, false);
+                        player.getPacketSender().sendString(161060, "CLAIM");
+
+                        int used = 0;
+                        for(ProgressReward reward : player.getTarnNormal().getRewards().getRewards()) {
+                            if(reward == null)
+                                continue;
+
+                            if(player.getTarnNormal().position >= reward.getLevel() && !reward.isClaimed())
+                                player.getPacketSender().sendItemOnInterface(161401 + (used++), reward.getItem(), reward.getAmount());
+                        }
+                        player.getPacketSender().sendString(161055, "Waiting : "+used);
+                        player.getPacketSender().sendString(161056, "Tasks Completed : "+player.getTarnNormal().getCompleted());
+                        player.getPacketSender().sendString(161057, "Tasks Left : "+player.getTarnNormal().nonCompleted());
                     }
                 }
             }
@@ -164,7 +241,6 @@ public class TrackInterface {
             return true;
         }
         switch(id){
-
             case 161006 -> {
                 player.getVariables().setInterfaceSettings(0, "0");
                 sendInterface(player, false);
@@ -258,6 +334,11 @@ public class TrackInterface {
                     case 0 -> {
                         switch(Integer.parseInt(player.getVariables().getInterfaceSettings()[1])){
                             case 0 -> player.getStarter().getRewards().claimRewards(player, player.getStarter().position, false, false);
+                        }
+                    }
+                    case 1-> {
+                        switch(Integer.parseInt(player.getVariables().getInterfaceSettings()[1])){
+                            case 0 -> player.getTarnNormal().getRewards().claimRewards(player, player.getTarnNormal().position, false, false);
                         }
                     }
                 }

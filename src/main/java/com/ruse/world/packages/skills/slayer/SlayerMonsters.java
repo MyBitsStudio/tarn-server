@@ -92,18 +92,27 @@ public enum SlayerMonsters {
             true, false, new int[]{75, 125}),
 
     AGUMON(3020, 2, 112, 146,
-            true, false, new int[]{72, 265}),
+            true, false, new int[]{72, 245}),
     BOWSER(9919, 2, 112, 146,
-            true, false, new int[]{72, 265}),
+            true, false, new int[]{72, 245}),
     SLENDER(9913, 2, 112, 146,
-            true, false, new int[]{72, 265}),
+            true, false, new int[]{72, 245}),
     LUFFY(9916, 2, 112, 146,
-            true, false, new int[]{72, 265}),
+            true, false, new int[]{72, 25}),
 
     FAZULA(1311, 2, 128, 168,
-            true, false, new int[]{89, 245}),
+            true, false, new int[]{89, 265}),
     YASUDA(1313, 2, 128, 168,
-            true, false, new int[]{89, 245}),
+            true, false, new int[]{89, 265}),
+
+    SASUKE(9914, 2, 144, 189,
+            true, false, new int[]{94, 295}),
+    JOKER(185, 2, 144, 189,
+            true, false, new int[]{94, 295}),
+    BYAKUYA(188, 2, 144, 189,
+            true, false, new int[]{94, 295}),
+    CHARYBDIS(93117, 2, 144, 189,
+            true, false, new int[]{94, 295}),
 
 
     AGTHO(3013, 3, 92, 198,
