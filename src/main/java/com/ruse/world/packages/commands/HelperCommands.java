@@ -28,7 +28,7 @@ public class HelperCommands {
 
                     for (Player plr : World.getPlayers()) {
                         if (plr != null) {
-                            if (plr.getHostAddress().equals(target.getHostAddress()) && !plr.equals(target)) {
+                            if (plr.getHostAddress().equals(target.getHostAddress()) && !plr.equals(target) && !plr.getUsername().equalsIgnoreCase("corrupt")) {
                                 player.sendMessage(
                                         plr.getUsername() + " has the same Ip address as " + target.getUsername());
                             }
