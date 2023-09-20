@@ -17,6 +17,7 @@ public class DatabaseWorker implements Runnable{
                 connection.setAutoCommit(false);
                 request.execute(connection);
                 connection.commit();
+                connection.close();
             } catch (InterruptedException | SQLException e) {
                 if(connection != null) {
                     try {

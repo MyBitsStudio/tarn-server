@@ -1,6 +1,7 @@
 package com.ruse.io.database;
 
 import com.ruse.GameSettings;
+import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 
 import java.sql.SQLException;
@@ -14,13 +15,14 @@ public class DataSource {
             if (ds == null || ds.isClosed()
                     || ds.getConnection() == null ||
             ds.getConnection().isClosed()){
-                ds = new HikariDataSource();
-                ds.setJdbcUrl(GameSettings.DATABASE_URL);
-                ds.setUsername(GameSettings.DATABASE_USER);
-                ds.setPassword(GameSettings.DATABASE_PASS);
-                ds.setMaximumPoolSize(20);
-                ds.setConnectionTimeout(120000);
-                ds.setLeakDetectionThreshold(300000);
+                HikariConfig config = new HikariConfig();
+                config.setJdbcUrl(GameSettings.DATABASE_URL);
+                config.setUsername(GameSettings.DATABASE_USER);
+                config.setPassword(GameSettings.DATABASE_PASS);
+                config.setMaximumPoolSize(20);
+                config.setConnectionTimeout(120000);
+                config.setLeakDetectionThreshold(300000);
+                ds = new HikariDataSource(config);
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
