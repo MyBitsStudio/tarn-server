@@ -865,6 +865,20 @@ public class PlayerSecureLoad extends SecureLoad {
                     }.getType()));
         }
 
+        if(object.has("normal-level")) {
+            player.getTarnNormal().setPosition(object.get("normal-level").getAsInt());
+        }
+
+        if(object.has("normal-xp")) {
+            player.getStarter().setXp(object.get("normal-xp").getAsInt());
+        }
+
+        if(object.has("normal-rewards")) {
+            player.getTarnNormal().getRewards().setRewards(builder.fromJson(object.get("normal-rewards"),
+                    new TypeToken<List<ProgressReward>>() {
+                    }.getType()));
+        }
+
 
         return this;
     }
