@@ -2,6 +2,7 @@ package com.ruse.world.packages.vip;
 
 import com.ruse.engine.GameEngine;
 import com.ruse.io.ThreadProgressor;
+import com.ruse.io.data.impl.SQLVip;
 import com.ruse.io.database.models.DatabaseRequestStatement;
 import com.ruse.io.database.models.impl.VIPClaim;
 import com.ruse.security.save.impl.server.PlayerDonationSave;
@@ -17,8 +18,6 @@ import java.util.List;
 
 public class VIPManager {
 
-    public static DatabaseRequestStatement service = new VIPClaim();
-
     public static void handleDonation(@NotNull Player player, int amount){
         player.getPlayerVIP().addDonation(amount);
         player.getPacketSender().sendMessage("@blu@[DONATE]@whi@Thank you for your donation of $" + amount + "! K3");
@@ -27,7 +26,7 @@ public class VIPManager {
 
     public static void claim(Player player){
         try {
-            service.execute(player);
+            new SQLVip().execute(player);
         } catch (Exception e) {
             e.printStackTrace();
         }

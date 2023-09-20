@@ -1,16 +1,14 @@
 package com.ruse.io.data.impl;
 
-import com.github.jasync.sql.db.Connection;
-import com.github.jasync.sql.db.QueryResult;
 import com.ruse.io.ThreadProgressor;
 import com.ruse.io.data.model.DataHandler;
 import com.ruse.io.data.model.DatabasePost;
-import com.ruse.util.Misc;
 import com.ruse.world.entity.impl.player.Player;
 
 import java.util.concurrent.ExecutionException;
 
-public class SQLRetrieveClaim implements DatabasePost {
+public class SQLVipClaim implements DatabasePost {
+
     @Override
     public void execute(Player player, String... args) {
         ThreadProgressor.submit(true, () -> {
@@ -25,6 +23,6 @@ public class SQLRetrieveClaim implements DatabasePost {
 
     @Override
     public String statement() {
-        return "UPDATE retrievals SET `claimed` = '1' WHERE `id` = 'uid'";
+        return "UPDATE payments SET `claimed` = '1' WHERE `payment_id` = 'uid'";
     }
 }

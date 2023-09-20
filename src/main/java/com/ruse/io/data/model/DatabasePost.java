@@ -6,6 +6,6 @@ import com.ruse.world.entity.impl.player.Player;
 
 public interface DatabasePost {
 
-    void execute(Connection connection, Player player, String... args);
+    void execute(Player player, String... args);
     String statement();
 }

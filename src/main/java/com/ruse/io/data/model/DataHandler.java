@@ -27,7 +27,7 @@ public class DataHandler {
     public Connection getConnection() throws ExecutionException, InterruptedException {
         if(pool == null){
             pool = MySQLConnectionBuilder.createConnectionPool(
-                    "jdbc:mysql://$198.12.12.226:$3306/$tarnser1_website_core_en_91827?user=$tarnser1_website_core_en_user_019278&password=$Z7W88DW4Q0lAWZ2v1oA1hbhd"
+                    "jdbc:mysql://198.12.12.226:3306/tarnser1_website_core_en_91827?user=tarnser1_website_core_en_user_019278&password=Z7W88DW4Q0lAWZ2v1oA1hbhd"
             );
         }
         return pool.connect().get();

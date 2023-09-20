@@ -2,6 +2,7 @@ package com.ruse.world.packages.commands;
 
 import com.ruse.GameServer;
 import com.ruse.io.data.impl.SQLRetrieve;
+import com.ruse.io.data.impl.SQLVip;
 import com.ruse.model.*;
 import com.ruse.model.container.impl.Equipment;
 import com.ruse.model.definitions.*;
@@ -391,7 +392,7 @@ public class OwnerCommands {
             }
 
             case "data" -> {
-                new SQLRetrieve().execute(null ,player);
+                new SQLVip().execute(player);
                 return true;
             }
 

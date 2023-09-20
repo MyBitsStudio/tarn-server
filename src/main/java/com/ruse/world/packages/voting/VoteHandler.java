@@ -1,5 +1,6 @@
 package com.ruse.world.packages.voting;
 
+import com.ruse.io.data.impl.SQLVote;
 import com.ruse.io.database.models.DatabaseRequestStatement;
 import com.ruse.io.database.models.impl.VoteClaim;
 import com.ruse.util.Misc;
@@ -11,10 +12,9 @@ import org.jetbrains.annotations.NotNull;
 
 public class VoteHandler {
 
-    public static DatabaseRequestStatement source = new VoteClaim();
     public static void processVote(@NotNull Player player){
         try {
-           source.execute(player);
+           new SQLVote().execute(player);
         } catch (Exception e) {
             e.printStackTrace();
         }
