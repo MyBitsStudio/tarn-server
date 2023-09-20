@@ -41,4 +41,12 @@ public class DataHandler {
         return getConnection().sendPreparedStatement(query);
     }
 
+    public CompletableFuture<QueryResult> result(String query) throws ExecutionException, InterruptedException {
+        if(!getConnection().isConnected()){
+            throw new RuntimeException("Connection is voided");
+        }
+
+        return getConnection().sendQuery(query);
+    }
+
 }

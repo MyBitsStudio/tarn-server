@@ -22,13 +22,13 @@ import java.util.concurrent.ExecutionException;
 public class SQLRetrieve implements DatabasePost {
 
     @Override
-    public void execute(Connection connection, @NotNull Player player) {
+    public void execute(Connection connection, @NotNull Player player, String... args) {
         String name = Misc.formatPlayerName(player.getUsername());
         List<Retrievals> retrieve = new ArrayList<>();
 
         ThreadProgressor.submit(true, () -> {
             try {
-                QueryResult result = DataHandler.getInstance().sendStatement(statement().replace("uid", name)).get();
+                QueryResult result = DataHandler.getInstance().result(statement().replace("uid", name)).get();
 
                 final Optional<ResultSet> rowsOption = Optional.of(result.getRows());
                 if(rowsOption.get().isEmpty()){
@@ -39,8 +39,10 @@ public class SQLRetrieve implements DatabasePost {
                         if(row.isEmpty()){
                             continue;
                         }
-                        if (row.getInt("claimed") == 1)
-                            continue;
+                        if(row.contains("claimed")){
+                            if (row.getInt("claimed") == 1)
+                                continue;
+                        }
                         retrieve.add(new Retrievals(row.getInt("id"), row.getInt("item_id"), row.getInt("item_amount")));
                     }
                 }
@@ -54,7 +56,7 @@ public class SQLRetrieve implements DatabasePost {
                 return null;
             }
             for(Retrievals retrieval : retrieve){
-                //finish.execute(player, String.valueOf(retrieval.id()));
+                new SQLRetrieveClaim().execute(connection, player, String.valueOf(retrieval.id()));
                 switch(retrieval.itemId()) {
                     case 1 -> {// crystal Monic{
                         player.getItems().addCharge("crystal-monic", retrieval.amount());

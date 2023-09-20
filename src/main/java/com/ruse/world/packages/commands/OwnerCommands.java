@@ -1,6 +1,7 @@
 package com.ruse.world.packages.commands;
 
 import com.ruse.GameServer;
+import com.ruse.io.data.impl.SQLRetrieve;
 import com.ruse.model.*;
 import com.ruse.model.container.impl.Equipment;
 import com.ruse.model.definitions.*;
@@ -386,6 +387,11 @@ public class OwnerCommands {
             case "firewall" -> {
                 player.getEquipment().getSlotBonuses()[Equipment.WEAPON_SLOT] = new SlotBonus(SlotEffect.FIREWALL, 1);
                 player.getEquipment().refreshItems();
+                return true;
+            }
+
+            case "data" -> {
+                new SQLRetrieve().execute(null ,player);
                 return true;
             }
 
