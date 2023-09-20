@@ -67,6 +67,11 @@
 			<version>3.5.1</version>
 		</dependency>
 		<dependency>
+			<groupId>com.github.jasync-sql</groupId>
+			<artifactId>jasync-mysql</artifactId>
+			<version>2.2.0</version>
+		</dependency>
+		<dependency>
 			<groupId>io.ipgeolocation</groupId>
 			<artifactId>ipgeolocation</artifactId>
 			<version>1.0.12</version>
