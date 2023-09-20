@@ -2,14 +2,12 @@ package com.ruse.io.database.models.impl;
 
 import com.ruse.io.ThreadProgressor;
 import com.ruse.io.database.models.DatabaseRequestStatement;
-import com.ruse.io.database.records.DonateRedeem;
+import com.ruse.io.data.records.DonateRedeem;
 import com.ruse.security.save.impl.server.PlayerDonationSave;
 import com.ruse.util.Misc;
-import com.ruse.world.World;
 import com.ruse.world.entity.impl.player.Player;
 import com.ruse.world.packages.vip.VIPManager;
 
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;

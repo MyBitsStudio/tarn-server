@@ -2,7 +2,7 @@ package com.ruse.io.database.models.impl;
 
 import com.ruse.io.ThreadProgressor;
 import com.ruse.io.database.models.DatabaseRequestStatement;
-import com.ruse.io.database.records.VoteRedeem;
+import com.ruse.io.data.records.VoteRedeem;
 import com.ruse.util.Misc;
 import com.ruse.world.packages.discordbot.JavaCord;
 import com.ruse.world.entity.impl.player.Player;

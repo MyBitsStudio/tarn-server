@@ -30,6 +30,8 @@ public class TarnNormalTrack extends Track {
             if(task != null)
                 if(this.tasks.containsKey(task))
                     this.tasks.put(task, tasks.get(task));
+
+        readjust();
     }
 
     public boolean completed(TarnNormalTasks task){
@@ -163,5 +165,20 @@ public class TarnNormalTrack extends Track {
                 getPlayer().save();
             }
         }
+    }
+
+    public void readjust(){
+        for(TarnNormalTasks task : tasks.keySet()) {
+            if (tasks.get(task)){
+                addXP(task.getXp());
+
+            }
+        }
+        while(xp >= maxLevel){
+            int left = xp - maxLevel;
+            position++;
+            xp = left;
+        }
+        player.save();
     }
 }
