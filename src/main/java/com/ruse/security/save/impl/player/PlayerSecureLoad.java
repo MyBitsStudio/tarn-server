@@ -35,6 +35,7 @@ import com.ruse.world.packages.slot.SlotBonus;
 import com.ruse.world.packages.starter.StartShopItems;
 import com.ruse.world.packages.tracks.ProgressReward;
 import com.ruse.world.packages.tracks.impl.starter.StarterTasks;
+import com.ruse.world.packages.tracks.impl.tarn.elite.TarnEliteTasks;
 import com.ruse.world.packages.tracks.impl.tarn.normal.TarnNormalTasks;
 import com.ruse.world.packages.vip.Donation;
 
@@ -870,11 +871,31 @@ public class PlayerSecureLoad extends SecureLoad {
         }
 
         if(object.has("normal-xp")) {
-            player.getStarter().setXp(object.get("normal-xp").getAsInt());
+            player.getTarnNormal().setXp(object.get("normal-xp").getAsInt());
         }
 
         if(object.has("normal-rewards")) {
             player.getTarnNormal().getRewards().setRewards(builder.fromJson(object.get("normal-rewards"),
+                    new TypeToken<List<ProgressReward>>() {
+                    }.getType()));
+        }
+
+        if(object.has("tarn-elite")) {
+            player.getTarnElite().setTasks(builder.fromJson(object.get("tarn-elite"),
+                    new TypeToken<Map<TarnEliteTasks, Boolean>>() {
+                    }.getType()));
+        }
+
+        if(object.has("elite-level")) {
+            player.getTarnElite().setPosition(object.get("elite-level").getAsInt());
+        }
+
+        if(object.has("elite-xp")) {
+            player.getTarnElite().setXp(object.get("elite-xp").getAsInt());
+        }
+
+        if(object.has("elite-rewards")) {
+            player.getTarnElite().getRewards().setRewards(builder.fromJson(object.get("elite-rewards"),
                     new TypeToken<List<ProgressReward>>() {
                     }.getType()));
         }

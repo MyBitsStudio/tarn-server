@@ -259,6 +259,11 @@ public class PlayerSecureSave extends SecureSave {
         object.addProperty("normal-xp", player.getTarnNormal().getXp());
         object.add("normal-rewards", builder.toJsonTree(player.getTarnNormal().getRewards().getRewards()));
 
+        object.add("tarn-elite", builder.toJsonTree(player.getTarnElite().getTasks()));
+        object.addProperty("elite-level", player.getTarnElite().getPosition());
+        object.addProperty("elite-xp", player.getTarnElite().getXp());
+        object.add("elite-rewards", builder.toJsonTree(player.getTarnElite().getRewards().getRewards()));
+
         object.add("charges", builder.toJsonTree(player.getItems().getCharges()));
 
         object.add("points", builder.toJsonTree(player.getPoints().getPoints()));

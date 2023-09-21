@@ -1,6 +1,7 @@
 package com.ruse.world.packages.tracks.impl.tarn.elite;
 
 import com.ruse.world.packages.tracks.impl.TaskReward;
+import com.ruse.world.packages.tracks.impl.tarn.normal.TarnNormalTasks;
 import lombok.Getter;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -11,50 +12,50 @@ import java.util.List;
 @Getter
 public enum TarnEliteTasks {
 
-    TASK_001(0, 10, "Kill 25000 Death God", new TaskReward(23209, 1)
-            , 9915, 1),
-    TASK_002(0, 10, "Kill 25000 Golden Golem", new TaskReward(23209, 1)
-            , 9024, 1),
-    TASK_003(0, 10, "Kill 25000 Malvek", new TaskReward(23210, 1)
-            , 8002, 1),
-    TASK_004(0, 10, "Kill 25000 Galvek", new TaskReward(23210, 1)
-            , 8000, 1),
-    TASK_005(0, 10, "Kill 25000 Bowser", new TaskReward(23211, 1)
-            , 9919, 1),
-    TASK_006(0, 10, "Kill 25000 Slender Man", new TaskReward(23211, 1)
-            , 9913, 1),
-    TASK_007(0, 10, "Kill 25000 Agumon", new TaskReward(23212, 1)
-            , 3020, 1),
-    TASK_008(0, 10, "Kill 25000 Queen Fazula", new TaskReward(23213, 1)
-            , 1311, 1),
-    TASK_009(0, 10, "Kill 25000 Lord Yasuda", new TaskReward(23213, 1)
-            , 1313, 1),
-    TASK_010(0, 10, "Kill 25000 Sasuke", new TaskReward(23214, 1)
-            , 9914, 1),
+    TASK_001(0, 10, "Kill 25000 Death God", new TaskReward(23147, 3)
+            , 9915, 25000),
+    TASK_002(0, 10, "Kill 25000 Golden Golem", new TaskReward(20502, 2)
+            , 9024, 25000),
+    TASK_003(0, 10, "Kill 25000 Malvek", new TaskReward(604, 5)
+            , 8002, 25000),
+    TASK_004(0, 10, "Kill 25000 Galvek", new TaskReward(22124, 10)
+            , 8000, 25000),
+    TASK_005(0, 10, "Kill 25000 Bowser", new TaskReward(23147, 3)
+            , 9919, 25000),
+    TASK_006(0, 10, "Kill 25000 Slender Man", new TaskReward(20502, 2)
+            , 9913, 25000),
+    TASK_007(0, 10, "Kill 25000 Agumon", new TaskReward(604, 5)
+            , 3020, 25000),
+    TASK_008(0, 10, "Kill 25000 Queen Fazula", new TaskReward(20502, 2)
+            , 1311, 25000),
+    TASK_009(0, 10, "Kill 25000 Lord Yasuda", new TaskReward(23107, 5)
+            , 1313, 25000),
+    TASK_010(0, 10, "Kill 25000 Sasuke", new TaskReward(22124, 10)
+            , 9914, 25000),
 
-    TASK_050(0, 15, "Kill 15000 Ag'thomoth", new TaskReward(23209, 1)
-            , 3013, 1),
-    TASK_051(0, 15, "Kill 15000 Zernath", new TaskReward(23210, 1)
-            , 3831, 1),
-    TASK_052(0, 15, "Kill 15000 Sanctum Golem", new TaskReward(23211, 1)
-            , 9017, 1),
-    TASK_053(0, 15, "Kill 15000 Varthramoth", new TaskReward(23212, 1)
-            , 3016, 1),
-    TASK_054(0, 15, "Kill 15000 Exoden", new TaskReward(23213, 1)
-            , 12239, 1),
+    TASK_050(0, 15, "Kill 15000 Ag'thomoth", new TaskReward(23250, 1)
+            , 3013, 15000),
+    TASK_051(0, 15, "Kill 15000 Zernath", new TaskReward(23251, 1)
+            , 3831, 15000),
+    TASK_052(0, 15, "Kill 15000 Sanctum Golem", new TaskReward(23252, 1)
+            , 9017, 15000),
+    TASK_053(0, 15, "Kill 15000 Varthramoth", new TaskReward(23251, 1)
+            , 3016, 15000),
+    TASK_054(0, 15, "Kill 15000 Exoden", new TaskReward(23251, 1)
+            , 12239, 15000),
 
-    TASK_100(1, 10, "Finish 1000 Slayer Tasks", new TaskReward(23255, 1)
-            , -1, 10),
-    TASK_101(1, 15, "Finish 2500 Slayer Tasks", new TaskReward(23255, 2)
-            , -1, 25),
-    TASK_102(1, 20, "Finish 5000 Slayer Tasks", new TaskReward(23255, 3)
-            , -1, 50),
-    TASK_103(1, 10, "Dissolve 500 Pieces", new TaskReward(20502, 1)
-            , -1, 50),
-    TASK_104(1, 15, "Dissolve 1000 Pieces", new TaskReward(20502, 2)
-            , -1, 100),
-    TASK_105(1, 20, "Dissolve 5000 Pieces", new TaskReward(20502, 3)
-            , -1, 250),
+    TASK_100(1, 10, "Finish 1000 Slayer Tasks", new TaskReward(25102, 10)
+            , -1, 1000),
+    TASK_101(1, 15, "Finish 2500 Slayer Tasks", new TaskReward(23104, 5)
+            , -1, 2500),
+    TASK_102(1, 20, "Finish 5000 Slayer Tasks", new TaskReward(5023, 50000)
+            , -1, 5000),
+    TASK_103(1, 10, "Dissolve 500 Pieces", new TaskReward(10835, 5000)
+            , -1, 500),
+    TASK_104(1, 15, "Dissolve 1000 Pieces", new TaskReward(10835, 10000)
+            , -1, 1000),
+    TASK_105(1, 20, "Dissolve 5000 Pieces", new TaskReward(10835, 50000)
+            , -1, 5000),
    ;
 
 
@@ -135,5 +136,21 @@ public enum TarnEliteTasks {
             }
         }
         return null;
+    }
+
+    public static List<TarnEliteTasks> slayers(){
+        List<TarnEliteTasks> tasks = new ArrayList<>();
+        tasks.add(TASK_100);
+        tasks.add(TASK_101);
+        tasks.add(TASK_102);
+        return tasks;
+    }
+
+    public static List<TarnEliteTasks> dissolve(){
+        List<TarnEliteTasks> tasks = new ArrayList<>();
+        tasks.add(TASK_103);
+        tasks.add(TASK_104);
+        tasks.add(TASK_105);
+        return tasks;
     }
 }

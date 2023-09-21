@@ -7,7 +7,7 @@
       9837, 9027, 9835, 9911, 9922
     ],
     "tables" : [
-      "GENERAL"
+      "GENERAL", "COMMON"
     ],
     "custom" : {
       "name" : "Tier1",
@@ -101,7 +101,7 @@
       8014, 8003, 811, 9817
     ],
     "tables" : [
-      "GENERAL"
+      "GENERAL", "COMMON"
     ],
     "custom" : {
       "name" : "Tier1s",
@@ -195,7 +195,7 @@
       92, 3313, 1906
     ],
     "tables" : [
-      "GENERAL"
+      "GENERAL", "COMMON"
     ],
     "custom" : {
       "name" : "Tier1r",
@@ -281,7 +281,7 @@
       9836
     ],
     "tables" : [
-      "GENERAL"
+      "GENERAL", "COMMON"
     ],
     "custom" : {
       "name" : "Tier1r",
@@ -368,7 +368,7 @@
       1743
     ],
     "tables": [
-      "GENERAL"
+      "GENERAL", "COMMON"
     ],
     "custom": {
       "name": "Tier2",
@@ -462,7 +462,7 @@
       1744, 1745
     ],
     "tables": [
-      "GENERAL"
+      "GENERAL", "COMMON"
     ],
     "custom": {
       "name": "Tier2s",
@@ -548,7 +548,7 @@
       1738, 1739
     ],
     "tables" : [
-      "GENERAL"
+      "GENERAL", "COMMON"
     ],
     "custom" : {
       "name" : "Tier2r",
@@ -610,7 +610,7 @@
       1740, 1741
     ],
     "tables" : [
-      "GENERAL"
+      "GENERAL", "COMMON"
     ],
     "custom" : {
       "name" : "Tier3",
@@ -696,7 +696,7 @@
       9025, 9026
     ],
     "tables" : [
-      "GENERAL"
+      "GENERAL", "COMMON"
     ],
     "custom" : {
       "name" : "Tier4",
@@ -774,7 +774,7 @@
       8008, 2342
     ],
     "tables" : [
-      "GENERAL"
+      "GENERAL", "COMMON"
     ],
     "custom" : {
       "name" : "Tier5",
@@ -860,7 +860,7 @@
       9839
     ],
     "tables" : [
-      "GENERAL"
+      "GENERAL", "COMMON"
     ],
     "custom" : {
       "name" : "Tier6",
@@ -938,7 +938,7 @@
        9806
     ],
     "tables" : [
-      "GENERAL"
+      "GENERAL", "COMMON"
     ],
     "custom" : {
       "name" : "Tier6",
@@ -1016,7 +1016,7 @@
       4972
     ],
     "tables" : [
-      "GENERAL"
+      "GENERAL", "COMMON"
     ],
     "custom" : {
       "name" : "Tier7",
@@ -1110,7 +1110,7 @@
       1746
     ],
     "tables" : [
-      "GENERAL"
+      "GENERAL", "COMMON"
     ],
     "custom" : {
       "name" : "Tier7",
@@ -1204,7 +1204,7 @@
       3305
     ],
     "tables" : [
-      "GENERAL"
+      "GENERAL", "COMMON"
     ],
     "custom" : {
       "name" : "Tier8",
@@ -1290,7 +1290,7 @@
       3021
     ],
     "tables" : [
-      "GENERAL"
+      "GENERAL", "COMMON"
     ],
     "custom" : {
       "name" : "Tier8",
@@ -1376,7 +1376,7 @@
       125
     ],
     "tables" : [
-      "GENERAL"
+      "GENERAL", "COMMON"
     ],
     "custom" : {
       "name" : "Tier9",
@@ -1497,6 +1497,14 @@
           "announce" : false
         },
         {
+          "id" : 10946,
+          "chance" : 0,
+          "min" : 1,
+          "max" : 5,
+          "modifier" : 9995.00,
+          "announce" : false
+        },
+        {
           "id" : 19000,
           "chance" : 0,
           "min" : 1,
@@ -1559,6 +1567,14 @@
           "announce" : false
         },
         {
+          "id" : 10946,
+          "chance" : 0,
+          "min" : 1,
+          "max" : 5,
+          "modifier" : 9995.00,
+          "announce" : false
+        },
+        {
           "id" : 19000,
           "chance" : 0,
           "min" : 1,
@@ -1618,6 +1634,14 @@
           "min" : 1000,
           "max" : 25000,
           "modifier" : 125.00,
+          "announce" : false
+        },
+        {
+          "id" : 10946,
+          "chance" : 0,
+          "min" : 1,
+          "max" : 5,
+          "modifier" : 9995.00,
           "announce" : false
         },
         {
@@ -1908,6 +1932,30 @@
           "min" : 10000,
           "max" : 100000,
           "modifier" : 125.00,
+          "announce" : false
+        },
+        {
+          "id" : 10946,
+          "chance" : 0,
+          "min" : 1,
+          "max" : 5,
+          "modifier" : 4995.00,
+          "announce" : false
+        },
+        {
+          "id" : 23057,
+          "chance" : 1,
+          "min" : 1,
+          "max" : 1,
+          "modifier" : 9995.00,
+          "announce" : false
+        },
+        {
+          "id" : 23058,
+          "chance" : 1,
+          "min" : 1,
+          "max" : 1,
+          "modifier" : 19995.00,
           "announce" : false
         },
         {
@@ -3115,60 +3163,68 @@
       "weight" : 8.79,
       "drops" : [
         {
-          "id": 19481,
-          "count": [
-            1
-          ],
-          "modifier" : 3665
+          "id" : 19481,
+          "chance" : 1,
+          "min" : 1,
+          "max" : 1,
+          "modifier" : 3665.00,
+          "announce" : false
         },
         {
-          "id": 23211,
-          "count": [
-            1
-          ],
-          "modifier" : 2665
+          "id" : 23211,
+          "chance" : 1,
+          "min" : 1,
+          "max" : 1,
+          "modifier" : 2665.00,
+          "announce" : false
         },
         {
-          "id": 19800,
-          "count": [
-            1
-          ],
-          "modifier" : 2625
+          "id" : 19800,
+          "chance" : 1,
+          "min" : 1,
+          "max" : 1,
+          "modifier" : 2625.00,
+          "announce" : false
         },
         {
-          "id": 14056,
-          "count": [
-            1
-          ],
-          "modifier" : 2625
+          "id" : 14056,
+          "chance" : 1,
+          "min" : 1,
+          "max" : 1,
+          "modifier" : 2625.00,
+          "announce" : false
         },
         {
-          "id": 20060,
-          "count": [
-            1
-          ],
-          "modifier" : 2625
+          "id" : 20060,
+          "chance" : 1,
+          "min" : 1,
+          "max" : 1,
+          "modifier" : 2625.00,
+          "announce" : false
         },
         {
-          "id": 20062,
-          "count": [
-            1
-          ],
-          "modifier" : 2625
+          "id" : 20062,
+          "chance" : 1,
+          "min" : 1,
+          "max" : 1,
+          "modifier" : 2625.00,
+          "announce" : false
         },
         {
-          "id": 20063,
-          "count": [
-            1
-          ],
-          "modifier" : 2625
+          "id" : 20063,
+          "chance" : 1,
+          "min" : 1,
+          "max" : 1,
+          "modifier" : 1945.00,
+          "announce" : false
         },
         {
-          "id": 20073,
-          "count": [
-            1
-          ],
-          "modifier" : 2625
+          "id" : 20073,
+          "chance" : 1,
+          "min" : 1,
+          "max" : 1,
+          "modifier" : 1945.00,
+          "announce" : false
         }
       ]
     }
@@ -3185,60 +3241,68 @@
       "weight" : 9.79,
       "drops" : [
         {
-          "id": 19491,
-          "count": [
-            1
-          ],
-          "modifier" : 3965
+          "id" : 19491,
+          "chance" : 1,
+          "min" : 1,
+          "max" : 1,
+          "modifier" : 3965.00,
+          "announce" : false
         },
         {
-          "id": 23212,
-          "count": [
-            1
-          ],
-          "modifier" : 2965
+          "id" : 23212,
+          "chance" : 1,
+          "min" : 1,
+          "max" : 1,
+          "modifier" : 2965.00,
+          "announce" : false
         },
         {
-          "id": 22152,
-          "count": [
-            1
-          ],
-          "modifier" : 2965
+          "id" : 22152,
+          "chance" : 1,
+          "min" : 1,
+          "max" : 1,
+          "modifier" : 2965.00,
+          "announce" : false
         },
         {
-          "id": 22153,
-          "count": [
-            1
-          ],
-          "modifier" : 2965
+          "id" : 22153,
+          "chance" : 1,
+          "min" : 1,
+          "max" : 1,
+          "modifier" : 2965.00,
+          "announce" : false
         },
         {
-          "id": 22154,
-          "count": [
-            1
-          ],
-          "modifier" : 2965
+          "id" : 22154,
+          "chance" : 1,
+          "min" : 1,
+          "max" : 1,
+          "modifier" : 2965.00,
+          "announce" : false
         },
         {
-          "id": 22155,
-          "count": [
-            1
-          ],
-          "modifier" :2965
+          "id" : 22155,
+          "chance" : 1,
+          "min" : 1,
+          "max" : 1,
+          "modifier" : 2965.00,
+          "announce" : false
         },
         {
-          "id": 22156,
-          "count": [
-            1
-          ],
-          "modifier" : 2965
+          "id" : 22156,
+          "chance" : 1,
+          "min" : 1,
+          "max" : 1,
+          "modifier" : 2965.00,
+          "announce" : false
         },
         {
-          "id": 22157,
-          "count": [
-            1
-          ],
-          "modifier" : 2965
+          "id" : 22157,
+          "chance" : 1,
+          "min" : 1,
+          "max" : 1,
+          "modifier" : 2965.00,
+          "announce" : false
         }
       ]
     }
@@ -3255,46 +3319,52 @@
       "weight" : 10.79,
       "drops" : [
         {
-          "id": 20589,
-          "count": [
-            1
-          ],
-          "modifier" : 4365
+          "id" : 20589,
+          "chance" : 1,
+          "min" : 1,
+          "max" : 1,
+          "modifier" : 4365.00,
+          "announce" : false
         },
         {
-          "id": 23213,
-          "count": [
-            1
-          ],
-          "modifier" :3665
+          "id" : 23213,
+          "chance" : 1,
+          "min" : 1,
+          "max" : 1,
+          "modifier" : 3665.00,
+          "announce" : false
         },
         {
-          "id": 3723,
-          "count": [
-            1
-          ],
-          "modifier" : 3265
+          "id" : 3723,
+          "chance" : 1,
+          "min" : 1,
+          "max" : 1,
+          "modifier" : 3265.00,
+          "announce" : false
         },
         {
-          "id": 3724,
-          "count": [
-            1
-          ],
-          "modifier" : 3265
+          "id" : 3724,
+          "chance" : 1,
+          "min" : 1,
+          "max" : 1,
+          "modifier" : 3265.00,
+          "announce" : false
         },
         {
-          "id": 3725,
-          "count": [
-            1
-          ],
-          "modifier" : 3265
+          "id" : 3725,
+          "chance" : 1,
+          "min" : 1,
+          "max" : 1,
+          "modifier" : 3265.00,
+          "announce" : false
         },
         {
-          "id": 3738,
-          "count": [
-            1
-          ],
-          "modifier" : 3265
+          "id" : 3738,
+          "chance" : 1,
+          "min" : 1,
+          "max" : 1,
+          "modifier" : 3265.00,
+          "announce" : false
         }
       ]
     }
@@ -3502,7 +3572,7 @@
       6430
     ],
     "tables" : [
-      "GENERAL"
+      "RARE", "UNCOMMON"
     ],
     "custom" : {
       "name" : "Tier12",
@@ -3540,7 +3610,7 @@
       1736
     ],
     "tables" : [
-      "GENERAL"
+      "RARE", "UNCOMMONG"
     ],
     "custom" : {
       "name" : "Tier12",

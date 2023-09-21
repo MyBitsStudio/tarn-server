@@ -245,6 +245,7 @@ public class DissolveItem {
             player.getPoints().add("dissolve", 1);
             AchievementHandler.progress(player, 1, 46, 49, 50, 71, 72, 92, 93);
             player.getTarnNormal().handleDissolveTasks(player.getPoints().get("dissolve"));
+            player.getTarnElite().handleDissolveTasks(player.getPoints().get("dissolve"));
         }
 
         return false;

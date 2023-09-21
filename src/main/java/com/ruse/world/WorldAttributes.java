@@ -8,12 +8,11 @@ import lombok.Getter;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
+@Getter
 public class WorldAttributes {
 
-    @Getter
-    private Map<String, Boolean> settings = new ConcurrentHashMap<>();
-    @Getter
-    private Map<String, Integer> amounts = new ConcurrentHashMap<>();
+    private final Map<String, Boolean> settings = new ConcurrentHashMap<>();
+    private final Map<String, Integer> amounts = new ConcurrentHashMap<>();
 
     public WorldAttributes(){
         defaultSettings();

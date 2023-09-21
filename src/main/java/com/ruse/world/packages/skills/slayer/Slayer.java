@@ -211,16 +211,11 @@ public class Slayer {
         randomBox(player);
 
         player.getTarnNormal().handleSlayerTasks(total);
+        player.getTarnElite().handleSlayerTasks(total);
 
         player.getSeasonPass().incrementExp(265, false);
 
-        AchievementHandler.progress(player, 1, 45);
-        AchievementHandler.progress(player, 1, 47);
-        AchievementHandler.progress(player, 1, 48);
-        AchievementHandler.progress(player, 1, 69);
-        AchievementHandler.progress(player, 1, 70);
-        AchievementHandler.progress(player, 1, 90);
-        AchievementHandler.progress(player, 1, 91);
+        AchievementHandler.progress(player, 1, 45, 47, 48, 69, 70, 90, 91);
 
         PlayerPanel.refreshPanel(player);
 

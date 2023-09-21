@@ -129,4 +129,40 @@ public class TarnEliteTrack extends Track {
             }
         }
     }
+
+    public void handleSlayerTasks(int amount) {
+        List<TarnEliteTasks> taska = TarnEliteTasks.slayers();
+        for(TarnEliteTasks task : taska) {
+            if (task != null) {
+                if (!tasks.containsKey(task))
+                    tasks.put(task, false);
+                if (!tasks.get(task)) {
+                    if (amount >= task.getCount()) {
+                        tasks.put(task, true);
+                        reward(task);
+                        addXP(task.getXp());
+                    }
+                }
+                getPlayer().save();
+            }
+        }
+    }
+
+    public void handleDissolveTasks(int amount) {
+        List<TarnEliteTasks> taska = TarnEliteTasks.dissolve();
+        for(TarnEliteTasks task : taska) {
+            if (task != null) {
+                if (!tasks.containsKey(task))
+                    tasks.put(task, false);
+                if (!tasks.get(task)) {
+                    if (amount >= task.getCount()) {
+                        tasks.put(task, true);
+                        reward(task);
+                        addXP(task.getXp());
+                    }
+                }
+                getPlayer().save();
+            }
+        }
+    }
 }

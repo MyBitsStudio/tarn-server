@@ -41,6 +41,7 @@ import com.ruse.world.packages.raid.Raid;
 import com.ruse.world.packages.raid.party.RaidParty;
 import com.ruse.world.packages.skills.slayer.Slayer;
 import com.ruse.world.packages.starter.StarterShop;
+import com.ruse.world.packages.tracks.impl.tarn.elite.TarnEliteTrack;
 import com.ruse.world.packages.tracks.impl.tarn.normal.TarnNormalTrack;
 import com.ruse.world.packages.tradingpost.TradingPost;
 import com.ruse.world.packages.attendance.AttendanceManager;
@@ -3989,6 +3990,9 @@ public class Player extends Character {
     private StarterTrack starter = new StarterTrack(this);
     @Getter@Setter
     private TarnNormalTrack tarnNormal = new TarnNormalTrack(this);
+
+    @Getter@Setter
+    private TarnEliteTrack tarnElite = new TarnEliteTrack(this);
 
     @Getter@Setter
     private Scratch card;
