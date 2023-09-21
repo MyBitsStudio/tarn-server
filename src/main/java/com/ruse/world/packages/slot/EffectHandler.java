@@ -19,6 +19,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Objects;
 
 import static com.ruse.world.packages.combat.sets.SetPerk.AOE_3;
+import static com.ruse.world.packages.combat.sets.SetPerk.FIREWALL;
 
 public class EffectHandler {
 
@@ -51,6 +52,9 @@ public class EffectHandler {
             if(Objects.equals(p.getEquipment().getBonus().perk(), AOE_3)){
                 handleAoE(p, victim,
                         6);
+            }
+            if(Objects.equals(p.getEquipment().getBonus().perk(), FIREWALL)){
+                handleFirewall(p, victim);
             }
         }
 

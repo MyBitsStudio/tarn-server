@@ -54,4 +54,9 @@ public class CombatConstants {
         return player.getEquipment().containsAll(15005, 15006, 15007, 15008,
                 15200, 15201, 15100, 14915);
     }
+
+    public static boolean wearingTarnMaster(@NotNull Player player){
+        return player.getEquipment().containsAll(22232, 22239, 22237, 22233,
+                22234, 22235, 22236);
+    }
 }
