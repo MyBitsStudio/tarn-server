@@ -13,6 +13,7 @@ import com.ruse.world.entity.impl.player.Player;
 import com.ruse.world.packages.discordbot.JavaCord;
 import com.ruse.world.packages.voting.VoteHandler;
 
+import java.time.LocalDateTime;
 import java.util.*;
 import java.util.concurrent.ExecutionException;
 
@@ -38,7 +39,7 @@ public class SQLVote implements DatabasePost {
                         if (!Objects.equals(row.getString("username"), name)) {
                             continue;
                         }
-                        if (Objects.equals(row.getString("callback_date"), null)) {
+                        if (Objects.equals((LocalDateTime)row.getDate("callback_date"), null)) {
                             continue;
                         }
 

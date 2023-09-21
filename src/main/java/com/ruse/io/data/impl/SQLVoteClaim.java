@@ -23,6 +23,6 @@ public class SQLVoteClaim implements DatabasePost {
 
     @Override
     public String statement() {
-        return "UPDATE `core_votes` SET `claimed` = '1' WHERE `uid` = 'uid'";
+        return "UPDATE core_votes SET `claimed` = '1' WHERE `uid` = 'uid'";
     }
 }
