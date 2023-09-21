@@ -46,7 +46,8 @@ public class PlayerSettings {
         settings.put("fall-unlock", false); // donator calendar
 
         settings.put("last-login", 1);
-
+        
+        settings.put("normal-rewire", true);
     }
 
     public void setSetting(String key, Object value){

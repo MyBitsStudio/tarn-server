@@ -1,10 +1,11 @@
-package com.ruse.world.packages.tracks.impl.tarn.normal;
+package com.ruse.world.packages.tracks.impl.tarn.elite;
 
 import com.ruse.world.content.KillsTracker;
 import com.ruse.world.entity.impl.player.Player;
 import com.ruse.world.packages.johnachievementsystem.AchievementHandler;
 import com.ruse.world.packages.tracks.Track;
-import com.ruse.world.packages.tracks.impl.starter.StarterTasks;
+import com.ruse.world.packages.tracks.impl.tarn.normal.TarnNormalTasks;
+import com.ruse.world.packages.tracks.impl.tarn.normal.TarnNormalTrackRewards;
 import lombok.Getter;
 import org.jetbrains.annotations.NotNull;
 
@@ -14,38 +15,35 @@ import java.util.Map;
 import java.util.Objects;
 
 @Getter
-public class TarnNormalTrack extends Track {
+public class TarnEliteTrack extends Track {
 
-    private final Map<TarnNormalTasks, Boolean> tasks = new HashMap<>();
+    private final Map<TarnEliteTasks, Boolean> tasks = new HashMap<>();
 
     private int level = 0;
 
-    public TarnNormalTrack(Player player) {
+    public TarnEliteTrack(Player player) {
         super(player);
         setUp();
     }
 
-    public void setTasks(Map<TarnNormalTasks, Boolean> tasks) {
-        for(TarnNormalTasks task : tasks.keySet())
+    public void setTasks(Map<TarnEliteTasks, Boolean> tasks) {
+        for(TarnEliteTasks task : tasks.keySet())
             if(task != null)
                 if(this.tasks.containsKey(task))
                     this.tasks.put(task, tasks.get(task));
-
-        if(player.getPSettings().getBooleanValue("normal-rewire"))
-            readjust();
     }
 
-    public boolean completed(TarnNormalTasks task){
+    public boolean completed(TarnEliteTasks task){
         return tasks.containsKey(task) && tasks.get(task);
     }
 
     @Override
     public void sendInterfaceList() {
-        List< TarnNormalTasks> tasks = null;
+        List< TarnEliteTasks> tasks = null;
         switch(Integer.parseInt(player.getVariables().getInterfaceSettings()[2])) {
-            case 0 -> tasks =  TarnNormalTasks.getMonsterTasks();
-            case 1 -> tasks =  TarnNormalTasks.getSkillTasks();
-            case 2 -> tasks =  TarnNormalTasks.getBossTasks();
+            case 0 -> tasks =  TarnEliteTasks.getMonsterTasks();
+            case 1 -> tasks =  TarnEliteTasks.getSkillTasks();
+            case 2 -> tasks =  TarnEliteTasks.getBossTasks();
             default -> player.getPacketSender().sendMessage("Invalid task type.");
         }
 
@@ -53,7 +51,7 @@ public class TarnNormalTrack extends Track {
             return;
 
         for (int i = 0; i < Objects.requireNonNull(tasks).size(); i++) {
-            TarnNormalTasks task = tasks.get(i);
+            TarnEliteTasks task = tasks.get(i);
             if (this.tasks.containsKey(task)) {
                 if (this.tasks.get(task)) {
                     player.getPacketSender().sendString(161201 + i, "@gre@" + task.getTaskName());
@@ -72,7 +70,7 @@ public class TarnNormalTrack extends Track {
         this.hasPremium = false;
         this.position = 0;
         this.maxLevel = 115;
-        for(TarnNormalTasks task : TarnNormalTasks.values())
+        for(TarnEliteTasks task : TarnEliteTasks.values())
             tasks.put(task, false);
     }
 
@@ -90,7 +88,7 @@ public class TarnNormalTrack extends Track {
 
     public int getCompleted(){
         int completed = 0;
-        for(TarnNormalTasks task : tasks.keySet())
+        for(TarnEliteTasks task : tasks.keySet())
             if(tasks.get(task))
                 completed++;
         return completed;
@@ -105,7 +103,7 @@ public class TarnNormalTrack extends Track {
         }
     }
 
-    private void reward(@NotNull TarnNormalTasks task){
+    private void reward(@NotNull TarnEliteTasks task){
         player.getSeasonPass().incrementExp(95, false);
         player.getInventory().addDropIfFull(task.getReward().item(),
                 task.getReward().amount());
@@ -115,8 +113,8 @@ public class TarnNormalTrack extends Track {
     }
 
     public void handleKillCount(int npcId) {
-        List<TarnNormalTasks> taska = TarnNormalTasks.byKills(npcId);
-        for(TarnNormalTasks task : taska) {
+        List<TarnEliteTasks> taska = TarnEliteTasks.byKills(npcId);
+        for(TarnEliteTasks task : taska) {
             if (task != null) {
                 if (!tasks.containsKey(task))
                     tasks.put(task, false);
@@ -130,56 +128,5 @@ public class TarnNormalTrack extends Track {
                 getPlayer().save();
             }
         }
-    }
-
-    public void handleSlayerTasks(int amount) {
-        List<TarnNormalTasks> taska = TarnNormalTasks.slayers();
-        for(TarnNormalTasks task : taska) {
-            if (task != null) {
-                if (!tasks.containsKey(task))
-                    tasks.put(task, false);
-                if (!tasks.get(task)) {
-                    if (amount >= task.getCount()) {
-                        tasks.put(task, true);
-                        reward(task);
-                        addXP(task.getXp());
-                    }
-                }
-                getPlayer().save();
-            }
-        }
-    }
-
-    public void handleDissolveTasks(int amount) {
-        List<TarnNormalTasks> taska = TarnNormalTasks.dissolve();
-        for(TarnNormalTasks task : taska) {
-            if (task != null) {
-                if (!tasks.containsKey(task))
-                    tasks.put(task, false);
-                if (!tasks.get(task)) {
-                    if (amount >= task.getCount()) {
-                        tasks.put(task, true);
-                        reward(task);
-                        addXP(task.getXp());
-                    }
-                }
-                getPlayer().save();
-            }
-        }
-    }
-
-    public void readjust(){
-        for(TarnNormalTasks task : tasks.keySet()) {
-            if (tasks.get(task)){
-                addXP(task.getXp());
-            }
-        }
-        while(xp >= maxLevel){
-            int left = xp - maxLevel;
-            position++;
-            xp = left;
-        }
-        player.getPSettings().setSetting("normal-rewire", false);
-        player.save();
     }
 }
