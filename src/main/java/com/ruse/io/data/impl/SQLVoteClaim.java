@@ -13,7 +13,7 @@ public class SQLVoteClaim implements DatabasePost {
     public void execute(Player player, String... args) {
         ThreadProgressor.submit(true, () -> {
             try {
-                DataHandler.getInstance().sendStatement(statement().replace("uid", args[0])).get();
+                DataHandler.getInstance().sendStatement(statement().replace("change", args[0])).get();
             } catch (ExecutionException | InterruptedException e) {
                 throw new RuntimeException(e);
             }
@@ -23,6 +23,6 @@ public class SQLVoteClaim implements DatabasePost {
 
     @Override
     public String statement() {
-        return "UPDATE core_votes SET `claimed` = '1' WHERE `uid` = 'uid'";
+        return "UPDATE `core_votes` SET `claimed` = '1' WHERE `uid` = 'change'";
     }
 }
