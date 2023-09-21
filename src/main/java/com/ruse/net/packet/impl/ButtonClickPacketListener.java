@@ -117,6 +117,8 @@ public class ButtonClickPacketListener implements PacketListener {
                 return;
             }
         }
+        if(player.getKingdom().handleButtonClick(id))
+            return;
         if(player.getTradingPost().handleButtonClick(id)) {
             return;
         }

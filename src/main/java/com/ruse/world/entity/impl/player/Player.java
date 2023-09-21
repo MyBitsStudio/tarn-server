@@ -30,6 +30,7 @@ import com.ruse.world.content.DropLog.DropLogEntry;
 import com.ruse.world.content.KillsTracker.KillsEntry;
 import com.ruse.world.content.LoyaltyProgramme.LoyaltyTitles;
 import com.ruse.world.content.StarterTasks.StarterTaskAttributes;
+import com.ruse.world.content.kingdomsystem.Kingdom;
 import com.ruse.world.packages.johnachievementsystem.AchievementProgress;
 import com.ruse.world.packages.johnachievementsystem.Perk;
 import com.ruse.world.packages.johnachievementsystem.PerkType;
@@ -606,6 +607,8 @@ public class Player extends Character {
     private int godModeTimer;
     @Getter
     private final BestItems bestItems = new BestItems(this);
+    @Getter
+    private final Kingdom kingdom = new Kingdom(this);
     /**
      * Custom Combiner
      */
