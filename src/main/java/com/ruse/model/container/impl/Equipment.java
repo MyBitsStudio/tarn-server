@@ -19,6 +19,8 @@ import com.ruse.world.packages.combat.sets.SetBonus;
 import com.ruse.world.packages.combat.sets.SetBonuses;
 import com.ruse.world.packages.dialogue.DialogueManager;
 import com.ruse.world.packages.dialogue.impl.slot.UnequipSlotPerk;
+import com.ruse.world.packages.johnachievementsystem.AchievementHandler;
+import com.ruse.world.packages.johnachievementsystem.PerkType;
 import com.ruse.world.packages.slot.PerkEquip;
 import com.ruse.world.packages.slot.SlotBonus;
 import com.ruse.world.packages.slot.SlotEffect;
@@ -71,13 +73,83 @@ public class Equipment extends ItemContainer {
 		return this;
 	}
 
+	private int reduction(){
+		double defence = 0.0d;
+
+		if(getPlayer().getCombatBuilder().getStrategy() == null){
+			defence = getPlayer().getBonusManager().getDefenceBonus()[BonusManager.DEFENCE_SLASH] / 1_000;
+		} else {
+			switch (getPlayer().getCombatBuilder().getStrategy().getCombatType()) {
+				case MAGIC -> {
+					defence = getPlayer().getBonusManager().getDefenceBonus()[BonusManager.DEFENCE_MAGIC] / 1_000;
+				}
+				case MELEE -> {
+					defence = getPlayer().getBonusManager().getDefenceBonus()[BonusManager.DEFENCE_SLASH] / 1_000;
+				}
+				case RANGED -> {
+					defence = getPlayer().getBonusManager().getDefenceBonus()[BonusManager.DEFENCE_RANGE] / 1_000;
+				}
+
+			}
+		}
+
+		if(AchievementHandler.hasUnlocked(getPlayer(), PerkType.DEFENCE)){
+			defence *= (1 + (AchievementHandler.getPerkLevel(getPlayer(), PerkType.DEFENCE) * 0.05));
+		}
+
+		if (getPlayer().getEquipment().contains(15448)) {
+			defence *= 1.4;
+		}
+
+		if (getPlayer().getEquipment().contains(23088)) {
+			defence *= 1.2;
+		}
+
+		if(defence >= 1000)
+			defence = 1000;
+
+
+		return (int) defence;
+	}
+
+	private int absorb(){
+		double defence = 0.0d;
+		if(getPlayer().getCombatBuilder().getStrategy() == null){
+			defence = getPlayer().getBonusManager().getDefenceBonus()[BonusManager.ABSORB_MELEE];
+		} else {
+			switch (getPlayer().getCombatBuilder().getStrategy().getCombatType()) {
+				case MAGIC -> {
+					defence = getPlayer().getBonusManager().getDefenceBonus()[BonusManager.ABSORB_MAGIC];
+				}
+				case MELEE -> {
+					defence = getPlayer().getBonusManager().getDefenceBonus()[BonusManager.ABSORB_MELEE];
+				}
+				case RANGED -> {
+					defence = getPlayer().getBonusManager().getDefenceBonus()[BonusManager.ABSORB_RANGED];
+				}
+			}
+		}
+
+
+		if (getPlayer().getEquipment().contains(23088)) {
+			defence *= 1.2;
+		}
+
+		if(defence >= 900)
+			defence = 900;
+
+		return (int) defence;
+	}
+
 	private void equipStats(){
 		getPlayer().getPacketSender().sendTooltip(162602, "Melee Max : "+ BonusManager.formatNumber((MeleeMax.newMelee(getPlayer(), getPlayer()))));
 		getPlayer().getPacketSender().sendTooltip(162603, "Magic Max : "+ BonusManager.formatNumber((MagicMax.newMagic(getPlayer(), getPlayer()))));
 		getPlayer().getPacketSender().sendTooltip(162604, "Ranged Max : "+ BonusManager.formatNumber((RangeMax.newRange(getPlayer(), getPlayer()))));
 		getPlayer().getPacketSender().sendTooltip(162605, "Drop Rate : "+ DropCalculator.getDropChance(getPlayer(), 9837));
 		getPlayer().getPacketSender().sendTooltip(162606, "Double Drop : "+ DropCalculator.getDoubleDropChance(getPlayer(), 9837));
-		getPlayer().getPacketSender().sendTooltip(162607, "Set Bonus : "+ (getBonus() != null ? getBonus().name() : "None"));
+		getPlayer().getPacketSender().sendTooltip(162607, "Defence : "+ reduction());
+		getPlayer().getPacketSender().sendTooltip(162608, "Absorb : "+ absorb());
+		getPlayer().getPacketSender().sendTooltip(162609, "Set Bonus : "+ (getBonus() != null ? getBonus().name() : "None"));
 	}
 
 	@Override
@@ -402,7 +474,9 @@ public class Equipment extends ItemContainer {
 	}
 
 	private void sendAllPerks(){
-		getPlayer().getPacketSender().sendInterface(162700);
+		getPlayer().sendMessage("Currently being built");
+		//getPlayer().getPacketSender().sendInterface(162700);
+
 	}
 
 	public boolean handleContainer(int slot, int option, int id){
