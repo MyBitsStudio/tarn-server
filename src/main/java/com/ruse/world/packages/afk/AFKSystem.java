@@ -25,13 +25,7 @@ public class AFKSystem {
             if(timer % (100 * 11) == 0){
                 player.getInventory().add(5020, 1);
                 player.getPacketSender().sendMessage("You have been given a reward for being AFK.");
-                AchievementHandler.progress(player, 1, 8);
-                AchievementHandler.progress(player, 1, 20);
-                AchievementHandler.progress(player, 1, 34);
-                AchievementHandler.progress(player, 1, 35);
-                AchievementHandler.progress(player, 1, 58);
-                AchievementHandler.progress(player, 1, 59);
-                AchievementHandler.progress(player, 1, 80);
+                AchievementHandler.progress(player, 1, 8, 20, 34, 35, 58, 59, 80);
             }
         } else {
             timer = 0;
