@@ -111,9 +111,20 @@ public enum SlayerMonsters {
             true, false, new int[]{94, 295}),
     BYAKUYA(188, 2, 144, 189,
             true, false, new int[]{94, 295}),
-    CHARYBDIS(93117, 2, 144, 189,
+    CHARYBDIS(3117, 2, 144, 189,
             true, false, new int[]{94, 295}),
 
+    AVARYSS(9800, 2, 162, 199,
+            true, false, new int[]{99, 345}),
+    NYMORA(9802, 2, 162, 199,
+            true, false, new int[]{99, 345}),
+
+    HURRICANE(12843, 2, 179, 209,
+            true, false, new int[]{101, 378}),
+    VOLCANO(667, 2, 179, 209,
+            true, false, new int[]{101, 378}),
+    TORNADO(5861, 2, 179, 209,
+            true, false, new int[]{101, 378}),
 
     AGTHO(3013, 3, 92, 198,
             true, false, new int[]{25, 112}),

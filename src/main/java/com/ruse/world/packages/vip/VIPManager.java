@@ -33,15 +33,8 @@ public class VIPManager {
     }
 
     public static void progress(@NotNull Player player, int amount){
-        player.getSeasonPass().incrementExp(495 * amount, false);
-        AchievementHandler.progress(player, amount, 7);
-        AchievementHandler.progress(player, amount, 19);
-        AchievementHandler.progress(player, amount, 32);
-        AchievementHandler.progress(player, amount, 33);
-        AchievementHandler.progress(player, amount, 56);
-        AchievementHandler.progress(player, amount, 57);
-        AchievementHandler.progress(player, amount, 78);
-        AchievementHandler.progress(player, amount, 79);
+        player.getSeasonPass().incrementExp(4950 * amount, false);
+        AchievementHandler.progress(player, amount, 7, 19, 32, 33, 56, 57, 78, 79);
     }
 
     public static int modify(Player player, int amount){

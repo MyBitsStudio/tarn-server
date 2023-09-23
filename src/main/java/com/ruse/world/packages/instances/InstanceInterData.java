@@ -6,6 +6,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.Arrays;
 
+@Getter
 public enum InstanceInterData {
 
     /**
@@ -61,6 +62,24 @@ public enum InstanceInterData {
     CHARYBDIS("Charybdis", "T16",
             new Item(10835, 600), 16, 15, 3117,
             InstanceType.MULTI),
+
+    AVARYSS("Avaryss", "T17",
+            new Item(10835, 750), 8, 15, 9800,
+            InstanceType.MULTI),
+    NYMORA("Nymora", "T17",
+            new Item(10835, 750), 8, 15, 9802,
+            InstanceType.MULTI),
+
+    HURRICANE("Hurricane", "T18",
+            new Item(10835, 875), 8, 15, 12843,
+            InstanceType.MULTI),
+    VOLCANO("Volcano", "T18",
+            new Item(10835, 875), 8, 15, 667,
+            InstanceType.MULTI),
+    TORNADO("Tornado", "T18",
+            new Item(10835, 875), 8, 15, 5861,
+            InstanceType.MULTI),
+
 
     AGTHOMOTH("Ag'thomoth", "T10",
          new Item(995, 25000), 1, 20, 3013,
@@ -201,13 +220,9 @@ public enum InstanceInterData {
 //            InstanceType.EVENT),
     ;
 
-    @Getter
     private final String name, req;
-    @Getter
     private final Item cost;
-    @Getter
     private final int spawns, cap, npcId;
-    @Getter
     private final InstanceType type;
 
     InstanceInterData(String name, String req,  Item cost,

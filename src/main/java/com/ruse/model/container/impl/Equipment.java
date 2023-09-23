@@ -80,15 +80,9 @@ public class Equipment extends ItemContainer {
 			defence = getPlayer().getBonusManager().getDefenceBonus()[BonusManager.DEFENCE_SLASH] / 1_000;
 		} else {
 			switch (getPlayer().getCombatBuilder().getStrategy().getCombatType()) {
-				case MAGIC -> {
-					defence = getPlayer().getBonusManager().getDefenceBonus()[BonusManager.DEFENCE_MAGIC] / 1_000;
-				}
-				case MELEE -> {
-					defence = getPlayer().getBonusManager().getDefenceBonus()[BonusManager.DEFENCE_SLASH] / 1_000;
-				}
-				case RANGED -> {
-					defence = getPlayer().getBonusManager().getDefenceBonus()[BonusManager.DEFENCE_RANGE] / 1_000;
-				}
+				case MAGIC -> defence = getPlayer().getBonusManager().getDefenceBonus()[BonusManager.DEFENCE_MAGIC] / 1_000;
+				case MELEE -> defence = getPlayer().getBonusManager().getDefenceBonus()[BonusManager.DEFENCE_SLASH] / 1_000;
+				case RANGED -> defence = getPlayer().getBonusManager().getDefenceBonus()[BonusManager.DEFENCE_RANGE] / 1_000;
 
 			}
 		}
@@ -118,15 +112,9 @@ public class Equipment extends ItemContainer {
 			defence = getPlayer().getBonusManager().getDefenceBonus()[BonusManager.ABSORB_MELEE];
 		} else {
 			switch (getPlayer().getCombatBuilder().getStrategy().getCombatType()) {
-				case MAGIC -> {
-					defence = getPlayer().getBonusManager().getDefenceBonus()[BonusManager.ABSORB_MAGIC];
-				}
-				case MELEE -> {
-					defence = getPlayer().getBonusManager().getDefenceBonus()[BonusManager.ABSORB_MELEE];
-				}
-				case RANGED -> {
-					defence = getPlayer().getBonusManager().getDefenceBonus()[BonusManager.ABSORB_RANGED];
-				}
+				case MAGIC -> defence = getPlayer().getBonusManager().getDefenceBonus()[BonusManager.ABSORB_MAGIC];
+				case MELEE -> defence = getPlayer().getBonusManager().getDefenceBonus()[BonusManager.ABSORB_MELEE];
+				case RANGED -> defence = getPlayer().getBonusManager().getDefenceBonus()[BonusManager.ABSORB_RANGED];
 			}
 		}
 
@@ -326,6 +314,10 @@ public class Equipment extends ItemContainer {
 	public boolean hasTripleShot(){
 		return slotBonuses[WEAPON_SLOT].getEffect() == SlotEffect.MULTI_SHOT
 				&& slotBonuses[WEAPON_SLOT].getBonus() == 3;
+	}
+
+	public boolean hasPosionIvy(){
+		return get(AMMUNITION_SLOT).getId() == 15222;
 	}
 
 	public boolean hasDoubleShot(){

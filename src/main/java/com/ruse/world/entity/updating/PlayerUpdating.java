@@ -342,7 +342,7 @@ public class PlayerUpdating {
 		if (flag.flagged(Flag.ANIMATION) && target.getAnimation() != null) {
 			mask |= 0x8;
 		}
-		if (flag.flagged(Flag.FORCED_CHAT) && target.getForcedChat().length() > 0) {
+		if (flag.flagged(Flag.FORCED_CHAT) && !target.getForcedChat().isEmpty()) {
 			mask |= 0x4;
 		}
 		if (flag.flagged(Flag.CHAT) && !noChat
@@ -380,7 +380,7 @@ public class PlayerUpdating {
 		if (flag.flagged(Flag.ANIMATION) && target.getAnimation() != null) {
 			updateAnimation(builder, target);
 		}
-		if (flag.flagged(Flag.FORCED_CHAT) && target.getForcedChat().length() > 0) {
+		if (flag.flagged(Flag.FORCED_CHAT) && !target.getForcedChat().isEmpty()) {
 			updateForcedChat(builder, target);
 		}
 		if (flag.flagged(Flag.CHAT) && !noChat

@@ -21,7 +21,7 @@ public enum Hitmask {
 	/*
 	 * A green hitmask representing a poison hit
 	 */
-	RED2,
+	POISON,
 
 	/*
 	 * A light-yellow hitmask
