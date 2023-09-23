@@ -4074,6 +4074,84 @@
     }
   },
   {
+    "id" : [
+      126
+    ],
+    "tables" : [
+      "UNCOMMON", "RARE"
+    ],
+    "custom" : {
+      "name" : "Daily Coin",
+      "weight" : 9.79,
+      "drops" : [
+        {
+          "id" : 995,
+          "chance" : 0,
+          "min" : 10000,
+          "max" : 100000,
+          "modifier" : 445.00,
+          "announce" : false
+        },
+        {
+          "id" : 995,
+          "chance" : 0,
+          "min" : 25000,
+          "max" : 250000,
+          "modifier" : 685.00,
+          "announce" : false
+        },
+        {
+          "id" : 995,
+          "chance" : 0,
+          "min" : 50000,
+          "max" : 500000,
+          "modifier" : 995.00,
+          "announce" : false
+        },
+        {
+          "id" : 995,
+          "chance" : 0,
+          "min" : 100000,
+          "max" : 1000000,
+          "modifier" : 1695.00,
+          "announce" : false
+        },
+        {
+          "id" : 10835,
+          "chance" : 0,
+          "min" : 25,
+          "max" : 250,
+          "modifier" : 865.00,
+          "announce" : false
+        },
+        {
+          "id" : 10835,
+          "chance" : 0,
+          "min" : 50,
+          "max" : 500,
+          "modifier" : 1265.00,
+          "announce" : false
+        },
+        {
+          "id" : 10835,
+          "chance" : 0,
+          "min" : 100,
+          "max" : 1000,
+          "modifier" : 1865.00,
+          "announce" : false
+        },
+        {
+          "id" : 10835,
+          "chance" : 0,
+          "min" : 250,
+          "max" : 2500,
+          "modifier" : 3296.00,
+          "announce" : false
+        }
+      ]
+    }
+  },
+  {
     "_comment" : "Master Instances"
   },
   {

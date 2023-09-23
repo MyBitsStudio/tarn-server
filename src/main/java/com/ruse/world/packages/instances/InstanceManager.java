@@ -169,6 +169,8 @@ public class InstanceManager {
                     data.getNpcId(), data.getSpawns(), cap);
             case 1880 -> new IronmanInstance(player,
                     data.getNpcId(), data.getSpawns(), cap);
+            case 126 -> new MultiBossNormalInstance(player,
+                    data.getNpcId(), data.getSpawns(), cap);
             default -> null;
         };
 

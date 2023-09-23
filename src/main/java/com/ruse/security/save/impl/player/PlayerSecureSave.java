@@ -168,6 +168,7 @@ public class PlayerSecureSave extends SecureSave {
         object.add("slayer-task", builder.toJsonTree(player.getSlayer().getTask()));
         object.add("slayer-last-task", builder.toJsonTree(player.getSlayer().getLastTask()));
         object.addProperty("slayer-streak", player.getSlayer().getStreak());
+        object.addProperty("slayer-amount", player.getSlayer().getTotal());
 
         object.add("killed-players", builder.toJsonTree(player.getPlayerKillingAttributes().getKilledPlayers()));
         object.addProperty("random-coffin",
@@ -278,6 +279,8 @@ public class PlayerSecureSave extends SecureSave {
 
 
         object.add("timers", builder.toJsonTree(player.getTimers().save()));
+
+        object.add("daily-claims", builder.toJsonTree(player.getPlayerDailies().getClaimed()));
 
         return this;
     }

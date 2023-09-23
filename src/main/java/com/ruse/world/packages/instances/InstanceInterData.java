@@ -117,6 +117,10 @@ public enum InstanceInterData {
         new Item(995, 75000), 4, 5, 1880,
     InstanceType.SPECIAL),
 
+    DAILY_COIN("Daily Coin", "Daily Coin Scroll",
+            new Item(23165, 1), 16, 10, 126,
+            InstanceType.SPECIAL),
+
     FALL("Fall Boss", "Fall Event/T17",
             new Item(10835, 1000), 1, 15, 6430,
             InstanceType.EVENT),

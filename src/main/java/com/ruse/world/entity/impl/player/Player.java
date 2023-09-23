@@ -38,6 +38,7 @@ import com.ruse.world.content.tbdminigame.Lobby;
 import com.ruse.world.entity.impl.player.timers.PlayerTimers;
 import com.ruse.world.packages.afk.AFKSystem;
 import com.ruse.world.packages.loyalty.LoyaltyManager;
+import com.ruse.world.packages.plugin.impl.RaidPlugin;
 import com.ruse.world.packages.raid.Raid;
 import com.ruse.world.packages.raid.party.RaidParty;
 import com.ruse.world.packages.skills.slayer.Slayer;
@@ -3985,6 +3986,12 @@ public class Player extends Character {
 
     @Getter@Setter
     private BossPlugin bossPlugin = new BossPlugin(this);
+
+    @Getter@Setter
+    private RaidPlugin raidPlugin = new RaidPlugin(this);
+
+    @Getter@Setter
+    private PlayerDaily playerDailies = new PlayerDaily();
 
     @Getter@Setter
     private Gamemode mode = new Temp();

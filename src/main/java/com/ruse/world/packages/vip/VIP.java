@@ -167,12 +167,7 @@ public class VIP {
     }
 
     public void onLogin(){
-        if(WorldCalendar.getInstance().getDay() != claimedTicket && player.getVip().getRank() > 0){
-            claimedTicket = WorldCalendar.getInstance().getDay();
-            int tickets = player.getVip().getRank();
-            player.getInventory().addDropIfFull(23003, tickets);
-            player.getPacketSender().sendMessage("You have gained " + tickets + " VIP tickets.");
-        }
+
     }
 
     public void sendInterface(){

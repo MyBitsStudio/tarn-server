@@ -31,6 +31,13 @@ public abstract class Plugin {
         vars.put("misc", new LinkedHashMap<>());
     }
 
+    public void reset(){
+        vars.clear();
+        settings.clear();
+        vars.put("damage", new LinkedHashMap<>());
+        vars.put("count", new LinkedHashMap<>());
+        vars.put("misc", new LinkedHashMap<>());
+    }
 
     public long getDamage(String name){
         return vars.get("damage").getOrDefault(name, 0L);

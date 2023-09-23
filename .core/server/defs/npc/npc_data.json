@@ -1973,6 +1973,7 @@
   {
     "_comment" : "Instance-Special"
   },
+
   {
     "id": 9818,
     "name": "Donator Semi-Boss",
@@ -2066,6 +2067,30 @@
     "defenceMelee": 399,
     "defenceRange": 399,
     "defenceMage": 399,
+    "isPet" : false,
+    "isBoss" : true
+  },
+  {
+    "id": 126,
+    "name": "Otherworldly being",
+    "examine": "Is he invisible or just a set of floating clothing?",
+    "combat": 326,
+    "size": 1,
+    "attackable": true,
+    "aggressive": false,
+    "retreats": false,
+    "poisonous": false,
+    "respawn": 1,
+    "maxHit": 125,
+    "hitpoints": 32000000,
+    "attackSpeed": 7,
+    "attackAnim": 422,
+    "defenceAnim": 404,
+    "deathAnim": 2304,
+    "attackBonus": 499,
+    "defenceMelee": 359,
+    "defenceRange": 359,
+    "defenceMage": 359,
     "isPet" : false,
     "isBoss" : true
   },

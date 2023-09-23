@@ -61,10 +61,10 @@ public class WorldCalendar implements Job {
 
     @Override
     public void execute(JobExecutionContext context) throws JobExecutionException {
+        load();
         AttendanceManager.nextDay();
         World.handler.reload();
         handleSeasonPass();
-        load();
     }
 
     @SneakyThrows
