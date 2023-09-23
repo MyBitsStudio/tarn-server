@@ -215,6 +215,33 @@ public class DissolveItem {
                 ran = true;
             }
 
+            case 22177, 23066, 23067, 23064, 23065, 22202, 22203, 23061,
+                    23062, 23063, 23068 -> {
+                toDissolve = player.getInventory().get(slot);
+                if (player.getInventory().contains(toDissolve.getId())) {
+                    player.getInventory().delete(toDissolve)
+                            .add(COINS, Misc.random(1341, 11985));
+                    player.performAnimation(new Animation(712));
+                    player.getSkillManager().addExperience(Skill.CRAFTING, 79);
+                    player.getPacketSender().sendMessage("@or2@You have dissolved @red@" + ItemDefinition.forId(id).getName() + "@or2@");
+                }
+                ran = true;
+            }
+
+            case 22179, 22180, 22181, 22182, 22183, 22184, 22161, 22162,
+                    22163, 22164, 22165, 22166, 22167, 21607, 21608,
+                    21609, 21610, 21611, 21612, 22176 -> {
+                toDissolve = player.getInventory().get(slot);
+                if (player.getInventory().contains(toDissolve.getId())) {
+                    player.getInventory().delete(toDissolve)
+                            .add(COINS, Misc.random(2541, 19985));
+                    player.performAnimation(new Animation(712));
+                    player.getSkillManager().addExperience(Skill.CRAFTING, 86);
+                    player.getPacketSender().sendMessage("@or2@You have dissolved @red@" + ItemDefinition.forId(id).getName() + "@or2@");
+                }
+                ran = true;
+            }
+
             case 15005, 15006, 15007, 15008, 15200, 15201, 15100, 14915 -> {
                 toDissolve = player.getInventory().get(slot);
                 if (player.getInventory().contains(toDissolve.getId())) {

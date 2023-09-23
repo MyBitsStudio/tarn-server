@@ -15,6 +15,8 @@ public enum AutoCastSpell {
     BELLIGERENT(17600, CombatSpells.DEMON),
     AGUMON(22157, CombatSpells.CHAOS),
     CHAR(22173, CombatSpells.ELITE),
+    OBSIDIAN(22177, CombatSpells.TOXICSANG),
+    WHITESTAFF(22167, CombatSpells.WHITE),
 
     FESTIVE(14924, CombatSpells.BEGINNER),
     AZURE(3739, CombatSpells.AZURE),
@@ -43,7 +45,6 @@ public enum AutoCastSpell {
     TOXICSANG(20495, CombatSpells.TOXICSANG),
     VIRTUOSO(14305, CombatSpells.VIRTO),
     VIRTUOSO_U(2456, CombatSpells.VIRTO),
-    WHITESTAFF(22167, CombatSpells.WHITE),
     DEATH(14355, CombatSpells.WHITE),
     DEATH_U(2544, CombatSpells.WHITE),
     FAZULA(4071, CombatSpells.WHITE),

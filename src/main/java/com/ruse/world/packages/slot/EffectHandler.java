@@ -6,6 +6,9 @@ import com.ruse.model.*;
 import com.ruse.model.container.impl.Equipment;
 import com.ruse.util.Misc;
 import com.ruse.world.clip.region.RegionClipping;
+import com.ruse.world.content.combat.CombatFactory;
+import com.ruse.world.content.combat.CombatType;
+import com.ruse.world.content.combat.effect.CombatPoisonEffect;
 import com.ruse.world.content.skill.impl.summoning.BossPets;
 import com.ruse.world.entity.impl.Character;
 import com.ruse.world.entity.impl.npc.NPC;
@@ -48,6 +51,10 @@ public class EffectHandler {
             victim.getCombatBuilder().attack(p);
         }
 
+        if(p.getEquipment().hasPosionIvy()){
+            p.poisonVictim(victim, CombatType.RANGED);
+        }
+
         if(p.getEquipment().getBonus() != null){
             if(Objects.equals(p.getEquipment().getBonus().perk(), AOE_3)){
                 handleAoE(p, victim,
@@ -57,6 +64,9 @@ public class EffectHandler {
                 handleFirewall(p, victim);
             }
         }
+
+
+
 
         if(p.getSummoning().getFamiliar() != null){
             handlePets(p, victim.toNpc());

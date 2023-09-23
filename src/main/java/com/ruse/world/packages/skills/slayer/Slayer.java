@@ -213,7 +213,7 @@ public class Slayer {
         player.getTarnNormal().handleSlayerTasks(total);
         player.getTarnElite().handleSlayerTasks(total);
 
-        player.getSeasonPass().incrementExp(265, false);
+        player.getSeasonPass().incrementExp(2650, false);
 
         AchievementHandler.progress(player, 1, 45, 47, 48, 69, 70, 90, 91);
 

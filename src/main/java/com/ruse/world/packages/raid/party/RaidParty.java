@@ -22,6 +22,7 @@ public class RaidParty {
         owner = player;
         this.attributes = attributes;
         players.add(player);
+        owner.getRaidPlugin().reset();
     }
 
     public void invite(Player player){
@@ -51,6 +52,7 @@ public class RaidParty {
             }
             if(players.get(0) != player) {
                 players.add(player);
+                player.getRaidPlugin().reset();
                 player.getPacketSender().sendMessage("<col=660000>You've created a Raids party.");
 
                 player.setRaidParty(this);
@@ -85,6 +87,7 @@ public class RaidParty {
             }
 
             players.remove(player);
+            player.getRaidPlugin().reset();
 
             player.getPacketSender().sendMessage("<col=660000>You've left the Raids party.");
             player.setRaidParty(null);

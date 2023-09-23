@@ -104,7 +104,7 @@ public class TarnEliteTrack extends Track {
     }
 
     private void reward(@NotNull TarnEliteTasks task){
-        player.getSeasonPass().incrementExp(95, false);
+        player.getSeasonPass().incrementExp(1120, false);
         player.getInventory().addDropIfFull(task.getReward().item(),
                 task.getReward().amount());
         player.sendMessage("@gre@ You have completed a Tarn Normal task and received a reward!");

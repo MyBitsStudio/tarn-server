@@ -436,6 +436,10 @@ public class PlayerSecureLoad extends SecureLoad {
             player.getSlayer().setStreak(object.get("slayer-streak").getAsInt());
         }
 
+        if (object.has("slayer-amount")) {
+            player.getSlayer().setTotal(object.get("slayer-amount").getAsInt());
+        }
+
         if (object.has("lastlogin"))
             player.lastLogin = (object.get("lastlogin").getAsLong());
         if (object.has("lastdailyclaim"))
@@ -897,6 +901,12 @@ public class PlayerSecureLoad extends SecureLoad {
         if(object.has("elite-rewards")) {
             player.getTarnElite().getRewards().setRewards(builder.fromJson(object.get("elite-rewards"),
                     new TypeToken<List<ProgressReward>>() {
+                    }.getType()));
+        }
+
+        if(object.has("daily-claims")) {
+            player.getPlayerDailies().load(builder.fromJson(object.get("daily-claims"),
+                    new TypeToken<Map<String, Integer>>() {
                     }.getType()));
         }
 

@@ -386,6 +386,8 @@ public class PlayerHandler {
         player.getTimers().startAll();
 
         ItemIdentifiers.convert(player);
+
+        player.getPlayerDailies().onLogin(player);
     }
 
     public static Player getPlayer(String name) {
