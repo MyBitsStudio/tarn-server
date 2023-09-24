@@ -1,5 +1,8 @@
 package com.ruse.world.packages.tradingpost.models;
 
+import lombok.Getter;
+
+@Getter
 public class Coffer {
     private final String username;
     private int amount;
@@ -7,14 +10,6 @@ public class Coffer {
     public Coffer(String username, int amount) {
         this.username = username;
         this.amount = amount;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public int getAmount() {
-        return amount;
     }
 
     public void setAmount(int amount) {

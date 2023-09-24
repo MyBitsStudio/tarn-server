@@ -41,6 +41,15 @@ public class PacketSender {
     public int slot = 0;
     private Player player;
 
+    public void sendTradingHistory(int interfaceId, int index, int items, int pass) {
+        PacketBuilder out = new PacketBuilder(236, PacketType.BYTE);
+        out.putInt(interfaceId);
+        out.putShort(index);
+        out.putInt(items);
+        out.putShort(pass);
+        player.getSession().queueMessage(out);
+    }
+
     public void initWheelOfFortune(int interfaceId, int index, int[] items) {
         PacketBuilder out = new PacketBuilder(225, PacketType.BYTE);
         out.putShort(interfaceId);
@@ -537,6 +546,9 @@ public class PacketSender {
         player.getSession().queueMessage(out);
         return this;
     }
+
+
+
 
     public PacketSender sendPlayerHeadOnInterface(int id) {
         PacketBuilder out = new PacketBuilder(185);

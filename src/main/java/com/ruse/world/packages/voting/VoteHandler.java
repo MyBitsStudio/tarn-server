@@ -1,8 +1,6 @@
 package com.ruse.world.packages.voting;
 
 import com.ruse.io.data.impl.SQLVote;
-import com.ruse.io.database.models.DatabaseRequestStatement;
-import com.ruse.io.database.models.impl.VoteClaim;
 import com.ruse.util.Misc;
 import com.ruse.world.World;
 import com.ruse.world.entity.impl.player.Player;
