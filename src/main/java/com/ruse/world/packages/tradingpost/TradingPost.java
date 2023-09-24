@@ -1,7 +1,5 @@
 package com.ruse.world.packages.tradingpost;
 
-import com.ruse.io.database.models.TradingPostStatement;
-import com.ruse.io.database.models.impl.TradingPostDataStore;
 import com.ruse.model.Item;
 import com.ruse.model.definitions.ItemDefinition;
 import com.ruse.model.input.EnterAmount;
@@ -12,6 +10,8 @@ import com.ruse.world.entity.impl.player.Player;
 import com.ruse.world.packages.dialogue.DialogueManager;
 import com.ruse.world.packages.dialogue.impl.tp.CancelTPOptions;
 import com.ruse.world.packages.dialogue.impl.tp.PurchaseTPStatement;
+import com.ruse.world.packages.tradingpost.persistance.Database;
+import com.ruse.world.packages.tradingpost.persistance.SQLDatabase;
 import org.jetbrains.annotations.NotNull;
 
 import java.sql.Timestamp;
@@ -28,10 +28,10 @@ public class TradingPost {
     private static final HashMap<Integer, LinkedList<History>> ITEM_HISTORIES = new HashMap<>();
     private static final HashMap<String, Coffer> COFFERS = new HashMap<>();
 
-    private static final TradingPostStatement DATABASE;
+    private static final Database DATABASE;
 
     static {
-        DATABASE = new TradingPostDataStore();
+        DATABASE = new SQLDatabase();
     }
 
     private final Player player;
@@ -72,6 +72,7 @@ public class TradingPost {
         for(int i = 0; i < 10; i++) {
             updateSlot(i);
         }
+        updateList();
         player.getPacketSender().sendInterface(MAIN_INTERFACE_ID);
     }
 
@@ -221,7 +222,7 @@ public class TradingPost {
         Deque<Offer> deque = new ArrayDeque<>(viewingOffers);
         final int size = deque.size();
         for(int i = 0; i < 50; i++) {
-            if(deque.size() > 0) {
+            if(!deque.isEmpty()) {
                 Offer offer = deque.pop();
                 Timestamp timestamp = new Timestamp(offer.getTimestamp());
                 LocalDateTime localDateTime = timestamp.toLocalDateTime();
@@ -335,7 +336,7 @@ public class TradingPost {
         Deque<History> deque = new ArrayDeque<>(histories);
         final int size = deque.size();
         for(int i = 0; i < 50; i++) {
-            if(deque.size() > 0) {
+            if(!deque.isEmpty()) {
                 History history = deque.pop();
                 Timestamp timestamp = new Timestamp(history.timestamp());
                 LocalDateTime localDateTime = timestamp.toLocalDateTime();
@@ -376,6 +377,39 @@ public class TradingPost {
         coffer.setAmount(0);
         updateCoffer(coffer);
         openMainInterface();
+    }
+
+    public void updateList(){
+        Map<History, Boolean> histories = new HashMap<>();
+        int limit = 25;
+        for (Map.Entry<Integer, LinkedList<History>> entry : ITEM_HISTORIES.entrySet()) {
+            if(limit <= 0){
+                break;
+            }
+            Deque<History> deque = new ArrayDeque<>(entry.getValue());
+            if(deque.size() <= 1){
+                histories.put(deque.pop(), true);
+            } else {
+                History history = deque.pop();
+                History history2 = deque.pop();
+                if(history2.price() < history.price()){
+                    histories.put(history, false);
+                } else {
+                    histories.put(history, true);
+                }
+            }
+            --limit;
+        }
+        int i = 0;
+        for(Map.Entry<History, Boolean> history : histories.entrySet()){
+           History histors = history.getKey();
+            if(history.getValue()){
+                player.getPacketSender().sendTradingHistory(150431, i++, histors.itemId(), 1);
+            } else {
+                player.getPacketSender().sendTradingHistory(150431, i++, histors.itemId(), 0);
+            }
+        }
+
     }
 
     public boolean handleButtonClick(int id) {

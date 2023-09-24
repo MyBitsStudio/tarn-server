@@ -1,11 +1,6 @@
 package com.ruse.world.packages.vip;
 
-import com.ruse.engine.GameEngine;
-import com.ruse.io.ThreadProgressor;
 import com.ruse.io.data.impl.SQLVip;
-import com.ruse.io.database.models.DatabaseRequestStatement;
-import com.ruse.io.database.models.impl.VIPClaim;
-import com.ruse.security.save.impl.server.PlayerDonationSave;
 import com.ruse.world.World;
 import com.ruse.world.entity.impl.player.Player;
 import com.ruse.world.packages.event.impl.DonatorBoostEvent;

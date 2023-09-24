@@ -100,6 +100,20 @@ public enum GearPacks {
             new Item(8828, 1), new Item(8829, 1), new Item(8833, 1),
             new Item(8830, 1), new Item(8831, 1), new Item(22173, 1)
     ),
+    TIER_XVII(23216, 0,
+            new Item(22177, 1), new Item(23066, 1), new Item(23067, 1),
+            new Item(23064, 1), new Item(23065, 1), new Item(23062, 1),
+            new Item(23063, 1), new Item(23068, 1)
+    ),
+    TIER_XVIII(23217, 0,
+            new Item(22179, 1), new Item(22180, 1), new Item(22181, 1),
+            new Item(22182, 1), new Item(22183, 1), new Item(22184, 1),
+            new Item(22161, 1), new Item(22162, 1), new Item(22163, 1),
+            new Item(22164, 1), new Item(22166, 1), new Item(22166, 1),
+            new Item(22167, 1), new Item(21607, 1), new Item(21608, 1),
+            new Item(21609, 1), new Item(21610, 1), new Item(21611, 1),
+            new Item(21612, 1), new Item(22176, 1)
+    ),
 //    /****/
 //    OBSIDIAN(11938, 0,
 //            new Item(23066, 1), new Item(23067, 1), new Item(23061, 1),

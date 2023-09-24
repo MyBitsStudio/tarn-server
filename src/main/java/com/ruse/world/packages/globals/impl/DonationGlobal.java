@@ -11,7 +11,7 @@ public class DonationGlobal extends GlobalBoss {
 
     @Override
     public String message() {
-        return "The Donation Boss has just spawned, he can be found at ::groundon";
+        return "The Donation Boss has just spawned, he can be found at ::donboss";
     }
 
     @Override

@@ -75,6 +75,9 @@ public class CombatStrategies {
 		STRATEGIES.put(3117, script);
 		STRATEGIES.put(9800, script);
 		STRATEGIES.put(9802, script);
+		STRATEGIES.put(5861, script);
+		STRATEGIES.put(667, script);
+		STRATEGIES.put(12843, script);
 
 
 		// special
@@ -82,6 +85,7 @@ public class CombatStrategies {
 		STRATEGIES.put(591, script);
 		STRATEGIES.put(593, script);
 		STRATEGIES.put(1880, script);
+		STRATEGIES.put(126, script);
 
 		//event
 		STRATEGIES.put(1736, script);

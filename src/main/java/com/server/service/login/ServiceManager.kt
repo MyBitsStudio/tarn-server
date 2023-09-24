@@ -1,6 +1,7 @@
 package com.server.service.login
 
 import com.ruse.io.ThreadProgressor
+import com.ruse.world.packages.tradingpost.concurrency.TradingPostService
 
 
 /**
@@ -21,6 +22,6 @@ object ServiceManager {
      */
     fun init(){
         loginService.init()
-        ThreadProgressor.initDatabase();
+        TradingPostService.getInstance().init()
     }
 }

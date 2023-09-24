@@ -11,7 +11,7 @@ public class VoteGlobal extends GlobalBoss {
 
     @Override
     public String message() {
-        return "The Vote Boss has just spawned, he can be found at ::groundon";
+        return "The Vote Boss has just spawned, he can be found at ::vboss";
     }
 
     @Override
