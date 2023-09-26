@@ -23,10 +23,6 @@ import com.ruse.world.entity.impl.player.Player;
 
 public class Exoden implements CombatStrategy {
 
-	public static boolean minions_spawned = false;
-	public static boolean minions_dead = false;
-	public static final int MINION_NPCID = 3732;
-
 	@Override
 	public boolean canAttack(Character entity, Character victim) {
 		return true;
@@ -155,18 +151,6 @@ public class Exoden implements CombatStrategy {
 					}
 				});
 			} else
-		if (nomad.getConstitution() <= 650000 && !minions_dead) {
-			nomad.forceChat("Time to spawn my army!");
-			NPC[] babies = new NPC[] { new NPC(MINION_NPCID, target.getPosition()) };
-			minions_spawned = true;
-			for (NPC n : babies) {
-				World.register(n);
-				n.getCombatBuilder().attack(target);
-				if (n.getConstitution() <= 0) {
-					World.deregister(n);
-				}
-			}
-		} else
 		if (nomad.getConstitution() <= 50000) {
 			final Position start = target.getPosition().copy();
 			final Position second = new Position(start.getX() + 2, start.getY() + Misc.getRandom(2));
