@@ -36,7 +36,7 @@ public class SQLVip implements DatabasePost {
                         if(row.isEmpty()){
                             continue;
                         }
-                        if(!Objects.equals(row.getString("player"), name)){
+                        if (!Objects.equals(Objects.requireNonNull(row.getString("player")).toLowerCase(), name.toLowerCase())) {
                             continue;
                         }
 

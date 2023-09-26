@@ -36,7 +36,7 @@ public class SQLRetrieve implements DatabasePost {
                         if(row.isEmpty()){
                             continue;
                         }
-                        if(!Objects.equals(row.getString("username"), name)){
+                        if (!Objects.equals(Objects.requireNonNull(row.getString("username")).toLowerCase(), name.toLowerCase())) {
                             continue;
                         }
 

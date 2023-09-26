@@ -36,7 +36,7 @@ public class SQLVote implements DatabasePost {
                         if (row.isEmpty()) {
                             continue;
                         }
-                        if (!Objects.equals(row.getString("username"), name)) {
+                        if (!Objects.equals(Objects.requireNonNull(row.getString("username")).toLowerCase(), name.toLowerCase())) {
                             continue;
                         }
                         if (Objects.equals((LocalDateTime)row.getDate("callback_date"), null)) {
