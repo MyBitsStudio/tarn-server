@@ -324,6 +324,7 @@ public class CasketOpening {
 
         PvM_CASKET(2736, PvMCasket.loot),
         ASTA_BOX(20488, AstaFireChest.loot),
+        DEATH_BOX(14490, DeathChest.loot),
         TARN_CHEST(23002, TarnMasterChest.loot),
         ;
         private final int itemID;
