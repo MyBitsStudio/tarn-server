@@ -335,12 +335,8 @@ public abstract class ItemContainer {
         for (int i = 0; i < capacity(); i++) {
             if (items[i].getId() > 0 && items[i].getId() == item.getId()) {
                 if (items[i].getAmount() > 0 || ((this instanceof Bank) && items[i].getAmount() <= 1)) {
-                    if (!item.getUid().equals("-1")){
-                        if (item.getUid().equals(items[i].getUid()))
-                            return i;
-                    }else {
-                            return i;
-                    }
+                    if(Objects.equals(items[i].getPerk(), item.getPerk()) && Objects.equals(items[i].getBonus(), item.getBonus()))
+                        return i;
                 }
             }
         }
@@ -370,7 +366,8 @@ public abstract class ItemContainer {
         for (Item item : items) {
             if(Objects.equals(item.getUid(), "-1"))
                 continue;
-            if (item.getId() == it.getId() && Objects.equals(item.getUid(), it.getUid())){
+            if (item.getId() == it.getId() && Objects.equals(item.getPerk(), it.getPerk())
+                    && Objects.equals(item.getBonus(), it.getBonus())){
                 totalAmount += item.getAmount();
             }
         }
@@ -732,11 +729,11 @@ public abstract class ItemContainer {
                 if (!leavePlaceHolder) {
                     items[slot].setId(-1);
                     items[slot].setUid("stale");
+                    items[slot].setPerk("none");
+                    items[slot].setBonus("none");
                 } else {
                     items[slot].setUid("-1");
                 }
-                items[slot].setPerk("none");
-                items[slot].setBonus("none");
             }
         } else {
             int amount = item.getAmount();
@@ -747,13 +744,12 @@ public abstract class ItemContainer {
                 if (!leavePlaceHolder) {
                     items[slot].setId(-1);
                     items[slot].setUid("stale");
+                    items[slot].setPerk("none");
+                    items[slot].setBonus("none");
                 } else {
                     items[slot].setUid("-1");
                 }
                 items[slot].setAmount(0);
-                items[slot].setUid("stale");
-                items[slot].setPerk("none");
-                items[slot].setBonus("none");
                 slot = getSlot(item);
                 amount--;
             }
