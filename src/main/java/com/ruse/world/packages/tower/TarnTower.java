@@ -25,6 +25,7 @@ public class TarnTower {
             player.sendMessage("The tower is currently disabled.");
             return;
         }
+
         if(player.getInstance() != null) {
             player.getInstance().clear();
             player.setInstance(null);

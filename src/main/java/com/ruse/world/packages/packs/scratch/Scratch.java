@@ -25,6 +25,7 @@ public abstract class Scratch {
     public abstract int cardId();
 
     public void open() {
+        player.getPacketSender().sendInterfaceRemoval();
         player.getPacketSender().sendInterface(23630);
         for (int i = 0; i < commons().length; i++)
             player.getPacketSender().sendItemOnInterface(23642, commons()[i].getId(), i, commons()[i].getAmount());
@@ -59,6 +60,9 @@ public abstract class Scratch {
 
     public void getWinnings() {
         int count = 0;
+
+        if(item1 == null || item2 == null || item3 == null)
+            return;
 
         int id1 = item1.getId();
         int id2 = item2.getId();

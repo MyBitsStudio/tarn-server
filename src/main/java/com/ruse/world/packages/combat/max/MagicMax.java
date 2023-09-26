@@ -199,7 +199,6 @@ public class MagicMax {
 
         return maxHit;
     }
-
     public static double multiplyDamage(@NotNull Player player){
         double multiply = 1.0;
         if(player.getSummoning().getFamiliar() != null) {

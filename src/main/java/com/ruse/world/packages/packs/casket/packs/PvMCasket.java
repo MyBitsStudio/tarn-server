@@ -5,7 +5,7 @@ import com.ruse.world.packages.packs.casket.Box;
 public class PvMCasket {
 
     public static Box[] loot = {
-            new Box(995, 5000, 100, true),
+            new Box(995, 5000, 80, true),
             new Box(23149, 2, 12, true),
             new Box(23148, 1, 8, true),
             new Box(23147, 1, 2, true),

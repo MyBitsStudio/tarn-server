@@ -1,30 +1,32 @@
 package com.ruse.world.content.teleport;
 
 import com.ruse.model.Position;
+import lombok.Getter;
 
+@Getter
 public enum TeleInterfaceLocation {//3487, 3615 , 2711, 4752 , 2527, 2527, 1652, 5600, 2964, 9478, 2565, 2564
 
-    LOCATION1(new Position(3037, 10280, 0), "Tier Ranking: 1 \\n \\n Multi: False \\n \\n KC Req: None \\n \\n Recommended ELO: 0"), //GOBLIN
-    LOCATION2(new Position(3037, 10280, 4), "Tier Ranking: 1 \\n \\n Multi: False \\n \\n KC Req: 10 Blurite Goblins \\n \\n Recommended ELO: 0"), //ORC
-    LOCATION3(new Position(3037, 10280, 8), "Tier Ranking: 1 \\n \\n Multi: False \\n \\n KC Req: 20 Blurite Orcs \\n \\n Recommended ELO: 0"), //DEMON
-    LOCATION4(new Position(3037, 10280, 12), "Tier Ranking: 1 \\n \\n Multi: False \\n \\n KC Req: 30 Blurite Demons \\n \\n Recommended ELO: 0"), //WEREWOLF
-    LOCATION5(new Position(3037, 10280, 16), "Tier Ranking: 1 \\n \\n Multi: False \\n \\n KC Req: 40 Blurite Werewolfs \\n \\n Recommended ELO: 0"), //CENTAUR
-    LOCATION6(new Position(3037, 10280, 20), "Tier Ranking: 2 \\n \\n Multi: False \\n \\n KC Req: 50 Blurite Centaurs \\n \\n Recommended ELO: 0"), //hound
-    LOCATION7(new Position(3037, 10280, 24), "Tier Ranking: 2 \\n \\n Multi: False \\n \\n KC Req: 60 Imperial Hounds \\n \\n Recommended ELO: 0"), //scorpion
-    LOCATION8(new Position(3037, 10280, 28), "Tier Ranking: 2 \\n \\n Multi: False \\n \\n KC Req: 70 Imperial Scorpions \\n \\n Recommended ELO: 0"), //ranger
-    LOCATION9(new Position(3037, 10280, 32), "Tier Ranking: 2 \\n \\n Multi: False \\n \\n KC Req: 80 Imperial Rangers \\n \\n Recommended ELO: 0"), //paladin
-    LOCATION10(new Position(3037, 10280, 36), "Tier Ranking: 3 \\n \\n Multi: True \\n \\n KC Req: 90 Imperial Paladins \\n \\n Recommended ELO: 0"), //wyvern
-    LOCATION11(new Position(3037, 10280, 40), "Tier Ranking: 3 \\n \\n Multi: True \\n \\n KC Req: 500 NPC Kills \\n \\n Recommended ELO: 11+"), //Mystic
-    LOCATION12(new Position(3037, 10280, 44), "Tier Ranking: 3 \\n \\n Multi: True \\n \\n KC Req: 500 NPC Kills \\n \\n Recommended ELO: 11+"), //Nightmare
-    LOCATION13(new Position(3037, 10280, 48), "Tier Ranking: 3 \\n \\n Multi: True \\n \\n KC Req: 500 NPC Kills \\n \\n Recommended ELO: 11+"), //Patience
-    LOCATION14(new Position(3037, 10280, 52), "Tier Ranking: 5 \\n \\n Multi: True \\n \\n KC Req: 1000 NPC Kills \\n \\n Recommended ELO: 13+"), //Zinqrux
-    LOCATION15(new Position(3037, 10280, 56), "Tier Ranking: 6 \\n \\n Multi: True \\n \\n KC Req: 200 Zinqruxs \\n \\n Recommended ELO: 21+"), //Aberrant
-    LOCATION16(new Position(3037, 10280, 60), "Tier Ranking: 7 \\n \\n Multi: True \\n \\n KC Req: 200 Dr. Abberants \\n \\n Recommended ELO: 35+"), //Inferno
-    LOCATION17(new Position(3037, 10280, 64), "Tier Ranking: 8 \\n \\n Multi: True \\n \\n KC Req: 200 Infernos \\n \\n Recommended ELO: 47+"), //nagi
-    LOCATION18(new Position(3037, 10280, 68), "Tier Ranking: 9 \\n \\n Multi: True \\n \\n KC Req: 300 Nagendras \\n \\n Recommended ELO: 58+"), //Kolgal
-    LOCATION19(new Position(3037, 10280, 72), "Tier Ranking: 10 \\n \\n Multi: True \\n \\n KC Req: 300 Kol'gals \\n \\n Recommended ELO: 67+"), //Yisdar
-    LOCATION20(new Position(3037, 10280, 76), "Tier Ranking: 11 \\n \\n Multi: True \\n \\n KC Req: 300 Yisdars \\n \\n Recommended ELO: 85+"), //Igthaur
-    LOCATION21(new Position(3037, 10280, 80), "Tier Ranking: 12 \\n \\n Multi: True \\n \\n KC Req: 300 Ig'thaurs \\n \\n Recommended ELO: 90+"), //Zernath
+    LOCATION1(new Position(3037, 10280, 0), "Tier Ranking: 1 \\n \\n Multi: False \\n \\n STARTER MONSTER"), //GOBLIN
+    LOCATION2(new Position(3037, 10280, 4), "Tier Ranking: 1 \\n \\n Multi: False \\n \\n STARTER MONSTER"), //ORC
+    LOCATION3(new Position(3037, 10280, 8), "Tier Ranking: 1 \\n \\n Multi: False \\n \\n STARTER MONSTER"), //DEMON
+    LOCATION4(new Position(3037, 10280, 12), "Tier Ranking: 1 \\n \\n Multi: False \\n \\n STARTER MONSTER"), //WEREWOLF
+    LOCATION5(new Position(3037, 10280, 16), "Tier Ranking: 1 \\n \\n Multi: False \\n \\n STARTER MONSTER"), //CENTAUR
+    LOCATION6(new Position(3037, 10280, 20), "Tier Ranking: 1 \\n \\n Multi: False \\n \\n STARTER MONSTER"), //hound
+    LOCATION7(new Position(3037, 10280, 24), "Tier Ranking: 1 \\n \\n Multi: False \\n \\n STARTER MONSTER"), //scorpion
+    LOCATION8(new Position(3037, 10280, 28), "Tier Ranking: 1 \\n \\n Multi: False \\n \\n STARTER MONSTER"), //ranger
+    LOCATION9(new Position(3037, 10280, 32), "Tier Ranking: 1 \\n \\n Multi: False \\n \\n STARTER MONSTER"), //paladin
+    LOCATION10(new Position(3037, 10280, 36), "Tier Ranking: 1 \\n \\n Multi: True \\n \\n STARTER MONSTER"), //wyvern
+    LOCATION11(new Position(3037, 10280, 40), "Tier Ranking: 1 \\n \\n Multi: True \\n \\n STARTER MONSTER"), //Mystic
+    LOCATION12(new Position(3037, 10280, 44), "Tier Ranking: 1 \\n \\n Multi: True \\n \\n STARTER MONSTER"), //Nightmare
+    LOCATION13(new Position(3037, 10280, 48), "Tier Ranking: 1 \\n \\n Multi: True \\n \\n STARTER MONSTER"), //Patience
+    LOCATION14(new Position(3037, 10280, 52), "Tier Ranking: 2 \\n \\n Multi: True \\n \\n STARTER MONSTER"), //Zinqrux
+    LOCATION15(new Position(3037, 10280, 56), "Tier Ranking: 2 \\n \\n Multi: True \\n \\n STARTER MONSTER"), //Aberrant
+    LOCATION16(new Position(3037, 10280, 60), "Tier Ranking: 2 \\n \\n Multi: True \\n \\n STARTER MONSTER"), //Inferno
+    LOCATION17(new Position(3037, 10280, 64), "Tier Ranking: 2 \\n \\n Multi: True \\n \\n STARTER MONSTER"), //nagi
+    LOCATION18(new Position(3037, 10280, 68), "Tier Ranking: 2 \\n \\n Multi: True \\n \\n STARTER MONSTER"), //Kolgal
+    LOCATION19(new Position(3037, 10280, 72), "Tier Ranking: 2 \\n \\n Multi: True \\n \\n STARTER MONSTER"), //Yisdar
+    LOCATION20(new Position(3037, 10280, 76), "Tier Ranking: 3 \\n \\n Multi: True \\n \\n STARTER MONSTER"), //Igthaur
+    LOCATION21(new Position(3037, 10280, 80), "Tier Ranking: 3 \\n \\n Multi: True \\n \\n STARTER MONSTER"), //Zernath
 //    LOCATION22(new Position(1652, 5600, 20), "Tier Ranking: 13 \\n \\n Multi: True \\n \\n KC Req: 300 Zernaths \\n \\n Recommended ELO: 95+"), //Avalon
 //    LOCATION23(new Position(1652, 5600, 24), "Tier Ranking: 13 \\n \\n Multi: True \\n \\n KC Req: 500 Avalons \\n \\n Recommended ELO: 95+"), //Eragon
 //    LOCATION24(new Position(1652, 5600, 28), "Tier Ranking: 14 \\n \\n Multi: True \\n \\n KC Req: 500 Eragons \\n \\n Recommended ELO: 100+"), //Doomwatcher
@@ -40,17 +42,21 @@ public enum TeleInterfaceLocation {//3487, 3615 , 2711, 4752 , 2527, 2527, 1652,
 //    LOCATION34(new Position(2964, 9478, 68), "Tier Ranking: 24 \\n \\n Multi: True \\n \\n KC Req: 750 Brolys \\n \\n Recommended ELO: 220+"), //Bowser
 //    LOCATION35(new Position(2964, 9478, 72), "Tier Ranking: 25 \\n \\n Multi: True \\n \\n KC Req: 1K Bowsers \\n \\n Recommended ELO: 280+"), //Sasuke
     //BOSSES
-    LOCATION36(new Position(2962, 9477, 0), "Tier Ranking: 26 \\n \\n Multi: True \\n \\n Req: 50 Champ Raids \\n \\n Recommended ELO: 330+"), //Sanctum
-    LOCATION37(new Position(2962, 9477, 4), "Tier Ranking: 27 \\n \\n Multi: True \\n \\n KC Req: 1K Sanctum Golems \\n \\n Recommended ELO: 390+"), //Hydra
-    LOCATION38(new Position(2962, 9477, 8), "Tier Ranking: 28 \\n \\n Multi: True \\n \\n KC Req: 1K Mutant Hydras \\n \\n Recommended ELO: 430+"), //Gorvek
-    LOCATION39(new Position(2962, 9477, 12), "Tier Ranking: 29 \\n \\n Multi: True \\n \\n KC Req: 1K Gorveks \\n \\n Recommended ELO: 480+"), //Dragonite
-    LOCATION40(new Position(2962, 9477, 16), "Tier Ranking: 30 \\n \\n Multi: True \\n \\n KC Req: 2K Dragonites \\n \\n Recommended ELO: 590+"), //Asmodeus
-    LOCATION41(new Position(2962, 9477, 20), "Tier Ranking: 31 \\n \\n Multi: True \\n \\n KC Req: 2K Asmodeus's \\n \\n Recommended ELO: 650+"), //Malvek
-    LOCATION42(new Position(2962, 9477, 24), "Tier Ranking: 32 \\n \\n Multi: True \\n \\n KC Req: 2K Malveks \\n \\n Recommended ELO: 670+"), //Griffin
-    LOCATION43(new Position(2962, 9477, 28), "Tier Ranking: 33 \\n \\n Multi: True \\n \\n KC Req: 2K Onyx Griffins \\n \\n Recommended ELO: 684+"), //Zeidan
-    LOCATION44(new Position(2962, 9477, 32), "Tier Ranking: 34 \\n \\n Multi: True \\n \\n KC Req: 2K Zeidan Grimms \\n \\n Recommended ELO: 750+"), //Agthomoth
-    LOCATION45(new Position(2962, 9477, 36), "Tier Ranking: 35 \\n \\n Multi: True \\n \\n KC Req: 3K Ag'thomoths \\n \\n Recommended ELO: 780+"), //Lili
-    LOCATION46(new Position(2962, 9477, 40), "Tier Ranking: 36 \\n \\n Multi: True \\n \\n KC Req: 3K Lilinryss's \\n \\n Recommended ELO: 838+"), //Groudon
+    LOCATION36(new Position(2962, 9477, 0), "Tier Ranking: 4 \\n \\n Multi: True \\n \\n STARTER BOSS"), //Sanctum
+    LOCATION37(new Position(2962, 9477, 4), "Tier Ranking: 4 \\n \\n Multi: True \\n \\n STARTER BOSS"), //Hydra
+    LOCATION38(new Position(2962, 9477, 8), "Tier Ranking: 5 \\n \\n Multi: True \\n \\n STARTER BOSS"), //Gorvek
+    LOCATION39(new Position(2962, 9477, 12), "Tier Ranking: 5 \\n \\n Multi: True \\n \\n STARTER BOSS"), //Dragonite
+    LOCATION40(new Position(2962, 9477, 16), "Tier Ranking: 6 \\n \\n Multi: True \\n \\n STARTER BOSS"), //Asmodeus
+    LOCATION41(new Position(2962, 9477, 20), "Tier Ranking: 6 \\n \\n Multi: True \\n \\n STARTER BOSS"), //Malvek
+    LOCATION42(new Position(2962, 9477, 24), "Tier Ranking: 7 \\n \\n Multi: True \\n \\n STARTER BOSS"), //Griffin
+    LOCATION43(new Position(2962, 9477, 28), "Tier Ranking: 7 \\n \\n Multi: True \\n \\n STARTER BOSS"), //Zeidan
+    LOCATION44(new Position(2962, 9477, 32), "Tier Ranking: 8 \\n \\n Multi: True \\n \\n STARTER BOSS"), //Agthomoth
+    LOCATION45(new Position(2962, 9477, 36), "Tier Ranking: 8 \\n \\n Multi: True \\n \\n STARTER BOSS"), //Lili
+    LOCATION46(new Position(2962, 9477, 40), "Tier Ranking: 9 \\n \\n Multi: True \\n \\n STARTER BOSS"), //Groudon
+
+
+    SLAYER0(new Position(2637, 3797, 0), "Tier Ranking: 1 \\n \\n Multi: True \\n \\n Slayer Monsters"), //First Zone
+    SLAYER1(new Position(2637, 3797, 4), "Tier Ranking: 1 \\n \\n Multi: True \\n \\n Slayer Monsters"), //First Zone
 //    LOCATION47(new Position(2962, 9477, 44), "Tier Ranking: 37 \\n \\n Multi: True \\n \\n KC Req: 3K Groudons \\n \\n Recommended ELO: 900+"), //Varth
 //    LOCATION48(new Position(2962, 9477, 48), "Tier Ranking: 38 \\n \\n Multi: True \\n \\n KC Req: 3K Varthramoths \\n \\n Recommended ELO: 918+"), //Tyrant
 //    LOCATION49(new Position(2962, 9477, 52), "Tier Ranking: 39 \\n \\n Multi: True \\n \\n KC Req: 3K Tyrant Lords \\n \\n Recommended ELO: 980+"), //lucifer
@@ -100,13 +106,5 @@ public enum TeleInterfaceLocation {//3487, 3615 , 2711, 4752 , 2527, 2527, 1652,
 
     private Position position;
     private String description;
-
-    public Position getPosition() {
-        return this.position;
-    }
-
-    public String getDescription() {
-        return this.description;
-    }
 
 }

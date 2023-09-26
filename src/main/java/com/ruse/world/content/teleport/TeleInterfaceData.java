@@ -1,11 +1,13 @@
 package com.ruse.world.content.teleport;
 
 import com.ruse.model.Item;
+import lombok.Getter;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Getter
 public enum TeleInterfaceData {
 
     /* Monsters */
@@ -50,17 +52,22 @@ public enum TeleInterfaceData {
     //MONSTER15(TeleInterfaceCategory.MONSTERS, "Vol'goth", 9917, 1500, TeleInterfaceLocation.LOCATION1, new Item[] {new Item(4151,1)}),
 
     /* Bosses */
-    BOSS1(TeleInterfaceCategory.BOSSES, "Avalon", 9025, 1050, TeleInterfaceLocation.LOCATION36, null),
-    BOSS2(TeleInterfaceCategory.BOSSES, "Eragon", 9026, 1050, TeleInterfaceLocation.LOCATION37, null),
-    BOSS3(TeleInterfaceCategory.BOSSES, "Avatar Titan", 8008, 1250, TeleInterfaceLocation.LOCATION38, null),
-    BOSS4(TeleInterfaceCategory.BOSSES, "Emerald Slayer", 2342, 1000, TeleInterfaceLocation.LOCATION39, null),
-    BOSS5(TeleInterfaceCategory.BOSSES, "Mutant Hydra", 9839, 1650, TeleInterfaceLocation.LOCATION40, null),
-    BOSS6(TeleInterfaceCategory.BOSSES, "Gorvek", 9806, 1950, TeleInterfaceLocation.LOCATION41, null),
-    BOSS7(TeleInterfaceCategory.BOSSES, "Onyx Griffin", 1746, 1500, TeleInterfaceLocation.LOCATION42, null),
-    BOSS8(TeleInterfaceCategory.BOSSES, "Tyrant Lord", 4972, 1500, TeleInterfaceLocation.LOCATION43, null),
-    BOSS9(TeleInterfaceCategory.BOSSES, "White Beard", 3021, 1500, TeleInterfaceLocation.LOCATION44, null),
-    BOSS10(TeleInterfaceCategory.BOSSES, "Panther", 3305, 1500, TeleInterfaceLocation.LOCATION45, null),
-    BOSS11(TeleInterfaceCategory.BOSSES, "The Warrior", 125, 1500, TeleInterfaceLocation.LOCATION46, null),
+    BOSS1(TeleInterfaceCategory.MONSTERS, "Avalon", 9025, 1050, TeleInterfaceLocation.LOCATION36, null),
+    BOSS2(TeleInterfaceCategory.MONSTERS, "Eragon", 9026, 1050, TeleInterfaceLocation.LOCATION37, null),
+    BOSS3(TeleInterfaceCategory.MONSTERS, "Avatar Titan", 8008, 1250, TeleInterfaceLocation.LOCATION38, null),
+    BOSS4(TeleInterfaceCategory.MONSTERS, "Emerald Slayer", 2342, 1000, TeleInterfaceLocation.LOCATION39, null),
+    BOSS5(TeleInterfaceCategory.MONSTERS, "Mutant Hydra", 9839, 1650, TeleInterfaceLocation.LOCATION40, null),
+    BOSS6(TeleInterfaceCategory.MONSTERS, "Gorvek", 9806, 1950, TeleInterfaceLocation.LOCATION41, null),
+    BOSS7(TeleInterfaceCategory.MONSTERS, "Onyx Griffin", 1746, 1500, TeleInterfaceLocation.LOCATION42, null),
+    BOSS8(TeleInterfaceCategory.MONSTERS, "Tyrant Lord", 4972, 1500, TeleInterfaceLocation.LOCATION43, null),
+    BOSS9(TeleInterfaceCategory.MONSTERS, "White Beard", 3021, 1500, TeleInterfaceLocation.LOCATION44, null),
+    BOSS10(TeleInterfaceCategory.MONSTERS, "Panther", 3305, 1500, TeleInterfaceLocation.LOCATION45, null),
+    BOSS11(TeleInterfaceCategory.MONSTERS, "The Warrior", 125, 1500, TeleInterfaceLocation.LOCATION46, null),
+
+
+
+    SLAYER0(TeleInterfaceCategory.BOSSES, "Goblin - Demon", 9837, 500, TeleInterfaceLocation.SLAYER0, null),
+    SLAYER1(TeleInterfaceCategory.BOSSES, "Werewolf - Zinq", 9911, 500, TeleInterfaceLocation.SLAYER1, null),
 
     //BOSS1(TeleInterfaceCategory.BOSSES, "Sanctum Golem", 9017, 1950, TeleInterfaceLocation.LOCATION36, null),
 
@@ -125,24 +132,6 @@ public enum TeleInterfaceData {
     private String name;
     private int npcId, zoom;
     private Item[] drops;
-    public TeleInterfaceCategory getCategory() {
-        return this.category;
-    }
-    public TeleInterfaceLocation getLocation() {
-        return this.location;
-    }
-    public String getName() {
-        return this.name;
-    }
-    public int getNpcId() {
-        return this.npcId;
-    }
-    public int getZoom() {
-        return this.zoom;
-    }
-    public Item[] getDrops() {
-        return this.drops;
-    }
 
     public void setDrops(Item[] drops) {
         this.drops = drops;

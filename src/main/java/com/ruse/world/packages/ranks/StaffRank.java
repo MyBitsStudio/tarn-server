@@ -11,7 +11,7 @@ public enum StaffRank {
     HELPER(3, 832,"<col=0><shad=FFFFFF>"),
     MODERATOR(4, 828, "<col=20B2AA><shad=0>"),
     ADMINISTRATOR(5, 829, "@yel@<shad=0>"),
-    MANAGER(6, 829, "col=0><shad=B40404>"),
+    MANAGER(6, 831, "col=0><shad=B40404>"),
     DEVELOPER(7, 831, "@red@<shad=B40404>"),
     OWNER(8, 3385, "@red@<shad=FFFFFF>"),
 

@@ -15,7 +15,7 @@ public class SQLDatabase implements Database {
 
     private static final TradingPostService service = TradingPostService.getInstance();
 
-    private static final String CREATE_OFFER = "INSERT INTO live_offers(item_id, item_name, item_initial_amount, item_amount_sold, price, seller, slot, time_stamp, uid) VALUES(?,?,?,?,?,?,?,?,?)";
+    private static final String CREATE_OFFER = "INSERT INTO live_offers(item_id, item_name, item_initial_amount, item_amount_sold, price, seller, slot, time_stamp, uid, perk, bonus) VALUES(?,?,?,?,?,?,?,?,?,?,?)";
     private static final String CREATE_COFFER = "INSERT INTO coffers(username, amount) VALUES(?,?)";
     private static final String GET_ALL_OFFERS = "SELECT * FROM live_offers";
     private static final String DELETE_OFFER = "DELETE FROM live_offers WHERE seller = ? AND slot = ? LIMIT 1";
@@ -39,6 +39,8 @@ public class SQLDatabase implements Database {
                 stmt.setInt(7, offer.getSlot());
                 stmt.setLong(8, offer.getTimestamp());
                 stmt.setString(9, offer.getUid());
+                stmt.setString(10, offer.getPerk());
+                stmt.setString(11, offer.getBonus());
                 stmt.executeUpdate();
             } catch (SQLException e) {
                 e.printStackTrace();

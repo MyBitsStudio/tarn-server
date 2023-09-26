@@ -5,7 +5,7 @@ import com.ruse.world.packages.packs.casket.Box;
 public class SlayerCasket {
 
     public static Box[] loot = {
-            new Box(995, 10000, 100, true),
+            new Box(995, 10000, 80, true),
             new Box(9719, 1, 2, true),
             new Box(4155, 2, 5, true),
             new Box(23104, 2, 5, true),

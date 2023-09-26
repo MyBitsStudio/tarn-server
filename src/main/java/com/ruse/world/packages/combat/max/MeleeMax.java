@@ -261,6 +261,7 @@ public class MeleeMax {
             double strengthBonus = player.getBonusManager().getOtherBonus()[0];
             double specialBonus = 1;
 
+
             // Use our multipliers to adjust the maxhit...
 
             double base = 1.3 + (effective / 10) + (strengthBonus / 70) + effective * (strengthBonus / 630);
@@ -373,6 +374,7 @@ public class MeleeMax {
         }
 
         double otherBonus = player.getBonusManager().getOtherBonus()[BonusManager.BONUS_STRENGTH] / 1_000;
+
 
         double prayerMod = 1.0;
 

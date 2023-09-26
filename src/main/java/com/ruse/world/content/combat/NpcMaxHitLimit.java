@@ -11,7 +11,7 @@ public class NpcMaxHitLimit {
     public static long limit(@NotNull NPC npc, long damage, Player player) {
         long maxLimit;
         switch (npc.getId()) {
-            case 587, 8013, 9904, 8010, 3308, 9005 -> maxLimit = 550000;
+            case 587, 8013, 9904, 8010, 3308, 9005 -> maxLimit = 55000;
             default -> {
                 return damage;
             }

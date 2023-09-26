@@ -27,7 +27,7 @@ public class TeleInterface {
 
     public void open() {
         setCategory(TeleInterfaceData.forCategory(TeleInterfaceCategory.MONSTERS));
-        player.getPacketSender().sendString(19007, "Monsters").sendString(19008, "Bosses").sendString(19009, "Minigames").sendString(19010, "Misc");
+        player.getPacketSender().sendString(19007, "Monsters").sendString(19008, "Slayer").sendString(19009, "Minigames").sendString(19010, "Misc");
         player.getPacketSender().sendInterface(19000);
     }
 

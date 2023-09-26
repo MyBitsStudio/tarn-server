@@ -5,7 +5,7 @@ import com.ruse.world.packages.packs.casket.Box;
 public class StarterIIIBox {
 
     public static Box[] loot = {
-            new Box(995, 100000, 100, true),
+            new Box(995, 250000, 60, true),
             new Box(22121, 5, 10, true),
             new Box(21816, 20, 35, true),
             new Box(21815, 20, 35, true),
