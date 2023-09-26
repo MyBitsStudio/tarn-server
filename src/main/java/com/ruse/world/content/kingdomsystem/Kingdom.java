@@ -1,14 +1,16 @@
 package com.ruse.world.content.kingdomsystem;
 
+import com.ruse.model.Item;
 import com.ruse.world.entity.impl.player.Player;
 
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Random;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class Kingdom {
-    private static final int MAX_WORKERS = 10;
+    private static final int MAX_WORKERS_PER_WORLD = 10;
     private static final int INTERFACE_ID = 167500;
     private static final int WORKER_OVERLAY_INTERFACE_ID = 167513;
 
@@ -20,6 +22,8 @@ public class Kingdom {
 
     public Kingdom(Player player) {
         this.player = player;
+        for(KingdomType kt : KingdomType.KINGDOM_MAP.values())
+            playerKingdoms.put(kt, new Worker[MAX_WORKERS_PER_WORLD]);
     }
 
     public boolean handleButtonClick(int id) {
@@ -46,9 +50,10 @@ public class Kingdom {
         if(id >= 167520 && id <= 167529) {
             if(selectedKingdom != null) {
                 int slot = id - 167520;
-                Worker worker = playerKingdoms.get(selectedKingdom)[slot];
-                if(worker == null) {
-                    // handle adding new worker here
+                if(playerKingdoms.get(selectedKingdom)[slot] == null) {
+                    WorkerType temp = WorkerType.VALUES.get(new Random().nextInt(WorkerType.VALUES.size()));
+                    Worker w = playerKingdoms.get(selectedKingdom)[slot] = new Worker(temp);
+                    sendWorkerData(w, slot);
                 }
             }
             return true;
@@ -58,25 +63,33 @@ public class Kingdom {
 
     private void openKingdom(KingdomType kingdomType) {
         selectedKingdom = kingdomType;
-        Worker[] workers = playerKingdoms.computeIfAbsent(kingdomType, x -> new Worker[MAX_WORKERS]);
-        if(workers.length != MAX_WORKERS) {
+        Worker[] workers = playerKingdoms.computeIfAbsent(kingdomType, x -> new Worker[MAX_WORKERS_PER_WORLD]);
+        if(workers.length != MAX_WORKERS_PER_WORLD) {
             workers = increaseWorkerSize(workers);
+            playerKingdoms.put(kingdomType, workers);
         }
-        for(Worker worker : workers) {
+        for(int i = 0; i < workers.length; i++) {
+            Worker worker = workers[i];
             if(worker == null) {
-                // send empty worker slot here
+                player.getPacketSender().sendMessage("es#"+i);
             } else {
-
-                // send worker details here
+                sendWorkerData(worker, i);
             }
         }
         player.getPacketSender().sendString(167517, kingdomType.name)
                         .sendInterfaceOverlay(INTERFACE_ID, WORKER_OVERLAY_INTERFACE_ID);
     }
 
+    private void sendWorkerData(Worker worker, int slot) {
+        WorkerType wt = worker.getWorkerType();
+        player.getPacketSender().sendMessage("os#"+slot)
+                .sendItemOnInterface(167553+slot, new Item(wt.getIcon()))
+                .sendString(167530+slot, "Lv."+worker.getLevel()+"@or2@ " + wt.getCleanName());
+    }
+
     private Worker[] increaseWorkerSize(Worker[] workers) {
-        Worker[] temp = new Worker[MAX_WORKERS];
-        for(int i = 0; i < MAX_WORKERS; i++) {
+        Worker[] temp = new Worker[MAX_WORKERS_PER_WORLD];
+        for(int i = 0; i < MAX_WORKERS_PER_WORLD; i++) {
             if(workers.length > i) {
                 temp[i] = workers[i];
             } else {
