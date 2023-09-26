@@ -39,11 +39,11 @@ public class GameModeConstants {
         if(player.getMode() instanceof Normal){
             return 0;
         } else if(player.getMode() instanceof Ironman){
-            return 2;
+            return 5;
         } else if(player.getMode() instanceof Veteran){
             return 3;
         } else if(player.getMode() instanceof UltimateIronman){
-            return 1;
+            return 4;
         } else if(player.getMode() instanceof GroupIronman){
             return 4;
         } else {
