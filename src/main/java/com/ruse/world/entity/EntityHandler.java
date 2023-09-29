@@ -21,7 +21,7 @@ public class EntityHandler {
 			}
 		}
 		if (entity.isNpc()) {
-			NPC npc = (NPC) entity;
+			NPC npc = entity.toNpc();
 			World.getNpcs().add(npc);
 			npc.loadMap();
 		} else if (entity.isGameObject()) {

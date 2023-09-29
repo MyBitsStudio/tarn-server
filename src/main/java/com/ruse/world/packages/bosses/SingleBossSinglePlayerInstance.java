@@ -8,11 +8,11 @@ import com.ruse.world.packages.instances.Instance;
 import com.ruse.world.entity.impl.player.Player;
 import lombok.Getter;
 
+@Getter
 public abstract class SingleBossSinglePlayerInstance extends Instance {
 
     private Boss boss;
     private final Player owner;
-    @Getter
     private final long times;
 
     public SingleBossSinglePlayerInstance(Player p, Locations.Location loc, Boss boss, long time) {
@@ -24,12 +24,6 @@ public abstract class SingleBossSinglePlayerInstance extends Instance {
 
     public abstract Position getStartLocation();
 
-    public Boss getBoss() {
-        return boss;
-    }
-    public Player getOwner() {
-        return owner;
-    }
     public void setBoss(Boss boss){
         this.boss = boss;
     }

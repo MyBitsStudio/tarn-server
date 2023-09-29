@@ -10,7 +10,7 @@ import com.ruse.world.packages.combat.scripts.npc.single.ZernathCombat;
 
 public class ZernathBoss extends Boss {
     public ZernathBoss(int z) {
-        super(3831, new Position(3029, 5231, z), true);
+        super(3831, new Position(2014, 4509, z), true);
     }
 
     @Override

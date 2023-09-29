@@ -423,7 +423,7 @@ public class ItemContainerActionPacketListener implements PacketListener {
 			return;
 
         switch (interfaceId) {
-            case TradingPost.ITEM_CONTAINER_ID -> player.getTradingPost().selectItemToAdd(item1.setAmount(5));
+            case TradingPost.ITEM_CONTAINER_ID -> player.getTradingPost().selectItemToAdd(player.getInventory().forSlot(slot).copy().setAmount(5));
             case -15971 -> ForgeShopHandler.purchase(player, id, 10);
             case 31510 -> player.getEventBossManager().removeNpcDropReward(id, 10);
             case 2900 -> player.getEventBossManager().addNpcDropReward(id, 10, slot);
@@ -648,56 +648,51 @@ public class ItemContainerActionPacketListener implements PacketListener {
 		if(ShopHandler.handleShop(player, interfaceId, 4, slot, id))
 			return;
 
-		switch (interfaceId) {
-			case TradingPost.ITEM_CONTAINER_ID:
-				player.getTradingPost().selectItemToAdd(new Item(id, 10));
-				break;
-			case -15971:
-				ForgeShopHandler.purchaseX(player, id);
-				break;
-			case 31510:
-				player.getPacketSender().sendEnterAmountPrompt("How many would you like to remove from the NPC Drops?");
-				player.setInputHandling(new EnterAmount() {
-					public void handleAmount(Player player, int amount) {
-						player.getEventBossManager().removeNpcDropReward(id, amount);
-					}
-				});
-				break;
-			case 2900:
-				player.getEventBossManager().addNpcDropReward(id, player.getInventory().getAmount(id), slot);
-				break;
-			case 1119: // smithing interface row 1
-			case 1120: // row 2
-			case 1121: // row 3
-			case 1122: // row 4
-			case 1123: // row 5
-				Item item111 = new Item(id);
-				int barsRequired = SmithingData.getBarAmount(item111);
-				Item bar = new Item(player.getSelectedSkillingItem(), barsRequired);
-				int x = (player.getInventory().getAmount(bar.getId()) / barsRequired);
-				EquipmentMaking.smithItem(player, new Item(player.getSelectedSkillingItem(), barsRequired),
-						new Item(item111.getId(), SmithingData.getItemAmount(item111)), x);
-				break;
-			case Trading.INTERFACE_ID:
-				if (player.getTrading().inTrade()) {
-					player.getTrading().tradeItem(id, player.getInventory().getAmount(id), slot);
-				} else if (Dueling.checkDuel(player, 1) || Dueling.checkDuel(player, 2)) {
-					player.getDueling().stakeItem(id, player.getInventory().getAmount(id), slot);
-				}
-				if (player.getGambling().inGamble()) {
-					player.getGambling().gambleItem(id, player.getInventory().getAmount(id), slot);
-				}
-				Item item2 = new Item(id, player.getInventory().getAmount(id));
-				// System.out.println("CALLED HERE for amount: " + player.getInventory().getAmount(id));
-				//player.getUimBank().deposit(id, player.getInventory().getAmount(id));
-				player.getUimBank().deposit(item2);
-				break;
-
-			case -8365:
-				if (player.getGambling().inGamble())
-					player.getGambling().removeGambledItem(id, player.getInventory().getAmount(id));
-				break;
-			case 32621:
+        switch (interfaceId) {
+            case TradingPost.ITEM_CONTAINER_ID ->
+                    player.getTradingPost().selectItemToAdd(player.getInventory().forSlot(slot).copy().setAmount(10));
+            case -15971 -> ForgeShopHandler.purchaseX(player, id);
+            case 31510 -> {
+                player.getPacketSender().sendEnterAmountPrompt("How many would you like to remove from the NPC Drops?");
+                player.setInputHandling(new EnterAmount() {
+                    public void handleAmount(Player player, int amount) {
+                        player.getEventBossManager().removeNpcDropReward(id, amount);
+                    }
+                });
+            }
+            case 2900 -> player.getEventBossManager().addNpcDropReward(id, player.getInventory().getAmount(id), slot);
+            // smithing interface row 1
+            // row 2
+            // row 3
+            // row 4
+            case 1119, 1120, 1121, 1122, 1123 -> { // row 5
+                Item item111 = new Item(id);
+                int barsRequired = SmithingData.getBarAmount(item111);
+                Item bar = new Item(player.getSelectedSkillingItem(), barsRequired);
+                int x = (player.getInventory().getAmount(bar.getId()) / barsRequired);
+                EquipmentMaking.smithItem(player, new Item(player.getSelectedSkillingItem(), barsRequired),
+                        new Item(item111.getId(), SmithingData.getItemAmount(item111)), x);
+            }
+            case Trading.INTERFACE_ID -> {
+                if (player.getTrading().inTrade()) {
+                    player.getTrading().tradeItem(id, player.getInventory().getAmount(id), slot);
+                } else if (Dueling.checkDuel(player, 1) || Dueling.checkDuel(player, 2)) {
+                    player.getDueling().stakeItem(id, player.getInventory().getAmount(id), slot);
+                }
+                if (player.getGambling().inGamble()) {
+                    player.getGambling().gambleItem(id, player.getInventory().getAmount(id), slot);
+                }
+                Item item2 = new Item(id, player.getInventory().getAmount(id));
+                // System.out.println("CALLED HERE for amount: " + player.getInventory().getAmount(id));
+                //player.getUimBank().deposit(id, player.getInventory().getAmount(id));
+                player.getUimBank().deposit(item2);
+            }
+            case -8365 -> {
+                if (player.getGambling().inGamble())
+                    player.getGambling().removeGambledItem(id, player.getInventory().getAmount(id));
+            }
+            case 32621 -> {
+            }
 //				player.setInputHandling(new Input() {
 //
 //					@Override
@@ -707,12 +702,11 @@ public class ItemContainerActionPacketListener implements PacketListener {
 //
 //				});
 //				player.getPacketSender().sendEnterAmountPrompt("How many would you like to buy?:");
-				break;
-			case -28382:
-				player.sendMessage("@red@ POS Adding is disabled.");
-				//player.getPlayerOwnedShopManager().handleStore(slot, id, Integer.MAX_VALUE);
-				break;
-			case -31915:
+            case -28382 -> player.sendMessage("@red@ POS Adding is disabled.");
+
+            //player.getPlayerOwnedShopManager().handleStore(slot, id, Integer.MAX_VALUE);
+            case -31915 -> {
+            }
 //				player.setInputHandling(new Input() {
 //
 //					@Override
@@ -722,78 +716,77 @@ public class ItemContainerActionPacketListener implements PacketListener {
 //
 //				});
 //				player.getPacketSender().sendEnterAmountPrompt("How many would you like to withdraw?:");
-				break;
-			case Trading.INTERFACE_REMOVAL_ID:
-				if (player.getTrading().inTrade()) {
-					for (Item item : player.getTrading().offeredItems) {
-						if (item != null && item.getId() == id) {
-							player.getTrading().removeTradedItem(id, item.getAmount());
-							if (ItemDefinition.forId(id) != null && ItemDefinition.forId(id).isStackable())
-								break;
-						}
-					}
-				}
-				break;
-			case Dueling.INTERFACE_REMOVAL_ID:
-				if (Dueling.checkDuel(player, 1) || Dueling.checkDuel(player, 2)) {
-					for (Item item : player.getDueling().stakedItems) {
-						if (item != null && item.getId() == id) {
-							player.getDueling().removeStakedItem(id, item.getAmount());
-							if (ItemDefinition.forId(id) != null && ItemDefinition.forId(id).isStackable())
-								break;
-						}
-					}
-				}
-				break;
-			case Bank.INTERFACE_ID:
-				if (!player.isBanking() || player.getBank(Bank.getTabForItem(player, id)).getAmount(id) <= 0 || player.getInterfaceId() != 5292)
-					return;
-				Item items = player.getBank(Bank.getTabForItem(player, id)).forSlot(slot).copy();
-				player.getBank(player.getCurrentBankTab()).switchItem(player.getInventory(), items, slot, true, true);
-				player.getBank(player.getCurrentBankTab()).open();
-				break;
-			case GroupIronmanBank.INTERFACE_ID:
-				if (!player.isBanking() || player.getInterfaceId() != 106000)
-					break;
-				player.getGroupIronmanBank().switchItem(player, player.getInventory(), new Item(id, player.getGroupIronmanBank().getAmount(id)), slot, true, true);
-				player.getGroupIronmanBank().open(player);
-				break;
-			case Bank.INVENTORY_INTERFACE_ID:
-				Item item = player.getInventory().forSlot(slot).copy().setAmount(player.getInventory().getAmount(id));
-				if (player.isBanking() && player.getInterfaceId() == 106000 && player.getInventory().contains(item.getId())){
-					player.getInventory().switchItem(player.getGroupIronmanBank(), item, slot, false, true);
-					player.getGroupIronmanBank().refreshItems(player);
-					return;
-				}
-				player.setCurrentBankTab(Bank.getTabForItem(player, item.getId()));
-				player.getInventory().switchItem(player.getBank(player.getCurrentBankTab()), item, slot, false, true);
-				break;
-			case 3823:
-				if (player.isShopping()) {
-					ShopHandler.sell(player, slot, 10);
-				} else {
-					System.out.println("Not shopping.");
-				}
-				break;
-			case BeastOfBurden.INTERFACE_ID:
-				if (player.getInterfaceId() == BeastOfBurden.INTERFACE_ID
-						&& player.getSummoning().getBeastOfBurden() != null) {
-					Item storeItem = new Item(id, 29);
-					if (storeItem.getDefinition().isStackable()) {
-						player.getPacketSender().sendMessage("You cannot store stackable items.");
-						return;
-					}
-					player.getInventory().switchItem(player.getSummoning().getBeastOfBurden(), storeItem, slot, false,
-							true);
-				}
-				break;
-			case PriceChecker.INTERFACE_PC_ID:
-				if (player.getInterfaceId() == PriceChecker.INTERFACE_ID && player.getPriceChecker().isOpen()) {
-					player.getInventory().switchItem(player.getPriceChecker(),
-							new Item(id, player.getInventory().getAmount(id)), slot, false, true);
-				}
-				break;
-		}
+            case Trading.INTERFACE_REMOVAL_ID -> {
+                if (player.getTrading().inTrade()) {
+                    for (Item item : player.getTrading().offeredItems) {
+                        if (item != null && item.getId() == id) {
+                            player.getTrading().removeTradedItem(id, item.getAmount());
+                            if (ItemDefinition.forId(id) != null && ItemDefinition.forId(id).isStackable())
+                                break;
+                        }
+                    }
+                }
+            }
+            case Dueling.INTERFACE_REMOVAL_ID -> {
+                if (Dueling.checkDuel(player, 1) || Dueling.checkDuel(player, 2)) {
+                    for (Item item : player.getDueling().stakedItems) {
+                        if (item != null && item.getId() == id) {
+                            player.getDueling().removeStakedItem(id, item.getAmount());
+                            if (ItemDefinition.forId(id) != null && ItemDefinition.forId(id).isStackable())
+                                break;
+                        }
+                    }
+                }
+            }
+            case Bank.INTERFACE_ID -> {
+                if (!player.isBanking() || player.getBank(Bank.getTabForItem(player, id)).getAmount(id) <= 0 || player.getInterfaceId() != 5292)
+                    return;
+                Item items = player.getBank(Bank.getTabForItem(player, id)).forSlot(slot).copy();
+                player.getBank(player.getCurrentBankTab()).switchItem(player.getInventory(), items, slot, true, true);
+                player.getBank(player.getCurrentBankTab()).open();
+            }
+            case GroupIronmanBank.INTERFACE_ID -> {
+                if (!player.isBanking() || player.getInterfaceId() != 106000)
+                    break;
+                player.getGroupIronmanBank().switchItem(player, player.getInventory(), new Item(id, player.getGroupIronmanBank().getAmount(id)), slot, true, true);
+                player.getGroupIronmanBank().open(player);
+            }
+            case Bank.INVENTORY_INTERFACE_ID -> {
+                Item item = player.getInventory().forSlot(slot).copy().setAmount(player.getInventory().getAmount(id));
+                if (player.isBanking() && player.getInterfaceId() == 106000 && player.getInventory().contains(item.getId())) {
+                    player.getInventory().switchItem(player.getGroupIronmanBank(), item, slot, false, true);
+                    player.getGroupIronmanBank().refreshItems(player);
+                    return;
+                }
+                player.setCurrentBankTab(Bank.getTabForItem(player, item.getId()));
+                player.getInventory().switchItem(player.getBank(player.getCurrentBankTab()), item, slot, false, true);
+            }
+            case 3823 -> {
+                if (player.isShopping()) {
+                    ShopHandler.sell(player, slot, 10);
+                } else {
+                    System.out.println("Not shopping.");
+                }
+            }
+            case BeastOfBurden.INTERFACE_ID -> {
+                if (player.getInterfaceId() == BeastOfBurden.INTERFACE_ID
+                        && player.getSummoning().getBeastOfBurden() != null) {
+                    Item storeItem = new Item(id, 29);
+                    if (storeItem.getDefinition().isStackable()) {
+                        player.getPacketSender().sendMessage("You cannot store stackable items.");
+                        return;
+                    }
+                    player.getInventory().switchItem(player.getSummoning().getBeastOfBurden(), storeItem, slot, false,
+                            true);
+                }
+            }
+            case PriceChecker.INTERFACE_PC_ID -> {
+                if (player.getInterfaceId() == PriceChecker.INTERFACE_ID && player.getPriceChecker().isOpen()) {
+                    player.getInventory().switchItem(player.getPriceChecker(),
+                            new Item(id, player.getInventory().getAmount(id)), slot, false, true);
+                }
+            }
+        }
 
 		if (BeastOfBurden.beastOfBurdenSlot(interfaceId) >= 0) {
 			if (player.getInterfaceId() == BeastOfBurden.INTERFACE_ID

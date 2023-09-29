@@ -4,54 +4,23 @@ import com.ruse.model.container.ItemContainer;
 import com.ruse.world.World;
 import com.ruse.world.entity.impl.player.Player;
 import com.ruse.world.packages.instances.Instance;
+import com.ruse.world.packages.instances.InstanceManager;
 import com.ruse.world.packages.tower.props.Tower;
 import com.ruse.world.packages.tower.props.TowerLocations;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class TarnTower {
 
-    public static List<Instance> instances = new CopyOnWriteArrayList<>();
-
-    public static void remove(Player player){
-        instances.removeIf(instance -> instance.getPlayers().contains(player));
-    }
+    private static final Map<String, Instance> instances = new ConcurrentHashMap<>();
     public static void startTower(@NotNull Player player) {
-        if(!World.attributes.getSetting("tower")){
-            player.sendMessage("The tower is currently disabled.");
-            return;
-        }
-
-        if(player.getInstance() != null) {
-            player.getInstance().clear();
-            player.setInstance(null);
-            return;
-        }
-        if(!Objects.equals(player.getInstanceId(), "")){
-            remove(player);
-            player.setInstanceId("");
-            return;
-        }
-
-        if(!canEnter(player)){
-            return;
-        }
-
-        TowerProgress progress = player.getTower();
-
-        if(progress.getTier() >= 1){
-            player.sendMessage("More coming soon!");
-            return;
-        }
-
-        progress.setInstance(new TowerLevel(Objects.requireNonNull(TowerLocations.get(progress.getTier())).getLocation()));
-
-        instances.add(progress.getInstance());
-        progress.getInstance().enter(player);
+        InstanceManager.getManager().enterTarnTower(player);
     }
 
     public static boolean canEnter(Player player){
@@ -65,7 +34,7 @@ public class TarnTower {
             player.setInstance(null);
             player.setInstanceId("");
             player.getTower().setInstance(null);
-            remove(player);
+            instances.remove(player.getInstanceId());
         }
     }
 

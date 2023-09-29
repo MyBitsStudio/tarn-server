@@ -24,28 +24,24 @@ public class WorldCalendar implements Job {
         return instance;
     }
 
+    public WorldCalendar(){dates = LocalDate.now(ZoneOffset.UTC);}
     public String getTime(){
         return dates.toString();
     }
 
     private static final String CRON_EXPRESSION = "0 0 0 * * ?";
-
-    private final int[] date = new int[3];
-    private final LocalDate dates = LocalDate.now( ZoneOffset.UTC );
+    private LocalDate dates;
 
     public void load(){
-        date[0] = dates.get( ChronoField.MONTH_OF_YEAR);
-        date[1] = dates.get( ChronoField.DAY_OF_MONTH);
-        date[2] = dates.get( java.time.temporal.ChronoField.YEAR );
-        System.out.println("Loaded date: " + date[0] + "/" + date[1] + "/" + date[2]);
+        dates = LocalDate.now(ZoneOffset.UTC);
     }
 
     public int getDay(){
-        return date[1];
+        return dates.getDayOfMonth();
     }
 
     public int getMonth(){
-        return date[0];
+        return dates.getMonth().getValue();
     }
 
     public boolean isWeekend(){

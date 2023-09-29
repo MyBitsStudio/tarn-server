@@ -35,6 +35,7 @@ public class PlayerDaily {
             player.getInventory().add(new Item(23165, 1));
             player.sendMessage(("@red@[DAILY]@whi@ You have claimed your daily Coin Ticket!"));
         }
+
         if(player.getVip().getRank() > 0){
             if(claim("vip-tickets")){
                 int tickets = player.getVip().getRank();
@@ -48,6 +49,7 @@ public class PlayerDaily {
                 }
             }
         }
+
         if(claim("daily-monic")){
             player.getItems().addCharge("ancient-monic", 1);
             player.getPacketSender().sendMessage("@red@[DAILY]@whi@You have gained your daily Ancient Monic charge.");

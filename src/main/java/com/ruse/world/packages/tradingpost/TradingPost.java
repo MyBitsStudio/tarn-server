@@ -143,9 +143,9 @@ public class TradingPost {
     }
 
     public void selectItemToAdd(@NotNull Item item) {
-        selectedItemToAdd = item;
+        selectedItemToAdd = item.copy();
         int amount;
-        if((amount = player.getInventory().getAmount(item.getId())) < item.getAmount()) {
+        if((amount = player.getInventory().getAmount(item)) < item.getAmount()) {
             selectedItemToAdd.setAmount(amount);
         }
         allowInputPrice();
@@ -160,8 +160,8 @@ public class TradingPost {
             player.getPacketSender().sendMessage("@red@Invalid price entered.");
             return;
         }
+        player.getInventory().delete(selectedItemToAdd.copy());
         Offer offer = new Offer(selectedItemToAdd.getId(), selectedItemToAdd.getUid(), selectedItemToAdd.getPerk(), selectedItemToAdd.getBonus(), selectedItemToAdd.getAmount(), price, player.getUsername(), slotSelected, System.currentTimeMillis());
-        player.getInventory().delete(selectedItemToAdd);
         addToLiveOffers(offer);
         openMainInterface();
     }

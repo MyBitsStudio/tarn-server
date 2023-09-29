@@ -150,14 +150,6 @@ public class Locations {
 				KeepersOfLight.leave(player, true);
 			}
 		},
-		EASTER(new int[] { 3123, 3138}, new int[] { 3392, 3419},
-				true, true, true, false, false, true) {},
-		HULK(new int[] { 3472, 3503}, new int[] { 3601, 3632},
-				true, true, true, false, false, true) {},
-		GOKU(new int[] { 2853, 2880}, new int[] { 2855, 2880},
-				true, true, true, false, false, true) {},
-		GARFIELD(new int[] { 1999, 2028}, new int[] { 4495, 4530},
-				true, true, true, false, false, true) {},
 		IRON(new int[] { 3776, 3839}, new int[] { 2816, 2879},
 				true, true, true, false, false, true) {},
 		ZENYTE(new int[] { 2778, 2792}, new int[] { 4834, 4848},
@@ -2078,12 +2070,23 @@ for (Item item : player.getInventory().getItems()) {
 				player.getPacketSender().sendWalkableInterface(60_000, false);
 			}
 		},
-		SINGLE_INSTANCE(new int[] { 3011, 3039 }, new int[] { 5217, 5248 }, true, false, true, false, false, false) {
+//		SINGLE_INSTANCE(new int[] { 3011, 3039 }, new int[] { 5217, 5248 }, true, false, true, false, false, false) {
+//			@Override
+//			public void leave(Player player) {
+//				player.getPacketSender().sendWalkableInterface(60_000, false);
+//			}
+//		},
+
+		SINGLE_INSTANCE(new int[] { 1999, 2028}, new int[] { 4495, 4530},
+				true, true, true, false, false, true) {
 			@Override
 			public void leave(Player player) {
 				player.getPacketSender().sendWalkableInterface(60_000, false);
 			}
 		},
+
+//		HULK(new int[] { 3472, 3503}, new int[] { 3601, 3632},
+//				true, true, true, false, false, true) {},
 
 		//Globals
 		NORMAL_GLOBAL(new int[] { 2130, 2156 }, new int[] { 5001, 5028 }, true, false, true, false, false, false) {
@@ -2114,6 +2117,13 @@ for (Item item : player.getInventory().getItems()) {
 		TOWER_LOBBY(new int[] {2843, 2874 }, new int[] { 2734, 2751 }, false, false, false, false, false, false) {
 		},
 		TOWER_1(new int[] {3011, 3071 }, new int[] { 2813, 2879 }, true, true, true, false, false, false) {
+		},
+
+		SLAYER_ZONES(new int[] {2623, 2687 }, new int[] { 3776, 3841 }, true, false, true, false, false, false) {
+			@Override
+			public void leave(Player player) {
+				player.getPacketSender().sendWalkableInterface(60_000, false);
+			}
 		},
 		;
 

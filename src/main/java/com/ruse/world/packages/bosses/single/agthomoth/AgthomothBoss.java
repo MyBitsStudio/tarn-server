@@ -8,7 +8,7 @@ import com.ruse.world.packages.combat.scripts.npc.single.AgthomothCombat;
 
 public class AgthomothBoss extends Boss {
     public AgthomothBoss(int z) {
-        super(3013, new Position(3029, 5231, z), true);
+        super(3013, new Position(2014, 4509, z), true);
     }
 
     @Override

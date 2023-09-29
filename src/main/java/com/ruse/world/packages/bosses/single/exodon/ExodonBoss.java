@@ -10,7 +10,7 @@ import com.ruse.world.packages.combat.scripts.npc.single.SanctumCombat;
 
 public class ExodonBoss extends Boss {
     public ExodonBoss(int z) {
-        super(12239, new Position(3029, 5231, z), true);
+        super(12239, new Position(2014, 4509, z), true);
     }
 
     @Override

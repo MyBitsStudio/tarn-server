@@ -11,16 +11,13 @@ import lombok.Getter;
 import java.util.Objects;
 import java.util.concurrent.atomic.AtomicInteger;
 
+@Getter
 public abstract class MultiBossInstance extends Instance {
 
     private final Player owner;
-    @Getter
     private final int npcId;
-    @Getter
     private final long times;
-    @Getter
-    private AtomicInteger spawned = new AtomicInteger(0);
-    @Getter
+    private final AtomicInteger spawned = new AtomicInteger(0);
     private final MultiBoss[] bosses;
 
     public MultiBossInstance(Player p, int npcId,
@@ -46,10 +43,6 @@ public abstract class MultiBossInstance extends Instance {
               });
     }
 
-    public Player getOwner() {
-        return owner;
-    }
-
     public void spawnAll(Position[] pos){
         if(pos == null || pos.length != bosses.length){
             throw new IllegalArgumentException("Positions must be the same length as the bosses array.");
@@ -72,6 +65,7 @@ public abstract class MultiBossInstance extends Instance {
         }
         if(n.getId() == getNpcId() && n.getInstanceId().equals(getOwner().getInstanceId())){
             MultiBoss boss = new MultiBoss(npcId, n.getPosition().setZ(getOwner().getIndex() * 4), true, getOwner());
+            boss.setInstance(this);
             boss.setSpawnedFor(getOwner());
             add(boss);
         }

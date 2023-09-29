@@ -21,6 +21,10 @@ import com.ruse.world.packages.bosses.special.VoteInstance;
 import com.ruse.world.packages.bosses.special.event.EventInstance;
 import com.ruse.world.packages.combat.drops.DropManager;
 import com.ruse.world.packages.mode.GameModeConstants;
+import com.ruse.world.packages.tower.TarnTower;
+import com.ruse.world.packages.tower.TowerLevel;
+import com.ruse.world.packages.tower.TowerProgress;
+import com.ruse.world.packages.tower.props.TowerLocations;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
@@ -100,7 +104,36 @@ public class InstanceManager {
             }
         }
 
+    }
 
+    public void enterTarnTower(@NotNull Player player){
+        if(!World.attributes.getSetting("tower")){
+            player.getPacketSender().sendMessage("@red@The calendar is currently disabled.");
+            return;
+        }
+
+        if(player.getInstance() != null) {
+            player.getInstance().destroy();
+            player.setInstance(null);
+            return;
+        }
+
+        if(!Objects.equals(player.getInstanceId(), "")){
+            instances.remove(player.getInstanceId());
+            player.setInstanceId("");
+        }
+
+        TowerProgress progress = player.getTower();
+
+        if(progress.getTier() >= 1){
+            player.sendMessage("More coming soon!");
+            return;
+        }
+
+         Instance instance = new TowerLevel(Objects.requireNonNull(TowerLocations.get(progress.getTier())).getLocation(), player, progress);
+
+        instances.put(instance.getInstanceId(), instance);
+        instance.start();
     }
 
     public void enterMasterInstance(@NotNull Player player, InstanceInterData data){

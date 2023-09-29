@@ -17,7 +17,7 @@ public class SanctumInstance extends SingleBossSinglePlayerInstance {
 
     @Override
     public Position getStartLocation() {
-        return new Position(3025, 5231);
+        return new Position(2014, 4518);
     }
 
     @Override

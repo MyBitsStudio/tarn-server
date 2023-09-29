@@ -713,17 +713,19 @@ public abstract class ItemContainer {
      * @return The ItemContainer instance.
      */
     public ItemContainer delete(Item item, int slot, boolean refresh, ItemContainer toContainer) {
-        if (item == null || slot < 0)
+        if (item == null || slot < 0) {
+            System.out.println("nulllled");
             return this;
+        }
         boolean leavePlaceHolder = (toContainer instanceof Inventory && this instanceof Bank && getPlayer().isPlaceholders());
         if (item.getAmount() > getAmount(item)) {
             item.setAmount(getAmount(item));
         }
-        if (item.getDefinition().isStackable() || stackType() == StackType.STACKS) {
+        if (item.getDefinition().isStackable() || stackType() == StackType.STACKS && Arrays.stream(unstackables).noneMatch(i -> i == item.getId())) {
             if (toContainer != null && !item.getDefinition().isStackable() && item.getAmount() > toContainer.getFreeSlots() && !(this instanceof Bank)  && !(this instanceof GroupIronmanBank))
                 item.setAmount(toContainer.getFreeSlots());
             items[slot].setAmount(items[slot].getAmount() - item.getAmount());
-            //System.out.println("deleting from slot "+slot+" with amount "+item.getAmount()+" and uid "+item.getUid()+" and perk "+item.getPerk()+" and bonus "+item.getBonus());
+            //System.out.println("deleting 5 from slot "+slot+" with amount "+item.getAmount()+" and uid "+item.getUid()+" and perk "+item.getPerk()+" and bonus "+item.getBonus());
             if (items[slot].getAmount() < 1) {
                 items[slot].setAmount(0);
                 if (!leavePlaceHolder) {
@@ -744,11 +746,12 @@ public abstract class ItemContainer {
                 if (!leavePlaceHolder) {
                     items[slot].setId(-1);
                     items[slot].setUid("stale");
-                    items[slot].setPerk("none");
-                    items[slot].setBonus("none");
+
                 } else {
                     items[slot].setUid("-1");
                 }
+                items[slot].setPerk("none");
+                items[slot].setBonus("none");
                 items[slot].setAmount(0);
                 slot = getSlot(item);
                 amount--;
@@ -793,7 +796,6 @@ public abstract class ItemContainer {
         return null;
     }
 
-    //lets give it a try, older items though wont work because they dont have hashes right now, so spawn a few items with the raritys and try that ight
 
     public boolean containsAll(int... ids) {
         return Arrays.stream(ids).allMatch(this::contains);

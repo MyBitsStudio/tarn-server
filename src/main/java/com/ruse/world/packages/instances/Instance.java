@@ -185,7 +185,7 @@ public abstract class Instance {
             players.add((Player) en);
             addPlayer((Player) en);
         } else if(en instanceof NPC){
-            npcs.add((NPC) en);
+            npcs.add(en.toNpc());
         } else if(en instanceof GameObject){
             if(objects.contains(en))
                 return;

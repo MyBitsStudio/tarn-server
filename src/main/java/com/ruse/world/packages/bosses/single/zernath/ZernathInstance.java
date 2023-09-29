@@ -7,7 +7,9 @@ import com.ruse.world.entity.impl.player.Player;
 import com.ruse.world.packages.bosses.SingleBossSinglePlayerInstance;
 import com.ruse.world.packages.bosses.single.agthomoth.AgthomothBoss;
 import com.ruse.world.packages.bosses.single.sanctum.SanctumBoss;
+import lombok.Getter;
 
+@Getter
 public class ZernathInstance extends SingleBossSinglePlayerInstance {
 
     private NPC[] minions = new NPC[3];
@@ -17,15 +19,11 @@ public class ZernathInstance extends SingleBossSinglePlayerInstance {
 
     }
 
-    public NPC[] getMinions(){
-        return minions;
-    }
-
     public void spawn(){
         for(int i = 0; i < minions.length; i++){
             if(minions[i] != null)
                 continue;
-            minions[i] = new NPC(2340, new Position(3029, 5231, getOwner().getIndex() * 4));
+            minions[i] = new NPC(2340, new Position(2018, 4510, getOwner().getIndex() * 4));
             minions[i].setSpawnedFor(getOwner());
             add(minions[i]);
         }
@@ -33,7 +31,7 @@ public class ZernathInstance extends SingleBossSinglePlayerInstance {
 
     @Override
     public Position getStartLocation() {
-        return new Position(3025, 5231);
+        return new Position(2014, 4518);
     }
 
     @Override

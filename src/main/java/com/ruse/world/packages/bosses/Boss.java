@@ -17,13 +17,6 @@ public abstract class Boss extends NPC {
 
     @Override
     public void onDeath(Player player){
-        AchievementHandler.progress(player, 1, 26);
-        AchievementHandler.progress(player, 1, 27);
-        AchievementHandler.progress(player, 1, 43);
-        AchievementHandler.progress(player, 1, 44);
-        AchievementHandler.progress(player, 1, 67);
-        AchievementHandler.progress(player, 1, 68);
-        AchievementHandler.progress(player, 1, 88);
-        AchievementHandler.progress(player, 1, 89);
+        AchievementHandler.progress(player, 1, 26, 27, 43, 44, 67, 68, 88 ,89);
     }
 }
