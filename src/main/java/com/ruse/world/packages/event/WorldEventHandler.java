@@ -87,6 +87,7 @@ public class WorldEventHandler {
     public void reload(){
         events.clear();
         load();
+        startEvents();
     }
 
     public void onLogin(Player player){

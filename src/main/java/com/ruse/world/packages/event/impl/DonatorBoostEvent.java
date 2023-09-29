@@ -9,9 +9,9 @@ import com.ruse.world.entity.impl.player.Player;
 import com.ruse.world.packages.event.Event;
 import lombok.Getter;
 
+@Getter
 public class DonatorBoostEvent extends Event {
 
-    @Getter
     private int boost;
 
     @Override

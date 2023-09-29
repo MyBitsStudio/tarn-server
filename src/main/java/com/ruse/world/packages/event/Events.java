@@ -14,7 +14,7 @@ import lombok.Getter;
 @Getter
 public enum Events {
 
-    DONATOR_RELEASE(new DonatorReleaseEvent(), new int[]{9, 2, 9, 29}),
+    DONATOR_RELEASE(new DonatorReleaseEvent(), new int[]{9, 2, 10, 6}),
     FALL(new FallEvent(), new int[]{9, 1, 11, 1}),
 
     ;
