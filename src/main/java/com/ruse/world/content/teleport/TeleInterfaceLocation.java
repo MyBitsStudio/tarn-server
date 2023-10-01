@@ -57,6 +57,8 @@ public enum TeleInterfaceLocation {//3487, 3615 , 2711, 4752 , 2527, 2527, 1652,
 
     SLAYER0(new Position(2637, 3797, 0), "Tier Ranking: 1 \\n \\n Multi: True \\n \\n Slayer Monsters"), //First Zone
     SLAYER1(new Position(2637, 3797, 4), "Tier Ranking: 1 \\n \\n Multi: True \\n \\n Slayer Monsters"), //First Zone
+    SLAYER2(new Position(2637, 3797, 8), "Tier Ranking: 1 \\n \\n Multi: True \\n \\n Slayer Monsters"), //First Zone
+    SLAYER3(new Position(2637, 3797, 12), "Tier Ranking: 1 \\n \\n Multi: True \\n \\n Slayer Monsters"), //First Zone
 //    LOCATION47(new Position(2962, 9477, 44), "Tier Ranking: 37 \\n \\n Multi: True \\n \\n KC Req: 3K Groudons \\n \\n Recommended ELO: 900+"), //Varth
 //    LOCATION48(new Position(2962, 9477, 48), "Tier Ranking: 38 \\n \\n Multi: True \\n \\n KC Req: 3K Varthramoths \\n \\n Recommended ELO: 918+"), //Tyrant
 //    LOCATION49(new Position(2962, 9477, 52), "Tier Ranking: 39 \\n \\n Multi: True \\n \\n KC Req: 3K Tyrant Lords \\n \\n Recommended ELO: 980+"), //lucifer

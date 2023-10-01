@@ -80,6 +80,16 @@ public enum InstanceInterData {
             new Item(10835, 875), 8, 15, 5861,
             InstanceType.MULTI),
 
+    LIGHT_SUPREME("Light Supreme", "T19",
+            new Item(10835, 1000), 4, 15, 440,
+            InstanceType.MULTI),
+    DARK_SUPREME("Dark Supreme", "T19",
+            new Item(10835, 1000), 4, 15, 438,
+            InstanceType.MULTI),
+    VIRTUOSO("Virtuoso", "T19",
+            new Item(10835, 1000), 4, 15, 3019,
+            InstanceType.MULTI),
+
 
     AGTHOMOTH("Ag'thomoth", "T10",
          new Item(995, 25000), 1, 20, 3013,

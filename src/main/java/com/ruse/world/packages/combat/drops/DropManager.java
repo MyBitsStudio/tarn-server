@@ -165,7 +165,8 @@ public class DropManager {
 
                 if(collector || hasLoot){
                     player.depositItemBank(item);
-                    player.sendMessage("x"+item.getAmount()+" of "+item.getDefinition().getName() +" has been sent to your bank from your collector.");
+                    if(player.getPSettings().getBooleanValue("drop-message-personal"))
+                        player.sendMessage("x"+item.getAmount()+" of "+item.getDefinition().getName() +" has been sent to your bank from your collector.");
                 } else {
                     GroundItemManager.spawnGroundItem(player,
                             new GroundItem(item, pos, player.getUsername(), false, 150, false, 200));
@@ -198,7 +199,8 @@ public class DropManager {
 
             if(collector || hasLoot){
                 player.depositItemBank(item);
-                player.sendMessage("x"+item.getAmount()+" of "+item.getDefinition().getName() +" has been sent to your bank from your collector.");
+                if(player.getPSettings().getBooleanValue("drop-message-personal"))
+                    player.sendMessage("x"+item.getAmount()+" of "+item.getDefinition().getName() +" has been sent to your bank from your collector.");
             } else {
                 GroundItemManager.spawnGroundItem(player,
                         new GroundItem(item, pos, player.getUsername(), false, 150, false, 200));
@@ -226,7 +228,8 @@ public class DropManager {
 
             if(collector || hasLoot){
                 player.depositItemBank(item2);
-                player.sendMessage("x"+item.getAmount()+" of "+item.getDefinition().getName() +" has been sent to your bank from your collector.");
+                if(player.getPSettings().getBooleanValue("drop-message-personal"))
+                    player.sendMessage("x"+item.getAmount()+" of "+item.getDefinition().getName() +" has been sent to your bank from your collector.");
             } else {
                 GroundItemManager.spawnGroundItem(player,
                         new GroundItem(item2, pos, player.getUsername(), false, 150, false, 200));

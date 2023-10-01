@@ -9,6 +9,7 @@ import com.ruse.model.definitions.ItemDefinition;
 import com.ruse.model.definitions.WeaponInterfaces;
 import com.ruse.net.PipelineFactory;
 import com.ruse.security.ServerSecurity;
+import com.ruse.security.save.impl.server.ReferralsLoad;
 import com.ruse.security.save.impl.server.WellsLoad;
 import com.ruse.security.save.impl.server.defs.NPCDropsLoad;
 import com.ruse.security.save.impl.server.defs.TablesLoad;
@@ -23,6 +24,7 @@ import com.ruse.world.content.combat.effect.CombatPoisonEffect.CombatPoisonData;
 import com.ruse.world.content.combat.strategy.CombatStrategies;
 import com.ruse.world.content.groupironman.GroupManager;
 import com.ruse.world.packages.johnachievementsystem.AchievementHandler;
+import com.ruse.world.packages.referral.Referrals;
 import com.ruse.world.packages.serverperks.ServerPerks;
 import com.ruse.world.content.tbdminigame.Lobby;
 import com.ruse.world.packages.tradingpost.TradingPost;
@@ -83,6 +85,7 @@ public final class GameLoader {
 		InstanceManager.getManager();
 		GlobalBossManager.getInstance();
 		WorldCalendar.getInstance();
+		Referrals.getInstance();
 		new Lobby();
 		ServiceManager.INSTANCE.init();
 		WorldIPChecker.getInstance();
@@ -93,6 +96,7 @@ public final class GameLoader {
 		WorldCalendar.getInstance().load();
 		World.attributes.load();
 		WorldIPChecker.getInstance().load();
+		new ReferralsLoad().loadJSON(SecurityUtils.REFERRALS).run();
 	}
 
 	public void finish() throws IOException, InterruptedException {

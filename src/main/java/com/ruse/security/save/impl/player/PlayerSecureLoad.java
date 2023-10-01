@@ -67,6 +67,14 @@ public class PlayerSecureLoad extends SecureLoad {
             player.setUsername(object.get("username").getAsString());
         }
 
+        if (object.has("ref-claim")) {
+            player.setReferralClaim(object.get("ref-claim").getAsInt());
+        }
+
+        if(object.has("ref-claimed")){
+            player.setClaimedReferral(object.get("ref-claimed").getAsBoolean());
+        }
+
         if (object.has("uim-bank")) {
             Map<Integer, Integer> items = builder.fromJson(object.get("uim-bank"),
                     new TypeToken<Map<Integer, Integer>>() {

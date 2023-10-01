@@ -6,12 +6,10 @@ import lombok.Getter;
 @Getter
 public enum YoutuberLinks {
 
-    WALKCHAOS("https://www.youtube.com/channel/UCfSUF-7-QehS6ALll4nl3OA", "walkchaos", "walk"),
-    NOOBSOWN("https://www.youtube.com/channel/UCfnBh-xkfCnjg4Gw6GyiHlA", "noobsown"),
+    NOOBSOWN("https://www.youtube.com/@NoobsOwn", "noobsown"),
     WINALLDAY("https://www.youtube.com/@WinAllDay1",  "winallday"),
-    IPKMAXJR("https://www.youtube.com/@IPkMaxJr",  "max"),
     JIPY("https://www.youtube.com/@jipyrsps",  "jipy"),
-
+    DRAGONIC("https://www.youtube.com/@DragonicNL",  "dragonic"),
 
     ;
 

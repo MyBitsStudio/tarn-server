@@ -21,10 +21,14 @@ public class TowerLevel extends Instance {
 
     @Getter@Setter
     private Player owner;
+
+    private final long started;
+
     public TowerLevel(Locations.Location location, Player owner, TowerProgress progress) {
         super(location);
         setOwner(owner);
         setTower(progress);
+        started = System.currentTimeMillis();
     }
 
     @Override
@@ -37,7 +41,7 @@ public class TowerLevel extends Instance {
         moveTo(getOwner(), tower.getPosition().setZ(getOwner().getIndex() * 4));
         add(getOwner());
 
-        getOwner().sendMessage("You have entered the tower.");
+        getOwner().sendMessage("You have entered the tower. You have 10 minutes to clear.");
 
         spawnObjects();
 
@@ -64,6 +68,15 @@ public class TowerLevel extends Instance {
                 minions[i - 1].setSpawnedFor(getOwner());
                 add(minions[i - 1]);
             }
+        }
+    }
+
+    @Override
+    public void process(){
+        super.process();
+        if(System.currentTimeMillis() > started + (1000 * 60 * 10)){
+            getOwner().sendMessage("Your timer has expired.");
+            this.destroy();
         }
     }
 

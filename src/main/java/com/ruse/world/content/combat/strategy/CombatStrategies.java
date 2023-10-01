@@ -78,6 +78,9 @@ public class CombatStrategies {
 		STRATEGIES.put(5861, script);
 		STRATEGIES.put(667, script);
 		STRATEGIES.put(12843, script);
+		STRATEGIES.put(440, script);
+		STRATEGIES.put(438, script);
+		STRATEGIES.put(3019, script);
 
 
 		// special

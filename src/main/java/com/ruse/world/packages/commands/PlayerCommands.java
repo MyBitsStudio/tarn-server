@@ -21,8 +21,10 @@ import com.ruse.world.packages.dialogue.impl.EmptyInv;
 import com.ruse.world.content.transportation.TeleportHandler;
 import com.ruse.world.content.transportation.TeleportType;
 import com.ruse.world.packages.johnachievementsystem.AchievementHandler;
+import com.ruse.world.packages.misc.PossibleLootInterface;
 import com.ruse.world.packages.misc.Retrieval;
 import com.ruse.world.packages.ranks.StaffRank;
+import com.ruse.world.packages.referral.Referrals;
 import com.ruse.world.packages.tracks.TrackInterface;
 import com.ruse.world.packages.vip.VIPManager;
 import com.ruse.world.packages.voting.VoteHandler;
@@ -32,8 +34,6 @@ import org.jetbrains.annotations.NotNull;
 public class PlayerCommands {
 
     public static boolean handleCommand(Player player, String command, String[] commands){
-
-        Player target;
 
         if(YoutuberLinks.handleCommand(player, commands[0]))
             return true;
@@ -67,6 +67,19 @@ public class PlayerCommands {
             }
             case "sp", "bp" -> {
                 player.getSeasonPass().showInterface();
+                return true;
+            }
+            case "referral", "ref" -> {
+                if (!player.hasReferral) {
+                    player.getPacketSender().sendEnterInputPrompt("Please type your refer code to receive a reward!");
+                    player.setInputHandling(new EnterReferral());
+                } else {
+                    player.getPacketSender().sendMessage("You have already claimed a referral reward on this account!");
+                }
+                return true;
+            }
+            case "refclaim" -> {
+                Referrals.getInstance().claimReferalls(player);
                 return true;
             }
             case "security" -> {
@@ -115,6 +128,7 @@ public class PlayerCommands {
             case "kills" -> {
                 player.getPacketSender().sendInterfaceRemoval();
                 KillTrackerInterface.open(player);
+                return true;
             }
             case "dr", "mydr", "droprate" -> {
                 player.getPacketSender()
@@ -313,11 +327,33 @@ public class PlayerCommands {
                 TrackInterface.sendInterface(player, true);
                 return true;
             }
-            case "achfix" -> {
-                AchievementHandler.progress(player, 2500, 2, 3);
-                AchievementHandler.progress(player, 40, 11, 12);
+            case "hotkey" -> {
+                sendHotkeys(player);
                 return true;
-
+            }
+            case "monsters" -> {
+                player.getTeleInterface().open();
+                return true;
+            }
+            case "achieve" -> {
+                AchievementHandler.sendInterface(player);
+                return true;
+            }
+            case "drops" -> {
+                DropsInterface.open(player);
+                return true;
+            }
+            case "loots" -> {
+                PossibleLootInterface.openInterface(player, PossibleLootInterface.LootData.values()[0]);
+                return true;
+            }
+            case "bis" -> {
+                BestItemsInterface.openInterface(player, 0);
+                return true;
+            }
+            case "hotkeys" -> {
+                sendHotkeys(player);
+                return true;
             }
         }
         return false;
@@ -365,24 +401,99 @@ public class PlayerCommands {
         player.getPacketSender().sendString(index++, color1 + "!!----------------------------------!!");
         player.getPacketSender().sendString(index++, color + "To submit a staff abuse ticket, please visit");
         player.getPacketSender().sendString(index++, color + "our discord, and message Corrupt or Mutant");
+
     }
 
     public static void sendCommands(Player player){
-        player.sendMessage("@red@Being reworked!");
-//        for (int i = 8145; i < 8196; i++)
-//            player.getPacketSender().sendString(i, "");
-//
-//        player.getPacketSender().sendInterface(8134);
-//
-//        player.getPacketSender().sendString(8136, "Close window");
-//        player.getPacketSender().sendString(8144, "Commands");
-//        player.getPacketSender().sendString(8145, "");
-//        int index = 8147;
-//        String color = "@dre@";
-//        String color1 = "@red@";
-//
-//        player.getPacketSender().sendString(index++, color1 + "Main Commands:");
+        for (int i = 8145; i < 8196; i++)
+            player.getPacketSender().sendString(i, "");
 
+        player.getPacketSender().sendInterface(8134);
+
+        player.getPacketSender().sendString(8136, "Close window");
+        player.getPacketSender().sendString(8144, "Commands");
+        player.getPacketSender().sendString(8145, "");
+        int index = 8147;
+        String color1 = "@red@";
+
+        player.getPacketSender().sendString(index++, color1 + "Main Commands:");
+        player.getPacketSender().sendString(index++, color1 + "::redeem claim - Calls database for claims");
+        player.getPacketSender().sendString(index++, color1 + "::redeem donate - Calls database for donations");
+        player.getPacketSender().sendString(index++, color1 + "::redeem vote - Calls database for votes");
+        player.getPacketSender().sendString(index++, color1 + "::settings drop - Hides world drop messages");
+        player.getPacketSender().sendString(index++, color1 + "::settings hide - Hides other players");
+        player.getPacketSender().sendString(index++, color1 + "::settings toggle - Hides personal drop messages");
+        player.getPacketSender().sendString(index++, color1 + "::settings security - READ SECURITY BELOW");
+        player.getPacketSender().sendString(index++, color1 + "::security - Opens security interface");
+        player.getPacketSender().sendString(index++, color1 + "::sp/bp - Opens Seasonpass");
+        player.getPacketSender().sendString(index++, color1 + "::forge - Opens Forge");
+        player.getPacketSender().sendString(index++, color1 + "::slayer - Teleports to Slayer Master");
+        player.getPacketSender().sendString(index++, color1 + "::kills - Shows Kill Tracker");
+        player.getPacketSender().sendString(index++, color1 + "::changepass - Changes password");
+        player.getPacketSender().sendString(index++, color1 + "::changepin - Changes account pin");
+        player.getPacketSender().sendString(index++, color1 + "::home - Telports Home");
+        player.getPacketSender().sendString(index++, color1 + "::dson/dsoff - Turns off/on Drystreak Box");
+        player.getPacketSender().sendString(index++, color1 + "::help - Create a ticket");
+        player.getPacketSender().sendString(index++, color1 + "::die - Kills your character");
+        player.getPacketSender().sendString(index++, color1 + "::empty - Empty your inventory");
+        player.getPacketSender().sendString(index++, color1 + "::daily - Opens Daily Calendar");
+        player.getPacketSender().sendString(index++, color1 + "::vip - Opens VIP/Donator interface");
+        player.getPacketSender().sendString(index++, color1 + "::track - Opens the tracks");
+        player.getPacketSender().sendString(index++, color1 + "::hotkeys - Opens hotkey interface");
+        player.getPacketSender().sendString(index++, color1 + "::ref - Claim a referral");
+        player.getPacketSender().sendString(index++, color1 + "::refclaim - Claim your referrals");
+        player.getPacketSender().sendString(index++, color1 + "::lugia - Teleports to Lugia");
+        player.getPacketSender().sendString(index++, color1 + "::groudon - Teleports to Groudon");
+        player.getPacketSender().sendString(index++, color1 + "::ninetails - Teleports to Ninetails");
+        player.getPacketSender().sendString(index++, color1 + "::mewtwo - Teleports to Mewtwo");
+        player.getPacketSender().sendString(index++, color1 + "::vboss - Teleports to Vote Boss");
+        player.getPacketSender().sendString(index++, color1 + "::donboss - Teleports to Donation Boss");
+        player.getPacketSender().sendString(index++, color1 + "==============================================");
+        player.getPacketSender().sendString(index++, color1 + "==== SECURITY -- PLEASE READ ====");
+        color1 = "@whi@";
+        player.getPacketSender().sendString(index++, color1 + "We have enhanced security features to help protect your ");
+        player.getPacketSender().sendString(index++, color1 + "account, as well as the server. By default, your account ");
+        player.getPacketSender().sendString(index++, color1 + "security is set to off.You can turn this on, but please ");
+        player.getPacketSender().sendString(index++, color1 + "note this before you do. Security is set you watch your ");
+        player.getPacketSender().sendString(index++, color1 + "account, and block any attempts that are invalid. You can ");
+        player.getPacketSender().sendString(index++, color1 + "lock your account out if your on different ips, use the ");
+        player.getPacketSender().sendString(index++, color1 + "wrong password too many times, or other invalid attempts, ");
+        player.getPacketSender().sendString(index++, color1 + "seen as the system as malicious actors. Please use ");
+        player.getPacketSender().sendString(index++, color1 + "caution when activating and make sure that 2FA is ");
+        player.getPacketSender().sendString(index++, color1 + "set up before doing this to be able to get into your ");
+        player.getPacketSender().sendString(index++, color1 + "account in the event of a lockout.");
+    }
+
+    public static void sendHotkeys(Player player){
+        for (int i = 8145; i < 8196; i++)
+            player.getPacketSender().sendString(i, "");
+
+        player.getPacketSender().sendInterface(8134);
+
+        player.getPacketSender().sendString(8136, "Close window");
+        player.getPacketSender().sendString(8144, "HotKeys");
+        player.getPacketSender().sendString(8145, "");
+        int index = 8147;
+        String color = "@dre@";
+        String color1 = "@red@";
+
+        player.getPacketSender().sendString(index++, color1 + "Control (CTRL)");
+        player.getPacketSender().sendString(index++, color1 + "+ H - Teleports Home");
+        player.getPacketSender().sendString(index++, color1 + "+ P - Opens POS (VIP 5)");
+        player.getPacketSender().sendString(index++, color1 + "+ S - Opens Seasonpass");
+        player.getPacketSender().sendString(index++, color1 + "+ B - Opens Bank (VIP 3)");
+        player.getPacketSender().sendString(index++, color1 + "+ T - Opens Tracks");
+        player.getPacketSender().sendString(index++, color1 + "+ I - Opens Instances (VIP 5)");
+        player.getPacketSender().sendString(index++, color1 + "+ M - Opens Teleport Interface");
+        player.getPacketSender().sendString(index++, color1 + "+ A - Opens Achievements");
+        player.getPacketSender().sendString(index++, color1 + "+ D - Opens Drops");
+        player.getPacketSender().sendString(index++, color1 + "+ L - Opens Loots");
+        player.getPacketSender().sendString(index++, color1 + "+ Y - Opens BIS");
+        player.getPacketSender().sendString(index++, color1 + "+ E - Opens Daily Attendance");
+        player.getPacketSender().sendString(index++, color1 + "-----------------------------");
+        player.getPacketSender().sendString(index++, color1 + "Shift (SHIFT)");
+        player.getPacketSender().sendString(index++, color1 + "Most Items Will Change To Drop Option");
+        player.getPacketSender().sendString(index++, color1 + "Will Change Coins/Tokens to Convert");
     }
 
     public static boolean handleGlobalSpawn(Player player, @NotNull String type){
@@ -429,8 +540,8 @@ public class PlayerCommands {
             player.getPacketSender().sendMessage("You are muted and cannot yell.");
             return;
         }
-        if(player.getRank() != StaffRank.YOUTUBER && !player.getRank().isStaff() && !player.getDonator().isClericPlus()){
-            player.getPacketSender().sendMessage("You need to be a Donator to yell.");
+        if(player.getRank() != StaffRank.YOUTUBER && !player.getRank().isStaff() && player.getVip().getRank()  < 2){
+            player.getPacketSender().sendMessage("You need to be a VIP 2 to yell.");
             return;
         }
 //        if (player.getAmountDonated() < Donation.SAPPHIRE_DONATION_AMOUNT && !(player.getRights().isStaff() || player.getRights() == PlayerRights.YOUTUBER)) {

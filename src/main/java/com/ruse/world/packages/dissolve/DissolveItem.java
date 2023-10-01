@@ -242,6 +242,20 @@ public class DissolveItem {
                 ran = true;
             }
 
+            case 22134, 8109, 8108, 8107, 8106, 8105, 8110, 8104, 8103,
+                    8102, 8101, 8100, 14202, 14204, 14206, 14301,
+                    14303, 14305, 14307 -> {
+                toDissolve = player.getInventory().get(slot);
+                if (player.getInventory().contains(toDissolve.getId())) {
+                    player.getInventory().delete(toDissolve)
+                            .add(COINS, Misc.random(5241, 39985));
+                    player.performAnimation(new Animation(712));
+                    player.getSkillManager().addExperience(Skill.CRAFTING, 99);
+                    player.getPacketSender().sendMessage("@or2@You have dissolved @red@" + ItemDefinition.forId(id).getName() + "@or2@");
+                }
+                ran = true;
+            }
+
             case 15005, 15006, 15007, 15008, 15200, 15201, 15100, 14915 -> {
                 toDissolve = player.getInventory().get(slot);
                 if (player.getInventory().contains(toDissolve.getId())) {

@@ -28,8 +28,10 @@ public class Forge {
 
     public void showInterface() {
         if(!World.attributes.getSetting("forge")){
-            player.sendMessage("This feature is currently disabled.");
-            return;
+            if(!player.getRank().isStaff()) {
+                player.sendMessage("This feature is currently disabled.");
+                return;
+            }
         }
         reset();
         updateInterface();
@@ -47,7 +49,6 @@ public class Forge {
                 .updateProgressSpriteBar(PERCENTAGE_BAR_ID, progress, getValueForNextTier().orElseGet(() -> progress))
                 .sendItemOnInterface(49523, 18653, 0)
                 .sendString(49527, String.valueOf(0))
-                .setScrollMax(49538, 220)
                 .sendString(49531, "Tier: " + tier)
                 .sendString(49526, String.valueOf(tier));
     }
@@ -93,8 +94,10 @@ public class Forge {
 
     public void addItem(Item item) {
         if(!World.attributes.getSetting("forge")){
-            player.sendMessage("This feature is currently disabled.");
-            return;
+            if(!player.getRank().isStaff()) {
+                player.sendMessage("This feature is currently disabled.");
+                return;
+            }
         }
         if(addedItemMap.entrySet()
                 .stream()

@@ -148,11 +148,11 @@ public class ClanManager {
             player.getPacketSender().sendMessage("You are muted and cannot chat.");
             return;
         }
-        long time = player.getTotalPlayTime() + player.getRecordedLogin().elapsed();
-        if((time < 1_800_000) && !Objects.equals(clan.getName(), "Help") && !player.getRank().isStaff()){
-            player.getPacketSender().sendMessage("New players can only chat in Help chat.");
-            return;
-        }
+//        long time = player.getTotalPlayTime() + player.getRecordedLogin().elapsed();
+//        if((time < 1_800_000) && !Objects.equals(clan.getName(), "Help") && !player.getRank().isStaff()){
+//            player.getPacketSender().sendMessage("New players can only chat in Help chat.");
+//            return;
+//        }
         if (!player.isCanChat()) {
             player.getPacketSender().sendMessage("@red@You can only send messages every few seconds as a new player!");
             return;
@@ -175,16 +175,16 @@ public class ClanManager {
                     + clan.getName() +  "]" + rankImg + " " + NameUtils.capitalizeWords(player.getUsername()) + ": "
                     + NameUtils.capitalize(message));
             });
-        if(time < 1_800_000 && !player.getRank().isStaff()){
-            player.setCanChat(false);
-            TaskManager.submit(new Task(19, false) {
-                @Override
-                public void execute() {
-                    player.setCanChat(true);
-                    this.stop();
-                }
-            });
-        }
+//        if(time < 1_800_000 && !player.getRank().isStaff()){
+//            player.setCanChat(false);
+//            TaskManager.submit(new Task(19, false) {
+//                @Override
+//                public void execute() {
+//                    player.setCanChat(true);
+//                    this.stop();
+//                }
+//            });
+//        }
 
         PlayerLogs.log(player.getUsername(),
                 "(CC) " + (player.getClan() != null

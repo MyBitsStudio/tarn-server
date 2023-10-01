@@ -126,6 +126,13 @@ public enum SlayerMonsters {
     TORNADO(5861, 2, 179, 436,
             true, false, new int[]{101, 378}),
 
+    LIGHT_GUILD(440, 2, 179, 512,
+            true, false, new int[]{125, 299}),
+    DARK_GUILD(438, 2, 179, 512,
+            true, false, new int[]{125, 299}),
+    VIRTUOSO(3019, 2, 179, 512,
+            true, false, new int[]{125, 299}),
+
     AGTHO(3013, 3, 92, 396,
             true, false, new int[]{25, 112}),
     ZERNATH(3831, 3, 92, 396,

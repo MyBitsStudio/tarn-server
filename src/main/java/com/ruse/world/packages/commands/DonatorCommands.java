@@ -5,6 +5,7 @@ import com.ruse.model.Position;
 import com.ruse.util.RandomUtility;
 import com.ruse.world.content.transportation.TeleportHandler;
 import com.ruse.world.entity.impl.player.Player;
+import com.ruse.world.packages.instances.InstanceManager;
 import org.jetbrains.annotations.NotNull;
 
 public class DonatorCommands {
@@ -58,6 +59,10 @@ public class DonatorCommands {
             switch (commands[0]) {
                 case "pos" -> {
                     player.getTradingPost().openMainInterface();
+                    return true;
+                }
+                case "instances" -> {
+                    InstanceManager.getManager().sendInterface(player);
                     return true;
                 }
             }

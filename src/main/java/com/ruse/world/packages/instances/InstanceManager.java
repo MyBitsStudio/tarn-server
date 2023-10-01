@@ -21,7 +21,6 @@ import com.ruse.world.packages.bosses.special.VoteInstance;
 import com.ruse.world.packages.bosses.special.event.EventInstance;
 import com.ruse.world.packages.combat.drops.DropManager;
 import com.ruse.world.packages.mode.GameModeConstants;
-import com.ruse.world.packages.tower.TarnTower;
 import com.ruse.world.packages.tower.TowerLevel;
 import com.ruse.world.packages.tower.TowerProgress;
 import com.ruse.world.packages.tower.props.TowerLocations;
@@ -29,6 +28,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class InstanceManager {
@@ -130,7 +130,23 @@ public class InstanceManager {
             return;
         }
 
-         Instance instance = new TowerLevel(Objects.requireNonNull(TowerLocations.get(progress.getTier())).getLocation(), player, progress);
+        TowerLevel instance = new TowerLevel(Objects.requireNonNull(TowerLocations.get(progress.getTier())).getLocation(), player, progress);
+
+        AtomicBoolean found = new AtomicBoolean(false);
+
+        instances.values().stream().filter(Objects::nonNull).filter(i -> i instanceof TowerLevel).forEach(i -> {
+            TowerLevel level = (TowerLevel) i;
+            if(level.getTower().getLevel() == progress.getLevel() && level.getTower().getTier() == progress.getTier()){
+                found.set(true);
+            }
+        });
+
+        if(found.get()){
+            player.sendMessage("The tower is occupied. Try again in a few minutes.");
+            return;
+        }
+
+        player.getTower().setInstance(instance);
 
         instances.put(instance.getInstanceId(), instance);
         instance.start();
@@ -178,11 +194,6 @@ public class InstanceManager {
             player.setInstanceId("");
         }
 
-        if(!takeItem(player, data)) {
-            player.sendMessage("You don't have x"+data.getCost().getAmount()+" of "+ItemDefinition.forId(data.getCost().getId()).getName());
-            return;
-        }
-
         int cap = data.getCap();
 
         cap += player.getVip().getBonusCap();
@@ -210,6 +221,11 @@ public class InstanceManager {
         if(instance == null)
             return;
 
+        if(!takeItem(player, data)) {
+            player.sendMessage("You don't have x"+data.getCost().getAmount()+" of "+ItemDefinition.forId(data.getCost().getId()).getName());
+            return;
+        }
+
         instances.put(instance.getInstanceId(), instance);
         instance.start();
 
@@ -229,11 +245,6 @@ public class InstanceManager {
         if(!Objects.equals(player.getInstanceId(), "")){
             instances.remove(player.getInstanceId());
             player.setInstanceId("");
-        }
-
-        if(!takeItem(player, data)) {
-            player.sendMessage("You don't have x"+data.getCost().getAmount()+" of "+ItemDefinition.forId(data.getCost().getId()).getName());
-            return;
         }
 
         int cap = data.getCap();
@@ -263,6 +274,11 @@ public class InstanceManager {
             return;
         }
 
+        if(!takeItem(player, data)) {
+            player.sendMessage("You don't have x"+data.getCost().getAmount()+" of "+ItemDefinition.forId(data.getCost().getId()).getName());
+            return;
+        }
+
         instances.put(instance.getInstanceId(), instance);
         instance.start();
     }
@@ -283,11 +299,6 @@ public class InstanceManager {
             player.setInstanceId("");
         }
 
-        if(!takeItem(player, data)) {
-            player.sendMessage("You don't have x"+data.getCost().getAmount()+" of "+ItemDefinition.forId(data.getCost().getId()).getName());
-            return;
-        }
-
         int cap = data.getCap();
 
         cap += player.getVip().getBonusCap();
@@ -298,6 +309,11 @@ public class InstanceManager {
 
         Instance instance = new MultiBossNormalInstance(player,
                 data.getNpcId(), data.getSpawns(), cap);
+
+        if(!takeItem(player, data)) {
+            player.sendMessage("You don't have x"+data.getCost().getAmount()+" of "+ItemDefinition.forId(data.getCost().getId()).getName());
+            return;
+        }
 
         instances.put(instance.getInstanceId(), instance);
         instance.start();

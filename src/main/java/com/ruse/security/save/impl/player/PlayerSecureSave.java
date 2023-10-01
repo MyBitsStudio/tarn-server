@@ -24,6 +24,9 @@ public class PlayerSecureSave extends SecureSave {
         object.addProperty("username", player.getUsername());
         object.addProperty("total-play-time", player.getTotalPlayTime());
 
+        object.addProperty("ref-claim", player.getReferralClaim());
+        object.addProperty("ref-claimed", player.isClaimedReferral());
+
         object.addProperty("staff", player.getRank().name());
         object.addProperty("donator", player.getDonator().name());
         object.addProperty("vip", player.getVip().name());

@@ -4037,5 +4037,11 @@ public class Player extends Character {
     @Getter@Setter
     private Raid raid;
 
+    @Getter@Setter
+    private int referralClaim;
+
+    @Getter@Setter
+    private boolean claimedReferral;
+
 
 }
