@@ -418,6 +418,11 @@ public class TrackInterface {
                             case 0 -> player.getTarnNormal().getRewards().claimRewards(player, player.getTarnNormal().position, false, false);
                         }
                     }
+                    case 3-> {
+                        switch(Integer.parseInt(player.getVariables().getInterfaceSettings()[1])){
+                            case 0 -> player.getTarnElite().getRewards().claimRewards(player, player.getTarnElite().position, false, false);
+                        }
+                    }
                 }
                 sendInterface(player, false);
                 return true;
