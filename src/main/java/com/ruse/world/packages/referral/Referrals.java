@@ -2,6 +2,7 @@ package com.ruse.world.packages.referral;
 
 import com.ruse.model.Item;
 import com.ruse.security.save.impl.server.ReferralsSave;
+import com.ruse.world.World;
 import com.ruse.world.entity.impl.player.Player;
 import lombok.Getter;
 import org.jetbrains.annotations.NotNull;
@@ -43,6 +44,12 @@ public class Referrals {
     }
 
     public void claimReferral(@NotNull Player player, String name){
+
+        if(!World.attributes.getSetting("refer")){
+            player.getPacketSender().sendMessage("@red@Referrals are currently disabled.");
+            return;
+        }
+
         if(player.isClaimedReferral()){
             player.sendMessage("You have already claimed a referral.");
             return;
