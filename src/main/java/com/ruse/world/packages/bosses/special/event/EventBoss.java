@@ -10,7 +10,7 @@ import com.ruse.world.packages.combat.scripts.npc.single.AgthomothCombat;
 
 public class EventBoss extends Boss {
     public EventBoss(int z) {
-        super(6430, new Position(3029, 5231, z), true);
+        super(6430, new Position(2014, 4509, z), true);
     }
 
     @Override

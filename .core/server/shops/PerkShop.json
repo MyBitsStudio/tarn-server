@@ -1,0 +1,114 @@
+[
+  {
+    "id": 9,
+    "name": "Perk Shop",
+    "canSell": false,
+    "shops": [
+      {
+        "shopId": 0,
+        "currency": "perk_frags",
+        "shopName": "Uncommon",
+        "restrict": 0,
+        "items": [
+          {
+            "id": 23150,
+            "amount": 50,
+            "price": 100
+          },
+          {
+            "id": 23151,
+            "amount": 50,
+            "price": 100
+          },
+          {
+            "id": 25000,
+            "amount": 50,
+            "price": 100
+          }
+        ]
+      },
+      {
+        "shopId": 1,
+        "currency": "perk_frags",
+        "shopName": "Rare",
+        "restrict": 0,
+        "items": [
+          {
+            "id": 23152,
+            "amount": 50,
+            "price": 250
+          },
+          {
+            "id": 23153,
+            "amount": 50,
+            "price": 250
+          }
+        ]
+      },
+      {
+        "shopId": 2,
+        "currency": "perk_frags",
+        "shopName": "Legendary",
+        "restrict": 0,
+        "items": [
+          {
+            "id": 23154,
+            "amount": 50,
+            "price": 500
+          },
+          {
+            "id": 23155,
+            "amount": 50,
+            "price": 500
+          },
+          {
+            "id": 23156,
+            "amount": 50,
+            "price": 500
+          }
+        ]
+      },
+      {
+        "shopId": 3,
+        "currency": "perk_frags",
+        "shopName": "Mythical",
+        "restrict": 0,
+        "items": [
+          {
+            "id": 23157,
+            "amount": 50,
+            "price": 1000
+          },
+          {
+            "id": 23158,
+            "amount": 50,
+            "price": 1000
+          },
+          {
+            "id": 23159,
+            "amount": 50,
+            "price": 1000
+          },
+          {
+            "id": 23160,
+            "amount": 50,
+            "price": 1000
+          }
+        ]
+      },
+      {
+        "shopId": 4,
+        "currency": "perk_frags",
+        "shopName": "Godly",
+        "restrict": 0,
+        "items": [
+          {
+            "id": 25001,
+            "amount": 50,
+            "price": 2500
+          }
+        ]
+      }
+    ]
+  }
+]
