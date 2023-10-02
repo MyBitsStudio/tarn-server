@@ -11,6 +11,8 @@ public enum YoutuberLinks {
     JIPY("https://www.youtube.com/@jipyrsps",  "jipy"),
     DRAGONIC("https://www.youtube.com/@DragonicNL",  "dragonic"),
 
+    WRECKED("https://www.youtube.com/wr3ckedyou", "wrecked"),
+
     ;
 
     private String URL;
