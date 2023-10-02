@@ -75,7 +75,6 @@ public class RegionInstance {
 			return;
 		player.getPA().sendMessage("You have been kicked from instance");
 		player.getRegionInstance().destruct();
-		player.setData(null);
 		player.setCurrentInstanceAmount(-1);
 		player.setCurrentInstanceNpcId(-1);
 		player.setCurrentInstanceNpcName("");

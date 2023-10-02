@@ -11,7 +11,6 @@ import com.ruse.world.content.PlayerPunishment.Jail;
 import com.ruse.world.content.Zulrah;
 import com.ruse.world.content.aura.AuraRaids;
 import com.ruse.world.content.combat.strategy.impl.Scorpia;
-import com.ruse.world.content.instanceMananger.InstanceManager;
 import com.ruse.world.content.minigames.impl.*;
 import com.ruse.world.content.minigames.impl.dungeoneering.DungeoneeringParty;
 import com.ruse.world.content.progressionzone.ProgressionZone;
@@ -23,7 +22,6 @@ import com.ruse.world.entity.Entity;
 import com.ruse.world.entity.impl.Character;
 import com.ruse.world.entity.impl.npc.NPC;
 import com.ruse.world.entity.impl.player.Player;
-import com.ruse.world.instance.MapInstance;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -675,53 +673,34 @@ public class Locations {
 		INSTANCE1(new int[] { 2628, 2685 }, new int[] { 4750, 4790 }, true, true, true, false, false, false) {
 			@Override
 			public void logout(Player player) {
-				if (player.getRegionInstance() != null && player.getRegionInstance().equals(RegionInstance.RegionInstanceType.INSTANCE)) {
-						new InstanceManager(player).onLogout();
-					World.getNpcs().forEach(n -> n.removeInstancedNpcs(Location.INSTANCE1, player.getIndex() * 4, player));
-				}
+
 			}
 
 			@Override
 			public void leave(Player player) {
-				if (player.getRegionInstance() != null && player.getRegionInstance().equals(RegionInstance.RegionInstanceType.INSTANCE)) {
-					new InstanceManager(player).onLogout();
-					World.getNpcs().forEach(n -> n.removeInstancedNpcs(Location.INSTANCE1, player.getIndex() * 4, player));
-				}
+
 			}
 
 			@Override
 			public void login(Player player) {
-				if (player.getRegionInstance() != null && player.getRegionInstance().equals(RegionInstance.RegionInstanceType.INSTANCE)) {
-					new InstanceManager(player).onLogout();
-					World.getNpcs().forEach(n -> n.removeInstancedNpcs(Location.INSTANCE1, player.getIndex() * 4, player));
-				}
+
 				player.moveTo(GameSettings.DEFAULT_POSITION.copy());
 			}
 
 			@Override
 			public void onDeath(Player player) {
-				if (player.getRegionInstance() != null && player.getRegionInstance().equals(RegionInstance.RegionInstanceType.INSTANCE)) {
-					new InstanceManager(player).onLogout();
-					World.getNpcs().forEach(n -> n.removeInstancedNpcs(Location.INSTANCE1, player.getIndex() * 4, player));
-				}
+
 			}
 		},
 		INSTANCE2(new int[] { 2753, 2814 }, new int[] { 4736, 4800 }, true, true, true, false, false, false) {
 			@Override
 			public void logout(Player player) {
-				if (player.getRegionInstance() != null && player.getRegionInstance().equals(RegionInstance.RegionInstanceType.INSTANCE)) {
-					new InstanceManager(player).onLogout();
-				}
-				World.getNpcs().forEach(n -> n.removeInstancedNpcs(Location.INSTANCE2, player.getIndex() * 4, player));
-				player.moveTo(GameSettings.DEFAULT_POSITION.copy());
+
 			}
 
 			@Override
 			public void leave(Player player) {
-				if (player.getRegionInstance() != null && player.getRegionInstance().equals(RegionInstance.RegionInstanceType.INSTANCE)) {
-					new InstanceManager(player).onLogout();
-				}
-				World.getNpcs().forEach(n -> n.removeInstancedNpcs(Location.INSTANCE2, player.getIndex() * 4, player));
+
 			}
 
 			@Override
@@ -733,19 +712,12 @@ public class Locations {
 
 			@Override
 			public void login(Player player) {
-				if (player.getRegionInstance() != null && player.getRegionInstance().equals(RegionInstance.RegionInstanceType.INSTANCE)) {
-					new InstanceManager(player).onLogout();
-				}
-				World.getNpcs().forEach(n -> n.removeInstancedNpcs(Location.INSTANCE2, player.getIndex() * 4, player));
-				player.moveTo(GameSettings.DEFAULT_POSITION.copy());
+
 			}
 
 			@Override
 			public void onDeath(Player player) {
-				if (player.getRegionInstance() != null && player.getRegionInstance().equals(RegionInstance.RegionInstanceType.INSTANCE)) {
-					new InstanceManager(player).onLogout();
-				}
-				World.getNpcs().forEach(n -> n.removeInstancedNpcs(Location.INSTANCE2, player.getIndex() * 4, player));
+
 			}
 			},
 		ZONES1(new int[] { 2948, 3007 }, new int[] { 9473, 9510 }, false, true, true, false, false, false) {
@@ -2285,7 +2257,8 @@ for (Item item : player.getInventory().getItems()) {
 						|| (prev == Location.ZOMBIE && newLocation == Location.ZOMBIE_LOBBY)
 						|| (prev == Location.AURA_LOBBY && newLocation == Location.AURA)
 						|| (prev == Location.AURA && newLocation == Location.AURA_LOBBY)
-						|| prev == Location.NORMAL_INSTANCE
+						|| prev == Location.NORMAL_INSTANCE || prev == Location.SINGLE_INSTANCE
+						|| prev == Location.TOWER_1
 //						|| (prev == Location.TEST_RAID_LOBBY && newLocation == Location.TEST_RAID)
 //						|| (prev == Location.TEST_RAID && newLocation == Location.TEST_RAID_LOBBY)
 				) {
@@ -2368,6 +2341,6 @@ for (Item item : player.getInventory().getItems()) {
 	}
 
 	public static List<Location> bossLocations = Collections.synchronizedList(Arrays.asList(
-			Location.NORMAL_INSTANCE, Location.SINGLE_INSTANCE
+			Location.NORMAL_INSTANCE, Location.SINGLE_INSTANCE, Location.TOWER_1
 	));
 }

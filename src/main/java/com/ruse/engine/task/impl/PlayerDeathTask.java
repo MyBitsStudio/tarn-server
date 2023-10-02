@@ -68,36 +68,16 @@ public class PlayerDeathTask extends Task {
         }
         try {
             switch (ticks) {
-                case 5:
+                case 5 -> {
                     player.getPacketSender().sendInterfaceRemoval();
                     player.getMovementQueue().setLockMovement(true).reset();
-                    break;
-                case 3:
-
-                    if (player.currentInstanceAmount < 1) {
-                    player.performAnimation(new Animation(0x900));
-                    player.getPacketSender().sendMessage("Oh dear, you are dead!");
-                        CurseHandler.deactivateAll(player);
-                        PrayerHandler.deactivateAll(player);
-                    this.death = getDeathNpc(player);
-                    }
-                    if (player.currentInstanceAmount >= 1) {
-                        player.getPA().sendMessage("You have been kicked from instance");
-                        player.getRegionInstance().destruct();
-                        player.setData(null);
-                        player.setCurrentInstanceAmount(-1);
-                        player.setCurrentInstanceNpcId(-1);
-                        player.setCurrentInstanceNpcName("");
-                        player.performAnimation(new Animation(0x900));
-                        Position[] locations = new Position[] { new Position(2656, 4016, 0), new Position(2656, 4016, 0) };
-                        Position teleportLocation = locations[RandomUtility.exclusiveRandom(0, locations.length)];
-                        TeleportHandler.teleportPlayer(player, teleportLocation, player.getSpellbook().getTeleportType());
-                    }
-                    if(player.getInstance() != null){
+                }
+                case 3 -> {
+                    if (player.getInstance() != null) {
                         player.getInstance().remove(player);
                     }
-                    break;
-                case 1:
+                }
+                case 1 -> {
                     this.oldPosition = player.getPosition().copy();
                     this.loc = player.getLocation();
                     if (loc != Location.DUNGEONEERING && loc != Location.CUSTOM_RAIDS && loc != Location.PEST_CONTROL_GAME && loc != Location.DUEL_ARENA
@@ -112,27 +92,22 @@ public class PlayerDeathTask extends Task {
 
                         if (player.getRank().isAdmin())
                             dropItems = false;
-                        if (loc == Location.WILDERNESS) {
-                            if (killer != null && (killer.getRank().isAdmin())) // ||
-                                // killer.getGameMode().equals(GameMode.IRONMAN)
-                                // ||
-                                // killer.getGameMode().equals(GameMode.ULTIMATE_IRONMAN)))
-                                dropItems = false;
-                        }
+
                         if (killer != null) {
                             if (killer.getRank().isAdmin()) {
                                 dropItems = false;
                             }
                         }
+
                         if (loc == Location.THE_SIX || loc == Location.NOMAD) {
                             spawnItems = false;
-                        } else spawnItems = loc != Location.WILDERNESS || killer == null || !killer.isPlayer()
+                        } else spawnItems = killer == null || !killer.isPlayer()
                                 || killer.getMode() instanceof Ironman || killer.getMode() instanceof UltimateIronman
                                 || killer.getMode() instanceof GroupIronman;
                         if (dropItems) { // check for item dropping
                             if (!spawnItems) {
                                 if (loc == Location.WILDERNESS && killer.isPlayer()
-                                && (killer.getMode() instanceof Ironman || killer.getMode() instanceof UltimateIronman
+                                        && (killer.getMode() instanceof Ironman || killer.getMode() instanceof UltimateIronman
                                         || killer.getMode() instanceof GroupIronman)) {
                                     killer.getPacketSender()
                                             .sendMessage("As an Iron/UIM player, you cannot loot " + player.getUsername()
@@ -230,8 +205,8 @@ public class PlayerDeathTask extends Task {
                     player.setTeleporting(false);
                     player.setWalkToTask(null);
                     player.getSkillManager().stopSkilling();
-                    break;
-                case 0:
+                }
+                case 0 -> {
                     if (dropItems) {
                         if (player.getMode() instanceof UltimateIronman) {
                             player.getMode().changeMode(new Ironman());
@@ -260,7 +235,7 @@ public class PlayerDeathTask extends Task {
 
                         if (player.getPosition().equals(oldPosition))
                             player.moveTo(GameSettings.DEFAULT_POSITION.copy());
-                        if(player.isMiniPlayer()) {
+                        if (player.isMiniPlayer()) {
                             player.getOwner().getMinimeSystem().targetPlayer();
                         }
                         // TeleportHandler.teleportPlayer(player, new Position(2524 +
@@ -274,7 +249,7 @@ public class PlayerDeathTask extends Task {
                     player = null;
                     oldPosition = null;
                     stop();
-                    break;
+                }
             }
             ticks--;
         } catch (Exception e) {
@@ -282,9 +257,6 @@ public class PlayerDeathTask extends Task {
             e.printStackTrace();
             if (player != null) {
                 player.moveTo(GameSettings.DEFAULT_POSITION.copy());
-                if(player.isMiniPlayer()) {
-                    player.getOwner().getMinimeSystem().targetPlayer();
-                }
                 if (player.isGodMode()) {
                     return;
                 }

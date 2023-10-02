@@ -106,6 +106,10 @@ public class InstanceManager {
 
     }
 
+    public Instance byId(String id){
+        return instances.get(id);
+    }
+
     public void enterTarnTower(@NotNull Player player){
         if(!World.attributes.getSetting("tower")){
             player.getPacketSender().sendMessage("@red@The calendar is currently disabled.");
@@ -134,20 +138,20 @@ public class InstanceManager {
 
         AtomicBoolean found = new AtomicBoolean(false);
 
-        instances.values().stream().filter(Objects::nonNull).filter(i -> i instanceof TowerLevel).forEach(i -> {
-            TowerLevel level = (TowerLevel) i;
-            if(level.getTower().getLevel() == progress.getLevel() && level.getTower().getTier() == progress.getTier()){
-                found.set(true);
-            }
-        });
+//        instances.values().stream().filter(Objects::nonNull).filter(i -> i instanceof TowerLevel).forEach(i -> {
+//            TowerLevel level = (TowerLevel) i;
+//            if(level.getTower().getLevel() == progress.getLevel() && level.getTower().getTier() == progress.getTier()){
+//                found.set(true);
+//            }
+//        });
+//
+//        if(found.get()){
+//            player.sendMessage("The tower is occupied. Try again in a few minutes.");
+//            return;
+//        }
 
-        if(found.get()){
-            player.sendMessage("The tower is occupied. Try again in a few minutes.");
-            return;
-        }
-
+        clear(player);
         player.getTower().setInstance(instance);
-
         instances.put(instance.getInstanceId(), instance);
         instance.start();
     }
@@ -323,7 +327,9 @@ public class InstanceManager {
         World.getNpcs().stream()
                 .filter(Objects::nonNull)
                 .filter(npc -> npc.getPosition().getZ() == (player.getIndex() * 4))
-                .filter(npc -> npc.getLocation().equals(Locations.Location.NORMAL_INSTANCE))
+                .filter(npc -> npc.getLocation().equals(Locations.Location.NORMAL_INSTANCE)
+                        || npc.getLocation().equals(Locations.Location.SINGLE_INSTANCE)
+                        || npc.getLocation().equals(Locations.Location.TOWER_1))
                 .forEach(World::deregister);
     }
 

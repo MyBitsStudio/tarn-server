@@ -80,7 +80,6 @@ import com.ruse.world.packages.forge.shop.ForgeShopType;
 import com.ruse.world.content.gamblinginterface.GamblingInterface;
 import com.ruse.world.content.grandexchange.GrandExchangeSlot;
 import com.ruse.world.content.groupironman.IronmanGroup;
-import com.ruse.world.content.instanceMananger.InstanceData;
 import com.ruse.world.content.item_upgrader.UpgradeData;
 import com.ruse.world.content.item_upgrader.UpgradeHandler;
 import com.ruse.world.content.item_upgrader.UpgradeType;
@@ -119,7 +118,6 @@ import com.ruse.world.entity.impl.mini.MiniPManager;
 import com.ruse.world.entity.impl.mini.MiniPlayer;
 import com.ruse.world.entity.impl.npc.NPC;
 import com.ruse.world.entity.impl.player.StartScreen.GameModes;
-import com.ruse.world.instance.impl.DungeoneeringInstance;
 import com.ruse.world.packages.tower.TowerProgress;
 import com.ruse.world.packages.tracks.impl.starter.StarterTrack;
 import com.ruse.world.packages.vip.VIP;
@@ -300,7 +298,7 @@ public class Player extends Character {
             if (npc == null) {
                 continue;
             }
-            if(Arrays.stream(npc.getSpawnedFor()).anyMatch(p -> p.equals(this))) {
+            if(Arrays.asList(npc.getSpawnedFor()).contains(this)) {
                 return npc;
             }
 
@@ -475,7 +473,7 @@ public class Player extends Character {
     private final CopyOnWriteArrayList<DropLogEntry> dropLog = new CopyOnWriteArrayList<DropLogEntry>();
     private final CopyOnWriteArrayList<NPC> npc_faces_updated = new CopyOnWriteArrayList<NPC>();
     private final List<Player> localPlayers = new LinkedList<Player>();
-    private final List<NPC> localNpcs = new LinkedList<NPC>();
+    private final List<NPC> localNpcs = new LinkedList<>();
     private final PlayerProcess process = new PlayerProcess(this);
     private final PlayerKillingAttributes playerKillingAttributes = new PlayerKillingAttributes(this);
     private final MinigameAttributes minigameAttributes = new MinigameAttributes();
@@ -548,8 +546,6 @@ public class Player extends Character {
     /**
      * Instance Manager variables.
      */
-
-    public InstanceData data;
     public String currentInstanceNpcName;
     public int currentInstanceNpcId;
     public int currentInstanceAmount;
@@ -1107,14 +1103,6 @@ public class Player extends Character {
 
     public int getCurrentVotes() {
         return currentVotes;
-    }
-
-    public InstanceData getData() {
-        return data;
-    }
-
-    public void setData(InstanceData data) {
-        this.data = data;
     }
 
     public String getCurrentInstanceNpcName() {
@@ -3902,8 +3890,7 @@ public class Player extends Character {
 
     public boolean isInMinigame() {
         boolean inMinigameLoc = getLocation() == Locations.Location.KEEPERS_OF_LIGHT_GAME || getLocation() == Locations.Location.VAULT_OF_WAR || getLocation() == Locations.Location.VOID_OF_DARKNESS || getLocation() == Locations.Location.HALLS_OF_VALOR || getLocation() == Locations.Location.TREASURE_HUNTER;
-        boolean inMinigameInstance = getMapInstance() instanceof DungeoneeringInstance;
-        return inMinigameLoc || inMinigameInstance;
+        return inMinigameLoc;
     }
 
     private boolean[] unlockedHolyPrayers = new boolean[6];

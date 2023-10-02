@@ -342,11 +342,17 @@ public class NPC extends Character {
 
     public void sequence() {
         if (leader != null){
-            if (leader == null || leader.getConstitution() <= 0){
+            if (leader.getConstitution() <= 0){
                 World.deregister(this);
             }
         }
         getCombatBuilder().process();
+
+        if(getInstance() != null){
+            if(position.getZ() != getInstance().getZ){
+                moveTo(position.setZ(getInstance().getZ)).setPosition(position.setZ(getInstance().getZ));
+            }
+        }
         /**
          * HP restoration
          */

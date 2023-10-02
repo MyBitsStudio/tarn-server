@@ -10,7 +10,6 @@ public enum YoutuberLinks {
     WINALLDAY("https://www.youtube.com/@WinAllDay1",  "winallday"),
     JIPY("https://www.youtube.com/@jipyrsps",  "jipy"),
     DRAGONIC("https://www.youtube.com/@DragonicNL",  "dragonic"),
-
     WRECKED("https://www.youtube.com/wr3ckedyou", "wrecked"),
 
     ;

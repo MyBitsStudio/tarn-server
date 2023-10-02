@@ -12,10 +12,7 @@ import com.ruse.world.entity.impl.npc.NPC;
 import com.ruse.world.entity.impl.player.Player;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Objects;
-import java.util.Queue;
+import java.util.*;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 public abstract class Instance {
@@ -36,7 +33,7 @@ public abstract class Instance {
     protected long canLeave, started = System.currentTimeMillis();
     protected String instanceId = SecurityUtils.createRandomString(16);
 
-    protected int getZ = -1;
+    public int getZ = -1;
 
     public Instance(Locations.Location location){
         this.location = location;
@@ -93,8 +90,6 @@ public abstract class Instance {
                 break;
             if(npcList.contains(n))
                 continue;
-            if(!n.getInstanceId().isEmpty())
-                continue;
             addNPC(n);
             npcList.add(n);
         }
@@ -120,7 +115,7 @@ public abstract class Instance {
     }
 
     private void postProcess(){
-                playerList.stream()
+         playerList.stream()
                 .filter(Objects::nonNull)
                 .filter(p -> !location.equals(p.getLocation()))
                 .forEach(p -> {
@@ -129,6 +124,25 @@ public abstract class Instance {
                     removePlayer.add(p);
                 });
 
+         npcList.stream()
+                 .filter(Objects::nonNull)
+                 .filter(n -> !Objects.equals(n.getInstanceId(), this.instanceId))
+                 .forEach(removeNPC::add);
+
+         npcList.stream()
+                 .filter(Objects::nonNull)
+                 .forEach(n -> {
+                     boolean found = false;
+                     for(Player player : playerList){
+                         if(Arrays.asList(n.getSpawnedFor()).contains(player)){
+                             found = true;
+                             break;
+                         }
+                     }
+                     if(!found){
+                        removeNPC.add(n);
+                     }
+                 });
     }
 
     private void preProcess(){
@@ -167,6 +181,8 @@ public abstract class Instance {
     }
 
     protected void addNPC(@NotNull NPC npc){
+        npc.setLocation(this.location);
+        npc.setPosition(npc.getPosition().setZ(getZ));
         npc.setInstance(this);
         npc.setInstanceId(instanceId);
         World.register(npc);

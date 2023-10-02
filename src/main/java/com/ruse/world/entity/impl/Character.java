@@ -30,7 +30,6 @@ import com.ruse.world.entity.impl.player.Player;
 import com.ruse.world.entity.impl.player.route.RouteFinder;
 import com.ruse.world.entity.impl.player.route.strategy.EntityStrategy;
 import com.ruse.world.entity.impl.player.route.strategy.FixedTileStrategy;
-import com.ruse.world.instance.MapInstance;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -389,35 +388,7 @@ public abstract class Character extends Entity {
 		setNeedsPlacement(true);
 		setResetMovementQueue(true);
 		setTeleporting(true);
-		MapInstance instance = isPlayer() ? asPlayer().getMapInstance() : null;
-		if (isPlayer()) {
-			if (instance != null) {
-				instance.fireOnMove(asPlayer());
-			}
-		}
 		checkMap();
-		if (isPlayer()) {
-			Player player = (Player) this;
-			if (player.getMiniPManager().getMiniPlayer() != null) {
-				if (!player.getMiniPManager().isDead()) {
-					MiniPlayer miniPlayer = player.getMiniPManager().getMiniPlayer();
-					miniPlayer.getMovementQueue().reset();
-					miniPlayer.setPosition(teleportTarget.copy());
-					miniPlayer.setNeedsPlacement(true);
-					miniPlayer.setResetMovementQueue(true);
-					miniPlayer.setTeleporting(true);
-					player.getMiniPManager().followOwner();
-				}
-			}
-			//getMovementQueue().handleRegionChange();
-		}
-
-		if(isPlayer()) {
-			Player player = (Player) this;
-			if(player.getMinimeSystem().getMiniMe() != null) {
-				player.getMinimeSystem().targetPlayer();
-			}
-		}
 
 		return this;
 	}

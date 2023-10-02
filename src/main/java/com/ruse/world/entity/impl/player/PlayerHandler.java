@@ -34,7 +34,6 @@ import com.ruse.world.packages.seasonpass.SeasonPassConfig;
 import com.ruse.world.packages.seasonpass.SeasonPassManager;
 import com.ruse.world.packages.serverperks.ServerPerks;
 import com.ruse.world.entity.impl.GlobalItemSpawner;
-import com.ruse.world.instance.MapInstance;
 
 import java.util.Objects;
 
@@ -440,16 +439,9 @@ public class PlayerHandler {
                     player.moveTo(player.getResetPosition());
                     player.setResetPosition(null);
                 }
-                if (player.getRegionInstance() != null) {
-                    player.getRegionInstance().onLogout(player);
-                }
+
                 if(player.getInstance() != null){
                     player.getInstance().onLogout(player);
-                }
-
-                MapInstance instance = player.getMapInstance();
-                if (instance != null) {
-                    instance.fireOnLogout(player);
                 }
 
                 if (player.getOverloadPotionTimer() > 0) {

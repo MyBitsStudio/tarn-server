@@ -9,7 +9,6 @@ import com.ruse.world.content.skill.impl.old_dungeoneering.DungeoneeringFloor;
 import com.ruse.world.content.transportation.TeleportHandler;
 import com.ruse.world.entity.impl.npc.NPC;
 import com.ruse.world.entity.impl.player.Player;
-import com.ruse.world.instance.impl.DungeoneeringInstance;
 
 import java.util.concurrent.CopyOnWriteArrayList;
 
@@ -152,9 +151,6 @@ public class DungeoneeringParty {
     public void remove(Player p, boolean resetTab, boolean fromParty) {
         if (fromParty) {
             player_members.remove(p);
-            if (p.getMapInstance() != null && p.getMapInstance() instanceof DungeoneeringInstance) {
-                p.getMapInstance().remove(p, true);
-            }
             p.getControllerManager().removeControllerWithoutCheck();
         }
 

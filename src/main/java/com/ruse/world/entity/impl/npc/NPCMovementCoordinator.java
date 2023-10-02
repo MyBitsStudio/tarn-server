@@ -42,7 +42,7 @@ public class NPCMovementCoordinator {
         }
         updateCoordinator();
         switch (coordinateState) {
-            case HOME:
+            case HOME -> {
                 if (npc.getCombatBuilder().isBeingAttacked() || npc.getCombatBuilder().isAttacking())
                     return;
                 if (npc.getMovementQueue().isMovementDone()) {
@@ -52,7 +52,7 @@ public class NPCMovementCoordinator {
                         if (pos != null && npc.getMovementQueue().canWalk(npc.getPosition(), npc.getPosition().copy().transform(pos), npc.getSize())) {
 
                             Position newPos = npc.getPosition().copy().transform(pos);
-                           // PathFinder.findPath(npc, newPos.getX(),
+                            // PathFinder.findPath(npc, newPos.getX(),
                             //        newPos.getY(), false, npc.getSize(),
                             //        npc.getSize());
 
@@ -60,13 +60,12 @@ public class NPCMovementCoordinator {
                         }
                     }
                 }
-
-                break;
-            case AWAY:
+            }
+            case AWAY -> {
                 npc.getCombatBuilder().reset(true);
                 coordinateState = CoordinateState.HOME;
                 com.ruse.world.entity.impl.Character.walk(npc, npc.getDefaultPosition().getX(), npc.getDefaultPosition().getY(), 0);
-                break;
+            }
         }
     }
 

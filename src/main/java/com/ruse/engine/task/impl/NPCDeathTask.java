@@ -101,16 +101,7 @@ public class NPCDeathTask extends Task {
                         achieve(killer, npc.getId());
                         killTracker(killer, npc.getId());
 
-                        AchievementHandler.progress(killer, 1, 0);
-                        AchievementHandler.progress(killer, 1, 1);
-                        AchievementHandler.progress(killer, 1, 15);
-                        AchievementHandler.progress(killer, 1, 16);
-                        AchievementHandler.progress(killer, 1, 28);
-                        AchievementHandler.progress(killer, 1, 29);
-                        AchievementHandler.progress(killer, 1, 52);
-                        AchievementHandler.progress(killer, 1, 53);
-                        AchievementHandler.progress(killer, 1, 74);
-                        AchievementHandler.progress(killer, 1, 75);
+                        AchievementHandler.progress(killer, 1, 0, 1, 15, 16, 28, 29, 52, 53, 74, 75);
 
 
                         otherCheck(killer, npc.getId());
@@ -167,7 +158,7 @@ public class NPCDeathTask extends Task {
                             stop();
                             return;
                         } else {
-                            new BossEventHandler().death(killer, npc, npc.getDefinition().getName());
+                           // new BossEventHandler().death(killer, npc, npc.getDefinition().getName());
 
                             /** SLAYER **/
                             killer.getSlayer().handleSlayerTask(killer, npc.getId());

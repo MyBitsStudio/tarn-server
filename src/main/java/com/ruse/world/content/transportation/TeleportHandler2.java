@@ -10,7 +10,6 @@ import com.ruse.world.content.Sounds;
 import com.ruse.world.content.Sounds.Sound;
 import com.ruse.world.content.skill.impl.old_dungeoneering.Dungeoneering;
 import com.ruse.world.entity.impl.player.Player;
-import com.ruse.world.instance.MapInstance;
 
 
 public class TeleportHandler2 {
@@ -26,11 +25,6 @@ public class TeleportHandler2 {
 			return;
 		}
 
-		MapInstance instance = player.getMapInstance();
-		if (instance != null && !instance.canTeleport(player, targetLocation)) {
-			player.sendMessage("You cannot teleport in this instance.");
-			return;
-		}
 		/*if (player.inFFALobby){
 			player.sendMessage("Use the portal to leave the ffa lobby!");
 			return;

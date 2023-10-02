@@ -64,7 +64,7 @@ public abstract class MultiBossInstance extends Instance {
             return;
         }
         if(n.getId() == getNpcId() && n.getInstanceId().equals(getOwner().getInstanceId())){
-            MultiBoss boss = new MultiBoss(npcId, n.getPosition().setZ(getOwner().getIndex() * 4), true, getOwner());
+            MultiBoss boss = new MultiBoss(npcId, n.getPosition().setZ(getZ), true, getOwner());
             boss.setInstance(this);
             boss.setSpawnedFor(getOwner());
             add(boss);

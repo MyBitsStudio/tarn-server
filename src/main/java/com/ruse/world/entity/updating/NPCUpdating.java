@@ -37,7 +37,9 @@ public class NPCUpdating {
 		for (Iterator<NPC> npcIterator = player.getLocalNpcs().iterator(); npcIterator.hasNext(); ) {
 			NPC npc = npcIterator.next();
 			if (World.getNpcs().get(npc.getIndex()) != null && npc.isVisible()
-					&& player.getPosition().isWithinDistance(npc.getPosition()) && !npc.isNeedsPlacement()) {
+					&& player.getPosition().isWithinDistance(npc.getPosition())
+					&& player.getPosition().getZ() == npc.getPosition().getZ()
+					&& !npc.isNeedsPlacement()) {
 				if(npc.isSummoningNpc()){
 					if(player.getPSettings().getBooleanValue("hidden-players")){
 						player.getNpcFacesUpdated().remove(npc);

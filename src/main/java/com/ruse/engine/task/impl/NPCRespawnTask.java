@@ -8,6 +8,8 @@ import com.ruse.world.World;
 import com.ruse.world.content.skill.impl.hunter.Hunter;
 import com.ruse.world.entity.impl.npc.NPC;
 import com.ruse.world.entity.impl.player.Player;
+import com.ruse.world.packages.instances.Instance;
+import com.ruse.world.packages.instances.InstanceManager;
 
 public class NPCRespawnTask extends Task {
 
@@ -23,36 +25,24 @@ public class NPCRespawnTask extends Task {
 	@Override
 	public void execute() {
 		if(killer != null && killer.getInstance() != null && npc.getLocation() == killer.getLocation() && npc.getPosition().getZ() == (killer.getIndex() * 4)){
-			if(npc.getInstanceId().equals(killer.getInstance().getInstanceId()))
-				killer.getInstance().signalSpawn(npc);
+//			if(npc.getInstanceId().equals(killer.getInstance().getInstanceId()))
+//				killer.getInstance().signalSpawn(npc);
+//			else
+//				World.getNpcs().remove(npc);
+			Instance instance = InstanceManager.getManager().byId(killer.getInstance().getInstanceId());
+
+			if(instance != null)
+				instance.signalSpawn(npc);
 			else
 				World.getNpcs().remove(npc);
 
 			super.stop();
 			return;
 		}
+
 		NPC npc_ = new NPC(npc.getId(), npc.getDefaultPosition());
-		if (killer != null && killer.getLocation() != null && (killer.getLocation()  == Location.INSTANCE1 || killer.getLocation()  == Location.INSTANCE2) && killer.getCurrentInstanceAmount() == -1) {
-			World.deregister(npc_);
-			stop();
-			return;
-		}
 
 		npc_.getMovementCoordinator().setCoordinator(npc.getMovementCoordinator().getCoordinator());
-
-		if (npc_.getId() == 8022 || npc_.getId() == 8028) { // Desospan, respawn at random locations
-			npc_.moveTo(new Position(2595 + Misc.getRandom(12), 4772 + Misc.getRandom(8)));
-		} else if (npc_.getId() > 5070 && npc_.getId() < 5081) {
-			Hunter.HUNTER_NPC_LIST.add(npc_);
-		}
-
-		if (killer != null) {
-			if (killer.getRegionInstance() != null) {
-				if ((killer.getLocation()  == Location.INSTANCE1 || killer.getLocation()  == Location.INSTANCE2) && npc_.getLocation() == killer.getLocation()) {
-					killer.getRegionInstance().getNpcsList().add(npc_);
-				}
-			}
-		}
 
 		World.register(npc_);
 		stop();
