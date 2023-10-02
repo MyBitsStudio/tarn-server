@@ -65,6 +65,14 @@ public enum SlotEffect {
                 effect.getRarity() == SlotRarity.MYTHICAL) ? Arrays.stream(SlotEffect.values()).filter(effect -> effect.getRarity() == SlotRarity.MYTHICAL).toArray(SlotEffect[]::new) : null;
     }
 
+    public static boolean isPerkItem(int itemId){
+        return Arrays.stream(SlotEffect.values()).anyMatch(effect -> effect.getItemId() == itemId);
+    }
+
+    public static SlotEffect forItemId(int itemId){
+        return Arrays.stream(SlotEffect.values()).filter(i -> i.itemId == itemId).findFirst().orElse(NOTHING);
+    }
+
     public boolean isWeapon(){
         return this == SlotEffect.AOE_EFFECT ||
                 this == SlotEffect.MULTI_SHOT ||

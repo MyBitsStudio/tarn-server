@@ -9,6 +9,7 @@ import com.ruse.security.save.impl.server.JunkPriceLoad;
 import com.ruse.util.Misc;
 import com.ruse.world.World;
 import com.ruse.world.entity.impl.player.Player;
+import com.ruse.world.packages.slot.SlotEffect;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -152,7 +153,6 @@ public class ShopHandler {
                     }
                 }
 
-
             } else {
                 player.sendMessage("You cannot sell this item to this shop.");
                 return false;
@@ -187,14 +187,29 @@ public class ShopHandler {
 
                     int amountLeft = Math.min(item.getStock(), amount);
 
+                    if(SlotEffect.isPerkItem(item.getId())){
+                        if(amountLeft > 1){
+                            player.sendMessage("You can only buy 1 at a time with perks.");
+                            amountLeft = 1;
+                        }
+                    }
+
                     if(!hasEnough(player, currency, amountLeft * item.getPrice())){
                         player.sendMessage("You do not have enough " + currency.getName() + " to buy this item.");
                         return false;
                     }
 
+
                     if(player.getInventory().canHold(new Item(item.getId(), amountLeft))){
                         takeCurrency(player, currency, amountLeft * item.getPrice());
-                        player.getInventory().add(new Item(item.getId(), amountLeft));
+                        if(SlotEffect.isPerkItem(item.getId())){
+                            SlotEffect effect = SlotEffect.forItemId(item.getId());
+                            Item reward = new Item(effect.getItemId(), 1, Misc.createRandomString(12),
+                                    String.valueOf(effect.ordinal()), String.valueOf(effect.getRanges().length != 0 ? Misc.random(effect.getRanges()[0], effect.getRanges()[1]) : -1));
+                            player.getInventory().add(reward);
+                        } else {
+                            player.getInventory().add(new Item(item.getId(), amountLeft));
+                        }
                         item.setStock(item.getStock() - amountLeft);
                         shop.quickRefresh(player, shop1);
                         return true;
@@ -329,6 +344,11 @@ public class ShopHandler {
                             }
                         }
 
+                        if(shop.getId() == 9){
+                            player.sendMessage("You can only buy singles on perks.");
+                            return true;
+                        }
+
                         buy(player, item.getId(), 5);
                         return true;
                     } else {
@@ -362,6 +382,11 @@ public class ShopHandler {
                                 System.out.println("Item is null");
                                 return true;
                             }
+                        }
+
+                        if(shop.getId() == 9){
+                            player.sendMessage("You can only buy singles on perks.");
+                            return true;
                         }
 
                         buy(player, item.getId(), 10);

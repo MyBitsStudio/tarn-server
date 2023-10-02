@@ -79,6 +79,9 @@ public class EffectHandler {
            handleAoE(player, victim,
                     6);
         }
+        if (player.getSummoning().getFamiliar().getSummonNpc().getId() == BossPets.BossPet.ODIN_PET.getNpcId()) {
+            handleFirewall(player, victim);
+        }
     }
 
     private static void handleAoE(Character attacker, Character victim,

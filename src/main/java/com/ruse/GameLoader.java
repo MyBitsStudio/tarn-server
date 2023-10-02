@@ -96,7 +96,7 @@ public final class GameLoader {
 		WorldCalendar.getInstance().load();
 		World.attributes.load();
 		WorldIPChecker.getInstance().load();
-		new ReferralsLoad().loadJSON(SecurityUtils.REFERRALS).run();
+		//new ReferralsLoad().loadJSON(SecurityUtils.REFERRALS).run();
 	}
 
 	public void finish() throws IOException, InterruptedException {

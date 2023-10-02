@@ -76,46 +76,31 @@ public class NPCOptionPacketListener implements PacketListener {
                 return;
             }
             switch (npc.getId()) {
-                case 14:
-                    ShopHandler.getShop(8).ifPresent(shop -> shop.send(player, true));
-                    break;
-                case 4652:
-                    ShopHandler.getShop(7).ifPresent(shop -> shop.send(player, true));
-                    break;
-                case 3321:
-                    ShopHandler.getShop(4).ifPresent(shop -> shop.send(player, true));
-                    break;
-                case 5049:
-                    ShopHandler.getShop(5).ifPresent(shop -> shop.send(player, true));
-                    break;
-                case 932:
-                    ShopHandler.getShop(6).ifPresent(shop -> shop.send(player, true));
-                    break;
-                case 550:
-                    if(Lobby.getInstance().getGame() == null) return;
+                case 14 -> ShopHandler.getShop(8).ifPresent(shop -> shop.send(player, true));
+                case 4652 -> ShopHandler.getShop(7).ifPresent(shop -> shop.send(player, true));
+                case 3321 -> ShopHandler.getShop(4).ifPresent(shop -> shop.send(player, true));
+                case 5049 -> ShopHandler.getShop(5).ifPresent(shop -> shop.send(player, true));
+                case 932 -> ShopHandler.getShop(6).ifPresent(shop -> shop.send(player, true));
+                case 2153 -> ShopHandler.getShop(9).ifPresent(shop -> shop.send(player, true));
+                case 550 -> {
+                    if (Lobby.getInstance().getGame() == null) return;
                     Lobby.getInstance().getGame().obeliskClick(player);
-                    break;
-                case 4651:
-                    player.getTradingPost().openMainInterface();
-                    break;
-                case 5249:
-                    ShopHandler.getShop(0).ifPresent(shop -> shop.send(player, true));
-                    break;
-                case 3373:
+                }
+                case 4651 -> player.getTradingPost().openMainInterface();
+                case 5249 -> ShopHandler.getShop(0).ifPresent(shop -> shop.send(player, true));
+                case 3373 -> {
+                }
 //                    DialogueManager.start(player, 8005);
 //                    player.setDialogueActionId(8005);
-                    break;
-                case 568:
+                case 568 -> {
+                }
 //                    DialogueManager.start(player, 1311);
 //                    player.setDialogueActionId(568);
-                    break;
-                case 289: //DAILY TASK
-                    player.sendMessage("Kingdom's are currently being built. Check back soon!");
-                    break;
-                case 9022:
-                    ServerPerks.getInstance().open(player);
-                    break;
-                case GroupConfig.NPC_ID:
+                case 289 -> //DAILY TASK
+                        player.sendMessage("Kingdom's are currently being built. Check back soon!");
+                case 9022 -> ServerPerks.getInstance().open(player);
+                case GroupConfig.NPC_ID -> {
+                }
 //                    if (player.getMode() instanceof GroupIronman) {
 //                        if (GroupManager.isInGroup(player)) {
 //                            GroupManager.openInterface(player);
@@ -126,26 +111,19 @@ public class NPCOptionPacketListener implements PacketListener {
 //                    } else {
 //                        player.sendMessage("You must be a group ironman to do this.");
 //                    }
-                    break;
-                case 9000://slayer
-                    player.getSlayer().sendInterface(player);
-                    break;
-
-                case 2938:
+                case 9000 ->//slayer
+                        player.getSlayer().sendInterface(player);
+                case 2938 -> {
                     player.getDailyRewards().processTime();
                     player.getDailyRewards().displayRewards();
                     npc.forceChat("Talk to me to get your Daily Rewards!");
-                    break;
-                case 662:
-                    GrandLottery.open(player);
-                    break;
-
-                case 1050:
+                }
+                case 662 -> GrandLottery.open(player);
+                case 1050 -> {
                     player.moveTo(new Position(2793, 3276));
                     npc.forceChat("Deep sea fishing!");
-                    break;
-
-                case 783:
+                }
+                case 783 -> {
                     npc.forceChat("talk to me for starter tasks!");
                     StarterTasks.updateInterface(player);
                     int[] ids = {22074, 6570, 7462, 17273, 19153, 19142, 19141, 19115, 11137, 20000, 6769};
@@ -154,7 +132,7 @@ public class NPCOptionPacketListener implements PacketListener {
                     }
                     player.getPacketSender().sendInterfaceReset();
                     player.getPacketSender().sendInterface(53200);
-                    break;
+                }
 //                case 659:
 //                    if (GameSettings.newYear2017) {
 //                        if (player.getNewYear2017() == 0) {
@@ -208,16 +186,13 @@ public class NPCOptionPacketListener implements PacketListener {
 //                    DialogueManager.start(player, 141);
 //                    player.setDialogueActionId(88);
 //                    break;
-                case 13738:
-                    player.getUpgradeHandler().openInterface();
-                    break;
-                case 5:
+                case 13738 -> player.getUpgradeHandler().openInterface();
+
 //                case 4:
 //                    npc.setPositionToFace(player.getPosition());
 //                    DialogueManager.start(player, 167);
 //                    break;
-                case 1:
-              //  case 2:
+                //  case 2:
 //                case 3:
 //                    npc.setPositionToFace(player.getPosition());
 //                    DialogueManager.start(player, 165);
@@ -240,16 +215,11 @@ public class NPCOptionPacketListener implements PacketListener {
 //                    DialogueManager.start(player, 117);
 //                    player.setDialogueActionId(74);
 //                    break;
-                case 8710:
-                case 8707:
-                case 8706:
-                case 8705:
-                    EnergyHandler.rest(player);
-                    break;
-                case 534:
-                    //ShopManager.getShops().get(78).open(player);
-                    break;
-//                case 947:
+                case 5, 1, 8710, 8707, 8706, 8705 -> EnergyHandler.rest(player);
+                case 534 -> {
+                }
+                //ShopManager.getShops().get(78).open(player);
+                //                case 947:
 //                    if (player.getPosition().getX() >= 3092) {
 //                        player.getMovementQueue().reset();
 //                        GrandExchange.open(player);
@@ -281,9 +251,8 @@ public class NPCOptionPacketListener implements PacketListener {
 //                    }
 //                    // DialogueManager.start(player, ExplorerJack.getDialogue(player));
 //                    break;
-                case 1597:
-
-                    break;
+                case 1597 -> {
+                }
 //                case 8275:
 //                    if (!player.getSlayer().getSlayerMaster().equals(SlayerMaster.MEDIUM_SLAYER)
 //                            && player.getSlayer().getSlayerTask().equals(SlayerTasks.NO_TASK)) {
@@ -405,29 +374,18 @@ public class NPCOptionPacketListener implements PacketListener {
                     DialogueManager.start(player, 29);
                     player.setDialogueActionId(17);
                     break;*/
-                case 3789:
-
+                case 3789 -> {
                     player.getPacketSender().sendInterface(18730);
                     player.getPacketSender().sendString(18729,
                             "Commendations: " + Integer.toString(player.getPointsHandler().getCommendations()));
-                    break;
+                }
 //                case 2948:
 //                    DialogueManager.start(player, WarriorsGuild.warriorsGuildDialogue(player));
 //                    break;
 //                case 650:
 //                    ShopManager.getShops().get(35).open(player);
 //                    break;
-                case 6055:
-                case 6056:
-                case 6057:
-                case 6058:
-                case 6059:
-                case 6060:
-                case 6061:
-                case 6062:
-                case 6063:
-                case 6064:
-                case 7903:
+                case 6055, 6056, 6057, 6058, 6059, 6060, 6061, 6062, 6063, 6064, 7903 -> {
                     if (npc.getId() == 7903 && player.getLocation() == Location.MEMBER_ZONE) {
                         if (!player.getDonator().isMember()) {
                             player.getPacketSender().sendMessage("You must be a Member to use this.");
@@ -435,11 +393,9 @@ public class NPCOptionPacketListener implements PacketListener {
                         }
                     }
                     PuroPuro.catchImpling(player, npc);
-                    break;
-                case 8022:
-                case 8028:
-                    DesoSpan.siphon(player, npc);
-                    break;
+                }
+                case 8022, 8028 -> DesoSpan.siphon(player, npc);
+
 //                case 6537:
 //                    player.setDialogueActionId(10);
 //                    DialogueManager.start(player, 19);
@@ -448,20 +404,7 @@ public class NPCOptionPacketListener implements PacketListener {
 //                    player.setDialogueActionId(9);
 //                    DialogueManager.start(player, 64);
 //                    break;
-                case 6807:
-                case 6994:
-                case 6995:
-                case 6867:
-                case 6868:
-                case 6794:
-                case 6795:
-                case 6815:
-                case 6816:
-                case 6874:
-                case 6873:
-                case 3594:
-                case 3590:
-                case 3596:
+                case 6807, 6994, 6995, 6867, 6868, 6794, 6795, 6815, 6816, 6874, 6873, 3594, 3590, 3596 -> {
                     if (player.getSummoning().getFamiliar() == null
                             || player.getSummoning().getFamiliar().getSummonNpc() == null
                             || player.getSummoning().getFamiliar().getSummonNpc().getIndex() != npc.getIndex()) {
@@ -469,25 +412,19 @@ public class NPCOptionPacketListener implements PacketListener {
                         return;
                     }
                     player.getSummoning().store();
-                    break;
-                case 605:
-                    ShopHandler.getShop(3).ifPresent(shop -> shop.send(player, true));
-                    // player.setDialogueActionId(8);
-                    // DialogueManager.start(player, 13);
-                    break;
-//                case 6970:
+                }
+                case 605 -> ShopHandler.getShop(3).ifPresent(shop -> shop.send(player, true));
+
+                // player.setDialogueActionId(8);
+                // DialogueManager.start(player, 13);
+                //                case 6970:
 //                    player.setDialogueActionId(3);
 //                    DialogueManager.start(player, 3);
 //                    break;
-                case 318:
-                case 316:
-                case 313:
-                case 312:
-                case 5748:
-                case 2067:
+                case 318, 316, 313, 312, 5748, 2067 -> {
                     player.setEntityInteraction(npc);
                     Fishing.setupFishing(player, Fishing.forSpot(npc.getId(), false));
-                    break;
+                }
 //                case 805:
 //                    ShopManager.getShops().get(34).open(player);
 //                    break;
@@ -545,27 +482,25 @@ public class NPCOptionPacketListener implements PacketListener {
 //                case 4906:
 //                    ShopManager.getShops().get(14).open(player);
 //                    break;
-                case 520:
-                case 521:
-                    World.sendStaffMessage("<col=FF0066><img=2> [ALERT]<col=6600FF> "
-                            + player.getUsername() + " just tried to use the general store!");
+                case 520, 521 -> World.sendStaffMessage("<col=FF0066><img=2> [ALERT]<col=6600FF> "
+                        + player.getUsername() + " just tried to use the general store!");
+
                     /*
                     ShopManager.getShops().get(12).open(player);*/
-                    break;
-//                case 2292:
+                //                case 2292:
 //                    ShopManager.getShops().get(11).open(player);
 //                    break;
 //                case 28:
 //                    player.getPetShop().openInterface(PetShop.PetShopType.DAMAGE);
 //                    break;
-                case 2676:
+                case 2676 -> {
                     player.getPacketSender().sendInterface(3559);
                     player.getAppearance().setCanChangeAppearance(true);
-                    break;
+                }
 //                case 519:
 //                    ShopManager.getShops().get(84).open(player);
 //                    break;
- //               case 494:
+                //               case 494:
 //                case 1360:
 //                    if (player.getMode() instanceof GroupIronman
 //                            && player.getIronmanGroup() != null) {
