@@ -2,6 +2,7 @@ package com.ruse.model;
 
 import com.ruse.util.Misc;
 import com.ruse.model.Position;
+import lombok.Getter;
 
 /**
  * Represents a single world tile position.
@@ -9,6 +10,7 @@ import com.ruse.model.Position;
  * @author relex lawl
  */
 
+@Getter
 public class Position {
 
     public long longPacked() {
@@ -46,17 +48,13 @@ public class Position {
 
     /**
      * The x coordinate of the position.
-     */
-    private int x;
-
-    /**
-     * Gets the x coordinate of this position.
+     * -- GETTER --
+     *  Gets the x coordinate of this position.
      *
      * @return The associated x coordinate.
+
      */
-    public int getX() {
-        return x;
-    }
+    private int x;
 
     /**
      * Sets the x coordinate of this position.
@@ -69,17 +67,13 @@ public class Position {
 
     /**
      * The y coordinate of the position.
-     */
-    private int y;
-
-    /**
-     * Gets the y coordinate of this position.
+     * -- GETTER --
+     *  Gets the y coordinate of this position.
      *
      * @return The associated y coordinate.
+
      */
-    public int getY() {
-        return y;
-    }
+    private int y;
 
     /**
      * Sets the y coordinate of this position.
@@ -92,17 +86,13 @@ public class Position {
 
     /**
      * The height level of the position.
-     */
-    private int z;
-
-    /**
-     * Gets the height level of this position.
+     * -- GETTER --
+     *  Gets the height level of this position.
      *
      * @return The associated height level.
+
      */
-    public int getZ() {
-        return z;
-    }
+    private int z;
 
     /**
      * Sets the height level of this position.
