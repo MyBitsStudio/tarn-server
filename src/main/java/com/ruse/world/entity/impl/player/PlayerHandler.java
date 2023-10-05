@@ -60,9 +60,9 @@ public class PlayerHandler {
         player.getControllerManager().login();
         ConnectionHandler.add(player.getHostAddress());
         World.addPlayer(player);
-        if (!player.isMini()) {
-            PlayersOnlineInterface.add(player);
-        }
+
+        PlayersOnlineInterface.add(player);
+
         World.updatePlayersOnline();
         player.getSession().setState(SessionState.LOGGED_IN);
 
@@ -72,7 +72,7 @@ public class PlayerHandler {
         player.getRecordedLogin().reset();
 
         //Mbox spinner
-        player.getNewSpinner().clearMysteryBox();
+        //player.getNewSpinner().clearMysteryBox();
 
         // Tabs
         player.getPacketSender().sendTabs();
@@ -145,13 +145,13 @@ public class PlayerHandler {
         if (player.isPoisoned()) {
             TaskManager.submit(new CombatPoisonEffect(player));
         }
-        player.getUpgradeHandler().init();
-        if (player.getPrayerRenewalPotionTimer() > 0) {
-            TaskManager.submit(new PrayerRenewalPotionTask(player));
-        }
-        if (player.getOverloadPotionTimer() > 0) {
-            TaskManager.submit(new OverloadPotionTask(player));
-        }
+        //player.getUpgradeHandler().init();
+//        if (player.getPrayerRenewalPotionTimer() > 0) {
+//            TaskManager.submit(new PrayerRenewalPotionTask(player));
+//        }
+//        if (player.getOverloadPotionTimer() > 0) {
+//            TaskManager.submit(new OverloadPotionTask(player));
+//        }
         if (player.getTeleblockTimer() > 0) {
             TaskManager.submit(new CombatTeleblockEffect(player));
         }
@@ -171,7 +171,7 @@ public class PlayerHandler {
 
         player.lastLogin = System.currentTimeMillis();
 
-        player.getDailyRewards().setDataOnLogin();
+        //player.getDailyRewards().setDataOnLogin();
 
         if (player.getFireImmunity() > 0) {
             FireImmunityTask.makeImmune(player, player.getFireImmunity(), player.getFireDamageModifier());
@@ -179,9 +179,9 @@ public class PlayerHandler {
         if (player.getSpecialPercentage() < 100) {
             TaskManager.submit(new PlayerSpecialAmountTask(player));
         }
-        if (player.hasStaffOfLightEffect()) {
-            TaskManager.submit(new StaffOfLightSpecialAttackTask(player));
-        }
+//        if (player.hasStaffOfLightEffect()) {
+//            TaskManager.submit(new StaffOfLightSpecialAttackTask(player));
+//        }
 
         // Update appearance
 
@@ -210,16 +210,16 @@ public class PlayerHandler {
          */
 
 
-        if (Misc.isWeekend()) {
-            player.getPacketSender().sendMessage("[" + GameSettings.RSPS_NAME
-                    + "] Double EXP has been activated. It stacks with Vote scrolls, Enjoy!");
-        }
+//        if (Misc.isWeekend()) {
+//            player.getPacketSender().sendMessage("[" + GameSettings.RSPS_NAME
+//                    + "] Double EXP has been activated. It stacks with Vote scrolls, Enjoy!");
+//        }
 
-        if (WellOfGoodwill.isActive()) {
-            player.getPacketSender().sendMessage(MessageType.SERVER_ALERT,
-                    "The Well of Goodwill is granting 30% bonus experience for another "
-                            + WellOfGoodwill.getMinutesRemaining() + " minutes.");
-        }
+//        if (WellOfGoodwill.isActive()) {
+//            player.getPacketSender().sendMessage(MessageType.SERVER_ALERT,
+//                    "The Well of Goodwill is granting 30% bonus experience for another "
+//                            + WellOfGoodwill.getMinutesRemaining() + " minutes.");
+//        }
 
         PlayerPanel.refreshPanel(player);
 
@@ -241,11 +241,10 @@ public class PlayerHandler {
             player.getPacketSender().sendSpriteChange(15005, 3304);
         }
 
-        if (!player.isMini()) {
-            ClanManager.getManager().leave(player, false);
-            ClanManager.getManager().reset(player);
-            ClanManager.getManager().joinChat(player, "help");
-        }
+
+        ClanManager.getManager().leave(player, false);
+        ClanManager.getManager().reset(player);
+        ClanManager.getManager().joinChat(player, "help");
 
         AchievementHandler.onPlayerLogin(player);
 
@@ -291,10 +290,10 @@ public class PlayerHandler {
         if (player.getRank().isStaff() ) {
             StaffList.login(player);
         }
+
         StaffList.updateGlobalInterface();
 
         player.getUpdateFlag().flag(Flag.APPEARANCE);
-
 
         Item weapon = player.getEquipment().get(Equipment.WEAPON_SLOT);
 
@@ -313,56 +312,17 @@ public class PlayerHandler {
 
         PlayerLogs.log(player.getUsername(),
                 "Login. ip: " + player.getHostAddress() + ", mac: " + player.getMac() + ", uuid: " + player.getSerialNumber());
-        /*
-         * if(player.getSkillManager().getCurrentLevel(Skill.CONSTITUTION) == 0){
-         * player.getSkillManager().setCurrentLevel(Skill.CONSTITUTION, 1);
-         * World.deregister(player); // System.out.println(player.getUsername()
-         * +" logged in from a bad session. They have 0 HP and are nulled. Set them to 1 and kicked them."
-         * ); // TODO this may cause dupes. removed temp. }
-         */
-//        if (player.isInDung()) {
-//            // System.out.println(player.getUsername() + " logged in from a bad dungeoneering session.");
-//            PlayerLogs.log(player.getUsername(), " logged in from a bad dungeoneering session. Inv/equipment wiped.");
-//            player.getInventory().resetItems().refreshItems();
-//            player.getEquipment().resetItems().refreshItems();
-//            if (player.getLocation() == Location.DUNGEONEERING) {
-//                // player.moveTo(GameSettings.DEFAULT_POSITION.copy());
-//                TeleportHandler.teleportPlayer(player,
-//                        new Position(2524 + Misc.getRandom(10), 2595 + Misc.getRandom(6)),
-//                        player.getSpellbook().getTeleportType());
-//
-//            }
-//            player.getPacketSender().sendMessage("Your Dungeon has been disbanded.");
-//            player.setInDung(false);
-//        }
-//        if (player.getLocation() == Location.GRAVEYARD && player.getPosition().getY() > 3566) {
-//            PlayerLogs.log(player.getUsername(), "logged in inside the graveyard arena, moved their ass out.");
-//            player.moveTo(new Position(3503, 3565, 0));
-//            player.setPositionToFace(new Position(3503, 3566));
-//            player.getPacketSender().sendMessage("You logged off inside the graveyard arena. Moved you to lobby area.");
-//        }
-//        if (player.getPosition().getX() == 3004 && player.getPosition().getY() >= 3938
-//                && player.getPosition().getY() <= 3949) {
-//            PlayerLogs.log(player.getUsername(), player.getUsername() + " was stuck in the obstacle pipe in the Wild.");
-//            player.moveTo(new Position(3006, player.getPosition().getY(), player.getPosition().getZ()));
-//            player.getPacketSender().sendMessage("You logged off inside the obstacle pipe, moved out.");
-//        }
-        if (player.getCurrentInstanceNpcName() != null) {
-            player.moveTo(new Position(2529, 2595, 0));
-            player.getPacketSender()
-                    .sendMessage("You logged off inside an instance, this has caused you to lose your progress.");
-        }
 
         GlobalItemSpawner.spawnGlobalGroundItems(player);
-        player.unlockPkTitles();
+        //player.unlockPkTitles();
         // player.getPacketSender().sendString(39160, "@or2@Players online: @or2@[
         // @yel@"+(int)(World.getPlayers().size())+"@or2@ ]"); Handled by
         // PlayerPanel.java
         player.getPacketSender().sendString(57003, "Players:  @gre@" + (17 + World.getPlayers().size()));
 
-        if (GameSettings.B2GO) {
-            player.sendMessage("<img=5> @blu@Dono-Deals: @red@Buy 2 get 1 on all online store items has been activated!");
-        }
+//        if (GameSettings.B2GO) {
+//            player.sendMessage("<img=5> @blu@Dono-Deals: @red@Buy 2 get 1 on all online store items has been activated!");
+//        }
 
         player.getPlayerVIP().onLogin();
 
@@ -374,9 +334,9 @@ public class PlayerHandler {
             player.getSummoning().summonPet(BossPets.BossPet.forSpawnId(player.getVariables().getIntValue("summon-npc")), true);
         }
 
-        if(!player.newPlayer() && player.getPSecurity().securityScore() <= 59){
-            player.getPSecurity().sendInterface();
-        }
+//        if(!player.newPlayer() && player.getPSecurity().securityScore() <= 59){
+//            player.getPSecurity().sendInterface();
+//        }
 
         if(player.getAttendenceManager().isDifferentDay()) {
             player.getAttendenceManager().newDay();
@@ -384,7 +344,7 @@ public class PlayerHandler {
 
         player.getTimers().startAll();
 
-        ItemIdentifiers.convert(player);
+        //ItemIdentifiers.convert(player);
 
         player.getPlayerDailies().onLogin(player);
     }
@@ -427,7 +387,7 @@ public class PlayerHandler {
                 player.getSession().setState(SessionState.LOGGING_OUT);
                 player.setTotalPlayTime(player.getTotalPlayTime() + player.getRecordedLogin().elapsed());
                 player.getPacketSender().sendInterfaceRemoval();
-                player.getMinimeSystem().despawn();
+               // player.getMinimeSystem().despawn();
                 player.getPacketSender().removeOverlay();
 //                if (player.getCannon() != null) {
 //                    DwarfMultiCannon.pickupCannon(player, player.getCannon(), true);
@@ -444,13 +404,13 @@ public class PlayerHandler {
                     player.getInstance().onLogout(player);
                 }
 
-                if (player.getOverloadPotionTimer() > 0) {
-                    for (int i = 0; i < 7; i++) {
-                        if (i != 3 && i != 5)
-                           player.getSkillManager().setCurrentLevel(Skill.forId(i), player.getSkillManager().getMaxLevel(Skill.forId(i)));
-                    }
-                    player.setOverloadPotionTimer(0);
-                }
+//                if (player.getOverloadPotionTimer() > 0) {
+//                    for (int i = 0; i < 7; i++) {
+//                        if (i != 3 && i != 5)
+//                           player.getSkillManager().setCurrentLevel(Skill.forId(i), player.getSkillManager().getMaxLevel(Skill.forId(i)));
+//                    }
+//                    player.setOverloadPotionTimer(0);
+//                }
 
                 player.getControllerManager().logout();
                 StaffList.logout(player);
@@ -468,14 +428,13 @@ public class PlayerHandler {
                 player.save();
 
 
-                if (player.getMinigameAttributes() != null && player.getMinigameAttributes().getDungeoneeringAttributes() != null && player.getMinigameAttributes().getDungeoneeringAttributes().getParty() != null) {
-                    player.getMinigameAttributes().getDungeoneeringAttributes().getParty().remove(player, false, true);
-                }
+//                if (player.getMinigameAttributes() != null && player.getMinigameAttributes().getDungeoneeringAttributes() != null && player.getMinigameAttributes().getDungeoneeringAttributes().getParty() != null) {
+//                    player.getMinigameAttributes().getDungeoneeringAttributes().getParty().remove(player, false, true);
+//                }
 
                 session.setState(SessionState.LOGGED_OUT);
 
                 player.getPlayerFlags().setFlag(FORCE_KICK, true);
-
 
                 World.updatePlayersOnline();
                 

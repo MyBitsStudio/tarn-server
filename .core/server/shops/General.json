@@ -12,52 +12,52 @@
         "items": [
           {
             "id": 1969,
-            "amount": 200,
+            "amount": 10000,
             "price": 50
           },
           {
             "id": 3228,
-            "amount": 200,
+            "amount": 10000,
             "price": 250
           },
           {
             "id": 18171,
-            "amount": 200,
+            "amount": 10000,
             "price": 700
           },
           {
             "id": 18175,
-            "amount": 200,
+            "amount": 10000,
             "price": 1560
           },
           {
             "id": 6883,
-            "amount": 200,
+            "amount": 10000,
             "price": 2690
           },
           {
             "id": 379,
-            "amount": 200,
+            "amount": 10000,
             "price": 3990
           },
           {
             "id": 397,
-            "amount": 200,
+            "amount": 10000,
             "price": 6150
           },
           {
             "id": 391,
-            "amount": 200,
+            "amount": 10000,
             "price": 8760
           },
           {
             "id": 15272,
-            "amount": 100,
+            "amount": 25000,
             "price": 10105
           },
           {
             "id": 17817,
-            "amount": 50,
+            "amount": 25000,
             "price": 19875
           }
         ]
@@ -107,6 +107,11 @@
             "price": 25
           },
           {
+            "id": 227,
+            "amount": 200000,
+            "price": 50
+          },
+          {
             "id": 1763,
             "amount": 200000,
             "price": 125
@@ -124,7 +129,40 @@
           {
             "id": 15437,
             "amount": 200000,
+            "price": 25000
+          },
+          {
+            "id": 1923,
+            "amount": 250000,
+            "price": 25000
+          },
+          {
+            "id": 6038,
+            "amount": 250000,
             "price": 5000
+          }
+        ]
+      },
+      {
+        "shopId": 3,
+        "currency": "coins",
+        "shopName": "Tools",
+        "restrict": 0,
+        "items": [
+          {
+            "id": 21405,
+            "amount": 1000,
+            "price": 2000
+          },
+          {
+            "id": 16142,
+            "amount": 5000,
+            "price": 2500000
+          },
+          {
+            "id": 20897,
+            "amount": 250000,
+            "price": 1000
           }
         ]
       }

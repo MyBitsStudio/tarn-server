@@ -217,7 +217,7 @@ public class Consumables {
         String pot = ItemDefinition.forId(itemId).getName();
         return pot.contains("(4)") || pot.contains("(3)") || pot.contains("(2)") || pot.contains("(1)")
                 || pot.toLowerCase().contains("infinite healing") || pot.toLowerCase().contains("infinite prayer")
-                || pot.toLowerCase().contains("starter potion")
+                || pot.toLowerCase().contains("starter potion") || pot.toLowerCase().contains("rage potion")
                 || pot.equalsIgnoreCase("wizard's mind bomb") && !pot.toLowerCase().contains("infinite prayer");
     }
 
