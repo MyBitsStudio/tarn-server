@@ -74,7 +74,6 @@ public class HallsOfValor {
         TeleportHandler.teleportPlayer(player, HallsOfValor.TELEPORT_AREA.copy().setZ(player.getIndex() * 4), TeleportType.NORMAL);
         if (player.getRegionInstance() != null && player.getRegionInstance().equals(RegionInstance.RegionInstanceType.HALLS_OF_VALOR)) {
             player.getRegionInstance().destruct();
-            World.getNpcs().forEach(n -> n.removeInstancedNpcs(Locations.Location.HALLS_OF_VALOR, player.getIndex() * 4));
         }
         resetBarrows(player);
     }

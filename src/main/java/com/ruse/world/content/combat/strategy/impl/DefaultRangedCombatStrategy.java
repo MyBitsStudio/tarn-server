@@ -384,13 +384,8 @@ public class DefaultRangedCombatStrategy implements CombatStrategy {
 
 		if (player.getFireAmmo() != 22006){
 		if ((!avas || !ardy || !skillcape || !zaryte) && player.getFireAmmo() != 15243) {
-			if (player.getLocation() == Location.ZULRAH || player.getLocation() == Location.KRAKEN) {
-				GroundItemManager.spawnGroundItem(player, new GroundItem(new Item(player.getFireAmmo()),
-						player.getPosition(), player.getUsername(), false, 120, true, 120));
-			} else {
-				GroundItemManager.spawnGroundItem(player, new GroundItem(new Item(player.getFireAmmo()), pos,
+			GroundItemManager.spawnGroundItem(player, new GroundItem(new Item(player.getFireAmmo()), pos,
 						player.getUsername(), false, 120, true, 120));
-			}
 		}}
 
 		// If we are at 0 ammo remove the item from the equipment completely.

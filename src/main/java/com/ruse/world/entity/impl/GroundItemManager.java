@@ -166,11 +166,6 @@ public class GroundItemManager {
 			return;
 		}
 
-		if (UltimateIronmanHandler.hasItemsStored(p) && p.getLocation() != Location.DUNGEONEERING) {
-			p.getPacketSender().sendMessage("<shad=0>@red@You cannot pick up items until you claim your stored Dungeoneering items.");
-			return;
-		}
-
 //		if (p.getGameMode().isIronman() && !Dungeoneering.doingOldDungeoneering(p)) {
 //			String owner = gt.getOwner();
 //			if (owner != null) { // && !owner.equals("null")

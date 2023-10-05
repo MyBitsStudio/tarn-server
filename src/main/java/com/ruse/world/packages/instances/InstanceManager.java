@@ -20,6 +20,8 @@ import com.ruse.world.packages.bosses.special.SemiDonatorInstance;
 import com.ruse.world.packages.bosses.special.VoteInstance;
 import com.ruse.world.packages.bosses.special.event.EventInstance;
 import com.ruse.world.packages.combat.drops.DropManager;
+import com.ruse.world.packages.instances.impl.DonatorDailyMaterial;
+import com.ruse.world.packages.instances.impl.treasure.DailyTreasure;
 import com.ruse.world.packages.mode.GameModeConstants;
 import com.ruse.world.packages.tower.TowerLevel;
 import com.ruse.world.packages.tower.TowerProgress;
@@ -49,6 +51,24 @@ public class InstanceManager {
 
     public void removeInstance(String id){
         instances.remove(id);
+    }
+
+    public void startDonatorDailyMaterial(@NotNull Player player){
+        int cap = 3 * player.getVip().getRank();
+
+        cap *= (1000 * 60);
+
+        DonatorDailyMaterial instance = new DonatorDailyMaterial(player, cap);
+
+        instances.put(instance.getInstanceId(), instance);
+        instance.start();
+    }
+
+    public void startTreasureHunterInstance(@NotNull Player player){
+        DailyTreasure instance = new DailyTreasure(player);
+
+        instances.put(instance.getInstanceId(), instance);
+        instance.start();
     }
 
     public void startEventInstance(@NotNull Player player, InstanceInterData data){

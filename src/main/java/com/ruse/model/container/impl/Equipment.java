@@ -311,6 +311,33 @@ public class Equipment extends ItemContainer {
 		return slotBonuses[WEAPON_SLOT].getEffect() == SlotEffect.AOE_EFFECT;
 	}
 
+	public boolean hasLifeBringer(){
+		for (SlotBonus slotBonus : slotBonuses) {
+			if (slotBonus.getEffect() == SlotEffect.LIFE_BRINGER) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	public boolean hasBounceBack(){
+		for (SlotBonus slotBonus : slotBonuses) {
+			if (slotBonus.getEffect() == SlotEffect.BOUNCE_BACK) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	public boolean hasLifeStealer(){
+		for (SlotBonus slotBonus : slotBonuses) {
+			if (slotBonus.getEffect() == SlotEffect.LIFE_STEALER) {
+				return true;
+			}
+		}
+		return false;
+	}
+
 	public boolean hasTripleShot(){
 		return slotBonuses[WEAPON_SLOT].getEffect() == SlotEffect.MULTI_SHOT
 				&& slotBonuses[WEAPON_SLOT].getBonus() == 3;
@@ -364,6 +391,24 @@ public class Equipment extends ItemContainer {
 	public boolean hasFirewall(){
 		for (SlotBonus slotBonus : slotBonuses) {
 			if (slotBonus.getEffect() == SlotEffect.FIREWALL) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	public boolean hasRageAll(){
+		for (SlotBonus slotBonus : slotBonuses) {
+			if (slotBonus.getEffect() == SlotEffect.RAGE_ALL) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	public boolean hasIcewall(){
+		for (SlotBonus slotBonus : slotBonuses) {
+			if (slotBonus.getEffect() == SlotEffect.ICEWALL) {
 				return true;
 			}
 		}

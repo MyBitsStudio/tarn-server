@@ -7,6 +7,7 @@ import com.ruse.engine.task.TaskManager;
 import com.ruse.engine.task.impl.PlayerDeathTask;
 import com.ruse.engine.task.impl.WalkToFightTask;
 import com.ruse.engine.task.impl.WalkToTask;
+import com.ruse.io.data.impl.player.save.PlayerSQLSave;
 import com.ruse.model.*;
 import com.ruse.model.container.impl.*;
 import com.ruse.model.container.impl.Bank.BankSearchAttributes;
@@ -41,6 +42,7 @@ import com.ruse.world.packages.loyalty.LoyaltyManager;
 import com.ruse.world.packages.plugin.impl.RaidPlugin;
 import com.ruse.world.packages.raid.Raid;
 import com.ruse.world.packages.raid.party.RaidParty;
+import com.ruse.world.packages.skills.crafting.Craft;
 import com.ruse.world.packages.skills.slayer.Slayer;
 import com.ruse.world.packages.starter.StarterShop;
 import com.ruse.world.packages.tracks.impl.tarn.elite.TarnEliteTrack;
@@ -1584,6 +1586,7 @@ public class Player extends Character {
             return;
         }
         PlayerSaving.save(this);
+        //new PlayerSQLSave().execute(this);
     }
 
 
@@ -3889,7 +3892,7 @@ public class Player extends Character {
     private final Dissolving dissolving = new Dissolving(this);
 
     public boolean isInMinigame() {
-        boolean inMinigameLoc = getLocation() == Locations.Location.KEEPERS_OF_LIGHT_GAME || getLocation() == Locations.Location.VAULT_OF_WAR || getLocation() == Locations.Location.VOID_OF_DARKNESS || getLocation() == Locations.Location.HALLS_OF_VALOR || getLocation() == Locations.Location.TREASURE_HUNTER;
+        boolean inMinigameLoc = getLocation() == Locations.Location.KEEPERS_OF_LIGHT_GAME || getLocation() == Locations.Location.VAULT_OF_WAR || getLocation() == Locations.Location.TREASURE_HUNTER;
         return inMinigameLoc;
     }
 
@@ -4029,6 +4032,9 @@ public class Player extends Character {
 
     @Getter@Setter
     private boolean claimedReferral;
+
+    @Getter@Setter
+    private Craft crafting = new Craft(this);
 
 
 }

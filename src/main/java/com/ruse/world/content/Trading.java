@@ -41,17 +41,6 @@ public class Trading {
 			return;
 		}
 
-		if (player.getLocation() == Location.JAIL || player2.getLocation() == Location.JAIL || Jail.isJailed(player.getUsername())) {
-			if (!player.getRank().isStaff() && player2.getRank().isStaff()) {
-				player.getPacketSender().sendMessage("You may trade with staff.");
-			} else if (player.getRank().isStaff()) {
-				player.getPacketSender().sendMessage("You may trade anyone in jail.");
-			} else {
-				player.getPacketSender().sendMessage("You may not trade in jail.");
-				return;
-			}
-		}
-
 		if(!player.getMode().canTrade(player2) && !player.getRank().isAdmin()){
 			player.getPacketSender().sendMessage("You cannot trade in this game mode.");
 			return;

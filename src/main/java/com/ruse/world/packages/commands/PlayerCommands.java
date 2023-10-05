@@ -204,8 +204,7 @@ public class PlayerCommands {
 //                return true;
 //            }
             case "home" -> {
-                if (player.getLocation() != null && player.getLocation() == Locations.Location.WILDERNESS
-                        || player.getLocation() != null && player.getLocation() == Locations.Location.CUSTOM_RAIDS) {
+                if (player.getLocation() != null && player.getLocation() == Locations.Location.WILDERNESS) {
                     player.getPacketSender().sendMessage("You cannot do this at the moment.");
                     return true;
                 }
@@ -223,8 +222,7 @@ public class PlayerCommands {
                 return true;
             }
             case "youtube", "stream" -> {
-                if (player.getLocation() != null && player.getLocation() == Locations.Location.WILDERNESS
-                        || player.getLocation() != null && player.getLocation() == Locations.Location.CUSTOM_RAIDS) {
+                if (player.getLocation() != null && player.getLocation() == Locations.Location.WILDERNESS) {
                     player.getPacketSender().sendMessage("You cannot do this at the moment.");
                     return true;
                 }
@@ -235,8 +233,7 @@ public class PlayerCommands {
             }
             case "help" -> {
                 if (player.getLastYell().elapsed(30000)) {
-                    if (player.getLocation() != null && player.getLocation() == Locations.Location.WILDERNESS
-                            || player.getLocation() != null && player.getLocation() == Locations.Location.CUSTOM_RAIDS) {
+                    if (player.getLocation() != null && player.getLocation() == Locations.Location.WILDERNESS) {
                         World.sendStaffMessage("<col=FF0066><img=5> [TICKET SYSTEM]<col=6600FF> " + player.getUsername()
                                 + " has requested help, but is @red@*IN LEVEL " + player.getWildernessLevel()
                                 + " WILDERNESS*<col=6600FF>. Be careful.");
@@ -267,8 +264,7 @@ public class PlayerCommands {
                     player.getPacketSender().sendMessage("You do not understand the complexities of flight.");
                     return true;
                 }
-                if (player.getLocation() != null && player.getLocation() == Locations.Location.WILDERNESS
-                        || player.getLocation() != null && player.getLocation() == Locations.Location.CUSTOM_RAIDS) {
+                if (player.getLocation() != null && player.getLocation() == Locations.Location.WILDERNESS) {
                     player.getPacketSender().sendMessage("You cannot fly in the Wilderness.");
                     return true;
                 }
@@ -291,8 +287,7 @@ public class PlayerCommands {
                     player.getPacketSender().sendMessage("You do not understand the complexities of death.");
                     return true;
                 }
-                if (player.getLocation() != null && player.getLocation() == Locations.Location.WILDERNESS
-                        || player.getLocation() != null && player.getLocation() == Locations.Location.CUSTOM_RAIDS) {
+                if (player.getLocation() != null && player.getLocation() == Locations.Location.WILDERNESS) {
                     player.getPacketSender().sendMessage("You cannot ghost walk in the Wilderness.");
                     return true;
                 }
@@ -312,6 +307,10 @@ public class PlayerCommands {
             }
             case "yell" -> {
                 handleYell(player, command);
+                return true;
+            }
+            case "afk" -> {
+                TeleportHandler.teleportPlayer(player, new Position(3038, 4060, 0), player.getSpellbook().getTeleportType());
                 return true;
             }
             case "daily" -> {

@@ -2,9 +2,14 @@ package com.ruse.world.entity.impl.player;
 
 import com.ruse.model.Item;
 import com.ruse.world.WorldCalendar;
+import com.ruse.world.packages.instances.InstanceManager;
 import lombok.Getter;
+import org.jetbrains.annotations.NotNull;
 
+import java.time.LocalDate;
+import java.time.ZoneOffset;
 import java.util.Map;
+import java.util.Objects;
 import java.util.concurrent.ConcurrentHashMap;
 
 @Getter
@@ -18,14 +23,14 @@ public class PlayerDaily {
 
     public boolean claim(String content){
         if(claimed.containsKey(content))
-            if(claimed.get(content) != WorldCalendar.getInstance().getDay()){
-                claimed.replace(content, WorldCalendar.getInstance().getDay());
+            if(LocalDate.now(ZoneOffset.UTC).getDayOfMonth() != claimed.get(content)){
+                claimed.replace(content, LocalDate.now(ZoneOffset.UTC).getDayOfMonth());
                 return true;
             } else {
                 return false;
             }
         else {
-            claimed.put(content, WorldCalendar.getInstance().getDay());
+            claimed.put(content, LocalDate.now(ZoneOffset.UTC).getDayOfMonth());
             return true;
         }
     }
@@ -55,5 +60,53 @@ public class PlayerDaily {
             player.getPacketSender().sendMessage("@red@[DAILY]@whi@You have gained your daily Ancient Monic charge.");
         }
 
+    }
+
+    public void enterDonatorMaterialZone(@NotNull Player player){
+        if(player.getVip().getRank() >= 5){
+            if(player.getInstance() != null) {
+                player.getInstance().destroy();
+                player.setInstance(null);
+                player.sendMessage("You have left your previous instance.");
+                return;
+            }
+
+            if(!Objects.equals(player.getInstanceId(), "")){
+                InstanceManager.getManager().removeInstance(player.getInstanceId());
+                player.setInstanceId("");
+            }
+
+            if(claim("daily-donator-materials")){
+                InstanceManager.getManager().startDonatorDailyMaterial(player);
+            } else {
+                player.sendMessage("@red@You have already claimed your daily Donator Materials Instance.");
+            }
+        } else {
+            player.sendMessage("@red@You must be a VIP 5 to enter this area.");
+        }
+    }
+
+    public void enterTreasureHunterInstance(@NotNull Player player){
+        if(player.getLoyalty().getLevel() >= 3){
+            if(player.getInstance() != null) {
+                player.getInstance().destroy();
+                player.setInstance(null);
+                player.sendMessage("You have left your previous instance.");
+                return;
+            }
+
+            if(!Objects.equals(player.getInstanceId(), "")){
+                InstanceManager.getManager().removeInstance(player.getInstanceId());
+                player.setInstanceId("");
+            }
+
+            if(claim("daily-treasure-hunter")){
+                InstanceManager.getManager().startTreasureHunterInstance(player);
+            } else {
+                player.sendMessage("@red@You have already claimed your daily Treasure Hunter Instance.");
+            }
+        } else {
+            player.sendMessage("@red@You must be a Loyalty 3 to enter this area.");
+        }
     }
 }

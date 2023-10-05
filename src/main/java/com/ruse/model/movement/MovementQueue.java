@@ -418,9 +418,7 @@ public final class MovementQueue {
 					}
 
 					if (character.isNpc() && ((NPC) character).isSummoningNpc()
-							&& (followCharacter.getLocation() == Location.HOME_BANK
-									|| followCharacter.getLocation() == Location.EDGEVILLE
-									|| followCharacter.getLocation() == Location.VARROCK)) {
+							&& (followCharacter.getLocation() == Location.HOME_BANK)) {
 						character.getMovementQueue().walkStep(
 								getMove(character.getPosition().getX(), followCharacter.getPosition().getX(), 1),
 								getMove(character.getPosition().getY() - 1, followCharacter.getPosition().getY(), 1));

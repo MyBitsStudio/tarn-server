@@ -70,37 +70,7 @@ public class PlayerProcess {
 		 * player.getRecordedLogin().elapsed()))); timerTick = 0; }
 		 */
 		timerTick++;
-		final Position location = player.getPosition().copy();
 
-		BountyHunter.sequence(player);
-		if (location.getX() == 2553 && location.getY() == 3717 && player.getSkillManager().getMaxLevel(Skill.SLAYER) < 98 && player.getSkillManager().getMaxLevel(Skill.SLAYER) < 79) {
-			player.moveTo(GameSettings.HOME_CORDS);
-			player.getPacketSender().sendMessage(
-					"<shad=1>@or2@You must be 99+ Slayer to do Raids [2].");
-			player.getPacketSender().sendMessage("<shad=1>@or1@You must be 80+ Invention to do Raids [2].");
-			return;
-		}
-		if (player.getRegionInstance() != null
-				&& (player.getRegionInstance().getType() == RegionInstanceType.CONSTRUCTION_HOUSE
-				|| player.getRegionInstance().getType() == RegionInstanceType.CONSTRUCTION_DUNGEON)) {
-			((House) player.getRegionInstance()).process();
-		}
-
-
-		if(PlayerPunishment.isReadyForUnban(player.getUsername())) {
-			PlayerPunishment.unban(player.getUsername());
-		}
-		if(PlayerPunishment.isReadyForUnmute(player.getUsername())) {
-			PlayerPunishment.unmute(player.getUsername());
-		}
-		if(PlayerPunishment.Jail.isReadyForParole(player.getUsername())) {
-			player.sendMessage("You are eligible for parole! You may leave.");
-			PlayerPunishment.Jail.unJail(player.getUsername());
-		}
-
-		if (PlayerPunishment.Jail.isJailed(player.getUsername()) && !Locations.Location.inLocation(player, Location.JAIL)) {
-			player.moveTo(new Position(2510, 9326));
-		}
 
 		/*if (player.afkTicks >= 500 && !player.afk) {
 			player.moveTo(new Position(2658, 3987, 0));

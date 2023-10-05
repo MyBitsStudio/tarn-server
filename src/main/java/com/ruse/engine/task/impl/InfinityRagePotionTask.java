@@ -39,7 +39,6 @@ public class InfinityRagePotionTask extends Task {
 		if (player.getOverloadPotionTimer() == 20)
 			player.getPacketSender().sendMessage("@red@Your Rage Potion's effect is about to run out.");
 		if (player.getOverloadPotionTimer() <= 0 || player.getLocation() == Location.DUEL_ARENA
-				|| player.getLocation() == Location.DUNGEONEERING
 				|| player.getLocation() == Location.WILDERNESS && !player.getRank().isDeveloper()) {
 			player.getPacketSender().sendMessage("@red@Your Rage Potion's effect has run out.");
 			for (int i = 0; i < 7; i++) {

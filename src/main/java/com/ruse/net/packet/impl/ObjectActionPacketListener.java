@@ -60,6 +60,8 @@ import com.ruse.world.content.transportation.TeleportLocations;
 import com.ruse.world.content.transportation.TeleportType;
 import com.ruse.world.entity.impl.player.Player;
 import com.ruse.world.packages.mode.impl.GroupIronman;
+import com.ruse.world.packages.skills.mining.Miner;
+import com.ruse.world.packages.skills.mining.MiningProps;
 import com.ruse.world.packages.tower.TarnTower;
 import org.jetbrains.annotations.NotNull;
 
@@ -116,48 +118,57 @@ public class ObjectActionPacketListener implements PacketListener {
                     player.setPositionToFace(gameObject.getPosition());
 
 
-                    if (WoodcuttingData.Trees.forId(id) != null) {
-                        Woodcutting.cutWood(player, gameObject, false);
+//                    if (WoodcuttingData.Trees.forId(id) != null) {
+//                        Woodcutting.cutWood(player, gameObject, false);
+//                        return;
+//                    }
+//                    if (EvilTreeDef.forId(id) != null) {
+//                        Woodcutting.cutWood(player, gameObject, false);
+//                        return;
+//                    }
+
+                    if (MiningProps.Rocks.forId(gameObject.getId()) != null) {
+                        Miner.startMining(player, gameObject);
                         return;
                     }
-                    if (EvilTreeDef.forId(id) != null) {
-                        Woodcutting.cutWood(player, gameObject, false);
-                        return;
-                    }
-                    if (MiningData.forRock(gameObject.getId()) != null) {
-                        Mining.startMining(player, gameObject);
-                        return;
-                    }
+
                     if (!player.getControllerManager().processObjectClick1(gameObject)) {
                         return;
                     }
 
-                    if (player.getFarming().click(player, x, y, 1))
-                        return;
-                    if (Runecrafting.runecraftingAltar(player, gameObject.getId())) {
-                        RunecraftingData.RuneData rune = RunecraftingData.RuneData.forId(gameObject.getId());
-                        if (rune == null)
+                    if(player.getInstance() != null){
+                        if(player.getInstance().handleObjectClick(player, gameObject, 1)){
                             return;
-                        Runecrafting.craftRunes(player, rune);
-                        return;
+                        }
                     }
-                    if (Agility.handleObject(player, gameObject)) {
-                        return;
-                    }
-                    if (player.getPosition().getRegionId() == 7758) {//vod
-                        player.vod.handleObject(gameObject);
-                        return;
-                    }
-                    if (gameObject.getId() == HallsOfValor.CHEST_ID) {
-                        HallsOfValor.handleObject(player);
-                    }
-                    if (Barrows.handleObject(player, gameObject)) {
-                        return;
-                    }
-                    if (player.getLocation() != null && player.getLocation() == Location.WILDERNESS
-                            && WildernessObelisks.handleObelisk(gameObject.getId())) {
-                        return;
-                    }
+
+
+//                    if (player.getFarming().click(player, x, y, 1))
+//                        return;
+//                    if (Runecrafting.runecraftingAltar(player, gameObject.getId())) {
+//                        RunecraftingData.RuneData rune = RunecraftingData.RuneData.forId(gameObject.getId());
+//                        if (rune == null)
+//                            return;
+//                        Runecrafting.craftRunes(player, rune);
+//                        return;
+//                    }
+//                    if (Agility.handleObject(player, gameObject)) {
+//                        return;
+//                    }
+//                    if (player.getPosition().getRegionId() == 7758) {//vod
+//                        player.vod.handleObject(gameObject);
+//                        return;
+//                    }
+//                    if (gameObject.getId() == HallsOfValor.CHEST_ID) {
+//                        HallsOfValor.handleObject(player);
+//                    }
+//                    if (Barrows.handleObject(player, gameObject)) {
+//                        return;
+//                    }
+//                    if (player.getLocation() != null && player.getLocation() == Location.WILDERNESS
+//                            && WildernessObelisks.handleObelisk(gameObject.getId())) {
+//                        return;
+//                    }
                     if (ConstructionActions.handleFirstObjectClick(player, gameObject)) {
                         return;
                     }
@@ -224,14 +235,9 @@ public class ObjectActionPacketListener implements PacketListener {
                             //player.loadUpgradeInterface().open();
                             break;
                         case 26791:
-                            player.sendMessage("This is being reworked! Check back soon!");
-                            //player.getUpgradeHandler().openInterface();
+                            //player.sendMessage("This is being reworked! Check back soon!");
+                            player.getCrafting().open();
                             break;
-//                        case 41204:
-//                            player.setOpenedTeleports(true);
-//                            TeleportInterface.sendMinigameData(player, TeleportInterface.Minigames.values()[0]);
-//                            TeleportInterface.sendMinigamesTab(player);
-//                            break;
                         case 41205:
                             player.sendMessage("Coming soon...");
                             ///player.getRaidsInterface().openInterface(RaidsInterface.Raids.FURY_RAIDS);
@@ -296,15 +302,6 @@ public class ObjectActionPacketListener implements PacketListener {
                                 } else {
                                     KeepersOfLight.removeWaiting(player, true);
                                 }
-                            }
-                            break;
-
-                        case 41207:
-                            if (player.getInventory().contains(TreasureHunter.MASTER_KEY.getId())) {
-                                player.getInventory().delete(TreasureHunter.MASTER_KEY);
-                                TreasureHunter.handleRewards(player);
-                            } else {
-                                player.sendMessage("You don't have the Master Key.");
                             }
                             break;
 
@@ -652,61 +649,6 @@ public class ObjectActionPacketListener implements PacketListener {
                             }
                             break;
                         case 17953:
-                            if (player.getLocation() == Location.ZULRAH_WAITING) {
-                                player.getPacketSender().sendMessage("You push the boat into the swamp...");
-                                // player.setPositionToFace(gameObject.getPosition());
-                                player.performAnimation(new Animation(923));
-                                TaskManager.submit(new Task(1, player, true) {
-                                    int tick = 0;
-
-                                    @Override
-                                    public void execute() {
-                                        if (tick >= 2) {
-                                            // player.moveTo(new Position(player.getPosition().getX()-1,
-                                            // player.getPosition().getY()));
-                                            player.moveTo(new Position(3420, 2777, (player.getIndex() + 1) * 4));
-                                            player.getPacketSender()
-                                                    .sendMessage("...And arrive in Zulrah's territory.");
-                                            stop();
-                                        }
-                                        tick++;
-                                    }
-                                });
-                            } else if (player.getLocation() == Location.ZULRAH) {
-                                if (!player.getDonator().isClericPlus()
-                                        && player.getSkillManager().getCurrentLevel(Skill.AGILITY) < 85) {
-                                    player.getPacketSender()
-                                            .sendMessage("You need 85 Agility to navigate the boat back to camp!");
-                                    return;
-                                }
-                                if (player.getDonator().isClericPlus()
-                                        && player.getSkillManager().getCurrentLevel(Skill.AGILITY) < 85) {
-                                    player.getPacketSender()
-                                            .sendMessage("As a member you can navigate the swamp without 85 Agility.");
-                                }
-                                player.getPacketSender().sendMessage("You push the boat into the swamp...");
-                                // player.setPositionToFace(gameObject.getPosition());
-                                player.performAnimation(new Animation(923));
-                                TaskManager.submit(new Task(1, player, true) {
-                                    int tick = 0;
-
-                                    @Override
-                                    public void execute() {
-                                        if (tick >= 2) {
-                                            // player.moveTo(new Position(player.getPosition().getX()-1,
-                                            // player.getPosition().getY()));
-                                            player.moveTo(new Position(3406, 2794, 0));
-                                            player.getPacketSender()
-                                                    .sendMessage("...And return to the pillar santuary.");
-                                            stop();
-                                        }
-                                        tick++;
-                                    }
-                                });
-                            }
-                            // TeleportHandler.teleportPlayer(player, new Position(3420, 2777,
-                            // (player.getIndex()+1)*4), player.getSpellbook().getTeleportType()); //zulrah
-                            // instance
                             break;
                         case 28295:
                             if (christmas2016.isChristmas()) {
@@ -894,19 +836,11 @@ public class ObjectActionPacketListener implements PacketListener {
                             });
                             break;
                         case 5262:
-                            if (player.getLocation() == Location.KRAKEN) {
-                                player.getPacketSender().sendMessage("You leave the cave and end up at home.");
-                                player.moveTo(GameSettings.DEFAULT_POSITION.copy());
-                                // TeleportHandler.teleportPlayer(player, new Position(2524 +
-                                // Misc.getRandom(10), 2595 + Misc.getRandom(6)),
-                                // player.getSpellbook().getTeleportType());
 
-                            }
                             break;
 
                         case 2273:
-                            player.moveTo(new Position(3563, 3313, 0));
-                            Location.THE_SIX.leave(player);
+
                             break;
 //                        case 5259:
 //                            if (player.getPosition().getX() >= 3653) { // :)
@@ -953,14 +887,6 @@ public class ObjectActionPacketListener implements PacketListener {
                             }
                             break;
                         case 2465:
-                            if (player.getLocation() == Location.EDGEVILLE) {
-                                player.getPacketSender().sendMessage(
-                                        "<img=5> @blu@Welcome to the free-for-all arena! You will not lose any items on death here.");
-                                player.moveTo(new Position(2815, 5511));
-                            } else {
-                                player.getPacketSender()
-                                        .sendMessage("The portal does not seem to be functioning properly.");
-                            }
                             break;
 //                        case 45803:
 //                        case 1767:
@@ -1824,23 +1750,14 @@ public class ObjectActionPacketListener implements PacketListener {
                             }
                             break;
                         case 1739:
-                            if (player.getLocation() == Location.LUMBRIDGE) {
-                                // player.moveTo(teleportTarget)
-                                // player.setDialogueActionId(154);
-                                // DialogueManager.start(player, 154);
-                                player.moveTo(
-                                        new Position(player.getPosition().getX(), player.getPosition().getY(), 2));
-                            }
+                            break;
                         case 15638:
                             if (player.getLocation() == Location.WARRIORS_GUILD) {
                                 player.moveTo(new Position(2840, 3539, 0));
                             }
                             break;
                         case 1740:
-                            if (player.getLocation() == Location.LUMBRIDGE) {
-                                player.moveTo(
-                                        new Position(player.getPosition().getX(), player.getPosition().getY(), 1));
-                            }
+
                             break;
                         case 15644:
                         case 15641:
@@ -2101,19 +2018,26 @@ public class ObjectActionPacketListener implements PacketListener {
         player.setInteractingObject(gameObject)
                 .setWalkToTask(new WalkToTask(player, position, gameObject.getSize(), () -> {
 
-                    if (MiningData.forRock(gameObject.getId()) != null) {
-                        Prospecting.prospectOre(player, id);
-                        return;
-                    }
+//                    if (MiningData.forRock(gameObject.getId()) != null) {
+//                        Prospecting.prospectOre(player, id);
+//                        return;
+//                    }
                     if (!player.getControllerManager().processObjectClick2(gameObject)) {
                         return;
                     }
-                    if (player.getFarming().click(player, x, y, 1))
-                        return;
-                    if (player.getPosition().getRegionId() == 7758) {//vod
-                        player.vod.handleObject(gameObject);
-                        return;
+//                    if (player.getFarming().click(player, x, y, 1))
+//                        return;
+//                    if (player.getPosition().getRegionId() == 7758) {//vod
+//                        player.vod.handleObject(gameObject);
+//                        return;
+//                    }
+
+                    if(player.getInstance() != null){
+                        if(player.getInstance().handleObjectClick(player, gameObject, 2)){
+                            return;
+                        }
                     }
+
                     switch (gameObject.getId()) {
                         case 2469 ->
                                 TeleportHandler.teleportPlayer(player, player.getPosition().setZ(Math.max(player.getPosition().getZ() - 4, 0)), TeleportType.NORMAL);
@@ -2321,12 +2245,6 @@ public class ObjectActionPacketListener implements PacketListener {
                             }
                         }
                         case 2145 -> player.getPacketSender().sendMessage("Eww. That's a terrible idea!");
-                        case 1739 -> {
-                            if (player.getLocation() == Location.LUMBRIDGE) {
-                                player.moveTo(
-                                        new Position(player.getPosition().getX(), player.getPosition().getY(), 0));
-                            }
-                        }
                         case 172 -> CrystalChest.sendRewardInterface(player);
 //                        case 9975 -> {
 //                            DialogueManager.start(player, 22);
@@ -2546,6 +2464,12 @@ public class ObjectActionPacketListener implements PacketListener {
         player.setWalkToTask(new WalkToTask(player, position, gameObject.getSize(), () -> {
             if (!player.getControllerManager().processObjectClick3(gameObject)) {
                 return;
+            }
+
+            if(player.getInstance() != null){
+                if(player.getInstance().handleObjectClick(player, gameObject, 3)){
+                    return;
+                }
             }
 
             switch (id) {

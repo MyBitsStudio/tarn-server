@@ -184,17 +184,6 @@ public class SkillManager {
         if (this.skills.experience[skill.ordinal()] >= MAX_EXPERIENCE)
             return this;
 
-        if (UltimateIronmanHandler.hasItemsStored(player) && player.getLocation() != Location.DUNGEONEERING) {
-            player.getPacketSender()
-                    .sendMessage("<shad=0>@red@You will gain NO EXP until you claim your stored Dungeoneering items.");
-            return this;
-        }
-
-        if (skill.equals(Skill.SLAYER)) {
-            if(player.getMode() instanceof Veteran)
-                experience = experience / 2;
-        }
-
         experience *= player.getDonator().getXpgain();
 
         if (ServerPerks.getInstance().getActivePerk() == ServerPerks.Perk.XP || ServerPerks.getInstance().getActivePerk() == ServerPerks.Perk.ALL_PERKS

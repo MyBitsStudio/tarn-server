@@ -386,24 +386,9 @@ public class NPCOptionPacketListener implements PacketListener {
 //                    ShopManager.getShops().get(35).open(player);
 //                    break;
                 case 6055, 6056, 6057, 6058, 6059, 6060, 6061, 6062, 6063, 6064, 7903 -> {
-                    if (npc.getId() == 7903 && player.getLocation() == Location.MEMBER_ZONE) {
-                        if (!player.getDonator().isMember()) {
-                            player.getPacketSender().sendMessage("You must be a Member to use this.");
-                            return;
-                        }
-                    }
                     PuroPuro.catchImpling(player, npc);
                 }
                 case 8022, 8028 -> DesoSpan.siphon(player, npc);
-
-//                case 6537:
-//                    player.setDialogueActionId(10);
-//                    DialogueManager.start(player, 19);
-//                    break;
-//                case 4249:
-//                    player.setDialogueActionId(9);
-//                    DialogueManager.start(player, 64);
-//                    break;
                 case 6807, 6994, 6995, 6867, 6868, 6794, 6795, 6815, 6816, 6874, 6873, 3594, 3590, 3596 -> {
                     if (player.getSummoning().getFamiliar() == null
                             || player.getSummoning().getFamiliar().getSummonNpc() == null

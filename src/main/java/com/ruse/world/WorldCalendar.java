@@ -24,7 +24,9 @@ public class WorldCalendar implements Job {
         return instance;
     }
 
-    public WorldCalendar(){dates = LocalDate.now(ZoneOffset.UTC);}
+    public WorldCalendar(){
+        dates = LocalDate.now(ZoneOffset.UTC);
+    }
     public String getTime(){
         return dates.toString();
     }
@@ -46,7 +48,7 @@ public class WorldCalendar implements Job {
 
     public boolean isWeekend(){
         int dayOfWeek = dates.get( java.time.temporal.ChronoField.DAY_OF_WEEK );
-        return dayOfWeek == 6 || dayOfWeek == 7;
+        return dayOfWeek == 5 || dayOfWeek == 6 || dayOfWeek == 7;
     }
 
     private static final CronTrigger trigger = TriggerBuilder.newTrigger()

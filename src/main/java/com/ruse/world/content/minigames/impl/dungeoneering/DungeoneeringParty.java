@@ -60,11 +60,6 @@ public class DungeoneeringParty {
 
     public static void create(Player p) {
 
-        if (p.getLocation() != Locations.Location.DUNGEONEERING) {
-            p.getPacketSender().sendMessage("You must be in the dungeon lobby to create a party.");
-            return;
-        }
-
         if (p.getMinigameAttributes().getDungeoneeringAttributes().getParty() != null) {
             p.getPacketSender().sendMessage("You are already in a Dungeoneering party.");
             return;
@@ -157,7 +152,7 @@ public class DungeoneeringParty {
         p.sendMessage("REMOVING FROM PARTY");
         p.getPacketSender().sendInterfaceRemoval();
         if (p == owner) {
-            World.getNpcs().forEach(n -> n.removeNpcs(Locations.Location.DUNGEONEERING_ROOM, height));
+           // World.getNpcs().forEach(n -> n.removeNpcs(Locations.Location.DUNGEONEERING_ROOM, height));
             for (Player member : player_members) {
                 if (member != null && member.getMinigameAttributes().getDungeoneeringAttributes().getParty() != null
                         && member.getMinigameAttributes().getDungeoneeringAttributes().getParty() == this) {

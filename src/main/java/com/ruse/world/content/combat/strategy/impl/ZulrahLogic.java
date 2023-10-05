@@ -54,7 +54,7 @@ public class ZulrahLogic implements CombatStrategy {
 
 					if (tick == 5 && !zulrah.isRegistered()) {
 
-						if (victim == null || player.getConstitution() <= 0 || player.getLocation() != Location.ZULRAH
+						if (victim == null || player.getConstitution() <= 0
 								|| zulrah.getConstitution() <= 0) {
 							stop();
 							player.getMinigameAttributes().getZulrahAttributes().setRedFormDamage(0, false);

@@ -184,6 +184,12 @@ public class Slayer {
         if(player.getEquipment().contains(15586))
             amount *= 2;
 
+        if(player.getEquipment().contains(21570))
+            amount *= 2;
+
+        if(player.getEquipment().contains(20661))
+            amount *= 2;
+
         if(player.getEquipment().contains(19892))
             amount *= 1.10;
 

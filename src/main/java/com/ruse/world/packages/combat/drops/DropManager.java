@@ -283,6 +283,14 @@ public class DropManager {
             amount *= 1.25;
         }
 
+        if(player.getEquipment().contains(20661) && isCash){
+            amount *= 1.25;
+        }
+
+        if(player.getEquipment().contains(21570) && isCash){
+            amount *= 1.25;
+        }
+
         if(isCash){
             var multiplier = player.getEquipmentEnhancement().getBoost(BoostType.CASH);
             amount *= (1 + (multiplier * 0.01));

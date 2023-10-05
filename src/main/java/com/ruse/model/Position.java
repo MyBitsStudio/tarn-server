@@ -56,6 +56,10 @@ public class Position {
      */
     private int x;
 
+    public int getX() {
+        return x;
+    }
+
     /**
      * Sets the x coordinate of this position.
      *
@@ -74,6 +78,10 @@ public class Position {
 
      */
     private int y;
+
+    public int getY() {
+        return y;
+    }
 
     /**
      * Sets the y coordinate of this position.

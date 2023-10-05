@@ -43,13 +43,13 @@ public class WorldEventHandler {
 
     public void runRandomEvent(){
 
-        if(ticks++ % 100 == 0) {
+        if(++ticks % 100 == 0) {
 
-            int random = Misc.random(100000);
+            int random = Misc.random(10000);
 
-            if (random == 63315) {
+            if (random == 6331) {
                 WorldTimers.register(new DoubleDropTimer(Timer.HOURS * 2));
-            } else if (random == 38512) {
+            } else if (random == 3851) {
                 WorldTimers.register(new DoubleDropTimer(Timer.HOURS * 3));
             }
         }

@@ -26,8 +26,13 @@ public enum SlotEffect {
     DROP_RATE_HIGH(SlotRarity.MYTHICAL, 23158, 50, 99),
     TRIPLE_CASH(SlotRarity.MYTHICAL, 23159),
     MULTI_SHOT(SlotRarity.MYTHICAL, 23160, 2, 3),
+    LIFE_STEALER(SlotRarity.MYTHICAL, 25003),
 
-    FIREWALL(SlotRarity.GODLY, 25001)
+    FIREWALL(SlotRarity.GODLY, 25001),
+    LIFE_BRINGER(SlotRarity.GODLY, 25002),
+    BOUNCE_BACK(SlotRarity.GODLY, 25004),
+    ICEWALL(SlotRarity.GODLY, 25005),
+    RAGE_ALL(SlotRarity.GODLY, 25006),
 
     ;
 
@@ -76,7 +81,8 @@ public enum SlotEffect {
     public boolean isWeapon(){
         return this == SlotEffect.AOE_EFFECT ||
                 this == SlotEffect.MULTI_SHOT ||
-                this == SlotEffect.FIREWALL;
+                this == SlotEffect.FIREWALL ||
+                this == SlotEffect.ICEWALL;
     }
 
     public static SlotEffect lowBonus(){
@@ -108,15 +114,15 @@ public enum SlotEffect {
     }
 
     public static SlotEffect highBonus(){
-        int random = Misc.random(100);
+        int random = Misc.random(1000);
 
-        if(random >= 42 && random <= 54)
+        if(random >= 420 && random <= 540)
            return Misc.random(Objects.requireNonNull(mythicals()));
-         else if(random >= 68 && random <= 93)
+         else if(random >= 680 && random <= 930)
             return Misc.random(Objects.requireNonNull(legendaries()));
-         else if(random >= 19 && random <= 61)
+         else if(random >= 190 && random <= 610)
             return Misc.random(Objects.requireNonNull(rares()));
-         else if(random == 13)
+         else if(random == 666)
             return Misc.random(Objects.requireNonNull(godly()));
          else
             return Misc.random(Objects.requireNonNull(uncommons()));

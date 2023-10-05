@@ -43,9 +43,8 @@ public class DonatorCommands {
                                 .sendMessage("Please close the interface you have open before opening another one.");
                         return true;
                     }
-                    if (player.getLocation() == Locations.Location.WILDERNESS || player.getLocation() == Locations.Location.DUNGEONEERING
-                            || player.getLocation() != null && player.getLocation() == Locations.Location.CUSTOM_RAIDS
-                            || player.getLocation() == Locations.Location.DUEL_ARENA) {
+                    if (player.getLocation() != null &&
+                            player.getLocation() == Locations.Location.DUEL_ARENA) {
                         player.getPacketSender().sendMessage("You cannot open your bank here.");
                         return true;
                     }

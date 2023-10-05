@@ -38,6 +38,14 @@ public class RangeMax {
                     defence *= 1.2;
                 }
 
+                if (player.getEquipment().contains(15448)) {
+                    defence *= 1.4;
+                }
+
+                if (player.getEquipment().contains(22142)) {
+                    defence *= 1.4;
+                }
+
                 if(defence >= 1000)
                     defence = 1000;
 
@@ -55,6 +63,10 @@ public class RangeMax {
                 }
 
                 if (player.getEquipment().contains(23088)) {
+                    absorb *= 1.2;
+                }
+
+                if (player.getEquipment().contains(22142)) {
                     absorb *= 1.2;
                 }
 
@@ -171,6 +183,12 @@ public class RangeMax {
             maxHit *= (long) multiplyDamage(player);
 
             if(player.getEquipment().contains(15587))
+                maxHit *= 1.5;
+
+            if(player.getEquipment().contains(21570))
+                maxHit *= 1.5;
+
+            if(player.getEquipment().contains(14876))
                 maxHit *= 1.5;
 
             if(player.getEquipment().contains(19888))

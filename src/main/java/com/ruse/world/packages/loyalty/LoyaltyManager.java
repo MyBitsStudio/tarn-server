@@ -63,6 +63,14 @@ public class LoyaltyManager {
             multiplier += 1;
         }
 
+        if(player.getEquipment().contains(20661)){
+            multiplier += 1;
+        }
+
+        if(player.getEquipment().contains(21570)){
+            multiplier += 1;
+        }
+
         int amount = 0;
 
         if(time % (360 * 60) == 0){

@@ -173,10 +173,10 @@ public class ButtonClickPacketListener implements PacketListener {
         if (player.getRaidsInterface().handleButton( id)) {
             return;
         }
-        if (player.getUpgradeHandler().selectTab(id)) {
+        if(player.getCrafting().selectTab(id)){
             return;
         }
-        if (player.getUpgradeHandler().button(id)) {
+        if(player.getCrafting().button(id)){
             return;
         }
         if (player.getUpgradeInterface().handleButton( id)) {
@@ -599,7 +599,8 @@ public class ButtonClickPacketListener implements PacketListener {
                 player.sendMessage("In order to gamble, you have to purchase the dice bag or seeds via ::Store");
                 break;
             case -18278:
-                player.getUpgradeHandler().upgrade();
+                player.getCrafting().craftMaterial();
+                //player.getUpgradeHandler().upgrade();
                 break;
 
             case -8383:
@@ -1032,7 +1033,6 @@ public class ButtonClickPacketListener implements PacketListener {
                 break;
             case -26386:
                 player.getPacketSender().sendTabInterface(GameSettings.STAFF_TAB, 46343);
-                StaffList.updateInterface(player);
                 break;
             case 30362:
                 player.setInputHandling(new SearchForCollectionNpc());

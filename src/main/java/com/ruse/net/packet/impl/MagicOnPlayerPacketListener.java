@@ -26,11 +26,6 @@ public class MagicOnPlayerPacketListener implements PacketListener {
 
 		Player attacked = World.getPlayers().get(playerIndex);
 
-		if (UltimateIronmanHandler.hasItemsStored(player) && player.getLocation() != Location.DUNGEONEERING) {
-			player.getPacketSender().sendMessage("You must claim your stored items at Dungeoneering first.");
-			return;
-		}
-
 		if (attacked != null && player.getRank().isDeveloper()) {
 			player.getPacketSender().sendMessage("Used spell id: " + spellId + " on target: " + attacked.getUsername());
 		}

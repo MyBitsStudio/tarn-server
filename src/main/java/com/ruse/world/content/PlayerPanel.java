@@ -70,13 +70,13 @@ public class PlayerPanel {
                 " ",
                 "@whi@Others: @yel@",
                 " ",
-                "@whi@Droprate bonus: @yel@" + DropCalculator.getDropChance(player, 9837) + "%",
-                "@whi@Double drop bonus: @yel@" + DropCalculator.getDoubleDropChance(player, 9837) + "%",
                 "@whi@NPC kill Count: @yel@ " + player.getPointsHandler().getNPCKILLCount(),
                 "@whi@Total Votes: @yel@ " + player.getPoints().get("voted"),
                 "@whi@VIP Points: @yel@" + player.getPlayerVIP().getPoints(),
                 "@whi@VIP Exp: @yel@" + player.getPlayerVIP().getExp(),
                 "@whi@Pack Exp: @yel@" + player.getPlayerVIP().getPackXp(),
+                "@whi@Loyalty Exp: @yel@" + player.getLoyalty().getXp(),
+                "@whi@Loyalty Level: @yel@" + player.getLoyalty().getLevel(),
                 ""
         };
 

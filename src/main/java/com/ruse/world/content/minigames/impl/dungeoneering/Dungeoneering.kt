@@ -37,22 +37,10 @@ class Dungeoneering(val group: DungeoneeringParty) {
         group.players.forEach {
             it.regionInstance = RegionInstance(it, RegionInstance.RegionInstanceType.DUNGEONEERING);
 
-            if(it.location == Locations.Location.DUNGEONEERING) {
-                it.sendMessage("The dungeon is beginning! Kill the minions!")
-                // Add the dungeon controller
-                it.controllerManager.startController("DungeonController", this)
-
-                // Add player into the instance
-               // mapInstance!!.add(it)
-                it.moveTo(Position(2285, 4999, height))
-            }
 
         }
 
-                World.getNpcs().forEach(Consumer { n: NPC ->
-                    n.removeNpcs(Locations.Location.DUNGEONEERING_ROOM,
-                            height)
-                })
+
 
         //for (i in 0 until KILLS_REQUIRED) {
             val npc = NPC(Constants.MINION_MOB, Position(2276 + Misc.getRandom(19), 5001 + Misc.getRandom(19), height))
@@ -104,12 +92,7 @@ class Dungeoneering(val group: DungeoneeringParty) {
         fun leaveParty(p: Player) {
 
             if (p.minigameAttributes.dungeoneeringAttributes.party != null) {
-                if (p.minigameAttributes.dungeoneeringAttributes.party.owner == p) {
-                    World.getNpcs().forEach(Consumer { n: NPC ->
-                        n.removeNpcs(Locations.Location.DUNGEONEERING_ROOM,
-                                p.position.z)
-                    })
-                }
+
             }
 
             if (p.minigameAttributes.dungeoneeringAttributes.party != null) {
@@ -146,19 +129,11 @@ class Dungeoneering(val group: DungeoneeringParty) {
             var ready = true
             group.players.forEach {
 
-                if(it.busy() || it.location != Locations.Location.DUNGEONEERING) {
-                    ready = false
-                }
-
             }
             return ready
         }
 
         fun checkInv(player: Player, invite: Player): Boolean {
-            if (player.location !== Locations.Location.DUNGEONEERING || player.isTeleporting) {
-                player.packetSender.sendMessage("You're not in Daemonheim")
-                return false
-            }
             if (invite == null) {
                 player.packetSender.sendMessage("That player is currently not online.")
                 return false

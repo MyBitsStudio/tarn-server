@@ -43,13 +43,6 @@ public class GroupIronmanBank extends ItemContainer {
 		if (Dungeoneering.doingOldDungeoneering(player)) {
 			return this;
 		}
-		if (player.getLocation() != Location.DUNGEONEERING) {
-			if (player.getMode() instanceof UltimateIronman) {
-				player.getPacketSender().sendInterfaceRemoval()
-						.sendMessage("Ultimate-ironman-players cannot use banks.");
-				return this;
-			}
-		}
 		sortItems();
 		refreshItems(player);
 		player.setBanking(true).setInputHandling(null);

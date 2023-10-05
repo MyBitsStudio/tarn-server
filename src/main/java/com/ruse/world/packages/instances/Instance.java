@@ -287,4 +287,8 @@ public abstract class Instance {
 
     public String failedEntry(){return "Something went wrong...";}
 
+    public boolean handleObjectClick(Player player, GameObject object, int option){
+        return false;
+    }
+
 }

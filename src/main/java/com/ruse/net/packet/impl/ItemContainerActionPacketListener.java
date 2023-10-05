@@ -57,7 +57,7 @@ public class ItemContainerActionPacketListener implements PacketListener {
                     player.getPacketSender().sendMessage(TradingPost.getAverageValue(item));
             case -15971 -> ForgeShopHandler.purchase(player, id, 1);
             case -15995 -> player.getForge().addItem(player.getInventory().forSlot(slot));
-            case -15997 -> player.getForge().removeItem(id);
+            case -15997 -> player.getForge().removeItem(slot);
             case 19420 -> player.loadUpgradeInterface().setData(player.loadUpgradeInterface().getCategory()[slot]);
             case 31510 -> player.getEventBossManager().removeNpcDropReward(id, 1);
             case 2900 -> player.getEventBossManager().addNpcDropReward(id, 1, slot);

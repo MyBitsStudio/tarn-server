@@ -39,6 +39,10 @@ public class OwnerCommands {
         Player targets;
 
         switch (commands[0]) {
+            case "craft" -> {
+                player.getCrafting().open();
+                return true;
+            }
             case "accc" -> {
                 AchievementHandler.sendInterface(player);
                 return true;
@@ -156,9 +160,7 @@ public class OwnerCommands {
                             .sendMessage("Please close the interface you have open before opening another one.");
                     return true;
                 }
-                if (player.getLocation() == Locations.Location.WILDERNESS || player.getLocation() == Locations.Location.DUNGEONEERING
-                        || player.getLocation() != null && player.getLocation() == Locations.Location.CUSTOM_RAIDS
-                        || player.getLocation() == Locations.Location.DUEL_ARENA) {
+                if (player.getLocation() != null && player.getLocation() == Locations.Location.DUEL_ARENA) {
                     player.getPacketSender().sendMessage("You cannot open your bank here.");
                     return true;
                 }
@@ -281,6 +283,12 @@ public class OwnerCommands {
                             return true;
                         }
                     }
+                }
+                return true;
+            }
+            case "location" -> {
+                if(player.getLocation() != null){
+                    player.sendMessage("Location: " + player.getLocation().toString());
                 }
                 return true;
             }

@@ -21,8 +21,8 @@ public class PlayerSecureSave extends SecureSave {
 
     @Override
     public PlayerSecureSave create() {
-        object.addProperty("username", player.getUsername());
-        object.addProperty("total-play-time", player.getTotalPlayTime());
+        object.addProperty("username", player.getUsername());//
+        object.addProperty("total-play-time", player.getTotalPlayTime());//
 
         object.addProperty("ref-claim", player.getReferralClaim());
         object.addProperty("ref-claimed", player.isClaimedReferral());

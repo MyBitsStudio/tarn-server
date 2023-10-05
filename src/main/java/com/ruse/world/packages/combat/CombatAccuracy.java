@@ -43,6 +43,10 @@ public class CombatAccuracy {
                 equipmentBonus *= 1.25;
             }
 
+            if(player.getEquipment().contains(22142)){
+                equipmentBonus *= 1.25;
+            }
+
             prayerMod = prayerBonus(player, type);
 
             if (player.isSpecialActivated()) {

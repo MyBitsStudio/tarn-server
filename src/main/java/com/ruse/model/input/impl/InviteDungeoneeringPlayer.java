@@ -9,19 +9,19 @@ public class InviteDungeoneeringPlayer extends Input {
 
 	@Override
 	public void handleSyntax(Player player, String plrToInvite) {
-		if (player.getLocation() == Locations.Location.DUNGEONEERING) {
-
-			player.getPacketSender().sendInterfaceRemoval();
-			Player invite = World.getPlayerByName(plrToInvite);
-			if (invite == null) {
-				player.getPacketSender().sendMessage("That player is currently not online.");
-				return;
-			}
-
-			player.sendMessage("Sent invite to " + plrToInvite);
-
-			player.getMinigameAttributes().getDungeoneeringAttributes().getParty().invite(invite);
-
-		}
+//		if (player.getLocation() == Locations.Location.DUNGEONEERING) {
+//
+//			player.getPacketSender().sendInterfaceRemoval();
+//			Player invite = World.getPlayerByName(plrToInvite);
+//			if (invite == null) {
+//				player.getPacketSender().sendMessage("That player is currently not online.");
+//				return;
+//			}
+//
+//			player.sendMessage("Sent invite to " + plrToInvite);
+//
+//			player.getMinigameAttributes().getDungeoneeringAttributes().getParty().invite(invite);
+//
+//		}
 	}
 }

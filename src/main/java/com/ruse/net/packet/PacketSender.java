@@ -7,6 +7,7 @@ import com.ruse.model.container.ItemContainer;
 import com.ruse.net.packet.Packet.PacketType;
 import com.ruse.world.content.CustomObjects;
 import com.ruse.world.content.EffectTimer;
+import com.ruse.world.entity.impl.player.timers.impl.SkillTimer;
 import com.ruse.world.packages.forge.Forge;
 import com.ruse.world.packages.forge.shop.ForgeShopItem;
 import com.ruse.world.content.skill.impl.construction.ConstructionData.Furniture;
@@ -21,6 +22,7 @@ import com.ruse.world.packages.ranks.StaffRank;
 import com.ruse.world.packages.shops.ShopHandler;
 import com.ruse.world.packages.shops.ShopItem;
 import com.ruse.world.packages.shops.TabShop;
+import com.ruse.world.packages.skills.SkillingTimer;
 import com.ruse.world.region.Region;
 import com.ruse.world.region.RegionManager;
 import com.ruse.world.region.dynamic.DynamicRegion;
@@ -132,6 +134,14 @@ public class PacketSender {
     }
 
     public PacketSender sendEffectTimerSeconds(int seconds, EffectTimer effect) {
+        PacketBuilder out = new PacketBuilder(54);
+        out.putShort(seconds);
+        out.putInt(effect.getClientSprite());
+        player.getSession().queueMessage(out);
+        return this;
+    }
+
+    public PacketSender sendSkillingTimerSeconds(int seconds, SkillingTimer effect) {
         PacketBuilder out = new PacketBuilder(54);
         out.putShort(seconds);
         out.putInt(effect.getClientSprite());

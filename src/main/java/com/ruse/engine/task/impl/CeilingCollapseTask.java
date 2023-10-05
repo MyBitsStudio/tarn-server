@@ -25,10 +25,7 @@ public class CeilingCollapseTask extends Task {
 
 	@Override
 	public void execute() {
-		if (player == null || !player.isRegistered()
-				|| player.getLocation() != Location.BARROWS && player.getLocation() != Location.KRAKEN
-				|| player.getLocation() != Location.ZULRAH
-				|| player.getLocation() == Location.BARROWS && player.getPosition().getY() < 8000) {
+		if (player == null || !player.isRegistered()) {
 			player.getPacketSender().sendCameraNeutrality();
 			stop();
 			return;

@@ -58,14 +58,6 @@ public class GamblingInterface {
 			player.getPacketSender().sendMessage("@red@[Warning]@bla@ The player you are trying to gamble has to donate $100 - ::donate");
 			return;
 		}
-		if (player.getLocation() == Location.DUNGEONEERING) {
-			player.getPacketSender().sendMessage("You are far too busy to gamble at the moment!");
-			return;
-		}
-		if (player2.getLocation() == Location.DUNGEONEERING) {
-			player.getPacketSender().sendMessage("You are far too busy to gamble at the moment!");
-			return;
-		}
 
 		if (player.getBankPinAttributes().hasBankPin() && !player.getBankPinAttributes().hasEnteredBankPin()) {
 			BankPin.init(player, false);

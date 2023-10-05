@@ -6,7 +6,6 @@ import com.ruse.world.packages.raid.Raid;
 
 public class FriezaOneRaid extends Raid {
 
-
     @Override
     public void start() {
 

@@ -28,20 +28,12 @@ public class PlayerOptionPacketListener implements PacketListener {
 			return;
 		if (player.isTeleporting())
 			return;
-		switch (packet.getOpcode()) {
-			case 153:
-				attack(player, packet);
-				break;
-			case 128:
-				option1(player, packet);
-				break;
-			case 37:
-				option2(player, packet);
-				break;
-			case 227:
-				option3(player, packet);
-				break;
-		}
+        switch (packet.getOpcode()) {
+            case 153 -> attack(player, packet);
+            case 128 -> option1(player, packet);
+            case 37 -> option2(player, packet);
+            case 227 -> option3(player, packet);
+        }
 	}
 
 	private static void attack(Player player, Packet packet) {
@@ -87,116 +79,11 @@ public class PlayerOptionPacketListener implements PacketListener {
 
 		}
 
-		if (player.getLocation() == Location.ZOMBIE_LOBBY) {
-			player.setEntityInteraction(attacked);
-			if (attacked.getIndex() != player.getIndex()) {
-				if (player.getZombieParty() != null && player.getZombieParty().getOwner().equals(player)) {
-					player.sendMessage("Sent invite to " + attacked.getUsername());
-					player.getZombieParty().invite(attacked);
-				} else {
-					player.sendMessage("You must be the leader of a party to do this.");
-				}
-			}
-			return;
-		}
-
-		if (player.getLocation() == Location.AURA_LOBBY) {
-			player.setEntityInteraction(attacked);
-			if (attacked.getIndex() != player.getIndex()) {
-				if (player.getAuraParty() != null && player.getAuraParty().getOwner().equals(player)) {
-					player.sendMessage("Sent invite to " + attacked.getUsername());
-					player.getAuraParty().invite(attacked);
-				} else {
-					player.sendMessage("You must be the leader of a party to do this.");
-				}
-			}
-			return;
-		}
-
-		if (player.getLocation() == Location.DUEL_ARENA && player.getDueling().duelingStatus == 0) {
-			player.getDueling().challengePlayer(attacked);
-			return;
-		}
-
-		if (UltimateIronmanHandler.hasItemsStored(player) && player.getLocation() != Location.DUNGEONEERING) {
-			player.getPacketSender().sendMessage("You must claim your stored items at Dungeoneering first.");
-			player.getMovementQueue().reset();
-			return;
-		}
-
-		if (player.getEquipment().contains(20171) || player.getEquipment().contains(19843) || // archie
-				player.getEquipment().contains(4178) || // maxiwhip
-				player.getEquipment().contains(7640) || // moonlight
-				player.getEquipment().contains(16835) || // moonlight
-				player.getEquipment().contains(22092) || // moonlight
-				player.getEquipment().contains(3739) || // moonlight
-				player.getEquipment().contains(18352) || // flash
-				player.getEquipment().contains(18350) || // flash
-				player.getEquipment().contains(18354) || // flash
-				player.getEquipment().contains(18456) || // flash
-				player.getEquipment().contains(18358) || // flash
-				player.getEquipment().contains(18798) || // gwd
-				player.getEquipment().contains(18790) || // gwd
-				player.getEquipment().contains(18787) || // gwd
-				player.getEquipment().contains(18796) || // gwd
-				player.getEquipment().contains(18792) || // gwd
-				player.getEquipment().contains(18799) || // gwd
-				player.getEquipment().contains(18835) || // gwd
-				player.getEquipment().contains(19818) || // qspear
-				player.getEquipment().contains(16043) || // prisoner rapier
-				player.getEquipment().contains(16337) || // devilbow
-				player.getEquipment().contains(22075) || // starlight
-				player.getEquipment().contains(22078) || // demonmaul
-				player.getEquipment().contains(15877) || // nuetron dagger
-
-				player.getEquipment().contains(20171)) {
-			player.getPacketSender().sendMessage("Custom weapons are disabled in PVP.");
-			player.getMovementQueue().reset();
-			return;
-		}
-		if (/*
-		 * player.getEquipment().contains(19843)||//archie
-		 * player.getEquipment().contains(4178)||//maxiwhip
-		 * player.getEquipment().contains(7640)||//moonlight
-		 * player.getEquipment().contains(22092)||//moonlight
-		 * player.getEquipment().contains(18352)||//flash
-		 * player.getEquipment().contains(18350)||//flash
-		 * player.getEquipment().contains(18354)||//flash
-		 * player.getEquipment().contains(18456)||//flash
-		 * player.getEquipment().contains(18358)||//flash
-		 * player.getEquipment().contains(18798)||//gwd
-		 * player.getEquipment().contains(18790)||//gwd
-		 * player.getEquipment().contains(18787)||//gwd
-		 * player.getEquipment().contains(18796)||//gwd
-		 * player.getEquipment().contains(18792)||//gwd
-		 * player.getEquipment().contains(18799)||//gwd
-		 * player.getEquipment().contains(18835)||//gwd
-		 * player.getEquipment().contains(19818)||//qspear
-		 * player.getEquipment().contains(16043)||//prisoner rapier
-		 * player.getEquipment().contains(16337)||//devilbow
-		 * player.getEquipment().contains(22075)||//starlight
-		 * player.getEquipment().contains(22078)||//demonmaul
-		 * player.getEquipment().contains(15877)||//nuetron dagger
-		 * player.getEquipment().contains(22075)||//
-		 * player.getEquipment().contains(22075)||//
-		 * player.getEquipment().contains(22075)||//
-		 * player.getEquipment().contains(22075)||//
-		 * player.getEquipment().contains(22075)||//
-		 * player.getEquipment().contains(22075)||//
-		 * player.getEquipment().contains(22075)||//
-		 * player.getEquipment().contains(20171) &&
-		 */player.getLocation() == Location.FREE_FOR_ALL_ARENA) {
-			player.getPacketSender().sendMessage("No safe pvp area :) Teleport to ::PVP");
-			player.getMovementQueue().reset();
-			return;
-		}
 
 		if (player.getCombatBuilder().getStrategy() == null) {
 			player.getCombatBuilder().determineStrategy();
 		}
 		if (CombatFactory.checkAttackDistance(player, attacked)) {
-			// confirmed this is called all the time, but shouldn't fuck with people
-			// fighting. http://i.imgur.com/qUFhl5L.png
 			player.getMovementQueue().reset();
 		}
 

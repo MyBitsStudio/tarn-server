@@ -38,6 +38,10 @@ public class MagicMax {
                     defence *= 1.4;
                 }
 
+                if (player.getEquipment().contains(22142)) {
+                    defence *= 1.4;
+                }
+
                 if (player.getEquipment().contains(23088)) {
                     defence *= 1.2;
                 }
@@ -59,6 +63,10 @@ public class MagicMax {
                 }
 
                 if (player.getEquipment().contains(23088)) {
+                    absorb *= 1.2;
+                }
+
+                if (player.getEquipment().contains(22142)) {
                     absorb *= 1.2;
                 }
 
@@ -115,6 +123,7 @@ public class MagicMax {
                     ServerPerks.getInstance().getActivePerk() == ServerPerks.Perk.DMG) {
                 maxHit *= 1.5;
             }
+
             if (player.getInventory().contains(4442)) {
                 maxHit *= 1.5;
             }
@@ -174,6 +183,12 @@ public class MagicMax {
             maxHit *= (long) multiplyDamage(player);
 
             if(player.getEquipment().contains(15589))
+                maxHit *= 1.5;
+
+            if(player.getEquipment().contains(21570))
+                maxHit *= 1.5;
+
+            if(player.getEquipment().contains(14876))
                 maxHit *= 1.5;
 
             if(player.getEquipment().contains(19888))

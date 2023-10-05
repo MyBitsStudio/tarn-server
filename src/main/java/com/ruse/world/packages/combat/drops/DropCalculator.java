@@ -27,6 +27,9 @@ public class DropCalculator {
         if (player.getEquipment().contains(12630)) {
             chance += 250;
         }
+        if (player.getEquipment().contains(22142)) {
+            chance += 250;
+        }
         if (player.getEquipment().contains(23330)) {
             chance += 250;
         }
@@ -78,6 +81,9 @@ public class DropCalculator {
             chance += player.getInventory().getAmount(21815);
         }
         if (player.getEquipment().contains(12630)) {
+            chance += 250;
+        }
+        if (player.getEquipment().contains(22142)) {
             chance += 250;
         }
         if (player.getEquipment().contains(23330)) {

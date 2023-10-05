@@ -59,41 +59,6 @@ public class Locations {
 
 	public enum Location {
 
-		AFK(new int[] { 3024, 3056 }, new int[] { 4050, 4082 }, false, true, true, false, false, true) {
-
-			@Override
-			public void enter(Player player) {
-				int accounts = 0;
-				for (Player p : World.getPlayers()) {
-					if (p == null)
-						continue;
-					if (!player.equals(p) && player.getHostAddress().equals(p.getHostAddress())) {
-						if (p.getLocation() == Location.AFK) {
-							accounts++;
-							continue;
-						}
-					}
-				}
-				if (accounts == 1) {
-					player.getPacketSender().sendMessage("You already have an account there!");
-					player.moveTo(GameSettings.HOME_CORDS);
-					player.getCombatBuilder().reset(true);
-					return;
-				}
-			}
-
-			@Override
-			public void login(Player player) {
-				player.getPacketSender().sendCameraNeutrality();
-				if (player.getLocation() == AFK) {
-					player.moveTo(GameSettings.HOME_CORDS);
-				}
-			}
-			@Override
-			public void logout(Player player) {
-				player.moveTo(GameSettings.HOME_CORDS);
-			}
-		},
 		KEEPERS_OF_LIGHT_LOBBY(new int[] { 2304, 2344 }, new int[] { 4992, 5050 }, false, false, true, false, false, true) {
 
 			@Override
@@ -148,14 +113,8 @@ public class Locations {
 				KeepersOfLight.leave(player, true);
 			}
 		},
-		IRON(new int[] { 3776, 3839}, new int[] { 2816, 2879},
-				true, true, true, false, false, true) {},
-		ZENYTE(new int[] { 2778, 2792}, new int[] { 4834, 4848},
-				true, true, true, false, false, true) {},
 		EXODEN(new int[] { 2562, 2600}, new int[] { 4485, 4526},
 				true, true, true, false, false, true) {},
-		PRIME(new int[] { 2437, 2492}, new int[] { 10113, 10171},
-				false, true, true, false, false, true) {},
 
 
 		LUCIFER(new int[] { 2301, 2367}, new int[] { 3970, 4024},
@@ -164,152 +123,55 @@ public class Locations {
 			@Override
 			public void logout(Player player) {
 
-				if (player.getRegionInstance() != null
-						&& player.getRegionInstance().equals(RegionInstance.RegionInstanceType.ZOMBIE)) {
-					player.getRegionInstance().destruct();
-					World.getNpcs().forEach(n -> n.removeInstancedNpcs(Location.ZOMBIE, player.getPosition().getZ(), player));
-
-				}
-				if (player.getRegionInstance() != null)
-					player.getRegionInstance().destruct();
-
-				if (player.getZombieParty() != null) {
-					player.getZombieParty().remove(player, true);
-				}
-
-				player.moveTo(new Position(3832, 2821, 0));
-
-				if (player.getZombieParty() != null)
-					player.getZombieParty().getPlayers()
-							.remove(player);
-
-				player.getMovementQueue().setLockMovement(false);
-				player.getPacketSender().sendCameraNeutrality();
-
 			}
 
 			@Override
 			public void leave(Player player) {
 
-				player.getPacketSender().sendCameraNeutrality();
-				if (player.getRegionInstance() != null
-						&& player.getRegionInstance().equals(RegionInstance.RegionInstanceType.ZOMBIE)) {
-					player.getRegionInstance().destruct();
-					World.getNpcs().forEach(n -> n.removeInstancedNpcs(Location.ZOMBIE, player.getPosition().getZ(), player));
-				}
-
-				if (player.getZombieParty() != null) {
-					if (player.getZombieParty().getOwner().equals(player)) {
-						World.getNpcs().forEach(n -> n.removeInstancedNpcs(Location.ZOMBIE, player.getIndex() * 4, player));
-					}
-				}
-
-				/*if (player.getZombieParty() != null)
-					player.getZombieParty().remove(player, true);
-
-				if (player.getZombieParty() != null)
-					player.getZombieParty().getPlayers()
-							.remove(player);*/
-
-				player.moveTo(new Position(2697, 2646, 0));
-
-				player.getMovementQueue().setLockMovement(false);
-
 			}
 
 			@Override
 			public void login(Player player) {
-				player.getPacketSender().sendCameraNeutrality();
-				if (player.getRegionInstance() != null
-						&& player.getRegionInstance().equals(RegionInstance.RegionInstanceType.ZOMBIE)) {
-					player.getRegionInstance().destruct();
-					World.getNpcs().forEach(n -> n.removeInstancedNpcs(Location.ZOMBIE, player.getPosition().getZ(), player));
-				}
-
-				if (player.getZombieParty() != null) {
-					if (player.getZombieParty().getOwner().equals(player)) {
-						World.getNpcs().forEach(n -> n.removeInstancedNpcs(Location.ZOMBIE, player.getIndex() * 4, player));
-					}
-				}
-
-				if (player.getZombieParty() != null)
-					player.getZombieParty().remove(player, true);
-
-				if (player.getZombieParty() != null)
-					player.getZombieParty().getPlayers()
-							.remove(player);
-
-				player.moveTo(new Position(2697, 2646, 0));
-
-				player.getMovementQueue().setLockMovement(false);
 			}
 
 			@Override
 			public boolean canTeleport(Player player) {
-				player.sendMessage("You cannot teleport while in a raid");
-				return false;
+				return true;
 			}
 
 			@Override
 			public void enter(Player player) {
-				player.setRegionInstance(new RegionInstance(player, RegionInstance.RegionInstanceType.ZOMBIE));
-				player.getPacketSender().sendInteractionOption("null", 2, true);
+//				player.setRegionInstance(new RegionInstance(player, RegionInstance.RegionInstanceType.ZOMBIE));
+//				player.getPacketSender().sendInteractionOption("null", 2, true);
 			}
 
 			@Override
 			public void onDeath(Player player) {
-				if (player.getZombieParty() != null) {
-					ZombieRaids.handleDeath(player.getZombieParty(),
-							player);
-				}
-				player.getPacketSender().sendCameraNeutrality();
-				player.setInsideRaids(false);
-				player.getMovementQueue().setLockMovement(false);
 			}
 
 			@Override
 			public void process(Player player) {
 				//if (player.getZombieParty() != null)
-				player.getZombieParty().refreshInterface();
+				//player.getZombieParty().refreshInterface();
 			}
 
 		},
 		ZOMBIE_LOBBY(new int[]{2691, 2706}, new int[]{2639, 2655}, true, false, true, false, true, true) {
 			@Override
 			public void leave(Player player) {
-				player.getPacketSender().sendCameraNeutrality();
-
-				if (player.getZombieParty() != null)
-					player.getZombieParty().remove(player, true);
-
-				if (player.getZombieParty() != null)
-					player.getZombieParty().getPlayers()
-							.remove(player);
-
-				player.getMovementQueue().setLockMovement(false);
 			}
 
 			@Override
 			public void enter(Player player) {
-				if (player.getPlayerInteractingOption() != PlayerInteractingOption.INVITE)
-					player.getPacketSender().sendInteractionOption("Invite", 2, false);
-
-				player.getPacketSender().sendTab(GameSettings.STAFF_TAB);
 			}
 
 			@Override
 			public void login(Player player) {
-				if (player.getPlayerInteractingOption() != PlayerInteractingOption.INVITE)
-					player.getPacketSender().sendInteractionOption("Invite", 2, false);
-
-				player.getPacketSender().sendTab(GameSettings.STAFF_TAB);
 
 			}
 
 			@Override
 			public void process(Player player) {
-				if (player.getZombieParty() != null)
-					player.getZombieParty().refreshInterface();
 
 			}
 		},
@@ -319,607 +181,193 @@ public class Locations {
 			@Override
 			public void logout(Player player) {
 
-				if (player.getRegionInstance() != null
-						&& player.getRegionInstance().equals(RegionInstance.RegionInstanceType.AURA)) {
-					player.getRegionInstance().destruct();
-					World.getNpcs().forEach(n -> n.removeInstancedNpcs(Location.AURA, player.getPosition().getZ(), player));
-
-				}
-				if (player.getRegionInstance() != null)
-					player.getRegionInstance().destruct();
-
-				if (player.getAuraParty() != null) {
-					player.getAuraParty().remove(player, true);
-				}
-
-				player.moveTo(new Position(2661, 3044, 0));
-
-				if (player.getAuraParty() != null)
-					player.getAuraParty().getPlayers()
-							.remove(player);
-
-				player.getMovementQueue().setLockMovement(false);
-				player.getPacketSender().sendCameraNeutrality();
-
 			}
 
 			@Override
 			public void leave(Player player) {
 
-				player.getPacketSender().sendCameraNeutrality();
-				if (player.getRegionInstance() != null
-						&& player.getRegionInstance().equals(RegionInstance.RegionInstanceType.AURA)) {
-					player.getRegionInstance().destruct();
-					World.getNpcs().forEach(n -> n.removeInstancedNpcs(Location.AURA, player.getPosition().getZ(), player));
-				}
-
-				if (player.getAuraParty() != null) {
-					if (player.getAuraParty().getOwner().equals(player)) {
-						World.getNpcs().forEach(n -> n.removeInstancedNpcs(Location.AURA, player.getIndex() * 4, player));
-					}
-				}
-
-				/*if (player.getZombieParty() != null)
-					player.getZombieParty().remove(player, true);
-
-				if (player.getZombieParty() != null)
-					player.getZombieParty().getPlayers()
-							.remove(player);*/
-
-				player.moveTo(new Position(2661, 3044, 0));
-
-				player.getMovementQueue().setLockMovement(false);
-
 			}
 
 			@Override
 			public void login(Player player) {
-				player.getPacketSender().sendCameraNeutrality();
-				if (player.getRegionInstance() != null
-						&& player.getRegionInstance().equals(RegionInstance.RegionInstanceType.AURA)) {
-					player.getRegionInstance().destruct();
-					World.getNpcs().forEach(n -> n.removeInstancedNpcs(Location.AURA, player.getPosition().getZ(), player));
-				}
-
-				if (player.getAuraParty() != null) {
-					if (player.getAuraParty().getOwner().equals(player)) {
-						World.getNpcs().forEach(n -> n.removeInstancedNpcs(Location.AURA, player.getIndex() * 4, player));
-					}
-				}
-
-				if (player.getAuraParty() != null)
-					player.getAuraParty().remove(player, true);
-
-				if (player.getAuraParty() != null)
-					player.getAuraParty().getPlayers()
-							.remove(player);
-
-				player.moveTo(new Position(2697, 2646, 0));
-
-				player.getMovementQueue().setLockMovement(false);
 			}
 
 			@Override
 			public boolean canTeleport(Player player) {
-				player.sendMessage("You cannot teleport while in a raid");
-				return false;
+				return true;
 			}
 
 			@Override
 			public void enter(Player player) {
-				player.setRegionInstance(new RegionInstance(player, RegionInstance.RegionInstanceType.AURA));
-				player.getPacketSender().sendInteractionOption("null", 2, true);
 			}
 
 			@Override
 			public void onDeath(Player player) {
-				if (player.getAuraParty() != null) {
-					AuraRaids.handleDeath(player.getAuraParty(),
-							player);
-				}
-				player.getPacketSender().sendCameraNeutrality();
-				player.setInsideRaids(false);
-				player.getMovementQueue().setLockMovement(false);
 			}
 
 			@Override
 			public void process(Player player) {
-				//if (player.getZombieParty() != null)
-				if (player.getAuraParty() != null)
-					player.getAuraParty().refreshInterface();
 			}
 
 		},
 		AURA_LOBBY(new int[]{2656, 2666}, new int[]{3039, 3049}, true, false, true, false, true, true) {
 			@Override
 			public void leave(Player player) {
-				player.getPacketSender().sendCameraNeutrality();
-
-				if (player.getAuraParty() != null)
-					player.getAuraParty().remove(player, true);
-
-				if (player.getAuraParty() != null)
-					player.getAuraParty().getPlayers()
-							.remove(player);
-
-				player.getMovementQueue().setLockMovement(false);
 			}
 
 			@Override
 			public void enter(Player player) {
-				if (player.getPlayerInteractingOption() != PlayerInteractingOption.INVITE)
-					player.getPacketSender().sendInteractionOption("Invite", 2, false);
-
-				player.getPacketSender().sendTab(GameSettings.STAFF_TAB);
 
 			}
 
 			@Override
 			public void login(Player player) {
-				if (player.getPlayerInteractingOption() != PlayerInteractingOption.INVITE)
-					player.getPacketSender().sendInteractionOption("Invite", 2, false);
-
-				player.getPacketSender().sendTab(GameSettings.STAFF_TAB);
 
 			}
 
 			@Override
 			public void process(Player player) {
-				if (player.getAuraParty() != null)
-					player.getAuraParty().refreshInterface();
 
 			}
 		},
 
-//
-//		TEST_RAID(new int[]{2712, 2740}, new int[]{2633, 2661}, true, false, true, false, true, true) {
-//			@Override
-//			public void logout(Player player) {
-//
-//				if (player.getRegionInstance() != null
-//						&& player.getRegionInstance().getType().equals(RegionInstanceType.RAIDS)) {
-//					player.getRegionInstance().destruct();
-//					World.getNpcs().forEach(n -> n.removeInstancedNpcs(Location.TEST_RAID, player.getPosition().getZ(), player));
-//
-//				}
-//
-//				if (player.getRaidParty() != null) {
-//					player.getRaidParty().remove(player);
-//				}
-//
-//				player.moveTo(new Position(3832, 2821, 0));
-//
-//				if (player.getRaidParty() != null)
-//					player.getRaidParty().getPlayers()
-//							.remove(player);
-//
-//				player.getMovementQueue().setLockMovement(false);
-//				player.getPacketSender().sendCameraNeutrality();
-//
-//			}
-//
-//			@Override
-//			public void leave(Player player) {
-//
-//				player.getPacketSender().sendCameraNeutrality();
-//				if (player.getRegionInstance() != null
-//						&& player.getRegionInstance().getType().equals(RegionInstance.RegionInstanceType.ZOMBIE)) {
-//					player.getRegionInstance().destruct();
-//					World.getNpcs().forEach(n -> n.removeInstancedNpcs(Location.TEST_RAID, player.getPosition().getZ(), player));
-//				}
-//
-//				if (player.getRaidParty() != null) {
-//					if (player.getRaidParty().getOwner().equals(player)) {
-//						World.getNpcs().forEach(n -> n.removeInstancedNpcs(Location.TEST_RAID, player.getIndex() * 4, player));
-//					}
-//				}
-//
-//				/*if (player.getZombieParty() != null)
-//					player.getZombieParty().remove(player, true);
-//
-//				if (player.getZombieParty() != null)
-//					player.getZombieParty().getPlayers()
-//							.remove(player);*/
-//
-//				player.moveTo(new Position(2697, 2646, 0));
-//
-//				player.getMovementQueue().setLockMovement(false);
-//
-//			}
-//
-//			@Override
-//			public void login(Player player) {
-//				player.getPacketSender().sendCameraNeutrality();
-//				if (player.getRegionInstance() != null
-//						&& player.getRegionInstance().getType().equals(RegionInstance.RegionInstanceType.ZOMBIE)) {
-//					player.getRegionInstance().destruct();
-//					World.getNpcs().forEach(n -> n.removeInstancedNpcs(Location.TEST_RAID, player.getPosition().getZ(), player));
-//				}
-//
-//				if (player.getRaidParty() != null) {
-//					if (player.getRaidParty().getOwner().equals(player)) {
-//						World.getNpcs().forEach(n -> n.removeInstancedNpcs(Location.TEST_RAID, player.getIndex() * 4, player));
-//					}
-//				}
-//
-//				if (player.getRaidParty() != null)
-//					player.getRaidParty().remove(player);
-//
-//				if (player.getRaidParty() != null)
-//					player.getRaidParty().getPlayers()
-//							.remove(player);
-//
-//				player.moveTo(new Position(2697, 2646, 0));
-//
-//				player.getMovementQueue().setLockMovement(false);
-//			}
-//
-//			@Override
-//			public boolean canTeleport(Player player) {
-//				player.sendMessage("You cannot teleport while in a raid");
-//				return false;
-//			}
-//
-//			@Override
-//			public void enter(Player player) {
-//				player.setRegionInstance(new RegionInstance(player, RegionInstance.RegionInstanceType.RAIDS));
-//				player.getPacketSender().sendInteractionOption("null", 2, true);
-//			}
-//
-//			@Override
-//			public void onDeath(Player player) {
-//				player.getPacketSender().sendCameraNeutrality();
-//				player.setInsideRaids(false);
-//				player.getMovementQueue().setLockMovement(false);
-//			}
-//
-//			@Override
-//			public void process(Player player) {
-//				//if (player.getZombieParty() != null)
-//				player.getRaidParty().refreshInterface();
-//			}
-//
-//		},
-		// Location(int[] x, int[] y, boolean multi, boolean summonAllowed, boolean
-		// followingAllowed, boolean cannonAllowed, boolean firemakingAllowed, boolean
-		// aidingAllowed) {
 		FREIZA(new int[] { 2433, 2494 }, new int[] { 2817, 2878 }, false, true, true, false, false, false) {
-		},
-		// xyyx
-		AOE(new int[] { 2881, 2949 }, new int[] { 2820, 2877 }, true, true, true, false, false, false) {
-		},
+		}, //minigame??? 2738, 5081
+		//2922, 2790
 		CRYSTALQUEEN(new int[] { 2858, 2878 }, new int[] { 9933, 9959 }, true, true, true, false, false, false) {
-		},
-
-		// xyyx
-		JOKER_LAND(new int[] { 1798, 1818 }, new int[] { 3201, 3221 }, true, true, true, false, false, false) {
-		},
-		// xyyx
+		},  /// ?????
 		TRANSFORMER(new int[] { 3274, 3311 }, new int[] { 3013, 3036 }, true, true, true, false, false, false) {
-		},
+		}, /// skilling/quest area
 		MAGEBANK_SAFE(new int[] { 2525, 2550 }, new int[] { 4707, 4727 }, true, true, true, false, false, false) {
 
 		},
-		ZULRAH(new int[] { 3395, 3453 }, new int[] { 2751, 2785 }, false, false, true, false, false, false) {
-
-			@Override
-			public void leave(Player player) {
-				if (player.getRegionInstance() != null
-						&& player.getRegionInstance().equals(RegionInstanceType.ZULRAH)) {
-					player.getRegionInstance().destruct();
-				}
-				player.getPacketSender().sendCameraNeutrality();
-				player.getMinigameAttributes().getZulrahAttributes().setRedFormDamage(0, false);
-			}
-
-			@Override
-			public void enter(Player player) {
-				Zulrah.enter(player);
-				player.getMinigameAttributes().getZulrahAttributes().setRedFormDamage(0, false);
-			}
-
-			@Override
-			public void onDeath(Player player) {
-				if (player.getRegionInstance() != null
-						&& player.getRegionInstance().equals(RegionInstanceType.ZULRAH)) {
-					player.getRegionInstance().destruct();
-				}
-				player.getMinigameAttributes().getZulrahAttributes().setRedFormDamage(0, false);
-			}
-
-			@Override
-			public boolean handleKilledNPC(Player killer, NPC npc) {
-				killer.getMinigameAttributes().getZulrahAttributes().setRedFormDamage(0, false);
-				return false;
-			}
-
-			@Override
-			public void logout(Player player) {
-				if (player.getRegionInstance() != null
-						&& player.getRegionInstance().equals(RegionInstanceType.ZULRAH)) {
-					player.getRegionInstance().destruct();
-				}
-				player.getMinigameAttributes().getZulrahAttributes().setRedFormDamage(0, false);
-				player.moveTo(GameSettings.DEFAULT_POSITION);
-			}
-
-			@Override
-			public void login(Player player) {
-				if (player.getRegionInstance() != null
-						&& player.getRegionInstance().equals(RegionInstanceType.ZULRAH)) {
-					player.getRegionInstance().destruct();
-				}
-				player.getMinigameAttributes().getZulrahAttributes().setRedFormDamage(0, false);
-				player.moveTo(GameSettings.DEFAULT_POSITION);
-			}
-
-		},
 
 		// xyyx
-		LORDS(new int[] { 3349, 3379 }, new int[] { 9625, 9654 }, true, true, true, false, false, false) {
-		},
-		DOOM(new int[] { 2302, 2369 }, new int[] { 5182, 5250 }, true, true, true, false, false, false) {
-		},
-		// xyyx
-		PENGUINZONE(new int[] { 3027, 3072 }, new int[] { 9533, 9558 }, true, true, true, false, false, false) {
-		},
-
-		// 3340 3351
-		// 3364 3333
-		GALVEKMULTI(new int[] { 3340, 3364 }, new int[] { 3333, 3351 }, true, true, true, false, false, false) {
-		},
-		BULWARK(new int[] { 2409, 2439 }, new int[] { 3512, 3532 }, true, true, true, false, false, false) {
-		},
-		INSTANCE1(new int[] { 2628, 2685 }, new int[] { 4750, 4790 }, true, true, true, false, false, false) {
-			@Override
-			public void logout(Player player) {
-
-			}
-
-			@Override
-			public void leave(Player player) {
-
-			}
-
-			@Override
-			public void login(Player player) {
-
-				player.moveTo(GameSettings.DEFAULT_POSITION.copy());
-			}
-
-			@Override
-			public void onDeath(Player player) {
-
-			}
-		},
-		INSTANCE2(new int[] { 2753, 2814 }, new int[] { 4736, 4800 }, true, true, true, false, false, false) {
-			@Override
-			public void logout(Player player) {
-
-			}
-
-			@Override
-			public void leave(Player player) {
-
-			}
-
-			@Override
-			public boolean canTeleport(Player player) {
-				player.sendMessage("@red@You cannot teleport during an instance.");
-				player.sendMessage("@red@Please use the portal in order to leave the instance.");
-				return false;
-			}
-
-			@Override
-			public void login(Player player) {
-
-			}
-
-			@Override
-			public void onDeath(Player player) {
-
-			}
-			},
-		ZONES1(new int[] { 2948, 3007 }, new int[] { 9473, 9510 }, false, true, true, false, false, false) {
-		},
-		ZONES2(new int[] { 2295, 2410 }, new int[] { 3876, 3906 }, true, true, true, false, false, false) {
-		},
-		ZONES3(new int[] { 1665, 1725 }, new int[] { 5590, 5611 }, true, true, true, false, false, false) {
-		},
-		ZONES4(new int[] { 1597, 1662 }, new int[] { 5587, 5621 }, true, true, true, false, false, false) {
-		},
-		ZONES5(new int[] { 3278, 3334 }, new int[] { 3293, 3325 }, true, true, true, false, false, false) {
-		},//2372, 5113, 2427, 5057
-		SUPREME(new int[] { 2372, 2427 }, new int[] { 5057, 5113 }, true, true, true, false, false, false) {
-		},
-		ZONES6(new int[] { 3278, 3319 }, new int[] { 3270, 3325 }, true, true, true, false, false, false) {
-		},
-		ZONES7(new int[] { 2975, 3018 }, new int[] { 3100, 3135 }, true, true, true, false, false, false) {
-		},
-		SLAYERMULTI(new int[] { 1804, 2388 }, new int[] { 5188, 5274 }, true, true, true, false, false, false) {
-		},
-		ETERNAL(new int[] { 2063, 2098 }, new int[] { 3221, 3240 }, true, true, true, true, false, true) {
-		},
-		// Location(int[] x, int[] y, boolean multi, boolean summonAllowed, boolean
-		// followingAllowed, boolean cannonAllowed, boolean firemakingAllowed, boolean
-		// aidingAllowed) {
+//		ZONES3(new int[] { 1665, 1725 }, new int[] { 5590, 5611 }, true, true, true, false, false, false) {
+//		}, // delete punchbags // 1703, 5600 //2372, 5113 -- guantlet (jad)
 
 		CUSTOMINI(new int[] { 2567, 2597 }, new int[] { 2564, 2600 }, false, true, true, true, false, false) {
 		},
 		// xyyx
 		GENERAL(new int[] { 2319, 2351 }, new int[] { 9806, 9828 }, true, true, true, true, false, false) {
-		},
-		EVENTBOSS(new int[] { 2857, 2879 }, new int[] { 2858, 2879 }, true, true, true, true, false, false) {
-		},
+		}, // minigame
 		TRAININZONEMULTI(new int[] { 2504, 2551 }, new int[] { 2502, 2562 }, false, true, true, false, false, false) {
 		},
-		SUPREMEE(new int[] { 2504, 2551 }, new int[] { 2502, 2562 }, false, true, true, false, false, false) {
-		},
-		TRAINING_MELEE(new int[] { 2389, 2407 }, new int[] { 2837, 2853 }, true, true, true, false, false, false) {
-			@Override
-			public void enter(Player player) {
-				if (player.getPointsHandler().getNPCKILLCount() > 5000 && KillsTracker.getTotalKillsForNpc(1023, player) > 500) {
-					player.moveTo(GameSettings.HOME_CORDS);
-					player.sendMessage("This place is for new players with less than 5k npc kills.");
-					return;
-				}
-			}
-		},
-		TRAINING_RANGED(new int[] { 2393, 2411 }, new int[] { 2907, 2923 }, true, true, true, false, false, false) {
-			@Override
-			public void enter(Player player) {
-				if (player.getPointsHandler().getNPCKILLCount() > 5000&& KillsTracker.getTotalKillsForNpc(1233, player) > 500) {
-					player.moveTo(GameSettings.HOME_CORDS);
-					player.sendMessage("This place is for new players with less than 5k npc kills.");
-					return;
-				}
-			}
-		},
-		TRAINING_MAGIC(new int[] { 2454, 2472 }, new int[] { 2906, 2922 }, true, true, true, false, false, false) {
-			@Override
-			public void enter(Player player) {
-				if (player.getPointsHandler().getNPCKILLCount()> 5000&& KillsTracker.getTotalKillsForNpc(1234, player) > 500) {
-					player.moveTo(GameSettings.HOME_CORDS);
-					player.sendMessage("This place is for new players with less than 5k npc kills.");
-					return;
-				}
-			}
-		},
-		TRAINING_ROCK_CRAB(new int[] { 2688, 2747 }, new int[] { 4719, 4798 }, true, true, true, false, false, false) {
-			@Override
-			public void enter(Player player) {
-				if (player.getPointsHandler().getNPCKILLCount() > 5000&& KillsTracker.getTotalKillsForNpc(1265, player) > 500) {
-					player.moveTo(GameSettings.HOME_CORDS);
-					player.sendMessage("This place is for new players with less than 5k npc kills.");
-					return;
-				}
-			}
-		},
-		XMASEVENT2016(new int[] { 2747, 2821 }, new int[] { 3707, 3877 }, false, true, true, false, true, true) {
 
-			@Override
-			public void process(Player player) {
-				if (player.getWalkableInterfaceId() != 11877) {
-					player.getPacketSender().sendWalkableInterface(11877, true);
-				}
-			}
-
-		},
-
-		CUSTOM_RAIDS_LOBBY(new int[] { 2715, 2735 }, new int[] { 2730, 2745 }, true, false, true, false, true, false) {
-			@Override
-			public void login(Player player) {
-
-
-			}
-
-			@Override
-			public void logout(Player player) {
-				Dungeoneering.leave(player, false, true);
-			}
-
-			@Override
-			public void leave(Player player) {
-				Dungeoneering.raidCount = 0;
-				player.getPacketSender().sendWalkableInterface(29050, false);
-				player.getPacketSender().sendInteractionOption("null", 7, false);
-			}
-
-			@Override
-			public void enter(Player player) {
-				player.getPacketSender().sendWalkableInterface(29050, true);
-				player.getPacketSender().sendInteractionOption("Invite To Raid Party", 7, false);
-			}
-
-			@Override
-			public void onDeath(Player player) {
-				Dungeoneering.leave(player, false, true);
-			}
-
-			@Override
-			public boolean handleKilledNPC(Player killer, NPC npc) {
-				return false;
-			}
-
-			@Override
-			public void process(Player player) {
-				// // System.out.println("In here");
-			}
-		},
-
-		CUSTOM_RAIDS(new int[] { 2702, 2730 }, new int[] { 2702, 2730 }, true, false, true, false, true, false) {
-			@Override
-			public void login(Player player) {
-
-			}
-
-			@Override
-			public void logout(Player player) {
-				Dungeoneering.leave(player, false, true);
-			}
-
-			@Override
-			public void leave(Player player) {
-
-				// player.getMinigameAttributes().getDungeoneeringAttributes().getParty().getPlayers().size());
-				// player.getPacketSender().sendWalkableInterface(-1);
-				// Dungeoneering.leave(player, false, true);
-				// Dungeoneering.leave(player, true, true);
-			}
-
-			@Override
-			public void enter(Player player) {
-			}
-
-			@Override
-			public void onDeath(Player player) {
-				Dungeoneering.handlePlayerDeath(player);
-			}
-
-			@Override
-			public boolean handleKilledNPC(Player killer, NPC npc) {
-				return false;
-			}
-
-			@Override
-			public void process(Player player) {
-				if (player.getMinigameAttributes().getDungeoneeringAttributes().getParty() == null) {
-					TeleportHandler.teleportPlayer(player, new Position(2722, 2737),
-							player.getSpellbook().getTeleportType());
-				}
-			}
-		},
+//		CUSTOM_RAIDS_LOBBY(new int[] { 2715, 2735 }, new int[] { 2730, 2745 }, true, false, true, false, true, false) {
+//			@Override
+//			public void login(Player player) {
+//
+//
+//			}
+//
+//			@Override
+//			public void logout(Player player) {
+//				Dungeoneering.leave(player, false, true);
+//			}
+//
+//			@Override
+//			public void leave(Player player) {
+//				Dungeoneering.raidCount = 0;
+//				player.getPacketSender().sendWalkableInterface(29050, false);
+//				player.getPacketSender().sendInteractionOption("null", 7, false);
+//			}
+//
+//			@Override
+//			public void enter(Player player) {
+//				player.getPacketSender().sendWalkableInterface(29050, true);
+//				player.getPacketSender().sendInteractionOption("Invite To Raid Party", 7, false);
+//			}
+//
+//			@Override
+//			public void onDeath(Player player) {
+//				Dungeoneering.leave(player, false, true);
+//			}
+//
+//			@Override
+//			public boolean handleKilledNPC(Player killer, NPC npc) {
+//				return false;
+//			}
+//
+//			@Override
+//			public void process(Player player) {
+//				// // System.out.println("In here");
+//			}
+//		},
+//
+//		CUSTOM_RAIDS(new int[] { 2702, 2730 }, new int[] { 2702, 2730 }, true, false, true, false, true, false) {
+//			@Override
+//			public void login(Player player) {
+//
+//			}
+//
+//			@Override
+//			public void logout(Player player) {
+//				Dungeoneering.leave(player, false, true);
+//			}
+//
+//			@Override
+//			public void leave(Player player) {
+//
+//				// player.getMinigameAttributes().getDungeoneeringAttributes().getParty().getPlayers().size());
+//				// player.getPacketSender().sendWalkableInterface(-1);
+//				// Dungeoneering.leave(player, false, true);
+//				// Dungeoneering.leave(player, true, true);
+//			}
+//
+//			@Override
+//			public void enter(Player player) {
+//			}
+//
+//			@Override
+//			public void onDeath(Player player) {
+//				Dungeoneering.handlePlayerDeath(player);
+//			}
+//
+//			@Override
+//			public boolean handleKilledNPC(Player killer, NPC npc) {
+//				return false;
+//			}
+//
+//			@Override
+//			public void process(Player player) {
+//				if (player.getMinigameAttributes().getDungeoneeringAttributes().getParty() == null) {
+//					TeleportHandler.teleportPlayer(player, new Position(2722, 2737),
+//							player.getSpellbook().getTeleportType());
+//				}
+//			}
+//		},
 
 
 
-		DUNGEONEERING(new int[] { 2240, 2303 }, new int[] { 4992, 5053 }, true, false, true,
-				false, true, false) {
-			@Override
-			public void login(Player player) {
-				player.getPacketSender().sendDungeoneeringTabIcon(true).sendTabInterface(GameSettings.QUESTS_TAB, 27224).sendTab(GameSettings.QUESTS_TAB);
-
-				DungeoneeringParty.clearInterface(player);
-				if (player.getPlayerInteractingOption() != PlayerInteractingOption.INVITE) {
-					player.getPacketSender().sendInteractionOption("Invite", 2, true);
-				}
-			}
-
-			@Override
-			public void leave(Player player) {
-				com.ruse.world.content.minigames.impl.dungeoneering.Dungeoneering.Companion.leaveLobby(player);
-			}
-
-			@Override
-			public void enter(Player player) {
-				if (player.getPlayerInteractingOption() != PlayerInteractingOption.INVITE) {
-					player.getPacketSender().sendInteractionOption("Invite", 2, true);
-				}
-
-				if(player.getMinigameAttributes().getDungeoneeringAttributes().getParty() == null) {
-					player.getPacketSender().sendDungeoneeringTabIcon(true).sendTabInterface(GameSettings.QUESTS_TAB, 27224).sendTab(GameSettings.QUESTS_TAB);
-					DungeoneeringParty.clearInterface(player);
-				}
-			}
+//		DUNGEONEERING(new int[] { 2240, 2303 }, new int[] { 4992, 5053 }, true, false, true,
+//				false, true, false) {
+//			@Override
+//			public void login(Player player) {
+//				player.getPacketSender().sendDungeoneeringTabIcon(true).sendTabInterface(GameSettings.QUESTS_TAB, 27224).sendTab(GameSettings.QUESTS_TAB);
+//
+//				DungeoneeringParty.clearInterface(player);
+//				if (player.getPlayerInteractingOption() != PlayerInteractingOption.INVITE) {
+//					player.getPacketSender().sendInteractionOption("Invite", 2, true);
+//				}
+//			}
+//
+//			@Override
+//			public void leave(Player player) {
+//				com.ruse.world.content.minigames.impl.dungeoneering.Dungeoneering.Companion.leaveLobby(player);
+//			}
+//
+//			@Override
+//			public void enter(Player player) {
+//				if (player.getPlayerInteractingOption() != PlayerInteractingOption.INVITE) {
+//					player.getPacketSender().sendInteractionOption("Invite", 2, true);
+//				}
+//
+//				if(player.getMinigameAttributes().getDungeoneeringAttributes().getParty() == null) {
+//					player.getPacketSender().sendDungeoneeringTabIcon(true).sendTabInterface(GameSettings.QUESTS_TAB, 27224).sendTab(GameSettings.QUESTS_TAB);
+//					DungeoneeringParty.clearInterface(player);
+//				}
+//			}
 
 
 
@@ -939,278 +387,23 @@ public class Locations {
 				player.getPacketSender().sendCameraNeutrality();
 				player.setRegionInstance(new RegionInstance(player, RegionInstance.RegionInstanceType.DUNGEONEERING));
 			}*/
-		},
+	//	},
 
 
-		DUNGEONEERING_ROOM(new int[] { 2240, 2303 }, new int[] { 4992, 5027 }, true, false, true,
-				false, true, false) {
-		},
+//		DUNGEONEERING_ROOM(new int[] { 2240, 2303 }, new int[] { 4992, 5027 }, true, false, true,
+//				false, true, false) {
+//		},
 		// Location(int[] x, int[] y, boolean multi, boolean summonAllowed, boolean
 		// followingAllowed, boolean cannonAllowed, boolean firemakingAllowed, boolean
 		// aidingAllowed) {
-		ZULRAH_WAITING(new int[] { 3401, 3414 }, new int[] { 2789, 2801 }, false, true, true, false, true, true) {
-			@Override
-			public void enter(Player player) {
-				if (player.getSkillManager().getCurrentLevel(Skill.CONSTITUTION) < player.getSkillManager()
-						.getMaxLevel(Skill.CONSTITUTION)) {
-					player.getSkillManager().setCurrentLevel(Skill.CONSTITUTION,
-							player.getSkillManager().getMaxLevel(Skill.CONSTITUTION));
-					player.getPacketSender().sendMessage("The astounding power of the old pillars heals you.");
-				}
-				if (player.getSkillManager().getCurrentLevel(Skill.PRAYER) < player.getSkillManager()
-						.getMaxLevel(Skill.PRAYER)) {
-					player.getSkillManager().setCurrentLevel(Skill.PRAYER,
-							player.getSkillManager().getMaxLevel(Skill.PRAYER));
-					player.getPacketSender().sendMessage("The mystique aura of the pillars restores your prayer.");
-				}
-			}
 
-			@Override
-			public void leave(Player player) {
-				if (player.getSkillManager().getCurrentLevel(Skill.CONSTITUTION) < player.getSkillManager()
-						.getMaxLevel(Skill.CONSTITUTION)) {
-					player.getSkillManager().setCurrentLevel(Skill.CONSTITUTION,
-							player.getSkillManager().getMaxLevel(Skill.CONSTITUTION));
-					player.getPacketSender().sendMessage("The astounding power of the old pillars heals you.");
-				}
-				if (player.getSkillManager().getCurrentLevel(Skill.PRAYER) < player.getSkillManager()
-						.getMaxLevel(Skill.PRAYER)) {
-					player.getSkillManager().setCurrentLevel(Skill.PRAYER,
-							player.getSkillManager().getMaxLevel(Skill.PRAYER));
-					player.getPacketSender().sendMessage("The mystique aura of the pillars restores your prayer.");
-				}
-			}
-		},
-		JAIL(new int[] { 2505, 2535 }, new int[] { 9310, 9330 }, false, false, false, false, false, false) {
-			@Override
-			public boolean canTeleport(Player player) {
-				if (player.getRank().isStaff()) {
-					player.getPacketSender().sendMessage("Staff can leave at any time.");
-					return true;
-				}
-				return !Jail.isJailed(player.getUsername());
-			}
-		},
-		MEMBER_ZONE(new int[] { 3415, 3435 }, new int[] { 2900, 2926 }, false, true, true, false, false, true) {
-		},
 		HOME_BANK(new int[] { 2698, 2724 }, new int[] { 2968, 2994 }, false, true, true, false, true, true) {
-			@Override
-			public void enter(Player player) {
-				if (player.getSkillManager().getCurrentLevel(Skill.CONSTITUTION) < player.getSkillManager()
-						.getMaxLevel(Skill.CONSTITUTION)) {
-					player.getSkillManager().setCurrentLevel(Skill.CONSTITUTION,
-							player.getSkillManager().getMaxLevel(Skill.CONSTITUTION));
-					player.getPacketSender()
-							.sendMessage("As you enter the home bank, your health regenerates to full.");
-				}
-				if (player.getSkillManager().getCurrentLevel(Skill.PRAYER) < player.getSkillManager()
-						.getMaxLevel(Skill.PRAYER)) {
-					player.getSkillManager().setCurrentLevel(Skill.PRAYER,
-							player.getSkillManager().getMaxLevel(Skill.PRAYER));
-					player.getPacketSender().sendMessage("As you enter the home bank, the gods restore your prayer.");
-				}
-			}
-
-			@Override
-			public void leave(Player player) {
-				if (player.getSkillManager().getCurrentLevel(Skill.CONSTITUTION) < player.getSkillManager()
-						.getMaxLevel(Skill.CONSTITUTION)) {
-					player.getSkillManager().setCurrentLevel(Skill.CONSTITUTION,
-							player.getSkillManager().getMaxLevel(Skill.CONSTITUTION));
-					player.getPacketSender()
-							.sendMessage("As you leave the home bank, your health regenerates to full.");
-				}
-				if (player.getSkillManager().getCurrentLevel(Skill.PRAYER) < player.getSkillManager()
-						.getMaxLevel(Skill.PRAYER)) {
-					player.getSkillManager().setCurrentLevel(Skill.PRAYER,
-							player.getSkillManager().getMaxLevel(Skill.PRAYER));
-					player.getPacketSender().sendMessage("As you leave the home bank, the gods restore your prayer.");
-				}
-			}
-		},
-		NEW_MEMBER_ZONE(new int[] { 2792, 2877 }, new int[] { 3319, 3396 }, false, true, true, false, true, true) {
-			@Override
-			public void process(Player player) {
-				if (!player.getDonator().isClericPlus() && !player.newPlayer()) {
-					// player.getPacketSender().sendMessage("This area is for Members only.");
-					// player.moveTo(GameSettings.HOME_CORDS);
-				}
-			}
-
-			@Override
-			public void enter(Player player) {
-				if (player.getSkillManager().getCurrentLevel(Skill.CONSTITUTION) < player.getSkillManager()
-						.getMaxLevel(Skill.CONSTITUTION)) {
-					player.getSkillManager().setCurrentLevel(Skill.CONSTITUTION,
-							player.getSkillManager().getMaxLevel(Skill.CONSTITUTION));
-					player.getPacketSender()
-							.sendMessage("As you enter the Member Zone, your health regenerates to full.");
-				}
-				if (player.getSkillManager().getCurrentLevel(Skill.PRAYER) < player.getSkillManager()
-						.getMaxLevel(Skill.PRAYER)) {
-					player.getSkillManager().setCurrentLevel(Skill.PRAYER,
-							player.getSkillManager().getMaxLevel(Skill.PRAYER));
-					player.getPacketSender().sendMessage("As you enter the Member Zone, the gods restore your prayer.");
-				}
-			}
-		},
-//		TRIO_ZONE(new int[] { 3008, 3039 }, new int[] { 5216, 5247 }, false, false, false, false, false, false) {
-//		},
-		// xyyx
-		GAMBLE(new int[] { 2844, 2867 }, new int[] { 2696, 2720 }, false, true, true, false, true, true) {
-		},
-		VARROCK(new int[] { 3167, 3272 }, new int[] { 3263, 3504 }, false, true, true, true, true, true) {
-		},
-		/*
-		 * BANK(new int[]{3090, 3099, 3089, 3090, 3248, 3258, 3179, 3191, 2944, 2948,
-		 * 2942, 2948, 2944, 2950, 3008, 3019, 3017, 3022, 3203, 3213, 3212, 3215, 3215,
-		 * 3220, 3220, 3227, 3227, 3230, 3226, 3228, 3227, 3229}, new int[]{3487, 3500,
-		 * 3492, 3498, 3413, 3428, 3432, 3448, 3365, 3374, 3367, 3374, 3365, 3370, 3352,
-		 * 3359, 3352, 3357, 3200, 3237, 3200, 3235, 3202, 3235, 3202, 3229, 3208, 3226,
-		 * 3230, 3211, 3208, 3226}, false, true, true, false, false, true) { },
-		 */
-		// xyyx
-		SKELETAL(new int[] { 3323, 3357 }, new int[] { 3162, 3188 }, true, true, true, false, false, false) {
-		},
-
-
-		VOID_OF_DARKNESS(new int[] { 1925, 1984 }, new int[] { 4999, 5055 }, true, true, true, false, true, true) {
-			@Override
-			public void enter(Player player) {
-				/*VoidOfDarkness.resetBarrows(player);
-				if (player.getRegionInstance() != null && player.getRegionInstance().equals(RegionInstance.RegionInstanceType.VOID_OF_DARKNESS)) {
-					player.getRegionInstance().destruct();
-					World.getNpcs().forEach(n -> n.removeInstancedNpcs(Location.VOID_OF_DARKNESS, player.getIndex() * 4));
-				}
-				player.vod.start();*/
-
-				player.getPacketSender().sendWalkableInterface(126500, true);
-			}
-
-			@Override
-			public boolean canTeleport(Player player) {
-				return true;
-			}
-
-			@Override
-			public void leave(Player player) {
-
-				/*if (player.getRegionInstance() != null && player.getRegionInstance().equals(RegionInstance.RegionInstanceType.VOID_OF_DARKNESS)) {
-					player.getRegionInstance().destruct();
-					World.getNpcs().forEach(n -> n.removeInstancedNpcs(Location.VOID_OF_DARKNESS, player.getIndex() * 4));
-				}*/
-				VoidOfDarkness.resetBarrows(player);
-				player.getPacketSender().sendCameraNeutrality();
-				
-				player.getPacketSender().sendWalkableInterface(126500, false);
-				NPC tiedNpc = player.findSpawnedFor(7758);
-				if(tiedNpc != null) {
-					World.deregister(tiedNpc);
-				}
-				VoidOfDarkness.updateInterface(player);
-			}
-
-		},
-
-		HALLS_OF_VALOR(new int[] { 2175, 2239}, new int[] { 4998, 5053 }, true, true, true, false, false, false) {
-			@Override
-			public void enter(Player player) {
-				HallsOfValor.resetBarrows(player);
-				if (player.getRegionInstance() != null && player.getRegionInstance().equals(RegionInstance.RegionInstanceType.HALLS_OF_VALOR)) {
-					player.getRegionInstance().destruct();
-					World.getNpcs().forEach(n -> n.removeInstancedNpcs(Location.HALLS_OF_VALOR, player.getIndex() * 4));
-				}
-				player.hov.start();
-			}
-
-			@Override
-			public void logout(Player player) {
-				leave(player);
-			}
-
-			@Override
-			public void leave(Player player) {
-				if (player.getRegionInstance() != null && player.getRegionInstance().equals(RegionInstance.RegionInstanceType.HALLS_OF_VALOR)) {
-					player.getRegionInstance().destruct();
-					World.getNpcs().forEach(n -> n.removeInstancedNpcs(Location.HALLS_OF_VALOR, player.getIndex() * 4));
-				}
-				HallsOfValor.resetBarrows(player);
-				player.getPacketSender().sendCameraNeutrality();
-			}
-
-			@Override
-			public void onDeath(Player player) {
-				leave(player);
-			}
-
-		},
-		TREASURE_HUNTER(new int[] { 1986, 2045 }, new int[] { 4994, 5052 }, true, true, true, false, false, false) {
-		},
-		DIAMOND_ZONE(new int[] { 2571, 2619 }, new int[] { 2695, 2746 }, false, true, true, false, true, false) {
-
-		},
-		RUBY_ZONE(new int[] { 2503, 2557 }, new int[] { 2684, 2750 }, false, true, true, false, true, false) {
-
-		},
-		SAPPHIRE_ZONE(new int[] { 2496, 2556 }, new int[] { 2753, 2813 }, false, true, true, false, true, false) {
-
-		},
-		EMERALD_ZONE(new int[] { 2561, 2622 }, new int[] { 2752, 2810 }, false, true, true, false, true, false) {
-
-		},
-		ONYX_ZONE(new int[] { 2493, 2564 }, new int[] { 2625, 2680 }, false, true, true, false, true, false) {
-
-		},
-		ZENYTE_ZONE(new int[] { 2569, 2620 }, new int[] { 2631, 2687 }, false, true, true, false, true, false) {
-
 		},
 		VAULT_OF_WAR(new int[] { 1729, 1791 }, new int[] { 5313, 5375 }, false, true, true, false, false, false) {
-			@Override
-			public void logout(Player player) {
-				if (player.getMinigameAttributes().getWarriorsGuildAttributes().enteredTokenRoom()) {
-					player.moveTo(VaultOfWar.TELEPORT_AREA);
-				}
-			}
 
-			@Override
-			public void leave(Player player) {
-				player.getMinigameAttributes().getWarriorsGuildAttributes().setEnteredTokenRoom(false);
-			}
 		},
-		EZONE(new int[] { 2763, 2812 }, new int[] { 3072, 3123 }, true, true, true, false, false, false) {
-		},
-		SZONE(new int[] { 1630, 1691 }, new int[] { 5670, 5728 }, true, true, true, false, false, false) {
-		},
-		SPONSORZONE(new int[] { 2944, 3007 }, new int[] { 2816, 2879 }, true, true, true, false, false, false) {
-		},
-		HULK2(new int[] { 3295, 3316 }, new int[] { 4970, 4990 }, true, true, true, false, false, false) {
-		},
-		EDGEVILLE(new int[] { 3073, 3134 }, new int[] { 3457, 3518 }, false, true, true, false, false, true) {
-		},
-		LUMBRIDGE(new int[] { 3175, 3238 }, new int[] { 3179, 3302 }, false, true, true, true, true, true) {
-		},
-		KING_BLACK_DRAGON(new int[] { 2251, 2292 }, new int[] { 4673, 4717 }, true, true, true, true, true, true) {
-		},
-		SCORPIA(new int[] { 2845, 2864 }, new int[] { 9621, 9649 }, true, true, true, true, true, true) {
-			@Override
-			public boolean handleKilledNPC(Player killer, NPC npc) {
-				if (npc.getId() == 109) {
-					Scorpia.killedBaby();
-					return true;
-				}
-				return false;
-			}
-		},
-		KRAKEN(new int[] { 3672, 3690 }, new int[] { 9875, 9899 }, true, true, true, true, true, true) {
-			@Override
-			public void leave(Player player) {
-				if (player.getRegionInstance() != null
-						&& player.getRegionInstance().equals(RegionInstanceType.KRAKEN)) {
-					player.getRegionInstance().destruct();
-				}
-				player.getPacketSender().sendCameraNeutrality();
-			}
-		},
+
+		///// HERE //////
 		SLASH_BASH(new int[] { 2504, 2561 }, new int[] { 9401, 9473 }, true, true, true, true, true, true) {
 		},
 		BANDOS_AVATAR(new int[] { 2340, 2396 }, new int[] { 4929, 4985 }, true, true, true, true, true, true) {
@@ -1984,14 +1177,10 @@ for (Item item : player.getInventory().getItems()) {
 		WARRIORS_GUILD(new int[] { 2833, 2879 }, new int[] { 3531, 3559 }, false, true, true, false, false, true) {
 			@Override
 			public void logout(Player player) {
-				if (player.getMinigameAttributes().getWarriorsGuildAttributes().enteredTokenRoom()) {
-					player.moveTo(new Position(2844, 3540, 2));
-				}
 			}
 
 			@Override
 			public void leave(Player player) {
-				player.getMinigameAttributes().getWarriorsGuildAttributes().setEnteredTokenRoom(false);
 			}
 		},
 		PURO_PURO(new int[] { 2556, 2630 }, new int[] { 4281, 4354 }, false, true, true, false, false, true) {
@@ -2000,13 +1189,13 @@ for (Item item : player.getInventory().getItems()) {
 		},
 		RUNESPAN(new int[] { 2122, 2159 }, new int[] { 5517, 5556 }, false, false, true, true, true, false) {
 		},
-		DICE_ZONE_MULTI(new int[] { 2844, 2867 }, new int[] { 2696, 2720 }, true, true, true, false, false, false) {
-		},
 		//// xyyx
 		EARTHQUAKE(new int[] { 2883, 2942 }, new int[] { 5441, 5498 }, true, true, true, false, false, false) {
 		},
 		EXODENLOC(new int[] { 2816, 2879 }, new int[] { 2816, 2879 }, true, true, true, false, false, false) {
 		},
+
+
 		DEFAULT(null, null, false, true, true, true, true, true) {
 			@Override
 			public void enter(Player player) {
@@ -2017,9 +1206,25 @@ for (Item item : player.getInventory().getItems()) {
 		ASTA_LOBBY(new int[] { 3059, 3071 }, new int[] { 2752, 2764 }, true, true, true, false, false, false) {
 		},
 
+		YOUTUBE(new int[] { 2844, 2867 }, new int[] { 2696, 2720 }, true, true, true, false, false, false) {
+		},
 		HOME_AREA(new int[] { 2175, 2237 }, new int[] { 3719, 3777 }, false, true, true, false, false, true) {
 			@Override
 			public void enter(Player player) {
+				if (player.getSkillManager().getCurrentLevel(Skill.CONSTITUTION) < player.getSkillManager()
+						.getMaxLevel(Skill.CONSTITUTION)) {
+					player.getSkillManager().setCurrentLevel(Skill.CONSTITUTION,
+							player.getSkillManager().getMaxLevel(Skill.CONSTITUTION));
+					player.getPacketSender()
+							.sendMessage("As you enter home, your health regenerates to full.");
+				}
+				if (player.getSkillManager().getCurrentLevel(Skill.PRAYER) < player.getSkillManager()
+						.getMaxLevel(Skill.PRAYER)) {
+					player.getSkillManager().setCurrentLevel(Skill.PRAYER,
+							player.getSkillManager().getMaxLevel(Skill.PRAYER));
+					player.getPacketSender().sendMessage("As you enter home, the gods restore your prayer.");
+				}
+
 				player.getPacketSender().sendWalkableInterface(63000, false);
 				player.getPacketSender().sendWalkableInterface(60000, false);
 			}
@@ -2042,12 +1247,6 @@ for (Item item : player.getInventory().getItems()) {
 				player.getPacketSender().sendWalkableInterface(60_000, false);
 			}
 		},
-//		SINGLE_INSTANCE(new int[] { 3011, 3039 }, new int[] { 5217, 5248 }, true, false, true, false, false, false) {
-//			@Override
-//			public void leave(Player player) {
-//				player.getPacketSender().sendWalkableInterface(60_000, false);
-//			}
-//		},
 
 		SINGLE_INSTANCE(new int[] { 1999, 2028}, new int[] { 4495, 4530},
 				true, true, true, false, false, true) {
@@ -2095,6 +1294,74 @@ for (Item item : player.getInventory().getItems()) {
 			@Override
 			public void leave(Player player) {
 				player.getPacketSender().sendWalkableInterface(60_000, false);
+			}
+		},
+
+		RAID_LOBBY(new int[] { 1670, 1721 }, new int[] { 5591, 5605 }, false, false, true, false, false, false) {
+			@Override
+			public void enter(Player player) {
+				player.getPacketSender().sendDungeoneeringTabIcon(true).sendTabInterface(GameSettings.STAFF_TAB, 27224).sendTab(GameSettings.STAFF_TAB);
+
+				if (player.getPlayerInteractingOption() != PlayerInteractingOption.INVITE) {
+					player.getPacketSender().sendInteractionOption("Invite", 2, true);
+				}
+			}
+
+			@Override
+			public void process(Player player) {
+				//player.getPacketSender().sendDungeoneeringTabIcon(true).sendTabInterface(GameSettings.STAFF_TAB, 27224).sendTab(GameSettings.STAFF_TAB);
+
+				if(player.getRaidParty() != null){
+					player.getRaidParty().refreshInterface();
+				}
+			}
+
+			@Override
+			public void onDeath(Player player) {
+			}
+
+			@Override
+			public void leave(Player player) {
+			}
+		},
+
+		LORDS(new int[] { 3342, 3388 }, new int[] { 9615, 9663 }, false, false, false, false, false, false) {
+
+			@Override
+			public void enter(Player player) {
+				player.getPacketSender().sendWalkableInterface(63_000, true);
+			}
+
+		}, // donator material daily
+		TREASURE_HUNTER(new int[] { 1986, 2045 }, new int[] { 4994, 5052 }, true, true, true, false, false, false) {
+		}, // donator//minigame???
+		AFK(new int[] { 3024, 3056 }, new int[] { 4050, 4082 }, false, true, true, false, false, true) {
+
+			@Override
+			public void enter(Player player) {
+				if(!WorldIPChecker.getInstance().addToContent(player, "afk")){
+					player.moveTo(GameSettings.DEFAULT_POSITION);
+					player.sendMessage("You are only allowed one account in AFK zone");
+				}
+			}
+
+			@Override
+			public void leave(Player player) {
+				WorldIPChecker.getInstance().leaveContent(player);
+			}
+
+			@Override
+			public void login(Player player) {
+				player.getPacketSender().sendCameraNeutrality();
+				if (player.getLocation() == AFK) {
+					player.moveTo(GameSettings.HOME_CORDS);
+				}
+				WorldIPChecker.getInstance().leaveContent(player);
+			}
+			@Override
+			public void logout(Player player) {
+				WorldIPChecker.getInstance().leaveContent(player);
+				player.moveTo(GameSettings.HOME_CORDS);
 			}
 		},
 		;
@@ -2259,8 +1526,6 @@ for (Item item : player.getInventory().getItems()) {
 						|| (prev == Location.AURA && newLocation == Location.AURA_LOBBY)
 						|| prev == Location.NORMAL_INSTANCE || prev == Location.SINGLE_INSTANCE
 						|| prev == Location.TOWER_1
-//						|| (prev == Location.TEST_RAID_LOBBY && newLocation == Location.TEST_RAID)
-//						|| (prev == Location.TEST_RAID && newLocation == Location.TEST_RAID_LOBBY)
 				) {
 				} else {
 					prev.leave(((Player) gc));
@@ -2337,10 +1602,11 @@ for (Item item : player.getInventory().getItems()) {
 			distY = 0;
 		if (distX == distY)
 			return distX + 1;
-		return distX > distY ? distX : distY;
+		return Math.max(distX, distY);
 	}
 
 	public static List<Location> bossLocations = Collections.synchronizedList(Arrays.asList(
-			Location.NORMAL_INSTANCE, Location.SINGLE_INSTANCE, Location.TOWER_1
+			Location.NORMAL_INSTANCE, Location.SINGLE_INSTANCE, Location.TOWER_1, Location.LORDS,
+			Location.TREASURE_HUNTER
 	));
 }

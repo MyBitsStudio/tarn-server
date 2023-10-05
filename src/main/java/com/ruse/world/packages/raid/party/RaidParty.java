@@ -98,27 +98,45 @@ public class RaidParty {
 
     }
 
+    public void clearInterface(Player p) {
+        for (int i = 0; i < 5; i++) {
+            p.getPacketSender().sendString(26235 + i, "");
+            p.getPacketSender().sendString(27235 + i, "");
+        }
+    }
+
     public void refreshInterface(){
         for (Player member : players) {
             if (member != null) {
-                member.getPacketSender().sendString(111709, "Invite");
 
-                int start = 111716;
-                for (Player player : players) {
-                    member.getPacketSender().sendString(start++, player.getUsername());
-                    member.getPacketSender().sendString(start++,
-                            String.valueOf(player.getSkillManager().getTotalLevel()));
-                    member.getPacketSender().sendString(start++,
-                            String.valueOf(player.getSkillManager().getCombatLevel()));
+                clearInterface(member);
+
+                for (int i = 0; i < getPlayers().size(); i++) {
+                    Player p = getPlayers().get(i);
+
+                    if (p != null) {
+                        member.getPacketSender().sendString(26235 + i, p.getUsername());
+                        member.getPacketSender().sendString(27235 + i, p.getUsername());
+                    }
                 }
-
-                for (int i = start; i < 111737; i++) {
-                    member.getPacketSender().sendString(start++, "---");
-                    member.getPacketSender().sendString(start++, "--");
-                    member.getPacketSender().sendString(start++, "-");
-                }
-
-                member.getPacketSender().sendString(111702, "Raiding Party: @whi@" + players.size());
+//                member.getPacketSender().sendString(111709, "Invite");
+//
+//                int start = 111716;
+//                for (Player player : players) {
+//                    member.getPacketSender().sendString(start++, player.getUsername());
+//                    member.getPacketSender().sendString(start++,
+//                            String.valueOf(player.getSkillManager().getTotalLevel()));
+//                    member.getPacketSender().sendString(start++,
+//                            String.valueOf(player.getSkillManager().getCombatLevel()));
+//                }
+//
+//                for (int i = start; i < 111737; i++) {
+//                    member.getPacketSender().sendString(start++, "---");
+//                    member.getPacketSender().sendString(start++, "--");
+//                    member.getPacketSender().sendString(start++, "-");
+//                }
+//
+//                member.getPacketSender().sendString(111702, "Raiding Party: @whi@" + players.size());
             }
         }
     }

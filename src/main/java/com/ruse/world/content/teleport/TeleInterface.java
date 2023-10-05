@@ -43,7 +43,14 @@ public class TeleInterface {
             player.sendMessage("Please select a teleport before clicking this button.");
             return;
         }
-        TeleportHandler.teleportPlayer(player, getData().getLocation().getPosition(), TeleportType.NORMAL);
+        if(getData() == TeleInterfaceData.DAILY_DONATOR){
+            player.getPlayerDailies().enterDonatorMaterialZone(player);
+        } else if(getData() == TeleInterfaceData.DAILY_TREASURE){
+            player.getPlayerDailies().enterTreasureHunterInstance(player);
+        } else {
+            TeleportHandler.teleportPlayer(player, getData().getLocation().getPosition(), TeleportType.NORMAL);
+        }
+
     }
 
     public void sendItems() {

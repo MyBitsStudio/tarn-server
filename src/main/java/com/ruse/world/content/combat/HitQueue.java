@@ -150,6 +150,12 @@ public class HitQueue {
 								.sendMessage("You are badly burnt by the dragon's fire!");
 					}
 					p.getControllerManager().processOutgoingHit(container);
+				} else if (victim.isPlayer()){
+					if(attacker.isNpc()){
+						if(damage > 0){
+							EffectHandler.handlePlayerDefence(attacker.toNpc(), victim.asPlayer(), damage);
+						}
+					}
 				}
 			}
 

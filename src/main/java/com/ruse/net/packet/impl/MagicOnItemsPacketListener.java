@@ -36,11 +36,6 @@ public class MagicOnItemsPacketListener implements PacketListener {
 				player.getPacketSender().sendMessage(
 						"Used spell id: " + spellId + " on grounditem: " + itemId + " on XY: " + itemX + ", " + itemY);
 			}
-			if (UltimateIronmanHandler.hasItemsStored(player) && player.getLocation() != Location.DUNGEONEERING) {
-				player.getPacketSender().sendMessage(
-						"<shad=0>@red@You cannot use this spell until you claim your stored Dungeoneering items.");
-				return;
-			}
 			player.getMovementQueue().reset();
 			// switch(spell) {}
 		} else if (packet.getOpcode() == MAGIC_ON_ITEMS) {
@@ -65,85 +60,52 @@ public class MagicOnItemsPacketListener implements PacketListener {
 			if (player.getRank().isDeveloper()) {
 				player.getPacketSender().sendMessage("Used spell id: " + spellId + " on item: " + itemId);
 			}
-			if (UltimateIronmanHandler.hasItemsStored(player) && player.getLocation() != Location.DUNGEONEERING) {
-				player.getPacketSender().sendMessage(
-						"<shad=0>@red@You cannot use this spell until you claim your stored Dungeoneering items.");
-				return;
-			}
-			switch (magicSpell) {
-			case ENCHANT_SAPPHIRE:
-			case ENCHANT_EMERALD:
-			case ENCHANT_RUBY:
-			case ENCHANT_DIAMOND:
-			case ENCHANT_DRAGONSTONE:
-			case ENCHANT_ONYX:
-				Magic.enchantItem(player, itemId, spellId);
-				break;
-			case LOW_ALCHEMY:
-				//lowAlch = true;
-			case HIGH_ALCHEMY:
-				/*if (item.getId() != 22053 && (!item.tradeable() || !item.sellable() || item.getId() == ItemDefinition.COIN_ID)) {
-					player.getPacketSender().sendMessage("This spell can not be cast on this item.");
-					return;
-				}
-				if (spell == null || !spell.canCast(player, true))
-					return;
-				player.getInventory().delete(itemId, 1);
-				int value = 0;
-				if (item.reducedPrice()) {
-					value = (int) (ReducedSellPrice.forId(item.getId()).getSellValue() * (lowAlch ? 0.6 : 0.75));
-				} else {
-					value = (int) (item.getDefinition().getValue() * (lowAlch ? 0.6 : 0.75));
-				}
-				player.getInventory().add(ItemDefinition.COIN_ID, value);
-				player.performAnimation(new Animation(712));
-				player.performGraphic(
-						new Graphic(magicSpell == MagicSpells.HIGH_ALCHEMY ? 113 : 112, GraphicHeight.LOW));
-				player.getSkillManager().addExperience(Skill.MAGIC, spell.baseExperience());
-				player.getPacketSender().sendTab(GameSettings.MAGIC_TAB);
+            switch (magicSpell) {
+                case ENCHANT_SAPPHIRE, ENCHANT_EMERALD, ENCHANT_RUBY, ENCHANT_DIAMOND, ENCHANT_DRAGONSTONE, ENCHANT_ONYX ->
+                        Magic.enchantItem(player, itemId, spellId);
 
-				 */
-				 player.getPacketSender().sendMessage("Alching is currently disabled.");
-				break;
-			case SUPERHEAT_ITEM:
-				for (int i = 0; i < ORE_DATA.length; i++) {
-					if (item.getId() == ORE_DATA[i][0]) {
-						if (player.getInventory().getAmount(ORE_DATA[i][2]) < ORE_DATA[i][3]) {
-							player.getPacketSender().sendMessage("You do not have enough "
-									+ new Item(ORE_DATA[i][2]).getDefinition().getName() + "s for this spell.");
-							return;
-						}
-						if (spell == null || !spell.canCast(player, true))
-							return;
-						player.getInventory().delete(item.getId(), 1);
-						for (int k = 0; k < ORE_DATA[i][3]; k++)
-							player.getInventory().delete(ORE_DATA[i][2], 1);
-						player.performAnimation(new Animation(725));
-						player.performGraphic(new Graphic(148, GraphicHeight.HIGH));
-						player.getInventory().add(ORE_DATA[i][4], 1);
-						player.getPacketSender().sendTab(GameSettings.MAGIC_TAB);
-						player.getSkillManager().addExperience(Skill.MAGIC, spell.baseExperience());
-						player.getSkillManager().addExperience(Skill.SMITHING, Smelting.getExperience(ORE_DATA[i][4]));
-						return;
-					}
-				}
-				player.getPacketSender().sendMessage("This spell can only be cast on Mining ores.");
-				break;
-			case BAKE_PIE:
-				if (itemId == 2317 || itemId == 2319 || itemId == 2321) {
-					player.getSkillManager().addExperience(Skill.MAGIC, spell.baseExperience());
-					player.performAnimation(new Animation(4413));
-					player.performGraphic(new Graphic(746, GraphicHeight.HIGH));
-					player.getInventory().delete(item.getId(), 1);
-					player.getPacketSender().sendMessage("You bake the pie");
-					player.getInventory()
-							.add(itemId == 2317 ? 2323 : itemId == 2319 ? 2327 : itemId == 2321 ? 2325 : -1, 1);
-				} else
-					player.getPacketSender().sendMessage("This spell can only be cast on an uncooked pie.");
-				break;
-			default:
-				break;
-			}
+                //lowAlch = true;
+                case LOW_ALCHEMY, HIGH_ALCHEMY ->
+                        player.getPacketSender().sendMessage("Alching is currently disabled.");
+                case SUPERHEAT_ITEM -> {
+                    for (int i = 0; i < ORE_DATA.length; i++) {
+                        if (item.getId() == ORE_DATA[i][0]) {
+                            if (player.getInventory().getAmount(ORE_DATA[i][2]) < ORE_DATA[i][3]) {
+                                player.getPacketSender().sendMessage("You do not have enough "
+                                        + new Item(ORE_DATA[i][2]).getDefinition().getName() + "s for this spell.");
+                                return;
+                            }
+                            if (spell == null || !spell.canCast(player, true))
+                                return;
+                            player.getInventory().delete(item.getId(), 1);
+                            for (int k = 0; k < ORE_DATA[i][3]; k++)
+                                player.getInventory().delete(ORE_DATA[i][2], 1);
+                            player.performAnimation(new Animation(725));
+                            player.performGraphic(new Graphic(148, GraphicHeight.HIGH));
+                            player.getInventory().add(ORE_DATA[i][4], 1);
+                            player.getPacketSender().sendTab(GameSettings.MAGIC_TAB);
+                            player.getSkillManager().addExperience(Skill.MAGIC, spell.baseExperience());
+                            player.getSkillManager().addExperience(Skill.SMITHING, Smelting.getExperience(ORE_DATA[i][4]));
+                            return;
+                        }
+                    }
+                    player.getPacketSender().sendMessage("This spell can only be cast on Mining ores.");
+                }
+                case BAKE_PIE -> {
+                    if (itemId == 2317 || itemId == 2319 || itemId == 2321) {
+                        player.getSkillManager().addExperience(Skill.MAGIC, spell.baseExperience());
+                        player.performAnimation(new Animation(4413));
+                        player.performGraphic(new Graphic(746, GraphicHeight.HIGH));
+                        player.getInventory().delete(item.getId(), 1);
+                        player.getPacketSender().sendMessage("You bake the pie");
+                        player.getInventory()
+                                .add(itemId == 2317 ? 2323 : itemId == 2319 ? 2327 : itemId == 2321 ? 2325 : -1, 1);
+                    } else
+                        player.getPacketSender().sendMessage("This spell can only be cast on an uncooked pie.");
+                }
+                default -> {
+                }
+            }
 			player.getClickDelay().reset();
 			player.getInventory().refreshItems();
 		}
