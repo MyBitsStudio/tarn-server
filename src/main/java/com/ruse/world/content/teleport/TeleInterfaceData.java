@@ -70,7 +70,11 @@ public enum TeleInterfaceData {
     SLAYER1(TeleInterfaceCategory.BOSSES, "Werewolf - Zinq", 9911, 500, TeleInterfaceLocation.SLAYER1, null),
     SLAYER2(TeleInterfaceCategory.BOSSES, "Aberrant - Yisdar", 8003, 500, TeleInterfaceLocation.SLAYER2, null),
     SLAYER3(TeleInterfaceCategory.BOSSES, "Doom - Miscreation", 9836, 500, TeleInterfaceLocation.SLAYER3, null),
-
+    SLAYER4(TeleInterfaceCategory.BOSSES, "Zorbak - Hyndra", 1743, 500, TeleInterfaceLocation.SLAYER4, null),
+    SLAYER5(TeleInterfaceCategory.BOSSES, "Grooter - Toad", 1738, 500, TeleInterfaceLocation.SLAYER5, null),
+    SLAYER6(TeleInterfaceCategory.BOSSES, "Cloud - Fire", 1741, 500, TeleInterfaceLocation.SLAYER6, null),
+    SLAYER7(TeleInterfaceCategory.BOSSES, "Avalon - Titan", 8008, 500, TeleInterfaceLocation.SLAYER7, null),
+    SLAYER8(TeleInterfaceCategory.BOSSES, "Emerald - Gorvek", 9806, 500, TeleInterfaceLocation.SLAYER8, null),
     //BOSS1(TeleInterfaceCategory.BOSSES, "Sanctum Golem", 9017, 1950, TeleInterfaceLocation.LOCATION36, null),
 
     //BOSS7(TeleInterfaceCategory.BOSSES, "Dragonite", 9816, 2050, TeleInterfaceLocation.LOCATION39, null),
