@@ -1,8 +1,9 @@
-package com.ruse.world.content.kingdomsystem;
+package com.ruse.world.content.planetsystem.worker;
 
 public class Worker {
 
     private final WorkerType workerType;
+    private long ticksLeft;
     private int level;
     private int hungerLevel;
 
@@ -34,5 +35,13 @@ public class Worker {
 
     public void setHungerLevel(int hungerLevel) {
         this.hungerLevel = hungerLevel;
+    }
+
+    public long getTicksLeft() {
+        return ticksLeft;
+    }
+
+    public void decrementTicksLeft() {
+        ticksLeft--;
     }
 }
