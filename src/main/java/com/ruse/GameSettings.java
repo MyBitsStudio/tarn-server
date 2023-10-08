@@ -131,8 +131,8 @@ public class GameSettings {
     public static final Position KFC_CORDS = new Position(2606, 4774, 4);
     public static final Position TRADE_CORDS = new Position(3164, 3485, 0);
     public static final Position CHILL_CORDS = new Position(3816, 2829, 0);
-    public static final Position MEMBER_ZONE = new Position(2851, 3348);
-    public static final Position SUPER_ZONE = new Position(1664, 5695);
+    public static final Position MEMBER_ZONE = new Position(2851, 3348); // dead
+    public static final Position SUPER_ZONE = new Position(1664, 5695);// dead
     public static final Position EXTREME_ZONE = new Position(2791, 3096);
     public static final Position SUPER_ZONE_NPC = new Position(2827, 2866, 8);
     public static final Position EXTREME_ZONE_NPC = new Position(2827, 2866, 12);
@@ -143,7 +143,7 @@ public class GameSettings {
     public static final Position BEAST = new Position(1698, 5600, 0);
     public static final Position HULK = new Position(3486, 3623, 0);
     public static final Position LEO = new Position(2708, 4752, 0); //smal spawns
-    public static final Position KING = new Position(1625, 5601, 0); //big spawns
+    public static final Position KING = new Position(1625, 5601, 0); // dzone?
     public static final Position PREDATOR = new Position(2901, 3617, 0);
     public static final Position BULWARK = new Position(2413, 3523, 0);
     public static final Position TRAIN = new Position(2517, 2521, 0); //spawns w.e
@@ -164,7 +164,7 @@ public class GameSettings {
 
     public static final int[] UNTRADEABLE_ITEMS = {
             5020, 5022, 9719, 14505, 19640, 23020, 4000, 4001, 15682, 882, 23335,
-            12852, 23003, 21819, 18653,
+            12852, 23003, 21819, 18653, 19641,
 
             //Starter items
             21403, 15004, 23300, 23301, 703, 704, 705, 23089, 23091, 22083, 22092,

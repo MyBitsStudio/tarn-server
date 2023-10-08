@@ -1,6 +1,8 @@
 package com.ruse.world.packages.forge;
 
 import com.ruse.model.Item;
+import com.ruse.model.container.ItemContainer;
+import com.ruse.model.container.StackType;
 import com.ruse.world.World;
 import com.ruse.world.entity.impl.player.Player;
 import lombok.Getter;
@@ -11,7 +13,6 @@ import java.util.*;
 
 import static java.util.stream.Collectors.toList;
 
-@RequiredArgsConstructor
 @Getter
 public class Forge {
 
@@ -24,7 +25,34 @@ public class Forge {
     @Setter private int tier;
     @Setter private int progress;
     private int progressToAdd;
+    private final ItemContainer container;
     private final HashMap<Item, Integer> addedItemMap = new HashMap<>();
+
+
+    public Forge(Player player){
+        this.player = player;
+        container = new ItemContainer(player) {
+            @Override
+            public int capacity() {
+                return 28;
+            }
+
+            @Override
+            public StackType stackType() {
+                return StackType.DEFAULT;
+            }
+
+            @Override
+            public ItemContainer refreshItems() {
+                return this;
+            }
+
+            @Override
+            public ItemContainer full() {
+                return this;
+            }
+        };
+    }
 
     public void showInterface() {
         if(!World.attributes.getSetting("forge")){
@@ -41,11 +69,11 @@ public class Forge {
 
     private void reset() {
         progressToAdd = 0;
-        addedItemMap.clear();
+        container.resetItems();
     }
 
     public void updateInterface() {
-        player.getPacketSender().sendItemContainer(new ArrayList<>(), 49539)
+        player.getPacketSender().sendItemContainer(container, 49539)
                 .updateProgressSpriteBar(PERCENTAGE_BAR_ID, progress, getValueForNextTier().orElseGet(() -> progress))
                 .sendItemOnInterface(49523, 18653, 0)
                 .sendString(49527, String.valueOf(0))
@@ -99,12 +127,6 @@ public class Forge {
                 return;
             }
         }
-        if(addedItemMap.entrySet()
-                .stream()
-                .anyMatch(it -> it.getKey().getId() == item.getId())) {
-            player.getPacketSender().sendMessage("@red@You have already added a " + item.getDefinition().getName());
-            return;
-        }
         if(!player.getInventory().contains(item.getId())) {
             player.getPacketSender().sendMessage("@red@You do not have this item.");
             return;
@@ -113,10 +135,6 @@ public class Forge {
         int value = SacrificeData.getValue(itemId);
         if(value == 0) {
             player.getPacketSender().sendMessage("@red@This item has no value on the forge.");
-            return;
-        }
-        if(addedItemMap.size() >= 90) {
-            player.getPacketSender().sendMessage("@red@Forge is full.");
             return;
         }
         int progressNeeded = 0;
@@ -131,29 +149,28 @@ public class Forge {
             }
         }
         progressToAdd += value;
-        addedItemMap.put(item, 1);
+        container.add(item.copy(), true);
+        player.getInventory().delete(item.copy());
         if(progressNeeded != 0) {
             player.getPacketSender().updateProgressSpriteBar(PERCENTAGE_BAR_ID, progressToAdd + progress, progressNeeded);
         }
-        player.getPacketSender().sendItemContainer(getItemList(), 49539);
+        player.getPacketSender().sendItemContainer(player.getInventory(), 49541);
+        player.getPacketSender().sendItemContainer(container.getValidItems(), 49539);
         player.getPacketSender().sendItemOnInterface(49523, 18653, progressToAdd);
         player.getPacketSender().sendString(49527, String.valueOf(progressToAdd));
-        player.getPacketSender().setScrollMax(49538, Math.max(220, (addedItemMap.size()/6)*43));
+        player.getPacketSender().setScrollMax(49538, Math.max(220, (container.getValidItems().size()/6)*43));
     }
 
     public void removeItem(int itemId) {
-        Item toRemove = null;
-        for(Map.Entry<Item, Integer> entry : addedItemMap.entrySet()) {
-            if(entry.getKey().getId() == itemId) {
-                toRemove = entry.getKey();
-                break;
-            }
-        }
+        Item toRemove = container.forSlot(itemId);
         if(toRemove != null) {
-            addedItemMap.remove(toRemove);
-            player.getPacketSender().sendItemContainer(getItemList(), 49539);
             progressToAdd -= SacrificeData.getValue(itemId);
-            player.getPacketSender().sendItemOnInterface(49523, 18653, progressToAdd - SacrificeData.getValue(itemId));
+            player.getInventory().add(toRemove.copy(), true);
+            container.delete(toRemove.copy());
+            container.refreshItems();
+            player.getPacketSender().sendItemContainer(player.getInventory(), 49541);
+            player.getPacketSender().sendItemContainer(container.getValidItems(), 49539);
+            player.getPacketSender().sendItemOnInterface(49523, 18653, progressToAdd);
             player.getPacketSender().sendString(49527, String.valueOf(progressToAdd));
             player.getPacketSender().updateProgressSpriteBar(PERCENTAGE_BAR_ID, progressToAdd + progress, getValueForNextTier().orElse(0));
         }
@@ -161,20 +178,13 @@ public class Forge {
 
     private void startForge() {
         int amount = 0;
-        List<Item> itemList = getItemList();
-        if(itemList.size() == 0) {
+        if(container.getFreeSlots() == container.capacity()) {
             player.getPacketSender().sendMessage("@red@Try adding items to the forge before starting.");
             return;
         }
-        for(Item item : itemList) {
-            if(player.getInventory().getAmount(item.getId()) < item.getAmount()) {
-                player.getPacketSender().sendMessage("@red@Please try again.");
-                return;
-            }
-        }
-        for(Item item : itemList) {
+        for(Item item : container.getValidItemsArray()) {
             amount += SacrificeData.getValue(item.getId());
-            player.getInventory().delete(item);
+            container.delete(item);
         }
         if(tier != MAX_LEVEL) {
             Optional<Integer> optionalInteger = getValueForNextTier();
@@ -204,6 +214,9 @@ public class Forge {
     }
 
     public void onInterfaceClose() {
+        for(Item item : container.getValidItemsArray()){
+            player.getInventory().add(item);
+        }
         reset();
     }
 

@@ -13,6 +13,7 @@ import com.ruse.world.entity.impl.player.Player;
 import com.ruse.world.packages.bosses.single.exodon.ExodonInstance;
 import com.ruse.world.packages.bosses.single.sanctum.SanctumInstance;
 import com.ruse.world.packages.bosses.single.varthramoth.VarthInstance;
+import com.ruse.world.packages.bosses.single.zeidan.ZeidanInstance;
 import com.ruse.world.packages.bosses.single.zernath.ZernathInstance;
 import com.ruse.world.packages.bosses.special.DonatorInstance;
 import com.ruse.world.packages.bosses.special.IronmanInstance;
@@ -132,7 +133,7 @@ public class InstanceManager {
 
     public void enterTarnTower(@NotNull Player player){
         if(!World.attributes.getSetting("tower")){
-            player.getPacketSender().sendMessage("@red@The calendar is currently disabled.");
+            player.getPacketSender().sendMessage("@red@The tower is currently disabled.");
             return;
         }
 
@@ -149,26 +150,12 @@ public class InstanceManager {
 
         TowerProgress progress = player.getTower();
 
-        if(progress.getTier() >= 1){
+        if(progress.getTier() >= 2){
             player.sendMessage("More coming soon!");
             return;
         }
 
         TowerLevel instance = new TowerLevel(Objects.requireNonNull(TowerLocations.get(progress.getTier())).getLocation(), player, progress);
-
-        AtomicBoolean found = new AtomicBoolean(false);
-
-//        instances.values().stream().filter(Objects::nonNull).filter(i -> i instanceof TowerLevel).forEach(i -> {
-//            TowerLevel level = (TowerLevel) i;
-//            if(level.getTower().getLevel() == progress.getLevel() && level.getTower().getTier() == progress.getTier()){
-//                found.set(true);
-//            }
-//        });
-//
-//        if(found.get()){
-//            player.sendMessage("The tower is occupied. Try again in a few minutes.");
-//            return;
-//        }
 
         clear(player);
         player.getTower().setInstance(instance);
@@ -177,32 +164,47 @@ public class InstanceManager {
     }
 
     public void enterMasterInstance(@NotNull Player player, InstanceInterData data){
-        player.sendMessage("Currently disabled. Will be activated soon!");
-        return;
 
-//        if(player.getInstance() != null) {
-//            player.getInstance().destroy();
-//            player.setInstance(null);
-//            return;
-//        }
-//
-//        if(!Objects.equals(player.getInstanceId(), "")){
-//            instances.remove(player.getInstanceId());
-//            player.setInstanceId("");
-//        }
-//
-//        if(takeItem(player, data)) {
-//            player.sendMessage("You don't have x"+data.getCost().getAmount()+" of "+ItemDefinition.forId(data.getCost().getId()).getName());
-//            return;
-//        }
-//
-//        int cap = data.getCap();
-//
-//        cap += player.getVip().getBonusCap();
-//
-//        cap += player.getLoyalty().timeOnInstance();
-//
-//        cap *= (1000 * 60);
+        if(player.getInstance() != null) {
+            player.getInstance().destroy();
+            player.setInstance(null);
+            return;
+        }
+
+        if(!Objects.equals(player.getInstanceId(), "")){
+            instances.remove(player.getInstanceId());
+            player.setInstanceId("");
+        }
+
+
+        int cap = data.getCap();
+
+        cap += player.getVip().getBonusCap();
+
+        cap += player.getLoyalty().timeOnInstance();
+
+        cap *= (1000 * 60);
+
+        Instance instance = switch (data.getNpcId()) {
+            case 3010 -> new ZeidanInstance(player, cap);
+            default -> null;
+        };
+
+        if(instance == null)
+            return;
+
+        if(!instance.canEnter(player)){
+            player.sendMessage(instance.failedEntry());
+            return;
+        }
+
+        if(!takeItem(player, data)) {
+            player.sendMessage("You don't have x"+data.getCost().getAmount()+" of "+ItemDefinition.forId(data.getCost().getId()).getName());
+            return;
+        }
+
+        instances.put(instance.getInstanceId(), instance);
+        instance.start();
 
     }
 

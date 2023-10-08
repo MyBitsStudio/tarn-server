@@ -118,13 +118,22 @@ public class Craft {
                         player.sendMessage("You do not have enough inventory space to craft this.");
                         return;
                     }
+
                     player.performAnimation(new Animation(712));
                     for(Item item : product.getRequiredItems()){
                         player.getInventory().delete(item);
                     }
-                    player.getInventory().add(new Item(product.getFinalProduct()));
-                    player.getSkillManager().addExperience(Skill.CRAFTING, product.getXp());
-                    player.sendMessage("You have crafted a " + ItemDefinition.forId(product.getFinalProduct()).getName() + ".");
+
+                    if(product.getType() != 0){
+                        if(Misc.random(100) < 49){
+                            player.getInventory().add(new Item(product.getFinalProduct()));
+                            player.getSkillManager().addExperience(Skill.CRAFTING, product.getXp());
+                            player.sendMessage("You have crafted a " + ItemDefinition.forId(product.getFinalProduct()).getName() + ".");
+                        } else {
+                            player.sendMessage("You have failed to craft the item.");
+                        }
+                    }
+
                     player.getPA().sendFrame126("Required Level: " + product.getReqLevel(), 47262);
                     displayItems(-18255 + product.getBase());
                 } else {

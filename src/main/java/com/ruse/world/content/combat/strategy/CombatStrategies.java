@@ -3,6 +3,7 @@ package com.ruse.world.content.combat.strategy;
 import com.ruse.world.content.combat.strategy.impl.*;
 import com.ruse.world.content.minigames.impl.dungeoneering.DungeoneeringBossNpc;
 import com.ruse.world.packages.combat.scripts.npc.DefaultMonsterScript;
+import com.ruse.world.packages.combat.scripts.npc.master.ZeidanCombat;
 import com.zaros.world.entity.actor.combat.strategy.impl.dung.DungeoneeringBossCombat;
 
 import java.util.HashMap;
@@ -14,7 +15,7 @@ public class CombatStrategies {
 	private static final DefaultMeleeCombatStrategy defaultMeleeCombatStrategy = new DefaultMeleeCombatStrategy();
 	private static final DefaultMagicCombatStrategy defaultMagicCombatStrategy = new DefaultMagicCombatStrategy();
 	private static final DefaultRangedCombatStrategy defaultRangedCombatStrategy = new DefaultRangedCombatStrategy();
-	private static final Map<Integer, CombatStrategy> STRATEGIES = new HashMap<Integer, CombatStrategy>();
+	private static final Map<Integer, CombatStrategy> STRATEGIES = new HashMap<>();
 	private static final EmptyCombatStrategy emptyCombatStrategy = new EmptyCombatStrategy();
 
 	public static void init() {
@@ -102,6 +103,10 @@ public class CombatStrategies {
 		STRATEGIES.put(8010, new Eternal());
 		STRATEGIES.put(587, new Eternal());
 		STRATEGIES.put(8013, new Eternal());
+
+
+		// Masters
+		STRATEGIES.put(3010, new ZeidanCombat());
 
 		DefaultMagicCombatStrategy defaultMagicStrategy = new DefaultMagicCombatStrategy();
 //		STRATEGIES.put(13, defaultMagicStrategy);

@@ -220,7 +220,8 @@ public class ButtonClickPacketListener implements PacketListener {
                 player.getPacketSender().sendString(-1, GameSettings.StoreUrl);
                 break;
             case -15954:
-                player.getForge().sendDialogue();
+                player.sendMessage("Not set up yet");
+                //player.getForge().sendDialogue();
                 break;
             case 70020:
                 player.setInputHandling(new ChangePinPacketListener());

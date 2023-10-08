@@ -17,7 +17,7 @@ import lombok.Setter;
 public class TowerProgress {
 
     private Player player;
-    private int tier = 0, level = 0, lastLevel = 20, lastTier = 4;
+    private int tier = 0, level = 0, lastLevel = 19, lastTier = 4;
     private ItemContainer rewards;
     private TowerLevel instance;
 
@@ -125,6 +125,13 @@ public class TowerProgress {
         }
         player.sendMessage("You have collected your rewards!");
         TarnTower.sendInterface(player);
+    }
+
+    public void fix(){
+        if(level == 20){
+            level = 0;
+            tier++;
+        }
     }
 
 }

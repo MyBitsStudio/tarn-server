@@ -57,6 +57,8 @@ public class SkillManager {
     private Skills skills;
     private long totalGainedExp;
 
+    private boolean isSkilling = false;
+
     /**
      * The skillmanager's constructor
      *
@@ -65,6 +67,14 @@ public class SkillManager {
     public SkillManager(Player player) {
         this.player = player;
         newSkillManager();
+    }
+
+    public void setIsSkilling(boolean set){
+        this.isSkilling = set;
+    }
+
+    public boolean getIsSkilling(){
+        return this.isSkilling;
     }
 
     public static int getPrestigePoints(Player player, Skill skill) {
@@ -350,6 +360,7 @@ public class SkillManager {
         }
         player.setResetPosition(null);
         player.setInputHandling(null);
+        this.isSkilling = false;
         return this;
     }
 

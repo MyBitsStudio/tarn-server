@@ -138,8 +138,8 @@ public enum InstanceInterData {
             new Item(10835, 1000), 16, 15, 1736,
             InstanceType.EVENT),
 
-    ZEIDAN("Zeidan Grimm", "T20",
-            new Item(10835, 2500), 1, 30, 3010,
+    ZEIDAN("Zeidan Grimm", "Master",
+            new Item(10835, 10000), 1, 30, 3010,
             InstanceType.MASTER),
 
     LILINRYSS("Lilinryss", "Master",

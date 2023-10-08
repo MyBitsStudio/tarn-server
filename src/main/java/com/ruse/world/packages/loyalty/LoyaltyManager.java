@@ -48,10 +48,12 @@ public class LoyaltyManager {
         if(!World.attributes.getSetting("loyalty")){
             return;
         }
+
         if(player.getAfk().isAFK()){
             timeOnLogin = System.currentTimeMillis();
             return;
         }
+
         if(time >= (400 * 60)){
             timeOnLogin = System.currentTimeMillis();
             return;

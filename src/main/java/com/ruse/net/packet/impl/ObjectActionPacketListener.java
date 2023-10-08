@@ -26,6 +26,7 @@ import com.ruse.world.content.grandexchange.GrandExchange;
 import com.ruse.world.content.holidayevents.christmas2016;
 import com.ruse.world.content.holidayevents.easter2017data;
 import com.ruse.world.content.tbdminigame.Lobby;
+import com.ruse.world.packages.chests.ChestHandler;
 import com.ruse.world.packages.dialogue.DialogueManager;
 import com.ruse.world.packages.dialogue.impl.tower.NextLevel;
 import com.ruse.world.packages.globals.GlobalBossManager;
@@ -117,16 +118,6 @@ public class ObjectActionPacketListener implements PacketListener {
                 .setWalkToTask(new WalkToTask(player, position, gameObject.getSize(), () -> {
                     player.setPositionToFace(gameObject.getPosition());
 
-
-//                    if (WoodcuttingData.Trees.forId(id) != null) {
-//                        Woodcutting.cutWood(player, gameObject, false);
-//                        return;
-//                    }
-//                    if (EvilTreeDef.forId(id) != null) {
-//                        Woodcutting.cutWood(player, gameObject, false);
-//                        return;
-//                    }
-
                     if (MiningProps.Rocks.forId(gameObject.getId()) != null) {
                         Miner.startMining(player, gameObject);
                         return;
@@ -140,6 +131,10 @@ public class ObjectActionPacketListener implements PacketListener {
                         if(player.getInstance().handleObjectClick(player, gameObject, 1)){
                             return;
                         }
+                    }
+
+                    if(ChestHandler.openChest(player, gameObject)){
+                        return;
                     }
 
 

@@ -34,6 +34,7 @@ import com.ruse.world.packages.seasonpass.SeasonPassConfig;
 import com.ruse.world.packages.seasonpass.SeasonPassManager;
 import com.ruse.world.packages.serverperks.ServerPerks;
 import com.ruse.world.entity.impl.GlobalItemSpawner;
+import com.ruse.world.packages.slot.PerkEquip;
 
 import java.util.Objects;
 
@@ -345,6 +346,8 @@ public class PlayerHandler {
         player.getTimers().startAll();
 
         //ItemIdentifiers.convert(player);
+        player.getTower().fix();
+        PerkEquip.fixPerks(player);
 
         player.getPlayerDailies().onLogin(player);
     }

@@ -12,22 +12,25 @@ public class MiningProps {
     public enum Rocks {
 
         DONATOR_PERK(10801, new Item[]{new Item(23149), new Item(23148), new Item(23147)},
-                75, 10, 120, 95),
+                75, 20, 120, 95),
 
         DONATOR_COIN(10799, new Item[]{new Item(995, 500), new Item(995, 1000), new Item(995, 2500)},
-                1, 5, 90, 20),
+                1, 10, 90, 20),
 
         DONATOR_ENHANCEMENT(10802, new Item[]{
                 new Item(13727, 10), new Item(13727, 20), new Item(13727, 30),
                 new Item(13727, 40), new Item(13727, 50)},
-                45, 5, 90, 62),
+                45, 20, 90, 62),
 
         DONATOR_TICKETS(10800, new Item[]{
                 new Item(21816, 5), new Item(21815, 5), new Item(21815, 10),
                 new Item(21814, 10), new Item(21814, 5),new Item(23003, 2)
-        }, 99, 20, 240, 142),
+        }, 99, 30, 240, 142),
 
-        AFK(21149, new Item[]{new Item(5020, 1)}, 1, 100, 0, 1)
+        AFK(21149, new Item[]{new Item(5020, 1)}, 1, 5, 0, 5),
+        AFK1(713, new Item[]{new Item(5020, 1)}, 1, 5, 0, 5),
+        AFK2(712, new Item[]{new Item(5020, 1)}, 1, 5, 0, 5),
+        AFK3(711, new Item[]{new Item(5020, 1)}, 1, 5, 0, 5)
         ;
 
         private final int objectId, req, ticks, timer, xp;

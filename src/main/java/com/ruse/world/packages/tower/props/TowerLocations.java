@@ -7,6 +7,7 @@ import lombok.Getter;
 public enum TowerLocations {
 
     TIER_1(0, Locations.Location.TOWER_1),
+    TIER_2(1, Locations.Location.TOWER_1),
 
     ;
 

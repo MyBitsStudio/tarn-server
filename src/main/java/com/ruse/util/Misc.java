@@ -534,10 +534,6 @@ public class Misc {
 
     public static String anOrA(String s) {
         s = s.toLowerCase();
-        if (s.equalsIgnoreCase("anchovies") || s.equalsIgnoreCase("soft clay") || s.equalsIgnoreCase("cheese")
-                || s.equalsIgnoreCase("ball of wool") || s.equalsIgnoreCase("spice")
-                || s.equalsIgnoreCase("steel nails") || s.equalsIgnoreCase("snape grass") || s.equalsIgnoreCase("coal"))
-            return "some";
         if (s.startsWith("a") || s.startsWith("e") || s.startsWith("i") || s.startsWith("o") || s.startsWith("u"))
             return "an";
         return "a";
@@ -841,7 +837,6 @@ public class Misc {
         GZIPInputStream gzip = new GZIPInputStream(new ByteArrayInputStream(buffer));
         do {
             if (bufferlength == gzipInputBuffer.length) {
-                // System.out.println("Error inflating data.\nGZIP buffer overflow.");
                 break;
             }
             int readByte = gzip.read(gzipInputBuffer, bufferlength, gzipInputBuffer.length - bufferlength);

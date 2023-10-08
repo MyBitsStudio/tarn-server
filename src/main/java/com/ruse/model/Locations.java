@@ -113,8 +113,6 @@ public class Locations {
 				KeepersOfLight.leave(player, true);
 			}
 		},
-		EXODEN(new int[] { 2562, 2600}, new int[] { 4485, 4526},
-				true, true, true, false, false, true) {},
 
 
 		LUCIFER(new int[] { 2301, 2367}, new int[] { 3970, 4024},
@@ -1363,6 +1361,9 @@ for (Item item : player.getInventory().getItems()) {
 				WorldIPChecker.getInstance().leaveContent(player);
 				player.moveTo(GameSettings.HOME_CORDS);
 			}
+		},
+		ZEIDAN(new int[] { 2562, 2600}, new int[] { 4485, 4526}, false, true, false, false, false, true) {
+
 		},
 		;
 

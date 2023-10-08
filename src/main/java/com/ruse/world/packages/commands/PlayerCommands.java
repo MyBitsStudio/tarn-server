@@ -326,7 +326,7 @@ public class PlayerCommands {
                 TrackInterface.sendInterface(player, true);
                 return true;
             }
-            case "hotkey" -> {
+            case "hotkey", "hotkeys" -> {
                 sendHotkeys(player);
                 return true;
             }
@@ -350,8 +350,8 @@ public class PlayerCommands {
                 BestItemsInterface.openInterface(player, 0);
                 return true;
             }
-            case "hotkeys" -> {
-                sendHotkeys(player);
+            case "chests" -> {
+                TeleportHandler.teleportPlayer(player, new Position(2911, 3611, 0), player.getSpellbook().getTeleportType());
                 return true;
             }
         }
@@ -441,6 +441,7 @@ public class PlayerCommands {
         player.getPacketSender().sendString(index++, color1 + "::hotkeys - Opens hotkey interface");
         player.getPacketSender().sendString(index++, color1 + "::ref - Claim a referral");
         player.getPacketSender().sendString(index++, color1 + "::refclaim - Claim your referrals");
+        player.getPacketSender().sendString(index++, color1 + "::chests - Teleports you to Chest Area");
         player.getPacketSender().sendString(index++, color1 + "::lugia - Teleports to Lugia");
         player.getPacketSender().sendString(index++, color1 + "::groudon - Teleports to Groudon");
         player.getPacketSender().sendString(index++, color1 + "::ninetails - Teleports to Ninetails");

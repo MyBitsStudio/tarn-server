@@ -535,7 +535,8 @@ public abstract class ItemContainer {
     }
 
     public static int[] unstackables = new int[] {
-        23150, 23151, 23152, 23153, 23154, 23155, 23156, 23157, 23158, 23159, 23160, 25000, 25001
+        23150, 23151, 23152, 23153, 23154, 23155, 23156, 23157, 23158, 23159, 23160, 25000, 25001, 25002,
+            25003, 25004, 25005, 25006
     };
 
     /**
@@ -548,6 +549,7 @@ public abstract class ItemContainer {
      */
     public ItemContainer add(Item item, boolean refresh) {
         if (item == null || item.getId() <= 0 || (item.getAmount() <= 0 && !(this instanceof Bank))) {
+            //System.out.println("item is null or id is less than 0 or amount is less than 0");
             return this;
         }
 
@@ -714,7 +716,7 @@ public abstract class ItemContainer {
      */
     public ItemContainer delete(Item item, int slot, boolean refresh, ItemContainer toContainer) {
         if (item == null || slot < 0) {
-            System.out.println("nulllled");
+            //System.out.println("nulllled");
             return this;
         }
         boolean leavePlaceHolder = (toContainer instanceof Inventory && this instanceof Bank && getPlayer().isPlaceholders());

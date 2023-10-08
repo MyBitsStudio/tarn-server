@@ -164,7 +164,6 @@ public class CurseHandler {
 	public static void deactivateCurse(Player player, CurseData curse) {
 		if (!player.getCurseActive()[curse.ordinal()]) {
 			return;
-		
 		}
 		player.getPacketSender().sendConfig(curse.configId, 0);
 		player.setCurseActive(curse.ordinal(), false);

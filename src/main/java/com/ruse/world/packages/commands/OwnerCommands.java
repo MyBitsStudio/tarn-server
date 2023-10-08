@@ -399,6 +399,12 @@ public class OwnerCommands {
                 return true;
             }
 
+            case "icewall" -> {
+                player.getEquipment().getSlotBonuses()[Equipment.WEAPON_SLOT] = new SlotBonus(SlotEffect.ICEWALL, 1);
+                player.getEquipment().refreshItems();
+                return true;
+            }
+
             case "data" -> {
                 new SQLVip().execute(player);
                 return true;

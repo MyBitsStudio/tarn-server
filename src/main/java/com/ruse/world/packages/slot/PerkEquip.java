@@ -2,6 +2,7 @@ package com.ruse.world.packages.slot;
 
 import com.ruse.model.Item;
 import com.ruse.model.container.impl.Equipment;
+import com.ruse.util.Misc;
 import com.ruse.world.entity.impl.player.Player;
 import com.ruse.world.packages.dialogue.DialogueManager;
 import com.ruse.world.packages.dialogue.impl.slot.EquipOnSlot;
@@ -22,6 +23,7 @@ public class PerkEquip {
             player.sendMessage("Something went wrong here. Effect is Null");
             return;
         }
+
         boolean weaponPerk = effect.isWeapon();
         player.getVariables().setSetting("inv-slot", player.getInventory().slotOf(item));
 
@@ -69,6 +71,55 @@ public class PerkEquip {
     public static void reset(@NotNull Player player){
         player.getVariables().setSetting("inv-slot", -1);
         player.getVariables().setSetting("slot-chosen", -1);
+    }
+
+    public static void fixPerks(@NotNull Player player){
+        for(Item item : player.getInventory().getItems()){
+            if(item == null)
+                continue;
+
+            if(SlotEffect.isPerkItem(item.getId())){
+                SlotEffect effect = SlotEffect.forItemId(item.getId());
+                if(effect == null)
+                    continue;
+                if(item.getPerk() == null)
+                    continue;
+                if (item.getPerk().equals("none"))
+                    continue;
+
+                if(effect.ordinal() != Integer.parseInt(item.getPerk())){
+                    Item newItem = new Item(item.getId(), item.getAmount(),
+                           "stale", String.valueOf(effect.ordinal()),  String.valueOf(effect.getRanges().length != 0 ? Misc.random(effect.getRanges()[0], effect.getRanges()[1]) : -1));
+                    player.getInventory().delete(item);
+                    player.getInventory().add(newItem);
+                    player.getInventory().refreshItems();
+                }
+            }
+        }
+
+        for(int i = 0; i < 6; i++)
+            for(Item item : player.getBank(i).getItems()){
+                if(item == null)
+                    continue;
+                if(item.getPerk() == null)
+                    continue;
+                if (item.getPerk().equals("none"))
+                    continue;
+
+                if(SlotEffect.isPerkItem(item.getId())){
+                    SlotEffect effect = SlotEffect.forItemId(item.getId());
+                    if(effect == null)
+                        continue;
+                    if(effect.ordinal() != Integer.parseInt(item.getPerk())){
+                        Item newItem = new Item(item.getId(), item.getAmount(),
+                                "stale", String.valueOf(effect.ordinal()),  String.valueOf(effect.getRanges().length != 0 ? Misc.random(effect.getRanges()[0], effect.getRanges()[1]) : -1));
+                        player.getBank(i).delete(item);
+                        player.getBank(i).add(newItem);
+                        player.getInventory().refreshItems();
+                    }
+                }
+            }
+
     }
 
 }

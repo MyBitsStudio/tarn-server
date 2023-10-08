@@ -25,8 +25,8 @@ public class ForgeShopData {
                             new ForgeShopItem(5072,100),
                             new ForgeShopItem(17718,200),
                             //shin
-                            new ForgeShopItem(11328,100),
-                            new ForgeShopItem(11329,100),
+                            new ForgeShopItem(13328,100),
+                            new ForgeShopItem(13329,100),
                             new ForgeShopItem(13330,100),
                             new ForgeShopItem(13332,100),
                             new ForgeShopItem(13333,200),

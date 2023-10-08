@@ -67,7 +67,7 @@ public class PlayerDeathTask extends Task {
             return;
         }
         try {
-            switch (ticks) {
+            switch (ticks--) {
                 case 5 -> {
                     player.getPacketSender().sendInterfaceRemoval();
                     player.getMovementQueue().setLockMovement(true).reset();
@@ -80,12 +80,7 @@ public class PlayerDeathTask extends Task {
                 case 1 -> {
                     this.oldPosition = player.getPosition().copy();
                     this.loc = player.getLocation();
-                    if (loc != Location.PEST_CONTROL_GAME && loc != Location.DUEL_ARENA
-                            && loc != Location.FREE_FOR_ALL_ARENA && loc != Location.FREE_FOR_ALL_WAIT
-                            && loc != Location.SOULWARS && loc != Location.FIGHT_PITS
-                            && loc != Location.FIGHT_PITS_WAIT_ROOM
-                            && loc != Location.RECIPE_FOR_DISASTER && loc != Location.GRAVEYARD
-                            && loc != Location.RUNESPAN) {
+                    if (loc != Location.PEST_CONTROL_GAME) {
 
                         DamageDealer damageDealer = player.getCombatBuilder().getTopDamageDealer(true, null);
                         Player killer = damageDealer == null ? null : damageDealer.getPlayer();
@@ -198,6 +193,7 @@ public class PlayerDeathTask extends Task {
                         }
                     } else
                         dropItems = false;
+
                     player.getPacketSender().sendInterfaceRemoval();
                     player.setEntityInteraction(null);
                     player.getMovementQueue().setFollowCharacter(null);
@@ -236,7 +232,6 @@ public class PlayerDeathTask extends Task {
                     stop();
                 }
             }
-            ticks--;
         } catch (Exception e) {
             setEventRunning(false);
             e.printStackTrace();

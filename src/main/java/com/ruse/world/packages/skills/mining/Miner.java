@@ -15,6 +15,10 @@ import org.jetbrains.annotations.NotNull;
 public class Miner {
 
     public static void startMining(final @NotNull Player player, final GameObject oreObject){
+        if(player.getSkillManager().getIsSkilling()){
+            return;
+        }
+
         player.getSkillManager().stopSkilling();
         player.getPacketSender().sendInterfaceRemoval();
 
@@ -42,11 +46,12 @@ public class Miner {
                     if (axe != null) {
                         if(miningLevel >= axe.getReq()){
                             player.performAnimation(new Animation(12003));
-
+                            player.getSkillManager().setIsSkilling(true);
 
                             player.setCurrentTask(new Task(Math.max((int) (rock.getTicks() / axe.getSpeed()), 1), player, false) {
 
                                 int cycle = 0;
+                                int amount = 0;
                                 final int reqCycle = Misc.getRandom(rock.getTicks() - 1);
                                 @Override
                                 protected void execute() {
@@ -64,28 +69,30 @@ public class Miner {
                                                 .sendMessage("You do not have any free inventory space left.");
                                         return;
                                     }
+
                                     if (cycle != reqCycle) {
                                         cycle++;
                                         player.performAnimation(new Animation(12003));
                                     } else {
-                                        cycle = 0;
-                                        this.stop();
-                                        player.getSkillManager().stopSkilling();
 
-                                        player.getSkillManager().addExperience(Skill.MINING, rock.getXp());
-                                        if(rock == MiningProps.Rocks.AFK){
-                                            Item reward = new Item(5020, 1);
-                                            final int amount = (int) (reward.getAmount() * axe.getBonus());
-                                            reward.setAmount(amount);
-                                            player.getInventory().add(reward);
-                                            player.sendMessage("You manage to mine x"+amount+" " + reward.getDefinition().getName() + ".");
+
+                                        if(rock == MiningProps.Rocks.AFK || rock == MiningProps.Rocks.AFK1
+                                        ||rock == MiningProps.Rocks.AFK2 || rock == MiningProps.Rocks.AFK3){
+                                            if(Misc.random(5) == 1) {
+                                                amount = (int) (1 * axe.getBonus());
+                                                player.getInventory().add(new Item(5020, amount));
+                                                player.sendMessage("You manage to mine x" + amount + " AFK tickets.");
+                                            }
                                         } else {
-                                            Item reward = rock.getMaterialIds()[Misc.random(rock.getMaterialIds().length - 1)];
-                                            final int amount = (int) (reward.getAmount() * axe.getBonus());
-                                            reward.setAmount(amount);
-                                            player.getInventory().add(reward);
+                                            final Item reward = rock.getMaterialIds()[Misc.random(rock.getMaterialIds().length - 1)].copy();
+                                            amount = (int) (reward.getAmount() * axe.getBonus());
+                                            player.getInventory().add(new Item(reward.getId(), amount));
                                             player.sendMessage("You manage to mine x"+amount+" " + reward.getDefinition().getName() + ".");
                                         }
+
+                                        player.getSkillManager().addExperience(Skill.MINING, rock.getXp());
+                                        player.getSkillManager().stopSkilling();
+                                        stop();
 
                                         Sounds.sendSound(player, Sounds.Sound.MINE_ITEM);
 

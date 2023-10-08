@@ -22,8 +22,6 @@ public class AnimGFX {
     public static int PULL_BACK_BOW_RANGE = 426;
     public static int BOW_AND_SHOOT_UP_RANGE = 4973;
 
-
-
     public static int OVERLOAD_ANIMATION = 3170;
     public static int SHAKE_PUT_DOWN = 3007;
     public static int SIT_AND_BLOW = 1877;
@@ -61,6 +59,10 @@ public class AnimGFX {
     public static int WATER_TUNNEL = 2281;
     public static int ICE_BARRAGE = 369;
     public static int ICE_LIGHTNING = 281;
+    public static int WHITE_LIGHTNING = 665;
+    public static int DRAIN = 524;
+    public static int DRAGON_CLOUD = 118;
+    public static int BLUE_SPIKE_UP = 197;
 
     public static int RED_WAVE_OUT = 481;
 
