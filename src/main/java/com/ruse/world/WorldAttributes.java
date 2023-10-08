@@ -35,6 +35,7 @@ public class WorldAttributes {
         settings.put("trading", false);
         settings.put("achievements", true);
         settings.put("refer", true);
+        settings.put("chests", true);
 
         settings.put("donator-bonus", false);
         settings.put("slayer-bonus", false);

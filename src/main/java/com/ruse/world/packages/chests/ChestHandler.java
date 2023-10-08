@@ -4,6 +4,7 @@ import com.ruse.model.Animation;
 import com.ruse.model.GameObject;
 import com.ruse.model.Graphic;
 import com.ruse.model.definitions.ItemDefinition;
+import com.ruse.world.World;
 import com.ruse.world.content.CustomObjects;
 import com.ruse.world.entity.impl.player.Player;
 import com.ruse.world.packages.chests.impl.SlayerChest;
@@ -11,6 +12,12 @@ import com.ruse.world.packages.chests.impl.SlayerChest;
 public class ChestHandler {
 
     public static boolean openChest(Player player, GameObject id){
+        if(!World.attributes.getSetting("chests")){
+            if(!player.getRank().isStaff()) {
+                player.sendMessage("This feature is currently disabled.");
+                return true;
+            }
+        }
         Chests chests = Chests.get(id.getId());
         if(chests == null)
             return false;
