@@ -30,7 +30,7 @@ public class UltimateIronman extends Gamemode {
     @Override
     public boolean canOpenShop(int shopId) {
         switch (shopId) {
-            case 1, 7, 4, 6, 5, 0, 8, 2, 3:
+            case 1, 7, 4, 6, 5, 0, 8, 2, 3, 9:
                 return true;
         }
         return false;
@@ -43,7 +43,7 @@ public class UltimateIronman extends Gamemode {
 
     @Override
     public boolean canGetRewards() {
-        return false;
+        return true;
     }
 
     @Override
