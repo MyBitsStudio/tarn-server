@@ -270,7 +270,7 @@ public class Misc {
     }
 
     public static List<Player> getCombinedPlayerList(Player p) {
-        List<Player> plrs = new LinkedList<Player>();
+        List<Player> plrs = new LinkedList<>();
         for (Player localPlayer : p.getLocalPlayers()) {
             if (localPlayer != null)
                 plrs.add(localPlayer);

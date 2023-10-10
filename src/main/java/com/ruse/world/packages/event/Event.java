@@ -13,9 +13,9 @@ public abstract class Event {
 
     public abstract boolean handleItem(Player player, Item item);
 
-    public abstract boolean handleNpc(Player player, int npcId);
+    public abstract boolean handleNpc(Player player, int npcId, int option);
 
-    public abstract boolean handleObject(Player player, int objectId);
+    public abstract boolean handleObject(Player player, int objectId, int option);
 
     public abstract boolean onDeath(Player player, int npcId);
 }

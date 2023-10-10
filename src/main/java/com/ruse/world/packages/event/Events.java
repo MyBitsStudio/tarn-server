@@ -2,6 +2,7 @@ package com.ruse.world.packages.event;
 
 import com.ruse.world.packages.event.impl.DonatorReleaseEvent;
 import com.ruse.world.packages.event.impl.FallEvent;
+import com.ruse.world.packages.event.impl.HalloweenEvent;
 import lombok.Getter;
 
 /**
@@ -16,6 +17,7 @@ public enum Events {
 
     DONATOR_RELEASE(new DonatorReleaseEvent(), new int[]{9, 2, 10, 6}),
     FALL(new FallEvent(), new int[]{9, 1, 11, 1}),
+    HALLOWEEN(new HalloweenEvent(), new int[]{10, 13, 11, 7})
 
     ;
 

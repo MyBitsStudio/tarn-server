@@ -130,7 +130,7 @@ public class Craft {
                             player.getInventory().add(new Item(product.getFinalProduct()));
                             player.getSkillManager().addExperience(Skill.CRAFTING, product.getXp());
                             player.sendMessage("You have crafted a " + ItemDefinition.forId(product.getFinalProduct()).getName() + ".");
-                            player.getSeasonPass().incrementExp(216 * product.getXp(), false);
+                            player.getSeasonPass().incrementExp(24 * product.getXp(), false);
                         } else {
                             player.sendMessage("You have failed to craft the item.");
                         }
@@ -138,7 +138,7 @@ public class Craft {
                         player.getInventory().add(new Item(product.getFinalProduct()));
                         player.getSkillManager().addExperience(Skill.CRAFTING, product.getXp());
                         player.sendMessage("You have crafted a " + ItemDefinition.forId(product.getFinalProduct()).getName() + ".");
-                        player.getSeasonPass().incrementExp(216 * product.getXp(), false);
+                        player.getSeasonPass().incrementExp(2 * product.getXp(), false);
                     }
 
                     player.getPA().sendFrame126("Required Level: " + product.getReqLevel(), 47262);

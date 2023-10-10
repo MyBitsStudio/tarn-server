@@ -47,6 +47,7 @@ import com.ruse.world.content.skill.impl.smithing.EquipmentMaking;
 import com.ruse.world.content.skill.impl.smithing.Smelting;
 import com.ruse.world.entity.impl.npc.NPC;
 import com.ruse.world.entity.impl.player.Player;
+import com.ruse.world.packages.misc.CurrPouch;
 import com.ruse.world.packages.mode.impl.UltimateIronman;
 import com.ruse.world.packages.plus.PlusUpgrade;
 import com.ruse.world.packages.plus.PlusUpgrades;
@@ -117,7 +118,9 @@ public class UseItemPacketListener implements PacketListener {
 
         switch (itemUsedWith.getId()) {
             case 22108 -> {
-                CurrencyPouch.handleItemOnItem(player, itemUsedWith);
+                if(player.getPouch().handleItemOnItem(itemUsedWith)){
+                    return;
+                }
                 return;
             }
             case 9003 -> {
@@ -130,8 +133,9 @@ public class UseItemPacketListener implements PacketListener {
 
         switch (usedWith.getId()) {
             case 22108 -> {
-                CurrencyPouch.handleItemOnItem(player, itemUsedWith);
-                return;
+                if(player.getPouch().handleItemOnItem(itemUsedWith)){
+                    return;
+                }
             }
             case 9003 -> {
                 if (itemUsedWith.getId() == 989) {

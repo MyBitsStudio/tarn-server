@@ -75,6 +75,11 @@ public class NPCOptionPacketListener implements PacketListener {
             if (ConstructionActions.handleFirstClickNpc(player, npc)) {
                 return;
             }
+
+            if(World.handler.handleNpcClick(player, npc.getId(), 1)) {
+                return;
+            }
+
             switch (npc.getId()) {
                 case 14 -> ShopHandler.getShop(8).ifPresent(shop -> shop.send(player, true));
                 case 4652 -> ShopHandler.getShop(7).ifPresent(shop -> shop.send(player, true));
@@ -745,6 +750,9 @@ public class NPCOptionPacketListener implements PacketListener {
                 Pickpocket.handleNpc(player, npc);
                 return;
             }
+            if(World.handler.handleNpcClick(player, npc.getId(), 2)) {
+                return;
+            }
             switch (npc.getId()) {
                 case 9000 -> player.getSlayer().sendInterface(player);
                 case 961 -> {
@@ -1072,6 +1080,9 @@ public class NPCOptionPacketListener implements PacketListener {
                 if (!player.getControllerManager().processNPCClick3(npc)) {
                     return;
                 }
+                if(World.handler.handleNpcClick(player, npc.getId(), 3)) {
+                    return;
+                }
                 switch (npc.getId()) {
                     case 289 -> DailyTasks.cancelTask(player);
 //                    case 552 -> ShopManager.getShops().get(115).open(player);
@@ -1159,6 +1170,9 @@ public class NPCOptionPacketListener implements PacketListener {
 
         player.setWalkToTask(new WalkToTask(player, npc.getPosition(), npc.getSize(), () -> {
             if (!player.getControllerManager().processNPCClick4(npc)) {
+                return;
+            }
+            if(World.handler.handleNpcClick(player, npc.getId(), 4)) {
                 return;
             }
             switch (npc.getId()) {

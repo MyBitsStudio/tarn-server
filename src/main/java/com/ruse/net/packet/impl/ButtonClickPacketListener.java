@@ -729,303 +729,303 @@ public class ButtonClickPacketListener implements PacketListener {
 
                 break;
 
-            // BATTLE BRAWL TELEPORT (NPC TIER LIST)
-            case 28018:// imp
-                if (player.getPointsHandler().getNPCKILLCount() <= 49) {
-                    player.getPacketSender().sendMessage("You need 50 npc kill Count. You currently have @red@"
-                            + player.getPointsHandler().getNPCKILLCount() + "@bla@ kills.");
-                    player.getPacketSender().sendMessage("@blu@To get Fast NPC KILLS go to ::Starter");
-
-                    return;
-                }
-
-                Position positionspawns = GameSettings.DEVILSPAWN;
-                TeleportHandler.teleportPlayer(player, positionspawns, TeleportType.NORMAL);
-
-                break;
-
-            case 28019:// lord
-                if (player.getPointsHandler().getSPAWNKILLCount() <= 99) {
-                    player.getPacketSender().sendMessage("You need 100 Imp kills. You currently have @red@"
-                            + player.getPointsHandler().getSPAWNKILLCount() + "@bla@ kills.");
-
-                    return;
-                }
-
-                Position positionlord = GameSettings.LORDS;
-                TeleportHandler.teleportPlayer(player, positionlord, TeleportType.NORMAL);
-                break;
-
-            case 28020:// demon
-                if (player.getPointsHandler().getLORDKILLCount() <= 199) {
-                    player.getPacketSender().sendMessage("You need 200 Lord kills. You currently have @red@"
-                            + player.getPointsHandler().getLORDKILLCount() + "@bla@ kills.");
-
-                    return;
-                }
-
-                Position position2 = GameSettings.DEMON;
-                TeleportHandler.teleportPlayer(player, position2, TeleportType.NORMAL);
-                break;
-            case 28021:// dragon
-                if (player.getPointsHandler().getDEMONKILLCount() <= 299) {
-                    player.getPacketSender().sendMessage("You need 300 Demon kills. You currently have @red@"
-                            + player.getPointsHandler().getDEMONKILLCount() + "@bla@ kills.");
-
-                    return;
-                }
-
-                Position position3 = GameSettings.DRAGON;
-                TeleportHandler.teleportPlayer(player, position3, TeleportType.NORMAL);
-                break;
-            case 28022:// beast
-                if (player.getPointsHandler().getDRAGONKILLCount() <= 399) {
-                    player.getPacketSender().sendMessage("You need 400 Dragon kills. You currently have @red@"
-                            + player.getPointsHandler().getDRAGONKILLCount() + "@bla@ kills.");
-
-                    return;
-                }
-
-                Position dragon = GameSettings.BEAST;
-                TeleportHandler.teleportPlayer(player, dragon, TeleportType.NORMAL);
-                break;
-            case 28023:// king
-                if (player.getPointsHandler().getBEASTKILLCount() <= 499) {
-                    player.getPacketSender().sendMessage("You need 500 Beast kills. You currently have @red@"
-                            + player.getPointsHandler().getBEASTKILLCount() + "@bla@ kills.");
-
-                    return;
-                }
-
-                Position king = GameSettings.KING;
-                TeleportHandler.teleportPlayer(player, king, TeleportType.NORMAL);
-                break;
-            case 28024:// avatar
-                if (player.getPointsHandler().getKINGKILLCount() <= 999) {
-                    player.getPacketSender().sendMessage("You need 1000 King kills. You currently have @red@"
-                            + player.getPointsHandler().getKINGKILLCount() + "@bla@ kills.");
-
-                    return;
-                }
-
-                Position avatar = new Position(3301, 3289, 0);
-                TeleportHandler.teleportPlayer(player, avatar, TeleportType.NORMAL);
-                break;
-            case 28025:// angel
-                if (player.getPointsHandler().getAVATARKILLCount() <= 1199) {
-                    player.getPacketSender().sendMessage("You need 1200 Avatar kills. You currently have @red@"
-                            + player.getPointsHandler().getAVATARKILLCount() + "@bla@ kills.");
-
-                    return;
-                }
-                Position angel = new Position(3322, 3309, 0);
-                TeleportHandler.teleportPlayer(player, angel, TeleportType.NORMAL);
-                //player.getPacketSender().sendMessage("@blu@coming soon");
-
-                break;
-            case 28026:// lucien
-                if (player.getPointsHandler().getANGELKILLCount() <= 1499) {
-                    player.getPacketSender().sendMessage("You need 1500 Angel kills. You currently have @red@"
-                            + player.getPointsHandler().getANGELKILLCount() + "@bla@ kills.");
-
-                    return;
-                }
-
-                Position lucien = new Position(2907, 5455, 0);
-                TeleportHandler.teleportPlayer(player, lucien, TeleportType.NORMAL);
-
-                break;
-            case 28027:// hercules
-                if (player.getPointsHandler().getLUCIENKILLCount() <= 2499) {
-                    player.getPacketSender().sendMessage("You need 2500 Lucien kills. You currently have @red@"
-                            + player.getPointsHandler().getLUCIENKILLCount() + "@bla@ kills.");
-
-                    return;
-                }
-
-                Position herc = new Position(2931, 5469, 0);
-                TeleportHandler.teleportPlayer(player, herc, TeleportType.NORMAL);
-
-                break;
-            case 28028:// satan
-                if (player.getPointsHandler().getHERCULESKILLCount() <= 3499) {
-                    player.getPacketSender().sendMessage("You need 3500 Hercules kills. You currently have @red@"
-                            + player.getPointsHandler().getHERCULESKILLCount() + "@bla@ kills.");
-
-                    return;
-                }
-
-                Position sait = new Position(2910, 5491, 0);
-                TeleportHandler.teleportPlayer(player, sait, TeleportType.NORMAL);
-
-                break;
-            case 28029:// zeus
-                if (player.getPointsHandler().getSATANKILLCount() <= 4999) {
-                    player.getPacketSender().sendMessage("You need 5000 Satan kills. You currently have @red@"
-                            + player.getPointsHandler().getSATANKILLCount() + "@bla@ kills.");
-
-                    return;
-                }
-
-                Position zzeus = new Position(2893, 5469, 0);
-                TeleportHandler.teleportPlayer(player, zzeus, TeleportType.NORMAL);
-
-                break;
+//            // BATTLE BRAWL TELEPORT (NPC TIER LIST)
+//            case 28018:// imp
+//                if (player.getPointsHandler().getNPCKILLCount() <= 49) {
+//                    player.getPacketSender().sendMessage("You need 50 npc kill Count. You currently have @red@"
+//                            + player.getPointsHandler().getNPCKILLCount() + "@bla@ kills.");
+//                    player.getPacketSender().sendMessage("@blu@To get Fast NPC KILLS go to ::Starter");
+//
+//                    return;
+//                }
+//
+//                Position positionspawns = GameSettings.DEVILSPAWN;
+//                TeleportHandler.teleportPlayer(player, positionspawns, TeleportType.NORMAL);
+//
+//                break;
+//
+//            case 28019:// lord
+//                if (player.getPointsHandler().getSPAWNKILLCount() <= 99) {
+//                    player.getPacketSender().sendMessage("You need 100 Imp kills. You currently have @red@"
+//                            + player.getPointsHandler().getSPAWNKILLCount() + "@bla@ kills.");
+//
+//                    return;
+//                }
+//
+//                Position positionlord = GameSettings.LORDS;
+//                TeleportHandler.teleportPlayer(player, positionlord, TeleportType.NORMAL);
+//                break;
+//
+//            case 28020:// demon
+//                if (player.getPointsHandler().getLORDKILLCount() <= 199) {
+//                    player.getPacketSender().sendMessage("You need 200 Lord kills. You currently have @red@"
+//                            + player.getPointsHandler().getLORDKILLCount() + "@bla@ kills.");
+//
+//                    return;
+//                }
+//
+//                Position position2 = GameSettings.DEMON;
+//                TeleportHandler.teleportPlayer(player, position2, TeleportType.NORMAL);
+//                break;
+//            case 28021:// dragon
+//                if (player.getPointsHandler().getDEMONKILLCount() <= 299) {
+//                    player.getPacketSender().sendMessage("You need 300 Demon kills. You currently have @red@"
+//                            + player.getPointsHandler().getDEMONKILLCount() + "@bla@ kills.");
+//
+//                    return;
+//                }
+//
+//                Position position3 = GameSettings.DRAGON;
+//                TeleportHandler.teleportPlayer(player, position3, TeleportType.NORMAL);
+//                break;
+//            case 28022:// beast
+//                if (player.getPointsHandler().getDRAGONKILLCount() <= 399) {
+//                    player.getPacketSender().sendMessage("You need 400 Dragon kills. You currently have @red@"
+//                            + player.getPointsHandler().getDRAGONKILLCount() + "@bla@ kills.");
+//
+//                    return;
+//                }
+//
+//                Position dragon = GameSettings.BEAST;
+//                TeleportHandler.teleportPlayer(player, dragon, TeleportType.NORMAL);
+//                break;
+//            case 28023:// king
+//                if (player.getPointsHandler().getBEASTKILLCount() <= 499) {
+//                    player.getPacketSender().sendMessage("You need 500 Beast kills. You currently have @red@"
+//                            + player.getPointsHandler().getBEASTKILLCount() + "@bla@ kills.");
+//
+//                    return;
+//                }
+//
+//                Position king = GameSettings.KING;
+//                TeleportHandler.teleportPlayer(player, king, TeleportType.NORMAL);
+//                break;
+//            case 28024:// avatar
+//                if (player.getPointsHandler().getKINGKILLCount() <= 999) {
+//                    player.getPacketSender().sendMessage("You need 1000 King kills. You currently have @red@"
+//                            + player.getPointsHandler().getKINGKILLCount() + "@bla@ kills.");
+//
+//                    return;
+//                }
+//
+//                Position avatar = new Position(3301, 3289, 0);
+//                TeleportHandler.teleportPlayer(player, avatar, TeleportType.NORMAL);
+//                break;
+//            case 28025:// angel
+//                if (player.getPointsHandler().getAVATARKILLCount() <= 1199) {
+//                    player.getPacketSender().sendMessage("You need 1200 Avatar kills. You currently have @red@"
+//                            + player.getPointsHandler().getAVATARKILLCount() + "@bla@ kills.");
+//
+//                    return;
+//                }
+//                Position angel = new Position(3322, 3309, 0);
+//                TeleportHandler.teleportPlayer(player, angel, TeleportType.NORMAL);
+//                //player.getPacketSender().sendMessage("@blu@coming soon");
+//
+//                break;
+//            case 28026:// lucien
+//                if (player.getPointsHandler().getANGELKILLCount() <= 1499) {
+//                    player.getPacketSender().sendMessage("You need 1500 Angel kills. You currently have @red@"
+//                            + player.getPointsHandler().getANGELKILLCount() + "@bla@ kills.");
+//
+//                    return;
+//                }
+//
+//                Position lucien = new Position(2907, 5455, 0);
+//                TeleportHandler.teleportPlayer(player, lucien, TeleportType.NORMAL);
+//
+//                break;
+//            case 28027:// hercules
+//                if (player.getPointsHandler().getLUCIENKILLCount() <= 2499) {
+//                    player.getPacketSender().sendMessage("You need 2500 Lucien kills. You currently have @red@"
+//                            + player.getPointsHandler().getLUCIENKILLCount() + "@bla@ kills.");
+//
+//                    return;
+//                }
+//
+//                Position herc = new Position(2931, 5469, 0);
+//                TeleportHandler.teleportPlayer(player, herc, TeleportType.NORMAL);
+//
+//                break;
+//            case 28028:// satan
+//                if (player.getPointsHandler().getHERCULESKILLCount() <= 3499) {
+//                    player.getPacketSender().sendMessage("You need 3500 Hercules kills. You currently have @red@"
+//                            + player.getPointsHandler().getHERCULESKILLCount() + "@bla@ kills.");
+//
+//                    return;
+//                }
+//
+//                Position sait = new Position(2910, 5491, 0);
+//                TeleportHandler.teleportPlayer(player, sait, TeleportType.NORMAL);
+//
+//                break;
+//            case 28029:// zeus
+//                if (player.getPointsHandler().getSATANKILLCount() <= 4999) {
+//                    player.getPacketSender().sendMessage("You need 5000 Satan kills. You currently have @red@"
+//                            + player.getPointsHandler().getSATANKILLCount() + "@bla@ kills.");
+//
+//                    return;
+//                }
+//
+//                Position zzeus = new Position(2893, 5469, 0);
+//                TeleportHandler.teleportPlayer(player, zzeus, TeleportType.NORMAL);
+//
+//                break;
             case -3306:
             case 30905:
                 player.getPacketSender().sendInterfaceRemoval();
                 break;
-            case -4914:// 1
-                if (player.getInterfaceId() == 60600) {
-                    TeleportHandler.teleportPlayer(player, new Position(2695, 3714), TeleportType.NORMAL);// rock crabs
-                } else if (player.getInterfaceId() == 60700) {
-                    TeleportHandler.teleportPlayer(player, new Position(2855, 3543), TeleportType.NORMAL);// Warriors Guild
-                } else if (player.getInterfaceId() == 60800) {
-                    TeleportHandler.teleportPlayer(player, new Position(1908, 4367), TeleportType.NORMAL);// Daggonath Kings
-                } else if (player.getInterfaceId() == 60900) {
-                    TeleportHandler.teleportPlayer(player, new Position(2847, 9637), TeleportType.NORMAL);// Scorpia
-                } else if (player.getInterfaceId() == 61000) {
-                    TeleportHandler.teleportPlayer(player, new Position(3087, 3517), TeleportType.NORMAL);// Wildy Ditch
-                } else if (player.getInterfaceId() == 61100) {
-                    TeleportHandler.teleportPlayer(player, new Position(2871, 5318, 2), TeleportType.NORMAL);// Godwars
-                }
-                break;
-            case -4905:// 4
-                if (player.getInterfaceId() == 60600) {
-                    TeleportHandler.teleportPlayer(player, new Position(3206, 3264), TeleportType.NORMAL);// yaks
-                } else if (player.getInterfaceId() == 60700) {
-                    TeleportHandler.teleportPlayer(player, new Position(3565, 3313), TeleportType.NORMAL);// Barrows
-                } else if (player.getInterfaceId() == 60800) {
-                    TeleportHandler.teleportPlayer(player, new Position(3281, 3914), TeleportType.NORMAL);// Chaos Elemental
-                } else if (player.getInterfaceId() == 60900) {
-                    TeleportHandler.teleportPlayer(player, new Position(2514, 3045), TeleportType.NORMAL);// Lizardman
-                    // Shaman
-                } else if (player.getInterfaceId() == 61000) {
-                    TeleportHandler.teleportPlayer(player, new Position(3107, 3937), TeleportType.NORMAL);// Mage Arena
-                } else if (player.getInterfaceId() == 61100) {
-                    TeleportHandler.teleportPlayer(player, new Position(3217, 9617), TeleportType.NORMAL);// Revs
-                }
-                break;
-            case -4896:// 7
-                if (player.getInterfaceId() == 60600) {
-                    TeleportHandler.teleportPlayer(player, new Position(3279, 2964), TeleportType.NORMAL);// dust devils
-                } else if (player.getInterfaceId() == 60800) {
-                    TeleportHandler.teleportPlayer(player, new Position(3483, 9482), TeleportType.NORMAL);// Kalphite Queen
-                } else if (player.getInterfaceId() == 60900) {
-                    TeleportHandler.teleportPlayer(player, new Position(2371, 4673), TeleportType.NORMAL);// Kraken
-                } else if (player.getInterfaceId() == 61100) {
-                    TeleportHandler.teleportPlayer(player, new Position(2884, 9797), TeleportType.NORMAL);// Taverly Dungeon
-                }
-                break;
-            case -4845:// 10
-                if (player.getInterfaceId() == 60600) {
-                    TeleportHandler.teleportPlayer(player, new Position(2480, 5175), TeleportType.NORMAL);// tzhaar
-                } else if (player.getInterfaceId() == 60800) {
-                    TeleportHandler.teleportPlayer(player, new Position(3050, 9573), TeleportType.NORMAL);// Glacors
-                } else if (player.getInterfaceId() == 60900) {
-                    TeleportHandler.teleportPlayer(player, new Position(2796, 9332), TeleportType.NORMAL);// Skotizo
-                }
-                break;
-            case -4911:// 2
-                if (player.getInterfaceId() == 60600) {
-                    TeleportHandler.teleportPlayer(player, new Position(2722, 4910), TeleportType.NORMAL);// pvm zone
-                } else if (player.getInterfaceId() == 60700) {
-                    TeleportHandler.teleportPlayer(player, new Position(2664, 2651), TeleportType.NORMAL);// Pest Control
-                } else if (player.getInterfaceId() == 60800) {
-                    TeleportHandler.teleportPlayer(player, new Position(2541, 5794), TeleportType.NORMAL);// Tormented
-                    // Demons
-                } else if (player.getInterfaceId() == 60900) {
-                    TeleportHandler.teleportPlayer(player, new Position(3097, 3704), TeleportType.NORMAL);// Cerberus
-                } else if (player.getInterfaceId() == 61000) {
-                    TeleportHandler.teleportPlayer(player, new Position(2980, 3597), TeleportType.NORMAL);// West Dragons
-                } else if (player.getInterfaceId() == 61100) {
-                    TeleportHandler.teleportPlayer(player, new Position(2731, 5095), TeleportType.NORMAL);// StrykWyrm
-                    // Cavern
-                }
-                break;
-            case -4902:// 5
-                if (player.getInterfaceId() == 60600) {
-                    TeleportHandler.teleportPlayer(player, new Position(3420, 3510), TeleportType.NORMAL);// ghouls
-                } else if (player.getInterfaceId() == 60700) {
-                    TeleportHandler.teleportPlayer(player, new Position(2440, 5172), TeleportType.NORMAL);// Fight Caves
-                } else if (player.getInterfaceId() == 60800) {
-                    TeleportHandler.teleportPlayer(player, new Position(3292, 4942), TeleportType.NORMAL);// Slash Bash
-                } else if (player.getInterfaceId() == 60900) {
-                    TeleportHandler.teleportPlayer(player, new Position(2970, 3948), TeleportType.NORMAL);// Thermonuclear
-                    // Smoke Devil
-                } else if (player.getInterfaceId() == 61000) {
-                    player.moveTo(new Position(3048, 10266, player.getPosition().getZ()));
-                    player.getPacketSender().sendInterfaceRemoval();
-                    player.getPacketSender()
-                            .sendMessage("@red@Teleport spells are blocked here. Use a portal or ladder to escape!");
-                    player.getPacketSender().sendMessage("@red@Protect item does not work here either!");
-                    CombatFactory.skullPlayer(player);// Death Arena
-                } else if (player.getInterfaceId() == 61100) {
-                    TeleportHandler.teleportPlayer(player, new Position(3185, 5471), TeleportType.NORMAL);// Chaos Tunnels
-                }
-                break;
-            case -4842:// 11
-                if (player.getInterfaceId() == 60600) {
-                    TeleportHandler.teleportPlayer(player, new Position(3132, 9909), TeleportType.NORMAL);// skeles
-                } else if (player.getInterfaceId() == 60800) {
-                    TeleportHandler.teleportPlayer(player, new Position(2564, 4940), TeleportType.NORMAL);// Corp
-                }
-            case -4893:// 8
-                if (player.getInterfaceId() == 60600) {
-                    TeleportHandler.teleportPlayer(player, new Position(3085, 9672), TeleportType.NORMAL);// skeletons
-                } else if (player.getInterfaceId() == 60800) {
-                    TeleportHandler.teleportPlayer(player, new Position(2839, 9557), TeleportType.NORMAL);// Phoenix
-                } else if (player.getInterfaceId() == 60900) {
-                    TeleportHandler.teleportPlayer(player, new Position(1753, 5232), TeleportType.NORMAL);// Cellisto
-                }
-                break;
-            case -4908:// 3
-                if (player.getInterfaceId() == 60600) {
-                    TeleportHandler.teleportPlayer(player, new Position(3557, 9946), TeleportType.NORMAL);// experiments
-                } else if (player.getInterfaceId() == 60700) {
-                    TeleportHandler.teleportPlayer(player, new Position(3369, 3268), TeleportType.NORMAL);// Duel Arena
-                } else if (player.getInterfaceId() == 60800) {
-                    TeleportHandler.teleportPlayer(player, new Position(2273, 4681), TeleportType.NORMAL);// King Black
-                    // Dragon
-                } else if (player.getInterfaceId() == 60900) {
-                    TeleportHandler.teleportPlayer(player, new Position(2454, 5213), TeleportType.NORMAL);// Abyssal Sire
-                } else if (player.getInterfaceId() == 61000) {
-                    TeleportHandler.teleportPlayer(player, new Position(3329, 3660), TeleportType.NORMAL);// East Dragons
-                } else if (player.getInterfaceId() == 61100) {
-                    TeleportHandler.teleportPlayer(player, new Position(1745, 5325), TeleportType.NORMAL);// Ancient Cavern
-                }
-                break;
-            case -4899:// 6
-                if (player.getInterfaceId() == 60600) {
-                    TeleportHandler.teleportPlayer(player, new Position(2933, 9849), TeleportType.NORMAL);// Chaos Druids
-                } else if (player.getInterfaceId() == 60700) {
-                    TeleportHandler.teleportPlayer(player, new Position(1995, 4493), TeleportType.NORMAL);// Clanwars
-                } else if (player.getInterfaceId() == 60800) {
-                    TeleportHandler.teleportPlayer(player, new Position(3361, 5856), TeleportType.NORMAL);// Nomad
-                } else if (player.getInterfaceId() == 60900) {
-                    TeleportHandler.teleportPlayer(player, new Position(3186, 3830), TeleportType.NORMAL);// Venenatis
-                } else if (player.getInterfaceId() == 61000) {
-                    TeleportHandler.teleportPlayer(player, new Position(2948, 3904), TeleportType.NORMAL);// Frosts
-                } else if (player.getInterfaceId() == 61100) {
-                    TeleportHandler.teleportPlayer(player, new Position(2713, 9564), TeleportType.NORMAL);// Brimhaven
-                }
-                break;
-            case -4890:// 9
-                if (player.getInterfaceId() == 60600) {
-                    TeleportHandler.teleportPlayer(player, new Position(2793, 2773), TeleportType.NORMAL);// Monkey Guards
-                } else if (player.getInterfaceId() == 60800) {
-                    TeleportHandler.teleportPlayer(player, new Position(2857, 3808), TeleportType.NORMAL);// Bandos Avatar
-                } else if (player.getInterfaceId() == 60900) {
-                    TeleportHandler.teleportPlayer(player, new Position(2464, 4775), TeleportType.NORMAL);// Zulrah
-                }
-                break;
-            case -4839:// 12
-                if (player.getInterfaceId() == 60600) {
-                    TeleportHandler.teleportPlayer(player, new Position(3235, 3295), TeleportType.NORMAL);// Chickens
-                } else if (player.getInterfaceId() == 60800) {
-                    TeleportHandler.teleportPlayer(player, new Position(2903, 5204), TeleportType.NORMAL);// Nex
-                }
-                break;
+//            case -4914:// 1
+//                if (player.getInterfaceId() == 60600) {
+//                    TeleportHandler.teleportPlayer(player, new Position(2695, 3714), TeleportType.NORMAL);// rock crabs
+//                } else if (player.getInterfaceId() == 60700) {
+//                    TeleportHandler.teleportPlayer(player, new Position(2855, 3543), TeleportType.NORMAL);// Warriors Guild
+//                } else if (player.getInterfaceId() == 60800) {
+//                    TeleportHandler.teleportPlayer(player, new Position(1908, 4367), TeleportType.NORMAL);// Daggonath Kings
+//                } else if (player.getInterfaceId() == 60900) {
+//                    TeleportHandler.teleportPlayer(player, new Position(2847, 9637), TeleportType.NORMAL);// Scorpia
+//                } else if (player.getInterfaceId() == 61000) {
+//                    TeleportHandler.teleportPlayer(player, new Position(3087, 3517), TeleportType.NORMAL);// Wildy Ditch
+//                } else if (player.getInterfaceId() == 61100) {
+//                    TeleportHandler.teleportPlayer(player, new Position(2871, 5318, 2), TeleportType.NORMAL);// Godwars
+//                }
+//                break;
+//            case -4905:// 4
+//                if (player.getInterfaceId() == 60600) {
+//                    TeleportHandler.teleportPlayer(player, new Position(3206, 3264), TeleportType.NORMAL);// yaks
+//                } else if (player.getInterfaceId() == 60700) {
+//                    TeleportHandler.teleportPlayer(player, new Position(3565, 3313), TeleportType.NORMAL);// Barrows
+//                } else if (player.getInterfaceId() == 60800) {
+//                    TeleportHandler.teleportPlayer(player, new Position(3281, 3914), TeleportType.NORMAL);// Chaos Elemental
+//                } else if (player.getInterfaceId() == 60900) {
+//                    TeleportHandler.teleportPlayer(player, new Position(2514, 3045), TeleportType.NORMAL);// Lizardman
+//                    // Shaman
+//                } else if (player.getInterfaceId() == 61000) {
+//                    TeleportHandler.teleportPlayer(player, new Position(3107, 3937), TeleportType.NORMAL);// Mage Arena
+//                } else if (player.getInterfaceId() == 61100) {
+//                    TeleportHandler.teleportPlayer(player, new Position(3217, 9617), TeleportType.NORMAL);// Revs
+//                }
+//                break;
+//            case -4896:// 7
+//                if (player.getInterfaceId() == 60600) {
+//                    TeleportHandler.teleportPlayer(player, new Position(3279, 2964), TeleportType.NORMAL);// dust devils
+//                } else if (player.getInterfaceId() == 60800) {
+//                    TeleportHandler.teleportPlayer(player, new Position(3483, 9482), TeleportType.NORMAL);// Kalphite Queen
+//                } else if (player.getInterfaceId() == 60900) {
+//                    TeleportHandler.teleportPlayer(player, new Position(2371, 4673), TeleportType.NORMAL);// Kraken
+//                } else if (player.getInterfaceId() == 61100) {
+//                    TeleportHandler.teleportPlayer(player, new Position(2884, 9797), TeleportType.NORMAL);// Taverly Dungeon
+//                }
+//                break;
+//            case -4845:// 10
+//                if (player.getInterfaceId() == 60600) {
+//                    TeleportHandler.teleportPlayer(player, new Position(2480, 5175), TeleportType.NORMAL);// tzhaar
+//                } else if (player.getInterfaceId() == 60800) {
+//                    TeleportHandler.teleportPlayer(player, new Position(3050, 9573), TeleportType.NORMAL);// Glacors
+//                } else if (player.getInterfaceId() == 60900) {
+//                    TeleportHandler.teleportPlayer(player, new Position(2796, 9332), TeleportType.NORMAL);// Skotizo
+//                }
+//                break;
+//            case -4911:// 2
+//                if (player.getInterfaceId() == 60600) {
+//                    TeleportHandler.teleportPlayer(player, new Position(2722, 4910), TeleportType.NORMAL);// pvm zone
+//                } else if (player.getInterfaceId() == 60700) {
+//                    TeleportHandler.teleportPlayer(player, new Position(2664, 2651), TeleportType.NORMAL);// Pest Control
+//                } else if (player.getInterfaceId() == 60800) {
+//                    TeleportHandler.teleportPlayer(player, new Position(2541, 5794), TeleportType.NORMAL);// Tormented
+//                    // Demons
+//                } else if (player.getInterfaceId() == 60900) {
+//                    TeleportHandler.teleportPlayer(player, new Position(3097, 3704), TeleportType.NORMAL);// Cerberus
+//                } else if (player.getInterfaceId() == 61000) {
+//                    TeleportHandler.teleportPlayer(player, new Position(2980, 3597), TeleportType.NORMAL);// West Dragons
+//                } else if (player.getInterfaceId() == 61100) {
+//                    TeleportHandler.teleportPlayer(player, new Position(2731, 5095), TeleportType.NORMAL);// StrykWyrm
+//                    // Cavern
+//                }
+//                break;
+//            case -4902:// 5
+//                if (player.getInterfaceId() == 60600) {
+//                    TeleportHandler.teleportPlayer(player, new Position(3420, 3510), TeleportType.NORMAL);// ghouls
+//                } else if (player.getInterfaceId() == 60700) {
+//                    TeleportHandler.teleportPlayer(player, new Position(2440, 5172), TeleportType.NORMAL);// Fight Caves
+//                } else if (player.getInterfaceId() == 60800) {
+//                    TeleportHandler.teleportPlayer(player, new Position(3292, 4942), TeleportType.NORMAL);// Slash Bash
+//                } else if (player.getInterfaceId() == 60900) {
+//                    TeleportHandler.teleportPlayer(player, new Position(2970, 3948), TeleportType.NORMAL);// Thermonuclear
+//                    // Smoke Devil
+//                } else if (player.getInterfaceId() == 61000) {
+//                    player.moveTo(new Position(3048, 10266, player.getPosition().getZ()));
+//                    player.getPacketSender().sendInterfaceRemoval();
+//                    player.getPacketSender()
+//                            .sendMessage("@red@Teleport spells are blocked here. Use a portal or ladder to escape!");
+//                    player.getPacketSender().sendMessage("@red@Protect item does not work here either!");
+//                    CombatFactory.skullPlayer(player);// Death Arena
+//                } else if (player.getInterfaceId() == 61100) {
+//                    TeleportHandler.teleportPlayer(player, new Position(3185, 5471), TeleportType.NORMAL);// Chaos Tunnels
+//                }
+//                break;
+//            case -4842:// 11
+//                if (player.getInterfaceId() == 60600) {
+//                    TeleportHandler.teleportPlayer(player, new Position(3132, 9909), TeleportType.NORMAL);// skeles
+//                } else if (player.getInterfaceId() == 60800) {
+//                    TeleportHandler.teleportPlayer(player, new Position(2564, 4940), TeleportType.NORMAL);// Corp
+//                }
+//            case -4893:// 8
+//                if (player.getInterfaceId() == 60600) {
+//                    TeleportHandler.teleportPlayer(player, new Position(3085, 9672), TeleportType.NORMAL);// skeletons
+//                } else if (player.getInterfaceId() == 60800) {
+//                    TeleportHandler.teleportPlayer(player, new Position(2839, 9557), TeleportType.NORMAL);// Phoenix
+//                } else if (player.getInterfaceId() == 60900) {
+//                    TeleportHandler.teleportPlayer(player, new Position(1753, 5232), TeleportType.NORMAL);// Cellisto
+//                }
+//                break;
+//            case -4908:// 3
+//                if (player.getInterfaceId() == 60600) {
+//                    TeleportHandler.teleportPlayer(player, new Position(3557, 9946), TeleportType.NORMAL);// experiments
+//                } else if (player.getInterfaceId() == 60700) {
+//                    TeleportHandler.teleportPlayer(player, new Position(3369, 3268), TeleportType.NORMAL);// Duel Arena
+//                } else if (player.getInterfaceId() == 60800) {
+//                    TeleportHandler.teleportPlayer(player, new Position(2273, 4681), TeleportType.NORMAL);// King Black
+//                    // Dragon
+//                } else if (player.getInterfaceId() == 60900) {
+//                    TeleportHandler.teleportPlayer(player, new Position(2454, 5213), TeleportType.NORMAL);// Abyssal Sire
+//                } else if (player.getInterfaceId() == 61000) {
+//                    TeleportHandler.teleportPlayer(player, new Position(3329, 3660), TeleportType.NORMAL);// East Dragons
+//                } else if (player.getInterfaceId() == 61100) {
+//                    TeleportHandler.teleportPlayer(player, new Position(1745, 5325), TeleportType.NORMAL);// Ancient Cavern
+//                }
+//                break;
+//            case -4899:// 6
+//                if (player.getInterfaceId() == 60600) {
+//                    TeleportHandler.teleportPlayer(player, new Position(2933, 9849), TeleportType.NORMAL);// Chaos Druids
+//                } else if (player.getInterfaceId() == 60700) {
+//                    TeleportHandler.teleportPlayer(player, new Position(1995, 4493), TeleportType.NORMAL);// Clanwars
+//                } else if (player.getInterfaceId() == 60800) {
+//                    TeleportHandler.teleportPlayer(player, new Position(3361, 5856), TeleportType.NORMAL);// Nomad
+//                } else if (player.getInterfaceId() == 60900) {
+//                    TeleportHandler.teleportPlayer(player, new Position(3186, 3830), TeleportType.NORMAL);// Venenatis
+//                } else if (player.getInterfaceId() == 61000) {
+//                    TeleportHandler.teleportPlayer(player, new Position(2948, 3904), TeleportType.NORMAL);// Frosts
+//                } else if (player.getInterfaceId() == 61100) {
+//                    TeleportHandler.teleportPlayer(player, new Position(2713, 9564), TeleportType.NORMAL);// Brimhaven
+//                }
+//                break;
+//            case -4890:// 9
+//                if (player.getInterfaceId() == 60600) {
+//                    TeleportHandler.teleportPlayer(player, new Position(2793, 2773), TeleportType.NORMAL);// Monkey Guards
+//                } else if (player.getInterfaceId() == 60800) {
+//                    TeleportHandler.teleportPlayer(player, new Position(2857, 3808), TeleportType.NORMAL);// Bandos Avatar
+//                } else if (player.getInterfaceId() == 60900) {
+//                    TeleportHandler.teleportPlayer(player, new Position(2464, 4775), TeleportType.NORMAL);// Zulrah
+//                }
+//                break;
+//            case -4839:// 12
+//                if (player.getInterfaceId() == 60600) {
+//                    TeleportHandler.teleportPlayer(player, new Position(3235, 3295), TeleportType.NORMAL);// Chickens
+//                } else if (player.getInterfaceId() == 60800) {
+//                    TeleportHandler.teleportPlayer(player, new Position(2903, 5204), TeleportType.NORMAL);// Nex
+//                }
+//                break;
             case 1036:
                 EnergyHandler.rest(player);
                 break;

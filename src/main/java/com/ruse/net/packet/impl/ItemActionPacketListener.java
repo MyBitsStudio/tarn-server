@@ -16,6 +16,7 @@ import com.ruse.world.entity.impl.player.timers.impl.scroll.VoteXP;
 import com.ruse.world.entity.impl.player.timers.impl.scroll.*;
 import com.ruse.world.packages.dialogue.DialogueManager;
 import com.ruse.world.packages.dialogue.impl.RedeemBond;
+import com.ruse.world.packages.dialogue.impl.currency.CurrencyPouch;
 import com.ruse.world.packages.items.monic.Monics;
 import com.ruse.world.packages.packs.basic.PackOpener;
 import com.ruse.world.content.cluescrolls.OLD_ClueScrolls;
@@ -38,6 +39,7 @@ import com.ruse.world.packages.packs.gearpack.GearPack;
 import com.ruse.world.packages.packs.gearpack.GearPacks;
 import com.ruse.world.packages.packs.locked.Locks;
 import com.ruse.world.packages.packs.scratch.impl.*;
+import com.ruse.world.packages.serverperks.ServerPerkContributionInput;
 import com.ruse.world.packages.slot.SlotItems;
 
 import java.text.NumberFormat;
@@ -145,6 +147,10 @@ public class ItemActionPacketListener implements PacketListener {
                 GearPack.openGearPack(player, itemId);
             return;
         }
+
+        if(World.handler.handleItemClick(player, item))
+            return;
+
 
         if (player.aonBoxItem > 0) {
             player.sendMessage("Please choose to keep or gamble your item before doing this!");
@@ -365,7 +371,8 @@ public class ItemActionPacketListener implements PacketListener {
                 player.getWheelOfFortune().open();
                 break;
             case 22108:
-                CurrencyPouch.checkBalance(player);
+                player.getPouch().printBalances();
+                //CurrencyPouch.checkBalance(player);
                 break;
             case 745:
                 if (!player.getClickDelay().elapsed(100)) {
@@ -1692,6 +1699,10 @@ public class ItemActionPacketListener implements PacketListener {
 
         player.setInteractingItem(player.getInventory().getItems()[slot]);
 
+        if(player.getRank().isDeveloper()){
+            player.sendMessage("Third Packet Action");
+        }
+
         if(ItemDefinition.forId(itemId).getName().equalsIgnoreCase("none")){
             System.out.println("Item name is none");
             return;
@@ -1708,9 +1719,7 @@ public class ItemActionPacketListener implements PacketListener {
             return;
         }
 
-        if(player.getRank().isDeveloper()){
-            player.sendMessage("Third Packet Action");
-        }
+
 
         switch (itemId) {
             case 3686 -> {
@@ -1889,13 +1898,13 @@ public class ItemActionPacketListener implements PacketListener {
         if (player.getInventory().getItems()[slot].getId() != itemId)
             return;
 
+        if(player.getRank().isDeveloper()){
+            player.sendMessage("Second Packet Action");
+        }
+
         if(ItemDefinition.forId(itemId).getName().equalsIgnoreCase("none")){
             System.out.println("Item name is none");
             return;
-        }
-
-        if(player.getRank().isDeveloper()){
-            player.sendMessage("Second Packet Action");
         }
 
         if(PackOpener.openPack(player, itemId))
@@ -1922,6 +1931,10 @@ public class ItemActionPacketListener implements PacketListener {
             case 23060:
             case 10946:
                 DialogueManager.sendDialogue(player, new RedeemBond(player, itemId, true), -1);
+                break;
+
+            case 22108:
+                DialogueManager.sendDialogue(player, new CurrencyPouch(player), -1);
                 break;
 
             case 3686:

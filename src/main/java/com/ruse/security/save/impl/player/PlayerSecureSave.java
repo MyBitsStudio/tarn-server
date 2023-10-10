@@ -285,6 +285,8 @@ public class PlayerSecureSave extends SecureSave {
 
         object.add("daily-claims", builder.toJsonTree(player.getPlayerDailies().getClaimed()));
 
+        object.add("currency-pouch", builder.toJsonTree(player.getPouch().getCurrency()));
+
         return this;
     }
 

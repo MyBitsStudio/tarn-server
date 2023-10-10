@@ -137,6 +137,9 @@ public enum InstanceInterData {
     EVENT_RANDOM("Event Devils", "Fall Event/T15",
             new Item(10835, 1000), 16, 15, 1736,
             InstanceType.EVENT),
+    HEADLESS_HUNTER("Headless Hunter", "Halloweeen Event / T17",
+            new Item(10835, 1000), 12, 10, 199,
+            InstanceType.EVENT),
 
     ZEIDAN("Zeidan Grimm", "Master",
             new Item(10835, 10000), 1, 30, 3010,

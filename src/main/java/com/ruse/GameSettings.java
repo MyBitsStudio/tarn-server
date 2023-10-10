@@ -144,10 +144,8 @@ public class GameSettings {
     public static final Position HULK = new Position(3486, 3623, 0);
     public static final Position LEO = new Position(2708, 4752, 0); //smal spawns
     public static final Position KING = new Position(1625, 5601, 0); // dzone?
-    public static final Position PREDATOR = new Position(2901, 3617, 0);
-    public static final Position BULWARK = new Position(2413, 3523, 0);
     public static final Position TRAIN = new Position(2517, 2521, 0); //spawns w.e
-    public static final Position EVENT = new Position(2731, 3463, 0);
+
     public static final Position PENG = new Position(3041, 9543, 0);
     public static final Position CYAN = new Position(2399, 3488, 0);
     public static final Position REVS = new Position(3650, 3485, 0);
@@ -158,6 +156,8 @@ public class GameSettings {
     public static final Position PORTALS = new Position(3192, 9828, 0);
     public static final int MAX_STARTERS_PER_IP = 3;
     public static final Item nullItem = new Item(-1, 0);
+
+    public static final Position EVENT = new Position(2731, 3463, 0); // Staff drop event
     /**
      * Untradeable items Items which cannot be traded or staked
      */

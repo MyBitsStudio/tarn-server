@@ -1,5 +1,6 @@
 package com.ruse.world.packages.event;
 
+import com.ruse.model.Item;
 import com.ruse.model.Timer;
 import com.ruse.util.Misc;
 import com.ruse.world.WorldCalendar;
@@ -9,6 +10,7 @@ import com.ruse.world.packages.event.impl.DonatorBoostEvent;
 import com.ruse.world.packages.event.impl.DoubleDropEvent;
 import com.ruse.world.packages.event.impl.SlayerBonusEvent;
 import com.ruse.world.packages.event.impl.VoteBonusEvent;
+import com.ruse.world.packages.globals.GlobalBossManager;
 import com.ruse.world.timers.DoubleDropTimer;
 import lombok.Getter;
 import org.jetbrains.annotations.NotNull;
@@ -42,17 +44,34 @@ public class WorldEventHandler {
     }
 
     public void runRandomEvent(){
+        ++ticks;
+        if(ticks % 50 == 0) {
 
-        if(++ticks % 100 == 0) {
+            int random = Misc.random(1000);
 
-            int random = Misc.random(10000);
-
-            if (random == 6331) {
+            if (random == 633) {
                 WorldTimers.register(new DoubleDropTimer(Timer.HOURS * 2));
-            } else if (random == 3851) {
+            } else if (random == 385) {
                 WorldTimers.register(new DoubleDropTimer(Timer.HOURS * 3));
             }
+
+            if(random >= 100 && random <= 125){
+                GlobalBossManager.getInstance().spawnVeigar();
+            }
         }
+    }
+
+    public void startEvent(Event event){
+        if(event == null){
+            System.out.println("Event is null.");
+            return;
+        }
+        if(events.contains(event)){
+            System.out.println("Event is already active.");
+            return;
+        }
+        events.add(event);
+        event.start();
     }
 
 
@@ -95,4 +114,33 @@ public class WorldEventHandler {
             event.onLogin(player);
         }
     }
+
+    public boolean handleItemClick(Player player, Item item){
+        for(Event event : events){
+            if(event.handleItem(player, item)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean handleNpcClick(Player player, int npcId, int option){
+        for(Event event : events){
+            if(event.handleNpc(player, npcId, option)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean handleObjectClick(Player player, int objectId, int option){
+        for(Event event : events){
+            if(event.handleObject(player, objectId, option)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+
 }

@@ -173,6 +173,16 @@
     "weapon" : false
   },
   {
+    "id" : 22108,
+    "name" : "Currency Pouch",
+    "examine" : "Store your currency",
+    "stackable" : false,
+    "noted" : false,
+    "2h" : false,
+    "type" : "WEAPON",
+    "weapon" : false
+  },
+  {
     "id" : 23166,
     "name" : "Instance Unlock Scroll",
     "examine" : "Unlock the ability to create instances",
@@ -3091,6 +3101,37 @@
       2000.0,
       2000.0,
       2000.0
+    ]
+  },
+  {
+    "id" : 19886,
+    "name" : "Ultimate Ironman Necklace",
+    "examine" : "Open your bank with this item",
+    "stackable" : false,
+    "noted" : false,
+    "2h" : false,
+    "type" : "AMULET",
+    "weapon" : false,
+    "reqs" : [],
+    "bonus" : [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
     ]
   },
   {

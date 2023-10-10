@@ -137,6 +137,9 @@ public class ObjectActionPacketListener implements PacketListener {
                         return;
                     }
 
+                    if(World.handler.handleObjectClick(player, gameObject.getId(), 1)){
+                        return;
+                    }
 
 //                    if (player.getFarming().click(player, x, y, 1))
 //                        return;
@@ -2033,6 +2036,10 @@ public class ObjectActionPacketListener implements PacketListener {
                         }
                     }
 
+                    if(World.handler.handleObjectClick(player, gameObject.getId(), 2)){
+                        return;
+                    }
+
                     switch (gameObject.getId()) {
                         case 2469 ->
                                 TeleportHandler.teleportPlayer(player, player.getPosition().setZ(Math.max(player.getPosition().getZ() - 4, 0)), TeleportType.NORMAL);
@@ -2465,6 +2472,10 @@ public class ObjectActionPacketListener implements PacketListener {
                 if(player.getInstance().handleObjectClick(player, gameObject, 3)){
                     return;
                 }
+            }
+
+            if(World.handler.handleObjectClick(player, gameObject.getId(), 3)){
+                return;
             }
 
             switch (id) {

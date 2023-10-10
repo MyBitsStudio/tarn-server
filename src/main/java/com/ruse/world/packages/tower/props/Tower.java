@@ -212,6 +212,11 @@ public enum Tower {
             new Position(3024, 2840), new Position(3056, 2825),
             new Position(3062, 2832), new Position(3051, 2831),
             new Position(3062, 2863), new Position(3059, 2871)),
+    T_2_L_0(2, 0, new int[]{9713, 6208, 6204, 6204, 6206, 6206}, new int[]{},
+            new Item(23258, 3), new Position(3017, 2867),
+            new Position(3024, 2840), new Position(3056, 2825),
+            new Position(3062, 2832), new Position(3051, 2831),
+            new Position(3062, 2863), new Position(3059, 2871)),
     ;
     private final int tier, level;
     private final Item reward;

@@ -133,6 +133,14 @@ public class GlobalBossManager {
         spawn(donationGlobal);
     }
 
+    public void spawnVeigar(){
+        if(World.npcIsRegistered(9906)){
+            return;
+        }
+        VeigarGlobal veigarGlobal = new VeigarGlobal();
+        spawn(veigarGlobal);
+    }
+
     private void spawn(GlobalBoss boss){
         World.register(boss);
 

@@ -63,6 +63,7 @@ public class Bank extends ItemContainer {
 			BankPin.init(player, true);
 			return this;
 		}
+
 		if(!player.getMode().openBank(player)){
 			return this;
 		}

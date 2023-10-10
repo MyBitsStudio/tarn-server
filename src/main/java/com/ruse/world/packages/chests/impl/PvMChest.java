@@ -10,7 +10,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SlayerChest extends Chest {
+public class PvMChest extends Chest {
     @Override
     public boolean open(@NotNull Player player) {
         if(player.getInventory().getFreeSlots() <= 0){
@@ -35,7 +35,7 @@ public class SlayerChest extends Chest {
 
     @Override
     public int keyId() {
-        return 23104;
+        return 23105;
     }
 
     @Override
@@ -51,21 +51,19 @@ public class SlayerChest extends Chest {
     @Override
     public List<Item> rewards() {
         List<Item> rewards = new ArrayList<>();
-        rewards.add(new Item(4155, 3));
-        rewards.add(new Item(4155, 5));
-        rewards.add(new Item(4155, 7));
-        rewards.add(new Item(5023, 50));
-        rewards.add(new Item(5023, 100));
-        rewards.add(new Item(5023, 200));
-        rewards.add(new Item(5023, 500));
+        rewards.add(new Item(2736, 1));
+        rewards.add(new Item(2736, 3));
+        rewards.add(new Item(2736, 5));
+        rewards.add(new Item(13727, 100));
+        rewards.add(new Item(13727, 250));
+        rewards.add(new Item(13727, 500));
+        rewards.add(new Item(15358, 1));
+        rewards.add(new Item(15359, 1));
         rewards.add(new Item(995, 25000));
         rewards.add(new Item(995, 50000));
-        rewards.add(new Item(25102, 1));
-        rewards.add(new Item(25102, 2));
-        rewards.add(new Item(25102, 3));
-        rewards.add(new Item(9719, 1));
-        rewards.add(new Item(9719, 3));
-        rewards.add(new Item(9719, 5));
+        rewards.add(new Item(604, 1));
+        rewards.add(new Item(604, 2));
+        rewards.add(new Item(604, 3));
         rewards.add(new Item(23148, 1));
         rewards.add(new Item(23148, 2));
         rewards.add(new Item(23148, 3));

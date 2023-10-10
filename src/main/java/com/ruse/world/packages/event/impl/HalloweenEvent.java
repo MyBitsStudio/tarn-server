@@ -7,20 +7,20 @@ import com.ruse.world.entity.impl.npc.NPC;
 import com.ruse.world.entity.impl.player.Player;
 import com.ruse.world.packages.event.Event;
 
-public class DoubleDropEvent extends Event {
+public class HalloweenEvent extends Event {
     @Override
     public String name() {
-        return "DoubleDrop";
+        return "Halloween";
     }
 
     @Override
     public void start() {
-
+        World.register(new NPC(3306, new Position(2221, 3749, 0)));
     }
 
     @Override
     public void onLogin(Player player) {
-        player.sendMessage("@red@[EVENT]@whi@ Double Drop event is active!");
+        player.sendMessage("@red@[EVENT]@whi@ Halloween event is active!");
     }
 
     @Override
@@ -30,11 +30,31 @@ public class DoubleDropEvent extends Event {
 
     @Override
     public boolean handleNpc(Player player, int npcId, int option) {
+        switch(npcId){
+            case 3306 -> {
+                switch(option){
+                    case 1->{
+
+                    }
+                }
+                return true;
+            }
+        }
         return false;
     }
 
     @Override
     public boolean handleObject(Player player, int objectId, int option) {
+        switch(objectId){
+            case 31424 -> {
+                switch(option){
+                    case 1->{
+
+                    }
+                }
+                return true;
+            }
+        }
         return false;
     }
 

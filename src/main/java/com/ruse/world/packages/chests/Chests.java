@@ -6,7 +6,9 @@ import org.jetbrains.annotations.Nullable;
 @Getter
 public enum Chests {
 
-    SLAYER_CHEST(35470, 35471)
+    SLAYER_CHEST(35470, 35471),
+    VOTE_CHEST(18804, 18805),
+    PVM_CHEST(52296, 52297)
     ;
 
     private final int id, openId;

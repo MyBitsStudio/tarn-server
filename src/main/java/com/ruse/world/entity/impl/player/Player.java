@@ -38,6 +38,7 @@ import com.ruse.world.content.tbdminigame.Lobby;
 import com.ruse.world.entity.impl.player.timers.PlayerTimers;
 import com.ruse.world.packages.afk.AFKSystem;
 import com.ruse.world.packages.loyalty.LoyaltyManager;
+import com.ruse.world.packages.misc.CurrPouch;
 import com.ruse.world.packages.plugin.impl.RaidPlugin;
 import com.ruse.world.packages.raid.Raid;
 import com.ruse.world.packages.raid.party.RaidParty;
@@ -4035,5 +4036,7 @@ public class Player extends Character {
     @Getter@Setter
     private Craft crafting = new Craft(this);
 
+    @Getter@Setter
+    private CurrPouch pouch = new CurrPouch(this);
 
 }

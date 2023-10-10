@@ -21,8 +21,8 @@ public class EquipmentEnhancement {
     private static final double CASH_REQUIREMENT_MULTI = 3000.0;
     private static final double OTHER_REQUIREMENT_MULTI = 233.0;
     private static final int DROP_RATE_BOOST_ADD = 2;
-    private static final int CASH_BOOST_ADD = 5;
-    private static final int STATS_BOOST_ADD = 3;
+    private static final int CASH_BOOST_ADD = 4;
+    private static final int STATS_BOOST_ADD = 2;
     private static final int CASH_ID = 10835;
     private static final int OTHER_ID = 13727;
     private static final int BASE_CHANCE = 80;

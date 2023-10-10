@@ -36,12 +36,12 @@ public class DonatorBoostEvent extends Event {
     }
 
     @Override
-    public boolean handleNpc(Player player, int npcId) {
+    public boolean handleNpc(Player player, int npcId, int option) {
         return false;
     }
 
     @Override
-    public boolean handleObject(Player player, int objectId) {
+    public boolean handleObject(Player player, int objectId, int option) {
         return false;
     }
 

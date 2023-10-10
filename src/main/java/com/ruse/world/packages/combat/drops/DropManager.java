@@ -164,9 +164,14 @@ public class DropManager {
                 log(player, npc, drop, item.getAmount());
 
                 if(collector || hasLoot){
-                    player.depositItemBank(item);
+                    if(player.getMode() instanceof UltimateIronman){
+                        player.getUimBank().deposit(item);
+                    } else {
+                        player.depositItemBank(item);
+                    }
                     if(player.getPSettings().getBooleanValue("drop-message-personal"))
                         player.sendMessage("x"+item.getAmount()+" of "+item.getDefinition().getName() +" has been sent to your bank from your collector.");
+
                 } else {
                     GroundItemManager.spawnGroundItem(player,
                             new GroundItem(item, pos, player.getUsername(), false, 150, false, 200));
@@ -198,7 +203,11 @@ public class DropManager {
             log(player, npc, finalDrop, item.getAmount());
 
             if(collector || hasLoot){
-                player.depositItemBank(item);
+                if(player.getMode() instanceof UltimateIronman){
+                    player.getUimBank().deposit(item);
+                } else {
+                    player.depositItemBank(item);
+                }
                 if(player.getPSettings().getBooleanValue("drop-message-personal"))
                     player.sendMessage("x"+item.getAmount()+" of "+item.getDefinition().getName() +" has been sent to your bank from your collector.");
             } else {
@@ -227,7 +236,11 @@ public class DropManager {
             log(player, npc, finalDrop2, item2.getAmount());
 
             if(collector || hasLoot){
-                player.depositItemBank(item2);
+                if(player.getMode() instanceof UltimateIronman){
+                    player.getUimBank().deposit(item);
+                } else {
+                    player.depositItemBank(item);
+                }
                 if(player.getPSettings().getBooleanValue("drop-message-personal"))
                     player.sendMessage("x"+item.getAmount()+" of "+item.getDefinition().getName() +" has been sent to your bank from your collector.");
             } else {
@@ -293,7 +306,7 @@ public class DropManager {
 
         if(isCash){
             var multiplier = player.getEquipmentEnhancement().getBoost(BoostType.CASH);
-            amount *= (1 + (multiplier * 0.01));
+            amount *= (1 + (multiplier * 0.005));
         }
 
         if(isCash){

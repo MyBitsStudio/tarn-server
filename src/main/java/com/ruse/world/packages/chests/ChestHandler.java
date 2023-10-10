@@ -7,7 +7,9 @@ import com.ruse.model.definitions.ItemDefinition;
 import com.ruse.world.World;
 import com.ruse.world.content.CustomObjects;
 import com.ruse.world.entity.impl.player.Player;
+import com.ruse.world.packages.chests.impl.PvMChest;
 import com.ruse.world.packages.chests.impl.SlayerChest;
+import com.ruse.world.packages.chests.impl.VoteChest;
 
 public class ChestHandler {
 
@@ -27,6 +29,10 @@ public class ChestHandler {
         switch(chests){
             case SLAYER_CHEST ->
                 chest = new SlayerChest();
+            case VOTE_CHEST ->
+                chest = new VoteChest();
+            case PVM_CHEST ->
+                chest = new PvMChest();
         }
 
         if(chest == null)

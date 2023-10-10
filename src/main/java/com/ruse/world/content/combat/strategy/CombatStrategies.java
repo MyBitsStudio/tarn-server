@@ -103,7 +103,7 @@ public class CombatStrategies {
 		STRATEGIES.put(8010, new Eternal());
 		STRATEGIES.put(587, new Eternal());
 		STRATEGIES.put(8013, new Eternal());
-
+		STRATEGIES.put(9006, new Eternal());
 
 		// Masters
 		STRATEGIES.put(3010, new ZeidanCombat());

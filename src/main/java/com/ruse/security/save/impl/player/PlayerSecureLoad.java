@@ -918,6 +918,12 @@ public class PlayerSecureLoad extends SecureLoad {
                     }.getType()));
         }
 
+        if(object.has("currency-pouch")){
+            player.getPouch().load(builder.fromJson(object.get("currency-pouch"),
+                    new TypeToken<Map<Integer, Long>>() {
+                    }.getType()));
+        }
+
 
         return this;
     }

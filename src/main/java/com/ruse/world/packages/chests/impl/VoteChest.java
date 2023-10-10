@@ -10,7 +10,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SlayerChest extends Chest {
+public class VoteChest extends Chest {
     @Override
     public boolean open(@NotNull Player player) {
         if(player.getInventory().getFreeSlots() <= 0){
@@ -35,7 +35,7 @@ public class SlayerChest extends Chest {
 
     @Override
     public int keyId() {
-        return 23104;
+        return 23103;
     }
 
     @Override
@@ -51,21 +51,25 @@ public class SlayerChest extends Chest {
     @Override
     public List<Item> rewards() {
         List<Item> rewards = new ArrayList<>();
-        rewards.add(new Item(4155, 3));
-        rewards.add(new Item(4155, 5));
-        rewards.add(new Item(4155, 7));
-        rewards.add(new Item(5023, 50));
-        rewards.add(new Item(5023, 100));
-        rewards.add(new Item(5023, 200));
-        rewards.add(new Item(5023, 500));
+        rewards.add(new Item(4000, 10));
+        rewards.add(new Item(4000, 20));
+        rewards.add(new Item(4000, 50));
+        rewards.add(new Item(4000, 100));
+        rewards.add(new Item(4001, 5));
+        rewards.add(new Item(4001, 10));
+        rewards.add(new Item(4001, 25));
+        rewards.add(new Item(4001, 50));
         rewards.add(new Item(995, 25000));
         rewards.add(new Item(995, 50000));
-        rewards.add(new Item(25102, 1));
-        rewards.add(new Item(25102, 2));
-        rewards.add(new Item(25102, 3));
-        rewards.add(new Item(9719, 1));
-        rewards.add(new Item(9719, 3));
-        rewards.add(new Item(9719, 5));
+        rewards.add(new Item(15682, 1));
+        rewards.add(new Item(15682, 2));
+        rewards.add(new Item(15682, 3));
+        rewards.add(new Item(18768, 1));
+        rewards.add(new Item(18768, 2));
+        rewards.add(new Item(18768, 3));
+        rewards.add(new Item(25101, 1));
+        rewards.add(new Item(25101, 2));
+        rewards.add(new Item(25101, 3));
         rewards.add(new Item(23148, 1));
         rewards.add(new Item(23148, 2));
         rewards.add(new Item(23148, 3));

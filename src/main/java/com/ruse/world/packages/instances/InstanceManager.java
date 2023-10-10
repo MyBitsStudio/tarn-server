@@ -123,6 +123,21 @@ public class InstanceManager {
                 instances.put(instance.getInstanceId(), instance);
                 instance.start();
             }
+            case 199 -> {
+                if(!World.handler.eventActive("Halloween"))
+                    return;
+
+                if(!takeItem(player, data)) {
+                    player.sendMessage("You don't have x"+data.getCost().getAmount()+" of "+ItemDefinition.forId(data.getCost().getId()).getName());
+                    return;
+                }
+
+                Instance instance = new MultiBossNormalInstance(player,
+                        data.getNpcId(), data.getSpawns(), cap);
+
+                instances.put(instance.getInstanceId(), instance);
+                instance.start();
+            }
         }
 
     }
@@ -492,13 +507,14 @@ public class InstanceManager {
             case 591 -> player.getVip().getRank() >= 7 && player.getPSettings().getBooleanValue("instance-unlock");
             case 1880 -> GameModeConstants.isIronman(player) && player.getPSettings().getBooleanValue("instance-unlock");
             case 1736, 6430 -> World.handler.eventActive("Fall") && player.getPSettings().getBooleanValue("instance-unlock");
+            case 199 -> World.handler.eventActive("Halloween") && player.getPSettings().getBooleanValue("instance-unlock");
             default -> false;
         };
     }
 
     private boolean handleSpecialLock(int npcId){
         return switch (npcId) {
-            case 9818, 591, 1880, 1736, 6430 -> true;
+            case 9818, 591, 1880, 1736, 6430, 199 -> true;
             default -> false;
         };
     }

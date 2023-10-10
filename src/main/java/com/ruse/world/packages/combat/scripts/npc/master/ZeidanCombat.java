@@ -55,7 +55,7 @@ public class ZeidanCombat implements CombatStrategy {
 
     @Override
     public int attackDelay(Character entity) {
-        return 3;
+        return 7;
     }
 
     @Override
@@ -81,7 +81,7 @@ public class ZeidanCombat implements CombatStrategy {
                 int total = player.getSkillManager().getCurrentLevel(Skill.PRAYER) - 75;
                 player.getSkillManager().setCurrentLevel(Skill.PRAYER, total, true);
                 player.performGraphic(new Graphic(AnimGFX.WHITE_CRYSTAL_MAGIC));
-                player.dealDamage(new Hit(player.getConstitution() / 2, Hitmask.LIGHT_YELLOW, CombatIcon.MAGIC));
+                player.dealDamage(new Hit(player.getConstitution() / 3, Hitmask.LIGHT_YELLOW, CombatIcon.MAGIC));
                 this.stop();
             }
         });
@@ -180,7 +180,7 @@ public class ZeidanCombat implements CombatStrategy {
                 if(player.getPosition().getDistance(npc.getPosition()) <= 1){
                     npc.performAnimation(new Animation(AnimGFX.SLASH_DOWN_MELEE));
                     player.performGraphic(new Graphic(AnimGFX.PURPLE_PORTAL_UP));
-                    player.dealDamage(new Hit(player.getConstitution() / 4, Hitmask.DARK_PURPLE, CombatIcon.MAGIC));
+                    npc.getCombatBuilder().setContainer(new CombatContainer(npc, player, 2, 1, CombatType.MELEE, true));
                 } else {
                     npc.performAnimation(new Animation(AnimGFX.CAST_SPELL_MAGIC));
                     new Projectile(npc.getPosition(), player.getPosition(), 0, 1901, 44, 1, 43, 31, 0).sendProjectile();

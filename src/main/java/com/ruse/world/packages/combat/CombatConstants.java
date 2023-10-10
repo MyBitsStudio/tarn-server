@@ -42,7 +42,7 @@ public class CombatConstants {
     }
 
     public static boolean wearingUltimateBankItem(@NotNull Player player){
-        return player.getEquipment().containsAny(4446, 19886, 15450, 23087, 19888, 18888, 13555, 15834, 11195, 4489, 18818, 18823);
+        return player.getEquipment().containsAny(18823, 19888, 19886);
     }
 
     public static boolean wearingDonator(@NotNull Player player){

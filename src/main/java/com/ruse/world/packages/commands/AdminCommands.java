@@ -9,6 +9,7 @@ import com.ruse.security.save.impl.player.PlayerSecureLoad;
 import com.ruse.util.Misc;
 import com.ruse.util.NameUtils;
 import com.ruse.world.World;
+import com.ruse.world.packages.event.impl.StaffDropEvent;
 import com.ruse.world.packages.globals.GlobalBossManager;
 import com.ruse.world.packages.mode.impl.*;
 import com.ruse.world.entity.impl.player.Player;
@@ -89,10 +90,10 @@ public class AdminCommands {
 //                            WorldBosses3.handleForcedSpawn();
 //                            player.getPacketSender().sendMessage("Spawning vote boss.");
 //                            return true;
-//                        case "veigar":
-//                            WorldBosses4.handleForcedSpawn();
-//                            player.getPacketSender().sendMessage("Spawning vote boss.");
-//                            return true;
+                        case "veigar":
+                           GlobalBossManager.getInstance().spawnVeigar();
+                            player.getPacketSender().sendMessage("Spawning veigar.");
+                            return true;
 //                        case "golden":
 //                            WorldBosses.handleForcedSpawn();
 //                            player.getPacketSender().sendMessage("Spawning vote boss.");
@@ -254,6 +255,19 @@ public class AdminCommands {
                         default -> player.sendMessage("Invalid game mode.");
                     }
                 }
+                return true;
+            }
+            case "start" -> {
+                if(commands.length > 1){
+                    String event = commands[1];
+                    switch(event){
+                        case "drop" -> World.handler.startEvent(new StaffDropEvent());
+                        default -> player.sendMessage("Invalid event.");
+                    }
+                } else {
+                    player.sendMessage("Invalid event.");
+                }
+
                 return true;
             }
         }
