@@ -19,6 +19,11 @@ public class FallEvent extends Event {
     }
 
     @Override
+    public void stop() {
+
+    }
+
+    @Override
     public void onLogin(Player player) {
         player.sendMessage("@red@[EVENT]@whi@ Fall event is active!");
     }

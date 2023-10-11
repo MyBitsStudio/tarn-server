@@ -24,6 +24,11 @@ public class SlayerBonusEvent extends Event {
     }
 
     @Override
+    public void stop() {
+
+    }
+
+    @Override
     public void onLogin(@NotNull Player player) {
         player.sendMessage("@red@[EVENT]@whi@ Slayer Bonus event is active with "+bonus+"%!");
     }

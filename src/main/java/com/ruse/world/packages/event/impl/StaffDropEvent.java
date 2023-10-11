@@ -22,7 +22,7 @@ public class StaffDropEvent extends Event {
 
     private final AtomicBoolean started = new AtomicBoolean(false);
 
-    public static Item[] items = {
+    public static final Item[] items = {
             new Item(995, 5000), new Item(995, 10000), new Item(995, 15000), new Item(995, 25000),
             new Item(995, 50000), new Item(995, 75000), new Item(995, 100000), new Item(995, 250000),
             new Item(10835, 50), new Item(10835, 100), new Item(10835, 150), new Item(10835, 200),
@@ -39,7 +39,7 @@ public class StaffDropEvent extends Event {
             new Item(23057, 1), new Item(604, 5), new Item(604, 10),
 
     };
-    public static Position[] positions = {
+    public static final Position[] positions = {
             new Position(2731, 3463, 0), new Position(2733, 3463, 0), new Position(2735, 3463, 0),
             new Position(2737, 3463, 0), new Position(2739, 3463, 0), new Position(2741, 3463, 0),
             new Position(2743, 3463, 0),
@@ -58,7 +58,7 @@ public class StaffDropEvent extends Event {
     };
     @Override
     public String name() {
-        return "StaffDrop";
+        return "staffdrop";
     }
 
     @Override
@@ -107,6 +107,48 @@ public class StaffDropEvent extends Event {
             }
         });
 
+    }
+
+    @Override
+    public void stop() {
+        TaskManager.submit(new Task(true) {
+
+            int cycle = 0;
+            @Override
+            protected void execute() {
+                ++cycle;
+                if(cycle == 1){
+                    World.getPlayers().stream().filter(Objects::nonNull)
+                            .forEach(player -> {
+                                player.sendMessage("@red@[EVENT]@whi@ Staff drop is wrapping up!");
+                                player.getPacketSender().sendBroadCastMessage("[EVENT] Staff drop is wrapping up!", 300);
+                                World.sendBroadcastMessage("[EVENT] Staff drop is wrapping up!");
+                                GameSettings.broadcastMessage = "[EVENT] Staff drop is wrapping up!";
+                                GameSettings.broadcastTime = 300;
+                            });
+                } else if(cycle == 10){
+                    World.getPlayers().stream().filter(Objects::nonNull)
+                            .forEach(player -> {
+                                player.sendMessage("@red@[EVENT]@whi@ Mass Teleport About To Begin....");
+                                player.getPacketSender().sendBroadCastMessage("[EVENT] Mass Teleport About To Begin....", 300);
+                                World.sendBroadcastMessage("[EVENT] Mass Teleport About To Begin....");
+                                GameSettings.broadcastMessage = "[EVENT] Mass Teleport About To Begin....";
+                                GameSettings.broadcastTime = 300;
+                            });
+                } else if(cycle == 25){
+                    World.getPlayers().stream().filter(Objects::nonNull)
+                            .forEach(player -> {
+                                player.sendMessage("@red@[EVENT]@whi@ Thank you for coming to the event!");
+                                player.getPacketSender().sendBroadCastMessage("[EVENT] Thank you for coming to the event!", 300);
+                                World.sendBroadcastMessage("[EVENT] Thank you for coming to the event!");
+                                GameSettings.broadcastMessage = "[EVENT] Thank you for coming to the event!";
+                                GameSettings.broadcastTime = 300;
+                                TeleportHandler.teleportPlayer(player, GameSettings.DEFAULT_POSITION, TeleportType.ANCIENT);
+                            });
+                    this.stop();
+                }
+            }
+        });
     }
 
     @Override
@@ -160,7 +202,7 @@ public class StaffDropEvent extends Event {
                                 } else if(cycle == 45){
                                     for(Position pos : positions){
                                         GroundItemManager.spawnGroundItem(player,
-                                                new GroundItem(items[Misc.random(items.length)], pos, null, true, 500, true, 500));
+                                                new GroundItem(items[Misc.random(items.length - 1)], pos, null, true, 500, true, 500));
                                     }
                                     World.getPlayers().stream().filter(Objects::nonNull)
                                             .forEach(player -> {

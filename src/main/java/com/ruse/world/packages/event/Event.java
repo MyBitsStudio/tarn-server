@@ -9,6 +9,7 @@ public abstract class Event {
 
     public abstract void start();
 
+    public abstract void stop();
     public abstract void onLogin(Player player);
 
     public abstract boolean handleItem(Player player, Item item);

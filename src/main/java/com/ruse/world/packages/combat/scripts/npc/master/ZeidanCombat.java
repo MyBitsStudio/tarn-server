@@ -72,7 +72,6 @@ public class ZeidanCombat implements CombatStrategy {
         npc.performGraphic(new Graphic(AnimGFX.SKELETON_FREAKOUT));
 
         TaskManager.submit(new Task(true){
-
             @Override
             protected void execute() {
                 player.performGraphic(new Graphic(AnimGFX.SKELETON_FREAKOUT));
@@ -110,7 +109,7 @@ public class ZeidanCombat implements CombatStrategy {
                     new Projectile(npc.getPosition(), position, 0, 665, 44, 1, 43, 31, 0).sendProjectile();
                     if(position.equals(player.getPosition())){
                         player.performGraphic(new Graphic(AnimGFX.WHITE_CRYSTAL_MAGIC));
-                        player.dealDamage(new Hit(Misc.getRandom(20, 400), Hitmask.LIGHT_YELLOW, CombatIcon.MAGIC));
+                        player.dealDamage(new Hit(Misc.getRandom(20, 300), Hitmask.LIGHT_YELLOW, CombatIcon.MAGIC));
                     }
                 }
                 positions = new Position[16];
@@ -126,7 +125,7 @@ public class ZeidanCombat implements CombatStrategy {
                     new Projectile(npc.getPosition(), position, 0, 665, 44, 1, 43, 31, 0).sendProjectile();
                     if(position.equals(player.getPosition())){
                         player.performGraphic(new Graphic(AnimGFX.WHITE_CRYSTAL_MAGIC));
-                        player.dealDamage(new Hit(Misc.getRandom(20, 400), Hitmask.LIGHT_YELLOW, CombatIcon.MAGIC));
+                        player.dealDamage(new Hit(Misc.getRandom(20, 300), Hitmask.LIGHT_YELLOW, CombatIcon.MAGIC));
                     }
                 }
                 positions = new Position[16];
@@ -142,7 +141,7 @@ public class ZeidanCombat implements CombatStrategy {
                     new Projectile(npc.getPosition(), position, 0, 665, 44, 1, 43, 31, 0).sendProjectile();
                     if(position.equals(player.getPosition())){
                         player.performGraphic(new Graphic(AnimGFX.WHITE_CRYSTAL_MAGIC));
-                        player.dealDamage(new Hit(Misc.getRandom(20, 400), Hitmask.LIGHT_YELLOW, CombatIcon.MAGIC));
+                        player.dealDamage(new Hit(Misc.getRandom(20, 300), Hitmask.LIGHT_YELLOW, CombatIcon.MAGIC));
                     }
                 }
                 positions = new Position[16];
@@ -158,7 +157,7 @@ public class ZeidanCombat implements CombatStrategy {
                     new Projectile(npc.getPosition(), position, 0, 665, 44, 1, 43, 31, 0).sendProjectile();
                     if(position.equals(player.getPosition())){
                         player.performGraphic(new Graphic(AnimGFX.WHITE_CRYSTAL_MAGIC));
-                        player.dealDamage(new Hit(Misc.getRandom(20, 400), Hitmask.LIGHT_YELLOW, CombatIcon.MAGIC));
+                        player.dealDamage(new Hit(Misc.getRandom(20, 300), Hitmask.LIGHT_YELLOW, CombatIcon.MAGIC));
                     }
                 }
                 npc.setChargingAttack(false);

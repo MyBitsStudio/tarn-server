@@ -10,6 +10,7 @@ import com.ruse.util.Misc;
 import com.ruse.util.NameUtils;
 import com.ruse.world.World;
 import com.ruse.world.packages.event.impl.StaffDropEvent;
+import com.ruse.world.packages.event.impl.TotemHNS;
 import com.ruse.world.packages.globals.GlobalBossManager;
 import com.ruse.world.packages.mode.impl.*;
 import com.ruse.world.entity.impl.player.Player;
@@ -262,12 +263,22 @@ public class AdminCommands {
                     String event = commands[1];
                     switch(event){
                         case "drop" -> World.handler.startEvent(new StaffDropEvent());
+                        case "hns" -> World.handler.startEvent(new TotemHNS(player));
                         default -> player.sendMessage("Invalid event.");
                     }
                 } else {
                     player.sendMessage("Invalid event.");
                 }
+                return true;
+            }
 
+            case "stop" -> {
+                if(commands.length > 1) {
+                    String event = commands[1];
+                    World.handler.stop(event);
+                } else {
+                    player.sendMessage("Invalid event.");
+                }
                 return true;
             }
         }

@@ -26,6 +26,11 @@ public class DonatorBoostEvent extends Event {
     }
 
     @Override
+    public void stop() {
+
+    }
+
+    @Override
     public void onLogin(Player player) {
         player.sendMessage("@red@[EVENT]@whi@ Donator Bonus event is active with "+boost+"%!");
     }

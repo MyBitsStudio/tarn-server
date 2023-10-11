@@ -104,6 +104,9 @@ public class WorldEventHandler {
     }
 
     public void reload(){
+        for(Event event : events){
+            event.stop();
+        }
         events.clear();
         load();
         startEvents();
@@ -140,6 +143,16 @@ public class WorldEventHandler {
             }
         }
         return false;
+    }
+
+    public void stop(String name){
+        for(Event event : events){
+            if(event.name().equalsIgnoreCase(name)){
+                event.stop();
+                events.remove(event);
+                return;
+            }
+        }
     }
 
 

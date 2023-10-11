@@ -19,6 +19,11 @@ public class DoubleDropEvent extends Event {
     }
 
     @Override
+    public void stop() {
+
+    }
+
+    @Override
     public void onLogin(Player player) {
         player.sendMessage("@red@[EVENT]@whi@ Double Drop event is active!");
     }

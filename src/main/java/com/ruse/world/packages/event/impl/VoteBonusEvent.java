@@ -21,6 +21,11 @@ public class VoteBonusEvent extends Event {
     }
 
     @Override
+    public void stop() {
+
+    }
+
+    @Override
     public void onLogin(@NotNull Player player) {
         player.sendMessage("@red@[EVENT]@whi@ Vote Bonus event is active with 2x!");
     }

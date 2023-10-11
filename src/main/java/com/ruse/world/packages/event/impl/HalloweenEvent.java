@@ -19,6 +19,11 @@ public class HalloweenEvent extends Event {
     }
 
     @Override
+    public void stop() {
+
+    }
+
+    @Override
     public void onLogin(Player player) {
         player.sendMessage("@red@[EVENT]@whi@ Halloween event is active!");
     }

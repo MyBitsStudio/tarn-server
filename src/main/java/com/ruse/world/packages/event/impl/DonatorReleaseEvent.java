@@ -21,6 +21,11 @@ public class DonatorReleaseEvent extends Event {
     }
 
     @Override
+    public void stop() {
+
+    }
+
+    @Override
     public void onLogin(@NotNull Player player) {
         player.sendMessage("@red@[EVENT]@whi@ Donator Release event is active with 50%!");
     }

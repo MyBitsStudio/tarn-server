@@ -503,6 +503,11 @@ public class PlayerCommands {
                         TeleportType.NORMAL);
                 return true;
             }
+            case "veigar" -> {
+                TeleportHandler.teleportPlayer(player, new Position(3032, 5232, 0),
+                        TeleportType.LUNAR);
+                return true;
+            }
             case "ninetails" -> {
                 TeleportHandler.teleportPlayer(player, new Position(2139, 5018, 0),
                         player.getSpellbook().getTeleportType());
