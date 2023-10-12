@@ -26,6 +26,7 @@ import com.ruse.world.packages.slot.SlotEffect;
 import com.ruse.world.packages.tower.TarnTower;
 import com.ruse.world.entity.impl.npc.NPC;
 import com.ruse.world.entity.impl.player.Player;
+import com.ruse.world.packages.transmorgify.Transformations;
 
 import java.util.Objects;
 
@@ -91,17 +92,6 @@ public class OwnerCommands {
                 Position position = new Position(x, y, z);
                 player.moveTo(position);
                 player.getPacketSender().sendMessage("Teleporting to " + position);
-                return true;
-            }
-            case "delete" -> {
-                id = Integer.parseInt(commands[1]);
-                for (NPC npc : World.getNpcs()) {
-                    if (npc == null)
-                        continue;
-                    if (npc.getId() == id) {
-                        World.deregister(npc);
-                    }
-                }
                 return true;
             }
             case "item" -> {
@@ -407,6 +397,16 @@ public class OwnerCommands {
 
             case "data" -> {
                 new SQLVip().execute(player);
+                return true;
+            }
+
+            case "transform" -> {
+                player.getTransmorgify().transmorgify(Transformations.DEATH);
+                return true;
+            }
+
+            case "normal" -> {
+                player.getTransmorgify().returnToNormal();
                 return true;
             }
 

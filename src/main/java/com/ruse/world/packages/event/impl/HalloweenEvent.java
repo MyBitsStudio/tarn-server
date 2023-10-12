@@ -6,25 +6,27 @@ import com.ruse.world.World;
 import com.ruse.world.entity.impl.npc.NPC;
 import com.ruse.world.entity.impl.player.Player;
 import com.ruse.world.packages.event.Event;
+import org.jetbrains.annotations.NotNull;
 
 public class HalloweenEvent extends Event {
     @Override
     public String name() {
-        return "Halloween";
+        return "halloween";
     }
 
     @Override
     public void start() {
-        World.register(new NPC(3306, new Position(2221, 3749, 0)));
+        World.register(new NPC(3306, new Position(2198, 4836, 0)));
+
     }
 
     @Override
     public void stop() {
-
+        World.deregister(new NPC(3306, new Position(2198, 4836, 0)));
     }
 
     @Override
-    public void onLogin(Player player) {
+    public void onLogin(@NotNull Player player) {
         player.sendMessage("@red@[EVENT]@whi@ Halloween event is active!");
     }
 
@@ -51,7 +53,7 @@ public class HalloweenEvent extends Event {
     @Override
     public boolean handleObject(Player player, int objectId, int option) {
         switch(objectId){
-            case 31424 -> {
+            case 2488 -> {
                 switch(option){
                     case 1->{
 

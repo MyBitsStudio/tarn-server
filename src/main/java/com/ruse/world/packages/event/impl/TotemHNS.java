@@ -12,6 +12,7 @@ import com.ruse.world.clip.region.RegionClipping;
 import com.ruse.world.content.CustomObjects;
 import com.ruse.world.entity.impl.player.Player;
 import com.ruse.world.packages.event.Event;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
 
@@ -129,7 +130,7 @@ public class TotemHNS extends Event {
     }
 
     @Override
-    public void onLogin(Player player) {
+    public void onLogin(@NotNull Player player) {
         player.sendMessage("@red@[EVENT]@whi@ Totem HNS Event is active! Start hunting!");
     }
 

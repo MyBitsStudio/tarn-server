@@ -53,11 +53,8 @@ public class PlayerDeathTask extends Task {
 
     private Player player;
     private int ticks = 5;
-    private boolean dropItems = false;
-    private boolean spawnItems = false;
     Position oldPosition;
     Location loc;
-    ArrayList<Item> itemsToKeep = null;
     NPC death;
 
     @Override
@@ -72,128 +69,14 @@ public class PlayerDeathTask extends Task {
                     player.getPacketSender().sendInterfaceRemoval();
                     player.getMovementQueue().setLockMovement(true).reset();
                 }
-                case 3 -> {
+                case 4 -> {
                     if (player.getInstance() != null) {
                         player.getInstance().remove(player);
                     }
                 }
-                case 1 -> {
+                case 3 -> {
                     this.oldPosition = player.getPosition().copy();
                     this.loc = player.getLocation();
-                    if (loc != Location.PEST_CONTROL_GAME) {
-
-                        DamageDealer damageDealer = player.getCombatBuilder().getTopDamageDealer(true, null);
-                        Player killer = damageDealer == null ? null : damageDealer.getPlayer();
-
-                        if (player.getRank().isAdmin())
-                            dropItems = false;
-
-                        if (killer != null) {
-                            if (killer.getRank().isAdmin()) {
-                                dropItems = false;
-                            }
-                        }
-
-                        if (loc == Location.THE_SIX || loc == Location.NOMAD) {
-                            spawnItems = false;
-                        } else spawnItems = killer == null || !killer.isPlayer()
-                                || killer.getMode() instanceof Ironman || killer.getMode() instanceof UltimateIronman
-                                || killer.getMode() instanceof GroupIronman;
-                        if (dropItems) { // check for item dropping
-                            if (!spawnItems) {
-                                if (loc == Location.WILDERNESS && killer.isPlayer()
-                                        && (killer.getMode() instanceof Ironman || killer.getMode() instanceof UltimateIronman
-                                        || killer.getMode() instanceof GroupIronman)) {
-                                    killer.getPacketSender()
-                                            .sendMessage("As an Iron/UIM player, you cannot loot " + player.getUsername()
-                                                    + "...")
-                                            .sendMessage(
-                                                    "To stop them from freely attacking Iron folk, their dropped items have been removed.");
-                                    player.getPacketSender().sendMessage(killer.getUsername() + " was an Iron Man or UIM.")
-                                            .sendMessage(
-                                                    "Because they cannot loot, all of your dropped items have been removed.");
-                                    final CopyOnWriteArrayList<Item> goneItems = new CopyOnWriteArrayList<Item>();
-                                    goneItems.addAll(player.getInventory().getValidItems());
-                                    goneItems.addAll(player.getEquipment().getValidItems());
-                                    for (Item item : goneItems) {
-                                        if (item != null && item.getAmount() > 0 && item.getId() > 0) {
-                                            PlayerLogs.log(player.getUsername(), "Died to IRON: " + killer.getUsername()
-                                                    + ", losing: " + item.getId() + " x " + item.getAmount());
-                                        }
-                                    }
-                                }
-                            }
-                            itemsToKeep = ItemsKeptOnDeath.getItemsToKeep(player);
-                            final ArrayList<Item> playerItems = new ArrayList<Item>();
-                            playerItems.addAll(player.getInventory().getValidItems());
-                            playerItems.addAll(player.getEquipment().getValidItems());
-                            /*
-                             * final CopyOnWriteArrayList<Item> playerItems = new
-                             * CopyOnWriteArrayList<Item>();
-                             * playerItems.addAll(player.getInventory().getValidItems());
-                             * playerItems.addAll(player.getEquipment().getValidItems());
-                             */
-                            final Position position = player.getPosition();
-                            /*
-                             * Collections.sort(playerItems, new Comparator<Item>() { // Despite this
-                             * actually sorting properly, it does not affect how the client displays
-                             * grounditems.
-                             *
-                             * @Override public int compare(Item i1, Item i2) { if (((long)
-                             * i1.getAmount()*i1.getDefinition().getValue()) > ((long)
-                             * i2.getAmount()*i2.getDefinition().getValue())) {
-                             * // System.out.println("r1 "+((long)
-                             * i1.getAmount()*i1.getDefinition().getValue()));
-                             * // System.out.println("r1 "+((long)
-                             * i2.getAmount()*i2.getDefinition().getValue())); return 1; } if (((long)
-                             * i1.getAmount()*i1.getDefinition().getValue()) < ((long)
-                             * i2.getAmount()*i2.getDefinition().getValue())) {
-                             * // System.out.println("r-1 "+((long)
-                             * i1.getAmount()*i1.getDefinition().getValue()));
-                             * // System.out.println("r-1 "+((long)
-                             * i2.getAmount()*i2.getDefinition().getValue())); return -1; } return 0; } });
-                             */
-                            for (Item item : playerItems) {
-                                if (!item.tradeable() || itemsToKeep.contains(item)) {
-                                    if (!itemsToKeep.contains(item)) {
-                                        itemsToKeep.add(item);
-                                    }
-                                    continue;
-                                }
-                                if (spawnItems) {
-                                    if (item.getId() > 0 && item.getAmount() > 0) {
-                                        PlayerLogs.log(player.getUsername(),
-                                                "Died and dropped: " + (ItemDefinition.forId(item.getId()) != null
-                                                        && ItemDefinition.forId(item.getId()).getName() != null
-                                                        ? ItemDefinition.forId(item.getId()).getName()
-                                                        : item.getId())
-                                                        + ", amount: " + item.getAmount());
-                                        GroundItemManager.spawnGroundItem(
-                                                (killer != null ? killer
-                                                        : player),
-                                                new GroundItem(item, position,
-                                                        killer != null ? killer.getUsername() : player.getUsername(),
-                                                        player.getHostAddress(), false, 150, true, 150));
-                                    }
-                                }
-                            }
-                            if (killer == null || player.getLocation() == Location.FREE_FOR_ALL_ARENA) {
-                                PlayerLogs.logKills(player.getUsername(), "Died to npc or unknown");
-                            } else {
-                                killer.getPlayerKillingAttributes().add(player);
-                                player.getPlayerKillingAttributes()
-                                        .setPlayerDeaths(player.getPlayerKillingAttributes().getPlayerDeaths() + 1);
-                                player.getPlayerKillingAttributes().setPlayerKillStreak(0);
-                                PlayerPanel.refreshPanel(player);
-                                PlayerLogs.logKills(killer.getUsername(), "Killed player: " + player.getUsername());
-                                PlayerLogs.logKills(player.getUsername(), "Died to player: " + killer.getUsername());
-                            }
-                            player.getInventory().resetItems().refreshItems();
-                            player.getEquipment().resetItems().refreshItems();
-                        }
-                    } else
-                        dropItems = false;
-
                     player.getPacketSender().sendInterfaceRemoval();
                     player.setEntityInteraction(null);
                     player.getMovementQueue().setFollowCharacter(null);
@@ -202,33 +85,26 @@ public class PlayerDeathTask extends Task {
                     player.setWalkToTask(null);
                     player.getSkillManager().stopSkilling();
                 }
+                case 2 -> death = getDeathNpc(player);
                 case 0 -> {
-                    if (dropItems) {
-                        if (player.getMode() instanceof UltimateIronman) {
-                            player.getMode().changeMode(new Ironman());
-                        } else if (itemsToKeep != null) {
-                            for (Item it : itemsToKeep) {
-                                PlayerLogs.log(player.getUsername(),
-                                        "Died, but KEPT: " + (ItemDefinition.forId(it.getId()) != null
-                                                && ItemDefinition.forId(it.getId()).getName() != null
-                                                ? ItemDefinition.forId(it.getId()).getName()
-                                                : it.getId())
-                                                + ", amount: " + it.getAmount());
-                                player.getInventory().add(it.getId(), it.getAmount());
 
-                            }
-                            itemsToKeep.clear();
-                        }
+                    if (player.getMode() instanceof UltimateIronman) {
+                        player.getMode().changeMode(new Ironman());
+                        player.sendMessage("Your account has been converted to an Ironman account.");
                     }
-                    if (death != null) {
-                        World.deregister(death);
-                    }
+
                     WorldIPChecker.getInstance().leaveContent(player);
+                    player.moveTo(GameSettings.DEFAULT_POSITION.copy());
                     player.restart();
                     player.getUpdateFlag().flag(Flag.APPEARANCE);
                     loc.onDeath(player);
                     player = null;
                     oldPosition = null;
+                    if(death != null)
+                        World.deregister(death);
+
+
+
                     stop();
                 }
             }

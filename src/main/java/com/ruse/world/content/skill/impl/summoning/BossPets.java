@@ -36,6 +36,7 @@ public class BossPets {
 		UNICORN_PET(133, 457, 500,""),
 		SCORPION_PET(271, 456, 500,""),
 		PENGUIN_PET(6305, 22017, 500,""),
+		SKELE_HOUND(6302, -1, 500,""), // find item
 
 		//EFFECT
 		MAGE_PET(9031, 23041, 500,"25% Magic damage boost"),

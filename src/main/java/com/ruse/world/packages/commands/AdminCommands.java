@@ -9,6 +9,8 @@ import com.ruse.security.save.impl.player.PlayerSecureLoad;
 import com.ruse.util.Misc;
 import com.ruse.util.NameUtils;
 import com.ruse.world.World;
+import com.ruse.world.entity.impl.npc.NPC;
+import com.ruse.world.packages.event.impl.HalloweenSpawn;
 import com.ruse.world.packages.event.impl.StaffDropEvent;
 import com.ruse.world.packages.event.impl.TotemHNS;
 import com.ruse.world.packages.globals.GlobalBossManager;
@@ -258,12 +260,24 @@ public class AdminCommands {
                 }
                 return true;
             }
+            case "delete" -> {
+                int id = Integer.parseInt(commands[1]);
+                for (NPC npc : World.getNpcs()) {
+                    if (npc == null)
+                        continue;
+                    if (npc.getId() == id) {
+                        World.deregister(npc);
+                    }
+                }
+                return true;
+            }
             case "start" -> {
                 if(commands.length > 1){
                     String event = commands[1];
                     switch(event){
                         case "drop" -> World.handler.startEvent(new StaffDropEvent());
                         case "hns" -> World.handler.startEvent(new TotemHNS(player));
+                        case "hallow" -> World.handler.startEvent(new HalloweenSpawn());
                         default -> player.sendMessage("Invalid event.");
                     }
                 } else {

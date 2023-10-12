@@ -22,6 +22,7 @@ import com.ruse.world.entity.Entity;
 import com.ruse.world.entity.impl.Character;
 import com.ruse.world.entity.impl.npc.NPC;
 import com.ruse.world.entity.impl.player.Player;
+import com.ruse.world.packages.event.impl.HalloweenEvent;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -116,7 +117,9 @@ public class Locations {
 
 
 		LUCIFER(new int[] { 2301, 2367}, new int[] { 3970, 4024},
-				false, true, true, false, false, true) {},
+				false, true, true, false, false, true) {
+
+		},
 		ZOMBIE(new int[]{2712, 2740}, new int[]{2633, 2661}, true, false, true, false, true, true) {
 			@Override
 			public void logout(Player player) {
@@ -403,8 +406,6 @@ public class Locations {
 
 		///// HERE //////
 		SLASH_BASH(new int[] { 2504, 2561 }, new int[] { 9401, 9473 }, true, true, true, true, true, true) {
-		},
-		BANDOS_AVATAR(new int[] { 2340, 2396 }, new int[] { 4929, 4985 }, true, true, true, true, true, true) {
 		},
 		KALPHITE_QUEEN(new int[] { 3464, 3500 }, new int[] { 9478, 9523 }, true, true, true, true, true, true) {
 		},
@@ -857,31 +858,16 @@ for (Item item : player.getInventory().getItems()) {
 		GRAVEYARD(new int[] { 3485, 3517 }, new int[] { 3559, 3580 }, true, true, false, true, false, false) {
 			@Override
 			public boolean canTeleport(Player player) {
-				if (player.getMinigameAttributes().getGraveyardAttributes().hasEntered()) {
-					player.getPacketSender().sendInterfaceRemoval()
-							.sendMessage("A spell teleports you out of the graveyard.");
-					Graveyard.leave(player);
-					return false;
-				}
+
 				return true;
 			}
 
 			@Override
-			public boolean handleKilledNPC(Player killer, NPC npc) {
-				return killer.getMinigameAttributes().getGraveyardAttributes().hasEntered()
-						&& Graveyard.handleDeath(killer, npc);
-			}
-
-			@Override
 			public void logout(Player player) {
-				if (player.getMinigameAttributes().getGraveyardAttributes().hasEntered()) {
-					Graveyard.leave(player);
-				}
 			}
 
 			@Override
 			public void onDeath(Player player) {
-				Graveyard.leave(player);
 			}
 
 			@Override
@@ -1363,6 +1349,31 @@ for (Item item : player.getInventory().getItems()) {
 			}
 		},
 		ZEIDAN(new int[] { 2562, 2600}, new int[] { 4485, 4526}, false, true, false, false, false, true) {
+
+		},
+		DEATH_ALTAR(new int[] { 2179, 2237}, new int[] { 4810, 4859 }, false, true, false, false, false, true) {
+			@Override
+			public void enter(Player player) {
+				if(!World.handler.eventActive("halloween")){
+					player.moveTo(GameSettings.DEFAULT_POSITION);
+					player.sendMessage("You can only enter the death altar during the halloween event");
+					return;
+				}
+//				if(!WorldIPChecker.getInstance().addToContent(player, "halloween")){
+//					player.moveTo(GameSettings.DEFAULT_POSITION);
+//					player.sendMessage("You are only allowed one account in Halloween zones");
+//					return;
+//				}
+			}
+
+			@Override
+			public void login(Player player) {
+				if(!World.handler.eventActive("halloween")){
+					player.moveTo(GameSettings.DEFAULT_POSITION);
+					player.sendMessage("You can only enter the death altar during the halloween event");
+				}
+			}
+
 
 		},
 		;

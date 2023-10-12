@@ -55,7 +55,7 @@ public class WorldEventHandler {
                 WorldTimers.register(new DoubleDropTimer(Timer.HOURS * 3));
             }
 
-            if(random >= 100 && random <= 125){
+            if(random >= 100 && random <= 110){
                 GlobalBossManager.getInstance().spawnVeigar();
             }
         }

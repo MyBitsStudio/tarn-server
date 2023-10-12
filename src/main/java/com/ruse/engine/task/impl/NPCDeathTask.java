@@ -172,13 +172,7 @@ public class NPCDeathTask extends Task {
                                     npc.setDying(false);
 
                                     if (killer != null) {
-
-                                        if (npc.isEventBoss()) {
-                                            EventBossDropHandler.death(killer, npc);
-                                        }
-
                                         summoning(killer, npc.getId());
-
                                     }
 
                                     npc.onDeath(killer);
