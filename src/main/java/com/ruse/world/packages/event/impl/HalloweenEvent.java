@@ -69,6 +69,8 @@ public class HalloweenEvent extends Event {
                                 player.getInventory().add(1960, 25);
                                 player.getInventory().add(750, 1);
                                 player.sendMessage("You have claimed the Halloween pack!");
+                                player.getPSettings().setSetting("hallow-pack", true);
+
                             } else {
                                 player.sendMessage("You have already claimed your Halloween pack!");
                             }
