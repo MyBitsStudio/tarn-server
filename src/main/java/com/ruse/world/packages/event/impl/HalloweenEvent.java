@@ -63,13 +63,13 @@ public class HalloweenEvent extends Event {
 
                         if(player.getInventory().getFreeSlots() >= 5){
                             if(WorldIPChecker.getInstance().check(player, "hallow-pack")){
+                                player.getPSettings().setSetting("hallow-pack", true);
                                 player.getInventory().add(20083, 1);
                                 player.getInventory().add(17831, 1000);
                                 player.getInventory().add(10835, 500);
                                 player.getInventory().add(1960, 25);
                                 player.getInventory().add(750, 1);
                                 player.sendMessage("You have claimed the Halloween pack!");
-                                player.getPSettings().setSetting("hallow-pack", true);
 
                             } else {
                                 player.sendMessage("You have already claimed your Halloween pack!");

@@ -205,7 +205,7 @@ public class ItemActionPacketListener implements PacketListener {
         switch (itemId) {
 
             case 750 :
-                player.getTransmorgify().sendInterface(1);
+                player.getTransmorgify().sendInterface(0);
                 break;
 
             case 23057:
