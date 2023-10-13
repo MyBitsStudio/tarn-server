@@ -6,10 +6,7 @@ import com.ruse.util.Misc;
 import com.ruse.world.WorldCalendar;
 import com.ruse.world.WorldTimers;
 import com.ruse.world.entity.impl.player.Player;
-import com.ruse.world.packages.event.impl.DonatorBoostEvent;
-import com.ruse.world.packages.event.impl.DoubleDropEvent;
-import com.ruse.world.packages.event.impl.SlayerBonusEvent;
-import com.ruse.world.packages.event.impl.VoteBonusEvent;
+import com.ruse.world.packages.event.impl.*;
 import com.ruse.world.packages.globals.GlobalBossManager;
 import com.ruse.world.timers.DoubleDropTimer;
 import lombok.Getter;
@@ -57,6 +54,10 @@ public class WorldEventHandler {
 
             if(random >= 100 && random <= 110){
                 GlobalBossManager.getInstance().spawnVeigar();
+            }
+
+            if(random == 137){
+                startEvent(new HalloweenSpawn());
             }
         }
     }

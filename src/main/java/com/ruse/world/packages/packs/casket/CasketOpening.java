@@ -8,6 +8,7 @@ import com.ruse.util.Misc;
 import com.ruse.world.World;
 import com.ruse.world.entity.impl.player.Player;
 import com.ruse.world.packages.packs.casket.packs.*;
+import com.ruse.world.packages.packs.casket.packs.limited.HalloweenCracker;
 import com.ruse.world.packages.packs.casket.packs.limited.LimitedMaster1;
 import lombok.Getter;
 
@@ -326,6 +327,7 @@ public class CasketOpening {
         ASTA_BOX(20488, AstaFireChest.loot),
         DEATH_BOX(14490, DeathChest.loot),
         TARN_CHEST(23002, TarnMasterChest.loot),
+        H_CRACKER(20083, HalloweenCracker.loot),
         ;
         private final int itemID;
         private final Box[] loot;

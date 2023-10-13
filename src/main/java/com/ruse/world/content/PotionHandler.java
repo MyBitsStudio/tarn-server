@@ -84,7 +84,7 @@ public class PotionHandler {
             case 23124:
             case 23125:
             case 23126:
-                if (player.getLocation() == Locations.Location.WILDERNESS || player.getLocation() == Locations.Location.DUEL_ARENA) {
+                if ( player.getLocation() == Locations.Location.DUEL_ARENA) {
                     player.getPacketSender().sendMessage("You cannot use this potion here.");
                     return false;
                 }

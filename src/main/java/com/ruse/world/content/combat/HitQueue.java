@@ -245,19 +245,6 @@ public class HitQueue {
 
 				player.getPacketSender().sendCombatBoxData(victim);
 
-				/** SKULLS **/
-				if (player.getLocation() == Location.WILDERNESS && victim.isPlayer()) {
-					boolean didRetaliate = player.getCombatBuilder().didAutoRetaliate();
-					if (!didRetaliate) {
-						boolean soloRetaliate = !player.getCombatBuilder().isBeingAttacked();
-						boolean multiRetaliate = player.getCombatBuilder().isBeingAttacked()
-								&& player.getCombatBuilder().getLastAttacker() != victim && Location.inMulti(player);
-						if (soloRetaliate || multiRetaliate) {
-							CombatFactory.skullPlayer(player);
-						}
-					}
-				}
-
 				player.setLastCombatType(container.getCombatType());
 
 				Sounds.sendSound(player, Sounds.getPlayerAttackSound(player));

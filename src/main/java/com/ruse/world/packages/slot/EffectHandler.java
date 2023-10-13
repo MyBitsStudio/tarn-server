@@ -18,8 +18,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
 
-import static com.ruse.world.packages.combat.sets.SetPerk.AOE_3;
-import static com.ruse.world.packages.combat.sets.SetPerk.FIREWALL;
+import static com.ruse.world.packages.combat.sets.SetPerk.*;
 
 public class EffectHandler {
 
@@ -60,9 +59,9 @@ public class EffectHandler {
         }
 
         if(p.getEquipment().hasLifeBringer()){
-            if(Misc.random(165) == 33){
-                p.heal(50);
-                p.sendMessage("Your life bringer perk has healed you for 50 health.");
+            if(Misc.random(100) == 33){
+                p.heal(100);
+                p.sendMessage("Your life bringer perk has healed you for 100 health.");
             }
         }
 
@@ -73,6 +72,12 @@ public class EffectHandler {
             }
             if(Objects.equals(p.getEquipment().getBonus().perk(), FIREWALL)){
                 handleFirewall(p, victim);
+            }
+            if(Objects.equals(p.getEquipment().getBonus().perk(), LIFE_BRINGER)){
+                if(Misc.random(100) == 33){
+                    p.heal(100);
+                    p.sendMessage("Your life bringer set perk has healed you for 100 health.");
+                }
             }
         }
 
@@ -102,6 +107,17 @@ public class EffectHandler {
                 defender.sendMessage("Your life stealer perk has healed you for " + damage / 10 + " health.");
             }
         }
+
+        if(defender.getEquipment().getBonus() != null){
+            if(Objects.equals(defender.getEquipment().getBonus().perk(), LIFE_STEALER)){
+                if(Misc.random(250) == 66){
+                    defender.heal(damage / 10);
+                    defender.sendMessage("Your life stealer perk has healed you for " + damage / 10 + " health.");
+                }
+            }
+        }
+
+
 
         if(defender.getEquipment().hasBounceBack()){
             if(Misc.random(250) == 121){

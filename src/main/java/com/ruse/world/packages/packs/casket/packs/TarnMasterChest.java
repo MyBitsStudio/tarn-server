@@ -5,7 +5,7 @@ import com.ruse.world.packages.packs.casket.Box;
 public class TarnMasterChest {
 
     public static Box[] loot = {
-            new Box(22211, 1, 30, true),
+            new Box(22111, 1, 30, true),
             new Box(22229, 1, 20, true),
             new Box(22230, 1, 20, true),
             new Box(22231, 1, 20, true),

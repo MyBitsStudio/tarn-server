@@ -45,6 +45,8 @@ public class PlayerSettings {
         settings.put("donator", false); // donator calendar
         settings.put("fall-unlock", false); // donator calendar
 
+        settings.put("hallow-pack", false);
+
         settings.put("last-login", 1);
         
         settings.put("normal-rewire", true);

@@ -4,6 +4,9 @@ import com.ruse.security.save.impl.player.PlayerLockLoad;
 import com.ruse.security.save.impl.player.PlayerLockSave;
 import com.ruse.security.tools.SecurityUtils;
 import com.ruse.world.World;
+import com.ruse.world.packages.discord.BotManager;
+import com.ruse.world.packages.discord.impl.admin.AdminBot;
+import com.ruse.world.packages.discord.modal.MessageCreate;
 import com.ruse.world.packages.discordbot.AdminCord;
 import com.ruse.world.entity.impl.player.Player;
 import org.jetbrains.annotations.NotNull;
@@ -246,7 +249,8 @@ public class PlayerLock {
         addLog(key, log);
         addLog(key);
         save();
-        AdminCord.sendMessage(1116230759225765968L, player.getUsername()+" has been ticked by the security system for "+key);
+        BotManager.getInstance().sendMessage("ADMIN", AdminBot.SECURITY, new MessageCreate(player.getUsername()+" has been ticked by the security system for "+key));
+        //AdminCord.sendMessage(1116230759225765968L, player.getUsername()+" has been ticked by the security system for "+key);
         return false;
     }
 
@@ -263,8 +267,8 @@ public class PlayerLock {
         if(World.getPlayerByName(player.getUsername()) != null){
             player.getPlayerFlags().setFlag(FORCE_KICK, true);
         }
-
-        AdminCord.sendMessage(1116230759225765968L, player.getUsername()+" has been locked by the security system for "+key);
+        BotManager.getInstance().sendMessage("ADMIN", AdminBot.SECURITY, new MessageCreate(player.getUsername()+" has been locked by the security system for "+key));
+        //AdminCord.sendMessage(1116230759225765968L, player.getUsername()+" has been locked by the security system for "+key);
 
     }
 

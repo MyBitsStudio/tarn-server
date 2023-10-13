@@ -22,6 +22,7 @@ import com.ruse.world.packages.bosses.special.VoteInstance;
 import com.ruse.world.packages.bosses.special.event.EventInstance;
 import com.ruse.world.packages.combat.drops.DropManager;
 import com.ruse.world.packages.instances.impl.DonatorDailyMaterial;
+import com.ruse.world.packages.instances.impl.casket.DailyCasket;
 import com.ruse.world.packages.instances.impl.treasure.DailyTreasure;
 import com.ruse.world.packages.mode.GameModeConstants;
 import com.ruse.world.packages.tower.TowerLevel;
@@ -71,6 +72,13 @@ public class InstanceManager {
         instances.put(instance.getInstanceId(), instance);
         instance.start();
     }
+    public void startDailyCasket(@NotNull Player player){
+        DailyCasket instance = new DailyCasket(player);
+
+        instances.put(instance.getInstanceId(), instance);
+        instance.start();
+    }
+
 
     public void startEventInstance(@NotNull Player player, InstanceInterData data){
         if(player.getInstance() != null) {

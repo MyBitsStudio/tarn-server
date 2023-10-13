@@ -126,7 +126,7 @@ public class Craft {
                     }
 
                     if(product.getType() != 0){
-                        if(Misc.random(100) < 49){
+                        if(Misc.random(100) < 24){
                             player.getInventory().add(new Item(product.getFinalProduct()));
                             player.getSkillManager().addExperience(Skill.CRAFTING, product.getXp());
                             player.sendMessage("You have crafted a " + ItemDefinition.forId(product.getFinalProduct()).getName() + ".");

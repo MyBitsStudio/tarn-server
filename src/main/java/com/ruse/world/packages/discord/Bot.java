@@ -20,7 +20,7 @@ public abstract class Bot {
                     .setActivity(Activity.watching("Tarn"))
                     .build()
                     .awaitReady(); // Blocking guarantees that JDA will be completely loaded.
-        } catch (LoginException | InterruptedException e) {
+        } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
     }

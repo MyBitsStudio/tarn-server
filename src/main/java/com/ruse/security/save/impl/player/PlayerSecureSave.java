@@ -287,6 +287,8 @@ public class PlayerSecureSave extends SecureSave {
 
         object.add("currency-pouch", builder.toJsonTree(player.getPouch().getCurrency()));
 
+        object.add("transforms", builder.toJsonTree(player.getTransmorgify().getTransformations()));
+
         return this;
     }
 

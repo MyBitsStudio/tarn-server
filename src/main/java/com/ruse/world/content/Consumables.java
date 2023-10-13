@@ -76,10 +76,6 @@ public class Consumables {
             return;
         }
 
-        if (Dueling.checkRule(player, DuelRule.NO_FOOD)) {
-            player.getPacketSender().sendMessage("Food has been disabled in this duel.");
-            return;
-        }
         if (player.getFoodTimer().elapsed(1100)) {
             player.getCombatBuilder().incrementAttackTimer(2).cooldown(false);
             player.getCombatBuilder().setDistanceSession(null);
@@ -92,13 +88,16 @@ public class Consumables {
                 player.getInventory().delete(food.item, slot);
 
             int heal = food.heal;
-            if (food == FoodType.ROCKTAIL) {
-                int max = (player.getSkillManager().getMaxLevel(Skill.CONSTITUTION) + 100);
-                if (player.getSkillManager().getCurrentLevel(Skill.CONSTITUTION) >= (max)) {
-                    heal = 100;
+            int prayer = 0;
+            if (food == FoodType.PUMP_CANDIES) {
+                int max = player.getSkillManager().getMaxLevel(Skill.CONSTITUTION);
+                if (heal + player.getSkillManager().getCurrentLevel(Skill.CONSTITUTION) > max) {
+                    heal = max - player.getSkillManager().getCurrentLevel(Skill.CONSTITUTION);
                 }
-                if (player.getConstitution() + heal > max) {
-                    player.setConstitution(max);
+                prayer = 100;
+                max = player.getSkillManager().getMaxLevel(Skill.PRAYER);
+                if (prayer + player.getSkillManager().getCurrentLevel(Skill.PRAYER) > max) {
+                    prayer = max - player.getSkillManager().getCurrentLevel(Skill.PRAYER);
                 }
             } else {
                 int max = player.getSkillManager().getMaxLevel(Skill.CONSTITUTION);
@@ -116,6 +115,9 @@ public class Consumables {
             String e = Objects.equals(food.toString(), "BANDAGES") ? "use" : "eat";
             player.getPacketSender().sendMessage("You " + e + " the " + food.name + ".");
             player.setConstitution(player.getConstitution() + heal);
+            player.getSkillManager().setCurrentLevel(Skill.PRAYER,
+                    player.getSkillManager().getCurrentLevel(Skill.PRAYER)
+                            + prayer);
             if (player.getConstitution() > 1190)
                 player.setConstitution(1190);
             Sounds.sendSound(player, Sound.EAT_FOOD);
@@ -185,7 +187,7 @@ public class Consumables {
         PUMPKIN(new Item(1959), 260), OKTOBERTFEST_PRETZEL(new Item(19778), 820),
         BLUE_SWEETS(new Item(4558), 100), DEEP_SWEETS(new Item(4559), 160), WHITE_SWEETS(new Item(4560), 250),
         PINK_SWEETS(new Item(4564), 360), GREEN_SWEETS(new Item(4563), 470), PURPLE_SWEETS(new Item(4561), 520),
-        RED_SWEETS(new Item(4562), 660), CANDY(new Item(13557), 200),
+        RED_SWEETS(new Item(4562), 660), PUMP_CANDIES(new Item(1960), 660), CANDY(new Item(13557), 200),
         ;
 
         FoodType(Item item, int heal) {
@@ -1447,10 +1449,6 @@ public class Consumables {
 //                    Sounds.sendSound(player, Sound.DRINK_POTION);
                     break;
                 case 15308:
-                    if (player.getLocation() != null && player.getLocation() == Location.WILDERNESS) {
-                        player.getPacketSender().sendMessage("You cannot use this potion in the Wilderness.");
-                        return;
-                    }
                     player.performAnimation(new Animation(829));
                     player.getInventory().getItems()[slot] = new Item(15309, 1);
                     player.getInventory().refreshItems();
@@ -1458,10 +1456,6 @@ public class Consumables {
                             player.getSkillManager().getCurrentLevel(Objects.requireNonNull(Skill.forId(0))) + getExtremePotionBoost(player, 0));
                     break;
                 case 15309:
-                    if (player.getLocation() != null && player.getLocation() == Location.WILDERNESS) {
-                        player.getPacketSender().sendMessage("You cannot use this potion in the Wilderness.");
-                        return;
-                    }
                     player.performAnimation(new Animation(829));
                     player.getInventory().getItems()[slot] = new Item(15310, 1);
                     player.getInventory().refreshItems();
@@ -1469,10 +1463,6 @@ public class Consumables {
                             player.getSkillManager().getCurrentLevel(Skill.forId(0)) + getExtremePotionBoost(player, 0));
                     break;
                 case 15310:
-                    if (player.getLocation() != null && player.getLocation() == Location.WILDERNESS) {
-                        player.getPacketSender().sendMessage("You cannot use this potion in the Wilderness.");
-                        return;
-                    }
                     player.performAnimation(new Animation(829));
                     player.getInventory().getItems()[slot] = new Item(15311, 1);
                     player.getInventory().refreshItems();
@@ -1480,10 +1470,6 @@ public class Consumables {
                             player.getSkillManager().getCurrentLevel(Skill.forId(0)) + getExtremePotionBoost(player, 0));
                     break;
                 case 15311:
-                    if (player.getLocation() != null && player.getLocation() == Location.WILDERNESS) {
-                        player.getPacketSender().sendMessage("You cannot use this potion in the Wilderness.");
-                        return;
-                    }
                     player.performAnimation(new Animation(829));
                     player.getInventory().getItems()[slot] = new Item(229);
                     player.getInventory().refreshItems();
@@ -1494,10 +1480,6 @@ public class Consumables {
                  * Extreme Strength potion
                  */
                 case 15312:
-                    if (player.getLocation() != null && player.getLocation() == Location.WILDERNESS) {
-                        player.getPacketSender().sendMessage("You cannot use this potion in the Wilderness.");
-                        return;
-                    }
                     player.performAnimation(new Animation(829));
                     player.getInventory().getItems()[slot] = new Item(15313, 1);
                     player.getInventory().refreshItems();
@@ -1505,10 +1487,6 @@ public class Consumables {
                             player.getSkillManager().getCurrentLevel(Skill.forId(2)) + getExtremePotionBoost(player, 2));
                     break;
                 case 15313:
-                    if (player.getLocation() != null && player.getLocation() == Location.WILDERNESS) {
-                        player.getPacketSender().sendMessage("You cannot use this potion in the Wilderness.");
-                        return;
-                    }
                     player.performAnimation(new Animation(829));
                     player.getInventory().getItems()[slot] = new Item(15314, 1);
                     player.getInventory().refreshItems();
@@ -1516,10 +1494,6 @@ public class Consumables {
                             player.getSkillManager().getCurrentLevel(Skill.forId(2)) + getExtremePotionBoost(player, 2));
                     break;
                 case 15314:
-                    if (player.getLocation() != null && player.getLocation() == Location.WILDERNESS) {
-                        player.getPacketSender().sendMessage("You cannot use this potion in the Wilderness.");
-                        return;
-                    }
                     player.performAnimation(new Animation(829));
                     player.getInventory().getItems()[slot] = new Item(15315, 1);
                     player.getInventory().refreshItems();
@@ -1527,10 +1501,6 @@ public class Consumables {
                             player.getSkillManager().getCurrentLevel(Skill.forId(2)) + getExtremePotionBoost(player, 2));
                     break;
                 case 15315:
-                    if (player.getLocation() != null && player.getLocation() == Location.WILDERNESS) {
-                        player.getPacketSender().sendMessage("You cannot use this potion in the Wilderness.");
-                        return;
-                    }
                     player.performAnimation(new Animation(829));
                     player.getInventory().getItems()[slot] = new Item(229);
                     player.getInventory().refreshItems();
@@ -1541,10 +1511,6 @@ public class Consumables {
                  * Extreme Defence potions
                  */
                 case 15316:
-                    if (player.getLocation() != null && player.getLocation() == Location.WILDERNESS) {
-                        player.getPacketSender().sendMessage("You cannot use this potion in the Wilderness.");
-                        return;
-                    }
                     player.performAnimation(new Animation(829));
                     player.getInventory().getItems()[slot] = new Item(15317, 1);
                     player.getInventory().refreshItems();
@@ -1552,10 +1518,6 @@ public class Consumables {
                             player.getSkillManager().getCurrentLevel(Skill.forId(1)) + getExtremePotionBoost(player, 1));
                     break;
                 case 15317:
-                    if (player.getLocation() != null && player.getLocation() == Location.WILDERNESS) {
-                        player.getPacketSender().sendMessage("You cannot use this potion in the Wilderness.");
-                        return;
-                    }
                     player.performAnimation(new Animation(829));
                     player.getInventory().getItems()[slot] = new Item(15318, 1);
                     player.getInventory().refreshItems();
@@ -1563,10 +1525,6 @@ public class Consumables {
                             player.getSkillManager().getCurrentLevel(Skill.forId(1)) + getExtremePotionBoost(player, 1));
                     break;
                 case 15318:
-                    if (player.getLocation() != null && player.getLocation() == Location.WILDERNESS) {
-                        player.getPacketSender().sendMessage("You cannot use this potion in the Wilderness.");
-                        return;
-                    }
                     player.performAnimation(new Animation(829));
                     player.getInventory().getItems()[slot] = new Item(15319, 1);
                     player.getInventory().refreshItems();
@@ -1574,10 +1532,6 @@ public class Consumables {
                             player.getSkillManager().getCurrentLevel(Skill.forId(1)) + getExtremePotionBoost(player, 1));
                     break;
                 case 15319:
-                    if (player.getLocation() != null && player.getLocation() == Location.WILDERNESS) {
-                        player.getPacketSender().sendMessage("You cannot use this potion in the Wilderness.");
-                        return;
-                    }
                     player.performAnimation(new Animation(829));
                     player.getInventory().getItems()[slot] = new Item(229);
                     player.getInventory().refreshItems();
@@ -1588,10 +1542,6 @@ public class Consumables {
                  * Extreme Magic potions
                  */
                 case 15320:
-                    if (player.getLocation() != null && player.getLocation() == Location.WILDERNESS) {
-                        player.getPacketSender().sendMessage("You cannot use this potion in the Wilderness.");
-                        return;
-                    }
                     player.performAnimation(new Animation(829));
                     player.getInventory().getItems()[slot] = new Item(15321, 1);
                     player.getInventory().refreshItems();
@@ -1599,10 +1549,6 @@ public class Consumables {
                             player.getSkillManager().getCurrentLevel(Skill.forId(6)) + getExtremePotionBoost(player, 6));
                     break;
                 case 15321:
-                    if (player.getLocation() != null && player.getLocation() == Location.WILDERNESS) {
-                        player.getPacketSender().sendMessage("You cannot use this potion in the Wilderness.");
-                        return;
-                    }
                     player.performAnimation(new Animation(829));
                     player.getInventory().getItems()[slot] = new Item(15322, 1);
                     player.getInventory().refreshItems();
@@ -1610,10 +1556,6 @@ public class Consumables {
                             player.getSkillManager().getCurrentLevel(Skill.forId(6)) + getExtremePotionBoost(player, 6));
                     break;
                 case 15322:
-                    if (player.getLocation() != null && player.getLocation() == Location.WILDERNESS) {
-                        player.getPacketSender().sendMessage("You cannot use this potion in the Wilderness.");
-                        return;
-                    }
                     player.performAnimation(new Animation(829));
                     player.getInventory().getItems()[slot] = new Item(15323, 1);
                     player.getInventory().refreshItems();
@@ -1621,10 +1563,6 @@ public class Consumables {
                             player.getSkillManager().getCurrentLevel(Skill.forId(6)) + getExtremePotionBoost(player, 6));
                     break;
                 case 15323:
-                    if (player.getLocation() != null && player.getLocation() == Location.WILDERNESS) {
-                        player.getPacketSender().sendMessage("You cannot use this potion in the Wilderness.");
-                        return;
-                    }
                     player.performAnimation(new Animation(829));
                     player.getInventory().getItems()[slot] = new Item(229);
                     player.getInventory().refreshItems();
@@ -1635,10 +1573,6 @@ public class Consumables {
                  * Extreme Ranging potions
                  */
                 case 15324:
-                    if (player.getLocation() != null && player.getLocation() == Location.WILDERNESS) {
-                        player.getPacketSender().sendMessage("You cannot use this potion in the Wilderness.");
-                        return;
-                    }
                     player.performAnimation(new Animation(829));
                     player.getInventory().getItems()[slot] = new Item(15325, 1);
                     player.getInventory().refreshItems();
@@ -1646,10 +1580,6 @@ public class Consumables {
                             player.getSkillManager().getCurrentLevel(Skill.forId(4)) + getExtremePotionBoost(player, 4));
                     break;
                 case 15325:
-                    if (player.getLocation() != null && player.getLocation() == Location.WILDERNESS) {
-                        player.getPacketSender().sendMessage("You cannot use this potion in the Wilderness.");
-                        return;
-                    }
                     player.performAnimation(new Animation(829));
                     player.getInventory().getItems()[slot] = new Item(15326, 1);
                     player.getInventory().refreshItems();
@@ -1657,10 +1587,6 @@ public class Consumables {
                             player.getSkillManager().getCurrentLevel(Skill.forId(4)) + getExtremePotionBoost(player, 4));
                     break;
                 case 15326:
-                    if (player.getLocation() != null && player.getLocation() == Location.WILDERNESS) {
-                        player.getPacketSender().sendMessage("You cannot use this potion in the Wilderness.");
-                        return;
-                    }
                     player.performAnimation(new Animation(829));
                     player.getInventory().getItems()[slot] = new Item(15327, 1);
                     player.getInventory().refreshItems();
@@ -1668,10 +1594,6 @@ public class Consumables {
                             player.getSkillManager().getCurrentLevel(Skill.forId(4)) + getExtremePotionBoost(player, 4));
                     break;
                 case 15327:
-                    if (player.getLocation() != null && player.getLocation() == Location.WILDERNESS) {
-                        player.getPacketSender().sendMessage("You cannot use this potion in the Wilderness.");
-                        return;
-                    }
                     player.performAnimation(new Animation(829));
                     player.getInventory().getItems()[slot] = new Item(229);
                     player.getInventory().refreshItems();
@@ -1823,7 +1745,7 @@ public class Consumables {
     }
 
     public static boolean drinkOverload(final Player player, int slot, int replacePotion) {
-        if (player.getLocation() == Location.WILDERNESS || player.getLocation() == Location.DUEL_ARENA) {
+        if ( player.getLocation() == Location.DUEL_ARENA) {
             player.getPacketSender().sendMessage("You cannot use this potion here.");
             return false;
         }
@@ -1844,7 +1766,7 @@ public class Consumables {
     }
 
     public static boolean drinkSuperOverload(final Player player, int slot, int replacePotion) {
-        if (player.getLocation() == Location.WILDERNESS || player.getLocation() == Location.DUEL_ARENA) {
+        if ( player.getLocation() == Location.DUEL_ARENA) {
             player.getPacketSender().sendMessage("You cannot use this potion here.");
             return false;
         }
@@ -1865,7 +1787,7 @@ public class Consumables {
     }
 
     public static boolean drinkRestore(final Player player, int slot, int replacePotion) {
-        if (player.getLocation() == Location.WILDERNESS || player.getLocation() == Location.DUEL_ARENA) {
+        if ( player.getLocation() == Location.DUEL_ARENA) {
             player.getPacketSender().sendMessage("You cannot use this potion here.");
             return false;
         }

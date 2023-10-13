@@ -7,7 +7,7 @@
       2340, 9910, 9838, 9807, 9845, 9815, 9920, 1122, 13465, 13469, 9816,
       13474, 13478, 13479, 810, 6692, 9028, 9029, 9030, 606, 6221, 6219,
       6220, 6231, 6229, 6230, 6257, 6255, 6256, 6278, 6277, 6276, 6206,
-      6204, 6208, 9713
+      6204, 6208, 9713, 8011
     ],
     "tables" : [
       "DEFAULT"
@@ -4633,6 +4633,391 @@
           "max" : 250,
           "modifier" : 3296.00,
           "announce" : false
+        }
+      ]
+    }
+  },
+  {
+    "id" : [
+      199
+    ],
+    "tables" : [
+      "RARE", "UNIQUE"
+    ],
+    "custom" : {
+      "name" : "Hunters",
+      "weight" : 19.79,
+      "drops" : [
+        {
+          "id" : 17831,
+          "chance" : 0,
+          "min" : 20,
+          "max" : 300,
+          "modifier" : 6845.00,
+          "announce" : false
+        },
+        {
+          "id" : 20422,
+          "chance" : 0,
+          "min" : 2,
+          "max" : 10,
+          "modifier" : 3445.00,
+          "announce" : false
+        },
+        {
+          "id" : 20083,
+          "chance" : 1,
+          "min" : 1,
+          "max" : 1,
+          "modifier" : 22445.00,
+          "announce" : true
+        }
+      ]
+    }
+  },
+  {
+    "_comment" : "Special"
+  },
+  {
+    "id" : [
+      6330, 6093, 5422, 5411, 8162, 5408, 5401
+    ],
+    "tables" : [
+      "RARE", "UNIQUE"
+    ],
+    "custom" : {
+      "name" : "ZKSpawn",
+      "weight" : 24.79,
+      "drops" : [
+        {
+          "id" : 17831,
+          "chance" : 0,
+          "min" : 10,
+          "max" : 50,
+          "modifier" : 1.00,
+          "announce" : false
+        },
+        {
+          "id" : 17831,
+          "chance" : 0,
+          "min" : 20,
+          "max" : 350,
+          "modifier" : 1445.00,
+          "announce" : false
+        },
+        {
+          "id" : 20422,
+          "chance" : 0,
+          "min" : 2,
+          "max" : 10,
+          "modifier" : 445.00,
+          "announce" : false
+        },
+        {
+          "id" : 20083,
+          "chance" : 1,
+          "min" : 1,
+          "max" : 1,
+          "modifier" : 10445.00,
+          "announce" : true
+        },
+        {
+          "id" : 1960,
+          "chance" : 0,
+          "min" : 5,
+          "max" : 15,
+          "modifier" : 845.00,
+          "announce" : true
+        },
+        {
+          "id" : 20502,
+          "chance" : 0,
+          "min" : 1,
+          "max" : 3,
+          "modifier" : 1245.00,
+          "announce" : true
+        },
+        {
+          "id" : 23255,
+          "chance" : 0,
+          "min" : 1,
+          "max" : 3,
+          "modifier" : 1245.00,
+          "announce" : true
+        }
+      ]
+    }
+  },
+  {
+    "id" : [
+      6100, 6104
+    ],
+    "tables" : [
+      "RARE", "UNIQUE"
+    ],
+    "custom" : {
+      "name" : "ZKSpawn",
+      "weight" : 24.79,
+      "drops" : [
+        {
+          "id" : 17831,
+          "chance" : 0,
+          "min" : 20,
+          "max" : 75,
+          "modifier" : 1.00,
+          "announce" : false
+        },
+        {
+          "id" : 17831,
+          "chance" : 0,
+          "min" : 20,
+          "max" : 500,
+          "modifier" : 1445.00,
+          "announce" : false
+        },
+        {
+          "id" : 20422,
+          "chance" : 0,
+          "min" : 5,
+          "max" : 15,
+          "modifier" : 445.00,
+          "announce" : false
+        },
+        {
+          "id" : 20083,
+          "chance" : 1,
+          "min" : 1,
+          "max" : 1,
+          "modifier" : 5445.00,
+          "announce" : true
+        },
+        {
+          "id" : 1960,
+          "chance" : 0,
+          "min" : 5,
+          "max" :25,
+          "modifier" : 845.00,
+          "announce" : true
+        },
+        {
+          "id" : 20502,
+          "chance" : 0,
+          "min" : 1,
+          "max" : 5,
+          "modifier" : 845.00,
+          "announce" : true
+        },
+        {
+          "id" : 23255,
+          "chance" : 0,
+          "min" : 1,
+          "max" : 5,
+          "modifier" : 845.00,
+          "announce" : true
+        },
+        {
+          "id" : 10946,
+          "chance" : 0,
+          "min" : 1,
+          "max" : 10,
+          "modifier" : 1245.00,
+          "announce" : true
+        },
+        {
+          "id" : 23335,
+          "chance" : 0,
+          "min" : 1,
+          "max" : 5,
+          "modifier" : 2445.00,
+          "announce" : true
+        }
+      ]
+    }
+  },
+  {
+    "id" : [
+      6105
+    ],
+    "tables" : [
+      "RARE", "UNIQUE"
+    ],
+    "custom" : {
+      "name" : "ZKSpawn",
+      "weight" : 24.79,
+      "drops" : [
+        {
+          "id" : 17831,
+          "chance" : 0,
+          "min" : 50,
+          "max" : 100,
+          "modifier" : 1.00,
+          "announce" : false
+        },
+        {
+          "id" : 17831,
+          "chance" : 0,
+          "min" : 50,
+          "max" : 500,
+          "modifier" : 1445.00,
+          "announce" : false
+        },
+        {
+          "id" : 20422,
+          "chance" : 0,
+          "min" : 5,
+          "max" : 25,
+          "modifier" : 845.00,
+          "announce" : false
+        },
+        {
+          "id" : 20083,
+          "chance" : 0,
+          "min" : 1,
+          "max" : 3,
+          "modifier" : 1445.00,
+          "announce" : true
+        },
+        {
+          "id" : 1960,
+          "chance" : 0,
+          "min" : 5,
+          "max" : 25,
+          "modifier" : 945.00,
+          "announce" : true
+        },
+        {
+          "id" : 20502,
+          "chance" : 0,
+          "min" : 1,
+          "max" : 5,
+          "modifier" : 645.00,
+          "announce" : true
+        },
+        {
+          "id" : 23255,
+          "chance" : 0,
+          "min" : 1,
+          "max" : 5,
+          "modifier" : 645.00,
+          "announce" : true
+        },
+        {
+          "id" : 23057,
+          "chance" : 0,
+          "min" : 1,
+          "max" : 3,
+          "modifier" : 945.00,
+          "announce" : true
+        },
+        {
+          "id" : 23335,
+          "chance" : 0,
+          "min" : 1,
+          "max" : 10,
+          "modifier" : 1245.00,
+          "announce" : true
+        },
+        {
+          "id" : 17986,
+          "chance" : 1,
+          "min" : 1,
+          "max" : 1,
+          "modifier" : 24245.00,
+          "announce" : true
+        }
+      ]
+    }
+  },
+  {
+    "id" : [
+      5665
+    ],
+    "tables" : [
+      "RARE", "UNIQUE"
+    ],
+    "custom" : {
+      "name" : "ZKSpawn",
+      "weight" : 24.79,
+      "drops" : [
+        {
+          "id" : 17831,
+          "chance" : 0,
+          "min" : 50,
+          "max" : 100,
+          "modifier" : 1.00,
+          "announce" : false
+        },
+        {
+          "id" : 17831,
+          "chance" : 0,
+          "min" : 50,
+          "max" : 500,
+          "modifier" : 1445.00,
+          "announce" : false
+        },
+        {
+          "id" : 20422,
+          "chance" : 0,
+          "min" : 5,
+          "max" : 25,
+          "modifier" : 845.00,
+          "announce" : false
+        },
+        {
+          "id" : 20083,
+          "chance" : 0,
+          "min" : 1,
+          "max" : 3,
+          "modifier" : 1445.00,
+          "announce" : true
+        },
+        {
+          "id" : 1960,
+          "chance" : 0,
+          "min" : 5,
+          "max" : 25,
+          "modifier" : 945.00,
+          "announce" : true
+        },
+        {
+          "id" : 20502,
+          "chance" : 0,
+          "min" : 1,
+          "max" : 5,
+          "modifier" : 645.00,
+          "announce" : true
+        },
+        {
+          "id" : 23255,
+          "chance" : 0,
+          "min" : 1,
+          "max" : 5,
+          "modifier" : 645.00,
+          "announce" : true
+        },
+        {
+          "id" : 23057,
+          "chance" : 0,
+          "min" : 1,
+          "max" : 3,
+          "modifier" : 945.00,
+          "announce" : true
+        },
+        {
+          "id" : 23335,
+          "chance" : 0,
+          "min" : 1,
+          "max" : 10,
+          "modifier" : 1245.00,
+          "announce" : true
+        },
+        {
+          "id" : 17987,
+          "chance" : 1,
+          "min" : 1,
+          "max" : 1,
+          "modifier" : 24245.00,
+          "announce" : true
         }
       ]
     }

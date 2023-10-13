@@ -1653,13 +1653,11 @@ public class Player extends Character {
         CurseHandler.deactivateAll(this);
         getEquipment().refreshItems();
         getInventory().refreshItems();
-        if (isGodMode()) {
-            this.getSkillManager().setCurrentLevel(Skill.CONSTITUTION, this.getSkillManager().getMaxLevel(Skill.CONSTITUTION));
-        } else {
-            for (Skill skill : Skill.values()) {
-                getSkillManager().setCurrentLevel(skill, getSkillManager().getMaxLevel(skill));
-            }
+
+        for (Skill skill : Skill.values()) {
+            getSkillManager().setCurrentLevel(skill, getSkillManager().getMaxLevel(skill));
         }
+
         setRunEnergy(100);
         setDying(false);
         getMovementQueue().setLockMovement(false).reset();

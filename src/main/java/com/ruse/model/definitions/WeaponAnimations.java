@@ -4,6 +4,7 @@ import com.ruse.model.CharacterAnimations;
 import com.ruse.model.Item;
 import com.ruse.model.container.impl.Equipment;
 import com.ruse.world.entity.impl.player.Player;
+import com.ruse.world.packages.combat.CombatConstants;
 
 /**
  * A static utility class that contains methods for changing the appearance
@@ -48,11 +49,8 @@ public final class WeaponAnimations {
 			playerStandIndex = 809;
 			playerWalkIndex = 1146;
 			playerRunIndex = 1210;
-		} else if (weaponName.equalsIgnoreCase("basket of eggs")) {
+		}else if (weaponName.startsWith("basket")) {
 			playerStandIndex = 1836;
-			playerWalkIndex = 1836;
-			playerRunIndex = 1836;
-		} else if (weaponName.startsWith("basket")) {
 			playerWalkIndex = 1836;
 			playerRunIndex = 1836;
 		} else if (weaponName.contains("dharok") || (weaponName.contains("barb axe"))) {
@@ -215,11 +213,11 @@ public final class WeaponAnimations {
 		case 4569:
 			playerStandIndex = 7531;
 			break;
-		case 4568:
-			playerStandIndex = 2762;
-			playerWalkIndex = 2763;
-			playerRunIndex = 2750;
-			break;
+//		case 4568:
+//			playerStandIndex = 2762;
+//			playerWalkIndex = 2763;
+//			playerRunIndex = 2750;
+//			break;
 			
 		case 10887:
 			playerStandIndex = 5869;
@@ -276,9 +274,9 @@ public final class WeaponAnimations {
 		}
 		if (weaponId == 17698 && shieldId == 17700) {
 			playerStandIndex = 0x328;
-		playerWalkIndex = 0x333;
-		playerRunIndex = 4029;
-	}
+			playerWalkIndex = 0x333;
+			playerRunIndex = 4029;
+		}
 		if (player.canFly() && player.isFlying()) {
 			playerStandIndex = 1501;
 			playerWalkIndex = 1501;
@@ -288,7 +286,9 @@ public final class WeaponAnimations {
 			playerTurn90CWIndex = 1501;
 			playerTurn90CCWIndex = 1501;
 		}
-		if (player.canGhostWalk() && player.isGhostWalking()) {
+		if (player.canGhostWalk() && player.isGhostWalking()
+		//|| CombatConstants.wearingGhost(player)
+		) {
 			playerStandIndex = 15;
 			playerWalkIndex = 13;
 			playerRunIndex = 13;

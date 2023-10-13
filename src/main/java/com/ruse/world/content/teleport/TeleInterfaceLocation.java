@@ -102,6 +102,7 @@ public enum TeleInterfaceLocation {//3487, 3615 , 2711, 4752 , 2527, 2527, 1652,
     TARN_TOWER(new Position(2859, 2744, 0), "Tarn Tower \\n \\n Multi: True \\n \\n KC Req: None\\n \\n Climb The Tower"),
     DAILY_DONATOR(new Position(2859, 2744, 0), "Daily Donator Instance \\n \\n Tons of rewards \\n \\n VIP 5 +\\n \\n Mine Away!!"),
     TREASURE_HUNTER(new Position(2859, 2744, 0), "Daily Treasure Hunter \\n \\n Fight The Bosses \\n \\n Raid The Chest \\n \\n Loyalty 3 +"),
+    DAILY_CASKET(new Position(2859, 2744, 0), "Daily Casket Raid \\n \\n Fight The Bosses \\n \\n Raid The Chest \\n \\n Halloween Event"),
     CREATION(new Position(2399, 3753, 0), "Creation Minigame \\n \\n Multi: false \\n \\n KC Req: None\\n \\n Defend the Tree")
 
 

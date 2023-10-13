@@ -28,18 +28,18 @@ public class AdminCord {
                     //System.out.println("You can invite the bot by using the following url: " + api.createBotInvite());
                     if (GameSettings.LOCALHOST)
                         return;
-                    api.addMessageCreateListener(event -> {
-
-                        if (event.getMessageContent().equalsIgnoreCase("::players")) {
-                            int online = World.getPlayers().size();
-                            event.getChannel().sendMessage("Players currently online: "+online);
-                        }
-
-                        if (event.getMessageContent().equalsIgnoreCase("::online")) {
-                            event.getChannel().sendMessage(":tada: "+serverName+" is Online! :tada:");
-                        }
-
-                    });
+//                    api.addMessageCreateListener(event -> {
+//
+//                        if (event.getMessageContent().equalsIgnoreCase("::players")) {
+//                            int online = World.getPlayers().size();
+//                            event.getChannel().sendMessage("Players currently online: "+online);
+//                        }
+//
+//                        if (event.getMessageContent().equalsIgnoreCase("::online")) {
+//                            event.getChannel().sendMessage(":tada: "+serverName+" is Online! :tada:");
+//                        }
+//
+//                    });
                 })
                 // Log any exceptions that happened
                 .exceptionally(ExceptionLogger.get());

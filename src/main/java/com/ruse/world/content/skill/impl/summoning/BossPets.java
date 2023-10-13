@@ -36,7 +36,9 @@ public class BossPets {
 		UNICORN_PET(133, 457, 500,""),
 		SCORPION_PET(271, 456, 500,""),
 		PENGUIN_PET(6305, 22017, 500,""),
-		SKELE_HOUND(6302, -1, 500,""), // find item
+		SKELE_HOUND(6302, 22014, 500,""),
+
+
 
 		//EFFECT
 		MAGE_PET(9031, 23041, 500,"25% Magic damage boost"),
@@ -56,6 +58,7 @@ public class BossPets {
 		HEIMDALL_PET(9834, 23112, 400,"6x6 AoE Effect"),
 		ODIN_PET(9833, 23111, 400, "Firewall Perk"),
 		WARLORD_PET(6304, 22016, 400,""),
+
 
 		//BOSS
 

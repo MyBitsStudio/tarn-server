@@ -5,6 +5,7 @@ import com.ruse.engine.task.Task;
 import com.ruse.engine.task.TaskManager;
 import com.ruse.model.GroundItem;
 import com.ruse.model.Item;
+import com.ruse.model.Locations;
 import com.ruse.model.Position;
 import com.ruse.util.Misc;
 import com.ruse.world.World;
@@ -88,6 +89,7 @@ public class StaffDropEvent extends Event {
                             });
                 } else if(cycle == 40){
                     World.getPlayers().stream().filter(Objects::nonNull)
+                            .filter(player -> !player.getLocation().equals(Locations.Location.AFK))
                             .forEach(player -> {
                                 player.sendMessage("@red@[EVENT]@whi@ Mass Teleporting....");
                                 TeleportHandler.teleportPlayer(player, GameSettings.DEFAULT_POSITION, TeleportType.NORMAL);

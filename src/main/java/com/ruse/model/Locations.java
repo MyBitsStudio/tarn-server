@@ -451,154 +451,154 @@ public class Locations {
 		},
 		DAGANNOTH_DUNGEON(new int[] { 2886, 2938 }, new int[] { 4431, 4477 }, true, true, true, false, true, true) {
 		},
-		WILDERNESS(new int[] { 2940, 3392, 2986, 3012, 3653, 3720, 3650, 3653, 3150, 3199, 2994, 3041 },
-				new int[] { 3523, 3968, 10338, 10366, 3441, 3538, 3457, 3472, 3796, 3869, 3733, 3790 }, false, true,
-				true, true, true, true) {
-
-
-			// -- Contains Any requires something to be there, so if you currently do NOT HAVE an actually allowed item everywhere it will crash
-
-			private final int[] ALLOWED_ITEMS = new int[] { 1157,1165,1161,1159,1163,5574,5575,5576,10828,1119,1125,1121,1123,1127,3140,4087,3751,1069,1077,1071,1079,1073,6128,6129,6130,3753,1193,1195,1197,1199,1201,10589,6809,10564,4131,1321,1323,1325,1327,1329,1331,1333,4587,1291,1293,1295,1297,1299,1301,1303,1422,1420,1424,1426,1428,1430,1432,6528,4153,1307,1309,1311,1313,1315,1318,1319,14017,1009,1796,1654,1656,1658,1712,1710,1708,1706,1731,1725,1727,1729,1478,1635,1637,1639,1641,1643,2550,2570,11118,11113,325,339,329,361,379,373,7946,385,391,2442,2436,2440,2444,3040,6685,2452,3024,2434,2446,882,884,886,888,890,892,11212,810,811,11230,877,9140,9144,9142,9143,9144,9240,9241,9243,9244,9242,9341,9245,864,865,866,867,868,550,551,552,553,554,555,556,557,558,559,560,561,562,563,564,565,566,567,568,569,570,8007,8008,8009,8010,8011,8012,8013,8012,10499,841,843,845,847,849,851,853,855,857,859,861,1167,1129,1095,1063,9174,9177,9179,9181,9183,9185,10370,10372,10368,6328,3749,2499,2493,2487,2501,2495,2489,2503,2497,2491,1381,1383,1385,1387,4675,6914,6889,6918,6916,6924,6922,6920,4089,4091,4093,4095,4097,4099,4101,4103,4105,4107,4109,4111,4113,4115,4117,14499,14497,14501,7400,2412,2413,2414,7399,7398 };
-			@Override
-			public void process(Player player) {
-				int x = player.getPosition().getX();
-				int y = player.getPosition().getY();
-				boolean ghostTown = x >= 3650 && y <= 3538;
-				/*for (Item item : player.getEquipment().getItems()) {
-
-
-
-					if(item.getId()!=-1&&!Arrays.stream(ALLOWED_ITEMS).anyMatch(i -> i == item.getId())) {
-					player.sendMessage("<shad=1>@red@<img=18>Important Alert:");
-					player.sendMessage("<shad=1>@red@<img=18>You are bringing one of the items that are not allowed!");
-					player.sendMessage("<shad=1>@red@<img=18>Please type ::pvpitems to know what items are allowed!");
-					Position[] locations = new Position[] { new Position(2375, 4021, 0), new Position(2375, 4022, 0) };
-					Position teleportLocation = locations[RandomUtility.exclusiveRandom(0, locations.length)];
-					TeleportHandler.teleportPlayer(player, teleportLocation, player.getSpellbook().getTeleportType());
-					return;
-				}}
-
-for (Item item : player.getInventory().getItems()) {
-
-
-
-					if(item.getId()!=-1&&!Arrays.stream(ALLOWED_ITEMS).anyMatch(i -> i == item.getId())) {
-
-					player.sendMessage("<shad=1>@red@<img=18>Important Alert:");
-					player.sendMessage("<shad=1>@red@<img=18>You are bringing one of the items that are not allowed!");
-					player.sendMessage("<shad=1>@red@<img=18>Please type ::pvpitems to know what items are allowed!");
-					Position[] locations = new Position[] { new Position(2375, 4021, 0), new Position(2375, 4022, 0) };
-					Position teleportLocation = locations[RandomUtility.exclusiveRandom(0, locations.length)];
-					TeleportHandler.teleportPlayer(player, teleportLocation, player.getSpellbook().getTeleportType());
-					return;
-				}}*/
-
-				/*if (player.isFlying()) {
-					player.getPacketSender().sendMessage("You cannot fly in the Wilderness.");
-					player.setFlying(false);
-					player.newStance();
-				}
-				if (player.isGhostWalking()) {
-					player.getPacketSender().sendMessage("You cannot ghost walk in the Wilderness.");
-					player.setGhostWalking(false);
-					player.newStance();
-				}*/
-				/*
-				 * boolean banditCampA = x >= 3020 && x <= 3150 && y >= 3684 && y <= 3711;
-				 * boolean banditCampB = x >= 3055 && x <= 3195 && y >= 2958 && y <= 3003;
-				 * if(banditCampA || banditCampB) { }
-				 */
-				/*if (ghostTown) {
-					player.setWildernessLevel(60);
-
-				} else {
-					player.setWildernessLevel(((((y > 6400 ? y - 6400 : y) - 3520) / 8) + 1));
-				}
-				player.getPacketSender().sendString(42023, "" + player.getWildernessLevel());
-				// player.getPacketSender().sendString(25355, "Levels:
-				// "+CombatFactory.getLevelDifference(player, false) +" -
-				// "+CombatFactory.getLevelDifference(player, true));
-				BountyHunter.process(player);*/
-			}
-
-			@Override
-			public void leave(Player player) {
-				/*player.getPacketSender().sendWalkableInterface(42020, false);
-				if (player.getLocation() != this) {
-					player.getPacketSender().sendString(19000,
-							"Combat level: " + player.getSkillManager().getCombatLevel());
-					player.getUpdateFlag().flag(Flag.APPEARANCE);
-				}
-				PLAYERS_IN_WILD--;*/
-			}
-
-			@Override
-			public void enter(Player player) {
-				/*player.getPacketSender().sendInteractionOption("Attack", 2, true);
-				player.getPacketSender().sendWalkableInterface(42020, true);
-				player.getPacketSender().sendString(19000,
-						"Combat level: " + player.getSkillManager().getCombatLevel());
-				player.getUpdateFlag().flag(Flag.APPEARANCE);
-				PLAYERS_IN_WILD++;*/
-			}
-
-			@Override
-			public boolean canTeleport(Player player) {
-				/*if (Jail.isJailed(player.getUsername())) {
-					player.getPacketSender().sendMessage("That'd be convenient.");
-					return false;
-				}
-				if (player.getWildernessLevel() > 35) {
-					if (player.getRights() == PlayerRights.MODERATOR || player.getRights() == PlayerRights.ADMINISTRATOR
-
-							|| player.getRights() == PlayerRights.DEVELOPER) {
-						player.getPacketSender()
-								.sendMessage("@red@You've teleported out of deep Wilderness, logs have been written.");
-						PlayerLogs.log(player.getUsername(), " teleported out of level " + player.getWildernessLevel()
-								+ " wildy. Were in combat? " + player.getCombatBuilder().isBeingAttacked());
-						return true;
-					}
-				//	player.getPacketSender().sendMessage("Teleport spells are blocked in this level of Wilderness.");
-				//	player.getPacketSender()
-				//			.sendMessage("You must be below level 20 of Wilderness to use teleportation spells.");
-					return true;
-				}*/
-				return true;
-			}
-
-			@Override
-			public void login(Player player) {
-				//player.performGraphic(new Graphic(2000, 8));
-			}
-
-		/*	@Override
-			public boolean canAttack(Player player, Player target) {
-				int combatDifference = CombatFactory.combatLevelDifference(player.getSkillManager().getCombatLevel(),
-						target.getSkillManager().getCombatLevel());
-				if (combatDifference > player.getWildernessLevel() + 5
-						|| combatDifference > target.getWildernessLevel() + 5) {
-					player.getPacketSender()
-							.sendMessage("Your combat level difference is too great to attack that player here.");
-					player.getMovementQueue().reset();
-					return false;
-				}
-				if (target.getLocation() != Location.WILDERNESS) {
-					player.getPacketSender()
-							.sendMessage("That player cannot be attacked, because they are not in the Wilderness.");
-					player.getMovementQueue().reset();
-					return false;
-				}
-				if (Jail.isJailed(player.getUsername())) {
-					player.getPacketSender().sendMessage("You cannot do that right now.");
-					return false;
-				}
-				if (Jail.isJailed(target.getUsername())) {
-					player.getPacketSender().sendMessage("That player cannot be attacked right now.");
-					return false;
-				}
-				return true;
-			}*/
-		},
+//		WILDERNESS(new int[] { 2940, 3392, 2986, 3012, 3653, 3720, 3650, 3653, 3150, 3199, 2994, 3041 },
+//				new int[] { 3523, 3968, 10338, 10366, 3441, 3538, 3457, 3472, 3796, 3869, 3733, 3790 }, false, true,
+//				true, true, true, true) {
+//
+//
+//			// -- Contains Any requires something to be there, so if you currently do NOT HAVE an actually allowed item everywhere it will crash
+//
+//			private final int[] ALLOWED_ITEMS = new int[] { 1157,1165,1161,1159,1163,5574,5575,5576,10828,1119,1125,1121,1123,1127,3140,4087,3751,1069,1077,1071,1079,1073,6128,6129,6130,3753,1193,1195,1197,1199,1201,10589,6809,10564,4131,1321,1323,1325,1327,1329,1331,1333,4587,1291,1293,1295,1297,1299,1301,1303,1422,1420,1424,1426,1428,1430,1432,6528,4153,1307,1309,1311,1313,1315,1318,1319,14017,1009,1796,1654,1656,1658,1712,1710,1708,1706,1731,1725,1727,1729,1478,1635,1637,1639,1641,1643,2550,2570,11118,11113,325,339,329,361,379,373,7946,385,391,2442,2436,2440,2444,3040,6685,2452,3024,2434,2446,882,884,886,888,890,892,11212,810,811,11230,877,9140,9144,9142,9143,9144,9240,9241,9243,9244,9242,9341,9245,864,865,866,867,868,550,551,552,553,554,555,556,557,558,559,560,561,562,563,564,565,566,567,568,569,570,8007,8008,8009,8010,8011,8012,8013,8012,10499,841,843,845,847,849,851,853,855,857,859,861,1167,1129,1095,1063,9174,9177,9179,9181,9183,9185,10370,10372,10368,6328,3749,2499,2493,2487,2501,2495,2489,2503,2497,2491,1381,1383,1385,1387,4675,6914,6889,6918,6916,6924,6922,6920,4089,4091,4093,4095,4097,4099,4101,4103,4105,4107,4109,4111,4113,4115,4117,14499,14497,14501,7400,2412,2413,2414,7399,7398 };
+//			@Override
+//			public void process(Player player) {
+//				int x = player.getPosition().getX();
+//				int y = player.getPosition().getY();
+//				boolean ghostTown = x >= 3650 && y <= 3538;
+//				/*for (Item item : player.getEquipment().getItems()) {
+//
+//
+//
+//					if(item.getId()!=-1&&!Arrays.stream(ALLOWED_ITEMS).anyMatch(i -> i == item.getId())) {
+//					player.sendMessage("<shad=1>@red@<img=18>Important Alert:");
+//					player.sendMessage("<shad=1>@red@<img=18>You are bringing one of the items that are not allowed!");
+//					player.sendMessage("<shad=1>@red@<img=18>Please type ::pvpitems to know what items are allowed!");
+//					Position[] locations = new Position[] { new Position(2375, 4021, 0), new Position(2375, 4022, 0) };
+//					Position teleportLocation = locations[RandomUtility.exclusiveRandom(0, locations.length)];
+//					TeleportHandler.teleportPlayer(player, teleportLocation, player.getSpellbook().getTeleportType());
+//					return;
+//				}}
+//
+//for (Item item : player.getInventory().getItems()) {
+//
+//
+//
+//					if(item.getId()!=-1&&!Arrays.stream(ALLOWED_ITEMS).anyMatch(i -> i == item.getId())) {
+//
+//					player.sendMessage("<shad=1>@red@<img=18>Important Alert:");
+//					player.sendMessage("<shad=1>@red@<img=18>You are bringing one of the items that are not allowed!");
+//					player.sendMessage("<shad=1>@red@<img=18>Please type ::pvpitems to know what items are allowed!");
+//					Position[] locations = new Position[] { new Position(2375, 4021, 0), new Position(2375, 4022, 0) };
+//					Position teleportLocation = locations[RandomUtility.exclusiveRandom(0, locations.length)];
+//					TeleportHandler.teleportPlayer(player, teleportLocation, player.getSpellbook().getTeleportType());
+//					return;
+//				}}*/
+//
+//				/*if (player.isFlying()) {
+//					player.getPacketSender().sendMessage("You cannot fly in the Wilderness.");
+//					player.setFlying(false);
+//					player.newStance();
+//				}
+//				if (player.isGhostWalking()) {
+//					player.getPacketSender().sendMessage("You cannot ghost walk in the Wilderness.");
+//					player.setGhostWalking(false);
+//					player.newStance();
+//				}*/
+//				/*
+//				 * boolean banditCampA = x >= 3020 && x <= 3150 && y >= 3684 && y <= 3711;
+//				 * boolean banditCampB = x >= 3055 && x <= 3195 && y >= 2958 && y <= 3003;
+//				 * if(banditCampA || banditCampB) { }
+//				 */
+//				/*if (ghostTown) {
+//					player.setWildernessLevel(60);
+//
+//				} else {
+//					player.setWildernessLevel(((((y > 6400 ? y - 6400 : y) - 3520) / 8) + 1));
+//				}
+//				player.getPacketSender().sendString(42023, "" + player.getWildernessLevel());
+//				// player.getPacketSender().sendString(25355, "Levels:
+//				// "+CombatFactory.getLevelDifference(player, false) +" -
+//				// "+CombatFactory.getLevelDifference(player, true));
+//				BountyHunter.process(player);*/
+//			}
+//
+//			@Override
+//			public void leave(Player player) {
+//				/*player.getPacketSender().sendWalkableInterface(42020, false);
+//				if (player.getLocation() != this) {
+//					player.getPacketSender().sendString(19000,
+//							"Combat level: " + player.getSkillManager().getCombatLevel());
+//					player.getUpdateFlag().flag(Flag.APPEARANCE);
+//				}
+//				PLAYERS_IN_WILD--;*/
+//			}
+//
+//			@Override
+//			public void enter(Player player) {
+//				/*player.getPacketSender().sendInteractionOption("Attack", 2, true);
+//				player.getPacketSender().sendWalkableInterface(42020, true);
+//				player.getPacketSender().sendString(19000,
+//						"Combat level: " + player.getSkillManager().getCombatLevel());
+//				player.getUpdateFlag().flag(Flag.APPEARANCE);
+//				PLAYERS_IN_WILD++;*/
+//			}
+//
+//			@Override
+//			public boolean canTeleport(Player player) {
+//				/*if (Jail.isJailed(player.getUsername())) {
+//					player.getPacketSender().sendMessage("That'd be convenient.");
+//					return false;
+//				}
+//				if (player.getWildernessLevel() > 35) {
+//					if (player.getRights() == PlayerRights.MODERATOR || player.getRights() == PlayerRights.ADMINISTRATOR
+//
+//							|| player.getRights() == PlayerRights.DEVELOPER) {
+//						player.getPacketSender()
+//								.sendMessage("@red@You've teleported out of deep Wilderness, logs have been written.");
+//						PlayerLogs.log(player.getUsername(), " teleported out of level " + player.getWildernessLevel()
+//								+ " wildy. Were in combat? " + player.getCombatBuilder().isBeingAttacked());
+//						return true;
+//					}
+//				//	player.getPacketSender().sendMessage("Teleport spells are blocked in this level of Wilderness.");
+//				//	player.getPacketSender()
+//				//			.sendMessage("You must be below level 20 of Wilderness to use teleportation spells.");
+//					return true;
+//				}*/
+//				return true;
+//			}
+//
+//			@Override
+//			public void login(Player player) {
+//				//player.performGraphic(new Graphic(2000, 8));
+//			}
+//
+//		/*	@Override
+//			public boolean canAttack(Player player, Player target) {
+//				int combatDifference = CombatFactory.combatLevelDifference(player.getSkillManager().getCombatLevel(),
+//						target.getSkillManager().getCombatLevel());
+//				if (combatDifference > player.getWildernessLevel() + 5
+//						|| combatDifference > target.getWildernessLevel() + 5) {
+//					player.getPacketSender()
+//							.sendMessage("Your combat level difference is too great to attack that player here.");
+//					player.getMovementQueue().reset();
+//					return false;
+//				}
+//				if (target.getLocation() != Location.WILDERNESS) {
+//					player.getPacketSender()
+//							.sendMessage("That player cannot be attacked, because they are not in the Wilderness.");
+//					player.getMovementQueue().reset();
+//					return false;
+//				}
+//				if (Jail.isJailed(player.getUsername())) {
+//					player.getPacketSender().sendMessage("You cannot do that right now.");
+//					return false;
+//				}
+//				if (Jail.isJailed(target.getUsername())) {
+//					player.getPacketSender().sendMessage("That player cannot be attacked right now.");
+//					return false;
+//				}
+//				return true;
+//			}*/
+//		},
 		BARROWS(new int[] { 3520, 3598, 3543, 3584, 3543, 3560 }, new int[] { 9653, 9750, 3265, 3314, 9685, 9702 },
 				false, true, true, true, true, true) {
 			@Override
@@ -1318,7 +1318,7 @@ for (Item item : player.getInventory().getItems()) {
 
 		}, // donator material daily
 		TREASURE_HUNTER(new int[] { 1986, 2045 }, new int[] { 4994, 5052 }, true, true, true, false, false, false) {
-		}, // donator//minigame???
+		},
 		AFK(new int[] { 3024, 3056 }, new int[] { 4050, 4082 }, false, true, true, false, false, true) {
 
 			@Override
@@ -1359,11 +1359,6 @@ for (Item item : player.getInventory().getItems()) {
 					player.sendMessage("You can only enter the death altar during the halloween event");
 					return;
 				}
-//				if(!WorldIPChecker.getInstance().addToContent(player, "halloween")){
-//					player.moveTo(GameSettings.DEFAULT_POSITION);
-//					player.sendMessage("You are only allowed one account in Halloween zones");
-//					return;
-//				}
 			}
 
 			@Override
@@ -1375,6 +1370,11 @@ for (Item item : player.getInventory().getItems()) {
 			}
 
 
+		},
+		HALLOW_SPAWN(new int[] { 3651, 3710}, new int[] { 3454, 3510}, true, true, false, false, false, true) {
+
+		},
+		CASKET_RAID(new int[] { 1923, 1980 }, new int[] { 4998, 5038 }, true, true, true, false, false, false) {
 		},
 		;
 

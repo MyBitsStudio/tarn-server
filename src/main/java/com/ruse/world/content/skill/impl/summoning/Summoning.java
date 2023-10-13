@@ -219,12 +219,7 @@ public class Summoning {
 						&& player.getCombatBuilder().getLastAttacker().getCombatBuilder().getVictim() == player;
 				boolean attacking = player.getCombatBuilder().isAttacking();
 				if (!familiar.isPet() && n.getDefinition().isAttackable() && (underAttack || attacking)) {
-					if (n.getLocation() != Location.WILDERNESS) {
-						n.setSummoningCombat(true);
-						n.getCombatBuilder().attack(attacking ? player.getCombatBuilder().getVictim()
-								: player.getCombatBuilder().getLastAttacker());
-						n.setEntityInteraction(n.getCombatBuilder().getVictim());
-					}
+
 				} else {
 					if (n.getCombatBuilder().isAttacking()) {
 						n.getCombatBuilder().reset(true);

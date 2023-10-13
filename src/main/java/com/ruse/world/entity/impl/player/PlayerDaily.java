@@ -1,6 +1,7 @@
 package com.ruse.world.entity.impl.player;
 
 import com.ruse.model.Item;
+import com.ruse.world.World;
 import com.ruse.world.WorldCalendar;
 import com.ruse.world.packages.instances.InstanceManager;
 import lombok.Getter;
@@ -107,6 +108,30 @@ public class PlayerDaily {
             }
         } else {
             player.sendMessage("@red@You must be a Loyalty 3 to enter this area.");
+        }
+    }
+
+    public void enterDailyCasketInstance(@NotNull Player player){
+        if(World.handler.eventActive("halloween")){
+            if(player.getInstance() != null) {
+                player.getInstance().destroy();
+                player.setInstance(null);
+                player.sendMessage("You have left your previous instance.");
+                return;
+            }
+
+            if(!Objects.equals(player.getInstanceId(), "")){
+                InstanceManager.getManager().removeInstance(player.getInstanceId());
+                player.setInstanceId("");
+            }
+
+            if(claim("daily-casket")){
+                InstanceManager.getManager().startDailyCasket(player);
+            } else {
+                player.sendMessage("@red@You have already claimed your daily Casket Raid Instance.");
+            }
+        } else {
+            player.sendMessage("@red@Halloween Event must be active to enter.");
         }
     }
 }

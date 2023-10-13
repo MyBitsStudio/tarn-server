@@ -66,7 +66,7 @@ public abstract class CombatAncientSpell extends CombatSpell {
 				}
 			} else {
 				Player p = (Player) next;
-				if (p.getLocation() != Location.WILDERNESS || !Location.inMulti(p)) {
+				if (!Location.inMulti(p)) {
 					continue;
 				}
 			}

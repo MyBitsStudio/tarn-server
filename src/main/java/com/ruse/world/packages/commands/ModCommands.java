@@ -6,6 +6,9 @@ import com.ruse.security.PlayerSecurity;
 import com.ruse.security.ServerSecurity;
 import com.ruse.world.World;
 import com.ruse.world.content.PlayerLogs;
+import com.ruse.world.packages.discord.BotManager;
+import com.ruse.world.packages.discord.impl.admin.AdminBot;
+import com.ruse.world.packages.discord.modal.MessageCreate;
 import com.ruse.world.packages.discordbot.AdminCord;
 import com.ruse.world.entity.impl.player.Player;
 
@@ -80,8 +83,10 @@ public class ModCommands {
                         player.getUsername() + " just locked " + player2.getUsername() + "!");
                 World.sendStaffMessage("<col=FF0066><img=2> [PUNISHMENTS]<col=6600FF> " + player.getUsername()
                         + " just locked " + player2.getUsername() + ".");
-                AdminCord.sendMessage(1116230874170667028L, player.getUsername() + " used command ::" + command
-                        + " | Player rights = " + player.getRank());
+                BotManager.getInstance().sendMessage("ADMIN", AdminBot.COMMANDS, new MessageCreate(player.getUsername()
+                        + " just locked " + player2.getUsername() + "."));
+//                AdminCord.sendMessage(1116230874170667028L, player.getUsername() + " used command ::" + command
+//                        + " | Player rights = " + player.getRank());
                 return true;
             }
         }

@@ -118,7 +118,7 @@ public enum TeleInterfaceData {
     TARNTOWER(TeleInterfaceCategory.MINIGAMES, "Tarn Tower", 9910, 1500, TeleInterfaceLocation.TARN_TOWER, new Item(995,1)),
     DAILY_DONATOR(TeleInterfaceCategory.MINIGAMES, "Donator Materials", 9910, 1500, TeleInterfaceLocation.DAILY_DONATOR, new Item(995,1)),
     DAILY_TREASURE(TeleInterfaceCategory.MINIGAMES, "Treasure Hunter", 9029, 1500, TeleInterfaceLocation.TREASURE_HUNTER, new Item(995,1)),
-
+    DAILY_CASKET(TeleInterfaceCategory.MINIGAMES, "Daily Casket", 8011, 1500, TeleInterfaceLocation.DAILY_CASKET, new Item(995,1)),
     /* Misc */
    //VEIGAR(TeleInterfaceCategory.MISC, "DISABLED", 9906, 2000, TeleInterfaceLocation.LOCATION67, null),
     //NINETAILS(TeleInterfaceCategory.MISC, "Nine Tails Jinchuriki", 9904, 1500, TeleInterfaceLocation.LOCATION68, null),

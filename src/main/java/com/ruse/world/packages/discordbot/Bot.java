@@ -2,7 +2,6 @@ package com.ruse.world.packages.discordbot;
 
 import com.ruse.GameSettings;
 import com.ruse.world.World;
-import com.ruse.world.packages.discordbot.events.MessageReceived;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.entities.Activity;
@@ -28,16 +27,16 @@ public class Bot {
     public static JDA discord;
 
     public static void init() {
-        try {
-            discord = JDABuilder.createDefault(TOKEN)
-            .setToken(TOKEN)
-            .setActivity(Activity.watching("Tarn"))
-            .build()
-            .awaitReady(); // Blocking guarantees that JDA will be completely loaded.
-            discord.addEventListener(new MessageReceived());
-        } catch (LoginException | InterruptedException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            discord = JDABuilder.createDefault(TOKEN)
+//            .setToken(TOKEN)
+//            .setActivity(Activity.watching("Tarn"))
+//            .build()
+//            .awaitReady(); // Blocking guarantees that JDA will be completely loaded.
+//            discord.addEventListener(new MessageReceived());
+//        } catch (LoginException | InterruptedException e) {
+//            e.printStackTrace();
+//        }
     }
 
     private static int countDown = 0;

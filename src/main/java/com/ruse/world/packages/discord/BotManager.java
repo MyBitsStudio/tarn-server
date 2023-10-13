@@ -19,7 +19,7 @@ public class BotManager {
         return instance;
     }
 
-    private List<MessageBot> bots = new ArrayList<>();
+    private final List<MessageBot> bots = new ArrayList<>();
 
     public void init(){
         addBots();
@@ -27,7 +27,7 @@ public class BotManager {
     }
 
     private void addBots(){
-        bots.add(new NormalBot());
+        //bots.add(new NormalBot());
         bots.add(new AdminBot());
     }
 

@@ -2,6 +2,7 @@ package com.ruse.world.packages.commands;
 
 import com.ruse.GameSettings;
 import com.ruse.model.Flag;
+import com.ruse.model.Position;
 import com.ruse.model.definitions.ItemDefinition;
 import com.ruse.security.PlayerLock;
 import com.ruse.security.PlayerSecurity;
@@ -9,6 +10,8 @@ import com.ruse.security.save.impl.player.PlayerSecureLoad;
 import com.ruse.util.Misc;
 import com.ruse.util.NameUtils;
 import com.ruse.world.World;
+import com.ruse.world.content.transportation.TeleportHandler;
+import com.ruse.world.content.transportation.TeleportType;
 import com.ruse.world.entity.impl.npc.NPC;
 import com.ruse.world.packages.event.impl.HalloweenSpawn;
 import com.ruse.world.packages.event.impl.StaffDropEvent;
@@ -16,6 +19,8 @@ import com.ruse.world.packages.event.impl.TotemHNS;
 import com.ruse.world.packages.globals.GlobalBossManager;
 import com.ruse.world.packages.mode.impl.*;
 import com.ruse.world.entity.impl.player.Player;
+
+import java.util.Objects;
 
 import static com.ruse.security.tools.SecurityUtils.PLAYER_FILE;
 
@@ -292,6 +297,46 @@ public class AdminCommands {
                     World.handler.stop(event);
                 } else {
                     player.sendMessage("Invalid event.");
+                }
+                return true;
+            }
+
+            case "warning" -> {
+                if(commands.length > 2){
+                    String warning = commands[1];
+                    int time = Integer.parseInt(commands[2]);
+                    String[] message = new String[0];
+                    switch(warning){
+                        case "update" -> {
+                            message = new String[2];
+                            message[0] = "[UPDATE] Server update will be starting in "+time+" minutes!";
+                            message[1] = "[UPDATE] Please finish what your doing by this time.";
+                        }
+                        case "drop" -> {
+                            message = new String[3];
+                            message[0] = "[EVENT] Staff drop event will be starting in "+time+" minutes!";
+                            message[1] = "[EVENT] If you wish not to participate, please move to the AFK ZONE!";
+                            message[2] = "[EVENT] You will be pulled out of your instance if in one.";
+                        }
+                        case "event" -> {
+                            message = new String[2];
+                            message[0] = "[EVENT] Server events will be starting in "+time+" minutes!";
+                            message[1] = "[EVENT] Please finish what your doing by this time.";
+                        }
+                    }
+                    String[] finalMessage = message;
+                    World.getPlayers().stream().filter(Objects::nonNull)
+                            .forEach(players -> {
+                                for(String string : finalMessage){
+                                    players.sendMessage(string);
+                                }
+                                players.getPacketSender().sendBroadCastMessage(finalMessage[0], 300);
+                                World.sendBroadcastMessage(finalMessage[0]);
+                                GameSettings.broadcastMessage = finalMessage[0];
+                                GameSettings.broadcastTime = 300;
+                            });
+                } else {
+                    player.sendMessage("Invalid warning.");
                 }
                 return true;
             }

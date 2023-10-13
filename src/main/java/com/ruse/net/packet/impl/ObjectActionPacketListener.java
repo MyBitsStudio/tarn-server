@@ -516,7 +516,7 @@ public class ObjectActionPacketListener implements PacketListener {
                             player.moveTo(new Position(2147, 5284, 0));
                             break;
                         case 2305:
-                            if (player.getLocation() != null && player.getLocation() == Location.WILDERNESS) {
+                            if (player.getLocation() != null) {
                                 player.moveTo(new Position(3003, 10354, player.getPosition().getZ()));
                                 player.getPacketSender().sendMessage("You escape from the spikes.");
                             }
@@ -1101,10 +1101,6 @@ public class ObjectActionPacketListener implements PacketListener {
                         case 5959:
                             if (player.getLocation() == Location.MAGEBANK_SAFE) {
                                 TeleportHandler.teleportPlayer(player, TeleportLocations.MAGEBANK_WILDY.getPos(),
-                                        TeleportType.LEVER);
-                            } else if (player.getWildernessLevel() >= 53
-                                    && player.getLocation() == Location.WILDERNESS) {
-                                TeleportHandler.teleportPlayer(player, TeleportLocations.MAGEBANK_SAFE.getPos(),
                                         TeleportType.LEVER);
                             } else {
                                 player.getPacketSender()

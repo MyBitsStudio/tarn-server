@@ -20,6 +20,7 @@ import com.ruse.world.packages.dialogue.DialogueManager;
 import com.ruse.world.packages.dialogue.impl.EmptyInv;
 import com.ruse.world.content.transportation.TeleportHandler;
 import com.ruse.world.content.transportation.TeleportType;
+import com.ruse.world.packages.dissolve.DissolveItem;
 import com.ruse.world.packages.johnachievementsystem.AchievementHandler;
 import com.ruse.world.packages.misc.PossibleLootInterface;
 import com.ruse.world.packages.misc.Retrieval;
@@ -30,6 +31,8 @@ import com.ruse.world.packages.vip.VIPManager;
 import com.ruse.world.packages.voting.VoteHandler;
 import com.ruse.world.entity.impl.player.Player;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.Arrays;
 
 public class PlayerCommands {
 
@@ -204,10 +207,6 @@ public class PlayerCommands {
 //                return true;
 //            }
             case "home" -> {
-                if (player.getLocation() != null && player.getLocation() == Locations.Location.WILDERNESS) {
-                    player.getPacketSender().sendMessage("You cannot do this at the moment.");
-                    return true;
-                }
                 Position pos = new Position(2222, 3747);
                 TeleportHandler.teleportPlayer(player, pos, player.getSpellbook().getTeleportType());
                 player.getPacketSender().sendMessage("Teleporting you home!");
@@ -222,10 +221,6 @@ public class PlayerCommands {
                 return true;
             }
             case "youtube", "stream" -> {
-                if (player.getLocation() != null && player.getLocation() == Locations.Location.WILDERNESS) {
-                    player.getPacketSender().sendMessage("You cannot do this at the moment.");
-                    return true;
-                }
                 Position[] locations = new Position[]{new Position(2852, 2708, 0)};
                 Position teleportLocation = locations[RandomUtility.exclusiveRandom(0, locations.length)];
                 TeleportHandler.teleportPlayer(player, teleportLocation, player.getSpellbook().getTeleportType());
@@ -233,11 +228,6 @@ public class PlayerCommands {
             }
             case "help" -> {
                 if (player.getLastYell().elapsed(30000)) {
-                    if (player.getLocation() != null && player.getLocation() == Locations.Location.WILDERNESS) {
-                        World.sendStaffMessage("<col=FF0066><img=5> [TICKET SYSTEM]<col=6600FF> " + player.getUsername()
-                                + " has requested help, but is @red@*IN LEVEL " + player.getWildernessLevel()
-                                + " WILDERNESS*<col=6600FF>. Be careful.");
-                    }
                     if (ServerSecurity.getInstance().isPlayerMuted(player.getUsername())) {
                         World.sendStaffMessage("<col=FF0066><img=5> [TICKET SYSTEM]<col=6600FF> " + player.getUsername()
                                 + " has requested help, but is @red@*MUTED*<col=6600FF>. Be careful.");
@@ -264,10 +254,6 @@ public class PlayerCommands {
                     player.getPacketSender().sendMessage("You do not understand the complexities of flight.");
                     return true;
                 }
-                if (player.getLocation() != null && player.getLocation() == Locations.Location.WILDERNESS) {
-                    player.getPacketSender().sendMessage("You cannot fly in the Wilderness.");
-                    return true;
-                }
                 if (player.canFly() && player.isFlying()) {
                     player.getPacketSender().sendMessage("You stop flying.");
                     player.setFlying(false);
@@ -285,10 +271,6 @@ public class PlayerCommands {
             case "ghost" -> {
                 if (!player.canGhostWalk()) {
                     player.getPacketSender().sendMessage("You do not understand the complexities of death.");
-                    return true;
-                }
-                if (player.getLocation() != null && player.getLocation() == Locations.Location.WILDERNESS) {
-                    player.getPacketSender().sendMessage("You cannot ghost walk in the Wilderness.");
                     return true;
                 }
                 if (player.canGhostWalk() && player.isGhostWalking()) {
@@ -311,6 +293,11 @@ public class PlayerCommands {
             }
             case "afk" -> {
                 TeleportHandler.teleportPlayer(player, new Position(3038, 4060, 0), player.getSpellbook().getTeleportType());
+                return true;
+            }
+            case "takeover" -> {
+                if(World.handler.eventActive("halloween-spawn"))
+                    TeleportHandler.teleportPlayer(player, new Position(3708, 3497, 0), player.getSpellbook().getTeleportType());
                 return true;
             }
             case "daily" -> {
@@ -352,6 +339,19 @@ public class PlayerCommands {
             }
             case "chests" -> {
                 TeleportHandler.teleportPlayer(player, new Position(2911, 3611, 0), player.getSpellbook().getTeleportType());
+                return true;
+            }
+            case "hallow", "halloween" -> {
+                TeleportHandler.teleportPlayer(player, new Position(2200, 4834, 0), player.getSpellbook().getTeleportType());
+                return true;
+            }
+            case "dissolve-all" -> {
+                Arrays.stream(player.getInventory().getItems()).forEach(item -> {
+                    if (item != null) {
+                        DissolveItem.dissolveItem(player, item.getId(), player.getInventory().slotOf(item));
+                    }
+                });
+                player.sendMessage("You have dissolved all items in your inventory.");
                 return true;
             }
         }
@@ -490,6 +490,7 @@ public class PlayerCommands {
         player.getPacketSender().sendString(index++, color1 + "+ L - Opens Loots");
         player.getPacketSender().sendString(index++, color1 + "+ Y - Opens BIS");
         player.getPacketSender().sendString(index++, color1 + "+ E - Opens Daily Attendance");
+        player.getPacketSender().sendString(index++, color1 + "+ Q - Dissolve All In Inventory");
         player.getPacketSender().sendString(index++, color1 + "-----------------------------");
         player.getPacketSender().sendString(index++, color1 + "Shift (SHIFT)");
         player.getPacketSender().sendString(index++, color1 + "Most Items Will Change To Drop Option");

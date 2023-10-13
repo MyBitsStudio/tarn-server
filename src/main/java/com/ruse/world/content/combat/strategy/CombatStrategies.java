@@ -95,6 +95,19 @@ public class CombatStrategies {
 		STRATEGIES.put(1736, script);
 		STRATEGIES.put(6430, new Crimson());
 
+		//events
+		STRATEGIES.put(199, script);
+		STRATEGIES.put(6330, script);
+		STRATEGIES.put(6093, script);
+		STRATEGIES.put(5422, script);
+		STRATEGIES.put(5411, script);
+		STRATEGIES.put(5408, script);
+		STRATEGIES.put(5401, script);
+		STRATEGIES.put(8162, script);
+		STRATEGIES.put(6104, script);
+		STRATEGIES.put(6105, script);
+		STRATEGIES.put(6100, script);
+		STRATEGIES.put(5665, script);
 
 		// Globals
 		STRATEGIES.put(9904, new Eternal());
@@ -104,6 +117,8 @@ public class CombatStrategies {
 		STRATEGIES.put(587, new Eternal());
 		STRATEGIES.put(8013, new Eternal());
 		STRATEGIES.put(9006, new Eternal());
+		STRATEGIES.put(9906, new Eternal());
+
 
 		// Masters
 		STRATEGIES.put(3010, new ZeidanCombat());

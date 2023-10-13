@@ -24,7 +24,7 @@ public class HalloweenSpawn extends Event {
     public static int[] skeles = {
             6330, 6093, 5422, 5411
                     }, zombies = {
-
+            8162, 5408, 5401
                     };
 
     public static Position[] spread = {
@@ -43,11 +43,13 @@ public class HalloweenSpawn extends Event {
 
     @Override
     public void start() {
-//        if(Misc.random(100) <= 49)
-//            isZombies = true;
+        if(Misc.random(100) <= 49)
+            isZombies = true;
 
         if(isZombies){
-
+            for (int i = 0; i < spawns; i++) {
+                World.register(new HallowEvent(zombies[Misc.random(zombies.length - 1)], spread[i]));
+            }
         } else {
             for (int i = 0; i < spawns; i++) {
                 World.register(new HallowEvent(skeles[Misc.random(skeles.length - 1)], spread[i]));
@@ -79,7 +81,7 @@ public class HalloweenSpawn extends Event {
                     World.deregister(npc);
                 }
             });
-            if(npc.getId() == 6104|| npc.getId() == 6105){
+            if(npc.getId() == 6104|| npc.getId() == 6105 || npc.getId() == 6100 || npc.getId() == 5665){
                 World.deregister(npc);
             }
         }
@@ -129,15 +131,15 @@ public class HalloweenSpawn extends Event {
                 }
                 return true;
             }
-            if(id == 6105 || id == 6104){
+            if(id == 6105 || id == 6104 || id == 6100 || id == 5665){
                 bosses--;
                 if(bosses <= 0){
                     World.getPlayers().stream().filter(Objects::nonNull)
                             .forEach(p -> {
-                                p.sendMessage("@red@[EVENT]@whi@ The Skeleton Warlord has been defeated! The town is safe!");
-                                p.getPacketSender().sendBroadCastMessage("[EVENT] The Skeleton Warlord has been defeated! The town is safe!", 300);
-                                World.sendBroadcastMessage("[EVENT] The Skeleton Warlord has been defeated! The town is safe!");
-                                GameSettings.broadcastMessage = "[EVENT] The Skeleton Warlord has been defeated! The town is safe!";
+                                p.sendMessage("@red@[EVENT]@whi@ The "+(isZombies? "Zombie Pirate" : "Skeleton Warlord")+" has been defeated! The town is safe!");
+                                p.getPacketSender().sendBroadCastMessage("[EVENT] The "+(isZombies? "Zombie Pirate" : "Skeleton Warlord")+" has been defeated! The town is safe!", 300);
+                                World.sendBroadcastMessage("[EVENT] The "+(isZombies? "Zombie Pirate" : "Skeleton Warlord")+" has been defeated! The town is safe!");
+                                GameSettings.broadcastMessage = "[EVENT] The "+(isZombies? "Zombie Pirate" : "Skeleton Warlord")+" has been defeated! The town is safe!";
                                 GameSettings.broadcastTime = 300;
                             });
                     stop();
@@ -150,7 +152,46 @@ public class HalloweenSpawn extends Event {
 
     private void spawnBosses(){
         if(isZombies){
+            TaskManager.submit(new Task(3, false) {
+                int cycle = 0;
+                @Override
+                protected void execute() {
+                    switch(++cycle){
+                        case 1 -> World.getPlayers().stream().filter(Objects::nonNull)
+                                .forEach(player -> {
+                                    player.sendMessage("@red@[EVENT]@whi@ All zombies have been killed. There is a disturbance though...");
+                                    player.getPacketSender().sendBroadCastMessage("[EVENT] All zombies have been killed. There is a disturbance though...", 300);
+                                    World.sendBroadcastMessage("[EVENT] All zombies have been killed. There is a disturbance though...");
+                                    GameSettings.broadcastMessage = "[EVENT] All zombies have been killed. There is a disturbance though...";
+                                    GameSettings.broadcastTime = 300;
+                                });
 
+                        case 10 -> World.getPlayers().stream().filter(Objects::nonNull)
+                                .forEach(player -> {
+                                    player.sendMessage("@red@[EVENT]@whi@ The Zombie Pirate is coming! Be Prepared!");
+                                    player.getPacketSender().sendBroadCastMessage("[EVENT] The Zombie Pirate is coming! Be Prepared!", 300);
+                                    World.sendBroadcastMessage("[EVENT] The Zombie Pirate is coming! Be Prepared!");
+                                    GameSettings.broadcastMessage = "[EVENT] The Zombie Pirate is coming! Be Prepared!";
+                                    GameSettings.broadcastTime = 300;
+                                });
+
+                        case 15 -> {
+                            World.register(new HallowEvent(5665, new Position(3659, 3496)));
+                            World.register(new HallowEvent(6100, new Position(3662, 3494)));
+                            World.register(new HallowEvent(6100, new Position(3662, 3498)));
+                            World.getPlayers().stream().filter(Objects::nonNull)
+                                    .forEach(player -> {
+                                        player.sendMessage("@red@[EVENT]@whi@ The Zombie Pirate has spawned! Take it down!");
+                                        player.getPacketSender().sendBroadCastMessage("[EVENT] The Zombie Pirate has spawned! Take it down!", 300);
+                                        World.sendBroadcastMessage("[EVENT] The Zombie Pirate has spawned! Take it down!");
+                                        GameSettings.broadcastMessage = "[EVENT] The Zombie Pirate has spawned! Take it down!";
+                                        GameSettings.broadcastTime = 300;
+                                    });
+                            stop();
+                        }
+                    }
+                }
+            });
         } else {
             TaskManager.submit(new Task(3, false) {
                 int cycle = 0;
@@ -187,10 +228,9 @@ public class HalloweenSpawn extends Event {
                                         GameSettings.broadcastMessage = "[EVENT] The Skeleton Warlord has spawned! Take it down!";
                                         GameSettings.broadcastTime = 300;
                                     });
-                            this.stop();
+                            stop();
                         }
                     }
-
                 }
             });
         }

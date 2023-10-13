@@ -51,39 +51,7 @@ public class BountyHunter {
 
 	public static void sequence(Player player) {
 		if (player.getPlayerKillingAttributes().getTarget() != null) {
-			if (player.getPlayerKillingAttributes().getTarget().getLocation() != Location.WILDERNESS) {
 
-				if (player.getPlayerKillingAttributes().getTarget().getPlayerKillingAttributes()
-						.getSafeTimer() == 180) {
-					player.getPlayerKillingAttributes().getTarget().getPacketSender().sendMessage(
-							"You have 3 minutes to return to the Wilderness, or you will lose your target.");
-					player.getPacketSender().sendMessage(
-							"Your target has 3 minutes to return to the Wilderness, or they will lose you as target.");
-				} else if (player.getPlayerKillingAttributes().getTarget().getPlayerKillingAttributes()
-						.getSafeTimer() == 120) {
-					player.getPlayerKillingAttributes().getTarget().getPacketSender().sendMessage(
-							"You have 2 minutes to return to the Wilderness, or you will lose your target.");
-					player.getPacketSender().sendMessage(
-							"Your target has 2 minutes to return to the Wilderness, or they will lose you as target.");
-				} else if (player.getPlayerKillingAttributes().getTarget().getPlayerKillingAttributes()
-						.getSafeTimer() == 60) {
-					player.getPlayerKillingAttributes().getTarget().getPacketSender().sendMessage(
-							"You have 1 minute to return to the Wilderness, or you will lose your target.");
-					player.getPacketSender().sendMessage(
-							"Your target has 1 minute to return to the Wilderness, or they will lose you as target.");
-				}
-
-				if (player.getPlayerKillingAttributes().getTarget().getPlayerKillingAttributes().getSafeTimer() > 0)
-					player.getPlayerKillingAttributes().getTarget().getPlayerKillingAttributes().setSafeTimer(
-							player.getPlayerKillingAttributes().getTarget().getPlayerKillingAttributes().getSafeTimer()
-									- 1);
-
-				if (player.getPlayerKillingAttributes().getTarget().getPlayerKillingAttributes().getSafeTimer() <= 0) {
-					player.getPlayerKillingAttributes().getTarget().getPlayerKillingAttributes().setSafeTimer(0);
-					BountyHunter.resetTargets(player, player.getPlayerKillingAttributes().getTarget(), false,
-							"Your target was in safe-zone for too long and has been reset.");
-				}
-			}
 		}
 	}
 
@@ -109,16 +77,6 @@ public class BountyHunter {
 	 * @return Player's status.
 	 */
 	public static boolean checkTarget(Player player, Player target) {
-		if (target.getLocation() != null && target.getLocation() == Location.WILDERNESS && player.getLocation() != null
-				&& player.getLocation() == Location.WILDERNESS
-				&& target.getPlayerKillingAttributes().getTarget() == null
-				&& player.getPlayerKillingAttributes().getTarget() == null && target.getIndex() != player.getIndex()
-				&& target.getPlayerKillingAttributes().getTargetPercentage() >= TARGET_PERCENTAGE_REQUIRED
-				&& player.getPlayerKillingAttributes().getTargetPercentage() >= TARGET_PERCENTAGE_REQUIRED) {
-			int combatDifference = CombatFactory.combatLevelDifference(player.getSkillManager().getCombatLevel(),
-					target.getSkillManager().getCombatLevel());
-			return combatDifference <= player.getWildernessLevel() && combatDifference <= target.getWildernessLevel();
-		}
 		return false;
 	}
 

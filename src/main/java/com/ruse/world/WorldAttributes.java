@@ -36,6 +36,7 @@ public class WorldAttributes {
         settings.put("achievements", true);
         settings.put("refer", true);
         settings.put("chests", true);
+        settings.put("transform", true);
 
         settings.put("donator-bonus", false);
         settings.put("slayer-bonus", false);

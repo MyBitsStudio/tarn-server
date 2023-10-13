@@ -95,6 +95,16 @@ public enum CraftingProducts {
     INF_OVERLOAD_T3(23126, 79,2, 5, 2950,
             new Item(23125, 1), new Item(15698, 5), new Item(15700, 2),
             new Item(227, 1)),
+
+    CEREMONIAL_URN(20413, 69,2, 6, 3950,
+            new Item(20422, 3), new Item(15700, 3), new Item(15698, 3),
+            new Item(15694, 5), new Item(17831, 125)),
+    ACCURSED_URN(20419, 89,2, 7, 5950,
+            new Item(20422, 6), new Item(15696, 3), new Item(15700, 5),
+            new Item(15698, 5), new Item(17831, 500)),
+    INFINITY_URN(20425, 99,2, 8, 9950,
+            new Item(20422, 10), new Item(15700, 7), new Item(15698, 7),
+            new Item(15694, 7), new Item(17831, 1000)),
     ;
 
     private final int finalProduct, reqLevel, type, base, xp;

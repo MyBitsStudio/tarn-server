@@ -6,6 +6,7 @@ import com.ruse.util.Misc;
 import com.ruse.world.packages.packs.casket.Box;
 import com.ruse.world.entity.impl.player.Player;
 import com.ruse.world.packages.packs.casket.packs.*;
+import com.ruse.world.packages.packs.casket.packs.limited.HalloweenCracker;
 import com.ruse.world.packages.packs.casket.packs.limited.LimitedMaster1;
 
 import java.util.ArrayList;
@@ -80,6 +81,8 @@ public class PossibleLootInterface {
         SLAYER_CASKET(2734, SlayerCasket.loot),
 
         PvM_CASKET(2736, PvMCasket.loot),
+
+        H_CRACKER(20083, HalloweenCracker.loot),
 
 
         //SLAYER_CASKET(2734, SlayerCasket.loot),

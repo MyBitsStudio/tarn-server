@@ -9,6 +9,9 @@ import com.ruse.world.World;
 import com.ruse.world.content.DropLog;
 import com.ruse.world.content.PlayerLogs;
 import com.ruse.world.packages.collectionlog.CollectionEntry;
+import com.ruse.world.packages.discord.BotManager;
+import com.ruse.world.packages.discord.impl.admin.AdminBot;
+import com.ruse.world.packages.discord.modal.MessageCreate;
 import com.ruse.world.packages.discordbot.AdminCord;
 import com.ruse.world.packages.equipmentenhancement.BoostType;
 import com.ruse.world.entity.impl.GroundItemManager;
@@ -258,7 +261,8 @@ public class DropManager {
     private void log(Player player, NPC npc, Drop finalDrop, int amount){
         DropLog.submit(player, new DropLog.DropLogEntry(finalDrop.id(), amount, finalDrop.announce()));
         new CollectionEntry(npc.getId(), finalDrop.id(), amount).submit(player);
-        AdminCord.sendMessage(1116222355673464883L, "[" + player.getUsername() + "] has received x" +amount + " " + ItemDefinition.forId(finalDrop.id()).getName() +" from " + Misc.formatText(npc.getDefinition().getName()) + ".");
+        BotManager.getInstance().sendMessage("ADMIN", AdminBot.DROPS, new MessageCreate("[" + player.getUsername() + "] has received x" +amount + " " + ItemDefinition.forId(finalDrop.id()).getName() +" from " + Misc.formatText(npc.getDefinition().getName()) + "."));
+        //AdminCord.sendMessage(1116222355673464883L, "[" + player.getUsername() + "] has received x" +amount + " " + ItemDefinition.forId(finalDrop.id()).getName() +" from " + Misc.formatText(npc.getDefinition().getName()) + ".");
         PlayerLogs.log(player.getUsername(),
                 player.getUsername() + " received " + ItemDefinition.forId(finalDrop.id()).getName() + " from " + npc.getDefinition().getName() + "!");
 

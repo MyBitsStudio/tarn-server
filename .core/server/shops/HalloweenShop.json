@@ -1,0 +1,156 @@
+[
+  {
+    "id": 10,
+    "name": "Halloween Shop",
+    "canSell": false,
+    "shops": [
+      {
+        "shopId": 0,
+        "currency": "mystery_shards",
+        "shopName": "Armory",
+        "restrict": 0,
+        "items": [
+          {
+            "id": 4568,
+            "amount": 10,
+            "price": 50000
+          },
+          {
+            "id": 6107,
+            "amount": 10,
+            "price": 20000
+          },
+          {
+            "id": 6108,
+            "amount": 10,
+            "price": 20000
+          },
+          {
+            "id": 6110,
+            "amount": 10,
+            "price": 20000
+          },
+          {
+            "id": 6106,
+            "amount": 10,
+            "price": 20000
+          },
+          {
+            "id": 6109,
+            "amount": 10,
+            "price": 20000
+          },
+          {
+            "id": 10726,
+            "amount": 10,
+            "price": 75000
+          },
+          {
+            "id": 10724,
+            "amount": 10,
+            "price": 75000
+          },
+          {
+            "id": 10725,
+            "amount": 10,
+            "price": 75000
+          },
+          {
+            "id": 9925,
+            "amount": 10,
+            "price": 75000
+          },
+          {
+            "id": 10727,
+            "amount": 10,
+            "price": 75000
+          },
+          {
+            "id": 13555,
+            "amount": 10,
+            "price": 10000
+          },
+          {
+            "id": 4489,
+            "amount": 10,
+            "price": 35000
+          }
+        ]
+      },
+      {
+        "shopId": 1,
+        "currency": "mystery_shards",
+        "shopName": "Pets",
+        "restrict": 0,
+        "items": [
+          {
+            "id": 22014,
+            "amount": 10,
+            "price": 60000
+          },
+          {
+            "id": 22016,
+            "amount": 10,
+            "price": 60000
+          }
+        ]
+      },
+      {
+        "shopId": 2,
+        "currency": "mystery_shards",
+        "shopName": "Souls",
+        "restrict": 0,
+        "items": [
+          {
+            "id": 17985,
+            "amount": 10,
+            "price": 250000
+          },
+          {
+            "id": 17986,
+            "amount": 10,
+            "price": 125000
+          },
+          {
+            "id": 17987,
+            "amount": 10,
+            "price": 125000
+          }
+        ]
+      },
+      {
+        "shopId": 3,
+        "currency": "mystery_shards",
+        "shopName": "Misc",
+        "restrict": 0,
+        "items": [
+          {
+            "id": 1960,
+            "amount": 250000,
+            "price": 500
+          },
+          {
+            "id": 20083,
+            "amount": 250000,
+            "price": 50000
+          },
+          {
+            "id": 20422,
+            "amount": 250000,
+            "price": 150
+          },
+          {
+            "id": 23147,
+            "amount": 250000,
+            "price": 1000
+          },
+          {
+            "id": 604,
+            "amount": 250000,
+            "price": 250
+          }
+        ]
+      }
+    ]
+  }
+]

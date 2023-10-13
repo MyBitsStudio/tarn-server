@@ -17,7 +17,8 @@ public enum Currency {
     PETS("pet", 19000),
     ELITE_PET("elite_pet", 19002),
     VIP("vip", 23003),
-    PERK_FRAGS("perk_frags", 19639)
+    PERK_FRAGS("perk_frags", 19639),
+    HALLOW("mystery_shards", 17831)
     ;
 
     private final String name;

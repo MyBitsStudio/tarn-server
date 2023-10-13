@@ -91,10 +91,9 @@ public class DailyTreasure extends Instance {
     }
 
     private void end(){
-        GroundItemManager.spawnGroundItem(owner,
-                new GroundItem(new Item(23106), new Position(2014, 5024, owner.getIndex() * 4), owner.getUsername(), false, 50, false, 1000));
+        owner.getInventory().add(new Item(23106, 1));
 
-        owner.sendMessage("@blu@[TREASURE]@whi@ A Key has spawn in front of the Treasure Chest.");
+        owner.sendMessage("@blu@[TREASURE]@whi@ A Key has spawn in your inventory!");
     }
 
 }

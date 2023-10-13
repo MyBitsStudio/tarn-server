@@ -66,7 +66,7 @@ public class WildernessObelisks {
 		while (random == index)
 			random = Misc.getRandom(5);
 		for (Player player : World.getPlayers()) {
-			if (player == null || player.getLocation() == null || player.getLocation() != Location.WILDERNESS)
+			if (player == null || player.getLocation() == null)
 				continue;
 			if (Locations.goodDistance(player.getPosition().copy(),
 					new Position(OBELISK_COORDS[index][0] + 2, OBELISK_COORDS[index][1] + 2), 1))

@@ -5,14 +5,8 @@ import java.util.concurrent.CopyOnWriteArrayList;
 
 import com.ruse.GameSettings;
 import com.ruse.engine.task.Task;
-import com.ruse.model.Animation;
-import com.ruse.model.DamageDealer;
-import com.ruse.model.Flag;
-import com.ruse.model.GroundItem;
-import com.ruse.model.Item;
+import com.ruse.model.*;
 import com.ruse.model.Locations.Location;
-import com.ruse.model.Position;
-import com.ruse.model.Skill;
 import com.ruse.model.definitions.ItemDefinition;
 import com.ruse.util.Misc;
 import com.ruse.util.RandomUtility;
@@ -66,6 +60,10 @@ public class PlayerDeathTask extends Task {
         try {
             switch (ticks--) {
                 case 5 -> {
+                    if(handleUrns(player)){
+                        this.stop();
+                        return;
+                    }
                     player.getPacketSender().sendInterfaceRemoval();
                     player.getMovementQueue().setLockMovement(true).reset();
                 }
@@ -102,8 +100,6 @@ public class PlayerDeathTask extends Task {
                     oldPosition = null;
                     if(death != null)
                         World.deregister(death);
-
-
 
                     stop();
                 }
@@ -144,6 +140,41 @@ public class PlayerDeathTask extends Task {
             case 9 -> "I have come for you, " + Misc.formatText(name) + "!";
             default -> "";
         };
+    }
+
+    private static boolean handleUrns(Player player){
+        if(player.getInventory().contains(20425, 1)){
+            player.getInventory().delete(20425, 1);
+            player.restart();
+            player.sendMessage("Your Infinity Urn has revived you and has striked all NPC's around you!");
+            for(NPC npc : player.getLocalNpcs()){
+                if(npc != null && npc.getConstitution() > 0){
+                    npc.performGraphic(new Graphic(665));
+                    npc.dealDamage(new Hit(Misc.random(1000000, 50000000)));
+                }
+            }
+            return true;
+        }
+        if(player.getInventory().contains(20419, 1)){
+            player.getInventory().delete(20419, 1);
+            player.restart();
+            player.sendMessage("Your Accursed Urn has revived you!");
+            player.getSkillManager().setCurrentLevel(Skill.PRAYER,
+                    player.getSkillManager().getCurrentLevel(Skill.PRAYER)
+                            / 2);
+            return true;
+        }
+        if(player.getInventory().contains(20413, 1)){
+            player.getInventory().delete(20413, 1);
+            player.restart();
+            player.sendMessage("Your Ceremonial Urn has revived you!");
+            player.getSkillManager().setCurrentLevel(Skill.PRAYER,
+                    player.getSkillManager().getCurrentLevel(Skill.PRAYER)
+                            / 2);
+            player.setConstitution(player.getSkillManager().getMaxLevel(Skill.CONSTITUTION) / 2);
+            return true;
+        }
+        return false;
     }
 
 }

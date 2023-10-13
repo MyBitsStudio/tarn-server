@@ -569,7 +569,7 @@ public class PlayerUpdating {
 		PacketBuilder properties = new PacketBuilder();
 		properties.put(appearance.getGender().ordinal());
 		properties.put(appearance.getHeadHint());
-		properties.put(target.getLocation() == Location.WILDERNESS ? appearance.getBountyHunterSkull() : -1);
+		properties.put(-1);
 		properties.putShort(target.getSkullIcon());
 		if(player.getTransmorgify().getCurrentTransformation() != null){
 			properties.putShort(-1);

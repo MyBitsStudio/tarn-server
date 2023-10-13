@@ -6,6 +6,8 @@ import lombok.Getter;
 public enum Transformations {
 
     DEATH(2862, -1),
+    WARLORD(6105, -1),
+    PIRATE(5665, -1),
 
     ;
 

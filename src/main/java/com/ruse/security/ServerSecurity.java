@@ -6,6 +6,9 @@ import com.ruse.security.save.impl.server.ServerSecurityLoad;
 import com.ruse.security.save.impl.server.ServerSecuritySave;
 import com.ruse.security.tools.SecurityUtils;
 import com.ruse.world.World;
+import com.ruse.world.packages.discord.BotManager;
+import com.ruse.world.packages.discord.impl.admin.AdminBot;
+import com.ruse.world.packages.discord.modal.MessageCreate;
 import com.ruse.world.packages.discordbot.AdminCord;
 import com.ruse.world.entity.impl.player.Player;
 import io.ipgeolocation.api.Geolocation;
@@ -212,7 +215,8 @@ public class ServerSecurity {
         if(sec.getAssociation("username").size() > 3){
             if (!flagged.contains(player.getUsername())) {
                 flagged.add(player.getUsername());
-                AdminCord.sendMessage(1116230759225765968L, "[" + player.getUsername() + "] had been flagged more multi accounts.");
+                BotManager.getInstance().sendMessage("ADMIN", AdminBot.SECURITY, new MessageCreate("[" + player.getUsername() + "] had been flagged more multi accounts."));
+                //AdminCord.sendMessage(1116230759225765968L, "[" + player.getUsername() + "] had been flagged more multi accounts.");
             }
         }
 
@@ -273,7 +277,8 @@ public class ServerSecurity {
                 macMap.get(mac).remove(player.getUsername());
                 hwidMap.get(hwid).remove(player.getUsername());
                 sec.removeAssociation("username", player.getUsername());
-                AdminCord.sendMessage(1116230759225765968L, "[" + player.getUsername() + "] is flagged for creating multiple accounts.");
+                BotManager.getInstance().sendMessage("ADMIN", AdminBot.SECURITY, new MessageCreate("[" + player.getUsername() + "] is flagged for creating multiple accounts."));
+                //AdminCord.sendMessage(1116230759225765968L, "[" + player.getUsername() + "] is flagged for creating multiple accounts.");
                 return NEW_ACCOUNT_LIMIT;
             }
         }
@@ -322,7 +327,8 @@ public class ServerSecurity {
         player.save();
         player.getPlayerFlags().setFlag(FORCE_KICK, true);
         save();
-        AdminCord.sendMessage(1116230759225765968L, player.getUsername()+" was just banned "+type);
+        BotManager.getInstance().sendMessage("ADMIN", AdminBot.PUNISHMENTS, new MessageCreate(player.getUsername()+" was just banned "+type));
+        //AdminCord.sendMessage(1116230759225765968L, player.getUsername()+" was just banned "+type);
     }
 
     public void mutePlayer(Player player, int time){
@@ -333,15 +339,18 @@ public class ServerSecurity {
 
     private int checkPlayerStatus(@NotNull Player player){
         if(isPlayerBanned(player.getUsername().toLowerCase())){
-            AdminCord.sendMessage(1116230759225765968L, player.getUsername()+" is banned and attempted to login");
+            BotManager.getInstance().sendMessage("ADMIN", AdminBot.SECURITY, new MessageCreate(player.getUsername()+" is banned and attempted to login"));
+            //AdminCord.sendMessage(1116230759225765968L, player.getUsername()+" is banned and attempted to login");
             return ACCOUNT_BANNED;
         }
         if(isIPBanned(player.getHostAddress())){
-            AdminCord.sendMessage(1116230759225765968L, player.getUsername()+" is ipbanned and attempted to login");
+            BotManager.getInstance().sendMessage("ADMIN", AdminBot.SECURITY, new MessageCreate(player.getUsername()+" is ipbanned and attempted to login"));
+            //AdminCord.sendMessage(1116230759225765968L, player.getUsername()+" is ipbanned and attempted to login");
             return ACCOUNT_BANNED;
         }
         if(isMACBanned(player.getMac())){
-            AdminCord.sendMessage(1116230759225765968L, player.getUsername()+" is macbanned and attempted to login");
+            BotManager.getInstance().sendMessage("ADMIN", AdminBot.SECURITY, new MessageCreate(player.getUsername()+" is macbanned and attempted to login"));
+            //AdminCord.sendMessage(1116230759225765968L, player.getUsername()+" is macbanned and attempted to login");
             return ACCOUNT_BANNED;
         }
         if(isHWIDBanned(player.getPSecurity().getHwid())){

@@ -201,6 +201,9 @@ public class ButtonClickPacketListener implements PacketListener {
         if(Monics.handleButtons(player, id))
             return;
 
+        if(player.getTransmorgify().handleButtons(id))
+            return;
+
         if(AchievementHandler.onButtonClick(player, id))
             return;
 

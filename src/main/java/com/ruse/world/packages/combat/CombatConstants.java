@@ -59,4 +59,19 @@ public class CombatConstants {
         return player.getEquipment().containsAll(22232, 22239, 22237, 22233,
                 22234, 22235, 22236);
     }
+
+    public static boolean wearingDeathArmor(@NotNull Player player){
+        return player.getEquipment().containsAll(14337, 14339, 14341, 14345,
+                14347, 14353, 14357, 14359, 14361, 14363);
+    }
+
+    public static boolean wearingWarlordArmor(@NotNull Player player){
+        return player.getEquipment().containsAll(10726, 10724, 10725, 9925,
+                10727);
+    }
+
+    public static boolean wearingGhost(@NotNull Player player){
+        return player.getEquipment().containsAll(6107, 6108, 6110, 6106,
+                6109);
+    }
 }

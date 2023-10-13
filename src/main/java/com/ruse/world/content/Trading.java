@@ -11,6 +11,9 @@ import com.ruse.model.definitions.ItemDefinition;
 import com.ruse.util.Misc;
 import com.ruse.world.World;
 import com.ruse.world.content.PlayerPunishment.Jail;
+import com.ruse.world.packages.discord.BotManager;
+import com.ruse.world.packages.discord.impl.admin.AdminBot;
+import com.ruse.world.packages.discord.modal.MessageCreate;
 import com.ruse.world.packages.discordbot.AdminCord;
 import com.ruse.world.entity.impl.player.Player;
 
@@ -441,8 +444,10 @@ public class Trading {
 			for (Item item : player.getTrading().offeredItems) {
 				PlayerLogs.log(player.getUsername(), player.getUsername()+"Gave item in trade to " + player2.getUsername() + ". Id: "
 						+ item.getId() + ", amount: " + item.getAmount());
-				AdminCord.sendMessage(1116222330931265607L, "Gave item in trade to " + player2.getUsername() + ". Id: "
-						+ item.getId() + ", amount: " + item.getAmount());
+				BotManager.getInstance().sendMessage("ADMIN", AdminBot.TRADE, new MessageCreate("Gave item in trade to " + player2.getUsername() + ". Id: "
+						+ item.getId() + ", amount: " + item.getAmount()));
+//				AdminCord.sendMessage(1116222330931265607L, "Gave item in trade to " + player2.getUsername() + ". Id: "
+//						+ item.getId() + ", amount: " + item.getAmount());
 			}
 			for (Item item : player2.getTrading().offeredItems) {
 				PlayerLogs.log(player.getUsername(), player.getUsername()+"Receiving item from trade with " + player2.getUsername() + " Id: "
@@ -452,8 +457,10 @@ public class Trading {
 			for (Item item : player.getTrading().offeredItems) {
 				PlayerLogs.logTrades(player.getUsername(), player.getUsername()+"Gave item to " + player2.getUsername() + ". Name: "
 						+ item.getDefinition().getName() + ". Id: " + item.getId() + ", amount: " + item.getAmount());
-				AdminCord.sendMessage(1116222330931265607L, player.getUsername()+"Gave item to " + player2.getUsername() + ". Name: "
-						+ item.getDefinition().getName() + ". Id: " + item.getId() + ", amount: " + item.getAmount());
+				BotManager.getInstance().sendMessage("ADMIN", AdminBot.TRADE, new MessageCreate(player.getUsername()+"Gave item to " + player2.getUsername() + ". Name: "
+						+ item.getDefinition().getName() + ". Id: " + item.getId() + ", amount: " + item.getAmount()));
+//				AdminCord.sendMessage(1116222330931265607L, player.getUsername()+"Gave item to " + player2.getUsername() + ". Name: "
+//						+ item.getDefinition().getName() + ". Id: " + item.getId() + ", amount: " + item.getAmount());
 			}
 			for (Item item : player2.getTrading().offeredItems) {
 				PlayerLogs.logTrades(player.getUsername(), player.getUsername()+"Received item from "  + player2.getUsername() + ". Name: "

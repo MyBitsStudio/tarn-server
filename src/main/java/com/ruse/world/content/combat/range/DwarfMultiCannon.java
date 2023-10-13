@@ -105,7 +105,7 @@ public class DwarfMultiCannon {
 			c.getPacketSender().sendMessage("You can only have one dwarf-cannon setup at once.");
 			return false;
 		}
-		if (c.getLocation() == Location.WILDERNESS || c.getLocation() == Location.DUEL_ARENA
+		if ( c.getLocation() == Location.DUEL_ARENA
 				|| c.getLocation() == Location.FREE_FOR_ALL_ARENA || c.getLocation() == Location.CORPOREAL_BEAST) {
 			c.getPacketSender().sendMessage("You cannot setup a cannon here.");
 			return false;

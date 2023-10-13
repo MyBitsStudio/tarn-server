@@ -37,6 +37,7 @@ import com.ruse.world.packages.tracks.ProgressReward;
 import com.ruse.world.packages.tracks.impl.starter.StarterTasks;
 import com.ruse.world.packages.tracks.impl.tarn.elite.TarnEliteTasks;
 import com.ruse.world.packages.tracks.impl.tarn.normal.TarnNormalTasks;
+import com.ruse.world.packages.transmorgify.Transformations;
 import com.ruse.world.packages.vip.Donation;
 
 import java.lang.reflect.Type;
@@ -921,6 +922,12 @@ public class PlayerSecureLoad extends SecureLoad {
         if(object.has("currency-pouch")){
             player.getPouch().load(builder.fromJson(object.get("currency-pouch"),
                     new TypeToken<Map<Integer, Long>>() {
+                    }.getType()));
+        }
+
+        if(object.has("transforms")){
+            player.getTransmorgify().load(builder.fromJson(object.get("transforms"),
+                    new TypeToken<List<Transformations>>() {
                     }.getType()));
         }
 

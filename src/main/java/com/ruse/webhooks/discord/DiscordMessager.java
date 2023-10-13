@@ -4,8 +4,6 @@ import java.awt.Color;
 import java.io.File;
 import java.net.URI;
 
-import net.dv8tion.jda.api.MessageBuilder;
-import net.dv8tion.jda.api.entities.Message;
 import org.json.JSONObject;
 
 import com.ruse.util.Misc;

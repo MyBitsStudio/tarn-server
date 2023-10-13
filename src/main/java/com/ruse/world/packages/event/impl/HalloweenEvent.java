@@ -3,9 +3,11 @@ package com.ruse.world.packages.event.impl;
 import com.ruse.model.Item;
 import com.ruse.model.Position;
 import com.ruse.world.World;
+import com.ruse.world.WorldIPChecker;
 import com.ruse.world.entity.impl.npc.NPC;
 import com.ruse.world.entity.impl.player.Player;
 import com.ruse.world.packages.event.Event;
+import com.ruse.world.packages.shops.ShopHandler;
 import org.jetbrains.annotations.NotNull;
 
 public class HalloweenEvent extends Event {
@@ -40,9 +42,7 @@ public class HalloweenEvent extends Event {
         switch(npcId){
             case 3306 -> {
                 switch(option){
-                    case 1->{
-
-                    }
+                    case 1-> ShopHandler.getShop(10).ifPresent(shop -> shop.send(player, true));
                 }
                 return true;
             }
@@ -56,7 +56,25 @@ public class HalloweenEvent extends Event {
             case 2488 -> {
                 switch(option){
                     case 1->{
+                        if(player.getPSettings().getBooleanValue("hallow-pack")){
+                            player.sendMessage("You have already claimed your Halloween pack!");
+                            return true;
+                        }
 
+                        if(player.getInventory().getFreeSlots() >= 5){
+                            if(WorldIPChecker.getInstance().check(player, "hallow-pack")){
+                                player.getInventory().add(20083, 1);
+                                player.getInventory().add(17831, 1000);
+                                player.getInventory().add(10835, 500);
+                                player.getInventory().add(1960, 25);
+                                player.getInventory().add(750, 1);
+                                player.sendMessage("You have claimed the Halloween pack!");
+                            } else {
+                                player.sendMessage("You have already claimed your Halloween pack!");
+                            }
+                        } else {
+                            player.sendMessage("You need at least 5 free inventory slots to claim your Halloween pack!");
+                        }
                     }
                 }
                 return true;

@@ -55,7 +55,7 @@ public class ItemActionPacketListener implements PacketListener {
     public static int count = 0;
 
     public static boolean drinkInfinityRage(final Player player, int slot, int replacePotion) {
-        if (player.getLocation() == Location.WILDERNESS || player.getLocation() == Location.DUEL_ARENA) {
+        if ( player.getLocation() == Location.DUEL_ARENA) {
             player.getPacketSender().sendMessage("You cannot use this potion here.");
             return false;
         }
@@ -140,6 +140,9 @@ public class ItemActionPacketListener implements PacketListener {
         if(Monics.handleMonic(player, itemId))
             return;
 
+        if(player.getTransmorgify().handleSouls(player, itemId))
+            return;
+
         if(GearPacks.isPack(itemId)) {
             if(GearPacks.isRandom(itemId))
                 GearPack.openRandomBox(player, itemId);
@@ -200,6 +203,10 @@ public class ItemActionPacketListener implements PacketListener {
 
 
         switch (itemId) {
+
+            case 750 :
+                player.getTransmorgify().sendInterface(1);
+                break;
 
             case 23057:
             case 23058:
