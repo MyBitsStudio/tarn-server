@@ -168,7 +168,7 @@ public class DropManager {
 
                 if(collector || hasLoot){
                     if(player.getMode() instanceof UltimateIronman){
-                        player.getUimBank().deposit(item);
+                        player.getUimBank().depositForced(item);
                     } else {
                         player.depositItemBank(item);
                     }
@@ -207,7 +207,7 @@ public class DropManager {
 
             if(collector || hasLoot){
                 if(player.getMode() instanceof UltimateIronman){
-                    player.getUimBank().deposit(item);
+                    player.getUimBank().depositForced(item);
                 } else {
                     player.depositItemBank(item);
                 }
@@ -240,7 +240,7 @@ public class DropManager {
 
             if(collector || hasLoot){
                 if(player.getMode() instanceof UltimateIronman){
-                    player.getUimBank().deposit(item);
+                    player.getUimBank().depositForced(item);
                 } else {
                     player.depositItemBank(item);
                 }

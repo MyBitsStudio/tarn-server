@@ -35,6 +35,10 @@ public class UIMBank {
 		}
 	}
 
+	public void depositForced(Item item){
+		player.getUIMBank().add(item);
+	}
+
 	public void deposit(int id, int amount) {
 		if(player.getInterfaceId() == 48700) {
 //			if (player.getUimBankItems().size() >= 70) {
