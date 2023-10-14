@@ -573,7 +573,7 @@ public class PlayerUpdating {
 		properties.putShort(target.getSkullIcon());
 		if(player.getTransmorgify().getCurrentTransformation() != null){
 			properties.putShort(-1);
-			properties.putShort(player.getTransmorgify().getCurrentTransformation().getNpcId());
+			properties.putShort(target.getTransmorgify().getCurrentTransformation().getNpcId());
 		} else {
 			int[] equip = new int[equipment.capacity()];
 			for (int i = 0; i < equipment.capacity(); i++) {

@@ -14,7 +14,7 @@ public class Transmorgify {
     @Getter
     private final List<Transformations> transformations = new ArrayList<>();
 
-    private Player player;
+    private final Player player;
 
     @Getter
     private Transformations currentTransformation;
