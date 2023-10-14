@@ -1,4 +1,4 @@
-/*package com.ruse.world.content.combat.prayer;
+/*package com.ruse.world.packages.combat.prayer;
 
 import com.ruse.model.GameMode;
 import com.ruse.model.PlayerRights;

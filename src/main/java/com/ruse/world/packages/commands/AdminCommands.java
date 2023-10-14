@@ -325,16 +325,18 @@ public class AdminCommands {
                         }
                     }
                     String[] finalMessage = message;
-                    World.getPlayers().stream().filter(Objects::nonNull)
-                            .forEach(players -> {
-                                for(String string : finalMessage){
-                                    players.sendMessage(string);
-                                }
-                                players.getPacketSender().sendBroadCastMessage(finalMessage[0], 300);
-                                World.sendBroadcastMessage(finalMessage[0]);
-                                GameSettings.broadcastMessage = finalMessage[0];
-                                GameSettings.broadcastTime = 300;
-                            });
+                    for(Player players : World.getPlayers()){
+                        if(players == null)
+                            continue;
+
+                        for(String string : finalMessage){
+                            players.sendMessage(string);
+                        }
+                        players.getPacketSender().sendBroadCastMessage(finalMessage[0], 300);
+                        World.sendBroadcastMessage(finalMessage[0]);
+                        GameSettings.broadcastMessage = finalMessage[0];
+                        GameSettings.broadcastTime = 300;
+                    }
                 } else {
                     player.sendMessage("Invalid warning.");
                 }
