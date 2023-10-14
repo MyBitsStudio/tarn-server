@@ -121,17 +121,30 @@ public class HalloweenSpawn extends Event {
                 }
                 return true;
             }
+            if(id == 6100 || id == 5665){
+                bosses--;
+                if(bosses <= 0){
+                    World.getPlayers().stream().filter(Objects::nonNull)
+                            .forEach(p -> {
+                                p.sendMessage("@red@[EVENT]@whi@ The "+(isZombies? "Zombie Pirate" : "Skeleton Warlord")+" has been defeated! The town is safe!");
+                                p.getPacketSender().sendBroadCastMessage("[EVENT] The "+(isZombies? "Zombie Pirate" : "Skeleton Warlord")+" has been defeated! The town is safe!", 300);
+                                World.sendBroadcastMessage("[EVENT] The "+(isZombies? "Zombie Pirate" : "Skeleton Warlord")+" has been defeated! The town is safe!");
+                                GameSettings.broadcastMessage = "[EVENT] The "+(isZombies? "Zombie Pirate" : "Skeleton Warlord")+" has been defeated! The town is safe!";
+                                GameSettings.broadcastTime = 300;
+                            });
+                    stop();
+                }
+                return true;
+            }
         } else {
-            System.out.println("hallows id "+id);
             if(Arrays.stream(skeles).anyMatch(i -> i == id)){
                 spawns--;
-                System.out.println("hallows "+spawns);
                 if(spawns == 0){
                     spawnBosses();
                 }
                 return true;
             }
-            if(id == 6105 || id == 6104 || id == 6100 || id == 5665){
+            if(id == 6105 || id == 6104){
                 bosses--;
                 if(bosses <= 0){
                     World.getPlayers().stream().filter(Objects::nonNull)

@@ -119,14 +119,8 @@ public class TotemHNS extends Event {
 
     @Override
     public void stop() {
-        World.getPlayers().stream().filter(Objects::nonNull)
-                .forEach(player -> {
-                    player.sendMessage("@red@[EVENT]@whi@ The totem has been found! Thank you for playing!");
-                    player.getPacketSender().sendBroadCastMessage("[EVENT] The totem has been found! Thank you for playing!", 300);
-                    World.sendBroadcastMessage("[EVENT] The totem has been found! Thank you for playing!");
-                    GameSettings.broadcastMessage = "[EVENT] The totem has been found! Thank you for playing!";
-                    GameSettings.broadcastTime = 300;
-                });
+        World.deregister(new GameObject(55350, pos));
+        CustomObjects.deleteGlobalObject(new GameObject(55350, pos));
     }
 
     @Override
@@ -149,9 +143,18 @@ public class TotemHNS extends Event {
         switch(objectId){
             case 55350 -> {
                 World.deregister(new GameObject(55350, pos));
+                CustomObjects.deleteGlobalObject(new GameObject(55350, pos));
                 owner.sendMessage("The totem has been found by "+player.getUsername()+"!");
                 player.sendMessage("@red@You have found the totem! Congratulations!");
                 player.getInventory().add(items[Misc.random(items.length - 1)]);
+                World.getPlayers().stream().filter(Objects::nonNull)
+                        .forEach(players -> {
+                            players.sendMessage("@red@[EVENT]@whi@ The totem has been found! Thank you for playing!");
+                            players.getPacketSender().sendBroadCastMessage("[EVENT] The totem has been found! Thank you for playing!", 300);
+                            World.sendBroadcastMessage("[EVENT] The totem has been found! Thank you for playing!");
+                            GameSettings.broadcastMessage = "[EVENT] The totem has been found! Thank you for playing!";
+                            GameSettings.broadcastTime = 300;
+                        });
                 this.stop();
                 return true;
             }

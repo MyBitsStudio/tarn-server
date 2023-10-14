@@ -5037,32 +5037,36 @@
       "weight" : 2.79,
       "drops" : [
         {
-          "id": 19641,
-          "count": [
-            1
-          ],
-          "modifier" : 156000
+          "id" : 19641,
+          "chance" : 1,
+          "min" : 1,
+          "max" : 1,
+          "modifier" : 156000,
+          "announce" : true
         },
         {
-          "id": 9076,
-          "count": [
-            1
-          ],
-          "modifier" : 126000
+          "id" : 9076,
+          "chance" : 1,
+          "min" : 1,
+          "max" : 1,
+          "modifier" : 126000,
+          "announce" : true
         },
         {
-          "id": 13748,
-          "count": [
-            1
-          ],
-          "modifier" : 216590
+          "id" : 13748,
+          "chance" : 1,
+          "min" : 1,
+          "max" : 1,
+          "modifier" : 216590,
+          "announce" : true
         },
         {
-          "id": 19487,
-          "count": [
-            1
-          ],
-          "modifier" : 256000
+          "id" : 19487,
+          "chance" : 1,
+          "min" : 1,
+          "max" : 1,
+          "modifier" : 256000,
+          "announce" : true
         }
       ]
     }
