@@ -2,6 +2,7 @@ package com.ruse.world.packages.commands;
 
 import com.ruse.GameSettings;
 import com.ruse.model.Flag;
+import com.ruse.model.GameObject;
 import com.ruse.model.Position;
 import com.ruse.model.definitions.ItemDefinition;
 import com.ruse.security.PlayerLock;
@@ -10,6 +11,7 @@ import com.ruse.security.save.impl.player.PlayerSecureLoad;
 import com.ruse.util.Misc;
 import com.ruse.util.NameUtils;
 import com.ruse.world.World;
+import com.ruse.world.content.CustomObjects;
 import com.ruse.world.content.transportation.TeleportHandler;
 import com.ruse.world.content.transportation.TeleportType;
 import com.ruse.world.entity.impl.npc.NPC;
@@ -340,6 +342,14 @@ public class AdminCommands {
                 } else {
                     player.sendMessage("Invalid warning.");
                 }
+                return true;
+            }
+
+            case "deleteobj" -> {
+                int id = Integer.parseInt(commands[1]);
+                CustomObjects.deleteGlobalObjectWithinDistance(new GameObject(id, player.getPosition()));
+                World.deregister(new GameObject(id, player.getPosition()));
+                CustomObjects.deleteGlobalObject(new GameObject(id, player.getPosition()));
                 return true;
             }
         }
