@@ -29,9 +29,9 @@ public class HallowEvent extends Boss {
                 continue;
             if (players.getBossPlugin() == null)
                 continue;
-            if (players.getBossPlugin().getDamage(this.getDefinition().getName()) < 1000)
+            if (players.getBossPlugin().getDamage(this.getDefinition().getName()+this.getIndex()) < 1000)
                 continue;
-            players.getBossPlugin().setDamage(this.getDefinition().getName(), 0L);
+            players.getBossPlugin().setDamage(this.getDefinition().getName()+this.getIndex(), 0L);
             DropManager.getManager().sendDrop(this, players, 1.0);
         }
 
@@ -40,6 +40,6 @@ public class HallowEvent extends Boss {
 
     @Override
     public void onDamage(Player player, long damage){
-        player.getBossPlugin().addDamage(this.getDefinition().getName(), damage);
+        player.getBossPlugin().addDamage(this.getDefinition().getName()+this.getIndex(), damage);
     }
 }
