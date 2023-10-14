@@ -18,8 +18,8 @@ import com.ruse.world.World;
 import com.ruse.world.clip.region.RegionClipping;
 import com.ruse.world.content.*;
 import com.ruse.world.content.combat.magic.Autocasting;
-import com.ruse.world.content.combat.prayer.CurseHandler;
-import com.ruse.world.content.combat.prayer.PrayerHandler;
+import com.ruse.world.packages.combat.prayer.CurseHandler;
+import com.ruse.world.packages.combat.prayer.PrayerHandler;
 import com.ruse.world.content.combat.range.DwarfMultiCannon;
 import com.ruse.world.content.combat.weapon.CombatSpecial;
 import com.ruse.world.content.grandexchange.GrandExchange;
@@ -34,8 +34,6 @@ import com.ruse.world.content.minigames.impl.*;
 import com.ruse.world.content.minigames.impl.Dueling.DuelRule;
 import com.ruse.world.content.minigames.impl.dungeoneering.DungeoneeringParty;
 import com.ruse.world.content.portal.portal;
-import com.ruse.world.content.randomevents.EvilTree.EvilTreeDef;
-import com.ruse.world.content.skill.impl.agility.Agility;
 import com.ruse.world.content.skill.impl.construction.Construction;
 import com.ruse.world.content.skill.impl.construction.ConstructionActions;
 import com.ruse.world.content.skill.impl.crafting.Flax;
@@ -44,16 +42,10 @@ import com.ruse.world.content.skill.impl.fishing.Fishing;
 import com.ruse.world.content.skill.impl.fishing.Fishing.Spot;
 import com.ruse.world.content.skill.impl.hunter.Hunter;
 import com.ruse.world.content.skill.impl.hunter.PuroPuro;
-import com.ruse.world.content.skill.impl.mining.Mining;
-import com.ruse.world.content.skill.impl.mining.MiningData;
-import com.ruse.world.content.skill.impl.mining.Prospecting;
 import com.ruse.world.content.skill.impl.old_dungeoneering.Dungeoneering;
-import com.ruse.world.content.skill.impl.runecrafting.Runecrafting;
-import com.ruse.world.content.skill.impl.runecrafting.RunecraftingData;
 import com.ruse.world.content.skill.impl.smithing.EquipmentMaking;
 import com.ruse.world.content.skill.impl.smithing.Smelting;
 import com.ruse.world.content.skill.impl.thieving.Stalls;
-import com.ruse.world.content.skill.impl.woodcutting.Woodcutting;
 import com.ruse.world.content.skill.impl.woodcutting.WoodcuttingData;
 import com.ruse.world.content.skill.impl.woodcutting.WoodcuttingData.Hatchet;
 import com.ruse.world.content.transportation.TeleportHandler;
@@ -66,7 +58,7 @@ import com.ruse.world.packages.skills.mining.MiningProps;
 import com.ruse.world.packages.tower.TarnTower;
 import org.jetbrains.annotations.NotNull;
 
-import static com.ruse.world.content.combat.prayer.PrayerHandler.startDrain;
+import static com.ruse.world.packages.combat.prayer.PrayerHandler.startDrain;
 
 /**
  * This packet listener is called when a player clicked on a game object.

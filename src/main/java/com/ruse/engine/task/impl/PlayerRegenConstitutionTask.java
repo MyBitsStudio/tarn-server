@@ -2,9 +2,7 @@ package com.ruse.engine.task.impl;
 
 import com.ruse.engine.task.Task;
 import com.ruse.model.Locations.Location;
-import com.ruse.model.Skill;
-import com.ruse.model.container.impl.Equipment;
-import com.ruse.world.content.combat.prayer.PrayerHandler;
+import com.ruse.world.packages.combat.prayer.PrayerHandler;
 import com.ruse.world.entity.impl.player.Player;
 
 public class PlayerRegenConstitutionTask extends Task {

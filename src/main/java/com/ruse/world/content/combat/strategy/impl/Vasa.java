@@ -4,18 +4,13 @@ import com.ruse.engine.task.Task;
 import com.ruse.engine.task.TaskManager;
 import com.ruse.model.Animation;
 import com.ruse.model.Graphic;
-import com.ruse.model.Locations;
-import com.ruse.model.MessageType;
-import com.ruse.model.Position;
 import com.ruse.model.Projectile;
 import com.ruse.util.Misc;
 import com.ruse.world.content.combat.CombatContainer;
 import com.ruse.world.content.combat.CombatType;
-import com.ruse.world.content.combat.prayer.CurseHandler;
 import com.ruse.world.content.combat.strategy.CombatStrategy;
 import com.ruse.world.entity.impl.Character;
 import com.ruse.world.entity.impl.npc.NPC;
-import com.ruse.world.entity.impl.player.Player;
 
 public class Vasa implements CombatStrategy {
 

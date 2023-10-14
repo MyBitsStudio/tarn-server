@@ -3,7 +3,7 @@ package com.ruse.engine.task.impl;
 import com.ruse.engine.task.Task;
 import com.ruse.model.Skill;
 import com.ruse.world.content.BonusManager;
-import com.ruse.world.content.combat.prayer.CurseHandler;
+import com.ruse.world.packages.combat.prayer.CurseHandler;
 import com.ruse.world.entity.impl.player.Player;
 
 /**

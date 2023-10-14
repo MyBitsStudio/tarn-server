@@ -3,7 +3,6 @@ package com.ruse.world.content.skill;
 import com.ruse.engine.task.Task;
 import com.ruse.engine.task.TaskManager;
 import com.ruse.model.*;
-import com.ruse.model.Locations.Location;
 import com.ruse.model.container.impl.Equipment;
 import com.ruse.model.definitions.WeaponAnimations;
 import com.ruse.model.definitions.WeaponInterfaces;
@@ -11,14 +10,12 @@ import com.ruse.util.Misc;
 import com.ruse.world.World;
 import com.ruse.world.content.*;
 import com.ruse.world.content.Sounds.Sound;
-import com.ruse.world.content.combat.prayer.CurseHandler;
-import com.ruse.world.content.combat.prayer.PrayerHandler;
+import com.ruse.world.packages.combat.prayer.CurseHandler;
+import com.ruse.world.packages.combat.prayer.PrayerHandler;
 import com.ruse.world.packages.serverperks.ServerPerks;
-import com.ruse.world.content.skill.impl.old_dungeoneering.UltimateIronmanHandler;
 import com.ruse.world.content.skill.impl.summoning.BossPets;
 import com.ruse.world.content.skill.impl.summoning.Familiar;
 import com.ruse.world.entity.impl.player.Player;
-import com.ruse.world.packages.mode.impl.Veteran;
 
 /**
  * Represents a player's skills in the game, also manages calculations such as

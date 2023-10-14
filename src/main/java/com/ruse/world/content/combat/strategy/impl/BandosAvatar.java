@@ -11,7 +11,7 @@
 //import com.ruse.world.content.combat.CombatContainer;
 //import com.ruse.world.content.combat.CombatType;
 //import com.ruse.world.content.combat.HitQueue.CombatHit;
-//import com.ruse.world.content.combat.prayer.CurseHandler;
+//import com.ruse.world.packages.combat.prayer.CurseHandler;
 //import com.ruse.world.content.combat.strategy.CombatStrategy;
 //import com.ruse.world.entity.impl.Character;
 //import com.ruse.world.entity.impl.npc.NPC;

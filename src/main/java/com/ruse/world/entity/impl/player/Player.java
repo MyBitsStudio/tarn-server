@@ -63,8 +63,8 @@ import com.ruse.world.content.combat.CombatFactory;
 import com.ruse.world.content.combat.CombatType;
 import com.ruse.world.content.combat.effect.CombatPoisonEffect.CombatPoisonData;
 import com.ruse.world.content.combat.magic.CombatSpell;
-import com.ruse.world.content.combat.prayer.CurseHandler;
-import com.ruse.world.content.combat.prayer.PrayerHandler;
+import com.ruse.world.packages.combat.prayer.CurseHandler;
+import com.ruse.world.packages.combat.prayer.PrayerHandler;
 import com.ruse.world.content.combat.pvp.PlayerKillingAttributes;
 import com.ruse.world.content.combat.range.CombatRangedAmmo.RangedWeaponData;
 import com.ruse.world.content.combat.strategy.CombatStrategies;
@@ -1300,21 +1300,16 @@ public class Player extends Character {
 
     @Override
     public void heal(long amount) {
-        boolean nexEffect = getEquipment().wearingNexAmours();
         int level = skillManager.getMaxLevel(Skill.CONSTITUTION);
-        int nexHp = level + 400;
         int currentlevel = skillManager.getCurrentLevel(Skill.CONSTITUTION);
 
-        if (currentlevel >= level && !nexEffect) {
-            return;
-        }
-        if (currentlevel >= nexHp && nexEffect) {
+        if (currentlevel >= level) {
             return;
         }
 
-        if ((currentlevel + amount) >= (nexEffect ? nexHp : level)) {
-            setConstitution(nexEffect ? nexHp : level);
-        } else if ((currentlevel + amount) < (nexEffect ? nexHp : level)) {
+        if ((currentlevel + amount) >= level) {
+            setConstitution(level);
+        } else if ((currentlevel + amount) < (level)) {
             setConstitution(currentlevel + amount);
         }
 

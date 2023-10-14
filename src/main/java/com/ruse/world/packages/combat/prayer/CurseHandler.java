@@ -1,4 +1,4 @@
-package com.ruse.world.content.combat.prayer;
+package com.ruse.world.packages.combat.prayer;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -6,8 +6,6 @@ import java.util.Map;
 import com.ruse.engine.task.Task;
 import com.ruse.engine.task.TaskManager;
 import com.ruse.model.*;
-import com.ruse.model.Locations.Location;
-import com.ruse.model.container.impl.Equipment;
 import com.ruse.util.Misc;
 import com.ruse.util.NameUtils;
 import com.ruse.world.content.BonusManager;
@@ -15,8 +13,6 @@ import com.ruse.world.content.ItemsKeptOnDeath;
 import com.ruse.world.content.Sounds;
 import com.ruse.world.content.Sounds.Sound;
 import com.ruse.world.content.combat.CombatType;
-import com.ruse.world.content.minigames.impl.Dueling;
-import com.ruse.world.content.minigames.impl.Dueling.DuelRule;
 import com.ruse.world.entity.impl.Character;
 import com.ruse.world.entity.impl.player.Player;
 
@@ -93,9 +89,6 @@ public class CurseHandler {
 		}
 		if (player.getSkillManager().getMaxLevel(Skill.PRAYER) < (curse.requirement * 10)) {
 			player.getPacketSender().sendConfig(curse.configId, 0);
-			// DialogueManager.sendOneStringStatement(p, " " + "You need a @blu@Prayer
-			// <col=0>level of " + pd.levelRequirement +" to use @blu@" +
-			// pd.getPrayerName());
 			player.getPacketSender().sendMessage(
 					"You need a Prayer level of at least " + curse.requirement + " to use " + curse.name + ".");
 			return;
@@ -127,11 +120,7 @@ public class CurseHandler {
                 deactivateCurse(player, CurseData.LEECH_ENERGY);
                 deactivateCurses(player, SPECIAL_ATTACK_CURSES);
             }
-            case BERSERKER -> {
-            }
             case LEECH_ENERGY -> deactivateCurse(player, CurseData.TURMOIL);
-            case PROTECT_ITEM -> {
-            }
             default -> {
             }
         }
@@ -156,8 +145,6 @@ public class CurseHandler {
 		if (noActiveCurse(player, curse) && !player.isDrainingPrayer())
 			startDrain(player);
 		BonusManager.sendCurseBonuses(player);
-		if (player.getInterfaceId() == 17100 && curse == CurseData.PROTECT_ITEM)
-			ItemsKeptOnDeath.sendInterface(player);
 		Sounds.sendSound(player, Sound.ACTIVATE_PRAYER_OR_CURSE);
 	}
 
@@ -169,8 +156,6 @@ public class CurseHandler {
 		player.setCurseActive(curse.ordinal(), false);
 		player.getAppearance().setHeadHint(getHeadHint(player));
 		BonusManager.sendCurseBonuses(player);
-		if (player.getInterfaceId() == 17100 && curse == CurseData.PROTECT_ITEM)
-			ItemsKeptOnDeath.sendInterface(player);
 		Sounds.sendSound(player, Sound.DEACTIVATE_PRAYER_OR_CURSE);
 	}
 
@@ -315,8 +300,8 @@ public class CurseHandler {
 		SOUL_SPLIT(72, 1.5, 32539, 628),
 		TURMOIL(86, 3, 32541, 629, new PrayerAnimation(new Animation(12565), new Graphic(2226)));
 
-		private CurseData(int requirement, double drainRate, int buttonId, int configId,
-				PrayerAnimation... animations) {
+		CurseData(int requirement, double drainRate, int buttonId, int configId,
+                  PrayerAnimation... animations) {
 			this.requirement = requirement;
 			this.drainRate = drainRate;
 			this.buttonId = buttonId;

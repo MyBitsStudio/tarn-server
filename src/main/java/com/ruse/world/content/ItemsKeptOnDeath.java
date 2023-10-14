@@ -6,8 +6,8 @@ import java.util.Comparator;
 
 import com.ruse.model.Item;
 import com.ruse.util.Misc;
-import com.ruse.world.content.combat.prayer.CurseHandler;
-import com.ruse.world.content.combat.prayer.PrayerHandler;
+import com.ruse.world.packages.combat.prayer.CurseHandler;
+import com.ruse.world.packages.combat.prayer.PrayerHandler;
 import com.ruse.world.entity.impl.player.Player;
 
 /**

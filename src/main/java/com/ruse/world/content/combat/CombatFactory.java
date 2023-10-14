@@ -16,8 +16,8 @@ import com.ruse.world.content.ItemDegrading.DegradingItem;
 import com.ruse.world.content.combat.effect.CombatPoisonEffect;
 import com.ruse.world.content.combat.effect.CombatPoisonEffect.PoisonType;
 import com.ruse.world.content.combat.magic.CombatAncientSpell;
-import com.ruse.world.content.combat.prayer.CurseHandler;
-import com.ruse.world.content.combat.prayer.PrayerHandler;
+import com.ruse.world.packages.combat.prayer.CurseHandler;
+import com.ruse.world.packages.combat.prayer.PrayerHandler;
 import com.ruse.world.content.combat.strategy.CombatStrategy;
 import com.ruse.world.content.combat.strategy.impl.Nex;
 import com.ruse.world.content.combat.weapon.CombatSpecial;
@@ -1131,8 +1131,9 @@ public final class CombatFactory {
                     }
                 });
             }
-                if (CurseHandler.isActivated(p, CurseHandler.SOUL_SPLIT) && damage > 0 || (p.getEquipment().getItems()[Equipment.ENCHANTMENT_SLOT].getId() == 1857 || p.getEquipment().getItems()[Equipment.ENCHANTMENT_SLOT].getId() == 24011) && damage > 0) {
-                final int form = (int) (damage / 4);
+            if (CurseHandler.isActivated(p, CurseHandler.SOUL_SPLIT) && damage > 0) {
+                int form = Misc.random(15, 50);
+
                 new Projectile(attacker, target, 2263, 44, 3, 43, 31, 0).sendProjectile();
                 TaskManager.submit(new Task(1, p, false) {
                     @Override
@@ -1140,18 +1141,8 @@ public final class CombatFactory {
                         if (!(attacker.getConstitution() <= 0)) {
                             target.performGraphic(new Graphic(2264, GraphicHeight.LOW));
                             p.heal(form);
-                            if (target.isPlayer()) {
-                                Player victim = (Player) target;
-                                victim.getSkillManager().setCurrentLevel(Skill.PRAYER,
-                                        victim.getSkillManager().getCurrentLevel(Skill.PRAYER) - form);
-                                if (victim.getSkillManager().getCurrentLevel(Skill.PRAYER) < 0) {
-                                    victim.getSkillManager().setCurrentLevel(Skill.PRAYER, 0);
-                                    CurseHandler.deactivateCurses(victim);
-                                    PrayerHandler.deactivatePrayers(victim);
-                                }
-                                victim.getSkillManager().updateSkill(Skill.PRAYER);
-                            }
                         }
+                        new Projectile(target, attacker, 2263, 44, 3, 43, 31, 0).sendProjectile();
                         super.stop();
                     }
                 });

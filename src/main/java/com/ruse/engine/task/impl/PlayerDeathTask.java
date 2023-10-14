@@ -1,28 +1,14 @@
 package com.ruse.engine.task.impl;
 
-import java.util.ArrayList;
-import java.util.concurrent.CopyOnWriteArrayList;
-
 import com.ruse.GameSettings;
 import com.ruse.engine.task.Task;
 import com.ruse.model.*;
 import com.ruse.model.Locations.Location;
-import com.ruse.model.definitions.ItemDefinition;
 import com.ruse.util.Misc;
-import com.ruse.util.RandomUtility;
 import com.ruse.world.World;
 import com.ruse.world.WorldIPChecker;
-import com.ruse.world.content.ItemsKeptOnDeath;
-import com.ruse.world.content.PlayerLogs;
-import com.ruse.world.content.PlayerPanel;
-import com.ruse.world.content.combat.prayer.CurseHandler;
-import com.ruse.world.content.combat.prayer.PrayerHandler;
-import com.ruse.world.content.skill.impl.old_dungeoneering.Dungeoneering;
-import com.ruse.world.content.transportation.TeleportHandler;
-import com.ruse.world.entity.impl.GroundItemManager;
 import com.ruse.world.entity.impl.npc.NPC;
 import com.ruse.world.entity.impl.player.Player;
-import com.ruse.world.packages.mode.impl.GroupIronman;
 import com.ruse.world.packages.mode.impl.Ironman;
 import com.ruse.world.packages.mode.impl.UltimateIronman;
 

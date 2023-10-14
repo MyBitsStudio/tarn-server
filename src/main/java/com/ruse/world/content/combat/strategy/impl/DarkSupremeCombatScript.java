@@ -5,11 +5,10 @@ import com.ruse.engine.task.TaskManager;
 import com.ruse.model.*;
 import com.ruse.util.Misc;
 import com.ruse.util.RandomUtility;
-import com.ruse.world.World;
 import com.ruse.world.content.combat.CombatContainer;
 import com.ruse.world.content.combat.CombatType;
-import com.ruse.world.content.combat.prayer.CurseHandler;
-import com.ruse.world.content.combat.prayer.PrayerHandler;
+import com.ruse.world.packages.combat.prayer.CurseHandler;
+import com.ruse.world.packages.combat.prayer.PrayerHandler;
 import com.ruse.world.content.combat.strategy.CombatStrategy;
 import com.ruse.world.entity.impl.Character;
 import com.ruse.world.entity.impl.npc.NPC;
@@ -17,7 +16,6 @@ import com.ruse.world.entity.impl.player.Player;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 
 public class DarkSupremeCombatScript implements CombatStrategy {

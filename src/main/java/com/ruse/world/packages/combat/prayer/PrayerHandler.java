@@ -1,18 +1,14 @@
-package com.ruse.world.content.combat.prayer;
+package com.ruse.world.packages.combat.prayer;
 
 import com.ruse.engine.task.Task;
 import com.ruse.engine.task.TaskManager;
-import com.ruse.model.Locations.Location;
 import com.ruse.model.Prayerbook;
 import com.ruse.model.Skill;
-import com.ruse.model.container.impl.Equipment;
 import com.ruse.util.NameUtils;
 import com.ruse.world.content.BonusManager;
 import com.ruse.world.content.Sounds;
 import com.ruse.world.content.Sounds.Sound;
 import com.ruse.world.content.combat.CombatType;
-import com.ruse.world.content.minigames.impl.Dueling;
-import com.ruse.world.content.minigames.impl.Dueling.DuelRule;
 import com.ruse.world.entity.impl.player.Player;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;

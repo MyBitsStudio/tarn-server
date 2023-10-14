@@ -1,6 +1,6 @@
 package com.ruse.world.packages.combat.drops;
 
-import com.ruse.world.content.combat.prayer.PrayerHandler;
+import com.ruse.world.packages.combat.prayer.PrayerHandler;
 import com.ruse.world.packages.equipmentenhancement.BoostType;
 import com.ruse.world.packages.johnachievementsystem.AchievementHandler;
 import com.ruse.world.packages.johnachievementsystem.PerkType;

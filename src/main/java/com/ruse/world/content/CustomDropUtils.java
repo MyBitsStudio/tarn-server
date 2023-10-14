@@ -4,7 +4,7 @@
 //import com.ruse.model.Item;
 //import com.ruse.model.Locations;
 //import com.ruse.model.container.impl.Equipment;
-//import com.ruse.world.content.combat.prayer.PrayerHandler;
+//import com.ruse.world.packages.combat.prayer.PrayerHandler;
 //import com.ruse.world.packages.equipmentenhancement.BoostType;
 //import com.ruse.world.packages.serverperks.ServerPerks;
 //import com.ruse.world.content.skill.impl.summoning.BossPets;

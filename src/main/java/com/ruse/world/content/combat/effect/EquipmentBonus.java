@@ -1,9 +1,6 @@
 package com.ruse.world.content.combat.effect;
 
 import com.ruse.model.container.impl.Equipment;
-import com.ruse.world.content.combat.prayer.CurseHandler;
-import com.ruse.world.content.combat.prayer.PrayerHandler;
-import com.ruse.world.entity.impl.npc.NPC;
 import com.ruse.world.entity.impl.player.Player;
 
 public class EquipmentBonus {
