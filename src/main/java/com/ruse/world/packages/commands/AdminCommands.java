@@ -4,6 +4,7 @@ import com.ruse.GameSettings;
 import com.ruse.model.Flag;
 import com.ruse.model.GameObject;
 import com.ruse.model.Position;
+import com.ruse.model.Skill;
 import com.ruse.model.definitions.ItemDefinition;
 import com.ruse.security.PlayerLock;
 import com.ruse.security.PlayerSecurity;
@@ -12,6 +13,7 @@ import com.ruse.util.Misc;
 import com.ruse.util.NameUtils;
 import com.ruse.world.World;
 import com.ruse.world.content.CustomObjects;
+import com.ruse.world.content.skill.SkillManager;
 import com.ruse.world.content.transportation.TeleportHandler;
 import com.ruse.world.content.transportation.TeleportType;
 import com.ruse.world.entity.impl.npc.NPC;
@@ -118,6 +120,28 @@ public class AdminCommands {
                 }
                 return true;
             }
+
+            case "setlevelother" -> {
+                int skills = Integer.parseInt(commands[1]);
+                int level = Integer.parseInt(commands[2]);
+                targets = World.getPlayerByName(command.substring(commands[0].length() + commands[1].length() + commands[2].length() + 3));
+                if (level > 15000) {
+                    player.getPacketSender().sendMessage("You can only have a maximum level of 15000.");
+                    return true;
+                }
+                if(targets != null){
+                    player.getPacketSender().sendMessage(targets.getUsername()+ " is online. Attempting to change level.");
+                    Skill skill = Skill.forId(skills);
+                    targets.getSkillManager().setCurrentLevel(skill, level).setMaxLevel(skill, level).setExperience(skill,
+                        SkillManager.getExperienceForLevel(level));
+                    player.getPacketSender().sendMessage("You have set " + targets.getUsername() + "'s " + skill.getName() + " level to " + level + ".");
+                    targets.getPacketSender().sendMessage("Your " + skill.getName() + " level has been set to " + level + ".");
+                } else {
+                    player.sendMessage("User is not online.");
+                }
+                return true;
+            }
+
             case "unlock" -> {
                 targets = World.getPlayerByName(command.substring(commands[0].length() + 1));
                 if (targets == null) {

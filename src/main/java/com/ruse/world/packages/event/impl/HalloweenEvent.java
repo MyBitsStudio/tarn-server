@@ -105,7 +105,7 @@ public class HalloweenEvent extends Event {
 
     @Override
     public void handleEventDrop(Player player, Item drop, Position pos) {
-        if(Misc.random(100) == 31){
+        if(Misc.random(500) == 31){
             player.getInventory().add(20083, 1);
             player.sendMessage("@red@[EVENT] @whi@You have gotten lucky and got a Halloween Cracker!");
         }
