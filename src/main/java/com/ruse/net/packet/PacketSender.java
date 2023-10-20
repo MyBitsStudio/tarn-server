@@ -1298,7 +1298,7 @@ public class PacketSender {
         sendPosition(object.getPosition());
         PacketBuilder out = new PacketBuilder(151);
         out.put(object.getPosition().getZ(), ValueType.A);
-        out.putShort(object.getId(), ByteOrder.LITTLE);
+        out.putShort(object.getId());
         out.put((byte) ((object.getType() << 2) + (object.getFace() & 3)), ValueType.S);
         player.getSession().queueMessage(out);
         return this;
