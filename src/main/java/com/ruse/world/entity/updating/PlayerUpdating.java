@@ -571,7 +571,7 @@ public class PlayerUpdating {
 		properties.put(appearance.getHeadHint());
 		properties.put(-1);
 		properties.putShort(target.getSkullIcon());
-		if(player.getTransmorgify().getCurrentTransformation() != null){
+		if(target.getTransmorgify().getCurrentTransformation() != null){
 			properties.putShort(-1);
 			properties.putShort(target.getTransmorgify().getCurrentTransformation().getNpcId());
 		} else {
