@@ -2,13 +2,22 @@ package com.ruse.world.packages.event.impl;
 
 import com.ruse.model.Item;
 import com.ruse.model.Position;
+import com.ruse.security.tools.SecurityUtils;
+import com.ruse.util.Misc;
 import com.ruse.world.World;
 import com.ruse.world.WorldIPChecker;
 import com.ruse.world.entity.impl.npc.NPC;
 import com.ruse.world.entity.impl.player.Player;
+import com.ruse.world.packages.discord.BotManager;
+import com.ruse.world.packages.discord.modal.Embed;
+import com.ruse.world.packages.discord.modal.MessageCreate;
 import com.ruse.world.packages.event.Event;
 import com.ruse.world.packages.shops.ShopHandler;
 import org.jetbrains.annotations.NotNull;
+
+import java.awt.*;
+import java.io.File;
+import java.util.List;
 
 public class HalloweenEvent extends Event {
     @Override
@@ -20,6 +29,10 @@ public class HalloweenEvent extends Event {
     public void start() {
         World.register(new NPC(3306, new Position(2198, 4836, 0)));
 
+        BotManager.getInstance().sendMessage("NORMAL", 1163982165252521994L,
+                new MessageCreate(List.of("** [EVENT] Halloween event is active! ** "),
+                        new Embed("[EVENT]", "**[EVENT]  Halloween event is active! ** ",
+                                "[EVENT]", Color.GREEN, "The season is right!", new File(SecurityUtils.DISCORD+"jack.png"), null)));
     }
 
     @Override
@@ -88,5 +101,13 @@ public class HalloweenEvent extends Event {
     @Override
     public boolean onDeath(Player player, int npcId) {
         return false;
+    }
+
+    @Override
+    public void handleEventDrop(Player player, Item drop, Position pos) {
+        if(Misc.random(100) == 31){
+            player.getInventory().add(20083, 1);
+            player.sendMessage("@red@[EVENT] @whi@You have gotten lucky and got a Halloween Cracker!");
+        }
     }
 }

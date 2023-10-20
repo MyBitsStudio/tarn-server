@@ -2,12 +2,20 @@ package com.ruse.world.entity.impl.player;
 
 import com.ruse.GameSettings;
 import com.ruse.model.Item;
+import com.ruse.security.tools.SecurityUtils;
 import com.ruse.world.World;
 import com.ruse.world.content.PlayerPanel;
+import com.ruse.world.packages.discord.BotManager;
+import com.ruse.world.packages.discord.modal.Embed;
+import com.ruse.world.packages.discord.modal.MessageCreate;
 import com.ruse.world.packages.discordbot.JavaCord;
 import com.ruse.world.packages.mode.impl.*;
 import com.ruse.world.packages.tracks.TrackInterface;
 import org.jetbrains.annotations.NotNull;
+
+import java.awt.*;
+import java.io.File;
+import java.util.List;
 //import sun.management.counter.perf.PerfLongArrayCounter;
 
 //import com.arlania.world.content.discordbot.Main;
@@ -65,8 +73,14 @@ public class StartScreen {
 
             player.setPlayerLocked(false);
             player.setNewPlayer(false);
+
             World.sendMessage("<img=26><shad=1><col=FF0000> [" + player.getUsername() + "] <col=9E0000>has just logged into <col=FF0000>Tarn<col=9E0000> for the first time");
-            JavaCord.sendMessage(1117224946855329893L, ":tada: **[New Arrival] " + player.getUsername() + " has just logged into Tarn for the first time!** ");
+            BotManager.getInstance().sendMessage("NORMAL", 1163981981281955980L,
+                    new MessageCreate(List.of("** [NEW ARRIVAL] " + player.getUsername() + " has just logged in for the first time! ** "),
+                            new Embed("[NEW ARRIVAL]", "**[NEW ARRIVAL] " + player.getUsername() + " has just logged in for the first time! ** ",
+                                    "[" + player.getUsername() + "]", Color.CYAN, "New Arrival! Welcome To Tarn!", new File(SecurityUtils.DISCORD+"tarn.png"), null)));
+
+            //JavaCord.sendMessage(1117224946855329893L, ":tada: **[New Arrival] " + player.getUsername() + " has just logged into Tarn for the first time!** ");
 
             player.getPacketSender().sendRights();
 

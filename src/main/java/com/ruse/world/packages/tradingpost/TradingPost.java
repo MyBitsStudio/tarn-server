@@ -1,10 +1,15 @@
 package com.ruse.world.packages.tradingpost;
 
+import com.ruse.GameSettings;
 import com.ruse.model.Item;
 import com.ruse.model.definitions.ItemDefinition;
 import com.ruse.model.input.EnterAmount;
+import com.ruse.security.tools.SecurityUtils;
 import com.ruse.util.Misc;
 import com.ruse.world.World;
+import com.ruse.world.packages.discord.BotManager;
+import com.ruse.world.packages.discord.modal.Embed;
+import com.ruse.world.packages.discord.modal.MessageCreate;
 import com.ruse.world.packages.tradingpost.models.*;
 import com.ruse.world.entity.impl.player.Player;
 import com.ruse.world.packages.dialogue.DialogueManager;
@@ -14,9 +19,12 @@ import com.ruse.world.packages.tradingpost.persistance.Database;
 import com.ruse.world.packages.tradingpost.persistance.SQLDatabase;
 import org.jetbrains.annotations.NotNull;
 
+import java.awt.*;
+import java.io.File;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.*;
+import java.util.List;
 
 public class TradingPost {
     public static final int CURRENCY_ID = 995;
@@ -164,6 +172,10 @@ public class TradingPost {
         Offer offer = new Offer(selectedItemToAdd.getId(), selectedItemToAdd.getUid(), selectedItemToAdd.getPerk(), selectedItemToAdd.getBonus(), selectedItemToAdd.getAmount(), price, player.getUsername(), slotSelected, System.currentTimeMillis());
         addToLiveOffers(offer);
         openMainInterface();
+        BotManager.getInstance().sendMessage("NORMAL", 1163983103191175178L,
+                new MessageCreate(List.of("** [POS] "+ItemDefinition.forId(selectedItemToAdd.getId()).getName()+" has been posted to Trading Post for "+price+" ** "),
+                        new Embed("[POS]", "**[POS]  "+ItemDefinition.forId(selectedItemToAdd.getId()).getName()+" has been posted to Trading Post for "+price+" ** ",
+                                "[POS]", Color.magenta, "Go buy it now!", null, null)));
     }
 
     private void allowInputPrice() {
@@ -315,6 +327,10 @@ public class TradingPost {
             addToItemHistory(new History(toPurchase.getItemId(), amount, toPurchase.getPrice(), toPurchase.getSeller(), player.getUsername(), System.currentTimeMillis(), new Date(System.currentTimeMillis())));
             player.addItemUnderAnyCircumstances(new Item(toPurchase.getItemId(), amount, toPurchase.getUid(), toPurchase.getPerk(), toPurchase.getBonus()));
             viewBuyingPage();
+            BotManager.getInstance().sendMessage("NORMAL", 1163983103191175178L,
+                    new MessageCreate(List.of("** [POS] "+ItemDefinition.forId(toPurchase.getItemId()).getName()+" has been bought from Trading Post for "+total+" ** "),
+                            new Embed("[POS]", "**[POS]  "+ItemDefinition.forId(toPurchase.getItemId()).getName()+" has been bought from Trading Post for "+total+" ** ",
+                                    "[POS]", Color.magenta, "SOLD!", null, null)));
             return;
         }
         player.getPacketSender().sendMessage("@red@This item does not exist in the trading post anymore.");
@@ -412,6 +428,30 @@ public class TradingPost {
 
     }
 
+    public int[] allowedItems(){
+        int[] allowed = new int[0];
+        for(ItemDefinition def : ItemDefinition.getDefinitions()){
+            if(def == null)
+                continue;
+            if(def.getId() == 995 || def.getId() == 10835)
+                continue;
+
+            boolean found = false;
+            for(int i : GameSettings.UNTRADEABLE_ITEMS){
+                if(def.getId() == i){
+                    found = true;
+                    break;
+                }
+            }
+
+            if(!found){
+                allowed = Arrays.copyOf(allowed, allowed.length + 1);
+                allowed[allowed.length - 1] = def.getId();
+            }
+        }
+        return allowed;
+    }
+
     public boolean handleButtonClick(int id) {
         if(id >= 150260 && id <= 150269) {
             selectSlot(id - 150260);
@@ -424,7 +464,10 @@ public class TradingPost {
         switch (id) {
             case 150270, 150847 -> viewBuyingPage();
             case 150856 -> openMainInterface();
-            case 150274, 150861, 150848 -> player.getPacketSender().sendMessage(":tsearch:");
+            case 150274, 150861, 150848 -> {
+                player.getPacketSender().allowSearchItems(allowedItems());
+                player.getPacketSender().sendMessage(":tsearch:");
+            }
             case 150279,150859 -> player.getPacketSender().removeOverlay();
             case 150434 -> collectCoffer();
             case 150432 -> player.getPacketSender().sendInterfaceOverlay(MAIN_INTERFACE_ID, 150857);

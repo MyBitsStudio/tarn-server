@@ -7,6 +7,7 @@ import com.ruse.model.GroundItem;
 import com.ruse.model.Item;
 import com.ruse.model.Locations;
 import com.ruse.model.Position;
+import com.ruse.security.tools.SecurityUtils;
 import com.ruse.util.Misc;
 import com.ruse.world.World;
 import com.ruse.world.content.transportation.TeleportHandler;
@@ -14,8 +15,14 @@ import com.ruse.world.content.transportation.TeleportType;
 import com.ruse.world.entity.impl.GroundItemManager;
 import com.ruse.world.entity.impl.npc.NPC;
 import com.ruse.world.entity.impl.player.Player;
+import com.ruse.world.packages.discord.BotManager;
+import com.ruse.world.packages.discord.modal.Embed;
+import com.ruse.world.packages.discord.modal.MessageCreate;
 import com.ruse.world.packages.event.Event;
 
+import java.awt.*;
+import java.io.File;
+import java.util.List;
 import java.util.Objects;
 import java.util.concurrent.atomic.AtomicBoolean;
 
@@ -64,46 +71,51 @@ public class StaffDropEvent extends Event {
 
     @Override
     public void start() {
+
+        BotManager.getInstance().sendMessage("NORMAL", 1163982165252521994L,
+                new MessageCreate(List.of("** [EVENT] Staff Drop is starting! ** "),
+                        new Embed("[EVENT]", "**[EVENT] Staff Drop is active! ** ",
+                                "[EVENT]", Color.GREEN, "Get lucky and get amazing drops!", new File(SecurityUtils.DISCORD+"dollar.png"), null)));
         TaskManager.submit(new Task(true) {
             int cycle = 0;
             @Override
             protected void execute() {
                 ++cycle;
                 if(cycle == 1){
+                    World.sendNewsMessage("@red@[EVENT]@whi@ Staff drop is about to begin!");
                     World.getPlayers().stream().filter(Objects::nonNull)
                             .forEach(player -> {
-                                player.sendMessage("@red@[EVENT]@whi@ Staff drop is about to begin!");
                                 player.getPacketSender().sendBroadCastMessage("[EVENT] Staff drop is about to begin!", 300);
-                                World.sendBroadcastMessage("[EVENT] Staff drop is about to begin!");
-                                GameSettings.broadcastMessage = "[EVENT] Staff drop is about to begin!";
-                                GameSettings.broadcastTime = 300;
                             });
+                    World.sendBroadcastMessage("[EVENT] Staff drop is about to begin!");
+                    GameSettings.broadcastMessage = "[EVENT] Staff drop is about to begin!";
+                    GameSettings.broadcastTime = 300;
                 } else if(cycle == 21){
+                    World.sendNewsMessage("@red@[EVENT]@whi@ Mass Teleport About To Begin....");
                     World.getPlayers().stream().filter(Objects::nonNull)
                             .forEach(player -> {
-                                player.sendMessage("@red@[EVENT]@whi@ Mass Teleport About To Begin....");
                                 player.getPacketSender().sendBroadCastMessage("[EVENT] Mass Teleport About To Begin....", 300);
-                                World.sendBroadcastMessage("[EVENT] Mass Teleport About To Begin....");
-                                GameSettings.broadcastMessage = "[EVENT] Mass Teleport About To Begin....";
-                                GameSettings.broadcastTime = 300;
                             });
+                    World.sendBroadcastMessage("[EVENT] Mass Teleport About To Begin....");
+                    GameSettings.broadcastMessage = "[EVENT] Mass Teleport About To Begin....";
+                    GameSettings.broadcastTime = 300;
                 } else if(cycle == 40){
+                    World.sendNewsMessage("@red@[EVENT]@whi@ Mass Teleporting....");
                     World.getPlayers().stream().filter(Objects::nonNull)
                             .filter(player -> !player.getLocation().equals(Locations.Location.AFK))
                             .forEach(player -> {
-                                player.sendMessage("@red@[EVENT]@whi@ Mass Teleporting....");
                                 TeleportHandler.teleportPlayer(player, GameSettings.DEFAULT_POSITION, TeleportType.NORMAL);
                             });
                 } else if(cycle >= 60){
+                    World.sendNewsMessage("@red@[EVENT]@whi@ Welcome to the event!");
                     World.getPlayers().stream().filter(Objects::nonNull)
                             .forEach(player -> {
                                 TeleportHandler.teleportPlayer(player, new Position(2737, 3473, 0), TeleportType.ANCIENT);
-                                player.sendMessage("@red@[EVENT]@whi@ Welcome to the event!");
                                 player.getPacketSender().sendBroadCastMessage("[EVENT] Event has started!", 300);
-                                World.sendBroadcastMessage("[EVENT] Event has started!");
-                                GameSettings.broadcastMessage = "[EVENT] Event has started!";
-                                GameSettings.broadcastTime = 300;
                             });
+                    World.sendBroadcastMessage("[EVENT] Event has started!");
+                    GameSettings.broadcastMessage = "[EVENT] Event has started!";
+                    GameSettings.broadcastTime = 300;
                     this.stop();
                 }
             }
@@ -120,33 +132,33 @@ public class StaffDropEvent extends Event {
             protected void execute() {
                 ++cycle;
                 if(cycle == 1){
+                    World.sendNewsMessage("@red@[EVENT]@whi@ Staff drop is wrapping up!");
                     World.getPlayers().stream().filter(Objects::nonNull)
                             .forEach(player -> {
-                                player.sendMessage("@red@[EVENT]@whi@ Staff drop is wrapping up!");
                                 player.getPacketSender().sendBroadCastMessage("[EVENT] Staff drop is wrapping up!", 300);
-                                World.sendBroadcastMessage("[EVENT] Staff drop is wrapping up!");
-                                GameSettings.broadcastMessage = "[EVENT] Staff drop is wrapping up!";
-                                GameSettings.broadcastTime = 300;
                             });
+                    World.sendBroadcastMessage("[EVENT] Staff drop is wrapping up!");
+                    GameSettings.broadcastMessage = "[EVENT] Staff drop is wrapping up!";
+                    GameSettings.broadcastTime = 300;
                 } else if(cycle == 10){
+                    World.sendNewsMessage("@red@[EVENT]@whi@ Mass Teleport About To Begin....");
                     World.getPlayers().stream().filter(Objects::nonNull)
                             .forEach(player -> {
-                                player.sendMessage("@red@[EVENT]@whi@ Mass Teleport About To Begin....");
                                 player.getPacketSender().sendBroadCastMessage("[EVENT] Mass Teleport About To Begin....", 300);
-                                World.sendBroadcastMessage("[EVENT] Mass Teleport About To Begin....");
-                                GameSettings.broadcastMessage = "[EVENT] Mass Teleport About To Begin....";
-                                GameSettings.broadcastTime = 300;
                             });
+                    World.sendBroadcastMessage("[EVENT] Mass Teleport About To Begin....");
+                    GameSettings.broadcastMessage = "[EVENT] Mass Teleport About To Begin....";
+                    GameSettings.broadcastTime = 300;
                 } else if(cycle == 25){
+                    World.sendNewsMessage("@red@[EVENT]@whi@ Thank you for coming to the event!");
                     World.getPlayers().stream().filter(Objects::nonNull)
                             .forEach(player -> {
-                                player.sendMessage("@red@[EVENT]@whi@ Thank you for coming to the event!");
                                 player.getPacketSender().sendBroadCastMessage("[EVENT] Thank you for coming to the event!", 300);
-                                World.sendBroadcastMessage("[EVENT] Thank you for coming to the event!");
-                                GameSettings.broadcastMessage = "[EVENT] Thank you for coming to the event!";
-                                GameSettings.broadcastTime = 300;
                                 TeleportHandler.teleportPlayer(player, GameSettings.DEFAULT_POSITION, TeleportType.ANCIENT);
                             });
+                    World.sendBroadcastMessage("[EVENT] Thank you for coming to the event!");
+                    GameSettings.broadcastMessage = "[EVENT] Thank you for coming to the event!";
+                    GameSettings.broadcastTime = 300;
                     this.stop();
                 }
             }
@@ -231,5 +243,10 @@ public class StaffDropEvent extends Event {
     @Override
     public boolean onDeath(Player player, int npcId) {
         return false;
+    }
+
+    @Override
+    public void handleEventDrop(Player player, Item drop, Position pos) {
+
     }
 }

@@ -3,12 +3,19 @@ package com.ruse.world.packages.globals;
 import com.ruse.GameSettings;
 import com.ruse.model.input.impl.ChangePinPacketListener;
 import com.ruse.security.save.impl.server.WellsSave;
+import com.ruse.security.tools.SecurityUtils;
 import com.ruse.world.World;
 import com.ruse.world.entity.impl.player.Player;
+import com.ruse.world.packages.discord.BotManager;
+import com.ruse.world.packages.discord.modal.Embed;
+import com.ruse.world.packages.discord.modal.MessageCreate;
 import com.ruse.world.packages.globals.impl.*;
 import lombok.Getter;
 import org.jetbrains.annotations.NotNull;
 
+import java.awt.*;
+import java.io.File;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.TimeUnit;
@@ -141,6 +148,22 @@ public class GlobalBossManager {
         spawn(veigarGlobal);
     }
 
+    public void spawnCherub(){
+        if(World.npcIsRegistered(14378)){
+            return;
+        }
+        CherubimonGlobal cherubGlobal = new CherubimonGlobal();
+        spawn(cherubGlobal);
+    }
+
+    public void spawnKhazard(){
+        if(World.npcIsRegistered(7553)){
+            return;
+        }
+        KhazardGlobal cherubGlobal = new KhazardGlobal();
+        spawn(cherubGlobal);
+    }
+
     private void spawn(GlobalBoss boss){
         World.register(boss);
 
@@ -150,10 +173,16 @@ public class GlobalBossManager {
             }
             players.getPacketSender().sendBroadCastMessage("[GLOBAL] "+boss.message(), 100);
         }
+        BotManager.getInstance().sendMessage("NORMAL", 1163982260224131172L,
+                new MessageCreate(List.of("** [GLOBAL] "+boss.getDefinition().getName()+" has just spawned! Take it down! ** "),
+                        new Embed("[GLOBAL BOSS]", "**[GLOBAL]  "+boss.getDefinition().getName()+" has just spawned! Take it down! ** ",
+                                "[TARN SERVER]", Color.RED, "Global Boss Spawn", new File(SecurityUtils.DISCORD+boss.discordImage()), null)));
+
         World.sendBroadcastMessage("[GLOBAL] "+boss.message());
         GameSettings.broadcastMessage = "[GLOBAL] "+boss.message();
         GameSettings.broadcastTime = 100;
         World.sendNewsMessage("[GLOBAL] "+boss.message());
+
     }
 
     public String timeLeft(@NotNull String name){

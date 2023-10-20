@@ -1491,6 +1491,209 @@
   },
   {
     "id" : [
+      14378
+    ],
+    "tables" : [
+      "UNIQUE"
+    ],
+    "custom" : {
+      "name" : "SUnique",
+      "weight" : 29.79,
+      "drops" : [
+        {
+          "id" : 23250,
+          "chance" : 1,
+          "min" : 1,
+          "max" : 1,
+          "modifier" : 8400,
+          "announce" : true
+        },
+        {
+          "id" : 23251,
+          "chance" : 1,
+          "min" : 1,
+          "max" : 1,
+          "modifier" : 8400,
+          "announce" : true
+        },
+        {
+          "id" : 23252,
+          "chance" : 1,
+          "min" : 1,
+          "max" : 1,
+          "modifier" : 8400,
+          "announce" : true
+        },
+        {
+          "id" : 20502,
+          "chance" : 0,
+          "min" : 1,
+          "max" : 3,
+          "modifier" : 6400,
+          "announce" : true
+        },
+        {
+          "id" : 23255,
+          "chance" : 0,
+          "min" : 1,
+          "max" : 3,
+          "modifier" : 6400,
+          "announce" : true
+        },
+        {
+          "id" : 23256,
+          "chance" : 0,
+          "min" : 1,
+          "max" : 7,
+          "modifier" : 3400,
+          "announce" : true
+        },
+        {
+          "id" : 23257,
+          "chance" : 0,
+          "min" : 1,
+          "max" : 5,
+          "modifier" : 4400,
+          "announce" : true
+        },{
+          "id" : 23258,
+          "chance" : 0,
+          "min" : 1,
+          "max" : 3,
+          "modifier" : 5400,
+          "announce" : true
+        },
+        {
+          "id" : 23259,
+          "chance" : 0,
+          "min" : 1,
+          "max" : 1,
+          "modifier" : 12600,
+          "announce" : true
+        },
+        {
+          "id" : 14490,
+          "chance" : 1,
+          "min" : 1,
+          "max" : 1,
+          "modifier" : 13400,
+          "announce" : true
+        },
+        {
+          "id" : 20488,
+          "chance" : 1,
+          "min" : 1,
+          "max" : 1,
+          "modifier" : 12600,
+          "announce" : true
+        },
+        {
+          "id" : 23057,
+          "chance" : 0,
+          "min" : 1,
+          "max" : 3,
+          "modifier" : 8400,
+          "announce" : true
+        },
+        {
+          "id" : 23058,
+          "chance" : 0,
+          "min" : 1,
+          "max" : 2,
+          "modifier" : 12400,
+          "announce" : true
+        },
+        {
+          "id" : 23059,
+          "chance" : 0,
+          "min" : 1,
+          "max" : 1,
+          "modifier" : 18400,
+          "announce" : true
+        },
+        {
+          "id" : 3686,
+          "chance" : 0,
+          "min" : 1,
+          "max" : 1,
+          "modifier" : 11400,
+          "announce" : true
+        },
+        {
+          "id" : 23107,
+          "chance" : 0,
+          "min" : 1,
+          "max" : 10,
+          "modifier" : 4400,
+          "announce" : true
+        }
+      ]
+    }
+  },
+  {
+    "id" : [
+      7553
+    ],
+    "tables" : [
+      "RARE"
+    ],
+    "custom" : {
+      "name" : "Khazard",
+      "weight" : 18.59,
+      "drops" : [
+        {
+          "id" : 20083,
+          "chance" : 1,
+          "min" : 1,
+          "max" : 10,
+          "modifier" : 1.00,
+          "announce" : true
+        },
+        {
+          "id" : 1960,
+          "chance" : 0,
+          "min" : 1,
+          "max" : 25,
+          "modifier" : 8195.00,
+          "announce" : true
+        },
+        {
+          "id" : 17831,
+          "chance" : 0,
+          "min" : 25,
+          "max" : 250,
+          "modifier" : 4995.00,
+          "announce" : true
+        },
+        {
+          "id" : 20419,
+          "chance" : 0,
+          "min" : 1,
+          "max" : 5,
+          "modifier" : 9995.00,
+          "announce" : true
+        },
+        {
+          "id" : 20420,
+          "chance" : 0,
+          "min" : 1,
+          "max" : 3,
+          "modifier" : 12895.00,
+          "announce" : true
+        },
+        {
+          "id" : 20422,
+          "chance" : 0,
+          "min" : 5,
+          "max" : 25,
+          "modifier" : 3965.00,
+          "announce" : true
+        }
+      ]
+    }
+  },
+  {
+    "id" : [
       8010
     ],
     "tables" : [

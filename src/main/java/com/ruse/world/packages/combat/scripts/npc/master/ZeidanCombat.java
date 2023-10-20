@@ -55,7 +55,7 @@ public class ZeidanCombat implements CombatStrategy {
 
     @Override
     public int attackDelay(Character entity) {
-        return 7;
+        return 5;
     }
 
     @Override

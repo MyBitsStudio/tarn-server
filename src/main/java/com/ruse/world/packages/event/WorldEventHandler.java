@@ -1,6 +1,7 @@
 package com.ruse.world.packages.event;
 
 import com.ruse.model.Item;
+import com.ruse.model.Position;
 import com.ruse.model.Timer;
 import com.ruse.util.Misc;
 import com.ruse.world.WorldCalendar;
@@ -54,6 +55,11 @@ public class WorldEventHandler {
 
             if(random >= 100 && random <= 110){
                 GlobalBossManager.getInstance().spawnVeigar();
+            }
+
+            if(random >= 121){
+                if(eventActive("halloween"))
+                    GlobalBossManager.getInstance().spawnKhazard();
             }
 
             if(random == 137){
@@ -144,6 +150,12 @@ public class WorldEventHandler {
             }
         }
         return false;
+    }
+
+    public void handleEventDrop(Player player, Item drop, Position pos){
+        for(Event event : events){
+            event.handleEventDrop(player, drop, pos);
+        }
     }
 
     public void stop(String name){

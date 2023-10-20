@@ -3,41 +3,45 @@ package com.ruse.world.packages.discord.modal;
 import org.javacord.api.entity.message.embed.EmbedBuilder;
 
 import java.awt.*;
+import java.io.File;
 
 public class Embed {
 
-    private String title, desc, author, color, footer, image, thumbnail;
+    private final String title, desc, author, footer,  thumbnail;
+    private  String image;
+    private final Color color;
+    private final File images;
     private String[] field, inlines;
-    public Embed(String title, String desc, String author, String color, String footer, String image, String thumbnail, String[] field, String[] inlines){
+    public Embed(String title, String desc, String author, Color color, String footer, File image, String thumbnail, String[] field, String[] inlines){
         this.title = title;
         this.desc = desc;
         this.author = author;
         this.color = color;
         this.footer = footer;
-        this.image = image;
+        this.images = image;
         this.thumbnail = thumbnail;
         this.field = field;
         this.inlines = inlines;
     }
 
-    public Embed(String title, String desc, String author, String color, String footer, String image, String thumbnail, String[] field){
+    public Embed(String title, String desc, String author, Color color, String footer, File image, String thumbnail, String[] field){
         this.title = title;
         this.desc = desc;
         this.author = author;
         this.color = color;
         this.footer = footer;
-        this.image = image;
+        this.images = image;
         this.thumbnail = thumbnail;
         this.field = field;
     }
 
-    public Embed(String title, String desc, String author, String color, String footer, String image, String thumbnail){
+    public Embed(String title, String desc, String author, Color color, String footer, File image, String thumbnail){
         this.title = title;
         this.desc = desc;
         this.author = author;
         this.color = color;
         this.footer = footer;
-        this.image = image;
+        this.images = image;
         this.thumbnail = thumbnail;
     }
 
@@ -49,11 +53,11 @@ public class Embed {
         if(author != null)
             builder.setAuthor(author);
         if(color != null)
-            builder.setColor(Color.getColor(color));
+            builder.setColor(color);
         if(footer != null)
             builder.setFooter(footer);
-        if(image != null)
-            builder.setImage(image);
+        if(images != null)
+            builder.setImage(images);
         if(thumbnail != null)
             builder.setThumbnail(thumbnail);
         if(field != null){

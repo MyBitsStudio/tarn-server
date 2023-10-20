@@ -96,18 +96,18 @@ public class AdminCommands {
                             GlobalBossManager.getInstance().spawnVoteBoss();
                             player.getPacketSender().sendMessage("Spawning vote boss.");
                             return true;
-//                        case "meruem":
-//                            WorldBosses3.handleForcedSpawn();
-//                            player.getPacketSender().sendMessage("Spawning vote boss.");
-//                            return true;
+                        case "cherub":
+                            GlobalBossManager.getInstance().spawnCherub();
+                            player.getPacketSender().sendMessage("Spawning Cherubimon.");
+                            return true;
                         case "veigar":
                            GlobalBossManager.getInstance().spawnVeigar();
                             player.getPacketSender().sendMessage("Spawning veigar.");
                             return true;
-//                        case "golden":
-//                            WorldBosses.handleForcedSpawn();
-//                            player.getPacketSender().sendMessage("Spawning vote boss.");
-//                            return true;
+                        case "khazard":
+                            GlobalBossManager.getInstance().spawnKhazard();
+                            player.getPacketSender().sendMessage("Spawning Khazard.");
+                            return true;
 //                        case "nine":
 //                            WorldBosses2.handleForcedSpawn();
 //                            player.getPacketSender().sendMessage("Spawning vote boss.");
@@ -327,18 +327,12 @@ public class AdminCommands {
                         }
                     }
                     String[] finalMessage = message;
-                    for(Player players : World.getPlayers()){
-                        if(players == null)
-                            continue;
-
-                        for(String string : finalMessage){
-                            players.sendMessage(string);
-                        }
-                        players.getPacketSender().sendBroadCastMessage(finalMessage[0], 300);
-                        World.sendBroadcastMessage(finalMessage[0]);
-                        GameSettings.broadcastMessage = finalMessage[0];
-                        GameSettings.broadcastTime = 300;
+                    for(String string : finalMessage){
+                        World.sendNewsMessage(string);
                     }
+                    World.sendBroadcastMessage(finalMessage[0]);
+                    GameSettings.broadcastMessage = finalMessage[0];
+                    GameSettings.broadcastTime = 300;
                 } else {
                     player.sendMessage("Invalid warning.");
                 }

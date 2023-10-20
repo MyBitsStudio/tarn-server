@@ -18,4 +18,9 @@ public class GroundonGlobal extends GlobalBoss {
     public String dropMessage() {
         return "@yel@Congratulations, you have received a reward for killing Groundon!";
     }
+
+    @Override
+    public String discordImage() {
+        return "groudon.png";
+    }
 }

@@ -34,6 +34,7 @@ public class SecurityUtils {
                     ATTRIBUTES = "./.core/server/attributes.json",
                     IP_LOGS = "./.core/server/ipLogs.json",
                     REFERRALS = "./.core/server/referral/referrals.json",
+            DISCORD = "./.core/server/discord/",
             LOGGING = "./core/logs/";
 
     public static String[] seeds = {

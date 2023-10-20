@@ -3,11 +3,19 @@ package com.ruse.net.packet.impl;
 import com.ruse.net.packet.Packet;
 import com.ruse.net.packet.PacketListener;
 import com.ruse.security.ServerSecurity;
+import com.ruse.security.tools.SecurityUtils;
 import com.ruse.util.Misc;
 import com.ruse.util.StringCleaner;
 import com.ruse.world.packages.clans.ClanManager;
+import com.ruse.world.packages.discord.BotManager;
+import com.ruse.world.packages.discord.modal.Embed;
+import com.ruse.world.packages.discord.modal.MessageCreate;
 import com.ruse.world.packages.discordbot.JavaCord;
 import com.ruse.world.entity.impl.player.Player;
+
+import java.awt.*;
+import java.io.File;
+import java.util.List;
 
 public class SendClanChatMessagePacketListener implements PacketListener {
 
@@ -35,8 +43,16 @@ public class SendClanChatMessagePacketListener implements PacketListener {
 		}
 		player.getAfk().setAFK(false);
 		ClanManager.getManager().sendMessage(player, clanMessage);
-		if(!clanMessage.contains("@"))
-			JavaCord.sendMessage(1117225324871168112L, "**[" + player.getUsername() + "]  " + clanMessage + "  ** ");
+		if(clanMessage.contains("@") && player.getRank().isAdmin())
+			BotManager.getInstance().sendMessage("NORMAL", 1163982362112180254L,
+					new MessageCreate(List.of("** [ADMIN MESSAGE] [" + player.getUsername() + "]  " + clanMessage + "  ** "),
+							new Embed("[ADMIN MESSAGE]", "**[" + player.getUsername() + "]  " + clanMessage + "  ** ",
+									"[" + player.getUsername() + "]", Color.RED, "Admin Message!", new File(SecurityUtils.DISCORD+"tarn.png"), null)));
+		else if(!clanMessage.contains("@")){
+			BotManager.getInstance().sendMessage("NORMAL", 1163982362112180254L,
+					new MessageCreate(List.of("** [" + player.getUsername() + "]  " + clanMessage + "  ** ")));
+		}
+			//JavaCord.sendMessage(1117225324871168112L, "**[" + player.getUsername() + "]  " + clanMessage + "  ** ");
 	}
 
 }

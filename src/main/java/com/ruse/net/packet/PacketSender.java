@@ -129,6 +129,15 @@ public class PacketSender {
         return this;
     }
 
+    public PacketSender allowSearchItems(int[] items) {
+        PacketBuilder out = new PacketBuilder(235, PacketType.SHORT);
+        for (int item : items) {
+            out.putShort(item + 1);
+        }
+        player.getSession().queueMessage(out);
+        return this;
+    }
+
     public PacketSender(Player player) {
         this.player = player;
     }

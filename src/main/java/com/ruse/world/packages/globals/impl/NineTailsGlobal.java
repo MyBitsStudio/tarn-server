@@ -18,4 +18,9 @@ public class NineTailsGlobal extends GlobalBoss {
     public String dropMessage() {
         return "@yel@Congratulations, you have received a reward for killing Nine Tails!";
     }
+
+    @Override
+    public String discordImage() {
+        return "ninetails.png";
+    }
 }

@@ -555,8 +555,7 @@ public final class RegionClipping {
 		int regionId = ((regionX / 8) << 8) + (regionY / 8);
 		if (height >= 4)
 			height = 0;
-		else if (height == -1 || Location.inLocation(x, y, Location.PURO_PURO))
-			return 0;
+
 		RegionClipping r = get(regionId);
 
 		if (r != null) {
@@ -624,17 +623,16 @@ public final class RegionClipping {
 								|| (getClipping(currentX + i + 1, currentY + i2, height) & 0x1280180) != 0
 								|| (getClipping(currentX + i, (currentY + i2) - 1, height) & 0x1280102) != 0)
 							return false;
-					} else if (diffX > 0 && diffY == 0) {
+					} else if (diffX > 0) {
 						if ((getClipping(currentX + i + 1, currentY + i2, height) & 0x1280180) != 0)
 							return false;
-					} else if (diffX < 0 && diffY == 0) {
+					} else if (diffX < 0) {
 						if ((getClipping((currentX + i) - 1, currentY + i2, height) & 0x1280108) != 0)
 							return false;
-					} else if (diffX == 0 && diffY > 0) {
+					} else if (diffY > 0) {
 						if ((getClipping(currentX + i, currentY + i2 + 1, height) & 0x1280120) != 0)
 							return false;
-					} else if (diffX == 0 && diffY < 0
-							&& (getClipping(currentX + i, (currentY + i2) - 1, height) & 0x1280102) != 0)
+					} else if (diffY < 0 && (getClipping(currentX + i, currentY + i2 - 1, height) & 0x1280102) != 0)
 						return false;
 
 			}
@@ -808,6 +806,10 @@ public final class RegionClipping {
 
 	public static boolean canMove(Position start, Position end, int xLength, int yLength) {
 		return canMove(start.getX(), start.getY(), end.getX(), end.getY(), start.getZ(), xLength, yLength);
+	}
+
+	public static boolean canProjMove(Position start, Position end, int xLength, int yLength) {
+		return canProjectileMove(start.getX(), start.getY(), end.getX(), end.getY(), start.getZ(), xLength, yLength);
 	}
 
 	public static boolean blockedProjectile(Position position) {

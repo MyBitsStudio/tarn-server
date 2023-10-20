@@ -1,6 +1,7 @@
 package com.ruse.world.packages.event.impl;
 
 import com.ruse.model.Item;
+import com.ruse.model.Position;
 import com.ruse.util.Misc;
 import com.ruse.world.World;
 import com.ruse.world.entity.impl.player.Player;
@@ -51,5 +52,10 @@ public class SlayerBonusEvent extends Event {
     @Override
     public boolean onDeath(Player player, int npcId) {
         return false;
+    }
+
+    @Override
+    public void handleEventDrop(Player player, Item drop, Position pos) {
+
     }
 }

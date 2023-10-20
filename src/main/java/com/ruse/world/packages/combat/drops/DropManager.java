@@ -179,6 +179,9 @@ public class DropManager {
                     GroundItemManager.spawnGroundItem(player,
                             new GroundItem(item, pos, player.getUsername(), false, 150, false, 200));
                 }
+
+                World.handler.handleEventDrop(player, item, pos);
+
                 finalDrops.remove(drop);
             }
 
@@ -204,6 +207,8 @@ public class DropManager {
                 World.sendFilterMessage(message);
             }
             log(player, npc, finalDrop, item.getAmount());
+
+
 
             if(collector || hasLoot){
                 if(player.getMode() instanceof UltimateIronman){

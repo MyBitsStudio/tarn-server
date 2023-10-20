@@ -342,7 +342,7 @@ public class UseItemPacketListener implements PacketListener {
     private static void itemOnObject(Player player, Packet packet) {
         @SuppressWarnings("unused")
         int interfaceType = packet.readShort();
-        final int objectId = packet.readShort();
+        final int objectId = packet.readUnsignedShort();
         final int objectY = packet.readLEShortA();
         final int itemSlot = packet.readLEShort();
         final int objectX = packet.readLEShortA();
@@ -384,53 +384,20 @@ public class UseItemPacketListener implements PacketListener {
                     if (!player.getControllerManager().handleItemOnObject(gameObject, item)) {
                         return;
                     }
-                    if (gameObject.getId() == TreasureHunter.CHEST_ID) {
-                        TreasureHunter.useKeyOnChest(player, item);
-                    }
-                    if (CookingData.forFish(item.getId()) != null && CookingData.isRange(objectId)) {
-                        player.setPositionToFace(gameObject.getPosition());
-                        Cooking.selectionInterface(player, CookingData.forFish(item.getId()));
-                        return;
-                    }
+
                     if (Prayer.isBone(itemId) && (objectId == 409 || objectId == 24343 || objectId == 13192)) {
                         BonesOnAltar.openInterface(player, itemId);
                         return;
                     }
-                    if (player.getFarming().plant(itemId, objectId, objectX, objectY))
-                        return;
-                    if (player.getFarming().useItemOnPlant(itemId, objectX, objectY))
-                        return;
-                    if (objectId == 31429) {
-                        VaultOfWar.useGlovesOnObject(player);
-                        return;
-                    }
-                    if (objectId == 15621) { // Warriors guild
-                        // animator
-                        if (!WarriorsGuild.itemOnAnimator(player, item, gameObject))
-                            player.getPacketSender().sendMessage("Nothing interesting happens..");
-                        return;
-                    }
-                    if(objectId == 26945){
+
+                    if(objectId == 63003){
                         player.setInputHandling(new DonateToWellListener(player, item.getId()));
                         player.getPacketSender().sendEnterAmountPrompt(
                                 "How many " + ItemDefinition.forId(item.getId()).getName() + "s would you like to donate?");
                         return;
                     }
-                    if (GameObjectDefinition.forId(objectId) != null
-                            && GameObjectDefinition.forId(objectId).getName() != null
-                            && GameObjectDefinition.forId(objectId).getName().equalsIgnoreCase("furnace")
-                            && ItemDefinition.forId(itemId) != null
-                            && ItemDefinition.forId(itemId).getName() != null
-                            && ItemDefinition.forId(itemId).getName().contains("ore")) {
-                        Smelting.openInterface(player);
-                        return;
-                    }
-                    if (GameObjectDefinition.forId(objectId) != null
-                            && GameObjectDefinition.forId(objectId).getName() != null
-                            && GameObjectDefinition.forId(objectId).getName().equalsIgnoreCase("furnace")
-                            && itemId == 2357) {
-                        Jewelry.jewelryInterface(player);
-                    }
+
+
                     if (player.getMode() instanceof UltimateIronman) { // UIM can use any noted item on a bank
                         // booth to instantly unnote it to
                         // fill all your free inventory
@@ -464,63 +431,8 @@ public class UseItemPacketListener implements PacketListener {
                         }
                     }
                     switch (objectId) {
-                        case 172, 173 -> {
-                            if (itemId == 9003) {
-                                CrystalChest.sendRewardInterface(player);
-                            }
-                        }
-                        case 16135 -> {//betrayed
 
-                            if (itemId == 8868 || itemId == 21201 || itemId == 21202 || itemId == 21203 || itemId == 21204) {
-                                player.getPacketSender().sendMessage("Rewards for gift of betrayed @blu@coming soon@bla@. collect your keys.");
 
-                            }
-                        }
-                        case 16077 -> {//dammned
-
-                            if (itemId == 9962 || itemId == 21205 || itemId == 21206 || itemId == 21207 || itemId == 21208) {
-                                player.getPacketSender().sendMessage("Rewards for grain of damned @blu@coming soon@bla@. collect your keys.");
-
-                            }
-                        }
-                        case 16118 -> {//hidden
-
-                            if (itemId == 14471 || itemId == 21209 || itemId == 21210 || itemId == 21211 || itemId == 21212) {
-                                player.getPacketSender().sendMessage("Rewards for box of hidden @blu@coming soon@bla@. collect your keys.");
-
-                            }
-                        }
-                        case 16047 -> {//cursed
-
-                            if (itemId == 3468 || itemId == 21213 || itemId == 21214 || itemId == 21215 || itemId == 21216) {
-                                player.getPacketSender().sendMessage("Rewards for cradle of cursed @blu@coming soon@bla@. collect your keys.");
-
-                            }
-                        }
-                        case -23813, 41723 -> {
-                            if (!christmas2016.isChristmas() || player.getChristmas2016() < 2) {
-                                return;
-                            } else {
-                                christmas2016.handleItemOnReindeer(player, itemId);
-                            }
-                        }
-                        case 2644 -> {
-                            if (itemId == 1779) {
-                                Flax.showSpinInterface(player);
-                            }
-                        }
-                        case 6189, 11666 -> Jewelry.jewelryInterface(player);
-                        case 7836, 7808 -> {
-                            if (itemId == 6055) {
-                                int amt = player.getInventory().getAmount(6055);
-                                if (amt > 0) {
-                                    player.getInventory().delete(6055, amt);
-                                    player.getPacketSender().sendMessage("You put the weed in the compost bin.");
-                                    player.getSkillManager().addExperience(Skill.FARMING, 1 * amt);
-                                }
-                            }
-                        }
-                        case 4306 -> EquipmentMaking.handleAnvil(player);
                     }
                 }));
     }

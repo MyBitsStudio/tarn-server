@@ -337,10 +337,6 @@ public class PlayerCommands {
                 BestItemsInterface.openInterface(player, 0);
                 return true;
             }
-            case "chests" -> {
-                TeleportHandler.teleportPlayer(player, new Position(2911, 3611, 0), player.getSpellbook().getTeleportType());
-                return true;
-            }
             case "hallow", "halloween" -> {
                 TeleportHandler.teleportPlayer(player, new Position(2200, 4834, 0), player.getSpellbook().getTeleportType());
                 return true;
@@ -441,7 +437,6 @@ public class PlayerCommands {
         player.getPacketSender().sendString(index++, color1 + "::hotkeys - Opens hotkey interface");
         player.getPacketSender().sendString(index++, color1 + "::ref - Claim a referral");
         player.getPacketSender().sendString(index++, color1 + "::refclaim - Claim your referrals");
-        player.getPacketSender().sendString(index++, color1 + "::chests - Teleports you to Chest Area");
         player.getPacketSender().sendString(index++, color1 + "::lugia - Teleports to Lugia");
         player.getPacketSender().sendString(index++, color1 + "::groudon - Teleports to Groudon");
         player.getPacketSender().sendString(index++, color1 + "::ninetails - Teleports to Ninetails");
@@ -504,9 +499,19 @@ public class PlayerCommands {
                         TeleportType.NORMAL);
                 return true;
             }
+            case "cherub" -> {
+                TeleportHandler.teleportPlayer(player, new Position(3032, 5232, 4),
+                        TeleportType.NORMAL);
+                return true;
+            }
             case "veigar" -> {
                 TeleportHandler.teleportPlayer(player, new Position(3032, 5232, 0),
                         TeleportType.LUNAR);
+                return true;
+            }
+            case "khazard" -> {
+                TeleportHandler.teleportPlayer(player, new Position(2139, 5018, 16),
+                        player.getSpellbook().getTeleportType());
                 return true;
             }
             case "ninetails" -> {
@@ -576,10 +581,9 @@ public class PlayerCommands {
             return;
         }
 
-        World.sendYellMessage(player.getDonator().getPrefix()
-                + "<img=" + player.getDonator().ordinal()
-                + "><col=" + player.getDonator().getPrefix() +
-                " [" + Misc.ucFirst(player.getDonator().name().replaceAll("_", " ")) + "]<shad=0><col=" + player.getYellHex() + "> " + player.getUsername() +
+        World.sendYellMessage(player.getVip().getPrefix()
+                + "<col=" + player.getVip().getPrefix() +
+                " [" + Misc.ucFirst(player.getVip().name().replaceAll("_", " ")) + "]<shad=0><col=" + player.getYellHex() + "> " + player.getUsername() +
                 ": " + yellMessage);
 
         player.getLastYell().reset();

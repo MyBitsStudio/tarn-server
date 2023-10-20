@@ -56,4 +56,6 @@ public abstract class GlobalBoss extends NPC {
     public void onDamage(@NotNull Player player, long damage){
         player.getBossPlugin().addDamage(this.getDefinition().getName(), damage);
     }
+
+    public abstract String discordImage();
 }

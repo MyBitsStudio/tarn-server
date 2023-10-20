@@ -12,18 +12,14 @@ public class NpcMaxHitLimit {
         long maxLimit;
         switch (npc.getId()) {
             case 587, 8013, 9904, 8010, 3308, 9005 -> maxLimit = 55000;
-            case 9906 -> maxLimit = 75000000;
-            case 6100, 6104 -> maxLimit = 2500000000L;
+            case 9906, 7553, 14378 -> maxLimit = 125000000L;
+            case 6100, 6104 -> maxLimit = 2100000000L;
             case 6105, 5665 -> maxLimit = 1000000000L;
             default -> {
                 return damage;
             }
         }
-        if(player.getSummoning().getFamiliar() != null){
-            if(player.getSummoning().getFamiliar().getSummonNpc().getId() == BossPets.BossPet.RAICHU_PET.getNpcId()){
-                maxLimit = (long) (maxLimit * 1.15);
-            }
-        }
-        return Math.min(maxLimit, damage);
+
+        return (long) Math.min(maxLimit, damage);
     }
 }

@@ -39,6 +39,7 @@ import com.ruse.world.entity.impl.player.timers.PlayerTimers;
 import com.ruse.world.packages.afk.AFKSystem;
 import com.ruse.world.packages.loyalty.LoyaltyManager;
 import com.ruse.world.packages.misc.CurrPouch;
+import com.ruse.world.packages.pets.CompanionHandler;
 import com.ruse.world.packages.plugin.impl.RaidPlugin;
 import com.ruse.world.packages.raid.Raid;
 import com.ruse.world.packages.raid.party.RaidParty;
@@ -4035,5 +4036,8 @@ public class Player extends Character {
 
     @Getter@Setter
     private Transmorgify transmorgify = new Transmorgify(this);
+
+    @Getter
+    private CompanionHandler companion = new CompanionHandler(this);
 
 }

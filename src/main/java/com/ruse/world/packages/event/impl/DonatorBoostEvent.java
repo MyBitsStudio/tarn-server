@@ -54,4 +54,10 @@ public class DonatorBoostEvent extends Event {
     public boolean onDeath(Player player, int npcId) {
         return false;
     }
+
+    @Override
+    public void handleEventDrop(Player player, Item drop, Position pos) {
+
+    }
+
 }

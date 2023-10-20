@@ -17,4 +17,9 @@ public class VeigarGlobal extends GlobalBoss {
     public String dropMessage() {
         return "@yel@You are a god! You have managed to make it through Veigar.";
     }
+
+    @Override
+    public String discordImage() {
+        return "veigar.png";
+    }
 }

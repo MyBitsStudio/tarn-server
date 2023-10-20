@@ -15,6 +15,7 @@ import com.ruse.world.content.LotterySystem;
 import com.ruse.world.content.WellOfGoodwill;
 import com.ruse.world.packages.clans.ClanManager;
 import com.ruse.world.content.grandexchange.GrandExchangeOffers;
+import com.ruse.world.packages.pets.CompanionData;
 import com.ruse.world.packages.serverperks.ServerPerks;
 import com.ruse.world.content.skill.SkillManager;
 import com.ruse.world.content.transportation.TeleportHandler;
@@ -407,6 +408,18 @@ public class OwnerCommands {
 
             case "normal" -> {
                 player.getTransmorgify().returnToNormal();
+                return true;
+            }
+
+            case "summons" -> {
+                player.getCompanion().unlockCompanion(CompanionData.DRAGON_1);
+                player.getCompanion().setCompanion(CompanionData.DRAGON_1);
+                player.getCompanion().summon();
+                return true;
+            }
+
+            case "desummons" -> {
+                player.getCompanion().desummon();
                 return true;
             }
 

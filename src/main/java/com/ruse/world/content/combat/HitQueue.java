@@ -130,6 +130,10 @@ public class HitQueue {
 
 						EffectHandler.handlePlayerAttack(p, victim);
 
+						if(p.getCompanion().getCompanion() != null && p.getCompanion().getCompanion().getActive().get()){
+							p.getCompanion().handleAttack(victim);
+						}
+
 					}
 					p.getControllerManager().processOutgoingHit(container);
 				} else if (victim.isPlayer() && container.getCombatType() == CombatType.DRAGON_FIRE) {
@@ -154,6 +158,10 @@ public class HitQueue {
 					if(attacker.isNpc()){
 						if(damage > 0){
 							EffectHandler.handlePlayerDefence(attacker.toNpc(), victim.asPlayer(), damage);
+
+							if(victim.asPlayer().getCompanion().getCompanion() != null && victim.asPlayer().getCompanion().getCompanion().getActive().get()){
+								victim.asPlayer().getCompanion().handleDefence(attacker);
+							}
 						}
 					}
 				}
@@ -231,7 +239,7 @@ public class HitQueue {
 				if (npc.switchesVictim() && Misc.getRandom(6) <= 1) {
 					if (npc.getDefinition().isAggressive()) {
 						npc.setFindNewTarget(true);
-					} else if (p.getLocalPlayers().size() >= 1) {
+					} else if (!p.getLocalPlayers().isEmpty()) {
 						List<Player> list = p.getLocalPlayers();
 						Player c = list.get(Misc.getRandom(list.size() - 1));
 						npc.getCombatBuilder().attack(c);

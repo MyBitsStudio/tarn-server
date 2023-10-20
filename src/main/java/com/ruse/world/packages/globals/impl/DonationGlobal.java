@@ -18,4 +18,9 @@ public class DonationGlobal extends GlobalBoss {
     public String dropMessage() {
         return "@yel@Congratulations, you have received a reward for killing the Donation Boss!";
     }
+
+    @Override
+    public String discordImage() {
+        return "donate.png";
+    }
 }

@@ -6,14 +6,21 @@ import com.ruse.engine.task.TaskManager;
 import com.ruse.model.GameObject;
 import com.ruse.model.Item;
 import com.ruse.model.Position;
+import com.ruse.security.tools.SecurityUtils;
 import com.ruse.util.Misc;
 import com.ruse.world.World;
 import com.ruse.world.clip.region.RegionClipping;
 import com.ruse.world.content.CustomObjects;
 import com.ruse.world.entity.impl.player.Player;
+import com.ruse.world.packages.discord.BotManager;
+import com.ruse.world.packages.discord.modal.Embed;
+import com.ruse.world.packages.discord.modal.MessageCreate;
 import com.ruse.world.packages.event.Event;
 import org.jetbrains.annotations.NotNull;
 
+import java.awt.*;
+import java.io.File;
+import java.util.List;
 import java.util.Objects;
 
 public class TotemHNS extends Event {
@@ -58,58 +65,62 @@ public class TotemHNS extends Event {
 
     @Override
     public void start() {
+
+        BotManager.getInstance().sendMessage("NORMAL", 1163982165252521994L,
+                new MessageCreate(List.of("** [EVENT] Staff Totem HNS is active! ** "),
+                        new Embed("[EVENT]", "**[EVENT]  Staff Totem HNS is active! ** ",
+                                "[EVENT]", Color.GREEN, "Catch the totem!", new File(SecurityUtils.DISCORD+"totem.png"), null)));
+
         TaskManager.submit(new Task(true) {
             int cycle = 0;
             @Override
             protected void execute() {
                 ++cycle;
                 if(cycle == 1){
+                    World.sendNewsMessage("@red@[EVENT]@whi@ Staff Totem HNS is about to begin!");
                     World.getPlayers().stream().filter(Objects::nonNull)
                             .forEach(player -> {
-                                player.sendMessage("@red@[EVENT]@whi@ Staff Totem HNS is about to begin!");
                                 player.getPacketSender().sendBroadCastMessage("[EVENT] Staff Totem HNS is about to begin!", 300);
-                                World.sendBroadcastMessage("[EVENT] Staff Totem HNS is about to begin!");
-                                GameSettings.broadcastMessage = "[EVENT] Staff Totem HNS is about to begin!";
-                                GameSettings.broadcastTime = 300;
                             });
+                    World.sendBroadcastMessage("[EVENT] Staff Totem HNS is about to begin!");
+                    GameSettings.broadcastMessage = "[EVENT] Staff Totem HNS is about to begin!";
+                    GameSettings.broadcastTime = 300;
                 } else if(cycle == 30){
+                    World.sendNewsMessage("@red@[EVENT]@whi@ The rules are about to begin! Please pay attention!");
                     World.getPlayers().stream().filter(Objects::nonNull)
                             .forEach(player -> {
-                                player.sendMessage("@red@[EVENT]@whi@ The rules are about to begin! Please pay attention!");
                                 player.getPacketSender().sendBroadCastMessage("[EVENT] The rules are about to begin! Please pay attention!", 300);
-                                World.sendBroadcastMessage("[EVENT] The rules are about to begin! Please pay attention!");
-                                GameSettings.broadcastMessage = "[EVENT] The rules are about to begin! Please pay attention!";
-                                GameSettings.broadcastTime = 300;
+
                             });
+                    World.sendBroadcastMessage("[EVENT] The rules are about to begin! Please pay attention!");
+                    GameSettings.broadcastMessage = "[EVENT] The rules are about to begin! Please pay attention!";
+                    GameSettings.broadcastTime = 300;
                 } else if(cycle == 60){
-                    World.getPlayers().stream().filter(Objects::nonNull)
-                            .forEach(player -> {
-                                player.sendMessage("@red@[EVENT]@whi@ Here are the rules for Totem HNS Event.");
-                                player.sendMessage("@red@[EVENT]@whi@ The totem will be spawned in a random location.");
-                                player.sendMessage("@red@[EVENT]@whi@ The first person to find the totem and click it wins.");
-                                player.sendMessage("@red@[EVENT]@whi@ The winner will receive a reward automatically.");
-                            });
+                    World.sendNewsMessage("@red@[EVENT]@whi@ Here are the rules for Totem HNS Event.");
+                    World.sendNewsMessage("@red@[EVENT]@whi@ The totem will be spawned in a random location.");
+                    World.sendNewsMessage("@red@[EVENT]@whi@ The first person to find the totem and click it wins.");
+                    World.sendNewsMessage("@red@[EVENT]@whi@ The winner will receive a reward automatically..");
                 } else if(cycle == 90){
+                    World.sendNewsMessage("@red@[EVENT]@whi@ The totem is about to be spawned!");
                     World.getPlayers().stream().filter(Objects::nonNull)
                             .forEach(player -> {
-                                player.sendMessage("@red@[EVENT]@whi@ The totem is about to be spawned!");
                                 player.getPacketSender().sendBroadCastMessage("[EVENT] The totem is about to be spawned!", 300);
-                                World.sendBroadcastMessage("[EVENT] The totem is about to be spawned!");
-                                GameSettings.broadcastMessage = "[EVENT] The totem is about to be spawned!";
-                                GameSettings.broadcastTime = 300;
                             });
+                    World.sendBroadcastMessage("[EVENT] The totem is about to be spawned!");
+                    GameSettings.broadcastMessage = "[EVENT] The totem is about to be spawned!";
+                    GameSettings.broadcastTime = 300;
                 } else if(cycle == 120){
                     pos = positions[Misc.random(positions.length - 1)];
                     GameObject totem = new GameObject(55350, pos);
                     CustomObjects.spawnGlobalObject(totem);
+                    World.sendNewsMessage("@red@[EVENT]@whi@ The totem has spawned! Good Luck Hunting!");
                     World.getPlayers().stream().filter(Objects::nonNull)
                             .forEach(player -> {
-                                player.sendMessage("@red@[EVENT]@whi@ The totem has spawned! Good Luck Hunting!");
                                 player.getPacketSender().sendBroadCastMessage("[EVENT] The totem has spawned! Good Luck Hunting!", 300);
-                                World.sendBroadcastMessage("[EVENT] The totem has spawned! Good Luck Hunting!");
-                                GameSettings.broadcastMessage = "[EVENT] The totem has spawned! Good Luck Hunting!";
-                                GameSettings.broadcastTime = 300;
                             });
+                    World.sendBroadcastMessage("[EVENT] The totem has spawned! Good Luck Hunting!");
+                    GameSettings.broadcastMessage = "[EVENT] The totem has spawned! Good Luck Hunting!";
+                    GameSettings.broadcastTime = 300;
                     owner.sendMessage("The totem has spawned at : "+pos.getX()+"-"+pos.getY()+"-"+pos.getZ());
                     this.stop();
                 }
@@ -147,14 +158,15 @@ public class TotemHNS extends Event {
                 owner.sendMessage("The totem has been found by "+player.getUsername()+"!");
                 player.sendMessage("@red@You have found the totem! Congratulations!");
                 player.getInventory().add(items[Misc.random(items.length - 1)]);
+                World.sendNewsMessage("@red@[EVENT]@whi@ The totem has been found! Thank you for playing!");
                 World.getPlayers().stream().filter(Objects::nonNull)
                         .forEach(players -> {
-                            players.sendMessage("@red@[EVENT]@whi@ The totem has been found! Thank you for playing!");
                             players.getPacketSender().sendBroadCastMessage("[EVENT] The totem has been found! Thank you for playing!", 300);
-                            World.sendBroadcastMessage("[EVENT] The totem has been found! Thank you for playing!");
-                            GameSettings.broadcastMessage = "[EVENT] The totem has been found! Thank you for playing!";
-                            GameSettings.broadcastTime = 300;
+
                         });
+                World.sendBroadcastMessage("[EVENT] The totem has been found! Thank you for playing!");
+                GameSettings.broadcastMessage = "[EVENT] The totem has been found! Thank you for playing!";
+                GameSettings.broadcastTime = 300;
                 this.stop();
                 return true;
             }
@@ -165,5 +177,10 @@ public class TotemHNS extends Event {
     @Override
     public boolean onDeath(Player player, int npcId) {
         return false;
+    }
+
+    @Override
+    public void handleEventDrop(Player player, Item drop, Position pos) {
+
     }
 }

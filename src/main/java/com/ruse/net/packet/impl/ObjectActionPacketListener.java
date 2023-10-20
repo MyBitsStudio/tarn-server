@@ -181,7 +181,7 @@ public class ObjectActionPacketListener implements PacketListener {
                             return;
                         }
 
-                        case 26945 -> {
+                        case 63003 -> {
                             player.sendMessage("VIP Boss : "+GlobalBossManager.getInstance().getProgress("VIP")+"/50");
                             return;
                         }
@@ -1979,7 +1979,7 @@ public class ObjectActionPacketListener implements PacketListener {
     }
 
     private static void secondClick(final Player player, Packet packet) {
-        final int id = packet.readLEShortA();
+        final int id = packet.readUnsignedShort();
         final int y = packet.readLEShort();
         final int x = packet.readUnsignedShortA();
         final Position position = new Position(x, y, player.getPosition().getZ());
@@ -2029,8 +2029,7 @@ public class ObjectActionPacketListener implements PacketListener {
                     }
 
                     switch (gameObject.getId()) {
-                        case 2469 ->
-                                TeleportHandler.teleportPlayer(player, player.getPosition().setZ(Math.max(player.getPosition().getZ() - 4, 0)), TeleportType.NORMAL);
+                        case 2469 -> TeleportHandler.teleportPlayer(player, player.getPosition().setZ(Math.max(player.getPosition().getZ() - 4, 0)), TeleportType.NORMAL);
                         case 12100 -> Smelting.openInterface(player);
                         case 13192 -> {
                             player.performAnimation(new Animation(645));
@@ -2067,174 +2066,7 @@ public class ObjectActionPacketListener implements PacketListener {
                                 Stalls.stealFromAFKStall(player, id, 4);
                             }
                             break;*/
-                        case 39644, -25892, 39643, -25893 -> {
-                            switch (Misc.getRandom(9)) {
-                                case 0 -> {
-                                    player.getPacketSender().sendInterface(28130);
-                                    player.getPacketSender().sendMessage("You have been booty trapped!");
-                                }
-                                case 1 -> {
-                                    player.moveTo(new Position(2439, 2845, 0));
-                                    player.getPacketSender().sendMessage("wrong trigger!");
-                                }
-                                case 2 -> {
-                                    player.moveTo(new Position(2448, 2841, 0));
-                                    player.getPacketSender().sendMessage("oopsie!");
-                                }
-                                case 3 -> {
-                                    player.moveTo(new Position(2448, 2843, 0));
-                                    player.getPacketSender().sendMessage("you did it again!");
-                                }
-                                case 4 -> {
-                                    player.moveTo(new Position(2439, 2845, 0));
-                                    player.getPacketSender().sendMessage("wrong trigger!");
-                                }
-                                case 5 -> {
-                                    player.getPacketSender().sendInterface(27130);
-                                    player.getPacketSender().sendMessage("piccolo died!");
-                                }
-                                case 6 -> {
-                                    Position[] locations = new Position[]{new Position(2434, 2820, 0),
-                                            new Position(2436, 2818, 0), new Position(2491, 2818, 0),
-                                            new Position(2493, 2820, 0), new Position(2491, 2877, 0),
-                                            new Position(2493, 2875, 0), new Position(2434, 2875, 0),
-                                            new Position(2436, 2877, 0)};
-                                    Position teleportLocation = locations[RandomUtility.exclusiveRandom(0,
-                                            locations.length)];
-                                    TeleportHandler.teleportPlayer(player, teleportLocation,
-                                            player.getSpellbook().getTeleportType());
-                                    player.getPacketSender().sendMessage("EEEEK!");
-                                    player.forceChat("eek!");
-                                }
-                                case 7 -> {
-                                    player.moveTo(new Position(2438, 2839, 0));
-                                    player.getPacketSender().sendMessage("almost there!");
-                                }
-                                case 8 -> {
-                                    player.moveTo(new Position(2444, 2836, 0));
-                                    player.forceChat("yayy!");
-                                    player.getPacketSender().sendMessage("@gre@success!");
-                                }
-                                case 9 -> {
-                                    player.getPacketSender().sendInterface(26130);
-                                    player.getPacketSender().sendMessage("You are haunted!");
-                                }
-                            }
-                        }
-                        //
-                        case 39641, -25894, 39642, -25895 -> {
-                            switch (Misc.getRandom(9)) {
-                                case 0:
-                                    player.getPacketSender().sendInterface(28130);
-                                    player.getPacketSender().sendMessage("You have been booty trapped!");
-                                    break;
-                                case 1:
-                                    player.moveTo(new Position(2468, 2827, 0));
-                                    player.getPacketSender().sendMessage("wrong trigger!");
-                                    break;
-                                case 2:
-                                    player.moveTo(new Position(2462, 2831, 0));
-                                    player.getPacketSender().sendMessage("oopsie!");
-                                    break;
-                                case 3:
-                                    player.moveTo(new Position(2462, 2834, 0));
-                                    player.getPacketSender().sendMessage("you did it again!");
-                                    break;
-                                case 4:
-                                    player.moveTo(new Position(2466, 2836, 0));
-                                    player.getPacketSender().sendMessage("wrong trigger!");
-                                    break;
-                                case 5:
-                                    player.getPacketSender().sendInterface(27130);
-                                    player.getPacketSender().sendMessage("piccolo died!");
-                                    break;
-                                case 6:
-                                    Position[] locations = new Position[]{new Position(2434, 2820, 0),
-                                            new Position(2436, 2818, 0), new Position(2491, 2818, 0),
-                                            new Position(2493, 2820, 0), new Position(2491, 2877, 0),
-                                            new Position(2493, 2875, 0), new Position(2434, 2875, 0),
-                                            new Position(2436, 2877, 0)};
-                                    Position teleportLocation = locations[RandomUtility.exclusiveRandom(0,
-                                            locations.length)];
 
-                                    TeleportHandler.teleportPlayer(player, teleportLocation,
-                                            player.getSpellbook().getTeleportType());
-                                    player.getPacketSender().sendMessage("EEEEK!");
-                                    player.forceChat("eek!");
-                                    break;
-                                case 7:
-                                    player.moveTo(new Position(2468, 2839, 0));
-                                    player.getPacketSender().sendMessage("almost there!");
-                                    break;
-                                case 8:
-                                    player.moveTo(new Position(2471, 2833, 0));
-                                    player.forceChat("yayy!");
-                                    player.getPacketSender().sendMessage("@gre@success!");
-                                    break;
-                                case 9:
-                                    player.getPacketSender().sendInterface(26130);
-                                    player.getPacketSender().sendMessage("You are haunted!");
-                                    break;
-                            }
-                        }
-                        //
-                        case 39640, -25896, 39639, -25897 -> {
-                            switch (Misc.getRandom(9)) {
-                                case 0:
-                                    player.getPacketSender().sendInterface(28130);
-                                    player.getPacketSender().sendMessage("You have been booty trapped!");
-                                    break;
-                                case 1:
-                                    player.moveTo(new Position(2462, 2869, 0));
-                                    player.getPacketSender().sendMessage("wrong trigger!");
-                                    break;
-                                case 2:
-                                    player.moveTo(new Position(2456, 2855, 0));
-                                    player.getPacketSender().sendMessage("oopsie!");
-                                    break;
-                                case 3:
-                                    player.moveTo(new Position(2459, 2853, 0));
-                                    player.getPacketSender().sendMessage("you did it again!");
-                                    break;
-                                case 4:
-                                    player.moveTo(new Position(2461, 2851, 0));
-                                    player.getPacketSender().sendMessage("wrong trigger!");
-                                    break;
-                                case 5:
-                                    player.getPacketSender().sendInterface(27130);
-                                    player.getPacketSender().sendMessage("piccolo died!");
-                                    break;
-                                case 6:
-                                    Position[] locations = new Position[]{new Position(2434, 2820, 0),
-                                            new Position(2436, 2818, 0), new Position(2491, 2818, 0),
-                                            new Position(2493, 2820, 0), new Position(2491, 2877, 0),
-                                            new Position(2493, 2875, 0), new Position(2434, 2875, 0),
-                                            new Position(2436, 2877, 0)};
-                                    Position teleportLocation = locations[RandomUtility.exclusiveRandom(0,
-                                            locations.length)];
-
-                                    TeleportHandler.teleportPlayer(player, teleportLocation,
-                                            player.getSpellbook().getTeleportType());
-                                    player.getPacketSender().sendMessage("EEEEK!");
-                                    player.forceChat("eek!");
-                                    break;
-                                case 7:
-                                    player.moveTo(new Position(2461, 2867, 0));
-                                    player.getPacketSender().sendMessage("almost there!");
-                                    break;
-                                case 8:
-                                    player.moveTo(new Position(2458, 2862, 0));
-                                    player.forceChat("yayy!");
-
-                                    player.getPacketSender().sendMessage("@gre@success!");
-                                    break;
-                                case 9:
-                                    player.getPacketSender().sendInterface(26130);
-                                    player.getPacketSender().sendMessage("You are haunted!");
-                                    break;
-                            }
-                        }
-                        case 2145 -> player.getPacketSender().sendMessage("Eww. That's a terrible idea!");
                         case 172 -> CrystalChest.sendRewardInterface(player);
 //                        case 9975 -> {
 //                            DialogueManager.start(player, 22);
@@ -2242,175 +2074,14 @@ public class ObjectActionPacketListener implements PacketListener {
 //                        }
                         case 6910, 4483, 25808, 3193, 2213, 11758, 14367, 42192, 75, 26972, 11338, 19230 ->
                                 player.getBank(player.getCurrentBankTab()).open();
-                        case 2646, 312 -> {
-                            if (!player.getClickDelay().elapsed(1200))
-                                return;
-                            if (player.getInventory().isFull()) {
-                                player.getPacketSender().sendMessage("You don't have enough free inventory space.");
-                                return;
-                            }
-                            String type = gameObject.getId() == 312 ? "Potato" : "Flax";
-                            player.performAnimation(new Animation(827));
-                            player.getInventory().add(gameObject.getId() == 312 ? 1942 : 1779, 1);
-                            player.getPacketSender().sendMessage("You pick some " + type + "..");
-                            gameObject.setPickAmount(gameObject.getPickAmount() + 1);
-                            if (Misc.getRandom(3) == 1 && gameObject.getPickAmount() >= 1
-                                    || gameObject.getPickAmount() >= 6) {
-                                player.getPacketSender().sendClientRightClickRemoval();
-                                gameObject.setPickAmount(0);
-                                CustomObjects.globalObjectRespawnTask(new GameObject(-1, gameObject.getPosition()),
-                                        gameObject, 10);
-                            }
-                            player.getClickDelay().reset();
-                        }
-                        case 2644 -> Flax.showSpinInterface(player);
-                        case 6 -> {
-                            DwarfCannon cannon = player.getCannon();
-                            if (cannon == null || cannon.getOwnerIndex() != player.getIndex()) {
-                                player.getPacketSender().sendMessage("This is not your cannon!");
-                            } else {
-                                DwarfMultiCannon.pickupCannon(player, cannon, false);
-                            }
-                        }
-                       /* case 5917: // friday the 13th event
-                            Stalls.stealFromStall(player, gameObject, 1, 0, new Item(13150, 1),
-                                    "You search the Plasma Vent... and find a Spooky Box!");
-                            break;*/
-                        //
 
-                       /* case 4875:
-                            if (!player.getClickDelay().elapsed(2500))
-                                return;
-                            if (player.getInventory().getFreeSlots() < 1) {
-                                player.getPacketSender().sendMessage("You don't have enough inventory spaces.");
-                                return;
-                            }
-                            player.performAnimation(new Animation(881));
-                            player.getPacketSender().sendInterfaceRemoval();
-                            player.getSkillManager().addExperience(Skill.THIEVING, 15);
-                            player.getClickDelay().reset();
-                            player.getInventory().add(18199, 1);
-                            int[] RewardId = new int[]{ItemDefinition.MILL_ID};
-                            int[] LowItems = new int[]{1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2};
-                            int pickedFood = RewardId[RandomUtility.exclusiveRandom(0, RewardId.length)];
-                            int pickedAmt = LowItems[RandomUtility.exclusiveRandom(0, LowItems.length)];
-                            player.getInventory().add(pickedFood, pickedAmt);
-                            player.getPacketSender().sendMessage("You steal a banana");
-
-                            break;
-
-                        case 4874:
-                            if (!player.getClickDelay().elapsed(2500))
-                                return;
-                            if (player.getSkillManager().getMaxLevel(Skill.THIEVING) < 30) {
-                                player.getPacketSender().sendMessage(
-                                        "You need a Thieving level of at least 30 to steal from this stall.");
-                                return;
-                            }
-                            if (player.getInventory().getFreeSlots() < 1) {
-                                player.getPacketSender().sendMessage("You don't have enough inventory spaces.");
-                                return;
-                            }
-                            player.performAnimation(new Animation(881));
-                            player.getPacketSender().sendInterfaceRemoval();
-                            player.getSkillManager().addExperience(Skill.THIEVING, 30);
-                            player.getClickDelay().reset();
-                            player.getInventory().add(15009, 1);
-                            int[] RewardId1 = new int[]{ItemDefinition.MILL_ID};
-                            int[] LowItems1 = new int[]{1, 1, 1, 1, 1, 2, 2, 2, 3, 3, 3};
-                            int pickedFood1 = RewardId1[RandomUtility.exclusiveRandom(0, RewardId1.length)];
-                            int pickedAmt1 = LowItems1[RandomUtility.exclusiveRandom(0, LowItems1.length)];
-                            player.getInventory().add(pickedFood1, pickedAmt1);
-                            player.getPacketSender().sendMessage("You steal a golden ring");
-                            // Stalls.stealFromStall(player, 30, 34, 15009, "You steal a golden ring.");
-                            break;
-                        case 4876:
-
-                            if (!player.getClickDelay().elapsed(2500))
-                                return;
-
-                            if (player.getSkillManager().getMaxLevel(Skill.THIEVING) < 55) {
-                                player.getPacketSender().sendMessage(
-                                        "You need a Thieving level of at least 55 to steal from this stall.");
-                                return;
-                            }
-                            if (player.getInventory().getFreeSlots() < 1) {
-                                player.getPacketSender().sendMessage("You don't have enough inventory spaces.");
-                                return;
-                            }
-                            player.performAnimation(new Animation(881));
-                            player.getPacketSender().sendInterfaceRemoval();
-                            player.getSkillManager().addExperience(Skill.THIEVING, 55);
-                            player.getClickDelay().reset();
-                            player.getInventory().add(17401, 1);
-                            int[] RewardId11 = new int[]{ItemDefinition.MILL_ID};
-                            int[] LowItems11 = new int[]{1, 1, 1, 2, 2, 3, 3, 3, 4, 4, 4};
-                            int pickedFood11 = RewardId11[RandomUtility.exclusiveRandom(0, RewardId11.length)];
-                            int pickedAmt11 = LowItems11[RandomUtility.exclusiveRandom(0, LowItems11.length)];
-                            player.getInventory().add(pickedFood11, pickedAmt11);
-                            player.getPacketSender().sendMessage("You steal a damaged hammer");
-                            // Stalls.stealFromStall(player, 60, 57, 17401, "You steal a damaged hammer.");
-                            break;
-                        case 4877:
-                            if (!player.getClickDelay().elapsed(2500))
-                                return;
-
-                            if (player.getSkillManager().getMaxLevel(Skill.THIEVING) < 78) {
-                                player.getPacketSender().sendMessage(
-                                        "You need a Thieving level of at least 78 to steal from this stall.");
-                                return;
-                            }
-                            if (player.getInventory().getFreeSlots() < 1) {
-                                player.getPacketSender().sendMessage("You don't have enough inventory spaces.");
-                                return;
-                            }
-                            player.performAnimation(new Animation(881));
-                            player.getPacketSender().sendInterfaceRemoval();
-                            player.getSkillManager().addExperience(Skill.THIEVING, 80);
-                            player.getClickDelay().reset();
-                            player.getInventory().add(1389, 1);
-                            int[] RewardId111 = new int[]{ItemDefinition.MILL_ID};
-                            int[] LowItems111 = new int[]{2, 2, 2, 3, 3, 4, 4, 4, 5, 5, 5, 1};
-                            int pickedFood111 = RewardId111[RandomUtility.exclusiveRandom(0, RewardId111.length)];
-                            int pickedAmt111 = LowItems111[RandomUtility.exclusiveRandom(0, LowItems111.length)];
-                            player.getInventory().add(pickedFood111, pickedAmt111);
-                            player.getPacketSender().sendMessage("You steal a staff");
-                            // Stalls.stealFromStall(player, 65, 80, 1389, "You steal a staff.");
-                            break;
-                        case 4878:
-                            if (!player.getClickDelay().elapsed(2500))
-                                return;
-
-                            if (player.getSkillManager().getMaxLevel(Skill.THIEVING) < 95) {
-                                player.getPacketSender().sendMessage(
-                                        "You need a Thieving level of at least 95 to steal from this stall.");
-                                return;
-                            }
-                            if (player.getInventory().getFreeSlots() < 1) {
-                                player.getPacketSender().sendMessage("You don't have enough inventory spaces.");
-                                return;
-                            }
-                            player.performAnimation(new Animation(881));
-                            player.getPacketSender().sendInterfaceRemoval();
-                            player.getSkillManager().addExperience(Skill.THIEVING, 100);
-                            player.getClickDelay().reset();
-                            player.getInventory().add(11998, 1);
-                            int[] RewardId1111 = new int[]{ItemDefinition.MILL_ID};
-                            int[] LowItems1111 = new int[]{2, 2, 3, 4, 4, 4, 5, 5, 6, 6, 6, 1, 1};
-                            int pickedFood1111 = RewardId1111[RandomUtility.exclusiveRandom(0, RewardId1111.length)];
-                            int pickedAmt1111 = LowItems1111[RandomUtility.exclusiveRandom(0, LowItems1111.length)];
-                            player.getInventory().add(pickedFood1111, pickedAmt1111);
-                            player.getPacketSender().sendMessage("You steal a scimitar");
-                            // Stalls.stealFromStall(player, 80, 101, 11998, "You steal a scimitar.");
-                            break;*/
-                        case 3044, 6189, 26814, 11666 -> Jewelry.jewelryInterface(player);
-                        case 2152 -> {
-                            player.performAnimation(new Animation(8502));
-                            player.performGraphic(new Graphic(1308));
-                            player.getSkillManager().setCurrentLevel(Skill.SUMMONING,
-                                    player.getSkillManager().getMaxLevel(Skill.SUMMONING));
-                            player.getPacketSender().sendMessage("You renew your Summoning points.");
-                        }
+//                        case 2152 -> {
+//                            player.performAnimation(new Animation(8502));
+//                            player.performGraphic(new Graphic(1308));
+//                            player.getSkillManager().setCurrentLevel(Skill.SUMMONING,
+//                                    player.getSkillManager().getMaxLevel(Skill.SUMMONING));
+//                            player.getPacketSender().sendMessage("You renew your Summoning points.");
+//                        }
                     }
                 }));
     }

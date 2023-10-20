@@ -67,13 +67,6 @@ public class NPCUpdating {
 			if (npc == null || player.getLocalNpcs().contains(npc) || !npc.isVisible() || npc.isNeedsPlacement())
 				continue;
 			if (npc.getPosition().isWithinDistance(player.getPosition())) {
-				if (player.getLocation() != null && (player.getLocation() == Locations.Location.HOME_AREA) &&
-						npc.isSummoningNpc() && (player.getSummoning().getFamiliar() == null || (
-						player.getSummoning().getFamiliar() != null &&
-								player.getSummoning().getFamiliar().getSummonNpc() != null &&
-								!player.getSummoning().getFamiliar().getSummonNpc().equals(npc)))) {
-					continue;
-				}else{
 					if(npc.isSummoningNpc()){
 						if(player.getPSettings().getBooleanValue("hidden-players")){
 							continue;
@@ -85,7 +78,6 @@ public class NPCUpdating {
 					if (npc.getUpdateFlag().isUpdateRequired()) {
 						appendUpdates(npc, update);
 					}
-				}
 			}
 		}
 		if (update.buffer().writerIndex() > 0) {

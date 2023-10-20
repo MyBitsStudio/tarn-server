@@ -8,13 +8,20 @@ import com.ruse.io.data.model.DataHandler;
 import com.ruse.io.data.model.DatabasePost;
 import com.ruse.io.data.records.DonateRedeem;
 import com.ruse.io.data.records.VoteRedeem;
+import com.ruse.security.tools.SecurityUtils;
 import com.ruse.util.Misc;
 import com.ruse.world.entity.impl.player.Player;
+import com.ruse.world.packages.discord.BotManager;
+import com.ruse.world.packages.discord.modal.Embed;
+import com.ruse.world.packages.discord.modal.MessageCreate;
 import com.ruse.world.packages.discordbot.JavaCord;
 import com.ruse.world.packages.voting.VoteHandler;
 
+import java.awt.*;
+import java.io.File;
 import java.time.LocalDateTime;
 import java.util.*;
+import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 public class SQLVote implements DatabasePost {
@@ -60,7 +67,11 @@ public class SQLVote implements DatabasePost {
             for(VoteRedeem redeem : votes){
                 new SQLVoteClaim().execute(player, redeem.uid());
                 player.getPacketSender().sendMessage("Thank you for voting! Enjoy your reward!");
-                JavaCord.sendMessage(1117224370587304057L, "**[" + player.getUsername() + "] Just voted for the server, thank you!**");
+                BotManager.getInstance().sendMessage("NORMAL", 1163981981281955980L,
+                        new MessageCreate(List.of("**[" + player.getUsername() + "] Just voted for the server, thank you!**"),
+                                new Embed("[VOTE] Vote Recorded", "[" + player.getUsername() + "] Just voted for the server, thank you!",
+                                        "Tarn Server Voting", Color.GREEN, "You can get massive rewards by voting!", new File(SecurityUtils.DISCORD + "vote.png"), null,
+                                        new String[]{"Vote Now! : https:tarnserver.com/vote"})));
                 VoteHandler.add(player);
                 VoteHandler.progress(player);
                 VoteHandler.checkBoss();

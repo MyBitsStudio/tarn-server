@@ -18,4 +18,9 @@ public class LugiaGlobal extends GlobalBoss {
     public String dropMessage() {
         return "@yel@Congratulations, you have received a reward for killing Lugia!";
     }
+
+    @Override
+    public String discordImage() {
+        return "lugia.png";
+    }
 }

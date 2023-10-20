@@ -15,12 +15,13 @@ public class FallEvent extends Event {
 
     @Override
     public void start() {
-        World.register(new NPC(3321, new Position(2221, 3746, 0)));
+        World.register(new NPC(3321, new Position(2201, 3747, 0)));
+
     }
 
     @Override
     public void stop() {
-
+        World.deregister(new NPC(3321, new Position(2201, 3747, 0)));
     }
 
     @Override
@@ -46,5 +47,10 @@ public class FallEvent extends Event {
     @Override
     public boolean onDeath(Player player, int npcId) {
         return false;
+    }
+
+    @Override
+    public void handleEventDrop(Player player, Item drop, Position pos) {
+
     }
 }

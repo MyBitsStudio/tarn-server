@@ -3,6 +3,7 @@ package com.ruse.world.entity.impl.npc;
 import com.ruse.model.Direction;
 import com.ruse.model.Locations.Location;
 import com.ruse.model.Position;
+import com.ruse.model.movement.MovementQueue;
 import com.ruse.model.movement.PathFinder;
 import com.ruse.util.Misc;
 import com.ruse.world.clip.region.RegionClipping;
@@ -49,7 +50,7 @@ public class NPCMovementCoordinator {
                     if (Misc.getRandom(10) <= 1) {
                         Position pos = generateLocalPosition();
 
-                        if (pos != null && npc.getMovementQueue().canWalk(npc.getPosition(), npc.getPosition().copy().transform(pos), npc.getSize())) {
+                        if (pos != null && MovementQueue.canWalk(npc.getPosition(), npc.getPosition().copy().transform(pos), npc.getSize())) {
 
                             Position newPos = npc.getPosition().copy().transform(pos);
                             // PathFinder.findPath(npc, newPos.getX(),
@@ -74,7 +75,7 @@ public class NPCMovementCoordinator {
         int deltaY = npc.getPosition().getY() - npc.getDefaultPosition().getY();
 
         if ((deltaX > coordinator.getRadius()) || (deltaY > coordinator.getRadius())) {
-            if (Location.ignoreFollowDistance(npc) || npc.getMovementQueue().getFollowCharacter() != null
+            if (Location.ignoreFollowDistance(npc)
                     || npc.getCombatBuilder().isAttacking() || npc.getCombatBuilder().isBeingAttacked()) {
                 return;
             }

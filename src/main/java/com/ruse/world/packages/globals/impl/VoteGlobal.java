@@ -19,4 +19,9 @@ public class VoteGlobal extends GlobalBoss {
         return "@yel@Congratulations, you have received a reward for killing the Vote Boss!";
     }
 
+    @Override
+    public String discordImage() {
+        return "vote-boss.png";
+    }
+
 }

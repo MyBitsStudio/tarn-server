@@ -27,7 +27,7 @@ public class BotManager {
     }
 
     private void addBots(){
-        //bots.add(new NormalBot());
+        bots.add(new NormalBot());
         bots.add(new AdminBot());
     }
 

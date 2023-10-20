@@ -17,4 +17,9 @@ public class MewtwoGlobal extends GlobalBoss {
     public String dropMessage() {
         return "@yel@Congratulations, you have received a reward for killing Mewtwo!";
     }
+
+    @Override
+    public String discordImage() {
+        return "mewtwo.png";
+    }
 }

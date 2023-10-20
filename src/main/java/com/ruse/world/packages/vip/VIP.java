@@ -1,14 +1,20 @@
 package com.ruse.world.packages.vip;
 
 import com.ruse.model.Item;
+import com.ruse.security.tools.SecurityUtils;
 import com.ruse.world.WorldCalendar;
 import com.ruse.world.entity.impl.player.Player;
+import com.ruse.world.packages.discord.BotManager;
+import com.ruse.world.packages.discord.modal.Embed;
+import com.ruse.world.packages.discord.modal.MessageCreate;
 import com.ruse.world.packages.ranks.VIPRank;
 import lombok.Getter;
 import lombok.Setter;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.awt.*;
+import java.io.File;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Objects;
@@ -37,6 +43,10 @@ public class VIP {
         addToList(amount);
         claimPack();
         reCalculate();
+        BotManager.getInstance().sendMessage("NORMAL", 1163981981281955980L,
+                new MessageCreate(List.of("** [DONATION] "+player.getUsername()+" has just donated! Thank you for supporting the server! ** "),
+                        new Embed("[DONATION]", "**[DONATION]  "+player.getUsername()+" has just donated! Thank you for supporting the server! ** ",
+                                "[DONATION]", Color.ORANGE, "THANK YOU FOR YOUR SUPPORT!", new File(SecurityUtils.DISCORD+"dollar.png"), null)));
     }
 
     public void takePoints(int amount){

@@ -5,16 +5,23 @@ import com.ruse.engine.task.Task;
 import com.ruse.engine.task.TaskManager;
 import com.ruse.model.Item;
 import com.ruse.model.Position;
+import com.ruse.security.tools.SecurityUtils;
 import com.ruse.util.Misc;
 import com.ruse.world.World;
 import com.ruse.world.entity.impl.npc.NPC;
 import com.ruse.world.entity.impl.player.Player;
 import com.ruse.world.packages.bosses.special.event.EventBoss;
+import com.ruse.world.packages.discord.BotManager;
+import com.ruse.world.packages.discord.modal.Embed;
+import com.ruse.world.packages.discord.modal.MessageCreate;
 import com.ruse.world.packages.event.Event;
 import com.ruse.world.packages.event.impl.props.HallowEvent;
 import org.jetbrains.annotations.NotNull;
 
+import java.awt.*;
+import java.io.File;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
 
 public class HalloweenSpawn extends Event {
@@ -56,14 +63,19 @@ public class HalloweenSpawn extends Event {
             }
         }
 
+        BotManager.getInstance().sendMessage("NORMAL", 1163982165252521994L,
+                new MessageCreate(List.of("** [EVENT] Takeover is active! ** "),
+                        new Embed("[EVENT]", "**[EVENT] Takeover is active! ** ",
+                                "[EVENT]", Color.GREEN, "Save the town!", new File(SecurityUtils.DISCORD+"skele.png"), null)));
+
+        World.sendNewsMessage("@red@[EVENT]@whi@ "+(isZombies? "Zombies" : "Skeletons") + " have taken over a town! ::takeover");
         World.getPlayers().stream().filter(Objects::nonNull)
                 .forEach(player -> {
-                    player.sendMessage("@red@[EVENT]@whi@ "+(isZombies? "Zombies" : "Skeletons") + " have taken over a town! ::takeover");
                     player.getPacketSender().sendBroadCastMessage("[EVENT] "+(isZombies? "Zombies" : "Skeletons") + " have taken over a town! ::takeover", 300);
-                    World.sendBroadcastMessage("[EVENT] "+(isZombies? "Zombies" : "Skeletons") + " have taken over a town! ::takeover");
-                    GameSettings.broadcastMessage = "[EVENT] "+(isZombies? "Zombies" : "Skeletons") + " have taken over a town! ::takeover";
-                    GameSettings.broadcastTime = 300;
                 });
+        World.sendBroadcastMessage("[EVENT] "+(isZombies? "Zombies" : "Skeletons") + " have taken over a town! ::takeover");
+        GameSettings.broadcastMessage = "[EVENT] "+(isZombies? "Zombies" : "Skeletons") + " have taken over a town! ::takeover";
+        GameSettings.broadcastTime = 300;
     }
 
     @Override
@@ -124,14 +136,14 @@ public class HalloweenSpawn extends Event {
             if(id == 6100 || id == 5665){
                 bosses--;
                 if(bosses <= 0){
+                    World.sendNewsMessage("@red@[EVENT]@whi@ The "+ "Zombie Pirate" +" has been defeated! The town is safe");
                     World.getPlayers().stream().filter(Objects::nonNull)
                             .forEach(p -> {
-                                p.sendMessage("@red@[EVENT]@whi@ The "+(isZombies? "Zombie Pirate" : "Skeleton Warlord")+" has been defeated! The town is safe!");
                                 p.getPacketSender().sendBroadCastMessage("[EVENT] The "+(isZombies? "Zombie Pirate" : "Skeleton Warlord")+" has been defeated! The town is safe!", 300);
-                                World.sendBroadcastMessage("[EVENT] The "+(isZombies? "Zombie Pirate" : "Skeleton Warlord")+" has been defeated! The town is safe!");
-                                GameSettings.broadcastMessage = "[EVENT] The "+(isZombies? "Zombie Pirate" : "Skeleton Warlord")+" has been defeated! The town is safe!";
-                                GameSettings.broadcastTime = 300;
                             });
+                    World.sendBroadcastMessage("[EVENT] The "+(isZombies? "Zombie Pirate" : "Skeleton Warlord")+" has been defeated! The town is safe!");
+                    GameSettings.broadcastMessage = "[EVENT] The "+(isZombies? "Zombie Pirate" : "Skeleton Warlord")+" has been defeated! The town is safe!";
+                    GameSettings.broadcastTime = 300;
                     stop();
                 }
                 return true;
@@ -147,20 +159,25 @@ public class HalloweenSpawn extends Event {
             if(id == 6105 || id == 6104){
                 bosses--;
                 if(bosses <= 0){
+                    World.sendNewsMessage("@red@[EVENT]@whi@ The Skeleton Warlord has been defeated! The town is safe");
                     World.getPlayers().stream().filter(Objects::nonNull)
                             .forEach(p -> {
-                                p.sendMessage("@red@[EVENT]@whi@ The "+(isZombies? "Zombie Pirate" : "Skeleton Warlord")+" has been defeated! The town is safe!");
                                 p.getPacketSender().sendBroadCastMessage("[EVENT] The "+(isZombies? "Zombie Pirate" : "Skeleton Warlord")+" has been defeated! The town is safe!", 300);
-                                World.sendBroadcastMessage("[EVENT] The "+(isZombies? "Zombie Pirate" : "Skeleton Warlord")+" has been defeated! The town is safe!");
-                                GameSettings.broadcastMessage = "[EVENT] The "+(isZombies? "Zombie Pirate" : "Skeleton Warlord")+" has been defeated! The town is safe!";
-                                GameSettings.broadcastTime = 300;
                             });
+                    World.sendBroadcastMessage("[EVENT] The "+(isZombies? "Zombie Pirate" : "Skeleton Warlord")+" has been defeated! The town is safe!");
+                    GameSettings.broadcastMessage = "[EVENT] The "+(isZombies? "Zombie Pirate" : "Skeleton Warlord")+" has been defeated! The town is safe!";
+                    GameSettings.broadcastTime = 300;
                     stop();
                 }
                 return true;
             }
         }
         return true;
+    }
+
+    @Override
+    public void handleEventDrop(Player player, Item drop, Position pos) {
+
     }
 
     private void spawnBosses(){

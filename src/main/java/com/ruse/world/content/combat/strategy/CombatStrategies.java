@@ -118,6 +118,8 @@ public class CombatStrategies {
 		STRATEGIES.put(8013, new Eternal());
 		STRATEGIES.put(9006, new Eternal());
 		STRATEGIES.put(9906, new Eternal());
+		STRATEGIES.put(14378, new Eternal());
+		STRATEGIES.put(7553, new Eternal());
 
 
 		// Masters
