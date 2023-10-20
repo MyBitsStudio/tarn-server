@@ -213,15 +213,15 @@ public class VIP {
         PACK_3(150, new int[]{23252}, new int[]{1}),
         PACK_4(200, new int[]{20502}, new int[]{2}),
         PACK_5(250, new int[]{23255}, new int[]{2}),
-        PACK_6(300, new int[]{23107}, new int[]{5}),
-        PACK_7(350, new int[]{23148}, new int[]{5}),
-        PACK_8(400, new int[]{23147}, new int[]{3}),
+        PACK_6(300, new int[]{23107}, new int[]{20}),
+        PACK_7(350, new int[]{23147}, new int[]{10}),
+        PACK_8(400, new int[]{604}, new int[]{25}),
         PACK_9(500, new int[]{3686}, new int[]{1}),
-        PACK_10(600, new int[]{23256}, new int[]{5}),
-        PACK_11(700, new int[]{23257}, new int[]{3}),
-        PACK_12(800, new int[]{23258}, new int[]{2}),
-        PACK_13(900, new int[]{23059}, new int[]{1}),
-        PACK_14(1000, new int[]{23259}, new int[]{3})
+        PACK_10(600, new int[]{23256}, new int[]{8}),
+        PACK_11(700, new int[]{23257}, new int[]{6}),
+        PACK_12(800, new int[]{23258}, new int[]{4}),
+        PACK_13(900, new int[]{23059}, new int[]{2}),
+        PACK_14(1000, new int[]{23002}, new int[]{1})
         ;
         final int amount;
         final int[] items, amounts;
