@@ -245,6 +245,21 @@ public class Player extends Character {
     @Setter
     private PlayerTask playerTask;
 
+    public void doTaskProgress() {
+        if(playerTask == null) {
+            return;
+        }
+        if(playerTask.getProgress() == playerTask.getCompletionAmount()) {
+            return;
+        }
+        if(equipment.containsAll(playerTask.getRestrictedWears())) {
+            playerTask.incrementProgress(1);
+            if(playerTask.getProgress() >= playerTask.getCompletionAmount()) {
+                playerTask.setProgress(playerTask.getCompletionAmount());
+            }
+        }
+    }
+
     public boolean canMysteryBox;
     public boolean switchedPrayerBooks;
 

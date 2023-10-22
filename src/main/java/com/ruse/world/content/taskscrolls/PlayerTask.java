@@ -1,5 +1,7 @@
 package com.ruse.world.content.taskscrolls;
 
+import java.util.Arrays;
+
 public class PlayerTask {
     private final int[] restrictedWears;
     private final int taskKeyType;
@@ -36,5 +38,24 @@ public class PlayerTask {
 
     public int getNpcTaskId() {
         return npcTaskId;
+    }
+
+    public void incrementProgress(int amount) {
+        progress += amount;
+    }
+
+    public boolean isComplete() {
+        return progress == completionAmount;
+    }
+
+    @Override
+    public String toString() {
+        return "PlayerTask{" +
+                "restrictedWears=" + Arrays.toString(restrictedWears) +
+                ", taskKeyType=" + taskKeyType +
+                ", npcTaskId=" + npcTaskId +
+                ", completionAmount=" + completionAmount +
+                ", progress=" + progress +
+                '}';
     }
 }

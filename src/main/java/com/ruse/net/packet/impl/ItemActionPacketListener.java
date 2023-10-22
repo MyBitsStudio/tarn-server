@@ -12,6 +12,7 @@ import com.ruse.world.World;
 import com.ruse.world.content.*;
 import com.ruse.world.content.Sounds.Sound;
 import com.ruse.world.content.StarterTasks.StarterTaskData;
+import com.ruse.world.content.taskscrolls.TaskScrollHandler;
 import com.ruse.world.entity.impl.player.timers.impl.scroll.VoteXP;
 import com.ruse.world.entity.impl.player.timers.impl.scroll.*;
 import com.ruse.world.packages.dialogue.DialogueManager;
@@ -154,6 +155,8 @@ public class ItemActionPacketListener implements PacketListener {
         if(World.handler.handleItemClick(player, item))
             return;
 
+        if(TaskScrollHandler.handleItemClick(player, itemId))
+            return;
 
         if (player.aonBoxItem > 0) {
             player.sendMessage("Please choose to keep or gamble your item before doing this!");
