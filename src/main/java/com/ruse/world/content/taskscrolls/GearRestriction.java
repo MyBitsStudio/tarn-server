@@ -4,11 +4,11 @@ import com.ruse.util.Misc;
 
 import java.util.HashSet;
 import java.util.LinkedHashMap;
-import java.util.List;
 import java.util.Objects;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Stream;
 
-import static com.ruse.world.content.taskscrolls.TaskScrollConstants.RESTRICTED_AMOUNTS;
+import static com.ruse.world.content.taskscrolls.TaskScrollConstants.RESTRICTED_AMOUNT;
 
 public record GearRestriction(LinkedHashMap<Integer, HashSet<Integer>> gearRestrictionsMap) {
     public static class Builder {
@@ -28,17 +28,14 @@ public record GearRestriction(LinkedHashMap<Integer, HashSet<Integer>> gearRestr
     }
 
     public int[] getRandomRestrictions() {
-        LinkedHashMap<Integer, HashSet<Integer>> map = gearRestrictionsMap;
-        int size = map.size();
-        List<HashSet<Integer>> sets = Stream.generate(() -> map.get(Misc.random(size)))
+        int[] restrictedWearIds = new int[RESTRICTED_AMOUNT];
+        AtomicInteger counter = new AtomicInteger();
+        Stream.generate(() -> gearRestrictionsMap.get(Misc.random(gearRestrictionsMap.size())))
                 .filter(Objects::nonNull)
                 .distinct()
-                .limit(RESTRICTED_AMOUNTS)
-                .toList();
-        int[] restrictedWearIds = new int[RESTRICTED_AMOUNTS];
-        for(int i = 0; i < RESTRICTED_AMOUNTS; i++) {
-            restrictedWearIds[i] = Misc.random(sets.get(i));
-        }
+                .limit(RESTRICTED_AMOUNT)
+                .toList()
+                .forEach(integers -> restrictedWearIds[counter.getAndIncrement()] = Misc.random(integers));
         return restrictedWearIds;
     }
 }
