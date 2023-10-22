@@ -13,9 +13,12 @@ public class TaskScrollHandler {
             return;
         }
         TaskType taskType = getTaskTypeByBottle(itemId);
-        PlayerTask playerTask = TaskScrollFactory.newInstance(taskType);
+        int[] gearRestrictions = taskType.getRandomRestrictions(RESTRICTED_AMOUNTS);
+        int npcToKill = taskType.getRandomNpc();
+        int requiredAmount = taskType.getRandomNpcKillRequiredAmount();
+        int key = taskType.getKey();
         player.getInventory().delete(itemId, 1).add(new Item(taskType.getTaskScrollItemId(), 1));
-        player.setPlayerTask(playerTask);
+        player.setPlayerTask(new PlayerTask(gearRestrictions, key, npcToKill, requiredAmount));
     }
 
     public static void openTaskScroll(Player player) {
