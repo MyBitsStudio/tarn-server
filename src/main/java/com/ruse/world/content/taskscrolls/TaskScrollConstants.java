@@ -6,8 +6,6 @@ public class TaskScrollConstants {
 
     }
 
-    public static final int RESTRICTED_AMOUNT = 2;
-
     public static final int EASY_TASK_BOTTLE_ID = 1;
     public static final int MEDIUM_TASK_BOTTLE_ID = 2;
     public static final int HARD_TASK_BOTTLE_ID = 3;

@@ -12,13 +12,15 @@ import static com.ruse.world.content.taskscrolls.TaskScrollConstants.*;
 public enum TaskType {
     EASY(Range.between(10,25),
             new GearRestriction.Builder()
-                    .addRestriction(Equipment.WEAPON_SLOT, 4151)
-                    .addRestriction(Equipment.AMULET_SLOT, 6585)
-                    .addRestriction(Equipment.CAPE_SLOT, 6461)
+                    .addRestriction(Equipment.WEAPON_SLOT, 9942)
+                    .addRestriction(Equipment.AMULET_SLOT, 19991)
+                    .addRestriction(Equipment.CAPE_SLOT, 20400, 9939)
+                    .addRestriction(Equipment.BODY_SLOT, 19985, 4685)
+                    .addRestriction(Equipment.HEAD_SLOT, 19984)
                     .build(), 0, new Item[] {
             new Item(4151,1),
             new Item(4151,1)
-    }, EASY_TASK_SCROLL_ID, 1,2,3,4,5),
+    }, EASY_TASK_SCROLL_ID, 2, 9837),
 
     MEDIUM(Range.between(15,30),
             new GearRestriction.Builder()
@@ -27,7 +29,7 @@ public enum TaskType {
                     .build(), 1, new Item[] {
             new Item(4151,1),
             new Item(4151,1)
-    }, MEDIUM_TASK_SCROLL_ID, 1,2,3,4,5),
+    }, MEDIUM_TASK_SCROLL_ID, 2, 1,2,3,4,5),
 
     HARD(Range.between(20,35),
             new GearRestriction.Builder()
@@ -36,7 +38,7 @@ public enum TaskType {
                     .build(), 2, new Item[] {
             new Item(4151,1),
             new Item(4151,1)
-    }, HARD_TASK_SCROLL_ID, 1,2,3,4,5),
+    }, HARD_TASK_SCROLL_ID, 3, 1,2,3,4,5),
 
     ELITE(Range.between(25,40),
             new GearRestriction.Builder()
@@ -45,7 +47,7 @@ public enum TaskType {
                     .build(), 3, new Item[] {
             new Item(4151,1),
             new Item(4151,1)
-    }, ELITE_TASK_SCROLL_ID, 1,2,3,4,5);
+    }, ELITE_TASK_SCROLL_ID, 4, 1,2,3,4,5);
 
     private final Range<Integer> range;
     private final int[] npcs;
@@ -53,16 +55,18 @@ public enum TaskType {
     private final int key;
     private final Item[] rewards;
     private final int taskScrollItemId;
+    private final int restrictedAmount;
 
     private static final SecureRandom secureRandom = new SecureRandom();
     private static final ImmutableList<TaskType> VALUES = ImmutableList.copyOf(values());
 
-    TaskType(Range<Integer> range, GearRestriction gearRestrictions, int key, Item[] rewards, int taskScrollItemId, int... npcs) {
+    TaskType(Range<Integer> range, GearRestriction gearRestrictions, int key, Item[] rewards, int taskScrollItemId, int restrictedAmount, int... npcs) {
         this.range = range;
         this.gearRestrictions = gearRestrictions;
         this.key = key;
         this.rewards = rewards;
         this.taskScrollItemId = taskScrollItemId;
+        this.restrictedAmount = restrictedAmount;
         this.npcs = npcs;
     }
 
@@ -100,5 +104,9 @@ public enum TaskType {
 
     public static TaskType getTypeByKey(int key) {
         return VALUES.stream().filter(it -> it.key == key).findFirst().orElse(null);
+    }
+
+    public int getRestrictedAmount() {
+        return restrictedAmount;
     }
 }

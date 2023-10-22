@@ -1,6 +1,8 @@
 package com.ruse.world.content.taskscrolls;
 
 import com.ruse.model.Item;
+import com.ruse.model.definitions.ItemDefinition;
+import com.ruse.model.definitions.NpcDefinition;
 import com.ruse.world.entity.impl.player.Player;
 
 import static com.ruse.world.content.taskscrolls.TaskScrollConstants.*;
@@ -12,7 +14,7 @@ public class TaskScrollHandler {
         if(taskType == null) {
             return false;
         }
-        int[] gearRestrictions = taskType.getGearRestrictions().getRandomRestrictions();
+        int[] gearRestrictions = taskType.getGearRestrictions().getRandomRestrictions(taskType.getRestrictedAmount());
         int npcToKill = taskType.getRandomNpc();
         int requiredAmount = taskType.getRandomNpcKillRequiredAmount();
         int key = taskType.getKey();
@@ -34,10 +36,10 @@ public class TaskScrollHandler {
     }
 
     public static boolean handleButtonClick(Player player, int btnId) {
-        if(btnId == 1) {
+        if(btnId == 167656) {
             claimRewards(player);
             return true;
-        } else if(btnId == 2) {
+        } else if(btnId == 167657) {
             showProgressOverlayInterface(player);
             return true;
         }
@@ -65,8 +67,37 @@ public class TaskScrollHandler {
     }
 
     private static void showTaskScrollInterface(Player player) {
-        int key = player.getPlayerTask().getTaskKeyType();
+        PlayerTask playerTask = player.getPlayerTask();
+        int key = playerTask.getTaskKeyType();
         TaskType taskType = TaskType.getTypeByKey(key);
+        StringBuilder stringBuilder = new StringBuilder();
+
+        stringBuilder.append("Your task is to kill @yel@")
+                .append(playerTask.getCompletionAmount())
+                .append("@lre@ of ")
+                .append(NpcDefinition.forId(playerTask.getNpcTaskId()).getName())
+                .append(" while wearing ");
+
+        int[] restrictedWears = playerTask.getRestrictedWears();
+        for(int i = 0; i < restrictedWears.length; i++) {
+            stringBuilder.append("@red@").append(ItemDefinition.forId(restrictedWears[i]).getName());
+            if(i != restrictedWears.length-1) {
+                stringBuilder.append("@lre@ and ");
+            }
+        }
+
+        stringBuilder.append("@lre@.");
+        Item[] rewards = taskType.getRewards();
+        int compAmount = playerTask.getCompletionAmount();
+        int currentAmount = playerTask.getProgress();
+        float percentage = (((float) compAmount / currentAmount) * 100);
+        player.getPacketSender().updateProgressBar(151119, (int) (100 - percentage));
+        player.getPacketSender().sendString(167664, stringBuilder.toString())
+                .sendItemContainer(rewards, 167663)
+                .setScrollBar(167662, Math.max(209,(rewards.length / 3) * 40))
+                .updateProgressBar(167658, (int) (100 - percentage))
+                .sendString(167661, currentAmount + "/" + compAmount)
+                .sendInterface(167650);
     }
 
     private static void showProgressOverlayInterface(Player player) {

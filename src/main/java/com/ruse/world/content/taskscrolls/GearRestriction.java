@@ -8,9 +8,7 @@ import java.util.Objects;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Stream;
 
-import static com.ruse.world.content.taskscrolls.TaskScrollConstants.RESTRICTED_AMOUNT;
-
-public record GearRestriction(LinkedHashMap<Integer, HashSet<Integer>> gearRestrictionsMap) {
+public record GearRestriction(LinkedHashMap<Integer, HashSet<Integer>> restrictions) {
     public static class Builder {
         private final LinkedHashMap<Integer, HashSet<Integer>> map = new LinkedHashMap<>();
 
@@ -27,13 +25,13 @@ public record GearRestriction(LinkedHashMap<Integer, HashSet<Integer>> gearRestr
         }
     }
 
-    public int[] getRandomRestrictions() {
-        int[] restrictedWearIds = new int[RESTRICTED_AMOUNT];
+    public int[] getRandomRestrictions(int amount) {
+        int[] restrictedWearIds = new int[amount];
         AtomicInteger counter = new AtomicInteger();
-        Stream.generate(() -> gearRestrictionsMap.get(Misc.random(gearRestrictionsMap.size())))
+        Stream.generate(() -> restrictions.get(Misc.random(restrictions.size())))
                 .filter(Objects::nonNull)
                 .distinct()
-                .limit(RESTRICTED_AMOUNT)
+                .limit(amount)
                 .toList()
                 .forEach(integers -> restrictedWearIds[counter.getAndIncrement()] = Misc.random(integers));
         return restrictedWearIds;
