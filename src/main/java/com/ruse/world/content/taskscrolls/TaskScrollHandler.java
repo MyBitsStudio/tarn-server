@@ -8,7 +8,7 @@ import static com.ruse.world.content.taskscrolls.TaskScrollConstants.*;
 public class TaskScrollHandler {
 
     public static void openTaskBottle(Player player, int itemId) {
-        if(player.getPlayerTask() == null) {
+        if(player.getPlayerTask() != null) {
             player.getPacketSender().sendMessage("@red@You already have a task.");
             return;
         }
