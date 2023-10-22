@@ -10,7 +10,7 @@ import org.javacord.api.listener.server.ServerBecomesAvailableListener;
 public class NormalBot extends MessageBot {
     @Override
     public String token() {
-        return "MTExNjc1MzgzODE5NjY2MjM1Mg.GRs7Vx.51mftjoy9oDNGuWx6KsI1WaaLIw28Im_GORh6E";
+        return "MTExNzIyMjQxMTAyMTA1ODE5Mw.GnWFlR.3q2TniBd3fenz5kWbJLZkCjrTJ8Z7EclDxEwjU";
     }
 
     @Override

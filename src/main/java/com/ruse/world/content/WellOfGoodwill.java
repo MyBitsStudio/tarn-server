@@ -5,6 +5,7 @@ import com.ruse.util.Misc;
 import com.ruse.world.World;
 import com.ruse.world.entity.impl.player.Player;
 import com.ruse.world.packages.dialogue.DialogueManager;
+import com.ruse.world.packages.panels.PlayerPanel;
 
 import java.io.*;
 import java.util.concurrent.CopyOnWriteArrayList;

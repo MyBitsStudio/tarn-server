@@ -7,7 +7,7 @@
 //import com.ruse.world.World;
 //import com.ruse.world.content.KillsTracker;
 //import com.ruse.world.content.NpcRequirements;
-//import com.ruse.world.content.PlayerPanel;
+//import com.ruse.world.packages.panels.PlayerPanel;
 //import com.ruse.world.content.achievement.Achievements;
 //import com.ruse.world.content.dailytasks_new.DailyTask;
 //import com.ruse.world.content.skill.impl.summoning.BossPets;

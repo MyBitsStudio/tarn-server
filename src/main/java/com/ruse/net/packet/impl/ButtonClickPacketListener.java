@@ -47,6 +47,9 @@ import com.ruse.world.content.minigames.impl.dungeoneering.DungeoneeringParty;
 import com.ruse.world.content.polling.PollCreation;
 import com.ruse.world.content.polling.PollManager;
 import com.ruse.world.content.rewardsList.RewardsHandler;
+import com.ruse.world.packages.panels.EventPanel;
+import com.ruse.world.packages.panels.MagePanel;
+import com.ruse.world.packages.panels.PlayerPanel;
 import com.ruse.world.packages.serverperks.ServerPerkContributionInput;
 import com.ruse.world.packages.serverperks.ServerPerks;
 import com.ruse.world.content.skill.ChatboxInterfaceSkillAction;
@@ -126,6 +129,12 @@ public class ButtonClickPacketListener implements PacketListener {
         if(ShopHandler.handleButton(player, id)) {
             return;
         }
+        if(EventPanel.handleButtons(player, id)) {
+            return;
+        }
+        if(MagePanel.handleButtons(player, id)) {
+            return;
+        }
         if (!player.getControllerManager().processButtonClick(id)) {
             return;
         }
@@ -146,6 +155,10 @@ public class ButtonClickPacketListener implements PacketListener {
         player.getGambling().handleChoice(id);
 
         if(player.getStarterShop().handleButton(id)) {
+            return;
+        }
+
+        if(PlayerPanel.handleButton(player, id)) {
             return;
         }
 
@@ -235,7 +248,7 @@ public class ButtonClickPacketListener implements PacketListener {
             case 70021:
                 player.getPSecurity().start2FA();
                 break;
-            case 1716, 11008:
+            case 1716:
                 player.getTeleInterface().open();
                 break;
             case 26070:
@@ -472,29 +485,8 @@ public class ButtonClickPacketListener implements PacketListener {
                 return;
 
             case 12162:
-                TeleportHandler.teleportPlayer(player, new Position(2207, 3745, 0),
+                TeleportHandler.teleportPlayer(player, new Position(2212, 3749, 0),
                         player.getSpellbook().getTeleportType());
-                break;
-            /*case 111603:
-                BestItemsInterface.openInterface(player, 0);
-                break;*/
-            case 74001:
-            case 76001:
-                player.getPacketSender().sendTabInterface(GameSettings.ACHIEVEMENT_TAB, 73000);
-                player.getPacketSender().sendConfig(6000, 0);
-                break;
-            case 74002:
-            case 76002:
-                player.sendMessage("Coming Soon!");
-                break;
-            case 74003:
-            case 76003:
-                player.getPacketSender().sendTabInterface(GameSettings.ACHIEVEMENT_TAB, 75000);
-                player.sendMessage("Coming Soon!");
-                break;
-            case 74004:
-            case 76004:
-                player.sendMessage("Coming Soon!");
                 break;
             case 111101:
                 player.getPacketSender().sendTabInterface(GameSettings.QUESTS_TAB, 111000);
@@ -505,44 +497,12 @@ public class ButtonClickPacketListener implements PacketListener {
                 player.getPacketSender().sendConfig(6000, 1);
                 break;
             case 111103:
-                player.getPacketSender().sendTabInterface(GameSettings.QUESTS_TAB, 131000);
+                player.getPacketSender().sendTabInterface(GameSettings.QUESTS_TAB, 111500);
                 player.getPacketSender().sendConfig(6000, 2);
                 break;
             case 111104:
-                player.getPacketSender().sendTabInterface(GameSettings.QUESTS_TAB, 111500);
+                player.getPacketSender().sendTabInterface(GameSettings.QUESTS_TAB, 111700);
                 player.getPacketSender().sendConfig(6000, 3);
-                break;
-            case 111601:
-                TrackInterface.sendInterface(player, true);
-                break;
-            case 111602:
-                player.getSeasonPass().showInterface();
-                break;
-            case 111603:
-                AchievementHandler.sendInterface(player);
-                break;
-            case 111604:
-                DropsInterface.open(player);
-                break;
-            case 111605:
-                player.getCollectionLog().open();
-                break;
-            case 111606:
-                PossibleLootInterface.openInterface(player, PossibleLootInterface.LootData.values()[0]);
-                break;
-            case 111607:
-                BestItemsInterface.openInterface(player, 0);
-                break;
-            case 111608:
-                KillTrackerInterface.open(player);
-                break;
-            case 111609:
-                player.setInputHandling(new ChangePassword());
-                player.getPacketSender().sendEnterInputPrompt("Enter a new password:");
-                break;
-            case 111610:
-                player.setInputHandling(new SetPinPacketListener());
-                player.getPacketSender().sendEnterInputPrompt("Enter the pin that you want to set$pin");
                 break;
             case 31508:
                 player.getEventBossManager().updateNpcIdentification();
@@ -1187,20 +1147,6 @@ public class ButtonClickPacketListener implements PacketListener {
                 PlayersOnlineInterface.showInterface(player);
                 // player.getPacketSender().sendMessage("<shad=1>@or1@There are currently @whi@[ @gre@" + (17 + World.getPlayers().size()) + "@whi@ ] @or1@players online!");
                 break;*/
-            case 11001:
-                TeleportHandler.teleportPlayer(player, GameSettings.DEFAULT_POSITION.copy(),
-                        player.getSpellbook().getTeleportType());
-                player.getPacketSender().sendInterfaceRemoval();
-                break;
-            case 11004:
-                player.getPacketSender().sendInterfaceRemoval();
-                InstanceManager.getManager().sendInterface(player);
-                break;
-            case 11011:
-                TeleportHandler.teleportPlayer(player, new Position(2856, 2708, 0),
-                        player.getSpellbook().getTeleportType());
-                player.getPacketSender().sendInterfaceRemoval();
-                break;
             case 28211:
                 TeleportHandler.teleportPlayer(player, GameSettings.DEFAULT_POSITION.copy(),
                         player.getSpellbook().getTeleportType());

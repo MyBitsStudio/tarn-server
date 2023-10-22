@@ -9,7 +9,7 @@ import com.ruse.util.Misc;
 import com.ruse.util.Stopwatch;
 import com.ruse.world.World;
 import com.ruse.world.content.CustomObjects;
-import com.ruse.world.content.PlayerPanel;
+import com.ruse.world.packages.panels.PlayerPanel;
 import com.ruse.world.entity.impl.player.Player;
 
 public class ShootingStar {

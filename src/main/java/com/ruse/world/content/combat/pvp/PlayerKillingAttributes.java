@@ -1,11 +1,10 @@
 package com.ruse.world.content.combat.pvp;
 
-import com.ruse.model.Locations.Location;
 import com.ruse.util.Misc;
 import com.ruse.world.content.Artifacts;
 import com.ruse.world.content.LoyaltyProgramme;
 import com.ruse.world.content.LoyaltyProgramme.LoyaltyTitles;
-import com.ruse.world.content.PlayerPanel;
+import com.ruse.world.packages.panels.PlayerPanel;
 import com.ruse.world.entity.impl.player.Player;
 
 import java.util.ArrayList;

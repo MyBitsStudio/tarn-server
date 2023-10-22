@@ -94,7 +94,7 @@ public class Summoning {
 			}
 			processFamiliar();
 
-			player.getPacketSender().sendString(54028, "" + familiar.name().replaceAll("_", " "));
+			player.getPacketSender().sendString(54028, familiar.name().replaceAll("_", " "));
 			player.getPacketSender().sendString(54045, " " + player.getSkillManager().getCurrentLevel(Skill.SUMMONING)
 					+ "/" + player.getSkillManager().getMaxLevel(Skill.SUMMONING));
 			player.getPacketSender().sendNpcHeadOnInterface(player.getSummoning().getFamiliar().getSummonNpc().getId(),

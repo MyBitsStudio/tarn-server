@@ -2,7 +2,7 @@ package com.ruse.world.packages.dialogue.impl;
 
 import com.ruse.model.definitions.ItemDefinition;
 import com.ruse.world.content.PlayerLogs;
-import com.ruse.world.content.PlayerPanel;
+import com.ruse.world.packages.panels.PlayerPanel;
 import com.ruse.world.entity.impl.player.Player;
 import com.ruse.world.packages.dialogue.Dialogue;
 import com.ruse.world.packages.dialogue.DialogueExpression;

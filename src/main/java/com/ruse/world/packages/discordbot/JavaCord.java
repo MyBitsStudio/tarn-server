@@ -24,7 +24,6 @@ public class JavaCord {
     public static void init() {
         new DiscordApiBuilder().setToken(token).login().thenAccept(api -> {
                     JavaCord.api = api;
-                    //System.out.println("You can invite the bot by using the following url: " + api.createBotInvite());
                     if (GameSettings.LOCALHOST)
                         return;
                     api.addMessageCreateListener(event -> {

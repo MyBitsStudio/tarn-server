@@ -669,7 +669,7 @@ public class PacketSender {
         sendTabInterface(GameSettings.ACHIEVEMENT_TAB, 73000);//46343
         sendTabInterface(GameSettings.INVENTORY_TAB, 3213);
         sendTabInterface(GameSettings.EQUIPMENT_TAB, 162600);
-        sendTabInterface(GameSettings.MAGIC_TAB, player.getSpellbook().getInterfaceId());
+        sendTabInterface(GameSettings.MAGIC_TAB, 121000);
         sendTabInterface(GameSettings.PRAYER_TAB, player.getPrayerbook().getInterfaceId());
         // Row 2
         sendTabInterface(GameSettings.FRIEND_TAB, 5065);

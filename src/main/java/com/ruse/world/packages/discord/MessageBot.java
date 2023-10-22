@@ -36,6 +36,7 @@ public abstract class MessageBot {
         if(reactionListener() != null)
             builder.addReactionAddListener(reactionListener());
         api = builder.login().join();
+        //System.out.println("You can invite "+name()+" by using the following url: " + api.createBotInvite());
     }
 
     public void sendMessage(long channel, MessageCreate msg){
