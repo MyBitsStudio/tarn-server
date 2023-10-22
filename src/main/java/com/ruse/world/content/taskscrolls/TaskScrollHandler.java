@@ -38,4 +38,11 @@ public class TaskScrollHandler {
             default -> null;
         };
     }
+
+    /*public static void main(String[] args) {
+        int[] gearRestrictions = TaskType.EASY.getGearRestrictions().getRandomRestrictions();
+        for(int ints : gearRestrictions) {
+            System.out.println(ints);
+        }
+    }*/
 }

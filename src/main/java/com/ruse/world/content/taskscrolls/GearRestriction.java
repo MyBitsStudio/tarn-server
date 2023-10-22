@@ -30,14 +30,7 @@ public record GearRestriction(LinkedHashMap<Integer, HashSet<Integer>> gearRestr
     public int[] getRandomRestrictions() {
         LinkedHashMap<Integer, HashSet<Integer>> map = gearRestrictionsMap;
         int size = map.size();
-        List<HashSet<Integer>> sets = Stream.generate(() -> {
-                    int randomIndex = Misc.random(size);
-                    Integer key = map.keySet().stream().skip(randomIndex).findFirst().orElse(null);
-                    if (key != null) {
-                        return map.get(key);
-                    }
-                    return null;
-                })
+        List<HashSet<Integer>> sets = Stream.generate(() -> map.get(Misc.random(size)))
                 .filter(Objects::nonNull)
                 .distinct()
                 .limit(RESTRICTED_AMOUNTS)
