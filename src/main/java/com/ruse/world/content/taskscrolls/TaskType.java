@@ -3,15 +3,10 @@ package com.ruse.world.content.taskscrolls;
 import com.google.common.collect.ImmutableList;
 import com.ruse.model.Item;
 import com.ruse.model.container.impl.Equipment;
-import com.ruse.util.Misc;
 import org.apache.commons.lang3.Range;
 
 import java.security.SecureRandom;
-import java.util.HashSet;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Objects;
-import java.util.stream.Stream;
+
 import static com.ruse.world.content.taskscrolls.TaskScrollConstants.*;
 
 public enum TaskType {
@@ -93,31 +88,6 @@ public enum TaskType {
 
     public int getTaskScrollItemId() {
         return taskScrollItemId;
-    }
-
-    public int[] getRandomRestrictions(int amount) {
-        LinkedHashMap<Integer, HashSet<Integer>> map = gearRestrictions.gearRestrictionsMap();
-        int size = map.size();
-        if(amount >= size) {
-            amount = size;
-        }
-        List<HashSet<Integer>> sets = Stream.generate(() -> {
-                    int randomIndex = secureRandom.nextInt(size);
-                    Integer key = map.keySet().stream().skip(randomIndex).findFirst().orElse(null);
-                    if (key != null) {
-                        return map.get(key);
-                    }
-                    return null;
-                })
-                .filter(Objects::nonNull)
-                .distinct()
-                .limit(amount)
-                .toList();
-        int[] restrictedWearIds = new int[amount];
-        for(int i = 0; i < amount; i++) {
-            restrictedWearIds[i] = Misc.random(sets.get(i));
-        }
-        return restrictedWearIds;
     }
 
     public int getRandomNpc() {

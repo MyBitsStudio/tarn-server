@@ -13,7 +13,7 @@ public class TaskScrollHandler {
             return;
         }
         TaskType taskType = getTaskTypeByBottle(itemId);
-        int[] gearRestrictions = taskType.getRandomRestrictions(RESTRICTED_AMOUNTS);
+        int[] gearRestrictions = taskType.getGearRestrictions().getRandomRestrictions();
         int npcToKill = taskType.getRandomNpc();
         int requiredAmount = taskType.getRandomNpcKillRequiredAmount();
         int key = taskType.getKey();
