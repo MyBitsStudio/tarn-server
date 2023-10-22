@@ -12,9 +12,11 @@ public class NpcMaxHitLimit {
         long maxLimit;
         switch (npc.getId()) {
             case 587, 8013, 9904, 8010, 3308, 9005 -> maxLimit = 55000;
-            case 9906, 7553, 14378 -> maxLimit = 1250000000L;
-            case 6100, 6104 -> maxLimit = 2100000000L;
-            case 6105, 5665 -> maxLimit = 1000000000L;
+            case 9906 -> maxLimit = 750000000L;
+            case 7553, 14378 -> maxLimit = 1_250_000_000L;
+            case 6100, 6104 -> maxLimit = 2_100_000_000L;
+            case 6105, 5665 -> maxLimit = 1_000_000_00L;
+            case 3010 -> maxLimit = 50_000_000_000L;
             default -> {
                 return damage;
             }

@@ -33,7 +33,7 @@ public class EventPanel {
                 return true;
             }
 
-            case 78001 -> {
+            case 121060 -> {
                 TeleportHandler.teleportPlayer(player, new Position(2212, 3749, 0),
                         player.getSpellbook().getTeleportType());
                 return true;

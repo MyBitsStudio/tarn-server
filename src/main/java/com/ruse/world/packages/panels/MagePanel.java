@@ -14,23 +14,27 @@ public class MagePanel {
 
     public static boolean handleButtons(Player player, int button) {
         switch(button){
-            case 121001 -> {
+            case 123001 -> {
                 TeleportHandler.teleportPlayer(player, GameSettings.DEFAULT_POSITION.copy(),
                         player.getSpellbook().getTeleportType());
                 player.getPacketSender().sendInterfaceRemoval();
+                return true;
             }
-            case 121002 -> {
+            case 123002 -> {
                 player.getPacketSender().sendInterfaceRemoval();
                 InstanceManager.getManager().sendInterface(player);
+                return true;
             }
-            case 121003 -> {
+            case 123003 -> {
                 player.getPacketSender().sendInterfaceRemoval();
                 player.getTeleInterface().open();
+                return true;
             }
-            case 121004 -> {
+            case 123004 -> {
                 TeleportHandler.teleportPlayer(player, new Position(2856, 2708, 0),
                         player.getSpellbook().getTeleportType());
                 player.getPacketSender().sendInterfaceRemoval();
+                return true;
             }
         }
         return false;

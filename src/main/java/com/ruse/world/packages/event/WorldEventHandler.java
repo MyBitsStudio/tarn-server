@@ -45,7 +45,7 @@ public class WorldEventHandler {
         ++ticks;
         if(ticks % 50 == 0) {
 
-            int random = Misc.random(1000);
+            int random = Misc.random(2000);
 
             if (random == 633) {
                 WorldTimers.register(new DoubleDropTimer(Timer.HOURS * 2));

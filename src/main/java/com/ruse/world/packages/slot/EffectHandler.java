@@ -54,6 +54,10 @@ public class EffectHandler {
             p.poisonVictim(victim, CombatType.RANGED);
         }
 
+        if(p.getEquipment().hasDementedArrow()){
+            dementedAttack(p, victim);
+        }
+
         if(p.getEquipment().hasRageAll()){
             handleRageAll(p);
         }
@@ -85,6 +89,48 @@ public class EffectHandler {
             handlePets(p, victim.toNpc());
         }
 
+    }
+
+    private static void dementedAttack(Character attacker, Character victim){
+        ObjectArrayList<NPC> npcs = World.getNearbyNPCs(attacker.getPosition(), 3);
+        if (!Locations.Location.inMulti(victim)) {
+            return;
+        }
+
+        for (NPC next : ((Player) attacker).getLocalNpcs()) {
+            if (next == null) {
+                continue;
+            }
+
+            if (next.isNpc()) {
+                if (!next.getDefinition().isAttackable() || next.isSummoningNpc()) {
+                    continue;
+                }
+            } else {
+                continue;
+            }
+
+            if (next.getPosition().isWithinDistance(victim.getPosition(), 3) && !next.equals(attacker)
+                    && !next.equals(victim) && next.getConstitution() > 0) {
+                if (next.isNpc() && next.getConstitution() <= 0 && next.isDying()) {
+                    continue;
+                }
+                if (!RegionClipping.canProjectileAttack(attacker, next)) {
+                    continue;
+                }
+
+                if(!Locations.Location.inMulti(attacker)) return;
+
+                long maxhit = RangeMax.newRange(attacker, victim) / 20;
+
+                next.dealDamage(new Hit(maxhit, Hitmask.CRITICAL, CombatIcon.RANGED));
+                next.performGraphic(new Graphic(984));
+                next.setAggressive(true);
+                next.getCombatBuilder().setLastAttacker(attacker);
+                next.getCombatBuilder().addDamage(attacker, maxhit);
+                next.getCombatBuilder().attack(attacker);
+            }
+        }
     }
 
     private static void handleRageAll(@NotNull Player player){
