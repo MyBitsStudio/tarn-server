@@ -31,6 +31,7 @@ import com.ruse.world.content.KillsTracker.KillsEntry;
 import com.ruse.world.content.LoyaltyProgramme.LoyaltyTitles;
 import com.ruse.world.content.StarterTasks.StarterTaskAttributes;
 import com.ruse.world.content.planetsystem.PlanetManager;
+import com.ruse.world.content.taskscrolls.PlayerTask;
 import com.ruse.world.packages.johnachievementsystem.AchievementProgress;
 import com.ruse.world.packages.johnachievementsystem.Perk;
 import com.ruse.world.packages.johnachievementsystem.PerkType;
@@ -239,6 +240,10 @@ public class Player extends Character {
 
     @Getter
     private final TradingPost tradingPost = new TradingPost(this);
+
+    @Getter
+    @Setter
+    private PlayerTask playerTask;
 
     public boolean canMysteryBox;
     public boolean switchedPrayerBooks;
