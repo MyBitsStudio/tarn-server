@@ -27,6 +27,7 @@ import com.ruse.world.packages.clans.ClanManager;
 import com.ruse.world.packages.instances.InstanceManager;
 import com.ruse.world.packages.mode.GameModeConstants;
 import com.ruse.world.packages.mode.impl.UltimateIronman;
+import com.ruse.world.packages.panels.PlayerPanel;
 import com.ruse.world.packages.ranks.StaffRank;
 import com.ruse.world.packages.seasonpass.SeasonPassConfig;
 import com.ruse.world.packages.seasonpass.SeasonPassManager;

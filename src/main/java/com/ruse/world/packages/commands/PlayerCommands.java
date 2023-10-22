@@ -124,7 +124,7 @@ public class PlayerCommands {
                 return true;
             }
             case "slayer" -> {
-                TeleportHandler.teleportPlayer(player, new Position(2207, 3745, 0),
+                TeleportHandler.teleportPlayer(player, new Position(2212, 3749, 0),
                         player.getSpellbook().getTeleportType());
                 return true;
             }

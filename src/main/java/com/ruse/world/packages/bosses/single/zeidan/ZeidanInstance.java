@@ -40,7 +40,7 @@ public class ZeidanInstance extends SingleBossSinglePlayerInstance {
 
     @Override
     public boolean canEnter(@NotNull Player player){
-        return player.getRank().isStaff();
+        return player.getPSettings().getBooleanValue("instance-unlock");
     }
 
     @Override

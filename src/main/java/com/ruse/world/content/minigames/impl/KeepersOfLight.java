@@ -4,7 +4,7 @@ import com.ruse.GameSettings;
 import com.ruse.model.Locations;
 import com.ruse.model.Position;
 import com.ruse.world.World;
-import com.ruse.world.content.PlayerPanel;
+import com.ruse.world.packages.panels.PlayerPanel;
 import com.ruse.world.packages.packs.casket.Box;
 import com.ruse.world.entity.impl.npc.NPC;
 import com.ruse.world.entity.impl.player.Player;

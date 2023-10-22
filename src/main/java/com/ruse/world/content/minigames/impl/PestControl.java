@@ -9,7 +9,7 @@ import com.ruse.model.movement.MovementQueue;
 import com.ruse.model.movement.PathFinder;
 import com.ruse.util.Misc;
 import com.ruse.world.World;
-import com.ruse.world.content.PlayerPanel;
+import com.ruse.world.packages.panels.PlayerPanel;
 import com.ruse.world.entity.impl.npc.NPC;
 import com.ruse.world.entity.impl.player.Player;
 

@@ -12,6 +12,7 @@ import com.ruse.world.content.*;
 import com.ruse.world.content.Sounds.Sound;
 import com.ruse.world.packages.combat.prayer.CurseHandler;
 import com.ruse.world.packages.combat.prayer.PrayerHandler;
+import com.ruse.world.packages.panels.PlayerPanel;
 import com.ruse.world.packages.serverperks.ServerPerks;
 import com.ruse.world.content.skill.impl.summoning.BossPets;
 import com.ruse.world.content.skill.impl.summoning.Familiar;

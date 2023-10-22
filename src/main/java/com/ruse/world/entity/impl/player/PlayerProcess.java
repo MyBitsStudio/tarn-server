@@ -1,16 +1,5 @@
 package com.ruse.world.entity.impl.player;
 
-import com.ruse.GameSettings;
-import com.ruse.model.Locations;
-import com.ruse.model.Locations.Location;
-import com.ruse.model.Position;
-import com.ruse.model.Prayerbook;
-import com.ruse.model.RegionInstance.RegionInstanceType;
-import com.ruse.model.Skill;
-import com.ruse.world.content.PlayerPanel;
-import com.ruse.world.content.PlayerPunishment;
-import com.ruse.world.content.combat.pvp.BountyHunter;
-import com.ruse.world.content.skill.impl.construction.House;
 import com.ruse.world.entity.impl.GroundItemManager;
 
 public class PlayerProcess {

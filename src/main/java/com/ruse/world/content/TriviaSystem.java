@@ -2,6 +2,7 @@ package com.ruse.world.content;
 
 import com.ruse.world.World;
 import com.ruse.world.entity.impl.player.Player;
+import com.ruse.world.packages.panels.PlayerPanel;
 
 import java.util.Random;
 

@@ -53,11 +53,11 @@ public class WorldEventHandler {
                 WorldTimers.register(new DoubleDropTimer(Timer.HOURS * 3));
             }
 
-            if(random >= 100 && random <= 110){
+            if(random == 269){
                 GlobalBossManager.getInstance().spawnVeigar();
             }
 
-            if(random >= 121){
+            if(random == 121){
                 if(eventActive("halloween"))
                     GlobalBossManager.getInstance().spawnKhazard();
             }

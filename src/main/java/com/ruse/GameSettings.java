@@ -193,7 +193,7 @@ public class GameSettings {
 
     SUMMONING_TAB = 13, FRIEND_TAB = 8, IGNORE_TAB = 9, CLAN_CHAT_TAB = 10, LOGOUT = 14, OPTIONS_TAB = 11,
             EMOTES_TAB = 12, STAFF_TAB = 7;
-    public static int players = 0;
+    public static int players = 12;
     public static boolean DOUBLEDR = false;
     public static boolean Halloween = false;
     public static boolean Christmas2016 = false;

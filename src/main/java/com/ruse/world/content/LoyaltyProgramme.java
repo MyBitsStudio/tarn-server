@@ -4,6 +4,7 @@ import com.ruse.model.Flag;
 import com.ruse.model.Skill;
 import com.ruse.util.Misc;
 import com.ruse.world.entity.impl.player.Player;
+import com.ruse.world.packages.panels.PlayerPanel;
 
 public class LoyaltyProgramme {
 

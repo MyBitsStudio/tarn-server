@@ -21,7 +21,7 @@
 //import com.ruse.world.content.DonatorShop;
 //import com.ruse.world.content.PetShop;
 //import com.ruse.world.content.PlayerLogs;
-//import com.ruse.world.content.PlayerPanel;
+//import com.ruse.world.packages.panels.PlayerPanel;
 //import com.ruse.world.content.achievement.Achievements;
 //import com.ruse.world.content.minigames.impl.RecipeForDisaster;
 //import com.ruse.world.content.skill.impl.old_dungeoneering.UltimateIronmanHandler;

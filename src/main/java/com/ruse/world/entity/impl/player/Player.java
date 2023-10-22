@@ -40,6 +40,7 @@ import com.ruse.world.entity.impl.player.timers.PlayerTimers;
 import com.ruse.world.packages.afk.AFKSystem;
 import com.ruse.world.packages.loyalty.LoyaltyManager;
 import com.ruse.world.packages.misc.CurrPouch;
+import com.ruse.world.packages.panels.PlayerPanel;
 import com.ruse.world.packages.pets.CompanionHandler;
 import com.ruse.world.packages.plugin.impl.RaidPlugin;
 import com.ruse.world.packages.raid.Raid;
