@@ -347,6 +347,10 @@ public class Equipment extends ItemContainer {
 		return get(AMMUNITION_SLOT).getId() == 15222;
 	}
 
+	public boolean hasDementedArrow(){
+		return get(AMMUNITION_SLOT).getId() == 882;
+	}
+
 	public boolean hasDoubleShot(){
 		return slotBonuses[WEAPON_SLOT].getEffect() == SlotEffect.MULTI_SHOT
 				&& slotBonuses[WEAPON_SLOT].getBonus() == 2;
