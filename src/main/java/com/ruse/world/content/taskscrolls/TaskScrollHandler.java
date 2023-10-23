@@ -3,7 +3,10 @@ package com.ruse.world.content.taskscrolls;
 import com.ruse.model.Item;
 import com.ruse.model.definitions.ItemDefinition;
 import com.ruse.model.definitions.NpcDefinition;
+import com.ruse.util.Misc;
 import com.ruse.world.entity.impl.player.Player;
+
+import java.util.stream.Stream;
 
 import static com.ruse.world.content.taskscrolls.TaskScrollConstants.*;
 
@@ -56,14 +59,12 @@ public class TaskScrollHandler {
             TaskType taskType = TaskType.getTypeByKey(key);
             Item[] rewards = taskType.getRewards();
             player.getInventory().delete(taskType.getTaskScrollItemId(), 1);
-            for(Item reward : rewards) player.addItemUnderAnyCircumstances(reward);
-            showRewardsInterface(rewards);
+            Item[] randomItems = Stream.generate(() -> Misc.randomElement(rewards)).limit(3).toArray(Item[]::new);
+            for(Item reward : randomItems) player.addItemUnderAnyCircumstances(reward);
             player.setPlayerTask(null);
+        } else {
+            player.getPacketSender().sendMessage("@red@You haven't completed your task yet.");
         }
-    }
-
-    private static void showRewardsInterface(Item[] items) {
-
     }
 
     private static void showTaskScrollInterface(Player player) {
@@ -90,18 +91,23 @@ public class TaskScrollHandler {
         Item[] rewards = taskType.getRewards();
         int compAmount = playerTask.getCompletionAmount();
         int currentAmount = playerTask.getProgress();
-        float percentage = (((float) compAmount / currentAmount) * 100);
-        player.getPacketSender().updateProgressBar(151119, (int) (100 - percentage));
         player.getPacketSender().sendString(167664, stringBuilder.toString())
                 .sendItemContainer(rewards, 167663)
                 .setScrollBar(167662, Math.max(209,(rewards.length / 3) * 40))
-                .updateProgressBar(167658, (int) (100 - percentage))
+                .updateProgressBar(167658, (int) (getPercentageDone(playerTask)))
                 .sendString(167661, currentAmount + "/" + compAmount)
                 .sendInterface(167650);
     }
 
     private static void showProgressOverlayInterface(Player player) {
+        player.setHasPlayerTaskTracker(!player.isHasPlayerTaskTracker());
+        player.getPacketSender().sendWalkableInterface(167665, player.isHasPlayerTaskTracker());
+    }
 
+    public static float getPercentageDone(PlayerTask playerTask) {
+        int compAmount = playerTask.getCompletionAmount();
+        int currentAmount = playerTask.getProgress();
+        return (((float) currentAmount / compAmount) * 100);
     }
 
     private static TaskType getTaskTypeByBottle(int itemId) {

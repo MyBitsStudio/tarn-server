@@ -32,6 +32,7 @@ import com.ruse.world.content.LoyaltyProgramme.LoyaltyTitles;
 import com.ruse.world.content.StarterTasks.StarterTaskAttributes;
 import com.ruse.world.content.planetsystem.PlanetManager;
 import com.ruse.world.content.taskscrolls.PlayerTask;
+import com.ruse.world.content.taskscrolls.TaskScrollHandler;
 import com.ruse.world.packages.johnachievementsystem.AchievementProgress;
 import com.ruse.world.packages.johnachievementsystem.Perk;
 import com.ruse.world.packages.johnachievementsystem.PerkType;
@@ -245,9 +246,15 @@ public class Player extends Character {
     @Getter
     @Setter
     private PlayerTask playerTask;
+    @Getter
+    @Setter
+    private boolean hasPlayerTaskTracker;
 
-    public void doTaskProgress() {
+    public void doTaskProgress(int npcId) {
         if(playerTask == null) {
+            return;
+        }
+        if(npcId != playerTask.getNpcTaskId()) {
             return;
         }
         if(playerTask.getProgress() == playerTask.getCompletionAmount()) {
@@ -255,6 +262,10 @@ public class Player extends Character {
         }
         if(equipment.containsAll(playerTask.getRestrictedWears())) {
             playerTask.incrementProgress(1);
+            if(hasPlayerTaskTracker) {
+                packetSender.sendString(167661, playerTask.getProgress() + "/" + playerTask.getCompletionAmount())
+                        .updateProgressBar(167658, (int) (TaskScrollHandler.getPercentageDone(playerTask)));
+            }
             if(playerTask.getProgress() >= playerTask.getCompletionAmount()) {
                 playerTask.setProgress(playerTask.getCompletionAmount());
             }
@@ -1641,7 +1652,12 @@ public class Player extends Character {
         if(Lobby.getInstance().getPlayerSet().contains(this)) {
             Lobby.getInstance().remove(this);
         }
-
+        if(getWalkableInterfaceId() > 0) {
+            getPacketSender().sendWalkableInterface(getWalkableInterfaceId(), false);
+        }
+        if(hasPlayerTaskTracker) {
+            getPacketSender().sendWalkableInterface(167665, false);
+        }
         if(clan != null){
             ClanManager.getManager().leave(this, false);
         }
@@ -2440,6 +2456,7 @@ public class Player extends Character {
     }
 
     public void setWalkableInterfaceId(int interfaceId2) {
+        System.out.println("Setting walkable interface: " + interfaceId2);
         this.walkableInterfaceId = interfaceId2;
     }
 
