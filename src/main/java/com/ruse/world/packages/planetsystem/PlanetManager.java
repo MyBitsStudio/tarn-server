@@ -1,16 +1,16 @@
-package com.ruse.world.content.planetsystem;
+package com.ruse.world.packages.planetsystem;
 
 import com.ruse.model.Item;
-import com.ruse.world.content.planetsystem.jobsite.AbstractJobSite;
-import com.ruse.world.content.planetsystem.worker.Worker;
-import com.ruse.world.content.planetsystem.worker.WorkerType;
+import com.ruse.world.packages.planetsystem.jobsite.AbstractJobSite;
+import com.ruse.world.packages.planetsystem.worker.Worker;
+import com.ruse.world.packages.planetsystem.worker.WorkerType;
 import com.ruse.world.entity.impl.player.Player;
 
 import java.util.List;
 import java.util.Random;
 
 public class PlanetManager {
-    private static final int AMOUNT_OF_KINGDOMS = 6;
+    private static final int AMOUNT_OF_KINGDOMS = 7;
     private static final int INTERFACE_ID = 167500;
     private static final int WORKER_OVERLAY_INTERFACE_ID = 167513;
 
@@ -22,6 +22,10 @@ public class PlanetManager {
 
     public PlanetManager(Player player) {
         this.player = player;
+    }
+
+    public void sendInterface(){
+        player.getPacketSender().sendInterface(INTERFACE_ID);
     }
 
     public boolean handleButtonClick(int id) {
@@ -36,7 +40,7 @@ public class PlanetManager {
                 return true;
             }
         }
-        if(id >= 167506 && id <= 167512) {
+        if(id >= 167506 && id < 167513) {
             openPlanet(planets[id - 167506]);
             return true;
         }

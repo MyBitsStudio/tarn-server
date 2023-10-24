@@ -150,6 +150,8 @@ public class NPCDeathTask extends Task {
                         killer.getTarnNormal().handleKillCount(npc.getId());
                         killer.getTarnElite().handleKillCount(npc.getId());
 
+                        killer.doTaskProgress(npc.getId());
+
                         if (npc.stopTask()) {
                             setEventRunning(false);
                             npc.setDying(false);

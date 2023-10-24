@@ -935,19 +935,6 @@ public class Consumables {
                 /*
                  * Hunter potions
                  */
-                case 9998:
-                    drinkStatPotion(player, itemId, 10000, slot, 22, false); // Hunter pot 4
-                    break;
-                case 10000:
-                    drinkStatPotion(player, itemId, 10002, slot, 22, false); // Hunter pot 3
-                    break;
-                case 10002:
-                    drinkStatPotion(player, itemId, 10004, slot, 22, false); // Hunter pot 2
-                    break;
-                case 10004:
-                    drinkStatPotion(player, itemId, 229, slot, 22, false); // Hunter pot 1
-                    player.getInventory().delete(229,1);//player.sendMessage("Remove The Pot NOW!");
-                    break;
                 /*
                  * Super Strength potions
                  */

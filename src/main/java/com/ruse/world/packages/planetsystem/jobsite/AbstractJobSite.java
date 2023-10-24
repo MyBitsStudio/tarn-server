@@ -1,12 +1,12 @@
-package com.ruse.world.content.planetsystem.jobsite;
+package com.ruse.world.packages.planetsystem.jobsite;
 
 import com.ruse.engine.task.Task;
 import com.ruse.engine.task.TaskManager;
 import com.ruse.model.Item;
 import com.ruse.util.Misc;
-import com.ruse.world.content.planetsystem.Planet;
-import com.ruse.world.content.planetsystem.worker.Worker;
-import com.ruse.world.content.planetsystem.worker.WorkerType;
+import com.ruse.world.packages.planetsystem.Planet;
+import com.ruse.world.packages.planetsystem.worker.Worker;
+import com.ruse.world.packages.planetsystem.worker.WorkerType;
 
 import java.security.SecureRandom;
 import java.util.ArrayList;

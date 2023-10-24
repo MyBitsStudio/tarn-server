@@ -11,7 +11,7 @@ import com.ruse.util.Misc;
 import com.ruse.world.World;
 import com.ruse.world.content.*;
 import com.ruse.world.content.StarterTasks.StarterTaskData;
-import com.ruse.world.content.taskscrolls.TaskScrollHandler;
+import com.ruse.world.packages.taskscrolls.TaskScrollHandler;
 import com.ruse.world.entity.impl.player.timers.impl.scroll.VoteXP;
 import com.ruse.world.entity.impl.player.timers.impl.scroll.*;
 import com.ruse.world.packages.dialogue.DialogueManager;
@@ -1203,15 +1203,6 @@ public class ItemActionPacketListener implements PacketListener {
                             .sendMessage("Error 41265: b = " + b + ", c = " + player.getInventory().getAmount(itemId));
                     break;
                 }
-                break;
-            case 10006:
-                // Hunter.getInstance().laySnare(client);
-                Hunter.layTrap(player, new SnareTrap(new GameObject(19175, new Position(player.getPosition().getX(),
-                        player.getPosition().getY(), player.getPosition().getZ())), TrapState.SET, 200, player));
-                break;
-            case 10008:
-                Hunter.layTrap(player, new BoxTrap(new GameObject(19187, new Position(player.getPosition().getX(),
-                        player.getPosition().getY(), player.getPosition().getZ())), TrapState.SET, 200, player));
                 break;
             case 5509:
             case 5510:

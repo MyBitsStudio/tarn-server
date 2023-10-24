@@ -1,4 +1,4 @@
-package com.ruse.world.content.taskscrolls;
+package com.ruse.world.packages.taskscrolls;
 
 import java.util.Arrays;
 

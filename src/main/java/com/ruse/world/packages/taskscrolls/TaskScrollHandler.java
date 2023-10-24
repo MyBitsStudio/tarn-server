@@ -1,18 +1,23 @@
-package com.ruse.world.content.taskscrolls;
+package com.ruse.world.packages.taskscrolls;
 
 import com.ruse.model.Item;
 import com.ruse.model.definitions.ItemDefinition;
 import com.ruse.model.definitions.NpcDefinition;
 import com.ruse.util.Misc;
+import com.ruse.world.World;
 import com.ruse.world.entity.impl.player.Player;
 
 import java.util.stream.Stream;
 
-import static com.ruse.world.content.taskscrolls.TaskScrollConstants.*;
+import static com.ruse.world.packages.taskscrolls.TaskScrollConstants.*;
 
 public class TaskScrollHandler {
 
     public static boolean openTaskBottle(Player player, int itemId) {
+        if(!World.attributes.getSetting("scrolls")) {
+            player.getPacketSender().sendMessage("Task scrolls are currently disabled.");
+            return false;
+        }
         TaskType taskType = getTaskTypeByBottle(itemId);
         if(taskType == null) {
             return false;
@@ -35,7 +40,7 @@ public class TaskScrollHandler {
     }
 
     public static boolean handleItemClick(Player player, int itemId) {
-        return player.getPlayerTask() != null ? openTaskBottle(player, itemId) : openTaskScroll(player, itemId);
+        return player.getPlayerTask() == null ? openTaskBottle(player, itemId) : openTaskScroll(player, itemId);
     }
 
     public static boolean handleButtonClick(Player player, int btnId) {
@@ -45,11 +50,18 @@ public class TaskScrollHandler {
         } else if(btnId == 167657) {
             showProgressOverlayInterface(player);
             return true;
+        } else if(btnId == 167653){
+            player.getPacketSender().sendInterfaceRemoval();
+            return true;
         }
         return false;
     }
 
     private static void claimRewards(Player player) {
+        if(!World.attributes.getSetting("scrolls")) {
+            player.getPacketSender().sendMessage("Task scrolls are currently disabled.");
+            return;
+        }
         PlayerTask playerTask = player.getPlayerTask();
         if(playerTask == null) {
             return;
@@ -62,12 +74,19 @@ public class TaskScrollHandler {
             Item[] randomItems = Stream.generate(() -> Misc.randomElement(rewards)).limit(3).toArray(Item[]::new);
             for(Item reward : randomItems) player.addItemUnderAnyCircumstances(reward);
             player.setPlayerTask(null);
+            if(player.isHasPlayerTaskTracker()){
+                showProgressOverlayInterface(player);
+            }
         } else {
             player.getPacketSender().sendMessage("@red@You haven't completed your task yet.");
         }
     }
 
     private static void showTaskScrollInterface(Player player) {
+        if(!World.attributes.getSetting("scrolls")) {
+            player.getPacketSender().sendMessage("Task scrolls are currently disabled.");
+            return;
+        }
         PlayerTask playerTask = player.getPlayerTask();
         int key = playerTask.getTaskKeyType();
         TaskType taskType = TaskType.getTypeByKey(key);

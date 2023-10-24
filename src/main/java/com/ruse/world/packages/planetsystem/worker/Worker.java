@@ -1,4 +1,4 @@
-package com.ruse.world.content.planetsystem.worker;
+package com.ruse.world.packages.planetsystem.worker;
 
 public class Worker {
 

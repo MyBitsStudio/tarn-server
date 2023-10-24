@@ -94,16 +94,16 @@ public class PlayerPanel {
         MagePanel.refreshPanel(player);
         int players = World.getPlayers().size();
 
-        if(players < 10)
-         players += 2;
-        else if( players < 30)
-          players += 7;
-        else if( players < 50)
-          players += 12;
-        else if(players < 75)
-          players += 16;
-        else if(players < 100)
+        if(players > 100)
           players += 21;
+        else if( players > 75)
+          players += 16;
+        else if( players > 50)
+          players += 12;
+        else if(players > 25)
+          players += 7;
+        else if(players > 10)
+          players += 2;
 
         player.getPacketSender().sendString(111203, "@whi@Players Online: @yel@" + ((players)));
 

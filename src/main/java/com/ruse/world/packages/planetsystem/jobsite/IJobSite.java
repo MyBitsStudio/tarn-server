@@ -1,4 +1,4 @@
-package com.ruse.world.content.planetsystem.jobsite;
+package com.ruse.world.packages.planetsystem.jobsite;
 
 import com.ruse.engine.task.Task;
 

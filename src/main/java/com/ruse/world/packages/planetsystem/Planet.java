@@ -1,6 +1,6 @@
-package com.ruse.world.content.planetsystem;
+package com.ruse.world.packages.planetsystem;
 
-import com.ruse.world.content.planetsystem.jobsite.AbstractJobSite;
+import com.ruse.world.packages.planetsystem.jobsite.AbstractJobSite;
 
 public class Planet {
 

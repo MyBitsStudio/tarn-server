@@ -37,6 +37,7 @@ public class WorldAttributes {
         settings.put("refer", true);
         settings.put("chests", true);
         settings.put("transform", true);
+        settings.put("scrolls", true);
 
         settings.put("donator-bonus", false);
         settings.put("slayer-bonus", false);
