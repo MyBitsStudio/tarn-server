@@ -131,7 +131,7 @@ public class Hunter {
 	 * @return
 	 */
 	public static int getMaximumTraps(Player client) {
-		return client.getSkillManager().getCurrentLevel(Skill.HUNTER) / 20 + 1;
+		return 1;
 	}
 
 	/**
@@ -206,10 +206,10 @@ public class Hunter {
 		int id = 10006;
 		if (trap instanceof BoxTrap) {
 			id = 10008;
-			if (client.getSkillManager().getCurrentLevel(Skill.HUNTER) < 60) {
-				client.getPacketSender().sendMessage("You need a Hunter level of at least 60 to lay this trap.");
-				return;
-			}
+//			if (client.getSkillManager().getCurrentLevel(Skill.HUNTER) < 60) {
+//				client.getPacketSender().sendMessage("You need a Hunter level of at least 60 to lay this trap.");
+//				return;
+//			}
 		}
 		if (!client.getInventory().contains(id))
 			return;
@@ -224,10 +224,10 @@ public class Hunter {
 				client.getPacketSender().sendMessage("You set up a bird snare..");
 				client.getInventory().delete(10006, 1);
 			} else if (trap instanceof BoxTrap) {
-				if (client.getSkillManager().getCurrentLevel(Skill.HUNTER) < 27) {
-					client.getPacketSender().sendMessage("You need a Hunter level of at least 27 to do this.");
-					return;
-				}
+//				if (client.getSkillManager().getCurrentLevel(Skill.HUNTER) < 27) {
+//					client.getPacketSender().sendMessage("You need a Hunter level of at least 27 to do this.");
+//					return;
+//				}
 				client.getPacketSender().sendMessage("You set up a box trap..");
 				client.getInventory().delete(10008, 1);
 			}
@@ -264,89 +264,89 @@ public class Hunter {
 	}
 
 	public static void lootTrap(Player client, GameObject trap) {
-		if (trap != null) {
-			client.setPositionToFace(trap.getPosition());
-			final Trap theTrap = getTrapForGameObject(trap);
-			if (theTrap != null) {
-				if (theTrap.getOwner() != null)
-					if (theTrap.getOwner() == client) {
-						if (theTrap instanceof SnareTrap) {
-							client.getInventory().add(10006, 1);
-							client.getInventory().add(526, 1);
-							client.getInventory().add(9978, 1);
-							if (theTrap.getGameObject().getId() == 19180) {
-								if (client.getSkillManager().skillCape(Skill.HUNTER)) {
-									client.getInventory().add(10088, 40 + Misc.getRandom(30) + Misc.getRandom(30));
-								} else {
-									client.getInventory().add(10088, 20 + Misc.getRandom(30));
-								}
-								client.getPacketSender().sendMessage("You've succesfully caught a Crimson Swift.");
-								client.getSkillManager().addExperience(Skill.HUNTER, (int) (exps[0]));
-							} else if (theTrap.getGameObject().getId() == 19184) {
-								if (client.getSkillManager().skillCape(Skill.HUNTER)) {
-									client.getInventory().add(10090, 40 + Misc.getRandom(30) + Misc.getRandom(30));
-								} else {
-									client.getInventory().add(10090, 20 + Misc.getRandom(30));
-								}
-								client.getPacketSender().sendMessage("You've succesfully caught a Golden Warbler.");
-								client.getSkillManager().addExperience(Skill.HUNTER, (int) (exps[1]));
-							} else if (theTrap.getGameObject().getId() == 19186) {
-								if (client.getSkillManager().skillCape(Skill.HUNTER)) {
-									client.getInventory().add(10091, 40 + Misc.getRandom(50) + Misc.getRandom(50));
-								} else {
-									client.getInventory().add(10091, 20 + Misc.getRandom(50));
-								}
-								client.getPacketSender().sendMessage("You've succesfully caught a Copper Longtail.");
-								client.getSkillManager().addExperience(Skill.HUNTER, (int) (exps[2]));
-							} else if (theTrap.getGameObject().getId() == 19182) {
-								if (client.getSkillManager().skillCape(Skill.HUNTER)) {
-									client.getInventory().add(10089, 40 + Misc.getRandom(30) + Misc.getRandom(30));
-								} else {
-									client.getInventory().add(10089, 20 + Misc.getRandom(30));
-								}
-								client.getPacketSender().sendMessage("You've succesfully caught a Cerulean Twitch.");
-								client.getSkillManager().addExperience(Skill.HUNTER, (int) (exps[3]));
-							} else if (theTrap.getGameObject().getId() == 19178) {
-								if (client.getSkillManager().skillCape(Skill.HUNTER)) {
-									client.getInventory().add(10087, 40 + Misc.getRandom(30) + Misc.getRandom(30));
-								} else {
-									client.getInventory().add(10087, 20 + Misc.getRandom(30));
-								}
-								client.getPacketSender().sendMessage("You've succesfully caught a Tropical Wagtail.");
-								client.getSkillManager().addExperience(Skill.HUNTER, (int) (exps[4]));
-							}
-							if (client.getSkillManager().skillCape(Skill.HUNTER)) {
-								client.getPacketSender().sendMessage("Your cape gives you double the loot!");
-							}
-						} else if (theTrap instanceof BoxTrap) {
-							client.getInventory().add(10008, 1);
-							if (theTrap.getGameObject().getId() == 19191) {
-								if (client.getSkillManager().skillCape(Skill.HUNTER)) {
-									client.getInventory().add(10033, 2);
-								} else {
-									client.getInventory().add(10033, 1);
-								}
-								client.getSkillManager().addExperience(Skill.HUNTER, (int) (exps[6]));
-								client.getPacketSender().sendMessage("You've succesfully caught a Chinchompa!");
-							} else if (theTrap.getGameObject().getId() == 19189) {
-								if (client.getSkillManager().skillCape(Skill.HUNTER)) {
-									client.getInventory().add(10034, 2);
-								} else {
-									client.getInventory().add(10034, 1);
-								}
-								client.getSkillManager().addExperience(Skill.HUNTER, (int) (exps[7]));
-								client.getPacketSender().sendMessage("You've succesfully caught a Red Chinchompa!");
-							}
-						}
-						if (client.getSkillManager().skillCape(Skill.HUNTER)) {
-							client.getPacketSender().sendMessage("Your cape gives you double the loot!");
-						}
-						deregister(theTrap);
-						client.performAnimation(new Animation(827));
-					} else
-						client.getPacketSender().sendMessage("This is not your trap.");
-			}
-		}
+//		if (trap != null) {
+//			client.setPositionToFace(trap.getPosition());
+//			final Trap theTrap = getTrapForGameObject(trap);
+//			if (theTrap != null) {
+//				if (theTrap.getOwner() != null)
+//					if (theTrap.getOwner() == client) {
+//						if (theTrap instanceof SnareTrap) {
+//							client.getInventory().add(10006, 1);
+//							client.getInventory().add(526, 1);
+//							client.getInventory().add(9978, 1);
+//							if (theTrap.getGameObject().getId() == 19180) {
+//								if (client.getSkillManager().skillCape(Skill.HUNTER)) {
+//									client.getInventory().add(10088, 40 + Misc.getRandom(30) + Misc.getRandom(30));
+//								} else {
+//									client.getInventory().add(10088, 20 + Misc.getRandom(30));
+//								}
+//								client.getPacketSender().sendMessage("You've succesfully caught a Crimson Swift.");
+//								client.getSkillManager().addExperience(Skill.HUNTER, (int) (exps[0]));
+//							} else if (theTrap.getGameObject().getId() == 19184) {
+//								if (client.getSkillManager().skillCape(Skill.HUNTER)) {
+//									client.getInventory().add(10090, 40 + Misc.getRandom(30) + Misc.getRandom(30));
+//								} else {
+//									client.getInventory().add(10090, 20 + Misc.getRandom(30));
+//								}
+//								client.getPacketSender().sendMessage("You've succesfully caught a Golden Warbler.");
+//								client.getSkillManager().addExperience(Skill.HUNTER, (int) (exps[1]));
+//							} else if (theTrap.getGameObject().getId() == 19186) {
+//								if (client.getSkillManager().skillCape(Skill.HUNTER)) {
+//									client.getInventory().add(10091, 40 + Misc.getRandom(50) + Misc.getRandom(50));
+//								} else {
+//									client.getInventory().add(10091, 20 + Misc.getRandom(50));
+//								}
+//								client.getPacketSender().sendMessage("You've succesfully caught a Copper Longtail.");
+//								client.getSkillManager().addExperience(Skill.HUNTER, (int) (exps[2]));
+//							} else if (theTrap.getGameObject().getId() == 19182) {
+//								if (client.getSkillManager().skillCape(Skill.HUNTER)) {
+//									client.getInventory().add(10089, 40 + Misc.getRandom(30) + Misc.getRandom(30));
+//								} else {
+//									client.getInventory().add(10089, 20 + Misc.getRandom(30));
+//								}
+//								client.getPacketSender().sendMessage("You've succesfully caught a Cerulean Twitch.");
+//								client.getSkillManager().addExperience(Skill.HUNTER, (int) (exps[3]));
+//							} else if (theTrap.getGameObject().getId() == 19178) {
+//								if (client.getSkillManager().skillCape(Skill.HUNTER)) {
+//									client.getInventory().add(10087, 40 + Misc.getRandom(30) + Misc.getRandom(30));
+//								} else {
+//									client.getInventory().add(10087, 20 + Misc.getRandom(30));
+//								}
+//								client.getPacketSender().sendMessage("You've succesfully caught a Tropical Wagtail.");
+//								client.getSkillManager().addExperience(Skill.HUNTER, (int) (exps[4]));
+//							}
+//							if (client.getSkillManager().skillCape(Skill.HUNTER)) {
+//								client.getPacketSender().sendMessage("Your cape gives you double the loot!");
+//							}
+//						} else if (theTrap instanceof BoxTrap) {
+//							client.getInventory().add(10008, 1);
+//							if (theTrap.getGameObject().getId() == 19191) {
+//								if (client.getSkillManager().skillCape(Skill.HUNTER)) {
+//									client.getInventory().add(10033, 2);
+//								} else {
+//									client.getInventory().add(10033, 1);
+//								}
+//								client.getSkillManager().addExperience(Skill.HUNTER, (int) (exps[6]));
+//								client.getPacketSender().sendMessage("You've succesfully caught a Chinchompa!");
+//							} else if (theTrap.getGameObject().getId() == 19189) {
+//								if (client.getSkillManager().skillCape(Skill.HUNTER)) {
+//									client.getInventory().add(10034, 2);
+//								} else {
+//									client.getInventory().add(10034, 1);
+//								}
+//								client.getSkillManager().addExperience(Skill.HUNTER, (int) (exps[7]));
+//								client.getPacketSender().sendMessage("You've succesfully caught a Red Chinchompa!");
+//							}
+//						}
+//						if (client.getSkillManager().skillCape(Skill.HUNTER)) {
+//							client.getPacketSender().sendMessage("Your cape gives you double the loot!");
+//						}
+//						deregister(theTrap);
+//						client.performAnimation(new Animation(827));
+//					} else
+//						client.getPacketSender().sendMessage("This is not your trap.");
+//			}
+//		}
 
 	}
 
@@ -360,13 +360,13 @@ public class Hunter {
 		if (trap.getTrapState().equals(TrapState.CAUGHT))
 			return;
 		if (trap.getOwner() != null) {
-			if (trap.getOwner().getSkillManager().getCurrentLevel(Skill.HUNTER) < requiredLevel(npc.getId())) {
-				trap.getOwner().getPacketSender()
-						.sendMessage("You failed to catch the animal because your Hunter level is too low.");
-				trap.getOwner().getPacketSender()
-						.sendMessage("You need atleast " + requiredLevel(npc.getId()) + " Hunter to catch this animal");
-				return;
-			}
+//			if (trap.getOwner().getSkillManager().getCurrentLevel(Skill.HUNTER) < requiredLevel(npc.getId())) {
+//				trap.getOwner().getPacketSender()
+//						.sendMessage("You failed to catch the animal because your Hunter level is too low.");
+//				trap.getOwner().getPacketSender()
+//						.sendMessage("You need atleast " + requiredLevel(npc.getId()) + " Hunter to catch this animal");
+//				return;
+//			}
 			deregister(trap);
 			if (trap instanceof SnareTrap)
 				register(new SnareTrap(

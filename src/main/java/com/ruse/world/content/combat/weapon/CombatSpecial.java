@@ -241,28 +241,6 @@ public enum CombatSpecial {
 						// prayerDrain));
 						player.getPacketSender().sendMessage(
 								"@bla@You have stolen @red@" + prayerDrain + " @bla@prayer points from your target.");
-						p.getSkillManager().setCurrentLevel(Skill.PRAYER,
-
-								(p.getSkillManager().getCurrentLevel(Skill.PRAYER) - prayerDrain));
-
-						p.getPacketSender().sendMessage(
-								"@bla@Your opponent has stolen @red@" + prayerDrain + " @bla@prayer points from you.");
-						// if
-						// (player.getSkillManager().getCurrentLevel(Skill.PRAYER)
-						// > player.getSkillManager().getMaxLevel(Skill.PRAYER))
-						// {
-						// player.getSkillManager().setCurrentLevel(Skill.PRAYER,
-						// player.getSkillManager().getMaxLevel(Skill.PRAYER));
-						// player.getPacketSender().sendMessage("You absorbed
-						// more prayer points than you could hold!");
-						// }
-						if (p.getSkillManager().getCurrentLevel(Skill.PRAYER) == 0) {
-							p.getPacketSender().sendMessage(
-									"@red@Zamorak's wicked thoughts infect your mind and drop your prayer.");
-							player.forceChat("...HAHAHAHA! Strength through Chaos!");
-							player.getPacketSender().sendMessage("@red@Zamorak's spiteful laughter indicates "
-									+ p.getUsername() + "'s prayer dropped.");
-						}
 					}
 				}
 			};
@@ -281,14 +259,6 @@ public enum CombatSpecial {
 						int damageHeal = (int) (dmg * 10.5);
 						int damagePrayerHeal = (int) (dmg * 10.25);
 						player.heal(damageHeal);
-						if (player.getSkillManager().getCurrentLevel(Skill.PRAYER) < player.getSkillManager()
-								.getMaxLevel(Skill.PRAYER)) {
-							int level = player.getSkillManager().getCurrentLevel(Skill.PRAYER)
-									+ damagePrayerHeal > player.getSkillManager().getMaxLevel(Skill.PRAYER)
-											? player.getSkillManager().getMaxLevel(Skill.PRAYER)
-											: player.getSkillManager().getCurrentLevel(Skill.PRAYER) + damagePrayerHeal;
-							player.getSkillManager().setCurrentLevel(Skill.PRAYER, level);
-						}
 					}
 				}
 			};
@@ -308,17 +278,17 @@ public enum CombatSpecial {
 						int damageDrain = (int) (damage * 0.1);
 						if (damageDrain < 0)
 							return;
-						((Player) target).getSkillManager().setCurrentLevel(Skill.forId(skillDrain),
-								player.getSkillManager().getCurrentLevel(Skill.forId(skillDrain)) - damageDrain);
-						if (((Player) target).getSkillManager().getCurrentLevel(Skill.forId(skillDrain)) < 1)
-							((Player) target).getSkillManager().setCurrentLevel(Skill.forId(skillDrain), 1);
-						player.getPacketSender()
-								.sendMessage("You've drained " + ((Player) target).getUsername() + "'s "
-										+ Misc.formatText(Skill.forId(skillDrain).toString().toLowerCase())
-										+ " level by " + damageDrain + ".");
-						((Player) target).getPacketSender()
-								.sendMessage("Your " + Misc.formatText(Skill.forId(skillDrain).toString().toLowerCase())
-										+ " level has been drained.");
+//						((Player) target).getSkillManager().setCurrentLevel(Skill.forId(skillDrain),
+//								player.getSkillManager().getCurrentLevel(Skill.forId(skillDrain)) - damageDrain);
+//						if (((Player) target).getSkillManager().getCurrentLevel(Skill.forId(skillDrain)) < 1)
+//							((Player) target).getSkillManager().setCurrentLevel(Skill.forId(skillDrain), 1);
+//						player.getPacketSender()
+//								.sendMessage("You've drained " + ((Player) target).getUsername() + "'s "
+//										+ Misc.formatText(Skill.forId(skillDrain).toString().toLowerCase())
+//										+ " level by " + damageDrain + ".");
+//						((Player) target).getPacketSender()
+//								.sendMessage("Your " + Misc.formatText(Skill.forId(skillDrain).toString().toLowerCase())
+//										+ " level has been drained.");
 					}
 				}
 			};
@@ -436,11 +406,11 @@ public enum CombatSpecial {
 			@Override
 			public void onActivation(Player player, Character target) {
 				player.forceChat("Feel the power!");
-				player.getSkillManager().setCurrentLevel(Skill.ATTACK, 150);
-				player.getSkillManager().setCurrentLevel(Skill.STRENGTH, 150);
-				player.getSkillManager().setCurrentLevel(Skill.DEFENCE, 150);
-				player.getSkillManager().setCurrentLevel(Skill.RANGED, 150);
-				player.getSkillManager().setCurrentLevel(Skill.MAGIC, 150);
+//				player.getSkillManager().setCurrentLevel(Skill.ATTACK, 150);
+//				player.getSkillManager().setCurrentLevel(Skill.STRENGTH, 150);
+//				player.getSkillManager().setCurrentLevel(Skill.DEFENCE, 150);
+//				player.getSkillManager().setCurrentLevel(Skill.RANGED, 150);
+//				player.getSkillManager().setCurrentLevel(Skill.MAGIC, 150);
 				player.performAnimation(new Animation(725));
 				player.performGraphic(new Graphic(1555));
 				CombatSpecial.drain(player, 100);
@@ -455,11 +425,11 @@ public enum CombatSpecial {
 		@Override
 		public void onActivation(Player player, Character target) {
 			player.forceChat("I come alive again!");
-			player.getSkillManager().setCurrentLevel(Skill.ATTACK, 200);
-			player.getSkillManager().setCurrentLevel(Skill.STRENGTH, 200);
-			player.getSkillManager().setCurrentLevel(Skill.DEFENCE, 200);
-			player.getSkillManager().setCurrentLevel(Skill.RANGED, 200);
-			player.getSkillManager().setCurrentLevel(Skill.MAGIC, 200);
+//			player.getSkillManager().setCurrentLevel(Skill.ATTACK, 200);
+//			player.getSkillManager().setCurrentLevel(Skill.STRENGTH, 200);
+//			player.getSkillManager().setCurrentLevel(Skill.DEFENCE, 200);
+//			player.getSkillManager().setCurrentLevel(Skill.RANGED, 200);
+//			player.getSkillManager().setCurrentLevel(Skill.MAGIC, 200);
 			player.performAnimation(new Animation(725));
 			player.performGraphic(new Graphic(1555));
 			CombatSpecial.drain(player, 100);
@@ -512,14 +482,14 @@ public enum CombatSpecial {
 				public void onHit(long damage, boolean accurate) {
 					if (target.isPlayer() && accurate) {
 						Player t = (Player) target;
-						int currentDef = t.getSkillManager().getCurrentLevel(Skill.DEFENCE);
-						int defDecrease = (int) (currentDef * 0.11);
-						if ((currentDef - defDecrease) <= 0 || currentDef <= 0)
-							return;
-						t.getSkillManager().setCurrentLevel(Skill.DEFENCE, defDecrease);
-						t.getPacketSender().sendMessage("Your opponent has reduced your Defence level.");
-						player.getPacketSender()
-								.sendMessage("Your hammer forces some of your opponent's defences to break.");
+//						int currentDef = t.getSkillManager().getCurrentLevel(Skill.DEFENCE);
+//						int defDecrease = (int) (currentDef * 0.11);
+//						if ((currentDef - defDecrease) <= 0 || currentDef <= 0)
+//							return;
+//						t.getSkillManager().setCurrentLevel(Skill.DEFENCE, defDecrease);
+//						t.getPacketSender().sendMessage("Your opponent has reduced your Defence level.");
+//						player.getPacketSender()
+//								.sendMessage("Your hammer forces some of your opponent's defences to break.");
 					}
 				}
 			};
@@ -535,8 +505,8 @@ public enum CombatSpecial {
 				public void onHit(long damage, boolean accurate) {
 					if (target.isPlayer()) {
 						Player t = (Player) target;
-						int currentHelth = t.getSkillManager().getCurrentLevel(Skill.CONSTITUTION) / 2;
-						player.dealDamage(new Hit(currentHelth, Hitmask.DARK_PURPLE, CombatIcon.DEFLECT));
+						//int currentHelth = t.getSkillManager().getCurrentLevel(Skill.CONSTITUTION) / 2;
+						//player.dealDamage(new Hit(currentHelth, Hitmask.DARK_PURPLE, CombatIcon.DEFLECT));
 						// t.getPacketSender().sendMessage("Your opponent has reduced your Defence
 						// level.");
 						player.getPacketSender().sendMessage("You take recoil damage.");
@@ -633,9 +603,9 @@ public enum CombatSpecial {
 			player.performAnimation(new Animation(1056));
 			player.forceChat("Raarrrrrgggggghhhhhhh!");
 			CombatSpecial.drain(player, DRAGON_BATTLEAXE.drainAmount);
-			Consumables.drinkStatPotion(player, -1, -1, -1, Skill.STRENGTH.ordinal(), true);
-			player.getSkillManager().setCurrentLevel(Skill.ATTACK,
-					player.getSkillManager().getCurrentLevel(Skill.ATTACK) - 7);
+//			Consumables.drinkStatPotion(player, -1, -1, -1, Skill.STRENGTH.ordinal(), true);
+//			player.getSkillManager().setCurrentLevel(Skill.ATTACK,
+//					player.getSkillManager().getCurrentLevel(Skill.ATTACK) - 7);
 			player.getCombatBuilder().cooldown(true);
 		}
 
@@ -784,28 +754,28 @@ public enum CombatSpecial {
 						// prayerDrain));
 						player.getPacketSender().sendMessage(
 								"@bla@You have stolen @red@" + prayerDrain + " @bla@prayer points from your target.");
-						p.getSkillManager().setCurrentLevel(Skill.PRAYER,
-
-								(p.getSkillManager().getCurrentLevel(Skill.PRAYER) - prayerDrain));
-
-						p.getPacketSender().sendMessage(
-								"@bla@Your opponent has stolen @red@" + prayerDrain + " @bla@prayer points from you.");
-						// if
-						// (player.getSkillManager().getCurrentLevel(Skill.PRAYER)
-						// > player.getSkillManager().getMaxLevel(Skill.PRAYER))
-						// {
-						// player.getSkillManager().setCurrentLevel(Skill.PRAYER,
-						// player.getSkillManager().getMaxLevel(Skill.PRAYER));
-						// player.getPacketSender().sendMessage("You absorbed
-						// more prayer points than you could hold!");
-						// }
-						if (p.getSkillManager().getCurrentLevel(Skill.PRAYER) == 0) {
-							p.getPacketSender().sendMessage(
-									"@red@Zamorak's wicked thoughts infect your mind and drop your prayer.");
-							player.forceChat("...HAHAHAHA! Strength through Chaos!");
-							player.getPacketSender().sendMessage("@red@Zamorak's spiteful laughter indicates "
-									+ p.getUsername() + "'s prayer dropped.");
-						}
+//						p.getSkillManager().setCurrentLevel(Skill.PRAYER,
+//
+//								(p.getSkillManager().getCurrentLevel(Skill.PRAYER) - prayerDrain));
+//
+//						p.getPacketSender().sendMessage(
+//								"@bla@Your opponent has stolen @red@" + prayerDrain + " @bla@prayer points from you.");
+//						// if
+//						// (player.getSkillManager().getCurrentLevel(Skill.PRAYER)
+//						// > player.getSkillManager().getMaxLevel(Skill.PRAYER))
+//						// {
+//						// player.getSkillManager().setCurrentLevel(Skill.PRAYER,
+//						// player.getSkillManager().getMaxLevel(Skill.PRAYER));
+//						// player.getPacketSender().sendMessage("You absorbed
+//						// more prayer points than you could hold!");
+//						// }
+//						if (p.getSkillManager().getCurrentLevel(Skill.PRAYER) == 0) {
+//							p.getPacketSender().sendMessage(
+//									"@red@Zamorak's wicked thoughts infect your mind and drop your prayer.");
+//							player.forceChat("...HAHAHAHA! Strength through Chaos!");
+//							player.getPacketSender().sendMessage("@red@Zamorak's spiteful laughter indicates "
+//									+ p.getUsername() + "'s prayer dropped.");
+//						}
 					}
 				}
 			};
@@ -825,17 +795,17 @@ public enum CombatSpecial {
 						int damageDrain = (int) (damage * 0.1);
 						if (damageDrain < 0)
 							return;
-						((Player) target).getSkillManager().setCurrentLevel(Skill.forId(skillDrain),
-								player.getSkillManager().getCurrentLevel(Skill.forId(skillDrain)) - damageDrain);
-						if (((Player) target).getSkillManager().getCurrentLevel(Skill.forId(skillDrain)) < 1)
-							((Player) target).getSkillManager().setCurrentLevel(Skill.forId(skillDrain), 1);
-						player.getPacketSender()
-								.sendMessage("You've drained " + ((Player) target).getUsername() + "'s "
-										+ Misc.formatText(Skill.forId(skillDrain).toString().toLowerCase())
-										+ " level by " + damageDrain + ".");
-						((Player) target).getPacketSender()
-								.sendMessage("Your " + Misc.formatText(Skill.forId(skillDrain).toString().toLowerCase())
-										+ " level has been drained.");
+//						((Player) target).getSkillManager().setCurrentLevel(Skill.forId(skillDrain),
+//								player.getSkillManager().getCurrentLevel(Skill.forId(skillDrain)) - damageDrain);
+//						if (((Player) target).getSkillManager().getCurrentLevel(Skill.forId(skillDrain)) < 1)
+//							((Player) target).getSkillManager().setCurrentLevel(Skill.forId(skillDrain), 1);
+//						player.getPacketSender()
+//								.sendMessage("You've drained " + ((Player) target).getUsername() + "'s "
+//										+ Misc.formatText(Skill.forId(skillDrain).toString().toLowerCase())
+//										+ " level by " + damageDrain + ".");
+//						((Player) target).getPacketSender()
+//								.sendMessage("Your " + Misc.formatText(Skill.forId(skillDrain).toString().toLowerCase())
+//										+ " level has been drained.");
 					}
 				}
 			};
@@ -854,14 +824,14 @@ public enum CombatSpecial {
 						int damageHeal = (int) (dmg * 0.5);
 						int damagePrayerHeal = (int) (dmg * 0.25);
 						player.heal(damageHeal);
-						if (player.getSkillManager().getCurrentLevel(Skill.PRAYER) < player.getSkillManager()
-								.getMaxLevel(Skill.PRAYER)) {
-							int level = player.getSkillManager().getCurrentLevel(Skill.PRAYER)
-									+ damagePrayerHeal > player.getSkillManager().getMaxLevel(Skill.PRAYER)
-											? player.getSkillManager().getMaxLevel(Skill.PRAYER)
-											: player.getSkillManager().getCurrentLevel(Skill.PRAYER) + damagePrayerHeal;
-							player.getSkillManager().setCurrentLevel(Skill.PRAYER, level);
-						}
+//						if (player.getSkillManager().getCurrentLevel(Skill.PRAYER) < player.getSkillManager()
+//								.getMaxLevel(Skill.PRAYER)) {
+//							int level = player.getSkillManager().getCurrentLevel(Skill.PRAYER)
+//									+ damagePrayerHeal > player.getSkillManager().getMaxLevel(Skill.PRAYER)
+//											? player.getSkillManager().getMaxLevel(Skill.PRAYER)
+//											: player.getSkillManager().getCurrentLevel(Skill.PRAYER) + damagePrayerHeal;
+//							player.getSkillManager().setCurrentLevel(Skill.PRAYER, level);
+//						}
 					}
 				}
 			};
@@ -872,7 +842,7 @@ public enum CombatSpecial {
 		public CombatContainer container(Player player, Character target) {
 			player.performAnimation(new Animation(7512));
 			player.performGraphic(new Graphic(2000));
-			player.getSkillManager().setCurrentLevel(Skill.DEFENCE, 1000);
+			//player.getSkillManager().setCurrentLevel(Skill.DEFENCE, 1000);
 			player.getPacketSender().sendMessage("You're Special has granted you DEFENCE BONUS!.");
 			return new CombatContainer(player, target, 4, CombatType.MELEE, true);
 		}

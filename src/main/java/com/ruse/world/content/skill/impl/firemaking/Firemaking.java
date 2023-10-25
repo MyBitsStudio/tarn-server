@@ -51,13 +51,13 @@ public class Firemaking {
 			MovementQueue.stepAway(player);
 		player.getPacketSender().sendInterfaceRemoval();
 		player.setEntityInteraction(null);
-		player.getSkillManager().stopSkilling();
+		player.getNewSkills().stopSkilling();
 		int cycle = 2 + Misc.getRandom(3);
-		if (player.getSkillManager().getMaxLevel(Skill.FIREMAKING) < logData.getLevel()) {
-			player.getPacketSender()
-					.sendMessage("You need a Firemaking level of atleast " + logData.getLevel() + " to light this.");
-			return;
-		}
+//		if (player.getNewSkills().getMaxLevel(Skill.FIREMAKING) < logData.getLevel()) {
+//			player.getPacketSender()
+//					.sendMessage("You need a Firemaking level of atleast " + logData.getLevel() + " to light this.");
+//			return;
+//		}
 		if (!addingToFire) {
 			player.getPacketSender().sendMessage("You attempt to light a fire..");
 			player.performAnimation(new Animation(733));
@@ -69,20 +69,20 @@ public class Firemaking {
 			@Override
 			public void execute() {
 				player.getPacketSender().sendInterfaceRemoval();
-				if (addingToFire && player.getInteractingObject() == null) { // fire has died
-					player.getSkillManager().stopSkilling();
-					player.getPacketSender().sendMessage("The fire has died out.");
-					return;
-				}
-				if (player.getEquipment().get(Equipment.RING_SLOT).getId() == 13659 && Misc.getRandom(7) == 1) {
-					player.getPacketSender().sendMessage("Your cape has salvaged your log.");
-				} else {
-					if (player.getSkillManager().skillCape(Skill.FIREMAKING) && Misc.getRandom(10) == 1) {
-						player.getPacketSender().sendMessage("Your cape has salvaged your log.");
-					} else {
-						player.getInventory().delete(logData.getLogId(), 1);
-					}
-				}
+//				if (addingToFire && player.getInteractingObject() == null) { // fire has died
+//					player.getSkillManager().stopSkilling();
+//					player.getPacketSender().sendMessage("The fire has died out.");
+//					return;
+//				}
+//				if (player.getEquipment().get(Equipment.RING_SLOT).getId() == 13659 && Misc.getRandom(7) == 1) {
+//					player.getPacketSender().sendMessage("Your cape has salvaged your log.");
+//				} else {
+//					if (player.getSkillManager().skillCape(Skill.FIREMAKING) && Misc.getRandom(10) == 1) {
+//						player.getPacketSender().sendMessage("Your cape has salvaged your log.");
+//					} else {
+//						player.getInventory().delete(logData.getLogId(), 1);
+//					}
+//				}
 				if (addingToFire) {
 					player.performAnimation(new Animation(827));
 					player.getPacketSender().sendMessage("You add some logs to the fire..");
@@ -100,7 +100,7 @@ public class Firemaking {
 				}
 
 				Sounds.sendSound(player, Sound.LIGHT_FIRE);
-				player.getSkillManager().addExperience(Skill.FIREMAKING, (int) (logData.getXp()));
+				//player.getSkillManager().addExperience(Skill.FIREMAKING, (int) (logData.getXp()));
 
 				added++;
 				if (added >= amount || !player.getInventory().contains(logData.getLogId())) {

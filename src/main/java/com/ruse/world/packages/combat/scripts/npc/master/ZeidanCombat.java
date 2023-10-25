@@ -13,6 +13,7 @@ import com.ruse.world.entity.impl.Character;
 import com.ruse.world.entity.impl.npc.NPC;
 import com.ruse.world.entity.impl.player.Player;
 import com.ruse.world.packages.combat.AnimGFX;
+import com.ruse.world.packages.skills.S_Skills;
 import org.jetbrains.annotations.NotNull;
 
 public class ZeidanCombat implements CombatStrategy {
@@ -77,8 +78,8 @@ public class ZeidanCombat implements CombatStrategy {
                 player.performGraphic(new Graphic(AnimGFX.SKELETON_FREAKOUT));
                 CurseHandler.deactivateCurses(player);
                 PrayerHandler.deactivateAll(player);
-                int total = player.getSkillManager().getCurrentLevel(Skill.PRAYER) - 75;
-                player.getSkillManager().setCurrentLevel(Skill.PRAYER, total, true);
+                int total = player.getNewSkills().getCurrentLevel(S_Skills.PRAYER) - 75;
+                player.getNewSkills().setCurrentLevel(S_Skills.PRAYER, total, true);
                 player.performGraphic(new Graphic(AnimGFX.WHITE_CRYSTAL_MAGIC));
                 player.dealDamage(new Hit(player.getConstitution() / 3, Hitmask.LIGHT_YELLOW, CombatIcon.MAGIC));
                 this.stop();

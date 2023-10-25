@@ -13,7 +13,6 @@ import com.ruse.util.Misc;
 import com.ruse.util.NameUtils;
 import com.ruse.world.World;
 import com.ruse.world.content.CustomObjects;
-import com.ruse.world.content.skill.SkillManager;
 import com.ruse.world.content.transportation.TeleportHandler;
 import com.ruse.world.content.transportation.TeleportType;
 import com.ruse.world.entity.impl.npc.NPC;
@@ -23,6 +22,7 @@ import com.ruse.world.packages.event.impl.TotemHNS;
 import com.ruse.world.packages.globals.GlobalBossManager;
 import com.ruse.world.packages.mode.impl.*;
 import com.ruse.world.entity.impl.player.Player;
+import com.ruse.world.packages.skills.S_Skills;
 
 import java.util.Objects;
 
@@ -131,11 +131,11 @@ public class AdminCommands {
                 }
                 if(targets != null){
                     player.getPacketSender().sendMessage(targets.getUsername()+ " is online. Attempting to change level.");
-                    Skill skill = Skill.forId(skills);
-                    targets.getSkillManager().setCurrentLevel(skill, level).setMaxLevel(skill, level).setExperience(skill,
-                        SkillManager.getExperienceForLevel(level));
-                    player.getPacketSender().sendMessage("You have set " + targets.getUsername() + "'s " + skill.getName() + " level to " + level + ".");
-                    targets.getPacketSender().sendMessage("Your " + skill.getName() + " level has been set to " + level + ".");
+                    S_Skills skill = S_Skills.forId(skills);
+                    targets.getNewSkills().setCurrentLevel(skill, level, true).setMaxLevel(skill, level, true).setExperience(skill,
+                            targets.getNewSkills().xpForLevel(level), true);
+                    player.getPacketSender().sendMessage("You have set " + targets.getUsername() + "'s " + skill.name() + " level to " + level + ".");
+                    targets.getPacketSender().sendMessage("Your " + skill.name() + " level has been set to " + level + ".");
                 } else {
                     player.sendMessage("User is not online.");
                 }

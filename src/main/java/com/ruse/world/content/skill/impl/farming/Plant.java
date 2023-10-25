@@ -128,17 +128,17 @@ public class Plant {
 					Item add = null;
 					int id = Plants.values()[plant].harvest;
 					add = ItemDefinition.forId(id).isNoted() ? new Item(id - 1, 1) : new Item(id, 1);
-					if (player.getSkillManager().skillCape(Skill.FARMING)) {
-						player.getInventory().add(Plants.values()[plant].getNotedHarvestId(), add.getAmount());
-					} else {
-						player.getInventory().add(add.getId(), add.getAmount());
-					}
+//					if (player.getSkillManager().skillCape(Skill.FARMING)) {
+//						player.getInventory().add(Plants.values()[plant].getNotedHarvestId(), add.getAmount());
+//					} else {
+//						player.getInventory().add(add.getId(), add.getAmount());
+//					}
 					String name = ItemDefinition.forId(Plants.values()[plant].harvest).getName();
 					if (name.endsWith("s"))
 						name = name.substring(0, name.length() - 1);
 					player.getPacketSender().sendMessage("You harvest " + Misc.anOrA(name) + " " + name + ".");
-					player.getSkillManager().addExperience(Skill.FARMING,
-							(int) Plants.values()[plant].harvestExperience);
+//					player.getSkillManager().addExperience(Skill.FARMING,
+//							(int) Plants.values()[plant].harvestExperience);
 
 					if (harvested == 3 && player.getInventory().contains(18336) && Misc.getRandom(4) == 0) {
 						player.getPacketSender().sendMessage("You receive a seed back from your Scroll of life.");

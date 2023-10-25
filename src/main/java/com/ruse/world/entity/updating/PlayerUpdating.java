@@ -24,6 +24,7 @@ import com.ruse.world.entity.Entity;
 import com.ruse.world.entity.impl.mini.MiniPlayer;
 import com.ruse.world.entity.impl.player.Player;
 import com.ruse.world.packages.mode.GameModeConstants;
+import com.ruse.world.packages.skills.S_Skills;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -502,7 +503,7 @@ public class PlayerUpdating {
 		builder.put(target.getPrimaryHit().getCombatIcon().ordinal() - 1);
 		builder.putLong(target.getPrimaryHit().getAbsorb());
 		builder.putLong(target.getConstitution());
-		builder.putLong(target.getSkillManager().getMaxLevel(Skill.CONSTITUTION));
+		builder.putLong(target.getNewSkills().getMaxLevel(S_Skills.HITPOINTS));
 	}
 
 	/**
@@ -518,7 +519,7 @@ public class PlayerUpdating {
 		builder.put(target.getSecondaryHit().getCombatIcon().ordinal() - 1);
 		builder.putLong(target.getPrimaryHit().getAbsorb());
 		builder.putLong(target.getConstitution());
-		builder.putLong(target.getSkillManager().getMaxLevel(Skill.CONSTITUTION));
+		builder.putLong(target.getNewSkills().getMaxLevel(S_Skills.HITPOINTS));
 	}
 
 	/**
@@ -678,10 +679,10 @@ public class PlayerUpdating {
 		}
 
 		properties.putLong(target.getLongUsername());
-		properties.put(target.getSkillManager().getCombatLevel());
+		properties.put(target.getNewSkills().combatLevel());
 		properties.put(target.getRank().ordinal());
 		properties.put(target.getDonator().ordinal());
-		properties.put(target.getLoyaltyTitle().ordinal());
+		properties.put(0);
 		properties.put(target instanceof MiniPlayer ? 1 : 0);
 		out.put(properties.buffer().writerIndex(), ValueType.C);
 		out.putBytes(properties.buffer());

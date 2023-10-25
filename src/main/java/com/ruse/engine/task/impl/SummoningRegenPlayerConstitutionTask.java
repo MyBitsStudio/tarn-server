@@ -41,43 +41,43 @@ public class SummoningRegenPlayerConstitutionTask extends Task {
 
 		int npcId = player.getSummoning().getFamiliar().getSummonNpc().getId();
 
-		if (SummoningData.regenerationFamililar(npcId) && summoningRestorationData.forId(npcId) != null
-				&& player.getSummoning().getFamiliar().getSummonNpc().isRegistered()
-				&& player.getSummoning().getFamiliar().getSummonNpc().getConstitution() > 0
-				&& !player.getSummoning().getFamiliar().getSummonNpc().isDying()) {
-			summoningRestorationData restoreData = summoningRestorationData.forId(npcId);
-			int maxHp = player.getSkillManager().getMaxLevel(Skill.CONSTITUTION);
-			double restore = summoningRestorationData.forId(npcId).getHealPercentage();
-			double heal = maxHp * restore;
-			NPC npc = player.getSummoning().getFamiliar().getSummonNpc();
-
-			player.performAnimation(restoreData.getPlayerAnim());
-			player.performGraphic(restoreData.getPlayerGfx()); // new Graphic(1313)
-			npc.performAnimation(restoreData.getNpcAnim());
-			npc.performGraphic(restoreData.getNpcGfx());
-
-			player.heal((int) Math.round(heal));
-
-			// // System.out.println("maxHp = "+maxHp+". restore = "+restore+". heal =
-			// "+heal+". restored: "+(int) Math.round(heal));
-		} /*
-			 * else { // System.out.println("SummoningData.regenerationFamililar(npcId) == " +
-			 * SummoningData.regenerationFamililar(npcId)); boolean b =
-			 * summoningRestorationData.forId(npcId) != null;
-			 * // System.out.println("summoningRestorationData.forId(npcId) != null == " + b);
-			 * // System.out.
-			 * println("player.getSummoning().getFamiliar().getSummonNpc().isRegistered() == "
-			 * + player.getSummoning().getFamiliar().getSummonNpc().isRegistered());
-			 * // System.out.
-			 * println("player.getSummoning().getFamiliar().getSummonNpc().getConstitution() > 0 == "
-			 * +(player.getSummoning().getFamiliar().getSummonNpc().getConstitution() > 0));
-			 * // System.out.
-			 * println("!player.getSummoning().getFamiliar().getSummonNpc().isDying() == "+!
-			 * player.getSummoning().getFamiliar().getSummonNpc().isDying());
-			 * 
-			 * 
-			 * }
-			 */
+//		if (SummoningData.regenerationFamililar(npcId) && summoningRestorationData.forId(npcId) != null
+//				&& player.getSummoning().getFamiliar().getSummonNpc().isRegistered()
+//				&& player.getSummoning().getFamiliar().getSummonNpc().getConstitution() > 0
+//				&& !player.getSummoning().getFamiliar().getSummonNpc().isDying()) {
+//			summoningRestorationData restoreData = summoningRestorationData.forId(npcId);
+//			//int maxHp = player.getSkillManager().getMaxLevel(Skill.CONSTITUTION);
+//			double restore = summoningRestorationData.forId(npcId).getHealPercentage();
+//			double heal = maxHp * restore;
+//			NPC npc = player.getSummoning().getFamiliar().getSummonNpc();
+//
+//			player.performAnimation(restoreData.getPlayerAnim());
+//			player.performGraphic(restoreData.getPlayerGfx()); // new Graphic(1313)
+//			npc.performAnimation(restoreData.getNpcAnim());
+//			npc.performGraphic(restoreData.getNpcGfx());
+//
+//			player.heal((int) Math.round(heal));
+//
+//			// // System.out.println("maxHp = "+maxHp+". restore = "+restore+". heal =
+//			// "+heal+". restored: "+(int) Math.round(heal));
+//		} /*
+//			 * else { // System.out.println("SummoningData.regenerationFamililar(npcId) == " +
+//			 * SummoningData.regenerationFamililar(npcId)); boolean b =
+//			 * summoningRestorationData.forId(npcId) != null;
+//			 * // System.out.println("summoningRestorationData.forId(npcId) != null == " + b);
+//			 * // System.out.
+//			 * println("player.getSummoning().getFamiliar().getSummonNpc().isRegistered() == "
+//			 * + player.getSummoning().getFamiliar().getSummonNpc().isRegistered());
+//			 * // System.out.
+//			 * println("player.getSummoning().getFamiliar().getSummonNpc().getConstitution() > 0 == "
+//			 * +(player.getSummoning().getFamiliar().getSummonNpc().getConstitution() > 0));
+//			 * // System.out.
+//			 * println("!player.getSummoning().getFamiliar().getSummonNpc().isDying() == "+!
+//			 * player.getSummoning().getFamiliar().getSummonNpc().isDying());
+//			 *
+//			 *
+//			 * }
+//			 */
 
 	}
 

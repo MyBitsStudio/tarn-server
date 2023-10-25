@@ -17,7 +17,7 @@ public class EnterAmountOfLogsToAdd extends EnterAmount {
 
 	public static void openInterface(Player player) {
 		player.getPacketSender().sendInterfaceRemoval();
-		player.getSkillManager().stopSkilling();
+		//player.getSkillManager().stopSkilling();
 		final logData lData = Logdata.getLogData(player, -1);
 		if (lData == null) {
 			player.getPacketSender().sendMessage("You do not have any logs to add to this fire.");

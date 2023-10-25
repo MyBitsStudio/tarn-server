@@ -34,7 +34,6 @@ public class PlayerSecureSave extends SecureSave {
 
         object.add("position", builder.toJsonTree(player.getPosition()));
 
-        object.add("skills", builder.toJsonTree(player.getSkillManager().getSkills()));
         object.add("inventory", builder.toJsonTree(player.getInventory().getItems()));
         player.setIsSecondaryEquipment(false);
         player.getEquipment().refreshItems();
@@ -98,8 +97,6 @@ public class PlayerSecureSave extends SecureSave {
         object.addProperty("is-secondary-equipment", player.isSecondaryEquipment());
         object.addProperty("lastlogin", player.lastLogin);
         object.addProperty("lastdailyclaim", player.lastDailyClaim);
-
-        object.addProperty("total-gained-exp", player.getSkillManager().getTotalGainedExp());
 
         object.addProperty("Skilling-points", player.getPointsHandler().getSkillingPoints());
         object.addProperty("prestige-points", player.getPointsHandler().getPrestigePoints());
@@ -288,6 +285,10 @@ public class PlayerSecureSave extends SecureSave {
         object.add("currency-pouch", builder.toJsonTree(player.getPouch().getCurrency()));
 
         object.add("transforms", builder.toJsonTree(player.getTransmorgify().getTransformations()));
+
+        object.add("new-tasks", builder.toJsonTree(player.getPlayerTask()));
+
+        object.add("new-skills", builder.toJsonTree(player.getNewSkills().getSkill()));
 
         return this;
     }

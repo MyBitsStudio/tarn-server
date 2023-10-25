@@ -1,7 +1,6 @@
 package com.ruse.world.content;
 
 import com.ruse.model.Position;
-import com.ruse.world.content.aura.AuraRaids;
 import com.ruse.world.packages.combat.drops.DropManager;
 import com.ruse.world.packages.combat.drops.NPCDrops;
 import com.ruse.world.packages.packs.casket.Box;
@@ -9,7 +8,6 @@ import com.ruse.world.content.minigames.impl.*;
 import com.ruse.world.content.minigames.impl.dungeoneering.DungeoneeringParty;
 import com.ruse.world.content.progressionzone.ProgressionZone;
 import com.ruse.world.content.transportation.TeleportHandler;
-import com.ruse.world.content.zombie.ZombieRaids;
 import com.ruse.world.entity.impl.player.Player;
 
 public class TeleportInterface {
@@ -636,8 +634,6 @@ public class TeleportInterface {
         TH("Treasure Hunter", 9816, new int[]{2015, 5022, 0}, TreasureHunter.loot, 3000),
         KOL("Keepers of Light", 9835, new int[]{2322, 5028, 0}, KeepersOfLight.loot, 1200),
         VOW("Vault of War", 9839, new int[]{1776, 5335, 0}, VaultOfWar.loot, 1200),
-        RAID("Elite Raids", 585, new int[]{2697, 2646, 0}, ZombieRaids.loot, 1500),
-        RAID2("Aura Raids", 188, new int[]{2661, 3044, 0}, AuraRaids.loot, 700),
         ;
 
         private final String name;

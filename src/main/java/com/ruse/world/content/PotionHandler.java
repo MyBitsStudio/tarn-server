@@ -92,10 +92,6 @@ public class PotionHandler {
                     player.getPacketSender().sendMessage("You already have the effect of an Overload or Super/Infinity Overload potion.");
                     return false;
                 }
-                if (player.getSkillManager().getCurrentLevel(Skill.CONSTITUTION) < 500) {
-                    player.getPacketSender().sendMessage("You need to have at least 500 Hitpoints to drink this potion.");
-                    return false;
-                }
                 return true;
         }
         return true;
@@ -200,7 +196,7 @@ public class PotionHandler {
     public static void sendTask(Player player, int type){
         Task task = switch (type) {
             case 15328 -> new InfinityRagePotionTask(player);
-            case 15330, 15331, 23124, 23125, 23126 -> new SuperOverloadPotionTask(player);
+            //case 15330, 15331, 23124, 23125, 23126 -> new SuperOverloadPotionTask(player);
             case 17546 -> new AggroPotionTask(player, 0);
             case 17544 -> new AggroPotionTask(player, 1);
             case 17542 -> new AggroPotionTask(player, 2);

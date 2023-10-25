@@ -48,9 +48,9 @@ public enum Skill {
 	 * static final int RUNECRAFTING_MODIFIER = 3;
 	 */
 
-	private Skill(int chatboxInterface, int prestigePoints, int prestigeId, int skillCapeId, int skillCapeTrimmedId,
-			int petid, int funExperienceModifier, int easyExperienceModifier, int regularExperienceModifier,
-			int hardExperienceModifier, int extremeExperienceModifier, int modernExperienceModifier) {
+	Skill(int chatboxInterface, int prestigePoints, int prestigeId, int skillCapeId, int skillCapeTrimmedId,
+          int petid, int funExperienceModifier, int easyExperienceModifier, int regularExperienceModifier,
+          int hardExperienceModifier, int extremeExperienceModifier, int modernExperienceModifier) {
 		this.chatboxInterface = chatboxInterface;
 		this.prestigePoints = prestigePoints;
 		this.prestigeId = prestigeId;

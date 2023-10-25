@@ -5,7 +5,6 @@ import com.ruse.model.Animation;
 import com.ruse.model.GameObject;
 import com.ruse.model.Graphic;
 import com.ruse.model.Position;
-import com.ruse.world.content.MiniMeSystem;
 import com.ruse.world.entity.impl.npc.NPC;
 import com.ruse.world.entity.impl.player.Player;
 

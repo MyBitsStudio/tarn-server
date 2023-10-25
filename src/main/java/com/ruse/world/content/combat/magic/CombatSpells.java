@@ -8,6 +8,7 @@ import com.ruse.world.content.combat.effect.CombatTeleblockEffect;
 import com.ruse.world.entity.impl.Character;
 import com.ruse.world.entity.impl.npc.NPC;
 import com.ruse.world.entity.impl.player.Player;
+import com.ruse.world.packages.skills.S_Skills;
 
 import java.util.Optional;
 
@@ -1455,36 +1456,36 @@ ICEYBLAST(new CombatNormalSpell() {
 
 		@Override
 		public void spellEffect(Character cast, Character castOn) {
-			if (castOn.isPlayer()) {
-				Player player = (Player) castOn;
-
-				if (player.getSkillManager().getCurrentLevel(Skill.ATTACK) < player.getSkillManager()
-						.getMaxLevel(Skill.ATTACK)) {
-					if (cast.isPlayer()) {
-						((Player) cast).getPacketSender()
-								.sendMessage("The spell has no effect because the player has already been weakened.");
-					}
-					return;
-				}
-				int decrease = (int) (0.05 * (player.getSkillManager().getCurrentLevel(Skill.ATTACK)));
-				player.getSkillManager().setCurrentLevel(Skill.ATTACK,
-						player.getSkillManager().getCurrentLevel(Skill.ATTACK) - decrease);
-				player.getSkillManager().updateSkill(Skill.ATTACK);
-
-				player.getPacketSender().sendMessage("You feel slightly weakened.");
-			} else if (castOn.isNpc()) {
-				NPC npc = (NPC) castOn;
-
-				if (npc.getDefenceWeakened()[0] || npc.getStrengthWeakened()[0]) {
-					if (cast.isPlayer()) {
-						((Player) cast).getPacketSender()
-								.sendMessage("The spell has no effect because the NPC has already been weakened.");
-					}
-					return;
-				}
-
-				npc.getDefenceWeakened()[0] = true;
-			}
+//			if (castOn.isPlayer()) {
+//				Player player = (Player) castOn;
+//
+//				if (player.getNewSkills().getCurrentLevel(S_Skills.ATTACK) < player.getSkillManager()
+//						.getMaxLevel(Skill.ATTACK)) {
+//					if (cast.isPlayer()) {
+//						((Player) cast).getPacketSender()
+//								.sendMessage("The spell has no effect because the player has already been weakened.");
+//					}
+//					return;
+//				}
+//				int decrease = (int) (0.05 * (player.getSkillManager().getCurrentLevel(Skill.ATTACK)));
+//				player.getSkillManager().setCurrentLevel(Skill.ATTACK,
+//						player.getSkillManager().getCurrentLevel(Skill.ATTACK) - decrease);
+//				player.getSkillManager().updateSkill(Skill.ATTACK);
+//
+//				player.getPacketSender().sendMessage("You feel slightly weakened.");
+//			} else if (castOn.isNpc()) {
+//				NPC npc = (NPC) castOn;
+//
+//				if (npc.getDefenceWeakened()[0] || npc.getStrengthWeakened()[0]) {
+//					if (cast.isPlayer()) {
+//						((Player) cast).getPacketSender()
+//								.sendMessage("The spell has no effect because the NPC has already been weakened.");
+//					}
+//					return;
+//				}
+//
+//				npc.getDefenceWeakened()[0] = true;
+//			}
 		}
 
 		@Override
@@ -1521,7 +1522,8 @@ ICEYBLAST(new CombatNormalSpell() {
 		public int spellId() {
 			return 1153;
 		}
-	}), WATER_STRIKE(new CombatNormalSpell() {
+	}),
+	WATER_STRIKE(new CombatNormalSpell() {
 		@Override
 		public Optional<Animation> castAnimation() {
 			return Optional.of(new Animation(14220));
@@ -1571,7 +1573,8 @@ ICEYBLAST(new CombatNormalSpell() {
 		public int spellId() {
 			return 1154;
 		}
-	}), EARTH_STRIKE(new CombatNormalSpell() {
+	}),
+	EARTH_STRIKE(new CombatNormalSpell() {
 		@Override
 		public Optional<Animation> castAnimation() {
 			return Optional.of(new Animation(14222));
@@ -1634,36 +1637,36 @@ ICEYBLAST(new CombatNormalSpell() {
 
 		@Override
 		public void spellEffect(Character cast, Character castOn) {
-			if (castOn.isPlayer()) {
-				Player player = (Player) castOn;
-
-				if (player.getSkillManager().getCurrentLevel(Skill.STRENGTH) < player.getSkillManager()
-						.getMaxLevel(Skill.STRENGTH)) {
-					if (cast.isPlayer()) {
-						((Player) cast).getPacketSender()
-								.sendMessage("The spell has no effect because the player has already been weakened.");
-					}
-					return;
-				}
-
-				int decrease = (int) (0.05 * (player.getSkillManager().getCurrentLevel(Skill.STRENGTH)));
-				player.getSkillManager().setCurrentLevel(Skill.STRENGTH,
-						player.getSkillManager().getCurrentLevel(Skill.STRENGTH) - decrease);
-				player.getSkillManager().updateSkill(Skill.STRENGTH);
-				player.getPacketSender().sendMessage("You feel slightly weakened.");
-			} else if (castOn.isNpc()) {
-				NPC npc = (NPC) castOn;
-
-				if (npc.getDefenceWeakened()[1] || npc.getStrengthWeakened()[1]) {
-					if (cast.isPlayer()) {
-						((Player) cast).getPacketSender()
-								.sendMessage("The spell has no effect because the NPC has already been weakened.");
-					}
-					return;
-				}
-
-				npc.getDefenceWeakened()[1] = true;
-			}
+//			if (castOn.isPlayer()) {
+//				Player player = (Player) castOn;
+//
+//				if (player.getSkillManager().getCurrentLevel(Skill.STRENGTH) < player.getSkillManager()
+//						.getMaxLevel(Skill.STRENGTH)) {
+//					if (cast.isPlayer()) {
+//						((Player) cast).getPacketSender()
+//								.sendMessage("The spell has no effect because the player has already been weakened.");
+//					}
+//					return;
+//				}
+//
+//				int decrease = (int) (0.05 * (player.getSkillManager().getCurrentLevel(Skill.STRENGTH)));
+//				player.getSkillManager().setCurrentLevel(Skill.STRENGTH,
+//						player.getSkillManager().getCurrentLevel(Skill.STRENGTH) - decrease);
+//				player.getSkillManager().updateSkill(Skill.STRENGTH);
+//				player.getPacketSender().sendMessage("You feel slightly weakened.");
+//			} else if (castOn.isNpc()) {
+//				NPC npc = (NPC) castOn;
+//
+//				if (npc.getDefenceWeakened()[1] || npc.getStrengthWeakened()[1]) {
+//					if (cast.isPlayer()) {
+//						((Player) cast).getPacketSender()
+//								.sendMessage("The spell has no effect because the NPC has already been weakened.");
+//					}
+//					return;
+//				}
+//
+//				npc.getDefenceWeakened()[1] = true;
+//			}
 		}
 
 		@Override
@@ -1813,37 +1816,37 @@ ICEYBLAST(new CombatNormalSpell() {
 
 		@Override
 		public void spellEffect(Character cast, Character castOn) {
-			if (castOn.isPlayer()) {
-				Player player = (Player) castOn;
-
-				if (player.getSkillManager().getCurrentLevel(Skill.DEFENCE) < player.getSkillManager()
-						.getMaxLevel(Skill.DEFENCE)) {
-					if (cast.isPlayer()) {
-						((Player) cast).getPacketSender()
-								.sendMessage("The spell has no effect because the player has already been weakened.");
-					}
-					return;
-				}
-
-				int decrease = (int) (0.05 * (player.getSkillManager().getCurrentLevel(Skill.DEFENCE)));
-				player.getSkillManager().setCurrentLevel(Skill.DEFENCE,
-						player.getSkillManager().getCurrentLevel(Skill.DEFENCE) - decrease);
-				player.getSkillManager().updateSkill(Skill.DEFENCE);
-
-				player.getPacketSender().sendMessage("You feel slightly weakened.");
-			} else if (castOn.isNpc()) {
-				NPC npc = (NPC) castOn;
-
-				if (npc.getDefenceWeakened()[2] || npc.getStrengthWeakened()[2]) {
-					if (cast.isPlayer()) {
-						((Player) cast).getPacketSender()
-								.sendMessage("The spell has no effect because the NPC has already been weakened.");
-					}
-					return;
-				}
-
-				npc.getDefenceWeakened()[2] = true;
-			}
+//			if (castOn.isPlayer()) {
+//				Player player = (Player) castOn;
+//
+//				if (player.getSkillManager().getCurrentLevel(Skill.DEFENCE) < player.getSkillManager()
+//						.getMaxLevel(Skill.DEFENCE)) {
+//					if (cast.isPlayer()) {
+//						((Player) cast).getPacketSender()
+//								.sendMessage("The spell has no effect because the player has already been weakened.");
+//					}
+//					return;
+//				}
+//
+//				int decrease = (int) (0.05 * (player.getSkillManager().getCurrentLevel(Skill.DEFENCE)));
+//				player.getSkillManager().setCurrentLevel(Skill.DEFENCE,
+//						player.getSkillManager().getCurrentLevel(Skill.DEFENCE) - decrease);
+//				player.getSkillManager().updateSkill(Skill.DEFENCE);
+//
+//				player.getPacketSender().sendMessage("You feel slightly weakened.");
+//			} else if (castOn.isNpc()) {
+//				NPC npc = (NPC) castOn;
+//
+//				if (npc.getDefenceWeakened()[2] || npc.getStrengthWeakened()[2]) {
+//					if (cast.isPlayer()) {
+//						((Player) cast).getPacketSender()
+//								.sendMessage("The spell has no effect because the NPC has already been weakened.");
+//					}
+//					return;
+//				}
+//
+//				npc.getDefenceWeakened()[2] = true;
+//			}
 		}
 
 		@Override
@@ -2746,7 +2749,8 @@ ICEYBLAST(new CombatNormalSpell() {
 		public int spellId() {
 			return 1185;
 		}
-	}), VULNERABILITY(new CombatEffectSpell() {
+	}),
+	VULNERABILITY(new CombatEffectSpell() {
 		@Override
 		public Optional<Animation> castAnimation() {
 			return Optional.of(new Animation(729));
@@ -2760,22 +2764,22 @@ ICEYBLAST(new CombatNormalSpell() {
 		@Override
 		public void spellEffect(Character cast, Character castOn) {
 			if (castOn.isPlayer()) {
-				Player player = (Player) castOn;
-
-				if (player.getSkillManager().getCurrentLevel(Skill.DEFENCE) < player.getSkillManager()
-						.getMaxLevel(Skill.DEFENCE)) {
-					if (cast.isPlayer()) {
-						((Player) cast).getPacketSender()
-								.sendMessage("The spell has no effect because the player is already weakened.");
-					}
-					return;
-				}
-
-				int decrease = (int) (0.10 * (player.getSkillManager().getCurrentLevel(Skill.DEFENCE)));
-				player.getSkillManager().setCurrentLevel(Skill.DEFENCE,
-						player.getSkillManager().getCurrentLevel(Skill.DEFENCE) - decrease);
-				player.getSkillManager().updateSkill(Skill.DEFENCE);
-				player.getPacketSender().sendMessage("You feel slightly weakened.");
+//				Player player = (Player) castOn;
+//
+//				if (player.getSkillManager().getCurrentLevel(Skill.DEFENCE) < player.getSkillManager()
+//						.getMaxLevel(Skill.DEFENCE)) {
+//					if (cast.isPlayer()) {
+//						((Player) cast).getPacketSender()
+//								.sendMessage("The spell has no effect because the player is already weakened.");
+//					}
+//					return;
+//				}
+//
+//				int decrease = (int) (0.10 * (player.getSkillManager().getCurrentLevel(Skill.DEFENCE)));
+//				player.getSkillManager().setCurrentLevel(Skill.DEFENCE,
+//						player.getSkillManager().getCurrentLevel(Skill.DEFENCE) - decrease);
+//				player.getSkillManager().updateSkill(Skill.DEFENCE);
+//				player.getPacketSender().sendMessage("You feel slightly weakened.");
 			} else if (castOn.isNpc()) {
 				NPC npc = (NPC) castOn;
 
@@ -2889,23 +2893,23 @@ ICEYBLAST(new CombatNormalSpell() {
 		@Override
 		public void spellEffect(Character cast, Character castOn) {
 			if (castOn.isPlayer()) {
-				Player player = (Player) castOn;
-
-				if (player.getSkillManager().getCurrentLevel(Skill.STRENGTH) < player.getSkillManager()
-						.getMaxLevel(Skill.STRENGTH)) {
-					if (cast.isPlayer()) {
-						((Player) cast).getPacketSender()
-								.sendMessage("The spell has no effect because the player is already weakened.");
-					}
-					return;
-				}
-
-				int decrease = (int) (0.10 * (player.getSkillManager().getCurrentLevel(Skill.STRENGTH)));
-				player.getSkillManager().setCurrentLevel(Skill.STRENGTH,
-						player.getSkillManager().getCurrentLevel(Skill.STRENGTH) - decrease);
-				player.getSkillManager().updateSkill(Skill.STRENGTH);
-
-				player.getPacketSender().sendMessage("You feel slightly weakened.");
+//				Player player = (Player) castOn;
+//
+//				if (player.getSkillManager().getCurrentLevel(Skill.STRENGTH) < player.getSkillManager()
+//						.getMaxLevel(Skill.STRENGTH)) {
+//					if (cast.isPlayer()) {
+//						((Player) cast).getPacketSender()
+//								.sendMessage("The spell has no effect because the player is already weakened.");
+//					}
+//					return;
+//				}
+//
+//				int decrease = (int) (0.10 * (player.getSkillManager().getCurrentLevel(Skill.STRENGTH)));
+//				player.getSkillManager().setCurrentLevel(Skill.STRENGTH,
+//						player.getSkillManager().getCurrentLevel(Skill.STRENGTH) - decrease);
+//				player.getSkillManager().updateSkill(Skill.STRENGTH);
+//
+//				player.getPacketSender().sendMessage("You feel slightly weakened.");
 			} else if (castOn.isNpc()) {
 				NPC npc = (NPC) castOn;
 
@@ -3077,22 +3081,22 @@ ICEYBLAST(new CombatNormalSpell() {
 		@Override
 		public void spellEffect(Character cast, Character castOn) {
 			if (castOn.isPlayer()) {
-				Player player = (Player) castOn;
-
-				if (player.getSkillManager().getCurrentLevel(Skill.ATTACK) < player.getSkillManager()
-						.getMaxLevel(Skill.ATTACK)) {
-					if (cast.isPlayer()) {
-						((Player) cast).getPacketSender()
-								.sendMessage("The spell has no effect because the player is already weakened.");
-					}
-					return;
-				}
-
-				int decrease = (int) (0.10 * (player.getSkillManager().getCurrentLevel(Skill.ATTACK)));
-				player.getSkillManager().setCurrentLevel(Skill.ATTACK,
-						player.getSkillManager().getCurrentLevel(Skill.ATTACK) - decrease);
-				player.getSkillManager().updateSkill(Skill.ATTACK);
-				player.getPacketSender().sendMessage("You feel slightly weakened.");
+//				Player player = (Player) castOn;
+//
+//				if (player.getSkillManager().getCurrentLevel(Skill.ATTACK) < player.getSkillManager()
+//						.getMaxLevel(Skill.ATTACK)) {
+//					if (cast.isPlayer()) {
+//						((Player) cast).getPacketSender()
+//								.sendMessage("The spell has no effect because the player is already weakened.");
+//					}
+//					return;
+//				}
+//
+//				int decrease = (int) (0.10 * (player.getSkillManager().getCurrentLevel(Skill.ATTACK)));
+//				player.getSkillManager().setCurrentLevel(Skill.ATTACK,
+//						player.getSkillManager().getCurrentLevel(Skill.ATTACK) - decrease);
+//				player.getSkillManager().updateSkill(Skill.ATTACK);
+//				player.getPacketSender().sendMessage("You feel slightly weakened.");
 			} else if (castOn.isNpc()) {
 				NPC npc = (NPC) castOn;
 
@@ -3346,17 +3350,17 @@ ICEYBLAST(new CombatNormalSpell() {
 		@Override
 		public void spellEffect(Character cast, Character castOn, long damage) {
 			if (castOn.isPlayer()) {
-				Player player = (Player) castOn;
-
-				if (player.getSkillManager().getCurrentLevel(Skill.ATTACK) < player.getSkillManager()
-						.getMaxLevel(Skill.ATTACK)) {
-					return;
-				}
-
-				int decrease = (int) (0.1 * (player.getSkillManager().getCurrentLevel(Skill.ATTACK)));
-				player.getSkillManager().setCurrentLevel(Skill.ATTACK,
-						player.getSkillManager().getCurrentLevel(Skill.ATTACK) - decrease);
-				player.getSkillManager().updateSkill(Skill.ATTACK);
+//				Player player = (Player) castOn;
+//
+//				if (player.getSkillManager().getCurrentLevel(Skill.ATTACK) < player.getSkillManager()
+//						.getMaxLevel(Skill.ATTACK)) {
+//					return;
+//				}
+//
+//				int decrease = (int) (0.1 * (player.getSkillManager().getCurrentLevel(Skill.ATTACK)));
+//				player.getSkillManager().setCurrentLevel(Skill.ATTACK,
+//						player.getSkillManager().getCurrentLevel(Skill.ATTACK) - decrease);
+//				player.getSkillManager().updateSkill(Skill.ATTACK);
 			}
 		}
 
@@ -3581,17 +3585,17 @@ ICEYBLAST(new CombatNormalSpell() {
 		@Override
 		public void spellEffect(Character cast, Character castOn, long damage) {
 			if (castOn.isPlayer()) {
-				Player player = (Player) castOn;
-
-				if (player.getSkillManager().getCurrentLevel(Skill.ATTACK) < player.getSkillManager()
-						.getMaxLevel(Skill.ATTACK)) {
-					return;
-				}
-
-				int decrease = (int) (0.1 * (player.getSkillManager().getCurrentLevel(Skill.ATTACK)));
-				player.getSkillManager().setCurrentLevel(Skill.ATTACK,
-						player.getSkillManager().getCurrentLevel(Skill.ATTACK) - decrease);
-				player.getSkillManager().updateSkill(Skill.ATTACK);
+//				Player player = (Player) castOn;
+//
+//				if (player.getSkillManager().getCurrentLevel(Skill.ATTACK) < player.getSkillManager()
+//						.getMaxLevel(Skill.ATTACK)) {
+//					return;
+//				}
+//
+//				int decrease = (int) (0.1 * (player.getSkillManager().getCurrentLevel(Skill.ATTACK)));
+//				player.getSkillManager().setCurrentLevel(Skill.ATTACK,
+//						player.getSkillManager().getCurrentLevel(Skill.ATTACK) - decrease);
+//				player.getSkillManager().updateSkill(Skill.ATTACK);
 			}
 		}
 
@@ -3815,19 +3819,19 @@ ICEYBLAST(new CombatNormalSpell() {
 	}), SHADOW_BLITZ(new CombatAncientSpell() {
 		@Override
 		public void spellEffect(Character cast, Character castOn, long damage) {
-			if (castOn.isPlayer()) {
-				Player player = (Player) castOn;
-
-				if (player.getSkillManager().getCurrentLevel(Skill.ATTACK) < player.getSkillManager()
-						.getMaxLevel(Skill.ATTACK)) {
-					return;
-				}
-
-				int decrease = (int) (0.15 * (player.getSkillManager().getCurrentLevel(Skill.ATTACK)));
-				player.getSkillManager().setCurrentLevel(Skill.ATTACK,
-						player.getSkillManager().getCurrentLevel(Skill.ATTACK) - decrease);
-				player.getSkillManager().updateSkill(Skill.ATTACK);
-			}
+//			if (castOn.isPlayer()) {
+//				Player player = (Player) castOn;
+//
+//				if (player.getSkillManager().getCurrentLevel(Skill.ATTACK) < player.getSkillManager()
+//						.getMaxLevel(Skill.ATTACK)) {
+//					return;
+//				}
+//
+//				int decrease = (int) (0.15 * (player.getSkillManager().getCurrentLevel(Skill.ATTACK)));
+//				player.getSkillManager().setCurrentLevel(Skill.ATTACK,
+//						player.getSkillManager().getCurrentLevel(Skill.ATTACK) - decrease);
+//				player.getSkillManager().updateSkill(Skill.ATTACK);
+//			}
 		}
 
 		@Override
@@ -4050,19 +4054,19 @@ ICEYBLAST(new CombatNormalSpell() {
 	}), SHADOW_BARRAGE(new CombatAncientSpell() {
 		@Override
 		public void spellEffect(Character cast, Character castOn, long damage) {
-			if (castOn.isPlayer()) {
-				Player player = (Player) castOn;
-
-				if (player.getSkillManager().getCurrentLevel(Skill.ATTACK) < player.getSkillManager()
-						.getMaxLevel(Skill.ATTACK)) {
-					return;
-				}
-
-				int decrease = (int) (0.15 * (player.getSkillManager().getCurrentLevel(Skill.ATTACK)));
-				player.getSkillManager().setCurrentLevel(Skill.ATTACK,
-						player.getSkillManager().getCurrentLevel(Skill.ATTACK) - decrease);
-				player.getSkillManager().updateSkill(Skill.ATTACK);
-			}
+//			if (castOn.isPlayer()) {
+//				Player player = (Player) castOn;
+//
+//				if (player.getSkillManager().getCurrentLevel(Skill.ATTACK) < player.getSkillManager()
+//						.getMaxLevel(Skill.ATTACK)) {
+//					return;
+//				}
+//
+//				int decrease = (int) (0.15 * (player.getSkillManager().getCurrentLevel(Skill.ATTACK)));
+//				player.getSkillManager().setCurrentLevel(Skill.ATTACK,
+//						player.getSkillManager().getCurrentLevel(Skill.ATTACK) - decrease);
+//				player.getSkillManager().updateSkill(Skill.ATTACK);
+//			}
 		}
 
 		@Override

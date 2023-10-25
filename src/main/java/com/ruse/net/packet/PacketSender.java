@@ -22,6 +22,7 @@ import com.ruse.world.packages.ranks.StaffRank;
 import com.ruse.world.packages.shops.ShopHandler;
 import com.ruse.world.packages.shops.ShopItem;
 import com.ruse.world.packages.shops.TabShop;
+import com.ruse.world.packages.skills.S_Skills;
 import com.ruse.world.packages.skills.SkillingTimer;
 import com.ruse.world.region.Region;
 import com.ruse.world.region.RegionManager;
@@ -396,12 +397,22 @@ public class PacketSender {
      * @param skill The skill being sent.
      * @return The PacketSender instance.
      */
-    public PacketSender sendSkill(Skill skill) {
+//    public PacketSender sendSkill(Skill skill) {
+//        PacketBuilder out = new PacketBuilder(134);
+//        out.put(skill.ordinal());
+//        out.putInt(player.getSkillManager().getExperience(skill), ByteOrder.MIDDLE);
+//        out.putShort(player.getSkillManager().getCurrentLevel(skill));
+//        out.putShort(player.getSkillManager().getMaxLevel(skill));
+//        player.getSession().queueMessage(out);
+//        return this;
+//    }
+
+    public PacketSender sendSkill(S_Skills skill) {
         PacketBuilder out = new PacketBuilder(134);
-        out.put(skill.ordinal());
-        out.putInt(player.getSkillManager().getExperience(skill), ByteOrder.MIDDLE);
-        out.putShort(player.getSkillManager().getCurrentLevel(skill));
-        out.putShort(player.getSkillManager().getMaxLevel(skill));
+        out.put(skill.getSkillId());
+        out.putInt(player.getNewSkills().getSkill().experience[skill.getSkillId()], ByteOrder.MIDDLE);
+        out.putShort(player.getNewSkills().getSkill().level[skill.getSkillId()]);
+        out.putShort(player.getNewSkills().getSkill().maxLevel[skill.getSkillId()]);
         player.getSession().queueMessage(out);
         return this;
     }
@@ -664,7 +675,7 @@ public class PacketSender {
         sendConfig(6000, 0);
 
         sendTabInterface(GameSettings.ATTACK_TAB, 2423);
-        sendTabInterface(GameSettings.SKILLS_TAB, 3917);// 31110);
+        sendTabInterface(GameSettings.SKILLS_TAB, 124000);// 31110);
         sendTabInterface(GameSettings.QUESTS_TAB, 111000);
         sendTabInterface(GameSettings.ACHIEVEMENT_TAB, 73000);//46343
         sendTabInterface(GameSettings.INVENTORY_TAB, 3213);

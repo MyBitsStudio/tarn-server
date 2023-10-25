@@ -141,8 +141,8 @@ public class MiningData {
 	}
 
 	public static int getReducedTimer(final Player plr, Pickaxe pickaxe) {
-		int skillReducement = (int) (plr.getSkillManager().getMaxLevel(Skill.MINING) * 0.03);
+		//int skillReducement = (int) (plr.getSkillManager().getMaxLevel(Skill.MINING) * 0.03);
 		int pickaxeReducement = (int) pickaxe.getSpeed();
-		return skillReducement + pickaxeReducement;
+		return  pickaxeReducement;
 	}
 }

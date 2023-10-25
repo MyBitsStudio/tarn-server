@@ -1,8 +1,6 @@
 package com.ruse.world.content.minigames;
 
-import com.ruse.world.content.aura.AuraParty;
 import com.ruse.world.content.minigames.impl.dungeoneering.DungeoneeringParty;
-import com.ruse.world.content.zombie.ZombieParty;
 
 /**
  * Holds different minigame attributes for a player
@@ -30,19 +28,10 @@ public class MinigameAttributes {
 
 
 	public class ZombieAttributes {
-		private ZombieParty party;
-		private ZombieParty invitation;
+
 		private long lastInvitation;
 		private int points;
 		private int deaths;
-
-		public ZombieParty getParty() {
-			return party;
-		}
-
-		public void setParty(ZombieParty raidsParty) {
-			this.party = raidsParty;
-		}
 
 		public long getLastInvitation() {
 			return lastInvitation;
@@ -51,15 +40,6 @@ public class MinigameAttributes {
 		public void setLastInvitation(long lastInvitation) {
 			this.lastInvitation = lastInvitation;
 		}
-
-		public ZombieParty getPartyInvitation() {
-			return invitation;
-		}
-
-		public void setPartyInvitation(ZombieParty partyInvitation) {
-			this.invitation = partyInvitation;
-		}
-
 		public void incrementDamageDealt(int damage) {
 			this.points += damage;
 		}
@@ -86,19 +66,10 @@ public class MinigameAttributes {
 	}
 
 	public class AuraAttributes {
-		private AuraParty party;
-		private AuraParty invitation;
+
 		private long lastInvitation;
 		private int points;
 		private int deaths;
-
-		public AuraParty getParty() {
-			return party;
-		}
-
-		public void setParty(AuraParty raidsParty) {
-			this.party = raidsParty;
-		}
 
 		public long getLastInvitation() {
 			return lastInvitation;
@@ -106,14 +77,6 @@ public class MinigameAttributes {
 
 		public void setLastInvitation(long lastInvitation) {
 			this.lastInvitation = lastInvitation;
-		}
-
-		public AuraParty getPartyInvitation() {
-			return invitation;
-		}
-
-		public void setPartyInvitation(AuraParty partyInvitation) {
-			this.invitation = partyInvitation;
 		}
 
 		public void incrementDamageDealt(int damage) {

@@ -22,7 +22,7 @@ class Dungeoneering(val group: DungeoneeringParty) {
     var minionKills: Int = 0
     var bossDead: Boolean = false
     var bossSpawned: Boolean = false
-    var partyDeaths = ConcurrentHashMap<String, Integer>()
+    var partyDeaths = ConcurrentHashMap<String, Int>()
 
     /**
      * Initializes the map instance and moves the players into it
@@ -62,7 +62,7 @@ class Dungeoneering(val group: DungeoneeringParty) {
             val tokens = exp / 250
 
 
-            it.skillManager.addExperience(Skill.DUNGEONEERING, exp)
+           // it.skillManager.addExperience(Skill.DUNGEONEERING, exp)
             if (!it.inventory.isFull) {
                 it.inventory.add(TOKENS, tokens)
             } else {

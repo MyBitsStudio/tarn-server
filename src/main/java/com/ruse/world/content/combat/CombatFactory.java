@@ -29,6 +29,7 @@ import com.ruse.world.entity.impl.player.Player;
 import com.ruse.world.packages.combat.max.MagicMax;
 import com.ruse.world.packages.combat.max.MeleeMax;
 import com.ruse.world.packages.combat.max.RangeMax;
+import com.ruse.world.packages.skills.S_Skills;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
@@ -486,13 +487,6 @@ public final class CombatFactory {
                         }
                     }
                 }
-
-                if (!allowAttack && !isMultiNPC) {
-                    if (entity.isPlayer() && victim.getCombatBuilder().getLastAttacker() != ((Player) entity).getMinimeSystem().getMiniMe())
-                        ((Player) entity).getPacketSender().sendMessage("They are already under attack!");
-                    entity.getCombatBuilder().reset(true);
-                    return false;
-                }
             }
         }
 
@@ -626,64 +620,8 @@ public final class CombatFactory {
         // cancel the hits if the right prayer is active.
 
         if (builder.getVictim().isPlayer()) {
-            Player victim = (Player) builder.getVictim();
-            if (victim.getEquipment().getItems()[Equipment.SHIELD_SLOT].getId() == 13740
-                    || victim.getEquipment().getItems()[Equipment.SHIELD_SLOT].getId() == 13742) {
 
-                if (PrayerHandler.isActivated(victim, PrayerHandler.getProtectingPrayer(container.getCombatType()))
-                        || CurseHandler.isActivated(victim,
-                        CurseHandler.getProtectingPrayer(container.getCombatType()))) {
-                    container.allHits(context -> {
-                        long hit = context.getHit().getDamage();
-                        context.setAccurate(false);
-                        context.getHit().incrementAbsorbedDamage(hit);
-                    });
-                } else {
-                    if (Misc.getRandom(10) <= 7) {
-                        container.allHits(context -> {
-                            if (PrayerHandler.isActivated(victim,
-                                    PrayerHandler.getProtectingPrayer(container.getCombatType()))
-                                    || CurseHandler.isActivated(victim,
-                                    CurseHandler.getProtectingPrayer(container.getCombatType()))) {
-                                return; // we don't want to do the calculation now if they are praying against the right
-                                // style.
-                            }
-                            if (context.getHit().getDamage() > 10) {
-                                if (victim.getSkillManager().getCurrentLevel(Skill.PRAYER) > 0) {
-                                    int prayerLost = (int) (context.getHit().getDamage() * 0.1);
-                                    if (victim.getSkillManager().getCurrentLevel(Skill.PRAYER) >= prayerLost) {
-                                        context.getHit().incrementAbsorbedDamage((int) (context.getHit().getDamage()
-                                                - (context.getHit().getDamage() * 0.75)));
-                                        if (victim.getEquipment().getItems()[Equipment.CAPE_SLOT].getId() != 1486) {
-                                            victim.getSkillManager().setCurrentLevel(Skill.PRAYER,
-                                                    victim.getSkillManager().getCurrentLevel(Skill.PRAYER) - prayerLost);
-                                        }
-                                        if (victim.isSpiritDebug()) {
-                                            victim.getPacketSender()
-                                                    .sendMessage(
-                                                            "Your spirit shield has drained " + prayerLost
-                                                                    + " prayer points to absorb "
-                                                                    + (int) (context.getHit().getDamage()
-                                                                    - (context.getHit().getDamage() * 0.75))
-                                                                    + " damage.");
-                                        }
-                                    }
-                                }
-                            } else {
-                                if (victim.isSpiritDebug()) {
-                                    victim.getPacketSender()
-                                            .sendMessage("Spirit Shield did not activate as damage was under 10.");
-                                }
-                            }
-                        });
-                    } else {
-                        if (victim.isSpiritDebug()) {
-                            victim.getPacketSender()
-                                    .sendMessage("Your shield was not in the 70% RNG required to activate it.");
-                        }
-                    }
-                }
-            }
+            Player victim = (Player) builder.getVictim();
             if (builder.getCharacter().isNpc()) {
                 NPC attacker = (NPC) builder.getCharacter();
                 // Except for verac of course :)
@@ -700,13 +638,6 @@ public final class CombatFactory {
                             context.setAccurate(false);
                             context.getHit().incrementAbsorbedDamage(hit);
                         } else {
-                            // now that we know they're praying, check if they also have the spirit shield.
-                            if (victim.getEquipment().getItems()[Equipment.SHIELD_SLOT].getId() == 13740
-                                    || victim.getEquipment().getItems()[Equipment.SHIELD_SLOT].getId() == 13742) {
-                                if (victim.isSpiritDebug()) {
-                                    victim.getPacketSender()
-                                            .sendMessage("Original DMG: " + context.getHit().getDamage());
-                                }
                                 double reduceRatio = attacker.getId() == 1158 || attacker.getId() == 1160 ? 0.4 : 0.8;
                                 double mod = Math.abs(1 - reduceRatio);
                                 context.getHit().incrementAbsorbedDamage((int) (hit - (hit * mod)));
@@ -714,54 +645,7 @@ public final class CombatFactory {
                                 if (mod <= CombatFactory.PRAYER_ACCURACY_REDUCTION) {
                                     context.setAccurate(false);
                                 }
-                                if (victim.isSpiritDebug()) {
-                                    victim.getPacketSender().sendMessage(
-                                            "Prayer method finished. New DMG: " + context.getHit().getDamage()
-                                                    + " | total absorbed: " + context.getHit().getAbsorb());
-                                }
-                                if (Misc.getRandom(10) <= 7) {
-                                    if (context.getHit().getDamage() > 10) {
-                                        if (victim.getSkillManager().getCurrentLevel(Skill.PRAYER) > 0) {
-                                            int prayerLost = (int) (context.getHit().getDamage() * 0.1);
-                                            if (victim.getSkillManager().getCurrentLevel(Skill.PRAYER) >= prayerLost) {
-                                                context.getHit()
-                                                        .incrementAbsorbedDamage((int) (context.getHit().getDamage()
-                                                                - (context.getHit().getDamage() * 0.75)));
-                                                if (victim.getEquipment().getItems()[Equipment.CAPE_SLOT].getId() != 1486) {
-                                                    victim.getSkillManager().setCurrentLevel(Skill.PRAYER, victim.getSkillManager()
-                                                            .getCurrentLevel(Skill.PRAYER) - prayerLost);
-                                                }
-                                                if (victim.isSpiritDebug()) {
-                                                    victim.getPacketSender()
-                                                            .sendMessage("Your spirit shield has drained " + prayerLost
-                                                                    + " prayer points to absorb "
-                                                                    + (int) (context.getHit().getDamage()
-                                                                    - (context.getHit().getDamage() * 0.75))
-                                                                    + " damage.");
-                                                }
-                                            }
-                                        }
-                                    } else {
-                                        if (victim.isSpiritDebug()) {
-                                            victim.getPacketSender().sendMessage(
-                                                    "Spirit Shield did not activate as damage was under 10.");
-                                        }
-                                    }
-                                } else {
-                                    if (victim.isSpiritDebug()) {
-                                        victim.getPacketSender().sendMessage(
-                                                "Your shield was not in the 70% RNG required to activate it.");
-                                    }
-                                }
-                            } else {
-                                double reduceRatio = attacker.getId() == 1158 || attacker.getId() == 1160 ? 0.4 : 0.8;
-                                double mod = Math.abs(1 - reduceRatio);
-                                context.getHit().incrementAbsorbedDamage((int) (hit - (hit * mod)));
-                                mod = Math.round(Misc.RANDOM.nextDouble() * 100.0) / 100.0;
-                                if (mod <= CombatFactory.PRAYER_ACCURACY_REDUCTION) {
-                                    context.setAccurate(false);
-                                }
-                            }
+
                         }
                     });
                 }
@@ -897,7 +781,7 @@ public final class CombatFactory {
      * @param container the attacker's combat container.
      * @param damage    the total amount of damage dealt.
      */
-    protected static void giveExperience(CombatBuilder builder, CombatContainer container, long damage) {
+    static void giveExperience(CombatBuilder builder, CombatContainer container, long damage) {
 
         // This attack does not give any experience.
         if (container.getExperience().length == 0 && container.getCombatType() != MAGIC) {
@@ -910,18 +794,18 @@ public final class CombatFactory {
 
             if (container.getCombatType() == MAGIC) {
                 if (player.getCurrentlyCasting() != null)
-                    player.getSkillManager().addExperience(Skill.MAGIC,
+                    player.getNewSkills().xpUp(S_Skills.MAGIC,
                             (int) (((damage * .90)) / container.getExperience().length)
                                     + builder.getCharacter().getCurrentlyCasting().baseExperience());
             } else {
                 for (int i : container.getExperience()) {
-                    Skill skill = Skill.forId(i);
-                    player.getSkillManager().addExperience(skill,
+                    S_Skills skill = S_Skills.forId(i);
+                    player.getNewSkills().xpUp(skill,
                             (int) (((damage * .90)) / container.getExperience().length));
                 }
             }
 
-            player.getSkillManager().addExperience(Skill.CONSTITUTION, (int) ((damage * 0.7)));
+            player.getNewSkills().xpUp(S_Skills.HITPOINTS, (int) ((damage * 0.7)));
         }
     }
 
@@ -982,56 +866,7 @@ public final class CombatFactory {
     // TODO: Use abstraction for this, will need it when more effects are added.
     static void handleArmorEffects(Character attacker, Character target, long damage, CombatType combatType) {
         if (attacker.getConstitution() > 0 && damage > 0) {
-            if (target != null && target.isPlayer()) {
-                Player t2 = (Player) target;
-                /** RECOIL **/
-                if (t2.getEquipment().getItems()[Equipment.RING_SLOT].getId() == 2550) {
-                    long recDamage = Math.round((float) (damage * 0.10));
-                    if (recDamage < 1) {
-                        recDamage = 1;
-                    }
-                    if (recDamage > t2.getConstitution())
-                        recDamage = t2.getConstitution();
-                    attacker.dealDamage(new Hit(recDamage, Hitmask.RED, CombatIcon.DEFLECT));
-                    ItemDegrading.handleItemDegrading(t2, DegradingItem.RING_OF_RECOIL);
 
-                    /*
-                     * if (t.getEquipment().contains(2550) && t.isHandleRecoil()) { //ring of recoil
-                     * if (t.getRingOfRecoilCharges() == 1) { t.getEquipment().delete(2550, 1);
-                     * t.getPacketSender().
-                     * sendMessage("<img=5> @blu@Your Ring of Recoil has shattered.");
-                     * t.setRingOfRecoilCharges(400); return; } t.setHandleRecoil(false); int
-                     * returnDamage = Math.round((float) (damage * 0.1)); if (returnDamage < 1) {
-                     * returnDamage = 1; } if(attacker.getConstitution() < returnDamage)
-                     * returnDamage = attacker.getConstitution(); attacker.dealDamage(new
-                     * Hit(returnDamage, Hitmask.RED, CombatIcon.DEFLECT));
-                     * t.set(t.getRecoilCharges()-1); t.setHandleRecoil(true); }
-                     */
-                }
-
-                /** PHOENIX NECK **/
-                if (t2.getEquipment().getItems()[Equipment.AMULET_SLOT].getId() == 11090
-                        && t2.getLocation() != Location.DUEL_ARENA) {
-                    int restore = (int) (t2.getSkillManager().getMaxLevel(Skill.CONSTITUTION) * .3);
-                    if (t2.getSkillManager().getCurrentLevel(
-                            Skill.CONSTITUTION) <= t2.getSkillManager().getMaxLevel(Skill.CONSTITUTION) * .2) {
-                        t2.performGraphic(new Graphic(1690));
-                        t2.getEquipment().delete(t2.getEquipment().getItems()[Equipment.AMULET_SLOT]);
-                        t2.getSkillManager().setCurrentLevel(Skill.CONSTITUTION,
-                                t2.getSkillManager().getCurrentLevel(Skill.CONSTITUTION) + restore);
-                        t2.getPacketSender().sendMessage(
-                                "Your Phoenix Necklace restored your Constitution, but was destroyed in the process.");
-                        t2.getUpdateFlag().flag(Flag.APPEARANCE);
-                    }
-                }
-
-                /*
-                 * need loop for enum - .forid()?
-                 */
-
-                // WeaponPoison.handleWeaponPoison(((Player)attacker), t2);
-
-            }
         }
     }
 
@@ -1046,20 +881,6 @@ public final class CombatFactory {
         // Prayer effects can only be done with victims that are players.
         if (target.isPlayer() && damage > 0) {
             Player victim = (Player) target;
-
-            // The redemption prayer effect.
-            if (PrayerHandler.isActivated(victim, PrayerHandler.REDEMPTION)
-                    && victim.getConstitution() <= (victim.getSkillManager().getMaxLevel(Skill.CONSTITUTION) / 10)) {
-                int amountToHeal = (int) (victim.getSkillManager().getMaxLevel(Skill.PRAYER) * .25);
-                victim.performGraphic(new Graphic(436));
-                victim.getSkillManager().setCurrentLevel(Skill.PRAYER, 0);
-                victim.getSkillManager().updateSkill(Skill.PRAYER);
-                victim.getSkillManager().setCurrentLevel(Skill.CONSTITUTION, (int) (victim.getConstitution() + amountToHeal));
-                victim.getSkillManager().updateSkill(Skill.CONSTITUTION);
-                victim.getPacketSender().sendMessage("You've run out of prayer points!");
-                PrayerHandler.deactivateAll(victim);
-                return;
-            }
 
             // These last prayers can only be done with player attackers.
             if (attacker.isPlayer()) {
@@ -1080,14 +901,6 @@ public final class CombatFactory {
                         p.dealDamage(new Hit(Misc.inclusiveRandom(CombatFactory.MAXIMUM_RETRIBUTION_DAMAGE),
                                 Hitmask.RED, CombatIcon.DEFLECT));
                     }
-                }
-
-                if (PrayerHandler.isActivated((Player) attacker, PrayerHandler.SMITE)) {
-                    victim.getSkillManager().setCurrentLevel(Skill.PRAYER,
-                            (int) (victim.getSkillManager().getCurrentLevel(Skill.PRAYER) - damage / 4));
-                    if (victim.getSkillManager().getCurrentLevel(Skill.PRAYER) < 0)
-                        victim.getSkillManager().setCurrentLevel(Skill.PRAYER, 0);
-                    victim.getSkillManager().updateSkill(Skill.PRAYER);
                 }
             }
         }
@@ -1115,17 +928,6 @@ public final class CombatFactory {
                             target.performGraphic(new Graphic(2264, GraphicHeight.LOW));
                             new Projectile(target, attacker, 2263, 44, 3, 43, 31, 0).sendProjectile();
                             p.heal(form);
-                            if (target.isPlayer()) {
-                                Player victim = (Player) target;
-                                victim.getSkillManager().setCurrentLevel(Skill.PRAYER,
-                                        (int) (victim.getSkillManager().getCurrentLevel(Skill.PRAYER) - form));
-                                if (victim.getSkillManager().getCurrentLevel(Skill.PRAYER) < 0) {
-                                    victim.getSkillManager().setCurrentLevel(Skill.PRAYER, 0);
-                                    CurseHandler.deactivateCurses(victim);
-                                    PrayerHandler.deactivatePrayers(victim);
-                                }
-                                victim.getSkillManager().updateSkill(Skill.PRAYER);
-                            }
                         }
                         super.stop();
                     }

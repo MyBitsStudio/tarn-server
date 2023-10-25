@@ -2,8 +2,6 @@ package com.ruse.world.content.combat.pvp;
 
 import com.ruse.util.Misc;
 import com.ruse.world.content.Artifacts;
-import com.ruse.world.content.LoyaltyProgramme;
-import com.ruse.world.content.LoyaltyProgramme.LoyaltyTitles;
 import com.ruse.world.packages.panels.PlayerPanel;
 import com.ruse.world.entity.impl.player.Player;
 
@@ -77,16 +75,6 @@ public class PlayerKillingAttributes {
 			PlayerPanel.refreshPanel(player);
 
 			/** ACHIEVEMENTS AND LOYALTY TITLES **/
-			LoyaltyProgramme.unlock(player, LoyaltyTitles.KILLER);
-			if (this.playerKills >= 15) {
-				LoyaltyProgramme.unlock(player, LoyaltyTitles.SLAUGHTERER);
-			}
-			if (this.playerKills >= 50) {
-				LoyaltyProgramme.unlock(player, LoyaltyTitles.GENOCIDAL);
-			}
-			if (this.playerKillStreak >= 15) {
-				LoyaltyProgramme.unlock(player, LoyaltyTitles.IMMORTAL);
-			}
 		}
 	}
 

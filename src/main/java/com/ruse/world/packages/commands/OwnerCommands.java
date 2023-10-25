@@ -17,11 +17,11 @@ import com.ruse.world.packages.clans.ClanManager;
 import com.ruse.world.content.grandexchange.GrandExchangeOffers;
 import com.ruse.world.packages.pets.CompanionData;
 import com.ruse.world.packages.serverperks.ServerPerks;
-import com.ruse.world.content.skill.SkillManager;
 import com.ruse.world.content.transportation.TeleportHandler;
 import com.ruse.world.content.transportation.TeleportType;
 import com.ruse.world.packages.johnachievementsystem.AchievementHandler;
 import com.ruse.world.packages.shops.ShopHandler;
+import com.ruse.world.packages.skills.S_Skills;
 import com.ruse.world.packages.slot.SlotBonus;
 import com.ruse.world.packages.slot.SlotEffect;
 import com.ruse.world.packages.tower.TarnTower;
@@ -124,10 +124,10 @@ public class OwnerCommands {
                 return true;
             }
             case "master" -> {
-                for (Skill skill : Skill.values()) {
-                    int level = SkillManager.getMaxAchievingLevel(skill);
-                    player.getSkillManager().setCurrentLevel(skill, level).setMaxLevel(skill, level).setExperience(skill,
-                            SkillManager.getExperienceForLevel(level == 120 ? 120 : 99));
+                for (S_Skills skill : S_Skills.values()) {
+                    int level = player.getNewSkills().getMaxAchievingLevel(skill);
+                    player.getNewSkills().setCurrentLevel(skill, level, true).setMaxLevel(skill, level, true).setExperience(skill,
+                            player.getNewSkills().xpForLevel(level), true);
                 }
                 player.getPacketSender().sendMessage("You are now a master of all skills.");
                 player.getUpdateFlag().flag(Flag.APPEARANCE);

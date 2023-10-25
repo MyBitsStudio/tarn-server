@@ -90,21 +90,21 @@ public class RaidsMobs3 implements CombatStrategy {
                     target.sendMessage("If you hurry you can protect yourself from the raids monster spell!");
                 } else if(tick == 6) {
                     int drain = Misc.getRandom(15);
-                    if(selectedDrain == 0 && !PrayerHandler.isActivated(target, PrayerHandler.PROTECT_FROM_MELEE)) {
-                        target.getSkillManager().setCurrentLevel(Skill.ATTACK, (target.getSkillManager().getCurrentLevel(Skill.ATTACK) - drain));
-                        target.getSkillManager().setCurrentLevel(Skill.STRENGTH, (target.getSkillManager().getCurrentLevel(Skill.STRENGTH) - drain));
-                        target.getSkillManager().setCurrentLevel(Skill.DEFENCE, (target.getSkillManager().getCurrentLevel(Skill.DEFENCE) - drain));
-                        target.performGraphic(DRAIN);
-                        target.sendMessage("Your melee stats have been weakened by the raids monster!");
-                    } else if(selectedDrain == 1 && !PrayerHandler.isActivated(target, PrayerHandler.PROTECT_FROM_MAGIC)) {
-                        target.getSkillManager().setCurrentLevel(Skill.MAGIC, (target.getSkillManager().getCurrentLevel(Skill.MAGIC) - drain));
-                        target.performGraphic(DRAIN);
-                        target.sendMessage("Your magic has been weakened by the raids monster!");
-                    } else if(selectedDrain == 2 && !PrayerHandler.isActivated(target, PrayerHandler.PROTECT_FROM_MISSILES)) {
-                        target.getSkillManager().setCurrentLevel(Skill.RANGED, (target.getSkillManager().getCurrentLevel(Skill.RANGED) - drain));
-                        target.performGraphic(DRAIN);
-                        target.sendMessage("Your range has been weakened by the raids monster!");
-                    }
+//                    if(selectedDrain == 0 && !PrayerHandler.isActivated(target, PrayerHandler.PROTECT_FROM_MELEE)) {
+//                        target.getSkillManager().setCurrentLevel(Skill.ATTACK, (target.getSkillManager().getCurrentLevel(Skill.ATTACK) - drain));
+//                        target.getSkillManager().setCurrentLevel(Skill.STRENGTH, (target.getSkillManager().getCurrentLevel(Skill.STRENGTH) - drain));
+//                        target.getSkillManager().setCurrentLevel(Skill.DEFENCE, (target.getSkillManager().getCurrentLevel(Skill.DEFENCE) - drain));
+//                        target.performGraphic(DRAIN);
+//                        target.sendMessage("Your melee stats have been weakened by the raids monster!");
+//                    } else if(selectedDrain == 1 && !PrayerHandler.isActivated(target, PrayerHandler.PROTECT_FROM_MAGIC)) {
+//                        target.getSkillManager().setCurrentLevel(Skill.MAGIC, (target.getSkillManager().getCurrentLevel(Skill.MAGIC) - drain));
+//                        target.performGraphic(DRAIN);
+//                        target.sendMessage("Your magic has been weakened by the raids monster!");
+//                    } else if(selectedDrain == 2 && !PrayerHandler.isActivated(target, PrayerHandler.PROTECT_FROM_MISSILES)) {
+//                        target.getSkillManager().setCurrentLevel(Skill.RANGED, (target.getSkillManager().getCurrentLevel(Skill.RANGED) - drain));
+//                        target.performGraphic(DRAIN);
+//                        target.sendMessage("Your range has been weakened by the raids monster!");
+//                    }
                 } else if (tick == 7) {
                     npc.setChargingAttack(false);
                     stop();

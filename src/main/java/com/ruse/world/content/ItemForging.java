@@ -16,57 +16,57 @@ import lombok.Getter;
  */
 public class ItemForging {
 
-    public static void forgeItem(final Player p, final int item1, final int item2) {
-        if (item1 == item2)
-            return;
-        ItemForgeData data = ItemForgeData.getDataForItems(item1, item2);
-        if (data == null || !p.getInventory().contains(item1) || !p.getInventory().contains(item2))
-            return;
-        if (!p.getClickDelay().elapsed(1000))
-            return;
-        if (p.getInterfaceId() > 0) {
-            p.getPacketSender().sendMessage("Please close the interface you have open before doing this.");
-            return;
-        }
-        Skill skill = Skill.forId(data.skillRequirement[0]);
-        int skillReq = data.skillRequirement[1];
-        if (p.getSkillManager().getCurrentLevel(skill) >= skillReq) {
-            for (Item reqItem : data.requiredItems) {
-                if (!p.getInventory().contains(reqItem.getId())
-                        || p.getInventory().getAmount(reqItem.getId()) < reqItem.getAmount()) {
-                    p.getPacketSender().sendMessage("You need " + Misc.anOrA(reqItem.getDefinition().getName()) + " "
-                            + reqItem.getDefinition().getName() + " to forge a new item.");
-                    return;
-                }
-            }
-            p.performGraphic(new Graphic(2010));
-            for (Item reqItem : data.requiredItems) {
-                if (reqItem.getId() == 1755 || reqItem.getId() == 1595 || reqItem.getId() == 233
-                        || reqItem.getId() == 7329 || reqItem.getId() == 7330 || reqItem.getId() == 7331
-                        || reqItem.getId() == 10326 || reqItem.getId() == 10327)
-                    continue;
-                p.getInventory().delete(reqItem);
-            }
-            p.getInventory().add(data.product, true);
-            final String itemName = Misc.formatText(ItemDefinition.forId(data.product.getId()).getName().toLowerCase());
-            p.getPacketSender().sendMessage("<shad=1>@or2@You've made@mag@ " + Misc.anOrA(itemName) + " " + itemName + ".");
-
-            if (data.isAnnounce()) {
-                String msg = "<img=5><shad>@blu@Forging:@red@ " + p.getUsername() + " has created "  + Misc.anOrA(itemName) + " " + itemName + "!";
-                World.sendMessage(msg);
-            }
-
-            p.getClickDelay().reset();
-            if (data.skillRequirement[2]  != -1){
-                p.getSkillManager().addExperience(skill, data.skillRequirement[2]);// data.skillRequirement[2]);
-            }
-            return;
-        } else {
-            p.getPacketSender().sendMessage("You need " + Misc.anOrA(skill.getFormatName()) + " "
-                    + skill.getFormatName() + " level of at least " + skillReq + " to forge this item.");
-            return;
-        }
-    }
+//    public static void forgeItem(final Player p, final int item1, final int item2) {
+//        if (item1 == item2)
+//            return;
+//        ItemForgeData data = ItemForgeData.getDataForItems(item1, item2);
+//        if (data == null || !p.getInventory().contains(item1) || !p.getInventory().contains(item2))
+//            return;
+//        if (!p.getClickDelay().elapsed(1000))
+//            return;
+//        if (p.getInterfaceId() > 0) {
+//            p.getPacketSender().sendMessage("Please close the interface you have open before doing this.");
+//            return;
+//        }
+//        Skill skill = Skill.forId(data.skillRequirement[0]);
+//        int skillReq = data.skillRequirement[1];
+//        if (p.getSkillManager().getCurrentLevel(skill) >= skillReq) {
+//            for (Item reqItem : data.requiredItems) {
+//                if (!p.getInventory().contains(reqItem.getId())
+//                        || p.getInventory().getAmount(reqItem.getId()) < reqItem.getAmount()) {
+//                    p.getPacketSender().sendMessage("You need " + Misc.anOrA(reqItem.getDefinition().getName()) + " "
+//                            + reqItem.getDefinition().getName() + " to forge a new item.");
+//                    return;
+//                }
+//            }
+//            p.performGraphic(new Graphic(2010));
+//            for (Item reqItem : data.requiredItems) {
+//                if (reqItem.getId() == 1755 || reqItem.getId() == 1595 || reqItem.getId() == 233
+//                        || reqItem.getId() == 7329 || reqItem.getId() == 7330 || reqItem.getId() == 7331
+//                        || reqItem.getId() == 10326 || reqItem.getId() == 10327)
+//                    continue;
+//                p.getInventory().delete(reqItem);
+//            }
+//            p.getInventory().add(data.product, true);
+//            final String itemName = Misc.formatText(ItemDefinition.forId(data.product.getId()).getName().toLowerCase());
+//            p.getPacketSender().sendMessage("<shad=1>@or2@You've made@mag@ " + Misc.anOrA(itemName) + " " + itemName + ".");
+//
+//            if (data.isAnnounce()) {
+//                String msg = "<img=5><shad>@blu@Forging:@red@ " + p.getUsername() + " has created "  + Misc.anOrA(itemName) + " " + itemName + "!";
+//                World.sendMessage(msg);
+//            }
+//
+//            p.getClickDelay().reset();
+//            if (data.skillRequirement[2]  != -1){
+//                p.getSkillManager().addExperience(skill, data.skillRequirement[2]);// data.skillRequirement[2]);
+//            }
+//            return;
+//        } else {
+//            p.getPacketSender().sendMessage("You need " + Misc.anOrA(skill.getFormatName()) + " "
+//                    + skill.getFormatName() + " level of at least " + skillReq + " to forge this item.");
+//            return;
+//        }
+//    }
 
     /**
      * * The enum holding all our data

@@ -46,6 +46,6 @@ public class EnergyHandler {
 	}
 
 	public static double restoreEnergyFormula(Player p) {
-		return 2260 - (p.getSkillManager().getCurrentLevel(Skill.AGILITY) * (p.isResting() ? 13000 : 10));
+		return 2260 - 10;
 	}
 }

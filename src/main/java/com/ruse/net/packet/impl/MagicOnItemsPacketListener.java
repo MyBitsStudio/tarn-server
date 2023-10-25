@@ -84,8 +84,8 @@ public class MagicOnItemsPacketListener implements PacketListener {
                             player.performGraphic(new Graphic(148, GraphicHeight.HIGH));
                             player.getInventory().add(ORE_DATA[i][4], 1);
                             player.getPacketSender().sendTab(GameSettings.MAGIC_TAB);
-                            player.getSkillManager().addExperience(Skill.MAGIC, spell.baseExperience());
-                            player.getSkillManager().addExperience(Skill.SMITHING, Smelting.getExperience(ORE_DATA[i][4]));
+//                            player.getSkillManager().addExperience(Skill.MAGIC, spell.baseExperience());
+//                            player.getSkillManager().addExperience(Skill.SMITHING, Smelting.getExperience(ORE_DATA[i][4]));
                             return;
                         }
                     }
@@ -93,7 +93,7 @@ public class MagicOnItemsPacketListener implements PacketListener {
                 }
                 case BAKE_PIE -> {
                     if (itemId == 2317 || itemId == 2319 || itemId == 2321) {
-                        player.getSkillManager().addExperience(Skill.MAGIC, spell.baseExperience());
+                       // player.getSkillManager().addExperience(Skill.MAGIC, spell.baseExperience());
                         player.performAnimation(new Animation(4413));
                         player.performGraphic(new Graphic(746, GraphicHeight.HIGH));
                         player.getInventory().delete(item.getId(), 1);

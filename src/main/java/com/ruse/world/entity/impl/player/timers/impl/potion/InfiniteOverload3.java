@@ -5,6 +5,9 @@ import com.ruse.world.content.Consumables;
 import com.ruse.world.content.EffectTimer;
 import com.ruse.world.entity.impl.player.Player;
 import com.ruse.world.entity.impl.player.timers.impl.PotionTimer;
+import com.ruse.world.packages.skills.S_Skills;
+
+import java.util.Objects;
 
 public class InfiniteOverload3 extends PotionTimer {
 
@@ -56,7 +59,7 @@ public class InfiniteOverload3 extends PotionTimer {
                 for (int i = 0; i < 7; i++) {
                     if (i == 3 || i == 5)
                         continue;
-                    getPlayer().getSkillManager().setCurrentLevel(Skill.forId(i), getPlayer().getSkillManager().getMaxLevel(i));
+                    getPlayer().getNewSkills().setCurrentLevel(Objects.requireNonNull(S_Skills.forId(i)), getPlayer().getNewSkills().getMaxLevel(Objects.requireNonNull(S_Skills.forId(i))), true);
                 }
                 stop();
             }

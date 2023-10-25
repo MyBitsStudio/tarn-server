@@ -5,6 +5,9 @@ import com.ruse.model.*;
 import com.ruse.model.Locations.Location;
 import com.ruse.world.content.Consumables;
 import com.ruse.world.entity.impl.player.Player;
+import com.ruse.world.packages.skills.S_Skills;
+
+import java.util.Objects;
 
 public class InfinityRagePotionTask extends Task {
 
@@ -43,7 +46,7 @@ public class InfinityRagePotionTask extends Task {
 			for (int i = 0; i < 7; i++) {
 				if (i == 3 || i == 5)
 					continue;
-				player.getSkillManager().setCurrentLevel(Skill.forId(i), player.getSkillManager().getMaxLevel(i));
+				//getPlayer().getNewSkills().setCurrentLevel(Objects.requireNonNull(S_Skills.forId(i)), getPlayer().getNewSkills().getMaxLevel(Objects.requireNonNull(S_Skills.forId(i))), true);
 			}
 			player.setOverloadPotionTimer(0);
 			stop();

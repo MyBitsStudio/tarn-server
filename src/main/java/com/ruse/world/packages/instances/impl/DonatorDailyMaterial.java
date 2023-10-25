@@ -9,6 +9,7 @@ import com.ruse.util.Misc;
 import com.ruse.world.World;
 import com.ruse.world.entity.impl.player.Player;
 import com.ruse.world.packages.instances.Instance;
+import com.ruse.world.packages.skills.S_Skills;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
@@ -71,7 +72,7 @@ public class DonatorDailyMaterial extends Instance {
                    }
                    return true;
                 } else if(object.getPosition().getX() == 3374 && object.getPosition().getY() == 9640){
-                   if(player.getSkillManager().getCurrentLevel(Skill.CRAFTING) <= 24){
+                   if(player.getNewSkills().getCurrentLevel(S_Skills.CRAFTING) <= 24){
                           player.sendMessage("You need a crafting level of 25 to use this well.");
                           return true;
                    } else {
@@ -87,7 +88,7 @@ public class DonatorDailyMaterial extends Instance {
                    }
                    return true;
                 } else if(object.getPosition().getX() == 3363 && object.getPosition().getY() == 9650){
-                    if(player.getSkillManager().getCurrentLevel(Skill.CRAFTING) <= 74){
+                    if(player.getNewSkills().getCurrentLevel(S_Skills.CRAFTING) <= 74){
                         player.sendMessage("You need a crafting level of 75 to use this well.");
                         return true;
                     } else {
@@ -103,7 +104,7 @@ public class DonatorDailyMaterial extends Instance {
                     }
                     return true;
                 } else if(object.getPosition().getX() == 3363 && object.getPosition().getY() == 9629){
-                    if(player.getSkillManager().getCurrentLevel(Skill.CRAFTING) <= 98){
+                    if(player.getNewSkills().getCurrentLevel(S_Skills.CRAFTING) <= 98){
                         player.sendMessage("You need a crafting level of 99 to use this well.");
                         return true;
                     } else {

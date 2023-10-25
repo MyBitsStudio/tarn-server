@@ -53,6 +53,7 @@ import com.ruse.world.content.transportation.TeleportLocations;
 import com.ruse.world.content.transportation.TeleportType;
 import com.ruse.world.entity.impl.player.Player;
 import com.ruse.world.packages.mode.impl.GroupIronman;
+import com.ruse.world.packages.skills.S_Skills;
 import com.ruse.world.packages.skills.mining.Miner;
 import com.ruse.world.packages.skills.mining.MiningProps;
 import com.ruse.world.packages.tower.TarnTower;
@@ -196,22 +197,6 @@ public class ObjectActionPacketListener implements PacketListener {
                         }
                     }
                     switch (id) {
-                        case 20241:
-                            if (Misc.currentTimeMillis() - player.lastLotteryEnter < 1800000) {
-                                player.sendMessage("@blu@Please wait another @red@" + (30 - (int) ((Misc.currentTimeMillis() - player.lastLotteryEnter) / 60000))
-                                        + " minute(s) @blu@before clicking this again.");
-                                return;
-                            }
-                            player.lastLotteryEnter = Misc.currentTimeMillis();
-                        player.getSkillManager().setCurrentLevel(Skill.ATTACK, 135);
-                        player.getSkillManager().setCurrentLevel(Skill.STRENGTH, 135);
-                        player.getSkillManager().setCurrentLevel(Skill.DEFENCE, 135);
-                        player.getSkillManager().setCurrentLevel(Skill.RANGED, 135);
-                        player.getSkillManager().setCurrentLevel(Skill.MAGIC, 135);
-                            player.performAnimation(new Animation(725));
-                            player.performGraphic(new Graphic(1555));
-                            //player.getSeasonPass().incrementExp(300, false);
-                        break;
                         case 4469:
                             Lobby.getInstance().barrierClick(player);
                             break;
@@ -310,15 +295,6 @@ public class ObjectActionPacketListener implements PacketListener {
                                 player.getInstance().remove(player);
                             }
                             break;
-
-                        case 22973:
-                        case 30820:
-                            player.setPoisonDamage(0);
-                            player.getSkillManager().setCurrentLevel(Skill.PRAYER, player.getSkillManager().getMaxLevel(Skill.PRAYER), true);
-                            player.getSkillManager().setCurrentLevel(Skill.CONSTITUTION, player.getSkillManager().getMaxLevel(Skill.CONSTITUTION), true);
-                            player.getPacketSender().sendMessage("You have been rejuvinated.");
-                            player.performGraphic(new Graphic(1310));
-                            break;
                         case 2469:
                             TeleportHandler.teleportPlayer(player, player.getPosition().setZ(player.getPosition().getZ() + 4), TeleportType.NORMAL);
                             break;
@@ -351,41 +327,6 @@ public class ObjectActionPacketListener implements PacketListener {
                         case 16118:
                             player.getPacketSender().sendMessage(
                                     "In order to unlock box of hidden you must use a @blu@Hidden@bla@ key on it.");
-                            break;
-                        case 13615:
-                            if (player.getSkillManager().getCombatLevel() < 100) {
-                                player.getPacketSender().sendMessage(
-                                        "You need a combat level of @blu@100@bla@ and level @blu@50@bla@ on all non-combat skills.@red@no dungeoneering.");
-                                return;
-                            }
-
-                            for (int i = 7; i < Skill.values().length; i++) {
-                                if (i == 21 || i == 25 || i == 24 || i == 23 || i == 18)
-                                    continue;
-                                if (player.getSkillManager().getMaxLevel(i) < 49) {
-
-                                    player.getPacketSender().sendMessage(
-                                            "You must be at least level 50 in every non-combat skill to do raids.");
-                                    return;
-                                }
-                            }
-
-                            TeleportHandler.teleportPlayer(player, new Position(2722, 2737),
-                                    player.getSpellbook().getTeleportType());
-                            Dungeoneering.leave(player, false, true);
-                            if (player.getMinigameAttributes().getDungeoneeringAttributes().getParty() == null) {
-                                player.getPacketSender().sendString(29053, "").sendString(29054, "");
-
-                                for (int i = 0; i < 10; i++) {
-                                    player.getPacketSender().sendString(29095 + i, ""); // this should be the final
-                                    // thing., added UI check for
-                                    // every place now.
-                                }
-                            } else {
-                                player.getMinigameAttributes().getDungeoneeringAttributes().getParty()
-                                        .refreshInterface();
-                            }
-
                             break;
                         case 16150:
                             DialogueManager.sendDialogue(player, new NextLevel(player), -1);
@@ -951,36 +892,6 @@ public class ObjectActionPacketListener implements PacketListener {
                             }
                             Fishing.setupFishing(player, Spot.ROCKTAIL);
                             break;
-                        case 9319:
-                            if (player.getSkillManager().getCurrentLevel(Skill.AGILITY) < 61) {
-                                player.getPacketSender().sendMessage(
-                                        "You need an Agility level of at least 61 or higher to climb this");
-                                return;
-                            }
-                            if (player.getPosition().getZ() == 0)
-                                player.moveTo(new Position(3422, 3549, 1));
-                            else if (player.getPosition().getZ() == 1) {
-                                if (gameObject.getPosition().getX() == 3447)
-                                    player.moveTo(new Position(3447, 3575, 2));
-                                else
-                                    player.moveTo(new Position(3447, 3575, 0));
-                            }
-                            break;
-
-                        case 9320:
-                            if (player.getSkillManager().getCurrentLevel(Skill.AGILITY) < 61) {
-                                player.getPacketSender().sendMessage(
-                                        "You need an Agility level of at least 61 or higher to climb this");
-                                return;
-                            }
-                            if (player.getPosition().getZ() == 1)
-                                player.moveTo(new Position(3422, 3549, 0));
-                            else if (player.getPosition().getZ() == 0)
-                                player.moveTo(new Position(3447, 3575, 1));
-                            else if (player.getPosition().getZ() == 2)
-                                player.moveTo(new Position(3447, 3575, 1));
-                            player.performAnimation(new Animation(828));
-                            break;
                         case 2470:
                             if (player.getTeleblockTimer() > 0) {
                                 player.getPacketSender().sendMessage("You are teleblocked, don't die, noob.");
@@ -1077,17 +988,6 @@ public class ObjectActionPacketListener implements PacketListener {
                              * if(gameObject.getPosition().getX() == 3167 && gameObject.getPosition().getY()
                              * == 5478) { player.moveTo(new Position(3172, 5478, 0)); // }
                              */
-                            break;
-                        case 7836:
-                        case 7808:
-                            int amt = player.getInventory().getAmount(6055);
-                            if (amt > 0) {
-                                player.getInventory().delete(6055, amt);
-                                player.getPacketSender().sendMessage("You put the weed in the compost bin.");
-                                player.getSkillManager().addExperience(Skill.FARMING, 1 * amt);
-                            } else {
-                                player.getPacketSender().sendMessage("You do not have any weeds in your inventory.");
-                            }
                             break;
                         case 5960: // Levers
                         case 5959:
@@ -1193,112 +1093,59 @@ public class ObjectActionPacketListener implements PacketListener {
                             player.getMinigameAttributes().getGodwarsDungeonAttributes().getKillcount()[index] = 0;
                             player.getPacketSender().sendString(16216 + index, "0");
                             break;
-                        case 26289:
-                        case 26286:
-                        case 26288:
-                        case 26287:
-                    if (System.currentTimeMillis() - player.getMinigameAttributes()
-                            .getGodwarsDungeonAttributes().getAltarDelay() < 600000) {
-                        player.getPacketSender().sendMessage("");
-                        player.getPacketSender()
-                                .sendMessage("You can only pray at a God's altar once every 10 minutes.");
-                        player.getPacketSender().sendMessage("You must wait another "
-                                + (int) ((600 - (System.currentTimeMillis() - player.getMinigameAttributes()
-                                .getGodwarsDungeonAttributes().getAltarDelay()) * 0.001))
-                                + " seconds before being able to do this again.");
-                        return;
-                    }
-                            int itemCount = id == 26289 ? Equipment.getItemCount(player, "Bandos", false)
-                                    : id == 26286 ? Equipment.getItemCount(player, "Zamorak", false)
-                                    : id == 26288 ? Equipment.getItemCount(player, "Armadyl", false)
-                                    : id == 26287 ? Equipment.getItemCount(player, "Saradomin", false)
-                                    : 0;
-                            int toRestore = player.getSkillManager().getMaxLevel(Skill.PRAYER) + (itemCount * 10);
-                            if (player.getSkillManager().getCurrentLevel(Skill.PRAYER) >= toRestore) {
-                                player.getPacketSender()
-                                        .sendMessage("You do not need to recharge your Prayer points at the moment.");
-                                return;
-                            }
-                            player.performAnimation(new Animation(645));
-                            player.getSkillManager().setCurrentLevel(Skill.PRAYER, toRestore);
-                            player.getMinigameAttributes().getGodwarsDungeonAttributes()
-                                    .setAltarDelay(System.currentTimeMillis());
-                            break;
-                        case 23093:
-                            if (player.getSkillManager().getCurrentLevel(Skill.AGILITY) < 70) {
-                                player.getPacketSender().sendMessage(
-                                        "You need an Agility level of at least 70 to go through this portal.");
-                                return;
-                            }
-                            if (!player.getClickDelay().elapsed(2000))
-                                return;
-                            int plrHeight = player.getPosition().getZ();
-                            if (plrHeight == 2)
-                                player.moveTo(new Position(2914, 5300, 1));
-                            else if (plrHeight == 1) {
-                                int x1 = gameObject.getPosition().getX();
-                                int y1 = gameObject.getPosition().getY();
-                                if (x1 == 2914 && y1 == 5300)
-                                    player.moveTo(new Position(2912, 5299, 2));
-                                else if (x1 == 2920 && y1 == 5276)
-                                    player.moveTo(new Position(2920, 5274, 0));
-                            } else if (plrHeight == 0)
-                                player.moveTo(new Position(2920, 5276, 1));
-                            player.getClickDelay().reset();
-                            break;
                         case 26439:
-                            if (player.getSkillManager().getMaxLevel(Skill.CONSTITUTION) <= 700
-                                    && !(player.getDonator().isClericPlus())) {
-                                player.getPacketSender().sendMessage(
-                                        "You need a Constitution level of at least 70 to swim across, or be a member.");
-                                return;
-                            }
-                            if (player.getSkillManager().getMaxLevel(Skill.CONSTITUTION) <= 700) {
-                                player.performGraphic(new Graphic(6, GraphicHeight.LOW));
-                                player.getPacketSender().sendMessage(
-                                        "@red@You don't have 70 Constitution, but as a member you can cross anyway.");
-                            }
-                            if (!player.getClickDelay().elapsed(1000))
-                                return;
-                            if (player.isCrossingObstacle())
-                                return;
-                            final String startMessage = "You jump into the icy cold water..";
-                            final String endMessage = "You climb out of the water safely.";
-                            final int jumpGFX = 68;
-                            final int jumpAnimation = 772;
-                            player.setSkillAnimation(773);
-                            player.setCrossingObstacle(true);
-                            player.getUpdateFlag().flag(Flag.APPEARANCE);
-                            player.performAnimation(new Animation(3067));
-                            final boolean goBack2 = player.getPosition().getY() >= 5344;
-                            player.getPacketSender().sendMessage(startMessage);
-                            player.moveTo(new Position(2885, !goBack2 ? 5335 : 5342, 2));
-                            player.setDirection(goBack2 ? Direction.SOUTH : Direction.NORTH);
-                            player.performGraphic(new Graphic(jumpGFX));
-                            player.performAnimation(new Animation(jumpAnimation));
-                            TaskManager.submit(new Task(1, player, false) {
-                                int ticks = 0;
-
-                                @Override
-                                public void execute() {
-                                    ticks++;
-                                    player.getMovementQueue().walkStep(0, goBack2 ? -1 : 1);
-                                    if (ticks >= 10)
-                                        stop();
-                                }
-
-                                @Override
-                                public void stop() {
-                                    player.setSkillAnimation(-1);
-                                    player.setCrossingObstacle(false);
-                                    player.getUpdateFlag().flag(Flag.APPEARANCE);
-                                    player.getPacketSender().sendMessage(endMessage);
-                                    player.moveTo(
-                                            new Position(2885, player.getPosition().getY() < 5340 ? 5333 : 5345, 2));
-                                    setEventRunning(false);
-                                }
-                            });
-                            player.getClickDelay().reset((System.currentTimeMillis() + 9000));
+//                            if (player.getSkillManager().getMaxLevel(Skill.CONSTITUTION) <= 700
+//                                    && !(player.getDonator().isClericPlus())) {
+//                                player.getPacketSender().sendMessage(
+//                                        "You need a Constitution level of at least 70 to swim across, or be a member.");
+//                                return;
+//                            }
+//                            if (player.getSkillManager().getMaxLevel(Skill.CONSTITUTION) <= 700) {
+//                                player.performGraphic(new Graphic(6, GraphicHeight.LOW));
+//                                player.getPacketSender().sendMessage(
+//                                        "@red@You don't have 70 Constitution, but as a member you can cross anyway.");
+//                            }
+//                            if (!player.getClickDelay().elapsed(1000))
+//                                return;
+//                            if (player.isCrossingObstacle())
+//                                return;
+//                            final String startMessage = "You jump into the icy cold water..";
+//                            final String endMessage = "You climb out of the water safely.";
+//                            final int jumpGFX = 68;
+//                            final int jumpAnimation = 772;
+//                            player.setSkillAnimation(773);
+//                            player.setCrossingObstacle(true);
+//                            player.getUpdateFlag().flag(Flag.APPEARANCE);
+//                            player.performAnimation(new Animation(3067));
+//                            final boolean goBack2 = player.getPosition().getY() >= 5344;
+//                            player.getPacketSender().sendMessage(startMessage);
+//                            player.moveTo(new Position(2885, !goBack2 ? 5335 : 5342, 2));
+//                            player.setDirection(goBack2 ? Direction.SOUTH : Direction.NORTH);
+//                            player.performGraphic(new Graphic(jumpGFX));
+//                            player.performAnimation(new Animation(jumpAnimation));
+//                            TaskManager.submit(new Task(1, player, false) {
+//                                int ticks = 0;
+//
+//                                @Override
+//                                public void execute() {
+//                                    ticks++;
+//                                    player.getMovementQueue().walkStep(0, goBack2 ? -1 : 1);
+//                                    if (ticks >= 10)
+//                                        stop();
+//                                }
+//
+//                                @Override
+//                                public void stop() {
+//                                    player.setSkillAnimation(-1);
+//                                    player.setCrossingObstacle(false);
+//                                    player.getUpdateFlag().flag(Flag.APPEARANCE);
+//                                    player.getPacketSender().sendMessage(endMessage);
+//                                    player.moveTo(
+//                                            new Position(2885, player.getPosition().getY() < 5340 ? 5333 : 5345, 2));
+//                                    setEventRunning(false);
+//                                }
+//                            });
+//                            player.getClickDelay().reset((System.currentTimeMillis() + 9000));
                             break;
                         case 26384:
                             if (player.isCrossingObstacle())
@@ -1330,46 +1177,46 @@ public class ObjectActionPacketListener implements PacketListener {
                             player.getPacketSender().sendMessage(
                                     "@red@Nobody is home. Please use the teleport under Modern Bosses to get to Nex.");
                             break;
-                        case 26303:
-                            if (!player.getClickDelay().elapsed(1200))
-                                return;
-                            if (player.getSkillManager().getCurrentLevel(Skill.RANGED) < 70
-                                    && !(player.getDonator().isClericPlus()))
-                                player.getPacketSender()
-                                        .sendMessage("You need a Ranged level of at least 70 to swing across here.")
-                                        .sendMessage(
-                                                "Or, you can get membership for $10 and pass without the requirement.");
-                            else if (!player.getInventory().contains(9418) && !(player.getDonator().isClericPlus())) {
-                                player.getPacketSender().sendMessage(
-                                        "You need a Mithril grapple to swing across here. Explorer Jack might have one.")
-                                        .sendMessage(
-                                                "Or, you can get membership for $10 and pass without the requirement.");
-                                return;
-                            } else {
-                                if (player.getSkillManager().getCurrentLevel(Skill.RANGED) < 70) {
-                                    player.getPacketSender().sendMessage(
-                                            "@red@You don't have 70 Ranged, but as a member you can enter anyway.");
-                                    player.performGraphic(new Graphic(6, GraphicHeight.LOW));
-                                }
-                                if (!(player.getInventory().contains(9418))) {
-                                    player.performGraphic(new Graphic(6, GraphicHeight.LOW));
-                                    player.getPacketSender().sendMessage(
-                                            "@red@You don't have a Mith grapple, but as a member you can enter anyway.");
-                                }
-                                player.performAnimation(new Animation(789));
-                                TaskManager.submit(new Task(2, player, false) {
-                                    @Override
-                                    public void execute() {
-                                        player.getPacketSender().sendMessage(
-                                                "You throw your Mithril grapple over the pillar and move across.");
-                                        player.moveTo(new Position(2871,
-                                                player.getPosition().getY() <= 5270 ? 5279 : 5269, 2));
-                                        stop();
-                                    }
-                                });
-                                player.getClickDelay().reset();
-                            }
-                            break;
+//                        case 26303:
+//                            if (!player.getClickDelay().elapsed(1200))
+//                                return;
+//                            if (player.getSkillManager().getCurrentLevel(Skill.RANGED) < 70
+//                                    && !(player.getDonator().isClericPlus()))
+//                                player.getPacketSender()
+//                                        .sendMessage("You need a Ranged level of at least 70 to swing across here.")
+//                                        .sendMessage(
+//                                                "Or, you can get membership for $10 and pass without the requirement.");
+//                            else if (!player.getInventory().contains(9418) && !(player.getDonator().isClericPlus())) {
+//                                player.getPacketSender().sendMessage(
+//                                        "You need a Mithril grapple to swing across here. Explorer Jack might have one.")
+//                                        .sendMessage(
+//                                                "Or, you can get membership for $10 and pass without the requirement.");
+//                                return;
+//                            } else {
+//                                if (player.getSkillManager().getCurrentLevel(Skill.RANGED) < 70) {
+//                                    player.getPacketSender().sendMessage(
+//                                            "@red@You don't have 70 Ranged, but as a member you can enter anyway.");
+//                                    player.performGraphic(new Graphic(6, GraphicHeight.LOW));
+//                                }
+//                                if (!(player.getInventory().contains(9418))) {
+//                                    player.performGraphic(new Graphic(6, GraphicHeight.LOW));
+//                                    player.getPacketSender().sendMessage(
+//                                            "@red@You don't have a Mith grapple, but as a member you can enter anyway.");
+//                                }
+//                                player.performAnimation(new Animation(789));
+//                                TaskManager.submit(new Task(2, player, false) {
+//                                    @Override
+//                                    public void execute() {
+//                                        player.getPacketSender().sendMessage(
+//                                                "You throw your Mithril grapple over the pillar and move across.");
+//                                        player.moveTo(new Position(2871,
+//                                                player.getPosition().getY() <= 5270 ? 5279 : 5269, 2));
+//                                        stop();
+//                                    }
+//                                });
+//                                player.getClickDelay().reset();
+//                            }
+//                            break;
                         case 4493:
                             if (player.getPosition().getX() >= 3432) {
                                 player.moveTo(new Position(3433, 3538, 1));
@@ -1408,123 +1255,7 @@ public class ObjectActionPacketListener implements PacketListener {
                         case 1568:
                             player.moveTo(new Position(3097, 9868));
                             break;
-                        case 5103: // Brimhaven vines
-                        case 5104:
-                        case 5105:
-                        case 5106:
-                        case 5107:
-                            if (!player.getClickDelay().elapsed(4000))
-                                return;
-                            if (player.getSkillManager().getCurrentLevel(Skill.WOODCUTTING) < 30) {
-                                player.getPacketSender()
-                                        .sendMessage("You need a Woodcutting level of at least 30 to do this.");
-                                return;
-                            }
-                            if (WoodcuttingData.getHatchet(player) < 0) {
-                                player.getPacketSender().sendMessage(
-                                        "You do not have a hatchet which you have the required Woodcutting level to use.");
-                                return;
-                            }
-                            final Hatchet axe = Hatchet.forId(WoodcuttingData.getHatchet(player));
-                            player.performAnimation(new Animation(axe.getAnim()));
-                            gameObject.setFace(-1);
-                            TaskManager.submit(new Task(3 + Misc.getRandom(4), player, false) {
-                                @Override
-                                protected void execute() {
-                                    if (player.getMovementQueue().isMoving()) {
-                                        stop();
-                                        return;
-                                    }
-                                    int x1 = 0;
-                                    int y1 = 0;
-                                    if (player.getPosition().getX() == 2689 && player.getPosition().getY() == 9564) {
-                                        x1 = 2;
-                                        y1 = 0;
-                                    } else if (player.getPosition().getX() == 2691
-                                            && player.getPosition().getY() == 9564) {
-                                        x1 = -2;
-                                        y1 = 0;
-                                    } else if (player.getPosition().getX() == 2683
-                                            && player.getPosition().getY() == 9568) {
-                                        x1 = 0;
-                                        y1 = 2;
-                                    } else if (player.getPosition().getX() == 2683
-                                            && player.getPosition().getY() == 9570) {
-                                        x1 = 0;
-                                        y1 = -2;
-                                    } else if (player.getPosition().getX() == 2674
-                                            && player.getPosition().getY() == 9479) {
-                                        x1 = 2;
-                                        y1 = 0;
-                                    } else if (player.getPosition().getX() == 2676
-                                            && player.getPosition().getY() == 9479) {
-                                        x1 = -2;
-                                        y1 = 0;
-                                    } else if (player.getPosition().getX() == 2693
-                                            && player.getPosition().getY() == 9482) {
-                                        x1 = 2;
-                                        y1 = 0;
-                                    } else if (player.getPosition().getX() == 2672
-                                            && player.getPosition().getY() == 9499) {
-                                        x1 = 2;
-                                        y1 = 0;
-                                    } else if (player.getPosition().getX() == 2674
-                                            && player.getPosition().getY() == 9499) {
-                                        x1 = -2;
-                                        y1 = 0;
-                                    }
-                                    CustomObjects.objectRespawnTask(player,
-                                            new GameObject(-1, gameObject.getPosition().copy()), gameObject, 10);
-                                    player.getPacketSender().sendMessage("You chop down the vines..");
-                                    player.getSkillManager().addExperience(Skill.WOODCUTTING, 45);
-                                    player.performAnimation(new Animation(65535));
-                                    player.getMovementQueue().walkStep(x1, y1);
-                                    stop();
-                                }
-                            });
-                            player.getClickDelay().reset();
-                            break;
-                        case 305:
-                            if (player.getDonator().isMysticalPlus()) {
-                                boolean restore1 = player.getSpecialPercentage() < 100;
-                                if (restore1) {
-                                    player.setSpecialPercentage(100);
-                                    CombatSpecial.updateBar(player);
-                                    player.getPacketSender().sendMessage("Your special attack energy has been restored.");
-                                }
-                                for (Skill skill : Skill.values()) {
-                                    int increase = skill != Skill.PRAYER && skill != Skill.CONSTITUTION
-                                            && skill != Skill.ATTACK && skill != Skill.STRENGTH && skill != Skill.SUMMONING
-                                            ? 0
-                                            : 0;
-                                    if (player.getSkillManager().getCurrentLevel(
-                                            skill) < (player.getSkillManager().getMaxLevel(skill) + increase))
-                                        player.getSkillManager().setCurrentLevel(skill,
-                                                (player.getSkillManager().getMaxLevel(skill) + increase));
-                                }
-                                player.performAnimation(new Animation(2112));
-                                player.performGraphic(new Graphic(1302));
-                                player.getPacketSender().sendMessage("You have restored yourself.");
-                            } else {
-                                player.getPacketSender().sendMessage("You do not have the required rank to do this.");
-                            }
-                            break;
 
-                        case 29942:
-                            if (player.getSkillManager().getCurrentLevel(Skill.SUMMONING) == player.getSkillManager()
-                                    .getMaxLevel(Skill.SUMMONING)) {
-                                player.getPacketSender()
-                                        .sendMessage("You do not need to recharge your Summoning points right now.");
-                                return;
-                            }
-                            player.performGraphic(new Graphic(1517));
-                            player.getSkillManager().setCurrentLevel(Skill.SUMMONING,
-                                    player.getSkillManager().getMaxLevel(Skill.SUMMONING), true);
-                            player.getPacketSender().sendString(18045,
-                                    " " + player.getSkillManager().getCurrentLevel(Skill.SUMMONING) + "/"
-                                            + player.getSkillManager().getMaxLevel(Skill.SUMMONING));
-                            player.getPacketSender().sendMessage("You recharge your Summoning points.");
-                            break;
 //                        case 57225:
 //                            if (!player.getMinigameAttributes().getGodwarsDungeonAttributes().hasEnteredRoom()) {
 //                                player.setDialogueActionId(44);
@@ -1538,41 +1269,6 @@ public class ObjectActionPacketListener implements PacketListener {
                         // Trying to make this object open a dialouge.
                         // and when clicking on the fi
 
-                        case 9294:
-                            if (player.getSkillManager().getCurrentLevel(Skill.AGILITY) < 80) {
-                                player.getPacketSender()
-                                        .sendMessage("You need an Agility level of at least 80 to use this shortcut.");
-                                return;
-                            }
-                            player.performAnimation(new Animation(769));
-                            TaskManager.submit(new Task(1, player, false) {
-                                @Override
-                                protected void execute() {
-                                    player.moveTo(
-                                            new Position(player.getPosition().getX() >= 2880 ? 2878 : 2880, 9813));
-                                    stop();
-                                }
-                            });
-                            break;
-                        case 9293:
-                            if (!player.getDonator().isClericPlus()
-                                    && player.getSkillManager().getCurrentLevel(Skill.AGILITY) < 70) {
-                                player.getPacketSender()
-                                        .sendMessage("You must have at least 70 Agility to use this shortcut.");
-                                return;
-                            }
-                            if (player.getDonator().isClericPlus()
-                                    && player.getSkillManager().getCurrentLevel(Skill.AGILITY) < 70) {
-                                player.getPacketSender().sendMessage(
-                                        "You do not have 70 Agility, but as a member you can pass anyway.");
-                            }
-                            boolean back = player.getPosition().getX() > 2888;
-                            player.moveTo(back ? new Position(2886, 9799) : new Position(2891, 9799));
-                            break;
-                        case 2320:
-                            back = player.getPosition().getY() == 9969 || player.getPosition().getY() == 9970;
-                            player.moveTo(back ? new Position(3120, 9963) : new Position(3120, 9969));
-                            break;
                         case 1755:
                             player.performAnimation(new Animation(828));
                             player.getPacketSender().sendMessage("You climb the ladder..");
@@ -1812,14 +1508,6 @@ public class ObjectActionPacketListener implements PacketListener {
 //                            player.setDialogueActionId(11);
 //                            DialogueManager.start(player, 20);
 //                            break;
-                        case 28716:
-                            if (!player.busy()) {
-                                player.getSkillManager().updateSkill(Skill.SUMMONING);
-                                player.getPacketSender().sendInterface(63471);
-                            } else
-                                player.getPacketSender()
-                                        .sendMessage("Please finish what you're doing before opening this.");
-                            break;
                         case 6:
                             DwarfCannon cannon = player.getCannon();
                             if (cannon == null || cannon.getOwnerIndex() != player.getIndex()) {
@@ -1859,49 +1547,12 @@ public class ObjectActionPacketListener implements PacketListener {
                         case 409:
                         case 27661:
                         case 2640:
-                        case 36972:
+                        case 36972, 13192, 4859:
                             player.performAnimation(new Animation(645));
-                            if (player.getSkillManager().getCurrentLevel(Skill.PRAYER) < player.getSkillManager()
-                                    .getMaxLevel(Skill.PRAYER)) {
-                                player.getSkillManager().setCurrentLevel(Skill.PRAYER,
-                                        player.getSkillManager().getMaxLevel(Skill.PRAYER), true);
-                                player.getPacketSender().sendMessage("You recharge your Prayer points.");
-                            }
-                            break;
-                        case 13192:
-                            player.performAnimation(new Animation(645));
-                            if (player.getSkillManager().getCurrentLevel(Skill.PRAYER) < player.getSkillManager()
-                                    .getMaxLevel(Skill.PRAYER)) {
-                                player.getSkillManager().setCurrentLevel(Skill.PRAYER,
-                                        player.getSkillManager().getMaxLevel(Skill.PRAYER), true);
-                                player.getPacketSender().sendMessage("You recharge your Prayer points.");
-                            }
-
-                            break;
-                        case 8749:
-                            boolean restore = player.getSpecialPercentage() < 100;
-                            if (restore) {
-                                player.setSpecialPercentage(100);
-                                CombatSpecial.updateBar(player);
-                                player.getPacketSender().sendMessage("Your special attack energy has been restored.");
-                            }
-                            for (Skill skill : Skill.values()) {
-                                int increase = skill != Skill.PRAYER && skill != Skill.CONSTITUTION
-                                        ? 19 : 0;
-                                if (player.getSkillManager().getCurrentLevel(
-                                        skill) < (player.getSkillManager().getMaxLevel(skill) + increase))
-                                    player.getSkillManager().setCurrentLevel(skill,
-                                            (player.getSkillManager().getMaxLevel(skill) + increase));
-                            }
-                            player.performGraphic(new Graphic(1302));
-                            player.getPacketSender().sendMessage("Your stats have received a major buff.");
-                            break;
-                        case 4859:
-                            player.performAnimation(new Animation(645));
-                            if (player.getSkillManager().getCurrentLevel(Skill.PRAYER) < player.getSkillManager()
-                                    .getMaxLevel(Skill.PRAYER)) {
-                                player.getSkillManager().setCurrentLevel(Skill.PRAYER,
-                                        player.getSkillManager().getMaxLevel(Skill.PRAYER), true);
+                            if (player.getNewSkills().getCurrentLevel(S_Skills.PRAYER) < player.getNewSkills()
+                                    .getMaxLevel(S_Skills.PRAYER)) {
+                                player.getNewSkills().setCurrentLevel(S_Skills.PRAYER,
+                                        player.getNewSkills().getMaxLevel(S_Skills.PRAYER), true);
                                 player.getPacketSender().sendMessage("You recharge your Prayer points.");
                             }
                             break;
@@ -1914,21 +1565,21 @@ public class ObjectActionPacketListener implements PacketListener {
                                     .sendMessage("Your magic spellbook is changed..");
                             Autocasting.resetAutocast(player, true);
                             break;
-                        case 410:
-                            if (player.getSkillManager().getMaxLevel(Skill.DEFENCE) < 40) {
-                                player.getPacketSender()
-                                        .sendMessage("You need a Defence level of at least 40 to use this altar.");
-                                return;
-                            }
-                            player.performAnimation(new Animation(645));
-                            player.setSpellbook(player.getSpellbook() == MagicSpellbook.LUNAR ? MagicSpellbook.NORMAL
-                                    : MagicSpellbook.LUNAR);
-                            player.getPacketSender()
-                                    .sendTabInterface(GameSettings.MAGIC_TAB, player.getSpellbook().getInterfaceId())
-                                    .sendMessage("Your magic spellbook is changed..");
-                            ;
-                            Autocasting.resetAutocast(player, true);
-                            break;
+//                        case 410:
+//                            if (player.getSkillManager().getMaxLevel(Skill.DEFENCE) < 40) {
+//                                player.getPacketSender()
+//                                        .sendMessage("You need a Defence level of at least 40 to use this altar.");
+//                                return;
+//                            }
+//                            player.performAnimation(new Animation(645));
+//                            player.setSpellbook(player.getSpellbook() == MagicSpellbook.LUNAR ? MagicSpellbook.NORMAL
+//                                    : MagicSpellbook.LUNAR);
+//                            player.getPacketSender()
+//                                    .sendTabInterface(GameSettings.MAGIC_TAB, player.getSpellbook().getInterfaceId())
+//                                    .sendMessage("Your magic spellbook is changed..");
+//                            ;
+//                            Autocasting.resetAutocast(player, true);
+//                            break;
                         case 452:
                             player.getPacketSender().sendMessage("There's no ore in that rock.");
                             break;

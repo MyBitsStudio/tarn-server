@@ -16,14 +16,14 @@ import com.ruse.world.entity.impl.player.Player;
 public class Smelting {
 
 	public static void openInterface(Player player) {
-		player.getSkillManager().stopSkilling();
+		//player.getSkillManager().stopSkilling();
 		for (int j = 0; j < SmithingData.SMELT_BARS.length; j++)
 			player.getPacketSender().sendInterfaceModel(SmithingData.SMELT_FRAME[j], SmithingData.SMELT_BARS[j], 150);
 		player.getPacketSender().sendChatboxInterface(2400);
 	}
 
 	public static void smeltBar(final Player player, final int barId, final int amount) {
-		player.getSkillManager().stopSkilling();
+		//player.getSkillManager().stopSkilling();
 		player.getPacketSender().sendInterfaceRemoval();
 		if (!SmithingData.canSmelt(player, barId))
 			return;
@@ -49,32 +49,32 @@ public class Smelting {
 	}
 
 	public static void handleBarCreation(int barId, Player player) {
-		if (player.getOres()[0] > 0) {
-			player.getInventory().delete(player.getOres()[0], 1);
-			if (player.getOres()[1] > 0 && player.getOres()[1] != 453) {
-				player.getInventory().delete(player.getOres()[1], 1);
-			} else if (player.getOres()[1] == 453) {
-				if (player.getSkillManager().skillCape(Skill.SMITHING) && Misc.getRandom(3) == 1) {
-					player.getPacketSender().sendMessage("Your cape saves you some coal!");
-				} else {
-					player.getInventory().delete(player.getOres()[1], SmithingData.getCoalAmount(barId));
-				}
-			}
-			if (barId != 2351) { // Iron bar - 50% successrate
-				player.getInventory().add(barId, 1);
-				player.getSkillManager().addExperience(Skill.SMITHING, getExperience(barId));
-			} else if (SmithingData.ironOreSuccess(player) || player.getEquipment().contains(2568)) { // ring of
-																										// foraging
-				if (player.getEquipment().contains(2568)) {
-					ItemDegrading.handleItemDegrading(player, DegradingItem.RING_OF_FORGING);
-				}
-				player.getInventory().add(barId, 1);
-				player.getSkillManager().addExperience(Skill.SMITHING, getExperience(barId));
-			} else
-				player.getPacketSender()
-						.sendMessage("The Iron ore burns too quickly and you're unable to make an Iron bar.");
-			Sounds.sendSound(player, Sound.SMELT_ITEM);
-		}
+//		if (player.getOres()[0] > 0) {
+//			player.getInventory().delete(player.getOres()[0], 1);
+//			if (player.getOres()[1] > 0 && player.getOres()[1] != 453) {
+//				player.getInventory().delete(player.getOres()[1], 1);
+//			} else if (player.getOres()[1] == 453) {
+//				if (player.getSkillManager().skillCape(Skill.SMITHING) && Misc.getRandom(3) == 1) {
+//					player.getPacketSender().sendMessage("Your cape saves you some coal!");
+//				} else {
+//					player.getInventory().delete(player.getOres()[1], SmithingData.getCoalAmount(barId));
+//				}
+//			}
+//			if (barId != 2351) { // Iron bar - 50% successrate
+//				player.getInventory().add(barId, 1);
+//				player.getSkillManager().addExperience(Skill.SMITHING, getExperience(barId));
+//			} else if (SmithingData.ironOreSuccess(player) || player.getEquipment().contains(2568)) { // ring of
+//																										// foraging
+//				if (player.getEquipment().contains(2568)) {
+//					ItemDegrading.handleItemDegrading(player, DegradingItem.RING_OF_FORGING);
+//				}
+//				player.getInventory().add(barId, 1);
+//				player.getSkillManager().addExperience(Skill.SMITHING, getExperience(barId));
+//			} else
+//				player.getPacketSender()
+//						.sendMessage("The Iron ore burns too quickly and you're unable to make an Iron bar.");
+//			Sounds.sendSound(player, Sound.SMELT_ITEM);
+//		}
 	}
 
 	public static int getExperience(int barId) {

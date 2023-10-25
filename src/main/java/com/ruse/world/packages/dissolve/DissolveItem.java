@@ -8,6 +8,7 @@ import com.ruse.util.Misc;
 import com.ruse.world.World;
 import com.ruse.world.entity.impl.player.Player;
 import com.ruse.world.packages.johnachievementsystem.AchievementHandler;
+import com.ruse.world.packages.skills.S_Skills;
 
 public class DissolveItem {
 
@@ -31,7 +32,7 @@ public class DissolveItem {
                     player.getInventory().delete(toDissolve)
                             .add(COINS, Misc.random(25, 200));
                     player.performAnimation(new Animation(712));
-                    player.getSkillManager().addExperience(Skill.CRAFTING, 2);
+                    player.getNewSkills().xpUp(S_Skills.CRAFTING, 2);
                     player.getPacketSender().sendMessage("@or2@You have dissolved @red@" + ItemDefinition.forId(id).getName() + "@or2@");
                 }
                 ran = true;
@@ -46,7 +47,7 @@ public class DissolveItem {
                     player.getInventory().delete(toDissolve)
                             .add(COINS, Misc.random(50, 250));
                     player.performAnimation(new Animation(712));
-                    player.getSkillManager().addExperience(Skill.CRAFTING, 5);
+                    player.getNewSkills().xpUp(S_Skills.CRAFTING, 5);
                     player.getPacketSender().sendMessage("@or2@You have dissolved @red@" + ItemDefinition.forId(id).getName() + "@or2@");
                 }
                 ran = true;
@@ -57,7 +58,7 @@ public class DissolveItem {
                     player.getInventory().delete(toDissolve)
                             .add(COINS, Misc.random(75, 325));
                     player.performAnimation(new Animation(712));
-                    player.getSkillManager().addExperience(Skill.CRAFTING, 9);
+                    player.getNewSkills().xpUp(S_Skills.CRAFTING, 9);
                     player.getPacketSender().sendMessage("@or2@You have dissolved @red@" + ItemDefinition.forId(id).getName() + "@or2@");
                 }
                 ran = true;
@@ -68,7 +69,7 @@ public class DissolveItem {
                     player.getInventory().delete(toDissolve)
                             .add(COINS, Misc.random(100, 500));
                     player.performAnimation(new Animation(712));
-                    player.getSkillManager().addExperience(Skill.CRAFTING, 12);
+                    player.getNewSkills().xpUp(S_Skills.CRAFTING, 12);
                     player.getPacketSender().sendMessage("@or2@You have dissolved @red@" + ItemDefinition.forId(id).getName() + "@or2@");
                 }
                 ran = true;
@@ -79,7 +80,7 @@ public class DissolveItem {
                     player.getInventory().delete(toDissolve)
                             .add(COINS, Misc.random(150, 750));
                     player.performAnimation(new Animation(712));
-                    player.getSkillManager().addExperience(Skill.CRAFTING, 16);
+                    player.getNewSkills().xpUp(S_Skills.CRAFTING, 16);
                     player.getPacketSender().sendMessage("@or2@You have dissolved @red@" + ItemDefinition.forId(id).getName() + "@or2@");
                 }
                 ran = true;
@@ -90,7 +91,7 @@ public class DissolveItem {
                     player.getInventory().delete(toDissolve)
                             .add(COINS, Misc.random(250, 990));
                     player.performAnimation(new Animation(712));
-                    player.getSkillManager().addExperience(Skill.CRAFTING, 21);
+                    player.getNewSkills().xpUp(S_Skills.CRAFTING, 21);
                     player.getPacketSender().sendMessage("@or2@You have dissolved @red@" + ItemDefinition.forId(id).getName() + "@or2@");
                 }
                 ran = true;
@@ -101,7 +102,7 @@ public class DissolveItem {
                     player.getInventory().delete(toDissolve)
                             .add(COINS, Misc.random(375, 1660));
                     player.performAnimation(new Animation(712));
-                    player.getSkillManager().addExperience(Skill.CRAFTING, 26);
+                    player.getNewSkills().xpUp(S_Skills.CRAFTING, 26);
                     player.getPacketSender().sendMessage("@or2@You have dissolved @red@" + ItemDefinition.forId(id).getName() + "@or2@");
                 }
                 ran = true;
@@ -112,7 +113,7 @@ public class DissolveItem {
                     player.getInventory().delete(toDissolve)
                             .add(COINS, Misc.random(425, 2160));
                     player.performAnimation(new Animation(712));
-                    player.getSkillManager().addExperience(Skill.CRAFTING, 32);
+                    player.getNewSkills().xpUp(S_Skills.CRAFTING, 32);
                     player.getPacketSender().sendMessage("@or2@You have dissolved @red@" + ItemDefinition.forId(id).getName() + "@or2@");
                 }
                 ran = true;
@@ -123,7 +124,7 @@ public class DissolveItem {
                     player.getInventory().delete(toDissolve)
                             .add(COINS, Misc.random(555, 2880));
                     player.performAnimation(new Animation(712));
-                    player.getSkillManager().addExperience(Skill.CRAFTING, 38);
+                    player.getNewSkills().xpUp(S_Skills.CRAFTING, 38);
                     player.getPacketSender().sendMessage("@or2@You have dissolved @red@" + ItemDefinition.forId(id).getName() + "@or2@");
                 }
                 ran = true;
@@ -134,7 +135,7 @@ public class DissolveItem {
                     player.getInventory().delete(toDissolve)
                             .add(COINS, Misc.random(650, 3600));
                     player.performAnimation(new Animation(712));
-                    player.getSkillManager().addExperience(Skill.CRAFTING, 42);
+                    player.getNewSkills().xpUp(S_Skills.CRAFTING, 42);
                     player.getPacketSender().sendMessage("@or2@You have dissolved @red@" + ItemDefinition.forId(id).getName() + "@or2@");
                 }
                 ran = true;
@@ -147,7 +148,7 @@ public class DissolveItem {
                     player.getInventory().delete(toDissolve)
                             .add(COINS, Misc.random(780, 4200));
                     player.performAnimation(new Animation(712));
-                    player.getSkillManager().addExperience(Skill.CRAFTING, 48);
+                    player.getNewSkills().xpUp(S_Skills.CRAFTING, 48);
                     player.getPacketSender().sendMessage("@or2@You have dissolved @red@" + ItemDefinition.forId(id).getName() + "@or2@");
                 }
                 ran = true;
@@ -160,7 +161,7 @@ public class DissolveItem {
                     player.getInventory().delete(toDissolve);
                     player.getInventory().add(COINS, Misc.random(890, 4990));
                     player.performAnimation(new Animation(712));
-                    player.getSkillManager().addExperience(Skill.CRAFTING, 52);
+                    player.getNewSkills().xpUp(S_Skills.CRAFTING, 52);
                     player.getPacketSender().sendMessage("@or2@You have dissolved @red@" + ItemDefinition.forId(id).getName() + "@or2@");
                 }
                 ran = true;
@@ -171,7 +172,7 @@ public class DissolveItem {
                     player.getInventory().delete(toDissolve)
                             .add(COINS, Misc.random(925, 5675));
                     player.performAnimation(new Animation(712));
-                    player.getSkillManager().addExperience(Skill.CRAFTING, 58);
+                    player.getNewSkills().xpUp(S_Skills.CRAFTING, 58);
                     player.getPacketSender().sendMessage("@or2@You have dissolved @red@" + ItemDefinition.forId(id).getName() + "@or2@");
                 }
                 ran = true;
@@ -183,7 +184,7 @@ public class DissolveItem {
                     player.getInventory().delete(toDissolve)
                             .add(COINS, Misc.random(989, 6190));
                     player.performAnimation(new Animation(712));
-                    player.getSkillManager().addExperience(Skill.CRAFTING, 62);
+                    player.getNewSkills().xpUp(S_Skills.CRAFTING, 62);
                     player.getPacketSender().sendMessage("@or2@You have dissolved @red@" + ItemDefinition.forId(id).getName() + "@or2@");
                 }
                 ran = true;
@@ -195,7 +196,7 @@ public class DissolveItem {
                     player.getInventory().delete(toDissolve)
                             .add(COINS, Misc.random(1021, 8160));
                     player.performAnimation(new Animation(712));
-                    player.getSkillManager().addExperience(Skill.CRAFTING, 69);
+                    player.getNewSkills().xpUp(S_Skills.CRAFTING, 69);
                     player.getPacketSender().sendMessage("@or2@You have dissolved @red@" + ItemDefinition.forId(id).getName() + "@or2@");
                 }
                 ran = true;
@@ -209,7 +210,7 @@ public class DissolveItem {
                     player.getInventory().delete(toDissolve)
                             .add(COINS, Misc.random(1141, 9652));
                     player.performAnimation(new Animation(712));
-                    player.getSkillManager().addExperience(Skill.CRAFTING, 74);
+                    player.getNewSkills().xpUp(S_Skills.CRAFTING, 74);
                     player.getPacketSender().sendMessage("@or2@You have dissolved @red@" + ItemDefinition.forId(id).getName() + "@or2@");
                 }
                 ran = true;
@@ -222,7 +223,7 @@ public class DissolveItem {
                     player.getInventory().delete(toDissolve)
                             .add(COINS, Misc.random(1341, 11985));
                     player.performAnimation(new Animation(712));
-                    player.getSkillManager().addExperience(Skill.CRAFTING, 79);
+                    player.getNewSkills().xpUp(S_Skills.CRAFTING, 79);
                     player.getPacketSender().sendMessage("@or2@You have dissolved @red@" + ItemDefinition.forId(id).getName() + "@or2@");
                 }
                 ran = true;
@@ -236,7 +237,7 @@ public class DissolveItem {
                     player.getInventory().delete(toDissolve)
                             .add(COINS, Misc.random(2541, 19985));
                     player.performAnimation(new Animation(712));
-                    player.getSkillManager().addExperience(Skill.CRAFTING, 86);
+                    player.getNewSkills().xpUp(S_Skills.CRAFTING, 86);
                     player.getPacketSender().sendMessage("@or2@You have dissolved @red@" + ItemDefinition.forId(id).getName() + "@or2@");
                 }
                 ran = true;
@@ -250,7 +251,7 @@ public class DissolveItem {
                     player.getInventory().delete(toDissolve)
                             .add(COINS, Misc.random(5241, 39985));
                     player.performAnimation(new Animation(712));
-                    player.getSkillManager().addExperience(Skill.CRAFTING, 99);
+                    player.getNewSkills().xpUp(S_Skills.CRAFTING, 99);
                     player.getPacketSender().sendMessage("@or2@You have dissolved @red@" + ItemDefinition.forId(id).getName() + "@or2@");
                 }
                 ran = true;
@@ -262,7 +263,7 @@ public class DissolveItem {
                     player.getInventory().delete(toDissolve)
                             .add(TOKENS, Misc.random(25, 450));
                     player.performAnimation(new Animation(712));
-                    player.getSkillManager().addExperience(Skill.CRAFTING, 198);
+                    player.getNewSkills().xpUp(S_Skills.CRAFTING, 198);
                     player.getPacketSender().sendMessage("@or2@You have dissolved @red@" + ItemDefinition.forId(id).getName() + "@or2@");
                 }
                 ran = true;
@@ -275,7 +276,7 @@ public class DissolveItem {
                     player.getInventory().delete(toDissolve)
                             .add(19639, 1);
                     player.performAnimation(new Animation(712));
-                    player.getSkillManager().addExperience(Skill.CRAFTING, 92);
+                    player.getNewSkills().xpUp(S_Skills.CRAFTING, 92);
                     player.getPacketSender().sendMessage("@or2@You have dissolved @red@" + ItemDefinition.forId(id).getName() + "@or2@");
                 }
                 ran = true;

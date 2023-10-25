@@ -51,36 +51,36 @@ public class MagicOnPlayerPacketListener implements PacketListener {
 			player.getMovementQueue().reset();
 			player.setPositionToFace(attacked.getPosition());
 
-			if (player.getSkillManager().getCurrentLevel(Skill.MAGIC) < 93) {
-				player.getPacketSender().sendMessage("You need a Magic level of at least 93 to cast this spell.");
-			} else if (!player.getInventory().containsAll(557, 560, 9075)) {
-				player.getPacketSender().sendMessage("You do not have the required items to cast this spell.");
-			} else if (!(player.getInventory().getAmount(557) >= 10 && player.getInventory().getAmount(560) >= 2
-					&& player.getInventory().getAmount(9075) >= 3)) {
-				player.getPacketSender().sendMessage("You don't have the required amount of runes to cast this spell.");
-			} else if (!attacked.getLocation().isAidingAllowed() || attacked.getLocation() == Location.DUEL_ARENA
-					|| attacked.getDueling().duelingStatus > 1) {
-				player.getPacketSender().sendMessage("This spell cannot be cast here.");
-			} else if (attacked.hasVengeance()) {
-				player.getPacketSender().sendMessage("That player already has Vengeance active.");
-			} else if (!player.getLastVengeance().elapsed(30000)) {
-				player.getPacketSender().sendMessage("You can only cast a Vengeance once every 30 seconds.");
-			} else {
-
-				player.getInventory().delete(557, 10);
-				player.getInventory().delete(560, 2);
-				player.getInventory().delete(9075, 3);
-
-				player.performAnimation(new Animation(4411));
-
-				player.getPacketSender().sendMessage("You cast Vengeance on " + attacked.getUsername() + ".");
-				attacked.getPacketSender().sendMessage("Your were given Vengeance by " + player.getUsername());
-				player.getLastVengeance().reset();
-				attacked.performGraphic(new Graphic(725));
-				attacked.setHasVengeance(true);
-
-				player.getSkillManager().addExperience(Skill.MAGIC, 108);
-			}
+//			if (player.getSkillManager().getCurrentLevel(Skill.MAGIC) < 93) {
+//				player.getPacketSender().sendMessage("You need a Magic level of at least 93 to cast this spell.");
+//			} else if (!player.getInventory().containsAll(557, 560, 9075)) {
+//				player.getPacketSender().sendMessage("You do not have the required items to cast this spell.");
+//			} else if (!(player.getInventory().getAmount(557) >= 10 && player.getInventory().getAmount(560) >= 2
+//					&& player.getInventory().getAmount(9075) >= 3)) {
+//				player.getPacketSender().sendMessage("You don't have the required amount of runes to cast this spell.");
+//			} else if (!attacked.getLocation().isAidingAllowed() || attacked.getLocation() == Location.DUEL_ARENA
+//					|| attacked.getDueling().duelingStatus > 1) {
+//				player.getPacketSender().sendMessage("This spell cannot be cast here.");
+//			} else if (attacked.hasVengeance()) {
+//				player.getPacketSender().sendMessage("That player already has Vengeance active.");
+//			} else if (!player.getLastVengeance().elapsed(30000)) {
+//				player.getPacketSender().sendMessage("You can only cast a Vengeance once every 30 seconds.");
+//			} else {
+//
+//				player.getInventory().delete(557, 10);
+//				player.getInventory().delete(560, 2);
+//				player.getInventory().delete(9075, 3);
+//
+//				player.performAnimation(new Animation(4411));
+//
+//				player.getPacketSender().sendMessage("You cast Vengeance on " + attacked.getUsername() + ".");
+//				attacked.getPacketSender().sendMessage("Your were given Vengeance by " + player.getUsername());
+//				player.getLastVengeance().reset();
+//				attacked.performGraphic(new Graphic(725));
+//				attacked.setHasVengeance(true);
+//
+//				player.getSkillManager().addExperience(Skill.MAGIC, 108);
+//			}
 		} else {
 			player.setPositionToFace(attacked.getPosition());
 			player.getCombatBuilder().resetCooldown();

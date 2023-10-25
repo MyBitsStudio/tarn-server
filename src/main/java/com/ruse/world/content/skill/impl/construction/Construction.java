@@ -799,65 +799,65 @@ public class Construction {
 
 	public static String hasReqs(Player p, Furniture f, HotSpots hs) {
 
-		if (p.getRank().isDeveloper())
-			return null;
-		if (p.getSkillManager().getCurrentLevel(Skill.DUNGEONEERING) < f.getLevel()) {
-			return "You need a Construction level of at least " + f.getLevel() + " to build this.";
-		}
-		for (int i1 = 0; i1 < f.getRequiredItems().length; i1++) {
-			if (p.getInventory().getAmount(f.getRequiredItems()[i1][0]) < f.getRequiredItems()[i1][1]) {
-				String s = ItemDefinition.forId(f.getRequiredItems()[i1][0]).getName();
-				if (!s.endsWith("s") && f.getRequiredItems()[i1][1] > 1)
-					s = s + "s";
-				return "You need " + f.getRequiredItems()[i1][1] + "x " + s + " to build this.";
-			}
-		}
-		if (f.getAdditionalSkillRequirements() != null) {
-			for (int ii = 0; ii < f.getAdditionalSkillRequirements().length; ii++) {
-				if (p.getSkillManager().getCurrentLevel(Skill.forId(
-						f.getAdditionalSkillRequirements()[ii][0])) < f.getAdditionalSkillRequirements()[ii][1]) {
-					return "You need a " + Skill.forId(f.getAdditionalSkillRequirements()[ii][0]).getFormatName()
-							+ " of at least " + f.getAdditionalSkillRequirements()[ii][1] + "" + " to build this.";
-				}
-			}
-		}
-		if (f.getFurnitureRequired() != -1) {
-			Furniture fur = Furniture.forFurnitureId(f.getFurnitureRequired());
-			int[] myTiles = getMyChunk(p);
-			for (HouseFurniture pf : p.getHouseFurniture()) {
-				if (pf.getRoomX() == myTiles[0] - 1 && pf.getRoomY() == myTiles[1] - 1) {
-					if (pf.getHotSpot(
-							p.getHouseRooms()[p.inConstructionDungeon() ? 4 : p.getPosition().getZ()][myTiles[0]
-									- 1][myTiles[1] - 1].getRotation()) == hs) {
-						if (pf.getFurnitureId() != fur.getFurnitureId()) {
-							return "This is an upgradeable piece of furniture. (build the furniture before this first)";
-						}
-					}
-				}
-			}
-		}
+//		if (p.getRank().isDeveloper())
+//			return null;
+//		if (p.getSkillManager().getCurrentLevel(Skill.DUNGEONEERING) < f.getLevel()) {
+//			return "You need a Construction level of at least " + f.getLevel() + " to build this.";
+//		}
+//		for (int i1 = 0; i1 < f.getRequiredItems().length; i1++) {
+//			if (p.getInventory().getAmount(f.getRequiredItems()[i1][0]) < f.getRequiredItems()[i1][1]) {
+//				String s = ItemDefinition.forId(f.getRequiredItems()[i1][0]).getName();
+//				if (!s.endsWith("s") && f.getRequiredItems()[i1][1] > 1)
+//					s = s + "s";
+//				return "You need " + f.getRequiredItems()[i1][1] + "x " + s + " to build this.";
+//			}
+//		}
+//		if (f.getAdditionalSkillRequirements() != null) {
+//			for (int ii = 0; ii < f.getAdditionalSkillRequirements().length; ii++) {
+//				if (p.getSkillManager().getCurrentLevel(Skill.forId(
+//						f.getAdditionalSkillRequirements()[ii][0])) < f.getAdditionalSkillRequirements()[ii][1]) {
+//					return "You need a " + Skill.forId(f.getAdditionalSkillRequirements()[ii][0]).getFormatName()
+//							+ " of at least " + f.getAdditionalSkillRequirements()[ii][1] + "" + " to build this.";
+//				}
+//			}
+//		}
+//		if (f.getFurnitureRequired() != -1) {
+//			Furniture fur = Furniture.forFurnitureId(f.getFurnitureRequired());
+//			int[] myTiles = getMyChunk(p);
+//			for (HouseFurniture pf : p.getHouseFurniture()) {
+//				if (pf.getRoomX() == myTiles[0] - 1 && pf.getRoomY() == myTiles[1] - 1) {
+//					if (pf.getHotSpot(
+//							p.getHouseRooms()[p.inConstructionDungeon() ? 4 : p.getPosition().getZ()][myTiles[0]
+//									- 1][myTiles[1] - 1].getRotation()) == hs) {
+//						if (pf.getFurnitureId() != fur.getFurnitureId()) {
+//							return "This is an upgradeable piece of furniture. (build the furniture before this first)";
+//						}
+//					}
+//				}
+//			}
+//		}
 
 		return null;
 	}
 
 	public static boolean buildActions(Player p, Furniture f, HotSpots hs) {
-		String s = hasReqs(p, f, hs);
-		if (s != null) {
-			p.getPacketSender().sendMessage(s);
-			return false;
-		}
-		for (int i = 0; i < f.getRequiredItems().length; i++) {
-			ItemDefinition item = ItemDefinition.forId(f.getRequiredItems()[i][0]);
-			if (item.isStackable())
-				p.getInventory().delete(f.getRequiredItems()[i][0], f.getRequiredItems()[i][1]);
-			else {
-				for (int a = 0; a < f.getRequiredItems()[i][1]; a++) {
-					p.getInventory().delete(f.getRequiredItems()[i][0], 1);
-				}
-			}
-		}
-		p.getSkillManager().addExperience(Skill.DUNGEONEERING, f.getXP());
-		return true;
+//		String s = hasReqs(p, f, hs);
+//		if (s != null) {
+//			p.getPacketSender().sendMessage(s);
+//			return false;
+//		}
+//		for (int i = 0; i < f.getRequiredItems().length; i++) {
+//			ItemDefinition item = ItemDefinition.forId(f.getRequiredItems()[i][0]);
+//			if (item.isStackable())
+//				p.getInventory().delete(f.getRequiredItems()[i][0], f.getRequiredItems()[i][1]);
+//			else {
+//				for (int a = 0; a < f.getRequiredItems()[i][1]; a++) {
+//					p.getInventory().delete(f.getRequiredItems()[i][0], 1);
+//				}
+//			}
+//		}
+//		p.getSkillManager().addExperience(Skill.DUNGEONEERING, f.getXP());
+		return false;
 	}
 
 	public static boolean handleButtonClick(int buttonId, Player p) {
@@ -1420,11 +1420,11 @@ public class Construction {
 			}
 			if (p.getDialogueActionId() == 444) {
 				Butlers b = Butlers.forId(((NPC) p.getInteractingEntity()).getId());
-				if (p.getSkillManager().getCurrentLevel(Skill.DUNGEONEERING) < b.getConsLevel()) {
-					//DialogueManager.start(p,
-						//	ConstructionDialogues.hireServantDeclineDialogue(p, b.getNpcId(), "lvlreq"));
-					return true;
-				}
+//				if (p.getSkillManager().getCurrentLevel(Skill.DUNGEONEERING) < b.getConsLevel()) {
+//					//DialogueManager.start(p,
+//						//	ConstructionDialogues.hireServantDeclineDialogue(p, b.getNpcId(), "lvlreq"));
+//					return true;
+//				}
 				int roomCount = 0;
 				for (int z = 0; z < p.getHouseRooms().length; z++) {
 					for (int x = 0; x < p.getHouseRooms()[z].length; x++) {
@@ -2213,10 +2213,10 @@ public class Construction {
 					c.getPacketSender().sendString((38276 + (i2++)) + (i - 1000) * 6,
 							Skill.forId(f.getAdditionalSkillRequirements()[ii][0]).getFormatName() + " "
 									+ f.getAdditionalSkillRequirements()[ii][1]);
-					if (c.getSkillManager().getCurrentLevel(Skill.forId(
-							f.getAdditionalSkillRequirements()[ii][0])) < f.getAdditionalSkillRequirements()[ii][1]) {
-						canMake = false;
-					}
+//					if (c.getSkillManager().getCurrentLevel(Skill.forId(
+//							f.getAdditionalSkillRequirements()[ii][0])) < f.getAdditionalSkillRequirements()[ii][1]) {
+//						canMake = false;
+//					}
 				}
 			}
 			if (f.getFurnitureRequired() != -1) {

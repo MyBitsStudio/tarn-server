@@ -11,6 +11,7 @@ import com.ruse.world.entity.impl.npc.NPC;
 import com.ruse.world.entity.impl.player.Player;
 import com.ruse.world.packages.mode.impl.Ironman;
 import com.ruse.world.packages.mode.impl.UltimateIronman;
+import com.ruse.world.packages.skills.S_Skills;
 
 /**
  * Represents a player's death task, through which the process of dying is
@@ -67,7 +68,7 @@ public class PlayerDeathTask extends Task {
                     player.getCombatBuilder().cooldown(false);
                     player.setTeleporting(false);
                     player.setWalkToTask(null);
-                    player.getSkillManager().stopSkilling();
+                    player.getNewSkills().stopSkilling();
                 }
                 case 2 -> death = getDeathNpc(player);
                 case 0 -> {
@@ -98,7 +99,7 @@ public class PlayerDeathTask extends Task {
                 if (player.isGodMode()) {
                     return;
                 }
-                player.setConstitution(player.getSkillManager().getMaxLevel(Skill.CONSTITUTION));
+                player.setConstitution(player.getNewSkills().getMaxLevel(S_Skills.HITPOINTS));
             }
         }
     }
@@ -145,19 +146,19 @@ public class PlayerDeathTask extends Task {
             player.getInventory().delete(20419, 1);
             player.restart();
             player.sendMessage("Your Accursed Urn has revived you!");
-            player.getSkillManager().setCurrentLevel(Skill.PRAYER,
-                    player.getSkillManager().getCurrentLevel(Skill.PRAYER)
-                            / 2);
+            player.getNewSkills().setCurrentLevel(S_Skills.PRAYER,
+                    player.getNewSkills().getCurrentLevel(S_Skills.PRAYER)
+                            / 2, true);
             return true;
         }
         if(player.getInventory().contains(20413, 1)){
             player.getInventory().delete(20413, 1);
             player.restart();
             player.sendMessage("Your Ceremonial Urn has revived you!");
-            player.getSkillManager().setCurrentLevel(Skill.PRAYER,
-                    player.getSkillManager().getCurrentLevel(Skill.PRAYER)
-                            / 2);
-            player.setConstitution(player.getSkillManager().getMaxLevel(Skill.CONSTITUTION) / 2);
+            player.getNewSkills().setCurrentLevel(S_Skills.PRAYER,
+                    player.getNewSkills().getCurrentLevel(S_Skills.PRAYER)
+                            / 2, true);
+            player.setConstitution(player.getNewSkills().getMaxLevel(S_Skills.HITPOINTS) / 2);
             return true;
         }
         return false;

@@ -8,7 +8,7 @@ public class Tanning {
 
 	public static void selectionInterface(final Player player) {
 		player.getPacketSender().sendInterface(14670);
-		player.getSkillManager().stopSkilling();
+		//player.getSkillManager().stopSkilling();
 		for (final tanningData t : tanningData.values()) {
 			player.getPacketSender().sendInterfaceModel(t.getItemFrame(), t.getLeatherId(), 250);
 			player.getPacketSender().sendString(t.getNameFrame(), t.getName());

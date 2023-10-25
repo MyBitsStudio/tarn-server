@@ -41,69 +41,69 @@ public final class EvilTree {
 
 	public static void handleCutWood(Player player, GameObject object, Hatchet h, EvilTreeDef t2) {
 
-		if (t2 != null) {
-			player.setEntityInteraction(object);
-			if (player.getSkillManager().getCurrentLevel(Skill.WOODCUTTING) >= t2.getWoodcuttingLevel()) {
-				player.performAnimation(new Animation(h.getAnim()));
-				int delay = Misc.getRandom(tickDelay - WoodcuttingData.getChopTimer(player, h)) + 1;
-				player.setCurrentTask(new Task(1, player, false) {
-					int cycle = 0, reqCycle = delay >= 2 ? delay : Misc.getRandom(1) + 1;
-
-					@Override
-					public void execute() {
-						if (player.getInventory().getFreeSlots() == 0) {
-							player.performAnimation(new Animation(65535));
-							player.getPacketSender().sendMessage("You don't have enough free inventory space.");
-							this.stop();
-							return;
-						}
-						if (cycle != reqCycle) {
-							cycle++;
-							player.performAnimation(new Animation(h.getAnim()));
-						} else if (cycle >= reqCycle) {
-
-							List<Trees> validTrees = new ArrayList<Trees>();
-							for (int i = 0; i < Trees.values().length; i++) {
-								if (player.getSkillManager().getCurrentLevel(Skill.WOODCUTTING) >= Trees.values()[i]
-										.getReq()) {
-									if (Trees.values()[i] == Trees.DRAMEN) { // we don't want to give out dramen
-																				// branches lol
-										continue;
-									}
-									validTrees.add(Trees.values()[i]);
-									// // System.out.println("Added: "+Trees.values()[i].toString()+" to rewards
-									// list.");
-								}
-							}
-
-							Trees reward = Misc.randomElement(validTrees);
-							int xp = reward.getXp();
-
-							if (Woodcutting.lumberJack(player))
-								xp *= 1.5;
-							player.getSkillManager().addExperience(Skill.WOODCUTTING, (int) (xp));
-							cycle = 0;
-							this.stop();
-							Woodcutting.cutWood(player, object, true);
-
-							SPAWNED_TREE.getTreeObject().incrementPickAmount();
-							// // System.out.println(EvilTree.SPAWNED_TREE.getTreeObject().getPickAmount() +
-							// "increments");
-							player.getInventory().add(Item.getNoted(reward.getReward()), 1);
-							player.getPacketSender().sendMessage("You get some "
-									+ StringUtils.capitalize(reward.toString().toLowerCase()) + " logs...");
-
-
-						}
-						Sounds.sendSound(player, Sound.WOODCUT);
-					}
-				});
-				TaskManager.submit(player.getCurrentTask());
-			} else {
-				player.getPacketSender().sendMessage(
-						"You need a Woodcutting level of at least " + t2.getWoodcuttingLevel() + " to cut this tree.");
-			}
-		}
+//		if (t2 != null) {
+//			player.setEntityInteraction(object);
+//			if (player.getSkillManager().getCurrentLevel(Skill.WOODCUTTING) >= t2.getWoodcuttingLevel()) {
+//				player.performAnimation(new Animation(h.getAnim()));
+//				int delay = Misc.getRandom(tickDelay - WoodcuttingData.getChopTimer(player, h)) + 1;
+//				player.setCurrentTask(new Task(1, player, false) {
+//					int cycle = 0, reqCycle = delay >= 2 ? delay : Misc.getRandom(1) + 1;
+//
+//					@Override
+//					public void execute() {
+//						if (player.getInventory().getFreeSlots() == 0) {
+//							player.performAnimation(new Animation(65535));
+//							player.getPacketSender().sendMessage("You don't have enough free inventory space.");
+//							this.stop();
+//							return;
+//						}
+//						if (cycle != reqCycle) {
+//							cycle++;
+//							player.performAnimation(new Animation(h.getAnim()));
+//						} else if (cycle >= reqCycle) {
+//
+//							List<Trees> validTrees = new ArrayList<Trees>();
+//							for (int i = 0; i < Trees.values().length; i++) {
+//								if (player.getSkillManager().getCurrentLevel(Skill.WOODCUTTING) >= Trees.values()[i]
+//										.getReq()) {
+//									if (Trees.values()[i] == Trees.DRAMEN) { // we don't want to give out dramen
+//																				// branches lol
+//										continue;
+//									}
+//									validTrees.add(Trees.values()[i]);
+//									// // System.out.println("Added: "+Trees.values()[i].toString()+" to rewards
+//									// list.");
+//								}
+//							}
+//
+//							Trees reward = Misc.randomElement(validTrees);
+//							int xp = reward.getXp();
+//
+//							if (Woodcutting.lumberJack(player))
+//								xp *= 1.5;
+//							player.getSkillManager().addExperience(Skill.WOODCUTTING, (int) (xp));
+//							cycle = 0;
+//							this.stop();
+//							Woodcutting.cutWood(player, object, true);
+//
+//							SPAWNED_TREE.getTreeObject().incrementPickAmount();
+//							// // System.out.println(EvilTree.SPAWNED_TREE.getTreeObject().getPickAmount() +
+//							// "increments");
+//							player.getInventory().add(Item.getNoted(reward.getReward()), 1);
+//							player.getPacketSender().sendMessage("You get some "
+//									+ StringUtils.capitalize(reward.toString().toLowerCase()) + " logs...");
+//
+//
+//						}
+//						Sounds.sendSound(player, Sound.WOODCUT);
+//					}
+//				});
+//				TaskManager.submit(player.getCurrentTask());
+//			} else {
+//				player.getPacketSender().sendMessage(
+//						"You need a Woodcutting level of at least " + t2.getWoodcuttingLevel() + " to cut this tree.");
+//			}
+//		}
 
 	}
 
@@ -306,7 +306,7 @@ public final class EvilTree {
 						&& p.getInteractingObject().getId() == SPAWNED_TREE.treeObject.getId()) {
 					p.performAnimation(new Animation(65535));
 					p.getPacketSender().sendClientRightClickRemoval();
-					p.getSkillManager().stopSkilling();
+					//p.getSkillManager().stopSkilling();
 					// p.getPacketSender().sendMessage("The evil tree has been cut down.");
 				}
 			}

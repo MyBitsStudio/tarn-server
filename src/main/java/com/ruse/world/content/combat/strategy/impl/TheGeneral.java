@@ -78,12 +78,12 @@ public class TheGeneral implements CombatStrategy {
 					int skill = Misc.getRandom(6);
 					Skill skillT = Skill.forId(skill);
 					Player player = target;
-					int lvl = player.getSkillManager().getCurrentLevel(skillT);
-					lvl -= 5 + Misc.getRandom(6);
-					player.getSkillManager().setCurrentLevel(skillT,
-							player.getSkillManager().getCurrentLevel(skillT) - lvl <= 0 ? 1 : lvl);
-					target.getPacketSender()
-							.sendMessage("Your " + skillT.getFormatName() + " has been slighly drained!");
+//					int lvl = player.getSkillManager().getCurrentLevel(skillT);
+//					lvl -= 5 + Misc.getRandom(6);
+//					player.getSkillManager().setCurrentLevel(skillT,
+//							player.getSkillManager().getCurrentLevel(skillT) - lvl <= 0 ? 1 : lvl);
+//					target.getPacketSender()
+//							.sendMessage("Your " + skillT.getFormatName() + " has been slighly drained!");
 					stop();
 					new Projectile(cB, victim, 1901, 44, 3, 43, 31, 0).sendProjectile();
 					cB.setChargingAttack(false).getCombatBuilder()

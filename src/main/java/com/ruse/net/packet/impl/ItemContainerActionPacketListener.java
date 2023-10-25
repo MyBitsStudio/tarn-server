@@ -62,7 +62,7 @@ public class ItemContainerActionPacketListener implements PacketListener {
             case 31510 -> player.getEventBossManager().removeNpcDropReward(id, 1);
             case 2900 -> player.getEventBossManager().addNpcDropReward(id, 1, slot);
             case -16815 -> player.getUimBank().withdraw(id, 1, slot);
-            case -3327 -> player.getUpgradeInterface().handleItemAction(slot);
+            //case -3327 -> player.getUpgradeInterface().handleItemAction(slot);
             case 32621 -> {
             }
             //player.getPlayerOwnedShopManager().handleBuy(slot, id, -1);

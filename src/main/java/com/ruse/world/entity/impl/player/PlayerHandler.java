@@ -33,6 +33,7 @@ import com.ruse.world.packages.seasonpass.SeasonPassConfig;
 import com.ruse.world.packages.seasonpass.SeasonPassManager;
 import com.ruse.world.packages.serverperks.ServerPerks;
 import com.ruse.world.entity.impl.GlobalItemSpawner;
+import com.ruse.world.packages.skills.S_Skills;
 import com.ruse.world.packages.slot.PerkEquip;
 
 import java.util.Objects;
@@ -115,8 +116,10 @@ public class PlayerHandler {
        // player.getSummoning().login();
         //player.getFarming().load();
         //player.getBestItems().fillDefinitions();;
-        for (Skill skill : Skill.values()) {
-            player.getSkillManager().updateSkill(skill);
+
+
+        for (S_Skills skill : S_Skills.values()) {
+            player.getNewSkills().updateSkill(skill);
         }
 
         // Relations
@@ -124,7 +127,7 @@ public class PlayerHandler {
 
         // Client configurations
         player.getPacketSender().sendConfig(172, player.isAutoRetaliate() ? 1 : 0)
-                .sendTotalXp(player.getSkillManager().getTotalGainedExp())
+                .sendTotalXp(player.getNewSkills().getTotalXp())
                 .sendConfig(player.getFightType().getParentId(), player.getFightType().getChildId()).sendRunStatus()
                 .sendRunEnergy(player.getRunEnergy()).sendRights()
                 .sendInteractionOption("Follow", 3, false).sendInteractionOption("Trade With", 4, false);
@@ -347,6 +350,7 @@ public class PlayerHandler {
         //ItemIdentifiers.convert(player);
         player.getTower().fix();
         PerkEquip.fixPerks(player);
+        player.getNewSkills().mergeOld();
 
         player.getPlayerDailies().onLogin(player);
     }

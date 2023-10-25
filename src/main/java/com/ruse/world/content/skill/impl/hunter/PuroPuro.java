@@ -131,41 +131,41 @@ public class PuroPuro {
 		if (player.getInterfaceId() > 0 || player == null || imp == null || implingData == null || !imp.isRegistered()
 				|| !player.getClickDelay().elapsed(2000))
 			return;
-		if (player.getSkillManager().getCurrentLevel(Skill.HUNTER) < implingData.levelReq) {
-			player.getPacketSender().sendMessage(
-					"You need a Hunter level of at least " + implingData.levelReq + " to catch this impling.");
-			return;
-		}
-		if (!player.getInventory().contains(10010) && !player.getEquipment().contains(10010)) {
-			player.getPacketSender().sendMessage("You do not have any net to catch this impling with.");
-			return;
-		}
-		if (!player.getInventory().contains(11260)) {
-			player.getPacketSender().sendMessage("You do not have any empty jars to hold this impling with.");
-			return;
-		}
-		player.performAnimation(new Animation(6605));
-		boolean sucess = player.getSkillManager().getCurrentLevel(Skill.HUNTER) > 8
-				? Misc.getRandom(player.getSkillManager().getCurrentLevel(Skill.HUNTER) / 2) > 1
-				: true;
-		if (sucess) {
-			if (imp.isRegistered()) {
-				World.deregister(imp);
-				TaskManager.submit(new NPCRespawnTask(imp, imp.getDefinition().getRespawn(), null));
-				player.getPacketSender().sendMessage("You successfully catch the impling.");
-				if (player.getSkillManager().skillCape(Skill.HUNTER)) {
-					player.getInventory().delete(11260, 1).add(implingData.impJar, 2);
-					player.getPacketSender().sendMessage("Your cape gives you double the loot!");
-				} else {
-					player.getInventory().delete(11260, 1).add(implingData.impJar, 1);
-				}
-				player.getSkillManager().addExperience(Skill.HUNTER,
-						(int) (implingData.XPReward * GameSettings.BaseImplingExpMultiplier));
-
-			}
-		} else
-			player.getPacketSender().sendMessage("You failed to catch the impling.");
-		player.getClickDelay().reset();
+//		if (player.getSkillManager().getCurrentLevel(Skill.HUNTER) < implingData.levelReq) {
+//			player.getPacketSender().sendMessage(
+//					"You need a Hunter level of at least " + implingData.levelReq + " to catch this impling.");
+//			return;
+//		}
+//		if (!player.getInventory().contains(10010) && !player.getEquipment().contains(10010)) {
+//			player.getPacketSender().sendMessage("You do not have any net to catch this impling with.");
+//			return;
+//		}
+//		if (!player.getInventory().contains(11260)) {
+//			player.getPacketSender().sendMessage("You do not have any empty jars to hold this impling with.");
+//			return;
+//		}
+//		player.performAnimation(new Animation(6605));
+//		boolean sucess = player.getSkillManager().getCurrentLevel(Skill.HUNTER) > 8
+//				? Misc.getRandom(player.getSkillManager().getCurrentLevel(Skill.HUNTER) / 2) > 1
+//				: true;
+//		if (sucess) {
+//			if (imp.isRegistered()) {
+//				World.deregister(imp);
+//				TaskManager.submit(new NPCRespawnTask(imp, imp.getDefinition().getRespawn(), null));
+//				player.getPacketSender().sendMessage("You successfully catch the impling.");
+//				if (player.getSkillManager().skillCape(Skill.HUNTER)) {
+//					player.getInventory().delete(11260, 1).add(implingData.impJar, 2);
+//					player.getPacketSender().sendMessage("Your cape gives you double the loot!");
+//				} else {
+//					player.getInventory().delete(11260, 1).add(implingData.impJar, 1);
+//				}
+//				player.getSkillManager().addExperience(Skill.HUNTER,
+//						(int) (implingData.XPReward * GameSettings.BaseImplingExpMultiplier));
+//
+//			}
+//		} else
+//			player.getPacketSender().sendMessage("You failed to catch the impling.");
+//		player.getClickDelay().reset();
 	}
 
 	/**

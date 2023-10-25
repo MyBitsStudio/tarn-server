@@ -97,11 +97,11 @@ public enum CookingData {
 	 * @return Successfully cook food.
 	 */
 	public static boolean success(Player player, int burnBonus, int levelReq, int stopBurn) {
-		if (player.getSkillManager().getCurrentLevel(Skill.COOKING) >= stopBurn) {
-			return true;
-		}
+//		if (player.getSkillManager().getCurrentLevel(Skill.COOKING) >= stopBurn) {
+//			return true;
+//		}
 		double burn_chance = (45.0 - burnBonus);
-		double cook_level = player.getSkillManager().getCurrentLevel(Skill.COOKING);
+		double cook_level = 120;
 		double lev_needed = (double) levelReq;
 		double burn_stop = (double) stopBurn;
 		double multi_a = (burn_stop - lev_needed);
@@ -118,11 +118,6 @@ public enum CookingData {
 		CookingData fish = forFish(id);
 		if (fish == null)
 			return false;
-		if (player.getSkillManager().getMaxLevel(Skill.COOKING) < fish.getLevelReq()) {
-			player.getPacketSender()
-					.sendMessage("You need a Cooking level of atleast " + fish.getLevelReq() + " to cook this.");
-			return false;
-		}
 		if (!player.getInventory().contains(id)) {
 			player.getPacketSender().sendMessage("You have run out of fish.");
 			return false;

@@ -119,22 +119,6 @@ public class ItemBinding {
 				if (p.getMinigameAttributes().getDungeoneeringAttributes().getBoundItems()[i] != 0)
 					amountBound++;
 			}
-			if (amountBound >= 5) {
-				p.getPacketSender().sendMessage("You have already bound four items, which is the maximum.");
-				return;
-			} else if (amountBound == 4 && p.getSkillManager().getCurrentLevel(Skill.DUNGEONEERING) < 95) {
-				p.getPacketSender().sendMessage("You need a Dungeoneering level of at least 95 to have 5 bound items.");
-				return;
-			} else if (amountBound == 3 && p.getSkillManager().getCurrentLevel(Skill.DUNGEONEERING) < 80) {
-				p.getPacketSender().sendMessage("You need a Dungeoneering level of at least 80 to have 4 bound items.");
-				return;
-			} else if (amountBound == 2 && p.getSkillManager().getCurrentLevel(Skill.DUNGEONEERING) < 60) {
-				p.getPacketSender().sendMessage("You need a Dungeoneering level of at least 60 to have 3 bound items.");
-				return;
-			} else if (amountBound == 1 && p.getSkillManager().getCurrentLevel(Skill.DUNGEONEERING) < 40) {
-				p.getPacketSender().sendMessage("You need a Dungeoneering level of at least 40 to have 2 bound items.");
-				return;
-			}
 			int bind = getItem(item);
 			int index = -1;
 			for (int i = 0; i < p.getMinigameAttributes().getDungeoneeringAttributes().getBoundItems().length; i++) {

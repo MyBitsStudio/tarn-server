@@ -8,7 +8,7 @@ import com.ruse.model.container.impl.UimBank;
 import com.ruse.security.save.SecureLoad;
 import com.ruse.world.content.DropLog;
 import com.ruse.world.content.KillsTracker;
-import com.ruse.world.content.LoyaltyProgramme;
+import com.ruse.world.content.skill.SkillManager;
 import com.ruse.world.packages.attendance.AttendanceProgress;
 import com.ruse.world.packages.attendance.AttendanceTab;
 import com.ruse.world.packages.collectionlog.CollectionEntry;
@@ -19,7 +19,6 @@ import com.ruse.world.content.dailytasks_new.DailyTask;
 import com.ruse.world.content.dailytasks_new.TaskChallenge;
 import com.ruse.world.content.groupironman.GroupManager;
 import com.ruse.world.content.groupironman.IronmanGroup;
-import com.ruse.world.content.skill.SkillManager;
 import com.ruse.world.content.skill.impl.summoning.BossPets;
 import com.ruse.world.entity.impl.player.Player;
 import com.ruse.world.packages.johnachievementsystem.AchievementProgress;
@@ -29,10 +28,12 @@ import com.ruse.world.packages.mode.GameModeConstants;
 import com.ruse.world.packages.ranks.DonatorRank;
 import com.ruse.world.packages.ranks.StaffRank;
 import com.ruse.world.packages.ranks.VIPRank;
+import com.ruse.world.packages.skills.Skills;
 import com.ruse.world.packages.skills.slayer.SlayerMasters;
 import com.ruse.world.packages.skills.slayer.SlayerTask;
 import com.ruse.world.packages.slot.SlotBonus;
 import com.ruse.world.packages.starter.StartShopItems;
+import com.ruse.world.packages.taskscrolls.PlayerTask;
 import com.ruse.world.packages.tracks.ProgressReward;
 import com.ruse.world.packages.tracks.impl.starter.StarterTasks;
 import com.ruse.world.packages.tracks.impl.tarn.elite.TarnEliteTasks;
@@ -255,10 +256,6 @@ public class PlayerSecureLoad extends SecureLoad {
             player.setEntriesCurrency(object.get("entriesCurrency").getAsDouble());
         }
 
-        if (object.has("loyalty-title")) {
-            player.setLoyaltyTitle(LoyaltyProgramme.LoyaltyTitles.valueOf(object.get("loyalty-title").getAsString()));
-        }
-
         if (object.has("position")) {
             player.getPosition().setAs(builder.fromJson(object.get("position"), Position.class));
         }
@@ -275,11 +272,6 @@ public class PlayerSecureLoad extends SecureLoad {
         if (object.has("donated")) {
             player.incrementAmountDonated(object.get("donated").getAsInt());
         }
-
-        if (object.has("total-gained-exp")) {
-            player.getSkillManager().setTotalGainedExp(object.get("total-gained-exp").getAsInt());
-        }
-
 
         if (object.has("Skilling-points")) {
             player.getPointsHandler().setSkillingPoints(object.get("Skilling-points").getAsInt(), false);
@@ -495,9 +487,9 @@ public class PlayerSecureLoad extends SecureLoad {
         }
 
 
-        if (object.has("skills")) {
-            player.getSkillManager().setSkills(builder.fromJson(object.get("skills"), SkillManager.Skills.class));
-        }
+//        if (object.has("skills")) {
+//            player.getSkillManager().setSkills(builder.fromJson(object.get("skills"), SkillManager.Skills.class));
+//        }
         if (object.has("inventory")) {
             player.getInventory()
                     .setItems(builder.fromJson(object.get("inventory").getAsJsonArray(), Item[].class));
@@ -929,6 +921,21 @@ public class PlayerSecureLoad extends SecureLoad {
             player.getTransmorgify().load(builder.fromJson(object.get("transforms"),
                     new TypeToken<List<Transformations>>() {
                     }.getType()));
+        }
+
+        if (object.has("new-tasks")) {
+            player.setPlayerTask(builder.fromJson(object.get("new-tasks"),  new TypeToken<PlayerTask>() {
+            }.getType()));
+
+        }
+
+        if(object.has("new-skills")){
+            player.getNewSkills().setSkills(builder.fromJson(object.get("new-skills"),  new TypeToken<Skills>() {
+            }.getType()));
+        }
+
+        if (object.has("skills")) {
+            player.getSkillManager().setSkills(builder.fromJson(object.get("skills"), SkillManager.Skills.class));
         }
 
 

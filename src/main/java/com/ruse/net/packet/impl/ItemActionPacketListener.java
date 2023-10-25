@@ -30,7 +30,6 @@ import com.ruse.world.content.skill.impl.old_dungeoneering.ItemBinding;
 import com.ruse.world.content.skill.impl.prayer.Prayer;
 import com.ruse.world.content.skill.impl.runecrafting.RunecraftingPouches;
 import com.ruse.world.content.skill.impl.runecrafting.RunecraftingPouches.RunecraftingPouch;
-import com.ruse.world.content.skill.impl.summoning.CharmingImp;
 import com.ruse.world.content.skill.impl.summoning.SummoningData;
 import com.ruse.world.content.skill.impl.woodcutting.BirdNests;
 import com.ruse.world.content.transportation.*;
@@ -53,28 +52,6 @@ public class ItemActionPacketListener implements PacketListener {
     private static final String[] ROCK_CAKE = {"Oww!", "Ouch!", "Owwwy!", "I nearly broke a tooth!", "My teeth!",
             "Who would eat this?", "*grunt*", ":'("};
     public static int count = 0;
-
-    public static boolean drinkInfinityRage(final Player player, int slot, int replacePotion) {
-        if ( player.getLocation() == Location.DUEL_ARENA) {
-            player.getPacketSender().sendMessage("You cannot use this potion here.");
-            return false;
-        }
-        if (player.getOverloadPotionTimer() > 0 && player.getOverloadPotionTimer() < 750) {
-            player.getPacketSender().sendMessage("You already have the effect of an Overload or Super/Infinity Overload potion.");
-            return false;
-        }
-        if (player.getSkillManager().getCurrentLevel(Skill.CONSTITUTION) < 500) {
-            player.getPacketSender().sendMessage("You need to have at least 500 Hitpoints to drink this potion.");
-            return false;
-        }
-        player.performAnimation(new Animation(829));
-        player.getInventory().getItems()[slot] = new Item(replacePotion, 1);
-        player.getInventory().refreshItems();
-        player.setOverloadPotionTimer(600);
-        player.setPotionUsed("Rage");
-        TaskManager.submit(new InfinityRagePotionTask(player));
-        return true;
-    }
 
     private static void firstAction(final Player player, Packet packet) {
         int interfaceId = packet.readUnsignedShort();
@@ -701,21 +678,6 @@ public class ItemActionPacketListener implements PacketListener {
                     return;
                 }
                 PotionHandler.drinkPotion(player, slot, PotionHandler.DIVINE_DMG);
-                break;
-
-            case 21218:
-                player.getInventory().delete(21218, 1);
-                int num1 = 60000 / Difficulty.getDifficultyModifier(player, Skill.DUNGEONEERING);
-                player.getSkillManager().addExperience(Skill.DUNGEONEERING, num1);
-                player.getPacketSender().sendMessage("You've Been rewarded with some Dungeoneering XP.");
-
-                break;
-            case 21219:
-                player.getInventory().delete(21219, 1);
-                int num = 90000 / Difficulty.getDifficultyModifier(player, Skill.SLAYER);
-                player.getSkillManager().addExperience(Skill.SLAYER, num);
-                player.getPacketSender().sendMessage("You've Been rewarded with some slayer XP.");
-
                 break;
         /*    case 15290:
                 player.getInventory().delete(15290, 1).add(ItemDefinition.MILL_ID, 5000);
@@ -1731,9 +1693,6 @@ public class ItemActionPacketListener implements PacketListener {
                 player.getSeasonPass().setPremium(true);
                 player.getInventory().delete(3686, 1);
             }
-            case 3253 ->
-                //	player.getInventory().delete(itemId, 1);
-                    player.getMinimeSystem().despawn();
             case 13591 -> {
                 player.getPacketSender().sendMessage("You rub the enchanted key to teleport to chest area.");
                 Position position = new Position(2706, 2737, 0);
@@ -2167,9 +2126,6 @@ public class ItemActionPacketListener implements PacketListener {
                     return;
                 }
                 VoteRewardHandler.AFKMINE(player, true);
-                break;
-            case 6500:
-                CharmingImp.sendConfig(player);
                 break;
 //            case 13281:
 //            case 13282:

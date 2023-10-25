@@ -543,7 +543,7 @@ public enum MagicSpells {
 			}
 			p.performGraphic(new Graphic(141, GraphicHeight.MIDDLE));
 			p.performAnimation(new Animation(722));
-			p.getSkillManager().addExperience(Skill.MAGIC, spell.getSpell().baseExperience() * i);
+			//p.getSkillManager().addExperience(Skill.MAGIC, spell.getSpell().baseExperience() * i);
 			break;
 		case VENGEANCE:
 			if (p.getLocation() == Location.DUEL_ARENA) {

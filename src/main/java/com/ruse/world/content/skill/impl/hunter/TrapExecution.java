@@ -39,20 +39,20 @@ public class TrapExecution {
 		int chance = 70;
 		if (Hunter.hasLarupia(trap.getOwner()))
 			chance = chance + 10;
-		chance = chance + (int) (trap.getOwner().getSkillManager().getCurrentLevel(Skill.HUNTER) / 1.5) + 10;
-
-		if (trap.getOwner().getSkillManager().getCurrentLevel(Skill.HUNTER) < 25)
-			chance = (int) (chance * 1.5) + 8;
-		if (trap.getOwner().getSkillManager().getCurrentLevel(Skill.HUNTER) < 40)
-			chance = (int) (chance * 1.4) + 3;
-		if (trap.getOwner().getSkillManager().getCurrentLevel(Skill.HUNTER) < 50)
-			chance = (int) (chance * 1.3) + 1;
-		if (trap.getOwner().getSkillManager().getCurrentLevel(Skill.HUNTER) < 55)
-			chance = (int) (chance * 1.2);
-		if (trap.getOwner().getSkillManager().getCurrentLevel(Skill.HUNTER) < 60)
-			chance = (int) (chance * 1.1);
-		if (trap.getOwner().getSkillManager().getCurrentLevel(Skill.HUNTER) < 65)
-			chance = (int) (chance * 1.05) + 3;
+//		chance = chance + (trap.getOwner().getSkillManager().getCurrentLevel(Skill.HUNTER) / 1.5) + 10;
+//
+//		if (trap.getOwner().getSkillManager().getCurrentLevel(Skill.HUNTER) < 25)
+//			chance = (int) (chance * 1.5) + 8;
+//		if (trap.getOwner().getSkillManager().getCurrentLevel(Skill.HUNTER) < 40)
+//			chance = (int) (chance * 1.4) + 3;
+//		if (trap.getOwner().getSkillManager().getCurrentLevel(Skill.HUNTER) < 50)
+//			chance = (int) (chance * 1.3) + 1;
+//		if (trap.getOwner().getSkillManager().getCurrentLevel(Skill.HUNTER) < 55)
+//			chance = (int) (chance * 1.2);
+//		if (trap.getOwner().getSkillManager().getCurrentLevel(Skill.HUNTER) < 60)
+//			chance = (int) (chance * 1.1);
+//		if (trap.getOwner().getSkillManager().getCurrentLevel(Skill.HUNTER) < 65)
+//			chance = (int) (chance * 1.05) + 3;
 
 		return chance;
 	}

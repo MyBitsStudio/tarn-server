@@ -11,7 +11,7 @@ public class Prospecting {
 		if (oreData != null) {
 			if (!plr.getClickDelay().elapsed(2800))
 				return true;
-			plr.getSkillManager().stopSkilling();
+			//plr.getSkillManager().stopSkilling();
 			plr.getPacketSender().sendMessage("You examine the ore...");
 			TaskManager.submit(new Task(2, plr, false) {
 				@Override

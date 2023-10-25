@@ -114,8 +114,6 @@ public class ConstructionData {
 				else if (!p.getInventory().contains(requiredItems[i][1]))
 					return "You don't have the required items to build this.";
 			}
-			if (p.getSkillManager().getCurrentLevel(Skill.MAGIC) < magicLevel)
-				return "You need a magic level of " + magicLevel + " to build this";
 			build(p);
 			return null;
 		}

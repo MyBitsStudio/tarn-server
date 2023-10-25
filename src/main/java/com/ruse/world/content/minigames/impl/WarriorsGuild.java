@@ -69,12 +69,7 @@ public class WarriorsGuild {
 												player.getPosition().getX(), player.getPosition().getY() + 1));
 										npc_.forceChat("I'M ALIVE!!!!").setEntityInteraction(player).getCombatBuilder()
 												.setAttackTimer(2);
-										Player mini = player.getMinimeSystem().getMiniMe();
-										if(mini != null) {
-											npc_.setSpawnedFor(player, mini);
-										} else {
-											npc_.setSpawnedFor(player);
-										}
+										npc_.setSpawnedFor(player);
 										npc_.getCombatBuilder().attack(player);
 										player.setPositionToFace(npc_.getPosition());
 										World.register(npc_);

@@ -29,7 +29,7 @@ public class HeightCheckPacketListener implements PacketListener {
 					player.getMovementQueue().reset(); // Reset movement
 					player.setNeedsPlacement(true); // Block upcoming movement and actions
 					player.getPacketSender().sendHeight(); // Send the proper height level
-					player.getSkillManager().stopSkilling(); // Stop skilling & walkto tasks
+					//player.getSkillManager().stopSkilling(); // Stop skilling & walkto tasks
 					player.getPacketSender().sendInterfaceRemoval(); // Send interface removal
 					player.setWalkToTask(null); // Stop walk to tasks
 				}

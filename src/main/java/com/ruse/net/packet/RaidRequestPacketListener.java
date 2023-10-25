@@ -16,7 +16,7 @@ public class RaidRequestPacketListener implements PacketListener {
 			return;
 		if (player.isTeleporting())
 			return;
-		player.getSkillManager().stopSkilling();
+		player.getNewSkills().stopSkilling();
 		if (player.getLocation() == Location.FIGHT_PITS) {
 			player.getPacketSender().sendMessage("You cannot trade other players here.");
 			return;

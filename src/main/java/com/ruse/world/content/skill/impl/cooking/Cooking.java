@@ -25,7 +25,7 @@ public class Cooking {
 		final CookingData fish = CookingData.forFish(rawFish);
 		if (fish == null)
 			return;
-		player.getSkillManager().stopSkilling();
+		//player.getSkillManager().stopSkilling();
 		player.getPacketSender().sendInterfaceRemoval();
 		if (!CookingData.canCook(player, rawFish))
 			return;
@@ -46,7 +46,7 @@ public class Cooking {
 					player.getPacketSender().sendMessage("You accidently burn the " + fish.getName() + ".");
 				} else {
 					player.getInventory().add(fish.getCookedItem(), 1);
-					player.getSkillManager().addExperience(Skill.COOKING, fish.getXp());
+					//player.getSkillManager().addExperience(Skill.COOKING, fish.getXp());
 
 				}
 				amountCooked++;

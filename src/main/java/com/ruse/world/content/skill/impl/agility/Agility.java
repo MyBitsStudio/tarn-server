@@ -10,10 +10,10 @@ public class Agility {
 
 	public static boolean handleObject(Player p, GameObject object) {
 		if (object.getId() == 2309) {
-			if (p.getSkillManager().getMaxLevel(Skill.AGILITY) < 55) {
-				p.getPacketSender().sendMessage("You need an Agility level of at least 55 to enter this course.");
-				return true;
-			}
+//			if (p.getSkillManager().getMaxLevel(Skill.AGILITY) < 55) {
+//				p.getPacketSender().sendMessage("You need an Agility level of at least 55 to enter this course.");
+//				return true;
+//			}
 		}
 		ObstacleData agilityObject = ObstacleData.forId(object.getId());
 		if (agilityObject != null) {
@@ -48,7 +48,7 @@ public class Agility {
 	}
 
 	public static boolean isSucessive(Player player) {
-		return Misc.getRandom(player.getSkillManager().getCurrentLevel(Skill.AGILITY) / 2) > 1;
+		return false;
 	}
 
 	public static void addExperience(Player player, int experience) {
@@ -60,6 +60,6 @@ public class Agility {
 		if (player.getEquipment().get(Equipment.HANDS_SLOT).getId() == 13849) {
 			experience *= 1.1;
 		}
-		player.getSkillManager().addExperience(Skill.AGILITY, (int) (experience));
+		//player.getSkillManager().addExperience(Skill.AGILITY, (int) (experience));
 	}
 }

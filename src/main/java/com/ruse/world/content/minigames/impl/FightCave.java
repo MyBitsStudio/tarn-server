@@ -34,12 +34,8 @@ public class FightCave {
 					return;
 				}
 				NPC n = new NPC(JAD_NPC_ID, new Position(2399, 5083, player.getPosition().getZ()));
-				Player mini = player.getMinimeSystem().getMiniMe();
-				if(mini != null) {
-					n.setSpawnedFor(player, mini);
-				} else {
-					n.setSpawnedFor(player);
-				}
+				//Player mini = player.getMinimeSystem().getMiniMe();
+				n.setSpawnedFor(player);
 				World.register(n);
 				player.getRegionInstance().getNpcsList().add(n);
 				n.getCombatBuilder().attack(player);

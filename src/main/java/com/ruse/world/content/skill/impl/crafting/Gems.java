@@ -43,26 +43,26 @@ public class Gems {
 		}
 	}
 
-	public static void selectionInterface(Player player, int gem) {
-		player.getPacketSender().sendInterfaceRemoval();
-		GEM_DATA data = GEM_DATA.forUncutGem(gem);
-		if (data == null)
-			return;
-		if (player.getSkillManager().getMaxLevel(Skill.CRAFTING) < data.getLevelReq()) {
-			player.getPacketSender()
-					.sendMessage("You need a Crafting level of atleast " + data.getLevelReq() + " to craft this gem.");
-			return;
-		}
-		player.setSelectedSkillingItem(gem);
-		player.setInputHandling(new EnterAmountOfGemsToCut());
-		player.getPacketSender().sendString(2799, ItemDefinition.forId(gem).getName())
-				.sendInterfaceModel(1746, gem, 150).sendChatboxInterface(4429);
-		player.getPacketSender().sendString(2800, "How many would you like to craft?");
-	}
+//	public static void selectionInterface(Player player, int gem) {
+//		player.getPacketSender().sendInterfaceRemoval();
+//		GEM_DATA data = GEM_DATA.forUncutGem(gem);
+//		if (data == null)
+//			return;
+//		if (player.getSkillManager().getMaxLevel(Skill.CRAFTING) < data.getLevelReq()) {
+//			player.getPacketSender()
+//					.sendMessage("You need a Crafting level of atleast " + data.getLevelReq() + " to craft this gem.");
+//			return;
+//		}
+//		player.setSelectedSkillingItem(gem);
+//		player.setInputHandling(new EnterAmountOfGemsToCut());
+//		player.getPacketSender().sendString(2799, ItemDefinition.forId(gem).getName())
+//				.sendInterfaceModel(1746, gem, 150).sendChatboxInterface(4429);
+//		player.getPacketSender().sendString(2800, "How many would you like to craft?");
+//	}
 
 	public static void cutGem(final Player player, final int amount, final int uncutGem) {
 		player.getPacketSender().sendInterfaceRemoval();
-		player.getSkillManager().stopSkilling();
+		//player.getSkillManager().stopSkilling();
 		final GEM_DATA data = GEM_DATA.forUncutGem(uncutGem);
 		if (data == null)
 			return;
@@ -77,13 +77,13 @@ public class Gems {
 				}
 				player.performAnimation(data.getAnimation());
 				player.getInventory().delete(uncutGem, 1);
-				if (player.getSkillManager().skillCape(Skill.CRAFTING) && (data.getAmuletInt() != -1)
-						&& (Misc.getRandom(10) == 1)) {
-					player.getPacketSender().sendMessage("Your cape instantly turns your gem into an amulet!");
-					player.getInventory().add(data.getAmuletInt(), 1);
-				} else {
-					player.getInventory().add(data.getCutGem(), 1);
-				}
+//				if (player.getSkillManager().skillCape(Skill.CRAFTING) && (data.getAmuletInt() != -1)
+//						&& (Misc.getRandom(10) == 1)) {
+//					player.getPacketSender().sendMessage("Your cape instantly turns your gem into an amulet!");
+//					player.getInventory().add(data.getAmuletInt(), 1);
+//				} else {
+//					player.getInventory().add(data.getCutGem(), 1);
+//				}
 
 			if (data == GEM_DATA.DRAGONSTONE) {
 					DailyTask.CUT_DRAGONSTONES.tryProgress(player);

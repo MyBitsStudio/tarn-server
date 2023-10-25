@@ -49,7 +49,7 @@ public class EmptyInv extends Dialogue {
         switch(option){
             case FIRST_OPTION_OF_TWO-> {
                 getPlayer().getPacketSender().sendInterfaceRemoval().sendMessage("You clear your inventory.");
-                getPlayer().getSkillManager().stopSkilling();
+                getPlayer().getNewSkills().stopSkilling();
                     for (int i = 0; i < getPlayer().getInventory().capacity(); i++) {
                         if (getPlayer().getInventory().get(i) != null && getPlayer().getInventory().get(i).getId() > 0) {
                             if (ItemDefinition.forId(getPlayer().getInventory().get(i).getId()) == null || ItemDefinition.forId(getPlayer().getInventory().get(i).getId()).getName() == null) {

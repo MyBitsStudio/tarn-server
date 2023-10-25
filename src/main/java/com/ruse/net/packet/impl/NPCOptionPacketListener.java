@@ -570,27 +570,6 @@ public class NPCOptionPacketListener implements PacketListener {
             }
             switch (npc.getId()) {
                 case 9000 -> player.getSlayer().sendInterface(player);
-                case 961 -> {
-                    boolean restore = player.getSpecialPercentage() < 100;
-                    if (restore) {
-                        player.setSpecialPercentage(100);
-                        CombatSpecial.updateBar(player);
-                        player.getPacketSender().sendMessage("Your special attack energy has been restored.");
-                    }
-                    for (Skill skill : Skill.values()) {
-                        if (player.getSkillManager().getCurrentLevel(skill) < player.getSkillManager()
-                                .getMaxLevel(skill)) {
-                            player.getSkillManager().setCurrentLevel(skill,
-                                    player.getSkillManager().getMaxLevel(skill));
-                            restore = true;
-                        }
-                    }
-                    if (restore) {
-                        player.performGraphic(new Graphic(1302));
-                        player.getPacketSender().sendMessage("Your stats have been restored.");
-                    } else
-                        player.getPacketSender().sendMessage("Your stats do not need to be restored at the moment.");
-                }
                 case 289 -> //DAILY TASK
                         player.sendMessage("Kingdom's are currently being built. Check back soon!");
                 //case 568 -> ShopManager.getShops().get(207).open(player);

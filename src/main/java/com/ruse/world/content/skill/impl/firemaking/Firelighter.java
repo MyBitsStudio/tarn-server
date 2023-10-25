@@ -39,7 +39,7 @@ public enum Firelighter {
 			return;
 		}
 
-		player.getSkillManager().stopSkilling();
+		//player.getSkillManager().stopSkilling();
 
 		player.setCurrentTask(new Task(1, player, false) {
 			@Override

@@ -30,41 +30,42 @@ public class PouchMaking {
 		if (pouch == null)
 			return false;
 		player.getPacketSender().sendClientRightClickRemoval();
-		if (player.getSkillManager().getMaxLevel(Skill.SUMMONING) >= pouch.getLevelRequired()) {
-			if (player.getInventory().contains(POUCH_ID)) {
-				if (player.getInventory().getAmount(SHARD_ID) >= pouch.getShardsRequired()) {
-					if (player.getInventory().contains(pouch.getCharmId())) {
-						if (player.getInventory().contains(pouch.getsecondIngredientId())) {
-							return true;
-						} else {
-							String msg = new Item(pouch.getsecondIngredientId()).getDefinition().getName().endsWith("s")
-									? "some"
-									: "a";
-							player.getPacketSender()
-									.sendMessage("You need " + msg + " "
-											+ new Item(pouch.getsecondIngredientId()).getDefinition().getName()
-											+ " for this pouch.");
-							return false;
-						}
-					} else {
-						player.getPacketSender().sendMessage("You need a "
-								+ new Item(pouch.getCharmId()).getDefinition().getName() + " for this pouch.");
-						return false;
-					}
-				} else {
-					player.getPacketSender().sendMessage(
-							"You need " + pouch.getShardsRequired() + " Spirit shards to create this pouch.");
-					return false;
-				}
-			} else {
-				player.getPacketSender().sendMessage("You need to have an empty pouch to do this.");
-				return false;
-			}
-		} else {
-			player.getPacketSender().sendMessage(
-					"You need a Summoning level of at least " + pouch.getLevelRequired() + " to create this pouch");
-			return false;
-		}
+//		if (player.getSkillManager().getMaxLevel(Skill.SUMMONING) >= pouch.getLevelRequired()) {
+//			if (player.getInventory().contains(POUCH_ID)) {
+//				if (player.getInventory().getAmount(SHARD_ID) >= pouch.getShardsRequired()) {
+//					if (player.getInventory().contains(pouch.getCharmId())) {
+//						if (player.getInventory().contains(pouch.getsecondIngredientId())) {
+//							return true;
+//						} else {
+//							String msg = new Item(pouch.getsecondIngredientId()).getDefinition().getName().endsWith("s")
+//									? "some"
+//									: "a";
+//							player.getPacketSender()
+//									.sendMessage("You need " + msg + " "
+//											+ new Item(pouch.getsecondIngredientId()).getDefinition().getName()
+//											+ " for this pouch.");
+//							return false;
+//						}
+//					} else {
+//						player.getPacketSender().sendMessage("You need a "
+//								+ new Item(pouch.getCharmId()).getDefinition().getName() + " for this pouch.");
+//						return false;
+//					}
+//				} else {
+//					player.getPacketSender().sendMessage(
+//							"You need " + pouch.getShardsRequired() + " Spirit shards to create this pouch.");
+//					return false;
+//				}
+//			} else {
+//				player.getPacketSender().sendMessage("You need to have an empty pouch to do this.");
+//				return false;
+//			}
+//		} else {
+//			player.getPacketSender().sendMessage(
+//					"You need a Summoning level of at least " + pouch.getLevelRequired() + " to create this pouch");
+//			return false;
+//		}
+		return true;
 	}
 
 	public static void infusePouches(final Player player, final int amount) {
@@ -86,17 +87,17 @@ public class PouchMaking {
 					else {
 						player.getInventory().delete(POUCH_ID, 1);
 						player.getInventory().delete(SHARD_ID, pouch.getShardsRequired());
-						if (player.getSkillManager().skillCape(Skill.SUMMONING)) {
-							if (Misc.getRandom(10) == 1) {
-								player.getPacketSender().sendMessage("Your skillcape saves your charm.");
-							} else {
-								player.getInventory().delete(pouch.getCharmId(), 1);
-							}
-						} else {
-							player.getInventory().delete(pouch.getCharmId(), 1);
-						}
-						player.getInventory().delete(pouch.getsecondIngredientId(), 1);
-						player.getSkillManager().addExperience(Skill.SUMMONING, pouch.getExp());
+//						if (player.getSkillManager().skillCape(Skill.SUMMONING)) {
+//							if (Misc.getRandom(10) == 1) {
+//								player.getPacketSender().sendMessage("Your skillcape saves your charm.");
+//							} else {
+//								player.getInventory().delete(pouch.getCharmId(), 1);
+//							}
+//						} else {
+//							player.getInventory().delete(pouch.getCharmId(), 1);
+//						}
+//						player.getInventory().delete(pouch.getsecondIngredientId(), 1);
+//						player.getSkillManager().addExperience(Skill.SUMMONING, pouch.getExp());
 						player.getInventory().add(pouch.getPouchId(), 1);
 						x--;
 					}

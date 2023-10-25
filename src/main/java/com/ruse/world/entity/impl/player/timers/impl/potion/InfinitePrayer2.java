@@ -5,6 +5,7 @@ import com.ruse.model.Skill;
 import com.ruse.world.content.EffectTimer;
 import com.ruse.world.entity.impl.player.Player;
 import com.ruse.world.entity.impl.player.timers.impl.PotionTimer;
+import com.ruse.world.packages.skills.S_Skills;
 
 public class InfinitePrayer2 extends PotionTimer {
 
@@ -17,13 +18,11 @@ public class InfinitePrayer2 extends PotionTimer {
 
     @Override
     public void applyEffect() {
-        getPlayer().getSkillManager().setCurrentLevel(Skill.PRAYER,
-                getPlayer().getSkillManager().getCurrentLevel(Skill.PRAYER)
-                        + 80);
-        if (getPlayer().getSkillManager().getCurrentLevel(Skill.PRAYER) > getPlayer().getSkillManager()
-                .getMaxLevel(Skill.PRAYER))
-            getPlayer().getSkillManager().setCurrentLevel(Skill.PRAYER,
-                    getPlayer().getSkillManager().getMaxLevel(Skill.PRAYER));
+        if (getPlayer().getNewSkills().getCurrentLevel(S_Skills.PRAYER) < getPlayer().getNewSkills()
+                .getMaxLevel(S_Skills.PRAYER)) {
+            getPlayer().getNewSkills().setCurrentLevel(S_Skills.PRAYER,
+                    getPlayer().getNewSkills().getCurrentLevel(S_Skills.PRAYER) + 100, true);
+        }
     }
 
     @Override

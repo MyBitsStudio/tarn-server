@@ -29,192 +29,192 @@ public class DesolaceFormulas {
      * ===================================MELEE=====================================
      */
 
-    public static int calculateMaxMeleeHit(Character entity, Character victim) {
-        double maxHit = 0;
-        if (entity.isNpc()) {
-            NPC npc = (NPC) entity;
-            maxHit = npc.getMaxHit();
-            if (npc.getStrengthWeakened()[0]) {
-                maxHit -= (int) ((0.10) * (maxHit));
-            } else if (npc.getStrengthWeakened()[1]) {
-                maxHit -= (int) ((0.20) * (maxHit));
-            } else if (npc.getStrengthWeakened()[2]) {
-                maxHit -= (int) ((0.30) * (maxHit));
-            }
-            /** CUSTOM NPCS **/
-            if (npc.getId() == 2026) { // Dharok the wretched
-                maxHit += (int) ((int) (npc.getDefaultConstitution() - npc.getConstitution()) * 0.2);
-            }
-        } else {
-            Player plr = (Player) entity;
-
-            double base = 0;
-            double effective = getEffectiveStr(plr);
-            double specialBonus = 1;
-            if (plr.isSpecialActivated()) {
-                specialBonus = plr.getCombatSpecial().getStrengthBonus();
-            }
-            double strengthBonus = plr.getBonusManager().getOtherBonus()[0];
-            base = (13 + effective + (strengthBonus / 8) + ((effective * strengthBonus) / 65)) / 11;
-            if (plr.getEquipment().getItems()[3].getId() == 4718 && plr.getEquipment().getItems()[0].getId() == 4716
-                    && plr.getEquipment().getItems()[4].getId() == 4720
-                    && plr.getEquipment().getItems()[7].getId() == 4722)
-                base += ((plr.getSkillManager().getMaxLevel(Skill.CONSTITUTION) - plr.getConstitution()) * .045) + 1;
-            if (specialBonus > 1)
-                base = (base * specialBonus);
-            /*
-             * if (hasObsidianEffect(plr))// || EquipmentBonus.wearingVoid(plr))//,
-             * CombatType.MELEE)) base = (base * 1.2);
-             */
-
-            if (victim.isNpc()) {
-
-                NPC npc = (NPC) victim;
-                if (npc.getDefenceWeakened()[0]) {
-                    base += (int) ((0.10) * (base));
-                } else if (npc.getDefenceWeakened()[1]) {
-                    base += (int) ((0.20) * (base));
-                } else if (npc.getDefenceWeakened()[2]) {
-                    base += (int) ((0.30) * (base));
-                }
-
-                /** SLAYER HELMET **/
-
-                Familiar playerFamiliar = plr.getSummoning().getFamiliar();
-
-                if (playerFamiliar != null) {
-                    double bonus = DropUtils.getDamageBonus(playerFamiliar.getSummonNpc().getId());
-
-                   if(!plr.isInsideRaids()) {
-                       if (plr.getSummoning().getFamiliar().getSummonNpc().getId() == BossPets.BossPet.MELEE_PET.npcId) {
-                           bonus += 0.10;
-                       }
-
-                       if (plr.isInMinigame()) {
-                           if (plr.getSummoning().getFamiliar().getSummonNpc().getId() == BossPets.BossPet.GREEN_FENRIR_PET.npcId) {
-                               bonus += 0.10;
-                           }
-                       }
-                   }
-
-                    base *= bonus;
-                }
-                
-            }
-            if (plr.getDmgPotionTimer() > 0) {
-                maxHit *= 1.5;
-            }
-            if(ServerPerks.getInstance().getActivePerk() == ServerPerks.Perk.ALL_PERKS ||
-                    ServerPerks.getInstance().getActivePerk() == ServerPerks.Perk.MEGA_PERK) {
-                base *= 1.5;
-            }
-
-
-            maxHit = (base *= 10);
-            if (plr.getInventory().contains(4442)) {
-            	maxHit *=1.5;
-            }
-        }
-        if (victim.isPlayer()) {
-            Player p = (Player) victim;
-            if (p.hasStaffOfLightEffect()) {
-                maxHit = maxHit / 2;
-                p.performGraphic(new Graphic(2319));
-            }
-        }
-        
-        return (int) Math.floor(maxHit);
-    }
-
-    /**
-     * Calculates a player's Melee attack level (how likely that they're going to
-     * hit through defence)
-     *
-     * @param plr The player's Meelee attack level
-     * @return The player's Melee attack level
-     */
-    @SuppressWarnings("incomplete-switch")
-    public static int getMeleeAttack(Player plr) {
-        int attackLevel = plr.getSkillManager().getCurrentLevel(Skill.ATTACK);
-        switch (plr.getFightType().getStyle()) {
-            case AGGRESSIVE:
-                attackLevel += 3;
-                break;
-            case CONTROLLED:
-                attackLevel += 1;
-                break;
-        }
-        // boolean hasVoid = EquipmentBonus.wearingVoid(plr);//, CombatType.MELEE);
-
-        if (PrayerHandler.isActivated(plr, PrayerHandler.CLARITY_OF_THOUGHT)) {
-            attackLevel += plr.getSkillManager().getMaxLevel(Skill.ATTACK) * 0.05;
-        } else if (PrayerHandler.isActivated(plr, PrayerHandler.IMPROVED_REFLEXES)) {
-            attackLevel += plr.getSkillManager().getMaxLevel(Skill.ATTACK) * 0.1;
-        } else if (PrayerHandler.isActivated(plr, PrayerHandler.INCREDIBLE_REFLEXES)) {
-            attackLevel += plr.getSkillManager().getMaxLevel(Skill.ATTACK) * 0.15;
-        } else if (PrayerHandler.isActivated(plr, PrayerHandler.CHIVALRY)) {
-            attackLevel += plr.getSkillManager().getMaxLevel(Skill.ATTACK) * 0.15;
-        } else if (PrayerHandler.isActivated(plr, PrayerHandler.PIETY)) {
-            attackLevel += plr.getSkillManager().getMaxLevel(Skill.ATTACK) * 0.2;
-        } else if (CurseHandler.isActivated(plr, CurseHandler.LEECH_ATTACK)) {
-            attackLevel += plr.getSkillManager().getMaxLevel(Skill.ATTACK) * 0.05 + plr.getLeechedBonuses()[2];
-        } else if (CurseHandler.isActivated(plr, CurseHandler.TURMOIL)) {
-            attackLevel += plr.getSkillManager().getMaxLevel(Skill.ATTACK) * 0.3 + plr.getLeechedBonuses()[2];
-        }  else if(plr.getPrayerActive()[PrayerHandler.FURY_SWIPE]) {
-            attackLevel += plr.getSkillManager().getMaxLevel(Skill.ATTACK) * 0.17;
-        }
-
-        if (EquipmentBonus.voidMelee(plr)) {
-            attackLevel += plr.getSkillManager().getMaxLevel(Skill.ATTACK) * 0.1;
-        }
-        attackLevel *= plr.isSpecialActivated() ? plr.getCombatSpecial().getAccuracyBonus() : 1;
-        int i = (int) plr.getBonusManager().getAttackBonus()[bestMeleeAtk(plr)];
-
-        // // System.out.println("hello world");
-        return (int) (attackLevel + (attackLevel * 0.15) + (i + i * 0.04));
-    }
-
-    /**
-     * Calculates a player's Melee Defence level
-     *
-     * @param plr The player to calculate Melee defence for
-     * @return The player's Melee defence level
-     */
-    public static int getMeleeDefence(Player plr) {
-        int defenceLevel = plr.getSkillManager().getCurrentLevel(Skill.DEFENCE);
-        int i = (int) plr.getBonusManager().getDefenceBonus()[bestMeleeDef(plr)];
-
-        if (plr.getPrayerActive()[PrayerHandler.THICK_SKIN]) {
-            defenceLevel += plr.getSkillManager().getMaxLevel(Skill.DEFENCE) * 0.05;
-        } else if (plr.getPrayerActive()[PrayerHandler.ROCK_SKIN]) {
-            defenceLevel += plr.getSkillManager().getMaxLevel(Skill.DEFENCE) * 0.1;
-        } else if (plr.getPrayerActive()[PrayerHandler.STEEL_SKIN]) {
-            defenceLevel += plr.getSkillManager().getMaxLevel(Skill.DEFENCE) * 0.15;
-        } else if (plr.getPrayerActive()[PrayerHandler.CHIVALRY]) {
-            defenceLevel += plr.getSkillManager().getMaxLevel(Skill.DEFENCE) * 0.2;
-        } else if (plr.getPrayerActive()[PrayerHandler.PIETY]) {
-            defenceLevel += plr.getSkillManager().getMaxLevel(Skill.DEFENCE) * 0.25;
-        } else if (plr.getPrayerActive()[PrayerHandler.RIGOUR]) {
-            defenceLevel += plr.getSkillManager().getMaxLevel(Skill.DEFENCE) * 0.25;
-        } else if (plr.getPrayerActive()[PrayerHandler.AUGURY]) {
-            defenceLevel += plr.getSkillManager().getMaxLevel(Skill.DEFENCE) * 0.25;
-        } else if (plr.getCurseActive()[CurseHandler.TURMOIL]) { // turmoil
-            defenceLevel += plr.getSkillManager().getMaxLevel(Skill.DEFENCE) * 0.15;
-        //Holy prayers
-        } else if(plr.getPrayerActive()[PrayerHandler.HUNTERS_EYE]) {
-            defenceLevel += plr.getSkillManager().getMaxLevel(Skill.DEFENCE) * 0.15;
-
-        }  else if(plr.getPrayerActive()[PrayerHandler.FURY_SWIPE]) {
-            defenceLevel += plr.getSkillManager().getMaxLevel(Skill.DEFENCE) * 0.17;
-
-        }  else if(plr.getPrayerActive()[PrayerHandler.DESTRUCTION]) {
-            defenceLevel += plr.getSkillManager().getMaxLevel(Skill.DEFENCE) * 0.17;
-        }  else if(plr.getPrayerActive()[PrayerHandler.FORTITUDE]) {
-            defenceLevel += plr.getSkillManager().getMaxLevel(Skill.DEFENCE) * 0.17;
-        }
-            return (int) (defenceLevel + (defenceLevel * 0.15) + (i + i * 0.05));
-
-    }
+//    public static int calculateMaxMeleeHit(Character entity, Character victim) {
+//        double maxHit = 0;
+//        if (entity.isNpc()) {
+//            NPC npc = (NPC) entity;
+//            maxHit = npc.getMaxHit();
+//            if (npc.getStrengthWeakened()[0]) {
+//                maxHit -= (int) ((0.10) * (maxHit));
+//            } else if (npc.getStrengthWeakened()[1]) {
+//                maxHit -= (int) ((0.20) * (maxHit));
+//            } else if (npc.getStrengthWeakened()[2]) {
+//                maxHit -= (int) ((0.30) * (maxHit));
+//            }
+//            /** CUSTOM NPCS **/
+//            if (npc.getId() == 2026) { // Dharok the wretched
+//                maxHit += (int) ((int) (npc.getDefaultConstitution() - npc.getConstitution()) * 0.2);
+//            }
+//        } else {
+//            Player plr = (Player) entity;
+//
+//            double base = 0;
+//            double effective = getEffectiveStr(plr);
+//            double specialBonus = 1;
+//            if (plr.isSpecialActivated()) {
+//                specialBonus = plr.getCombatSpecial().getStrengthBonus();
+//            }
+//            double strengthBonus = plr.getBonusManager().getOtherBonus()[0];
+//            base = (13 + effective + (strengthBonus / 8) + ((effective * strengthBonus) / 65)) / 11;
+//            if (plr.getEquipment().getItems()[3].getId() == 4718 && plr.getEquipment().getItems()[0].getId() == 4716
+//                    && plr.getEquipment().getItems()[4].getId() == 4720
+//                    && plr.getEquipment().getItems()[7].getId() == 4722)
+//                base += ((plr.getSkillManager().getMaxLevel(Skill.CONSTITUTION) - plr.getConstitution()) * .045) + 1;
+//            if (specialBonus > 1)
+//                base = (base * specialBonus);
+//            /*
+//             * if (hasObsidianEffect(plr))// || EquipmentBonus.wearingVoid(plr))//,
+//             * CombatType.MELEE)) base = (base * 1.2);
+//             */
+//
+//            if (victim.isNpc()) {
+//
+//                NPC npc = (NPC) victim;
+//                if (npc.getDefenceWeakened()[0]) {
+//                    base += (int) ((0.10) * (base));
+//                } else if (npc.getDefenceWeakened()[1]) {
+//                    base += (int) ((0.20) * (base));
+//                } else if (npc.getDefenceWeakened()[2]) {
+//                    base += (int) ((0.30) * (base));
+//                }
+//
+//                /** SLAYER HELMET **/
+//
+//                Familiar playerFamiliar = plr.getSummoning().getFamiliar();
+//
+//                if (playerFamiliar != null) {
+//                    double bonus = DropUtils.getDamageBonus(playerFamiliar.getSummonNpc().getId());
+//
+//                   if(!plr.isInsideRaids()) {
+//                       if (plr.getSummoning().getFamiliar().getSummonNpc().getId() == BossPets.BossPet.MELEE_PET.npcId) {
+//                           bonus += 0.10;
+//                       }
+//
+//                       if (plr.isInMinigame()) {
+//                           if (plr.getSummoning().getFamiliar().getSummonNpc().getId() == BossPets.BossPet.GREEN_FENRIR_PET.npcId) {
+//                               bonus += 0.10;
+//                           }
+//                       }
+//                   }
+//
+//                    base *= bonus;
+//                }
+//
+//            }
+//            if (plr.getDmgPotionTimer() > 0) {
+//                maxHit *= 1.5;
+//            }
+//            if(ServerPerks.getInstance().getActivePerk() == ServerPerks.Perk.ALL_PERKS ||
+//                    ServerPerks.getInstance().getActivePerk() == ServerPerks.Perk.MEGA_PERK) {
+//                base *= 1.5;
+//            }
+//
+//
+//            maxHit = (base *= 10);
+//            if (plr.getInventory().contains(4442)) {
+//            	maxHit *=1.5;
+//            }
+//        }
+//        if (victim.isPlayer()) {
+//            Player p = (Player) victim;
+//            if (p.hasStaffOfLightEffect()) {
+//                maxHit = maxHit / 2;
+//                p.performGraphic(new Graphic(2319));
+//            }
+//        }
+//
+//        return (int) Math.floor(maxHit);
+//    }
+//
+//    /**
+//     * Calculates a player's Melee attack level (how likely that they're going to
+//     * hit through defence)
+//     *
+//     * @param plr The player's Meelee attack level
+//     * @return The player's Melee attack level
+//     */
+//    @SuppressWarnings("incomplete-switch")
+//    public static int getMeleeAttack(Player plr) {
+//        int attackLevel = plr.getSkillManager().getCurrentLevel(Skill.ATTACK);
+//        switch (plr.getFightType().getStyle()) {
+//            case AGGRESSIVE:
+//                attackLevel += 3;
+//                break;
+//            case CONTROLLED:
+//                attackLevel += 1;
+//                break;
+//        }
+//        // boolean hasVoid = EquipmentBonus.wearingVoid(plr);//, CombatType.MELEE);
+//
+//        if (PrayerHandler.isActivated(plr, PrayerHandler.CLARITY_OF_THOUGHT)) {
+//            attackLevel += plr.getSkillManager().getMaxLevel(Skill.ATTACK) * 0.05;
+//        } else if (PrayerHandler.isActivated(plr, PrayerHandler.IMPROVED_REFLEXES)) {
+//            attackLevel += plr.getSkillManager().getMaxLevel(Skill.ATTACK) * 0.1;
+//        } else if (PrayerHandler.isActivated(plr, PrayerHandler.INCREDIBLE_REFLEXES)) {
+//            attackLevel += plr.getSkillManager().getMaxLevel(Skill.ATTACK) * 0.15;
+//        } else if (PrayerHandler.isActivated(plr, PrayerHandler.CHIVALRY)) {
+//            attackLevel += plr.getSkillManager().getMaxLevel(Skill.ATTACK) * 0.15;
+//        } else if (PrayerHandler.isActivated(plr, PrayerHandler.PIETY)) {
+//            attackLevel += plr.getSkillManager().getMaxLevel(Skill.ATTACK) * 0.2;
+//        } else if (CurseHandler.isActivated(plr, CurseHandler.LEECH_ATTACK)) {
+//            attackLevel += plr.getSkillManager().getMaxLevel(Skill.ATTACK) * 0.05 + plr.getLeechedBonuses()[2];
+//        } else if (CurseHandler.isActivated(plr, CurseHandler.TURMOIL)) {
+//            attackLevel += plr.getSkillManager().getMaxLevel(Skill.ATTACK) * 0.3 + plr.getLeechedBonuses()[2];
+//        }  else if(plr.getPrayerActive()[PrayerHandler.FURY_SWIPE]) {
+//            attackLevel += plr.getSkillManager().getMaxLevel(Skill.ATTACK) * 0.17;
+//        }
+//
+//        if (EquipmentBonus.voidMelee(plr)) {
+//            attackLevel += plr.getSkillManager().getMaxLevel(Skill.ATTACK) * 0.1;
+//        }
+//        attackLevel *= plr.isSpecialActivated() ? plr.getCombatSpecial().getAccuracyBonus() : 1;
+//        int i = (int) plr.getBonusManager().getAttackBonus()[bestMeleeAtk(plr)];
+//
+//        // // System.out.println("hello world");
+//        return (int) (attackLevel + (attackLevel * 0.15) + (i + i * 0.04));
+//    }
+//
+//    /**
+//     * Calculates a player's Melee Defence level
+//     *
+//     * @param plr The player to calculate Melee defence for
+//     * @return The player's Melee defence level
+//     */
+//    public static int getMeleeDefence(Player plr) {
+//        int defenceLevel = plr.getSkillManager().getCurrentLevel(Skill.DEFENCE);
+//        int i = (int) plr.getBonusManager().getDefenceBonus()[bestMeleeDef(plr)];
+//
+//        if (plr.getPrayerActive()[PrayerHandler.THICK_SKIN]) {
+//            defenceLevel += plr.getSkillManager().getMaxLevel(Skill.DEFENCE) * 0.05;
+//        } else if (plr.getPrayerActive()[PrayerHandler.ROCK_SKIN]) {
+//            defenceLevel += plr.getSkillManager().getMaxLevel(Skill.DEFENCE) * 0.1;
+//        } else if (plr.getPrayerActive()[PrayerHandler.STEEL_SKIN]) {
+//            defenceLevel += plr.getSkillManager().getMaxLevel(Skill.DEFENCE) * 0.15;
+//        } else if (plr.getPrayerActive()[PrayerHandler.CHIVALRY]) {
+//            defenceLevel += plr.getSkillManager().getMaxLevel(Skill.DEFENCE) * 0.2;
+//        } else if (plr.getPrayerActive()[PrayerHandler.PIETY]) {
+//            defenceLevel += plr.getSkillManager().getMaxLevel(Skill.DEFENCE) * 0.25;
+//        } else if (plr.getPrayerActive()[PrayerHandler.RIGOUR]) {
+//            defenceLevel += plr.getSkillManager().getMaxLevel(Skill.DEFENCE) * 0.25;
+//        } else if (plr.getPrayerActive()[PrayerHandler.AUGURY]) {
+//            defenceLevel += plr.getSkillManager().getMaxLevel(Skill.DEFENCE) * 0.25;
+//        } else if (plr.getCurseActive()[CurseHandler.TURMOIL]) { // turmoil
+//            defenceLevel += plr.getSkillManager().getMaxLevel(Skill.DEFENCE) * 0.15;
+//        //Holy prayers
+//        } else if(plr.getPrayerActive()[PrayerHandler.HUNTERS_EYE]) {
+//            defenceLevel += plr.getSkillManager().getMaxLevel(Skill.DEFENCE) * 0.15;
+//
+//        }  else if(plr.getPrayerActive()[PrayerHandler.FURY_SWIPE]) {
+//            defenceLevel += plr.getSkillManager().getMaxLevel(Skill.DEFENCE) * 0.17;
+//
+//        }  else if(plr.getPrayerActive()[PrayerHandler.DESTRUCTION]) {
+//            defenceLevel += plr.getSkillManager().getMaxLevel(Skill.DEFENCE) * 0.17;
+//        }  else if(plr.getPrayerActive()[PrayerHandler.FORTITUDE]) {
+//            defenceLevel += plr.getSkillManager().getMaxLevel(Skill.DEFENCE) * 0.17;
+//        }
+//            return (int) (defenceLevel + (defenceLevel * 0.15) + (i + i * 0.05));
+//
+//    }
 
     public static int bestMeleeDef(Player p) {
         if (p.getBonusManager().getDefenceBonus()[0] > p.getBonusManager().getDefenceBonus()[1]
@@ -258,9 +258,9 @@ public class DesolaceFormulas {
         return 0;
     }
 
-    public static double getEffectiveStr(Player plr) {
-        return ((plr.getSkillManager().getCurrentLevel(Skill.STRENGTH)) * getPrayerStr(plr)) + getStyleBonus(plr);
-    }
+//    public static double getEffectiveStr(Player plr) {
+//        return ((plr.getSkillManager().getCurrentLevel(Skill.STRENGTH)) * getPrayerStr(plr)) + getStyleBonus(plr);
+//    }
 
     public static double getPrayerStr(Player plr) {
         if (plr.getPrayerActive()[1] || plr.getCurseActive()[CurseHandler.LEECH_STRENGTH])
@@ -284,600 +284,600 @@ public class DesolaceFormulas {
      * @param plr The player to calculate Ranged attack level for
      * @return The player's Ranged attack level
      */
-    public static int getRangedAttack(Player plr) {
-        int rangeLevel = plr.getSkillManager().getCurrentLevel(Skill.RANGED);
-        // boolean hasVoid = EquipmentBonus.wearingVoid(plr);//, CombatType.RANGED);
-        double accuracy = plr.isSpecialActivated() ? plr.getCombatSpecial().getAccuracyBonus() : 1;
-        rangeLevel *= accuracy;
-        if (plr.getCurseActive()[PrayerHandler.SHARP_EYE] || plr.getCurseActive()[CurseHandler.SAP_RANGER]) {
-            rangeLevel *= 1.05;
-        } else if (plr.getPrayerActive()[PrayerHandler.HAWK_EYE]) {
-            rangeLevel *= 1.10;
-        } else if (plr.getPrayerActive()[PrayerHandler.EAGLE_EYE]) {
-            rangeLevel *= 1.15;
-        } else if (plr.getPrayerActive()[PrayerHandler.RIGOUR]) {
-            rangeLevel *= 1.22;
-        } else if (plr.getCurseActive()[CurseHandler.LEECH_RANGED]) {
-            rangeLevel *= 1.10;
-        }  else if(plr.getPrayerActive()[PrayerHandler.HUNTERS_EYE]) {
-            rangeLevel *= 1.25;
-        }
-        if (plr.getDmgPotionTimer() > 0) {
-            rangeLevel *= 1.5;
-        }
-        if(ServerPerks.getInstance().getActivePerk() == ServerPerks.Perk.ALL_PERKS) {
-            rangeLevel *= 1.5;
-        }
-
-        switch(plr.getEquipment().getDamageBonus()){
-            case 1 -> rangeLevel *= 1.07;
-            case 2 -> rangeLevel *= 1.16;
-            case 3 -> rangeLevel *= 1.23;
-        }
-
-        if (EquipmentBonus.voidRange(plr)) {
-            rangeLevel *= 1.10;
-            if (EquipmentBonus.voidRange(plr)) {
-                rangeLevel *= 1.10;
-            }
-            if (plr.getEquipment().getItems()[Equipment.WEAPON_SLOT].getId() == 16879) {
-                rangeLevel *= 1.10;
-            }
-            if (plr.getEquipment().getItems()[Equipment.WEAPON_SLOT].getId() == 18332) {
-                rangeLevel *= 1.90;
-            }
-        }
-
-        Familiar playerFamiliar = plr.getSummoning().getFamiliar();
-
-        if (playerFamiliar != null) {
-            double bonus = DropUtils.getDamageBonus(playerFamiliar.getSummonNpc().getId());
-
-            if(!plr.isInsideRaids()) {
-                if (plr.getSummoning().getFamiliar().getSummonNpc().getId() == BossPets.BossPet.RANGED_PET.npcId) {
-                    bonus += 0.10;
-                }
-                if (plr.isInMinigame()) {
-                    if (plr.getSummoning().getFamiliar().getSummonNpc().getId() == BossPets.BossPet.GREEN_FENRIR_PET.npcId) {
-                        bonus += 0.10;
-                    }
-                }
-            }
-            rangeLevel *= bonus;
-        }
-        /*
-         * if (hasVoid && accuracy > 1.15) rangeLevel *= 1.68;
-         */
-        /*
-         * Slay helm
-         *
-         * if(plr.getAdvancedSkills().getSlayer().getSlayerTask() != null &&
-         * plr.getEquipment().getItems()[Equipment.HEAD_SLOT].getId() == 15492) {
-         * if(plr.getCombatAttributes().getCurrentEnemy() != null &&
-         * plr.getCombatAttributes().getCurrentEnemy().isNpc()) { NPC n =
-         * (NPC)plr.getCombatAttributes().getCurrentEnemy(); if(n != null && n.getId()
-         * == plr.getAdvancedSkills().getSlayer().getSlayerTask().getNpcId()) rangeLevel
-         * *= 1.12; } }
-         */
-        return (int) (rangeLevel + (plr.getBonusManager().getAttackBonus()[4] * 2));
-    }
-
-    /**
-     * Calculates a player's Ranged defence level.
-     *
-     * @param plr The player to calculate the Ranged defence level for
-     * @return The player's Ranged defence level
-     */
-    public static int getRangedDefence(Player plr) {
-        int defenceLevel = plr.getSkillManager().getCurrentLevel(Skill.DEFENCE);
-        if (plr.getPrayerActive()[PrayerHandler.THICK_SKIN]) {
-            defenceLevel += plr.getSkillManager().getMaxLevel(Skill.DEFENCE) * 0.05;
-        } else if (plr.getPrayerActive()[PrayerHandler.ROCK_SKIN]) {
-            defenceLevel += plr.getSkillManager().getMaxLevel(Skill.DEFENCE) * 0.1;
-        } else if (plr.getPrayerActive()[PrayerHandler.STEEL_SKIN]) {
-            defenceLevel += plr.getSkillManager().getMaxLevel(Skill.DEFENCE) * 0.15;
-        } else if (plr.getPrayerActive()[PrayerHandler.CHIVALRY]) {
-            defenceLevel += plr.getSkillManager().getMaxLevel(Skill.DEFENCE) * 0.2;
-        } else if (plr.getPrayerActive()[PrayerHandler.PIETY]) {
-            defenceLevel += plr.getSkillManager().getMaxLevel(Skill.DEFENCE) * 0.25;
-        } else if (plr.getPrayerActive()[PrayerHandler.RIGOUR]) {
-            defenceLevel += plr.getSkillManager().getMaxLevel(Skill.DEFENCE) * 0.25;
-        } else if (plr.getPrayerActive()[PrayerHandler.AUGURY]) {
-            defenceLevel += plr.getSkillManager().getMaxLevel(Skill.DEFENCE) * 0.25;
-        } else if (plr.getCurseActive()[CurseHandler.TURMOIL]) { // turmoil
-            defenceLevel += plr.getSkillManager().getMaxLevel(Skill.DEFENCE) * 0.20 + plr.getLeechedBonuses()[0];
-        }
-        return (int) (defenceLevel + plr.getBonusManager().getDefenceBonus()[4]
-                + (plr.getBonusManager().getDefenceBonus()[4] / 2));
-    }
-
-    public static int getMagicAttack(Player plr) {
-        // boolean voidEquipment = EquipmentBonus.wearingVoid(plr);//,
-        // CombatType.MAGIC);
-        int magicLevel = plr.getSkillManager().getCurrentLevel(Skill.MAGIC);
-        magicLevel *= plr.isSpecialActivated() ? plr.getCombatSpecial().getAccuracyBonus() : 1;
-        if (plr.getPrayerActive()[PrayerHandler.MYSTIC_WILL] || plr.getCurseActive()[CurseHandler.SAP_MAGE]) {
-            magicLevel *= 1.05;
-        } else if (plr.getPrayerActive()[PrayerHandler.MYSTIC_LORE]) {
-            magicLevel *= 1.10;
-        } else if (plr.getPrayerActive()[PrayerHandler.MYSTIC_MIGHT]) {
-            magicLevel *= 1.15;
-        } else if (plr.getPrayerActive()[PrayerHandler.AUGURY]) {
-            magicLevel *= 1.22;
-        } else if (plr.getCurseActive()[CurseHandler.LEECH_MAGIC]) {
-            magicLevel *= 1.18;
-        } else if (plr.getPrayerActive()[PrayerHandler.DESTRUCTION]) {
-            magicLevel *= 1.25;
-        } else if (plr.getPrayerActive()[PrayerHandler.FURY_SWIPE]) {
-            magicLevel *= 1.25;
-        }
-        if (plr.getDmgPotionTimer() > 0) {
-            magicLevel *= 1.5;
-        }
-        if(ServerPerks.getInstance().getActivePerk() == ServerPerks.Perk.ALL_PERKS) {
-            magicLevel *= 1.5;
-        }
-
-        switch(plr.getEquipment().getDamageBonus()){
-            case 1 -> magicLevel *= 1.07;
-            case 2 -> magicLevel *= 1.16;
-            case 3 -> magicLevel *= 1.23;
-        }
-
-        if (EquipmentBonus.voidMage(plr)) {
-            magicLevel *= 1.3;
-        }
-
-        Familiar playerFamiliar = plr.getSummoning().getFamiliar();
-
-        if (playerFamiliar != null) {
-            double bonus = DropUtils.getDamageBonus(playerFamiliar.getSummonNpc().getId());
-            if(!plr.isInsideRaids()) {
-                if (plr.getSummoning().getFamiliar().getSummonNpc().getId() == BossPets.BossPet.MAGE_PET.npcId) {
-                    bonus += 0.10;
-                }
-                if (plr.isInMinigame()) {
-                    if (plr.getSummoning().getFamiliar().getSummonNpc().getId() == BossPets.BossPet.GREEN_FENRIR_PET.npcId) {
-                        bonus += 0.10;
-                    }
-                }
-            }
-            magicLevel *= bonus;
-        }
-        return (int) (magicLevel + (plr.getBonusManager().getAttackBonus()[3] * 2));
-    }
-
-    /**
-     * Calculates a player's magic defence level
-     *
-     * @return The player's magic defence level
-     */
-    public static int getMagicDefence(Player plr) {
-
-        int defenceLevel = plr.getSkillManager().getCurrentLevel(Skill.DEFENCE) / 2
-                + plr.getSkillManager().getCurrentLevel(Skill.MAGIC) / 2;
-
-        if (plr.getPrayerActive()[PrayerHandler.THICK_SKIN]) {
-            defenceLevel += plr.getSkillManager().getMaxLevel(Skill.DEFENCE) * 0.05;
-        } else if (plr.getPrayerActive()[PrayerHandler.ROCK_SKIN]) {
-            defenceLevel += plr.getSkillManager().getMaxLevel(Skill.DEFENCE) * 0.1;
-        } else if (plr.getPrayerActive()[PrayerHandler.STEEL_SKIN]) {
-            defenceLevel += plr.getSkillManager().getMaxLevel(Skill.DEFENCE) * 0.15;
-        } else if (plr.getPrayerActive()[PrayerHandler.CHIVALRY]) {
-            defenceLevel += plr.getSkillManager().getMaxLevel(Skill.DEFENCE) * 0.2;
-        } else if (plr.getPrayerActive()[PrayerHandler.PIETY]) {
-            defenceLevel += plr.getSkillManager().getMaxLevel(Skill.DEFENCE) * 0.25;
-        } else if (plr.getPrayerActive()[PrayerHandler.RIGOUR]) {
-            defenceLevel += plr.getSkillManager().getMaxLevel(Skill.DEFENCE) * 0.25;
-        } else if (plr.getPrayerActive()[PrayerHandler.AUGURY]) {
-            defenceLevel += plr.getSkillManager().getMaxLevel(Skill.DEFENCE) * 0.25;
-        } else if (plr.getCurseActive()[CurseHandler.TURMOIL]) { // turmoil
-            defenceLevel += plr.getSkillManager().getMaxLevel(Skill.DEFENCE) * 0.20 + plr.getLeechedBonuses()[0];
-        }
-
-        return (int) (defenceLevel + plr.getBonusManager().getDefenceBonus()[3]
-                + (plr.getBonusManager().getDefenceBonus()[3] / 3));
-    }
-
-    /**
-     * Calculates a player's magic max hit
-     *
-     * @param victim
-     * @return The player's magic max hit damage
-     */
-    public static int getMagicMaxhit(Character attacker, Character victim) {
-        int damage = 0;
-        CombatSpell spell = attacker.getCurrentlyCasting();
-        if (spell != null) {
-            if (spell.maximumHit() > 0)
-                damage += spell.maximumHit();
-            else {
-                if (attacker.isNpc()) {
-                    damage = ((NPC) attacker).getMaxHit();
-                } else {
-                    damage = 1;
-                }
-            }
-        }
-
-        if (attacker.isNpc()) {
-            if (spell == null) {
-                damage = Misc.getRandom(((NPC) attacker).getMaxHit());
-            }
-            return damage;
-        }
-
-        Player p = (Player) attacker;
-        // NPC n = (NPC)c;
-        double damageMultiplier = 1;
-
-        switch (p.getEquipment().getItems()[Equipment.WEAPON_SLOT].getId()) {
-            case 4675:
-            case 6914:
-            case 15246:
-                damageMultiplier += .10;
-
-                break;
-            case 18355:
-                damageMultiplier += .20;
-                break;
-        }
-
-        boolean specialAttack = p.isSpecialActivated();
-
-        int maxHit = -1;
-
-        if (specialAttack) {
-            switch (p.getEquipment().getItems()[Equipment.WEAPON_SLOT].getId()) {
-                case 19780:
-                    damage = maxHit = 750;
-                    break;
-                case 11730:
-                    damage = maxHit = 310;
-                    break;
-            }
-        } else {
-            damageMultiplier += 0.25;
-        }
-        if (p.getEquipment().getItems()[Equipment.WEAPON_SLOT].getId() == 13925
-                || p.getEquipment().getItems()[Equipment.WEAPON_SLOT].getId() == 13943
-                || p.getEquipment().getItems()[Equipment.WEAPON_SLOT].getId() == 13931
-                || p.getEquipment().getItems()[Equipment.WEAPON_SLOT].getId() == 13928
-                || p.getEquipment().getItems()[Equipment.WEAPON_SLOT].getId() == 13879
-                || p.getEquipment().getItems()[Equipment.WEAPON_SLOT].getId() == 13956) {
-            damageMultiplier += .10;
-        }
-        if (p.getEquipment().getItems()[Equipment.CAPE_SLOT].getId() == 1486) {
-            CurseHandler.activateCurse(p, CurseHandler.SOUL_SPLIT);
-        }
-        if (p.getEquipment().getItems()[Equipment.AMULET_SLOT].getId() == 18335) {
-            damageMultiplier += .10;
-        }
-
-        damage *= damageMultiplier;
-
-        if (maxHit > 0) {
-            if (damage > maxHit) {
-                damage = maxHit;
-            }
-        }
-        //TODO
-//        if (p.getAmountDonated() == ZENYTE_DONATION_AMOUNT) {
-//            damage *= 3.0;
+//    public static int getRangedAttack(Player plr) {
+//        int rangeLevel = plr.getSkillManager().getCurrentLevel(Skill.RANGED);
+//        // boolean hasVoid = EquipmentBonus.wearingVoid(plr);//, CombatType.RANGED);
+//        double accuracy = plr.isSpecialActivated() ? plr.getCombatSpecial().getAccuracyBonus() : 1;
+//        rangeLevel *= accuracy;
+//        if (plr.getCurseActive()[PrayerHandler.SHARP_EYE] || plr.getCurseActive()[CurseHandler.SAP_RANGER]) {
+//            rangeLevel *= 1.05;
+//        } else if (plr.getPrayerActive()[PrayerHandler.HAWK_EYE]) {
+//            rangeLevel *= 1.10;
+//        } else if (plr.getPrayerActive()[PrayerHandler.EAGLE_EYE]) {
+//            rangeLevel *= 1.15;
+//        } else if (plr.getPrayerActive()[PrayerHandler.RIGOUR]) {
+//            rangeLevel *= 1.22;
+//        } else if (plr.getCurseActive()[CurseHandler.LEECH_RANGED]) {
+//            rangeLevel *= 1.10;
+//        }  else if(plr.getPrayerActive()[PrayerHandler.HUNTERS_EYE]) {
+//            rangeLevel *= 1.25;
 //        }
-//        if (p.getAmountDonated() == ONYX_DONATION_AMOUNT) {
-//            damage *= 2.0;
+//        if (plr.getDmgPotionTimer() > 0) {
+//            rangeLevel *= 1.5;
 //        }
-//        if (p.getAmountDonated() == DIAMOND_DONATION_AMOUNT) {
-//            damage *= 1.4;
+//        if(ServerPerks.getInstance().getActivePerk() == ServerPerks.Perk.ALL_PERKS) {
+//            rangeLevel *= 1.5;
 //        }
-//        if (p.getAmountDonated() == RUBY_DONATION_AMOUNT) {
-//            damage *= 0.8;
+//
+//        switch(plr.getEquipment().getDamageBonus()){
+//            case 1 -> rangeLevel *= 1.07;
+//            case 2 -> rangeLevel *= 1.16;
+//            case 3 -> rangeLevel *= 1.23;
 //        }
-//        if (p.getAmountDonated() == EMERALD_DONATION_AMOUNT) {
-//            damage *= 0.5;
+//
+//        if (EquipmentBonus.voidRange(plr)) {
+//            rangeLevel *= 1.10;
+//            if (EquipmentBonus.voidRange(plr)) {
+//                rangeLevel *= 1.10;
+//            }
+//            if (plr.getEquipment().getItems()[Equipment.WEAPON_SLOT].getId() == 16879) {
+//                rangeLevel *= 1.10;
+//            }
+//            if (plr.getEquipment().getItems()[Equipment.WEAPON_SLOT].getId() == 18332) {
+//                rangeLevel *= 1.90;
+//            }
 //        }
-//        if (p.getAmountDonated() == SAPPHIRE_DONATION_AMOUNT) {
-//            damage *= 0.2;
+//
+//        Familiar playerFamiliar = plr.getSummoning().getFamiliar();
+//
+//        if (playerFamiliar != null) {
+//            double bonus = DropUtils.getDamageBonus(playerFamiliar.getSummonNpc().getId());
+//
+//            if(!plr.isInsideRaids()) {
+//                if (plr.getSummoning().getFamiliar().getSummonNpc().getId() == BossPets.BossPet.RANGED_PET.npcId) {
+//                    bonus += 0.10;
+//                }
+//                if (plr.isInMinigame()) {
+//                    if (plr.getSummoning().getFamiliar().getSummonNpc().getId() == BossPets.BossPet.GREEN_FENRIR_PET.npcId) {
+//                        bonus += 0.10;
+//                    }
+//                }
+//            }
+//            rangeLevel *= bonus;
 //        }
-        if (p.getDmgPotionTimer() > 0) {
-            damage *= 1.5;
-        }
-        if(ServerPerks.getInstance().getActivePerk() == ServerPerks.Perk.ALL_PERKS) {
-            damage *= 1.5;
-        }
-
-        switch(p.getEquipment().getDamageBonus()){
-            case 1 -> damage *= 1.07;
-            case 2 -> damage *= 1.16;
-            case 3 -> damage *= 1.23;
-        }
-
-        if (p.getInventory().contains(4442)) {
-            damage *=1.5;
-        }
-        if (p.getEquipment().contains(20591)) {
-            damage *= 1.5;
-            if (p.isGodMode())
-                damage += damage * 6;
-            return (int) damage;
-        }
-        if (p.isGodMode())
-            damage *= 6;
-        if (victim.isNpc()) {
-            damage = (int) NpcMaxHitLimit.limit((NPC) victim, damage, p);
-        }
-        return damage;
-    }
-
-    public static int getAttackDelay(Player plr) {
-        int id = plr.getEquipment().getItems()[Equipment.WEAPON_SLOT].getId();
-        String s = ItemDefinition.forId(id).getName().toLowerCase();
-        if (id == -1)
-            return 4;// unarmed
-        if (id == 18357 || id == 14684)
-            return 4;
-        RangedWeaponData rangedData = plr.getRangedWeaponData();
-        if (rangedData != null) {
-            int speed = rangedData.getType().getAttackDelay();
-            if (plr.getFightType() == FightType.SHORTBOW_RAPID || plr.getFightType() == FightType.DART_RAPID
-                    || plr.getFightType() == FightType.KNIFE_RAPID || plr.getFightType() == FightType.THROWNAXE_RAPID
-                    || plr.getFightType() == FightType.JAVELIN_RAPID
-                    || plr.getFightType() == FightType.BLOWPIPE_RAPID) {
-                speed--;
-            }
-            return speed;
-        }
-        if (id == 18365)
-            return 3;
-        else if (id == 18349) // CCbow and rapier
-            return 4;
-        if (id == 22034)
-            return 4;
-        if (id == 18799)
-            return 2;
-        if (id == 18358)
-            return 1;
-        if (id == 18353) // cmaul
-            return 7;// chaotic maul
-        if (id == 6818)
-            return 1;
-        if (id == 22010 || id == 19137 || id == 19136 || id == 14919 || id == 15785 || id == 20173 || id == 9929
-                || id == 14056 || id == 21606 || id == 4017 || id == 671 || id == 16879 || id == 18332 || id == 22083 || id == 20553
-                || id == 18636 || id == 8411 || id == 22148 || id == 8088 || id == 5073 || id == 8001 || id == 8253 || id == 22089
-                || id == 7543 || id == 2632 || id == 19843 || id == 9941 || id == 5012 || id == 12843 || id == 5011 || id == 22113 || id == 5010 || id == 19135)
-            return 1;
-        if (id == 20000)
-            return 4;// gs
-        if (id == 22008)
-            return 4;// abyssal tentacle == same speed as rapier
-        if (id == 18686)
-            return 2;// abyssal tentacle == same speed as rapier
-        if (id == 18365 || id == 671)
-            return 2;// abyssal tentacle == same speed as rapier
-        if (id == 20001)
-            return 4;// gs
-        if (id == 20002)
-            return 4;// gs
-        if (id == 20003)
-            return 4;// gs
-        if (id == 18349)
-            return 4;// chaotic rapier
-        if (id == 14024)
-            return 4;// drygore rapier
-        if (id == 14023)
-            return 5;// drygore long
-        if (id == 18353) // cmaul
-            return 7;// chaotic maul
-        if (id == 16877)
-            return 4;// dung 16877 shortbow
-        if (id == 19143)
-            return 3;// sara shortbow
-        if (id == 19146)
-            return 4;// guthix shortbow
-        if (id == 19149)
-            return 3;// zammy shortbow
-        if (id == 16879)
-            return 3;// Starter bow
-        if (id == 18332)
-            return 3;// Starter bow
-        if (id == 20171) // zaryte
-            return 5;
-        if (id == 20553) // zaryte
-            return 2;
-        if (id == 16337) // zaryte
-            return 5;
-        if (id == 21053 || id == 21054 || id == 21055 || id == 21056) // zaryte
-            return 5;
-        if (id == 21018 || id == 20497 || id == 22134) // zaryte
-            return 5;
-        if (id == 12926) // blowpipe
-            return 3;
-        if (id == 14018) // tempest
-            return 4;
-        switch (id) {
-            case 18357:
-                return 4;
-            case 11235:
-            case 13405: // dbow
-            case 15701: // dark bow
-            case 15702: // dark bow
-            case 15703: // dark bow
-            case 15785:
-            case 15704: // dark bow
-            case 19146: // guthix bow
-                return 9;
-
-            case 13879:
-                return 8;
-            case 13956:
-                return 6;
-            case 15241: // hand cannon
-
-                return 8;
-
-            case 11730:
-                return 4;
-            case 14484:
-            case 18685:
-                return 5;
-            case 13883:
-                return 6;
-            case 10887:
-            case 6528:
-            case 15039:
-                return 7;
-            case 13905:
-                return 5;
-            case 13907:
-                return 5;
-            case 18353:
-                return 7;
-            case 18349:
-                return 4;
-            case 20000:
-            case 20001:
-            case 20002:
-            case 20003:
-                return 4;
-            case 16403: // long primal
-                return 5;
-            case 19843:
-            case 8253:
-            case 22089:
-            case 7543:
-            case 2632:
-            case 9929:
-            case 14056:
-            case 18636:
-            case 8088:
-            case 8411:
-            case 22148:
-            case 5012:
-            case 12843:
-            case 22113:
-            case 5011:
-            case 5010:
-            case 9941:
-            case 8011:
-            case 4017:
-            case 21606:
-            case 14919:
-            case 19135:
-                return 1;
-            case 19137:
-                return 4;
-            case 19136:
-                return 2;
-            case 22010:
-                return 1;
-            case 16337:
-            case 3738:
-            case 21018:
-            case 22134:
-            case 20497:
-            case 21053:
-            case 21054:
-            case 21055:
-            case 21056:
-                return 3;
-        }
-
-        if (s.endsWith("greataxe"))
-            return 7;
-        else if (s.equals("torags hammers"))
-            return 5;
-        else if (s.equals("guthans warspear"))
-            return 5;
-        else if (s.equals("veracs flail"))
-            return 5;
-        else if (s.equals("ahrims staff"))
-            return 6;
-        else if (s.equals("crossbow"))
-            return 4;
-        else if (s.contains("staff")) {
-            if (s.contains("zamarok") || s.contains("guthix") || s.contains("saradomian") || s.contains("slayer")
-                    || s.contains("ancient"))
-                return 4;
-            else
-                return 5;
-        } else if (s.contains("aril")) {
-            if (s.contains("composite") || s.equals("seercull"))
-                return 5;
-            else if (s.contains("Ogre"))
-                return 8;
-            else if (s.contains("short") || s.contains("hunt") || s.contains("sword"))
-                return 4;
-            else if (s.contains("long") || s.contains("crystal"))
-                return 6;
-            else if (s.contains("'bow"))
-                return 4;
-
-            return 5;
-        } else if (s.contains("dagger"))
-            return 4;
-        else if (s.contains("godsword") || s.contains("2h"))
-            return 6;
-        else if (s.contains("longsword"))
-            return 5;
-        else if (s.contains("sword"))
-            return 4;
-        else if (s.contains("scimitar"))
-            return 4;
-        else if (s.contains("katana"))
-            return 4;
-        else if (s.contains("tempest"))
-            return 4;
-        else if (s.contains("blowpipe"))
-            return 3;
-        else if (s.contains("mace"))
-            return 5;
-        else if (s.contains("battleaxe"))
-            return 6;
-        else if (s.contains("pickaxe"))
-            return 5;
-        else if (s.contains("thrownaxe"))
-            return 5;
-        else if (s.contains("axe"))
-            return 5;
-        else if (s.contains("warhammer"))
-            return 6;
-        else if (s.contains("2h"))
-            return 7;
-        else if (s.contains("spear"))
-            return 5;
-        else if (s.contains("claw"))
-            return 4;
-        else if (s.contains("halberd"))
-            return 7;
-
-            // sara sword, 2400ms
-        else if (s.equals("granite maul"))
-            return 7;
-        else if (s.equals("toktz-xil-ak"))// sword
-            return 4;
-        else if (s.equals("tzhaar-ket-em"))// mace
-            return 5;
-        else if (s.equals("tzhaar-ket-om"))// maul
-            return 7;
-        else if (s.equals("chaotic maul"))// maul
-            return 7;
-        else if (s.equals("toktz-xil-ek"))// knife
-            return 4;
-        else if (s.equals("toktz-xil-ul"))// rings
-            return 4;
-        else if (s.equals("toktz-mej-tal"))// staff
-            return 6;
-        else if (s.contains("whip"))
-            return 4;
-        else if (s.contains("dart"))
-            return 3;
-        else if (s.contains("death-touched"))
-            return 10;
-        else if (s.contains("knife"))
-            return 3;
-        else if (s.contains("javelin"))
-            return 6;
-        return 5;
-    }
+//        /*
+//         * if (hasVoid && accuracy > 1.15) rangeLevel *= 1.68;
+//         */
+//        /*
+//         * Slay helm
+//         *
+//         * if(plr.getAdvancedSkills().getSlayer().getSlayerTask() != null &&
+//         * plr.getEquipment().getItems()[Equipment.HEAD_SLOT].getId() == 15492) {
+//         * if(plr.getCombatAttributes().getCurrentEnemy() != null &&
+//         * plr.getCombatAttributes().getCurrentEnemy().isNpc()) { NPC n =
+//         * (NPC)plr.getCombatAttributes().getCurrentEnemy(); if(n != null && n.getId()
+//         * == plr.getAdvancedSkills().getSlayer().getSlayerTask().getNpcId()) rangeLevel
+//         * *= 1.12; } }
+//         */
+//        return (int) (rangeLevel + (plr.getBonusManager().getAttackBonus()[4] * 2));
+//    }
+//
+//    /**
+//     * Calculates a player's Ranged defence level.
+//     *
+//     * @param plr The player to calculate the Ranged defence level for
+//     * @return The player's Ranged defence level
+//     */
+//    public static int getRangedDefence(Player plr) {
+//        int defenceLevel = plr.getSkillManager().getCurrentLevel(Skill.DEFENCE);
+//        if (plr.getPrayerActive()[PrayerHandler.THICK_SKIN]) {
+//            defenceLevel += plr.getSkillManager().getMaxLevel(Skill.DEFENCE) * 0.05;
+//        } else if (plr.getPrayerActive()[PrayerHandler.ROCK_SKIN]) {
+//            defenceLevel += plr.getSkillManager().getMaxLevel(Skill.DEFENCE) * 0.1;
+//        } else if (plr.getPrayerActive()[PrayerHandler.STEEL_SKIN]) {
+//            defenceLevel += plr.getSkillManager().getMaxLevel(Skill.DEFENCE) * 0.15;
+//        } else if (plr.getPrayerActive()[PrayerHandler.CHIVALRY]) {
+//            defenceLevel += plr.getSkillManager().getMaxLevel(Skill.DEFENCE) * 0.2;
+//        } else if (plr.getPrayerActive()[PrayerHandler.PIETY]) {
+//            defenceLevel += plr.getSkillManager().getMaxLevel(Skill.DEFENCE) * 0.25;
+//        } else if (plr.getPrayerActive()[PrayerHandler.RIGOUR]) {
+//            defenceLevel += plr.getSkillManager().getMaxLevel(Skill.DEFENCE) * 0.25;
+//        } else if (plr.getPrayerActive()[PrayerHandler.AUGURY]) {
+//            defenceLevel += plr.getSkillManager().getMaxLevel(Skill.DEFENCE) * 0.25;
+//        } else if (plr.getCurseActive()[CurseHandler.TURMOIL]) { // turmoil
+//            defenceLevel += plr.getSkillManager().getMaxLevel(Skill.DEFENCE) * 0.20 + plr.getLeechedBonuses()[0];
+//        }
+//        return (int) (defenceLevel + plr.getBonusManager().getDefenceBonus()[4]
+//                + (plr.getBonusManager().getDefenceBonus()[4] / 2));
+//    }
+//
+//    public static int getMagicAttack(Player plr) {
+//        // boolean voidEquipment = EquipmentBonus.wearingVoid(plr);//,
+//        // CombatType.MAGIC);
+//        int magicLevel = plr.getSkillManager().getCurrentLevel(Skill.MAGIC);
+//        magicLevel *= plr.isSpecialActivated() ? plr.getCombatSpecial().getAccuracyBonus() : 1;
+//        if (plr.getPrayerActive()[PrayerHandler.MYSTIC_WILL] || plr.getCurseActive()[CurseHandler.SAP_MAGE]) {
+//            magicLevel *= 1.05;
+//        } else if (plr.getPrayerActive()[PrayerHandler.MYSTIC_LORE]) {
+//            magicLevel *= 1.10;
+//        } else if (plr.getPrayerActive()[PrayerHandler.MYSTIC_MIGHT]) {
+//            magicLevel *= 1.15;
+//        } else if (plr.getPrayerActive()[PrayerHandler.AUGURY]) {
+//            magicLevel *= 1.22;
+//        } else if (plr.getCurseActive()[CurseHandler.LEECH_MAGIC]) {
+//            magicLevel *= 1.18;
+//        } else if (plr.getPrayerActive()[PrayerHandler.DESTRUCTION]) {
+//            magicLevel *= 1.25;
+//        } else if (plr.getPrayerActive()[PrayerHandler.FURY_SWIPE]) {
+//            magicLevel *= 1.25;
+//        }
+//        if (plr.getDmgPotionTimer() > 0) {
+//            magicLevel *= 1.5;
+//        }
+//        if(ServerPerks.getInstance().getActivePerk() == ServerPerks.Perk.ALL_PERKS) {
+//            magicLevel *= 1.5;
+//        }
+//
+//        switch(plr.getEquipment().getDamageBonus()){
+//            case 1 -> magicLevel *= 1.07;
+//            case 2 -> magicLevel *= 1.16;
+//            case 3 -> magicLevel *= 1.23;
+//        }
+//
+//        if (EquipmentBonus.voidMage(plr)) {
+//            magicLevel *= 1.3;
+//        }
+//
+//        Familiar playerFamiliar = plr.getSummoning().getFamiliar();
+//
+//        if (playerFamiliar != null) {
+//            double bonus = DropUtils.getDamageBonus(playerFamiliar.getSummonNpc().getId());
+//            if(!plr.isInsideRaids()) {
+//                if (plr.getSummoning().getFamiliar().getSummonNpc().getId() == BossPets.BossPet.MAGE_PET.npcId) {
+//                    bonus += 0.10;
+//                }
+//                if (plr.isInMinigame()) {
+//                    if (plr.getSummoning().getFamiliar().getSummonNpc().getId() == BossPets.BossPet.GREEN_FENRIR_PET.npcId) {
+//                        bonus += 0.10;
+//                    }
+//                }
+//            }
+//            magicLevel *= bonus;
+//        }
+//        return (int) (magicLevel + (plr.getBonusManager().getAttackBonus()[3] * 2));
+//    }
+//
+//    /**
+//     * Calculates a player's magic defence level
+//     *
+//     * @return The player's magic defence level
+//     */
+//    public static int getMagicDefence(Player plr) {
+//
+//        int defenceLevel = plr.getSkillManager().getCurrentLevel(Skill.DEFENCE) / 2
+//                + plr.getSkillManager().getCurrentLevel(Skill.MAGIC) / 2;
+//
+//        if (plr.getPrayerActive()[PrayerHandler.THICK_SKIN]) {
+//            defenceLevel += plr.getSkillManager().getMaxLevel(Skill.DEFENCE) * 0.05;
+//        } else if (plr.getPrayerActive()[PrayerHandler.ROCK_SKIN]) {
+//            defenceLevel += plr.getSkillManager().getMaxLevel(Skill.DEFENCE) * 0.1;
+//        } else if (plr.getPrayerActive()[PrayerHandler.STEEL_SKIN]) {
+//            defenceLevel += plr.getSkillManager().getMaxLevel(Skill.DEFENCE) * 0.15;
+//        } else if (plr.getPrayerActive()[PrayerHandler.CHIVALRY]) {
+//            defenceLevel += plr.getSkillManager().getMaxLevel(Skill.DEFENCE) * 0.2;
+//        } else if (plr.getPrayerActive()[PrayerHandler.PIETY]) {
+//            defenceLevel += plr.getSkillManager().getMaxLevel(Skill.DEFENCE) * 0.25;
+//        } else if (plr.getPrayerActive()[PrayerHandler.RIGOUR]) {
+//            defenceLevel += plr.getSkillManager().getMaxLevel(Skill.DEFENCE) * 0.25;
+//        } else if (plr.getPrayerActive()[PrayerHandler.AUGURY]) {
+//            defenceLevel += plr.getSkillManager().getMaxLevel(Skill.DEFENCE) * 0.25;
+//        } else if (plr.getCurseActive()[CurseHandler.TURMOIL]) { // turmoil
+//            defenceLevel += plr.getSkillManager().getMaxLevel(Skill.DEFENCE) * 0.20 + plr.getLeechedBonuses()[0];
+//        }
+//
+//        return (int) (defenceLevel + plr.getBonusManager().getDefenceBonus()[3]
+//                + (plr.getBonusManager().getDefenceBonus()[3] / 3));
+//    }
+//
+//    /**
+//     * Calculates a player's magic max hit
+//     *
+//     * @param victim
+//     * @return The player's magic max hit damage
+//     */
+//    public static int getMagicMaxhit(Character attacker, Character victim) {
+//        int damage = 0;
+//        CombatSpell spell = attacker.getCurrentlyCasting();
+//        if (spell != null) {
+//            if (spell.maximumHit() > 0)
+//                damage += spell.maximumHit();
+//            else {
+//                if (attacker.isNpc()) {
+//                    damage = ((NPC) attacker).getMaxHit();
+//                } else {
+//                    damage = 1;
+//                }
+//            }
+//        }
+//
+//        if (attacker.isNpc()) {
+//            if (spell == null) {
+//                damage = Misc.getRandom(((NPC) attacker).getMaxHit());
+//            }
+//            return damage;
+//        }
+//
+//        Player p = (Player) attacker;
+//        // NPC n = (NPC)c;
+//        double damageMultiplier = 1;
+//
+//        switch (p.getEquipment().getItems()[Equipment.WEAPON_SLOT].getId()) {
+//            case 4675:
+//            case 6914:
+//            case 15246:
+//                damageMultiplier += .10;
+//
+//                break;
+//            case 18355:
+//                damageMultiplier += .20;
+//                break;
+//        }
+//
+//        boolean specialAttack = p.isSpecialActivated();
+//
+//        int maxHit = -1;
+//
+//        if (specialAttack) {
+//            switch (p.getEquipment().getItems()[Equipment.WEAPON_SLOT].getId()) {
+//                case 19780:
+//                    damage = maxHit = 750;
+//                    break;
+//                case 11730:
+//                    damage = maxHit = 310;
+//                    break;
+//            }
+//        } else {
+//            damageMultiplier += 0.25;
+//        }
+//        if (p.getEquipment().getItems()[Equipment.WEAPON_SLOT].getId() == 13925
+//                || p.getEquipment().getItems()[Equipment.WEAPON_SLOT].getId() == 13943
+//                || p.getEquipment().getItems()[Equipment.WEAPON_SLOT].getId() == 13931
+//                || p.getEquipment().getItems()[Equipment.WEAPON_SLOT].getId() == 13928
+//                || p.getEquipment().getItems()[Equipment.WEAPON_SLOT].getId() == 13879
+//                || p.getEquipment().getItems()[Equipment.WEAPON_SLOT].getId() == 13956) {
+//            damageMultiplier += .10;
+//        }
+//        if (p.getEquipment().getItems()[Equipment.CAPE_SLOT].getId() == 1486) {
+//            CurseHandler.activateCurse(p, CurseHandler.SOUL_SPLIT);
+//        }
+//        if (p.getEquipment().getItems()[Equipment.AMULET_SLOT].getId() == 18335) {
+//            damageMultiplier += .10;
+//        }
+//
+//        damage *= damageMultiplier;
+//
+//        if (maxHit > 0) {
+//            if (damage > maxHit) {
+//                damage = maxHit;
+//            }
+//        }
+//        //TODO
+////        if (p.getAmountDonated() == ZENYTE_DONATION_AMOUNT) {
+////            damage *= 3.0;
+////        }
+////        if (p.getAmountDonated() == ONYX_DONATION_AMOUNT) {
+////            damage *= 2.0;
+////        }
+////        if (p.getAmountDonated() == DIAMOND_DONATION_AMOUNT) {
+////            damage *= 1.4;
+////        }
+////        if (p.getAmountDonated() == RUBY_DONATION_AMOUNT) {
+////            damage *= 0.8;
+////        }
+////        if (p.getAmountDonated() == EMERALD_DONATION_AMOUNT) {
+////            damage *= 0.5;
+////        }
+////        if (p.getAmountDonated() == SAPPHIRE_DONATION_AMOUNT) {
+////            damage *= 0.2;
+////        }
+//        if (p.getDmgPotionTimer() > 0) {
+//            damage *= 1.5;
+//        }
+//        if(ServerPerks.getInstance().getActivePerk() == ServerPerks.Perk.ALL_PERKS) {
+//            damage *= 1.5;
+//        }
+//
+//        switch(p.getEquipment().getDamageBonus()){
+//            case 1 -> damage *= 1.07;
+//            case 2 -> damage *= 1.16;
+//            case 3 -> damage *= 1.23;
+//        }
+//
+//        if (p.getInventory().contains(4442)) {
+//            damage *=1.5;
+//        }
+//        if (p.getEquipment().contains(20591)) {
+//            damage *= 1.5;
+//            if (p.isGodMode())
+//                damage += damage * 6;
+//            return (int) damage;
+//        }
+//        if (p.isGodMode())
+//            damage *= 6;
+//        if (victim.isNpc()) {
+//            damage = (int) NpcMaxHitLimit.limit((NPC) victim, damage, p);
+//        }
+//        return damage;
+//    }
+//
+//    public static int getAttackDelay(Player plr) {
+//        int id = plr.getEquipment().getItems()[Equipment.WEAPON_SLOT].getId();
+//        String s = ItemDefinition.forId(id).getName().toLowerCase();
+//        if (id == -1)
+//            return 4;// unarmed
+//        if (id == 18357 || id == 14684)
+//            return 4;
+//        RangedWeaponData rangedData = plr.getRangedWeaponData();
+//        if (rangedData != null) {
+//            int speed = rangedData.getType().getAttackDelay();
+//            if (plr.getFightType() == FightType.SHORTBOW_RAPID || plr.getFightType() == FightType.DART_RAPID
+//                    || plr.getFightType() == FightType.KNIFE_RAPID || plr.getFightType() == FightType.THROWNAXE_RAPID
+//                    || plr.getFightType() == FightType.JAVELIN_RAPID
+//                    || plr.getFightType() == FightType.BLOWPIPE_RAPID) {
+//                speed--;
+//            }
+//            return speed;
+//        }
+//        if (id == 18365)
+//            return 3;
+//        else if (id == 18349) // CCbow and rapier
+//            return 4;
+//        if (id == 22034)
+//            return 4;
+//        if (id == 18799)
+//            return 2;
+//        if (id == 18358)
+//            return 1;
+//        if (id == 18353) // cmaul
+//            return 7;// chaotic maul
+//        if (id == 6818)
+//            return 1;
+//        if (id == 22010 || id == 19137 || id == 19136 || id == 14919 || id == 15785 || id == 20173 || id == 9929
+//                || id == 14056 || id == 21606 || id == 4017 || id == 671 || id == 16879 || id == 18332 || id == 22083 || id == 20553
+//                || id == 18636 || id == 8411 || id == 22148 || id == 8088 || id == 5073 || id == 8001 || id == 8253 || id == 22089
+//                || id == 7543 || id == 2632 || id == 19843 || id == 9941 || id == 5012 || id == 12843 || id == 5011 || id == 22113 || id == 5010 || id == 19135)
+//            return 1;
+//        if (id == 20000)
+//            return 4;// gs
+//        if (id == 22008)
+//            return 4;// abyssal tentacle == same speed as rapier
+//        if (id == 18686)
+//            return 2;// abyssal tentacle == same speed as rapier
+//        if (id == 18365 || id == 671)
+//            return 2;// abyssal tentacle == same speed as rapier
+//        if (id == 20001)
+//            return 4;// gs
+//        if (id == 20002)
+//            return 4;// gs
+//        if (id == 20003)
+//            return 4;// gs
+//        if (id == 18349)
+//            return 4;// chaotic rapier
+//        if (id == 14024)
+//            return 4;// drygore rapier
+//        if (id == 14023)
+//            return 5;// drygore long
+//        if (id == 18353) // cmaul
+//            return 7;// chaotic maul
+//        if (id == 16877)
+//            return 4;// dung 16877 shortbow
+//        if (id == 19143)
+//            return 3;// sara shortbow
+//        if (id == 19146)
+//            return 4;// guthix shortbow
+//        if (id == 19149)
+//            return 3;// zammy shortbow
+//        if (id == 16879)
+//            return 3;// Starter bow
+//        if (id == 18332)
+//            return 3;// Starter bow
+//        if (id == 20171) // zaryte
+//            return 5;
+//        if (id == 20553) // zaryte
+//            return 2;
+//        if (id == 16337) // zaryte
+//            return 5;
+//        if (id == 21053 || id == 21054 || id == 21055 || id == 21056) // zaryte
+//            return 5;
+//        if (id == 21018 || id == 20497 || id == 22134) // zaryte
+//            return 5;
+//        if (id == 12926) // blowpipe
+//            return 3;
+//        if (id == 14018) // tempest
+//            return 4;
+//        switch (id) {
+//            case 18357:
+//                return 4;
+//            case 11235:
+//            case 13405: // dbow
+//            case 15701: // dark bow
+//            case 15702: // dark bow
+//            case 15703: // dark bow
+//            case 15785:
+//            case 15704: // dark bow
+//            case 19146: // guthix bow
+//                return 9;
+//
+//            case 13879:
+//                return 8;
+//            case 13956:
+//                return 6;
+//            case 15241: // hand cannon
+//
+//                return 8;
+//
+//            case 11730:
+//                return 4;
+//            case 14484:
+//            case 18685:
+//                return 5;
+//            case 13883:
+//                return 6;
+//            case 10887:
+//            case 6528:
+//            case 15039:
+//                return 7;
+//            case 13905:
+//                return 5;
+//            case 13907:
+//                return 5;
+//            case 18353:
+//                return 7;
+//            case 18349:
+//                return 4;
+//            case 20000:
+//            case 20001:
+//            case 20002:
+//            case 20003:
+//                return 4;
+//            case 16403: // long primal
+//                return 5;
+//            case 19843:
+//            case 8253:
+//            case 22089:
+//            case 7543:
+//            case 2632:
+//            case 9929:
+//            case 14056:
+//            case 18636:
+//            case 8088:
+//            case 8411:
+//            case 22148:
+//            case 5012:
+//            case 12843:
+//            case 22113:
+//            case 5011:
+//            case 5010:
+//            case 9941:
+//            case 8011:
+//            case 4017:
+//            case 21606:
+//            case 14919:
+//            case 19135:
+//                return 1;
+//            case 19137:
+//                return 4;
+//            case 19136:
+//                return 2;
+//            case 22010:
+//                return 1;
+//            case 16337:
+//            case 3738:
+//            case 21018:
+//            case 22134:
+//            case 20497:
+//            case 21053:
+//            case 21054:
+//            case 21055:
+//            case 21056:
+//                return 3;
+//        }
+//
+//        if (s.endsWith("greataxe"))
+//            return 7;
+//        else if (s.equals("torags hammers"))
+//            return 5;
+//        else if (s.equals("guthans warspear"))
+//            return 5;
+//        else if (s.equals("veracs flail"))
+//            return 5;
+//        else if (s.equals("ahrims staff"))
+//            return 6;
+//        else if (s.equals("crossbow"))
+//            return 4;
+//        else if (s.contains("staff")) {
+//            if (s.contains("zamarok") || s.contains("guthix") || s.contains("saradomian") || s.contains("slayer")
+//                    || s.contains("ancient"))
+//                return 4;
+//            else
+//                return 5;
+//        } else if (s.contains("aril")) {
+//            if (s.contains("composite") || s.equals("seercull"))
+//                return 5;
+//            else if (s.contains("Ogre"))
+//                return 8;
+//            else if (s.contains("short") || s.contains("hunt") || s.contains("sword"))
+//                return 4;
+//            else if (s.contains("long") || s.contains("crystal"))
+//                return 6;
+//            else if (s.contains("'bow"))
+//                return 4;
+//
+//            return 5;
+//        } else if (s.contains("dagger"))
+//            return 4;
+//        else if (s.contains("godsword") || s.contains("2h"))
+//            return 6;
+//        else if (s.contains("longsword"))
+//            return 5;
+//        else if (s.contains("sword"))
+//            return 4;
+//        else if (s.contains("scimitar"))
+//            return 4;
+//        else if (s.contains("katana"))
+//            return 4;
+//        else if (s.contains("tempest"))
+//            return 4;
+//        else if (s.contains("blowpipe"))
+//            return 3;
+//        else if (s.contains("mace"))
+//            return 5;
+//        else if (s.contains("battleaxe"))
+//            return 6;
+//        else if (s.contains("pickaxe"))
+//            return 5;
+//        else if (s.contains("thrownaxe"))
+//            return 5;
+//        else if (s.contains("axe"))
+//            return 5;
+//        else if (s.contains("warhammer"))
+//            return 6;
+//        else if (s.contains("2h"))
+//            return 7;
+//        else if (s.contains("spear"))
+//            return 5;
+//        else if (s.contains("claw"))
+//            return 4;
+//        else if (s.contains("halberd"))
+//            return 7;
+//
+//            // sara sword, 2400ms
+//        else if (s.equals("granite maul"))
+//            return 7;
+//        else if (s.equals("toktz-xil-ak"))// sword
+//            return 4;
+//        else if (s.equals("tzhaar-ket-em"))// mace
+//            return 5;
+//        else if (s.equals("tzhaar-ket-om"))// maul
+//            return 7;
+//        else if (s.equals("chaotic maul"))// maul
+//            return 7;
+//        else if (s.equals("toktz-xil-ek"))// knife
+//            return 4;
+//        else if (s.equals("toktz-xil-ul"))// rings
+//            return 4;
+//        else if (s.equals("toktz-mej-tal"))// staff
+//            return 6;
+//        else if (s.contains("whip"))
+//            return 4;
+//        else if (s.contains("dart"))
+//            return 3;
+//        else if (s.contains("death-touched"))
+//            return 10;
+//        else if (s.contains("knife"))
+//            return 3;
+//        else if (s.contains("javelin"))
+//            return 6;
+//        return 5;
+//    }
 }

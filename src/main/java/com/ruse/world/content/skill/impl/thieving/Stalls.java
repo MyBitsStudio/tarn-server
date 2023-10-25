@@ -67,21 +67,21 @@ public class Stalls {
         }
         if (!player.getClickDelay().elapsed(2000))
             return;
-        if (player.getSkillManager().getMaxLevel(Skill.THIEVING) < lvlreq) {
-            player.getPacketSender()
-                    .sendMessage("You need a Thieving level of at least " + lvlreq + " to steal from this stall.");
-            return;
-        }
-
-        player.performAnimation(new Animation(881));
-        player.getPacketSender().sendInterfaceRemoval();
-        player.getSkillManager().addExperience(Skill.THIEVING, xp);
-        player.getClickDelay().reset();
-        {
-            player.getPacketSender().sendMessage(message);
-            player.getInventory().add(reward);
-        }
-        player.getSkillManager().stopSkilling();
+//        if (player.getSkillManager().getMaxLevel(Skill.THIEVING) < lvlreq) {
+//            player.getPacketSender()
+//                    .sendMessage("You need a Thieving level of at least " + lvlreq + " to steal from this stall.");
+//            return;
+//        }
+//
+//        player.performAnimation(new Animation(881));
+//        player.getPacketSender().sendInterfaceRemoval();
+//        player.getSkillManager().addExperience(Skill.THIEVING, xp);
+//        player.getClickDelay().reset();
+//        {
+//            player.getPacketSender().sendMessage(message);
+//            player.getInventory().add(reward);
+//        }
+//        player.getSkillManager().stopSkilling();
     }
 /*
     public static void stealFromAFKStall(Player player, int objectId, int tier) {

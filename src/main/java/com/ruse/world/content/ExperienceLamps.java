@@ -3,7 +3,6 @@ package com.ruse.world.content;
 import com.ruse.model.Difficulty;
 import com.ruse.model.Skill;
 import com.ruse.util.Misc;
-import com.ruse.world.content.skill.SkillManager;
 import com.ruse.world.entity.impl.player.Player;
 
 public class ExperienceLamps {
@@ -31,22 +30,19 @@ public class ExperienceLamps {
 				if (player.getUsableObject()[0] != null) {
 					Skill skill = (Skill) player.getUsableObject()[1];
 					switch (((String) player.getUsableObject()[0]).toLowerCase()) {
-					case "reset":
-						player.getSkillManager().resetSkill(skill, false);
-						break;
 					case "prestige":
 						//player.getSkillManager().resetSkill(skill, true);
 						break;
-					case "xp":
-						LampData lamp = (LampData) player.getUsableObject()[2];
-						if (!player.getInventory().contains(lamp.getItemId()))
-							return true;
-						int exp = getExperienceReward(player, lamp, skill);
-						player.getInventory().delete(lamp.getItemId(), 1);
-						player.getSkillManager().addExperience(skill, exp);
-						player.getPacketSender().sendMessage("You've received some experience in "
-								+ Misc.formatText(skill.toString().toLowerCase()) + ".");
-						break;
+//					case "xp":
+//						LampData lamp = (LampData) player.getUsableObject()[2];
+//						if (!player.getInventory().contains(lamp.getItemId()))
+//							return true;
+//						int exp = getExperienceReward(player, lamp, skill);
+//						player.getInventory().delete(lamp.getItemId(), 1);
+//						player.getNewSkills().xpUp(skill, exp);
+//						player.getPacketSender().sendMessage("You've received some experience in "
+//								+ Misc.formatText(skill.toString().toLowerCase()) + ".");
+//						break;
 					}
 				}
 			} catch (Exception e) {
@@ -67,11 +63,11 @@ public class ExperienceLamps {
 			player.getPacketSender().sendString(38006, Misc.formatText(interfaceButton.toString().toLowerCase()));
 			boolean prestige = player.getUsableObject()[0] != null && player.getUsableObject()[0] instanceof String
 					&& player.getUsableObject()[0].equals("prestige");
-			if (prestige) {
-				int pts = SkillManager.getPrestigePoints(player, skill);
-				player.getPacketSender().sendMessage("<img=5> <col=996633>You will receive " + pts + " Prestige point"
-						+ (pts > 1 ? "s" : "") + " if you prestige in " + skill.getFormatName() + ".");
-			}
+//			if (prestige) {
+//				int pts = SkillManager.getPrestigePoints(player, skill);
+//				player.getPacketSender().sendMessage("<img=5> <col=996633>You will receive " + pts + " Prestige point"
+//						+ (pts > 1 ? "s" : "") + " if you prestige in " + skill.getFormatName() + ".");
+//			}
 		}
 		return false;
 	}
@@ -120,13 +116,6 @@ public class ExperienceLamps {
 			}
 			return null;
 		}
-	}
-
-	public static int getExperienceReward(Player player, LampData lamp, Skill skill) {
-		int base = lamp == LampData.GOLDENLAMP_LAMP ? (int) (250000 / Difficulty.getDifficultyModifier(player, skill))
-				: (int) (100000 / Difficulty.getDifficultyModifier(player, skill));
-		int maxLvl = player.getSkillManager().getMaxLevel(skill);
-		return (int) (base + maxLvl);
 	}
 
 	public static boolean selectingExperienceReward(Player player) {

@@ -16,7 +16,6 @@ import com.ruse.world.World;
 import com.ruse.world.allornothing.DoubleOrNothing;
 import com.ruse.world.content.*;
 import com.ruse.world.content.Sounds.Sound;
-import com.ruse.world.content.aura.AuraParty;
 import com.ruse.world.content.aura.AuraRaidData;
 import com.ruse.world.content.bossEvents.BossEventInterfaceHandler;
 import com.ruse.world.packages.taskscrolls.TaskScrollHandler;
@@ -66,7 +65,6 @@ import com.ruse.world.content.skill.impl.summoning.PouchMaking;
 import com.ruse.world.content.skill.impl.summoning.SummoningTab;
 import com.ruse.world.content.transportation.TeleportHandler;
 import com.ruse.world.content.wellForGlobalBosses.WellForGlobalBossesInterface;
-import com.ruse.world.content.zombie.ZombieParty;
 import com.ruse.world.content.zombie.ZombieRaidData;
 import com.ruse.world.entity.impl.player.Player;
 import com.ruse.world.entity.impl.player.StartScreen;
@@ -189,9 +187,6 @@ public class ButtonClickPacketListener implements PacketListener {
             return;
         }
         if(player.getCrafting().button(id)){
-            return;
-        }
-        if (player.getUpgradeInterface().handleButton( id)) {
             return;
         }
 
@@ -331,18 +326,6 @@ public class ButtonClickPacketListener implements PacketListener {
                 break;
             case 111703:
             case -19190:
-                if (player.getLocation() == Location.AURA_LOBBY) {
-                    if (player.getAuraParty() == null) {
-                        new AuraParty(player).create();
-                    } else {
-                        if (player.getAuraParty().getOwner() == player) {
-                            player.setInputHandling(new InviteRaidsPlayer());
-                            player.getPacketSender().sendEnterInputPrompt("Invite Player");
-                        } else {
-                            player.getPacketSender().sendMessage("Only the party leader can invite other players.");
-                        }
-                    }
-                }
 
 //                else if (player.getLocation() == Location.RAID_LOBBY) {
 //                    if (player.getRaidParty() == null) {
@@ -355,37 +338,12 @@ public class ButtonClickPacketListener implements PacketListener {
 //                    }
 //                }
 
+                player.sendMessage("You must be in a raid to do this.");
 
-
-                else if (player.getLocation() == Location.ZOMBIE_LOBBY) {
-                    if (player.getZombieParty() == null) {
-                        new ZombieParty(player).create();
-                    } else if (player.getZombieParty().getOwner() == player) {
-                        player.setInputHandling(new InviteRaidsPlayer());
-                        player.getPacketSender().sendEnterInputPrompt("Invite Player");
-                    } else {
-                        player.getPacketSender().sendMessage("Only the party leader can invite other players.");
-                    }
-                }
-                else {
-                    player.sendMessage("You must be in a raid to do this.");
-                }
                 return;
 
             case 111706:
             case -19187:
-                if (player.getLocation() == Location.AURA) {
-                    if (player.getAuraParty() != null) {
-                        player.getAuraParty().remove(player, true);
-                        player.sendMessage("You left your Raids party.");
-                    }
-                    player.moveTo(AuraRaidData.lobbyPosition);
-                } else if (player.getLocation() == Location.AURA_LOBBY) {
-                    if (player.getAuraParty() != null) {
-                        player.getAuraParty().remove(player, true);
-                        player.sendMessage("You left your Raids party.");
-                    }
-                }
 //                else if (player.getLocation() == Location.TEST_RAID) {
 //                    if (player.getRaidParty() != null) {
 //                        player.getRaidParty().remove(player);
@@ -399,21 +357,9 @@ public class ButtonClickPacketListener implements PacketListener {
 //                        player.sendMessage("You left your Raids party.");
 //                    }
 //                }
-                else if (player.getLocation() == Location.ZOMBIE) {
-                    if (player.getZombieParty() != null) {
-                        player.getZombieParty().remove(player, true);
-                        player.sendMessage("You left your Raids party.");
-                    }
-                    player.moveTo(ZombieRaidData.lobbyPosition);
-                } else if (player.getLocation() == Location.ZOMBIE_LOBBY) {
-                    if (player.getZombieParty() != null) {
-                        player.getZombieParty().remove(player, true);
-                        player.sendMessage("You left your Raids party.");
-                    }
-                }
-                else {
-                    player.sendMessage("You must be in a raid to do this.");
-                }
+
+                player.sendMessage("You must be in a raid to do this.");
+
                 return;
 
             case 111211:
@@ -443,26 +389,6 @@ public class ButtonClickPacketListener implements PacketListener {
             case 111743:
             case 111746:
             case 111749:
-                if (player.getLocation() == Location.ZOMBIE || player.getLocation() == Location.ZOMBIE_LOBBY) {
-                    if (player.getZombieParty() != null) {
-                        if (player.equals(player.getZombieParty().getOwner())) {
-                            if (player.getZombieParty().getPlayers()
-                                    .size() >= ((id - 111716) / 3) + 1) {
-                                Player playerToKick = player.getZombieParty()
-                                        .getPlayers().get((id - 111716) / 3);
-                                if (playerToKick == player) {
-                                    player.sendMessage("You cannot kick yourself!");
-                                } else {
-                                    player.getZombieParty().remove(playerToKick,
-                                            true);
-
-                                }
-                            }
-                        } else {
-                            player.sendMessage("Only the leader of the party can kick players!");
-                        }
-                    }
-                }
 //            if (player.getLocation() == Location.TEST_RAID || player.getLocation() == Location.TEST_RAID_LOBBY) {
 //                    if (player.getRaidParty() != null) {
 //                        if (player.equals(player.getRaidParty().getOwner())) {
@@ -1077,9 +1003,6 @@ public class ButtonClickPacketListener implements PacketListener {
                 }
                 player.setUntradeableDropItem(null);
                 break;
-            case 1013:
-                player.getSkillManager().setTotalGainedExp(0);
-                break;
             case -26373:
                 if (WellOfGoodwill.isActive()) {
                     player.getPacketSender().sendMessage(
@@ -1223,7 +1146,7 @@ public class ButtonClickPacketListener implements PacketListener {
 
                 if (!player.busy() && !player.getCombatBuilder().isBeingAttacked()
                         && !Dungeoneering.doingOldDungeoneering(player)) {
-                    player.getSkillManager().stopSkilling();
+                    player.getNewSkills().stopSkilling();
                     player.getPriceChecker().open();
                 } else {
                     player.getPacketSender().sendMessage("You cannot open this right now.");
@@ -1883,9 +1806,6 @@ public class ButtonClickPacketListener implements PacketListener {
             return true;
         }
         if (PouchMaking.pouchInterface(player, id)) {
-            return true;
-        }
-        if (LoyaltyProgramme.handleButton(player, id)) {
             return true;
         }
         if (Fletching.fletchingButton(player, id)) {

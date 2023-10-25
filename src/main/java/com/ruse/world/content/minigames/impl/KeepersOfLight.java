@@ -74,10 +74,10 @@ public class KeepersOfLight {
             p.getPacketSender().sendMessage("Familiars are not allowed on the boat.");
             return;
         }
-        if (p.getSkillManager().getCombatLevel() < 30) {
-            p.getPacketSender().sendMessage("You must have a combat level of at least 30 to play this minigame.");
-            return;
-        }
+//        if (p.getSkillManager().getCombatLevel() < 30) {
+//            p.getPacketSender().sendMessage("You must have a combat level of at least 30 to play this minigame.");
+//            return;
+//        }
         if (getState(p) == null) {
             playerMap.put(p, WAITING);
             TOTAL_PLAYERS++;

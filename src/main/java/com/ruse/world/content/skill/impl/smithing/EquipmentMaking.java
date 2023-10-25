@@ -87,134 +87,134 @@ public class EquipmentMaking {
 		if (!player.getClickDelay().elapsed(1100)) {
 			return;
 		}
-		player.getSkillManager().stopSkilling();
-		if (!player.getInventory().contains(2347)) {
-			player.getPacketSender().sendMessage("You need a Hammer to smith items.");
-			player.getPacketSender().sendInterfaceRemoval();
-			return;
-		}
-		if (player.getInventory().getAmount(bar.getId()) < bar.getAmount() || x <= 0) {
-			player.getPacketSender().sendMessage("You do not have enough bars to smith this item.");
-			return;
-		}
-		if (SmithingData.getData(itemToSmith, "reqLvl") > player.getSkillManager().getCurrentLevel(Skill.SMITHING)) {
-			player.getPacketSender().sendMessage("You need a Smithing level of at least "
-					+ SmithingData.getData(itemToSmith, "reqLvl") + " to make this item.");
-			return;
-		}
-
-		int currentItemId = itemToSmith.getId();
-
-		for (int i = 0; i < possibleItems.length; i++) {
-			if (possibleItems[i] == currentItemId) {
-				canMakeItem = true;
-				break;
-			}
-		}
-
-		boolean good2go = false;
-
-		for (int i = 0; i < Bars.values().length; i++) {
-			/*
-			 * if (bar.getId() == Bars.values()[i].getItemId()) {
-			 * // System.out.println("correct barid"); } if
-			 * (itemToSmith.getDefinition().getName().startsWith(ItemDefinition.forId(Bars.
-			 * values()[i].getItemId()).getName().substring(0, 3))) {
-			 * // System.out.println("bar 0,3 matches"); }
-			 * // System.out.println(ItemDefinition.forId(Bars.values()[i].getItemId()).getName
-			 * ().substring(0, 3)+" ||| "+itemToSmith.getDefinition().getName()); if
-			 * (itemToSmith.getDefinition().getName().startsWith("Cannon")) {
-			 * // System.out.println("cannon matches"); }
-			 */
-			if (bar.getId() == Bars.values()[i].getItemId() && (itemToSmith.getDefinition().getName()
-					.startsWith(ItemDefinition.forId(Bars.values()[i].getItemId()).getName().substring(0, 3))
-					|| itemToSmith.getDefinition().getName().equalsIgnoreCase("cannonball")
-					|| itemToSmith.getDefinition().getName().equalsIgnoreCase("Oil lantern frame"))) {
-				good2go = true;
-				break;
-			}
-		}
-
-		if (!good2go || !canMakeItem) {
-			PlayerLogs.log("1 - smithing abuse",
-					player.getUsername() + " just tried to smith item: " + currentItemId + " ("
-							+ ItemDefinition.forId(currentItemId).getName() + "), IP: " + player.getHostAddress()
-							+ " using bar " + bar.getDefinition().getName());
-			World.sendStaffMessage("<col=b40404>[BUG ABUSE] " + player.getUsername() + " just tried to smith: "
-					+ ItemDefinition.forId(currentItemId).getName() + " using bar " + bar.getDefinition().getName());
-			// player.getPacketSender().sendMessage("How am I going to smith
-			// "+Misc.anOrA(ItemDefinition.forId(currentItemId).getName())+"
-			// "+ItemDefinition.forId(currentItemId).getName()+"?");
-			player.getSkillManager().stopSkilling();
-			return;
-		}
-
-		player.getClickDelay().reset();
-		player.getPacketSender().sendInterfaceRemoval();
-		player.setCurrentTask(new Task(3, player, true) {
-			int amountMade = 0;
-
-			@Override
-			public void execute() {
-				if (player.getInventory().getAmount(bar.getId()) < bar.getAmount()
-						|| !player.getInventory().contains(2347) || amountMade >= x) {
-					this.stop();
-					return;
-				}
-				if (player.getInteractingObject() != null)
-					player.getInteractingObject().performGraphic(new Graphic(2123));
-				player.performAnimation(new Animation(898));
-				amountMade++;
-				Sounds.sendSound(player, Sound.SMITH_ITEM);
-				player.getInventory().delete(bar);
-				player.getInventory().add(itemToSmith);
-				player.getInventory().refreshItems();
-
-
-				if (ItemDefinition.forId(itemToSmith.getId()).getName().contains("Bronze")) {
-					player.getSkillManager().addExperience(Skill.SMITHING,
-							(int) (Bars.Bronze.getExp() * bar.getAmount()));
-					// player.getPacketSender().sendMessage("Using: "+bar.getAmount()+" Bronze bars
-					// to make: "+ItemDefinition.forId(itemToSmith.getId()).getName());
-				} else if (ItemDefinition.forId(itemToSmith.getId()).getName().contains("Iron")) {
-					player.getSkillManager().addExperience(Skill.SMITHING,
-							(int) (Bars.Iron.getExp() * bar.getAmount()));
-					// player.getPacketSender().sendMessage("Using: "+bar.getAmount()+" Iron bars to
-					// make: "+ItemDefinition.forId(itemToSmith.getId()).getName());
-				} else if (ItemDefinition.forId(itemToSmith.getId()).getName().contains("Steel")
-						|| ItemDefinition.forId(itemToSmith.getId()).getName().equalsIgnoreCase("Cannonball")) {
-					player.getSkillManager().addExperience(Skill.SMITHING,
-							(int) (Bars.Steel.getExp() * bar.getAmount()));
-					// player.getPacketSender().sendMessage("Using: "+bar.getAmount()+" Steel bars
-					// to make: "+ItemDefinition.forId(itemToSmith.getId()).getName());
-				} else if (ItemDefinition.forId(itemToSmith.getId()).getName().contains("Mith")) {
-					player.getSkillManager().addExperience(Skill.SMITHING,
-							(int) (Bars.Mithril.getExp() * bar.getAmount()));
-					// player.getPacketSender().sendMessage("Using: "+bar.getAmount()+" Mith bars to
-					// make: "+ItemDefinition.forId(itemToSmith.getId()).getName());
-				} else if (ItemDefinition.forId(itemToSmith.getId()).getName().contains("Adamant")) {
-					player.getSkillManager().addExperience(Skill.SMITHING,
-							(int) (Bars.Adamant.getExp() * bar.getAmount()));
-					// player.getPacketSender().sendMessage("Using: "+bar.getAmount()+" Adamant bars
-					// to make: "+ItemDefinition.forId(itemToSmith.getId()).getName());
-				} else if (ItemDefinition.forId(itemToSmith.getId()).getName().contains("Rune")
-						|| ItemDefinition.forId(itemToSmith.getId()).getName().contains("Runite")) {
-					player.getSkillManager().addExperience(Skill.SMITHING,
-							(int) (Bars.Rune.getExp() * bar.getAmount()));
-					// player.getPacketSender().sendMessage("Using: "+bar.getAmount()+" Rune bars to
-					// make: "+ItemDefinition.forId(itemToSmith.getId()).getName());
-				} else {
-					player.getPacketSender()
-							.sendMessage("ERROR 95152, no experience added. Please report this to staff!");
-				}
-
-
-				// player.getSkillManager().addExperience(Skill.SMITHING, (int)
-				// (Bars.Bronze.getExp() * bar.getAmount()));
-				// player.getSkillManager().addExperience(Skill.SMITHING, (int)
-				// (SmithingData.getData(itemToSmith, "xp")));
-			}
-		});
-		TaskManager.submit(player.getCurrentTask());
+//		player.getSkillManager().stopSkilling();
+//		if (!player.getInventory().contains(2347)) {
+//			player.getPacketSender().sendMessage("You need a Hammer to smith items.");
+//			player.getPacketSender().sendInterfaceRemoval();
+//			return;
+//		}
+//		if (player.getInventory().getAmount(bar.getId()) < bar.getAmount() || x <= 0) {
+//			player.getPacketSender().sendMessage("You do not have enough bars to smith this item.");
+//			return;
+//		}
+//		if (SmithingData.getData(itemToSmith, "reqLvl") > player.getSkillManager().getCurrentLevel(Skill.SMITHING)) {
+//			player.getPacketSender().sendMessage("You need a Smithing level of at least "
+//					+ SmithingData.getData(itemToSmith, "reqLvl") + " to make this item.");
+//			return;
+//		}
+//
+//		int currentItemId = itemToSmith.getId();
+//
+//		for (int i = 0; i < possibleItems.length; i++) {
+//			if (possibleItems[i] == currentItemId) {
+//				canMakeItem = true;
+//				break;
+//			}
+//		}
+//
+//		boolean good2go = false;
+//
+//		for (int i = 0; i < Bars.values().length; i++) {
+//			/*
+//			 * if (bar.getId() == Bars.values()[i].getItemId()) {
+//			 * // System.out.println("correct barid"); } if
+//			 * (itemToSmith.getDefinition().getName().startsWith(ItemDefinition.forId(Bars.
+//			 * values()[i].getItemId()).getName().substring(0, 3))) {
+//			 * // System.out.println("bar 0,3 matches"); }
+//			 * // System.out.println(ItemDefinition.forId(Bars.values()[i].getItemId()).getName
+//			 * ().substring(0, 3)+" ||| "+itemToSmith.getDefinition().getName()); if
+//			 * (itemToSmith.getDefinition().getName().startsWith("Cannon")) {
+//			 * // System.out.println("cannon matches"); }
+//			 */
+//			if (bar.getId() == Bars.values()[i].getItemId() && (itemToSmith.getDefinition().getName()
+//					.startsWith(ItemDefinition.forId(Bars.values()[i].getItemId()).getName().substring(0, 3))
+//					|| itemToSmith.getDefinition().getName().equalsIgnoreCase("cannonball")
+//					|| itemToSmith.getDefinition().getName().equalsIgnoreCase("Oil lantern frame"))) {
+//				good2go = true;
+//				break;
+//			}
+//		}
+//
+//		if (!good2go || !canMakeItem) {
+//			PlayerLogs.log("1 - smithing abuse",
+//					player.getUsername() + " just tried to smith item: " + currentItemId + " ("
+//							+ ItemDefinition.forId(currentItemId).getName() + "), IP: " + player.getHostAddress()
+//							+ " using bar " + bar.getDefinition().getName());
+//			World.sendStaffMessage("<col=b40404>[BUG ABUSE] " + player.getUsername() + " just tried to smith: "
+//					+ ItemDefinition.forId(currentItemId).getName() + " using bar " + bar.getDefinition().getName());
+//			// player.getPacketSender().sendMessage("How am I going to smith
+//			// "+Misc.anOrA(ItemDefinition.forId(currentItemId).getName())+"
+//			// "+ItemDefinition.forId(currentItemId).getName()+"?");
+//			player.getSkillManager().stopSkilling();
+//			return;
+//		}
+//
+//		player.getClickDelay().reset();
+//		player.getPacketSender().sendInterfaceRemoval();
+//		player.setCurrentTask(new Task(3, player, true) {
+//			int amountMade = 0;
+//
+//			@Override
+//			public void execute() {
+//				if (player.getInventory().getAmount(bar.getId()) < bar.getAmount()
+//						|| !player.getInventory().contains(2347) || amountMade >= x) {
+//					this.stop();
+//					return;
+//				}
+//				if (player.getInteractingObject() != null)
+//					player.getInteractingObject().performGraphic(new Graphic(2123));
+//				player.performAnimation(new Animation(898));
+//				amountMade++;
+//				Sounds.sendSound(player, Sound.SMITH_ITEM);
+//				player.getInventory().delete(bar);
+//				player.getInventory().add(itemToSmith);
+//				player.getInventory().refreshItems();
+//
+//
+//				if (ItemDefinition.forId(itemToSmith.getId()).getName().contains("Bronze")) {
+//					player.getSkillManager().addExperience(Skill.SMITHING,
+//							(int) (Bars.Bronze.getExp() * bar.getAmount()));
+//					// player.getPacketSender().sendMessage("Using: "+bar.getAmount()+" Bronze bars
+//					// to make: "+ItemDefinition.forId(itemToSmith.getId()).getName());
+//				} else if (ItemDefinition.forId(itemToSmith.getId()).getName().contains("Iron")) {
+//					player.getSkillManager().addExperience(Skill.SMITHING,
+//							(int) (Bars.Iron.getExp() * bar.getAmount()));
+//					// player.getPacketSender().sendMessage("Using: "+bar.getAmount()+" Iron bars to
+//					// make: "+ItemDefinition.forId(itemToSmith.getId()).getName());
+//				} else if (ItemDefinition.forId(itemToSmith.getId()).getName().contains("Steel")
+//						|| ItemDefinition.forId(itemToSmith.getId()).getName().equalsIgnoreCase("Cannonball")) {
+//					player.getSkillManager().addExperience(Skill.SMITHING,
+//							(int) (Bars.Steel.getExp() * bar.getAmount()));
+//					// player.getPacketSender().sendMessage("Using: "+bar.getAmount()+" Steel bars
+//					// to make: "+ItemDefinition.forId(itemToSmith.getId()).getName());
+//				} else if (ItemDefinition.forId(itemToSmith.getId()).getName().contains("Mith")) {
+//					player.getSkillManager().addExperience(Skill.SMITHING,
+//							(int) (Bars.Mithril.getExp() * bar.getAmount()));
+//					// player.getPacketSender().sendMessage("Using: "+bar.getAmount()+" Mith bars to
+//					// make: "+ItemDefinition.forId(itemToSmith.getId()).getName());
+//				} else if (ItemDefinition.forId(itemToSmith.getId()).getName().contains("Adamant")) {
+//					player.getSkillManager().addExperience(Skill.SMITHING,
+//							(int) (Bars.Adamant.getExp() * bar.getAmount()));
+//					// player.getPacketSender().sendMessage("Using: "+bar.getAmount()+" Adamant bars
+//					// to make: "+ItemDefinition.forId(itemToSmith.getId()).getName());
+//				} else if (ItemDefinition.forId(itemToSmith.getId()).getName().contains("Rune")
+//						|| ItemDefinition.forId(itemToSmith.getId()).getName().contains("Runite")) {
+//					player.getSkillManager().addExperience(Skill.SMITHING,
+//							(int) (Bars.Rune.getExp() * bar.getAmount()));
+//					// player.getPacketSender().sendMessage("Using: "+bar.getAmount()+" Rune bars to
+//					// make: "+ItemDefinition.forId(itemToSmith.getId()).getName());
+//				} else {
+//					player.getPacketSender()
+//							.sendMessage("ERROR 95152, no experience added. Please report this to staff!");
+//				}
+//
+//
+//				// player.getSkillManager().addExperience(Skill.SMITHING, (int)
+//				// (Bars.Bronze.getExp() * bar.getAmount()));
+//				// player.getSkillManager().addExperience(Skill.SMITHING, (int)
+//				// (SmithingData.getData(itemToSmith, "xp")));
+//			}
+//		});
+//		TaskManager.submit(player.getCurrentTask());
 	}
 }

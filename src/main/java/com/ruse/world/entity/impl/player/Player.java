@@ -28,9 +28,11 @@ import com.ruse.world.content.BankPin.BankPinAttributes;
 import com.ruse.world.content.*;
 import com.ruse.world.content.DropLog.DropLogEntry;
 import com.ruse.world.content.KillsTracker.KillsEntry;
-import com.ruse.world.content.LoyaltyProgramme.LoyaltyTitles;
 import com.ruse.world.content.StarterTasks.StarterTaskAttributes;
+import com.ruse.world.content.skill.SkillManager;
 import com.ruse.world.packages.planetsystem.PlanetManager;
+import com.ruse.world.packages.skills.S_Skills;
+import com.ruse.world.packages.skills.SkillingManager;
 import com.ruse.world.packages.taskscrolls.PlayerTask;
 import com.ruse.world.packages.taskscrolls.TaskScrollHandler;
 import com.ruse.world.packages.johnachievementsystem.AchievementProgress;
@@ -54,7 +56,6 @@ import com.ruse.world.packages.tracks.impl.tarn.normal.TarnNormalTrack;
 import com.ruse.world.packages.tradingpost.TradingPost;
 import com.ruse.world.packages.attendance.AttendanceManager;
 import com.ruse.world.packages.attendance.AttendanceUI;
-import com.ruse.world.content.aura.AuraParty;
 import com.ruse.world.content.battlepass.BattlePass;
 import com.ruse.world.content.bossEvents.BossEventData;
 import com.ruse.world.packages.dialogue.Dialogue;
@@ -105,7 +106,6 @@ import com.ruse.world.packages.ranks.StaffRank;
 import com.ruse.world.packages.ranks.VIPRank;
 import com.ruse.world.packages.packs.scratch.Scratch;
 import com.ruse.world.packages.seasonpass.SeasonPass;
-import com.ruse.world.content.skill.SkillManager;
 import com.ruse.world.content.skill.impl.construction.HouseFurniture;
 import com.ruse.world.content.skill.impl.construction.Portal;
 import com.ruse.world.content.skill.impl.construction.Room;
@@ -115,8 +115,6 @@ import com.ruse.world.content.skill.impl.summoning.Pouch;
 import com.ruse.world.content.skill.impl.summoning.Summoning;
 import com.ruse.world.content.teleport.TeleInterface;
 import com.ruse.world.content.upgrade.UpgradeInterface;
-import com.ruse.world.content.upgrading.OldUpgradeInterface;
-import com.ruse.world.content.zombie.ZombieParty;
 import com.ruse.world.entity.actor.player.controller.ControllerManager;
 import com.ruse.world.entity.impl.Character;
 import com.ruse.world.entity.impl.GroundItemManager;
@@ -184,12 +182,6 @@ public class Player extends Character {
         minimeEquipment[slot] = item;
     }
 
-    private MiniMeSystem miniMeSystem = new MiniMeSystem(this);
-
-    public MiniMeSystem getMinimeSystem() {
-        return miniMeSystem;
-    }
-
     private BattlePass battlePass = new BattlePass(this);
 
     public BattlePass getBattlePass() {
@@ -228,9 +220,6 @@ public class Player extends Character {
 
     @Getter
     private final RaidsInterface raidsInterface = new RaidsInterface(this);
-
-    @Getter
-    private final OldUpgradeInterface upgradeInterface = new OldUpgradeInterface(this);
 
     @Getter
     private final ArrayList<TeleportInterface.Teleport> favoriteTeleports = new ArrayList<>();
@@ -520,7 +509,6 @@ public class Player extends Character {
     private final PacketSender packetSender = new PacketSender(this);
     private final Appearance appearance = new Appearance(this);
     private final FrameUpdater frameUpdater = new FrameUpdater();
-    private CurrencyPouch currencyPouch = new CurrencyPouch();
     public boolean bot;
     public int selectedGoodieBag = -1;
     public int currentPlayerPanelIndex = 1;
@@ -627,10 +615,8 @@ public class Player extends Character {
     private boolean placeholders = true;
     private boolean enteredZombieRaids;
     private int zombieRaidsKC;
-    private ZombieParty zombieParty;
     private boolean enteredAuraRaids;
     private int auraRaidsKC;
-    private AuraParty auraParty;
     private boolean insideRaids;
     private int afkStallCount1;
     private int afkStallCount2;
@@ -687,7 +673,6 @@ public class Player extends Character {
     private ArrayList<Portal> housePortals = new ArrayList<>();
     private final PlayerSession session;
     private CharacterAnimations characterAnimations = new CharacterAnimations();
-    private final SkillManager skillManager = new SkillManager(this);
     private final PlayerRelations relations = new PlayerRelations(this);
     private final ChatMessage chatMessages = new ChatMessage();
     private Inventory inventory = new Inventory(this);
@@ -713,7 +698,6 @@ public class Player extends Character {
     private FightType fightType = FightType.UNARMED_PUNCH;
     private Prayerbook prayerbook = Prayerbook.CURSES;
     private MagicSpellbook spellbook = MagicSpellbook.NORMAL;
-    private LoyaltyTitles loyaltyTitle = LoyaltyTitles.NONE;
     private Input inputHandling;
     private WalkToTask walkToTask;
     private WalkToFightTask fightTask;
@@ -923,14 +907,6 @@ public class Player extends Character {
         this.enteredZombieRaids = enteredZombieRaids;
     }
 
-    public ZombieParty getZombieParty() {
-        return zombieParty;
-    }
-
-    public void setZombieParty(ZombieParty zombieParty) {
-        this.zombieParty = zombieParty;
-    }
-
     public int getAuraRaidsKC() {
         return auraRaidsKC;
     }
@@ -945,14 +921,6 @@ public class Player extends Character {
 
     public void setEnteredAuraRaids(boolean enteredAuraRaids) {
         this.enteredAuraRaids = enteredAuraRaids;
-    }
-
-    public AuraParty getAuraParty() {
-        return auraParty;
-    }
-
-    public void setAuraParty(AuraParty auraParty) {
-        this.auraParty = auraParty;
     }
 
     public int getAfkStallCount1() {
@@ -1308,7 +1276,7 @@ public class Player extends Character {
 
     @Override
     public long getConstitution() {
-        return getSkillManager().getCurrentLevel(Skill.CONSTITUTION);
+        return getNewSkills().getCurrentLevel(S_Skills.HITPOINTS);
     }
 
     public long getHP() {
@@ -1321,8 +1289,8 @@ public class Player extends Character {
         if (isDying) {
             return this;
         }
-        skillManager.setCurrentLevel(Skill.CONSTITUTION, (int) constitution);
-        packetSender.sendSkill(Skill.CONSTITUTION);
+        newSkills.setCurrentLevel(S_Skills.HITPOINTS, (int) constitution, true);
+        packetSender.sendSkill(S_Skills.HITPOINTS);
         if (getConstitution() <= 0 && !isDying)
             appendDeath();
         return this;
@@ -1333,8 +1301,8 @@ public class Player extends Character {
 
     @Override
     public void heal(long amount) {
-        int level = skillManager.getMaxLevel(Skill.CONSTITUTION);
-        int currentlevel = skillManager.getCurrentLevel(Skill.CONSTITUTION);
+        int level = newSkills.getMaxLevel(S_Skills.HITPOINTS);
+        int currentlevel = newSkills.getCurrentLevel(S_Skills.HITPOINTS);
 
         if (currentlevel >= level) {
             return;
@@ -1346,23 +1314,23 @@ public class Player extends Character {
             setConstitution(currentlevel + amount);
         }
 
-        getSkillManager().updateSkill(Skill.CONSTITUTION);
+        getNewSkills().updateSkill(S_Skills.HITPOINTS);
     }
 
     @Override
     public int getBaseAttack(CombatType type) {
         if (type == CombatType.RANGED)
-            return skillManager.getCurrentLevel(Skill.RANGED);
+            return newSkills.getCurrentLevel(S_Skills.RANGED);
         else if (type == CombatType.MAGIC)
-            return skillManager.getCurrentLevel(Skill.MAGIC);
-        return skillManager.getCurrentLevel(Skill.ATTACK);
+            return newSkills.getCurrentLevel(S_Skills.MAGIC);
+        return newSkills.getCurrentLevel(S_Skills.ATTACK);
     }
 
     @Override
     public int getBaseDefence(CombatType type) {
         if (type == CombatType.MAGIC)
-            return skillManager.getCurrentLevel(Skill.MAGIC);
-        return skillManager.getCurrentLevel(Skill.DEFENCE);
+            return newSkills.getCurrentLevel(S_Skills.MAGIC);
+        return newSkills.getCurrentLevel(S_Skills.DEFENCE);
     }
 
     @Override
@@ -1445,21 +1413,6 @@ public class Player extends Character {
     }
 
     public void processAll(){
-        if(isGodMode()){
-            skillManager.setCurrentLevel(Skill.PRAYER, 15000);
-            skillManager.setCurrentLevel(Skill.ATTACK, 1500);
-            skillManager.setCurrentLevel(Skill.STRENGTH, 1500);
-            skillManager.setCurrentLevel(Skill.DEFENCE, 1500);
-            skillManager.setCurrentLevel(Skill.RANGED, 1500);
-            skillManager.setCurrentLevel(Skill.MAGIC, 1500);
-            skillManager.setCurrentLevel(Skill.CONSTITUTION, 15000);
-            packetSender.sendString(48302, (godModeTimer / 100) + " minutes");
-            packetSender.sendString(48303, "God Mode");
-            godModeTimer--;
-            if (godModeTimer < 1) {
-                endGodMode();
-            }
-        }
 
         if(getInstance() != null){
             getInstance().process();
@@ -1518,89 +1471,6 @@ public class Player extends Character {
         packetSender.sendWalkableInterface(58390, false);
     }
 
-    public void endGodMode() {
-        godModeTimer = 0;
-        packetSender.sendWalkableInterface(48300, false);
-        for (Skill skill : Skill.values()) {
-            skillManager.setCurrentLevel(skill, skillManager.getMaxLevel(skill));
-        }
-        setSpecialPercentage(100);
-        sendMessage("Your god mode timer has run out.");
-    }
-
-    private void processGodMode() {
-        if (!isGodMode()) {
-            return;
-        }
-        skillManager.setCurrentLevel(Skill.PRAYER, 15000);
-        skillManager.setCurrentLevel(Skill.ATTACK, 1500);
-        skillManager.setCurrentLevel(Skill.STRENGTH, 1500);
-        skillManager.setCurrentLevel(Skill.DEFENCE, 1500);
-        skillManager.setCurrentLevel(Skill.RANGED, 1500);
-        skillManager.setCurrentLevel(Skill.MAGIC, 1500);
-        skillManager.setCurrentLevel(Skill.CONSTITUTION, 15000);
-        packetSender.sendString(48302, (godModeTimer / 100) + " minutes");
-        packetSender.sendString(48303, "God Mode");
-        godModeTimer--;
-        if (godModeTimer < 1) {
-            endGodMode();
-        }
-    }
-
-    public void processovlmode() {
-        packetSender.sendString(48302, (overloadPotionTimer / 100) + " minutes");
-        packetSender.sendString(48303, getPotionUsed());
-        overloadPotionTimer--;
-        if (overloadPotionTimer < 1) {
-            endovlmode();
-        }
-    }
-
-    public void processAggroMode() {
-        packetSender.sendString(58352, (aggroPotionTimer / 100) + " minute");
-        packetSender.sendString(58353, getPotionUsed());
-        aggroPotionTimer--;
-        if (aggroPotionTimer < 1) {
-            endAggroMode();
-        }
-    }
-
-    public void processExpMode() {
-        packetSender.sendString(58362, (expPotionTimer / 100) + " minute");
-        packetSender.sendString(58363, getPotionUsed());
-        expPotionTimer--;
-        if (expPotionTimer < 1) {
-            endExpMode();
-        }
-    }
-
-    public void processDrMode() {
-        packetSender.sendString(58372, (drPotionTimer / 100) + " minute");
-        packetSender.sendString(58373, getPotionUsed());
-        drPotionTimer--;
-        if (drPotionTimer < 1) {
-            endDrMode();
-        }
-    }
-
-    public void processDmgMode() {
-        packetSender.sendString(58392, (dmgPotionTimer / 100) + " minute");
-        packetSender.sendString(58393, getPotionUsed());
-        dmgPotionTimer--;
-        if (dmgPotionTimer < 1) {
-            endDmgMode();
-        }
-    }
-
-    public void processDdrMode() {
-        packetSender.sendString(58382, (ddrPotionTimer / 100) + " minute");
-        packetSender.sendString(58383, getPotionUsed());
-        ddrPotionTimer--;
-        if (ddrPotionTimer < 1) {
-            endDdrMode();
-        }
-    }
-
     public void dispose() {
         // save();
         packetSender.sendLogout();
@@ -1615,7 +1485,6 @@ public class Player extends Character {
             return;
         }
         PlayerSaving.save(this);
-        //new PlayerSQLSave().execute(this);
     }
 
 
@@ -1632,10 +1501,6 @@ public class Player extends Character {
 
     public boolean logout() {
         boolean debugMessage = false;
-        int[] playerXP = new int[Skill.values().length];
-        for (int i = 0; i < Skill.values().length; i++) {
-            playerXP[i] = this.getSkillManager().getExperience(Skill.forId(i));
-        }
 
         if (getCombatBuilder().isBeingAttacked()) {
             getPacketSender().sendMessage("You must wait a few seconds after being out of combat before doing this.");
@@ -1687,8 +1552,8 @@ public class Player extends Character {
         getEquipment().refreshItems();
         getInventory().refreshItems();
 
-        for (Skill skill : Skill.values()) {
-            getSkillManager().setCurrentLevel(skill, getSkillManager().getMaxLevel(skill));
+        for (S_Skills skill : S_Skills.values()) {
+            getNewSkills().setCurrentLevel(skill, getNewSkills().getMaxLevel(skill), true);
         }
 
         setRunEnergy(100);
@@ -1898,22 +1763,6 @@ public class Player extends Character {
         this.emailAddress = address;
     }
 
-    public void unlockPkTitles() {
-        if (this.getPlayerKillingAttributes().getPlayerKills() >= 1) {
-            LoyaltyProgramme.unlock(this, LoyaltyTitles.KILLER);
-        }
-        if (this.getPlayerKillingAttributes().getPlayerKills() >= 20) {
-            LoyaltyProgramme.unlock(this, LoyaltyTitles.SLAUGHTERER);
-        }
-        if (this.getPlayerKillingAttributes().getPlayerKills() >= 50) {
-            LoyaltyProgramme.unlock(this, LoyaltyTitles.GENOCIDAL);
-        }
-        if (this.getPlayerKillingAttributes().getPlayerKillStreak() >= 15) {
-            LoyaltyProgramme.unlock(this, LoyaltyTitles.IMMORTAL);
-        }
-        PlayerPanel.refreshPanel(this);
-    }
-
     public void updateGearBonuses() {
         Misc.updateGearBonuses(this);
     }
@@ -1964,11 +1813,6 @@ public class Player extends Character {
         return packetSender;
     }
 
-
-    public SkillManager getSkillManager() {
-        return skillManager;
-    }
-
     public Appearance getAppearance() {
         return appearance;
     }
@@ -1983,10 +1827,6 @@ public class Player extends Character {
 
     public PointsHandler getPointsHandler() {
         return pointsHandler;
-    }
-
-    public CurrencyPouch getCurrencyPouch() {
-        return currencyPouch;
     }
 
     public boolean isImmuneToDragonFire() {
@@ -2071,9 +1911,9 @@ public class Player extends Character {
 
     public boolean couldHeal() {
         boolean nexEffect = getEquipment().wearingNexAmours();
-        int level = skillManager.getMaxLevel(Skill.CONSTITUTION);
+        int level = newSkills.getMaxLevel(S_Skills.HITPOINTS);
         int nexHp = level + 400;
-        int currentlevel = skillManager.getCurrentLevel(Skill.CONSTITUTION);
+        int currentlevel = newSkills.getCurrentLevel(S_Skills.HITPOINTS);
 
         if (currentlevel >= level && !nexEffect) {
             return false;
@@ -2406,14 +2246,6 @@ public class Player extends Character {
      */
     public void setCharacterAnimations(CharacterAnimations equipmentAnimation) {
         this.characterAnimations = equipmentAnimation.clone();
-    }
-
-    public LoyaltyTitles getLoyaltyTitle() {
-        return loyaltyTitle;
-    }
-
-    public void setLoyaltyTitle(LoyaltyTitles loyaltyTitle) {
-        this.loyaltyTitle = loyaltyTitle;
     }
 
     public PlayerInteractingOption getPlayerInteractingOption() {
@@ -3884,10 +3716,6 @@ public class Player extends Character {
     @Getter @Setter
     public boolean bondClickedClaimAll;
 
-    public void setCurrencyPouch(CurrencyPouch pouch) {
-        this.currencyPouch = pouch;
-    }
-
     @Getter @Setter
     public boolean unlockedLucifers;
 
@@ -4077,5 +3905,13 @@ public class Player extends Character {
 
     @Getter
     private CompanionHandler companion = new CompanionHandler(this);
+
+    @Getter
+    private final SkillingManager newSkills = new SkillingManager(this);
+
+    private final SkillManager skillManager = new SkillManager(this);
+    public SkillManager getSkillManager() {
+        return skillManager;
+    }
 
 }

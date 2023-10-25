@@ -360,12 +360,12 @@ public class DefaultRangedCombatStrategy implements CombatStrategy {
 		final boolean ardy = player.getEquipment().get(Equipment.CAPE_SLOT).getId() == 19748;
 		final boolean avas = player.getEquipment().get(Equipment.CAPE_SLOT).getId() == 10499
 				|| player.getEquipment().get(Equipment.CAPE_SLOT).getId() == 3805;
-		final boolean skillcape = player.getSkillManager().skillCape(Skill.RANGED);
+		//final boolean skillcape = player.getSkillManager().skillCape(Skill.RANGED);
 		final boolean zaryte = player.getEquipment().get(Equipment.WEAPON_SLOT).getId() == 20171
 				|| player.getEquipment().get(Equipment.WEAPON_SLOT).getId() == 20553;
 
 		if (player.getFireAmmo() != 22006) {
-			if ((avas || ardy || skillcape) && Misc.getRandom(11) <= 9) { // Avas
+			if ((avas || ardy) && Misc.getRandom(11) <= 9) { // Avas
 				return;
 			}
 			if (zaryte) {
@@ -383,7 +383,7 @@ public class DefaultRangedCombatStrategy implements CombatStrategy {
 		player.getEquipment().get(slot).decrementAmount();
 
 		if (player.getFireAmmo() != 22006){
-		if ((!avas || !ardy || !skillcape || !zaryte) && player.getFireAmmo() != 15243) {
+		if ((!avas || !ardy || !zaryte) && player.getFireAmmo() != 15243) {
 			GroundItemManager.spawnGroundItem(player, new GroundItem(new Item(player.getFireAmmo()), pos,
 						player.getUsername(), false, 120, true, 120));
 		}}
@@ -420,7 +420,7 @@ public class DefaultRangedCombatStrategy implements CombatStrategy {
 		return false;
 	}
 
-	private static final long getModifiedDamage(Player player, Character target, CombatContainer container) {
+	private static long getModifiedDamage(Player player, Character target, CombatContainer container) {
 		if (container == null || container.getHits().length < 1)
 			return 0;
 		ContainerHit hit = container.getHits()[0];
@@ -454,57 +454,57 @@ public class DefaultRangedCombatStrategy implements CombatStrategy {
 			target.performGraphic(new Graphic(860));
 			multiplier = 1.7;
 			break;
-		case 9239: // Down To Earth
-	
-			target.performGraphic(new Graphic(757));
-			if (pTarget != null) {
-				pTarget.getSkillManager().setCurrentLevel(Skill.MAGIC,
-						pTarget.getSkillManager().getCurrentLevel(Skill.MAGIC) - 3);
-				pTarget.getPacketSender().sendMessage("Your Magic level has been reduced.");
-			}
-			break;
-		case 9240: // Clear Mind
-			target.performGraphic(new Graphic(751));
-			if (pTarget != null) {
-				pTarget.getSkillManager().setCurrentLevel(Skill.PRAYER,
-						pTarget.getSkillManager().getCurrentLevel(Skill.PRAYER) - 40);
-				if (pTarget.getSkillManager().getCurrentLevel(Skill.PRAYER) < 0) {
-					pTarget.getSkillManager().setCurrentLevel(Skill.PRAYER, 0);
-				}
-				pTarget.getPacketSender().sendMessage("Your Prayer level has been leeched.");
-				player.getSkillManager().setCurrentLevel(Skill.PRAYER,
-						pTarget.getSkillManager().getCurrentLevel(Skill.PRAYER) + 40);
-				if (player.getSkillManager().getCurrentLevel(Skill.PRAYER) > player.getSkillManager()
-						.getMaxLevel(Skill.PRAYER)) {
-					player.getSkillManager().setCurrentLevel(Skill.PRAYER,
-							player.getSkillManager().getMaxLevel(Skill.PRAYER));
-				} else {
-					player.getPacketSender()
-							.sendMessage("Your enchanced bolts leech some Prayer points from your opponent..");
-				}
-			}
-			break;
+//		case 9239: // Down To Earth
+//
+//			target.performGraphic(new Graphic(757));
+//			if (pTarget != null) {
+//				pTarget.getSkillManager().setCurrentLevel(Skill.MAGIC,
+//						pTarget.getSkillManager().getCurrentLevel(Skill.MAGIC) - 3);
+//				pTarget.getPacketSender().sendMessage("Your Magic level has been reduced.");
+//			}
+//			break;
+//		case 9240: // Clear Mind
+//			target.performGraphic(new Graphic(751));
+//			if (pTarget != null) {
+//				pTarget.getSkillManager().setCurrentLevel(Skill.PRAYER,
+//						pTarget.getSkillManager().getCurrentLevel(Skill.PRAYER) - 40);
+//				if (pTarget.getSkillManager().getCurrentLevel(Skill.PRAYER) < 0) {
+//					pTarget.getSkillManager().setCurrentLevel(Skill.PRAYER, 0);
+//				}
+//				pTarget.getPacketSender().sendMessage("Your Prayer level has been leeched.");
+//				player.getSkillManager().setCurrentLevel(Skill.PRAYER,
+//						pTarget.getSkillManager().getCurrentLevel(Skill.PRAYER) + 40);
+//				if (player.getSkillManager().getCurrentLevel(Skill.PRAYER) > player.getSkillManager()
+//						.getMaxLevel(Skill.PRAYER)) {
+//					player.getSkillManager().setCurrentLevel(Skill.PRAYER,
+//							player.getSkillManager().getMaxLevel(Skill.PRAYER));
+//				} else {
+//					player.getPacketSender()
+//							.sendMessage("Your enchanced bolts leech some Prayer points from your opponent..");
+//				}
+//			}
+//			break;
 		case 9241: // Magical Posion
 			target.performGraphic(new Graphic(752));
 			CombatFactory.poisonEntity(target, PoisonType.MILD);
 			break;
-		case 9242:
-			if (player.getSkillManager().getCurrentLevel(Skill.CONSTITUTION)
-					- player.getSkillManager().getCurrentLevel(Skill.CONSTITUTION) / 200 < 10) {
-				break;
-			}
-			int priceDamage = (int) (player.getSkillManager().getCurrentLevel(Skill.CONSTITUTION) * 0.08);
-			if (priceDamage < 0) {
-				return damage;
-			}
-			int dmg2 = (int) ((int) ((int) target.getConstitution() * 0.065) > 1000 ? 650 + Misc.getRandom(50)
-					: ((int) target.getConstitution() * 0.065));
-			if (dmg2 <= 0) {
-				return damage;
-			}
-			target.performGraphic(new Graphic(754));
-			player.dealDamage(new Hit(priceDamage, Hitmask.RED, CombatIcon.RANGED));
-			return dmg2;
+//		case 9242:
+//			if (player.getSkillManager().getCurrentLevel(Skill.CONSTITUTION)
+//					- player.getSkillManager().getCurrentLevel(Skill.CONSTITUTION) / 200 < 10) {
+//				break;
+//			}
+//			int priceDamage = (int) (player.getSkillManager().getCurrentLevel(Skill.CONSTITUTION) * 0.08);
+//			if (priceDamage < 0) {
+//				return damage;
+//			}
+//			int dmg2 = (int) ((int) ((int) target.getConstitution() * 0.065) > 1000 ? 650 + Misc.getRandom(50)
+//					: ((int) target.getConstitution() * 0.065));
+//			if (dmg2 <= 0) {
+//				return damage;
+//			}
+//			target.performGraphic(new Graphic(754));
+//			player.dealDamage(new Hit(priceDamage, Hitmask.RED, CombatIcon.RANGED));
+//			return dmg2;
 		case 9243:
 			target.performGraphic(new Graphic(758, GraphicHeight.MIDDLE));
 			multiplier = 1.15;

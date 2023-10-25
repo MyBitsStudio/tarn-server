@@ -74,7 +74,7 @@ public final class NpcAggression {
 				}
 
 				if (!npc.isForceAggressive()) {
-					if (player.getSkillManager().getCombatLevel() > (npc.getDefinition().getCombat() * 2)
+					if (player.getNewSkills().combatLevel() > (npc.getDefinition().getCombat() * 2)
 							&& !dung) {
 						continue;
 					}

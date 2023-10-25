@@ -30,12 +30,7 @@ public class Nomad {
 				if (tick >= 4) {
 					NPC n = new NPC(8528,
 							new Position(p.getPosition().getX(), p.getPosition().getY() - 2, p.getPosition().getZ()));
-					Player mini = p.getMinimeSystem().getMiniMe();
-					if(mini != null) {
-						n.setSpawnedFor(p, mini);
-					} else {
-						n.setSpawnedFor(p);
-					}
+					n.setSpawnedFor(p);
 					World.register(n);
 					p.getRegionInstance().getNpcsList().add(n);
 					n.getCombatBuilder().attack(p);

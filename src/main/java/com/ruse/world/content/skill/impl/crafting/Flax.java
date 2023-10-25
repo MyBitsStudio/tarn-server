@@ -14,7 +14,7 @@ public class Flax {
 
 	public static void showSpinInterface(Player player) {
 		player.getPacketSender().sendInterfaceRemoval();
-		player.getSkillManager().stopSkilling();
+		//player.getSkillManager().stopSkilling();
 		if (!player.getInventory().contains(1779)) {
 			player.getPacketSender().sendMessage("You do not have any Flax to spin.");
 			return;
@@ -28,7 +28,7 @@ public class Flax {
 	public static void spinFlax(final Player player, final int amount) {
 		if (amount <= 0)
 			return;
-		player.getSkillManager().stopSkilling();
+		//player.getSkillManager().stopSkilling();
 		player.getPacketSender().sendInterfaceRemoval();
 		player.setCurrentTask(new Task(2, player, true) {
 			int amountSpan = 0;

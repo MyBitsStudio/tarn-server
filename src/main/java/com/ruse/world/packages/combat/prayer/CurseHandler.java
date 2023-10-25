@@ -15,6 +15,7 @@ import com.ruse.world.content.Sounds.Sound;
 import com.ruse.world.content.combat.CombatType;
 import com.ruse.world.entity.impl.Character;
 import com.ruse.world.entity.impl.player.Player;
+import com.ruse.world.packages.skills.S_Skills;
 
 public class CurseHandler {
 
@@ -81,19 +82,19 @@ public class CurseHandler {
 			return;
 		if (player.getCurseActive()[curse.ordinal()])
 			return;
-		if (player.getSkillManager().getCurrentLevel(Skill.PRAYER) <= 0) {
+		if (player.getNewSkills().getCurrentLevel(S_Skills.PRAYER) <= 0) {
 			player.getPacketSender().sendConfig(curse.configId, 0);
 			player.getPacketSender()
 					.sendMessage("You do not have enough Prayer points. You can recharge your points at an altar.");
 			return;
 		}
-		if (player.getSkillManager().getMaxLevel(Skill.PRAYER) < (curse.requirement * 10)) {
+		if (player.getNewSkills().getMaxLevel(S_Skills.PRAYER) < (curse.requirement * 10)) {
 			player.getPacketSender().sendConfig(curse.configId, 0);
 			player.getPacketSender().sendMessage(
 					"You need a Prayer level of at least " + curse.requirement + " to use " + curse.name + ".");
 			return;
 		}
-		if (curse == CurseData.TURMOIL && player.getSkillManager().getMaxLevel(Skill.DEFENCE) < 30) {
+		if (curse == CurseData.TURMOIL && player.getNewSkills().getMaxLevel(S_Skills.DEFENCE) < 30) {
 			player.getPacketSender().sendConfig(curse.configId, 0);
 			player.getPacketSender().sendMessage("You need a Defence level of at least 30 to use Turmoil.");
 			return;
@@ -228,7 +229,7 @@ public class CurseHandler {
 		TaskManager.submit(new Task(1, player, true) {
 			@Override
 			public void execute() {
-				if (player.getSkillManager().getCurrentLevel(Skill.PRAYER) <= 0) {
+				if (player.getNewSkills().getCurrentLevel(S_Skills.PRAYER) <= 0) {
 					for (CurseData curse : CurseData.values()) {
 						if (player.getCurseActive()[curse.ordinal()]) {
 							deactivateCurse(player, curse);
@@ -243,8 +244,8 @@ public class CurseHandler {
 				boolean drains = player.getVariables().getBooleanValue("monic-prayer");
 
 				if(!drains) {
-					int total = (int) (player.getSkillManager().getCurrentLevel(Skill.PRAYER) - drain);
-					player.getSkillManager().setCurrentLevel(Skill.PRAYER, total, true);
+					int total = (int) (player.getNewSkills().getCurrentLevel(S_Skills.PRAYER) - drain);
+					player.getNewSkills().setCurrentLevel(S_Skills.PRAYER, total, true);
 				}
 			}
 

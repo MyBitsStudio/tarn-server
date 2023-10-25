@@ -43,7 +43,7 @@ public class MiniPlayer extends Player {
             protected void execute() {
                 if(!World.getPlayers().contains(miniPlayer) && tick > 8)
                     stop();
-               getSkillManager().setCurrentLevel(Skill.CONSTITUTION, 15000);
+               //getSkillManager().setCurrentLevel(Skill.CONSTITUTION, 15000);
                tick++;
             }
         };

@@ -68,10 +68,10 @@ public class Jewelry {
 		}
 		player.getPacketSender().sendInterfaceRemoval();
 
-		if (player.getSkillManager().getCurrentLevel(Skill.CRAFTING) < level) {
-			player.getPacketSender().sendMessage("You need a Crafting level of at least " + level + " to mould this.");
-			return;
-		}
+//		if (player.getSkillManager().getCurrentLevel(Skill.CRAFTING) < level) {
+//			player.getPacketSender().sendMessage("You need a Crafting level of at least " + level + " to mould this.");
+//			return;
+//		}
 		if (!player.getInventory().contains(2357)) {
 			player.getPacketSender().sendMessage("You need a gold bar to mould this item.");
 			return;
@@ -145,7 +145,7 @@ public class Jewelry {
 	}
 
 	private static void loadFreshJewlryInterface(Player player) {
-		player.getSkillManager().stopSkilling();
+		//player.getSkillManager().stopSkilling();
 		for (int j = 0; j < 7; j++) { // want it to go from 0 -> 6th iteration
 			player.getPacketSender().sendItemOnInterface(4233, -1, j, 1);
 			player.getPacketSender().sendItemOnInterface(4239, -1, j, 1);

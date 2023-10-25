@@ -85,45 +85,45 @@ public class DesoSpan {
 	public static void siphon(final Player player, final NPC n) {
 		final Energy energyType = Energy.forId(n.getId());
 
-		if (energyType != null) {
-			player.getSkillManager().stopSkilling();
-			if (player.getPosition().equals(n.getPosition()))
-				MovementQueue.stepAway(player);
-			player.setEntityInteraction(n);
-			if (player.getSkillManager().getCurrentLevel(Skill.RUNECRAFTING) < energyType.levelReq) {
-				player.getPacketSender().sendMessage("You need a Runecrafting level of at least " + energyType.levelReq
-						+ " to siphon this energy source.");
-				return;
-			}
-			player.performAnimation(SIPHONING_ANIMATION);
-			new Projectile(player, n, energyType.projectileGraphic, 15, 44, 43, 31, 0).sendProjectile();
-			int cycle = 2 + Misc.getRandom(2);
-			player.setCurrentTask(new Task(cycle, player, false) {
-				@Override
-				public void execute() {
-					//if (n.getConstitution() <= 0) {
-						player.getPacketSender().sendMessage("This energy source has died out.");
-					//	stop();
-					//	return;
-					//}
-					player.getSkillManager().addExperience(Skill.RUNECRAFTING, energyType.experience);
-					player.performGraphic(new Graphic(energyType.playerGraphic, GraphicHeight.HIGH));
-					n.performGraphic(new Graphic(energyType.npcGraphic, GraphicHeight.HIGH));
-					n.dealDamage(new Hit(Misc.getRandom(12), Hitmask.RED, CombatIcon.MAGIC));
-					if (Misc.getRandom((30 + gearboost(player))) <= 10) {
-						player.dealDamage(new Hit(1 + Misc.getRandom(48), Hitmask.RED, CombatIcon.DEFLECT));
-						player.getPacketSender()
-								.sendMessage("You accidently attempt to siphon too much energy, and get hurt.");
-					} else {
-						player.getPacketSender().sendMessage("You siphon some energy.");
-					}
-					if (n.getConstitution() > 0 && player.getConstitution() > 0)
-						siphon(player, n);
-					stop();
-				}
-			});
-			TaskManager.submit(player.getCurrentTask());
-		}
+//		if (energyType != null) {
+//			player.getSkillManager().stopSkilling();
+//			if (player.getPosition().equals(n.getPosition()))
+//				MovementQueue.stepAway(player);
+//			player.setEntityInteraction(n);
+//			if (player.getSkillManager().getCurrentLevel(Skill.RUNECRAFTING) < energyType.levelReq) {
+//				player.getPacketSender().sendMessage("You need a Runecrafting level of at least " + energyType.levelReq
+//						+ " to siphon this energy source.");
+//				return;
+//			}
+//			player.performAnimation(SIPHONING_ANIMATION);
+//			new Projectile(player, n, energyType.projectileGraphic, 15, 44, 43, 31, 0).sendProjectile();
+//			int cycle = 2 + Misc.getRandom(2);
+//			player.setCurrentTask(new Task(cycle, player, false) {
+//				@Override
+//				public void execute() {
+//					//if (n.getConstitution() <= 0) {
+//						player.getPacketSender().sendMessage("This energy source has died out.");
+//					//	stop();
+//					//	return;
+//					//}
+//					player.getSkillManager().addExperience(Skill.RUNECRAFTING, energyType.experience);
+//					player.performGraphic(new Graphic(energyType.playerGraphic, GraphicHeight.HIGH));
+//					n.performGraphic(new Graphic(energyType.npcGraphic, GraphicHeight.HIGH));
+//					n.dealDamage(new Hit(Misc.getRandom(12), Hitmask.RED, CombatIcon.MAGIC));
+//					if (Misc.getRandom((30 + gearboost(player))) <= 10) {
+//						player.dealDamage(new Hit(1 + Misc.getRandom(48), Hitmask.RED, CombatIcon.DEFLECT));
+//						player.getPacketSender()
+//								.sendMessage("You accidently attempt to siphon too much energy, and get hurt.");
+//					} else {
+//						player.getPacketSender().sendMessage("You siphon some energy.");
+//					}
+//					if (n.getConstitution() > 0 && player.getConstitution() > 0)
+//						siphon(player, n);
+//					stop();
+//				}
+//			});
+//			TaskManager.submit(player.getCurrentTask());
+
 	}
 
 }

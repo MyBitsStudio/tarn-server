@@ -136,12 +136,7 @@ public class VoidOfDarkness {
                 npc_.forceChat(
                         player.getPosition().getZ() == -1 ? "You dare disturb my rest!" : "You dare steal from us!");
                 npc_.getCombatBuilder().setAttackTimer(3);
-                Player mini = player.getMinimeSystem().getMiniMe();
-                if(mini != null) {
-                    npc_.setSpawnedFor(player, mini);
-                } else {
-                    npc_.setSpawnedFor(player);
-                }
+                npc_.setSpawnedFor(player);
                 npc_.getCombatBuilder().attack(player);
                 World.register(npc_);
                 if (player.getRegionInstance() != null && player.getRegionInstance().getNpcsList() != null) {

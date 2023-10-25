@@ -12,7 +12,7 @@ import com.ruse.world.entity.impl.player.Player;
 public class LeatherMaking {
 
 	public static void craftLeatherDialogue(final Player player, final int itemUsed, final int usedWith) {
-		player.getSkillManager().stopSkilling();
+		//player.getSkillManager().stopSkilling();
 		for (final leatherData l : leatherData.values()) {
 			final int leather = (itemUsed == 1733 ? usedWith : itemUsed);
 			if (leather == l.getLeather()) {
@@ -80,11 +80,11 @@ public class LeatherMaking {
 	public static void craftLeather(final Player player, final leatherData l, final int amount) {
 		player.getPacketSender().sendInterfaceRemoval();
 		if (l.getLeather() == player.getSelectedSkillingItem()) {
-			if (player.getSkillManager().getCurrentLevel(Skill.CRAFTING) < l.getLevel()) {
-				player.getPacketSender()
-						.sendMessage("You need a Crafting level of at least " + l.getLevel() + " to make this.");
-				return;
-			}
+//			if (player.getSkillManager().getCurrentLevel(Skill.CRAFTING) < l.getLevel()) {
+//				player.getPacketSender()
+//						.sendMessage("You need a Crafting level of at least " + l.getLevel() + " to make this.");
+//				return;
+//			}
 			if (!player.getInventory().contains(1734)) {
 				player.getPacketSender().sendMessage("You need some thread to make this.");
 				player.getPacketSender().sendInterfaceRemoval();

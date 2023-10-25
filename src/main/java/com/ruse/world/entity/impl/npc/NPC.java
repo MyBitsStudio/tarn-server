@@ -99,7 +99,7 @@ public class NPC extends Character {
                     continue;
                 }
                 if (position.withinScene(player.getCurrentMapCenter())) {
-                    if (player.isDying() || !player.isRegistered() || !player.isRunning() || !Misc.isOnRange(getPosition().getX(), getPosition().getY(), size, player.getPosition().getX(), player.getPosition().getY(), player.getSize(), aggressionDistance > 0 ? aggressionDistance : agroRatio) || player.getSkillManager().getCombatLevel() >= getCombatLevel() * 2) {
+                    if (player.isDying() || !player.isRegistered() || !player.isRunning() || !Misc.isOnRange(getPosition().getX(), getPosition().getY(), size, player.getPosition().getX(), player.getPosition().getY(), player.getSize(), aggressionDistance > 0 ? aggressionDistance : agroRatio) || player.getNewSkills().combatLevel() >= getCombatLevel() * 2) {
                         continue;
                     }
                     possibleTarget.add(player);

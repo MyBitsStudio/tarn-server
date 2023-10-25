@@ -46,7 +46,7 @@ public class OverloadPotionTask extends Task {
 			for (int i = 0; i < 7; i++) {
 				if (i == 3 || i == 5)
 					continue;
-				player.getSkillManager().setCurrentLevel(Skill.forId(i), player.getSkillManager().getMaxLevel(i));
+				//player.getSkillManager().setCurrentLevel(Skill.forId(i), player.getSkillManager().getMaxLevel(i));
 			}
 			player.setOverloadPotionTimer(0);
 			stop();

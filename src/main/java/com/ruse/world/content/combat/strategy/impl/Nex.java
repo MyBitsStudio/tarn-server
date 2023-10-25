@@ -435,10 +435,10 @@ public class Nex implements CombatStrategy {
 					@Override
 					public void execute() {
 						NEX.setConstitution(NEX.getConstitution() + (damage / 5));
-						p.getSkillManager().setCurrentLevel(Skill.PRAYER,
-								(int) (p.getSkillManager().getCurrentLevel(Skill.PRAYER) - (damage / 85)));
-						if (p.getSkillManager().getCurrentLevel(Skill.PRAYER) < 0)
-							p.getSkillManager().setCurrentLevel(Skill.PRAYER, 0);
+//						p.getSkillManager().setCurrentLevel(Skill.PRAYER,
+//								(int) (p.getSkillManager().getCurrentLevel(Skill.PRAYER) - (damage / 85)));
+//						if (p.getSkillManager().getCurrentLevel(Skill.PRAYER) < 0)
+//							p.getSkillManager().setCurrentLevel(Skill.PRAYER, 0);
 						p.performGraphic(new Graphic(2264));
 						new Projectile(NEX, p, 2263, 44, 3, 43, 43, 0).sendProjectile();
 						this.stop();
@@ -614,11 +614,11 @@ public class Nex implements CombatStrategy {
 				}
 				p.forceChat("Cough..");
 				for (Skill skill : Skill.values()) {
-					if (skill != Skill.CONSTITUTION && skill != Skill.PRAYER) {
-						p.getSkillManager().setCurrentLevel(skill, p.getSkillManager().getCurrentLevel(skill) - 1);
-						if (p.getSkillManager().getCurrentLevel(skill) < 1)
-							p.getSkillManager().setCurrentLevel(skill, 1);
-					}
+//					if (skill != Skill.CONSTITUTION && skill != Skill.PRAYER) {
+//						p.getSkillManager().setCurrentLevel(skill, p.getSkillManager().getCurrentLevel(skill) - 1);
+//						if (p.getSkillManager().getCurrentLevel(skill) < 1)
+//							p.getSkillManager().setCurrentLevel(skill, 1);
+//					}
 				}
 				for (Player p2 : p.getLocalPlayers()) {
 					if (p2 == null || p2 == p)

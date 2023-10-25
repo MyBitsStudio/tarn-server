@@ -20,7 +20,7 @@ public class InviteRaidsPlayer extends Input {
 
 			player.sendMessage("Sent invite to " + plrToInvite);
 
-			player.getMinigameAttributes().getZombieAttributes().getParty().invite(invite);
+			//player.getMinigameAttributes().getZombieAttributes().getParty().invite(invite);
 
 		}
 	}

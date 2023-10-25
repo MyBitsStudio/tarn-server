@@ -18,7 +18,6 @@ import com.ruse.util.Misc;
 import com.ruse.world.World;
 import com.ruse.world.clip.region.RegionClipping;
 import com.ruse.world.content.CrystalChest;
-import com.ruse.world.content.CurrencyPouch;
 import com.ruse.world.content.ItemForging;
 import com.ruse.world.content.PlayerLogs;
 import com.ruse.world.content.cluescrolls.OLD_ClueScrolls;
@@ -615,12 +614,6 @@ public class UseItemPacketListener implements PacketListener {
             return;
 
         if (!player.getControllerManager().processItemOnPlayer(target, itemId, slot)) {
-            return;
-        }
-       // System.out.println("HER");
-
-        if (target.isMiniPlayer() && target.getOwner().getUsername().equalsIgnoreCase(player.getUsername())) {
-            player.getMinimeSystem().equip(player.getInventory().get(slot), true);
             return;
         }
 

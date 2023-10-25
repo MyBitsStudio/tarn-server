@@ -81,10 +81,12 @@ public class Scoreboards {
 			} else if (scoreboard == Scoreboards.TOP_KC) {
 				entries.add(new ScoreboardEntry(p.getUsername(),
 						new String[] { String.valueOf(KillsTracker.getTotalKills(p)) }));
-			} else if (scoreboard == Scoreboards.TOP_TOTAL_EXP) {
-				entries.add(new ScoreboardEntry(p.getUsername(),
-						new String[] { String.valueOf(p.getSkillManager().getTotalExp()) }));
-			} else if (scoreboard == Scoreboards.TOP_ACHIEVER) {
+			}
+//			else if (scoreboard == Scoreboards.TOP_TOTAL_EXP) {
+//				entries.add(new ScoreboardEntry(p.getUsername(),
+//						new String[] { String.valueOf(p.getSkillManager().getTotalExp()) }));
+//			}
+			else if (scoreboard == Scoreboards.TOP_ACHIEVER) {
 				entries.add(new ScoreboardEntry(p.getUsername(),
 						new String[] { String.valueOf(p.getPointsHandler().getAchievementPoints()) }));
 			}

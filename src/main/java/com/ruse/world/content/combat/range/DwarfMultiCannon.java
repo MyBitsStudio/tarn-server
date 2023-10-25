@@ -31,7 +31,7 @@ public class DwarfMultiCannon {
 			return;
 		c.getMovementQueue().reset();
 		c.setSettingUpCannon(true);
-		c.getSkillManager().stopSkilling();
+		//c.getSkillManager().stopSkilling();
 		final boolean movementLock = c.getMovementQueue().isLockMovement();
 		c.getMovementQueue().setLockMovement(true);
 		final GameObject object = new GameObject(CANNON_BASE, c.getPosition().copy());
@@ -92,10 +92,10 @@ public class DwarfMultiCannon {
 	}
 
 	public static boolean canSetupCannon(Player c) {
-		if (c.getSkillManager().getCurrentLevel(Skill.RANGED) < 75) {
-			c.getPacketSender().sendMessage("You need a Ranged level of atleast 75 to setup the dwarf-cannon.");
-			return false;
-		}
+//		if (c.getSkillManager().getCurrentLevel(Skill.RANGED) < 75) {
+//			c.getPacketSender().sendMessage("You need a Ranged level of atleast 75 to setup the dwarf-cannon.");
+//			return false;
+//		}
 		if (!c.getInventory().contains(CANNON_BASE_ID) || !c.getInventory().contains(CANNON_STAND_ID)
 				|| !c.getInventory().contains(CANNON_BARRELS_ID) || !c.getInventory().contains(CANNON_FURNACE_ID)) {
 			c.getPacketSender().sendMessage("You don't have the required items to setup the dwarf-cannon.");
@@ -260,8 +260,8 @@ public class DwarfMultiCannon {
 		n.getLastCombat().reset();
 		n.performAnimation(new Animation(n.getDefinition().getDefenceAnim()));
 		n.getCombatBuilder().addDamage(player, dmg.getDamage());
-		player.getSkillManager().addExperience(Skill.RANGED, (int) (((dmg.getDamage() * .50))));
-		player.getSkillManager().addExperience(Skill.CONSTITUTION, (int) ((dmg.getDamage() * .30)));
+//		player.getSkillManager().addExperience(Skill.RANGED, (int) (((dmg.getDamage() * .50))));
+//		player.getSkillManager().addExperience(Skill.CONSTITUTION, (int) ((dmg.getDamage() * .30)));
 		if (!n.getCombatBuilder().isAttacking()) {
 			if (n.getMovementCoordinator().getCoordinateState() == CoordinateState.HOME)
 				n.getCombatBuilder().attack(player);

@@ -115,39 +115,35 @@ public class UpgradeHandler {
 			player.sendMessage("Please select a recipe first.");
 		} else {
 			for (UpgradeData data : data) {
-				if (player.getSkillManager().getCurrentLevel(Skill.HERBLORE) < player.getCurrentUpgrade().getCurrencyAmount()) {
-					DialogueManager.sendStatement(player, "You need a Herblore level of " + player.getCurrentUpgrade().getCurrencyAmount() + " to concoct this recipe.");
-				return;
+				for (int i = 0; i < player.getCurrentUpgrade().getIngredients().length; i++) {
+					if (player.getInventory().getAmount(player.getCurrentUpgrade().getIngredients()[i]
+							.getId()) < player.getCurrentUpgrade().getIngredients()[i].getAmount()) {
+						player.sendMessage("You don't have the required ingredients to concoct "
+								+ ItemDefinition.forId(player.getCurrentUpgrade().getResultItem()).getName() + ".");
+						return;
 					}
 				}
-			for (int i = 0; i < player.getCurrentUpgrade().getIngredients().length; i++) {
-				if (player.getInventory().getAmount(player.getCurrentUpgrade().getIngredients()[i]
-								.getId()) < player.getCurrentUpgrade().getIngredients()[i].getAmount()) {
-					player.sendMessage("You don't have the required ingredients to concoct "
-							+ ItemDefinition.forId(player.getCurrentUpgrade().getResultItem()).getName() + ".");
-					return;
-				}
-			}
-			int randomInt = Misc.random(100) + 1;
-			if (randomInt <= player.getCurrentUpgrade().getSuccessRate()) {
-				for (int k = 0; k < player.getCurrentUpgrade().getIngredients().length; k++) {
-					player.getInventory().delete(player.getCurrentUpgrade().getIngredients()[k].getId(),
-							player.getCurrentUpgrade().getIngredients()[k].getAmount());
-				}
-			} else {
-				for (int k = 0; k < player.getCurrentUpgrade().getIngredients().length; k++) {
-					if (player.getCurrentUpgrade().getIngredients()[k].getId() != player.getCurrentUpgrade()
-							.getSafeItem())
+				int randomInt = Misc.random(100) + 1;
+				if (randomInt <= player.getCurrentUpgrade().getSuccessRate()) {
+					for (int k = 0; k < player.getCurrentUpgrade().getIngredients().length; k++) {
 						player.getInventory().delete(player.getCurrentUpgrade().getIngredients()[k].getId(),
 								player.getCurrentUpgrade().getIngredients()[k].getAmount());
+					}
+				} else {
+					for (int k = 0; k < player.getCurrentUpgrade().getIngredients().length; k++) {
+						if (player.getCurrentUpgrade().getIngredients()[k].getId() != player.getCurrentUpgrade()
+								.getSafeItem())
+							player.getInventory().delete(player.getCurrentUpgrade().getIngredients()[k].getId(),
+									player.getCurrentUpgrade().getIngredients()[k].getAmount());
+					}
 				}
+				//player.getSkillManager().addExperience(Skill.HERBLORE, player.getCurrentUpgrade().getOtherCurrency());
+				player.sendMessage("Congratulations, you successfully concoct "
+						+ ItemDefinition.forId(player.getCurrentUpgrade().getResultItem()).getName() + ".");
+				player.getInventory().add(player.getCurrentUpgrade().getResultItem(), 1);
+				//player.getSeasonPass().incrementExp(46500, false);
+				// }
 			}
-			player.getSkillManager().addExperience(Skill.HERBLORE, player.getCurrentUpgrade().getOtherCurrency());
-			player.sendMessage("Congratulations, you successfully concoct "
-					+ ItemDefinition.forId(player.getCurrentUpgrade().getResultItem()).getName() + ".");
-			player.getInventory().add(player.getCurrentUpgrade().getResultItem(), 1);
-			//player.getSeasonPass().incrementExp(46500, false);
-			// }
 		}
 	}
 }

@@ -113,42 +113,42 @@ public class Craft {
                 return;
             }
 
-            if(player.getSkillManager().getCurrentLevel(Skill.CRAFTING) >= product.getReqLevel()){
-                if(player.getInventory().contains(product.getRequiredItems())){
-                    if(player.getInventory().getFreeSlots() <= 0){
-                        player.sendMessage("You do not have enough inventory space to craft this.");
-                        return;
-                    }
-
-                    player.performAnimation(new Animation(712));
-                    for(Item item : product.getRequiredItems()){
-                        player.getInventory().delete(item);
-                    }
-
-                    if(product.getType() != 0){
-                        if(Misc.random(100) < 24){
-                            player.getInventory().add(new Item(product.getFinalProduct()));
-                            player.getSkillManager().addExperience(Skill.CRAFTING, product.getXp());
-                            player.sendMessage("You have crafted a " + ItemDefinition.forId(product.getFinalProduct()).getName() + ".");
-                            player.getSeasonPass().incrementExp(24 * product.getXp(), false);
-                        } else {
-                            player.sendMessage("You have failed to craft the item.");
-                        }
-                    } else {
-                        player.getInventory().add(new Item(product.getFinalProduct()));
-                        player.getSkillManager().addExperience(Skill.CRAFTING, product.getXp());
-                        player.sendMessage("You have crafted a " + ItemDefinition.forId(product.getFinalProduct()).getName() + ".");
-                        player.getSeasonPass().incrementExp(2 * product.getXp(), false);
-                    }
-
-                    player.getPA().sendFrame126("Required Level: " + product.getReqLevel(), 47262);
-                    displayItems(-18255 + product.getBase());
-                } else {
-                    player.sendMessage("You do not have the required items to craft this.");
-                }
-            } else {
-                player.sendMessage("You do not have the required level to craft this.");
-            }
+//            if(player.getSkillManager().getCurrentLevel(Skill.CRAFTING) >= product.getReqLevel()){
+//                if(player.getInventory().contains(product.getRequiredItems())){
+//                    if(player.getInventory().getFreeSlots() <= 0){
+//                        player.sendMessage("You do not have enough inventory space to craft this.");
+//                        return;
+//                    }
+//
+//                    player.performAnimation(new Animation(712));
+//                    for(Item item : product.getRequiredItems()){
+//                        player.getInventory().delete(item);
+//                    }
+//
+//                    if(product.getType() != 0){
+//                        if(Misc.random(100) < 24){
+//                            player.getInventory().add(new Item(product.getFinalProduct()));
+//                            player.getSkillManager().addExperience(Skill.CRAFTING, product.getXp());
+//                            player.sendMessage("You have crafted a " + ItemDefinition.forId(product.getFinalProduct()).getName() + ".");
+//                            player.getSeasonPass().incrementExp(24 * product.getXp(), false);
+//                        } else {
+//                            player.sendMessage("You have failed to craft the item.");
+//                        }
+//                    } else {
+//                        player.getInventory().add(new Item(product.getFinalProduct()));
+//                        player.getSkillManager().addExperience(Skill.CRAFTING, product.getXp());
+//                        player.sendMessage("You have crafted a " + ItemDefinition.forId(product.getFinalProduct()).getName() + ".");
+//                        player.getSeasonPass().incrementExp(2 * product.getXp(), false);
+//                    }
+//
+//                    player.getPA().sendFrame126("Required Level: " + product.getReqLevel(), 47262);
+//                    displayItems(-18255 + product.getBase());
+//                } else {
+//                    player.sendMessage("You do not have the required items to craft this.");
+//                }
+//            } else {
+//                player.sendMessage("You do not have the required level to craft this.");
+//            }
         } else {
             player.sendMessage("You must select a product to craft.");
         }

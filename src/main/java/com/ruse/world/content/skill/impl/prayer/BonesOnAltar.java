@@ -13,7 +13,7 @@ import com.ruse.world.packages.johnachievementsystem.AchievementHandler;
 public class BonesOnAltar {
 
 	public static void openInterface(Player player, int itemId) {
-		player.getSkillManager().stopSkilling();
+		player.getNewSkills().stopSkilling();
 		player.setSelectedSkillingItem(itemId);
 		player.setInputHandling(new EnterAmountOfBonesToSacrifice());
 		player.getPacketSender().sendString(2799, ItemDefinition.forId(itemId).getName())
@@ -23,7 +23,7 @@ public class BonesOnAltar {
 
 	public static void offerBones(final Player player, final int amount) {
 		final int boneId = player.getSelectedSkillingItem();
-		player.getSkillManager().stopSkilling();
+		player.getNewSkills().stopSkilling();
 		final BonesData currentBone = BonesData.forId(boneId);
 		if (currentBone == null)
 			return;
@@ -51,16 +51,7 @@ public class BonesOnAltar {
 				player.getInventory().delete(boneId, 1);
 				player.performAnimation(new Animation(713));
 
-				AchievementHandler.progress(player, 1, 96);
-				AchievementHandler.progress(player, 1, 97);
-				AchievementHandler.progress(player, 1, 98);
-				AchievementHandler.progress(player, 1, 99);
-				AchievementHandler.progress(player, 1, 100);
-				
-				if (player.getDonator().isMember()) {
-					player.getSkillManager().addExperience(Skill.PRAYER, (int) (currentBone.getBuryingXP() * 2.5));
-				} else
-					player.getSkillManager().addExperience(Skill.PRAYER, currentBone.getBuryingXP() * 2);
+				AchievementHandler.progress(player, 1, 96, 97, 98, 99, 100);
 
 
 			}

@@ -124,7 +124,7 @@ public class ShootingStar {
 						&& p.getInteractingObject().getId() == CRASHED_STAR.starObject.getId()) {
 					p.performAnimation(new Animation(65535));
 					p.getPacketSender().sendClientRightClickRemoval();
-					p.getSkillManager().stopSkilling();
+					//p.getSkillManager().stopSkilling();
 					p.getPacketSender().sendMessage("The star has been fully mined.");
 				}
 			}

@@ -10,6 +10,7 @@ import com.ruse.world.content.Sounds;
 import com.ruse.world.content.Sounds.Sound;
 import com.ruse.world.content.combat.CombatType;
 import com.ruse.world.entity.impl.player.Player;
+import com.ruse.world.packages.skills.S_Skills;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
@@ -152,7 +153,7 @@ public class PrayerHandler {
 		if (player.getPrayerActive()[prayerId])
 			return;
 		PrayerData pd = PrayerData.prayerData.get(prayerId);
-		if (player.getSkillManager().getCurrentLevel(Skill.PRAYER) <= 0) {
+		if (player.getNewSkills().getCurrentLevel(S_Skills.PRAYER) <= 0) {
 			player.getPacketSender().sendConfig(pd.configId, 0);
 			player.getPacketSender().sendMessage("You do not have enough Prayer points. You can recharge your points at an altar.");
 			return;
@@ -163,7 +164,7 @@ public class PrayerHandler {
 		if (player.getPrayerbook() == Prayerbook.CURSES && !player.isDrainingPrayer()) {
 			startDrain(player);
 		}
-		if (player.getSkillManager().getMaxLevel(Skill.PRAYER) < (pd.requirement * 10)) {
+		if (player.getNewSkills().getMaxLevel(S_Skills.PRAYER) < (pd.requirement * 10)) {
 			player.getPacketSender().sendConfig(pd.configId, 0);
 			player.getPacketSender().sendMessage(
 					"You need a Prayer level of at least " + pd.requirement + " to use " + pd.getPrayerName() + ".");
@@ -303,7 +304,7 @@ public class PrayerHandler {
 		TaskManager.submit(new Task(1, player, true) {
 			@Override
 			public void execute() {
-				if (player.getSkillManager().getCurrentLevel(Skill.PRAYER) <= 0) {
+				if (player.getNewSkills().getCurrentLevel(S_Skills.PRAYER) <= 0) {
 					for (int i = 0; i < player.getPrayerActive().length; i++) {
 						if (player.getPrayerActive()[i])
 							deactivatePrayer(player, i);
@@ -317,8 +318,8 @@ public class PrayerHandler {
 				boolean drain = player.getVariables().getBooleanValue("monic-prayer");
 
 				if(!drain){
-					int total = (int) (player.getSkillManager().getCurrentLevel(Skill.PRAYER) - drainAmount);
-					player.getSkillManager().setCurrentLevel(Skill.PRAYER, total, true);
+					int total = (int) (player.getNewSkills().getCurrentLevel(S_Skills.PRAYER) - drainAmount);
+					player.getNewSkills().setCurrentLevel(S_Skills.PRAYER, total, true);
 				}
 
 			}

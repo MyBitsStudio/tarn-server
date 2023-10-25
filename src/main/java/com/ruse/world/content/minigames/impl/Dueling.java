@@ -109,13 +109,7 @@ public class Dueling {
 		player.getPacketSender().sendConfig(286, 0);
 		player.getTrading().setCanOffer(true);
 		player.getPacketSender().sendDuelEquipment();
-		player.getPacketSender().sendString(6671,
-				"Dueling with: " + playerToDuel.getUsername() + ", Level: "
-						+ playerToDuel.getSkillManager().getCombatLevel() + ", Duel victories: "
-						+ playerToDuel.getDueling().arenaStats[0] + ", Duel losses: "
-						+ playerToDuel.getDueling().arenaStats[1]);
-		player.getPacketSender().sendString(6684, "").sendString(669, "Lock Weapon").sendString(8278,
-				"Neither player is allowed to change weapon.");
+
 		player.getPacketSender().sendInterfaceSet(6575, 3321);
 		player.getPacketSender().sendItemContainer(player.getInventory(), 3322);
 		player.getPacketSender().sendInterfaceItems(6670, playerToDuel.getDueling().stakedItems);
@@ -552,7 +546,6 @@ public class Dueling {
 		}
 		player.getTrading().offeredItems.clear();
 		duelingData[0] = playerToDuel != null ? playerToDuel.getUsername() : "Disconnected";
-		duelingData[1] = playerToDuel != null ? playerToDuel.getSkillManager().getCombatLevel() : 3;
 		Item equipItem;
 		for (int i = 10; i < selectedDuelRules.length; i++) {
 			DuelRule rule = DuelRule.forId(i);

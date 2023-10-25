@@ -68,11 +68,11 @@ public class SmithingData {
 	 * Checks if a player has required stats to smelt certain barId
 	 */
 	public static boolean canSmelt(Player player, int barId) {
-		if (getLevelReq(barId) > player.getSkillManager().getCurrentLevel(Skill.SMITHING)) {
-			player.getPacketSender()
-					.sendMessage("You need a Smithing level of at least " + getLevelReq(barId) + " to make this bar.");
-			return false;
-		}
+//		if (getLevelReq(barId) > player.getSkillManager().getCurrentLevel(Skill.SMITHING)) {
+//			player.getPacketSender()
+//					.sendMessage("You need a Smithing level of at least " + getLevelReq(barId) + " to make this bar.");
+//			return false;
+//		}
 		if (!hasOres(player, barId)) {
 			player.getPacketSender().sendMessage("You do not have the required ores to make this bar.");
 			String requirement = null;
@@ -822,8 +822,8 @@ public class SmithingData {
 	}
 
 	private static String GetForlvl(int i, Player player) {
-		if (player.getSkillManager().getMaxLevel(Skill.SMITHING) >= i)
-			return "@whi@";
+//		if (player.getSkillManager().getMaxLevel(Skill.SMITHING) >= i)
+//			return "@whi@";
 
 		return "@bla@";
 	}
@@ -1505,6 +1505,6 @@ public class SmithingData {
 	}
 
 	public static boolean ironOreSuccess(Player player) {
-		return Misc.getRandom((int) (1 + player.getSkillManager().getCurrentLevel(Skill.SMITHING) / 0.5)) > 5;
+		return false;
 	}
 }

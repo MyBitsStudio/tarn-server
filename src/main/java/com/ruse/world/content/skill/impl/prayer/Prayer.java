@@ -9,6 +9,7 @@ import com.ruse.world.content.Sounds;
 import com.ruse.world.content.Sounds.Sound;
 import com.ruse.world.entity.impl.player.Player;
 import com.ruse.world.packages.johnachievementsystem.AchievementHandler;
+import com.ruse.world.packages.skills.S_Skills;
 
 /**
  * The prayer skill is based upon burying the corpses of enemies. Obtaining a
@@ -30,7 +31,7 @@ public class Prayer {
 		final BonesData currentBone = BonesData.forId(itemId);
 		if (currentBone == null)
 			return;
-		player.getSkillManager().stopSkilling();
+		player.getNewSkills().stopSkilling();
 		player.getPacketSender().sendInterfaceRemoval();
 		player.performAnimation(new Animation(827));
 		player.getPacketSender().sendMessage("You dig a hole in the ground..");
@@ -42,7 +43,7 @@ public class Prayer {
 			@Override
 			public void execute() {
 				player.getPacketSender().sendMessage("..and bury the " + bone.getDefinition().getName() + ".");
-				player.getSkillManager().addExperience(Skill.PRAYER, currentBone.getBuryingXP());
+				player.getNewSkills().xpUp(S_Skills.PRAYER, currentBone.getBuryingXP());
 				Sounds.sendSound(player, Sound.BURY_BONE);
 
 				AchievementHandler.progress(player, 1, 96);

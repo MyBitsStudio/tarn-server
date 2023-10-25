@@ -11,7 +11,7 @@ public class DuelAcceptancePacketListener implements PacketListener {
 	public void handleMessage(Player player, Packet packet) {
 		if (player.getConstitution() <= 0)
 			return;
-		player.getSkillManager().stopSkilling();
+		//player.getSkillManager().stopSkilling();
 		int index = packet.getOpcode() == OPCODE ? (packet.readShort() & 0xFF) : packet.readLEShort();
 		if (index > World.getPlayers().capacity())
 			return;

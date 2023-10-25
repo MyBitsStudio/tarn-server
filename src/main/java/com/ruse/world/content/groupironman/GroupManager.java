@@ -132,15 +132,15 @@ public class GroupManager {
                     String name = player.getIronmanGroup().getMembers().get(i);
                     Player target = World.getPlayerByName(name);
                     player.getPacketSender().sendString(interfaceId++, name);
-                    if (target == null) {
-                        target = IronmanPlayerLoading.getResult(name);
-                        player.getPacketSender().sendString(interfaceId++, "" + target.getSkillManager().getTotalLevel() );
-                        player.getPacketSender().sendString(interfaceId++, "@red@Offline");
-                    } else {
-                        player.getPacketSender().sendString(interfaceId++, "" + target.getSkillManager().getTotalLevel());
-                        player.getPacketSender().sendString(interfaceId++,
-                                player.getRelations().getStatus() == PlayerRelations.PrivateChatStatus.ON ? "@gre@Online" : "@red@Offline");
-                    }
+//                    if (target == null) {
+//                        target = IronmanPlayerLoading.getResult(name);
+//                        player.getPacketSender().sendString(interfaceId++, "" + target.getSkillManager().getTotalLevel() );
+//                        player.getPacketSender().sendString(interfaceId++, "@red@Offline");
+//                    } else {
+//                        player.getPacketSender().sendString(interfaceId++, "" + target.getSkillManager().getTotalLevel());
+//                        player.getPacketSender().sendString(interfaceId++,
+//                                player.getRelations().getStatus() == PlayerRelations.PrivateChatStatus.ON ? "@gre@Online" : "@red@Offline");
+//                    }
                 } else {
                     player.getPacketSender().sendString(interfaceId++, "---");
                     player.getPacketSender().sendString(interfaceId++, "---");

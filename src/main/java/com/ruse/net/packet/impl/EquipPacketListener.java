@@ -24,6 +24,7 @@ import com.ruse.world.content.minigames.impl.Dueling.DuelRule;
 import com.ruse.world.content.skill.impl.old_dungeoneering.Dungeoneering;
 import com.ruse.world.entity.impl.player.Player;
 import com.ruse.world.packages.dialogue.DialogueManager;
+import com.ruse.world.packages.skills.S_Skills;
 
 import java.time.LocalDateTime;
 
@@ -100,11 +101,9 @@ public class EquipPacketListener implements PacketListener {
                  * Making sure item exists and that id is consistent.
                  */
                 if (id == item.getId()) {
-                    for (Skill skill : Skill.values()) {
-                        if (skill == Skill.DUNGEONEERING)
-                            continue;
+                    for (S_Skills skill : S_Skills.values()) {
 
-                        if (item.getDefinition().getRequirement().length != 0 && item.getDefinition().getRequirement()[skill.ordinal()] > player.getSkillManager()
+                        if (item.getDefinition().getRequirement().length != 0 && item.getDefinition().getRequirement()[skill.ordinal()] > player.getNewSkills()
                                 .getMaxLevel(skill)) {
                             StringBuilder vowel = new StringBuilder();
                             if (skill.getName().startsWith("a") || skill.getName().startsWith("e")

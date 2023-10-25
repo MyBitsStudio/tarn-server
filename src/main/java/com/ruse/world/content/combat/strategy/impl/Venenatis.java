@@ -52,17 +52,17 @@ public class Venenatis implements CombatStrategy {
 						venenatis.prepareSpell(CombatSpells.STUN.getSpell(), victim);
 					}
 				} else if (tick == 3) {
-					new CombatHit(venenatis.getCombatBuilder(),
-							new CombatContainer(venenatis, victim, 1, CombatType.MAGIC, true)).handleAttack();
-					if (Misc.getRandom(10) <= 2) {
-						Player p = (Player) victim;
-						int lvl = p.getSkillManager().getCurrentLevel(Skill.PRAYER);
-						lvl *= 0.9;
-						p.getSkillManager().setCurrentLevel(Skill.PRAYER,
-								p.getSkillManager().getCurrentLevel(Skill.PRAYER) - lvl <= 0 ? 1 : lvl);
-						p.getPacketSender().sendMessage("Venenatis has reduced your Prayer level.");
-					}
-					venenatis.setChargingAttack(false);
+//					new CombatHit(venenatis.getCombatBuilder(),
+//							new CombatContainer(venenatis, victim, 1, CombatType.MAGIC, true)).handleAttack();
+//					if (Misc.getRandom(10) <= 2) {
+//						Player p = (Player) victim;
+//						int lvl = p.getSkillManager().getCurrentLevel(Skill.PRAYER);
+//						lvl *= 0.9;
+//						p.getSkillManager().setCurrentLevel(Skill.PRAYER,
+//								p.getSkillManager().getCurrentLevel(Skill.PRAYER) - lvl <= 0 ? 1 : lvl);
+//						p.getPacketSender().sendMessage("Venenatis has reduced your Prayer level.");
+//					}
+//					venenatis.setChargingAttack(false);
 					stop();
 				}
 				tick++;

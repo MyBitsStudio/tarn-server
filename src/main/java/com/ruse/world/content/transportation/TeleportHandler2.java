@@ -238,7 +238,7 @@ public class TeleportHandler2 {
 		player.setTeleporting(false);
 		player.setWalkToTask(null);
 		player.setInputHandling(null);
-		player.getSkillManager().stopSkilling();
+		player.getNewSkills().stopSkilling();
 		player.setEntityInteraction(null);
 		player.getMovementQueue().setFollowCharacter(null);
 		player.getCombatBuilder().cooldown(false);

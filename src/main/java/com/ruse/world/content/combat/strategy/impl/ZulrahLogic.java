@@ -283,15 +283,15 @@ public class ZulrahLogic implements CombatStrategy {
 						return;
 					}
 					zulrah.setChargingAttack(true);
-					if (player.getMinigameAttributes().getZulrahAttributes().getRedFormDamage() >= player
-							.getSkillManager().getCurrentLevel(Skill.CONSTITUTION)) {
-
-						String hiss = "Hi";
-						hiss = hiss + StringUtils.repeat("s", Misc.inclusiveRandom(2, 8));
-						hiss = hiss + StringUtils.repeat("!", Misc.inclusiveRandom(1, 4));
-						zulrah.forceChat(hiss);
-
-					}
+//					if (player.getMinigameAttributes().getZulrahAttributes().getRedFormDamage() >= player
+//							.getSkillManager().getCurrentLevel(Skill.CONSTITUTION)) {
+//
+//						String hiss = "Hi";
+//						hiss = hiss + StringUtils.repeat("s", Misc.inclusiveRandom(2, 8));
+//						hiss = hiss + StringUtils.repeat("!", Misc.inclusiveRandom(1, 4));
+//						zulrah.forceChat(hiss);
+//
+//					}
 
 					if (tick < ticksPerPhase - 5) {
 						zulrah.getCombatBuilder()

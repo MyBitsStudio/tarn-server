@@ -71,7 +71,7 @@ public class TaskScrollHandler {
             TaskType taskType = TaskType.getTypeByKey(key);
             Item[] rewards = taskType.getRewards();
             player.getInventory().delete(taskType.getTaskScrollItemId(), 1);
-            Item[] randomItems = Stream.generate(() -> Misc.randomElement(rewards)).limit(3).toArray(Item[]::new);
+            Item[] randomItems = Stream.generate(() -> Misc.randomElement(rewards)).limit(2).toArray(Item[]::new);
             for(Item reward : randomItems) player.addItemUnderAnyCircumstances(reward);
             player.setPlayerTask(null);
             if(player.isHasPlayerTaskTracker()){

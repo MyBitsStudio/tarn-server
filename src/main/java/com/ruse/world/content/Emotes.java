@@ -5,7 +5,6 @@ import com.ruse.engine.task.TaskManager;
 import com.ruse.model.*;
 import com.ruse.model.container.impl.Equipment;
 import com.ruse.util.Misc;
-import com.ruse.world.content.skill.SkillManager;
 import com.ruse.world.entity.impl.player.Player;
 
 import java.util.HashMap;
@@ -79,19 +78,6 @@ public class Emotes {
 			Skillcape_Data data = Skillcape_Data.dataMap.get(cape.getId());
 			if (data != null) {
 				player.getMovementQueue().reset();
-				if (data != Skillcape_Data.QUEST_POINT) {
-					Skill skill = Skill.forId(data.ordinal());
-					if (data == Skillcape_Data.DUNGEONEERING_MASTER)
-						skill = Skill.DUNGEONEERING;
-					int level = SkillManager.getMaxAchievingLevel(skill);
-					if (player.getSkillManager().getMaxLevel(skill) < level) {
-						player.getPacketSender()
-								.sendMessage("You need " + Misc.anOrA(skill.getName()) + " "
-										+ Misc.formatPlayerName(skill.getName().toLowerCase()) + " level of at least "
-										+ level + " to do this emote.");
-						return false;
-					}
-				}
 				if (!player.getEmoteDelay().elapsed(data.delay * 1000)) {
 					player.getPacketSender()
 							.sendMessage("You must wait a bit before performing another skillcape emote.");

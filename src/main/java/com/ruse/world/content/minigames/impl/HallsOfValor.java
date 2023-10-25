@@ -97,12 +97,7 @@ public class HallsOfValor {
             npc.setAggressive(true);
             npc.getPosition().setZ(player.getPosition().getZ());
             npc.getCombatBuilder().setAttackTimer(3);
-            Player mini = player.getMinimeSystem().getMiniMe();
-            if(mini != null) {
-                npc.setSpawnedFor(player, mini);
-            } else {
-                npc.setSpawnedFor(player);
-            }
+            npc.setSpawnedFor(player);
             npc.getDefinition().setRespawn(-1);
             World.register(player, npc);
            // player.getRegionInstance().getNpcsList().add(newNpc);

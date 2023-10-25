@@ -30,7 +30,7 @@ public class BuyAgilityExperience extends EnterAmount {
 
 		int exp = ticketAmount * experience; // 7680;
 		player.getInventory().delete(2996, ticketAmount);
-		player.getSkillManager().addExperience(Skill.AGILITY, exp);
+		//player.getSkillManager().addExperience(Skill.AGILITY, exp);
 		player.getPacketSender().sendMessage("You've bought " + exp + " Agility experience for " + ticketAmount
 				+ " Agility ticket" + (ticketAmount == 1 ? "" : "s") + ".");
 	}

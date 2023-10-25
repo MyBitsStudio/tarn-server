@@ -50,17 +50,17 @@ public class PlayerSkillsTask extends Task {
 			setDelay(player.getCurseActive()[CurseHandler.BERSERKER] ? TIME_WITH_BERSERKER_CURSE
 					: TIME_WITHOUT_BERSERKER_CURSE);
 		if (!player.isDying() && player.getConstitution() > 0 && player.getOverloadPotionTimer() == 0) {
-			for (Skill skill : Skill.values()) {
-				if (skill == Skill.CONSTITUTION || skill == Skill.PRAYER || skill == Skill.SUMMONING)
-					continue;
-				if (player.getSkillManager().getCurrentLevel(skill) != player.getSkillManager().getMaxLevel(skill)) {
-					int difference = player.getSkillManager().getCurrentLevel(skill)
-							- player.getSkillManager().getMaxLevel(skill);
-					int toRestore = (difference > 0 ? (player.getSkillManager().getCurrentLevel(skill) - 1)
-							: player.getSkillManager().getCurrentLevel(skill) + 1);
-					player.getSkillManager().setCurrentLevel(skill, toRestore);
-				}
-			}
+//			for (Skill skill : Skill.values()) {
+//				if (skill == Skill.CONSTITUTION || skill == Skill.PRAYER || skill == Skill.SUMMONING)
+//					continue;
+//				if (player.getSkillManager().getCurrentLevel(skill) != player.getSkillManager().getMaxLevel(skill)) {
+//					int difference = player.getSkillManager().getCurrentLevel(skill)
+//							- player.getSkillManager().getMaxLevel(skill);
+//					int toRestore = (difference > 0 ? (player.getSkillManager().getCurrentLevel(skill) - 1)
+//							: player.getSkillManager().getCurrentLevel(skill) + 1);
+//					player.getSkillManager().setCurrentLevel(skill, toRestore);
+//				}
+//			}
 		}
 		for (int i = 0; i < player.getLeechedBonuses().length; i++) {
 			if (player.getLeechedBonuses()[i] > 0) {

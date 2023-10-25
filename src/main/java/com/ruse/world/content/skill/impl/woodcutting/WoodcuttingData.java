@@ -129,8 +129,8 @@ public class WoodcuttingData {
 	}
 
 	public static int getChopTimer(Player player, Hatchet h) {
-		int skillReducement = (int) (player.getSkillManager().getMaxLevel(Skill.WOODCUTTING) * 0.05);
+		//int skillReducement = (int) (player.getSkillManager().getMaxLevel(Skill.WOODCUTTING) * 0.05);
 		int axeReducement = (int) h.getSpeed();
-		return skillReducement + axeReducement;
+		return axeReducement;
 	}
 }

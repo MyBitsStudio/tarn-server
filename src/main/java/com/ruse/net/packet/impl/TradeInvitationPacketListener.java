@@ -32,7 +32,7 @@ public class TradeInvitationPacketListener implements PacketListener {
 			System.out.println("Player is locked, cannot trade.");
 			return;
 		}
-		player.getSkillManager().stopSkilling();
+		player.getNewSkills().stopSkilling();
 		int index = packet.getOpcode() == TRADE_OPCODE ? (packet.readShort() & 0xFF) : packet.readLEShort();
 		if (index < 0 || index > World.getPlayers().capacity()) {
 			System.out.println("Invalid player index: " + index);

@@ -4,6 +4,7 @@ import com.ruse.model.Skill;
 import com.ruse.world.content.AutoCastSpell;
 import com.ruse.world.content.combat.weapon.CombatSpecial;
 import com.ruse.world.entity.impl.player.Player;
+import com.ruse.world.packages.skills.S_Skills;
 
 public class Autocasting {
 
@@ -28,7 +29,7 @@ public class Autocasting {
 					p.getMovementQueue().reset();
 					return true;
 				}
-				if (cbSpell.levelRequired() > p.getSkillManager().getCurrentLevel(Skill.MAGIC)) {
+				if (cbSpell.levelRequired() > p.getNewSkills().getCurrentLevel(S_Skills.MAGIC)) {
 					p.getPacketSender().sendMessage(
 							"You need a Magic level of at least " + cbSpell.levelRequired() + " to cast this spell.");
 					resetAutocast(p, true);

@@ -560,7 +560,7 @@ public class Equipment extends ItemContainer {
 			}
 			case 162610 -> {
 				if (getPlayer().getInterfaceId() == -1) {
-					getPlayer().getSkillManager().stopSkilling();
+					getPlayer().getNewSkills().stopSkilling();
 					BonusManager.update(getPlayer());
 					getPlayer().getPacketSender().sendInterface(21172);
 				} else

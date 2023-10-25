@@ -57,14 +57,14 @@ public class Tsutsuroth implements CombatStrategy {
 				int amountToDrain = Misc.getRandom(400);
 				target.getPacketSender()
 						.sendMessage("K'ril Tsutsaroth slams through your defence and steals some Prayer points..");
-				if (amountToDrain > target.getSkillManager().getCurrentLevel(Skill.PRAYER)) {
-					amountToDrain = target.getSkillManager().getCurrentLevel(Skill.PRAYER);
-				}
-				target.getSkillManager().setCurrentLevel(Skill.PRAYER,
-						target.getSkillManager().getCurrentLevel(Skill.PRAYER) - amountToDrain);
-				if (target.getSkillManager().getCurrentLevel(Skill.PRAYER) <= 0) {
-					target.getPacketSender().sendMessage("You have run out of Prayer points!");
-				}
+//				if (amountToDrain > target.getSkillManager().getCurrentLevel(Skill.PRAYER)) {
+//					amountToDrain = target.getSkillManager().getCurrentLevel(Skill.PRAYER);
+//				}
+//				target.getSkillManager().setCurrentLevel(Skill.PRAYER,
+//						target.getSkillManager().getCurrentLevel(Skill.PRAYER) - amountToDrain);
+//				if (target.getSkillManager().getCurrentLevel(Skill.PRAYER) <= 0) {
+//					target.getPacketSender().sendMessage("You have run out of Prayer points!");
+//				}
 			}
 		} else {
 			tsutsuroth.performAnimation(anim1);

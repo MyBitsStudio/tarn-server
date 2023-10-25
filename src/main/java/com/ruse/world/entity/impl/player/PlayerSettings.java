@@ -50,6 +50,8 @@ public class PlayerSettings {
         settings.put("last-login", 1);
         
         settings.put("normal-rewire", true);
+
+        settings.put("settings-rewire", false);
     }
 
     public void setSetting(String key, Object value){

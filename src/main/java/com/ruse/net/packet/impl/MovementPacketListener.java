@@ -26,7 +26,7 @@ public class MovementPacketListener implements PacketListener {
 			size -= 14;
 
 		player.setEntityInteraction(null);
-		player.getSkillManager().stopSkilling();
+		player.getNewSkills().stopSkilling();
 		player.getMovementQueue().setFollowCharacter(null);
 		player.getAfk().setAFK(false);
 		if (packet.getOpcode() != COMMAND_MOVEMENT_OPCODE) {

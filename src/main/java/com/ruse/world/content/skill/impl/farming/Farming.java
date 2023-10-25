@@ -195,47 +195,6 @@ public class Farming {
 
 				for (Plants plant : Plants.values()) {
 					if (plant.seed == seed) {
-						if (player.getSkillManager().getCurrentLevel(Skill.FARMING) >= plant.level) {
-							if (inhabited(x, y)) {
-								player.getPacketSender().sendMessage("There are already seeds planted here.");
-								return true;
-							}
-
-							if (patch.seedType != plant.type) {
-								player.getPacketSender().sendMessage("You can't plant this type of seed here.");
-								return true;
-							}
-							boolean MAGIC_SECATEURS = player.getInventory().contains(FarmingConstants.MAGIC_SECATEURS)
-									|| player.getEquipment().contains(FarmingConstants.MAGIC_SECATEURS);
-							if (player.getInventory().contains(FarmingConstants.SECATEURS) || MAGIC_SECATEURS) {
-								player.performAnimation(new Animation(2291));
-								player.getPacketSender().sendMessage("You bury the seed in the dirt.");
-								player.getInventory().delete(seed, 1, true);
-								Plant planted = new Plant(patch.ordinal(), plant.ordinal());
-								double XP = 1;// percentage
-								planted.setTime();
-								insert(planted);
-								doConfig();
-								if (MAGIC_SECATEURS) {
-									XP = 1.1;// percentage
-									player.getPacketSender()
-											.sendMessage("Your Magic Secateurs increase your XP by 10%.");
-								}
-								player.getSkillManager().addExperience(Skill.FARMING, 30); 
-								player.getSkillManager().addExperience(Skill.FARMING,
-										
-
-										(int) (plant.plantExperience * XP));
-							} else {
-								String name = ItemDefinition.forId(FarmingConstants.SECATEURS).getName();
-								player.getPacketSender()
-										.sendMessage("You need " + Misc.anOrA(name) + " " + name + " to plant seeds.");
-							}
-
-						} else {
-							player.getPacketSender()
-									.sendMessage("You need a Farming level of " + plant.level + " to plant this.");
-						}
 
 						return true;
 					}

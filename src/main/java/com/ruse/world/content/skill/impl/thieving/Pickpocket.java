@@ -32,11 +32,11 @@ public class Pickpocket {
 			return;
 		}
 
-		if (player.getSkillManager().getMaxLevel(Skill.THIEVING) < data.getRequirement()) {
-			player.getPacketSender()
-					.sendMessage("You need a thieving level of " + data.getRequirement() + " to steal from there.");
-			return;
-		}
+//		if (player.getSkillManager().getMaxLevel(Skill.THIEVING) < data.getRequirement()) {
+//			player.getPacketSender()
+//					.sendMessage("You need a thieving level of " + data.getRequirement() + " to steal from there.");
+//			return;
+//		}
 
 		if (player.getInventory().isFull()) {
 			player.getPacketSender().sendMessage("You need some inventory space to hold anything more.");
@@ -67,13 +67,13 @@ public class Pickpocket {
 		}
 
 		player.getInventory().add(data.getReward());
-		player.getSkillManager().addExperience(Skill.THIEVING, data.getExperience());
+		//player.getSkillManager().addExperience(Skill.THIEVING, data.getExperience());
 		player.getPacketSender().sendMessage("You steal from the " + npc.getDefinition().getName() + "'s pocket.");
 
 	}
 
 	public static boolean shouldFail(Player player, int levelReq) {
-		return player.getSkillManager().getCurrentLevel(Skill.THIEVING) - levelReq < Misc.getRandom(levelReq);
+		return true;
 	}
 
 }

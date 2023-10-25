@@ -15,6 +15,7 @@ import com.ruse.world.packages.event.impl.SlayerBonusEvent;
 import com.ruse.world.packages.johnachievementsystem.AchievementHandler;
 import com.ruse.world.packages.johnachievementsystem.PerkType;
 import com.ruse.world.packages.shops.ShopHandler;
+import com.ruse.world.packages.skills.S_Skills;
 import lombok.Getter;
 import lombok.Setter;
 import org.jetbrains.annotations.NotNull;
@@ -63,7 +64,7 @@ public class Slayer {
     }
 
     private void assignMaster(@NotNull Player player){
-        int level = player.getSkillManager().getCurrentLevel(Skill.SLAYER);
+        int level = player.getNewSkills().getCurrentLevel(S_Skills.SLAYER);
         if(level >= 99){
             master = SlayerMasters.ELITE;
         } else if(level >= 92){
@@ -212,7 +213,7 @@ public class Slayer {
         }
 
         player.getInventory().add(SLAYER_TICKETS, amount);
-        player.getSkillManager().addExperience(Skill.SLAYER, monsters.getXp());
+        player.getNewSkills().xpUp(S_Skills.SLAYER, monsters.getXp());
 
         randomBox(player);
 

@@ -7,22 +7,12 @@ import com.ruse.world.World;
 import com.ruse.world.WorldIPChecker;
 import com.ruse.world.content.KillsTracker;
 import com.ruse.world.content.PlayerLogs;
-import com.ruse.world.content.PlayerPunishment.Jail;
-import com.ruse.world.content.Zulrah;
-import com.ruse.world.content.aura.AuraRaids;
-import com.ruse.world.content.combat.strategy.impl.Scorpia;
 import com.ruse.world.content.minigames.impl.*;
-import com.ruse.world.content.minigames.impl.dungeoneering.DungeoneeringParty;
-import com.ruse.world.content.progressionzone.ProgressionZone;
-import com.ruse.world.content.skill.impl.old_dungeoneering.Dungeoneering;
-import com.ruse.world.content.transportation.TeleportHandler;
-import com.ruse.world.content.transportation.TeleportType;
-import com.ruse.world.content.zombie.ZombieRaids;
 import com.ruse.world.entity.Entity;
 import com.ruse.world.entity.impl.Character;
 import com.ruse.world.entity.impl.npc.NPC;
 import com.ruse.world.entity.impl.player.Player;
-import com.ruse.world.packages.event.impl.HalloweenEvent;
+import com.ruse.world.packages.skills.S_Skills;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -1195,18 +1185,20 @@ public class Locations {
 		HOME_AREA(new int[] { 2175, 2237 }, new int[] { 3719, 3777 }, false, true, true, false, false, true) {
 			@Override
 			public void enter(Player player) {
-				if (player.getSkillManager().getCurrentLevel(Skill.CONSTITUTION) < player.getSkillManager()
-						.getMaxLevel(Skill.CONSTITUTION)) {
-					player.getSkillManager().setCurrentLevel(Skill.CONSTITUTION,
-							player.getSkillManager().getMaxLevel(Skill.CONSTITUTION));
+				if (player.getNewSkills().getCurrentLevel(S_Skills.HITPOINTS) < player.getNewSkills()
+						.getMaxLevel(S_Skills.HITPOINTS)) {
+					player.getNewSkills().setCurrentLevel(S_Skills.HITPOINTS,
+							player.getNewSkills().getMaxLevel(S_Skills.HITPOINTS), true);
 					player.getPacketSender()
 							.sendMessage("As you enter home, your health regenerates to full.");
 				}
-				if (player.getSkillManager().getCurrentLevel(Skill.PRAYER) < player.getSkillManager()
-						.getMaxLevel(Skill.PRAYER)) {
-					player.getSkillManager().setCurrentLevel(Skill.PRAYER,
-							player.getSkillManager().getMaxLevel(Skill.PRAYER));
-					player.getPacketSender().sendMessage("As you enter home, the gods restore your prayer.");
+
+				if (player.getNewSkills().getCurrentLevel(S_Skills.PRAYER) < player.getNewSkills()
+						.getMaxLevel(S_Skills.PRAYER)) {
+					player.getNewSkills().setCurrentLevel(S_Skills.PRAYER,
+							player.getNewSkills().getMaxLevel(S_Skills.PRAYER), true);
+					player.getPacketSender()
+							.sendMessage("As you enter home, your prayer regenerates to full.");
 				}
 
 				player.getPacketSender().sendWalkableInterface(63000, false);

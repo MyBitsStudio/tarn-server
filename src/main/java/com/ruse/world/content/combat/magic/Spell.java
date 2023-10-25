@@ -9,6 +9,7 @@ import com.ruse.util.Misc;
 import com.ruse.world.entity.Entity;
 import com.ruse.world.entity.impl.Character;
 import com.ruse.world.entity.impl.player.Player;
+import com.ruse.world.packages.skills.S_Skills;
 
 /**
  * A parent class represented by any generic spell able to be cast by an
@@ -30,7 +31,7 @@ public abstract class Spell {
 	public boolean canCast(Player player, boolean delete) {
 
 		// We first check the level required.
-		if (player.getSkillManager().getCurrentLevel(Skill.MAGIC) < levelRequired()) {
+		if (player.getNewSkills().getCurrentLevel(S_Skills.MAGIC) < levelRequired()) {
 			player.getPacketSender()
 					.sendMessage("You need a Magic level of " + levelRequired() + " to cast this spell.");
 			player.getCombatBuilder().reset(true);
@@ -77,18 +78,6 @@ public abstract class Spell {
 						player.getCombatBuilder().reset(true);
 						return false;
 					}
-				}
-			}
-
-			// We've made it through the checks, so we have the items and can
-			// remove them now.
-			if (delete) {
-				if (player.getSkillManager().skillCape(Skill.MAGIC) && Misc.getRandom(10) == 1) {
-					return true;
-				}
-				for (Item it : Arrays.asList(items)) {
-					if (it != null)
-						player.getInventory().delete(it);
 				}
 			}
 		}

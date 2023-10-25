@@ -10,16 +10,17 @@ import com.ruse.util.Misc;
 import com.ruse.world.content.CustomObjects;
 import com.ruse.world.content.Sounds;
 import com.ruse.world.entity.impl.player.Player;
+import com.ruse.world.packages.skills.S_Skills;
 import org.jetbrains.annotations.NotNull;
 
 public class Miner {
 
     public static void startMining(final @NotNull Player player, final GameObject oreObject){
-        if(player.getSkillManager().getIsSkilling()){
+        if(player.getNewSkills().getIsSkilling().get()){
             return;
         }
 
-        player.getSkillManager().stopSkilling();
+        player.getNewSkills().stopSkilling();
         player.getPacketSender().sendInterfaceRemoval();
 
         if (player.busy() || player.getCombatBuilder().isBeingAttacked() || player.getCombatBuilder().isAttacking()) {
@@ -37,7 +38,7 @@ public class Miner {
         final MiningProps.Rocks rock = MiningProps.Rocks.forId(oreObject.getId());
         if(rock != null){
             final int pickaxe = MiningProps.getPickaxe(player);
-            final int miningLevel = player.getSkillManager().getCurrentLevel(Skill.MINING);
+            final int miningLevel = player.getNewSkills().getCurrentLevel(S_Skills.MINING);
 
             if (pickaxe > 0) {
                 if (miningLevel >= rock.getReq()) {
@@ -46,7 +47,7 @@ public class Miner {
                     if (axe != null) {
                         if(miningLevel >= axe.getReq()){
                             player.performAnimation(new Animation(12003));
-                            player.getSkillManager().setIsSkilling(true);
+                            player.getNewSkills().getIsSkilling().set(true);
 
                             player.setCurrentTask(new Task(Math.max((int) (rock.getTicks() / axe.getSpeed()), 1), player, false) {
 
@@ -57,7 +58,7 @@ public class Miner {
                                 protected void execute() {
                                     if (player.getInteractingObject() == null
                                             || player.getInteractingObject().getId() != oreObject.getId()) {
-                                        player.getSkillManager().stopSkilling();
+                                        player.getNewSkills().stopSkilling();
                                         player.performAnimation(new Animation(65535));
                                         stop();
                                         return;
@@ -90,8 +91,8 @@ public class Miner {
                                             player.sendMessage("You manage to mine x"+amount+" " + reward.getDefinition().getName() + ".");
                                         }
 
-                                        player.getSkillManager().addExperience(Skill.MINING, rock.getXp());
-                                        player.getSkillManager().stopSkilling();
+                                        player.getNewSkills().xpUp(S_Skills.MINING, rock.getXp());
+                                        player.getNewSkills().stopSkilling();
                                         stop();
 
                                         Sounds.sendSound(player, Sounds.Sound.MINE_ITEM);
@@ -136,11 +137,11 @@ public class Miner {
             if (players.getInteractingObject() != null && players.getInteractingObject().getPosition()
                     .equals(player.getInteractingObject().getPosition().copy())) {
                 players.getPacketSender().sendClientRightClickRemoval();
-                players.getSkillManager().stopSkilling();
+                players.getNewSkills().stopSkilling();
             }
         }
         player.getPacketSender().sendClientRightClickRemoval();
-        player.getSkillManager().stopSkilling();
+        player.getNewSkills().stopSkilling();
         CustomObjects.globalObjectRespawnTask(new GameObject(452, oldOre.getPosition().copy(), 10, 0), oldOre,
                 o.getTimer());
     }

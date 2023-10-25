@@ -66,7 +66,7 @@ public class GrassyPatch {
 			return;
 		}
 		raking = true;
-		p.getSkillManager().stopSkilling();
+		//p.getSkillManager().stopSkilling();
 		p.performAnimation(new Animation(2273));
 		p.setCurrentTask(new Task(1, p, true) {
 			int delay = 0;
@@ -91,7 +91,7 @@ public class GrassyPatch {
 					grassyPatch.stage = ((byte) (grassyPatch.stage + 1));
 					p.setProcessFarming(true);
 					grassyPatch.doConfig(p, index);
-					p.getSkillManager().addExperience(Skill.FARMING, Misc.getRandom(2));
+					//p.getSkillManager().addExperience(Skill.FARMING, Misc.getRandom(2));
 					p.getInventory().add(6055, 1);
 					if (isRaked()) {
 						p.getPacketSender().sendMessage("The plot is now fully raked.");

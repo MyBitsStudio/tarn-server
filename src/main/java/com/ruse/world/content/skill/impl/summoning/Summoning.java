@@ -46,66 +46,66 @@ public class Summoning {
 			player.getPacketSender().sendMessage("You already have a familiar.");
 			return;
 		}
-		if (login || player.getSkillManager().getMaxLevel(Skill.SUMMONING) >= familiar.levelRequired) {
-
-			if (!login) {
-				if (player.getSkillManager().getCurrentLevel(Skill.SUMMONING) >= familiar.summoningPointsRequired) {
-					player.getSkillManager().setCurrentLevel(Skill.SUMMONING,
-							player.getSkillManager().getCurrentLevel(Skill.SUMMONING)
-									- familiar.summoningPointsRequired);
-					player.getInventory().delete(familiar.getPouchId(), 1);
-					if (renew && getFamiliar() != null) {
-						player.getPacketSender().sendMessage("You have renewed your familiar.");
-						getFamiliar().setDeathTimer(SummoningData.getFollowerTimer(familiar.npcId));
-						getFamiliar().getSummonNpc().performGraphic(new Graphic(1315));
-						getFamiliar().getSummonNpc()
-								.setConstitution(getFamiliar().getSummonNpc().getDefaultConstitution());
-						return;
-					}
-				} else {
-					player.getPacketSender()
-							.sendMessage("You do not have enough Summoning points to summon this familiar.");
-					player.getPacketSender().sendMessage("You can recharge your Summoning points at an obelisk.");
-					return;
-				}
-			}
-
-			int deathTime = login && getFamiliar() != null && getFamiliar().getDeathTimer() > 0
-					? getFamiliar().getDeathTimer()
-					: SummoningData.getFollowerTimer(familiar.npcId);
-
-			unsummon(true, false);
-
-			NPC foll = new NPC(familiar.npcId, new Position(player.getPosition().getX(),
-					player.getPosition().getY() + 1, player.getPosition().getZ()));
-			foll.performGraphic(new Graphic(1315));
-			foll.setPositionToFace(player.getPosition());
-			foll.setSummoningNpc(true);
-			foll.setEntityInteraction(player);
-			foll.getMovementQueue().setFollowCharacter(player);
-			World.register(foll);
-
-			setFamiliar(new Familiar(player, foll, deathTime));
-
-			int store = SummoningData.getStoreAmount(foll.getId());
-			if (bob == null || bob.capacity() < store) {
-				if (store > 0)
-					this.bob = new BeastOfBurden(player, store);
-			}
-			processFamiliar();
-
-			player.getPacketSender().sendString(54028, familiar.name().replaceAll("_", " "));
-			player.getPacketSender().sendString(54045, " " + player.getSkillManager().getCurrentLevel(Skill.SUMMONING)
-					+ "/" + player.getSkillManager().getMaxLevel(Skill.SUMMONING));
-			player.getPacketSender().sendNpcHeadOnInterface(player.getSummoning().getFamiliar().getSummonNpc().getId(),
-					54021); // 60 = invisable head to remove it
-			player.getPacketSender().sendString(0, "[SUMMOtrue");
-
-			player.getLastSummon().reset();
-		} else {
-			player.getPacketSender().sendMessage(
-					"You need a Summoning level of at least " + familiar.levelRequired + " to summon this familiar.");
-		}
+//		if (login || player.getSkillManager().getMaxLevel(Skill.SUMMONING) >= familiar.levelRequired) {
+//
+//			if (!login) {
+//				if (player.getSkillManager().getCurrentLevel(Skill.SUMMONING) >= familiar.summoningPointsRequired) {
+//					player.getSkillManager().setCurrentLevel(Skill.SUMMONING,
+//							player.getSkillManager().getCurrentLevel(Skill.SUMMONING)
+//									- familiar.summoningPointsRequired);
+//					player.getInventory().delete(familiar.getPouchId(), 1);
+//					if (renew && getFamiliar() != null) {
+//						player.getPacketSender().sendMessage("You have renewed your familiar.");
+//						getFamiliar().setDeathTimer(SummoningData.getFollowerTimer(familiar.npcId));
+//						getFamiliar().getSummonNpc().performGraphic(new Graphic(1315));
+//						getFamiliar().getSummonNpc()
+//								.setConstitution(getFamiliar().getSummonNpc().getDefaultConstitution());
+//						return;
+//					}
+//				} else {
+//					player.getPacketSender()
+//							.sendMessage("You do not have enough Summoning points to summon this familiar.");
+//					player.getPacketSender().sendMessage("You can recharge your Summoning points at an obelisk.");
+//					return;
+//				}
+//			}
+//
+//			int deathTime = login && getFamiliar() != null && getFamiliar().getDeathTimer() > 0
+//					? getFamiliar().getDeathTimer()
+//					: SummoningData.getFollowerTimer(familiar.npcId);
+//
+//			unsummon(true, false);
+//
+//			NPC foll = new NPC(familiar.npcId, new Position(player.getPosition().getX(),
+//					player.getPosition().getY() + 1, player.getPosition().getZ()));
+//			foll.performGraphic(new Graphic(1315));
+//			foll.setPositionToFace(player.getPosition());
+//			foll.setSummoningNpc(true);
+//			foll.setEntityInteraction(player);
+//			foll.getMovementQueue().setFollowCharacter(player);
+//			World.register(foll);
+//
+//			setFamiliar(new Familiar(player, foll, deathTime));
+//
+//			int store = SummoningData.getStoreAmount(foll.getId());
+//			if (bob == null || bob.capacity() < store) {
+//				if (store > 0)
+//					this.bob = new BeastOfBurden(player, store);
+//			}
+//			processFamiliar();
+//
+//			player.getPacketSender().sendString(54028, familiar.name().replaceAll("_", " "));
+//			player.getPacketSender().sendString(54045, " " + player.getSkillManager().getCurrentLevel(Skill.SUMMONING)
+//					+ "/" + player.getSkillManager().getMaxLevel(Skill.SUMMONING));
+//			player.getPacketSender().sendNpcHeadOnInterface(player.getSummoning().getFamiliar().getSummonNpc().getId(),
+//					54021); // 60 = invisable head to remove it
+//			player.getPacketSender().sendString(0, "[SUMMOtrue");
+//
+//			player.getLastSummon().reset();
+//		} else {
+//			player.getPacketSender().sendMessage(
+//					"You need a Summoning level of at least " + familiar.levelRequired + " to summon this familiar.");
+//		}
 	}
 
 	public void summonPet(BossPet bossPet, boolean login) {
@@ -154,8 +154,6 @@ public class Summoning {
 		player.getPacketSender().sendString(54019, "Boosts:\\n\\n" + bossPet.getBoost());
 
 		player.getPacketSender().sendString(54028, "" + bossPet.name().replaceAll("_", " "));
-		player.getPacketSender().sendString(54045, " " + player.getSkillManager().getCurrentLevel(Skill.SUMMONING) + "/"
-				+ player.getSkillManager().getMaxLevel(Skill.SUMMONING));
 		player.getPacketSender().sendString(0, "[SUMMOtrue");
 		player.getPacketSender().sendString(54043, "");
 		player.getPacketSender().sendNpcOnInterface(54021, bossPet.npcId, bossPet.getZoom() ); // 60 = invisable head to remove it
@@ -345,12 +343,12 @@ public class Summoning {
 		player.getPacketSender().sendString(54028, "");
 		player.getPacketSender().sendString(54024, "0");
 		player.getPacketSender().sendNpcOnInterface(54021, 5090, 6000); // 60 = invisable head to remove it
-		player.getPacketSender().sendString(18045,
-				player.getSkillManager().getMaxLevel(Skill.SUMMONING) < 10
-						? "   " + player.getSkillManager().getCurrentLevel(Skill.SUMMONING) + "/"
-								+ player.getSkillManager().getMaxLevel(Skill.SUMMONING)
-						: " " + player.getSkillManager().getCurrentLevel(Skill.SUMMONING) + "/"
-								+ player.getSkillManager().getMaxLevel(Skill.SUMMONING));
+//		player.getPacketSender().sendString(18045,
+//				player.getSkillManager().getMaxLevel(Skill.SUMMONING) < 10
+//						? "   " + player.getSkillManager().getCurrentLevel(Skill.SUMMONING) + "/"
+//								+ player.getSkillManager().getMaxLevel(Skill.SUMMONING)
+//						: " " + player.getSkillManager().getCurrentLevel(Skill.SUMMONING) + "/"
+//								+ player.getSkillManager().getMaxLevel(Skill.SUMMONING));
 	}
 
 	private FamiliarSpawnTask spawnTask;

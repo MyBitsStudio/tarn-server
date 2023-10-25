@@ -45,12 +45,7 @@ public class RecipeForDisaster {
 				}
 				int npc = wave >= 5 ? 3491 : 3493 + wave;
 				NPC n = new NPC(npc, new Position(spawnPos.getX(), spawnPos.getY(), p.getPosition().getZ()));
-				Player mini = p.getMinimeSystem().getMiniMe();
-				if(mini != null) {
-					n.setSpawnedFor(p, mini);
-				} else {
-					n.setSpawnedFor(p);
-				}
+				n.setSpawnedFor(p);
 				World.register(n);
 				p.getRegionInstance().getNpcsList().add(n);
 				n.getCombatBuilder().attack(p);

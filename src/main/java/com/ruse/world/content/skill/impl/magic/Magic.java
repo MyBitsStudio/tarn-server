@@ -196,40 +196,40 @@ public class Magic {
 		if (enc == null || ens == null) {
 			return;
 		}
-		if (player.getSkillManager().getCurrentLevel(Skill.MAGIC) >= enc.getLevelReq()) {
-			if (player.getInventory().contains(enc.getUnenchanted())) {
-				int toMake = enc.getAmount();
-				int materials = player.getInventory().getAmount(enc.getUnenchanted());
-
-				if (materials < toMake) {
-					toMake = materials;
-				}
-
-				if (hasRunes(player, spellID)) {
-					if (getEnchantmentLevel(spellID) == enc.getELevel()) {
-						player.getInventory().delete(enc.getUnenchanted(), toMake);
-						player.getInventory().add(enc.getEnchanted(), toMake);
-						player.getSkillManager().addExperience(Skill.MAGIC, enc.getXp());
-						player.getInventory().delete(ens.getReq1(), ens.getReqAmt1());
-						player.getInventory().delete(ens.getReq2(), ens.getReqAmt2());
-						player.performAnimation(new Animation(enc.getAnim()));
-						player.performGraphic(new Graphic(enc.getGFX(), GraphicHeight.HIGH));
-						if (ens.getReq3() != -1) {
-							player.getInventory().delete(ens.getReq3(), ens.getReqAmt3());
-						}
-						player.getPacketSender().sendTab(GameSettings.MAGIC_TAB);
-					} else {
-						player.getPacketSender().sendMessage("You can only enchant this jewelry using a level-"
-								+ enc.getELevel() + " enchantment spell!");
-					}
-				} else {
-					player.getPacketSender().sendMessage("You do not have enough runes to cast this spell.");
-				}
-			}
-		} else {
-			player.getPacketSender()
-					.sendMessage("You need a Magic level of at least " + enc.getLevelReq() + " to cast this spell.");
-		}
+//		if (player.getSkillManager().getCurrentLevel(Skill.MAGIC) >= enc.getLevelReq()) {
+//			if (player.getInventory().contains(enc.getUnenchanted())) {
+//				int toMake = enc.getAmount();
+//				int materials = player.getInventory().getAmount(enc.getUnenchanted());
+//
+//				if (materials < toMake) {
+//					toMake = materials;
+//				}
+//
+//				if (hasRunes(player, spellID)) {
+//					if (getEnchantmentLevel(spellID) == enc.getELevel()) {
+//						player.getInventory().delete(enc.getUnenchanted(), toMake);
+//						player.getInventory().add(enc.getEnchanted(), toMake);
+//						player.getSkillManager().addExperience(Skill.MAGIC, enc.getXp());
+//						player.getInventory().delete(ens.getReq1(), ens.getReqAmt1());
+//						player.getInventory().delete(ens.getReq2(), ens.getReqAmt2());
+//						player.performAnimation(new Animation(enc.getAnim()));
+//						player.performGraphic(new Graphic(enc.getGFX(), GraphicHeight.HIGH));
+//						if (ens.getReq3() != -1) {
+//							player.getInventory().delete(ens.getReq3(), ens.getReqAmt3());
+//						}
+//						player.getPacketSender().sendTab(GameSettings.MAGIC_TAB);
+//					} else {
+//						player.getPacketSender().sendMessage("You can only enchant this jewelry using a level-"
+//								+ enc.getELevel() + " enchantment spell!");
+//					}
+//				} else {
+//					player.getPacketSender().sendMessage("You do not have enough runes to cast this spell.");
+//				}
+//			}
+//		} else {
+//			player.getPacketSender()
+//					.sendMessage("You need a Magic level of at least " + enc.getLevelReq() + " to cast this spell.");
+//		}
 	}
 
 }

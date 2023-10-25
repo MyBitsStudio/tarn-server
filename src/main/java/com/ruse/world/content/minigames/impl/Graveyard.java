@@ -51,12 +51,7 @@ public class Graveyard {
 				player.getMinigameAttributes().getGraveyardAttributes().setRequiredKills(zombieAmount);
 				for (int i = 0; i <= zombieAmount; i++) {
 					NPC n = new NPC(getSpawn(level), getSpawnPos(player.getPosition().getZ()));
-					Player mini = player.getMinimeSystem().getMiniMe();
-					if(mini != null) {
-						n.setSpawnedFor(player, mini);
-					} else {
-						n.setSpawnedFor(player);
-					}
+					n.setSpawnedFor(player);
 					World.register(n);
 					player.getRegionInstance().getNpcsList().add(n);
 					n.getCombatBuilder().attack(player);
