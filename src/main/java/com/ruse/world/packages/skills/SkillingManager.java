@@ -214,6 +214,7 @@ public class SkillingManager {
 
         player.getPacketSender().updateProgressSpriteBar(124105, totalLevelPercent(), 100);
         player.getPacketSender().updateProgressSpriteBar(124107, totalXpPercent() > 0 ? totalXpPercent() : 1, 100);
+
     }
 
     public int combatLevel(){
@@ -266,7 +267,14 @@ public class SkillingManager {
     }
 
     private int totalLevelPercent(){
-        return (int) calculatePercentage(getTotalLevel(), MAX_SKILLS * 120);
+        int total = 0;
+        for (int i = 0; i < MAX_SKILLS; i++) {
+            if(i == S_Skills.PRAYER.getSkillId() || i == S_Skills.HITPOINTS.getSkillId())
+                total += 1200;
+            else
+                total += 120;
+        }
+        return (int) calculatePercentage(getTotalLevel(), total);
     }
 
     private int totalXpPercent(){
