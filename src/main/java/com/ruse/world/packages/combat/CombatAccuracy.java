@@ -84,6 +84,9 @@ public class CombatAccuracy {
                 if(npc.isDying() || npc.getConstitution() <= 0)
                     return false;
 
+                if(npc.getCombatBuilder().getStrategy() == null)
+                    return false;
+
                 switch(npc.getCombatBuilder().getStrategy().getCombatType()){
                     case MAGIC -> {
                         equipmentBonus = player.getBonusManager().getDefenceBonus()[BonusManager.DEFENCE_MAGIC];
