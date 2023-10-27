@@ -22,6 +22,7 @@ public class Companion extends NPC {
         this.data = data;
         this.availableSkills = data.getSkills();
         this.skill = availableSkills[0];
+        this.setSummoningNpc(true);
     }
 
     public Companion(CompanionData data, int xp, int level){
@@ -31,6 +32,7 @@ public class Companion extends NPC {
         this.skill = availableSkills[0];
         this.xp = xp;
         this.level = level;
+        this.setSummoningNpc(true);
     }
 
     public void addXP(int amount){

@@ -57,7 +57,7 @@ public class TaskScrollHandler {
         return false;
     }
 
-    private static void claimRewards(Player player) {
+    public static void claimRewards(Player player) {
         if(!World.attributes.getSetting("scrolls")) {
             player.getPacketSender().sendMessage("Task scrolls are currently disabled.");
             return;

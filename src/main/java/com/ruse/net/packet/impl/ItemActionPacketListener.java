@@ -11,6 +11,7 @@ import com.ruse.util.Misc;
 import com.ruse.world.World;
 import com.ruse.world.content.*;
 import com.ruse.world.content.StarterTasks.StarterTaskData;
+import com.ruse.world.packages.taskscrolls.PlayerTask;
 import com.ruse.world.packages.taskscrolls.TaskScrollHandler;
 import com.ruse.world.entity.impl.player.timers.impl.scroll.VoteXP;
 import com.ruse.world.entity.impl.player.timers.impl.scroll.*;
@@ -40,6 +41,7 @@ import com.ruse.world.packages.packs.locked.Locks;
 import com.ruse.world.packages.packs.scratch.impl.*;
 import com.ruse.world.packages.panels.PlayerPanel;
 import com.ruse.world.packages.slot.SlotItems;
+import com.ruse.world.packages.taskscrolls.TaskType;
 
 import java.text.NumberFormat;
 import java.util.Locale;
@@ -185,6 +187,45 @@ public class ItemActionPacketListener implements PacketListener {
 
             case 750 :
                 player.getTransmorgify().sendInterface(0);
+                break;
+
+            case 588:
+                if(player.getPlayerTask() != null){
+                    PlayerTask task = player.getPlayerTask();
+                    TaskType taskType = TaskType.getTypeByKey(task.getTaskKeyType());
+
+                    if(player.getInventory().contains(taskType.getTaskScrollItemId())){
+                        player.getInventory().delete(taskType.getTaskScrollItemId(), 1);
+                        player.getInventory().delete(588, 1);
+                        player.setPlayerTask(null);
+                        player.sendMessage("You've cancelled your current task.");
+                    } else {
+                        player.sendMessage("You don't have a task scroll to open.");
+                    }
+                    return;
+                } else {
+                    player.sendMessage("You don't have a task to cancel.");
+                }
+                break;
+
+            case 18761 :
+                if(player.getPlayerTask() != null) {
+                    PlayerTask task = player.getPlayerTask();
+                    TaskType taskType = TaskType.getTypeByKey(task.getTaskKeyType());
+
+                    if (player.getInventory().contains(taskType.getTaskScrollItemId())) {
+                        player.getInventory().delete(taskType.getTaskScrollItemId(), 1);
+                        player.getInventory().delete(18761, 1);
+                        task.setProgress(task.getCompletionAmount());
+                        TaskScrollHandler.claimRewards(player);
+                        player.sendMessage("You've completed your current task.");
+                    } else {
+                        player.sendMessage("You don't have a task scroll to open.");
+                    }
+                    return;
+                } else {
+                    player.sendMessage("You don't have a task to complete.");
+                }
                 break;
 
             case 23057:

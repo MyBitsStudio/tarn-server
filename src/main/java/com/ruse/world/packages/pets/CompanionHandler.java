@@ -112,6 +112,8 @@ public class CompanionHandler {
     public void process(){
         if(companion == null)
             return;
+
+
     }
 
     public void handleDefence(Character attacker){
